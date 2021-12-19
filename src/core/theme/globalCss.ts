@@ -13,6 +13,11 @@ export const useGlobalCss = makeStyles((t: Theme) => ({
       fontSize: t.typography.fontSize,
       color: t.palette.text.primary,
     },
+    '.root': {
+      minHeight: '100vh',
+      display: 'flex',
+      flexDirection: 'column',
+    },
     body: {
       lineHeight: '1.5',
       fontFamily: t.typography.fontFamily,
@@ -20,6 +25,9 @@ export const useGlobalCss = makeStyles((t: Theme) => ({
       margin: 0,
       color: t.palette.text.primary,
       boxSizing: 'border-box',
+    },
+    main: {
+      flex: 1,
     },
     ul: {
       marginTop: '.5em',
@@ -42,4 +50,4 @@ export const useGlobalCss = makeStyles((t: Theme) => ({
       outline: 0,
     },
   },
-}))
+}));

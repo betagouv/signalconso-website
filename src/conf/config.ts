@@ -10,6 +10,8 @@ enum Env {
   UPLOAD_MAX_SIZE_MB = 'UPLOAD_MAX_SIZE_MB',
   SENTRY_DNS = 'SENTRY_DNS',
   SENTRY_TRACE_RATE = 'SENTRY_TRACE_RATE',
+  REPONSECONSO_DISPLAY_PERCENTAGE = 'REPONSECONSO_DISPLAY_PERCENTAGE',
+  REPONSECONSO_BASE_URL = 'REPONSECONSO_BASE_URL',
 }
 
 const parseUrl = (_: string): string => _.replace(/\/$/, '')
@@ -19,8 +21,9 @@ export const config = {
   apiBaseUrl: env(defaultValue('http://localhost:9000'), parseUrl)(Env.API_BASE_URL),
   appBaseUrl: env(defaultValue('http://localhost:4200'), parseUrl)(Env.APP_BASE_URL),
   basePath: env(defaultValue('/'))(Env.BASE_PATH),
-  reportsLimitForExport: 30000,
   upload_allowedExtensions: ['jpg', 'jpeg', 'pdf', 'png', 'gif', 'docx'],
+  reponseConsoDisplayRate: env(int, defaultValue(100))(Env.REPONSECONSO_DISPLAY_PERCENTAGE),
+  reponseConsoForwardUrl: (id: string) => env(defaultValue('https://reclamation.conso.gouv.fr'))(Env.REPONSECONSO_BASE_URL).replace('\/$', '') + `/${id}`,
   upload_maxSizeMb: env(int, defaultValue(5))(Env.UPLOAD_MAX_SIZE_MB),
   contactEmail: 'support@signal.conso.gouv.fr',
   sentry_dns: env()(Env.SENTRY_DNS),

@@ -3,12 +3,13 @@ import {I18nProvider} from '../core/i18n'
 import {AppLangs} from '../core/i18n/I18n'
 import {createGenerateClassName, StylesProvider} from '@mui/styles'
 import {StyledEngineProvider} from '@mui/styled-engine'
-import {ThemeProvider} from '@mui/material'
-import {Header} from '../core/component/Header'
+import {Theme, ThemeProvider} from '@mui/material'
+import {Header, headerHeight} from '../core/component/Header'
 import {muiTheme} from '../core/theme/theme'
 import {Provide} from '../shared/Provide/Provide'
 import {useGlobalCss} from '../core/theme/globalCss'
 import {Footer} from '../core/component/Footer'
+import makeStyles from '@mui/styles/makeStyles'
 
 const generateClassName = createGenerateClassName({
   productionPrefix: 'c',
@@ -34,13 +35,24 @@ export default (props: AppProps) => {
   )
 }
 
+export const useCss = makeStyles((t: Theme) => ({
+  main: {
+    marginTop: headerHeight.normal,
+    paddingTop: t.spacing(2),
+    paddingBottom: t.spacing(2),
+  }
+}))
+
 const App = ({Component, pageProps}: AppProps) => {
   useGlobalCss()
+  const css = useCss()
   return (
-    <>
+    <div className="root">
+      <main className={css.main}>
+        <Component {...pageProps} />
+      </main>
       <Header/>
-      <Component {...pageProps} />
       <Footer/>
-    </>
+    </div>
   )
 }

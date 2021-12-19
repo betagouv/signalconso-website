@@ -2,10 +2,11 @@ import {ReactNode} from 'react'
 import Link from 'next/link'
 import {siteMap} from '../siteMap'
 import {useI18n} from '../i18n'
-import {Icon, useTheme} from '@mui/material'
-import {styled} from '@mui/material/styles'
+import {Theme, useScrollTrigger, useTheme} from '@mui/material'
 import {styleUtils} from '../theme/theme'
 import {ScButton} from '../../shared/Button/Button'
+import makeStyles from '@mui/styles/makeStyles'
+import {classes} from '../helper/utils'
 
 interface HeaderItemProps {
   href: string
@@ -27,29 +28,57 @@ const HeaderItem = ({href, children}: HeaderItemProps) => {
   )
 }
 
-const Root = styled('header')(({theme}) => ({
-  background: theme.palette.background.paper,
-  top: 0,
-  display: 'flex',
-  alignItems: 'center',
-  position: 'sticky',
-  width: '100%',
-  padding: theme.spacing(1, 2),
+export const headerHeight = {
+  normal: 126,
+  compact: 64,
+}
+
+export const useCss = makeStyles((t: Theme) => ({
+  root: {
+    overflow: 'hidden',
+    background: t.palette.background.paper,
+    top: 0,
+    display: 'flex',
+    alignItems: 'center',
+    position: 'absolute',
+    width: '100%',
+    padding: t.spacing(1, 2),
+    height: 126,
+  },
+  rootScrolled: {
+    height: 64,
+    position: 'fixed',
+    boxShadow: t.shadows[4],
+  },
 }))
 
 export const Header = () => {
   const theme = useTheme()
   const {m} = useI18n()
+  const css = useCss()
+  const trigger = useScrollTrigger({
+    disableHysteresis: true,
+    threshold: headerHeight.normal - headerHeight.compact,
+  })
+
   return (
-    <Root role="banner">
-      <img
-        style={{height: 120, marginRight: theme.spacing(3)}}
-        src="/image/gouv.svg"
-        alt={m.logoAltGouv}
-      />
+    <div className={classes(css.root, trigger && css.rootScrolled)}>
+      {trigger ? (
+        <img
+          style={{height: 44, marginRight: theme.spacing(3)}}
+          src="/image/gouv-mobile.svg"
+          alt={m.logoAltGouv}
+        />
+      ) : (
+        <img
+          style={{height: 110, marginRight: theme.spacing(3)}}
+          src="/image/gouv.svg"
+          alt={m.logoAltGouv}
+        />
+      )}
       <Link href={siteMap.index}>
         <a>
-          <img style={{height: 70}} src="/image/logo-signalconso.svg" alt={m.logoAltSignalconso}/>
+          <img style={{height: trigger ? 46 : 60}} src="/image/logo-signalconso.svg" alt={m.logoAltSignalconso}/>
         </a>
       </Link>
 
@@ -65,6 +94,6 @@ export const Header = () => {
           </li>
         </ul>
       </nav>
-    </Root>
+    </div>
   )
 }

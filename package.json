@@ -3,22 +3,27 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p 3001",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
+    "@alexandreannic/react-hooks-lib": "^1.9.0",
+    "@alexandreannic/ts-utils": "^1.5.3",
     "@emotion/react": "^11.5.0",
     "@emotion/styled": "^11.3.0",
     "@mui/material": "^5.0.6",
     "@mui/styles": "^5.0.2",
     "@signal-conso/signalconso-api-sdk-js": "^1.0.18",
+    "classnames": "^2.3.1",
     "date-fns": "^2.25.0",
+    "fp-ts": "^1.19.5",
     "mui-extension": "^3.0.6",
     "next": "12.0.1",
     "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react-dom": "17.0.2",
+    "react-persistent-state": "^1.1.2"
   },
   "devDependencies": {
     "@types/date-fns": "^2.6.0",
