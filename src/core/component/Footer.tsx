@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import {FacebookIcon, TwitterIcon} from 'mui-extension/lib/icon'
+import {FacebookIcon, TwitterIcon} from 'mui-extension/lib'
 import {useTheme} from '@mui/material'
 
 export const Footer = () => {

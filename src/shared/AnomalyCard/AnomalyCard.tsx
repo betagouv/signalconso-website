@@ -1,7 +1,7 @@
 import {Anomaly, Index} from '@signal-conso/signalconso-api-sdk-js'
 import {useTheme} from '@mui/material'
 import {styled} from '@mui/material/styles'
-import {Txt} from 'mui-extension/lib/Txt/Txt'
+import {Txt} from 'mui-extension/lib'
 import Link from 'next/link'
 
 interface AnomalyCardProps {

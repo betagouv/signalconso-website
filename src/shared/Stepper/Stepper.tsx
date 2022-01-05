@@ -1,6 +1,6 @@
 import React, {ReactNode, useContext, useMemo, useState} from 'react'
 import {StepperHeader} from './StepperHeader'
-import {Page} from 'mui-extension'
+import {Page} from 'mui-extension/lib'
 
 export interface StepProps {
   name: string
@@ -34,7 +34,7 @@ export const Stepper = ({steps}: StepperProps) => {
       <Page width={600}>
         <StepperHeader steps={steps} currentStep={currentStep}/>
         {(() => {
-          const XX = steps[currentStep].component
+          const XX: any = steps[currentStep].component
           return (
             <XX/>
           )

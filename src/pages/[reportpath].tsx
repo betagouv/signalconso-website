@@ -7,7 +7,7 @@ import {Anomaly} from '@signal-conso/signalconso-api-sdk-js'
 import {Stepper} from '../shared/Stepper/Stepper'
 import {Description} from '../feature/Report/Description'
 import {Problem} from '../feature/Report/Problem/Problem'
-import {Page} from 'mui-extension/lib/Page'
+import {Page} from 'mui-extension/lib'
 import {messages} from '../conf/messages'
 import {ReportFlowProvider} from '../feature/Report/ReportFlowContext'
 

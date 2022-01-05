@@ -1,7 +1,7 @@
 import {alpha, Radio, Theme} from '@mui/material'
 import makeStyles from '@mui/styles/makeStyles'
 import React, {MouseEventHandler, ReactNode} from 'react'
-import {Txt} from 'mui-extension/lib/Txt/Txt'
+import {Txt} from 'mui-extension/lib'
 import {classes} from '../../core/helper/utils'
 
 const useStyle = makeStyles((t: Theme) => {

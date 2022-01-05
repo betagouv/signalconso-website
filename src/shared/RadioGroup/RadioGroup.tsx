@@ -1,4 +1,4 @@
-import React, {forwardRef, ReactElement, useEffect, useState} from 'react'
+import React, {ReactElement, useEffect, useState} from 'react'
 import {ScRadioGroupItemProps} from './RadioGroupItem'
 
 interface Props<T> {
@@ -10,7 +10,7 @@ interface Props<T> {
   className?: string
 }
 
-export const ScRadioGroup = forwardRef(<T,>({error, className, children, dense, value, onChange}: Props<T>, ref: any) => {
+const _ScRadioGroup = <T, >({error, className, children, dense, value, onChange}: Props<T>, ref: any) => {
   const [innerValue, setInnerValue] = useState<T>()
 
   useEffect(() => {
@@ -34,4 +34,11 @@ export const ScRadioGroup = forwardRef(<T,>({error, className, children, dense, 
       )}
     </div>
   )
-})
+}
+/**
+ * Workaround because forwardRef break the generic type of ScSelect.
+ */
+export const ScRadioGroup = React.forwardRef(_ScRadioGroup) as <T>(
+  props: Props<T> & {ref?: React.ForwardedRef<any>},
+) => ReturnType<typeof _ScRadioGroup>
+

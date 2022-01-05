@@ -1,4 +1,4 @@
-import {Btn, BtnProps} from 'mui-extension/lib/Btn/Btn'
+import {Btn, BtnProps} from 'mui-extension/lib'
 import {forwardRef} from 'react'
 
 export const ScButton = forwardRef((props: BtnProps, ref: any) => {

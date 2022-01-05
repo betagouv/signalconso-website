@@ -2,15 +2,14 @@ import React, {useMemo, useState} from 'react'
 import {ScRadioGroupItem} from '../../../shared/RadioGroup/RadioGroupItem'
 import {config} from '../../../conf/config'
 import {ScRadioGroup} from '../../../shared/RadioGroup/RadioGroup'
-import {AnomalyClient, Category, Subcategory} from '@signal-conso/signalconso-api-sdk-js'
+import {Category, Subcategory} from '@signal-conso/signalconso-api-sdk-js'
 import {useCssUtils} from '../../../core/theme/useCssUtils'
-import {Page} from 'mui-extension/lib/Page'
 import {capitalize, Slide} from '@mui/material'
 import {messages} from '../../../conf/messages'
 import {ScButton} from '../../../shared/Button/Button'
 import {useStepperContext} from '../../../shared/Stepper/Stepper'
 import {useReportFlowContext} from '../ReportFlowContext'
-import {Txt} from 'mui-extension/lib/Txt/Txt'
+import {Txt} from 'mui-extension/lib'
 import {useProblemUtils} from './useProblemUtils'
 
 interface Props {
@@ -128,12 +127,12 @@ interface ProblemCatProps {
 interface XProps<T> {
   title?: string,
   value?: T
+  onChange: (_: T) => void
   options: {
     title: string
     description?: string
     value: T
   }[],
-  onChange: (_: T) => void
 }
 
 const Select = <T, >({
@@ -143,7 +142,7 @@ const Select = <T, >({
   onChange
 }: XProps<T>) => {
   const css = useCssUtils()
-  const [selected, setSelected] = useState<T | undefined>(value)
+  // const [selected, setSelected] = useState<T | undefined>(value)
   return (
     <Slide direction="up" in={true} mountOnEnter unmountOnExit>
       <div>
