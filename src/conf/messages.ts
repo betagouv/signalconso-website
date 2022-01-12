@@ -50,9 +50,9 @@ export const messages = {
   clear: 'Clear',
   cron: 'Cron',
   removeAsk: 'Supprimer ? ',
-  step_problem: 'Le problème',
-  step_description: 'La description',
-  step_company: `L'entreprise`,
-  step_consumer: `Le consommateur`,
+  step_problem: 'Problème',
+  step_description: 'Description',
+  step_company: `Entreprise`,
+  step_consumer: `Consommateur`,
   step_confirm: `Confirmation`,
 }

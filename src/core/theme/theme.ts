@@ -34,9 +34,12 @@ export const defaultSpacing = 8
 export const muiTheme = (dark?: boolean): Theme => {
   const defaultTheme = createTheme()
   const colorMain = {
-    base: '#407e99',
-    light: '#6697ad',
-    dark: '#2c586b',
+    base: '#2c9bc9',
+    light: '#6fd3ff',
+    dark: '#1c536b',
+    // base: '#407e99',
+    // light: '#6697ad',
+    // dark: '#2c586b',
   }
   const colorSecondary = {
     base: '#1e2b50',
@@ -67,7 +70,7 @@ export const muiTheme = (dark?: boolean): Theme => {
       fontSize: 15,
       // fontFamily: '"Open Sans", sans-serif',
       fontFamily: 'Evolventa, sans-serif',
-      fontWeightBold: 500,
+      fontWeightBold: 600,
     },
     components: {
       MuiCssBaseline: {

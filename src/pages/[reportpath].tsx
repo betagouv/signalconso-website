@@ -5,7 +5,7 @@ import {serialiseJsonForStupidNextJs} from '../core/helper/utils'
 import {useState} from 'react'
 import {Anomaly} from '@signal-conso/signalconso-api-sdk-js'
 import {Stepper} from '../shared/Stepper/Stepper'
-import {Description} from '../feature/Report/Description'
+import {Details} from '../feature/Report/Details/Details'
 import {Problem} from '../feature/Report/Problem/Problem'
 import {Page} from 'mui-extension/lib'
 import {messages} from '../conf/messages'
@@ -41,10 +41,10 @@ export default ({anomaly, m}: {anomaly: Anomaly, m: typeof messages}) => {
       <ReportFlowProvider>
         <Stepper steps={[
           {name: 'problem', label: m.step_problem, component: () => <Problem m={m} anomaly={anomaly}/>},
-          {name: 'description', label: m.step_description, component: Description},
-          {name: 'company', label: m.step_company, component: Description},
-          {name: 'consumer', label: m.step_consumer, component: Description},
-          {name: 'confirm', label: m.step_confirm, component: Description},
+          {name: 'description', label: m.step_description, component: Details},
+          {name: 'company', label: m.step_company, component: Details},
+          {name: 'consumer', label: m.step_consumer, component: Details},
+          {name: 'confirm', label: m.step_confirm, component: Details},
         ]}/>
       </ReportFlowProvider>
     </Page>

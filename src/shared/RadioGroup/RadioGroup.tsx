@@ -15,7 +15,7 @@ const _ScRadioGroup = <T, >({error, className, children, dense, value, onChange}
 
   useEffect(() => {
     setInnerValue(value)
-  }, [])
+  }, [value])
 
   return (
     <div className={className} ref={ref}>

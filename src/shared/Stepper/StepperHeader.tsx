@@ -31,14 +31,13 @@ export const StepperHeader = ({steps, currentStep}: StepperHeaderProps) => {
               <Box sx={{
                 display: 'block',
                 position: 'absolute',
-                top: stepSize / 2,
+                top: stepSize / 2 - 1,
                 left: `calc(-50% + ${stepSize / 2 + stepMargin}px)`,
                 right: `calc(50% + ${stepSize / 2 + stepMargin}px)`,
-                height: '2px',
                 ...(currentStep >= i ? {
-                  background: (t: Theme) => t.palette.success.light,
+                  borderTop: (t: Theme) => '2px solid ' + t.palette.success.light,
                 } : {
-                  background: (t: Theme) => t.palette.divider,
+                  borderTop: (t: Theme) => '2px solid ' + t.palette.divider,
                 })
               }}/>
             )}
@@ -48,7 +47,7 @@ export const StepperHeader = ({steps, currentStep}: StepperHeaderProps) => {
               borderRadius: stepSize,
               display: 'flex',
               alignItems: 'center',
-              fontWeight: 500,
+              fontWeight: t => t.typography.fontWeightBold,
               justifyContent: 'center',
               mr: 1,
               ml: 1,
@@ -59,9 +58,9 @@ export const StepperHeader = ({steps, currentStep}: StepperHeaderProps) => {
                 color: t.palette.primary.contrastText,
                 bgcolor: 'primary.main',
               } : {
-                bgcolor: 'divider',
-                color: 'text.secondary',
-              })
+                border: t => `2px solid ${t.palette.divider}`,
+                color: t => t.palette.text.disabled,
+              }),
             }}>
               {currentStep > i ? (
                 <Icon fontSize="small">check</Icon>
@@ -69,7 +68,16 @@ export const StepperHeader = ({steps, currentStep}: StepperHeaderProps) => {
                 i + 1
               )}
             </Box>
-            <Box sx={{fontWeight: t.typography.fontWeightBold, mt: 1,}}>
+            <Box sx={{
+              mt: 1,
+              textAlign: 'center',
+              ...(currentStep > i ? {
+              } : currentStep === i ? {
+                fontWeight: t => t.typography.fontWeightBold,
+              } : {
+                color: t => t.palette.text.disabled,
+              })
+            }}>
               {step.label}
             </Box>
           </Box>

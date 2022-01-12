@@ -30,7 +30,7 @@ const HeaderItem = ({href, children}: HeaderItemProps) => {
 
 export const headerHeight = {
   normal: 126,
-  compact: 64,
+  compact: 52,
 }
 
 export const useCss = makeStyles((t: Theme) => ({
@@ -43,10 +43,10 @@ export const useCss = makeStyles((t: Theme) => ({
     position: 'absolute',
     width: '100%',
     padding: t.spacing(1, 2),
-    height: 126,
+    height: headerHeight.normal,
   },
   rootScrolled: {
-    height: 64,
+    height: headerHeight.compact,
     position: 'fixed',
     boxShadow: t.shadows[4],
   },
@@ -65,7 +65,7 @@ export const Header = () => {
     <div className={classes(css.root, trigger && css.rootScrolled)}>
       {trigger ? (
         <img
-          style={{height: 44, marginRight: theme.spacing(3)}}
+          style={{height: 38, marginRight: theme.spacing(3)}}
           src="/image/gouv-mobile.svg"
           alt={m.logoAltGouv}
         />
@@ -78,7 +78,7 @@ export const Header = () => {
       )}
       <Link href={siteMap.index}>
         <a>
-          <img style={{height: trigger ? 46 : 60}} src="/image/logo-signalconso.svg" alt={m.logoAltSignalconso}/>
+          <img style={{height: trigger ? 40 : 60}} src="/image/logo-signalconso.svg" alt={m.logoAltSignalconso}/>
         </a>
       </Link>
 

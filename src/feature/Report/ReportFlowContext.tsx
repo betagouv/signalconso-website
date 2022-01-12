@@ -1,10 +1,10 @@
 import {ReportDraft} from '@signal-conso/signalconso-api-sdk-js'
-import React, {Dispatch, ReactNode, SetStateAction, useContext} from 'react'
+import React, {Dispatch, ReactNode, SetStateAction, useContext, useEffect} from 'react'
 import {usePersistentState} from 'react-persistent-state'
 
 interface ReportFlowContext {
-  reportDraft?: ReportDraft
-  setReportDraft: Dispatch<SetStateAction<ReportDraft | undefined>>
+  reportDraft: Partial<ReportDraft>
+  setReportDraft: Dispatch<SetStateAction<Partial<ReportDraft>>>
 }
 
 const ReportFlowContext = React.createContext<ReportFlowContext>({} as ReportFlowContext)
@@ -14,12 +14,12 @@ interface ReportFlowProviderProps {
 }
 
 export const ReportFlowProvider = ({children}: ReportFlowProviderProps) => {
-  const [reportDraft, setReportDraft] = usePersistentState<ReportDraft | undefined>(undefined, 'report-draft')
-
+  const [reportDraft, setReportDraft, clear] = usePersistentState<Partial<ReportDraft>>({}, 'report-draft')
+  useEffect(clear, [])
   return (
     <ReportFlowContext.Provider value={{
       reportDraft,
-      setReportDraft,
+      setReportDraft
     }}>
       {children}
     </ReportFlowContext.Provider>
