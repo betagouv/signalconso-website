@@ -8,15 +8,15 @@ import {useReportFlowContext} from '../ReportFlowContext'
 import {useSelectedSubcategoriesUtils} from './useSelectedSubcategoriesUtils'
 import {ProblemStep, ProblemStepper} from './ProblemStepper'
 import {ProblemSelect} from './ProblemSelect'
+import {useI18n} from '../../../core/i18n'
 
 interface Props {
   anomaly: Category
-  m: typeof messages
 }
 
-export const Problem = ({anomaly, m}: Props) => {
+export const Problem = ({anomaly}: Props) => {
   const displayReponseConso = useMemo(() => Math.random() * 100 < config.reponseConsoDisplayRate, [])
-
+  const {m} = useI18n()
   const _reportFlow = useReportFlowContext()
   const draft = _reportFlow.reportDraft
   const _stepper = useStepperContext()
@@ -56,7 +56,7 @@ export const Problem = ({anomaly, m}: Props) => {
           key={c.id}
           title={anomaly.subcategoriesTitle}
           value={draft.subcategories?.[i]?.id}
-          onChange={title => handleSubcategoriesChange(c.subcategories?.find(_ => _.title === title), i)}
+          onChange={id => handleSubcategoriesChange(c.subcategories?.find(_ => _.id === id), i)}
           options={(c.subcategories ?? []).map((_, i) => ({
             title: _.title,
             description: _.example,
@@ -66,7 +66,9 @@ export const Problem = ({anomaly, m}: Props) => {
       ))}
       {isLastSubcategory && (
         <ProblemStepper renderDone={
-          <ScButton color="primary" variant="contained" onClick={submit}>{m.next}</ScButton>
+          <ScButton size="large" color="primary" variant="contained" onClick={submit}>
+            {m.next}
+          </ScButton>
         }>
           <ProblemStep isDone={draft.companyKind !== undefined} hidden={!!companyKindFromSelected}>
             <ProblemSelect

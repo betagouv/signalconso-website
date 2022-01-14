@@ -8,8 +8,8 @@ import {Stepper} from '../shared/Stepper/Stepper'
 import {Details} from '../feature/Report/Details/Details'
 import {Problem} from '../feature/Report/Problem/Problem'
 import {Page} from 'mui-extension/lib'
-import {messages} from '../conf/messages'
 import {ReportFlowProvider} from '../feature/Report/ReportFlowContext'
+import {useI18n} from '../core/i18n'
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const anomalies = await apiSdk.anomaly.getAnomalies()
@@ -27,21 +27,21 @@ export const getStaticProps: GetStaticProps = async ({params}) => {
   return {
     props: serialiseJsonForStupidNextJs({
       anomaly,
-      m: messages
     }),
   }
 }
 
-export default ({anomaly, m}: {anomaly: Anomaly, m: typeof messages}) => {
+export default ({anomaly}: {anomaly: Anomaly}) => {
   const router = useRouter()
   const {reportpath} = router.query
   const [path, setPath] = useState([])
+  const {m} = useI18n()
   return (
     <Page>
       <ReportFlowProvider>
-        <Stepper steps={[
-          {name: 'problem', label: m.step_problem, component: () => <Problem m={m} anomaly={anomaly}/>},
-          {name: 'description', label: m.step_description, component: Details},
+        <Stepper initialStep={0} steps={[
+          {name: 'problem', label: m.step_problem, component: () => <Problem anomaly={anomaly}/>},
+          {name: 'description', label: m.step_description, component: () => <Details/>},
           {name: 'company', label: m.step_company, component: Details},
           {name: 'consumer', label: m.step_consumer, component: Details},
           {name: 'confirm', label: m.step_confirm, component: Details},

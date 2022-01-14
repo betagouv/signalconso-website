@@ -1,6 +1,6 @@
-import {alpha, Radio, Theme} from '@mui/material'
+import {alpha, Checkbox, Radio, Theme} from '@mui/material'
 import makeStyles from '@mui/styles/makeStyles'
-import React, {MouseEventHandler, ReactNode} from 'react'
+import React, {ReactNode} from 'react'
 import {Txt} from 'mui-extension/lib'
 import {classes} from '../../core/helper/utils'
 
@@ -34,10 +34,9 @@ const useStyle = makeStyles((t: Theme) => {
         border: `1px solid ${t.palette.primary.main}`,
         background: 'rgba(0,0,0,.04)',
       },
-    },
-    bodyDense: {
-      paddingTop: t.spacing(1 / 4),
-      paddingBottom: t.spacing(1 / 4),
+      '&:not(:first-of-type)': {
+        marginTop: -2,
+      }
     },
     rootSelected: {
       zIndex: 1,
@@ -49,6 +48,7 @@ const useStyle = makeStyles((t: Theme) => {
       borderColor: t.palette.error.main + ' !important',
     },
     body: {
+      alignSelf: 'center',
       display: 'flex',
       justifyContent: 'center',
       paddingTop: t.spacing(1.5),
@@ -56,6 +56,10 @@ const useStyle = makeStyles((t: Theme) => {
       // minHeight: 42,
       flexDirection: 'column',
       marginLeft: t.spacing(.5),
+    },
+    bodyDense: {
+      paddingTop: t.spacing(1 / 4),
+      paddingBottom: t.spacing(1 / 4),
     },
     radio: {
       marginLeft: t.spacing(1),
@@ -74,6 +78,7 @@ export interface ScRadioGroupItemProps<T> {
   onClick?: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void
   dense?: boolean
   error?: boolean
+  multiple?: boolean
 }
 
 export const ScRadioGroupItem = <T,>({
@@ -86,6 +91,7 @@ export const ScRadioGroupItem = <T,>({
   selected,
   onClick,
   className,
+  multiple,
 }: ScRadioGroupItemProps<T>) => {
   const css = useStyle()
 
@@ -94,7 +100,11 @@ export const ScRadioGroupItem = <T,>({
       className={classes(css.root, selected && css.rootSelected, error && css.rootError, className)}
       onClick={onClick}
     >
-      <Radio checked={selected} className={css.radio}/>
+      {multiple ? (
+        <Checkbox size={dense ? 'small' : undefined} checked={selected} className={css.radio}/>
+      ) : (
+        <Radio size={dense ? 'small' : undefined} checked={selected} className={css.radio}/>
+      )}
       <div className={classes(css.body, dense && css.bodyDense)}>
         {title && (
           <Txt block size="big">

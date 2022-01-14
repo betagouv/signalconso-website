@@ -10,6 +10,7 @@ export interface StepProps {
 
 interface StepperProps {
   steps: StepProps[]
+  initialStep?: number
 }
 
 interface StepperContext {
@@ -22,8 +23,8 @@ const StepperContext = React.createContext<StepperContext>({
   currentStep: 0
 } as StepperContext)
 
-export const Stepper = ({steps}: StepperProps) => {
-  const [currentStep, setCurrentStep] = useState(0)
+export const Stepper = ({steps, initialStep}: StepperProps) => {
+  const [currentStep, setCurrentStep] = useState(initialStep ?? 0)
   const maxStep = useMemo(() => steps.length, [steps])
   return (
     <StepperContext.Provider value={{

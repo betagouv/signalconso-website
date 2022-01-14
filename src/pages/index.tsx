@@ -27,7 +27,6 @@ const Section = styled('section')(({theme}) => ({
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const anomalies = await apiSdk.anomaly.getAnomalies().then(res => res.filter(_ => !_.hidden))
-  console.log(anomalies.length)
   return {
     props: serialiseJsonForStupidNextJs({
       anomalies

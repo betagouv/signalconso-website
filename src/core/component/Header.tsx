@@ -1,12 +1,12 @@
 import {ReactNode} from 'react'
 import Link from 'next/link'
 import {siteMap} from '../siteMap'
-import {useI18n} from '../i18n'
 import {Theme, useScrollTrigger, useTheme} from '@mui/material'
 import {styleUtils} from '../theme/theme'
 import {ScButton} from '../../shared/Button/Button'
 import makeStyles from '@mui/styles/makeStyles'
 import {classes} from '../helper/utils'
+import {useI18n} from '../i18n'
 
 interface HeaderItemProps {
   href: string
@@ -54,8 +54,8 @@ export const useCss = makeStyles((t: Theme) => ({
 
 export const Header = () => {
   const theme = useTheme()
-  const {m} = useI18n()
   const css = useCss()
+  const {m} = useI18n()
   const trigger = useScrollTrigger({
     disableHysteresis: true,
     threshold: headerHeight.normal - headerHeight.compact,

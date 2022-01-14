@@ -14,7 +14,6 @@ import {AnomalyClient, Category, Subcategory} from '@signal-conso/signalconso-ap
 // }
 
 export const useSelectedSubcategoriesUtils = (anomaly: Category, selectedSubCategories: Subcategory[]) => {
-  console.log('useSelectedSubcategoriesUtils', selectedSubCategories)
   const tagsFromSelected = useMemo(() => {
     return (selectedSubCategories ?? []).flatMap(_ => _.tags ?? [])
   }, [selectedSubCategories])

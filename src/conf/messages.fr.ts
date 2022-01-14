@@ -54,6 +54,5 @@ export const messagesFr = {
   menu_home: `Home`,
   menu_help: `Centre d'aide`,
   menu_authSpace: `Espace pro`,
-  logoAltSignalconso: `Logo SignalConso / Retour à la page d'accueil`,
-  logoAltGouv: `Logo gouvernement`,
+
 }

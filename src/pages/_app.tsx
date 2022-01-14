@@ -1,6 +1,4 @@
 import type {AppProps} from 'next/app'
-import {I18nProvider} from '../core/i18n'
-import {AppLangs} from '../core/i18n/I18n'
 import {createGenerateClassName, StylesProvider} from '@mui/styles'
 import {StyledEngineProvider} from '@mui/styled-engine'
 import {Theme, ThemeProvider} from '@mui/material'
@@ -10,6 +8,7 @@ import {Provide} from '../shared/Provide/Provide'
 import {useGlobalCss} from '../core/theme/globalCss'
 import {Footer} from '../core/component/Footer'
 import makeStyles from '@mui/styles/makeStyles'
+import {I18nProvider} from '../core/i18n'
 
 const generateClassName = createGenerateClassName({
   productionPrefix: 'c',
@@ -23,7 +22,7 @@ export default (props: AppProps) => {
         _ => <StylesProvider generateClassName={generateClassName} children={_}/>,
         _ => <StyledEngineProvider injectFirst children={_}/>,
         _ => <ThemeProvider theme={muiTheme()} children={_}/>,
-        _ => <I18nProvider lang={AppLangs.fr} children={_}/>,
+        _ => <I18nProvider children={_}/>,
       ]}
     >
       <link rel="preconnect" href="https://fonts.gstatic.com"/>
