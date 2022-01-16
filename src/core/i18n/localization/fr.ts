@@ -211,7 +211,7 @@ export const fr = {
     logoAltSignalconso: `Logo SignalConso / Retour à la page d'accueil`,
     logoAltGouv: `Logo gouvernement`,
     invalidSize: (maxSize: number) => `La taille du fichier dépasse les ${maxSize} Mb`,
-    limitTo500chars: `500 caractères maximum?`,
+    limitTo500chars: `500 caractères maximum`,
     noAttachment: 'Aucune pièce jointe.',
     addAttachmentFile: 'Ajouter une pièces jointe',
     attachments: `Pièces jointes`,

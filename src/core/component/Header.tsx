@@ -66,7 +66,7 @@ export const Header = () => {
   })
 
   return (
-    <div className={classes(css.root, trigger && css.rootScrolled)}>
+    <header className={classes(css.root, trigger && css.rootScrolled)}>
       {trigger ? (
         <img
           style={{height: 38, marginRight: theme.spacing(3)}}
@@ -98,6 +98,6 @@ export const Header = () => {
           </li>
         </ul>
       </nav>
-    </div>
+    </header>
   )
 }

@@ -1,5 +1,5 @@
 import {Anomaly, Index} from '@signal-conso/signalconso-api-sdk-js'
-import {useTheme} from '@mui/material'
+import {Box, useTheme} from '@mui/material'
 import {styled} from '@mui/material/styles'
 import {Txt} from 'mui-extension/lib'
 import Link from 'next/link'
@@ -27,35 +27,34 @@ const backgroundPosition: Index<string> = {
   'category-admin': '0 -360px',
 }
 
-const Article = styled('article')(({theme}) => ({
-  display: 'flex',
-  // border: `1px solid ${theme.palette.divider}`,
-  padding: theme.spacing(2),
-  borderRadius: theme.shape.borderRadius,
-  boxShadow: theme.shadows[1],
-  // margin: theme.spacing(2),
-  transition: theme.transitions.create('all'),
-  height: '100%',
-  '&:hover': {
-    boxShadow: theme.shadows[4],
-    // transform: 'scale(1.01)',
-  }
-}))
-
 export const AnomalyCard = ({anomaly}: AnomalyCardProps) => {
   const theme = useTheme()
   return (
     <Link href={'/' + anomaly.path}>
       <a>
-        <Article>
-          <div
-            style={{
+        <Box component="article" sx={{
+          background: t => t.palette.background.paper,
+          display: 'flex',
+          // border: `1px solid ${theme.palette.divider}`,
+          padding: 2,
+          borderRadius: `${theme.shape.borderRadius}px`,
+          boxShadow: theme.shadows[1],
+          // margin: theme.spacing(2),
+          transition: theme.transitions.create('all'),
+          height: '100%',
+          '&:hover': {
+            boxShadow: theme.shadows[4],
+            // transform: 'scale(1.01)',
+          }
+        }}>
+          <Box
+            sx={{
               ...(anomaly.sprite ? {
                 background: 'url("/image/pictos/sprite.png") no-repeat bottom',
                 backgroundPosition: backgroundPosition[anomaly.sprite],
                 backgroundRepeat: 'no-repeat',
               } : {}),
-              marginRight: theme.spacing(2),
+              mr: 2,
               minWidth: 72,
               minHeight: 72,
               maxWidth: 72,
@@ -66,13 +65,13 @@ export const AnomalyCard = ({anomaly}: AnomalyCardProps) => {
           <div>
             <h3 style={{
               margin: theme.spacing(0, 0, .5, 0),
-              padding: 0
+              padding: 0,
             }}>
               {anomaly.category}
             </h3>
             <Txt color="disabled">{anomaly.description}</Txt>
           </div>
-        </Article>
+        </Box>
       </a>
     </Link>
   )

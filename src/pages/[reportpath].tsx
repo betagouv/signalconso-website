@@ -10,6 +10,7 @@ import {Problem} from '../feature/Report/Problem/Problem'
 import {Page} from 'mui-extension/lib'
 import {ReportFlowProvider} from '../feature/Report/ReportFlowContext'
 import {useI18n} from '../core/i18n'
+import {Company} from '../feature/Report/Company/Company'
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const anomalies = await apiSdk.anomaly.getAnomalies()
@@ -37,12 +38,12 @@ export default ({anomaly}: {anomaly: Anomaly}) => {
   const [path, setPath] = useState([])
   const {m} = useI18n()
   return (
-    <Page>
+    <Page style={{paddingTop: 16, paddingBottom: 16}}>
       <ReportFlowProvider>
-        <Stepper initialStep={0} steps={[
+        <Stepper initialStep={2} steps={[
           {name: 'problem', label: m.step_problem, component: () => <Problem anomaly={anomaly}/>},
           {name: 'description', label: m.step_description, component: () => <Details/>},
-          {name: 'company', label: m.step_company, component: Details},
+          {name: 'company', label: m.step_company, component: () => <Company/>},
           {name: 'consumer', label: m.step_consumer, component: Details},
           {name: 'confirm', label: m.step_confirm, component: Details},
         ]}/>

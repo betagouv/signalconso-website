@@ -1,6 +1,6 @@
 import type {GetStaticProps} from 'next'
 import Head from 'next/head'
-import {styled, Theme} from '@mui/material/styles'
+import {Theme} from '@mui/material/styles'
 import {IllustrationStepper, IllustrationStepperStep} from '../shared/IllustrationStepper/StepIllustrations'
 import {Box, Divider, Grid, useTheme} from '@mui/material'
 import {apiSdk} from '../core/apiSdk'
@@ -10,15 +10,7 @@ import {serialiseJsonForStupidNextJs} from '../core/helper/utils'
 import {SxProps} from '@mui/system'
 import {ScButton} from '../shared/Button/Button'
 import {useI18n} from '../core/i18n'
-
-const Banner = styled('section')(({theme}) => ({
-  background: theme.palette.primary.main,
-  color: theme.palette.primary.contrastText,
-  textAlign: 'center',
-  padding: theme.spacing(5),
-  fontSize: 32,
-  fontWeight: 'lighter',
-}))
+import {Section} from '../core/component/Section'
 
 const sxTitle: SxProps<Theme> = {
   fontSize: 24,
@@ -52,28 +44,28 @@ const Home = ({anomalies}: HomeProps) => {
       </Head>
 
       <main>
-        <Banner>
+        <Section sx={{
+          background: t => t.palette.primary.main,
+          color: t => t.palette.primary.contrastText,
+          textAlign: 'center',
+          padding: 5,
+          fontSize: 32,
+          fontWeight: 'lighter',
+        }}>
           Signaler un problème à <b>l&apos;entreprise</b> <br/>
           en toute transparence avec <b>la répression des fraudes</b> !
-        </Banner>
+        </Section>
 
-        <Box component="section">
-          <Box sx={{
-            py: 3,
-            px: 1,
-            maxWidth: 1140,
-            margin: 'auto',
-          }}>
-            <Box component="h2" sx={sxTitle}>Comment ça marche ?</Box>
-            <IllustrationStepper>
-              <IllustrationStepperStep title="Vous avez rencontré un problème<br/>avec une entreprise&#160;?" image="/image/illustrations/consumer.png"/>
-              <IllustrationStepperStep title="Faites un signalement<br/>avec SignalConso." image="/image/illustrations/report.png"/>
-              <IllustrationStepperStep title="L'entreprise est prévenue<br/>et peut intervenir." image="/image/illustrations/company.png"/>
-              <IllustrationStepperStep title="La répression des fraudes intervient si nécessaire." image="/image/illustrations/dgccrf.png"/>
-            </IllustrationStepper>
-          </Box>
+        <Section>
+          <Box component="h2" sx={sxTitle}>Comment ça marche ?</Box>
+          <IllustrationStepper>
+            <IllustrationStepperStep title="Vous avez rencontré un problème<br/>avec une entreprise&#160;?" image="/image/illustrations/consumer.png"/>
+            <IllustrationStepperStep title="Faites un signalement<br/>avec SignalConso." image="/image/illustrations/report.png"/>
+            <IllustrationStepperStep title="L'entreprise est prévenue<br/>et peut intervenir." image="/image/illustrations/company.png"/>
+            <IllustrationStepperStep title="La répression des fraudes intervient si nécessaire." image="/image/illustrations/dgccrf.png"/>
+          </IllustrationStepper>
 
-          <Box sx={{display: 'flex', alignItems: 'center', justifyContent: 'center', pt: 1, pb: 4}}>
+          <Box sx={{display: 'flex', alignItems: 'center', justifyContent: 'center', pt: 4, pb: 3}}>
             <ScButton
               onClick={() => {
                 document.querySelector('#index-categories')?.scrollIntoView({behavior: 'smooth', block: 'start', inline: 'nearest'})
@@ -86,27 +78,20 @@ const Home = ({anomalies}: HomeProps) => {
               {m.buttonReportProblem}
             </ScButton>
           </Box>
-        </Box>
+        </Section>
         <Divider/>
-        <Box id="index-categories" component="section" sx={{
+        <Section id="index-categories" component="section" sx={{
           background: '#fafafa'
         }}>
-          <Box sx={{
-            py: 3,
-            px: 1,
-            maxWidth: 1140,
-            margin: 'auto',
-          }}>
-            <Box component="h2" sx={sxTitle}>Quel problème avez-vous rencontré ?</Box>
-            <Grid container spacing={2}>
-              {anomalies.map(a => (
-                <Grid key={a.path} item xs={12} sm={6} md={4}>
-                  <AnomalyCard anomaly={a}/>
-                </Grid>
-              ))}
-            </Grid>
-          </Box>
-        </Box>
+          <Box component="h2" sx={sxTitle}>Quel problème avez-vous rencontré ?</Box>
+          <Grid container spacing={2}>
+            {anomalies.map(a => (
+              <Grid key={a.path} item xs={12} sm={6} md={4}>
+                <AnomalyCard anomaly={a}/>
+              </Grid>
+            ))}
+          </Grid>
+        </Section>
       </main>
     </>
   )

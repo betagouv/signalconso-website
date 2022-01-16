@@ -9,6 +9,7 @@ import {useSelectedSubcategoriesUtils} from './useSelectedSubcategoriesUtils'
 import {ProblemStep, ProblemStepper} from './ProblemStepper'
 import {ProblemSelect} from './ProblemSelect'
 import {useI18n} from '../../../core/i18n'
+import {StepperActions} from '../../../shared/Stepper/StepperActions'
 
 interface Props {
   anomaly: Category
@@ -29,13 +30,13 @@ export const Problem = ({anomaly}: Props) => {
     companyKindFromSelected,
   } = useSelectedSubcategoriesUtils(anomaly, draft.subcategories ?? [])
 
-  const submit = () => {
+  const submit = (next: () => void) => {
     _reportFlow.setReportDraft(_ => ({
       ..._,
       tags: tagsFromSelected,
       companyKind: _.companyKind ?? companyKindFromSelected ?? CompanyKinds.SIRET,
     }))
-    _stepper.next()
+    next()
   }
 
   const handleSubcategoriesChange = (subcategory: Subcategory | undefined, index: number) => {
@@ -49,6 +50,7 @@ export const Problem = ({anomaly}: Props) => {
     })
   }
 
+  console.log(draft, draft.companyKind)
   return (
     <>
       {([anomaly, ...(draft.subcategories ?? [])]).map((c, i) => c.subcategories && (
@@ -66,9 +68,7 @@ export const Problem = ({anomaly}: Props) => {
       ))}
       {isLastSubcategory && (
         <ProblemStepper renderDone={
-          <ScButton size="large" color="primary" variant="contained" onClick={submit}>
-            {m.next}
-          </ScButton>
+          <StepperActions next={submit}/>
         }>
           <ProblemStep isDone={draft.companyKind !== undefined} hidden={!!companyKindFromSelected}>
             <ProblemSelect

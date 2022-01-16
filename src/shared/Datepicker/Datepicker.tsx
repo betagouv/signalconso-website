@@ -1,16 +1,13 @@
 import {format} from 'date-fns'
 import {InputProps as StandardInputProps, TextField} from '@mui/material'
-import React, {CSSProperties, forwardRef} from 'react'
+import React, {forwardRef} from 'react'
+import {BaseTextFieldProps} from '@mui/material/TextField/TextField'
 
-export interface ScDatepickerProps {
+export interface ScDatepickerProps extends BaseTextFieldProps {
   value?: Date
   onChange?: (_: Date) => void
   label?: string
-  className?: string
   InputProps?: Partial<StandardInputProps>
-  style?: CSSProperties
-  fullWidth?: boolean
-  placeholder?: string
   min?: string
   max?: string
 }

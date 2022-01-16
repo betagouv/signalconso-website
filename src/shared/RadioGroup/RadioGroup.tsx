@@ -1,28 +1,27 @@
-import React, {ReactElement, useEffect, useState} from 'react'
+import React, {ReactElement, ReactNode, useEffect, useState} from 'react'
 import {ScRadioGroupItemProps} from './RadioGroupItem'
-import {Box} from '@mui/material'
+import {Box, FormHelperText} from '@mui/material'
 import {SxProps} from '@mui/system'
 import {Theme} from '@mui/material/styles'
 
-interface SingleProps<T> {
+interface BaseProps<T> {
   dense?: boolean
   children: React.ReactNode //ReactElement<ScRadioGroupItemProps>[]
-  value?: T
   error?: boolean
-  onChange?: (_: T) => void
   className?: string
   sx?: SxProps<Theme>
+  helperText?: ReactNode
+}
+
+interface SingleProps<T> extends BaseProps<T> {
+  value?: T
+  onChange?: (_: T) => void
   multiple?: false
 }
 
-interface MultipleProps<T> {
-  dense?: boolean
-  children: React.ReactNode //ReactElement<ScRadioGroupItemProps>[]
+interface MultipleProps<T> extends BaseProps<T> {
   value?: T[]
-  error?: boolean
   onChange?: (_: T[]) => void
-  className?: string
-  sx?: SxProps<Theme>;
   multiple: true
 }
 
@@ -32,11 +31,11 @@ const isMultiple = <T, >(multiple: boolean | undefined, t: T | T[]): t is T[] =>
   return !!multiple
 }
 
-const _ScRadioGroup = <T, >({error, children, dense, value, onChange, multiple, ...props}: Props<T>, ref: any) => {
+const _ScRadioGroup = <T, >({error, children, dense, value, onChange, multiple, helperText, ...props}: Props<T>, ref: any) => {
   const [innerValue, setInnerValue] = useState<T | T[]>()
 
   useEffect(() => {
-    if (value) {
+    if (value !== undefined) {
       setInnerValue(value)
     } else if (multiple) {
       setInnerValue([])
@@ -71,6 +70,9 @@ const _ScRadioGroup = <T, >({error, children, dense, value, onChange, multiple, 
             })
           },
         }),
+      )}
+      {helperText && (
+        <FormHelperText error={error} sx={{marginLeft: '14px'}}>{helperText}</FormHelperText>
       )}
     </Box>
   )

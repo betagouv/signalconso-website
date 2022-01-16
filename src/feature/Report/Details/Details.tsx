@@ -1,7 +1,7 @@
 import React, {useMemo} from 'react'
 import {Alert, Txt} from 'mui-extension'
 import {useReportFlowContext} from '../ReportFlowContext'
-import {AnomalyClient, DetailInput, DetailInputType, ReportTag, Subcategory} from '../../../../../signalconso-api-sdk-js'
+import {AnomalyClient, DetailInput, DetailInputType, FileOrigin, ReportTag, Subcategory} from '../../../../../signalconso-api-sdk-js'
 import {ScInput} from '../../../shared/Input/ScInput'
 import {Box, MenuItem} from '@mui/material'
 import {ScDatepicker} from '../../../shared/Datepicker/Datepicker'
@@ -13,6 +13,8 @@ import {ScRadioGroup} from '../../../shared/RadioGroup/RadioGroup'
 import {ReportDraft} from '@signal-conso/signalconso-api-sdk-js'
 import {format} from 'date-fns'
 import {Controller, useForm} from 'react-hook-form'
+import {ReportFiles} from '../../../shared/UploadFile/ReportFiles'
+import {StepperActions} from '../../../shared/Stepper/StepperActions'
 
 const reponseConsoQuestion = {
   label: 'Votre question',
@@ -75,6 +77,7 @@ export const Details = () => {
 const DetailsWithRequiredProps = ({draft, subcategories, tags, employeeConsumer}: Props) => {
   const lastSubcategories = subcategories[subcategories.length - 1]
   const {m} = useI18n()
+  const _reportFlow = useReportFlowContext()
   const inputs = useMemo(() => {
     return getInputs({subcategories, tags})
   }, [subcategories, tags])
@@ -82,8 +85,9 @@ const DetailsWithRequiredProps = ({draft, subcategories, tags, employeeConsumer}
     control,
     register,
     getValues,
-    handleSubmit
-  } = useForm<any>({mode: 'onChange'})
+    handleSubmit,
+    formState: {errors, isValid},
+  } = useForm<any>()
 
   console.log(getValues())
   return (
@@ -124,38 +128,61 @@ const DetailsWithRequiredProps = ({draft, subcategories, tags, employeeConsumer}
         </Alert>
       )}
 
+      <br/>
+
       {inputs.map((input, i) => (
         <Box key={i} sx={{
           mb: 3,
         }}>
-          <Txt dangerouslySetInnerHTML={{__html: input.label}} block/>
+          <Txt>
+
+            <span dangerouslySetInnerHTML={{__html: input.label}}/>
+            {input.optionnal && <Txt color="disabled"> *</Txt>}
+          </Txt>
           <Controller
             name={input.label}
             defaultValue={(input.defaultValue === 'SYSDATE' ? new Date() : input.defaultValue) ?? ''}
             control={control}
             rules={{
-              required: {value: !input.optionnal, message: m.required},
-              ...(input.type === DetailInputType.TEXTAREA ? {minLength: {value: 8, message: m.limitTo500chars}} : {}),
+              required: {value: true, message: m.required + ' *'},
+              ...(input.type === DetailInputType.TEXTAREA ? {maxLength: {value: 500, message: ''}} : {}),
             }}
             render={({field}) => (
               (() => {
+                const errorMessage = errors[input.label]?.message
+                const hasErrors = !!errors[input.label]
                 switch (input.type) {
                   case DetailInputType.DATE_NOT_IN_FUTURE: {
                     return (
                       <ScDatepicker
                         {...field}
                         fullWidth placeholder={input.placeholder}
-                        max={format(new Date(), 'yyyy-MM-dd')}/>
+                        max={format(new Date(), 'yyyy-MM-dd')}
+                        helperText={errorMessage}
+                        error={hasErrors}
+                      />
                     )
                   }
                   case DetailInputType.DATE: {
                     return (
-                      <ScDatepicker {...field} fullWidth placeholder={input.placeholder}/>
+                      <ScDatepicker
+                        {...field}
+                        fullWidth
+                        placeholder={input.placeholder}
+                        helperText={errorMessage}
+                        error={hasErrors}
+                      />
                     )
                   }
                   case DetailInputType.TIMESLOT: {
                     return (
-                      <ScSelect {...field} fullWidth placeholder={input.placeholder}>
+                      <ScSelect
+                        {...field}
+                        fullWidth
+                        placeholder={input.placeholder}
+                        helperText={errorMessage}
+                        error={hasErrors}
+                      >
                         {mapFor(24, i =>
                           <MenuItem key={i} value={`de ${i}h à ${i + 1}h`}>
                             {m.timeFromTo(i, i + 1)}
@@ -166,7 +193,12 @@ const DetailsWithRequiredProps = ({draft, subcategories, tags, employeeConsumer}
                   }
                   case DetailInputType.RADIO: {
                     return (
-                      <ScRadioGroup {...field} sx={{mt: 1}} dense>
+                      <ScRadioGroup
+                        {...field}
+                        sx={{mt: 1}} dense
+                        helperText={errorMessage}
+                        error={hasErrors}
+                      >
                         {input.options?.map(option =>
                           <ScRadioGroupItem
                             key={option}
@@ -179,7 +211,12 @@ const DetailsWithRequiredProps = ({draft, subcategories, tags, employeeConsumer}
                   }
                   case DetailInputType.CHECKBOX: {
                     return (
-                      <ScRadioGroup {...field} sx={{mt: 1}} dense multiple>
+                      <ScRadioGroup
+                        {...field}
+                        helperText={errorMessage}
+                        error={hasErrors}
+                        sx={{mt: 1}} dense multiple
+                      >
                         {input.options?.map(option =>
                           <ScRadioGroupItem
                             key={option}
@@ -194,14 +231,22 @@ const DetailsWithRequiredProps = ({draft, subcategories, tags, employeeConsumer}
                     return (
                       <ScInput
                         {...field}
+                        helperText={errors[input.label]?.type === 'required' ? m.required : `${getValues(input.label)?.length ?? 0} / 500`}
+                        error={hasErrors}
                         multiline
                         minRows={3} maxRows={8} fullWidth placeholder={input.placeholder}
-                        helperText={`0 / 100`}/>
+                      />
                     )
                   }
                   default: {
                     return (
-                      <ScInput {...field} fullWidth placeholder={input.placeholder}/>
+                      <ScInput
+                        {...field}
+                        helperText={errorMessage}
+                        error={hasErrors}
+                        fullWidth
+                        placeholder={input.placeholder}
+                      />
                     )
                   }
                 }
@@ -210,6 +255,21 @@ const DetailsWithRequiredProps = ({draft, subcategories, tags, employeeConsumer}
           />
         </Box>
       ))}
+      <Txt block>{m.attachments}</Txt>
+      <Txt color="hint" block gutterBottom dangerouslySetInnerHTML={{__html: m.attachmentsDesc}}/>
+      <Alert type="info" gutterBottom deletable persistentDelete>
+        <span dangerouslySetInnerHTML={{__html: m.attachmentsDesc2}}/>
+      </Alert>
+
+      <ReportFiles fileOrigin={FileOrigin.Consumer}/>
+
+      <StepperActions next={(next) => {
+        handleSubmit((values: {[key: string]: any}) => {
+          const detailInputValues = Object.entries(values).map(([label, value]) => ({label, value}))
+          _reportFlow.setReportDraft(_ => ({..._, detailInputValues}))
+          next()
+        })()
+      }}/>
     </>
   )
 }

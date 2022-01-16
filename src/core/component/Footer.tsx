@@ -2,6 +2,7 @@ import {FacebookIcon, TwitterIcon} from 'mui-extension/lib'
 import {alpha, Box, Grid, Theme, useTheme} from '@mui/material'
 import Link from 'next/link'
 import {SxProps} from '@mui/system'
+import {Section} from './Section'
 
 const sxList: SxProps<Theme> = {
   listStyle: 'none',
@@ -29,8 +30,8 @@ export const Footer = () => {
       {/*  background: theme.palette.secondary.main,*/}
       {/*}}>*/}
       {/*</Box>*/}
-      <footer style={{
-        padding: theme.spacing(3),
+      <Section component="footer" style={{
+        // padding: theme.spacing(3),
         // paddingTop: 0,
         background: theme.palette.secondary.main,
         color: theme.palette.secondary.contrastText,
@@ -48,7 +49,14 @@ export const Footer = () => {
                 rel="noreferrer"
                 title="Un service proposé par la DGCCRF (nouvelle fenêtre)"
               >
-                Un service proposé par la <abbr title="Direction Général de la Concurrence, Consommation et Répression des Fraudes">DGCCRF</abbr>
+                Un service proposé par la{' '}
+                <Box
+                  sx={{textDecoration: 'none', fontWeight: 'bold'}}
+                  component="abbr"
+                  title="Direction Général de la Concurrence, Consommation et Répression des Fraudes"
+                >
+                  DGCCRF
+                </Box>
               </a>
               <Box component="ul" sx={{
                 listStyle: 'none',
@@ -172,7 +180,7 @@ export const Footer = () => {
             </Grid>
           </Grid>
         </section>
-      </footer>
+      </Section>
     </>
   )
 }
