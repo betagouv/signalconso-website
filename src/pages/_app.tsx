@@ -9,6 +9,8 @@ import {useGlobalCss} from '../core/theme/globalCss'
 import {Footer} from '../core/component/Footer'
 import makeStyles from '@mui/styles/makeStyles'
 import {I18nProvider} from '../core/i18n'
+import {ApiSdkProvider} from '../core/context/ApiSdk'
+import Head from 'next/head'
 
 const generateClassName = createGenerateClassName({
   productionPrefix: 'c',
@@ -20,15 +22,20 @@ export default (props: AppProps) => {
     <Provide
       providers={[
         _ => <StylesProvider generateClassName={generateClassName} children={_}/>,
-        _ => <StyledEngineProvider injectFirst children={_}/>,
+        _ => <StyledEngineProvider children={_}/>,
         _ => <ThemeProvider theme={muiTheme()} children={_}/>,
         _ => <I18nProvider children={_}/>,
+        _ => <ApiSdkProvider children={_}/>,
       ]}
     >
-      <link rel="preconnect" href="https://fonts.gstatic.com"/>
-      {/*<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet" />*/}
-      <link rel="preload" href="/font/Evolventa/Evolventa-Regular.woff2" as="font"/>
-      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+      <Head>
+        <link rel="preconnect" href="https://fonts.googleapis.com"/>
+        <link rel="preconnect" href="https://fonts.gstatic.com"/>
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+        {/*<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet" />*/}
+        {/*<link rel="preload" href="/font/Evolventa/Evolventa-Regular.woff2" as="font"/>*/}
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+      </Head>
       <App {...props} />
     </Provide>
   )
@@ -37,8 +44,8 @@ export default (props: AppProps) => {
 export const useCss = makeStyles((t: Theme) => ({
   main: {
     marginTop: headerHeight.normal,
-    paddingTop: t.spacing(2),
-    paddingBottom: t.spacing(2),
+    // paddingTop: t.spacing(2),
+    // paddingBottom: t.spacing(2),
   }
 }))
 

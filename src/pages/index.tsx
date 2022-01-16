@@ -1,12 +1,15 @@
 import type {GetStaticProps} from 'next'
 import Head from 'next/head'
-import {styled} from '@mui/material/styles'
+import {styled, Theme} from '@mui/material/styles'
 import {IllustrationStepper, IllustrationStepperStep} from '../shared/IllustrationStepper/StepIllustrations'
-import {Grid, useTheme} from '@mui/material'
+import {Box, Divider, Grid, useTheme} from '@mui/material'
 import {apiSdk} from '../core/apiSdk'
 import {Anomaly} from '@signal-conso/signalconso-api-sdk-js'
 import {AnomalyCard} from '../shared/AnomalyCard/AnomalyCard'
 import {serialiseJsonForStupidNextJs} from '../core/helper/utils'
+import {SxProps} from '@mui/system'
+import {ScButton} from '../shared/Button/Button'
+import {useI18n} from '../core/i18n'
 
 const Banner = styled('section')(({theme}) => ({
   background: theme.palette.primary.main,
@@ -17,13 +20,11 @@ const Banner = styled('section')(({theme}) => ({
   fontWeight: 'lighter',
 }))
 
-const Title = styled('h2')(({theme}) => ({
+const sxTitle: SxProps<Theme> = {
   fontSize: 24,
-}))
-
-const Section = styled('section')(({theme}) => ({
-  padding: theme.spacing(3, 1),
-}))
+  mb: 3,
+  mt: 2,
+}
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const anomalies = await apiSdk.anomaly.getAnomalies().then(res => res.filter(_ => !_.hidden))
@@ -41,6 +42,7 @@ interface HomeProps {
 
 const Home = ({anomalies}: HomeProps) => {
   const theme = useTheme()
+  const {m} = useI18n()
   return (
     <>
       <Head>
@@ -55,26 +57,56 @@ const Home = ({anomalies}: HomeProps) => {
           en toute transparence avec <b>la répression des fraudes</b> !
         </Banner>
 
-        <Section>
-          <Title>Comment ça marche ?</Title>
-          <IllustrationStepper>
-            <IllustrationStepperStep title="Vous avez rencontré un problème<br/>avec une entreprise&#160;?" image="/image/illustrations/consumer.png"/>
-            <IllustrationStepperStep title="Faites un signalement<br/>avec SignalConso." image="/image/illustrations/report.png"/>
-            <IllustrationStepperStep title="L'entreprise est prévenue<br/>et peut intervenir." image="/image/illustrations/company.png"/>
-            <IllustrationStepperStep title="La répression des fraudes intervient si nécessaire." image="/image/illustrations/dgccrf.png"/>
-          </IllustrationStepper>
-        </Section>
+        <Box component="section">
+          <Box sx={{
+            py: 3,
+            px: 1,
+            maxWidth: 1140,
+            margin: 'auto',
+          }}>
+            <Box component="h2" sx={sxTitle}>Comment ça marche ?</Box>
+            <IllustrationStepper>
+              <IllustrationStepperStep title="Vous avez rencontré un problème<br/>avec une entreprise&#160;?" image="/image/illustrations/consumer.png"/>
+              <IllustrationStepperStep title="Faites un signalement<br/>avec SignalConso." image="/image/illustrations/report.png"/>
+              <IllustrationStepperStep title="L'entreprise est prévenue<br/>et peut intervenir." image="/image/illustrations/company.png"/>
+              <IllustrationStepperStep title="La répression des fraudes intervient si nécessaire." image="/image/illustrations/dgccrf.png"/>
+            </IllustrationStepper>
+          </Box>
 
-        <Section>
-          <Title>Quel problème avez-vous rencontré ?</Title>
-          <Grid container spacing={2}>
-            {anomalies.map(a => (
-              <Grid key={a.path} item xs={12} sm={6} md={4}>
-                <AnomalyCard anomaly={a}/>
-              </Grid>
-            ))}
-          </Grid>
-        </Section>
+          <Box sx={{display: 'flex', alignItems: 'center', justifyContent: 'center', pt: 1, pb: 4}}>
+            <ScButton
+              onClick={() => {
+                document.querySelector('#index-categories')?.scrollIntoView({behavior: 'smooth', block: 'start', inline: 'nearest'})
+              }}
+              size="large"
+              variant="contained"
+              sx={{textTransform: 'unset'}}
+              iconAfter="feedback"
+            >
+              {m.buttonReportProblem}
+            </ScButton>
+          </Box>
+        </Box>
+        <Divider/>
+        <Box id="index-categories" component="section" sx={{
+          background: '#fafafa'
+        }}>
+          <Box sx={{
+            py: 3,
+            px: 1,
+            maxWidth: 1140,
+            margin: 'auto',
+          }}>
+            <Box component="h2" sx={sxTitle}>Quel problème avez-vous rencontré ?</Box>
+            <Grid container spacing={2}>
+              {anomalies.map(a => (
+                <Grid key={a.path} item xs={12} sm={6} md={4}>
+                  <AnomalyCard anomaly={a}/>
+                </Grid>
+              ))}
+            </Grid>
+          </Box>
+        </Box>
       </main>
     </>
   )

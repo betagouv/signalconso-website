@@ -68,24 +68,24 @@ export const muiTheme = (dark?: boolean): Theme => {
     },
     typography: {
       fontSize: 15,
-      // fontFamily: '"Open Sans", sans-serif',
-      fontFamily: 'Evolventa, sans-serif',
+      fontFamily: '"Open Sans", sans-serif',
+      // fontFamily: 'Evolventa, sans-serif',
       fontWeightBold: 600,
     },
     components: {
-      MuiCssBaseline: {
-        styleOverrides: `
-        @font-face {
-          font-family: 'Evolventa';
-          font-display: auto;
-          src: local('Evolventa-Regular'),
-               url('fonts/Evolventa/Evolventa-Regular.woff2') format('woff2'),
-               url('fonts/Evolventa/Evolventa-Regular.woff') format('woff'),
-               url('fonts/Evolventa/Evolventa-Regular.ttf') format('truetype'),
-               url('fonts/Evolventa/Evolventa-Regular.eot') format('truetype');
-          }
-        `
-      },
+      // MuiCssBaseline: {
+      //   styleOverrides: `
+      //   @font-face {
+      //     font-family: 'Evolventa';
+      //     font-display: auto;
+      //     src: local('Evolventa-Regular'),
+      //          url('fonts/Evolventa/Evolventa-Regular.woff2') format('woff2'),
+      //          url('fonts/Evolventa/Evolventa-Regular.woff') format('woff'),
+      //          url('fonts/Evolventa/Evolventa-Regular.ttf') format('truetype'),
+      //          url('fonts/Evolventa/Evolventa-Regular.eot') format('truetype');
+      //     }
+      //   `
+      // },
       MuiButton: {
         styleOverrides: {
           root: {

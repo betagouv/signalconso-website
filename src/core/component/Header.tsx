@@ -17,19 +17,23 @@ const HeaderItem = ({href, children}: HeaderItemProps) => {
   const theme = useTheme()
   return (
     <Link href={href}>
-      <a style={{
+      <ScButton style={{
         padding: theme.spacing(1),
         fontSize: styleUtils(theme).fontSize.big,
         marginLeft: theme.spacing(1),
+        textTransform: 'unset',
+        color: 'inherit',
+        paddingTop: 0,
+        paddingBottom: 0,
       }}>
         {children}
-      </a>
+      </ScButton>
     </Link>
   )
 }
 
 export const headerHeight = {
-  normal: 126,
+  normal: 132,
   compact: 52,
 }
 
@@ -82,13 +86,13 @@ export const Header = () => {
         </a>
       </Link>
 
-      <nav style={{marginLeft: 'auto'}}>
-        <ul style={{listStyle: 'none', display: 'flex', alignItems: 'center'}}>
+      <nav style={{marginLeft: 'auto', display: 'flex', alignItems: 'center'}}>
+        <ul style={{listStyle: 'none', display: 'flex', alignItems: 'center', margin: 0}}>
           <li><HeaderItem href={siteMap.index}>{m.menu_home}</HeaderItem></li>
           <li><HeaderItem href={siteMap.howItWorks}>{m.menu_howItWorks}</HeaderItem></li>
           <li><HeaderItem href={siteMap.help}>{m.menu_help}</HeaderItem></li>
           <li>
-            <ScButton color="secondary" variant="contained" iconAfter="lock_open">
+            <ScButton color="secondary" variant="contained" iconAfter="lock_open" sx={{ml: 1}}>
               {m.menu_authSpace}
             </ScButton>
           </li>
