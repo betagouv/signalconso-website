@@ -1,7 +1,7 @@
 import type {AppProps} from 'next/app'
 import {createGenerateClassName, StylesProvider} from '@mui/styles'
 import {StyledEngineProvider} from '@mui/styled-engine'
-import {Theme, ThemeProvider} from '@mui/material'
+import {CssBaseline, Theme, ThemeProvider, useTheme} from '@mui/material'
 import {Header, headerHeight} from '../core/component/Header'
 import {muiTheme} from '../core/theme/theme'
 import {Provide} from '../shared/Provide/Provide'
@@ -10,32 +10,33 @@ import {Footer} from '../core/component/Footer'
 import makeStyles from '@mui/styles/makeStyles'
 import {I18nProvider} from '../core/i18n'
 import {ApiSdkProvider} from '../core/context/ApiSdk'
-import Head from 'next/head'
+import {CacheProvider, EmotionCache} from '@emotion/react'
+import createEmotionCache from '../core/createEmotionCache'
 
 const generateClassName = createGenerateClassName({
   productionPrefix: 'c',
   disableGlobal: true,
 })
 
-export default (props: AppProps) => {
+interface ScAppProps extends AppProps {
+  emotionCache?: EmotionCache;
+}
+
+const clientSideEmotionCache = createEmotionCache()
+
+export default ({emotionCache = clientSideEmotionCache, ...props}: ScAppProps) => {
   return (
     <Provide
       providers={[
+        _ => <CacheProvider value={emotionCache} children={_}/>,
         _ => <StylesProvider generateClassName={generateClassName} children={_}/>,
         _ => <StyledEngineProvider children={_}/>,
         _ => <ThemeProvider theme={muiTheme()} children={_}/>,
         _ => <I18nProvider children={_}/>,
         _ => <ApiSdkProvider children={_}/>,
+        _ => <CssBaseline children={_}/>,
       ]}
     >
-      <Head>
-        <link rel="preconnect" href="https://fonts.googleapis.com"/>
-        <link rel="preconnect" href="https://fonts.gstatic.com"/>
-        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
-        {/*<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet" />*/}
-        {/*<link rel="preload" href="/font/Evolventa/Evolventa-Regular.woff2" as="font"/>*/}
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
-      </Head>
       <App {...props} />
     </Provide>
   )
@@ -52,8 +53,12 @@ export const useCss = makeStyles((t: Theme) => ({
 const App = ({Component, pageProps}: AppProps) => {
   useGlobalCss()
   const css = useCss()
+  const theme = useTheme()
   return (
     <div className="root">
+      {/*<Head>*/}
+      {/*  <meta name="theme-color" content={theme.palette.primary.main}/>*/}
+      {/*</Head>*/}
       <main className={css.main}>
         <Component {...pageProps} />
       </main>
