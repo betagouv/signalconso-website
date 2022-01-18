@@ -1,9 +1,9 @@
 import React, {useMemo} from 'react'
 import {Alert, Txt} from 'mui-extension'
 import {useReportFlowContext} from '../ReportFlowContext'
-import {AnomalyClient, DetailInput, DetailInputType, FileOrigin, ReportTag, Subcategory} from '../../../../../signalconso-api-sdk-js'
+import {AnomalyClient, DetailInput, DetailInputType, FileOrigin, ReportTag, Subcategory} from '@signal-conso/signalconso-api-sdk-js'
 import {ScInput} from '../../../shared/Input/ScInput'
-import {Box, MenuItem} from '@mui/material'
+import {MenuItem} from '@mui/material'
 import {ScDatepicker} from '../../../shared/Datepicker/Datepicker'
 import {ScSelect} from '../../../shared/Select/Select'
 import {mapFor} from '@alexandreannic/ts-utils/lib/common'
@@ -15,6 +15,7 @@ import {format} from 'date-fns'
 import {Controller, useForm} from 'react-hook-form'
 import {ReportFiles} from '../../../shared/UploadFile/ReportFiles'
 import {StepperActions} from '../../../shared/Stepper/StepperActions'
+import {FormLayout} from '../../../shared/FormLayout/FormLayout'
 
 const reponseConsoQuestion = {
   label: 'Votre question',
@@ -83,7 +84,6 @@ const DetailsWithRequiredProps = ({draft, subcategories, tags, employeeConsumer}
   }, [subcategories, tags])
   const {
     control,
-    register,
     getValues,
     handleSubmit,
     formState: {errors, isValid},
@@ -131,14 +131,14 @@ const DetailsWithRequiredProps = ({draft, subcategories, tags, employeeConsumer}
       <br/>
 
       {inputs.map((input, i) => (
-        <Box key={i} sx={{
-          mb: 3,
-        }}>
-          <Txt>
-
-            <span dangerouslySetInnerHTML={{__html: input.label}}/>
-            {input.optionnal && <Txt color="disabled"> *</Txt>}
-          </Txt>
+        <FormLayout
+          label={<span dangerouslySetInnerHTML={{__html: input.label}}/>}
+          required={!input.optionnal}
+          key={i}
+          sx={{
+            mb: 3,
+          }}
+        >
           <Controller
             name={input.label}
             defaultValue={(input.defaultValue === 'SYSDATE' ? new Date() : input.defaultValue) ?? ''}
@@ -253,7 +253,7 @@ const DetailsWithRequiredProps = ({draft, subcategories, tags, employeeConsumer}
               })()
             )}
           />
-        </Box>
+        </FormLayout>
       ))}
       <Txt block>{m.attachments}</Txt>
       <Txt color="hint" block gutterBottom dangerouslySetInnerHTML={{__html: m.attachmentsDesc}}/>

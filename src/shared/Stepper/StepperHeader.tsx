@@ -5,12 +5,13 @@ import {Box, Icon, Theme, useTheme} from '@mui/material'
 interface StepperHeaderProps {
   steps: StepProps[]
   currentStep: number
+  goTo: (index: number) => void
 }
 
 const stepSize = 32
 const stepMargin = 8
 
-export const StepperHeader = ({steps, currentStep}: StepperHeaderProps) => {
+export const StepperHeader = ({steps, currentStep, goTo}: StepperHeaderProps) => {
   const t = useTheme()
   return (
     <Box sx={{
@@ -19,8 +20,9 @@ export const StepperHeader = ({steps, currentStep}: StepperHeaderProps) => {
       justifyContent: 'center',
     }}>
       {steps.map((step, i) =>
-        <Box key={step.name} sx={{flex: 1}}>
+        <Box key={step.name} sx={{flex: 1}} onClick={() => goTo(i)}>
           <Box sx={{
+            cursor: 'pointer',
             display: 'flex',
             position: 'relative',
             justifyContent: 'center',
@@ -49,12 +51,15 @@ export const StepperHeader = ({steps, currentStep}: StepperHeaderProps) => {
               alignItems: 'center',
               fontWeight: t => t.typography.fontWeightBold,
               justifyContent: 'center',
+              transition: t => t.transitions.create('all'),
               mr: 1,
               ml: 1,
               ...(currentStep > i ? {
                 background: t.palette.success.light,
                 color: t.palette.success.contrastText,
               } : currentStep === i ? {
+                border: t => `2px solid ${t.palette.background.paper}`,
+                boxShadow: t => `0px 0px 0px 2px ${t.palette.primary.main}`,
                 color: t.palette.primary.contrastText,
                 bgcolor: 'primary.main',
               } : {

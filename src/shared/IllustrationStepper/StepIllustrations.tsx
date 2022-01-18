@@ -2,13 +2,10 @@ import {Box, useTheme} from '@mui/material'
 import {ReactNode} from 'react'
 import {useCssUtils} from '../../core/theme/useCssUtils'
 import {useWindowWidth} from '../useWindowWidth'
-import {styled} from '@mui/material/styles'
 
 interface IllustrationStepperProps {
   children: ReactNode
 }
-
-// 976
 
 export const IllustrationStepper = ({children}: IllustrationStepperProps) => {
   return (
@@ -22,11 +19,6 @@ interface IllustrationStepperStepProps {
   title: string
   image: string
 }
-
-const Root = styled('div')(({theme}) => {
-
-  return
-})
 
 export const IllustrationStepperStep = ({title, image}: IllustrationStepperStepProps) => {
   const dotSize = 10

@@ -1,4 +1,4 @@
-import {alpha, Checkbox, Radio, Theme} from '@mui/material'
+import {alpha, Box, BoxProps, Checkbox, Radio, Theme} from '@mui/material'
 import makeStyles from '@mui/styles/makeStyles'
 import React, {ReactNode} from 'react'
 import {Txt} from 'mui-extension/lib'
@@ -68,8 +68,7 @@ const useStyle = makeStyles((t: Theme) => {
   }
 })
 
-export interface ScRadioGroupItemProps<T> {
-  className?: string
+export interface ScRadioGroupItemProps<T> extends Omit<BoxProps, 'title'> {
   title?: string | ReactNode
   description?: string | ReactNode
   value: T
@@ -92,13 +91,15 @@ export const ScRadioGroupItem = <T,>({
   onClick,
   className,
   multiple,
+  ...rest
 }: ScRadioGroupItemProps<T>) => {
   const css = useStyle()
 
   return (
-    <div
+    <Box
       className={classes(css.root, selected && css.rootSelected, error && css.rootError, className)}
       onClick={onClick}
+      {...rest}
     >
       {multiple ? (
         <Checkbox size={dense ? 'small' : undefined} checked={selected} className={css.radio}/>
@@ -118,6 +119,6 @@ export const ScRadioGroupItem = <T,>({
         )}
         {children && children}
       </div>
-    </div>
+    </Box>
   )
 }

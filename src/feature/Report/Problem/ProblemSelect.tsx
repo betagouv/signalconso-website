@@ -1,10 +1,9 @@
 import {useCssUtils} from '../../../core/theme/useCssUtils'
-import {Box, capitalize, Slide} from '@mui/material'
-import {Txt} from 'mui-extension'
-import {ScRadioGroup} from '../../../shared/RadioGroup/RadioGroup'
-import {ScRadioGroupItem} from '../../../shared/RadioGroup/RadioGroupItem'
+import {Box, capitalize} from '@mui/material'
+import {ScRadioGroup, ScRadioGroupItem} from '../../../shared/RadioGroup'
 import React, {useRef} from 'react'
-import {useTimeout} from '@alexandreannic/react-hooks-lib/lib/useTimeout/UseTimeout'
+import {useTimeout} from '@alexandreannic/react-hooks-lib'
+import {Panel, PanelBody} from '../../../shared/Panel/Panel'
 
 interface ProblemSelectProps<T> {
   title?: string,
@@ -31,10 +30,9 @@ export const ProblemSelect = <T, >({
   }, 100)
 
   return (
-    <Slide direction="up" in={true} mountOnEnter unmountOnExit>
-      <Box sx={{mb: 4, position: 'relative'}}>
-        <Box ref={inputEl} sx={{position: 'absolute', top: -90, display: 'block'}}/>
-        <Txt block size="title" dangerouslySetInnerHTML={{__html: title ?? 'Pouvez-vous préciser ?'}} sx={{mb: 2,}}/>
+    <Panel sx={{position: 'relative'}} title={<span dangerouslySetInnerHTML={{__html: title ?? 'Pouvez-vous préciser ?'}}/>}>
+      <Box ref={inputEl} sx={{position: 'absolute', top: -90, display: 'block'}}/>
+      <PanelBody>
         <ScRadioGroup value={value} onChange={onChange} className={css.marginBottom2}>
           {options.map(option =>
             <ScRadioGroupItem
@@ -45,7 +43,7 @@ export const ProblemSelect = <T, >({
             />
           )}
         </ScRadioGroup>
-      </Box>
-    </Slide>
+      </PanelBody>
+    </Panel>
   )
 }

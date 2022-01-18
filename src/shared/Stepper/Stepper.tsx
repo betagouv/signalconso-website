@@ -33,7 +33,7 @@ export const Stepper = ({steps, initialStep}: StepperProps) => {
       prev: () => setCurrentStep(_ => Math.max(_ - 1, 0)),
     }}>
       <Page width={600}>
-        <StepperHeader steps={steps} currentStep={currentStep}/>
+        <StepperHeader steps={steps} currentStep={currentStep} goTo={setCurrentStep}/>
         {(() => {
           const XX: any = steps[currentStep].component
           return (

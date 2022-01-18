@@ -77,10 +77,11 @@ const _ScRadioGroup = <T, >({error, children, dense, value, onChange, multiple, 
     </Box>
   )
 }
+
 /**
  * Workaround because forwardRef break the generic type of ScSelect.
  */
-export const ScRadioGroup = React.forwardRef(_ScRadioGroup) as <T>(
+export const ScRadioGroup = React.forwardRef(_ScRadioGroup as any) as <T>(
   props: Props<T> & {ref?: React.ForwardedRef<any>},
 ) => ReturnType<typeof _ScRadioGroup>
 
