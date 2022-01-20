@@ -8,6 +8,9 @@ import {ScButton} from '../../../shared/Button/Button'
 import {useForm} from 'react-hook-form'
 import {CompanySearchResult} from '../../../../../signalconso-api-sdk-js'
 import {useToast} from '../../../core/toast'
+import {IconBtn} from 'mui-extension'
+import {Icon} from '@mui/material'
+import React, {useRef} from 'react'
 
 interface Form {
   identity: string
@@ -25,7 +28,9 @@ export const CompanyByIdentity = ({onFound}: Props) => {
   const {
     register,
     handleSubmit,
+    reset,
   } = useForm<Form>()
+  const inputEl = useRef<HTMLInputElement>(null)
 
   const search = (form: Form) => {
     _searchByIdentity.fetch({force: true, clean: true}, form.identity).then(onFound)
@@ -39,17 +44,30 @@ export const CompanyByIdentity = ({onFound}: Props) => {
         <PanelBody>
           <FormLayout required label={m.companyIdentityLabel}>
             <ScInput
+              inputRef={inputEl}
               {...register('identity', {
                 required: {value: true, message: m.required}
               })}
               fullWidth
               placeholder={m.companyIdentityPlaceholder}
+              InputProps={{
+                endAdornment: (
+                  <IconBtn size="small" color="primary" onClick={() => {
+                    onFound(undefined)
+                    reset()
+                    console.log(inputEl)
+                    inputEl.current?.focus()
+                  }}>
+                    <Icon>clear</Icon>
+                  </IconBtn>
+                )
+              }}
             />
           </FormLayout>
         </PanelBody>
 
         <PanelActions>
-          <ScButton color="primary" variant="contained" icon="search" type="submit">
+          <ScButton color="primary" variant="contained" icon="search" type="submit" loading={_searchByIdentity.loading}>
             {m.search}
           </ScButton>
         </PanelActions>

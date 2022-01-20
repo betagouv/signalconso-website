@@ -2,29 +2,25 @@ import {ScInput} from '../../../shared/Input/ScInput'
 import {Txt} from 'mui-extension'
 import React from 'react'
 import {useI18n} from '../../../core/i18n'
-import {useApiSdk} from '../../../core/context/ApiSdk'
 import {ScButton} from '../../../shared/Button/Button'
 import {useForm} from 'react-hook-form'
-import {CompanySearchResult} from '@signal-conso/signalconso-api-sdk-js'
-import {useBoolean, useEffectFn, useFetcher} from '@alexandreannic/react-hooks-lib'
+import {useBoolean} from '@alexandreannic/react-hooks-lib'
 import {useToast} from '../../../core/toast'
 import {Box, BoxProps, Icon} from '@mui/material'
 import {IconBtn} from 'mui-extension/lib'
 import {Panel, PanelBody} from '../../../shared/Panel/Panel'
 
 interface Form {
-  website: string
+  phone: string
 }
 
 interface Props extends Omit<BoxProps, 'onSubmit'> {
   value?: string
-  onSubmit: (websiteUrl?: string, company?: CompanySearchResult[]) => void
+  onSubmit: (phone?: string) => void
 }
 
-export const CompanyByWebsite = ({value, onSubmit, ...props}: Props) => {
+export const CompanyByPhone = ({value, onSubmit, ...props}: Props) => {
   const {m} = useI18n()
-  const {apiSdk} = useApiSdk()
-  const _searchByUrl = useFetcher(apiSdk.company.searchCompaniesByUrl)
   const {toastError} = useToast()
   const submitted = useBoolean()
   const {
@@ -32,35 +28,25 @@ export const CompanyByWebsite = ({value, onSubmit, ...props}: Props) => {
     register,
     formState: {errors},
   } = useForm<Form>()
-
-  const submit = (form: Form) => {
-    submitted.setTrue()
-    _searchByUrl.fetch({clean: true, force: true}, form.website).then(_ => onSubmit(
-      form.website,
-      _.length > 0 ? _ : undefined)
-    )
-  }
-
-  useEffectFn(_searchByUrl.error, toastError)
-
+  
   return (
     <Panel title={m.aboutCompany}>
       <PanelBody>
-        <Box component="form" onSubmit={handleSubmit(submit)} {...props}>
+        <Box component="form" onSubmit={handleSubmit(({phone}) => onSubmit(phone))} {...props}>
           <Txt block>
-            <span dangerouslySetInnerHTML={{__html: m.website}}/>
+            <span dangerouslySetInnerHTML={{__html: m.phoneNumberHavingCalled}}/>
             <Txt color="disabled"> *</Txt>
           </Txt>
           <ScInput
             defaultValue={value}
             disabled={submitted.value}
-            {...register('website', {
+            {...register('phone', {
               required: {value: true, message: m.required},
-              pattern: {value: /^((http|https):\/\/)?(www\.)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,}(:[0-9]{1,5})?(\/.*)?$/, message: m.invalidUrlPattern}
+              pattern: {value: /^((\+)33|0|0033)[1-9]([.\-\s+]?\d{2}){4}$/g, message: m.invalidUrlPattern}
             })}
-            fullWidth placeholder={m.websitePlaceholder}
-            error={!!errors.website}
-            helperText={errors.website?.message}
+            fullWidth placeholder={m.phoneNumberHavingCalledPlaceholder}
+            error={!!errors.phone}
+            helperText={errors.phone?.message}
             InputProps={submitted.value ? {
               endAdornment: (
                 <IconBtn size="small" color="primary" onClick={() => {
@@ -73,7 +59,7 @@ export const CompanyByWebsite = ({value, onSubmit, ...props}: Props) => {
             } : {}}
           />
 
-          <ScButton variant="contained" color="primary" sx={{mt: 2}} type="submit" loading={_searchByUrl.loading} disabled={submitted.value}>
+          <ScButton variant="contained" color="primary" sx={{mt: 2}} type="submit" disabled={submitted.value}>
             {m.continue}
           </ScButton>
         </Box>
