@@ -6,7 +6,7 @@ import {ScButton} from '../../../shared/Button/Button'
 import {useStepperContext} from '../../../shared/Stepper/Stepper'
 import {useReportFlowContext} from '../ReportFlowContext'
 import {useSelectedSubcategoriesUtils} from './useSelectedSubcategoriesUtils'
-import {ProblemStep, ProblemStepper} from './ProblemStepper'
+import {Step, Stepper} from './Stepper'
 import {ProblemSelect} from './ProblemSelect'
 import {useI18n} from '../../../core/i18n'
 import {StepperActions} from '../../../shared/Stepper/StepperActions'
@@ -67,10 +67,10 @@ export const Problem = ({anomaly}: Props) => {
         />
       ))}
       {isLastSubcategory && (
-        <ProblemStepper renderDone={
+        <Stepper renderDone={
           <StepperActions next={submit}/>
         }>
-          <ProblemStep isDone={draft.companyKind !== undefined} hidden={!!companyKindFromSelected}>
+          <Step isDone={draft.companyKind !== undefined} hidden={!!companyKindFromSelected}>
             <ProblemSelect
               title="Est-ce que votre problème concerne une entreprise sur internet ?"
               value={draft.companyKind}
@@ -85,8 +85,8 @@ export const Problem = ({anomaly}: Props) => {
                 }
               ]}
             />
-          </ProblemStep>
-          <ProblemStep isDone={draft.employeeConsumer !== undefined} hidden={!showEmployeeConsumer}>
+          </Step>
+          <Step isDone={draft.employeeConsumer !== undefined} hidden={!showEmployeeConsumer}>
             <ProblemSelect
               title="Travaillez-vous dans l'entreprise que vous souhaitez signaler ?"
               value={draft.employeeConsumer}
@@ -101,8 +101,8 @@ export const Problem = ({anomaly}: Props) => {
                 }
               ]}
             />
-          </ProblemStep>
-          <ProblemStep
+          </Step>
+          <Step
             isDone={draft.contractualDispute !== undefined || draft.forwardToReponseConso !== undefined}
             hidden={draft.employeeConsumer === true}
           >
@@ -145,8 +145,8 @@ export const Problem = ({anomaly}: Props) => {
                 }
               }}
             />
-          </ProblemStep>
-        </ProblemStepper>
+          </Step>
+        </Stepper>
       )}
     </>
   )

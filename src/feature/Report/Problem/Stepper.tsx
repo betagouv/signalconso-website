@@ -11,7 +11,7 @@ export interface ProblemStepProps {
   children: ReactNode
 }
 
-export const ProblemStepper = ({children, renderDone}: ProblemStepperProps) => {
+export const Stepper = ({children, renderDone}: ProblemStepperProps) => {
   const isDone = useMemo(() => {
     return children.every(_ => _.props.hidden || _.props.isDone)
   }, [children])
@@ -30,7 +30,7 @@ export const ProblemStepper = ({children, renderDone}: ProblemStepperProps) => {
   )
 }
 
-export const ProblemStep = ({isDone, hidden, children}: ProblemStepProps) => {
+export const Step = ({isDone, hidden, children}: ProblemStepProps) => {
   return (
     <>
       {children}

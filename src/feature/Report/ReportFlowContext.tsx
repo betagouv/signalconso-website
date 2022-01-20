@@ -2,21 +2,6 @@ import {ReportDraft} from '@signal-conso/signalconso-api-sdk-js'
 import React, {Dispatch, ReactNode, SetStateAction, useContext, useEffect} from 'react'
 import {usePersistentState} from 'react-persistent-state'
 
-interface A {
-  readonly a?: string
-}
-
-const x = (a: Readonly<A>) => {
-  const b = Object.freeze(a)
-  if (!b.a) {
-    return
-  }
-  b.a
-  useEffect(() => {
-    b.a
-  }, [])
-}
-
 interface ReportFlowContext {
   reportDraft: Partial<ReportDraft>
   setReportDraft: Dispatch<SetStateAction<Readonly<Partial<ReportDraft>>>>

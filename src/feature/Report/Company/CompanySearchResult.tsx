@@ -1,10 +1,12 @@
 import {CompanySearchResult, Report} from '@signal-conso/signalconso-api-sdk-js'
 import {Txt} from 'mui-extension/lib/Txt/Txt'
-import {Icon as MuiIcon, IconProps} from '@mui/material'
+import {Box, BoxProps, Icon} from '@mui/material'
 import React from 'react'
 import {Panel, PanelBody} from '../../../shared/Panel/Panel'
 import {useI18n} from '../../../core/i18n'
 import {ScRadioGroup, ScRadioGroupItem} from '../../../shared/RadioGroup'
+import {Fender} from 'mui-extension'
+import {styleUtils} from '../../../core/theme/theme'
 import {AddressComponent} from '../../../shared/Address/Address'
 
 interface Props {
@@ -12,17 +14,46 @@ interface Props {
   onChange: (_: CompanySearchResult) => void
 }
 
-const Icon = (props: IconProps) => <MuiIcon {...props} sx={{
-  display: 'inline !important',
-  fontSize: 'inherit',
-  lineHeight: 1,
-  verticalAlign: 'text-top',
-}}/>
+interface RowProps extends BoxProps {
+  icon?: string
+}
+
+export const Row = ({icon, children, sx, ...props}: RowProps) => {
+  return (
+    <Box {...props} sx={{
+      color: t => t.palette.text.secondary,
+      mb: .25,
+      fontSize: t => styleUtils(t).fontSize.normal,
+      display: 'flex',
+      alignItems: 'flex-start',
+      ...sx
+    }}>
+      <Icon sx={{
+        mr: .5,
+        mt: '3px',
+        fontSize: t => styleUtils(t).fontSize.big,
+        lineHeight: 1,
+        minWidth: 20,
+      }}>
+        {icon}
+      </Icon>
+      <div>
+        {children}
+      </div>
+    </Box>
+  )
+}
 
 export const CompanySearchResultComponent = ({companies, onChange}: Props) => {
   const {m} = useI18n()
 
-  return (
+  return companies.length === 0 ? (
+    <Panel>
+      <Fender type="empty" icon="sentiment_very_dissatisfied">
+        <Txt color="hint" size="big">{m.noMatchingCompany}</Txt>
+      </Fender>
+    </Panel>
+  ) : (
     <Panel title={m.selectCompany}>
       <Txt block color="hint">{m.selectCompanyDesc}</Txt>
       <PanelBody>
@@ -36,29 +67,18 @@ export const CompanySearchResultComponent = ({companies, onChange}: Props) => {
                 </Txt>
                 {company.brand && <Txt block>{company.brand}</Txt>}
                 {company.isHeadOffice && (
-                  <Txt color="primary" sx={{display: 'flex', alignItems: 'center'}}>
-                    <Icon>business</Icon>
-                    &nbsp;
-                    {m.isHeadOffice}
-                  </Txt>
+                  <Row icon="business" sx={{color: t => t.palette.primary.main}}>{m.isHeadOffice}</Row>
                 )}
-                {!company.isHeadOffice && company.activityLabel && (
-                  <Txt color="hint" sx={{display: 'flex', alignItems: 'center'}}>
-                    <Icon>label</Icon>
-                    &nbsp;
-                    {company.activityLabel}
-                  </Txt>
+                {company.activityLabel && (
+                  <Row icon="label">{company.activityLabel}</Row>
                 )}
                 {isGovernment && (
-                  <Txt color="error" bold sx={{display: 'flex', alignItems: 'center'}}>
-                    <Icon>error</Icon>
-                    {m.governmentCompany}
-                  </Txt>
+                  <Row icon="error" sx={{color: t => t.palette.error.main}}>{m.governmentCompany}</Row>
                 )}
                 {company.address && (
-                  <Txt color="hint" block size="small" sx={{mt: .5}}>
+                  <Row icon="location_on">
                     <AddressComponent address={company.address}/>
-                  </Txt>
+                  </Row>
                 )}
               </ScRadioGroupItem>
             )

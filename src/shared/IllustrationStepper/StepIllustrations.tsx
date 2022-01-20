@@ -21,8 +21,8 @@ interface IllustrationStepperStepProps {
 }
 
 export const IllustrationStepperStep = ({title, image}: IllustrationStepperStepProps) => {
-  const dotSize = 10
-  const borderSize = 3
+  const dotSize = 18
+  const borderSize = 2
   const stepperMargin = 24
   const theme = useTheme()
   const cssUtils = useCssUtils()
@@ -36,8 +36,8 @@ export const IllustrationStepperStep = ({title, image}: IllustrationStepperStepP
       position: 'relative',
       mb: 5,
       '&:before': {
-        bottom: -stepperMargin,
-        content: '\' \'',
+        bottom: -stepperMargin - borderSize,
+        content: `' '`,
         height: borderSize,
         background: theme.palette.divider,
         left: 0,
@@ -54,7 +54,7 @@ export const IllustrationStepperStep = ({title, image}: IllustrationStepperStepP
         boxShadow: `0px 0px 0px 4px ${theme.palette.background.paper}`,
         bottom: -stepperMargin - ((dotSize + borderSize) / 2),
         background: theme.palette.background.paper,
-        content: '\' \'',
+        content: `' '`,
         borderRadius: 50,
         border: `${borderSize}px solid ${theme.palette.divider}`,
         height: dotSize,

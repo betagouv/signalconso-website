@@ -12,6 +12,7 @@ import {I18nProvider} from '../core/i18n'
 import {ApiSdkProvider} from '../core/context/ApiSdk'
 import {CacheProvider, EmotionCache} from '@emotion/react'
 import createEmotionCache from '../core/createEmotionCache'
+import {ToastProvider} from 'mui-extension'
 
 const generateClassName = createGenerateClassName({
   productionPrefix: 'c',
@@ -35,6 +36,7 @@ export default ({emotionCache = clientSideEmotionCache, ...props}: ScAppProps) =
         _ => <I18nProvider children={_}/>,
         _ => <ApiSdkProvider children={_}/>,
         _ => <CssBaseline children={_}/>,
+        _ => <ToastProvider horizontal="right" children={_}/>,
       ]}
     >
       <App {...props} />
