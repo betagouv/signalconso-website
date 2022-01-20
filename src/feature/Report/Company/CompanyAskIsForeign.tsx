@@ -14,7 +14,7 @@ interface Props {
   onChange: (_: IsForeignCompany) => void
 }
 
-export const CompanyByNone = ({value, onChange}: Props) => {
+export const CompanyAskIsForeign = ({value, onChange}: Props) => {
   const {m} = useI18n()
   return (
     <Panel title={m.isAFrenchCompany}>

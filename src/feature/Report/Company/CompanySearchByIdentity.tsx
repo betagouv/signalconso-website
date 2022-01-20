@@ -20,7 +20,7 @@ interface Props {
   onFound: (companies?: CompanySearchResult[]) => void
 }
 
-export const CompanyByIdentity = ({onFound}: Props) => {
+export const CompanySearchByIdentity = ({onFound}: Props) => {
   const {m} = useI18n()
   const {apiSdk} = useApiSdk()
   const {toastError} = useToast()
