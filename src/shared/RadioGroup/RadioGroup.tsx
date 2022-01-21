@@ -44,7 +44,7 @@ const _ScRadioGroup = <T, >({error, children, dense, value, onChange, multiple, 
 
   return (
     <Box ref={ref} {...props}>
-      {React.Children.map(children as ReactElement<ScRadioGroupItemProps<T>>[], child =>
+      {React.Children.map(children as ReactElement<ScRadioGroupItemProps<T>>[], child => child &&
         React.cloneElement(child, {
           ...child.props,
           dense,

@@ -8,9 +8,11 @@ import {ScRadioGroup, ScRadioGroupItem} from '../../../shared/RadioGroup'
 import {Fender} from 'mui-extension'
 import {styleUtils} from '../../../core/theme/theme'
 import {AddressComponent} from '../../../shared/Address/Address'
+import {Animate} from '../../../shared/Animate/Animate'
 
 interface Props {
   companies: CompanySearchResult[]
+  autoScrollTo?: boolean
   onChange: (_: CompanySearchResult) => void
 }
 
@@ -44,47 +46,51 @@ export const Row = ({icon, children, sx, ...props}: RowProps) => {
   )
 }
 
-export const CompanySearchResultComponent = ({companies, onChange}: Props) => {
+export const CompanySearchResultComponent = ({autoScrollTo, companies, onChange}: Props) => {
   const {m} = useI18n()
 
-  return companies.length === 0 ? (
-    <Panel>
-      <Fender type="empty" icon="sentiment_very_dissatisfied">
-        <Txt color="hint" size="big">{m.noMatchingCompany}</Txt>
-      </Fender>
-    </Panel>
-  ) : (
-    <Panel title={m.selectCompany}>
-      <Txt block color="hint">{m.selectCompanyDesc}</Txt>
-      <PanelBody>
-        <ScRadioGroup>
-          {companies.map(company => {
-            const isGovernment = Report.isGovernmentCompany(company)
-            return (
-              <ScRadioGroupItem key={company.siret} value={company.siret!} onClick={() => onChange(company)}>
-                <Txt truncate block bold>
-                  {company.name}
-                </Txt>
-                {company.brand && <Txt block>{company.brand}</Txt>}
-                {company.isHeadOffice && (
-                  <Row icon="business" sx={{color: t => t.palette.primary.main}}>{m.isHeadOffice}</Row>
-                )}
-                {company.activityLabel && (
-                  <Row icon="label">{company.activityLabel}</Row>
-                )}
-                {isGovernment && (
-                  <Row icon="error" sx={{color: t => t.palette.error.main}}>{m.governmentCompany}</Row>
-                )}
-                {company.address && (
-                  <Row icon="location_on">
-                    <AddressComponent address={company.address}/>
-                  </Row>
-                )}
-              </ScRadioGroupItem>
-            )
-          })}
-        </ScRadioGroup>
-      </PanelBody>
-    </Panel>
+  return (
+    <Animate autoScrollTo={autoScrollTo}>
+      {companies.length === 0 ? (
+        <Panel>
+          <Fender type="empty" icon="sentiment_very_dissatisfied">
+            <Txt color="hint" size="big">{m.noMatchingCompany}</Txt>
+          </Fender>
+        </Panel>
+      ) : (
+        <Panel title={m.selectCompany}>
+          <Txt block color="hint">{m.selectCompanyDesc}</Txt>
+          <PanelBody>
+            <ScRadioGroup>
+              {companies.map(company => {
+                const isGovernment = Report.isGovernmentCompany(company)
+                return (
+                  <ScRadioGroupItem key={company.siret} value={company.siret!} onClick={() => onChange(company)}>
+                    <Txt truncate block bold>
+                      {company.name}
+                    </Txt>
+                    {company.brand && <Txt block>{company.brand}</Txt>}
+                    {company.isHeadOffice && (
+                      <Row icon="business" sx={{color: t => t.palette.primary.main}}>{m.isHeadOffice}</Row>
+                    )}
+                    {company.activityLabel && (
+                      <Row icon="label">{company.activityLabel}</Row>
+                    )}
+                    {isGovernment && (
+                      <Row icon="error" sx={{color: t => t.palette.error.main}}>{m.governmentCompany}</Row>
+                    )}
+                    {company.address && (
+                      <Row icon="location_on">
+                        <AddressComponent address={company.address}/>
+                      </Row>
+                    )}
+                  </ScRadioGroupItem>
+                )
+              })}
+            </ScRadioGroup>
+          </PanelBody>
+        </Panel>
+      )}
+    </Animate>
   )
 }

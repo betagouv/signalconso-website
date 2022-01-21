@@ -8,20 +8,21 @@ import {useForm} from 'react-hook-form'
 import {CompanySearchResult} from '@signal-conso/signalconso-api-sdk-js'
 import {useBoolean, useEffectFn, useFetcher} from '@alexandreannic/react-hooks-lib'
 import {useToast} from '../../../core/toast'
-import {Box, BoxProps, Icon} from '@mui/material'
-import {IconBtn} from 'mui-extension/lib'
+import {Box, BoxProps} from '@mui/material'
 import {Panel, PanelBody} from '../../../shared/Panel/Panel'
+import {Animate} from '../../../shared/Animate/Animate'
 
 interface Form {
   website: string
 }
 
 interface Props extends Omit<BoxProps, 'onSubmit'> {
+  autoScrollTo?: boolean
   value?: string
   onSubmit: (websiteUrl?: string, company?: CompanySearchResult[]) => void
 }
 
-export const CompanyByWebsite = ({value, onSubmit, ...props}: Props) => {
+export const CompanyByWebsite = ({autoScrollTo, value, onSubmit, ...props}: Props) => {
   const {m} = useI18n()
   const {apiSdk} = useApiSdk()
   const _searchByUrl = useFetcher(apiSdk.company.searchCompaniesByUrl)
@@ -46,40 +47,36 @@ export const CompanyByWebsite = ({value, onSubmit, ...props}: Props) => {
   useEffectFn(_searchByUrl.error, toastError)
 
   return (
-    <Panel title={m.aboutCompany}>
-      <PanelBody>
-        <Box component="form" onSubmit={handleSubmit(submit)} {...props}>
-          <Txt block>
-            <span dangerouslySetInnerHTML={{__html: m.website}}/>
-            <Txt color="disabled"> *</Txt>
-          </Txt>
-          <ScInput
-            defaultValue={value}
-            disabled={submitted.value}
-            {...register('website', {
-              required: {value: true, message: m.required},
-              pattern: {value: /^((http|https):\/\/)?(www\.)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,}(:[0-9]{1,5})?(\/.*)?$/, message: m.invalidUrlPattern}
-            })}
-            fullWidth placeholder={m.websitePlaceholder}
-            error={!!errors.website}
-            helperText={errors.website?.message}
-            InputProps={submitted.value ? {
-              endAdornment: (
-                <IconBtn size="small" color="primary" onClick={() => {
-                  onSubmit()
-                  submitted.setFalse()
-                }}>
-                  <Icon>clear</Icon>
-                </IconBtn>
-              )
-            } : {}}
-          />
+    <Animate autoScrollTo={autoScrollTo}>
+      <Panel title={m.aboutCompany}>
+        <PanelBody>
+          <Box component="form" onSubmit={handleSubmit(submit)} {...props}>
+            <Txt block>
+              <span dangerouslySetInnerHTML={{__html: m.website}}/>
+              <Txt color="disabled"> *</Txt>
+            </Txt>
+            <ScInput
+              onClear={() => {
+                onSubmit()
+                submitted.setFalse()
+              }}
+              defaultValue={value}
+              disabled={submitted.value}
+              {...register('website', {
+                required: {value: true, message: m.required},
+                pattern: {value: /^((http|https):\/\/)?(www\.)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,}(:[0-9]{1,5})?(\/.*)?$/, message: m.invalidUrlPattern}
+              })}
+              fullWidth placeholder={m.websitePlaceholder}
+              error={!!errors.website}
+              helperText={errors.website?.message}
+            />
 
-          <ScButton variant="contained" color="primary" sx={{mt: 2}} type="submit" loading={_searchByUrl.loading} disabled={submitted.value}>
-            {m.continue}
-          </ScButton>
-        </Box>
-      </PanelBody>
-    </Panel>
+            <ScButton variant="contained" color="primary" sx={{mt: 2}} type="submit" loading={_searchByUrl.loading} disabled={submitted.value}>
+              {m.continue}
+            </ScButton>
+          </Box>
+        </PanelBody>
+      </Panel>
+    </Animate>
   )
 }

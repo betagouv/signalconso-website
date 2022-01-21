@@ -14,14 +14,20 @@ import {CompanyAskForeignDetails} from './CompanyAskForeignDetails'
 import {CompanyAskConsumerStreet} from './CompanyAskConsumerStreet'
 import {TreeStepper, TreeStepperNode} from '../../../shared/TreeStepper/TreeStepper'
 import {StepperActions} from '../../../shared/Stepper/StepperActions'
+import {AnimateProps} from '../../../shared/Animate/Animate'
 
-interface CompanyWithRequiredPropsProps {
+interface CompanyProps {
+  animatePanel?: boolean
+  autoScrollToPanel?: boolean
+}
+
+interface CompanyWithRequiredPropsProps extends CompanyProps {
   draft: Partial<ReportDraft>
   // companyKind: CompanyKinds
   onUpdateReportDraft: Dispatch<SetStateAction<Readonly<Partial<ReportDraft>>>>
 }
 
-export const Company = ({}) => {
+export const Company = ({animatePanel, autoScrollToPanel}: CompanyProps) => {
   const _reportFlow = useReportFlowContext()
   const draft = _reportFlow.reportDraft
   const {m} = useI18n()
@@ -36,6 +42,8 @@ export const Company = ({}) => {
   return (
     <>
       <CompanyWithRequiredProps
+        animatePanel={animatePanel}
+        autoScrollToPanel={autoScrollToPanel}
         draft={draft}
         // companyKind={draft.companyKind}
         onUpdateReportDraft={_reportFlow.setReportDraft}
@@ -43,12 +51,16 @@ export const Company = ({}) => {
     </>
   )
 }
+const autoScroll = true
 
 const CompanyWithRequiredProps = ({
+  autoScrollToPanel,
+  animatePanel,
   draft,
   // companyKind,
   onUpdateReportDraft,
 }: CompanyWithRequiredPropsProps) => {
+  const animate: Partial<AnimateProps> = {autoScrollTo: autoScrollToPanel, animate: animatePanel}
   const [companyDraft, setCompanyDraft] = useState<Partial<CompanyDraft>>({})
   const [result, setResult] = useState<CompanySearchResult[] | undefined>()
   const [resultFromMatch, setResultFromMatch] = useState<CompanySearchResult[] | undefined>()
@@ -57,24 +69,25 @@ const CompanyWithRequiredProps = ({
   const {m} = useI18n()
 
   const renderWebsite = () => (
-    <CompanyByWebsite value={companyDraft?.website} onSubmit={(website, _result) => {
+    <CompanyByWebsite {...animate} value={companyDraft?.website} onSubmit={(website, _result) => {
       setCompanyDraft(_ => ({..._, website}))
       setResultFromMatch(_result)
     }}/>
   )
 
   const renderSearchResult = () => (
-    <CompanySearchResultComponent companies={result!} onChange={result => {
+    <CompanySearchResultComponent {...animate} companies={result!} onChange={result => {
       setCompanyDraft(_ => ({..._, ...result}))
     }}/>
   )
 
   const renderIdentifyBy = () => (
-    <CompanyIdentifyBy companyKind={draft.companyKind!} value={identifyBy} onChange={setIdentifyBy}/>
+    <CompanyIdentifyBy {...animate} companyKind={draft.companyKind!} value={identifyBy} onChange={setIdentifyBy}/>
   )
 
   const renderAskNameAndPostalCode = () => (
     <CompanyByNameAndPostalCode
+      autoScrollTo={autoScroll}
       onFound={setResult}
       onReportForeignCompany={() => {
         setIdentifyBy(IdentifyBy.NONE)
@@ -83,19 +96,19 @@ const CompanyWithRequiredProps = ({
   )
 
   const renderSearchByIdentity = () => (
-    <CompanySearchByIdentity onFound={setResult}/>
+    <CompanySearchByIdentity {...animate} onFound={setResult}/>
   )
 
   const renderAskIsForeign = () => (
-    <CompanyAskIsForeign onChange={setIsForeign}/>
+    <CompanyAskIsForeign {...animate} onChange={setIsForeign}/>
   )
 
   const renderAskConsumerPostalCode = () => (
-    <CompanyAskConsumerPostalCode onChange={postalCode => setCompanyDraft(_ => ({..._, address: {..._.address, postalCode}}))}/>
+    <CompanyAskConsumerPostalCode {...animate} onChange={postalCode => setCompanyDraft(_ => ({..._, address: {..._.address, postalCode}}))}/>
   )
 
   const renderAskForeignDetails = () => (
-    <CompanyAskForeignDetails onChange={form => {
+    <CompanyAskForeignDetails {...animate} onChange={form => {
       setCompanyDraft(_ => ({
         ..._,
         name: form?.name,
@@ -105,7 +118,7 @@ const CompanyWithRequiredProps = ({
   )
 
   const renderAskConsumerStreet = () => (
-    <CompanyAskConsumerStreet onChange={form => {
+    <CompanyAskConsumerStreet {...animate} onChange={form => {
       setCompanyDraft(_ => ({
         ..._,
         address: {..._, street: form.street, postalCode: form.postalCode}

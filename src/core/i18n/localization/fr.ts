@@ -250,9 +250,21 @@ export const fr = {
     reportForeignCompany: `Signaler une entreprise établie à l'étranger`,
     yourPostalCode: `Votre code postal`,
     yourPostalCodePlaceholder: `Ex: 41110`,
-    reportedCompanyName: `Nom ou enseigne de l'entreprise signalée (obligatoire)`,
+    reportedCompanyName: `Nom ou enseigne de l'entreprise signalée`,
     reportedCompanyNamePlaceholder: `Ex: Boulangerie Petit Jean`,
     yourPostalCodeDesc: `SignalConso en a besoin pour alerter le bon service.`,
+    companyIdentityHelper: `A quoi correspondent ces identifiants ?`,
+    companyIdentityHelperDesc: `
+    SIRET, SIREN et RCS sont des identifiants de l'entreprise.<br/>
+    Le SIRET est composé de 14 chiffres, le SIREN est composé de 9 chiffres.<br/>
+    Le RCS est composé de:<br/>
+      <ul>
+        <li>la mention "RCS"</li>
+        <li>le nom de la ville d'immatriculation</li>
+        <li>une lettre (A ou B)</li>
+        <li>le numéro SIREN</li>
+      </ul>
+    `,
     noMatchingCompanyDesc: `Veuillez modifier votre recherche ou rechercher avec les identifiants de l'entreprise.`,
     howToFindCompanyCountry: ``,
     howToFindCompanyCountryDesc: `

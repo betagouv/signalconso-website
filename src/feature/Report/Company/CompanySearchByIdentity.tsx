@@ -8,19 +8,22 @@ import {ScButton} from '../../../shared/Button/Button'
 import {useForm} from 'react-hook-form'
 import {CompanySearchResult} from '../../../../../signalconso-api-sdk-js'
 import {useToast} from '../../../core/toast'
-import {IconBtn} from 'mui-extension'
+import {IconBtn, Txt} from 'mui-extension'
 import {Icon} from '@mui/material'
 import React, {useRef} from 'react'
+import {Accordion} from '../../../shared/Accordion/Accordion'
+import {Animate} from '../../../shared/Animate/Animate'
 
 interface Form {
   identity: string
 }
 
 interface Props {
+  autoScrollTo?: boolean
   onFound: (companies?: CompanySearchResult[]) => void
 }
 
-export const CompanySearchByIdentity = ({onFound}: Props) => {
+export const CompanySearchByIdentity = ({autoScrollTo, onFound}: Props) => {
   const {m} = useI18n()
   const {apiSdk} = useApiSdk()
   const {toastError} = useToast()
@@ -39,39 +42,44 @@ export const CompanySearchByIdentity = ({onFound}: Props) => {
   useEffectFn(_searchByIdentity.error, toastError)
 
   return (
-    <Panel title={m.couldYouPrecise}>
-      <form onSubmit={handleSubmit(search)}>
-        <PanelBody>
-          <FormLayout required label={m.companyIdentityLabel}>
-            <ScInput
-              inputRef={inputEl}
-              {...register('identity', {
-                required: {value: true, message: m.required}
-              })}
-              fullWidth
-              placeholder={m.companyIdentityPlaceholder}
-              InputProps={{
-                endAdornment: (
-                  <IconBtn size="small" color="primary" onClick={() => {
-                    onFound(undefined)
-                    reset()
-                    console.log(inputEl)
-                    inputEl.current?.focus()
-                  }}>
-                    <Icon>clear</Icon>
-                  </IconBtn>
-                )
-              }}
-            />
-          </FormLayout>
-        </PanelBody>
+    <Animate autoScrollTo={autoScrollTo}>
+      <Panel title={m.couldYouPrecise}>
+        <form onSubmit={handleSubmit(search)}>
+          <PanelBody>
+            <FormLayout required label={m.companyIdentityLabel}>
+              <Accordion label={<Txt size="small">{m.companyIdentityHelper}</Txt>}>
+                <Txt color="hint" size="small" dangerouslySetInnerHTML={{__html: m.companyIdentityHelperDesc}}/>
+              </Accordion>
+              <ScInput
+                inputRef={inputEl}
+                {...register('identity', {
+                  required: {value: true, message: m.required}
+                })}
+                fullWidth
+                placeholder={m.companyIdentityPlaceholder}
+                InputProps={{
+                  endAdornment: (
+                    <IconBtn size="small" color="primary" onClick={() => {
+                      onFound(undefined)
+                      reset()
+                      console.log(inputEl)
+                      inputEl.current?.focus()
+                    }}>
+                      <Icon>clear</Icon>
+                    </IconBtn>
+                  )
+                }}
+              />
+            </FormLayout>
+          </PanelBody>
 
-        <PanelActions>
-          <ScButton color="primary" variant="contained" icon="search" type="submit" loading={_searchByIdentity.loading}>
-            {m.search}
-          </ScButton>
-        </PanelActions>
-      </form>
-    </Panel>
+          <PanelActions>
+            <ScButton color="primary" variant="contained" icon="search" type="submit" loading={_searchByIdentity.loading}>
+              {m.search}
+            </ScButton>
+          </PanelActions>
+        </form>
+      </Panel>
+    </Animate>
   )
 }

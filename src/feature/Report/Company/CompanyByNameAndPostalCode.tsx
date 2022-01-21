@@ -9,6 +9,7 @@ import {useEffectFn, useFetcher} from '@alexandreannic/react-hooks-lib'
 import {ScButton} from '../../../shared/Button/Button'
 import {CompanySearchResult} from '../../../../../signalconso-api-sdk-js'
 import {Txt} from 'mui-extension'
+import {Animate} from '../../../shared/Animate/Animate'
 
 interface Form {
   name: string
@@ -16,11 +17,12 @@ interface Form {
 }
 
 interface Props {
+  autoScrollTo?: boolean
   onFound: (companies?: CompanySearchResult[]) => void
   onReportForeignCompany: () => void
 }
 
-export const CompanyByNameAndPostalCode = ({onFound, onReportForeignCompany}: Props) => {
+export const CompanyByNameAndPostalCode = ({autoScrollTo, onFound, onReportForeignCompany}: Props) => {
   const {m} = useI18n()
   const {apiSdk} = useApiSdk()
   const {toastError} = useToast()
@@ -37,29 +39,31 @@ export const CompanyByNameAndPostalCode = ({onFound, onReportForeignCompany}: Pr
   useEffectFn(_search.error, toastError)
 
   return (
-    <Panel title={m.couldYouPrecise}>
-      <Txt color="hint">{m.youCanOnlyReportFrenchCompanies} &nbsp;</Txt>
-      <Txt link onClick={onReportForeignCompany}>{m.reportForeignCompany}</Txt>
-      <form onSubmit={handleSubmit(search)}>
-        <PanelBody>
-          <FormLayout required label={m.nameOfTheCompany}>
-            <ScInput fullWidth {...register('name', {
-              required: {value: true, message: m.required},
-            })}/>
-          </FormLayout>
-          <FormLayout required label={m.postalCode}>
-            <ScInput fullWidth {...register('postalCode', {
-              required: {value: true, message: m.required},
-            })}/>
-          </FormLayout>
-        </PanelBody>
+    <Animate autoScrollTo={autoScrollTo}>
+      <Panel title={m.couldYouPrecise}>
+        <Txt color="hint">{m.youCanOnlyReportFrenchCompanies} &nbsp;</Txt>
+        <Txt link onClick={onReportForeignCompany}>{m.reportForeignCompany}</Txt>
+        <form onSubmit={handleSubmit(search)}>
+          <PanelBody>
+            <FormLayout required label={m.reportedCompanyName}>
+              <ScInput fullWidth {...register('name', {
+                required: {value: true, message: m.required},
+              })}/>
+            </FormLayout>
+            <FormLayout required label={m.postalCode}>
+              <ScInput fullWidth {...register('postalCode', {
+                required: {value: true, message: m.required},
+              })}/>
+            </FormLayout>
+          </PanelBody>
 
-        <PanelActions>
-          <ScButton color="primary" variant="contained" icon="search" type="submit" loading={_search.loading}>
-            {m.search}
-          </ScButton>
-        </PanelActions>
-      </form>
-    </Panel>
+          <PanelActions>
+            <ScButton color="primary" variant="contained" icon="search" type="submit" loading={_search.loading}>
+              {m.search}
+            </ScButton>
+          </PanelActions>
+        </form>
+      </Panel>
+    </Animate>
   )
 }

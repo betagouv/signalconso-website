@@ -5,6 +5,7 @@ import {ScInput} from '../../../shared/Input/ScInput'
 import {FormLayout} from '../../../shared/FormLayout/FormLayout'
 import React from 'react'
 import {ScButton} from '../../../shared/Button/Button'
+import {Animate} from '../../../shared/Animate/Animate'
 
 interface Form {
   street: string
@@ -12,11 +13,12 @@ interface Form {
 }
 
 interface Props {
+  autoScrollTo?: boolean
   value?: Form
   onChange: (_: Form) => void
 }
 
-export const CompanyAskConsumerStreet = ({value, onChange}: Props) => {
+export const CompanyAskConsumerStreet = ({autoScrollTo, value, onChange}: Props) => {
   const {m} = useI18n()
   const {
     register,
@@ -24,37 +26,39 @@ export const CompanyAskConsumerStreet = ({value, onChange}: Props) => {
   } = useForm<Form>()
 
   return (
-    <Panel title={m.couldYouPrecise}>
-      <form onSubmit={handleSubmit(onChange)}>
-        <PanelBody>
-          <FormLayout required label={m.yourPostalCode} desc={m.yourPostalCodeDesc}>
-            <ScInput
-              defaultValue={value}
-              {...register('street', {
-                required: {value: true, message: m.required}
-              })}
-              fullWidth
-              placeholder={m.yourPostalCodePlaceholder}
-            />
-          </FormLayout>
-          <FormLayout required label={m.yourPostalCode} desc={m.yourPostalCodeDesc}>
-            <ScInput
-              defaultValue={value}
-              {...register('postalCode', {
-                required: {value: true, message: m.required}
-              })}
-              fullWidth
-              placeholder={m.yourPostalCodePlaceholder}
-            />
-          </FormLayout>
-        </PanelBody>
+    <Animate autoScrollTo={autoScrollTo}>
+      <Panel title={m.couldYouPrecise}>
+        <form onSubmit={handleSubmit(onChange)}>
+          <PanelBody>
+            <FormLayout required label={m.yourPostalCode} desc={m.yourPostalCodeDesc}>
+              <ScInput
+                defaultValue={value}
+                {...register('street', {
+                  required: {value: true, message: m.required}
+                })}
+                fullWidth
+                placeholder={m.yourPostalCodePlaceholder}
+              />
+            </FormLayout>
+            <FormLayout required label={m.yourPostalCode} desc={m.yourPostalCodeDesc}>
+              <ScInput
+                defaultValue={value}
+                {...register('postalCode', {
+                  required: {value: true, message: m.required}
+                })}
+                fullWidth
+                placeholder={m.yourPostalCodePlaceholder}
+              />
+            </FormLayout>
+          </PanelBody>
 
-        <PanelActions>
-          <ScButton color="primary" variant="contained" icon="search" type="submit">
-            {m.search}
-          </ScButton>
-        </PanelActions>
-      </form>
-    </Panel>
+          <PanelActions>
+            <ScButton color="primary" variant="contained" icon="search" type="submit">
+              {m.search}
+            </ScButton>
+          </PanelActions>
+        </form>
+      </Panel>
+    </Animate>
   )
 }

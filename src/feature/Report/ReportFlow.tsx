@@ -17,7 +17,7 @@ export const ReportFlow = ({anomaly}: Props) => {
       <Stepper initialStep={2} steps={[
         {name: 'problem', label: m.step_problem, component: () => <Problem anomaly={anomaly}/>},
         {name: 'description', label: m.step_description, component: () => <Details/>},
-        {name: 'company', label: m.step_company, component: () => <Company/>},
+        {name: 'company', label: m.step_company, component: () => <Company animatePanel={true} autoScrollToPanel={true}/>},
         {name: 'consumer', label: m.step_consumer, component: Details},
         {name: 'confirm', label: m.step_confirm, component: Details},
       ]}/>
