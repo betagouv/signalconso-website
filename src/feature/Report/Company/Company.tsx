@@ -113,42 +113,43 @@ const CompanyWithRequiredProps = ({
     }}/>
   )
 
-  const x: TreeStepperNode = {
+  const commonTree: TreeStepperNode = {
     id: 'companyIdentifyBy',
-    isDone: !!renderIdentifyBy,
+    done: !!identifyBy,
     render: renderIdentifyBy,
     children: [
       {
         id: 'companyByNameAndPostalCode',
         if: identifyBy === IdentifyBy.NAME,
-        isDone: !!result,
+        done: !!result,
         render: renderAskNameAndPostalCode,
         children: [{
           id: 'searchResult',
-          isDone: !!companyDraft.siret,
+          done: !!companyDraft.siret,
           render: renderSearchResult
         }]
       },
       {
         id: 'companyByIdentity',
         if: identifyBy === IdentifyBy.IDENTITY,
-        isDone: !!result,
+        done: !!result,
         render: renderSearchByIdentity,
         children: [{
           id: 'searchResult',
-          isDone: !!companyDraft.siret,
+          done: !!companyDraft.siret,
           render: renderSearchResult
         }]
       },
       {
         id: 'askConsumerStreet',
         if: identifyBy === IdentifyBy.NONE && draft.companyKind === CompanyKinds.LOCATION,
-        isDone: !!(companyDraft.address?.street && companyDraft.address?.postalCode),
+        done: !!(companyDraft.address?.street && companyDraft.address?.postalCode),
         render: renderAskConsumerStreet,
       },
       {
         id: 'companyByNone',
         render: renderAskIsForeign,
+        done: !!isForeign,
         children: [
           {
             id: 'companyAskConsumerPostalCode',
@@ -170,48 +171,48 @@ const CompanyWithRequiredProps = ({
     ]
   }
 
-
-  const step: TreeStepperNode[] = [
-    {
-      id: 'website',
-      if: draft.companyKind === CompanyKinds.WEBSITE,
-      isDone: !!companyDraft.website,
-      render: renderWebsite,
-      children: [
-        {
-          id: 'searchResult',
-          if: !!resultFromMatch,
-          isDone: !!companyDraft.siret,
-          render: renderSearchResult
-        },
-        x
-      ],
-    },
-    {
-      id: 'phone',
-      if: draft.companyKind === CompanyKinds.PHONE,
-      isDone: !!companyDraft.phone,
-      render: renderWebsite,
-      children: [
-        {
-          id: 'searchResult',
-          if: !!resultFromMatch,
-          isDone: !!companyDraft.siret,
-          render: renderSearchResult
-        },
-        x
-      ],
-    },
-    x
-  ]
   return (
     <>
-      <TreeStepper tree={step} renderDone={
-        <StepperActions next={next => {
-          onUpdateReportDraft(_ => ({..._, companyDraft: companyDraft as CompanyDraft}))
-          next()
-        }}/>
-      }/>
+      <TreeStepper
+        tree={[
+          {
+            id: 'website',
+            if: draft.companyKind === CompanyKinds.WEBSITE,
+            done: !!companyDraft.website,
+            render: renderWebsite,
+            children: [
+              {
+                id: 'searchResult',
+                if: !!resultFromMatch,
+                done: !!companyDraft.siret,
+                render: renderSearchResult
+              },
+              commonTree
+            ],
+          },
+          {
+            id: 'phone',
+            if: draft.companyKind === CompanyKinds.PHONE,
+            done: !!companyDraft.phone,
+            render: renderWebsite,
+            children: [
+              {
+                id: 'searchResult',
+                if: !!resultFromMatch,
+                done: !!companyDraft.siret,
+                render: renderSearchResult
+              },
+              commonTree
+            ],
+          },
+          commonTree
+        ]}
+        renderDone={
+          <StepperActions next={next => {
+            onUpdateReportDraft(_ => ({..._, companyDraft: companyDraft as CompanyDraft}))
+            next()
+          }}/>
+        }/>
     </>
   )
 }

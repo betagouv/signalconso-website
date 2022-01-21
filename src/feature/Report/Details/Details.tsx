@@ -1,7 +1,7 @@
 import React, {useMemo} from 'react'
 import {Alert, Txt} from 'mui-extension'
 import {useReportFlowContext} from '../ReportFlowContext'
-import {AnomalyClient, DetailInput, DetailInputType, FileOrigin, ReportTag, Subcategory} from '@signal-conso/signalconso-api-sdk-js'
+import {AnomalyClient, DetailInput, DetailInputType, FileOrigin, ReportDraft, ReportTag, Subcategory} from '@signal-conso/signalconso-api-sdk-js'
 import {ScInput} from '../../../shared/Input/ScInput'
 import {MenuItem} from '@mui/material'
 import {ScDatepicker} from '../../../shared/Datepicker/Datepicker'
@@ -10,7 +10,6 @@ import {mapFor} from '@alexandreannic/ts-utils/lib/common'
 import {useI18n} from '../../../core/i18n'
 import {ScRadioGroupItem} from '../../../shared/RadioGroup/RadioGroupItem'
 import {ScRadioGroup} from '../../../shared/RadioGroup/RadioGroup'
-import {ReportDraft} from '@signal-conso/signalconso-api-sdk-js'
 import {format} from 'date-fns'
 import {Controller, useForm} from 'react-hook-form'
 import {ReportFiles} from '../../../shared/UploadFile/ReportFiles'
@@ -89,7 +88,6 @@ const DetailsWithRequiredProps = ({draft, subcategories, tags, employeeConsumer}
     formState: {errors, isValid},
   } = useForm<any>()
 
-  console.log(getValues())
   return (
     <>
       <Alert gutterBottom type="warning">
@@ -193,20 +191,29 @@ const DetailsWithRequiredProps = ({draft, subcategories, tags, employeeConsumer}
                   }
                   case DetailInputType.RADIO: {
                     return (
-                      <ScRadioGroup
-                        {...field}
-                        sx={{mt: 1}} dense
-                        helperText={errorMessage}
-                        error={hasErrors}
-                      >
-                        {input.options?.map(option =>
-                          <ScRadioGroupItem
-                            key={option}
-                            value={option}
-                            title={<span dangerouslySetInnerHTML={{__html: option}}/>}
-                          />
-                        )}
-                      </ScRadioGroup>
+                      <>
+                        RADIO
+                        value:{field.value} --
+                        name: {field.name}
+                        <ScRadioGroup
+                          {...field}
+                          onChange={x => {
+                            console.log('onchange', x)
+                            field.onChange(x)
+                          }}
+                          sx={{mt: 1}} dense
+                          helperText={errorMessage}
+                          error={hasErrors}
+                        >
+                          {input.options?.map((option, i) =>
+                            <ScRadioGroupItem
+                              key={option}
+                              value={i}
+                              title={<span dangerouslySetInnerHTML={{__html: option}}/>}
+                            />
+                          )}
+                        </ScRadioGroup>
+                      </>
                     )
                   }
                   case DetailInputType.CHECKBOX: {
@@ -255,15 +262,16 @@ const DetailsWithRequiredProps = ({draft, subcategories, tags, employeeConsumer}
           />
         </FormLayout>
       ))}
-      <Txt block>{m.attachments}</Txt>
-      <Txt color="hint" block gutterBottom dangerouslySetInnerHTML={{__html: m.attachmentsDesc}}/>
+      <Txt block sx={{mt: 2}}>{m.attachments}</Txt>
+      <Txt color="hint" size="small" block gutterBottom dangerouslySetInnerHTML={{__html: m.attachmentsDesc}}/>
       <Alert type="info" gutterBottom deletable persistentDelete>
-        <span dangerouslySetInnerHTML={{__html: m.attachmentsDesc2}}/>
+        <Txt size="small" dangerouslySetInnerHTML={{__html: m.attachmentsDesc2}}/>
       </Alert>
 
       <ReportFiles fileOrigin={FileOrigin.Consumer}/>
 
       <StepperActions next={(next) => {
+        console.log('next', errors, getValues())
         handleSubmit((values: {[key: string]: any}) => {
           const detailInputValues = Object.entries(values).map(([label, value]) => ({label, value}))
           _reportFlow.setReportDraft(_ => ({..._, detailInputValues}))

@@ -35,10 +35,12 @@ export const CompanyByWebsite = ({value, onSubmit, ...props}: Props) => {
 
   const submit = (form: Form) => {
     submitted.setTrue()
-    _searchByUrl.fetch({clean: true, force: true}, form.website).then(_ => onSubmit(
-      form.website,
-      _.length > 0 ? _ : undefined)
-    )
+    _searchByUrl.fetch({clean: true, force: true}, form.website)
+      .then(_ => onSubmit(
+        form.website,
+        _.length > 0 ? _ : undefined)
+      )
+      .finally(submitted.setFalse)
   }
 
   useEffectFn(_searchByUrl.error, toastError)
