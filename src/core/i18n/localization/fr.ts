@@ -127,6 +127,7 @@ export const fr = {
     consumer: 'Consommateur',
     company: 'Entreprise',
     country: 'Pays',
+    countryPlaceholder: 'Ex: Italie',
     identification: 'Identification du pays',
     address: 'Adresse',
     activateMyAccount: 'Activer mon compte',
@@ -231,7 +232,6 @@ export const fr = {
     identifyBy_identity: `Par son SIRET ou SIREN ou RCS`,
     identifyBy_none: `Je ne peux pas identifier l'entreprise`,
     couldYouPrecise: `Pouvez-vous préciser ?`,
-    nameOfTheCompany: `Nom ou enseigne de l'entreprise signalée`,
     companyIdentityLabel: `Numéro SIRET ou SIREN ou RCS de l'entreprise`,
     companyIdentityPlaceholder: `Ex: 83350861700010`,
     postalCode: `Code postal`,
@@ -240,5 +240,30 @@ export const fr = {
     isHeadOffice: 'Siège sociale',
     governmentCompany: 'Administration publique',
     selectCompanyDesc: `Si l'entreprise n'est pas celle recherchée, vous pouvez modifier votre recherche.`,
+    isAFrenchCompany: `Est-ce que l'entreprise est en France ?`,
+    noItsForeign: `Non, elle est à l'étranger`,
+    iDontKnown: `Je ne sais pas`,
+    phoneNumberHavingCalled: `Numéro de téléphone vous ayant appelé`,
+    phoneNumberHavingCalledPlaceholder: `Ex: 06 00 00 00 00`,
+    noMatchingCompany: `Aucun établissement ne correspond à la recherche.`,
+    youCanOnlyReportFrenchCompanies: `Vous pouvez identifier des entreprises privées établies en France uniquement.`,
+    reportForeignCompany: `Signaler une entreprise établie à l'étranger`,
+    yourPostalCode: `Votre code postal`,
+    yourPostalCodePlaceholder: `Ex: 41110`,
+    reportedCompanyName: `Nom ou enseigne de l'entreprise signalée (obligatoire)`,
+    reportedCompanyNamePlaceholder: `Ex: Boulangerie Petit Jean`,
+    yourPostalCodeDesc: `SignalConso en a besoin pour alerter le bon service.`,
+    noMatchingCompanyDesc: `Veuillez modifier votre recherche ou rechercher avec les identifiants de l'entreprise.`,
+    howToFindCompanyCountry: ``,
+    howToFindCompanyCountryDesc: `
+      Rendez-vous sur le site internet de l'entreprise, dans l'une des rubriques suivantes :
+      <ul>
+        <li>les mentions légales</li>
+        <li>les Conditions Générales de Vente (CGV)</li>
+        <li>les conditions d'utilisation</li>
+      </ul>
+      Dans la plupart des cas, vous trouverez l'accès à ces rubriques tout en bas de la page d'accueil du site. L'adresse de l'entreprise devrait être indiquée dans l'une de ces rubriques.<br/>
+      Attention, il est possible que deux sociétés différentes soient mentionnées sur ces pages. L'une d'elle correspond à l'hébergeur du site. Ce n'est pas l'adresse de cet hébergeur que l'on cherche.
+    `,
   },
 }

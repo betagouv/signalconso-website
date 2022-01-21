@@ -12,50 +12,44 @@ import {Txt} from 'mui-extension'
 
 interface Form {
   name: string
+  country: string
   postalCode: string
 }
 
 interface Props {
-  onFound: (companies?: CompanySearchResult[]) => void
-  onReportForeignCompany: () => void
+  onChange: (form?: Form) => void
 }
 
-export const CompanyByNameAndPostalCode = ({onFound, onReportForeignCompany}: Props) => {
+export const CompanyAskForeignDetails = ({onChange}: Props) => {
   const {m} = useI18n()
-  const {apiSdk} = useApiSdk()
-  const {toastError} = useToast()
-  const _search = useFetcher(apiSdk.company.searchCompanies)
   const {
     handleSubmit,
     register,
   } = useForm<Form>()
 
-  const search = (form: Form) => {
-    _search.fetch({force: true, clean: true}, form.name, form.postalCode).then(onFound)
-  }
-
-  useEffectFn(_search.error, toastError)
-
   return (
     <Panel title={m.couldYouPrecise}>
-      <Txt color="hint">{m.youCanOnlyReportFrenchCompanies} &nbsp;</Txt>
-      <Txt link onClick={onReportForeignCompany}>{m.reportForeignCompany}</Txt>
-      <form onSubmit={handleSubmit(search)}>
+      <form onSubmit={handleSubmit(onChange)}>
         <PanelBody>
-          <FormLayout required label={m.nameOfTheCompany}>
-            <ScInput fullWidth {...register('name', {
+          <FormLayout required label={m.reportedCompanyName}>
+            <ScInput placeholder={m.reportedCompanyNamePlaceholder} fullWidth {...register('name', {
               required: {value: true, message: m.required},
             })}/>
           </FormLayout>
-          <FormLayout required label={m.postalCode}>
-            <ScInput fullWidth {...register('postalCode', {
+          <FormLayout required label={m.country}>
+            <ScInput placeholder={m.countryPlaceholder} fullWidth {...register('country', {
+              required: {value: true, message: m.required},
+            })}/>
+          </FormLayout>
+          <FormLayout required label={m.yourPostalCode} desc={m.yourPostalCodeDesc}>
+            <ScInput placeholder={m.yourPostalCodePlaceholder} fullWidth {...register('postalCode', {
               required: {value: true, message: m.required},
             })}/>
           </FormLayout>
         </PanelBody>
 
         <PanelActions>
-          <ScButton color="primary" variant="contained" icon="search" type="submit" loading={_search.loading}>
+          <ScButton color="primary" variant="contained" icon="search" type="submit">
             {m.search}
           </ScButton>
         </PanelActions>
