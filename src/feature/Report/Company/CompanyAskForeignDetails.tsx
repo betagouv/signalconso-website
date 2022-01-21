@@ -14,10 +14,11 @@ interface Form {
 
 interface Props {
   autoScrollTo?: boolean
+animate?: boolean
   onChange: (form?: Form) => void
 }
 
-export const CompanyAskForeignDetails = ({autoScrollTo, onChange}: Props) => {
+export const CompanyAskForeignDetails = ({autoScrollTo, animate, onChange}: Props) => {
   const {m} = useI18n()
   const {
     handleSubmit,
@@ -25,7 +26,7 @@ export const CompanyAskForeignDetails = ({autoScrollTo, onChange}: Props) => {
   } = useForm<Form>()
 
   return (
-    <Animate autoScrollTo={autoScrollTo}>
+    <Animate autoScrollTo={autoScrollTo} animate={animate}>
       <Panel title={m.couldYouPrecise}>
         <form onSubmit={handleSubmit(onChange)}>
           <PanelBody>

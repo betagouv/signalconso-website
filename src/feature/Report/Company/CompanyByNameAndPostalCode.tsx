@@ -18,11 +18,12 @@ interface Form {
 
 interface Props {
   autoScrollTo?: boolean
+animate?: boolean
   onFound: (companies?: CompanySearchResult[]) => void
   onReportForeignCompany: () => void
 }
 
-export const CompanyByNameAndPostalCode = ({autoScrollTo, onFound, onReportForeignCompany}: Props) => {
+export const CompanyByNameAndPostalCode = ({autoScrollTo, animate, onFound, onReportForeignCompany}: Props) => {
   const {m} = useI18n()
   const {apiSdk} = useApiSdk()
   const {toastError} = useToast()
@@ -39,7 +40,7 @@ export const CompanyByNameAndPostalCode = ({autoScrollTo, onFound, onReportForei
   useEffectFn(_search.error, toastError)
 
   return (
-    <Animate autoScrollTo={autoScrollTo}>
+    <Animate autoScrollTo={autoScrollTo} animate={animate}>
       <Panel title={m.couldYouPrecise}>
         <Txt color="hint">{m.youCanOnlyReportFrenchCompanies} &nbsp;</Txt>
         <Txt link onClick={onReportForeignCompany}>{m.reportForeignCompany}</Txt>

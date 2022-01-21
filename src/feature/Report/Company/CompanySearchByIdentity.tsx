@@ -20,10 +20,11 @@ interface Form {
 
 interface Props {
   autoScrollTo?: boolean
+animate?: boolean
   onFound: (companies?: CompanySearchResult[]) => void
 }
 
-export const CompanySearchByIdentity = ({autoScrollTo, onFound}: Props) => {
+export const CompanySearchByIdentity = ({autoScrollTo, animate, onFound}: Props) => {
   const {m} = useI18n()
   const {apiSdk} = useApiSdk()
   const {toastError} = useToast()
@@ -42,7 +43,7 @@ export const CompanySearchByIdentity = ({autoScrollTo, onFound}: Props) => {
   useEffectFn(_searchByIdentity.error, toastError)
 
   return (
-    <Animate autoScrollTo={autoScrollTo}>
+    <Animate autoScrollTo={autoScrollTo} animate={animate}>
       <Panel title={m.couldYouPrecise}>
         <form onSubmit={handleSubmit(search)}>
           <PanelBody>

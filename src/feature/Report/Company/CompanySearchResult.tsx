@@ -13,6 +13,7 @@ import {Animate} from '../../../shared/Animate/Animate'
 interface Props {
   companies: CompanySearchResult[]
   autoScrollTo?: boolean
+animate?: boolean
   onChange: (_: CompanySearchResult) => void
 }
 
@@ -46,11 +47,11 @@ export const Row = ({icon, children, sx, ...props}: RowProps) => {
   )
 }
 
-export const CompanySearchResultComponent = ({autoScrollTo, companies, onChange}: Props) => {
+export const CompanySearchResultComponent = ({autoScrollTo, animate, companies, onChange}: Props) => {
   const {m} = useI18n()
 
   return (
-    <Animate autoScrollTo={autoScrollTo}>
+    <Animate autoScrollTo={autoScrollTo} animate={animate}>
       {companies.length === 0 ? (
         <Panel>
           <Fender type="empty" icon="sentiment_very_dissatisfied">

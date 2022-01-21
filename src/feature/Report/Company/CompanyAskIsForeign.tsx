@@ -12,14 +12,15 @@ export enum IsForeignCompany {
 
 interface Props {
   autoScrollTo?: boolean
+animate?: boolean
   value?: IsForeignCompany
   onChange: (_: IsForeignCompany) => void
 }
 
-export const CompanyAskIsForeign = ({autoScrollTo, value, onChange}: Props) => {
+export const CompanyAskIsForeign = ({autoScrollTo, animate, value, onChange}: Props) => {
   const {m} = useI18n()
   return (
-    <Animate autoScrollTo={autoScrollTo}>
+    <Animate autoScrollTo={autoScrollTo} animate={animate}>
       <Panel title={m.isAFrenchCompany}>
         <PanelBody>
           <ScRadioGroup value={value} onChange={onChange}>

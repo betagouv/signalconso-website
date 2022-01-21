@@ -51,7 +51,6 @@ export const Company = ({animatePanel, autoScrollToPanel}: CompanyProps) => {
     </>
   )
 }
-const autoScroll = true
 
 const CompanyWithRequiredProps = ({
   autoScrollToPanel,
@@ -87,7 +86,7 @@ const CompanyWithRequiredProps = ({
 
   const renderAskNameAndPostalCode = () => (
     <CompanyByNameAndPostalCode
-      autoScrollTo={autoScroll}
+      {...animate}
       onFound={setResult}
       onReportForeignCompany={() => {
         setIdentifyBy(IdentifyBy.NONE)

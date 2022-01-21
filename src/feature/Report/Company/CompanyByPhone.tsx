@@ -17,11 +17,12 @@ interface Form {
 
 interface Props extends Omit<BoxProps, 'onSubmit'> {
   autoScrollTo?: boolean
+animate?: boolean
   value?: string
   onSubmit: (phone?: string) => void
 }
 
-export const CompanyByPhone = ({autoScrollTo, value, onSubmit, ...props}: Props) => {
+export const CompanyByPhone = ({autoScrollTo, animate, value, onSubmit, ...props}: Props) => {
   const {m} = useI18n()
   const {toastError} = useToast()
   const submitted = useBoolean()
@@ -32,7 +33,7 @@ export const CompanyByPhone = ({autoScrollTo, value, onSubmit, ...props}: Props)
   } = useForm<Form>()
   
   return (
-    <Animate autoScrollTo={autoScrollTo}>
+    <Animate autoScrollTo={autoScrollTo} animate={animate}>
       <Panel title={m.aboutCompany}>
         <PanelBody>
           <Box component="form" onSubmit={handleSubmit(({phone}) => onSubmit(phone))} {...props}>

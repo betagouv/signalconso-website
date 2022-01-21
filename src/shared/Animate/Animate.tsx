@@ -50,7 +50,7 @@ export const Animate = ({
       transition: theme.transitions.create('all', {duration: animationDuration}),
       opacity: 0,
       transform: `translateY(${translateAnimationY}px)`,
-      ...(appeared ? {
+      ...(appeared || !animate ? {
         opacity: 1,
         transform: 'translateY(0)',
       } : {})

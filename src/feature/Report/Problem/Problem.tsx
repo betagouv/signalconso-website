@@ -1,8 +1,6 @@
 import React, {useMemo} from 'react'
 import {config} from '../../../conf/config'
 import {Category, CompanyKinds, ReportTag, Subcategory} from '@signal-conso/signalconso-api-sdk-js'
-import {messages} from '../../../conf/messages'
-import {ScButton} from '../../../shared/Button/Button'
 import {useStepperContext} from '../../../shared/Stepper/Stepper'
 import {useReportFlowContext} from '../ReportFlowContext'
 import {useSelectedSubcategoriesUtils} from './useSelectedSubcategoriesUtils'
@@ -12,10 +10,16 @@ import {useI18n} from '../../../core/i18n'
 import {StepperActions} from '../../../shared/Stepper/StepperActions'
 
 interface Props {
+  animatePanel?: boolean
+  autoScrollToPanel?: boolean
   anomaly: Category
 }
 
-export const Problem = ({anomaly}: Props) => {
+export const Problem = ({
+  anomaly,
+  animatePanel,
+  autoScrollToPanel,
+}: Props) => {
   const displayReponseConso = useMemo(() => Math.random() * 100 < config.reponseConsoDisplayRate, [])
   const {m} = useI18n()
   const _reportFlow = useReportFlowContext()
@@ -50,11 +54,12 @@ export const Problem = ({anomaly}: Props) => {
     })
   }
 
-  console.log(draft, draft.companyKind)
   return (
     <>
       {([anomaly, ...(draft.subcategories ?? [])]).map((c, i) => c.subcategories && (
         <ProblemSelect
+          animatePanel={animatePanel}
+          autoScrollToPanel={autoScrollToPanel}
           key={c.id}
           title={anomaly.subcategoriesTitle}
           value={draft.subcategories?.[i]?.id}
@@ -72,6 +77,8 @@ export const Problem = ({anomaly}: Props) => {
         }>
           <Step isDone={draft.companyKind !== undefined} hidden={!!companyKindFromSelected}>
             <ProblemSelect
+              animatePanel={animatePanel}
+              autoScrollToPanel={autoScrollToPanel}
               title="Est-ce que votre problème concerne une entreprise sur internet ?"
               value={draft.companyKind}
               onChange={companyKind => _reportFlow.setReportDraft(_ => ({..._, companyKind}))}
@@ -88,6 +95,8 @@ export const Problem = ({anomaly}: Props) => {
           </Step>
           <Step isDone={draft.employeeConsumer !== undefined} hidden={!showEmployeeConsumer}>
             <ProblemSelect
+              animatePanel={animatePanel}
+              autoScrollToPanel={autoScrollToPanel}
               title="Travaillez-vous dans l'entreprise que vous souhaitez signaler ?"
               value={draft.employeeConsumer}
               onChange={employeeConsumer => _reportFlow.setReportDraft(_ => ({..._, employeeConsumer}))}
@@ -107,6 +116,8 @@ export const Problem = ({anomaly}: Props) => {
             hidden={draft.employeeConsumer === true}
           >
             <ProblemSelect
+              animatePanel={animatePanel}
+              autoScrollToPanel={autoScrollToPanel}
               title="Que souhaitez-vous faire ?"
               value={(() => {
                 if (draft.contractualDispute === true) return 1
