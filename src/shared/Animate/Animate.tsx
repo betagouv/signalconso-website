@@ -16,13 +16,13 @@ export interface AnimateProps {
 let idCounter = 0
 
 export const Animate = ({
-  translateAnimationY = 60,
+  translateAnimationY = 80,
   offsetY = 90,
   autoScrollTo,
   animate,
   children,
   delay,
-  animationDuration = 200
+  animationDuration = 550
 }: AnimateProps) => {
   const theme = useTheme()
   const [appeared, setAppeared] = useState<boolean>(false)
@@ -47,7 +47,7 @@ export const Animate = ({
   return React.cloneElement(children, {
     id: 'Animate-scroll-' + id,
     style: {
-      transition: theme.transitions.create('all', {duration: animationDuration}),
+      transition: theme.transitions.create('all', {duration: animationDuration, delay: 50}),
       opacity: 0,
       transform: `translateY(${translateAnimationY}px)`,
       ...(appeared || !animate ? {
