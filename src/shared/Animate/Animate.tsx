@@ -4,11 +4,12 @@ import {useTimeout} from '@alexandreannic/react-hooks-lib'
 import {useTheme} from '@mui/material'
 
 export interface AnimateProps {
+  direction?: 'X' | 'Y'
   delay?: number,
   children: any,
   autoScrollTo?: boolean
   animationDuration?: number
-  translateAnimationY?: number
+  translateAnimation?: number
   offsetY?: number
   animate?: boolean
 }
@@ -16,7 +17,8 @@ export interface AnimateProps {
 let idCounter = 0
 
 export const Animate = ({
-  translateAnimationY = 80,
+  direction = 'Y',
+  translateAnimation = 80,
   offsetY = 90,
   autoScrollTo,
   animate,
@@ -33,7 +35,7 @@ export const Animate = ({
     if (autoScrollTo && ref) {
       const el = document.querySelector('#Animate-scroll-' + id)
       if (el) {
-        const y = el.getBoundingClientRect().top + window.scrollY - offsetY - translateAnimationY
+        const y = el.getBoundingClientRect().top + window.scrollY - offsetY - translateAnimation
         window.scrollTo({top: y, behavior: 'smooth'})
       }
     }
@@ -49,10 +51,10 @@ export const Animate = ({
     style: {
       transition: theme.transitions.create('all', {duration: animationDuration, delay: 50}),
       opacity: 0,
-      transform: `translateY(${translateAnimationY}px)`,
+      transform: `translate${direction}(${translateAnimation}px)`,
       ...(appeared || !animate ? {
         opacity: 1,
-        transform: 'translateY(0)',
+        transform: `translate${direction}(0)`,
       } : {})
     },
   })
