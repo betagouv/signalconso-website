@@ -72,6 +72,7 @@ export interface ScRadioGroupItemProps<T> extends Omit<BoxProps, 'title'> {
   title?: string | ReactNode
   description?: string | ReactNode
   value: T
+  disabled?: boolean
   selected?: boolean
   children?: ReactNode
   onClick?: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void
@@ -85,6 +86,7 @@ export const ScRadioGroupItem = <T,>({
   description,
   error,
   dense,
+  disabled,
   value,
   children,
   selected,
@@ -102,9 +104,9 @@ export const ScRadioGroupItem = <T,>({
       {...rest}
     >
       {multiple ? (
-        <Checkbox size={dense ? 'small' : undefined} checked={selected} className={css.radio}/>
+        <Checkbox disabled={disabled} size={dense ? 'small' : undefined} checked={selected} className={css.radio}/>
       ) : (
-        <Radio size={dense ? 'small' : undefined} checked={selected} className={css.radio}/>
+        <Radio disabled={disabled} size={dense ? 'small' : undefined} checked={selected} className={css.radio}/>
       )}
       <div className={classes(css.body, dense && css.bodyDense)}>
         {title && (

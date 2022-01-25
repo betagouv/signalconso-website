@@ -11,6 +11,7 @@ interface BaseProps<T> {
   className?: string
   sx?: SxProps<Theme>
   helperText?: ReactNode
+  disabled?: boolean
 }
 
 interface SingleProps<T> extends BaseProps<T> {
@@ -31,7 +32,7 @@ const isMultiple = <T, >(multiple: boolean | undefined, t: T | T[]): t is T[] =>
   return !!multiple
 }
 
-const _ScRadioGroup = <T, >({error, children, dense, value, onChange, multiple, helperText, ...props}: Props<T>, ref: any) => {
+const _ScRadioGroup = <T, >({disabled, error, children, dense, value, onChange, multiple, helperText, ...props}: Props<T>, ref: any) => {
   const [innerValue, setInnerValue] = useState<T | T[]>()
 
   useEffect(() => {
@@ -49,25 +50,28 @@ const _ScRadioGroup = <T, >({error, children, dense, value, onChange, multiple, 
           ...child.props,
           dense,
           error,
+          disabled,
           multiple,
           selected: isMultiple(multiple, innerValue) ? innerValue.includes(child.props.value) : innerValue === child.props.value,
           onClick: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
             if (child.props.onClick) child.props.onClick(event)
-            const value = child.props.value
-            setInnerValue(currentValue => {
-              const newValue = (() => {
-                if (isMultiple(multiple, currentValue)) {
-                  if (currentValue.includes(value)) {
-                    return currentValue.filter(_ => _ !== value)
-                  } else {
-                    return [...currentValue, value]
+            if (!disabled) {
+              const value = child.props.value
+              setInnerValue(currentValue => {
+                const newValue = (() => {
+                  if (isMultiple(multiple, currentValue)) {
+                    if (currentValue.includes(value)) {
+                      return currentValue.filter(_ => _ !== value)
+                    } else {
+                      return [...currentValue, value]
+                    }
                   }
-                }
-                return value
-              })()
-              if (onChange) onChange(newValue as any)
-              return newValue
-            })
+                  return value
+                })()
+                if (onChange) onChange(newValue as any)
+                return newValue
+              })
+            }
           },
         }),
       )}

@@ -4,22 +4,30 @@ import {ScButton} from '../Button/Button'
 import {useStepperContext} from './Stepper'
 
 interface Props {
+  hideNext?: boolean
+  hidePrev?: boolean
+  loadingNext?: boolean
+  loadingPrev?: boolean
   next?: (next: () => void) => void
   prev?: (prev: () => void) => void
 }
-export const StepperActions = ({next, prev}: Props) => {
+
+export const StepperActions = ({hidePrev, hideNext, loadingNext, loadingPrev, next, prev}: Props) => {
   const {m} = useI18n()
   const _stepper = useStepperContext()
   return (
     <Box sx={{display: 'flex', alignItems: 'center', justifyContent: 'space-between', mt: 3}}>
-      {_stepper.currentStep > 0 && (
-        <ScButton sx={{marginRight: 'auto'}} onClick={prev ? () => prev(_stepper.prev) : _stepper.prev} color="primary" icon="keyboard_arrow_left">
+      {_stepper.currentStep > 0 && !hidePrev && (
+        <ScButton loading={loadingPrev} sx={{marginRight: 'auto'}} onClick={prev ? () => prev(_stepper.prev) : _stepper.prev} color="primary" icon="keyboard_arrow_left">
           {m.previous}
         </ScButton>
       )}
-      <ScButton sx={{marginLeft: 'auto'}} onClick={next ? () => next(_stepper.next) : _stepper.next} color="primary" variant="contained" iconAfter="keyboard_arrow_right">
-        {m.next}
-      </ScButton>
+      {!hideNext && (
+        <ScButton loading={loadingNext} sx={{marginLeft: 'auto'}} onClick={next ? () => next(_stepper.next) : _stepper.next} color="primary" variant="contained"
+                  iconAfter="keyboard_arrow_right">
+          {m.next}
+        </ScButton>
+      )}
 
     </Box>
 
