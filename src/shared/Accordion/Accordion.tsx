@@ -6,7 +6,7 @@ interface Props extends BoxProps {
   label: ReactNode
   children: ReactNode
   open?: boolean
-  onClick: (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void
+  onClick?: (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void
 }
 
 export const Accordion = ({open, label, children, onClick, ...props}: Props) => {
@@ -26,7 +26,7 @@ export const Accordion = ({open, label, children, onClick, ...props}: Props) => 
           }
         }}
         onClick={(e) => {
-          onClick(e)
+          if(onClick) onClick(e)
           setInnerOpen(_ => !_)
         }}
       >

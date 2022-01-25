@@ -27,7 +27,7 @@ export const Problem = ({
   useEffect(() => {
     if (category !== _reportFlow.reportDraft.category) {
       _reportFlow.clearReportDraft()
-      _reportFlow.setReportDraft(_ => ({category}))
+      _reportFlow.setReportDraft({category})
     }
   }, [category])
 

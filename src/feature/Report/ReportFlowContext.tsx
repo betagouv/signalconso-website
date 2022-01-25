@@ -1,5 +1,5 @@
 import {ReportDraft} from '@signal-conso/signalconso-api-sdk-js'
-import React, {Dispatch, ReactNode, SetStateAction, useContext, useEffect} from 'react'
+import React, {Dispatch, ReactNode, SetStateAction, useContext} from 'react'
 import {usePersistentState} from 'react-persistent-state'
 
 interface ReportFlowContext {

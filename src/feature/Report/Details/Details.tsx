@@ -195,9 +195,6 @@ const DetailsWithRequiredProps = ({draft, subcategories, tags, employeeConsumer}
                     case DetailInputType.RADIO: {
                       return (
                         <>
-                          RADIO
-                          value:{field.value} --
-                          name: {field.name}
                           <ScRadioGroup
                             {...field}
                             onChange={x => {

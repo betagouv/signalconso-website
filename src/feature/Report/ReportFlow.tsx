@@ -10,18 +10,19 @@ import {Confirmation} from './Confirmation/Confirmation'
 
 interface Props {
   anomaly: Category
+  category: string
 }
 
-export const ReportFlow = ({anomaly}: Props) => {
+export const ReportFlow = ({anomaly, category}: Props) => {
   const {m} = useI18n()
   return (
     <ReportFlowProvider>
-      <Stepper initialStep={4} steps={[
-        {name: 'problem', label: m.step_problem, component: () => <Problem anomaly={anomaly} animatePanel={true} autoScrollToPanel={true}/>},
+      <Stepper initialStep={0} steps={[
+        {name: 'problem', label: m.step_problem, component: () => <Problem anomaly={anomaly} category={category} animatePanel={true} autoScrollToPanel={true}/>},
         {name: 'description', label: m.step_description, component: () => <Details/>},
         {name: 'company', label: m.step_company, component: () => <Company animatePanel={true} autoScrollToPanel={true}/>},
         {name: 'consumer', label: m.step_consumer, component: () => <Consumer/>},
-        {name: 'confirm', label: m.step_confirm, component: <Confirmation/>},
+        {name: 'confirm', label: m.step_confirm, component: () => <Confirmation/>},
       ]}/>
     </ReportFlowProvider>
   )

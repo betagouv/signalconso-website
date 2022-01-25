@@ -8,30 +8,30 @@ import {ReportFlow} from '../feature/Report/ReportFlow'
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const anomalies = await apiSdk.anomaly.getAnomalies()
-  const paths = anomalies.map(_ => ({
-    params: {reportpath: _.path, category: _.category},
+  const paths = anomalies.filter(_ => !_.hidden).map(_ => ({
+    params: {reportpath: _.path},
   }))
   return {paths, fallback: false}
 }
 
 export const getStaticProps: GetStaticProps = async ({params}) => {
   const anomaly = await apiSdk.anomaly.getAnomalies().then(res => res
-    .filter(_ => !_.hidden)
     .find(_ => _.path === params!.reportpath)
   )
+
   return {
     props: serialiseJsonForStupidNextJs({
       anomaly,
-      category: params!.category,
+      category: anomaly!.category,
     }),
   }
 }
 
-export default ({anomaly}: {anomaly: Anomaly}) => {
+export default ({anomaly, category}: {anomaly: Anomaly, category: string}) => {
   const router = useRouter()
   return (
     <Page style={{paddingTop: 16, paddingBottom: 16}}>
-      <ReportFlow anomaly={anomaly}/>
+      <ReportFlow anomaly={anomaly} category={category}/>
     </Page>
   )
 }

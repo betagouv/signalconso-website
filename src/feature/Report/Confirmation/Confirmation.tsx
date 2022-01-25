@@ -25,7 +25,7 @@ export const Confirmation = ({}: Props) => {
         <ConfirmationStepper>
           <ConfirmationStep title={m.step_problem}>
             {draft.category}
-            {/*{draft.subcategories.map(_ => _.title)}*/}
+            {draft.subcategories.map(_ => _.title)}
           </ConfirmationStep>
           <ConfirmationStep title={m.step_description}>
           </ConfirmationStep>

@@ -43,7 +43,6 @@ export const Stepper = ({steps, initialStep}: StepperProps) => {
         <StepperHeader steps={steps} currentStep={currentStep} goTo={setCurrentStep}/>
         {(() => {
           const XX: any = steps[currentStep].component
-          // console.log('steps[currentStep]', currentStep, XX, XX())
           return (
             <XX/>
           )
