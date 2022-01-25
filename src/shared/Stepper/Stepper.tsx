@@ -26,11 +26,18 @@ const StepperContext = React.createContext<StepperContext>({
 export const Stepper = ({steps, initialStep}: StepperProps) => {
   const [currentStep, setCurrentStep] = useState(initialStep ?? 0)
   const maxStep = useMemo(() => steps.length, [steps])
+  const scrollTop = () => window.scrollTo(0, 0)
   return (
     <StepperContext.Provider value={{
       currentStep,
-      next: () => setCurrentStep(_ => Math.min(_ + 1, maxStep)),
-      prev: () => setCurrentStep(_ => Math.max(_ - 1, 0)),
+      next: () => {
+        setCurrentStep(_ => Math.min(_ + 1, maxStep))
+        scrollTop()
+      },
+      prev: () => {
+        setCurrentStep(_ => Math.max(_ - 1, 0))
+        scrollTop()
+      },
     }}>
       <Page width={600}>
         <StepperHeader steps={steps} currentStep={currentStep} goTo={setCurrentStep}/>
