@@ -5,6 +5,7 @@ import {usePersistentState} from 'react-persistent-state'
 interface ReportFlowContext {
   reportDraft: Partial<ReportDraft>
   setReportDraft: Dispatch<SetStateAction<Readonly<Partial<ReportDraft>>>>
+  clearReportDraft: () => void
 }
 
 const ReportFlowContext = React.createContext<ReportFlowContext>({} as ReportFlowContext)
@@ -14,11 +15,12 @@ interface ReportFlowProviderProps {
 }
 
 export const ReportFlowProvider = ({children}: ReportFlowProviderProps) => {
-  const [reportDraft, setReportDraft, clear] = usePersistentState<Partial<ReportDraft>>({}, 'report-draft')
+  const [reportDraft, setReportDraft, clearReportDraft] = usePersistentState<Partial<ReportDraft>>({}, 'report-draft')
   return (
     <ReportFlowContext.Provider value={{
       reportDraft,
-      setReportDraft
+      setReportDraft,
+      clearReportDraft,
     }}>
       {children}
     </ReportFlowContext.Provider>

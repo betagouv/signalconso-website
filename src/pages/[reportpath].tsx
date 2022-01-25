@@ -8,8 +8,8 @@ import {ReportFlow} from '../feature/Report/ReportFlow'
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const anomalies = await apiSdk.anomaly.getAnomalies()
-  const paths = anomalies.map((_: any) => ({
-    params: {reportpath: _.path},
+  const paths = anomalies.map(_ => ({
+    params: {reportpath: _.path, category: _.category},
   }))
   return {paths, fallback: false}
 }
@@ -22,6 +22,7 @@ export const getStaticProps: GetStaticProps = async ({params}) => {
   return {
     props: serialiseJsonForStupidNextJs({
       anomaly,
+      category: params!.category,
     }),
   }
 }

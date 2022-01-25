@@ -1,30 +1,35 @@
-import React, {useMemo} from 'react'
+import React, {useEffect, useMemo} from 'react'
 import {config} from '../../../conf/config'
 import {Category, CompanyKinds, ReportTag, Subcategory} from '@signal-conso/signalconso-api-sdk-js'
-import {useStepperContext} from '../../../shared/Stepper/Stepper'
 import {useReportFlowContext} from '../ReportFlowContext'
 import {useSelectedSubcategoriesUtils} from './useSelectedSubcategoriesUtils'
 import {Step, Stepper} from './Stepper'
 import {ProblemSelect} from './ProblemSelect'
-import {useI18n} from '../../../core/i18n'
 import {StepperActions} from '../../../shared/Stepper/StepperActions'
 
 interface Props {
   animatePanel?: boolean
   autoScrollToPanel?: boolean
   anomaly: Category
+  category?: string
 }
 
 export const Problem = ({
+  category,
   anomaly,
   animatePanel,
   autoScrollToPanel,
 }: Props) => {
   const displayReponseConso = useMemo(() => Math.random() * 100 < config.reponseConsoDisplayRate, [])
-  const {m} = useI18n()
   const _reportFlow = useReportFlowContext()
   const draft = _reportFlow.reportDraft
-  const _stepper = useStepperContext()
+
+  useEffect(() => {
+    if (category !== _reportFlow.reportDraft.category) {
+      _reportFlow.clearReportDraft()
+      _reportFlow.setReportDraft(_ => ({category}))
+    }
+  }, [category])
 
   const {
     tagsFromSelected,
@@ -43,12 +48,12 @@ export const Problem = ({
     next()
   }
 
-  const handleSubcategoriesChange = (subcategory: Subcategory | undefined, index: number) => {
+  const handleSubcategoriesChange = (subcategory: Subcategory, index: number) => {
     _reportFlow.setReportDraft(report => {
       const copy = {...report}
       copy.subcategories = report.subcategories ?? []
       copy.subcategories.length = index
-      copy.subcategories[index] = subcategory!
+      copy.subcategories[index] = subcategory
       copy.subcategories = [...copy.subcategories]
       return copy
     })
@@ -63,7 +68,7 @@ export const Problem = ({
           key={c.id}
           title={anomaly.subcategoriesTitle}
           value={draft.subcategories?.[i]?.id}
-          onChange={id => handleSubcategoriesChange(c.subcategories?.find(_ => _.id === id), i)}
+          onChange={id => handleSubcategoriesChange(c.subcategories?.find(_ => _.id === id)!, i)}
           options={(c.subcategories ?? []).map((_, i) => ({
             title: _.title,
             description: _.example,
