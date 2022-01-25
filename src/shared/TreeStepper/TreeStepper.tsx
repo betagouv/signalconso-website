@@ -23,8 +23,6 @@ export const TreeStepper = ({renderDone, tree}: Props) => {
   const shown = findPath(tree)
   const last = shown[shown.length - 1]
   const allDone = last.done && !last.children
-  console.log('tree', tree)
-  console.log('treestepper', shown)
   return (
     <>
       {shown.map((x, i) =>
