@@ -15,6 +15,8 @@ import {Controller, useForm} from 'react-hook-form'
 import {ReportFiles} from '../../../shared/UploadFile/ReportFiles'
 import {StepperActions} from '../../../shared/Stepper/StepperActions'
 import {FormLayout} from '../../../shared/FormLayout/FormLayout'
+import {Animate} from '../../../shared/Animate/Animate'
+import {Panel} from '../../../shared/Panel/Panel'
 
 const reponseConsoQuestion = {
   label: 'Votre question',
@@ -89,195 +91,197 @@ const DetailsWithRequiredProps = ({draft, subcategories, tags, employeeConsumer}
   } = useForm<any>()
 
   return (
-    <>
-      <Alert gutterBottom type="warning">
-        {ReportDraft.isTransmittableToPro({tags, employeeConsumer}) ? (
-          <span dangerouslySetInnerHTML={{__html: m.detailsTextAreaTransmittable}}/>
-        ) : (
-          <>
-            <span dangerouslySetInnerHTML={{__html: m.detailsTextAreaNotTransmittable}}/><br/>
-            <span dangerouslySetInnerHTML={{__html: m.detailsTextAreaEmployeeConsumer}}/>
-          </>
+    <Animate animate={true}>
+      <Panel>
+        <Alert gutterBottom type="warning">
+          {ReportDraft.isTransmittableToPro({tags, employeeConsumer}) ? (
+            <span dangerouslySetInnerHTML={{__html: m.detailsTextAreaTransmittable}}/>
+          ) : (
+            <>
+              <span dangerouslySetInnerHTML={{__html: m.detailsTextAreaNotTransmittable}}/><br/>
+              <span dangerouslySetInnerHTML={{__html: m.detailsTextAreaEmployeeConsumer}}/>
+            </>
+          )}
+        </Alert>
+        {(tags ?? []).includes(ReportTag.ProduitDangereux) && (
+          <Alert type="info" gutterBottom>
+            En cas d'une urgence vitale ou importante, appelez le <b>112</b>.
+            <br/>
+            Si vous êtes blessé ou souffrant, appelez le Samu: <b>15</b>.
+            <br/>
+            Si vous subissez ou vous avez subi une agression ou des violences, appelez Police Secours: <b>17</b>.
+            <br/>
+            En cas d'incendie ou d'une fuite de gaz, appelez les pompiers: <b>18</b>.
+            <br/>
+            Si vous êtes sourd ou malentendant, contactez le <b>114</b> par visiophonie, par chat, par SMS ou par FAX.
+            <br/>
+            Ces numéros sont joignables 24H/24 et 7J/7.
+            <br/>
+            <br/>
+            Plus d'informations sur<br/>
+            <a href="https://www.gouvernement.fr/risques/connaitre-les-numeros-d-urgence">https://www.gouvernement.fr/risques/connaitre-les-numeros-d-urgence</a>
+          </Alert>
         )}
-      </Alert>
-      {(tags ?? []).includes(ReportTag.ProduitDangereux) && (
-        <Alert type="info" gutterBottom>
-          En cas d'une urgence vitale ou importante, appelez le <b>112</b>.
-          <br/>
-          Si vous êtes blessé ou souffrant, appelez le Samu: <b>15</b>.
-          <br/>
-          Si vous subissez ou vous avez subi une agression ou des violences, appelez Police Secours: <b>17</b>.
-          <br/>
-          En cas d'incendie ou d'une fuite de gaz, appelez les pompiers: <b>18</b>.
-          <br/>
-          Si vous êtes sourd ou malentendant, contactez le <b>114</b> par visiophonie, par chat, par SMS ou par FAX.
-          <br/>
-          Ces numéros sont joignables 24H/24 et 7J/7.
-          <br/>
-          <br/>
-          Plus d'informations sur<br/>
-          <a href="https://www.gouvernement.fr/risques/connaitre-les-numeros-d-urgence">https://www.gouvernement.fr/risques/connaitre-les-numeros-d-urgence</a>
-        </Alert>
-      )}
 
-      {lastSubcategories.description && (
-        <Alert type="info">
-          {lastSubcategories.description}
-        </Alert>
-      )}
+        {lastSubcategories.description && (
+          <Alert type="info">
+            {lastSubcategories.description}
+          </Alert>
+        )}
 
-      <br/>
+        <br/>
 
-      {inputs.map((input, i) => (
-        <FormLayout
-          label={<span dangerouslySetInnerHTML={{__html: input.label}}/>}
-          required={!input.optionnal}
-          key={i}
-          sx={{
-            mb: 3,
-          }}
-        >
-          <Controller
-            name={input.label}
-            defaultValue={(input.defaultValue === 'SYSDATE' ? new Date() : input.defaultValue) ?? ''}
-            control={control}
-            rules={{
-              required: {value: true, message: m.required + ' *'},
-              ...(input.type === DetailInputType.TEXTAREA ? {maxLength: {value: 500, message: ''}} : {}),
+        {inputs.map((input, i) => (
+          <FormLayout
+            label={<span dangerouslySetInnerHTML={{__html: input.label}}/>}
+            required={!input.optionnal}
+            key={i}
+            sx={{
+              mb: 3,
             }}
-            render={({field}) => (
-              (() => {
-                const errorMessage = errors[input.label]?.message
-                const hasErrors = !!errors[input.label]
-                switch (input.type) {
-                  case DetailInputType.DATE_NOT_IN_FUTURE: {
-                    return (
-                      <ScDatepicker
-                        {...field}
-                        fullWidth placeholder={input.placeholder}
-                        max={format(new Date(), 'yyyy-MM-dd')}
-                        helperText={errorMessage}
-                        error={hasErrors}
-                      />
-                    )
-                  }
-                  case DetailInputType.DATE: {
-                    return (
-                      <ScDatepicker
-                        {...field}
-                        fullWidth
-                        placeholder={input.placeholder}
-                        helperText={errorMessage}
-                        error={hasErrors}
-                      />
-                    )
-                  }
-                  case DetailInputType.TIMESLOT: {
-                    return (
-                      <ScSelect
-                        {...field}
-                        fullWidth
-                        placeholder={input.placeholder}
-                        helperText={errorMessage}
-                        error={hasErrors}
-                      >
-                        {mapFor(24, i =>
-                          <MenuItem key={i} value={`de ${i}h à ${i + 1}h`}>
-                            {m.timeFromTo(i, i + 1)}
-                          </MenuItem>
-                        )}
-                      </ScSelect>
-                    )
-                  }
-                  case DetailInputType.RADIO: {
-                    return (
-                      <>
-                        RADIO
-                        value:{field.value} --
-                        name: {field.name}
-                        <ScRadioGroup
+          >
+            <Controller
+              name={input.label}
+              defaultValue={(input.defaultValue === 'SYSDATE' ? new Date() : input.defaultValue) ?? ''}
+              control={control}
+              rules={{
+                required: {value: true, message: m.required + ' *'},
+                ...(input.type === DetailInputType.TEXTAREA ? {maxLength: {value: 500, message: ''}} : {}),
+              }}
+              render={({field}) => (
+                (() => {
+                  const errorMessage = errors[input.label]?.message
+                  const hasErrors = !!errors[input.label]
+                  switch (input.type) {
+                    case DetailInputType.DATE_NOT_IN_FUTURE: {
+                      return (
+                        <ScDatepicker
                           {...field}
-                          onChange={x => {
-                            console.log('onchange', x)
-                            field.onChange(x)
-                          }}
-                          sx={{mt: 1}} dense
+                          fullWidth placeholder={input.placeholder}
+                          max={format(new Date(), 'yyyy-MM-dd')}
+                          helperText={errorMessage}
+                          error={hasErrors}
+                        />
+                      )
+                    }
+                    case DetailInputType.DATE: {
+                      return (
+                        <ScDatepicker
+                          {...field}
+                          fullWidth
+                          placeholder={input.placeholder}
+                          helperText={errorMessage}
+                          error={hasErrors}
+                        />
+                      )
+                    }
+                    case DetailInputType.TIMESLOT: {
+                      return (
+                        <ScSelect
+                          {...field}
+                          fullWidth
+                          placeholder={input.placeholder}
                           helperText={errorMessage}
                           error={hasErrors}
                         >
-                          {input.options?.map((option, i) =>
+                          {mapFor(24, i =>
+                            <MenuItem key={i} value={`de ${i}h à ${i + 1}h`}>
+                              {m.timeFromTo(i, i + 1)}
+                            </MenuItem>
+                          )}
+                        </ScSelect>
+                      )
+                    }
+                    case DetailInputType.RADIO: {
+                      return (
+                        <>
+                          RADIO
+                          value:{field.value} --
+                          name: {field.name}
+                          <ScRadioGroup
+                            {...field}
+                            onChange={x => {
+                              console.log('onchange', x)
+                              field.onChange(x)
+                            }}
+                            sx={{mt: 1}} dense
+                            helperText={errorMessage}
+                            error={hasErrors}
+                          >
+                            {input.options?.map((option, i) =>
+                              <ScRadioGroupItem
+                                key={option}
+                                value={i}
+                                title={<span dangerouslySetInnerHTML={{__html: option}}/>}
+                              />
+                            )}
+                          </ScRadioGroup>
+                        </>
+                      )
+                    }
+                    case DetailInputType.CHECKBOX: {
+                      return (
+                        <ScRadioGroup
+                          {...field}
+                          helperText={errorMessage}
+                          error={hasErrors}
+                          sx={{mt: 1}} dense multiple
+                        >
+                          {input.options?.map(option =>
                             <ScRadioGroupItem
                               key={option}
-                              value={i}
+                              value={option}
                               title={<span dangerouslySetInnerHTML={{__html: option}}/>}
                             />
                           )}
                         </ScRadioGroup>
-                      </>
-                    )
+                      )
+                    }
+                    case DetailInputType.TEXTAREA: {
+                      return (
+                        <ScInput
+                          {...field}
+                          helperText={errors[input.label]?.type === 'required' ? m.required : `${getValues(input.label)?.length ?? 0} / 500`}
+                          error={hasErrors}
+                          multiline
+                          minRows={3} maxRows={8} fullWidth placeholder={input.placeholder}
+                        />
+                      )
+                    }
+                    default: {
+                      return (
+                        <ScInput
+                          {...field}
+                          helperText={errorMessage}
+                          error={hasErrors}
+                          fullWidth
+                          placeholder={input.placeholder}
+                        />
+                      )
+                    }
                   }
-                  case DetailInputType.CHECKBOX: {
-                    return (
-                      <ScRadioGroup
-                        {...field}
-                        helperText={errorMessage}
-                        error={hasErrors}
-                        sx={{mt: 1}} dense multiple
-                      >
-                        {input.options?.map(option =>
-                          <ScRadioGroupItem
-                            key={option}
-                            value={option}
-                            title={<span dangerouslySetInnerHTML={{__html: option}}/>}
-                          />
-                        )}
-                      </ScRadioGroup>
-                    )
-                  }
-                  case DetailInputType.TEXTAREA: {
-                    return (
-                      <ScInput
-                        {...field}
-                        helperText={errors[input.label]?.type === 'required' ? m.required : `${getValues(input.label)?.length ?? 0} / 500`}
-                        error={hasErrors}
-                        multiline
-                        minRows={3} maxRows={8} fullWidth placeholder={input.placeholder}
-                      />
-                    )
-                  }
-                  default: {
-                    return (
-                      <ScInput
-                        {...field}
-                        helperText={errorMessage}
-                        error={hasErrors}
-                        fullWidth
-                        placeholder={input.placeholder}
-                      />
-                    )
-                  }
-                }
-              })()
-            )}
-          />
-        </FormLayout>
-      ))}
-      <Txt block sx={{mt: 2}}>{m.attachments}</Txt>
-      <Txt color="hint" size="small" block gutterBottom dangerouslySetInnerHTML={{__html: m.attachmentsDesc}}/>
-      <Alert type="info" gutterBottom deletable persistentDelete>
-        <Txt size="small" dangerouslySetInnerHTML={{__html: m.attachmentsDesc2}}/>
-      </Alert>
+                })()
+              )}
+            />
+          </FormLayout>
+        ))}
+        <Txt block sx={{mt: 2}}>{m.attachments}</Txt>
+        <Txt color="hint" size="small" block gutterBottom dangerouslySetInnerHTML={{__html: m.attachmentsDesc}}/>
+        <Alert type="info" gutterBottom deletable persistentDelete>
+          <Txt size="small" dangerouslySetInnerHTML={{__html: m.attachmentsDesc2}}/>
+        </Alert>
 
-      <ReportFiles fileOrigin={FileOrigin.Consumer}/>
+        <ReportFiles fileOrigin={FileOrigin.Consumer}/>
 
-      <StepperActions next={(next) => {
-        console.log('next', errors, getValues())
-        handleSubmit((values: {[key: string]: any}) => {
-          const detailInputValues = Object.entries(values).map(([label, value]) => ({label, value}))
-          _reportFlow.setReportDraft(_ => ({..._, detailInputValues}))
-          next()
-        })()
-      }}/>
-    </>
+        <StepperActions next={(next) => {
+          console.log('next', errors, getValues())
+          handleSubmit((values: {[key: string]: any}) => {
+            const detailInputValues = Object.entries(values).map(([label, value]) => ({label, value}))
+            _reportFlow.setReportDraft(_ => ({..._, detailInputValues}))
+            next()
+          })()
+        }}/>
+      </Panel>
+    </Animate>
   )
 }
