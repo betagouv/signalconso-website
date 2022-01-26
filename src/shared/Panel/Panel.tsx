@@ -9,12 +9,12 @@ interface Props extends Omit<CardProps, 'title'> {
 
 export const Panel = ({title, desc, children, sx, ...rest}: Props) => {
   return (
-    <Card elevation={2} {...rest} sx={{
+    <Card elevation={0} {...rest} sx={{
       ...sx,
-      p: 2,
+      py: 2,
       '& + &': {
-        // pt: 3,
-        // borderTop: t => `1px solid ${t.palette.divider}`,
+        pt: 3,
+        borderTop: t => `1px solid ${t.palette.divider}`,
         mt: 3,
       }
     }}>
@@ -29,7 +29,7 @@ export const PanelBody = ({children, sx, ...rest}: BoxProps) => {
   return (
     <Box {...rest} sx={{
       ...sx,
-      mt: 3
+      mt: 2
     }}>
       {children}
     </Box>

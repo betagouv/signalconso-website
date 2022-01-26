@@ -45,7 +45,10 @@ const useStyle = makeStyles((t: Theme) => {
       boxShadow: `inset 0 0 0 1px ${t.palette.primary.main}`,
     },
     rootError: {
-      borderColor: t.palette.error.main + ' !important',
+      '&$rootSelected': {
+        borderColor: t.palette.error.main + ' !important',
+      },
+      boxShadow: `inset 0 0 0 1px ${t.palette.error.main}`,
     },
     body: {
       alignSelf: 'center',

@@ -11,11 +11,12 @@ import {StepperActions} from '../../../shared/Stepper/StepperActions'
 import {FormLayout} from '../../../shared/FormLayout/FormLayout'
 import {Animate} from '../../../shared/Animate/Animate'
 import {Panel} from '../../../shared/Panel/Panel'
-import {format} from 'date-fns'
+import {format, parse} from 'date-fns'
 import {MenuItem} from '@mui/material'
 import {ScRadioGroup, ScRadioGroupItem} from '../../../shared/RadioGroup'
 import {ScSelect} from '../../../shared/Select/Select'
 import {ScInput} from '../../../shared/Input/ScInput'
+import {config} from '../../../conf/config'
 
 const reponseConsoQuestion = {
   label: 'Votre question',
@@ -143,6 +144,7 @@ const DetailsWithRequiredProps = ({draft, subcategories, tags, employeeConsumer}
               const defaultControl = {control, name: '' + i}
               const errorMessage = errors[i]?.message
               const hasErrors = !!errors[i]
+              const storedValue = draft.detailInputValues?.[i]?.value
               return fnSwitch(input.type, {
                   [DetailInputType.DATE_NOT_IN_FUTURE]: () => (
                     <Controller
@@ -154,6 +156,11 @@ const DetailsWithRequiredProps = ({draft, subcategories, tags, employeeConsumer}
                       render={({field}) => (
                         <ScDatepicker
                           {...field}
+                          value={typeof field.value === 'string' ? new Date(field.value) : field.value}
+                          // value={parse(field.value, config.reportDateFormat, new Date())}
+                          // onChange={date => {
+                          //   field.onChange(format(date, config.reportDateFormat))
+                          // }}
                           fullWidth placeholder={input.placeholder}
                           max={format(new Date(), 'yyyy-MM-dd')}
                           helperText={errorMessage}
@@ -165,13 +172,18 @@ const DetailsWithRequiredProps = ({draft, subcategories, tags, employeeConsumer}
                   [DetailInputType.DATE]: () => (
                     <Controller
                       {...defaultControl}
-                      defaultValue={draft.detailInputValues?.[i].value ?? (input.defaultValue === 'SYSDATE' ? new Date() : input.defaultValue) ?? ''}
+                      defaultValue={storedValue ?? (input.defaultValue === 'SYSDATE' ? new Date() : input.defaultValue) ?? ''}
                       rules={{
                         required: {value: true, message: m.required + ' *'},
                       }}
                       render={({field}) => (
                         <ScDatepicker
                           {...field}
+                          value={typeof field.value === 'string' ? new Date(field.value) : field.value}
+                          // value={parse(field.value, config.reportDateFormat, new Date())}
+                          // onChange={date => {
+                          //   field.onChange(format(date, config.reportDateFormat))
+                          // }}
                           fullWidth
                           placeholder={input.placeholder}
                           helperText={errorMessage}
@@ -182,7 +194,7 @@ const DetailsWithRequiredProps = ({draft, subcategories, tags, employeeConsumer}
                   [DetailInputType.TIMESLOT]: () => (
                     <Controller
                       {...defaultControl}
-                      defaultValue={draft.detailInputValues?.[i].value ?? input.defaultValue ?? ''}
+                      defaultValue={storedValue ?? input.defaultValue ?? ''}
                       rules={{
                         required: {value: true, message: m.required + ' *'},
                       }}
@@ -205,7 +217,7 @@ const DetailsWithRequiredProps = ({draft, subcategories, tags, employeeConsumer}
                   [DetailInputType.RADIO]: () => (
                     <Controller
                       {...defaultControl}
-                      defaultValue={draft.detailInputValues?.[i].value ?? input.defaultValue ?? ''}
+                      defaultValue={storedValue ?? input.defaultValue ?? ''}
                       rules={{
                         required: {value: true, message: m.required + ' *'},
                       }}
@@ -229,7 +241,7 @@ const DetailsWithRequiredProps = ({draft, subcategories, tags, employeeConsumer}
                   [DetailInputType.CHECKBOX]: () => (
                     <Controller
                       {...defaultControl}
-                      defaultValue={draft.detailInputValues?.[i].value ?? input.defaultValue ?? ''}
+                      defaultValue={storedValue ?? input.defaultValue ?? ''}
                       rules={{
                         required: {value: true, message: m.required + ' *'},
                       }}
@@ -254,7 +266,7 @@ const DetailsWithRequiredProps = ({draft, subcategories, tags, employeeConsumer}
                   [DetailInputType.TEXTAREA]: () => (
                     <Controller
                       {...defaultControl}
-                      defaultValue={draft.detailInputValues?.[i].value ?? input.defaultValue ?? ''}
+                      defaultValue={storedValue ?? input.defaultValue ?? ''}
                       rules={{
                         maxLength: {value: 500, message: ''},
                         required: {value: true, message: m.required + ' *'},
@@ -273,7 +285,7 @@ const DetailsWithRequiredProps = ({draft, subcategories, tags, employeeConsumer}
                 }, () => (
                   <Controller
                     {...defaultControl}
-                    defaultValue={draft.detailInputValues?.[i].value ?? input.defaultValue ?? ''}
+                    defaultValue={storedValue ?? input.defaultValue ?? ''}
                     rules={{
                       maxLength: {value: 500, message: ''},
                       required: {value: true, message: m.required + ' *'},

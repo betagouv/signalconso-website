@@ -40,9 +40,11 @@ export default ({anomaly, category}: {anomaly: Anomaly, category: string}) => {
   const router = useRouter()
   const _reportFlow = useReportFlowContext()
   const initialStep = useMemo(() => {
+    console.log('stepDone', stepDone(_reportFlow.reportDraft))
     if (category === _reportFlow.reportDraft.category) {
       const values = Object.values(stepDone(_reportFlow.reportDraft))
-      return values.findIndex(_ => !_) ?? values.length - 1
+      const index = values.findIndex(_ => !_)
+      return index > -1 ? index : values.length - 1
     }
     return 0
   }, [])

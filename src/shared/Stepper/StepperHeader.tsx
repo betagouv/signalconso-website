@@ -16,7 +16,7 @@ export const StepperHeader = ({steps, currentStep, goTo}: StepperHeaderProps) =>
   return (
     <Box sx={{
       display: 'flex',
-      mb: 3,
+      mb: 4,
       justifyContent: 'center',
     }}>
       {steps.map((step, i) =>

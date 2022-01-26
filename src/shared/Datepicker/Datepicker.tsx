@@ -16,7 +16,10 @@ const onChangeDate = (callback: (date: Date) => any) => (e: React.ChangeEvent<HT
   callback(e.target.valueAsDate!)
 }
 
-const mapDate = (date: Date): string => format(date, 'yyyy-MM-dd')
+const mapDate = (date: Date): string => {
+  console.log('helllo,', date)
+  return format(date, 'yyyy-MM-dd')
+}
 
 export const ScDatepicker = forwardRef(({value, onChange, min, max, ...props}: ScDatepickerProps, ref: any) => {
   return (

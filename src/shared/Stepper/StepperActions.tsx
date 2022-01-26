@@ -28,8 +28,6 @@ export const StepperActions = ({hidePrev, hideNext, loadingNext, loadingPrev, ne
           {m.next}
         </ScButton>
       )}
-
     </Box>
-
   )
 }

@@ -24,7 +24,7 @@ export const Animate = ({
   animate,
   children,
   delay,
-  animationDuration = 550
+  animationDuration = 500
 }: AnimateProps) => {
   const theme = useTheme()
   const [appeared, setAppeared] = useState<boolean>(false)

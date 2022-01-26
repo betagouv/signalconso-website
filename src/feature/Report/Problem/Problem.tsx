@@ -1,6 +1,6 @@
 import React, {useEffect, useMemo} from 'react'
 import {config} from '../../../conf/config'
-import {Category, CompanyKinds, ReportTag, Subcategory} from '@signal-conso/signalconso-api-sdk-js'
+import {Anomaly, Category, CompanyKinds, ReportTag, Subcategory} from '@signal-conso/signalconso-api-sdk-js'
 import {useReportFlowContext} from '../ReportFlowContext'
 import {useSelectedSubcategoriesUtils} from './useSelectedSubcategoriesUtils'
 import {Step, Stepper} from './Stepper'
@@ -10,7 +10,7 @@ import {StepperActions} from '../../../shared/Stepper/StepperActions'
 interface Props {
   animatePanel?: boolean
   autoScrollToPanel?: boolean
-  anomaly: Category
+  anomaly: Anomaly
   category?: string
 }
 
@@ -40,11 +40,15 @@ export const Problem = ({
   } = useSelectedSubcategoriesUtils(anomaly, draft.subcategories ?? [])
 
   const submit = (next: () => void) => {
-    _reportFlow.setReportDraft(_ => ({
-      ..._,
-      tags: tagsFromSelected,
-      companyKind: _.companyKind ?? companyKindFromSelected ?? CompanyKinds.SIRET,
-    }))
+    _reportFlow.setReportDraft(_ => {
+      const {subcategories, ..._anomaly} = anomaly
+      return ({
+        ..._,
+        tags: tagsFromSelected,
+        companyKind: _.companyKind ?? companyKindFromSelected ?? CompanyKinds.SIRET,
+        anomaly: _anomaly
+      })
+    })
     next()
   }
 
@@ -98,7 +102,7 @@ export const Problem = ({
               ]}
             />
           </Step>
-          <Step isDone={draft.employeeConsumer !== undefined} hidden={!showEmployeeConsumer}>
+          <Step isDone={draft.employeeConsumer !== undefined}>
             <ProblemSelect
               animatePanel={animatePanel}
               autoScrollToPanel={autoScrollToPanel}

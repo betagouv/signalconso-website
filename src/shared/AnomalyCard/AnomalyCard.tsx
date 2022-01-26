@@ -1,8 +1,8 @@
 import {Anomaly, Index} from '@signal-conso/signalconso-api-sdk-js'
 import {Box, useTheme} from '@mui/material'
-import {styled} from '@mui/material/styles'
 import {Txt} from 'mui-extension/lib'
 import Link from 'next/link'
+import {AnomalyImage} from './AnomalyImage'
 
 interface AnomalyCardProps {
   anomaly: Anomaly
@@ -47,21 +47,8 @@ export const AnomalyCard = ({anomaly}: AnomalyCardProps) => {
             // transform: 'scale(1.01)',
           }
         }}>
-          <Box
-            sx={{
-              ...(anomaly.sprite ? {
-                background: 'url("/image/pictos/sprite.png") no-repeat bottom',
-                backgroundPosition: backgroundPosition[anomaly.sprite],
-                backgroundRepeat: 'no-repeat',
-              } : {}),
-              mr: 2,
-              minWidth: 72,
-              minHeight: 72,
-              maxWidth: 72,
-              maxHeight: 72,
-            }}
-            className={`sprite-${anomaly.sprite}`}
-          />
+
+          <AnomalyImage anomaly={anomaly} size={72}/>
           <div>
             <h3 style={{
               margin: theme.spacing(0, 0, .5, 0),

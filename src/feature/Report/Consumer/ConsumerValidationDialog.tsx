@@ -99,21 +99,26 @@ export const ConsumerValidationDialog = ({
         <Button color="primary" onClick={onClose}>
           {m.close}
         </Button>
-        <LoadingButton
-          color={switchValidity({valid: 'success', invalid: 'primary', unknown: 'primary'})}
-          onClick={_form.handleSubmit(form => {
-            if (_validateEmail.entity?.valid) return
-            _validateEmail.fetch({clean: false}, consumerEmail, form.code).then(res => {
-              if (res.valid) delay(500)(res).then(onValidated)
-            })
-          })}
-          loading={_validateEmail.loading}
-          loadingPosition={switchValidity({unknown: 'start', valid: 'start'})}
-          startIcon={switchValidity({valid: <Icon>check_circle</Icon>})}
-          variant="contained"
-        >
-          {switchValidity({valid: m.validated, invalid: m.verify, unknown: m.verify})}
-        </LoadingButton>
+        {(() => {
+          const startIcon = switchValidity({valid: <Icon>check_circle</Icon>})
+          return (
+            <LoadingButton
+              color={switchValidity({valid: 'success', invalid: 'primary', unknown: 'primary'})}
+              onClick={_form.handleSubmit(form => {
+                if (_validateEmail.entity?.valid) return
+                _validateEmail.fetch({clean: false}, consumerEmail, form.code).then(res => {
+                  if (res.valid) delay(500)(res).then(onValidated)
+                })
+              })}
+              loading={_validateEmail.loading}
+              loadingPosition={startIcon ? 'start' : undefined}
+              startIcon={startIcon}
+              variant="contained"
+            >
+              {switchValidity({valid: m.validated, invalid: m.verify, unknown: m.verify})}
+            </LoadingButton>
+          )
+        })()}
       </DialogActions>
     </Dialog>
   )

@@ -131,6 +131,7 @@ export const fr = {
     countryPlaceholder: 'Ex: Italie',
     identification: 'Identification du pays',
     address: 'Adresse',
+    contactAgreement: 'Accord pour contact',
     activateMyAccount: 'Activer mon compte',
     createMyAccount: 'Créer mon compte',
     atLeast8Characters: '8 caractères minimum',
@@ -269,10 +270,10 @@ export const fr = {
     confirmationTitle: `Récapitulatif de votre problème`,
     confirmationAlertTransmittable: `Vérifiez votre signalement avant de l’envoyer à l'entreprise et à la répression des fraudes.`,
     confirmationAlert: `Vérifiez votre signalement avant de l’envoyer à la répression des fraudes.`,
-    contactAgreementTrueTitle: `Je ne partage pas`,
-    contactAgreementTrueDesc: `mes coordonnées avec l'entreprise. Seule la répression des fraudes pourra en prendre connaissance.`,
-    contactAgreementFalseTitle: `Je partage`,
-    contactAgreementFalseDesc: `mes coordonnées avec l'entreprise afin qu'elle puisse me contacter dans le cadre de mon signalement (<b>uniquement</b>). J'ai conscience que la répression des fraudes n'aura pas accès à ces échanges éventuels et ne pourra donc pas les contrôler.`,
+    contactAgreementTrueTitle: `Je partage`,
+    contactAgreementTrueDesc: `mes coordonnées avec l'entreprise afin qu'elle puisse me contacter dans le cadre de mon signalement (<b>uniquement</b>). J'ai conscience que la répression des fraudes n'aura pas accès à ces échanges éventuels et ne pourra donc pas les contrôler.`,
+    contactAgreementFalseTitle: `Je ne partage pas`,
+    contactAgreementFalseDesc: `mes coordonnées avec l'entreprise. Seule la répression des fraudes pourra en prendre connaissance.`,
     companyIdentityHelperDesc: `
     SIRET, SIREN et RCS sont des identifiants de l'entreprise.<br/>
     Le SIRET est composé de 14 chiffres, le SIREN est composé de 9 chiffres.<br/>

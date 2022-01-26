@@ -12,6 +12,7 @@ interface BaseProps<T> {
   sx?: SxProps<Theme>
   helperText?: ReactNode
   disabled?: boolean
+  defaultValue?: T,
 }
 
 interface SingleProps<T> extends BaseProps<T> {
@@ -32,7 +33,7 @@ const isMultiple = <T, >(multiple: boolean | undefined, t: T | T[]): t is T[] =>
   return !!multiple
 }
 
-const _ScRadioGroup = <T, >({disabled, error, children, dense, value, onChange, multiple, helperText, ...props}: Props<T>, ref: any) => {
+const _ScRadioGroup = <T, >({disabled, error, children, dense, value, onChange, multiple, helperText, defaultValue, ...props}: Props<T>, ref: any) => {
   const [innerValue, setInnerValue] = useState<T | T[]>()
 
   useEffect(() => {

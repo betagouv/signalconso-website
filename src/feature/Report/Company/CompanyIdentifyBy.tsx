@@ -13,7 +13,7 @@ export enum IdentifyBy {
   NONE = 'NONE',
 }
 
-interface Props extends Omit<BoxProps, 'onChange'> {
+interface Props extends Omit<BoxProps, 'onChange' | 'defaultValue'> {
   autoScrollTo?: boolean
 animate?: boolean
   companyKind: CompanyKinds

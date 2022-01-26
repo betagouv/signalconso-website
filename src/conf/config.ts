@@ -29,6 +29,7 @@ export const config = {
   sentry_dns: env()(Env.SENTRY_DNS),
   sentry_traceRate: env(int, defaultValue(0.5))(Env.SENTRY_TRACE_RATE),
   useHashRouter: true,
+  reportDateFormat: 'dd/MM/yyyy'
 }
 
 export type Config = typeof config;

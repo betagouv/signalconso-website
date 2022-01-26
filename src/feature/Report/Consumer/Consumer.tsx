@@ -4,7 +4,7 @@ import {Box, Grid, Icon} from '@mui/material'
 import React, {ReactNode, useState} from 'react'
 import {ScInput} from '../../../shared/Input/ScInput'
 import {FormLayout} from '../../../shared/FormLayout/FormLayout'
-import {useForm} from 'react-hook-form'
+import {Controller, useForm} from 'react-hook-form'
 import {regexp} from '../../../core/utils/regexp'
 import {ScRadioGroup, ScRadioGroupItem} from '../../../shared/RadioGroup'
 import {useReportFlowContext} from '../ReportFlowContext'
@@ -24,6 +24,7 @@ interface ConsumerForm {
   firstName: string
   lastName: string
   email: string
+  contactAgreement: boolean
   phone?: string
 }
 
@@ -45,6 +46,7 @@ const Row = ({icon, children}: RowProps) => {
 
 export const Consumer = () => {
   const _reportFlow = useReportFlowContext()
+  const draft = _reportFlow.reportDraft
   const {m} = useI18n()
   const [openValidationDialog, setOpenValidationDialog] = useState<boolean>(false)
   const {apiSdk} = useApiSdk()
@@ -61,10 +63,13 @@ export const Consumer = () => {
   const saveAndNext = () => {
     _reportFlow.setReportDraft(_ => ({
       ..._,
-      consumer: {..._form.getValues()}
+      consumer: {..._form.getValues()},
+      contactAgreement: _form.getValues().contactAgreement,
     }))
     _stepper.next()
   }
+
+  console.log('getValues', _form.getValues())
 
   return (
     <>
@@ -76,6 +81,7 @@ export const Consumer = () => {
                 <FormLayout label={m.firstName} required>
                   <ScInput
                     fullWidth
+                    defaultValue={draft.consumer?.firstName ?? ''}
                     {..._form.register('firstName', {required: {value: true, message: m.required}})}
                     {...getErrors('firstName')}
                   />
@@ -85,6 +91,7 @@ export const Consumer = () => {
                 <FormLayout label={m.lastName} required>
                   <ScInput
                     fullWidth
+                    defaultValue={draft.consumer?.lastName ?? ''}
                     {..._form.register('lastName', {required: {value: true, message: m.required}})}
                     {...getErrors('lastName')}
                   />
@@ -96,6 +103,7 @@ export const Consumer = () => {
             <FormLayout label={m.email} required>
               <ScInput
                 fullWidth
+                defaultValue={draft.consumer?.email ?? ''}
                 {...getErrors('email')}
                 {..._form.register('email', {
                   required: {value: true, message: m.required},
@@ -108,6 +116,7 @@ export const Consumer = () => {
             <FormLayout label={m.phone}>
               <ScInput
                 fullWidth
+                defaultValue={draft.consumer?.phone ?? ''}
                 {...getErrors('phone')}
                 {..._form.register('phone', {
                   pattern: {value: regexp.phone, message: m.invalidEmail}
@@ -116,21 +125,31 @@ export const Consumer = () => {
             </FormLayout>
           </Row>
           <Row icon="https">
-            <ScRadioGroup
-              value={_reportFlow.reportDraft.contactAgreement}
-              onChange={contactAgreement => _reportFlow.setReportDraft(_ => ({..._, contactAgreement}))}
-            >
-              <ScRadioGroupItem
-                value={true}
-                title={m.contactAgreementTrueTitle}
-                description={<Txt size="small" dangerouslySetInnerHTML={{__html: m.contactAgreementTrueDesc}}/>}
-              />
-              <ScRadioGroupItem
-                value={false}
-                title={m.contactAgreementFalseTitle}
-                description={<Txt size="small" dangerouslySetInnerHTML={{__html: m.contactAgreementFalseDesc}}/>}
-              />
-            </ScRadioGroup>
+            <Controller
+              control={_form.control}
+              name="contactAgreement"
+              defaultValue={draft.contactAgreement}
+              rules={{
+                required: {value: true, message: m.required}
+              }}
+              render={({field}) => (
+                <ScRadioGroup
+                  {...field}
+                  {...getErrors('contactAgreement')}
+                >
+                  <ScRadioGroupItem
+                    value={true}
+                    title={m.contactAgreementTrueTitle}
+                    description={<Txt size="small" dangerouslySetInnerHTML={{__html: m.contactAgreementTrueDesc}}/>}
+                  />
+                  <ScRadioGroupItem
+                    value={false}
+                    title={m.contactAgreementFalseTitle}
+                    description={<Txt size="small" dangerouslySetInnerHTML={{__html: m.contactAgreementFalseDesc}}/>}
+                  />
+                </ScRadioGroup>
+              )}
+            />
           </Row>
         </PanelBody>
       </Panel>
