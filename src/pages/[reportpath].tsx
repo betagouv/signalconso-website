@@ -2,9 +2,11 @@ import {GetStaticPaths, GetStaticProps} from 'next'
 import {apiSdk} from '../core/apiSdk'
 import {useRouter} from 'next/router'
 import {serialiseJsonForStupidNextJs} from '../core/helper/utils'
-import {Anomaly} from '@signal-conso/signalconso-api-sdk-js'
+import {Anomaly, ReportDraft} from '@signal-conso/signalconso-api-sdk-js'
 import {Page} from 'mui-extension/lib'
 import {ReportFlow} from '../feature/Report/ReportFlow'
+import {useReportFlowContext} from '../feature/Report/ReportFlowContext'
+import {useMemo} from 'react'
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const anomalies = await apiSdk.anomaly.getAnomalies()
@@ -27,11 +29,27 @@ export const getStaticProps: GetStaticProps = async ({params}) => {
   }
 }
 
+const stepDone = (r: Partial<ReportDraft>) => ({
+  problem: !!r.category && !!r.subcategories && !!r.contractualDispute !== undefined && r.employeeConsumer !== undefined,
+  description: !!r.detailInputValues,
+  company: !!r.companyDraft?.siret || !!r.companyDraft?.address.postalCode,
+  consumer: !!r.consumer?.email && !!r.consumer?.firstName && !!r.consumer?.lastName,
+})
+
 export default ({anomaly, category}: {anomaly: Anomaly, category: string}) => {
   const router = useRouter()
+  const _reportFlow = useReportFlowContext()
+  const initialStep = useMemo(() => {
+    if (category === _reportFlow.reportDraft.category) {
+      const values = Object.values(stepDone(_reportFlow.reportDraft))
+      return values.findIndex(_ => !_) ?? values.length - 1
+    }
+    return 0
+  }, [])
+
   return (
     <Page style={{paddingTop: 16, paddingBottom: 16}}>
-      <ReportFlow anomaly={anomaly} category={category}/>
+      <ReportFlow initialStep={initialStep} anomaly={anomaly} category={category}/>
     </Page>
   )
 }
