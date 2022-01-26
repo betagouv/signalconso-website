@@ -2,21 +2,20 @@ import React, {useMemo} from 'react'
 import {Alert, Txt} from 'mui-extension'
 import {useReportFlowContext} from '../ReportFlowContext'
 import {AnomalyClient, DetailInput, DetailInputType, FileOrigin, ReportDraft, ReportTag, Subcategory} from '@signal-conso/signalconso-api-sdk-js'
-import {ScInput} from '../../../shared/Input/ScInput'
-import {MenuItem} from '@mui/material'
 import {ScDatepicker} from '../../../shared/Datepicker/Datepicker'
-import {ScSelect} from '../../../shared/Select/Select'
-import {mapFor} from '@alexandreannic/ts-utils/lib/common'
+import {fnSwitch, mapFor} from '@alexandreannic/ts-utils/lib/common'
 import {useI18n} from '../../../core/i18n'
-import {ScRadioGroupItem} from '../../../shared/RadioGroup/RadioGroupItem'
-import {ScRadioGroup} from '../../../shared/RadioGroup/RadioGroup'
-import {format} from 'date-fns'
 import {Controller, useForm} from 'react-hook-form'
 import {ReportFiles} from '../../../shared/UploadFile/ReportFiles'
 import {StepperActions} from '../../../shared/Stepper/StepperActions'
 import {FormLayout} from '../../../shared/FormLayout/FormLayout'
 import {Animate} from '../../../shared/Animate/Animate'
 import {Panel} from '../../../shared/Panel/Panel'
+import {format} from 'date-fns'
+import {MenuItem} from '@mui/material'
+import {ScRadioGroup, ScRadioGroupItem} from '../../../shared/RadioGroup'
+import {ScSelect} from '../../../shared/Select/Select'
+import {ScInput} from '../../../shared/Input/ScInput'
 
 const reponseConsoQuestion = {
   label: 'Votre question',
@@ -140,21 +139,19 @@ const DetailsWithRequiredProps = ({draft, subcategories, tags, employeeConsumer}
               mb: 3,
             }}
           >
-            <Controller
-              name={input.label}
-              defaultValue={(input.defaultValue === 'SYSDATE' ? new Date() : input.defaultValue) ?? ''}
-              control={control}
-              rules={{
-                required: {value: true, message: m.required + ' *'},
-                ...(input.type === DetailInputType.TEXTAREA ? {maxLength: {value: 500, message: ''}} : {}),
-              }}
-              render={({field}) => (
-                (() => {
-                  const errorMessage = errors[input.label]?.message
-                  const hasErrors = !!errors[input.label]
-                  switch (input.type) {
-                    case DetailInputType.DATE_NOT_IN_FUTURE: {
-                      return (
+            {(() => {
+              const defaultControl = {control, name: '' + i}
+              const errorMessage = errors[i]?.message
+              const hasErrors = !!errors[i]
+              return fnSwitch(input.type, {
+                  [DetailInputType.DATE_NOT_IN_FUTURE]: () => (
+                    <Controller
+                      {...defaultControl}
+                      defaultValue={(input.defaultValue === 'SYSDATE' ? new Date() : input.defaultValue) ?? ''}
+                      rules={{
+                        required: {value: true, message: m.required + ' *'},
+                      }}
+                      render={({field}) => (
                         <ScDatepicker
                           {...field}
                           fullWidth placeholder={input.placeholder}
@@ -162,10 +159,17 @@ const DetailsWithRequiredProps = ({draft, subcategories, tags, employeeConsumer}
                           helperText={errorMessage}
                           error={hasErrors}
                         />
-                      )
-                    }
-                    case DetailInputType.DATE: {
-                      return (
+                      )}
+                    />
+                  ),
+                  [DetailInputType.DATE]: () => (
+                    <Controller
+                      {...defaultControl}
+                      defaultValue={draft.detailInputValues?.[i].value ?? (input.defaultValue === 'SYSDATE' ? new Date() : input.defaultValue) ?? ''}
+                      rules={{
+                        required: {value: true, message: m.required + ' *'},
+                      }}
+                      render={({field}) => (
                         <ScDatepicker
                           {...field}
                           fullWidth
@@ -173,10 +177,16 @@ const DetailsWithRequiredProps = ({draft, subcategories, tags, employeeConsumer}
                           helperText={errorMessage}
                           error={hasErrors}
                         />
-                      )
-                    }
-                    case DetailInputType.TIMESLOT: {
-                      return (
+                      )}/>
+                  ),
+                  [DetailInputType.TIMESLOT]: () => (
+                    <Controller
+                      {...defaultControl}
+                      defaultValue={draft.detailInputValues?.[i].value ?? input.defaultValue ?? ''}
+                      rules={{
+                        required: {value: true, message: m.required + ' *'},
+                      }}
+                      render={({field}) => (
                         <ScSelect
                           {...field}
                           fullWidth
@@ -190,34 +200,40 @@ const DetailsWithRequiredProps = ({draft, subcategories, tags, employeeConsumer}
                             </MenuItem>
                           )}
                         </ScSelect>
-                      )
-                    }
-                    case DetailInputType.RADIO: {
-                      return (
-                        <>
-                          <ScRadioGroup
-                            {...field}
-                            onChange={x => {
-                              console.log('onchange', x)
-                              field.onChange(x)
-                            }}
-                            sx={{mt: 1}} dense
-                            helperText={errorMessage}
-                            error={hasErrors}
-                          >
-                            {input.options?.map((option, i) =>
-                              <ScRadioGroupItem
-                                key={option}
-                                value={i}
-                                title={<span dangerouslySetInnerHTML={{__html: option}}/>}
-                              />
-                            )}
-                          </ScRadioGroup>
-                        </>
-                      )
-                    }
-                    case DetailInputType.CHECKBOX: {
-                      return (
+                      )}/>
+                  ),
+                  [DetailInputType.RADIO]: () => (
+                    <Controller
+                      {...defaultControl}
+                      defaultValue={draft.detailInputValues?.[i].value ?? input.defaultValue ?? ''}
+                      rules={{
+                        required: {value: true, message: m.required + ' *'},
+                      }}
+                      render={({field}) => (
+                        <ScRadioGroup
+                          {...field}
+                          sx={{mt: 1}} dense
+                          helperText={errorMessage}
+                          error={hasErrors}
+                        >
+                          {input.options?.map((option, i) =>
+                            <ScRadioGroupItem
+                              key={option}
+                              value={i}
+                              title={<span dangerouslySetInnerHTML={{__html: option}}/>}
+                            />
+                          )}
+                        </ScRadioGroup>
+                      )}/>
+                  ),
+                  [DetailInputType.CHECKBOX]: () => (
+                    <Controller
+                      {...defaultControl}
+                      defaultValue={draft.detailInputValues?.[i].value ?? input.defaultValue ?? ''}
+                      rules={{
+                        required: {value: true, message: m.required + ' *'},
+                      }}
+                      render={({field}) => (
                         <ScRadioGroup
                           {...field}
                           helperText={errorMessage}
@@ -232,34 +248,49 @@ const DetailsWithRequiredProps = ({draft, subcategories, tags, employeeConsumer}
                             />
                           )}
                         </ScRadioGroup>
-                      )
-                    }
-                    case DetailInputType.TEXTAREA: {
-                      return (
+                      )}
+                    />
+                  ),
+                  [DetailInputType.TEXTAREA]: () => (
+                    <Controller
+                      {...defaultControl}
+                      defaultValue={draft.detailInputValues?.[i].value ?? input.defaultValue ?? ''}
+                      rules={{
+                        maxLength: {value: 500, message: ''},
+                        required: {value: true, message: m.required + ' *'},
+                      }}
+                      render={({field}) => (
                         <ScInput
                           {...field}
-                          helperText={errors[input.label]?.type === 'required' ? m.required : `${getValues(input.label)?.length ?? 0} / 500`}
+                          helperText={errors[i]?.type === 'required' ? m.required : `${getValues('' + i)?.length ?? 0} / 500`}
                           error={hasErrors}
                           multiline
                           minRows={3} maxRows={8} fullWidth placeholder={input.placeholder}
                         />
-                      )
-                    }
-                    default: {
-                      return (
-                        <ScInput
-                          {...field}
-                          helperText={errorMessage}
-                          error={hasErrors}
-                          fullWidth
-                          placeholder={input.placeholder}
-                        />
-                      )
-                    }
-                  }
-                })()
-              )}
-            />
+                      )}
+                    />
+                  )
+                }, () => (
+                  <Controller
+                    {...defaultControl}
+                    defaultValue={draft.detailInputValues?.[i].value ?? input.defaultValue ?? ''}
+                    rules={{
+                      maxLength: {value: 500, message: ''},
+                      required: {value: true, message: m.required + ' *'},
+                    }}
+                    render={({field}) => (
+                      <ScInput
+                        {...field}
+                        helperText={errorMessage}
+                        error={hasErrors}
+                        fullWidth
+                        placeholder={input.placeholder}
+                      />
+                    )}
+                  />
+                )
+              )
+            })()}
           </FormLayout>
         ))}
         <Txt block sx={{mt: 2}}>{m.attachments}</Txt>
@@ -273,7 +304,7 @@ const DetailsWithRequiredProps = ({draft, subcategories, tags, employeeConsumer}
         <StepperActions next={(next) => {
           console.log('next', errors, getValues())
           handleSubmit((values: {[key: string]: any}) => {
-            const detailInputValues = Object.entries(values).map(([label, value]) => ({label, value}))
+            const detailInputValues = Object.entries(values).map(([index, value]) => ({label: inputs[+index].label, value}))
             _reportFlow.setReportDraft(_ => ({..._, detailInputValues}))
             next()
           })()
