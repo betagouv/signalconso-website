@@ -38,7 +38,7 @@ export const Confirmation = ({}: Props) => {
         <ConfirmationStepper>
           <ConfirmationStep title={m.step_problem}>
             <Box sx={{display: 'flex'}}>
-              <AnomalyImage anomaly={draft.anomaly} size={70}/>
+              <AnomalyImage anomaly={draft.anomaly} sx={{mr: 2}}/>
               <Box>
                 <Txt block size="big" bold sx={{mb: 1}}>{draft.category}</Txt>
                 {draft.subcategories.map(_ =>
@@ -50,7 +50,7 @@ export const Confirmation = ({}: Props) => {
           <ConfirmationStep title={m.step_description}>
             {draft.detailInputValues.map(({label, value}) =>
               <Box sx={{mb: 1}}>
-                <Txt bold sx={{mr: 1}}>{label}</Txt>
+                <Txt bold sx={{mr: 1}} dangerouslySetInnerHTML={{__html: label}}/>
                 <Txt color="hint">{JSON.stringify(value)}</Txt>
               </Box>
             )}

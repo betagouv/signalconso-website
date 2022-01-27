@@ -2,8 +2,8 @@ import {Box, BoxProps} from '@mui/material'
 import {Anomaly, Index} from '../../../../signalconso-api-sdk-js'
 
 interface Props extends BoxProps {
-  anomaly: Anomaly
-  size: number
+  anomaly: Omit<Anomaly, 'subcategories'>
+  scale?: number
 }
 
 const backgroundPosition: Index<string> = {
@@ -25,17 +25,19 @@ const backgroundPosition: Index<string> = {
   'category-admin': '0 -360px',
 }
 
-export const AnomalyImage = ({anomaly, size, className, ...other}: Props) => {
+export const AnomalyImage = ({anomaly, className, scale = 1, sx, ...other}: Props) => {
+  const size = 72
   return (
     <Box
       {...other}
       sx={{
+        ...sx,
         ...(anomaly.sprite ? {
           background: 'url("/image/pictos/sprite.png") no-repeat bottom',
           backgroundPosition: backgroundPosition[anomaly.sprite],
           backgroundRepeat: 'no-repeat',
         } : {}),
-        mr: 2,
+        transform: `scale(${scale})`,
         minWidth: size,
         minHeight: size,
         maxWidth: size,

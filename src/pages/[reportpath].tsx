@@ -29,22 +29,25 @@ export const getStaticProps: GetStaticProps = async ({params}) => {
   }
 }
 
-const stepDone = (r: Partial<ReportDraft>) => ({
+export const reportStepDone = (r: Partial<ReportDraft>) => ({
   problem: !!r.category && !!r.subcategories && !!r.contractualDispute !== undefined && r.employeeConsumer !== undefined,
   description: !!r.detailInputValues,
   company: !!r.companyDraft?.siret || !!r.companyDraft?.address.postalCode,
   consumer: !!r.consumer?.email && !!r.consumer?.firstName && !!r.consumer?.lastName,
 })
 
+export const reportCurrentStep = (r: Partial<ReportDraft>): number => {
+  const values = Object.values(reportStepDone(r))
+  const index = values.findIndex(_ => !_)
+  return index > -1 ? index : values.length - 1
+}
+
 export default ({anomaly, category}: {anomaly: Anomaly, category: string}) => {
   const router = useRouter()
   const _reportFlow = useReportFlowContext()
   const initialStep = useMemo(() => {
-    console.log('stepDone', stepDone(_reportFlow.reportDraft))
     if (category === _reportFlow.reportDraft.category) {
-      const values = Object.values(stepDone(_reportFlow.reportDraft))
-      const index = values.findIndex(_ => !_)
-      return index > -1 ? index : values.length - 1
+      return reportCurrentStep(_reportFlow.reportDraft)
     }
     return 0
   }, [])

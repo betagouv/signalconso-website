@@ -48,7 +48,7 @@ export const AnomalyCard = ({anomaly}: AnomalyCardProps) => {
           }
         }}>
 
-          <AnomalyImage anomaly={anomaly} size={72}/>
+          <AnomalyImage anomaly={anomaly} sx={{mr: 2}}/>
           <div>
             <h3 style={{
               margin: theme.spacing(0, 0, .5, 0),

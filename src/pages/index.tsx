@@ -11,6 +11,7 @@ import {SxProps} from '@mui/system'
 import {ScButton} from '../shared/Button/Button'
 import {useI18n} from '../core/i18n'
 import {Section} from '../core/component/Section'
+import {ReportStartedAlert} from '../feature/ReportStartedAlert/ReportStartedAlert'
 
 const sxTitle: SxProps<Theme> = {
   fontSize: 24,
@@ -93,6 +94,7 @@ const Home = ({anomalies}: HomeProps) => {
           </Grid>
         </Section>
       </main>
+      <ReportStartedAlert/>
     </>
   )
 }
