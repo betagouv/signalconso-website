@@ -7,7 +7,9 @@ import _throttle from 'lodash/throttle'
 import _groupBy from 'lodash/groupBy'
 import _intersectionBy from 'lodash/intersectionBy'
 import _differenceBy from 'lodash/differenceBy'
+import _sortBy from 'lodash/sortBy'
 
+export const sortBy = _sortBy
 export const uniqBy = _uniqBy
 export const debounce = _debounce
 export const throttle = _throttle

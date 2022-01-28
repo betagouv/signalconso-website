@@ -25,7 +25,6 @@ const Row = ({icon, dense, children, ...props}: {dense?: boolean, icon: string} 
 export const Confirmation = ({}: Props) => {
   const _reportFlow = useReportFlowContext()
   const draft = _reportFlow.reportDraft as ReportDraft2
-  console.log(draft)
   const {m} = useI18n()
   return (
     <Animate autoScrollTo={true} animate={true}>

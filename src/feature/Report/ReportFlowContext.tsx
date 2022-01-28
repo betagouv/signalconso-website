@@ -6,13 +6,13 @@ export interface ReportDraft2 extends ReportDraft {
   anomaly: Omit<Anomaly, 'subcategories'>
 }
 
-interface ReportFlowContext {
+export interface ReportFlowContextProps {
   reportDraft: Partial<ReportDraft2>
   setReportDraft: Dispatch<SetStateAction<Readonly<Partial<ReportDraft2>>>>
   clearReportDraft: () => void
 }
 
-const ReportFlowContext = React.createContext<ReportFlowContext>({} as ReportFlowContext)
+const ReportFlowContext = React.createContext<ReportFlowContextProps>({} as ReportFlowContextProps)
 
 interface ReportFlowProviderProps {
   children: ReactNode
@@ -31,6 +31,6 @@ export const ReportFlowProvider = ({children}: ReportFlowProviderProps) => {
   )
 }
 
-export const useReportFlowContext = (): ReportFlowContext => {
-  return useContext<ReportFlowContext>(ReportFlowContext)
+export const useReportFlowContext = (): ReportFlowContextProps => {
+  return useContext<ReportFlowContextProps>(ReportFlowContext)
 }

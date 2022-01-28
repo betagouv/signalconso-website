@@ -125,7 +125,7 @@ const DetailsWithRequiredProps = ({draft, subcategories, tags, employeeConsumer}
 
         {lastSubcategories.description && (
           <Alert type="info">
-            {lastSubcategories.description}
+            <Txt dangerouslySetInnerHTML={{__html: lastSubcategories.description}}/>
           </Alert>
         )}
 

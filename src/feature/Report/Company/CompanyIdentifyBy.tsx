@@ -4,7 +4,7 @@ import {useI18n} from '../../../core/i18n'
 import {BoxProps} from '@mui/material'
 import {Txt} from 'mui-extension'
 import {Panel, PanelBody} from '../../../shared/Panel/Panel'
-import {CompanyKinds} from '../../../../../signalconso-api-sdk-js'
+import {CompanyKinds} from '@signal-conso/signalconso-api-sdk-js'
 import {Animate} from '../../../shared/Animate/Animate'
 
 export enum IdentifyBy {

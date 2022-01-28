@@ -7,7 +7,7 @@ import {useApiSdk} from '../../../core/context/ApiSdk'
 import {useToast} from '../../../core/toast'
 import {useEffectFn, useFetcher} from '@alexandreannic/react-hooks-lib'
 import {ScButton} from '../../../shared/Button/Button'
-import {CompanySearchResult} from '../../../../../signalconso-api-sdk-js'
+import {CompanySearchResult} from '@signal-conso/signalconso-api-sdk-js'
 import {Txt} from 'mui-extension'
 import {Animate} from '../../../shared/Animate/Animate'
 
