@@ -59,6 +59,7 @@ export const _Problem = ({
     next()
   }
 
+  console.log('reportDraft.subcategories', reportDraft.subcategories)
   const handleSubcategoriesChange = (subcategory: Subcategory, index: number) => {
     setReportDraft(report => {
       const copy = {...report}
@@ -77,7 +78,7 @@ export const _Problem = ({
           animatePanel={animatePanel}
           autoScrollToPanel={autoScrollToPanel}
           key={c.id}
-          title={anomaly.subcategoriesTitle}
+          title={c.subcategoriesTitle}
           value={reportDraft.subcategories?.[i]?.id}
           onChange={id => handleSubcategoriesChange(c.subcategories?.find(_ => _.id === id)!, i)}
           options={(c.subcategories ?? []).map((_, i) => ({

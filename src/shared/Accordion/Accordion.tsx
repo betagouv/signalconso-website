@@ -26,7 +26,7 @@ export const Accordion = ({open, label, children, onClick, ...props}: Props) => 
           }
         }}
         onClick={(e) => {
-          if(onClick) onClick(e)
+          if (onClick) onClick(e)
           setInnerOpen(_ => !_)
         }}
       >
@@ -34,7 +34,7 @@ export const Accordion = ({open, label, children, onClick, ...props}: Props) => 
         <Icon sx={{ml: 1}} fontSize="small">{innerOpen ? 'expand_less' : 'expand_more'}</Icon>
       </Txt>
       <Collapse in={innerOpen}>
-        {children}
+        <Box sx={{mt: 1}}>{children}</Box>
       </Collapse>
     </Box>
   )
