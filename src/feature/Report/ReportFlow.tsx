@@ -7,7 +7,7 @@ import {Anomaly} from '@signal-conso/signalconso-api-sdk-js'
 import {Consumer} from './Consumer/Consumer'
 import {Confirmation} from './Confirmation/Confirmation'
 import React from 'react'
-import {Done} from './Done/Done'
+import {Done} from './Acknowledgement/Acknowledgement'
 
 interface Props {
   initialStep: number
