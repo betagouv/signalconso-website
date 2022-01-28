@@ -1,6 +1,5 @@
 import {GetStaticPaths, GetStaticProps} from 'next'
 import {apiSdk} from '../core/apiSdk'
-import {useRouter} from 'next/router'
 import {serialiseJsonForStupidNextJs} from '../core/helper/utils'
 import {Anomaly, ReportDraft} from '@signal-conso/signalconso-api-sdk-js'
 import {Page} from 'mui-extension/lib'
@@ -22,10 +21,7 @@ export const getStaticProps: GetStaticProps = async ({params}) => {
   )
 
   return {
-    props: serialiseJsonForStupidNextJs({
-      anomaly,
-      category: anomaly!.category,
-    }),
+    props: serialiseJsonForStupidNextJs({anomaly,}),
   }
 }
 
@@ -42,11 +38,10 @@ export const reportCurrentStep = (r: Partial<ReportDraft>): number => {
   return index > -1 ? index : values.length - 1
 }
 
-export default ({anomaly, category}: {anomaly: Anomaly, category: string}) => {
-  const router = useRouter()
+export default ({anomaly}: {anomaly: Anomaly}) => {
   const _reportFlow = useReportFlowContext()
   const initialStep = useMemo(() => {
-    if (category === _reportFlow.reportDraft.category) {
+    if (anomaly.category === _reportFlow.reportDraft.category) {
       return reportCurrentStep(_reportFlow.reportDraft)
     }
     return 0
@@ -54,7 +49,7 @@ export default ({anomaly, category}: {anomaly: Anomaly, category: string}) => {
 
   return (
     <Page style={{paddingTop: 16, paddingBottom: 16}}>
-      <ReportFlow initialStep={initialStep} anomaly={anomaly} category={category}/>
+      <ReportFlow initialStep={initialStep} anomaly={anomaly}/>
     </Page>
   )
 }

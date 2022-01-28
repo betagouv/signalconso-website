@@ -13,9 +13,7 @@ import {ApiSdkProvider} from '../core/context/ApiSdk'
 import {CacheProvider, EmotionCache} from '@emotion/react'
 import createEmotionCache from '../core/createEmotionCache'
 import {ToastProvider} from 'mui-extension'
-import {ReportFlowProvider, useReportFlowContext} from '../feature/Report/ReportFlowContext'
-import {useMemo} from 'react'
-import {ReportDraft} from '../../../signalconso-api-sdk-js'
+import {ReportFlowProvider} from '../feature/Report/ReportFlowContext'
 
 const generateClassName = createGenerateClassName({
   productionPrefix: 'c',
@@ -28,7 +26,7 @@ interface ScAppProps extends AppProps {
 
 const clientSideEmotionCache = createEmotionCache()
 
-export default ({emotionCache = clientSideEmotionCache, ...props}: ScAppProps) => {
+const App = ({emotionCache = clientSideEmotionCache, ...props}: ScAppProps) => {
   return (
     <Provide
       providers={[
@@ -43,7 +41,7 @@ export default ({emotionCache = clientSideEmotionCache, ...props}: ScAppProps) =
         _ => <ReportFlowProvider children={_}/>,
       ]}
     >
-      <App {...props} />
+      <_App {...props} />
     </Provide>
   )
 }
@@ -56,7 +54,7 @@ export const useCss = makeStyles((t: Theme) => ({
   }
 }))
 
-const App = ({Component, pageProps}: AppProps) => {
+const _App = ({Component, pageProps}: AppProps) => {
   useGlobalCss()
   const css = useCss()
   const theme = useTheme()
@@ -74,3 +72,5 @@ const App = ({Component, pageProps}: AppProps) => {
     </div>
   )
 }
+
+export default App

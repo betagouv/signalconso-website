@@ -28,8 +28,8 @@ export default class MyDocument extends Document {
           <link rel="preconnect" href="https://fonts.gstatic.com"/>
           <meta name="viewport" content="initial-scale=1, width=device-width"/>
           <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
-          {/*<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet" />*/}
-          {/*<link rel="preload" href="/font/Evolventa/Evolventa-Regular.woff2" as="font"/>*/}
+          <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet" />
+          <link rel="preload" href="/font/Evolventa/Evolventa-Regular.woff2" as="font"/>
           <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
 
           {/* Inject MUI styles first to match with the prepend: true configuration. */}

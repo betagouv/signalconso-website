@@ -5,17 +5,24 @@ import {Box, BoxProps, Card, CardProps} from '@mui/material'
 interface Props extends Omit<CardProps, 'title'> {
   title?: ReactNode
   desc?: ReactNode
+  border?: boolean
 }
 
-export const Panel = ({title, desc, children, sx, ...rest}: Props) => {
+export const Panel = ({title, desc, children, sx, elevation = 0, border, ...rest}: Props) => {
   return (
-    <Card elevation={0} {...rest} sx={{
+    <Card elevation={elevation} {...rest} sx={{
+      ...(border ? {
+        border: t => border ? `1px solid ${t.palette.divider}` : `none`,
+        px: 2,
+      } : {}),
       ...sx,
       py: 2,
       '& + &': {
         pt: 3,
-        borderTop: t => `1px solid ${t.palette.divider}`,
         mt: 3,
+        ...(!border && !elevation ? {
+          borderTop: t => `1px solid ${t.palette.divider}`,
+        } : {})
       }
     }}>
       {title && <Txt bold block sx={{mb: 0}} size="title">{title}</Txt>}

@@ -2,7 +2,7 @@ import {Panel, PanelBody} from '../../../shared/Panel/Panel'
 import {Txt} from 'mui-extension'
 import {Box, Icon} from '@mui/material'
 
-export const Done = () => {
+export const Acknowledgement = () => {
   return (
     <>
       <img src="/image/illustrations/company.png" alt="consultation-pro-illustration" style={{
