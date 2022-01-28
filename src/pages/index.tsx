@@ -12,6 +12,7 @@ import {ScButton} from '../shared/Button/Button'
 import {useI18n} from '../core/i18n'
 import {Section} from '../core/component/Section'
 import {ReportStartedAlert} from '../feature/ReportStartedAlert/ReportStartedAlert'
+import {sortBy} from '../core/lodashNamedExport'
 
 const sxTitle: SxProps<Theme> = {
   fontSize: 24,
@@ -20,7 +21,9 @@ const sxTitle: SxProps<Theme> = {
 }
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  const anomalies = await apiSdk.anomaly.getAnomalies().then(res => res.filter(_ => !_.hidden))
+  const anomalies = await apiSdk.anomaly.getAnomalies()
+    .then(res => res.filter(_ => !_.hidden))
+    .then(res => sortBy(res, _ => _.id))
   return {
     props: serialiseJsonForStupidNextJs({
       anomalies

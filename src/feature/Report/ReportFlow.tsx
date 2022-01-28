@@ -7,23 +7,23 @@ import {Anomaly} from '@signal-conso/signalconso-api-sdk-js'
 import {Consumer} from './Consumer/Consumer'
 import {Confirmation} from './Confirmation/Confirmation'
 import React from 'react'
-import {Done} from './Acknowledgement/Acknowledgement'
+import {Acknowledgement} from './Acknowledgement/Acknowledgement'
+import {ReportStep} from '../../core/reportStep'
 
 interface Props {
   initialStep: number
   anomaly: Anomaly
-  category: string
 }
 
-export const ReportFlow = React.memo(({initialStep, anomaly, category}: Props) => {
+export const ReportFlow = React.memo(({initialStep, anomaly}: Props) => {
   const {m} = useI18n()
   return (
-    <Stepper initialStep={initialStep} renderDone={Done} steps={[
-      {name: 'problem', label: m.step_problem, component: () => <Problem anomaly={anomaly} category={category} animatePanel={true} autoScrollToPanel={true}/>},
-      {name: 'description', label: m.step_description, component: () => <Details/>},
-      {name: 'company', label: m.step_company, component: () => <Company animatePanel={true} autoScrollToPanel={true}/>},
-      {name: 'consumer', label: m.step_consumer, component: () => <Consumer/>},
-      {name: 'confirm', label: m.step_confirm, component: () => <Confirmation/>},
+    <Stepper initialStep={initialStep} renderDone={Acknowledgement} steps={[
+      {name: ReportStep.Problem, label: m.step_problem, component: () => <Problem anomaly={anomaly} animatePanel={true} autoScrollToPanel={true}/>},
+      {name: ReportStep.Details, label: m.step_description, component: () => <Details/>},
+      {name: ReportStep.Company, label: m.step_company, component: () => <Company animatePanel={true} autoScrollToPanel={true}/>},
+      {name: ReportStep.Consumer, label: m.step_consumer, component: () => <Consumer/>},
+      {name: ReportStep.Confirmation, label: m.step_confirm, component: () => <Confirmation/>},
     ]}/>
   )
 })

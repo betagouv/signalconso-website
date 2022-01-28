@@ -7,12 +7,13 @@ import {Txt} from 'mui-extension'
 import {ScButton} from '../../shared/Button/Button'
 import {reportCurrentStep} from '../../pages/[reportpath]'
 import Link from 'next/link'
+import {ReportStepHelper} from '../../core/reportStep'
 
 export const ReportStartedAlert = () => {
   const _report = useReportFlowContext()
-  console.log(_report.reportDraft)
   const hasStoredReport = useMemo(() => !!_report.reportDraft.anomaly, [_report.reportDraft])
   const currentStep = useMemo(() => reportCurrentStep(_report.reportDraft), [_report.reportDraft])
+  const stepsCount = ReportStepHelper.count
   const {m} = useI18n()
   if (hasStoredReport && _report.reportDraft.anomaly) {
     return (
@@ -35,9 +36,9 @@ export const ReportStartedAlert = () => {
               </Txt>
             </Box>
             <Txt color="hint">
-              {m.step} <Txt bold>{currentStep + 1}</Txt> <Txt>/ 5</Txt>
+              {m.step} <Txt bold>{currentStep}</Txt> <Txt>/ {stepsCount}</Txt>
             </Txt>
-            <LinearProgress variant="determinate" value={(currentStep + 1) / 5 * 100}/>
+            <LinearProgress variant="determinate" value={(currentStep) / stepsCount * 100}/>
             <Box sx={{display: 'flex', justifyContent: 'flex-end', mt: 2}}>
               <ScButton size="small" color="error" sx={{mr: 1}} onClick={_report.clearReportDraft}>{m.delete}</ScButton>
               <Link href={_report.reportDraft.anomaly.path}>
