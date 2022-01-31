@@ -35,7 +35,7 @@ export const ProblemSelect = <T, >({
               <ScRadioGroupItem
                 key={option.value + ''}
                 value={option.value}
-                title={capitalize(option.title)}
+                title={option.title}
                 description={option.description}
               />
             )}

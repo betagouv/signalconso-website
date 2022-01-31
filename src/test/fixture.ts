@@ -112,6 +112,7 @@ export const genCompany = () => {
 export const genSubcategory = () => {
   return <Subcategory>{
     title: randomstring.generate(),
+    id: randomstring.generate(),
     tags: oneOf([null, [randomstring.generate()], [randomstring.generate(), randomstring.generate()]])
   }
 }

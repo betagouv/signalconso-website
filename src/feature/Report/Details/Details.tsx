@@ -307,7 +307,7 @@ const DetailsWithRequiredProps = ({draft, subcategories, tags, employeeConsumer}
         ))}
         <Txt block sx={{mt: 2}}>{m.attachments}</Txt>
         <Txt color="hint" size="small" block gutterBottom dangerouslySetInnerHTML={{__html: m.attachmentsDesc}}/>
-        <Alert type="info" gutterBottom deletable persistentDelete>
+        <Alert dense type="info" gutterBottom deletable persistentDelete>
           <Txt size="small" dangerouslySetInnerHTML={{__html: m.attachmentsDesc2}}/>
         </Alert>
 

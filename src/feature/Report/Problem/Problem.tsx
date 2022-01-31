@@ -1,36 +1,26 @@
 import React, {useEffect, useMemo} from 'react'
-import {config} from '../../../conf/config'
+import {config} from 'conf/config'
 import {Anomaly, AnomalyClient, CompanyKinds, ReportTag, Subcategory} from '@signal-conso/signalconso-api-sdk-js'
 import {ReportFlowContextProps, useReportFlowContext} from '../ReportFlowContext'
 import {useSelectedSubcategoriesUtils} from './useSelectedSubcategoriesUtils'
 import {Step, Stepper} from './Stepper'
 import {ProblemSelect} from './ProblemSelect'
-import {StepperActions} from '../../../shared/Stepper/StepperActions'
+import {StepperActions} from 'shared/Stepper/StepperActions'
 import {ProblemInformation} from './ProblemInformation'
 
 interface Props {
   animatePanel?: boolean
   autoScrollToPanel?: boolean
   anomaly: Anomaly
-  // category?: string
 }
 
-export const Problem = (props: Props) => {
-  return (
-    <_Problem {...props} {...useReportFlowContext()}/>
-  )
-}
-
-export const _Problem = ({
+export const Problem = ({
   anomaly,
   animatePanel,
   autoScrollToPanel,
-  reportDraft,
-  setReportDraft,
-  clearReportDraft,
-}: Props & ReportFlowContextProps) => {
+}: Props) => {
   const displayReponseConso = useMemo(() => Math.random() * 100 < config.reponseConsoDisplayRate, [])
-
+  const {reportDraft, setReportDraft, clearReportDraft} = useReportFlowContext()
   useEffect(() => {
     if (anomaly.category !== reportDraft.category) {
       clearReportDraft()
@@ -59,7 +49,6 @@ export const _Problem = ({
     next()
   }
 
-  console.log('reportDraft.subcategories', reportDraft.subcategories)
   const handleSubcategoriesChange = (subcategory: Subcategory, index: number) => {
     setReportDraft(report => {
       const copy = {...report}
@@ -71,6 +60,11 @@ export const _Problem = ({
     })
   }
 
+  if (anomaly.information) {
+    return (
+      <ProblemInformation category={anomaly.category} subcategories={[]} information={anomaly.information}/>
+    )
+  }
   return (
     <>
       {([anomaly, ...(reportDraft.subcategories ?? [])]).map((c, i) => c.subcategories && (
@@ -93,7 +87,7 @@ export const _Problem = ({
           <ProblemInformation
             category={anomaly.category}
             subcategories={reportDraft.subcategories}
-            information={lastSubcategories.information}
+            information={(lastSubcategories as any).information}
             animate={animatePanel}
             autoScrollTo={autoScrollToPanel}
           />

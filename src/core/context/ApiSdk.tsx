@@ -8,6 +8,7 @@ export interface ApiSdkProps {
 }
 
 interface Props {
+  apiSdk?: SignalConsoPublicSdk
   children: ReactNode
 }
 
@@ -15,11 +16,11 @@ const defaultContext: Partial<ApiSdkProps> = {}
 
 const ApiSdk = React.createContext<ApiSdkProps>(defaultContext as ApiSdkProps)
 
-export const ApiSdkProvider = ({children}: Props) => {
+export const ApiSdkProvider = ({apiSdk: _apiSdk, children}: Props) => {
   return (
     <ApiSdk.Provider
       value={{
-        apiSdk: apiSdk,
+        apiSdk: _apiSdk ?? apiSdk,
       }}
     >
       {children}

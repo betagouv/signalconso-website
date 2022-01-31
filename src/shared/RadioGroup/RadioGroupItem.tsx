@@ -102,6 +102,7 @@ export const ScRadioGroupItem = <T,>({
 
   return (
     <Box
+      role={multiple ? 'checkbox' : 'radio'}
       className={classes(css.root, selected && css.rootSelected, error && css.rootError, className)}
       onClick={onClick}
       {...rest}

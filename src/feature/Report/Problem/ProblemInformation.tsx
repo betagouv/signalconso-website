@@ -46,7 +46,7 @@ export const ProblemInformation = ({
   return (
     <>
       <Animate animate={animate} autoScrollTo={autoScrollTo}>
-        <Panel title={m.informationTitle} border>
+        <Panel id="test-info" title={m.informationTitle} border>
           <PanelBody>
             {information.outOfScope && (
               <Txt block gutterBottom>{m.informationReportOutOfScope}</Txt>

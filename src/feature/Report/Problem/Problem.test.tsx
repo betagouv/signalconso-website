@@ -2,13 +2,12 @@
  * @jest-environment jsdom
  */
 import React from 'react'
-import {render, unmountComponentAtNode} from 'react-dom'
-import {act} from 'react-dom/test-utils'
 import {Anomaly, ReportTag, Subcategory} from '@signal-conso/signalconso-api-sdk-js'
-import {genInformation, genSubcategory} from '../../../test/fixture'
-import {_Problem, Problem} from './Problem'
-import {ThemeProvider} from '@mui/material'
-import {muiTheme} from '../../../core/theme/theme'
+import {Problem} from './Problem'
+import {genInformation, genSubcategory} from 'test/fixture'
+import {fireEvent, render} from 'test/test-utils'
+import '@testing-library/jest-dom'
+import {fr} from '../../../core/i18n/localization/fr'
 
 class Fixture {
   static readonly simpleSubcategory = genSubcategory()
@@ -29,60 +28,31 @@ class Fixture {
 }
 
 describe('Problem', () => {
-
-  let container: HTMLDivElement | null
-  beforeEach(() => {
-    // setup a DOM element as a render target
-    container = document.createElement('div')
-    document.body.appendChild(container)
-  })
-
-  afterEach(() => {
-    // cleanup on exiting
-    if (container) {
-      unmountComponentAtNode(container)
-      container.remove()
-      container = null
-    }
-  })
-
   it('should display subcategories', () => {
-    act(() => {
-      render(
-        <ThemeProvider theme={muiTheme()}>
-          <_Problem
-            anomaly={Fixture.anomaly}
-            reportDraft={{}}
-            setReportDraft={() => undefined}
-            clearReportDraft={() => undefined}
-          />
-        </ThemeProvider>,
-        container
-      )
-    })
+    const x = render(
+      <Problem
+        anomaly={Fixture.anomaly}
+      />
+    )
     Fixture.anomaly.subcategories?.forEach(s => {
-      expect(container?.textContent).toContain(s.title)
+      expect(x.container.textContent).toContain(s.title)
     })
   })
 
-  it('should route to information page when receive subcategories ending with information', () => {
-    act(() => {
-      render(
-        <ThemeProvider theme={muiTheme()}>
-          <_Problem
-            anomaly={Fixture.anomaly}
-            reportDraft={{}}
-            setReportDraft={() => undefined}
-            clearReportDraft={() => undefined}
-          />
-        </ThemeProvider>,
-        container
-      )
-    })
-    // const routerSpy = spyOn(router, 'navigate');
-    component.onChange([infoSubcategoryFixture], 0, infoSubcategoryFixture.title)
-    fixture.detectChanges()
-    fixture.nativeElement.querySelectorAll('.btn.btn-lg.btn-primary')[0].click()
-    expect(routerSpy).toHaveBeenCalledWith([anomalyFixture.path, ReportPaths.Information])
+  it('should route to information page when receive subcategories ending with information', async () => {
+    const x = render(
+      <Problem
+        anomaly={Fixture.anomaly}
+      />
+      , {
+        apiSdkMock: {
+          rating: {
+            rate: (...args: any[]) => Promise.resolve()
+          } as any
+        }
+      })
+    const el = x.getByText(Fixture.infoSubcategory.title)
+    fireEvent.click(el)
+    expect(x.getByText(fr.messages.informationTitle)).not.toBeNull()
   })
 })
