@@ -1,12 +1,15 @@
 import React, {useEffect, useMemo} from 'react'
 import {config} from 'conf/config'
 import {Anomaly, AnomalyClient, CompanyKinds, ReportTag, Subcategory} from '@signal-conso/signalconso-api-sdk-js'
-import {ReportFlowContextProps, useReportFlowContext} from '../ReportFlowContext'
+import {useReportFlowContext} from '../ReportFlowContext'
 import {useSelectedSubcategoriesUtils} from './useSelectedSubcategoriesUtils'
 import {Step, Stepper} from './Stepper'
 import {ProblemSelect} from './ProblemSelect'
 import {StepperActions} from 'shared/Stepper/StepperActions'
 import {ProblemInformation} from './ProblemInformation'
+import {useI18n} from '../../../core/i18n'
+import {Panel, PanelBody} from '../../../shared/Panel/Panel'
+import {Txt} from 'mui-extension'
 
 interface Props {
   animatePanel?: boolean
@@ -19,6 +22,7 @@ export const Problem = ({
   animatePanel,
   autoScrollToPanel,
 }: Props) => {
+  const {m} = useI18n()
   const displayReponseConso = useMemo(() => Math.random() * 100 < config.reponseConsoDisplayRate, [])
   const {reportDraft, setReportDraft, clearReportDraft} = useReportFlowContext()
   useEffect(() => {
@@ -95,38 +99,40 @@ export const Problem = ({
           <Stepper renderDone={
             <StepperActions next={submit}/>
           }>
-            <Step isDone={reportDraft.companyKind !== undefined} hidden={!!companyKindFromSelected}>
-              <ProblemSelect
-                animatePanel={animatePanel}
-                autoScrollToPanel={autoScrollToPanel}
-                title="Est-ce que votre problème concerne une entreprise sur internet ?"
-                value={reportDraft.companyKind}
-                onChange={companyKind => setReportDraft(_ => ({..._, companyKind}))}
-                options={[
-                  {
-                    title: 'Oui',
-                    value: CompanyKinds.WEBSITE
-                  }, {
-                    title: `Non, pas sur internet`,
-                    value: tagsFromSelected.indexOf(ReportTag.ProduitDangereux) === -1 ? CompanyKinds.SIRET : CompanyKinds.LOCATION
-                  }
-                ]}
-              />
-            </Step>
             <Step isDone={reportDraft.employeeConsumer !== undefined}>
               <ProblemSelect
+                id="select-employeeconsumer"
                 animatePanel={animatePanel}
                 autoScrollToPanel={autoScrollToPanel}
-                title="Travaillez-vous dans l'entreprise que vous souhaitez signaler ?"
+                title={m.problemDoYouWorkInCompany}
                 value={reportDraft.employeeConsumer}
                 onChange={employeeConsumer => setReportDraft(_ => ({..._, employeeConsumer}))}
                 options={[
                   {
-                    title: 'Oui',
+                    title: m.yes,
                     value: true
                   }, {
-                    title: `Non, je n'y travaille pas`,
+                    title: m.problemDoYouWorkInCompanyNo,
                     value: false
+                  }
+                ]}
+              />
+            </Step>
+            <Step isDone={reportDraft.companyKind !== undefined} hidden={!!companyKindFromSelected}>
+              <ProblemSelect
+                id="select-companyKind"
+                animatePanel={animatePanel}
+                autoScrollToPanel={autoScrollToPanel}
+                title={m.problemIsInternetCompany}
+                value={reportDraft.companyKind}
+                onChange={companyKind => setReportDraft(_ => ({..._, companyKind}))}
+                options={[
+                  {
+                    title: m.yes,
+                    value: CompanyKinds.WEBSITE
+                  }, {
+                    title: m.problemIsInternetCompanyNo,
+                    value: tagsFromSelected.indexOf(ReportTag.ProduitDangereux) === -1 ? CompanyKinds.SIRET : CompanyKinds.LOCATION
                   }
                 ]}
               />
@@ -136,6 +142,7 @@ export const Problem = ({
               hidden={reportDraft.employeeConsumer === true}
             >
               <ProblemSelect
+                id="select-contractualDispute"
                 animatePanel={animatePanel}
                 autoScrollToPanel={autoScrollToPanel}
                 title="Que souhaitez-vous faire ?"
@@ -146,16 +153,16 @@ export const Problem = ({
                 })()}
                 options={[
                   {
-                    title: `Je veux résoudre mon problème personnel avec l'entreprise`,
-                    description: 'La répression des fraudes sera informée',
+                    title: m.problemContractualDisputeFormYes,
+                    description: m.problemContractualDisputeFormDesc,
                     value: 1
                   },
                   {
-                    title: `Je souhaite signaler un problème pour que l'entreprise s'améliore`,
+                    title: m.problemContractualDisputeFormNo,
                     value: 2
                   },
                   ...(displayReponseConso ? [{
-                    title: `Je souhaite que la répression des fraudes m'informe sur mes droits`,
+                    title: m.problemContractualDisputeFormReponseConso,
                     value: 3
                   }] : [])
                 ]}
@@ -176,6 +183,19 @@ export const Problem = ({
                   }
                 }}
               />
+            </Step>
+            <Step isDone={true} hidden={reportDraft.contractualDispute !== true}>
+              <Panel
+                id="panel-contractual-dispute"
+                border
+                title={m.problemContractualDisputeTitle}
+                desc={m.problemContractualDisputeDesc}
+              >
+                <PanelBody>
+                  <Txt bold>{m.problemContractualDisputeInfoTitle}</Txt>
+                  <Txt color="hint" dangerouslySetInnerHTML={{__html: m.problemContractualDisputeInfo}}/>
+                </PanelBody>
+              </Panel>
             </Step>
           </Stepper>
         ))}

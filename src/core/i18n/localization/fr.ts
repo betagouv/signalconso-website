@@ -211,6 +211,34 @@ export const fr = {
       'SC-0012': `Le code d'activation est périmé.`,
       'SC-0013': `Le code d'activation est invalide.`,
     },
+    problemDoYouWorkInCompany: `Travaillez-vous dans l'entreprise que vous souhaitez signaler ?`,
+    problemDoYouWorkInCompanyNo: `Non, je n'y travaille pas`,
+    problemIsInternetCompany: `Est-ce que votre problème concerne une entreprise sur internet ?`,
+    problemIsInternetCompanyNo: `Non, pas sur internet`,
+    problemContractualDisputeFormYes: `Je veux résoudre mon problème personnel avec l'entreprise`,
+    problemContractualDisputeFormDesc: `La répression des fraudes sera informée`,
+    problemContractualDisputeFormNo: `Je souhaite signaler un problème pour que l'entreprise s'améliore`,
+    problemContractualDisputeFormReponseConso: `Je souhaite que la répression des fraudes m'informe sur mes droits`,
+    problemContractualDisputeTitle: `Ce problème est un litige`,
+    problemContractualDisputeDesc: `C'est-à-dire un problème individuel entre l’entreprise et vous. La répression des fraudes ne s’occupe pas directement de résoudre des problèmes individuels.`,
+    problemContractualDisputeInfoTitle: `Pourquoi faire un signalement ?`,
+    problemContractualDisputeInfo: `
+      <ul>
+        <li>
+          <strong>Pour augmenter vos chances de trouver une solution avec l'entreprise:</strong>
+          50% des professionnels apportent une réponse au signalement.
+        </li>
+        <li>
+          <strong>Pour l’acte citoyen:</strong>
+          les enquêteurs de la répression des fraudes ne vont pas résoudre directement votre problème mais pourront lancer une enquête
+          auprès de l’entreprise grâce à vos informations.
+        </li>
+        <li>
+          <strong>Pour faire les bonnes démarches:</strong>
+          SignalConso vous guide dans la marche à suivre pour trouver une solution ou obtenir réparation.
+        </li>
+      </ul>
+    `,
     informationRatingSaved: `Votre avis a bien été enregistré, nous vous en remercions.`,
     informationTitle: `Emmh, nous ne pouvons pas traiter votre signalement.`,
     informationReportOutOfScope: `Nous ne doutons pas que vous ayez réellement rencontré un problème mais... il ne s’agit pas d’une fraude.`,

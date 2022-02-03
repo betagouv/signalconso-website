@@ -1,10 +1,10 @@
-import {Box, capitalize} from '@mui/material'
+import {Box} from '@mui/material'
 import {ScRadioGroup, ScRadioGroupItem} from '../../../shared/RadioGroup'
 import React from 'react'
-import {Panel, PanelBody} from '../../../shared/Panel/Panel'
+import {Panel, PanelBody, PanelProps} from '../../../shared/Panel/Panel'
 import {Animate} from '../../../shared/Animate/Animate'
 
-interface ProblemSelectProps<T> {
+interface ProblemSelectProps<T> extends Omit<PanelProps, 'onChange'> {
   animatePanel?: boolean
   autoScrollToPanel?: boolean
   title?: string,
@@ -23,11 +23,12 @@ export const ProblemSelect = <T, >({
   title,
   value,
   options,
-  onChange
+  onChange,
+  ...other
 }: ProblemSelectProps<T>) => {
   return (
     <Animate animate={animatePanel} autoScrollTo={autoScrollToPanel}>
-      <Panel sx={{position: 'relative'}} title={<span dangerouslySetInnerHTML={{__html: title ?? 'Pouvez-vous préciser ?'}}/>}>
+      <Panel sx={{position: 'relative'}} title={<span dangerouslySetInnerHTML={{__html: title ?? 'Pouvez-vous préciser ?'}}/>} {...other}>
         <Box sx={{position: 'absolute', top: -90, display: 'block'}}/>
         <PanelBody>
           <ScRadioGroup value={value} onChange={onChange} sx={{mb: 2}}>

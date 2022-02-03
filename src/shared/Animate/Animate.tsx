@@ -33,7 +33,7 @@ export const Animate = ({
 
   const scrollTo = () => {
     if (autoScrollTo && ref) {
-      const el = document.querySelector('#Animate-scroll-' + id)
+      const el = document.querySelector('.Animate-scroll-' + id)
       if (el) {
         const y = el.getBoundingClientRect().top + window.scrollY - offsetY - translateAnimation
         window.scrollTo({top: y, behavior: 'smooth'})
@@ -47,7 +47,7 @@ export const Animate = ({
   useTimeout(scrollTo, 0)
 
   return React.cloneElement(children, {
-    id: 'Animate-scroll-' + id,
+    className: (children.props.className ?? '') + ' Animate-scroll-' + id,
     style: {
       transition: theme.transitions.create('all', {duration: animationDuration, delay: 50}),
       opacity: 0,

@@ -1,7 +1,6 @@
-import {Company, CompanySearchResult, Information, ReportDraft, Subcategory} from '@signal-conso/signalconso-api-sdk-js'
+import {Company, CompanySearchResult, Information, ReportDraft, ReportDraftConsumer, Subcategory} from '@signal-conso/signalconso-api-sdk-js'
 import anomalies from '@signal-conso/signalconso-api-sdk-js/lib/client/anomaly/yml/anomalies.json'
 import {ReportStep, ReportStepHelper} from '../core/reportStep'
-import {ReportDraftConsumer} from '@signal-conso/signalconso-api-sdk-js'
 import randomstring from 'randomstring'
 
 export const oneOf = (array: any[]) => {
@@ -109,11 +108,12 @@ export const genCompany = () => {
   }
 }
 
-export const genSubcategory = () => {
+export const genSubcategory = (params: Partial<Subcategory> = {}) => {
   return <Subcategory>{
     title: randomstring.generate(),
     id: randomstring.generate(),
-    tags: oneOf([null, [randomstring.generate()], [randomstring.generate(), randomstring.generate()]])
+    tags: oneOf([null, [randomstring.generate()], [randomstring.generate(), randomstring.generate()]]),
+    ...params
   }
 }
 

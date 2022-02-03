@@ -23,7 +23,7 @@ export const StepperActions = ({hidePrev, hideNext, loadingNext, loadingPrev, ne
         </ScButton>
       )}
       {!hideNext && (
-        <ScButton loading={loadingNext} sx={{marginLeft: 'auto'}} onClick={next ? () => next(_stepper.next) : _stepper.next} color="primary" variant="contained"
+        <ScButton id="btn-submit" loading={loadingNext} sx={{marginLeft: 'auto'}} onClick={next ? () => next(_stepper.next) : _stepper.next} color="primary" variant="contained"
                   iconAfter="keyboard_arrow_right">
           {m.next}
         </ScButton>

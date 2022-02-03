@@ -2,15 +2,15 @@ import {ReactNode} from 'react'
 import {Txt} from 'mui-extension'
 import {Box, BoxProps, Card, CardProps} from '@mui/material'
 
-interface Props extends Omit<CardProps, 'title'> {
+export interface PanelProps extends Omit<CardProps, 'title'> {
   title?: ReactNode
   desc?: ReactNode
   border?: boolean
 }
 
-export const Panel = ({title, desc, children, sx, elevation = 0, border, ...rest}: Props) => {
+export const Panel = ({title, desc, children, sx, elevation = 0, border, ...rest}: PanelProps) => {
   return (
-    <Card elevation={elevation} {...rest} sx={{
+    <Card role="article" elevation={elevation} {...rest} sx={{
       ...(border ? {
         border: t => border ? `1px solid ${t.palette.divider}` : `none`,
         px: 2,
@@ -21,6 +21,7 @@ export const Panel = ({title, desc, children, sx, elevation = 0, border, ...rest
         pt: 3,
         mt: 3,
         ...(!border && !elevation ? {
+          borderRadius: 'none',
           borderTop: t => `1px solid ${t.palette.divider}`,
         } : {})
       }

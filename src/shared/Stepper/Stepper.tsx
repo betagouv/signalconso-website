@@ -21,7 +21,7 @@ interface StepperContext {
   prev: () => void
 }
 
-const StepperContext = React.createContext<StepperContext>({
+export const StepperContext = React.createContext<StepperContext>({
   currentStep: 0
 } as StepperContext)
 
