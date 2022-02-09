@@ -1,8 +1,8 @@
 import '@testing-library/jest-dom'
 import {DraftReportDefaultInputs, getDraftReportInputs} from './draftReportInputs'
 import {genSubcategory} from '../../../test/fixture'
-import {DetailsFixture} from './Details.test'
 import {ReportTag} from '@signal-conso/signalconso-api-sdk-js'
+import { DetailsFixture } from 'pages/playground'
 
 describe('getDraftReportInputs', () => {
 

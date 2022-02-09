@@ -7,7 +7,7 @@ interface CustomProps {
 }
 
 export const TextMaskCustom = React.forwardRef<HTMLElement, CustomProps>(
-  function TextMaskCustom(props, ref) {
+  function TextMaskCustom(props, ref: any) {
     const {onChange, ...other} = props
     return (
       <IMaskInput
