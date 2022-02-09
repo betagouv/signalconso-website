@@ -20,7 +20,7 @@
     "@mui/lab": "^5.0.0-alpha.65",
     "@mui/material": "^5.0.6",
     "@mui/styles": "^5.0.2",
-    "@signal-conso/signalconso-api-sdk-js": "^1.0.18",
+    "@signal-conso/signalconso-api-sdk-js": "git@github.com:betagouv/signalconso-api-sdk-js.git#website_v2",
     "classnames": "^2.3.1",
     "date-fns": "^2.25.0",
     "fp-ts": "^1.19.5",
