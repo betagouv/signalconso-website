@@ -31,6 +31,8 @@ interface Props {
   tags?: ReportTag[]
 }
 
+export const precisionKeyword = '(à préciser)'
+
 export const Details = () => {
   const _reportFlow = useReportFlowContext()
   const draft = _reportFlow.reportDraft
@@ -58,7 +60,6 @@ export const Details = () => {
 }
 
 const mapDateInput = ({value, onChange}: {value?: string, onChange: (_: string) => void}): {value?: Date, onChange: (_: Date) => void} => {
-  console.log('-------mapDateInput', value)
   return {
     value: value ? parse(value, appConfig.reportDateFormat, new Date()) : undefined,
     onChange: (_: Date) => onChange(format(_, appConfig.reportDateFormat))
@@ -82,7 +83,6 @@ export const _Details = ({
     formState: {errors, isValid},
   } = useForm<any>()
 
-  console.log('render', getValues())
   return (
     <Animate animate={true}>
       <Panel>
@@ -210,8 +210,13 @@ export const _Details = ({
                           {input.options?.map((option, i) =>
                             <ScRadioGroupItem
                               key={option}
-                              value={i}
+                              value={option}
                               title={<span dangerouslySetInnerHTML={{__html: option}}/>}
+                              description={
+                                (field.value === option && option.includes(precisionKeyword))
+                                  ? (<ScInput fullWidth placeholder={m.specify}/>)
+                                  : undefined
+                              }
                             />
                           )}
                         </ScRadioGroup>

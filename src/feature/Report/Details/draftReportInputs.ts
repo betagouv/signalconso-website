@@ -30,8 +30,8 @@ export const getDraftReportInputs = ({subcategories, tags}: {subcategories: Subc
   const lastSubcategories = last(subcategories)
   const res: DetailInput[] = []
   if (AnomalyClient.instanceOfSubcategoryInput(lastSubcategories)) {
-    res.push(...lastSubcategories.detailInputs)
-    if (!lastSubcategories.detailInputs.some(_ => _.type === DetailInputType.TEXTAREA)) {
+    res.push(...(lastSubcategories.detailInputs) ?? [])
+    if (!lastSubcategories.detailInputs?.some(_ => _.type === DetailInputType.TEXTAREA)) {
       res.push(DraftReportDefaultInputs.description(true))
     }
   } else {

@@ -59,10 +59,12 @@ const useStyle = makeStyles((t: Theme) => {
       // minHeight: 42,
       flexDirection: 'column',
       marginLeft: t.spacing(.5),
+      marginRight: t.spacing(2),
+      width: '100%',
     },
     bodyDense: {
-      paddingTop: t.spacing(1 / 4),
-      paddingBottom: t.spacing(1 / 4),
+      paddingTop: t.spacing(1),
+      paddingBottom: t.spacing(1),
     },
     radio: {
       marginLeft: t.spacing(1),

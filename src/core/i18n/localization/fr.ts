@@ -90,6 +90,7 @@ export const fr = {
     cancelAll: `Tout annuler`,
     clear: 'Clear',
     cron: 'Cron',
+    specify: `Précisez...`,
     removeAsk: 'Supprimer ? ',
     thisWillBeRemoved: (_: string) => `La pièce jointe <b>${_}</b> sera définitivement supprimée.`,
     exportInXLS: 'Exporter en XLS',

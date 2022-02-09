@@ -7,6 +7,7 @@ import {ScButton} from '../../shared/Button/Button'
 import makeStyles from '@mui/styles/makeStyles'
 import {classes} from '../helper/utils'
 import {useI18n} from '../i18n'
+import {appConfig} from '../../conf/appConfig'
 
 interface HeaderItemProps {
   href: string
@@ -60,14 +61,14 @@ export const Header = () => {
   const theme = useTheme()
   const css = useCss()
   const {m} = useI18n()
-  const trigger = useScrollTrigger({
+  const scrolled = useScrollTrigger({
     disableHysteresis: true,
     threshold: headerHeight.normal - headerHeight.compact,
   })
 
   return (
-    <header className={classes(css.root, trigger && css.rootScrolled)}>
-      {trigger ? (
+    <header className={classes(css.root, scrolled && css.rootScrolled)}>
+      {scrolled ? (
         <img
           style={{height: 38, marginRight: theme.spacing(3)}}
           src="/image/gouv-mobile.svg"
@@ -82,12 +83,15 @@ export const Header = () => {
       )}
       <Link href={siteMap.index}>
         <a>
-          <img style={{height: trigger ? 40 : 60}} src="/image/logo-signalconso.svg" alt={m.logoAltSignalconso}/>
+          <img style={{height: scrolled ? 40 : 60}} src="/image/logo-signalconso.svg" alt={m.logoAltSignalconso}/>
         </a>
       </Link>
 
       <nav style={{marginLeft: 'auto', display: 'flex', alignItems: 'center'}}>
         <ul style={{listStyle: 'none', display: 'flex', alignItems: 'center', margin: 0}}>
+          {appConfig.isDev && (
+            <li><HeaderItem href={siteMap.playground}>Playground</HeaderItem></li>
+          )}
           <li><HeaderItem href={siteMap.index}>{m.menu_home}</HeaderItem></li>
           <li><HeaderItem href={siteMap.howItWorks}>{m.menu_howItWorks}</HeaderItem></li>
           <li><HeaderItem href={siteMap.help}>{m.menu_help}</HeaderItem></li>
