@@ -1,5 +1,5 @@
 import React, {useEffect, useMemo} from 'react'
-import {config} from 'conf/config'
+import {appConfig} from 'conf/appConfig'
 import {Anomaly, AnomalyClient, CompanyKinds, ReportTag, Subcategory} from '@signal-conso/signalconso-api-sdk-js'
 import {useReportFlowContext} from '../ReportFlowContext'
 import {useSelectedSubcategoriesUtils} from './useSelectedSubcategoriesUtils'
@@ -8,8 +8,7 @@ import {ProblemSelect} from './ProblemSelect'
 import {StepperActions} from 'shared/Stepper/StepperActions'
 import {ProblemInformation} from './ProblemInformation'
 import {useI18n} from '../../../core/i18n'
-import {Panel, PanelBody} from '../../../shared/Panel/Panel'
-import {Txt} from 'mui-extension'
+import {ProblemContratualDisputeWarnPanel} from './ProblemContratualDisputeWarnPanel'
 
 interface Props {
   animatePanel?: boolean
@@ -23,7 +22,7 @@ export const Problem = ({
   autoScrollToPanel,
 }: Props) => {
   const {m} = useI18n()
-  const displayReponseConso = useMemo(() => Math.random() * 100 < config.reponseConsoDisplayRate, [])
+  const displayReponseConso = useMemo(() => Math.random() * 100 < appConfig.reponseConsoDisplayRate, [])
   const {reportDraft, setReportDraft, clearReportDraft} = useReportFlowContext()
   useEffect(() => {
     if (anomaly.category !== reportDraft.category) {
@@ -185,17 +184,10 @@ export const Problem = ({
               />
             </Step>
             <Step isDone={true} hidden={reportDraft.contractualDispute !== true}>
-              <Panel
-                id="panel-contractual-dispute"
-                border
-                title={m.problemContractualDisputeTitle}
-                desc={m.problemContractualDisputeDesc}
-              >
-                <PanelBody>
-                  <Txt bold>{m.problemContractualDisputeInfoTitle}</Txt>
-                  <Txt color="hint" dangerouslySetInnerHTML={{__html: m.problemContractualDisputeInfo}}/>
-                </PanelBody>
-              </Panel>
+              <ProblemContratualDisputeWarnPanel
+                animatePanel={animatePanel}
+                autoScrollToPanel={autoScrollToPanel}
+              />
             </Step>
           </Stepper>
         ))}

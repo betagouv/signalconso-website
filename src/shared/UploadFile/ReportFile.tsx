@@ -6,7 +6,7 @@ import {some} from 'fp-ts/lib/Option'
 import React from 'react'
 import {IconBtn, useToast} from 'mui-extension/lib'
 import {useI18n} from '../../core/i18n'
-import {config} from '../../conf/config'
+import {appConfig} from '../../conf/appConfig'
 import {useApiSdk} from '../../core/context/ApiSdk'
 import {ScDialog} from '../Dialog/ScDialog'
 
@@ -92,7 +92,7 @@ export const ReportFile = ({file, dense, onRemove}: ReportFileProps) => {
   const {m} = useI18n()
 
   const fileUrl = some(apiSdk.document.getLink(file))
-    .map(_ => (config.isDev ? _.replace(config.apiBaseUrl, 'https://signal-api.conso.gouv.fr') : _))
+    .map(_ => (appConfig.isDev ? _.replace(appConfig.apiBaseUrl, 'https://signal-api.conso.gouv.fr') : _))
     .toUndefined()
 
   const remove = async () => {

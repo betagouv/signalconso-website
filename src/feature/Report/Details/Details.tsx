@@ -1,7 +1,7 @@
 import React, {useMemo} from 'react'
 import {Alert, Txt} from 'mui-extension'
 import {useReportFlowContext} from '../ReportFlowContext'
-import {AnomalyClient, DetailInput, DetailInputType, FileOrigin, ReportDraft, ReportTag, Subcategory} from '@signal-conso/signalconso-api-sdk-js'
+import {DetailInput, DetailInputType, DetailInputValue, FileOrigin, ReportDraft, ReportTag, SubcategoryInput} from '@signal-conso/signalconso-api-sdk-js'
 import {ScDatepicker} from '../../../shared/Datepicker/Datepicker'
 import {fnSwitch, mapFor} from '@alexandreannic/ts-utils/lib/common'
 import {useI18n} from '../../../core/i18n'
@@ -16,73 +16,65 @@ import {MenuItem} from '@mui/material'
 import {ScRadioGroup, ScRadioGroupItem} from '../../../shared/RadioGroup'
 import {ScSelect} from '../../../shared/Select/Select'
 import {ScInput} from '../../../shared/Input/ScInput'
-import {config} from '../../../conf/config'
-
-const reponseConsoQuestion = {
-  label: 'Votre question',
-  type: DetailInputType.TEXTAREA,
-}
-
-const defaultDetailInputs: DetailInput[] = [
-  {
-    label: 'Description',
-    type: DetailInputType.TEXTAREA
-  },
-  {
-    label: 'Date du constat',
-    type: DetailInputType.DATE,
-    defaultValue: 'SYSDATE'
-  }
-]
-
-const getInputs = ({subcategories, tags}: {subcategories: Subcategory[], tags?: ReportTag[]}): DetailInput[] => {
-  const lastSubcategories = subcategories[subcategories.length - 1]
-  const res: DetailInput[] = []
-  if (AnomalyClient.instanceOfSubcategoryInput(lastSubcategories)) {
-    res.push(...lastSubcategories.detailInputs)
-    if (!lastSubcategories.detailInputs.some(_ => _.type === DetailInputType.TEXTAREA)) {
-      res.push({
-        label: 'Description',
-        type: DetailInputType.TEXTAREA,
-        optionnal: true
-      })
-    }
-  } else {
-    res.push(...defaultDetailInputs)
-  }
-  if (tags?.includes(ReportTag.ReponseConso)) {
-    res.push(reponseConsoQuestion)
-  }
-  return res
-}
+import {DetailsAlertProduitDangereux} from './DetailsAlertProduitDangereux'
+import {last} from '../../../core/lodashNamedExport'
+import {getDraftReportInputs} from './draftReportInputs'
+import {appConfig} from '../../../conf/appConfig'
 
 interface Props {
-  draft: Readonly<Partial<ReportDraft>>
-  subcategories: Subcategory[]
-  tags: ReportTag[]
-  employeeConsumer: boolean
+  inputs: DetailInput[]
+  onSubmit?: (values: DetailInputValue[]) => void
+  initialValues?: (string | Date | string[])[]
+  description?: string
+  fileLabel?: string
+  isTransmittable?: boolean
+  tags?: ReportTag[]
 }
 
 export const Details = () => {
   const _reportFlow = useReportFlowContext()
   const draft = _reportFlow.reportDraft
-  if (!draft.subcategories || draft.employeeConsumer === undefined) {
+  const inputs = useMemo(() => {
+    if (draft.subcategories) {
+      return getDraftReportInputs({subcategories: draft.subcategories, tags: draft.tags})
+    }
+  }, [draft.subcategories, draft.tags])
+
+  if (!inputs || draft.employeeConsumer === undefined) {
     return (
       <>{JSON.stringify(draft)}</>
     )
   }
   return (
-    <DetailsWithRequiredProps draft={draft} employeeConsumer={draft.employeeConsumer} subcategories={draft.subcategories} tags={draft.tags ?? []}/>
+    <_Details
+      initialValues={draft.detailInputValues?.map(_ => _.value)}
+      isTransmittable={ReportDraft.isTransmittableToPro(draft)}
+      inputs={inputs}
+      fileLabel={(last(draft.subcategories) as SubcategoryInput).fileLabel}
+      tags={draft.tags ?? []}
+      onSubmit={detailInputValues => _reportFlow.setReportDraft(_ => ({..._, detailInputValues}))}
+    />
   )
 }
 
-const DetailsWithRequiredProps = ({draft, subcategories, tags, employeeConsumer}: Props) => {
-  const lastSubcategories = subcategories[subcategories.length - 1]
+const mapDateInput = ({value, onChange}: {value?: string, onChange: (_: string) => void}): {value?: Date, onChange: (_: Date) => void} => {
+  console.log('-------mapDateInput', value)
+  return {
+    value: value ? parse(value, appConfig.reportDateFormat, new Date()) : undefined,
+    onChange: (_: Date) => onChange(format(_, appConfig.reportDateFormat))
+  }
+}
+
+export const _Details = ({
+  initialValues,
+  inputs,
+  fileLabel,
+  tags,
+  isTransmittable,
+  description,
+  onSubmit,
+}: Props) => {
   const {m} = useI18n()
-  const _reportFlow = useReportFlowContext()
-  const inputs = useMemo(() => {
-    return getInputs({subcategories, tags})
-  }, [subcategories, tags])
   const {
     control,
     getValues,
@@ -90,11 +82,12 @@ const DetailsWithRequiredProps = ({draft, subcategories, tags, employeeConsumer}
     formState: {errors, isValid},
   } = useForm<any>()
 
+  console.log('render', getValues())
   return (
     <Animate animate={true}>
       <Panel>
         <Alert gutterBottom type="warning">
-          {ReportDraft.isTransmittableToPro({tags, employeeConsumer}) ? (
+          {isTransmittable ? (
             <span dangerouslySetInnerHTML={{__html: m.detailsTextAreaTransmittable}}/>
           ) : (
             <>
@@ -104,28 +97,12 @@ const DetailsWithRequiredProps = ({draft, subcategories, tags, employeeConsumer}
           )}
         </Alert>
         {(tags ?? []).includes(ReportTag.ProduitDangereux) && (
-          <Alert type="info" gutterBottom>
-            En cas d'une urgence vitale ou importante, appelez le <b>112</b>.
-            <br/>
-            Si vous êtes blessé ou souffrant, appelez le Samu: <b>15</b>.
-            <br/>
-            Si vous subissez ou vous avez subi une agression ou des violences, appelez Police Secours: <b>17</b>.
-            <br/>
-            En cas d'incendie ou d'une fuite de gaz, appelez les pompiers: <b>18</b>.
-            <br/>
-            Si vous êtes sourd ou malentendant, contactez le <b>114</b> par visiophonie, par chat, par SMS ou par FAX.
-            <br/>
-            Ces numéros sont joignables 24H/24 et 7J/7.
-            <br/>
-            <br/>
-            Plus d'informations sur<br/>
-            <a href="https://www.gouvernement.fr/risques/connaitre-les-numeros-d-urgence">https://www.gouvernement.fr/risques/connaitre-les-numeros-d-urgence</a>
-          </Alert>
+          <DetailsAlertProduitDangereux/>
         )}
 
-        {lastSubcategories.description && (
+        {description && (
           <Alert type="info">
-            <Txt dangerouslySetInnerHTML={{__html: lastSubcategories.description}}/>
+            <Txt dangerouslySetInnerHTML={{__html: description}}/>
           </Alert>
         )}
 
@@ -144,19 +121,20 @@ const DetailsWithRequiredProps = ({draft, subcategories, tags, employeeConsumer}
               const defaultControl = {control, name: '' + i}
               const errorMessage = errors[i]?.message
               const hasErrors = !!errors[i]
-              const storedValue = draft.detailInputValues?.[i]?.value
+              const storedValue = initialValues?.[i]
               return fnSwitch(input.type, {
                   [DetailInputType.DATE_NOT_IN_FUTURE]: () => (
                     <Controller
                       {...defaultControl}
-                      defaultValue={(input.defaultValue === 'SYSDATE' ? new Date() : input.defaultValue) ?? ''}
+                      defaultValue={storedValue ?? (input.defaultValue === 'SYSDATE' ? format(new Date(), appConfig.reportDateFormat) : input.defaultValue) ?? ''}
                       rules={{
                         required: {value: true, message: m.required + ' *'},
                       }}
                       render={({field}) => (
                         <ScDatepicker
                           {...field}
-                          value={typeof field.value === 'string' ? new Date(field.value) : field.value}
+                          {...mapDateInput(field)}
+                          // value={typeof field.value === 'string' ? new Date(field.value) : field.value}
                           // value={parse(field.value, config.reportDateFormat, new Date())}
                           // onChange={date => {
                           //   field.onChange(format(date, config.reportDateFormat))
@@ -172,14 +150,15 @@ const DetailsWithRequiredProps = ({draft, subcategories, tags, employeeConsumer}
                   [DetailInputType.DATE]: () => (
                     <Controller
                       {...defaultControl}
-                      defaultValue={storedValue ?? (input.defaultValue === 'SYSDATE' ? new Date() : input.defaultValue) ?? ''}
+                      defaultValue={storedValue ?? (input.defaultValue === 'SYSDATE' ? format(new Date(), appConfig.reportDateFormat) : input.defaultValue) ?? ''}
                       rules={{
                         required: {value: true, message: m.required + ' *'},
                       }}
                       render={({field}) => (
                         <ScDatepicker
                           {...field}
-                          value={typeof field.value === 'string' ? new Date(field.value) : field.value}
+                          {...mapDateInput(field)}
+                          // value={typeof field.value === 'string' ? new Date(field.value) : field.value}
                           // value={parse(field.value, config.reportDateFormat, new Date())}
                           // onChange={date => {
                           //   field.onChange(format(date, config.reportDateFormat))
@@ -207,7 +186,7 @@ const DetailsWithRequiredProps = ({draft, subcategories, tags, employeeConsumer}
                           error={hasErrors}
                         >
                           {mapFor(24, i =>
-                            <MenuItem key={i} value={`de ${i}h à ${i + 1}h`}>
+                            <MenuItem onChange={(x: React.FormEvent<HTMLLIElement>) => console.log} key={i} value={`de ${i}h à ${i + 1}h`}>
                               {m.timeFromTo(i, i + 1)}
                             </MenuItem>
                           )}
@@ -292,6 +271,7 @@ const DetailsWithRequiredProps = ({draft, subcategories, tags, employeeConsumer}
                     }}
                     render={({field}) => (
                       <ScInput
+                        type="text"
                         {...field}
                         helperText={errorMessage}
                         error={hasErrors}
@@ -305,7 +285,7 @@ const DetailsWithRequiredProps = ({draft, subcategories, tags, employeeConsumer}
             })()}
           </FormLayout>
         ))}
-        <Txt block sx={{mt: 2}}>{m.attachments}</Txt>
+        <Txt block sx={{mt: 2}}>{fileLabel ?? m.attachments}</Txt>
         <Txt color="hint" size="small" block gutterBottom dangerouslySetInnerHTML={{__html: m.attachmentsDesc}}/>
         <Alert dense type="info" gutterBottom deletable persistentDelete>
           <Txt size="small" dangerouslySetInnerHTML={{__html: m.attachmentsDesc2}}/>
@@ -314,10 +294,9 @@ const DetailsWithRequiredProps = ({draft, subcategories, tags, employeeConsumer}
         <ReportFiles fileOrigin={FileOrigin.Consumer}/>
 
         <StepperActions next={(next) => {
-          console.log('next', errors, getValues())
           handleSubmit((values: {[key: string]: any}) => {
-            const detailInputValues = Object.entries(values).map(([index, value]) => ({label: inputs[+index].label, value}))
-            _reportFlow.setReportDraft(_ => ({..._, detailInputValues}))
+            console.log('SUBMIT========================================================SUBMIT', values)
+            onSubmit?.(Object.entries(values).map(([index, value]) => ({label: inputs[+index].label, value})))
             next()
           })()
         }}/>

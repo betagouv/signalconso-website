@@ -5,7 +5,7 @@ import {reportFileConfig} from './reportFileConfig'
 import {FileOrigin, Id, UploadedFile} from '@signal-conso/signalconso-api-sdk-js'
 import {useI18n} from '../../core/i18n'
 import {useApiSdk} from '../../core/context/ApiSdk'
-import {config} from '../../conf/config'
+import {appConfig} from '../../conf/appConfig'
 import {styleUtils} from '../../core/theme/theme'
 import {useToast} from '../../core/toast'
 
@@ -61,9 +61,9 @@ export const ReportFileAdd = ({onUploaded, fileOrigin}: Props) => {
   const handleChange = (files: FileList | null) => {
     if (files && files[0]) {
       const file: File = files[0]
-      if (file.size > config.upload_maxSizeMb * 1024 * 1024) {
-        toastError({message: m.invalidSize(config.upload_maxSizeMb)})
-        setErrorMessage(m.invalidSize(config.upload_maxSizeMb))
+      if (file.size > appConfig.upload_maxSizeMb * 1024 * 1024) {
+        toastError({message: m.invalidSize(appConfig.upload_maxSizeMb)})
+        setErrorMessage(m.invalidSize(appConfig.upload_maxSizeMb))
         return
       }
       setUploading(true)

@@ -13,11 +13,11 @@ export interface ScDatepickerProps extends BaseTextFieldProps {
 }
 
 const onChangeDate = (callback: (date: Date) => any) => (e: React.ChangeEvent<HTMLInputElement>) => {
-  callback(e.target.valueAsDate!)
+  callback(new Date(e.target.valueAsDate!))
 }
 
 const mapDate = (date: Date): string => {
-  console.log('helllo,', date)
+  console.log('ScDatepicker.mapdate', date)
   return format(date, 'yyyy-MM-dd')
 }
 

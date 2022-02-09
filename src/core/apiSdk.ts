@@ -1,8 +1,8 @@
 import {ApiClient, SignalConsoPublicSdk} from '@signal-conso/signalconso-api-sdk-js'
-import {config} from '../conf/config'
+import {appConfig} from '../conf/appConfig'
 
 export const apiSdk = new SignalConsoPublicSdk(new ApiClient({
-  baseUrl: config.apiBaseUrl + '/api',
+  baseUrl: appConfig.apiBaseUrl + '/api',
   headers: {
     'Content-Type': 'application/json',
     Accept: 'application/json',

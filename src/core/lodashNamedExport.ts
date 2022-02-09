@@ -8,6 +8,7 @@ import _groupBy from 'lodash/groupBy'
 import _intersectionBy from 'lodash/intersectionBy'
 import _differenceBy from 'lodash/differenceBy'
 import _sortBy from 'lodash/sortBy'
+import _last from 'lodash/last'
 
 export const sortBy = _sortBy
 export const uniqBy = _uniqBy
@@ -16,3 +17,4 @@ export const throttle = _throttle
 export const groupBy = _groupBy
 export const intersectionBy = _intersectionBy
 export const differenceBy = _differenceBy
+export const last = _last

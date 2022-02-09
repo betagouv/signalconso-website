@@ -16,10 +16,11 @@ const ReportFlowContext = React.createContext<ReportFlowContextProps>({} as Repo
 
 interface ReportFlowProviderProps {
   children: ReactNode
+  initialReport?: Partial<ReportDraft2>
 }
 
-export const ReportFlowProvider = ({children}: ReportFlowProviderProps) => {
-  const [reportDraft, setReportDraft, clearReportDraft] = usePersistentState<Partial<ReportDraft2>>({}, 'report-draft')
+export const ReportFlowProvider = ({initialReport, children}: ReportFlowProviderProps) => {
+  const [reportDraft, setReportDraft, clearReportDraft] = usePersistentState<Partial<ReportDraft2>>(initialReport ?? {}, 'report-draft')
   return (
     <ReportFlowContext.Provider value={{
       reportDraft,

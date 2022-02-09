@@ -54,20 +54,23 @@ export const genDraftReport = (lastStep: ReportStep): Partial<ReportDraft> => {
     }),
     [ReportStep.Details]: _ => ({
       ..._,
+      subcategories: [genSubcategory()],
+    }),
+    [ReportStep.Company]: _ => ({
+      ..._,
       employeeConsumer: oneBoolean(),
       detailInputValues: [],
       uploadedFiles: [],
     }),
-    [ReportStep.Company]: _ => ({
+    [ReportStep.Consumer]: _ => ({
       ..._,
       draftCompany: genCompanySearchResult()
     }),
-    [ReportStep.Consumer]: _ => ({
+    [ReportStep.Confirmation]: _ => ({
       ..._,
       consumer: genConsumer(),
       contactAgreement: oneBoolean(),
     }),
-    [ReportStep.Confirmation]: _ => _,
     [ReportStep.Acknowledgment]: _ => _,
   })
   return ReportStepHelper.reportStepOrdered

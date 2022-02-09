@@ -10,14 +10,14 @@ import {SignalConsoPublicSdk} from '../../../signalconso-api-sdk-js'
 import {fr} from '../core/i18n/localization/fr'
 import {StepperContext} from 'shared/Stepper/Stepper'
 
-const AllTheProviders = (apiSdkMock: Partial<SignalConsoPublicSdk> = {}) => ({children}: any) => {
+const AllTheProviders = (options?: Options) => ({children}: any) => {
   return (
     <Provide
       providers={[
-        _ => <ApiSdkProvider children={_} apiSdk={apiSdkMock as any}/>,
+        _ => <ApiSdkProvider children={_} apiSdk={options?.apiSdkMock ?? {} as any}/>,
         _ => <ThemeProvider theme={muiTheme()} children={_}/>,
         _ => <I18nProvider children={_}/>,
-        _ => <ReportFlowProvider children={_}/>,
+        _ => <ReportFlowProvider children={_} initialReport={options?.initialReport}/>,
       ]}>
       {children}
     </Provide>
@@ -56,6 +56,7 @@ export const AccessReportFlow = ({children, onReportChange}: {
 }
 
 interface Options {
+  initialReport?: Partial<ReportDraft2>
   apiSdkMock?: Partial<SignalConsoPublicSdk>
 }
 
@@ -65,7 +66,7 @@ export interface ScRenderResult extends RenderResult {
 
 const customRender = (ui: React.ReactElement, options?: Options) => {
   return {
-    ...render(ui, {wrapper: AllTheProviders(options?.apiSdkMock), ...options}),
+    ...render(ui, {wrapper: AllTheProviders(options), ...options}),
     m: fr.messages,
   }
 }
