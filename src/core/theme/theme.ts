@@ -34,7 +34,7 @@ export const defaultSpacing = 8
 export const muiTheme = (dark?: boolean): Theme => {
   const defaultTheme = createTheme()
   const colorMain = {
-    base: '#2c9bc9',
+    base: '#2b7c9f',
     light: '#6fd3ff',
     dark: '#1c536b',
     // base: '#407e99',

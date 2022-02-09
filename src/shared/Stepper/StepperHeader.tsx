@@ -1,6 +1,6 @@
 import React from 'react'
 import {StepProps} from './Stepper'
-import {Box, Icon, Theme, useTheme} from '@mui/material'
+import {alpha, Box, Icon, Theme, useTheme} from '@mui/material'
 
 interface StepperHeaderProps {
   steps: StepProps[]
@@ -58,8 +58,8 @@ export const StepperHeader = ({steps, currentStep, goTo}: StepperHeaderProps) =>
                 background: t.palette.success.light,
                 color: t.palette.success.contrastText,
               } : currentStep === i ? {
-                border: t => `2px solid ${t.palette.background.paper}`,
-                boxShadow: t => `0px 0px 0px 2px ${t.palette.primary.main}`,
+                // border: t => `2px solid ${alpha(t.palette.primary.main, .5)}`,
+                boxShadow: t => `0px 0px 0px 4px ${alpha(t.palette.primary.main, .3)}`,
                 color: t.palette.primary.contrastText,
                 bgcolor: 'primary.main',
               } : {

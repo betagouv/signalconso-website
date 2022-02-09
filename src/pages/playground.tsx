@@ -1,7 +1,7 @@
 import {_Details} from '../feature/Report/Details/Details'
 import {Page} from '../shared/Page/Page'
 import {Card, CardContent} from '@mui/material'
-import {DetailInput, DetailInputType} from '../../../signalconso-api-sdk-js'
+import {DetailInput, DetailInputType} from '@signal-conso/signalconso-api-sdk-js'
 
 export class DetailsFixture {
 

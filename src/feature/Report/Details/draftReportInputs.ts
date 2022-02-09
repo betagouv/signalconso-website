@@ -1,4 +1,4 @@
-import {AnomalyClient, DetailInput, DetailInputType, ReportTag, Subcategory} from '../../../../../signalconso-api-sdk-js'
+import {AnomalyClient, DetailInput, DetailInputType, ReportTag, Subcategory} from '@signal-conso/signalconso-api-sdk-js'
 import {last} from '../../../core/lodashNamedExport'
 
 export class DraftReportDefaultInputs {
