@@ -1,7 +1,6 @@
 // Env variables must start with 'REACT_APP_' to be considered by CreateReactApp
 import {env as _env} from '@alexandreannic/ts-utils/lib/common/env/Env'
 import {defaultValue, int} from '@alexandreannic/ts-utils/lib/common/env/EnvParser'
-import {Enum} from '../../../../ts-utils'
 
 enum Env {
   NEXT_PUBLIC_NODE_ENV = 'NEXT_PUBLIC_NODE_ENV',
