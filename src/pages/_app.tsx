@@ -1,5 +1,4 @@
 import type {AppProps} from 'next/app'
-import {createGenerateClassName, StylesProvider} from '@mui/styles'
 import {StyledEngineProvider} from '@mui/styled-engine'
 import {Box, CssBaseline, ThemeProvider} from '@mui/material'
 import {Header, headerHeight} from '../core/component/Header'
@@ -13,11 +12,6 @@ import createEmotionCache from '../core/createEmotionCache'
 import {ToastProvider} from 'mui-extension'
 import {ReportFlowProvider} from '../feature/Report/ReportFlowContext'
 
-const generateClassName = createGenerateClassName({
-  productionPrefix: 'c',
-  disableGlobal: true,
-})
-
 interface ScAppProps extends AppProps {
   emotionCache?: EmotionCache;
 }
@@ -29,7 +23,6 @@ const App = ({emotionCache = clientSideEmotionCache, ...props}: ScAppProps) => {
     <Provide
       providers={[
         _ => <CacheProvider value={emotionCache} children={_}/>,
-        _ => <StylesProvider generateClassName={generateClassName} children={_}/>,
         _ => <StyledEngineProvider children={_}/>,
         _ => <ThemeProvider theme={muiTheme()} children={_}/>,
         _ => <I18nProvider children={_}/>,
@@ -45,14 +38,13 @@ const App = ({emotionCache = clientSideEmotionCache, ...props}: ScAppProps) => {
 }
 
 const _App = ({Component, pageProps}: AppProps) => {
-  // useGlobalCss()
-
   return (
     <div className="root">
       {/*<Head>*/}
       {/*  <meta name="theme-color" content={theme.palette.primary.main}/>*/}
       {/*</Head>*/}
       <Box sx={{
+        flex: 1,
         marginTop: `${headerHeight.normal}px`
       }}>
         <Component {...pageProps} />
