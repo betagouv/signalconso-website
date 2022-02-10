@@ -56,7 +56,7 @@ export const AnomalyCard = ({anomaly}: AnomalyCardProps) => {
             }}>
               {anomaly.category}
             </h3>
-            <Txt color="disabled">{anomaly.description}</Txt>
+            <Txt color="hint">{anomaly.description}</Txt>
           </div>
         </Box>
       </a>

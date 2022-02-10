@@ -1,6 +1,5 @@
 import {Box, useTheme} from '@mui/material'
 import {ReactNode} from 'react'
-import {useCssUtils} from '../../core/theme/useCssUtils'
 import {useWindowWidth} from '../useWindowWidth'
 
 interface IllustrationStepperProps {
@@ -18,14 +17,14 @@ export const IllustrationStepper = ({children}: IllustrationStepperProps) => {
 interface IllustrationStepperStepProps {
   title: string
   image: string
+  alt?: string
 }
 
-export const IllustrationStepperStep = ({title, image}: IllustrationStepperStepProps) => {
+export const IllustrationStepperStep = ({title, alt, image}: IllustrationStepperStepProps) => {
   const dotSize = 18
   const borderSize = 2
   const stepperMargin = 24
   const theme = useTheme()
-  const cssUtils = useCssUtils()
   const {isMd} = useWindowWidth()
   return (
     <Box sx={{
@@ -63,7 +62,7 @@ export const IllustrationStepperStep = ({title, image}: IllustrationStepperStepP
         right: `calc(50% - ${(dotSize + borderSize) / 2}px)`,
       },
     }}>
-      <img src={image}/>
+      <img src={image} alt={alt}/>
       {/*<div style={{*/}
       {/*  border: `3px solid ${theme.palette.divider}`,*/}
       {/*  borderRadius: 40,*/}

@@ -33,6 +33,7 @@ export const defaultSpacing = 8
 
 export const muiTheme = (dark?: boolean): Theme => {
   const defaultTheme = createTheme()
+  const fontFamily = '"Open Sans", sans-serif'
   const colorMain = {
     base: '#2b7c9f',
     light: '#6fd3ff',
@@ -45,7 +46,6 @@ export const muiTheme = (dark?: boolean): Theme => {
     base: '#1e2b50',
     light: '#1e2b50',
     dark: '#1e2b50',
-
   }
   const theme: ThemeOptions = {
     spacing: defaultSpacing,
@@ -68,12 +68,61 @@ export const muiTheme = (dark?: boolean): Theme => {
     },
     typography: {
       fontSize: 15,
-      fontFamily: '"Open Sans", sans-serif',
+      fontFamily,
       // fontFamily: 'Evolventa, sans-serif',
       fontWeightBold: 600,
     },
     components: {
-      // MuiCssBaseline: {
+      MuiCssBaseline: {
+        styleOverrides: {
+          '*': {
+            boxSizing: 'border-box',
+          },
+          '.material-icons': {
+            display: 'inherit',
+          },
+          html: {
+            fontSize: defaultTheme.typography.fontSize,
+            color: defaultTheme.palette.text.primary,
+          },
+          '.root': {
+            minHeight: '100vh',
+            display: 'flex',
+            flexDirection: 'column',
+          },
+          body: {
+            lineHeight: '1.5',
+            fontFamily,
+            background: defaultTheme.palette.background.paper,
+            margin: 0,
+            color: defaultTheme.palette.text.primary,
+            boxSizing: 'border-box',
+          },
+          main: {
+            flex: 1,
+          },
+          ul: {
+            marginTop: '.5em',
+          },
+          h1: defaultTheme.typography.h4,
+          h2: {
+            ...defaultTheme.typography.h6,
+            marginBottom: defaultTheme.spacing(2),
+            marginTop: defaultTheme.spacing(3),
+          },
+          p: {
+            ...defaultTheme.typography.body1,
+            textAlign: 'justify',
+          },
+          a: {
+            color: 'inherit',
+            textDecoration: 'none',
+          },
+          ':focus': {
+            outline: 0,
+          },
+        },
+      },
       //   styleOverrides: `
       //   @font-face {
       //     font-family: 'Evolventa';

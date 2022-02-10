@@ -1,6 +1,5 @@
 import {UploadedFile} from '@signal-conso/signalconso-api-sdk-js'
-import {Icon, Theme, Tooltip} from '@mui/material'
-import makeStyles from '@mui/styles/makeStyles'
+import {Box, Icon, Tooltip} from '@mui/material'
 import {extensionToType, FileType, reportFileConfig} from './reportFileConfig'
 import {some} from 'fp-ts/lib/Option'
 import React from 'react'
@@ -9,7 +8,6 @@ import {useI18n} from '../../core/i18n'
 import {appConfig} from '../../conf/appConfig'
 import {useApiSdk} from '../../core/context/ApiSdk'
 import {ScDialog} from '../Dialog/ScDialog'
-
 
 export interface ReportFileProps {
   file: UploadedFile
@@ -20,72 +18,8 @@ export interface ReportFileProps {
 const removeBtnSize = 30
 const cardMargin = 1
 
-const useStyles = makeStyles((t: Theme) => ({
-  root: {
-    display: 'block',
-    position: 'relative',
-    padding: t.spacing(cardMargin),
-    '&:hover > $removeBtn': {
-      display: 'flex !important',
-    },
-  },
-  image: {
-    display: 'inline-flex',
-    border: '1px solid ' + t.palette.divider,
-    borderRadius: reportFileConfig.cardBorderRadius,
-    height: reportFileConfig.cardSize,
-    width: reportFileConfig.cardSize,
-    color: t.palette.text.disabled,
-    overflow: 'hidden',
-    position: 'relative',
-    transition: t.transitions.create('all'),
-    '&:hover': {
-      boxShadow: t.shadows[4],
-    },
-    '& > div': {
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      backgroundSize: 'cover',
-      height: '100%',
-      width: '100%',
-    },
-  },
-  removeBtn: {
-    display: 'none !important',
-    position: 'absolute',
-    top: (removeBtnSize - 8 * cardMargin) / -2,
-    right: (removeBtnSize - 8 * cardMargin) / -2,
-    width: removeBtnSize,
-    height: removeBtnSize,
-    borderRadius: removeBtnSize,
-    alignItems: 'center',
-    justifyContent: 'center',
-    boxShadow: t.shadows[4],
-    background: t.palette.background.paper + ' !important',
-  },
-  imgImage: {
-    color: '#00b50f',
-  },
-  imgPdf: {
-    color: '#db4537',
-  },
-  imgDoc: {
-    color: '#4185f3',
-  },
-  backgroundImage: {
-    position: 'absolute',
-    top: 0,
-    right: 0,
-    left: 0,
-    bottom: 0,
-    backgroundSize: 'cover',
-  },
-}))
-
 export const ReportFile = ({file, dense, onRemove}: ReportFileProps) => {
   const fileType = extensionToType(file.filename)
-  const css = useStyles()
   const {apiSdk} = useApiSdk()
   // const _remove = useFetcher(apiSdk.secured.document.remove)
   const {toastError} = useToast()
@@ -106,29 +40,71 @@ export const ReportFile = ({file, dense, onRemove}: ReportFileProps) => {
 
   return (
     <Tooltip title={file.filename}>
-      <a target="_blank" href={fileUrl} className={css.root} rel="noreferrer">
-        <div className={css.image}>
+      <Box
+        component="a"
+        target="_blank"
+        href={fileUrl}
+        rel="noreferrer"
+        sx={{
+          display: 'block',
+          position: 'relative',
+          p: cardMargin,
+          '&:hover > $removeBtn': {
+            display: 'flex !important',
+          },
+        }}
+      >
+        <Box sx={{
+          display: 'inline-flex',
+          border: t => '1px solid ' + t.palette.divider,
+          borderRadius: reportFileConfig.cardBorderRadius + 'px',
+          height: reportFileConfig.cardSize,
+          width: reportFileConfig.cardSize,
+          color: t => t.palette.text.disabled,
+          overflow: 'hidden',
+          position: 'relative',
+          transition: t => t.transitions.create('all'),
+          '&:hover': {
+            boxShadow: t => t.shadows[4],
+          },
+          '& > div': {
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            backgroundSize: 'cover',
+            height: '100%',
+            width: '100%',
+          },
+        }}>
           {(() => {
             switch (fileType) {
               case FileType.Image: {
                 return (
                   <div>
-                    <div className={css.backgroundImage} style={{backgroundImage: `url(${fileUrl})`}} />
-                    <Icon className={css.imgImage}>image</Icon>
+                    <Box sx={{
+                      position: 'absolute',
+                      top: 0,
+                      right: 0,
+                      left: 0,
+                      bottom: 0,
+                      backgroundSize: 'cover',
+                      backgroundImage: `url(${fileUrl})`
+                    }}/>
+                    <Icon sx={{color: '#00b50f'}}>image</Icon>
                   </div>
                 )
               }
               case FileType.PDF: {
                 return (
                   <div>
-                    <Icon className={css.imgPdf}>picture_as_pdf</Icon>
+                    <Icon sx={{color: '#db4537'}}>picture_as_pdf</Icon>
                   </div>
                 )
               }
               case FileType.Doc: {
                 return (
                   <div>
-                    <Icon className={css.imgDoc}>article</Icon>
+                    <Icon sx={{color: '#4185f3'}}>article</Icon>
                   </div>
                 )
               }
@@ -141,7 +117,7 @@ export const ReportFile = ({file, dense, onRemove}: ReportFileProps) => {
               }
             }
           })()}
-        </div>
+        </Box>
         {onRemove && (
           // eslint-disable-next-line react/jsx-no-undef
           <ScDialog
@@ -158,12 +134,24 @@ export const ReportFile = ({file, dense, onRemove}: ReportFileProps) => {
             }}
             confirmLabel={m.delete}
           >
-            <IconBtn size="small" className={css.removeBtn}>
+            <IconBtn size="small" sx={{
+              display: 'none !important',
+              position: 'absolute',
+              top: (removeBtnSize - 8 * cardMargin) / -2,
+              right: (removeBtnSize - 8 * cardMargin) / -2,
+              width: removeBtnSize,
+              height: removeBtnSize,
+              borderRadius: removeBtnSize + 'px',
+              alignItems: 'center',
+              justifyContent: 'center',
+              boxShadow: t => t.shadows[4],
+              background: t => t.palette.background.paper + ' !important',
+            }}>
               <Icon>clear</Icon>
             </IconBtn>
           </ScDialog>
         )}
-      </a>
+      </Box>
     </Tooltip>
   )
 }

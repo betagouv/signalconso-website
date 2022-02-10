@@ -1,8 +1,7 @@
 import {Theme} from '@mui/material'
-import makeStyles from '@mui/styles/makeStyles'
 import {styleUtils} from './theme'
 
-export const useCssUtils = makeStyles((t: Theme) => {
+export const useCssUtils = (t: Theme) => {
   return {
     vaMiddle: {
       verticalAlign: 'middle',
@@ -130,4 +129,5 @@ export const useCssUtils = makeStyles((t: Theme) => {
       whiteSpace: 'nowrap',
     },
   }
-})
+}
+

@@ -37,7 +37,6 @@ interface HomeProps {
 }
 
 const Home = ({anomalies}: HomeProps) => {
-  const theme = useTheme()
   const {m} = useI18n()
   return (
     <>
@@ -63,10 +62,10 @@ const Home = ({anomalies}: HomeProps) => {
         <Section>
           <Box component="h2" sx={sxTitle}>Comment ça marche ?</Box>
           <IllustrationStepper>
-            <IllustrationStepperStep title="Vous avez rencontré un problème<br/>avec une entreprise&#160;?" image="/image/illustrations/consumer.png"/>
-            <IllustrationStepperStep title="Faites un signalement<br/>avec SignalConso." image="/image/illustrations/report.png"/>
-            <IllustrationStepperStep title="L'entreprise est prévenue<br/>et peut intervenir." image="/image/illustrations/company.png"/>
-            <IllustrationStepperStep title="La répression des fraudes intervient si nécessaire." image="/image/illustrations/dgccrf.png"/>
+            <IllustrationStepperStep title="Vous avez rencontré un problème<br/>avec une entreprise&#160;?" image="/image/illustrations/consumer.png" alt="consumer"/>
+            <IllustrationStepperStep title="Faites un signalement<br/>avec SignalConso." image="/image/illustrations/report.png" alt="report"/>
+            <IllustrationStepperStep title="L'entreprise est prévenue<br/>et peut intervenir." image="/image/illustrations/company.png" alt="company"/>
+            <IllustrationStepperStep title="La répression des fraudes intervient si nécessaire." image="/image/illustrations/dgccrf.png" alt="dgccrf"/>
           </IllustrationStepper>
 
           <Box sx={{display: 'flex', alignItems: 'center', justifyContent: 'center', pt: 4, pb: 3}}>

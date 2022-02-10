@@ -1,13 +1,11 @@
 import type {AppProps} from 'next/app'
 import {createGenerateClassName, StylesProvider} from '@mui/styles'
 import {StyledEngineProvider} from '@mui/styled-engine'
-import {CssBaseline, Theme, ThemeProvider, useTheme} from '@mui/material'
+import {Box, CssBaseline, ThemeProvider} from '@mui/material'
 import {Header, headerHeight} from '../core/component/Header'
 import {muiTheme} from '../core/theme/theme'
 import {Provide} from '../shared/Provide/Provide'
-import {useGlobalCss} from '../core/theme/globalCss'
 import {Footer} from '../core/component/Footer'
-import makeStyles from '@mui/styles/makeStyles'
 import {I18nProvider} from '../core/i18n'
 import {ApiSdkProvider} from '../core/context/ApiSdk'
 import {CacheProvider, EmotionCache} from '@emotion/react'
@@ -46,27 +44,19 @@ const App = ({emotionCache = clientSideEmotionCache, ...props}: ScAppProps) => {
   )
 }
 
-export const useCss = makeStyles((t: Theme) => ({
-  main: {
-    marginTop: headerHeight.normal,
-    // paddingTop: t.spacing(2),
-    // paddingBottom: t.spacing(2),
-  }
-}))
-
 const _App = ({Component, pageProps}: AppProps) => {
-  useGlobalCss()
-  const css = useCss()
-  const theme = useTheme()
+  // useGlobalCss()
 
   return (
     <div className="root">
       {/*<Head>*/}
       {/*  <meta name="theme-color" content={theme.palette.primary.main}/>*/}
       {/*</Head>*/}
-      <main className={css.main}>
+      <Box sx={{
+        marginTop: `${headerHeight.normal}px`
+      }}>
         <Component {...pageProps} />
-      </main>
+      </Box>
       <Header/>
       <Footer/>
     </div>

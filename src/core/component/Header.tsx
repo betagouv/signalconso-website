@@ -1,11 +1,9 @@
 import {ReactNode} from 'react'
 import Link from 'next/link'
 import {siteMap} from '../siteMap'
-import {Theme, useScrollTrigger, useTheme} from '@mui/material'
+import {Box, useScrollTrigger, useTheme} from '@mui/material'
 import {styleUtils} from '../theme/theme'
 import {ScButton} from '../../shared/Button/Button'
-import makeStyles from '@mui/styles/makeStyles'
-import {classes} from '../helper/utils'
 import {useI18n} from '../i18n'
 import {appConfig} from '../../conf/appConfig'
 
@@ -38,28 +36,8 @@ export const headerHeight = {
   compact: 52,
 }
 
-export const useCss = makeStyles((t: Theme) => ({
-  root: {
-    overflow: 'hidden',
-    background: t.palette.background.paper,
-    top: 0,
-    display: 'flex',
-    alignItems: 'center',
-    position: 'absolute',
-    width: '100%',
-    padding: t.spacing(1, 2),
-    height: headerHeight.normal,
-  },
-  rootScrolled: {
-    height: headerHeight.compact,
-    position: 'fixed',
-    boxShadow: t.shadows[4],
-  },
-}))
-
 export const Header = () => {
   const theme = useTheme()
-  const css = useCss()
   const {m} = useI18n()
   const scrolled = useScrollTrigger({
     disableHysteresis: true,
@@ -67,7 +45,23 @@ export const Header = () => {
   })
 
   return (
-    <header className={classes(css.root, scrolled && css.rootScrolled)}>
+    <Box component="header" sx={{
+      overflow: 'hidden',
+      background: t => t.palette.background.paper,
+      top: 0,
+      display: 'flex',
+      alignItems: 'center',
+      position: 'absolute',
+      width: '100%',
+      py: 1,
+      px: 2,
+      height: headerHeight.normal,
+      ...scrolled && {
+        height: headerHeight.compact,
+        position: 'fixed',
+        boxShadow: t => t.shadows[4],
+      }
+    }}>
       {scrolled ? (
         <img
           style={{height: 38, marginRight: theme.spacing(3)}}
@@ -102,6 +96,6 @@ export const Header = () => {
           </li>
         </ul>
       </nav>
-    </header>
+    </Box>
   )
 }
