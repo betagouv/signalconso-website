@@ -54,7 +54,7 @@ const _ScRadioGroup = <T, >({disabled, error, children, dense, value, onChange, 
           error,
           disabled,
           multiple,
-          selected: isMultiple(multiple, innerValue) ? innerValue.includes(child.props.value) : innerValue === child.props.value,
+          selected: innerValue && isMultiple(multiple, innerValue) ? innerValue.includes(child.props.value) : innerValue === child.props.value,
           onClick: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
             if (child.props.onClick) child.props.onClick(event)
             if (!disabled) {

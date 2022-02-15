@@ -19,7 +19,7 @@ describe('DatePicker', () => {
         value = date
       }}/>,
     )
-    fireEvent.change(app.container.querySelector('input[type=date]')!, {target: {value: format(newDate, appConfig.reportDateFormat)}})
+    fireEvent.change(app.container.querySelector('input[type=date]')!, {target: {value: format(newDate, appConfig.apiDateFormat)}})
     expect(value!.toString()).toEqual(newDate.toString())
   })
 })

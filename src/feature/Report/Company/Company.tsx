@@ -1,6 +1,6 @@
 import {CompanyByWebsite} from './CompanyByWebsite'
 import {CompanyDraft, CompanyKinds, CompanySearchResult, ReportDraft} from '@signal-conso/signalconso-api-sdk-js'
-import {useReportFlowContext} from '../ReportFlowContext'
+import {ReportDraft2, useReportFlowContext} from '../ReportFlowContext'
 import React, {Dispatch, SetStateAction, useState} from 'react'
 import {CompanyIdentifyBy, IdentifyBy} from './CompanyIdentifyBy'
 import {useI18n} from '../../../core/i18n'
@@ -22,9 +22,9 @@ interface CompanyProps {
 }
 
 interface CompanyWithRequiredPropsProps extends CompanyProps {
-  draft: Partial<ReportDraft>
+  draft: Pick<ReportDraft, 'companyKind'>
   // companyKind: CompanyKinds
-  onUpdateReportDraft: Dispatch<SetStateAction<Readonly<Partial<ReportDraft>>>>
+  onUpdateReportDraft: Dispatch<SetStateAction<Partial<ReportDraft2>>>
 }
 
 export const Company = ({animatePanel, autoScrollToPanel}: CompanyProps) => {
@@ -41,7 +41,7 @@ export const Company = ({animatePanel, autoScrollToPanel}: CompanyProps) => {
   }
   return (
     <>
-      <CompanyWithRequiredProps
+      <_Company
         animatePanel={animatePanel}
         autoScrollToPanel={autoScrollToPanel}
         draft={draft}
@@ -52,12 +52,12 @@ export const Company = ({animatePanel, autoScrollToPanel}: CompanyProps) => {
   )
 }
 
-const CompanyWithRequiredProps = ({
+export const _Company = ({
+  draft,
+  onUpdateReportDraft,
   autoScrollToPanel,
   animatePanel,
-  draft,
   // companyKind,
-  onUpdateReportDraft,
 }: CompanyWithRequiredPropsProps) => {
   const animate: Partial<AnimateProps> = {autoScrollTo: autoScrollToPanel, animate: animatePanel}
   const [companyDraft, setCompanyDraft] = useState<Partial<CompanyDraft>>({})

@@ -43,7 +43,9 @@ export const appConfig = {
   sentry_dns: map()(Env.NEXT_PUBLIC_SENTRY_DNS),
   sentry_traceRate: map(int, defaultValue(0.5))(Env.NEXT_PUBLIC_SENTRY_TRACE_RATE),
   useHashRouter: true,
-  reportDateFormat: 'dd/MM/yyyy'
+  apiDateFormat: 'dd/MM/yyyy',
+  browserDateFormat: 'yyyy-MM-dd',
+  maxDescriptionInputLength: 500,
 }
 
 export type AppConfig = typeof appConfig;
