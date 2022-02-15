@@ -5,8 +5,8 @@ import {PlaygroundCompany} from './PlaygroundCompany'
 export const Playground = () => {
   return (
     <Page>
-      {/*<PlaygroundDetails/>*/}
-      <PlaygroundCompany/>
+      <PlaygroundDetails/>
+      {/*<PlaygroundCompany/>*/}
     </Page>
   )
 }

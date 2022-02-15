@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "test": "jest",
+    "test-no-html-output": "DEBUG_PRINT_LIMIT=1 jest",
     "test-dev": "jest --config=jest.config.ts --watch"
   },
   "dependencies": {

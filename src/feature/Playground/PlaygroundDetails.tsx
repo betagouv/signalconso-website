@@ -1,6 +1,6 @@
 import {Card, CardContent} from '@mui/material'
-import {DetailInput, DetailInputType} from '@signal-conso/signalconso-api-sdk-js'
-import {_Details, specifyKeyword} from 'feature/Report/Details/Details'
+import {DetailInput, DetailInputType, FileOrigin} from '@signal-conso/signalconso-api-sdk-js'
+import {_Details, SpecifyFormUtils} from 'feature/Report/Details/Details'
 import React, {useState} from 'react'
 
 export class DetailsFixtureInput {
@@ -42,9 +42,8 @@ export class DetailsFixtureInput {
 export class DetailsFixtureValue {
   static readonly date = '10/11/2019'
   static readonly text = 'some text'
-  static readonly radio = (specifyValue: string) => DetailsFixtureInput.radioDetail.options![1].replace(specifyKeyword, `(${specifyValue})`)
-  static readonly checkbox = (specifyValue: string) => [DetailsFixtureInput.checkboxDetail.options![0], DetailsFixtureInput.checkboxDetail.options![1].replace(specifyKeyword,
-    `(${specifyValue})`)]
+  static readonly radio = DetailsFixtureInput.radioDetail.options![1]
+  static readonly checkbox = [DetailsFixtureInput.checkboxDetail.options![0], DetailsFixtureInput.checkboxDetail.options![1]]
   static readonly textarea = 'some other text'
 }
 
@@ -56,21 +55,27 @@ export const PlaygroundDetails = () => {
       <CardContent>
         {JSON.stringify(state)}
         <_Details
-          initialValues={[
-            // DetailsFixtureValue.date,
-            // DetailsFixtureValue.text,
-            // DetailsFixtureValue.textarea,
-            DetailsFixtureValue.radio('test'),
-            // DetailsFixtureValue.checkbox('TEst'),
+          initialFiles={[
+            {id: '1', filename: 'blabal', origin: FileOrigin.Consumer}
           ]}
+          initialValues={{
+            0: DetailsFixtureValue.date,
+            1: DetailsFixtureValue.text,
+            2: DetailsFixtureValue.radio,
+            [SpecifyFormUtils.getInputName(2)]: 'blabla radio',
+            3: DetailsFixtureValue.checkbox,
+            [SpecifyFormUtils.getInputName(3)]: 'blabla cb',
+            4: DetailsFixtureValue.textarea,
+          }}
           inputs={[
-            // DetailsFixtureInput.dateDetail,
-            // DetailsFixtureInput.textDetail,
-            // DetailsFixtureInput.textareaDetail,
+            DetailsFixtureInput.dateDetail,
+            DetailsFixtureInput.textDetail,
             DetailsFixtureInput.radioDetail,
-            // DetailsFixtureInput.checkboxDetail,
+            DetailsFixtureInput.checkboxDetail,
+            DetailsFixtureInput.textareaDetail,
           ]}
           onSubmit={setState}/>
+        ,
       </CardContent>
     </Card>
   )

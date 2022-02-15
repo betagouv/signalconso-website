@@ -7,6 +7,10 @@ export default async (): Promise<Config.InitialOptions> => {
     moduleDirectories: ['node_modules', 'src'],
     setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
     testPathIgnorePatterns: ['<rootDir>/.next/', '<rootDir>/node_modules/'],
-    verbose: true,
+    verbose: false,
+    reporters: [
+      "default",
+      // "jest-html-reporters"
+    ],
   }
 };

@@ -11,6 +11,9 @@ export interface PanelProps extends Omit<CardProps, 'title'> {
 export const Panel = ({title, desc, children, sx, elevation = 0, border, ...rest}: PanelProps) => {
   return (
     <Card role="article" elevation={elevation} {...rest} sx={{
+      ...(!border && !elevation) && {
+        borderRadius: 0,
+      },
       ...(border ? {
         border: t => border ? `1px solid ${t.palette.divider}` : `none`,
         px: 2,
@@ -21,7 +24,6 @@ export const Panel = ({title, desc, children, sx, elevation = 0, border, ...rest
         pt: 3,
         mt: 3,
         ...(!border && !elevation ? {
-          borderRadius: 'none',
           borderTop: t => `1px solid ${t.palette.divider}`,
         } : {})
       }

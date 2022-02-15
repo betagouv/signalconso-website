@@ -2,7 +2,7 @@ import '@testing-library/jest-dom'
 import {DraftReportDefaultInputs, getDraftReportInputs} from './draftReportInputs'
 import {genSubcategory} from '../../../test/fixture'
 import {ReportTag} from '@signal-conso/signalconso-api-sdk-js'
-import { DetailsFixture } from 'pages/playground'
+import { DetailsFixtureInput } from 'pages/playground'
 
 describe('getDraftReportInputs', () => {
 
@@ -28,11 +28,11 @@ describe('getDraftReportInputs', () => {
     const inputs = getDraftReportInputs({
       subcategories: [
         genSubcategory(),
-        {id: '', title: '', detailInputs: [DetailsFixture.textDetail,]},
+        {id: '', title: '', detailInputs: [DetailsFixtureInput.textDetail,]},
       ],
     })
     expect(inputs).toEqual([
-      DetailsFixture.textDetail,
+      DetailsFixtureInput.textDetail,
       DraftReportDefaultInputs.description(true)
     ])
   })
@@ -42,11 +42,11 @@ describe('getDraftReportInputs', () => {
       tags: [ReportTag.ReponseConso],
       subcategories: [
         genSubcategory(),
-        {id: '', title: '', detailInputs: [DetailsFixture.dateDetail,]},
+        {id: '', title: '', detailInputs: [DetailsFixtureInput.dateDetail,]},
       ],
     })
     expect(inputs).toEqual([
-      DetailsFixture.dateDetail,
+      DetailsFixtureInput.dateDetail,
       DraftReportDefaultInputs.description(true),
       DraftReportDefaultInputs.reponseConso
     ])
