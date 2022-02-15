@@ -1,9 +1,8 @@
 import {render, ScRenderResult} from '../../../test/test-utils'
-import {CompanyKinds, DetailInputValue, ReportDraft} from '@signal-conso/signalconso-api-sdk-js'
-import {DetailsFixtureInput} from '../../Playground/PlaygroundDetails'
+import {CompanyKinds} from '@signal-conso/signalconso-api-sdk-js'
 import React from 'react'
 import {_Company} from './Company'
-import {ReportDraft2} from '../ReportFlowContext'
+import {ReportDraft2} from '../../../core/model/ReportDraft'
 
 describe('Details: single date not in future', () => {
   let app: ScRenderResult

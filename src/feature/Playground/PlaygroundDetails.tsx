@@ -55,26 +55,8 @@ export const PlaygroundDetails = () => {
       <CardContent>
         {JSON.stringify(state)}
         <_Details
-          initialFiles={[
-            {id: '1', filename: 'blabal', origin: FileOrigin.Consumer}
-          ]}
-          initialValues={{
-            0: DetailsFixtureValue.date,
-            1: DetailsFixtureValue.text,
-            2: DetailsFixtureValue.radio,
-            [SpecifyFormUtils.getInputName(2)]: 'blabla radio',
-            3: DetailsFixtureValue.checkbox,
-            [SpecifyFormUtils.getInputName(3)]: 'blabla cb',
-            4: DetailsFixtureValue.textarea,
-          }}
-          inputs={[
-            DetailsFixtureInput.dateDetail,
-            DetailsFixtureInput.textDetail,
-            DetailsFixtureInput.radioDetail,
-            DetailsFixtureInput.checkboxDetail,
-            DetailsFixtureInput.textareaDetail,
-          ]}
-          onSubmit={setState}/>
+          inputs={[DetailsFixtureInput.textareaDetail]}
+          onSubmit={setState}/>,
         ,
       </CardContent>
     </Card>

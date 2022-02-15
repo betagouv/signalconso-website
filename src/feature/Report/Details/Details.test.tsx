@@ -10,7 +10,7 @@ import {appConfig} from 'conf/appConfig'
 import {DetailsFixtureInput, DetailsFixtureValue} from 'feature/Playground/PlaygroundDetails'
 import {waitFor} from '@testing-library/dom'
 import {mapFor} from '@alexandreannic/ts-utils/lib/common'
-import {DetailInputValues2} from '../ReportFlowContext'
+import {DetailInputValues2} from '../../../core/model/ReportDraft'
 
 const clickBtnSubmit = async (app: ScRenderResult) => {
   const btnSubmit = app.container.querySelector('#btn-submit') as HTMLButtonElement

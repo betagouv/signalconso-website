@@ -2,7 +2,7 @@ import {Box, BoxProps} from '@mui/material'
 import {Anomaly, Index} from '@signal-conso/signalconso-api-sdk-js'
 
 interface Props extends BoxProps {
-  anomaly: Omit<Anomaly, 'subcategories'>
+  anomaly: Pick<Anomaly, 'sprite'>
   scale?: number
 }
 

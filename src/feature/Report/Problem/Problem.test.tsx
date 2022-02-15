@@ -7,8 +7,8 @@ import {Problem} from './Problem'
 import {genInformation, genSubcategory} from 'test/fixture'
 import {AccessReportFlow, DummyStepperProvider, fireEvent, render, ScRenderResult} from 'test/test-utils'
 import '@testing-library/jest-dom'
-import {ReportDraft2} from '../ReportFlowContext'
 import {fnSwitch} from '@alexandreannic/ts-utils/lib/common'
+import {ReportDraft2} from '../../../core/model/ReportDraft'
 
 class Fixture {
   static readonly simpleSubcategory = genSubcategory()

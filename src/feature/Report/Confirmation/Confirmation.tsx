@@ -1,17 +1,14 @@
-import {ReportDraft2, useReportFlowContext} from '../ReportFlowContext'
-import {useI18n} from '../../../core/i18n'
+import {useReportFlowContext} from '../ReportFlowContext'
+import {useI18n} from 'core/i18n'
 import {Alert, Txt} from 'mui-extension'
-import {ReportDraft} from '@signal-conso/signalconso-api-sdk-js'
+import {Anomaly, ReportDraft} from '@signal-conso/signalconso-api-sdk-js'
 import {ConfirmationStep, ConfirmationStepper} from './ConfirmationStepper'
-import {Animate} from '../../../shared/Animate/Animate'
+import {Animate} from 'shared/Animate/Animate'
 import {Box, BoxProps, Icon} from '@mui/material'
-import {AnomalyImage} from '../../../shared/AnomalyCard/AnomalyImage'
-import {AddressComponent} from '../../../shared/Address/Address'
-import {StepperActions} from '../../../shared/Stepper/StepperActions'
-
-interface Props {
-
-}
+import {AnomalyImage} from 'shared/AnomalyCard/AnomalyImage'
+import {AddressComponent} from 'shared/Address/Address'
+import {StepperActions} from 'shared/Stepper/StepperActions'
+import {ReportDraft2} from 'core/model/ReportDraft'
 
 const Row = ({icon, dense, children, ...props}: {dense?: boolean, icon: string} & BoxProps) => {
   return (
@@ -22,9 +19,25 @@ const Row = ({icon, dense, children, ...props}: {dense?: boolean, icon: string} 
   )
 }
 
-export const Confirmation = ({}: Props) => {
+export const Confirmation = ({}: {}) => {
   const _reportFlow = useReportFlowContext()
   const draft = _reportFlow.reportDraft as ReportDraft2
+  const parsedDraft = ReportDraft2.toReportDraft(draft)
+  return (
+    <_Confirmation
+      anomaly={draft.anomaly}
+      draft={parsedDraft}
+    />
+  )
+}
+
+export const _Confirmation = ({
+  draft,
+  anomaly
+}: {
+  anomaly: Pick<Anomaly, 'sprite'>
+  draft: ReportDraft,
+}) => {
   const {m} = useI18n()
   return (
     <Animate autoScrollTo={true} animate={true}>
@@ -37,7 +50,7 @@ export const Confirmation = ({}: Props) => {
         <ConfirmationStepper>
           <ConfirmationStep title={m.step_problem}>
             <Box sx={{display: 'flex'}}>
-              <AnomalyImage anomaly={draft.anomaly} sx={{mr: 2}}/>
+              <AnomalyImage anomaly={anomaly} sx={{mr: 2}}/>
               <Box>
                 <Txt block size="big" bold sx={{mb: 1}}>{draft.category}</Txt>
                 {draft.subcategories.map(_ =>
@@ -48,7 +61,7 @@ export const Confirmation = ({}: Props) => {
           </ConfirmationStep>
           <ConfirmationStep title={m.step_description}>
             {draft.detailInputValues.map(({label, value}) =>
-              <Box sx={{mb: 1}}>
+              <Box key={label} sx={{mb: 1}}>
                 <Txt bold sx={{mr: 1}} dangerouslySetInnerHTML={{__html: label}}/>
                 <Txt color="hint">{JSON.stringify(value)}</Txt>
               </Box>

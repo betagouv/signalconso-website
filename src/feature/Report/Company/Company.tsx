@@ -1,6 +1,6 @@
 import {CompanyByWebsite} from './CompanyByWebsite'
 import {CompanyDraft, CompanyKinds, CompanySearchResult, ReportDraft} from '@signal-conso/signalconso-api-sdk-js'
-import {ReportDraft2, useReportFlowContext} from '../ReportFlowContext'
+import {useReportFlowContext} from '../ReportFlowContext'
 import React, {Dispatch, SetStateAction, useState} from 'react'
 import {CompanyIdentifyBy, IdentifyBy} from './CompanyIdentifyBy'
 import {useI18n} from '../../../core/i18n'
@@ -15,6 +15,7 @@ import {CompanyAskConsumerStreet} from './CompanyAskConsumerStreet'
 import {TreeStepper, TreeStepperNode} from '../../../shared/TreeStepper/TreeStepper'
 import {StepperActions} from '../../../shared/Stepper/StepperActions'
 import {AnimateProps} from '../../../shared/Animate/Animate'
+import {ReportDraft2} from '../../../core/model/ReportDraft'
 
 interface CompanyProps {
   animatePanel?: boolean

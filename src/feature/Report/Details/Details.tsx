@@ -1,6 +1,6 @@
 import React, {useEffect, useMemo, useState} from 'react'
 import {Alert, stopPropagation, Txt} from 'mui-extension'
-import {DetailInputValues2, useReportFlowContext} from '../ReportFlowContext'
+import {useReportFlowContext} from '../ReportFlowContext'
 import {DetailInput, DetailInputType, FileOrigin, ReportDraft, ReportTag, SubcategoryInput, UploadedFile} from '@signal-conso/signalconso-api-sdk-js'
 import {ScDatepicker} from '../../../shared/Datepicker/Datepicker'
 import {fnSwitch, mapFor} from '@alexandreannic/ts-utils/lib/common'
@@ -24,6 +24,7 @@ import {useStepperContext} from '../../../shared/Stepper/Stepper'
 import {ControllerProps} from 'react-hook-form/dist/types/controller'
 import {FieldError} from 'react-hook-form/dist/types/errors'
 import {useEffectFn} from '@alexandreannic/react-hooks-lib'
+import {DetailInputValues2} from '../../../core/model/ReportDraft'
 
 export class SpecifyFormUtils {
   static readonly keyword = '(à préciser)'

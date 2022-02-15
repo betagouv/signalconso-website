@@ -6,6 +6,7 @@ import {ReportFlow} from '../feature/Report/ReportFlow'
 import {useReportFlowContext} from '../feature/Report/ReportFlowContext'
 import {useMemo} from 'react'
 import {Page} from '../shared/Page/Page'
+import {ReportDraft2} from '../core/model/ReportDraft'
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const anomalies = await apiSdk.anomaly.getAnomalies()
@@ -25,14 +26,14 @@ export const getStaticProps: GetStaticProps = async ({params}) => {
   }
 }
 
-export const reportStepDone = (r: Partial<ReportDraft>) => ({
+export const reportStepDone = (r: Partial<ReportDraft2>) => ({
   problem: !!r.category && !!r.subcategories && !!r.contractualDispute !== undefined && r.employeeConsumer !== undefined,
   description: !!r.detailInputValues,
   company: !!r.companyDraft?.siret || !!r.companyDraft?.address.postalCode,
   consumer: !!r.consumer?.email && !!r.consumer?.firstName && !!r.consumer?.lastName,
 })
 
-export const reportCurrentStep = (r: Partial<ReportDraft>): number => {
+export const reportCurrentStep = (r: Partial<ReportDraft2>): number => {
   const values = Object.values(reportStepDone(r))
   const index = values.findIndex(_ => !_)
   return index > -1 ? index : values.length - 1
