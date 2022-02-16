@@ -14,7 +14,7 @@ describe('Details: single date not in future', () => {
         draft={{
           companyKind: CompanyKinds.LOCATION
         }}
-        onUpdateReportDraft={x => x(_ => {draft = _})}/>,
+        onUpdateReportDraft={x => {draft = x}}/>,
     )
   })
 

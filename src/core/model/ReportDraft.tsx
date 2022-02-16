@@ -1,7 +1,7 @@
 import {Anomaly, ReportDraft} from '@signal-conso/signalconso-api-sdk-js'
 import {getDraftReportInputs} from '../../feature/Report/Details/draftReportInputs'
 import {isSpecifyInputName, SpecifyFormUtils} from '../../feature/Report/Details/Details'
-import {fromNullable} from 'fp-ts/es6/Option'
+import {fromNullable} from 'fp-ts/lib/Option'
 
 export type DetailInputValues2 = {[key: string]: string | string[]}
 
