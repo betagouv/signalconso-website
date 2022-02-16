@@ -39,6 +39,7 @@ export const fr = {
   formatDuration,
   formatLargeNumber,
   messages: {
+    signalconsoCatchWord: `Signaler un problème à <b>l&apos;entreprise</b> <br/> en toute transparence avec <b>la répression des fraudes</b> !`,
     yes: 'Oui',
     no: 'Non',
     search: 'Rechercher',

@@ -1,6 +1,7 @@
 import {Box, useTheme} from '@mui/material'
 import {ReactNode} from 'react'
 import {useWindowWidth} from '../useWindowWidth'
+import Image from 'next/image'
 
 interface IllustrationStepperProps {
   children: ReactNode
@@ -16,7 +17,7 @@ export const IllustrationStepper = ({children}: IllustrationStepperProps) => {
 
 interface IllustrationStepperStepProps {
   title: string
-  image: string
+  image: StaticImageData | string
   alt?: string
 }
 
@@ -62,7 +63,7 @@ export const IllustrationStepperStep = ({title, alt, image}: IllustrationStepper
         right: `calc(50% - ${(dotSize + borderSize) / 2}px)`,
       },
     }}>
-      <img src={image} alt={alt}/>
+      <Image src={image} alt={alt}/>
       {/*<div style={{*/}
       {/*  border: `3px solid ${theme.palette.divider}`,*/}
       {/*  borderRadius: 40,*/}

@@ -15,7 +15,7 @@ export interface PageProps extends MuiPageProps {
   loading?: boolean
 }
 
-export const Page = ({className, loading, size, sx, ...props}: PageProps) => {
+export const Page = ({loading, size, sx, ...props}: PageProps) => {
   return (
     <>
       {loading && (

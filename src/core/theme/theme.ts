@@ -3,7 +3,6 @@ import {alpha, createTheme, Theme} from '@mui/material'
 import {ThemeOptions} from '@mui/material/styles/createTheme'
 
 export const styleUtils = (t: Theme) => ({
-  defaultRadius: 4,
   gridSpacing: 3 as any,
   fontSize: {
     big: t.typography.fontSize * 1.15,
@@ -32,9 +31,9 @@ export const styleUtils = (t: Theme) => ({
 export const defaultSpacing = 8
 
 export const muiTheme = (dark?: boolean): Theme => {
-  const defaultTheme = createTheme()
   const fontFamily = '"Open Sans", sans-serif'
-  const colorMain = {
+  const fontSize = 15
+  const colorPrimary = {
     base: '#2b7c9f',
     light: '#6fd3ff',
     dark: '#1c536b',
@@ -47,13 +46,13 @@ export const muiTheme = (dark?: boolean): Theme => {
     light: '#1e2b50',
     dark: '#1e2b50',
   }
-  const theme: ThemeOptions = {
+  const baseTheme = createTheme({
     spacing: defaultSpacing,
     palette: {
       primary: {
-        light: colorMain.light,
-        main: colorMain.base,
-        dark: colorMain.dark,
+        light: colorPrimary.light,
+        main: colorPrimary.base,
+        dark: colorPrimary.dark,
       },
       secondary: {
         light: colorSecondary.light,
@@ -64,14 +63,16 @@ export const muiTheme = (dark?: boolean): Theme => {
       mode: dark ? 'dark' : 'light',
     },
     shape: {
-      borderRadius: 6,
+      borderRadius: 10,
     },
     typography: {
-      fontSize: 15,
+      fontSize,
       fontFamily,
       // fontFamily: 'Evolventa, sans-serif',
       fontWeightBold: 600,
     },
+  })
+  const theme: ThemeOptions = {
     components: {
       MuiCssBaseline: {
         styleOverrides: {
@@ -82,8 +83,15 @@ export const muiTheme = (dark?: boolean): Theme => {
             display: 'inherit',
           },
           html: {
-            fontSize: defaultTheme.typography.fontSize,
-            color: defaultTheme.palette.text.primary,
+            fontFamily,
+            fontSize,
+            color: baseTheme.palette.text.primary,
+          },
+          '.blog': {
+            fontSize: 16,
+            'a': {
+              color: colorPrimary.base,
+            }
           },
           '.root': {
             minHeight: '100vh',
@@ -93,9 +101,9 @@ export const muiTheme = (dark?: boolean): Theme => {
           body: {
             lineHeight: '1.5',
             fontFamily,
-            background: defaultTheme.palette.background.paper,
+            background: baseTheme.palette.background.paper,
             margin: 0,
-            color: defaultTheme.palette.text.primary,
+            color: baseTheme.palette.text.primary,
             boxSizing: 'border-box',
           },
           main: {
@@ -104,14 +112,27 @@ export const muiTheme = (dark?: boolean): Theme => {
           ul: {
             marginTop: '.5em',
           },
-          h1: defaultTheme.typography.h4,
-          h2: {
-            ...defaultTheme.typography.h6,
-            marginBottom: defaultTheme.spacing(2),
-            marginTop: defaultTheme.spacing(3),
+          'li + li': {
+            marginTop: defaultSpacing * 2,
           },
+          h1: baseTheme.typography.h2,
+          h2: baseTheme.typography.h5,
+          h3: baseTheme.typography.h6,
+          h4: {
+            ...baseTheme.typography.h6,
+            fontSize: '1.25rem',
+          },
+          h6: {
+            color: 'red',
+            ...baseTheme.typography.h6,
+            fontSize: '1.25rem',
+          },
+          // h2: {
+          //   ...baseTheme.typography.h6,
+          //   marginBottom: baseTheme.spacing(2),
+          //   marginTop: baseTheme.spacing(3),
+          // },
           p: {
-            ...defaultTheme.typography.body1,
             textAlign: 'justify',
           },
           a: {
@@ -141,7 +162,7 @@ export const muiTheme = (dark?: boolean): Theme => {
             borderRadius: 20,
           },
           outlinedPrimary: {
-            borderColor: defaultTheme.palette.divider,
+            borderColor: baseTheme.palette.divider,
           },
         },
       },
@@ -166,7 +187,7 @@ export const muiTheme = (dark?: boolean): Theme => {
       MuiChip: {
         styleOverrides: {
           outlined: {
-            borderColor: defaultTheme.palette.divider,
+            borderColor: baseTheme.palette.divider,
           },
         },
       },
@@ -175,7 +196,7 @@ export const muiTheme = (dark?: boolean): Theme => {
           root: {
             fontSize: '1rem',
             minHeight: 42,
-            [defaultTheme.breakpoints.up('xs')]: {
+            [baseTheme.breakpoints.up('xs')]: {
               minHeight: 42,
             },
           },
@@ -210,7 +231,7 @@ export const muiTheme = (dark?: boolean): Theme => {
       MuiTooltip: {
         styleOverrides: {
           tooltip: {
-            fontSize: defaultTheme.typography.fontSize,
+            fontSize: baseTheme.typography.fontSize,
             fontWeight: 'normal',
           },
         },
@@ -233,7 +254,7 @@ export const muiTheme = (dark?: boolean): Theme => {
         styleOverrides: {
           root: {
             '&:hover $notchedOutline': {
-              borderColor: alpha(colorMain.base, 0.7),
+              borderColor: alpha(colorPrimary.base, 0.7),
             },
           },
           notchedOutline: {
@@ -246,7 +267,7 @@ export const muiTheme = (dark?: boolean): Theme => {
     },
   }
   return createTheme({
-    ...theme,
+    ...{...baseTheme, ...theme},
     ...(dark ? {
       MuiOutlinedInput: {
         styleOverrides: {

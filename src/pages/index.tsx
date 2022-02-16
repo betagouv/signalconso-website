@@ -13,6 +13,10 @@ import {useI18n} from '../core/i18n'
 import {Section} from '../core/component/Section'
 import {ReportStartedAlert} from '../feature/ReportStartedAlert/ReportStartedAlert'
 import {sortBy} from '../core/lodashNamedExport'
+import consumer from '../../public/image/illustrations/consumer.png'
+import report from '../../public/image/illustrations/report.png'
+import company from '../../public/image/illustrations/company.png'
+import dgccrf from '../../public/image/illustrations/dgccrf.png'
 
 const sxTitle: SxProps<Theme> = {
   fontSize: 24,
@@ -53,19 +57,16 @@ const Home = ({anomalies}: HomeProps) => {
           textAlign: 'center',
           padding: 5,
           fontSize: 32,
-          fontWeight: 'lighter',
-        }}>
-          Signaler un problème à <b>l&apos;entreprise</b> <br/>
-          en toute transparence avec <b>la répression des fraudes</b> !
-        </Section>
+          fontWeight: 'lighter'
+        }} dangerouslySetInnerHTML={{__html: m.signalconsoCatchWord}}/>
 
         <Section>
           <Box component="h2" sx={sxTitle}>Comment ça marche ?</Box>
           <IllustrationStepper>
-            <IllustrationStepperStep title="Vous avez rencontré un problème<br/>avec une entreprise&#160;?" image="/image/illustrations/consumer.png" alt="consumer"/>
-            <IllustrationStepperStep title="Faites un signalement<br/>avec SignalConso." image="/image/illustrations/report.png" alt="report"/>
-            <IllustrationStepperStep title="L'entreprise est prévenue<br/>et peut intervenir." image="/image/illustrations/company.png" alt="company"/>
-            <IllustrationStepperStep title="La répression des fraudes intervient si nécessaire." image="/image/illustrations/dgccrf.png" alt="dgccrf"/>
+            <IllustrationStepperStep title="Vous avez rencontré un problème<br/>avec une entreprise&#160;?" image={consumer} alt="consumer"/>
+            <IllustrationStepperStep title="Faites un signalement<br/>avec SignalConso." image={report} alt="report"/>
+            <IllustrationStepperStep title="L'entreprise est prévenue<br/>et peut intervenir." image={company} alt="company"/>
+            <IllustrationStepperStep title="La répression des fraudes intervient si nécessaire." image={dgccrf} alt="dgccrf"/>
           </IllustrationStepper>
 
           <Box sx={{display: 'flex', alignItems: 'center', justifyContent: 'center', pt: 4, pb: 3}}>

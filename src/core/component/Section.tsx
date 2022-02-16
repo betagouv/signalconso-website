@@ -3,10 +3,10 @@ import {Box, BoxProps} from '@mui/material'
 interface Props extends BoxProps {
 }
 
-export const Section = ({component = 'section', children, ...props}: Props) => {
+export const Section = ({component = 'section', dangerouslySetInnerHTML, children, ...props}: Props) => {
   return (
     <Box component={component} {...props}>
-      <Box sx={{
+      <Box dangerouslySetInnerHTML={dangerouslySetInnerHTML} sx={{
         py: 3,
         px: 1,
         maxWidth: 1140,

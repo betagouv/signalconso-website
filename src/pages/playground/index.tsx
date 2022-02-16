@@ -1,8 +1,8 @@
+import React from 'react'
 import {Page} from '../../shared/Page/Page'
 import {PlaygroundDetails} from './PlaygroundDetails'
-import {PlaygroundCompany} from './PlaygroundCompany'
 
-export const Playground = () => {
+const Playground = () => {
   return (
     <Page>
       <PlaygroundDetails/>
@@ -10,3 +10,5 @@ export const Playground = () => {
     </Page>
   )
 }
+
+export default Playground

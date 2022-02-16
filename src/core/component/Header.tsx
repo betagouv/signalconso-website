@@ -6,6 +6,7 @@ import {styleUtils} from '../theme/theme'
 import {ScButton} from '../../shared/Button/Button'
 import {useI18n} from '../i18n'
 import {appConfig} from '../../conf/appConfig'
+import {BtnAdmin} from './BtnAdmin'
 
 interface HeaderItemProps {
   href: string
@@ -90,9 +91,7 @@ export const Header = () => {
           <li><HeaderItem href={siteMap.howItWorks}>{m.menu_howItWorks}</HeaderItem></li>
           <li><HeaderItem href={siteMap.help}>{m.menu_help}</HeaderItem></li>
           <li>
-            <ScButton color="secondary" variant="contained" iconAfter="lock_open" sx={{ml: 1}}>
-              {m.menu_authSpace}
-            </ScButton>
+            <BtnAdmin sx={{ml: 1}}/>
           </li>
         </ul>
       </nav>
