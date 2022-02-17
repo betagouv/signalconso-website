@@ -6,7 +6,7 @@ import Image from 'next/image'
 export const Acknowledgement = () => {
   return (
     <>
-      <Image layout="fill" src="/image/illustrations/company.png" alt="consultation-pro-illustration" style={{
+      <img src="/image/illustrations/company.png" alt="consultation-pro-illustration" style={{
         display: 'block',
         margin: 'auto',
         height: 160,

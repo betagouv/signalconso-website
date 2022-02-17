@@ -1,6 +1,6 @@
 import {Card, CardContent} from '@mui/material'
-import {DetailInput, DetailInputType, FileOrigin} from '@signal-conso/signalconso-api-sdk-js'
-import {_Details, SpecifyFormUtils} from 'feature/Report/Details/Details'
+import {DetailInput, DetailInputType} from '@signal-conso/signalconso-api-sdk-js'
+import {_Details} from 'feature/Report/Details/Details'
 import React, {useState} from 'react'
 
 export class DetailsFixtureInput {

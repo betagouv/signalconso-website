@@ -1,9 +1,9 @@
-import {Page} from '../../shared/Page/Page'
-import {CentreAideConso} from './CentreAideConso'
+import {Page} from '../shared/Page/Page'
+import {CentreAideConso} from '../feature/CentreAide/CentreAideConso'
 import {useState} from 'react'
 import {Tab, Tabs} from '@mui/material'
 import {fnSwitch} from '@alexandreannic/ts-utils/lib/common'
-import {CentreAidePro} from './CentreAidePro'
+import {CentreAidePro} from '../feature/CentreAide/CentreAidePro'
 
 const a11yProps = (index: number) => {
   return {
@@ -12,7 +12,7 @@ const a11yProps = (index: number) => {
   }
 }
 
-const Index = () => {
+const CentreAide = () => {
   const [activeTab, setActiveTab] = useState(0)
   return (
     <Page size="small" className="blog">
@@ -36,4 +36,4 @@ const Index = () => {
   )
 }
 
-export default Index
+export default CentreAide

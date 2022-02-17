@@ -1,6 +1,6 @@
 import React from 'react'
-import {Page} from '../../shared/Page/Page'
-import {PlaygroundDetails} from './PlaygroundDetails'
+import {Page} from '../shared/Page/Page'
+import {PlaygroundDetails} from '../feature/Playground/PlaygroundDetails'
 
 const Playground = () => {
   return (
