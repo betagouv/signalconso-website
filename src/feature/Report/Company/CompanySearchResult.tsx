@@ -13,7 +13,7 @@ import {Animate} from '../../../shared/Animate/Animate'
 interface Props {
   companies: CompanySearchResult[]
   autoScrollTo?: boolean
-animate?: boolean
+  animate?: boolean
   onChange: (_: CompanySearchResult) => void
 }
 

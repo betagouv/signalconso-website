@@ -42,7 +42,7 @@ export const Accordion = ({
       ...open && {
         mb: 2,
         borderRadius: t => `${t.shape.borderRadius}px`,
-        border: t => `2px solid ${t.palette.primary.main} !important`,
+        borderLeft: t => `2px solid ${t.palette.primary.main} !important`,
         // borderBottom: t => `1px solid ${t.palette.divider} !important`,
       },
     }}>

@@ -46,12 +46,12 @@ export const ScRadioGroupItem = <T,>({
         cursor: 'pointer',
         '&:last-of-type': {
           borderBottom: t => '1px solid ' + t.palette.divider,
-          borderBottomRightRadius: 6,
-          borderBottomLeftRadius: 6,
+          borderBottomRightRadius: t => t.shape.borderRadius,
+          borderBottomLeftRadius: t => t.shape.borderRadius,
         },
         '&:first-of-type': {
-          borderTopRightRadius: 6,
-          borderTopLeftRadius: 6,
+          borderTopRightRadius: t => t.shape.borderRadius,
+          borderTopLeftRadius: t => t.shape.borderRadius,
         },
         '&:hover': {
           zIndex: 1,
