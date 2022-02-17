@@ -115,9 +115,18 @@ export const muiTheme = (dark?: boolean): Theme => {
           'li + li': {
             marginTop: defaultSpacing * 2,
           },
-          h1: baseTheme.typography.h2,
-          h2: baseTheme.typography.h5,
-          h3: baseTheme.typography.h6,
+          h1: {
+            ...baseTheme.typography.h2,
+            marginTop: defaultSpacing * 4,
+          },
+          h2: {
+            ...baseTheme.typography.h5,
+            marginTop: defaultSpacing * 4,
+          },
+          h3: {
+            ...baseTheme.typography.h6,
+            marginTop: defaultSpacing * 4,
+          },
           h4: {
             ...baseTheme.typography.h6,
             fontSize: '1.25rem',

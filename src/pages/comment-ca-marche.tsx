@@ -18,10 +18,13 @@ const Card = ({
   children?: ReactNode
 }) => {
   return (
-    <Panel title={title}>
-      <PanelBody sx={{display: 'flex',}}>
-        <img src={img} width="200px" height="200px"/>
-        <Box sx={{ml: 2}}>{children}</Box>
+    <Panel>
+      <PanelBody>
+        <h2>{title}</h2>
+        <Box sx={{display: 'flex',}}>
+          <img src={img} width="200px" height="200px"/>
+          <Box sx={{ml: 2}}>{children}</Box>
+        </Box>
       </PanelBody>
     </Panel>
   )
