@@ -51,12 +51,13 @@ export const AnomalyCard = ({anomaly}: AnomalyCardProps) => {
           <AnomalyImage anomaly={anomaly} sx={{mr: 2}}/>
           <div>
             <h3 style={{
+              fontSize: '1.15rem',
               margin: theme.spacing(0, 0, .5, 0),
               padding: 0,
             }}>
               {anomaly.category}
             </h3>
-            <Txt color="hint">{anomaly.description}</Txt>
+            <Txt color="hint" sx={{fontSize: '0.9rem'}}>{anomaly.description}</Txt>
           </div>
         </Box>
       </a>
