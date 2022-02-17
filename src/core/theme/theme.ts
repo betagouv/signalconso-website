@@ -91,7 +91,13 @@ export const muiTheme = (dark?: boolean): Theme => {
             fontSize: 16,
             'a': {
               color: colorPrimary.base,
-            }
+            },
+            'li + li': {
+              marginTop: defaultSpacing * 2,
+            },
+            ul: {
+              marginTop: '.5em',
+            },
           },
           '.root': {
             minHeight: '100vh',
@@ -108,12 +114,6 @@ export const muiTheme = (dark?: boolean): Theme => {
           },
           main: {
             flex: 1,
-          },
-          ul: {
-            marginTop: '.5em',
-          },
-          'li + li': {
-            marginTop: defaultSpacing * 2,
           },
           h1: {
             ...baseTheme.typography.h2,
