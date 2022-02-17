@@ -57,7 +57,7 @@ const Home = ({anomalies}: HomeProps) => {
           textAlign: 'center',
           padding: 5,
           fontSize: 32,
-          fontWeight: 'lighter'
+          // fontWeight: 'lighter'
         }} dangerouslySetInnerHTML={{__html: m.signalconsoCatchWord}}/>
 
         <Section>
