@@ -147,7 +147,7 @@ describe('Details: textarea', () => {
     )
   })
 
-  it.only('should init and prevent submit when not filled', async () => {
+  it('should init and prevent submit when not filled', async () => {
     expect(app.container.querySelectorAll('textarea').length).toEqual(1)
     await clickBtnSubmit(app)
     hasErrors(app, 1)

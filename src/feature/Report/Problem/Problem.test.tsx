@@ -250,9 +250,31 @@ describe('Problem', () => {
     fireEvent.click(app.getByText(Fixture.reponseConsoSubcategory.title))
     clickEmployeeConsumer(app, 'no')
     clickContractualDispute(app, 'reponseConso')
-    expect(report?.employeeConsumer).toEqual(false)
-    expect(report?.forwardToReponseConso).toEqual(true)
     expectContractualDisputeVisible(app, false)
     clickBtnSubmit(app)
+    expect(report?.employeeConsumer).toEqual(false)
+    expect(report?.forwardToReponseConso).toEqual(true)
+    expect(report?.tags?.includes(ReportTag.ReponseConso)).toEqual(true)
+  })
+
+  it('should ask add ReponseConso tag when related option is not selected', () => {
+    let report: undefined | Partial<ReportDraft2>
+    const app = render(
+      <DummyStepperProvider currentStep={0}>
+        <AccessReportFlow onReportChange={r => {
+          report = r
+        }}>
+          <Problem anomaly={Fixture.anomaly}/>
+        </AccessReportFlow>
+      </DummyStepperProvider>
+    )
+    fireEvent.click(app.getByText(Fixture.reponseConsoSubcategory.title))
+    clickEmployeeConsumer(app, 'no')
+    clickContractualDispute(app, 'notContractualDispute')
+    expectContractualDisputeVisible(app, false)
+    clickBtnSubmit(app)
+    expect(report?.employeeConsumer).toEqual(false)
+    expect(report?.forwardToReponseConso).not.toEqual(true)
+    expect((report?.tags ?? []).includes(ReportTag.ReponseConso)).toEqual(false)
   })
 })

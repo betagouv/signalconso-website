@@ -21,7 +21,7 @@ export const ScInput = React.forwardRef(({small, onClear, InputProps, ...props}:
         )
       } : {})
     }}
-    // size="small"
+    size="small"
     margin="dense"
     variant="outlined"
     inputRef={ref}

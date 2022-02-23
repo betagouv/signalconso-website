@@ -40,12 +40,12 @@ export const Problem = ({
   } = useSelectedSubcategoriesUtils(anomaly, reportDraft?.subcategories ?? [])
 
   const submit = (next: () => void) => {
-    setReportDraft(_ => {
+    setReportDraft(draft => {
       const {subcategories, ..._anomaly} = anomaly
       return ({
-        ..._,
-        tags: tagsFromSelected,
-        companyKind: _.companyKind ?? companyKindFromSelected ?? CompanyKinds.SIRET,
+        ...draft,
+        tags: draft.forwardToReponseConso ? tagsFromSelected : tagsFromSelected.filter(_ => _ !== ReportTag.ReponseConso),
+        companyKind: draft.companyKind ?? companyKindFromSelected ?? CompanyKinds.SIRET,
         anomaly: _anomaly
       })
     })
