@@ -3,7 +3,7 @@ import {useState} from 'react'
 import {CompanyKinds} from '@signal-conso/signalconso-api-sdk-js'
 import {ReportDraft2} from '../../core/model/ReportDraft'
 
-export const playgroundCompany = () => {
+export const PlaygroundCompany = () => {
   const [company, setCompany] = useState<Partial<ReportDraft2>>({})
   return (
     <>

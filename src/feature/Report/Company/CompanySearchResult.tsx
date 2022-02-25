@@ -10,7 +10,7 @@ import {styleUtils} from '../../../core/theme/theme'
 import {AddressComponent} from '../../../shared/Address/Address'
 import {Animate} from '../../../shared/Animate/Animate'
 
-interface Props {
+interface Props extends Omit<BoxProps, 'onChange'> {
   companies: CompanySearchResult[]
   autoScrollTo?: boolean
   animate?: boolean
@@ -53,13 +53,13 @@ export const CompanySearchResultComponent = ({autoScrollTo, animate, companies, 
   return (
     <Animate autoScrollTo={autoScrollTo} animate={animate}>
       {companies.length === 0 ? (
-        <Panel>
+        <Panel id="CompanySearchResult">
           <Fender type="empty" icon="sentiment_very_dissatisfied">
             <Txt color="hint" size="big">{m.noMatchingCompany}</Txt>
           </Fender>
         </Panel>
       ) : (
-        <Panel title={m.selectCompany}>
+        <Panel title={m.selectCompany} id="CompanySearchResult">
           <Txt block color="hint">{m.selectCompanyDesc}</Txt>
           <PanelBody>
             <ScRadioGroup>

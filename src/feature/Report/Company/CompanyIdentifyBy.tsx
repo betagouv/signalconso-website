@@ -15,7 +15,7 @@ export enum IdentifyBy {
 
 interface Props extends Omit<BoxProps, 'onChange' | 'defaultValue'> {
   autoScrollTo?: boolean
-animate?: boolean
+  animate?: boolean
   companyKind: CompanyKinds
   onChange: (identifyBy: IdentifyBy) => void
   value?: IdentifyBy
@@ -25,7 +25,7 @@ export const CompanyIdentifyBy = ({autoScrollTo, animate, companyKind, value, on
   const {m} = useI18n()
   return (
     <Animate autoScrollTo={autoScrollTo} animate={animate}>
-      <Panel title={m.canYouIdentifyCompany}>
+      <Panel title={m.canYouIdentifyCompany} id="CompanyIdentifyBy">
         <Txt block sx={{mb: 2}} color="hint">{m.canYouIdentifyCompanyDesc}</Txt>
         <PanelBody>
           <ScRadioGroup {...props} value={value} onChange={onChange}>

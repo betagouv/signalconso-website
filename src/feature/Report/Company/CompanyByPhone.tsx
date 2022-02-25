@@ -17,7 +17,7 @@ interface Form {
 
 interface Props extends Omit<BoxProps, 'onSubmit'> {
   autoScrollTo?: boolean
-animate?: boolean
+  animate?: boolean
   value?: string
   onSubmit: (phone?: string) => void
 }
@@ -31,10 +31,10 @@ export const CompanyByPhone = ({autoScrollTo, animate, value, onSubmit, ...props
     register,
     formState: {errors},
   } = useForm<Form>()
-  
+
   return (
     <Animate autoScrollTo={autoScrollTo} animate={animate}>
-      <Panel title={m.aboutCompany}>
+      <Panel title={m.aboutCompany} id="CompanyByPhone">
         <PanelBody>
           <Box component="form" onSubmit={handleSubmit(({phone}) => onSubmit(phone))} {...props}>
             <Txt block>

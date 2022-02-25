@@ -18,7 +18,7 @@ interface Form {
 
 interface Props {
   autoScrollTo?: boolean
-animate?: boolean
+  animate?: boolean
   onFound: (companies?: CompanySearchResult[]) => void
   onReportForeignCompany: () => void
 }
@@ -41,7 +41,7 @@ export const CompanyByNameAndPostalCode = ({autoScrollTo, animate, onFound, onRe
 
   return (
     <Animate autoScrollTo={autoScrollTo} animate={animate}>
-      <Panel title={m.couldYouPrecise}>
+      <Panel title={m.couldYouPrecise} id="CompanyByNameAndPostalCode">
         <Txt color="hint">{m.youCanOnlyReportFrenchCompanies} &nbsp;</Txt>
         <Txt link onClick={onReportForeignCompany}>{m.reportForeignCompany}</Txt>
         <form onSubmit={handleSubmit(search)}>

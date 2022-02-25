@@ -22,7 +22,7 @@ export const CompanyAskIsForeign = ({autoScrollTo, animate, value, onChange}: Pr
   const {m} = useI18n()
   return (
     <Animate autoScrollTo={autoScrollTo} animate={animate}>
-      <Panel title={m.isAFrenchCompany}>
+      <Panel title={m.isAFrenchCompany} id="CompanyAskIsForeign">
         <PanelBody>
           <ScRadioGroup value={value} onChange={onChange}>
             <ScRadioGroupItem value={IsForeignCompany.Yes} title={m.yes}/>

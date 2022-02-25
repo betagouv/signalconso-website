@@ -28,7 +28,7 @@ export const CompanyAskConsumerStreet = ({autoScrollTo, animate, value, onChange
 
   return (
     <Animate autoScrollTo={autoScrollTo} animate={animate}>
-      <Panel title={m.couldYouPrecise}>
+      <Panel title={m.couldYouPrecise} id="CompanyAskConsumerStreet">
         <form onSubmit={handleSubmit(onChange)}>
           <PanelBody>
             <FormLayout required label={m.yourPostalCode} desc={m.yourPostalCodeDesc}>

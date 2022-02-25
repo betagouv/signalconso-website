@@ -44,7 +44,7 @@ export const CompanySearchByIdentity = ({autoScrollTo, animate, onFound}: Props)
 
   return (
     <Animate autoScrollTo={autoScrollTo} animate={animate}>
-      <Panel title={m.couldYouPrecise}>
+      <Panel title={m.couldYouPrecise} id="CompanySearchByIdentity">
         <form onSubmit={handleSubmit(search)}>
           <PanelBody>
             <FormLayout required label={m.companyIdentityLabel}>

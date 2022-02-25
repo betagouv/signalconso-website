@@ -27,7 +27,7 @@ export const CompanyAskForeignDetails = ({autoScrollTo, animate, onChange}: Prop
 
   return (
     <Animate autoScrollTo={autoScrollTo} animate={animate}>
-      <Panel title={m.couldYouPrecise}>
+      <Panel title={m.couldYouPrecise} id="CompanyAskForeignDetails">
         <form onSubmit={handleSubmit(onChange)}>
           <PanelBody>
             <FormLayout required label={m.reportedCompanyName}>
