@@ -238,7 +238,7 @@ export const _Details = ({
                           error={hasErrors}
                         >
                           {mapFor(24, i =>
-                            <MenuItem onChange={(x: React.FormEvent<HTMLLIElement>) => console.log} key={i} value={`de ${i}h à ${i + 1}h`}>
+                            <MenuItem key={i} value={`de ${i}h à ${i + 1}h`}>
                               {m.timeFromTo(i, i + 1)}
                             </MenuItem>
                           )}

@@ -63,7 +63,6 @@ export const CompanySearchByIdentity = ({autoScrollTo, animate, onFound}: Props)
                     <IconBtn size="small" color="primary" onClick={() => {
                       onFound(undefined)
                       reset()
-                      console.log(inputEl)
                       inputEl.current?.focus()
                     }}>
                       <Icon>clear</Icon>
