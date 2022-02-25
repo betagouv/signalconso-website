@@ -38,6 +38,8 @@ export const getDraftReportInputs = ({subcategories, tags}: {subcategories: Subc
     res.push(...DraftReportDefaultInputs.defaults)
   }
   if (tags?.includes(ReportTag.ReponseConso)) {
+    const i = res.findIndex(_ => _.type = DetailInputType.TEXTAREA);
+    res[i].label = `${DraftReportDefaultInputs.description().label} (${res[i].label})`;
     res.push(DraftReportDefaultInputs.reponseConso)
   }
   return res
