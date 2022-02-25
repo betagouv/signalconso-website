@@ -10,6 +10,7 @@ import {SignalConsoPublicSdk} from '@signal-conso/signalconso-api-sdk-js'
 import {fr} from '../core/i18n/localization/fr'
 import {StepperContext} from 'shared/Stepper/Stepper'
 import {ReportDraft2} from '../core/model/ReportDraft'
+import {DeepPartial} from '@alexandreannic/ts-utils'
 
 const AllTheProviders = (options?: Options) => ({children}: any) => {
   return (
@@ -58,7 +59,7 @@ export const AccessReportFlow = ({children, onReportChange}: {
 
 interface Options {
   initialReport?: Partial<ReportDraft2>
-  apiSdkMock?: Partial<SignalConsoPublicSdk>
+  apiSdkMock?: DeepPartial<SignalConsoPublicSdk>
 }
 
 export interface ScRenderResult extends RenderResult {

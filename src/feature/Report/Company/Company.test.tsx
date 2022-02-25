@@ -50,10 +50,11 @@ describe('Details: single date not in future', () => {
         {
           apiSdkMock: {
             company: {
-              searchCompaniesByUrl: (url: string) => Promise.resolve(url === 'www.known.site' ? [
-                genCompanySearchResult()
-              ] : [])
-            } as any
+              searchCompaniesByUrl: (url: string) => Promise.resolve(fnSwitch(url, {
+                'known.site': [genCompanySearchResult()],
+                'marketplace.site': [genCompanySearchResult()],
+              }, () => []))
+            }
           }
         }
       )
@@ -61,14 +62,14 @@ describe('Details: single date not in future', () => {
 
     it('should ask identification way when no associated company is found', async () => {
       await elementShouldExists('#CompanyByWebsite')
-      fireEvent.change(app.container.querySelector('#CompanyByWebsite input')!, {target: {value: 'www.unknown.site'}})
+      fireEvent.change(app.container.querySelector('#CompanyByWebsite input')!, {target: {value: 'unknown.site'}})
       fireEvent.click(app.container.querySelector('#CompanyByWebsite button[type=submit]')!)
       await elementShouldExists('#CompanyIdentifyBy')
     })
 
     it.only('should ask identification way when no associated company is found', async () => {
       await elementShouldExists('#CompanyByWebsite')
-      fireEvent.change(app.container.querySelector('#CompanyByWebsite input')!, {target: {value: 'www.known.site'}})
+      fireEvent.change(app.container.querySelector('#CompanyByWebsite input')!, {target: {value: 'known.site'}})
       fireEvent.click(app.container.querySelector('#CompanyByWebsite button[type=submit]')!)
       await elementShouldExists('#CompanySearchResult')
     })

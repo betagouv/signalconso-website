@@ -126,6 +126,14 @@ export const _Company = ({
     }}/>
   )
 
+  const companySearchResultTree = (condition?: boolean): TreeStepperNode => ({
+    id: 'searchResult',
+    if: condition,
+    done: !!companyDraft.siret,
+    render: renderSearchResult
+  })
+
+
   const commonTree: TreeStepperNode = {
     id: 'companyIdentifyBy',
     done: !!identifyBy,
@@ -136,22 +144,14 @@ export const _Company = ({
         if: identifyBy === IdentifyBy.NAME,
         done: !!result,
         render: renderAskNameAndPostalCode,
-        children: [{
-          id: 'searchResult',
-          done: !!companyDraft.siret,
-          render: renderSearchResult
-        }]
+        children: [companySearchResultTree()]
       },
       {
         id: 'companyByIdentity',
         if: identifyBy === IdentifyBy.IDENTITY,
         done: !!result,
         render: renderSearchByIdentity,
-        children: [{
-          id: 'searchResult',
-          done: !!companyDraft.siret,
-          render: renderSearchResult
-        }]
+        children: [companySearchResultTree()]
       },
       {
         id: 'askConsumerStreet',
@@ -194,12 +194,7 @@ export const _Company = ({
             done: !!companyDraft.website,
             render: renderWebsite,
             children: [
-              {
-                id: 'searchResult',
-                if: !!resultFromMatch,
-                done: !!companyDraft.siret,
-                render: renderSearchResult
-              },
+              companySearchResultTree(!!resultFromMatch),
               commonTree
             ],
           },
@@ -209,12 +204,7 @@ export const _Company = ({
             done: !!companyDraft.phone,
             render: renderWebsite,
             children: [
-              {
-                id: 'searchResult',
-                if: !!resultFromMatch,
-                done: !!companyDraft.siret,
-                render: renderSearchResult
-              },
+              companySearchResultTree(!!resultFromMatch),
               commonTree
             ],
           },
