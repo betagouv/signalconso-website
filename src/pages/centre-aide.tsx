@@ -4,7 +4,7 @@ import {useState} from 'react'
 import {Tab, Tabs} from '@mui/material'
 import {fnSwitch} from '@alexandreannic/ts-utils/lib/common'
 import {CentreAidePro} from '../feature/CentreAide/CentreAidePro'
-import {Head} from 'next/document'
+import Head from 'next/head'
 import {pageDefinitions} from '../core/pageDefinition'
 
 const a11yProps = (index: number) => {

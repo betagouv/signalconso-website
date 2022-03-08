@@ -39,7 +39,7 @@ export const reportCurrentStep = (r: Partial<ReportDraft2>): number => {
   return index > -1 ? index : values.length - 1
 }
 
-export default ({anomaly}: {anomaly: Anomaly}) => {
+const AnomalyPage = ({anomaly}: {anomaly: Anomaly}) => {
   const _reportFlow = useReportFlowContext()
   const initialStep = useMemo(() => {
     if (anomaly.category === _reportFlow.reportDraft.category) {
@@ -54,4 +54,6 @@ export default ({anomaly}: {anomaly: Anomaly}) => {
     </Page>
   )
 }
+
+export default AnomalyPage
 

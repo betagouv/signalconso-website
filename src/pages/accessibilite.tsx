@@ -2,7 +2,7 @@ import {Panel, PanelBody} from '../shared/Panel/Panel'
 import {Page} from '../shared/Page/Page'
 import Link from 'next/link'
 import {siteMap} from '../core/siteMap'
-import {Head} from 'next/document'
+import Head from 'next/head'
 import {pageDefinitions} from '../core/pageDefinition'
 
 const Accessibilite = () => {

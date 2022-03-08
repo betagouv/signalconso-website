@@ -1,9 +1,9 @@
 import {Page} from '../shared/Page/Page'
 import Link from 'next/link'
 import {siteMap} from '../core/siteMap'
-import {Head} from 'next/document'
+import Head from 'next/head'
 import {pageDefinitions} from '../core/pageDefinition'
-{}
+
 const PlanDuSite = () => {
   return (
     <Page size="small" className="blog">
