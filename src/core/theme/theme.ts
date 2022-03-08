@@ -116,8 +116,8 @@ export const muiTheme = (dark?: boolean): Theme => {
             flex: 1,
           },
           h1: {
-            ...baseTheme.typography.h2,
-            marginTop: defaultSpacing * 4,
+            ...baseTheme.typography.h4,
+            marginTop: 0,
           },
           h2: {
             ...baseTheme.typography.h5,
@@ -136,6 +136,63 @@ export const muiTheme = (dark?: boolean): Theme => {
             ...baseTheme.typography.h6,
             fontSize: '1.25rem',
           },
+          hr: {
+            border: 'none',
+            borderBottom: `1px solid ${baseTheme.palette.divider}`
+          },
+          table: {
+            background: baseTheme.palette.background.paper,
+            border: `1px solid ${baseTheme.palette.divider}`,
+            borderLeft: 0,
+            borderRight: 0,
+            borderRadius: 2,
+            position: 'relative',
+            width: '100%',
+            borderCollapse: 'collapse',
+
+            '& td': {
+              fontWeight: 400,
+              padding: '1em',
+              textAlign: 'left',
+              borderTop: `1px solid ${baseTheme.palette.divider}`,
+            },
+            '& th': {
+              padding: '1em',
+              textAlign: 'left',
+            },
+            '& thead th': {
+              background: baseTheme.palette.action.disabledBackground,
+              borderBottom: `1px solid ${baseTheme.palette.divider}`,
+              // font-size: 0.875em,
+              // font-weight: 700,
+              textTransform: 'uppercase',
+            }
+          },
+//
+// 'table td, table th' {
+//     padding: 1em;
+//     text-align: left;
+//   }
+//
+// .table td {
+//     border-top: 1px solid #ebeff3;
+//     border-top: 1px solid $lighter-grey;
+//   }
+//
+// .table thead th {
+//     background: #fafbfc;
+//     background: $lightest-grey;
+//     border-bottom: 1px solid #c9d3df;
+//     border-bottom: 1px solid $theme-border-lighter;
+//     font-size: 0.875em;
+//     font-weight: 700;
+//     text-transform: uppercase;
+//   }
+//
+// .table:not(.no-hover) tr:hover {
+//     background: #fafbfc;
+//     background: $lightest-grey;
+//   }
           // h2: {
           //   ...baseTheme.typography.h6,
           //   marginBottom: baseTheme.spacing(2),

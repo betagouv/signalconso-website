@@ -32,6 +32,7 @@ const Card = ({
 const CommentCAMarche = () => {
   return (
     <Page size="small" className="blog">
+      <h1>Comment ça marche ?</h1>
       <Card img="image/illustrations/consumer.png" title="1. Vous avez rencontré un problème avec une entreprise ?">
         <p>
           Vous pouvez faire remonter votre problème sur le site SignalConso.

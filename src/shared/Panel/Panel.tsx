@@ -11,6 +11,11 @@ export interface PanelProps extends Omit<CardProps, 'title'> {
 export const Panel = ({title, desc, children, sx, elevation = 0, border, ...rest}: PanelProps) => {
   return (
     <Card role="article" elevation={elevation} {...rest} sx={{
+      pb: 2,
+      pt: 0,
+      '&:not(:first-of-type)': {
+        pt: 2,
+      },
       ...(!border && !elevation) && {
         borderRadius: 0,
       },
@@ -19,7 +24,6 @@ export const Panel = ({title, desc, children, sx, elevation = 0, border, ...rest
         px: 2,
       } : {}),
       ...sx,
-      py: 2,
       '& + &': {
         pt: 3,
         mt: 3,

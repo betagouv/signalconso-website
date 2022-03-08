@@ -3,6 +3,7 @@ import {alpha, Box, Grid, Theme, useTheme} from '@mui/material'
 import Link from 'next/link'
 import {SxProps} from '@mui/system'
 import {Section} from './Section'
+import {siteMap} from '../siteMap'
 
 const sxList: SxProps<Theme> = {
   listStyle: 'none',
@@ -126,24 +127,24 @@ export const Footer = () => {
             <Grid item md={4}>
               <Box component="ul" sx={sxList}>
                 <li>
-                  <Link href="/suivi-et-vie-privee">
+                  <Link href={siteMap.suiviEtViePrivee}>
                     <a>Suivi d'audience et vie privée</a>
                   </Link>
                 </li>
                 <li>
-                  <Link href="/cookies">
+                  <Link href={siteMap.cookies}>
                     <a>Gestion des cookies</a>
                   </Link>
                 </li>
                 <li>
-                  <Link href="/conditions-generales-utilisation/consommateur">
+                  <Link href={siteMap.conditionsGeneralesUtilisation}>
                     <a title="Conditions générales d'utilisation (nouvelle fenêtre)" target="_blank">
                       Conditions générales d'utilisation
                     </a>
                   </Link>
                 </li>
                 <li>
-                  <Link href="/accessibilite">
+                  <Link href={siteMap.accessibilite}>
                     <a title="Accessibilité">Accessibilité (partiellement conforme)</a>
                   </Link>
                 </li>

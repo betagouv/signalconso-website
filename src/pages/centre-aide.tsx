@@ -16,6 +16,7 @@ const CentreAide = () => {
   const [activeTab, setActiveTab] = useState(0)
   return (
     <Page size="small" className="blog">
+      <h1>Centre d'aide</h1>
       <Tabs
         value={activeTab}
         onChange={(e, i) => setActiveTab(i)}
