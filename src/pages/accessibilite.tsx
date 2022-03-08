@@ -81,9 +81,9 @@ const Accessibilite = () => {
           <ol>
             <li><Link href="/">Accueil</Link></li>
             <li><Link href={siteMap.quiSommesNous}>Qui sommes-nous ?</Link></li>
-            <li><Link href={siteMap.howItWorks}>Comment ça marche ?</Link></li>
+            <li><Link href={siteMap.commentCaMarche}>Comment ça marche ?</Link></li>
             <li><Link href={siteMap.stats}>Statistiques</Link></li>
-            <li><Link href={siteMap.help}>Centre d'aide</Link></li>
+            <li><Link href={siteMap.centreAide}>Centre d'aide</Link></li>
             <li>Étape 1 - Le problème</li>
             <li>Étape 2 - La description</li>
             <li>Étape 3 - Le commerçant</li>

@@ -9,7 +9,7 @@ export const CentreAideConso = (props: BoxProps) => {
       <h2>Généralités</h2>
       <Accordions>
         <Accordion title={`Comment fonctionne SignalConso ?`}>
-          <p>Consultez notre page <Link href={siteMap.howItWorks}>Comment ça marche</Link></p>
+          <p>Consultez notre page <Link href={siteMap.commentCaMarche}>Comment ça marche</Link></p>
         </Accordion>
         <Accordion title={`Je souhaite poser une question pour connaître mes droits ou savoir ce que je dois faire face à mon problème`}>
           <p>SignalConso ne permet pas de poser une question à l'administration.</p>

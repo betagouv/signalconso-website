@@ -149,7 +149,7 @@ export const Footer = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link href="/plan-du-site">
+                  <Link href={siteMap.planDuSite}>
                     <a title="Plan du site">Plan du site</a>
                   </Link>
                 </li>
@@ -158,22 +158,22 @@ export const Footer = () => {
             <Grid item md={4}>
               <Box component="ul" sx={sxList}>
                 <li>
-                  <Link href="/qui-sommes-nous">
+                  <Link href={siteMap.quiSommesNous}>
                     <a>Qui sommes-nous ?</a>
                   </Link>
                 </li>
                 <li>
-                  <Link href="/dgccrf">
+                  <Link href={siteMap.connexion}>
                     <a>Espace DGCCRF</a>
                   </Link>
                 </li>
                 <li>
-                  <Link href="/stats">
+                  <Link href={siteMap.stats}>
                     <a>Statistiques</a>
                   </Link>
                 </li>
                 <li>
-                  <Link href="/contact">
+                  <Link href={siteMap.contact}>
                     <a>Contact</a>
                   </Link>
                 </li>

@@ -88,8 +88,8 @@ export const Header = () => {
             <li><HeaderItem href={siteMap.playground}>Playground</HeaderItem></li>
           )}
           <li><HeaderItem href={siteMap.index}>{m.menu_home}</HeaderItem></li>
-          <li><HeaderItem href={siteMap.howItWorks}>{m.menu_howItWorks}</HeaderItem></li>
-          <li><HeaderItem href={siteMap.help}>{m.menu_help}</HeaderItem></li>
+          <li><HeaderItem href={siteMap.commentCaMarche}>{m.menu_howItWorks}</HeaderItem></li>
+          <li><HeaderItem href={siteMap.centreAide}>{m.menu_help}</HeaderItem></li>
           <li>
             <BtnAdmin sx={{ml: 1}}/>
           </li>

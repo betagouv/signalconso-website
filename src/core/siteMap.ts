@@ -2,16 +2,19 @@ import {appConfig} from '../conf/appConfig'
 
 export const siteMap = {
   index: `/`,
-  howItWorks: `/comment-ca-marche`,
+  commentCaMarche: `/comment-ca-marche`,
   suiviEtViePrivee: `/suivi-et-vie-privee`,
-  help: `/centre-aide`,
+  centreAide: `/centre-aide`,
   playground: `/playground`,
   cookies: `/cookies`,
   contact: `/contact`,
   stats: `/stats`,
+  arborescence: `/arborescence`,
   accessibilite: `/accessibilite`,
+  planDuSite: `/plan-du-site`,
   quiSommesNous: `/qui-sommes-nous`,
   conditionsGeneralesUtilisation: `/conditions-generales-utilisation`,
   connexion: appConfig.dashboardBaseUrl,
+  companyActivation: appConfig.dashboardBaseUrl + '/activation',
   lostPassword: appConfig.dashboardBaseUrl + '/perte-mot-de-passe',
 }
