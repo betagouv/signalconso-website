@@ -2,6 +2,8 @@ import {Box, BoxProps, Tab, Tabs} from '@mui/material'
 import {Page} from '../shared/Page/Page'
 import {useState} from 'react'
 import {fnSwitch} from '@alexandreannic/ts-utils/lib/common'
+import {Head} from 'next/document'
+import {pageDefinitions} from '../core/pageDefinition'
 
 const a11yProps = (index: number) => {
   return {
@@ -14,6 +16,10 @@ const ConditionsGeneralesUtilisation = () => {
   const [activeTab, setActiveTab] = useState(0)
   return (
     <Page size="small" className="blog">
+      <Head>
+        <title>{pageDefinitions.conditionsGeneralesUtilisation.title}</title>
+        <meta name="description" content={pageDefinitions.conditionsGeneralesUtilisation.description}/>
+      </Head>
       <h1>Conditions générales d'utilisation du site SignalConso</h1>
       <Tabs
         value={activeTab}

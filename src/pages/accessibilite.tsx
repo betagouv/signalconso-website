@@ -2,10 +2,16 @@ import {Panel, PanelBody} from '../shared/Panel/Panel'
 import {Page} from '../shared/Page/Page'
 import Link from 'next/link'
 import {siteMap} from '../core/siteMap'
+import {Head} from 'next/document'
+import {pageDefinitions} from '../core/pageDefinition'
 
 const Accessibilite = () => {
   return (
     <Page size="small" className="blog">
+      <Head>
+        <title>{pageDefinitions.accessibilite.title}</title>
+        <meta name="description" content={pageDefinitions.accessibilite.description}/>
+      </Head>
       <h1>Déclaration d'accessibilité</h1>
       <Panel>
         <PanelBody>

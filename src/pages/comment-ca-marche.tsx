@@ -2,6 +2,8 @@ import {ReactNode} from 'react'
 import {Panel, PanelBody} from '../shared/Panel/Panel'
 import {Page} from '../shared/Page/Page'
 import {Box} from '@mui/material'
+import {Head} from 'next/document'
+import {pageDefinitions} from '../core/pageDefinition'
 // import Image from 'next/image'
 // import consumerImg from '../../public/image/illustrations/consumer.png'
 // import reportImg from '../../public/image/illustrations/report.png'
@@ -19,6 +21,10 @@ const Card = ({
 }) => {
   return (
     <Panel>
+      <Head>
+        <title>{pageDefinitions.commentCaMarche.title}</title>
+        <meta name="description" content={pageDefinitions.commentCaMarche.description}/>
+      </Head>
       <PanelBody>
         <h2>{title}</h2>
         <Box sx={{display: 'flex',}}>

@@ -4,6 +4,8 @@ import {useState} from 'react'
 import {Tab, Tabs} from '@mui/material'
 import {fnSwitch} from '@alexandreannic/ts-utils/lib/common'
 import {CentreAidePro} from '../feature/CentreAide/CentreAidePro'
+import {Head} from 'next/document'
+import {pageDefinitions} from '../core/pageDefinition'
 
 const a11yProps = (index: number) => {
   return {
@@ -16,6 +18,10 @@ const CentreAide = () => {
   const [activeTab, setActiveTab] = useState(0)
   return (
     <Page size="small" className="blog">
+      <Head>
+        <title>{pageDefinitions.centreAide.title}</title>
+        <meta name="description" content={pageDefinitions.centreAide.description}/>
+      </Head>
       <h1>Centre d'aide</h1>
       <Tabs
         value={activeTab}

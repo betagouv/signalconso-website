@@ -2,10 +2,16 @@ import {Page} from 'shared/Page/Page'
 import {Panel, PanelBody} from '../shared/Panel/Panel'
 import {siteMap} from '../core/siteMap'
 import Link from 'next/link'
+import {Head} from 'next/document'
+import {pageDefinitions} from '../core/pageDefinition'
 
 const SuiviEtViePrivee = () => {
   return (
     <Page size="small" className="blog">
+      <Head>
+        <title>{pageDefinitions.suiviEtViePrivee.title}</title>
+        <meta name="description" content={pageDefinitions.suiviEtViePrivee.description}/>
+      </Head>
       <h1>Suivi d'audience et vie privée</h1>
       <Panel>
         <PanelBody>

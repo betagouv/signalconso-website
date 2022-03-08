@@ -1,10 +1,16 @@
 import {Page} from '../shared/Page/Page'
 import Link from 'next/link'
 import {siteMap} from '../core/siteMap'
+import {Head} from 'next/document'
+import {pageDefinitions} from '../core/pageDefinition'
 {}
 const PlanDuSite = () => {
   return (
     <Page size="small" className="blog">
+      <Head>
+        <title>{pageDefinitions.planDuSite.title}</title>
+        <meta name="description" content={pageDefinitions.planDuSite.description}/>
+      </Head>
       <h2>Pages générales</h2>
       <ul>
         <li><Link href={siteMap.index}>Accueil</Link></li>

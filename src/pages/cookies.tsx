@@ -1,10 +1,16 @@
 import {Page} from '../shared/Page/Page'
 import {Panel, PanelBody} from '../shared/Panel/Panel'
 import {siteMap} from '../core/siteMap'
+import {Head} from 'next/document'
+import {pageDefinitions} from '../core/pageDefinition'
 
 const Cookies = () => {
   return (
     <Page size="small" className="blog">
+      <Head>
+        <title>{pageDefinitions.cookies.title}</title>
+        <meta name="description" content={pageDefinitions.cookies.description}/>
+      </Head>
       <h1>Gestion des cookies</h1>
       <Panel>
         <PanelBody>
