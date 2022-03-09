@@ -12,6 +12,7 @@ import {Txt} from 'mui-extension'
 import {IconBtn} from 'mui-extension/lib'
 import {ScButton} from '../shared/Button/Button'
 import {fnSwitch} from '@alexandreannic/ts-utils/lib/common/fnSwitch/FnSwitch'
+import {styleUtils} from '../core/theme/theme'
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const anomalies = await apiSdk.anomaly.getAnomalies()
@@ -33,6 +34,7 @@ const Node = ({
 }) => {
   const iconWidth = 40
   const iconMargin = 8
+  const theme = useTheme()
   const title = AnomalyClient.instanceOfAnomaly(anomaly) ? anomaly.category : anomaly.title
   const [isOpen, setIsOpen] = useState(false)
   useEffect(() => {
@@ -68,7 +70,22 @@ const Node = ({
             </Txt>
           )}
           <Box>
-            {(anomaly as SubcategoryBase).tags?.map(tag => <Chip sx={{mr: 1}} size="small" key={tag} label={tag}/>)}
+            {(anomaly as SubcategoryBase).tags?.map(tag =>
+              <Box sx={{
+                mr: 1,
+                borderRadius: 100,
+                height: 26,
+                px: 1.5,
+                backgroundColor: t => t.palette.action.disabledBackground,
+                display: 'inline-flex',
+                alignItems: 'center',
+                fontSize: styleUtils(theme).fontSize.small,
+                // fontWeight: t => t.typography.fontWeightBold,
+                color: t => t.palette.text.secondary,
+              }} key={tag}>
+                {tag}
+              </Box>
+            )}
           </Box>
           {AnomalyClient.instanceOfSubcategoryInformation(anomaly) && (
             <NodeInfo anomaly={anomaly}/>
@@ -180,7 +197,7 @@ const NodeInfo = ({
         </Txt>
       )}
       {anomaly.information.outOfScope && (
-        <Txt color="hint" size="small" color="secondary">Nous ne doutons pas que vous ayez réellement rencontré un problème mais... il ne s’agit pas d’une fraude.</Txt>
+        <Txt color="hint" size="small">Nous ne doutons pas que vous ayez réellement rencontré un problème mais... il ne s’agit pas d’une fraude.</Txt>
       )}
     </>
   )
