@@ -11,6 +11,7 @@ import {CacheProvider, EmotionCache} from '@emotion/react'
 import createEmotionCache from '../core/createEmotionCache'
 import {ToastProvider} from 'mui-extension'
 import {ReportFlowProvider} from '../feature/Report/ReportFlowContext'
+import {ConstantProvider} from '../core/context/ConstantContext'
 
 interface ScAppProps extends AppProps {
   emotionCache?: EmotionCache;
@@ -30,6 +31,7 @@ const App = ({emotionCache = clientSideEmotionCache, ...props}: ScAppProps) => {
         _ => <CssBaseline children={_}/>,
         _ => <ToastProvider horizontal="right" children={_}/>,
         _ => <ReportFlowProvider children={_}/>,
+        _ => <ConstantProvider children={_}/>,
       ]}
     >
       <_App {...props} />

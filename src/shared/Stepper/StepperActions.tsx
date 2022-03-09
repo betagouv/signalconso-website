@@ -2,6 +2,7 @@ import {Box} from '@mui/material'
 import {useI18n} from '../../core/i18n'
 import {ScButton} from '../Button/Button'
 import {useStepperContext} from './Stepper'
+import {StepperActionsNext} from './StepperActionsNext'
 
 interface Props {
   hideNext?: boolean
@@ -23,10 +24,7 @@ export const StepperActions = ({hidePrev, hideNext, loadingNext, loadingPrev, ne
         </ScButton>
       )}
       {!hideNext && (
-        <ScButton id="btn-submit" loading={loadingNext} sx={{marginLeft: 'auto'}} onClick={next ? () => next(_stepper.next) : _stepper.next} color="primary" variant="contained"
-                  iconAfter="keyboard_arrow_right">
-          {m.next}
-        </ScButton>
+        <StepperActionsNext loading={loadingNext} sx={{marginLeft: 'auto'}} onClick={next ? () => next(_stepper.next) : _stepper.next} />
       )}
     </Box>
   )

@@ -10,7 +10,7 @@ export const PlaygroundCompany = () => {
       {JSON.stringify(company)}
       <_Company
         draft={{
-          companyKind: CompanyKinds.WEBSITE
+          companyKind: CompanyKinds.LOCATION
         }}
         onUpdateReportDraft={setCompany}
       />
