@@ -47,7 +47,7 @@ export const Animate = ({
   useTimeout(scrollTo, 0)
 
   return React.cloneElement(children, {
-    className: (children.props.className ?? '') + ' Animate-scroll-' + id,
+    className: (children.props.className ?? '') + (' Animate-scroll-' + id),
     style: {
       transition: theme.transitions.create('all', {duration: animationDuration, delay: 50}),
       opacity: 0,

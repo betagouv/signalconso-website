@@ -17,8 +17,6 @@ interface Form {
 }
 
 interface Props extends Omit<BoxProps, 'onSubmit'> {
-  autoScrollTo?: boolean
-  animate?: boolean
   value?: string
   onSubmit: (websiteUrl?: string, company?: CompanySearchResult[]) => void
 }

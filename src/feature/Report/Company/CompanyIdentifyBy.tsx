@@ -14,8 +14,6 @@ export enum IdentifyBy {
 }
 
 interface Props extends Omit<BoxProps, 'onChange' | 'defaultValue'> {
-  autoScrollTo?: boolean
-  animate?: boolean
   companyKind: CompanyKinds
   onChange: (identifyBy: IdentifyBy) => void
   value?: IdentifyBy
@@ -28,7 +26,7 @@ export const CompanyIdentifyBy = ({companyKind, value, onChange, ...props}: Prop
       <Panel title={m.canYouIdentifyCompany} id="CompanyIdentifyBy">
         <Txt block sx={{mb: 2}} color="hint">{m.canYouIdentifyCompanyDesc}</Txt>
         <PanelBody>
-          <ScRadioGroup {...props} value={value} onChange={onChange}>
+          <ScRadioGroup value={value} onChange={onChange}>
             {companyKind !== CompanyKinds.INFLUENCEUR && (
               <ScRadioGroupItem value={IdentifyBy.NAME} title={m.identifyBy_name}/>
             )}

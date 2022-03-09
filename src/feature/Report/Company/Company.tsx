@@ -109,11 +109,11 @@ export const _Company = ({
   )
 
   const renderAskForeignDetails = () => (
-    <CompanyAskForeignDetails onChange={form => {
+    <CompanyAskForeignDetails onSubmit={form => {
       setCompanyDraft(_ => ({
         ..._,
-        name: form?.name,
-        address: {..._.address, country: form?.country, postalCode: form?.postalCode}
+        name: form.name,
+        address: {..._.address, country: form.country.name, postalCode: form.postalCode}
       }))
     }}/>
   )
@@ -187,6 +187,7 @@ export const _Company = ({
           {
             id: 'companyAskForeignDetails',
             if: isForeign === IsForeignCompany.No,
+            done: !!(companyDraft.name && companyDraft.address?.country && companyDraft.address.postalCode),
             render: renderAskForeignDetails,
           },
           {

@@ -17,8 +17,6 @@ interface Form {
 }
 
 interface Props {
-  autoScrollTo?: boolean
-  animate?: boolean
   onFound: (companies?: CompanySearchResult[]) => void
   onReportForeignCompany: () => void
 }

@@ -1,6 +1,6 @@
 import {useI18n} from '../../../core/i18n'
 import {FormLayout} from '../../../shared/FormLayout/FormLayout'
-import {useForm} from 'react-hook-form'
+import {Controller, useForm} from 'react-hook-form'
 import {ScInput} from '../../../shared/Input/ScInput'
 import {Panel, PanelActions, PanelBody} from '../../../shared/Panel/Panel'
 import {Animate} from '../../../shared/Animate/Animate'
@@ -10,15 +10,16 @@ import {useEffect} from 'react'
 import {useEffectFn} from '@alexandreannic/react-hooks-lib'
 import {useToast} from '../../../core/toast'
 import {StepperActionsNext} from '../../../shared/Stepper/StepperActionsNext'
+import {Country} from '@signal-conso/signalconso-api-sdk-js'
 
 interface Form {
   name: string
-  country: string
+  country: Country
   postalCode: string
 }
 
 interface Props {
-  onChange: (form?: Form) => void
+  onSubmit: (form: Form) => void
 }
 
 const countryToFlag = (isoCode: string) => {
@@ -27,7 +28,7 @@ const countryToFlag = (isoCode: string) => {
     : isoCode
 }
 
-export const CompanyAskForeignDetails = ({onChange}: Props) => {
+export const CompanyAskForeignDetails = ({onSubmit}: Props) => {
   const {m} = useI18n()
   const {countries} = useConstantContext()
   const {toastError} = useToast()
@@ -35,6 +36,7 @@ export const CompanyAskForeignDetails = ({onChange}: Props) => {
     control,
     handleSubmit,
     register,
+    formState: {errors},
   } = useForm<Form>()
 
   useEffect(() => {
@@ -45,30 +47,56 @@ export const CompanyAskForeignDetails = ({onChange}: Props) => {
   return (
     <Animate>
       <Panel title={m.couldYouPrecise} id="CompanyAskForeignDetails">
-        <form onSubmit={handleSubmit(onChange)}>
+        <form onSubmit={handleSubmit(onSubmit)}>
           <PanelBody>
             <FormLayout required label={m.reportedCompanyName}>
-              <ScInput placeholder={m.reportedCompanyNamePlaceholder} fullWidth {...register('name', {
-                required: {value: true, message: m.required},
-              })}/>
+              <ScInput
+                error={!!errors.name}
+                helperText={errors.name?.message ?? ''}
+                placeholder={m.reportedCompanyNamePlaceholder}
+                fullWidth
+                {...register('name', {
+                  required: {value: true, message: m.required},
+                })}/>
             </FormLayout>
             <FormLayout required label={m.country}>
-              <Autocomplete
-                {...register('country', {
+              <Controller
+                name="country"
+                control={control}
+                // onChange={([, data]) => data}
+                rules={{
                   required: {value: true, message: m.required},
-                })}
-                renderOption={(props, option) => <li {...props}><Box component="span" sx={{mr: 2, fontSize: 24}}>{countryToFlag(option.code)}</Box> {option.name}</li>}
-                loading={countries.loading}
-                options={countries.entity ?? []}
-                getOptionLabel={_ => _.name}
-                // options={countries.entity?.map(_ => _.name) ?? []}
-                renderInput={(params) => <ScInput {...params} placeholder={m.countryPlaceholder} fullWidth/>}
+                }}
+                render={({field}) => (
+                  <Autocomplete<Country>
+                    {...field}
+                    onChange={(e, data) => field.onChange(data)}
+                    renderOption={(props, option) => <li {...props}><Box component="span" sx={{mr: 2, fontSize: 24}}>{countryToFlag(option.code)}</Box> {option.name}</li>}
+                    loading={countries.loading}
+                    options={countries.entity ?? []}
+                    getOptionLabel={_ => _.name}
+                    // options={countries.entity?.map(_ => _.name) ?? []}
+                    renderInput={(params) => <ScInput
+                      {...params}
+                      error={!!errors.country}
+                      helperText={errors.country?.message ?? ''}
+                      placeholder={m.countryPlaceholder}
+                      fullWidth
+                    />}
+                  />
+                )}
               />
             </FormLayout>
             <FormLayout required label={m.yourPostalCode} desc={m.yourPostalCodeDesc}>
-              <ScInput placeholder={m.yourPostalCodePlaceholder} fullWidth {...register('postalCode', {
-                required: {value: true, message: m.required},
-              })}/>
+              <ScInput
+                error={!!errors.postalCode}
+                helperText={errors.postalCode?.message ?? ''}
+                placeholder={m.yourPostalCodePlaceholder}
+                fullWidth
+                {...register('postalCode', {
+                  required: {value: true, message: m.required},
+                })}
+              />
             </FormLayout>
           </PanelBody>
 
