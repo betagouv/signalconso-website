@@ -23,7 +23,7 @@ interface Props {
   onReportForeignCompany: () => void
 }
 
-export const CompanyByNameAndPostalCode = ({autoScrollTo, animate, onFound, onReportForeignCompany}: Props) => {
+export const CompanyByNameAndPostalCode = ({onFound, onReportForeignCompany}: Props) => {
   const {m} = useI18n()
   const {apiSdk} = useApiSdk()
   const {toastError} = useToast()
@@ -40,7 +40,7 @@ export const CompanyByNameAndPostalCode = ({autoScrollTo, animate, onFound, onRe
   useEffectFn(_search.error, toastError)
 
   return (
-    <Animate autoScrollTo={autoScrollTo} animate={animate}>
+    <Animate>
       <Panel title={m.couldYouPrecise} id="CompanyByNameAndPostalCode">
         <Txt color="hint">{m.youCanOnlyReportFrenchCompanies} &nbsp;</Txt>
         <Txt link onClick={onReportForeignCompany}>{m.reportForeignCompany}</Txt>

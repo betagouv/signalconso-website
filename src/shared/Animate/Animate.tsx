@@ -20,8 +20,8 @@ export const Animate = ({
   direction = 'Y',
   translateAnimation = 70,
   offsetY = 90,
-  autoScrollTo,
-  animate,
+  autoScrollTo = true,
+  animate = true,
   children,
   delay,
   animationDuration = 500

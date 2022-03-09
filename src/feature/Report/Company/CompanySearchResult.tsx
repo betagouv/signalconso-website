@@ -12,8 +12,6 @@ import {Animate} from '../../../shared/Animate/Animate'
 
 interface Props extends Omit<BoxProps, 'onChange'> {
   companies: CompanySearchResult[]
-  autoScrollTo?: boolean
-  animate?: boolean
   onChange: (_: CompanySearchResult) => void
 }
 
@@ -47,51 +45,53 @@ export const Row = ({icon, children, sx, ...props}: RowProps) => {
   )
 }
 
-export const CompanySearchResultComponent = ({autoScrollTo, animate, companies, onChange}: Props) => {
+export const CompanySearchResultComponent = ({companies, onChange}: Props) => {
   const {m} = useI18n()
 
   return (
-    <Animate autoScrollTo={autoScrollTo} animate={animate}>
-      {companies.length === 0 ? (
-        <Panel id="CompanySearchResult">
-          <Fender type="empty" icon="sentiment_very_dissatisfied">
-            <Txt color="hint" size="big">{m.noMatchingCompany}</Txt>
-          </Fender>
-        </Panel>
-      ) : (
-        <Panel title={m.selectCompany} id="CompanySearchResult">
-          <Txt block color="hint">{m.selectCompanyDesc}</Txt>
-          <PanelBody>
-            <ScRadioGroup>
-              {companies.map(company => {
-                const isGovernment = Report.isGovernmentCompany(company)
-                return (
-                  <ScRadioGroupItem key={company.siret} value={company.siret!} onClick={() => onChange(company)}>
-                    <Txt truncate block bold>
-                      {company.name}
-                    </Txt>
-                    {company.brand && <Txt block>{company.brand}</Txt>}
-                    {company.isHeadOffice && (
-                      <Row icon="business" sx={{color: t => t.palette.primary.main}}>{m.isHeadOffice}</Row>
-                    )}
-                    {company.activityLabel && (
-                      <Row icon="label">{company.activityLabel}</Row>
-                    )}
-                    {isGovernment && (
-                      <Row icon="error" sx={{color: t => t.palette.error.main}}>{m.governmentCompany}</Row>
-                    )}
-                    {company.address && (
-                      <Row icon="location_on">
-                        <AddressComponent address={company.address}/>
-                      </Row>
-                    )}
-                  </ScRadioGroupItem>
-                )
-              })}
-            </ScRadioGroup>
-          </PanelBody>
-        </Panel>
-      )}
-    </Animate>
+    <>
+      <Animate>
+        {companies.length === 0 ? (
+          <Panel id="CompanySearchResult">
+            <Fender type="empty" icon="sentiment_very_dissatisfied">
+              <Txt color="hint" size="big">{m.noMatchingCompany}</Txt>
+            </Fender>
+          </Panel>
+        ) : (
+          <Panel title={m.selectCompany} id="CompanySearchResult">
+            <Txt block color="hint">{m.selectCompanyDesc}</Txt>
+            <PanelBody>
+              <ScRadioGroup>
+                {companies.map(company => {
+                  const isGovernment = Report.isGovernmentCompany(company)
+                  return (
+                    <ScRadioGroupItem key={company.siret} value={company.siret!} onClick={() => onChange(company)}>
+                      <Txt truncate block bold>
+                        {company.name}
+                      </Txt>
+                      {company.brand && <Txt block>{company.brand}</Txt>}
+                      {company.isHeadOffice && (
+                        <Row icon="business" sx={{color: t => t.palette.primary.main}}>{m.isHeadOffice}</Row>
+                      )}
+                      {company.activityLabel && (
+                        <Row icon="label">{company.activityLabel}</Row>
+                      )}
+                      {isGovernment && (
+                        <Row icon="error" sx={{color: t => t.palette.error.main}}>{m.governmentCompany}</Row>
+                      )}
+                      {company.address && (
+                        <Row icon="location_on">
+                          <AddressComponent address={company.address}/>
+                        </Row>
+                      )}
+                    </ScRadioGroupItem>
+                  )
+                })}
+              </ScRadioGroup>
+            </PanelBody>
+          </Panel>
+        )}
+      </Animate>
+    </>
   )
 }

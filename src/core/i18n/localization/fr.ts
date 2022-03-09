@@ -296,6 +296,10 @@ export const fr = {
     reportedCompanyNamePlaceholder: `Ex: Boulangerie Petit Jean`,
     yourPostalCodeDesc: `SignalConso en a besoin pour alerter le bon service.`,
     companyIdentityHelper: `A quoi correspondent ces identifiants ?`,
+    companyIdentifyByNoneDesc:
+      `Si vous ne parvenez pas à identifier l'entreprise, vous pouvez continuer votre signalement.
+      Il ne sera pas transmis à l'entreprise, sauf si cette dernière est française et identifiable par l'équipe de SignalConso.
+      Dans tous les cas les enquêteurs de la répression des fraudes en seront informés.`,
     consumerTitle: `Vos coordonnées nous permettent d'authentifier votre signalement`,
     consumerAskCodeTitle: `Saisissez le code de validation`,
     consumerAskCodeDesc: (email: string) => `Un email vous a été envoyé à l'adresse <b>${email}</b>`,

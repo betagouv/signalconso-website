@@ -19,7 +19,7 @@ animate?: boolean
   onChange: (_: Form) => void
 }
 
-export const CompanyAskConsumerStreet = ({autoScrollTo, animate, value, onChange}: Props) => {
+export const CompanyAskConsumerStreet = ({value, onChange}: Props) => {
   const {m} = useI18n()
   const {
     register,
@@ -27,7 +27,7 @@ export const CompanyAskConsumerStreet = ({autoScrollTo, animate, value, onChange
   } = useForm<Form>()
 
   return (
-    <Animate autoScrollTo={autoScrollTo} animate={animate}>
+    <Animate>
       <Panel title={m.couldYouPrecise} id="CompanyAskConsumerStreet">
         <form onSubmit={handleSubmit(onChange)}>
           <PanelBody>

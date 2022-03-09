@@ -18,7 +18,7 @@ animate?: boolean
   onChange: (form?: Form) => void
 }
 
-export const CompanyAskForeignDetails = ({autoScrollTo, animate, onChange}: Props) => {
+export const CompanyAskForeignDetails = ({onChange}: Props) => {
   const {m} = useI18n()
   const {
     handleSubmit,
@@ -26,7 +26,7 @@ export const CompanyAskForeignDetails = ({autoScrollTo, animate, onChange}: Prop
   } = useForm<Form>()
 
   return (
-    <Animate autoScrollTo={autoScrollTo} animate={animate}>
+    <Animate>
       <Panel title={m.couldYouPrecise} id="CompanyAskForeignDetails">
         <form onSubmit={handleSubmit(onChange)}>
           <PanelBody>

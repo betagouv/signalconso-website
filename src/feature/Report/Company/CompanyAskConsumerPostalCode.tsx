@@ -18,7 +18,7 @@ animate?: boolean
   onChange: (consumerPostalCode?: string) => void
 }
 
-export const CompanyAskConsumerPostalCode = ({autoScrollTo, animate, value, onChange}: Props) => {
+export const CompanyAskConsumerPostalCode = ({value, onChange}: Props) => {
   const {m} = useI18n()
   const {
     register,
@@ -26,7 +26,7 @@ export const CompanyAskConsumerPostalCode = ({autoScrollTo, animate, value, onCh
   } = useForm<Form>()
 
   return (
-    <Animate autoScrollTo={autoScrollTo} animate={animate}>
+    <Animate>
       <Panel title={m.couldYouPrecise} id="CompanyAskConsumerPostalCode">
         <form onSubmit={handleSubmit(_ => onChange(_.consumerPostalCode))}>
           <PanelBody>

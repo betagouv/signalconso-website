@@ -21,10 +21,10 @@ interface Props extends Omit<BoxProps, 'onChange' | 'defaultValue'> {
   value?: IdentifyBy
 }
 
-export const CompanyIdentifyBy = ({autoScrollTo, animate, companyKind, value, onChange, ...props}: Props) => {
+export const CompanyIdentifyBy = ({companyKind, value, onChange, ...props}: Props) => {
   const {m} = useI18n()
   return (
-    <Animate autoScrollTo={autoScrollTo} animate={animate}>
+    <Animate>
       <Panel title={m.canYouIdentifyCompany} id="CompanyIdentifyBy">
         <Txt block sx={{mb: 2}} color="hint">{m.canYouIdentifyCompanyDesc}</Txt>
         <PanelBody>
@@ -34,7 +34,10 @@ export const CompanyIdentifyBy = ({autoScrollTo, animate, companyKind, value, on
             )}
             <ScRadioGroupItem value={IdentifyBy.IDENTITY} title={m.identifyBy_identity}/>
             {companyKind !== CompanyKinds.SIRET && (
-              <ScRadioGroupItem value={IdentifyBy.NONE} title={m.identifyBy_none}/>
+              <ScRadioGroupItem
+                value={IdentifyBy.NONE}
+                title={m.identifyBy_none}
+                description={m.companyIdentifyByNoneDesc}/>
             )}
           </ScRadioGroup>
         </PanelBody>

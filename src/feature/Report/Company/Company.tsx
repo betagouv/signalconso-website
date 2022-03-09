@@ -56,39 +56,36 @@ export const Company = ({animatePanel, autoScrollToPanel}: CompanyProps) => {
 export const _Company = ({
   draft,
   onUpdateReportDraft,
-  autoScrollToPanel,
-  animatePanel,
   // companyKind,
 }: CompanyWithRequiredPropsProps) => {
-  const animate: Partial<AnimateProps> = {autoScrollTo: autoScrollToPanel, animate: animatePanel}
   const [companyDraft, setCompanyDraft] = useState<Partial<CompanyDraft>>({})
-  const [result, setResult] = useState<CompanySearchResult[] | undefined>()
-  const [resultFromMatch, setResultFromMatch] = useState<CompanySearchResult[] | undefined>()
+  const [companiesSearch, setCompaniesSearch] = useState<CompanySearchResult[] | undefined>()
+  // const [resultFromMatch, setResultFromMatch] = useState<CompanySearchResult[] | undefined>()
   const [identifyBy, setIdentifyBy] = useState<IdentifyBy | undefined>()
   const [isForeign, setIsForeign] = useState<IsForeignCompany | undefined>()
   const {m} = useI18n()
 
   const renderWebsite = () => (
-    <CompanyByWebsite {...animate} value={companyDraft?.website} onSubmit={(website, _result) => {
+    <CompanyByWebsite value={companyDraft?.website} onSubmit={(website, _result) => {
       setCompanyDraft(_ => ({..._, website}))
-      setResultFromMatch(_result)
+      setCompaniesSearch(_result)
+      // setResultFromMatch(_result)
     }}/>
   )
 
   const renderSearchResult = () => (
-    <CompanySearchResultComponent {...animate} companies={result!} onChange={result => {
+    <CompanySearchResultComponent companies={companiesSearch!} onChange={result => {
       setCompanyDraft(_ => ({..._, ...result}))
     }}/>
   )
 
   const renderIdentifyBy = () => (
-    <CompanyIdentifyBy {...animate} companyKind={draft.companyKind!} value={identifyBy} onChange={setIdentifyBy}/>
+    <CompanyIdentifyBy companyKind={draft.companyKind!} value={identifyBy} onChange={setIdentifyBy}/>
   )
 
   const renderAskNameAndPostalCode = () => (
     <CompanyByNameAndPostalCode
-      {...animate}
-      onFound={setResult}
+      onFound={setCompaniesSearch}
       onReportForeignCompany={() => {
         setIdentifyBy(IdentifyBy.NONE)
       }}
@@ -96,19 +93,19 @@ export const _Company = ({
   )
 
   const renderSearchByIdentity = () => (
-    <CompanySearchByIdentity {...animate} onFound={setResult}/>
+    <CompanySearchByIdentity onFound={setCompaniesSearch}/>
   )
 
   const renderAskIsForeign = () => (
-    <CompanyAskIsForeign {...animate} onChange={setIsForeign}/>
+    <CompanyAskIsForeign onChange={setIsForeign}/>
   )
 
   const renderAskConsumerPostalCode = () => (
-    <CompanyAskConsumerPostalCode {...animate} onChange={postalCode => setCompanyDraft(_ => ({..._, address: {..._.address, postalCode}}))}/>
+    <CompanyAskConsumerPostalCode onChange={postalCode => setCompanyDraft(_ => ({..._, address: {..._.address, postalCode}}))}/>
   )
 
   const renderAskForeignDetails = () => (
-    <CompanyAskForeignDetails {...animate} onChange={form => {
+    <CompanyAskForeignDetails onChange={form => {
       setCompanyDraft(_ => ({
         ..._,
         name: form?.name,
@@ -118,7 +115,7 @@ export const _Company = ({
   )
 
   const renderAskConsumerStreet = () => (
-    <CompanyAskConsumerStreet {...animate} onChange={form => {
+    <CompanyAskConsumerStreet onChange={form => {
       setCompanyDraft(_ => ({
         ..._,
         address: {..._, street: form.street, postalCode: form.postalCode}
@@ -127,55 +124,59 @@ export const _Company = ({
   )
 
   const companySearchResultTree = (condition?: boolean): TreeStepperNode => ({
-    id: 'searchResult',
-    if: condition,
+    // id: 'searchResult',
+    if: !!companiesSearch,
     done: !!companyDraft.siret,
-    render: renderSearchResult
+    render: renderSearchResult,
+    children: [
+      {
+        if: companyDraft.
+      }
+    ]
   })
 
-
   const commonTree: TreeStepperNode = {
-    id: 'companyIdentifyBy',
+    // id: 'companyIdentifyBy',
     done: !!identifyBy,
     render: renderIdentifyBy,
     children: [
       {
-        id: 'companyByNameAndPostalCode',
+        // id: 'companyByNameAndPostalCode',
         if: identifyBy === IdentifyBy.NAME,
-        done: !!result,
+        done: !!companiesSearch,
         render: renderAskNameAndPostalCode,
-        children: [companySearchResultTree()]
+        children: [companySearchResultTree(!!companiesSearch)]
       },
       {
-        id: 'companyByIdentity',
+        // id: 'companyByIdentity',
         if: identifyBy === IdentifyBy.IDENTITY,
-        done: !!result,
+        done: !!companiesSearch,
         render: renderSearchByIdentity,
-        children: [companySearchResultTree()]
+        children: [companySearchResultTree(!!companiesSearch)]
       },
+      // {
+      // //   id: 'askConsumerStreet',
+      //   if: identifyBy === IdentifyBy.NONE && draft.companyKind === CompanyKinds.LOCATION,
+      //   done: !!(companyDraft.address?.street && companyDraft.address?.postalCode),
+      //   render: renderAskConsumerStreet,
+      // },
       {
-        id: 'askConsumerStreet',
-        if: identifyBy === IdentifyBy.NONE && draft.companyKind === CompanyKinds.LOCATION,
-        done: !!(companyDraft.address?.street && companyDraft.address?.postalCode),
-        render: renderAskConsumerStreet,
-      },
-      {
-        id: 'companyByNone',
+        // id: 'companyByNone',
         render: renderAskIsForeign,
         done: !!isForeign,
         children: [
           {
-            id: 'companyAskConsumerPostalCode',
+            // id: 'companyAskConsumerPostalCode',
             if: isForeign === IsForeignCompany.Yes,
             render: renderAskConsumerPostalCode,
           },
           {
-            id: 'companyAskForeignDetails',
+            // id: 'companyAskForeignDetails',
             if: isForeign === IsForeignCompany.No,
             render: renderAskForeignDetails,
           },
           {
-            id: 'companyAskConsumerPostalCode',
+            // id: 'companyAskConsumerPostalCode',
             if: isForeign === IsForeignCompany.Unknown,
             render: renderAskConsumerPostalCode,
           }
@@ -189,22 +190,22 @@ export const _Company = ({
       <TreeStepper
         tree={[
           {
-            id: 'website',
+            // id: 'website',
             if: draft.companyKind === CompanyKinds.WEBSITE,
             done: !!companyDraft.website,
             render: renderWebsite,
             children: [
-              companySearchResultTree(!!resultFromMatch),
+              companySearchResultTree(/*!!resultFromMatch*/),
               commonTree
             ],
           },
           {
-            id: 'phone',
+            // id: 'phone',
             if: draft.companyKind === CompanyKinds.PHONE,
             done: !!companyDraft.phone,
             render: renderWebsite,
             children: [
-              companySearchResultTree(!!resultFromMatch),
+              companySearchResultTree(/*!!resultFromMatch*/),
               commonTree
             ],
           },

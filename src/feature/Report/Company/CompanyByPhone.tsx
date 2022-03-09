@@ -22,7 +22,7 @@ interface Props extends Omit<BoxProps, 'onSubmit'> {
   onSubmit: (phone?: string) => void
 }
 
-export const CompanyByPhone = ({autoScrollTo, animate, value, onSubmit, ...props}: Props) => {
+export const CompanyByPhone = ({value, onSubmit, ...props}: Props) => {
   const {m} = useI18n()
   const {toastError} = useToast()
   const submitted = useBoolean()
@@ -33,7 +33,7 @@ export const CompanyByPhone = ({autoScrollTo, animate, value, onSubmit, ...props
   } = useForm<Form>()
 
   return (
-    <Animate autoScrollTo={autoScrollTo} animate={animate}>
+    <Animate>
       <Panel title={m.aboutCompany} id="CompanyByPhone">
         <PanelBody>
           <Box component="form" onSubmit={handleSubmit(({phone}) => onSubmit(phone))} {...props}>

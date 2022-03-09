@@ -18,10 +18,10 @@ animate?: boolean
   onChange: (_: IsForeignCompany) => void
 }
 
-export const CompanyAskIsForeign = ({autoScrollTo, animate, value, onChange}: Props) => {
+export const CompanyAskIsForeign = ({value, onChange}: Props) => {
   const {m} = useI18n()
   return (
-    <Animate autoScrollTo={autoScrollTo} animate={animate}>
+    <Animate>
       <Panel title={m.isAFrenchCompany} id="CompanyAskIsForeign">
         <PanelBody>
           <ScRadioGroup value={value} onChange={onChange}>

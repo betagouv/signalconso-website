@@ -23,7 +23,7 @@ interface Props extends Omit<BoxProps, 'onSubmit'> {
   onSubmit: (websiteUrl?: string, company?: CompanySearchResult[]) => void
 }
 
-export const CompanyByWebsite = ({autoScrollTo, animate, value, onSubmit, ...props}: Props) => {
+export const CompanyByWebsite = ({value, onSubmit, ...props}: Props) => {
   const {m} = useI18n()
   const {apiSdk} = useApiSdk()
   const _searchByUrl = useFetcher(apiSdk.company.searchCompaniesByUrl)
@@ -48,7 +48,7 @@ export const CompanyByWebsite = ({autoScrollTo, animate, value, onSubmit, ...pro
   useEffectFn(_searchByUrl.error, toastError)
 
   return (
-    <Animate autoScrollTo={autoScrollTo} animate={animate}>
+    <Animate>
       <Panel title={m.aboutCompany} id="CompanyByWebsite">
         <PanelBody>
           <Box component="form" onSubmit={handleSubmit(submit)} {...props}>
