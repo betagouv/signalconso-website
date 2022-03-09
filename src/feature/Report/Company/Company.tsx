@@ -14,8 +14,9 @@ import {CompanyAskForeignDetails} from './CompanyAskForeignDetails'
 import {CompanyAskConsumerStreet} from './CompanyAskConsumerStreet'
 import {TreeStepper, TreeStepperNode} from '../../../shared/TreeStepper/TreeStepper'
 import {StepperActions} from '../../../shared/Stepper/StepperActions'
-import {AnimateProps} from '../../../shared/Animate/Animate'
 import {ReportDraft2} from '../../../core/model/ReportDraft'
+import {CompanyWebsiteVendor} from './CompanyWebsiteVendor'
+import {useStepperContext} from '../../../shared/Stepper/Stepper'
 
 interface CompanyProps {
   animatePanel?: boolean
@@ -58,23 +59,26 @@ export const _Company = ({
   onUpdateReportDraft,
   // companyKind,
 }: CompanyWithRequiredPropsProps) => {
-  const [companyDraft, setCompanyDraft] = useState<Partial<CompanyDraft>>({})
-  const [companiesSearch, setCompaniesSearch] = useState<CompanySearchResult[] | undefined>()
-  // const [resultFromMatch, setResultFromMatch] = useState<CompanySearchResult[] | undefined>()
+  const _stepper = useStepperContext()
+  const [companyDraft, setCompanyDraft] = useState<Partial<CompanyDraft & Pick<CompanySearchResult, 'isMarketPlace'>>>({})
+  const [results, setResults] = useState<CompanySearchResult[] | undefined>()
+  const [resultsFromMatch, setResultsFromMatch] = useState<CompanySearchResult[] | undefined>()
   const [identifyBy, setIdentifyBy] = useState<IdentifyBy | undefined>()
+  const [vendor, setVendor] = useState<string | undefined>()
   const [isForeign, setIsForeign] = useState<IsForeignCompany | undefined>()
   const {m} = useI18n()
 
   const renderWebsite = () => (
     <CompanyByWebsite value={companyDraft?.website} onSubmit={(website, _result) => {
       setCompanyDraft(_ => ({..._, website}))
-      setCompaniesSearch(_result)
-      // setResultFromMatch(_result)
+      setResults(_result)
+      setResultsFromMatch(_result)
     }}/>
   )
 
   const renderSearchResult = () => (
-    <CompanySearchResultComponent companies={companiesSearch!} onChange={result => {
+    <CompanySearchResultComponent companies={results!} onChange={result => {
+      console.log('CHANGE ', result)
       setCompanyDraft(_ => ({..._, ...result}))
     }}/>
   )
@@ -85,7 +89,7 @@ export const _Company = ({
 
   const renderAskNameAndPostalCode = () => (
     <CompanyByNameAndPostalCode
-      onFound={setCompaniesSearch}
+      onFound={setResults}
       onReportForeignCompany={() => {
         setIdentifyBy(IdentifyBy.NONE)
       }}
@@ -93,7 +97,7 @@ export const _Company = ({
   )
 
   const renderSearchByIdentity = () => (
-    <CompanySearchByIdentity onFound={setCompaniesSearch}/>
+    <CompanySearchByIdentity onFound={setResults}/>
   )
 
   const renderAskIsForeign = () => (
@@ -123,36 +127,45 @@ export const _Company = ({
     }}/>
   )
 
-  const companySearchResultTree = (condition?: boolean): TreeStepperNode => ({
-    // id: 'searchResult',
-    if: !!companiesSearch,
-    done: !!companyDraft.siret,
-    render: renderSearchResult,
-    children: [
-      {
-        if: companyDraft.
-      }
-    ]
-  })
+  const renderVendor = () => (
+    <CompanyWebsiteVendor onSubmit={setVendor}/>
+  )
+
+  const companySearchResultTree = (condition?: boolean): TreeStepperNode => {
+    return ({
+      id: 'searchResult',
+      if: condition,
+      done: !!companyDraft.siret,
+      render: renderSearchResult,
+      children: [
+        {
+          id: 'marketPlace',
+          if: companyDraft.isMarketPlace,
+          done: companyDraft.isMarketPlace && vendor !== undefined,
+          render: renderVendor,
+        }
+      ]
+    })
+  }
 
   const commonTree: TreeStepperNode = {
-    // id: 'companyIdentifyBy',
+    id: 'companyIdentifyBy',
     done: !!identifyBy,
     render: renderIdentifyBy,
     children: [
       {
-        // id: 'companyByNameAndPostalCode',
+        id: 'companyByNameAndPostalCode',
         if: identifyBy === IdentifyBy.NAME,
-        done: !!companiesSearch,
+        done: !!results,
         render: renderAskNameAndPostalCode,
-        children: [companySearchResultTree(!!companiesSearch)]
+        children: [companySearchResultTree(!!results)]
       },
       {
-        // id: 'companyByIdentity',
+        id: 'companyByIdentity',
         if: identifyBy === IdentifyBy.IDENTITY,
-        done: !!companiesSearch,
+        done: !!results,
         render: renderSearchByIdentity,
-        children: [companySearchResultTree(!!companiesSearch)]
+        children: [companySearchResultTree(!!results)]
       },
       // {
       // //   id: 'askConsumerStreet',
@@ -161,22 +174,23 @@ export const _Company = ({
       //   render: renderAskConsumerStreet,
       // },
       {
-        // id: 'companyByNone',
+        id: 'companyByNone',
         render: renderAskIsForeign,
         done: !!isForeign,
         children: [
           {
-            // id: 'companyAskConsumerPostalCode',
+            id: 'companyAskConsumerPostalCode',
+            done: companyDraft.address?.postalCode !== undefined,
             if: isForeign === IsForeignCompany.Yes,
             render: renderAskConsumerPostalCode,
           },
           {
-            // id: 'companyAskForeignDetails',
+            id: 'companyAskForeignDetails',
             if: isForeign === IsForeignCompany.No,
             render: renderAskForeignDetails,
           },
           {
-            // id: 'companyAskConsumerPostalCode',
+            id: 'companyAskConsumerPostalCode',
             if: isForeign === IsForeignCompany.Unknown,
             render: renderAskConsumerPostalCode,
           }
@@ -187,36 +201,45 @@ export const _Company = ({
 
   return (
     <>
+      <hr/>
+      {JSON.stringify(companyDraft)}
+      <hr/>
       <TreeStepper
+        onComplete={() => {
+          // alert(JSON.stringify({vendor, companyDraft: companyDraft as CompanyDraft}))
+          onUpdateReportDraft(_ => ({..._, vendor, companyDraft: companyDraft as CompanyDraft}))
+          _stepper.next()
+        }}
         tree={[
           {
-            // id: 'website',
+            id: 'website',
             if: draft.companyKind === CompanyKinds.WEBSITE,
             done: !!companyDraft.website,
             render: renderWebsite,
             children: [
-              companySearchResultTree(/*!!resultFromMatch*/),
-              commonTree
+              companySearchResultTree(!!resultsFromMatch),
+              commonTree,
             ],
           },
           {
-            // id: 'phone',
+            id: 'phone',
             if: draft.companyKind === CompanyKinds.PHONE,
             done: !!companyDraft.phone,
             render: renderWebsite,
             children: [
-              companySearchResultTree(/*!!resultFromMatch*/),
+              companySearchResultTree(!!resultsFromMatch),
               commonTree
             ],
           },
           commonTree
         ]}
-        renderDone={
-          <StepperActions next={next => {
-            onUpdateReportDraft(_ => ({..._, companyDraft: companyDraft as CompanyDraft}))
-            next()
-          }}/>
-        }/>
+        //renderOnComplete={
+        //  <StepperActions next={next => {
+        //    onUpdateReportDraft(_ => ({..._, vendor, companyDraft: companyDraft as CompanyDraft}))
+        //    next()
+        //  }}/>
+        //}
+      />
     </>
   )
 }

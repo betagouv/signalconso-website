@@ -2,15 +2,18 @@ import {CompanySearchResult, Report} from '@signal-conso/signalconso-api-sdk-js'
 import {Txt} from 'mui-extension/lib/Txt/Txt'
 import {Box, BoxProps, Icon} from '@mui/material'
 import React from 'react'
-import {Panel, PanelBody} from '../../../shared/Panel/Panel'
+import {Panel, PanelActions, PanelBody} from '../../../shared/Panel/Panel'
 import {useI18n} from '../../../core/i18n'
 import {ScRadioGroup, ScRadioGroupItem} from '../../../shared/RadioGroup'
 import {Fender} from 'mui-extension'
 import {styleUtils} from '../../../core/theme/theme'
 import {AddressComponent} from '../../../shared/Address/Address'
 import {Animate} from '../../../shared/Animate/Animate'
+import {ScButton} from '../../../shared/Button/Button'
+import {Controller, useForm} from 'react-hook-form'
 
 interface Props extends Omit<BoxProps, 'onChange'> {
+  selectedCompany?: CompanySearchResult
   companies: CompanySearchResult[]
   onChange: (_: CompanySearchResult) => void
 }
@@ -45,9 +48,17 @@ export const Row = ({icon, children, sx, ...props}: RowProps) => {
   )
 }
 
+interface Form {
+  result: string
+}
+
 export const CompanySearchResultComponent = ({companies, onChange}: Props) => {
   const {m} = useI18n()
-
+  const {
+    control,
+    handleSubmit,
+    formState: {errors},
+  } = useForm<Form>()
   return (
     <>
       <Animate>
@@ -59,36 +70,51 @@ export const CompanySearchResultComponent = ({companies, onChange}: Props) => {
           </Panel>
         ) : (
           <Panel title={m.selectCompany} id="CompanySearchResult">
-            <Txt block color="hint">{m.selectCompanyDesc}</Txt>
-            <PanelBody>
-              <ScRadioGroup>
-                {companies.map(company => {
-                  const isGovernment = Report.isGovernmentCompany(company)
-                  return (
-                    <ScRadioGroupItem key={company.siret} value={company.siret!} onClick={() => onChange(company)}>
-                      <Txt truncate block bold>
-                        {company.name}
-                      </Txt>
-                      {company.brand && <Txt block>{company.brand}</Txt>}
-                      {company.isHeadOffice && (
-                        <Row icon="business" sx={{color: t => t.palette.primary.main}}>{m.isHeadOffice}</Row>
-                      )}
-                      {company.activityLabel && (
-                        <Row icon="label">{company.activityLabel}</Row>
-                      )}
-                      {isGovernment && (
-                        <Row icon="error" sx={{color: t => t.palette.error.main}}>{m.governmentCompany}</Row>
-                      )}
-                      {company.address && (
-                        <Row icon="location_on">
-                          <AddressComponent address={company.address}/>
-                        </Row>
-                      )}
-                    </ScRadioGroupItem>
-                  )
-                })}
-              </ScRadioGroup>
-            </PanelBody>
+            <form onSubmit={handleSubmit(form => onChange(companies.find(_ => _.siret === form.result)!))}>
+              <Txt block color="hint">{m.selectCompanyDesc}</Txt>
+              <PanelBody>
+                <Controller
+                  control={control}
+                  rules={{
+                    required: {value: true, message: m.required + ' *'},
+                  }}
+                  name="result"
+                  render={({field}) => (
+                    <ScRadioGroup {...field} error={!!errors.result}>
+                      {companies.map(company => {
+                        const isGovernment = Report.isGovernmentCompany(company)
+                        return (
+                          <ScRadioGroupItem key={company.siret} value={company.siret!}>
+                            <Txt truncate block bold>
+                              {company.name}
+                            </Txt>
+                            {company.brand && <Txt block>{company.brand}</Txt>}
+                            {company.isHeadOffice && (
+                              <Row icon="business" sx={{color: t => t.palette.primary.main}}>{m.isHeadOffice}</Row>
+                            )}
+                            {company.activityLabel && (
+                              <Row icon="label">{company.activityLabel}</Row>
+                            )}
+                            {isGovernment && (
+                              <Row icon="error" sx={{color: t => t.palette.error.main}}>{m.governmentCompany}</Row>
+                            )}
+                            {company.address && (
+                              <Row icon="location_on">
+                                <AddressComponent address={company.address}/>
+                              </Row>
+                            )}
+                          </ScRadioGroupItem>
+                        )
+                      })}
+                    </ScRadioGroup>
+                  )}/>
+              </PanelBody>
+              <PanelActions>
+                <ScButton color="primary" variant="contained" icon="search" type="submit">
+                  {m.continue}
+                </ScButton>
+              </PanelActions>
+            </form>
           </Panel>
         )}
       </Animate>

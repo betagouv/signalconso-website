@@ -13,8 +13,6 @@ interface Form {
 }
 
 interface Props {
-  autoScrollTo?: boolean
-animate?: boolean
   onChange: (form?: Form) => void
 }
 

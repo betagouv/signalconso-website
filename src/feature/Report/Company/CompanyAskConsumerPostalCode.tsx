@@ -12,8 +12,6 @@ interface Form {
 }
 
 interface Props {
-  autoScrollTo?: boolean
-animate?: boolean
   value?: string
   onChange: (consumerPostalCode?: string) => void
 }
@@ -43,8 +41,8 @@ export const CompanyAskConsumerPostalCode = ({value, onChange}: Props) => {
           </PanelBody>
 
           <PanelActions>
-            <ScButton color="primary" variant="contained" icon="search" type="submit">
-              {m.search}
+            <ScButton color="primary" variant="contained" type="submit">
+              {m.continue}
             </ScButton>
           </PanelActions>
         </form>

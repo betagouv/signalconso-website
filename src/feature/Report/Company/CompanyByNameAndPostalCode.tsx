@@ -31,6 +31,7 @@ export const CompanyByNameAndPostalCode = ({onFound, onReportForeignCompany}: Pr
   const {
     handleSubmit,
     register,
+    formState: {errors}
   } = useForm<Form>()
 
   const search = (form: Form) => {
@@ -47,14 +48,24 @@ export const CompanyByNameAndPostalCode = ({onFound, onReportForeignCompany}: Pr
         <form onSubmit={handleSubmit(search)}>
           <PanelBody>
             <FormLayout required label={m.reportedCompanyName}>
-              <ScInput fullWidth {...register('name', {
-                required: {value: true, message: m.required},
-              })}/>
+              <ScInput
+                fullWidth
+                error={!!errors.name}
+                helperText={errors.name?.message}
+                {...register('name', {
+                  required: {value: true, message: m.required},
+                })}
+              />
             </FormLayout>
             <FormLayout required label={m.postalCode}>
-              <ScInput fullWidth {...register('postalCode', {
-                required: {value: true, message: m.required},
-              })}/>
+              <ScInput
+                fullWidth
+                error={!!errors.postalCode}
+                helperText={errors.postalCode?.message}
+                {...register('postalCode', {
+                  required: {value: true, message: m.required},
+                })}
+              />
             </FormLayout>
           </PanelBody>
 

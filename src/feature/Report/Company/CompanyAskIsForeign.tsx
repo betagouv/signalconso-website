@@ -12,8 +12,6 @@ export enum IsForeignCompany {
 }
 
 interface Props {
-  autoScrollTo?: boolean
-animate?: boolean
   value?: IsForeignCompany
   onChange: (_: IsForeignCompany) => void
 }
