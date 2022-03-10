@@ -32,7 +32,7 @@ export const defaultSpacing = 8
 
 export const muiTheme = (dark?: boolean): Theme => {
   const fontFamily = '"Open Sans", sans-serif'
-  const fontSize = 15
+  const fontSize = 16
   const colorPrimary = {
     base: '#2b7c9f',
     light: '#6fd3ff',
@@ -66,7 +66,7 @@ export const muiTheme = (dark?: boolean): Theme => {
       borderRadius: 10,
     },
     typography: {
-      fontSize,
+      // fontSize,
       fontFamily,
       // fontFamily: 'Evolventa, sans-serif',
       fontWeightBold: 600,
@@ -88,7 +88,7 @@ export const muiTheme = (dark?: boolean): Theme => {
             color: baseTheme.palette.text.primary,
           },
           '.blog': {
-            fontSize: 16,
+            // fontSize: 16,
             'a': {
               color: colorPrimary.base,
             },
@@ -135,6 +135,12 @@ export const muiTheme = (dark?: boolean): Theme => {
             color: 'red',
             ...baseTheme.typography.h6,
             fontSize: '1.25rem',
+          },
+          blockquote: {
+            color: baseTheme.palette.text.secondary,
+            marginLeft: 0,
+            paddingLeft: baseTheme.spacing(2),
+            borderLeft: `2px solid ${baseTheme.palette.divider}`,
           },
           hr: {
             border: 'none',
