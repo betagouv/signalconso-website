@@ -1,4 +1,4 @@
-import {Anomaly, ReportDraft} from '@signal-conso/signalconso-api-sdk-js'
+import {Address, Anomaly, CompanyDraft, ReportDraft, ReportDraftConsumer} from '@signal-conso/signalconso-api-sdk-js'
 import {getDraftReportInputs} from '../../feature/Report/Details/draftReportInputs'
 import {isSpecifyInputName, SpecifyFormUtils} from '../../feature/Report/Details/Details'
 import {fromNullable} from 'fp-ts/lib/Option'
@@ -38,21 +38,21 @@ export class ReportDraft2 {
     }
   }
 
-  static readonly merge = (base: DeepPartial<ReportDraft2>, newValue: DeepPartial<ReportDraft2>): DeepPartial<ReportDraft2> => {
+  static readonly merge = (base: Partial<ReportDraft2>, newValue: DeepPartial<ReportDraft2>): Partial<ReportDraft2> => {
     return {
       ...base,
-      ...newValue,
+      ...newValue as ReportDraft2,
       companyDraft: {
         ...base.companyDraft,
-        ...newValue.companyDraft,
+        ...newValue.companyDraft as CompanyDraft,
         address: {
           ...base.companyDraft?.address,
-          ...newValue.companyDraft?.address,
+          ...newValue.companyDraft?.address as Address,
         }
       },
       consumer: {
         ...base.consumer,
-        ...newValue.consumer,
+        ...newValue.consumer as ReportDraftConsumer,
       },
     }
   }
