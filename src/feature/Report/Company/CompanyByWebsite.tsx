@@ -6,7 +6,7 @@ import {useApiSdk} from '../../../core/context/ApiSdk'
 import {ScButton} from '../../../shared/Button/Button'
 import {useForm} from 'react-hook-form'
 import {CompanySearchResult} from '@signal-conso/signalconso-api-sdk-js'
-import {useBoolean, useEffectFn, useFetcher} from '@alexandreannic/react-hooks-lib'
+import {useEffectFn, useFetcher} from '@alexandreannic/react-hooks-lib'
 import {useToast} from '../../../core/toast'
 import {Box, BoxProps} from '@mui/material'
 import {Panel, PanelBody} from '../../../shared/Panel/Panel'
@@ -26,7 +26,6 @@ export const CompanyByWebsite = ({value, children, ...props}: Props) => {
   const {apiSdk} = useApiSdk()
   const _searchByUrl = useFetcher(apiSdk.company.searchCompaniesByUrl)
   const {toastError} = useToast()
-  const submitted = useBoolean()
   const {
     getValues,
     handleSubmit,
@@ -34,15 +33,8 @@ export const CompanyByWebsite = ({value, children, ...props}: Props) => {
     formState: {errors},
   } = useForm<Form>()
 
-  const submit = async (form: Form) => {
-    submitted.setTrue()
-    await _searchByUrl.fetch({clean: true, force: true}, form.website)
-
-    // .then(_ => onSubmit(
-    //   form.website,
-    //   _.length > 0 ? _ : undefined)
-    // )
-    // .finally(submitted.setFalse)
+  const submit = (form: Form) => {
+    _searchByUrl.fetch({clean: true, force: true}, form.website)
   }
 
   useEffectFn(_searchByUrl.error, toastError)
@@ -59,10 +51,10 @@ export const CompanyByWebsite = ({value, children, ...props}: Props) => {
               </Txt>
               <ScInput
                 onClear={() => {
-                  submitted.setFalse()
+                  _searchByUrl.clearCache()
                 }}
                 defaultValue={value}
-                disabled={submitted.value}
+                disabled={!!_searchByUrl.entity}
                 {...register('website', {
                   required: {value: true, message: m.required},
                   pattern: {value: /^((http|https):\/\/)?(www\.)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,}(:[0-9]{1,5})?(\/.*)?$/, message: m.invalidUrlPattern}
@@ -72,14 +64,14 @@ export const CompanyByWebsite = ({value, children, ...props}: Props) => {
                 helperText={errors.website?.message}
               />
 
-              <ScButton variant="contained" color="primary" sx={{mt: 2}} type="submit" loading={_searchByUrl.loading} disabled={submitted.value}>
+              <ScButton variant="contained" color="primary" sx={{mt: 2}} type="submit" loading={_searchByUrl.loading} disabled={!!_searchByUrl.entity}>
                 {m.continue}
               </ScButton>
             </Box>
           </PanelBody>
         </Panel>
       </Animate>
-      {submitted.value && getValues().website && _searchByUrl.entity && children(getValues().website, _searchByUrl.entity)}
+      {getValues().website && _searchByUrl.entity && children(getValues().website, _searchByUrl.entity)}
     </>
   )
 }

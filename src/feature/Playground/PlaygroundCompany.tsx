@@ -12,7 +12,7 @@ export const PlaygroundCompany = () => {
         draft={{
           companyKind: CompanyKinds.LOCATION
         }}
-        onUpdateReportDraft={setCompany}
+        onUpdateReportDraft={x => alert(JSON.stringify(x))}
       />
     </>
   )

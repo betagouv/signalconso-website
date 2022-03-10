@@ -1,6 +1,6 @@
 import {ScInput} from '../../../shared/Input/ScInput'
 import {Txt} from 'mui-extension'
-import React from 'react'
+import React, {ReactNode, useState} from 'react'
 import {useI18n} from '../../../core/i18n'
 import {ScButton} from '../../../shared/Button/Button'
 import {useForm} from 'react-hook-form'
@@ -17,56 +17,65 @@ interface Form {
 
 interface Props extends Omit<BoxProps, 'onSubmit'> {
   value?: string
-  onSubmit: (phone?: string) => void
+  children: (phone?: string) => ReactNode
 }
 
-export const CompanyByPhone = ({value, onSubmit, ...props}: Props) => {
+export const CompanyByPhone = ({value, children, ...props}: Props) => {
   const {m} = useI18n()
-  const {toastError} = useToast()
-  const submitted = useBoolean()
+  const [phone, setPhone] = useState<string | undefined>()
   const {
     handleSubmit,
     register,
     formState: {errors},
   } = useForm<Form>()
 
-  return (
-    <Animate>
-      <Panel title={m.aboutCompany} id="CompanyByPhone">
-        <PanelBody>
-          <Box component="form" onSubmit={handleSubmit(({phone}) => onSubmit(phone))} {...props}>
-            <Txt block>
-              <span dangerouslySetInnerHTML={{__html: m.phoneNumberHavingCalled}}/>
-              <Txt color="disabled"> *</Txt>
-            </Txt>
-            <ScInput
-              defaultValue={value}
-              disabled={submitted.value}
-              {...register('phone', {
-                required: {value: true, message: m.required},
-                pattern: {value: /^((\+)33|0|0033)[1-9]([.\-\s+]?\d{2}){4}$/g, message: m.invalidUrlPattern}
-              })}
-              fullWidth placeholder={m.phoneNumberHavingCalledPlaceholder}
-              error={!!errors.phone}
-              helperText={errors.phone?.message}
-              InputProps={submitted.value ? {
-                endAdornment: (
-                  <IconBtn size="small" color="primary" onClick={() => {
-                    onSubmit()
-                    submitted.setFalse()
-                  }}>
-                    <Icon>clear</Icon>
-                  </IconBtn>
-                )
-              } : {}}
-            />
+  const submit = async (form: Form) => {
+    setPhone(form.phone)
+  }
 
-            <ScButton variant="contained" color="primary" sx={{mt: 2}} type="submit" disabled={submitted.value}>
-              {m.continue}
-            </ScButton>
-          </Box>
-        </PanelBody>
-      </Panel>
-    </Animate>
+  const clear = () => {
+    setPhone(undefined)
+  }
+
+  return (
+    <>
+      <Animate>
+        <Panel title={m.aboutCompany} id="CompanyByPhone">
+          <PanelBody>
+            <Box component="form" onSubmit={handleSubmit(submit)} {...props}>
+              <Txt block>
+                <span dangerouslySetInnerHTML={{__html: m.phoneNumberHavingCalled}}/>
+                <Txt color="disabled"> *</Txt>
+              </Txt>
+              <ScInput
+                defaultValue={value}
+                disabled={!!phone}
+                {...register('phone', {
+                  required: {value: true, message: m.required},
+                  pattern: {value: /^((\+)33|0|0033)[1-9]([.\-\s+]?\d{2}){4}$/g, message: m.invalidUrlPattern}
+                })}
+                fullWidth placeholder={m.phoneNumberHavingCalledPlaceholder}
+                error={!!errors.phone}
+                helperText={errors.phone?.message}
+                InputProps={!!phone ? {
+                  endAdornment: (
+                    <IconBtn size="small" color="primary" onClick={clear}>
+                      <Icon>clear</Icon>
+                    </IconBtn>
+                  )
+                } : {}}
+              />
+
+              <ScButton variant="contained" color="primary" sx={{mt: 2}} type="submit" disabled={!!phone}>
+                {m.continue}
+              </ScButton>
+            </Box>
+          </PanelBody>
+        </Panel>
+      </Animate>
+      {phone && (
+        children(phone)
+      )}
+    </>
   )
 }

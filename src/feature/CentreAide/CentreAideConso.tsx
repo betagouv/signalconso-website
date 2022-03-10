@@ -1,9 +1,9 @@
 import Link from 'next/link'
-import {siteMap} from '../../core/siteMap'
-import {AccordionPanel, AccordionPanels} from '../../shared/AccordionPanel/AccordionPanel'
+import {siteMap} from 'core/siteMap'
+import {AccordionPanel, AccordionPanels} from 'shared/AccordionPanel/AccordionPanel'
 import {Box, BoxProps} from '@mui/material'
-import {externalLinks} from '../../core/externalLinks'
-import {appConfig} from '../../conf/appConfig'
+import {externalLinks} from 'core/externalLinks'
+import {appConfig} from 'conf/appConfig'
 
 export const CentreAideConso = (props: BoxProps) => {
   return (

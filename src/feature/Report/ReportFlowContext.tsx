@@ -3,10 +3,11 @@ import {usePersistentState} from 'react-persistent-state'
 import {isSpecifyInputName} from './Details/Details'
 import {getDraftReportInputs} from './Details/draftReportInputs'
 import {ReportDraft2} from '../../core/model/ReportDraft'
+import {DeepPartial} from '@alexandreannic/ts-utils'
 
 export interface ReportFlowContextProps {
-  reportDraft: Partial<ReportDraft2>
-  setReportDraft: Dispatch<SetStateAction<Readonly<Partial<ReportDraft2>>>>
+  reportDraft: DeepPartial<ReportDraft2>
+  setReportDraft: Dispatch<SetStateAction<DeepPartial<ReportDraft2>>>
   clearReportDraft: () => void
 }
 
@@ -18,7 +19,7 @@ interface ReportFlowProviderProps {
 }
 
 export const ReportFlowProvider = ({initialReport, children}: ReportFlowProviderProps) => {
-  const [reportDraft, setReportDraft, clearReportDraft] = usePersistentState<Partial<ReportDraft2>>(initialReport ?? {}, 'report-draft')
+  const [reportDraft, setReportDraft, clearReportDraft] = usePersistentState<DeepPartial<ReportDraft2>>(initialReport ?? {}, 'report-draft')
   return (
     <ReportFlowContext.Provider value={{
       reportDraft,
