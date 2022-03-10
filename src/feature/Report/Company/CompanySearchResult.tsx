@@ -1,7 +1,7 @@
 import {CompanySearchResult, Report} from '@signal-conso/signalconso-api-sdk-js'
 import {Txt} from 'mui-extension/lib/Txt/Txt'
 import {Box, BoxProps, Icon} from '@mui/material'
-import React from 'react'
+import React, {ReactNode, useEffect, useState} from 'react'
 import {Panel, PanelActions, PanelBody} from '../../../shared/Panel/Panel'
 import {useI18n} from '../../../core/i18n'
 import {ScRadioGroup, ScRadioGroupItem} from '../../../shared/RadioGroup'
@@ -13,9 +13,8 @@ import {ScButton} from '../../../shared/Button/Button'
 import {Controller, useForm} from 'react-hook-form'
 
 interface Props extends Omit<BoxProps, 'onChange'> {
-  selectedCompany?: CompanySearchResult
   companies: CompanySearchResult[]
-  onChange: (_: CompanySearchResult) => void
+  children: (selected: CompanySearchResult) => ReactNode
 }
 
 interface RowProps extends BoxProps {
@@ -52,8 +51,12 @@ interface Form {
   result: string
 }
 
-export const CompanySearchResultComponent = ({companies, onChange}: Props) => {
+export const CompanySearchResultComponent = ({companies, children}: Props) => {
   const {m} = useI18n()
+  const [selected, setSelected] = useState<CompanySearchResult | undefined>()
+  useEffect(() => {
+    setSelected(undefined)
+  }, [companies])
   const {
     control,
     handleSubmit,
@@ -70,7 +73,7 @@ export const CompanySearchResultComponent = ({companies, onChange}: Props) => {
           </Panel>
         ) : (
           <Panel title={m.selectCompany} id="CompanySearchResult">
-            <form onSubmit={handleSubmit(form => onChange(companies.find(_ => _.siret === form.result)!))}>
+            <form onSubmit={handleSubmit(form => setSelected(companies.find(_ => _.siret === form.result)))}>
               <Txt block color="hint">{m.selectCompanyDesc}</Txt>
               <PanelBody>
                 <Controller
@@ -118,6 +121,7 @@ export const CompanySearchResultComponent = ({companies, onChange}: Props) => {
           </Panel>
         )}
       </Animate>
+      {selected && children(selected)}
     </>
   )
 }

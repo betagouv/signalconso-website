@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {ReactNode, useState} from 'react'
 import {ScRadioGroup, ScRadioGroupItem} from '../../../shared/RadioGroup'
 import {useI18n} from '../../../core/i18n'
 import {BoxProps} from '@mui/material'
@@ -15,31 +15,35 @@ export enum IdentifyBy {
 
 interface Props extends Omit<BoxProps, 'onChange' | 'defaultValue'> {
   companyKind: CompanyKinds
-  onChange: (identifyBy: IdentifyBy) => void
+  children: (identifyBy: IdentifyBy) => ReactNode
   value?: IdentifyBy
 }
 
-export const CompanyIdentifyBy = ({companyKind, value, onChange, ...props}: Props) => {
+export const CompanyIdentifyBy = ({companyKind, value, children, ...props}: Props) => {
   const {m} = useI18n()
+  const [identifyBy, setIdentifyBy] = useState<IdentifyBy | undefined>()
   return (
-    <Animate>
-      <Panel title={m.canYouIdentifyCompany} id="CompanyIdentifyBy">
-        <Txt block sx={{mb: 2}} color="hint">{m.canYouIdentifyCompanyDesc}</Txt>
-        <PanelBody>
-          <ScRadioGroup value={value} onChange={onChange}>
-            {companyKind !== CompanyKinds.INFLUENCEUR && (
-              <ScRadioGroupItem value={IdentifyBy.NAME} title={m.identifyBy_name}/>
-            )}
-            <ScRadioGroupItem value={IdentifyBy.IDENTITY} title={m.identifyBy_identity}/>
-            {companyKind !== CompanyKinds.SIRET && (
-              <ScRadioGroupItem
-                value={IdentifyBy.NONE}
-                title={m.identifyBy_none}
-                description={m.companyIdentifyByNoneDesc}/>
-            )}
-          </ScRadioGroup>
-        </PanelBody>
-      </Panel>
-    </Animate>
+    <>
+      <Animate>
+        <Panel title={m.canYouIdentifyCompany} id="CompanyIdentifyBy">
+          <Txt block sx={{mb: 2}} color="hint">{m.canYouIdentifyCompanyDesc}</Txt>
+          <PanelBody>
+            <ScRadioGroup value={value} onChange={setIdentifyBy}>
+              {companyKind !== CompanyKinds.INFLUENCEUR && (
+                <ScRadioGroupItem value={IdentifyBy.NAME} title={m.identifyBy_name}/>
+              )}
+              <ScRadioGroupItem value={IdentifyBy.IDENTITY} title={m.identifyBy_identity}/>
+              {companyKind !== CompanyKinds.SIRET && (
+                <ScRadioGroupItem
+                  value={IdentifyBy.NONE}
+                  title={m.identifyBy_none}
+                  description={m.companyIdentifyByNoneDesc}/>
+              )}
+            </ScRadioGroup>
+          </PanelBody>
+        </Panel>
+      </Animate>
+      {identifyBy && children(identifyBy)}
+    </>
   )
 }

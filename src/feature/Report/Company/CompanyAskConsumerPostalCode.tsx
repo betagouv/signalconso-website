@@ -20,7 +20,8 @@ export const CompanyAskConsumerPostalCode = ({value, onChange}: Props) => {
   const {m} = useI18n()
   const {
     register,
-    handleSubmit
+    handleSubmit,
+    formState: {errors}
   } = useForm<Form>()
 
   return (
@@ -30,6 +31,8 @@ export const CompanyAskConsumerPostalCode = ({value, onChange}: Props) => {
           <PanelBody>
             <FormLayout required label={m.yourPostalCode} desc={m.yourPostalCodeDesc}>
               <ScInput
+                error={!!errors.consumerPostalCode}
+                helperText={errors.consumerPostalCode?.message ?? ''}
                 defaultValue={value}
                 {...register('consumerPostalCode', {
                   required: {value: true, message: m.required}
