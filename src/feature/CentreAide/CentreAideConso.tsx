@@ -3,6 +3,7 @@ import {siteMap} from '../../core/siteMap'
 import {AccordionPanel, AccordionPanels} from '../../shared/AccordionPanel/AccordionPanel'
 import {Box, BoxProps} from '@mui/material'
 import {externalLinks} from '../../core/externalLinks'
+import {appConfig} from '../../conf/appConfig'
 
 export const CentreAideConso = (props: BoxProps) => {
   return (
@@ -122,7 +123,7 @@ export const CentreAideConso = (props: BoxProps) => {
           </p>
           <p>Par contre, la répression des fraudes ne s'occupe pas d'obtenir votre remboursement ou votre indemnité.<br/> C'est à vous d'entamer les
             démarches. Ces démarches vous ont été présentées à la fin de votre signalement et dans votre mail d'accusé de réception.<br/> Vous pouvez également les retrouver
-            sur cette page : <a href="https://signal.conso.gouv.fr/litige" target="_blank" rel="noreferrer">https://signal.conso.gouv.fr/litige</a>
+            sur cette page : <a href={siteMap.litige} target="_blank" rel="noreferrer">{appConfig.appBaseUrl + siteMap.litige}</a>
           </p>
         </AccordionPanel>
         <AccordionPanel title={`Je veux modifier ou supprimer mon signalement `}>

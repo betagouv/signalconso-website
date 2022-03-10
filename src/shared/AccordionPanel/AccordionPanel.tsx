@@ -68,7 +68,7 @@ export const AccordionPanel = ({
         </IconBtn>
         <div>
           <Box component="h3" sx={{m: 0, p: 0, fontSize: t => `1.15rem !important`}}>{title}</Box>
-          <Txt color="secondary" sx={{m: 0, p: 0, }}>{desc}</Txt>
+          <Txt color="hint" sx={{m: 0, p: 0, }}>{desc}</Txt>
         </div>
       </Box>
       <Collapse in={open}>
