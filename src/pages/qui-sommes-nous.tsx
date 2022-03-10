@@ -35,7 +35,7 @@ const members: Member[] = [
   {
     name: 'Nathaniel Richand',
     role: 'Coach Startup d\'État',
-    avatar: 'avatar-julien.png',
+    avatar: 'avatar-nathanielrichand.png',
   },
   {
     name: 'Saïd Sedoud',
