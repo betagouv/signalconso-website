@@ -17,7 +17,7 @@ export interface ScRadioGroupItemProps<T> extends Omit<BoxProps, 'title'> {
   multiple?: boolean
 }
 
-export const ScRadioGroupItem = <T,>({
+export const ScRadioGroupItem = <T, >({
   title,
   description,
   error,
@@ -31,11 +31,12 @@ export const ScRadioGroupItem = <T,>({
   multiple,
   ...rest
 }: ScRadioGroupItemProps<T>) => {
-
+  const minHeight = 50
   return (
     <Box
       role={multiple ? 'checkbox' : 'radio'}
       sx={{
+        minHeight,
         display: 'flex',
         alignItems: 'flex-start',
         border: t => '1px solid ' + t.palette.divider,
@@ -85,7 +86,7 @@ export const ScRadioGroupItem = <T,>({
           checked={selected}
           sx={{
             marginLeft: 1,
-            marginTop: t => `calc(${t.spacing(1.5)} - ${defaultMuiRadioPadding}px)`
+            minHeight: minHeight,
           }}/>
       ) : (
         <Radio
@@ -94,7 +95,7 @@ export const ScRadioGroupItem = <T,>({
           checked={selected}
           sx={{
             marginLeft: 1,
-            marginTop: t => `calc(${t.spacing(1.5)} - ${defaultMuiRadioPadding}px)`
+            minHeight: minHeight,
           }}
         />
       )}

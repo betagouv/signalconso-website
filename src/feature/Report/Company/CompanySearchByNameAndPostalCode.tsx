@@ -20,10 +20,9 @@ interface Form {
 
 interface Props {
   children: (companies?: CompanySearchResult[]) => ReactNode
-  onReportForeignCompany: () => void
 }
 
-export const CompanySearchByNameAndPostalCode = ({children, onReportForeignCompany}: Props) => {
+export const CompanySearchByNameAndPostalCode = ({children}: Props) => {
   const {m} = useI18n()
   const {apiSdk} = useApiSdk()
   const {toastError} = useToast()
@@ -46,7 +45,6 @@ export const CompanySearchByNameAndPostalCode = ({children, onReportForeignCompa
       <Animate>
         <Panel title={m.couldYouPrecise} id="CompanyByNameAndPostalCode">
           <Txt color="hint">{m.youCanOnlyReportFrenchCompanies} &nbsp;</Txt>
-          <Txt link onClick={onReportForeignCompany}>{m.reportForeignCompany}</Txt>
           <form onSubmit={handleSubmit(search)}>
             <PanelBody>
               <FormLayout required label={m.reportedCompanyName}>

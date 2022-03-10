@@ -12,17 +12,19 @@ export const Panel = ({title, desc, children, sx, elevation = 0, border, ...rest
   return (
     <Card role="article" elevation={elevation} {...rest} sx={{
       ...(!border && !elevation) && {
-        pb: 2,
-        pt: 0,
         '&:not(:first-of-type)': {
-          pt: 2,
+          mt: 2,
         },
         borderRadius: 0,
       },
-      ...(border ? {
+      ...elevation && {
+        p: 2,
+      },
+      ...border && {
+        p: 2,
         border: t => border ? `1px solid ${t.palette.divider}` : `none`,
         // px: 2,
-      } : {}),
+      },
       ...sx,
       '& + &': {
         pt: 3,
@@ -43,7 +45,7 @@ export const PanelBody = ({children, sx, ...rest}: BoxProps) => {
   return (
     <Box {...rest} sx={{
       ...sx,
-      mt: 2
+      mt: 2,
     }}>
       {children}
     </Box>

@@ -268,8 +268,13 @@ export const fr = {
     canYouIdentifyCompanyDesc: `SignalConso en a besoin pour la contacter et informer la répression des fraudes.`,
     websitePlaceholder: 'Exemple: https://www.site.fr',
     identifyBy_name: `Par son nom et son code postal`,
+    identifyBy_nameDesc: `Entreprise française uniquement`,
     identifyBy_identity: `Par son SIRET ou SIREN ou RCS`,
-    identifyBy_none: `Je ne peux pas identifier l'entreprise`,
+    identifyBy_none: `Je ne peux pas identifier l'entreprise ou l'entreprise est à l'étranger`,
+    identifyBy_noneDesc:
+      `Si vous ne parvenez pas à identifier l'entreprise, vous pouvez continuer votre signalement.
+      Il ne sera pas transmis à l'entreprise, sauf si cette dernière est française et identifiable par l'équipe de SignalConso.
+      Dans tous les cas les enquêteurs de la répression des fraudes en seront informés.`,
     couldYouPrecise: `Pouvez-vous préciser ?`,
     companyIdentityLabel: `Numéro SIRET ou SIREN ou RCS de l'entreprise`,
     companyIdentityPlaceholder: `Ex: 83350861700010`,
@@ -288,7 +293,6 @@ export const fr = {
     phoneNumberHavingCalledPlaceholder: `Ex: 06 00 00 00 00`,
     noMatchingCompany: `Aucun établissement ne correspond à la recherche.`,
     youCanOnlyReportFrenchCompanies: `Vous pouvez identifier des entreprises privées établies en France uniquement.`,
-    reportForeignCompany: `Signaler une entreprise établie à l'étranger`,
     yourPostalCode: `Votre code postal`,
     yourPostalCodePlaceholder: `Ex: 41110`,
     continueReport: `Vous avez un signalement en cours`,
@@ -296,10 +300,6 @@ export const fr = {
     reportedCompanyNamePlaceholder: `Ex: Boulangerie Petit Jean`,
     yourPostalCodeDesc: `SignalConso en a besoin pour alerter le bon service.`,
     companyIdentityHelper: `A quoi correspondent ces identifiants ?`,
-    companyIdentifyByNoneDesc:
-      `Si vous ne parvenez pas à identifier l'entreprise, vous pouvez continuer votre signalement.
-      Il ne sera pas transmis à l'entreprise, sauf si cette dernière est française et identifiable par l'équipe de SignalConso.
-      Dans tous les cas les enquêteurs de la répression des fraudes en seront informés.`,
     consumerTitle: `Vos coordonnées nous permettent d'authentifier votre signalement`,
     consumerAskCodeTitle: `Saisissez le code de validation`,
     consumerAskCodeDesc: (email: string) => `Un email vous a été envoyé à l'adresse <b>${email}</b>`,

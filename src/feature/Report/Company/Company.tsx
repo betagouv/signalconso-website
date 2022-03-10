@@ -74,11 +74,7 @@ export const _Company = ({
       <CompanyIdentifyBy companyKind={draft.companyKind!}>
         {identifyBy => fnSwitch(identifyBy, {
           [IdentifyBy.NAME]: () => (
-            <CompanySearchByNameAndPostalCode
-              onReportForeignCompany={() => {
-                // setIdentifyBy(IdentifyBy.NONE)
-              }}
-            >
+            <CompanySearchByNameAndPostalCode>
               {companies => (
                 <CompanySearchResultComponent companies={companies ?? []} onSubmit={company => {
                   onUpdateReportDraft({
