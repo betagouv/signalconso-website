@@ -3,7 +3,7 @@ import {useI18n} from '../../../core/i18n'
 import {ScRadioGroup, ScRadioGroupItem} from '../../../shared/RadioGroup'
 import {Txt} from 'mui-extension'
 import {Animate} from '../../../shared/Animate/Animate'
-import {Accordion} from '../../../shared/Accordion/Accordion'
+import {AccordionInline} from '../../../shared/AccordionInline/AccordionInline'
 
 export enum IsForeignCompany {
   Yes = 'Yes',
@@ -28,9 +28,9 @@ export const CompanyAskIsForeign = ({value, onChange}: Props) => {
               value={IsForeignCompany.No}
               title={m.noItsForeign}
               description={
-                <Accordion label={m.companyHowToFindCountry} onClick={e => e.stopPropagation()}>
+                <AccordionInline label={m.companyHowToFindCountry} onClick={e => e.stopPropagation()}>
                   <Txt color="hint" size="small" dangerouslySetInnerHTML={{__html: m.howToFindCompanyCountryDesc}}/>
-                </Accordion>
+                </AccordionInline>
               }
             />
             <ScRadioGroupItem value={IsForeignCompany.Unknown} title={m.iDontKnown}/>

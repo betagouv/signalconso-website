@@ -1,8 +1,9 @@
 import {ReactNode, useState} from 'react'
 import {Box, BoxProps, Collapse, Icon} from '@mui/material'
 import {IconBtn} from 'mui-extension/lib'
+import {Txt} from 'mui-extension'
 
-export const Accordions = ({
+export const AccordionPanels = ({
   children
 }: {
   children: ReactNode
@@ -14,13 +15,15 @@ export const Accordions = ({
   )
 }
 
-export const Accordion = ({
+export const AccordionPanel = ({
   title,
+  desc,
   children,
   className,
   ...props
 }: {
   title: string
+  desc?: string
   children: ReactNode
 } & BoxProps) => {
   const [open, setOpen] = useState(false)
@@ -53,7 +56,9 @@ export const Accordion = ({
           pr: 2,
           cursor: 'pointer',
           display: 'flex',
-          alignItems: 'center'
+          alignItems: 'center',
+          minHeight: 42,
+          py: 1,
         }}
       >
         <IconBtn size="small" color="primary" sx={{ml: 1, mr: 2}}>
@@ -61,7 +66,10 @@ export const Accordion = ({
             {open ? 'expand_more' : 'chevron_right'}
           </Icon>
         </IconBtn>
-        <Box component="h3" sx={{m: 0, p: 0, py: 2, fontSize: t => `1.15rem !important`}}>{title}</Box>
+        <div>
+          <Box component="h3" sx={{m: 0, p: 0, fontSize: t => `1.15rem !important`}}>{title}</Box>
+          <Txt color="secondary" sx={{m: 0, p: 0, }}>{desc}</Txt>
+        </div>
       </Box>
       <Collapse in={open}>
         <Box aria-labelledby={props.id} sx={{

@@ -12,7 +12,7 @@ import Link from 'next/link'
 import {siteMap} from '../../../core/siteMap'
 import {mapPromise} from '@alexandreannic/ts-utils/lib/index'
 import {useState} from 'react'
-import {Accordion} from '../../../shared/Accordion/Accordion'
+import {AccordionInline} from '../../../shared/AccordionInline/AccordionInline'
 
 interface Props {
   category: string
@@ -58,14 +58,14 @@ export const ProblemInformation = ({
               <Txt gutterBottom block dangerouslySetInnerHTML={{__html: information.content}}/>
             )}
             {information.actions?.map(action => (
-              <Accordion sx={{mt: 1}} key={action.question} label={
+              <AccordionInline sx={{mt: 1}} key={action.question} label={
                 <div>
                   <Txt bold block dangerouslySetInnerHTML={{__html: action.question}}/>
                   {action.example && <Txt block dangerouslySetInnerHTML={{__html: action.example}}/>}
                 </div>
               }>
                 <Txt color="hint">{action.answer}</Txt>
-              </Accordion>
+              </AccordionInline>
             ))}
           </PanelBody>
         </Panel>

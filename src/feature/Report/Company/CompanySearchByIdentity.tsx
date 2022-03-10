@@ -11,7 +11,7 @@ import {useToast} from '../../../core/toast'
 import {IconBtn, Txt} from 'mui-extension'
 import {Icon} from '@mui/material'
 import React, {useRef} from 'react'
-import {Accordion} from '../../../shared/Accordion/Accordion'
+import {AccordionInline} from '../../../shared/AccordionInline/AccordionInline'
 import {Animate} from '../../../shared/Animate/Animate'
 
 interface Form {
@@ -46,9 +46,9 @@ export const CompanySearchByIdentity = ({onFound}: Props) => {
         <form onSubmit={handleSubmit(search)}>
           <PanelBody>
             <FormLayout required label={m.companyIdentityLabel}>
-              <Accordion label={<Txt size="small">{m.companyIdentityHelper}</Txt>}>
+              <AccordionInline label={<Txt size="small">{m.companyIdentityHelper}</Txt>}>
                 <Txt color="hint" size="small" dangerouslySetInnerHTML={{__html: m.companyIdentityHelperDesc}}/>
-              </Accordion>
+              </AccordionInline>
               <ScInput
                 inputRef={inputEl}
                 {...register('identity', {

@@ -4,6 +4,7 @@ import Link from 'next/link'
 import {siteMap} from '../core/siteMap'
 import Head from 'next/head'
 import {pageDefinitions} from '../core/pageDefinition'
+import {externalLinks} from '../core/externalLinks'
 
 const Accessibilite = () => {
   return (
@@ -121,8 +122,8 @@ const Accessibilite = () => {
             Vous pouvez :
           </p>
           <ul>
-            <li>Écrire un message au <a href="https://formulaire.defenseurdesdroits.fr/">Défenseur des droits</a></li>
-            <li>Contacter <a href="https://www.defenseurdesdroits.fr/saisir/delegues">le délégué du Défenseur des droits
+            <li>Écrire un message au <a href={externalLinks.defenseurDesDroits}>Défenseur des droits</a></li>
+            <li>Contacter <a href={externalLinks.defenseurDesDroitsDelegue}>le délégué du Défenseur des droits
               dans votre région</a></li>
             <li>Envoyer un courrier par la poste (gratuit, ne pas mettre de timbre) :
               <br/>Défenseur des droits

@@ -79,7 +79,7 @@ export const CompanyAskForeignDetails = ({onSubmit}: Props) => {
                     renderInput={(params) => <ScInput
                       {...params}
                       error={!!errors.country}
-                      helperText={errors.country?.message ?? ''}
+                      helperText={(errors.country as any)?.message ?? ''}
                       placeholder={m.countryPlaceholder}
                       fullWidth
                     />}

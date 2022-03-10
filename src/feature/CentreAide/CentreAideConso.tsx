@@ -1,32 +1,33 @@
 import Link from 'next/link'
 import {siteMap} from '../../core/siteMap'
-import {Accordion, Accordions} from './Accordion'
+import {AccordionPanel, AccordionPanels} from '../../shared/AccordionPanel/AccordionPanel'
 import {Box, BoxProps} from '@mui/material'
+import {externalLinks} from '../../core/externalLinks'
 
 export const CentreAideConso = (props: BoxProps) => {
   return (
     <Box {...props}>
       <h2>Généralités</h2>
-      <Accordions>
-        <Accordion title={`Comment fonctionne SignalConso ?`}>
+      <AccordionPanels>
+        <AccordionPanel title={`Comment fonctionne SignalConso ?`}>
           <p>Consultez notre page <Link href={siteMap.commentCaMarche}>Comment ça marche</Link></p>
-        </Accordion>
-        <Accordion title={`Je souhaite poser une question pour connaître mes droits ou savoir ce que je dois faire face à mon problème`}>
+        </AccordionPanel>
+        <AccordionPanel title={`Je souhaite poser une question pour connaître mes droits ou savoir ce que je dois faire face à mon problème`}>
           <p>SignalConso ne permet pas de poser une question à l'administration.</p>
           <p>Pour trouver une
             réponse, vous pouvez :
           </p>
           <ul>
-            <li>Consulter <a href="https://www.economie.gouv.fr/dgccrf/Publications/Vie-pratique/Fiches-pratiques-de-la-concurrence-et-de-la-consom" target="_blank"
+            <li>Consulter <a href={externalLinks.dgccrfFichesPratiques} target="_blank"
                              rel="noreferrer">les
               fiches
-              pratiques</a>et <a href="https://www.economie.gouv.fr/dgccrf/foire-aux-questions-0" target="_blank" rel="noreferrer">la foire aux questions</a> de la répression des
+              pratiques</a>et <a href={externalLinks.dgccrfFaq} target="_blank" rel="noreferrer">la foire aux questions</a> de la répression des
               fraudes (DGCCRF)
             </li>
             <li> Écrire votre question à l’aide du formulaire :
               <br/>
-              <a href="https://www.economie.gouv.fr/contact/contacter-la-dgccrf?dest=particulier"
-                 target="_blank" rel="noreferrer">https://www.economie.gouv.fr/contact/contacter-la-dgccrf?dest=particulier</a>
+              <a href={externalLinks.dgccrfContact}
+                 target="_blank" rel="noreferrer">{externalLinks.dgccrfContact}</a>
             </li>
             <li>
               Appeler le service Allo Service Publique au 3939.<br/><br/>Ce service est disponible du lundi au vendredi de 8h45 à 17h30 heures de métropole (0.15€ la minute +
@@ -42,20 +43,20 @@ export const CentreAideConso = (props: BoxProps) => {
               </ul>
             </li>
           </ul>
-        </Accordion>
-      </Accordions>
+        </AccordionPanel>
+      </AccordionPanels>
 
       <h2 className="pt-5">Je veux faire un signalement</h2>
-      <Accordions>
-        <Accordion title={`Je ne trouve pas la bonne catégorie`}>
+      <AccordionPanels>
+        <AccordionPanel title={`Je ne trouve pas la bonne catégorie`}>
           <p>Les principaux secteurs d'activité sont présents dans SignalConso.<br/> N'oubliez pas de
             cliquer sur "voir toutes les catégories" afin de voir toutes les rubriques existantes.
           </p>
           <p>En cas de doute ou pour demander la création d'une nouvelle catégorie, vous
             pouvez contacter le support.
           </p>
-        </Accordion>
-        <Accordion title={`J'ai du mal à compléter le formulaire à l'étape 3 "L'entreprise"`}>
+        </AccordionPanel>
+        <AccordionPanel title={`J'ai du mal à compléter le formulaire à l'étape 3 "L'entreprise"`}>
           <p>Les entreprises proposées dans le formulaire proviennent d'une base de données de l'Etat.
             Les données de cette base nous permettent ensuite de contacter l'entreprise.<br/> Il existe plusieurs raisons pour lesquelles vous ne trouvez pas l'entreprise :
           </p>
@@ -70,10 +71,7 @@ export const CentreAideConso = (props: BoxProps) => {
               mail, sans aucune mention légale.<br/>Pour signaler une entreprise dont vous ne connaissez ni le nom, ni l'url du site internet, ni les identifiants, il faut
               contacter directement la DGCCRF de la votre département :
               <br/>
-              <a href="https://www.economie.gouv.fr/dgccrf/coordonnees-des-DDPP-et-DDETSPP"
-                 target="_blank"
-                 rel="noreferrer">https://www.economie.gouv.fr/dgccrf/coordonnees-des-DDPP-et-DDETSPP</a>
-            </li>
+              <a href={externalLinks.dgccrfCoordonnees} target="_blank" rel="noreferrer">{externalLinks.dgccrfCoordonnees}</a></li>
             <li>
               <b>Je connais le nom et l'adresse de l'entreprise mais je ne la trouve pas</b>
               <br/>
@@ -82,8 +80,8 @@ export const CentreAideConso = (props: BoxProps) => {
               ne parvenez pas à trouver l'entreprise, vous pouvez contacter le support.
             </li>
           </ul>
-        </Accordion>
-        <Accordion title={`J'ai un message d'erreur lorsque je clique sur "envoyer" ou "suivant"`}>
+        </AccordionPanel>
+        <AccordionPanel title={`J'ai un message d'erreur lorsque je clique sur "envoyer" ou "suivant"`}>
           <ul>
             <li> Vérifiez votre connexion internet et ré-essayez d'envoyer le formulaire. Ce message d'erreur apparait souvent lorsque la connection internet a été
               momentanément coupée.
@@ -93,12 +91,12 @@ export const CentreAideConso = (props: BoxProps) => {
             </li>
           </ul>
           <p> Si vous n'arrivez toujours pas à envoyer le formulaire, vous pouvez contacter le support.</p>
-        </Accordion>
-      </Accordions>
+        </AccordionPanel>
+      </AccordionPanels>
 
       <h2 className="pt-5">J'ai fait un signalement</h2>
-      <Accordions>
-        <Accordion title={`Je n'ai pas de nouvelle depuis que j'ai fait mon signalement`}>
+      <AccordionPanels>
+        <AccordionPanel title={`Je n'ai pas de nouvelle depuis que j'ai fait mon signalement`}>
           <p>Après avoir envoyé votre signalement, vous avez dû recevoir un <b>accusé
             d'enregistrement</b> par email. Si ce n'est pas le cas, contactez le support. Il est possible que vous n'ayez pas validé la dernière étape ou que l'adresse
             email
@@ -116,8 +114,8 @@ export const CentreAideConso = (props: BoxProps) => {
           <p>Si la répression des fraudes décide de faire une enquête, vous ne
             recevrez pas d'email pour vous le dire.
           </p>
-        </Accordion>
-        <Accordion title={`Comment obtenir un remboursement ou résoudre mon problème ?`}>
+        </AccordionPanel>
+        <AccordionPanel title={`Comment obtenir un remboursement ou résoudre mon problème ?`}>
           <p>Comme indiqué sur SignalConso, la répression des fraudes va utiliser votre signalement
             pour cibler les entreprises à contrôler.<br/> Lors de ces contrôles, elle va regarder si de mauvaises pratiques sont effectivement exercées et si oui, les
             sanctionner.
@@ -126,13 +124,13 @@ export const CentreAideConso = (props: BoxProps) => {
             démarches. Ces démarches vous ont été présentées à la fin de votre signalement et dans votre mail d'accusé de réception.<br/> Vous pouvez également les retrouver
             sur cette page : <a href="https://signal.conso.gouv.fr/litige" target="_blank" rel="noreferrer">https://signal.conso.gouv.fr/litige</a>
           </p>
-        </Accordion>
-        <Accordion title={`Je veux modifier ou supprimer mon signalement `}>
+        </AccordionPanel>
+        <AccordionPanel title={`Je veux modifier ou supprimer mon signalement `}>
           <p> Pour modifier ou supprimer votre signalement, vous pouvez <Link href={siteMap.contact}>contacter
             le support</Link>.
           </p>
-        </Accordion>
-      </Accordions>
+        </AccordionPanel>
+      </AccordionPanels>
     </Box>
   )
 }

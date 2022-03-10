@@ -4,6 +4,8 @@ import {pageDefinitions} from 'core/pageDefinition'
 import {Page} from 'shared/Page/Page'
 import {MemberCard} from '../feature/MemberCard/MemberCard'
 import {Grid} from '@mui/material'
+import Link from 'next/link'
+import {siteMap} from '../core/siteMap'
 
 export interface Member {
   name: string
@@ -161,7 +163,7 @@ const QuiSommesNous = () => {
               <span>— Thomas Edison</span></p>
           </blockquote>
           <p>
-            Retrouvez plus d'informations et les mises à jour du site sur notre <a routerLink="/blog">blog</a>.
+            Retrouvez plus d'informations et les mises à jour du site sur notre <Link href={siteMap.blog}>blog</Link>.
           </p>
 
           <h2>Notre équipe</h2>

@@ -9,7 +9,7 @@ interface Props extends BoxProps {
   onClick?: (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void
 }
 
-export const Accordion = ({open, label, children, onClick, ...props}: Props) => {
+export const AccordionInline = ({open, label, children, onClick, ...props}: Props) => {
   const [innerOpen, setInnerOpen] = useState<boolean>()
   useEffect(() => {
     setInnerOpen(open)
