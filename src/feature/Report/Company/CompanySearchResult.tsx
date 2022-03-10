@@ -1,7 +1,7 @@
 import {CompanySearchResult, Report} from '@signal-conso/signalconso-api-sdk-js'
 import {Txt} from 'mui-extension/lib/Txt/Txt'
 import {Box, BoxProps, Icon} from '@mui/material'
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import {Panel, PanelActions, PanelBody} from '../../../shared/Panel/Panel'
 import {useI18n} from '../../../core/i18n'
 import {ScRadioGroup, ScRadioGroupItem} from '../../../shared/RadioGroup'
@@ -11,11 +11,12 @@ import {AddressComponent} from '../../../shared/Address/Address'
 import {Animate} from '../../../shared/Animate/Animate'
 import {ScButton} from '../../../shared/Button/Button'
 import {Controller, useForm} from 'react-hook-form'
+import {CompanyWebsiteVendor} from './CompanyWebsiteVendor'
+import {StepperActionsNext} from '../../../shared/Stepper/StepperActionsNext'
 
-interface Props extends Omit<BoxProps, 'onChange'> {
-  selectedCompany?: CompanySearchResult
+interface Props extends Omit<BoxProps, 'onSubmit'> {
   companies: CompanySearchResult[]
-  onChange: (_: CompanySearchResult) => void
+  onSubmit: (selected: CompanySearchResult, vendor?: string) => void
 }
 
 interface RowProps extends BoxProps {
@@ -52,8 +53,12 @@ interface Form {
   result: string
 }
 
-export const CompanySearchResultComponent = ({companies, onChange}: Props) => {
+export const CompanySearchResultComponent = ({companies, onSubmit}: Props) => {
   const {m} = useI18n()
+  const [selected, setSelected] = useState<CompanySearchResult | undefined>()
+  useEffect(() => {
+    setSelected(undefined)
+  }, [companies])
   const {
     control,
     handleSubmit,
@@ -70,7 +75,14 @@ export const CompanySearchResultComponent = ({companies, onChange}: Props) => {
           </Panel>
         ) : (
           <Panel title={m.selectCompany} id="CompanySearchResult">
-            <form onSubmit={handleSubmit(form => onChange(companies.find(_ => _.siret === form.result)!))}>
+            <form onSubmit={handleSubmit(form => {
+              const selectedCompany = companies.find(_ => _.siret === form.result)!
+              if (selectedCompany.isMarketPlace) {
+                setSelected(selectedCompany)
+              } else {
+                onSubmit(selectedCompany)
+              }
+            })}>
               <Txt block color="hint">{m.selectCompanyDesc}</Txt>
               <PanelBody>
                 <Controller
@@ -110,14 +122,15 @@ export const CompanySearchResultComponent = ({companies, onChange}: Props) => {
                   )}/>
               </PanelBody>
               <PanelActions>
-                <ScButton color="primary" variant="contained" icon="search" type="submit">
-                  {m.continue}
-                </ScButton>
+                <StepperActionsNext type="submit"/>
               </PanelActions>
             </form>
           </Panel>
         )}
       </Animate>
+      {selected?.isMarketPlace && (
+        <CompanyWebsiteVendor onSubmit={vendor => onSubmit(selected, vendor)}/>
+      )}
     </>
   )
 }

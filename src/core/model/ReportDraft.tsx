@@ -2,6 +2,7 @@ import {Anomaly, ReportDraft} from '@signal-conso/signalconso-api-sdk-js'
 import {getDraftReportInputs} from '../../feature/Report/Details/draftReportInputs'
 import {isSpecifyInputName, SpecifyFormUtils} from '../../feature/Report/Details/Details'
 import {fromNullable} from 'fp-ts/lib/Option'
+import {DeepPartial} from '@alexandreannic/ts-utils'
 
 export type DetailInputValues2 = {[key: string]: string | string[]}
 
@@ -34,6 +35,25 @@ export class ReportDraft2 {
     return {
       ...d,
       detailInputValues,
+    }
+  }
+
+  static readonly merge = (base: DeepPartial<ReportDraft2>, newValue: DeepPartial<ReportDraft2>): DeepPartial<ReportDraft2> => {
+    return {
+      ...base,
+      ...newValue,
+      companyDraft: {
+        ...base.companyDraft,
+        ...newValue.companyDraft,
+        address: {
+          ...base.companyDraft?.address,
+          ...newValue.companyDraft?.address,
+        }
+      },
+      consumer: {
+        ...base.consumer,
+        ...newValue.consumer,
+      },
     }
   }
 }

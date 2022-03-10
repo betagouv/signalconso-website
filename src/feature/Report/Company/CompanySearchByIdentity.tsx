@@ -10,19 +10,20 @@ import {CompanySearchResult} from '@signal-conso/signalconso-api-sdk-js'
 import {useToast} from '../../../core/toast'
 import {IconBtn, Txt} from 'mui-extension'
 import {Icon} from '@mui/material'
-import React, {useRef} from 'react'
+import React, {ReactNode, useRef} from 'react'
 import {AccordionInline} from '../../../shared/AccordionInline/AccordionInline'
 import {Animate} from '../../../shared/Animate/Animate'
+import {map} from '../../../core/helper/utils'
 
 interface Form {
   identity: string
 }
 
 interface Props {
-  onFound: (companies?: CompanySearchResult[]) => void
+  children: (companies?: CompanySearchResult[]) => ReactNode
 }
 
-export const CompanySearchByIdentity = ({onFound}: Props) => {
+export const CompanySearchByIdentity = ({children}: Props) => {
   const {m} = useI18n()
   const {apiSdk} = useApiSdk()
   const {toastError} = useToast()
@@ -35,49 +36,54 @@ export const CompanySearchByIdentity = ({onFound}: Props) => {
   const inputEl = useRef<HTMLInputElement>(null)
 
   const search = (form: Form) => {
-    _searchByIdentity.fetch({force: true, clean: true}, form.identity).then(onFound)
+    _searchByIdentity.fetch({force: true, clean: true}, form.identity)
+  }
+
+  const clear = () => {
+    reset()
+    _searchByIdentity.clearCache()
+    inputEl.current?.focus()
   }
 
   useEffectFn(_searchByIdentity.error, toastError)
 
   return (
-    <Animate>
-      <Panel title={m.couldYouPrecise} id="CompanySearchByIdentity">
-        <form onSubmit={handleSubmit(search)}>
-          <PanelBody>
-            <FormLayout required label={m.companyIdentityLabel}>
-              <AccordionInline label={<Txt size="small">{m.companyIdentityHelper}</Txt>}>
-                <Txt color="hint" size="small" dangerouslySetInnerHTML={{__html: m.companyIdentityHelperDesc}}/>
-              </AccordionInline>
-              <ScInput
-                inputRef={inputEl}
-                {...register('identity', {
-                  required: {value: true, message: m.required}
-                })}
-                fullWidth
-                placeholder={m.companyIdentityPlaceholder}
-                InputProps={{
-                  endAdornment: (
-                    <IconBtn size="small" color="primary" onClick={() => {
-                      onFound(undefined)
-                      reset()
-                      inputEl.current?.focus()
-                    }}>
-                      <Icon>clear</Icon>
-                    </IconBtn>
-                  )
-                }}
-              />
-            </FormLayout>
-          </PanelBody>
+    <>
+      <Animate>
+        <Panel title={m.couldYouPrecise} id="CompanySearchByIdentity">
+          <form onSubmit={handleSubmit(search)}>
+            <PanelBody>
+              <FormLayout required label={m.companyIdentityLabel}>
+                <AccordionInline label={<Txt size="small">{m.companyIdentityHelper}</Txt>}>
+                  <Txt color="hint" size="small" dangerouslySetInnerHTML={{__html: m.companyIdentityHelperDesc}}/>
+                </AccordionInline>
+                <ScInput
+                  inputRef={inputEl}
+                  {...register('identity', {
+                    required: {value: true, message: m.required}
+                  })}
+                  fullWidth
+                  placeholder={m.companyIdentityPlaceholder}
+                  InputProps={{
+                    endAdornment: (
+                      <IconBtn size="small" color="primary" onClick={clear}>
+                        <Icon>clear</Icon>
+                      </IconBtn>
+                    )
+                  }}
+                />
+              </FormLayout>
+            </PanelBody>
 
-          <PanelActions>
-            <ScButton color="primary" variant="contained" icon="search" type="submit" loading={_searchByIdentity.loading}>
-              {m.search}
-            </ScButton>
-          </PanelActions>
-        </form>
-      </Panel>
-    </Animate>
+            <PanelActions>
+              <ScButton color="primary" variant="contained" icon="search" type="submit" loading={_searchByIdentity.loading}>
+                {m.search}
+              </ScButton>
+            </PanelActions>
+          </form>
+        </Panel>
+      </Animate>
+      {map(_searchByIdentity.entity, children)}
+    </>
   )
 }
