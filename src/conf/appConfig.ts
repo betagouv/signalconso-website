@@ -46,6 +46,7 @@ export const appConfig = {
   apiDateFormat: 'dd/MM/yyyy',
   browserDateFormat: 'yyyy-MM-dd',
   maxDescriptionInputLength: 500,
+  dummyEmailDomain: ['@yopmail.com'],
 }
 
 export type AppConfig = typeof appConfig;

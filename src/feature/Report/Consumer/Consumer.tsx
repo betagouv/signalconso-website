@@ -14,11 +14,10 @@ import {useApiSdk} from '../../../core/context/ApiSdk'
 import {useFetcher} from '@alexandreannic/react-hooks-lib'
 import {useStepperContext} from '../../../shared/Stepper/Stepper'
 import {ConsumerValidationDialog} from './ConsumerValidationDialog'
-
-interface RowProps {
-  icon?: string
-  children: ReactNode
-}
+import {ReportDraft2} from '../../../core/model/ReportDraft'
+import {DeepPartial} from '@alexandreannic/ts-utils'
+import {ReportTag} from '@signal-conso/signalconso-api-sdk-js'
+import {appConfig} from '../../../conf/appConfig'
 
 interface ConsumerForm {
   firstName: string
@@ -28,7 +27,10 @@ interface ConsumerForm {
   phone?: string
 }
 
-const Row = ({icon, children}: RowProps) => {
+const Row = ({icon, children}: {
+  icon?: string
+  children: ReactNode
+}) => {
   return (
     <Box sx={{display: 'flex', '& + &': {mt: 2}}}>
       <Icon sx={{
@@ -45,15 +47,32 @@ const Row = ({icon, children}: RowProps) => {
 
 
 export const Consumer = () => {
+  const _stepper = useStepperContext()
   const _reportFlow = useReportFlowContext()
   const draft = _reportFlow.reportDraft
+  return (
+    <_Consumer
+      draft={draft}
+      onSubmit={changes => {
+        _reportFlow.setReportDraft(_ => ReportDraft2.merge(_, changes))
+        _stepper.next()
+      }}
+    />
+  )
+}
+
+export const _Consumer = ({
+  draft,
+  onSubmit,
+}: {
+  draft: Partial<ReportDraft2>,
+  onSubmit: (_: DeepPartial<ReportDraft2>) => void
+}) => {
   const {m} = useI18n()
   const [openValidationDialog, setOpenValidationDialog] = useState<boolean>(false)
   const {apiSdk} = useApiSdk()
-  const _stepper = useStepperContext()
   const _checkEmail = useFetcher(apiSdk.authenticate.checkConsumerEmail)
   const _form = useForm<ConsumerForm>()
-
 
   const getErrors = (name: keyof ConsumerForm): {error: boolean, helperText?: string} => ({
     error: !!_form.formState.errors[name],
@@ -61,15 +80,11 @@ export const Consumer = () => {
   })
 
   const saveAndNext = () => {
-    _reportFlow.setReportDraft(_ => ({
-      ..._,
+    onSubmit({
       consumer: {..._form.getValues()},
       contactAgreement: _form.getValues().contactAgreement,
-    }))
-    _stepper.next()
+    })
   }
-
-  console.log('getValues', _form.getValues())
 
   return (
     <>
@@ -107,23 +122,28 @@ export const Consumer = () => {
                 {...getErrors('email')}
                 {..._form.register('email', {
                   required: {value: true, message: m.required},
-                  pattern: {value: regexp.email, message: m.invalidEmail}
+                  pattern: {value: regexp.email, message: m.invalidEmail},
+                  validate: {
+                    isDummyEmail: value => !appConfig.dummyEmailDomain.find(_ => value.includes(_)) || m.consumerDummyEmailNotAccepted
+                  }
                 })}
               />
             </FormLayout>
           </Row>
-          <Row icon="phone">
-            <FormLayout label={m.phone}>
-              <ScInput
-                fullWidth
-                defaultValue={draft.consumer?.phone ?? ''}
-                {...getErrors('phone')}
-                {..._form.register('phone', {
-                  pattern: {value: regexp.phone, message: m.invalidEmail}
-                })}
-              />
-            </FormLayout>
-          </Row>
+          {draft.tags?.includes(ReportTag.Bloctel) && (
+            <Row icon="phone">
+              <FormLayout label={m.phoneOptional}>
+                <ScInput
+                  fullWidth
+                  defaultValue={draft.consumer?.phone ?? ''}
+                  {...getErrors('phone')}
+                  {..._form.register('phone', {
+                    pattern: {value: regexp.phone, message: m.invalidEmail}
+                  })}
+                />
+              </FormLayout>
+            </Row>
+          )}
           <Row icon="https">
             <Controller
               control={_form.control}
