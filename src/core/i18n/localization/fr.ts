@@ -282,7 +282,7 @@ export const fr = {
     postalCode: `Code postal`,
     aboutCompany: `Informations sur l'entreprise`,
     selectCompany: `Sélectionnez l'entreprise`,
-    verify:`Vérifier`,
+    verify: `Vérifier`,
     isHeadOffice: 'Siège sociale',
     governmentCompany: 'Administration publique',
     selectCompanyDesc: `Si l'entreprise n'est pas celle recherchée, vous pouvez modifier votre recherche.`,
@@ -311,6 +311,21 @@ export const fr = {
     consumerDummyEmailNotAccepted: `Les adresses éphémères ne sont pas acceptées.`,
     consumerValidationCodeExpired: `Code incorrect, veuillez réessayer.`,
     consumerValidationCodeInvalid: `Code incorrect, veuillez réessayer.`,
+    consumerIsEmployee: `
+      <strong>Vous déclarez travailler dans l'entreprise que vous allez signaler.</strong>
+      <p>
+        Votre signalement sera lu <b>uniquement par la répression des fraudes</b>.
+      </p>
+      <p>
+        Vos coordonnées sont à destination des enquêteurs uniquement.
+        Ils peuvent être amenés à vous contacter afin de vérifier votre identité et votre signalement.
+      </p>
+      <p>
+        Votre employeur ne sera pas mis au courant de votre signalement.
+      </p>
+      Pendant l'enquête, si les enquêteurs ont besoin de révéler votre identité à la justice ou à votre employeur, ils vous demanderont l'autorisation avant.
+      <b>Vous pourrez refuser.</b>
+    `,
     confirmationTitle: `Récapitulatif de votre problème`,
     confirmationAlertTransmittable: `Vérifiez votre signalement avant de l’envoyer à l'entreprise et à la répression des fraudes.`,
     confirmationAlert: `Vérifiez votre signalement avant de l’envoyer à la répression des fraudes.`,

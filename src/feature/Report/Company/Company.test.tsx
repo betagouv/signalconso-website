@@ -13,15 +13,15 @@ import {waitFor} from '@testing-library/dom'
 
 describe('Details: single date not in future', () => {
   let app: ScRenderResult
-  let draft: undefined | Partial<ReportDraft2>
+  let draft: Partial<ReportDraft2> = {}
 
-  const updateDraft = (x: Partial<ReportDraft2> | ((xxxx: Partial<ReportDraft2>) => Partial<ReportDraft2>)): void => {
-    if (typeof x === 'function') {
-      draft = x(draft ?? {})
-    } else {
-      draft = x
-    }
-  }
+  // const updateDraft = (x: Partial<ReportDraft2> | ((xxxx: Partial<ReportDraft2>) => Partial<ReportDraft2>)): void => {
+  //   if (typeof x === 'function') {
+  //     draft = x(draft ?? {})
+  //   } else {
+  //     draft = x
+  //   }
+  // }
 
   const elementShouldExists = async (querySelector: string) => {
     await waitFor(() =>
@@ -45,7 +45,9 @@ describe('Details: single date not in future', () => {
           draft={{
             companyKind: CompanyKinds.WEBSITE
           }}
-          onUpdateReportDraft={x => updateDraft(x)}
+          onUpdateReportDraft={x => {
+            draft = ReportDraft2.merge(draft, x)
+          }}
         />,
         {
           apiSdkMock: {
@@ -84,7 +86,7 @@ describe('Details: single date not in future', () => {
           draft={{
             companyKind: CompanyKinds.LOCATION
           }}
-          onUpdateReportDraft={x => updateDraft(x)}
+          onUpdateReportDraft={x => ReportDraft2.merge(draft, x)}
         />,
       )
     })

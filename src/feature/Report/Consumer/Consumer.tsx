@@ -1,6 +1,6 @@
 import {Panel, PanelBody} from '../../../shared/Panel/Panel'
 import {useI18n} from '../../../core/i18n'
-import {Box, Grid, Icon} from '@mui/material'
+import {Box, BoxProps, Grid, Icon} from '@mui/material'
 import React, {ReactNode, useState} from 'react'
 import {ScInput} from '../../../shared/Input/ScInput'
 import {FormLayout} from '../../../shared/FormLayout/FormLayout'
@@ -8,7 +8,7 @@ import {Controller, useForm} from 'react-hook-form'
 import {regexp} from '../../../core/utils/regexp'
 import {ScRadioGroup, ScRadioGroupItem} from '../../../shared/RadioGroup'
 import {useReportFlowContext} from '../ReportFlowContext'
-import {Txt} from 'mui-extension'
+import {Txt, Alert} from 'mui-extension'
 import {StepperActions} from '../../../shared/Stepper/StepperActions'
 import {useApiSdk} from '../../../core/context/ApiSdk'
 import {useFetcher} from '@alexandreannic/react-hooks-lib'
@@ -16,23 +16,27 @@ import {useStepperContext} from '../../../shared/Stepper/Stepper'
 import {ConsumerValidationDialog} from './ConsumerValidationDialog'
 import {ReportDraft2} from '../../../core/model/ReportDraft'
 import {DeepPartial} from '@alexandreannic/ts-utils'
-import {ReportTag} from '@signal-conso/signalconso-api-sdk-js'
+import {ReportDraft, ReportTag} from '@signal-conso/signalconso-api-sdk-js'
 import {appConfig} from '../../../conf/appConfig'
 
 interface ConsumerForm {
   firstName: string
   lastName: string
   email: string
-  contactAgreement: boolean
+  contactAgreement?: boolean
   phone?: string
 }
 
-const Row = ({icon, children}: {
+const Row = ({
+  icon,
+  children,
+  sx,
+  ...props
+}: {
   icon?: string
-  children: ReactNode
-}) => {
+} & BoxProps) => {
   return (
-    <Box sx={{display: 'flex', '& + &': {mt: 2}}}>
+    <Box sx={{display: 'flex', '& + &': {mt: 2}, ...sx}} {...props}>
       <Icon sx={{
         mr: 2,
         mt: .5,
@@ -74,15 +78,23 @@ export const _Consumer = ({
   const _checkEmail = useFetcher(apiSdk.authenticate.checkConsumerEmail)
   const _form = useForm<ConsumerForm>()
 
+  const showContactAgreement = ReportDraft.isTransmittableToPro(draft)
+    && draft.contractualDispute !== true
+
   const getErrors = (name: keyof ConsumerForm): {error: boolean, helperText?: string} => ({
     error: !!_form.formState.errors[name],
     helperText: _form.formState.errors[name]?.message,
   })
 
   const saveAndNext = () => {
+    const {contactAgreement, ...consumer} = _form.getValues()
     onSubmit({
-      consumer: {..._form.getValues()},
-      contactAgreement: _form.getValues().contactAgreement,
+      consumer: consumer,
+      contactAgreement: (() => {
+        if (!ReportDraft.isTransmittableToPro(draft)) return false
+        if (draft.contractualDispute) return true
+        return contactAgreement
+      })()
     })
   }
 
@@ -90,6 +102,7 @@ export const _Consumer = ({
     <>
       <Panel title={m.consumerTitle}>
         <PanelBody>
+          <Alert type="info" dangerouslySetInnerHTML={{__html: m.consumerIsEmployee}} sx={{mb: 3}}/>
           <Row icon="person">
             <Grid container columnSpacing={2}>
               <Grid item xs={6}>
@@ -124,13 +137,15 @@ export const _Consumer = ({
                   required: {value: true, message: m.required},
                   pattern: {value: regexp.email, message: m.invalidEmail},
                   validate: {
-                    isDummyEmail: value => !appConfig.dummyEmailDomain.find(_ => value.includes(_)) || m.consumerDummyEmailNotAccepted
+                    isDummyEmail: value => {
+                      return !appConfig.dummyEmailDomain.find(_ => value.includes(_)) || m.consumerDummyEmailNotAccepted
+                    }
                   }
                 })}
               />
             </FormLayout>
           </Row>
-          {draft.tags?.includes(ReportTag.Bloctel) && (
+          {!draft.tags?.includes(ReportTag.Bloctel) && (
             <Row icon="phone">
               <FormLayout label={m.phoneOptional}>
                 <ScInput
@@ -144,33 +159,35 @@ export const _Consumer = ({
               </FormLayout>
             </Row>
           )}
-          <Row icon="https">
-            <Controller
-              control={_form.control}
-              name="contactAgreement"
-              defaultValue={draft.contactAgreement}
-              rules={{
-                required: {value: true, message: m.required}
-              }}
-              render={({field}) => (
-                <ScRadioGroup
-                  {...field}
-                  {...getErrors('contactAgreement')}
-                >
-                  <ScRadioGroupItem
-                    value={true}
-                    title={m.contactAgreementTrueTitle}
-                    description={<Txt size="small" dangerouslySetInnerHTML={{__html: m.contactAgreementTrueDesc}}/>}
-                  />
-                  <ScRadioGroupItem
-                    value={false}
-                    title={m.contactAgreementFalseTitle}
-                    description={<Txt size="small" dangerouslySetInnerHTML={{__html: m.contactAgreementFalseDesc}}/>}
-                  />
-                </ScRadioGroup>
-              )}
-            />
-          </Row>
+          {showContactAgreement && (
+            <Row icon="https">
+              <Controller
+                control={_form.control}
+                name="contactAgreement"
+                defaultValue={draft.contactAgreement}
+                rules={{
+                  required: {value: true, message: m.required}
+                }}
+                render={({field}) => (
+                  <ScRadioGroup
+                    {...field}
+                    {...getErrors('contactAgreement')}
+                  >
+                    <ScRadioGroupItem
+                      value={true}
+                      title={m.contactAgreementTrueTitle}
+                      description={<Txt size="small" dangerouslySetInnerHTML={{__html: m.contactAgreementTrueDesc}}/>}
+                    />
+                    <ScRadioGroupItem
+                      value={false}
+                      title={m.contactAgreementFalseTitle}
+                      description={<Txt size="small" dangerouslySetInnerHTML={{__html: m.contactAgreementFalseDesc}}/>}
+                    />
+                  </ScRadioGroup>
+                )}
+              />
+            </Row>
+          )}
         </PanelBody>
       </Panel>
       <ConsumerValidationDialog

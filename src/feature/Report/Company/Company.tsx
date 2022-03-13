@@ -59,13 +59,13 @@ export const _Company = ({
   draft,
   onUpdateReportDraft,
 }: CompanyWithRequiredProps) => {
-  const commonTree = (companyX: DeepPartial<CompanyDraft> = {}, result: CompanySearchResult[] | undefined = undefined) => {
+  const commonTree = (phoneOrWebsite: Pick<CompanyDraft, 'phone' | 'website'> = {}, result: CompanySearchResult[] | undefined = undefined) => {
     return result && result.length > 0 ? (
       <CompanySearchResultComponent companies={result} onSubmit={(company, vendor) => {
         onUpdateReportDraft({
           companyDraft: {
             ...company,
-            ...companyX,
+            ...phoneOrWebsite,
           },
           vendor,
         })
@@ -102,7 +102,7 @@ export const _Company = ({
                   <CompanyAskConsumerPostalCode onChange={postalCode => {
                     onUpdateReportDraft({
                       companyDraft: {
-                        ...companyX,
+                        ...phoneOrWebsite,
                         address: {
                           postalCode,
                         }
@@ -115,7 +115,7 @@ export const _Company = ({
                     onUpdateReportDraft({
                       companyDraft: {
                         name: form.name,
-                        ...companyX,
+                        ...phoneOrWebsite,
                         address: {
                           postalCode: form.postalCode,
                           country: form.country.name,
@@ -128,7 +128,7 @@ export const _Company = ({
                   <CompanyAskConsumerPostalCode onChange={postalCode => {
                     onUpdateReportDraft({
                       companyDraft: {
-                        ...companyX,
+                        ...phoneOrWebsite,
                         address: {
                           postalCode,
                         }
