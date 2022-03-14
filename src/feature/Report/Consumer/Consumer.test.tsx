@@ -2,7 +2,6 @@
  * @jest-environment jsdom
  */
 import {fireEvent, render, ScRenderResult, waitFor} from '../../../test/test-utils'
-// import {act, fireEvent, render, ScRenderResult} from '../../../test/test-utils'
 import React from 'react'
 import {ReportDraft2} from '../../../core/model/ReportDraft'
 import {_Consumer} from './Consumer'

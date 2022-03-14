@@ -12,6 +12,7 @@ export const Panel = ({title, desc, children, sx, elevation = 0, border, ...rest
   return (
     <Card role="article" elevation={elevation} {...rest} sx={{
       ...(!border && !elevation) && {
+        pb: 1 / 2,
         '&:not(:first-of-type)': {
           mt: 2,
         },

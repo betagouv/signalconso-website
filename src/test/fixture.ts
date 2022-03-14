@@ -1,4 +1,4 @@
-import {Company, CompanySearchResult, Information, ReportDraft, ReportDraftConsumer, Subcategory} from '@signal-conso/signalconso-api-sdk-js'
+import {Address, Company, CompanySearchResult, Information, ReportDraft, ReportDraftConsumer, Subcategory} from '@signal-conso/signalconso-api-sdk-js'
 import anomalies from '@signal-conso/signalconso-api-sdk-js/lib/client/anomaly/yml/anomalies.json'
 import {ReportStep, ReportStepHelper} from '../core/reportStep'
 import randomstring from 'randomstring'
@@ -55,6 +55,9 @@ export const genDraftReport = (lastStep: ReportStep): Partial<ReportDraft> => {
     [ReportStep.Details]: _ => ({
       ..._,
       subcategories: [genSubcategory()],
+      description: [
+        {label: 'label', value: 'value'}
+      ]
     }),
     [ReportStep.Company]: _ => ({
       ..._,
@@ -64,7 +67,7 @@ export const genDraftReport = (lastStep: ReportStep): Partial<ReportDraft> => {
     }),
     [ReportStep.Consumer]: _ => ({
       ..._,
-      draftCompany: genCompanySearchResult()
+      companyDraft: genCompany()
     }),
     [ReportStep.Confirmation]: _ => ({
       ..._,
@@ -88,18 +91,22 @@ export const genConsumer = (): ReportDraftConsumer => {
   }
 }
 
+export const genAddress = (): Address => {
+  return {
+    number: randomstring.generate(),
+    street: randomstring.generate(),
+    city: randomstring.generate(),
+    postalCode: randomstring.generate({
+      length: 5,
+      charset: 'numeric'
+    })
+  }
+}
+
 export const genCompanySearchResult = () => {
   return <CompanySearchResult>{
     name: randomstring.generate(),
-    address: {
-      number: randomstring.generate(),
-      street: randomstring.generate(),
-      city: randomstring.generate(),
-      postalCode: randomstring.generate({
-        length: 5,
-        charset: 'numeric'
-      })
-    },
+    address: genAddress()
   }
 }
 
@@ -107,7 +114,8 @@ export const genCompany = () => {
   return <Company>{
     id: randomstring.generate(),
     name: randomstring.generate(),
-    siret: genSiret()
+    siret: genSiret(),
+    address: genAddress()
   }
 }
 
