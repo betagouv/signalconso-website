@@ -1,6 +1,6 @@
 import React, {ReactNode, useContext, useMemo, useState} from 'react'
 import {StepperHeader} from './StepperHeader'
-import {Page} from 'mui-extension/lib'
+import {Page} from '../Page/Page'
 
 export interface StepProps {
   name: string
