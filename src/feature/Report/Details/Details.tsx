@@ -57,6 +57,7 @@ export const Details = () => {
       isTransmittable={ReportDraft.isTransmittableToPro(draft)}
       inputs={inputs}
       fileLabel={(last(draft.subcategories) as SubcategoryInput).fileLabel}
+      contractualDispute={draft.contractualDispute}
       tags={draft.tags ?? []}
       onSubmit={detailInputValues => {
         _reportFlow.setReportDraft(_ => ({..._, detailInputValues}))
@@ -115,6 +116,7 @@ export const _Details = ({
   tags,
   isTransmittable,
   description,
+  contractualDispute,
   onSubmit,
 }: {
   inputs: DetailInput[]
@@ -124,6 +126,7 @@ export const _Details = ({
   description?: string
   fileLabel?: string
   isTransmittable?: boolean
+  contractualDispute?: boolean
   tags?: ReportTag[]
 }) => {
   const [uploadedFiles, setUploadedFiles] = useState<undefined | UploadedFile[]>()
@@ -143,7 +146,12 @@ export const _Details = ({
         <Panel>
           <Alert gutterBottom type="warning">
             {isTransmittable ? (
-              <span dangerouslySetInnerHTML={{__html: m.detailsTextAreaTransmittable}}/>
+              <>
+                <span dangerouslySetInnerHTML={{__html: m.detailsTextAreaTransmittable}}/>
+                {!contractualDispute && (
+                  <span dangerouslySetInnerHTML={{__html: m.detailsTextAreaTransmittableAnonymous}}/>
+                )}
+              </>
             ) : (
               <>
                 <span dangerouslySetInnerHTML={{__html: m.detailsTextAreaNotTransmittable}}/><br/>
@@ -348,7 +356,9 @@ export const _Details = ({
       <Animate animate={true}>
         <Panel title={fileLabel ?? m.attachments}>
           <PanelBody>
-            <Txt color="hint" block gutterBottom dangerouslySetInnerHTML={{__html: m.attachmentsDesc}}/>
+            {!contractualDispute && (
+              <Txt color="hint" block gutterBottom dangerouslySetInnerHTML={{__html: m.attachmentsDescAnonymous}}/>
+            )}
             <Alert dense type="info" sx={{mb: 2}} deletable persistentDelete>
               <Txt size="small" dangerouslySetInnerHTML={{__html: m.attachmentsDesc2}}/>
             </Alert>

@@ -169,7 +169,8 @@ export const fr = {
     step_consumer: `Consommateur`,
     step_confirm: `Confirmation`,
     timeFromTo: (from: number, to: number) => `De ${from}h à ${to}h`,
-    detailsTextAreaTransmittable: `Ce texte sera <b>lu par l'entreprise</b>. La répression des fraudes pourra également le consulter. Si vous ne souhaitez pas que l'entreprise connaisse votre identité, <b>ne citez rien de personnel</b>.`,
+    detailsTextAreaTransmittable: `Ce texte sera <b>lu par l'entreprise</b>. La répression des fraudes pourra également le consulter.`,
+    detailsTextAreaTransmittableAnonymous: `Si vous ne souhaitez pas que l'entreprise connaisse votre identité, <b>ne citez rien de personnel</b>.`,
     detailsTextAreaNotTransmittable: `Ce texte sera lu <b>uniquement par la répression des fraudes.</b>`,
     detailsTextAreaEmployeeConsumer: `Rien ne sera communiqué à votre employeur.`,
     month_: {
@@ -258,7 +259,7 @@ export const fr = {
     addAttachmentFile: 'Ajouter une pièces jointe',
     attachments: `Pièces jointes`,
     backToHome: `Revenir à l'accueil`,
-    attachmentsDesc: `Si vous ne souhaitez pas que l'entreprise connaisse votre identité, <b>cachez votre nom</b> sur vos pièces jointes.`,
+    attachmentsDescAnonymous: `Si vous ne souhaitez pas que l'entreprise connaisse votre identité, <b>cachez votre nom</b> sur vos pièces jointes.`,
     attachmentsDesc2: `Ajouter une pièce jointe augmente de 83 % la chance d'entrainer une mesure corrective ! Vous ne devez pas communiquer de données dites "sensibles" (données bancaires ou médicales).`,
     menu_howItWorks: `Comment ça marche ?`,
     menu_home: `Home`,
