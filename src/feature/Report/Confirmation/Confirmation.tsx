@@ -62,8 +62,8 @@ export const _Confirmation = ({
           <ConfirmationStep title={m.step_description}>
             {draft.detailInputValues.map(({label, value}) =>
               <Box key={label} sx={{mb: 1}}>
-                <Txt bold sx={{mr: 1}} dangerouslySetInnerHTML={{__html: label}}/>
-                <Txt color="hint">{JSON.stringify(value)}</Txt>
+                <Txt block bold sx={{mr: 1}} dangerouslySetInnerHTML={{__html: label}}/>
+                <Txt color="hint">{value}</Txt>
               </Box>
             )}
           </ConfirmationStep>

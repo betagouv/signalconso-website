@@ -55,14 +55,23 @@ export const genDraftReport = (lastStep: ReportStep): Partial<ReportDraft> => {
     [ReportStep.Details]: _ => ({
       ..._,
       subcategories: [genSubcategory()],
-      description: [
-        {label: 'label', value: 'value'}
+      detailInputValues: [
+        {label: 'Date de constat (ou date d\'achat) :', value: '09/03/2022'},
+        {label: 'Quel est le nom du produit :', value: 'oo'},
+        {
+          label: 'Pourquoi trouvez-vous la publicité trompeuse :',
+          value: 'le produit ne remplit pas sa promesse, la photo du produit est trompeuse, les labels (bio, naturel...) sont trompeurs'
+        },
+        {label: 'Où avez-vous vu ces informations :', value: 'site internet, publicité (affiche, dans un magazine)'},
+        {
+          label: 'Description :',
+          value: 'Suite à l’achat de pass à l’occasion du Passage Musique Festival pour plus de 400€ qui devait avoir lieu en 2018 je n’ai toujours pas reçu de remboursements malgré plusieurs relances.'
+        },
       ]
     }),
     [ReportStep.Company]: _ => ({
       ..._,
       employeeConsumer: oneBoolean(),
-      detailInputValues: [],
       uploadedFiles: [],
     }),
     [ReportStep.Consumer]: _ => ({
