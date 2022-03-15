@@ -44,11 +44,11 @@ export const _Confirmation = ({
   anomaly: Pick<Anomaly, 'sprite'>
   draft: ReportDraft,
 }) => {
-  const {apiSdk} = useApiSdk()
   const {m} = useI18n()
-  const _createReport = useFetcher(apiSdk.report.create)
   const {toastError} = useToast()
-  useEffectFn(_createReport.error, toastError)
+  const _reportFlow = useReportFlowContext()
+
+  useEffectFn(_reportFlow.createReport.error, toastError)
 
   return (
     <Animate autoScrollTo={true} animate={true}>
@@ -143,10 +143,12 @@ export const _Confirmation = ({
         </ConfirmationStepper>
         <StepperActions
           nextIcon="send"
-          loadingNext={_createReport.loading}
+          loadingNext={_reportFlow.createReport.loading}
           nextButtonLabel={draft.forwardToReponseConso ? m.confirmationBtnReponseConso : m.confirmationBtn}
           next={next => {
-            _createReport.fetch({}, draft).then(next)
+            _reportFlow.createReport.fetch({}, draft)
+              .then(_reportFlow.clearReportDraft)
+              .then(next)
           }}
         />
       </div>

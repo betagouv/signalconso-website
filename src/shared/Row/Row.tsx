@@ -1,9 +1,9 @@
 import {Box, BoxProps, Icon} from '@mui/material'
-import React from 'react'
+import React, {ReactNode} from 'react'
 
 interface RowProps extends BoxProps {
   dense?: boolean
-  icon?: string
+  icon?: string | ReactNode
 }
 
 export const Row = ({
@@ -15,13 +15,17 @@ export const Row = ({
 }: RowProps) => {
   return (
     <Box sx={{display: 'flex', '& + &': {mt: dense ? 1.5 : 2}, ...sx}} {...props}>
-      <Icon sx={{
-        mr: dense ? 1 : 2,
-        mt: .25,
-        minWidth: 30,
-        textAlign: 'center',
-        color: t => t.palette.text.disabled
-      }}>{icon}</Icon>
+      {typeof icon === 'string' ? (
+        <Icon sx={{
+          mr: dense ? 1 : 2,
+          mt: .25,
+          minWidth: 30,
+          textAlign: 'center',
+          color: t => t.palette.text.disabled
+        }}>{icon}</Icon>
+      ) : (
+        icon
+      )}
       <Box sx={{width: '100%', minHeight: dense ? 24 : 32}}>{children}</Box>
     </Box>
   )

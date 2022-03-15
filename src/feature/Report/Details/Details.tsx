@@ -353,7 +353,7 @@ export const _Details = ({
           ))}
         </Panel>
       </Animate>
-      <Animate animate={false}>
+      <Animate autoScrollTo={false}>
         <Panel title={fileLabel ?? m.attachments}>
           <PanelBody>
             {!contractualDispute && (
