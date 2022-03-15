@@ -59,8 +59,8 @@ export const Details = () => {
       fileLabel={(last(draft.subcategories) as SubcategoryInput).fileLabel}
       contractualDispute={draft.contractualDispute}
       tags={draft.tags ?? []}
-      onSubmit={detailInputValues => {
-        _reportFlow.setReportDraft(_ => ({..._, detailInputValues}))
+      onSubmit={(detailInputValues, uploadedFiles) => {
+        _reportFlow.setReportDraft(_ => ({..._, uploadedFiles, detailInputValues}))
         _stepper.next()
       }}
     />
@@ -353,7 +353,7 @@ export const _Details = ({
           ))}
         </Panel>
       </Animate>
-      <Animate animate={true}>
+      <Animate animate={false}>
         <Panel title={fileLabel ?? m.attachments}>
           <PanelBody>
             {!contractualDispute && (

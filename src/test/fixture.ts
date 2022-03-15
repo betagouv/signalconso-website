@@ -1,4 +1,4 @@
-import {Address, Company, CompanySearchResult, Information, ReportDraft, ReportDraftConsumer, Subcategory} from '@signal-conso/signalconso-api-sdk-js'
+import {Address, Company, CompanySearchResult, FileOrigin, Information, ReportDraft, ReportDraftConsumer, Subcategory} from '@signal-conso/signalconso-api-sdk-js'
 import anomalies from '@signal-conso/signalconso-api-sdk-js/lib/client/anomaly/yml/anomalies.json'
 import {ReportStep, ReportStepHelper} from '../core/reportStep'
 import randomstring from 'randomstring'
@@ -54,7 +54,10 @@ export const genDraftReport = (lastStep: ReportStep): Partial<ReportDraft> => {
     }),
     [ReportStep.Details]: _ => ({
       ..._,
-      subcategories: [genSubcategory()],
+      subcategories: [genSubcategory(), genSubcategory()],
+    }),
+    [ReportStep.Company]: _ => ({
+      ..._,
       detailInputValues: [
         {label: 'Date de constat (ou date d\'achat) :', value: '09/03/2022'},
         {label: 'Quel est le nom du produit :', value: 'oo'},
@@ -67,12 +70,16 @@ export const genDraftReport = (lastStep: ReportStep): Partial<ReportDraft> => {
           label: 'Description :',
           value: 'Suite à l’achat de pass à l’occasion du Passage Musique Festival pour plus de 400€ qui devait avoir lieu en 2018 je n’ai toujours pas reçu de remboursements malgré plusieurs relances.'
         },
-      ]
-    }),
-    [ReportStep.Company]: _ => ({
-      ..._,
+      ],
       employeeConsumer: oneBoolean(),
-      uploadedFiles: [],
+      uploadedFiles: [
+        {
+          filename: 'Captura de pantalla 2022-03-14 a las 18.40.21.png',
+          id: '8710d67d-d955-444d-b340-ee17c7b781e9',
+          loading: false,
+          origin: FileOrigin.Consumer,
+        }
+      ],
     }),
     [ReportStep.Consumer]: _ => ({
       ..._,

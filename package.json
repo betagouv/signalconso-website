@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "@alexandreannic/react-hooks-lib": "^1.11.5",
-    "@alexandreannic/ts-utils": "1.7.0",
+    "@alexandreannic/ts-utils": "1.7.3",
     "@emotion/cache": "latest",
     "@emotion/react": "latest",
     "@emotion/server": "latest",

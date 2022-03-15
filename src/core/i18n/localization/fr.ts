@@ -361,5 +361,7 @@ export const fr = {
       Dans la plupart des cas, vous trouverez l'accès à ces rubriques tout en bas de la page d'accueil du site. L'adresse de l'entreprise devrait être indiquée dans l'une de ces rubriques.<br/>
       Attention, il est possible que deux sociétés différentes soient mentionnées sur ces pages. L'une d'elle correspond à l'hébergeur du site. Ce n'est pas l'adresse de cet hébergeur que l'on cherche.
     `,
+    confirmationBtnReponseConso: `Envoyer ma question`,
+    confirmationBtn: `Envoyer le signalement`,
   },
 }

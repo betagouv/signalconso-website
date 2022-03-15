@@ -1,14 +1,18 @@
 import {useReportFlowContext} from '../ReportFlowContext'
 import {useI18n} from 'core/i18n'
 import {Alert, Txt} from 'mui-extension'
-import {Anomaly, ReportDraft} from '@signal-conso/signalconso-api-sdk-js'
+import {Anomaly, FileOrigin, ReportDraft} from '@signal-conso/signalconso-api-sdk-js'
 import {ConfirmationStep, ConfirmationStepper} from './ConfirmationStepper'
 import {Animate} from 'shared/Animate/Animate'
-import {Box, BoxProps, Icon} from '@mui/material'
+import {Box, BoxProps, Chip, Icon} from '@mui/material'
 import {AnomalyImage} from 'shared/AnomalyCard/AnomalyImage'
 import {AddressComponent} from 'shared/Address/Address'
 import {StepperActions} from 'shared/Stepper/StepperActions'
 import {ReportDraft2} from 'core/model/ReportDraft'
+import {ReportFiles} from 'shared/UploadFile/ReportFiles'
+import {useEffectFn, useFetcher} from '@alexandreannic/react-hooks-lib'
+import {useApiSdk} from 'core/context/ApiSdk'
+import {useToast} from 'core/toast'
 
 const Row = ({icon, dense, children, ...props}: {dense?: boolean, icon: string} & BoxProps) => {
   return (
@@ -38,7 +42,12 @@ export const _Confirmation = ({
   anomaly: Pick<Anomaly, 'sprite'>
   draft: ReportDraft,
 }) => {
+  const {apiSdk} = useApiSdk()
   const {m} = useI18n()
+  const _createReport = useFetcher(apiSdk.report.create)
+  const {toastError} = useToast()
+  useEffectFn(_createReport.error, toastError)
+
   return (
     <Animate autoScrollTo={true} animate={true}>
       <div>
@@ -66,9 +75,13 @@ export const _Confirmation = ({
                 <Txt color="hint">{value}</Txt>
               </Box>
             )}
+            <Box sx={{mb: 1}}>
+              <Txt block bold sx={{mb: 1}}>{m.attachments}</Txt>
+              <ReportFiles fileOrigin={FileOrigin.Consumer} hideAddBtn files={draft.uploadedFiles}/>
+            </Box>
           </ConfirmationStep>
           <ConfirmationStep title={m.step_company}>
-            <Txt size="big" bold block>{draft.companyDraft.name}</Txt>
+            <Txt size="big" bold block>{draft.companyDraft.name} {draft.companyDraft.brand ?? ''}</Txt>
             <Txt color="hint" block sx={{mb: .5}}>
               <Txt>SIRET:&nbsp;</Txt>
               <Txt bold>{draft.companyDraft.siret}</Txt>
@@ -94,11 +107,36 @@ export const _Confirmation = ({
             )}
             <Row icon="https">
               {m.contactAgreement}:&nbsp;
-              <Txt bold>{draft.contactAgreement ? m.yes : m.no}</Txt>
+              <Txt bold>
+                {draft.contactAgreement ? (
+                  <Chip
+                    size="small"
+                    label={m.yes}
+                    color="success"
+                    variant="outlined"
+                    icon={<Icon>check_circle</Icon>}
+                  />
+                ) : (
+                  <Chip
+                    size="small"
+                    label={m.no}
+                    color="error"
+                    variant="outlined"
+                    icon={<Icon>remove_circle</Icon>}
+                  />
+                )}
+              </Txt>
             </Row>
           </ConfirmationStep>
         </ConfirmationStepper>
-        <StepperActions/>
+        <StepperActions
+          nextIcon="send"
+          loadingNext={_createReport.loading}
+          nextButtonLabel={draft.forwardToReponseConso ? m.confirmationBtnReponseConso : m.confirmationBtn}
+          next={next => {
+            _createReport.fetch({}, draft).then(next)
+          }}
+        />
       </div>
     </Animate>
   )

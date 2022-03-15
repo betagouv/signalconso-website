@@ -35,7 +35,7 @@ describe('Consumer', () => {
     fireEvent.click(app.container.querySelector('#btn-submit')!)
   }
 
-  describe('', function () {
+  describe('when values are pre defined', function () {
     let initial: Partial<ReportDraft2> = {
       contactAgreement: true,
       consumer: Fixture.consumer
@@ -64,9 +64,17 @@ describe('Consumer', () => {
         expect(submitted).toEqual(initial)
       })
     })
+
+    it.only('should work when refuse contact agreement', async () => {
+      fireEvent.click(app.getByText(app.m.contactAgreementFalseTitle))
+      submit()
+      await waitFor(() => {
+        expect(submitted).toEqual({initial, contactAgreement: false})
+      })
+    })
   })
 
-  describe('', function () {
+  describe('when employee consumer is true', function () {
     let initial: Partial<ReportDraft2> = {
       employeeConsumer: true
     }
@@ -84,14 +92,14 @@ describe('Consumer', () => {
       )
     })
 
-    it('initialise if there is a draft report', async () => {
+    it('should show errors when trying to submit without values', async () => {
       submit()
       await waitFor(() => {
         expect(app.container.querySelectorAll('.MuiFormControl-root .MuiFormHelperText-root.Mui-error').length).toEqual(3)
       })
     })
 
-    it('initialise if there is a draft report', async () => {
+    it('should fill input and submit', async () => {
       fireEvent.change(app.container.querySelector('[name=firstName]')!, {target: {value: Fixture.consumer.firstName}})
       fireEvent.change(app.container.querySelector('[name=lastName]')!, {target: {value: Fixture.consumer.lastName}})
       fireEvent.change(app.container.querySelector('[name=phone]')!, {target: {value: Fixture.consumer.phone}})
@@ -107,7 +115,7 @@ describe('Consumer', () => {
       })
     })
 
-    it('initialise if there is a draft report', async () => {
+    it('should not show contact agreement', async () => {
       try {
         app.getByText(app.m.contactAgreementTrueTitle)
         expect(false).toBeTruthy()

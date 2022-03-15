@@ -9,11 +9,13 @@ interface Props {
   hidePrev?: boolean
   loadingNext?: boolean
   loadingPrev?: boolean
+  nextButtonLabel?: string
+  nextIcon?: string,
   next?: (next: () => void) => void
   prev?: (prev: () => void) => void
 }
 
-export const StepperActions = ({hidePrev, hideNext, loadingNext, loadingPrev, next, prev}: Props) => {
+export const StepperActions = ({nextButtonLabel, nextIcon, hidePrev, hideNext, loadingNext, loadingPrev, next, prev}: Props) => {
   const {m} = useI18n()
   const _stepper = useStepperContext()
   return (
@@ -24,7 +26,13 @@ export const StepperActions = ({hidePrev, hideNext, loadingNext, loadingPrev, ne
         </ScButton>
       )}
       {!hideNext && (
-        <StepperActionsNext loading={loadingNext} sx={{marginLeft: 'auto'}} onClick={next ? () => next(_stepper.next) : _stepper.next} />
+        <StepperActionsNext
+          icon={nextIcon}
+          loading={loadingNext}
+          sx={{marginLeft: 'auto'}}
+          onClick={next ? () => next(_stepper.next) : _stepper.next}
+          children={nextButtonLabel}
+        />
       )}
     </Box>
   )
