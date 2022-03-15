@@ -1,35 +1,38 @@
-import {ReactNode} from 'react'
 import Link from 'next/link'
 import {siteMap} from '../siteMap'
 import {Box, useScrollTrigger, useTheme} from '@mui/material'
 import {styleUtils} from '../theme/theme'
-import {ScButton} from '../../shared/Button/Button'
+import {ScButton, ScButtonProps} from '../../shared/Button/Button'
 import {useI18n} from '../i18n'
 import {appConfig} from '../../conf/appConfig'
 import {BtnAdmin} from './BtnAdmin'
 
-interface HeaderItemProps {
-  href: string
-  children: ReactNode
+interface HeaderItemProps extends ScButtonProps {
+  href?: string
 }
 
-const HeaderItem = ({href, children}: HeaderItemProps) => {
+const HeaderItem = ({href, children, style, ...props}: HeaderItemProps) => {
   const theme = useTheme()
-  return (
-    <Link href={href}>
-      <ScButton style={{
-        padding: theme.spacing(1),
-        fontSize: styleUtils(theme).fontSize.big,
-        marginLeft: theme.spacing(1),
-        textTransform: 'unset',
-        color: 'inherit',
-        paddingTop: 0,
-        paddingBottom: 0,
-      }}>
-        {children}
-      </ScButton>
-    </Link>
+  const button = (
+    <ScButton {...props} style={{
+      ...style,
+      padding: theme.spacing(1),
+      fontSize: styleUtils(theme).fontSize.big,
+      marginLeft: theme.spacing(1),
+      textTransform: 'unset',
+      color: 'inherit',
+      paddingTop: 0,
+      paddingBottom: 0,
+    }}>
+      {children}
+    </ScButton>
   )
+  if (href) {
+    return (
+      <Link href={href}>{button}</Link>
+    )
+  }
+  return button
 }
 
 export const headerHeight = {
@@ -87,6 +90,9 @@ export const Header = () => {
           {appConfig.isDev && (
             <li><HeaderItem href={siteMap.playground}>Playground</HeaderItem></li>
           )}
+          <li><HeaderItem onClick={() => {
+            throw new Error('Sentry Frontend Error')
+          }}>Throw error</HeaderItem></li>
           <li><HeaderItem href={siteMap.index}>{m.menu_home}</HeaderItem></li>
           <li><HeaderItem href={siteMap.commentCaMarche}>{m.menu_howItWorks}</HeaderItem></li>
           <li><HeaderItem href={siteMap.centreAide}>{m.menu_help}</HeaderItem></li>
