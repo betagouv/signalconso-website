@@ -301,6 +301,7 @@ export const fr = {
     reportedCompanyName: `Nom ou enseigne de l'entreprise signalée`,
     reportedCompanyNamePlaceholder: `Ex: Boulangerie Petit Jean`,
     yourPostalCodeDesc: `SignalConso en a besoin pour alerter le bon service.`,
+    companyIdentifiedTitle: `Entreprise identifiée`,
     companyIdentityHelper: `A quoi correspondent ces identifiants ?`,
     consumerTitle: `Vos coordonnées nous permettent d'authentifier votre signalement`,
     consumerAskCodeTitle: `Saisissez le code de validation`,

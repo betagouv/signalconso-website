@@ -1,7 +1,7 @@
 import {CompanyByWebsite} from './CompanyByWebsite'
 import {CompanyDraft, CompanyKinds, CompanySearchResult, ReportDraft} from '@signal-conso/signalconso-api-sdk-js'
 import {useReportFlowContext} from '../ReportFlowContext'
-import React, {Dispatch, SetStateAction, useState} from 'react'
+import React from 'react'
 import {CompanyIdentifyBy, IdentifyBy} from './CompanyIdentifyBy'
 import {useI18n} from '../../../core/i18n'
 import {CompanySearchResultComponent} from './CompanySearchResult'
@@ -16,6 +16,10 @@ import {CompanyAskConsumerPostalCode} from './CompanyAskConsumerPostalCode'
 import {CompanyAskForeignDetails} from './CompanyAskForeignDetails'
 import {DeepPartial} from '@alexandreannic/ts-utils'
 import {CompanyByPhone} from './CompanyByPhone'
+import {Txt} from 'mui-extension'
+import {Row} from '../../../shared/Row/Row'
+import {AddressComponent} from '../../../shared/Address/Address'
+import {Panel, PanelActions, PanelBody} from '../../../shared/Panel/Panel'
 
 interface CompanyProps {
   animatePanel?: boolean
@@ -34,10 +38,10 @@ export const Company = ({animatePanel, autoScrollToPanel}: CompanyProps) => {
   const {m} = useI18n()
   if (draft.companyDraft) {
     return (
-      <>
-        {JSON.stringify(draft.companyDraft)}
-        <ScButton onClick={() => _reportFlow.setReportDraft(_ => ({..._, companyDraft: undefined}))}>{m.edit}</ScButton>
-      </>
+      <CompanyFilled
+        draft={draft}
+        onClear={() => _reportFlow.setReportDraft(_ => ({..._, companyDraft: undefined}))}
+      />
     )
   }
   return (
@@ -52,6 +56,56 @@ export const Company = ({animatePanel, autoScrollToPanel}: CompanyProps) => {
         }}
       />
     </>
+  )
+}
+
+export const CompanyFilled = ({
+  draft,
+  onClear,
+}: {
+  draft: Partial<ReportDraft2>
+  onClear: () => void
+}) => {
+  const {m} = useI18n()
+  if (!draft.companyDraft) {
+    throw new Error(`companyDraft should be defined ${JSON.stringify(draft)}`)
+  }
+  return (
+    <Panel title={m.companyIdentifiedTitle}>
+      <PanelBody>
+        <Txt size="big" bold block>{draft.companyDraft.name} {draft.companyDraft.brand ?? ''}</Txt>
+        <Txt color="hint" block sx={{mb: 2}}>
+          <Txt>SIRET:&nbsp;</Txt>
+          <Txt bold>{draft.companyDraft.siret}</Txt>
+        </Txt>
+        <Row dense icon="location_on">
+          <Txt color="hint">
+            <AddressComponent address={draft.companyDraft.address}/>
+          </Txt>
+        </Row>
+        {draft.companyDraft.website && (
+          <Row dense icon="link">
+            <Txt color="hint">{draft.companyDraft.website}</Txt>
+          </Row>
+        )}
+        {draft.companyDraft.phone && (
+          <Row dense icon="phone">
+            <Txt color="hint">{draft.companyDraft.phone}</Txt>
+          </Row>
+        )}
+      </PanelBody>
+      <PanelActions>
+        <ScButton
+          sx={{mt: 2}}
+          color="primary"
+          variant="contained"
+          onClick={onClear}
+          icon="edit"
+        >
+          {m.edit}
+        </ScButton>
+      </PanelActions>
+    </Panel>
   )
 }
 

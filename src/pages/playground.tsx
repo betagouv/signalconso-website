@@ -1,9 +1,7 @@
 import React from 'react'
 import {Page} from '../shared/Page/Page'
-import {PlaygroundDetails} from '../feature/Playground/PlaygroundDetails'
-import {PlaygroundCompany} from '../feature/Playground/PlaygroundCompany'
-import {PlaygroundConsumer} from '../feature/Playground/PlaygroundConsumer'
-import {PlaygroundConfirmation} from '../feature/Playground/PlaygroundConfirmation'
+import {CompanyFilled} from '../feature/Report/Company/Company'
+import {genCompany} from '../test/fixture'
 
 const Playground = () => {
   return (
@@ -11,7 +9,14 @@ const Playground = () => {
       {/*<PlaygroundDetails/>*/}
       {/*<PlaygroundCompany/>*/}
       {/*<PlaygroundConsumer/>*/}
-      <PlaygroundConfirmation/>
+      {/*<PlaygroundConfirmation/>*/}
+      <CompanyFilled draft={{
+        companyDraft: {
+          ...genCompany(),
+          website: 'http://blabla.fr',
+          phone: '0987654321',
+        }
+      }} onClear={console.log}/>
     </Page>
   )
 }

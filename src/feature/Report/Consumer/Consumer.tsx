@@ -18,6 +18,7 @@ import {ReportDraft2} from '../../../core/model/ReportDraft'
 import {DeepPartial} from '@alexandreannic/ts-utils'
 import {ReportDraft, ReportTag} from '@signal-conso/signalconso-api-sdk-js'
 import {appConfig} from '../../../conf/appConfig'
+import {Row} from '../../../shared/Row/Row'
 
 interface ConsumerForm {
   firstName: string
@@ -26,29 +27,28 @@ interface ConsumerForm {
   contactAgreement?: boolean
   phone?: string
 }
-
-const Row = ({
-  icon,
-  children,
-  sx,
-  ...props
-}: {
-  icon?: string
-} & BoxProps) => {
-  return (
-    <Box sx={{display: 'flex', '& + &': {mt: 2}, ...sx}} {...props}>
-      <Icon sx={{
-        mr: 2,
-        mt: .5,
-        minWidth: 30,
-        textAlign: 'center',
-        color: t => t.palette.text.disabled
-      }}>{icon}</Icon>
-      <Box sx={{width: '100%'}}>{children}</Box>
-    </Box>
-  )
-}
-
+//
+// const Row = ({
+//   icon,
+//   children,
+//   sx,
+//   ...props
+// }: {
+//   icon?: string
+// } & BoxProps) => {
+//   return (
+//     <Box sx={{display: 'flex', '& + &': {mt: 2}, ...sx}} {...props}>
+//       <Icon sx={{
+//         mr: 2,
+//         mt: .5,
+//         minWidth: 30,
+//         textAlign: 'center',
+//         color: t => t.palette.text.disabled
+//       }}>{icon}</Icon>
+//       <Box sx={{width: '100%'}}>{children}</Box>
+//     </Box>
+//   )
+// }
 
 export const Consumer = () => {
   const _stepper = useStepperContext()

@@ -4,7 +4,7 @@ import {Alert, Txt} from 'mui-extension'
 import {Anomaly, FileOrigin, ReportDraft} from '@signal-conso/signalconso-api-sdk-js'
 import {ConfirmationStep, ConfirmationStepper} from './ConfirmationStepper'
 import {Animate} from 'shared/Animate/Animate'
-import {Box, BoxProps, Chip, Icon} from '@mui/material'
+import {Box, Chip, Icon} from '@mui/material'
 import {AnomalyImage} from 'shared/AnomalyCard/AnomalyImage'
 import {AddressComponent} from 'shared/Address/Address'
 import {StepperActions} from 'shared/Stepper/StepperActions'
@@ -13,15 +13,17 @@ import {ReportFiles} from 'shared/UploadFile/ReportFiles'
 import {useEffectFn, useFetcher} from '@alexandreannic/react-hooks-lib'
 import {useApiSdk} from 'core/context/ApiSdk'
 import {useToast} from 'core/toast'
+import {Row} from '../../../shared/Row/Row'
+import React from 'react'
 
-const Row = ({icon, dense, children, ...props}: {dense?: boolean, icon: string} & BoxProps) => {
-  return (
-    <Box sx={{display: 'flex', alignItems: 'center', mb: dense ? 1 : 2}} {...props}>
-      <Icon sx={{mr: dense ? 1 : 2, color: t => t.palette.text.disabled}}>{icon}</Icon>
-      {children}
-    </Box>
-  )
-}
+// const Row = ({icon, dense, children, ...props}: {dense?: boolean, icon: string} & BoxProps) => {
+//   return (
+//     <Box sx={{display: 'flex', alignItems: 'center', mb: dense ? 1 : 2}} {...props}>
+//       <Icon sx={{mr: dense ? 1 : 2, color: t => t.palette.text.disabled}}>{icon}</Icon>
+//       {children}
+//     </Box>
+//   )
+// }
 
 export const Confirmation = ({}: {}) => {
   const _reportFlow = useReportFlowContext()
@@ -82,15 +84,25 @@ export const _Confirmation = ({
           </ConfirmationStep>
           <ConfirmationStep title={m.step_company}>
             <Txt size="big" bold block>{draft.companyDraft.name} {draft.companyDraft.brand ?? ''}</Txt>
-            <Txt color="hint" block sx={{mb: .5}}>
+            <Txt color="hint" block sx={{mb: 1}}>
               <Txt>SIRET:&nbsp;</Txt>
               <Txt bold>{draft.companyDraft.siret}</Txt>
             </Txt>
-            <Row icon="location_on">
+            <Row dense icon="location_on">
               <Txt color="hint">
                 <AddressComponent address={draft.companyDraft.address}/>
               </Txt>
             </Row>
+            {draft.companyDraft.website && (
+              <Row dense icon="link">
+                <Txt color="hint">{draft.companyDraft.website}</Txt>
+              </Row>
+            )}
+            {draft.companyDraft.phone && (
+              <Row dense icon="phone">
+                <Txt color="hint">{draft.companyDraft.phone}</Txt>
+              </Row>
+            )}
           </ConfirmationStep>
           <ConfirmationStep title={m.step_consumer}>
             <Row icon="person">

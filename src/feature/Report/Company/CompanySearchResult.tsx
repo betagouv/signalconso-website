@@ -23,7 +23,7 @@ interface RowProps extends BoxProps {
   icon?: string
 }
 
-export const Row = ({icon, children, sx, ...props}: RowProps) => {
+const Row = ({icon, children, sx, ...props}: RowProps) => {
   return (
     <Box {...props} sx={{
       color: t => t.palette.text.secondary,
