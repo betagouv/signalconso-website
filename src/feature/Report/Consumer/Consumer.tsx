@@ -166,7 +166,11 @@ export const _Consumer = ({
                 name="contactAgreement"
                 defaultValue={draft.contactAgreement}
                 rules={{
-                  required: {value: true, message: m.required}
+                  validate: {
+                    isChecked: value => {
+                      return value !== undefined || m.required
+                    }
+                  },
                 }}
                 render={({field}) => (
                   <ScRadioGroup
