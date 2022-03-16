@@ -54,7 +54,21 @@ export const CompanySearchByIdentity = ({children}: Props) => {
           <form onSubmit={handleSubmit(search)}>
             <PanelBody>
               <FormLayout required label={m.companyIdentityLabel}>
-                <AccordionInline label={<Txt size="small">{m.companyIdentityHelper}</Txt>}>
+                <AccordionInline sx={{mb: .5}} label={<Txt size="small">{m.companyIdentityHelperWhere}</Txt>}>
+                  <Txt color="hint" size="small" dangerouslySetInnerHTML={{__html: m.companyIdentityHelperWhereDesc}}/>
+                  <img
+                    src="/image/siret-helper/siret-helper-footer.png"
+                    alt="consultation-pro-illustration"
+                    style={{width: '100%'}}
+                  />
+                  <Txt color="hint" size="small" dangerouslySetInnerHTML={{__html: m.companyIdentityHelperWhereDesc2}}/>
+                  <img
+                    src="/image/siret-helper/siret-helper-mentions_legales.png"
+                    alt="consultation-pro-illustration"
+                    style={{width: '100%'}}
+                  />
+                </AccordionInline>
+                <AccordionInline sx={{mb: .5}} label={<Txt size="small">{m.companyIdentityHelper}</Txt>}>
                   <Txt color="hint" size="small" dangerouslySetInnerHTML={{__html: m.companyIdentityHelperDesc}}/>
                 </AccordionInline>
                 <ScInput

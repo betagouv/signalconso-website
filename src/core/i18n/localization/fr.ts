@@ -302,7 +302,16 @@ export const fr = {
     reportedCompanyNamePlaceholder: `Ex: Boulangerie Petit Jean`,
     yourPostalCodeDesc: `SignalConso en a besoin pour alerter le bon service.`,
     companyIdentifiedTitle: `Entreprise identifiée`,
+    companyIdentityHelperWhere: `Où trouver ces identifiants ?`,
     companyIdentityHelper: `A quoi correspondent ces identifiants ?`,
+    companyIdentityHelperWhereDesc: `
+      Vous pouvez retrouver ce numéro sur un devis, une facture ou un ticket de caisse émis par l’entreprise et également dans les mentions légales de son site internet.<br/>
+      <b>Comment faire ?</b><br/>
+      Descendez en bas de la page internet d’accueil du site en question :
+    `,
+    companyIdentityHelperWhereDesc2: `
+      Cliquez sur le texte « Mentions légales », une nouvelle page va s’ouvrir sur laquelle vous trouverez facilement ce numéro :
+    `,
     consumerTitle: `Vos coordonnées nous permettent d'authentifier votre signalement`,
     consumerAskCodeTitle: `Saisissez le code de validation`,
     consumerAskCodeDesc: (email: string) => `Un email vous a été envoyé à l'adresse <b>${email}</b>`,
