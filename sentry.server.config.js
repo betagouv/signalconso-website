@@ -5,10 +5,10 @@
 import * as Sentry from '@sentry/nextjs'
 import {appConfig} from './src/conf/appConfig'
 
-if (SENTRY_DSN) {
+if (appConfig.sentry_dns) {
   Sentry.init({
     dsn: appConfig.sentry_dns,
-    tracesSampleRate: appConfig.sentry_traceRate,
+    tracesSampleRate: appConfig.sentry_traceRate ?? 1,
     // ...
     // Note: if you want to override the automatic release value, do not set a
     // `release` value here - use the environment variable `SENTRY_RELEASE`, so
