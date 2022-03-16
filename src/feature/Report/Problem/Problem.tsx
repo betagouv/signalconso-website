@@ -9,6 +9,8 @@ import {StepperActions} from 'shared/Stepper/StepperActions'
 import {ProblemInformation} from './ProblemInformation'
 import {useI18n} from 'core/i18n'
 import {ProblemContratualDisputeWarnPanel} from './ProblemContratualDisputeWarnPanel'
+import {EventCategories, ReportEventActions} from '../../../core/analytic/analytic'
+import {useAnalyticContext} from '../../../core/analytic/AnalyticContext'
 
 interface Props {
   anomaly: Anomaly
@@ -17,11 +19,13 @@ interface Props {
 export const Problem = ({
   anomaly,
 }: Props) => {
+  const _analytic = useAnalyticContext()
   const {m} = useI18n()
   const displayReponseConso = useMemo(() => Math.random() * 100 < appConfig.reponseConsoDisplayRate, [])
   const {reportDraft, setReportDraft, clearReportDraft} = useReportFlowContext()
   useEffect(() => {
     if (anomaly.category !== reportDraft.category) {
+      _analytic.trackEvent(EventCategories.report, ReportEventActions.validateCategory, anomaly.category)
       clearReportDraft()
       setReportDraft({category: anomaly.category})
     }

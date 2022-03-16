@@ -24,9 +24,21 @@ interface ScAppProps extends AppProps {
 const clientSideEmotionCache = createEmotionCache()
 
 const App = ({emotionCache = clientSideEmotionCache, ...props}: ScAppProps) => {
+  useEffect(() => {
+    if(appConfig.matomo_siteId && appConfig.matomo_url) {
+      console.log('init MATOMO----')
+      Matomo.init({
+        siteId: appConfig.matomo_siteId,
+        url: appConfig.matomo_url,
+      })
+    } else {
+      console.warn(`Matomo config not set.`)
+    }
+  }, [])
   return (
     <Provide
       providers={[
+        _ => <AnalyticProvider children={_}/>,
         _ => <CacheProvider value={emotionCache} children={_}/>,
         _ => <StyledEngineProvider children={_}/>,
         _ => <ThemeProvider theme={muiTheme()} children={_}/>,
@@ -54,19 +66,22 @@ const _App = ({Component, pageProps}: AppProps) => {
     }
   })
   return (
-    <div className="root">
-      {/*<Head>*/}
-      {/*  <meta name="theme-color" content={theme.palette.primary.main}/>*/}
-      {/*</Head>*/}
-      <Box sx={{
-        flex: 1,
-        marginTop: `${headerHeight.normal}px`
-      }}>
-        <Component {...pageProps} />
-      </Box>
-      <Header/>
-      <Footer/>
-    </div>
+    <>
+      <Script type="text/javascript" src="https://tag.aticdn.net/618165/smarttag.js"/>
+      <div className="root">
+        {/*<Head>*/}
+        {/*  <meta name="theme-color" content={theme.palette.primary.main}/>*/}
+        {/*</Head>*/}
+        <Box sx={{
+          flex: 1,
+          marginTop: `${headerHeight.normal}px`
+        }}>
+          <Component {...pageProps} />
+        </Box>
+        <Header/>
+        <Footer/>
+      </div>
+    </>
   )
 }
 

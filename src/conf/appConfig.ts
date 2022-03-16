@@ -13,6 +13,8 @@ enum Env {
   NEXT_PUBLIC_SENTRY_DNS = 'NEXT_PUBLIC_SENTRY_DNS',
   NEXT_PUBLIC_SENTRY_TRACE_RATE = 'NEXT_PUBLIC_SENTRY_TRACE_RATE',
   NEXT_PUBLIC_REPONSECONSO_DISPLAY_PERCENTAGE = 'NEXT_PUBLIC_REPONSECONSO_DISPLAY_PERCENTAGE',
+  NEXT_PUBLIC_MATOMO_SITE_ID = 'NEXT_PUBLIC_MATOMO_SITE_ID',
+  NEXT_PUBLIC_MATOMO_URL = 'NEXT_PUBLIC_MATOMO_URL',
 }
 
 const persistedTempEnvVariablesForFront: {[key in Env]: string | undefined} = {
@@ -26,6 +28,8 @@ const persistedTempEnvVariablesForFront: {[key in Env]: string | undefined} = {
   NEXT_PUBLIC_SENTRY_DNS: process.env.NEXT_PUBLIC_SENTRY_DNS,
   NEXT_PUBLIC_SENTRY_TRACE_RATE: process.env.NEXT_PUBLIC_SENTRY_TRACE_RATE,
   NEXT_PUBLIC_REPONSECONSO_DISPLAY_PERCENTAGE: process.env.NEXT_PUBLIC_REPONSECONSO_DISPLAY_PERCENTAGE,
+  NEXT_PUBLIC_MATOMO_SITE_ID: process.env.NEXT_PUBLIC_MATOMO_SITE_ID,
+  NEXT_PUBLIC_MATOMO_URL: process.env.NEXT_PUBLIC_MATOMO_URL,
 }
 
 const map = _env(persistedTempEnvVariablesForFront)
@@ -45,6 +49,8 @@ export const appConfig = {
   contactEmail: 'support@signal.conso.gouv.fr',
   sentry_dns: map()(Env.NEXT_PUBLIC_SENTRY_DNS),
   sentry_traceRate: map(int, defaultValue(0.5))(Env.NEXT_PUBLIC_SENTRY_TRACE_RATE),
+  matomo_siteId: map()(Env.NEXT_PUBLIC_MATOMO_SITE_ID),
+  matomo_url: map()(Env.NEXT_PUBLIC_MATOMO_URL),
   useHashRouter: true,
   apiDateFormat: 'dd/MM/yyyy',
   browserDateFormat: 'yyyy-MM-dd',

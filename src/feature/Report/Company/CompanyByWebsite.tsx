@@ -11,6 +11,8 @@ import {useToast} from 'core/toast'
 import {Box, BoxProps, Icon, Tooltip} from '@mui/material'
 import {Panel, PanelBody} from 'shared/Panel/Panel'
 import {Animate} from 'shared/Animate/Animate'
+import {useAnalyticContext} from '../../../core/analytic/AnalyticContext'
+import {CompanySearchEventActions, EventCategories} from '../../../core/analytic/analytic'
 
 interface Form {
   website: string
@@ -26,6 +28,7 @@ export const CompanyByWebsite = ({value, children, ...props}: Props) => {
   const {apiSdk} = useApiSdk()
   const _searchCompany = useFetcher(apiSdk.company.searchCompaniesByUrl)
   const _searchCountry = useFetcher(apiSdk.company.searchForeignCompaniesByUrl)
+  const _analytic = useAnalyticContext()
   const {toastError} = useToast()
   const {
     getValues,
@@ -42,6 +45,7 @@ export const CompanyByWebsite = ({value, children, ...props}: Props) => {
     if (res.length === 0) {
       await _searchCountry.fetch({clean: true, force: true}, form.website)
     }
+    _analytic.trackEvent(EventCategories.companySearch, CompanySearchEventActions.searchByUrl, form.website);
   }
 
   useEffectFn(_searchCompany.error, toastError)
