@@ -363,7 +363,12 @@ export const _Details = ({
               <Txt size="small" dangerouslySetInnerHTML={{__html: m.attachmentsDesc2}}/>
             </Alert>
 
-            <ReportFiles files={uploadedFiles} fileOrigin={FileOrigin.Consumer} onNewFile={f => setUploadedFiles(_ => [...(_ ?? []), f])}/>
+            <ReportFiles
+              files={uploadedFiles}
+              fileOrigin={FileOrigin.Consumer}
+              onRemoveFile={f => setUploadedFiles(files => files?.filter(_ => _.id !== f.id))}
+              onNewFile={f => setUploadedFiles(_ => [...(_ ?? []), f])}
+            />
           </PanelBody>
         </Panel>
       </Animate>
