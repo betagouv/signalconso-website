@@ -1,7 +1,7 @@
 import {appConfig} from '../../conf/appConfig'
 import classNames from 'classnames'
 
-export const serialiseJsonForStupidNextJs = <T extends object>(t: T): T => {
+export const serializeJsonForStupidNextJs = <T extends object>(t: T): T => {
   return appConfig.isDev ? JSON.parse(JSON.stringify(t)) : JSON.parse(JSON.stringify(t))
 }
 

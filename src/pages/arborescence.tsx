@@ -2,7 +2,7 @@ import {Page} from 'shared/Page/Page'
 import {GetStaticProps} from 'next'
 import {apiSdk} from 'core/apiSdk'
 import {sortBy} from 'core/lodashNamedExport'
-import {serialiseJsonForStupidNextJs} from 'core/helper/utils'
+import {serializeJsonForStupidNextJs} from 'core/helper/utils'
 import {Anomaly, AnomalyClient, DetailInputType, Subcategory, SubcategoryBase, SubcategoryInformation, SubcategoryInput} from '@signal-conso/signalconso-api-sdk-js'
 import Head from 'next/head'
 import {pageDefinitions} from 'core/pageDefinition'
@@ -19,7 +19,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     .then(res => res.filter(_ => !_.hidden))
     .then(res => sortBy(res, _ => _.id))
   return {
-    props: serialiseJsonForStupidNextJs({
+    props: serializeJsonForStupidNextJs({
       anomalies
     }),
   }
