@@ -12,6 +12,10 @@ import createEmotionCache from 'core/createEmotionCache'
 import {ToastProvider} from 'mui-extension'
 import {ReportFlowProvider} from 'feature/Report/ReportFlowContext'
 import {ConstantProvider} from 'core/context/ConstantContext'
+import {useEffect} from 'react'
+import {appConfig} from '../conf/appConfig'
+import {Integrations} from '@sentry/tracing'
+import * as Sentry from '@sentry/react'
 
 interface ScAppProps extends AppProps {
   emotionCache?: EmotionCache;
@@ -40,6 +44,15 @@ const App = ({emotionCache = clientSideEmotionCache, ...props}: ScAppProps) => {
 }
 
 const _App = ({Component, pageProps}: AppProps) => {
+  useEffect(() => {
+    if (appConfig.sentry_dns) {
+      Sentry.init({
+        dsn: appConfig.sentry_dns,
+        integrations: [new Integrations.BrowserTracing()],
+        tracesSampleRate: appConfig.sentry_traceRate,
+      })
+    }
+  })
   return (
     <div className="root">
       {/*<Head>*/}
