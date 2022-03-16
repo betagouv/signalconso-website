@@ -1,6 +1,6 @@
 import {GetStaticPaths, GetStaticProps} from 'next'
 import {apiSdk} from 'core/apiSdk'
-import {serialiseJsonForStupidNextJs} from 'core/helper/utils'
+import {serializeJsonForStupidNextJs} from 'core/helper/utils'
 import {Anomaly, ReportDraft} from '@signal-conso/signalconso-api-sdk-js'
 import {ReportFlow} from 'feature/Report/ReportFlow'
 import {useReportFlowContext} from 'feature/Report/ReportFlowContext'
@@ -22,7 +22,7 @@ export const getStaticProps: GetStaticProps = async ({params}) => {
   )
 
   return {
-    props: serialiseJsonForStupidNextJs({anomaly,}),
+    props: serializeJsonForStupidNextJs({anomaly,}),
   }
 }
 

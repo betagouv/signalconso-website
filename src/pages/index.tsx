@@ -6,7 +6,7 @@ import {Box, Divider, Grid} from '@mui/material'
 import {apiSdk} from 'core/apiSdk'
 import {Anomaly} from '@signal-conso/signalconso-api-sdk-js'
 import {AnomalyCard} from 'shared/AnomalyCard/AnomalyCard'
-import {serialiseJsonForStupidNextJs} from 'core/helper/utils'
+import {serializeJsonForStupidNextJs} from 'core/helper/utils'
 import {SxProps} from '@mui/system'
 import {ScButton} from 'shared/Button/Button'
 import {useI18n} from 'core/i18n'
@@ -29,7 +29,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     .then(res => res.filter(_ => !_.hidden))
     .then(res => sortBy(res, _ => _.id))
   return {
-    props: serialiseJsonForStupidNextJs({
+    props: serializeJsonForStupidNextJs({
       anomalies
     }),
   }
