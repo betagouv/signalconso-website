@@ -1,9 +1,9 @@
 import {Box, BoxProps, Tab, Tabs} from '@mui/material'
-import {Page} from '../shared/Page/Page'
+import {Page} from 'shared/Page/Page'
 import {useState} from 'react'
 import {fnSwitch} from '@alexandreannic/ts-utils/lib/common'
 import Head from 'next/head'
-import {pageDefinitions} from '../core/pageDefinition'
+import {pageDefinitions} from 'core/pageDefinition'
 
 const a11yProps = (index: number) => {
   return {

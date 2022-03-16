@@ -1,11 +1,11 @@
-import {useI18n} from '../../../core/i18n'
+import {useI18n} from 'core/i18n'
 import {useForm} from 'react-hook-form'
-import {Panel, PanelActions, PanelBody} from '../../../shared/Panel/Panel'
-import {ScInput} from '../../../shared/Input/ScInput'
-import {FormLayout} from '../../../shared/FormLayout/FormLayout'
+import {Panel, PanelActions, PanelBody} from 'shared/Panel/Panel'
+import {ScInput} from 'shared/Input/ScInput'
+import {FormLayout} from 'shared/FormLayout/FormLayout'
 import React from 'react'
-import {ScButton} from '../../../shared/Button/Button'
-import {Animate} from '../../../shared/Animate/Animate'
+import {ScButton} from 'shared/Button/Button'
+import {Animate} from 'shared/Animate/Animate'
 
 interface Form {
   street: string

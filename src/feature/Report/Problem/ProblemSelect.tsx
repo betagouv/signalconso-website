@@ -1,8 +1,8 @@
 import {Box} from '@mui/material'
-import {ScRadioGroup, ScRadioGroupItem} from '../../../shared/RadioGroup'
+import {ScRadioGroup, ScRadioGroupItem} from 'shared/RadioGroup'
 import React from 'react'
-import {Panel, PanelBody, PanelProps} from '../../../shared/Panel/Panel'
-import {Animate} from '../../../shared/Animate/Animate'
+import {Panel, PanelBody, PanelProps} from 'shared/Panel/Panel'
+import {Animate} from 'shared/Animate/Animate'
 
 interface ProblemSelectProps<T> extends Omit<PanelProps, 'onChange'> {
   animatePanel?: boolean

@@ -1,8 +1,8 @@
 import React, {Dispatch, ReactNode, SetStateAction, useContext} from 'react'
 import {usePersistentState} from 'react-persistent-state'
-import {ReportDraft2} from '../../core/model/ReportDraft'
+import {ReportDraft2} from 'core/model/ReportDraft'
 import {useFetcher} from '@alexandreannic/react-hooks-lib'
-import {useApiSdk} from '../../core/context/ApiSdk'
+import {useApiSdk} from 'core/context/ApiSdk'
 import {UseFetcher} from '@alexandreannic/react-hooks-lib/lib'
 import {SignalConsoPublicSdk} from '@signal-conso/signalconso-api-sdk-js'
 

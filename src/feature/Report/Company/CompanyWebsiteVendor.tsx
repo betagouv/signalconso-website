@@ -1,11 +1,11 @@
-import {Panel, PanelActions, PanelBody} from '../../../shared/Panel/Panel'
-import {Animate} from '../../../shared/Animate/Animate'
-import {useI18n} from '../../../core/i18n'
+import {Panel, PanelActions, PanelBody} from 'shared/Panel/Panel'
+import {Animate} from 'shared/Animate/Animate'
+import {useI18n} from 'core/i18n'
 import {Alert} from 'mui-extension'
-import {ScInput} from '../../../shared/Input/ScInput'
-import {FormLayout} from '../../../shared/FormLayout/FormLayout'
+import {ScInput} from 'shared/Input/ScInput'
+import {FormLayout} from 'shared/FormLayout/FormLayout'
 import {useForm} from 'react-hook-form'
-import {ScButton} from '../../../shared/Button/Button'
+import {ScButton} from 'shared/Button/Button'
 
 interface Form {
   websiteVendor: string

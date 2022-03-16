@@ -1,13 +1,13 @@
 import {Box, Card, LinearProgress, Slide} from '@mui/material'
 import {useReportFlowContext} from '../Report/ReportFlowContext'
-import {AnomalyImage} from '../../shared/AnomalyCard/AnomalyImage'
+import {AnomalyImage} from 'shared/AnomalyCard/AnomalyImage'
 import {useMemo} from 'react'
-import {useI18n} from '../../core/i18n'
+import {useI18n} from 'core/i18n'
 import {Txt} from 'mui-extension'
-import {ScButton} from '../../shared/Button/Button'
+import {ScButton} from 'shared/Button/Button'
 import {reportCurrentStep} from '../../pages/[reportpath]'
 import Link from 'next/link'
-import {ReportStepHelper} from '../../core/reportStep'
+import {ReportStepHelper} from 'core/reportStep'
 
 export const ReportStartedAlert = () => {
   const _report = useReportFlowContext()

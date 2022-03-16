@@ -1,4 +1,4 @@
-import {ScButton} from '../../shared/Button/Button'
+import {ScButton} from 'shared/Button/Button'
 import {ButtonProps} from '@mui/material'
 import {useI18n} from '../i18n'
 

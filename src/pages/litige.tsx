@@ -1,10 +1,10 @@
 import Head from 'next/head'
-import {pageDefinitions} from '../core/pageDefinition'
-import {Page} from '../shared/Page/Page'
-import {AccordionPanel, AccordionPanels} from '../shared/AccordionPanel/AccordionPanel'
-import {externalLinks} from '../core/externalLinks'
+import {pageDefinitions} from 'core/pageDefinition'
+import {Page} from 'shared/Page/Page'
+import {AccordionPanel, AccordionPanels} from 'shared/AccordionPanel/AccordionPanel'
+import {externalLinks} from 'core/externalLinks'
 import {Alert, Txt} from 'mui-extension'
-import {Panel} from '../shared/Panel/Panel'
+import {Panel} from 'shared/Panel/Panel'
 import {Icon} from '@mui/material'
 
 const Litige = () => {

@@ -1,7 +1,7 @@
 import {Fragment, ReactNode} from 'react'
 import {useEffectFn, useMemoFn} from '@alexandreannic/react-hooks-lib'
-import {last} from '../../core/lodashNamedExport'
-import {map} from '../../core/helper/utils'
+import {last} from 'core/lodashNamedExport'
+import {map} from 'core/helper/utils'
 
 export interface TreeStepperNode {
   id?: string

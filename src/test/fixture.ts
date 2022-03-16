@@ -11,7 +11,7 @@ import {
   Subcategory
 } from '@signal-conso/signalconso-api-sdk-js'
 import anomalies from '@signal-conso/signalconso-api-sdk-js/lib/client/anomaly/yml/anomalies.json'
-import {ReportStep, ReportStepHelper} from '../core/reportStep'
+import {ReportStep, ReportStepHelper} from 'core/reportStep'
 import randomstring from 'randomstring'
 
 export class Fixture {

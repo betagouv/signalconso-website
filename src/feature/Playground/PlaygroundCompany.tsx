@@ -1,9 +1,9 @@
 import {_Company} from '../Report/Company/Company'
 import {useState} from 'react'
 import {CompanyKinds} from '@signal-conso/signalconso-api-sdk-js'
-import {ReportDraft2} from '../../core/model/ReportDraft'
+import {ReportDraft2} from 'core/model/ReportDraft'
 import {Card, CardContent, MenuItem, Select, useTheme} from '@mui/material'
-import {styleUtils} from '../../core/theme/theme'
+import {styleUtils} from 'core/theme/theme'
 import {Enum} from '@alexandreannic/ts-utils'
 
 export const PlaygroundCompany = () => {

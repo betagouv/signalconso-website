@@ -1,10 +1,10 @@
-import {Panel, PanelBody} from '../shared/Panel/Panel'
-import {Page} from '../shared/Page/Page'
+import {Panel, PanelBody} from 'shared/Panel/Panel'
+import {Page} from 'shared/Page/Page'
 import Link from 'next/link'
-import {siteMap} from '../core/siteMap'
+import {siteMap} from 'core/siteMap'
 import Head from 'next/head'
-import {pageDefinitions} from '../core/pageDefinition'
-import {externalLinks} from '../core/externalLinks'
+import {pageDefinitions} from 'core/pageDefinition'
+import {externalLinks} from 'core/externalLinks'
 
 const Accessibilite = () => {
   return (

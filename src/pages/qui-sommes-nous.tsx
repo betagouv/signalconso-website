@@ -2,10 +2,10 @@ import Head from 'next/head'
 import {Panel, PanelBody} from 'shared/Panel/Panel'
 import {pageDefinitions} from 'core/pageDefinition'
 import {Page} from 'shared/Page/Page'
-import {MemberCard} from '../feature/MemberCard/MemberCard'
+import {MemberCard} from 'feature/MemberCard/MemberCard'
 import {Grid} from '@mui/material'
 import Link from 'next/link'
-import {siteMap} from '../core/siteMap'
+import {siteMap} from 'core/siteMap'
 
 export interface Member {
   name: string

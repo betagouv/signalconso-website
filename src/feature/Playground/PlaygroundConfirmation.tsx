@@ -1,10 +1,10 @@
 import {useEffect, useState} from 'react'
 import {Anomaly, ReportDraft} from '@signal-conso/signalconso-api-sdk-js'
 import {_Confirmation} from '../Report/Confirmation/Confirmation'
-import {ReportStep} from '../../core/reportStep'
-import {apiSdk} from '../../core/apiSdk'
+import {ReportStep} from 'core/reportStep'
+import {apiSdk} from 'core/apiSdk'
 import {useTheme} from '@mui/material'
-import {styleUtils} from '../../core/theme/theme'
+import {styleUtils} from 'core/theme/theme'
 import {Fixture} from '../../test/fixture'
 
 export const PlaygroundConfirmation = () => {

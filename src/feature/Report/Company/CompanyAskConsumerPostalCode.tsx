@@ -1,11 +1,11 @@
-import {Panel, PanelActions, PanelBody} from '../../../shared/Panel/Panel'
-import {FormLayout} from '../../../shared/FormLayout/FormLayout'
-import {ScInput} from '../../../shared/Input/ScInput'
-import {ScButton} from '../../../shared/Button/Button'
+import {Panel, PanelActions, PanelBody} from 'shared/Panel/Panel'
+import {FormLayout} from 'shared/FormLayout/FormLayout'
+import {ScInput} from 'shared/Input/ScInput'
+import {ScButton} from 'shared/Button/Button'
 import React from 'react'
-import {useI18n} from '../../../core/i18n'
+import {useI18n} from 'core/i18n'
 import {useForm} from 'react-hook-form'
-import {Animate} from '../../../shared/Animate/Animate'
+import {Animate} from 'shared/Animate/Animate'
 
 interface Form {
   consumerPostalCode: string

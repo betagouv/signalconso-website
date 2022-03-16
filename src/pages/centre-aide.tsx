@@ -1,11 +1,11 @@
-import {Page} from '../shared/Page/Page'
-import {CentreAideConso} from '../feature/CentreAide/CentreAideConso'
+import {Page} from 'shared/Page/Page'
+import {CentreAideConso} from 'feature/CentreAide/CentreAideConso'
 import {useState} from 'react'
 import {Tab, Tabs} from '@mui/material'
 import {fnSwitch} from '@alexandreannic/ts-utils/lib/common'
-import {CentreAidePro} from '../feature/CentreAide/CentreAidePro'
+import {CentreAidePro} from 'feature/CentreAide/CentreAidePro'
 import Head from 'next/head'
-import {pageDefinitions} from '../core/pageDefinition'
+import {pageDefinitions} from 'core/pageDefinition'
 
 const a11yProps = (index: number) => {
   return {

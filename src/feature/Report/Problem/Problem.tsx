@@ -7,7 +7,7 @@ import {Step, Stepper} from './Stepper'
 import {ProblemSelect} from './ProblemSelect'
 import {StepperActions} from 'shared/Stepper/StepperActions'
 import {ProblemInformation} from './ProblemInformation'
-import {useI18n} from '../../../core/i18n'
+import {useI18n} from 'core/i18n'
 import {ProblemContratualDisputeWarnPanel} from './ProblemContratualDisputeWarnPanel'
 
 interface Props {

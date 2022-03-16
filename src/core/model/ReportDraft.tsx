@@ -1,6 +1,6 @@
 import {Address, Anomaly, CompanyDraft, DetailInput, DetailInputValue, ReportDraft, ReportDraftConsumer} from '@signal-conso/signalconso-api-sdk-js'
-import {getDraftReportInputs} from '../../feature/Report/Details/draftReportInputs'
-import {isSpecifyInputName, SpecifyFormUtils} from '../../feature/Report/Details/Details'
+import {getDraftReportInputs} from 'feature/Report/Details/draftReportInputs'
+import {isSpecifyInputName, SpecifyFormUtils} from 'feature/Report/Details/Details'
 import {fromNullable} from 'fp-ts/lib/Option'
 import {DeepPartial} from '@alexandreannic/ts-utils'
 

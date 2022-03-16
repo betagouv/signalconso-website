@@ -1,16 +1,16 @@
-import {ScInput} from '../../../shared/Input/ScInput'
+import {ScInput} from 'shared/Input/ScInput'
 import {Txt} from 'mui-extension'
 import React, {ReactNode} from 'react'
-import {useI18n} from '../../../core/i18n'
-import {useApiSdk} from '../../../core/context/ApiSdk'
-import {ScButton} from '../../../shared/Button/Button'
+import {useI18n} from 'core/i18n'
+import {useApiSdk} from 'core/context/ApiSdk'
+import {ScButton} from 'shared/Button/Button'
 import {useForm} from 'react-hook-form'
 import {CompanySearchResult} from '@signal-conso/signalconso-api-sdk-js'
 import {useEffectFn, useFetcher} from '@alexandreannic/react-hooks-lib'
-import {useToast} from '../../../core/toast'
+import {useToast} from 'core/toast'
 import {Box, BoxProps} from '@mui/material'
-import {Panel, PanelBody} from '../../../shared/Panel/Panel'
-import {Animate} from '../../../shared/Animate/Animate'
+import {Panel, PanelBody} from 'shared/Panel/Panel'
+import {Animate} from 'shared/Animate/Animate'
 
 interface Form {
   website: string

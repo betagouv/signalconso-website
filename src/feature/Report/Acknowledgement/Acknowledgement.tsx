@@ -1,4 +1,4 @@
-import {Panel, PanelBody} from '../../../shared/Panel/Panel'
+import {Panel, PanelBody} from 'shared/Panel/Panel'
 import {Txt} from 'mui-extension'
 import {Box, BoxProps, Icon} from '@mui/material'
 import {useReportFlowContext} from '../ReportFlowContext'
@@ -6,10 +6,10 @@ import {Country, Report, ReportDraft, ReportTag} from '@signal-conso/signalconso
 import {useEffectFn, useMemoFn} from '@alexandreannic/react-hooks-lib'
 import {useEffect, useMemo} from 'react'
 import {fnSwitch} from '@alexandreannic/ts-utils/lib/common'
-import {useConstantContext} from '../../../core/context/ConstantContext'
-import {useToast} from '../../../core/toast'
-import {Row} from '../../../shared/Row/Row'
-import {externalLinks} from '../../../core/externalLinks'
+import {useConstantContext} from 'core/context/ConstantContext'
+import {useToast} from 'core/toast'
+import {Row} from 'shared/Row/Row'
+import {externalLinks} from 'core/externalLinks'
 
 export enum AcknowledgmentCases {
   ReponseConso = 'ReponseConso',

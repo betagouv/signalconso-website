@@ -1,11 +1,11 @@
 import React, {ReactElement, ReactNode} from 'react'
-import {Panel, PanelBody} from '../../../shared/Panel/Panel'
+import {Panel, PanelBody} from 'shared/Panel/Panel'
 import {Txt} from 'mui-extension'
 import {Box} from '@mui/material'
-import {ScButton} from '../../../shared/Button/Button'
-import {useI18n} from '../../../core/i18n'
+import {ScButton} from 'shared/Button/Button'
+import {useI18n} from 'core/i18n'
 import {useReportFlowContext} from '../ReportFlowContext'
-import {useStepperContext} from '../../../shared/Stepper/Stepper'
+import {useStepperContext} from 'shared/Stepper/Stepper'
 
 interface ConfirmationStepperProps {
   children: Array<ReactElement<ConfirmationStepProps>>

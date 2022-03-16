@@ -13,7 +13,7 @@ import {ReportFiles} from 'shared/UploadFile/ReportFiles'
 import {useEffectFn, useFetcher} from '@alexandreannic/react-hooks-lib'
 import {useApiSdk} from 'core/context/ApiSdk'
 import {useToast} from 'core/toast'
-import {Row} from '../../../shared/Row/Row'
+import {Row} from 'shared/Row/Row'
 import React from 'react'
 
 // const Row = ({icon, dense, children, ...props}: {dense?: boolean, icon: string} & BoxProps) => {

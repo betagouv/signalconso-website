@@ -1,12 +1,12 @@
 import {GetStaticPaths, GetStaticProps} from 'next'
-import {apiSdk} from '../core/apiSdk'
-import {serialiseJsonForStupidNextJs} from '../core/helper/utils'
+import {apiSdk} from 'core/apiSdk'
+import {serialiseJsonForStupidNextJs} from 'core/helper/utils'
 import {Anomaly, ReportDraft} from '@signal-conso/signalconso-api-sdk-js'
-import {ReportFlow} from '../feature/Report/ReportFlow'
-import {useReportFlowContext} from '../feature/Report/ReportFlowContext'
+import {ReportFlow} from 'feature/Report/ReportFlow'
+import {useReportFlowContext} from 'feature/Report/ReportFlowContext'
 import {useMemo} from 'react'
-import {Page} from '../shared/Page/Page'
-import {ReportDraft2} from '../core/model/ReportDraft'
+import {Page} from 'shared/Page/Page'
+import {ReportDraft2} from 'core/model/ReportDraft'
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const anomalies = await apiSdk.anomaly.getAnomalies()

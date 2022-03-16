@@ -4,9 +4,9 @@ import {extensionToType, FileType, reportFileConfig} from './reportFileConfig'
 import {some} from 'fp-ts/lib/Option'
 import React from 'react'
 import {IconBtn, useToast} from 'mui-extension/lib'
-import {useI18n} from '../../core/i18n'
+import {useI18n} from 'core/i18n'
 import {appConfig} from '../../conf/appConfig'
-import {useApiSdk} from '../../core/context/ApiSdk'
+import {useApiSdk} from 'core/context/ApiSdk'
 import {ScDialog} from '../Dialog/ScDialog'
 
 export interface ReportFileProps {

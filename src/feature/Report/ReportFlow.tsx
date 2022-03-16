@@ -1,14 +1,14 @@
-import {Stepper} from '../../shared/Stepper/Stepper'
+import {Stepper} from 'shared/Stepper/Stepper'
 import {Problem} from './Problem/Problem'
 import {Details} from './Details/Details'
 import {Company} from './Company/Company'
-import {useI18n} from '../../core/i18n'
+import {useI18n} from 'core/i18n'
 import {Anomaly} from '@signal-conso/signalconso-api-sdk-js'
 import {Consumer} from './Consumer/Consumer'
 import {Confirmation} from './Confirmation/Confirmation'
 import React from 'react'
 import {Acknowledgement} from './Acknowledgement/Acknowledgement'
-import {ReportStep} from '../../core/reportStep'
+import {ReportStep} from 'core/reportStep'
 
 interface Props {
   initialStep: number

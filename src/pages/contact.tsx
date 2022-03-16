@@ -1,6 +1,6 @@
 import Head from 'next/head'
-import {pageDefinitions} from '../core/pageDefinition'
-import {Page} from '../shared/Page/Page'
+import {pageDefinitions} from 'core/pageDefinition'
+import {Page} from 'shared/Page/Page'
 import {Alert} from 'mui-extension'
 
 const Contact = () => {

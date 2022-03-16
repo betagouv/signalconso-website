@@ -2,8 +2,8 @@ import {Card, CardContent, Checkbox, Divider, FormControlLabel, useTheme} from '
 import {DetailInput, DetailInputType, DetailInputValue, UploadedFile} from '@signal-conso/signalconso-api-sdk-js'
 import {_Details} from 'feature/Report/Details/Details'
 import React, {useState} from 'react'
-import {styleUtils} from '../../core/theme/theme'
-import {DetailInputValues2, ReportDraft2} from '../../core/model/ReportDraft'
+import {styleUtils} from 'core/theme/theme'
+import {DetailInputValues2, ReportDraft2} from 'core/model/ReportDraft'
 import {DraftReportDefaultInputs} from '../Report/Details/draftReportInputs'
 
 

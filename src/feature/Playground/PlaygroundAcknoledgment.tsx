@@ -2,7 +2,7 @@ import {_Acknowledgement, AcknowledgmentCases} from '../Report/Acknowledgement/A
 import {useEffect, useMemo, useState} from 'react'
 import {Fixture} from '../../test/fixture'
 import {Report, ReportTag} from '@signal-conso/signalconso-api-sdk-js'
-import {useConstantContext} from '../../core/context/ConstantContext'
+import {useConstantContext} from 'core/context/ConstantContext'
 import {MenuItem, Select} from '@mui/material'
 import {Enum} from '@alexandreannic/ts-utils'
 

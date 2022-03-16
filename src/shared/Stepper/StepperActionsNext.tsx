@@ -1,6 +1,6 @@
 import {ScButton} from '../Button/Button'
 import {BtnProps} from 'mui-extension'
-import {useI18n} from '../../core/i18n'
+import {useI18n} from 'core/i18n'
 
 interface Props extends BtnProps {
 }

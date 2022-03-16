@@ -1,9 +1,9 @@
-import {styleUtils} from '../../../core/theme/theme'
+import {styleUtils} from 'core/theme/theme'
 import {TextMaskCustom} from './InputValidationCodeMask'
 import {Box, useTheme} from '@mui/material'
-import {ScInput, ScInputProps} from '../../../shared/Input/ScInput'
+import {ScInput, ScInputProps} from 'shared/Input/ScInput'
 import React from 'react'
-import {useI18n} from '../../../core/i18n'
+import {useI18n} from 'core/i18n'
 
 interface Props extends ScInputProps {
 

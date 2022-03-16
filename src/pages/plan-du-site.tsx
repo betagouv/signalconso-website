@@ -1,8 +1,8 @@
-import {Page} from '../shared/Page/Page'
+import {Page} from 'shared/Page/Page'
 import Link from 'next/link'
-import {siteMap} from '../core/siteMap'
+import {siteMap} from 'core/siteMap'
 import Head from 'next/head'
-import {pageDefinitions} from '../core/pageDefinition'
+import {pageDefinitions} from 'core/pageDefinition'
 
 const PlanDuSite = () => {
   return (
