@@ -20,9 +20,9 @@ export const StepperHeader = ({steps, currentStep, goTo}: StepperHeaderProps) =>
       justifyContent: 'center',
     }}>
       {steps.map((step, i) =>
-        <Box key={step.name} sx={{flex: 1}} onClick={() => goTo(i)}>
+        <Box key={step.name} sx={{flex: 1}} onClick={() => i < currentStep && goTo(i)}>
           <Box sx={{
-            cursor: 'pointer',
+            cursor: i < currentStep ? 'pointer' : 'not-allowed',
             display: 'flex',
             position: 'relative',
             justifyContent: 'center',
