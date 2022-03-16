@@ -1,4 +1,4 @@
-import {Address, Anomaly, CompanyDraft, ReportDraft, ReportDraftConsumer} from '@signal-conso/signalconso-api-sdk-js'
+import {Address, Anomaly, CompanyDraft, DetailInput, DetailInputValue, ReportDraft, ReportDraftConsumer} from '@signal-conso/signalconso-api-sdk-js'
 import {getDraftReportInputs} from '../../feature/Report/Details/draftReportInputs'
 import {isSpecifyInputName, SpecifyFormUtils} from '../../feature/Report/Details/Details'
 import {fromNullable} from 'fp-ts/lib/Option'
@@ -6,36 +6,39 @@ import {DeepPartial} from '@alexandreannic/ts-utils'
 
 export type DetailInputValues2 = {[key: string]: string | string[]}
 
-export interface ReportDraft2 extends Omit<ReportDraft, 'detailInputValues'> {
+export interface ReportDraft2 extends Omit<ReportDraft, 'details'> {
   anomaly: Omit<Anomaly, 'subcategories'>
-  detailInputValues: DetailInputValues2
+  details: DetailInputValues2
 }
 
 export class ReportDraft2 {
   static readonly toReportDraft = (d: ReportDraft2): ReportDraft => {
     const inputs = getDraftReportInputs({subcategories: d.subcategories, tags: d.tags})
+    return {
+      ...d,
+      details: ReportDraft2.parseDetails(d.details, inputs),
+    }
+  }
+
+  static readonly parseDetails = (details: DetailInputValues2, inputs: DetailInput[]): DetailInputValue[] => {
     const map = (value: string, index: number) => {
       return value.replace(
         SpecifyFormUtils.keyword,
-        d.detailInputValues[SpecifyFormUtils.getInputName(index)] as string
+        details[SpecifyFormUtils.getInputName(index)] as string
       )
     }
 
-    const detailInputValues = Object.keys(d.detailInputValues)
+    return Object.keys(details)
       .filter(_ => !isSpecifyInputName(_))
       .map(index => {
         const label = inputs[+index].label
-        const value = fromNullable(d.detailInputValues[index]).map(v =>
+        const value = fromNullable(details[index]).map(v =>
           Array.isArray(v)
             ? v.map(_ => _.includes(SpecifyFormUtils.keyword) ? map(_, +index) : _)
             : map(v, +index)
         ).getOrElse('')
         return {label, value}
       })
-    return {
-      ...d,
-      detailInputValues,
-    }
   }
 
   static readonly merge = (base: Partial<ReportDraft2>, newValue: DeepPartial<ReportDraft2>): Partial<ReportDraft2> => {

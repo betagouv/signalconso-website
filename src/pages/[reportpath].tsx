@@ -28,7 +28,7 @@ export const getStaticProps: GetStaticProps = async ({params}) => {
 
 export const reportStepDone = (r: Partial<ReportDraft2>) => ({
   problem: !!r.category && !!r.subcategories && !!r.contractualDispute !== undefined && r.employeeConsumer !== undefined,
-  description: !!r.detailInputValues,
+  description: !!r.details,
   company: !!r.companyDraft?.siret || !!r.companyDraft?.address.postalCode,
   consumer: !!r.consumer?.email && !!r.consumer?.firstName && !!r.consumer?.lastName,
 })

@@ -4,17 +4,16 @@
 import React from 'react'
 import {Anomaly, CompanyKinds, ReportTag} from '@signal-conso/signalconso-api-sdk-js'
 import {Problem} from './Problem'
-import {genInformation, genSubcategory} from 'test/fixture'
 import {AccessReportFlow, DummyStepperProvider, fireEvent, render, ScRenderResult} from 'test/test-utils'
 import '@testing-library/jest-dom'
 import {fnSwitch} from '@alexandreannic/ts-utils/lib/common'
 import {ReportDraft2} from '../../../core/model/ReportDraft'
 
 class Fixture {
-  static readonly simpleSubcategory = genSubcategory()
-  static readonly internetSubcategory = genSubcategory({companyKind: CompanyKinds.WEBSITE})
-  static readonly reponseConsoSubcategory = genSubcategory({companyKind: CompanyKinds.WEBSITE, tags: [ReportTag.ReponseConso]})
-  static readonly infoSubcategory = genSubcategory({information: genInformation()})
+  static readonly simpleSubcategory = Fixture.genSubcategory()
+  static readonly internetSubcategory = Fixture.genSubcategory({companyKind: CompanyKinds.WEBSITE})
+  static readonly reponseConsoSubcategory = Fixture.genSubcategory({companyKind: CompanyKinds.WEBSITE, tags: [ReportTag.ReponseConso]})
+  static readonly infoSubcategory = Fixture.genSubcategory({information: Fixture.genInformation()})
   static readonly subcategories = [
     Fixture.simpleSubcategory,
     Fixture.internetSubcategory,

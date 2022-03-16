@@ -1,21 +1,21 @@
 import '@testing-library/jest-dom'
 import {DraftReportDefaultInputs, getDraftReportInputs} from './draftReportInputs'
-import {genSubcategory} from '../../../test/fixture'
+import {Fixture} from '../../../test/fixture'
 import {ReportTag} from '@signal-conso/signalconso-api-sdk-js'
-import { DetailsFixtureInput } from 'pages/playground'
+import {DetailsFixtureInput} from '../../Playground/PlaygroundDetails'
 
 describe('getDraftReportInputs', () => {
 
   it('should generate default inputs', () => {
     const inputs = getDraftReportInputs({
-      subcategories: [genSubcategory()],
+      subcategories: [Fixture.genSubcategory()],
     })
     expect(inputs).toEqual(DraftReportDefaultInputs.defaults)
   })
 
   it('should generate default inputs including reponseConso inputs', () => {
     const inputs = getDraftReportInputs({
-      subcategories: [genSubcategory()],
+      subcategories: [Fixture.genSubcategory()],
       tags: [ReportTag.ReponseConso]
     })
     expect(inputs).toEqual([
@@ -27,8 +27,7 @@ describe('getDraftReportInputs', () => {
   it('should generate single input with optional textarea', () => {
     const inputs = getDraftReportInputs({
       subcategories: [
-        genSubcategory(),
-        {id: '', title: '', detailInputs: [DetailsFixtureInput.textDetail,]},
+        Fixture.genSubcategory(),
       ],
     })
     expect(inputs).toEqual([
@@ -41,7 +40,7 @@ describe('getDraftReportInputs', () => {
     const inputs = getDraftReportInputs({
       tags: [ReportTag.ReponseConso],
       subcategories: [
-        genSubcategory(),
+        Fixture.genSubcategory(),
         {id: '', title: '', detailInputs: [DetailsFixtureInput.dateDetail,]},
       ],
     })

@@ -8,7 +8,7 @@ import {_Company} from './Company'
 import {ReportDraft2} from '../../../core/model/ReportDraft'
 import {IdentifyBy} from './CompanyIdentifyBy'
 import {fnSwitch} from '@alexandreannic/ts-utils/lib/common'
-import {genCompanySearchResult} from '../../../test/fixture'
+import {Fixture} from '../../../test/fixture'
 import {waitFor} from '@testing-library/dom'
 
 describe('Details: single date not in future', () => {
@@ -53,8 +53,8 @@ describe('Details: single date not in future', () => {
           apiSdkMock: {
             company: {
               searchCompaniesByUrl: (url: string) => Promise.resolve(fnSwitch(url, {
-                'known.site': [genCompanySearchResult()],
-                'marketplace.site': [genCompanySearchResult()],
+                'known.site': [Fixture.genCompanySearchResult()],
+                'marketplace.site': [Fixture.genCompanySearchResult()],
               }, () => []))
             }
           }

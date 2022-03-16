@@ -2,29 +2,29 @@ import React, {useMemo, useState} from 'react'
 import {Alert, stopPropagation, Txt} from 'mui-extension'
 import {useReportFlowContext} from '../ReportFlowContext'
 import {DetailInput, DetailInputType, FileOrigin, ReportDraft, ReportTag, SubcategoryInput, UploadedFile} from '@signal-conso/signalconso-api-sdk-js'
-import {ScDatepicker} from '../../../shared/Datepicker/Datepicker'
+import {ScDatepicker} from 'shared/Datepicker/Datepicker'
 import {fnSwitch, mapFor} from '@alexandreannic/ts-utils/lib/common'
-import {useI18n} from '../../../core/i18n'
+import {useI18n} from 'core/i18n'
 import {Control, Controller, useForm} from 'react-hook-form'
-import {ReportFiles} from '../../../shared/UploadFile/ReportFiles'
-import {StepperActions} from '../../../shared/Stepper/StepperActions'
-import {FormLayout} from '../../../shared/FormLayout/FormLayout'
-import {Animate} from '../../../shared/Animate/Animate'
-import {Panel, PanelBody} from '../../../shared/Panel/Panel'
+import {ReportFiles} from 'shared/UploadFile/ReportFiles'
+import {StepperActions} from 'shared/Stepper/StepperActions'
+import {FormLayout} from 'shared/FormLayout/FormLayout'
+import {Animate} from 'shared/Animate/Animate'
+import {Panel, PanelBody} from 'shared/Panel/Panel'
 import {format, parse} from 'date-fns'
 import {MenuItem} from '@mui/material'
-import {ScRadioGroup, ScRadioGroupItem} from '../../../shared/RadioGroup'
-import {ScSelect} from '../../../shared/Select/Select'
-import {ScInput} from '../../../shared/Input/ScInput'
+import {ScRadioGroup, ScRadioGroupItem} from 'shared/RadioGroup'
+import {ScSelect} from 'shared/Select/Select'
+import {ScInput} from 'shared/Input/ScInput'
 import {DetailsAlertProduitDangereux} from './DetailsAlertProduitDangereux'
-import {last} from '../../../core/lodashNamedExport'
+import {last} from 'core/lodashNamedExport'
 import {getDraftReportInputs} from './draftReportInputs'
-import {appConfig} from '../../../conf/appConfig'
-import {useStepperContext} from '../../../shared/Stepper/Stepper'
+import {appConfig} from 'conf/appConfig'
+import {useStepperContext} from 'shared/Stepper/Stepper'
 import {ControllerProps} from 'react-hook-form/dist/types/controller'
 import {FieldError} from 'react-hook-form/dist/types/errors'
 import {useEffectFn} from '@alexandreannic/react-hooks-lib'
-import {DetailInputValues2} from '../../../core/model/ReportDraft'
+import {DetailInputValues2} from 'core/model/ReportDraft'
 
 export class SpecifyFormUtils {
   static readonly keyword = '(à préciser)'
@@ -52,7 +52,7 @@ export const Details = () => {
   }
   return (
     <_Details
-      initialValues={draft.detailInputValues}
+      initialValues={draft.details}
       initialFiles={draft.uploadedFiles}
       isTransmittable={ReportDraft.isTransmittableToPro(draft)}
       inputs={inputs}
@@ -60,7 +60,7 @@ export const Details = () => {
       contractualDispute={draft.contractualDispute}
       tags={draft.tags ?? []}
       onSubmit={(detailInputValues, uploadedFiles) => {
-        _reportFlow.setReportDraft(_ => ({..._, uploadedFiles, detailInputValues}))
+        _reportFlow.setReportDraft(_ => ({..._, uploadedFiles, details: detailInputValues}))
         _stepper.next()
       }}
     />

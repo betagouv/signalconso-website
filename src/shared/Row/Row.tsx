@@ -15,18 +15,21 @@ export const Row = ({
 }: RowProps) => {
   return (
     <Box sx={{display: 'flex', '& + &': {mt: dense ? 1.5 : 2}, ...sx}} {...props}>
+      <Box sx={{
+        mr: dense ? .5 : 1,
+        mt: .25,
+        minWidth: 30,
+        textAlign: 'center',
+      }}>
       {typeof icon === 'string' ? (
         <Icon sx={{
-          mr: dense ? 1 : 2,
-          mt: .25,
-          minWidth: 30,
-          textAlign: 'center',
           color: t => t.palette.text.disabled
         }}>{icon}</Icon>
       ) : (
         icon
       )}
-      <Box sx={{width: '100%', minHeight: dense ? 24 : 32}}>{children}</Box>
+      </Box>
+      <Box sx={{width: '100%', alignSelf: 'center', minHeight: dense ? 24 : 32}}>{children}</Box>
     </Box>
   )
 }
