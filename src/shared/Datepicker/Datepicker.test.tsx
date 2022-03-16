@@ -15,7 +15,6 @@ describe('DatePicker', () => {
     let value: Date | undefined
     const app = render(
       <ScDatepicker value={value} onChange={(date: Date) => {
-        console.log('onchange', date, newDate)
         value = date
       }}/>,
     )

@@ -12,7 +12,6 @@ export const PlaygroundAcknowledgment = () => {
   const baseReport = useMemo(Fixture.genReport, [])
   const {countries} = useConstantContext()
   const report = useMemo(() => {
-    console.log('type', type)
     const reportsSwitch: { [key in AcknowledgmentCases]: () => Report } = {
       [AcknowledgmentCases.ReponseConso]: () => ({...baseReport, tags: [ReportTag.ReponseConso]}),
       [AcknowledgmentCases.EmployeeReport]: () => ({...baseReport, employeeConsumer: true}),

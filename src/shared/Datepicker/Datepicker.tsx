@@ -18,7 +18,6 @@ const onChangeDate = (callback: (date: Date) => any) => (e: React.ChangeEvent<HT
 }
 
 const mapDate = (date: Date): string => {
-  console.log('ScDatepicker.mapdate', date)
   return format(date, 'yyyy-MM-dd')
 }
 

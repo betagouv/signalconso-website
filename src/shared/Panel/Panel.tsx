@@ -57,7 +57,6 @@ export const PanelBody = ({children, sx, ...rest}: BoxProps) => {
 export const PanelActions = ({children, sx, ...rest}: BoxProps) => {
   return (
     <Box {...rest} sx={{
-      ...sx,
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'right',
@@ -65,6 +64,7 @@ export const PanelActions = ({children, sx, ...rest}: BoxProps) => {
       '& > :not(:first-of-type)': {
         ml: 1,
       },
+      ...sx,
     }}>
       {children}
     </Box>

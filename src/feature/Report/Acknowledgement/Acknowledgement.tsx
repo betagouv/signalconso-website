@@ -1,5 +1,5 @@
-import {Panel, PanelBody} from 'shared/Panel/Panel'
-import {Txt} from 'mui-extension'
+import {Panel, PanelActions, PanelBody} from 'shared/Panel/Panel'
+import {Fender, Txt} from 'mui-extension'
 import {Box, BoxProps, Icon} from '@mui/material'
 import {useReportFlowContext} from '../ReportFlowContext'
 import {Country, Report, ReportDraft, ReportTag} from '@signal-conso/signalconso-api-sdk-js'
@@ -10,6 +10,10 @@ import {useConstantContext} from 'core/context/ConstantContext'
 import {useToast} from 'core/toast'
 import {Row} from 'shared/Row/Row'
 import {externalLinks} from 'core/externalLinks'
+import {ScButton} from '../../../shared/Button/Button'
+import {useI18n} from '../../../core/i18n'
+import Link from 'next/link'
+import {siteMap} from '../../../core/siteMap'
 
 export enum AcknowledgmentCases {
   ReponseConso = 'ReponseConso',
@@ -39,8 +43,13 @@ export const Acknowledgement = () => {
   }, [countries, report])
   useEffectFn(countries.error, toastError)
 
+  if (country || !report.companyAddress.country) {
+    return (
+      <_Acknowledgement createdReport={report} country={country}/>
+    )
+  }
   return (
-    <_Acknowledgement createdReport={report} country={country}/>
+    <Fender type="loading"/>
   )
 }
 
@@ -233,6 +242,7 @@ const AcknowledgementLayout = ({
   showChargeBack?: boolean
   title?: string
 } & BoxProps) => {
+  const {m} = useI18n()
   return (
     <>
       <img src="/image/illustrations/company.png" alt="consultation-pro-illustration" style={{
@@ -270,6 +280,13 @@ const AcknowledgementLayout = ({
             <Txt link><a href="mailto:support@signal.conso.gouv.fr?subject=incident">support@signal.conso.gouv.fr</a></Txt>
           </p>
         </PanelBody>
+        <PanelActions sx={{justifyContent: 'flex-start'}}>
+          <Link href={siteMap.index}>
+            <ScButton color="primary" variant="contained" icon="home">
+              {m.backToHome}
+            </ScButton>
+          </Link>
+        </PanelActions>
       </Panel>
     </>
   )
