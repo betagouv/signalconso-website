@@ -15,7 +15,7 @@ enum Env {
   NEXT_PUBLIC_REPONSECONSO_DISPLAY_PERCENTAGE = 'NEXT_PUBLIC_REPONSECONSO_DISPLAY_PERCENTAGE',
 }
 
-const persistedTempEnvVariables: {[key in Env]: string | undefined} = {
+const persistedTempEnvVariablesForFront: {[key in Env]: string | undefined} = {
   SHOW_PLAYGROUND: process.env.SHOW_PLAYGROUND,
   NEXT_PUBLIC_NODE_ENV: process.env.NEXT_PUBLIC_NODE_ENV,
   NEXT_PUBLIC_API_BASE_URL: process.env.NEXT_PUBLIC_API_BASE_URL,
@@ -28,7 +28,7 @@ const persistedTempEnvVariables: {[key in Env]: string | undefined} = {
   NEXT_PUBLIC_REPONSECONSO_DISPLAY_PERCENTAGE: process.env.NEXT_PUBLIC_REPONSECONSO_DISPLAY_PERCENTAGE,
 }
 
-const map = _env(persistedTempEnvVariables)
+const map = _env(persistedTempEnvVariablesForFront)
 
 const parseUrl = (_: string): string => _.replace(/\/$/, '')
 
