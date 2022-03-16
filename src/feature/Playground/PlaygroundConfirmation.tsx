@@ -19,7 +19,7 @@ export const PlaygroundConfirmation = () => {
   return (
     <>
       <div><b>{anomaly?.category}</b></div>
-      <pre style={{fontSize: styleUtils(theme).fontSize.small, lineHeight: 1.2}}>{JSON.stringify(draft, undefined, 2)}</pre>
+      <pre style={{fontSize: styleUtils(theme).fontSize.small, lineHeight: 1.3}}>{JSON.stringify(draft, undefined, 2)}</pre>
       {anomaly && (
         <_Confirmation
           anomaly={anomaly}

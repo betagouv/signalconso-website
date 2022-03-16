@@ -1,8 +1,9 @@
 // Env variables must start with 'REACT_APP_' to be considered by CreateReactApp
 import {env as _env} from '@alexandreannic/ts-utils/lib/common/env/Env'
-import {defaultValue, int} from '@alexandreannic/ts-utils/lib/common/env/EnvParser'
+import {bool, defaultValue, int} from '@alexandreannic/ts-utils/lib/common/env/EnvParser'
 
 enum Env {
+  SHOW_PLAYGROUND = 'SHOW_PLAYGROUND',
   NEXT_PUBLIC_NODE_ENV = 'NEXT_PUBLIC_NODE_ENV',
   NEXT_PUBLIC_API_BASE_URL = 'NEXT_PUBLIC_API_BASE_URL',
   NEXT_PUBLIC_APP_BASE_URL = 'NEXT_PUBLIC_APP_BASE_URL',
@@ -15,6 +16,7 @@ enum Env {
 }
 
 const persistedTempEnvVariables: {[key in Env]: string | undefined} = {
+  SHOW_PLAYGROUND: process.env.SHOW_PLAYGROUND,
   NEXT_PUBLIC_NODE_ENV: process.env.NEXT_PUBLIC_NODE_ENV,
   NEXT_PUBLIC_API_BASE_URL: process.env.NEXT_PUBLIC_API_BASE_URL,
   NEXT_PUBLIC_APP_BASE_URL: process.env.NEXT_PUBLIC_APP_BASE_URL,
@@ -32,6 +34,7 @@ const parseUrl = (_: string): string => _.replace(/\/$/, '')
 
 export const appConfig = {
   isDev: map()(Env.NEXT_PUBLIC_NODE_ENV) === 'development',
+  showPlayground: map(bool, defaultValue(false))(Env.SHOW_PLAYGROUND),
   apiBaseUrl: map(defaultValue('http://localhost:9000'), parseUrl)(Env.NEXT_PUBLIC_API_BASE_URL),
   appBaseUrl: map(defaultValue('http://localhost:4200'), parseUrl)(Env.NEXT_PUBLIC_APP_BASE_URL),
   dashboardBaseUrl: map(defaultValue('http://localhost:3000'), parseUrl)(Env.NEXT_PUBLIC_DASHBOARD_BASE_URL),

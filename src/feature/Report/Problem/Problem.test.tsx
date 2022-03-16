@@ -8,38 +8,39 @@ import {AccessReportFlow, DummyStepperProvider, fireEvent, render, ScRenderResul
 import '@testing-library/jest-dom'
 import {fnSwitch} from '@alexandreannic/ts-utils/lib/common'
 import {ReportDraft2} from '../../../core/model/ReportDraft'
+import {Fixture} from '../../../test/fixture'
 
-class Fixture {
+class ProblemFixture {
   static readonly simpleSubcategory = Fixture.genSubcategory()
   static readonly internetSubcategory = Fixture.genSubcategory({companyKind: CompanyKinds.WEBSITE})
   static readonly reponseConsoSubcategory = Fixture.genSubcategory({companyKind: CompanyKinds.WEBSITE, tags: [ReportTag.ReponseConso]})
   static readonly infoSubcategory = Fixture.genSubcategory({information: Fixture.genInformation()})
   static readonly subcategories = [
-    Fixture.simpleSubcategory,
-    Fixture.internetSubcategory,
-    Fixture.reponseConsoSubcategory,
-    Fixture.infoSubcategory,
+    ProblemFixture.simpleSubcategory,
+    ProblemFixture.internetSubcategory,
+    ProblemFixture.reponseConsoSubcategory,
+    ProblemFixture.infoSubcategory,
   ]
   static readonly anomaly: Anomaly = {
     id: '1',
     categoryId: '',
     category: '',
     path: 'myPath',
-    subcategories: Fixture.subcategories,
+    subcategories: ProblemFixture.subcategories,
   }
 }
 
 describe('Problem', () => {
   it('should display subcategories', () => {
-    const app = render(<Problem anomaly={Fixture.anomaly}/>)
-    Fixture.anomaly.subcategories?.forEach(s => {
+    const app = render(<Problem anomaly={ProblemFixture.anomaly}/>)
+    ProblemFixture.anomaly.subcategories?.forEach(s => {
       expect(app.container.textContent).toContain(s.title)
     })
   })
 
   it('should route to information page when receive subcategories ending with information', async () => {
     const app = render(
-      <Problem anomaly={Fixture.anomaly}/>,
+      <Problem anomaly={ProblemFixture.anomaly}/>,
       {
         apiSdkMock: {
           rating: {
@@ -48,15 +49,15 @@ describe('Problem', () => {
         }
       }
     )
-    fireEvent.click(app.getByText(Fixture.infoSubcategory.title))
+    fireEvent.click(app.getByText(ProblemFixture.infoSubcategory.title))
     expect(app.getByText(app.m.informationTitle)).not.toBeNull()
   })
 
   it('should request the user if he is an employee of the company or not when receive subcategories', () => {
     const app = render(
-      <Problem anomaly={Fixture.anomaly}/>
+      <Problem anomaly={ProblemFixture.anomaly}/>
     )
-    fireEvent.click(app.getByText(Fixture.simpleSubcategory.title))
+    fireEvent.click(app.getByText(ProblemFixture.simpleSubcategory.title))
     expect(app.container.textContent).toContain(app.m.problemDoYouWorkInCompany)
     expect(app.container.textContent).toContain(app.m.problemDoYouWorkInCompanyNo)
   })
@@ -124,13 +125,13 @@ describe('Problem', () => {
       <AccessReportFlow onReportChange={r => {
         report = r
       }}>
-        <Problem anomaly={Fixture.anomaly}/>
+        <Problem anomaly={ProblemFixture.anomaly}/>
       </AccessReportFlow>
     )
-    fireEvent.click(app.getByText(Fixture.simpleSubcategory.title))
+    fireEvent.click(app.getByText(ProblemFixture.simpleSubcategory.title))
     clickEmployeeConsumer(app, 'yes')
     expect(report?.employeeConsumer).toEqual(true)
-    expect(report?.subcategories).toEqual([Fixture.simpleSubcategory])
+    expect(report?.subcategories).toEqual([ProblemFixture.simpleSubcategory])
   })
 
   it('should update employeeConsumer = false', () => {
@@ -139,13 +140,13 @@ describe('Problem', () => {
       <AccessReportFlow onReportChange={r => {
         report = r
       }}>
-        <Problem anomaly={Fixture.anomaly}/>
+        <Problem anomaly={ProblemFixture.anomaly}/>
       </AccessReportFlow>
     )
-    fireEvent.click(app.getByText(Fixture.simpleSubcategory.title))
+    fireEvent.click(app.getByText(ProblemFixture.simpleSubcategory.title))
     clickEmployeeConsumer(app, 'no')
     expect(report?.employeeConsumer).toEqual(false)
-    expect(report?.subcategories).toEqual([Fixture.simpleSubcategory])
+    expect(report?.subcategories).toEqual([ProblemFixture.simpleSubcategory])
   })
 
   it('should ask companyKind', () => {
@@ -154,10 +155,10 @@ describe('Problem', () => {
       <AccessReportFlow onReportChange={r => {
         report = r
       }}>
-        <Problem anomaly={Fixture.anomaly}/>
+        <Problem anomaly={ProblemFixture.anomaly}/>
       </AccessReportFlow>
     )
-    fireEvent.click(app.getByText(Fixture.simpleSubcategory.title))
+    fireEvent.click(app.getByText(ProblemFixture.simpleSubcategory.title))
     clickEmployeeConsumer(app, 'no')
     clickCompanyKind(app, 'internet')
     expect(report?.companyKind).toEqual(CompanyKinds.WEBSITE)
@@ -169,10 +170,10 @@ describe('Problem', () => {
       <AccessReportFlow onReportChange={r => {
         report = r
       }}>
-        <Problem anomaly={Fixture.anomaly}/>
+        <Problem anomaly={ProblemFixture.anomaly}/>
       </AccessReportFlow>
     )
-    fireEvent.click(app.getByText(Fixture.internetSubcategory.title))
+    fireEvent.click(app.getByText(ProblemFixture.internetSubcategory.title))
     clickEmployeeConsumer(app, 'no')
     expect(() => clickCompanyKind(app, 'internet')).toThrow()
   })
@@ -187,11 +188,11 @@ describe('Problem', () => {
         <AccessReportFlow onReportChange={r => {
           report = r
         }}>
-          <Problem anomaly={Fixture.anomaly}/>
+          <Problem anomaly={ProblemFixture.anomaly}/>
         </AccessReportFlow>
       </DummyStepperProvider>
     )
-    fireEvent.click(app.getByText(Fixture.internetSubcategory.title))
+    fireEvent.click(app.getByText(ProblemFixture.internetSubcategory.title))
     clickEmployeeConsumer(app, 'no')
     clickContractualDispute(app, 'contractualDispute')
     expectContractualDisputeVisible(app, true)
@@ -206,11 +207,11 @@ describe('Problem', () => {
         <AccessReportFlow onReportChange={r => {
           report = r
         }}>
-          <Problem anomaly={Fixture.anomaly}/>
+          <Problem anomaly={ProblemFixture.anomaly}/>
         </AccessReportFlow>
       </DummyStepperProvider>
     )
-    fireEvent.click(app.getByText(Fixture.internetSubcategory.title))
+    fireEvent.click(app.getByText(ProblemFixture.internetSubcategory.title))
     clickEmployeeConsumer(app, 'no')
     clickContractualDispute(app, 'notContractualDispute')
     expectContractualDisputeVisible(app, false)
@@ -224,11 +225,11 @@ describe('Problem', () => {
         <AccessReportFlow onReportChange={r => {
           report = r
         }}>
-          <Problem anomaly={Fixture.anomaly}/>
+          <Problem anomaly={ProblemFixture.anomaly}/>
         </AccessReportFlow>
       </DummyStepperProvider>
     )
-    fireEvent.click(app.getByText(Fixture.reponseConsoSubcategory.title))
+    fireEvent.click(app.getByText(ProblemFixture.reponseConsoSubcategory.title))
     clickEmployeeConsumer(app, 'yes')
     expect(() => clickContractualDispute(app, 'reponseConso')).toThrow()
     expectContractualDisputeVisible(app, false)
@@ -242,11 +243,11 @@ describe('Problem', () => {
         <AccessReportFlow onReportChange={r => {
           report = r
         }}>
-          <Problem anomaly={Fixture.anomaly}/>
+          <Problem anomaly={ProblemFixture.anomaly}/>
         </AccessReportFlow>
       </DummyStepperProvider>
     )
-    fireEvent.click(app.getByText(Fixture.reponseConsoSubcategory.title))
+    fireEvent.click(app.getByText(ProblemFixture.reponseConsoSubcategory.title))
     clickEmployeeConsumer(app, 'no')
     clickContractualDispute(app, 'reponseConso')
     expectContractualDisputeVisible(app, false)
@@ -263,11 +264,11 @@ describe('Problem', () => {
         <AccessReportFlow onReportChange={r => {
           report = r
         }}>
-          <Problem anomaly={Fixture.anomaly}/>
+          <Problem anomaly={ProblemFixture.anomaly}/>
         </AccessReportFlow>
       </DummyStepperProvider>
     )
-    fireEvent.click(app.getByText(Fixture.reponseConsoSubcategory.title))
+    fireEvent.click(app.getByText(ProblemFixture.reponseConsoSubcategory.title))
     clickEmployeeConsumer(app, 'no')
     clickContractualDispute(app, 'notContractualDispute')
     expectContractualDisputeVisible(app, false)

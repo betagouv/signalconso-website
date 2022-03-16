@@ -97,11 +97,11 @@ export const PlaygroundDetails = () => {
             }}/>
         </CardContent>
       </Card>
-      <pre style={{fontSize: styleUtils(theme).fontSize.small, lineHeight: 1.2}}>
+      <pre style={{fontSize: styleUtils(theme).fontSize.small, lineHeight: 1.3}}>
         {JSON.stringify(resultInputs, undefined, 2)}
       </pre>
       <Divider/>
-      <pre style={{fontSize: styleUtils(theme).fontSize.small, lineHeight: 1.2}}>
+      <pre style={{fontSize: styleUtils(theme).fontSize.small, lineHeight: 1.3}}>
         {JSON.stringify(resultFiles, undefined, 2)}
       </pre>
     </>
