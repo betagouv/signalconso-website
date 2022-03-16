@@ -43,7 +43,7 @@ export const Details = () => {
     if (draft.subcategories) {
       return getDraftReportInputs({subcategories: draft.subcategories, tags: draft.tags})
     }
-  }, [draft.subcategories, draft.tags])
+  }, [draft.subcategories, draft.tags, draft.forwardToReponseConso])
 
   if (!inputs || draft.employeeConsumer === undefined) {
     return (
