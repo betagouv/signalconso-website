@@ -13,6 +13,7 @@ export class Analytic {
     if (appConfig.isDev) {
       console.info('[Matomo]', args)
     } else {
+      console.log('[Matomo PROD]', args)
       try {
         Matomo.push(args)
       } catch (e) {

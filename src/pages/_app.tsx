@@ -16,6 +16,9 @@ import {useEffect} from 'react'
 import {appConfig} from '../conf/appConfig'
 import {Integrations} from '@sentry/tracing'
 import * as Sentry from '@sentry/react'
+import Script from 'next/script'
+import {AnalyticProvider} from '../core/analytic/AnalyticContext'
+import {Matomo} from '../core/analytic/matomo'
 
 interface ScAppProps extends AppProps {
   emotionCache?: EmotionCache;
@@ -24,17 +27,6 @@ interface ScAppProps extends AppProps {
 const clientSideEmotionCache = createEmotionCache()
 
 const App = ({emotionCache = clientSideEmotionCache, ...props}: ScAppProps) => {
-  useEffect(() => {
-    if(appConfig.matomo_siteId && appConfig.matomo_url) {
-      console.log('init MATOMO----')
-      Matomo.init({
-        siteId: appConfig.matomo_siteId,
-        url: appConfig.matomo_url,
-      })
-    } else {
-      console.warn(`Matomo config not set.`)
-    }
-  }, [])
   return (
     <Provide
       providers={[
@@ -63,6 +55,16 @@ const _App = ({Component, pageProps}: AppProps) => {
         integrations: [new Integrations.BrowserTracing()],
         tracesSampleRate: appConfig.sentry_traceRate,
       })
+    } else {
+      console.warn(`Sentry not set.`)
+    }
+    if(appConfig.matomo_siteId && appConfig.matomo_url) {
+      Matomo.init({
+        siteId: appConfig.matomo_siteId,
+        url: appConfig.matomo_url,
+      })
+    } else {
+      console.warn(`Matomo config not set.`)
     }
   })
   return (
