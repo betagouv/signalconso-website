@@ -20,6 +20,7 @@ import {Txt} from 'mui-extension'
 import {Row} from 'shared/Row/Row'
 import {AddressComponent} from 'shared/Address/Address'
 import {Panel, PanelActions, PanelBody} from 'shared/Panel/Panel'
+import {StepperActionsNext} from '../../../shared/Stepper/StepperActionsNext'
 
 interface CompanyProps {
   animatePanel?: boolean
@@ -33,8 +34,8 @@ interface CompanyWithRequiredProps extends CompanyProps {
 
 export const Company = ({animatePanel, autoScrollToPanel}: CompanyProps) => {
   const _reportFlow = useReportFlowContext()
-  const draft = _reportFlow.reportDraft
   const _stepper = useStepperContext()
+  const draft = _reportFlow.reportDraft
   const {m} = useI18n()
   if (draft.companyDraft) {
     return (
@@ -66,6 +67,7 @@ export const CompanyFilled = ({
   draft: Partial<ReportDraft2>
   onClear: () => void
 }) => {
+  const _stepper = useStepperContext()
   const {m} = useI18n()
   if (!draft.companyDraft) {
     throw new Error(`companyDraft should be defined ${JSON.stringify(draft)}`)
@@ -96,14 +98,14 @@ export const CompanyFilled = ({
       </PanelBody>
       <PanelActions>
         <ScButton
-          sx={{mt: 2}}
           color="primary"
-          variant="contained"
+          variant="outlined"
           onClick={onClear}
           icon="edit"
         >
           {m.edit}
         </ScButton>
+        <StepperActionsNext onClick={_stepper.next}/>
       </PanelActions>
     </Panel>
   )
