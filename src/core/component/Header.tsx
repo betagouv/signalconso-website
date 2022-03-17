@@ -87,7 +87,7 @@ export const Header = () => {
 
       <nav style={{marginLeft: 'auto', display: 'flex', alignItems: 'center'}}>
         <ul style={{listStyle: 'none', display: 'flex', alignItems: 'center', margin: 0}}>
-          {appConfig.isDev && (
+          {appConfig.showPlayground && (
             <li><HeaderItem href={siteMap.playground}>Playground</HeaderItem></li>
           )}
           <li><HeaderItem onClick={() => {
