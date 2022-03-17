@@ -1,14 +1,14 @@
 import {Panel, PanelBody} from 'shared/Panel/Panel'
 import {useI18n} from 'core/i18n'
-import {Box, BoxProps, Grid, Icon} from '@mui/material'
-import React, {ReactNode, useState} from 'react'
+import {Grid} from '@mui/material'
+import React, {useState} from 'react'
 import {ScInput} from 'shared/Input/ScInput'
 import {FormLayout} from 'shared/FormLayout/FormLayout'
 import {Controller, useForm} from 'react-hook-form'
 import {regexp} from 'core/utils/regexp'
 import {ScRadioGroup, ScRadioGroupItem} from 'shared/RadioGroup'
 import {useReportFlowContext} from '../ReportFlowContext'
-import {Txt, Alert} from 'mui-extension'
+import {Alert, Txt} from 'mui-extension'
 import {StepperActions} from 'shared/Stepper/StepperActions'
 import {useApiSdk} from 'core/context/ApiSdk'
 import {useFetcher} from '@alexandreannic/react-hooks-lib'
@@ -102,7 +102,9 @@ export const _Consumer = ({
     <>
       <Panel title={m.consumerTitle}>
         <PanelBody>
-          <Alert type="info" dangerouslySetInnerHTML={{__html: m.consumerIsEmployee}} sx={{mb: 3}}/>
+          {draft.employeeConsumer && (
+            <Alert type="info" dangerouslySetInnerHTML={{__html: m.consumerIsEmployee}} sx={{mb: 3}}/>
+          )}
           <Row icon="person">
             <Grid container columnSpacing={2}>
               <Grid item xs={6}>
