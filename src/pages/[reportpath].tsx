@@ -1,12 +1,13 @@
 import {GetStaticPaths, GetStaticProps} from 'next'
 import {apiSdk} from 'core/apiSdk'
 import {serializeJsonForStupidNextJs} from 'core/helper/utils'
-import {Anomaly, ReportDraft} from '@signal-conso/signalconso-api-sdk-js'
+import {Anomaly} from '@signal-conso/signalconso-api-sdk-js'
 import {ReportFlow} from 'feature/Report/ReportFlow'
 import {useReportFlowContext} from 'feature/Report/ReportFlowContext'
 import {useMemo} from 'react'
 import {Page} from 'shared/Page/Page'
 import {ReportDraft2} from 'core/model/ReportDraft'
+import {ReportStepHelper} from '../core/reportStep'
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const anomalies = await apiSdk.anomaly.getAnomalies()
@@ -26,24 +27,11 @@ export const getStaticProps: GetStaticProps = async ({params}) => {
   }
 }
 
-export const reportStepDone = (r: Partial<ReportDraft2>) => ({
-  problem: !!r.category && !!r.subcategories && !!r.contractualDispute !== undefined && r.employeeConsumer !== undefined,
-  description: !!r.details,
-  company: !!r.companyDraft?.siret || !!r.companyDraft?.address.postalCode,
-  consumer: !!r.consumer?.email && !!r.consumer?.firstName && !!r.consumer?.lastName,
-})
-
-export const reportCurrentStep = (r: Partial<ReportDraft2>): number => {
-  const values = Object.values(reportStepDone(r))
-  const index = values.findIndex(_ => !_)
-  return index > -1 ? index : values.length - 1
-}
-
 const AnomalyPage = ({anomaly}: {anomaly: Anomaly}) => {
   const _reportFlow = useReportFlowContext()
   const initialStep = useMemo(() => {
     if (anomaly.category === _reportFlow.reportDraft.category) {
-      return reportCurrentStep(_reportFlow.reportDraft)
+      return ReportStepHelper.reportCurrentStep(_reportFlow.reportDraft)
     }
     return 0
   }, [])

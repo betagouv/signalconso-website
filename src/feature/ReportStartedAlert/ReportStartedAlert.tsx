@@ -5,15 +5,14 @@ import {useMemo} from 'react'
 import {useI18n} from 'core/i18n'
 import {Txt} from 'mui-extension'
 import {ScButton} from 'shared/Button/Button'
-import {reportCurrentStep} from '../../pages/[reportpath]'
 import Link from 'next/link'
 import {ReportStepHelper} from 'core/reportStep'
 
 export const ReportStartedAlert = () => {
   const _report = useReportFlowContext()
   const hasStoredReport = useMemo(() => !!_report.reportDraft.anomaly, [_report.reportDraft])
-  const currentStep = useMemo(() => reportCurrentStep(_report.reportDraft), [_report.reportDraft])
-  const stepsCount = ReportStepHelper.count
+  const currentStep = useMemo(() => ReportStepHelper.reportCurrentStep(_report.reportDraft), [_report.reportDraft])
+  const stepsCount = useMemo(() => ReportStepHelper.count - 1, [])
   const {m} = useI18n()
   if (hasStoredReport && _report.reportDraft.anomaly) {
     return (
@@ -36,7 +35,7 @@ export const ReportStartedAlert = () => {
               </Txt>
             </Box>
             <Txt color="hint">
-              {m.step} <Txt bold>{currentStep}</Txt> <Txt>/ {stepsCount}</Txt>
+              {m.step} <Txt bold>{currentStep + 1}</Txt> <Txt>/ {stepsCount}</Txt>
             </Txt>
             <LinearProgress variant="determinate" value={(currentStep) / stepsCount * 100}/>
             <Box sx={{display: 'flex', justifyContent: 'flex-end', mt: 2}}>
