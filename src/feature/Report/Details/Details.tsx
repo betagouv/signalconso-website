@@ -333,7 +333,7 @@ export const _Details = ({
                           helperText={errors[inputIndex]?.type === 'required' ? m.required : `${getValues('' + inputIndex)?.length ?? 0} / ${appConfig.maxDescriptionInputLength}`}
                           error={hasErrors}
                           multiline
-                          minRows={3} maxRows={8} fullWidth placeholder={input.placeholder}
+                          minRows={4} maxRows={12} fullWidth placeholder={input.placeholder}
                         />
                       )
                     })

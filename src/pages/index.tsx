@@ -17,6 +17,7 @@ import consumer from '../../public/image/illustrations/consumer.png'
 import report from '../../public/image/illustrations/report.png'
 import company from '../../public/image/illustrations/company.png'
 import dgccrf from '../../public/image/illustrations/dgccrf.png'
+import {useWindowWidth} from '../core/useWindowWidth'
 
 const sxTitle: SxProps<Theme> = {
   fontSize: 24,
@@ -42,6 +43,7 @@ interface HomeProps {
 
 const Home = ({anomalies}: HomeProps) => {
   const {m} = useI18n()
+  const width = useWindowWidth()
   return (
     <>
       <Head>
@@ -55,8 +57,9 @@ const Home = ({anomalies}: HomeProps) => {
           background: t => t.palette.primary.main,
           color: t => t.palette.primary.contrastText,
           textAlign: 'center',
-          padding: 5,
-          fontSize: 32,
+          padding: width.isMobileWidthMax ? 1 : 5,
+          fontSize: width.isMobileWidthMax ? 22 : 32,
+          // fontSize: 32,
           // fontWeight: 'lighter'
         }} dangerouslySetInnerHTML={{__html: m.signalconsoCatchWord}}/>
 
