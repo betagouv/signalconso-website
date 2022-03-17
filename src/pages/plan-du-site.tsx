@@ -11,6 +11,7 @@ const PlanDuSite = () => {
         <title>{pageDefinitions.planDuSite.title}</title>
         <meta name="description" content={pageDefinitions.planDuSite.description}/>
       </Head>
+      <h1>Plan du site</h1>
       <h2>Pages générales</h2>
       <ul>
         <li><Link href={siteMap.index}>Accueil</Link></li>

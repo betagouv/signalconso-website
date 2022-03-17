@@ -11,6 +11,7 @@ const Contact = () => {
         <meta name="description" content={pageDefinitions.contact.description}/>
       </Head>
 
+      <h1>Contact</h1>
       <Alert type="info">Avant de nous écrire, vérifiez que vous utilisez le bon contact !</Alert>
 
       <h3>Vous avez rencontré un problème avec une entreprise et vous souhaitez le signaler ?</h3>

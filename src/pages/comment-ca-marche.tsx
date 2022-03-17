@@ -26,10 +26,10 @@ const Card = ({
         <meta name="description" content={pageDefinitions.commentCaMarche.description}/>
       </Head>
       <PanelBody>
-        <h2>{title}</h2>
+        <h3>{title}</h3>
         <Box sx={{display: 'flex',}}>
+          <Box sx={{mr: 2}}>{children}</Box>
           <img src={img} width="200px" height="200px"/>
-          <Box sx={{ml: 2}}>{children}</Box>
         </Box>
       </PanelBody>
     </Panel>

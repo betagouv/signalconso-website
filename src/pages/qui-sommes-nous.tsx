@@ -130,6 +130,7 @@ const QuiSommesNous = () => {
         <title>{pageDefinitions.quiSommesNous.title}</title>
         <meta name="description" content={pageDefinitions.quiSommesNous.description}/>
       </Head>
+      <h1>Qui sommes-nous ?</h1>
       <Panel>
         <PanelBody>
           <h2>Notre structure</h2>
