@@ -1,4 +1,4 @@
-import React, {useMemo, useState} from 'react'
+import React, {useEffect, useMemo, useState} from 'react'
 import {Alert, stopPropagation, Txt} from 'mui-extension'
 import {useReportFlowContext} from '../ReportFlowContext'
 import {DetailInput, DetailInputType, FileOrigin, ReportDraft, ReportTag, SubcategoryInput, UploadedFile} from '@signal-conso/signalconso-api-sdk-js'
@@ -41,9 +41,11 @@ export const Details = () => {
   const draft = _reportFlow.reportDraft
   const inputs = useMemo(() => {
     if (draft.subcategories) {
-      _reportFlow.setReportDraft(_ => ({..._, details: undefined}))
       return getDraftReportInputs({subcategories: draft.subcategories, tags: draft.tags})
     }
+  }, [draft.subcategories, draft.tags, draft.forwardToReponseConso])
+  useEffect(() => {
+    _reportFlow.setReportDraft(_ => ({..._, details: undefined}))
   }, [draft.subcategories, draft.tags, draft.forwardToReponseConso])
 
   if (!inputs || draft.employeeConsumer === undefined) {

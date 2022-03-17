@@ -3,10 +3,10 @@ import {last} from 'core/lodashNamedExport'
 
 export class DraftReportDefaultInputs {
 
-  static readonly reponseConso: DetailInput = {
+  static readonly reponseConso = (): DetailInput => ({
     label: 'Votre question',
     type: DetailInputType.TEXTAREA,
-  }
+  })
 
   static readonly description = (optional?: boolean): DetailInput => ({
     label: 'Description',
@@ -14,15 +14,15 @@ export class DraftReportDefaultInputs {
     ...optional && {optionnal: true}
   })
 
-  static readonly date: DetailInput = {
+  static readonly date = (): DetailInput => ({
     label: 'Date du constat',
     type: DetailInputType.DATE,
     defaultValue: 'SYSDATE'
-  }
+  })
 
-  static readonly defaults: DetailInput[] = [
+  static readonly defaults = (): DetailInput[] => [
     DraftReportDefaultInputs.description(),
-    DraftReportDefaultInputs.date,
+    DraftReportDefaultInputs.date(),
   ]
 }
 
@@ -35,12 +35,15 @@ export const getDraftReportInputs = ({subcategories, tags}: {subcategories: Subc
       res.push(DraftReportDefaultInputs.description(true))
     }
   } else {
-    res.push(...DraftReportDefaultInputs.defaults)
+    res.push(...DraftReportDefaultInputs.defaults())
   }
   if (tags?.includes(ReportTag.ReponseConso)) {
-    const i = res.findIndex(_ => _.type = DetailInputType.TEXTAREA);
-    res[i].label = `${DraftReportDefaultInputs.description().label} (${res[i].label})`;
-    res.push(DraftReportDefaultInputs.reponseConso)
+    const i = res.findIndex(_ => _.type === DetailInputType.TEXTAREA && !_.label.includes(DraftReportDefaultInputs.description().label));
+    if(i > -1) {
+      // ReponseConso need the description keyword to parse the reports
+      res[i].label = `${DraftReportDefaultInputs.description().label} (${res[i].label})`;
+    }
+    res.push(DraftReportDefaultInputs.reponseConso())
   }
   return res
 }

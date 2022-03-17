@@ -54,6 +54,7 @@ export const AnomalyCard = ({anomaly}: AnomalyCardProps) => {
               fontSize: '1.15rem',
               margin: theme.spacing(0, 0, .5, 0),
               padding: 0,
+              lineHeight: 1.3
             }}>
               {anomaly.category}
             </h3>
