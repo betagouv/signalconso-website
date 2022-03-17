@@ -262,7 +262,7 @@ export const fr = {
     attachmentsDescAnonymous: `Si vous ne souhaitez pas que l'entreprise connaisse votre identité, <b>cachez votre nom</b> sur vos pièces jointes.`,
     attachmentsDesc2: `Ajouter une pièce jointe augmente de 83 % la chance d'entrainer une mesure corrective ! Vous ne devez pas communiquer de données dites "sensibles" (données bancaires ou médicales).`,
     menu_howItWorks: `Comment ça marche ?`,
-    menu_home: `Home`,
+    menu_home: `Accueil`,
     menu_help: `Centre d'aide`,
     menu_authSpace: `Espace pro`,
     website: 'Site internet',

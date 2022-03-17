@@ -1,6 +1,6 @@
 import {Box, useTheme} from '@mui/material'
 import {ReactNode} from 'react'
-import {useWindowWidth} from '../useWindowWidth'
+import {useWindowWidth} from 'core/useWindowWidth'
 import Image from 'next/image'
 
 interface IllustrationStepperProps {

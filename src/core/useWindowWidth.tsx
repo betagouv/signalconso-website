@@ -30,11 +30,11 @@ export const useWindowWidth = ({
   }, [])
 
   return {
-    isXs: windowWidth < breakpoints.xs,
-    isSm: windowWidth < breakpoints.sm,
-    isMd: windowWidth < breakpoints.md,
-    isLg: windowWidth < breakpoints.lg,
-    isXl: windowWidth >= breakpoints.lg,
+    isXsOrLess: windowWidth < breakpoints.xs,
+    isSmOrLess: windowWidth < breakpoints.sm,
+    isMdOrLess: windowWidth < breakpoints.md,
+    isLgOrLess: windowWidth < breakpoints.lg,
+    isLgOrMore: windowWidth >= breakpoints.lg,
     windowWidth
   }
 }

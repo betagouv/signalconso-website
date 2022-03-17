@@ -1,11 +1,14 @@
 import Link from 'next/link'
 import {siteMap} from '../siteMap'
-import {Box, useScrollTrigger, useTheme} from '@mui/material'
+import {Box, Icon, Menu, MenuItem, useScrollTrigger, useTheme} from '@mui/material'
 import {styleUtils} from '../theme/theme'
 import {ScButton, ScButtonProps} from 'shared/Button/Button'
 import {useI18n} from '../i18n'
 import {appConfig} from '../../conf/appConfig'
 import {BtnAdmin} from './BtnAdmin'
+import {useMemo, useState} from 'react'
+import {useWindowWidth} from 'core/useWindowWidth'
+import {IconBtn} from 'mui-extension/lib'
 
 interface HeaderItemProps extends ScButtonProps {
   href?: string
@@ -43,10 +46,19 @@ export const headerHeight = {
 export const Header = () => {
   const theme = useTheme()
   const {m} = useI18n()
+  const width = useWindowWidth()
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
+  const isMobileMenuOpen = !!anchorEl
   const scrolled = useScrollTrigger({
     disableHysteresis: true,
     threshold: headerHeight.normal - headerHeight.compact,
   })
+  const menuItems = useMemo(() => [
+    ...appConfig.showPlayground ? [{href: siteMap.playground, label: 'Playground'}] : [],
+    {href: siteMap.index, label: m.menu_home},
+    {href: siteMap.commentCaMarche, label: m.menu_howItWorks},
+    {href: siteMap.centreAide, label: m.menu_help},
+  ], [])
 
   return (
     <Box component="header" sx={{
@@ -85,22 +97,38 @@ export const Header = () => {
         </a>
       </Link>
 
-      <nav style={{marginLeft: 'auto', display: 'flex', alignItems: 'center'}}>
-        <ul style={{listStyle: 'none', display: 'flex', alignItems: 'center', margin: 0}}>
-          {appConfig.showPlayground && (
-            <li><HeaderItem href={siteMap.playground}>Playground</HeaderItem></li>
-          )}
-          <li><HeaderItem onClick={() => {
-            throw new Error('Sentry Frontend Error')
-          }}>Throw error</HeaderItem></li>
-          <li><HeaderItem href={siteMap.index}>{m.menu_home}</HeaderItem></li>
-          <li><HeaderItem href={siteMap.commentCaMarche}>{m.menu_howItWorks}</HeaderItem></li>
-          <li><HeaderItem href={siteMap.centreAide}>{m.menu_help}</HeaderItem></li>
-          <li>
-            <BtnAdmin sx={{ml: 1}}/>
-          </li>
-        </ul>
-      </nav>
+      {width.isMdOrLess && (
+        <>
+          <IconBtn
+            aria-controls={isMobileMenuOpen ? 'basic-menu' : undefined}
+            aria-haspopup="true"
+            aria-expanded={isMobileMenuOpen ? 'true' : undefined}
+            sx={{marginLeft: 'auto'}}
+            onClick={e => setAnchorEl(e.currentTarget)}
+          >
+            <Icon>menu</Icon>
+          </IconBtn>
+          <Menu anchorEl={anchorEl} onClose={() => setAnchorEl(null)} open={isMobileMenuOpen}>
+            {menuItems.map(_ =>
+              <Link key={_.href} href={_.href}>
+                <MenuItem onClick={() => setAnchorEl(null)}>{_.label}</MenuItem>
+              </Link>
+            )}
+          </Menu>
+        </>
+      )}
+      {!width.isMdOrLess && (
+        <nav style={{marginLeft: 'auto', display: 'flex', alignItems: 'center'}}>
+          <ul style={{listStyle: 'none', display: 'flex', alignItems: 'center', margin: 0}}>
+            {menuItems.map(_ =>
+              <li key={_.href}><HeaderItem href={_.href}>{_.label}</HeaderItem></li>
+            )}
+            <li>
+            </li>
+          </ul>
+        </nav>
+      )}
+      <BtnAdmin sx={{ml: 1}}/>
     </Box>
   )
 }
