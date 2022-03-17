@@ -23,8 +23,6 @@ import {Panel, PanelActions, PanelBody} from 'shared/Panel/Panel'
 import {StepperActionsNext} from '../../../shared/Stepper/StepperActionsNext'
 
 interface CompanyProps {
-  animatePanel?: boolean
-  autoScrollToPanel?: boolean
 }
 
 interface CompanyWithRequiredProps extends CompanyProps {
@@ -32,7 +30,7 @@ interface CompanyWithRequiredProps extends CompanyProps {
   onUpdateReportDraft: (_: DeepPartial<ReportDraft2>) => void
 }
 
-export const Company = ({animatePanel, autoScrollToPanel}: CompanyProps) => {
+export const Company = ({}: CompanyProps) => {
   const _reportFlow = useReportFlowContext()
   const _stepper = useStepperContext()
   const draft = _reportFlow.reportDraft
@@ -48,8 +46,6 @@ export const Company = ({animatePanel, autoScrollToPanel}: CompanyProps) => {
   return (
     <>
       <_Company
-        animatePanel={animatePanel}
-        autoScrollToPanel={autoScrollToPanel}
         draft={draft}
         onUpdateReportDraft={draft => {
           _reportFlow.setReportDraft(_ => ReportDraft2.merge(_, draft))

@@ -11,15 +11,11 @@ import {useI18n} from 'core/i18n'
 import {ProblemContratualDisputeWarnPanel} from './ProblemContratualDisputeWarnPanel'
 
 interface Props {
-  animatePanel?: boolean
-  autoScrollToPanel?: boolean
   anomaly: Anomaly
 }
 
 export const Problem = ({
   anomaly,
-  animatePanel,
-  autoScrollToPanel,
 }: Props) => {
   const {m} = useI18n()
   const displayReponseConso = useMemo(() => Math.random() * 100 < appConfig.reponseConsoDisplayRate, [])
@@ -72,8 +68,7 @@ export const Problem = ({
     <>
       {([anomaly, ...(reportDraft.subcategories ?? [])]).map((c, i) => c.subcategories && (
         <ProblemSelect
-          animatePanel={animatePanel}
-          autoScrollToPanel={autoScrollToPanel}
+          autoScrollToPanel={i !== 0}
           key={c.id}
           title={c.subcategoriesTitle}
           value={reportDraft.subcategories?.[i]?.id}
@@ -91,8 +86,6 @@ export const Problem = ({
             category={anomaly.category}
             subcategories={reportDraft.subcategories}
             information={(lastSubcategories as any).information}
-            animate={animatePanel}
-            autoScrollTo={autoScrollToPanel}
           />
         ) : (
           <Stepper renderDone={
@@ -101,8 +94,6 @@ export const Problem = ({
             <Step isDone={reportDraft.employeeConsumer !== undefined}>
               <ProblemSelect
                 id="select-employeeconsumer"
-                animatePanel={animatePanel}
-                autoScrollToPanel={autoScrollToPanel}
                 title={m.problemDoYouWorkInCompany}
                 value={reportDraft.employeeConsumer}
                 onChange={employeeConsumer => setReportDraft(_ => ({..._, employeeConsumer}))}
@@ -120,8 +111,6 @@ export const Problem = ({
             <Step isDone={reportDraft.companyKind !== undefined} hidden={!!companyKindFromSelected}>
               <ProblemSelect
                 id="select-companyKind"
-                animatePanel={animatePanel}
-                autoScrollToPanel={autoScrollToPanel}
                 title={m.problemIsInternetCompany}
                 value={reportDraft.companyKind}
                 onChange={companyKind => setReportDraft(_ => ({..._, companyKind}))}
@@ -142,8 +131,6 @@ export const Problem = ({
             >
               <ProblemSelect
                 id="select-contractualDispute"
-                animatePanel={animatePanel}
-                autoScrollToPanel={autoScrollToPanel}
                 title="Que souhaitez-vous faire ?"
                 value={(() => {
                   if (reportDraft.contractualDispute === true) return 1
@@ -184,10 +171,7 @@ export const Problem = ({
               />
             </Step>
             <Step isDone={true} hidden={reportDraft.contractualDispute !== true}>
-              <ProblemContratualDisputeWarnPanel
-                animatePanel={animatePanel}
-                autoScrollToPanel={autoScrollToPanel}
-              />
+              <ProblemContratualDisputeWarnPanel/>
             </Step>
           </Stepper>
         ))}
