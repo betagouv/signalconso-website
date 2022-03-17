@@ -58,6 +58,7 @@ export const Details = () => {
       isTransmittable={ReportDraft.isTransmittableToPro(draft)}
       inputs={inputs}
       fileLabel={(last(draft.subcategories) as SubcategoryInput).fileLabel}
+      employeeConsumer={draft.employeeConsumer}
       contractualDispute={draft.contractualDispute}
       tags={draft.tags ?? []}
       onSubmit={(detailInputValues, uploadedFiles) => {
@@ -118,6 +119,7 @@ export const _Details = ({
   isTransmittable,
   description,
   contractualDispute,
+  employeeConsumer,
   onSubmit,
 }: {
   inputs: DetailInput[]
@@ -128,6 +130,7 @@ export const _Details = ({
   fileLabel?: string
   isTransmittable?: boolean
   contractualDispute?: boolean
+  employeeConsumer?: boolean
   tags?: ReportTag[]
 }) => {
   const [uploadedFiles, setUploadedFiles] = useState<undefined | UploadedFile[]>()
@@ -357,7 +360,7 @@ export const _Details = ({
       <Animate autoScrollTo={false}>
         <Panel title={fileLabel ?? m.attachments}>
           <PanelBody>
-            {!contractualDispute && (
+            {!contractualDispute && ReportDraft.isTransmittableToPro({tags, employeeConsumer}) && (
               <Txt color="hint" block gutterBottom dangerouslySetInnerHTML={{__html: m.attachmentsDescAnonymous}}/>
             )}
             <Alert dense type="info" sx={{mb: 2}} deletable persistentDelete>
