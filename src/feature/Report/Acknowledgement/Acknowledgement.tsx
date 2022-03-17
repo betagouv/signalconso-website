@@ -41,6 +41,7 @@ export const Acknowledgement = () => {
       return countries.entity?.find(_ => report.companyAddress.country === _.name)
     }
   }, [countries, report])
+
   useEffectFn(countries.error, toastError)
 
   if (country || !report.companyAddress.country) {

@@ -13,16 +13,7 @@ import {ReportFiles} from 'shared/UploadFile/ReportFiles'
 import {useEffectFn} from '@alexandreannic/react-hooks-lib'
 import {useToast} from 'core/toast'
 import {Row} from 'shared/Row/Row'
-import React from 'react'
-
-// const Row = ({icon, dense, children, ...props}: {dense?: boolean, icon: string} & BoxProps) => {
-//   return (
-//     <Box sx={{display: 'flex', alignItems: 'center', mb: dense ? 1 : 2}} {...props}>
-//       <Icon sx={{mr: dense ? 1 : 2, color: t => t.palette.text.disabled}}>{icon}</Icon>
-//       {children}
-//     </Box>
-//   )
-// }
+import React, {useEffect} from 'react'
 
 export const Confirmation = ({}: {}) => {
   const _reportFlow = useReportFlowContext()
@@ -47,7 +38,7 @@ export const _Confirmation = ({
   const {toastError} = useToast()
   const _reportFlow = useReportFlowContext()
 
-  useEffectFn(_reportFlow.createReport.error, toastError)
+  useEffect(_reportFlow.createReport.clearCache, [])
 
   return (
     <Animate autoScrollTo={true} animate={true}>
@@ -149,8 +140,9 @@ export const _Confirmation = ({
           nextButtonLabel={draft.forwardToReponseConso ? m.confirmationBtnReponseConso : m.confirmationBtn}
           next={next => {
             _reportFlow.createReport.fetch({}, draft)
-              .then(_reportFlow.clearReportDraft)
               .then(next)
+              .then(_reportFlow.clearReportDraft)
+              .catch(toastError)
           }}
         />
       </div>
