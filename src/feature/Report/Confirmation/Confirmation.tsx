@@ -141,6 +141,7 @@ export const _Confirmation = ({
           next={next => {
             _reportFlow.createReport.fetch({}, draft)
               .then(next)
+              .then(_reportFlow.clearReportDraft)
               .catch(toastError)
           }}
         />

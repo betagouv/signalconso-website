@@ -13,6 +13,7 @@ const stepMargin = 8
 
 export const StepperHeader = ({steps, currentStep, goTo}: StepperHeaderProps) => {
   const t = useTheme()
+  const isDone = currentStep >= steps.length
   return (
     <Box sx={{
       display: 'flex',
@@ -20,9 +21,9 @@ export const StepperHeader = ({steps, currentStep, goTo}: StepperHeaderProps) =>
       justifyContent: 'center',
     }}>
       {steps.map((step, i) =>
-        <Box key={step.name} sx={{flex: 1}} onClick={() => i < currentStep && goTo(i)}>
+        <Box key={step.name} sx={{flex: 1}} onClick={() => i < currentStep && !isDone && goTo(i)}>
           <Box sx={{
-            cursor: i < currentStep ? 'pointer' : 'not-allowed',
+            cursor: i < currentStep && !isDone ? 'pointer' : 'not-allowed',
             display: 'flex',
             position: 'relative',
             justifyContent: 'center',
