@@ -41,6 +41,7 @@ export const Details = () => {
   const draft = _reportFlow.reportDraft
   const inputs = useMemo(() => {
     if (draft.subcategories) {
+      _reportFlow.setReportDraft(_ => ({..._, details: undefined}))
       return getDraftReportInputs({subcategories: draft.subcategories, tags: draft.tags})
     }
   }, [draft.subcategories, draft.tags, draft.forwardToReponseConso])
