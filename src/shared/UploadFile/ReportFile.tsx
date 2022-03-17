@@ -37,7 +37,7 @@ export const ReportFile = ({file, dense, onRemove}: ReportFileProps) => {
   // useEffect(() => {
   //   fromNullable(_remove.error).map(toastError)
   // }, [_remove.error])
-
+  
   return (
     <Tooltip title={file.filename}>
       <Box
@@ -49,7 +49,7 @@ export const ReportFile = ({file, dense, onRemove}: ReportFileProps) => {
           display: 'block',
           position: 'relative',
           p: cardMargin,
-          '&:hover > $removeBtn': {
+          '&:hover > .remove-btn': {
             display: 'flex !important',
           },
         }}
@@ -119,7 +119,6 @@ export const ReportFile = ({file, dense, onRemove}: ReportFileProps) => {
           })()}
         </Box>
         {onRemove && (
-          // eslint-disable-next-line react/jsx-no-undef
           <ScDialog
             title={m.removeAsk}
             content={<span dangerouslySetInnerHTML={{__html: m.thisWillBeRemoved(file.filename)}} />}
@@ -134,7 +133,7 @@ export const ReportFile = ({file, dense, onRemove}: ReportFileProps) => {
             }}
             confirmLabel={m.delete}
           >
-            <IconBtn size="small" sx={{
+            <IconBtn size="small" className="remove-btn" sx={{
               display: 'none !important',
               position: 'absolute',
               top: (removeBtnSize - 8 * cardMargin) / -2,
