@@ -1,5 +1,5 @@
 import {Anomaly, Index} from '@signal-conso/signalconso-api-sdk-js'
-import {Box, useTheme} from '@mui/material'
+import {alpha, Box, useTheme} from '@mui/material'
 import {Txt} from 'mui-extension/lib'
 import Link from 'next/link'
 import {AnomalyImage} from './AnomalyImage'
@@ -36,13 +36,16 @@ export const AnomalyCard = ({anomaly}: AnomalyCardProps) => {
           background: t => t.palette.background.paper,
           display: 'flex',
           // border: `1px solid ${theme.palette.divider}`,
-          padding: 2,
+          padding: 1.5,
           borderRadius: `${theme.shape.borderRadius}px`,
-          boxShadow: theme.shadows[1],
+          boxShadow: theme.shadows[2],
           // margin: theme.spacing(2),
           transition: theme.transitions.create('all'),
           height: '100%',
+          border: t => `2px solid ${t.palette.background.paper}`,
           '&:hover': {
+            border: t => `2px solid ${t.palette.primary.main}`,
+            background: t => alpha(t.palette.primary.main, .05),
             boxShadow: theme.shadows[4],
             // transform: 'scale(1.01)',
           }
