@@ -41,7 +41,7 @@ const AnomalyPage = ({anomaly}: {anomaly: Anomaly}) => {
   }, [])
 
   return (
-    <Page>
+    <Page width={624}>
       <Box sx={{display: 'flex', alignItems: 'center', mb: 2, color: t => t.palette.text.secondary}}>
         <Link href={siteMap.index}>
           <IconBtn>
