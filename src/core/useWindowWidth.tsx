@@ -9,6 +9,16 @@ interface UseWindowWidthParams {
   }
 }
 
+export interface WindowWidthHook {
+  isXsOrLess: boolean
+  isSmOrLess: boolean
+  isMdOrLess: boolean
+  isLgOrLess: boolean
+  isLgOrMore: boolean
+  isMobileWidthMax: boolean
+  windowWidth: number
+}
+
 export const useWindowWidth = ({
   breakpoints = {
     xs: 0,
@@ -16,7 +26,7 @@ export const useWindowWidth = ({
     md: 900,
     lg: 1200,
   }
-}: UseWindowWidthParams = {}) => {
+}: UseWindowWidthParams = {}): WindowWidthHook => {
   const [windowWidth, setWindowWidth] = useState(960)
 
   useEffect(() => {
@@ -35,6 +45,7 @@ export const useWindowWidth = ({
     isMdOrLess: windowWidth < breakpoints.md,
     isLgOrLess: windowWidth < breakpoints.lg,
     isLgOrMore: windowWidth >= breakpoints.lg,
+    isMobileWidthMax: windowWidth < breakpoints.md,
     windowWidth
   }
 }

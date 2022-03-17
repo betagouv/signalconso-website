@@ -16,7 +16,7 @@ export const siteMap = {
   quiSommesNous: `/qui-sommes-nous`,
   litige: `/litige`,
   conditionsGeneralesUtilisation: `/conditions-generales-utilisation`,
-  connexion: appConfig.dashboardBaseUrl,
+  connexion: appConfig.dashboardBaseUrl + '/connexion',
   companyActivation: appConfig.dashboardBaseUrl + '/activation',
   lostPassword: appConfig.dashboardBaseUrl + '/perte-mot-de-passe',
 }
