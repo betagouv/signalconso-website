@@ -117,7 +117,7 @@ export const ScRadioGroupItem = <T, >({
           }
         }}>
         {title && (
-          <Txt block size="big">
+          <Txt block>
             {title}
           </Txt>
         )}
