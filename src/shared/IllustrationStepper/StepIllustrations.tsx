@@ -35,7 +35,7 @@ export const IllustrationStepperMobile = ({steps}: IllustrationStepperProps) => 
         {steps.map(step =>
           <Box key={step.alt}>
             <Box sx={{
-              height: 200,
+              height: 240,
               width: '100%',
               position: 'relative'
             }}>
