@@ -16,7 +16,12 @@ const AllTheProviders = (options?: Options) => ({children}: any) => {
   return (
     <Provide
       providers={[
-        _ => <ApiSdkProvider children={_} apiSdk={options?.apiSdkMock ?? {} as any}/>,
+        _ => <ApiSdkProvider children={_} apiSdk={{
+          report: {
+            create: () => void 0,
+          },
+          ...options?.apiSdkMock ?? {} as any
+        }}/>,
         _ => <ThemeProvider theme={muiTheme()} children={_}/>,
         _ => <I18nProvider children={_}/>,
         _ => <ReportFlowProvider children={_} initialReport={options?.initialReport}/>,

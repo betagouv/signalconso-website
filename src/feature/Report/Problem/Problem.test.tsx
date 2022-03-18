@@ -218,6 +218,22 @@ describe('Problem', () => {
     clickBtnSubmit(app)
   })
 
+  it('should not ask ReponseConso when no tag', () => {
+    let report: undefined | Partial<ReportDraft2>
+    const app = render(
+      <DummyStepperProvider currentStep={0}>
+        <AccessReportFlow onReportChange={r => {
+          report = r
+        }}>
+          <Problem anomaly={ProblemFixture.anomaly}/>
+        </AccessReportFlow>
+      </DummyStepperProvider>
+    )
+    fireEvent.click(app.getByText(ProblemFixture.simpleSubcategory.title))
+    clickEmployeeConsumer(app, 'no')
+    expect(() => clickContractualDispute(app, 'reponseConso')).toThrow()
+  })
+
   it('should not ask ReponseConso nor contractual dispute when employeeConsumer = true', () => {
     let report: undefined | Partial<ReportDraft2>
     const app = render(

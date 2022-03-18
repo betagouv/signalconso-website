@@ -147,7 +147,7 @@ export const Problem = ({
                     title: m.problemContractualDisputeFormNo,
                     value: 2
                   },
-                  ...(displayReponseConso ? [{
+                  ...((displayReponseConso && tagsFromSelected.includes(ReportTag.ReponseConso)) ? [{
                     title: m.problemContractualDisputeFormReponseConso,
                     value: 3
                   }] : [])
