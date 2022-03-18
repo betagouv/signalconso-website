@@ -6,6 +6,7 @@ import React from 'react'
 import {useI18n} from 'core/i18n'
 import {useForm} from 'react-hook-form'
 import {Animate} from 'shared/Animate/Animate'
+import {StepperActionsNext} from '../../../shared/Stepper/StepperActionsNext'
 
 interface Form {
   consumerPostalCode: string
@@ -44,9 +45,7 @@ export const CompanyAskConsumerPostalCode = ({value, onChange}: Props) => {
           </PanelBody>
 
           <PanelActions>
-            <ScButton color="primary" variant="contained" type="submit">
-              {m.continue}
-            </ScButton>
+            <StepperActionsNext type="submit"/>
           </PanelActions>
         </form>
       </Panel>

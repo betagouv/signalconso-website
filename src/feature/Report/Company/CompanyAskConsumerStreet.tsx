@@ -7,6 +7,7 @@ import React from 'react'
 import {ScButton} from 'shared/Button/Button'
 import {Animate} from 'shared/Animate/Animate'
 import {Alert} from 'mui-extension'
+import {StepperActionsNext} from '../../../shared/Stepper/StepperActionsNext'
 
 interface Form {
   street: string
@@ -51,9 +52,7 @@ export const CompanyAskConsumerStreet = ({onChange}: Props) => {
           </PanelBody>
 
           <PanelActions>
-            <ScButton color="primary" variant="contained" icon="search" type="submit">
-              {m.search}
-            </ScButton>
+            <StepperActionsNext type="submit"/>
           </PanelActions>
         </form>
       </Panel>
