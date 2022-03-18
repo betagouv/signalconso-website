@@ -78,7 +78,7 @@ export const Header = () => {
         boxShadow: t => t.shadows[4],
       }
     }}>
-      {scrolled ? (
+      {scrolled || width.isMobileWidthMax ? (
         <img
           style={{height: 38, marginRight: theme.spacing(3)}}
           src="/image/gouv-mobile.svg"
@@ -93,11 +93,11 @@ export const Header = () => {
       )}
       <Link href={siteMap.index}>
         <a>
-          <img style={{height: scrolled ? 40 : 60}} src="/image/logo-signalconso.svg" alt={m.logoAltSignalconso}/>
+          <img style={{height: scrolled || width.isMobileWidthMax ? 40 : 60}} src="/image/logo-signalconso.svg" alt={m.logoAltSignalconso}/>
         </a>
       </Link>
 
-      {width.isMdOrLess && (
+      {width.isMobileWidthMax && (
         <>
           <IconBtn
             aria-controls={isMobileMenuOpen ? 'basic-menu' : undefined}
@@ -117,14 +117,12 @@ export const Header = () => {
           </Menu>
         </>
       )}
-      {!width.isMdOrLess && (
+      {!width.isMobileWidthMax && (
         <nav style={{marginLeft: 'auto', display: 'flex', alignItems: 'center'}}>
           <ul style={{listStyle: 'none', display: 'flex', alignItems: 'center', margin: 0}}>
             {menuItems.map(_ =>
               <li key={_.href}><HeaderItem href={_.href}>{_.label}</HeaderItem></li>
             )}
-            <li>
-            </li>
           </ul>
         </nav>
       )}

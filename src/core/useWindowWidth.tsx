@@ -9,6 +9,23 @@ interface UseWindowWidthParams {
   }
 }
 
+// export interface WindowWidthHook {
+//   isXsOrLess: boolean
+//   isSmOrLess: boolean
+//   isMdOrLess: boolean
+//   isLgOrLess: boolean
+//   isLgOrMore: boolean
+//   isMobileWidthMax: boolean
+//   windowWidth: number
+//   switch?: <T, >(_: {
+//     isXsOrLess?: T
+//     isSmOrLess?: T
+//     isMdOrLess?: T
+//     isLgOrLess?: T
+//     isLgOrMore?: T
+//   }) => T
+// }
+
 export const useWindowWidth = ({
   breakpoints = {
     xs: 0,
@@ -29,12 +46,26 @@ export const useWindowWidth = ({
     return () => window.removeEventListener('resize', handleResize)
   }, [])
 
-  return {
+  const isBreakpoints = {
     isXsOrLess: windowWidth < breakpoints.xs,
     isSmOrLess: windowWidth < breakpoints.sm,
     isMdOrLess: windowWidth < breakpoints.md,
     isLgOrLess: windowWidth < breakpoints.lg,
     isLgOrMore: windowWidth >= breakpoints.lg,
-    windowWidth
+  }
+  return {
+    ...isBreakpoints,
+    isMobileWidthMax: isBreakpoints.isMdOrLess,
+    windowWidth,
+    switch: <T, >(params: {
+      isXsOrLess?: T
+      isSmOrLess?: T
+      isMdOrLess?: T
+      isLgOrLess?: T
+      isLgOrMore?: T
+    }): T => {
+      const key = Object.entries(isBreakpoints).reverse().find(([bp, active]) => !!active)![0] as keyof typeof params
+      return params[key]!
+    }
   }
 }

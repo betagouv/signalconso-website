@@ -1,6 +1,5 @@
 import React, {ReactNode, useContext, useMemo, useState} from 'react'
 import {StepperHeader} from './StepperHeader'
-import {Page} from '../Page/Page'
 
 export interface StepProps {
   name: string
@@ -34,30 +33,28 @@ export const Stepper = React.memo(({steps, initialStep, renderDone}: StepperProp
     <StepperContext.Provider value={{
       currentStep,
       goTo: (i: number) => {
-        if(isDone) return
+        if (isDone) return
         setCurrentStep(_ => Math.max(Math.min(i, maxStep), 0))
         scrollTop()
       },
       next: () => {
-        if(isDone) return
+        if (isDone) return
         setCurrentStep(_ => Math.min(_ + 1, maxStep))
         scrollTop()
       },
       prev: () => {
-        if(isDone) return
+        if (isDone) return
         setCurrentStep(_ => Math.max(_ - 1, 0))
         scrollTop()
       },
     }}>
-      <Page width={600}>
-        <StepperHeader steps={steps} currentStep={currentStep} goTo={setCurrentStep}/>
-        {(() => {
-          const XX: any = currentStep > (steps.length - 1) ? renderDone : steps[currentStep].component
-          return (
-            <XX/>
-          )
-        })()}
-      </Page>
+      <StepperHeader steps={steps} currentStep={currentStep} goTo={setCurrentStep}/>
+      {(() => {
+        const XX: any = currentStep > (steps.length - 1) ? renderDone : steps[currentStep].component
+        return (
+          <XX/>
+        )
+      })()}
     </StepperContext.Provider>
   )
 })

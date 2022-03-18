@@ -1,6 +1,7 @@
 import React from 'react'
 import {StepProps} from './Stepper'
 import {alpha, Box, Icon, Theme, useTheme} from '@mui/material'
+import {useWindowWidth} from '../../core/useWindowWidth'
 
 interface StepperHeaderProps {
   steps: StepProps[]
@@ -14,6 +15,7 @@ const stepMargin = 8
 export const StepperHeader = ({steps, currentStep, goTo}: StepperHeaderProps) => {
   const t = useTheme()
   const isDone = currentStep >= steps.length
+  const {isMobileWidthMax} = useWindowWidth()
   return (
     <Box sx={{
       display: 'flex',
@@ -84,7 +86,7 @@ export const StepperHeader = ({steps, currentStep, goTo}: StepperHeaderProps) =>
                 color: t => t.palette.text.disabled,
               })
             }}>
-              {step.label}
+              {currentStep === i || !isMobileWidthMax ? step.label : ''}
             </Box>
           </Box>
         </Box>
