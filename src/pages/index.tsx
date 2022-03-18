@@ -1,7 +1,7 @@
 import type {GetStaticProps} from 'next'
 import Head from 'next/head'
 import {Theme} from '@mui/material/styles'
-import {IllustrationStepper, IllustrationStepperStep} from 'shared/IllustrationStepper/StepIllustrations'
+import {IllustrationStepper} from 'shared/IllustrationStepper/StepIllustrations'
 import {Box, Divider, Grid} from '@mui/material'
 import {apiSdk} from 'core/apiSdk'
 import {Anomaly} from '@signal-conso/signalconso-api-sdk-js'
@@ -65,12 +65,16 @@ const Home = ({anomalies}: HomeProps) => {
 
         <Section>
           <Box component="h2" sx={sxTitle}>Comment ça marche ?</Box>
-          <IllustrationStepper>
-            <IllustrationStepperStep title="Vous avez rencontré un problème<br/>avec une entreprise&#160;?" image={consumer} alt="consumer"/>
-            <IllustrationStepperStep title="Faites un signalement<br/>avec SignalConso." image={report} alt="report"/>
-            <IllustrationStepperStep title="L'entreprise est prévenue<br/>et peut intervenir." image={company} alt="company"/>
-            <IllustrationStepperStep title="La répression des fraudes intervient si nécessaire." image={dgccrf} alt="dgccrf"/>
-          </IllustrationStepper>
+          <IllustrationStepper steps={[
+            {title: 'Vous avez rencontré un problème avec une entreprise&#160;?', image: consumer, alt: 'consumer'},
+            {title: 'Faites un signalement avec SignalConso.', image: report, alt: 'report'},
+            {title: 'L\'entreprise est prévenue et peut intervenir.', image: company, alt: 'company'},
+            {title: 'La répression des fraudes intervient si nécessaire.', image: dgccrf, alt: 'dgccrf'},
+            // {title: 'Vous avez rencontré un problème<br/>avec une entreprise&#160;?', image: consumer, alt: 'consumer'},
+            // {title: 'Faites un signalement<br/>avec SignalConso.', image: report, alt: 'report'},
+            // {title: 'L\'entreprise est prévenue<br/>et peut intervenir.', image: company, alt: 'company'},
+            // {title: 'La répression des fraudes intervient si nécessaire.', image: dgccrf, alt: 'dgccrf'},
+          ]}/>
 
           <Box sx={{display: 'flex', alignItems: 'center', justifyContent: 'center', pt: 4, pb: 3}}>
             <ScButton
@@ -79,7 +83,7 @@ const Home = ({anomalies}: HomeProps) => {
               }}
               size="large"
               variant="contained"
-              sx={{textTransform: 'unset'}}
+              sx={{textTransform: 'unset', fontWeight: t => t.typography.fontWeightBold}}
               iconAfter="feedback"
             >
               {m.buttonReportProblem}
