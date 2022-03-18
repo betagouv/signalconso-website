@@ -57,7 +57,7 @@ export const useWindowWidth = ({
     ...isBreakpoints,
     isMobileWidthMax: isBreakpoints.isMdOrLess,
     windowWidth,
-    switch: <T, >(params: {
+    switchWidth: <T, >(params: {
       isXsOrLess?: T
       isSmOrLess?: T
       isMdOrLess?: T
