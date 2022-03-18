@@ -177,7 +177,6 @@ const NodeInfo = ({
 }: {
   anomaly: SubcategoryInformation
 }) => {
-  const theme = useTheme()
   return (
     <>
       {anomaly.information.title && (<div dangerouslySetInnerHTML={{__html: anomaly.information.title}}/>)}

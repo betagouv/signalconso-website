@@ -12,6 +12,8 @@ import {styleUtils} from '../core/theme/theme'
 import {IconBtn} from 'mui-extension/lib'
 import Link from 'next/link'
 import {siteMap} from '../core/siteMap'
+import Head from 'next/head'
+import {pageDefinitions} from '../core/pageDefinition'
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const anomalies = await apiSdk.anomaly.getAnomalies()
@@ -42,6 +44,10 @@ const AnomalyPage = ({anomaly}: {anomaly: Anomaly}) => {
 
   return (
     <Page width={624}>
+      <Head>
+        <title>{anomaly.category + ' - SignalConso'}</title>
+        <meta name="description" content={anomaly.description}/>
+      </Head>
       <Box sx={{display: 'flex', alignItems: 'center', mb: 2, color: t => t.palette.text.secondary}}>
         <Link href={siteMap.index}>
           <IconBtn>
