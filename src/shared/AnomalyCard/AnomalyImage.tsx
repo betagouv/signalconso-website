@@ -2,7 +2,7 @@ import {Box, BoxProps} from '@mui/material'
 import {Anomaly, Index} from '@signal-conso/signalconso-api-sdk-js'
 
 interface Props extends BoxProps {
-  anomaly: Pick<Anomaly, 'sprite'>
+  anomaly: Pick<Anomaly, 'sprite' | 'cssClass'>
   scale?: number
 }
 
@@ -32,18 +32,23 @@ export const AnomalyImage = ({anomaly, className, scale = 1, sx, ...other}: Prop
       {...other}
       sx={{
         ...sx,
-        ...(anomaly.sprite ? {
-          background: 'url("/image/pictos/sprite.png") no-repeat bottom',
-          backgroundPosition: backgroundPosition[anomaly.sprite],
-          backgroundRepeat: 'no-repeat',
-        } : {}),
+        ...(anomaly.sprite ? (
+          anomaly.sprite === 'category-bloctel' ? {
+            background: 'url("/image/pictos/bloctel.png") no-repeat center',
+            backgroundSize: 'contain',
+          } : {
+            background: 'url("/image/pictos/sprite.png") no-repeat bottom',
+            backgroundPosition: backgroundPosition[anomaly.sprite],
+            backgroundRepeat: 'no-repeat',
+          }
+        ) : {}),
         transform: `scale(${scale})`,
         minWidth: size,
         minHeight: size,
         maxWidth: size,
         maxHeight: size,
       }}
-      className={(className ?? '') + ` sprite-${anomaly.sprite}`}
+      className={`${className ?? ''} sprite-${anomaly.sprite}`}
     />
   )
 }
