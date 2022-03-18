@@ -24,7 +24,7 @@ const members: Member[] = [
   },
   {
     name: 'Ingrid Godefroy',
-    role: 'Chargé de déploiement',
+    role: 'Chargée de déploiement',
     avatar: 'avatar-ingridgodefroy.png',
   },
   {
