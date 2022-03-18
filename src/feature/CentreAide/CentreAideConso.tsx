@@ -13,38 +13,6 @@ export const CentreAideConso = (props: BoxProps) => {
         <AccordionPanel title={`Comment fonctionne SignalConso ?`}>
           <p>Consultez notre page <Link href={siteMap.commentCaMarche}>Comment ça marche</Link></p>
         </AccordionPanel>
-        <AccordionPanel title={`Je souhaite poser une question pour connaître mes droits ou savoir ce que je dois faire face à mon problème`}>
-          <p>SignalConso ne permet pas de poser une question à l'administration.</p>
-          <p>Pour trouver une
-            réponse, vous pouvez :
-          </p>
-          <ul>
-            <li>Consulter <a href={externalLinks.dgccrfFichesPratiques} target="_blank"
-                             rel="noreferrer">les
-              fiches
-              pratiques</a>et <a href={externalLinks.dgccrfFaq} target="_blank" rel="noreferrer">la foire aux questions</a> de la répression des
-              fraudes (DGCCRF)
-            </li>
-            <li> Écrire votre question à l’aide du formulaire :
-              <br/>
-              <a href={externalLinks.dgccrfContact}
-                 target="_blank" rel="noreferrer">{externalLinks.dgccrfContact}</a>
-            </li>
-            <li>
-              Appeler le service Allo Service Publique au 3939.<br/><br/>Ce service est disponible du lundi au vendredi de 8h45 à 17h30 heures de métropole (0.15€ la minute +
-              prix de l’appel).<br/><br/>Vous êtes consommateur, vous rencontrez une difficulté suite à un acte d'achat ou vous avez une interrogation sur un point de droit avant
-              d'acheter ou commander: vous pouvez obtenir une réponse par un agent de la DGCCRF en contactant le <b>0 809 540 550</b> DGCCRF-RéponseConso. Ce numéro d'appel est non
-              surtaxé.<br/><br/><b>Horaires d'ouverture du service :</b>
-              <ul>
-                <li>Les lundis de 8h30 à 12h30 et de 13h15 à 17h15</li>
-                <li>Les mardis de 8h30 à 12h30 et de 13h15 à 17h15</li>
-                <li>Les mercredis de 13h15 à 17h15</li>
-                <li>Les jeudis de 8h30 à 12h30</li>
-                <li>Les vendredis de 8h30 à 16h.</li>
-              </ul>
-            </li>
-          </ul>
-        </AccordionPanel>
       </AccordionPanels>
 
       <h2 className="pt-5">Je veux faire un signalement</h2>
