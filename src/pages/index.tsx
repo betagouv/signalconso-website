@@ -28,7 +28,9 @@ const sxTitle: SxProps<Theme> = {
 export const getStaticProps: GetStaticProps = async (context) => {
   const anomalies = await apiSdk.anomaly.getAnomalies()
     .then(res => res.filter(_ => !_.hidden))
-    .then(res => sortBy(res, _ => _.id))
+  console.log(anomalies.map(_ => ({id: _.id, name: _.category})))
+  console.log(sortBy(anomalies, _ => _.id).map(_ => ({id: _.id, name: _.category})))
+  // .then(res => sortBy(res, _ => _.id))
   return {
     props: serializeJsonForStupidNextJs({
       anomalies
@@ -83,7 +85,12 @@ const Home = ({anomalies}: HomeProps) => {
               }}
               size="large"
               variant="contained"
-              sx={{textTransform: 'unset', fontWeight: t => t.typography.fontWeightBold}}
+              color="error"
+              sx={{
+                textTransform: 'unset',
+                fontWeight: t => t.typography.fontWeightBold,
+                background: '#be3d4d'
+              }}
               iconAfter="feedback"
             >
               {m.buttonReportProblem}
@@ -92,10 +99,12 @@ const Home = ({anomalies}: HomeProps) => {
         </Section>
         <Divider/>
         <Section id="index-categories" component="section" sx={{
-          background: '#fafafa'
+          background: `linear-gradient(180deg,#407ca8,#2a8194 99.99%,#5a4b5f)`,
         }}>
-          <Box component="h2" sx={sxTitle}>Quel problème avez-vous rencontré ?</Box>
-          <Grid container spacing={2}>
+          <Box component="h2" sx={{...sxTitle, color: t => t.palette.getContrastText(t.palette.primary.main)}}>
+            Quel problème avez-vous rencontré ?
+          </Box>
+          <Grid container spacing={3}>
             {anomalies.map(a => (
               <Grid key={a.path} item xs={12} sm={6} md={4}>
                 <AnomalyCard anomaly={a}/>

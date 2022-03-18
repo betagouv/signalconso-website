@@ -19,16 +19,16 @@ export const AnomalyCard = ({anomaly}: AnomalyCardProps) => {
           // border: `1px solid ${theme.palette.divider}`,
           padding: 1.5,
           borderRadius: `${theme.shape.borderRadius}px`,
-          boxShadow: theme.shadows[2],
+          // boxShadow: theme.shadows[2],
           // margin: theme.spacing(2),
           transition: theme.transitions.create('all'),
           height: '100%',
           border: t => `2px solid ${t.palette.background.paper}`,
           '&:hover': {
-            border: t => `2px solid ${t.palette.primary.main}`,
-            background: t => alpha(t.palette.primary.main, .05),
-            boxShadow: theme.shadows[4],
-            // transform: 'scale(1.01)',
+            // border: t => `2px solid ${t.palette.primary.main}`,
+            // background: t => alpha(t.palette.primary.main, .05),
+            boxShadow: theme.shadows[5],
+            transform: 'scale(1.04)',
           }
         }}>
 

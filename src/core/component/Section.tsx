@@ -8,7 +8,7 @@ export const Section = ({component = 'section', dangerouslySetInnerHTML, childre
     <Box component={component} {...props}>
       <Box dangerouslySetInnerHTML={dangerouslySetInnerHTML} sx={{
         py: 3,
-        px: 1,
+        px: 2,
         maxWidth: 1140,
         margin: 'auto',
       }}>
