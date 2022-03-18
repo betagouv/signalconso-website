@@ -21,6 +21,7 @@ import {Row} from 'shared/Row/Row'
 import {AddressComponent} from 'shared/Address/Address'
 import {Panel, PanelActions, PanelBody} from 'shared/Panel/Panel'
 import {StepperActionsNext} from '../../../shared/Stepper/StepperActionsNext'
+import {CompanyAskConsumerStreet} from './CompanyAskConsumerStreet'
 
 interface CompanyProps {
 }
@@ -148,48 +149,62 @@ export const _Company = ({
             </CompanySearchByIdentity>
           ),
           [IdentifyBy.NONE]: () => (
-            <CompanyAskIsForeign>
-              {isForeign => fnSwitch(isForeign, {
-                [IsForeignCompany.Yes]: () => (
-                  <CompanyAskConsumerPostalCode onChange={postalCode => {
-                    onUpdateReportDraft({
-                      companyDraft: {
-                        ...phoneOrWebsite,
-                        address: {
-                          postalCode,
+            draft.companyKind === CompanyKinds.LOCATION ? (
+              <CompanyAskConsumerStreet onChange={form => {
+                onUpdateReportDraft({
+                  companyDraft: {
+                    ...phoneOrWebsite,
+                    address: {
+                      postalCode: form.postalCode,
+                      street: form.street,
+                    },
+                  },
+                })
+              }}/>
+            ) : (
+              <CompanyAskIsForeign>
+                {isForeign => fnSwitch(isForeign, {
+                  [IsForeignCompany.Yes]: () => (
+                    <CompanyAskConsumerPostalCode onChange={postalCode => {
+                      onUpdateReportDraft({
+                        companyDraft: {
+                          ...phoneOrWebsite,
+                          address: {
+                            postalCode,
+                          }
                         }
-                      }
-                    })
-                  }}/>
-                ),
-                [IsForeignCompany.No]: () => (
-                  <CompanyAskForeignDetails onSubmit={form => {
-                    onUpdateReportDraft({
-                      companyDraft: {
-                        name: form.name,
-                        ...phoneOrWebsite,
-                        address: {
-                          postalCode: form.postalCode,
-                          country: form.country.name,
+                      })
+                    }}/>
+                  ),
+                  [IsForeignCompany.No]: () => (
+                    <CompanyAskForeignDetails onSubmit={form => {
+                      onUpdateReportDraft({
+                        companyDraft: {
+                          name: form.name,
+                          ...phoneOrWebsite,
+                          address: {
+                            postalCode: form.postalCode,
+                            country: form.country.name,
+                          }
                         }
-                      }
-                    })
-                  }}/>
-                ),
-                [IsForeignCompany.Unknown]: () => (
-                  <CompanyAskConsumerPostalCode onChange={postalCode => {
-                    onUpdateReportDraft({
-                      companyDraft: {
-                        ...phoneOrWebsite,
-                        address: {
-                          postalCode,
+                      })
+                    }}/>
+                  ),
+                  [IsForeignCompany.Unknown]: () => (
+                    <CompanyAskConsumerPostalCode onChange={postalCode => {
+                      onUpdateReportDraft({
+                        companyDraft: {
+                          ...phoneOrWebsite,
+                          address: {
+                            postalCode,
+                          }
                         }
-                      }
-                    })
-                  }}/>
-                ),
-              })}
-            </CompanyAskIsForeign>
+                      })
+                    }}/>
+                  ),
+                })}
+              </CompanyAskIsForeign>
+            )
           ),
         })}
       </CompanyIdentifyBy>

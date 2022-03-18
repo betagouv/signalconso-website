@@ -1,8 +1,8 @@
 import {_Company} from '../Report/Company/Company'
 import {useState} from 'react'
-import {CompanyKinds} from '@signal-conso/signalconso-api-sdk-js'
+import {CompanyKinds, ReportTag} from '@signal-conso/signalconso-api-sdk-js'
 import {ReportDraft2} from 'core/model/ReportDraft'
-import {Card, CardContent, MenuItem, Select, useTheme} from '@mui/material'
+import {Box, Card, CardContent, MenuItem, Select, useTheme} from '@mui/material'
 import {styleUtils} from 'core/theme/theme'
 import {Enum} from '@alexandreannic/ts-utils'
 
@@ -10,13 +10,16 @@ export const PlaygroundCompany = () => {
   const theme = useTheme()
   const [report, setReport] = useState<Partial<ReportDraft2>>({})
   const [companyKind, setCompanyKind] = useState(CompanyKinds.SIRET)
+  const [tag, setTag] = useState<ReportTag | undefined>()
   return (
     <>
-      <Select sx={{mb: 2}} size="small" value={companyKind} onChange={e => setCompanyKind(e.target.value as CompanyKinds)}>
-        {Enum.keys(CompanyKinds).map(_ =>
-          <MenuItem value={_} key={_}>{_}</MenuItem>
-        )}
-      </Select>
+      <Box sx={{mb: 2}}>
+        <Select sx={{mr: 1}} size="small" value={companyKind} onChange={e => setCompanyKind(e.target.value as CompanyKinds)}>
+          {Enum.keys(CompanyKinds).map(_ =>
+            <MenuItem value={_} key={_}>{_}</MenuItem>
+          )}
+        </Select>
+      </Box>
       <Card elevation={2}>
         <CardContent>
           <_Company

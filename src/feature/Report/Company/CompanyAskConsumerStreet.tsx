@@ -6,6 +6,7 @@ import {FormLayout} from 'shared/FormLayout/FormLayout'
 import React from 'react'
 import {ScButton} from 'shared/Button/Button'
 import {Animate} from 'shared/Animate/Animate'
+import {Alert} from 'mui-extension'
 
 interface Form {
   street: string
@@ -13,11 +14,10 @@ interface Form {
 }
 
 interface Props {
-  value?: Form
   onChange: (_: Form) => void
 }
 
-export const CompanyAskConsumerStreet = ({value, onChange}: Props) => {
+export const CompanyAskConsumerStreet = ({onChange}: Props) => {
   const {m} = useI18n()
   const {
     register,
@@ -27,21 +27,20 @@ export const CompanyAskConsumerStreet = ({value, onChange}: Props) => {
   return (
     <Animate>
       <Panel title={m.couldYouPrecise} id="CompanyAskConsumerStreet">
+        <Alert sx={{mt: 1}} dense type="info">{m.yourPostalCodeDesc}</Alert>
         <form onSubmit={handleSubmit(onChange)}>
           <PanelBody>
-            <FormLayout required label={m.yourPostalCode} desc={m.yourPostalCodeDesc}>
+            <FormLayout required label={m.yourStreet} desc={m.yourStreetDesc}>
               <ScInput
-                defaultValue={value}
                 {...register('street', {
                   required: {value: true, message: m.required}
                 })}
                 fullWidth
-                placeholder={m.yourPostalCodePlaceholder}
+                placeholder={m.yourStreetPlaceholder}
               />
             </FormLayout>
-            <FormLayout required label={m.yourPostalCode} desc={m.yourPostalCodeDesc}>
+            <FormLayout required label={m.yourPostalCode}>
               <ScInput
-                defaultValue={value}
                 {...register('postalCode', {
                   required: {value: true, message: m.required}
                 })}
