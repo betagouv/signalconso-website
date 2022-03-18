@@ -61,6 +61,7 @@ export const IllustrationStepperMobile = ({steps}: IllustrationStepperProps) => 
       <Box sx={{mt: 1, display: 'flex', justifyContent: 'center'}}>
         {steps.map((_, i) =>
           <IconBtn
+            aria-label={_.alt}
             onClick={() => setIndex(i)}
             sx={{
               mx: 1,
