@@ -376,5 +376,26 @@ export const fr = {
     `,
     confirmationBtnReponseConso: `Envoyer ma question`,
     confirmationBtn: `Envoyer le signalement`,
+
+    acceptedReportStat: `promesses d'action ont été faites par des entreprises depuis le début de SignalConso`,
+    acceptedReportStatName: `Nombre de promesses d'action`,
+
+    reportsCountStat: ` signalements ont été déposés depuis le début de SignalConso`,
+    reportsCountStatName: ` Nombre de signalements déposés`,
+
+
+    transmittedRateStat: ` des signalements ont été transmis à l'entreprise signalée`,
+    transmittedRateDescription: `Pourquoi pas 100 % ? Car dans certaines cas (achat en ligne...) les entreprises n'ont pas pu être identifiées par le consommateur`,
+    transmittedRateStatName: `% de signalements transmis aux entreprises`,
+
+    readRateStat: ` des signalements transmis ont été lus par les entreprises`,
+    readRateDescription: `Pourquoi pas 100 % ? Car Signalconso est facultatif. L'entreprise est libre de créer un compte et de lire le signalement.`,
+    readRateStatName: `Signalements lus par les entreprises`,
+
+    respondedRateStat: ` ont eu une réponse de l'entreprise, sur l'ensemble des signalements lus`,
+    respondedRateDescription: `Lorsqu'une entreprise reçoit un signalement, elle peut décider de répondre ou non au consommateur.`,
+    respondedRateStatName: `% de signalements qui font l'objet d'une réponse d'un entreprise`,
+
+    websiteReportsRateStat: ` des signalements déposés depuis le début de SignalConso concernent une entreprise sur internet`,
   },
 }
