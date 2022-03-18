@@ -4,8 +4,7 @@ import {Page} from 'shared/Page/Page'
 
 import {useApiSdk} from "../core/context/ApiSdk";
 import {useEffect, useState} from "react";
-import {SimpleStat} from "@signal-conso/signalconso-api-sdk-js/lib/client/stats/ReportStats";
-import {ReportStatus} from "@signal-conso/signalconso-api-sdk-js";
+import {ReportStatus, SimpleStat} from "@signal-conso/signalconso-api-sdk-js";
 import {I18nContextProps, useI18n} from "../core/i18n/I18n";
 import {Stat} from "../feature/Stat/Stat";
 import {CountByValue} from "../feature/Stat/CountByValue";
@@ -52,17 +51,17 @@ const Stats = () => {
     apiSdk.stats.getReportCount().then(setReportCount)
 
     //Transmitted report count
-    apiSdk.stats.percentageCurve.getReportForwardedPercentage({companyId: undefined})
+    apiSdk.stats.percentageCurve.getReportForwardedPercentage({companyId: ""})
       .then(c => c.map(statsFormatCurveDate(m))).then(setTransmittedReportCurve)
     apiSdk.stats.percentage.getReportForwardedToPro("").then(setTransmittedReportRate)
 
     //Read report count
-    apiSdk.stats.percentageCurve.getReportReadPercentage({companyId: undefined})
+    apiSdk.stats.percentageCurve.getReportReadPercentage({companyId: ""})
       .then(c => c.map(statsFormatCurveDate(m))).then(setReadReportCurve)
     apiSdk.stats.percentage.getReportReadByPro("").then(setReadReportRate)
 
     //Responded report count
-    apiSdk.stats.percentageCurve.getReportRespondedPercentage({companyId: undefined})
+    apiSdk.stats.percentageCurve.getReportRespondedPercentage({companyId: ""})
       .then(c => c.map(statsFormatCurveDate(m))).then(setRespondedReportCurve)
     apiSdk.stats.percentage.getReportWithResponse("").then(setRespondedReportRate)
 
