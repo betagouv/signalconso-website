@@ -28,9 +28,7 @@ const sxTitle: SxProps<Theme> = {
 export const getStaticProps: GetStaticProps = async (context) => {
   const anomalies = await apiSdk.anomaly.getAnomalies()
     .then(res => res.filter(_ => !_.hidden))
-  console.log(anomalies.map(_ => ({id: _.id, name: _.category})))
-  console.log(sortBy(anomalies, _ => _.id).map(_ => ({id: _.id, name: _.category})))
-  // .then(res => sortBy(res, _ => _.id))
+    .then(res => sortBy(res, _ => parseInt(_.id)))
   return {
     props: serializeJsonForStupidNextJs({
       anomalies
