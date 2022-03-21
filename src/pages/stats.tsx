@@ -51,22 +51,22 @@ const Stats = () => {
     apiSdk.stats.getReportCount().then(setReportCount)
 
     //Transmitted report count
-    apiSdk.stats.percentageCurve.getReportForwardedPercentage({companyId: ""})
+    apiSdk.stats.percentageCurve.getReportForwardedPercentage({})
       .then(c => c.map(statsFormatCurveDate(m))).then(setTransmittedReportCurve)
-    apiSdk.stats.percentage.getReportForwardedToPro("").then(setTransmittedReportRate)
+    apiSdk.stats.percentage.getReportForwardedToPro().then(setTransmittedReportRate)
 
     //Read report count
-    apiSdk.stats.percentageCurve.getReportReadPercentage({companyId: ""})
+    apiSdk.stats.percentageCurve.getReportReadPercentage({})
       .then(c => c.map(statsFormatCurveDate(m))).then(setReadReportCurve)
-    apiSdk.stats.percentage.getReportReadByPro("").then(setReadReportRate)
+    apiSdk.stats.percentage.getReportReadByPro( ).then(setReadReportRate)
 
     //Responded report count
-    apiSdk.stats.percentageCurve.getReportRespondedPercentage({companyId: ""})
+    apiSdk.stats.percentageCurve.getReportRespondedPercentage({})
       .then(c => c.map(statsFormatCurveDate(m))).then(setRespondedReportCurve)
-    apiSdk.stats.percentage.getReportWithResponse("").then(setRespondedReportRate)
+    apiSdk.stats.percentage.getReportWithResponse().then(setRespondedReportRate)
 
     //Website report count
-    apiSdk.stats.percentage.getReportWithWebsite("").then(setWebsiteReportRate)
+    apiSdk.stats.percentage.getReportWithWebsite().then(setWebsiteReportRate)
 
 
   }, [])
