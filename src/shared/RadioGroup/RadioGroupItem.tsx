@@ -122,7 +122,7 @@ export const ScRadioGroupItem = <T, >({
           </Txt>
         )}
         {description && (
-          <Txt block color="disabled">
+          <Txt block color="hint" size="small">
             {description}
           </Txt>
         )}
