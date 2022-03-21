@@ -28,7 +28,7 @@ export const ProblemSelect = <T, >({
 }: ProblemSelectProps<T>) => {
   return (
     <Animate animate={animatePanel} autoScrollTo={autoScrollToPanel}>
-      <Panel sx={{position: 'relative'}} title={<span dangerouslySetInnerHTML={{__html: title ?? 'Pouvez-vous préciser ?'}}/>} {...other}>
+      <Panel sx={{position: 'relative', border: 'none !important'}} title={<span dangerouslySetInnerHTML={{__html: title ?? 'Pouvez-vous préciser ?'}}/>} {...other}>
         <Box sx={{position: 'absolute', top: -90, display: 'block'}}/>
         <PanelBody>
           <ScRadioGroup value={value} onChange={onChange} sx={{mb: 2}}>

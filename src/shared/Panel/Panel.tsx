@@ -27,14 +27,14 @@ export const Panel = ({title, desc, children, sx, elevation = 0, border, ...rest
         border: t => border ? `1px solid ${t.palette.divider}` : `none`,
         // px: 2,
       },
-      ...sx,
       '& + &': {
         pt: 3,
         mt: 3,
         ...(!border && !elevation ? {
           borderTop: t => `1px solid ${t.palette.divider}`,
-        } : {})
-      }
+        } : {}),
+      },
+      ...sx,
     }}>
       {title && <Txt bold block sx={{mb: 0}} size="title">{title}</Txt>}
       {desc && <Txt bold color="hint" block sx={{mb: 0}}>{desc}</Txt>}
