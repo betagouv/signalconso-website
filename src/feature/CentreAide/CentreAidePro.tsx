@@ -102,7 +102,7 @@ export const CentreAidePro = (props: BoxProps) => {
         <AccordionPanel title="J'ai oublié mon mot de passe">
           <p>
             Vous pouvez <Link href={siteMap.lostPassword}>demander un nouveau mot de passe</Link> ou, en cas
-            de difficultés, contacter par email le service
+            de difficultés, contacter par email le service&nbsp;
             <a
               href="mailto:support@signal.conso.gouv.fr"
               target="_blank"

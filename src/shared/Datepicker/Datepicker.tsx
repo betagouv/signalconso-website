@@ -1,5 +1,5 @@
 import {format} from 'date-fns'
-import {InputProps as StandardInputProps, TextField} from '@mui/material'
+import {InputProps as StandardInputProps} from '@mui/material'
 import React, {forwardRef} from 'react'
 import {BaseTextFieldProps} from '@mui/material/TextField/TextField'
 import {ScInput} from '../Input/ScInput'
@@ -18,7 +18,11 @@ const onChangeDate = (callback: (date: Date) => any) => (e: React.ChangeEvent<HT
 }
 
 const mapDate = (date: Date): string => {
-  return format(date, 'yyyy-MM-dd')
+  try {
+    return format(date, 'yyyy-MM-dd')
+  } catch (e: any) {
+    return format(new Date(), 'yyyy-MM-dd')
+  }
 }
 
 export const ScDatepicker = forwardRef(({value, onChange, min, max, ...props}: ScDatepickerProps, ref: any) => {
