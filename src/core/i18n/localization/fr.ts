@@ -201,6 +201,8 @@ export const fr = {
       11: 'Nov',
       12: 'Déc',
     },
+    bannerCookie: `Le site Signal Conso n'utilise que des cookies techniques exemptés de consentement.`,
+    bannerCookieSeeMore: `En savoir plus`,
     apiErrorsCode: {
       'SC-0001': `Une erreur s'est produite`,
       'SC-0002': `L'utilisateur DGCCRF n'existe pas.`,

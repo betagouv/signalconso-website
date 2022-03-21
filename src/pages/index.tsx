@@ -1,5 +1,4 @@
 import type {GetStaticProps} from 'next'
-import Head from 'next/head'
 import {Theme} from '@mui/material/styles'
 import {IllustrationStepper} from 'shared/IllustrationStepper/StepIllustrations'
 import {Box, Divider, Grid} from '@mui/material'
@@ -18,6 +17,7 @@ import report from '../../public/image/illustrations/report.png'
 import company from '../../public/image/illustrations/company.png'
 import dgccrf from '../../public/image/illustrations/dgccrf.png'
 import {useWindowWidth} from '../core/useWindowWidth'
+import {useRgpdBanner} from '../feature/RgpdBanner/RgpdBanner'
 
 const sxTitle: SxProps<Theme> = {
   fontSize: 24,
@@ -44,6 +44,7 @@ interface HomeProps {
 const Home = ({anomalies}: HomeProps) => {
   const {m} = useI18n()
   const width = useWindowWidth()
+  useRgpdBanner()
   return (
     <>
       <main>

@@ -28,7 +28,7 @@
     "date-fns": "^2.25.0",
     "fp-ts": "^1.19.5",
     "lodash": "^4.17.21",
-    "mui-extension": "^4.0.7",
+    "mui-extension": "^4.0.12",
     "next": "^12.1.0",
     "randomstring": "^1.2.2",
     "react": "17.0.2",
