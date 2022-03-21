@@ -73,10 +73,13 @@ export const CompanyFilled = ({
     <Panel title={m.companyIdentifiedTitle}>
       <PanelBody>
         <Txt size="big" bold block>{draft.companyDraft.name} {draft.companyDraft.brand ?? ''}</Txt>
-        <Txt color="hint" block sx={{mb: 2}}>
-          <Txt>SIRET:&nbsp;</Txt>
-          <Txt bold>{draft.companyDraft.siret}</Txt>
-        </Txt>
+
+        {draft.companyDraft.siret && (
+          <Txt color="hint" block sx={{mb: 2}}>
+            <Txt>SIRET:&nbsp;</Txt>
+            <Txt bold>{draft.companyDraft.siret}</Txt>
+          </Txt>
+        )}
         <Row dense icon="location_on">
           <Txt color="hint">
             <AddressComponent address={draft.companyDraft.address}/>
