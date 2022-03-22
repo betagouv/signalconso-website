@@ -1,11 +1,11 @@
 import React, {useEffect, useMemo, useState} from 'react'
-import {Alert, stopPropagation, Txt} from 'mui-extension'
+import {Alert, Txt} from 'mui-extension'
 import {useReportFlowContext} from '../ReportFlowContext'
 import {DetailInput, DetailInputType, FileOrigin, ReportDraft, ReportTag, SubcategoryInput, UploadedFile} from '@signal-conso/signalconso-api-sdk-js'
 import {ScDatepicker} from 'shared/Datepicker/Datepicker'
 import {fnSwitch, mapFor} from '@alexandreannic/ts-utils/lib/common'
 import {useI18n} from 'core/i18n'
-import {Control, Controller, useForm} from 'react-hook-form'
+import {Controller, useForm} from 'react-hook-form'
 import {ReportFiles} from 'shared/UploadFile/ReportFiles'
 import {StepperActions} from 'shared/Stepper/StepperActions'
 import {FormLayout} from 'shared/FormLayout/FormLayout'
@@ -22,9 +22,16 @@ import {getDraftReportInputs} from './draftReportInputs'
 import {appConfig} from 'conf/appConfig'
 import {useStepperContext} from 'shared/Stepper/Stepper'
 import {ControllerProps} from 'react-hook-form/dist/types/controller'
-import {FieldError} from 'react-hook-form/dist/types/errors'
 import {useEffectFn} from '@alexandreannic/react-hooks-lib'
 import {DetailInputValues2} from 'core/model/ReportDraft'
+import {DetailsSpecifyInput} from './DetailsSpecifyInput'
+
+const mapDateInput = ({value, onChange}: {value?: string, onChange: (_: string) => void}): {value?: Date, onChange: (_: Date) => void} => {
+  return {
+    value: value ? parse(value, appConfig.apiDateFormat, new Date()) : undefined,
+    onChange: (_: Date) => onChange(format(_, appConfig.apiDateFormat))
+  }
+}
 
 export class SpecifyFormUtils {
   static readonly keyword = '(à préciser)'
@@ -33,6 +40,7 @@ export class SpecifyFormUtils {
 }
 
 export const getSpecifyInputName = (index: number) => `${index}_specify`
+
 export const isSpecifyInputName = (name: string) => name.includes('_specify')
 
 export const Details = () => {
@@ -44,14 +52,13 @@ export const Details = () => {
       return getDraftReportInputs({subcategories: draft.subcategories, tags: draft.tags})
     }
   }, [draft.subcategories, draft.tags, draft.forwardToReponseConso])
+
   useEffect(() => {
     _reportFlow.setReportDraft(_ => ({..._, details: undefined}))
   }, [draft.subcategories, draft.tags, draft.forwardToReponseConso])
 
   if (!inputs || draft.employeeConsumer === undefined) {
-    return (
-      <>{JSON.stringify(draft)}</>
-    )
+    throw new Error(`This step should not be accessible ${draft.employeeConsumer} - ${JSON.stringify(inputs)}`)
   }
   return (
     <_Details
@@ -71,47 +78,6 @@ export const Details = () => {
   )
 }
 
-const mapDateInput = ({value, onChange}: {value?: string, onChange: (_: string) => void}): {value?: Date, onChange: (_: Date) => void} => {
-  return {
-    value: value ? parse(value, appConfig.apiDateFormat, new Date()) : undefined,
-    onChange: (_: Date) => onChange(format(_, appConfig.apiDateFormat))
-  }
-}
-
-const SpecifyInput = ({
-  name,
-  defaultValue,
-  control,
-  error,
-}: {
-  name: string
-  defaultValue?: string | string[]
-  control: Control<any, any>
-  error?: FieldError
-}) => {
-  const {m} = useI18n()
-  return (
-    <Controller
-      defaultValue={defaultValue ?? ''}
-      control={control}
-      name={name}
-      rules={{
-        required: {value: true, message: m.required + ' *'},
-      }}
-      render={({field}) =>
-        <ScInput
-          {...field}
-          error={!!error}
-          helperText={error?.message}
-          autoFocus
-          onClick={stopPropagation(() => void 0)}
-          fullWidth
-          placeholder={m.specify}
-        />
-      }/>
-  )
-}
-
 export const _Details = ({
   initialValues,
   initialFiles,
@@ -119,7 +85,6 @@ export const _Details = ({
   fileLabel,
   tags,
   isTransmittable,
-  description,
   contractualDispute,
   employeeConsumer,
   onSubmit,
@@ -128,7 +93,6 @@ export const _Details = ({
   onSubmit: (values: DetailInputValues2, files?: UploadedFile[]) => void
   initialValues?: DetailInputValues2
   initialFiles?: UploadedFile[]
-  description?: string
   fileLabel?: string
   isTransmittable?: boolean
   contractualDispute?: boolean
@@ -141,13 +105,30 @@ export const _Details = ({
     control,
     getValues,
     handleSubmit,
+    reset,
+    trigger,
+    watch,
     formState: {errors},
   } = useForm<any>()
 
+  useEffect(() => {
+    if (initialValues) {
+      const formValues = Object.keys(initialValues).reduce((acc, key) => ({...acc, [key]: initialValues[key] ?? ''}), {})
+      reset(formValues)
+    }
+  }, [initialValues])
   useEffectFn(initialFiles, setUploadedFiles)
 
   return (
     <>
+      <button onClick={() => {
+        reset()
+        setTimeout(() => {
+          trigger()
+          watch()
+        })
+      }}>reset
+      </button>
       <Animate animate={true}>
         <Panel>
           <Alert gutterBottom type="warning">
@@ -169,12 +150,6 @@ export const _Details = ({
           </Alert>
           {(tags ?? []).includes(ReportTag.ProduitDangereux) && (
             <DetailsAlertProduitDangereux/>
-          )}
-
-          {description && (
-            <Alert type="info">
-              <Txt dangerouslySetInnerHTML={{__html: description}}/>
-            </Alert>
           )}
 
           <br/>
@@ -202,7 +177,8 @@ export const _Details = ({
                     <Controller
                       control={control}
                       name={'' + inputIndex}
-                      defaultValue={initialValues?.[inputIndex] ?? defaultValue ?? input.defaultValue ?? ''}
+                      defaultValue={defaultValue ?? input.defaultValue}
+                      // defaultValue={initialValues?.[inputIndex] ?? defaultValue ?? input.defaultValue ?? ''}
                       rules={{
                         required: {value: !input.optionnal, message: m.required + ' *'},
                         ...rules
@@ -278,7 +254,7 @@ export const _Details = ({
                               title={<span dangerouslySetInnerHTML={{__html: option}}/>}
                               description={
                                 (field.value === option && option.includes(SpecifyFormUtils.keyword))
-                                  ? <SpecifyInput
+                                  ? <DetailsSpecifyInput
                                     control={control}
                                     error={errors[SpecifyFormUtils.getInputName(inputIndex)]}
                                     defaultValue={initialValues?.[SpecifyFormUtils.getInputName(inputIndex)]}
@@ -309,7 +285,7 @@ export const _Details = ({
                                 title={<span dangerouslySetInnerHTML={{__html: option}}/>}
                                 description={
                                   ((field.value as string[]).includes(option) && option.includes(SpecifyFormUtils.keyword))
-                                    ? <SpecifyInput
+                                    ? <DetailsSpecifyInput
                                       control={control}
                                       error={errors[SpecifyFormUtils.getInputName(inputIndex)]}
                                       defaultValue={initialValues?.[SpecifyFormUtils.getInputName(inputIndex)]}

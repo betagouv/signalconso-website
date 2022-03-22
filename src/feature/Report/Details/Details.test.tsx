@@ -39,7 +39,7 @@ describe('Details: single date not in future', () => {
   beforeEach(() => {
     app = render(
       <_Details
-        inputs={[DetailsFixtureInput.dateDetail]}
+        inputs={[DetailsFixtureInput.date]}
         onSubmit={x => {
           inputValues = x
         }}/>,
@@ -81,7 +81,7 @@ describe('Details: checkbox', () => {
     inputValues = undefined
     app = render(
       <_Details
-        inputs={[DetailsFixtureInput.radioDetail]}
+        inputs={[DetailsFixtureInput.radio]}
         onSubmit={x => {
           inputValues = x
         }}/>,
@@ -140,7 +140,7 @@ describe('Details: textarea', () => {
     inputValues = undefined
     app = render(
       <_Details
-        inputs={[DetailsFixtureInput.textareaDetail]}
+        inputs={[DetailsFixtureInput.textarea]}
         onSubmit={x => {
           inputValues = x
         }}/>,
@@ -191,11 +191,11 @@ describe('Details: initialize values', () => {
       <_Details
         initialValues={values}
         inputs={[
-          DetailsFixtureInput.dateDetail,
-          DetailsFixtureInput.textDetail,
-          DetailsFixtureInput.radioDetail,
-          DetailsFixtureInput.checkboxDetail,
-          DetailsFixtureInput.textareaDetail,
+          DetailsFixtureInput.date,
+          DetailsFixtureInput.text,
+          DetailsFixtureInput.radio,
+          DetailsFixtureInput.checkbox,
+          DetailsFixtureInput.textarea,
         ]}
         onSubmit={x => {
           inputValues = x
