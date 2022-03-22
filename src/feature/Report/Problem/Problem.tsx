@@ -41,7 +41,7 @@ export const Problem = ({
       return ({
         ...draft,
         tags: draft.forwardToReponseConso ? tagsFromSelected : tagsFromSelected.filter(_ => _ !== ReportTag.ReponseConso),
-        companyKind: draft.companyKind ?? companyKindFromSelected ?? CompanyKinds.SIRET,
+        companyKind: companyKindFromSelected ?? CompanyKinds.SIRET,
         anomaly: _anomaly
       })
     })

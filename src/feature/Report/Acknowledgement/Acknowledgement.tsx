@@ -10,10 +10,10 @@ import {useConstantContext} from 'core/context/ConstantContext'
 import {useToast} from 'core/toast'
 import {Row} from 'shared/Row/Row'
 import {externalLinks} from 'core/externalLinks'
-import {ScButton} from '../../../shared/Button/Button'
-import {useI18n} from '../../../core/i18n'
+import {ScButton} from 'shared/Button/Button'
+import {useI18n} from 'core/i18n'
 import Link from 'next/link'
-import {siteMap} from '../../../core/siteMap'
+import {siteMap} from 'core/siteMap'
 
 export enum AcknowledgmentCases {
   ReponseConso = 'ReponseConso',
