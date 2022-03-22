@@ -5,7 +5,7 @@ import {useI18n} from 'core/i18n'
 import {useApiSdk} from 'core/context/ApiSdk'
 import {ScButton} from 'shared/Button/Button'
 import {useForm} from 'react-hook-form'
-import {CompanySearchResult} from '@signal-conso/signalconso-api-sdk-js'
+import {CompanySearchResult, Country} from '@signal-conso/signalconso-api-sdk-js'
 import {useEffectFn, useFetcher} from '@alexandreannic/react-hooks-lib'
 import {useToast} from 'core/toast'
 import {Box, BoxProps} from '@mui/material'
@@ -18,13 +18,14 @@ interface Form {
 
 interface Props extends Omit<BoxProps, 'onSubmit'> {
   value?: string
-  children: (websiteUrl?: string, result?: CompanySearchResult[]) => ReactNode
+  children: (websiteUrl?: string, result?: CompanySearchResult[], countries?: Country[]) => ReactNode
 }
 
 export const CompanyByWebsite = ({value, children, ...props}: Props) => {
   const {m} = useI18n()
   const {apiSdk} = useApiSdk()
-  const _searchByUrl = useFetcher(apiSdk.company.searchCompaniesByUrl)
+  const _searchCompany = useFetcher(apiSdk.company.searchCompaniesByUrl)
+  const _searchCountry = useFetcher(apiSdk.company.searchForeignCompaniesByUrl)
   const {toastError} = useToast()
   const {
     getValues,
@@ -33,11 +34,16 @@ export const CompanyByWebsite = ({value, children, ...props}: Props) => {
     formState: {errors},
   } = useForm<Form>()
 
-  const submit = (form: Form) => {
-    _searchByUrl.fetch({clean: true, force: true}, form.website)
+  const submit = async (form: Form) => {
+    _searchCompany.clearCache()
+    _searchCountry.clearCache()
+    const res = await _searchCompany.fetch({clean: true, force: true}, form.website)
+    if (res.length === 0) {
+      await _searchCountry.fetch({clean: true, force: true}, form.website)
+    }
   }
 
-  useEffectFn(_searchByUrl.error, toastError)
+  useEffectFn(_searchCompany.error, toastError)
 
   return (
     <>
@@ -51,10 +57,10 @@ export const CompanyByWebsite = ({value, children, ...props}: Props) => {
               </Txt>
               <ScInput
                 onClear={() => {
-                  _searchByUrl.clearCache()
+                  _searchCompany.clearCache()
                 }}
                 defaultValue={value}
-                disabled={!!_searchByUrl.entity}
+                disabled={!!_searchCompany.entity}
                 {...register('website', {
                   required: {value: true, message: m.required},
                   pattern: {value: /^((http|https):\/\/)?(www\.)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,}(:[0-9]{1,5})?(\/.*)?$/, message: m.invalidUrlPattern}
@@ -64,14 +70,24 @@ export const CompanyByWebsite = ({value, children, ...props}: Props) => {
                 helperText={errors.website?.message}
               />
 
-              <ScButton variant="contained" color="primary" sx={{mt: 2}} type="submit" loading={_searchByUrl.loading} disabled={!!_searchByUrl.entity}>
+              <ScButton variant="contained" color="primary" sx={{mt: 2}} type="submit" loading={_searchCompany.loading} disabled={!!_searchCompany.entity}>
                 {m.continue}
               </ScButton>
             </Box>
           </PanelBody>
         </Panel>
       </Animate>
-      {getValues().website && _searchByUrl.entity && children(getValues().website, _searchByUrl.entity)}
+      {(() => {
+        const website = getValues().website
+        if (website) {
+          if (_searchCountry.entity && _searchCountry.entity.length > 0) {
+            return children(website, undefined, _searchCountry.entity)
+          }
+          if (_searchCompany.entity) {
+            return children(website, _searchCompany.entity)
+          }
+        }
+      })()}
     </>
   )
 }

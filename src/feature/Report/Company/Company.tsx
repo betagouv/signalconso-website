@@ -22,6 +22,7 @@ import {AddressComponent} from 'shared/Address/Address'
 import {Panel, PanelActions, PanelBody} from 'shared/Panel/Panel'
 import {StepperActionsNext} from '../../../shared/Stepper/StepperActionsNext'
 import {CompanyAskConsumerStreet} from './CompanyAskConsumerStreet'
+import {CompanyWebsiteCountry} from './CompanyWebsiteCountry'
 
 interface CompanyProps {
 }
@@ -35,7 +36,6 @@ export const Company = ({}: CompanyProps) => {
   const _reportFlow = useReportFlowContext()
   const _stepper = useStepperContext()
   const draft = _reportFlow.reportDraft
-  const {m} = useI18n()
   if (draft.companyDraft) {
     return (
       <CompanyFilled
@@ -223,7 +223,19 @@ export const _Company = ({
           ),
           [CompanyKinds.WEBSITE]: () => (
             <CompanyByWebsite>
-              {(website, result) => commonTree({website}, result)}
+              {(website, companies, countries) => countries ? (
+                <CompanyWebsiteCountry countries={countries} onSubmit={country => {
+                  console.log('ONSUBMIT', country)
+                  onUpdateReportDraft({
+                    companyDraft: {
+                      website,
+                      address: {
+                        country,
+                      }
+                    }
+                  })
+                }}/>
+              ) : commonTree({website}, companies)}
             </CompanyByWebsite>
           ),
         }, () => commonTree(),

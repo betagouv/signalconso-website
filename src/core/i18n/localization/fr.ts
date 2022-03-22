@@ -350,6 +350,7 @@ export const fr = {
     contactAgreementTrueDesc: `mes coordonnées avec l'entreprise afin qu'elle puisse me contacter dans le cadre de mon signalement (<b>uniquement</b>). J'ai conscience que la répression des fraudes n'aura pas accès à ces échanges éventuels et ne pourra donc pas les contrôler.`,
     contactAgreementFalseTitle: `Je ne partage pas`,
     contactAgreementFalseDesc: `mes coordonnées avec l'entreprise. Seule la répression des fraudes pourra en prendre connaissance.`,
+    companySelectCountryTitle: `Sélectionnez le pays de l'entreprise`,
     companyWebsiteVendorAlert: `L'entreprise sélectionnée est une place de marché (marketplace), c'est à dire qu'elle propose des produits vendus par des tiers.`,
     companyWebsiteVendorTitle: `Pouvez-vous identifier le vendeur ?`,
     companyWebsiteVendorLabel: `Nom du vendeur tiers`,
