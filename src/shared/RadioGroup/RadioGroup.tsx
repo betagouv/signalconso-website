@@ -12,16 +12,17 @@ interface BaseProps<T> {
   sx?: SxProps<Theme>
   helperText?: ReactNode
   disabled?: boolean
-  defaultValue?: T,
 }
 
 interface SingleProps<T> extends BaseProps<T> {
+  defaultValue?: T
   value?: T
   onChange?: (_: T) => void
   multiple?: false
 }
 
 interface MultipleProps<T> extends BaseProps<T> {
+  defaultValue?: T[]
   value?: T[]
   onChange?: (_: T[]) => void
   multiple: true
