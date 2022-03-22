@@ -18,17 +18,6 @@ interface Props {
   curve?: () => Promise<CountByDate[]>
 }
 
-const statTheme = createTheme({
-  palette: {
-    panelWithChart: {
-      height: 500
-    },
-    panelWithNoChart: {
-      height: 200
-    }
-  }
-});
-
 export const Stat = React.memo(({name, count, curve, title, description, percentage}: Props) => {
   const {m, formatLargeNumber} = useI18n()
   const _curve = useFetcher(curve ?? (() => Promise.resolve(undefined)))
