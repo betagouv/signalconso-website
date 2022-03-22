@@ -121,14 +121,6 @@ export const _Details = ({
 
   return (
     <>
-      <button onClick={() => {
-        reset()
-        setTimeout(() => {
-          trigger()
-          watch()
-        })
-      }}>reset
-      </button>
       <Animate animate={true}>
         <Panel>
           <Alert gutterBottom type="warning">

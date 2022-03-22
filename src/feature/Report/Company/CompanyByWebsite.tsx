@@ -1,5 +1,5 @@
 import {ScInput} from 'shared/Input/ScInput'
-import {Txt} from 'mui-extension'
+import {IconBtn, Txt} from 'mui-extension'
 import React, {ReactNode} from 'react'
 import {useI18n} from 'core/i18n'
 import {useApiSdk} from 'core/context/ApiSdk'
@@ -8,7 +8,7 @@ import {useForm} from 'react-hook-form'
 import {CompanySearchResult, Country} from '@signal-conso/signalconso-api-sdk-js'
 import {useEffectFn, useFetcher} from '@alexandreannic/react-hooks-lib'
 import {useToast} from 'core/toast'
-import {Box, BoxProps} from '@mui/material'
+import {Box, BoxProps, Icon, Tooltip} from '@mui/material'
 import {Panel, PanelBody} from 'shared/Panel/Panel'
 import {Animate} from 'shared/Animate/Animate'
 
@@ -31,6 +31,7 @@ export const CompanyByWebsite = ({value, children, ...props}: Props) => {
     getValues,
     handleSubmit,
     register,
+    reset,
     formState: {errors},
   } = useForm<Form>()
 
@@ -56,8 +57,18 @@ export const CompanyByWebsite = ({value, children, ...props}: Props) => {
                 <Txt color="disabled"> *</Txt>
               </Txt>
               <ScInput
+                InputProps={{
+                  endAdornment: (
+                    <Tooltip title={m.edit}>
+                      <IconBtn size="small" color="primary" onClick={_searchCompany.clearCache}>
+                        <Icon>edit</Icon>
+                      </IconBtn>
+                    </Tooltip>
+                  )
+                }}
                 onClear={() => {
                   _searchCompany.clearCache()
+                  reset()
                 }}
                 defaultValue={value}
                 disabled={!!_searchCompany.entity}
