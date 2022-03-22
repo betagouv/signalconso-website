@@ -161,7 +161,9 @@ export const _Details = ({
             ) : (
               <>
                 <span dangerouslySetInnerHTML={{__html: m.detailsTextAreaNotTransmittable}}/><br/>
-                <span dangerouslySetInnerHTML={{__html: m.detailsTextAreaEmployeeConsumer}}/>
+                {employeeConsumer && (
+                  <span dangerouslySetInnerHTML={{__html: m.detailsTextAreaEmployeeConsumer}}/>
+                )}
               </>
             )}
           </Alert>
@@ -322,7 +324,7 @@ export const _Details = ({
                       }
                     )
                   ),
-                  [DetailInputType.TEXTAREA]: () => (
+                  [DetailInputType.TEXT]: () => (
                     controller({
                       rules: {
                         maxLength: {value: appConfig.maxDescriptionInputLength, message: ''},
@@ -330,10 +332,9 @@ export const _Details = ({
                       render: ({field}) => (
                         <ScInput
                           {...field}
-                          helperText={errors[inputIndex]?.type === 'required' ? m.required : `${getValues('' + inputIndex)?.length ?? 0} / ${appConfig.maxDescriptionInputLength}`}
                           error={hasErrors}
-                          multiline
-                          minRows={4} maxRows={12} fullWidth placeholder={input.placeholder}
+                          fullWidth
+                          placeholder={input.placeholder}
                         />
                       )
                     })
