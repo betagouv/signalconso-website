@@ -10,13 +10,26 @@ export interface ATIPageInfo {
 }
 
 export class Atinternet {
-  static readonly init = (): undefined | {send: (pageInfo: ATIPageInfo) => Promise<void>} => {
+  private constructor(private atTag: any) {
+  }
+
+  static readonly init = (): undefined | Atinternet => {
     try {
       const atTag = new ATInternet.Tracker.Tag()
       atTag.privacy.setVisitorMode('cnil', 'exempt')
-      return atTag.page
+      return new Atinternet(atTag)
     } catch (e) {
       console.warn(`Unable to load AT internet.`, e)
+    }
+  }
+
+  readonly send = async (pageInfo: ATIPageInfo) => {
+    try {
+      await this.atTag?.page.send({level2: 'Visitor', ...pageInfo})
+    } catch (err: any) {
+      const error = new Error(`[SignalConso] Failed to send data to AT Internet: ${err.message}`)
+      error.name = err.name
+      throw error
     }
   }
 }

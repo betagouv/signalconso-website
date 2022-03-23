@@ -114,8 +114,12 @@ const startsWith = (str: string, needle: string) => {
 // }
 
 export class Matomo {
-  
-  constructor(private params: InitSettings) {
+
+  static readonly init = (params: InitSettings): Matomo => {
+    return new Matomo(params)
+  }
+
+  private constructor(private params: InitSettings) {
     window._paq = window._paq !== null ? window._paq : []
     if (!params.url || !params.siteId) {
       console.warn('Matomo disabled, please provide matomo url')

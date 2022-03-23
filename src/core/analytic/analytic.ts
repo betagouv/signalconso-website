@@ -1,23 +1,49 @@
-import {appConfig} from '../../conf/appConfig'
+import {AppConfig, appConfig} from '../../conf/appConfig'
 import {Matomo} from '../plugins/matomo'
+import {Atinternet} from '../plugins/atinternet'
+import {Router} from 'next/router'
 
 export class Analytic {
-  constructor() {
+
+  static readonly init = ({appConfig, matomo, atInternet}: {appConfig: AppConfig, matomo: Matomo | undefined, atInternet: Atinternet | undefined}) => {
+    return new Analytic(appConfig, matomo, atInternet)
+  }
+
+  private constructor(
+    private appConfig: AppConfig,
+    private matomo: Matomo | undefined,
+    private atInternet: Atinternet | undefined
+  ) {
+    Router.events.on('routeChangeStart', (path: string): void => {
+      console.info('[Analytic][routeChangeStart]', path)
+      if (!this.appConfig.isDev) {
+        matomo?.trackRouteChangeStart(path)
+      }
+    })
+    Router.events.on('routeChangeComplete', (path: string): void => {
+      console.info('[Analytic][routeChangeComplete]', path)
+      if (!this.appConfig.isDev) {
+        matomo?.trackRouteChangeComplete(path)
+        atInternet?.send({name: path})
+      }
+    })
   }
 
   readonly trackEvent = (category: EventCategories, action: AnalyticAction, name?: any, value?: any) => {
-    this.matomoPush(['trackEvent', category, action, name, value])
-  }
-
-  private readonly matomoPush = (args: any[]) => {
-    if (appConfig.isDev) {
-      console.info('[Matomo]', args)
-    } else {
-      console.log('[Matomo PROD]', args)
+    console.info('[Analytic][trackEvent]', category, action, name, value)
+    if (!appConfig.isDev) {
       try {
-        Matomo.push(args)
-      } catch (e) {
-        console.error('[Matomo]', e)
+        this.atInternet?.send({
+          name: category,
+          chapter1: action,
+          chapter2: name,
+          customObject: {
+            value
+          }
+        })
+        this.matomo?.push(['trackEvent', category, action, name, value])
+      } catch (e: any) {
+        console.error('[Analytic]', e)
         if (!(e instanceof ReferenceError)) {
           throw e
         }

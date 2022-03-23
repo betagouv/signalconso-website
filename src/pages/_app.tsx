@@ -18,6 +18,8 @@ import Script from 'next/script'
 import {AnalyticProvider} from '../core/analytic/AnalyticContext'
 import {Matomo} from '../core/plugins/matomo'
 import {Sentry} from '../core/plugins/sentry'
+import {Atinternet} from '../core/plugins/atinternet'
+import {Analytic} from '../core/analytic/analytic'
 
 interface ScAppProps extends AppProps {
   emotionCache?: EmotionCache;
@@ -49,7 +51,9 @@ const App = ({emotionCache = clientSideEmotionCache, ...props}: ScAppProps) => {
 const _App = ({Component, pageProps}: AppProps) => {
   useEffect(() => {
     Sentry.init(appConfig)
-    const matomo = new Matomo({siteId: appConfig.matomo_siteId, url: appConfig.matomo_url})
+    const matomo = Matomo.init({siteId: appConfig.matomo_siteId, url: appConfig.matomo_url})
+    const atInternet = Atinternet.init()
+    const analytic = Analytic.init({matomo, atInternet})
   })
   return (
     <>
