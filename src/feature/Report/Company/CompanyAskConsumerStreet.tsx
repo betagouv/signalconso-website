@@ -6,7 +6,7 @@ import {FormLayout} from 'shared/FormLayout/FormLayout'
 import React from 'react'
 import {ScButton} from 'shared/Button/Button'
 import {Animate} from 'shared/Animate/Animate'
-import {Alert} from 'mui-extension'
+import {Alert, Txt} from 'mui-extension'
 import {StepperActionsNext} from '../../../shared/Stepper/StepperActionsNext'
 
 interface Form {
@@ -27,8 +27,10 @@ export const CompanyAskConsumerStreet = ({onChange}: Props) => {
 
   return (
     <Animate>
-      <Panel title={m.couldYouPrecise} id="CompanyAskConsumerStreet">
-        <Alert sx={{mt: 1}} dense type="info">{m.yourPostalCodeDesc}</Alert>
+      <Panel id="CompanyAskConsumerStreet">
+        <Alert dense type="info" sx={{mb: 2}} deletable persistentDelete>
+          <Txt size="small" dangerouslySetInnerHTML={{__html: m.cantIdentifyCompany}}/>
+        </Alert>
         <form onSubmit={handleSubmit(onChange)}>
           <PanelBody>
             <FormLayout required label={m.yourStreet} desc={m.yourStreetDesc}>
