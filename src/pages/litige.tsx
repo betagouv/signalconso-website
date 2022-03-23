@@ -142,7 +142,7 @@ const Litige = () => {
         </AccordionPanel>
       </AccordionPanels>
 
-      <Panel border sx={{mt: 2}}>
+      <Panel border sx={{mt: 2, p: 0,}}>
         <Alert type="info">
           <Txt size="big" block bold>
             Pour réaliser ces étapes, vous pouvez contacter une association de consommateurs.
