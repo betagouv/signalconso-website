@@ -160,22 +160,24 @@ export const Problem = ({
                   }] : [])
                 ]}
                 onChange={(value: number) => {
-                  const update = (change: Partial<ReportDraft2>) => (draft: Partial<ReportDraft2>): Partial<ReportDraft2> => {
-                    const d = {...draft, ...change}
-                    _analytic.trackEvent(EventCategories.report, ReportEventActions.contactualReport, d.contractualDispute ? 'Oui' : 'Non')
-                    return d
+                  const updateAndTrack = (change: Partial<ReportDraft2>) => {
+                    setReportDraft(old => {
+                      const d = {...old, ...change}
+                      _analytic.trackEvent(EventCategories.report, ReportEventActions.contactualReport, d.contractualDispute ? 'Oui' : 'Non')
+                      return d
+                    })
                   }
                   switch (value) {
                     case 1: {
-                      update({forwardToReponseConso: undefined, contractualDispute: true})
+                      updateAndTrack({forwardToReponseConso: undefined, contractualDispute: true})
                       break
                     }
                     case 2: {
-                      update({forwardToReponseConso: undefined, contractualDispute: false})
+                      updateAndTrack({forwardToReponseConso: undefined, contractualDispute: false})
                       break
                     }
                     case 3: {
-                      update({forwardToReponseConso: true, contractualDispute: undefined})
+                      updateAndTrack({forwardToReponseConso: true, contractualDispute: undefined})
                       break
                     }
                   }
