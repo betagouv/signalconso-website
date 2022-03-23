@@ -157,7 +157,7 @@ export class Matomo {
     window._paq.push(args)
   }
 
-  private previousPath: string = location.pathname
+  private previousPath: string = ''
 
   readonly trackRouteChangeStart = (path: string) => {
     // We use only the part of the url without the querystring to ensure piwik is happy
