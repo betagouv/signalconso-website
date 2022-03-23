@@ -14,6 +14,8 @@ import React, {ReactNode, useRef} from 'react'
 import {AccordionInline} from 'shared/AccordionInline/AccordionInline'
 import {Animate} from 'shared/Animate/Animate'
 import {map} from 'core/helper/utils'
+import {CompanySearchEventActions, EventCategories} from '../../../core/analytic/analytic'
+import {useAnalyticContext} from '../../../core/analytic/AnalyticContext'
 
 interface Form {
   identity: string
@@ -27,6 +29,7 @@ export const CompanySearchByIdentity = ({children}: Props) => {
   const {m} = useI18n()
   const {apiSdk} = useApiSdk()
   const {toastError} = useToast()
+  const _analytic = useAnalyticContext()
   const _searchByIdentity = useFetcher(apiSdk.company.searchCompaniesByIdentity)
   const {
     register,
@@ -36,6 +39,7 @@ export const CompanySearchByIdentity = ({children}: Props) => {
   const inputEl = useRef<HTMLInputElement>(null)
 
   const search = (form: Form) => {
+    _analytic.trackEvent(EventCategories.companySearch, CompanySearchEventActions.searchByIdentity, form.identity);
     _searchByIdentity.fetch({force: true, clean: true}, form.identity)
   }
 

@@ -19,6 +19,8 @@ import {DeepPartial} from '@alexandreannic/ts-utils'
 import {ReportDraft, ReportTag} from '@signal-conso/signalconso-api-sdk-js'
 import {appConfig} from '../../../conf/appConfig'
 import {Row} from 'shared/Row/Row'
+import {useAnalyticContext} from '../../../core/analytic/AnalyticContext'
+import {EventCategories, ReportEventActions} from '../../../core/analytic/analytic'
 
 interface ConsumerForm {
   firstName: string
@@ -55,6 +57,7 @@ export const _Consumer = ({
   const {apiSdk} = useApiSdk()
   const _checkEmail = useFetcher(apiSdk.authenticate.checkConsumerEmail)
   const _form = useForm<ConsumerForm>()
+  const _analytic = useAnalyticContext()
 
   const showContactAgreement = ReportDraft.isTransmittableToPro(draft)
     && draft.contractualDispute !== true
@@ -66,6 +69,7 @@ export const _Consumer = ({
 
   const saveAndNext = () => {
     const {contactAgreement, ...consumer} = _form.getValues()
+    _analytic.trackEvent(EventCategories.report, ReportEventActions.validateConsumer);
     onSubmit({
       consumer: consumer,
       contactAgreement: (() => {

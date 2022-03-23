@@ -25,6 +25,8 @@ import {ControllerProps} from 'react-hook-form/dist/types/controller'
 import {useEffectFn} from '@alexandreannic/react-hooks-lib'
 import {DetailInputValues2} from 'core/model/ReportDraft'
 import {DetailsSpecifyInput} from './DetailsSpecifyInput'
+import {useAnalyticContext} from '../../../core/analytic/AnalyticContext'
+import {EventCategories, ReportEventActions} from '../../../core/analytic/analytic'
 
 const mapDateInput = ({value, onChange}: {value?: string, onChange: (_: string) => void}): {value?: Date, onChange: (_: Date) => void} => {
   return {
@@ -45,6 +47,7 @@ export const isSpecifyInputName = (name: string) => name.includes('_specify')
 
 export const Details = () => {
   const _reportFlow = useReportFlowContext()
+  const _analytic = useAnalyticContext()
   const _stepper = useStepperContext()
   const draft = _reportFlow.reportDraft
   const inputs = useMemo(() => {
@@ -73,6 +76,7 @@ export const Details = () => {
       onSubmit={(detailInputValues, uploadedFiles) => {
         _reportFlow.setReportDraft(_ => ({..._, uploadedFiles, details: detailInputValues}))
         _stepper.next()
+        _analytic.trackEvent(EventCategories.report, ReportEventActions.validateDetails)
       }}
     />
   )
@@ -347,7 +351,9 @@ export const _Details = ({
           </PanelBody>
         </Panel>
       </Animate>
-      <StepperActions next={() => handleSubmit(f => onSubmit(f, uploadedFiles))()}/>
+      <StepperActions next={() => {
+        handleSubmit(f => onSubmit(f, uploadedFiles))()
+      }}/>
     </>
   )
 }

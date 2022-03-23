@@ -12,10 +12,14 @@ import createEmotionCache from 'core/createEmotionCache'
 import {ToastProvider} from 'mui-extension'
 import {ReportFlowProvider} from 'feature/Report/ReportFlowContext'
 import {ConstantProvider} from 'core/context/ConstantContext'
-import {useEffect} from 'react'
 import {appConfig} from '../conf/appConfig'
-import {Integrations} from '@sentry/tracing'
-import * as Sentry from '@sentry/react'
+import Script from 'next/script'
+import {AnalyticProvider} from '../core/analytic/AnalyticContext'
+import {Matomo} from '../core/plugins/matomo'
+import {Sentry} from '../core/plugins/sentry'
+import {Atinternet} from '../core/plugins/atinternet'
+import {Analytic} from '../core/analytic/analytic'
+import {useEffect, useState} from 'react'
 
 interface ScAppProps extends AppProps {
   emotionCache?: EmotionCache;
@@ -23,10 +27,19 @@ interface ScAppProps extends AppProps {
 
 const clientSideEmotionCache = createEmotionCache()
 
+
 const App = ({emotionCache = clientSideEmotionCache, ...props}: ScAppProps) => {
+  useEffect(() => {
+    Sentry.init(appConfig)
+    const matomo = Matomo.init({siteId: appConfig.matomo_siteId, url: appConfig.matomo_url})
+    const atInternet = Atinternet.init()
+    setAnalytic(Analytic.init({appConfig, matomo, atInternet}))
+  }, [])
+  const [analytic, setAnalytic] = useState<Analytic | undefined>()
   return (
     <Provide
       providers={[
+        _ => <AnalyticProvider analytic={analytic} children={_}/>,
         _ => <CacheProvider value={emotionCache} children={_}/>,
         _ => <StyledEngineProvider children={_}/>,
         _ => <ThemeProvider theme={muiTheme()} children={_}/>,
@@ -44,29 +57,23 @@ const App = ({emotionCache = clientSideEmotionCache, ...props}: ScAppProps) => {
 }
 
 const _App = ({Component, pageProps}: AppProps) => {
-  useEffect(() => {
-    if (appConfig.sentry_dns) {
-      Sentry.init({
-        dsn: appConfig.sentry_dns,
-        integrations: [new Integrations.BrowserTracing()],
-        tracesSampleRate: appConfig.sentry_traceRate,
-      })
-    }
-  })
   return (
-    <div className="root">
-      {/*<Head>*/}
-      {/*  <meta name="theme-color" content={theme.palette.primary.main}/>*/}
-      {/*</Head>*/}
-      <Box sx={{
-        flex: 1,
-        marginTop: `${headerHeight.normal}px`
-      }}>
-        <Component {...pageProps} />
-      </Box>
-      <Header/>
-      <Footer/>
-    </div>
+    <>
+      <Script type="text/javascript" src="https://tag.aticdn.net/618165/smarttag.js"/>
+      <div className="root">
+        {/*<Head>*/}
+        {/*  <meta name="theme-color" content={theme.palette.primary.main}/>*/}
+        {/*</Head>*/}
+        <Box sx={{
+          flex: 1,
+          marginTop: `${headerHeight.normal}px`
+        }}>
+          <Component {...pageProps} />
+        </Box>
+        <Header/>
+        <Footer/>
+      </div>
+    </>
   )
 }
 

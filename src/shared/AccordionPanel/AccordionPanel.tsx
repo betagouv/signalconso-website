@@ -20,11 +20,13 @@ export const AccordionPanel = ({
   desc,
   children,
   className,
+  onOpen,
   ...props
 }: {
   title: string
   desc?: string
   children: ReactNode
+  onOpen?: () => void
 } & BoxProps) => {
   const [open, setOpen] = useState(false)
   return (
@@ -51,7 +53,14 @@ export const AccordionPanel = ({
     }}>
       <Box
         role="button"
-        onClick={() => setOpen(_ => !_)}
+        onClick={() => {
+          setOpen(_ => {
+            if(!_) {
+              onOpen?.()
+            }
+            return !_
+          })
+        }}
         sx={{
           pr: 2,
           cursor: 'pointer',

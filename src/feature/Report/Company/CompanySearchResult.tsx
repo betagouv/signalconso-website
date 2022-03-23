@@ -9,10 +9,11 @@ import {Fender} from 'mui-extension'
 import {styleUtils} from 'core/theme/theme'
 import {AddressComponent} from 'shared/Address/Address'
 import {Animate} from 'shared/Animate/Animate'
-import {ScButton} from 'shared/Button/Button'
 import {Controller, useForm} from 'react-hook-form'
 import {CompanyWebsiteVendor} from './CompanyWebsiteVendor'
 import {StepperActionsNext} from 'shared/Stepper/StepperActionsNext'
+import {useAnalyticContext} from '../../../core/analytic/AnalyticContext'
+import {CompanySearchEventActions, EventCategories} from '../../../core/analytic/analytic'
 
 interface Props extends Omit<BoxProps, 'onSubmit'> {
   companies: CompanySearchResult[]
@@ -55,6 +56,7 @@ interface Form {
 
 export const CompanySearchResultComponent = ({companies, onSubmit}: Props) => {
   const {m} = useI18n()
+  const _analytic = useAnalyticContext()
   const [selected, setSelected] = useState<CompanySearchResult | undefined>()
   useEffect(() => {
     setSelected(undefined)
@@ -64,6 +66,12 @@ export const CompanySearchResultComponent = ({companies, onSubmit}: Props) => {
     handleSubmit,
     formState: {errors},
   } = useForm<Form>()
+
+  const submit = (selected: CompanySearchResult, vendor?: string) => {
+    onSubmit(selected, vendor)
+    _analytic.trackEvent(EventCategories.companySearch, CompanySearchEventActions.select);
+  }
+
   return (
     <>
       <Animate>
@@ -80,7 +88,7 @@ export const CompanySearchResultComponent = ({companies, onSubmit}: Props) => {
               if (selectedCompany.isMarketPlace) {
                 setSelected(selectedCompany)
               } else {
-                onSubmit(selectedCompany)
+                submit(selectedCompany)
               }
             })}>
               <Txt block color="hint">{m.selectCompanyDesc}</Txt>
@@ -129,7 +137,7 @@ export const CompanySearchResultComponent = ({companies, onSubmit}: Props) => {
         )}
       </Animate>
       {selected?.isMarketPlace && (
-        <CompanyWebsiteVendor onSubmit={vendor => onSubmit(selected, vendor)}/>
+        <CompanyWebsiteVendor onSubmit={vendor => submit(selected, vendor)}/>
       )}
     </>
   )

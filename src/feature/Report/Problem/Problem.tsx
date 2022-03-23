@@ -9,6 +9,9 @@ import {StepperActions} from 'shared/Stepper/StepperActions'
 import {ProblemInformation} from './ProblemInformation'
 import {useI18n} from 'core/i18n'
 import {ProblemContratualDisputeWarnPanel} from './ProblemContratualDisputeWarnPanel'
+import {EventCategories, ReportEventActions} from 'core/analytic/analytic'
+import {useAnalyticContext} from 'core/analytic/AnalyticContext'
+import {ReportDraft2} from '../../../core/model/ReportDraft'
 
 interface Props {
   anomaly: Anomaly
@@ -17,11 +20,13 @@ interface Props {
 export const Problem = ({
   anomaly,
 }: Props) => {
+  const _analytic = useAnalyticContext()
   const {m} = useI18n()
   const displayReponseConso = useMemo(() => Math.random() * 100 < appConfig.reponseConsoDisplayRate, [])
   const {reportDraft, setReportDraft, clearReportDraft} = useReportFlowContext()
   useEffect(() => {
     if (anomaly.category !== reportDraft.category) {
+      _analytic.trackEvent(EventCategories.report, ReportEventActions.validateCategory, anomaly.category)
       clearReportDraft()
       setReportDraft({category: anomaly.category})
     }
@@ -55,6 +60,7 @@ export const Problem = ({
       copy.subcategories.length = index
       copy.subcategories[index] = subcategory
       copy.subcategories = [...copy.subcategories]
+      _analytic.trackEvent(EventCategories.report, ReportEventActions.validateSubcategory, copy.subcategories.map(_ => _.title))
       return copy
     })
   }
@@ -154,17 +160,24 @@ export const Problem = ({
                   }] : [])
                 ]}
                 onChange={(value: number) => {
+                  const updateAndTrack = (change: Partial<ReportDraft2>) => {
+                    setReportDraft(old => {
+                      const d = {...old, ...change}
+                      _analytic.trackEvent(EventCategories.report, ReportEventActions.contactualReport, d.contractualDispute ? 'Oui' : 'Non')
+                      return d
+                    })
+                  }
                   switch (value) {
                     case 1: {
-                      setReportDraft(_ => ({..._, forwardToReponseConso: undefined, contractualDispute: true}))
+                      updateAndTrack({forwardToReponseConso: undefined, contractualDispute: true})
                       break
                     }
                     case 2: {
-                      setReportDraft(_ => ({..._, forwardToReponseConso: undefined, contractualDispute: false}))
+                      updateAndTrack({forwardToReponseConso: undefined, contractualDispute: false})
                       break
                     }
                     case 3: {
-                      setReportDraft(_ => ({..._, forwardToReponseConso: true, contractualDispute: undefined}))
+                      updateAndTrack({forwardToReponseConso: true, contractualDispute: undefined})
                       break
                     }
                   }

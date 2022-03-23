@@ -12,6 +12,8 @@ import {Txt} from 'mui-extension'
 import {Animate} from 'shared/Animate/Animate'
 import {ReactNode} from 'react'
 import {map} from 'core/helper/utils'
+import {useAnalyticContext} from '../../../core/analytic/AnalyticContext'
+import {CompanySearchEventActions, EventCategories} from '../../../core/analytic/analytic'
 
 interface Form {
   name: string
@@ -27,6 +29,7 @@ export const CompanySearchByNameAndPostalCode = ({children}: Props) => {
   const {apiSdk} = useApiSdk()
   const {toastError} = useToast()
   const _search = useFetcher(apiSdk.company.searchCompanies)
+  const _analytic = useAnalyticContext()
   const {
     handleSubmit,
     register,
@@ -35,6 +38,11 @@ export const CompanySearchByNameAndPostalCode = ({children}: Props) => {
   } = useForm<Form>()
 
   const search = (form: Form) => {
+    _analytic.trackEvent(
+      EventCategories.companySearch,
+      CompanySearchEventActions.search,
+      form.name + ' ' + form.postalCode
+    )
     _search.fetch({force: true, clean: true}, form.name, form.postalCode)
   }
 
