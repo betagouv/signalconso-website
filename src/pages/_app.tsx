@@ -34,9 +34,8 @@ const App = ({emotionCache = clientSideEmotionCache, ...props}: ScAppProps) => {
     const matomo = Matomo.init({siteId: appConfig.matomo_siteId, url: appConfig.matomo_url})
     const atInternet = Atinternet.init()
     setAnalytic(Analytic.init({appConfig, matomo, atInternet}))
-    // const analytic = Analytic.init({appConfig, matomo, atInternet})
   }, [])
-  const [analytic, setAnalytic] = useState()
+  const [analytic, setAnalytic] = useState<Analytic | undefined>()
   return (
     <Provide
       providers={[
