@@ -11,8 +11,11 @@ import {ScButton} from 'shared/Button/Button'
 import Link from 'next/link'
 import {siteMap} from 'core/siteMap'
 import {mapPromise} from '@alexandreannic/ts-utils/lib/index'
-import {useState} from 'react'
+import {useEffect, useState} from 'react'
 import {AccordionInline} from 'shared/AccordionInline/AccordionInline'
+import {useAnalyticContext} from '../../../core/analytic/AnalyticContext'
+import {EventCategories, ReportEventActions} from '../../../core/analytic/analytic'
+import {last} from '../../../core/lodashNamedExport'
 
 interface Props {
   category: string
@@ -29,9 +32,13 @@ export const ProblemInformation = ({
   animate,
   autoScrollTo,
 }: Props) => {
+  const _analytic = useAnalyticContext()
   const {m} = useI18n()
   const {apiSdk} = useApiSdk()
   const [votedPositive, setVotedPositive] = useState<boolean | undefined>()
+  useEffect(() => {
+    _analytic.trackEvent(EventCategories.report, ReportEventActions.outOfBounds, subcategories && subcategories.length > 0 ? last(subcategories).title : category)
+  }, [category, subcategories, information])
   const _vote = useFetcher(
     mapPromise({
       promise: apiSdk.rating.rate,

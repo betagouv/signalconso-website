@@ -13,6 +13,8 @@ import {ReportFiles} from 'shared/UploadFile/ReportFiles'
 import {useToast} from 'core/toast'
 import {Row} from 'shared/Row/Row'
 import React, {useEffect} from 'react'
+import {useAnalyticContext} from '../../../core/analytic/AnalyticContext'
+import {EventCategories, ReportEventActions} from '../../../core/analytic/analytic'
 
 export const Confirmation = ({}: {}) => {
   const _reportFlow = useReportFlowContext()
@@ -36,6 +38,7 @@ export const _Confirmation = ({
   const {m} = useI18n()
   const {toastError} = useToast()
   const _reportFlow = useReportFlowContext()
+  const _analytic = useAnalyticContext()
 
   useEffect(_reportFlow.createReport.clearCache, [])
 
@@ -138,10 +141,17 @@ export const _Confirmation = ({
           loadingNext={_reportFlow.createReport.loading}
           nextButtonLabel={draft.forwardToReponseConso ? m.confirmationBtnReponseConso : m.confirmationBtn}
           next={next => {
+            _analytic.trackEvent(EventCategories.report, ReportEventActions.validateConfirmation)
             _reportFlow.createReport.fetch({}, draft)
-              .then(next)
-              .then(_reportFlow.clearReportDraft)
-              .catch(toastError)
+              .then(() => {
+                next()
+                _reportFlow.clearReportDraft()
+                _analytic.trackEvent(EventCategories.report, ReportEventActions.reportSendSuccess)
+              })
+              .catch(e => {
+                _analytic.trackEvent(EventCategories.report, ReportEventActions.reportSendFail)
+                toastError(e)
+              })
           }}
         />
       </div>

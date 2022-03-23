@@ -9,8 +9,9 @@ import {StepperActions} from 'shared/Stepper/StepperActions'
 import {ProblemInformation} from './ProblemInformation'
 import {useI18n} from 'core/i18n'
 import {ProblemContratualDisputeWarnPanel} from './ProblemContratualDisputeWarnPanel'
-import {EventCategories, ReportEventActions} from '../../../core/analytic/analytic'
-import {useAnalyticContext} from '../../../core/analytic/AnalyticContext'
+import {EventCategories, ReportEventActions} from 'core/analytic/analytic'
+import {useAnalyticContext} from 'core/analytic/AnalyticContext'
+import {ReportDraft2} from '../../../core/model/ReportDraft'
 
 interface Props {
   anomaly: Anomaly
@@ -59,6 +60,7 @@ export const Problem = ({
       copy.subcategories.length = index
       copy.subcategories[index] = subcategory
       copy.subcategories = [...copy.subcategories]
+      _analytic.trackEvent(EventCategories.report, ReportEventActions.validateSubcategory, copy.subcategories.map(_ => _.title))
       return copy
     })
   }
@@ -158,17 +160,22 @@ export const Problem = ({
                   }] : [])
                 ]}
                 onChange={(value: number) => {
+                  const update = (change: Partial<ReportDraft2>) => (draft: Partial<ReportDraft2>): Partial<ReportDraft2> => {
+                    const d = {...draft, ...change}
+                    _analytic.trackEvent(EventCategories.report, ReportEventActions.contactualReport, d.contractualDispute ? 'Oui' : 'Non')
+                    return d
+                  }
                   switch (value) {
                     case 1: {
-                      setReportDraft(_ => ({..._, forwardToReponseConso: undefined, contractualDispute: true}))
+                      update({forwardToReponseConso: undefined, contractualDispute: true})
                       break
                     }
                     case 2: {
-                      setReportDraft(_ => ({..._, forwardToReponseConso: undefined, contractualDispute: false}))
+                      update({forwardToReponseConso: undefined, contractualDispute: false})
                       break
                     }
                     case 3: {
-                      setReportDraft(_ => ({..._, forwardToReponseConso: true, contractualDispute: undefined}))
+                      update({forwardToReponseConso: true, contractualDispute: undefined})
                       break
                     }
                   }

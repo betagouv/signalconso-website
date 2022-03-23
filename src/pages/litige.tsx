@@ -6,8 +6,19 @@ import {externalLinks} from 'core/externalLinks'
 import {Alert, Txt} from 'mui-extension'
 import {Panel} from 'shared/Panel/Panel'
 import {Icon} from '@mui/material'
+import {useAnalyticContext} from '../core/analytic/AnalyticContext'
+import {ContractualDisputeActions, ContractualDisputeNames, EventCategories} from '../core/analytic/analytic'
 
 const Litige = () => {
+  const _analytic = useAnalyticContext()
+
+  const trackCurrentStep = (i: number) => {
+    _analytic.trackEvent(
+      EventCategories.contractualDispute,
+      ContractualDisputeActions.consult,
+      `${ContractualDisputeNames.step} n°${i}`
+    )
+  }
   return (
     <Page size="small" className="blog">
       <Head>
@@ -18,6 +29,7 @@ const Litige = () => {
       <AccordionPanels>
 
         <AccordionPanel
+          onOpen={() => trackCurrentStep(1)}
           title="Démarche n°1"
           desc="J’écris un courrier à l’entreprise pour demander à résoudre mon problème."
         >
@@ -47,6 +59,9 @@ const Litige = () => {
                 target="_blank"
                 title="Ouverture de la lettre type (nouvelle fenêtre)"
                 download="ModeleLettreLitige.txt"
+                onClick={() => {
+                  _analytic.trackEvent(EventCategories.contractualDispute, ContractualDisputeActions.downloadTemplate)
+                }}
               >
                 <Icon fontSize="small" sx={{verticalAlign: 'middle', mr: 1}}>download</Icon>
                 une lettre type à compléter (zones entre [])
@@ -62,6 +77,7 @@ const Litige = () => {
           <p>Ce courrier est la preuve de ma démarche. Il est obligatoire pour entamer d’autres démarches par la suite.</p>
         </AccordionPanel>
         <AccordionPanel
+          onOpen={() => trackCurrentStep(2)}
           title="Démarche n°2"
           desc="Je contacte un médiateur de la consommation, c’est-à-dire une personne chargée de régler les problèmes des consommateurs avec les entreprises."
         >
@@ -106,6 +122,7 @@ const Litige = () => {
           </p>
         </AccordionPanel>
         <AccordionPanel
+          onOpen={() => trackCurrentStep(3)}
           title="Démarche n°3"
           desc="Je vais en justice, c’est-à-dire que je demande un procès au tribunal."
         >
