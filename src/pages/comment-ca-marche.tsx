@@ -63,7 +63,7 @@ const CommentCAMarche = () => {
           SignalConso contacte l'entreprise afin de l'informer de votre signalement (qui peut être anonymisé).
         </p>
         <p>
-          L'entreprise peut décider de corriger le problème. Vous serez informé par un email de Signalconso.
+          L'entreprise peut décider de corriger le problème. Vous serez informé par un email de SignalConso.
         </p>
         <p>
           Vous avez choisi de transmettre vos coordonnées à l'entreprise ? Elle pourra vous recontacter directement.
@@ -71,7 +71,7 @@ const CommentCAMarche = () => {
       </Card>
       <Card img="image/illustrations/dgccrf.png" title="4. La répression des fraudes intervient si nécessaire.">
         <p>
-          Votre signalement est enregistré dans la base de données de la répression des fraudes (dgccrf).
+          Votre signalement est enregistré dans la base de données de la répression des fraudes (DGCCRF).
           <p>
             Les signalements deviennent trop nombreux pour une même entreprise ?
             Le problème est considéré comme grave par les enquêteurs ?

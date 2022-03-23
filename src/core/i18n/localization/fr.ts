@@ -392,7 +392,7 @@ export const fr = {
     transmittedRateStatName: `% de signalements transmis aux entreprises`,
 
     readRateStat: ` des signalements transmis ont été lus par les entreprises`,
-    readRateDescription: `Pourquoi pas 100 % ? Car Signalconso est facultatif. L'entreprise est libre de créer un compte et de lire le signalement.`,
+    readRateDescription: `Pourquoi pas 100 % ? Car SignalConso est facultatif. L'entreprise est libre de créer un compte et de lire le signalement.`,
     readRateStatName: `Signalements lus par les entreprises`,
 
     respondedRateStat: ` ont eu une réponse de l'entreprise, sur l'ensemble des signalements lus`,

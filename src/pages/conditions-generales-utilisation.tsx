@@ -81,7 +81,7 @@ const ConditionsGeneralesUtilisationConso = (props: BoxProps) => {
 
       <h2>Les signalements sont-ils anonymes ?</h2>
       <p>
-        L’utilisateur doit s’identifier auprès de l’administration (Signalconso et DGCCRF) en donnant son nom, son
+        L’utilisateur doit s’identifier auprès de l’administration (SignalConso et DGCCRF) en donnant son nom, son
         prénom et son adresse email.
         <br/>Par contre, l'utilisateur a la possibilité de rester anonyme vis-à-vis de l'entreprise.
       </p>
