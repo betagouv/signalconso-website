@@ -48,7 +48,7 @@ export const Stepper = React.memo(({steps, initialStep, renderDone}: StepperProp
         scrollTop()
       },
     }}>
-      <StepperHeader steps={steps} currentStep={currentStep} goTo={setCurrentStep}/>
+      <StepperHeader steps={steps.map(_ => _.label)} currentStep={currentStep} goTo={setCurrentStep}/>
       {(() => {
         const XX: any = currentStep > (steps.length - 1) ? renderDone : steps[currentStep].component
         return (

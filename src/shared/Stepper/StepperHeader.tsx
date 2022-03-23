@@ -1,18 +1,27 @@
 import React from 'react'
-import {StepProps} from './Stepper'
-import {alpha, Box, Icon, Theme, useTheme} from '@mui/material'
-import {useWindowWidth} from '../../core/useWindowWidth'
+import {alpha, Box, BoxProps, Icon, Theme, useTheme} from '@mui/material'
+import {useWindowWidth} from 'core/useWindowWidth'
+import {styleUtils} from 'core/theme/theme'
 
-interface StepperHeaderProps {
-  steps: StepProps[]
+interface StepperHeaderProps extends BoxProps {
+  steps: string[]
   currentStep: number
-  goTo: (index: number) => void
+  goTo?: (index: number) => void
+  stepSize?: number
+  stepMargin?: number
+  hideLabel?: boolean
 }
 
-const stepSize = 32
-const stepMargin = 8
 
-export const StepperHeader = ({steps, currentStep, goTo}: StepperHeaderProps) => {
+export const StepperHeader = ({
+  sx,
+  steps,
+  currentStep,
+  goTo,
+  stepSize = 32,
+  stepMargin = 8,
+  hideLabel,
+}: StepperHeaderProps) => {
   const t = useTheme()
   const isDone = currentStep >= steps.length
   const {isMobileWidthMax} = useWindowWidth()
@@ -21,11 +30,14 @@ export const StepperHeader = ({steps, currentStep, goTo}: StepperHeaderProps) =>
       display: 'flex',
       mb: 4,
       justifyContent: 'center',
+      ...sx,
     }}>
       {steps.map((step, i) =>
-        <Box key={step.name} sx={{flex: 1}} onClick={() => i < currentStep && !isDone && goTo(i)}>
+        <Box key={step} sx={{flex: 1}} onClick={goTo ? () => i < currentStep && !isDone && goTo(i) : undefined}>
           <Box sx={{
-            cursor: i < currentStep && !isDone ? 'pointer' : 'not-allowed',
+            ...goTo && {
+              cursor: i < currentStep && !isDone ? 'pointer' : 'not-allowed',
+            },
             display: 'flex',
             position: 'relative',
             justifyContent: 'center',
@@ -53,6 +65,9 @@ export const StepperHeader = ({steps, currentStep, goTo}: StepperHeaderProps) =>
               display: 'flex',
               alignItems: 'center',
               fontWeight: t => t.typography.fontWeightBold,
+              ...stepSize <= 30 && {
+                fontSize: t => styleUtils(t).fontSize.small,
+              },
               justifyContent: 'center',
               transition: t => t.transitions.create('all'),
               mr: 1,
@@ -62,7 +77,7 @@ export const StepperHeader = ({steps, currentStep, goTo}: StepperHeaderProps) =>
                 color: t.palette.success.contrastText,
               } : currentStep === i ? {
                 // border: t => `2px solid ${alpha(t.palette.primary.main, .5)}`,
-                boxShadow: t => `0px 0px 0px 4px ${alpha(t.palette.primary.main, .3)}`,
+                boxShadow: t => `0px 0px 0px ${stepSize > 30 ? 4 : 2}px ${alpha(t.palette.primary.main, .3)}`,
                 color: t.palette.primary.contrastText,
                 bgcolor: 'primary.main',
               } : {
@@ -76,18 +91,19 @@ export const StepperHeader = ({steps, currentStep, goTo}: StepperHeaderProps) =>
                 i + 1
               )}
             </Box>
-            <Box sx={{
-              mt: 1,
-              textAlign: 'center',
-              ...(currentStep > i ? {
-              } : currentStep === i ? {
-                fontWeight: t => t.typography.fontWeightBold,
-              } : {
-                color: t => t.palette.text.disabled,
-              })
-            }}>
-              {currentStep === i || !isMobileWidthMax ? step.label : ''}
-            </Box>
+            {!hideLabel && (!isMobileWidthMax || currentStep === i) && (
+              <Box sx={{
+                mt: 1,
+                textAlign: 'center',
+                ...(currentStep > i ? {} : currentStep === i ? {
+                  fontWeight: t => t.typography.fontWeightBold,
+                } : {
+                  color: t => t.palette.text.disabled,
+                })
+              }}>
+                {step}
+              </Box>
+            )}
           </Box>
         </Box>
       )}

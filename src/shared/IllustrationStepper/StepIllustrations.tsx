@@ -86,7 +86,7 @@ export const IllustrationStepperMobile = ({steps}: IllustrationStepperProps) => 
 
 export const IllustrationStepperLarge = ({steps}: IllustrationStepperProps) => {
   const {isMdOrLess, isLgOrLess} = useWindowWidth()
-  const dotSize = 18
+  const dotSize = 22
   const borderSize = 2
   const stepperMargin = 24
   const theme = useTheme()
@@ -105,7 +105,7 @@ export const IllustrationStepperLarge = ({steps}: IllustrationStepperProps) => {
             bottom: -stepperMargin - borderSize,
             content: `' '`,
             height: borderSize,
-            background: theme.palette.primary.main,
+            background: theme.palette.divider,
             left: 0,
             right: 0,
             position: 'absolute',
@@ -122,7 +122,7 @@ export const IllustrationStepperLarge = ({steps}: IllustrationStepperProps) => {
             background: theme.palette.background.paper,
             content: `' '`,
             borderRadius: 50,
-            border: `${borderSize}px solid ${theme.palette.primary.main}`,
+            border: `${borderSize}px solid ${theme.palette.divider}`,
             height: dotSize,
             width: dotSize,
             position: 'absolute',
