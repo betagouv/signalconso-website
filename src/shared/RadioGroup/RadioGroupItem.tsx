@@ -13,6 +13,7 @@ export interface ScRadioGroupItemProps<T> extends Omit<BoxProps, 'title'> {
   children?: ReactNode
   onClick?: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void
   dense?: boolean
+  inline?: boolean
   error?: boolean
   multiple?: boolean
 }
@@ -22,6 +23,7 @@ export const ScRadioGroupItem = <T, >({
   description,
   error,
   dense,
+  inline,
   disabled,
   value,
   children,
@@ -31,7 +33,7 @@ export const ScRadioGroupItem = <T, >({
   multiple,
   ...rest
 }: ScRadioGroupItemProps<T>) => {
-  const minHeight = 50
+  const minHeight = dense ? 40 : 50
   return (
     <Box
       role={multiple ? 'checkbox' : 'radio'}
@@ -40,27 +42,43 @@ export const ScRadioGroupItem = <T, >({
         display: 'flex',
         alignItems: 'flex-start',
         border: t => '1px solid ' + t.palette.divider,
-        borderBottomColor: 'transparent',
         paddingRight: '2px',
         paddingBottom: '2px',
         transition: 'all .2s ease-in-out',
         cursor: 'pointer',
-        '&:last-of-type': {
-          borderBottom: t => '1px solid ' + t.palette.divider,
-          borderBottomRightRadius: t => t.shape.borderRadius,
-          borderBottomLeftRadius: t => t.shape.borderRadius,
-        },
-        '&:first-of-type': {
-          borderTopRightRadius: t => t.shape.borderRadius,
-          borderTopLeftRadius: t => t.shape.borderRadius,
+        ...inline ? {
+          borderRightColor: 'transparent',
+          '&:last-of-type': {
+            borderRight: t => '1px solid ' + t.palette.divider,
+            borderBottomRightRadius: t => t.shape.borderRadius,
+            borderTopRightRadius: t => t.shape.borderRadius,
+          },
+          '&:first-of-type': {
+            borderBottomLeftRadius: t => t.shape.borderRadius,
+            borderTopLeftRadius: t => t.shape.borderRadius,
+          },
+          '&:not(:first-of-type)': {
+            marginLeft: '-1px',
+          },
+        } : {
+          borderBottomColor: 'transparent',
+          '&:last-of-type': {
+            borderBottom: t => '1px solid ' + t.palette.divider,
+            borderBottomRightRadius: t => t.shape.borderRadius,
+            borderBottomLeftRadius: t => t.shape.borderRadius,
+          },
+          '&:first-of-type': {
+            borderTopRightRadius: t => t.shape.borderRadius,
+            borderTopLeftRadius: t => t.shape.borderRadius,
+          },
+          '&:not(:first-of-type)': {
+            marginTop: '-2px',
+          },
         },
         '&:hover': {
           zIndex: 1,
           border: t => `1px solid ${t.palette.primary.main}`,
           background: 'rgba(0,0,0,.04)',
-        },
-        '&:not(:first-of-type)': {
-          marginTop: '-2px',
         },
         ...selected && {
           zIndex: 1,
