@@ -6,11 +6,12 @@ import {Panel, PanelActions, PanelBody} from 'shared/Panel/Panel'
 import {Animate} from 'shared/Animate/Animate'
 import {Autocomplete, Box} from '@mui/material'
 import {useConstantContext} from 'core/context/ConstantContext'
-import {useEffect} from 'react'
+import React, {useEffect} from 'react'
 import {useEffectFn} from '@alexandreannic/react-hooks-lib'
 import {useToast} from 'core/toast'
 import {StepperActionsNext} from 'shared/Stepper/StepperActionsNext'
 import {Country} from '@signal-conso/signalconso-api-sdk-js'
+import {Alert, Txt} from "mui-extension";
 
 interface Form {
   name: string
@@ -87,7 +88,11 @@ export const CompanyAskForeignDetails = ({onSubmit}: Props) => {
                 )}
               />
             </FormLayout>
-            <FormLayout required label={m.yourPostalCode} desc={m.yourPostalCodeDesc}>
+            <br/>
+            <Alert dense type="info" sx={{mb: 2}} deletable persistentDelete>
+              <Txt size="small" dangerouslySetInnerHTML={{__html: m.cantIdentifyCompany}}/>
+            </Alert>
+            <FormLayout required label={m.yourPostalCode} >
               <ScInput
                 error={!!errors.postalCode}
                 helperText={errors.postalCode?.message ?? ''}
