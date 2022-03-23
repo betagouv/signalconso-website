@@ -280,6 +280,7 @@ export const fr = {
       Il ne sera pas transmis à l'entreprise, sauf si cette dernière est française et identifiable par l'équipe de SignalConso.
       Dans tous les cas les enquêteurs de la répression des fraudes en seront informés.`,
     couldYouPrecise: `Pouvez-vous préciser ?`,
+    cantIdentifyCompany: `Comme vous ne pouvez pas identifier l'entreprise qui est venue à votre domicile, merci de préciser votre localisation afin que nos services puissent tenter de rapprocher ces informations avec celles qu'auraient éventuellement déposées vos voisins, ayant été en contact avec la même entreprise que vous`,
     companyIdentityLabel: `Numéro SIRET ou SIREN ou RCS de l'entreprise`,
     companyIdentityPlaceholder: `Ex: 83350861700010`,
     postalCode: `Code postal`,
@@ -305,7 +306,6 @@ export const fr = {
     continueReport: `Vous avez un signalement en cours`,
     reportedCompanyName: `Nom ou enseigne de l'entreprise signalée`,
     reportedCompanyNamePlaceholder: `Ex: Boulangerie Petit Jean`,
-    yourPostalCodeDesc: `SignalConso en a besoin pour alerter le bon service.`,
     companyIdentifiedTitle: `Entreprise identifiée`,
     companyIdentityHelperWhere: `Où trouver ces identifiants ?`,
     companyIdentityHelper: `A quoi correspondent ces identifiants ?`,

@@ -7,6 +7,7 @@ import {useI18n} from 'core/i18n'
 import {useForm} from 'react-hook-form'
 import {Animate} from 'shared/Animate/Animate'
 import {StepperActionsNext} from '../../../shared/Stepper/StepperActionsNext'
+import {Alert, Txt} from "mui-extension";
 
 interface Form {
   consumerPostalCode: string
@@ -27,10 +28,13 @@ export const CompanyAskConsumerPostalCode = ({value, onChange}: Props) => {
 
   return (
     <Animate>
-      <Panel title={m.couldYouPrecise} id="CompanyAskConsumerPostalCode">
+      <Panel id="CompanyAskConsumerPostalCode">
+        <Alert dense type="info" sx={{mb: 2}} deletable persistentDelete>
+          <Txt size="small" dangerouslySetInnerHTML={{__html: m.cantIdentifyCompany}}/>
+        </Alert>
         <form onSubmit={handleSubmit(_ => onChange(_.consumerPostalCode))}>
           <PanelBody>
-            <FormLayout required label={m.yourPostalCode} desc={m.yourPostalCodeDesc}>
+            <FormLayout required label={m.yourPostalCode}>
               <ScInput
                 error={!!errors.consumerPostalCode}
                 helperText={errors.consumerPostalCode?.message ?? ''}
