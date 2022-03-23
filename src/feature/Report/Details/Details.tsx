@@ -121,7 +121,7 @@ export const _Details = ({
 
   return (
     <>
-      <Animate animate={true}>
+      <Animate autoScrollTo={false}>
         <Panel>
           <Alert gutterBottom type="warning">
             {isTransmittable ? (
