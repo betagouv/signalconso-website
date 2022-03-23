@@ -87,7 +87,7 @@ const SuiviEtViePrivee = () => {
           </ul>
           <p>
             Vous disposez également d’un droit à la limitation du traitement de vos données. Consultez le site
-            <a href="https://www.cnil.fr/">https://www.cnil.fr</a> pour plus d’informations sur vos droits.
+            &nbsp;<a href="https://www.cnil.fr/">https://www.cnil.fr</a> pour plus d’informations sur vos droits.
           </p>
           <p>
             Enfin, vous disposez également du droit d'introduire une réclamation auprès de l'autorité de contrôle.

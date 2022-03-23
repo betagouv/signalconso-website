@@ -37,7 +37,7 @@ export const ProblemInformation = ({
   const {apiSdk} = useApiSdk()
   const [votedPositive, setVotedPositive] = useState<boolean | undefined>()
   useEffect(() => {
-    _analytic.trackEvent(EventCategories.report, ReportEventActions.outOfBounds, subcategories && subcategories.length > 0 ? last(subcategories).title : category)
+    _analytic.trackEvent(EventCategories.report, ReportEventActions.outOfBounds, subcategories && subcategories.length > 0 ? last(subcategories)?.title : category)
   }, [category, subcategories, information])
   const _vote = useFetcher(
     mapPromise({
