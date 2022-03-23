@@ -1,5 +1,5 @@
 import {appConfig} from '../../conf/appConfig'
-import {Matomo} from './matomo'
+import {Matomo} from '../plugins/matomo'
 
 export class Analytic {
   constructor() {

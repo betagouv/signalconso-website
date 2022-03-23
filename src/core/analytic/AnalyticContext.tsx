@@ -1,5 +1,5 @@
 import * as React from 'react'
-import {ReactNode, useContext, useEffect, useMemo, useState} from 'react'
+import {ReactNode, useContext, useMemo} from 'react'
 import {Analytic} from './analytic'
 
 export interface AnalyticContextProps {

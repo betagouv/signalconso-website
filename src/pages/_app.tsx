@@ -14,11 +14,10 @@ import {ReportFlowProvider} from 'feature/Report/ReportFlowContext'
 import {ConstantProvider} from 'core/context/ConstantContext'
 import {useEffect} from 'react'
 import {appConfig} from '../conf/appConfig'
-import {Integrations} from '@sentry/tracing'
-import * as Sentry from '@sentry/react'
 import Script from 'next/script'
 import {AnalyticProvider} from '../core/analytic/AnalyticContext'
-import {Matomo} from '../core/analytic/matomo'
+import {Matomo} from '../core/plugins/matomo'
+import {Sentry} from '../core/plugins/sentry'
 
 interface ScAppProps extends AppProps {
   emotionCache?: EmotionCache;
@@ -49,23 +48,8 @@ const App = ({emotionCache = clientSideEmotionCache, ...props}: ScAppProps) => {
 
 const _App = ({Component, pageProps}: AppProps) => {
   useEffect(() => {
-    if (appConfig.sentry_dns) {
-      Sentry.init({
-        dsn: appConfig.sentry_dns,
-        integrations: [new Integrations.BrowserTracing()],
-        tracesSampleRate: appConfig.sentry_traceRate,
-      })
-    } else {
-      console.warn(`Sentry not set.`)
-    }
-    if(appConfig.matomo_siteId && appConfig.matomo_url) {
-      Matomo.init({
-        siteId: appConfig.matomo_siteId,
-        url: appConfig.matomo_url,
-      })
-    } else {
-      console.warn(`Matomo config not set.`)
-    }
+    Sentry.init(appConfig)
+    const matomo = new Matomo({siteId: appConfig.matomo_siteId, url: appConfig.matomo_url})
   })
   return (
     <>
