@@ -28,10 +28,21 @@ export class ReportDraft2 {
       )
     }
 
+    const mapLabel = (label: string): string => {
+      console.log('mapLabel', label, label.endsWith(':'))
+      if (label.endsWith('?')) {
+        return label.replace('?', ':')
+      }
+      if (!label.endsWith(':')) {
+        return `${label} :`
+      }
+      return label
+    }
+    
     return Object.keys(details)
       .filter(_ => !isSpecifyInputName(_))
       .map(index => {
-        const label = inputs[+index].label
+        const label = mapLabel(inputs[+index].label)
         const value = fromNullable(details[index]).map(v =>
           Array.isArray(v)
             ? v.map(_ => _.includes(SpecifyFormUtils.keyword) ? map(_, +index) : _)

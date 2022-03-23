@@ -16,13 +16,13 @@ export class DraftReportDefaultInputs {
 
   static readonly date = (): DetailInput => ({
     label: 'Date du constat',
-    type: DetailInputType.DATE,
+    type: DetailInputType.DATE_NOT_IN_FUTURE,
     defaultValue: 'SYSDATE'
   })
 
   static readonly defaults = (): DetailInput[] => [
-    DraftReportDefaultInputs.description(),
     DraftReportDefaultInputs.date(),
+    DraftReportDefaultInputs.description(),
   ]
 }
 
