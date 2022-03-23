@@ -27,28 +27,6 @@ interface ConsumerForm {
   contactAgreement?: boolean
   phone?: string
 }
-//
-// const Row = ({
-//   icon,
-//   children,
-//   sx,
-//   ...props
-// }: {
-//   icon?: string
-// } & BoxProps) => {
-//   return (
-//     <Box sx={{display: 'flex', '& + &': {mt: 2}, ...sx}} {...props}>
-//       <Icon sx={{
-//         mr: 2,
-//         mt: .5,
-//         minWidth: 30,
-//         textAlign: 'center',
-//         color: t => t.palette.text.disabled
-//       }}>{icon}</Icon>
-//       <Box sx={{width: '100%'}}>{children}</Box>
-//     </Box>
-//   )
-// }
 
 export const Consumer = () => {
   const _stepper = useStepperContext()

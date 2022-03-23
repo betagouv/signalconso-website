@@ -276,7 +276,7 @@ export const _Details = ({
                                 value={option}
                                 title={<span dangerouslySetInnerHTML={{__html: option}}/>}
                                 description={
-                                  ((field.value as string[]).includes(option) && option.includes(SpecifyFormUtils.keyword))
+                                  ((field.value as string[] | undefined)?.includes(option) && option.includes(SpecifyFormUtils.keyword))
                                     ? <DetailsSpecifyInput
                                       control={control}
                                       error={errors[SpecifyFormUtils.getInputName(inputIndex)]}

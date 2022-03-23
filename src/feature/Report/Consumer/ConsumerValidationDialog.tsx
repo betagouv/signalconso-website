@@ -1,12 +1,12 @@
 import {Button, Dialog, DialogActions, DialogContent, DialogTitle, Icon, LinearProgress} from '@mui/material'
-import React, {useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
 import {Controller, useForm} from 'react-hook-form'
 import {useI18n} from 'core/i18n'
 import {ScButton} from 'shared/Button/Button'
 import {useFetcher} from '@alexandreannic/react-hooks-lib'
 import {useApiSdk} from 'core/context/ApiSdk'
 import {Alert, Txt} from 'mui-extension'
-import {delay, fnSwitch} from '@alexandreannic/ts-utils/lib/common'
+import {delay, duration, fnSwitch} from '@alexandreannic/ts-utils/lib/common'
 import {LoadingButton} from '@mui/lab'
 import {InputValidationCode} from './InputValidationCode'
 
@@ -34,7 +34,7 @@ export const ConsumerValidationDialog = ({
   const {m} = useI18n()
   const _validateEmail = useFetcher(apiSdk.authenticate.validateConsumerEmail)
   const _checkEmail = useFetcher(apiSdk.authenticate.checkConsumerEmail)
-
+  const [disableResendButton, setDisableResendButton] = useState(false)
   useEffect(() => {
 
   })
@@ -62,10 +62,15 @@ export const ConsumerValidationDialog = ({
       <DialogContent>
         <Alert dense type="info" sx={{mb: 2}} action={
           <ScButton
+            disabled={disableResendButton}
             loading={_checkEmail.loading}
             size="small"
             icon="refresh"
-            onClick={() => _checkEmail.fetch({}, consumerEmail)}
+            onClick={() => {
+              setDisableResendButton(true)
+              setTimeout(() => setDisableResendButton(false), duration(15, 'second'))
+              _checkEmail.fetch({}, consumerEmail)
+            }}
           >
             {m.consumerResentEmail}
           </ScButton>
