@@ -18,7 +18,7 @@ let idCounter = 0
 
 export const Animate = ({
   direction = 'Y',
-  translateAnimation = 70,
+  translateAnimation = 50,
   offsetY = 90,
   autoScrollTo = true,
   animate = true,
