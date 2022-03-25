@@ -112,28 +112,30 @@ export const _Confirmation = ({
                 {draft.consumer.phone}
               </Row>
             )}
-            <Row icon="https">
-              {m.contactAgreement}:&nbsp;
-              <Txt bold>
-                {draft.contactAgreement ? (
-                  <Chip
-                    size="small"
-                    label={m.yes}
-                    color="success"
-                    variant="outlined"
-                    icon={<Icon>check_circle</Icon>}
-                  />
-                ) : (
-                  <Chip
-                    size="small"
-                    label={m.no}
-                    color="error"
-                    variant="outlined"
-                    icon={<Icon>remove_circle</Icon>}
-                  />
-                )}
-              </Txt>
-            </Row>
+            {ReportDraft.isTransmittableToPro(draft) && (
+              <Row icon="https">
+                {m.contactAgreement}:&nbsp;
+                <Txt bold>
+                  {draft.contactAgreement ? (
+                    <Chip
+                      size="small"
+                      label={m.yes}
+                      color="success"
+                      variant="outlined"
+                      icon={<Icon>check_circle</Icon>}
+                    />
+                  ) : (
+                    <Chip
+                      size="small"
+                      label={m.no}
+                      color="error"
+                      variant="outlined"
+                      icon={<Icon>remove_circle</Icon>}
+                    />
+                  )}
+                </Txt>
+              </Row>
+            )}
           </ConfirmationStep>
         </ConfirmationStepper>
         <StepperActions

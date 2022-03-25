@@ -335,12 +335,16 @@ export const _Details = ({
       <Animate autoScrollTo={false}>
         <Panel title={fileLabel ?? m.attachments}>
           <PanelBody>
-            {!contractualDispute && ReportDraft.isTransmittableToPro({tags, employeeConsumer}) && (
-              <Txt color="hint" block gutterBottom dangerouslySetInnerHTML={{__html: m.attachmentsDescAnonymous}}/>
+            {ReportDraft.isTransmittableToPro({tags, employeeConsumer}) && (
+              <>
+                {!contractualDispute && (
+                  <Txt color="hint" block gutterBottom dangerouslySetInnerHTML={{__html: m.attachmentsDescAnonymous}}/>
+                )}
+                <Alert dense type="info" sx={{mb: 2}} deletable persistentDelete>
+                  <Txt size="small" dangerouslySetInnerHTML={{__html: m.attachmentsDesc2}}/>
+                </Alert>
+              </>
             )}
-            <Alert dense type="info" sx={{mb: 2}} deletable persistentDelete>
-              <Txt size="small" dangerouslySetInnerHTML={{__html: m.attachmentsDesc2}}/>
-            </Alert>
 
             <ReportFiles
               files={uploadedFiles}
