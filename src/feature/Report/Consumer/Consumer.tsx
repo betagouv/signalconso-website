@@ -96,8 +96,8 @@ export const _Consumer = ({
                 <ScRadioGroup
                   {...field}
                   inline dense sx={{mt: 1, mb: 2}}>
-                  <ScRadioGroupItem key={Gender.Male} value={Gender.Male.toString()} title={m.gender[Gender.Male]}/>
-                  <ScRadioGroupItem key={Gender.Female} value={Gender.Female.toString()} title={m.gender[Gender.Female]}/>
+                  <ScRadioGroupItem key={Gender.Male} value={Gender.Male} title={m.gender[Gender.Male]}/>
+                  <ScRadioGroupItem key={Gender.Female} value={Gender.Female} title={m.gender[Gender.Female]}/>
                   <ScRadioGroupItem key={"Other"} value={undefined} title={m.unknownGender}/>
                 </ScRadioGroup>
               )}
