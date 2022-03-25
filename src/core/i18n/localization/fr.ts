@@ -202,7 +202,7 @@ export const fr = {
       12: 'Déc',
     },
     gender :{
-      'Male' : 'Mr',
+      'Male' : 'M',
       'Female': 'Mme'
     },
     unknownGender: 'Ne pas se prononcer',
