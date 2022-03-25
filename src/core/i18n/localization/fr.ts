@@ -106,6 +106,7 @@ export const fr = {
     key: 'Key',
     phone: 'Téléphone',
     phoneOptional: 'Téléphone (optionnel)',
+    genderOptional: 'Civilité (optionnel)',
     value: 'Value',
     invite: 'Inviter',
     activate_all: 'Tout Activer',
@@ -200,6 +201,11 @@ export const fr = {
       11: 'Nov',
       12: 'Déc',
     },
+    gender :{
+      'Male' : 'M',
+      'Female': 'Mme'
+    },
+    unknownGender: 'Ne pas se prononcer',
     bannerCookie: `Le site Signal Conso n'utilise que des cookies techniques exemptés de consentement.`,
     bannerCookieSeeMore: `En savoir plus`,
     apiErrorsCode: {
