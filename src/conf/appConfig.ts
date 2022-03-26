@@ -37,6 +37,7 @@ const map = _env(persistedTempEnvVariablesForFront)
 const parseUrl = (_: string): string => _.replace(/\/$/, '')
 
 export const appConfig = {
+  apiAdresseUrl: parseUrl('https://api-adresse.data.gouv.fr'),
   isDev: map()(Env.NEXT_PUBLIC_NODE_ENV) === 'development',
   showPlayground: map(bool, defaultValue(false))(Env.NEXT_PUBLIC_SHOW_PLAYGROUND),
   apiBaseUrl: map(defaultValue('http://localhost:9000'), parseUrl)(Env.NEXT_PUBLIC_API_BASE_URL),

@@ -1,26 +1,29 @@
 import {useI18n} from 'core/i18n'
-import {useForm} from 'react-hook-form'
+import {Controller, useForm} from 'react-hook-form'
 import {Panel, PanelActions, PanelBody} from 'shared/Panel/Panel'
 import {ScInput} from 'shared/Input/ScInput'
 import {FormLayout} from 'shared/FormLayout/FormLayout'
 import React from 'react'
-import {ScButton} from 'shared/Button/Button'
 import {Animate} from 'shared/Animate/Animate'
 import {Alert, Txt} from 'mui-extension'
 import {StepperActionsNext} from '../../../shared/Stepper/StepperActionsNext'
+import {AutocompleteCity, AutocompleteCityValue} from '../../../shared/AutocompleteCity/AutocompleteCity'
+import {Address} from '@signal-conso/signalconso-api-sdk-js'
 
 interface Form {
   street: string
-  postalCode: string
+  place: AutocompleteCityValue
 }
 
 interface Props {
-  onChange: (_: Form) => void
+  onChange: (_: Pick<Address, 'street' | 'city' | 'postalCode'>) => void
 }
 
 export const CompanyAskConsumerStreet = ({onChange}: Props) => {
   const {m} = useI18n()
   const {
+    formState: {errors},
+    control,
     register,
     handleSubmit
   } = useForm<Form>()
@@ -31,25 +34,47 @@ export const CompanyAskConsumerStreet = ({onChange}: Props) => {
         <Alert dense type="info" sx={{mb: 2}} deletable persistentDelete>
           <Txt size="small" dangerouslySetInnerHTML={{__html: m.cantIdentifyCompany}}/>
         </Alert>
-        <form onSubmit={handleSubmit(onChange)}>
+        <form onSubmit={handleSubmit(form => onChange({
+          street: form.street,
+          city: form.place.city,
+          postalCode: form.place.postalCode,
+        }))}>
           <PanelBody>
             <FormLayout required label={m.yourStreet} desc={m.yourStreetDesc}>
               <ScInput
                 {...register('street', {
                   required: {value: true, message: m.required}
                 })}
+                error={!!errors.street}
+                helperText={(errors.street as any)?.message ?? ''}
                 fullWidth
                 placeholder={m.yourStreetPlaceholder}
               />
             </FormLayout>
-            <FormLayout required label={m.yourPostalCode}>
-              <ScInput
-                {...register('postalCode', {
+            <FormLayout required label={m.yourCity}>
+              <Controller
+                control={control}
+                name="place"
+                rules={{
                   required: {value: true, message: m.required}
-                })}
-                fullWidth
-                placeholder={m.yourPostalCodePlaceholder}
+                }}
+                render={({field}) =>
+                  <AutocompleteCity
+                    {...field}
+                    error={!!errors.place}
+                    helperText={(errors.place as any)?.message ?? ''}
+                    fullWidth
+                    placeholder={m.yourCityPlaceholder}
+                  />
+                }
               />
+              {/*<ScInput*/}
+              {/*  {...register('postalCode', {*/}
+              {/*    required: {value: true, message: m.required}*/}
+              {/*  })}*/}
+              {/*  fullWidth*/}
+              {/*  placeholder={m.yourPostalCodePlaceholder}*/}
+              {/*/>*/}
             </FormLayout>
           </PanelBody>
 

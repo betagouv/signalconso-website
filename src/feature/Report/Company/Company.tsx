@@ -45,15 +45,13 @@ export const Company = ({}: CompanyProps) => {
     )
   }
   return (
-    <>
-      <_Company
-        draft={draft}
-        onUpdateReportDraft={draft => {
-          _reportFlow.setReportDraft(_ => ReportDraft2.merge(_, draft))
-          _stepper.next()
-        }}
-      />
-    </>
+    <_Company
+      draft={draft}
+      onUpdateReportDraft={draft => {
+        _reportFlow.setReportDraft(_ => ReportDraft2.merge(_, draft))
+        _stepper.next()
+      }}
+    />
   )
 }
 
@@ -160,6 +158,7 @@ export const _Company = ({
                     address: {
                       postalCode: form.postalCode,
                       street: form.street,
+                      city: form.city,
                     },
                   },
                 })
@@ -168,12 +167,13 @@ export const _Company = ({
               <CompanyAskIsForeign>
                 {isForeign => fnSwitch(isForeign, {
                   [IsForeignCompany.Yes]: () => (
-                    <CompanyAskConsumerPostalCode onChange={postalCode => {
+                    <CompanyAskConsumerPostalCode onChange={form => {
                       onUpdateReportDraft({
                         companyDraft: {
                           ...phoneOrWebsite,
                           address: {
-                            postalCode,
+                            postalCode: form.postalCode,
+                            city: form.city,
                           }
                         }
                       })
@@ -194,12 +194,13 @@ export const _Company = ({
                     }}/>
                   ),
                   [IsForeignCompany.Unknown]: () => (
-                    <CompanyAskConsumerPostalCode onChange={postalCode => {
+                    <CompanyAskConsumerPostalCode onChange={form => {
                       onUpdateReportDraft({
                         companyDraft: {
                           ...phoneOrWebsite,
                           address: {
-                            postalCode,
+                            postalCode: form.postalCode,
+                            city: form.city,
                           }
                         }
                       })

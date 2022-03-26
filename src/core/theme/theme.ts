@@ -230,6 +230,13 @@ export const muiTheme = (dark?: boolean): Theme => {
       //     }
       //   `
       // },
+      MuiAutocomplete: {
+        // styleOverrides: {
+        //   endAdornment: {
+        //     position: 'relative',
+        //   },
+        // }
+      },
       MuiButton: {
         styleOverrides: {
           root: {
