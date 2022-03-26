@@ -20,6 +20,8 @@ import {Sentry} from '../core/plugins/sentry'
 import {Atinternet} from '../core/plugins/atinternet'
 import {Analytic} from '../core/analytic/analytic'
 import {useEffect, useState} from 'react'
+import {ConfigProvider} from '../core/context/ConfigContext'
+import {AutocompleteCity} from '../shared/AutocompleteCity/AutocompleteCity'
 
 interface ScAppProps extends AppProps {
   emotionCache?: EmotionCache;
@@ -39,6 +41,7 @@ const App = ({emotionCache = clientSideEmotionCache, ...props}: ScAppProps) => {
   return (
     <Provide
       providers={[
+        _ => <ConfigProvider config={appConfig} children={_}/>,
         _ => <AnalyticProvider analytic={analytic} children={_}/>,
         _ => <CacheProvider value={emotionCache} children={_}/>,
         _ => <StyledEngineProvider children={_}/>,
@@ -68,6 +71,11 @@ const _App = ({Component, pageProps}: AppProps) => {
           flex: 1,
           marginTop: `${headerHeight.normal}px`
         }}>
+          <hr/>
+          <hr/>
+          <AutocompleteCity value={{city: 'Quimper', postalCode: '29000'}} onChange={console.log}/>
+          <hr/>
+          <hr/>
           <Component {...pageProps} />
         </Box>
         <Header/>
