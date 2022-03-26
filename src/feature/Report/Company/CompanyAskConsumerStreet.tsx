@@ -68,13 +68,6 @@ export const CompanyAskConsumerStreet = ({onChange}: Props) => {
                   />
                 }
               />
-              {/*<ScInput*/}
-              {/*  {...register('postalCode', {*/}
-              {/*    required: {value: true, message: m.required}*/}
-              {/*  })}*/}
-              {/*  fullWidth*/}
-              {/*  placeholder={m.yourPostalCodePlaceholder}*/}
-              {/*/>*/}
             </FormLayout>
           </PanelBody>
 

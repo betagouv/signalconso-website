@@ -19,7 +19,7 @@ interface Props extends Omit<ScInputProps, 'value' | 'onChange'> {
   onChange: (_: AutocompleteCityValue) => void
 }
 
-export const AutocompleteCity = ({label, value, onChange}: Props) => {
+export const AutocompleteCity = ({label, placeholder, value, onChange}: Props) => {
   const {m} = useI18n()
   const config = useConfig().config
   const _apiAdresse = useFetcher(new ApiAdresse(new ApiClient({baseUrl: config.apiAdresseUrl})).fetchCity)
@@ -65,7 +65,8 @@ export const AutocompleteCity = ({label, value, onChange}: Props) => {
       renderInput={(params) => (
         <ScInput
           {...params}
-          label={label ?? m.city}
+          placeholder={placeholder}
+          label={label}
           inputProps={{
             ...params.inputProps,
             value: inputValue,

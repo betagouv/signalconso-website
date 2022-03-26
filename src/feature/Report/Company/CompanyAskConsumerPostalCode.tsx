@@ -52,16 +52,6 @@ export const CompanyAskConsumerPostalCode = ({value, onChange}: Props) => {
                   />
                 }
               />
-              {/*<ScInput*/}
-              {/*  error={!!errors.place}*/}
-              {/*  helperText={errors.place?.message ?? ''}*/}
-              {/*  defaultValue={value}*/}
-              {/*  {...register('place', {*/}
-              {/*    required: {value: true, message: m.required}*/}
-              {/*  })}*/}
-              {/*  fullWidth*/}
-              {/*  placeholder={m.yourPostalCodePlaceholder}*/}
-              {/*/>*/}
             </FormLayout>
           </PanelBody>
 

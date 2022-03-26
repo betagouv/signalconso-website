@@ -1,6 +1,6 @@
 import {useI18n} from 'core/i18n'
 import {FormLayout} from 'shared/FormLayout/FormLayout'
-import {useForm} from 'react-hook-form'
+import {Controller, useForm} from 'react-hook-form'
 import {ScInput} from 'shared/Input/ScInput'
 import {Panel, PanelActions, PanelBody} from 'shared/Panel/Panel'
 import {useApiSdk} from 'core/context/ApiSdk'
@@ -10,10 +10,11 @@ import {ScButton} from 'shared/Button/Button'
 import {CompanySearchResult} from '@signal-conso/signalconso-api-sdk-js'
 import {Txt} from 'mui-extension'
 import {Animate} from 'shared/Animate/Animate'
-import {ReactNode} from 'react'
+import React, {ReactNode} from 'react'
 import {map} from 'core/helper/utils'
 import {useAnalyticContext} from '../../../core/analytic/AnalyticContext'
 import {CompanySearchEventActions, EventCategories} from '../../../core/analytic/analytic'
+import {AutocompleteCity} from '../../../shared/AutocompleteCity/AutocompleteCity'
 
 interface Form {
   name: string
@@ -31,6 +32,7 @@ export const CompanySearchByNameAndPostalCode = ({children}: Props) => {
   const _search = useFetcher(apiSdk.company.searchCompanies)
   const _analytic = useAnalyticContext()
   const {
+    control,
     handleSubmit,
     register,
     reset,
@@ -66,13 +68,23 @@ export const CompanySearchByNameAndPostalCode = ({children}: Props) => {
                 />
               </FormLayout>
               <FormLayout required label={m.postalCode}>
-                <ScInput
-                  fullWidth
-                  error={!!errors.postalCode}
-                  helperText={errors.postalCode?.message}
-                  {...register('postalCode', {
-                    required: {value: true, message: m.required},
-                  })}
+                <Controller
+                  control={control}
+                  name="postalCode"
+                  rules={{
+                    required: {value: true, message: m.required}
+                  }}
+                  render={({field}) =>
+                    <AutocompleteCity
+                      {...field}
+                      value={undefined}
+                      onChange={x => field.onChange(x.postalCode)}
+                      error={!!errors.postalCode}
+                      helperText={(errors.postalCode)?.message ?? ''}
+                      fullWidth
+                      placeholder={m.yourCityPlaceholder}
+                    />
+                  }
                 />
               </FormLayout>
             </PanelBody>
