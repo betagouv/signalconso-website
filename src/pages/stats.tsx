@@ -13,7 +13,7 @@ const Stats = () => {
   const {m} = useI18n()
 
   return (
-    <Page className="blog">
+    <Page className="blog" size="small">
       <Head>
         <title>{pageDefinitions.stats.title}</title>
         <meta name="description" content={pageDefinitions.stats.description}/>

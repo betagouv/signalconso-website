@@ -71,11 +71,6 @@ const _App = ({Component, pageProps}: AppProps) => {
           flex: 1,
           marginTop: `${headerHeight.normal}px`
         }}>
-          <hr/>
-          <hr/>
-          <AutocompleteCity value={{city: 'Quimper', postalCode: '29000'}} onChange={console.log}/>
-          <hr/>
-          <hr/>
           <Component {...pageProps} />
         </Box>
         <Header/>

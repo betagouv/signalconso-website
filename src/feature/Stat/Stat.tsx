@@ -26,6 +26,7 @@ export const Stat = React.memo(({name, count, curve, title, description, percent
     date: (m.monthShort_ as any)[date.getMonth() + 1],
     count,
   })
+  const height = 300
   useEffect(() => {
     if (curve)
       _curve.fetch({force: true, clean: true})
@@ -38,22 +39,22 @@ export const Stat = React.memo(({name, count, curve, title, description, percent
         <Txt block skeleton={_count.loading && 100} sx={{
           lineHeight: 1,
           fontSize: 34,
-          fontWeight: t => t.typography.fontWeightBold,
+          // fontWeight: t => t.typography.fontWeightBold,
           color: t => t.palette.primary.main,
         }}>{map(_count.entity?.value as number | undefined, formatLargeNumber)} {percentage && '%'}</Txt>
 
-        <Txt size="big" bold block>{title}</Txt>
+        <Txt block bold>{title}</Txt>
         {description && <Txt color="hint">{description}</Txt>}
 
         {curve && (
 
-          <Box sx={{height: 400, mt: 2, display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+          <Box sx={{height: height, mt: 2, display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
             {_curve.loading ? (
-              <Skeleton variant="rectangular" height={360} width="100%" sx={{borderRadius: '8px'}}/>
+              <Skeleton variant="rectangular" height={height - 30} width="100%" sx={{borderRadius: '8px'}}/>
             ) : _curve.entity && (
               <ResponsiveContainer width="100%" height="100%">
                 <BarChart
-                  height={300}
+                  height={height - 60}
                   data={_curve.entity.map(formatCurveDate)}
                   margin={{
                     top: 5,
