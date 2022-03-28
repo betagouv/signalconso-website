@@ -51,7 +51,7 @@ export const CompanyAskConsumerStreet = ({onChange}: Props) => {
                 placeholder={m.yourStreetPlaceholder}
               />
             </FormLayout>
-            <FormLayout required label={m.yourCity}>
+            <FormLayout required label={m.yourPostalCode}>
               <Controller
                 control={control}
                 name="place"
@@ -64,7 +64,7 @@ export const CompanyAskConsumerStreet = ({onChange}: Props) => {
                     error={!!errors.place}
                     helperText={(errors.place as any)?.message ?? ''}
                     fullWidth
-                    placeholder={m.yourCityPlaceholder}
+                    placeholder={m.yourPostalCodePlaceholder}
                   />
                 }
               />

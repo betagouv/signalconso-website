@@ -82,7 +82,7 @@ export const CompanySearchByNameAndPostalCode = ({children}: Props) => {
                       error={!!errors.postalCode}
                       helperText={(errors.postalCode)?.message ?? ''}
                       fullWidth
-                      placeholder={m.yourCityPlaceholder}
+                      placeholder={m.yourPostalCodePlaceholder}
                     />
                   }
                 />

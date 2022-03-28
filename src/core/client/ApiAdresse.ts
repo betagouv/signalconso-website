@@ -41,7 +41,8 @@ export class ApiAdresse {
 
   readonly fetchCity = (q: string): Promise<City[]> => {
     if (q === '') return Promise.resolve([])
-    return this.fetch<ApiAdresseResult>(q, 'municipality').then(_ => _.features.map(_ => _.properties))
+    return this.fetch<ApiAdresseResult>(q, 'municipality')
+      .then(_ => _.features.map(_ => _.properties))
   }
 
   private readonly fetch = <T>(q: string, type: AdresseType) => {
@@ -49,7 +50,7 @@ export class ApiAdresse {
       qs: {
         q,
         type,
-        autocomplete: 1
+        // autocomplete: 1
       }
     })
   }

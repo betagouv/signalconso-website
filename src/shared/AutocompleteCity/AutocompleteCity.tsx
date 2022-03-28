@@ -1,32 +1,32 @@
-import {useConfig} from 'core/context/ConfigContext'
 import {ApiAdresse, City} from 'core/client/ApiAdresse'
 import {throttle} from 'core/lodashNamedExport'
 import {useI18n} from 'core/i18n'
 import {useEffectFn, useFetcher} from '@alexandreannic/react-hooks-lib'
-import {ApiClient} from '@signal-conso/signalconso-api-sdk-js'
 import {Autocomplete, CircularProgress} from '@mui/material'
-import React, {useEffect, useMemo, useState} from 'react'
+import React, {forwardRef, useEffect, useMemo, useState} from 'react'
 import {ScInput, ScInputProps} from '../Input/ScInput'
 import {Txt} from 'mui-extension'
+import {useConfig} from '../../core/context/ConfigContext'
+import {ApiClient} from '@signal-conso/signalconso-api-sdk-js'
 
 export interface AutocompleteCityValue {
-  city: string
+  city?: string
   postalCode: string
 }
 
-interface Props extends Omit<ScInputProps, 'value' | 'onChange'> {
+export interface AutocompleteCityProps extends Omit<ScInputProps, 'value' | 'onChange'> {
   value?: AutocompleteCityValue
   onChange: (_: AutocompleteCityValue) => void
 }
 
-export const AutocompleteCity = ({label, placeholder, value, onChange}: Props) => {
+export const AutocompleteCity = forwardRef(({label, placeholder, value, onChange}: AutocompleteCityProps, ref: any) => {
   const {m} = useI18n()
   const config = useConfig().config
-  const _apiAdresse = useFetcher(new ApiAdresse(new ApiClient({baseUrl: config.apiAdresseUrl})).fetchCity)
+  const api = useFetcher(new ApiAdresse(new ApiClient({baseUrl: config.apiAdresseUrl})).fetchCity)
   const [open, setOpen] = useState(false)
   const [inputValue, setInputValue] = useState('')
   const fetch = useMemo(
-    () => throttle(_apiAdresse.fetch, 200,),
+    () => throttle(api.fetch, 200,),
     [],
   )
   useEffect(() => {
@@ -34,12 +34,13 @@ export const AutocompleteCity = ({label, placeholder, value, onChange}: Props) =
   }, [inputValue, fetch])
 
   useEffectFn(value, _ => {
-    setInputValue(_.city)
+    setInputValue(`${_.postalCode} ${_.city}`)
   })
 
   return (
     <Autocomplete
-      open={open}
+      ref={ref}
+      open={api.error ? false : open}
       onOpen={() => setOpen(true)}
       onClose={() => setOpen(false)}
       onInputChange={(event, newInputValue) => {
@@ -48,8 +49,10 @@ export const AutocompleteCity = ({label, placeholder, value, onChange}: Props) =
       onChange={(event: any, newValue: City | null) => {
         if (newValue) {
           onChange({city: newValue.city, postalCode: newValue.postcode})
+          setInputValue(`${newValue.postcode} ${newValue.city}`)
         }
       }}
+      filterOptions={_ => _}
       isOptionEqualToValue={(option, value) => option.label === value.label}
       getOptionLabel={_ => _.label}
       renderOption={(props, option) => (
@@ -58,10 +61,10 @@ export const AutocompleteCity = ({label, placeholder, value, onChange}: Props) =
           <Txt bold>{option.label}</Txt>
         </li>
       )}
-      options={_apiAdresse.entity ?? []}
+      options={api.entity ?? []}
       noOptionsText={m.noOptionsText}
       loadingText={m.loading}
-      loading={_apiAdresse.loading}
+      loading={api.loading}
       renderInput={(params) => (
         <ScInput
           {...params}
@@ -75,7 +78,7 @@ export const AutocompleteCity = ({label, placeholder, value, onChange}: Props) =
             ...params.InputProps,
             endAdornment: (
               <>
-                {_apiAdresse.loading ? <CircularProgress size={20}/> : null}
+                {api.loading ? <CircularProgress size={20}/> : null}
                 {params.InputProps.endAdornment}
               </>
             ),
@@ -84,5 +87,4 @@ export const AutocompleteCity = ({label, placeholder, value, onChange}: Props) =
       )}
     />
   )
-
-}
+})

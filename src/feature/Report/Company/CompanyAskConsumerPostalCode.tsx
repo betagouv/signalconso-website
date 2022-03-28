@@ -6,8 +6,9 @@ import {Controller, useForm} from 'react-hook-form'
 import {Animate} from 'shared/Animate/Animate'
 import {StepperActionsNext} from '../../../shared/Stepper/StepperActionsNext'
 import {Alert, Txt} from 'mui-extension'
-import {AutocompleteCity, AutocompleteCityValue} from '../../../shared/AutocompleteCity/AutocompleteCity'
+import {AutocompleteCityValue} from '../../../shared/AutocompleteCity/AutocompleteCity'
 import {Address} from '@signal-conso/signalconso-api-sdk-js'
+import {AutocompleteCity} from '../../../shared/AutocompleteCity/AutocompleteCity'
 
 interface Form {
   place: AutocompleteCityValue
@@ -34,7 +35,7 @@ export const CompanyAskConsumerPostalCode = ({value, onChange}: Props) => {
         </Alert>
         <form onSubmit={handleSubmit(_ => onChange(_.place))}>
           <PanelBody>
-            <FormLayout required label={m.yourCity}>
+            <FormLayout required label={m.yourPostalCode}>
               <Controller
                 control={control}
                 name="place"
@@ -48,7 +49,7 @@ export const CompanyAskConsumerPostalCode = ({value, onChange}: Props) => {
                     helperText={(errors.place as any)?.message ?? ''}
                     defaultValue={value}
                     fullWidth
-                    placeholder={m.yourCityPlaceholder}
+                    placeholder={m.yourPostalCodePlaceholder}
                   />
                 }
               />
