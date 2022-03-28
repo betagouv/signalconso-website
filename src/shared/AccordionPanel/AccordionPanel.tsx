@@ -3,15 +3,11 @@ import {Box, BoxProps, Collapse, Icon} from '@mui/material'
 import {IconBtn} from 'mui-extension/lib'
 import {Txt} from 'mui-extension'
 
-export const AccordionPanels = ({
-  children
-}: {
-  children: ReactNode
-}) => {
+export const AccordionPanels = ({children, ...props}: BoxProps) => {
   return (
-    <div>
+    <Box {...props}>
       {children}
-    </div>
+    </Box>
   )
 }
 

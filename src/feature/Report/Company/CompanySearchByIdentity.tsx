@@ -8,14 +8,14 @@ import {ScButton} from 'shared/Button/Button'
 import {useForm} from 'react-hook-form'
 import {CompanySearchResult} from '@signal-conso/signalconso-api-sdk-js'
 import {useToast} from 'core/toast'
-import {IconBtn, Txt} from 'mui-extension'
-import {Icon} from '@mui/material'
+import {IconBtn} from 'mui-extension'
+import {Box, Icon} from '@mui/material'
 import React, {ReactNode, useRef} from 'react'
-import {AccordionInline} from 'shared/AccordionInline/AccordionInline'
 import {Animate} from 'shared/Animate/Animate'
 import {map} from 'core/helper/utils'
 import {CompanySearchEventActions, EventCategories} from '../../../core/analytic/analytic'
 import {useAnalyticContext} from '../../../core/analytic/AnalyticContext'
+import {CompanySearchByIdentityHelpDialog} from './CompanySearchByIdentityHelpDialog'
 
 interface Form {
   identity: string
@@ -57,24 +57,16 @@ export const CompanySearchByIdentity = ({children}: Props) => {
         <Panel title={m.couldYouPrecise} id="CompanySearchByIdentity">
           <form onSubmit={handleSubmit(search)}>
             <PanelBody>
-              <FormLayout required label={m.companyIdentityLabel}>
-                <AccordionInline sx={{mb: .5}} label={<Txt size="small">{m.companyIdentityHelperWhere}</Txt>}>
-                  <Txt color="hint" size="small" dangerouslySetInnerHTML={{__html: m.companyIdentityHelperWhereDesc}}/>
-                  <img
-                    src="/image/siret-helper/siret-helper-footer.png"
-                    alt="consultation-pro-illustration"
-                    style={{width: '100%'}}
-                  />
-                  <Txt color="hint" size="small" dangerouslySetInnerHTML={{__html: m.companyIdentityHelperWhereDesc2}}/>
-                  <img
-                    src="/image/siret-helper/siret-helper-mentions_legales.png"
-                    alt="consultation-pro-illustration"
-                    style={{width: '100%'}}
-                  />
-                </AccordionInline>
-                <AccordionInline sx={{mb: .5}} label={<Txt size="small">{m.companyIdentityHelper}</Txt>}>
-                  <Txt color="hint" size="small" dangerouslySetInnerHTML={{__html: m.companyIdentityHelperDesc}}/>
-                </AccordionInline>
+              <FormLayout required label={
+                <Box sx={{display: 'inline-flex', alignItems: 'center'}}>
+                  {m.companyIdentityLabel}
+                  <CompanySearchByIdentityHelpDialog>
+                    <IconBtn sx={{ml: 1, color: t => t.palette.info.main}} size="small">
+                      <Icon>help</Icon>
+                    </IconBtn>
+                  </CompanySearchByIdentityHelpDialog>
+                </Box>
+              }>
                 <ScInput
                   inputRef={inputEl}
                   {...register('identity', {
