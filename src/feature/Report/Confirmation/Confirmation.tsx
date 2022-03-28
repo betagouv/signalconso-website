@@ -101,7 +101,7 @@ export const _Confirmation = ({
           </ConfirmationStep>
           <ConfirmationStep title={m.step_consumer}>
             <Row icon="person">
-              {draft.consumer.gender ?  m.gender[draft.consumer.gender] + ' ' : ''}
+              {draft.consumer.gender ? m.gender[draft.consumer.gender] + ' ' : ''}
               {draft.consumer.firstName}{' '}
               {draft.consumer.lastName}
             </Row>
