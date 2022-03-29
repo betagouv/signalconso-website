@@ -55,7 +55,7 @@ export const appConfig = {
   useHashRouter: true,
   apiDateFormat: 'dd/MM/yyyy',
   browserDateFormat: 'yyyy-MM-dd',
-  maxDescriptionInputLength: 500,
+  maxDescriptionInputLength: 1000,
   dummyEmailDomain: ['@yopmail.com'],
 }
 
