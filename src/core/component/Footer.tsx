@@ -122,6 +122,19 @@ export const Footer = () => {
                     />
                   </a>
                 </li>
+                <li>
+                  <a href="https://www.economie.gouv.fr/bercy-vert" target="_blank"
+                     rel="noreferrer"
+                     title="Accédez au site de la Direction interministérielle de la transformation publique (nouvelle fenêtre)"
+                  >
+                    <img
+                      style={{height: iconHeight + 4}}
+                      alt="Logo de la Direction interministérielle de la transformation publique"
+                      src="/image/logo-bercyvert-vector-BLANC.png"
+                      loading="lazy"
+                    />
+                  </a>
+                </li>
               </Box>
             </Grid>
             <Grid item md={4}>

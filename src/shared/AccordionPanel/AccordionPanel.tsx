@@ -41,10 +41,7 @@ export const AccordionPanel = ({
         borderBottomRightRadius: t => t.shape.borderRadius,
       },
       ...open && {
-        // mb: 2,
-        // borderRadius: t => `${t.shape.borderRadius}px`,
         borderLeft: t => `2px solid ${t.palette.primary.main} !important`,
-        // borderBottom: t => `1px solid ${t.palette.divider} !important`,
       },
     }}>
       <Box
