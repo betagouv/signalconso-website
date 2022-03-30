@@ -129,7 +129,7 @@ export const Footer = () => {
                   >
                     <img
                       style={{height: iconHeight + 4}}
-                      alt="Logo de la Direction interministérielle de la transformation publique"
+                      alt="Logo Bercy vert"
                       src="/image/logo-bercyvert-vector-BLANC.png"
                       loading="lazy"
                     />
