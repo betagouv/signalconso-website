@@ -16,11 +16,13 @@ import {useStepperContext} from 'shared/Stepper/Stepper'
 import {ConsumerValidationDialog} from './ConsumerValidationDialog'
 import {ReportDraft2} from 'core/model/ReportDraft'
 import {DeepPartial} from '@alexandreannic/ts-utils'
-import {ReportDraft, ReportTag, Gender} from '@signal-conso/signalconso-api-sdk-js'
+import {Gender, ReportDraft, ReportTag} from '@signal-conso/signalconso-api-sdk-js'
 import {appConfig} from '../../../conf/appConfig'
 import {Row} from 'shared/Row/Row'
 import {useAnalyticContext} from '../../../core/analytic/AnalyticContext'
 import {EventCategories, ReportEventActions} from '../../../core/analytic/analytic'
+import {useWindowWidth} from '../../../core/useWindowWidth'
+import {styleUtils} from '../../../core/theme/theme'
 
 interface ConsumerForm {
   firstName: string
@@ -59,6 +61,7 @@ export const _Consumer = ({
   const _checkEmail = useFetcher(apiSdk.authenticate.checkConsumerEmail)
   const _form = useForm<ConsumerForm>()
   const _analytic = useAnalyticContext()
+  const {isXsOrLess} = useWindowWidth()
 
   const showContactAgreement = ReportDraft.isTransmittableToPro(draft)
     && draft.contractualDispute !== true
@@ -80,13 +83,16 @@ export const _Consumer = ({
       })()
     })
   }
-
   return (
     <>
       <Panel title={m.consumerTitle}>
         <PanelBody>
           {draft.employeeConsumer && (
-            <Alert type="info" dangerouslySetInnerHTML={{__html: m.consumerIsEmployee}} sx={{mb: 3}}/>
+            <Alert
+              type="info" dense
+              dangerouslySetInnerHTML={{__html: m.consumerIsEmployee}}
+              sx={{mb: 3, fontSize: t => styleUtils(t).fontSize.small}}
+            />
           )}
           <Row icon="person">
             <FormLayout label={m.genderOptional}>
@@ -95,16 +101,17 @@ export const _Consumer = ({
                 control={_form.control} render={({field}) => (
                 <ScRadioGroup
                   {...field}
-                  inline dense sx={{mt: 1, mb: 2}}>
-                  <ScRadioGroupItem key={Gender.Male} value={Gender.Male} title={m.gender[Gender.Male]}/>
-                  <ScRadioGroupItem key={Gender.Female} value={Gender.Female} title={m.gender[Gender.Female]}/>
-                  <ScRadioGroupItem key={"Other"} value={undefined} title={m.unknownGender}/>
+                  inline={!isXsOrLess}
+                  dense
+                  sx={{mt: 1, mb: 2}}
+                >
+                  <ScRadioGroupItem value={Gender.Male} title={m.gender[Gender.Male]}/>
+                  <ScRadioGroupItem value={Gender.Female} title={m.gender[Gender.Female]}/>
+                  <ScRadioGroupItem value={undefined} title={m.unknownGender}/>
                 </ScRadioGroup>
               )}
               name={"gender"}/>
             </FormLayout>
-          </Row>
-          <Row icon="person">
             <Grid container columnSpacing={2}>
               <Grid item xs={6}>
                 <FormLayout label={m.firstName} required>

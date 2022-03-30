@@ -8,7 +8,7 @@ export const styleUtils = (t: Theme) => ({
   fontSize: {
     big: t.typography.fontSize * 1.15,
     normal: t.typography.fontSize,
-    small: t.typography.fontSize * 0.85,
+    small: t.typography.fontSize * 0.90,
     title: t.typography.fontSize * 1.3,
     bigTitle: t.typography.fontSize * 1.6,
   },

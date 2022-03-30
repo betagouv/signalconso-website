@@ -19,7 +19,7 @@ export interface AutocompleteCityProps extends Omit<ScInputProps, 'value' | 'onC
   onChange: (_: AutocompleteCityValue) => void
 }
 
-export const AutocompleteCity = forwardRef(({label, placeholder, value, onChange}: AutocompleteCityProps, ref: any) => {
+export const AutocompleteCity = forwardRef(({label, placeholder, value, onChange, ...inputProps}: AutocompleteCityProps, ref: any) => {
   const {m} = useI18n()
   const config = useConfig().config
   const api = useFetcher(new ApiAdresse(new ApiClient({baseUrl: config.apiAdresseUrl})).fetchCity)
@@ -67,18 +67,22 @@ export const AutocompleteCity = forwardRef(({label, placeholder, value, onChange
       loading={api.loading}
       renderInput={(params) => (
         <ScInput
+          {...inputProps}
           {...params}
           placeholder={placeholder}
           label={label}
           inputProps={{
+            ...inputProps.inputProps,
             ...params.inputProps,
             value: inputValue,
           }}
           InputProps={{
+            ...inputProps.InputProps,
             ...params.InputProps,
             endAdornment: (
               <>
                 {api.loading ? <CircularProgress size={20}/> : null}
+                {inputProps.InputProps?.endAdornment}
                 {params.InputProps.endAdornment}
               </>
             ),

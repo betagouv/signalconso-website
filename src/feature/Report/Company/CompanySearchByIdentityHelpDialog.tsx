@@ -69,23 +69,23 @@ export const CompanySearchByIdentityHelpDialog = ({
             </AccordionPanel>
             <AccordionPanel title="Sur une facture">
               <img
-                src="/image/siret-helper/siret-helper-bill.png"
+                src="/image/siret-helper/siret-helper-bill.jpg"
                 alt="Sur une facture"
                 style={{width: '100%'}}
               />
             </AccordionPanel>
             <AccordionPanel title="Sur un ticket de caisse">
               <img
-                src="/image/siret-helper/siret-helper-ticket.png"
+                src="/image/siret-helper/siret-helper-ticket.jpg"
                 alt="Sur un ticket de caisse"
-                style={{maxWidth: '220px', margin: 'auto', display: 'block'}}
+                style={{maxWidth: '300px', margin: 'auto', display: 'block'}}
               />
             </AccordionPanel>
             <AccordionPanel title="Sur un ticket de carte bleue">
               <img
-                src="/image/siret-helper/siret-helper-card.png"
+                src="/image/siret-helper/siret-helper-card.jpg"
                 alt="Sur un ticket de carte bleue"
-                style={{maxWidth: '220px', margin: 'auto', display: 'block'}}
+                style={{maxWidth: '300px', margin: 'auto', display: 'block'}}
               />
             </AccordionPanel>
           </AccordionPanels>
