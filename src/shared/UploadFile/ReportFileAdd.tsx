@@ -1,14 +1,13 @@
 import React, {useRef, useState} from 'react'
 import {Box, Button, CircularProgress, Icon, Theme, Tooltip} from '@mui/material'
 import {reportFileConfig} from './reportFileConfig'
-import {FileOrigin, UploadedFile} from '@signal-conso/signalconso-api-sdk-js'
+import {FileOrigin, UploadedFile, CompressFile} from '@signal-conso/signalconso-api-sdk-js'
 import {useI18n} from 'core/i18n'
 import {useApiSdk} from 'core/context/ApiSdk'
 import {appConfig} from '../../conf/appConfig'
 import {styleUtils} from 'core/theme/theme'
 import {useToast} from 'core/toast'
 import {SxProps} from '@mui/system'
-import imageCompression from 'browser-image-compression'
 
 const styles: {[key: string]: SxProps<Theme>} = {
   root: {
@@ -58,13 +57,6 @@ export const ReportFileAdd = ({onUploaded, fileOrigin}: Props) => {
     fileInputEl.current!.click()
   }
 
-  const compress = (file: File): Promise<File> => {
-    console.log(file)
-    return imageCompression(file, {
-      maxSizeMB: 0.1,
-      maxWidthOrHeight: 2000,
-    })
-  }
   const handleChange = (files: FileList | null) => {
     if (files && files[0]) {
       const file: File = files[0]
@@ -74,15 +66,13 @@ export const ReportFileAdd = ({onUploaded, fileOrigin}: Props) => {
         return
       }
       setUploading(true)
-      compress(file)
+      CompressFile.compress(file)
         .then(file => {
-          console.log(file)
           return file
         })
         .then(file => apiSdk.document.upload(file, fileOrigin))
         .then(onUploaded)
         .catch(e => {
-          console.error(e)
           toastError(e)
         })
         .finally(() => setUploading(false))

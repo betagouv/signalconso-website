@@ -24,7 +24,6 @@
     "@sentry/nextjs": "^6.18.2",
     "@sentry/tracing": "^6.18.2",
     "@signal-conso/signalconso-api-sdk-js": "git+ssh://git@github.com/betagouv/signalconso-api-sdk-js.git#website_v2",
-    "browser-image-compression": "^1.0.17",
     "classnames": "^2.3.1",
     "date-fns": "^2.25.0",
     "fp-ts": "^1.19.5",
