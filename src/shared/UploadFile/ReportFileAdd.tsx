@@ -8,6 +8,7 @@ import {appConfig} from '../../conf/appConfig'
 import {styleUtils} from 'core/theme/theme'
 import {useToast} from 'core/toast'
 import {SxProps} from '@mui/system'
+import imageCompression from 'browser-image-compression'
 
 const styles: {[key: string]: SxProps<Theme>} = {
   root: {
@@ -57,6 +58,13 @@ export const ReportFileAdd = ({onUploaded, fileOrigin}: Props) => {
     fileInputEl.current!.click()
   }
 
+  const compress = (file: File): Promise<File> => {
+    console.log(file)
+    return imageCompression(file, {
+      maxSizeMB: 0.1,
+      maxWidthOrHeight: 2000,
+    })
+  }
   const handleChange = (files: FileList | null) => {
     if (files && files[0]) {
       const file: File = files[0]
@@ -66,10 +74,17 @@ export const ReportFileAdd = ({onUploaded, fileOrigin}: Props) => {
         return
       }
       setUploading(true)
-      apiSdk.document
-        .upload(file, fileOrigin)
+      compress(file)
+        .then(file => {
+          console.log(file)
+          return file
+        })
+        .then(file => apiSdk.document.upload(file, fileOrigin))
         .then(onUploaded)
-        .catch(toastError)
+        .catch(e => {
+          console.error(e)
+          toastError(e)
+        })
         .finally(() => setUploading(false))
     }
   }
