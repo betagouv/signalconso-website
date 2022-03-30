@@ -30,7 +30,7 @@ const members: Member[] = [
   {
     name: 'Guillaume de Gérando',
     role: 'Chargé de déploiement',
-    avatar: 'avatar-quentinkurtz.png',
+    avatar: 'avatar-guillaumedegerando.png',
   },
   {
     name: 'Nathaniel Richand',
