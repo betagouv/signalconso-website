@@ -7,6 +7,7 @@ export const useToast = () => {
   const {m} = useI18n()
 
   const getErrorMessage = (err: Partial<ApiError>) => {
+    console.error(err)
     if (err.id && (m.apiErrorsCode as any)[err.id]) {
       return (m.apiErrorsCode as any)[err.id]
     }
@@ -17,7 +18,7 @@ export const useToast = () => {
   }
 
   const getApiErrorMessage = (err: Partial<ApiDetailedError>) => {
-
+    console.error(err)
     if (err.message && err.message.details !== '') {
       return err.message.details
     }
