@@ -161,7 +161,7 @@ export const _Consumer = ({
                   defaultValue={draft.consumer?.phone ?? ''}
                   {...getErrors('phone')}
                   {..._form.register('phone', {
-                    pattern: {value: regexp.phone, message: m.invalidEmail}
+                    pattern: {value: regexp.phone, message: m.invalidPhone}
                   })}
                 />
               </FormLayout>

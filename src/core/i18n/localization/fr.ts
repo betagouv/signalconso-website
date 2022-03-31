@@ -140,6 +140,7 @@ export const fr = {
     createMyAccount: 'Créer mon compte',
     atLeast8Characters: '8 caractères minimum',
     invalidEmail: 'Email invalide',
+    invalidPhone: 'Téléphone invalide',
     firstName: 'Prénom',
     lastName: 'Nom',
     addCompany: `Enregister l'entreprise`,
