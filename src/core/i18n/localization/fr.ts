@@ -206,7 +206,7 @@ export const fr = {
       'Male' : 'M',
       'Female': 'Mme'
     },
-    unknownGender: 'Ne pas se prononcer',
+    unknownGender: 'Non précisé',
     bannerCookie: `Le site Signal Conso n'utilise que des cookies techniques exemptés de consentement.`,
     bannerCookieSeeMore: `En savoir plus`,
     apiErrorsCode: {
