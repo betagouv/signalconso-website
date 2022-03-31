@@ -292,6 +292,7 @@ export const fr = {
     companyIdentityLabel: `Numéro SIRET ou SIREN ou RCS de l'entreprise`,
     companyIdentityPlaceholder: `Ex: 83350861700010`,
     postalCode: `Code postal`,
+    youCanSearchByCity: `Vous pouvez chercher par ville`,
     aboutCompany: `Informations sur l'entreprise`,
     selectCompany: `Sélectionnez l'entreprise`,
     verify: `Vérifier`,

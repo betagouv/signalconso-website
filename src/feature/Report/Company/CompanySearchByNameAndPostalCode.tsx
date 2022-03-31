@@ -67,7 +67,7 @@ export const CompanySearchByNameAndPostalCode = ({children}: Props) => {
                   })}
                 />
               </FormLayout>
-              <FormLayout required label={m.postalCode}>
+              <FormLayout required label={m.postalCode} desc={m.youCanSearchByCity}>
                 <Controller
                   control={control}
                   name="postalCode"

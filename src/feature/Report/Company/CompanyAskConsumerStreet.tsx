@@ -51,7 +51,7 @@ export const CompanyAskConsumerStreet = ({onChange}: Props) => {
                 placeholder={m.yourStreetPlaceholder}
               />
             </FormLayout>
-            <FormLayout required label={m.yourPostalCode}>
+            <FormLayout required label={m.yourPostalCode} desc={m.youCanSearchByCity}>
               <Controller
                 control={control}
                 name="place"

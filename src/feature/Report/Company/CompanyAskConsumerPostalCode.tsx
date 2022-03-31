@@ -35,7 +35,7 @@ export const CompanyAskConsumerPostalCode = ({value, onChange}: Props) => {
         </Alert>
         <form onSubmit={handleSubmit(_ => onChange(_.place))}>
           <PanelBody>
-            <FormLayout required label={m.yourPostalCode}>
+            <FormLayout required label={m.yourPostalCode} desc={m.youCanSearchByCity}>
               <Controller
                 control={control}
                 name="place"

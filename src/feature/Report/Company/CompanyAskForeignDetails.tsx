@@ -64,7 +64,6 @@ export const CompanyAskForeignDetails = ({onSubmit}: Props) => {
               <Controller
                 name="country"
                 control={control}
-                // onChange={([, data]) => data}
                 rules={{
                   required: {value: true, message: m.required},
                 }}
@@ -76,7 +75,6 @@ export const CompanyAskForeignDetails = ({onSubmit}: Props) => {
                     loading={countries.loading}
                     options={countries.entity ?? []}
                     getOptionLabel={_ => _.name}
-                    // options={countries.entity?.map(_ => _.name) ?? []}
                     renderInput={(params) => <ScInput
                       {...params}
                       error={!!errors.country}
