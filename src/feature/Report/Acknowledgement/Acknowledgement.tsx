@@ -191,7 +191,7 @@ export const _Acknowledgement = ({
           La répression des fraudes ne gère pas directement les problèmes individuels (litiges) entre un consommateur et une entreprise.
         </Row>
         <Row icon={<Icon aria-hidden="true" sx={{color: t => t.palette.success.light}}>check_circle</Icon>}>
-          L’entreprise a deux mois pour prendre connaissance du signalement.
+          L’entreprise a trois mois pour prendre connaissance du signalement.
         </Row>
         <Row icon={<Icon aria-hidden="true" sx={{color: t => t.palette.success.light}}>check_circle</Icon>}>
           La répression des fraudes pourra ouvrir une enquête auprès de l'établissement si de nombreux consommateurs sont concernés ou si la pratique est particulièrement
