@@ -18,6 +18,7 @@ import company from '../../public/image/illustrations/company.png'
 import dgccrf from '../../public/image/illustrations/dgccrf.png'
 import {useWindowWidth} from 'core/useWindowWidth'
 import {useRgpdBanner} from 'feature/RgpdBanner/RgpdBanner'
+import {InfoBanner} from "feature/InfoBanner/InfoBanner";
 
 const sxTitle: SxProps<Theme> = {
   fontSize: 24,
@@ -107,6 +108,7 @@ const Home = ({anomalies}: HomeProps) => {
         </Section>
       </main>
       <ReportStartedAlert/>
+      <InfoBanner/>
     </>
   )
 }
