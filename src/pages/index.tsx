@@ -48,6 +48,7 @@ const Home = ({anomalies}: HomeProps) => {
   useRgpdBanner()
   return (
     <>
+      <InfoBanner/>
       <main>
         <Section sx={{
           background: t => t.palette.primary.main,
