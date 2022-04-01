@@ -3,6 +3,7 @@ import {env as _env} from '@alexandreannic/ts-utils/lib/common/env/Env'
 import {bool, defaultValue, int} from '@alexandreannic/ts-utils/lib/common/env/EnvParser'
 
 enum Env {
+  NEXT_PUBLIC_INFO_BANNER = 'NEXT_PUBLIC_INFO_BANNER',
   NEXT_PUBLIC_SHOW_PLAYGROUND = 'NEXT_PUBLIC_SHOW_PLAYGROUND',
   NEXT_PUBLIC_NODE_ENV = 'NEXT_PUBLIC_NODE_ENV',
   NEXT_PUBLIC_API_BASE_URL = 'NEXT_PUBLIC_API_BASE_URL',
@@ -18,6 +19,7 @@ enum Env {
 }
 
 const persistedTempEnvVariablesForFront: {[key in Env]: string | undefined} = {
+  NEXT_PUBLIC_INFO_BANNER: process.env.NEXT_PUBLIC_INFO_BANNER,
   NEXT_PUBLIC_SHOW_PLAYGROUND: process.env.NEXT_PUBLIC_SHOW_PLAYGROUND,
   NEXT_PUBLIC_NODE_ENV: process.env.NEXT_PUBLIC_NODE_ENV,
   NEXT_PUBLIC_API_BASE_URL: process.env.NEXT_PUBLIC_API_BASE_URL,
@@ -56,6 +58,7 @@ export const appConfig = {
   apiDateFormat: 'dd/MM/yyyy',
   browserDateFormat: 'yyyy-MM-dd',
   maxDescriptionInputLength: 1000,
+  infoBanner: map()(Env.NEXT_PUBLIC_INFO_BANNER),
   dummyEmailDomain: ['@yopmail.com'],
 }
 
