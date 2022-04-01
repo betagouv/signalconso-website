@@ -49,7 +49,7 @@ export const appConfig = {
   upload_maxSizeMb: map(int, defaultValue(5))(Env.NEXT_PUBLIC_UPLOAD_MAX_SIZE_MB),
   contactEmail: 'support@signal.conso.gouv.fr',
   sentry_dns: map()(Env.NEXT_PUBLIC_SENTRY_DNS),
-  sentry_traceRate: map(int, defaultValue(0.5))(Env.NEXT_PUBLIC_SENTRY_TRACE_RATE),
+  sentry_traceRate: map(int, defaultValue(1))(Env.NEXT_PUBLIC_SENTRY_TRACE_RATE),
   matomo_siteId: map()(Env.NEXT_PUBLIC_MATOMO_SITE_ID),
   matomo_url: map()(Env.NEXT_PUBLIC_MATOMO_URL),
   useHashRouter: true,
