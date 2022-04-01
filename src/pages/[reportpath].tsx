@@ -17,7 +17,7 @@ import {pageDefinitions} from 'core/pageDefinition'
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const anomalies = await apiSdk.anomaly.getAnomalies()
-  const paths = anomalies.filter(_ => !_.hidden).map(_ => ({
+  const paths = anomalies.map(_ => ({
     params: {reportpath: _.path},
   }))
   return {paths, fallback: false}
