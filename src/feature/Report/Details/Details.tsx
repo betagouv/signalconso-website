@@ -110,8 +110,6 @@ export const _Details = ({
     getValues,
     handleSubmit,
     reset,
-    trigger,
-    watch,
     formState: {errors},
   } = useForm<any>()
 
