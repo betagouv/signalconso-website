@@ -31,7 +31,7 @@ export class Matomo {
     scriptElement.type = 'text/javascript'
     scriptElement.async = true
     scriptElement.defer = true
-    scriptElement.src = `${params.url}/${params.jsTrackerFile}`
+    scriptElement.src = `${params.url}/piwik.js`
     if (refElement.parentNode) {
       refElement.parentNode.insertBefore(scriptElement, refElement)
     }
