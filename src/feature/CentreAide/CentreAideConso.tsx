@@ -91,7 +91,7 @@ export const CentreAideConso = (props: BoxProps) => {
           </p>
           <p>Par contre, la répression des fraudes ne s'occupe pas d'obtenir votre remboursement ou votre indemnité.<br/> C'est à vous d'entamer les
             démarches. Ces démarches vous ont été présentées à la fin de votre signalement et dans votre mail d'accusé de réception.<br/> Vous pouvez également les retrouver
-            sur cette page : <a href={siteMap.litige} target="_blank" rel="noreferrer">{appConfig.appBaseUrl + siteMap.litige}</a>
+            sur cette page : <a href={siteMap.litige} target="_blank" rel="noreferrer">{window.location.origin + siteMap.litige}</a>
           </p>
         </AccordionPanel>
         <AccordionPanel title={`Je veux modifier ou supprimer mon signalement `}>
