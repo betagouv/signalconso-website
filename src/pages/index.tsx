@@ -109,7 +109,6 @@ const Home = ({anomalies}: HomeProps) => {
         </Section>
       </main>
       <ReportStartedAlert/>
-      <InfoBanner/>
     </>
   )
 }
