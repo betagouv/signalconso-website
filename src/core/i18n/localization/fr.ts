@@ -301,7 +301,7 @@ export const fr = {
     aboutCompany: `Informations sur l'entreprise`,
     selectCompany: `Sélectionnez l'entreprise`,
     verify: `Vérifier`,
-    isHeadOffice: 'Siège sociale',
+    isHeadOffice: 'Siège social',
     governmentCompany: 'Administration publique',
     selectCompanyDesc: `Si l'entreprise n'est pas celle recherchée, vous pouvez modifier votre recherche.`,
     isAFrenchCompany: `Est-ce que l'entreprise est en France ?`,
