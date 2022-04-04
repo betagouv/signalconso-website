@@ -67,7 +67,11 @@ export const Problem = ({
 
   if (anomaly.information) {
     return (
-      <ProblemInformation category={anomaly.category} subcategories={[]} information={anomaly.information}/>
+      <ProblemInformation
+        anomaly={anomaly}
+        information={anomaly.information}
+        subcategories={[]}
+      />
     )
   }
   return (
@@ -89,7 +93,7 @@ export const Problem = ({
       {isLastSubcategory && reportDraft.subcategories && (
         AnomalyClient.instanceOfSubcategoryInformation(lastSubcategories) ? (
           <ProblemInformation
-            category={anomaly.category}
+            anomaly={anomaly}
             subcategories={reportDraft.subcategories}
             information={(lastSubcategories as any).information}
           />

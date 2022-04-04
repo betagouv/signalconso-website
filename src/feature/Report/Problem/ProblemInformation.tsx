@@ -1,4 +1,4 @@
-import {Information, Subcategory} from '@signal-conso/signalconso-api-sdk-js'
+import {Anomaly, Information, Subcategory} from '@signal-conso/signalconso-api-sdk-js'
 import {Animate} from 'shared/Animate/Animate'
 import {Panel, PanelBody} from 'shared/Panel/Panel'
 import {useI18n} from 'core/i18n'
@@ -10,35 +10,33 @@ import {useFetcher} from '@alexandreannic/react-hooks-lib'
 import {ScButton} from 'shared/Button/Button'
 import Link from 'next/link'
 import {siteMap} from 'core/siteMap'
-import {mapPromise} from '@alexandreannic/ts-utils/lib/index'
+import {mapPromise} from '@alexandreannic/ts-utils'
 import {useEffect, useState} from 'react'
 import {AccordionInline} from 'shared/AccordionInline/AccordionInline'
 import {useAnalyticContext} from '../../../core/analytic/AnalyticContext'
 import {EventCategories, ReportEventActions} from '../../../core/analytic/analytic'
 import {last} from '../../../core/lodashNamedExport'
+import {ReportStepperPath, ReportStepperTitle} from '../ReportFlow'
 
 interface Props {
-  category: string
+  anomaly: Anomaly
   subcategories: Subcategory[]
   information: Information
-  animate?: boolean
-  autoScrollTo?: boolean
 }
 
 export const ProblemInformation = ({
-  category,
+  anomaly,
   subcategories,
   information,
-  animate,
-  autoScrollTo,
 }: Props) => {
   const _analytic = useAnalyticContext()
   const {m} = useI18n()
   const {apiSdk} = useApiSdk()
   const [votedPositive, setVotedPositive] = useState<boolean | undefined>()
   useEffect(() => {
-    _analytic.trackEvent(EventCategories.report, ReportEventActions.outOfBounds, subcategories && subcategories.length > 0 ? last(subcategories)?.title : category)
-  }, [category, subcategories, information])
+    _analytic.trackPage(`${anomaly.path}/${ReportStepperPath.Information}`, ReportStepperTitle.Information)
+    _analytic.trackEvent(EventCategories.report, ReportEventActions.outOfBounds, subcategories && subcategories.length > 0 ? last(subcategories)?.title : anomaly.category)
+  }, [anomaly, subcategories])
   const _vote = useFetcher(
     mapPromise({
       promise: apiSdk.rating.rate,
@@ -47,12 +45,12 @@ export const ProblemInformation = ({
   )
   const vote = (positive: boolean) => {
     setVotedPositive(positive)
-    _vote.fetch({}, category, subcategories, positive)
+    _vote.fetch({}, anomaly.category, subcategories, positive)
   }
 
   return (
     <>
-      <Animate animate={animate} autoScrollTo={autoScrollTo}>
+      <Animate>
         <Panel id="test-info" title={m.informationTitle} border>
           <PanelBody className="blog">
             {information.outOfScope && (
@@ -77,7 +75,7 @@ export const ProblemInformation = ({
           </PanelBody>
         </Panel>
       </Animate>
-      <Animate animate={animate} autoScrollTo={autoScrollTo}>
+      <Animate>
         <Panel title={m.informationWasUsefull} border>
           {_vote.entity ? (
             <PanelBody>

@@ -9,7 +9,7 @@ export class Analytic {
     return new Analytic(appConfig, matomo, atInternet)
   }
 
-  private log = (...args: string[]) => {
+  private log = (...args: (string | undefined)[]) => {
     console.info('[Analytic]', ...args)
   }
 
@@ -18,19 +18,20 @@ export class Analytic {
     private matomo: Matomo | undefined,
     private atInternet: Atinternet | undefined
   ) {
-    Router.events.on('routeChangeStart', (path: string): void => {
-      this.log('[routeChangeStart]', path)
-      if (!this.appConfig.isDev) {
-        matomo?.trackRouteChangeStart(path)
-      }
-    })
     Router.events.on('routeChangeComplete', (path: string): void => {
       this.log('[routeChangeComplete]', path)
       if (!this.appConfig.isDev) {
-        matomo?.trackRouteChangeComplete(path)
+        matomo?.trackPage(path)
         atInternet?.send({name: path})
       }
     })
+  }
+
+  readonly trackPage = (path: string, title?: string) => {
+    this.log('[trackPage]', path, title)
+    if (!this.appConfig.isDev) {
+      this.matomo?.trackPage(path, title)
+    }
   }
 
   readonly trackEvent = (category: EventCategories, action: AnalyticAction, name?: any, value?: any) => {

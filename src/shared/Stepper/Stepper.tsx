@@ -1,5 +1,6 @@
-import React, {ReactNode, useContext, useMemo, useState} from 'react'
+import React, {ReactNode, useContext, useEffect, useMemo, useState} from 'react'
 import {StepperHeader} from './StepperHeader'
+import {useAnalyticContext} from '../../core/analytic/AnalyticContext'
 
 export interface StepProps {
   name: string
@@ -11,6 +12,7 @@ interface StepperProps {
   renderDone?: ReactNode
   steps: StepProps[]
   initialStep?: number
+  onStepChange?: (props: StepProps, index: number) => void
 }
 
 interface StepperContext {
@@ -24,11 +26,21 @@ export const StepperContext = React.createContext<StepperContext>({
   currentStep: 0
 } as StepperContext)
 
-export const Stepper = React.memo(({steps, initialStep, renderDone}: StepperProps) => {
+export const Stepper = React.memo(({
+  steps,
+  initialStep,
+  renderDone,
+  onStepChange,
+}: StepperProps) => {
   const [currentStep, setCurrentStep] = useState(initialStep ?? 0)
   const maxStep = useMemo(() => steps.length + (renderDone ? 1 : 0), [steps])
   const scrollTop = () => window.scrollTo(0, 0)
   const isDone = currentStep >= steps.length
+
+  useEffect(() => {
+    onStepChange?.(steps[currentStep], currentStep)
+  }, [currentStep])
+
   return (
     <StepperContext.Provider value={{
       currentStep,

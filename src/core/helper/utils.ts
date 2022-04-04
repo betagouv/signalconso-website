@@ -11,7 +11,3 @@ export const classes = classNames
 const capitalize = (_: string) => {
   return _.charAt(0).toUpperCase() + _.slice(1)
 }
-
-export const map = <T, R>(t: T | undefined, fn: (t: T) => R): R | undefined => {
-  return t !== undefined ? fn(t) : undefined
-}
