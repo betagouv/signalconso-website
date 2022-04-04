@@ -16,6 +16,7 @@ enum Env {
   NEXT_PUBLIC_REPONSECONSO_DISPLAY_PERCENTAGE = 'NEXT_PUBLIC_REPONSECONSO_DISPLAY_PERCENTAGE',
   NEXT_PUBLIC_MATOMO_SITE_ID = 'NEXT_PUBLIC_MATOMO_SITE_ID',
   NEXT_PUBLIC_MATOMO_URL = 'NEXT_PUBLIC_MATOMO_URL',
+  NEXT_PUBLIC_ATINTERNET_SITE_ID = 'NEXT_PUBLIC_ATINTERNET_SITE_ID',
 }
 
 const persistedTempEnvVariablesForFront: {[key in Env]: string | undefined} = {
@@ -32,6 +33,7 @@ const persistedTempEnvVariablesForFront: {[key in Env]: string | undefined} = {
   NEXT_PUBLIC_REPONSECONSO_DISPLAY_PERCENTAGE: process.env.NEXT_PUBLIC_REPONSECONSO_DISPLAY_PERCENTAGE,
   NEXT_PUBLIC_MATOMO_SITE_ID: process.env.NEXT_PUBLIC_MATOMO_SITE_ID,
   NEXT_PUBLIC_MATOMO_URL: process.env.NEXT_PUBLIC_MATOMO_URL,
+  NEXT_PUBLIC_ATINTERNET_SITE_ID: process.env.NEXT_PUBLIC_ATINTERNET_SITE_ID,
 }
 
 const map = _env(persistedTempEnvVariablesForFront)
@@ -60,6 +62,7 @@ export const appConfig = {
   maxDescriptionInputLength: 1000,
   infoBanner: map()(Env.NEXT_PUBLIC_INFO_BANNER),
   dummyEmailDomain: ['@yopmail.com'],
+  atInternet_siteId: map()(Env.NEXT_PUBLIC_ATINTERNET_SITE_ID)
 }
 
 export type AppConfig = typeof appConfig;
