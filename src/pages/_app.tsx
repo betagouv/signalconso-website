@@ -28,7 +28,6 @@ interface ScAppProps extends AppProps {
 
 const clientSideEmotionCache = createEmotionCache()
 
-
 const App = ({emotionCache = clientSideEmotionCache, ...props}: ScAppProps) => {
   useEffect(() => {
     Sentry.init(appConfig)
@@ -63,7 +62,11 @@ const _App = ({Component, pageProps}: AppProps) => {
   return (
     <>
       {config.atInternet_siteId && (
-        <Script type="text/javascript" src={`https://tag.aticdn.net/${config.atInternet_siteId}/smarttag.js`}/>
+        <Script
+          type="text/javascript"
+          src={`https://tag.aticdn.net/${config.atInternet_siteId}/smarttag.js`}
+          strategy="beforeInteractive"
+        />
       )}
       <div className="root">
         {/*<Head>*/}
