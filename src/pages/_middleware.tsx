@@ -6,8 +6,8 @@ import {appConfig} from '../conf/appConfig'
 export function middleware(req: NextRequest, ev: NextFetchEvent) {
   const {pathname} = req.nextUrl
   const match = ProxyLegacyUrl.findMatch(pathname)
+  console.log('middleware', match, match ? appConfig.dashboardBaseUrl + ProxyLegacyUrl.getRedirection(pathname, match) : undefined)
   if (match) {
-    console.log(appConfig.dashboardBaseUrl + ProxyLegacyUrl.getRedirection(pathname, match))
     return NextResponse.redirect(appConfig.dashboardBaseUrl + ProxyLegacyUrl.getRedirection(pathname, match))
   }
   return NextResponse.next()
