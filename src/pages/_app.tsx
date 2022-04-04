@@ -20,8 +20,7 @@ import {Sentry} from 'core/plugins/sentry'
 import {Atinternet} from 'core/plugins/atinternet'
 import {Analytic} from 'core/analytic/analytic'
 import {useEffect, useState} from 'react'
-import {ConfigProvider} from 'core/context/ConfigContext'
-import {AutocompleteCity} from 'shared/AutocompleteCity/AutocompleteCity'
+import {ConfigProvider, useConfig} from 'core/context/ConfigContext'
 
 interface ScAppProps extends AppProps {
   emotionCache?: EmotionCache;
@@ -60,9 +59,12 @@ const App = ({emotionCache = clientSideEmotionCache, ...props}: ScAppProps) => {
 }
 
 const _App = ({Component, pageProps}: AppProps) => {
+  const {config} = useConfig()
   return (
     <>
-      <Script type="text/javascript" src="https://tag.aticdn.net/618165/smarttag.js"/>
+      {config.atInternet_siteId && (
+        <Script type="text/javascript" src={`https://tag.aticdn.net/${config.atInternet_siteId}/smarttag.js`}/>
+      )}
       <div className="root">
         {/*<Head>*/}
         {/*  <meta name="theme-color" content={theme.palette.primary.main}/>*/}

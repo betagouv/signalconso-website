@@ -31,6 +31,8 @@ export class Analytic {
     this.log('[trackPage]', path, title)
     if (!this.appConfig.isDev) {
       this.matomo?.trackPage(path, title)
+      this.atInternet?.send({level2: 'Visitor', name: path})
+
     }
   }
 
@@ -39,6 +41,7 @@ export class Analytic {
     if (!appConfig.isDev) {
       try {
         this.atInternet?.send({
+          level2: 'Visitor',
           name: category,
           chapter1: action,
           chapter2: name,

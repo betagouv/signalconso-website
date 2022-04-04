@@ -22,7 +22,7 @@ export class Matomo {
     }
     this.push(['trackPageView'])
     this.push(['enableLinkTracking'])
-    this.push(['setTrackerUrl', `${params.url}/${params.phpTrackerFile}`])
+    this.push(['setTrackerUrl', `${params.url}/piwik.php`])
     this.push(['setSiteId', params.siteId])
     this.push(['setCookieDomain', '*.conso.gouv.fr'])
     this.push(['setDomains', '*.conso.gouv.fr'])
