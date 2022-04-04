@@ -13,8 +13,8 @@ import {Box, Icon} from '@mui/material'
 import React, {ReactNode, useRef} from 'react'
 import {Animate} from 'shared/Animate/Animate'
 import {map} from '@alexandreannic/ts-utils'
-import {CompanySearchEventActions, EventCategories} from '../../../core/analytic/analytic'
-import {useAnalyticContext} from '../../../core/analytic/AnalyticContext'
+import {CompanySearchEventActions, EventCategories} from 'core/analytic/analytic'
+import {useAnalyticContext} from 'core/analytic/AnalyticContext'
 import {CompanySearchByIdentityHelpDialog} from './CompanySearchByIdentityHelpDialog'
 
 interface Form {

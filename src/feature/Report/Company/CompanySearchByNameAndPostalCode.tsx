@@ -12,9 +12,9 @@ import {Txt} from 'mui-extension'
 import {Animate} from 'shared/Animate/Animate'
 import React, {ReactNode} from 'react'
 import {map} from '@alexandreannic/ts-utils'
-import {useAnalyticContext} from '../../../core/analytic/AnalyticContext'
-import {CompanySearchEventActions, EventCategories} from '../../../core/analytic/analytic'
-import {AutocompleteCity} from '../../../shared/AutocompleteCity/AutocompleteCity'
+import {useAnalyticContext} from 'core/analytic/AnalyticContext'
+import {CompanySearchEventActions, EventCategories} from 'core/analytic/analytic'
+import {AutocompleteCity} from 'shared/AutocompleteCity/AutocompleteCity'
 
 interface Form {
   name: string

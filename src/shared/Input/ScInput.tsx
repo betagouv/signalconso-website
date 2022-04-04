@@ -1,7 +1,7 @@
 import {FilledInputProps, Icon, TextField, TextFieldProps, Tooltip} from '@mui/material'
 import React from 'react'
 import {IconBtn} from 'mui-extension'
-import {useI18n} from '../../core/i18n'
+import {useI18n} from 'core/i18n'
 
 export type ScInputProps = Omit<TextFieldProps, 'variant' | 'margin'> & {
   small?: boolean

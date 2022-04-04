@@ -1,7 +1,7 @@
 import {red} from '@mui/material/colors'
 import {alpha, createTheme, Theme} from '@mui/material'
 import {ThemeOptions} from '@mui/material/styles/createTheme'
-import {carouselCss} from '../../shared/IllustrationStepper/StepIllustrations'
+import {carouselCss} from 'shared/IllustrationStepper/StepIllustrations'
 
 export const styleUtils = (t: Theme) => ({
   gridSpacing: 3 as any,

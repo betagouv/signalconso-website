@@ -13,9 +13,9 @@ import {siteMap} from 'core/siteMap'
 import {mapPromise} from '@alexandreannic/ts-utils'
 import {useEffect, useState} from 'react'
 import {AccordionInline} from 'shared/AccordionInline/AccordionInline'
-import {useAnalyticContext} from '../../../core/analytic/AnalyticContext'
-import {EventCategories, ReportEventActions} from '../../../core/analytic/analytic'
-import {last} from '../../../core/lodashNamedExport'
+import {useAnalyticContext} from 'core/analytic/AnalyticContext'
+import {EventCategories, ReportEventActions} from 'core/analytic/analytic'
+import {last} from 'core/lodashNamedExport'
 import {ReportStepperPath, ReportStepperTitle} from '../ReportFlow'
 
 interface Props {

@@ -12,8 +12,8 @@ import {Animate} from 'shared/Animate/Animate'
 import {Controller, useForm} from 'react-hook-form'
 import {CompanyWebsiteVendor} from './CompanyWebsiteVendor'
 import {StepperActionsNext} from 'shared/Stepper/StepperActionsNext'
-import {useAnalyticContext} from '../../../core/analytic/AnalyticContext'
-import {CompanySearchEventActions, EventCategories} from '../../../core/analytic/analytic'
+import {useAnalyticContext} from 'core/analytic/AnalyticContext'
+import {CompanySearchEventActions, EventCategories} from 'core/analytic/analytic'
 
 interface Props extends Omit<BoxProps, 'onSubmit'> {
   companies: CompanySearchResult[]

@@ -16,8 +16,8 @@ import consumer from '../../public/image/illustrations/consumer.png'
 import report from '../../public/image/illustrations/report.png'
 import company from '../../public/image/illustrations/company.png'
 import dgccrf from '../../public/image/illustrations/dgccrf.png'
-import {useWindowWidth} from '../core/useWindowWidth'
-import {useRgpdBanner} from '../feature/RgpdBanner/RgpdBanner'
+import {useWindowWidth} from 'core/useWindowWidth'
+import {useRgpdBanner} from 'feature/RgpdBanner/RgpdBanner'
 
 const sxTitle: SxProps<Theme> = {
   fontSize: 24,

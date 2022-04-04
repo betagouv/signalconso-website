@@ -19,10 +19,10 @@ import {DeepPartial} from '@alexandreannic/ts-utils'
 import {Gender, ReportDraft, ReportTag} from '@signal-conso/signalconso-api-sdk-js'
 import {appConfig} from '../../../conf/appConfig'
 import {Row} from 'shared/Row/Row'
-import {useAnalyticContext} from '../../../core/analytic/AnalyticContext'
-import {EventCategories, ReportEventActions} from '../../../core/analytic/analytic'
-import {useWindowWidth} from '../../../core/useWindowWidth'
-import {styleUtils} from '../../../core/theme/theme'
+import {useAnalyticContext} from 'core/analytic/AnalyticContext'
+import {EventCategories, ReportEventActions} from 'core/analytic/analytic'
+import {useWindowWidth} from 'core/useWindowWidth'
+import {styleUtils} from 'core/theme/theme'
 
 interface ConsumerForm {
   firstName: string

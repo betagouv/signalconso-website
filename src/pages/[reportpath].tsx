@@ -6,14 +6,14 @@ import {ReportFlow} from 'feature/Report/ReportFlow'
 import {useReportFlowContext} from 'feature/Report/ReportFlowContext'
 import {useMemo} from 'react'
 import {Page} from 'shared/Page/Page'
-import {ReportStepHelper} from '../core/reportStep'
+import {ReportStepHelper} from 'core/reportStep'
 import {Box, Icon} from '@mui/material'
-import {styleUtils} from '../core/theme/theme'
+import {styleUtils} from 'core/theme/theme'
 import {IconBtn} from 'mui-extension/lib'
 import Link from 'next/link'
-import {siteMap} from '../core/siteMap'
+import {siteMap} from 'core/siteMap'
 import Head from 'next/head'
-import {pageDefinitions} from '../core/pageDefinition'
+import {pageDefinitions} from 'core/pageDefinition'
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const anomalies = await apiSdk.anomaly.getAnomalies()

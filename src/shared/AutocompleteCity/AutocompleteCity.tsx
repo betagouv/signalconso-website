@@ -6,7 +6,7 @@ import {Autocomplete, CircularProgress} from '@mui/material'
 import React, {forwardRef, useEffect, useMemo, useState} from 'react'
 import {ScInput, ScInputProps} from '../Input/ScInput'
 import {Txt} from 'mui-extension'
-import {useConfig} from '../../core/context/ConfigContext'
+import {useConfig} from 'core/context/ConfigContext'
 import {ApiClient} from '@signal-conso/signalconso-api-sdk-js'
 
 export interface AutocompleteCityValue {

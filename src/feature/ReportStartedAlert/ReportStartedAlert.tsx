@@ -7,7 +7,7 @@ import {Txt} from 'mui-extension'
 import {ScButton} from 'shared/Button/Button'
 import Link from 'next/link'
 import {ReportStepHelper} from 'core/reportStep'
-import {StepperHeader} from '../../shared/Stepper/StepperHeader'
+import {StepperHeader} from 'shared/Stepper/StepperHeader'
 
 export const ReportStartedAlert = () => {
   const _report = useReportFlowContext()
