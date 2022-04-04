@@ -67,7 +67,11 @@ export default class MyDocument extends Document {
         <body>
         <Main/>
         <NextScript/>
-        <Script type="text/javascript" src={`https://tag.aticdn.net/${appConfig.atInternet_siteId}/smarttag.js`}/>
+        <Script
+          type="text/javascript"
+          src={`https://tag.aticdn.net/${appConfig.atInternet_siteId}/smarttag.js`}
+          strategy="beforeInteractive"
+        />
         </body>
       </Html>
     )
