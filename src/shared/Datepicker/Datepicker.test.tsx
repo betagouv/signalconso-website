@@ -20,7 +20,7 @@ describe('DatePicker', () => {
       }}/>,
     )
     await waitFor(() => {
-      fireEvent.change(app.container.querySelector('input[type=date]')!, {target: {value: format(newDate, appConfig.apiDateFormat)}})
+      fireEvent.change(app.container.querySelector('input[type=date]')!, {target: {value: format(newDate, appConfig.browserDateFormat)}})
       expect(value!.toString()).toEqual(newDate.toString())
     })
   })
