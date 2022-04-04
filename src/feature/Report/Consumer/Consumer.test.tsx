@@ -12,6 +12,7 @@ class Fixture {
     lastName: 'Fraser',
     email: 'mat.fraser@signalconso.fr',
     phone: '0987654321',
+    gender: undefined,
   }
 }
 
@@ -65,11 +66,11 @@ describe('Consumer', () => {
       })
     })
 
-    it.only('should work when refuse contact agreement', async () => {
+    it('should work when refuse contact agreement', async () => {
       fireEvent.click(app.getByText(app.m.contactAgreementFalseTitle))
       submit()
       await waitFor(() => {
-        expect(submitted).toEqual({initial, contactAgreement: false})
+        expect(submitted).toEqual({...initial, contactAgreement: false})
       })
     })
   })

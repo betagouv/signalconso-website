@@ -9,7 +9,7 @@ import {format} from 'date-fns'
 import {appConfig} from 'conf/appConfig'
 import {DetailsFixtureInput, DetailsFixtureValue} from 'feature/Playground/PlaygroundDetails'
 import {waitFor} from '@testing-library/dom'
-import {mapFor} from '@alexandreannic/ts-utils/lib/common'
+import {mapFor, sleep} from '@alexandreannic/ts-utils/lib/common'
 import {DetailInputValues2} from 'core/model/ReportDraft'
 
 const clickBtnSubmit = async (app: ScRenderResult) => {
@@ -95,7 +95,9 @@ describe('Details: checkbox', () => {
 
   it('should prevent submit when required but nothing is selected', async () => {
     await clickBtnSubmit(app)
-    hasErrors(app)
+    await waitFor(() => {
+      hasErrors(app)
+    })
   })
 
   it('should submit when option without (à préciser) is selected', async () => {
@@ -148,7 +150,7 @@ describe('Details: textarea', () => {
   })
 
   it('should init and prevent submit when not filled', async () => {
-    expect(app.container.querySelectorAll('textarea').length).toEqual(1)
+    expect(app.container.querySelectorAll('textarea:not([aria-hidden=true])').length).toEqual(1)
     await clickBtnSubmit(app)
     hasErrors(app, 1)
     await waitFor(() => expect(inputValues).toEqual(undefined))
@@ -156,7 +158,7 @@ describe('Details: textarea', () => {
 
   it('should prevent submit exceed char limit', async () => {
     const stringAboveLimit = mapFor(appConfig.maxDescriptionInputLength + 1, () => 'a').reduce((acc, _) => acc + _, '')
-    fireEvent.change(app.container.querySelector('textarea')!, {target: {value: stringAboveLimit}})
+    fireEvent.change(app.container.querySelector('textarea:not([aria-hidden=true])')!, {target: {value: stringAboveLimit}})
     await clickBtnSubmit(app)
     hasErrors(app, 1)
     await waitFor(() => expect(inputValues).toEqual(undefined))
@@ -164,7 +166,7 @@ describe('Details: textarea', () => {
 
   it('should submit and update', async () => {
     const stringAboveLimit = mapFor(appConfig.maxDescriptionInputLength - 1, () => 'a').reduce((acc, _) => acc + _, '')
-    fireEvent.change(app.container.querySelector('textarea')!, {target: {value: stringAboveLimit}})
+    fireEvent.change(app.container.querySelector('textarea:not([aria-hidden=true])')!, {target: {value: stringAboveLimit}})
     await clickBtnSubmit(app)
     hasErrors(app, 0)
     await waitFor(() => expect(inputValues).toEqual(

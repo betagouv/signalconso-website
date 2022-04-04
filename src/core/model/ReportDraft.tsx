@@ -4,7 +4,7 @@ import {isSpecifyInputName, SpecifyFormUtils} from 'feature/Report/Details/Detai
 import {fromNullable} from 'fp-ts/lib/Option'
 import {DeepPartial} from '@alexandreannic/ts-utils'
 
-export type DetailInputValues2 = {[key: string]: string}
+export type DetailInputValues2 = {[key: string]: string | string[]}
 
 export interface ReportDraft2 extends Omit<ReportDraft, 'details'> {
   anomaly: Omit<Anomaly, 'subcategories'>

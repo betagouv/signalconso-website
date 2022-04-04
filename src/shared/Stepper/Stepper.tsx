@@ -62,9 +62,9 @@ export const Stepper = React.memo(({
     }}>
       <StepperHeader steps={steps.map(_ => _.label)} currentStep={currentStep} goTo={setCurrentStep}/>
       {(() => {
-        const XX: any = currentStep > (steps.length - 1) ? renderDone : steps[currentStep].component
+        const Step: any = currentStep > (steps.length - 1) ? renderDone : steps[currentStep].component
         return (
-          <XX/>
+          <Step/>
         )
       })()}
     </StepperContext.Provider>

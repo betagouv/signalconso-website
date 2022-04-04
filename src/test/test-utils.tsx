@@ -11,11 +11,13 @@ import {fr} from 'core/i18n/localization/fr'
 import {StepperContext} from 'shared/Stepper/Stepper'
 import {ReportDraft2} from 'core/model/ReportDraft'
 import {DeepPartial} from '@alexandreannic/ts-utils'
+import {AnalyticProvider} from '../core/analytic/AnalyticContext'
 
 const AllTheProviders = (options?: Options) => ({children}: any) => {
   return (
     <Provide
       providers={[
+        _ => <AnalyticProvider children={_} analytic={{trackEvent: () => void 0} as any}/>,
         _ => <ApiSdkProvider children={_} apiSdk={{
           report: {
             create: () => void 0,
