@@ -11,8 +11,8 @@ import {useToast} from 'core/toast'
 import {Box, BoxProps, Icon, Tooltip} from '@mui/material'
 import {Panel, PanelBody} from 'shared/Panel/Panel'
 import {Animate} from 'shared/Animate/Animate'
-import {useAnalyticContext} from '../../../core/analytic/AnalyticContext'
-import {CompanySearchEventActions, EventCategories} from '../../../core/analytic/analytic'
+import {useAnalyticContext} from 'core/analytic/AnalyticContext'
+import {CompanySearchEventActions, EventCategories} from 'core/analytic/analytic'
 
 interface Form {
   website: string

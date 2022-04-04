@@ -88,7 +88,6 @@ export const PlaygroundDetails = () => {
         <CardContent>
           <_Details
             inputs={[
-              // ...DraftReportDefaultInputs.defaults,
               ...inputs
             ]}
             onSubmit={(res, files) => {

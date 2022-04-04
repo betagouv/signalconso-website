@@ -1,7 +1,7 @@
 import {alpha, Box, useTheme} from '@mui/material'
 import {useWindowWidth} from 'core/useWindowWidth'
 import Image, {StaticImageData} from 'next/image'
-import {styleUtils} from '../../core/theme/theme'
+import {styleUtils} from 'core/theme/theme'
 import SwipeableViews from 'react-swipeable-views'
 import {useState} from 'react'
 import {IconBtn} from 'mui-extension/lib'

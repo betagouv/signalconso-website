@@ -20,7 +20,7 @@ import {Txt} from 'mui-extension'
 import {Row} from 'shared/Row/Row'
 import {AddressComponent} from 'shared/Address/Address'
 import {Panel, PanelActions, PanelBody} from 'shared/Panel/Panel'
-import {StepperActionsNext} from '../../../shared/Stepper/StepperActionsNext'
+import {StepperActionsNext} from 'shared/Stepper/StepperActionsNext'
 import {CompanyAskConsumerStreet} from './CompanyAskConsumerStreet'
 import {CompanyWebsiteCountry} from './CompanyWebsiteCountry'
 

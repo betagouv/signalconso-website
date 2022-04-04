@@ -13,8 +13,8 @@ import {ReportFiles} from 'shared/UploadFile/ReportFiles'
 import {useToast} from 'core/toast'
 import {Row} from 'shared/Row/Row'
 import React, {useEffect} from 'react'
-import {useAnalyticContext} from '../../../core/analytic/AnalyticContext'
-import {EventCategories, ReportEventActions} from '../../../core/analytic/analytic'
+import {useAnalyticContext} from 'core/analytic/AnalyticContext'
+import {EventCategories, ReportEventActions} from 'core/analytic/analytic'
 
 export const Confirmation = ({}: {}) => {
   const _reportFlow = useReportFlowContext()

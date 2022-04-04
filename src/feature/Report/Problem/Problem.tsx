@@ -11,7 +11,7 @@ import {useI18n} from 'core/i18n'
 import {ProblemContratualDisputeWarnPanel} from './ProblemContratualDisputeWarnPanel'
 import {EventCategories, ReportEventActions} from 'core/analytic/analytic'
 import {useAnalyticContext} from 'core/analytic/AnalyticContext'
-import {ReportDraft2} from '../../../core/model/ReportDraft'
+import {ReportDraft2} from 'core/model/ReportDraft'
 
 interface Props {
   anomaly: Anomaly

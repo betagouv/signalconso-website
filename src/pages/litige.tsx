@@ -6,8 +6,8 @@ import {externalLinks} from 'core/externalLinks'
 import {Alert, Txt} from 'mui-extension'
 import {Panel} from 'shared/Panel/Panel'
 import {Icon} from '@mui/material'
-import {useAnalyticContext} from '../core/analytic/AnalyticContext'
-import {ContractualDisputeActions, ContractualDisputeNames, EventCategories} from '../core/analytic/analytic'
+import {useAnalyticContext} from 'core/analytic/AnalyticContext'
+import {ContractualDisputeActions, ContractualDisputeNames, EventCategories} from 'core/analytic/analytic'
 
 const Litige = () => {
   const _analytic = useAnalyticContext()

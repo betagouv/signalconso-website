@@ -9,7 +9,7 @@ import {Confirmation} from './Confirmation/Confirmation'
 import React from 'react'
 import {Acknowledgement} from './Acknowledgement/Acknowledgement'
 import {ReportStep} from 'core/reportStep'
-import {useAnalyticContext} from '../../core/analytic/AnalyticContext'
+import {useAnalyticContext} from 'core/analytic/AnalyticContext'
 
 interface Props {
   initialStep: number

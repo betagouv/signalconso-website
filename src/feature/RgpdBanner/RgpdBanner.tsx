@@ -16,7 +16,7 @@ export const useRgpdBanner = () => {
       setHidden(false)
     }
   }, [])
-  const {toastInfo} = useToast()
+  const {toastInfo,toastWarning} = useToast()
   useEffect(() => {
     if (!hidden) {
       toastInfo(m.bannerCookie, {

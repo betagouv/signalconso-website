@@ -4,11 +4,11 @@ import React from 'react'
 import {useI18n} from 'core/i18n'
 import {Controller, useForm} from 'react-hook-form'
 import {Animate} from 'shared/Animate/Animate'
-import {StepperActionsNext} from '../../../shared/Stepper/StepperActionsNext'
+import {StepperActionsNext} from 'shared/Stepper/StepperActionsNext'
 import {Alert, Txt} from 'mui-extension'
-import {AutocompleteCityValue} from '../../../shared/AutocompleteCity/AutocompleteCity'
+import {AutocompleteCityValue} from 'shared/AutocompleteCity/AutocompleteCity'
 import {Address} from '@signal-conso/signalconso-api-sdk-js'
-import {AutocompleteCity} from '../../../shared/AutocompleteCity/AutocompleteCity'
+import {AutocompleteCity} from 'shared/AutocompleteCity/AutocompleteCity'
 
 interface Form {
   place: AutocompleteCityValue
