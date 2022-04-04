@@ -60,7 +60,6 @@ export class Analytic {
   }
 }
 
-
 export type AnalyticAction =
   AuthenticationEventActions
   | ReportEventActions
