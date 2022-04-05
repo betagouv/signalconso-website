@@ -1,6 +1,5 @@
 import React, {ReactNode, useContext, useEffect, useMemo, useState} from 'react'
 import {StepperHeader} from './StepperHeader'
-import {useAnalyticContext} from 'core/analytic/AnalyticContext'
 
 export interface StepProps {
   name: string
