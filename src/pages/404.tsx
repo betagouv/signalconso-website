@@ -12,7 +12,6 @@ const NotFound = () => {
     <Page>
       <Fender
         icon="pan_tool"
-        // icon="travel_explore"
         title={m.pageNotFoundTitle}
         description={<Box sx={{mt: 1}} dangerouslySetInnerHTML={{__html: m.pageNotFoundDesc}}/>}
       >

@@ -351,14 +351,12 @@ export const fr = {
       <strong>Vous déclarez travailler dans l'entreprise que vous allez signaler.</strong>
       <p>
         Votre signalement sera lu <b>uniquement par la répression des fraudes</b>.
-      </p>
-      <p>
+        <br/>
         Vos coordonnées sont à destination des enquêteurs uniquement.
         Ils peuvent être amenés à vous contacter afin de vérifier votre identité et votre signalement.
       </p>
-      <p>
-        Votre employeur ne sera pas mis au courant de votre signalement.
-      </p>
+      Votre employeur ne sera pas mis au courant de votre signalement.
+      <br/>
       Pendant l'enquête, si les enquêteurs ont besoin de révéler votre identité à la justice ou à votre employeur, ils vous demanderont l'autorisation avant.
       <b>Vous pourrez refuser.</b>
     `,

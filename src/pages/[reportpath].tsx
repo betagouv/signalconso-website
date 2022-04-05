@@ -13,7 +13,7 @@ import {IconBtn} from 'mui-extension/lib'
 import Link from 'next/link'
 import {siteMap} from 'core/siteMap'
 import Head from 'next/head'
-import {pageDefinitions} from 'core/pageDefinition'
+import dynamic from 'next/dynamic'
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const anomalies = await apiSdk.anomaly.getAnomalies()
@@ -34,14 +34,6 @@ export const getStaticProps: GetStaticProps = async ({params}) => {
 }
 
 const AnomalyPage = ({anomaly}: {anomaly: Anomaly}) => {
-  const _reportFlow = useReportFlowContext()
-  const initialStep = useMemo(() => {
-    if (anomaly.category === _reportFlow.reportDraft.category) {
-      return ReportStepHelper.reportCurrentStep(_reportFlow.reportDraft)
-    }
-    return 0
-  }, [])
-
   return (
     <Page width={624}>
       <Head>
@@ -59,10 +51,24 @@ const AnomalyPage = ({anomaly}: {anomaly: Anomaly}) => {
           fontSize: t => styleUtils(t).fontSize.title
         }}>{anomaly.category}</Box>
       </Box>
-      <ReportFlow initialStep={initialStep} anomaly={anomaly}/>
+      <NoSSR anomaly={anomaly}/>
     </Page>
   )
 }
+
+const NoSSR = dynamic(() => Promise.resolve(({anomaly}: {anomaly: Anomaly}) => {
+  const _reportFlow = useReportFlowContext()
+  const initialStep = useMemo(() => {
+    if (anomaly.category === _reportFlow.reportDraft.category) {
+      return ReportStepHelper.reportCurrentStep(_reportFlow.reportDraft)
+    }
+    return 0
+  }, [])
+
+  return (
+    <ReportFlow initialStep={initialStep} anomaly={anomaly}/>
+  )
+}))
 
 export default AnomalyPage
 

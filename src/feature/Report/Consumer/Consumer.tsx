@@ -91,7 +91,7 @@ export const _Consumer = ({
             <Alert
               type="info" dense
               dangerouslySetInnerHTML={{__html: m.consumerIsEmployee}}
-              sx={{mb: 3, fontSize: t => styleUtils(t).fontSize.small}}
+              sx={{mb: 3}}
             />
           )}
           <Row icon="person">
