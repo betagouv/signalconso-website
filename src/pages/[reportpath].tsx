@@ -64,7 +64,6 @@ const NoSSR = dynamic(() => Promise.resolve(({anomaly}: {anomaly: Anomaly}) => {
     }
     return 0
   }, [])
-
   return (
     <ReportFlow initialStep={initialStep} anomaly={anomaly}/>
   )

@@ -40,7 +40,7 @@ export const StepperHeader = ({
           <Box key={step} sx={{flex: 1}} onClick={goTo ? () => i < currentStep && !isDone && goTo(i) : undefined}>
             <Box sx={{
               ...goTo && {
-                cursor: state === 'not_done' && !isDone ? 'pointer' : 'not-allowed',
+                cursor: state === 'not_done' || isDone ? 'not-allowed' : 'pointer',
               },
               display: 'flex',
               position: 'relative',
