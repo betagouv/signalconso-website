@@ -14,7 +14,7 @@ export const Panel = ({title, desc, children, sx, elevation = 0, border, ...rest
       overflow: 'visible',
       ...(!border && !elevation) && {
         '&:not(:first-of-type)': {
-          mt: 2,
+          marginTop: t => t.spacing(4) + ' !important',
         },
         borderRadius: 0,
 
@@ -28,8 +28,8 @@ export const Panel = ({title, desc, children, sx, elevation = 0, border, ...rest
         // px: 2,
       },
       '& + &': {
-        pt: 3,
         mt: 3,
+        mb: 3,
         ...(!border && !elevation ? {
           borderTop: t => `1px solid ${t.palette.divider}`,
         } : {}),
