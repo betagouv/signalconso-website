@@ -53,7 +53,7 @@ export default class MyDocument extends Document {
           <link rel="apple-touch-icon" sizes="144x144" href="/icons/icon144.png"/>
           <link rel="preconnect" href="https://fonts.googleapis.com"/>
           <link rel="preconnect" href="https://fonts.gstatic.com"/>
-          <meta name="viewport" content="initial-scale=1, width=device-width"/>
+          <meta name="google-site-verification" content="N7_DNQ1WbQDONxfLg6_w7Efh7o3xQ-3mKFXl5be64ik" />
           <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
           {/*<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet" />*/}
           {/*<link rel="preload" href="/font/Evolventa/Evolventa-Regular.woff2" as="font"/>*/}
