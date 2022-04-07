@@ -1,4 +1,4 @@
-import {Box} from '@mui/material'
+import {Box, useTheme} from '@mui/material'
 import {ScRadioGroup, ScRadioGroupItem} from 'shared/RadioGroup'
 import React from 'react'
 import {Panel, PanelBody, PanelProps} from 'shared/Panel/Panel'
@@ -26,10 +26,11 @@ export const ProblemSelect = <T, >({
   onChange,
   ...other
 }: ProblemSelectProps<T>) => {
+  const t = useTheme()
   return (
     <Animate animate={animatePanel} autoScrollTo={autoScrollToPanel}>
       <Panel
-        sx={{position: 'relative', border: 'none !important'}}
+        sx={{position: 'relative', border: 'none !important', paddingTop: t => t.spacing(1) + ' !important'}}
         title={<span dangerouslySetInnerHTML={{__html: title ?? 'Pouvez-vous préciser ?'}}/>}
         {...other}
       >
