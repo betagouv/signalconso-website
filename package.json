@@ -23,7 +23,7 @@
     "@sentry/browser": "^6.18.2",
     "@sentry/nextjs": "^6.18.2",
     "@sentry/tracing": "^6.18.2",
-    "@signal-conso/signalconso-api-sdk-js": "4.0.4",
+    "@signal-conso/signalconso-api-sdk-js": "4.0.7",
     "classnames": "^2.3.1",
     "date-fns": "^2.25.0",
     "fp-ts": "^1.19.5",

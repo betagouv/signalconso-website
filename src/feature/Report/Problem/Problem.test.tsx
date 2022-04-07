@@ -38,7 +38,7 @@ describe('Problem', () => {
     })
   })
 
-  it('should route to information page when receive subcategories ending with information', async () => {
+  it.only('should route to information page when receive subcategories ending with information', async () => {
     const app = render(
       <Problem anomaly={ProblemFixture.anomaly}/>,
       {
@@ -50,7 +50,7 @@ describe('Problem', () => {
       }
     )
     fireEvent.click(app.getByText(ProblemFixture.infoSubcategory.title))
-    expect(app.getByText(app.m.informationTitle)).not.toBeNull()
+    expect(app.container.querySelector('#test-info')).not.toBeNull()
   })
 
   it('should request the user if he is an employee of the company or not when receive subcategories', () => {
