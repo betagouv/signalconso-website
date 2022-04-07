@@ -51,13 +51,15 @@ export const ProblemInformation = ({
   return (
     <>
       <Animate>
-        <Panel id="test-info" title={m.informationTitle} border>
+        <Panel id="test-info" border title={
+          <span dangerouslySetInnerHTML={{__html: information.title ?? m.informationTitle}}/>
+        }>
           <PanelBody className="blog">
             {information.outOfScope && (
               <Txt block gutterBottom>{m.informationReportOutOfScope}</Txt>
             )}
-            {information.title && (
-              <Txt gutterBottom block dangerouslySetInnerHTML={{__html: information.title}}/>
+            {information.subTitle && (
+              <Txt bold size="big" gutterBottom block dangerouslySetInnerHTML={{__html: information.subTitle}}/>
             )}
             {information.content && (
               <Txt gutterBottom block dangerouslySetInnerHTML={{__html: information.content}}/>

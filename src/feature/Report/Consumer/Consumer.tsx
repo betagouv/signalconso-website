@@ -89,6 +89,7 @@ export const _Consumer = ({
         <PanelBody>
           {draft.employeeConsumer && (
             <Alert
+              className="blog"
               type="info" dense
               dangerouslySetInnerHTML={{__html: m.consumerIsEmployee}}
               sx={{mb: 3}}
