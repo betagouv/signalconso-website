@@ -37,7 +37,8 @@
     "react-imask": "^6.2.2",
     "react-persistent-state": "^1.1.7",
     "react-swipeable-views": "^0.14.0",
-    "recharts": "^2.1.9"
+    "recharts": "^2.1.9",
+    "smoothscroll-polyfill": "^0.4.4"
   },
   "devDependencies": {
     "@testing-library/dom": "^8.11.3",
@@ -52,6 +53,7 @@
     "@types/react": "17.0.33",
     "@types/react-dom": "^17.0.11",
     "@types/react-swipeable-views": "^0.13.1",
+    "@types/smoothscroll-polyfill": "^0.3.1",
     "babel-jest": "^27.4.6",
     "eslint": "7.32.0",
     "eslint-config-next": "12.1.0",
