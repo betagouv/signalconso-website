@@ -12,12 +12,11 @@ export const Panel = ({title, desc, children, sx, elevation = 0, border, ...rest
   return (
     <Card role="article" elevation={elevation} {...rest} sx={{
       overflow: 'visible',
+      '&:not(:first-of-type)': {
+        mb: 3,
+      },
       ...(!border && !elevation) && {
-        '&:not(:first-of-type)': {
-          marginTop: t => t.spacing(4) + ' !important',
-        },
         borderRadius: 0,
-
       },
       ...elevation && {
         p: 2,
@@ -25,11 +24,10 @@ export const Panel = ({title, desc, children, sx, elevation = 0, border, ...rest
       ...border && {
         p: 2,
         border: t => border ? `1px solid ${t.palette.divider}` : `none`,
-        // px: 2,
       },
       '& + &': {
+        pt: 3,
         mt: 3,
-        mb: 3,
         ...(!border && !elevation ? {
           borderTop: t => `1px solid ${t.palette.divider}`,
         } : {}),

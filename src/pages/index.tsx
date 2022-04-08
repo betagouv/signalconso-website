@@ -18,7 +18,9 @@ import company from '../../public/image/illustrations/company.png'
 import dgccrf from '../../public/image/illustrations/dgccrf.png'
 import {useWindowWidth} from 'core/useWindowWidth'
 import {useRgpdBanner} from 'feature/RgpdBanner/RgpdBanner'
-import {InfoBanner} from "feature/InfoBanner/InfoBanner";
+import {InfoBanner} from 'feature/InfoBanner/InfoBanner'
+import * as smoothscroll from 'smoothscroll-polyfill'
+import {useEffect} from 'react'
 
 const sxTitle: SxProps<Theme> = {
   fontSize: 24,
@@ -46,6 +48,9 @@ const Home = ({anomalies}: HomeProps) => {
   const {m} = useI18n()
   const width = useWindowWidth()
   useRgpdBanner()
+  useEffect(() => {
+    smoothscroll.polyfill()
+  }, [])
   return (
     <>
       <InfoBanner/>

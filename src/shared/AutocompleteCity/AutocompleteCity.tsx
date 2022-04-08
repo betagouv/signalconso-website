@@ -26,7 +26,7 @@ export const AutocompleteCity = forwardRef(({label, placeholder, value, onChange
   const [open, setOpen] = useState(false)
   const [inputValue, setInputValue] = useState('')
   const fetch = useMemo(
-    () => throttle(api.fetch, 200,),
+    () => throttle(api.fetch, 250,),
     [],
   )
   useEffect(() => {

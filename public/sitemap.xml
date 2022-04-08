@@ -10,12 +10,7 @@
     </url>
 
     <url>
-        <loc>https://signal.conso.gouv.fr/centre-aide/consommateur</loc>
-        <priority>0.5</priority>
-    </url>
-
-    <url>
-        <loc>https://signal.conso.gouv.fr/centre-aide/professionnel</loc>
+        <loc>https://signal.conso.gouv.fr/centre-aide</loc>
         <priority>0.5</priority>
     </url>
 
