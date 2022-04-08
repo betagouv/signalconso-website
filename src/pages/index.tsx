@@ -50,7 +50,7 @@ const Home = ({anomalies}: HomeProps) => {
   useRgpdBanner()
   useEffect(() => {
     smoothscroll.polyfill()
-  })
+  }, [])
   return (
     <>
       <InfoBanner/>
