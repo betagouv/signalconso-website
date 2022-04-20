@@ -35,7 +35,9 @@ interface ApiAdresseResult {
   version: string
 }
 
-
+//Excluding city with district to force the user to choose the right district
+//, otherwise when city name is provided with no district the api is returning the firs district by default ( for 'Paris' only,  postalCode will be 75001) .
+const excludedCityWithDistrict = ['Paris', 'Marseille', 'Lyon']
 
 export class ApiAdresse {
   constructor(private client: ApiClient) {
@@ -45,6 +47,7 @@ export class ApiAdresse {
     if (q === '') return Promise.resolve([])
     return this.fetch<ApiAdresseResult>(q, 'municipality')
       .then(_ => _.features.map(_ => _.properties))
+      .then(_ => _.filter(_ => !excludedCityWithDistrict.includes(_.label)))
       .catch(_ => {
         console.error(_)
         return []
