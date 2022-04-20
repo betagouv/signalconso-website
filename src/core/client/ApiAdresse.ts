@@ -35,6 +35,8 @@ interface ApiAdresseResult {
   version: string
 }
 
+
+
 export class ApiAdresse {
   constructor(private client: ApiClient) {
   }
@@ -43,6 +45,10 @@ export class ApiAdresse {
     if (q === '') return Promise.resolve([])
     return this.fetch<ApiAdresseResult>(q, 'municipality')
       .then(_ => _.features.map(_ => _.properties))
+      .catch(_ => {
+        console.error(_)
+        return []
+      })
   }
 
   private readonly fetch = <T>(q: string, type: AdresseType) => {
