@@ -31,7 +31,7 @@ export const CentreAidePro = (props: BoxProps) => {
             a fait l’objet d’un signalement.
           </p>
         </AccordionPanel>
-        <AccordionPanel title="Puis-je ouvrir un Espace Professionnel si je n'core été signalé ?">
+        <AccordionPanel title="Puis-je ouvrir un Espace Professionnel si je n'ai pas encore été signalé ?">
           <p>Si votre entreprise n’a pas encore été signalée, et que vous n’avez donc pas reçu le courrier provenant
             de nos services, vous ne pourrez pas ouvrir d’Espace Professionnel sur SignalConso.
           </p>
