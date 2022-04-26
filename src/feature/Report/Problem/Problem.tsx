@@ -43,9 +43,7 @@ export const Problem = ({
 
 
   const filterTags = (tagsFromSelected: ReportTag[], draft : Partial<ReportDraft2>): ReportTag[] => {
-    console.log("------------------------------------------------")
-    console.log(draft.companyKind);
-    if (draft.companyKind === CompanyKinds.WEBSITE) {
+    if (companyKindFromSelected === CompanyKinds.WEBSITE || draft.companyKind === CompanyKinds.WEBSITE) {
       tagsFromSelected.push(ReportTag.Internet)
     }
     if (!(draft.forwardToReponseConso ?? false)) {
@@ -61,7 +59,7 @@ export const Problem = ({
       return ({
         ...draft,
         tags: filterTags(tagsFromSelected, draft),
-        companyKind: draft.companyKind ?? CompanyKinds.SIRET,
+        companyKind: companyKindFromSelected ?? draft.companyKind ?? CompanyKinds.SIRET,
         anomaly: _anomaly
       })
     })
@@ -75,7 +73,8 @@ export const Problem = ({
       copy.subcategories.length = index
       copy.subcategories[index] = subcategory
       copy.subcategories = [...copy.subcategories]
-      copy.companyKind = subcategory.companyKind ?? copy.companyKind
+      copy.tags = copy.tags ? copy.tags.filter(_ => _ !== ReportTag.Internet) : undefined
+      copy.companyKind = undefined
       _analytic.trackEvent(EventCategories.report, ReportEventActions.validateSubcategory, copy.subcategories.map(_ => _.title))
       return copy
     })
