@@ -24,6 +24,7 @@ export const Problem = ({
   const {m} = useI18n()
   const displayReponseConso = useMemo(() => Math.random() * 100 < appConfig.reponseConsoDisplayRate, [])
   const {reportDraft, setReportDraft, clearReportDraft} = useReportFlowContext()
+
   useEffect(() => {
     if (anomaly.category !== reportDraft.category) {
       _analytic.trackEvent(EventCategories.report, ReportEventActions.validateCategory, anomaly.category)
@@ -40,13 +41,27 @@ export const Problem = ({
     companyKindFromSelected,
   } = useSelectedSubcategoriesUtils(anomaly, reportDraft?.subcategories ?? [])
 
+
+  const filterTags = (tagsFromSelected: ReportTag[], draft : Partial<ReportDraft2>): ReportTag[] => {
+    console.log("------------------------------------------------")
+    console.log(draft.companyKind);
+    if (draft.companyKind === CompanyKinds.WEBSITE) {
+      tagsFromSelected.push(ReportTag.Internet)
+    }
+    if (!(draft.forwardToReponseConso ?? false)) {
+      return tagsFromSelected.filter(_ => _ !== ReportTag.ReponseConso)
+    }
+    return tagsFromSelected
+  }
+
+
   const submit = (next: () => void) => {
     setReportDraft(draft => {
       const {subcategories, ..._anomaly} = anomaly
       return ({
         ...draft,
-        tags: draft.forwardToReponseConso ? tagsFromSelected : tagsFromSelected.filter(_ => _ !== ReportTag.ReponseConso),
-        companyKind: companyKindFromSelected ?? CompanyKinds.SIRET,
+        tags: filterTags(tagsFromSelected, draft),
+        companyKind: draft.companyKind ?? CompanyKinds.SIRET,
         anomaly: _anomaly
       })
     })
@@ -60,6 +75,7 @@ export const Problem = ({
       copy.subcategories.length = index
       copy.subcategories[index] = subcategory
       copy.subcategories = [...copy.subcategories]
+      copy.companyKind = subcategory.companyKind ?? copy.companyKind
       _analytic.trackEvent(EventCategories.report, ReportEventActions.validateSubcategory, copy.subcategories.map(_ => _.title))
       return copy
     })
