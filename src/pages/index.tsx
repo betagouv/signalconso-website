@@ -46,7 +46,7 @@ interface HomeProps {
 
 const Home = ({anomalies}: HomeProps) => {
   const {m} = useI18n()
-  const width = useWindowWidth()
+  const {isMobileWidthMax} = useWindowWidth()
   useRgpdBanner()
   useEffect(() => {
     smoothscroll.polyfill()
@@ -59,8 +59,8 @@ const Home = ({anomalies}: HomeProps) => {
           background: t => t.palette.primary.main,
           color: t => t.palette.primary.contrastText,
           textAlign: 'center',
-          padding: width.isMobileWidthMax ? 1 : 5,
-          fontSize: width.isMobileWidthMax ? 22 : 32,
+          padding: isMobileWidthMax ? 1 : 5,
+          fontSize: isMobileWidthMax ? 22 : 32,
           // fontSize: 32,
           // fontWeight: 'lighter'
         }} dangerouslySetInnerHTML={{__html: m.signalconsoCatchWord}}/>
