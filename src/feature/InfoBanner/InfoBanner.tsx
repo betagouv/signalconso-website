@@ -7,7 +7,7 @@ export const InfoBanner = () => {
   const config = useConfig().config
   const {isMobileWidthMax} = useWindowWidth()
 
-  return ((config.infoBannerIsMobile || !isMobileWidthMax) && config.infoBanner) ? (
+  return ((config.infoBannerOnMobile || !isMobileWidthMax) && config.infoBanner) ? (
     <Alert type="warning" className="blog" dangerouslySetInnerHTML={{__html: config.infoBanner}}/>
   ) : <></>
 }
