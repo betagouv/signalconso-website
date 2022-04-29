@@ -158,7 +158,6 @@ export const _Company = ({
                     address: {
                       postalCode: form.postalCode,
                       street: form.street,
-                      city: form.city,
                     },
                   },
                 })
@@ -173,7 +172,6 @@ export const _Company = ({
                           ...phoneOrWebsite,
                           address: {
                             postalCode: form.postalCode,
-                            city: form.city,
                           }
                         }
                       })
@@ -200,7 +198,6 @@ export const _Company = ({
                           ...phoneOrWebsite,
                           address: {
                             postalCode: form.postalCode,
-                            city: form.city,
                           }
                         }
                       })
