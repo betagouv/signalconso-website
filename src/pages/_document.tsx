@@ -27,9 +27,9 @@ export default class MyDocument extends Document {
           <meta name="description"
                 content="Signalez un problème au commerçant (magasins, commerces de proximité, cafés et restaurants...) et à la répression des fraudes : pratique d'hygiène, nourriture / boissons, matériel / objet, prix / paiement, publicité, services associés à l'achat."/>
           <meta name="viewport" content="width=device-width, initial-scale=1"/>
-          <meta property="og:image" content="https://signal.conso.gouv.fr/assets/icons/screenshot.png"/>
-          <meta property="og:image:url" content="https://signal.conso.gouv.fr/assets/icons/screenshot.png"/>
-          <meta property="og:image:secure_url" content="https://signal.conso.gouv.fr/assets/icons/screenshot.png"/>
+          <meta property="og:image" content="/icons/screenshot.png"/>
+          <meta property="og:image:url" content="/icons/screenshot.png"/>
+          <meta property="og:image:secure_url" content="/icons/screenshot.png"/>
           <meta property="og:image:type" content="image/jpeg"/>
           <meta property="og:image:width" content="1602"/>
           <meta property="og:image:height" content="1598"/>
@@ -40,13 +40,13 @@ export default class MyDocument extends Document {
           <meta property="og:site_name" content="SignalConso"/>
           <meta name="twitter:title" content="SignalConso "/>
           <meta name="twitter:description" content="Signaler un problème à l'entreprise en toute transparence avec la répression des fraudes"/>
-          <meta name="twitter:image" content="https://signal.conso.gouv.fr/assets/icons/screenshot.png"/>
-          <meta name="twitter:card" content="https://signal.conso.gouv.fr/assets/icons/screenshot.png"/>
+          <meta name="twitter:image" content="/icons/screenshot.png"/>
+          <meta name="twitter:card" content="/icons/screenshot.png"/>
           <meta name="apple-mobile-web-app-title" content="SignalConso"/>
           <title>SignalConso, un service public pour les consommateurs</title>
           <base href="/"/>
           <link rel="icon" type="image/x-icon" href="/icons/favicon.ico"/>
-          <link rel="shortcut" href="https://signal.conso.gouv.fr/assets/icons/icon57.png"/>
+          <link rel="shortcut" href="/icons/icon57.png"/>
           <link rel="apple-touch-icon" href="/icons/icon57.png"/>
           <link rel="apple-touch-icon" sizes="72x72" href="/icons/icon72.png"/>
           <link rel="apple-touch-icon" sizes="114x114" href="/icons/icon114.png"/>
