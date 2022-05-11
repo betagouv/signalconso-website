@@ -21,6 +21,9 @@ import {useRgpdBanner} from 'feature/RgpdBanner/RgpdBanner'
 import {InfoBanner} from 'feature/InfoBanner/InfoBanner'
 import * as smoothscroll from 'smoothscroll-polyfill'
 import {useEffect} from 'react'
+import Head from "next/head";
+import {pageDefinitions} from "../core/pageDefinition";
+import * as React from "react";
 
 const sxTitle: SxProps<Theme> = {
   fontSize: 24,
@@ -53,6 +56,11 @@ const Home = ({anomalies}: HomeProps) => {
   }, [])
   return (
     <>
+      <Head>
+        <title>SignalConso, un service public pour les consommateurs</title>
+        <meta name="description"
+              content="Signalez un problème au commerçant (magasins, commerces de proximité, cafés et restaurants...) et à la répression des fraudes : pratique d'hygiène, nourriture / boissons, matériel / objet, prix / paiement, publicité, services associés à l'achat."/>
+      </Head>
       <InfoBanner/>
       <main>
         <Section sx={{

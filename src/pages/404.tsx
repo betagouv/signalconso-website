@@ -5,11 +5,16 @@ import {ScButton} from '../shared/Button/Button'
 import {siteMap} from '../core/siteMap'
 import Link from 'next/link'
 import {Box} from '@mui/material'
+import Head from "next/head";
 
 const NotFound = () => {
   const {m} = useI18n()
   return (
     <Page>
+      <Head>
+        <title>{'SignalConso : Page non trouvée'}</title>
+        <meta name="description" content={m.pageNotFoundTitle}/>
+      </Head>
       <Fender
         icon="pan_tool"
         title={m.pageNotFoundTitle}
