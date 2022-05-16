@@ -23,6 +23,8 @@ import {Panel, PanelActions, PanelBody} from 'shared/Panel/Panel'
 import {StepperActionsNext} from 'shared/Stepper/StepperActionsNext'
 import {CompanyAskConsumerStreet} from './CompanyAskConsumerStreet'
 import {CompanyWebsiteCountry} from './CompanyWebsiteCountry'
+import {useAnalyticContext} from 'core/analytic/AnalyticContext'
+import {EventCategories, ReportEventActions} from 'core/analytic/analytic'
 
 interface CompanyProps {
 }
@@ -33,6 +35,7 @@ interface CompanyWithRequiredProps extends CompanyProps {
 }
 
 export const Company = ({}: CompanyProps) => {
+  const _analytic = useAnalyticContext()
   const _reportFlow = useReportFlowContext()
   const _stepper = useStepperContext()
   const draft = _reportFlow.reportDraft
@@ -50,6 +53,7 @@ export const Company = ({}: CompanyProps) => {
       onUpdateReportDraft={draft => {
         _reportFlow.setReportDraft(_ => ReportDraft2.merge(_, draft))
         _stepper.next()
+        _analytic.trackEvent(EventCategories.report, ReportEventActions.validateCompany)
       }}
     />
   )
@@ -167,6 +171,7 @@ export const _Company = ({
                 {isForeign => fnSwitch(isForeign, {
                   [IsForeignCompany.Yes]: () => (
                     <CompanyAskConsumerPostalCode onChange={form => {
+
                       onUpdateReportDraft({
                         companyDraft: {
                           ...phoneOrWebsite,
@@ -223,7 +228,6 @@ export const _Company = ({
             <CompanyByWebsite>
               {(website, companies, countries) => countries ? (
                 <CompanyWebsiteCountry countries={countries} onSubmit={country => {
-                  console.log('ONSUBMIT', country)
                   onUpdateReportDraft({
                     companyDraft: {
                       website,
