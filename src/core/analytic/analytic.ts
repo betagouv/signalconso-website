@@ -10,7 +10,7 @@ export class Analytic {
   }
 
   private log = (...args: (string | undefined)[]) => {
-    console.info('[Analytic]', ...args)
+    console.debug('[Analytic]', ...args)
   }
 
   private constructor(

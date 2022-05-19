@@ -47,7 +47,6 @@ export const Stat = React.memo(({name, count, curve, title, description, percent
         {description && <Txt color="hint">{description}</Txt>}
 
         {curve && (
-
           <Box sx={{height: height, mt: 2, display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
             {_curve.loading ? (
               <Skeleton variant="rectangular" height={height - 30} width="100%" sx={{borderRadius: '8px'}}/>
