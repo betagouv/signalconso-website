@@ -37,7 +37,7 @@ const AnomalyPage = ({anomaly}: {anomaly: Anomaly}) => {
   return (
     <Page width={624}>
       <Head>
-        <title>{anomaly.category + ' - SignalConso'}</title>
+        <title>{anomaly.title + ' - SignalConso'}</title>
         <meta name="description" content={anomaly.description}/>
       </Head>
       <Box sx={{display: 'flex', alignItems: 'center', mb: 2, color: t => t.palette.text.secondary}}>
