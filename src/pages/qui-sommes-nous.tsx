@@ -163,9 +163,6 @@ const QuiSommesNous = () => {
               <br/>
               <span>— Thomas Edison</span></p>
           </blockquote>
-          <p>
-            Retrouvez plus d'informations et les mises à jour du site sur notre <Link href={siteMap.blog}>blog</Link>.
-          </p>
 
           <h2>Notre équipe</h2>
           <div>
