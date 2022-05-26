@@ -11,7 +11,7 @@ import {waitFor} from '@testing-library/dom'
 
 describe('DatePicker', () => {
 
-  it.only('should emit and event with a details object which contains form inputs when no errors', async () => {
+  it('should emit and event with a details object containing form inputs when no errors', async () => {
     const newDate = new Date('2018-02-02')
     let value: Date | undefined
     const app = render(

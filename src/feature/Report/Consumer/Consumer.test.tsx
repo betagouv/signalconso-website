@@ -19,8 +19,8 @@ class Fixture {
 describe('Consumer', () => {
   const mock = {
     apiSdkMock: {
-      authenticate: {
-        checkConsumerEmail: () => Promise.resolve({valid: true})
+      consumerEmail: {
+        check: () => Promise.resolve({valid: true})
       }
     }
   }

@@ -38,7 +38,7 @@ describe('Problem', () => {
     })
   })
 
-  it.only('should route to information page when receive subcategories ending with information', async () => {
+  it('should route to information page when receive subcategories ending with information', async () => {
     const app = render(
       <Problem anomaly={ProblemFixture.anomaly}/>,
       {

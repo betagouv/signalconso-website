@@ -39,7 +39,7 @@ interface ApiAdresseResult {
 //, otherwise when city name is provided with no district the api is returning the firs district by default ( for 'Paris' only,  postalCode will be 75001) .
 const excludedCityWithDistrict = ['Paris', 'Marseille', 'Lyon']
 
-export class ApiAdresse {
+export class ApiAdresseClient {
   constructor(private client: ApiClient) {
   }
 

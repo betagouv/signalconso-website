@@ -18,12 +18,18 @@ const AllTheProviders = (options?: Options) => ({children}: any) => {
     <Provide
       providers={[
         _ => <AnalyticProvider children={_} analytic={{trackEvent: () => void 0} as any}/>,
-        _ => <ApiSdkProvider children={_} apiSdk={{
-          report: {
-            create: () => void 0,
-          },
-          ...options?.apiSdkMock ?? {} as any
-        }}/>,
+        _ => <ApiSdkProvider
+          children={_}
+          apiSdk={{
+            report: {
+              create: () => void 0,
+            },
+            ...options?.apiSdkMock ?? {} as any
+          }}
+          apiAddressSdk={{
+            fetchCity: (q: string) => Promise.resolve([])
+          } as any}
+        />,
         _ => <ThemeProvider theme={muiTheme()} children={_}/>,
         _ => <I18nProvider children={_}/>,
         _ => <ReportFlowProvider children={_} initialReport={options?.initialReport}/>,
