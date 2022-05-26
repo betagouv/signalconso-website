@@ -27,11 +27,11 @@ export enum ReportStepperPath {
 }
 
 export enum ReportStepperTitle {
-  Problem = `Étape 1 : Le problème - SignalConso`,
-  Details = `Étape 2 : La description - SignalConso`,
-  Company = `Étape 3 : L'entreprise - SignalConso`,
-  Consumer = `Étape 4 : Le consommateur - SignalConso`,
-  Confirmation = `Étape 5 : Confirmation - SignalConso`,
+  Problem = `Étape 1: Le problème - SignalConso`,
+  Details = `Étape 2: La description - SignalConso`,
+  Company = `Étape 3: L'entreprise - SignalConso`,
+  Consumer = `Étape 4: Le consommateur - SignalConso`,
+  Confirmation = `Étape 5: Confirmation - SignalConso`,
   Information = `Information - SignalConso`,
 }
 

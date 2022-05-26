@@ -2,9 +2,8 @@ import {GetStaticPaths, GetStaticProps} from 'next'
 import {apiSdk} from 'core/apiSdk'
 import {serializeJsonForStupidNextJs} from 'core/helper/utils'
 import {Anomaly} from '@signal-conso/signalconso-api-sdk-js'
-import {ReportFlow} from 'feature/Report/ReportFlow'
 import {useReportFlowContext} from 'feature/Report/ReportFlowContext'
-import {useMemo} from 'react'
+import React, {useMemo} from 'react'
 import {Page} from 'shared/Page/Page'
 import {ReportStepHelper} from 'core/reportStep'
 import {Box, Icon} from '@mui/material'
@@ -14,6 +13,9 @@ import Link from 'next/link'
 import {siteMap} from 'core/siteMap'
 import Head from 'next/head'
 import dynamic from 'next/dynamic'
+import {seo} from '../conf/seo'
+import {ReportFlow} from '../feature/Report/ReportFlow'
+import {map} from '@alexandreannic/ts-utils'
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const anomalies = await apiSdk.anomaly.getAnomalies()
@@ -65,7 +67,16 @@ const NoSSR = dynamic(() => Promise.resolve(({anomaly}: {anomaly: Anomaly}) => {
     return 0
   }, [])
   return (
-    <ReportFlow initialStep={initialStep} anomaly={anomaly}/>
+    <>
+      {map(seo.anomaly[anomaly.categoryId], _ => (
+        <Head>
+          <title>{_.title}</title>
+          <meta property="og:title" content={_.title} key="title"/>
+          <meta property="og:description" content={_.description}/>
+        </Head>
+      ))}
+      <ReportFlow initialStep={initialStep} anomaly={anomaly}/>
+    </>
   )
 }))
 
