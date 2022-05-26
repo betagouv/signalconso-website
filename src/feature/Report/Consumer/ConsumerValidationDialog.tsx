@@ -35,9 +35,6 @@ export const ConsumerValidationDialog = ({
   const _validateEmail = useFetcher(apiSdk.authenticate.validateConsumerEmail)
   const _checkEmail = useFetcher(apiSdk.authenticate.checkConsumerEmail)
   const [disableResendButton, setDisableResendButton] = useState(false)
-  useEffect(() => {
-
-  })
 
   const switchValidity = <T, >({valid, invalid, unknown}: {valid?: T, invalid?: T, unknown?: T}): T | undefined => {
     const isEmailValid = _validateEmail.entity?.valid
