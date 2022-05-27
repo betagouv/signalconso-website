@@ -13,9 +13,7 @@ import Link from 'next/link'
 import {siteMap} from 'core/siteMap'
 import Head from 'next/head'
 import dynamic from 'next/dynamic'
-import {seo} from '../conf/seo'
 import {ReportFlow} from '../feature/Report/ReportFlow'
-import {map} from '@alexandreannic/ts-utils'
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const anomalies = await apiSdk.anomaly.getAnomalies()
@@ -40,7 +38,7 @@ const AnomalyPage = ({anomaly}: {anomaly: Anomaly}) => {
     <Page width={624}>
       <Head>
         <title>{anomaly.title + ' - SignalConso'}</title>
-        <meta name="description" content={anomaly.description}/>
+        <meta name="description" content={anomaly.seoDescription ?? anomaly.description}/>
       </Head>
       <Box sx={{display: 'flex', alignItems: 'center', mb: 2, color: t => t.palette.text.secondary}}>
         <Link href={siteMap.index}>
@@ -67,16 +65,7 @@ const NoSSR = dynamic(() => Promise.resolve(({anomaly}: {anomaly: Anomaly}) => {
     return 0
   }, [])
   return (
-    <>
-      {map(seo.anomaly[anomaly.categoryId], _ => (
-        <Head>
-          <title>{_.title}</title>
-          <meta property="og:title" content={_.title} key="title"/>
-          <meta property="og:description" content={_.description}/>
-        </Head>
-      ))}
-      <ReportFlow initialStep={initialStep} anomaly={anomaly}/>
-    </>
+    <ReportFlow initialStep={initialStep} anomaly={anomaly}/>
   )
 }))
 
