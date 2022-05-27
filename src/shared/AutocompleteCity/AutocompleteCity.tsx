@@ -1,13 +1,14 @@
-import {ApiAdresse} from 'core/client/ApiAdresse'
+import {ApiAdresseClient} from 'core/client/ApiAdresseClient'
 import {throttle} from 'core/lodashNamedExport'
 import {useI18n} from 'core/i18n'
-import {useEffectFn, useFetcher} from '@alexandreannic/react-hooks-lib'
+import {useAsync, useEffectFn, useFetcher} from '@alexandreannic/react-hooks-lib'
 import {Autocomplete, CircularProgress} from '@mui/material'
 import React, {forwardRef, useEffect, useMemo, useState} from 'react'
 import {ScInput, ScInputProps} from '../Input/ScInput'
 import {Txt} from 'mui-extension'
 import {useConfig} from 'core/context/ConfigContext'
 import {ApiClient} from '@signal-conso/signalconso-api-sdk-js'
+import {useApiSdk} from '../../core/context/ApiSdk'
 
 export interface AutocompleteCityValue {
   city?: string
@@ -26,15 +27,14 @@ const defaultCityOption = (i: string) => isValidPostalcode(i) ? [{
 }] : []
 
 export const AutocompleteCity = forwardRef(({
-                                              label,
-                                              placeholder,
-                                              value,
-                                              onChange,
-                                              ...inputProps
-                                            }: AutocompleteCityProps, ref: any) => {
+  label,
+  placeholder,
+  value,
+  onChange,
+  ...inputProps
+}: AutocompleteCityProps, ref: any) => {
   const {m} = useI18n()
-  const config = useConfig().config
-  const api = useFetcher(new ApiAdresse(new ApiClient({baseUrl: config.apiAdresseUrl})).fetchCity);
+  const api = useFetcher(useApiSdk().apiAddressSdk.fetchCity)
   const [open, setOpen] = useState(false)
   const [inputValue, setInputValue] = useState('')
 
@@ -66,7 +66,7 @@ export const AutocompleteCity = forwardRef(({
   return (
     <Autocomplete
       ref={ref}
-      open={api.error || inputValue == "" ? false : open}
+      open={api.error || inputValue == '' ? false : open}
       onOpen={() => setOpen(true)}
       onClose={() => setOpen(false)}
       onInputChange={(event, newInputValue) => {

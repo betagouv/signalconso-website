@@ -52,6 +52,8 @@ describe('Details: single date not in future', () => {
         {
           apiSdkMock: {
             company: {
+              searchCompanies: (search: string, searchPostalCode: string) => Promise.resolve([]),
+              searchForeignCompaniesByUrl: (url: string) => Promise.resolve(),
               searchCompaniesByUrl: (url: string) => Promise.resolve(fnSwitch(url, {
                 'known.site': [Fixture.genCompanySearchResult()],
                 'marketplace.site': [Fixture.genCompanySearchResult()],
@@ -69,14 +71,13 @@ describe('Details: single date not in future', () => {
       await elementShouldExists('#CompanyIdentifyBy')
     })
 
-    it.only('should ask identification way when no associated company is found', async () => {
+    it('should display result when company is found', async () => {
       await elementShouldExists('#CompanyByWebsite')
       fireEvent.change(app.container.querySelector('#CompanyByWebsite input')!, {target: {value: 'known.site'}})
       fireEvent.click(app.container.querySelector('#CompanyByWebsite button[type=submit]')!)
       await elementShouldExists('#CompanySearchResult')
     })
   })
-
 
   describe('CompanyKinds.LOCATION', () => {
 
@@ -88,16 +89,21 @@ describe('Details: single date not in future', () => {
           }}
           onUpdateReportDraft={x => ReportDraft2.merge(draft, x)}
         />,
+        {
+          apiSdkMock: {
+            company: {
+              searchCompanies: (search: string, searchPostalCode: string) => Promise.resolve([]),
+              searchForeignCompaniesByUrl: (url: string) => Promise.resolve([]),
+            }
+          }
+        }
       )
     })
 
     it('should display radios for identification choice', async () => {
       await elementShouldExists('#CompanyIdentifyBy')
       selectIdentifyBy(IdentifyBy.NAME)
-      await elementShouldExists('#companyByNameAndPostalCode')
-    })
-
-    it('should display radios for identification choice', () => {
+      await elementShouldExists('#CompanyByNameAndPostalCode')
     })
   })
 })
