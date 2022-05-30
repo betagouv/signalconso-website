@@ -70,7 +70,7 @@ export const muiTheme = (dark?: boolean): Theme => {
       // fontSize,
       fontFamily,
       // fontFamily: 'Evolventa, sans-serif',
-      fontWeightBold: 600,
+      fontWeightBold: 500,
     },
   })
   const theme: ThemeOptions = {

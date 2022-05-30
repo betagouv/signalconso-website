@@ -1,6 +1,7 @@
 import {ReactNode} from 'react'
 import {Txt} from 'mui-extension'
 import {Box, BoxProps, Card, CardProps} from '@mui/material'
+import {styleUtils} from '../../core/theme/theme'
 
 export interface PanelProps extends Omit<CardProps, 'title'> {
   title?: ReactNode
@@ -34,7 +35,18 @@ export const Panel = ({title, desc, children, sx, elevation = 0, border, ...rest
       },
       ...sx,
     }}>
-      {title && <Txt bold block sx={{mb: 0}} size="title">{title}</Txt>}
+      {title && (
+        <Box
+          component="h2"
+          sx={{
+            fontWeight: t => t.typography.fontWeightBold,
+            mb: 0,
+            fontSize: t => styleUtils(t).fontSize.title
+          }}
+        >
+          {title}
+        </Box>
+      )}
       {desc && <Txt bold color="hint" block sx={{mb: 0}}>{desc}</Txt>}
       {children}
     </Card>

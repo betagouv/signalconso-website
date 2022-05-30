@@ -46,8 +46,10 @@ const AnomalyPage = ({anomaly}: {anomaly: Anomaly}) => {
             <Icon>chevron_left</Icon>
           </IconBtn>
         </Link>
-        <Box sx={{
+        <Box component="h1" sx={{
           ml: .5,
+          mb: 0,
+          p: 0,
           fontSize: t => styleUtils(t).fontSize.title
         }}>{anomaly.category}</Box>
       </Box>
