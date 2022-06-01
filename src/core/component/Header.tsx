@@ -87,7 +87,7 @@ export const Header = () => {
       ) : (
         <img
           style={{height: 110, marginRight: theme.spacing(3)}}
-          src="/image/gouv.new.jpg"
+          src="/image/gouv.new.png"
           alt={m.logoAltGouv}
         />
       )}
