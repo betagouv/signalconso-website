@@ -42,11 +42,11 @@ const persistedTempEnvVariablesForFront: {[key in Env]: string | undefined} = {
 
 const map = _env(persistedTempEnvVariablesForFront)
 
-interface parseUrl {
+interface ParseUrl {
   (_: string): string
   (_?: string): string | undefined
 }
-const parseUrl: parseUrl = (_: any) => _?.replace(/\/$/, '')
+const parseUrl: ParseUrl = (_: any) => _?.replace(/\/$/, '')
 
 export const appConfig = {
   canonicalUrl: map(parseUrl)(Env.NEXT_PUBLIC_CANONICAL_URL),
