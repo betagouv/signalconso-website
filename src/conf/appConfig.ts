@@ -3,6 +3,7 @@ import {env as _env} from '@alexandreannic/ts-utils/lib/common/env/Env'
 import {bool, defaultValue, int} from '@alexandreannic/ts-utils/lib/common/env/EnvParser'
 
 enum Env {
+  NEXT_PUBLIC_CANONICAL_URL = 'NEXT_PUBLIC_CANONICAL_URL',
   NEXT_PUBLIC_INFO_BANNER = 'NEXT_PUBLIC_INFO_BANNER',
   NEXT_PUBLIC_INFO_BANNER_ON_MOBILE = 'NEXT_PUBLIC_INFO_BANNER_ON_MOBILE',
   NEXT_PUBLIC_SHOW_PLAYGROUND = 'NEXT_PUBLIC_SHOW_PLAYGROUND',
@@ -21,6 +22,7 @@ enum Env {
 }
 
 const persistedTempEnvVariablesForFront: {[key in Env]: string | undefined} = {
+  NEXT_PUBLIC_CANONICAL_URL: process.env.NEXT_PUBLIC_CANONICAL_URL,
   NEXT_PUBLIC_INFO_BANNER: process.env.NEXT_PUBLIC_INFO_BANNER,
   NEXT_PUBLIC_INFO_BANNER_ON_MOBILE: process.env.NEXT_PUBLIC_INFO_BANNER_ON_MOBILE,
   NEXT_PUBLIC_SHOW_PLAYGROUND: process.env.NEXT_PUBLIC_SHOW_PLAYGROUND,
@@ -40,15 +42,20 @@ const persistedTempEnvVariablesForFront: {[key in Env]: string | undefined} = {
 
 const map = _env(persistedTempEnvVariablesForFront)
 
-const parseUrl = (_: string): string => _.replace(/\/$/, '')
+interface ParseUrl {
+  (_: string): string
+  (_?: string): string | undefined
+}
+const parseUrl: ParseUrl = (_: any) => _?.replace(/\/$/, '')
 
 export const appConfig = {
+  canonicalUrl: map(parseUrl)(Env.NEXT_PUBLIC_CANONICAL_URL),
   apiAdresseUrl: parseUrl('https://api-adresse.data.gouv.fr'),
   isDev: map()(Env.NEXT_PUBLIC_NODE_ENV) === 'development',
   showPlayground: map(bool, defaultValue(false))(Env.NEXT_PUBLIC_SHOW_PLAYGROUND),
-  apiBaseUrl: map(defaultValue('http://localhost:9000'), parseUrl)(Env.NEXT_PUBLIC_API_BASE_URL),
-  appBaseUrl: map(defaultValue('http://localhost:4200'), parseUrl)(Env.NEXT_PUBLIC_APP_BASE_URL),
-  dashboardBaseUrl: map(defaultValue('http://localhost:3000'), parseUrl)(Env.NEXT_PUBLIC_DASHBOARD_BASE_URL),
+  apiBaseUrl: map(defaultValue('http://localhost:9000'), _ => parseUrl(_))(Env.NEXT_PUBLIC_API_BASE_URL),
+  appBaseUrl: map(defaultValue('http://localhost:4200'), _ => parseUrl(_))(Env.NEXT_PUBLIC_APP_BASE_URL),
+  dashboardBaseUrl: map(defaultValue('http://localhost:3000'), _ => parseUrl(_))(Env.NEXT_PUBLIC_DASHBOARD_BASE_URL),
   basePath: map(defaultValue('/'))(Env.NEXT_PUBLIC_BASE_PATH),
   upload_allowedExtensions: ['jpg', 'jpeg', 'pdf', 'png', 'gif', 'docx'],
   reponseConsoDisplayRate: map(int, defaultValue(100))(Env.NEXT_PUBLIC_REPONSECONSO_DISPLAY_PERCENTAGE),
