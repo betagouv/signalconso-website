@@ -40,7 +40,9 @@ export const Panel = ({title, desc, children, sx, elevation = 0, border, ...rest
           component="h2"
           sx={{
             fontWeight: t => t.typography.fontWeightBold,
-            mb: 0,
+            m: 0,
+            mb: 1,
+            p: 0,
             fontSize: t => styleUtils(t).fontSize.title
           }}
         >
