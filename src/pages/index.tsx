@@ -77,8 +77,8 @@ const Home = ({anomalies}: HomeProps) => {
           <Box component="h2" sx={sxTitle}>Comment ça marche ?</Box>
           <IllustrationStepper steps={[
             {title: 'Vous avez rencontré un problème avec une entreprise&#160;?', image: consumer, alt: 'consumer'},
-            {title: 'Faites un signalement avec SignalConso.', image: report, alt: 'report'},
-            {title: 'L\'entreprise est prévenue et peut intervenir.', image: company, alt: 'company'},
+            {title: 'Faites un signalement ou posez une question à la répression des fraudes.', image: report, alt: 'report'},
+            {title: 'Vous pouvez en informer entreprise pour qu’elle vous réponde ou se corrige.', image: company, alt: 'company'},
             {title: 'La répression des fraudes intervient si nécessaire.', image: dgccrf, alt: 'dgccrf'},
             // {title: 'Vous avez rencontré un problème<br/>avec une entreprise&#160;?', image: consumer, alt: 'consumer'},
             // {title: 'Faites un signalement<br/>avec SignalConso.', image: report, alt: 'report'},

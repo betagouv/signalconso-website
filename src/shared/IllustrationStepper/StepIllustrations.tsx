@@ -154,7 +154,8 @@ export const IllustrationStepperLarge = ({steps}: IllustrationStepperProps) => {
             sx={{
               display: 'flex',
               alignItems: 'center',
-              m: 0,
+              mx: .5,
+              my: 0,
               fontSize: t => isMdOrLess ? styleUtils(t).fontSize.normal : styleUtils(t).fontSize.big,
               fontWeight: t => t.typography.fontWeightBold,
               maxWidth: 300,
