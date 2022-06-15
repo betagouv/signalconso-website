@@ -3,7 +3,6 @@ import {env as _env} from '@alexandreannic/ts-utils/lib/common/env/Env'
 import {bool, defaultValue, int} from '@alexandreannic/ts-utils/lib/common/env/EnvParser'
 
 enum Env {
-  NEXT_PUBLIC_CANONICAL_URL = 'NEXT_PUBLIC_CANONICAL_URL',
   NEXT_PUBLIC_INFO_BANNER = 'NEXT_PUBLIC_INFO_BANNER',
   NEXT_PUBLIC_INFO_BANNER_ON_MOBILE = 'NEXT_PUBLIC_INFO_BANNER_ON_MOBILE',
   NEXT_PUBLIC_SHOW_PLAYGROUND = 'NEXT_PUBLIC_SHOW_PLAYGROUND',
@@ -22,7 +21,6 @@ enum Env {
 }
 
 const persistedTempEnvVariablesForFront: {[key in Env]: string | undefined} = {
-  NEXT_PUBLIC_CANONICAL_URL: process.env.NEXT_PUBLIC_CANONICAL_URL,
   NEXT_PUBLIC_INFO_BANNER: process.env.NEXT_PUBLIC_INFO_BANNER,
   NEXT_PUBLIC_INFO_BANNER_ON_MOBILE: process.env.NEXT_PUBLIC_INFO_BANNER_ON_MOBILE,
   NEXT_PUBLIC_SHOW_PLAYGROUND: process.env.NEXT_PUBLIC_SHOW_PLAYGROUND,
@@ -49,7 +47,6 @@ interface ParseUrl {
 const parseUrl: ParseUrl = (_: any) => _?.replace(/\/$/, '')
 
 export const appConfig = {
-  canonicalUrl: map(parseUrl)(Env.NEXT_PUBLIC_CANONICAL_URL),
   apiAdresseUrl: parseUrl('https://api-adresse.data.gouv.fr'),
   isDev: map()(Env.NEXT_PUBLIC_NODE_ENV) === 'development',
   showPlayground: map(bool, defaultValue(false))(Env.NEXT_PUBLIC_SHOW_PLAYGROUND),
