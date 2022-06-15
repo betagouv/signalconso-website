@@ -21,6 +21,7 @@ import {Atinternet} from 'core/plugins/atinternet'
 import {Analytic} from 'core/analytic/analytic'
 import {useEffect, useState} from 'react'
 import {ConfigProvider, useConfig} from 'core/context/ConfigContext'
+import Head from 'next/head'
 
 interface ScAppProps extends AppProps {
   emotionCache?: EmotionCache;
@@ -57,10 +58,13 @@ const App = ({emotionCache = clientSideEmotionCache, ...props}: ScAppProps) => {
   )
 }
 
-const _App = ({Component, pageProps}: AppProps) => {
+const _App = ({Component, pageProps, router}: AppProps) => {
   const {config} = useConfig()
   return (
     <>
+      <Head>
+        <link rel="canonical" href={config.appBaseUrl + router.asPath}/>
+      </Head>
       {config.atInternet_siteId && (
         <Script
           type="text/javascript"
