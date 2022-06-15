@@ -23,7 +23,7 @@
     "@emotion/server": "latest",
     "@emotion/styled": "latest",
     "@mui/lab": "^5.0.0-alpha.74",
-    "@mui/material": "^5.5.2",
+    "@mui/material": "^5.8.4",
     "@sentry/browser": "^6.18.2",
     "@sentry/nextjs": "^6.18.2",
     "@sentry/tracing": "^6.18.2",
