@@ -181,7 +181,7 @@ export const fr = {
     detailsTextAreaNotTransmittable: `Ce texte sera lu <b>uniquement par la répression des fraudes.</b>`,
     detailsTextAreaEmployeeConsumer: `Rien ne sera communiqué à votre employeur.`,
     pageNotFoundTitle: `Cette adresse n'existe plus.`,
-    pageNotFoundDesc: `Une nouvelle version de <b>SignalConso</b> est en ligne depuis le 4 avril 2022.<br/> La page que vous recherchez existe probablement toujours,<br/> mais son adresse à changé.`,
+    pageNotFoundDesc: `Une nouvelle version de <b>SignalConso</b> est en ligne depuis le 4 avril 2022.<br/> La page que vous recherchez existe probablement toujours,<br/> mais son adresse a changé.`,
     month_: {
       1: 'Janvier',
       2: 'Février',
