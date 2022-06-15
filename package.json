@@ -26,7 +26,7 @@
     "@mui/material": "^5.5.2",
     "@sentry/browser": "^6.18.2",
     "@sentry/nextjs": "^6.18.2",
-    "@sentry/tracing": "^6.18.2",
+    "@sentry/tracing": "^7.1.1",
     "@signal-conso/signalconso-api-sdk-js": "4.1.12",
     "classnames": "^2.3.1",
     "date-fns": "^2.25.0",
