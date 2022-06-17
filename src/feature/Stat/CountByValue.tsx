@@ -1,4 +1,4 @@
 export interface CountByValue {
-  date: string;
-  count: number;
+  date: string
+  count: number
 }

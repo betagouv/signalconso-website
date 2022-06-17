@@ -4,22 +4,22 @@ export type AdresseType = 'locality' | 'municipality' | 'street' | 'housenumber'
 
 export interface City {
   label: string
-  score: number,
+  score: number
   id: string
   type: string
   name: string
   postcode: string
   citycode: string
-  x: number,
-  y: number,
-  population: number,
+  x: number
+  y: number
+  population: number
   city: string
   context: string
   importance: number
 }
 
 interface ApiAdresseFeature {
-  geometry: {type: 'Point', coordinates: [number, number]}
+  geometry: {type: 'Point'; coordinates: [number, number]}
   properties: City
   type: 'Feature'
 }
@@ -40,8 +40,7 @@ interface ApiAdresseResult {
 const excludedCityWithDistrict = ['Paris', 'Marseille', 'Lyon']
 
 export class ApiAdresseClient {
-  constructor(private client: ApiClient) {
-  }
+  constructor(private client: ApiClient) {}
 
   readonly fetchCity = (q: string): Promise<City[]> => {
     if (q === '') return Promise.resolve([])
@@ -60,7 +59,7 @@ export class ApiAdresseClient {
         q,
         type,
         // autocomplete: 1
-      }
+      },
     })
   }
 }

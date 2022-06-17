@@ -17,9 +17,7 @@ interface Props {
   anomaly: Anomaly
 }
 
-export const Problem = ({
-  anomaly,
-}: Props) => {
+export const Problem = ({anomaly}: Props) => {
   const _analytic = useAnalyticContext()
   const {m} = useI18n()
   const displayReponseConso = useMemo(() => Math.random() * 100 < appConfig.reponseConsoDisplayRate, [])
@@ -33,16 +31,10 @@ export const Problem = ({
     }
   }, [anomaly.category])
 
-  const {
-    tagsFromSelected,
-    lastSubcategories,
-    isLastSubcategory,
-    showEmployeeConsumer,
-    companyKindFromSelected,
-  } = useSelectedSubcategoriesUtils(anomaly, reportDraft?.subcategories ?? [])
+  const {tagsFromSelected, lastSubcategories, isLastSubcategory, showEmployeeConsumer, companyKindFromSelected} =
+    useSelectedSubcategoriesUtils(anomaly, reportDraft?.subcategories ?? [])
 
-
-  const filterTags = (tagsFromSelected: ReportTag[], draft : Partial<ReportDraft2>): ReportTag[] => {
+  const filterTags = (tagsFromSelected: ReportTag[], draft: Partial<ReportDraft2>): ReportTag[] => {
     if (companyKindFromSelected === CompanyKinds.WEBSITE || draft.companyKind === CompanyKinds.WEBSITE) {
       tagsFromSelected.push(ReportTag.Internet)
     }
@@ -52,16 +44,15 @@ export const Problem = ({
     return tagsFromSelected
   }
 
-
   const submit = (next: () => void) => {
     setReportDraft(draft => {
       const {subcategories, ..._anomaly} = anomaly
-      return ({
+      return {
         ...draft,
         tags: filterTags(tagsFromSelected, draft),
         companyKind: companyKindFromSelected ?? draft.companyKind ?? CompanyKinds.SIRET,
-        anomaly: _anomaly
-      })
+        anomaly: _anomaly,
+      }
     })
     next()
   }
@@ -75,47 +66,47 @@ export const Problem = ({
       copy.subcategories = [...copy.subcategories]
       copy.tags = copy.tags ? copy.tags.filter(_ => _ !== ReportTag.Internet) : undefined
       copy.companyKind = undefined
-      _analytic.trackEvent(EventCategories.report, ReportEventActions.validateSubcategory, copy.subcategories.map(_ => _.title))
+      _analytic.trackEvent(
+        EventCategories.report,
+        ReportEventActions.validateSubcategory,
+        copy.subcategories.map(_ => _.title),
+      )
       return copy
     })
   }
 
   if (anomaly.information) {
-    return (
-      <ProblemInformation
-        anomaly={anomaly}
-        information={anomaly.information}
-        subcategories={[]}
-      />
-    )
+    return <ProblemInformation anomaly={anomaly} information={anomaly.information} subcategories={[]} />
   }
   return (
     <>
-      {([anomaly, ...(reportDraft.subcategories ?? [])]).map((c, i) => c.subcategories && (
-        <ProblemSelect
-          autoScrollToPanel={i !== 0}
-          key={c.id}
-          title={c.subcategoriesTitle}
-          value={reportDraft.subcategories?.[i]?.id}
-          onChange={id => handleSubcategoriesChange(c.subcategories?.find(_ => _.id === id)!, i)}
-          options={(c.subcategories ?? []).map((_, i) => ({
-            title: _.title,
-            description: _.example,
-            value: _.id
-          }))}
-        />
-      ))}
-      {isLastSubcategory && reportDraft.subcategories && (
-        AnomalyClient.instanceOfSubcategoryInformation(lastSubcategories) ? (
+      {[anomaly, ...(reportDraft.subcategories ?? [])].map(
+        (c, i) =>
+          c.subcategories && (
+            <ProblemSelect
+              autoScrollToPanel={i !== 0}
+              key={c.id}
+              title={c.subcategoriesTitle}
+              value={reportDraft.subcategories?.[i]?.id}
+              onChange={id => handleSubcategoriesChange(c.subcategories?.find(_ => _.id === id)!, i)}
+              options={(c.subcategories ?? []).map((_, i) => ({
+                title: _.title,
+                description: _.example,
+                value: _.id,
+              }))}
+            />
+          ),
+      )}
+      {isLastSubcategory &&
+        reportDraft.subcategories &&
+        (AnomalyClient.instanceOfSubcategoryInformation(lastSubcategories) ? (
           <ProblemInformation
             anomaly={anomaly}
             subcategories={reportDraft.subcategories}
             information={(lastSubcategories as any).information}
           />
         ) : (
-          <Stepper renderDone={
-            <StepperActions next={submit}/>
-          }>
+          <Stepper renderDone={<StepperActions next={submit} />}>
             <Step isDone={reportDraft.employeeConsumer !== undefined}>
               <ProblemSelect
                 id="select-employeeconsumer"
@@ -125,11 +116,12 @@ export const Problem = ({
                 options={[
                   {
                     title: m.yes,
-                    value: true
-                  }, {
+                    value: true,
+                  },
+                  {
                     title: m.problemDoYouWorkInCompanyNo,
-                    value: false
-                  }
+                    value: false,
+                  },
                 ]}
               />
             </Step>
@@ -142,11 +134,13 @@ export const Problem = ({
                 options={[
                   {
                     title: m.yes,
-                    value: CompanyKinds.WEBSITE
-                  }, {
+                    value: CompanyKinds.WEBSITE,
+                  },
+                  {
                     title: m.problemIsInternetCompanyNo,
-                    value: tagsFromSelected.indexOf(ReportTag.ProduitDangereux) === -1 ? CompanyKinds.SIRET : CompanyKinds.LOCATION
-                  }
+                    value:
+                      tagsFromSelected.indexOf(ReportTag.ProduitDangereux) === -1 ? CompanyKinds.SIRET : CompanyKinds.LOCATION,
+                  },
                 ]}
               />
             </Step>
@@ -166,23 +160,31 @@ export const Problem = ({
                   {
                     title: m.problemContractualDisputeFormYes,
                     description: m.problemContractualDisputeFormDesc,
-                    value: 1
+                    value: 1,
                   },
                   {
                     title: m.problemContractualDisputeFormNo,
                     description: m.problemContractualDisputeFormNoDesc,
-                    value: 2
+                    value: 2,
                   },
-                  ...((displayReponseConso && tagsFromSelected.includes(ReportTag.ReponseConso)) ? [{
-                    title: m.problemContractualDisputeFormReponseConso,
-                    value: 3
-                  }] : [])
+                  ...(displayReponseConso && tagsFromSelected.includes(ReportTag.ReponseConso)
+                    ? [
+                        {
+                          title: m.problemContractualDisputeFormReponseConso,
+                          value: 3,
+                        },
+                      ]
+                    : []),
                 ]}
                 onChange={(value: number) => {
                   const updateAndTrack = (change: Partial<ReportDraft2>) => {
                     setReportDraft(old => {
                       const d = {...old, ...change}
-                      _analytic.trackEvent(EventCategories.report, ReportEventActions.contactualReport, d.contractualDispute ? 'Oui' : 'Non')
+                      _analytic.trackEvent(
+                        EventCategories.report,
+                        ReportEventActions.contactualReport,
+                        d.contractualDispute ? 'Oui' : 'Non',
+                      )
                       return d
                     })
                   }
@@ -204,7 +206,7 @@ export const Problem = ({
               />
             </Step>
             <Step isDone={true} hidden={reportDraft.contractualDispute !== true}>
-              <ProblemContratualDisputeWarnPanel/>
+              <ProblemContratualDisputeWarnPanel />
             </Step>
           </Stepper>
         ))}

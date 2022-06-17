@@ -15,9 +15,11 @@ export const PlaygroundCompany = () => {
     <>
       <Box sx={{mb: 2}}>
         <Select sx={{mr: 1}} size="small" value={companyKind} onChange={e => setCompanyKind(e.target.value as CompanyKinds)}>
-          {Enum.keys(CompanyKinds).map(_ =>
-            <MenuItem value={_} key={_}>{_}</MenuItem>
-          )}
+          {Enum.keys(CompanyKinds).map(_ => (
+            <MenuItem value={_} key={_}>
+              {_}
+            </MenuItem>
+          ))}
         </Select>
       </Box>
       <Card elevation={2}>
@@ -30,9 +32,7 @@ export const PlaygroundCompany = () => {
           />
         </CardContent>
       </Card>
-      <pre style={{fontSize: styleUtils(theme).fontSize.small, lineHeight: 1.3}}>
-        {JSON.stringify(report, undefined, 2)}
-      </pre>
+      <pre style={{fontSize: styleUtils(theme).fontSize.small, lineHeight: 1.3}}>{JSON.stringify(report, undefined, 2)}</pre>
     </>
   )
 }

@@ -20,16 +20,14 @@ describe('Consumer', () => {
   const mock = {
     apiSdkMock: {
       consumerEmail: {
-        check: () => Promise.resolve({valid: true})
-      }
-    }
+        check: () => Promise.resolve({valid: true}),
+      },
+    },
   }
   let app: ScRenderResult
 
   const elementShouldExists = async (querySelector: string) => {
-    await waitFor(() =>
-      expect(app.container.querySelectorAll(querySelector).length).toEqual(1)
-    )
+    await waitFor(() => expect(app.container.querySelectorAll(querySelector).length).toEqual(1))
   }
 
   const submit = () => {
@@ -39,7 +37,7 @@ describe('Consumer', () => {
   describe('when values are pre defined', function () {
     let initial: Partial<ReportDraft2> = {
       contactAgreement: true,
-      consumer: Fixture.consumer
+      consumer: Fixture.consumer,
     }
     let submitted: Partial<ReportDraft2> | undefined = undefined
 
@@ -51,7 +49,7 @@ describe('Consumer', () => {
             submitted = x as any
           }}
         />,
-        mock
+        mock,
       )
     })
 
@@ -77,7 +75,7 @@ describe('Consumer', () => {
 
   describe('when employee consumer is true', function () {
     let initial: Partial<ReportDraft2> = {
-      employeeConsumer: true
+      employeeConsumer: true,
     }
 
     let submitted: Partial<ReportDraft2> | undefined = undefined
@@ -89,7 +87,7 @@ describe('Consumer', () => {
             submitted = x as any
           }}
         />,
-        mock
+        mock,
       )
     })
 
@@ -110,7 +108,7 @@ describe('Consumer', () => {
       await waitFor(() => {
         const expected: Partial<ReportDraft2> = {
           consumer: Fixture.consumer,
-          contactAgreement: false
+          contactAgreement: false,
         }
         expect(submitted).toEqual(expected)
       })
@@ -126,5 +124,3 @@ describe('Consumer', () => {
     })
   })
 })
-
-

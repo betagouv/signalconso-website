@@ -24,12 +24,10 @@ export const getStaticPaths: GetStaticPaths = async () => {
 }
 
 export const getStaticProps: GetStaticProps = async ({params}) => {
-  const anomaly = await apiSdk.anomaly.getAnomalies().then(res => res
-    .find(_ => _.path === params!.reportpath)
-  )
+  const anomaly = await apiSdk.anomaly.getAnomalies().then(res => res.find(_ => _.path === params!.reportpath))
 
   return {
-    props: serializeJsonForStupidNextJs({anomaly,}),
+    props: serializeJsonForStupidNextJs({anomaly}),
   }
 }
 
@@ -38,7 +36,7 @@ const AnomalyPage = ({anomaly}: {anomaly: Anomaly}) => {
     <Page width={624}>
       <Head>
         <title>{anomaly.title + ' - SignalConso'}</title>
-        <meta name="description" content={anomaly.seoDescription ?? anomaly.description}/>
+        <meta name="description" content={anomaly.seoDescription ?? anomaly.description} />
       </Head>
       <Box sx={{display: 'flex', alignItems: 'center', mb: 2, color: t => t.palette.text.secondary}}>
         <Link href={siteMap.index}>
@@ -46,30 +44,34 @@ const AnomalyPage = ({anomaly}: {anomaly: Anomaly}) => {
             <Icon>chevron_left</Icon>
           </IconBtn>
         </Link>
-        <Box component="h1" sx={{
-          ml: .5,
-          mb: 0,
-          p: 0,
-          fontSize: t => styleUtils(t).fontSize.title
-        }}>{anomaly.category}</Box>
+        <Box
+          component="h1"
+          sx={{
+            ml: 0.5,
+            mb: 0,
+            p: 0,
+            fontSize: t => styleUtils(t).fontSize.title,
+          }}
+        >
+          {anomaly.category}
+        </Box>
       </Box>
-      <NoSSR anomaly={anomaly}/>
+      <NoSSR anomaly={anomaly} />
     </Page>
   )
 }
 
-const NoSSR = dynamic(() => Promise.resolve(({anomaly}: {anomaly: Anomaly}) => {
-  const _reportFlow = useReportFlowContext()
-  const initialStep = useMemo(() => {
-    if (anomaly.category === _reportFlow.reportDraft.category) {
-      return ReportStepHelper.reportCurrentStep(_reportFlow.reportDraft)
-    }
-    return 0
-  }, [])
-  return (
-    <ReportFlow initialStep={initialStep} anomaly={anomaly}/>
-  )
-}))
+const NoSSR = dynamic(() =>
+  Promise.resolve(({anomaly}: {anomaly: Anomaly}) => {
+    const _reportFlow = useReportFlowContext()
+    const initialStep = useMemo(() => {
+      if (anomaly.category === _reportFlow.reportDraft.category) {
+        return ReportStepHelper.reportCurrentStep(_reportFlow.reportDraft)
+      }
+      return 0
+    }, [])
+    return <ReportFlow initialStep={initialStep} anomaly={anomaly} />
+  }),
+)
 
 export default AnomalyPage
-

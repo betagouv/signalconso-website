@@ -32,16 +32,18 @@ export const AnomalyImage = ({anomaly, className, scale = 1, sx, ...other}: Prop
       {...other}
       sx={{
         ...sx,
-        ...(anomaly.sprite ? (
-          anomaly.sprite === 'category-bloctel' ? {
-            background: 'url("/image/pictos/bloctel.png") no-repeat center',
-            backgroundSize: 'contain',
-          } : {
-            background: 'url("/image/pictos/sprite.png") no-repeat bottom',
-            backgroundPosition: backgroundPosition[anomaly.sprite],
-            backgroundRepeat: 'no-repeat',
-          }
-        ) : {}),
+        ...(anomaly.sprite
+          ? anomaly.sprite === 'category-bloctel'
+            ? {
+                background: 'url("/image/pictos/bloctel.png") no-repeat center',
+                backgroundSize: 'contain',
+              }
+            : {
+                background: 'url("/image/pictos/sprite.png") no-repeat bottom',
+                backgroundPosition: backgroundPosition[anomaly.sprite],
+                backgroundRepeat: 'no-repeat',
+              }
+          : {}),
         transform: `scale(${scale})`,
         minWidth: size,
         minHeight: size,

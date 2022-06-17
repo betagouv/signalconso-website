@@ -11,30 +11,38 @@ export interface PanelProps extends Omit<CardProps, 'title'> {
 
 export const Panel = ({title, desc, children, sx, elevation = 0, border, ...rest}: PanelProps) => {
   return (
-    <Card role="article" elevation={elevation} {...rest} sx={{
-      overflow: 'visible',
-      '&:not(:first-of-type)': {
-        mb: 3,
-      },
-      ...(!border && !elevation) && {
-        borderRadius: 0,
-      },
-      ...elevation && {
-        p: 2,
-      },
-      ...border && {
-        p: 2,
-        border: t => border ? `1px solid ${t.palette.divider}` : `none`,
-      },
-      '& + &': {
-        pt: 3,
-        mt: 3,
-        ...(!border && !elevation ? {
-          borderTop: t => `1px solid ${t.palette.divider}`,
-        } : {}),
-      },
-      ...sx,
-    }}>
+    <Card
+      role="article"
+      elevation={elevation}
+      {...rest}
+      sx={{
+        overflow: 'visible',
+        '&:not(:first-of-type)': {
+          mb: 3,
+        },
+        ...(!border &&
+          !elevation && {
+            borderRadius: 0,
+          }),
+        ...(elevation && {
+          p: 2,
+        }),
+        ...(border && {
+          p: 2,
+          border: t => (border ? `1px solid ${t.palette.divider}` : `none`),
+        }),
+        '& + &': {
+          pt: 3,
+          mt: 3,
+          ...(!border && !elevation
+            ? {
+                borderTop: t => `1px solid ${t.palette.divider}`,
+              }
+            : {}),
+        },
+        ...sx,
+      }}
+    >
       {title && (
         <Box
           component="h2"
@@ -43,13 +51,17 @@ export const Panel = ({title, desc, children, sx, elevation = 0, border, ...rest
             m: 0,
             mb: 1,
             p: 0,
-            fontSize: t => styleUtils(t).fontSize.title
+            fontSize: t => styleUtils(t).fontSize.title,
           }}
         >
           {title}
         </Box>
       )}
-      {desc && <Txt bold color="hint" block sx={{mb: 0}}>{desc}</Txt>}
+      {desc && (
+        <Txt bold color="hint" block sx={{mb: 0}}>
+          {desc}
+        </Txt>
+      )}
       {children}
     </Card>
   )
@@ -57,10 +69,13 @@ export const Panel = ({title, desc, children, sx, elevation = 0, border, ...rest
 
 export const PanelBody = ({children, sx, ...rest}: BoxProps) => {
   return (
-    <Box {...rest} sx={{
-      ...sx,
-      mt: 2,
-    }}>
+    <Box
+      {...rest}
+      sx={{
+        ...sx,
+        mt: 2,
+      }}
+    >
       {children}
     </Box>
   )
@@ -68,16 +83,19 @@ export const PanelBody = ({children, sx, ...rest}: BoxProps) => {
 
 export const PanelActions = ({children, sx, ...rest}: BoxProps) => {
   return (
-    <Box {...rest} sx={{
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'right',
-      mt: 2,
-      '& > :not(:first-of-type)': {
-        ml: 1,
-      },
-      ...sx,
-    }}>
+    <Box
+      {...rest}
+      sx={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'right',
+        mt: 2,
+        '& > :not(:first-of-type)': {
+          ml: 1,
+        },
+        ...sx,
+      }}
+    >
       {children}
     </Box>
   )

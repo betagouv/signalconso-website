@@ -31,9 +31,5 @@ export const Stepper = ({children, renderDone}: ProblemStepperProps) => {
 }
 
 export const Step = ({isDone, hidden, children}: ProblemStepProps) => {
-  return (
-    <>
-      {children}
-    </>
-  )
+  return <>{children}</>
 }

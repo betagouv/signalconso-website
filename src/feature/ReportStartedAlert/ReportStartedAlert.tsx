@@ -17,42 +17,45 @@ export const ReportStartedAlert = () => {
   if (hasStoredReport && _report.reportDraft.anomaly) {
     return (
       <Slide in={true} direction="up">
-        <Card elevation={9} sx={{
-          border: t => `2px solid ${t.palette.primary.main}`,
-          p: 2,
-          display: 'flex',
-          bottom: 20,
-          right: 20,
-          background: t => t.palette.background.paper,
-          maxWidth: 420,
-          position: 'fixed',
-        }}>
-          <AnomalyImage anomaly={_report.reportDraft.anomaly} scale={.80} sx={{mr: 1}}/>
+        <Card
+          elevation={9}
+          sx={{
+            border: t => `2px solid ${t.palette.primary.main}`,
+            p: 2,
+            display: 'flex',
+            bottom: 20,
+            right: 20,
+            background: t => t.palette.background.paper,
+            maxWidth: 420,
+            position: 'fixed',
+          }}
+        >
+          <AnomalyImage anomaly={_report.reportDraft.anomaly} scale={0.8} sx={{mr: 1}} />
           <Box>
             <Box sx={{display: 'flex', alignItems: 'center'}}>
               <Txt size="big" bold>
                 {m.continueReport}
               </Txt>
             </Box>
-            <Txt block color="hint">{_report.reportDraft.anomaly.category}</Txt>
+            <Txt block color="hint">
+              {_report.reportDraft.anomaly.category}
+            </Txt>
             <StepperHeader
               sx={{my: 1.5, mx: '-22px'}}
               hideLabel
               currentStep={currentStep}
               stepSize={26}
               stepMargin={4}
-              steps={[
-                m.step_problem,
-                m.step_description,
-                m.step_company,
-                m.step_consumer,
-                m.step_confirm,
-              ]}
+              steps={[m.step_problem, m.step_description, m.step_company, m.step_consumer, m.step_confirm]}
             />
             <Box sx={{display: 'flex', justifyContent: 'flex-end', mt: 2}}>
-              <ScButton size="small" color="error" sx={{mr: 1}} onClick={_report.clearReportDraft}>{m.delete}</ScButton>
+              <ScButton size="small" color="error" sx={{mr: 1}} onClick={_report.clearReportDraft}>
+                {m.delete}
+              </ScButton>
               <Link href={_report.reportDraft.anomaly.path}>
-                <ScButton size="small" color="primary" variant="contained">{m.continue}</ScButton>
+                <ScButton size="small" color="primary" variant="contained">
+                  {m.continue}
+                </ScButton>
               </Link>
             </Box>
           </Box>

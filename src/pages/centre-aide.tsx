@@ -20,7 +20,7 @@ const CentreAide = () => {
     <Page size="small" className="blog">
       <Head>
         <title>{pageDefinitions.centreAide.title}</title>
-        <meta name="description" content={pageDefinitions.centreAide.description}/>
+        <meta name="description" content={pageDefinitions.centreAide.description} />
       </Head>
       <h1>Centre d'aide</h1>
       <Tabs
@@ -35,10 +35,7 @@ const CentreAide = () => {
         <Tab sx={{flex: 1}} label="Professionnel" {...a11yProps(1)} />
       </Tabs>
 
-      {fnSwitch(activeTab, [
-        () => <CentreAideConso role="tabpanel"/>,
-        () => <CentreAidePro role="tabpanel"/>,
-      ])}
+      {fnSwitch(activeTab, [() => <CentreAideConso role="tabpanel" />, () => <CentreAidePro role="tabpanel" />])}
     </Page>
   )
 }

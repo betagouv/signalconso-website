@@ -23,7 +23,7 @@ export enum ReportStepperPath {
   Consumer = 'le-consommateur',
   Confirmation = 'confirmation',
   Acknowledgment = 'accuse-de-reception',
-  Information = 'information'
+  Information = 'information',
 }
 
 export enum ReportStepperTitle {
@@ -48,31 +48,32 @@ export const ReportFlow = React.memo(({initialStep, anomaly}: Props) => {
         _analytics.trackPage(`/${anomaly.path}/${path}`, title)
       }}
       steps={[
-      {
-        name: ReportStep.Problem,
-        label: m.step_problem,
-        component: () => <Problem anomaly={anomaly}/>
-      },
-      {
-        name: ReportStep.Details,
-        label: m.step_description,
-        component: () => <Details/>
-      },
-      {
-        name: ReportStep.Company,
-        label: m.step_company,
-        component: () => <Company/>
-      },
-      {
-        name: ReportStep.Consumer,
-        label: m.step_consumer,
-        component: () => <Consumer/>
-      },
-      {
-        name: ReportStep.Confirmation,
-        label: m.step_confirm,
-        component: () => <Confirmation/>
-      },
-    ]}/>
+        {
+          name: ReportStep.Problem,
+          label: m.step_problem,
+          component: () => <Problem anomaly={anomaly} />,
+        },
+        {
+          name: ReportStep.Details,
+          label: m.step_description,
+          component: () => <Details />,
+        },
+        {
+          name: ReportStep.Company,
+          label: m.step_company,
+          component: () => <Company />,
+        },
+        {
+          name: ReportStep.Consumer,
+          label: m.step_consumer,
+          component: () => <Consumer />,
+        },
+        {
+          name: ReportStep.Confirmation,
+          label: m.step_confirm,
+          component: () => <Confirmation />,
+        },
+      ]}
+    />
   )
 })

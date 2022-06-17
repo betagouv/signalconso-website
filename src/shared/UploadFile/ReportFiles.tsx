@@ -40,11 +40,13 @@ export const ReportFiles = ({
 
   return (
     <>
-      <Box sx={{
-        display: 'flex',
-        flexWrap: 'wrap',
-        margin: -1,
-      }}>
+      <Box
+        sx={{
+          display: 'flex',
+          flexWrap: 'wrap',
+          margin: -1,
+        }}
+      >
         {innerFiles
           ?.filter(_ => _.origin === fileOrigin)
           .map(_ => (
@@ -53,10 +55,14 @@ export const ReportFiles = ({
         {!hideAddBtn && <ReportFileAdd fileOrigin={fileOrigin} onUploaded={newFile} />}
       </Box>
       {hideAddBtn && innerFiles?.length === 0 && (
-        <Txt block color="hint" sx={{
-          marginTop: 1,
-          marginBottom: 1,
-        }}>
+        <Txt
+          block
+          color="hint"
+          sx={{
+            marginTop: 1,
+            marginBottom: 1,
+          }}
+        >
           {m.noAttachment}
         </Txt>
       )}

@@ -21,9 +21,9 @@ import {useRgpdBanner} from 'feature/RgpdBanner/RgpdBanner'
 import {InfoBanner} from 'feature/InfoBanner/InfoBanner'
 import * as smoothscroll from 'smoothscroll-polyfill'
 import {useEffect} from 'react'
-import Head from "next/head";
-import {pageDefinitions} from "../core/pageDefinition";
-import * as React from "react";
+import Head from 'next/head'
+import {pageDefinitions} from '../core/pageDefinition'
+import * as React from 'react'
 
 const sxTitle: SxProps<Theme> = {
   fontSize: 24,
@@ -31,13 +31,14 @@ const sxTitle: SxProps<Theme> = {
   mt: 2,
 }
 
-export const getStaticProps: GetStaticProps = async (context) => {
-  const anomalies = await apiSdk.anomaly.getAnomalies()
+export const getStaticProps: GetStaticProps = async context => {
+  const anomalies = await apiSdk.anomaly
+    .getAnomalies()
     .then(res => res.filter(_ => !_.hidden))
     .then(res => sortBy(res, _ => parseInt(_.id)))
   return {
     props: serializeJsonForStupidNextJs({
-      anomalies
+      anomalies,
     }),
   }
 }
@@ -58,38 +59,53 @@ const Home = ({anomalies}: HomeProps) => {
     <>
       <Head>
         <title>SignalConso, un service public pour les consommateurs</title>
-        <meta name="description"
-              content="Signalez un problème au commerçant (magasins, commerces de proximité, cafés et restaurants...) et à la répression des fraudes : pratique d'hygiène, nourriture / boissons, matériel / objet, prix / paiement, publicité, services associés à l'achat."/>
+        <meta
+          name="description"
+          content="Signalez un problème au commerçant (magasins, commerces de proximité, cafés et restaurants...) et à la répression des fraudes : pratique d'hygiène, nourriture / boissons, matériel / objet, prix / paiement, publicité, services associés à l'achat."
+        />
       </Head>
-      <InfoBanner/>
+      <InfoBanner />
       <main>
-        <Section sx={{
-          background: t => t.palette.primary.main,
-          color: t => t.palette.primary.contrastText,
-          textAlign: 'center',
-          padding: isMobileWidthMax ? 1 : 5,
-          fontSize: isMobileWidthMax ? 22 : 32,
-          // fontSize: 32,
-          // fontWeight: 'lighter'
-        }} dangerouslySetInnerHTML={{__html: m.signalconsoCatchWord}}/>
+        <Section
+          sx={{
+            background: t => t.palette.primary.main,
+            color: t => t.palette.primary.contrastText,
+            textAlign: 'center',
+            padding: isMobileWidthMax ? 1 : 5,
+            fontSize: isMobileWidthMax ? 22 : 32,
+            // fontSize: 32,
+            // fontWeight: 'lighter'
+          }}
+          dangerouslySetInnerHTML={{__html: m.signalconsoCatchWord}}
+        />
 
         <Section>
-          <Box component="h2" sx={sxTitle}>Comment ça marche ?</Box>
-          <IllustrationStepper steps={[
-            {title: 'Vous avez rencontré un problème avec une entreprise&#160;?', image: consumer, alt: 'consumer'},
-            {title: 'Faites un signalement ou posez une question à la répression des fraudes.', image: report, alt: 'report'},
-            {title: "Vous pouvez en informer l'entreprise pour qu’elle vous réponde ou se corrige.", image: company, alt: 'company'},
-            {title: 'La répression des fraudes intervient si nécessaire.', image: dgccrf, alt: 'dgccrf'},
-            // {title: 'Vous avez rencontré un problème<br/>avec une entreprise&#160;?', image: consumer, alt: 'consumer'},
-            // {title: 'Faites un signalement<br/>avec SignalConso.', image: report, alt: 'report'},
-            // {title: 'L\'entreprise est prévenue<br/>et peut intervenir.', image: company, alt: 'company'},
-            // {title: 'La répression des fraudes intervient si nécessaire.', image: dgccrf, alt: 'dgccrf'},
-          ]}/>
+          <Box component="h2" sx={sxTitle}>
+            Comment ça marche ?
+          </Box>
+          <IllustrationStepper
+            steps={[
+              {title: 'Vous avez rencontré un problème avec une entreprise&#160;?', image: consumer, alt: 'consumer'},
+              {title: 'Faites un signalement ou posez une question à la répression des fraudes.', image: report, alt: 'report'},
+              {
+                title: "Vous pouvez en informer l'entreprise pour qu’elle vous réponde ou se corrige.",
+                image: company,
+                alt: 'company',
+              },
+              {title: 'La répression des fraudes intervient si nécessaire.', image: dgccrf, alt: 'dgccrf'},
+              // {title: 'Vous avez rencontré un problème<br/>avec une entreprise&#160;?', image: consumer, alt: 'consumer'},
+              // {title: 'Faites un signalement<br/>avec SignalConso.', image: report, alt: 'report'},
+              // {title: 'L\'entreprise est prévenue<br/>et peut intervenir.', image: company, alt: 'company'},
+              // {title: 'La répression des fraudes intervient si nécessaire.', image: dgccrf, alt: 'dgccrf'},
+            ]}
+          />
 
           <Box sx={{display: 'flex', alignItems: 'center', justifyContent: 'center', pt: 4, pb: 3}}>
             <ScButton
               onClick={() => {
-                document.querySelector('#index-categories')?.scrollIntoView({behavior: 'smooth', block: 'start', inline: 'nearest'})
+                document
+                  .querySelector('#index-categories')
+                  ?.scrollIntoView({behavior: 'smooth', block: 'start', inline: 'nearest'})
               }}
               size="large"
               variant="contained"
@@ -97,7 +113,7 @@ const Home = ({anomalies}: HomeProps) => {
               sx={{
                 textTransform: 'unset',
                 fontWeight: t => t.typography.fontWeightBold,
-                background: '#be3d4d'
+                background: '#be3d4d',
               }}
               iconAfter="feedback"
             >
@@ -105,23 +121,27 @@ const Home = ({anomalies}: HomeProps) => {
             </ScButton>
           </Box>
         </Section>
-        <Divider/>
-        <Section id="index-categories" component="section" sx={{
-          background: `linear-gradient(180deg,#407ca8,#2a8194 99.99%,#5a4b5f)`,
-        }}>
+        <Divider />
+        <Section
+          id="index-categories"
+          component="section"
+          sx={{
+            background: `linear-gradient(180deg,#407ca8,#2a8194 99.99%,#5a4b5f)`,
+          }}
+        >
           <Box component="h2" sx={{...sxTitle, color: t => t.palette.getContrastText(t.palette.primary.main)}}>
             Quel problème avez-vous rencontré ?
           </Box>
           <Grid container spacing={3}>
             {anomalies.map(a => (
               <Grid key={a.path} item xs={12} sm={6} md={4}>
-                <AnomalyCard anomaly={a}/>
+                <AnomalyCard anomaly={a} />
               </Grid>
             ))}
           </Grid>
         </Section>
       </main>
-      <ReportStartedAlert/>
+      <ReportStartedAlert />
     </>
   )
 }

@@ -18,7 +18,7 @@ interface Props {
 }
 
 const findPath = (tree: TreeStepperNode[]): TreeStepperNode[] => {
-  const theOne = tree.find(_ => _.if) ?? map(last(tree), _ => _.if === false ? undefined : _)
+  const theOne = tree.find(_ => _.if) ?? map(last(tree), _ => (_.if === false ? undefined : _))
   if (theOne === undefined) return []
   if (theOne.done && theOne.children) return [theOne, ...findPath(theOne.children)]
   return [theOne]
@@ -33,11 +33,9 @@ export const TreeStepper = ({onComplete, renderOnComplete, tree}: Props) => {
 
   return (
     <>
-      {shown.map((x, i) =>
-        <Fragment key={i}>
-          {x.render()}
-        </Fragment>
-      )}
+      {shown.map((x, i) => (
+        <Fragment key={i}>{x.render()}</Fragment>
+      ))}
       {allDone && renderOnComplete}
     </>
   )

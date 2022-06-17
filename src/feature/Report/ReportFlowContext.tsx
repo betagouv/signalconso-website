@@ -22,15 +22,20 @@ interface ReportFlowProviderProps {
 
 export const ReportFlowProvider = ({initialReport, children}: ReportFlowProviderProps) => {
   const {apiSdk} = useApiSdk()
-  const [reportDraft, setReportDraft, clearReportDraft] = usePersistentState<Partial<ReportDraft2>>(initialReport ?? {}, 'report-draft')
+  const [reportDraft, setReportDraft, clearReportDraft] = usePersistentState<Partial<ReportDraft2>>(
+    initialReport ?? {},
+    'report-draft',
+  )
   const createReport = useFetcher(apiSdk.report.create)
   return (
-    <ReportFlowContext.Provider value={{
-      reportDraft,
-      setReportDraft,
-      clearReportDraft,
-      createReport,
-    }}>
+    <ReportFlowContext.Provider
+      value={{
+        reportDraft,
+        setReportDraft,
+        clearReportDraft,
+        createReport,
+      }}
+    >
       {children}
     </ReportFlowContext.Provider>
   )

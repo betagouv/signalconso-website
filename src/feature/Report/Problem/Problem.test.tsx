@@ -13,7 +13,10 @@ import {Fixture} from '../../../test/fixture'
 class ProblemFixture {
   static readonly simpleSubcategory = Fixture.genSubcategory()
   static readonly internetSubcategory = Fixture.genSubcategory({companyKind: CompanyKinds.WEBSITE})
-  static readonly reponseConsoSubcategory = Fixture.genSubcategory({companyKind: CompanyKinds.WEBSITE, tags: [ReportTag.ReponseConso]})
+  static readonly reponseConsoSubcategory = Fixture.genSubcategory({
+    companyKind: CompanyKinds.WEBSITE,
+    tags: [ReportTag.ReponseConso],
+  })
   static readonly infoSubcategory = Fixture.genSubcategory({information: Fixture.genInformation()})
   static readonly subcategories = [
     ProblemFixture.simpleSubcategory,
@@ -32,31 +35,26 @@ class ProblemFixture {
 
 describe('Problem', () => {
   it('should display subcategories', () => {
-    const app = render(<Problem anomaly={ProblemFixture.anomaly}/>)
+    const app = render(<Problem anomaly={ProblemFixture.anomaly} />)
     ProblemFixture.anomaly.subcategories?.forEach(s => {
       expect(app.container.textContent).toContain(s.title)
     })
   })
 
   it('should route to information page when receive subcategories ending with information', async () => {
-    const app = render(
-      <Problem anomaly={ProblemFixture.anomaly}/>,
-      {
-        apiSdkMock: {
-          rating: {
-            rate: (...args: any[]) => Promise.resolve()
-          } as any
-        }
-      }
-    )
+    const app = render(<Problem anomaly={ProblemFixture.anomaly} />, {
+      apiSdkMock: {
+        rating: {
+          rate: (...args: any[]) => Promise.resolve(),
+        } as any,
+      },
+    })
     fireEvent.click(app.getByText(ProblemFixture.infoSubcategory.title))
     expect(app.container.querySelector('#test-info')).not.toBeNull()
   })
 
   it('should request the user if he is an employee of the company or not when receive subcategories', () => {
-    const app = render(
-      <Problem anomaly={ProblemFixture.anomaly}/>
-    )
+    const app = render(<Problem anomaly={ProblemFixture.anomaly} />)
     fireEvent.click(app.getByText(ProblemFixture.simpleSubcategory.title))
     expect(app.container.textContent).toContain(app.m.problemDoYouWorkInCompany)
     expect(app.container.textContent).toContain(app.m.problemDoYouWorkInCompanyNo)
@@ -86,7 +84,10 @@ describe('Problem', () => {
     fireEvent.click(radios.find(_ => _.textContent?.includes(btnText))!)
   }
 
-  const clickContractualDispute = (app: ScRenderResult, value: 'contractualDispute' | 'notContractualDispute' | 'reponseConso') => {
+  const clickContractualDispute = (
+    app: ScRenderResult,
+    value: 'contractualDispute' | 'notContractualDispute' | 'reponseConso',
+  ) => {
     const radios = [...app.container.querySelectorAll('#select-contractualDispute [role=radio]')!]
     if (radios.length === 0) {
       throw new Error('Contractual dispute form did not appear')
@@ -122,11 +123,13 @@ describe('Problem', () => {
   it('should update employeeConsumer = true', () => {
     let report: undefined | Partial<ReportDraft2>
     const app = render(
-      <AccessReportFlow onReportChange={r => {
-        report = r
-      }}>
-        <Problem anomaly={ProblemFixture.anomaly}/>
-      </AccessReportFlow>
+      <AccessReportFlow
+        onReportChange={r => {
+          report = r
+        }}
+      >
+        <Problem anomaly={ProblemFixture.anomaly} />
+      </AccessReportFlow>,
     )
     fireEvent.click(app.getByText(ProblemFixture.simpleSubcategory.title))
     clickEmployeeConsumer(app, 'yes')
@@ -137,11 +140,13 @@ describe('Problem', () => {
   it('should update employeeConsumer = false', () => {
     let report: undefined | Partial<ReportDraft2>
     const app = render(
-      <AccessReportFlow onReportChange={r => {
-        report = r
-      }}>
-        <Problem anomaly={ProblemFixture.anomaly}/>
-      </AccessReportFlow>
+      <AccessReportFlow
+        onReportChange={r => {
+          report = r
+        }}
+      >
+        <Problem anomaly={ProblemFixture.anomaly} />
+      </AccessReportFlow>,
     )
     fireEvent.click(app.getByText(ProblemFixture.simpleSubcategory.title))
     clickEmployeeConsumer(app, 'no')
@@ -152,11 +157,13 @@ describe('Problem', () => {
   it('should ask companyKind', () => {
     let report: undefined | Partial<ReportDraft2>
     const app = render(
-      <AccessReportFlow onReportChange={r => {
-        report = r
-      }}>
-        <Problem anomaly={ProblemFixture.anomaly}/>
-      </AccessReportFlow>
+      <AccessReportFlow
+        onReportChange={r => {
+          report = r
+        }}
+      >
+        <Problem anomaly={ProblemFixture.anomaly} />
+      </AccessReportFlow>,
     )
     fireEvent.click(app.getByText(ProblemFixture.simpleSubcategory.title))
     clickEmployeeConsumer(app, 'no')
@@ -167,11 +174,13 @@ describe('Problem', () => {
   it(`shouldn't ask companyKind when defined`, () => {
     let report: undefined | Partial<ReportDraft2>
     const app = render(
-      <AccessReportFlow onReportChange={r => {
-        report = r
-      }}>
-        <Problem anomaly={ProblemFixture.anomaly}/>
-      </AccessReportFlow>
+      <AccessReportFlow
+        onReportChange={r => {
+          report = r
+        }}
+      >
+        <Problem anomaly={ProblemFixture.anomaly} />
+      </AccessReportFlow>,
     )
     fireEvent.click(app.getByText(ProblemFixture.internetSubcategory.title))
     clickEmployeeConsumer(app, 'no')
@@ -182,15 +191,20 @@ describe('Problem', () => {
     let report: undefined | Partial<ReportDraft2>
     let onNextCalled = false
     const app = render(
-      <DummyStepperProvider currentStep={0} onNext={() => {
-        onNextCalled = true
-      }}>
-        <AccessReportFlow onReportChange={r => {
-          report = r
-        }}>
-          <Problem anomaly={ProblemFixture.anomaly}/>
+      <DummyStepperProvider
+        currentStep={0}
+        onNext={() => {
+          onNextCalled = true
+        }}
+      >
+        <AccessReportFlow
+          onReportChange={r => {
+            report = r
+          }}
+        >
+          <Problem anomaly={ProblemFixture.anomaly} />
         </AccessReportFlow>
-      </DummyStepperProvider>
+      </DummyStepperProvider>,
     )
     fireEvent.click(app.getByText(ProblemFixture.internetSubcategory.title))
     clickEmployeeConsumer(app, 'no')
@@ -204,12 +218,14 @@ describe('Problem', () => {
     let report: undefined | Partial<ReportDraft2>
     const app = render(
       <DummyStepperProvider currentStep={0}>
-        <AccessReportFlow onReportChange={r => {
-          report = r
-        }}>
-          <Problem anomaly={ProblemFixture.anomaly}/>
+        <AccessReportFlow
+          onReportChange={r => {
+            report = r
+          }}
+        >
+          <Problem anomaly={ProblemFixture.anomaly} />
         </AccessReportFlow>
-      </DummyStepperProvider>
+      </DummyStepperProvider>,
     )
     fireEvent.click(app.getByText(ProblemFixture.internetSubcategory.title))
     clickEmployeeConsumer(app, 'no')
@@ -222,12 +238,14 @@ describe('Problem', () => {
     let report: undefined | Partial<ReportDraft2>
     const app = render(
       <DummyStepperProvider currentStep={0}>
-        <AccessReportFlow onReportChange={r => {
-          report = r
-        }}>
-          <Problem anomaly={ProblemFixture.anomaly}/>
+        <AccessReportFlow
+          onReportChange={r => {
+            report = r
+          }}
+        >
+          <Problem anomaly={ProblemFixture.anomaly} />
         </AccessReportFlow>
-      </DummyStepperProvider>
+      </DummyStepperProvider>,
     )
     fireEvent.click(app.getByText(ProblemFixture.simpleSubcategory.title))
     clickEmployeeConsumer(app, 'no')
@@ -238,12 +256,14 @@ describe('Problem', () => {
     let report: undefined | Partial<ReportDraft2>
     const app = render(
       <DummyStepperProvider currentStep={0}>
-        <AccessReportFlow onReportChange={r => {
-          report = r
-        }}>
-          <Problem anomaly={ProblemFixture.anomaly}/>
+        <AccessReportFlow
+          onReportChange={r => {
+            report = r
+          }}
+        >
+          <Problem anomaly={ProblemFixture.anomaly} />
         </AccessReportFlow>
-      </DummyStepperProvider>
+      </DummyStepperProvider>,
     )
     fireEvent.click(app.getByText(ProblemFixture.reponseConsoSubcategory.title))
     clickEmployeeConsumer(app, 'yes')
@@ -256,12 +276,14 @@ describe('Problem', () => {
     let report: undefined | Partial<ReportDraft2>
     const app = render(
       <DummyStepperProvider currentStep={0}>
-        <AccessReportFlow onReportChange={r => {
-          report = r
-        }}>
-          <Problem anomaly={ProblemFixture.anomaly}/>
+        <AccessReportFlow
+          onReportChange={r => {
+            report = r
+          }}
+        >
+          <Problem anomaly={ProblemFixture.anomaly} />
         </AccessReportFlow>
-      </DummyStepperProvider>
+      </DummyStepperProvider>,
     )
     fireEvent.click(app.getByText(ProblemFixture.reponseConsoSubcategory.title))
     clickEmployeeConsumer(app, 'no')
@@ -277,12 +299,14 @@ describe('Problem', () => {
     let report: undefined | Partial<ReportDraft2>
     const app = render(
       <DummyStepperProvider currentStep={0}>
-        <AccessReportFlow onReportChange={r => {
-          report = r
-        }}>
-          <Problem anomaly={ProblemFixture.anomaly}/>
+        <AccessReportFlow
+          onReportChange={r => {
+            report = r
+          }}
+        >
+          <Problem anomaly={ProblemFixture.anomaly} />
         </AccessReportFlow>
-      </DummyStepperProvider>
+      </DummyStepperProvider>,
     )
     fireEvent.click(app.getByText(ProblemFixture.reponseConsoSubcategory.title))
     clickEmployeeConsumer(app, 'no')

@@ -9,7 +9,7 @@ const Cookies = () => {
     <Page size="small" className="blog">
       <Head>
         <title>{pageDefinitions.cookies.title}</title>
-        <meta name="description" content={pageDefinitions.cookies.description}/>
+        <meta name="description" content={pageDefinitions.cookies.description} />
       </Head>
       <h1>Gestion des cookies</h1>
       <Panel>
@@ -20,128 +20,128 @@ const Cookies = () => {
             d’accord avec le dépôt de cookies — même si vous ne savez pas ce que ça veut dire !
           </p>
           <p>
-            Rien d’exceptionnel, pas de passe-droit lié à un .gouv.fr. Nous respectons simplement la loi, qui dit que
-            certains outils de suivi d’audience, correctement configurés pour respecter la vie privée, sont exemptés
-            d’autorisation préalable.
+            Rien d’exceptionnel, pas de passe-droit lié à un .gouv.fr. Nous respectons simplement la loi, qui dit que certains
+            outils de suivi d’audience, correctement configurés pour respecter la vie privée, sont exemptés d’autorisation
+            préalable.
           </p>
           Les cookies techniques mis en place nous permettent :
-          <br/>
+          <br />
           <p>
-            D’obtenir des statistiques anonymes sur la fréquentation du site afin de faire de l'analyse de contenu et
-            détecter d'éventuels problèmes de navigation;
+            D’obtenir des statistiques anonymes sur la fréquentation du site afin de faire de l'analyse de contenu et détecter
+            d'éventuels problèmes de navigation;
           </p>
           <h2>Cookies</h2>
           <p>
             Définition : Le cookie est un petit fichier texte enregistré par le navigateur de votre ordinateur, tablette ou
-            smartphone.
-            Le cookie, enregistré sur votre ordinateur lorsque vous consultez le site SignalConso, permet de conserver
-            des données utilisateur décrites ci-dessous afin de faciliter la navigation et de permettre certaines
-            fonctionnalités.
+            smartphone. Le cookie, enregistré sur votre ordinateur lorsque vous consultez le site SignalConso, permet de conserver
+            des données utilisateur décrites ci-dessous afin de faciliter la navigation et de permettre certaines fonctionnalités.
           </p>
           <h3>Nature des cookies déposés sur le site SignalConso:</h3>
           <p>
-            Nous utilisons que des cookies techniques qui permettent et facilitent votre navigation.
-            Certains sont indispensables et ne sauraient être supprimés sans affecter gravement l’accès au site et la
-            navigation,
-            d’autres auraient pour conséquence une navigation dégradée.
+            Nous utilisons que des cookies techniques qui permettent et facilitent votre navigation. Certains sont indispensables
+            et ne sauraient être supprimés sans affecter gravement l’accès au site et la navigation, d’autres auraient pour
+            conséquence une navigation dégradée.
           </p>
           <h3>Liste des cookies déposés</h3>
-          <p>
-            Les cookies d'analyse de mesure d'audience (Xiti - AT Internet / Matomo);
-          </p>
+          <p>Les cookies d'analyse de mesure d'audience (Xiti - AT Internet / Matomo);</p>
           <table>
             <thead>
-            <tr>
-              <th>Nom du cookie</th>
-              <th>Finalité</th>
-              <th>Durée de conservation</th>
-            </tr>
+              <tr>
+                <th>Nom du cookie</th>
+                <th>Finalité</th>
+                <th>Durée de conservation</th>
+              </tr>
             </thead>
             <tbody>
-            <tr>
-              <td>atuserid</td>
-              <td>Cookie At Internet/Xiti</td>
-              <td>13 mois</td>
-            </tr>
-            <tr>
-              <td>atautdority</td>
-              <td>Cookie At Internet/Xiti</td>
-              <td>13 mois</td>
-            </tr>
-            <tr>
-              <td>_Pk_id</td>
-              <td>Matomo</td>
-              <td>13 mois</td>
-            </tr>
-            <tr>
-              <td>_Pk_ref</td>
-              <td>Matomo</td>
-              <td>6 mois</td>
-            </tr>
-            <tr>
-              <td>_Pk_session</td>
-              <td>Matomo</td>
-              <td>30 minutes</td>
-            </tr>
+              <tr>
+                <td>atuserid</td>
+                <td>Cookie At Internet/Xiti</td>
+                <td>13 mois</td>
+              </tr>
+              <tr>
+                <td>atautdority</td>
+                <td>Cookie At Internet/Xiti</td>
+                <td>13 mois</td>
+              </tr>
+              <tr>
+                <td>_Pk_id</td>
+                <td>Matomo</td>
+                <td>13 mois</td>
+              </tr>
+              <tr>
+                <td>_Pk_ref</td>
+                <td>Matomo</td>
+                <td>6 mois</td>
+              </tr>
+              <tr>
+                <td>_Pk_session</td>
+                <td>Matomo</td>
+                <td>30 minutes</td>
+              </tr>
             </tbody>
           </table>
-          <br/>
+          <br />
           <p>
-            Afin de mieux vous servir et d’améliorer l’expérience utilisateur sur notre site,
-            nous mesurons son audience grâce à une solution utilisant la technologie des cookies.
-          </p>
-          <p>
-            Les données collectées permettent de fournir uniquement des données statistiques anonymes de fréquentation
-            (le nombre de pages vues, le nombre de visites, leur fréquence de retour, …).
+            Afin de mieux vous servir et d’améliorer l’expérience utilisateur sur notre site, nous mesurons son audience grâce à
+            une solution utilisant la technologie des cookies.
           </p>
           <p>
-            Nous utilisons l‘outil de mesure d’audience AT Internet. Cet outil est dispensé du recueil de
-            consentement de l'internaute relatif au dépôt des cookies Analytics,
-            l'autorité française de protection des données (CNIL) ayant accordé une exemption au cookie Web Analytics d’AT
-            Internet (<a href="https://www.cnil.fr/fr/cookies-solutions-pour-les-outils-de-mesure-daudience">en savoir
-            plus</a>).
+            Les données collectées permettent de fournir uniquement des données statistiques anonymes de fréquentation (le nombre
+            de pages vues, le nombre de visites, leur fréquence de retour, …).
           </p>
           <p>
-            Aucune des données personnelles ne sont exploitées par le site SignalConso. Cela signifie que votre adresse IP,
-            par exemple, est anonymisée avant d’être enregistrée. Il est donc impossible d’associer vos visites sur ce site
-            à votre personne.
+            Nous utilisons l‘outil de mesure d’audience AT Internet. Cet outil est dispensé du recueil de consentement de
+            l'internaute relatif au dépôt des cookies Analytics, l'autorité française de protection des données (CNIL) ayant
+            accordé une exemption au cookie Web Analytics d’AT Internet (
+            <a href="https://www.cnil.fr/fr/cookies-solutions-pour-les-outils-de-mesure-daudience">en savoir plus</a>).
           </p>
           <p>
-            Les noms des cookies utilisés sont pour At-Internet atuserid et atauthority. Leur durée de conservation est de
-            13 mois. Elles ne sont pas cédées à des tiers ni utilisées à d'autres fins.
+            Aucune des données personnelles ne sont exploitées par le site SignalConso. Cela signifie que votre adresse IP, par
+            exemple, est anonymisée avant d’être enregistrée. Il est donc impossible d’associer vos visites sur ce site à votre
+            personne.
           </p>
-          <p>Il en est de même pour l’outil de mesure d’audience de Matomo qui permet de conserver l’historique des données
-            de statistiques anonymes de fréquentation récoltées depuis le lancement de SignalConso, avant le transfert vers
-            At-Internet</p>
-          <p>Les noms des cookies utilisés sont pour Matomo _pk_session, _pk_id, _pk_ref. Leur durée va de de 30 mn à 13
-            mois. Elles ne sont pas cédées à des tiers ni utilisées à d'autres fins
+          <p>
+            Les noms des cookies utilisés sont pour At-Internet atuserid et atauthority. Leur durée de conservation est de 13
+            mois. Elles ne sont pas cédées à des tiers ni utilisées à d'autres fins.
           </p>
-          <p>Pour plus de renseignements sur la gestion de la vie privée sur Signal Conso, vous pouvez également
-            consulter la rubrique <a
-              href={siteMap.suiviEtViePrivee}>suivi d'audience et vie privée</a></p>
+          <p>
+            Il en est de même pour l’outil de mesure d’audience de Matomo qui permet de conserver l’historique des données de
+            statistiques anonymes de fréquentation récoltées depuis le lancement de SignalConso, avant le transfert vers
+            At-Internet
+          </p>
+          <p>
+            Les noms des cookies utilisés sont pour Matomo _pk_session, _pk_id, _pk_ref. Leur durée va de de 30 mn à 13 mois.
+            Elles ne sont pas cédées à des tiers ni utilisées à d'autres fins
+          </p>
+          <p>
+            Pour plus de renseignements sur la gestion de la vie privée sur Signal Conso, vous pouvez également consulter la
+            rubrique <a href={siteMap.suiviEtViePrivee}>suivi d'audience et vie privée</a>
+          </p>
           <h3>Comment accepter ou refuser les cookies:</h3>
           <p>
-            Vous avez la possibilité de paramétrer leur navigateur pour supprimer les cookies déjà installés sur leur
-            terminal, pour être invités à accepter ou refuser l’installation de cookies au cas par cas ou pour accepter ou
-            refuser automatiquement tous les cookies pour certains sites ou pour tous les sites. Toutefois, le refus
-            d’utilisation des cookies peut empêcher certaines fonctionnalités du site de fonctionner.</p>
+            Vous avez la possibilité de paramétrer leur navigateur pour supprimer les cookies déjà installés sur leur terminal,
+            pour être invités à accepter ou refuser l’installation de cookies au cas par cas ou pour accepter ou refuser
+            automatiquement tous les cookies pour certains sites ou pour tous les sites. Toutefois, le refus d’utilisation des
+            cookies peut empêcher certaines fonctionnalités du site de fonctionner.
+          </p>
           <p>
             Les paramétrages de gestion des cookies varient selon les navigateurs. Les instructions à ce sujet pour les
             navigateurs les plus courants sont disponibles en cliquant sur les liens ci-dessous:
           </p>
           <ul>
             <li>
-              <a href="https://support.microsoft.com/fr-fr/help/17442/windows-internet-explorer-delete-manage-cookies">Internet
-                Explorer</a>
-              <br/>
+              <a href="https://support.microsoft.com/fr-fr/help/17442/windows-internet-explorer-delete-manage-cookies">
+                Internet Explorer
+              </a>
+              <br />
               <p>
                 Dans Internet Explorer, cliquez sur le bouton Outils, puis sur Options Internet. Sous l'onglet Général, sous
                 Historique de navigation, cliquez sur Paramètres. Cliquez sur le bouton Afficher les fichiers. Cliquez sur
-                l'en-tête de colonne Nom pour trier tous les fichiers dans l'ordre alphabétique, puis parcourez la liste
-                jusqu'à ce que vous voyez des fichiers commençant par le préfixe "Cookie". (tous les cookies possèdent ce
-                préfixe et contiennent habituellement le nom du site Web qui a créé le cookie). Sélectionnez le ou les
-                cookies comprenant le nom "à compléter" et supprimez-les Fermez la fenêtre qui contient la liste des
-                fichiers, puis cliquez deux fois sur OK pour retourner dans Internet Explorer.
+                l'en-tête de colonne Nom pour trier tous les fichiers dans l'ordre alphabétique, puis parcourez la liste jusqu'à
+                ce que vous voyez des fichiers commençant par le préfixe "Cookie". (tous les cookies possèdent ce préfixe et
+                contiennent habituellement le nom du site Web qui a créé le cookie). Sélectionnez le ou les cookies comprenant le
+                nom "à compléter" et supprimez-les Fermez la fenêtre qui contient la liste des fichiers, puis cliquez deux fois
+                sur OK pour retourner dans Internet Explorer.
               </p>
             </li>
             <li>
@@ -149,44 +149,40 @@ const Cookies = () => {
             </li>
             <li>
               <a href="https://support.google.com/chrome/answer/95647?hl=fr">Chrome</a>
-              <br/>
+              <br />
               <p>
                 Ouvrez Google Chrome. Dans la barre d'outils du navigateur, cliquez sur Plus. Placez votre curseur sur Plus
-                d'outils, puis cliquez sur Effacer les données de navigation. Dans la fenêtre "Effacer les données de
-                navigation", cochez les cases Cookies et données d'autres sites ou plug-in et Images et fichiers en cache.
-                Utilisez le menu en haut pour sélectionner la quantité de données que vous souhaitez supprimer. Sélectionnez
-                Depuis le début pour tout supprimer. Cliquez sur Effacer les données de navigation.
+                d'outils, puis cliquez sur Effacer les données de navigation. Dans la fenêtre "Effacer les données de navigation",
+                cochez les cases Cookies et données d'autres sites ou plug-in et Images et fichiers en cache. Utilisez le menu en
+                haut pour sélectionner la quantité de données que vous souhaitez supprimer. Sélectionnez Depuis le début pour tout
+                supprimer. Cliquez sur Effacer les données de navigation.
               </p>
             </li>
             <li>
               <a href="https://support.mozilla.org/fr/kb/empecher-sites-enregistrer-preferences?esab=a&s=blocking+cookies&r=2&as=s">
                 Firefox
               </a>
-              <br/>
+              <br />
               <p>
-                Allez dans l'onglet "Outils" du navigateur puis sélectionnez le menu "Options" Dans la fenêtre qui
-                s'affiche, choisissez "Vie privée" et cliquez sur "supprimer des cookies spécifiques" Repérez les
-                fichiers qui contiennent le nom "à compléter". Sélectionnez-les et supprimez-les.
+                Allez dans l'onglet "Outils" du navigateur puis sélectionnez le menu "Options" Dans la fenêtre qui s'affiche,
+                choisissez "Vie privée" et cliquez sur "supprimer des cookies spécifiques" Repérez les fichiers qui contiennent le
+                nom "à compléter". Sélectionnez-les et supprimez-les.
               </p>
             </li>
             <li>
-              <a href="https://support.apple.com/fr-fr/guide/safari/sfri11471/mac">
-                Safari
-              </a>
-              <br/>
+              <a href="https://support.apple.com/fr-fr/guide/safari/sfri11471/mac">Safari</a>
+              <br />
               <p>
                 Dans votre navigateur, choisissez le menu Édition {'>'} Préférences. Cliquez sur Sécurité. Cliquez sur Afficher
-                les cookies. Sélectionnez les cookies qui contiennent le nom "à compléter" et cliquez sur Effacer ou sur
-                Tout effacer. Après avoir supprimé les cookies, cliquez sur Terminé.
+                les cookies. Sélectionnez les cookies qui contiennent le nom "à compléter" et cliquez sur Effacer ou sur Tout
+                effacer. Après avoir supprimé les cookies, cliquez sur Terminé.
               </p>
             </li>
           </ul>
           <p>
             Pour plus de renseignements sur les cookies et la façon de paramétrer votre navigateur, vous pouvez également
             consulter
-            <a href="https://www.cnil.fr/fr/cookies-les-outils-pour-les-maitriser">
-              le site de la CNIL
-            </a>
+            <a href="https://www.cnil.fr/fr/cookies-les-outils-pour-les-maitriser">le site de la CNIL</a>
           </p>
         </PanelBody>
       </Panel>

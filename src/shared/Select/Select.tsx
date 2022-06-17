@@ -10,10 +10,21 @@ interface ScSelectProps<T> extends SelectProps<T> {
   helperText?: string
 }
 
-const _ScSelect = <T,>({id: argId, label, className, small, fullWidth, style, helperText, error, ...selectProps}: ScSelectProps<T>, ref: any) => {
+const _ScSelect = <T,>(
+  {id: argId, label, className, small, fullWidth, style, helperText, error, ...selectProps}: ScSelectProps<T>,
+  ref: any,
+) => {
   const id: string = useMemo(() => argId ?? 'sc-select-' + Math.floor(Math.random() * 10000), [argId])
   return (
-    <FormControl error={error} fullWidth={fullWidth} size="small" margin="dense" variant="outlined" className={className} style={style}>
+    <FormControl
+      error={error}
+      fullWidth={fullWidth}
+      size="small"
+      margin="dense"
+      variant="outlined"
+      className={className}
+      style={style}
+    >
       <InputLabel htmlFor={id} id={id + '-label'}>
         {label}
       </InputLabel>

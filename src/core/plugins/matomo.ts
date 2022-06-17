@@ -1,15 +1,14 @@
 declare const window: any
 
 interface InitSettings {
-  url?: string;
-  siteId?: string;
-  jsTrackerFile?: string;
-  phpTrackerFile?: string;
-  excludeUrlsPatterns?: RegExp[];
+  url?: string
+  siteId?: string
+  jsTrackerFile?: string
+  phpTrackerFile?: string
+  excludeUrlsPatterns?: RegExp[]
 }
 
 export class Matomo {
-
   static readonly init = (params: InitSettings): Matomo => {
     return new Matomo(params)
   }

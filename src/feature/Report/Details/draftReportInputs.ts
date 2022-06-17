@@ -2,7 +2,6 @@ import {AnomalyClient, DetailInput, DetailInputType, ReportTag, Subcategory} fro
 import {last} from 'core/lodashNamedExport'
 
 export class DraftReportDefaultInputs {
-
   static readonly reponseConso = (): DetailInput => ({
     label: 'Votre question',
     type: DetailInputType.TEXTAREA,
@@ -11,26 +10,29 @@ export class DraftReportDefaultInputs {
   static readonly description = (optional?: boolean): DetailInput => ({
     label: 'Description',
     type: DetailInputType.TEXTAREA,
-    ...optional && {optionnal: true}
+    ...(optional && {optionnal: true}),
   })
 
   static readonly date = (): DetailInput => ({
     label: 'Date du constat',
     type: DetailInputType.DATE_NOT_IN_FUTURE,
-    defaultValue: 'SYSDATE'
+    defaultValue: 'SYSDATE',
   })
 
-  static readonly defaults = (): DetailInput[] => [
-    DraftReportDefaultInputs.date(),
-    DraftReportDefaultInputs.description(),
-  ]
+  static readonly defaults = (): DetailInput[] => [DraftReportDefaultInputs.date(), DraftReportDefaultInputs.description()]
 }
 
-export const getDraftReportInputs = ({subcategories, tags}: {subcategories: Subcategory[], tags?: ReportTag[]}): DetailInput[] => {
+export const getDraftReportInputs = ({
+  subcategories,
+  tags,
+}: {
+  subcategories: Subcategory[]
+  tags?: ReportTag[]
+}): DetailInput[] => {
   const lastSubcategories = last(subcategories)
   const res: DetailInput[] = []
   if (AnomalyClient.instanceOfSubcategoryInput(lastSubcategories)) {
-    res.push(...(lastSubcategories.detailInputs) ?? [])
+    res.push(...(lastSubcategories.detailInputs ?? []))
     if (!lastSubcategories.detailInputs?.some(_ => _.type === DetailInputType.TEXTAREA)) {
       res.push(DraftReportDefaultInputs.description(true))
     }
@@ -38,10 +40,12 @@ export const getDraftReportInputs = ({subcategories, tags}: {subcategories: Subc
     res.push(...DraftReportDefaultInputs.defaults())
   }
   if (tags?.includes(ReportTag.ReponseConso)) {
-    const i = res.findIndex(_ => _.type === DetailInputType.TEXTAREA && !_.label.includes(DraftReportDefaultInputs.description().label));
-    if(i > -1) {
+    const i = res.findIndex(
+      _ => _.type === DetailInputType.TEXTAREA && !_.label.includes(DraftReportDefaultInputs.description().label),
+    )
+    if (i > -1) {
       // ReponseConso need the description keyword to parse the reports
-      res[i].label = `${DraftReportDefaultInputs.description().label} (${res[i].label})`;
+      res[i].label = `${DraftReportDefaultInputs.description().label} (${res[i].label})`
     }
     res.push(DraftReportDefaultInputs.reponseConso())
   }

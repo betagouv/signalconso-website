@@ -41,4 +41,3 @@ export const ScDatepicker = forwardRef(({value, onChange, min, max, ...props}: S
     />
   )
 })
-

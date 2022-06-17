@@ -16,14 +16,17 @@ const Stats = () => {
     <Page className="blog" size="small">
       <Head>
         <title>{pageDefinitions.stats.title}</title>
-        <meta name="description" content={pageDefinitions.stats.description}/>
+        <meta name="description" content={pageDefinitions.stats.description} />
       </Head>
       <h1>Statistiques</h1>
       <p>
-        Vous souhaitez plus d'informations sur nos statistiques consultez le site<br/>
+        Vous souhaitez plus d'informations sur nos statistiques consultez le site
+        <br />
         <a target="_blank" rel="noreferrer" href="https://data.economie.gouv.fr/pages/signalconso/">
           data.economie.fr&nbsp;
-          <Icon fontSize="inherit" sx={{verticalAlign: 'middle'}}>open_in_new</Icon>
+          <Icon fontSize="inherit" sx={{verticalAlign: 'middle'}}>
+            open_in_new
+          </Icon>
         </a>
       </p>
 

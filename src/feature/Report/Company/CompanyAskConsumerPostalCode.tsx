@@ -24,14 +24,14 @@ export const CompanyAskConsumerPostalCode = ({value, onChange}: Props) => {
   const {
     handleSubmit,
     control,
-    formState: {errors}
+    formState: {errors},
   } = useForm<Form>()
 
   return (
     <Animate>
       <Panel id="CompanyAskConsumerPostalCode">
         <Alert dense type="info" sx={{mb: 2}} deletable persistentDelete>
-          <Txt size="small" dangerouslySetInnerHTML={{__html: m.cantIdentifyCompany}}/>
+          <Txt size="small" dangerouslySetInnerHTML={{__html: m.cantIdentifyCompany}} />
         </Alert>
         <form onSubmit={handleSubmit(_ => onChange(_.place))}>
           <PanelBody>
@@ -40,9 +40,9 @@ export const CompanyAskConsumerPostalCode = ({value, onChange}: Props) => {
                 control={control}
                 name="place"
                 rules={{
-                  required: {value: true, message: m.required}
+                  required: {value: true, message: m.required},
                 }}
-                render={({field}) =>
+                render={({field}) => (
                   <AutocompleteCity
                     {...field}
                     value={undefined}
@@ -52,13 +52,13 @@ export const CompanyAskConsumerPostalCode = ({value, onChange}: Props) => {
                     fullWidth
                     placeholder={m.yourPostalCodePlaceholder}
                   />
-                }
+                )}
               />
             </FormLayout>
           </PanelBody>
 
           <PanelActions>
-            <StepperActionsNext type="submit"/>
+            <StepperActionsNext type="submit" />
           </PanelActions>
         </form>
       </Panel>

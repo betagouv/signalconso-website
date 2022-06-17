@@ -6,16 +6,16 @@ import {
   Information,
   Report,
   ReportDraft,
-  ReportDraftConsumer, ReportStatus,
+  ReportDraftConsumer,
+  ReportStatus,
   ReportTag,
-  Subcategory
+  Subcategory,
 } from '@signal-conso/signalconso-api-sdk-js'
 import anomalies from '@signal-conso/signalconso-api-sdk-js/lib/client/anomaly/yml/anomalies.json'
 import {ReportStep, ReportStepHelper} from 'core/reportStep'
 import randomstring from 'randomstring'
 
 export class Fixture {
-
   private static readonly lastNames = ['Doe', 'Durand', 'Dupont']
 
   private static readonly firstNames = ['Alice', 'Bob', 'Charles', 'Danièle', 'Émilien', 'Fanny', 'Gérard']
@@ -31,48 +31,54 @@ export class Fixture {
   private static readonly genSiret = () => {
     return randomstring.generate({
       length: 14,
-      charset: 'numeric'
+      charset: 'numeric',
     })
   }
 
   private static readonly genPhone = () => {
     return randomstring.generate({
       length: 10,
-      charset: 'numeric'
+      charset: 'numeric',
     })
   }
 
   static readonly genEmail = () => {
-    return randomstring.generate({
-      length: 10,
-      charset: 'alphabetic'
-    }) + '@' + randomstring.generate({
-      length: 10,
-      charset: 'alphabetic'
-    })
+    return (
+      randomstring.generate({
+        length: 10,
+        charset: 'alphabetic',
+      }) +
+      '@' +
+      randomstring.generate({
+        length: 10,
+        charset: 'alphabetic',
+      })
+    )
   }
 
   private static readonly genCompanyAccessLevel = (siret?: string) => {
     return {
       ...Fixture.genCompany(),
       ...(siret ? {siret} : {}),
-      level: Fixture.oneOf(['admin', 'member'])
+      level: Fixture.oneOf(['admin', 'member']),
     }
   }
 
   private static readonly genStatus = () => Fixture.oneOf(Object.values(ReportStatus))
 
   private static readonly genDetails = () => [
-    {label: 'Date de constat (ou date d\'achat) :', value: '09/03/2022'},
+    {label: "Date de constat (ou date d'achat) :", value: '09/03/2022'},
     {label: 'Quel est le nom du produit :', value: 'oo'},
     {
       label: 'Pourquoi trouvez-vous la publicité trompeuse :',
-      value: 'le produit ne remplit pas sa promesse, la photo du produit est trompeuse, les labels (bio, naturel...) sont trompeurs'
+      value:
+        'le produit ne remplit pas sa promesse, la photo du produit est trompeuse, les labels (bio, naturel...) sont trompeurs',
     },
     {label: 'Où avez-vous vu ces informations :', value: 'site internet, publicité (affiche, dans un magazine)'},
     {
       label: 'Description :',
-      value: 'Suite à l’achat de pass à l’occasion du Passage Musique Festival pour plus de 400€ qui devait avoir lieu en 2018 je n’ai toujours pas reçu de remboursements malgré plusieurs relances.'
+      value:
+        'Suite à l’achat de pass à l’occasion du Passage Musique Festival pour plus de 400€ qui devait avoir lieu en 2018 je n’ai toujours pas reçu de remboursements malgré plusieurs relances.',
     },
   ]
 
@@ -105,10 +111,10 @@ export class Fixture {
   }
 
   static readonly genDraftReport = (lastStep: ReportStep): Partial<ReportDraft> => {
-    const stepOrder: { [key in ReportStep]: (_: Partial<ReportDraft>) => Partial<ReportDraft> } = ({
+    const stepOrder: {[key in ReportStep]: (_: Partial<ReportDraft>) => Partial<ReportDraft>} = {
       [ReportStep.Problem]: _ => ({
         ..._,
-        category: Fixture.oneOf(anomalies.list.filter(_ => !_.information).map(_ => _.category))
+        category: Fixture.oneOf(anomalies.list.filter(_ => !_.information).map(_ => _.category)),
       }),
       [ReportStep.Details]: _ => ({
         ..._,
@@ -124,12 +130,12 @@ export class Fixture {
             id: '8710d67d-d955-444d-b340-ee17c7b781e9',
             loading: false,
             origin: FileOrigin.Consumer,
-          }
+          },
         ],
       }),
       [ReportStep.Consumer]: _ => ({
         ..._,
-        companyDraft: Fixture.genCompany()
+        companyDraft: Fixture.genCompany(),
       }),
       [ReportStep.Confirmation]: _ => ({
         ..._,
@@ -137,7 +143,7 @@ export class Fixture {
         contactAgreement: Fixture.genBoolean(),
       }),
       [ReportStep.Acknowledgment]: _ => _,
-    })
+    }
     return ReportStepHelper.reportStepOrdered
       .filter((_, i) => i <= ReportStepHelper.getIndexByStep(lastStep))
       .reduce((draft: Partial<ReportDraft>, step: ReportStep) => {
@@ -149,7 +155,7 @@ export class Fixture {
     return {
       firstName: Fixture.oneOf(Fixture.firstNames),
       lastName: Fixture.oneOf(Fixture.lastNames),
-      email: Fixture.genEmail()
+      email: Fixture.genEmail(),
     }
   }
 
@@ -158,14 +164,14 @@ export class Fixture {
       number: randomstring.generate({charset: 'numeric', length: 2}),
       street: randomstring.generate({charset: 'alphabetic', capitalization: 'lowercase'}),
       city: Fixture.oneOf(['Paris', 'Tunis', 'Nairobi', 'Pont-Aven', 'Chamonix']),
-      postalCode: randomstring.generate({length: 5, charset: 'numeric'})
+      postalCode: randomstring.generate({length: 5, charset: 'numeric'}),
     }
   }
 
   static readonly genCompanySearchResult = () => {
     return <CompanySearchResult>{
       name: Fixture.genCompany().name,
-      address: Fixture.genAddress()
+      address: Fixture.genAddress(),
     }
   }
 
@@ -174,7 +180,7 @@ export class Fixture {
       id: randomstring.generate(),
       name: randomstring.generate({capitalization: 'lowercase', charset: 'alphabetic', length: 8}),
       siret: Fixture.genSiret(),
-      address: Fixture.genAddress()
+      address: Fixture.genAddress(),
     }
   }
 
@@ -183,14 +189,13 @@ export class Fixture {
       title: randomstring.generate({capitalization: 'lowercase', charset: 'alphabetic'}),
       id: randomstring.generate(),
       tags: Fixture.oneOf([null, ...Object.keys(ReportTag)]),
-      ...params
+      ...params,
     }
   }
 
   static readonly genInformation = () => {
     return <Information>{
-      title: randomstring.generate()
+      title: randomstring.generate(),
     }
   }
 }
-

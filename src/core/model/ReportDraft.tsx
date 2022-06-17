@@ -1,4 +1,12 @@
-import {Address, Anomaly, CompanyDraft, DetailInput, DetailInputValue, ReportDraft, ReportDraftConsumer} from '@signal-conso/signalconso-api-sdk-js'
+import {
+  Address,
+  Anomaly,
+  CompanyDraft,
+  DetailInput,
+  DetailInputValue,
+  ReportDraft,
+  ReportDraftConsumer,
+} from '@signal-conso/signalconso-api-sdk-js'
 import {getDraftReportInputs} from 'feature/Report/Details/draftReportInputs'
 import {isSpecifyInputName, SpecifyFormUtils} from 'feature/Report/Details/Details'
 import {fromNullable} from 'fp-ts/lib/Option'
@@ -22,10 +30,7 @@ export class ReportDraft2 {
 
   static readonly parseDetails = (details: DetailInputValues2, inputs: DetailInput[]): DetailInputValue[] => {
     const concatSpecifiedValued = (value: string, index: number) => {
-      return value.replace(
-        SpecifyFormUtils.keyword,
-        details[SpecifyFormUtils.getInputName(index)] as string
-      )
+      return value.replace(SpecifyFormUtils.keyword, details[SpecifyFormUtils.getInputName(index)] as string)
     }
 
     const mapLabel = (label: string): string => {
@@ -37,7 +42,7 @@ export class ReportDraft2 {
       }
       return label
     }
-    
+
     return Object.keys(details)
       .filter(_ => !isSpecifyInputName(_))
       .map(index => {
@@ -45,10 +50,10 @@ export class ReportDraft2 {
         const value = fromNullable(details[index])
           .map(v =>
             Array.isArray(v)
-              ? v.map(_ => _.includes(SpecifyFormUtils.keyword) ? concatSpecifiedValued(_, +index) : _)
-              : concatSpecifiedValued(v, +index)
+              ? v.map(_ => (_.includes(SpecifyFormUtils.keyword) ? concatSpecifiedValued(_, +index) : _))
+              : concatSpecifiedValued(v, +index),
           )
-          .map(v => Array.isArray(v) ? v.join(', ') : v)
+          .map(v => (Array.isArray(v) ? v.join(', ') : v))
           .getOrElse('')
         return {label, value}
       })
@@ -57,18 +62,18 @@ export class ReportDraft2 {
   static readonly merge = (base: Partial<ReportDraft2>, newValue: DeepPartial<ReportDraft2>): Partial<ReportDraft2> => {
     return {
       ...base,
-      ...newValue as ReportDraft2,
+      ...(newValue as ReportDraft2),
       companyDraft: {
         ...base.companyDraft,
-        ...newValue.companyDraft as CompanyDraft,
+        ...(newValue.companyDraft as CompanyDraft),
         address: {
           ...base.companyDraft?.address,
-          ...newValue.companyDraft?.address as Address,
-        }
+          ...(newValue.companyDraft?.address as Address),
+        },
       },
       consumer: {
         ...base.consumer,
-        ...newValue.consumer as ReportDraftConsumer,
+        ...(newValue.consumer as ReportDraftConsumer),
       },
     }
   }

@@ -44,7 +44,7 @@ export const CompanyByPhone = ({value, children, ...props}: Props) => {
           <PanelBody>
             <Box component="form" onSubmit={handleSubmit(submit)} {...props}>
               <Txt block>
-                <span dangerouslySetInnerHTML={{__html: m.phoneNumberHavingCalled}}/>
+                <span dangerouslySetInnerHTML={{__html: m.phoneNumberHavingCalled}} />
                 <Txt color="disabled"> *</Txt>
               </Txt>
               <ScInput
@@ -52,18 +52,23 @@ export const CompanyByPhone = ({value, children, ...props}: Props) => {
                 disabled={!!phone}
                 {...register('phone', {
                   required: {value: true, message: m.required},
-                  pattern: {value: /^((\+)33|0|0033)[1-9]([.\-\s+]?\d{2}){4}$/g, message: m.invalidUrlPattern}
+                  pattern: {value: /^((\+)33|0|0033)[1-9]([.\-\s+]?\d{2}){4}$/g, message: m.invalidUrlPattern},
                 })}
-                fullWidth placeholder={m.phoneNumberHavingCalledPlaceholder}
+                fullWidth
+                placeholder={m.phoneNumberHavingCalledPlaceholder}
                 error={!!errors.phone}
                 helperText={errors.phone?.message}
-                InputProps={!!phone ? {
-                  endAdornment: (
-                    <IconBtn size="small" color="primary" onClick={clear}>
-                      <Icon>clear</Icon>
-                    </IconBtn>
-                  )
-                } : {}}
+                InputProps={
+                  !!phone
+                    ? {
+                        endAdornment: (
+                          <IconBtn size="small" color="primary" onClick={clear}>
+                            <Icon>clear</Icon>
+                          </IconBtn>
+                        ),
+                      }
+                    : {}
+                }
               />
 
               <ScButton variant="contained" color="primary" sx={{mt: 2}} type="submit" disabled={!!phone}>
@@ -73,9 +78,7 @@ export const CompanyByPhone = ({value, children, ...props}: Props) => {
           </PanelBody>
         </Panel>
       </Animate>
-      {phone && (
-        children(phone)
-      )}
+      {phone && children(phone)}
     </>
   )
 }

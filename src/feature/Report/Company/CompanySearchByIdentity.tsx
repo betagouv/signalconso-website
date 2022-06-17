@@ -31,15 +31,11 @@ export const CompanySearchByIdentity = ({children}: Props) => {
   const {toastError} = useToast()
   const _analytic = useAnalyticContext()
   const _searchByIdentity = useFetcher(apiSdk.company.searchCompaniesByIdentity)
-  const {
-    register,
-    handleSubmit,
-    reset,
-  } = useForm<Form>()
+  const {register, handleSubmit, reset} = useForm<Form>()
   const inputEl = useRef<HTMLInputElement>(null)
 
   const search = (form: Form) => {
-    _analytic.trackEvent(EventCategories.companySearch, CompanySearchEventActions.searchByIdentity, form.identity);
+    _analytic.trackEvent(EventCategories.companySearch, CompanySearchEventActions.searchByIdentity, form.identity)
     _searchByIdentity.fetch({force: true, clean: true}, form.identity)
   }
 
@@ -57,20 +53,23 @@ export const CompanySearchByIdentity = ({children}: Props) => {
         <Panel title={m.couldYouPrecise} id="CompanySearchByIdentity">
           <form onSubmit={handleSubmit(search)}>
             <PanelBody>
-              <FormLayout required label={
-                <Box sx={{display: 'inline-flex', alignItems: 'center'}}>
-                  {m.companyIdentityLabel}
-                  <CompanySearchByIdentityHelpDialog>
-                    <IconBtn sx={{ml: 1, color: t => t.palette.info.main}} size="small">
-                      <Icon>help</Icon>
-                    </IconBtn>
-                  </CompanySearchByIdentityHelpDialog>
-                </Box>
-              }>
+              <FormLayout
+                required
+                label={
+                  <Box sx={{display: 'inline-flex', alignItems: 'center'}}>
+                    {m.companyIdentityLabel}
+                    <CompanySearchByIdentityHelpDialog>
+                      <IconBtn sx={{ml: 1, color: t => t.palette.info.main}} size="small">
+                        <Icon>help</Icon>
+                      </IconBtn>
+                    </CompanySearchByIdentityHelpDialog>
+                  </Box>
+                }
+              >
                 <ScInput
                   inputRef={inputEl}
                   {...register('identity', {
-                    required: {value: true, message: m.required}
+                    required: {value: true, message: m.required},
                   })}
                   fullWidth
                   placeholder={m.companyIdentityPlaceholder}
@@ -79,7 +78,7 @@ export const CompanySearchByIdentity = ({children}: Props) => {
                       <IconBtn size="small" color="primary" onClick={clear}>
                         <Icon>clear</Icon>
                       </IconBtn>
-                    )
+                    ),
                   }}
                 />
               </FormLayout>

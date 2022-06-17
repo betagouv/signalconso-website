@@ -10,7 +10,7 @@ interface Props {
   loadingNext?: boolean
   loadingPrev?: boolean
   nextButtonLabel?: string
-  nextIcon?: string,
+  nextIcon?: string
   next?: (next: () => void) => void
   prev?: (prev: () => void) => void
 }
@@ -21,7 +21,13 @@ export const StepperActions = ({nextButtonLabel, nextIcon, hidePrev, hideNext, l
   return (
     <Box sx={{display: 'flex', alignItems: 'center', justifyContent: 'space-between', mt: 3}}>
       {_stepper.currentStep > 0 && !hidePrev && (
-        <ScButton loading={loadingPrev} sx={{marginRight: 'auto'}} onClick={prev ? () => prev(_stepper.prev) : _stepper.prev} color="primary" icon="keyboard_arrow_left">
+        <ScButton
+          loading={loadingPrev}
+          sx={{marginRight: 'auto'}}
+          onClick={prev ? () => prev(_stepper.prev) : _stepper.prev}
+          color="primary"
+          icon="keyboard_arrow_left"
+        >
           {m.previous}
         </ScButton>
       )}
