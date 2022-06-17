@@ -34,7 +34,7 @@ const members: Member[] = [
   },
   {
     name: 'Nathaniel Richand',
-    role: 'Coach Startup d\'État',
+    role: "Coach Startup d'État",
     avatar: 'avatar-nathanielrichand.png',
   },
   {
@@ -61,7 +61,7 @@ const members: Member[] = [
   },
   {
     name: 'Julien Rayneau',
-    role: 'Coach Startup d\'État',
+    role: "Coach Startup d'État",
     avatar: 'avatar-julien.png',
     disabled: true,
   },
@@ -120,7 +120,7 @@ const members: Member[] = [
     role: 'Chargé de déploiement',
     avatar: 'avatar-alexandre.png',
     disabled: true,
-  }
+  },
 ]
 
 const QuiSommesNous = () => {
@@ -128,19 +128,22 @@ const QuiSommesNous = () => {
     <Page size="small" className="blog">
       <Head>
         <title>{pageDefinitions.quiSommesNous.title}</title>
-        <meta name="description" content={pageDefinitions.quiSommesNous.description}/>
+        <meta name="description" content={pageDefinitions.quiSommesNous.description} />
       </Head>
       <h1>Qui sommes-nous ?</h1>
       <Panel>
         <PanelBody>
           <h2>Notre structure</h2>
-          <p>Nous sommes ce qu’on appelle une «&nbsp;<a href="https://beta.gouv.fr/apropos/">Startup d’État</a>&nbsp;». Il
-            s’agit d’une petite équipe qui crée un service public numérique pour répondre à un problème qui touche les
-            citoyens. Elle n’a pas pour objectif de faire du profit, mais de maximiser son impact social en répondant aux
-            besoins des utilisateurs.</p>
-          <p>Notre Startup d’État est rattachée à la <abbr
-            title="Direction Générale de la Concurrence, Consommation et Répression des Fraudes">DGCCRF</abbr> dont la
-            mission s'articule autour de trois axes :</p>
+          <p>
+            Nous sommes ce qu’on appelle une «&nbsp;<a href="https://beta.gouv.fr/apropos/">Startup d’État</a>&nbsp;». Il s’agit
+            d’une petite équipe qui crée un service public numérique pour répondre à un problème qui touche les citoyens. Elle n’a
+            pas pour objectif de faire du profit, mais de maximiser son impact social en répondant aux besoins des utilisateurs.
+          </p>
+          <p>
+            Notre Startup d’État est rattachée à la{' '}
+            <abbr title="Direction Générale de la Concurrence, Consommation et Répression des Fraudes">DGCCRF</abbr> dont la
+            mission s'articule autour de trois axes :
+          </p>
           <ul>
             <li>la régulation concurrentielle des marchés&nbsp;;</li>
             <li>la protection économique des consommateurs&nbsp;;</li>
@@ -158,10 +161,10 @@ const QuiSommesNous = () => {
           </p>
           <blockquote>
             <p>
-              «&nbsp;Je n’ai pas échoué, j’ai juste trouvé 10.000 moyens qui ne fonctionnent
-              pas.&nbsp;»
-              <br/>
-              <span>— Thomas Edison</span></p>
+              «&nbsp;Je n’ai pas échoué, j’ai juste trouvé 10.000 moyens qui ne fonctionnent pas.&nbsp;»
+              <br />
+              <span>— Thomas Edison</span>
+            </p>
           </blockquote>
 
           <h2>Notre équipe</h2>
@@ -169,7 +172,7 @@ const QuiSommesNous = () => {
             <Grid container spacing={2}>
               {members.map(_ => (
                 <Grid key={_.avatar} item xs={12} sm={6}>
-                  <MemberCard key={_.avatar} member={_}/>
+                  <MemberCard key={_.avatar} member={_} />
                 </Grid>
               ))}
             </Grid>

@@ -20,11 +20,7 @@ const defaultContext: Partial<ApiSdkProps> = {}
 
 const ApiSdk = React.createContext<ApiSdkProps>(defaultContext as ApiSdkProps)
 
-export const ApiSdkProvider = ({
-  apiSdk: _apiSdk,
-  apiAddressSdk: _apiAddressSdk,
-  children
-}: Props) => {
+export const ApiSdkProvider = ({apiSdk: _apiSdk, apiAddressSdk: _apiAddressSdk, children}: Props) => {
   const config = useConfig().config
   return (
     <ApiSdk.Provider

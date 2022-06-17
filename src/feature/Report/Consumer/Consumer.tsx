@@ -29,8 +29,8 @@ interface ConsumerForm {
   lastName: string
   email: string
   contactAgreement?: boolean
-  phone?: string,
-  gender?: Gender,
+  phone?: string
+  gender?: Gender
 }
 
 export const Consumer = () => {
@@ -52,7 +52,7 @@ export const _Consumer = ({
   draft,
   onSubmit,
 }: {
-  draft: Partial<ReportDraft2>,
+  draft: Partial<ReportDraft2>
   onSubmit: (_: DeepPartial<ReportDraft2>) => void
 }) => {
   const {m} = useI18n()
@@ -63,24 +63,23 @@ export const _Consumer = ({
   const _analytic = useAnalyticContext()
   const {isXsOrLess} = useWindowWidth()
 
-  const showContactAgreement = ReportDraft.isTransmittableToPro(draft)
-    && draft.contractualDispute !== true
+  const showContactAgreement = ReportDraft.isTransmittableToPro(draft) && draft.contractualDispute !== true
 
-  const getErrors = (name: keyof ConsumerForm): {error: boolean, helperText?: string} => ({
+  const getErrors = (name: keyof ConsumerForm): {error: boolean; helperText?: string} => ({
     error: !!_form.formState.errors[name],
     helperText: _form.formState.errors[name]?.message,
   })
 
   const saveAndNext = () => {
     const {contactAgreement, ...consumer} = _form.getValues()
-    _analytic.trackEvent(EventCategories.report, ReportEventActions.validateConsumer);
+    _analytic.trackEvent(EventCategories.report, ReportEventActions.validateConsumer)
     onSubmit({
       consumer: consumer,
       contactAgreement: (() => {
         if (!ReportDraft.isTransmittableToPro(draft)) return false
         if (draft.contractualDispute) return true
         return contactAgreement
-      })()
+      })(),
     })
   }
   return (
@@ -88,30 +87,22 @@ export const _Consumer = ({
       <Panel title={m.consumerTitle}>
         <PanelBody>
           {draft.employeeConsumer && (
-            <Alert
-              className="blog"
-              type="info" dense
-              dangerouslySetInnerHTML={{__html: m.consumerIsEmployee}}
-              sx={{mb: 3}}
-            />
+            <Alert className="blog" type="info" dense dangerouslySetInnerHTML={{__html: m.consumerIsEmployee}} sx={{mb: 3}} />
           )}
           <Row icon="person">
             <FormLayout label={m.genderOptional}>
               <Controller
                 defaultValue={draft.consumer?.gender}
-                control={_form.control} render={({field}) => (
-                <ScRadioGroup
-                  {...field}
-                  inline={!isXsOrLess}
-                  dense
-                  sx={{mt: 1, mb: 2}}
-                >
-                  <ScRadioGroupItem value={Gender.Male} title={m.gender[Gender.Male]}/>
-                  <ScRadioGroupItem value={Gender.Female} title={m.gender[Gender.Female]}/>
-                  <ScRadioGroupItem value={undefined} title={m.unknownGender}/>
-                </ScRadioGroup>
-              )}
-              name={"gender"}/>
+                control={_form.control}
+                render={({field}) => (
+                  <ScRadioGroup {...field} inline={!isXsOrLess} dense sx={{mt: 1, mb: 2}}>
+                    <ScRadioGroupItem value={Gender.Male} title={m.gender[Gender.Male]} />
+                    <ScRadioGroupItem value={Gender.Female} title={m.gender[Gender.Female]} />
+                    <ScRadioGroupItem value={undefined} title={m.unknownGender} />
+                  </ScRadioGroup>
+                )}
+                name={'gender'}
+              />
             </FormLayout>
             <Grid container columnSpacing={2}>
               <Grid item xs={6}>
@@ -148,8 +139,8 @@ export const _Consumer = ({
                   validate: {
                     isDummyEmail: value => {
                       return !appConfig.dummyEmailDomain.find(_ => value.includes(_)) || m.consumerDummyEmailNotAccepted
-                    }
-                  }
+                    },
+                  },
                 })}
               />
             </FormLayout>
@@ -162,7 +153,7 @@ export const _Consumer = ({
                   defaultValue={draft.consumer?.phone ?? ''}
                   {...getErrors('phone')}
                   {..._form.register('phone', {
-                    pattern: {value: regexp.phone, message: m.invalidPhone}
+                    pattern: {value: regexp.phone, message: m.invalidPhone},
                   })}
                 />
               </FormLayout>
@@ -178,23 +169,20 @@ export const _Consumer = ({
                   validate: {
                     isChecked: value => {
                       return value !== undefined || m.required
-                    }
+                    },
                   },
                 }}
                 render={({field}) => (
-                  <ScRadioGroup
-                    {...field}
-                    {...getErrors('contactAgreement')}
-                  >
+                  <ScRadioGroup {...field} {...getErrors('contactAgreement')}>
                     <ScRadioGroupItem
                       value={true}
                       title={m.contactAgreementTrueTitle}
-                      description={<Txt size="small" dangerouslySetInnerHTML={{__html: m.contactAgreementTrueDesc}}/>}
+                      description={<Txt size="small" dangerouslySetInnerHTML={{__html: m.contactAgreementTrueDesc}} />}
                     />
                     <ScRadioGroupItem
                       value={false}
                       title={m.contactAgreementFalseTitle}
-                      description={<Txt size="small" dangerouslySetInnerHTML={{__html: m.contactAgreementFalseDesc}}/>}
+                      description={<Txt size="small" dangerouslySetInnerHTML={{__html: m.contactAgreementFalseDesc}} />}
                     />
                   </ScRadioGroup>
                 )}
@@ -218,7 +206,8 @@ export const _Consumer = ({
               else setOpenValidationDialog(true)
             })
           })()
-        }}/>
+        }}
+      />
     </>
   )
 }

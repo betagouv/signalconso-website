@@ -24,24 +24,24 @@ interface Props {
   information: Information
 }
 
-export const ProblemInformation = ({
-  anomaly,
-  subcategories,
-  information,
-}: Props) => {
+export const ProblemInformation = ({anomaly, subcategories, information}: Props) => {
   const _analytic = useAnalyticContext()
   const {m} = useI18n()
   const {apiSdk} = useApiSdk()
   const [votedPositive, setVotedPositive] = useState<boolean | undefined>()
   useEffect(() => {
     _analytic.trackPage(`${anomaly.path}/${ReportStepperPath.Information}`, ReportStepperTitle.Information)
-    _analytic.trackEvent(EventCategories.report, ReportEventActions.outOfBounds, subcategories && subcategories.length > 0 ? last(subcategories)?.title : anomaly.category)
+    _analytic.trackEvent(
+      EventCategories.report,
+      ReportEventActions.outOfBounds,
+      subcategories && subcategories.length > 0 ? last(subcategories)?.title : anomaly.category,
+    )
   }, [anomaly, subcategories])
   const _vote = useFetcher(
     mapPromise({
       promise: apiSdk.rating.rate,
-      mapThen: () => ({rated: true})
-    })
+      mapThen: () => ({rated: true}),
+    }),
   )
   const vote = (positive: boolean) => {
     setVotedPositive(positive)
@@ -51,26 +51,28 @@ export const ProblemInformation = ({
   return (
     <>
       <Animate>
-        <Panel id="test-info" border title={
-          <span dangerouslySetInnerHTML={{__html: information.title ?? m.informationTitle}}/>
-        }>
+        <Panel id="test-info" border title={<span dangerouslySetInnerHTML={{__html: information.title ?? m.informationTitle}} />}>
           <PanelBody className="blog">
             {information.outOfScope && (
-              <Txt block gutterBottom>{m.informationReportOutOfScope}</Txt>
+              <Txt block gutterBottom>
+                {m.informationReportOutOfScope}
+              </Txt>
             )}
             {information.subTitle && (
-              <Txt bold size="big" gutterBottom block dangerouslySetInnerHTML={{__html: information.subTitle}}/>
+              <Txt bold size="big" gutterBottom block dangerouslySetInnerHTML={{__html: information.subTitle}} />
             )}
-            {information.content && (
-              <Txt gutterBottom block dangerouslySetInnerHTML={{__html: information.content}}/>
-            )}
+            {information.content && <Txt gutterBottom block dangerouslySetInnerHTML={{__html: information.content}} />}
             {information.actions?.map(action => (
-              <AccordionInline sx={{mt: 1}} key={action.question} label={
-                <div>
-                  <Txt bold block dangerouslySetInnerHTML={{__html: action.question}}/>
-                  {action.example && <Txt block dangerouslySetInnerHTML={{__html: action.example}}/>}
-                </div>
-              }>
+              <AccordionInline
+                sx={{mt: 1}}
+                key={action.question}
+                label={
+                  <div>
+                    <Txt bold block dangerouslySetInnerHTML={{__html: action.question}} />
+                    {action.example && <Txt block dangerouslySetInnerHTML={{__html: action.example}} />}
+                  </div>
+                }
+              >
                 <Txt color="hint">{action.answer}</Txt>
               </AccordionInline>
             ))}
@@ -81,7 +83,9 @@ export const ProblemInformation = ({
         <Panel title={m.informationWasUsefull} border>
           {_vote.entity ? (
             <PanelBody>
-              <Fender type="success" iconSize={80}>{m.informationRatingSaved}</Fender>
+              <Fender type="success" iconSize={80}>
+                {m.informationRatingSaved}
+              </Fender>
             </PanelBody>
           ) : (
             <PanelBody sx={{display: 'flex', justifyContent: 'center'}}>
@@ -109,11 +113,17 @@ export const ProblemInformation = ({
         </Panel>
       </Animate>
       <Link href={siteMap.index}>
-        <ScButton icon="home" variant="contained" sx={{
-          display: 'block',
-          margin: 'auto',
-          mt: 3
-        }}>{m.backToHome}</ScButton>
+        <ScButton
+          icon="home"
+          variant="contained"
+          sx={{
+            display: 'block',
+            margin: 'auto',
+            mt: 3,
+          }}
+        >
+          {m.backToHome}
+        </ScButton>
       </Link>
     </>
   )

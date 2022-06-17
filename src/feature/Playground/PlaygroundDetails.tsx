@@ -6,47 +6,45 @@ import {styleUtils} from 'core/theme/theme'
 import {DetailInputValues2, ReportDraft2} from 'core/model/ReportDraft'
 import {DraftReportDefaultInputs} from '../Report/Details/draftReportInputs'
 
-
 export class DetailsFixtureInput {
-
   static readonly text: DetailInput = {
     label: 'Texte label',
     rank: 1,
-    type: DetailInputType.TEXT
+    type: DetailInputType.TEXT,
   }
 
   static readonly timeslot: DetailInput = {
     label: 'Time',
     rank: 2,
     type: DetailInputType.TIMESLOT,
-    defaultValue: 'SYSDATE'
+    defaultValue: 'SYSDATE',
   }
 
   static readonly date: DetailInput = {
     label: 'Date label',
     rank: 2,
     type: DetailInputType.DATE_NOT_IN_FUTURE,
-    defaultValue: 'SYSDATE'
+    defaultValue: 'SYSDATE',
   }
 
   static readonly radio: DetailInput = {
     label: 'Radio label',
     rank: 3,
     type: DetailInputType.RADIO,
-    options: ['OPTION1', 'OPTION2 (à préciser)']
+    options: ['OPTION1', 'OPTION2 (à préciser)'],
   }
 
   static readonly checkbox: DetailInput = {
     label: 'Checkbox label',
     rank: 5,
     type: DetailInputType.CHECKBOX,
-    options: ['CHECKBOX1', 'CHECKBOX2 (à préciser)', 'CHECKBOX3']
+    options: ['CHECKBOX1', 'CHECKBOX2 (à préciser)', 'CHECKBOX3'],
   }
 
   static readonly textarea: DetailInput = {
     label: 'Description',
     rank: 4,
-    type: DetailInputType.TEXTAREA
+    type: DetailInputType.TEXTAREA,
   }
 }
 
@@ -76,33 +74,36 @@ export const PlaygroundDetails = () => {
     textarea: true,
     timeslot: true,
   })
-  const inputs = Object.entries(picked).filter(([k, v]) => !!v).map(([k, v]) => (config as any)[k])
+  const inputs = Object.entries(picked)
+    .filter(([k, v]) => !!v)
+    .map(([k, v]) => (config as any)[k])
   const [resultInputs, setResultInputs] = useState<DetailInputValue[] | undefined>()
   const [resultFiles, setResultFiles] = useState<UploadedFile[] | undefined>()
   return (
     <>
-      {Object.keys(config).map((key: any) =>
-        <FormControlLabel key={key} control={<Checkbox checked={picked[key]} onChange={e => setPicked((_: any) => ({..._, [key]: e.target.checked}))}/>} label={key}/>
-      )}
+      {Object.keys(config).map((key: any) => (
+        <FormControlLabel
+          key={key}
+          control={<Checkbox checked={picked[key]} onChange={e => setPicked((_: any) => ({..._, [key]: e.target.checked}))} />}
+          label={key}
+        />
+      ))}
       <Card elevation={2}>
         <CardContent>
           <_Details
-            inputs={[
-              ...inputs
-            ]}
+            inputs={[...inputs]}
             onSubmit={(res, files) => {
               setResultInputs(ReportDraft2.parseDetails(res, inputs))
               setResultFiles(files)
-            }}/>
+            }}
+          />
         </CardContent>
       </Card>
       <pre style={{fontSize: styleUtils(theme).fontSize.small, lineHeight: 1.3}}>
         {JSON.stringify(resultInputs, undefined, 2)}
       </pre>
-      <Divider/>
-      <pre style={{fontSize: styleUtils(theme).fontSize.small, lineHeight: 1.3}}>
-        {JSON.stringify(resultFiles, undefined, 2)}
-      </pre>
+      <Divider />
+      <pre style={{fontSize: styleUtils(theme).fontSize.small, lineHeight: 1.3}}>{JSON.stringify(resultFiles, undefined, 2)}</pre>
     </>
   )
 }

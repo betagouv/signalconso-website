@@ -9,10 +9,7 @@ interface Props extends PanelProps {
   autoScrollToPanel?: boolean
 }
 
-export const ProblemContratualDisputeWarnPanel = ({
-  animatePanel,
-  autoScrollToPanel,
-}: Props) => {
+export const ProblemContratualDisputeWarnPanel = ({animatePanel, autoScrollToPanel}: Props) => {
   const {m} = useI18n()
   return (
     <Animate animate={animatePanel} autoScrollTo={autoScrollToPanel}>
@@ -24,7 +21,7 @@ export const ProblemContratualDisputeWarnPanel = ({
       >
         <PanelBody>
           <Txt bold>{m.problemContractualDisputeInfoTitle}</Txt>
-          <Txt color="hint" dangerouslySetInnerHTML={{__html: m.problemContractualDisputeInfo}}/>
+          <Txt color="hint" dangerouslySetInnerHTML={{__html: m.problemContractualDisputeInfo}} />
         </PanelBody>
       </Panel>
     </Animate>

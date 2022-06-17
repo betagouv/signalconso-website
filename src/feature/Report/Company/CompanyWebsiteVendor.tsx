@@ -15,21 +15,21 @@ interface Props {
   onSubmit: (_: string) => void
 }
 
-export const CompanyWebsiteVendor = ({
-  onSubmit
-}: Props) => {
+export const CompanyWebsiteVendor = ({onSubmit}: Props) => {
   const {m} = useI18n()
   const {
     register,
     handleSubmit,
-    formState: {errors}
+    formState: {errors},
   } = useForm<Form>()
   return (
     <Animate>
       <Panel title={m.companyWebsiteVendorTitle}>
         <form onSubmit={handleSubmit(form => onSubmit(form.websiteVendor))}>
           <PanelBody>
-            <Alert type="info" sx={{mb: 2}}>{m.companyWebsiteVendorAlert}</Alert>
+            <Alert type="info" sx={{mb: 2}}>
+              {m.companyWebsiteVendorAlert}
+            </Alert>
             <FormLayout required label={m.companyWebsiteVendorLabel}>
               <ScInput
                 fullWidth
@@ -37,7 +37,8 @@ export const CompanyWebsiteVendor = ({
                 helperText={errors.websiteVendor?.message ?? ''}
                 {...register('websiteVendor', {
                   required: {value: true, message: m.required},
-                })}/>
+                })}
+              />
             </FormLayout>
           </PanelBody>
           <PanelActions>

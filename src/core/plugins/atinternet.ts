@@ -10,8 +10,7 @@ export interface ATIPageInfo {
 }
 
 export class Atinternet {
-  private constructor(private atTag: any) {
-  }
+  private constructor(private atTag: any) {}
 
   static readonly init = (): undefined | Atinternet => {
     try {

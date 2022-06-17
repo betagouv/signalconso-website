@@ -26,17 +26,17 @@ export const CompanyAskIsForeign = ({value, children}: Props) => {
         <Panel title={m.isAFrenchCompany} id="CompanyAskIsForeign">
           <PanelBody>
             <ScRadioGroup value={value} onChange={setIsForeignCompany}>
-              <ScRadioGroupItem value={IsForeignCompany.Yes} title={m.yes}/>
+              <ScRadioGroupItem value={IsForeignCompany.Yes} title={m.yes} />
               <ScRadioGroupItem
                 value={IsForeignCompany.No}
                 title={m.noItsForeign}
                 description={
                   <AccordionInline label={m.companyHowToFindCountry} onClick={e => e.stopPropagation()}>
-                    <Txt color="hint" size="small" dangerouslySetInnerHTML={{__html: m.howToFindCompanyCountryDesc}}/>
+                    <Txt color="hint" size="small" dangerouslySetInnerHTML={{__html: m.howToFindCompanyCountryDesc}} />
                   </AccordionInline>
                 }
               />
-              <ScRadioGroupItem value={IsForeignCompany.Unknown} title={m.iDontKnown}/>
+              <ScRadioGroupItem value={IsForeignCompany.Unknown} title={m.iDontKnown} />
             </ScRadioGroup>
           </PanelBody>
         </Panel>

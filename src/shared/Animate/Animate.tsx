@@ -5,8 +5,8 @@ import {useTheme} from '@mui/material'
 
 export interface AnimateProps {
   direction?: 'X' | 'Y'
-  delay?: number,
-  children: any,
+  delay?: number
+  children: any
   autoScrollTo?: boolean
   animationDuration?: number
   translateAnimation?: number
@@ -24,7 +24,7 @@ export const Animate = ({
   animate = true,
   children,
   delay,
-  animationDuration = 500
+  animationDuration = 500,
 }: AnimateProps) => {
   const theme = useTheme()
   const [appeared, setAppeared] = useState<boolean>(false)
@@ -52,10 +52,12 @@ export const Animate = ({
       transition: theme.transitions.create('all', {duration: animationDuration, delay: 50}),
       opacity: 0,
       transform: `translate${direction}(${translateAnimation}px)`,
-      ...(appeared || !animate ? {
-        opacity: 1,
-        transform: `translate${direction}(0)`,
-      } : {})
+      ...(appeared || !animate
+        ? {
+            opacity: 1,
+            transform: `translate${direction}(0)`,
+          }
+        : {}),
     },
   })
 }

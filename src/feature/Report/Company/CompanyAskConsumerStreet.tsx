@@ -25,25 +25,29 @@ export const CompanyAskConsumerStreet = ({onChange}: Props) => {
     formState: {errors},
     control,
     register,
-    handleSubmit
+    handleSubmit,
   } = useForm<Form>()
 
   return (
     <Animate>
       <Panel id="CompanyAskConsumerStreet">
         <Alert dense type="info" sx={{mb: 2}} deletable persistentDelete>
-          <Txt size="small" dangerouslySetInnerHTML={{__html: m.cantIdentifyCompany}}/>
+          <Txt size="small" dangerouslySetInnerHTML={{__html: m.cantIdentifyCompany}} />
         </Alert>
-        <form onSubmit={handleSubmit(form => onChange({
-          street: form.street,
-          city: form.place.city,
-          postalCode: form.place.postalCode,
-        }))}>
+        <form
+          onSubmit={handleSubmit(form =>
+            onChange({
+              street: form.street,
+              city: form.place.city,
+              postalCode: form.place.postalCode,
+            }),
+          )}
+        >
           <PanelBody>
             <FormLayout required label={m.yourStreet} desc={m.yourStreetDesc}>
               <ScInput
                 {...register('street', {
-                  required: {value: true, message: m.required}
+                  required: {value: true, message: m.required},
                 })}
                 error={!!errors.street}
                 helperText={(errors.street as any)?.message ?? ''}
@@ -56,9 +60,9 @@ export const CompanyAskConsumerStreet = ({onChange}: Props) => {
                 control={control}
                 name="place"
                 rules={{
-                  required: {value: true, message: m.required}
+                  required: {value: true, message: m.required},
                 }}
-                render={({field}) =>
+                render={({field}) => (
                   <AutocompleteCity
                     {...field}
                     value={undefined}
@@ -67,13 +71,13 @@ export const CompanyAskConsumerStreet = ({onChange}: Props) => {
                     fullWidth
                     placeholder={m.yourPostalCodePlaceholder}
                   />
-                }
+                )}
               />
             </FormLayout>
           </PanelBody>
 
           <PanelActions>
-            <StepperActionsNext type="submit"/>
+            <StepperActionsNext type="submit" />
           </PanelActions>
         </form>
       </Panel>

@@ -42,7 +42,8 @@ describe('Details: single date not in future', () => {
         inputs={[DetailsFixtureInput.date]}
         onSubmit={x => {
           inputValues = x
-        }}/>,
+        }}
+      />,
     )
   })
 
@@ -56,19 +57,21 @@ describe('Details: single date not in future', () => {
     clickBtnSubmit(app)
     await waitFor(() =>
       expect(inputValues).toEqual({
-        0: format(new Date(), appConfig.apiDateFormat)
-      })
+        0: format(new Date(), appConfig.apiDateFormat),
+      }),
     )
   })
 
   it('should update stored reportDraft on submit', async () => {
     const date = new Date('2018-02-02')
-    fireEvent.change(app.container.querySelector('input[type=date]')!, {target: {value: format(date, appConfig.browserDateFormat)}})
+    fireEvent.change(app.container.querySelector('input[type=date]')!, {
+      target: {value: format(date, appConfig.browserDateFormat)},
+    })
     clickBtnSubmit(app)
     await waitFor(() =>
       expect(inputValues).toEqual({
-        0: format(date, appConfig.apiDateFormat)
-      })
+        0: format(date, appConfig.apiDateFormat),
+      }),
     )
   })
 })
@@ -84,7 +87,8 @@ describe('Details: checkbox', () => {
         inputs={[DetailsFixtureInput.radio]}
         onSubmit={x => {
           inputValues = x
-        }}/>,
+        }}
+      />,
     )
   })
 
@@ -104,9 +108,7 @@ describe('Details: checkbox', () => {
     fireEvent.click(app.getByText('OPTION1'))
     await clickBtnSubmit(app)
     hasErrors(app, 0)
-    await waitFor(() =>
-      expect(inputValues).toEqual({0: 'OPTION1'})
-    )
+    await waitFor(() => expect(inputValues).toEqual({0: 'OPTION1'}))
   })
 
   it('should display extra input when (à préciser) is selected', () => {
@@ -145,7 +147,8 @@ describe('Details: textarea', () => {
         inputs={[DetailsFixtureInput.textarea]}
         onSubmit={x => {
           inputValues = x
-        }}/>,
+        }}
+      />,
     )
   })
 
@@ -169,9 +172,7 @@ describe('Details: textarea', () => {
     fireEvent.change(app.container.querySelector('textarea:not([aria-hidden=true])')!, {target: {value: stringAboveLimit}})
     await clickBtnSubmit(app)
     hasErrors(app, 0)
-    await waitFor(() => expect(inputValues).toEqual(
-      {0: stringAboveLimit}
-    ))
+    await waitFor(() => expect(inputValues).toEqual({0: stringAboveLimit}))
   })
 })
 
@@ -201,15 +202,14 @@ describe('Details: initialize values', () => {
         ]}
         onSubmit={x => {
           inputValues = x
-        }}/>,
+        }}
+      />,
     )
   })
 
   it('should submit and send the initial values', async () => {
     await clickBtnSubmit(app)
     hasErrors(app, 0)
-    await waitFor(() =>
-      expect(inputValues).toEqual(values)
-    )
+    await waitFor(() => expect(inputValues).toEqual(values))
   })
 })

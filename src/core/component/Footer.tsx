@@ -9,13 +9,13 @@ const sxList: SxProps<Theme> = {
   listStyle: 'none',
   mb: 1,
   '& > li': {
-    color: t => alpha(t.palette.secondary.contrastText, .7),
+    color: t => alpha(t.palette.secondary.contrastText, 0.7),
     transition: t => t.transitions.create('all'),
     mb: 1,
     '&:hover': {
       color: t => t.palette.secondary.contrastText,
-    }
-  }
+    },
+  },
 }
 
 const iconHeight = 34
@@ -31,19 +31,24 @@ export const Footer = () => {
       {/*  background: theme.palette.secondary.main,*/}
       {/*}}>*/}
       {/*</Box>*/}
-      <Section component="footer" style={{
-        // padding: theme.spacing(3),
-        // paddingTop: 0,
-        background: theme.palette.secondary.main,
-        color: theme.palette.secondary.contrastText,
-      }}>
+      <Section
+        component="footer"
+        style={{
+          // padding: theme.spacing(3),
+          // paddingTop: 0,
+          background: theme.palette.secondary.main,
+          color: theme.palette.secondary.contrastText,
+        }}
+      >
         <section className="section-small bg-secondary">
           <Grid container>
             <Grid item md={4}>
-              <Box component="h3" sx={{m: 0, fontSize: 24,}}>SignalConso</Box>
+              <Box component="h3" sx={{m: 0, fontSize: 24}}>
+                SignalConso
+              </Box>
               <a
                 style={{
-                  color: alpha(theme.palette.secondary.contrastText, .7),
+                  color: alpha(theme.palette.secondary.contrastText, 0.7),
                 }}
                 href="https://www.economie.gouv.fr/dgccrf"
                 target="_blank"
@@ -59,29 +64,33 @@ export const Footer = () => {
                   DGCCRF
                 </Box>
               </a>
-              <Box component="ul" sx={{
-                listStyle: 'none',
-                margin: 0,
-                padding: 0,
-                mt: 3,
-                display: 'flex',
-                alignItems: 'center',
-                '& > li': {
-                  transition: t => t.transitions.create('all'),
-                  opacity: .6,
-                  mr: 2,
-                  '&:hover': {
-                    opacity: 1,
-                  }
-                }
-              }}>
+              <Box
+                component="ul"
+                sx={{
+                  listStyle: 'none',
+                  margin: 0,
+                  padding: 0,
+                  mt: 3,
+                  display: 'flex',
+                  alignItems: 'center',
+                  '& > li': {
+                    transition: t => t.transitions.create('all'),
+                    opacity: 0.6,
+                    mr: 2,
+                    '&:hover': {
+                      opacity: 1,
+                    },
+                  },
+                }}
+              >
                 <li>
-                  <a href="https://twitter.com/SignalConso"
-                     target="_blank"
-                     rel="noreferrer"
-                     title="Retrouvez-nous sur Twitter (nouvelle fenêtre)"
+                  <a
+                    href="https://twitter.com/SignalConso"
+                    target="_blank"
+                    rel="noreferrer"
+                    title="Retrouvez-nous sur Twitter (nouvelle fenêtre)"
                   >
-                    <TwitterIcon title="Twitter" style={{width: iconHeight, height: iconHeight}}/>
+                    <TwitterIcon title="Twitter" style={{width: iconHeight, height: iconHeight}} />
                   </a>
                 </li>
                 <li>
@@ -91,7 +100,7 @@ export const Footer = () => {
                     rel="noreferrer"
                     title="Retrouvez-nous sur Facebook (nouvelle fenêtre)"
                   >
-                    <FacebookIcon title="Facebook" style={{width: iconHeight, height: iconHeight}}/>
+                    <FacebookIcon title="Facebook" style={{width: iconHeight, height: iconHeight}} />
                   </a>
                 </li>
                 <li>
@@ -110,9 +119,11 @@ export const Footer = () => {
                   </a>
                 </li>
                 <li>
-                  <a href="https://www.plus.transformation.gouv.fr/" target="_blank"
-                     rel="noreferrer"
-                     title="Accédez au site de la Direction interministérielle de la transformation publique (nouvelle fenêtre)"
+                  <a
+                    href="https://www.plus.transformation.gouv.fr/"
+                    target="_blank"
+                    rel="noreferrer"
+                    title="Accédez au site de la Direction interministérielle de la transformation publique (nouvelle fenêtre)"
                   >
                     <img
                       style={{borderRadius: 2, height: iconHeight}}
@@ -123,9 +134,11 @@ export const Footer = () => {
                   </a>
                 </li>
                 <li>
-                  <a href="https://www.economie.gouv.fr/bercy-vert" target="_blank"
-                     rel="noreferrer"
-                     title="Accédez au site de la Direction interministérielle de la transformation publique (nouvelle fenêtre)"
+                  <a
+                    href="https://www.economie.gouv.fr/bercy-vert"
+                    target="_blank"
+                    rel="noreferrer"
+                    title="Accédez au site de la Direction interministérielle de la transformation publique (nouvelle fenêtre)"
                   >
                     <img
                       style={{height: iconHeight + 4}}

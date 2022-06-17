@@ -13,61 +13,77 @@ import {ReportDraft2} from 'core/model/ReportDraft'
 import {DeepPartial} from '@alexandreannic/ts-utils'
 import {AnalyticProvider} from 'core/analytic/AnalyticContext'
 
-const AllTheProviders = (options?: Options) => ({children}: any) => {
-  return (
-    <Provide
-      providers={[
-        _ => <AnalyticProvider children={_} analytic={{trackEvent: () => void 0} as any}/>,
-        _ => <ApiSdkProvider
-          children={_}
-          apiSdk={{
-            report: {
-              create: () => void 0,
-            },
-            ...options?.apiSdkMock ?? {} as any
-          }}
-          apiAddressSdk={{
-            fetchCity: (q: string) => Promise.resolve([])
-          } as any}
-        />,
-        _ => <ThemeProvider theme={muiTheme()} children={_}/>,
-        _ => <I18nProvider children={_}/>,
-        _ => <ReportFlowProvider children={_} initialReport={options?.initialReport}/>,
-      ]}>
-      {children}
-    </Provide>
-  )
-}
+const AllTheProviders =
+  (options?: Options) =>
+  ({children}: any) => {
+    return (
+      <Provide
+        providers={[
+          _ => <AnalyticProvider children={_} analytic={{trackEvent: () => void 0} as any} />,
+          _ => (
+            <ApiSdkProvider
+              children={_}
+              apiSdk={{
+                report: {
+                  create: () => void 0,
+                },
+                ...(options?.apiSdkMock ?? ({} as any)),
+              }}
+              apiAddressSdk={
+                {
+                  fetchCity: (q: string) => Promise.resolve([]),
+                } as any
+              }
+            />
+          ),
+          _ => <ThemeProvider theme={muiTheme()} children={_} />,
+          _ => <I18nProvider children={_} />,
+          _ => <ReportFlowProvider children={_} initialReport={options?.initialReport} />,
+        ]}
+      >
+        {children}
+      </Provide>
+    )
+  }
 
-export const DummyStepperProvider = ({children, currentStep, onGoTo, onNext, onPrev}: {
-  children: ReactNode,
-  currentStep: number,
-  onGoTo?: (i: number) => void,
-  onNext?: () => void,
-  onPrev?: () => void,
+export const DummyStepperProvider = ({
+  children,
+  currentStep,
+  onGoTo,
+  onNext,
+  onPrev,
+}: {
+  children: ReactNode
+  currentStep: number
+  onGoTo?: (i: number) => void
+  onNext?: () => void
+  onPrev?: () => void
 }) => {
   return (
-    <StepperContext.Provider value={{
-      currentStep,
-      goTo: onGoTo ?? (() => void 0),
-      next: onNext ?? (() => void 0),
-      prev: onPrev ?? (() => void 0),
-    }}>
+    <StepperContext.Provider
+      value={{
+        currentStep,
+        goTo: onGoTo ?? (() => void 0),
+        next: onNext ?? (() => void 0),
+        prev: onPrev ?? (() => void 0),
+      }}
+    >
       {children}
     </StepperContext.Provider>
   )
 }
-export const AccessReportFlow = ({children, onReportChange}: {
-  children: ReactNode,
+export const AccessReportFlow = ({
+  children,
+  onReportChange,
+}: {
+  children: ReactNode
   onReportChange: (_: Partial<ReportDraft2>) => void
 }) => {
   const _ = useReportFlowContext()
   useEffect(() => {
     onReportChange(_.reportDraft)
   }, [_.reportDraft])
-  return (
-    <>{children}</>
-  )
+  return <>{children}</>
 }
 
 interface Options {

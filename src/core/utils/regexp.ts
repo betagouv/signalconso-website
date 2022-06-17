@@ -9,5 +9,5 @@ export const regexpPattern = {
 
 export const regexp = Object.entries(regexpPattern).reduce(
   (acc, [key, value]) => ({...acc, [key]: new RegExp(value)}),
-  {} as { [key in keyof typeof regexpPattern]: RegExp },
+  {} as {[key in keyof typeof regexpPattern]: RegExp},
 )

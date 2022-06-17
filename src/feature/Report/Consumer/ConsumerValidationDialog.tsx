@@ -22,13 +22,7 @@ interface ValidationForm {
   code: string
 }
 
-export const ConsumerValidationDialog = ({
-  loading,
-  open,
-  consumerEmail,
-  onClose,
-  onValidated
-}: Props) => {
+export const ConsumerValidationDialog = ({loading, open, consumerEmail, onClose, onValidated}: Props) => {
   const _form = useForm<ValidationForm>()
   const {apiSdk} = useApiSdk()
   const {m} = useI18n()
@@ -36,7 +30,7 @@ export const ConsumerValidationDialog = ({
   const _checkEmail = useFetcher(apiSdk.consumerEmail.check)
   const [disableResendButton, setDisableResendButton] = useState(false)
 
-  const switchValidity = <T, >({valid, invalid, unknown}: {valid?: T, invalid?: T, unknown?: T}): T | undefined => {
+  const switchValidity = <T,>({valid, invalid, unknown}: {valid?: T; invalid?: T; unknown?: T}): T | undefined => {
     const isEmailValid = _validateEmail.entity?.valid
     if (isEmailValid) {
       return valid
@@ -49,51 +43,61 @@ export const ConsumerValidationDialog = ({
 
   return (
     <Dialog open={!!open} maxWidth="xs">
-      {loading && <LinearProgress sx={{
-        position: 'absolute',
-        top: 0,
-        right: 0,
-        left: 0,
-      }}/>}
+      {loading && (
+        <LinearProgress
+          sx={{
+            position: 'absolute',
+            top: 0,
+            right: 0,
+            left: 0,
+          }}
+        />
+      )}
       <DialogTitle>{m.consumerAskCodeTitle}</DialogTitle>
       <DialogContent>
-        <Alert dense type="info" sx={{mb: 2}} action={
-          <ScButton
-            disabled={disableResendButton}
-            loading={_checkEmail.loading}
-            size="small"
-            icon="refresh"
-            onClick={() => {
-              setDisableResendButton(true)
-              setTimeout(() => setDisableResendButton(false), duration(15, 'second'))
-              _checkEmail.fetch({}, consumerEmail)
-            }}
-          >
-            {m.consumerResentEmail}
-          </ScButton>
-        }>
+        <Alert
+          dense
+          type="info"
+          sx={{mb: 2}}
+          action={
+            <ScButton
+              disabled={disableResendButton}
+              loading={_checkEmail.loading}
+              size="small"
+              icon="refresh"
+              onClick={() => {
+                setDisableResendButton(true)
+                setTimeout(() => setDisableResendButton(false), duration(15, 'second'))
+                _checkEmail.fetch({}, consumerEmail)
+              }}
+            >
+              {m.consumerResentEmail}
+            </ScButton>
+          }
+        >
           {m.consumerEmailMayTakesTime}
         </Alert>
         {_validateEmail.entity?.valid === false && (
           <Alert dense type="error" sx={{mb: 2}}>
-            {fnSwitch(_validateEmail.entity.reason!, {
-              ['TOO_MANY_ATTEMPTS']: m.consumerValidationCodeExpired,
-              ['INVALID_CODE']: m.consumerValidationCodeInvalid,
-            }, () => m.consumerValidationCodeExpired)}
+            {fnSwitch(
+              _validateEmail.entity.reason!,
+              {
+                ['TOO_MANY_ATTEMPTS']: m.consumerValidationCodeExpired,
+                ['INVALID_CODE']: m.consumerValidationCodeInvalid,
+              },
+              () => m.consumerValidationCodeExpired,
+            )}
           </Alert>
         )}
-        <Txt color="hint" block sx={{mb: 1}} dangerouslySetInnerHTML={{__html: m.consumerAskCodeDesc(consumerEmail)}}/>
+        <Txt color="hint" block sx={{mb: 1}} dangerouslySetInnerHTML={{__html: m.consumerAskCodeDesc(consumerEmail)}} />
         <Controller
           name="code"
           rules={{
-            required: {value: true, message: m.required}
+            required: {value: true, message: m.required},
           }}
           control={_form.control}
           render={({field}) => (
-            <InputValidationCode
-              {...field}
-              error={!!_form.formState.errors.code || _validateEmail.entity?.valid === false}
-            />
+            <InputValidationCode {...field} error={!!_form.formState.errors.code || _validateEmail.entity?.valid === false} />
           )}
         />
       </DialogContent>

@@ -45,7 +45,7 @@ export const CompanyByWebsite = ({value, children, ...props}: Props) => {
     if (res.length === 0) {
       await _searchCountry.fetch({clean: true, force: true}, form.website)
     }
-    _analytic.trackEvent(EventCategories.companySearch, CompanySearchEventActions.searchByUrl, form.website);
+    _analytic.trackEvent(EventCategories.companySearch, CompanySearchEventActions.searchByUrl, form.website)
   }
 
   useEffectFn(_searchCompany.error, toastError)
@@ -57,7 +57,7 @@ export const CompanyByWebsite = ({value, children, ...props}: Props) => {
           <PanelBody>
             <Box component="form" onSubmit={handleSubmit(submit)} {...props}>
               <Txt block>
-                <span dangerouslySetInnerHTML={{__html: m.website}}/>
+                <span dangerouslySetInnerHTML={{__html: m.website}} />
                 <Txt color="disabled"> *</Txt>
               </Txt>
               <ScInput
@@ -68,7 +68,7 @@ export const CompanyByWebsite = ({value, children, ...props}: Props) => {
                         <Icon>edit</Icon>
                       </IconBtn>
                     </Tooltip>
-                  )
+                  ),
                 }}
                 onClear={() => {
                   _searchCompany.clearCache()
@@ -78,14 +78,25 @@ export const CompanyByWebsite = ({value, children, ...props}: Props) => {
                 disabled={!!_searchCompany.entity}
                 {...register('website', {
                   required: {value: true, message: m.required},
-                  pattern: {value: /^((http|https):\/\/)?(www\.)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,}(:[0-9]{1,5})?(\/.*)?$/, message: m.invalidUrlPattern}
+                  pattern: {
+                    value: /^((http|https):\/\/)?(www\.)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,}(:[0-9]{1,5})?(\/.*)?$/,
+                    message: m.invalidUrlPattern,
+                  },
                 })}
-                fullWidth placeholder={m.websitePlaceholder}
+                fullWidth
+                placeholder={m.websitePlaceholder}
                 error={!!errors.website}
                 helperText={errors.website?.message}
               />
 
-              <ScButton variant="contained" color="primary" sx={{mt: 2}} type="submit" loading={_searchCompany.loading} disabled={!!_searchCompany.entity}>
+              <ScButton
+                variant="contained"
+                color="primary"
+                sx={{mt: 2}}
+                type="submit"
+                loading={_searchCompany.loading}
+                disabled={!!_searchCompany.entity}
+              >
                 {m.continue}
               </ScButton>
             </Box>

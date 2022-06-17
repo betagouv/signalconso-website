@@ -10,21 +10,23 @@ interface Props extends BoxProps {
 }
 
 export const FormLayout = ({label, desc, required, children, ...sx}: Props) => {
-   return (
-     <Box sx={{
-       ...sx,
-       '& + &': {
-         mt: 2,
-       }
-     }}>
-       <Txt block>
-         {label}
-         {required && <Txt color="disabled"> *</Txt>}
-       </Txt>
-       <Txt block color="hint" size="small">
-         {desc}
-       </Txt>
-       {children}
-     </Box>
-   )
+  return (
+    <Box
+      sx={{
+        ...sx,
+        '& + &': {
+          mt: 2,
+        },
+      }}
+    >
+      <Txt block>
+        {label}
+        {required && <Txt color="disabled"> *</Txt>}
+      </Txt>
+      <Txt block color="hint" size="small">
+        {desc}
+      </Txt>
+      {children}
+    </Box>
+  )
 }

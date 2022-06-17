@@ -8,7 +8,7 @@ const Contact = () => {
     <Page size="small" className="blog">
       <Head>
         <title>{pageDefinitions.contact.title}</title>
-        <meta name="description" content={pageDefinitions.contact.description}/>
+        <meta name="description" content={pageDefinitions.contact.description} />
       </Head>
 
       <h1>Contact</h1>
@@ -17,15 +17,15 @@ const Contact = () => {
       <h3>Vous avez rencontré un problème avec une entreprise et vous souhaitez le signaler ?</h3>
       <p>
         SignalConso est là pour ça ! Naviguez sur notre site et répondez simplement aux questions.
-        <br/>
+        <br />
         <b>Ne nous envoyez pas votre signalement par email. Nous ne prenons aucun signalement par email ;).</b>
       </p>
 
       <h3>Votre question concerne un problème technique rencontré sur SignalConso ?</h3>
 
       <p>
-        Exemple : vous ne trouvez pas le SIRET de l’entreprise que vous voulez signaler, vous rencontrez un bug lors
-        de la navigation sur le site, vous ne trouvez pas la bonne catégorie pour votre problème...
+        Exemple : vous ne trouvez pas le SIRET de l’entreprise que vous voulez signaler, vous rencontrez un bug lors de la
+        navigation sur le site, vous ne trouvez pas la bonne catégorie pour votre problème...
       </p>
       <p>
         Ecrivez-nous à&nbsp;
@@ -36,8 +36,9 @@ const Contact = () => {
           title="Vous rencontrez un problème technique avec notre site ? Contactez-nous (ouverture de la messagerie par défaut)."
         >
           support@signal.conso.gouv.fr
-        </a>.
-        <br/>
+        </a>
+        .
+        <br />
         Notre équipe technique essayera de vous répondre le plus vite possible !
       </p>
     </Page>

@@ -12,7 +12,7 @@ import {Skeleton} from '@mui/material'
 interface Props {
   name?: string
   title: string
-  description?: string,
+  description?: string
   percentage?: boolean
   count: () => Promise<SimpleStat>
   curve?: () => Promise<CountByDate[]>
@@ -28,48 +28,57 @@ export const Stat = React.memo(({name, count, curve, title, description, percent
   })
   const height = 300
   useEffect(() => {
-    if (curve)
-      _curve.fetch({force: true, clean: true})
+    if (curve) _curve.fetch({force: true, clean: true})
     _count.fetch({force: true, clean: true})
   }, [])
 
   return (
     <Panel border>
       <Box>
-        <Txt block skeleton={_count.loading && 100} sx={{
-          lineHeight: 1,
-          fontSize: 34,
-          // fontWeight: t => t.typography.fontWeightBold,
-          color: t => t.palette.primary.main,
-        }}>{map(_count.entity?.value as number | undefined, formatLargeNumber)} {percentage && '%'}</Txt>
+        <Txt
+          block
+          skeleton={_count.loading && 100}
+          sx={{
+            lineHeight: 1,
+            fontSize: 34,
+            // fontWeight: t => t.typography.fontWeightBold,
+            color: t => t.palette.primary.main,
+          }}
+        >
+          {map(_count.entity?.value as number | undefined, formatLargeNumber)} {percentage && '%'}
+        </Txt>
 
-        <Txt block bold>{title}</Txt>
+        <Txt block bold>
+          {title}
+        </Txt>
         {description && <Txt color="hint">{description}</Txt>}
 
         {curve && (
           <Box sx={{height: height, mt: 2, display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
             {_curve.loading ? (
-              <Skeleton variant="rectangular" height={height - 30} width="100%" sx={{borderRadius: '8px'}}/>
-            ) : _curve.entity && (
-              <ResponsiveContainer width="100%" height="100%">
-                <BarChart
-                  height={height - 60}
-                  data={_curve.entity.map(formatCurveDate)}
-                  margin={{
-                    top: 5,
-                    right: 30,
-                    left: 20,
-                    bottom: 5
-                  }}
-                >
-                  <CartesianGrid strokeDasharray="3 3"/>
-                  <XAxis dataKey="date"/>
-                  <YAxis/>
-                  <Tooltip/>
-                  <Legend/>
-                  <Bar legendType={'none'} name={name} dataKey="count" fill="#407e99"/>
-                </BarChart>
-              </ResponsiveContainer>
+              <Skeleton variant="rectangular" height={height - 30} width="100%" sx={{borderRadius: '8px'}} />
+            ) : (
+              _curve.entity && (
+                <ResponsiveContainer width="100%" height="100%">
+                  <BarChart
+                    height={height - 60}
+                    data={_curve.entity.map(formatCurveDate)}
+                    margin={{
+                      top: 5,
+                      right: 30,
+                      left: 20,
+                      bottom: 5,
+                    }}
+                  >
+                    <CartesianGrid strokeDasharray="3 3" />
+                    <XAxis dataKey="date" />
+                    <YAxis />
+                    <Tooltip />
+                    <Legend />
+                    <Bar legendType={'none'} name={name} dataKey="count" fill="#407e99" />
+                  </BarChart>
+                </ResponsiveContainer>
+              )
             )}
           </Box>
         )}

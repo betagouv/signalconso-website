@@ -5,7 +5,6 @@ import {ReportTag} from '@signal-conso/signalconso-api-sdk-js'
 import {DetailsFixtureInput} from '../../Playground/PlaygroundDetails'
 
 describe('getDraftReportInputs', () => {
-
   it('should generate default inputs', () => {
     const inputs = getDraftReportInputs({
       subcategories: [Fixture.genSubcategory()],
@@ -16,38 +15,27 @@ describe('getDraftReportInputs', () => {
   it('should generate default inputs including reponseConso inputs', () => {
     const inputs = getDraftReportInputs({
       subcategories: [Fixture.genSubcategory()],
-      tags: [ReportTag.ReponseConso]
+      tags: [ReportTag.ReponseConso],
     })
-    expect(inputs).toEqual([
-      ...DraftReportDefaultInputs.defaults,
-      DraftReportDefaultInputs.reponseConso
-    ])
+    expect(inputs).toEqual([...DraftReportDefaultInputs.defaults, DraftReportDefaultInputs.reponseConso])
   })
 
   it('should generate single input with optional textarea', () => {
     const inputs = getDraftReportInputs({
-      subcategories: [
-        Fixture.genSubcategory(),
-      ],
+      subcategories: [Fixture.genSubcategory()],
     })
-    expect(inputs).toEqual([
-      DetailsFixtureInput.textDetail,
-      DraftReportDefaultInputs.description(true)
-    ])
+    expect(inputs).toEqual([DetailsFixtureInput.textDetail, DraftReportDefaultInputs.description(true)])
   })
 
   it('should generate custom input with reponseconso', () => {
     const inputs = getDraftReportInputs({
       tags: [ReportTag.ReponseConso],
-      subcategories: [
-        Fixture.genSubcategory(),
-        {id: '', title: '', detailInputs: [DetailsFixtureInput.dateDetail,]},
-      ],
+      subcategories: [Fixture.genSubcategory(), {id: '', title: '', detailInputs: [DetailsFixtureInput.dateDetail]}],
     })
     expect(inputs).toEqual([
       DetailsFixtureInput.dateDetail,
       DraftReportDefaultInputs.description(true),
-      DraftReportDefaultInputs.reponseConso
+      DraftReportDefaultInputs.reponseConso,
     ])
   })
 })

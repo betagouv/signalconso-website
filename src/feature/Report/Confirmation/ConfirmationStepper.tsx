@@ -18,36 +18,35 @@ interface ConfirmationStepProps {
 }
 
 export const ConfirmationStepper = ({children}: ConfirmationStepperProps) => {
-  return (
-    <>
-      {children.map((child, index) =>
-        React.cloneElement(child, {...child.props, key: index, index})
-      )}
-    </>
-  )
+  return <>{children.map((child, index) => React.cloneElement(child, {...child.props, key: index, index}))}</>
 }
 
-export const ConfirmationStep = ({
-  title,
-  children,
-  index,
-}: ConfirmationStepProps) => {
+export const ConfirmationStep = ({title, children, index}: ConfirmationStepProps) => {
   const indexSize = 40
   const {m} = useI18n()
   const _stepper = useStepperContext()
   return (
-    <Panel title={
-      <Box sx={{display: 'flex', alignItems: 'center'}}>
-        <Txt color="hint" sx={{mr: 1}}>{index! + 1}.</Txt>
-        <Txt>{title}</Txt>
-        <ScButton sx={{marginLeft: 'auto'}} size="small" variant="outlined" icon="edit" color="primary" onClick={() => _stepper.goTo(index!)}>
-          {m.edit}
-        </ScButton>
-      </Box>
-    }>
-      <PanelBody>
-        {children}
-      </PanelBody>
+    <Panel
+      title={
+        <Box sx={{display: 'flex', alignItems: 'center'}}>
+          <Txt color="hint" sx={{mr: 1}}>
+            {index! + 1}.
+          </Txt>
+          <Txt>{title}</Txt>
+          <ScButton
+            sx={{marginLeft: 'auto'}}
+            size="small"
+            variant="outlined"
+            icon="edit"
+            color="primary"
+            onClick={() => _stepper.goTo(index!)}
+          >
+            {m.edit}
+          </ScButton>
+        </Box>
+      }
+    >
+      <PanelBody>{children}</PanelBody>
       {/*<Box sx={{display: 'flex', alignItems: 'center'}}>*/}
       {/*  <Box sx={{*/}
       {/*    // mr: 2,*/}
