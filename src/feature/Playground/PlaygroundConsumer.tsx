@@ -9,7 +9,7 @@ export const PlaygroundConsumer = () => {
         <CardContent>
           <_Consumer
             draft={{
-              companyKind: CompanyKinds.LOCATION
+              companyKind: CompanyKinds.LOCATION,
             }}
             onSubmit={x => alert(JSON.stringify(x))}
           />

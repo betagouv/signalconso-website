@@ -36,15 +36,11 @@ export const CompanySearchByNameAndPostalCode = ({children}: Props) => {
     handleSubmit,
     register,
     reset,
-    formState: {errors}
+    formState: {errors},
   } = useForm<Form>()
 
   const search = (form: Form) => {
-    _analytic.trackEvent(
-      EventCategories.companySearch,
-      CompanySearchEventActions.search,
-      form.name + ' ' + form.postalCode
-    )
+    _analytic.trackEvent(EventCategories.companySearch, CompanySearchEventActions.search, form.name + ' ' + form.postalCode)
     _search.fetch({force: true, clean: true}, form.name, form.postalCode)
   }
 
@@ -72,19 +68,19 @@ export const CompanySearchByNameAndPostalCode = ({children}: Props) => {
                   control={control}
                   name="postalCode"
                   rules={{
-                    required: {value: true, message: m.required}
+                    required: {value: true, message: m.required},
                   }}
-                  render={({field}) =>
+                  render={({field}) => (
                     <AutocompleteCity
                       {...field}
                       value={undefined}
                       onChange={x => field.onChange(x.postalCode)}
                       error={!!errors.postalCode}
-                      helperText={(errors.postalCode)?.message ?? ''}
+                      helperText={errors.postalCode?.message ?? ''}
                       fullWidth
                       placeholder={m.yourPostalCodePlaceholder}
                     />
-                  }
+                  )}
                 />
               </FormLayout>
             </PanelBody>

@@ -26,18 +26,17 @@ export const CompanyIdentifyBy = ({companyKind, value, children, ...props}: Prop
     <>
       <Animate>
         <Panel title={m.canYouIdentifyCompany} id="CompanyIdentifyBy">
-          <Txt block sx={{mb: 2}} color="hint">{m.canYouIdentifyCompanyDesc}</Txt>
+          <Txt block sx={{mb: 2}} color="hint">
+            {m.canYouIdentifyCompanyDesc}
+          </Txt>
           <PanelBody>
             <ScRadioGroup value={value} onChange={setIdentifyBy}>
               {companyKind !== CompanyKinds.INFLUENCEUR && (
-                <ScRadioGroupItem value={IdentifyBy.NAME} title={m.identifyBy_name} description={m.identifyBy_nameDesc}/>
+                <ScRadioGroupItem value={IdentifyBy.NAME} title={m.identifyBy_name} description={m.identifyBy_nameDesc} />
               )}
-              <ScRadioGroupItem value={IdentifyBy.IDENTITY} title={m.identifyBy_identity}/>
+              <ScRadioGroupItem value={IdentifyBy.IDENTITY} title={m.identifyBy_identity} />
               {companyKind !== CompanyKinds.SIRET && (
-                <ScRadioGroupItem
-                  value={IdentifyBy.NONE}
-                  title={m.identifyBy_none}
-                  description={m.identifyBy_noneDesc}/>
+                <ScRadioGroupItem value={IdentifyBy.NONE} title={m.identifyBy_none} description={m.identifyBy_noneDesc} />
               )}
             </ScRadioGroup>
           </PanelBody>

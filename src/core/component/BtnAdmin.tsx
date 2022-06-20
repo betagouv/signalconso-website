@@ -8,7 +8,14 @@ export const BtnAdmin = ({sx, ...props}: ButtonProps) => {
   const {m} = useI18n()
   const width = useWindowWidth()
   return (
-    <ScButton href={siteMap.connexion} color="secondary" variant="contained" iconAfter="lock_open" {...props} sx={{whiteSpace: 'nowrap', ...sx}}>
+    <ScButton
+      href={siteMap.connexion}
+      color="secondary"
+      variant="contained"
+      iconAfter="lock_open"
+      {...props}
+      sx={{whiteSpace: 'nowrap', ...sx}}
+    >
       {width.isMobileWidthMax ? '' : m.menu_authSpace}
     </ScButton>
   )

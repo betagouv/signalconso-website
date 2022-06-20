@@ -23,15 +23,17 @@ export const AccordionInline = ({open, label, children, onClick, ...props}: Prop
         sx={{
           '&:hover': {
             textDecoration: 'underline',
-          }
+          },
         }}
-        onClick={(e) => {
+        onClick={e => {
           if (onClick) onClick(e)
           setInnerOpen(_ => !_)
         }}
       >
         {label}
-        <Icon sx={{ml: 1}} fontSize="small">{innerOpen ? 'expand_less' : 'expand_more'}</Icon>
+        <Icon sx={{ml: 1}} fontSize="small">
+          {innerOpen ? 'expand_less' : 'expand_more'}
+        </Icon>
       </Txt>
       <Collapse in={innerOpen}>
         <Box sx={{mt: 1}}>{children}</Box>

@@ -12,13 +12,16 @@ export const PlaygroundConfirmation = () => {
   const [anomaly, setAnomaly] = useState<Anomaly | undefined>()
   const theme = useTheme()
   useEffect(() => {
-    apiSdk.anomaly.getAnomalies()
+    apiSdk.anomaly
+      .getAnomalies()
       .then(anomalies => anomalies.find(_ => _.category === draft.category)!)
       .then(setAnomaly)
   }, [])
   return (
     <>
-      <div><b>{anomaly?.category}</b></div>
+      <div>
+        <b>{anomaly?.category}</b>
+      </div>
       <pre style={{fontSize: styleUtils(theme).fontSize.small, lineHeight: 1.3}}>{JSON.stringify(draft, undefined, 2)}</pre>
       {anomaly && (
         <_Confirmation

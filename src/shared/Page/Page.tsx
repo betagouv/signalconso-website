@@ -20,12 +20,14 @@ export const Page = ({loading, size, sx, ...props}: PageProps) => {
     <>
       {loading && (
         <Box sx={{position: 'relative'}}>
-          <LinearProgress sx={{
-            position: 'absolute',
-            top: 0,
-            right: 0,
-            left: 0,
-          }}/>
+          <LinearProgress
+            sx={{
+              position: 'absolute',
+              top: 0,
+              right: 0,
+              left: 0,
+            }}
+          />
         </Box>
       )}
       <MuiPage width={pageWidth[size ?? 'regular']} sx={{...sx, py: 3, px: 2}} {...props} />

@@ -71,7 +71,7 @@ export const fr = {
     saved: 'Sauvegardé',
     duplicate: 'Duplicate',
     all: 'Tous',
-    anErrorOccurred: 'Une erreur s\'est produite.',
+    anErrorOccurred: "Une erreur s'est produite.",
     minimize: 'Minimize',
     required: 'Requis',
     cancel: 'Annuler',
@@ -210,9 +210,9 @@ export const fr = {
       11: 'Nov',
       12: 'Déc',
     },
-    gender :{
-      'Male' : 'M',
-      'Female': 'Mme'
+    gender: {
+      Male: 'M',
+      Female: 'Mme',
     },
     unknownGender: 'Non précisé',
     bannerCookie: `Le site Signal Conso n'utilise que des cookies techniques exemptés de consentement.`,
@@ -291,8 +291,7 @@ export const fr = {
     identifyBy_nameDesc: `Entreprise française uniquement`,
     identifyBy_identity: `Par son SIRET ou SIREN ou RCS`,
     identifyBy_none: `Je ne peux pas identifier l'entreprise ou l'entreprise est à l'étranger`,
-    identifyBy_noneDesc:
-      `Si vous ne parvenez pas à identifier l'entreprise, vous pouvez continuer votre signalement.
+    identifyBy_noneDesc: `Si vous ne parvenez pas à identifier l'entreprise, vous pouvez continuer votre signalement.
       Il ne sera pas transmis à l'entreprise, sauf si cette dernière est française et identifiable par l'équipe de SignalConso.
       Dans tous les cas les enquêteurs de la répression des fraudes en seront informés.`,
     couldYouPrecise: `Pouvez-vous préciser ?`,
@@ -404,7 +403,6 @@ export const fr = {
 
     reportsCountStat: ` signalements ont été déposés depuis le début de SignalConso`,
     reportsCountStatName: ` Nombre de signalements déposés`,
-
 
     transmittedRateStat: ` des signalements ont été transmis à l'entreprise signalée`,
     transmittedRateDescription: `Pourquoi pas 100 % ? Car dans certaines cas (achat en ligne...) les entreprises n'ont pas pu être identifiées par le consommateur`,

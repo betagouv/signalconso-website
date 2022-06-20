@@ -16,7 +16,7 @@ export const useRgpdBanner = () => {
       setHidden(false)
     }
   }, [])
-  const {toastInfo,toastWarning} = useToast()
+  const {toastInfo, toastWarning} = useToast()
   useEffect(() => {
     if (!hidden) {
       toastInfo(m.bannerCookie, {
@@ -30,7 +30,7 @@ export const useRgpdBanner = () => {
           <Link href={siteMap.cookies}>
             <ScButton>{m.bannerCookieSeeMore}</ScButton>
           </Link>
-        )
+        ),
       })
     }
   }, [hidden])

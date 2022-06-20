@@ -25,7 +25,7 @@ export const DetailsSpecifyInput = ({
       rules={{
         required: {value: true, message: m.required + ' *'},
       }}
-      render={({field}) =>
+      render={({field}) => (
         <ScInput
           {...field}
           error={!!error}
@@ -35,6 +35,7 @@ export const DetailsSpecifyInput = ({
           fullWidth
           placeholder={m.specify}
         />
-      }/>
+      )}
+    />
   )
 }

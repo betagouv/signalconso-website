@@ -11,12 +11,12 @@ export const AddressComponent = ({address}: Props) => {
       {address.number}&nbsp;
       {address.street}&nbsp;
       {address.addressSupplement}
-      <br/>
+      <br />
       {address.postalCode}&nbsp;
       {address.city}
       {address.country && (
         <>
-          <br/>
+          <br />
           {address.country}
         </>
       )}

@@ -8,7 +8,7 @@ export const styleUtils = (t: Theme) => ({
   fontSize: {
     big: t.typography.fontSize * 1.15,
     normal: t.typography.fontSize,
-    small: t.typography.fontSize * 0.90,
+    small: t.typography.fontSize * 0.9,
     title: t.typography.fontSize * 1.3,
     bigTitle: t.typography.fontSize * 1.6,
   },
@@ -90,7 +90,7 @@ export const muiTheme = (dark?: boolean): Theme => {
           },
           '.blog': {
             // fontSize: 16,
-            'a': {
+            a: {
               color: colorPrimary.base,
             },
             'li + li': {
@@ -145,7 +145,7 @@ export const muiTheme = (dark?: boolean): Theme => {
           },
           hr: {
             border: 'none',
-            borderBottom: `1px solid ${baseTheme.palette.divider}`
+            borderBottom: `1px solid ${baseTheme.palette.divider}`,
           },
           table: {
             background: baseTheme.palette.background.paper,
@@ -173,33 +173,33 @@ export const muiTheme = (dark?: boolean): Theme => {
               // font-size: 0.875em,
               // font-weight: 700,
               textTransform: 'uppercase',
-            }
+            },
           },
-//
-// 'table td, table th' {
-//     padding: 1em;
-//     text-align: left;
-//   }
-//
-// .table td {
-//     border-top: 1px solid #ebeff3;
-//     border-top: 1px solid $lighter-grey;
-//   }
-//
-// .table thead th {
-//     background: #fafbfc;
-//     background: $lightest-grey;
-//     border-bottom: 1px solid #c9d3df;
-//     border-bottom: 1px solid $theme-border-lighter;
-//     font-size: 0.875em;
-//     font-weight: 700;
-//     text-transform: uppercase;
-//   }
-//
-// .table:not(.no-hover) tr:hover {
-//     background: #fafbfc;
-//     background: $lightest-grey;
-//   }
+          //
+          // 'table td, table th' {
+          //     padding: 1em;
+          //     text-align: left;
+          //   }
+          //
+          // .table td {
+          //     border-top: 1px solid #ebeff3;
+          //     border-top: 1px solid $lighter-grey;
+          //   }
+          //
+          // .table thead th {
+          //     background: #fafbfc;
+          //     background: $lightest-grey;
+          //     border-bottom: 1px solid #c9d3df;
+          //     border-bottom: 1px solid $theme-border-lighter;
+          //     font-size: 0.875em;
+          //     font-weight: 700;
+          //     text-transform: uppercase;
+          //   }
+          //
+          // .table:not(.no-hover) tr:hover {
+          //     background: #fafbfc;
+          //     background: $lightest-grey;
+          //   }
           // h2: {
           //   ...baseTheme.typography.h6,
           //   marginBottom: baseTheme.spacing(2),
@@ -349,14 +349,16 @@ export const muiTheme = (dark?: boolean): Theme => {
   }
   return createTheme({
     ...{...baseTheme, ...theme},
-    ...(dark ? {
-      MuiOutlinedInput: {
-        styleOverrides: {
-          notchedOutline: {
-            borderColor: '#d9dce0',
+    ...(dark
+      ? {
+          MuiOutlinedInput: {
+            styleOverrides: {
+              notchedOutline: {
+                borderColor: '#d9dce0',
+              },
+            },
           },
-        },
-      },
-    } : {} as any),
+        }
+      : ({} as any)),
   })
 }

@@ -8,15 +8,10 @@ import {AccordionPanel, AccordionPanels} from 'shared/AccordionPanel/AccordionPa
 export interface ConfirmProps extends Omit<DialogProps, 'children' | 'onClick' | 'open'> {
   children: ReactElement<any>
   onClick?: EventHandler<SyntheticEvent<any>>
-  PaperProps?: Partial<PaperProps>,
+  PaperProps?: Partial<PaperProps>
 }
 
-export const CompanySearchByIdentityHelpDialog = ({
-  children,
-  PaperProps,
-  onClick,
-  ...props
-}: ConfirmProps) => {
+export const CompanySearchByIdentityHelpDialog = ({children, PaperProps, onClick, ...props}: ConfirmProps) => {
   const {m} = useI18n()
   const [open, setOpen] = useState<boolean>(false)
 
@@ -29,29 +24,32 @@ export const CompanySearchByIdentityHelpDialog = ({
           if (children.props.onClick) children.props.onClick(event)
           if (onClick) onClick(event)
           setOpen(true)
-        }
+        },
       })}
       <Dialog open={open} {...props} PaperProps={PaperProps}>
         <DialogTitle>Aide SIRET/SIREN</DialogTitle>
         <DialogContent>
-          <Txt size="big" bold block sx={{mb: 1}}>A quoi correspondent ces identifiants ?</Txt>
-
+          <Txt size="big" bold block sx={{mb: 1}}>
+            A quoi correspondent ces identifiants ?
+          </Txt>
           SIRET, SIREN et RCS sont des identifiants de l'entreprise.
-          <br/>
-          Le SIRET est composé de 14 chiffres, le SIREN est composé de 9 chiffres.<br/>
+          <br />
+          Le SIRET est composé de 14 chiffres, le SIREN est composé de 9 chiffres.
+          <br />
           Le RCS est composé de:
-          <br/>
+          <br />
           <ul>
             <li>la mention "RCS"</li>
             <li>le nom de la ville d'immatriculation</li>
             <li>une lettre (A ou B)</li>
             <li>le numéro SIREN</li>
           </ul>
-
-          <Txt size="big" bold block sx={{mb: 1}}>Où trouver ces identifiants ?</Txt>
-          Vous pouvez retrouver ce numéro sur un devis, une facture ou un ticket de caisse émis
-          par l’entreprise et également dans les mentions légales de son site internet.
-          <br/>
+          <Txt size="big" bold block sx={{mb: 1}}>
+            Où trouver ces identifiants ?
+          </Txt>
+          Vous pouvez retrouver ce numéro sur un devis, une facture ou un ticket de caisse émis par l’entreprise et également dans
+          les mentions légales de son site internet.
+          <br />
           <AccordionPanels sx={{mt: 1}}>
             <AccordionPanel title="Sur un site internet">
               Descendez en bas de la page internet d’accueil du site en question :
@@ -60,7 +58,8 @@ export const CompanySearchByIdentityHelpDialog = ({
                 alt="Sur un site internet 1 sur 2"
                 style={{width: '100%', marginTop: 4, marginBottom: 4}}
               />
-              Cliquez sur le texte « Mentions légales », une nouvelle page va s’ouvrir sur laquelle vous trouverez facilement ce numéro :
+              Cliquez sur le texte « Mentions légales », une nouvelle page va s’ouvrir sur laquelle vous trouverez facilement ce
+              numéro :
               <img
                 src="/image/siret-helper/siret-helper-mentions_legales.png"
                 alt="Sur un site internet 2 sur 2"
@@ -68,11 +67,7 @@ export const CompanySearchByIdentityHelpDialog = ({
               />
             </AccordionPanel>
             <AccordionPanel title="Sur une facture">
-              <img
-                src="/image/siret-helper/siret-helper-bill.jpg"
-                alt="Sur une facture"
-                style={{width: '100%'}}
-              />
+              <img src="/image/siret-helper/siret-helper-bill.jpg" alt="Sur une facture" style={{width: '100%'}} />
             </AccordionPanel>
             <AccordionPanel title="Sur un ticket de caisse">
               <img

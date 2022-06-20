@@ -4,11 +4,7 @@ import {IconBtn} from 'mui-extension/lib'
 import {Txt} from 'mui-extension'
 
 export const AccordionPanels = ({children, ...props}: BoxProps) => {
-  return (
-    <Box {...props}>
-      {children}
-    </Box>
-  )
+  return <Box {...props}>{children}</Box>
 }
 
 export const AccordionPanel = ({
@@ -26,29 +22,33 @@ export const AccordionPanel = ({
 } & BoxProps) => {
   const [open, setOpen] = useState(false)
   return (
-    <Box {...props} className={className + '-opened'} sx={{
-      border: t => `1px solid ${t.palette.divider}`,
-      ':not(:last-of-type)': {
-        mt: '-1px',
-        borderBottom: 'none',
-      },
-      ':first-of-type': {
-        borderTopLeftRadius: t => t.shape.borderRadius,
-        borderTopRightRadius: t => t.shape.borderRadius,
-      },
-      ':last-of-type': {
-        borderBottomLeftRadius: t => t.shape.borderRadius,
-        borderBottomRightRadius: t => t.shape.borderRadius,
-      },
-      ...open && {
-        borderLeft: t => `2px solid ${t.palette.primary.main} !important`,
-      },
-    }}>
+    <Box
+      {...props}
+      className={className + '-opened'}
+      sx={{
+        border: t => `1px solid ${t.palette.divider}`,
+        ':not(:last-of-type)': {
+          mt: '-1px',
+          borderBottom: 'none',
+        },
+        ':first-of-type': {
+          borderTopLeftRadius: t => t.shape.borderRadius,
+          borderTopRightRadius: t => t.shape.borderRadius,
+        },
+        ':last-of-type': {
+          borderBottomLeftRadius: t => t.shape.borderRadius,
+          borderBottomRightRadius: t => t.shape.borderRadius,
+        },
+        ...(open && {
+          borderLeft: t => `2px solid ${t.palette.primary.main} !important`,
+        }),
+      }}
+    >
       <Box
         role="button"
         onClick={() => {
           setOpen(_ => {
-            if(!_) {
+            if (!_) {
               onOpen?.()
             }
             return !_
@@ -64,21 +64,26 @@ export const AccordionPanel = ({
         }}
       >
         <IconBtn size="small" color="primary" sx={{ml: 1, mr: 2}}>
-          <Icon>
-            {open ? 'expand_more' : 'chevron_right'}
-          </Icon>
+          <Icon>{open ? 'expand_more' : 'chevron_right'}</Icon>
         </IconBtn>
         <div>
-          <Box component="h3" sx={{m: 0, p: 0, fontSize: t => `1.10rem !important`}}>{title}</Box>
-          <Txt color="hint" sx={{m: 0, p: 0, }}>{desc}</Txt>
+          <Box component="h3" sx={{m: 0, p: 0, fontSize: t => `1.10rem !important`}}>
+            {title}
+          </Box>
+          <Txt color="hint" sx={{m: 0, p: 0}}>
+            {desc}
+          </Txt>
         </div>
       </Box>
       <Collapse in={open}>
-        <Box aria-labelledby={props.id} sx={{
-          px: 3,
-          py: 1,
-          borderTop: t => `1px solid ${t.palette.divider}`
-        }}>
+        <Box
+          aria-labelledby={props.id}
+          sx={{
+            px: 3,
+            py: 1,
+            borderTop: t => `1px solid ${t.palette.divider}`,
+          }}
+        >
           {children}
         </Box>
       </Collapse>

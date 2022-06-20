@@ -11,9 +11,7 @@ const MyError = ({statusCode, hasGetInitialPropsRun, err}: any) => {
     // Flushing is not required in this case as it only happens on the client
   }
 
-  return (
-    <NextErrorComponent statusCode={statusCode}/>
-  )
+  return <NextErrorComponent statusCode={statusCode} />
 }
 
 MyError.getInitialProps = async (context: any) => {
@@ -57,9 +55,7 @@ MyError.getInitialProps = async (context: any) => {
   // If this point is reached, getInitialProps was called without any
   // information about what the error might be. This is unexpected and may
   // indicate a bug introduced in Next.js, so record it in Sentry
-  Sentry.captureException(
-    new Error(`_error.js getInitialProps missing data at path: ${asPath}`),
-  )
+  Sentry.captureException(new Error(`_error.js getInitialProps missing data at path: ${asPath}`))
   await Sentry.flush(2000)
 
   return errorInitialProps

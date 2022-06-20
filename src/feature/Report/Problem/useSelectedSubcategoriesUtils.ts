@@ -22,7 +22,6 @@ export const useSelectedSubcategoriesUtils = (anomaly: Category, selectedSubCate
     return selectedSubCategories[selectedSubCategories.length - 1]
   }, [selectedSubCategories])
 
-
   const isLastSubcategory = useMemo(() => {
     return lastSubcategories && !lastSubcategories.subcategories
   }, [lastSubcategories])

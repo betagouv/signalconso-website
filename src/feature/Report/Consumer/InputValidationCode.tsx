@@ -5,9 +5,7 @@ import {ScInput, ScInputProps} from 'shared/Input/ScInput'
 import React from 'react'
 import {useI18n} from 'core/i18n'
 
-interface Props extends ScInputProps {
-
-}
+interface Props extends ScInputProps {}
 
 export const InputValidationCode = ({...other}: Props) => {
   const theme = useTheme()
@@ -22,19 +20,17 @@ export const InputValidationCode = ({...other}: Props) => {
           '&': {
             fontFamily: 'monospace',
             letterSpacing: 6,
-            fontWeight: t => t.typography.fontWeightBold
+            fontWeight: t => t.typography.fontWeightBold,
           },
           '& input::placeholder': {
             fontFamily: 'monospace',
-          }
+          },
         }}
         placeholder={m.consumerCodePlaceholder}
         inputProps={{style: {fontSize}}}
         InputProps={{
           inputComponent: TextMaskCustom as any,
-          startAdornment: (
-            <Box sx={{mr: 0, fontSize, color: t => t.palette.text.disabled}}>SC-</Box>
-          ),
+          startAdornment: <Box sx={{mr: 0, fontSize, color: t => t.palette.text.disabled}}>SC-</Box>,
         }}
       />
     </Box>

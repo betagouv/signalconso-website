@@ -24,9 +24,7 @@ describe('Details: single date not in future', () => {
   // }
 
   const elementShouldExists = async (querySelector: string) => {
-    await waitFor(() =>
-      expect(app.container.querySelectorAll(querySelector).length).toEqual(1)
-    )
+    await waitFor(() => expect(app.container.querySelectorAll(querySelector).length).toEqual(1))
   }
 
   const selectIdentifyBy = (ib: IdentifyBy) => {
@@ -43,7 +41,7 @@ describe('Details: single date not in future', () => {
       app = render(
         <_Company
           draft={{
-            companyKind: CompanyKinds.WEBSITE
+            companyKind: CompanyKinds.WEBSITE,
           }}
           onUpdateReportDraft={x => {
             draft = ReportDraft2.merge(draft, x)
@@ -54,13 +52,20 @@ describe('Details: single date not in future', () => {
             company: {
               searchCompanies: (search: string, searchPostalCode: string) => Promise.resolve([]),
               searchForeignCompaniesByUrl: (url: string) => Promise.resolve(),
-              searchCompaniesByUrl: (url: string) => Promise.resolve(fnSwitch(url, {
-                'known.site': [Fixture.genCompanySearchResult()],
-                'marketplace.site': [Fixture.genCompanySearchResult()],
-              }, () => []))
-            }
-          }
-        }
+              searchCompaniesByUrl: (url: string) =>
+                Promise.resolve(
+                  fnSwitch(
+                    url,
+                    {
+                      'known.site': [Fixture.genCompanySearchResult()],
+                      'marketplace.site': [Fixture.genCompanySearchResult()],
+                    },
+                    () => [],
+                  ),
+                ),
+            },
+          },
+        },
       )
     })
 
@@ -80,12 +85,11 @@ describe('Details: single date not in future', () => {
   })
 
   describe('CompanyKinds.LOCATION', () => {
-
     beforeEach(() => {
       app = render(
         <_Company
           draft={{
-            companyKind: CompanyKinds.LOCATION
+            companyKind: CompanyKinds.LOCATION,
           }}
           onUpdateReportDraft={x => ReportDraft2.merge(draft, x)}
         />,
@@ -94,9 +98,9 @@ describe('Details: single date not in future', () => {
             company: {
               searchCompanies: (search: string, searchPostalCode: string) => Promise.resolve([]),
               searchForeignCompaniesByUrl: (url: string) => Promise.resolve([]),
-            }
-          }
-        }
+            },
+          },
+        },
       )
     })
 
@@ -107,5 +111,3 @@ describe('Details: single date not in future', () => {
     })
   })
 })
-
-

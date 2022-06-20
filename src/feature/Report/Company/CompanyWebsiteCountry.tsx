@@ -17,11 +17,7 @@ interface Form {
 
 export const CompanyWebsiteCountry = ({countries, onSubmit}: Props) => {
   const {m} = useI18n()
-  const {
-    handleSubmit,
-    register,
-    control
-  } = useForm<Form>()
+  const {handleSubmit, register, control} = useForm<Form>()
   return (
     <Panel title={m.companySelectCountryTitle}>
       <form onSubmit={handleSubmit(f => onSubmit(f.country))}>
@@ -33,17 +29,17 @@ export const CompanyWebsiteCountry = ({countries, onSubmit}: Props) => {
             rules={{
               required: {value: true, message: m.required + ' *'},
             }}
-            render={({field}) =>
-              <ScRadioGroup{...field}>
-                {countries.map(_ =>
-                  <ScRadioGroupItem key={_.code} value={_.name} title={_.name}/>
-                )}
+            render={({field}) => (
+              <ScRadioGroup {...field}>
+                {countries.map(_ => (
+                  <ScRadioGroupItem key={_.code} value={_.name} title={_.name} />
+                ))}
               </ScRadioGroup>
-            }
+            )}
           />
         </PanelBody>
         <PanelActions>
-          <StepperActionsNext type="submit"/>
+          <StepperActionsNext type="submit" />
         </PanelActions>
       </form>
     </Panel>

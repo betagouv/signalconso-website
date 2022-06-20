@@ -9,26 +9,35 @@ interface Props {
 export const MemberCard = ({member}: Props) => {
   const iconSize = 70
   return (
-    <Box sx={{
-      ...member.disabled && {
-        opacity: .4,
-      },
-      display: 'flex',
-      borderRadius: t => t.shape.borderRadius + 'px',
-      border: t => `1px solid ${t.palette.divider}`,
-      padding: 2,
-    }}>
+    <Box
+      sx={{
+        ...(member.disabled && {
+          opacity: 0.4,
+        }),
+        display: 'flex',
+        borderRadius: t => t.shape.borderRadius + 'px',
+        border: t => `1px solid ${t.palette.divider}`,
+        padding: 2,
+      }}
+    >
       <img
         style={{height: iconSize, width: iconSize, borderRadius: 6}}
-        src={`/image/avatars/${member.avatar}`} alt={`Avatar ${member.name}`}
+        src={`/image/avatars/${member.avatar}`}
+        alt={`Avatar ${member.name}`}
       />
       <Box sx={{ml: 2}}>
-        <Txt truncate block bold size="big">{member.name}</Txt>
-        <Txt truncate block color="hint">{member.role}</Txt>
+        <Txt truncate block bold size="big">
+          {member.name}
+        </Txt>
+        <Txt truncate block color="hint">
+          {member.role}
+        </Txt>
         {member.dgccrf ? (
-          <Txt block color="hint">Inspecteur <abbr title="Direction Générale de la Concurrence, Consommation et Répression des Fraudes">DGCCRF</abbr></Txt>
+          <Txt block color="hint">
+            Inspecteur <abbr title="Direction Générale de la Concurrence, Consommation et Répression des Fraudes">DGCCRF</abbr>
+          </Txt>
         ) : (
-          <Txt block/>
+          <Txt block />
         )}
       </Box>
     </Box>

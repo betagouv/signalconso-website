@@ -69,9 +69,9 @@ export const appConfig = {
   infoBanner: map()(Env.NEXT_PUBLIC_INFO_BANNER),
   infoBannerOnMobile: map(bool, defaultValue(false))(Env.NEXT_PUBLIC_INFO_BANNER_ON_MOBILE),
   dummyEmailDomain: ['@yopmail.com'],
-  atInternet_siteId: map()(Env.NEXT_PUBLIC_ATINTERNET_SITE_ID)
+  atInternet_siteId: map()(Env.NEXT_PUBLIC_ATINTERNET_SITE_ID),
 }
 
-export type AppConfig = typeof appConfig;
+export type AppConfig = typeof appConfig
 
 console.info(appConfig)

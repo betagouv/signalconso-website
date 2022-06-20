@@ -4,8 +4,15 @@ import {Atinternet} from '../plugins/atinternet'
 import {Router} from 'next/router'
 
 export class Analytic {
-
-  static readonly init = ({appConfig, matomo, atInternet}: {appConfig: AppConfig, matomo: Matomo | undefined, atInternet: Atinternet | undefined}) => {
+  static readonly init = ({
+    appConfig,
+    matomo,
+    atInternet,
+  }: {
+    appConfig: AppConfig
+    matomo: Matomo | undefined
+    atInternet: Atinternet | undefined
+  }) => {
     return new Analytic(appConfig, matomo, atInternet)
   }
 
@@ -16,7 +23,7 @@ export class Analytic {
   private constructor(
     private appConfig: AppConfig,
     private matomo: Matomo | undefined,
-    private atInternet: Atinternet | undefined
+    private atInternet: Atinternet | undefined,
   ) {
     Router.events.on('routeChangeComplete', (path: string): void => {
       this.log('[routeChangeComplete]', path)
@@ -32,7 +39,6 @@ export class Analytic {
     if (!this.appConfig.isDev) {
       this.matomo?.trackPage(path, title)
       this.atInternet?.send({level2: 'Visitor', name: path})
-
     }
   }
 
@@ -46,8 +52,8 @@ export class Analytic {
           chapter1: action,
           chapter2: name,
           customObject: {
-            value
-          }
+            value,
+          },
         })
         this.matomo?.push(['trackEvent', category, action, name, value])
       } catch (e: any) {
@@ -61,55 +67,55 @@ export class Analytic {
 }
 
 export type AnalyticAction =
-  AuthenticationEventActions
+  | AuthenticationEventActions
   | ReportEventActions
   | CompanySearchEventActions
   | ContractualDisputeActions
   | AccountEventActions
-  | CompanyAccessEventActions;
+  | CompanyAccessEventActions
 
 export enum EventCategories {
   report = 'Signalement',
-  companySearch = 'Identification de l\'établissement',
+  companySearch = "Identification de l'établissement",
   authentication = 'Authentification',
   account = 'Compte utilisateur',
-  companyAccess = 'Accès de l\'entreprise',
-  contractualDispute = 'Litige contractuel'
+  companyAccess = "Accès de l'entreprise",
+  contractualDispute = 'Litige contractuel',
 }
 
 export enum ReportEventActions {
-  outOfBounds = 'Affichage d\'un message problème hors périmètre',
-  information = 'Consultation du détail d\'un message d\'information',
+  outOfBounds = "Affichage d'un message problème hors périmètre",
+  information = "Consultation du détail d'un message d'information",
   secondaryCategories = 'Affichage des autres problèmes',
-  validateCategory = 'Sélection d\'une catégorie',
-  validateSubcategory = 'Sélection d\'une sous catégorie',
-  employee = 'Consommateur employé de l\'entreprise',
-  notEmployee = 'Consommateur non employé de l\'entreprise',
+  validateCategory = "Sélection d'une catégorie",
+  validateSubcategory = "Sélection d'une sous catégorie",
+  employee = "Consommateur employé de l'entreprise",
+  notEmployee = "Consommateur non employé de l'entreprise",
   validateDetails = 'Validation de la description',
-  validateCompany = 'Validation de l\'établissement',
+  validateCompany = "Validation de l'établissement",
   validateConsumer = 'Validation du consommateur',
-  validateConfirmation = 'Validation de l\'envoi d\'un signalement',
-  reportSendSuccess = 'Envoi d\'un signalement',
-  reportSendFail = 'Echec de l\'envoi d\'un signalement',
+  validateConfirmation = "Validation de l'envoi d'un signalement",
+  reportSendSuccess = "Envoi d'un signalement",
+  reportSendFail = "Echec de l'envoi d'un signalement",
   keywordsDetection = 'Mots-clés détectés',
-  informationFromKeywordsDetection = 'Consultation du détail d\'un message d\'information suite à la détection de mots-clés',
-  contactualReport = 'Litige contractuel'
+  informationFromKeywordsDetection = "Consultation du détail d'un message d'information suite à la détection de mots-clés",
+  contactualReport = 'Litige contractuel',
 }
 
 export enum CompanySearchEventActions {
   search = 'Recherche',
   select = 'Sélection dans la liste de résultats',
   searchByIdentity = 'Recherche par SIRET / SIREN / RCS',
-  searchByUrl = 'Recherche par URL'
+  searchByUrl = 'Recherche par URL',
 }
 
 export enum ContractualDisputeActions {
   consult = 'Consultation',
-  downloadTemplate = 'Téléchargement lettre type'
+  downloadTemplate = 'Téléchargement lettre type',
 }
 
 export enum ContractualDisputeNames {
-  step = 'Démarche'
+  step = 'Démarche',
 }
 
 export enum AuthenticationEventActions {
@@ -125,7 +131,7 @@ export enum AuthenticationEventActions {
 export enum AccountEventActions {
   changePasswordSuccess = 'Changement mdp réussi',
   changePasswordFail = 'Changement mdp en échec',
-  registerUser = 'Inscription d\'un utilisateur',
+  registerUser = "Inscription d'un utilisateur",
 }
 
 export enum AccountEventNames {
@@ -133,11 +139,11 @@ export enum AccountEventNames {
 }
 
 export enum CompanyAccessEventActions {
-  addCompanyToAccount = 'Ajout d\'une entreprise à un compte',
-  activateCompanyCode = 'Activation d\'une entreprise'
+  addCompanyToAccount = "Ajout d'une entreprise à un compte",
+  activateCompanyCode = "Activation d'une entreprise",
 }
 
 export enum ActionResultNames {
   success = 'Succès',
-  fail = 'Echec'
+  fail = 'Echec',
 }

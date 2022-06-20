@@ -26,26 +26,29 @@ interface RowProps extends BoxProps {
 
 const Row = ({icon, children, sx, ...props}: RowProps) => {
   return (
-    <Box {...props} sx={{
-      color: t => t.palette.text.secondary,
-      mb: .25,
-      fontSize: t => styleUtils(t).fontSize.normal,
-      display: 'flex',
-      alignItems: 'flex-start',
-      ...sx
-    }}>
-      <Icon sx={{
-        mr: .5,
-        mt: '3px',
-        fontSize: t => styleUtils(t).fontSize.big,
-        lineHeight: 1,
-        minWidth: 20,
-      }}>
+    <Box
+      {...props}
+      sx={{
+        color: t => t.palette.text.secondary,
+        mb: 0.25,
+        fontSize: t => styleUtils(t).fontSize.normal,
+        display: 'flex',
+        alignItems: 'flex-start',
+        ...sx,
+      }}
+    >
+      <Icon
+        sx={{
+          mr: 0.5,
+          mt: '3px',
+          fontSize: t => styleUtils(t).fontSize.big,
+          lineHeight: 1,
+          minWidth: 20,
+        }}
+      >
         {icon}
       </Icon>
-      <div>
-        {children}
-      </div>
+      <div>{children}</div>
     </Box>
   )
 }
@@ -69,7 +72,7 @@ export const CompanySearchResultComponent = ({companies, onSubmit}: Props) => {
 
   const submit = (selected: CompanySearchResult, vendor?: string) => {
     onSubmit(selected, vendor)
-    _analytic.trackEvent(EventCategories.companySearch, CompanySearchEventActions.select);
+    _analytic.trackEvent(EventCategories.companySearch, CompanySearchEventActions.select)
   }
 
   return (
@@ -78,20 +81,26 @@ export const CompanySearchResultComponent = ({companies, onSubmit}: Props) => {
         {companies.length === 0 ? (
           <Panel id="CompanySearchResult">
             <Fender type="empty" icon="sentiment_very_dissatisfied">
-              <Txt color="hint" size="big">{m.noMatchingCompany}</Txt>
+              <Txt color="hint" size="big">
+                {m.noMatchingCompany}
+              </Txt>
             </Fender>
           </Panel>
         ) : (
           <Panel title={m.selectCompany} id="CompanySearchResult">
-            <form onSubmit={handleSubmit(form => {
-              const selectedCompany = companies.find(_ => _.siret === form.result)!
-              if (selectedCompany.isMarketPlace) {
-                setSelected(selectedCompany)
-              } else {
-                submit(selectedCompany)
-              }
-            })}>
-              <Txt block color="hint">{m.selectCompanyDesc}</Txt>
+            <form
+              onSubmit={handleSubmit(form => {
+                const selectedCompany = companies.find(_ => _.siret === form.result)!
+                if (selectedCompany.isMarketPlace) {
+                  setSelected(selectedCompany)
+                } else {
+                  submit(selectedCompany)
+                }
+              })}
+            >
+              <Txt block color="hint">
+                {m.selectCompanyDesc}
+              </Txt>
               <PanelBody>
                 <Controller
                   control={control}
@@ -110,35 +119,36 @@ export const CompanySearchResultComponent = ({companies, onSubmit}: Props) => {
                             </Txt>
                             {company.brand && <Txt block>{company.brand}</Txt>}
                             {company.isHeadOffice && (
-                              <Row icon="business" sx={{color: t => t.palette.primary.main}}>{m.isHeadOffice}</Row>
+                              <Row icon="business" sx={{color: t => t.palette.primary.main}}>
+                                {m.isHeadOffice}
+                              </Row>
                             )}
-                            {company.activityLabel && (
-                              <Row icon="label">{company.activityLabel}</Row>
-                            )}
+                            {company.activityLabel && <Row icon="label">{company.activityLabel}</Row>}
                             {isGovernment && (
-                              <Row icon="error" sx={{color: t => t.palette.error.main}}>{m.governmentCompany}</Row>
+                              <Row icon="error" sx={{color: t => t.palette.error.main}}>
+                                {m.governmentCompany}
+                              </Row>
                             )}
                             {company.address && (
                               <Row icon="location_on">
-                                <AddressComponent address={company.address}/>
+                                <AddressComponent address={company.address} />
                               </Row>
                             )}
                           </ScRadioGroupItem>
                         )
                       })}
                     </ScRadioGroup>
-                  )}/>
+                  )}
+                />
               </PanelBody>
               <PanelActions>
-                <StepperActionsNext type="submit"/>
+                <StepperActionsNext type="submit" />
               </PanelActions>
             </form>
           </Panel>
         )}
       </Animate>
-      {selected?.isMarketPlace && (
-        <CompanyWebsiteVendor onSubmit={vendor => submit(selected, vendor)}/>
-      )}
+      {selected?.isMarketPlace && <CompanyWebsiteVendor onSubmit={vendor => submit(selected, vendor)} />}
     </>
   )
 }

@@ -11,7 +11,7 @@ import {useEffectFn} from '@alexandreannic/react-hooks-lib'
 import {useToast} from 'core/toast'
 import {StepperActionsNext} from 'shared/Stepper/StepperActionsNext'
 import {Country} from '@signal-conso/signalconso-api-sdk-js'
-import {Alert, Txt} from "mui-extension";
+import {Alert, Txt} from 'mui-extension'
 
 interface Form {
   name: string
@@ -58,7 +58,8 @@ export const CompanyAskForeignDetails = ({onSubmit}: Props) => {
                 fullWidth
                 {...register('name', {
                   required: {value: true, message: m.required},
-                })}/>
+                })}
+              />
             </FormLayout>
             <FormLayout required label={m.country}>
               <Controller
@@ -71,26 +72,35 @@ export const CompanyAskForeignDetails = ({onSubmit}: Props) => {
                   <Autocomplete<Country>
                     {...field}
                     onChange={(e, data) => field.onChange(data)}
-                    renderOption={(props, option) => <li {...props}><Box component="span" sx={{mr: 2, fontSize: 24}}>{countryToFlag(option.code)}</Box> {option.name}</li>}
+                    renderOption={(props, option) => (
+                      <li {...props}>
+                        <Box component="span" sx={{mr: 2, fontSize: 24}}>
+                          {countryToFlag(option.code)}
+                        </Box>{' '}
+                        {option.name}
+                      </li>
+                    )}
                     loading={countries.loading}
                     options={countries.entity ?? []}
                     getOptionLabel={_ => _.name}
-                    renderInput={(params) => <ScInput
-                      {...params}
-                      error={!!errors.country}
-                      helperText={(errors.country as any)?.message ?? ''}
-                      placeholder={m.countryPlaceholder}
-                      fullWidth
-                    />}
+                    renderInput={params => (
+                      <ScInput
+                        {...params}
+                        error={!!errors.country}
+                        helperText={(errors.country as any)?.message ?? ''}
+                        placeholder={m.countryPlaceholder}
+                        fullWidth
+                      />
+                    )}
                   />
                 )}
               />
             </FormLayout>
-            <br/>
+            <br />
             <Alert dense type="info" sx={{mb: 2}} deletable persistentDelete>
-              <Txt size="small" dangerouslySetInnerHTML={{__html: m.cantIdentifyCompany}}/>
+              <Txt size="small" dangerouslySetInnerHTML={{__html: m.cantIdentifyCompany}} />
             </Alert>
-            <FormLayout required label={m.yourPostalCode} >
+            <FormLayout required label={m.yourPostalCode}>
               <ScInput
                 error={!!errors.postalCode}
                 helperText={errors.postalCode?.message ?? ''}
@@ -104,7 +114,7 @@ export const CompanyAskForeignDetails = ({onSubmit}: Props) => {
           </PanelBody>
 
           <PanelActions>
-            <StepperActionsNext type="submit"/>
+            <StepperActionsNext type="submit" />
           </PanelActions>
         </form>
       </Panel>

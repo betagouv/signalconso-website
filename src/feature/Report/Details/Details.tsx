@@ -1,7 +1,15 @@
 import React, {useEffect, useMemo, useState} from 'react'
 import {Alert, Txt} from 'mui-extension'
 import {useReportFlowContext} from '../ReportFlowContext'
-import {DetailInput, DetailInputType, FileOrigin, ReportDraft, ReportTag, SubcategoryInput, UploadedFile} from '@signal-conso/signalconso-api-sdk-js'
+import {
+  DetailInput,
+  DetailInputType,
+  FileOrigin,
+  ReportDraft,
+  ReportTag,
+  SubcategoryInput,
+  UploadedFile,
+} from '@signal-conso/signalconso-api-sdk-js'
 import {ScDatepicker} from 'shared/Datepicker/Datepicker'
 import {fnSwitch, mapFor} from '@alexandreannic/ts-utils/lib/common'
 import {useI18n} from 'core/i18n'
@@ -28,10 +36,16 @@ import {DetailsSpecifyInput} from './DetailsSpecifyInput'
 import {useAnalyticContext} from 'core/analytic/AnalyticContext'
 import {EventCategories, ReportEventActions} from 'core/analytic/analytic'
 
-const mapDateInput = ({value, onChange}: {value?: string, onChange: (_: string) => void}): {value?: Date, onChange: (_: Date) => void} => {
+const mapDateInput = ({
+  value,
+  onChange,
+}: {
+  value?: string
+  onChange: (_: string) => void
+}): {value?: Date; onChange: (_: Date) => void} => {
   return {
     value: value ? parse(value, appConfig.apiDateFormat, new Date()) : undefined,
-    onChange: (_: Date) => onChange(format(_, appConfig.apiDateFormat))
+    onChange: (_: Date) => onChange(format(_, appConfig.apiDateFormat)),
   }
 }
 
@@ -128,29 +142,24 @@ export const _Details = ({
           <Alert gutterBottom type="warning">
             {isTransmittable ? (
               <>
-                <span dangerouslySetInnerHTML={{__html: m.detailsTextAreaTransmittable}}/>
-                {!contractualDispute && (
-                  <span dangerouslySetInnerHTML={{__html: m.detailsTextAreaTransmittableAnonymous}}/>
-                )}
+                <span dangerouslySetInnerHTML={{__html: m.detailsTextAreaTransmittable}} />
+                {!contractualDispute && <span dangerouslySetInnerHTML={{__html: m.detailsTextAreaTransmittableAnonymous}} />}
               </>
             ) : (
               <>
-                <span dangerouslySetInnerHTML={{__html: m.detailsTextAreaNotTransmittable}}/><br/>
-                {employeeConsumer && (
-                  <span dangerouslySetInnerHTML={{__html: m.detailsTextAreaEmployeeConsumer}}/>
-                )}
+                <span dangerouslySetInnerHTML={{__html: m.detailsTextAreaNotTransmittable}} />
+                <br />
+                {employeeConsumer && <span dangerouslySetInnerHTML={{__html: m.detailsTextAreaEmployeeConsumer}} />}
               </>
             )}
           </Alert>
-          {(tags ?? []).includes(ReportTag.ProduitDangereux) && (
-            <DetailsAlertProduitDangereux/>
-          )}
+          {(tags ?? []).includes(ReportTag.ProduitDangereux) && <DetailsAlertProduitDangereux />}
 
-          <br/>
+          <br />
 
           {inputs.map((input, inputIndex) => (
             <FormLayout
-              label={<span dangerouslySetInnerHTML={{__html: input.label}}/>}
+              label={<span dangerouslySetInnerHTML={{__html: input.label}} />}
               required={!input.optionnal}
               key={inputIndex}
               sx={{
@@ -163,9 +172,9 @@ export const _Details = ({
                   rules,
                   render,
                 }: {
-                  defaultValue?: string,
-                  rules?: ControllerProps<any, any>['rules'],
-                  render: ControllerProps<any, any>['render'],
+                  defaultValue?: string
+                  rules?: ControllerProps<any, any>['rules']
+                  render: ControllerProps<any, any>['render']
                 }) => {
                   return (
                     <Controller
@@ -175,7 +184,7 @@ export const _Details = ({
                       // defaultValue={initialValues?.[inputIndex] ?? defaultValue ?? input.defaultValue ?? ''}
                       rules={{
                         required: {value: !input.optionnal, message: m.required + ' *'},
-                        ...rules
+                        ...rules,
                       }}
                       render={render}
                     />
@@ -183,118 +192,114 @@ export const _Details = ({
                 }
                 const errorMessage = errors[inputIndex]?.message
                 const hasErrors = !!errors[inputIndex]
-                return fnSwitch(input.type, {
-                  [DetailInputType.DATE_NOT_IN_FUTURE]: () => (
-                    controller({
-                      defaultValue: input.defaultValue === 'SYSDATE' ? format(new Date(), appConfig.apiDateFormat) : undefined,
-                      render: ({field}) => (
-                        <ScDatepicker
-                          {...field}
-                          {...mapDateInput(field)}
-                          fullWidth placeholder={input.placeholder}
-                          max={format(new Date(), 'yyyy-MM-dd')}
-                          helperText={errorMessage}
-                          error={hasErrors}
-                        />
-                      )
-                    })
-                  ),
-                  [DetailInputType.DATE]: () => (
-                    controller({
-                      defaultValue: input.defaultValue === 'SYSDATE' ? format(new Date(), appConfig.apiDateFormat) : undefined,
-                      render: ({field}) => (
-                        <ScDatepicker
-                          {...field}
-                          {...mapDateInput(field)}
-                          fullWidth placeholder={input.placeholder}
-                          helperText={errorMessage}
-                          error={hasErrors}
-                        />
-                      )
-                    })
-                  ),
-                  [DetailInputType.TIMESLOT]: () => (
-                    controller({
-                      render: ({field}) => (
-                        <ScSelect
-                          {...field}
-                          fullWidth
-                          placeholder={input.placeholder}
-                          helperText={errorMessage}
-                          error={hasErrors}
-                        >
-                          {mapFor(24, i =>
-                            <MenuItem key={i} value={`de ${i}h à ${i + 1}h`}>
-                              {m.timeFromTo(i, i + 1)}
-                            </MenuItem>
-                          )}
-                        </ScSelect>
-                      )
-                    })
-                  ),
-                  [DetailInputType.RADIO]: () => (
-                    controller({
-                      render: ({field}) => (
-                        <ScRadioGroup
-                          {...field}
-                          sx={{mt: 1}} dense
-                          helperText={errorMessage}
-                          error={hasErrors}
-                        >
-                          {input.options?.map((option, i) =>
-                            <ScRadioGroupItem
-                              key={option}
-                              value={option}
-                              title={<span dangerouslySetInnerHTML={{__html: option}}/>}
-                              description={
-                                (field.value === option && option.includes(SpecifyFormUtils.keyword))
-                                  ? <DetailsSpecifyInput
-                                    control={control}
-                                    error={errors[SpecifyFormUtils.getInputName(inputIndex)]}
-                                    defaultValue={initialValues?.[SpecifyFormUtils.getInputName(inputIndex)]}
-                                    name={SpecifyFormUtils.getInputName(inputIndex)}
-                                  />
-                                  : undefined
-                              }
-                            />
-                          )}
-                        </ScRadioGroup>
-                      )
-                    })
-                  ),
-                  [DetailInputType.CHECKBOX]: () => (
-                    controller({
+                return fnSwitch(
+                  input.type,
+                  {
+                    [DetailInputType.DATE_NOT_IN_FUTURE]: () =>
+                      controller({
+                        defaultValue: input.defaultValue === 'SYSDATE' ? format(new Date(), appConfig.apiDateFormat) : undefined,
                         render: ({field}) => (
-                          <ScRadioGroup
+                          <ScDatepicker
                             {...field}
-                            multiple
+                            {...mapDateInput(field)}
+                            fullWidth
+                            placeholder={input.placeholder}
+                            max={format(new Date(), 'yyyy-MM-dd')}
                             helperText={errorMessage}
                             error={hasErrors}
-                            sx={{mt: 1}} dense
+                          />
+                        ),
+                      }),
+                    [DetailInputType.DATE]: () =>
+                      controller({
+                        defaultValue: input.defaultValue === 'SYSDATE' ? format(new Date(), appConfig.apiDateFormat) : undefined,
+                        render: ({field}) => (
+                          <ScDatepicker
+                            {...field}
+                            {...mapDateInput(field)}
+                            fullWidth
+                            placeholder={input.placeholder}
+                            helperText={errorMessage}
+                            error={hasErrors}
+                          />
+                        ),
+                      }),
+                    [DetailInputType.TIMESLOT]: () =>
+                      controller({
+                        render: ({field}) => (
+                          <ScSelect
+                            {...field}
+                            fullWidth
+                            placeholder={input.placeholder}
+                            helperText={errorMessage}
+                            error={hasErrors}
                           >
-                            {input.options?.map(option =>
+                            {mapFor(24, i => (
+                              <MenuItem key={i} value={`de ${i}h à ${i + 1}h`}>
+                                {m.timeFromTo(i, i + 1)}
+                              </MenuItem>
+                            ))}
+                          </ScSelect>
+                        ),
+                      }),
+                    [DetailInputType.RADIO]: () =>
+                      controller({
+                        render: ({field}) => (
+                          <ScRadioGroup {...field} sx={{mt: 1}} dense helperText={errorMessage} error={hasErrors}>
+                            {input.options?.map((option, i) => (
                               <ScRadioGroupItem
                                 key={option}
                                 value={option}
-                                title={<span dangerouslySetInnerHTML={{__html: option}}/>}
+                                title={<span dangerouslySetInnerHTML={{__html: option}} />}
                                 description={
-                                  ((field.value as string[] | undefined)?.includes(option) && option.includes(SpecifyFormUtils.keyword))
-                                    ? <DetailsSpecifyInput
+                                  field.value === option && option.includes(SpecifyFormUtils.keyword) ? (
+                                    <DetailsSpecifyInput
                                       control={control}
                                       error={errors[SpecifyFormUtils.getInputName(inputIndex)]}
                                       defaultValue={initialValues?.[SpecifyFormUtils.getInputName(inputIndex)]}
                                       name={SpecifyFormUtils.getInputName(inputIndex)}
                                     />
-                                    : undefined
+                                  ) : undefined
                                 }
                               />
-                            )}
+                            ))}
                           </ScRadioGroup>
-                        )
-                      }
-                    )
-                  ),
-                  [DetailInputType.TEXT]: () => (
+                        ),
+                      }),
+                    [DetailInputType.CHECKBOX]: () =>
+                      controller({
+                        render: ({field}) => (
+                          <ScRadioGroup {...field} multiple helperText={errorMessage} error={hasErrors} sx={{mt: 1}} dense>
+                            {input.options?.map(option => (
+                              <ScRadioGroupItem
+                                key={option}
+                                value={option}
+                                title={<span dangerouslySetInnerHTML={{__html: option}} />}
+                                description={
+                                  (field.value as string[] | undefined)?.includes(option) &&
+                                  option.includes(SpecifyFormUtils.keyword) ? (
+                                    <DetailsSpecifyInput
+                                      control={control}
+                                      error={errors[SpecifyFormUtils.getInputName(inputIndex)]}
+                                      defaultValue={initialValues?.[SpecifyFormUtils.getInputName(inputIndex)]}
+                                      name={SpecifyFormUtils.getInputName(inputIndex)}
+                                    />
+                                  ) : undefined
+                                }
+                              />
+                            ))}
+                          </ScRadioGroup>
+                        ),
+                      }),
+                    [DetailInputType.TEXT]: () =>
+                      controller({
+                        rules: {
+                          maxLength: {value: appConfig.maxDescriptionInputLength, message: ''},
+                        },
+                        render: ({field}) => <ScInput {...field} error={hasErrors} fullWidth placeholder={input.placeholder} />,
+                      }),
+                  },
+                  () =>
                     controller({
                       rules: {
                         maxLength: {value: appConfig.maxDescriptionInputLength, message: ''},
@@ -302,29 +307,21 @@ export const _Details = ({
                       render: ({field}) => (
                         <ScInput
                           {...field}
+                          helperText={
+                            errors[inputIndex]?.type === 'required'
+                              ? m.required
+                              : `${getValues('' + inputIndex)?.length ?? 0} / ${appConfig.maxDescriptionInputLength}`
+                          }
                           error={hasErrors}
+                          multiline
+                          minRows={5}
+                          maxRows={10}
                           fullWidth
                           placeholder={input.placeholder}
                         />
-                      )
-                    })
-                  )
-                }, () => (
-                  controller({
-                    rules: {
-                      maxLength: {value: appConfig.maxDescriptionInputLength, message: ''},
-                    },
-                    render: ({field}) => (
-                      <ScInput
-                        {...field}
-                        helperText={errors[inputIndex]?.type === 'required' ? m.required : `${getValues('' + inputIndex)?.length ?? 0} / ${appConfig.maxDescriptionInputLength}`}
-                        error={hasErrors}
-                        multiline
-                        minRows={5} maxRows={10} fullWidth placeholder={input.placeholder}
-                      />
-                    )
-                  })
-                ))
+                      ),
+                    }),
+                )
               })()}
             </FormLayout>
           ))}
@@ -336,10 +333,10 @@ export const _Details = ({
             {ReportDraft.isTransmittableToPro({tags, employeeConsumer}) && (
               <>
                 {!contractualDispute && (
-                  <Txt color="hint" block gutterBottom dangerouslySetInnerHTML={{__html: m.attachmentsDescAnonymous}}/>
+                  <Txt color="hint" block gutterBottom dangerouslySetInnerHTML={{__html: m.attachmentsDescAnonymous}} />
                 )}
                 <Alert dense type="info" sx={{mb: 2}} deletable persistentDelete>
-                  <Txt size="small" dangerouslySetInnerHTML={{__html: m.attachmentsDesc2}}/>
+                  <Txt size="small" dangerouslySetInnerHTML={{__html: m.attachmentsDesc2}} />
                 </Alert>
               </>
             )}
@@ -353,9 +350,11 @@ export const _Details = ({
           </PanelBody>
         </Panel>
       </Animate>
-      <StepperActions next={() => {
-        handleSubmit(f => onSubmit(f, uploadedFiles))()
-      }}/>
+      <StepperActions
+        next={() => {
+          handleSubmit(f => onSubmit(f, uploadedFiles))()
+        }}
+      />
     </>
   )
 }
