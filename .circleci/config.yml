@@ -18,16 +18,22 @@ jobs:
 
       # Download and cache dependencies
       - restore_cache:
+          name: Restore Yarn Package Cache
           keys:
-            - v1-dependencies-{{ checksum "package.json" }}
+            - yarn-packages--{{ checksum "yarn.lock" }}--{{ checksum "package.json" }}
 
-      - run: npm install
+      - run:
+          name: Install Dependecies
+          command: yarn install --immutable
 
       - save_cache:
+          name: Save Yarn Package Cache
+          key: yarn-packages--{{ checksum "yarn.lock" }}--{{ checksum "package.json" }}
           paths:
             - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
+            - .yarn/cache
+            - .yarn/unplugged
 
       # run checks !
-      - run: npm run checkformat
-      - run: npm test
+      - run: yarn checkformat
+      - run: yarn test

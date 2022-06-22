@@ -56,6 +56,8 @@ const AnomalyPage = ({anomaly}: {anomaly: Anomaly}) => {
           {anomaly.category}
         </Box>
       </Box>
+      {/* Type mixup between types of react 17 and react 18 because of some indirect dependency
+        @ts-ignore */}
       <NoSSR anomaly={anomaly} />
     </Page>
   )
