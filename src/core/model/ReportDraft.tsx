@@ -10,7 +10,7 @@ import {
 import {getDraftReportInputs} from 'feature/Report/Details/draftReportInputs'
 import {isSpecifyInputName, SpecifyFormUtils} from 'feature/Report/Details/Details'
 import {fromNullable} from 'fp-ts/lib/Option'
-import {DeepPartial} from '@alexandreannic/ts-utils'
+import {DeepPartial} from '../../alexlibs/ts-utils'
 
 export type DetailInputValues2 = {[key: string]: string | string[]}
 

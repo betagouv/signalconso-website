@@ -7,7 +7,7 @@ import React from 'react'
 import {_Company} from './Company'
 import {ReportDraft2} from 'core/model/ReportDraft'
 import {IdentifyBy} from './CompanyIdentifyBy'
-import {fnSwitch} from '@alexandreannic/ts-utils/lib/common'
+import {fnSwitch} from '../../../alexlibs/ts-utils'
 import {Fixture} from '../../../test/fixture'
 import {waitFor} from '@testing-library/dom'
 

@@ -1,7 +1,7 @@
 import {ApiAdresseClient} from 'core/client/ApiAdresseClient'
 import {throttle} from 'core/lodashNamedExport'
 import {useI18n} from 'core/i18n'
-import {useAsync, useEffectFn, useFetcher} from '@alexandreannic/react-hooks-lib'
+import {useAsync, useEffectFn, useFetcher} from '../../alexlibs/react-hooks-lib'
 import {Autocomplete, CircularProgress} from '@mui/material'
 import React, {forwardRef, useEffect, useMemo, useState} from 'react'
 import {ScInput, ScInputProps} from '../Input/ScInput'
