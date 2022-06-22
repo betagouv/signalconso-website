@@ -10,17 +10,24 @@ interface Pipe {
   <R>(...funcs: Function[]): Func<string, R>
 }
 
-export const env = (env: {[key: string]: string | undefined} = process.env): Pipe => (...funcs: any[]) => (envname: string) => {
-  try {
-    const envValue = env[envname]
-    if (funcs.length === 0) {
-      return envValue
+export const env =
+  (env: {[key: string]: string | undefined} = process.env): Pipe =>
+  (...funcs: any[]) =>
+  (envname: string) => {
+    try {
+      const envValue = env[envname]
+      if (funcs.length === 0) {
+        return envValue
+      }
+      if (funcs.length === 1) {
+        return funcs[0](envValue)
+      }
+      return funcs.reduce(
+        (a: Function, b: Function) =>
+          (...args: any[]) =>
+            b(a(...args)),
+      )(envValue)
+    } catch (e: any) {
+      throw new Error(`[utils/Env] ${envname}: ${e.message}`)
     }
-    if (funcs.length === 1) {
-      return funcs[0](envValue)
-    }
-    return (funcs.reduce((a: Function, b: Function) => (...args: any[]) => b(a(...args))))(envValue)
-  } catch (e: any) {
-    throw new Error(`[utils/Env] ${envname}: ${e.message}`);
   }
-};

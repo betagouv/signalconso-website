@@ -1,10 +1,10 @@
 import {Dispatch, SetStateAction, useState} from 'react'
 
 export interface UseToggle {
-  value: boolean,
-  setTrue: () => void,
-  setFalse: () => void,
-  toggle: () => void,
+  value: boolean
+  setTrue: () => void
+  setFalse: () => void
+  toggle: () => void
   set: Dispatch<SetStateAction<boolean>>
 }
 
@@ -15,6 +15,6 @@ export const useBoolean = (value: boolean = false): UseToggle => {
     setTrue: () => setB(true),
     setFalse: () => setB(false),
     toggle: () => setB(b => !b),
-    set: setB
+    set: setB,
   }
 }
