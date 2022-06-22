@@ -5,17 +5,6 @@ __metadata:
   version: 6
   cacheKey: 8
 
-"@alexandreannic/react-hooks-lib@npm:1.11.5":
-  version: 1.11.5
-  resolution: "@alexandreannic/react-hooks-lib@npm:1.11.5"
-  dependencies:
-    ts-node: ^10.7.0
-  peerDependencies:
-    react: 17.0.2
-  checksum: 71b8c1caf158e58c0f213420f6c92ff078072e772f6001c6360b2048d08b60270064f2af23052f0b00cfc02338e5b6b80a874adf67861136a889cd57217a55cc
-  languageName: node
-  linkType: hard
-
 "@alexandreannic/react-hooks-lib@npm:^1.11.4":
   version: 1.11.12
   resolution: "@alexandreannic/react-hooks-lib@npm:1.11.12"
@@ -24,18 +13,6 @@ __metadata:
   peerDependencies:
     react: 17.0.2
   checksum: 0ab7711ddeca23ac9f28855b21f94f921b5ddd37c2d08ae60068e31a845c95a14ec4e6181efa25d0dd4a8c2ecc834728501b76eeed972ff2125dcb000043eb0b
-  languageName: node
-  linkType: hard
-
-"@alexandreannic/ts-utils@npm:1.7.4":
-  version: 1.7.4
-  resolution: "@alexandreannic/ts-utils@npm:1.7.4"
-  dependencies:
-    byline: ^5.0.0
-    fs-extra: ^8.1.0
-    lodash.get: ^4.4.2
-    ts-node: ^10.7.0
-  checksum: e8a083d03e455e12d0a13286b176b34c09ca2253452b56d45d6d7818bfa656bf08de48182350a0feb106354bd6739d90628044cf33a3e32086b98340d0fa3c43
   languageName: node
   linkType: hard
 
@@ -8172,8 +8149,6 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "signalconso-website@workspace:."
   dependencies:
-    "@alexandreannic/react-hooks-lib": 1.11.5
-    "@alexandreannic/ts-utils": 1.7.4
     "@babel/runtime": 7.18.3
     "@emotion/cache": 11.7.1
     "@emotion/react": 11.9.0
