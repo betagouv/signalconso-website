@@ -140,7 +140,7 @@ export const fr = {
     activateMyAccount: 'Activer mon compte',
     createMyAccount: 'Créer mon compte',
     atLeast8Characters: '8 caractères minimum',
-    invalidEmail: 'Email invalide',
+    invalidEmail: 'Veuillez utiliser une adresse email valide et sans accents',
     invalidPhone: 'Téléphone invalide',
     firstName: 'Prénom',
     lastName: 'Nom',
