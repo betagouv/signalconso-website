@@ -12,10 +12,7 @@ export interface IconBtnProps extends IconButtonProps {
 export const IconBtn = forwardRef(({icon, loading, children, disabled, ...props}: IconBtnProps, ref: any) => {
   return (
     <IconButton {...props} disabled={disabled || loading} ref={ref}>
-      {loading
-        ? <CircularProgress size={24}/>
-        : <>{icon ? <Icon>{icon}</Icon> : children}</>
-      }
+      {loading ? <CircularProgress size={24} /> : <>{icon ? <Icon>{icon}</Icon> : children}</>}
     </IconButton>
-  );
+  )
 })

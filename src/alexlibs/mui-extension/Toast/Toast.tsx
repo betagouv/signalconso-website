@@ -13,7 +13,7 @@ const ToastContext = React.createContext<WithToast>({
   toastLoading: noop,
 })
 
-type ToastType = 'error' | 'loading' | 'warning' | 'success' | 'info' | undefined;
+type ToastType = 'error' | 'loading' | 'warning' | 'success' | 'info' | undefined
 
 export interface ToastOptions extends Pick<SnackbarProps, 'autoHideDuration' | 'action'> {
   onClose?: (event: any) => void
@@ -21,17 +21,17 @@ export interface ToastOptions extends Pick<SnackbarProps, 'autoHideDuration' | '
 }
 
 export interface WithToast {
-  toastError: (m: string, options?: ToastOptions) => void;
-  toastSuccess: (m: string, options?: ToastOptions) => void;
-  toastWarning: (m: string, options?: ToastOptions) => void;
-  toastInfo: (m: string, options?: ToastOptions) => void;
-  toastLoading: (m: string, options?: ToastOptions) => void;
+  toastError: (m: string, options?: ToastOptions) => void
+  toastSuccess: (m: string, options?: ToastOptions) => void
+  toastWarning: (m: string, options?: ToastOptions) => void
+  toastInfo: (m: string, options?: ToastOptions) => void
+  toastLoading: (m: string, options?: ToastOptions) => void
 }
 
 export interface ToastProviderProps {
   children: ReactNode
-  vertical?: 'top' | 'bottom';
-  horizontal?: 'left' | 'center' | 'right';
+  vertical?: 'top' | 'bottom'
+  horizontal?: 'left' | 'center' | 'right'
 }
 
 export const ToastProvider = ({children, vertical = 'bottom', horizontal = 'left'}: ToastProviderProps) => {
@@ -50,15 +50,15 @@ export const ToastProvider = ({children, vertical = 'bottom', horizontal = 'left
   const renderIcon = (type: ToastType) => {
     switch (type!) {
       case 'error':
-        return <Icon sx={{color: t => t.palette.error.main,}}>error</Icon>
+        return <Icon sx={{color: t => t.palette.error.main}}>error</Icon>
       case 'success':
-        return <Icon sx={{color: colorSuccess,}}>check_circle</Icon>
+        return <Icon sx={{color: colorSuccess}}>check_circle</Icon>
       case 'warning':
-        return <Icon sx={{color: colorWarning,}}>warning</Icon>
+        return <Icon sx={{color: colorWarning}}>warning</Icon>
       case 'info':
-        return <Icon sx={{color: colorInfo,}}>info</Icon>
+        return <Icon sx={{color: colorInfo}}>info</Icon>
       case 'loading':
-        return <CircularProgress size={24} thickness={5}/>
+        return <CircularProgress size={24} thickness={5} />
       default:
         return <></>
     }
@@ -73,23 +73,27 @@ export const ToastProvider = ({children, vertical = 'bottom', horizontal = 'left
   }
 
   return (
-    <ToastContext.Provider value={{
-      toastError: pop('error'),
-      toastSuccess: pop('success'),
-      toastWarning: pop('warning'),
-      toastInfo: pop('info'),
-      toastLoading: pop('loading'),
-    }}>
+    <ToastContext.Provider
+      value={{
+        toastError: pop('error'),
+        toastSuccess: pop('success'),
+        toastWarning: pop('warning'),
+        toastInfo: pop('info'),
+        toastLoading: pop('loading'),
+      }}
+    >
       {children}
       <Snackbar
         anchorOrigin={{vertical, horizontal}}
         open={open}
-        autoHideDuration={options?.autoHideDuration === undefined ? type === 'error' ? null : 6000 : options.autoHideDuration}
+        autoHideDuration={options?.autoHideDuration === undefined ? (type === 'error' ? null : 6000) : options.autoHideDuration}
         onClose={handleClose}
         message={
           <div style={{display: 'flex', alignItems: 'center'}}>
             {renderIcon(type)}
-            <Box component="span" sx={{ml: 2}}>{message}</Box>
+            <Box component="span" sx={{ml: 2}}>
+              {message}
+            </Box>
           </div>
         }
         action={
@@ -102,13 +106,10 @@ export const ToastProvider = ({children, vertical = 'bottom', horizontal = 'left
         }
       />
     </ToastContext.Provider>
-  );
+  )
 }
 
-export const useToast = () => useContext(ToastContext);
+export const useToast = () => useContext(ToastContext)
 
-export const withToast = (Component: any) => (props: any) => (
-  <ToastContext.Consumer>
-    {(other: WithToast) => <Component {...props} {...other}/>}
-  </ToastContext.Consumer>
-)
+export const withToast = (Component: any) => (props: any) =>
+  <ToastContext.Consumer>{(other: WithToast) => <Component {...props} {...other} />}</ToastContext.Consumer>

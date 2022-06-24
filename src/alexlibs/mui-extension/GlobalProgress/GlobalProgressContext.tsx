@@ -6,35 +6,27 @@ export const GlobalProgressContext = React.createContext({} as IState)
 export const progressbarAnimationDuration = 400
 
 export interface IProgressState {
-  currentStep: number,
-  steps: number,
-  started: boolean,
+  currentStep: number
+  steps: number
+  started: boolean
 }
 
-export interface GlobalProgressProviderProps {
-}
+export interface GlobalProgressProviderProps {}
 
 export interface WithProgress {
-  readonly progressStart: (steps?: number) => void;
-  readonly progressStop: () => void;
-  readonly progressComplete: () => void;
-  readonly progressNext: () => void;
-  readonly promisesWithProgress: (...promises: Promise<any>[]) => Promise<any>[];
+  readonly progressStart: (steps?: number) => void
+  readonly progressStop: () => void
+  readonly progressComplete: () => void
+  readonly progressNext: () => void
+  readonly promisesWithProgress: (...promises: Promise<any>[]) => Promise<any>[]
 }
 
-export interface IState extends IProgressState,
-  WithProgress {
-}
+export interface IState extends IProgressState, WithProgress {}
 
 class GlobalProgressProvider extends React.Component<GlobalProgressProviderProps, IState> {
-
   private timeouts: number[] = []
   render() {
-    return (
-      <GlobalProgressContext.Provider value={this.state}>
-        {this.props.children}
-      </GlobalProgressContext.Provider>
-    )
+    return <GlobalProgressContext.Provider value={this.state}>{this.props.children}</GlobalProgressContext.Provider>
   }
 
   componentWillUnmount() {
@@ -52,15 +44,16 @@ class GlobalProgressProvider extends React.Component<GlobalProgressProviderProps
 
   private readonly promisesWithProgress = (...promises: Promise<any>[]): Promise<any>[] => {
     this.start(promises.length)
-    return promises.map(p => p
-      .then(_ => {
-        this.next()
-        return _
-      })
-      .catch(_ => {
-        this.stop()
-        return Promise.reject(_)
-      })
+    return promises.map(p =>
+      p
+        .then(_ => {
+          this.next()
+          return _
+        })
+        .catch(_ => {
+          this.stop()
+          return Promise.reject(_)
+        }),
     )
   }
 
@@ -73,17 +66,23 @@ class GlobalProgressProvider extends React.Component<GlobalProgressProviderProps
 
   private readonly complete = () => {
     if (this.state.started) {
-      this.setState(state => ({
-        currentStep: state.steps,
-      }), this.stopHandlingAnimation)
+      this.setState(
+        state => ({
+          currentStep: state.steps,
+        }),
+        this.stopHandlingAnimation,
+      )
     }
   }
 
   private readonly next = () => {
     if (this.state.started) {
-      this.setState(state => ({
-        currentStep: Math.min(state.currentStep + 1, state.steps),
-      }), () => this.state.currentStep === this.state.steps && this.stopHandlingAnimation())
+      this.setState(
+        state => ({
+          currentStep: Math.min(state.currentStep + 1, state.steps),
+        }),
+        () => this.state.currentStep === this.state.steps && this.stopHandlingAnimation(),
+      )
     }
   }
 
@@ -116,13 +115,9 @@ class GlobalProgressProvider extends React.Component<GlobalProgressProviderProps
 export default GlobalProgressProvider
 
 export const useGlobalProgress = (): WithProgress => {
-  const {
-    progressStart,
-    progressStop,
-    progressComplete,
-    progressNext,
-    promisesWithProgress,
-  } = useContext(GlobalProgressContext) as IState
+  const {progressStart, progressStop, progressComplete, progressNext, promisesWithProgress} = useContext(
+    GlobalProgressContext,
+  ) as IState
   return {
     progressStart,
     progressStop,
@@ -133,11 +128,7 @@ export const useGlobalProgress = (): WithProgress => {
 }
 
 export const useGlobalProgressState = (): IProgressState => {
-  const {
-    currentStep,
-    steps,
-    started,
-  } = useContext(GlobalProgressContext) as IState
+  const {currentStep, steps, started} = useContext(GlobalProgressContext) as IState
   return {
     currentStep,
     steps,
@@ -145,8 +136,9 @@ export const useGlobalProgressState = (): IProgressState => {
   }
 }
 
-export const withGlobalProgress = (Component: any) => (props: any) => (
-  <GlobalProgressContext.Consumer>
-    {(other: any /*WithProgress*/) => <Component {...props} {...other}/>}
-  </GlobalProgressContext.Consumer>
-)
+export const withGlobalProgress = (Component: any) => (props: any) =>
+  (
+    <GlobalProgressContext.Consumer>
+      {(other: any /*WithProgress*/) => <Component {...props} {...other} />}
+    </GlobalProgressContext.Consumer>
+  )

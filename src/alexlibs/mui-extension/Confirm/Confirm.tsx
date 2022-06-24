@@ -12,7 +12,7 @@ export interface ConfirmProps extends Omit<DialogProps, 'children' | 'onClick' |
   onConfirm?: (event: SyntheticEvent<any>, close: () => void) => void
   confirmDisabled?: boolean
   onClick?: EventHandler<SyntheticEvent<any>>
-  PaperProps?: Partial<PaperProps>,
+  PaperProps?: Partial<PaperProps>
   loading?: boolean
 }
 
@@ -31,7 +31,6 @@ export const Confirm = ({
   PaperProps,
   ...props
 }: ConfirmProps) => {
-
   const [open, setOpen] = useState<boolean>(false)
 
   const close = () => setOpen(false)
@@ -53,17 +52,21 @@ export const Confirm = ({
           if (children.props.onClick) children.props.onClick(event)
           if (onClick) onClick(event)
           setOpen(true)
-        }
+        },
       })}
       <Dialog open={open} {...props} PaperProps={PaperProps}>
-        {loading && <LinearProgress sx={{
-          position: 'absolute',
-          top: 0,
-          right: 0,
-          left: 0,
-        }}/>}
+        {loading && (
+          <LinearProgress
+            sx={{
+              position: 'absolute',
+              top: 0,
+              right: 0,
+              left: 0,
+            }}
+          />
+        )}
         <DialogTitle>{title}</DialogTitle>
-        <DialogContent>{(typeof content === 'function') ? content(close) : content}</DialogContent>
+        <DialogContent>{typeof content === 'function' ? content(close) : content}</DialogContent>
         <DialogActions>
           <Button color="primary" onClick={() => setOpen(false)}>
             {cancelLabel || 'Cancel'}

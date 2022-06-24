@@ -9,11 +9,11 @@ export const stopPropagation =
       preventDefault?: () => void
       stopPropagation?: () => void
     },
-    >(
+  >(
     action: (event: E) => any,
   ) =>
-    (event: E) => {
-      event.stopPropagation?.()
-      event.preventDefault?.()
-      action(event)
-    }
+  (event: E) => {
+    event.stopPropagation?.()
+    event.preventDefault?.()
+    action(event)
+  }
