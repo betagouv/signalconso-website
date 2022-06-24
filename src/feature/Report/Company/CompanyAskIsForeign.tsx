@@ -1,7 +1,7 @@
 import {Panel, PanelBody} from 'shared/Panel/Panel'
 import {useI18n} from 'core/i18n'
 import {ScRadioGroup, ScRadioGroupItem} from 'shared/RadioGroup'
-import {Txt} from 'mui-extension'
+import {Txt} from '../../../alexlibs/mui-extension'
 import {Animate} from 'shared/Animate/Animate'
 import {ReactNode, useState} from 'react'
 import {AccordionInline} from 'shared/AccordionInline/AccordionInline'

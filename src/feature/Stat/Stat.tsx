@@ -5,7 +5,7 @@ import {Panel} from 'shared/Panel/Panel'
 import {CountByDate, SimpleStat} from '@signal-conso/signalconso-api-sdk-js'
 import {useI18n} from 'core/i18n'
 import {useFetcher} from '../../alexlibs/react-hooks-lib'
-import {Txt} from 'mui-extension'
+import {Txt} from '../../alexlibs/mui-extension'
 import {map} from '../../alexlibs/ts-utils'
 import {Skeleton} from '@mui/material'
 

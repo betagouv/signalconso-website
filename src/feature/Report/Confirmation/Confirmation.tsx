@@ -1,6 +1,6 @@
 import {useReportFlowContext} from '../ReportFlowContext'
 import {useI18n} from 'core/i18n'
-import {Alert, Txt} from 'mui-extension'
+import {Alert, Txt} from '../../../alexlibs/mui-extension'
 import {Anomaly, FileOrigin, ReportDraft} from '@signal-conso/signalconso-api-sdk-js'
 import {ConfirmationStep, ConfirmationStepper} from './ConfirmationStepper'
 import {Animate} from 'shared/Animate/Animate'

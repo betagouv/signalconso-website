@@ -1,5 +1,5 @@
 import {Panel, PanelActions, PanelBody} from 'shared/Panel/Panel'
-import {Fender, Txt} from 'mui-extension'
+import {Fender, Txt} from '../../../alexlibs/mui-extension'
 import {Box, BoxProps, Icon} from '@mui/material'
 import {useReportFlowContext} from '../ReportFlowContext'
 import {Country, Report, ReportDraft, ReportTag} from '@signal-conso/signalconso-api-sdk-js'

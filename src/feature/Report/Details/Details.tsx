@@ -1,5 +1,5 @@
 import React, {useEffect, useMemo, useState} from 'react'
-import {Alert, Txt} from 'mui-extension'
+import {Alert, Txt} from '../../../alexlibs/mui-extension'
 import {useReportFlowContext} from '../ReportFlowContext'
 import {
   DetailInput,

@@ -1,5 +1,5 @@
 import {ScInput} from 'shared/Input/ScInput'
-import {IconBtn, Txt} from 'mui-extension'
+import {IconBtn, Txt} from '../../../alexlibs/mui-extension'
 import React, {ReactNode} from 'react'
 import {useI18n} from 'core/i18n'
 import {useApiSdk} from 'core/context/ApiSdk'

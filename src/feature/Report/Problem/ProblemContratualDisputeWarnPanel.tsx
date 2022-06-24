@@ -1,5 +1,5 @@
 import {Panel, PanelBody, PanelProps} from 'shared/Panel/Panel'
-import {Txt} from 'mui-extension'
+import {Txt} from '../../../alexlibs/mui-extension'
 import React from 'react'
 import {Animate} from 'shared/Animate/Animate'
 import {useI18n} from 'core/i18n'

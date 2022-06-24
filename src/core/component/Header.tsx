@@ -8,7 +8,7 @@ import {appConfig} from '../../conf/appConfig'
 import {BtnAdmin} from './BtnAdmin'
 import {useMemo, useState} from 'react'
 import {useWindowWidth} from 'core/useWindowWidth'
-import {IconBtn} from 'mui-extension/lib'
+import {IconBtn} from '../../alexlibs/mui-extension'
 
 interface HeaderItemProps extends ScButtonProps {
   href?: string

@@ -1,4 +1,4 @@
-import {useToast as useMuiToast} from 'mui-extension/lib/Toast/Toast'
+import {useToast as useMuiToast} from '../alexlibs/mui-extension'
 import {ApiError} from '@signal-conso/signalconso-api-sdk-js'
 import {useI18n} from './i18n'
 

@@ -1,6 +1,6 @@
 import {Anomaly, Index} from '@signal-conso/signalconso-api-sdk-js'
 import {alpha, Box, useTheme} from '@mui/material'
-import {Txt} from 'mui-extension/lib'
+import {Txt} from '../../alexlibs/mui-extension'
 import Link from 'next/link'
 import {AnomalyImage} from './AnomalyImage'
 

@@ -11,7 +11,7 @@ import {useEffectFn} from '../../../alexlibs/react-hooks-lib'
 import {useToast} from 'core/toast'
 import {StepperActionsNext} from 'shared/Stepper/StepperActionsNext'
 import {Country} from '@signal-conso/signalconso-api-sdk-js'
-import {Alert, Txt} from 'mui-extension'
+import {Alert, Txt} from '../../../alexlibs/mui-extension'
 
 interface Form {
   name: string
