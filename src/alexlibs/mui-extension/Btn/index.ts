@@ -1,2 +1,2 @@
 export {Btn} from './Btn'
-export {BtnProps} from './Btn'
+export type {BtnProps} from './Btn'
