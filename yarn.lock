@@ -2110,7 +2110,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/lodash.throttle@npm:^4.1.6":
+"@types/lodash.throttle@npm:^4.1.7":
   version: 4.1.7
   resolution: "@types/lodash.throttle@npm:4.1.7"
   dependencies:
@@ -7578,19 +7578,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-persistent-state@npm:1.1.7":
-  version: 1.1.7
-  resolution: "react-persistent-state@npm:1.1.7"
-  dependencies:
-    "@types/lodash.throttle": ^4.1.6
-    lodash.throttle: ^4.1.1
-  peerDependencies:
-    react: 17.0.2
-    react-dom: 17.0.2
-  checksum: 7936cd8e962c0514a7589fc507d802e894c62b473a30b930839d1ceb9d17d2d693f807c98c789e7712030e2e5c17be28cd194314455ec004e9e9e80f7c77b8fb
-  languageName: node
-  linkType: hard
-
 "react-resize-detector@npm:^6.6.3":
   version: 6.7.8
   resolution: "react-resize-detector@npm:6.7.8"
@@ -8119,6 +8106,7 @@ __metadata:
     "@types/date-fns": 2.6.0
     "@types/jest": 27.5.1
     "@types/lodash": 4.14.182
+    "@types/lodash.throttle": ^4.1.7
     "@types/node": 16.11.6
     "@types/randomstring": 1.1.8
     "@types/react": 17.0.33
@@ -8134,6 +8122,7 @@ __metadata:
     jest: 27.5.1
     jest-html-reporters: 3.0.8
     lodash: 4.17.21
+    lodash.throttle: ^4.1.1
     next: 12.1.6
     prettier: 2.7.1
     randomstring: 1.2.2
@@ -8141,7 +8130,6 @@ __metadata:
     react-dom: 17.0.2
     react-hook-form: 7.31.3
     react-imask: 6.4.2
-    react-persistent-state: 1.1.7
     react-swipeable-views: 0.14.0
     recharts: 2.1.10
     smoothscroll-polyfill: 0.4.4
