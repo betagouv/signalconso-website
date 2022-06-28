@@ -1,4 +1,17 @@
-import React, {useEffect, useRef} from 'react'
+import React, {useMemo, useEffect, useRef} from 'react'
+
+export const useEffectFn = <T, R>(dep: T | undefined, map: (_: T) => void) => {
+  return useEffect(() => {
+    if (dep !== undefined) map(dep)
+  }, [dep])
+}
+
+export const useMemoFn = <T, R>(dep: T, map: (_: T) => R): undefined extends T ? R | undefined : R => {
+  // @ts-ignore
+  return useMemo(() => {
+    return dep ? map(dep) : undefined
+  }, [dep])
+}
 
 /**
  * Use setTimeout with Hooks in a declarative way.
