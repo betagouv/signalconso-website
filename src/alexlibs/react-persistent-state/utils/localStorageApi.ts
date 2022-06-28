@@ -1,4 +1,6 @@
-const storage = {
+// Wrapper around window.localStorage
+// It just adds automatic JSON serialization/deserialization if you feed in an object
+const jsonAwareStorage = {
   load: (key: string): any => {
     let serializedState: string | null
     try {
@@ -30,20 +32,32 @@ const storage = {
 }
 
 /**
- * Alternative API
+ *
+ * Wrapper around window.localStorage so you can use it in a typesafe way for one specify key
+ * Also adds the JSON handling
+ *
+ * Usage :
+ *
+ *   const dogStorage = new LocalStorageEntity<Dog>("something-storage-key")
+ *   dogStorage.save({ ... dog object ...})
+ *
+ *   // later
+ *   const dog = dogStorage.load()
+ *
  */
 export class LocalStorageEntity<T> {
   constructor(private key: string) {}
 
   save = (value: T): void => {
-    return storage.save(this.key, value)
+    return jsonAwareStorage.save(this.key, value)
   }
 
+  // Unsafe ! this should return null (or undefined) if the key has never been saved
   load = (): T => {
-    return storage.load(this.key) as T
+    return jsonAwareStorage.load(this.key) as T
   }
 
   clear = (): void => {
-    storage.clear(this.key)
+    jsonAwareStorage.clear(this.key)
   }
 }
