@@ -1,4 +1,6 @@
-import {PromiseFnResult} from '../common/CommonType'
+type PromiseReturn<T> = T extends PromiseLike<infer U> ? U : T
+
+type PromiseFnResult<T extends (...args: any[]) => Promise<object>> = PromiseReturn<ReturnType<T>>
 
 /**
  * Map a function returning a Promise without having to redefined his parameters
