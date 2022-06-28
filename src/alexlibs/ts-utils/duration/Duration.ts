@@ -1,13 +1,11 @@
-export const SECOND = (x: number = 1): number => x * 1000
-export const MINUTE = (x: number = 1): number => x * 60 * SECOND()
-export const HOUR = (x: number = 1): number => x * 60 * MINUTE()
-export const DAY = (x: number = 1): number => x * 24 * HOUR()
+const SECOND = (x: number = 1): number => x * 1000
+const MINUTE = (x: number = 1): number => x * 60 * SECOND()
+const HOUR = (x: number = 1): number => x * 60 * MINUTE()
+const DAY = (x: number = 1): number => x * 24 * HOUR()
 
-export type TimeUnit = 'second' | 'minute' | 'hour' | 'day'
+type TimeUnit = 'second' | 'minute' | 'hour' | 'day'
 
-// export type Duration = number;
-
-export type Duration = number & {
+type Duration = number & {
   toMs: number
   toSeconds: number
   toMinutes: number

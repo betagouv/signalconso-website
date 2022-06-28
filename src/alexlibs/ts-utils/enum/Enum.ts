@@ -16,8 +16,4 @@ export class Enum {
   static readonly values = <T extends _Enum>(t: T): T[keyof T][] => {
     return Object.values(t)
   }
-
-  static readonly getKeyByValue = <T extends _Enum>(t: T, value: string /*T[keyof T]*/): keyof T | undefined => {
-    return Enum.entries(t).find(([k, v]) => v === value)?.[0]
-  }
 }
