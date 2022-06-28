@@ -39,6 +39,10 @@ const parseTimeUnit = (str?: TimeUnit): ((_: number) => number) => {
   }
 }
 
+// exemple :
+//    duration(2, 'hours)
+// Creates a Duration object with a bunch of unused methods
+// We should delete all this file and just use raw numbers instead
 export const duration: DurationConstructor = (value: number, unit?: TimeUnit) => {
   if (isNaN(value)) {
     throw new Error(`[ts-utils/Duration] value '${value}' is not a valid number.`)
