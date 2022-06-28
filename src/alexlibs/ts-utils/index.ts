@@ -1,7 +1,5 @@
 export * from './Duration'
 export * from './Enum'
-export * from './env/Env'
-export * from './env/EnvParser'
 export * from './FnSwitch'
 export * from './MapPromise'
 
