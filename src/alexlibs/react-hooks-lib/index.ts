@@ -1,4 +1,3 @@
-export * from './useBoolean/UseBoolean'
 export * from './useEffectFn/UseEffectFn'
 export * from './useFetcher/UseFetcher'
 export * from './useMemoFn/UseMemoFn'
