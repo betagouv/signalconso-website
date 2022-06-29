@@ -6,7 +6,7 @@ import {Anomaly, CompanyKinds, ReportTag} from '@signal-conso/signalconso-api-sd
 import {Problem} from './Problem'
 import {AccessReportFlow, DummyStepperProvider, fireEvent, render, ScRenderResult} from 'test/test-utils'
 import '@testing-library/jest-dom'
-import {fnSwitch} from '@alexandreannic/ts-utils/lib/common'
+import {fnSwitch} from '../../../alexlibs/ts-utils'
 import {ReportDraft2} from 'core/model/ReportDraft'
 import {Fixture} from '../../../test/fixture'
 

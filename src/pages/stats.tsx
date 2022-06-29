@@ -6,7 +6,7 @@ import {ReportStatus} from '@signal-conso/signalconso-api-sdk-js'
 import {useI18n} from 'core/i18n'
 import {Stat} from 'feature/Stat/Stat'
 import {Icon} from '@mui/material'
-import {Txt} from 'mui-extension'
+import {Txt} from '../alexlibs/mui-extension'
 
 const Stats = () => {
   const apiSdk = useApiSdk().apiSdk

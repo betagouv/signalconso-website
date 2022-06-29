@@ -10,7 +10,7 @@ import {SignalConsoPublicSdk} from '@signal-conso/signalconso-api-sdk-js'
 import {fr} from 'core/i18n/localization/fr'
 import {StepperContext} from 'shared/Stepper/Stepper'
 import {ReportDraft2} from 'core/model/ReportDraft'
-import {DeepPartial} from '@alexandreannic/ts-utils'
+import {DeepPartial} from '../alexlibs/ts-utils'
 import {AnalyticProvider} from 'core/analytic/AnalyticContext'
 
 const AllTheProviders =

@@ -1,4 +1,4 @@
-import {Alert} from 'mui-extension'
+import {Alert} from '../../../alexlibs/mui-extension'
 import React from 'react'
 
 export const DetailsAlertProduitDangereux = () => {

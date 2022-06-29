@@ -2,7 +2,7 @@ import React from 'react'
 import {alpha, Box, BoxProps, Theme} from '@mui/material'
 import {useWindowWidth} from 'core/useWindowWidth'
 import {styleUtils} from 'core/theme/theme'
-import {fnSwitch} from '@alexandreannic/ts-utils/lib/common'
+import {fnSwitch} from '../../alexlibs/ts-utils'
 import {SxProps} from '@mui/system'
 
 interface StepperHeaderProps extends BoxProps {

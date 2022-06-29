@@ -1,7 +1,7 @@
 import {Panel, PanelActions, PanelBody} from 'shared/Panel/Panel'
 import {Animate} from 'shared/Animate/Animate'
 import {useI18n} from 'core/i18n'
-import {Alert} from 'mui-extension'
+import {Alert} from '../../../alexlibs/mui-extension'
 import {ScInput} from 'shared/Input/ScInput'
 import {FormLayout} from 'shared/FormLayout/FormLayout'
 import {useForm} from 'react-hook-form'

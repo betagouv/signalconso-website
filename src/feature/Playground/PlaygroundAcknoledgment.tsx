@@ -4,7 +4,7 @@ import {Fixture} from '../../test/fixture'
 import {Report, ReportTag} from '@signal-conso/signalconso-api-sdk-js'
 import {useConstantContext} from 'core/context/ConstantContext'
 import {MenuItem, Select} from '@mui/material'
-import {Enum} from '@alexandreannic/ts-utils'
+import {Enum} from '../../alexlibs/ts-utils'
 
 export const PlaygroundAcknowledgment = () => {
   const [type, setType] = useState<AcknowledgmentCases>(AcknowledgmentCases.ReponseConso)

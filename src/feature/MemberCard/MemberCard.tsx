@@ -1,6 +1,6 @@
 import {Box} from '@mui/material'
 import {Member} from '../../pages/qui-sommes-nous'
-import {Txt} from 'mui-extension'
+import {Txt} from '../../alexlibs/mui-extension'
 
 interface Props {
   member: Member

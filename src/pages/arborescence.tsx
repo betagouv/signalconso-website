@@ -16,10 +16,10 @@ import Head from 'next/head'
 import {pageDefinitions} from 'core/pageDefinition'
 import {Box, Checkbox, Chip, Icon, Radio, useTheme} from '@mui/material'
 import {useEffect, useState} from 'react'
-import {Txt} from 'mui-extension'
-import {IconBtn} from 'mui-extension/lib'
+import {Txt} from '../alexlibs/mui-extension'
+import {IconBtn} from '../alexlibs/mui-extension'
 import {ScButton} from 'shared/Button/Button'
-import {fnSwitch} from '@alexandreannic/ts-utils/lib/common/fnSwitch/FnSwitch'
+import {fnSwitch} from '../alexlibs/ts-utils'
 import {styleUtils} from 'core/theme/theme'
 
 export const getStaticProps: GetStaticProps = async context => {

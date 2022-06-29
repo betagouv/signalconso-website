@@ -2,7 +2,7 @@ import {Control, Controller} from 'react-hook-form'
 import {FieldError} from 'react-hook-form/dist/types/errors'
 import {useI18n} from 'core/i18n'
 import {ScInput} from 'shared/Input/ScInput'
-import {stopPropagation} from 'mui-extension'
+import {stopPropagation} from '../../../alexlibs/mui-extension'
 import React from 'react'
 
 export const DetailsSpecifyInput = ({
