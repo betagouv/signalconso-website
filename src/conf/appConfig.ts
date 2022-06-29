@@ -39,15 +39,19 @@ const persistedTempEnvVariablesForFront: {[key in Env]: string | undefined} = {
 
 const map = env(persistedTempEnvVariablesForFront)
 
-const withoutEndingSlash = (_: string | undefined) => _?.replace(/\/$/, '')
+interface ParseUrl {
+  (_: string): string
+  (_?: string): string | undefined
+}
+const parseUrl: ParseUrl = (_: any) => _?.replace(/\/$/, '')
 
 export const appConfig = {
-  apiAdresseUrl: withoutEndingSlash('https://api-adresse.data.gouv.fr'),
+  apiAdresseUrl: parseUrl('https://api-adresse.data.gouv.fr'),
   isDev: map()(Env.NEXT_PUBLIC_NODE_ENV) === 'development',
   showPlayground: map(bool, defaultValue(false))(Env.NEXT_PUBLIC_SHOW_PLAYGROUND),
-  apiBaseUrl: map(defaultValue('http://localhost:9000'), _ => withoutEndingSlash(_))(Env.NEXT_PUBLIC_API_BASE_URL),
-  appBaseUrl: map(defaultValue('http://localhost:4200'), _ => withoutEndingSlash(_))(Env.NEXT_PUBLIC_APP_BASE_URL),
-  dashboardBaseUrl: map(defaultValue('http://localhost:3000'), _ => withoutEndingSlash(_))(Env.NEXT_PUBLIC_DASHBOARD_BASE_URL),
+  apiBaseUrl: map(defaultValue('http://localhost:9000'), _ => parseUrl(_))(Env.NEXT_PUBLIC_API_BASE_URL),
+  appBaseUrl: map(defaultValue('http://localhost:4200'), _ => parseUrl(_))(Env.NEXT_PUBLIC_APP_BASE_URL),
+  dashboardBaseUrl: map(defaultValue('http://localhost:3000'), _ => parseUrl(_))(Env.NEXT_PUBLIC_DASHBOARD_BASE_URL),
   basePath: map(defaultValue('/'))(Env.NEXT_PUBLIC_BASE_PATH),
   upload_allowedExtensions: ['jpg', 'jpeg', 'pdf', 'png', 'gif', 'docx'],
   reponseConsoDisplayRate: map(int, defaultValue(100))(Env.NEXT_PUBLIC_REPONSECONSO_DISPLAY_PERCENTAGE),
