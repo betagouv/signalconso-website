@@ -58,6 +58,6 @@ export const en = {
     password: 'Password',
     logout: 'Logout',
     atLeast8Characters: 'At least 8 characters',
-    invalidEmail: 'Invalid email',
+    invalidEmail: 'Please use a valid email address, and without accents or diacritics',
   },
 }
