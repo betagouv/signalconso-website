@@ -1,5 +1,5 @@
 import React, {useEffect, useMemo, useState} from 'react'
-import {Alert, Txt} from 'mui-extension'
+import {Alert, Txt} from '../../../alexlibs/mui-extension'
 import {useReportFlowContext} from '../ReportFlowContext'
 import {
   DetailInput,
@@ -11,7 +11,7 @@ import {
   UploadedFile,
 } from '@signal-conso/signalconso-api-sdk-js'
 import {ScDatepicker} from 'shared/Datepicker/Datepicker'
-import {fnSwitch, mapFor} from '@alexandreannic/ts-utils/lib/common'
+import {fnSwitch, mapFor} from '../../../alexlibs/ts-utils'
 import {useI18n} from 'core/i18n'
 import {Controller, useForm} from 'react-hook-form'
 import {ReportFiles} from 'shared/UploadFile/ReportFiles'
@@ -30,7 +30,7 @@ import {getDraftReportInputs} from './draftReportInputs'
 import {appConfig} from 'conf/appConfig'
 import {useStepperContext} from 'shared/Stepper/Stepper'
 import {ControllerProps} from 'react-hook-form/dist/types/controller'
-import {useEffectFn} from '@alexandreannic/react-hooks-lib'
+import {useEffectFn} from '../../../alexlibs/react-hooks-lib'
 import {DetailInputValues2} from 'core/model/ReportDraft'
 import {DetailsSpecifyInput} from './DetailsSpecifyInput'
 import {useAnalyticContext} from 'core/analytic/AnalyticContext'

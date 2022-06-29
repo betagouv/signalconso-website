@@ -1,6 +1,6 @@
 import {alpha, Box, BoxProps, Checkbox, Radio} from '@mui/material'
 import React, {ReactNode} from 'react'
-import {Txt} from 'mui-extension/lib'
+import {Txt} from '../../alexlibs/mui-extension'
 
 const defaultMuiRadioPadding = 9
 

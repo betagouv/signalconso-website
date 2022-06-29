@@ -1,6 +1,5 @@
 // Env variables must start with 'REACT_APP_' to be considered by CreateReactApp
-import {env as _env} from '@alexandreannic/ts-utils/lib/common/env/Env'
-import {bool, defaultValue, int} from '@alexandreannic/ts-utils/lib/common/env/EnvParser'
+import {env, bool, defaultValue, int} from './env'
 
 enum Env {
   NEXT_PUBLIC_INFO_BANNER = 'NEXT_PUBLIC_INFO_BANNER',
@@ -38,7 +37,7 @@ const persistedTempEnvVariablesForFront: {[key in Env]: string | undefined} = {
   NEXT_PUBLIC_ATINTERNET_SITE_ID: process.env.NEXT_PUBLIC_ATINTERNET_SITE_ID,
 }
 
-const map = _env(persistedTempEnvVariablesForFront)
+const map = env(persistedTempEnvVariablesForFront)
 
 interface ParseUrl {
   (_: string): string

@@ -4,7 +4,7 @@ import {CompanyKinds, ReportTag} from '@signal-conso/signalconso-api-sdk-js'
 import {ReportDraft2} from 'core/model/ReportDraft'
 import {Box, Card, CardContent, MenuItem, Select, useTheme} from '@mui/material'
 import {styleUtils} from 'core/theme/theme'
-import {Enum} from '@alexandreannic/ts-utils'
+import {Enum} from '../../alexlibs/ts-utils'
 
 export const PlaygroundCompany = () => {
   const theme = useTheme()

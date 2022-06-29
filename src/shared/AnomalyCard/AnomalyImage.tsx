@@ -6,7 +6,7 @@ interface Props extends BoxProps {
   scale?: number
 }
 
-const backgroundPosition: Index<string> = {
+const backgroundPosition: Record<string, string> = {
   'category-covid': '0 0',
   'category-store': '-72px 0',
   'category-health': '-144px 0',

@@ -1,4 +1,4 @@
-import {Confirm, ConfirmProps} from 'mui-extension/lib/Confirm/Confirm'
+import {Confirm, ConfirmProps} from '../../alexlibs/mui-extension'
 import {useI18n} from 'core/i18n'
 
 export const ScDialog = ({confirmLabel, cancelLabel, ...props}: ConfirmProps) => {

@@ -1,5 +1,5 @@
 import {Page} from '../shared/Page/Page'
-import {Fender} from 'mui-extension'
+import {Fender} from '../alexlibs/mui-extension'
 import {useI18n} from '../core/i18n'
 import {ScButton} from '../shared/Button/Button'
 import {siteMap} from '../core/siteMap'
