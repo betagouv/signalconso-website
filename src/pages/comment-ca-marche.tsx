@@ -27,41 +27,53 @@ const Card = ({title, img, children}: {title: string; img: string; children?: Re
     </Panel>
   )
 }
-const CommentCAMarche = () => {
+const CommentCaMarche = () => {
   return (
     <Page size="small" className="blog">
       <h1>Comment ça marche ?</h1>
       <Card img="image/illustrations/consumer.png" title="1. Vous avez rencontré un problème avec une entreprise ?">
-        <p>Vous pouvez faire remonter votre problème sur le site SignalConso.</p>
         <p>
-          Vous n’êtes pas sûr que ce soit un problème ? SignalConso vous guide afin de savoir si vous pouvez faire un signalement.
-          Si ce n'est pas le cas, on vous explique pourquoi !
+          Vous avez rencontré un problème avec un professionnel, un commerce, en magasin ou sur internet ? En tant que
+          consommateur, vous pouvez le signaler sur la plateforme SignalConso.
+        </p>
+        <p>
+          Vous n’êtes pas sûr que ce soit un problème? SignalConso vous guide afin de savoir si vous pouvez déposer un
+          signalement. Si ce n’est pas le cas, on vous expliquera pourquoi !
         </p>
       </Card>
-      <Card img="image/illustrations/report.png" title="2. Faites un signalement avec SignalConso.">
-        <p>Signaler le problème en choisissant une catégorie et en répondant aux questions.</p>
+      <Card
+        img="image/illustrations/report.png"
+        title="2. Déposez un signalement sur SignalConso ou posez une question à la répression des fraudes."
+      >
         <p>
-          Suivant le problème, SignalConso vous conseille sur les démarches à faire en plus de votre signalement. Le site vous
-          donne également des informations sur vos droits en tant que consommateur.
+          Signalez le problème (anonymement ou non) en choisissant la bonne catégorie sur la page d’accueil du site et en vous
+          laissant guider par les questions ;
         </p>
+        <p>Ou</p>
+        <p>Posez directement votre question auprès d’un agent de la DGCCRF.</p>
+        <p>Dans tous les cas, SignalConso vous oriente et vous conseille.</p>
       </Card>
-      <Card img="image/illustrations/company.png" title="3. L'entreprise est prévenue et peut intervenir.">
-        <p>SignalConso contacte l'entreprise afin de l'informer de votre signalement (qui peut être anonymisé).</p>
-        <p>L'entreprise peut décider de corriger le problème. Vous serez informé par un email de SignalConso.</p>
-        <p>Vous avez choisi de transmettre vos coordonnées à l'entreprise ? Elle pourra vous recontacter directement.</p>
+      <Card img="image/illustrations/company.png" title="3. L’entreprise et la répression des fraudes sont informées.">
+        <p>
+          Si vous avez déposé un signalement, SignalConso contacte l’entreprise afin de l’en informer. L’entreprise peut alors
+          vous répondre et/ou s’améliorer, vous serez informés de son action par un email de SignalConso. Si vous avez choisi de
+          transmettre vos coordonnées à l’entreprise, elle pourra vous contacter directement.
+        </p>
+        <p>
+          Si vous avez posé une question à un agent de la DGCCRF, vous serez directement contactés par un agent pour une prise en
+          charge.
+        </p>
       </Card>
       <Card img="image/illustrations/dgccrf.png" title="4. La répression des fraudes intervient si nécessaire.">
+        <p>Votre signalement est enregistré dans la base de données de la répression des fraudes (DGCCRF).</p>
         <p>
-          Votre signalement est enregistré dans la base de données de la répression des fraudes (DGCCRF).
-          <p>
-            Les signalements deviennent trop nombreux pour une même entreprise ? Le problème est considéré comme grave par les
-            enquêteurs ? La répression des fraudes peut décider de surveiller ou de contrôler une entreprise grâce à votre
-            signalement.{' '}
-          </p>
+          Les signalements deviennent trop nombreux pour une même entreprise ? Le problème est considéré comme grave par les
+          enquêteurs ? La répression des fraudes peut décider de surveiller ou de contrôler une entreprise grâce à votre
+          signalement.
         </p>
       </Card>
     </Page>
   )
 }
 
-export default CommentCAMarche
+export default CommentCaMarche
