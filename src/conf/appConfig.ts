@@ -1,4 +1,3 @@
-// Env variables must start with 'REACT_APP_' to be considered by CreateReactApp
 import {env, bool, defaultValue, int} from './env'
 
 enum Env {
