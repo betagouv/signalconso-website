@@ -1826,9 +1826,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@signal-conso/signalconso-api-sdk-js@npm:4.3.1":
-  version: 4.3.1
-  resolution: "@signal-conso/signalconso-api-sdk-js@npm:4.3.1"
+"@signal-conso/signalconso-api-sdk-js@npm:4.3.3":
+  version: 4.3.3
+  resolution: "@signal-conso/signalconso-api-sdk-js@npm:4.3.3"
   dependencies:
     axios: 0.26.1
     browser-image-compression: 1.0.17
@@ -1841,7 +1841,7 @@ __metadata:
     qs: 6.10.5
     rxjs: 6.6.7
     yaml-import: 2.0.0
-  checksum: 198b87771f54e588875e6ed4fc5ab6aa42ca7c8b0ab184882b212dab96267ff61678323637c831b5f7ecca55a8aac0894fb30e761aae55b968724b65474e29d3
+  checksum: c743cd8734e7a7288fe0cb6900c44c51029e83e26f1311c6d72ec84226497c3d09d6573b2a90d5cb35eabc3f16265494de5b4f6fdd221bf9791c3df8751b2edb
   languageName: node
   linkType: hard
 
@@ -8071,7 +8071,7 @@ __metadata:
     "@sentry/nextjs": 6.19.7
     "@sentry/react": 6.19.7
     "@sentry/tracing": 6.19.7
-    "@signal-conso/signalconso-api-sdk-js": 4.3.1
+    "@signal-conso/signalconso-api-sdk-js": 4.3.3
     "@testing-library/dom": 8.13.0
     "@testing-library/jest-dom": 5.16.4
     "@testing-library/react": 12.1.5
