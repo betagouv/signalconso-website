@@ -14,6 +14,8 @@ import {CompanyWebsiteVendor} from './CompanyWebsiteVendor'
 import {StepperActionsNext} from 'shared/Stepper/StepperActionsNext'
 import {useAnalyticContext} from 'core/analytic/AnalyticContext'
 import {CompanySearchEventActions, EventCategories} from 'core/analytic/analytic'
+import {useToast} from "../../../core/toast";
+import {appConfig} from "../../../conf/appConfig";
 
 interface Props extends Omit<BoxProps, 'onSubmit'> {
   companies: CompanySearchResult[]
@@ -70,6 +72,8 @@ export const CompanySearchResultComponent = ({companies, onSubmit}: Props) => {
     formState: {errors},
   } = useForm<Form>()
 
+  const {toastError} = useToast()
+
   const submit = (selected: CompanySearchResult, vendor?: string) => {
     onSubmit(selected, vendor)
     _analytic.trackEvent(EventCategories.companySearch, CompanySearchEventActions.select)
@@ -91,11 +95,11 @@ export const CompanySearchResultComponent = ({companies, onSubmit}: Props) => {
             <form
               onSubmit={handleSubmit(form => {
                 const selectedCompany = companies.find(_ => _.siret === form.result)!
-                if (selectedCompany.isMarketPlace) {
-                  setSelected(selectedCompany)
-                } else {
-                  submit(selectedCompany)
-                }
+                // if (Report.isGovernmentCompany(selectedCompany)) {
+                //   toastError({message: m.cannotReportGovernmentCompany})
+                // } else {
+                selectedCompany.isMarketPlace ? setSelected(selectedCompany) : submit(selectedCompany)
+                // }
               })}
             >
               <Txt block color="hint">
@@ -131,7 +135,7 @@ export const CompanySearchResultComponent = ({companies, onSubmit}: Props) => {
                             )}
                             {company.address && (
                               <Row icon="location_on">
-                                <AddressComponent address={company.address} />
+                                <AddressComponent address={company.address}/>
                               </Row>
                             )}
                           </ScRadioGroupItem>
@@ -142,13 +146,13 @@ export const CompanySearchResultComponent = ({companies, onSubmit}: Props) => {
                 />
               </PanelBody>
               <PanelActions>
-                <StepperActionsNext type="submit" />
+                <StepperActionsNext type="submit"/>
               </PanelActions>
             </form>
           </Panel>
         )}
       </Animate>
-      {selected?.isMarketPlace && <CompanyWebsiteVendor onSubmit={vendor => submit(selected, vendor)} />}
+      {selected?.isMarketPlace && <CompanyWebsiteVendor onSubmit={vendor => submit(selected, vendor)}/>}
     </>
   )
 }
