@@ -305,6 +305,7 @@ export const fr = {
     verify: `Vérifier`,
     isHeadOffice: 'Siège social',
     governmentCompany: 'Administration publique',
+    cannotReportGovernmentCompany: 'Impossible de signaler une administration publique.',
     selectCompanyDesc: `Si l'entreprise n'est pas celle recherchée, vous pouvez modifier votre recherche.`,
     isAFrenchCompany: `Est-ce que l'entreprise est en France ?`,
     noItsForeign: `Non, elle est à l'étranger`,
