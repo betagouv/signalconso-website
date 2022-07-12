@@ -14,8 +14,8 @@ import {CompanyWebsiteVendor} from './CompanyWebsiteVendor'
 import {StepperActionsNext} from 'shared/Stepper/StepperActionsNext'
 import {useAnalyticContext} from 'core/analytic/AnalyticContext'
 import {CompanySearchEventActions, EventCategories} from 'core/analytic/analytic'
-import {useToast} from "../../../core/toast";
-import {appConfig} from "../../../conf/appConfig";
+import {useToast} from '../../../core/toast'
+import {appConfig} from '../../../conf/appConfig'
 
 interface Props extends Omit<BoxProps, 'onSubmit'> {
   companies: CompanySearchResult[]
@@ -98,7 +98,7 @@ export const CompanySearchResultComponent = ({companies, onSubmit}: Props) => {
                 if (Report.isGovernmentCompany(selectedCompany)) {
                   toastError({message: m.cannotReportGovernmentCompany})
                 } else {
-                selectedCompany.isMarketPlace ? setSelected(selectedCompany) : submit(selectedCompany)
+                  selectedCompany.isMarketPlace ? setSelected(selectedCompany) : submit(selectedCompany)
                 }
               })}
             >
@@ -135,7 +135,7 @@ export const CompanySearchResultComponent = ({companies, onSubmit}: Props) => {
                             )}
                             {company.address && (
                               <Row icon="location_on">
-                                <AddressComponent address={company.address}/>
+                                <AddressComponent address={company.address} />
                               </Row>
                             )}
                           </ScRadioGroupItem>
@@ -146,13 +146,13 @@ export const CompanySearchResultComponent = ({companies, onSubmit}: Props) => {
                 />
               </PanelBody>
               <PanelActions>
-                <StepperActionsNext type="submit"/>
+                <StepperActionsNext type="submit" />
               </PanelActions>
             </form>
           </Panel>
         )}
       </Animate>
-      {selected?.isMarketPlace && <CompanyWebsiteVendor onSubmit={vendor => submit(selected, vendor)}/>}
+      {selected?.isMarketPlace && <CompanyWebsiteVendor onSubmit={vendor => submit(selected, vendor)} />}
     </>
   )
 }
