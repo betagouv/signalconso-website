@@ -30,7 +30,7 @@
     "@sentry/nextjs": "6.19.7",
     "@sentry/react": "6.19.7",
     "@sentry/tracing": "6.19.7",
-    "@signal-conso/signalconso-api-sdk-js": "4.3.3",
+    "@signal-conso/signalconso-api-sdk-js": "4.3.4",
     "@types/lodash.throttle": "^4.1.7",
     "classnames": "2.3.1",
     "date-fns": "2.28.0",
