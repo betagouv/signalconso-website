@@ -15,24 +15,12 @@
     "jsx": "preserve",
     "incremental": true,
     "baseUrl": "src",
-
-    //    "experimentalDecorators": true,
-    //    "emitDecoratorMetadata": true,
-    //    "allowSyntheticDefaultImports": true,
-        "noImplicitAny": false,
-    //    "strictNullChecks": true,
-    //    "rootDir": "./src",
-    //    "declaration": true,
-    //    "alwaysStrict": true,
-    //    "outDir": "./lib",
-    //    "sourceMap": true
-
+    "noImplicitAny": false,
   },
   "include": [
     "next-env.d.ts",
     "**/*.ts",
-    "**/*.tsx",
-    "../../../Library/Caches/JetBrains/WebStorm2021.2/javascript/typings/jest/27.4.0/node_modules/@types/jest/index.d.ts"
+    "**/*.tsx"
   ],
-  "exclude": ["./lib","node_modules"]
+  "exclude": ["node_modules"]
 }

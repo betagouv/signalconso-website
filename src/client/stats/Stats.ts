@@ -1,4 +1,3 @@
-import {ReportStatus, ReportStatusPro} from '../report/Report'
 import {Index} from '../helper/Utils'
 
 export interface SimpleStat {
@@ -13,9 +12,6 @@ export interface CountByDate {
   date: Date
   count: number
 }
-
-export type ReportStatusDistribution = {[key in ReportStatus]: number}
-export type ReportStatusProDistribution = {[key in ReportStatusPro]: number}
 
 export type ReportTagsDistribution = Index<number>
 
