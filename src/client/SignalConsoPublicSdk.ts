@@ -1,5 +1,4 @@
 import {PublicCompanyClient} from './company/PublicCompanyClient'
-import {PublicUserClient} from './user/PublicUserClient'
 import {PublicReportClient} from './report/PublicReportClient'
 import {PublicStatsClient} from './stats/PublicStatsClient'
 import {AnomalyClient} from '../anomaly/AnomalyClient'
@@ -15,7 +14,6 @@ export class SignalConsoPublicSdk {
   readonly company: PublicCompanyClient
   readonly report: PublicReportClient
   readonly stats: PublicStatsClient
-  readonly user: PublicUserClient
   readonly constant: PublicConstantClient
   readonly authenticate: AuthenticateClient
   readonly document: FileClient
@@ -28,7 +26,6 @@ export class SignalConsoPublicSdk {
     this.company = new PublicCompanyClient(this.client)
     this.report = new PublicReportClient(this.client)
     this.stats = new PublicStatsClient(this.client)
-    this.user = new PublicUserClient(this.client)
     this.constant = new PublicConstantClient(this.client)
     this.authenticate = new AuthenticateClient(this.client)
     this.document = new FileClient(this.client)
