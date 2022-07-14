@@ -9,7 +9,7 @@ describe('getDraftReportInputs', () => {
     const inputs = getDraftReportInputs({
       subcategories: [Fixture.genSubcategory()],
     })
-    expect(inputs).toEqual(DraftReportDefaultInputs.defaults)
+    expect(inputs).toEqual([DraftReportDefaultInputs.date(), DraftReportDefaultInputs.description()])
   })
 
   it('should generate default inputs including reponseConso inputs', () => {
@@ -17,23 +17,27 @@ describe('getDraftReportInputs', () => {
       subcategories: [Fixture.genSubcategory()],
       tags: [ReportTag.ReponseConso],
     })
-    expect(inputs).toEqual([...DraftReportDefaultInputs.defaults, DraftReportDefaultInputs.reponseConso])
+    expect(inputs).toEqual([
+      DraftReportDefaultInputs.date(),
+      DraftReportDefaultInputs.description(),
+      DraftReportDefaultInputs.reponseConso,
+    ])
   })
 
   it('should generate single input with optional textarea', () => {
     const inputs = getDraftReportInputs({
       subcategories: [Fixture.genSubcategory()],
     })
-    expect(inputs).toEqual([DetailsFixtureInput.textDetail, DraftReportDefaultInputs.description(true)])
+    expect(inputs).toEqual([DetailsFixtureInput.text, DraftReportDefaultInputs.description(true)])
   })
 
   it('should generate custom input with reponseconso', () => {
     const inputs = getDraftReportInputs({
       tags: [ReportTag.ReponseConso],
-      subcategories: [Fixture.genSubcategory(), {id: '', title: '', detailInputs: [DetailsFixtureInput.dateDetail]}],
+      subcategories: [Fixture.genSubcategory(), {id: '', title: '', detailInputs: [DetailsFixtureInput.date]}],
     })
     expect(inputs).toEqual([
-      DetailsFixtureInput.dateDetail,
+      DetailsFixtureInput.date,
       DraftReportDefaultInputs.description(true),
       DraftReportDefaultInputs.reponseConso,
     ])

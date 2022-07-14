@@ -57544,6 +57544,7 @@
       "categoryId": "TNOIR",
       "path": "travail-au-noir",
       "hidden": true,
+      "sprite": "none",
       "breadcrumbTitle": "Vous souhaitez signaler un cas de travail au noir ?",
       "information": {
         "subTitle": "Vous souhaitez signaler un cas de travail au noir ?",

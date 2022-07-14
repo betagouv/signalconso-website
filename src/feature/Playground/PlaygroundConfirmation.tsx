@@ -15,7 +15,10 @@ export const PlaygroundConfirmation = () => {
   useEffect(() => {
     apiSdk.anomaly
       .getAnomalies()
-      .then(anomalies => anomalies.find(_ => _.category === draft.category)!)
+      .then(anomalies => {
+        console.log(anomalies)
+        return anomalies.find(_ => _.category === draft.category)!
+      })
       .then(setAnomaly)
   }, [])
   return (
