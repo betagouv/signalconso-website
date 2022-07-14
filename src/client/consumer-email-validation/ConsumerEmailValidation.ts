@@ -1,4 +1,6 @@
-import {Id, PaginatedSearch, ValidationRejectReason} from '../../model'
+import {Id, PaginatedSearch} from '../../model'
+
+export type ValidationRejectReason = 'TOO_MANY_ATTEMPTS' | 'INVALID_CODE'
 
 export interface ConsumerEmailValidation {
   id: Id

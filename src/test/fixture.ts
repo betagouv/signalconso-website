@@ -49,13 +49,13 @@ export class Fixture {
     )
   }
 
-  private static readonly genCompanyAccessLevel = (siret?: string) => {
-    return {
-      ...Fixture.genCompany(),
-      ...(siret ? {siret} : {}),
-      level: Fixture.oneOf(['admin', 'member']),
-    }
-  }
+  // private static readonly genCompanyAccessLevel = (siret?: string) => {
+  //   return {
+  //     ...Fixture.genCompany(),
+  //     ...(siret ? {siret} : {}),
+  //     level: Fixture.oneOf(['admin', 'member']),
+  //   }
+  // }
 
   private static readonly genStatus = () => Fixture.oneOf(Object.values(ReportStatus))
 
@@ -163,7 +163,7 @@ export class Fixture {
 
   static readonly genCompanySearchResult = () => {
     return <CompanySearchResult>{
-      name: Fixture.genCompany().name,
+      name: randomstring.generate({capitalization: 'lowercase', charset: 'alphabetic', length: 8}),
       address: Fixture.genAddress(),
     }
   }

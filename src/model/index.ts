@@ -1,7 +1,6 @@
 export * from './Address'
 export * from './Common'
 export * from '../anomaly/Anomaly'
-export * from '../client/authenticate/Authenticate'
 export * from '../client/company/Company'
 export * from '../client/constant/Country'
 export * from '../client/consumer-email-validation/ConsumerEmailValidation'
