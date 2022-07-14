@@ -1,8 +1,8 @@
 import '@testing-library/jest-dom'
 import {DraftReportDefaultInputs, getDraftReportInputs} from './draftReportInputs'
 import {Fixture} from '../../../test/fixture'
-import {ReportTag} from '@signal-conso/signalconso-api-sdk-js'
 import {DetailsFixtureInput} from '../../Playground/PlaygroundDetails'
+import {ReportTag} from '../../../anomaly/Anomaly'
 
 describe('getDraftReportInputs', () => {
   it('should generate default inputs', () => {

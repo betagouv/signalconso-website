@@ -1,17 +1,6 @@
 import {useMemo} from 'react'
-import {AnomalyClient, Category, Subcategory} from '@signal-conso/signalconso-api-sdk-js'
-
-// const getSubcategory = (anomaly: Subcategory, path: string[]): Subcategory[] => {
-//   const res = [anomaly]
-//   const [current, ...nextPath] = path
-//   if (current) {
-//     const pickedCategory = anomaly.subcategories?.find(_ => _.title === current)
-//     if (pickedCategory) {
-//       res.push(...getSubcategory(pickedCategory, nextPath))
-//     }
-//   }
-//   return res
-// }
+import {AnomalyClient} from '../../../anomaly/AnomalyClient'
+import {Category, Subcategory} from '../../../anomaly/Anomaly'
 
 export const useSelectedSubcategoriesUtils = (anomaly: Category, selectedSubCategories: Subcategory[]) => {
   const tagsFromSelected = useMemo(() => {

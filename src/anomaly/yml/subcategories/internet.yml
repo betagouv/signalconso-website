@@ -1,0 +1,64 @@
+- title: Un influenceur ou une influenceuse
+  companyKind: INFLUENCEUR
+  example: "Exemple : publicité trompeuse, l'influenceur n'indique pas qu'il est rémunéré par une marque"
+  ccrfCode:
+    - '23B'
+    - '271'
+  reponseconsoCode:
+    - '210'
+  subcategories:
+    - title: Publicité trompeuse
+      tags:
+        - Influenceur
+      subcategoriesTitle: Publicité trompeuse
+      detailInputs: !!import/single ../common/inputs/influenceur.yml
+    - title: L'influenceur n'indique pas qu'il est rémunéré par une marque
+      tags:
+        - Influenceur
+      subcategoriesTitle: L'influenceur n'indique pas qu'il est rémunéré par une marque
+      detailInputs: !!import/single ../common/inputs/influenceur.yml
+    - title: Autre
+      tags:
+        - Influenceur
+      subcategoriesTitle: Autre
+      detailInputs: !!import/single ../common/inputs/influenceur.yml
+- title: Un problème avec une commande que vous avez passée sur internet
+  example: 'Exemple : colis non reçu'
+  information:
+    title: Revenez en arrière et utilisez plutôt la catégorie spécifique à votre commande 🙂
+    content: Un billet d'avion ? Utilisez la catégorie "Voyage / Loisirs" <br> Un livre commandé en ligne mais non reçu ? Utilisez la catégorie "Achat (Magasin ou Internet)"
+- title: Un problème avec un store (vente d'applications mobiles)
+  ccrfCode:
+    - '23B'
+  reponseconsoCode:
+    - '443'
+    - '445'
+  companyKind: SIRET
+- title: Un problème de harcèlement ou de chantage en ligne
+  example: "Exemple : email d'un hackeur vous demandant de l'argent, chantage à la webcam"
+  information:
+    title: Ce type de problème ne doit pas être signalé sur SignalConso
+    subTitle: Il concerne la police
+    content: Nous vous invitons à utiliser le site dédié <br><a href="https://www.internet-signalement.gouv.fr" target="_blank">https://www.internet-signalement.gouv.fr</a>
+- title: Je subis de la discrimination, de la diffamation, des injures, ...
+  information:
+    title: Ce type de problème ne doit pas être signalé sur SignalConso
+    subTitle: Il concerne la police ou la gendarmerie
+    content: Nous vous invitons à utiliser le site dédié <br><a href="https://www.pre-plainte-en-ligne.gouv.fr/" target="_blank">https://www.pre-plainte-en-ligne.gouv.fr/</a>
+- title: Du contenu inapproprié (pédopornographie, incitation à la haine, racisme...) sur un site internet ou un réseau social
+  information:
+    title: Ce type de problème ne doit pas être signalé sur SignalConso
+    subTitle: Il concerne la police
+    content: Nous vous invitons à utiliser le site dédié <br><a href="https://www.internet-signalement.gouv.fr" target="_blank">https://www.internet-signalement.gouv.fr</a>
+- title: Dérive sectaire
+  information:
+    title: Ce type de problème ne doit pas être signalé sur SignalConso
+    subTitle: Il concerne la Mivilude
+    content: Nous vous invitons à utiliser les sites dédiés <br>Vous voulez l'avis Mission interministérielle de vigilance et de lutte contre les dérives sectaires sur une pratique ou un mouvement.<br><a href="https://contacts-demarches.interieur.gouv.fr/miviludes/obtenir-l-avis-de-la-miviludes/" target="_blank">https://contacts-demarches.interieur.gouv.fr/miviludes/obtenir-l-avis-de-la-miviludes/</a> <br>Vous informez la Mission interministérielle de vigilance et de lutte contre les dérives sectaires. <br><a href="https://contacts-demarches.interieur.gouv.fr/miviludes/informer-la-miviludes-d-une-derive-sectaire/" target="_blank">https://contacts-demarches.interieur.gouv.fr/miviludes/informer-la-miviludes-d-une-derive-sectaire/</a>
+- title: Ransomware ou rançongiciel
+  example: "Exemple : Votre ordinateur, tablette, téléphone est bloqué et s'affiche un message exigeant de l'argent"
+  information:
+    title: "Ce type de problème ne doit pas être signalé sur SignalConso. Nous vous invitons à utiliser le site dédié <br><a href='https://www.service-public.fr/particuliers/vosdroits/F34129' target='_blank'>https://www.service-public.fr/particuliers/vosdroits/F34129</a>"
+- title: Le piratage de votre carte bancaire ou de votre compte bancaire
+  information:
+    title: "Ce type de problème ne doit pas être signalé sur SignalConso. Nous vous invitons à utiliser le site dédié <br><a href='https://www.service-public.fr/particuliers/vosdroits/R46526' target='_blank'>https://www.service-public.fr/particuliers/vosdroits/R46526</a>"

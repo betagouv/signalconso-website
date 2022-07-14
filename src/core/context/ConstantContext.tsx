@@ -1,8 +1,9 @@
 import * as React from 'react'
 import {ReactNode, useContext, useMemo} from 'react'
 import {UseFetcher, useFetcher} from '../../alexlibs/react-hooks-lib'
-import {ApiError, SignalConsoPublicSdk} from '@signal-conso/signalconso-api-sdk-js'
 import {useApiSdk} from './ApiSdk'
+import {SignalConsoPublicSdk} from '../../client/SignalConsoPublicSdk'
+import {ApiError} from '../../client/ApiClient'
 
 export interface ConstantContextProps {
   regions: UseFetcher<SignalConsoPublicSdk['constant']['getRegions'], ApiError>

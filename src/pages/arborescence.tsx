@@ -3,15 +3,6 @@ import {GetStaticProps} from 'next'
 import {apiSdk} from 'core/apiSdk'
 import {sortBy} from 'core/lodashNamedExport'
 import {serializeJsonForStupidNextJs} from 'core/helper/utils'
-import {
-  Anomaly,
-  AnomalyClient,
-  DetailInputType,
-  Subcategory,
-  SubcategoryBase,
-  SubcategoryInformation,
-  SubcategoryInput,
-} from '@signal-conso/signalconso-api-sdk-js'
 import Head from 'next/head'
 import {pageDefinitions} from 'core/pageDefinition'
 import {Box, Checkbox, Chip, Icon, Radio, useTheme} from '@mui/material'
@@ -21,6 +12,15 @@ import {IconBtn} from '../alexlibs/mui-extension'
 import {ScButton} from 'shared/Button/Button'
 import {fnSwitch} from '../alexlibs/ts-utils'
 import {styleUtils} from 'core/theme/theme'
+import {AnomalyClient} from '../anomaly/AnomalyClient'
+import {
+  Anomaly,
+  DetailInputType,
+  Subcategory,
+  SubcategoryBase,
+  SubcategoryInformation,
+  SubcategoryInput,
+} from '../anomaly/Anomaly'
 
 export const getStaticProps: GetStaticProps = async context => {
   const anomalies = await apiSdk.anomaly

@@ -1,5 +1,4 @@
 import {CompanyByWebsite} from './CompanyByWebsite'
-import {CompanyDraft, CompanyKinds, CompanySearchResult, ReportDraft} from '@signal-conso/signalconso-api-sdk-js'
 import {useReportFlowContext} from '../ReportFlowContext'
 import React from 'react'
 import {CompanyIdentifyBy, IdentifyBy} from './CompanyIdentifyBy'
@@ -25,6 +24,9 @@ import {CompanyAskConsumerStreet} from './CompanyAskConsumerStreet'
 import {CompanyWebsiteCountry} from './CompanyWebsiteCountry'
 import {useAnalyticContext} from 'core/analytic/AnalyticContext'
 import {EventCategories, ReportEventActions} from 'core/analytic/analytic'
+import {CompanyDraft, ReportDraft} from '../../../client/report/ReportDraft'
+import {CompanySearchResult} from '../../../client/company/Company'
+import {CompanyKinds} from '../../../anomaly/Anomaly'
 
 interface CompanyProps {}
 

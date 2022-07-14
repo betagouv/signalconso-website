@@ -6,12 +6,12 @@ import {I18nProvider} from 'core/i18n'
 import {ReportFlowProvider, useReportFlowContext} from 'feature/Report/ReportFlowContext'
 import {Provide} from 'shared/Provide/Provide'
 import {ApiSdkProvider} from 'core/context/ApiSdk'
-import {SignalConsoPublicSdk} from '@signal-conso/signalconso-api-sdk-js'
 import {fr} from 'core/i18n/localization/fr'
 import {StepperContext} from 'shared/Stepper/Stepper'
 import {ReportDraft2} from 'core/model/ReportDraft'
 import {DeepPartial} from '../alexlibs/ts-utils'
 import {AnalyticProvider} from 'core/analytic/AnalyticContext'
+import {SignalConsoPublicSdk} from '../client/SignalConsoPublicSdk'
 
 const AllTheProviders =
   (options?: Options) =>

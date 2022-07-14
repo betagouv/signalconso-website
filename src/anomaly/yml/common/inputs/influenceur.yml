@@ -1,0 +1,22 @@
+- label: Nom ou pseudonyme de l'influenceur ou influenceuse
+  rank: 1
+  type: TEXT
+  placeholder: Nom ou pseudonyme
+- label: Nom du produit ou du service (facultatif)
+  rank: 2
+  type: TEXT
+  placeholder: Préciser la nature et la gravité
+  optionnal: true
+- label: Pouvez-vous préciser la plateforme utilisée ?
+  rank: 3
+  type: RADIO
+  options:
+    - Youtube
+    - TikTok
+    - Facebook
+    - Instagram
+    - Twitter
+    - Linkedin
+    - Messenger
+    - Snapchat
+    - autre (à préciser)

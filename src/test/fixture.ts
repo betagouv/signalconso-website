@@ -1,19 +1,12 @@
-import {
-  Address,
-  Company,
-  CompanySearchResult,
-  FileOrigin,
-  Information,
-  Report,
-  ReportDraft,
-  ReportDraftConsumer,
-  ReportStatus,
-  ReportTag,
-  Subcategory,
-} from '@signal-conso/signalconso-api-sdk-js'
-import anomalies from '@signal-conso/signalconso-api-sdk-js/lib/client/anomaly/yml/anomalies.json'
+import anomalies from '../anomaly/yml/anomalies.json'
 import {ReportStep, ReportStepHelper} from 'core/reportStep'
 import randomstring from 'randomstring'
+import {Report, ReportStatus} from '../client/report/Report'
+import {Company, CompanySearchResult} from '../client/company/Company'
+import {FileOrigin} from '../client/file/UploadedFile'
+import {ReportDraft, ReportDraftConsumer} from '../client/report/ReportDraft'
+import {Information, ReportTag, Subcategory} from '../anomaly/Anomaly'
+import {Address} from '../model'
 
 export class Fixture {
   private static readonly lastNames = ['Doe', 'Durand', 'Dupont']

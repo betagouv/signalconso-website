@@ -1,0 +1,17 @@
+- label: Date du constat
+  rank: 1
+  type: DATE_NOT_IN_FUTURE
+  defaultValue: SYSDATE
+- label: Heure du constat
+  rank: 2
+  type: TIMESLOT
+  optionnal: true
+- label: Nom du produit / marque
+  rank: 3
+  type: TEXT
+- label: Numéro de lot / référence
+  rank: 4
+  type: TEXT
+- label: Qu'avez-vous constaté&#160;?
+  rank: 5
+  type: TEXTAREA

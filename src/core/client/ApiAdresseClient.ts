@@ -1,4 +1,4 @@
-import {ApiClient} from '@signal-conso/signalconso-api-sdk-js'
+import {ApiClient} from '../../client/ApiClient'
 
 export type AdresseType = 'locality' | 'municipality' | 'street' | 'housenumber'
 

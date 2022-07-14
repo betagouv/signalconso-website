@@ -1,0 +1,35 @@
+- title: Alimentation / Matériel pour animaux
+  example: 'Exemple : jouet, cage, laisse, croquettes'
+  reponseconsoCode:
+    - '332'
+    - '617'
+  tags:
+    - LitigeContractuel
+- title: Soins
+  example: 'Exemple : vétérinaire, toiletteur'
+  reponseconsoCode:
+    - '212'
+    - '213'
+  tags:
+    - LitigeContractuel
+- title: Garde d'animaux
+  example: "Exemple : pension, site internet de garde d'animaux"
+  reponseconsoCode:
+    - '212'
+    - '213'
+  tags:
+    - LitigeContractuel
+    - ReponseConso
+- title: Vendeur d'animaux
+  reponseconsoCode:
+    - '210'
+    - '271'
+  tags:
+    - ReponseConso
+    - LitigeContractuel
+- title: Autre
+  reponseconsoCode:
+    - '333'
+    - '210'
+  tags:
+    - LitigeContractuel

@@ -1,6 +1,5 @@
 import React, {useEffect, useMemo} from 'react'
 import {appConfig} from 'conf/appConfig'
-import {Anomaly, AnomalyClient, CompanyKinds, ReportTag, Subcategory} from '@signal-conso/signalconso-api-sdk-js'
 import {useReportFlowContext} from '../ReportFlowContext'
 import {useSelectedSubcategoriesUtils} from './useSelectedSubcategoriesUtils'
 import {Step, Stepper} from './Stepper'
@@ -12,6 +11,8 @@ import {ProblemContratualDisputeWarnPanel} from './ProblemContratualDisputeWarnP
 import {EventCategories, ReportEventActions} from 'core/analytic/analytic'
 import {useAnalyticContext} from 'core/analytic/AnalyticContext'
 import {ReportDraft2} from 'core/model/ReportDraft'
+import {AnomalyClient} from '../../../anomaly/AnomalyClient'
+import {Anomaly, CompanyKinds, ReportTag, Subcategory} from '../../../anomaly/Anomaly'
 
 interface Props {
   anomaly: Anomaly

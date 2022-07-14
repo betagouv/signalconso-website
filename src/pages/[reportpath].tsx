@@ -1,7 +1,6 @@
 import {GetStaticPaths, GetStaticProps} from 'next'
 import {apiSdk} from 'core/apiSdk'
 import {serializeJsonForStupidNextJs} from 'core/helper/utils'
-import {Anomaly} from '@signal-conso/signalconso-api-sdk-js'
 import {useReportFlowContext} from 'feature/Report/ReportFlowContext'
 import React, {useMemo} from 'react'
 import {Page} from 'shared/Page/Page'
@@ -14,6 +13,7 @@ import {siteMap} from 'core/siteMap'
 import Head from 'next/head'
 import dynamic from 'next/dynamic'
 import {ReportFlow} from '../feature/Report/ReportFlow'
+import {Anomaly} from '../anomaly/Anomaly'
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const anomalies = await apiSdk.anomaly.getAnomalies()

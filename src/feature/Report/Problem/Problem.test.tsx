@@ -2,13 +2,13 @@
  * @jest-environment jsdom
  */
 import React from 'react'
-import {Anomaly, CompanyKinds, ReportTag} from '@signal-conso/signalconso-api-sdk-js'
 import {Problem} from './Problem'
 import {AccessReportFlow, DummyStepperProvider, fireEvent, render, ScRenderResult} from 'test/test-utils'
 import '@testing-library/jest-dom'
 import {fnSwitch} from '../../../alexlibs/ts-utils'
 import {ReportDraft2} from 'core/model/ReportDraft'
 import {Fixture} from '../../../test/fixture'
+import {Anomaly, CompanyKinds, ReportTag} from '../../../anomaly/Anomaly'
 
 class ProblemFixture {
   static readonly simpleSubcategory = Fixture.genSubcategory()
@@ -28,6 +28,7 @@ class ProblemFixture {
     id: '1',
     categoryId: '',
     category: '',
+    title: '',
     path: 'myPath',
     subcategories: ProblemFixture.subcategories,
   }

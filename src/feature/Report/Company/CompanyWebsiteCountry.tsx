@@ -1,10 +1,10 @@
-import {Country} from '@signal-conso/signalconso-api-sdk-js'
 import {ScRadioGroup, ScRadioGroupItem} from 'shared/RadioGroup'
 import {Panel, PanelActions, PanelBody} from 'shared/Panel/Panel'
 import {useI18n} from 'core/i18n'
 import {StepperActionsNext} from 'shared/Stepper/StepperActionsNext'
 import React from 'react'
 import {Controller, useForm} from 'react-hook-form'
+import {Country} from '../../../client/constant/Country'
 
 interface Props {
   countries: Country[]

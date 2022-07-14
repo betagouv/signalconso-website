@@ -1,5 +1,5 @@
-import {Address} from '@signal-conso/signalconso-api-sdk-js'
 import React from 'react'
+import {Address} from '../../model'
 
 interface Props {
   address: Address

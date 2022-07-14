@@ -10,8 +10,8 @@ import React, {useEffect} from 'react'
 import {useEffectFn} from '../../../alexlibs/react-hooks-lib'
 import {useToast} from 'core/toast'
 import {StepperActionsNext} from 'shared/Stepper/StepperActionsNext'
-import {Country} from '@signal-conso/signalconso-api-sdk-js'
 import {Alert, Txt} from '../../../alexlibs/mui-extension'
+import {Country} from '../../../client/constant/Country'
 
 interface Form {
   name: string

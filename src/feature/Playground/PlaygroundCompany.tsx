@@ -1,10 +1,10 @@
 import {_Company} from '../Report/Company/Company'
 import {useState} from 'react'
-import {CompanyKinds, ReportTag} from '@signal-conso/signalconso-api-sdk-js'
 import {ReportDraft2} from 'core/model/ReportDraft'
 import {Box, Card, CardContent, MenuItem, Select, useTheme} from '@mui/material'
 import {styleUtils} from 'core/theme/theme'
 import {Enum} from '../../alexlibs/ts-utils'
+import {CompanyKinds, ReportTag} from '../../anomaly/Anomaly'
 
 export const PlaygroundCompany = () => {
   const theme = useTheme()
