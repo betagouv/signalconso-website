@@ -6,7 +6,6 @@ import {useApiSdk} from 'core/context/ApiSdk'
 import {useEffectFn, useFetcher} from '../../../alexlibs/react-hooks-lib'
 import {ScButton} from 'shared/Button/Button'
 import {useForm} from 'react-hook-form'
-import {CompanySearchResult} from '@signal-conso/signalconso-api-sdk-js'
 import {useToast} from 'core/toast'
 import {IconBtn} from '../../../alexlibs/mui-extension'
 import {Box, Icon} from '@mui/material'
@@ -16,6 +15,7 @@ import {map} from '../../../alexlibs/ts-utils'
 import {CompanySearchEventActions, EventCategories} from 'core/analytic/analytic'
 import {useAnalyticContext} from 'core/analytic/AnalyticContext'
 import {CompanySearchByIdentityHelpDialog} from './CompanySearchByIdentityHelpDialog'
+import {CompanySearchResult} from '../../../client/company/Company'
 
 interface Form {
   identity: string

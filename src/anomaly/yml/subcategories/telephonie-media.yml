@@ -1,0 +1,276 @@
+- title: Téléphonie / internet
+  subcategories:
+    - title: 'Mon forfait : prix, contrat et facture'
+      example: "Exemple : mon forfait a été augmenté, je ne suis pas d'accord avec ma facture"
+      subcategories:
+        - title: Le prix de mon forfait a été augmenté (ou va être augmenté)
+          example: "Exemple : ajout automatique d'une option payante, augmentation du nombre d'heures, augmentation des données disponibles..."
+          subcategoriesTitle: Pour quelle raison votre forfait a été augmenté (ou va être augmenté) ?
+          subcategories:
+            - title: Augmentation du débit ou des données disponibles
+              example: 'Exemple : passage de 20 Go à 40 Go pour 5 euros de plus'
+              subcategoriesTitle: Avez-vous reçu un email ou un courrier pour vous prévenir (un mois avant) ?
+              subcategories:
+                - title: Oui, j'ai été prévenu par email ou courrier
+                  reponseconsoCode:
+                    - '421'
+                    - '2202'
+                  information: !!import/single ../common/info/tel.yml
+                - title: Non, j'ai reçu seulement un sms
+                  tags:
+                    - ReponseConso
+                    - LitigeContractuel
+                - title: Non, je n'ai rien reçu du tout
+                  reponseconsoCode:
+                    - '421'
+                  tags:
+                    - ReponseConso
+                    - LitigeContractuel
+            - title: Modification concernant les sms, mms ou appels
+              tags:
+                - ReponseConso
+              example: "Exemple : augmentation du nombre d'heures, augmentation du nombre de sms..."
+              subcategoriesTitle: Avez-vous reçu un email ou un courrier pour vous prévenir (un mois avant) ?
+              subcategories:
+                - title: Oui, j'ai été prévenu par email ou courrier
+                  information: !!import/single ../common/info/tel.yml
+                - title: Non, j'ai reçu seulement un sms
+                  reponseconsoCode:
+                    - '421'
+                    - '2202'
+                  tags:
+                    - LitigeContractuel
+                - title: Non, je n'ai rien reçu du tout
+                  reponseconsoCode:
+                    - '421'
+                  tags:
+                    - LitigeContractuel
+            - title: Rajout d'une option payante
+              example: 'Exemple : chaine télé supplémentaire, option cyber-sécurité, option livre audio, option musique...'
+              subcategoriesTitle: Quel est le type d'option ?
+              subcategories:
+                - title: option liée à la data (Go), aux appels, aux sms, au débit, à la présentation du numéro
+                  tags:
+                    - ReponseConso
+                  subcategoriesTitle: Avez-vous reçu un email ou un courrier pour vous prévenir ?
+                  subcategories:
+                    - title: Oui, j'ai été prévenu par email ou courrier
+                      information: !!import/single ../common/info/tel.yml
+                    - title: Non, je n'ai rien reçu
+                      tags:
+                        - LitigeContractuel
+                      detailInputs:
+                        - label: Date du début de l'option (vous pouvez préciser le premier mois facturé)
+                          rank: 1
+                          type: DATE
+                        - label: Quel est le nom de cette option ?
+                          rank: 2
+                          type: TEXT
+                          placeholder: "Indiquez l'intitulé figurant la facture"
+                - title: option liée à la musique, des livres, une chaine télé, un anti-virus
+                  reponseconsoCode:
+                    - '421'
+                  tags:
+                    - LitigeContractuel
+                  detailInputs:
+                    - label: À partir de quand cette option va-t-elle être payante ?
+                      rank: 1
+                      type: DATE
+                    - label: Quel est le nom de cette option ?
+                      rank: 2
+                      type: TEXT
+                      placeholder: "Indiquez l'intitulé figurant sur l'email ou la facture"
+                    - label: Quel est son prix ?
+                      rank: 3
+                      type: TEXT
+                    - label: Comment avez-vous été prévenu de cette option ?
+                      rank: 4
+                      type: RADIO
+                      options:
+                        - email
+                        - courrier papier
+                        - sms
+                        - message dans l'espace client
+                        - "je n'ai rien reçu"
+                    - label: Si vous avez reçu un courrier / email / sms, quelle est sa date ?
+                      rank: 5
+                      type: DATE
+                      optionnal: true
+            - title: Le lien pour refuser l'augmentation de mon forfait ne fonctionne pas
+              reponseconsoCode:
+                - '444'
+                - '210'
+              tags:
+                - ReponseConso
+                - LitigeContractuel
+        - title: L'offre / la promotion que je devais avoir n'a pas été appliquée
+          reponseconsoCode:
+            - '2212'
+            - '210'
+          tags:
+            - ReponseConso
+            - LitigeContractuel
+        - title: Autre problème de facturation ou de contrat
+          repoonseconsoCode:
+            - '2212'
+            - '623'
+          tags:
+            - ReponseConso
+            - LitigeContractuel
+          subcategories:
+            - title: Utilisation de mon forfait à l'étranger
+              reponseconsoCode:
+                - '457'
+                - '411'
+            - title: Autre
+              reponseconsoCode:
+                - '457'
+                - '411'
+    - title: Qualité du réseau
+      example: 'Exemple : je ne capte pas, je capte mal, débit faible'
+      information:
+        title: La qualité du réseau est mauvaise
+        content: Les problèmes de réseau ou d'éligibilité ne peuvent pas être signalés sur SignalConso. <br> Vous devez les signaler à l'ARCEP (Autorité de régulation des communications électroniques, des postes et de la distribution de la presse) sur leur site dédié  <a href="https://jalerte.arcep.fr/" target="_blank" /> J'alerte l'Arcep </a>
+    - title: Résiliation / changement d'opérateur
+      tags:
+        - LitigeContractuel
+      subcategories:
+        - title: Frais de résiliation
+          reponseconsoCode:
+            - '477'
+            - '473'
+        - title: Restitution du matériel
+          reponseconsoCode:
+            - '477'
+            - '473'
+        - title: Problème avec le RIO (Relevé d'Identité Opérateur)
+          reponseconsoCode:
+            - '477'
+        - title: Mon ancien opérateur continue de me prélever
+          reponseconsoCode:
+            - '474'
+    - title: Appels, sms ou emails indésirables
+      example: 'Exemple : spams, appel incessant, rappel vers un numéro payant'
+      subcategories:
+        #- title: Je reçois des appels indésirables alors que je suis sur BlocTel
+        #  tags:
+        #    - ReponseConso
+        - title: J'ai répondu à un sms ou j'ai rappelé un numéro qui était payant sans le savoir
+          information: !!import/single ../common/info/called-paid-number.yml
+        - title: Je reçois des spams dans mes emails
+          reponseconsoCode:
+            - '2207'
+            - '2218'
+        - title: J'ai eu un problème de démarchage téléphonique
+          reponseconsoCode:
+            - '221'
+          companyKind: PHONE
+          tags:
+            - Démarchage téléphonique
+          detailInputs:
+            - label: Date de l'appel
+              rank: 1
+              type: DATE
+              defaultValue: SYSDATE
+            - label: Est-ce que le vendeur s'est fait passer pour une autre entreprise&#160;?
+              rank: 2
+              type: RADIO
+              options:
+                - Non
+                - Oui (à préciser)
+            - label: Décrivez nous plus en détails ce qui s'est passé
+              rank: 3
+              type: TEXTAREA
+    - title: Autre
+      example: 'Exemple : téléphone acheté avec le forfait, service client injoignable'
+      tags:
+        - ReponseConso
+        - LitigeContractuel
+      subcategories:
+        - title: Qualité du service client
+          example: 'Exemple : pas de réponse du service client, service client payant'
+          reponseconsoCode:
+            - '466'
+            - '467'
+        - title: Téléphone acheté avec le forfait
+          reponseconsoCode:
+            - '447'
+            - '464'
+- title: Abonnement télévision
+  tags:
+    - ReponseConso
+  subcategories:
+    - title: Démarchage à domicile
+      ccrfCode:
+        - '221'
+      companyKind: LOCATION
+      reponseconsoCode:
+        - '221'
+      tags:
+        - DemarchageADomicile
+    - title: Démarchage téléphonique
+      ccrfCode: -'227'
+      companyKind: PHONE
+      reponseconsoCode:
+        - '221'
+      tags:
+        - DemarchageTelephonique
+    - title: Problème avec un site internet
+      reponseconsoCode:
+        - '4442'
+      companyKind: WEBSITE
+    - title: Autre
+      reponseconsoCode:
+        - '443'
+        - '446'
+- title: Abonnement presse
+  subcategories:
+    - title: Démarchage à domicile
+      ccrfCode:
+        - '221'
+      companyKind: LOCATION
+      reponseconsoCode:
+        - '221'
+      tags:
+        - DemarchageADomicile
+    - title: Démarchage téléphonique
+      ccrfCode: -'227'
+      companyKind: PHONE
+      reponseconsoCode:
+        - '221'
+      tags:
+        - DemarchageTelephonique
+    - title: Problème avec un site internet
+      reponseconsoCode:
+        - '443'
+        - '446'
+      companyKind: WEBSITE
+    - title: Autre
+  reponseconsoCode:
+    - '442'
+    - '230'
+  tags:
+    - ReponseConso
+- title: Produit dangereux
+  example: 'Exemple : téléphone, accessoire'
+  tags:
+    - ProduitDangereux
+  subcategories:
+    - title: Appareil électrique
+      subcategoriesTitle: Quel est le risque&#160;?
+      subcategories: !!import/single ../common/produit-dangereux.yml
+      tags:
+        - ProduitIndustriel
+    - title: Accessoire
+      subcategoriesTitle: Quel est le risque&#160;?
+      subcategories: !!import/single ../common/produit-dangereux.yml
+      tags:
+        - ProduitIndustriel
+    - title: Autre
+      subcategoriesTitle: Quel est le risque&#160;?
+      subcategories: !!import/single ../common/produit-dangereux.yml
+      tags:
+        - ProduitIndustriel
+- title: Autre
+  reponseconsoCode:
+    - '679'

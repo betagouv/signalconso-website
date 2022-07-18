@@ -3,13 +3,13 @@ import {Problem} from './Problem/Problem'
 import {Details} from './Details/Details'
 import {Company} from './Company/Company'
 import {useI18n} from 'core/i18n'
-import {Anomaly} from '@signal-conso/signalconso-api-sdk-js'
 import {Consumer} from './Consumer/Consumer'
 import {Confirmation} from './Confirmation/Confirmation'
 import React from 'react'
 import {Acknowledgement} from './Acknowledgement/Acknowledgement'
 import {ReportStep} from 'core/reportStep'
 import {useAnalyticContext} from 'core/analytic/AnalyticContext'
+import {Anomaly} from '../../anomaly/Anomaly'
 
 interface Props {
   initialStep: number

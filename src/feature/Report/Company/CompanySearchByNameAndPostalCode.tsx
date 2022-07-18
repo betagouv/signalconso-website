@@ -7,7 +7,6 @@ import {useApiSdk} from 'core/context/ApiSdk'
 import {useToast} from 'core/toast'
 import {useEffectFn, useFetcher} from '../../../alexlibs/react-hooks-lib'
 import {ScButton} from 'shared/Button/Button'
-import {CompanySearchResult} from '@signal-conso/signalconso-api-sdk-js'
 import {Txt} from '../../../alexlibs/mui-extension'
 import {Animate} from 'shared/Animate/Animate'
 import React, {ReactNode} from 'react'
@@ -15,6 +14,7 @@ import {map} from '../../../alexlibs/ts-utils'
 import {useAnalyticContext} from 'core/analytic/AnalyticContext'
 import {CompanySearchEventActions, EventCategories} from 'core/analytic/analytic'
 import {AutocompleteCity} from 'shared/AutocompleteCity/AutocompleteCity'
+import {CompanySearchResult} from '../../../client/company/Company'
 
 interface Form {
   name: string

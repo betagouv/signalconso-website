@@ -14,13 +14,13 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
-    "baseUrl": "src"
+    "baseUrl": "src",
+    "noImplicitAny": false,
   },
   "include": [
     "next-env.d.ts",
     "**/*.ts",
-    "**/*.tsx",
-    "../../../Library/Caches/JetBrains/WebStorm2021.2/javascript/typings/jest/27.4.0/node_modules/@types/jest/index.d.ts"
+    "**/*.tsx"
   ],
   "exclude": ["node_modules"]
 }

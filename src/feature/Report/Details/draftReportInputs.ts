@@ -1,5 +1,6 @@
-import {AnomalyClient, DetailInput, DetailInputType, ReportTag, Subcategory} from '@signal-conso/signalconso-api-sdk-js'
 import {last} from 'core/lodashNamedExport'
+import {AnomalyClient} from '../../../anomaly/AnomalyClient'
+import {DetailInput, DetailInputType, ReportTag, Subcategory} from '../../../anomaly/Anomaly'
 
 export class DraftReportDefaultInputs {
   static readonly reponseConso = (): DetailInput => ({

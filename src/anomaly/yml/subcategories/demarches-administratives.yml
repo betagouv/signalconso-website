@@ -1,0 +1,50 @@
+- title: Absence d'information sur le médiateur
+  reponseconsoCode:
+    - '2201'
+    - '411'
+    - '492'
+  tags:
+    - ReponseConso
+    - AbsenceDeMediateur
+- title: Courrier / entreprise qui se fait passer pour l'administration
+  reponseconsoCode:
+    - '210'
+    - '511'
+  tags:
+    - ReponseConso
+    - LitigeContractuel
+- title: Site internet pour obtenir un document administratif (casier, acte de naissance, vignette crit'air)
+  subcategoriesTitle: À qui appartient ce site internet&#160;?
+  subcategories:
+    - title: À une administration
+      example: "Exemple : site internet d'une mairie. Les sites officiels de l'Etat doivent se terminer par gouv.fr ou .fr et jamais par .gouv.org ou .gouv.com. Vérifiez les mentions légales du site."
+      information: !!import/single ../common/info/administration.yml
+    - title: À une entreprise
+      example: "Un site avec une Marianne ou un drapeau tricolore n'appartient pas forcément à l'Etat. Ces entreprises entretiennent une confusion pour tromper les consommateurs."
+      reponseconsoCode:
+        - '210'
+        - '511'
+      tags:
+        - ReponseConso
+        - LitigeContractuel
+- title: Carte des numéros utiles de la mairie (numéro urgence serrurier, plombier...)
+  reponseconsoCode:
+    - '210'
+    - '2201'
+    - '492'
+  tags:
+    - ReponseConso
+- title: Autre
+  subcategoriesTitle: Que voulez-vous signaler ?
+  subcategories:
+    - title: Une administration
+      example: 'Exemple : ma mairie, mon centre des impôts'
+      information: !!import/single ../common/info/administration.yml
+    - title: Une entreprise privée
+      reponseconsoCode:
+        - '220'
+        - '521'
+        - '210'
+        - '492'
+      tags:
+        - LitigeContractuel

@@ -1,13 +1,13 @@
-import {UploadedFile} from '@signal-conso/signalconso-api-sdk-js'
 import {Box, Icon, Tooltip} from '@mui/material'
 import {extensionToType, FileType, reportFileConfig} from './reportFileConfig'
 import {some} from 'fp-ts/lib/Option'
 import React from 'react'
-import {IconBtn, useToast} from '../../alexlibs/mui-extension'
+import {IconBtn} from '../../alexlibs/mui-extension'
 import {useI18n} from 'core/i18n'
 import {appConfig} from '../../conf/appConfig'
 import {useApiSdk} from 'core/context/ApiSdk'
 import {ScDialog} from '../Dialog/ScDialog'
+import {UploadedFile} from '../../client/file/UploadedFile'
 
 export interface ReportFileProps {
   file: UploadedFile
@@ -18,11 +18,9 @@ export interface ReportFileProps {
 const removeBtnSize = 30
 const cardMargin = 1
 
-export const ReportFile = ({file, dense, onRemove}: ReportFileProps) => {
+export const ReportFile = ({file, onRemove}: ReportFileProps) => {
   const fileType = extensionToType(file.filename)
   const {apiSdk} = useApiSdk()
-  // const _remove = useFetcher(apiSdk.secured.document.remove)
-  const {toastError} = useToast()
   const {m} = useI18n()
 
   const fileUrl = some(apiSdk.document.getLink(file))
@@ -30,13 +28,8 @@ export const ReportFile = ({file, dense, onRemove}: ReportFileProps) => {
     .toUndefined()
 
   const remove = async () => {
-    // await _remove.fetch({}, file)
     onRemove?.(file)
   }
-
-  // useEffect(() => {
-  //   fromNullable(_remove.error).map(toastError)
-  // }, [_remove.error])
 
   return (
     <Tooltip title={file.filename}>

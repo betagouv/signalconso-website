@@ -3,7 +3,6 @@ import {Theme} from '@mui/material/styles'
 import {IllustrationStepper} from 'shared/IllustrationStepper/StepIllustrations'
 import {Box, Divider, Grid} from '@mui/material'
 import {apiSdk} from 'core/apiSdk'
-import {Anomaly} from '@signal-conso/signalconso-api-sdk-js'
 import {AnomalyCard} from 'shared/AnomalyCard/AnomalyCard'
 import {serializeJsonForStupidNextJs} from 'core/helper/utils'
 import {SxProps} from '@mui/system'
@@ -20,10 +19,10 @@ import {useWindowWidth} from 'core/useWindowWidth'
 import {useRgpdBanner} from 'feature/RgpdBanner/RgpdBanner'
 import {InfoBanner} from 'feature/InfoBanner/InfoBanner'
 import * as smoothscroll from 'smoothscroll-polyfill'
+import * as React from 'react'
 import {useEffect} from 'react'
 import Head from 'next/head'
-import {pageDefinitions} from '../core/pageDefinition'
-import * as React from 'react'
+import {Anomaly} from '../anomaly/Anomaly'
 
 const sxTitle: SxProps<Theme> = {
   fontSize: 24,
@@ -73,8 +72,6 @@ const Home = ({anomalies}: HomeProps) => {
             textAlign: 'center',
             padding: isMobileWidthMax ? 1 : 5,
             fontSize: isMobileWidthMax ? 22 : 32,
-            // fontSize: 32,
-            // fontWeight: 'lighter'
           }}
           dangerouslySetInnerHTML={{__html: m.signalconsoCatchWord}}
         />

@@ -1,9 +1,10 @@
 import * as React from 'react'
 import {ReactNode, useContext} from 'react'
-import {ApiClient, SignalConsoPublicSdk} from '@signal-conso/signalconso-api-sdk-js'
 import {apiSdk} from '../apiSdk'
 import {ApiAdresseClient} from '../client/ApiAdresseClient'
 import {useConfig} from './ConfigContext'
+import {SignalConsoPublicSdk} from '../../client/SignalConsoPublicSdk'
+import {ApiClient} from '../../client/ApiClient'
 
 export interface ApiSdkProps {
   apiSdk: SignalConsoPublicSdk

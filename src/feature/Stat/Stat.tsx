@@ -2,12 +2,12 @@ import React, {useEffect} from 'react'
 import {Bar, BarChart, CartesianGrid, Legend, ResponsiveContainer, Tooltip, XAxis, YAxis} from 'recharts'
 import {Box, createTheme} from '@mui/system'
 import {Panel} from 'shared/Panel/Panel'
-import {CountByDate, SimpleStat} from '@signal-conso/signalconso-api-sdk-js'
 import {useI18n} from 'core/i18n'
 import {useFetcher} from '../../alexlibs/react-hooks-lib'
 import {Txt} from '../../alexlibs/mui-extension'
 import {map} from '../../alexlibs/ts-utils'
 import {Skeleton} from '@mui/material'
+import {CountByDate, SimpleStat} from '../../client/stats/Stats'
 
 interface Props {
   name?: string

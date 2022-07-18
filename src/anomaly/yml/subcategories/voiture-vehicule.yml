@@ -1,0 +1,184 @@
+- title: Location
+  example: 'Exemple : location de voiture, location de vélo, location longue durée'
+  tags:
+    - LitigeContractuel
+  subcategories:
+    - title: Location de voiture auprès d'une agence ou d'un magasin
+      example: "Exemple : agence à l'aéroport, location de camionnette dans un supermarché, plate-forme de location sur internet"
+      tags:
+        - LitigeContractuel
+      subcategories:
+        - title: Prix / paiement
+          reponseconsoCode:
+            - '451'
+            - '623'
+          tags:
+            - ReponseConso
+        - title: Publicité / annonce
+          reponseconsoCode:
+            - '210'
+            - '411'
+          tags:
+            - ReponseConso
+          example: 'Exemple : caractéristiques du véhicule, équipements fournis'
+        - title: Autre
+          reponseconsoCode:
+            - '679'
+          subcategories:
+            - title: Personnel peu aimable
+              information: !!import/single ../common/info/amabilite.yml
+            - title: Autre
+    - title: Location en libre-service
+      example: 'Exemple : location de vélo, trotinette, voiture électrique par une borne'
+      tags:
+        - LitigeContractuel
+      subcategories:
+        - title: Prix / paiement
+          reponseconsoCode:
+            - '451'
+          tags:
+            - ReponseConso
+        - title: Publicité
+          reponseconsoCode:
+            - '210'
+            - '411'
+          tags:
+            - ReponseConso
+        - title: Autre
+          reponseconsoCode:
+            - '679'
+    - title: Location longue durée (leasing, LDD, LOA...)
+      tags:
+        - LitigeContractuel
+      subcategories:
+        - title: Prix / paiement
+          reponseconsoCode:
+            - '451'
+            - '212'
+          tags:
+            - ReponseConso
+        - title: Publicité
+          reponseconsoCode:
+            - '210'
+            - '411'
+          tags:
+            - ReponseConso
+        - title: Autre
+          reponseconsoCode:
+            - '679'
+    - title: Location de voiture entre particuliers
+      subcategories:
+        - title: Prix / paiement
+        - title: Publicité
+        - title: Autre
+    - title: Service de voiture partagée
+      subcategories:
+        - title: Prix / paiement
+          reponseconsoCode:
+            - '451'
+            - '623'
+        - title: Publicité
+          reponseconsoCode:
+            - '210'
+        - title: Autre
+          reponseconsoCode:
+            - '679'
+- title: Réparation, révision, vente de véhicule
+  example: 'Exemple : garagiste, dépanneur, contrôle technique'
+  tags:
+    - LitigeContractuel
+  subcategories:
+    - title: Prix / paiement
+      reponseconsoCode:
+        - '451'
+        - '623'
+      tags:
+        - ReponseConso
+      example: 'Exemple : devis non détaillé, devis non respecté, délais'
+    - title: Prestation mal réalisée ou pas réalisée
+      reponseconsoCode:
+        - '446'
+        - '271'
+      tags:
+        - ReponseConso
+      example: "Exemple : malfaçon, panne non réparée, pose d'un équipement endommagé, pièce d'origine douteuse"
+    - title: Publicité mensongère
+      reponseconsoCode:
+        - '210'
+        - '271'
+      tags:
+        - ReponseConso
+    - title: Autre
+      reponseconsoCode:
+        - '464'
+        - '271'
+      subcategories:
+        - title: Personnel peu aimable
+          information: !!import/single ../common/info/amabilite.yml
+        - title: Autre
+- title: Permis / leçons de conduite
+  example: 'Exemple : auto-école'
+  subcategories:
+    - title: Prix / paiement
+      reponseconsoCode:
+        - '451'
+        - '623'
+      tags:
+        - ReponseConso
+      example: 'Exemple : prix non affiché, forfait obligatoire'
+    - title: Publicité mensongère
+      reponseconsoCode:
+        - '210'
+      tags:
+        - ReponseConso
+      example: "Exemple : publicité trompeuse avec un nombre d'heures infaisable"
+    - title: Autre
+      tags:
+        - ReponseConso
+      reponseconsoCode:
+        - '214'
+      example: 'Exemple : clause abusive dans le contrat, obligation de payer des heures régulièrement, heure de conduite qui ne dure pas une heure'
+      subcategories:
+        - title: Clause abusive dans le contrat
+          tags:
+            - ReponseConso
+        - title: Obligation de payer des heures régulièrement
+          tags:
+            - ReponseConso
+        - title: Heure de conduite qui ne dure pas une heure
+          tags:
+            - ReponseConso
+        - title: Le personnel (moniteur) n'est pas aimable
+          information: !!import/single ../common/info/amabilite.yml
+        - title: Autre
+          tags:
+            - ReponseConso
+- title: Produit dangereux
+  example: 'Exemple : voiture, vélo, pneu'
+  reponseconsoCode:
+    - '352'
+    - '617'
+  tags:
+    - ProduitDangereux
+  subcategories:
+    - title: Voiture, moto, scooter
+      subcategoriesTitle: Quel est le risque&#160;?
+      subcategories: !!import/single ../common/produit-dangereux.yml
+    - title: Vélo, vélo électrique
+      subcategoriesTitle: Quel est le risque&#160;?
+      subcategories: !!import/single ../common/produit-dangereux.yml
+    - title: Pneu
+      subcategoriesTitle: Quel est le risque&#160;?
+      subcategories: !!import/single ../common/produit-dangereux.yml
+    - title: Accessoire
+      subcategoriesTitle: Quel est le risque&#160;?
+      subcategories: !!import/single ../common/produit-dangereux.yml
+    - title: Autre
+      subcategoriesTitle: Quel est le risque&#160;?
+      subcategories: !!import/single ../common/produit-dangereux.yml
+- title: Autre
+  example: 'Exemple : fourrière'
+  reponseconsoCode:
+    - '679'
+  tags:
+    - ReponseConso

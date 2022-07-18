@@ -1,11 +1,12 @@
 import {useEffect, useState} from 'react'
-import {Anomaly, ReportDraft} from '@signal-conso/signalconso-api-sdk-js'
 import {_Confirmation} from '../Report/Confirmation/Confirmation'
 import {ReportStep} from 'core/reportStep'
 import {apiSdk} from 'core/apiSdk'
 import {useTheme} from '@mui/material'
 import {styleUtils} from 'core/theme/theme'
 import {Fixture} from '../../test/fixture'
+import {ReportDraft} from '../../client/report/ReportDraft'
+import {Anomaly} from '../../anomaly/Anomaly'
 
 export const PlaygroundConfirmation = () => {
   const [draft, setDraft] = useState<ReportDraft>(Fixture.genDraftReport(ReportStep.Confirmation) as ReportDraft)
@@ -14,7 +15,10 @@ export const PlaygroundConfirmation = () => {
   useEffect(() => {
     apiSdk.anomaly
       .getAnomalies()
-      .then(anomalies => anomalies.find(_ => _.category === draft.category)!)
+      .then(anomalies => {
+        console.log(anomalies)
+        return anomalies.find(_ => _.category === draft.category)!
+      })
       .then(setAnomaly)
   }, [])
   return (

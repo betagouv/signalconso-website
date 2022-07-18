@@ -2,7 +2,6 @@ import {Panel, PanelActions, PanelBody} from 'shared/Panel/Panel'
 import {Fender, Txt} from '../../../alexlibs/mui-extension'
 import {Box, BoxProps, Icon} from '@mui/material'
 import {useReportFlowContext} from '../ReportFlowContext'
-import {Country, Report, ReportDraft, ReportTag} from '@signal-conso/signalconso-api-sdk-js'
 import {useEffectFn, useMemoFn} from '../../../alexlibs/react-hooks-lib'
 import {useEffect, useMemo} from 'react'
 import {fnSwitch} from '../../../alexlibs/ts-utils'
@@ -14,6 +13,10 @@ import {ScButton} from 'shared/Button/Button'
 import {useI18n} from 'core/i18n'
 import Link from 'next/link'
 import {siteMap} from 'core/siteMap'
+import {ReportTag} from '../../../anomaly/Anomaly'
+import {ReportDraft} from '../../../client/report/ReportDraft'
+import {Report} from '../../../client/report/Report'
+import {Country} from '../../../client/constant/Country'
 
 export enum AcknowledgmentCases {
   ReponseConso = 'ReponseConso',

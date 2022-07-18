@@ -1,10 +1,10 @@
-import {FileOrigin, UploadedFile} from '@signal-conso/signalconso-api-sdk-js'
 import {Box} from '@mui/material'
 import React, {useEffect, useState} from 'react'
 import {ReportFileAdd} from './ReportFileAdd'
 import {ReportFile} from './ReportFile'
 import {Txt} from '../../alexlibs/mui-extension'
 import {useI18n} from 'core/i18n'
+import {FileOrigin, UploadedFile} from '../../client/file/UploadedFile'
 
 export interface ReportFilesProps {
   files?: UploadedFile[]

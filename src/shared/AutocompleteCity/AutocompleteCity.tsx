@@ -1,4 +1,3 @@
-import {ApiAdresseClient} from 'core/client/ApiAdresseClient'
 import {throttle} from 'core/lodashNamedExport'
 import {useI18n} from 'core/i18n'
 import {useEffectFn, useFetcher} from '../../alexlibs/react-hooks-lib'
@@ -6,8 +5,6 @@ import {Autocomplete, CircularProgress} from '@mui/material'
 import React, {forwardRef, useEffect, useMemo, useState} from 'react'
 import {ScInput, ScInputProps} from '../Input/ScInput'
 import {Txt} from '../../alexlibs/mui-extension'
-import {useConfig} from 'core/context/ConfigContext'
-import {ApiClient} from '@signal-conso/signalconso-api-sdk-js'
 import {useApiSdk} from '../../core/context/ApiSdk'
 
 export interface AutocompleteCityValue {
