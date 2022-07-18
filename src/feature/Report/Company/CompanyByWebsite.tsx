@@ -5,7 +5,6 @@ import {useI18n} from 'core/i18n'
 import {useApiSdk} from 'core/context/ApiSdk'
 import {ScButton} from 'shared/Button/Button'
 import {useForm} from 'react-hook-form'
-import {CompanySearchResult, Country} from '@signal-conso/signalconso-api-sdk-js'
 import {useEffectFn, useFetcher} from '../../../alexlibs/react-hooks-lib'
 import {useToast} from 'core/toast'
 import {Box, BoxProps, Icon, Tooltip} from '@mui/material'
@@ -13,6 +12,8 @@ import {Panel, PanelBody} from 'shared/Panel/Panel'
 import {Animate} from 'shared/Animate/Animate'
 import {useAnalyticContext} from 'core/analytic/AnalyticContext'
 import {CompanySearchEventActions, EventCategories} from 'core/analytic/analytic'
+import {CompanySearchResult} from '../../../client/company/Company'
+import {Country} from '../../../client/constant/Country'
 
 interface Form {
   website: string

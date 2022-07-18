@@ -1,5 +1,5 @@
 import {Box, BoxProps} from '@mui/material'
-import {Anomaly, Index} from '@signal-conso/signalconso-api-sdk-js'
+import {Anomaly} from '../../anomaly/Anomaly'
 
 interface Props extends BoxProps {
   anomaly: Pick<Anomaly, 'sprite' | 'cssClass'>

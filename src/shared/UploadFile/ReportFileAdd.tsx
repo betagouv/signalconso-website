@@ -1,13 +1,14 @@
 import React, {useRef, useState} from 'react'
 import {Box, Button, CircularProgress, Icon, Theme, Tooltip} from '@mui/material'
 import {reportFileConfig} from './reportFileConfig'
-import {FileOrigin, UploadedFile, CompressFile} from '@signal-conso/signalconso-api-sdk-js'
 import {useI18n} from 'core/i18n'
 import {useApiSdk} from 'core/context/ApiSdk'
 import {appConfig} from '../../conf/appConfig'
 import {styleUtils} from 'core/theme/theme'
 import {useToast} from 'core/toast'
 import {SxProps} from '@mui/system'
+import {FileOrigin, UploadedFile} from '../../client/file/UploadedFile'
+import {CompressFile} from '../../client/helper/CompressFile'
 
 const styles: {[key: string]: SxProps<Theme>} = {
   root: {

@@ -1,11 +1,9 @@
-import {CompanySearchResult, Report} from '@signal-conso/signalconso-api-sdk-js'
-import {Txt} from '../../../alexlibs/mui-extension'
+import {Fender, Txt} from '../../../alexlibs/mui-extension'
 import {Box, BoxProps, Icon} from '@mui/material'
 import React, {useEffect, useState} from 'react'
 import {Panel, PanelActions, PanelBody} from 'shared/Panel/Panel'
 import {useI18n} from 'core/i18n'
 import {ScRadioGroup, ScRadioGroupItem} from 'shared/RadioGroup'
-import {Fender} from '../../../alexlibs/mui-extension'
 import {styleUtils} from 'core/theme/theme'
 import {AddressComponent} from 'shared/Address/Address'
 import {Animate} from 'shared/Animate/Animate'
@@ -15,7 +13,8 @@ import {StepperActionsNext} from 'shared/Stepper/StepperActionsNext'
 import {useAnalyticContext} from 'core/analytic/AnalyticContext'
 import {CompanySearchEventActions, EventCategories} from 'core/analytic/analytic'
 import {useToast} from '../../../core/toast'
-import {appConfig} from '../../../conf/appConfig'
+import {CompanySearchResult} from '../../../client/company/Company'
+import {Report} from '../../../client/report/Report'
 
 interface Props extends Omit<BoxProps, 'onSubmit'> {
   companies: CompanySearchResult[]

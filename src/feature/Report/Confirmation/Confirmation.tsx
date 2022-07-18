@@ -1,7 +1,6 @@
 import {useReportFlowContext} from '../ReportFlowContext'
 import {useI18n} from 'core/i18n'
 import {Alert, Txt} from '../../../alexlibs/mui-extension'
-import {Anomaly, FileOrigin, ReportDraft} from '@signal-conso/signalconso-api-sdk-js'
 import {ConfirmationStep, ConfirmationStepper} from './ConfirmationStepper'
 import {Animate} from 'shared/Animate/Animate'
 import {Box, Chip, Icon} from '@mui/material'
@@ -15,6 +14,9 @@ import {Row} from 'shared/Row/Row'
 import React, {useEffect} from 'react'
 import {useAnalyticContext} from 'core/analytic/AnalyticContext'
 import {EventCategories, ReportEventActions} from 'core/analytic/analytic'
+import {FileOrigin} from '../../../client/file/UploadedFile'
+import {ReportDraft} from '../../../client/report/ReportDraft'
+import {Anomaly} from '../../../anomaly/Anomaly'
 
 export const Confirmation = ({}: {}) => {
   const _reportFlow = useReportFlowContext()

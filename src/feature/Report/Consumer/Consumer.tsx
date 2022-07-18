@@ -16,13 +16,13 @@ import {useStepperContext} from 'shared/Stepper/Stepper'
 import {ConsumerValidationDialog} from './ConsumerValidationDialog'
 import {ReportDraft2} from 'core/model/ReportDraft'
 import {DeepPartial} from '../../../alexlibs/ts-utils'
-import {Gender, ReportDraft, ReportTag} from '@signal-conso/signalconso-api-sdk-js'
 import {appConfig} from '../../../conf/appConfig'
 import {Row} from 'shared/Row/Row'
 import {useAnalyticContext} from 'core/analytic/AnalyticContext'
 import {EventCategories, ReportEventActions} from 'core/analytic/analytic'
 import {useWindowWidth} from 'core/useWindowWidth'
-import {styleUtils} from 'core/theme/theme'
+import {Gender, ReportDraft} from '../../../client/report/ReportDraft'
+import {ReportTag} from '../../../anomaly/Anomaly'
 
 interface ConsumerForm {
   firstName: string

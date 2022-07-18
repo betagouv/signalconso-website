@@ -15,7 +15,7 @@ export const Stepper = ({children, renderDone}: ProblemStepperProps) => {
   const isDone = useMemo(() => {
     return children.every(_ => _.props.hidden || _.props.isDone)
   }, [children])
-  const res = []
+  const res: ReactElement<ProblemStepProps>[] = []
   for (let i = 0; i < children.length; i++) {
     if (!children[i].props.hidden) {
       res.push(children[i])

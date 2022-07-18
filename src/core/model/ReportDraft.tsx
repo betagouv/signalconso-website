@@ -1,16 +1,11 @@
-import {
-  Address,
-  Anomaly,
-  CompanyDraft,
-  DetailInput,
-  DetailInputValue,
-  ReportDraft,
-  ReportDraftConsumer,
-} from '@signal-conso/signalconso-api-sdk-js'
 import {getDraftReportInputs} from 'feature/Report/Details/draftReportInputs'
 import {isSpecifyInputName, SpecifyFormUtils} from 'feature/Report/Details/Details'
 import {fromNullable} from 'fp-ts/lib/Option'
 import {DeepPartial} from '../../alexlibs/ts-utils'
+import {CompanyDraft, ReportDraft, ReportDraftConsumer} from '../../client/report/ReportDraft'
+import {Anomaly, DetailInput} from '../../anomaly/Anomaly'
+import {DetailInputValue} from '../../client/report/Report'
+import {Address} from '../../model'
 
 export type DetailInputValues2 = {[key: string]: string | string[]}
 

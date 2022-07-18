@@ -1,6 +1,6 @@
-import {CompanyKinds} from '@signal-conso/signalconso-api-sdk-js'
 import {_Consumer} from '../Report/Consumer/Consumer'
 import {Card, CardContent} from '@mui/material'
+import {CompanyKinds} from '../../anomaly/Anomaly'
 
 export const PlaygroundConsumer = () => {
   return (

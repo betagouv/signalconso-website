@@ -1,4 +1,3 @@
-import {Anomaly, Information, Subcategory} from '@signal-conso/signalconso-api-sdk-js'
 import {Animate} from 'shared/Animate/Animate'
 import {Panel, PanelBody} from 'shared/Panel/Panel'
 import {useI18n} from 'core/i18n'
@@ -17,6 +16,7 @@ import {useAnalyticContext} from 'core/analytic/AnalyticContext'
 import {EventCategories, ReportEventActions} from 'core/analytic/analytic'
 import {last} from 'core/lodashNamedExport'
 import {ReportStepperPath, ReportStepperTitle} from '../ReportFlow'
+import {Anomaly, Information, Subcategory} from '../../../anomaly/Anomaly'
 
 interface Props {
   anomaly: Anomaly

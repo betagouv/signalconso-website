@@ -1,0 +1,17 @@
+- title: Oui
+  subcategoriesTitle: Avez-vous été malade ?
+  subcategories:
+    - title: Oui
+      information:
+        title: Vous n'êtes pas au bon endroit
+        content: Utilisez la catégorie "Intoxication alimentaire" en revenant en arrière ou en cliquant sur <a href="https://signal.conso.gouv.fr/intoxication-alimentaire">ce lien</a>.
+    - title: Non
+      detailInputs: !!import/single ../common/inputs/retrait-rappel.yml
+      companyKind: SIRET
+      tags:
+        - ProduitAlimentaire
+- title: Non
+  detailInputs: !!import/single ../common/inputs/retrait-rappel.yml
+  companyKind: SIRET
+  tags:
+    - ProduitAlimentaire

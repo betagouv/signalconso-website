@@ -8,7 +8,7 @@ import {Animate} from 'shared/Animate/Animate'
 import {Alert, Txt} from '../../../alexlibs/mui-extension'
 import {StepperActionsNext} from 'shared/Stepper/StepperActionsNext'
 import {AutocompleteCity, AutocompleteCityValue} from 'shared/AutocompleteCity/AutocompleteCity'
-import {Address} from '@signal-conso/signalconso-api-sdk-js'
+import {Address} from '../../../model'
 
 interface Form {
   street: string

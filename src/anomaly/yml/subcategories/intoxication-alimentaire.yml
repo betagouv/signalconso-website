@@ -1,0 +1,46 @@
+- title: Oui
+  subcategoriesTitle: Avez-vous mangé ?
+  subcategories:
+    - title: Sur place
+      companyKind: SIRET
+      reponseconsoCode:
+        - '321'
+        - '324'
+      tags:
+        - ProduitDangereux
+      detailInputs: !!import/single ../common/inputs/intoxication-alimentaire.yml
+      fileLabel: Photos du produit / de l'emballage / du ticket / de la facture
+    - title: A emporter
+      companyKind: LOCATION
+      reponseconsoCode:
+        - '321'
+        - '324'
+      tags:
+        - ProduitDangereux
+      detailInputs: !!import/single ../common/inputs/intoxication-alimentaire.yml
+      fileLabel: Photos du produit / de l'emballage / du ticket / de la facture
+    - title: En livraison
+      companyKind: LOCATION
+      reponseconsoCode:
+        - '321'
+        - '324'
+      tags:
+        - ProduitDangereux
+      detailInputs: !!import/single ../common/inputs/intoxication-alimentaire.yml
+      fileLabel: Photos du produit / de l'emballage / du ticket / de la facture
+    - title: Un produit précis
+      companyKind: LOCATION
+      reponseconsoCode:
+        - '321'
+        - '324'
+      tags:
+        - ProduitDangereux
+      detailInputs: !!import/single ../common/inputs/intoxication-alimentaire.yml
+      fileLabel: Photos du produit / de l'emballage / du ticket / de la facture
+- title: Non
+  information:
+    title: Revenez en arrière et utilisez plutôt la catégorie spécifique à votre problème 🙂
+    content:
+        'Pour un repas au restaurant ? Utilisez la catégorie "Café / Restaurant".<br/>
+         Un produit acheté en magasin ? Utilisez la catégorie "Achat (Magasin ou Internet)".<br/>'
+

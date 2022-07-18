@@ -1,15 +1,7 @@
 import React, {useEffect, useMemo, useState} from 'react'
 import {Alert, Txt} from '../../../alexlibs/mui-extension'
 import {useReportFlowContext} from '../ReportFlowContext'
-import {
-  DetailInput,
-  DetailInputType,
-  FileOrigin,
-  ReportDraft,
-  ReportTag,
-  SubcategoryInput,
-  UploadedFile,
-} from '@signal-conso/signalconso-api-sdk-js'
+
 import {ScDatepicker} from 'shared/Datepicker/Datepicker'
 import {fnSwitch, mapFor} from '../../../alexlibs/ts-utils'
 import {useI18n} from 'core/i18n'
@@ -35,6 +27,9 @@ import {DetailInputValues2} from 'core/model/ReportDraft'
 import {DetailsSpecifyInput} from './DetailsSpecifyInput'
 import {useAnalyticContext} from 'core/analytic/AnalyticContext'
 import {EventCategories, ReportEventActions} from 'core/analytic/analytic'
+import {FileOrigin, UploadedFile} from '../../../client/file/UploadedFile'
+import {DetailInput, DetailInputType, ReportTag, SubcategoryInput} from '../../../anomaly/Anomaly'
+import {ReportDraft} from '../../../client/report/ReportDraft'
 
 const mapDateInput = ({
   value,
