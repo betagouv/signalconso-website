@@ -40,7 +40,5 @@
 - title: Non
   information:
     title: Revenez en arrière et utilisez plutôt la catégorie spécifique à votre problème 🙂
-    content:
-        'Pour un repas au restaurant ? Utilisez la catégorie "Café / Restaurant".<br/>
-         Un produit acheté en magasin ? Utilisez la catégorie "Achat (Magasin ou Internet)".<br/>'
-
+    content: 'Pour un repas au restaurant ? Utilisez la catégorie "Café / Restaurant".<br/>
+      Un produit acheté en magasin ? Utilisez la catégorie "Achat (Magasin ou Internet)".<br/>'

@@ -4,11 +4,6 @@ import {Page} from 'shared/Page/Page'
 import {Box} from '@mui/material'
 import Head from 'next/head'
 import {pageDefinitions} from 'core/pageDefinition'
-// import Image from 'next/image'
-// import consumerImg from '../../public/image/illustrations/consumer.png'
-// import reportImg from '../../public/image/illustrations/report.png'
-// import companyImg from '../../public/image/illustrations/company.png'
-// import dgccrfImg from '../../public/image/illustrations/dgccrf.png'
 
 const Card = ({title, img, children}: {title: string; img: string; children?: ReactNode}) => {
   return (
@@ -45,20 +40,18 @@ const CommentCaMarche = () => {
         img="image/illustrations/report.png"
         title="2. Déposez un signalement sur SignalConso ou posez une question à la répression des fraudes."
       >
-        <p>
-          Signalez le problème (anonymement ou non) ou posez directement votre question auprès d’un agent de la DGCCRF.
-        </p>
+        <p>Signalez le problème (anonymement ou non) ou posez directement votre question auprès d’un agent de la DGCCRF.</p>
         <p>Dans tous les cas, SignalConso vous oriente et vous conseille.</p>
       </Card>
       <Card img="image/illustrations/company.png" title="3. L’entreprise et la répression des fraudes sont informées.">
         <p>
-          Si vous avez déposé un signalement, SignalConso contacte l’entreprise afin de l’en informer. L’entreprise peut alors vous
-          répondre et/ou s’améliorer, vous serez informés de son action par
-          un email de SignalConso. Si vous avez choisi de transmettre vos
-          coordonnées à l’entreprise, elle pourra vous contacter directement.
+          Si vous avez déposé un signalement, SignalConso contacte l’entreprise afin de l’en informer. L’entreprise peut alors
+          vous répondre et/ou s’améliorer, vous serez informés de son action par un email de SignalConso. Si vous avez choisi de
+          transmettre vos coordonnées à l’entreprise, elle pourra vous contacter directement.
         </p>
         <p>
-          Si vous choisissez d’interroger la DGCCRF sur vos droits, une réponse individualisée vous sera adressée par mail par un agent de la DGCCRF.
+          Si vous choisissez d’interroger la DGCCRF sur vos droits, une réponse individualisée vous sera adressée par mail par un
+          agent de la DGCCRF.
         </p>
       </Card>
       <Card img="image/illustrations/dgccrf.png" title="4. La répression des fraudes intervient si nécessaire.">
