@@ -46,22 +46,19 @@ const CommentCaMarche = () => {
         title="2. Déposez un signalement sur SignalConso ou posez une question à la répression des fraudes."
       >
         <p>
-          Signalez le problème (anonymement ou non) en choisissant la bonne catégorie sur la page d’accueil du site et en vous
-          laissant guider par les questions ;
+          Signalez le problème (anonymement ou non) ou posez directement votre question auprès d’un agent de la DGCCRF.
         </p>
-        <p>Ou</p>
-        <p>Posez directement votre question auprès d’un agent de la DGCCRF.</p>
         <p>Dans tous les cas, SignalConso vous oriente et vous conseille.</p>
       </Card>
       <Card img="image/illustrations/company.png" title="3. L’entreprise et la répression des fraudes sont informées.">
         <p>
-          Si vous avez déposé un signalement, SignalConso contacte l’entreprise afin de l’en informer. L’entreprise peut alors
-          vous répondre et/ou s’améliorer, vous serez informés de son action par un email de SignalConso. Si vous avez choisi de
-          transmettre vos coordonnées à l’entreprise, elle pourra vous contacter directement.
+          Si vous avez déposé un signalement, SignalConso contacte l’entreprise afin de l’en informer. L’entreprise peut alors vous
+          répondre et/ou s’améliorer, vous serez informés de son action par
+          un email de SignalConso. Si vous avez choisi de transmettre vos
+          coordonnées à l’entreprise, elle pourra vous contacter directement.
         </p>
         <p>
-          Si vous avez posé une question à un agent de la DGCCRF, vous serez directement contactés par un agent pour une prise en
-          charge.
+          Si vous choisissez d’interroger la DGCCRF sur vos droits, une réponse individualisée vous sera adressée par mail par un agent de la DGCCRF.
         </p>
       </Card>
       <Card img="image/illustrations/dgccrf.png" title="4. La répression des fraudes intervient si nécessaire.">
