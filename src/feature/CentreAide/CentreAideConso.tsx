@@ -4,6 +4,7 @@ import {AccordionPanel, AccordionPanels} from 'shared/AccordionPanel/AccordionPa
 import {Box, BoxProps} from '@mui/material'
 import {externalLinks} from 'core/externalLinks'
 import {appConfig} from 'conf/appConfig'
+import * as React from 'react'
 
 export const CentreAideConso = (props: BoxProps) => {
   return (
@@ -127,6 +128,59 @@ export const CentreAideConso = (props: BoxProps) => {
           <p>
             {' '}
             Pour modifier ou supprimer votre signalement, vous pouvez <Link href={siteMap.contact}>contacter le support</Link>.
+          </p>
+        </AccordionPanel>
+      </AccordionPanels>
+      <h2 className="pt-5">Je veux poser une question à la répression des fraudes</h2>
+      <AccordionPanels>
+        <AccordionPanel title={`Je ne trouve pas où le faire`}>
+          <p>
+            En fonction de la catégorie choisie lors de votre parcours de signalement, ce bouton va éventuellement apparaître :
+          </p>
+          <img
+            src="/image/reponse_conso_button.png"
+            alt="Bouton question DGCCRF"
+            style={{width: '100%', marginTop: 4, marginBottom: 4}}
+          />
+        </AccordionPanel>
+        <AccordionPanel title={`Où dois-je saisir ma question ?`}>
+          <p>Vous pourrez décrire votre situation et poser votre question à l’étape 2 :</p>
+          <img
+            src="/image/reponse_conso_question.png"
+            alt="Question DGCCRF"
+            style={{width: '100%', marginTop: 4, marginBottom: 4}}
+          />
+        </AccordionPanel>
+        <AccordionPanel title={`J'ai un message d'erreur lorsque je clique sur "envoyer" ou "suivant"`}>
+          <p>
+            Vérifiez votre connexion internet et réessayez d'envoyer le formulaire. Ce message d'erreur apparait souvent lorsque
+            la connexion internet a été momentanément coupée. Vous avez peut-être tenté de faire deux fois le même signalement. Il
+            n'est pas possible d'effectuer deux fois un même signalement (même catégorie, même entreprise) à la suite. Si vous
+            n'arrivez toujours pas à envoyer le formulaire, vous pouvez contacter le support (support@signal.conso.gouv.fr)
+          </p>
+        </AccordionPanel>
+      </AccordionPanels>
+      <h2 className="pt-5">J’ai posé une question à la répression des fraudes</h2>
+      <AccordionPanels>
+        <AccordionPanel title={`Je n’ai pas de nouvelle`}>
+          <p>
+            Si vous avez bien choisi l’option «M’informer sur mes droits auprès de la répression des fraudes» et que votre demande
+            est explicite, vous recevrez très prochainement une réponse, en général sous 8 jours maximum, selon la complexité de
+            la situation. Il n’est pas utile d’en formuler une autre, au contraire, cela peut créer une confusion.
+          </p>
+        </AccordionPanel>
+        <AccordionPanel title={`Ma demande est urgente`}>
+          <p>
+            Les demandes sont analysées dans le délai le plus rapide possible. Lorsque dans une réclamation, des échéances sont en
+            jeu, la réponse vous rappellera les droits dont vous bénéficiez pour vous aider à les faire appliquer immédiatement,
+            si les délais contractuels le permettent encore.
+          </p>
+        </AccordionPanel>
+        <AccordionPanel title={`J’ai trouvé la réponse, je souhaite annuler`}>
+          <p>
+            C’est très aimable à vous de souhaiter nous en avertir, pour cela vous pouvez refaire le parcours précédent en
+            mentionnant vos nom et prénom et la résolution de votre problème; un lien sera fait entre votre 1ère demande et ces
+            dernières informations. Sinon, vous pouvez attendre la réponse qui vous sera apportée.
           </p>
         </AccordionPanel>
       </AccordionPanels>
