@@ -32,7 +32,6 @@ export const PlaygroundCompany = () => {
           />
         </CardContent>
       </Card>
-      <pre style={{fontSize: styleUtils(theme).fontSize.small, lineHeight: 1.3}}>{JSON.stringify(report, undefined, 2)}</pre>
     </>
   )
 }
