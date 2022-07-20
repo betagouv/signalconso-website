@@ -54,7 +54,8 @@ export class LocalStorageEntity<T> {
 
   // Unsafe ! this should return null (or undefined) if the key has never been saved
   load = (): T => {
-    return jsonAwareStorage.load(this.key) as T
+    return null
+    // return jsonAwareStorage.load(this.key) as T
   }
 
   clear = (): void => {

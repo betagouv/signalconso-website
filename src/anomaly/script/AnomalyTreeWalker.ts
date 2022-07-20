@@ -136,13 +136,13 @@ export class AnomalyTreeWalker {
       }
       contextProcessed.push(key)
     }
-    return new Error(`${contextLog.join(' > ')}: ${message}`)
+    return new Error(`at path:\n${contextLog.map(_ => ` > ${_}`).join('\n')}\n ===> ${message}`)
   }
 
   printActualValue() {
     const str = this.value === undefined ? 'undefined' : JSON.stringify(this.value)
-    const shortened = str.length > 100 ? str.substring(0, 100) : str
-    return `(got ${shortened})`
+    const shortened = str.length > 100 ? str.substring(0, 100) + '...' : str
+    return `\n(got ${shortened})`
   }
 }
 
