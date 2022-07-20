@@ -12,7 +12,7 @@ export function checkArborescence(jsonArborescence) {
     anomaly.assertIsObject()
     anomaly.into('category').assertIsString()
     anomaly.into('categoryId').assertIsString()
-    anomaly.intoMaybe('seoDescription')?.assertIsString()
+    anomaly.intoNullable('seoDescription')?.assertIsString()
     anomaly.into('path').assertIsString()
     anomaly.intoMaybe('description')?.assertIsString()
     anomaly.intoMaybe('sprite')?.assertIsString()
