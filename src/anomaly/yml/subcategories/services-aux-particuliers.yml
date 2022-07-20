@@ -601,8 +601,8 @@
                   subcategories:
                     - title: Il y a moins de 30 jours
                       information:
-                    - title: Soyez encore un peu patient :)
-                      content: La maison de retraite a 30 jours pour vous rendre la caution.
+                        title: Soyez encore un peu patient :)
+                        content: La maison de retraite a 30 jours pour vous rendre la caution.
                     - title: Il y a plus de 30 jours
                       reponseconsoCode:
                         - '476'
