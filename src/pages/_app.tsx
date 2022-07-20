@@ -22,7 +22,6 @@ import {Analytic} from 'core/analytic/analytic'
 import {useEffect, useState} from 'react'
 import {ConfigProvider, useConfig} from 'core/context/ConfigContext'
 import Head from 'next/head'
-import {checkArborescence} from 'anomaly/checkArborescence'
 
 interface ScAppProps extends AppProps {
   emotionCache?: EmotionCache
@@ -95,10 +94,3 @@ const _App = ({Component, pageProps, router}: AppProps) => {
 }
 
 export default App
-
-try {
-  checkArborescence()
-  console.log('Check passed')
-} catch (e) {
-  console.error(e)
-}
