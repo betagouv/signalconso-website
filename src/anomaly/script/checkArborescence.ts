@@ -3,7 +3,7 @@ const {AnomalyTreeWalker} = require('./AnomalyTreeWalker')
 
 // /!\ This effectively duplicates the structure, be sure to update it along with the "Anomaly" types
 // /!\ This does NOT check for unexpected fields.
-// Thus if you write an optional field with a typo, it will ignore it silently...
+// Thus if you write an optional field with a typo, it will ignore it silently... (like example/exemple)
 export function checkArborescence(jsonArborescence) {
   const root = new AnomalyTreeWalker(jsonArborescence)
   root.assertIsObject()

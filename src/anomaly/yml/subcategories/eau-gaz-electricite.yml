@@ -81,7 +81,7 @@
       example: "Exemple : malfaçons sur la fosse, le bureau d'étude m'impose une marque de fosse en particulier "
       subcategories:
         - title: Malfaçons sur la pose de la fosse septique
-          exemple: 'Fissure, usure'
+          example: 'Fissure, usure'
           detailInputs:
             - label: Date du constat
               rank: 1
