@@ -38,5 +38,5 @@ files.forEach(file => {
   fs.writeFileSync(path.join(root, file.output), JSON.stringify(obj, null, 2))
   fs.unlinkSync(tmpFile)
 
-  checkArborescence(obj)
+  // checkArborescence(obj)
 })
