@@ -42,7 +42,7 @@ const baseSubcategorySpec = {
   description: _ => _.ifDefined()?.assertIsString(),
   tags: _ => _.ifDefined()?.assertIsArrayOfAllowedStrings(Object.values(ReportTag)),
   example: _ => _.ifDefined()?.assertIsString(),
-  reponseconsoCode: _ => _.ifDefined()?.assertIsArrayOfString(),
+  reponseconsoCode: _ => _.ifDefined()?.ifNotNull()?.assertIsArrayOfString(),
   ccrfCode: _ => _.ifDefined()?.assertIsArrayOfString(),
   // a Subcategory is always a Category
   // this triggers the recursion !

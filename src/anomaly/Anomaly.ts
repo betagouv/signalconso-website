@@ -2,7 +2,7 @@ export interface SubcategoryBase extends Category {
   description?: string
   tags?: ReportTag[]
   example?: string
-  reponseconsoCode?: string[]
+  reponseconsoCode?: string[] | null
   ccrfCode?: string[]
 }
 
