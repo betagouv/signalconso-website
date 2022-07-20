@@ -35,8 +35,9 @@ files.forEach(file => {
   // const version = '1'
   // obj.version = version
   addUniqueId(obj.list)
-  fs.writeFileSync(path.join(root, file.output), JSON.stringify(obj, null, 2))
-  fs.unlinkSync(tmpFile)
 
   checkArborescence(obj)
+
+  fs.writeFileSync(path.join(root, file.output), JSON.stringify(obj, null, 2))
+  fs.unlinkSync(tmpFile)
 })
