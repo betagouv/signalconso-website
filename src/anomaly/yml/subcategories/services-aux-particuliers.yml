@@ -586,7 +586,7 @@
           tags:
             - ReponseConso
           subcategories:
-            - Title: 'Est-ce que la caution est plus élevée que le tarif mensuel de la chambre (ce tarif est indiqué dans votre contrat) ?'
+            - title: 'Est-ce que la caution est plus élevée que le tarif mensuel de la chambre (ce tarif est indiqué dans votre contrat) ?'
               subcategories:
                 - title: Oui
                   reponseconsoCode:
@@ -597,7 +597,7 @@
                   content: Retrouvez plus d'informations sur <a href="https://www.service-public.fr/particuliers/vosdroits/F763" target="_blank">https://www.service-public.fr/particuliers/vosdroits/F763</a>
             - title: Je n'ai toujours pas récupéré la caution
               subcategories:
-                - Title: Quand avez-vous libéré la chambre ?
+                - title: Quand avez-vous libéré la chambre ?
                   subcategories:
                     - title: Il y a moins de 30 jours
                       information:
