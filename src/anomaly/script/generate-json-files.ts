@@ -1,8 +1,8 @@
-const fs = require('fs')
-const path = require('path')
-const yaml = require('js-yaml')
-const yamlImport = require('yaml-import')
-const {checkArborescence} = require('./checkArborescence')
+import fs from 'fs'
+import path from 'path'
+import yaml from 'js-yaml'
+import * as yamlImport from 'yaml-import'
+import {checkArborescence} from './checkArborescence'
 
 const files = [
   {
@@ -10,9 +10,6 @@ const files = [
     output: 'anomalies.json',
   },
 ]
-export {}
-
-module.exports = {}
 
 const addUniqueId = (obj: any, depth = 0, prefix?: string) => {
   let index = 1

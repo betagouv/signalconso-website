@@ -1,9 +1,7 @@
-const {CompanyKinds, DetailInputType, ReportTag} = require('../Anomaly')
-const {AnomalyTreeWalker} = require('./AnomalyTreeWalker')
+import {CompanyKinds, DetailInputType, ReportTag} from '../Anomaly'
+import {AnomalyTreeWalker, ObjectSpec} from './AnomalyTreeWalker'
 
 // /!\ This effectively duplicates the structure, be sure to update it along with the "Anomaly" types
-// /!\ This does NOT check for unexpected fields.
-// Thus if you write an optional field with a typo, it will ignore it silently... (like example/exemple)
 export function checkArborescence(jsonArborescence) {
   const root = new AnomalyTreeWalker(jsonArborescence)
   root.assertIsObjectWith({
@@ -13,8 +11,6 @@ export function checkArborescence(jsonArborescence) {
       }),
   })
 }
-
-type ObjectSpec = {[key: string]: (walker: typeof AnomalyTreeWalker) => void}
 
 const baseCategorySpec: ObjectSpec = {
   id: _ => _.assertIsString(),
@@ -45,7 +41,7 @@ const baseSubcategorySpec = {
   reponseconsoCode: _ => _.ifDefined()?.ifNotNull()?.assertIsArrayOfString(),
   ccrfCode: _ => _.ifDefined()?.assertIsArrayOfString(),
   // a Subcategory is always a Category
-  // this triggers the recursion !
+  // this triggers the recursion
   ...baseCategorySpec,
 }
 
@@ -87,7 +83,7 @@ const inputSubcategorySpec: ObjectSpec = {
   ...baseSubcategorySpec,
 }
 
-function assertIsSubcategory(subcategory: typeof AnomalyTreeWalker) {
+function assertIsSubcategory(subcategory: AnomalyTreeWalker) {
   // There are two possibles shapes, let's check manually which one it is
   if (Object.keys(subcategory.value).includes('information')) {
     subcategory.assertIsObjectWith(informationSubcategorySpec)

@@ -2,6 +2,8 @@
 // so we can do proper logs
 type Path = (string | number)[]
 
+export type ObjectSpec = {[key: string]: (walker: AnomalyTreeWalker) => void}
+
 // Looks at a specific value within an arborescence of arrays/objects/etc.
 //
 // The assertXXX methods perform some checks on the type of the value
@@ -62,7 +64,7 @@ export class AnomalyTreeWalker {
 
   // This one checks each key according to the given spec
   // and also makes sure that no unknown key is present
-  assertIsObjectWith(keysAndAssertions: {[key: string]: (walker: AnomalyTreeWalker) => void}) {
+  assertIsObjectWith(keysAndAssertions: ObjectSpec) {
     this.assertIsObject()
     const allKeys = Object.keys(this.value)
     const allowedKeys = Object.keys(keysAndAssertions)
