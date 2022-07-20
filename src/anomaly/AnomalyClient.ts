@@ -3,10 +3,12 @@ import {lazy} from '../alexlibs/ts-utils'
 import {ApiClientApi} from '../client/ApiClient'
 import {Anomaly, Category, SubcategoryInformation, SubcategoryInput} from './Anomaly'
 
+export const anomalies = anomaliesJSON.list as Anomaly[]
+
 export class AnomalyClient {
   constructor(private client: ApiClientApi) {}
 
-  readonly getAnomalies = lazy(() => Promise.resolve(anomaliesJSON.list as Anomaly[]))
+  readonly getAnomalies = () => Promise.resolve(anomalies)
 
   readonly getCategories = lazy(() =>
     Promise.resolve(this.getAnomalies().then(_ => _.filter(anomaly => !anomaly.information).map(anomaly => anomaly.category))),

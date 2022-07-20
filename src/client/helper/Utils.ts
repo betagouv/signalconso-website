@@ -54,3 +54,7 @@ export const directDownloadBlob =
     document.body.appendChild(link)
     link.click()
   }
+
+export const undefinedIfNull = <A>(a: A | null): A | undefined => {
+  return a === null ? undefined : a
+}

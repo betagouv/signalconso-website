@@ -14,6 +14,7 @@ import Head from 'next/head'
 import dynamic from 'next/dynamic'
 import {ReportFlow} from '../feature/Report/ReportFlow'
 import {Anomaly} from '../anomaly/Anomaly'
+import {undefinedIfNull} from 'client/helper/Utils'
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const anomalies = await apiSdk.anomaly.getAnomalies()
@@ -36,7 +37,7 @@ const AnomalyPage = ({anomaly}: {anomaly: Anomaly}) => {
     <Page width={624}>
       <Head>
         <title>{anomaly.title + ' - SignalConso'}</title>
-        <meta name="description" content={anomaly.seoDescription ?? anomaly.description} />
+        <meta name="description" content={undefinedIfNull(anomaly.seoDescription ?? anomaly.description)} />
       </Head>
       <Box sx={{display: 'flex', alignItems: 'center', mb: 2, color: t => t.palette.text.secondary}}>
         <Link href={siteMap.index}>
