@@ -6,95 +6,92 @@ const {AnomalyTreeWalker} = require('./AnomalyTreeWalker')
 // Thus if you write an optional field with a typo, it will ignore it silently... (like example/exemple)
 export function checkArborescence(jsonArborescence) {
   const root = new AnomalyTreeWalker(jsonArborescence)
-  root.assertIsObject()
-  const list = root.into('list')
-  list.assertIsArrayWith(anomaly => {
-    anomaly.assertIsObject()
-    anomaly.into('category').assertIsString()
-    anomaly.into('categoryId').assertIsString()
-    anomaly.into('seoDescription').ifDefined()?.ifNotNull()?.assertIsString()
-    anomaly.into('path').assertIsString()
-    anomaly.into('description').ifDefined()?.assertIsString()
-    anomaly.into('sprite').ifDefined()?.assertIsString()
-    anomaly.into('cssClass').ifDefined()?.assertIsString()
-    anomaly.into('hidden').ifDefined()?.assertIsBoolean()
-    anomaly.into('information').ifDefined()?.assertIsString()
-    anomaly.into('breadcrumbTitle').ifDefined()?.assertIsString()
-    assertIsCategory(anomaly)
+  root.assertIsObjectWith({
+    list: _ =>
+      _.assertIsArrayWith(anomaly => {
+        anomaly.assertIsObjectWith(anomalySpec)
+      }),
   })
 }
 
-function assertIsCategory(category: typeof AnomalyTreeWalker) {
-  category.into('id').assertIsString()
-  category.into('title').assertIsString()
-  category.into('subcategoriesTitle').ifDefined()?.assertIsString()
-  category.into('companyKind').ifDefined()?.assertIsAllowedString(Object.values(CompanyKinds))
-  const subcategories = category.into('subcategories').ifDefined()
-  if (subcategories) {
-    subcategories.assertIsArrayWith(subcategory => {
-      assertIsSubcategory(subcategory)
-    })
-  }
+type ObjectSpec = {[key: string]: (walker: typeof AnomalyTreeWalker) => void}
+
+const baseCategorySpec: ObjectSpec = {
+  id: _ => _.assertIsString(),
+  title: _ => _.assertIsString(),
+  subcategoriesTitle: _ => _.ifDefined()?.assertIsString(),
+  companyKind: _ => _.ifDefined()?.assertIsAllowedString(Object.values(CompanyKinds)),
+  subcategories: _ => _.ifDefined()?.assertIsArrayWith(assertIsSubcategory),
+}
+
+const anomalySpec: ObjectSpec = {
+  category: _ => _.assertIsString(),
+  categoryId: _ => _.assertIsString(),
+  seoDescription: _ => _.ifDefined()?.ifNotNull()?.assertIsString(),
+  path: _ => _.assertIsString(),
+  description: _ => _.ifDefined()?.assertIsString(),
+  sprite: _ => _.ifDefined()?.assertIsString(),
+  cssClass: _ => _.ifDefined()?.assertIsString(),
+  hidden: _ => _.ifDefined()?.assertIsBoolean(),
+  information: _ => _.ifDefined()?.assertIsString(),
+  breadcrumbTitle: _ => _.ifDefined()?.assertIsString(),
+  ...baseCategorySpec,
+}
+
+const baseSubcategorySpec = {
+  description: _ => _.ifDefined()?.assertIsString(),
+  tags: _ => _.ifDefined()?.assertIsArrayOfAllowedStrings(Object.values(ReportTag)),
+  example: _ => _.ifDefined()?.assertIsString(),
+  reponseconsoCode: _ => _.ifDefined()?.assertIsArrayOfString(),
+  ccrfCode: _ => _.ifDefined()?.assertIsArrayOfString(),
+  // a Subcategory is always a Category
+  // this triggers the recursion !
+  ...baseCategorySpec,
+}
+
+const informationSubcategorySpec: ObjectSpec = {
+  information: _ =>
+    _.assertIsObjectWith({
+      title: _ => _.ifDefined()?.assertIsString(),
+      content: _ => _.ifDefined()?.assertIsString(),
+      subTitle: _ => _.ifDefined()?.assertIsString(),
+      outOfScope: _ => _.ifDefined()?.assertIsBoolean(),
+      actions: _ =>
+        _.ifDefined()?.assertIsArrayWith(action => {
+          action.assertIsObjectWith({
+            question: _ => _.assertIsString(),
+            example: _ => _.ifDefined()?.assertIsString(),
+            answer: _ => _.assertIsString(),
+          })
+        }),
+    }),
+  ...baseSubcategorySpec,
+}
+
+const inputSubcategorySpec: ObjectSpec = {
+  detailTitle: _ => _.ifDefined()?.assertIsString(),
+  fileLabel: _ => _.ifDefined()?.assertIsString(),
+  detailInputs: _ =>
+    _.ifDefined()?.assertIsArrayWith(detailInput => {
+      detailInput.assertIsObjectWith({
+        label: _ => _.assertIsString(),
+        rank: _ => _.ifDefined()?.assertIsNumber(),
+        type: _ => _.assertIsAllowedString(Object.values(DetailInputType)),
+        placeholder: _ => _.ifDefined()?.assertIsString(),
+        options: _ => _.ifDefined()?.assertIsArrayOfString(),
+        defaultValue: _ => _.ifDefined()?.assertIsString(),
+        example: _ => _.ifDefined()?.assertIsString(),
+        optionnal: _ => _.ifDefined()?.assertIsBoolean(),
+      })
+    }),
+  ...baseSubcategorySpec,
 }
 
 function assertIsSubcategory(subcategory: typeof AnomalyTreeWalker) {
-  // It should have all fields of SubcategoryBase
-  subcategory.into('description').ifDefined()?.assertIsString()
-  subcategory.into('tags').ifDefined()?.assertIsArrayOfAllowedStrings(Object.values(ReportTag))
-  subcategory.into('example').ifDefined()?.assertIsString()
-  subcategory.into('responseconsoCode').ifDefined()?.assertIsArrayOfString()
-  subcategory.into('ccrfCode').ifDefined()?.assertIsArrayOfString()
-
-  // Then there are two possible shapes
-  const fields = Object.keys(subcategory.value)
-  const subcategoryInputFields = ['detailTitle', 'fileLabel', 'detailInputs']
-  const informationField = 'information'
-  const information = subcategory.into(informationField).ifDefined()
-  if (information) {
-    // we make sure the shapes are not mixed together
-    if (fields.some(_ => subcategoryInputFields.includes(_))) {
-      throw subcategory.err(
-        `Subcategory contains a field ${information}, thus it should not contain any of the following fields: ${subcategoryInputFields.join(
-          ', ',
-        )}`,
-      )
-    }
-    information.assertIsObject()
-    information.into('title').ifDefined()?.assertIsString()
-    information.into('content').ifDefined()?.assertIsString()
-    const actions = information.into('actions').ifDefined()
-    if (actions) {
-      actions.assertIsArrayWith(action => {
-        action.assertIsObjectWith({
-          question: _ => _.assertIsString(),
-          example: _ => _.ifDefined()?.assertIsString(),
-          answer: _ => _.assertIsString(),
-        })
-      })
-    }
-    information.into('subTitle').ifDefined()?.assertIsString()
-    information.into('outOfScope').ifDefined()?.assertIsBoolean()
+  // There are two possibles shapes, let's check manually which one it is
+  if (Object.keys(subcategory.value).includes('information')) {
+    subcategory.assertIsObjectWith(informationSubcategorySpec)
   } else {
-    subcategory.into('detailTitle').ifDefined()?.assertIsString()
-    subcategory.into('fileLabel').ifDefined()?.assertIsString()
-    const detailInputs = subcategory.into('detailInputs').ifDefined()
-    if (detailInputs) {
-      detailInputs.assertIsArrayWith(detailInput => {
-        detailInput.assertIsObjectWith({
-          label: _ => _.assertIsString(),
-          rank: _ => _.ifDefined()?.assertIsNumber(),
-          type: _ => _.assertIsAllowedString(Object.values(DetailInputType)),
-          placeholder: _ => _.ifDefined()?.assertIsString(),
-          options: _ => _.ifDefined()?.assertIsArrayOfString(),
-          defaultValue: _ => _.ifDefined()?.assertIsString(),
-          example: _ => _.ifDefined()?.assertIsString(),
-          optionnal: _ => _.ifDefined()?.assertIsBoolean(),
-        })
-      })
-    }
+    subcategory.assertIsObjectWith(inputSubcategorySpec)
   }
-
-  // a Subcategory is always a Category
-  // Triggers the recursion
-  assertIsCategory(subcategory)
 }
