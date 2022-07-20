@@ -111,7 +111,7 @@
             - ReponseConso
             - LitigeContractuel
         - title: Autre problème de facturation ou de contrat
-          repoonseconsoCode:
+          reponseconsoCode:
             - '2212'
             - '623'
           tags:
@@ -166,7 +166,7 @@
             - '221'
           companyKind: PHONE
           tags:
-            - Démarchage téléphonique
+            - DemarchageTelephonique
           detailInputs:
             - label: Date de l'appel
               rank: 1
@@ -209,7 +209,8 @@
       tags:
         - DemarchageADomicile
     - title: Démarchage téléphonique
-      ccrfCode: -'227'
+      ccrfCode:
+        - '227'
       companyKind: PHONE
       reponseconsoCode:
         - '221'
@@ -234,7 +235,8 @@
       tags:
         - DemarchageADomicile
     - title: Démarchage téléphonique
-      ccrfCode: -'227'
+      ccrfCode:
+        - '227'
       companyKind: PHONE
       reponseconsoCode:
         - '221'
