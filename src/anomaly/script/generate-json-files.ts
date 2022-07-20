@@ -1,7 +1,11 @@
+import {json} from 'stream/consumers'
+
 const fs = require('fs')
 const path = require('path')
 const yaml = require('js-yaml')
 const yamlImport = require('yaml-import')
+const {checkArborescence} = require('./checkArborescence')
+
 const files = [
   {
     input: 'anomalies.yml',
@@ -33,4 +37,6 @@ files.forEach(file => {
   addUniqueId(obj.list)
   fs.writeFileSync(path.join(root, file.output), JSON.stringify(obj, null, 2))
   fs.unlinkSync(tmpFile)
+
+  checkArborescence(obj)
 })

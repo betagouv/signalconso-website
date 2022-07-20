@@ -1,13 +1,11 @@
-import {sortBy, uniqBy} from 'core/lodashNamedExport'
-import anomaliesJSON from '../anomaly/yml/anomalies.json'
-import {Anomaly, Category, CompanyKinds, DetailInputType, ReportTag} from './Anomaly'
-import {AnomalyTreeWalker} from './AnomalyTreeWalker'
+const {CompanyKinds, DetailInputType, ReportTag} = require('../Anomaly')
+const {AnomalyTreeWalker} = require('./AnomalyTreeWalker')
 
 // /!\ This effectively duplicates the structure, be sure to update it along with the "Anomaly" types
 // /!\ This does NOT check for unexpected fields.
 // Thus if you write an optional field with a typo, it will ignore it silently...
-export function checkArborescence() {
-  const root = new AnomalyTreeWalker(anomaliesJSON)
+export function checkArborescence(jsonArborescence) {
+  const root = new AnomalyTreeWalker(jsonArborescence)
   root.assertIsObject()
   const list = root.into('list')
   list.assertIsArrayWith(anomaly => {
@@ -26,7 +24,7 @@ export function checkArborescence() {
   })
 }
 
-function assertIsCategory(category: AnomalyTreeWalker) {
+function assertIsCategory(category: typeof AnomalyTreeWalker) {
   category.into('id').assertIsString()
   category.into('title').assertIsString()
   category.intoMaybe('subcategoriesTitle')?.assertIsString()
@@ -39,7 +37,7 @@ function assertIsCategory(category: AnomalyTreeWalker) {
   }
 }
 
-function assertIsSubcategory(subcategory: AnomalyTreeWalker) {
+function assertIsSubcategory(subcategory: typeof AnomalyTreeWalker) {
   // It should have all fields of SubcategoryBase
   subcategory.intoMaybe('description')?.assertIsString()
   subcategory.intoMaybe('tags')?.assertIsArrayOfAllowedStrings(Object.values(ReportTag))
