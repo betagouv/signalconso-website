@@ -49,6 +49,14 @@ export class AnomalyTreeWalker {
     return w
   }
 
+  intoUndefinedOrNullable(key: string | number): AnomalyTreeWalker | undefined | null {
+    const w = this.into(key)
+    if (w.value === null || w.value === undefined) {
+      return w.value
+    }
+    return w
+  }
+
   // Return TreeWalkers focused on each child of an array or object
   intoChilds(): AnomalyTreeWalker[] {
     return Object.keys(this.value).map(key => {
