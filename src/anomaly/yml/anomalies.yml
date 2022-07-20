@@ -6,7 +6,6 @@ list:
     path: retrait-rappel
     description: Retrait-Rappel spécifique.
     seoDescription:
-    rank: 99
     hidden: true
     sprite: none
     subcategories: !!import/single subcategories/retrait-rappel.yml
