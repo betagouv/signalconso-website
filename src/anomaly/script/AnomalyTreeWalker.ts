@@ -29,32 +29,20 @@ export class AnomalyTreeWalker {
     return new AnomalyTreeWalker(this.root, [...this.path, key])
   }
 
-  // Returns undefined if the key does not exist
-  // thus you can use "?." operator to keep performing checks
-  // but not throw anything if the key didn't exist
-  intoMaybe(key: string | number): AnomalyTreeWalker | undefined {
-    const w = this.into(key)
-    if (w.value === undefined) {
+  // You can chain this with the ".?" operator to do some assertions
+  // only if the value is defined
+  ifDefined(): AnomalyTreeWalker | undefined {
+    if (this.value === undefined) {
       return undefined
     }
-    return w
+    return this
   }
 
-  // Same thing for nullable fields
-  intoNullable(key: string | number): AnomalyTreeWalker | null {
-    const w = this.into(key)
-    if (w.value === null) {
+  ifNotNull(): AnomalyTreeWalker | null {
+    if (this.value === null) {
       return null
     }
-    return w
-  }
-
-  intoUndefinedOrNullable(key: string | number): AnomalyTreeWalker | undefined | null {
-    const w = this.into(key)
-    if (w.value === null || w.value === undefined) {
-      return w.value
-    }
-    return w
+    return this
   }
 
   // Return TreeWalkers focused on each child of an array or object

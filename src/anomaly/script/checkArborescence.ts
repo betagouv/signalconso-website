@@ -12,14 +12,14 @@ export function checkArborescence(jsonArborescence) {
     anomaly.assertIsObject()
     anomaly.into('category').assertIsString()
     anomaly.into('categoryId').assertIsString()
-    anomaly.intoUndefinedOrNullable('seoDescription')?.assertIsString()
+    anomaly.into('seoDescription').ifDefined()?.ifNotNull()?.assertIsString()
     anomaly.into('path').assertIsString()
-    anomaly.intoMaybe('description')?.assertIsString()
-    anomaly.intoMaybe('sprite')?.assertIsString()
-    anomaly.intoMaybe('cssClass')?.assertIsString()
-    anomaly.intoMaybe('hidden')?.assertIsBoolean()
-    anomaly.intoMaybe('information')?.assertIsString()
-    anomaly.intoMaybe('breadcrumbTitle')?.assertIsString()
+    anomaly.into('description').ifDefined()?.assertIsString()
+    anomaly.into('sprite').ifDefined()?.assertIsString()
+    anomaly.into('cssClass').ifDefined()?.assertIsString()
+    anomaly.into('hidden').ifDefined()?.assertIsBoolean()
+    anomaly.into('information').ifDefined()?.assertIsString()
+    anomaly.into('breadcrumbTitle').ifDefined()?.assertIsString()
     assertIsCategory(anomaly)
   })
 }
@@ -27,9 +27,9 @@ export function checkArborescence(jsonArborescence) {
 function assertIsCategory(category: typeof AnomalyTreeWalker) {
   category.into('id').assertIsString()
   category.into('title').assertIsString()
-  category.intoMaybe('subcategoriesTitle')?.assertIsString()
-  category.intoMaybe('companyKind')?.assertIsAllowedString(Object.values(CompanyKinds))
-  const subcategories = category.intoMaybe('subcategories')
+  category.into('subcategoriesTitle').ifDefined()?.assertIsString()
+  category.into('companyKind').ifDefined()?.assertIsAllowedString(Object.values(CompanyKinds))
+  const subcategories = category.into('subcategories').ifDefined()
   if (subcategories) {
     subcategories.assertIsArrayWith(subcategory => {
       assertIsSubcategory(subcategory)
@@ -39,17 +39,17 @@ function assertIsCategory(category: typeof AnomalyTreeWalker) {
 
 function assertIsSubcategory(subcategory: typeof AnomalyTreeWalker) {
   // It should have all fields of SubcategoryBase
-  subcategory.intoMaybe('description')?.assertIsString()
-  subcategory.intoMaybe('tags')?.assertIsArrayOfAllowedStrings(Object.values(ReportTag))
-  subcategory.intoMaybe('example')?.assertIsString()
-  subcategory.intoMaybe('responseconsoCode')?.assertIsArrayOfString()
-  subcategory.intoMaybe('ccrfCode')?.assertIsArrayOfString()
+  subcategory.into('description').ifDefined()?.assertIsString()
+  subcategory.into('tags').ifDefined()?.assertIsArrayOfAllowedStrings(Object.values(ReportTag))
+  subcategory.into('example').ifDefined()?.assertIsString()
+  subcategory.into('responseconsoCode').ifDefined()?.assertIsArrayOfString()
+  subcategory.into('ccrfCode').ifDefined()?.assertIsArrayOfString()
 
   // Then there are two possible shapes
   const fields = Object.keys(subcategory.value)
   const subcategoryInputFields = ['detailTitle', 'fileLabel', 'detailInputs']
   const informationField = 'information'
-  const information = subcategory.intoMaybe(informationField)
+  const information = subcategory.into(informationField).ifDefined()
   if (information) {
     // we make sure the shapes are not mixed together
     if (fields.some(_ => subcategoryInputFields.includes(_))) {
@@ -60,33 +60,33 @@ function assertIsSubcategory(subcategory: typeof AnomalyTreeWalker) {
       )
     }
     information.assertIsObject()
-    information.intoMaybe('title')?.assertIsString()
-    information.intoMaybe('content')?.assertIsString()
-    const actions = information.intoMaybe('actions')
+    information.into('title').ifDefined()?.assertIsString()
+    information.into('content').ifDefined()?.assertIsString()
+    const actions = information.into('actions').ifDefined()
     if (actions) {
       actions.assertIsArrayWith(action => {
         action.assertIsObject()
         action.into('question').assertIsString()
-        action.intoMaybe('example')?.assertIsString()
+        action.into('example').ifDefined()?.assertIsString()
         action.into('answer').assertIsString()
       })
     }
-    information.intoMaybe('subTitle')?.assertIsString()
-    information.intoMaybe('outOfScope')?.assertIsBoolean()
+    information.into('subTitle').ifDefined()?.assertIsString()
+    information.into('outOfScope').ifDefined()?.assertIsBoolean()
   } else {
-    subcategory.intoMaybe('detailTitle')?.assertIsString()
-    subcategory.intoMaybe('fileLabel')?.assertIsString()
-    const detailInputs = subcategory.intoMaybe('detailInputs')
+    subcategory.into('detailTitle').ifDefined()?.assertIsString()
+    subcategory.into('fileLabel').ifDefined()?.assertIsString()
+    const detailInputs = subcategory.into('detailInputs').ifDefined()
     if (detailInputs) {
       detailInputs.assertIsArrayWith(detailInput => {
         detailInput.into('label').assertIsString()
-        detailInput.intoMaybe('rank')?.assertIsNumber()
+        detailInput.into('rank').ifDefined()?.assertIsNumber()
         detailInput.into('type').assertIsAllowedString(Object.values(DetailInputType))
-        detailInput.intoMaybe('placeholder')?.assertIsString()
-        detailInput.intoMaybe('options')?.assertIsArrayOfString()
-        detailInput.intoMaybe('defaultValue')?.assertIsString()
-        detailInput.intoMaybe('example')?.assertIsString()
-        detailInput.intoMaybe('optionnal')?.assertIsBoolean()
+        detailInput.into('placeholder').ifDefined()?.assertIsString()
+        detailInput.into('options').ifDefined()?.assertIsArrayOfString()
+        detailInput.into('defaultValue').ifDefined()?.assertIsString()
+        detailInput.into('example').ifDefined()?.assertIsString()
+        detailInput.into('optionnal').ifDefined()?.assertIsBoolean()
       })
     }
   }
