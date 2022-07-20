@@ -65,10 +65,11 @@ function assertIsSubcategory(subcategory: typeof AnomalyTreeWalker) {
     const actions = information.into('actions').ifDefined()
     if (actions) {
       actions.assertIsArrayWith(action => {
-        action.assertIsObject()
-        action.into('question').assertIsString()
-        action.into('example').ifDefined()?.assertIsString()
-        action.into('answer').assertIsString()
+        action.assertIsObjectWith({
+          question: _ => _.assertIsString(),
+          example: _ => _.ifDefined()?.assertIsString(),
+          answer: _ => _.assertIsString(),
+        })
       })
     }
     information.into('subTitle').ifDefined()?.assertIsString()
@@ -79,14 +80,16 @@ function assertIsSubcategory(subcategory: typeof AnomalyTreeWalker) {
     const detailInputs = subcategory.into('detailInputs').ifDefined()
     if (detailInputs) {
       detailInputs.assertIsArrayWith(detailInput => {
-        detailInput.into('label').assertIsString()
-        detailInput.into('rank').ifDefined()?.assertIsNumber()
-        detailInput.into('type').assertIsAllowedString(Object.values(DetailInputType))
-        detailInput.into('placeholder').ifDefined()?.assertIsString()
-        detailInput.into('options').ifDefined()?.assertIsArrayOfString()
-        detailInput.into('defaultValue').ifDefined()?.assertIsString()
-        detailInput.into('example').ifDefined()?.assertIsString()
-        detailInput.into('optionnal').ifDefined()?.assertIsBoolean()
+        detailInput.assertIsObjectWith({
+          label: _ => _.assertIsString(),
+          rank: _ => _.ifDefined()?.assertIsNumber(),
+          type: _ => _.assertIsAllowedString(Object.values(DetailInputType)),
+          placeholder: _ => _.ifDefined()?.assertIsString(),
+          options: _ => _.ifDefined()?.assertIsArrayOfString(),
+          defaultValue: _ => _.ifDefined()?.assertIsString(),
+          example: _ => _.ifDefined()?.assertIsString(),
+          optionnal: _ => _.ifDefined()?.assertIsBoolean(),
+        })
       })
     }
   }

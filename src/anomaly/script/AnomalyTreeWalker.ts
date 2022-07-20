@@ -60,6 +60,22 @@ export class AnomalyTreeWalker {
     return this
   }
 
+  // This one checks each key according to the given spec
+  // and also makes sure that no unknown key is present
+  assertIsObjectWith(keysAndAssertions: {[key: string]: (walker: AnomalyTreeWalker) => void}) {
+    this.assertIsObject()
+    const allKeys = Object.keys(this.value)
+    const allowedKeys = Object.keys(keysAndAssertions)
+    for (const k of allKeys) {
+      if (!allowedKeys.includes(k)) {
+        throw this.err(`unexpected field "${k}", allowed fields are ${allowedKeys.join(', ')} ${this.printActualValue()}`)
+      }
+    }
+    Object.entries(keysAndAssertions).forEach(([key, assertions]) => {
+      assertions(this.into(key))
+    })
+  }
+
   assertIsNumber() {
     if (typeof this.value !== 'number') {
       throw this.err(`should be a number ${this.printActualValue()}`)
