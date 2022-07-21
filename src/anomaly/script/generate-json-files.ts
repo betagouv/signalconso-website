@@ -1,16 +1,15 @@
-const fs = require('fs')
-const path = require('path')
-const yaml = require('js-yaml')
-const yamlImport = require('yaml-import')
+import fs from 'fs'
+import path from 'path'
+import yaml from 'js-yaml'
+import * as yamlImport from 'yaml-import'
+import {checkAnomaliesJson} from './checkAnomaliesJson'
+
 const files = [
   {
     input: 'anomalies.yml',
     output: 'anomalies.json',
   },
 ]
-export {}
-
-module.exports = {}
 
 const addUniqueId = (obj: any, depth = 0, prefix?: string) => {
   let index = 1
@@ -28,9 +27,10 @@ files.forEach(file => {
   const tmpFile = path.join(root, 'tmp.yml')
   yamlImport.write(path.join(root, file.input), tmpFile)
   const obj = yaml.load(fs.readFileSync(tmpFile, {encoding: 'utf-8'}))
+  fs.unlinkSync(tmpFile)
   // const version = '1'
   // obj.version = version
   addUniqueId(obj.list)
+  checkAnomaliesJson(obj)
   fs.writeFileSync(path.join(root, file.output), JSON.stringify(obj, null, 2))
-  fs.unlinkSync(tmpFile)
 })

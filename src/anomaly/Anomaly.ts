@@ -2,16 +2,16 @@ export interface SubcategoryBase extends Category {
   description?: string
   tags?: ReportTag[]
   example?: string
-  reponseconsoCode?: string[]
+  reponseconsoCode?: string[] | null
   ccrfCode?: string[]
 }
 
 export interface Anomaly extends Category {
   category: string
   categoryId: string
-  seoDescription?: string
+  seoDescription?: string | null
   path: string
-  description?: string
+  description?: string | null
   sprite?: string
   cssClass?: string
   hidden?: boolean
@@ -98,10 +98,4 @@ export interface DetailInput {
   defaultValue?: string
   example?: string
   optionnal?: boolean
-}
-
-export const formLabels = {
-  reportingDateLabel: 'Date du constat',
-  reportingTimeslotLabel: 'Heure du constat',
-  descriptionLabel: 'Description',
 }

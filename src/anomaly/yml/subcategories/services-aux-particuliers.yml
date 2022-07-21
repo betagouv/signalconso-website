@@ -145,54 +145,11 @@
                   optionnal: true
     - title: Contrat
       example: 'Exemple : contrat non respecté, délai de rétractation, clause abusive'
-      subcategories:
       ccrfCode:
         - '21c'
-        - title: Droit de rétractation
-          example: Une fois le contrat signé, vous souhaitez revenir en arrière
-          subcategoriesTitle: Où avez-vous signé le contrat ?
-          subcategories:
-            - title: À votre domicile
-              example: Un démarcheur est venu chez vous
-              description:
-                Vous avez un délai de 14 jours pour changer d’avis. On appelle ce délai le "délai de rétractation". Ce délai est valable même si vous avez demandé à faire démarrer votre contrat immédiatement
-                <br/>Vous n’avez pas à vous justifier auprès du commerçant.
-                <br/><a href="../delai-de-retractation" target="_blank">>> Comment calculer mon délai de retractation</a>
-            - title: À distance
-              example: 'Exemple : sur internet'
-              description:
-                Vous avez un délai de 14 jours pour changer d’avis. On appelle ce délai le "délai de rétractation". Ce délai est valable même si vous avez demandé à faire démarrer votre contrat immédiatement
-                <br />Vous n’avez pas à vous justifier auprès du commerçant.
-                <br/><a href="../delai-de-retractation" target="_blank">>> Comment calculer mon délai de retractation</a>
-            - title: Au lieu habituel d'activité du professionnel
-              information:
-            - title: Vous ne pouvez plus vous retracter
-              content: Il n'y a pas de délai de rétractation pour votre cas.
-              outOfScope: true
-            - title: Sur un stand dans une foire ou salon
-              information:
-            - title: Vous ne pouvez plus vous retracter
-              content: Il n'y a pas de délai de rétractation pour votre cas.
-              outOfScope: true
-              description:
-                Vous avez un délai de 14 jours pour changer d’avis. On appelle ce délai le "délai de rétractation". Ce délai est valable même si vous avez demandé à faire démarrer votre contrat immédiatement
-                <br />Vous n’avez pas à vous justifier auprès du commerçant.
-                <br/><a href="../delai-de-retractation" target="_blank">>> Comment calculer mon délai de retractation</a>
-        - title: Contrat non respecté
-          tags:
-            - LitigeContractuel
-        - title: Clause abusive
-          example: Vous souhaitez dénoncer une clause qui vous est particulièrement défavorable
-          ccrfCode:
-            - '21C'
-          tags:
-            - LitigeContractuel
-        - title: Autre
-          tags:
-            - LitigeContractuel
     - title: Autre
 - title: Service de lutte contre les rats, les punaises de lits, désinfection
-  exemple: 'Exemple : la désinfection, la désinsectisation, la dératisation, lutte contre les nuisibles'
+  example: 'Exemple : la désinfection, la désinsectisation, la dératisation, lutte contre les nuisibles'
   subcategories:
     - title: Publicité et pratique du professionnel
       example: "Exemple : absence d'information, information trompeuse ou mensongère, démarchage"
@@ -274,14 +231,14 @@
     - title: Prix
       ccrfCode:
         - '21b'
-      exemple: 'Exemple : il manque les prix,prix exagéré, prix différent du devis'
+      example: 'Exemple : il manque les prix,prix exagéré, prix différent du devis'
       subcategories:
         - title: Prix exagéré / élevé / Les prix sont plus élevés qu'ailleurs
           information:
             title: Les commerçants ont le droit de choisir leurs prix.
             content: Les professionnels ont le droit de choisir leurs prix.
               <br />Par contre, les prix doivent être clairement indiqués pour que vous soyez au courant avant d'acheter, de commander ou avant la prestation.
-          outOfScope: true
+            outOfScope: true
         - title: Prix final non conforme au prix annoncé
           ccrfCode:
             - '23b'
@@ -310,7 +267,7 @@
     - title: Coiffeur
       subcategories:
         - title: Prix
-          exemple: 'Exemple : il manque les prix,prix exagéré, prix différent du devis'
+          example: 'Exemple : il manque les prix,prix exagéré, prix différent du devis'
           ccrfCode:
             - '21b'
           subcategories:
@@ -319,7 +276,7 @@
                 title: Les commerçants ont le droit de choisir leurs prix.
                 content: Les professionnels ont le droit de choisir leurs prix.
                   <br />Par contre, les prix doivent être clairement indiqués pour que vous soyez au courant avant d'acheter, de commander ou avant la prestation.
-              outOfScope: true
+                outOfScope: true
             - title: Prix final non conforme au prix annoncé
             - title: Il manque des prix / les prix sont illisibles
               ccrfCode:
@@ -347,26 +304,19 @@
         - title: Problème d'hygiène
           reponseconsoCode:
             - '446'
-            - title: Je subis des nuisances à cause des odeurs, du bruit...
-              information: !!import/single ../common/info/tel.yml
-            - title: Le personnel n'est pas aimable
-              information: !!import/single ../common/info/amabilite.yml
-            - title: Autre
-              tags:
-                - LitigeContractuel
     - title: Esthéticien
       subcategories:
         - title: Prix des soins
-          exemple: 'Exemple : il manque les prix,prix exagéré, prix différent du devis'
+          example: 'Exemple : il manque les prix,prix exagéré, prix différent du devis'
           ccrfCode:
             - '21b'
           subcategories:
             - title: Prix exagéré / élevé / Les prix sont plus élevés qu'ailleurs
               information:
-            - title: Les commerçants ont le droit de choisir leurs prix.
-              content: Les professionnels ont le droit de choisir leurs prix.
-                <br />Par contre, les prix doivent être clairement indiqués pour que vous soyez au courant avant d'acheter, de commander ou avant la prestation.
-              outOfScope: true
+                title: Les commerçants ont le droit de choisir leurs prix.
+                content: Les professionnels ont le droit de choisir leurs prix.
+                  <br />Par contre, les prix doivent être clairement indiqués pour que vous soyez au courant avant d'acheter, de commander ou avant la prestation.
+                outOfScope: true
             - title: Prix final non conforme au prix annoncé
             - title: Il manque des prix / les prix sont illisibles
               ccrfCode:
@@ -394,26 +344,19 @@
         - title: Problème d'hygiène
           reponseconsoCode:
             - '446'
-            - title: Je subis des nuisances à cause des odeurs, du bruit...
-              information: !!import/single ../common/info/tel.yml
-            - title: Le personnel n'est pas aimable
-              information: !!import/single ../common/info/amabilite.yml
-            - title: Autre
-              tags:
-                - LitigeContractuel
     - title: Cabine UV
       subcategories:
         - title: Prix
-          exemple: 'Exemple : il manque les prix,prix exagéré, prix différent du devis'
+          example: 'Exemple : il manque les prix,prix exagéré, prix différent du devis'
           ccrfCode:
             - '21b'
           subcategories:
             - title: Prix exagéré / élevé / Les prix sont plus élevés qu'ailleurs
               information:
-            - title: Les commerçants ont le droit de choisir leurs prix.
-              content: Les professionnels ont le droit de choisir leurs prix.
-                <br />Par contre, les prix doivent être clairement indiqués pour que vous soyez au courant avant d'acheter, de commander ou avant la prestation.
-              outOfScope: true
+                title: Les commerçants ont le droit de choisir leurs prix.
+                content: Les professionnels ont le droit de choisir leurs prix.
+                  <br />Par contre, les prix doivent être clairement indiqués pour que vous soyez au courant avant d'acheter, de commander ou avant la prestation.
+                outOfScope: true
             - title: Prix final non conforme au prix annoncé
             - title: Il manque des prix / les prix sont illisibles
               ccrfCode:
@@ -441,17 +384,10 @@
         - title: Problème d'hygiène
           reponseconsoCode:
             - '446'
-            - title: Je subis des nuisances à cause des odeurs, du bruit...
-              information: !!import/single ../common/info/tel.yml
-            - title: Le personnel n'est pas aimable
-              information: !!import/single ../common/info/amabilite.yml
-            - title: Autre
-              tags:
-                - LitigeContractuel
     - title: Massage
       subcategories:
         - title: Prix
-          exemple: 'Exemple : il manque les prix,prix exagéré, prix différent du devis'
+          example: 'Exemple : il manque les prix,prix exagéré, prix différent du devis'
           ccrfCode:
             - '21b'
           subcategories:
@@ -541,7 +477,7 @@
       tags:
         - LitigeContractuel
 - title: Aide à la personne
-  Exemple: "Garde d'enfant de moins de 3 ans, garde d'enfants handicapés de moins de 18ans, garde de personne âgées dépendants ou handicapées, Services d'aide et d'accompagnement à domicile (SAAD)"
+  example: "Garde d'enfant de moins de 3 ans, garde d'enfants handicapés de moins de 18ans, garde de personne âgées dépendants ou handicapées, Services d'aide et d'accompagnement à domicile (SAAD)"
   subcategories:
     - title: Prix des prestations
       example: 'Exemple : promotion non appliquée, prix en vitrine pas à jour, prix non respecté'
@@ -583,33 +519,9 @@
     - Ehpad
   subcategories:
     - title: Tarifs / facture
-      subcategories:
       ccrfCode:
         - '21b'
         - '135'
-        - title: Les tarifs ne sont pas communiqués clairement
-          example: 'Exemple : les prix des options ne sont pas dans le contrat'
-          reponseconsoCode:
-            - '411'
-            - '212'
-          tags:
-            - ReponseConso
-        - title: Je ne paye pas le prix qui était prévu au départ
-          reponseconsoCode:
-            - '210'
-          tags:
-            - ReponseConso
-        - title: Je ne suis pas d'accord avec ma facture
-          reponseconsoCode:
-            - '451'
-            - '226'
-          tags:
-            - ReponseConso
-        - title: Les prix sont élevés pour la prestation
-          information:
-        - title: Les prix sont choisis librement par les maisons de retraite.
-          content: Par contre, les prix doivent être clairement indiqués pour que vous soyez au courant avant de signer un contrat ou avant de prendre des options.
-          outOfScope: true
     - title: Contrat
       example: 'Exemple : je veux résilier le contrat, les activités ne correspondent pas à mon contrat'
       ccrfCode:
@@ -653,23 +565,23 @@
           tags:
             - ReponseConso
           subcategories:
-            - Title: 'Est-ce que la caution est plus élevée que le tarif mensuel de la chambre (ce tarif est indiqué dans votre contrat) ?'
+            - title: 'Est-ce que la caution est plus élevée que le tarif mensuel de la chambre (ce tarif est indiqué dans votre contrat) ?'
               subcategories:
                 - title: Oui
                   reponseconsoCode:
                     - '2262'
                 - title: Non
                   information:
-                - title: Une caution (somme d'argent) peut être demandée, mais elle ne doit pas dépasser le tarif mensuel d'hébergement.
-                  content: Retrouvez plus d'informations sur <a href="https://www.service-public.fr/particuliers/vosdroits/F763" target="_blank">https://www.service-public.fr/particuliers/vosdroits/F763</a>
+                    title: Une caution (somme d'argent) peut être demandée, mais elle ne doit pas dépasser le tarif mensuel d'hébergement.
+                    content: Retrouvez plus d'informations sur <a href="https://www.service-public.fr/particuliers/vosdroits/F763" target="_blank">https://www.service-public.fr/particuliers/vosdroits/F763</a>
             - title: Je n'ai toujours pas récupéré la caution
               subcategories:
-                - Title: Quand avez-vous libéré la chambre ?
+                - title: Quand avez-vous libéré la chambre ?
                   subcategories:
                     - title: Il y a moins de 30 jours
                       information:
-                    - title: Soyez encore un peu patient :)
-                      content: La maison de retraite a 30 jours pour vous rendre la caution.
+                        title: Soyez encore un peu patient :)
+                        content: La maison de retraite a 30 jours pour vous rendre la caution.
                     - title: Il y a plus de 30 jours
                       reponseconsoCode:
                         - '476'
@@ -685,10 +597,10 @@
         - ReponseConso
     - title: Maltraitance
       information:
-      content:
-        Vous ne pouvez pas signaler un cas de maltraitance sur SignalConso.<br> Vous pouvez vous rendre au commissariat de police ou à la gendarmerie. <br> Vous pouvez appeler le 3977. C'est le numéro d’appel national unique pour les victimes ou les témoins de maltraitance envers les personnes handicapées ou agées.
-        <br><br> Le site officiel <a href="https://www.pour-les-personnes-agees.gouv.fr/exercer-ses-droits/en-cas-de-maltraitance" target="_blank">www.pour-les-personnes-agees.gouv.fr</a> vous propose toutes les solutions possibles pour signaler un cas de maltraitance.
-      outOfScope: true
+        content:
+          Vous ne pouvez pas signaler un cas de maltraitance sur SignalConso.<br> Vous pouvez vous rendre au commissariat de police ou à la gendarmerie. <br> Vous pouvez appeler le 3977. C'est le numéro d’appel national unique pour les victimes ou les témoins de maltraitance envers les personnes handicapées ou agées.
+          <br><br> Le site officiel <a href="https://www.pour-les-personnes-agees.gouv.fr/exercer-ses-droits/en-cas-de-maltraitance" target="_blank">www.pour-les-personnes-agees.gouv.fr</a> vous propose toutes les solutions possibles pour signaler un cas de maltraitance.
+        outOfScope: true
     - title: Autre
       reponseconsoCode:
         - '210'
