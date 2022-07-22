@@ -147,6 +147,54 @@
       example: 'Exemple : contrat non respecté, délai de rétractation, clause abusive'
       ccrfCode:
         - '21c'
+      subcategories:
+        # TODO revoir les reponseconsoCode pour toutes ces sous catégories
+        - title: Droit de rétractation
+          example: Une fois le contrat signé, vous souhaitez revenir en arrière
+          subcategoriesTitle: Où avez-vous signé le contrat ?
+          subcategories:
+            - title: À votre domicile
+              example: Un démarcheur est venu chez vous
+              # TODO cette information devrait s'afficher et ne pas bloquer le signalement
+              # TODO refaire marcher la page /delai-de-retractation
+              information:
+                content:
+                  Vous avez un délai de 14 jours pour changer d’avis. On appelle ce délai le "délai de rétractation". Ce délai est valable même si vous avez demandé à faire démarrer votre contrat immédiatement
+                  <br/>Vous n’avez pas à vous justifier auprès du commerçant.
+                  <br/><a href="../delai-de-retractation" target="_blank">>> Comment calculer mon délai de retractation</a>
+            - title: À distance
+              example: 'Exemple : sur internet'
+              # TODO cette information devrait s'afficher et ne pas bloquer le signalement
+              information:
+                content:
+                  Vous avez un délai de 14 jours pour changer d’avis. On appelle ce délai le "délai de rétractation". Ce délai est valable même si vous avez demandé à faire démarrer votre contrat immédiatement
+                  <br />Vous n’avez pas à vous justifier auprès du commerçant.
+                  <br/><a href="../delai-de-retractation" target="_blank">>> Comment calculer mon délai de retractation</a>
+            - title: Au lieu habituel d'activité du professionnel
+              example: Dans son bureau, sa boutique, etc.
+              information:
+                title: Vous ne pouvez plus vous retracter
+                content:
+                  Vous avez signé le contrat chez l'entreprise. Il n'y a pas de délai de rétractation dans ce cas.
+                outOfScope: true
+            - title: Sur un stand dans une foire ou salon
+              information:
+                title: Vous ne pouvez plus vous retracter
+                content: 
+                  Vous avez signé le contrat sur un stand de l'entreprise dans une foire ou un salon. Il n'y a pas de délai de rétractation dans ce cas.
+                outOfScope: true                 
+        - title: Contrat non respecté
+          tags:
+            - LitigeContractuel
+        - title: Clause abusive
+          example: Vous souhaitez dénoncer une clause qui vous est particulièrement défavorable
+          ccrfCode:
+            - '21C'
+          tags:
+            - LitigeContractuel
+        - title: Autre
+          tags:
+            - LitigeContractuel
     - title: Autre
 - title: Service de lutte contre les rats, les punaises de lits, désinfection
   example: 'Exemple : la désinfection, la désinsectisation, la dératisation, lutte contre les nuisibles'
