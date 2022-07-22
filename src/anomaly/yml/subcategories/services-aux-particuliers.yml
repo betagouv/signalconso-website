@@ -147,6 +147,54 @@
       example: 'Exemple : contrat non respecté, délai de rétractation, clause abusive'
       ccrfCode:
         - '21c'
+      subcategories:
+        # TODO revoir les reponseconsoCode pour toutes ces sous catégories
+        - title: Droit de rétractation
+          example: Une fois le contrat signé, vous souhaitez revenir en arrière
+          subcategoriesTitle: Où avez-vous signé le contrat ?
+          subcategories:
+            - title: À votre domicile
+              example: Un démarcheur est venu chez vous
+              # TODO cette information devrait s'afficher et ne pas bloquer le signalement
+              # TODO refaire marcher la page /delai-de-retractation
+              information:
+                content:
+                  Vous avez un délai de 14 jours pour changer d’avis. On appelle ce délai le "délai de rétractation". Ce délai est valable même si vous avez demandé à faire démarrer votre contrat immédiatement
+                  <br/>Vous n’avez pas à vous justifier auprès du commerçant.
+                  <br/><a href="../delai-de-retractation" target="_blank">>> Comment calculer mon délai de retractation</a>
+            - title: À distance
+              example: 'Exemple : sur internet'
+              # TODO cette information devrait s'afficher et ne pas bloquer le signalement
+              information:
+                content:
+                  Vous avez un délai de 14 jours pour changer d’avis. On appelle ce délai le "délai de rétractation". Ce délai est valable même si vous avez demandé à faire démarrer votre contrat immédiatement
+                  <br />Vous n’avez pas à vous justifier auprès du commerçant.
+                  <br/><a href="../delai-de-retractation" target="_blank">>> Comment calculer mon délai de retractation</a>
+            - title: Au lieu habituel d'activité du professionnel
+              example: Dans son bureau, sa boutique, etc.
+              information:
+                title: Vous ne pouvez plus vous retracter
+                content:
+                  Vous avez signé le contrat chez l'entreprise. Il n'y a pas de délai de rétractation dans ce cas.
+                outOfScope: true
+            - title: Sur un stand dans une foire ou salon
+              information:
+                title: Vous ne pouvez plus vous retracter
+                content: 
+                  Vous avez signé le contrat sur un stand de l'entreprise dans une foire ou un salon. Il n'y a pas de délai de rétractation dans ce cas.
+                outOfScope: true                 
+        - title: Contrat non respecté
+          tags:
+            - LitigeContractuel
+        - title: Clause abusive
+          example: Vous souhaitez dénoncer une clause qui vous est particulièrement défavorable
+          ccrfCode:
+            - '21C'
+          tags:
+            - LitigeContractuel
+        - title: Autre
+          tags:
+            - LitigeContractuel
     - title: Autre
 - title: Service de lutte contre les rats, les punaises de lits, désinfection
   example: 'Exemple : la désinfection, la désinsectisation, la dératisation, lutte contre les nuisibles'
@@ -304,6 +352,13 @@
         - title: Problème d'hygiène
           reponseconsoCode:
             - '446'
+        - title: Je subis des nuisances à cause des odeurs, du bruit...
+          information: !!import/single ../common/info/voisinage.yml
+        - title: Le personnel n'est pas aimable
+          information: !!import/single ../common/info/amabilite.yml
+        - title: Autre
+          tags:
+            - LitigeContractuel
     - title: Esthéticien
       subcategories:
         - title: Prix des soins
@@ -344,6 +399,13 @@
         - title: Problème d'hygiène
           reponseconsoCode:
             - '446'
+        - title: Je subis des nuisances à cause des odeurs, du bruit...
+          information: !!import/single ../common/info/voisinage.yml
+        - title: Le personnel n'est pas aimable
+          information: !!import/single ../common/info/amabilite.yml
+        - title: Autre
+          tags:
+            - LitigeContractuel
     - title: Cabine UV
       subcategories:
         - title: Prix
@@ -384,6 +446,13 @@
         - title: Problème d'hygiène
           reponseconsoCode:
             - '446'
+        - title: Je subis des nuisances à cause des odeurs, du bruit...
+          information: !!import/single ../common/info/voisinage.yml
+        - title: Le personnel n'est pas aimable
+          information: !!import/single ../common/info/amabilite.yml
+        - title: Autre
+          tags:
+            - LitigeContractuel
     - title: Massage
       subcategories:
         - title: Prix
@@ -522,6 +591,30 @@
       ccrfCode:
         - '21b'
         - '135'
+      subcategories:
+        - title: Les tarifs ne sont pas communiqués clairement
+          example: 'Exemple : les prix des options ne sont pas dans le contrat'
+          reponseconsoCode:
+            - '411'
+            - '212'
+          tags:
+            - ReponseConso
+        - title: Je ne paye pas le prix qui était prévu au départ
+          reponseconsoCode:
+            - '210'
+          tags:
+            - ReponseConso
+        - title: Je ne suis pas d'accord avec ma facture
+          reponseconsoCode:
+            - '451'
+            - '226'
+          tags:
+            - ReponseConso
+        - title: Les prix sont élevés pour la prestation
+          information:
+            title: Les prix sont choisis librement par les maisons de retraite.
+            content: src/anomaly/yml/subcategories/services-aux-particuliers.yml
+            outOfScope: true
     - title: Contrat
       example: 'Exemple : je veux résilier le contrat, les activités ne correspondent pas à mon contrat'
       ccrfCode:
