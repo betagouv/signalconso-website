@@ -570,6 +570,30 @@
       ccrfCode:
         - '21b'
         - '135'
+      subcategories:
+        - title: Les tarifs ne sont pas communiqués clairement
+          example: 'Exemple : les prix des options ne sont pas dans le contrat'
+          reponseconsoCode:
+            - '411'
+            - '212'
+          tags:
+            - ReponseConso
+        - title: Je ne paye pas le prix qui était prévu au départ
+          reponseconsoCode:
+            - '210'
+          tags:
+            - ReponseConso
+        - title: Je ne suis pas d'accord avec ma facture
+          reponseconsoCode:
+            - '451'
+            - '226'
+          tags:
+            - ReponseConso
+        - title: Les prix sont élevés pour la prestation
+          information:
+            title: Les prix sont choisis librement par les maisons de retraite.
+            content: src/anomaly/yml/subcategories/services-aux-particuliers.yml
+            outOfScope: true
     - title: Contrat
       example: 'Exemple : je veux résilier le contrat, les activités ne correspondent pas à mon contrat'
       ccrfCode:
