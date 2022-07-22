@@ -33,43 +33,43 @@ const Stats = () => {
       <Stat
         title={m.acceptedReportStat}
         name={m.acceptedReportStatName}
-        count={() => apiSdk.stats.getReportCount({status: [ReportStatus.PromesseAction]})}
-        curve={() => apiSdk.stats.getReportCountCurve({status: [ReportStatus.PromesseAction]})}
+        count={() => apiSdk.stats.getPublicStatCount('PromesseAction')}
+        curve={() => apiSdk.stats.getPublicStatCurve('PromesseAction')}
       />
       <Stat
         title={m.reportsCountStat}
         name={m.reportsCountStatName}
-        count={apiSdk.stats.getReportCount}
-        curve={apiSdk.stats.getReportCountCurve}
+        count={() => apiSdk.stats.getPublicStatCount('Reports')}
+        curve={() => apiSdk.stats.getPublicStatCurve('Reports')}
       />
       <Stat
         title={m.transmittedRateStat}
         name={m.transmittedRateStatName}
         description={m.transmittedRateDescription}
-        count={apiSdk.stats.percentage.getReportForwardedToPro}
-        curve={() => apiSdk.stats.percentageCurve.getReportForwardedPercentage({})}
+        count={() => apiSdk.stats.getPublicStatCount('TransmittedPercentage')}
+        curve={() => apiSdk.stats.getPublicStatCurve('TransmittedPercentage')}
         percentage
       />
       <Stat
         title={m.readRateStat}
         name={m.readRateStatName}
         description={m.readRateDescription}
-        count={apiSdk.stats.percentage.getReportReadByPro}
-        curve={() => apiSdk.stats.percentageCurve.getReportReadPercentage({})}
+        count={() => apiSdk.stats.getPublicStatCount('ReadPercentage')}
+        curve={() => apiSdk.stats.getPublicStatCurve('ReadPercentage')}
         percentage
       />
       <Stat
         title={m.respondedRateStat}
         name={m.respondedRateStatName}
         description={m.respondedRateDescription}
-        count={() => apiSdk.stats.percentage.getReportWithResponse()}
-        curve={() => apiSdk.stats.percentageCurve.getReportRespondedPercentage({})}
+        count={() => apiSdk.stats.getPublicStatCount('ResponsePercentage')}
+        curve={() => apiSdk.stats.getPublicStatCurve('ResponsePercentage')}
         percentage
       />
       <Stat
         title={m.websiteReportsRateStat}
         name={m.respondedRateStatName}
-        count={apiSdk.stats.percentage.getReportWithWebsite}
+        count={() => apiSdk.stats.getPublicStatCount('WebsitePercentage')}
         percentage
       />
       <p>

@@ -14,7 +14,7 @@ interface Props {
   title: string
   description?: string
   percentage?: boolean
-  count: () => Promise<SimpleStat>
+  count: () => Promise<number>
   curve?: () => Promise<CountByDate[]>
 }
 
@@ -45,7 +45,7 @@ export const Stat = React.memo(({name, count, curve, title, description, percent
             color: t => t.palette.primary.main,
           }}
         >
-          {map(_count.entity?.value as number | undefined, formatLargeNumber)} {percentage && '%'}
+          {map(_count.entity ?? undefined, formatLargeNumber)} {percentage && '%'}
         </Txt>
 
         <Txt block bold>
