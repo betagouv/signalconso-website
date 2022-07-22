@@ -130,19 +130,22 @@
       example: 'Exemple : je ne capte pas, je capte mal, débit faible, mon service de télévision est en panne, je ne peux pas recevoir la télévision avec mon offre ...'
       information:
         title: La qualité du réseau est mauvaise
-        content: Les problèmes de réseau ou d'éligibilité ne peuvent pas être signalés sur SignalConso. <br> Vous devez les signaler à l'ARCEP (Autorité de régulation des communications électroniques, des postes et de la distribution de la presse) sur leur site dédié  <a href="https://jalerte.arcep.fr/" target="_blank" /> J'alerte l'Arcep </a>
+        content: 
+          Les problèmes de réseau ou d'éligibilité ne peuvent pas être signalés sur SignalConso. 
+          <br> Vous devez les signaler à l'ARCEP (Autorité de régulation des communications électroniques, des postes et de la distribution de la presse) sur leur site dédié  <a href="https://jalerte.arcep.fr/" target="_blank" /> J'alerte l'Arcep </a>
     - title: Eligibilité à une offre
       subcategories:
         - title: Mon domicile n’est pas éligible à la fibre, à l’ADSL ou à une box 4G
           content: Les problèmes d'éligbilités ne peuvent pas être signalés sur SignalConso. <br> Vous devez les signaler à l'ARCEP (Autorité de régulation des communications électroniques, des postes et de la distribution de la presse) sur leur site dédié  <a href="https://jalerte.arcep.fr/" target="_blank" /> J'alerte l'Arcep </a>
         - title: Mon domicile n’est pas éligible qu’à la fibre alors que je veux de l’ADSL
-          content: Nous ne doutons pas que vous ayez réellement rencontré un problème mais... il ne s’agit pas d’une fraude. <br> La loi permet aux entreprises de proposer les produits et les services de leur choix. Les opérateurs sont donc libres de commercialiser des offres utilisant une technologie spécifique plutôt qu’une autre.  <br> Que pouvez-vous faire ?  <br> Si un opérateur ne propose pas la technologie que vous souhaitez à l’adresse de votre domicile, il est possible qu’un autre opérateur le propose. Il vous faut comparer les offres.  <br> Pour vous aider, vous pouvez vérifier votre éligibilité à une technologie pour les principaux opérateurs sur le site https://maconnexioninternet.arcep.fr/.
-        - title: Un opérateur m’a annoncé éligible à une technologie alors que ce n’est pas le cas
-        
-        
+          content: 
+            Nous ne doutons pas que vous ayez réellement rencontré un problème mais... il ne s’agit pas d’une fraude. 
+            <br> La loi permet aux entreprises de proposer les produits et les services de leur choix. Les opérateurs sont donc libres de commercialiser des offres utilisant une technologie spécifique plutôt qu’une autre.  
+            <br> Que pouvez-vous faire ?  
+            <br> Si un opérateur ne propose pas la technologie que vous souhaitez à l’adresse de votre domicile, il est possible qu’un autre opérateur le propose. Il vous faut comparer les offres.  
+            <br> Pour vous aider, vous pouvez vérifier votre éligibilité à une technologie pour les principaux opérateurs sur le site https://maconnexioninternet.arcep.fr/.
+        - title: Un opérateur m’a annoncé éligible à une technologie alors que ce n’est pas le cas 
     - title: Résiliation / changement d'opérateur
-      tags:
-        - LitigeContractuel
       subcategories:
         - title: Frais de résiliation
           reponseconsoCode:
@@ -152,12 +155,46 @@
           reponseconsoCode:
             - '477'
             - '473'
-        - title: Problème avec le RIO (Relevé d'Identité Opérateur)
+        - title: Problème avec le RIO (Relevé d'Identité Opérateur) ou ma portabilité
           reponseconsoCode:
             - '477'
+          subcategories:
+            - title: Problème avec mon RIO
+              information:
+                title: Si vous souhaitez garder votre numéro de téléphone, vous ne devez pas résilier le contrat qui vous lie à l’opérateur.
+                content: 
+                  C’est votre nouvel opérateur qui effectuera cette démarche dans le cadre d’une demande de portabilité. Votre nouvel opérateur vous demandera votre relevé d’identité opérateur (RIO) disponible automatiquement en appelant le 3179.
+                  <br> Si votre portabilité ne s’est pas effectuée le jour prévu.
+                  <br> Que pouvez-vous faire ?  
+                  <br> Je contacte le service client du nouveau opérateur par téléphone ou par mail. Je peux demander une indemnisation pour tout retard ou abus dans la prestation de conservation du numéro.
+                  <br> Si je ne suis pas satifait. Je contact le médaiteur des communications gratuitement via https://www.mediation-telecom.org/.             
+            - title: L'opérateur a perdu mon numéro
+              information: 
+                title: Plusieurs SMS d’information doivent normalement vous être envoyés jusqu’au transfert effectif du numéro vers votre nouvel opérateur.
+                content: 
+                  Si votre portabilité ne s’est pas effectuée le jour prévu.
+                  <br> Que pouvez-vous faire ?  
+                  <br> Je contacte le service client du nouveau opérateur par téléphone ou par mail. Je peux demander une indemnisation pour tout retard ou abus dans la prestation de conservation du numéro.
+                  <br> Si je ne suis pas satifait. Je contact le médaiteur des communications gratuitement via https://www.mediation-telecom.org/. 
+            - title: Ma portabilité est en retard
+              information: 
+                title: Plusieurs SMS d’information doivent normalement vous être envoyés jusqu’au transfert effectif du numéro vers votre nouvel opérateur.
+                content: 
+                  Si votre portabilité ne s’est pas effectuée le jour prévu.
+                  <br> Que pouvez-vous faire ?  
+                  <br> Je contacte le service client du nouveau opérateur par téléphone ou par mail. Je peux demander une indemnisation pour tout retard ou abus dans la prestation de conservation du numéro.
+                  <br> Si je ne suis pas satifait. Je contact le médaiteur des communications gratuitement via https://www.mediation-telecom.org/. 
         - title: Mon ancien opérateur continue de me prélever
           reponseconsoCode:
             - '474'
+        - title: Le technicien n'est pas passé
+          information:
+            title: Le technicien ne s’est pas rendu à votre domicile
+            content: 
+              Si vous venez de changer d’opérateur ou de déménager en gardant votre numéro et que le technicien ne s’est pas rendu à votre domicile pour le rendez-vous d’installation. Vous avez droit à une indemnisation. 
+              <br> Que pouvez-vous faire ?  
+              <br> Je contacte le service client du nouveau opérateur par téléphone ou par mail. Je peux demander une indemnisation.
+              <br> Si je ne suis pas satifait. Je contact le médaiteur des communications gratuitement via https://www.mediation-telecom.org/. 
     - title: Appels, sms ou emails indésirables
       example: 'Exemple : spams, appel incessant, rappel vers un numéro payant'
       subcategories:
@@ -206,32 +243,51 @@
             - '447'
             - '464'
 - title: Abonnement télévision
-  tags:
-    - ReponseConso
-  subcategories:
-    - title: Démarchage à domicile
-      ccrfCode:
-        - '221'
-      companyKind: LOCATION
-      reponseconsoCode:
-        - '221'
+  subcategories: 
+    - title: J'ai une offre avec mon opérateur internet
+      subcategories:
+        - title: Mon abonnement a été modifié
+          subcategorie:
+          - title: Ajout ou modification d'une option payante
+            subcategorie:
+              - title : 
+          
+          - title: Le lien pour refuser l'augementation de mon forfait ne fonctionne pas
+        - title: Résilisation et changement d'opérateur
+    - title: J'ai une offre en dehors de mon opérateur internet
+    - title: Démarchage 
       tags:
-        - DemarchageADomicile
-    - title: Démarchage téléphonique
-      ccrfCode: -'227'
-      companyKind: PHONE
-      reponseconsoCode:
-        - '221'
-      tags:
-        - DemarchageTelephonique
+        - ReponseConso
+      subcategories:
+        - title: Démarchage à domicile
+          ccrfCode:
+            - '221'
+          companyKind: LOCATION
+          reponseconsoCode:
+            - '221'
+          tags:
+            - DemarchageADomicile
+        - title: Démarchage téléphonique
+          ccrfCode: 
+            -'227'
+          companyKind: PHONE
+          reponseconsoCode:
+            - '221'
+          tags:
+            - DemarchageTelephonique
     - title: Problème avec un site internet
       reponseconsoCode:
         - '4442'
       companyKind: WEBSITE
+    
+    
     - title: Autre
       reponseconsoCode:
         - '443'
         - '446'
+
+
+
 - title: Abonnement presse
   subcategories:
     - title: Démarchage à domicile
