@@ -352,6 +352,13 @@
         - title: Problème d'hygiène
           reponseconsoCode:
             - '446'
+        - title: Je subis des nuisances à cause des odeurs, du bruit...
+          information: !!import/single ../common/info/voisinage.yml
+        - title: Le personnel n'est pas aimable
+          information: !!import/single ../common/info/amabilite.yml
+        - title: Autre
+          tags:
+            - LitigeContractuel
     - title: Esthéticien
       subcategories:
         - title: Prix des soins
@@ -392,6 +399,13 @@
         - title: Problème d'hygiène
           reponseconsoCode:
             - '446'
+        - title: Je subis des nuisances à cause des odeurs, du bruit...
+          information: !!import/single ../common/info/voisinage.yml
+        - title: Le personnel n'est pas aimable
+          information: !!import/single ../common/info/amabilite.yml
+        - title: Autre
+          tags:
+            - LitigeContractuel
     - title: Cabine UV
       subcategories:
         - title: Prix
@@ -432,6 +446,13 @@
         - title: Problème d'hygiène
           reponseconsoCode:
             - '446'
+        - title: Je subis des nuisances à cause des odeurs, du bruit...
+          information: !!import/single ../common/info/voisinage.yml
+        - title: Le personnel n'est pas aimable
+          information: !!import/single ../common/info/amabilite.yml
+        - title: Autre
+          tags:
+            - LitigeContractuel
     - title: Massage
       subcategories:
         - title: Prix
