@@ -66,6 +66,11 @@ export const ReportFileAdd = ({onUploaded, fileOrigin}: Props) => {
         setErrorMessage(m.invalidSize(appConfig.upload_maxSizeMb))
         return
       }
+      if (file.name.length > 255) {
+        toastError({message: m.invalidFileNameSize(255)})
+        setErrorMessage(m.invalidFileNameSize(255))
+        return
+      }
       setUploading(true)
       CompressFile.compress(file)
         .then(file => {

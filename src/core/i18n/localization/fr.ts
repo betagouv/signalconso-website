@@ -269,6 +269,7 @@ export const fr = {
     logoAltSignalconso: `Logo SignalConso / Retour à la page d'accueil`,
     logoAltGouv: `Logo gouvernement`,
     invalidSize: (maxSize: number) => `La taille du fichier dépasse les ${maxSize} Mb`,
+    invalidFileNameSize: (maxSize: number) => `Le nom du fichier ne doit pas dépasser ${maxSize} caractères`,
     limitTo500chars: `500 caractères maximum`,
     continue: `Continuer`,
     invalidUrlPattern: `Ça ne ressemble pas à un site internet`,
