@@ -337,9 +337,9 @@
                 title: Le technicien ne s’est pas rendu à votre domicile
                 content:
                   "Si vous venez de changer d'opérateur ou de déménager en gardant votre numéro et que le technicien ne s'est pas rendu à votre domicile pour le rendez-vous d'installation. Vous avez droit à une indemnisation. 
-                  <br/> Que pouvez-vous faire ?  
-                  <br/> Je contacte le service client du nouveau opérateur par téléphone ou par mail. Je peux demander une indemnisation.
-                  <br/> Si je ne suis pas satifait. Je contact le médaiteur des communications gratuitement via https://www.mediation-telecom.org/."
+                  <br> Que pouvez-vous faire ?  
+                  <br> Je contacte le service client du nouveau opérateur par téléphone ou par mail. Je peux demander une indemnisation.
+                  <br> Si je ne suis pas satifait. Je contact le médaiteur des communications gratuitement via https://www.mediation-telecom.org/."
     - title: J'ai une offre en dehors de mon opérateur internet
     - title: Démarchage
       tags:
