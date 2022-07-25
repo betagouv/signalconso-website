@@ -250,10 +250,96 @@
           subcategorie:
           - title: Ajout ou modification d'une option payante
             subcategorie:
-              - title : 
-          
+              - title : Option liée à une chaine de télé, à la data, aux appels, aux sms, au débit.
+                subcategorie:
+                  - title: J'ai été prévenu par email ou courrier
+                    information: !!import/single ../common/info/tel-Supportdurable.yml 
+                  - title: Non, j'ai reçu seulement un sms
+                    reponseconsoCode:
+                      - '421'
+                      - '2202'
+                    information: !!import/single ../common/info/tel-Supportdurable.yml  
+                  - title: Non, je n'ai rien reçu du tout
+                    reponseconsoCode:
+                      - '421'
+                    detailInputs:
+                      - label: Date du début de l'augementation (vous pouvez préciser le premier mois facturé)
+                        rank: 1
+                        type: DATE
+                      - label: Quel est le nom de cette option ?
+                        rank: 2
+                        type: TEXT
+                        placeholder: "Indiquez l'intitulé figurant la facture"      
+                      - label: Quel est son prix ?
+                        rank: 3
+                        type: TEXT
+              - title: Option liée à la musique, des livres, un anti-virus...
+                subcategorie:
+                  - title: J'avais déjà un service identiques dans mon offre
+                    subcategorie:
+                      - title: J'ai été prévenu par email ou courrier
+                        information: !!import/single ../common/info/tel.yml 
+                      - title: Non, j'ai reçu seulement un sms
+                        reponseconsoCode:
+                          - '421'
+                          - '2202'
+                        information: !!import/single ../common/info/tel-Supportdurable.yml  
+                      - title: Non, je n'ai rien reçu du tout
+                        reponseconsoCode:
+                          - '421'
+                        detailInputs:
+                          - label: Date du début de l'option (vous pouvez préciser le premier mois facturé)
+                            rank: 1
+                            type: DATE
+                          - label: Quel est le nom de cette option ?
+                            rank: 2
+                            type: TEXT
+                            placeholder: "Indiquez l'intitulé figurant la facture"      
+                          - label: Quel est son prix ?
+                            rank: 3
+                            type: TEXT
+                          - label: Comment avez-vous été prévenu de cette option ?
+                            rank: 4
+                            type: RADIO
+                            options:
+                              - email
+                              - courrier papier
+                              - sms
+                              - message dans l'espace client
+                              - "je n'ai rien reçu"
+                          - label: Si vous avez reçu un courrier / email / sms, quelle est sa date ?
+                            rank: 5
+                            type: DATE
+                            optionnal: true
+                  - title: Je n'avais pas un service identique dans mon offre
+                    information: !!import/single ../common/info/tel.yml
           - title: Le lien pour refuser l'augementation de mon forfait ne fonctionne pas
+            reponseconsoCode:
+              - '444'
+              - '210'
+            tags:
+              - ReponseConso
         - title: Résilisation et changement d'opérateur
+          subcategories:
+            - title: Frais de résiliation
+              reponseconsoCode:
+                - '477'
+                - '473'
+            - title: Restitution du matériel
+              reponseconsoCode:
+                - '477'
+                - '473'            
+            - title: Mon ancien opérateur continue de me prélever
+              reponseconsoCode:
+                - '474'
+            - title: Le technicien n'est pas passé
+              information:
+              title: Le technicien ne s’est pas rendu à votre domicile
+                content: 
+                Si vous venez de changer d’opérateur ou de déménager en gardant votre numéro et que le technicien ne s’est pas rendu à votre domicile pour le rendez-vous d’installation. Vous avez droit à une indemnisation. 
+                <br> Que pouvez-vous faire ?  
+                <br> Je contacte le service client du nouveau opérateur par téléphone ou par mail. Je peux demander une indemnisation.
+                <br> Si je ne suis pas satifait. Je contact le médaiteur des communications gratuitement via https://www.mediation-telecom.org/. 
     - title: J'ai une offre en dehors de mon opérateur internet
     - title: Démarchage 
       tags:
@@ -279,15 +365,10 @@
       reponseconsoCode:
         - '4442'
       companyKind: WEBSITE
-    
-    
     - title: Autre
       reponseconsoCode:
         - '443'
         - '446'
-
-
-
 - title: Abonnement presse
   subcategories:
     - title: Démarchage à domicile
