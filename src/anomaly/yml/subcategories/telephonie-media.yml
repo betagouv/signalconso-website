@@ -143,8 +143,9 @@
             content:
               Nous ne doutons pas que vous ayez réellement rencontré un problème mais... il ne s’agit pas d’une fraude.
               <br> La loi permet aux entreprises de proposer les produits et les services de leur choix. Les opérateurs sont donc libres de commercialiser des offres utilisant une technologie spécifique plutôt qu’une autre.
-              <br> Que pouvez-vous faire ?
-              <br> Si un opérateur ne propose pas la technologie que vous souhaitez à l’adresse de votre domicile, il est possible qu’un autre opérateur le propose. Il vous faut comparer les offres.
+            actions:
+              - question: Que pouvez-vous faire&#160;?
+                answer: "<b> Si un opérateur ne propose pas la technologie que vous souhaitez à l’adresse de votre domicile, il est possible qu’un autre opérateur le propose. Il vous faut comparer les offres.
               <br> Pour vous aider, vous pouvez vérifier votre éligibilité à une technologie pour les principaux opérateurs sur le site https://maconnexioninternet.arcep.fr/.
         - title: Un opérateur m’a annoncé éligible à une technologie alors que ce n’est pas le cas
     - title: Résiliation / changement d'opérateur
