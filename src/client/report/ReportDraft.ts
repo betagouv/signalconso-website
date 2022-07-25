@@ -59,14 +59,14 @@ export class ReportDraft {
   static readonly getReponseconsoCode = (r: ReportDraft): string[] => {
     return uniqby(
       (r.subcategories ?? []).flatMap(_ => _.reponseconsoCode ?? []),
-      _ => _,
+      (_: any) => _,
     )
   }
 
   static readonly ccrfCode = (r: ReportDraft): string[] => {
     return uniqby(
       (r.subcategories ?? []).flatMap(_ => _.ccrfCode ?? []),
-      _ => _,
+      (_: any) => _,
     )
   }
 
