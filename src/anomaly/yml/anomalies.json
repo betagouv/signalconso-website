@@ -105,11 +105,11 @@
     },
     {
       "category": "COVID-19 (coronavirus)",
-      "title": "COVID-19 (coronavirus)",
+      "title": "Signalez à la DGCCRF un problème lié à la COVID-19, gel, masque, test PCR",
       "categoryId": "C19",
       "path": "coronavirus",
       "description": "gel hydroalcoolique, masque, arnaque liée au COVID-19, distanciation physique...",
-      "seoDescription": null,
+      "seoDescription": "Vous avez un problème lié au coronavirus, gel hydroalcoolique, autotests, antigéniques, non port du masque, non respect des règles d’hygiène ou de la distanciation physique",
       "id": "19",
       "sprite": "category-covid",
       "subcategories": [
@@ -36125,7 +36125,7 @@
       "categoryId": "ELEC",
       "path": "eau-gaz-electricite",
       "description": "contrat et facture eau, gaz et électricité...",
-      "seoDescription": "Vous avez un problème de contrat, de prélèvement, une facture excessive, un dépassement de consommation ou vous avez eu une fuite d'eau, de canalisation.",
+      "seoDescription": "Vous avez un problème de contrat d’énergie, de prélèvement, une facture excessive, un dépassement de consommation ou vous avez eu une fuite d’eau, de canalisation.",
       "id": "6",
       "sprite": "category-energy",
       "subcategories": [
@@ -38338,11 +38338,11 @@
     },
     {
       "category": "Banque / Assurance / Mutuelle",
-      "title": "Banque / Assurance / Mutuelle",
+      "title": "Signalez un problème de banque, assurance, mutuelle à la DGCCRF",
       "categoryId": "BAQ",
       "path": "banque-assurance-mutuelle",
       "description": "banque en ligne, crédit, assurance auto...",
-      "seoDescription": null,
+      "seoDescription": "Vous avez un problème de frais bancaires, carte, CB, remboursement, déclaration de sinistre, prise en charge optique/dentaire, indemnisation, contrat d’assurance, prévoyance",
       "id": "8",
       "sprite": "category-bank",
       "subcategories": [
@@ -38602,11 +38602,11 @@
     },
     {
       "category": "Intoxication alimentaire",
-      "title": "Intoxication alimentaire",
+      "title": "Vous êtes malade, diarrhée, nausée, fièvre suite à un repas, signalez-le à la DGCCRF",
       "categoryId": "INTOX",
       "path": "intoxication-alimentaire",
       "description": "Vous avez été malade (vomissement, diarrhée, maux de ventre) après avoir consommé un aliment.",
-      "seoDescription": null,
+      "seoDescription": "Vous êtes souffrant, avez des problèmes de digestion après avoir mangé un aliment suspect, goût, odeur de la nourriture ? Mal au ventre, estomac, vomissement ?",
       "id": "9",
       "sprite": "category-disease",
       "subcategories": [
@@ -41436,11 +41436,11 @@
     },
     {
       "category": "Voyage / Loisirs",
-      "title": "Voyage / Loisirs",
+      "title": "Signalez un problème de séjour, vol, voyage à la répression des fraudes",
       "categoryId": "VOY",
       "path": "voyage-loisirs",
       "description": "hôtel, billet d'avion, taxi, comparateur de prix, concert, salle de sport, jeux en ligne...",
-      "seoDescription": null,
+      "seoDescription": "Vous avez un problème d’annulation, retard, remboursement concernant une réservation d’un billet d’avion, train, bateau, taxi, VTC, hôtel, camping ou un soucis de bagage",
       "id": "10",
       "sprite": "category-hobbies",
       "subcategories": [
@@ -53191,11 +53191,11 @@
     },
     {
       "category": "Immobilier",
-      "title": "Immobilier",
+      "title": "Signalez un problème de loyer, syndic, copropriété, DPE, charges à la DGCCRF",
       "categoryId": "IMM",
       "path": "immobilier",
       "description": "location, agence immobiliere, syndicat de copropriété...",
-      "seoDescription": null,
+      "seoDescription": "Vous avez un problème avec une copropriété, agence immobilière, syndic, notaire en tant que locataire ou propriétaire, un souci de loyer, bail, DPE, location, vente ou mandat",
       "id": "11",
       "sprite": "category-real-estate",
       "subcategories": [
@@ -54910,11 +54910,11 @@
     },
     {
       "category": "Voiture / Véhicule / Vélo",
-      "title": "Voiture / Véhicule / Vélo",
+      "title": "Signalez un problème lié à la réparation, entretien, contrôle technique d’une voiture",
       "categoryId": "VEH",
       "path": "voiture-vehicule",
       "description": "vente et réparation de voiture, location, auto-école, pneu, accessoire...",
-      "seoDescription": null,
+      "seoDescription": "Vous avez un problème avec un garagiste, agence de location suite à la réparation d’un pneu, d’une panne, la vente d’un véhicule neuf ou d’occasion, la non application de la garantie constructeur",
       "id": "13",
       "sprite": "category-transport",
       "subcategoriesTitle": "Pouvez-vous préciser &#160;?",
@@ -57150,11 +57150,11 @@
     },
     {
       "category": "Animaux",
-      "title": "Animaux",
+      "title": "Signalez un problème d’animaux, garde, vétérinaire, élevage, toilettage à la DGCCRF",
       "categoryId": "ANI",
       "path": "animaux",
       "description": "vétérinaire, aliment pour animaux, site internet de garde d'animaux...",
-      "seoDescription": null,
+      "seoDescription": "Vous avez un problème avec un(e) pet sitter, pension, assurance santé animaux, animalerie, pedigree LOOF, éleveur, toiletteur, croquettes, chien, chat, NAC, cheval",
       "id": "14",
       "sprite": "category-pet",
       "subcategories": [
@@ -57222,11 +57222,11 @@
     },
     {
       "category": "Démarches administratives",
-      "title": "Démarches administratives",
+      "title": "Signalez un problème de médiation ou de faux courrier administratif à la DGCCRF",
       "categoryId": "ADM",
       "path": "demarches-administratives",
       "description": "absence d'information sur le médiateur, faux courrier administratif, achat d'acte de naissance...",
-      "seoDescription": null,
+      "seoDescription": "Vous avez un problème d’arnaques, services payants pour papiers d’identité, actes d’état civil, certificat d’immatriculation, Crit’Air, carte Vitale, KBis, frais d’enregistrement",
       "id": "15",
       "sprite": "category-admin",
       "subcategories": [
@@ -57329,11 +57329,11 @@
     },
     {
       "category": "Démarchage abusif",
-      "title": "Démarchage abusif",
+      "title": "Vous avez un problème de démarchage abusif malgré Bloctel ? Signalez-le à la DGCCRF",
       "categoryId": "BTEL",
       "path": "bloctel",
       "description": "spams, appels indésirables malgré Bloctel",
-      "seoDescription": null,
+      "seoDescription": "Vous avez un problème d’appels indésirables, inconnus, incessants, de spams, de sms, de télé vente, d’arnaque au CPF, à la formation professionnelle",
       "id": "17",
       "sprite": "category-bloctel",
       "subcategories": [
