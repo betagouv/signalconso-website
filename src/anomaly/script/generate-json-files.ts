@@ -13,7 +13,7 @@ const files = [
 
 const addUniqueId = (obj: any, depth = 0, prefix?: string) => {
   let index = 1
-  obj.forEach(entry => {
+  obj.forEach((entry: any) => {
     const id = `${prefix ? prefix + '.' : ''}${entry.id || index++}`
     entry.id = id
     if (entry.subcategories) {
