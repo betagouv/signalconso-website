@@ -213,8 +213,8 @@
             - '2218'
         - title: J'ai eu un problème de démarchage téléphonique
           information:
-            title: Revenez en arrière et utilisez plutôt la catégorie spécifique = Démarchage abusif 🙂
-            content: Un billet d'avion ? Utilisez la catégorie "Voyage / Loisirs" <br> Un livre commandé en ligne mais non reçu ? Utilisez la catégorie "Achat (Magasin ou Internet)"
+            title: Revenez en arrière et utilisez plutôt la catégorie spécifique
+            content: Renovation énergétique ? Utilisez la catégorie "Travaux / Rénovation" <br> Des appels indésirabls ? Utilisez la catégorie "Démarches abusif"
     - title: Autre
       example: 'Exemple : téléphone acheté avec le forfait, service client injoignable'
       tags:
