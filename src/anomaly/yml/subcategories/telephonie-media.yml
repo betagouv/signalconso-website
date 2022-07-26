@@ -235,11 +235,11 @@
     - title: J'ai une offre avec mon opérateur internet
       subcategories:
         - title: Mon abonnement a été modifié
-          subcategorie:
+          subcategories:
             - title: Ajout ou modification d'une option payante
-              subcategorie:
+              subcategories:
                 - title : Option liée à une chaine de télé, à la data, aux appels, aux sms, au débit.
-                  subcategorie:
+                  subcategories:
                     - title: J'ai été prévenu par email ou courrier
                       information: !!import/single ../common/info/tel-Supportdurable.yml
                     - title: Non, j'ai reçu seulement un sms
@@ -262,9 +262,9 @@
                           rank: 3
                           type: TEXT
                 - title: Option liée à la musique, des livres, un anti-virus...
-                  subcategorie:
+                  subcategories:
                     - title: J'avais déjà un service identiques dans mon offre
-                      subcategorie:
+                      subcategories:
                         - title: J'ai été prévenu par email ou courrier
                           information: !!import/single ../common/info/tel.yml
                         - title: Non, j'ai reçu seulement un sms
