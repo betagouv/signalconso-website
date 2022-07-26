@@ -73,7 +73,9 @@ export const ProblemInformation = ({anomaly, subcategories, information}: Props)
                   </div>
                 }
               >
-                <Txt color="hint">{action.answer}</Txt>
+                <Txt color="hint">
+                  <Txt block dangerouslySetInnerHTML={{__html: action.answer}} />
+                </Txt>
               </AccordionInline>
             ))}
           </PanelBody>

@@ -397,11 +397,11 @@
           subcategories:
             - title: Je subis des nuisances à cause des odeurs, du bruit...
               information: !!import/single ../common/info/voisinage.yml
-            - title: Le personnel n'est pas aimable
-              information: !!import/single ../common/info/amabilite.yml
             - title: Autre
               tags:
                 - LitigeContractuel
+        - title: Le personnel n'est pas aimable
+          information: !!import/single ../common/info/amabilite.yml
     - title: Cabine UV
       subcategories:
         - title: Prix
