@@ -36928,7 +36928,7 @@
                   "subcategories": [
                     {
                       "title": "Modification concernant les SMS, MMS, données ou débit disponibles",
-                      "example": "Exemple : augmentation du nombre d'heures, augmentation du nombre de sms, modification concernant les sms, mms ou appels...",
+                      "example": "Exemple : augmentation du nombre d'heures, augmentation du nombre de sms, modification concernant les sms, mms ou appels...",
                       "tags": [
                         "ReponseConso"
                       ],
@@ -36942,7 +36942,7 @@
                             "actions": [
                               {
                                 "question": "Que pouvez-vous faire&#160;?",
-                                "answer": "<b>Vous écrivez un courrier ou un mail à l'opérateur pour demande à résoudre mon problème.  <b>Si vous n'avez pas réponse ou si la réponse ne vous satisfait pas. Vous contactez un médiateur de la consommation, c’est-à-dire une personne chargée de régler les problèmes des consommateurs avec l'opérateur  <br><br> Contacter le médiateur sur https://www.mediation-telecom.org/."
+                                "answer": "<b>Vous écrivez un courrier ou un mail à l'opérateur pour demande à résoudre mon problème. <b>Si vous n'avez pas réponse ou si la réponse ne vous satisfait pas. Vous contactez un médiateur de la consommation, c’est-à-dire une personne chargée de régler les problèmes des consommateurs avec l'opérateur <br> <br> Contacter le médiateur sur <a href=\"https://www.mediation-telecom.org/\" target=\"_blank\">mediation-telecom.org</a> ."
                               }
                             ]
                           },
@@ -36960,7 +36960,7 @@
                             "actions": [
                               {
                                 "question": "Que pouvez-vous faire&#160;?",
-                                "answer": "<b>Vous écrivez un courrier ou un mail à l'opérateur pour demande à résoudre mon problème.  <b>Si vous n'avez pas réponse ou si la réponse ne vous satisfait pas. Vous contactez un médiateur de la consommation, c’est-à-dire une personne chargée de régler les problèmes des consommateurs avec l'opérateur  <br><br> Contacter le médiateur sur https://www.mediation-telecom.org/."
+                                "answer": "<b>Vous écrivez un courrier ou un mail à l'opérateur pour demande à résoudre mon problème. <b>Si vous n'avez pas réponse ou si la réponse ne vous satisfait pas. Vous contactez un médiateur de la consommation, c’est-à-dire une personne chargée de régler les problèmes des consommateurs avec l'opérateur <br> <br> Contacter le médiateur sur <a href=\"https://www.mediation-telecom.org/\" target=\"_blank\">mediation-telecom.org</a> ."
                               }
                             ]
                           },
@@ -37028,7 +37028,7 @@
                                 "actions": [
                                   {
                                     "question": "Que pouvez-vous faire&#160;?",
-                                    "answer": "<b>Vous écrivez un courrier ou un mail à l'opérateur pour demande à résoudre mon problème.  <b>Si vous n'avez pas réponse ou si la réponse ne vous satisfait pas. Vous contactez un médiateur de la consommation, c’est-à-dire une personne chargée de régler les problèmes des consommateurs avec l'opérateur  <br><br> Contacter le médiateur sur https://www.mediation-telecom.org/."
+                                    "answer": "<b>Vous écrivez un courrier ou un mail à l'opérateur pour demande à résoudre mon problème. <b>Si vous n'avez pas réponse ou si la réponse ne vous satisfait pas. Vous contactez un médiateur de la consommation, c’est-à-dire une personne chargée de régler les problèmes des consommateurs avec l'opérateur <br> <br> Contacter le médiateur sur <a href=\"https://www.mediation-telecom.org/\" target=\"_blank\">mediation-telecom.org</a> ."
                                   }
                                 ]
                               },
@@ -37091,7 +37091,7 @@
                                     "actions": [
                                       {
                                         "question": "Que pouvez-vous faire&#160;?",
-                                        "answer": "<b>Vous écrivez un courrier ou un mail à l'opérateur pour demande à résoudre mon problème.  <b>Si vous n'avez pas réponse ou si la réponse ne vous satisfait pas. Vous contactez un médiateur de la consommation, c’est-à-dire une personne chargée de régler les problèmes des consommateurs avec l'opérateur  <br><br> Contacter le médiateur sur https://www.mediation-telecom.org/."
+                                        "answer": "<b>Vous écrivez un courrier ou un mail à l'opérateur pour demande à résoudre mon problème. <b>Si vous n'avez pas réponse ou si la réponse ne vous satisfait pas. Vous contactez un médiateur de la consommation, c’est-à-dire une personne chargée de régler les problèmes des consommateurs avec l'opérateur <br> <br> Contacter le médiateur sur <a href=\"https://www.mediation-telecom.org/\" target=\"_blank\">mediation-telecom.org</a> ."
                                       }
                                     ]
                                   },
@@ -37243,7 +37243,7 @@
                     "actions": [
                       {
                         "question": "Que pouvez-vous faire&#160;?",
-                        "answer": "<b> Si un opérateur ne propose pas la technologie que vous souhaitez à l’adresse de votre domicile, il est possible qu’un autre opérateur le propose. Il vous faut comparer les offres. <br> Pour vous aider, vous pouvez vérifier votre éligibilité à une technologie pour les principaux opérateurs sur le site https://maconnexioninternet.arcep.fr/."
+                        "answer": "<b> 'Si un opérateur ne propose pas la technologie que vous souhaitez à l’adresse de votre domicile, il est possible qu’un autre opérateur le propose. Il vous faut comparer les offres. <br> Pour vous aider, vous pouvez vérifier votre éligibilité à une technologie pour les principaux opérateurs sur le site https://maconnexioninternet.arcep.fr/.'"
                       }
                     ]
                   },
@@ -37285,7 +37285,13 @@
                       "title": "Problème avec mon RIO",
                       "information": {
                         "title": "Si vous souhaitez garder votre numéro de téléphone, vous ne devez pas résilier le contrat qui vous lie à l’opérateur.",
-                        "content": "C’est votre nouvel opérateur qui effectuera cette démarche dans le cadre d’une demande de portabilité. Votre nouvel opérateur vous demandera votre relevé d’identité opérateur (RIO) disponible automatiquement en appelant le 3179. <br> Si votre portabilité ne s’est pas effectuée le jour prévu. <br> Que pouvez-vous faire ? <br> Je contacte le service client du nouveau opérateur par téléphone ou par mail. Je peux demander une indemnisation pour tout retard ou abus dans la prestation de conservation du numéro. <br> Si je ne suis pas satifait. Je contact le médaiteur des communications gratuitement via https://www.mediation-telecom.org/."
+                        "content": "C’est votre nouvel opérateur qui effectuera cette démarche dans le cadre d’une demande de portabilité. Votre nouvel opérateur vous demandera votre relevé d’identité opérateur (RIO) disponible automatiquement en appelant le 3179. <br> Si votre portabilité ne s’est pas effectuée le jour prévu.",
+                        "actions": [
+                          {
+                            "question": "Que pouvez-vous faire&#160;?",
+                            "answer": "<br> 'Je contacte le service client du nouveau opérateur par téléphone ou par mail. Je peux demander une indemnisation pour tout retard ou abus dans la prestation de conservation du numéro. <br> Si je ne suis pas satifait. Je contact le médaiteur des communications gratuitement via https://www.mediation-telecom.org/'"
+                          }
+                        ]
                       },
                       "id": "7.1.4.3.1"
                     },
@@ -37293,7 +37299,13 @@
                       "title": "L'opérateur a perdu mon numéro",
                       "information": {
                         "title": "Plusieurs SMS d’information doivent normalement vous être envoyés jusqu’au transfert effectif du numéro vers votre nouvel opérateur.",
-                        "content": "Si votre portabilité ne s’est pas effectuée le jour prévu. <br> Que pouvez-vous faire ? <br> Je contacte le service client du nouveau opérateur par téléphone ou par mail. Je peux demander une indemnisation pour tout retard ou abus dans la prestation de conservation du numéro. <br> Si je ne suis pas satifait. Je contact le médaiteur des communications gratuitement via https://www.mediation-telecom.org/."
+                        "content": "Si votre portabilité ne s’est pas effectuée le jour prévu.",
+                        "actions": [
+                          {
+                            "question": "Que pouvez-vous faire&#160;?",
+                            "answer": "<br> Je contacte le service client du nouveau opérateur par téléphone ou par mail. Je peux demander une indemnisation pour tout retard ou abus dans la prestation de conservation du numéro. <br> Si je ne suis pas satifait. Je contact le médaiteur des communications gratuitement via https://www.mediation-telecom.org/."
+                          }
+                        ]
                       },
                       "id": "7.1.4.3.2"
                     },
@@ -37301,7 +37313,13 @@
                       "title": "Ma portabilité est en retard",
                       "information": {
                         "title": "Plusieurs SMS d’information doivent normalement vous être envoyés jusqu’au transfert effectif du numéro vers votre nouvel opérateur.",
-                        "content": "Si votre portabilité ne s’est pas effectuée le jour prévu. <br> Que pouvez-vous faire ? <br> Je contacte le service client du nouveau opérateur par téléphone ou par mail. Je peux demander une indemnisation pour tout retard ou abus dans la prestation de conservation du numéro. <br> Si je ne suis pas satifait. Je contact le médaiteur des communications gratuitement via https://www.mediation-telecom.org/."
+                        "content": "Si votre portabilité ne s’est pas effectuée le jour prévu.",
+                        "actions": [
+                          {
+                            "question": "Que pouvez-vous faire&#160;?",
+                            "answer": "<br> Je contacte le service client du nouveau opérateur par téléphone ou par mail. Je peux demander une indemnisation pour tout retard ou abus dans la prestation de conservation du numéro. <br> Si je ne suis pas satifait. Je contact le médaiteur des communications gratuitement via https://www.mediation-telecom.org/."
+                          }
+                        ]
                       },
                       "id": "7.1.4.3.3"
                     }
@@ -37319,7 +37337,13 @@
                   "title": "Le technicien n'est pas passé",
                   "information": {
                     "title": "Le technicien ne s’est pas rendu à votre domicile",
-                    "content": "Si vous venez de changer d’opérateur ou de déménager en gardant votre numéro et que le technicien ne s’est pas rendu à votre domicile pour le rendez-vous d’installation. Vous avez droit à une indemnisation. <br> Que pouvez-vous faire ? <br> Je contacte le service client du nouveau opérateur par téléphone ou par mail. Je peux demander une indemnisation. <br> Si je ne suis pas satifait. Je contact le médaiteur des communications gratuitement via https://www.mediation-telecom.org/."
+                    "content": "Si vous venez de changer d’opérateur ou de déménager en gardant votre numéro et que le technicien ne s’est pas rendu à votre domicile pour le rendez-vous d’installation. Vous avez droit à une indemnisation.",
+                    "actions": [
+                      {
+                        "question": "Que pouvez-vous faire&#160;?",
+                        "answer": "<br> Je contacte le service client du nouveau opérateur par téléphone ou par mail. Je peux demander une indemnisation. <br> Si je ne suis pas satifait. Je contact le médaiteur des communications gratuitement via https://www.mediation-telecom.org/."
+                      }
+                    ]
                   },
                   "id": "7.1.4.5"
                 }
@@ -37353,35 +37377,10 @@
                 },
                 {
                   "title": "J'ai eu un problème de démarchage téléphonique",
-                  "reponseconsoCode": [
-                    "221"
-                  ],
-                  "companyKind": "PHONE",
-                  "tags": [
-                    "Démarchage téléphonique"
-                  ],
-                  "detailInputs": [
-                    {
-                      "label": "Date de l'appel",
-                      "rank": 1,
-                      "type": "DATE",
-                      "defaultValue": "SYSDATE"
-                    },
-                    {
-                      "label": "Est-ce que le vendeur s'est fait passer pour une autre entreprise&#160;?",
-                      "rank": 2,
-                      "type": "RADIO",
-                      "options": [
-                        "Non",
-                        "Oui (à préciser)"
-                      ]
-                    },
-                    {
-                      "label": "Décrivez nous plus en détails ce qui s'est passé",
-                      "rank": 3,
-                      "type": "TEXTAREA"
-                    }
-                  ],
+                  "information": {
+                    "title": "Revenez en arrière et utilisez plutôt la catégorie spécifique = Démarchage abusif 🙂",
+                    "content": "Un billet d'avion ? Utilisez la catégorie \"Voyage / Loisirs\" <br> Un livre commandé en ligne mais non reçu ? Utilisez la catégorie \"Achat (Magasin ou Internet)\""
+                  },
                   "id": "7.1.5.3"
                 }
               ],
@@ -37426,13 +37425,13 @@
               "subcategories": [
                 {
                   "title": "Mon abonnement a été modifié",
-                  "subcategorie": [
+                  "subcategories": [
                     {
                       "title": "Ajout ou modification d'une option payante",
-                      "subcategorie": [
+                      "subcategories": [
                         {
                           "title": "Option liée à une chaine de télé, à la data, aux appels, aux sms, au débit.",
-                          "subcategorie": [
+                          "subcategories": [
                             {
                               "title": "J'ai été prévenu par email ou courrier",
                               "information": {
@@ -37441,10 +37440,11 @@
                                 "actions": [
                                   {
                                     "question": "Que pouvez-vous faire&#160;?",
-                                    "answer": "<b>Vous écrivez un courrier ou un mail à l'opérateur pour demande à résoudre mon problème.  <b>Si vous n'avez pas réponse ou si la réponse ne vous satisfait pas. Vous contactez un médiateur de la consommation, c’est-à-dire une personne chargée de régler les problèmes des consommateurs avec l'opérateur  <br><br> Contacter le médiateur sur https://www.mediation-telecom.org/."
+                                    "answer": "<b>Vous écrivez un courrier ou un mail à l'opérateur pour demande à résoudre mon problème. <b>Si vous n'avez pas réponse ou si la réponse ne vous satisfait pas. Vous contactez un médiateur de la consommation, c’est-à-dire une personne chargée de régler les problèmes des consommateurs avec l'opérateur <br> <br> Contacter le médiateur sur <a href=\"https://www.mediation-telecom.org/\" target=\"_blank\">mediation-telecom.org</a> ."
                                   }
                                 ]
-                              }
+                              },
+                              "id": "7.2.1.1.1.1.1"
                             },
                             {
                               "title": "Non, j'ai reçu seulement un sms",
@@ -37458,10 +37458,11 @@
                                 "actions": [
                                   {
                                     "question": "Que pouvez-vous faire&#160;?",
-                                    "answer": "<b>Vous écrivez un courrier ou un mail à l'opérateur pour demande à résoudre mon problème.  <b>Si vous n'avez pas réponse ou si la réponse ne vous satisfait pas. Vous contactez un médiateur de la consommation, c’est-à-dire une personne chargée de régler les problèmes des consommateurs avec l'opérateur  <br><br> Contacter le médiateur sur https://www.mediation-telecom.org/."
+                                    "answer": "<b>Vous écrivez un courrier ou un mail à l'opérateur pour demande à résoudre mon problème. <b>Si vous n'avez pas réponse ou si la réponse ne vous satisfait pas. Vous contactez un médiateur de la consommation, c’est-à-dire une personne chargée de régler les problèmes des consommateurs avec l'opérateur <br> <br> Contacter le médiateur sur <a href=\"https://www.mediation-telecom.org/\" target=\"_blank\">mediation-telecom.org</a> ."
                                   }
                                 ]
-                              }
+                              },
+                              "id": "7.2.1.1.1.1.2"
                             },
                             {
                               "title": "Non, je n'ai rien reçu du tout",
@@ -37485,16 +37486,18 @@
                                   "rank": 3,
                                   "type": "TEXT"
                                 }
-                              ]
+                              ],
+                              "id": "7.2.1.1.1.1.3"
                             }
-                          ]
+                          ],
+                          "id": "7.2.1.1.1.1"
                         },
                         {
                           "title": "Option liée à la musique, des livres, un anti-virus...",
-                          "subcategorie": [
+                          "subcategories": [
                             {
                               "title": "J'avais déjà un service identiques dans mon offre",
-                              "subcategorie": [
+                              "subcategories": [
                                 {
                                   "title": "J'ai été prévenu par email ou courrier",
                                   "information": {
@@ -37506,7 +37509,8 @@
                                         "answer": "<b> Vous n'avez que deux choix : accepter cette augmentation ou résilier votre abonnement.</b> <br> Vous avez 4 mois pour résilier votre abonnement."
                                       }
                                     ]
-                                  }
+                                  },
+                                  "id": "7.2.1.1.1.2.1.1"
                                 },
                                 {
                                   "title": "Non, j'ai reçu seulement un sms",
@@ -37520,10 +37524,11 @@
                                     "actions": [
                                       {
                                         "question": "Que pouvez-vous faire&#160;?",
-                                        "answer": "<b>Vous écrivez un courrier ou un mail à l'opérateur pour demande à résoudre mon problème.  <b>Si vous n'avez pas réponse ou si la réponse ne vous satisfait pas. Vous contactez un médiateur de la consommation, c’est-à-dire une personne chargée de régler les problèmes des consommateurs avec l'opérateur  <br><br> Contacter le médiateur sur https://www.mediation-telecom.org/."
+                                        "answer": "<b>Vous écrivez un courrier ou un mail à l'opérateur pour demande à résoudre mon problème. <b>Si vous n'avez pas réponse ou si la réponse ne vous satisfait pas. Vous contactez un médiateur de la consommation, c’est-à-dire une personne chargée de régler les problèmes des consommateurs avec l'opérateur <br> <br> Contacter le médiateur sur <a href=\"https://www.mediation-telecom.org/\" target=\"_blank\">mediation-telecom.org</a> ."
                                       }
                                     ]
-                                  }
+                                  },
+                                  "id": "7.2.1.1.1.2.1.2"
                                 },
                                 {
                                   "title": "Non, je n'ai rien reçu du tout",
@@ -37565,9 +37570,11 @@
                                       "type": "DATE",
                                       "optionnal": true
                                     }
-                                  ]
+                                  ],
+                                  "id": "7.2.1.1.1.2.1.3"
                                 }
-                              ]
+                              ],
+                              "id": "7.2.1.1.1.2.1"
                             },
                             {
                               "title": "Je n'avais pas un service identique dans mon offre",
@@ -37580,11 +37587,14 @@
                                     "answer": "<b> Vous n'avez que deux choix : accepter cette augmentation ou résilier votre abonnement.</b> <br> Vous avez 4 mois pour résilier votre abonnement."
                                   }
                                 ]
-                              }
+                              },
+                              "id": "7.2.1.1.1.2.2"
                             }
-                          ]
+                          ],
+                          "id": "7.2.1.1.1.2"
                         }
-                      ]
+                      ],
+                      "id": "7.2.1.1.1"
                     },
                     {
                       "title": "Le lien pour refuser l'augementation de mon forfait ne fonctionne pas",
@@ -37594,7 +37604,8 @@
                       ],
                       "tags": [
                         "ReponseConso"
-                      ]
+                      ],
+                      "id": "7.2.1.1.2"
                     }
                   ],
                   "id": "7.2.1.1"
@@ -37629,7 +37640,13 @@
                       "title": "Le technicien n'est pas passé",
                       "information": {
                         "title": "Le technicien ne s’est pas rendu à votre domicile",
-                        "content": "Si vous venez de changer d'opérateur ou de déménager en gardant votre numéro et que le technicien ne s'est pas rendu à votre domicile pour le rendez-vous d'installation. Vous avez droit à une indemnisation.  <br> Que pouvez-vous faire ?   <br> Je contacte le service client du nouveau opérateur par téléphone ou par mail. Je peux demander une indemnisation. <br> Si je ne suis pas satifait. Je contact le médaiteur des communications gratuitement via https://www.mediation-telecom.org/."
+                        "content": "Si vous venez de changer d'opérateur ou de déménager en gardant votre numéro et que le technicien ne s'est pas rendu à votre domicile pour le rendez-vous d'installation. Vous avez droit à une indemnisation.",
+                        "actions": [
+                          {
+                            "question": "Que pouvez-vous faire&#160;?",
+                            "answer": "<br> Je contacte le service client du nouveau opérateur par téléphone ou par mail. Je peux demander une indemnisation. <br> Si je ne suis pas satifait. Je contact le médaiteur des communications gratuitement via https://www.mediation-telecom.org/.\""
+                          }
+                        ]
                       },
                       "id": "7.2.1.2.4"
                     }
