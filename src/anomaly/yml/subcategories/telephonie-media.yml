@@ -171,7 +171,7 @@
                 actions:
                   - question: Que pouvez-vous faire&#160;?
                     answer: <br> 'Je contacte le service client du nouveau opérateur par téléphone ou par mail. Je peux demander une indemnisation pour tout retard ou abus dans la prestation de conservation du numéro.
-                      <br> Si je ne suis pas satifait. Je contact le médaiteur des communications gratuitement via https://www.mediation-telecom.org/'
+                      <br> Si je ne suis pas satifait. Je contact le médaiteur des communications gratuitement via <a href="https://www.mediation-telecom.org/" target="_blank">mediation-telecom.org</a>'
             - title: L'opérateur a perdu mon numéro
               information:
                 title: Plusieurs SMS d’information doivent normalement vous être envoyés jusqu’au transfert effectif du numéro vers votre nouvel opérateur.
@@ -180,7 +180,7 @@
                 actions:
                   - question: Que pouvez-vous faire&#160;?
                     answer: <br> Je contacte le service client du nouveau opérateur par téléphone ou par mail. Je peux demander une indemnisation pour tout retard ou abus dans la prestation de conservation du numéro.
-                      <br> Si je ne suis pas satifait. Je contact le médaiteur des communications gratuitement via https://www.mediation-telecom.org/.
+                      <br> Si je ne suis pas satifait. Je contact le médaiteur des communications gratuitement via <a href="https://www.mediation-telecom.org/" target="_blank">mediation-telecom.org</a>.
             - title: Ma portabilité est en retard
               information:
                 title: Plusieurs SMS d’information doivent normalement vous être envoyés jusqu’au transfert effectif du numéro vers votre nouvel opérateur.
@@ -189,7 +189,7 @@
                 actions:
                   - question: Que pouvez-vous faire&#160;?
                     answer: <br> Je contacte le service client du nouveau opérateur par téléphone ou par mail. Je peux demander une indemnisation pour tout retard ou abus dans la prestation de conservation du numéro.
-                      <br> Si je ne suis pas satifait. Je contact le médaiteur des communications gratuitement via https://www.mediation-telecom.org/.
+                      <br> Si je ne suis pas satifait. Je contact le médaiteur des communications gratuitement via <a href="https://www.mediation-telecom.org/" target="_blank">mediation-telecom.org</a>.
         - title: Mon ancien opérateur continue de me prélever
           reponseconsoCode:
             - '474'
@@ -201,7 +201,7 @@
             actions:
               - question: Que pouvez-vous faire&#160;?
                 answer: <br> Je contacte le service client du nouveau opérateur par téléphone ou par mail. Je peux demander une indemnisation.
-                  <br> Si je ne suis pas satifait. Je contact le médaiteur des communications gratuitement via https://www.mediation-telecom.org/.
+                  <br> Si je ne suis pas satifait. Je contact le médaiteur des communications gratuitement via <a href="https://www.mediation-telecom.org/" target="_blank">mediation-telecom.org</a>.
     - title: Appels, sms ou emails indésirables
       example: 'Exemple : spams, appel incessant, rappel vers un numéro payant'
       subcategories:
@@ -328,7 +328,7 @@
                 actions:
                   - question: Que pouvez-vous faire&#160;?
                     answer: <br> Je contacte le service client du nouveau opérateur par téléphone ou par mail. Je peux demander une indemnisation.
-                      <br> Si je ne suis pas satifait. Je contact le médaiteur des communications gratuitement via https://www.mediation-telecom.org/."
+                      <br> Si je ne suis pas satifait. Je contact le médaiteur des communications gratuitement via <a href="https://www.mediation-telecom.org/" target="_blank">mediation-telecom.org</a>."
     - title: J'ai une offre en dehors de mon opérateur internet
     - title: Démarchage
       tags:
