@@ -1,13 +1,13 @@
-import { Skeleton } from '@mui/material'
-import { Box } from '@mui/system'
-import { CountByDate } from 'client/stats/PublicStatsClient'
-import { useI18n } from 'core/i18n'
-import React, { useEffect } from 'react'
-import { Bar, BarChart, CartesianGrid, Legend, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts'
-import { Panel } from 'shared/Panel/Panel'
-import { Txt } from '../../alexlibs/mui-extension'
-import { useFetcher } from '../../alexlibs/react-hooks-lib'
-import { map } from '../../alexlibs/ts-utils'
+import {Skeleton} from '@mui/material'
+import {Box} from '@mui/system'
+import {CountByDate} from 'client/stats/PublicStatsClient'
+import {useI18n} from 'core/i18n'
+import React, {useEffect} from 'react'
+import {Bar, BarChart, CartesianGrid, Legend, ResponsiveContainer, Tooltip, XAxis, YAxis} from 'recharts'
+import {Panel} from 'shared/Panel/Panel'
+import {Txt} from '../../alexlibs/mui-extension'
+import {useFetcher} from '../../alexlibs/react-hooks-lib'
+import {map} from '../../alexlibs/ts-utils'
 
 interface Props {
   name?: string
