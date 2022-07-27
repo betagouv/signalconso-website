@@ -3,7 +3,7 @@ import {AnomalyTreeWalker, ObjectSpec} from './AnomalyTreeWalker'
 
 // /!\ This effectively duplicates the structure
 // be sure to update it along with the "Anomaly" types
-export function checkAnomaliesJson(jsonArborescence) {
+export function checkAnomaliesYaml(jsonArborescence: any) {
   new AnomalyTreeWalker(jsonArborescence).assertIsObjectWith(rootSpec)
 }
 
@@ -15,7 +15,7 @@ const rootSpec: ObjectSpec = {
 }
 
 const baseCategorySpec: ObjectSpec = {
-  id: _ => _.assertIsString(),
+  id: _ => _.ifDefined()?.assertIsString(),
   title: _ => _.assertIsString(),
   subcategoriesTitle: _ => _.ifDefined()?.assertIsString(),
   companyKind: _ => _.ifDefined()?.assertIsAllowedString(Object.values(CompanyKinds)),
@@ -37,11 +37,11 @@ const anomalySpec: ObjectSpec = {
 }
 
 const baseSubcategorySpec = {
-  description: _ => _.ifDefined()?.assertIsString(),
-  tags: _ => _.ifDefined()?.assertIsArrayOfAllowedStrings(Object.values(ReportTag)),
-  example: _ => _.ifDefined()?.assertIsString(),
-  reponseconsoCode: _ => _.ifDefined()?.ifNotNull()?.assertIsArrayOfString(),
-  ccrfCode: _ => _.ifDefined()?.assertIsArrayOfString(),
+  description: (_: any) => _.ifDefined()?.assertIsString(),
+  tags: (_: any) => _.ifDefined()?.assertIsArrayOfAllowedStrings(Object.values(ReportTag)),
+  example: (_: any) => _.ifDefined()?.assertIsString(),
+  reponseconsoCode: (_: any) => _.ifDefined()?.ifNotNull()?.assertIsArrayOfString(),
+  ccrfCode: (_: any) => _.ifDefined()?.assertIsArrayOfString(),
   // a Subcategory is always a Category
   // this triggers the recursion
   ...baseCategorySpec,
