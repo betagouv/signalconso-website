@@ -17,6 +17,7 @@
     "format": "npx prettier --write .",
     "checkformat": "npx prettier --check ."
   },
+  "heroku-run-build-script": true,
   "dependencies": {
     "@babel/runtime": "7.18.3",
     "@emotion/cache": "11.7.1",
