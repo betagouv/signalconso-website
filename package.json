@@ -7,7 +7,7 @@
   },
   "scripts": {
     "dev": "next dev -p 3001",
-    "build": "tsc --declaration && yarn generate-json && next build",
+    "build": "yarn generate-json && tsc --declaration  && next build",
     "start": "next start",
     "lint": "next lint",
     "test": "jest",
