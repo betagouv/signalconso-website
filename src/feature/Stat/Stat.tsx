@@ -1,20 +1,20 @@
+import {Skeleton} from '@mui/material'
+import {Box} from '@mui/system'
+import {CountByDate} from 'client/stats/PublicStatsClient'
+import {useI18n} from 'core/i18n'
 import React, {useEffect} from 'react'
 import {Bar, BarChart, CartesianGrid, Legend, ResponsiveContainer, Tooltip, XAxis, YAxis} from 'recharts'
-import {Box, createTheme} from '@mui/system'
 import {Panel} from 'shared/Panel/Panel'
-import {useI18n} from 'core/i18n'
-import {useFetcher} from '../../alexlibs/react-hooks-lib'
 import {Txt} from '../../alexlibs/mui-extension'
+import {useFetcher} from '../../alexlibs/react-hooks-lib'
 import {map} from '../../alexlibs/ts-utils'
-import {Skeleton} from '@mui/material'
-import {CountByDate, SimpleStat} from '../../client/stats/Stats'
 
 interface Props {
   name?: string
   title: string
   description?: string
   percentage?: boolean
-  count: () => Promise<SimpleStat>
+  count: () => Promise<number>
   curve?: () => Promise<CountByDate[]>
 }
 
@@ -45,7 +45,7 @@ export const Stat = React.memo(({name, count, curve, title, description, percent
             color: t => t.palette.primary.main,
           }}
         >
-          {map(_count.entity?.value as number | undefined, formatLargeNumber)} {percentage && '%'}
+          {map(_count.entity ?? undefined, formatLargeNumber)} {percentage && '%'}
         </Txt>
 
         <Txt block bold>
