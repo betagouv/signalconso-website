@@ -36,6 +36,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 
+# will be generated each time the application is ran
+src/anomaly/yml/anomalies.json
+
 # Sentry
 .sentryclirc
 
