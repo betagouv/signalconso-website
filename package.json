@@ -7,7 +7,7 @@
   },
   "scripts": {
     "dev": "next dev -p 3001",
-    "build": "tsc --declaration && npm run generate-json && next build",
+    "build": "yarn generate-json && tsc --declaration  && next build",
     "start": "next start",
     "lint": "next lint",
     "test": "jest",
@@ -17,6 +17,7 @@
     "format": "npx prettier --write .",
     "checkformat": "npx prettier --check ."
   },
+  "heroku-run-build-script": true,
   "dependencies": {
     "@babel/runtime": "7.18.3",
     "@emotion/cache": "11.7.1",
@@ -64,8 +65,11 @@
     "@testing-library/user-event": "13.5.0",
     "@types/date-fns": "2.6.0",
     "@types/jest": "27.5.1",
+    "@types/js-yaml": "^4.0.5",
     "@types/lodash": "4.14.182",
+    "@types/lodash.uniqby": "^4.7.7",
     "@types/node": "16.11.6",
+    "@types/qs": "^6.9.7",
     "@types/randomstring": "1.1.8",
     "@types/react": "17.0.33",
     "@types/react-dom": "17.0.17",

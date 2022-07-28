@@ -2,7 +2,7 @@ import fs from 'fs'
 import path from 'path'
 import yaml from 'js-yaml'
 import * as yamlImport from 'yaml-import'
-import {checkAnomaliesJson} from './checkAnomaliesJson'
+import {checkAnomaliesYaml} from './checkAnomaliesJson'
 
 const files = [
   {
@@ -25,12 +25,17 @@ const addUniqueId = (obj: any, depth = 0, prefix?: string) => {
 const root = path.join(__dirname, '..', 'yml')
 files.forEach(file => {
   const tmpFile = path.join(root, 'tmp.yml')
-  yamlImport.write(path.join(root, file.input), tmpFile)
-  const obj = yaml.load(fs.readFileSync(tmpFile, {encoding: 'utf-8'}))
+  const ymlFileRoot = path.join(root, file.input)
+  console.log(`Reading YAML and resolving imports from ${ymlFileRoot}`)
+  yamlImport.write(ymlFileRoot, tmpFile)
+  const obj = yaml.load(fs.readFileSync(tmpFile, {encoding: 'utf-8'})) as any
   fs.unlinkSync(tmpFile)
   // const version = '1'
   // obj.version = version
+  checkAnomaliesYaml(obj)
+  console.log(`The YAML is valid`)
   addUniqueId(obj.list)
-  checkAnomaliesJson(obj)
-  fs.writeFileSync(path.join(root, file.output), JSON.stringify(obj, null, 2))
+  const outputFile = path.join(root, file.output)
+  console.log(`Generating JSON file ${outputFile}`)
+  fs.writeFileSync(outputFile, JSON.stringify(obj, null, 2))
 })
