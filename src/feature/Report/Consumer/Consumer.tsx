@@ -30,6 +30,7 @@ interface ConsumerForm {
   email: string
   contactAgreement?: boolean
   phone?: string
+  referenceNumber?: string
   gender?: Gender
 }
 
@@ -149,6 +150,7 @@ export const _Consumer = ({
             <Row icon="phone">
               <FormLayout label={m.phoneOptional}>
                 <ScInput
+                  placeholder="ex : 0612345678"
                   fullWidth
                   defaultValue={draft.consumer?.phone ?? ''}
                   {...getErrors('phone')}
@@ -159,6 +161,22 @@ export const _Consumer = ({
               </FormLayout>
             </Row>
           )}
+          {}
+          <Row icon="receipt">
+            <FormLayout label="Numéro de dossier (optionnel)">
+              <Txt color="hint">
+                Afin de faciliter le traitement de votre signalement, veuillez renseigner la référence de votre dossier. Ex :
+                numéro de billet, de réservation, de facture, de contrat, de client, etc.
+              </Txt>
+              <ScInput
+                placeholder="ex : ZYX987654321"
+                fullWidth
+                defaultValue={draft.consumer?.referenceNumber ?? ''}
+                {...getErrors('referenceNumber')}
+                {..._form.register('referenceNumber')}
+              />
+            </FormLayout>
+          </Row>
           {showContactAgreement && (
             <Row icon="https">
               <Controller

@@ -23,6 +23,7 @@ export interface Report {
   lastName: string
   email: string
   consumerPhone?: string
+  consumerReferenceNumber?: string
   employeeConsumer: boolean
   contactAgreement: boolean
   creationDate: Date

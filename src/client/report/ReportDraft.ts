@@ -14,6 +14,7 @@ export interface ReportDraftConsumer {
   lastName: string
   email: string
   phone?: string
+  referenceNumber?: string
   gender?: Gender
 }
 
@@ -110,6 +111,7 @@ export class ReportDraft {
       lastName: draft.consumer.lastName,
       email: draft.consumer.email,
       consumerPhone: draft.consumer.phone,
+      consumerReferenceNumber: draft.consumer.referenceNumber,
       fileIds: draft.uploadedFiles?.map(file => file.id) ?? [],
       companyName: draft.companyDraft.name,
       companyAddress: draft.companyDraft.address,

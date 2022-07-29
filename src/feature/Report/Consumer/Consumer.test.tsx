@@ -12,6 +12,7 @@ class Fixture {
     lastName: 'Fraser',
     email: 'mat.fraser@signalconso.fr',
     phone: '0987654321',
+    referenceNumber: 'X8910H4LLIUK',
     gender: undefined,
   }
 }
@@ -102,6 +103,9 @@ describe('Consumer', () => {
       fireEvent.change(app.container.querySelector('[name=firstName]')!, {target: {value: Fixture.consumer.firstName}})
       fireEvent.change(app.container.querySelector('[name=lastName]')!, {target: {value: Fixture.consumer.lastName}})
       fireEvent.change(app.container.querySelector('[name=phone]')!, {target: {value: Fixture.consumer.phone}})
+      fireEvent.change(app.container.querySelector('[name=referenceNumber]')!, {
+        target: {value: Fixture.consumer.referenceNumber},
+      })
       fireEvent.change(app.container.querySelector('[name=email]')!, {target: {value: Fixture.consumer.email}})
 
       submit()
