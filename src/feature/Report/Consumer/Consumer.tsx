@@ -161,7 +161,6 @@ export const _Consumer = ({
               </FormLayout>
             </Row>
           )}
-          {}
           <Row icon="receipt">
             <FormLayout label={m.referenceNumberOptional}>
               <Txt color="hint">{m.referenceNumberDesc}</Txt>
