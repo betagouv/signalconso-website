@@ -41,12 +41,6 @@ export class ReportDraft2 {
     return Object.keys(details)
       .filter(_ => !isSpecifyInputName(_))
       .map(index => {
-        console.log('---------BEFORE-------------')
-        console.log(details)
-        console.log(inputs)
-        console.log(+index)
-        console.log(inputs)
-        console.log('---------AFTER-------------')
         const label = mapLabel(inputs[+index].label)
         const value = fromNullable(details[index])
           .map(v =>
