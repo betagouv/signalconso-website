@@ -64,6 +64,7 @@ export const Problem = ({anomaly}: Props) => {
       copy.subcategories = report.subcategories ?? []
       copy.subcategories.length = index
       copy.subcategories[index] = subcategory
+      copy.details = {}
       copy.subcategories = [...copy.subcategories]
       copy.tags = copy.tags ? copy.tags.filter(_ => _ !== ReportTag.Internet) : undefined
       copy.companyKind = undefined

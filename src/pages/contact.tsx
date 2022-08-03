@@ -39,7 +39,9 @@ const Contact = () => {
         </a>
         .
         <br />
-        Notre équipe technique essayera de vous répondre le plus vite possible !
+        <br />
+        Cette adresse courriel n'est pas destinée au dépôt de votre signalement qui ne pourra alors être exploité. Tout
+        signalement doit exclusivement être déposé en vous rendant sur la page d'accueil du site.
       </p>
     </Page>
   )
