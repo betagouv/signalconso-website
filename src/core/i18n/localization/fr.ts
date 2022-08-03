@@ -107,7 +107,7 @@ export const fr = {
     phonePlaceholder: 'ex : 0612345678',
     referenceNumberOptional: 'Numéro de référence (optionnel)',
     referenceNumberDesc:
-      'Précisez la référence de votre dossier. Ex : numéro de billet, ou de réservation, de facture, de contrat, de client, ...',
+      'Afin de faciliter le traitement de votre signalement, précisez la référence de votre dossier. Ex : numéro de billet, ou de réservation, de facture, de contrat, de client, ...',
     referenceNumberPlaceholder: 'ex : ZYX987654321',
     genderOptional: 'Civilité (optionnel)',
     value: 'Value',
