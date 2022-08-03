@@ -150,7 +150,7 @@ export const _Consumer = ({
             <Row icon="phone">
               <FormLayout label={m.phoneOptional}>
                 <ScInput
-                  placeholder="ex : 0612345678"
+                  placeholder={m.phonePlaceholder}
                   fullWidth
                   defaultValue={draft.consumer?.phone ?? ''}
                   {...getErrors('phone')}
@@ -163,13 +163,10 @@ export const _Consumer = ({
           )}
           {}
           <Row icon="receipt">
-            <FormLayout label="Numéro de dossier (optionnel)">
-              <Txt color="hint">
-                Pour faciliter la réponse de l'entreprise, précisez la référence de votre dossier. Ex : numéro de billet, ou de
-                réservation, de facture, de contrat, de client, ...
-              </Txt>
+            <FormLayout label={m.referenceNumberOptional}>
+              <Txt color="hint">{m.referenceNumberDesc}</Txt>
               <ScInput
-                placeholder="ex : ZYX987654321"
+                placeholder={m.referenceNumberPlaceholder}
                 fullWidth
                 defaultValue={draft.consumer?.referenceNumber ?? ''}
                 {...getErrors('referenceNumber')}
