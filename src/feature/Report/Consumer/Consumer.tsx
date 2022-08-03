@@ -175,7 +175,7 @@ export const _Consumer = ({
             </FormLayout>
           </Row>
           {showContactAgreement && (
-            <Row icon="https">
+            <Row icon="https" sx={{mt: 3}}>
               <Controller
                 control={_form.control}
                 name="contactAgreement"
