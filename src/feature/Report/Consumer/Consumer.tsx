@@ -169,7 +169,9 @@ export const _Consumer = ({
                 fullWidth
                 defaultValue={draft.consumer?.referenceNumber ?? ''}
                 {...getErrors('referenceNumber')}
-                {..._form.register('referenceNumber')}
+                {..._form.register('referenceNumber', {
+                  maxLength: {value: 80, message: m.atMost80Chars},
+                })}
               />
             </FormLayout>
           </Row>
