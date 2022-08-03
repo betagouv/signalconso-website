@@ -170,7 +170,7 @@ export const _Consumer = ({
                 defaultValue={draft.consumer?.referenceNumber ?? ''}
                 {...getErrors('referenceNumber')}
                 {..._form.register('referenceNumber', {
-                  maxLength: {value: 80, message: m.atMost80Chars},
+                  maxLength: {value: 50, message: m.atMost50Chars},
                 })}
               />
             </FormLayout>

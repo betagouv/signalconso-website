@@ -143,7 +143,7 @@ export const fr = {
     createMyAccount: 'Créer mon compte',
     invalidEmail: 'Veuillez utiliser une adresse email valide et sans accents',
     invalidPhone: 'Téléphone invalide',
-    atMost80Chars: '80 caractères maximum',
+    atMost50Chars: '50 caractères maximum',
     firstName: 'Prénom',
     lastName: 'Nom',
     addCompany: `Enregister l'entreprise`,
