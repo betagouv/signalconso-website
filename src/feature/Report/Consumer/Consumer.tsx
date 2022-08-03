@@ -165,8 +165,8 @@ export const _Consumer = ({
           <Row icon="receipt">
             <FormLayout label="Numéro de dossier (optionnel)">
               <Txt color="hint">
-                Afin de faciliter le traitement de votre signalement, veuillez renseigner la référence de votre dossier. Ex :
-                numéro de billet, de réservation, de facture, de contrat, de client, etc.
+                Pour faciliter la réponse de l'entreprise, précisez la référence de votre dossier. Ex : numéro de billet, ou de
+                réservation, de facture, de contrat, de client, ...
               </Txt>
               <ScInput
                 placeholder="ex : ZYX987654321"
