@@ -30,6 +30,7 @@ interface ConsumerForm {
   email: string
   contactAgreement?: boolean
   phone?: string
+  referenceNumber?: string
   gender?: Gender
 }
 
@@ -149,6 +150,7 @@ export const _Consumer = ({
             <Row icon="phone">
               <FormLayout label={m.phoneOptional}>
                 <ScInput
+                  placeholder={m.phonePlaceholder}
                   fullWidth
                   defaultValue={draft.consumer?.phone ?? ''}
                   {...getErrors('phone')}
@@ -159,8 +161,22 @@ export const _Consumer = ({
               </FormLayout>
             </Row>
           )}
+          <Row icon="receipt">
+            <FormLayout label={m.referenceNumberOptional}>
+              <Txt color="hint">{m.referenceNumberDesc}</Txt>
+              <ScInput
+                placeholder={m.referenceNumberPlaceholder}
+                fullWidth
+                defaultValue={draft.consumer?.referenceNumber ?? ''}
+                {...getErrors('referenceNumber')}
+                {..._form.register('referenceNumber', {
+                  maxLength: {value: 50, message: m.atMost50Chars},
+                })}
+              />
+            </FormLayout>
+          </Row>
           {showContactAgreement && (
-            <Row icon="https">
+            <Row icon="https" sx={{mt: 3}}>
               <Controller
                 control={_form.control}
                 name="contactAgreement"

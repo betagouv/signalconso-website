@@ -107,6 +107,7 @@ export const _Confirmation = ({draft, anomaly}: {anomaly: Pick<Anomaly, 'sprite'
             </Row>
             <Row icon="email">{draft.consumer.email}</Row>
             {draft.consumer.phone && <Row icon="phone">{draft.consumer.phone}</Row>}
+            {draft.consumer.referenceNumber && <Row icon="receipt">{draft.consumer.referenceNumber}</Row>}
             {ReportDraft.isTransmittableToPro(draft) && (
               <Row icon="https">
                 {m.contactAgreement}:&nbsp;
