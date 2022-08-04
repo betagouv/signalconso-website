@@ -1,18 +1,14 @@
-import {Page} from 'shared/Page/Page'
-import {GetStaticProps} from 'next'
-import {apiSdk} from 'core/apiSdk'
+import {Box, Checkbox, Icon, Radio, useTheme} from '@mui/material'
 import {sortBy} from 'core/lodashNamedExport'
-import {serializeJsonForStupidNextJs} from 'core/helper/utils'
-import Head from 'next/head'
 import {pageDefinitions} from 'core/pageDefinition'
-import {Box, Checkbox, Chip, Icon, Radio, useTheme} from '@mui/material'
-import {useEffect, useState} from 'react'
-import {Txt} from '../alexlibs/mui-extension'
-import {IconBtn} from '../alexlibs/mui-extension'
-import {ScButton} from 'shared/Button/Button'
-import {fnSwitch} from '../alexlibs/ts-utils'
 import {styleUtils} from 'core/theme/theme'
-import {AnomalyClient} from '../anomaly/AnomalyClient'
+import Head from 'next/head'
+import {useEffect, useState} from 'react'
+import {ScButton} from 'shared/Button/Button'
+import {Page} from 'shared/Page/Page'
+import {IconBtn, Txt} from '../alexlibs/mui-extension'
+import {fnSwitch} from '../alexlibs/ts-utils'
+import {allAnomalies, instanceOfAnomaly, instanceOfSubcategoryInformation, instanceOfSubcategoryInput} from '../anomaly/Anomalies'
 import {
   Anomaly,
   DetailInputType,
@@ -22,23 +18,11 @@ import {
   SubcategoryInput,
 } from '../anomaly/Anomaly'
 
-export const getStaticProps: GetStaticProps = async context => {
-  const anomalies = await apiSdk.anomaly
-    .getAnomalies()
-    .then(res => res.filter(_ => !_.hidden))
-    .then(res => sortBy(res, _ => _.id))
-  return {
-    props: serializeJsonForStupidNextJs({
-      anomalies,
-    }),
-  }
-}
-
 const Node = ({anomaly, open}: {anomaly: Anomaly | Subcategory; open?: boolean}) => {
   const iconWidth = 40
   const iconMargin = 8
   const theme = useTheme()
-  const title = AnomalyClient.instanceOfAnomaly(anomaly) ? anomaly.category : anomaly.title
+  const title = instanceOfAnomaly(anomaly) ? anomaly.category : anomaly.title
   const [isOpen, setIsOpen] = useState(false)
   useEffect(() => {
     setIsOpen(!!open)
@@ -95,8 +79,8 @@ const Node = ({anomaly, open}: {anomaly: Anomaly | Subcategory; open?: boolean})
               </Box>
             ))}
           </Box>
-          {AnomalyClient.instanceOfSubcategoryInformation(anomaly) && <NodeInfo anomaly={anomaly} />}
-          {AnomalyClient.instanceOfSubcategoryInput(anomaly) && <NodeInput anomaly={anomaly} />}
+          {instanceOfSubcategoryInformation(anomaly) && <NodeInfo anomaly={anomaly} />}
+          {instanceOfSubcategoryInput(anomaly) && <NodeInput anomaly={anomaly} />}
         </Box>
         {isOpen && anomaly.subcategories && (
           <Box
@@ -206,9 +190,13 @@ const NodeInfo = ({anomaly}: {anomaly: SubcategoryInformation}) => {
   )
 }
 
-const Arborescence = ({anomalies}: {anomalies: Anomaly[]}) => {
+const Arborescence = () => {
   const [openAll, setOpenAll] = useState(false)
   const [disabled, setDisabled] = useState(false)
+  const anomalies = sortBy(
+    allAnomalies.filter(_ => !_.hidden),
+    _ => _.id,
+  )
   return (
     <Page>
       <Head>

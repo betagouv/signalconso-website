@@ -1,25 +1,19 @@
-import {useEffect, useState} from 'react'
-import {_Confirmation} from '../Report/Confirmation/Confirmation'
-import {ReportStep} from 'core/reportStep'
-import {apiSdk} from 'core/apiSdk'
 import {useTheme} from '@mui/material'
+import {allAnomalies} from 'anomaly/Anomalies'
+import {ReportStep} from 'core/reportStep'
 import {styleUtils} from 'core/theme/theme'
-import {Fixture} from '../../test/fixture'
-import {ReportDraft} from '../../client/report/ReportDraft'
+import {useEffect, useState} from 'react'
 import {Anomaly} from '../../anomaly/Anomaly'
+import {ReportDraft} from '../../client/report/ReportDraft'
+import {Fixture} from '../../test/fixture'
+import {_Confirmation} from '../Report/Confirmation/Confirmation'
 
 export const PlaygroundConfirmation = () => {
   const [draft, setDraft] = useState<ReportDraft>(Fixture.genDraftReport(ReportStep.Confirmation) as ReportDraft)
   const [anomaly, setAnomaly] = useState<Anomaly | undefined>()
   const theme = useTheme()
   useEffect(() => {
-    apiSdk.anomaly
-      .getAnomalies()
-      .then(anomalies => {
-        console.log(anomalies)
-        return anomalies.find(_ => _.category === draft.category)!
-      })
-      .then(setAnomaly)
+    setAnomaly(allAnomalies.find(_ => _.category === draft.category)!)
   }, [])
   return (
     <>

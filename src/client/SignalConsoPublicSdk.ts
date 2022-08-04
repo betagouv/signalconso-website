@@ -1,7 +1,6 @@
 import {PublicCompanyClient} from './company/PublicCompanyClient'
 import {PublicReportClient} from './report/PublicReportClient'
 import {PublicStatsClient} from './stats/PublicStatsClient'
-import {AnomalyClient} from '../anomaly/AnomalyClient'
 import {ApiClientApi} from './ApiClient'
 import {PublicConsumerEmailValidationClient} from './consumer-email-validation/PublicConsumerEmailValidationClient'
 import {PublicConstantClient} from './constant/PublicConstantClient'
@@ -15,7 +14,6 @@ export class SignalConsoPublicSdk {
   readonly stats: PublicStatsClient
   readonly constant: PublicConstantClient
   readonly document: FileClient
-  readonly anomaly: AnomalyClient
   readonly rating: RatingClient
   readonly consumerEmail: PublicConsumerEmailValidationClient
 
@@ -26,7 +24,6 @@ export class SignalConsoPublicSdk {
     this.stats = new PublicStatsClient(this.client)
     this.constant = new PublicConstantClient(this.client)
     this.document = new FileClient(this.client)
-    this.anomaly = new AnomalyClient(this.client)
     this.rating = new RatingClient(this.client)
     this.consumerEmail = new PublicConsumerEmailValidationClient(this.client)
   }

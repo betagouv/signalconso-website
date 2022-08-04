@@ -1,5 +1,5 @@
 import {GetStaticPaths, GetStaticProps} from 'next'
-import {anomalies} from '../anomaly/AnomalyClient'
+import {allAnomalies} from '../anomaly/Anomalies'
 import {serializeJsonForStupidNextJs} from 'core/helper/utils'
 import {useReportFlowContext} from 'feature/Report/ReportFlowContext'
 import React, {useMemo} from 'react'
@@ -17,14 +17,14 @@ import {Anomaly} from '../anomaly/Anomaly'
 import {undefinedIfNull} from 'client/helper/Utils'
 
 export const getStaticPaths: GetStaticPaths = () => {
-  const paths = anomalies.map(_ => ({
+  const paths = allAnomalies.map(_ => ({
     params: {reportpath: _.path},
   }))
   return {paths, fallback: false}
 }
 
 export const getStaticProps: GetStaticProps = ({params}) => {
-  const anomaly = anomalies.find(_ => _.path === params!.reportpath)
+  const anomaly = allAnomalies.find(_ => _.path === params!.reportpath)
   return {
     props: serializeJsonForStupidNextJs({anomaly}),
   }
