@@ -7,7 +7,7 @@ import {Box, Chip, Icon} from '@mui/material'
 import {AnomalyImage} from 'shared/AnomalyCard/AnomalyImage'
 import {AddressComponent} from 'shared/Address/Address'
 import {StepperActions} from 'shared/Stepper/StepperActions'
-import {ReportDraft2} from 'core/model/ReportDraft'
+import {ReportDraft2} from 'core/model/ReportDraft2'
 import {ReportFiles} from 'shared/UploadFile/ReportFiles'
 import {useToast} from 'core/toast'
 import {Row} from 'shared/Row/Row'
@@ -17,22 +17,27 @@ import {EventCategories, ReportEventActions} from 'core/analytic/analytic'
 import {FileOrigin} from '../../../client/file/UploadedFile'
 import {ReportDraft} from '../../../client/report/ReportDraft'
 import {Anomaly} from '../../../anomaly/Anomaly'
+import {findAnomalyByCategory} from 'anomaly/Anomalies'
 
 export const Confirmation = ({}: {}) => {
   const _reportFlow = useReportFlowContext()
   const draft = _reportFlow.reportDraft as ReportDraft2
   const parsedDraft = ReportDraft2.toReportDraft(draft)
-  return <_Confirmation anomaly={draft.anomaly} draft={parsedDraft} />
+  return <_Confirmation draft={parsedDraft} />
 }
 
-export const _Confirmation = ({draft, anomaly}: {anomaly: Pick<Anomaly, 'sprite'>; draft: ReportDraft}) => {
+export const _Confirmation = ({draft}: {draft: ReportDraft}) => {
   const {m} = useI18n()
   const {toastError} = useToast()
   const _reportFlow = useReportFlowContext()
   const _analytic = useAnalyticContext()
 
   useEffect(_reportFlow.createReport.clearCache, [])
-
+  const {category} = draft
+  const anomaly = findAnomalyByCategory(category)
+  if (!anomaly) {
+    throw new Error(`Cannot find Anomaly for category ${category}`)
+  }
   return (
     <Animate autoScrollTo={true} animate={true}>
       <div>

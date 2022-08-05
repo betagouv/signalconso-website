@@ -4,7 +4,7 @@
 import {fireEvent, render, ScRenderResult} from '../../../test/test-utils'
 import React from 'react'
 import {_Company} from './Company'
-import {ReportDraft2} from 'core/model/ReportDraft'
+import {ReportDraft2} from 'core/model/ReportDraft2'
 import {IdentifyBy} from './CompanyIdentifyBy'
 import {fnSwitch} from '../../../alexlibs/ts-utils'
 import {Fixture} from '../../../test/fixture'
