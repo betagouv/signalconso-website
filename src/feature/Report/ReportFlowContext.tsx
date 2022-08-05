@@ -1,6 +1,6 @@
 import React, {Dispatch, ReactNode, SetStateAction, useContext} from 'react'
 import {usePersistentState} from '../../alexlibs/react-persistent-state'
-import {ReportDraft2} from 'core/model/ReportDraft'
+import {ReportDraft2} from 'core/model/ReportDraft2'
 import {useFetcher} from '../../alexlibs/react-hooks-lib'
 import {useApiSdk} from 'core/context/ApiSdk'
 import {UseFetcher} from '../../alexlibs/react-hooks-lib'
