@@ -1,21 +1,23 @@
 import {Box, Card, Slide} from '@mui/material'
-import {useReportFlowContext} from '../Report/ReportFlowContext'
-import {AnomalyImage} from 'shared/AnomalyCard/AnomalyImage'
-import {useMemo} from 'react'
-import {useI18n} from 'core/i18n'
-import {Txt} from '../../alexlibs/mui-extension'
-import {ScButton} from 'shared/Button/Button'
-import Link from 'next/link'
-import {ReportStepHelper} from 'core/reportStep'
-import {StepperHeader} from 'shared/Stepper/StepperHeader'
 import {findAnomalyByCategory} from 'anomaly/Anomalies'
+import {useI18n} from 'core/i18n'
+import {ReportStepHelper} from 'core/reportStep'
+import Link from 'next/link'
+import {useMemo} from 'react'
+import {AnomalyImage} from 'shared/AnomalyCard/AnomalyImage'
+import {ScButton} from 'shared/Button/Button'
+import {StepperHeader} from 'shared/Stepper/StepperHeader'
+import {Txt} from '../../alexlibs/mui-extension'
+import {useReportFlowContext} from '../Report/ReportFlowContext'
 
 export const ReportStartedAlert = () => {
   const _report = useReportFlowContext()
-  const {category} = _report.reportDraft
   const currentStep = useMemo(() => ReportStepHelper.reportCurrentStep(_report.reportDraft), [_report.reportDraft])
   const {m} = useI18n()
-  if (category) {
+  const draft = _report.reportDraft
+  const {category} = draft
+  const isAdvancedEnoughToDisplay = (draft.subcategories ?? []).length > 0
+  if (category && isAdvancedEnoughToDisplay) {
     const anomaly = findAnomalyByCategory(category)
     if (!anomaly) {
       throw new Error(`Cannot find Anomaly for category ${category}`)
