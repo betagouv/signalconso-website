@@ -47,12 +47,10 @@ export const Problem = ({anomaly}: Props) => {
 
   const submit = (next: () => void) => {
     setReportDraft(draft => {
-      const {subcategories, ..._anomaly} = anomaly
       return {
         ...draft,
         tags: filterTags(tagsFromSelected, draft),
         companyKind: companyKindFromSelected ?? draft.companyKind ?? CompanyKinds.SIRET,
-        anomaly: _anomaly,
       }
     })
     next()

@@ -8,13 +8,18 @@ import {ScButton} from 'shared/Button/Button'
 import Link from 'next/link'
 import {ReportStepHelper} from 'core/reportStep'
 import {StepperHeader} from 'shared/Stepper/StepperHeader'
+import {findAnomalyByCategory} from 'anomaly/Anomalies'
 
 export const ReportStartedAlert = () => {
   const _report = useReportFlowContext()
-  const hasStoredReport = useMemo(() => !!_report.reportDraft.anomaly, [_report.reportDraft])
+  const {category} = _report.reportDraft
   const currentStep = useMemo(() => ReportStepHelper.reportCurrentStep(_report.reportDraft), [_report.reportDraft])
   const {m} = useI18n()
-  if (hasStoredReport && _report.reportDraft.anomaly) {
+  if (category) {
+    const anomaly = findAnomalyByCategory(category)
+    if (!anomaly) {
+      throw new Error(`Cannot find Anomaly for category ${category}`)
+    }
     return (
       <Slide in={true} direction="up">
         <Card
@@ -30,7 +35,7 @@ export const ReportStartedAlert = () => {
             position: 'fixed',
           }}
         >
-          <AnomalyImage anomaly={_report.reportDraft.anomaly} scale={0.8} sx={{mr: 1}} />
+          <AnomalyImage anomaly={anomaly} scale={0.8} sx={{mr: 1}} />
           <Box>
             <Box sx={{display: 'flex', alignItems: 'center'}}>
               <Txt size="big" bold>
@@ -38,7 +43,7 @@ export const ReportStartedAlert = () => {
               </Txt>
             </Box>
             <Txt block color="hint">
-              {_report.reportDraft.anomaly.category}
+              {category}
             </Txt>
             <StepperHeader
               sx={{my: 1.5, mx: '-22px'}}
@@ -52,7 +57,7 @@ export const ReportStartedAlert = () => {
               <ScButton size="small" color="error" sx={{mr: 1}} onClick={_report.clearReportDraft}>
                 {m.delete}
               </ScButton>
-              <Link href={_report.reportDraft.anomaly.path}>
+              <Link href={anomaly.path}>
                 <ScButton size="small" color="primary" variant="contained">
                   {m.continue}
                 </ScButton>
