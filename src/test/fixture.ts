@@ -6,7 +6,7 @@ import {FileOrigin} from '../client/file/UploadedFile'
 import {ReportDraft, ReportDraftConsumer} from '../client/report/ReportDraft'
 import {Information, ReportTag, Subcategory} from '../anomaly/Anomaly'
 import {Address} from '../model'
-import {anomalies} from 'anomaly/AnomalyClient'
+import {allAnomalies} from 'anomaly/Anomalies'
 
 export class Fixture {
   private static readonly lastNames = ['Doe', 'Durand', 'Dupont']
@@ -80,7 +80,7 @@ export class Fixture {
     const subcategories = [Fixture.genSubcategory(), Fixture.genSubcategory()]
     return {
       id: randomstring.generate(),
-      category: Fixture.oneOf(anomalies.filter(_ => !_.information).map(_ => _.category)),
+      category: Fixture.oneOf(allAnomalies.filter(_ => !_.information).map(_ => _.category)),
       subcategories: [Fixture.genSubcategory(), Fixture.genSubcategory()],
       companyId: randomstring.generate(),
       companyName: randomstring.generate({capitalization: 'lowercase', charset: 'alphabetic'}),
@@ -107,7 +107,7 @@ export class Fixture {
     const stepOrder: {[key in ReportStep]: (_: Partial<ReportDraft>) => Partial<ReportDraft>} = {
       [ReportStep.Problem]: _ => ({
         ..._,
-        category: Fixture.oneOf(anomalies.filter(_ => !_.information).map(_ => _.category)),
+        category: Fixture.oneOf(allAnomalies.filter(_ => !_.information).map(_ => _.category)),
       }),
       [ReportStep.Details]: _ => ({
         ..._,
