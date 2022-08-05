@@ -3,6 +3,10 @@ import anomaliesJSON from './yml/anomalies.json'
 
 export const allAnomalies = anomaliesJSON.list as Anomaly[]
 
+export const findAnomalyByCategory = (category: string): Anomaly | undefined => {
+  return allAnomalies.find(_ => _.category == category)
+}
+
 export const instanceOfSubcategoryInput = (_?: Category): _ is SubcategoryInput => {
   return !!(_ as SubcategoryInput)?.detailInputs
 }
