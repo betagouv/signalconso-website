@@ -6,7 +6,7 @@ import {Problem} from './Problem'
 import {AccessReportFlow, DummyStepperProvider, fireEvent, render, ScRenderResult} from 'test/test-utils'
 import '@testing-library/jest-dom'
 import {fnSwitch} from '../../../alexlibs/ts-utils'
-import {ReportDraft2} from 'core/model/ReportDraft'
+import {ReportDraft2} from 'core/model/ReportDraft2'
 import {Fixture} from '../../../test/fixture'
 import {Anomaly, CompanyKinds, ReportTag} from '../../../anomaly/Anomaly'
 
@@ -26,7 +26,6 @@ class ProblemFixture {
   ]
   static readonly anomaly: Anomaly = {
     id: '1',
-    categoryId: '',
     category: '',
     title: '',
     path: 'myPath',

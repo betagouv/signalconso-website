@@ -24,7 +24,6 @@ const baseCategorySpec: ObjectSpec = {
 
 const anomalySpec: ObjectSpec = {
   category: _ => _.assertIsString(),
-  categoryId: _ => _.assertIsString(),
   seoDescription: _ => _.ifDefined()?.ifNotNull()?.assertIsString(),
   path: _ => _.assertIsString(),
   description: _ => _.ifDefined()?.assertIsString(),
