@@ -1,42 +1,38 @@
-import {Box, Icon} from '@mui/material'
-import {undefinedIfNull} from 'client/helper/Utils'
-import {ReportStepHelper} from 'core/reportStep'
-import {siteMap} from 'core/siteMap'
-import {styleUtils} from 'core/theme/theme'
-import {useReportFlowContext} from 'feature/Report/ReportFlowContext'
 import {GetStaticPaths, GetStaticProps} from 'next'
-import dynamic from 'next/dynamic'
-import Head from 'next/head'
-import Link from 'next/link'
-import {useMemo} from 'react'
+import {apiSdk} from 'core/apiSdk'
+import {serializeJsonForStupidNextJs} from 'core/helper/utils'
+import {useReportFlowContext} from 'feature/Report/ReportFlowContext'
+import React, {useMemo} from 'react'
 import {Page} from 'shared/Page/Page'
+import {ReportStepHelper} from 'core/reportStep'
+import {Box, Icon} from '@mui/material'
+import {styleUtils} from 'core/theme/theme'
 import {IconBtn} from '../alexlibs/mui-extension'
-import {allAnomalies} from '../anomaly/Anomalies'
-import {Anomaly} from '../anomaly/Anomaly'
+import Link from 'next/link'
+import {siteMap} from 'core/siteMap'
+import Head from 'next/head'
+import dynamic from 'next/dynamic'
 import {ReportFlow} from '../feature/Report/ReportFlow'
+import {Anomaly} from '../anomaly/Anomaly'
+import {undefinedIfNull} from 'client/helper/Utils'
 
-export const getStaticPaths: GetStaticPaths = () => {
-  const paths = allAnomalies.map(_ => ({
+export const getStaticPaths: GetStaticPaths = async () => {
+  const anomalies = await apiSdk.anomaly.getAnomalies()
+  const paths = anomalies.map(_ => ({
     params: {reportpath: _.path},
   }))
   return {paths, fallback: false}
 }
 
-export const getStaticProps: GetStaticProps = ({params = {}}) => {
-  const reportPath = params.reportpath
-  if (typeof reportPath !== 'string') {
-    throw new Error(`Unexpected type of reportPath : ${typeof reportPath}`)
-  }
+export const getStaticProps: GetStaticProps = async ({params}) => {
+  const anomaly = await apiSdk.anomaly.getAnomalies().then(res => res.find(_ => _.path === params!.reportpath))
+
   return {
-    props: {reportPath},
+    props: serializeJsonForStupidNextJs({anomaly}),
   }
 }
 
-const AnomalyPage = ({reportPath}: {reportPath: string}) => {
-  const anomaly = allAnomalies.find(_ => _.path === reportPath)
-  if (!anomaly) {
-    throw new Error(`Cannot find anomaly for reportPath : ${reportPath}`)
-  }
+const AnomalyPage = ({anomaly}: {anomaly: Anomaly}) => {
   return (
     <Page width={624}>
       <Head>
