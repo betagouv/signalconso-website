@@ -33,12 +33,7 @@ const jsonAwareStorage = {
 
   clear: (key: string): void => {
     if (!isServerSide()) {
-      // All localStorage calls may throw an error, if the browser is configured to refuse it
-      try {
-        localStorage.removeItem(key)
-      } catch (err) {
-        console.error(err)
-      }
+      localStorage.removeItem(key)
     }
   },
 }
