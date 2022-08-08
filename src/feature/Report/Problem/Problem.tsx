@@ -2,7 +2,7 @@ import {appConfig} from 'conf/appConfig'
 import {EventCategories, ReportEventActions} from 'core/analytic/analytic'
 import {useAnalyticContext} from 'core/analytic/AnalyticContext'
 import {useI18n} from 'core/i18n'
-import {ReportDraft2} from 'core/model/ReportDraft2'
+import {ReportDraft2} from 'core/model/ReportDraft'
 import {useEffect, useMemo} from 'react'
 import {StepperActions} from 'shared/Stepper/StepperActions'
 import {instanceOfSubcategoryInformation} from '../../../anomaly/Anomalies'
@@ -47,10 +47,12 @@ export const Problem = ({anomaly}: Props) => {
 
   const submit = (next: () => void) => {
     setReportDraft(draft => {
+      const {subcategories, ..._anomaly} = anomaly
       return {
         ...draft,
         tags: filterTags(tagsFromSelected, draft),
         companyKind: companyKindFromSelected ?? draft.companyKind ?? CompanyKinds.SIRET,
+        anomaly: _anomaly,
       }
     })
     next()
