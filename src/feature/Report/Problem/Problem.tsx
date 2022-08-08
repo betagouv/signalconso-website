@@ -1,18 +1,18 @@
+import React, {useEffect, useMemo} from 'react'
 import {appConfig} from 'conf/appConfig'
+import {useReportFlowContext} from '../ReportFlowContext'
+import {useSelectedSubcategoriesUtils} from './useSelectedSubcategoriesUtils'
+import {Step, Stepper} from './Stepper'
+import {ProblemSelect} from './ProblemSelect'
+import {StepperActions} from 'shared/Stepper/StepperActions'
+import {ProblemInformation} from './ProblemInformation'
+import {useI18n} from 'core/i18n'
+import {ProblemContratualDisputeWarnPanel} from './ProblemContratualDisputeWarnPanel'
 import {EventCategories, ReportEventActions} from 'core/analytic/analytic'
 import {useAnalyticContext} from 'core/analytic/AnalyticContext'
-import {useI18n} from 'core/i18n'
-import {ReportDraft2} from 'core/model/ReportDraft2'
-import {useEffect, useMemo} from 'react'
-import {StepperActions} from 'shared/Stepper/StepperActions'
-import {instanceOfSubcategoryInformation} from '../../../anomaly/Anomalies'
+import {ReportDraft2} from 'core/model/ReportDraft'
+import {AnomalyClient} from '../../../anomaly/AnomalyClient'
 import {Anomaly, CompanyKinds, ReportTag, Subcategory} from '../../../anomaly/Anomaly'
-import {useReportFlowContext} from '../ReportFlowContext'
-import {ProblemContratualDisputeWarnPanel} from './ProblemContratualDisputeWarnPanel'
-import {ProblemInformation} from './ProblemInformation'
-import {ProblemSelect} from './ProblemSelect'
-import {Step, Stepper} from './Stepper'
-import {useSelectedSubcategoriesUtils} from './useSelectedSubcategoriesUtils'
 
 interface Props {
   anomaly: Anomaly
@@ -47,10 +47,12 @@ export const Problem = ({anomaly}: Props) => {
 
   const submit = (next: () => void) => {
     setReportDraft(draft => {
+      const {subcategories, ..._anomaly} = anomaly
       return {
         ...draft,
         tags: filterTags(tagsFromSelected, draft),
         companyKind: companyKindFromSelected ?? draft.companyKind ?? CompanyKinds.SIRET,
+        anomaly: _anomaly,
       }
     })
     next()
@@ -99,7 +101,7 @@ export const Problem = ({anomaly}: Props) => {
       )}
       {isLastSubcategory &&
         reportDraft.subcategories &&
-        (instanceOfSubcategoryInformation(lastSubcategories) ? (
+        (AnomalyClient.instanceOfSubcategoryInformation(lastSubcategories) ? (
           <ProblemInformation
             anomaly={anomaly}
             subcategories={reportDraft.subcategories}

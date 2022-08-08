@@ -1,4 +1,4 @@
-import {ReportDraft2} from './model/ReportDraft2'
+import {ReportDraft2} from './model/ReportDraft'
 
 export enum ReportStep {
   Problem = 'problem',

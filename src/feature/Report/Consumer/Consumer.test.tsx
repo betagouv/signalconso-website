@@ -3,7 +3,7 @@
  */
 import {fireEvent, render, ScRenderResult, waitFor} from '../../../test/test-utils'
 import React from 'react'
-import {ReportDraft2} from 'core/model/ReportDraft2'
+import {ReportDraft2} from 'core/model/ReportDraft'
 import {_Consumer} from './Consumer'
 
 class Fixture {

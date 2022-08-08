@@ -10,6 +10,7 @@ import {Address} from '../../model'
 export type DetailInputValues2 = {[key: string]: string | string[]}
 
 export interface ReportDraft2 extends Omit<ReportDraft, 'details'> {
+  anomaly: Omit<Anomaly, 'subcategories'>
   details: DetailInputValues2
 }
 

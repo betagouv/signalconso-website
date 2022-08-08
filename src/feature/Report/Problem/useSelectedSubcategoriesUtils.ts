@@ -1,5 +1,5 @@
-import {instanceOfSubcategoryInformation} from 'anomaly/Anomalies'
 import {useMemo} from 'react'
+import {AnomalyClient} from '../../../anomaly/AnomalyClient'
 import {Category, Subcategory} from '../../../anomaly/Anomaly'
 
 export const useSelectedSubcategoriesUtils = (anomaly: Category, selectedSubCategories: Subcategory[]) => {
@@ -16,7 +16,7 @@ export const useSelectedSubcategoriesUtils = (anomaly: Category, selectedSubCate
   }, [lastSubcategories])
 
   const showEmployeeConsumer = useMemo(() => {
-    return !instanceOfSubcategoryInformation(lastSubcategories)
+    return !AnomalyClient.instanceOfSubcategoryInformation(lastSubcategories)
   }, [isLastSubcategory])
 
   const companyKindFromSelected = useMemo(() => {
