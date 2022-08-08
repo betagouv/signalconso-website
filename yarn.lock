@@ -3465,16 +3465,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"enhanced-resolve@npm:^5.7.0":
-  version: 5.10.0
-  resolution: "enhanced-resolve@npm:5.10.0"
-  dependencies:
-    graceful-fs: ^4.2.4
-    tapable: ^2.2.0
-  checksum: 0bb9830704db271610f900e8d79d70a740ea16f251263362b0c91af545576d09fe50103496606c1300a05e588372d6f9780a9bc2e30ce8ef9b827ec8f44687ff
-  languageName: node
-  linkType: hard
-
 "enquirer@npm:^2.3.5":
   version: 2.3.6
   resolution: "enquirer@npm:2.3.6"
@@ -4362,7 +4352,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"graceful-fs@npm:^4.1.6, graceful-fs@npm:^4.2.0, graceful-fs@npm:^4.2.4, graceful-fs@npm:^4.2.6, graceful-fs@npm:^4.2.9":
+"graceful-fs@npm:^4.1.6, graceful-fs@npm:^4.2.0, graceful-fs@npm:^4.2.6, graceful-fs@npm:^4.2.9":
   version: 4.2.10
   resolution: "graceful-fs@npm:4.2.10"
   checksum: 3f109d70ae123951905d85032ebeae3c2a5a7a997430df00ea30df0e3a6c60cf6689b109654d6fdacd28810a053348c4d14642da1d075049e6be1ba5216218da
@@ -6139,16 +6129,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"next-transpile-modules@npm:^9.0.0":
-  version: 9.0.0
-  resolution: "next-transpile-modules@npm:9.0.0"
-  dependencies:
-    enhanced-resolve: ^5.7.0
-    escalade: ^3.1.1
-  checksum: 9a5d86d80cedc2404b2b1d5bd4994f2f7bf60e5e20f24e8cc5cfec34da1418b4a439916f37a95ca336bcf6d81094c3647354ac6a0c6737b3df59e62b6380507d
-  languageName: node
-  linkType: hard
-
 "next@npm:12.1.6":
   version: 12.1.6
   resolution: "next@npm:12.1.6"
@@ -7465,7 +7445,6 @@ __metadata:
     lodash.throttle: ^4.1.1
     lodash.uniqby: 4.7.0
     next: 12.1.6
-    next-transpile-modules: ^9.0.0
     path: 0.12.7
     prettier: 2.7.1
     qs: 6.10.5
@@ -7884,13 +7863,6 @@ __metadata:
     string-width: ^4.2.3
     strip-ansi: ^6.0.1
   checksum: 5b07fe462ee03d2e1fac02cbb578efd2e0b55ac07e3d3db2e950aa9570ade5a4a2b8d3c15e9f25c89e4e50b646bc4269934601ee1eef4ca7968ad31960977690
-  languageName: node
-  linkType: hard
-
-"tapable@npm:^2.2.0":
-  version: 2.2.1
-  resolution: "tapable@npm:2.2.1"
-  checksum: 3b7a1b4d86fa940aad46d9e73d1e8739335efd4c48322cb37d073eb6f80f5281889bf0320c6d8ffcfa1a0dd5bfdbd0f9d037e252ef972aca595330538aac4d51
   languageName: node
   linkType: hard
 
