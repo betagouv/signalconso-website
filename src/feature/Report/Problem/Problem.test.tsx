@@ -26,6 +26,7 @@ class ProblemFixture {
   ]
   static readonly anomaly: Anomaly = {
     id: '1',
+    categoryId: '',
     category: '',
     title: '',
     path: 'myPath',
