@@ -2,6 +2,7 @@ import {LoadingButton} from '@mui/lab'
 import {Button, Dialog, DialogActions, DialogContent, DialogTitle, Icon, LinearProgress} from '@mui/material'
 import {useApiSdk} from 'core/context/ApiSdk'
 import {useI18n} from 'core/i18n'
+import {ValidationRejectReason} from 'model'
 import {useState} from 'react'
 import {Controller, useForm} from 'react-hook-form'
 import {ScButton} from 'shared/Button/Button'
@@ -31,6 +32,7 @@ export const ConsumerValidationDialog = ({loading, open, consumerEmail, onClose,
   const [disableResendButton, setDisableResendButton] = useState(false)
 
   const isEmailValid: boolean | undefined = _validateEmail.entity?.valid
+  const invalidEmailReason: ValidationRejectReason | undefined = _validateEmail.entity?.reason
 
   const onSubmitButtonClick = _form.handleSubmit(async form => {
     if (!isEmailValid) {
@@ -78,16 +80,9 @@ export const ConsumerValidationDialog = ({loading, open, consumerEmail, onClose,
         >
           {m.consumerEmailMayTakesTime}
         </Alert>
-        {_validateEmail.entity?.valid === false && (
+        {isEmailValid === false && (
           <Alert dense type="error" sx={{mb: 2}}>
-            {fnSwitch(
-              _validateEmail.entity.reason!,
-              {
-                ['TOO_MANY_ATTEMPTS']: m.consumerValidationCodeExpired,
-                ['INVALID_CODE']: m.consumerValidationCodeInvalid,
-              },
-              () => m.consumerValidationCodeExpired,
-            )}
+            {invalidEmailReason === 'TOO_MANY_ATTEMPTS' ? m.consumerValidationCodeExpired : m.consumerValidationCodeInvalid}
           </Alert>
         )}
         <Txt color="hint" block sx={{mb: 1}} dangerouslySetInnerHTML={{__html: m.consumerAskCodeDesc(consumerEmail)}} />
@@ -97,9 +92,7 @@ export const ConsumerValidationDialog = ({loading, open, consumerEmail, onClose,
             required: {value: true, message: m.required},
           }}
           control={_form.control}
-          render={({field}) => (
-            <InputValidationCode {...field} error={!!_form.formState.errors.code || _validateEmail.entity?.valid === false} />
-          )}
+          render={({field}) => <InputValidationCode {...field} error={!!_form.formState.errors.code || isEmailValid === false} />}
         />
       </DialogContent>
       <DialogActions>
