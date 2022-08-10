@@ -1,5 +1,5 @@
 import {last} from 'core/lodashNamedExport'
-import {AnomalyClient} from '../../../anomaly/AnomalyClient'
+import {instanceOfSubcategoryInput} from '../../../anomaly/Anomalies'
 import {DetailInput, DetailInputType, ReportTag, Subcategory} from '../../../anomaly/Anomaly'
 
 export class DraftReportDefaultInputs {
@@ -32,7 +32,7 @@ export const getDraftReportInputs = ({
 }): DetailInput[] => {
   const lastSubcategories = last(subcategories)
   const res: DetailInput[] = []
-  if (AnomalyClient.instanceOfSubcategoryInput(lastSubcategories)) {
+  if (instanceOfSubcategoryInput(lastSubcategories)) {
     res.push(...(lastSubcategories.detailInputs ?? []))
     if (!lastSubcategories.detailInputs?.some(_ => _.type === DetailInputType.TEXTAREA)) {
       res.push(DraftReportDefaultInputs.description(true))

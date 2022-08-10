@@ -1,28 +1,24 @@
-import type {GetStaticProps} from 'next'
-import {Theme} from '@mui/material/styles'
-import {IllustrationStepper} from 'shared/IllustrationStepper/StepIllustrations'
 import {Box, Divider, Grid} from '@mui/material'
-import {apiSdk} from 'core/apiSdk'
-import {AnomalyCard} from 'shared/AnomalyCard/AnomalyCard'
-import {serializeJsonForStupidNextJs} from 'core/helper/utils'
+import {Theme} from '@mui/material/styles'
 import {SxProps} from '@mui/system'
-import {ScButton} from 'shared/Button/Button'
-import {useI18n} from 'core/i18n'
+import {allAnomalies} from 'anomaly/Anomalies'
 import {Section} from 'core/component/Section'
-import {ReportStartedAlert} from 'feature/ReportStartedAlert/ReportStartedAlert'
+import {useI18n} from 'core/i18n'
 import {sortBy} from 'core/lodashNamedExport'
-import consumer from '../../public/image/illustrations/consumer.png'
-import report from '../../public/image/illustrations/report.png'
-import company from '../../public/image/illustrations/company.png'
-import dgccrf from '../../public/image/illustrations/dgccrf.png'
 import {useWindowWidth} from 'core/useWindowWidth'
-import {useRgpdBanner} from 'feature/RgpdBanner/RgpdBanner'
 import {InfoBanner} from 'feature/InfoBanner/InfoBanner'
-import * as smoothscroll from 'smoothscroll-polyfill'
-import * as React from 'react'
-import {useEffect} from 'react'
+import {ReportStartedAlert} from 'feature/ReportStartedAlert/ReportStartedAlert'
+import {useRgpdBanner} from 'feature/RgpdBanner/RgpdBanner'
 import Head from 'next/head'
-import {Anomaly} from '../anomaly/Anomaly'
+import {useEffect} from 'react'
+import {AnomalyCard} from 'shared/AnomalyCard/AnomalyCard'
+import {ScButton} from 'shared/Button/Button'
+import {IllustrationStepper} from 'shared/IllustrationStepper/StepIllustrations'
+import * as smoothscroll from 'smoothscroll-polyfill'
+import company from '../../public/image/illustrations/company.png'
+import consumer from '../../public/image/illustrations/consumer.png'
+import dgccrf from '../../public/image/illustrations/dgccrf.png'
+import report from '../../public/image/illustrations/report.png'
 
 const sxTitle: SxProps<Theme> = {
   fontSize: 24,
@@ -30,30 +26,17 @@ const sxTitle: SxProps<Theme> = {
   mt: 2,
 }
 
-export const getStaticProps: GetStaticProps = async context => {
-  const anomalies = await apiSdk.anomaly
-    .getAnomalies()
-    .then(res => res.filter(_ => !_.hidden))
-    .then(res => sortBy(res, _ => parseInt(_.id)))
-  return {
-    props: serializeJsonForStupidNextJs({
-      anomalies,
-    }),
-  }
-}
-
-// = InferGetStaticPropsType<typeof getStaticProps>
-interface HomeProps {
-  anomalies: Anomaly[]
-}
-
-const Home = ({anomalies}: HomeProps) => {
+const Home = () => {
   const {m} = useI18n()
   const {isMobileWidthMax} = useWindowWidth()
   useRgpdBanner()
   useEffect(() => {
     smoothscroll.polyfill()
   }, [])
+  const anomalies = sortBy(
+    allAnomalies.filter(_ => !_.hidden),
+    _ => parseInt(_.id),
+  )
   return (
     <>
       <Head>
