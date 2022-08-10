@@ -24,7 +24,11 @@ export function usePersistentState<S>(initialState: S, key: string): [S, Dispatc
     }
   }, [localStorage])
 
-  useEffect(() => localStorage.save(state), [localStorage, state])
+  useEffect(() => {
+    if (state !== initialState) {
+      localStorage.save(state)
+    }
+  }, [localStorage, state, initialState])
 
   return [
     state,
