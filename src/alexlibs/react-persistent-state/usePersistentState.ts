@@ -13,7 +13,7 @@ import {Dispatch, SetStateAction, useEffect, useMemo, useRef, useState} from 're
  * Only if the local storage is empty, the parameter initial state is used
  *
  */
-export function usePersistentState<S>(initialState: S | (() => S), key: string): [S, Dispatch<SetStateAction<S>>, () => void] {
+export function usePersistentState<S>(initialState: S, key: string): [S, Dispatch<SetStateAction<S>>, () => void] {
   const localStorage = useMemo(() => new LocalStorageEntity<S>(`react-persistant-state-${key}`), [])
   const [state, setState] = useState<S>(localStorage.load() ?? initialState)
   useEffect(() => localStorage.save(state), [state])
