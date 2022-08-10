@@ -5,6 +5,7 @@ export interface CompanySearchResult {
   name?: string
   brand?: string
   isHeadOffice: boolean
+  isOpen: boolean
   address: Address
   activityCode: string
   activityLabel?: string
@@ -17,8 +18,9 @@ export interface Company {
   creationDate: Date
   name: string
   address: Address
-  // postalCode?: string
   activityCode?: string
+  isHeadOffice: boolean
+  isOpen: boolean
 }
 
 export interface CompanySearch extends PaginatedFilters {
