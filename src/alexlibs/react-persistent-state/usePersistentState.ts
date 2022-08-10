@@ -14,8 +14,8 @@ import throttle from 'lodash.throttle'
  * Only if the local storage is empty, the parameter initial state is used
  *
  */
-export function usePersistentState<S>(initialState: S | (() => S), key?: string): [S, Dispatch<SetStateAction<S>>, () => void] {
-  const localStorage = useMemo(() => new LocalStorageEntity<S>(generateId(key)), [])
+export function usePersistentState<S>(initialState: S | (() => S), key: string): [S, Dispatch<SetStateAction<S>>, () => void] {
+  const localStorage = useMemo(() => new LocalStorageEntity<S>(`react-persistant-state-${key}`), [])
   const [state, setState] = useState<S>(localStorage.load() ?? initialState)
   const throttled = useRef(throttle(localStorage.save, 1000))
   useEffect(() => throttled.current(state), [state])
@@ -28,12 +28,4 @@ export function usePersistentState<S>(initialState: S | (() => S), key?: string)
       setState(initialState)
     },
   ]
-}
-
-const generateId = (key?: string | number): string => {
-  return 'react-persistant-state-' + (key ?? generateHash(new Error().stack ?? ''))
-}
-
-const generateHash = (x: string): number => {
-  return x.split('').reduce((prevHash, currVal) => ((prevHash << 5) - prevHash + currVal.charCodeAt(0)) | 0, 0)
 }
