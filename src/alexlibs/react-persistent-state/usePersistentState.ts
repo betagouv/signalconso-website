@@ -15,7 +15,15 @@ import {Dispatch, SetStateAction, useEffect, useMemo, useRef, useState} from 're
  */
 export function usePersistentState<S>(initialState: S, key: string): [S, Dispatch<SetStateAction<S>>, () => void] {
   const localStorage = useMemo(() => new LocalStorageEntity<S>(`react-persistant-state-${key}`), [])
-  const [state, setState] = useState<S>(localStorage.load() ?? initialState)
+  const [state, setState] = useState<S>(initialState)
+
+  useEffect(() => {
+    const storedState = localStorage.load()
+    if (storedState) {
+      setState(storedState)
+    }
+  }, [])
+
   useEffect(() => localStorage.save(state), [state])
 
   return [
