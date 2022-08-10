@@ -26,6 +26,8 @@ export interface CompanyDraft {
   website?: string
   phone?: string
   activityCode?: string
+  isHeadOffice: boolean
+  isOpen: boolean
 }
 
 export interface ReportDraft {
@@ -116,6 +118,8 @@ export class ReportDraft {
       companyName: draft.companyDraft.name,
       companyAddress: draft.companyDraft.address,
       companySiret: draft.companyDraft.siret,
+      companyIsHeadOffice: draft.companyDraft.isHeadOffice,
+      companyIsOpen: draft.companyDraft.isOpen,
       companyActivityCode: draft.companyDraft.activityCode,
       websiteURL: draft.companyDraft.website,
       phone: draft.companyDraft.phone,
