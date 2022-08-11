@@ -1,13 +1,29 @@
+import {format, parse} from 'date-fns'
+
 export const isServerSide = () => typeof window === 'undefined'
 
-// transform an object by running a function to transform each of its values
-export const mapValues = <A extends string, B, C>(
-  obj: {[key in A]: B},
-  mappingFunction: (value: B, index: number) => C,
-): {[key in A]: C} => {
-  const res: any = {}
-  Object.keys(obj).forEach((key, index) => {
-    res[key] = mappingFunction(obj[key as A], index)
-  })
-  return res
+// dd/mm/yyyy to yyyy-mm-dd
+// We don't use date-fns here, because we have problems
+// with dates with five digits year (dd/mm/YYYYY)
+// which can happen when the user is typing.
+// It's safer to do it manually
+export const frenchToIsoFormat = (d: string) => {
+  return d.split('/').reverse().join('-')
+}
+
+// yyyy-mm-dd to dd/mm/yyyy
+export const isoToFrenchFormat = (d: string) => {
+  return d.split('-').reverse().join('/')
+}
+
+export const dateToFrenchFormat = (d: Date) => {
+  return format(d, 'dd/MM/yyyy')
+}
+
+export const frenchFormatToDate = (d: string) => {
+  return parse(d, 'dd/MM/yyyy', new Date())
+}
+
+export const isDateInRange = (d: string, min: string, max: string) => {
+  return frenchFormatToDate(d) >= frenchFormatToDate(min) && frenchFormatToDate(d) <= frenchFormatToDate(max)
 }

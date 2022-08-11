@@ -30,7 +30,7 @@ import {EventCategories, ReportEventActions} from 'core/analytic/analytic'
 import {FileOrigin, UploadedFile} from '../../../client/file/UploadedFile'
 import {DetailInput, DetailInputType, ReportTag, SubcategoryInput} from '../../../anomaly/Anomaly'
 import {ReportDraft} from '../../../client/report/ReportDraft'
-import {mapValues} from 'core/helper/utils'
+import {dateToFrenchFormat, frenchFormatToDate, isDateInRange, mapValues} from 'core/helper/utils'
 
 export class SpecifyFormUtils {
   static readonly keyword = '(à préciser)'
@@ -155,7 +155,7 @@ export const _Details = ({
                   rules,
                   render,
                 }: {
-                  defaultValue?: string | Date
+                  defaultValue?: string
                   rules?: ControllerProps<any, any>['rules']
                   render: ControllerProps<any, any>['render']
                 }) => {
@@ -175,13 +175,13 @@ export const _Details = ({
                 const errorMessage = errors[inputIndex]?.message
                 const hasErrors = !!errors[inputIndex]
 
-                const renderDateVariant = ({max}: {max: Date}) => {
-                  const min = new Date(0) // 1970
+                const renderDateVariant = ({max}: {max: string}) => {
+                  const min = '01/01/1970'
                   return controller({
-                    defaultValue: input.defaultValue === 'SYSDATE' ? new Date() : undefined,
+                    defaultValue: input.defaultValue === 'SYSDATE' ? dateToFrenchFormat(new Date()) : undefined,
                     rules: {
-                      validate: (d: Date) => {
-                        return d >= min && d <= max ? true : m.invalidDate
+                      validate: (d: string) => {
+                        return isDateInRange(d, min, max) ? true : m.invalidDate
                       },
                     },
                     render: ({field}) => (
@@ -203,11 +203,11 @@ export const _Details = ({
                   {
                     [DetailInputType.DATE_NOT_IN_FUTURE]: () =>
                       renderDateVariant({
-                        max: new Date(),
+                        max: dateToFrenchFormat(new Date()),
                       }),
                     [DetailInputType.DATE]: () =>
                       renderDateVariant({
-                        max: new Date(2050, 0, 1),
+                        max: '01/01/2100',
                       }),
                     [DetailInputType.TIMESLOT]: () =>
                       controller({
@@ -337,14 +337,8 @@ export const _Details = ({
       </Animate>
       <StepperActions
         next={() => {
-          handleSubmit((detailInputValues: {[k: string]: string | string[] | Date}) => {
-            // We want to store strings only
-            const valuesWithOnlyStrings = mapValues(detailInputValues, value => {
-              if (value instanceof Date) {
-                return format(value, appConfig.apiDateFormat)
-              } else return value
-            })
-            onSubmit(valuesWithOnlyStrings, uploadedFiles)
+          handleSubmit(detailInputValues => {
+            onSubmit(detailInputValues, uploadedFiles)
           })()
         }}
       />
