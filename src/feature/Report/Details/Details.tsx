@@ -30,6 +30,7 @@ import {EventCategories, ReportEventActions} from 'core/analytic/analytic'
 import {FileOrigin, UploadedFile} from '../../../client/file/UploadedFile'
 import {DetailInput, DetailInputType, ReportTag, SubcategoryInput} from '../../../anomaly/Anomaly'
 import {ReportDraft} from '../../../client/report/ReportDraft'
+import {mapValues} from 'core/helper/utils'
 
 export class SpecifyFormUtils {
   static readonly keyword = '(à préciser)'
@@ -336,7 +337,15 @@ export const _Details = ({
       </Animate>
       <StepperActions
         next={() => {
-          handleSubmit(f => onSubmit(f, uploadedFiles))()
+          handleSubmit((detailInputValues: {[k: string]: string | string[] | Date}) => {
+            // We want to store strings only
+            const valuesWithOnlyStrings = mapValues(detailInputValues, value => {
+              if (value instanceof Date) {
+                return format(value, appConfig.apiDateFormat)
+              } else return value
+            })
+            onSubmit(valuesWithOnlyStrings, uploadedFiles)
+          })()
         }}
       />
     </>
