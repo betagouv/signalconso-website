@@ -35,6 +35,12 @@ export class DetailsFixtureInput {
     defaultValue: 'SYSDATE',
   }
 
+  static readonly dateWithNoDefault: DetailInput = {
+    label: 'Date (without default to SYSDATE) label',
+    rank: 2,
+    type: DetailInputType.DATE,
+  }
+
   static readonly radio: DetailInput = {
     label: 'Radio label',
     rank: 3,
@@ -70,6 +76,7 @@ export const PlaygroundDetails = () => {
     text: DetailsFixtureInput.text,
     date: DetailsFixtureInput.date,
     dateNotInFuture: DetailsFixtureInput.dateNotInFuture,
+    dateWithNoDefault: DetailsFixtureInput.dateWithNoDefault,
     radio: DetailsFixtureInput.radio,
     checkbox: DetailsFixtureInput.checkbox,
     textarea: DetailsFixtureInput.textarea,
@@ -79,6 +86,7 @@ export const PlaygroundDetails = () => {
     text: true,
     date: true,
     dateNotInFuture: true,
+    dateWithNoDefault: true,
     radio: true,
     checkbox: true,
     textarea: true,
