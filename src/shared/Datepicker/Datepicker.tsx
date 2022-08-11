@@ -9,19 +9,19 @@ export interface ScDatepickerProps extends BaseTextFieldProps {
   onChange: (_: Date) => void
   label?: string
   InputProps?: Partial<StandardInputProps>
-  min?: string
-  max?: string
+  min?: Date
+  max?: Date
 }
 
-const onChangeDate = (callback: (date: Date) => any) => (e: React.ChangeEvent<HTMLInputElement>) => {
-  callback(new Date(e.target.valueAsDate!))
-}
+const toStr = (_: Date) => format(_, 'yyyy-MM-dd')
+
+const getFallbackDate = () => new Date()
 
 const mapDate = (date: Date): string => {
   try {
-    return format(date, 'yyyy-MM-dd')
+    return toStr(date)
   } catch (e: any) {
-    return format(new Date(), 'yyyy-MM-dd')
+    return toStr(getFallbackDate())
   }
 }
 
@@ -30,13 +30,15 @@ export const ScDatepicker = forwardRef(({value, onChange, min, max, ...props}: S
     <ScInput
       inputRef={ref}
       inputProps={{
-        max: max,
-        min: min,
+        ...(max && {max: toStr(max)}),
+        ...(min && {min: toStr(min)}),
       }}
       {...props}
       type="date"
       value={value ? mapDate(value) : ''}
-      onChange={onChangeDate(onChange)}
+      onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+        onChange(new Date(e.target.valueAsDate!))
+      }}
       InputLabelProps={{shrink: true}}
     />
   )

@@ -199,7 +199,7 @@ export const _Details = ({
                             {...mapDateInput(field)}
                             fullWidth
                             placeholder={input.placeholder}
-                            max={format(new Date(), 'yyyy-MM-dd')}
+                            max={new Date()}
                             helperText={errorMessage}
                             error={hasErrors}
                           />
