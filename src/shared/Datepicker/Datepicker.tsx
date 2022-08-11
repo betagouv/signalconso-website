@@ -9,7 +9,7 @@ export interface ScDatepickerProps extends BaseTextFieldProps {
   onChange: (_: Date) => void
   label?: string
   InputProps?: Partial<StandardInputProps>
-  // /!\ These are only indicative
+  // These are only indicative
   // The user can always go around these limits by typing a date manually instead of using the picker
   min?: Date
   max?: Date
