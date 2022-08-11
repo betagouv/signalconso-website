@@ -6,7 +6,7 @@ import {ScInput} from '../Input/ScInput'
 
 export interface ScDatepickerProps extends BaseTextFieldProps {
   value?: Date
-  onChange?: (_: Date) => void
+  onChange: (_: Date) => void
   label?: string
   InputProps?: Partial<StandardInputProps>
   min?: string
@@ -36,7 +36,7 @@ export const ScDatepicker = forwardRef(({value, onChange, min, max, ...props}: S
       {...props}
       type="date"
       value={value ? mapDate(value) : ''}
-      onChange={onChange ? onChangeDate(onChange) : undefined}
+      onChange={onChangeDate(onChange)}
       InputLabelProps={{shrink: true}}
     />
   )
