@@ -9,13 +9,21 @@ export interface ScDatepickerProps extends BaseTextFieldProps {
   onChange: (_: Date) => void
   label?: string
   InputProps?: Partial<StandardInputProps>
-  // /!\ These work only if the date is picked in the widget
-  // The user can always go around these limits by typing a date manually
+  // /!\ These are only indicative
+  // The user can always go around these limits by typing a date manually instead of using the picker
   min?: Date
   max?: Date
 }
 
-const toStr = (_: Date) => format(_, 'yyyy-MM-dd')
+const toStr = (_: Date) => {
+  // The user may type a date like 01/01/22222
+  // This can be read as a Date but then it can't be formatted back to a string for some reason
+  try {
+    return format(_, 'yyyy-MM-dd')
+  } catch (e) {
+    return ''
+  }
+}
 
 export const ScDatepicker = forwardRef(({value, onChange, min, max, ...props}: ScDatepickerProps, ref: any) => {
   return (
