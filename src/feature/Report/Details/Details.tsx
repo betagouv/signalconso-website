@@ -31,19 +31,6 @@ import {FileOrigin, UploadedFile} from '../../../client/file/UploadedFile'
 import {DetailInput, DetailInputType, ReportTag, SubcategoryInput} from '../../../anomaly/Anomaly'
 import {ReportDraft} from '../../../client/report/ReportDraft'
 
-const mapDateInput = ({
-  value,
-  onChange,
-}: {
-  value?: string
-  onChange: (_: string) => void
-}): {value?: Date; onChange: (_: Date) => void} => {
-  return {
-    value: value ? parse(value, appConfig.apiDateFormat, new Date()) : undefined,
-    onChange: (_: Date) => onChange(format(_, appConfig.apiDateFormat)),
-  }
-}
-
 export class SpecifyFormUtils {
   static readonly keyword = '(à préciser)'
   static readonly getInputName = (index: number) => `${index}_specify`
@@ -176,7 +163,6 @@ export const _Details = ({
                       control={control}
                       name={'' + inputIndex}
                       defaultValue={defaultValue ?? input.defaultValue}
-                      // defaultValue={initialValues?.[inputIndex] ?? defaultValue ?? input.defaultValue ?? ''}
                       rules={{
                         required: {value: !input.optionnal, message: m.required + ' *'},
                         ...rules,
@@ -193,9 +179,8 @@ export const _Details = ({
                   return controller({
                     defaultValue: input.defaultValue === 'SYSDATE' ? format(new Date(), appConfig.apiDateFormat) : undefined,
                     rules: {
-                      validate: v => {
+                      validate: (d: Date) => {
                         try {
-                          const d = parseISO(v)
                           return d >= min && d <= max
                         } catch (e) {
                           return false
@@ -205,7 +190,6 @@ export const _Details = ({
                     render: ({field}) => (
                       <ScDatepicker
                         {...field}
-                        {...mapDateInput(field)}
                         fullWidth
                         placeholder={input.placeholder}
                         min={min}
