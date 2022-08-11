@@ -155,7 +155,7 @@ export const _Details = ({
                   rules,
                   render,
                 }: {
-                  defaultValue?: string
+                  defaultValue?: string | Date
                   rules?: ControllerProps<any, any>['rules']
                   render: ControllerProps<any, any>['render']
                 }) => {
@@ -178,7 +178,7 @@ export const _Details = ({
                 const renderDateVariant = ({max}: {max: Date}) => {
                   const min = new Date(0) // 1970
                   return controller({
-                    defaultValue: input.defaultValue === 'SYSDATE' ? format(new Date(), appConfig.apiDateFormat) : undefined,
+                    defaultValue: input.defaultValue === 'SYSDATE' ? new Date() : undefined,
                     rules: {
                       validate: (d: Date) => {
                         return d >= min && d <= max ? true : m.invalidDate
