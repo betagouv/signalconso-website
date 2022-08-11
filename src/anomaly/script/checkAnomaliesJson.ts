@@ -76,7 +76,7 @@ const inputSubcategorySpec: ObjectSpec = {
         type: _ => _.assertIsAllowedString(Object.values(DetailInputType)),
         placeholder: _ => _.ifDefined()?.assertIsString(),
         options: _ => _.ifDefined()?.assertIsArrayOfString(),
-        defaultValue: _ => _.ifDefined()?.assertIsString(),
+        defaultValue: _ => _.ifDefined()?.assertIsAllowedString(['SYSDATE']),
         example: _ => _.ifDefined()?.assertIsString(),
         optionnal: _ => _.ifDefined()?.assertIsBoolean(),
       })
