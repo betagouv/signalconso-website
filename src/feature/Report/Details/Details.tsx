@@ -1,7 +1,7 @@
 import React, {useEffect, useMemo, useState} from 'react'
 import {Alert, Txt} from '../../../alexlibs/mui-extension'
 import {useReportFlowContext} from '../ReportFlowContext'
-
+import {parseISO} from 'date-fns'
 import {ScDatepicker} from 'shared/Datepicker/Datepicker'
 import {fnSwitch, mapFor} from '../../../alexlibs/ts-utils'
 import {useI18n} from 'core/i18n'
@@ -187,37 +187,46 @@ export const _Details = ({
                 }
                 const errorMessage = errors[inputIndex]?.message
                 const hasErrors = !!errors[inputIndex]
+
+                const renderDateVariant = ({max}: {max: Date}) => {
+                  const min = new Date(0) // 1970
+                  return controller({
+                    defaultValue: input.defaultValue === 'SYSDATE' ? format(new Date(), appConfig.apiDateFormat) : undefined,
+                    rules: {
+                      validate: v => {
+                        try {
+                          const d = parseISO(v)
+                          return d >= min && d <= max
+                        } catch (e) {
+                          return false
+                        }
+                      },
+                    },
+                    render: ({field}) => (
+                      <ScDatepicker
+                        {...field}
+                        {...mapDateInput(field)}
+                        fullWidth
+                        placeholder={input.placeholder}
+                        min={min}
+                        max={max}
+                        helperText={errorMessage}
+                        error={hasErrors}
+                      />
+                    ),
+                  })
+                }
+
                 return fnSwitch(
                   input.type,
                   {
                     [DetailInputType.DATE_NOT_IN_FUTURE]: () =>
-                      controller({
-                        defaultValue: input.defaultValue === 'SYSDATE' ? format(new Date(), appConfig.apiDateFormat) : undefined,
-                        render: ({field}) => (
-                          <ScDatepicker
-                            {...field}
-                            {...mapDateInput(field)}
-                            fullWidth
-                            placeholder={input.placeholder}
-                            max={new Date()}
-                            helperText={errorMessage}
-                            error={hasErrors}
-                          />
-                        ),
+                      renderDateVariant({
+                        max: new Date(),
                       }),
                     [DetailInputType.DATE]: () =>
-                      controller({
-                        defaultValue: input.defaultValue === 'SYSDATE' ? format(new Date(), appConfig.apiDateFormat) : undefined,
-                        render: ({field}) => (
-                          <ScDatepicker
-                            {...field}
-                            {...mapDateInput(field)}
-                            fullWidth
-                            placeholder={input.placeholder}
-                            helperText={errorMessage}
-                            error={hasErrors}
-                          />
-                        ),
+                      renderDateVariant({
+                        max: new Date(2050, 0, 1),
                       }),
                     [DetailInputType.TIMESLOT]: () =>
                       controller({
