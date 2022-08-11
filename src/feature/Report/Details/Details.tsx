@@ -180,11 +180,7 @@ export const _Details = ({
                     defaultValue: input.defaultValue === 'SYSDATE' ? format(new Date(), appConfig.apiDateFormat) : undefined,
                     rules: {
                       validate: (d: Date) => {
-                        try {
-                          return d >= min && d <= max
-                        } catch (e) {
-                          return false
-                        }
+                        return d >= min && d <= max ? true : m.invalidDate
                       },
                     },
                     render: ({field}) => (
