@@ -4096,13 +4096,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fp-ts@npm:1.19.5":
-  version: 1.19.5
-  resolution: "fp-ts@npm:1.19.5"
-  checksum: 67d2d9c3855d211ca2592b1ef805f98b618157e7681791a776d9d0f7f3e52fcca2122ebf5bc215908c9099fad69756d40e37210cf46cb4075dae1b61efe69e40
-  languageName: node
-  linkType: hard
-
 "fs-extra@npm:^8.0.1":
   version: 8.1.0
   resolution: "fs-extra@npm:8.1.0"
@@ -7457,7 +7450,6 @@ __metadata:
     date-fns: 2.28.0
     eslint: 7.32.0
     eslint-config-next: 12.1.0
-    fp-ts: 1.19.5
     jest: 27.5.1
     jest-html-reporters: 3.0.8
     js-yaml: 4.1.0
