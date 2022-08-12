@@ -74,6 +74,7 @@ export const fr = {
     anErrorOccurred: "Une erreur s'est produite.",
     minimize: 'Minimize',
     required: 'Requis',
+    invalidDate: 'Date invalide',
     cancel: 'Annuler',
     help: 'Aide',
     created_at: 'Créé le',
