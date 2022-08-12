@@ -30,7 +30,7 @@ import {EventCategories, ReportEventActions} from 'core/analytic/analytic'
 import {FileOrigin, UploadedFile} from '../../../client/file/UploadedFile'
 import {DetailInput, DetailInputType, ReportTag, SubcategoryInput} from '../../../anomaly/Anomaly'
 import {ReportDraft} from '../../../client/report/ReportDraft'
-import {dateToFrenchFormat, frenchFormatToDate, isDateInRange, mapValues} from 'core/helper/utils'
+import {dateToFrenchFormat, frenchFormatToDate, isDateInRange} from 'core/helper/utils'
 
 export class SpecifyFormUtils {
   static readonly keyword = '(à préciser)'
