@@ -1,7 +1,7 @@
 import React, {useEffect, useMemo, useState} from 'react'
 import {Alert, Txt} from '../../../alexlibs/mui-extension'
 import {useReportFlowContext} from '../ReportFlowContext'
-
+import {parseISO} from 'date-fns'
 import {ScDatepicker} from 'shared/Datepicker/Datepicker'
 import {fnSwitch, mapFor} from '../../../alexlibs/ts-utils'
 import {useI18n} from 'core/i18n'
@@ -30,19 +30,7 @@ import {EventCategories, ReportEventActions} from 'core/analytic/analytic'
 import {FileOrigin, UploadedFile} from '../../../client/file/UploadedFile'
 import {DetailInput, DetailInputType, ReportTag, SubcategoryInput} from '../../../anomaly/Anomaly'
 import {ReportDraft} from '../../../client/report/ReportDraft'
-
-const mapDateInput = ({
-  value,
-  onChange,
-}: {
-  value?: string
-  onChange: (_: string) => void
-}): {value?: Date; onChange: (_: Date) => void} => {
-  return {
-    value: value ? parse(value, appConfig.apiDateFormat, new Date()) : undefined,
-    onChange: (_: Date) => onChange(format(_, appConfig.apiDateFormat)),
-  }
-}
+import {dateToFrenchFormat, frenchFormatToDate, isDateInRange} from 'core/helper/utils'
 
 export class SpecifyFormUtils {
   static readonly keyword = '(à préciser)'
@@ -176,7 +164,6 @@ export const _Details = ({
                       control={control}
                       name={'' + inputIndex}
                       defaultValue={defaultValue ?? input.defaultValue}
-                      // defaultValue={initialValues?.[inputIndex] ?? defaultValue ?? input.defaultValue ?? ''}
                       rules={{
                         required: {value: !input.optionnal, message: m.required + ' *'},
                         ...rules,
@@ -187,37 +174,40 @@ export const _Details = ({
                 }
                 const errorMessage = errors[inputIndex]?.message
                 const hasErrors = !!errors[inputIndex]
+
+                const renderDateVariant = ({max}: {max: string}) => {
+                  const min = '01/01/1970'
+                  return controller({
+                    defaultValue: input.defaultValue === 'SYSDATE' ? dateToFrenchFormat(new Date()) : undefined,
+                    rules: {
+                      validate: (d: string) => {
+                        return isDateInRange(d, min, max) ? true : m.invalidDate
+                      },
+                    },
+                    render: ({field}) => (
+                      <ScDatepicker
+                        {...field}
+                        fullWidth
+                        placeholder={input.placeholder}
+                        min={min}
+                        max={max}
+                        helperText={errorMessage}
+                        error={hasErrors}
+                      />
+                    ),
+                  })
+                }
+
                 return fnSwitch(
                   input.type,
                   {
                     [DetailInputType.DATE_NOT_IN_FUTURE]: () =>
-                      controller({
-                        defaultValue: input.defaultValue === 'SYSDATE' ? format(new Date(), appConfig.apiDateFormat) : undefined,
-                        render: ({field}) => (
-                          <ScDatepicker
-                            {...field}
-                            {...mapDateInput(field)}
-                            fullWidth
-                            placeholder={input.placeholder}
-                            max={format(new Date(), 'yyyy-MM-dd')}
-                            helperText={errorMessage}
-                            error={hasErrors}
-                          />
-                        ),
+                      renderDateVariant({
+                        max: dateToFrenchFormat(new Date()),
                       }),
                     [DetailInputType.DATE]: () =>
-                      controller({
-                        defaultValue: input.defaultValue === 'SYSDATE' ? format(new Date(), appConfig.apiDateFormat) : undefined,
-                        render: ({field}) => (
-                          <ScDatepicker
-                            {...field}
-                            {...mapDateInput(field)}
-                            fullWidth
-                            placeholder={input.placeholder}
-                            helperText={errorMessage}
-                            error={hasErrors}
-                          />
-                        ),
+                      renderDateVariant({
+                        max: '01/01/2100',
                       }),
                     [DetailInputType.TIMESLOT]: () =>
                       controller({
@@ -347,7 +337,9 @@ export const _Details = ({
       </Animate>
       <StepperActions
         next={() => {
-          handleSubmit(f => onSubmit(f, uploadedFiles))()
+          handleSubmit(detailInputValues => {
+            onSubmit(detailInputValues, uploadedFiles)
+          })()
         }}
       />
     </>

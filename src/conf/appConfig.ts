@@ -62,8 +62,6 @@ export const appConfig = {
   matomo_siteId: map()(Env.NEXT_PUBLIC_MATOMO_SITE_ID),
   matomo_url: map()(Env.NEXT_PUBLIC_MATOMO_URL),
   useHashRouter: true,
-  apiDateFormat: 'dd/MM/yyyy',
-  browserDateFormat: 'yyyy-MM-dd',
   maxDescriptionInputLength: 1000,
   infoBanner: map()(Env.NEXT_PUBLIC_INFO_BANNER),
   infoBannerOnMobile: map(bool, defaultValue(false))(Env.NEXT_PUBLIC_INFO_BANNER_ON_MOBILE),

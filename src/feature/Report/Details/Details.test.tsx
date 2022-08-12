@@ -11,6 +11,7 @@ import {DetailsFixtureInput, DetailsFixtureValue} from 'feature/Playground/Playg
 import {waitFor} from '@testing-library/dom'
 import {mapFor} from '../../../alexlibs/ts-utils'
 import {DetailInputValues2} from 'core/model/ReportDraft'
+import {frenchDateFormat} from 'core/helper/utils'
 
 const clickBtnSubmit = async (app: ScRenderResult) => {
   const btnSubmit = app.container.querySelector('#btn-submit') as HTMLButtonElement
@@ -57,20 +58,19 @@ describe('Details: single date not in future', () => {
     clickBtnSubmit(app)
     await waitFor(() =>
       expect(inputValues).toEqual({
-        0: format(new Date(), appConfig.apiDateFormat),
+        0: format(new Date(), frenchDateFormat),
       }),
     )
   })
 
   it('should update stored reportDraft on submit', async () => {
-    const date = new Date('2018-02-02')
     fireEvent.change(app.container.querySelector('input[type=date]')!, {
-      target: {value: format(date, appConfig.browserDateFormat)},
+      target: {value: '2018-02-15'},
     })
     clickBtnSubmit(app)
     await waitFor(() =>
       expect(inputValues).toEqual({
-        0: format(date, appConfig.apiDateFormat),
+        0: '15/02/2018',
       }),
     )
   })
@@ -179,8 +179,8 @@ describe('Details: textarea', () => {
 describe('Details: initialize values', () => {
   let app: ScRenderResult
   let inputValues: undefined | DetailInputValues2
-  const values = {
-    0: DetailsFixtureValue.date,
+  const initialValues = {
+    0: '01/01/2018',
     1: DetailsFixtureValue.text,
     2: DetailsFixtureValue.radio,
     [SpecifyFormUtils.getInputName(2)]: 'blabla radio',
@@ -192,7 +192,7 @@ describe('Details: initialize values', () => {
     inputValues = undefined
     app = render(
       <_Details
-        initialValues={values}
+        initialValues={initialValues}
         inputs={[
           DetailsFixtureInput.date,
           DetailsFixtureInput.text,
@@ -210,6 +210,8 @@ describe('Details: initialize values', () => {
   it('should submit and send the initial values', async () => {
     await clickBtnSubmit(app)
     hasErrors(app, 0)
-    await waitFor(() => expect(inputValues).toEqual(values))
+    await waitFor(() => {
+      expect(inputValues).toEqual(initialValues)
+    })
   })
 })
