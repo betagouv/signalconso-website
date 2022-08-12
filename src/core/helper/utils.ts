@@ -17,13 +17,15 @@ export const isoToFrenchFormat = (d: string) => {
 }
 
 export const dateToFrenchFormat = (d: Date) => {
-  return format(d, 'dd/MM/yyyy')
+  return format(d, frenchDateFormat)
 }
 
 export const frenchFormatToDate = (d: string) => {
-  return parse(d, 'dd/MM/yyyy', new Date())
+  return parse(d, frenchDateFormat, new Date())
 }
 
 export const isDateInRange = (d: string, min: string, max: string) => {
   return frenchFormatToDate(d) >= frenchFormatToDate(min) && frenchFormatToDate(d) <= frenchFormatToDate(max)
 }
+
+export const frenchDateFormat = 'dd/MM/yyyy'

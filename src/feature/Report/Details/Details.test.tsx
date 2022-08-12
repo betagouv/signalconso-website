@@ -11,6 +11,7 @@ import {DetailsFixtureInput, DetailsFixtureValue} from 'feature/Playground/Playg
 import {waitFor} from '@testing-library/dom'
 import {mapFor} from '../../../alexlibs/ts-utils'
 import {DetailInputValues2} from 'core/model/ReportDraft'
+import {frenchDateFormat} from 'core/helper/utils'
 
 const clickBtnSubmit = async (app: ScRenderResult) => {
   const btnSubmit = app.container.querySelector('#btn-submit') as HTMLButtonElement
@@ -57,20 +58,19 @@ describe('Details: single date not in future', () => {
     clickBtnSubmit(app)
     await waitFor(() =>
       expect(inputValues).toEqual({
-        0: format(new Date(), appConfig.apiDateFormat),
+        0: format(new Date(), frenchDateFormat),
       }),
     )
   })
 
   it('should update stored reportDraft on submit', async () => {
-    const date = new Date('2018-02-02')
     fireEvent.change(app.container.querySelector('input[type=date]')!, {
-      target: {value: format(date, appConfig.browserDateFormat)},
+      target: {value: '2018-02-15'},
     })
     clickBtnSubmit(app)
     await waitFor(() =>
       expect(inputValues).toEqual({
-        0: format(date, appConfig.apiDateFormat),
+        0: '15/02/2018',
       }),
     )
   })
@@ -180,7 +180,7 @@ describe('Details: initialize values', () => {
   let app: ScRenderResult
   let inputValues: undefined | DetailInputValues2
   const initialValues = {
-    0: 'SYSDATE',
+    0: '01/01/2018',
     1: DetailsFixtureValue.text,
     2: DetailsFixtureValue.radio,
     [SpecifyFormUtils.getInputName(2)]: 'blabla radio',
