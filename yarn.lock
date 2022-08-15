@@ -5784,13 +5784,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lodash.uniqby@npm:4.7.0":
-  version: 4.7.0
-  resolution: "lodash.uniqby@npm:4.7.0"
-  checksum: 659264545a95726d1493123345aad8cbf56e17810fa9a0b029852c6d42bc80517696af09d99b23bef1845d10d95e01b8b4a1da578f22aeba7a30d3e0022a4938
-  languageName: node
-  linkType: hard
-
 "lodash@npm:4.17.21, lodash@npm:^4.17.15, lodash@npm:^4.17.19, lodash@npm:^4.17.21, lodash@npm:^4.7.0":
   version: 4.17.21
   resolution: "lodash@npm:4.17.21"
@@ -7455,7 +7448,6 @@ __metadata:
     js-yaml: 4.1.0
     lodash: 4.17.21
     lodash.throttle: ^4.1.1
-    lodash.uniqby: 4.7.0
     next: 12.1.6
     next-transpile-modules: ^9.0.0
     path: 0.12.7
