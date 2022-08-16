@@ -31,7 +31,7 @@ export const CompanyAskConsumerStreet = ({onChange}: Props) => {
   return (
     <Animate>
       <Panel id="CompanyAskConsumerStreet">
-        <Alert dense type="info" sx={{mb: 2}} deletable persistentDelete>
+        <Alert dense type="info" sx={{mb: 2}} deletable>
           <Txt size="small" dangerouslySetInnerHTML={{__html: m.cantIdentifyCompany}} />
         </Alert>
         <form

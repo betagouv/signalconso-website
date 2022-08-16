@@ -330,7 +330,7 @@ export const _Details = ({
                 {!contractualDispute && (
                   <Txt color="hint" block gutterBottom dangerouslySetInnerHTML={{__html: m.attachmentsDescAnonymous}} />
                 )}
-                <Alert dense type="info" sx={{mb: 2}} deletable persistentDelete>
+                <Alert dense type="info" sx={{mb: 2}} deletable>
                   <Txt size="small" dangerouslySetInnerHTML={{__html: m.attachmentsDesc2}} />
                 </Alert>
               </>
