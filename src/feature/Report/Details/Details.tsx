@@ -120,7 +120,7 @@ export const _Details = ({
     handleSubmit,
     reset,
     formState: {errors},
-  } = useForm<any>()
+  } = useForm<DetailInputValues2>()
 
   useEffect(() => {
     if (initialValues) {
