@@ -105,8 +105,7 @@ export const Alert = ({
         {getIconFromType()}
       </Icon>
       <Box
-        children={children}
-        dangerouslySetInnerHTML={dangerouslySetInnerHTML}
+        {...(children ? {children} : {dangerouslySetInnerHTML})}
         sx={{
           flex: 1,
           py: dense ? 1 : 2,
