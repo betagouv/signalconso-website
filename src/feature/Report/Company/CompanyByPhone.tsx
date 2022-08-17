@@ -13,7 +13,7 @@ interface Form {
   phone: string
 }
 
-interface Props extends Omit<BoxProps, 'onSubmit'> {
+interface Props extends Omit<BoxProps, 'onSubmit' | 'children'> {
   value?: string
   children: (phone?: string) => ReactNode
 }

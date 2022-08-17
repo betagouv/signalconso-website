@@ -32,10 +32,11 @@ const ConditionsGeneralesUtilisation = () => {
         <Tab sx={{flex: 1}} label="Consommateur" {...a11yProps(0)} />
         <Tab sx={{flex: 1}} label="Professionnel" {...a11yProps(1)} />
       </Tabs>
-      {fnSwitch(activeTab, [
-        () => <ConditionsGeneralesUtilisationConso role="tabpanel" />,
-        () => <ConditionsGeneralesUtilisationPro role="tabpanel" />,
-      ])}
+      {activeTab === 0 ? (
+        <ConditionsGeneralesUtilisationConso role="tabpanel" />
+      ) : (
+        <ConditionsGeneralesUtilisationPro role="tabpanel" />
+      )}
     </Page>
   )
 }

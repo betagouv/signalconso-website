@@ -82,8 +82,6 @@ const _App = ({Component, pageProps, router}: AppProps) => {
             marginTop: `${headerHeight.normal}px`,
           }}
         >
-          {/* Type mixup between types of react 17 and react 18 because of some indirect dependency
-          @ts-ignore */}
           <Component {...pageProps} />
         </Box>
         <Header />
