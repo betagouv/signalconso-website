@@ -15,19 +15,20 @@ const rootSpec: ObjectSpec = {
 }
 
 const baseCategorySpec: ObjectSpec = {
-  id: _ => _.ifDefined()?.assertIsString(),
   title: _ => _.assertIsString(),
   subcategoriesTitle: _ => _.ifDefined()?.assertIsString(),
   subcategories: _ => _.ifDefined()?.assertIsArrayWith(assertIsSubcategory),
 }
 
 const anomalySpec: ObjectSpec = {
+  id: _ => _.ifDefined()?.assertIsString(),
   category: _ => _.assertIsString(),
   seoDescription: _ => _.ifDefined()?.assertIsString(),
   path: _ => _.assertIsString(),
   description: _ => _.assertIsString(),
   sprite: _ => _.assertIsString(),
   hidden: _ => _.ifDefined()?.assertIsBoolean(),
+  isHiddenDemoCategory: _ => _.ifDefined()?.assertIsBoolean(),
   ...baseCategorySpec,
 }
 

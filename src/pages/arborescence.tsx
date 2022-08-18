@@ -8,7 +8,12 @@ import {ScButton} from 'shared/Button/Button'
 import {Page} from 'shared/Page/Page'
 import {IconBtn, Txt} from '../alexlibs/mui-extension'
 import {fnSwitch} from '../alexlibs/ts-utils'
-import {allAnomalies, instanceOfAnomaly, instanceOfSubcategoryInformation, instanceOfSubcategoryInput} from '../anomaly/Anomalies'
+import {
+  allVisibleAnomalies,
+  instanceOfAnomaly,
+  instanceOfSubcategoryInformation,
+  instanceOfSubcategoryInput,
+} from '../anomaly/Anomalies'
 import {
   Anomaly,
   DetailInputType,
@@ -194,10 +199,7 @@ const NodeInfo = ({anomaly}: {anomaly: SubcategoryInformation}) => {
 const Arborescence = () => {
   const [openAll, setOpenAll] = useState(false)
   const [disabled, setDisabled] = useState(false)
-  const anomalies = sortBy(
-    allAnomalies.filter(_ => !_.hidden),
-    _ => _.id,
-  )
+  const anomalies = sortBy(allVisibleAnomalies(), _ => _.id)
   return (
     <Page>
       <Head>
