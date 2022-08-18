@@ -428,8 +428,6 @@
                   subcategoriesTitle: La date est-elle <b>dépassée</b> au moment de la vente ou de l'achat&#160;?
                   subcategories:
                     - title: Oui
-                      detailTitle: Il est interdit de vendre un produit avec la date limite de consommation (DLC) dépassée.
-                        <br/>Après cette date, il est dangereux de consommer le produit.
                     - title: Non
                       information:
                         title: Le commerçant a le droit de vendre un produit jusqu'au jour indiqué sur la date limite de consommation (DLC).
@@ -565,7 +563,6 @@
                   subcategoriesTitle: Quand avez-vous acheté le produit&#160;?
                   subcategories:
                     - title: Il y a moins de 2 ans
-                      detailTitle: Problème de garantie légale
                       detailInputs:
                         - label: Date d'achat
                           rank: 1
@@ -597,7 +594,6 @@
                             <br />Avant de faire un signalement, relisez les conditions écrites dans ce contrat.
                           subcategories:
                             - title: J'ai pris connaissance des conditions écrites dans mon contrat de garantie
-                              detailTitle: Problème de garantie commerciale
                               detailInputs:
                                 - label: Date d'achat
                                   rank: 1
@@ -638,7 +634,6 @@
                   subcategoriesTitle: Quand avez-vous acheté le produit&#160;?
                   subcategories:
                     - title: Il y a moins de 6 mois
-                      detailTitle: Problème de garantie légale
                       detailInputs:
                         - label: Date d'achat
                           rank: 1
@@ -670,7 +665,6 @@
                             <br /> Avant de faire un signalement, relisez les conditions écrites dans ce contrat.
                           subcategories:
                             - title: J'ai pris connaissance des conditions écrites dans mon contrat de garantie
-                              detailTitle: Problème de garantie commerciale
                               detailInputs:
                                 - label: Date d'achat
                                   rank: 1

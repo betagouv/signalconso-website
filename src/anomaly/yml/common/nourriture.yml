@@ -13,8 +13,6 @@
             - title: Oui
               reponseconsoCode:
                 - '323'
-              detailTitle: Il est interdit de vendre un produit avec la date limite de consommation (DLC) dépassée.
-                <br/>Après cette date, il est dangereux de consommer le produit.
             - title: Non
               information:
                 subTitle: Le commerçant a le droit de vendre un produit jusqu'au jour indiqué sur la date limite de consommation (DLC).
@@ -57,7 +55,6 @@
             - title: Oui
               reponseconsoCode:
                 - '323'
-              detailTitle: Il est interdit de vendre un produit avec une date limite de consommation dépassée. Ces dates concernent surtout des produits frais.
               detailInputs:
                 - label: Date du constat (ou d'achat suivant le cas)
                   rank: 1

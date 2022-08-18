@@ -25,7 +25,6 @@ export interface SubcategoryBase extends Category {
 export type Subcategory = SubcategoryInput | SubcategoryInformation
 
 export interface SubcategoryInput extends SubcategoryBase {
-  detailTitle?: string
   fileLabel?: string
   detailInputs?: DetailInput[]
 }

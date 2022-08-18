@@ -16,7 +16,6 @@
             - title: À la résiliation de l'abonnement ou au changement de locataire
               tags:
                 - ReponseConso
-              detailTitle: Il est interdit de demander un dépôt de garantie.
               detailInputs:
                 - label: Date du contrat
                   rank: 1
@@ -55,7 +54,6 @@
       tags:
         - ReponseConso
         - LitigeContractuel
-      detailTitle: Il est interdit de couper ou réduire l'eau en cas d'impayé lorsqu'il s'agit d'une résidence principale.
       detailInputs:
         - label: Date du contrat
           rank: 1

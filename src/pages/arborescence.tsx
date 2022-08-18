@@ -113,7 +113,6 @@ const Node = ({anomaly, open}: {anomaly: Anomaly | Subcategory; open?: boolean})
 const NodeInput = ({anomaly}: {anomaly: SubcategoryInput}) => {
   return (
     <>
-      {anomaly.detailTitle && <Txt dangerouslySetInnerHTML={{__html: anomaly.detailTitle}} />}
       {anomaly.detailInputs?.map(input => (
         <Box key={input.label}>
           <Txt block sx={{mt: 1}} size="small" color="hint" dangerouslySetInnerHTML={{__html: input.label}} />

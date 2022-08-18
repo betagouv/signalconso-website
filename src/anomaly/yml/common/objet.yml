@@ -45,7 +45,6 @@
         - ReponseConso
       subcategories:
         - title: En France (Outre-mer compris)
-          detailTitle: Problème de langue française
           reponseconsoCode:
             - '211'
           detailInputs:

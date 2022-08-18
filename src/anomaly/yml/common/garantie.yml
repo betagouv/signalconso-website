@@ -8,7 +8,6 @@
       subcategoriesTitle: Quand avez-vous acheté le produit&#160;?
       subcategories:
         - title: Il y a moins de 2 ans
-          detailTitle: Problème de garantie légale
           detailInputs:
             - label: Date d'achat
               rank: 1
@@ -40,7 +39,6 @@
                 <br />Avant de faire un signalement, relisez les conditions écrites dans ce contrat.
               subcategories:
                 - title: J'ai pris connaissance des conditions écrites dans mon contrat de garantie
-                  detailTitle: Problème de garantie commerciale
                   detailInputs:
                     - label: Date d'achat
                       rank: 1
@@ -78,7 +76,6 @@
       subcategoriesTitle: Quand avez-vous acheté le produit&#160;?
       subcategories:
         - title: Il y a moins de 6 mois
-          detailTitle: Problème de garantie légale
           detailInputs:
             - label: Date d'achat
               rank: 1
@@ -110,7 +107,6 @@
                 <br /> Avant de faire un signalement, relisez les conditions écrites dans ce contrat.
               subcategories:
                 - title: J'ai pris connaissance des conditions écrites dans mon contrat de garantie
-                  detailTitle: Problème de garantie commerciale
                   detailInputs:
                     - label: Date d'achat
                       rank: 1

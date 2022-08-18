@@ -62,7 +62,6 @@ const informationSubcategorySpec: ObjectSpec = {
 }
 
 const inputSubcategorySpec: ObjectSpec = {
-  detailTitle: _ => _.ifDefined()?.assertIsString(),
   fileLabel: _ => _.ifDefined()?.assertIsString(),
   detailInputs: _ =>
     _.ifDefined()?.assertIsArrayWith(detailInput => {
