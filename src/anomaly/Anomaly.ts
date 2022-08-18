@@ -8,7 +8,7 @@ export interface SubcategoryBase extends Category {
 
 export interface Anomaly extends Category {
   category: string
-  seoDescription?: string | null
+  seoDescription?: string
   path: string
   description?: string | null
   sprite?: string

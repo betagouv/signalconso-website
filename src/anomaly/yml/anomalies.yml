@@ -4,7 +4,6 @@ list:
     title: Retrait-Rappel spécifique
     path: retrait-rappel
     description: Retrait-Rappel spécifique.
-    seoDescription:
     hidden: true
     sprite: none
     subcategories: !!import/single subcategories/retrait-rappel.yml
