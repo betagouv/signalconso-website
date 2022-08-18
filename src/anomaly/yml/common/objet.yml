@@ -8,13 +8,6 @@
     - title: Informations manquantes
       reponseconsoCode:
         - '333'
-      description: "Certaines informations sont obligatoires.
-        <br/>Par exemple :
-        <ul>
-        <li>Vêtements : la composition des tissus (noms et proportions des matières)</li>
-        <li>Meubles : la composition, la taille, s'il faut le monter soi-même, de quel cuir il s'agit</li>
-        <li>Electroménagers : l'étiquetage énergétique, la disponibilité des pièces de rechange</li>
-        </ul>"
       detailInputs:
         - label: Quel est-le problème&#160;?
           rank: 1
@@ -53,7 +46,6 @@
       subcategories:
         - title: En France (Outre-mer compris)
           detailTitle: Problème de langue française
-          description: Les informations relatives aux produits et aux services doivent être rédigées ou traduites en français.
           reponseconsoCode:
             - '211'
           detailInputs:
@@ -131,10 +123,6 @@
       tags:
         - ReponseConso
       example: "La quantité est directement imprimée sur l'emballage par le fabricant"
-      description: Une petite différence entre la quantité écrite sur l'emballage et la quantité de votre produit est autorisée.
-        <br/>Par contre, ces différences sont encadrées par la loi.
-        <br/>Par exemple, un produit marqué "1 kg" a le droit d'avoir 15g en moins et donc de peser 0, 985 kg.
-        <br/><a href="https://www.economie.gouv.fr/dgccrf/Publications/Vie-pratique/Fiches-pratiques/controle-des-quantites-vendues-a-destination-des-professionnels" target="_blank"> En savoir plus </a>
       detailInputs:
         - label: La lettre "e" est-elle écrite à côté de l'indication du poids/volume&#160;?
           rank: 1
@@ -153,7 +141,6 @@
           type: TEXTAREA
     - title: Un produit emballé et étiqueté par le vendeur comme une barquette de viande
       example: 'La quantité est marquée sur une étiquette collée par le commerçant'
-      description: La quantité annoncée correspond à la quantité que vous devez avoir au minimum.
       detailInputs:
         - label: Date du constat ou d'achat
           rank: 1
@@ -172,7 +159,6 @@
           type: TEXTAREA
     - title: Un produit sans emballage, directement consommé
       example: 'Exemple : verre de vin dans un café, plat au restaurant'
-      description: Le poids ou volume annoncé correspond au poids ou volume minimum que vous devez avoir.
       detailInputs:
         - label: Date du constat ou d'achat
           rank: 1

@@ -8,7 +8,6 @@
       subcategoriesTitle: Quand avez-vous acheté le produit&#160;?
       subcategories:
         - title: Il y a moins de 2 ans
-          description: "Le vendeur a l'obligation de garantir 2 ans le fonctionnement normal de tous les objets. Attention : vous ne bénéficiez pas de cette garantie si vous avez cassé le produit  ou que vous l'avez mal utilisé (exemple : vous avez marché sur votre téléphone)."
           detailTitle: Problème de garantie légale
           detailInputs:
             - label: Date d'achat
@@ -79,7 +78,6 @@
       subcategoriesTitle: Quand avez-vous acheté le produit&#160;?
       subcategories:
         - title: Il y a moins de 6 mois
-          description: "Le vendeur a l'obligation de garantir 6 mois le fonctionnement normal de tous les objets. Attention : vous ne bénéficiez pas de cette garantie si vous avez cassé le produit  ou que vous l'avez mal utilisé (exemple : vous avez marché sur votre téléphone)."
           detailTitle: Problème de garantie légale
           detailInputs:
             - label: Date d'achat
@@ -150,7 +148,6 @@
   subcategoriesTitle: Le remboursement ou la reprise d'un article dans un magasin n'est pas une obligation. Vous êtes vous assuré qu’il proposait bien l'échange ou le remboursement des articles&#160;?
   subcategories:
     - title: Oui
-      description: Le commerçant doit respecter les conditions d’échange et de remboursement qui sont affichées dans son commerce ou dans votre contrat.
       reponseconsoCode:
         - '210'
     - title: Non

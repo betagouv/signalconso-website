@@ -51,7 +51,9 @@ const Node = ({anomaly, open}: {anomaly: Anomaly | Subcategory; open?: boolean})
           <Txt block>
             <span dangerouslySetInnerHTML={{__html: title}} /> <Txt color="hint">{anomaly.id}</Txt>
           </Txt>
-          {anomaly.description && <Txt block size="small" color="hint" dangerouslySetInnerHTML={{__html: anomaly.description}} />}
+          {instanceOfAnomaly(anomaly) && anomaly.description && (
+            <Txt block size="small" color="hint" dangerouslySetInnerHTML={{__html: anomaly.description}} />
+          )}
           {(anomaly as SubcategoryBase).reponseconsoCode && (
             <Txt key={1} size="small" color="hint">
               <b>ReponseConso codes:</b>&nbsp;

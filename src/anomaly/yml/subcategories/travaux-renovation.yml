@@ -89,7 +89,6 @@
       subcategories:
         - title: Malfaçon
           example: Constat d'un défaut résultant d'une mauvaise exécution des travaux
-          description: Le constat résulte d'une mauvaise exécution des travaux, vous pouvez faire jouer votre garantie !
         - title: Autre
     - title: Autre
 - title: Travaux / rénovation
@@ -381,7 +380,6 @@
       subcategories:
         - title: Malfaçon
           example: Constat d'un défaut résultant d'une mauvaise exécution des travaux
-          description: Le constat résulte d'une mauvaise exécution des travaux, vous pouvez faire jouer votre garantie !
           reponseconsoCode:
             - '446'
         - title: Les travaux ne sont toujours pas terminés
@@ -401,19 +399,11 @@
               reponseconsoCode:
                 - '2213'
                 - '2214'
-              description:
-                Vous avez un délai de 14 jours pour changer d’avis. On appelle ce délai le "délai de rétractation". Ce délai est valable même si vous avez demandé à faire démarrer votre contrat immédiatement
-                <br />Vous n’avez pas à vous justifier auprès du commerçant.
-                <br/><a href="../delai-de-retractation" target="_blank">>> Comment calculer mon délai de retractation</a>
             - title: À distance
               example: 'Exemple : sur internet'
               reponseconsoCode:
                 - '2213'
                 - '2214'
-              description:
-                Vous avez un délai de 14 jours pour changer d’avis. On appelle ce délai le "délai de rétractation". Ce délai est valable même si vous avez demandé à faire démarrer votre contrat immédiatement
-                <br />Vous n’avez pas à vous justifier auprès du commerçant.
-                <br/><a href="../delai-de-retractation" target="_blank">>> Comment calculer mon délai de retractation</a>
             - title: Au lieu habituel d'activité du professionnel
               information:
                 title: Vous ne pouvez plus vous retracter
@@ -432,10 +422,6 @@
                     - '2206'
                     - '2214'
                     - '2213'
-                  description:
-                    Vous avez un délai de 14 jours pour changer d’avis. On appelle ce délai le "délai de rétractation". Ce délai est valable même si vous avez demandé à faire démarrer votre contrat immédiatement
-                    <br />Vous n’avez pas à vous justifier auprès du commerçant.
-                    <br/><a href="../delai-de-retractation" target="_blank">>> Comment calculer mon délai de retractation</a>
         - title: Contrat non respecté
           reponseconsoCode:
             - '443'
@@ -472,7 +458,6 @@
                     - '210'
             - title: Autre
         - title: Garanties
-          description: Vous trouverez des informations sur la garantie qui s'applique dans votre cas sur <a href="https://www.economie.gouv.fr/dgccrf/Publications/Vie-pratique/Fiches-pratiques/Les-garanties-legales" target="_blank">https://www.economie.gouv.fr/dgccrf/Publications/Vie-pratique/Fiches-pratiques/Les-garanties-legales</a>
           reponseconsoCode:
             - '469'
           subcategories:

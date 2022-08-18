@@ -14,7 +14,6 @@
         - title: Il manque des prix / les prix sont illisibles
           ccrfCode:
             - '163'
-          description: 'Votre droit : tous les prix doivent être affichés.'
           tags:
             - ReponseConso
           reponseconsoCode:
@@ -59,9 +58,6 @@
             - '224'
             - '210'
             - '212'
-          description: "<br/><br/><b>Soldes :</b> Les dates des soldes sont encadrées par la loi. Ces dates sont valables pour les magasins et aussi pour la vente sur internet.
-            <br/><br/><b>Liquidation :</b> les liquidations sont soumises à déclaration préalable auprès du maire de la commune où a lieu cette opération.
-            Un document prouvant cette déclaration doit être affichée dans le magasin, pendant toute la durée de la liquidation. Ce document est souvent affiché sur la vitrine car il doit être visible de la rue.'"
           detailInputs:
             - label: "Il s'agit d'un problème sur:"
               rank: 1
@@ -163,7 +159,6 @@
                 - '212'
                 - '210'
                 - '224'
-              description: 'Votre droit : en cas de différence de prix, le vendeur doit vendre le produit au prix le plus faible pour le client.'
               detailInputs:
                 - label: Date du constat
                   rank: 1
@@ -201,7 +196,6 @@
             - title: Il manque des prix / les prix sont illisibles
               ccrfCode:
                 - '163'
-              description: 'Votre droit : tous les prix doivent être affichés sans que vous soyez obligé de les demander.'
               reponseconsoCode:
                 - '212'
                 - '210'
@@ -242,10 +236,6 @@
                 - '224'
                 - '210'
                 - '212'
-              description:
-                '<br/><br/><b>Soldes :</b> Les dates des soldes sont encadrées par la loi. Ces dates sont valables pour les magasins et aussi pour la vente sur internet.
-                <br/><br/><b>Liquidation :</b> les liquidations sont soumises à déclaration préalable auprès du maire de la commune où a lieu cette opération.
-                Un document prouvant cette déclaration doit être affichée dans le magasin, pendant toute la durée de la liquidation. Ce document est souvent affiché sur la vitrine car il doit être visible de la rue.'
               detailInputs:
                 - label: "Il s'agit d'un problème sur:"
                   rank: 1
@@ -440,7 +430,6 @@
                     - title: Oui
                       detailTitle: Il est interdit de vendre un produit avec la date limite de consommation (DLC) dépassée.
                         <br/>Après cette date, il est dangereux de consommer le produit.
-                      description: Les dates "DLC" concernent surtout des produits frais.
                     - title: Non
                       information:
                         title: Le commerçant a le droit de vendre un produit jusqu'au jour indiqué sur la date limite de consommation (DLC).
@@ -576,7 +565,6 @@
                   subcategoriesTitle: Quand avez-vous acheté le produit&#160;?
                   subcategories:
                     - title: Il y a moins de 2 ans
-                      description: "Le vendeur a l'obligation de garantir 2 ans le fonctionnement normal de tous les objets. Attention : vous ne bénéficiez pas de cette garantie si vous avez cassé le produit  ou que vous l'avez mal utilisé (exemple : vous avez marché sur votre téléphone)."
                       detailTitle: Problème de garantie légale
                       detailInputs:
                         - label: Date d'achat
@@ -650,7 +638,6 @@
                   subcategoriesTitle: Quand avez-vous acheté le produit&#160;?
                   subcategories:
                     - title: Il y a moins de 6 mois
-                      description: "Le vendeur a l'obligation de garantir 6 mois le fonctionnement normal de tous les objets. Attention : vous ne bénéficiez pas de cette garantie si vous avez cassé le produit  ou que vous l'avez mal utilisé (exemple : vous avez marché sur votre téléphone)."
                       detailTitle: Problème de garantie légale
                       detailInputs:
                         - label: Date d'achat
@@ -725,7 +712,6 @@
               subcategoriesTitle: Le remboursement ou la reprise d'un article dans un magasin n'est pas une obligation. Vous êtes-vous assuré qu’il proposait bien l'échange ou le remboursement des articles&#160;?
               subcategories:
                 - title: Oui
-                  description: Le commerçant doit respecter les conditions d’échange et de remboursement qui sont affichées dans son commerce ou dans votre contrat.
                   reponseconsoCode:
                     - '464'
                     - '465'
@@ -748,7 +734,6 @@
                   reponseconsoCode:
                     - '643'
                     - '454'
-                  description: 'Votre droit : les billets et les pièces en euros doivent être acceptés chez les commerçants en France.'
                 - title: Il n'avait pas assez de monnaie
                   information:
                     content: C'est à vous de faire l'appoint. Le  vendeur peut refuser le paiement en espèces s'il ne dispose pas de suffisamment de monnaie.

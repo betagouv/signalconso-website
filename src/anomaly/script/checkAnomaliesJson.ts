@@ -32,7 +32,6 @@ const anomalySpec: ObjectSpec = {
 }
 
 const baseSubcategorySpec: ObjectSpec = {
-  description: _ => _.ifDefined()?.assertIsString(),
   tags: _ => _.ifDefined()?.assertIsArrayOfAllowedStrings(Object.values(ReportTag)),
   example: _ => _.ifDefined()?.assertIsString(),
   reponseconsoCode: _ => _.ifDefined()?.ifNotNull()?.assertIsArrayOfString(),

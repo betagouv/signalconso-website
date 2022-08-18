@@ -278,7 +278,6 @@
           ccrfCode:
             - '163'
             - '21b'
-          description: 'Votre droit : tous les prix doivent être affichés.'
           detailInputs:
             - label: Veuillez préciser
               rank: 1
@@ -291,7 +290,6 @@
       subcategories:
         - title: Malfaçon
           example: Constat d'un défaut résultant d'une mauvaise exécution des travaux
-          description: Le constat résulte d'une mauvaise exécution des travaux, vous pouvez faire jouer votre garantie !
         - title: Autre
 - title: Bien-être
   example: 'Exemple : coiffeur, esthéticien, Cabinet UV, salon de massage'
@@ -313,7 +311,6 @@
             - title: Il manque des prix / les prix sont illisibles
               ccrfCode:
                 - '163'
-              description: 'Votre droit : tous les prix doivent être affichés.'
               detailInputs:
                 - label: Veuillez préciser
                   rank: 1
@@ -361,7 +358,6 @@
             - title: Il manque des prix / les prix sont illisibles
               ccrfCode:
                 - '163'
-              description: 'Votre droit : tous les prix doivent être affichés.'
               detailInputs:
                 - label: Veuillez préciser
                   rank: 1
@@ -409,7 +405,6 @@
             - title: Il manque des prix / les prix sont illisibles
               ccrfCode:
                 - '163'
-              description: 'Votre droit : tous les prix doivent être affichés.'
               detailInputs:
                 - label: Veuillez préciser
                   rank: 1
@@ -458,7 +453,6 @@
               ccrfCode:
                 - '163'
                 - '21b'
-              description: 'Votre droit : tous les prix doivent être affichés.'
               detailInputs:
                 - label: Veuillez préciser
                   rank: 1

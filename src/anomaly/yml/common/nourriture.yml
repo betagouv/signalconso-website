@@ -15,7 +15,6 @@
                 - '323'
               detailTitle: Il est interdit de vendre un produit avec la date limite de consommation (DLC) dépassée.
                 <br/>Après cette date, il est dangereux de consommer le produit.
-              description: Les dates "DLC" concernent surtout des produits frais.
             - title: Non
               information:
                 subTitle: Le commerçant a le droit de vendre un produit jusqu'au jour indiqué sur la date limite de consommation (DLC).
@@ -59,7 +58,6 @@
               reponseconsoCode:
                 - '323'
               detailTitle: Il est interdit de vendre un produit avec une date limite de consommation dépassée. Ces dates concernent surtout des produits frais.
-              description: Après cette date, il est dangereux de consommer le produit.
               detailInputs:
                 - label: Date du constat (ou d'achat suivant le cas)
                   rank: 1
@@ -82,8 +80,6 @@
         - title: Cas particulier des oeufs
           reponseconsoCode:
             - '323'
-          description: La date des oeufs est une date de consommation recommandée (DCR).
-            <br/> Les oeufs ne peuvent être vendus au-delà de 7 jours avant la DCR.
           detailInputs:
             - label: Quel est le problème ?
               rank: 1
@@ -415,7 +411,6 @@
   subcategories:
     - title: Le commerçant n'effectue pas la tare lors de la pesée
       example: Tarer une balance signifie imposer la valeur zéro sur une balance alors qu'il y a un emballage dessus, pour ne peser que le contenu.
-      description: La tare peut aussi être enregistrée préalablement. Vous ne voyez donc pas toujours la manipulation alors que la tare est bien effectuée.
       detailInputs:
         - label: Préciser le lieu (rayon) dans le cas d'un grand magasin
           rank: 1
@@ -427,11 +422,6 @@
       subcategories:
         - title: Un produit emballé par le fabricant comme une boîte de conserve, un paquet, une bouteille
           example: "La quantité est directement imprimée sur l'emballage par le fabricant"
-          description:
-            Une petite différence entre la quantité écrite sur l'emballage et la quantité de votre produit est autorisée.
-            <br/>Par contre, ces différences sont encadrées par la loi.
-            <br/>Par exemple, un produit marqué "1 kg" a le droit d'avoir 15g en moins et donc de peser 0, 985 kg.
-            <br/><a href="https://www2.economie.gouv.fr/dgccrf/Publications/Vie-pratique/Fiches-pratiques/Metrologie-pour-professionnels" target="_blank"> En savoir plus </a>
           detailInputs:
             - label: La lettre "e" est-elle écrite à côté de l'indication du poids/volume&#160;?
               rank: 1
@@ -450,7 +440,6 @@
               type: TEXTAREA
         - title: Un produit emballé et étiqueté par le magasin comme une barquette de viande
           example: 'La quantité est marquée sur une étiquette collée par le commerçant'
-          description: La quantité annoncée correspond à la quantité que vous devez avoir au minimum.
           detailInputs:
             - label: Date du constat ou d'achat
               rank: 1
@@ -469,7 +458,6 @@
               type: TEXTAREA
         - title: Un produit sans emballage, directement consommé
           example: 'Exemple : verre de vin dans un café, plat au restaurant'
-          description: Le poids ou volume annoncé correspond au poids ou volume minimum que vous devez avoir.
           detailInputs:
             - label: Date du constat ou d'achat
               rank: 1

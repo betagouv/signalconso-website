@@ -4,7 +4,6 @@
       example: 'Exemple : la facture est élevée par rapport à ma consommation, les mentions du contrat sont abusives'
       subcategories:
         - title: Le distributeur refuse de m'ouvrir un contrat car je suis locataire et non propriétaire
-          description: Conditionner l'abonnement du locataire à l'accord écrit du propriétaire est interdit. Refuser la demande d'abonnement d'un locataire car il n'est pas propriétaire est aussi interdit.
         - title: Le distributeur me demande de payer une avance sur ma consommation
           subcategoriesTitle: Quand doit-être remboursée cette avance ?
           tags:
@@ -18,7 +17,6 @@
               tags:
                 - ReponseConso
               detailTitle: Il est interdit de demander un dépôt de garantie.
-              description: Rendre l'argent à la fin de l'abonnement ou du contrat sous-entend que c'est un dépôt de garantie. C'est interdit par la loi.
               detailInputs:
                 - label: Date du contrat
                   rank: 1
@@ -58,7 +56,6 @@
         - ReponseConso
         - LitigeContractuel
       detailTitle: Il est interdit de couper ou réduire l'eau en cas d'impayé lorsqu'il s'agit d'une résidence principale.
-      description: Les coupures d'eau et les réductions de débit sont interdites en cas de factures impayées, pour les résidences principales et ce toute l'anné. Par contre, vous devrez toujours payer votre facture.
       detailInputs:
         - label: Date du contrat
           rank: 1
@@ -227,10 +224,6 @@
               subcategoriesTitle: Ce contrat concerne un logement
               subcategories:
                 - title: Dans lequel vous venez d'emménager
-                  description:
-                    Vous avez un délai de 14 jours pour changer d’avis. On appelle ce délai le "délai de rétractation". Ce délai est valable même si vous avez demandé à faire démarrer votre contrat immédiatement
-                    <br />Vous n’avez pas à vous justifier auprès du commerçant.
-                    <br/><a href="../delai-de-retractation" target="_blank">>> Comment calculer mon délai de retractation</a>
                   subcategoriesTitle: Avez-vous fait votre demande dans ce délai&#160;?
                   subcategories:
                     - title: Oui
@@ -255,10 +248,6 @@
                   subcategoriesTitle: Avez-vous demandé à faire démarrer votre contrat immédiatement ?
                   subcategories:
                     - title: Non. Le contrat doit démarrer à la fin du délai de retractation.
-                      description:
-                        Vous avez un délai de 14 jours pour changer d’avis. On appelle ce délai le "délai de rétractation".
-                        <br />Vous n’avez pas à vous justifier auprès du commerçant.
-                        <br/><a href="../delai-de-retractation" target="_blank">>> Comment calculer mon délai de retractation</a>
                       subcategoriesTitle: Avez-vous fait votre demande dans ce délai&#160;?
                       subcategories:
                         - title: Oui
