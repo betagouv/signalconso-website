@@ -18,7 +18,6 @@ const baseCategorySpec: ObjectSpec = {
   id: _ => _.ifDefined()?.assertIsString(),
   title: _ => _.assertIsString(),
   subcategoriesTitle: _ => _.ifDefined()?.assertIsString(),
-  companyKind: _ => _.ifDefined()?.assertIsAllowedString(Object.values(CompanyKinds)),
   subcategories: _ => _.ifDefined()?.assertIsArrayWith(assertIsSubcategory),
 }
 
@@ -38,6 +37,7 @@ const baseSubcategorySpec: ObjectSpec = {
   example: _ => _.ifDefined()?.assertIsString(),
   reponseconsoCode: _ => _.ifDefined()?.ifNotNull()?.assertIsArrayOfString(),
   ccrfCode: _ => _.ifDefined()?.assertIsArrayOfString(),
+  companyKind: _ => _.ifDefined()?.assertIsAllowedString(Object.values(CompanyKinds)),
   // a Subcategory is always a Category
   // this triggers the recursion
   ...baseCategorySpec,

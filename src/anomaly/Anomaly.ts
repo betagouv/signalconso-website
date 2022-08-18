@@ -3,7 +3,6 @@ export interface Category {
   title: string
   subcategoriesTitle?: string
   subcategories?: Subcategory[]
-  companyKind?: CompanyKinds
 }
 
 export interface Anomaly extends Category {
@@ -21,6 +20,7 @@ export interface SubcategoryBase extends Category {
   example?: string
   reponseconsoCode?: string[] | null
   ccrfCode?: string[]
+  companyKind?: CompanyKinds
 }
 
 export type Subcategory = SubcategoryInput | SubcategoryInformation
