@@ -18,7 +18,7 @@ export interface Anomaly extends Category {
   breadcrumbTitle?: string
 }
 
-export type Subcategory = SubcategoryBase | SubcategoryInput | SubcategoryInformation
+export type Subcategory = SubcategoryInput | SubcategoryInformation
 
 export enum ReportTag {
   LitigeContractuel = 'LitigeContractuel',
