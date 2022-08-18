@@ -8,11 +8,10 @@ export interface Category {
 
 export interface Anomaly extends Category {
   category: string
+  description: string
   seoDescription?: string
   path: string
-  description: string
   sprite: string
-  cssClass?: string
   hidden?: boolean
   information?: Information
   breadcrumbTitle?: string

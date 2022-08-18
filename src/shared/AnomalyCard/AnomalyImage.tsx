@@ -2,7 +2,7 @@ import {Box, BoxProps} from '@mui/material'
 import {Anomaly} from '../../anomaly/Anomaly'
 
 interface Props extends BoxProps {
-  anomaly: Pick<Anomaly, 'sprite' | 'cssClass'>
+  anomaly: Pick<Anomaly, 'sprite'>
   scale?: number
 }
 

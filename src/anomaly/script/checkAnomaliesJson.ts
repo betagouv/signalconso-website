@@ -28,7 +28,6 @@ const anomalySpec: ObjectSpec = {
   path: _ => _.assertIsString(),
   description: _ => _.assertIsString(),
   sprite: _ => _.assertIsString(),
-  cssClass: _ => _.ifDefined()?.assertIsString(),
   hidden: _ => _.ifDefined()?.assertIsBoolean(),
   information: _ => _.ifDefined()?.assertIsString(),
   breadcrumbTitle: _ => _.ifDefined()?.assertIsString(),
