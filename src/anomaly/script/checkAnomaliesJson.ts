@@ -29,7 +29,6 @@ const anomalySpec: ObjectSpec = {
   description: _ => _.assertIsString(),
   sprite: _ => _.assertIsString(),
   hidden: _ => _.ifDefined()?.assertIsBoolean(),
-  information: _ => _.ifDefined()?.assertIsString(),
   breadcrumbTitle: _ => _.ifDefined()?.assertIsString(),
   ...baseCategorySpec,
 }

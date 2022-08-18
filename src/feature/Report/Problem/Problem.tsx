@@ -76,10 +76,6 @@ export const Problem = ({anomaly}: Props) => {
       return copy
     })
   }
-
-  if (anomaly.information) {
-    return <ProblemInformation anomaly={anomaly} information={anomaly.information} subcategories={[]} />
-  }
   return (
     <>
       {[anomaly, ...(reportDraft.subcategories ?? [])].map(
