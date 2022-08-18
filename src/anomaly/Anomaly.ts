@@ -13,7 +13,6 @@ export interface Anomaly extends Category {
   path: string
   sprite: string
   hidden?: boolean
-  breadcrumbTitle?: string
 }
 
 export interface SubcategoryBase extends Category {
