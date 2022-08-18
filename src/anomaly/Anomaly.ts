@@ -1,9 +1,9 @@
-export interface SubcategoryBase extends Category {
-  description?: string
-  tags?: ReportTag[]
-  example?: string
-  reponseconsoCode?: string[] | null
-  ccrfCode?: string[]
+export interface Category {
+  id: string
+  title: string
+  subcategoriesTitle?: string
+  subcategories?: Subcategory[]
+  companyKind?: CompanyKinds
 }
 
 export interface Anomaly extends Category {
@@ -18,7 +18,25 @@ export interface Anomaly extends Category {
   breadcrumbTitle?: string
 }
 
+export interface SubcategoryBase extends Category {
+  description?: string
+  tags?: ReportTag[]
+  example?: string
+  reponseconsoCode?: string[] | null
+  ccrfCode?: string[]
+}
+
 export type Subcategory = SubcategoryInput | SubcategoryInformation
+
+export interface SubcategoryInput extends SubcategoryBase {
+  detailTitle?: string
+  fileLabel?: string
+  detailInputs?: DetailInput[]
+}
+
+export interface SubcategoryInformation extends SubcategoryBase {
+  information: Information
+}
 
 export enum ReportTag {
   LitigeContractuel = 'LitigeContractuel',
@@ -43,24 +61,6 @@ export enum CompanyKinds {
   PHONE = 'PHONE',
   LOCATION = 'LOCATION',
   INFLUENCEUR = 'INFLUENCEUR',
-}
-
-export interface Category {
-  id: string
-  title: string
-  subcategoriesTitle?: string
-  subcategories?: Subcategory[]
-  companyKind?: CompanyKinds
-}
-
-export interface SubcategoryInput extends SubcategoryBase {
-  detailTitle?: string
-  fileLabel?: string
-  detailInputs?: DetailInput[]
-}
-
-export interface SubcategoryInformation extends SubcategoryBase {
-  information: Information
 }
 
 export interface Information {
