@@ -10,7 +10,7 @@ export interface Anomaly extends Category {
   category: string
   seoDescription?: string
   path: string
-  description?: string | null
+  description?: string
   sprite?: string
   cssClass?: string
   hidden?: boolean
