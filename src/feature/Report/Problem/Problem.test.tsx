@@ -30,6 +30,7 @@ class ProblemFixture {
     title: '',
     path: 'myPath',
     sprite: 'category-restaurant',
+    description: 'my description',
     subcategories: ProblemFixture.subcategories,
   }
 }
