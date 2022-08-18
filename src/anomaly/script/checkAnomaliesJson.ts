@@ -35,12 +35,12 @@ const anomalySpec: ObjectSpec = {
   ...baseCategorySpec,
 }
 
-const baseSubcategorySpec = {
-  description: (_: any) => _.ifDefined()?.assertIsString(),
-  tags: (_: any) => _.ifDefined()?.assertIsArrayOfAllowedStrings(Object.values(ReportTag)),
-  example: (_: any) => _.ifDefined()?.assertIsString(),
-  reponseconsoCode: (_: any) => _.ifDefined()?.ifNotNull()?.assertIsArrayOfString(),
-  ccrfCode: (_: any) => _.ifDefined()?.assertIsArrayOfString(),
+const baseSubcategorySpec: ObjectSpec = {
+  description: _ => _.ifDefined()?.assertIsString(),
+  tags: _ => _.ifDefined()?.assertIsArrayOfAllowedStrings(Object.values(ReportTag)),
+  example: _ => _.ifDefined()?.assertIsString(),
+  reponseconsoCode: _ => _.ifDefined()?.ifNotNull()?.assertIsArrayOfString(),
+  ccrfCode: _ => _.ifDefined()?.assertIsArrayOfString(),
   // a Subcategory is always a Category
   // this triggers the recursion
   ...baseCategorySpec,
