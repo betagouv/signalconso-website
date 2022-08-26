@@ -7,12 +7,8 @@ import {colorError, colorInfo, colorSuccess, colorWarning} from '../_core/style/
 const height = (dense?: boolean) => (dense ? 44 : 52)
 
 interface AlertProps extends BoxProps {
-  style?: CSSProperties
   type: 'info' | 'error' | 'warning' | 'success'
-  icon?: string
-  hidden?: boolean
   deletable?: boolean
-  persistentDelete?: boolean
   action?: ReactNode
   dense?: boolean
   gutterBottom?: boolean
@@ -21,11 +17,8 @@ interface AlertProps extends BoxProps {
 export const Alert = ({
   type,
   dense,
-  hidden,
-  icon,
   action,
   deletable,
-  persistentDelete,
   sx,
   gutterBottom,
   children,
@@ -88,7 +81,7 @@ export const Alert = ({
             color: darken(colorWarning, 0.1),
           },
         }[type],
-        ...((hidden || !isVisible || (persistentDelete && !isPersistentVisible)) && {
+        ...((!isVisible || !isPersistentVisible) && {
           minHeight: '0 !important',
           height: '0 !important',
           opacity: '0 !important',
@@ -109,11 +102,10 @@ export const Alert = ({
           alignSelf: 'flex-start',
         }}
       >
-        {icon ? icon : getIconFromType()}
+        {getIconFromType()}
       </Icon>
       <Box
-        children={children}
-        dangerouslySetInnerHTML={dangerouslySetInnerHTML}
+        {...(children ? {children} : {dangerouslySetInnerHTML})}
         sx={{
           flex: 1,
           py: dense ? 1 : 2,
@@ -136,7 +128,7 @@ export const Alert = ({
               <IconButton
                 onClick={() => {
                   setIsVisible(false)
-                  if (persistentDelete) setPersistentIsVisible(false)
+                  setPersistentIsVisible(false)
                 }}
                 size="large"
               >

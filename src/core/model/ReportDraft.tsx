@@ -1,6 +1,5 @@
 import {getDraftReportInputs} from 'feature/Report/Details/draftReportInputs'
 import {isSpecifyInputName, SpecifyFormUtils} from 'feature/Report/Details/Details'
-import {fromNullable} from 'fp-ts/lib/Option'
 import {DeepPartial} from '../../alexlibs/ts-utils'
 import {CompanyDraft, ReportDraft, ReportDraftConsumer} from '../../client/report/ReportDraft'
 import {Anomaly, DetailInput} from '../../anomaly/Anomaly'
@@ -42,15 +41,15 @@ export class ReportDraft2 {
       .filter(_ => !isSpecifyInputName(_))
       .map(index => {
         const label = mapLabel(inputs[+index].label)
-        const value = fromNullable(details[index])
-          .map(v =>
-            Array.isArray(v)
-              ? v.map(_ => (_.includes(SpecifyFormUtils.keyword) ? concatSpecifiedValued(_, +index) : _))
-              : concatSpecifiedValued(v, +index),
-          )
-          .map(v => (Array.isArray(v) ? v.join(', ') : v))
-          .getOrElse('')
-        return {label, value}
+
+        const prepareValue = (v: string | string[]): string => {
+          if (Array.isArray(v)) {
+            return v.map(_ => (_.includes(SpecifyFormUtils.keyword) ? concatSpecifiedValued(_, +index) : _)).join(', ')
+          }
+          return concatSpecifiedValued(v, +index)
+        }
+
+        return {label, value: prepareValue(details[index])}
       })
   }
 

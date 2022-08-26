@@ -1,7 +1,8 @@
 import type {Config} from '@jest/types'
 
-export default async (): Promise<Config.InitialOptions> => {
+const buildConfig = async (): Promise<Config.InitialOptions> => {
   return {
+    testEnvironment: 'jsdom',
     testMatch: ['**/*test.tsx'],
     moduleDirectories: ['node_modules', 'src'],
     setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
@@ -13,3 +14,4 @@ export default async (): Promise<Config.InitialOptions> => {
     ],
   }
 }
+export default buildConfig

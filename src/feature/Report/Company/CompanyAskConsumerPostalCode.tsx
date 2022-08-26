@@ -30,7 +30,7 @@ export const CompanyAskConsumerPostalCode = ({value, onChange}: Props) => {
   return (
     <Animate>
       <Panel id="CompanyAskConsumerPostalCode">
-        <Alert dense type="info" sx={{mb: 2}} deletable persistentDelete>
+        <Alert dense type="info" sx={{mb: 2}} deletable>
           <Txt size="small" dangerouslySetInnerHTML={{__html: m.cantIdentifyCompany}} />
         </Alert>
         <form onSubmit={handleSubmit(_ => onChange(_.place))}>

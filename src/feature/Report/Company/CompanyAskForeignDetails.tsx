@@ -97,7 +97,7 @@ export const CompanyAskForeignDetails = ({onSubmit}: Props) => {
               />
             </FormLayout>
             <br />
-            <Alert dense type="info" sx={{mb: 2}} deletable persistentDelete>
+            <Alert dense type="info" sx={{mb: 2}} deletable>
               <Txt size="small" dangerouslySetInnerHTML={{__html: m.cantIdentifyCompany}} />
             </Alert>
             <FormLayout required label={m.yourPostalCode}>

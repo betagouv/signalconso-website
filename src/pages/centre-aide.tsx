@@ -1,11 +1,10 @@
-import {Page} from 'shared/Page/Page'
-import {CentreAideConso} from 'feature/CentreAide/CentreAideConso'
-import {useState} from 'react'
 import {Tab, Tabs} from '@mui/material'
-import {fnSwitch} from '../alexlibs/ts-utils'
+import {pageDefinitions} from 'core/pageDefinition'
+import {CentreAideConso} from 'feature/CentreAide/CentreAideConso'
 import {CentreAidePro} from 'feature/CentreAide/CentreAidePro'
 import Head from 'next/head'
-import {pageDefinitions} from 'core/pageDefinition'
+import {useState} from 'react'
+import {Page} from 'shared/Page/Page'
 
 const a11yProps = (index: number) => {
   return {
@@ -34,8 +33,7 @@ const CentreAide = () => {
         <Tab sx={{flex: 1}} label="Consommateur" {...a11yProps(0)} />
         <Tab sx={{flex: 1}} label="Professionnel" {...a11yProps(1)} />
       </Tabs>
-
-      {fnSwitch(activeTab, [() => <CentreAideConso role="tabpanel" />, () => <CentreAidePro role="tabpanel" />])}
+      {activeTab === 0 ? <CentreAideConso role="tabpanel" /> : <CentreAidePro role="tabpanel" />}
     </Page>
   )
 }
