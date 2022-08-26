@@ -1,10 +1,8 @@
 import {Box, Icon, Tooltip} from '@mui/material'
 import {extensionToType, FileType, reportFileConfig} from './reportFileConfig'
-import {some} from 'fp-ts/lib/Option'
 import React from 'react'
 import {IconBtn} from '../../alexlibs/mui-extension'
 import {useI18n} from 'core/i18n'
-import {appConfig} from '../../conf/appConfig'
 import {useApiSdk} from 'core/context/ApiSdk'
 import {ScDialog} from '../Dialog/ScDialog'
 import {UploadedFile} from '../../client/file/UploadedFile'
@@ -23,9 +21,7 @@ export const ReportFile = ({file, onRemove}: ReportFileProps) => {
   const {apiSdk} = useApiSdk()
   const {m} = useI18n()
 
-  const fileUrl = some(apiSdk.document.getLink(file))
-    .map(_ => (appConfig.isDev ? _.replace(appConfig.apiBaseUrl, 'https://signal-api.conso.gouv.fr') : _))
-    .toUndefined()
+  const fileUrl = apiSdk.document.getLink(file)
 
   const remove = async () => {
     onRemove?.(file)

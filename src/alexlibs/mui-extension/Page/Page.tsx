@@ -7,7 +7,7 @@ export interface PageProps extends BoxProps {
   animated?: boolean
   className?: any
   style?: object
-  children: ReactNode
+  children: ReactNode | ReactNode[]
 }
 
 let timeout: NodeJS.Timeout | undefined

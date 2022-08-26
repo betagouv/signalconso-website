@@ -4,11 +4,11 @@ import {StepperHeader} from './StepperHeader'
 export interface StepProps {
   name: string
   label: string
-  component: ReactNode
+  component: () => ReactNode
 }
 
 interface StepperProps {
-  renderDone?: ReactNode
+  renderDone?: () => ReactNode
   steps: StepProps[]
   initialStep?: number
   onStepChange?: (props: StepProps, index: number) => void

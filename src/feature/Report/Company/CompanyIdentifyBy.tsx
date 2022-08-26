@@ -1,7 +1,6 @@
 import React, {ReactNode, useState} from 'react'
 import {ScRadioGroup, ScRadioGroupItem} from 'shared/RadioGroup'
 import {useI18n} from 'core/i18n'
-import {BoxProps} from '@mui/material'
 import {Txt} from '../../../alexlibs/mui-extension'
 import {Panel, PanelBody} from 'shared/Panel/Panel'
 import {Animate} from 'shared/Animate/Animate'
@@ -13,13 +12,13 @@ export enum IdentifyBy {
   NONE = 'NONE',
 }
 
-interface Props extends Omit<BoxProps, 'onChange' | 'defaultValue'> {
+interface Props {
   companyKind: CompanyKinds
   children: (identifyBy: IdentifyBy) => ReactNode
   value?: IdentifyBy
 }
 
-export const CompanyIdentifyBy = ({companyKind, value, children, ...props}: Props) => {
+export const CompanyIdentifyBy = ({companyKind, value, children}: Props) => {
   const {m} = useI18n()
   const [identifyBy, setIdentifyBy] = useState<IdentifyBy | undefined>()
   return (

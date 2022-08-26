@@ -1,8 +1,8 @@
 import {UploadedFile} from '../file/UploadedFile'
 import {DetailInputValue} from './Report'
-import {uniqby} from '../helper/LodashNamedExport'
 import {Address, CompanyKinds, ReportTag, Subcategory} from '../../model'
 import {map} from '../../alexlibs/ts-utils'
+import {uniqBy} from 'core/lodashNamedExport'
 
 export enum Gender {
   Male = 'Male',
@@ -60,14 +60,14 @@ export class ReportDraft {
   }
 
   static readonly getReponseconsoCode = (r: ReportDraft): string[] => {
-    return uniqby(
+    return uniqBy(
       (r.subcategories ?? []).flatMap(_ => _.reponseconsoCode ?? []),
       (_: any) => _,
     )
   }
 
   static readonly ccrfCode = (r: ReportDraft): string[] => {
-    return uniqby(
+    return uniqBy(
       (r.subcategories ?? []).flatMap(_ => _.ccrfCode ?? []),
       (_: any) => _,
     )

@@ -19,7 +19,7 @@ interface Form {
   website: string
 }
 
-interface Props extends Omit<BoxProps, 'onSubmit'> {
+interface Props extends Omit<BoxProps, 'onSubmit' | 'children'> {
   value?: string
   children: (websiteUrl?: string, result?: CompanySearchResult[], countries?: Country[]) => ReactNode
 }
