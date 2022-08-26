@@ -6,7 +6,6 @@
     - title: Les espèces sont systématiquement refusées
       reponseconsoCode:
         - '454'
-      description: 'Votre droit : les billets et les pièces en euros doivent être obligatoirement acceptés en France.'
     - title: Je n'avais pas la monnaie
       information:
         content: C'est à vous de faire l'appoint. Un commerçant a le droit refuser le paiement en espèces s'il ne dispose pas de suffisamment de monnaie.

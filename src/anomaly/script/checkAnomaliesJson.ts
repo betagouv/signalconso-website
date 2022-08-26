@@ -15,32 +15,29 @@ const rootSpec: ObjectSpec = {
 }
 
 const baseCategorySpec: ObjectSpec = {
-  id: _ => _.ifDefined()?.assertIsString(),
   title: _ => _.assertIsString(),
   subcategoriesTitle: _ => _.ifDefined()?.assertIsString(),
-  companyKind: _ => _.ifDefined()?.assertIsAllowedString(Object.values(CompanyKinds)),
   subcategories: _ => _.ifDefined()?.assertIsArrayWith(assertIsSubcategory),
 }
 
 const anomalySpec: ObjectSpec = {
+  id: _ => _.ifDefined()?.assertIsString(),
   category: _ => _.assertIsString(),
-  seoDescription: _ => _.ifDefined()?.ifNotNull()?.assertIsString(),
+  seoDescription: _ => _.ifDefined()?.assertIsString(),
   path: _ => _.assertIsString(),
-  description: _ => _.ifDefined()?.assertIsString(),
-  sprite: _ => _.ifDefined()?.assertIsString(),
-  cssClass: _ => _.ifDefined()?.assertIsString(),
+  description: _ => _.assertIsString(),
+  sprite: _ => _.assertIsString(),
   hidden: _ => _.ifDefined()?.assertIsBoolean(),
-  information: _ => _.ifDefined()?.assertIsString(),
-  breadcrumbTitle: _ => _.ifDefined()?.assertIsString(),
+  isHiddenDemoCategory: _ => _.ifDefined()?.assertIsBoolean(),
   ...baseCategorySpec,
 }
 
-const baseSubcategorySpec = {
-  description: (_: any) => _.ifDefined()?.assertIsString(),
-  tags: (_: any) => _.ifDefined()?.assertIsArrayOfAllowedStrings(Object.values(ReportTag)),
-  example: (_: any) => _.ifDefined()?.assertIsString(),
-  reponseconsoCode: (_: any) => _.ifDefined()?.ifNotNull()?.assertIsArrayOfString(),
-  ccrfCode: (_: any) => _.ifDefined()?.assertIsArrayOfString(),
+const baseSubcategorySpec: ObjectSpec = {
+  tags: _ => _.ifDefined()?.assertIsArrayOfAllowedStrings(Object.values(ReportTag)),
+  example: _ => _.ifDefined()?.assertIsString(),
+  reponseconsoCode: _ => _.ifDefined()?.ifNotNull()?.assertIsArrayOfString(),
+  ccrfCode: _ => _.ifDefined()?.assertIsArrayOfString(),
+  companyKind: _ => _.ifDefined()?.assertIsAllowedString(Object.values(CompanyKinds)),
   // a Subcategory is always a Category
   // this triggers the recursion
   ...baseCategorySpec,
@@ -66,7 +63,6 @@ const informationSubcategorySpec: ObjectSpec = {
 }
 
 const inputSubcategorySpec: ObjectSpec = {
-  detailTitle: _ => _.ifDefined()?.assertIsString(),
   fileLabel: _ => _.ifDefined()?.assertIsString(),
   detailInputs: _ =>
     _.ifDefined()?.assertIsArrayWith(detailInput => {
