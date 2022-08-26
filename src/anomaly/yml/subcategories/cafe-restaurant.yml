@@ -161,7 +161,6 @@
       tags:
         - ReponseConso
       example: 'Exemple : absence de prix sur la carte des vins'
-      description: 'Votre droit : tous les prix doivent être affichés sans que vous soyez obligé de les demander.'
       detailInputs:
         - label: Date du constat
           rank: 1
@@ -220,7 +219,6 @@
           subcategoriesTitle: Pourquoi le commerçant a-t-il refusé que vous payez en espèces&#160;?
           subcategories:
             - title: Il refuse tout paiement en espèces
-              description: 'Votre droit : les billets et les pièces en euros doivent être acceptés chez les commerçants en France.'
             - title: Il n'avait pas assez de monnaie
               information:
                 content: C'est à vous de faire l'appoint. Le  vendeur peut refuser le paiement en espèces s'il ne dispose pas de suffisamment de monnaie.

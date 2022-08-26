@@ -1,0 +1,24 @@
+- title: (title) Première sous category du fichier demo.yml, absolument minimale
+- title: Seconde sous category un peu plus étoffée
+  example: (example) Texte explicatif de la sous category
+  subcategoriesTitle: (subcategoriesTitle) Titre ou question introduisant le choix des sous catégories suivantes
+  subcategories:
+  - title: (title) Une sous sous category minimale
+  - title: (title) Une autre
+- title:  Sous category avec un fileLabel
+  example: Cette sous category a un fileLabel, visible sur la page suivante
+  fileLabel: (fileLabel) Le label expliquant les fichiers à uploader
+- title:  Sous category avec des champs en plus invisibles
+  example: Cette sous category utilise a des valeurs spécifiées dans les champs reponseconsoCode, ccrfCode, et elle a aussi deux tags quelconques (Hygiene et Ehpad). Tout cela ne devrait avoir aucune conséquence visuellement, ce sont juste des infos transmises à l'API
+  tags:
+    - Hygiene
+    - Ehpad
+  reponseconsoCode:
+    - '321'
+    - '323'
+  ccrfCode:
+    - '145'
+    - '23F'
+    - '146'
+# TODO continuer ici : il faudrait rajouter des demos de companyKind, des different detailsInput, des différents tags qui peuvent avoir tel ou tel effet, etc. 
+    

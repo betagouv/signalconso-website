@@ -1,7 +1,7 @@
 import {Box, Divider, Grid} from '@mui/material'
 import {Theme} from '@mui/material/styles'
 import {SxProps} from '@mui/system'
-import {allAnomalies} from 'anomaly/Anomalies'
+import {allVisibleAnomalies} from 'anomaly/Anomalies'
 import {Section} from 'core/component/Section'
 import {useI18n} from 'core/i18n'
 import {sortBy} from 'core/lodashNamedExport'
@@ -33,10 +33,7 @@ const Home = () => {
   useEffect(() => {
     smoothscroll.polyfill()
   }, [])
-  const anomalies = sortBy(
-    allAnomalies.filter(_ => !_.hidden),
-    _ => parseInt(_.id),
-  )
+  const anomalies = sortBy(allVisibleAnomalies(), _ => parseInt(_.id))
   return (
     <>
       <Head>

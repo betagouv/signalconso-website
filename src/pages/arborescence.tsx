@@ -8,7 +8,12 @@ import {ScButton} from 'shared/Button/Button'
 import {Page} from 'shared/Page/Page'
 import {IconBtn, Txt} from '../alexlibs/mui-extension'
 import {fnSwitch} from '../alexlibs/ts-utils'
-import {allAnomalies, instanceOfAnomaly, instanceOfSubcategoryInformation, instanceOfSubcategoryInput} from '../anomaly/Anomalies'
+import {
+  allVisibleAnomalies,
+  instanceOfAnomaly,
+  instanceOfSubcategoryInformation,
+  instanceOfSubcategoryInput,
+} from '../anomaly/Anomalies'
 import {
   Anomaly,
   DetailInputType,
@@ -51,7 +56,9 @@ const Node = ({anomaly, open}: {anomaly: Anomaly | Subcategory; open?: boolean})
           <Txt block>
             <span dangerouslySetInnerHTML={{__html: title}} /> <Txt color="hint">{anomaly.id}</Txt>
           </Txt>
-          {anomaly.description && <Txt block size="small" color="hint" dangerouslySetInnerHTML={{__html: anomaly.description}} />}
+          {instanceOfAnomaly(anomaly) && anomaly.description && (
+            <Txt block size="small" color="hint" dangerouslySetInnerHTML={{__html: anomaly.description}} />
+          )}
           {(anomaly as SubcategoryBase).reponseconsoCode && (
             <Txt key={1} size="small" color="hint">
               <b>ReponseConso codes:</b>&nbsp;
@@ -111,7 +118,6 @@ const Node = ({anomaly, open}: {anomaly: Anomaly | Subcategory; open?: boolean})
 const NodeInput = ({anomaly}: {anomaly: SubcategoryInput}) => {
   return (
     <>
-      {anomaly.detailTitle && <Txt dangerouslySetInnerHTML={{__html: anomaly.detailTitle}} />}
       {anomaly.detailInputs?.map(input => (
         <Box key={input.label}>
           <Txt block sx={{mt: 1}} size="small" color="hint" dangerouslySetInnerHTML={{__html: input.label}} />
@@ -193,10 +199,7 @@ const NodeInfo = ({anomaly}: {anomaly: SubcategoryInformation}) => {
 const Arborescence = () => {
   const [openAll, setOpenAll] = useState(false)
   const [disabled, setDisabled] = useState(false)
-  const anomalies = sortBy(
-    allAnomalies.filter(_ => !_.hidden),
-    _ => _.id,
-  )
+  const anomalies = sortBy(allVisibleAnomalies(), _ => _.id)
   return (
     <Page>
       <Head>

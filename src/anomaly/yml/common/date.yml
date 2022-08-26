@@ -14,8 +14,6 @@
   subcategoriesTitle: La date est-elle dépassée au moment de la vente ou de l'achat&#160;?
   subcategories:
     - title: Oui
-      detailTitle: Il est interdit de vendre un produit avec une date limite de consommation dépassée. Ces dates concernent surtout des produits frais.
-      description: Après cette date, il est dangereux de consommer le produit.
       reponseconsoCode:
         - '323'
       detailInputs:
@@ -39,8 +37,6 @@
 - title: Cas particulier des oeufs
   reponseconsoCode:
     - '323'
-  description: La date des oeufs est une date de consommation recommandée (DCR).
-    <br/> Les oeufs ne peuvent être vendus au-delà de 7 jours avant la DCR.
   detailInputs:
     - label: Quel est le problème ?
       rank: 1
