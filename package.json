@@ -32,7 +32,7 @@
     "@sentry/browser": "7.10.0",
     "@sentry/nextjs": "7.10.0",
     "@sentry/react": "7.10.0",
-    "@sentry/tracing": "7.10.0",
+    "@sentry/tracing": "7.11.1",
     "@types/lodash.throttle": "^4.1.7",
     "axios": "0.27.2",
     "browser-image-compression": "2.0.0",
