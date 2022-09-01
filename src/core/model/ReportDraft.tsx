@@ -42,14 +42,21 @@ export class ReportDraft2 {
       .map(index => {
         const label = mapLabel(inputs[+index].label)
 
-        const prepareValue = (v: string | string[]): string => {
+        const prepareValue = (v: string | string[] | undefined): string => {
+          if (v === undefined) {
+            return ''
+          }
           if (Array.isArray(v)) {
             return v.map(_ => (_.includes(SpecifyFormUtils.keyword) ? concatSpecifiedValued(_, +index) : _)).join(', ')
           }
           return concatSpecifiedValued(v, +index)
         }
 
-        return {label, value: prepareValue(details[index])}
+        // I'm not sure exactly how it's possible but this can be undefined sometimes (we had sentry errors otherwise)
+        // Maybe this means that DetailInputValues2 type is wrong, it can contain undefined values ?
+        const rawValue: string | string[] | undefined = details[index]
+
+        return {label, value: prepareValue(rawValue)}
       })
   }
 
