@@ -10,24 +10,19 @@
         - title: Il y a moins de 2 ans
           detailInputs:
             - label: Date d'achat
-              rank: 1
               type: DATE
             - label: Nom du produit
-              rank: 2
               type: TEXT
             - label: Date du constat
-              rank: 3
               type: DATE
               defaultValue: SYSDATE
             - label: Interlocuteur
-              rank: 4
               type: RADIO
               options:
                 - Vendeur
                 - Accueil magasin
                 - Service client (téléphone, mail, courrier)
             - label: Pour quelle raison le commerçant ne veut pas vous reprendre le produit&#160;?
-              rank: 5
               type: TEXTAREA
           fileLabel: Preuve d'achat / publicité / offre de vente
         - title: Il y a plus de 2 ans
@@ -41,20 +36,15 @@
                 - title: J'ai pris connaissance des conditions écrites dans mon contrat de garantie
                   detailInputs:
                     - label: Date d'achat
-                      rank: 1
                       type: DATE
                     - label: Nom du produit
-                      rank: 2
                       type: TEXT
                     - label: Date de fin de garantie supplémentaire
-                      rank: 3
                       type: DATE
                     - label: Date du constat
-                      rank: 4
                       type: DATE
                       defaultValue: SYSDATE
                     - label: Motif de refus
-                      rank: 5
                       type: TEXT
                   fileLabel: Contrat de garantie / publicité de l'offre de vente / document se référant à la garantie
             - title: Non
@@ -78,24 +68,19 @@
         - title: Il y a moins de 6 mois
           detailInputs:
             - label: Date d'achat
-              rank: 1
               type: DATE
             - label: Nom du produit
-              rank: 2
               type: TEXT
             - label: Date du constat
-              rank: 3
               type: DATE
               defaultValue: SYSDATE
             - label: Interlocuteur
-              rank: 4
               type: RADIO
               options:
                 - Vendeur
                 - Accueil magasin
                 - Service client (téléphone, mail, courrier)
             - label: Pour quelle raison le commerçant ne veut pas vous reprendre  le produit&#160;?
-              rank: 5
               type: TEXTAREA
           fileLabel: Preuve d'achat / publicité / offre de vente
         - title: Il y a plus de 6 mois
@@ -109,20 +94,15 @@
                 - title: J'ai pris connaissance des conditions écrites dans mon contrat de garantie
                   detailInputs:
                     - label: Date d'achat
-                      rank: 1
                       type: DATE
                     - label: Nom du produit
-                      rank: 2
                       type: TEXT
                     - label: Date de fin de garantie supplémentaire
-                      rank: 3
                       type: DATE
                     - label: Date du constat
-                      rank: 4
                       type: DATE
                       defaultValue: SYSDATE
                     - label: Motif de refus
-                      rank: 5
                       type: TEXT
                   fileLabel: Contrat de garantie / publicité de l'offre de vente / document se référant à la garantie
             - title: Non

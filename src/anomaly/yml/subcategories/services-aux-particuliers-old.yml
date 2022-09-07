@@ -44,11 +44,9 @@
             - LitigeContractuel
           detailInputs:
             - label: Date du constat
-              rank: 1
               type: DATE
               defaultValue: SYSDATE
             - label: Quel est le problème ?
-              rank: 2
               type: RADIO
               options:
                 - Les prix ne sont pas affichés
@@ -57,7 +55,6 @@
                 - Une promotion n''a pas été appliquée ou est fausse
                 - Autre (à préciser)
             - label: Si besoin, merci de préciser ce qu''il s''est passé
-              rank: 3
               type: TEXTAREA
               optionnal: true
           fileLabel: Vous pouvez joindre une photo des prix ou tout document utile pour appuyer votre signalement.

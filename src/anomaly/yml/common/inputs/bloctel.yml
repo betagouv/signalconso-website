@@ -1,20 +1,15 @@
 - label: Date de l'appel
-  rank: 1
   type: DATE
   defaultValue: SYSDATE
 - label: Heure de l'appel
-  rank: 2
   type: TIMESLOT
 - label: Votre numéro de téléphone
-  rank: 3
   type: TEXT
 - label: Votre numéro d'inscription bloctel (recommandé)
   example: Ce numéro est présent dans toutes les confirmations – inscription initiale, dépôts de réclamation – que vous a envoyés Bloctel
-  rank: 4
   type: TEXT
   optionnal: true
 - label: L'appel concernait
-  rank: 5
   type: RADIO
   options:
     - Banque / Assurance / Mutuelle
@@ -33,7 +28,6 @@
     - Équipement pour maison (ameublement, électroménager, ...)
     - Autre
 - label: "Le vendeur s'est fait passer pour:"
-  rank: 6
   type: RADIO
   options:
     - Administration

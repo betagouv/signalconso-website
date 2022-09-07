@@ -18,11 +18,9 @@
                 - ReponseConso
               detailInputs:
                 - label: Date du contrat
-                  rank: 1
                   type: DATE
                   defaultValue: SYSDATE
                 - label: Décrivez nous plus en détails ce qui s'est passé
-                  rank: 2
                   type: TEXTAREA
               fileLabel: Joindre une copie du contrat ou tout document commercial relatif à cette avance.
         - title: Je ne suis pas d'accord avec la consommation indiquée sur ma facture
@@ -38,11 +36,9 @@
             - LitigeContractuel
           detailInputs:
             - label: Date du constat (ou du contrat)
-              rank: 1
               type: DATE
               defaultValue: SYSDATE
             - label: Quelle partie du contrat / règlement trouvez-vous abusive ?
-              rank: 2
               type: TEXTAREA
           fileLabel: Joindre une copie du contrat / règlement.
         - title: Autre
@@ -56,11 +52,9 @@
         - LitigeContractuel
       detailInputs:
         - label: Date du contrat
-          rank: 1
           type: DATE
           defaultValue: SYSDATE
         - label: Date de la coupure
-          rank: 2
           type: DATE
       fileLabel: Joindre une copie du contrat / règlement.
     - title: Dégâts / travaux sur les canalisations
@@ -79,33 +73,27 @@
           example: 'Fissure, usure'
           detailInputs:
             - label: Date du constat
-              rank: 1
               type: DATE
               defaultValue: SYSDATE
             - label: Décrivez nous plus en détails ce qui s'est passé
-              rank: 2
               type: TEXTAREA
         - title: Le bureau d'étude impose une marque / modèle en particulier
           tags:
             - ReponseConso
           detailInputs:
             - label: Date du constat
-              rank: 1
               type: DATE
               defaultValue: SYSDATE
             - label: Décrivez nous plus en détails ce qui s'est passé
-              rank: 2
               type: TEXTAREA
         - title: Autre
           tags:
             - ReponseConso
           detailInputs:
             - label: Date du constat
-              rank: 1
               type: DATE
               defaultValue: SYSDATE
             - label: Décrivez nous plus en détails ce qui s'est passé
-              rank: 2
               type: TEXTAREA
 - title: Gaz / Electricité
   tags:
@@ -119,11 +107,9 @@
         - ReponseConso
       detailInputs:
         - label: Date du passage du vendeur
-          rank: 1
           type: DATE
           defaultValue: SYSDATE
         - label: Que s'est-il passé&#160;?
-          rank: 2
           type: CHECKBOX
           options:
             - le vendeur s'est fait passer pour une autre entreprise (à préciser)
@@ -132,18 +118,15 @@
             - le vendeur a demandé à voir mes factures, mon compteur
             - autre (à préciser)
         - label: Avez-vous signé, volontairement ou non, un contrat&#160;?
-          rank: 3
           type: RADIO
           options:
             - oui
             - non
         - label: Date de début du contrat s'il démarre un autre jour que celui du démarchage&#160;?
-          rank: 4
           type: DATE
           defaultValue: SYSDATE
           optionnal: true
         - label: Décrivez nous plus en détails ce qui s'est passé
-          rank: 5
           type: TEXTAREA
       fileLabel: Si possible, joindre une copie du contrat ou tout document commercial
     - title: Démarchage téléphonique
@@ -153,17 +136,14 @@
         - ReponseConso
       detailInputs:
         - label: Date de l'appel
-          rank: 1
           type: DATE
           defaultValue: SYSDATE
         - label: Est-ce que le vendeur s'est fait passer pour une autre entreprise&#160;?
-          rank: 2
           type: RADIO
           options:
             - Non
             - Oui (à préciser)
         - label: Décrivez nous plus en détails ce qui s'est passé
-          rank: 3
           type: TEXTAREA
     - title: Publicité mensongère ou trompeuse
       example: 'Exemple : publicité "offre verte" mensongère'
@@ -173,11 +153,9 @@
         - '210'
       detailInputs:
         - label: Date du constat
-          rank: 1
           type: DATE
           defaultValue: SYSDATE
         - label: Quel support trouvez-vous trompeur&#160;?
-          rank: 2
           type: RADIO
           options:
             - Une publicité (affiche, flyers)
@@ -186,7 +164,6 @@
             - Le discours d'un vendeur
             - Autre (à préciser)
         - label: À propos de quoi est-ce trompeur&#160;?
-          rank: 3
           type: RADIO
           options:
             - Un label / certificat
@@ -194,11 +171,9 @@
             - 'Une information (exemple : origine géographique de mon électricité)'
             - Autre (à préciser)
         - label: Pourquoi trouvez-vous ça trompeur ?
-          rank: 4
           type: TEXTAREA
           optionnal: true
         - label: Avez-vous déjà contacté l'entreprise pour lui signaler ce problème&#160;?
-          rank: 5
           type: RADIO
           options:
             - Oui
@@ -227,15 +202,12 @@
                     - title: Oui
                       detailInputs:
                         - label: Date de signature du contrat (elle est indiquée sur votre contrat).
-                          rank: 1
                           type: DATE
                           defaultValue: SYSDATE
                         - label: Date de la demande d'annulation
-                          rank: 2
                           type: DATE
                           defaultValue: SYSDATE
                         - label: Précisez comment et à qui vous avez fait la demande
-                          rank: 3
                           type: TEXTAREA
                     - title: Non
                       information:
@@ -251,15 +223,12 @@
                         - title: Oui
                           detailInputs:
                             - label: Date de signature du contrat (elle est indiquée sur votre contrat).
-                              rank: 1
                               type: DATE
                               defaultValue: SYSDATE
                             - label: Date de la demande d'annulation
-                              rank: 2
                               type: DATE
                               defaultValue: SYSDATE
                             - label: Précisez comment et à qui vous avez fait la demande
-                              rank: 3
                               type: TEXTAREA
                         - title: Non
                           information:
@@ -285,11 +254,9 @@
             - '214'
           detailInputs:
             - label: Date du constat (ou du contrat)
-              rank: 1
               type: DATE
               defaultValue: SYSDATE
             - label: Quelle partie du contrat / règlement trouvez-vous abusive ?
-              rank: 2
               type: TEXTAREA
           fileLabel: Joindre une copie du contrat / règlement.
         - title: Autre

@@ -68,7 +68,6 @@ const inputSubcategorySpec: ObjectSpec = {
     _.ifDefined()?.assertIsArrayWith(detailInput => {
       detailInput.assertIsObjectWith({
         label: _ => _.assertIsString(),
-        rank: _ => _.ifDefined()?.assertIsNumber(),
         type: _ => _.assertIsAllowedString(Object.values(DetailInputType)),
         placeholder: _ => _.ifDefined()?.assertIsString(),
         options: _ => _.ifDefined()?.assertIsArrayOfString(),

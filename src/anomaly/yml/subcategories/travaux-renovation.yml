@@ -41,7 +41,6 @@
             - ReponseConso
           detailInputs:
             - label: Qu'est-ce qui est trompeur ou mensonger&#160;?
-              rank: 1
               type: RADIO
               options:
                 - Le discours du professionnel
@@ -49,21 +48,17 @@
                 - Les documents mis à votre disposition par le professionnel (flyer, plaquette de présentation...)
                 - Autre (à préciser)
             - label: À propos de quoi est-ce trompeur&#160;?
-              rank: 2
               type: RADIO
               options:
                 - Le prix
                 - La nature des travaux de dépannage
                 - Les qualités et aptitudes du professionnel (artisans, normes...)
             - label: Description
-              rank: 3
               type: TEXTAREA
             - label: Date du constat
-              rank: 4
               type: DATE
               defaultValue: SYSDATE
             - label: Heure du constat (facultatif)
-              rank: 5
               type: TIMESLOT
               optionnal: true
         - title: Contrainte du professionnel
@@ -72,14 +67,11 @@
           detailInputs:
             - label: Précisez les informations sur le contexte
               example: 'Exemple : lieu de la rencontre, discours du professionnel, âge'
-              rank: 1
               type: TEXTAREA
             - label: Date du constat
-              rank: 2
               type: DATE
               defaultValue: SYSDATE
             - label: Heure du constat (facultatif)
-              rank: 3
               type: TIMESLOT
               optionnal: true
         - title: Autre
@@ -151,20 +143,17 @@
             - DemarchageADomicile
           detailInputs:
             - label: Que s'est-il passé ?
-              rank: 1
               type: RADIO
               options:
                 - Le vendeur s'est fait passer pour une autre entreprise (à préciser)
                 - Le vendeur m'a fait signer des papiers sans me dire que c'était un contrat ou un bon de commande.
                 - Autre (à préciser)
             - label: Avez-vous payé au moment du démarchage&#160;?
-              rank: 2
               type: RADIO
               options:
                 - Oui
                 - Non
             - label: Date du démarchage
-              rank: 3
               type: DATE
               defaultValue: SYSDATE
         - title: Démarchage téléphonique
@@ -176,17 +165,14 @@
             - DemarchageTelephonique
           detailInputs:
             - label: Date de l'appel
-              rank: 1
               type: DATE
               defaultValue: SYSDATE
             - label: Est-ce que le vendeur s'est fait passer pour une autre entreprise&#160;?
-              rank: 2
               type: RADIO
               options:
                 - Non
                 - Oui (à préciser)
             - label: Décrivez nous plus en détails ce qui s'est passé
-              rank: 3
               type: TEXTAREA
         - title: Information mensongère ou trompeuse
           reponseconsoCode:
@@ -197,7 +183,6 @@
                 - ReponseConso
               detailInputs:
                 - label: Qu'est-ce qui est trompeur ou mensonger&#160;?
-                  rank: 1
                   type: RADIO
                   options:
                     - Le discours du professionnel
@@ -205,14 +190,11 @@
                     - Les documents mis à votre disposition par le professionnel (flyer, plaquette de présentation...)
                     - Autre (à préciser)
                 - label: Description
-                  rank: 2
                   type: TEXTAREA
                 - label: Date du constat
-                  rank: 3
                   type: DATE
                   defaultValue: SYSDATE
                 - label: Heure du constat (facultatif)
-                  rank: 4
                   type: TIMESLOT
                   optionnal: true
             - title: Référence abusive à des partenariats avec l'État ou de grandes entreprises d'énergie
@@ -220,7 +202,6 @@
                 - ReponseConso
               detailInputs:
                 - label: Qu'est-ce qui est trompeur ou mensonger&#160;?
-                  rank: 1
                   type: RADIO
                   options:
                     - Le discours du professionnel
@@ -228,14 +209,11 @@
                     - Les documents mis à votre disposition par le professionnel (flyer, plaquette de présentation...)
                     - Autre (à préciser)
                 - label: Description
-                  rank: 2
                   type: TEXTAREA
                 - label: Date du constat
-                  rank: 3
                   type: DATE
                   defaultValue: SYSDATE
                 - label: Heure du constat (facultatif)
-                  rank: 4
                   type: TIMESLOT
                   optionnal: true
             - title: Utilisation de termes laissant croire qu'il s'agit d'une structure publique
@@ -243,7 +221,6 @@
                 - ReponseConso
               detailInputs:
                 - label: Qu'est-ce qui est trompeur ou mensonger&#160;?
-                  rank: 1
                   type: RADIO
                   options:
                     - Le discours du professionnel
@@ -251,14 +228,11 @@
                     - Les documents mis à votre disposition par le professionnel (flyer, plaquette de présentation...)
                     - Autre (à préciser)
                 - label: Description
-                  rank: 2
                   type: TEXTAREA
                 - label: Date du constat
-                  rank: 3
                   type: DATE
                   defaultValue: SYSDATE
                 - label: Heure du constat (facultatif)
-                  rank: 4
                   type: TIMESLOT
                   optionnal: true
             - title: Usurpation d'identité de la part du professionnel
@@ -266,7 +240,6 @@
                 - ReponseConso
               detailInputs:
                 - label: Qu'est-ce qui est trompeur ou mensonger&#160;?
-                  rank: 1
                   type: RADIO
                   options:
                     - Le discours du professionnel
@@ -274,14 +247,11 @@
                     - Les documents mis à votre disposition par le professionnel (flyer, plaquette de présentation...)
                     - Autre (à préciser)
                 - label: Description
-                  rank: 2
                   type: TEXTAREA
                 - label: Date du constat
-                  rank: 3
                   type: DATE
                   defaultValue: SYSDATE
                 - label: Heure du constat (facultatif)
-                  rank: 4
                   type: TIMESLOT
                   optionnal: true
             - title: Présentation des travaux comme étant obligatoires
@@ -289,7 +259,6 @@
                 - ReponseConso
               detailInputs:
                 - label: Qu'est-ce qui est trompeur ou mensonger&#160;?
-                  rank: 1
                   type: RADIO
                   options:
                     - Le discours du professionnel
@@ -297,14 +266,11 @@
                     - Les documents mis à votre disposition par le professionnel (flyer, plaquette de présentation...)
                     - Autre (à préciser)
                 - label: Description
-                  rank: 2
                   type: TEXTAREA
                 - label: Date du constat
-                  rank: 3
                   type: DATE
                   defaultValue: SYSDATE
                 - label: Heure du constat (facultatif)
-                  rank: 4
                   type: TIMESLOT
                   optionnal: true
             - title: Promesse d'économies d'énergie surestimées
@@ -312,7 +278,6 @@
                 - ReponseConso
               detailInputs:
                 - label: Qu'est-ce qui est trompeur ou mensonger&#160;?
-                  rank: 1
                   type: RADIO
                   options:
                     - Le discours du professionnel
@@ -320,20 +285,16 @@
                     - Les documents mis à votre disposition par le professionnel (flyer, plaquette de présentation...)
                     - Autre (à préciser)
                 - label: Description
-                  rank: 2
                   type: TEXTAREA
                 - label: Date du constat
-                  rank: 3
                   type: DATE
                   defaultValue: SYSDATE
                 - label: Heure du constat (facultatif)
-                  rank: 4
                   type: TIMESLOT
                   optionnal: true
             - title: Autre
               detailInputs:
                 - label: Qu'est-ce qui est trompeur ou mensonger&#160;?
-                  rank: 1
                   type: RADIO
                   options:
                     - Le discours du professionnel
@@ -341,21 +302,17 @@
                     - Les documents mis à votre disposition par le professionnel (flyer, plaquette de présentation...)
                     - Autre (à préciser)
                 - label: À propos de quoi est-ce trompeur&#160;?
-                  rank: 2
                   type: RADIO
                   options:
                     - Le prix
                     - La nature des travaux
                     - Les qualités et aptitudes du professionnel (artisans, normes...)
                 - label: Description
-                  rank: 3
                   type: TEXTAREA
                 - label: Date du constat
-                  rank: 4
                   type: DATE
                   defaultValue: SYSDATE
                 - label: Heure du constat (facultatif)
-                  rank: 5
                   type: TIMESLOT
                   optionnal: true
         - title: Contrainte du professionnel
@@ -364,14 +321,11 @@
           detailInputs:
             - label: Précisez les informations sur le contexte
               example: 'Exemple : lieu de la rencontre, discours du professionnel, âge'
-              rank: 1
               type: TEXTAREA
             - label: Date du constat
-              rank: 2
               type: DATE
               defaultValue: SYSDATE
             - label: Heure du constat (facultatif)
-              rank: 3
               type: TIMESLOT
               optionnal: true
         - title: Autre

@@ -57,11 +57,9 @@
                 - '323'
               detailInputs:
                 - label: Date du constat (ou d'achat suivant le cas)
-                  rank: 1
                   type: DATE_NOT_IN_FUTURE
                   defaultValue: SYSDATE
                 - label: Date Limite de Consommation (DLC)
-                  rank: 2
                   type: DATE
               fileLabel: Photo de la DLC / du produit / de la marque
             - title: Non
@@ -79,16 +77,13 @@
             - '323'
           detailInputs:
             - label: Quel est le problème ?
-              rank: 1
               type: RADIO
               options:
                 - La date est dépassée
                 - La date sera dépassée d'ici 7 jours
             - label: Date de consommation recommandée
-              rank: 2
               type: DATE
             - label: Date du constat (ou date d'achat)
-              rank: 3
               type: DATE_NOT_IN_FUTURE
               defaultValue: SYSDATE
           fileLabel: Photo
@@ -106,10 +101,8 @@
           example: 'Exemple : pizza dans une boulangerie, plat dans un restaurant'
           detailInputs:
             - label: Nom du produit
-              rank: 1
               type: TEXT
             - label: Date du constat (ou d'achat suivant le cas)
-              rank: 2
               type: DATE_NOT_IN_FUTURE
               defaultValue: SYSDATE
           fileLabel: Photo du produit
@@ -117,29 +110,23 @@
           example: "Exemple : bouteille d'eau, conserve de légumes, paquet de chips"
           detailInputs:
             - label: "C'est un produit vendu&#160;:"
-              rank: 1
               type: RADIO
               options:
                 - au rayon frais
                 - au rayon surgelé
                 - à température ambiante
             - label: Nom du produit
-              rank: 2
               type: TEXT
             - label: Marque
-              rank: 3
               type: TEXT
             - label: Numéro de lot (si possible)
-              rank: 4
               type: TEXT
               placeholder: Il est imprimé sur l'emballage ou près de la date de consommation
               optionnal: true
             - label: Date limite (si possible)
-              rank: 5
               type: DATE
               optionnal: true
             - label: Date du constat (ou d'achat suivant le cas)
-              rank: 6
               type: DATE_NOT_IN_FUTURE
               defaultValue: SYSDATE
           fileLabel: Photo du produit
@@ -153,47 +140,37 @@
           example: 'Exemple : pizza dans une boulangerie, plat dans un restaurant...'
           detailInputs:
             - label: Nom du produit
-              rank: 1
               type: TEXT
             - label: Date du constat (ou d'achat suivant le cas)
-              rank: 2
               type: DATE_NOT_IN_FUTURE
               defaultValue: SYSDATE
             - label: Quel est le problème ?
-              rank: 3
               type: TEXT
           fileLabel: Photo du produit
         - title: Un produit vendu dans un emballage
           example: "Exemple : bouteille d'eau, conserve de légumes, paquet de chips..."
           detailInputs:
             - label: "C'est un produit vendu&#160;:"
-              rank: 1
               type: RADIO
               options:
                 - au rayon frais
                 - au rayon surgelé
                 - à température ambiante
             - label: Nom du produit
-              rank: 2
               type: TEXT
             - label: Marque
-              rank: 3
               type: TEXT
             - label: Numéro de lot (si possible)
-              rank: 4
               type: TEXT
               placeholder: il est imprimé sur l'emballage ou près de la date de consommation
               optionnal: true
             - label: Date limite (si possible)
-              rank: 5
               type: DATE
               optionnal: true
             - label: Date du constat (ou d'achat suivant le cas)
-              rank: 6
               type: DATE_NOT_IN_FUTURE
               defaultValue: SYSDATE
             - label: Quel est le problème ?
-              rank: 7
               type: TEXT
           fileLabel: Photo du produit
     - title: Corps étranger "mou"
@@ -207,10 +184,8 @@
           example: 'Exemple : pizza dans une boulangerie, plat dans un restaurant'
           detailInputs:
             - label: Nom du produit
-              rank: 1
               type: TEXT
             - label: Date du constat (ou d'achat suivant le cas)
-              rank: 2
               type: DATE_NOT_IN_FUTURE
               defaultValue: SYSDATE
           fileLabel: Photo du produit
@@ -218,29 +193,23 @@
           example: "Exemple : bouteille d'eau, conserve de légumes, paquet de chips"
           detailInputs:
             - label: "C'est un produit vendu&#160;:"
-              rank: 1
               type: RADIO
               options:
                 - au rayon frais
                 - au rayon surgelé
                 - à température ambiante
             - label: Nom du produit
-              rank: 2
               type: TEXT
             - label: Marque
-              rank: 3
               type: TEXT
             - label: Numéro de lot (si possible)
-              rank: 4
               type: TEXT
               placeholder: il est imprimé sur l'emballage ou près de la date de consommation
               optionnal: true
             - label: Date limite (si possible)
-              rank: 5
               type: DATE
               optionnal: true
             - label: Date du constat (ou d'achat suivant le cas)
-              rank: 6
               type: DATE_NOT_IN_FUTURE
               defaultValue: SYSDATE
           fileLabel: Photo du produit
@@ -268,10 +237,8 @@
           example: 'Exemple : pizza dans une boulangerie, plat dans un restaurant'
           detailInputs:
             - label: Nom du produit
-              rank: 1
               type: TEXT
             - label: Date du constat (ou d'achat suivant le cas)
-              rank: 2
               type: DATE_NOT_IN_FUTURE
               defaultValue: SYSDATE
           fileLabel: Photo du produit
@@ -279,28 +246,22 @@
           example: "Exemple : bouteille d'eau, conserve de légumes, paquet de chips"
           detailInputs:
             - label: "C'est un produit vendu&#160;:"
-              rank: 1
               type: RADIO
               options:
                 - au rayon frais
                 - au rayon surgelé
                 - à température ambiante
             - label: Nom du produit
-              rank: 2
               type: TEXT
             - label: Marque
-              rank: 3
               type: TEXT
             - label: Numéro de lot (si possible)
-              rank: 4
               type: TEXT
               optionnal: true
             - label: Date limite (si possible)
-              rank: 5
               type: DATE
               optionnal: true
             - label: Date du constat (ou d'achat suivant le cas)
-              rank: 6
               type: DATE_NOT_IN_FUTURE
               defaultValue: SYSDATE
           fileLabel: Photo du produit
@@ -316,7 +277,6 @@
         - '274'
       detailInputs:
         - label: Quelle information manque-t-il&#160;?
-          rank: 1
           type: RADIO
           options:
             - Date limite
@@ -325,17 +285,13 @@
             - Pas d'étiquette du tout
             - Autre (à préciser)
         - label: Date du constat (ou d'achat suivant le cas)
-          rank: 2
           type: DATE_NOT_IN_FUTURE
           defaultValue: SYSDATE
         - label: Type de produit
-          rank: 3
           type: TEXT
         - label: Nom /marque
-          rank: 4
           type: TEXT
         - label: Qu'avez-vous constaté&#160;?
-          rank: 5
           type: TEXTAREA
       fileLabel: Photos du produit
     - title: Informations trompeuses ou fausses
@@ -345,22 +301,18 @@
         - '271'
       detailInputs:
         - label: Date du constat (ou d'achat suivant le cas)
-          rank: 1
           type: DATE_NOT_IN_FUTURE
           defaultValue: SYSDATE
         - label: De quel produit s'agit-il&#160;?
-          rank: 2
           type: RADIO
           options:
             - Alcool (vin, spiritueux...)
             - Fruits et légumes
             - Autre (à préciser)
         - label: Nom  et marque du produit
-          rank: 3
           type: TEXT
           optionnal: true
         - label: À propos de quoi est-ce trompeur&#160;?
-          rank: 4
           type: RADIO
           options:
             - L'origine
@@ -370,7 +322,6 @@
             - Une marque
             - Autres (à préciser)
         - label: Pourquoi trouvez-vous ça trompeur&#160;?
-          rank: 5
           type: TEXTAREA
           optionnal: true
       fileLabel: Photos du produit (si possible de tous les côtés de l'emballage)
@@ -381,17 +332,13 @@
         - '211'
       detailInputs:
         - label: Date du constat (ou d'achat suivant le cas)
-          rank: 1
           type: DATE_NOT_IN_FUTURE
           defaultValue: SYSDATE
         - label: Type de produit
-          rank: 2
           type: TEXT
         - label: Nom /marque
-          rank: 3
           type: TEXT
         - label: Qu'avez-vous constaté&#160;?
-          rank: 4
           type: TEXTAREA
     - title: Autres problèmes d'étiquette ou emballage
       reponseconsoCode:
@@ -410,7 +357,6 @@
       example: Tarer une balance signifie imposer la valeur zéro sur une balance alors qu'il y a un emballage dessus, pour ne peser que le contenu.
       detailInputs:
         - label: Préciser le lieu (rayon) dans le cas d'un grand magasin
-          rank: 1
           type: TEXT
           placeholder: lieu
           optionnal: true
@@ -421,50 +367,39 @@
           example: "La quantité est directement imprimée sur l'emballage par le fabricant"
           detailInputs:
             - label: La lettre "e" est-elle écrite à côté de l'indication du poids/volume&#160;?
-              rank: 1
               type: RADIO
               options:
                 - Oui
                 - Non
             - label: Type de produit
-              rank: 2
               type: TEXT
             - label: Nom /marque
-              rank: 3
               type: TEXT
             - label: Quelle erreur a été constatée&#160;?
-              rank: 4
               type: TEXTAREA
         - title: Un produit emballé et étiqueté par le magasin comme une barquette de viande
           example: 'La quantité est marquée sur une étiquette collée par le commerçant'
           detailInputs:
             - label: Date du constat ou d'achat
-              rank: 1
               type: DATE_NOT_IN_FUTURE
               defaultValue: SYSDATE
             - label: Nom du produit
-              rank: 2
               type: TEXT
             - label: Elements d'identification (date limite, n° de lot)
-              rank: 3
               type: TEXT
               optionnal: true
               placeholder: Elements d'identification
             - label: Description
-              rank: 4
               type: TEXTAREA
         - title: Un produit sans emballage, directement consommé
           example: 'Exemple : verre de vin dans un café, plat au restaurant'
           detailInputs:
             - label: Date du constat ou d'achat
-              rank: 1
               type: DATE_NOT_IN_FUTURE
               defaultValue: SYSDATE
             - label: Nom du produit
-              rank: 2
               type: TEXT
             - label: Description
-              rank: 3
               type: TEXTAREA
     - title: Autre
 - title: Produit pas bon
@@ -487,20 +422,15 @@
     - '331'
   detailInputs:
     - label: Date du constat
-      rank: 1
       type: DATE_NOT_IN_FUTURE
       defaultValue: SYSDATE
     - label: Heure du constat
-      rank: 2
       type: TIMESLOT
       optionnal: true
     - label: Nom du produit / marque
-      rank: 3
       type: TEXT
     - label: Numéro de lot / référence
-      rank: 4
       type: TEXT
     - label: Qu'avez-vous constaté&#160;?
-      rank: 5
       type: TEXTAREA
 - title: Autre problème de nourriture

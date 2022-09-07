@@ -21,20 +21,17 @@
             - DemarchageADomicile
           detailInputs:
             - label: Que s'est-il passé ?
-              rank: 1
               type: RADIO
               options:
                 - Le vendeur s'est fait passer pour une autre entreprise (à préciser)
                 - Le vendeur m'a fait signer des papiers sans me dire que c'était un contrat ou un bon de commande.
                 - Autre (à préciser)
             - label: Avez-vous payé au moment du démarchage&#160;?
-              rank: 2
               type: RADIO
               options:
                 - Oui
                 - Non
             - label: Date du démarchage
-              rank: 3
               type: DATE
               defaultValue: SYSDATE
         - title: Démarchage Téléphonique
@@ -56,7 +53,6 @@
                 - '210'
               detailInputs:
                 - label: Qu'est-ce qui est trompeur ou mensonger&#160;?
-                  rank: 1
                   type: RADIO
                   options:
                     - Le discours du professionnel
@@ -64,14 +60,11 @@
                     - Les documents mis à votre disposition par le professionnel (courrier, flyer, plaquette de présentation...)
                     - Autre (à préciser)
                 - label: Description
-                  rank: 2
                   type: TEXTAREA
                 - label: Date de l'appel
-                  rank: 3
                   type: DATE
                   defaultValue: SYSDATE
                 - label: Heure de l'appel (facultatif)
-                  rank: 4
                   type: TIMESLOT
                   optionnal: true
             - title: Référence abusive à des partenariats avec l'État ou de grandes entreprises
@@ -79,7 +72,6 @@
                 - '23b'
               detailInputs:
                 - label: Qu'est-ce qui est trompeur ou mensonger&#160;?
-                  rank: 1
                   type: RADIO
                   options:
                     - Le discours du professionnel
@@ -87,14 +79,11 @@
                     - Les documents mis à votre disposition par le professionnel (courrier, flyer, plaquette de présentation...)
                     - Autre (à préciser)
                 - label: Description
-                  rank: 2
                   type: TEXTAREA
                 - label: Date de l'appel
-                  rank: 3
                   type: DATE
                   defaultValue: SYSDATE
                 - label: Heure de l'appel (facultatif)
-                  rank: 4
                   type: TIMESLOT
                   optionnal: true
             - title: Utilisation de termes laissant croire qu'il s'agit d'une structure publique
@@ -102,7 +91,6 @@
                 - '23b'
               detailInputs:
                 - label: Qu'est-ce qui est trompeur ou mensonger&#160;?
-                  rank: 1
                   type: RADIO
                   options:
                     - Le discours du professionnel
@@ -110,14 +98,11 @@
                     - Les documents mis à votre disposition par le professionnel (courrier, flyer, plaquette de présentation...)
                     - Autre (à préciser)
                 - label: Description
-                  rank: 2
                   type: TEXTAREA
                 - label: Date de l'appel
-                  rank: 3
                   type: DATE
                   defaultValue: SYSDATE
                 - label: Heure de l'appel (facultatif)
-                  rank: 4
                   type: TIMESLOT
                   optionnal: true
             - title: Usurpation d'identité de la part du professionnel
@@ -125,7 +110,6 @@
                 - '23b'
               detailInputs:
                 - label: Qu'est-ce qui est trompeur ou mensonger&#160;?
-                  rank: 1
                   type: RADIO
                   options:
                     - Le discours du professionnel
@@ -133,14 +117,11 @@
                     - Les documents mis à votre disposition par le professionnel (flyer, plaquette de présentation...)
                     - Autre (à préciser)
                 - label: Description
-                  rank: 2
                   type: TEXTAREA
                 - label: Date de l'appel
-                  rank: 3
                   type: DATE
                   defaultValue: SYSDATE
                 - label: Heure de l'appel (facultatif)
-                  rank: 4
                   type: TIMESLOT
                   optionnal: true
     - title: Contrat
@@ -210,20 +191,17 @@
             - DemarchageADomicile
           detailInputs:
             - label: Que s'est-il passé ?
-              rank: 1
               type: RADIO
               options:
                 - Le vendeur s'est fait passer pour une autre entreprise (à préciser)
                 - Le vendeur m'a fait signer des papiers sans me dire que c'était un contrat ou un bon de commande.
                 - Autre (à préciser)
             - label: Avez-vous payé au moment du démarchage&#160;?
-              rank: 2
               type: RADIO
               options:
                 - Oui
                 - Non
             - label: Date du démarchage
-              rank: 3
               type: DATE
               defaultValue: SYSDATE
         - title: Démarchage téléphonique
@@ -241,7 +219,6 @@
                 - '267'
               detailInputs:
                 - label: Qu'est-ce qui est trompeur ou mensonger&#160;?
-                  rank: 1
                   type: RADIO
                   options:
                     - Le discours du professionnel
@@ -249,14 +226,11 @@
                     - Les documents mis à votre disposition par le professionnel (courrier, flyer, plaquette de présentation...)
                     - Autre (à préciser)
                 - label: Description
-                  rank: 2
                   type: TEXTAREA
                 - label: Date de l'appel
-                  rank: 3
                   type: DATE
                   defaultValue: SYSDATE
                 - label: Heure de l'appel (facultatif)
-                  rank: 4
                   type: TIMESLOT
                   optionnal: true
             - title: Autre
@@ -280,7 +254,6 @@
             - '21b'
           detailInputs:
             - label: Veuillez préciser
-              rank: 1
               type: RADIO
               options:
                 - absence de Prix sur le devis
@@ -313,7 +286,6 @@
                 - '163'
               detailInputs:
                 - label: Veuillez préciser
-                  rank: 1
                   type: RADIO
                   options:
                     - absence de Prix sur le devis
@@ -360,7 +332,6 @@
                 - '163'
               detailInputs:
                 - label: Veuillez préciser
-                  rank: 1
                   type: RADIO
                   options:
                     - absence de Prix sur le devis
@@ -407,7 +378,6 @@
                 - '163'
               detailInputs:
                 - label: Veuillez préciser
-                  rank: 1
                   type: RADIO
                   options:
                     - absence de Prix sur le devis
@@ -455,18 +425,15 @@
                 - '21b'
               detailInputs:
                 - label: Veuillez préciser
-                  rank: 1
                   type: RADIO
                   options:
                     - absence de Prix sur le devis
                     - Prix illisible
                     - Autre (à préciser)
                 - label: Date du constat
-                  rank: 2
                   type: DATE
                   defaultValue: SYSDATE
                 - label: Description
-                  rank: 3
                   type: TEXTAREA
         - title: Moyens de paiement
           example: 'Exemple : carte bancaire refusée'

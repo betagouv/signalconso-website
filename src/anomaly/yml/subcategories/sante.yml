@@ -28,13 +28,10 @@
         - '271'
       detailInputs:
         - label: Date de constat (ou date d'achat)
-          rank: 1
           type: DATE
         - label: Quel est le nom du produit ?
-          rank: 2
           type: TEXT
         - label: Pourquoi trouvez-vous la publicité trompeuse ?
-          rank: 3
           type: CHECKBOX
           options:
             - le produit ne remplit pas sa promesse
@@ -42,7 +39,6 @@
             - les labels (bio, naturel...) sont trompeurs
             - autre (à préciser)
         - label: Où avez-vous vu ces informations ?
-          rank: 4
           type: CHECKBOX
           options:
             - site internet
@@ -60,20 +56,17 @@
         - DemarchageADomicile
       detailInputs:
         - label: Que s'est-il passé ?
-          rank: 1
           type: RADIO
           options:
             - Le vendeur s'est fait passer pour une autre entreprise (à préciser)
             - Le vendeur m'a fait signer des papiers sans me dire que c'était un contrat ou un bon de commande.
             - Autre (à préciser)
         - label: Avez-vous payé au moment du démarchage&#160;?
-          rank: 2
           type: RADIO
           options:
             - Oui
             - Non
         - label: Date du démarchage
-          rank: 3
           type: DATE
           defaultValue: SYSDATE
     - title: J'ai eu un problème de démarchage téléphonique
@@ -86,17 +79,14 @@
         - DemarchageTelephonique
       detailInputs:
         - label: Date de l'appel
-          rank: 1
           type: DATE
           defaultValue: SYSDATE
         - label: Est-ce que le vendeur s'est fait passer pour une autre entreprise&#160;?
-          rank: 2
           type: RADIO
           options:
             - Non
             - Oui (à préciser)
         - label: Décrivez nous plus en détails ce qui s'est passé
-          rank: 3
           type: TEXTAREA
     - title: Un produit de santé est de mauvaise qualité
       example: 'Exemple : béquille qui se tord, audioprothèse qui se fissure rapidement, préservatif qui se perce'
@@ -105,10 +95,8 @@
         - '464'
       detailInputs:
         - label: Date de constat (ou date d'achat)
-          rank: 1
           type: DATE
         - label: Quel est le type de produit ?
-          rank: 2
           type: RADIO
           options:
             - lunette / lentilles de contact
@@ -119,10 +107,8 @@
             - appareil de mesure (thermomètre, tensiomètre...)
             - autre (à préciser)
         - label: Quelle sa marque et sa référence / numéro de modèle ? Vous pouvez trouver ces informations sur votre facture d'achat.
-          rank: 3
           type: TEXT
         - label: 'Expliquez le problème en quelques mots :'
-          rank: 4
           type: TEXT
 - title: Professionnel de la santé et médecine douce
   example: 'Exemple : dentiste, opticien, kiné, psychiatre, médecine douce'
@@ -143,10 +129,8 @@
             - '226'
           detailInputs:
             - label: Date de constat
-              rank: 1
               type: DATE
             - label: Quel est le problème ?
-              rank: 2
               type: RADIO
               options:
                 - aucun affichage des prix
@@ -162,16 +146,13 @@
             - '226'
           detailInputs:
             - label: Date du constat
-              rank: 1
               type: DATE
             - label: Quel est le problème ? (plsuieurs réponses possibles)
-              rank: 2
               type: CHECKBOX
               options:
                 - pas d'indication au niveau de sa plaque
                 - absence d'affichage dans sa salle d'attente (ou lieu d'exercice si il n'a pas de salle d'attente)
             - label: "Si vous avez eu l'information par un autre moyen (mutuelle, recherche internet), pouvez-vous préciser s'il est :"
-              rank: 3
               type: RADIO
               options:
                 - conventionné secteur 1
@@ -197,23 +178,19 @@
                 - '226'
               detailInputs:
                 - label: Date du rendez-vous
-                  rank: 1
                   type: DATE
                 - label: Quel est le type de soin ?
-                  rank: 2
                   type: RADIO
                   options:
                     - pose d'un implant, bridge, couronne
                     - acte de chirurgie esthétique
                     - autre soin / traitement supérieur à 70 euros
                 - label: Quelle est le problème ? (plusieurs réponses possibles)
-                  rank: 3
                   type: CHECKBOX
                   options:
                     - le médecin / praticien m'a donné un prix à l'oral
                     - le médecin / praticien ne pas m'a remis de devis écrit
                 - label: Combien a coûté le soin au total (environ) ?
-                  rank: 4
                   type: TEXT
             - title: Le devis est incomplet
               reponseconsoCode:
@@ -221,13 +198,10 @@
                 - '226'
               detailInputs:
                 - label: Date du rendez-vous
-                  rank: 1
                   type: DATE
                 - label: Combien a coûté le soin au total ?
-                  rank: 2
                   type: TEXT
                 - label: Quelles informations manquent-ils sur votre devis  ? (plusieurs réponses possibles)
-                  rank: 3
                   type: CHECKBOX
                   options:
                     - description détaillée du soin envisagé et / ou des matériaux utilisés
@@ -240,13 +214,10 @@
                 - '210'
               detailInputs:
                 - label: Date de constat
-                  rank: 1
                   type: DATE
                 - label: Quel était le prix sur votre devis ?
-                  rank: 2
                   type: TEXT
                 - label: Combien avez-vous payé ?
-                  rank: 3
                   type: TEXT
         - title: La prestation est mal (ou pas) réalisée
           example: "Exemple : j'ai mal été soigné"
@@ -265,24 +236,20 @@
           example: "Les prix doivent être affichés en salle d'attente."
           detailInputs:
             - label: Date du constat
-              rank: 1
               type: DATE
               defaultValue: SYSDATE
             - label: Les prix sont-ils affichés en salle d'attente ?
-              rank: 2
               type: RADIO
               options:
                 - Oui
                 - Non
             - label: S'ils sont affichés, ces prix sont-ils lisibles et compréhensibles ?
-              rank: 3
               type: RADIO
               options:
                 - Oui
                 - Non
               optionnal: true
             - label: S'ils sont affichés, ces prix sont-ils exacts ?
-              rank: 4
               type: RADIO
               options:
                 - Oui
@@ -306,14 +273,11 @@
             - ReponseConso
           detailInputs:
             - label: Date de visite
-              rank: 1
               type: DATE
             - label: Si vous vous en rappelez, combien avez-vous payé ?
-              rank: 2
               type: TEXT
               optionnal: true
             - label: Avez-vous demandé une note ?
-              rank: 3
               type: RADIO
               options:
                 - Oui
@@ -326,10 +290,8 @@
             - '210'
           detailInputs:
             - label: Date du constat
-              rank: 1
               type: DATE
             - label: Que trouvez-vous trompeur ?
-              rank: 2
               type: RADIO
               options:
                 - la durée du soin
@@ -340,7 +302,6 @@
                 - des informations médicales fausses
                 - autre (à préciser)
             - label: 'Précisez en quelques mots pourquoi vous trouvez cela trompeur :'
-              rank: 3
               type: TEXT
               placeholder: Soyez factuel et courtois, merci !
           fileLabel: Merci de joindre une photo de la publicité, du dépliant, du site internet afin d'apporter des preuves et de traiter plus rapidement votre signalement.
@@ -354,17 +315,14 @@
             - DemarchageTelephonique
           detailInputs:
             - label: Date de l'appel
-              rank: 1
               type: DATE
               defaultValue: SYSDATE
             - label: Est-ce que le vendeur s'est fait passer pour une autre entreprise&#160;?
-              rank: 2
               type: RADIO
               options:
                 - Non
                 - Oui (à préciser)
             - label: Décrivez nous plus en détails ce qui s'est passé
-              rank: 3
               type: TEXTAREA
     - title: Il commercialise des lunettes ou des prothèses auditives (opticien, audioprothésiste)
       subcategories:
@@ -376,10 +334,8 @@
           example: 'Exemple : offre promotionnelle trompeuse sur des lunettes'
           detailInputs:
             - label: Date du constat
-              rank: 1
               type: DATE
             - label: Que trouvez-vous trompeur ?
-              rank: 2
               type: TEXTAREA
           fileLabel: Merci de joindre une photo de la publicité, du dépliant, du site internet afin d'apporter des preuves et de traiter plus rapidement votre signalement.
         - title: Je ne suis pas satisfait de la qualité de mes lunettes / prothèses
@@ -388,20 +344,16 @@
             - '464'
           detailInputs:
             - label: Date du constat
-              rank: 1
               type: DATE
             - label: De quel produit s'agit-il ?
-              rank: 2
               type: RADIO
               options:
                 - lunette
                 - lentilles de contact
                 - prothèse
             - label: Quel est la marque et le modèle ?
-              rank: 3
               type: TEXT
             - label: Quel est le problème ?
-              rank: 4
               type: TEXT
           fileLabel: Merci de joindre si possible une photo du produit ou de la facture d'achat.
         - title: Autre
@@ -425,10 +377,8 @@
         - '464'
       detailInputs:
         - label: Date de sortie (ou date de la facture)
-          rank: 1
           type: DATE
         - label: Quel est le montant de ces frais ?
-          rank: 2
           type: TEXT
       fileLabel: Merci de joindre si possible une photo de la facture ou du panneau d'affichage des prix pour appuyer votre signalement.
     - title: J'ai été facturé pour un supplément que je n'avais pas demandé
@@ -440,24 +390,19 @@
         - '210'
       detailInputs:
         - label: Date de sortie (ou date de la facture)
-          rank: 1
           type: DATE
         - label: Quel supplément vous a-t-on facturé ?
-          rank: 2
           type: TEXT
           placeholder: chambre double, télévision, repas spécifique...
         - label: Aviez-vous demandé ce supplément ?
-          rank: 3
           type: RADIO
           options:
             - Oui
             - Non
         - label: Quel est le prix de ce supplément ?
-          rank: 4
           type: TEXT
           optionnal: true
         - label: L'hôpital / clinique vous a t-il justifié ce supplément ?
-          rank: 5
           type: RADIO
           options:
             - Oui (à préciser)
@@ -480,10 +425,8 @@
             - LitigeContractuel
           detailInputs:
             - label: Date de constat
-              rank: 1
               type: DATE
             - label: Quel est le problème ? (plusieurs réponses possibles)
-              rank: 2
               type: CHECKBOX
               options:
                 - Les prix ne sont pas tous indiqués dans les rayons
@@ -530,10 +473,8 @@
                 - '411'
               detailInputs:
                 - label: Date du refus
-                  rank: 1
                   type: DATE
                 - label: Pouvez-vous nous décrire ce qu'il s'est passé ?
-                  rank: 2
                   type: TEXTAREA
               fileLabel: Vous pouvez joindre des éléments (photo, carte d'assistance...) pour appuyer votre signalement.
         - title: Autre
@@ -566,10 +507,8 @@
             - '220'
           detailInputs:
             - label: Date de constat
-              rank: 1
               type: DATE
             - label: Quel est le problème ?
-              rank: 2
               type: RADIO
               options:
                 - les prix ne sont pas affichés du tout
@@ -585,10 +524,8 @@
             - '210'
           detailInputs:
             - label: Date de constat (ou date de paiement)
-              rank: 1
               type: DATE
             - label: Quel est le problème ?
-              rank: 2
               type: CHECKBOX
               options:
                 - les prix affichés ne sont pas à jour
@@ -603,10 +540,8 @@
             - '220'
           detailInputs:
             - label: Date de constat (ou date de paiement)
-              rank: 1
               type: DATE
             - label: Quel est le problème ?
-              rank: 2
               type: RADIO
               options:
                 - je n'ai pas eu de facture et je ne l'ai pas demandée
@@ -620,10 +555,8 @@
         - LitigeContractuel
       detailInputs:
         - label: Date de constat
-          rank: 1
           type: DATE
         - label: À propos de quoi est-ce trompeur ?
-          rank: 2
           type: CHECKBOX
           options:
             - un label (Qualicert) ou un certificat
@@ -632,7 +565,6 @@
             - spa simple déclaré en thalassothérapie
             - autre (à préciser)
         - label: Où avez-vous vu cette information (ou photo) que vous trouvez trompeuse ?
-          rank: 3
           type: RADIO
           options:
             - site internet ou publicité sur internet
@@ -640,7 +572,6 @@
             - affiche/ panneau publicitaire
             - autre (à préciser)
         - label: 'Expliquez en quelques mots pourquoi vous trouvez cela trompeur :'
-          rank: 4
           type: TEXT
       fileLabel: Merci de joindre tout document (photo, pdf) pouvant appuyer votre signalement.
     - title: Contrat
@@ -669,10 +600,8 @@
                 - '232'
               detailInputs:
                 - label: Date du refus
-                  rank: 1
                   type: DATE
                 - label: Pouvez-vous nous décrire ce qu'il s'est passé ?
-                  rank: 2
                   type: TEXTAREA
               fileLabel: Vous pouvez joindre des éléments (photo, carte d'assistance...) pour appuyer votre signalement.
         - title: Autre
