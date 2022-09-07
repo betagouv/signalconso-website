@@ -90,11 +90,28 @@ export enum DetailInputType {
   TEXTAREA = 'TEXTAREA',
 }
 
-export interface DetailInput {
+interface DetailInputBase {
   label: string
   type: DetailInputType
-  placeholder?: string
-  options?: string[]
-  defaultValue?: 'SYSDATE'
   optional?: boolean
 }
+
+export type DetailInput = DetailInputBase &
+  (
+    | {
+        type: DetailInputType.TEXT | DetailInputType.TEXTAREA
+        placeholder?: string
+      }
+    | {
+        type: DetailInputType.DATE | DetailInputType.DATE_NOT_IN_FUTURE
+        defaultValue?: 'SYSDATE'
+      }
+    | {
+        type: DetailInputType.RADIO | DetailInputType.CHECKBOX
+        options?: string[]
+      }
+    | {
+        type: DetailInputType.TIMESLOT
+        options?: string[]
+      }
+  )

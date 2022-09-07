@@ -8,47 +8,46 @@ import {UploadedFile} from '../../client/file/UploadedFile'
 import {DetailInputValue} from '../../client/report/Report'
 
 export class DetailsFixtureInput {
-  static readonly text: DetailInput = {
+  static readonly text = {
     label: 'Texte label',
     type: DetailInputType.TEXT,
   }
 
-  static readonly timeslot: DetailInput = {
+  static readonly timeslot = {
     label: 'Time',
     type: DetailInputType.TIMESLOT,
-    defaultValue: 'SYSDATE',
   }
 
-  static readonly date: DetailInput = {
+  static readonly date = {
     label: 'Date label',
     type: DetailInputType.DATE,
     defaultValue: 'SYSDATE',
   }
 
-  static readonly dateNotInFuture: DetailInput = {
+  static readonly dateNotInFuture = {
     label: 'Date (not in future) label',
     type: DetailInputType.DATE_NOT_IN_FUTURE,
     defaultValue: 'SYSDATE',
   }
 
-  static readonly dateWithNoDefault: DetailInput = {
+  static readonly dateWithNoDefault = {
     label: 'Date (without default to SYSDATE) label',
     type: DetailInputType.DATE,
   }
 
-  static readonly radio: DetailInput = {
+  static readonly radio = {
     label: 'Radio label',
     type: DetailInputType.RADIO,
     options: ['OPTION1', 'OPTION2 (à préciser)'],
   }
 
-  static readonly checkbox: DetailInput = {
+  static readonly checkbox = {
     label: 'Checkbox label',
     type: DetailInputType.CHECKBOX,
     options: ['CHECKBOX1', 'CHECKBOX2 (à préciser)', 'CHECKBOX3'],
   }
 
-  static readonly textarea: DetailInput = {
+  static readonly textarea = {
     label: 'Description',
     type: DetailInputType.TEXTAREA,
   }
