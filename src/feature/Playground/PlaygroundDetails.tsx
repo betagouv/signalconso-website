@@ -10,54 +10,46 @@ import {DetailInputValue} from '../../client/report/Report'
 export class DetailsFixtureInput {
   static readonly text: DetailInput = {
     label: 'Texte label',
-    rank: 1,
     type: DetailInputType.TEXT,
   }
 
   static readonly timeslot: DetailInput = {
     label: 'Time',
-    rank: 2,
     type: DetailInputType.TIMESLOT,
     defaultValue: 'SYSDATE',
   }
 
   static readonly date: DetailInput = {
     label: 'Date label',
-    rank: 2,
     type: DetailInputType.DATE,
     defaultValue: 'SYSDATE',
   }
 
   static readonly dateNotInFuture: DetailInput = {
     label: 'Date (not in future) label',
-    rank: 2,
     type: DetailInputType.DATE_NOT_IN_FUTURE,
     defaultValue: 'SYSDATE',
   }
 
   static readonly dateWithNoDefault: DetailInput = {
     label: 'Date (without default to SYSDATE) label',
-    rank: 2,
     type: DetailInputType.DATE,
   }
 
   static readonly radio: DetailInput = {
     label: 'Radio label',
-    rank: 3,
     type: DetailInputType.RADIO,
     options: ['OPTION1', 'OPTION2 (à préciser)'],
   }
 
   static readonly checkbox: DetailInput = {
     label: 'Checkbox label',
-    rank: 5,
     type: DetailInputType.CHECKBOX,
     options: ['CHECKBOX1', 'CHECKBOX2 (à préciser)', 'CHECKBOX3'],
   }
 
   static readonly textarea: DetailInput = {
     label: 'Description',
-    rank: 4,
     type: DetailInputType.TEXTAREA,
   }
 }

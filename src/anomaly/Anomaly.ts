@@ -92,8 +92,6 @@ export enum DetailInputType {
 
 export interface DetailInput {
   label: string
-  /** @deprecated */
-  rank?: number
   type: DetailInputType
   placeholder?: string
   options?: string[]
