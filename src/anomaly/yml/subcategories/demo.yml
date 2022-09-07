@@ -5,6 +5,7 @@
   subcategories:
   - title: (title) Une sous sous category minimale
   - title: (title) Une autre
+
 - title:  Sous category avec un fileLabel
   example: Cette sous category a un fileLabel, visible sur la page suivante
   fileLabel: (fileLabel) Le label expliquant les fichiers à uploader
@@ -45,6 +46,38 @@
       companyKind: LOCATION
     - title: Sous cat avec companyKind INFLUENCEUR
       companyKind: INFLUENCEUR
-    
-# Ne pas hésiter à rajouter plus d'exemples ici :
-# des different detailsInput
+- title: Sous category pour tester les "information" (bloc bloquant)
+  subcategories:
+    - title: Sous cat avec information complete
+      example:
+        Bloc d'information avec tous les champs remplis, et quelques "actions"
+      information:
+        title: Title du bloc d'information
+        subTitle: Subtitle du bloc d'information
+        content: Content du bloc d'information
+        actions:
+          - question: Première "action", champ "question"
+            answer: Première "action", champ "answer"
+          - question: Seconde "action", champ "question"
+            answer: Seconde "action", champ "answer"
+            example: Seconde "action", champ "example"
+    - title: Sous cat avec "outOfScope" à true
+      information:
+        title: Title du bloc d'information
+        content: Content du bloc d'information
+        outOfScope: true
+    - title: Sous cat avec juste un "content"
+      information:
+        content: Content du bloc d'information
+    - title: Sous cat avec juste un "title"
+      information:
+        title: Title du bloc d'information
+    - title: Sous cat avec juste un "subtitle"
+      information:
+        subTitle: Title du bloc d'information
+    - title: Sous cat avec juste une "action"
+      information:
+        actions:
+          - question: Première "action", champ "question"
+            answer: Première "action", champ "answer"
+
