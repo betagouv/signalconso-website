@@ -157,14 +157,14 @@
                   defaultValue: SYSDATE
                 - label: Heure du constat
                   type: TIMESLOT
-                  optionnal: true
+                  optional: true
                 - label: Quel produit&#160;?
                   type: TEXT
                   placeholder: Nom ou type de produit
                 - label: Quel était le prix indiqué si vous vous en rappelez&#160;?
                   type: TEXT
                   placeholder: Prix indiqué
-                  optionnal: true
+                  optional: true
                 - label: "L'avez-vous signalé au moment de payer&#160;?"
                   type: RADIO
                   options:
@@ -175,7 +175,7 @@
                   options:
                     - Oui
                     - Non
-                  optionnal: true
+                  optional: true
                 - label: Description
                   type: TEXTAREA
             - title: Il manque des prix / les prix sont illisibles
@@ -268,13 +268,13 @@
                 - label: Pour corriger ce problème, dites-nous en plus
                   type: TEXTAREA
                   placeholder: 'rayon du magasin, type de saleté'
-                  optionnal: true
+                  optional: true
                 - label: Date du constat
                   type: DATE
                   defaultValue: SYSDATE
                 - label: Heure du constat (facultatif)
                   type: TIMESLOT
-                  optionnal: true
+                  optional: true
             - title: Hygiène du personnel
               example: 'Exemple : tenue sale ou inadaptée'
               ccrfCode:
@@ -326,13 +326,13 @@
                         - Autre (à préciser)
                     - label: Pour corriger ce problème, dites-nous en plus
                       type: TEXTAREA
-                      optionnal: true
+                      optional: true
                     - label: Date du constat
                       type: DATE
                       defaultValue: SYSDATE
                     - label: Heure du constat (facultatif)
                       type: TIMESLOT
-                      optionnal: true
+                      optional: true
             - title: Problème de température
               example: 'Exemple : rupture de la chaîne du froid'
               ccrfCode:
@@ -353,13 +353,13 @@
                     - Autre problème de température
                 - label: Pour corriger ce problème, dites-nous en plus
                   type: TEXTAREA
-                  optionnal: true
+                  optional: true
                 - label: Date du constat
                   type: DATE
                   defaultValue: SYSDATE
                 - label: Heure du constat (facultatif)
                   type: TIMESLOT
-                  optionnal: true
+                  optional: true
             - title: Je subis des nuisances à cause du magasin
               example: 'Exemple : les odeurs des poubelles arrivent dans mon appartement, les clients se garent devant chez moi'
               information: !!import/single ../common/info/voisinage.yml
@@ -450,7 +450,7 @@
                     - Oui
                     - Non
                     - Je n'ai pas demandé
-                  optionnal: true
+                  optional: true
                 - label: Précisez si possible la publicité concernée. Vous pouvez par exemple récupérer le lien de la publicité sur le site <a href="https&#58;//www.bonial.fr" target="_blank">bonial.fr</a>&#160;?
                   type: TEXT
                   placeholder: 'Lien vers la publicité'
@@ -490,7 +490,7 @@
                     - Autre (à préciser)
                 - label: Pourquoi trouvez-vous ça trompeur ?
                   type: TEXTAREA
-                  optionnal: true
+                  optional: true
                 - label: Avez-vous déjà contacté le commerçant pour ce problème&#160;?
                   type: RADIO
                   options:

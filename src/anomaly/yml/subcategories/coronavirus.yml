@@ -12,12 +12,12 @@
 #        - label : Volume du produit et autres caractéristiques
 #          rank: 2
 #          type: TEXTAREA
-#          optionnal: true
+#          optional: true
 #          placeholder: Volume, marque...
 #        - label : Quel est le prix de vente ?
 #          rank: 3
 #          type: TEXT
-#          optionnal: true
+#          optional: true
 #      fileLabel: Photo du prix et du produit si possible
 #    - title: Masque
 #    - title: Autre
@@ -78,7 +78,7 @@
           defaultValue: SYSDATE
         - label: Quel est le prix de vente ?
           type: TEXT
-          optionnal: true
+          optional: true
       fileLabel: Photo du prix et du produit si possible
     - title: Le prix de l'autotest qui est fait sous la supervision d'un pharmacien
       detailInputs:
@@ -87,5 +87,5 @@
           defaultValue: SYSDATE
         - label: Quel est le prix ?
           type: TEXT
-          optionnal: true
+          optional: true
       fileLabel: Photo de la facture ou de la note

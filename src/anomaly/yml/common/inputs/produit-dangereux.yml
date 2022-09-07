@@ -4,13 +4,13 @@
 - label: Nom du produit
   type: TEXT
 - label: Marque / adresse du fabriquant
-  optionnal: true
+  optional: true
   type: TEXT
 - label: Élements d'identification (Modèle / N° de série / Volume / Poids)
-  optionnal: true
+  optional: true
   type: TEXT
 - label: La personne qui a utilisé le produit a-t-elle était blessée&#160;?
-  optionnal: true
+  optional: true
   type: RADIO
   options:
     - Non

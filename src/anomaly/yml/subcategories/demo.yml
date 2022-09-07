@@ -88,7 +88,7 @@
     - label: (label) input de type TEXT, et divers champs optionnels
       type: TEXT
       placeholder: placeholder de l'input
-      optionnal: true
+      optional: true
     - label: (label) input de type DATE
       type: DATE
     - label: (label) input de type DATE_NOT_IN_FUTURE

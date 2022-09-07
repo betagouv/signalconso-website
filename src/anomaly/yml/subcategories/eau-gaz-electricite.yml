@@ -125,7 +125,7 @@
         - label: Date de début du contrat s'il démarre un autre jour que celui du démarchage&#160;?
           type: DATE
           defaultValue: SYSDATE
-          optionnal: true
+          optional: true
         - label: Décrivez nous plus en détails ce qui s'est passé
           type: TEXTAREA
       fileLabel: Si possible, joindre une copie du contrat ou tout document commercial
@@ -172,7 +172,7 @@
             - Autre (à préciser)
         - label: Pourquoi trouvez-vous ça trompeur ?
           type: TEXTAREA
-          optionnal: true
+          optional: true
         - label: Avez-vous déjà contacté l'entreprise pour lui signaler ce problème&#160;?
           type: RADIO
           options:

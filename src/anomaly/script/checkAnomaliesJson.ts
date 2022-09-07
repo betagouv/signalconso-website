@@ -72,7 +72,7 @@ const inputSubcategorySpec: ObjectSpec = {
         placeholder: _ => _.ifDefined()?.assertIsString(),
         options: _ => _.ifDefined()?.assertIsArrayOfString(),
         defaultValue: _ => _.ifDefined()?.assertIsAllowedString(['SYSDATE']),
-        optionnal: _ => _.ifDefined()?.assertIsBoolean(),
+        optional: _ => _.ifDefined()?.assertIsBoolean(),
       })
     }),
   ...baseSubcategorySpec,

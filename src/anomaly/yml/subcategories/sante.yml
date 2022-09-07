@@ -158,7 +158,7 @@
                 - conventionné secteur 1
                 - conventionné secteur 2
                 - non conventionné
-              optionnal: true
+              optional: true
         - title: Les prix sont exagérés
           information:
             title: Un professionnel de santé non conventionné peut choisir ses tarifs
@@ -248,13 +248,13 @@
               options:
                 - Oui
                 - Non
-              optionnal: true
+              optional: true
             - label: S'ils sont affichés, ces prix sont-ils exacts ?
               type: RADIO
               options:
                 - Oui
                 - Non
-              optionnal: true
+              optional: true
           fileLabel: Vous pouvez joindre une photo
         - title: Les prix sont trop chers
           example: 'Exemple : ce naturopathe est plus cher que ceux de la région'
@@ -276,7 +276,7 @@
               type: DATE
             - label: Si vous vous en rappelez, combien avez-vous payé ?
               type: TEXT
-              optionnal: true
+              optional: true
             - label: Avez-vous demandé une note ?
               type: RADIO
               options:
@@ -401,7 +401,7 @@
             - Non
         - label: Quel est le prix de ce supplément ?
           type: TEXT
-          optionnal: true
+          optional: true
         - label: L'hôpital / clinique vous a t-il justifié ce supplément ?
           type: RADIO
           options:

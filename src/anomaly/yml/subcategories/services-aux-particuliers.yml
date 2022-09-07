@@ -66,7 +66,7 @@
                   defaultValue: SYSDATE
                 - label: Heure de l'appel (facultatif)
                   type: TIMESLOT
-                  optionnal: true
+                  optional: true
             - title: Référence abusive à des partenariats avec l'État ou de grandes entreprises
               ccrfCode:
                 - '23b'
@@ -85,7 +85,7 @@
                   defaultValue: SYSDATE
                 - label: Heure de l'appel (facultatif)
                   type: TIMESLOT
-                  optionnal: true
+                  optional: true
             - title: Utilisation de termes laissant croire qu'il s'agit d'une structure publique
               ccrfCode:
                 - '23b'
@@ -104,7 +104,7 @@
                   defaultValue: SYSDATE
                 - label: Heure de l'appel (facultatif)
                   type: TIMESLOT
-                  optionnal: true
+                  optional: true
             - title: Usurpation d'identité de la part du professionnel
               ccrfCode:
                 - '23b'
@@ -123,7 +123,7 @@
                   defaultValue: SYSDATE
                 - label: Heure de l'appel (facultatif)
                   type: TIMESLOT
-                  optionnal: true
+                  optional: true
     - title: Contrat
       example: 'Exemple : contrat non respecté, délai de rétractation, clause abusive'
       ccrfCode:
@@ -232,7 +232,7 @@
                   defaultValue: SYSDATE
                 - label: Heure de l'appel (facultatif)
                   type: TIMESLOT
-                  optionnal: true
+                  optional: true
             - title: Autre
     - title: Prix
       ccrfCode:

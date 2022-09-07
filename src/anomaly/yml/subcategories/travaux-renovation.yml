@@ -60,7 +60,7 @@
               defaultValue: SYSDATE
             - label: Heure du constat (facultatif)
               type: TIMESLOT
-              optionnal: true
+              optional: true
         - title: Contrainte du professionnel
           reponseconsoCode:
             - '210'
@@ -72,7 +72,7 @@
               defaultValue: SYSDATE
             - label: Heure du constat (facultatif)
               type: TIMESLOT
-              optionnal: true
+              optional: true
         - title: Autre
           reponseconsoCode:
             - '210'
@@ -195,7 +195,7 @@
                   defaultValue: SYSDATE
                 - label: Heure du constat (facultatif)
                   type: TIMESLOT
-                  optionnal: true
+                  optional: true
             - title: Référence abusive à des partenariats avec l'État ou de grandes entreprises d'énergie
               tags:
                 - ReponseConso
@@ -214,7 +214,7 @@
                   defaultValue: SYSDATE
                 - label: Heure du constat (facultatif)
                   type: TIMESLOT
-                  optionnal: true
+                  optional: true
             - title: Utilisation de termes laissant croire qu'il s'agit d'une structure publique
               tags:
                 - ReponseConso
@@ -233,7 +233,7 @@
                   defaultValue: SYSDATE
                 - label: Heure du constat (facultatif)
                   type: TIMESLOT
-                  optionnal: true
+                  optional: true
             - title: Usurpation d'identité de la part du professionnel
               tags:
                 - ReponseConso
@@ -252,7 +252,7 @@
                   defaultValue: SYSDATE
                 - label: Heure du constat (facultatif)
                   type: TIMESLOT
-                  optionnal: true
+                  optional: true
             - title: Présentation des travaux comme étant obligatoires
               tags:
                 - ReponseConso
@@ -271,7 +271,7 @@
                   defaultValue: SYSDATE
                 - label: Heure du constat (facultatif)
                   type: TIMESLOT
-                  optionnal: true
+                  optional: true
             - title: Promesse d'économies d'énergie surestimées
               tags:
                 - ReponseConso
@@ -290,7 +290,7 @@
                   defaultValue: SYSDATE
                 - label: Heure du constat (facultatif)
                   type: TIMESLOT
-                  optionnal: true
+                  optional: true
             - title: Autre
               detailInputs:
                 - label: Qu'est-ce qui est trompeur ou mensonger&#160;?
@@ -313,7 +313,7 @@
                   defaultValue: SYSDATE
                 - label: Heure du constat (facultatif)
                   type: TIMESLOT
-                  optionnal: true
+                  optional: true
         - title: Contrainte du professionnel
           reponseconsoCode:
             - '210'
@@ -325,7 +325,7 @@
               defaultValue: SYSDATE
             - label: Heure du constat (facultatif)
               type: TIMESLOT
-              optionnal: true
+              optional: true
         - title: Autre
     - title: Prestation
       example: 'Exemple : malfaçons sur le chantier, travaux commencés mais jamais terminés'

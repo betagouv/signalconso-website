@@ -4,13 +4,13 @@
 - label: Nom du produit
   type: TEXT
 - label: Marque / adresse du fabriquant
-  optionnal: true
+  optional: true
   type: TEXT
 - label: Élements d'identification (Modèle / N° de série / Volume / Poids)
-  optionnal: true
+  optional: true
   type: TEXT
 - label: La personne qui a consommé l'aliment est-elle tombée malade et/ou s'est-elle blessée&#160;?
-  optionnal: true
+  optional: true
   type: RADIO
   options:
     - Non

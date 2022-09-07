@@ -295,7 +295,7 @@
               defaultValue: SYSDATE
             - label: "Numéro de réservation (pour faciliter le traitement par l'entreprise)"
               type: TEXT
-              optionnal: true
+              optional: true
             - label: Quel est le problème ?
               type: TEXTAREA
               placeholder: Quel était le prix initial ? Quel est le prix final ?
@@ -341,7 +341,7 @@
               defaultValue: SYSDATE
             - label: Heure du constat (facultatif)
               type: TIMESLOT
-              optionnal: true
+              optional: true
     - title: Qualité de la chambre / de l'hébergement
       example: 'Exemple : hôtel sale, chambre insonorisée, pas de sauna alors que le site mentionne un sauna'
       tags:
@@ -555,7 +555,7 @@
               defaultValue: SYSDATE
             - label: Heure du constat (facultatif)
               type: TIMESLOT
-              optionnal: true
+              optional: true
     - title: Prestation
       ccrfCode:
         - '23b'
@@ -686,7 +686,7 @@
               defaultValue: SYSDATE
             - label: Heure du constat (facultatif)
               type: TIMESLOT
-              optionnal: true
+              optional: true
     - title: Retard / Annulation / Remboursement
       ccrfCode:
         - '21c'
@@ -809,7 +809,7 @@
               defaultValue: SYSDATE
             - label: Heure du constat (facultatif)
               type: TIMESLOT
-              optionnal: true
+              optional: true
     - title: Contrat et abonnement
       example: 'Exemple : contrat non respecté, clause abusive'
       ccrfCode:
@@ -945,7 +945,7 @@
               defaultValue: SYSDATE
             - label: Heure du constat (facultatif)
               type: TIMESLOT
-              optionnal: true
+              optional: true
     - title: Remboursement / annulation
       ccrfCode:
         - '21c'

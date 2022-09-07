@@ -122,10 +122,10 @@
             - label: Numéro de lot (si possible)
               type: TEXT
               placeholder: Il est imprimé sur l'emballage ou près de la date de consommation
-              optionnal: true
+              optional: true
             - label: Date limite (si possible)
               type: DATE
-              optionnal: true
+              optional: true
             - label: Date du constat (ou d'achat suivant le cas)
               type: DATE_NOT_IN_FUTURE
               defaultValue: SYSDATE
@@ -163,10 +163,10 @@
             - label: Numéro de lot (si possible)
               type: TEXT
               placeholder: il est imprimé sur l'emballage ou près de la date de consommation
-              optionnal: true
+              optional: true
             - label: Date limite (si possible)
               type: DATE
-              optionnal: true
+              optional: true
             - label: Date du constat (ou d'achat suivant le cas)
               type: DATE_NOT_IN_FUTURE
               defaultValue: SYSDATE
@@ -205,10 +205,10 @@
             - label: Numéro de lot (si possible)
               type: TEXT
               placeholder: il est imprimé sur l'emballage ou près de la date de consommation
-              optionnal: true
+              optional: true
             - label: Date limite (si possible)
               type: DATE
-              optionnal: true
+              optional: true
             - label: Date du constat (ou d'achat suivant le cas)
               type: DATE_NOT_IN_FUTURE
               defaultValue: SYSDATE
@@ -257,10 +257,10 @@
               type: TEXT
             - label: Numéro de lot (si possible)
               type: TEXT
-              optionnal: true
+              optional: true
             - label: Date limite (si possible)
               type: DATE
-              optionnal: true
+              optional: true
             - label: Date du constat (ou d'achat suivant le cas)
               type: DATE_NOT_IN_FUTURE
               defaultValue: SYSDATE
@@ -311,7 +311,7 @@
             - Autre (à préciser)
         - label: Nom  et marque du produit
           type: TEXT
-          optionnal: true
+          optional: true
         - label: À propos de quoi est-ce trompeur&#160;?
           type: RADIO
           options:
@@ -323,7 +323,7 @@
             - Autres (à préciser)
         - label: Pourquoi trouvez-vous ça trompeur&#160;?
           type: TEXTAREA
-          optionnal: true
+          optional: true
       fileLabel: Photos du produit (si possible de tous les côtés de l'emballage)
     - title: Informations sur l'emballage uniquement en langue étrangère
       example: Aucune information traduite en français
@@ -359,7 +359,7 @@
         - label: Préciser le lieu (rayon) dans le cas d'un grand magasin
           type: TEXT
           placeholder: lieu
-          optionnal: true
+          optional: true
     - title: La quantité annoncée est non conforme
       subcategoriesTitle: Quel est le type de produit&#160;?
       subcategories:
@@ -387,7 +387,7 @@
               type: TEXT
             - label: Elements d'identification (date limite, n° de lot)
               type: TEXT
-              optionnal: true
+              optional: true
               placeholder: Elements d'identification
             - label: Description
               type: TEXTAREA
@@ -426,7 +426,7 @@
       defaultValue: SYSDATE
     - label: Heure du constat
       type: TIMESLOT
-      optionnal: true
+      optional: true
     - label: Nom du produit / marque
       type: TEXT
     - label: Numéro de lot / référence

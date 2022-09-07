@@ -3,7 +3,7 @@
   defaultValue: SYSDATE
 - label: Heure du constat
   type: TIMESLOT
-  optionnal: true
+  optional: true
 - label: Nom du produit / marque
   type: TEXT
 - label: Numéro de lot / référence

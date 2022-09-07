@@ -32,7 +32,7 @@
             - Autre (à préciser)
         - label: Vous pouvez préciser le problème en quelques mots
           type: TEXT
-          optionnal: true
+          optional: true
     - title: Hygiène des locaux et du matériel
       example: 'Exemple : cuisine sale, odeur de poubelle dans ma cour'
       reponseconsoCode:
@@ -46,7 +46,7 @@
               defaultValue: SYSDATE
             - label: Heure du constat (facultatif)
               type: TIMESLOT
-              optionnal: true
+              optional: true
             - label: Quel endroit est concerné&#160;?
               type: CHECKBOX
               options:
@@ -120,7 +120,7 @@
           defaultValue: SYSDATE
         - label: Heure du constat (facultatif)
           type: TIMESLOT
-          optionnal: true
+          optional: true
         - label: Quel est le problème&#160;?
           type: RADIO
           options:
@@ -130,7 +130,7 @@
             - Autre problème de température (à préciser)
         - label: Pouvez-vous préciser ?
           type: TEXT
-          optionnal: true
+          optional: true
       fileLabel: Si possible, merci de joindre une photo ou un document pour appuyer votre signalement.
 - title: Prix et paiement
   companyKind: SIRET

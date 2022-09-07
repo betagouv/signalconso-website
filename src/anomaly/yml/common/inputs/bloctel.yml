@@ -7,7 +7,7 @@
   type: TEXT
 - label: Votre numéro d'inscription bloctel (recommandé)
   type: TEXT
-  optionnal: true
+  optional: true
 - label: L'appel concernait
   type: RADIO
   options:

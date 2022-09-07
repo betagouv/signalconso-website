@@ -96,5 +96,5 @@ export interface DetailInput {
   placeholder?: string
   options?: string[]
   defaultValue?: 'SYSDATE'
-  optionnal?: boolean
+  optional?: boolean
 }

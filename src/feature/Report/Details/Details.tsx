@@ -143,7 +143,7 @@ export const _Details = ({
           {inputs.map((input, inputIndex) => (
             <FormLayout
               label={<span dangerouslySetInnerHTML={{__html: input.label}} />}
-              required={!input.optionnal}
+              required={!input.optional}
               key={inputIndex}
               sx={{
                 mb: 3,
@@ -165,7 +165,7 @@ export const _Details = ({
                       name={'' + inputIndex}
                       defaultValue={defaultValue ?? input.defaultValue}
                       rules={{
-                        required: {value: !input.optionnal, message: m.required + ' *'},
+                        required: {value: !input.optional, message: m.required + ' *'},
                         ...rules,
                       }}
                       render={render}

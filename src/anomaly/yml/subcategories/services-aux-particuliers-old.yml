@@ -56,7 +56,7 @@
                 - Autre (à préciser)
             - label: Si besoin, merci de préciser ce qu''il s''est passé
               type: TEXTAREA
-              optionnal: true
+              optional: true
           fileLabel: Vous pouvez joindre une photo des prix ou tout document utile pour appuyer votre signalement.
         - title: Moyens de paiement
           example: 'Exemple : carte bancaire refusée'
