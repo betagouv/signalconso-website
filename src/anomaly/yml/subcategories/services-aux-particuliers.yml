@@ -527,7 +527,7 @@
       tags:
         - LitigeContractuel
 - title: Aide à la personne
-  example: "Garde d'enfant de moins de 3 ans, garde d'enfants handicapés de moins de 18ans, garde de personne âgées dépendants ou handicapées, Services d'aide et d'accompagnement à domicile (SAAD)"
+  example: "Garde d'enfant de moins de 3 ans, garde d'enfants handicapés de moins de 18 ans, garde de personnes âgées dépendantes ou handicapées, services d'aide et d'accompagnement à domicile (SAAD)"
   subcategories:
     - title: Prix des prestations
       example: 'Exemple : promotion non appliquée, prix en vitrine pas à jour, prix non respecté'
