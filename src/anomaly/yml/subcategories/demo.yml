@@ -20,10 +20,31 @@
     - '145'
     - '23F'
     - '146'
-- title: Sous category avec tag LitigeContractuel
-  example: Elle a le tag "LitigeContractuel"
-  tags:
-    - LitigeContractuel
+- title: Sous category pour tester divers tags
+  example: Pour tester les tags LitigeContractuel, ReponseConso, etc.
+  subcategories:
+  - title: Sous cat avec tag LitigeContractuel
+    tags:
+      - LitigeContractuel
+  - title: Sous cat avec tag ReponseConso
+    tags:
+      - ReponseConso
+  - title: Sous cat avec tag ProduitDangereux
+    tags:
+      - ProduitDangereux
+- title: Sous category pour tester les companyKind
+  example: Pour tester chaque type de CompanyKind (SIRET, WEBSITE, etc.)
+  subcategories:
+    - title: Sous cat avec companyKind SIRET
+      companyKind: SIRET
+    - title: Sous cat avec companyKind WEBSITE
+      companyKind: WEBSITE
+    - title: Sous cat avec companyKind PHONE
+      companyKind: PHONE
+    - title: Sous cat avec companyKind LOCATION
+      companyKind: LOCATION
+    - title: Sous cat avec companyKind INFLUENCEUR
+      companyKind: INFLUENCEUR
     
-# TODO continuer ici : il faudrait rajouter des demos de companyKind, des different detailsInput, des différents tags qui peuvent avoir tel ou tel effet, etc. 
-    
+# Ne pas hésiter à rajouter plus d'exemples ici :
+# des different detailsInput
