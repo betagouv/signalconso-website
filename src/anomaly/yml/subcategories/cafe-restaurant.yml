@@ -147,7 +147,6 @@
           type: DATE
           defaultValue: SYSDATE
         - label: Description
-          example: Pouvez-vous nous en dire plus ?
           type: TEXTAREA
           placeholder: "absence de carte des vins, absence des prix à l'extérieur du restaurant"
       fileLabel: Merci de joindre si possible des éléments pour appuyer votre signalement (photo du menu, photo de la vitrine...)

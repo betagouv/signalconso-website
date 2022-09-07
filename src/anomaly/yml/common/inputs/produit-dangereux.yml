@@ -4,7 +4,6 @@
 - label: Nom du produit
   type: TEXT
 - label: Marque / adresse du fabriquant
-  example: Indiquée sur l'emballage
   optionnal: true
   type: TEXT
 - label: Élements d'identification (Modèle / N° de série / Volume / Poids)
@@ -13,7 +12,6 @@
 - label: La personne qui a utilisé le produit a-t-elle était blessée&#160;?
   optionnal: true
   type: RADIO
-  example: Préciser la nature et la gravité
   options:
     - Non
     - Oui (à préciser)

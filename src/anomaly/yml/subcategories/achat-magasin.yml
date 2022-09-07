@@ -31,7 +31,6 @@
               type: DATE
               defaultValue: SYSDATE
             - label: Description
-              example: Précisez si possible le rayon concerné
               type: TEXTAREA
         - title: Les prix sont plus élevés qu'ailleurs
           information:
@@ -67,7 +66,6 @@
               type: DATE
               defaultValue: SYSDATE
             - label: Description
-              example: Précisez si possible le problème
               type: TEXTAREA
     - title: Une commande effectuée
       example: 'Exemple : commande jamais livrée, produit non conforme'
@@ -198,7 +196,6 @@
                   type: DATE
                   defaultValue: SYSDATE
                 - label: Description
-                  example: Précisez si possible le rayon concerné
                   type: TEXTAREA
             - title: Les prix sont plus élevés qu'ailleurs
               information:
@@ -232,7 +229,6 @@
                   type: DATE
                   defaultValue: SYSDATE
                 - label: Description
-                  example: Précisez si possible le problème
                   type: TEXTAREA
         - title: Hygiène
           tags:

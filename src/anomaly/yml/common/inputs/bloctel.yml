@@ -6,7 +6,6 @@
 - label: Votre numéro de téléphone
   type: TEXT
 - label: Votre numéro d'inscription bloctel (recommandé)
-  example: Ce numéro est présent dans toutes les confirmations – inscription initiale, dépôts de réclamation – que vous a envoyés Bloctel
   type: TEXT
   optionnal: true
 - label: L'appel concernait

@@ -88,7 +88,6 @@
     - label: (label) input de type TEXT, et divers champs optionnels
       type: TEXT
       placeholder: placeholder de l'input
-      example: (example) description supplementaire de l'input
       optionnal: true
     - label: (label) input de type DATE
       type: DATE

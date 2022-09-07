@@ -10,13 +10,11 @@
 - label: Avez-vous consulté un médecin&#160;?
   optionnal: true
   type: RADIO
-  example: Précisez si vous avez eu un arrêt de travail et sa durée
   options:
     - Non
     - Oui (à préciser)
 - label: Décrivez nous plus en détails ce qui s'est passé
   type: TEXTAREA
-  example: Pensez à donner le nom de vos plats ou du produit consommé
 - label: Avez-vous déjà contacté le restaurateur ou le fabriquant pour ce problème&#160;?
   type: RADIO
   options:

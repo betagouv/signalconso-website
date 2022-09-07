@@ -66,7 +66,6 @@
             - '210'
           detailInputs:
             - label: Précisez les informations sur le contexte
-              example: 'Exemple : lieu de la rencontre, discours du professionnel, âge'
               type: TEXTAREA
             - label: Date du constat
               type: DATE
@@ -320,7 +319,6 @@
             - '210'
           detailInputs:
             - label: Précisez les informations sur le contexte
-              example: 'Exemple : lieu de la rencontre, discours du professionnel, âge'
               type: TEXTAREA
             - label: Date du constat
               type: DATE
