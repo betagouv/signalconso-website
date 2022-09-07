@@ -3,51 +3,61 @@ import {_Details} from 'feature/Report/Details/Details'
 import React, {useState} from 'react'
 import {styleUtils} from 'core/theme/theme'
 import {ReportDraft2} from 'core/model/ReportDraft'
-import {DetailInput, DetailInputType} from '../../anomaly/Anomaly'
+import {
+  DetailInput,
+  DetailInputCheckbox,
+  DetailInputDate,
+  DetailInputDateNotInFuture,
+  DetailInputRadio,
+  DetailInputText,
+  DetailInputTextarea,
+  DetailInputTimeslot,
+  DetailInputType,
+} from '../../anomaly/Anomaly'
 import {UploadedFile} from '../../client/file/UploadedFile'
 import {DetailInputValue} from '../../client/report/Report'
 
 export class DetailsFixtureInput {
-  static readonly text = {
+  static readonly text: DetailInputText = {
     label: 'Texte label',
     type: DetailInputType.TEXT,
   }
 
-  static readonly timeslot = {
+  static readonly timeslot: DetailInputTimeslot = {
     label: 'Time',
     type: DetailInputType.TIMESLOT,
   }
 
-  static readonly date = {
+  static readonly date: DetailInputDate = {
     label: 'Date label',
     type: DetailInputType.DATE,
     defaultValue: 'SYSDATE',
   }
 
-  static readonly dateNotInFuture = {
+  static readonly dateNotInFuture: DetailInputDateNotInFuture = {
     label: 'Date (not in future) label',
     type: DetailInputType.DATE_NOT_IN_FUTURE,
     defaultValue: 'SYSDATE',
   }
 
-  static readonly dateWithNoDefault = {
+  static readonly dateWithNoDefault: DetailInputDate = {
     label: 'Date (without default to SYSDATE) label',
     type: DetailInputType.DATE,
   }
 
-  static readonly radio = {
+  static readonly radio: DetailInputRadio = {
     label: 'Radio label',
     type: DetailInputType.RADIO,
     options: ['OPTION1', 'OPTION2 (à préciser)'],
   }
 
-  static readonly checkbox = {
+  static readonly checkbox: DetailInputCheckbox = {
     label: 'Checkbox label',
     type: DetailInputType.CHECKBOX,
     options: ['CHECKBOX1', 'CHECKBOX2 (à préciser)', 'CHECKBOX3'],
   }
 
-  static readonly textarea = {
+  static readonly textarea: DetailInputTextarea = {
     label: 'Description',
     type: DetailInputType.TEXTAREA,
   }
