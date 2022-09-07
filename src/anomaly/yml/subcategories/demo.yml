@@ -80,4 +80,25 @@
         actions:
           - question: Première "action", champ "question"
             answer: Première "action", champ "answer"
-
+- title: Sous category pour tester les "detailInputs"
+  example: Sous cat avec divers detailInputs
+  detailInputs:
+    - label: (label) input de type TEXT
+      type: TEXT
+    - label: (label) input de type TEXT, et divers champs optionnels
+      type: TEXT
+      placeholder: placeholder de l'input
+      example: (example) description supplementaire de l'input
+      optionnal: true
+    - label: (label) input de type DATE
+      type: DATE
+    - label: (label) input de type DATE_NOT_IN_FUTURE
+      type: DATE_NOT_IN_FUTURE
+    - label: (label) input de type TIMESLOT
+      type: TIMESLOT
+    - label: (label) input de type RADIO
+      type: RADIO
+    - label: (label) input de type CHECKBOX
+      type: CHECKBOX
+    - label: (label) input de type TEXTAREA
+      type: TEXTAREA
