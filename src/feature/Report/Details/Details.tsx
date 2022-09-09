@@ -30,7 +30,8 @@ import {EventCategories, ReportEventActions} from 'core/analytic/analytic'
 import {FileOrigin, UploadedFile} from '../../../client/file/UploadedFile'
 import {DetailInput, DetailInputType, ReportTag, SubcategoryInput} from '../../../anomaly/Anomaly'
 import {ReportDraft} from '../../../client/report/ReportDraft'
-import {dateToFrenchFormat, frenchFormatToDate, isDateInRange} from 'core/helper/utils'
+import {dateToFrenchFormat, isDateInRange} from 'core/helper/utils'
+import {getDefaultValueFromInput, getOptionsFromInput, getPlaceholderFromInput} from './DetailInputsUtils'
 
 export class SpecifyFormUtils {
   static readonly keyword = '(à préciser)'
@@ -143,7 +144,7 @@ export const _Details = ({
           {inputs.map((input, inputIndex) => (
             <FormLayout
               label={<span dangerouslySetInnerHTML={{__html: input.label}} />}
-              required={!input.optionnal}
+              required={!input.optional}
               key={inputIndex}
               sx={{
                 mb: 3,
@@ -163,9 +164,9 @@ export const _Details = ({
                     <Controller
                       control={control}
                       name={'' + inputIndex}
-                      defaultValue={defaultValue ?? input.defaultValue}
+                      defaultValue={defaultValue ?? getDefaultValueFromInput(input)}
                       rules={{
-                        required: {value: !input.optionnal, message: m.required + ' *'},
+                        required: {value: !input.optional, message: m.required + ' *'},
                         ...rules,
                       }}
                       render={render}
@@ -178,7 +179,7 @@ export const _Details = ({
                 const renderDateVariant = ({max}: {max: string}) => {
                   const min = '01/01/1970'
                   return controller({
-                    defaultValue: input.defaultValue === 'SYSDATE' ? dateToFrenchFormat(new Date()) : undefined,
+                    defaultValue: getDefaultValueFromInput(input) === 'SYSDATE' ? dateToFrenchFormat(new Date()) : undefined,
                     rules: {
                       validate: (d: string) => {
                         return isDateInRange(d, min, max) ? true : m.invalidDate
@@ -188,7 +189,7 @@ export const _Details = ({
                       <ScDatepicker
                         {...field}
                         fullWidth
-                        placeholder={input.placeholder}
+                        placeholder={getPlaceholderFromInput(input)}
                         min={min}
                         max={max}
                         helperText={errorMessage}
@@ -215,7 +216,7 @@ export const _Details = ({
                           <ScSelect
                             {...field}
                             fullWidth
-                            placeholder={input.placeholder}
+                            placeholder={getPlaceholderFromInput(input)}
                             helperText={errorMessage}
                             error={hasErrors}
                           >
@@ -231,7 +232,7 @@ export const _Details = ({
                       controller({
                         render: ({field}) => (
                           <ScRadioGroup {...field} sx={{mt: 1}} dense helperText={errorMessage} error={hasErrors}>
-                            {input.options?.map((option, i) => (
+                            {getOptionsFromInput(input)?.map((option, i) => (
                               <ScRadioGroupItem
                                 key={option}
                                 value={option}
@@ -255,7 +256,7 @@ export const _Details = ({
                       controller({
                         render: ({field}) => (
                           <ScRadioGroup {...field} multiple helperText={errorMessage} error={hasErrors} sx={{mt: 1}} dense>
-                            {input.options?.map(option => (
+                            {getOptionsFromInput(input)?.map(option => (
                               <ScRadioGroupItem
                                 key={option}
                                 value={option}
@@ -281,7 +282,9 @@ export const _Details = ({
                         rules: {
                           maxLength: {value: appConfig.maxDescriptionInputLength, message: ''},
                         },
-                        render: ({field}) => <ScInput {...field} error={hasErrors} fullWidth placeholder={input.placeholder} />,
+                        render: ({field}) => (
+                          <ScInput {...field} error={hasErrors} fullWidth placeholder={getPlaceholderFromInput(input)} />
+                        ),
                       }),
                   },
                   () =>
@@ -302,7 +305,7 @@ export const _Details = ({
                           minRows={5}
                           maxRows={10}
                           fullWidth
-                          placeholder={input.placeholder}
+                          placeholder={getPlaceholderFromInput(input)}
                         />
                       ),
                     }),

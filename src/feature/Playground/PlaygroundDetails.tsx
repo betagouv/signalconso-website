@@ -3,61 +3,62 @@ import {_Details} from 'feature/Report/Details/Details'
 import React, {useState} from 'react'
 import {styleUtils} from 'core/theme/theme'
 import {ReportDraft2} from 'core/model/ReportDraft'
-import {DetailInput, DetailInputType} from '../../anomaly/Anomaly'
+import {
+  DetailInput,
+  DetailInputCheckbox,
+  DetailInputDate,
+  DetailInputDateNotInFuture,
+  DetailInputRadio,
+  DetailInputText,
+  DetailInputTextarea,
+  DetailInputTimeslot,
+  DetailInputType,
+} from '../../anomaly/Anomaly'
 import {UploadedFile} from '../../client/file/UploadedFile'
 import {DetailInputValue} from '../../client/report/Report'
 
 export class DetailsFixtureInput {
-  static readonly text: DetailInput = {
+  static readonly text: DetailInputText = {
     label: 'Texte label',
-    rank: 1,
     type: DetailInputType.TEXT,
   }
 
-  static readonly timeslot: DetailInput = {
+  static readonly timeslot: DetailInputTimeslot = {
     label: 'Time',
-    rank: 2,
     type: DetailInputType.TIMESLOT,
-    defaultValue: 'SYSDATE',
   }
 
-  static readonly date: DetailInput = {
+  static readonly date: DetailInputDate = {
     label: 'Date label',
-    rank: 2,
     type: DetailInputType.DATE,
     defaultValue: 'SYSDATE',
   }
 
-  static readonly dateNotInFuture: DetailInput = {
+  static readonly dateNotInFuture: DetailInputDateNotInFuture = {
     label: 'Date (not in future) label',
-    rank: 2,
     type: DetailInputType.DATE_NOT_IN_FUTURE,
     defaultValue: 'SYSDATE',
   }
 
-  static readonly dateWithNoDefault: DetailInput = {
+  static readonly dateWithNoDefault: DetailInputDate = {
     label: 'Date (without default to SYSDATE) label',
-    rank: 2,
     type: DetailInputType.DATE,
   }
 
-  static readonly radio: DetailInput = {
+  static readonly radio: DetailInputRadio = {
     label: 'Radio label',
-    rank: 3,
     type: DetailInputType.RADIO,
     options: ['OPTION1', 'OPTION2 (à préciser)'],
   }
 
-  static readonly checkbox: DetailInput = {
+  static readonly checkbox: DetailInputCheckbox = {
     label: 'Checkbox label',
-    rank: 5,
     type: DetailInputType.CHECKBOX,
     options: ['CHECKBOX1', 'CHECKBOX2 (à préciser)', 'CHECKBOX3'],
   }
 
-  static readonly textarea: DetailInput = {
+  static readonly textarea: DetailInputTextarea = {
     label: 'Description',
-    rank: 4,
     type: DetailInputType.TEXTAREA,
   }
 }

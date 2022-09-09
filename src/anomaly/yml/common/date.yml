@@ -18,11 +18,9 @@
         - '323'
       detailInputs:
         - label: Date du constat (ou d'achat suivant le cas)
-          rank: 1
           type: DATE
           defaultValue: SYSDATE
         - label: Date Limite de Consommation (DLC)
-          rank: 2
           type: DATE
       fileLabel: Photo de la DLC / du produit / de la marque
     - title: Non
@@ -39,16 +37,13 @@
     - '323'
   detailInputs:
     - label: Quel est le problème ?
-      rank: 1
       type: RADIO
       options:
         - La date est dépassée
         - La date sera dépassée d'ici 7 jours
     - label: Date de consommation recommandée
-      rank: 2
       type: DATE
     - label: Date du constat (ou date d'achat)
-      rank: 3
       type: DATE
       defaultValue: SYSDATE
   fileLabel: Photo

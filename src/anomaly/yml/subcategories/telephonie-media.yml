@@ -61,10 +61,8 @@
                         - LitigeContractuel
                       detailInputs:
                         - label: Date du début de l'option (vous pouvez préciser le premier mois facturé)
-                          rank: 1
                           type: DATE
                         - label: Quel est le nom de cette option ?
-                          rank: 2
                           type: TEXT
                           placeholder: "Indiquez l'intitulé figurant la facture"
                 - title: option liée à la musique, des livres, une chaine télé, un anti-virus
@@ -74,17 +72,13 @@
                     - LitigeContractuel
                   detailInputs:
                     - label: À partir de quand cette option va-t-elle être payante ?
-                      rank: 1
                       type: DATE
                     - label: Quel est le nom de cette option ?
-                      rank: 2
                       type: TEXT
                       placeholder: "Indiquez l'intitulé figurant sur l'email ou la facture"
                     - label: Quel est son prix ?
-                      rank: 3
                       type: TEXT
                     - label: Comment avez-vous été prévenu de cette option ?
-                      rank: 4
                       type: RADIO
                       options:
                         - email
@@ -93,9 +87,8 @@
                         - message dans l'espace client
                         - "je n'ai rien reçu"
                     - label: Si vous avez reçu un courrier / email / sms, quelle est sa date ?
-                      rank: 5
                       type: DATE
-                      optionnal: true
+                      optional: true
             - title: Le lien pour refuser l'augmentation de mon forfait ne fonctionne pas
               reponseconsoCode:
                 - '444'
@@ -169,17 +162,14 @@
             - DemarchageTelephonique
           detailInputs:
             - label: Date de l'appel
-              rank: 1
               type: DATE
               defaultValue: SYSDATE
             - label: Est-ce que le vendeur s'est fait passer pour une autre entreprise&#160;?
-              rank: 2
               type: RADIO
               options:
                 - Non
                 - Oui (à préciser)
             - label: Décrivez nous plus en détails ce qui s'est passé
-              rank: 3
               type: TEXTAREA
     - title: Autre
       example: 'Exemple : téléphone acheté avec le forfait, service client injoignable'

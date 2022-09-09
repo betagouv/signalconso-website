@@ -66,16 +66,7 @@ const inputSubcategorySpec: ObjectSpec = {
   fileLabel: _ => _.ifDefined()?.assertIsString(),
   detailInputs: _ =>
     _.ifDefined()?.assertIsArrayWith(detailInput => {
-      detailInput.assertIsObjectWith({
-        label: _ => _.assertIsString(),
-        rank: _ => _.ifDefined()?.assertIsNumber(),
-        type: _ => _.assertIsAllowedString(Object.values(DetailInputType)),
-        placeholder: _ => _.ifDefined()?.assertIsString(),
-        options: _ => _.ifDefined()?.assertIsArrayOfString(),
-        defaultValue: _ => _.ifDefined()?.assertIsAllowedString(['SYSDATE']),
-        example: _ => _.ifDefined()?.assertIsString(),
-        optionnal: _ => _.ifDefined()?.assertIsBoolean(),
-      })
+      assertIsDetailInput(detailInput)
     }),
   ...baseSubcategorySpec,
 }
@@ -87,4 +78,40 @@ function assertIsSubcategory(subcategory: AnomalyTreeWalker) {
   } else {
     subcategory.assertIsObjectWith(inputSubcategorySpec)
   }
+}
+
+function assertIsDetailInput(detailInput: AnomalyTreeWalker) {
+  const baseSpec: ObjectSpec = {
+    label: _ => _.assertIsString(),
+    type: _ => _.assertIsAllowedString(Object.values(DetailInputType)),
+    optional: _ => _.ifDefined()?.assertIsBoolean(),
+  }
+
+  function getRestOfSpec(): ObjectSpec {
+    switch (detailInput.into('type').value) {
+      case DetailInputType.TEXT:
+      case DetailInputType.TEXTAREA:
+        return {
+          placeholder: _ => _.ifDefined()?.assertIsString(),
+        }
+      case DetailInputType.DATE:
+      case DetailInputType.DATE_NOT_IN_FUTURE:
+        return {
+          defaultValue: _ => _.ifDefined()?.assertIsAllowedString(['SYSDATE']),
+        }
+      case DetailInputType.RADIO:
+      case DetailInputType.CHECKBOX:
+        return {
+          options: _ => _.assertIsArrayOfString(),
+        }
+      case DetailInputType.TIMESLOT:
+      default:
+        return {}
+    }
+  }
+
+  detailInput.assertIsObjectWith({
+    ...baseSpec,
+    ...getRestOfSpec(),
+  })
 }
