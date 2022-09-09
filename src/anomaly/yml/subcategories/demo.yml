@@ -81,38 +81,80 @@
           - question: Première "action", champ "question"
             answer: Première "action", champ "answer"
 - title: Sous category pour tester les "detailInputs"
-  example: Sous cat avec divers detailInputs
+  example:
+    Sous cat avec toutes les variantes possibles de detailInputs
+    (TEXT, DATE, etc.)
   detailInputs:
-    - label: (label) input de type TEXT
+    - label: simple input texte (le type TEXT)
       type: TEXT
-    - label: (label) input de type TEXT, optionnel, avec placeholder
+    - label: input texte optionnel
       type: TEXT
-      placeholder: placeholder de l'input text
       optional: true
-    - label: (label) input de type TEXTAREA
+    - label: input texte avec placeholder
       type: TEXT
-    - label: (label) input de type TEXTAREA avec placeholder
-      type: TEXT
-      placeholder: placeholder de la textarea
-    - label: (label) input de type DATE
+      placeholder: ceci est le placeholder de l'input texte
+    
+    - label: simple input de zone de texte (TEXTAREA)
+      type: TEXTAREA
+    - label: zone de texte optionnelle
+      type: TEXTAREA
+      optional: true
+    - label: zone de texte avec placeholder
+      type: TEXTAREA
+      placeholder: ceci le placeholder de la zone de texte
+    
+    
+    - label: simple input date (DATE)
       type: DATE
-    - label: (label) input de type DATE avec valeur par defaut à la date courante
+    - label: input date optionnel
+      type: DATE
+      optional: true
+    - label: input date avec la date courante comme valeur par défaut
       type: DATE
       defaultValue: SYSDATE
-    - label: (label) input de type DATE_NOT_IN_FUTURE
+    - label: input date avec la date courante comme valeur par défaut, et qui est optionnel
+      type: DATE
+      optional: true
+      defaultValue: SYSDATE
+      
+    - label: input de type date mais qui bloque les dates futures (DATE_NOT_IN_FUTURE)
       type: DATE_NOT_IN_FUTURE
+    - label: input de type date non future, avec la date courante comme valeur par défaut
+      type: DATE_NOT_IN_FUTURE
+      defaultValue: SYSDATE 
     
-    - label: (label) input de type RADIO
+    - label: input radio
       type: RADIO
       options:
-        - option A
-        - option B
-        - option C
-    - label: (label) input de type CHECKBOX
+        - première option
+        - seconde option
+        - troisième option qu'il faut préciser (à préciser)
+        - quatrième option
+    - label: input radio optionnel
+      type: RADIO
+      options:
+        - première option
+        - seconde option
+      optional: true
+
+    - label: input checkbox
+
       type: CHECKBOX
       options:
-        - option A
-        - option B
-        - option C
-    - label: (label) input de type TIMESLOT
+        - première option
+        - seconde option
+        - troisième option qu'il faut préciser (à préciser)
+        - quatrième option
+        - cinquième option qu'il faut aussi préciser (à préciser)
+    - label: input checkbox optionnel
+      type: CHECKBOX
+      options:
+        - première option
+        - seconde option
+      optional: true
+
+    - label: input timeslot
       type: TIMESLOT
+    - label: input timeslot optionnel
+      type: TIMESLOT
+      optional: true
