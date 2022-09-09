@@ -12,12 +12,12 @@
 #        - label : Volume du produit et autres caractéristiques
 #          rank: 2
 #          type: TEXTAREA
-#          optionnal: true
+#          optional: true
 #          placeholder: Volume, marque...
 #        - label : Quel est le prix de vente ?
 #          rank: 3
 #          type: TEXT
-#          optionnal: true
+#          optional: true
 #      fileLabel: Photo du prix et du produit si possible
 #    - title: Masque
 #    - title: Autre
@@ -44,31 +44,25 @@
         - LitigeContractuel
       detailInputs:
         - label: Date du constat
-          rank: 1
           type: DATE
           defaultValue: SYSDATE
         - label: Quel est le problème avec le prix de la livraison ?
-          rank: 2
           type: TEXTAREA
     - title: Autre problème de prix
       tags:
         - ReponseConso
       detailInputs:
         - label: Date du constat
-          rank: 1
           type: DATE
           defaultValue: SYSDATE
         - label: Quel est le problème ?
-          rank: 2
           type: TEXTAREA
     - title: Problème avec un produit livré
       detailInputs:
         - label: Date du constat
-          rank: 1
           type: DATE
           defaultValue: SYSDATE
         - label: Quel est le problème ?
-          rank: 2
           type: TEXTAREA
       fileLabel: Photo du produit si possible
 - title: Le prix de l'autotest est trop élevé
@@ -80,22 +74,18 @@
     - title: Le prix de l'autotest
       detailInputs:
         - label: Date du constat
-          rank: 1
           type: DATE
           defaultValue: SYSDATE
         - label: Quel est le prix de vente ?
-          rank: 2
           type: TEXT
-          optionnal: true
+          optional: true
       fileLabel: Photo du prix et du produit si possible
     - title: Le prix de l'autotest qui est fait sous la supervision d'un pharmacien
       detailInputs:
         - label: Date du constat
-          rank: 1
           type: DATE
           defaultValue: SYSDATE
         - label: Quel est le prix ?
-          rank: 2
           type: TEXT
-          optionnal: true
+          optional: true
       fileLabel: Photo de la facture ou de la note

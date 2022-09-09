@@ -2,6 +2,7 @@ import {Box, Checkbox, Icon, Radio, useTheme} from '@mui/material'
 import {sortBy} from 'core/lodashNamedExport'
 import {pageDefinitions} from 'core/pageDefinition'
 import {styleUtils} from 'core/theme/theme'
+import {getOptionsFromInput, getPlaceholderFromInput} from 'feature/Report/Details/DetailInputsUtils'
 import Head from 'next/head'
 import {useEffect, useState} from 'react'
 import {ScButton} from 'shared/Button/Button'
@@ -126,7 +127,7 @@ const NodeInput = ({anomaly}: {anomaly: SubcategoryInput}) => {
             {
               [DetailInputType.RADIO]: () => (
                 <>
-                  {input.options!.map(option => (
+                  {getOptionsFromInput(input)!.map(option => (
                     <Box key={option} sx={{display: 'flex', alignItems: 'center'}}>
                       <Radio disabled size="small" sx={{mr: 1, p: 1 / 4}} />
                       <Txt size="small">{option}</Txt>
@@ -136,7 +137,7 @@ const NodeInput = ({anomaly}: {anomaly: SubcategoryInput}) => {
               ),
               [DetailInputType.CHECKBOX]: () => (
                 <>
-                  {input.options!.map(option => (
+                  {getOptionsFromInput(input)!.map(option => (
                     <Box key={option} sx={{display: 'flex', alignItems: 'center'}}>
                       <Checkbox disabled size="small" sx={{mr: 1, p: 1 / 4}} />
                       <Txt size="small">{option}</Txt>
@@ -156,7 +157,7 @@ const NodeInput = ({anomaly}: {anomaly: SubcategoryInput}) => {
                   border: t => `1px solid ${t.palette.divider}`,
                 }}
               >
-                {input.placeholder ?? '...'}
+                {getPlaceholderFromInput(input) ?? '...'}
               </Box>
             ),
           )}

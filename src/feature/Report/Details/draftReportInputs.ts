@@ -11,7 +11,7 @@ export class DraftReportDefaultInputs {
   static readonly description = (optional?: boolean): DetailInput => ({
     label: 'Description',
     type: DetailInputType.TEXTAREA,
-    ...(optional && {optionnal: true}),
+    ...(optional && {optional: true}),
   })
 
   static readonly date = (): DetailInput => ({

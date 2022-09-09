@@ -22,19 +22,15 @@
             - '224'
           detailInputs:
             - label: Veuillez préciser
-              rank: 1
               type: RADIO
               options:
                 - Prix pas affiché
                 - Prix illisible
                 - Autre (à préciser)
             - label: Date du constat
-              rank: 2
               type: DATE
               defaultValue: SYSDATE
             - label: Description
-              example: Précisez si possible le rayon concerné
-              rank: 3
               type: TEXTAREA
         - title: Les prix sont plus élevés qu'ailleurs
           information:
@@ -60,7 +56,6 @@
             - '212'
           detailInputs:
             - label: "Il s'agit d'un problème sur:"
-              rank: 1
               type: RADIO
               options:
                 - Les soldes
@@ -68,12 +63,9 @@
                 - Une liquidation
                 - Autre (à préciser)
             - label: Date du constat
-              rank: 2
               type: DATE
               defaultValue: SYSDATE
             - label: Description
-              example: Précisez si possible le problème
-              rank: 3
               type: TEXTAREA
     - title: Une commande effectuée
       example: 'Exemple : commande jamais livrée, produit non conforme'
@@ -161,37 +153,30 @@
                 - '224'
               detailInputs:
                 - label: Date du constat
-                  rank: 1
                   type: DATE
                   defaultValue: SYSDATE
                 - label: Heure du constat
-                  rank: 2
                   type: TIMESLOT
-                  optionnal: true
+                  optional: true
                 - label: Quel produit&#160;?
-                  rank: 3
                   type: TEXT
                   placeholder: Nom ou type de produit
                 - label: Quel était le prix indiqué si vous vous en rappelez&#160;?
-                  rank: 4
                   type: TEXT
                   placeholder: Prix indiqué
-                  optionnal: true
+                  optional: true
                 - label: "L'avez-vous signalé au moment de payer&#160;?"
-                  rank: 5
                   type: RADIO
                   options:
                     - Oui. Pouvez-vous préciser à qui&#160;? (à préciser)
                     - Non
                 - label: Si oui, le commerçant a-t-il bien voulu vous faire payer le prix affiché&#160;?
-                  rank: 6
                   type: RADIO
                   options:
                     - Oui
                     - Non
-                  optionnal: true
+                  optional: true
                 - label: Description
-                  rank: 7
                   type: TEXTAREA
             - title: Il manque des prix / les prix sont illisibles
               ccrfCode:
@@ -202,19 +187,15 @@
                 - '224'
               detailInputs:
                 - label: Veuillez préciser
-                  rank: 1
                   type: RADIO
                   options:
                     - Prix pas affiché
                     - Prix illisible
                     - Autre (à préciser)
                 - label: Date du constat
-                  rank: 2
                   type: DATE
                   defaultValue: SYSDATE
                 - label: Description
-                  example: Précisez si possible le rayon concerné
-                  rank: 3
                   type: TEXTAREA
             - title: Les prix sont plus élevés qu'ailleurs
               information:
@@ -238,7 +219,6 @@
                 - '212'
               detailInputs:
                 - label: "Il s'agit d'un problème sur:"
-                  rank: 1
                   type: RADIO
                   options:
                     - Les soldes
@@ -246,12 +226,9 @@
                     - Une liquidation
                     - Autre (à préciser)
                 - label: Date du constat
-                  rank: 2
                   type: DATE
                   defaultValue: SYSDATE
                 - label: Description
-                  example: Précisez si possible le problème
-                  rank: 3
                   type: TEXTAREA
         - title: Hygiène
           tags:
@@ -267,7 +244,6 @@
                 - '321'
               detailInputs:
                 - label: Quel endroit est concerné&#160;?
-                  rank: 1
                   type: CHECKBOX
                   options:
                     - Intérieur du magasin
@@ -275,13 +251,11 @@
                     - WC
                     - Autre (à préciser)
                 - label: Quel est le problème&#160;?
-                  rank: 2
                   type: CHECKBOX
                   options:
                     - C'est sale
                     - C'est dégradé, en mauvais état
                 - label: À quel niveau&#160;?
-                  rank: 3
                   type: CHECKBOX
                   options:
                     - Sol
@@ -292,18 +266,15 @@
                     - Distributeur automatique
                     - Autre (à préciser)
                 - label: Pour corriger ce problème, dites-nous en plus
-                  rank: 4
                   type: TEXTAREA
                   placeholder: 'rayon du magasin, type de saleté'
-                  optionnal: true
+                  optional: true
                 - label: Date du constat
-                  rank: 5
                   type: DATE
                   defaultValue: SYSDATE
                 - label: Heure du constat (facultatif)
-                  rank: 6
                   type: TIMESLOT
-                  optionnal: true
+                  optional: true
             - title: Hygiène du personnel
               example: 'Exemple : tenue sale ou inadaptée'
               ccrfCode:
@@ -341,7 +312,6 @@
                     - '312'
                   detailInputs:
                     - label: Quel animal avez-vous vu&#160;?
-                      rank: 1
                       type: RADIO
                       options:
                         - Insectes (cafard...)
@@ -349,24 +319,20 @@
                         - Oiseau (pigeon...)
                         - Autre (à préciser)
                     - label: Où l'avez-vous vu&#160;?
-                      rank: 2
                       type: CHECKBOX
                       options:
                         - Zone de production
                         - Intérieur d'un magasin
                         - Autre (à préciser)
                     - label: Pour corriger ce problème, dites-nous en plus
-                      rank: 3
                       type: TEXTAREA
-                      optionnal: true
+                      optional: true
                     - label: Date du constat
-                      rank: 4
                       type: DATE
                       defaultValue: SYSDATE
                     - label: Heure du constat (facultatif)
-                      rank: 5
                       type: TIMESLOT
-                      optionnal: true
+                      optional: true
             - title: Problème de température
               example: 'Exemple : rupture de la chaîne du froid'
               ccrfCode:
@@ -379,7 +345,6 @@
                 - ReponseConso
               detailInputs:
                 - label: Quel est le problème&#160;?
-                  rank: 1
                   type: RADIO
                   options:
                     - Vitrine ou réfrigérateur trop chaud, cassé ou en panne
@@ -387,17 +352,14 @@
                     - Transport à température ambiante de produits frais ou congelés
                     - Autre problème de température
                 - label: Pour corriger ce problème, dites-nous en plus
-                  rank: 2
                   type: TEXTAREA
-                  optionnal: true
+                  optional: true
                 - label: Date du constat
-                  rank: 3
                   type: DATE
                   defaultValue: SYSDATE
                 - label: Heure du constat (facultatif)
-                  rank: 4
                   type: TIMESLOT
-                  optionnal: true
+                  optional: true
             - title: Je subis des nuisances à cause du magasin
               example: 'Exemple : les odeurs des poubelles arrivent dans mon appartement, les clients se garent devant chez moi'
               information: !!import/single ../common/info/voisinage.yml
@@ -469,11 +431,9 @@
                 - '2243'
               detailInputs:
                 - label: Date du constat
-                  rank: 1
                   type: DATE
                   defaultValue: SYSDATE
                 - label: De quelle publicité s'agit-il&#160;?
-                  rank: 2
                   type: RADIO
                   options:
                     - Catalogue papier
@@ -482,19 +442,16 @@
                     - Spot télé (à préciser)
                     - Autre (à préciser)
                 - label: Quel est le produit que vous vouliez&#160;?
-                  rank: 3
                   type: TEXT
                   placeholder: Type, nom et marque du produit
                 - label: Le commerçant vous-a-t-il proposé de commander le produit ou d'en avoir un autre équivalent&#160;?
-                  rank: 4
                   type: RADIO
                   options:
                     - Oui
                     - Non
                     - Je n'ai pas demandé
-                  optionnal: true
+                  optional: true
                 - label: Précisez si possible la publicité concernée. Vous pouvez par exemple récupérer le lien de la publicité sur le site <a href="https&#58;//www.bonial.fr" target="_blank">bonial.fr</a>&#160;?
-                  rank: 5
                   type: TEXT
                   placeholder: 'Lien vers la publicité'
               fileLabel: Photo(s) de la publicité si possible
@@ -508,11 +465,9 @@
                 - '271'
               detailInputs:
                 - label: Date du constat
-                  rank: 1
                   type: DATE
                   defaultValue: SYSDATE
                 - label: Qu'est-ce qui est trompeur&#160;?
-                  rank: 2
                   type: RADIO
                   options:
                     - L'emballage d'un produit
@@ -525,7 +480,6 @@
                     - La façon de mettre en vente
                     - Autre (à préciser)
                 - label: À propos de quoi est-ce trompeur&#160;?
-                  rank: 3
                   type: RADIO
                   options:
                     - L'origine du produit
@@ -535,11 +489,9 @@
                     - Une marque
                     - Autre (à préciser)
                 - label: Pourquoi trouvez-vous ça trompeur ?
-                  rank: 4
                   type: TEXTAREA
-                  optionnal: true
+                  optional: true
                 - label: Avez-vous déjà contacté le commerçant pour ce problème&#160;?
-                  rank: 5
                   type: RADIO
                   options:
                     - Oui
@@ -565,24 +517,19 @@
                     - title: Il y a moins de 2 ans
                       detailInputs:
                         - label: Date d'achat
-                          rank: 1
                           type: DATE
                         - label: Nom du produit
-                          rank: 2
                           type: TEXT
                         - label: Date du constat
-                          rank: 3
                           type: DATE
                           defaultValue: SYSDATE
                         - label: Interlocuteur
-                          rank: 4
                           type: RADIO
                           options:
                             - Vendeur
                             - Accueil magasin
                             - Service client (téléphone, mail, courrier)
                         - label: Pour quelle raison le commerçant ne veut-il pas vous reprendre le produit&#160;?
-                          rank: 5
                           type: TEXTAREA
                       fileLabel: Preuve d'achat / publicité / offre de vente
                     - title: Il y a plus de 2 ans
@@ -596,20 +543,15 @@
                             - title: J'ai pris connaissance des conditions écrites dans mon contrat de garantie
                               detailInputs:
                                 - label: Date d'achat
-                                  rank: 1
                                   type: DATE
                                 - label: Nom du produit
-                                  rank: 2
                                   type: TEXT
                                 - label: Date de fin de la garantie supplémentaire
-                                  rank: 3
                                   type: DATE
                                 - label: Date du constat
-                                  rank: 4
                                   type: DATE
                                   defaultValue: SYSDATE
                                 - label: Motif de refus
-                                  rank: 5
                                   type: TEXT
                               fileLabel: Contrat de garantie / publicité de l'offre de vente / document se référant à la garantie
                         - title: Non
@@ -636,24 +578,19 @@
                     - title: Il y a moins de 6 mois
                       detailInputs:
                         - label: Date d'achat
-                          rank: 1
                           type: DATE
                         - label: Nom du produit
-                          rank: 2
                           type: TEXT
                         - label: Date du constat
-                          rank: 3
                           type: DATE
                           defaultValue: SYSDATE
                         - label: Interlocuteur
-                          rank: 4
                           type: RADIO
                           options:
                             - Vendeur
                             - Accueil magasin
                             - Service client (téléphone, mail, courrier)
                         - label: Pour quelle raison le commerçant ne veut-il pas vous reprendre le produit&#160;?
-                          rank: 5
                           type: TEXTAREA
                       fileLabel: Preuve d'achat / publicité / offre de vente
                     - title: Il y a plus de 6 mois
@@ -667,20 +604,15 @@
                             - title: J'ai pris connaissance des conditions écrites dans mon contrat de garantie
                               detailInputs:
                                 - label: Date d'achat
-                                  rank: 1
                                   type: DATE
                                 - label: Nom du produit
-                                  rank: 2
                                   type: TEXT
                                 - label: Date de fin de garantie supplémentaire
-                                  rank: 3
                                   type: DATE
                                 - label: Date du constat
-                                  rank: 4
                                   type: DATE
                                   defaultValue: SYSDATE
                                 - label: Motif de refus
-                                  rank: 5
                                   type: TEXT
                               fileLabel: Contrat de garantie / publicité de l'offre de vente / document se référant à la garantie
                         - title: Non
@@ -907,20 +839,17 @@
         - ProduitAlimentaire
       detailInputs:
         - label: Que s'est-il passé ?
-          rank: 1
           type: RADIO
           options:
             - Le vendeur s'est fait passer pour une autre entreprise (à préciser)
             - Le vendeur m'a fait signer des papiers sans me dire que c'était un contrat ou un bon de commande.
             - Autre (à préciser)
         - label: Avez-vous payé au moment du démarchage&#160;?
-          rank: 2
           type: RADIO
           options:
             - Oui
             - Non
         - label: Date du démarchage
-          rank: 3
           type: DATE
           defaultValue: SYSDATE
     - title: C'est un objet
@@ -929,20 +858,17 @@
         - ProduitIndustriel
       detailInputs:
         - label: Que s'est-il passé ?
-          rank: 1
           type: RADIO
           options:
             - Le vendeur s'est fait passer pour une autre entreprise (à préciser)
             - Le vendeur m'a fait signer des papiers sans me dire que c'était un contrat ou un bon de commande.
             - Autre (à préciser)
         - label: Avez-vous payé au moment du démarchage&#160;?
-          rank: 2
           type: RADIO
           options:
             - Oui
             - Non
         - label: Date du démarchage
-          rank: 3
           type: DATE
           defaultValue: SYSDATE
     - title: C'est un produit dangereux
