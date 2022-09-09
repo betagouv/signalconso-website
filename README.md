@@ -2,7 +2,7 @@
 
 Front-end of [signal.conso.gouv.fr](https://signal.conso.gouv.fr/) built on Next.js.
 
-## Getting started
+## Getting Started
 
 First, run the development server:
 
