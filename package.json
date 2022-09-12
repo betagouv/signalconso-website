@@ -26,7 +26,7 @@
     "@emotion/server": "11.10.0",
     "@emotion/styled": "11.10.0",
     "@mui/lab": "5.0.0-alpha.95",
-    "@mui/material": "5.10.1",
+    "@mui/material": "5.10.5",
     "@mui/styled-engine": "5.10.1",
     "@mui/system": "5.10.1",
     "@sentry/browser": "7.10.0",
