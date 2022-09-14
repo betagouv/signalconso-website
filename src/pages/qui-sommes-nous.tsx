@@ -15,6 +15,7 @@ export interface Member {
   avatar: string
 }
 
+// Avatars générés sur face.co
 const members: Member[] = [
   {
     name: 'Guillaume Rossmann',
@@ -43,9 +44,15 @@ const members: Member[] = [
     avatar: 'avatar-saidsedoud.png',
   },
   {
+    name: 'Emmanuel Letallieur',
+    role: 'Développeur informatique',
+    avatar: 'avatar-emmanuelletallieur.png',
+  },
+  {
     name: 'Alexandre Annic',
     role: 'Développeur informatique',
     avatar: 'avatar-alexandreannic.png',
+    disabled: true,
   },
   {
     name: 'Quentin Kurtz',
