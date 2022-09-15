@@ -12,6 +12,7 @@ import {ReportDraft2} from 'core/model/ReportDraft'
 import {DeepPartial} from '../alexlibs/ts-utils'
 import {AnalyticProvider} from 'core/analytic/AnalyticContext'
 import {SignalConsoPublicSdk} from '../client/SignalConsoPublicSdk'
+import {CompanyPublicSdk} from '../client/CompanyPublicSdk'
 
 const AllTheProviders =
   (options?: Options) =>
@@ -29,6 +30,7 @@ const AllTheProviders =
                 },
                 ...(options?.apiSdkMock ?? ({} as any)),
               }}
+              companyApiSdk={{...(options?.companyApiSdk ?? ({} as any))}}
               apiAddressSdk={
                 {
                   fetchCity: (q: string) => Promise.resolve([]),
@@ -89,6 +91,7 @@ export const AccessReportFlow = ({
 interface Options {
   initialReport?: Partial<ReportDraft2>
   apiSdkMock?: DeepPartial<SignalConsoPublicSdk>
+  companyApiSdk?: DeepPartial<CompanyPublicSdk>
 }
 
 export interface ScRenderResult extends RenderResult {

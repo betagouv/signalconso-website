@@ -6,10 +6,11 @@ import {PublicConsumerEmailValidationClient} from './consumer-email-validation/P
 import {PublicConstantClient} from './constant/PublicConstantClient'
 import {FileClient} from './file/FileClient'
 import {RatingClient} from './rating/RatingClient'
+import {PublicWebsiteClient} from './company/PublicWebsiteClient'
 
 export class SignalConsoPublicSdk {
   private readonly client: ApiClientApi
-  readonly company: PublicCompanyClient
+  readonly website: PublicWebsiteClient
   readonly report: PublicReportClient
   readonly stats: PublicStatsClient
   readonly constant: PublicConstantClient
@@ -19,7 +20,7 @@ export class SignalConsoPublicSdk {
 
   constructor(client: ApiClientApi) {
     this.client = client
-    this.company = new PublicCompanyClient(this.client)
+    this.website = new PublicWebsiteClient(this.client)
     this.report = new PublicReportClient(this.client)
     this.stats = new PublicStatsClient(this.client)
     this.constant = new PublicConstantClient(this.client)

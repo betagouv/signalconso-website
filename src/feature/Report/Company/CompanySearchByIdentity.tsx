@@ -27,10 +27,10 @@ interface Props {
 
 export const CompanySearchByIdentity = ({children}: Props) => {
   const {m} = useI18n()
-  const {apiSdk} = useApiSdk()
+  const {companyApiSdk} = useApiSdk()
   const {toastError} = useToast()
   const _analytic = useAnalyticContext()
-  const _searchByIdentity = useFetcher(apiSdk.company.searchCompaniesByIdentity)
+  const _searchByIdentity = useFetcher(companyApiSdk.company.searchCompaniesByIdentity)
   const {register, handleSubmit, reset} = useForm<Form>()
   const inputEl = useRef<HTMLInputElement>(null)
 
