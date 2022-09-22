@@ -148,8 +148,10 @@
             - '477'
             - '473'
         - title: Problème avec le RIO (Relevé d'Identité Opérateur) ou ma portabilité
+          tags:
+            - ReponseConso
           reponseconsoCode:
-            - '477'
+            - '210'
           subcategories:
             - title: Problème avec mon RIO
               information:
@@ -204,6 +206,40 @@
           information:
             title: Revenez en arrière et utilisez plutôt la catégorie spécifique
             content: Renovation énergétique ? Utilisez la catégorie "Travaux / Rénovation" <br> Des appels indésirabls ? Utilisez la catégorie "Démarches abusif"
+    - title: Vol ou perte de téléphone
+      example: 'Je rencontre des problèmes liés à la perte ou au vol de mon téléphone portable'
+      subcategories:
+        - title: On m'a volé téléphone ou j'ai perdu mon téléphone
+          information:
+            title: Les problèmes liés à la perte ou au vol de votre téléphone portable ne peuvent être signalés sur SignalConso.
+            content:
+              <br> 'Alertez votre opérateur dès la constatation du vol ou de la perte de votre mobile, que vous soyez en France ou à l’étranger, afin que votre ligne soit suspendue et obtenir une nouvelle carte SIM'
+              <br> 'En cas de vol de votre mobile, portez plainte au commissariat de police le plus proche ou à la gendarmerie dans les 48 heures suivant le sinistre.'
+              <br> 'Si votre assurance couvre le vol ou la perte de votre mobile, contactez votre assureur qui vous donnera la marche à suivre.'
+              <br> 'Le numéro IMEI (International Mobile Equipement Identity) associé à votre mobile vous sera demandé pour effectuer ces démarches.'
+              <br> 'C'est quoi le numéro IMEI ? ''
+              <br> 'Ce numéro sert à identifier votre téléphone portable. Ce numéro est unique du téléphone (peu importe le propriétaire et l'opérateur). Un code IMEI est composé de 15 à 17 chiffres.'
+        - title: On me réclame le paiement du crédit lié à l’achat de mon appareil, ou le paiement de la location, alors que je ne suis plus en possession de mon téléphone
+          information:
+            title: Les problèmes liés à la perte ou au vol de votre téléphone portable ne peuvent être signalés sur SignalConso.
+            content:
+              <br> 'La suspension de votre ligne, à la suite de la perte ou du vol de votre téléphone portable, n’entraîne pas l’arrêt de la facturation de votre abonnement. Le remboursement de l’abonnement au prorata de la durée de suspension de votre ligne pourra vous être accordé, si les Conditions Générales d’Abonnement de votre opérateur le prévoient.''
+              <br> 'Si vous avez souscrit un contrat soumis à une période initiale d’engagement, la déclaration de vol ou de perte de portable ne constitue pas non plus un motif légitime de résiliation anticipée.'
+              <br> 'Des pénalités sont susceptibles d’être facturées par l’opérateur si vous suspendez vos paiements ou les prélèvements auprès de votre banque.'
+              <br> 'En cas de contestation sur le montant principal réclamé, vous pouvez adresser un courrier ou un e-mail à votre opérateur afin de lui demander de résoudre votre problème ou à son service consommateur.'
+              <br> 'Si vous n'avez pas de réponse de votre opérateur ou si la réponse ne vous satisfait pas, vous pouvez contacter le médiateur des communications électroniques à <a href="https://www.mediation-telecom.org/" target="_blank">mediation-telecom.org</a>.'
+        - title: On me réclame le paiement d'abonnement, alors que je ne suis plus en possession de mon téléphone
+          information:
+            title: Les problèmes liés à la perte ou au vol de votre téléphone portable ne peuvent être signalés sur SignalConso.
+            content:
+              <br> 'La déclaration de vol ou de perte de portable ne constitue pas un motif légitime de résiliation permettant de vous exonérer de la facilité de paiement ou du crédit souscrit lors de l’achat de téléphone portable.'
+              <br> 'De même, dans le cas où vous seriez engagé par un contrat de location de mobile, le vol ou la perte du terminal loué ne vous exonère pas du paiement des loyers restant à courir jusqu’à la fin de la période initiale d’engagement, ni des frais de non-restitution du mobile loué..'
+              <br> 'Des pénalités sont susceptibles d’être facturées, si vous suspendez le paiement de vos loyers ou de vos remboursements auprès de votre banque.'
+              <br> 'La souscription d’une assurance pourra vous permettre d’obtenir une indemnisation et de remplacer votre téléphone (une franchise peut toutefois être requise).'
+        - title: Malgré l’assurance perte ou vol que j’ai souscrite pour mon téléphone
+          example: 'mon assureur refuse de répondre à mes demandes d’indemnisation, ou me réclame des justificatifs que j’ai déjà fournis ou sans rapport avec mon sinistre.'
+          tags:
+            - ReponseConso
     - title: Autre
       example: 'Exemple : téléphone acheté avec le forfait, service client injoignable'
       tags:
@@ -219,6 +255,69 @@
           reponseconsoCode:
             - '447'
             - '464'
+        - title: Je contest mon inscription au Fichier PREVENTEL
+          example: 'Je conteste mon inscription ou je souhaite obtenir l’effacement de mes données'
+          information:
+             title: Ce type de problème ne doit pas être signalé sur SignalConso.
+             content:
+               Le fichier PREVENTEL est une base de données informatisée, autorisée par la CNIL. Il rassemble l’identité des clients qui ont des impayés de téléphonie mobile égaux ou supérieurs à 30 €, ainsi que celle des personnes ayant souscrit un contrat de téléphonie mobile de manière irrégulière, en présentant des pièces justificatives (carte d’identité, documents bancaires,...) falsifiées ou inexactes.
+             actions:
+               - question: Que pouvez-vous faire&#160;?
+                 answer: <br> 'Si vous pensez être victime d’une inscription abusive, que votre identité figure toujours dans le fichier malgré régularisation de votre part ou au-delà de la durée de conservation autorisée (3 ans, ou 5 ans si vous faites l’objet d’au moins 3 inscriptions simultanément), vous devez contacter le service consommateur de l’opérateur à l’origine de cette inscription.
+                   <br> 'Si vous ne savez pas qui est cet opérateur ou depuis quand date votre inscription, vous pouvez le demander sur le site <a href="https://www.preventel.fr/" target="_blanck">PREVENTEL</a>'.'
+                   <br> 'D'ans les autres cas (litige concernant la réalité ou le montant de la dette notamment), si vous n'avez pas de réponse de votre opérateur ou si la réponse ne vous satisfait pas, vous pouvez contacter le médiateur des communications électroniques à <a href="https://www.mediation-telecom.org/" target="_blank">mediation-telecom.org</a>.
+        - title: Je suis victime de pratiques agressives de la part d’une agence de recouvrement ou d’un commissaire de justice (ex-huissier de justice)
+          example: 'on me réclame des frais ou des pénalités de retard excessifs, le paiement d’une dette que je conteste'
+          subcategories:
+            - title: On me réclame des frais ou des pénalités de retard excessifs, le paiement d’une dette que je conteste.
+              information:
+                  title: Ce type de problème ne doit pas être signalé sur SignalConso.
+                  content :
+                    'Votre opérateur peut, par l’intermédiaire d’une agence de recouvrement ou d’un commissaire de justice (ex-huissier de justice), vous adresser un courrier à titre amiable afin d’obtenir un paiement volontaire de votre part, en l’absence de décision de justice.
+                    <br> En cas de contestation sur le montant principal réclamé, vous pouvez adresser un courrier ou un e-mail à votre opérateur afin de lui demander de résoudre votre problème ou à son service consommateur.
+                    <br> si vous n’avez pas de réponse de votre opérateur ou si la réponse ne vous satisfait pas, vous pouvez contacter le médiateur des communications électroniques à <a href="https://www.mediation-telecom.org/" target="_blank">mediation-telecom.org</a>.'
+            - title: Je suis contacté à répétions.
+              information:
+                title: Ce type de problème ne doit pas être signalé sur SignalConso.
+                content:
+                  'Le fait d’être contacté de façon répétées et insistantes ou d’une menace physique ou morale peut dans certains cas être considéré comme une pratique agressive interdite par la loi.'
+                actions:
+                    - question: Que pouvez-vous faire&#160;?
+                      answer: <br> 'Je contacte l'Ordre des commissaire de justice sur le site <a href="https://commissaire-justice.fr/" target="_blank">commissaire-justice.fr</a>.'
+            - title: On me présente un faux décision de justice ou contacter mes proches
+              information:
+                title: Ce type de problème ne doit pas être signalé sur SignalConso.
+                content:
+                  'L’utilisation de documents trompeurs laissant penser qu&#39;il s&#39;agit une action de recouvrement forcé (après décision de justice) et vous menace de saisie, Ou les appels téléphoniques intempestifs, les visites à votre famille, à vos voisins, à votre employeur, susceptibles de porter atteinte à votre vie privée, sont des pratiques illégales.'
+                actions:
+                  - question: Que pouvez-vous faire&#160;?
+                    answer: <br> Je contacte l’Ordre des commissaire de justice sur le site <a href="https://commissaire-justice.fr/" target="_blank">commissaire-justice.fr</a>.'
+        - title: On me refuse la mise en place d’un prélèvement sur un compte bancaire situé dans la zone SEPA
+          example: Je ne peux pas payer avec mon compte bancaire en Belgique.
+          tags:
+            - ReponseConso
+        - title: J’ai un problème pour obtenir le déverrouillage (« désimlockage ») de mon téléphone portable
+          information:
+            title: Ce type de problème ne doit pas être signalé sur SignalConso.
+            content :
+                '<br> Vous pouvez demander à tout moment à l’opérateur qui vous a vendu un terminal verrouillé – et à lui seul – de le déverrouiller.
+                <br> La gratuité du déverrouillage dépend de l’existence ou non d’une durée d’engagement et de la durée écoulée depuis la date de conclusion du contrat.
+                <br> Contrat avec engagement :
+                <br> De manière générale, le déverrouillage est gratuit jusqu’à  six mois après la date de souscription de l’abonnement.  Au-delà, tous les opérateurs ont l’obligation de déverrouiller gratuitement et sans délai les terminaux qu’ils ont vendus verrouillés.
+                <br> Toutefois, pour les consommateurs abonnés à un opérateur membre de la Fédération Française des Télécommunications (Orange, Bouygues Télécom, SFR, OMEA TELECOM (Virgin Mobile, Télé 2 mobile, Breizh mobile, Casino Mobile), M6 Mobile, NRJ Mobile, La Poste Telecom, Universal Mobile), ce délai de déverrouillage gratuit est ramené à trois mois.
+                <br> En cas de contestation sur le montant principal réclamé, vous pouvez adresser un courrier ou un e-mail à votre opérateur afin de lui demander de résoudre votre problème Ou à son service consommateur.
+                <br> si vous n’avez pas de réponse de votre opérateur ou si la réponse ne vous satisfait pas, vous pouvez contacter le médiateur des communications électroniques à <a href="https://www.mediation-telecom.org/" target="_blank">mediation-telecom.org</a>.
+                <br> Vous devez les signaler à l’ARCEP (Autorité de régulation des communications électroniques, des postes et de la distribution de la presse) sur leur site dédié  <a href="https://jalerte.arcep.fr/" target="_blank" /> J’alerte l’Arcep </a>'
+        - title: Des dégradations ont étaient commises lors de l’installation de ma ligne ou de la fibre)
+          information:
+            title: Ce type de problème ne doit pas être signalé sur SignalConso.
+            content:
+              'Nous ne doutons pas que vous ayez réellement rencontré un préjudice. Mais, les problèmes liés à des dégradations commises lors de l’installation d’une ligne, dans votre domicile, ne peuvent être signalés sur SignalConso
+                <br> Ces travaux de raccordement peuvent parfois être peu esthétiques (câble visible, percement de certaines cloisons, installation dans un mur d’un nouveau boîtier dédié à la « fibre », etc...) et peuvent donc générer des litiges.
+                <br> Lors de l’installation, il est recommandé de prêter une attention toute particulière aux travaux effectués à son domicile et dans les parties communes. En cas de doute sur la nature des travaux effectués, le client ne doit pas hésiter à demander des explications au technicien présent sur les lieux. Il est recommandé de prendre des photos des lieux et de formuler immédiatement des réserves écrites, idéalement directement sur la fiche d’intervention
+                <br> Le cas échéant, vous pouvez contacter le service client de votre opérateur par téléphone ou par mail afin de demander une indemnisation. En cas de contestation, vous pouvez adresser un courrier ou un e-mail à votre opérateur afin de lui demander de résoudre votre problème Ou à son service consommateur.
+                <br> si vous navez pas de réponse de votre opérateur ou si la réponse ne vous satisfait pas, vous pouvez contacter le médiateur des communications électroniques à <a href="https://www.mediation-telecom.org/" target="_blank">mediation-telecom.org</a>.'
+        - title: Autre
 - title: Abonnement télévision
   subcategories:
     - title: J'ai une offre avec mon opérateur internet
