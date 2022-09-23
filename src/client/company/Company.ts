@@ -5,6 +5,7 @@ export interface CompanySearchResult {
   name?: string
   brand?: string
   isHeadOffice: boolean
+  isPublic: boolean
   isOpen: boolean
   address: Address
   activityCode: string
@@ -20,6 +21,7 @@ export interface Company {
   address: Address
   activityCode?: string
   isHeadOffice: boolean
+  isPublic: boolean
   isOpen: boolean
 }
 
