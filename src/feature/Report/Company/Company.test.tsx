@@ -41,8 +41,7 @@ describe('Details: single date not in future', () => {
         />,
         {
           apiSdkMock: {
-            company: {
-              searchCompanies: (search: string, searchPostalCode: string) => Promise.resolve([]),
+            website: {
               searchForeignCompaniesByUrl: (url: string) => Promise.resolve(),
               searchCompaniesByUrl: (url: string) =>
                 Promise.resolve(
@@ -87,9 +86,13 @@ describe('Details: single date not in future', () => {
         />,
         {
           apiSdkMock: {
+            website: {
+              searchForeignCompaniesByUrl: (url: string) => Promise.resolve([]),
+            },
+          },
+          companyApiSdk: {
             company: {
               searchCompanies: (search: string, searchPostalCode: string) => Promise.resolve([]),
-              searchForeignCompaniesByUrl: (url: string) => Promise.resolve([]),
             },
           },
         },

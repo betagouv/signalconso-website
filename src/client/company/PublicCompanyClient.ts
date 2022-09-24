@@ -1,6 +1,5 @@
 import {CompanySearchResult} from './Company'
 import {ApiClientApi} from '../ApiClient'
-import {Country} from '../constant/Country'
 
 export class PublicCompanyClient {
   constructor(private client: ApiClientApi) {}
@@ -16,13 +15,5 @@ export class PublicCompanyClient {
 
   readonly searchCompaniesByIdentity = (identity: string) => {
     return this.client.get<CompanySearchResult[]>(`/companies/search/${identity}`, {})
-  }
-
-  readonly searchCompaniesByUrl = (url: string) => {
-    return this.client.get<CompanySearchResult[]>(`/companies/search-url`, {qs: {url}})
-  }
-
-  readonly searchForeignCompaniesByUrl = (url: string) => {
-    return this.client.get<Country[]>(`/websites/search-url`, {qs: {url}})
   }
 }

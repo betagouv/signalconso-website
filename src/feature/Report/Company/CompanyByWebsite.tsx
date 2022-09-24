@@ -27,8 +27,8 @@ interface Props extends Omit<BoxProps, 'onSubmit' | 'children'> {
 export const CompanyByWebsite = ({value, children, ...props}: Props) => {
   const {m} = useI18n()
   const {apiSdk} = useApiSdk()
-  const _searchCompany = useFetcher(apiSdk.company.searchCompaniesByUrl)
-  const _searchCountry = useFetcher(apiSdk.company.searchForeignCompaniesByUrl)
+  const _searchCompany = useFetcher(apiSdk.website.searchCompaniesByUrl)
+  const _searchCountry = useFetcher(apiSdk.website.searchForeignCompaniesByUrl)
   const _analytic = useAnalyticContext()
   const {toastError} = useToast()
   const {
