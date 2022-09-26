@@ -8,6 +8,7 @@ enum Env {
   NEXT_PUBLIC_SHOW_DEMO_CATEGORY = 'NEXT_PUBLIC_SHOW_DEMO_CATEGORY',
   NEXT_PUBLIC_NODE_ENV = 'NEXT_PUBLIC_NODE_ENV',
   NEXT_PUBLIC_API_BASE_URL = 'NEXT_PUBLIC_API_BASE_URL',
+  NEXT_PUBLIC_COMPANY_API_BASE_URL = 'NEXT_PUBLIC_COMPANY_API_BASE_URL',
   NEXT_PUBLIC_APP_BASE_URL = 'NEXT_PUBLIC_APP_BASE_URL',
   NEXT_PUBLIC_DASHBOARD_BASE_URL = 'NEXT_PUBLIC_DASHBOARD_BASE_URL',
   NEXT_PUBLIC_BASE_PATH = 'NEXT_PUBLIC_BASE_PATH',
@@ -27,6 +28,7 @@ const persistedTempEnvVariablesForFront: {[key in Env]: string | undefined} = {
   NEXT_PUBLIC_SHOW_DEMO_CATEGORY: process.env.NEXT_PUBLIC_SHOW_DEMO_CATEGORY,
   NEXT_PUBLIC_NODE_ENV: process.env.NEXT_PUBLIC_NODE_ENV,
   NEXT_PUBLIC_API_BASE_URL: process.env.NEXT_PUBLIC_API_BASE_URL,
+  NEXT_PUBLIC_COMPANY_API_BASE_URL: process.env.NEXT_PUBLIC_COMPANY_API_BASE_URL,
   NEXT_PUBLIC_APP_BASE_URL: process.env.NEXT_PUBLIC_APP_BASE_URL,
   NEXT_PUBLIC_DASHBOARD_BASE_URL: process.env.NEXT_PUBLIC_DASHBOARD_BASE_URL,
   NEXT_PUBLIC_BASE_PATH: process.env.NEXT_PUBLIC_BASE_PATH,
@@ -48,6 +50,7 @@ interface ParseUrl {
 const parseUrl: ParseUrl = (_: any) => _?.replace(/\/$/, '')
 
 export const appConfig = {
+  apiCompanyUrl: map(defaultValue('http://localhost:9001'), _ => parseUrl(_))(Env.NEXT_PUBLIC_COMPANY_API_BASE_URL),
   apiAdresseUrl: parseUrl('https://api-adresse.data.gouv.fr'),
   isDev: map()(Env.NEXT_PUBLIC_NODE_ENV) === 'development',
   showPlayground: map(bool, defaultValue(false))(Env.NEXT_PUBLIC_SHOW_PLAYGROUND),
