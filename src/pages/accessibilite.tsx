@@ -46,6 +46,12 @@ const Accessibilite = () => {
             Les vidéos n'ont pas d'audio description, sous-titres ou transcription textuelle. La cellule ayant en charge la mise
             en ligne de ces animations n'est pas en mesure actuellement de fournir ces éléments pour l'ensemble de ces vidéos.
           </p>
+          <h2>Accès au rapport d'accessibilité</h2>
+          <p>
+            Vous avez accès au rapport d'accessibilité{' '}
+            <a href="https://rebeca-documentation.finances.gouv.fr">sur la plateforme Rebeca</a>, en recherchant "Rapport d'audit
+            d'accessibilité signal.conso.gouv.fr". Vous pourrez trouver aussi la grille d'évaluation dans les documents associés.
+          </p>
           <h2>Établissement de cette déclaration d'accessibilité</h2>
           <p>Cette déclaration a été établie le 4 Septembre 2020.</p>
           <h3>Technologies utilisées</h3>
