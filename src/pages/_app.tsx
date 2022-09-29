@@ -13,11 +13,9 @@ import {ToastProvider} from '../alexlibs/mui-extension'
 import {ReportFlowProvider} from 'feature/Report/ReportFlowContext'
 import {ConstantProvider} from 'core/context/ConstantContext'
 import {appConfig} from '../conf/appConfig'
-import Script from 'next/script'
 import {AnalyticProvider} from 'core/analytic/AnalyticContext'
 import {Matomo} from 'core/plugins/matomo'
 import {Sentry} from 'core/plugins/sentry'
-import {Atinternet} from 'core/plugins/atinternet'
 import {Analytic} from 'core/analytic/analytic'
 import {useEffect, useState} from 'react'
 import {ConfigProvider, useConfig} from 'core/context/ConfigContext'
@@ -33,8 +31,7 @@ const App = ({emotionCache = clientSideEmotionCache, ...props}: ScAppProps) => {
   useEffect(() => {
     Sentry.init(appConfig)
     const matomo = Matomo.init({siteId: appConfig.matomo_siteId, url: appConfig.matomo_url})
-    const atInternet = Atinternet.init()
-    setAnalytic(Analytic.init({appConfig, matomo, atInternet}))
+    setAnalytic(Analytic.init({appConfig, matomo}))
   }, [])
   const [analytic, setAnalytic] = useState<Analytic | undefined>()
   return (
@@ -65,17 +62,7 @@ const _App = ({Component, pageProps, router}: AppProps) => {
       <Head>
         <link rel="canonical" href={config.appBaseUrl + router.asPath} />
       </Head>
-      {config.atInternet_siteId && (
-        <Script
-          type="text/javascript"
-          src={`https://tag.aticdn.net/${config.atInternet_siteId}/smarttag.js`}
-          strategy="beforeInteractive"
-        />
-      )}
       <div className="root">
-        {/*<Head>*/}
-        {/*  <meta name="theme-color" content={theme.palette.primary.main}/>*/}
-        {/*</Head>*/}
         <Box
           sx={{
             flex: 1,

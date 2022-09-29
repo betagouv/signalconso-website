@@ -1,35 +1,21 @@
 import {AppConfig, appConfig} from '../../conf/appConfig'
 import {Matomo} from '../plugins/matomo'
-import {Atinternet} from '../plugins/atinternet'
 import {Router} from 'next/router'
 
 export class Analytic {
-  static readonly init = ({
-    appConfig,
-    matomo,
-    atInternet,
-  }: {
-    appConfig: AppConfig
-    matomo: Matomo | undefined
-    atInternet: Atinternet | undefined
-  }) => {
-    return new Analytic(appConfig, matomo, atInternet)
+  static readonly init = ({appConfig, matomo}: {appConfig: AppConfig; matomo: Matomo | undefined}) => {
+    return new Analytic(appConfig, matomo)
   }
 
   private log = (...args: (string | undefined)[]) => {
     console.debug('[Analytic]', ...args)
   }
 
-  private constructor(
-    private appConfig: AppConfig,
-    private matomo: Matomo | undefined,
-    private atInternet: Atinternet | undefined,
-  ) {
+  private constructor(private appConfig: AppConfig, private matomo: Matomo | undefined) {
     Router.events.on('routeChangeComplete', (path: string): void => {
       this.log('[routeChangeComplete]', path)
       if (!this.appConfig.isDev) {
         matomo?.trackPage(path)
-        atInternet?.send({name: path})
       }
     })
   }
@@ -38,7 +24,6 @@ export class Analytic {
     this.log('[trackPage]', path, title)
     if (!this.appConfig.isDev) {
       this.matomo?.trackPage(path, title)
-      this.atInternet?.send({level2: 'Visitor', name: path})
     }
   }
 
@@ -46,15 +31,6 @@ export class Analytic {
     this.log('[trackEvent]', category, action, name, value)
     if (!appConfig.isDev) {
       try {
-        this.atInternet?.send({
-          level2: 'Visitor',
-          name: category,
-          chapter1: action,
-          chapter2: name,
-          customObject: {
-            value,
-          },
-        })
         this.matomo?.push(['trackEvent', category, action, name, value])
       } catch (e: any) {
         console.error('[Analytic]', e)
