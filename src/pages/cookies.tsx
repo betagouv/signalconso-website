@@ -38,12 +38,12 @@ const Cookies = () => {
           </p>
           <h3>Nature des cookies déposés sur le site SignalConso:</h3>
           <p>
-            Nous utilisons que des cookies techniques qui permettent et facilitent votre navigation. Certains sont indispensables
-            et ne sauraient être supprimés sans affecter gravement l’accès au site et la navigation, d’autres auraient pour
-            conséquence une navigation dégradée.
+            Nous n'utilisons que des cookies techniques qui permettent et facilitent votre navigation. Certains sont
+            indispensables et ne sauraient être supprimés sans affecter gravement l’accès au site et la navigation, d’autres
+            auraient pour conséquence une navigation dégradée.
           </p>
           <h3>Liste des cookies déposés</h3>
-          <p>Les cookies d'analyse de mesure d'audience (Xiti - AT Internet / Matomo);</p>
+          <p>Les cookies de l'outil d'analyse de mesure d'audience (Matomo);</p>
           <table>
             <thead>
               <tr>
@@ -53,16 +53,6 @@ const Cookies = () => {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>atuserid</td>
-                <td>Cookie At Internet/Xiti</td>
-                <td>13 mois</td>
-              </tr>
-              <tr>
-                <td>atautdority</td>
-                <td>Cookie At Internet/Xiti</td>
-                <td>13 mois</td>
-              </tr>
               <tr>
                 <td>_Pk_id</td>
                 <td>Matomo</td>
@@ -90,28 +80,13 @@ const Cookies = () => {
             de pages vues, le nombre de visites, leur fréquence de retour, …).
           </p>
           <p>
-            Nous utilisons l‘outil de mesure d’audience AT Internet. Cet outil est dispensé du recueil de consentement de
-            l'internaute relatif au dépôt des cookies Analytics, l'autorité française de protection des données (CNIL) ayant
-            accordé une exemption au cookie Web Analytics d’AT Internet (
-            <a href="https://www.cnil.fr/fr/cookies-solutions-pour-les-outils-de-mesure-daudience">en savoir plus</a>).
-          </p>
-          <p>
             Aucune des données personnelles ne sont exploitées par le site SignalConso. Cela signifie que votre adresse IP, par
             exemple, est anonymisée avant d’être enregistrée. Il est donc impossible d’associer vos visites sur ce site à votre
             personne.
           </p>
           <p>
-            Les noms des cookies utilisés sont pour At-Internet atuserid et atauthority. Leur durée de conservation est de 13
-            mois. Elles ne sont pas cédées à des tiers ni utilisées à d'autres fins.
-          </p>
-          <p>
-            Il en est de même pour l’outil de mesure d’audience de Matomo qui permet de conserver l’historique des données de
-            statistiques anonymes de fréquentation récoltées depuis le lancement de SignalConso, avant le transfert vers
-            At-Internet
-          </p>
-          <p>
-            Les noms des cookies utilisés sont pour Matomo _pk_session, _pk_id, _pk_ref. Leur durée va de de 30 mn à 13 mois.
-            Elles ne sont pas cédées à des tiers ni utilisées à d'autres fins
+            Les noms des cookies déposés par l'outil Matomo sont _pk_session, _pk_id, _pk_ref. Leur durée va de de 30 mn à 13
+            mois. Leurs informations ne sont pas cédées à des tiers ni utilisées à d'autres fins
           </p>
           <p>
             Pour plus de renseignements sur la gestion de la vie privée sur Signal Conso, vous pouvez également consulter la
