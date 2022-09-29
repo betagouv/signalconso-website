@@ -1,6 +1,6 @@
 name: Build, format & test workflow
 
-on: [push]
+on: [pull_request]
 
 jobs:
   # This workflow contains a single job called "greet"
