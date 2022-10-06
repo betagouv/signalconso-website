@@ -226,8 +226,9 @@
               <br> 'La suspension de votre ligne, à la suite de la perte ou du vol de votre téléphone portable, n’entraîne pas l’arrêt de la facturation de votre abonnement. Le remboursement de l’abonnement au prorata de la durée de suspension de votre ligne pourra vous être accordé, si les Conditions Générales d’Abonnement de votre opérateur le prévoient.''
               <br> 'Si vous avez souscrit un contrat soumis à une période initiale d’engagement, la déclaration de vol ou de perte de portable ne constitue pas non plus un motif légitime de résiliation anticipée.'
               <br> 'Des pénalités sont susceptibles d’être facturées par l’opérateur si vous suspendez vos paiements ou les prélèvements auprès de votre banque.'
-              <br> 'En cas de contestation sur le montant principal réclamé, vous pouvez adresser un courrier ou un e-mail à votre opérateur afin de lui demander de résoudre votre problème ou à son service consommateur.'
+              <br> Vous pouvez écrire un courrier ou un e-mail à votre opérateur afin de lui demander de résoudre votre problème. Si la réponse du service client n’est pas satisfaisante pouvez écrire un courrier ou un e-mail au service consommateur de votre opérateur afin de lui demander de résoudre votre problème.
               <br> 'Si vous n'avez pas de réponse de votre opérateur ou si la réponse ne vous satisfait pas, vous pouvez contacter le médiateur des communications électroniques à <a href="https://www.mediation-telecom.org/" target="_blank">mediation-telecom.org</a>.'
+              <br>  En cas de difficultés, vous pouvez les signaler à l’ARCEP (Autorité de régulation des communications électroniques, des postes et de la distribution de la presse) sur le site dédié <a href="https://jalerte.arcep.fr/" target="_blank">j’alerte l’Arcep</a>
         - title: On me réclame le paiement d'abonnement, alors que je ne suis plus en possession de mon téléphone
           information:
             title: Les problèmes liés à la perte ou au vol de votre téléphone portable ne peuvent être signalés sur SignalConso.
@@ -255,7 +256,7 @@
           reponseconsoCode:
             - '447'
             - '464'
-        - title: Je contest mon inscription au Fichier PREVENTEL
+        - title: Je conteste mon inscription au Fichier PREVENTEL
           example: 'Je conteste mon inscription ou je souhaite obtenir l’effacement de mes données'
           information:
              title: Ce type de problème ne doit pas être signalé sur SignalConso.
@@ -273,25 +274,26 @@
               information:
                   title: Ce type de problème ne doit pas être signalé sur SignalConso.
                   content :
-                    'Votre opérateur peut, par l’intermédiaire d’une agence de recouvrement ou d’un commissaire de justice (ex-huissier de justice), vous adresser un courrier à titre amiable afin d’obtenir un paiement volontaire de votre part, en l’absence de décision de justice.
-                    <br> En cas de contestation sur le montant principal réclamé, vous pouvez adresser un courrier ou un e-mail à votre opérateur afin de lui demander de résoudre votre problème ou à son service consommateur.
-                    <br> si vous n’avez pas de réponse de votre opérateur ou si la réponse ne vous satisfait pas, vous pouvez contacter le médiateur des communications électroniques à <a href="https://www.mediation-telecom.org/" target="_blank">mediation-telecom.org</a>.'
+                    Votre opérateur peut, par l’intermédiaire d’une agence de recouvrement ou d’un commissaire de justice (ex-huissier de justice), vous adresser un courrier à titre amiable afin d’obtenir un paiement volontaire de votre part, en l’absence de décision de justice.
+                    <br> Vous pouvez écrire un courrier ou un e-mail à votre opérateur afin de lui demander de résoudre votre problème. Si la réponse du service client n’est pas satisfaisante pouvez écrire un courrier ou un e-mail au service consommateur de votre opérateur afin de lui demander de résoudre votre problème.
+                    <br> Si vous n'avez pas de réponse de votre opérateur ou si la réponse ne vous satisfait pas, vous pouvez contacter le médiateur des communications électroniques à <a href="https://www.mediation-telecom.org/" target="_blank">mediation-telecom.org</a>.
+                    <br> En cas de difficultés, vous pouvez les signaler à l’ARCEP (Autorité de régulation des communications électroniques, des postes et de la distribution de la presse) sur le site dédié <a href="https://jalerte.arcep.fr/" target="_blank">j’alerte l’Arcep</a>
             - title: Je suis contacté à répétions.
               information:
                 title: Ce type de problème ne doit pas être signalé sur SignalConso.
                 content:
-                  'Le fait d’être contacté de façon répétées et insistantes ou d’une menace physique ou morale peut dans certains cas être considéré comme une pratique agressive interdite par la loi.'
+                  'Le fait d’être contacté de façon répétées et insistantes ou victime de menaces peut dans certains cas être considéré comme une pratique agressive interdite par la loi.'
                 actions:
                     - question: Que pouvez-vous faire&#160;?
-                      answer: <br> 'Je contacte l'Ordre des commissaire de justice sur le site <a href="https://commissaire-justice.fr/" target="_blank">commissaire-justice.fr</a>.'
-            - title: On me présente un faux décision de justice ou contacter mes proches
+                      answer: <br> 'Je contacte l'Ordre des commissaire de justice sur le site <a href="https://commissaire-justice.fr/" target="_blank">commissaire-justice.fr</a>, s’il s’agit d’une société de recouvrement de créances.'
+            - title: On me présente des documents à la présentation ou au contenu trompeur ou on porte atteinte à ma vie privée
               information:
                 title: Ce type de problème ne doit pas être signalé sur SignalConso.
                 content:
                   'L’utilisation de documents trompeurs laissant penser qu&#39;il s&#39;agit une action de recouvrement forcé (après décision de justice) et vous menace de saisie, Ou les appels téléphoniques intempestifs, les visites à votre famille, à vos voisins, à votre employeur, susceptibles de porter atteinte à votre vie privée, sont des pratiques illégales.'
                 actions:
                   - question: Que pouvez-vous faire&#160;?
-                    answer: <br> Je contacte l’Ordre des commissaire de justice sur le site <a href="https://commissaire-justice.fr/" target="_blank">commissaire-justice.fr</a>.'
+                    answer: <br> Je dénonce les faits auprès du procureur de la République.'
         - title: On me refuse la mise en place d’un prélèvement sur un compte bancaire situé dans la zone SEPA
           example: Je ne peux pas payer avec mon compte bancaire en Belgique.
           tags:
@@ -308,7 +310,7 @@
                 <br> En cas de contestation sur le montant principal réclamé, vous pouvez adresser un courrier ou un e-mail à votre opérateur afin de lui demander de résoudre votre problème Ou à son service consommateur.
                 <br> si vous n’avez pas de réponse de votre opérateur ou si la réponse ne vous satisfait pas, vous pouvez contacter le médiateur des communications électroniques à <a href="https://www.mediation-telecom.org/" target="_blank">mediation-telecom.org</a>.
                 <br> Vous devez les signaler à l’ARCEP (Autorité de régulation des communications électroniques, des postes et de la distribution de la presse) sur leur site dédié  <a href="https://jalerte.arcep.fr/" target="_blank" /> J’alerte l’Arcep </a>'
-        - title: Des dégradations ont étaient commises lors de l’installation de ma ligne ou de la fibre)
+        - title: Des dégradations ont étaient commises lors de l’installation de ma ligne ou de la fibre
           information:
             title: Ce type de problème ne doit pas être signalé sur SignalConso.
             content:
