@@ -113,12 +113,12 @@ export const Problem = ({anomaly}: Props) => {
                 onChange={employeeConsumer => setReportDraft(_ => ({..._, employeeConsumer}))}
                 options={[
                   {
-                    title: m.yes,
-                    value: true,
-                  },
-                  {
                     title: m.problemDoYouWorkInCompanyNo,
                     value: false,
+                  },
+                  {
+                    title: m.yes,
+                    value: true,
                   },
                 ]}
               />
