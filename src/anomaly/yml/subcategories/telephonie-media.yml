@@ -265,8 +265,11 @@
              actions:
                - question: Que pouvez-vous faire&#160;?
                  answer: <br> Si vous pensez être victime d’une inscription abusive, que votre identité figure toujours dans le fichier malgré régularisation de votre part ou au-delà de la durée de conservation autorisée (3 ans, ou 5 ans si vous faites l’objet d’au moins 3 inscriptions simultanément), vous devez contacter le service consommateur de l’opérateur à l’origine de cette inscription.
+                   <br>
                    <br> Si vous ne savez pas qui est cet opérateur ou depuis quand date votre inscription, vous pouvez le demander sur le site <a href="https://www.preventel.fr/" target="_blanck">PREVENTEL</a>.
+                   <br>
                    <br> Vous avez régularisé votre situation auprès de votre opérateur mais vous êtes toujours inscrit sur PREVENTEL, <a href="https://www.cnil.fr/fr/plaintes" target="_blanck">adressez une plainte à la CNIL</a>.
+                   <br>
                    <br> Dans les autres cas (litige concernant la réalité ou le montant de la dette notamment), si vous n'avez pas de réponse de votre opérateur ou si la réponse ne vous satisfait pas, vous pouvez contacter le médiateur des communications électroniques à <a href="https://www.mediation-telecom.org/" target="_blank">mediation-telecom.org</a>.
         - title: Je suis victime de pratiques agressives de la part d’une agence de recouvrement ou d’un commissaire de justice (ex-huissier de justice)
           example: 'on me réclame des frais ou des pénalités de retard excessifs, le paiement d’une dette que je conteste'
@@ -294,7 +297,7 @@
                   'L’utilisation de documents trompeurs laissant penser qu&#39;il s&#39;agit une action de recouvrement forcé (après décision de justice) et vous menace de saisie, Ou les appels téléphoniques intempestifs, les visites à votre famille, à vos voisins, à votre employeur, susceptibles de porter atteinte à votre vie privée, sont des pratiques illégales.'
                 actions:
                   - question: Que pouvez-vous faire&#160;?
-                    answer: <br> Je dénonce les faits auprès du procureur de la République.'
+                    answer: <br> Je dénonce les faits auprès du procureur de la République.
         - title: On me refuse la mise en place d’un prélèvement sur un compte bancaire situé dans la zone SEPA
           example: Je ne peux pas payer avec mon compte bancaire en Belgique.
           tags:
