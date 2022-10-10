@@ -134,8 +134,8 @@
               <br> La loi permet aux entreprises de proposer les produits et les services de leur choix. Les opérateurs sont donc libres de commercialiser des offres utilisant une technologie spécifique plutôt qu’une autre.
             actions:
               - question: Que pouvez-vous faire&#160;?
-                answer: <b> 'Si un opérateur ne propose pas la technologie que vous souhaitez à l’adresse de votre domicile, il est possible qu’un autre opérateur le propose. Il vous faut comparer les offres.
-                  <br> Pour vous aider, vous pouvez vérifier votre éligibilité à une technologie pour les principaux opérateurs sur le site <a href="https://maconnexioninternet.arcep.fr/" target="_blank">maconnexioninternet.arcep.fr</a>.'
+                answer: <b> Si un opérateur ne propose pas la technologie que vous souhaitez à l’adresse de votre domicile, il est possible qu’un autre opérateur le propose. Il vous faut comparer les offres.
+                  <br> Pour vous aider, vous pouvez vérifier votre éligibilité à une technologie pour les principaux opérateurs sur le site <a href="https://maconnexioninternet.arcep.fr/" target="_blank">maconnexioninternet.arcep.fr</a>.
         - title: Un opérateur m’a annoncé éligible à une technologie alors que ce n’est pas le cas
     - title: Résiliation / changement d'opérateur
       subcategories:
@@ -161,8 +161,8 @@
                   <br> Si votre portabilité ne s’est pas effectuée le jour prévu.
                 actions:
                   - question: Que pouvez-vous faire&#160;?
-                    answer: <br> 'Je contacte le service client du nouveau opérateur par téléphone ou par mail. Je peux demander une indemnisation pour tout retard ou abus dans la prestation de conservation du numéro.
-                      <br> Si je ne suis pas satifait. Je contact le médaiteur des communications gratuitement via <a href="https://www.mediation-telecom.org/" target="_blank">mediation-telecom.org</a>'
+                    answer: <br> Je contacte le service client du nouveau opérateur par téléphone ou par mail. Je peux demander une indemnisation pour tout retard ou abus dans la prestation de conservation du numéro.
+                      <br> Si je ne suis pas satifait. Je contact le médaiteur des communications gratuitement via <a href="https://www.mediation-telecom.org/" target="_blank">mediation-telecom.org</a>
             - title: L'opérateur a perdu mon numéro
               information:
                 title: Plusieurs SMS d’information doivent normalement vous être envoyés jusqu’au transfert effectif du numéro vers votre nouvel opérateur.
@@ -213,30 +213,30 @@
           information:
             title: Les problèmes liés à la perte ou au vol de votre téléphone portable ne peuvent être signalés sur SignalConso.
             content:
-              <br> 'Alertez votre opérateur dès la constatation du vol ou de la perte de votre mobile, que vous soyez en France ou à l’étranger, afin que votre ligne soit suspendue et obtenir une nouvelle carte SIM'
-              <br> 'En cas de vol de votre mobile, portez plainte au commissariat de police le plus proche ou à la gendarmerie dans les 48 heures suivant le sinistre.'
-              <br> 'Si votre assurance couvre le vol ou la perte de votre mobile, contactez votre assureur qui vous donnera la marche à suivre.'
-              <br> 'Le numéro IMEI (International Mobile Equipement Identity) associé à votre mobile vous sera demandé pour effectuer ces démarches.'
-              <br> 'C'est quoi le numéro IMEI ? ''
-              <br> 'Ce numéro sert à identifier votre téléphone portable. Ce numéro est unique du téléphone (peu importe le propriétaire et l'opérateur). Un code IMEI est composé de 15 à 17 chiffres.'
+              <br> Alertez votre opérateur dès la constatation du vol ou de la perte de votre mobile, que vous soyez en France ou à l’étranger, afin que votre ligne soit suspendue et obtenir une nouvelle carte SIM
+              <br> En cas de vol de votre mobile, portez plainte au commissariat de police le plus proche ou à la gendarmerie dans les 48 heures suivant le sinistre.
+              <br> Si votre assurance couvre le vol ou la perte de votre mobile, contactez votre assureur qui vous donnera la marche à suivre.
+              <br> Le numéro IMEI (International Mobile Equipement Identity) associé à votre mobile vous sera demandé pour effectuer ces démarches.
+              <br> C'est quoi le numéro IMEI ?
+              <br> Ce numéro sert à identifier votre téléphone portable. Ce numéro est unique du téléphone (peu importe le propriétaire et l'opérateur). Un code IMEI est composé de 15 à 17 chiffres.
         - title: On me réclame le paiement du crédit lié à l’achat de mon appareil, ou le paiement de la location, alors que je ne suis plus en possession de mon téléphone
           information:
             title: Les problèmes liés à la perte ou au vol de votre téléphone portable ne peuvent être signalés sur SignalConso.
             content:
-              <br> 'La suspension de votre ligne, à la suite de la perte ou du vol de votre téléphone portable, n’entraîne pas l’arrêt de la facturation de votre abonnement. Le remboursement de l’abonnement au prorata de la durée de suspension de votre ligne pourra vous être accordé, si les Conditions Générales d’Abonnement de votre opérateur le prévoient.''
-              <br> 'Si vous avez souscrit un contrat soumis à une période initiale d’engagement, la déclaration de vol ou de perte de portable ne constitue pas non plus un motif légitime de résiliation anticipée.'
-              <br> 'Des pénalités sont susceptibles d’être facturées par l’opérateur si vous suspendez vos paiements ou les prélèvements auprès de votre banque.'
+              <br> La suspension de votre ligne, à la suite de la perte ou du vol de votre téléphone portable, n’entraîne pas l’arrêt de la facturation de votre abonnement. Le remboursement de l’abonnement au prorata de la durée de suspension de votre ligne pourra vous être accordé, si les Conditions Générales d’Abonnement de votre opérateur le prévoient.
+              <br> Si vous avez souscrit un contrat soumis à une période initiale d’engagement, la déclaration de vol ou de perte de portable ne constitue pas non plus un motif légitime de résiliation anticipée.
+              <br> Des pénalités sont susceptibles d’être facturées par l’opérateur si vous suspendez vos paiements ou les prélèvements auprès de votre banque.
               <br> Vous pouvez écrire un courrier ou un e-mail à votre opérateur afin de lui demander de résoudre votre problème. Si la réponse du service client n’est pas satisfaisante pouvez écrire un courrier ou un e-mail au service consommateur de votre opérateur afin de lui demander de résoudre votre problème.
-              <br> 'Si vous n'avez pas de réponse de votre opérateur ou si la réponse ne vous satisfait pas, vous pouvez contacter le médiateur des communications électroniques à <a href="https://www.mediation-telecom.org/" target="_blank">mediation-telecom.org</a>.'
-              <br>  En cas de difficultés, vous pouvez les signaler à l’ARCEP (Autorité de régulation des communications électroniques, des postes et de la distribution de la presse) sur le site dédié <a href="https://jalerte.arcep.fr/" target="_blank">j’alerte l’Arcep</a>
+              <br> Si vous n'avez pas de réponse de votre opérateur ou si la réponse ne vous satisfait pas, vous pouvez contacter le médiateur des communications électroniques à <a href="https://www.mediation-telecom.org/" target="_blank">mediation-telecom.org</a>.
+              <br> En cas de difficultés, vous pouvez les signaler à l’ARCEP (Autorité de régulation des communications électroniques, des postes et de la distribution de la presse) sur le site dédié <a href="https://jalerte.arcep.fr/" target="_blank">j’alerte l’Arcep</a>
         - title: On me réclame le paiement d'abonnement, alors que je ne suis plus en possession de mon téléphone
           information:
             title: Les problèmes liés à la perte ou au vol de votre téléphone portable ne peuvent être signalés sur SignalConso.
             content:
-              <br> 'La déclaration de vol ou de perte de portable ne constitue pas un motif légitime de résiliation permettant de vous exonérer de la facilité de paiement ou du crédit souscrit lors de l’achat de téléphone portable.'
-              <br> 'De même, dans le cas où vous seriez engagé par un contrat de location de mobile, le vol ou la perte du terminal loué ne vous exonère pas du paiement des loyers restant à courir jusqu’à la fin de la période initiale d’engagement, ni des frais de non-restitution du mobile loué..'
-              <br> 'Des pénalités sont susceptibles d’être facturées, si vous suspendez le paiement de vos loyers ou de vos remboursements auprès de votre banque.'
-              <br> 'La souscription d’une assurance pourra vous permettre d’obtenir une indemnisation et de remplacer votre téléphone (une franchise peut toutefois être requise).'
+              <br> La déclaration de vol ou de perte de portable ne constitue pas un motif légitime de résiliation permettant de vous exonérer de la facilité de paiement ou du crédit souscrit lors de l’achat de téléphone portable.
+              <br> De même, dans le cas où vous seriez engagé par un contrat de location de mobile, le vol ou la perte du terminal loué ne vous exonère pas du paiement des loyers restant à courir jusqu’à la fin de la période initiale d’engagement, ni des frais de non-restitution du mobile loué..
+              <br> Des pénalités sont susceptibles d’être facturées, si vous suspendez le paiement de vos loyers ou de vos remboursements auprès de votre banque.
+              <br> La souscription d’une assurance pourra vous permettre d’obtenir une indemnisation et de remplacer votre téléphone (une franchise peut toutefois être requise).
         - title: Malgré l’assurance perte ou vol que j’ai souscrite pour mon téléphone
           example: 'mon assureur refuse de répondre à mes demandes d’indemnisation, ou me réclame des justificatifs que j’ai déjà fournis ou sans rapport avec mon sinistre.'
           tags:
@@ -264,9 +264,10 @@
                Le fichier PREVENTEL est une base de données informatisée, autorisée par la CNIL. Il rassemble l’identité des clients qui ont des impayés de téléphonie mobile égaux ou supérieurs à 30 €, ainsi que celle des personnes ayant souscrit un contrat de téléphonie mobile de manière irrégulière, en présentant des pièces justificatives (carte d’identité, documents bancaires,...) falsifiées ou inexactes.
              actions:
                - question: Que pouvez-vous faire&#160;?
-                 answer: <br> 'Si vous pensez être victime d’une inscription abusive, que votre identité figure toujours dans le fichier malgré régularisation de votre part ou au-delà de la durée de conservation autorisée (3 ans, ou 5 ans si vous faites l’objet d’au moins 3 inscriptions simultanément), vous devez contacter le service consommateur de l’opérateur à l’origine de cette inscription.
-                   <br> 'Si vous ne savez pas qui est cet opérateur ou depuis quand date votre inscription, vous pouvez le demander sur le site <a href="https://www.preventel.fr/" target="_blanck">PREVENTEL</a>'.'
-                   <br> 'D'ans les autres cas (litige concernant la réalité ou le montant de la dette notamment), si vous n'avez pas de réponse de votre opérateur ou si la réponse ne vous satisfait pas, vous pouvez contacter le médiateur des communications électroniques à <a href="https://www.mediation-telecom.org/" target="_blank">mediation-telecom.org</a>.
+                 answer: <br> Si vous pensez être victime d’une inscription abusive, que votre identité figure toujours dans le fichier malgré régularisation de votre part ou au-delà de la durée de conservation autorisée (3 ans, ou 5 ans si vous faites l’objet d’au moins 3 inscriptions simultanément), vous devez contacter le service consommateur de l’opérateur à l’origine de cette inscription.
+                   <br> Si vous ne savez pas qui est cet opérateur ou depuis quand date votre inscription, vous pouvez le demander sur le site <a href="https://www.preventel.fr/" target="_blanck">PREVENTEL</a>.
+                   <br> Vous avez régularisé votre situation auprès de votre opérateur mais vous êtes toujours inscrit sur PREVENTEL, <a href="https://www.cnil.fr/fr/plaintes" target="_blanck">adressez une plainte à la CNIL</a>.
+                   <br> Dans les autres cas (litige concernant la réalité ou le montant de la dette notamment), si vous n'avez pas de réponse de votre opérateur ou si la réponse ne vous satisfait pas, vous pouvez contacter le médiateur des communications électroniques à <a href="https://www.mediation-telecom.org/" target="_blank">mediation-telecom.org</a>.
         - title: Je suis victime de pratiques agressives de la part d’une agence de recouvrement ou d’un commissaire de justice (ex-huissier de justice)
           example: 'on me réclame des frais ou des pénalités de retard excessifs, le paiement d’une dette que je conteste'
           subcategories:
@@ -285,7 +286,7 @@
                   'Le fait d’être contacté de façon répétées et insistantes ou victime de menaces peut dans certains cas être considéré comme une pratique agressive interdite par la loi.'
                 actions:
                     - question: Que pouvez-vous faire&#160;?
-                      answer: <br> 'Je contacte l'Ordre des commissaire de justice sur le site <a href="https://commissaire-justice.fr/" target="_blank">commissaire-justice.fr</a>, s’il s’agit d’une société de recouvrement de créances.'
+                      answer: <br> Je contacte l'Ordre des commissaire de justice sur le site <a href="https://commissaire-justice.fr/" target="_blank">commissaire-justice.fr</a>, s’il s’agit d’une société de recouvrement de créances.
             - title: On me présente des documents à la présentation ou au contenu trompeur ou on porte atteinte à ma vie privée
               information:
                 title: Ce type de problème ne doit pas être signalé sur SignalConso.
