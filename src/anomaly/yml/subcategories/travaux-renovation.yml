@@ -348,11 +348,15 @@
           subcategories:
             - title: À votre domicile
               example: Un démarcheur est venu chez vous
+              tags:
+                - ReponseConso
               reponseconsoCode:
                 - '2213'
                 - '2214'
             - title: À distance
               example: 'Exemple : sur internet'
+              tags:
+                - ReponseConso
               reponseconsoCode:
                 - '2213'
                 - '2214'
