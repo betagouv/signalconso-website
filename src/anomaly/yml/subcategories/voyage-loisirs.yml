@@ -601,7 +601,7 @@
           tags:
             - ReponseConso
 - title: Compagnie aérienne
-  example: "Exemple : Vol annuel, vol retardé, déclassement, refus d'embarquement"
+  example: "Exemple : Vol annulé, vol retardé, déclassement, refus d'embarquement"
   information:
     title: Oups, nous ne pouvons pas traiter votre signalement.
     content: 'Vous avez acheté votre billet d''avion directement auprès d''une compagnie aérienne.
