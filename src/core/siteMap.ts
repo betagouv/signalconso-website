@@ -15,6 +15,7 @@ export const siteMap = {
   planDuSite: `/plan-du-site`,
   quiSommesNous: `/qui-sommes-nous`,
   litige: `/litige`,
+  delaiRetractation: `/delai-de-retractation`,
   conditionsGeneralesUtilisation: `/conditions-generales-utilisation`,
   connexion: appConfig.dashboardBaseUrl + '/connexion',
   companyActivation: appConfig.dashboardBaseUrl + '/activation',

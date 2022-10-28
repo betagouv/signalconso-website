@@ -28,4 +28,8 @@ export const isDateInRange = (d: string, min: string, max: string) => {
   return frenchFormatToDate(d) >= frenchFormatToDate(min) && frenchFormatToDate(d) <= frenchFormatToDate(max)
 }
 
+export const dateToIsoFormatWithoutTime = (d: Date) => {
+  return d.toISOString().split('T')[0]
+}
+
 export const frenchDateFormat = 'dd/MM/yyyy'

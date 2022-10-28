@@ -4,6 +4,7 @@ import {forwardRef} from 'react'
 
 interface Props extends BoxProps {
   bold?: boolean
+  bolder?: boolean
   italic?: boolean
   gutterBottom?: boolean
   block?: boolean
@@ -14,6 +15,7 @@ interface Props extends BoxProps {
   truncate?: boolean
   noWrap?: boolean
   link?: boolean
+  span?: boolean
 }
 
 export const Txt = forwardRef(
@@ -24,6 +26,7 @@ export const Txt = forwardRef(
       gutterBottom,
       block,
       bold,
+      bolder,
       size,
       link,
       italic,
@@ -31,6 +34,7 @@ export const Txt = forwardRef(
       uppercase,
       truncate,
       noWrap,
+      span,
       sx,
       ...otherProps
     }: Props,
@@ -38,6 +42,7 @@ export const Txt = forwardRef(
   ) => {
     return (
       <Box
+        {...(span ? {component: 'span'} : null)}
         sx={{
           display: 'inline',
           lineHeight: '1.5',
@@ -79,6 +84,9 @@ export const Txt = forwardRef(
           }),
           ...(bold && {
             fontWeight: t => t.typography.fontWeightMedium,
+          }),
+          ...(bolder && {
+            fontWeight: 700,
           }),
           ...(italic && {
             fontStyle: 'italic',

@@ -2,7 +2,7 @@ import type {AppProps} from 'next/app'
 import {StyledEngineProvider} from '@mui/styled-engine'
 import {Box, CssBaseline, ThemeProvider} from '@mui/material'
 import {Header, headerHeight} from 'core/component/Header'
-import {muiTheme} from 'core/theme/theme'
+import {scTheme} from 'core/theme/theme'
 import {Provide} from 'shared/Provide/Provide'
 import {Footer} from 'core/component/Footer'
 import {I18nProvider} from 'core/i18n'
@@ -44,7 +44,7 @@ const App = ({emotionCache = clientSideEmotionCache, ...props}: ScAppProps) => {
         _ => <AnalyticProvider analytic={analytic} children={_} />,
         _ => <CacheProvider value={emotionCache} children={_} />,
         _ => <StyledEngineProvider children={_} />,
-        _ => <ThemeProvider theme={muiTheme()} children={_} />,
+        _ => <ThemeProvider theme={scTheme} children={_} />,
         _ => <I18nProvider children={_} />,
         _ => <ApiSdkProvider children={_} />,
         _ => <CssBaseline children={_} />,

@@ -2,7 +2,7 @@ import React, {useEffect, useMemo, useState} from 'react'
 import {Alert, Txt} from '../../../alexlibs/mui-extension'
 import {useReportFlowContext} from '../ReportFlowContext'
 import {parseISO} from 'date-fns'
-import {ScDatepicker} from 'shared/Datepicker/Datepicker'
+import {ScDatepickerFr} from 'shared/Datepicker/ScDatepickerFr'
 import {fnSwitch, mapFor} from '../../../alexlibs/ts-utils'
 import {useI18n} from 'core/i18n'
 import {Controller, useForm} from 'react-hook-form'
@@ -186,7 +186,7 @@ export const _Details = ({
                       },
                     },
                     render: ({field}) => (
-                      <ScDatepicker
+                      <ScDatepickerFr
                         {...field}
                         fullWidth
                         placeholder={getPlaceholderFromInput(input)}
