@@ -14,7 +14,7 @@ export interface ScDatepickerProps extends BaseTextFieldProps {
   max?: string
 }
 
-export const ScDatepicker = forwardRef(({value, onChange, min, max, ...props}: ScDatepickerProps, ref: any) => {
+export const ScDatepickerFr = forwardRef(({value, onChange, min, max, ...props}: ScDatepickerProps, ref: any) => {
   return (
     <ScInput
       inputRef={ref}

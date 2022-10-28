@@ -4,13 +4,13 @@
 import {waitFor} from '@testing-library/dom'
 import '@testing-library/jest-dom'
 import {fireEvent, render} from 'test/test-utils'
-import {ScDatepicker} from './Datepicker'
+import {ScDatepickerFr} from './ScDatepickerFr'
 
 describe('DatePicker', () => {
   it('should emit and event with a details object containing form inputs when no errors', async () => {
     let value: string | undefined
     const app = render(
-      <ScDatepicker
+      <ScDatepickerFr
         value={undefined}
         onChange={v => {
           value = v

@@ -43,6 +43,10 @@ export const pageDefinitions = {
     title: 'Plan du site - SignalConso',
     description: 'Plan du site',
   },
+  delaiRetractation: {
+    title: 'Délai de rétractation - SignalConso',
+    description: `Calculez votre délai légal de rétractation suite à un achat ou la signature d'un contrat`,
+  },
   conditionsGeneralesUtilisation: {
     title: "Conditions générales d'utilisation - SignalConso",
     description: "Consultez les conditions générales d'utilisation",

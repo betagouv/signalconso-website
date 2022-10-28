@@ -1,6 +1,6 @@
 import React, {ReactNode, useEffect} from 'react'
 import {render, RenderResult} from '@testing-library/react'
-import {muiTheme} from 'core/theme/theme'
+import {scTheme} from 'core/theme/theme'
 import {ThemeProvider} from '@mui/material'
 import {I18nProvider} from 'core/i18n'
 import {ReportFlowProvider, useReportFlowContext} from 'feature/Report/ReportFlowContext'
@@ -38,7 +38,7 @@ const AllTheProviders =
               }
             />
           ),
-          _ => <ThemeProvider theme={muiTheme()} children={_} />,
+          _ => <ThemeProvider theme={scTheme} children={_} />,
           _ => <I18nProvider children={_} />,
           _ => <ReportFlowProvider children={_} initialReport={options?.initialReport} />,
         ]}

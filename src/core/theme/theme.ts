@@ -31,19 +31,19 @@ export const styleUtils = (t: Theme) => ({
 
 export const defaultSpacing = 8
 
-export const muiTheme = (dark?: boolean): Theme => {
+export const COLOR_LIGHT_BLUE = '#2b7c9f'
+export const COLOR_DARK_BLUE = '#1e2b50'
+
+const buildScTheme = (): Theme => {
   const fontFamily = '"Open Sans", sans-serif'
   const fontSize = 16
   const colorPrimary = {
-    base: '#2b7c9f',
+    base: COLOR_LIGHT_BLUE,
     light: '#6fd3ff',
     dark: '#1c536b',
-    // base: '#407e99',
-    // light: '#6697ad',
-    // dark: '#2c586b',
   }
   const colorSecondary = {
-    base: '#1e2b50',
+    base: COLOR_DARK_BLUE,
     light: '#1e2b50',
     dark: '#1e2b50',
   }
@@ -61,15 +61,13 @@ export const muiTheme = (dark?: boolean): Theme => {
         dark: colorSecondary.dark,
       },
       error: red,
-      mode: dark ? 'dark' : 'light',
+      mode: 'light',
     },
     shape: {
       borderRadius: 10,
     },
     typography: {
-      // fontSize,
       fontFamily,
-      // fontFamily: 'Evolventa, sans-serif',
       fontWeightBold: 500,
     },
   })
@@ -89,7 +87,6 @@ export const muiTheme = (dark?: boolean): Theme => {
             color: baseTheme.palette.text.primary,
           },
           '.blog': {
-            // fontSize: 16,
             a: {
               color: colorPrimary.base,
             },
@@ -170,41 +167,9 @@ export const muiTheme = (dark?: boolean): Theme => {
             '& thead th': {
               background: baseTheme.palette.action.disabledBackground,
               borderBottom: `1px solid ${baseTheme.palette.divider}`,
-              // font-size: 0.875em,
-              // font-weight: 700,
               textTransform: 'uppercase',
             },
           },
-          //
-          // 'table td, table th' {
-          //     padding: 1em;
-          //     text-align: left;
-          //   }
-          //
-          // .table td {
-          //     border-top: 1px solid #ebeff3;
-          //     border-top: 1px solid $lighter-grey;
-          //   }
-          //
-          // .table thead th {
-          //     background: #fafbfc;
-          //     background: $lightest-grey;
-          //     border-bottom: 1px solid #c9d3df;
-          //     border-bottom: 1px solid $theme-border-lighter;
-          //     font-size: 0.875em;
-          //     font-weight: 700;
-          //     text-transform: uppercase;
-          //   }
-          //
-          // .table:not(.no-hover) tr:hover {
-          //     background: #fafbfc;
-          //     background: $lightest-grey;
-          //   }
-          // h2: {
-          //   ...baseTheme.typography.h6,
-          //   marginBottom: baseTheme.spacing(2),
-          //   marginTop: baseTheme.spacing(3),
-          // },
           p: {
             textAlign: 'justify',
           },
@@ -218,25 +183,7 @@ export const muiTheme = (dark?: boolean): Theme => {
           ...carouselCss,
         },
       },
-      //   styleOverrides: `
-      //   @font-face {
-      //     font-family: 'Evolventa';
-      //     font-display: auto;
-      //     src: local('Evolventa-Regular'),
-      //          url('fonts/Evolventa/Evolventa-Regular.woff2') format('woff2'),
-      //          url('fonts/Evolventa/Evolventa-Regular.woff') format('woff'),
-      //          url('fonts/Evolventa/Evolventa-Regular.ttf') format('truetype'),
-      //          url('fonts/Evolventa/Evolventa-Regular.eot') format('truetype');
-      //     }
-      //   `
-      // },
-      MuiAutocomplete: {
-        // styleOverrides: {
-        //   endAdornment: {
-        //     position: 'relative',
-        //   },
-        // }
-      },
+
       MuiButton: {
         styleOverrides: {
           root: {
@@ -348,17 +295,9 @@ export const muiTheme = (dark?: boolean): Theme => {
     },
   }
   return createTheme({
-    ...{...baseTheme, ...theme},
-    ...(dark
-      ? {
-          MuiOutlinedInput: {
-            styleOverrides: {
-              notchedOutline: {
-                borderColor: '#d9dce0',
-              },
-            },
-          },
-        }
-      : ({} as any)),
+    ...baseTheme,
+    ...theme,
   })
 }
+
+export const scTheme = buildScTheme()

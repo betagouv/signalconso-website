@@ -47,6 +47,9 @@ const PlanDuSite = () => {
         <li>
           <Link href={siteMap.contact}>Contact</Link>
         </li>
+        <li>
+          <Link href={siteMap.delaiRetractation}>Calculez votre délai de rétractation</Link>
+        </li>
       </ul>
       <h2>Dépôt d'un signalement</h2>
       <Link href={siteMap.arborescence}>Voir l'arborescence</Link>
