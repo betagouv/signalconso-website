@@ -10,7 +10,7 @@ const redirects = hostsToRedirect.map(host => ({
   source: '/:path*',
   has: [{type: 'host', value: host}],
   destination: 'https://signal.conso.gouv.fr/:path*',
-  permanent: false, // TODO set true when we confirmed it's working properly
+  permanent: true,
 }))
 
 module.exports = withTM({
