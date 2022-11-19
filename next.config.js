@@ -17,7 +17,7 @@ const ContentSecurityPolicy = `
   default-src 'self';
   connect-src *.cleverapps.io;
   script-src 'self';
-  img-src 'self';
+  img-src 'self' data:;
   child-src 'self';
   style-src 'unsafe-inline';
   font-src https://fonts.gstatic.com;
