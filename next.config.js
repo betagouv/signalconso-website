@@ -13,6 +13,15 @@ const redirects = hostsToRedirect.map(host => ({
   permanent: true,
 }))
 
+const ContentSecurityPolicy = `
+  default-src 'self';
+  script-src 'self';
+  child-src 'self';
+  style-src 'self';
+  font-src 'self';
+  report-uri /csp-violation-report-endpoint/  
+`
+
 const securityHeaders = [
   {
     key: 'Strict-Transport-Security',
@@ -29,6 +38,10 @@ const securityHeaders = [
   {
     key: 'X-Content-Type-Options',
     value: 'nosniff',
+  },
+  {
+    key: 'Content-Security-Policy',
+    value: ContentSecurityPolicy.replace(/\s{2,}/g, ' ').trim(),
   },
 ]
 
