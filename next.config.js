@@ -16,6 +16,7 @@ const redirects = hostsToRedirect.map(host => ({
 const ContentSecurityPolicy = `
   default-src 'self';
   script-src 'self';
+  img-src 'self';
   child-src 'self';
   style-src 'unsafe-inline';
   font-src https://fonts.gstatic.com;
