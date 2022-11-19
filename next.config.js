@@ -16,8 +16,9 @@ const redirects = hostsToRedirect.map(host => ({
 const ContentSecurityPolicy = `
   default-src 'self';
   connect-src *.cleverapps.io;
+  worker-src *.cleverapps.io;
   script-src 'self';
-  img-src 'self' data:;
+  img-src 'self' data: *.cleverapps.io;
   child-src 'self';
   style-src 'unsafe-inline';
   font-src https://fonts.gstatic.com;
