@@ -18,7 +18,7 @@ const ContentSecurityPolicy = `
   script-src 'self';
   child-src 'self';
   style-src 'unsafe-inline';
-  font-src 'self';
+  font-src 'unsafe-inline';
   report-uri /csp-violation-report-endpoint/  
 `
 
