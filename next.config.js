@@ -15,7 +15,7 @@ const redirects = hostsToRedirect.map(host => ({
 
 const ContentSecurityPolicy = `
   default-src 'self';
-  connect-src *.cleverapps.io *.conso.gouv.fr ${process.env.NEXT_PUBLIC_API_BASE_URL};
+  connect-src https://api-adresse.data.gouv.fr ${process.env.NEXT_PUBLIC_API_BASE_URL} ${process.env.NEXT_PUBLIC_API_BASE_URL};
   worker-src *.cleverapps.io *.conso.gouv.fr blob:;
   script-src-elem blob:;
   script-src 'self';
