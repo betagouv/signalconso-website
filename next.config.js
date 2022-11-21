@@ -14,13 +14,16 @@ const redirects = hostsToRedirect.map(host => ({
 }))
 
 const ContentSecurityPolicy = `
-  default-src 'self';
+  default-src 'none';
+  base-uri 'self';
+  form-action 'self'
   connect-src https://api-adresse.data.gouv.fr  ${process.env.NEXT_PUBLIC_APP_BASE_URL} ${process.env.NEXT_PUBLIC_API_BASE_URL} ${process.env.NEXT_PUBLIC_COMPANY_API_BASE_URL};
   worker-src *.cleverapps.io *.conso.gouv.fr blob:;
   script-src-elem ${process.env.NEXT_PUBLIC_APP_BASE_URL} blob:;
   script-src 'self' eval:;
   img-src 'self' data: ${process.env.NEXT_PUBLIC_APP_BASE_URL} ${process.env.NEXT_PUBLIC_API_BASE_URL} ${process.env.NEXT_PUBLIC_COMPANY_API_BASE_URL} *.cellar-c2.services.clever-cloud.com;
-  frame-src https://stats.data.gouv.fr/;
+  frame-src https://stats.data.gouv.fr/ https://www.youtube-nocookie.com;
+  frame-ancestors 'self';
   child-src 'self';
   style-src 'unsafe-inline';
   font-src https://fonts.gstatic.com;
