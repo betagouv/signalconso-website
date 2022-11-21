@@ -14,6 +14,7 @@ const redirects = hostsToRedirect.map(host => ({
 }))
 
 const ContentSecurityPolicy = `
+  object-src 'none';
   base-uri 'self';
   form-action 'self';
   connect-src 'self' https://api-adresse.data.gouv.fr ${process.env.NEXT_PUBLIC_API_BASE_URL} ${process.env.NEXT_PUBLIC_COMPANY_API_BASE_URL};
