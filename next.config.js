@@ -14,7 +14,7 @@ const redirects = hostsToRedirect.map(host => ({
 }))
 
 const ContentSecurityPolicy =
-  process.env.NEXT_PUBLIC_NODE_ENV == 'development'
+  process.env.NEXT_PUBLIC_NODE_ENV === 'development'
     ? ''
     : `
   default-src 'self';
