@@ -1,7 +1,5 @@
 /** @type {import('next').NextConfig} */
 
-import {appConfig} from './src/conf/appConfig'
-
 // TRELLO-1393 the published files of react-hook-form seem not to be transpiled
 // to a low enough version of javascript
 // They use the object spread syntax { ... }, not supported by Safari 10
@@ -17,7 +15,7 @@ const redirects = hostsToRedirect.map(host => ({
 
 const ContentSecurityPolicy = `
   default-src 'self';
-  connect-src *.cleverapps.io *.conso.gouv.fr ${appConfig.apiBaseUrl};
+  connect-src *.cleverapps.io *.conso.gouv.fr ${process.env.NEXT_PUBLIC_API_BASE_URL};
   worker-src *.cleverapps.io *.conso.gouv.fr blob:;
   script-src-elem blob:;
   script-src 'self';
