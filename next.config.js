@@ -20,6 +20,7 @@ const ContentSecurityPolicy = `
   script-src-elem ${process.env.NEXT_PUBLIC_APP_BASE_URL} blob:;
   script-src 'self' eval:;
   img-src 'self' data: ${process.env.NEXT_PUBLIC_APP_BASE_URL} ${process.env.NEXT_PUBLIC_API_BASE_URL} ${process.env.NEXT_PUBLIC_COMPANY_API_BASE_URL} *.cellar-c2.services.clever-cloud.com;
+  frame-src https://stats.data.gouv.fr/;
   child-src 'self';
   style-src 'unsafe-inline';
   font-src https://fonts.gstatic.com;
