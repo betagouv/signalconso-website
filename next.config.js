@@ -17,7 +17,7 @@ const ContentSecurityPolicy =
   process.env.NEXT_PUBLIC_NODE_ENV === 'development'
     ? ''
     : `
-  default-src 'self' https://stats.data.gouv.fr;
+  default-src 'self' https://stats.data.gouv.fr *.aticdn.net ;
   connect-src 'self' *.sentry.io https://api-adresse.data.gouv.fr ${process.env.NEXT_PUBLIC_API_BASE_URL} ${process.env.NEXT_PUBLIC_COMPANY_API_BASE_URL};
   worker-src 'self' ${process.env.NEXT_PUBLIC_API_BASE_URL} ${process.env.NEXT_PUBLIC_COMPANY_API_BASE_URL} blob:;
   img-src 'self' data: ${process.env.NEXT_PUBLIC_APP_BASE_URL} ${process.env.NEXT_PUBLIC_API_BASE_URL} *.cellar-c2.services.clever-cloud.com;
