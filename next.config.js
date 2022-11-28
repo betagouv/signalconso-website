@@ -1,4 +1,4 @@
-/** @type {import('next').NextConfig} */
+/** @type {import("next").NextConfig} */
 
 // TRELLO-1393 the published files of react-hook-form seem not to be transpiled
 // to a low enough version of javascript
@@ -13,21 +13,30 @@ const redirects = hostsToRedirect.map(host => ({
   permanent: true,
 }))
 
+//TRELLO-1522 : Implement security headers as DGCCRF is monitoring the website via https://observatory.mozilla.org/
+// See https://nextjs.org/docs/advanced-features/security-headers for implementation details
+
+const CommonContentSecurityPolicy = [
+  `default-src 'self' *.data.gouv.fr *.aticdn.net ;`,
+  `connect-src 'self' *.sentry.io *.data.gouv.fr ${process.env.NEXT_PUBLIC_API_BASE_URL} ${process.env.NEXT_PUBLIC_COMPANY_API_BASE_URL};`,
+  `worker-src \'self\' ${process.env.NEXT_PUBLIC_API_BASE_URL} ${process.env.NEXT_PUBLIC_COMPANY_API_BASE_URL} blob:;`,
+  `img-src 'self' data: ${process.env.NEXT_PUBLIC_APP_BASE_URL} ${process.env.NEXT_PUBLIC_API_BASE_URL} *.cellar-c2.services.clever-cloud.com *.xiti.com;`,
+  `frame-src *.data.gouv.fr/ https://www.youtube-nocookie.com;`,
+  `frame-ancestors 'self';`,
+  `child-src 'self';`,
+  `style-src 'unsafe-inline';`,
+  `font-src https://fonts.gstatic.com;`,
+  `report-uri /csp-violation-report-endpoint/;`,
+]
+
 const ContentSecurityPolicy =
   process.env.NEXT_PUBLIC_NODE_ENV === 'development'
-    ? ''
-    : `
-  default-src 'self' *.data.gouv.fr *.aticdn.net ;
-  connect-src 'self' *.sentry.io *.data.gouv.fr ${process.env.NEXT_PUBLIC_API_BASE_URL} ${process.env.NEXT_PUBLIC_COMPANY_API_BASE_URL};
-  worker-src 'self' ${process.env.NEXT_PUBLIC_API_BASE_URL} ${process.env.NEXT_PUBLIC_COMPANY_API_BASE_URL} blob:;
-  img-src 'self' data: ${process.env.NEXT_PUBLIC_APP_BASE_URL} ${process.env.NEXT_PUBLIC_API_BASE_URL} *.cellar-c2.services.clever-cloud.com *.xiti.com;
-  frame-src *.data.gouv.fr/ https://www.youtube-nocookie.com;
-  frame-ancestors 'self';
-  child-src 'self';
-  style-src 'unsafe-inline';
-  font-src https://fonts.gstatic.com;
-  report-uri /csp-violation-report-endpoint/  
-`
+    ? CommonContentSecurityPolicy.concat([
+        //https://github.com/vercel/next.js/issues/14221 need unsafe eval for next js to work in dev env...
+        `script-src 'self' 'unsafe-eval';`,
+        `style-src-elem 'self' 'unsafe-inline' https://fonts.googleapis.com;`,
+      ])
+    : CommonContentSecurityPolicy
 
 const securityHeaders = [
   {
@@ -48,7 +57,7 @@ const securityHeaders = [
   },
   {
     key: 'Content-Security-Policy',
-    value: ContentSecurityPolicy.replace(/\s{2,}/g, ' ').trim(),
+    value: ContentSecurityPolicy.join(' '),
   },
 ]
 
