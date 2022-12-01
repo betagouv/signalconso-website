@@ -17,7 +17,7 @@ const redirects = hostsToRedirect.map(host => ({
 // See https://nextjs.org/docs/advanced-features/security-headers for implementation details
 
 const CommonContentSecurityPolicy = [
-  `default-src 'self' *.data.gouv.fr *.aticdn.net;`,
+  `default-src 'self'`,
   `connect-src 'self' *.sentry.io *.data.gouv.fr ${process.env.NEXT_PUBLIC_API_BASE_URL} ${process.env.NEXT_PUBLIC_COMPANY_API_BASE_URL};`,
   `worker-src \'self\' ${process.env.NEXT_PUBLIC_API_BASE_URL} ${process.env.NEXT_PUBLIC_COMPANY_API_BASE_URL} blob:;`,
   `img-src 'self' data: ${process.env.NEXT_PUBLIC_APP_BASE_URL} ${process.env.NEXT_PUBLIC_API_BASE_URL} *.cellar-c2.services.clever-cloud.com *.xiti.com;`,
@@ -27,7 +27,7 @@ const CommonContentSecurityPolicy = [
   `style-src 'unsafe-inline';`,
   `font-src https://fonts.gstatic.com;`,
   `report-uri /csp-violation-report-endpoint/;`,
-  `script-src-elem 'self' blob:;`,
+  `script-src-elem 'self' blob:; *.aticdn.net; *.data.gouv.fr`,
 ]
 
 const ContentSecurityPolicy =
