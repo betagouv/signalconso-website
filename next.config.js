@@ -27,7 +27,7 @@ const CommonContentSecurityPolicy = [
   `style-src 'unsafe-inline';`,
   `font-src https://fonts.gstatic.com;`,
   `report-uri /csp-violation-report-endpoint/;`,
-  `script-src-elem 'self' blob: *.aticdn.net; *.data.gouv.fr;`,
+  `script-src-elem 'self' blob: *.aticdn.net *.data.gouv.fr;`,
 ]
 
 const ContentSecurityPolicy =
