@@ -33,6 +33,7 @@ export const CompanyByWebsite = ({value, children, ...props}: Props) => {
   const {toastError} = useToast()
   const {
     getValues,
+    setValue,
     handleSubmit,
     register,
     reset,
@@ -43,7 +44,7 @@ export const CompanyByWebsite = ({value, children, ...props}: Props) => {
     _searchCompany.clearCache()
     _searchCountry.clearCache()
     const res = await _searchCompany.fetch({clean: true, force: true}, form.website)
-    if (res.length === 0) {
+    if (res.exactMatch.length === 0 && res.similarHosts.length === 0) {
       await _searchCountry.fetch({clean: true, force: true}, form.website)
     }
     _analytic.trackEvent(EventCategories.companySearch, CompanySearchEventActions.searchByUrl, form.website)
@@ -89,7 +90,38 @@ export const CompanyByWebsite = ({value, children, ...props}: Props) => {
                 error={!!errors.website}
                 helperText={errors.website?.message}
               />
-
+              {(() => {
+                if (
+                  _searchCompany.entity &&
+                  _searchCompany.entity.exactMatch.length == 0 &&
+                  _searchCompany.entity.similarHosts.length > 0
+                ) {
+                  return (
+                    <>
+                      {' '}
+                      Essayer avec :
+                      {_searchCompany.entity.similarHosts.map((website, i) => {
+                        return (
+                          <b key={i}>
+                            <ScButton
+                              type="submit"
+                              onClick={_ => {
+                                _searchCompany.clearCache()
+                                reset()
+                                setValue('website', website)
+                                submit({website})
+                              }}
+                            >
+                              {website}
+                            </ScButton>
+                          </b>
+                        )
+                      })}
+                      <br />
+                    </>
+                  )
+                }
+              })()}
               <ScButton
                 variant="contained"
                 color="primary"
@@ -110,8 +142,8 @@ export const CompanyByWebsite = ({value, children, ...props}: Props) => {
           if (_searchCountry.entity && _searchCountry.entity.length > 0) {
             return children(website, undefined, _searchCountry.entity)
           }
-          if (_searchCompany.entity) {
-            return children(website, _searchCompany.entity)
+          if (_searchCompany.entity && _searchCompany.entity.exactMatch.length > 0) {
+            return children(website, _searchCompany.entity.exactMatch)
           }
         }
       })()}

@@ -13,6 +13,11 @@ export interface CompanySearchResult {
   isMarketPlace: boolean
 }
 
+export interface WebsiteCompanySearchResult {
+  exactMatch: CompanySearchResult[]
+  similarHosts: string[]
+}
+
 export interface Company {
   id: Id
   siret: string
