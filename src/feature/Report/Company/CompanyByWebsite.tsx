@@ -40,6 +40,8 @@ export const CompanyByWebsite = ({value, children, ...props}: Props) => {
     formState: {errors},
   } = useForm<Form>()
 
+  useEffectFn(_searchCompany.error, toastError)
+
   const submit = async (form: Form) => {
     _searchCompany.clearCache()
     _searchCountry.clearCache()
@@ -50,7 +52,37 @@ export const CompanyByWebsite = ({value, children, ...props}: Props) => {
     _analytic.trackEvent(EventCategories.companySearch, CompanySearchEventActions.searchByUrl, form.website)
   }
 
-  useEffectFn(_searchCompany.error, toastError)
+  const clearWebsite = () => {
+    _searchCompany.clearCache()
+    reset()
+  }
+
+  const SimilarHosts = () => {
+    if (_searchCompany.entity && _searchCompany.entity.exactMatch.length == 0 && _searchCompany.entity.similarHosts.length > 0) {
+      return (
+        <>
+          Essayer avec
+          {_searchCompany.entity.similarHosts.map((website, key) => {
+            return (
+              <b key={key}>
+                <ScButton
+                  type="submit"
+                  onClick={_ => {
+                    clearWebsite()
+                    setValue('website', website)
+                    submit({website})
+                  }}
+                >
+                  {website}
+                </ScButton>
+              </b>
+            )
+          })}
+          <br />
+        </>
+      )
+    } else return <></>
+  }
 
   return (
     <>
@@ -72,10 +104,7 @@ export const CompanyByWebsite = ({value, children, ...props}: Props) => {
                     </Tooltip>
                   ),
                 }}
-                onClear={() => {
-                  _searchCompany.clearCache()
-                  reset()
-                }}
+                onClear={clearWebsite}
                 defaultValue={value}
                 disabled={!!_searchCompany.entity}
                 {...register('website', {
@@ -90,38 +119,38 @@ export const CompanyByWebsite = ({value, children, ...props}: Props) => {
                 error={!!errors.website}
                 helperText={errors.website?.message}
               />
-              {(() => {
-                if (
-                  _searchCompany.entity &&
-                  _searchCompany.entity.exactMatch.length == 0 &&
-                  _searchCompany.entity.similarHosts.length > 0
-                ) {
-                  return (
-                    <>
-                      {' '}
-                      Essayer avec :
-                      {_searchCompany.entity.similarHosts.map((website, i) => {
-                        return (
-                          <b key={i}>
-                            <ScButton
-                              type="submit"
-                              onClick={_ => {
-                                _searchCompany.clearCache()
-                                reset()
-                                setValue('website', website)
-                                submit({website})
-                              }}
-                            >
-                              {website}
-                            </ScButton>
-                          </b>
-                        )
-                      })}
-                      <br />
-                    </>
-                  )
-                }
-              })()}
+              {/*{(() => {*/}
+              {/*  if (*/}
+              {/*    _searchCompany.entity &&*/}
+              {/*    _searchCompany.entity.exactMatch.length == 0 &&*/}
+              {/*    _searchCompany.entity.similarHosts.length > 0*/}
+              {/*  ) {*/}
+              {/*    return (*/}
+              {/*      <>*/}
+              {/*        Essayer avec*/}
+              {/*        {_searchCompany.entity.similarHosts.map((website, i) => {*/}
+              {/*          return (*/}
+              {/*            <b key={i}>*/}
+              {/*              <ScButton*/}
+              {/*                type="submit"*/}
+              {/*                onClick={_ => {*/}
+              {/*                  _searchCompany.clearCache()*/}
+              {/*                  reset()*/}
+              {/*                  setValue('website', website)*/}
+              {/*                  submit({website})*/}
+              {/*                }}*/}
+              {/*              >*/}
+              {/*                {website}*/}
+              {/*              </ScButton>*/}
+              {/*            </b>*/}
+              {/*          )*/}
+              {/*        })}*/}
+              {/*        <br />*/}
+              {/*      </>*/}
+              {/*    )*/}
+              {/*  }*/}
+              {/*})()}*/}
+              <SimilarHosts />
               <ScButton
                 variant="contained"
                 color="primary"
@@ -142,7 +171,10 @@ export const CompanyByWebsite = ({value, children, ...props}: Props) => {
           if (_searchCountry.entity && _searchCountry.entity.length > 0) {
             return children(website, undefined, _searchCountry.entity)
           }
-          if (_searchCompany.entity && _searchCompany.entity.exactMatch.length > 0) {
+          if (
+            _searchCompany.entity &&
+            (_searchCompany.entity.exactMatch.length > 0 || _searchCompany.entity.similarHosts.length == 0)
+          ) {
             return children(website, _searchCompany.entity.exactMatch)
           }
         }
