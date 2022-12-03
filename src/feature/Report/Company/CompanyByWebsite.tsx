@@ -119,37 +119,6 @@ export const CompanyByWebsite = ({value, children, ...props}: Props) => {
                 error={!!errors.website}
                 helperText={errors.website?.message}
               />
-              {/*{(() => {*/}
-              {/*  if (*/}
-              {/*    _searchCompany.entity &&*/}
-              {/*    _searchCompany.entity.exactMatch.length == 0 &&*/}
-              {/*    _searchCompany.entity.similarHosts.length > 0*/}
-              {/*  ) {*/}
-              {/*    return (*/}
-              {/*      <>*/}
-              {/*        Essayer avec*/}
-              {/*        {_searchCompany.entity.similarHosts.map((website, i) => {*/}
-              {/*          return (*/}
-              {/*            <b key={i}>*/}
-              {/*              <ScButton*/}
-              {/*                type="submit"*/}
-              {/*                onClick={_ => {*/}
-              {/*                  _searchCompany.clearCache()*/}
-              {/*                  reset()*/}
-              {/*                  setValue('website', website)*/}
-              {/*                  submit({website})*/}
-              {/*                }}*/}
-              {/*              >*/}
-              {/*                {website}*/}
-              {/*              </ScButton>*/}
-              {/*            </b>*/}
-              {/*          )*/}
-              {/*        })}*/}
-              {/*        <br />*/}
-              {/*      </>*/}
-              {/*    )*/}
-              {/*  }*/}
-              {/*})()}*/}
               <SimilarHosts />
               <ScButton
                 variant="contained"
