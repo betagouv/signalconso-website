@@ -1,7 +1,7 @@
 import {ReportStep, ReportStepHelper} from 'core/reportStep'
 import randomstring from 'randomstring'
 import {Report, ReportStatus} from '../client/report/Report'
-import {Company, CompanySearchResult} from '../client/company/Company'
+import {Company, CompanySearchResult, WebsiteCompanySearchResult} from '../client/company/Company'
 import {FileOrigin} from '../client/file/UploadedFile'
 import {ReportDraft, ReportDraftConsumer} from '../client/report/ReportDraft'
 import {Information, ReportTag, Subcategory} from '../anomaly/Anomaly'
@@ -162,9 +162,14 @@ export class Fixture {
   }
 
   static readonly genCompanySearchResult = () => {
-    return <CompanySearchResult>{
-      name: randomstring.generate({capitalization: 'lowercase', charset: 'alphabetic', length: 8}),
-      address: Fixture.genAddress(),
+    return <WebsiteCompanySearchResult>{
+      exactMatch: [
+        <CompanySearchResult>{
+          name: randomstring.generate({capitalization: 'lowercase', charset: 'alphabetic', length: 8}),
+          address: Fixture.genAddress(),
+        },
+      ],
+      similarHosts: [],
     }
   }
 

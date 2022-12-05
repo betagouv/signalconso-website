@@ -49,6 +49,14 @@ describe('Problem', () => {
         rating: {
           rate: (...args: any[]) => Promise.resolve(),
         } as any,
+        website: {
+          searchForeignCompaniesByUrl: (url: string) => Promise.resolve([]),
+          searchCompaniesByUrl: (url: string) =>
+            Promise.resolve({
+              exactMatch: [],
+              similarHosts: [],
+            }),
+        },
       },
     })
     fireEvent.click(app.getByText(ProblemFixture.infoSubcategory.title))
