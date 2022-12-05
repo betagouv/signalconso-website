@@ -10,6 +10,7 @@ import {fnSwitch} from '../../../alexlibs/ts-utils'
 import {Fixture} from '../../../test/fixture'
 import {waitFor} from '@testing-library/dom'
 import {CompanyKinds} from '../../../anomaly/Anomaly'
+import {CompanySearchResult, WebsiteCompanySearchResult} from '../../../client/company/Company'
 
 describe('Details: single date not in future', () => {
   let app: ScRenderResult
@@ -48,10 +49,13 @@ describe('Details: single date not in future', () => {
                   fnSwitch(
                     url,
                     {
-                      'known.site': [Fixture.genCompanySearchResult()],
-                      'marketplace.site': [Fixture.genCompanySearchResult()],
+                      'known.site': Fixture.genCompanySearchResult(),
+                      'marketplace.site': Fixture.genCompanySearchResult(),
                     },
-                    () => [],
+                    () => ({
+                      exactMatch: [],
+                      similarHosts: [],
+                    }),
                   ),
                 ),
             },
@@ -88,6 +92,11 @@ describe('Details: single date not in future', () => {
           apiSdkMock: {
             website: {
               searchForeignCompaniesByUrl: (url: string) => Promise.resolve([]),
+              searchCompaniesByUrl: (url: string) =>
+                Promise.resolve({
+                  exactMatch: [],
+                  similarHosts: [],
+                }),
             },
           },
           companyApiSdk: {
