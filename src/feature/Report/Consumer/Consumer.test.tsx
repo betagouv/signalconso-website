@@ -23,6 +23,14 @@ describe('Consumer', () => {
       consumerEmail: {
         check: () => Promise.resolve({valid: true}),
       },
+      website: {
+        searchForeignCompaniesByUrl: (url: string) => Promise.resolve([]),
+        searchCompaniesByUrl: (url: string) =>
+          Promise.resolve({
+            exactMatch: [],
+            similarHosts: [],
+          }),
+      },
     },
   }
   let app: ScRenderResult
