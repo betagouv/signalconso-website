@@ -82,7 +82,1657 @@
           example: Constat d'un défaut résultant d'une mauvaise exécution des travaux
         - title: Autre
     - title: Autre
-- title: Travaux / rénovation
+- title: Rénovation énergétique
+  example: "Un professionnel vous a appelé pour vous proposer l'installation d'équipements ou la réalisation de travaux de rénovation énergétiques. Vous faites appel à un professionnel pour l'installation d'équipement ou la réalisation de travaux de rénovation énergétique (isolation, installation d'un système de chauffage, panneau solaire)"
+  subcategories:
+    - title: Démarchage téléphonique
+        companyKind: PHONE
+        reponseconsoCode:
+          - '221'
+        tags:
+        #            - ReponseConso
+          - DemarchageTelephonique
+        detailInputs:
+          - label: Date de l'appel
+            type: DATE
+            defaultValue: SYSDATE
+          - label: Est-ce que le vendeur s'est fait passer pour une autre entreprise&#160;?
+            type: RADIO
+            options:
+              - Non
+              - Oui (à préciser)
+          - label: Décrivez nous plus en détails ce qui s'est passé
+            type: TEXTAREA
+    - title: Audit énergétique
+      subcategories:
+      - title: Prix
+        example: 'Exemple : prix non affiché, devis non respecté'
+        ccrfCode:
+          - '21B'
+        tags:
+         - LitigeContractuel
+        subcategories:
+          - title: Prix exagéré / élevé
+            information:
+              title: Ceci ne constitue pas un motif de signalement.
+              content: Les professionnels ont le droit de choisir leurs prix.
+                <br />Par contre, les prix doivent être clairement indiqués pour que vous soyez au courant avant d'acheter ou de commander.
+              outOfScope: true
+          - title: Prix final non conforme au prix annoncé
+            reponseconsoCode:
+              - '451'
+            tags:
+              - ReponseConso
+          - title: Prix non affiché
+            reponseconsoCode:
+              - '212'
+            tags:
+              - ReponseConso
+      - title: Publicité et pratique du professionnel
+        example: "Exemple : absence d'information, information trompeuse ou mensongère, démarchage"
+        tags:
+          - LitigeContractuel
+        ccrfCode:
+          - '23B'
+        subcategories:
+          - title: Absence d'information ou information incomplète
+            tags:
+              - LitigeContractuel
+              - ReponseConso
+            subcategories:
+              - title: Caractéristiques techniques des produits non précisées
+                reponseconsoCode:
+                  - '411'
+              - title: Prix indiqué de manière globale et non détaillée
+                reponseconsoCode:
+                  - '411'
+                  - '212'
+              - title: Date de livraison des produits ou réalisation des travaux non précisée
+                reponseconsoCode:
+                  - '414'
+                  - '413'
+              - title: Autre
+                reponseconsoCode:
+                  - '411'
+          - title: Démarchage à domicile
+            companyKind: LOCATION
+            reponseconsoCode:
+              - '221'
+            tags:
+              - ReponseConso
+              - DemarchageADomicile
+            detailInputs:
+              - label: Que s'est-il passé ?
+                type: RADIO
+                options:
+                  - Le vendeur s'est fait passer pour une autre entreprise (à préciser)
+                  - Le vendeur m'a fait signer des papiers sans me dire que c'était un contrat ou un bon de commande.
+                  - Autre (à préciser)
+              - label: Avez-vous payé au moment du démarchage&#160;?
+                type: RADIO
+                options:
+                  - Oui
+                  - Non
+              - label: Date du démarchage
+                type: DATE
+                defaultValue: SYSDATE
+          - title: Information mensongère ou trompeuse
+            reponseconsoCode:
+              - '210'
+            subcategories:
+              - title: Mise en avant d'un label ou d'un signe de qualité non ou plus détenu
+                tags:
+                  - ReponseConso
+                detailInputs:
+                  - label: Qu'est-ce qui est trompeur ou mensonger&#160;?
+                    type: RADIO
+                    options:
+                      - Le discours du professionnel
+                      - Le site internet
+                      - Les documents mis à votre disposition par le professionnel (flyer, plaquette de présentation...)
+                      - Autre (à préciser)
+                  - label: Description
+                    type: TEXTAREA
+                  - label: Date du constat
+                    type: DATE
+                    defaultValue: SYSDATE
+                  - label: Heure du constat (facultatif)
+                    type: TIMESLOT
+                    optional: true
+              - title: Référence abusive à des partenariats avec l'État ou de grandes entreprises d'énergie
+                tags:
+                  - ReponseConso
+                detailInputs:
+                  - label: Qu'est-ce qui est trompeur ou mensonger&#160;?
+                    type: RADIO
+                    options:
+                      - Le discours du professionnel
+                      - Le site internet
+                      - Les documents mis à votre disposition par le professionnel (flyer, plaquette de présentation...)
+                      - Autre (à préciser)
+                  - label: Description
+                    type: TEXTAREA
+                  - label: Date du constat
+                    type: DATE
+                    defaultValue: SYSDATE
+                  - label: Heure du constat (facultatif)
+                    type: TIMESLOT
+                    optional: true
+              - title: Utilisation de termes laissant croire qu'il s'agit d'une structure publique
+                tags:
+                  - ReponseConso
+                detailInputs:
+                  - label: Qu'est-ce qui est trompeur ou mensonger&#160;?
+                    type: RADIO
+                    options:
+                      - Le discours du professionnel
+                      - Le site internet
+                      - Les documents mis à votre disposition par le professionnel (flyer, plaquette de présentation...)
+                      - Autre (à préciser)
+                  - label: Description
+                    type: TEXTAREA
+                  - label: Date du constat
+                    type: DATE
+                    defaultValue: SYSDATE
+                  - label: Heure du constat (facultatif)
+                    type: TIMESLOT
+                    optional: true
+              - title: Usurpation d'identité de la part du professionnel
+                tags:
+                  - ReponseConso
+                detailInputs:
+                  - label: Qu'est-ce qui est trompeur ou mensonger&#160;?
+                    type: RADIO
+                    options:
+                      - Le discours du professionnel
+                      - Le site internet
+                      - Les documents mis à votre disposition par le professionnel (flyer, plaquette de présentation...)
+                      - Autre (à préciser)
+                  - label: Description
+                    type: TEXTAREA
+                  - label: Date du constat
+                    type: DATE
+                    defaultValue: SYSDATE
+                  - label: Heure du constat (facultatif)
+                    type: TIMESLOT
+                    optional: true
+              - title: Présentation des travaux comme étant obligatoires
+                tags:
+                  - ReponseConso
+                detailInputs:
+                  - label: Qu'est-ce qui est trompeur ou mensonger&#160;?
+                    type: RADIO
+                    options:
+                      - Le discours du professionnel
+                      - Le site internet
+                      - Les documents mis à votre disposition par le professionnel (flyer, plaquette de présentation...)
+                      - Autre (à préciser)
+                  - label: Description
+                    type: TEXTAREA
+                  - label: Date du constat
+                    type: DATE
+                    defaultValue: SYSDATE
+                  - label: Heure du constat (facultatif)
+                    type: TIMESLOT
+                    optional: true
+              - title: Promesse d'économies d'énergie surestimées
+                tags:
+                  - ReponseConso
+                detailInputs:
+                  - label: Qu'est-ce qui est trompeur ou mensonger&#160;?
+                    type: RADIO
+                    options:
+                      - Le discours du professionnel
+                      - Le site internet
+                      - Les documents mis à votre disposition par le professionnel (flyer, plaquette de présentation...)
+                      - Autre (à préciser)
+                  - label: Description
+                    type: TEXTAREA
+                  - label: Date du constat
+                    type: DATE
+                    defaultValue: SYSDATE
+                  - label: Heure du constat (facultatif)
+                    type: TIMESLOT
+                    optional: true
+              - title: Autre
+                detailInputs:
+                  - label: Qu'est-ce qui est trompeur ou mensonger&#160;?
+                    type: RADIO
+                    options:
+                      - Le discours du professionnel
+                      - Le site internet
+                      - Les documents mis à votre disposition par le professionnel (flyer, plaquette de présentation...)
+                      - Autre (à préciser)
+                  - label: À propos de quoi est-ce trompeur&#160;?
+                    type: RADIO
+                    options:
+                      - Le prix
+                      - La nature des travaux
+                      - Les qualités et aptitudes du professionnel (artisans, normes...)
+                  - label: Description
+                    type: TEXTAREA
+                  - label: Date du constat
+                    type: DATE
+                    defaultValue: SYSDATE
+                  - label: Heure du constat (facultatif)
+                    type: TIMESLOT
+                    optional: true
+          - title: Contrainte du professionnel
+            reponseconsoCode:
+              - '210'
+            detailInputs:
+              - label: Précisez les informations sur le contexte
+                type: TEXTAREA
+              - label: Date du constat
+                type: DATE
+                defaultValue: SYSDATE
+              - label: Heure du constat (facultatif)
+                type: TIMESLOT
+                optional: true             
+          - title: Autre
+      - title: Prestation
+        example: 'Exemple : malfaçons sur le chantier, travaux commencés mais jamais terminés'
+        subcategories:
+          - title: Malfaçon
+            example: Constat d'un défaut résultant d'une mauvaise exécution des travaux
+            reponseconsoCode:
+              - '446'
+          - title: Les travaux ne sont toujours pas terminés
+            reponseconsoCode:
+              - '443'
+            tags:
+              - LitigeContractuel
+      - title: Contrat
+        example: 'Exemple : contrat non respecté, délai de rétractation, clause abusive'
+        subcategories:
+          - title: Droit de rétractation
+            example: Une fois le contrat signé, vous souhaitez revenir en arrière
+            subcategoriesTitle: Où avez-vous signé le contrat ?
+            subcategories:
+              - title: À votre domicile
+                example: Un démarcheur est venu chez vous
+                tags:
+                  - ReponseConso
+                reponseconsoCode:
+                  - '2213'
+                  - '2214'
+              - title: À distance
+                example: 'Exemple : sur internet'
+                tags:
+                  - ReponseConso
+                reponseconsoCode:
+                  - '2213'
+                  - '2214'
+              - title: Au lieu habituel d'activité du professionnel
+                information:
+                  title: Vous ne pouvez plus vous retracter
+                  content: Il n'y a pas de délai de rétractation pour votre cas.
+                  outOfScope: true
+              - title: Sur un stand dans une foire ou salon
+                subcategoriesTitle: Avez-vous un crédit affecté ?
+                subcategories:
+                  - title: Non
+                    information:
+                      title: Vous ne pouvez plus vous retracter
+                      content: Il n'y a pas de délai de rétractation pour votre cas.
+                      outOfScope: true
+                  - title: Oui
+                    reponseconsoCode:
+                      - '2206'
+                      - '2214'
+                      - '2213'
+          - title: Contrat non respecté
+            reponseconsoCode:
+              - '443'
+            tags:
+              - LitigeContractuel
+          - title: Clause abusive
+            example: Vous souhaitez dénoncer une clause qui vous est particulièrement défavorable
+            reponseconsoCode:
+              - '214'
+            tags:
+              - ReponseConso
+              - LitigeContractuel
+          - title: Autre
+            tags:
+              - LitigeContractuel
+      - title: Crédits pour les travaux / garanties
+        example: "Défaut d'information, absence de remise du contrat de crédit, engagement financier mensuel supérieur à celui annoncé par le vendeur, annonce d'autofinancement de l'installation"
+        tags:
+          - LitigeContractuel
+        subcategories:
+          - title: Crédit financé pour vos travaux
+            example: Crédit affecté au contrat de travaux / rénovation
+            subcategories:
+              - title: Absence d'informations
+                tags:
+                  - ReponseConso
+                subcategories:
+                  - title: Avant la souscription
+                    reponseconsoCode:
+                      - '2406'
+                      - '411'
+                  - title: Vous ne saviez pas que vous vous engagiez
+                    reponseconsoCode:
+                      - '2206'
+                      - '210'
+              - title: Autre
+          - title: Garanties
+            reponseconsoCode:
+              - '469'
+            subcategories:
+              - title: Garantie de parfait achèvement
+              - title: Garantie biennale
+              - title: Garantie décennale
+              - title: Responsabilité contractuelle de droit commun
+      - title: Autre
+        tags:
+          - LitigeContractuel
+    - title: chauffage
+      example: "Par exemple : pompe à chaleur, chauffage au bois, chauffe-eau thermodynamique"
+      subcategories:
+        - title: Prix
+          example: 'Exemple : prix non affiché, devis non respecté'
+          ccrfCode:
+            - '21B'
+          tags:
+          - LitigeContractuel
+          subcategories:
+            - title: Prix exagéré / élevé
+              information:
+                title: Ceci ne constitue pas un motif de signalement.
+                content: Les professionnels ont le droit de choisir leurs prix.
+                  <br />Par contre, les prix doivent être clairement indiqués pour que vous soyez au courant avant d'acheter ou de commander.
+                outOfScope: true
+            - title: Prix final non conforme au prix annoncé
+              reponseconsoCode:
+                - '451'
+              tags:
+                - ReponseConso
+            - title: Prix non affiché
+              reponseconsoCode:
+                - '212'
+              tags:
+                - ReponseConso
+        - title: Publicité et pratique du professionnel
+          example: "Exemple : absence d'information, information trompeuse ou mensongère, démarchage"
+          tags:
+            - LitigeContractuel
+          ccrfCode:
+            - '23B'
+          subcategories:
+            - title: Absence d'information ou information incomplète
+              tags:
+                - LitigeContractuel
+                - ReponseConso
+              subcategories:
+                - title: Caractéristiques techniques des produits non précisées
+                  reponseconsoCode:
+                    - '411'
+                - title: Prix indiqué de manière globale et non détaillée
+                  reponseconsoCode:
+                    - '411'
+                    - '212'
+                - title: Date de livraison des produits ou réalisation des travaux non précisée
+                  reponseconsoCode:
+                    - '414'
+                    - '413'
+                - title: Autre
+                  reponseconsoCode:
+                    - '411'
+            - title: Démarchage à domicile
+              companyKind: LOCATION
+              reponseconsoCode:
+                - '221'
+              tags:
+                - ReponseConso
+                - DemarchageADomicile
+              detailInputs:
+                - label: Que s'est-il passé ?
+                  type: RADIO
+                  options:
+                    - Le vendeur s'est fait passer pour une autre entreprise (à préciser)
+                    - Le vendeur m'a fait signer des papiers sans me dire que c'était un contrat ou un bon de commande.
+                    - Autre (à préciser)
+                - label: Avez-vous payé au moment du démarchage&#160;?
+                  type: RADIO
+                  options:
+                    - Oui
+                    - Non
+                - label: Date du démarchage
+                  type: DATE
+                  defaultValue: SYSDATE
+            - title: Information mensongère ou trompeuse
+              reponseconsoCode:
+                - '210'
+              subcategories:
+                - title: Mise en avant d'un label ou d'un signe de qualité non ou plus détenu
+                  tags:
+                    - ReponseConso
+                  detailInputs:
+                    - label: Qu'est-ce qui est trompeur ou mensonger&#160;?
+                      type: RADIO
+                      options:
+                        - Le discours du professionnel
+                        - Le site internet
+                        - Les documents mis à votre disposition par le professionnel (flyer, plaquette de présentation...)
+                        - Autre (à préciser)
+                    - label: Description
+                      type: TEXTAREA
+                    - label: Date du constat
+                      type: DATE
+                      defaultValue: SYSDATE
+                    - label: Heure du constat (facultatif)
+                      type: TIMESLOT
+                      optional: true
+                - title: Référence abusive à des partenariats avec l'État ou de grandes entreprises d'énergie
+                  tags:
+                    - ReponseConso
+                  detailInputs:
+                    - label: Qu'est-ce qui est trompeur ou mensonger&#160;?
+                      type: RADIO
+                      options:
+                        - Le discours du professionnel
+                        - Le site internet
+                        - Les documents mis à votre disposition par le professionnel (flyer, plaquette de présentation...)
+                        - Autre (à préciser)
+                    - label: Description
+                      type: TEXTAREA
+                    - label: Date du constat
+                      type: DATE
+                      defaultValue: SYSDATE
+                    - label: Heure du constat (facultatif)
+                      type: TIMESLOT
+                      optional: true
+                - title: Utilisation de termes laissant croire qu'il s'agit d'une structure publique
+                  tags:
+                    - ReponseConso
+                  detailInputs:
+                    - label: Qu'est-ce qui est trompeur ou mensonger&#160;?
+                      type: RADIO
+                      options:
+                        - Le discours du professionnel
+                        - Le site internet
+                        - Les documents mis à votre disposition par le professionnel (flyer, plaquette de présentation...)
+                        - Autre (à préciser)
+                    - label: Description
+                      type: TEXTAREA
+                    - label: Date du constat
+                      type: DATE
+                      defaultValue: SYSDATE
+                    - label: Heure du constat (facultatif)
+                      type: TIMESLOT
+                      optional: true
+                - title: Usurpation d'identité de la part du professionnel
+                  tags:
+                    - ReponseConso
+                  detailInputs:
+                    - label: Qu'est-ce qui est trompeur ou mensonger&#160;?
+                      type: RADIO
+                      options:
+                        - Le discours du professionnel
+                        - Le site internet
+                        - Les documents mis à votre disposition par le professionnel (flyer, plaquette de présentation...)
+                        - Autre (à préciser)
+                    - label: Description
+                      type: TEXTAREA
+                    - label: Date du constat
+                      type: DATE
+                      defaultValue: SYSDATE
+                    - label: Heure du constat (facultatif)
+                      type: TIMESLOT
+                      optional: true
+                - title: Présentation des travaux comme étant obligatoires
+                  tags:
+                    - ReponseConso
+                  detailInputs:
+                    - label: Qu'est-ce qui est trompeur ou mensonger&#160;?
+                      type: RADIO
+                      options:
+                        - Le discours du professionnel
+                        - Le site internet
+                        - Les documents mis à votre disposition par le professionnel (flyer, plaquette de présentation...)
+                        - Autre (à préciser)
+                    - label: Description
+                      type: TEXTAREA
+                    - label: Date du constat
+                      type: DATE
+                      defaultValue: SYSDATE
+                    - label: Heure du constat (facultatif)
+                      type: TIMESLOT
+                      optional: true
+                - title: Promesse d'économies d'énergie surestimées
+                  tags:
+                    - ReponseConso
+                  detailInputs:
+                    - label: Qu'est-ce qui est trompeur ou mensonger&#160;?
+                      type: RADIO
+                      options:
+                        - Le discours du professionnel
+                        - Le site internet
+                        - Les documents mis à votre disposition par le professionnel (flyer, plaquette de présentation...)
+                        - Autre (à préciser)
+                    - label: Description
+                      type: TEXTAREA
+                    - label: Date du constat
+                      type: DATE
+                      defaultValue: SYSDATE
+                    - label: Heure du constat (facultatif)
+                      type: TIMESLOT
+                      optional: true
+                - title: Autre
+                  detailInputs:
+                    - label: Qu'est-ce qui est trompeur ou mensonger&#160;?
+                      type: RADIO
+                      options:
+                        - Le discours du professionnel
+                        - Le site internet
+                        - Les documents mis à votre disposition par le professionnel (flyer, plaquette de présentation...)
+                        - Autre (à préciser)
+                    - label: À propos de quoi est-ce trompeur&#160;?
+                      type: RADIO
+                      options:
+                        - Le prix
+                        - La nature des travaux
+                        - Les qualités et aptitudes du professionnel (artisans, normes...)
+                    - label: Description
+                      type: TEXTAREA
+                    - label: Date du constat
+                      type: DATE
+                      defaultValue: SYSDATE
+                    - label: Heure du constat (facultatif)
+                      type: TIMESLOT
+                      optional: true
+            - title: Contrainte du professionnel
+              reponseconsoCode:
+                - '210'
+              detailInputs:
+                - label: Précisez les informations sur le contexte
+                  type: TEXTAREA
+                - label: Date du constat
+                  type: DATE
+                  defaultValue: SYSDATE
+                - label: Heure du constat (facultatif)
+                  type: TIMESLOT
+                  optional: true             
+            - title: Autre
+        - title: Prestation
+          example: 'Exemple : malfaçons sur le chantier, travaux commencés mais jamais terminés'
+          subcategories:
+            - title: Malfaçon
+              example: Constat d'un défaut résultant d'une mauvaise exécution des travaux
+              reponseconsoCode:
+                - '446'
+            - title: Les travaux ne sont toujours pas terminés
+              reponseconsoCode:
+                - '443'
+              tags:
+                - LitigeContractuel
+        - title: Contrat
+          example: 'Exemple : contrat non respecté, délai de rétractation, clause abusive'
+          subcategories:
+            - title: Droit de rétractation
+              example: Une fois le contrat signé, vous souhaitez revenir en arrière
+              subcategoriesTitle: Où avez-vous signé le contrat ?
+              subcategories:
+                - title: À votre domicile
+                  example: Un démarcheur est venu chez vous
+                  tags:
+                    - ReponseConso
+                  reponseconsoCode:
+                    - '2213'
+                    - '2214'
+                - title: À distance
+                  example: 'Exemple : sur internet'
+                  tags:
+                    - ReponseConso
+                  reponseconsoCode:
+                    - '2213'
+                    - '2214'
+                - title: Au lieu habituel d'activité du professionnel
+                  information:
+                    title: Vous ne pouvez plus vous retracter
+                    content: Il n'y a pas de délai de rétractation pour votre cas.
+                    outOfScope: true
+                - title: Sur un stand dans une foire ou salon
+                  subcategoriesTitle: Avez-vous un crédit affecté ?
+                  subcategories:
+                    - title: Non
+                      information:
+                        title: Vous ne pouvez plus vous retracter
+                        content: Il n'y a pas de délai de rétractation pour votre cas.
+                        outOfScope: true
+                    - title: Oui
+                      reponseconsoCode:
+                        - '2206'
+                        - '2214'
+                        - '2213'
+            - title: Contrat non respecté
+              reponseconsoCode:
+                - '443'
+              tags:
+                - LitigeContractuel
+            - title: Clause abusive
+              example: Vous souhaitez dénoncer une clause qui vous est particulièrement défavorable
+              reponseconsoCode:
+                - '214'
+              tags:
+                - ReponseConso
+                - LitigeContractuel
+            - title: Autre
+              tags:
+                - LitigeContractuel
+        - title: Crédits pour les travaux / garanties
+          example: "Défaut d'information, absence de remise du contrat de crédit, engagement financier mensuel supérieur à celui annoncé par le vendeur, annonce d'autofinancement de l'installation"
+          tags:
+            - LitigeContractuel
+          subcategories:
+            - title: Crédit financé pour vos travaux
+              example: Crédit affecté au contrat de travaux / rénovation
+              subcategories:
+                - title: Absence d'informations
+                  tags:
+                    - ReponseConso
+                  subcategories:
+                    - title: Avant la souscription
+                      reponseconsoCode:
+                        - '2406'
+                        - '411'
+                    - title: Vous ne saviez pas que vous vous engagiez
+                      reponseconsoCode:
+                        - '2206'
+                        - '210'
+                - title: Autre
+            - title: Garanties
+              reponseconsoCode:
+                - '469'
+              subcategories:
+                - title: Garantie de parfait achèvement
+                - title: Garantie biennale
+                - title: Garantie décennale
+                - title: Responsabilité contractuelle de droit commun
+        - title: Autre
+          tags:
+            - LitigeContractuel
+    - title: Isolation
+      example: "L'isolation des murs, des combles, du garage/sous-sol à 1€, le remplacement de portes/fenêtres"
+      subcategories:
+        - title: Prix
+          example: 'Exemple : prix non affiché, devis non respecté'
+          ccrfCode:
+            - '21B'
+          tags:
+          - LitigeContractuel
+          subcategories:
+            - title: Prix exagéré / élevé
+              information:
+                title: Ceci ne constitue pas un motif de signalement.
+                content: Les professionnels ont le droit de choisir leurs prix.
+                  <br />Par contre, les prix doivent être clairement indiqués pour que vous soyez au courant avant d'acheter ou de commander.
+                outOfScope: true
+            - title: Prix final non conforme au prix annoncé
+              reponseconsoCode:
+                - '451'
+              tags:
+                - ReponseConso
+            - title: Prix non affiché
+              reponseconsoCode:
+                - '212'
+              tags:
+                - ReponseConso
+        - title: Publicité et pratique du professionnel
+          example: "Exemple : absence d'information, information trompeuse ou mensongère, démarchage"
+          tags:
+            - LitigeContractuel
+          ccrfCode:
+            - '23B'
+          subcategories:
+            - title: Absence d'information ou information incomplète
+              tags:
+                - LitigeContractuel
+                - ReponseConso
+              subcategories:
+                - title: Caractéristiques techniques des produits non précisées
+                  reponseconsoCode:
+                    - '411'
+                - title: Prix indiqué de manière globale et non détaillée
+                  reponseconsoCode:
+                    - '411'
+                    - '212'
+                - title: Date de livraison des produits ou réalisation des travaux non précisée
+                  reponseconsoCode:
+                    - '414'
+                    - '413'
+                - title: Autre
+                  reponseconsoCode:
+                    - '411'
+            - title: Démarchage à domicile
+              companyKind: LOCATION
+              reponseconsoCode:
+                - '221'
+              tags:
+                - ReponseConso
+                - DemarchageADomicile
+              detailInputs:
+                - label: Que s'est-il passé ?
+                  type: RADIO
+                  options:
+                    - Le vendeur s'est fait passer pour une autre entreprise (à préciser)
+                    - Le vendeur m'a fait signer des papiers sans me dire que c'était un contrat ou un bon de commande.
+                    - Autre (à préciser)
+                - label: Avez-vous payé au moment du démarchage&#160;?
+                  type: RADIO
+                  options:
+                    - Oui
+                    - Non
+                - label: Date du démarchage
+                  type: DATE
+                  defaultValue: SYSDATE
+            - title: Information mensongère ou trompeuse
+              reponseconsoCode:
+                - '210'
+              subcategories:
+                - title: Mise en avant d'un label ou d'un signe de qualité non ou plus détenu
+                  tags:
+                    - ReponseConso
+                  detailInputs:
+                    - label: Qu'est-ce qui est trompeur ou mensonger&#160;?
+                      type: RADIO
+                      options:
+                        - Le discours du professionnel
+                        - Le site internet
+                        - Les documents mis à votre disposition par le professionnel (flyer, plaquette de présentation...)
+                        - Autre (à préciser)
+                    - label: Description
+                      type: TEXTAREA
+                    - label: Date du constat
+                      type: DATE
+                      defaultValue: SYSDATE
+                    - label: Heure du constat (facultatif)
+                      type: TIMESLOT
+                      optional: true
+                - title: Référence abusive à des partenariats avec l'État ou de grandes entreprises d'énergie
+                  tags:
+                    - ReponseConso
+                  detailInputs:
+                    - label: Qu'est-ce qui est trompeur ou mensonger&#160;?
+                      type: RADIO
+                      options:
+                        - Le discours du professionnel
+                        - Le site internet
+                        - Les documents mis à votre disposition par le professionnel (flyer, plaquette de présentation...)
+                        - Autre (à préciser)
+                    - label: Description
+                      type: TEXTAREA
+                    - label: Date du constat
+                      type: DATE
+                      defaultValue: SYSDATE
+                    - label: Heure du constat (facultatif)
+                      type: TIMESLOT
+                      optional: true
+                - title: Utilisation de termes laissant croire qu'il s'agit d'une structure publique
+                  tags:
+                    - ReponseConso
+                  detailInputs:
+                    - label: Qu'est-ce qui est trompeur ou mensonger&#160;?
+                      type: RADIO
+                      options:
+                        - Le discours du professionnel
+                        - Le site internet
+                        - Les documents mis à votre disposition par le professionnel (flyer, plaquette de présentation...)
+                        - Autre (à préciser)
+                    - label: Description
+                      type: TEXTAREA
+                    - label: Date du constat
+                      type: DATE
+                      defaultValue: SYSDATE
+                    - label: Heure du constat (facultatif)
+                      type: TIMESLOT
+                      optional: true
+                - title: Usurpation d'identité de la part du professionnel
+                  tags:
+                    - ReponseConso
+                  detailInputs:
+                    - label: Qu'est-ce qui est trompeur ou mensonger&#160;?
+                      type: RADIO
+                      options:
+                        - Le discours du professionnel
+                        - Le site internet
+                        - Les documents mis à votre disposition par le professionnel (flyer, plaquette de présentation...)
+                        - Autre (à préciser)
+                    - label: Description
+                      type: TEXTAREA
+                    - label: Date du constat
+                      type: DATE
+                      defaultValue: SYSDATE
+                    - label: Heure du constat (facultatif)
+                      type: TIMESLOT
+                      optional: true
+                - title: Présentation des travaux comme étant obligatoires
+                  tags:
+                    - ReponseConso
+                  detailInputs:
+                    - label: Qu'est-ce qui est trompeur ou mensonger&#160;?
+                      type: RADIO
+                      options:
+                        - Le discours du professionnel
+                        - Le site internet
+                        - Les documents mis à votre disposition par le professionnel (flyer, plaquette de présentation...)
+                        - Autre (à préciser)
+                    - label: Description
+                      type: TEXTAREA
+                    - label: Date du constat
+                      type: DATE
+                      defaultValue: SYSDATE
+                    - label: Heure du constat (facultatif)
+                      type: TIMESLOT
+                      optional: true
+                - title: Promesse d'économies d'énergie surestimées
+                  tags:
+                    - ReponseConso
+                  detailInputs:
+                    - label: Qu'est-ce qui est trompeur ou mensonger&#160;?
+                      type: RADIO
+                      options:
+                        - Le discours du professionnel
+                        - Le site internet
+                        - Les documents mis à votre disposition par le professionnel (flyer, plaquette de présentation...)
+                        - Autre (à préciser)
+                    - label: Description
+                      type: TEXTAREA
+                    - label: Date du constat
+                      type: DATE
+                      defaultValue: SYSDATE
+                    - label: Heure du constat (facultatif)
+                      type: TIMESLOT
+                      optional: true
+                - title: Autre
+                  detailInputs:
+                    - label: Qu'est-ce qui est trompeur ou mensonger&#160;?
+                      type: RADIO
+                      options:
+                        - Le discours du professionnel
+                        - Le site internet
+                        - Les documents mis à votre disposition par le professionnel (flyer, plaquette de présentation...)
+                        - Autre (à préciser)
+                    - label: À propos de quoi est-ce trompeur&#160;?
+                      type: RADIO
+                      options:
+                        - Le prix
+                        - La nature des travaux
+                        - Les qualités et aptitudes du professionnel (artisans, normes...)
+                    - label: Description
+                      type: TEXTAREA
+                    - label: Date du constat
+                      type: DATE
+                      defaultValue: SYSDATE
+                    - label: Heure du constat (facultatif)
+                      type: TIMESLOT
+                      optional: true
+            - title: Contrainte du professionnel
+              reponseconsoCode:
+                - '210'
+              detailInputs:
+                - label: Précisez les informations sur le contexte
+                  type: TEXTAREA
+                - label: Date du constat
+                  type: DATE
+                  defaultValue: SYSDATE
+                - label: Heure du constat (facultatif)
+                  type: TIMESLOT
+                  optional: true             
+            - title: Autre
+        - title: Prestation
+          example: 'Exemple : malfaçons sur le chantier, travaux commencés mais jamais terminés'
+          subcategories:
+            - title: Malfaçon
+              example: Constat d'un défaut résultant d'une mauvaise exécution des travaux
+              reponseconsoCode:
+                - '446'
+            - title: Les travaux ne sont toujours pas terminés
+              reponseconsoCode:
+                - '443'
+              tags:
+                - LitigeContractuel
+        - title: Contrat
+          example: 'Exemple : contrat non respecté, délai de rétractation, clause abusive'
+          subcategories:
+            - title: Droit de rétractation
+              example: Une fois le contrat signé, vous souhaitez revenir en arrière
+              subcategoriesTitle: Où avez-vous signé le contrat ?
+              subcategories:
+                - title: À votre domicile
+                  example: Un démarcheur est venu chez vous
+                  tags:
+                    - ReponseConso
+                  reponseconsoCode:
+                    - '2213'
+                    - '2214'
+                - title: À distance
+                  example: 'Exemple : sur internet'
+                  tags:
+                    - ReponseConso
+                  reponseconsoCode:
+                    - '2213'
+                    - '2214'
+                - title: Au lieu habituel d'activité du professionnel
+                  information:
+                    title: Vous ne pouvez plus vous retracter
+                    content: Il n'y a pas de délai de rétractation pour votre cas.
+                    outOfScope: true
+                - title: Sur un stand dans une foire ou salon
+                  subcategoriesTitle: Avez-vous un crédit affecté ?
+                  subcategories:
+                    - title: Non
+                      information:
+                        title: Vous ne pouvez plus vous retracter
+                        content: Il n'y a pas de délai de rétractation pour votre cas.
+                        outOfScope: true
+                    - title: Oui
+                      reponseconsoCode:
+                        - '2206'
+                        - '2214'
+                        - '2213'
+            - title: Contrat non respecté
+              reponseconsoCode:
+                - '443'
+              tags:
+                - LitigeContractuel
+            - title: Clause abusive
+              example: Vous souhaitez dénoncer une clause qui vous est particulièrement défavorable
+              reponseconsoCode:
+                - '214'
+              tags:
+                - ReponseConso
+                - LitigeContractuel
+            - title: Autre
+              tags:
+                - LitigeContractuel
+        - title: Crédits pour les travaux / garanties
+          example: "Défaut d'information, absence de remise du contrat de crédit, engagement financier mensuel supérieur à celui annoncé par le vendeur, annonce d'autofinancement de l'installation"
+          tags:
+            - LitigeContractuel
+          subcategories:
+            - title: Crédit financé pour vos travaux
+              example: Crédit affecté au contrat de travaux / rénovation
+              subcategories:
+                - title: Absence d'informations
+                  tags:
+                    - ReponseConso
+                  subcategories:
+                    - title: Avant la souscription
+                      reponseconsoCode:
+                        - '2406'
+                        - '411'
+                    - title: Vous ne saviez pas que vous vous engagiez
+                      reponseconsoCode:
+                        - '2206'
+                        - '210'
+                - title: Autre
+            - title: Garanties
+              reponseconsoCode:
+                - '469'
+              subcategories:
+                - title: Garantie de parfait achèvement
+                - title: Garantie biennale
+                - title: Garantie décennale
+                - title: Responsabilité contractuelle de droit commun
+        - title: Autre
+          tags:
+            - LitigeContractuel
+    - title: Ventilation
+      subcategories:
+        - title: Prix
+          example: 'Exemple : prix non affiché, devis non respecté'
+          ccrfCode:
+            - '21B'
+          tags:
+          - LitigeContractuel
+          subcategories:
+            - title: Prix exagéré / élevé
+              information:
+                title: Ceci ne constitue pas un motif de signalement.
+                content: Les professionnels ont le droit de choisir leurs prix.
+                  <br />Par contre, les prix doivent être clairement indiqués pour que vous soyez au courant avant d'acheter ou de commander.
+                outOfScope: true
+            - title: Prix final non conforme au prix annoncé
+              reponseconsoCode:
+                - '451'
+              tags:
+                - ReponseConso
+            - title: Prix non affiché
+              reponseconsoCode:
+                - '212'
+              tags:
+                - ReponseConso
+        - title: Publicité et pratique du professionnel
+          example: "Exemple : absence d'information, information trompeuse ou mensongère, démarchage"
+          tags:
+            - LitigeContractuel
+          ccrfCode:
+            - '23B'
+          subcategories:
+            - title: Absence d'information ou information incomplète
+              tags:
+                - LitigeContractuel
+                - ReponseConso
+              subcategories:
+                - title: Caractéristiques techniques des produits non précisées
+                  reponseconsoCode:
+                    - '411'
+                - title: Prix indiqué de manière globale et non détaillée
+                  reponseconsoCode:
+                    - '411'
+                    - '212'
+                - title: Date de livraison des produits ou réalisation des travaux non précisée
+                  reponseconsoCode:
+                    - '414'
+                    - '413'
+                - title: Autre
+                  reponseconsoCode:
+                    - '411'
+            - title: Démarchage à domicile
+              companyKind: LOCATION
+              reponseconsoCode:
+                - '221'
+              tags:
+                - ReponseConso
+                - DemarchageADomicile
+              detailInputs:
+                - label: Que s'est-il passé ?
+                  type: RADIO
+                  options:
+                    - Le vendeur s'est fait passer pour une autre entreprise (à préciser)
+                    - Le vendeur m'a fait signer des papiers sans me dire que c'était un contrat ou un bon de commande.
+                    - Autre (à préciser)
+                - label: Avez-vous payé au moment du démarchage&#160;?
+                  type: RADIO
+                  options:
+                    - Oui
+                    - Non
+                - label: Date du démarchage
+                  type: DATE
+                  defaultValue: SYSDATE
+            - title: Information mensongère ou trompeuse
+              reponseconsoCode:
+                - '210'
+              subcategories:
+                - title: Mise en avant d'un label ou d'un signe de qualité non ou plus détenu
+                  tags:
+                    - ReponseConso
+                  detailInputs:
+                    - label: Qu'est-ce qui est trompeur ou mensonger&#160;?
+                      type: RADIO
+                      options:
+                        - Le discours du professionnel
+                        - Le site internet
+                        - Les documents mis à votre disposition par le professionnel (flyer, plaquette de présentation...)
+                        - Autre (à préciser)
+                    - label: Description
+                      type: TEXTAREA
+                    - label: Date du constat
+                      type: DATE
+                      defaultValue: SYSDATE
+                    - label: Heure du constat (facultatif)
+                      type: TIMESLOT
+                      optional: true
+                - title: Référence abusive à des partenariats avec l'État ou de grandes entreprises d'énergie
+                  tags:
+                    - ReponseConso
+                  detailInputs:
+                    - label: Qu'est-ce qui est trompeur ou mensonger&#160;?
+                      type: RADIO
+                      options:
+                        - Le discours du professionnel
+                        - Le site internet
+                        - Les documents mis à votre disposition par le professionnel (flyer, plaquette de présentation...)
+                        - Autre (à préciser)
+                    - label: Description
+                      type: TEXTAREA
+                    - label: Date du constat
+                      type: DATE
+                      defaultValue: SYSDATE
+                    - label: Heure du constat (facultatif)
+                      type: TIMESLOT
+                      optional: true
+                - title: Utilisation de termes laissant croire qu'il s'agit d'une structure publique
+                  tags:
+                    - ReponseConso
+                  detailInputs:
+                    - label: Qu'est-ce qui est trompeur ou mensonger&#160;?
+                      type: RADIO
+                      options:
+                        - Le discours du professionnel
+                        - Le site internet
+                        - Les documents mis à votre disposition par le professionnel (flyer, plaquette de présentation...)
+                        - Autre (à préciser)
+                    - label: Description
+                      type: TEXTAREA
+                    - label: Date du constat
+                      type: DATE
+                      defaultValue: SYSDATE
+                    - label: Heure du constat (facultatif)
+                      type: TIMESLOT
+                      optional: true
+                - title: Usurpation d'identité de la part du professionnel
+                  tags:
+                    - ReponseConso
+                  detailInputs:
+                    - label: Qu'est-ce qui est trompeur ou mensonger&#160;?
+                      type: RADIO
+                      options:
+                        - Le discours du professionnel
+                        - Le site internet
+                        - Les documents mis à votre disposition par le professionnel (flyer, plaquette de présentation...)
+                        - Autre (à préciser)
+                    - label: Description
+                      type: TEXTAREA
+                    - label: Date du constat
+                      type: DATE
+                      defaultValue: SYSDATE
+                    - label: Heure du constat (facultatif)
+                      type: TIMESLOT
+                      optional: true
+                - title: Présentation des travaux comme étant obligatoires
+                  tags:
+                    - ReponseConso
+                  detailInputs:
+                    - label: Qu'est-ce qui est trompeur ou mensonger&#160;?
+                      type: RADIO
+                      options:
+                        - Le discours du professionnel
+                        - Le site internet
+                        - Les documents mis à votre disposition par le professionnel (flyer, plaquette de présentation...)
+                        - Autre (à préciser)
+                    - label: Description
+                      type: TEXTAREA
+                    - label: Date du constat
+                      type: DATE
+                      defaultValue: SYSDATE
+                    - label: Heure du constat (facultatif)
+                      type: TIMESLOT
+                      optional: true
+                - title: Promesse d'économies d'énergie surestimées
+                  tags:
+                    - ReponseConso
+                  detailInputs:
+                    - label: Qu'est-ce qui est trompeur ou mensonger&#160;?
+                      type: RADIO
+                      options:
+                        - Le discours du professionnel
+                        - Le site internet
+                        - Les documents mis à votre disposition par le professionnel (flyer, plaquette de présentation...)
+                        - Autre (à préciser)
+                    - label: Description
+                      type: TEXTAREA
+                    - label: Date du constat
+                      type: DATE
+                      defaultValue: SYSDATE
+                    - label: Heure du constat (facultatif)
+                      type: TIMESLOT
+                      optional: true
+                - title: Autre
+                  detailInputs:
+                    - label: Qu'est-ce qui est trompeur ou mensonger&#160;?
+                      type: RADIO
+                      options:
+                        - Le discours du professionnel
+                        - Le site internet
+                        - Les documents mis à votre disposition par le professionnel (flyer, plaquette de présentation...)
+                        - Autre (à préciser)
+                    - label: À propos de quoi est-ce trompeur&#160;?
+                      type: RADIO
+                      options:
+                        - Le prix
+                        - La nature des travaux
+                        - Les qualités et aptitudes du professionnel (artisans, normes...)
+                    - label: Description
+                      type: TEXTAREA
+                    - label: Date du constat
+                      type: DATE
+                      defaultValue: SYSDATE
+                    - label: Heure du constat (facultatif)
+                      type: TIMESLOT
+                      optional: true
+            - title: Contrainte du professionnel
+              reponseconsoCode:
+                - '210'
+              detailInputs:
+                - label: Précisez les informations sur le contexte
+                  type: TEXTAREA
+                - label: Date du constat
+                  type: DATE
+                  defaultValue: SYSDATE
+                - label: Heure du constat (facultatif)
+                  type: TIMESLOT
+                  optional: true             
+            - title: Autre
+        - title: Prestation
+          example: 'Exemple : malfaçons sur le chantier, travaux commencés mais jamais terminés'
+          subcategories:
+            - title: Malfaçon
+              example: Constat d'un défaut résultant d'une mauvaise exécution des travaux
+              reponseconsoCode:
+                - '446'
+            - title: Les travaux ne sont toujours pas terminés
+              reponseconsoCode:
+                - '443'
+              tags:
+                - LitigeContractuel
+        - title: Contrat
+          example: 'Exemple : contrat non respecté, délai de rétractation, clause abusive'
+          subcategories:
+            - title: Droit de rétractation
+              example: Une fois le contrat signé, vous souhaitez revenir en arrière
+              subcategoriesTitle: Où avez-vous signé le contrat ?
+              subcategories:
+                - title: À votre domicile
+                  example: Un démarcheur est venu chez vous
+                  tags:
+                    - ReponseConso
+                  reponseconsoCode:
+                    - '2213'
+                    - '2214'
+                - title: À distance
+                  example: 'Exemple : sur internet'
+                  tags:
+                    - ReponseConso
+                  reponseconsoCode:
+                    - '2213'
+                    - '2214'
+                - title: Au lieu habituel d'activité du professionnel
+                  information:
+                    title: Vous ne pouvez plus vous retracter
+                    content: Il n'y a pas de délai de rétractation pour votre cas.
+                    outOfScope: true
+                - title: Sur un stand dans une foire ou salon
+                  subcategoriesTitle: Avez-vous un crédit affecté ?
+                  subcategories:
+                    - title: Non
+                      information:
+                        title: Vous ne pouvez plus vous retracter
+                        content: Il n'y a pas de délai de rétractation pour votre cas.
+                        outOfScope: true
+                    - title: Oui
+                      reponseconsoCode:
+                        - '2206'
+                        - '2214'
+                        - '2213'
+            - title: Contrat non respecté
+              reponseconsoCode:
+                - '443'
+              tags:
+                - LitigeContractuel
+            - title: Clause abusive
+              example: Vous souhaitez dénoncer une clause qui vous est particulièrement défavorable
+              reponseconsoCode:
+                - '214'
+              tags:
+                - ReponseConso
+                - LitigeContractuel
+            - title: Autre
+              tags:
+                - LitigeContractuel
+        - title: Crédits pour les travaux / garanties
+          example: "Défaut d'information, absence de remise du contrat de crédit, engagement financier mensuel supérieur à celui annoncé par le vendeur, annonce d'autofinancement de l'installation"
+          tags:
+            - LitigeContractuel
+          subcategories:
+            - title: Crédit financé pour vos travaux
+              example: Crédit affecté au contrat de travaux / rénovation
+              subcategories:
+                - title: Absence d'informations
+                  tags:
+                    - ReponseConso
+                  subcategories:
+                    - title: Avant la souscription
+                      reponseconsoCode:
+                        - '2406'
+                        - '411'
+                    - title: Vous ne saviez pas que vous vous engagiez
+                      reponseconsoCode:
+                        - '2206'
+                        - '210'
+                - title: Autre
+            - title: Garanties
+              reponseconsoCode:
+                - '469'
+              subcategories:
+                - title: Garantie de parfait achèvement
+                - title: Garantie biennale
+                - title: Garantie décennale
+                - title: Responsabilité contractuelle de droit commun
+        - title: Autre
+          tags:
+            - LitigeContractuel
+    - title: Production d'énergies renouvelables
+      example: L'instation d'équipements solaire, petites éoliennes domestiques
+      subcategories:
+        - title: Prix
+          example: 'Exemple : prix non affiché, devis non respecté'
+          ccrfCode:
+            - '21B'
+          tags:
+          - LitigeContractuel
+          subcategories:
+            - title: Prix exagéré / élevé
+              information:
+                title: Ceci ne constitue pas un motif de signalement.
+                content: Les professionnels ont le droit de choisir leurs prix.
+                  <br />Par contre, les prix doivent être clairement indiqués pour que vous soyez au courant avant d'acheter ou de commander.
+                outOfScope: true
+            - title: Prix final non conforme au prix annoncé
+              reponseconsoCode:
+                - '451'
+              tags:
+                - ReponseConso
+            - title: Prix non affiché
+              reponseconsoCode:
+                - '212'
+              tags:
+                - ReponseConso
+        - title: Publicité et pratique du professionnel
+          example: "Exemple : absence d'information, information trompeuse ou mensongère, démarchage"
+          tags:
+            - LitigeContractuel
+          ccrfCode:
+            - '23B'
+          subcategories:
+            - title: Absence d'information ou information incomplète
+              tags:
+                - LitigeContractuel
+                - ReponseConso
+              subcategories:
+                - title: Caractéristiques techniques des produits non précisées
+                  reponseconsoCode:
+                    - '411'
+                - title: Prix indiqué de manière globale et non détaillée
+                  reponseconsoCode:
+                    - '411'
+                    - '212'
+                - title: Date de livraison des produits ou réalisation des travaux non précisée
+                  reponseconsoCode:
+                    - '414'
+                    - '413'
+                - title: Autre
+                  reponseconsoCode:
+                    - '411'
+            - title: Démarchage à domicile
+              companyKind: LOCATION
+              reponseconsoCode:
+                - '221'
+              tags:
+                - ReponseConso
+                - DemarchageADomicile
+              detailInputs:
+                - label: Que s'est-il passé ?
+                  type: RADIO
+                  options:
+                    - Le vendeur s'est fait passer pour une autre entreprise (à préciser)
+                    - Le vendeur m'a fait signer des papiers sans me dire que c'était un contrat ou un bon de commande.
+                    - Autre (à préciser)
+                - label: Avez-vous payé au moment du démarchage&#160;?
+                  type: RADIO
+                  options:
+                    - Oui
+                    - Non
+                - label: Date du démarchage
+                  type: DATE
+                  defaultValue: SYSDATE
+            - title: Information mensongère ou trompeuse
+              reponseconsoCode:
+                - '210'
+              subcategories:
+                - title: Mise en avant d'un label ou d'un signe de qualité non ou plus détenu
+                  tags:
+                    - ReponseConso
+                  detailInputs:
+                    - label: Qu'est-ce qui est trompeur ou mensonger&#160;?
+                      type: RADIO
+                      options:
+                        - Le discours du professionnel
+                        - Le site internet
+                        - Les documents mis à votre disposition par le professionnel (flyer, plaquette de présentation...)
+                        - Autre (à préciser)
+                    - label: Description
+                      type: TEXTAREA
+                    - label: Date du constat
+                      type: DATE
+                      defaultValue: SYSDATE
+                    - label: Heure du constat (facultatif)
+                      type: TIMESLOT
+                      optional: true
+                - title: Référence abusive à des partenariats avec l'État ou de grandes entreprises d'énergie
+                  tags:
+                    - ReponseConso
+                  detailInputs:
+                    - label: Qu'est-ce qui est trompeur ou mensonger&#160;?
+                      type: RADIO
+                      options:
+                        - Le discours du professionnel
+                        - Le site internet
+                        - Les documents mis à votre disposition par le professionnel (flyer, plaquette de présentation...)
+                        - Autre (à préciser)
+                    - label: Description
+                      type: TEXTAREA
+                    - label: Date du constat
+                      type: DATE
+                      defaultValue: SYSDATE
+                    - label: Heure du constat (facultatif)
+                      type: TIMESLOT
+                      optional: true
+                - title: Utilisation de termes laissant croire qu'il s'agit d'une structure publique
+                  tags:
+                    - ReponseConso
+                  detailInputs:
+                    - label: Qu'est-ce qui est trompeur ou mensonger&#160;?
+                      type: RADIO
+                      options:
+                        - Le discours du professionnel
+                        - Le site internet
+                        - Les documents mis à votre disposition par le professionnel (flyer, plaquette de présentation...)
+                        - Autre (à préciser)
+                    - label: Description
+                      type: TEXTAREA
+                    - label: Date du constat
+                      type: DATE
+                      defaultValue: SYSDATE
+                    - label: Heure du constat (facultatif)
+                      type: TIMESLOT
+                      optional: true
+                - title: Usurpation d'identité de la part du professionnel
+                  tags:
+                    - ReponseConso
+                  detailInputs:
+                    - label: Qu'est-ce qui est trompeur ou mensonger&#160;?
+                      type: RADIO
+                      options:
+                        - Le discours du professionnel
+                        - Le site internet
+                        - Les documents mis à votre disposition par le professionnel (flyer, plaquette de présentation...)
+                        - Autre (à préciser)
+                    - label: Description
+                      type: TEXTAREA
+                    - label: Date du constat
+                      type: DATE
+                      defaultValue: SYSDATE
+                    - label: Heure du constat (facultatif)
+                      type: TIMESLOT
+                      optional: true
+                - title: Présentation des travaux comme étant obligatoires
+                  tags:
+                    - ReponseConso
+                  detailInputs:
+                    - label: Qu'est-ce qui est trompeur ou mensonger&#160;?
+                      type: RADIO
+                      options:
+                        - Le discours du professionnel
+                        - Le site internet
+                        - Les documents mis à votre disposition par le professionnel (flyer, plaquette de présentation...)
+                        - Autre (à préciser)
+                    - label: Description
+                      type: TEXTAREA
+                    - label: Date du constat
+                      type: DATE
+                      defaultValue: SYSDATE
+                    - label: Heure du constat (facultatif)
+                      type: TIMESLOT
+                      optional: true
+                - title: Promesse d'économies d'énergie surestimées
+                  tags:
+                    - ReponseConso
+                  detailInputs:
+                    - label: Qu'est-ce qui est trompeur ou mensonger&#160;?
+                      type: RADIO
+                      options:
+                        - Le discours du professionnel
+                        - Le site internet
+                        - Les documents mis à votre disposition par le professionnel (flyer, plaquette de présentation...)
+                        - Autre (à préciser)
+                    - label: Description
+                      type: TEXTAREA
+                    - label: Date du constat
+                      type: DATE
+                      defaultValue: SYSDATE
+                    - label: Heure du constat (facultatif)
+                      type: TIMESLOT
+                      optional: true
+                - title: Autre
+                  detailInputs:
+                    - label: Qu'est-ce qui est trompeur ou mensonger&#160;?
+                      type: RADIO
+                      options:
+                        - Le discours du professionnel
+                        - Le site internet
+                        - Les documents mis à votre disposition par le professionnel (flyer, plaquette de présentation...)
+                        - Autre (à préciser)
+                    - label: À propos de quoi est-ce trompeur&#160;?
+                      type: RADIO
+                      options:
+                        - Le prix
+                        - La nature des travaux
+                        - Les qualités et aptitudes du professionnel (artisans, normes...)
+                    - label: Description
+                      type: TEXTAREA
+                    - label: Date du constat
+                      type: DATE
+                      defaultValue: SYSDATE
+                    - label: Heure du constat (facultatif)
+                      type: TIMESLOT
+                      optional: true
+            - title: Contrainte du professionnel
+              reponseconsoCode:
+                - '210'
+              detailInputs:
+                - label: Précisez les informations sur le contexte
+                  type: TEXTAREA
+                - label: Date du constat
+                  type: DATE
+                  defaultValue: SYSDATE
+                - label: Heure du constat (facultatif)
+                  type: TIMESLOT
+                  optional: true             
+            - title: Autre
+        - title: Prestation
+          example: 'Exemple : malfaçons sur le chantier, travaux commencés mais jamais terminés'
+          subcategories:
+            - title: Malfaçon
+              example: Constat d'un défaut résultant d'une mauvaise exécution des travaux
+              reponseconsoCode:
+                - '446'
+            - title: Les travaux ne sont toujours pas terminés
+              reponseconsoCode:
+                - '443'
+              tags:
+                - LitigeContractuel
+        - title: Contrat
+          example: 'Exemple : contrat non respecté, délai de rétractation, clause abusive'
+          subcategories:
+            - title: Droit de rétractation
+              example: Une fois le contrat signé, vous souhaitez revenir en arrière
+              subcategoriesTitle: Où avez-vous signé le contrat ?
+              subcategories:
+                - title: À votre domicile
+                  example: Un démarcheur est venu chez vous
+                  tags:
+                    - ReponseConso
+                  reponseconsoCode:
+                    - '2213'
+                    - '2214'
+                - title: À distance
+                  example: 'Exemple : sur internet'
+                  tags:
+                    - ReponseConso
+                  reponseconsoCode:
+                    - '2213'
+                    - '2214'
+                - title: Au lieu habituel d'activité du professionnel
+                  information:
+                    title: Vous ne pouvez plus vous retracter
+                    content: Il n'y a pas de délai de rétractation pour votre cas.
+                    outOfScope: true
+                - title: Sur un stand dans une foire ou salon
+                  subcategoriesTitle: Avez-vous un crédit affecté ?
+                  subcategories:
+                    - title: Non
+                      information:
+                        title: Vous ne pouvez plus vous retracter
+                        content: Il n'y a pas de délai de rétractation pour votre cas.
+                        outOfScope: true
+                    - title: Oui
+                      reponseconsoCode:
+                        - '2206'
+                        - '2214'
+                        - '2213'
+            - title: Contrat non respecté
+              reponseconsoCode:
+                - '443'
+              tags:
+                - LitigeContractuel
+            - title: Clause abusive
+              example: Vous souhaitez dénoncer une clause qui vous est particulièrement défavorable
+              reponseconsoCode:
+                - '214'
+              tags:
+                - ReponseConso
+                - LitigeContractuel
+            - title: Autre
+              tags:
+                - LitigeContractuel
+        - title: Crédits pour les travaux / garanties
+          example: "Défaut d'information, absence de remise du contrat de crédit, engagement financier mensuel supérieur à celui annoncé par le vendeur, annonce d'autofinancement de l'installation"
+          tags:
+            - LitigeContractuel
+          subcategories:
+            - title: Crédit financé pour vos travaux
+              example: Crédit affecté au contrat de travaux / rénovation
+              subcategories:
+                - title: Absence d'informations
+                  tags:
+                    - ReponseConso
+                  subcategories:
+                    - title: Avant la souscription
+                      reponseconsoCode:
+                        - '2406'
+                        - '411'
+                    - title: Vous ne saviez pas que vous vous engagiez
+                      reponseconsoCode:
+                        - '2206'
+                        - '210'
+                - title: Autre
+            - title: Garanties
+              reponseconsoCode:
+                - '469'
+              subcategories:
+                - title: Garantie de parfait achèvement
+                - title: Garantie biennale
+                - title: Garantie décennale
+                - title: Responsabilité contractuelle de droit commun
+        - title: Autre
+          tags:
+            - LitigeContractuel
+- title: Autres Travaux
+  example: "Par exemple : la construction de votre maison ou l'adaption de votre logement à un handicape ou pour une personne agée"
   subcategories:
     - title: Prix
       example: 'Exemple : prix non affiché, devis non respecté'
@@ -155,24 +1805,6 @@
             - label: Date du démarchage
               type: DATE
               defaultValue: SYSDATE
-        - title: Démarchage téléphonique
-          companyKind: PHONE
-          reponseconsoCode:
-            - '221'
-          tags:
-            #            - ReponseConso
-            - DemarchageTelephonique
-          detailInputs:
-            - label: Date de l'appel
-              type: DATE
-              defaultValue: SYSDATE
-            - label: Est-ce que le vendeur s'est fait passer pour une autre entreprise&#160;?
-              type: RADIO
-              options:
-                - Non
-                - Oui (à préciser)
-            - label: Décrivez nous plus en détails ce qui s'est passé
-              type: TEXTAREA
         - title: Information mensongère ou trompeuse
           reponseconsoCode:
             - '210'
@@ -325,7 +1957,7 @@
               defaultValue: SYSDATE
             - label: Heure du constat (facultatif)
               type: TIMESLOT
-              optional: true
+              optional: true             
         - title: Autre
     - title: Prestation
       example: 'Exemple : malfaçons sur le chantier, travaux commencés mais jamais terminés'
@@ -393,7 +2025,8 @@
         - title: Autre
           tags:
             - LitigeContractuel
-    - title: Crédits / garanties
+    - title: Crédits pour les travaux / garanties
+      example: "Défaut d'information, absence de remise du contrat de crédit, engagement financier mensuel supérieur à celui annoncé par le vendeur, annonce d'autofinancement de l'installation"
       tags:
         - LitigeContractuel
       subcategories:
