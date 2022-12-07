@@ -86,23 +86,23 @@
   example: "Un professionnel vous a appelé pour vous proposer l'installation d'équipements ou la réalisation de travaux de rénovation énergétiques. Vous faites appel à un professionnel pour l'installation d'équipement ou la réalisation de travaux de rénovation énergétique (isolation, installation d'un système de chauffage, panneau solaire)"
   subcategories:
     - title: Démarchage téléphonique
-        companyKind: PHONE
-        reponseconsoCode:
-          - '221'
-        tags:
-        #            - ReponseConso
-          - DemarchageTelephonique
-        detailInputs:
-          - label: Date de l'appel
-            type: DATE
-            defaultValue: SYSDATE
-          - label: Est-ce que le vendeur s'est fait passer pour une autre entreprise&#160;?
-            type: RADIO
-            options:
-              - Non
-              - Oui (à préciser)
-          - label: Décrivez nous plus en détails ce qui s'est passé
-            type: TEXTAREA
+      companyKind: PHONE
+      reponseconsoCode:
+        - '221'
+      tags:
+      #            - ReponseConso
+        - DemarchageTelephonique
+      detailInputs:
+        - label: Date de l'appel
+          type: DATE
+          defaultValue: SYSDATE
+        - label: Est-ce que le vendeur s'est fait passer pour une autre entreprise&#160;?
+          type: RADIO
+          options:
+            - Non
+            - Oui (à préciser)
+        - label: Décrivez nous plus en détails ce qui s'est passé
+          type: TEXTAREA
     - title: Audit énergétique
       subcategories:
       - title: Prix
