@@ -1,6 +1,6 @@
 import {ScInput} from 'shared/Input/ScInput'
 import {IconBtn, Txt} from '../../../alexlibs/mui-extension'
-import React, {ReactNode} from 'react'
+import React, {ReactNode, useState} from 'react'
 import {useI18n} from 'core/i18n'
 import {useApiSdk} from 'core/context/ApiSdk'
 import {ScButton} from 'shared/Button/Button'
@@ -40,20 +40,31 @@ export const CompanyByWebsite = ({value, children, ...props}: Props) => {
     formState: {errors},
   } = useForm<Form>()
 
+  const [companies, setCompanies] = useState<CompanySearchResult[] | undefined>(undefined)
+
   useEffectFn(_searchCompany.error, toastError)
 
   const submit = async (form: Form) => {
     _searchCompany.clearCache()
     _searchCountry.clearCache()
     const res = await _searchCompany.fetch({clean: true, force: true}, form.website)
+    if (res.exactMatch.length != 0) {
+      setCompanies(res.exactMatch)
+    }
     if (res.exactMatch.length === 0 && res.similarHosts.length === 0) {
+      setCompanies([])
       await _searchCountry.fetch({clean: true, force: true}, form.website)
     }
     _analytic.trackEvent(EventCategories.companySearch, CompanySearchEventActions.searchByUrl, form.website)
   }
 
-  const clearWebsite = () => {
+  const editWebsite = () => {
     _searchCompany.clearCache()
+    setCompanies(undefined)
+  }
+
+  const clearWebsite = () => {
+    editWebsite()
     reset()
   }
 
@@ -61,27 +72,46 @@ export const CompanyByWebsite = ({value, children, ...props}: Props) => {
     if (_searchCompany.entity && _searchCompany.entity.exactMatch.length == 0 && _searchCompany.entity.similarHosts.length > 0) {
       return (
         <>
-          Essayer avec
-          {_searchCompany.entity.similarHosts.map((website, key) => {
-            return (
-              <b key={key}>
+          <br />
+          <Txt truncate block>
+            {m.suggestion}
+          </Txt>
+          <>
+            {_searchCompany.entity.similarHosts.map((website, key) => {
+              return (
                 <ScButton
-                  type="submit"
+                  key={key}
+                  variant="outlined"
+                  sx={{mt: 2, mr: 1}}
                   onClick={_ => {
-                    clearWebsite()
                     setValue('website', website)
-                    submit({website})
+                    submit(getValues())
                   }}
+                  size={'small'}
+                  disabled={!!companies}
+                  loading={_searchCompany.loading}
                 >
                   {website}
                 </ScButton>
-              </b>
-            )
-          })}
-          <br />
+              )
+            })}
+            <ScButton
+              key={'key'}
+              sx={{mt: 2}}
+              variant={!!companies ? 'contained' : 'outlined'}
+              size={'small'}
+              disabled={!!companies}
+              onClick={_ => setCompanies([])}
+              loading={_searchCompany.loading}
+            >
+              {m.continueWithWebsite(getValues().website)}
+            </ScButton>
+          </>
         </>
       )
-    } else return <></>
+    } else {
+      return <></>
+    }
   }
 
   return (
@@ -98,7 +128,7 @@ export const CompanyByWebsite = ({value, children, ...props}: Props) => {
                 InputProps={{
                   endAdornment: (
                     <Tooltip title={m.edit}>
-                      <IconBtn size="small" color="primary" onClick={_searchCompany.clearCache}>
+                      <IconBtn size="small" color="primary" onClick={editWebsite}>
                         <Icon>edit</Icon>
                       </IconBtn>
                     </Tooltip>
@@ -110,7 +140,8 @@ export const CompanyByWebsite = ({value, children, ...props}: Props) => {
                 {...register('website', {
                   required: {value: true, message: m.required},
                   pattern: {
-                    value: /^((http|https):\/\/)?(www\.)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,}(:[0-9]{1,5})?(\/.*)?$/,
+                    value:
+                      /^((http|https):\/\/)?(www\.)?[A-Za-z0-9]+([\-\.]{1}[A-Za-z0-9]+)*\.[A-Za-z]{2,}(:[0-9]{1,5})?(\/.*)?$/,
                     message: m.invalidUrlPattern,
                   },
                 })}
@@ -119,17 +150,20 @@ export const CompanyByWebsite = ({value, children, ...props}: Props) => {
                 error={!!errors.website}
                 helperText={errors.website?.message}
               />
+              <br />
               <SimilarHosts />
-              <ScButton
-                variant="contained"
-                color="primary"
-                sx={{mt: 2}}
-                type="submit"
-                loading={_searchCompany.loading}
-                disabled={!!_searchCompany.entity}
-              >
-                {m.continue}
-              </ScButton>
+              {(_searchCompany.entity && _searchCompany.entity.similarHosts.length > 0) ?? (
+                <ScButton
+                  variant="contained"
+                  color="primary"
+                  sx={{mt: 2}}
+                  type="submit"
+                  loading={_searchCompany.loading}
+                  disabled={!!_searchCompany.entity}
+                >
+                  {m.continue}
+                </ScButton>
+              )}
             </Box>
           </PanelBody>
         </Panel>
@@ -139,12 +173,8 @@ export const CompanyByWebsite = ({value, children, ...props}: Props) => {
         if (website) {
           if (_searchCountry.entity && _searchCountry.entity.length > 0) {
             return children(website, undefined, _searchCountry.entity)
-          }
-          if (
-            _searchCompany.entity &&
-            (_searchCompany.entity.exactMatch.length > 0 || _searchCompany.entity.similarHosts.length == 0)
-          ) {
-            return children(website, _searchCompany.entity.exactMatch)
+          } else if (companies) {
+            return children(website, companies)
           }
         }
       })()}
