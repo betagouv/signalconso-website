@@ -81,7 +81,7 @@ export const CompanyByWebsite = ({value, children, ...props}: Props) => {
               return (
                 <ScButton
                   key={key}
-                  variant="outlined"
+                  variant={!!companies ? 'text' : 'contained'}
                   sx={{mt: 2, mr: 1}}
                   onClick={_ => {
                     setValue('website', website)
@@ -98,7 +98,7 @@ export const CompanyByWebsite = ({value, children, ...props}: Props) => {
             <ScButton
               key={'key'}
               sx={{mt: 2}}
-              variant={!!companies ? 'contained' : 'outlined'}
+              variant={!!companies ? 'contained' : 'text'}
               size={'small'}
               disabled={!!companies}
               onClick={_ => setCompanies([])}
