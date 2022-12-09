@@ -35,7 +35,7 @@ const ContentSecurityPolicy =
     ? CommonContentSecurityPolicy.concat([
         //https://github.com/vercel/next.js/issues/14221 need unsafe eval for next js to work in dev env...
         `script-src 'self' 'unsafe-eval';`,
-        `style-src-elem 'self' 'unsafe-inline' https://fonts.googleapis.com; blob:`,
+        `style-src-elem 'self' 'unsafe-inline' https://fonts.googleapis.com blob:;`,
       ])
     : CommonContentSecurityPolicy
 
