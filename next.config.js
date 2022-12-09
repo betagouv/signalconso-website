@@ -24,10 +24,9 @@ const CommonContentSecurityPolicy = [
   `frame-src *.data.gouv.fr/ https://www.youtube-nocookie.com;`,
   `frame-ancestors 'self';`,
   `child-src 'self';`,
-  `style-src 'unsafe-inline';`,
+  `style-src 'self' 'unsafe-inline' https://fonts.googleapis.com blob: *.aticdn.net *.data.gouv.fr;`,
   `font-src https://fonts.gstatic.com;`,
   `report-uri /csp-violation-report-endpoint/;`,
-  `script-src-elem 'self' blob: *.aticdn.net *.data.gouv.fr;`,
 ]
 
 const ContentSecurityPolicy =
@@ -35,7 +34,6 @@ const ContentSecurityPolicy =
     ? CommonContentSecurityPolicy.concat([
         //https://github.com/vercel/next.js/issues/14221 need unsafe eval for next js to work in dev env...
         `script-src 'self' 'unsafe-eval';`,
-        `style-src-elem 'self' 'unsafe-inline' https://fonts.googleapis.com blob:;`,
       ])
     : CommonContentSecurityPolicy
 
