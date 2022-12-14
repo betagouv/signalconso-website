@@ -1,6 +1,5 @@
 import * as React from 'react'
 import {ReactNode, useContext} from 'react'
-import {apiSdk, companyApiSdk} from '../apiSdk'
 import {ApiAdresseClient} from '../client/ApiAdresseClient'
 import {useConfig} from './ConfigContext'
 import {SignalConsoPublicSdk} from '../../client/SignalConsoPublicSdk'
@@ -14,9 +13,11 @@ export interface ApiSdkProps {
 }
 
 interface Props {
-  apiSdk?: SignalConsoPublicSdk
-  companyApiSdk?: CompanyPublicSdk
-  apiAddressSdk?: ApiAdresseClient
+  overrideForTests?: {
+    apiSdk?: SignalConsoPublicSdk
+    companyApiSdk?: CompanyPublicSdk
+    apiAddressSdk?: ApiAdresseClient
+  }
   children: ReactNode
 }
 
@@ -24,19 +25,35 @@ const defaultContext: Partial<ApiSdkProps> = {}
 
 const ApiSdk = React.createContext<ApiSdkProps>(defaultContext as ApiSdkProps)
 
-export const ApiSdkProvider = ({
-  apiSdk: _apiSdk,
-  companyApiSdk: _companyApiSdk,
-  apiAddressSdk: _apiAddressSdk,
-  children,
-}: Props) => {
+export const ApiSdkProvider = ({overrideForTests, children}: Props) => {
   const config = useConfig().config
+
   return (
     <ApiSdk.Provider
       value={{
-        apiSdk: _apiSdk ?? apiSdk,
-        companyApiSdk: _companyApiSdk ?? companyApiSdk,
-        apiAddressSdk: _apiAddressSdk ?? new ApiAdresseClient(new ApiClient({baseUrl: config.apiAdresseUrl})),
+        apiSdk:
+          overrideForTests?.apiSdk ??
+          new SignalConsoPublicSdk(
+            new ApiClient({
+              baseUrl: config.apiBaseUrl + '/api',
+              headers: {
+                'Content-Type': 'application/json',
+                Accept: 'application/json',
+              },
+            }),
+          ),
+        companyApiSdk:
+          overrideForTests?.companyApiSdk ??
+          new CompanyPublicSdk(
+            new ApiClient({
+              baseUrl: config.apiCompanyUrl + '/api',
+              headers: {
+                'Content-Type': 'application/json',
+                Accept: 'application/json',
+              },
+            }),
+          ),
+        apiAddressSdk: overrideForTests?.apiAddressSdk ?? new ApiAdresseClient(new ApiClient({baseUrl: config.apiAdresseUrl})),
       }}
     >
       {children}

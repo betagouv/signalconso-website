@@ -1,8 +1,8 @@
 import {Subcategory} from '../../anomaly/Anomaly'
-import {ApiClientInterface} from '../ApiClient'
+import {ApiClient} from '../ApiClient'
 
 export class RatingClient {
-  constructor(private client: ApiClientInterface) {}
+  constructor(private client: ApiClient) {}
 
   readonly rate = (category: string, subcategories: Subcategory[], positive: boolean): Promise<void> => {
     return this.client.post(`/rating`, {

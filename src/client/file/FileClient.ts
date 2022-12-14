@@ -1,8 +1,8 @@
-import {ApiClientInterface} from '../ApiClient'
+import {ApiClient} from '../ApiClient'
 import {FileOrigin, UploadedFile} from './UploadedFile'
 
 export class FileClient {
-  constructor(private client: ApiClientInterface) {}
+  constructor(private client: ApiClient) {}
 
   readonly getLink = (file: UploadedFile) => `${this.client.baseUrl}/reports/files/${file.id}/${encodeURI(file.filename)}`
 

@@ -17,27 +17,23 @@ import {CompanyPublicSdk} from '../client/CompanyPublicSdk'
 const AllTheProviders =
   (options?: Options) =>
   ({children}: any) => {
+    const apiSdksOverrides = {
+      apiSdk: {
+        report: {
+          create: () => void 0,
+        },
+        ...(options?.apiSdkMock ?? ({} as any)),
+      },
+      companyApiSdk: {...(options?.companyApiSdk ?? ({} as any))},
+      apiAddressSdk: {
+        fetchCity: (q: string) => Promise.resolve([]),
+      } as any,
+    }
     return (
       <Provide
         providers={[
           _ => <AnalyticProvider children={_} analytic={{trackEvent: () => void 0} as any} />,
-          _ => (
-            <ApiSdkProvider
-              children={_}
-              apiSdk={{
-                report: {
-                  create: () => void 0,
-                },
-                ...(options?.apiSdkMock ?? ({} as any)),
-              }}
-              companyApiSdk={{...(options?.companyApiSdk ?? ({} as any))}}
-              apiAddressSdk={
-                {
-                  fetchCity: (q: string) => Promise.resolve([]),
-                } as any
-              }
-            />
-          ),
+          _ => <ApiSdkProvider children={_} overrideForTests={apiSdksOverrides} />,
           _ => <ThemeProvider theme={scTheme} children={_} />,
           _ => <I18nProvider children={_} />,
           _ => <ReportFlowProvider children={_} />,

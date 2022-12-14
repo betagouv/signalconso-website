@@ -1,8 +1,8 @@
 import {CompanySearchResult} from './Company'
-import {ApiClientInterface} from '../ApiClient'
+import {ApiClient} from '../ApiClient'
 
 export class PublicCompanyClient {
-  constructor(private client: ApiClientInterface) {}
+  constructor(private client: ApiClient) {}
 
   readonly searchCompanies = (search: string, searchPostalCode: string) => {
     return this.client.get<CompanySearchResult[]>(`/companies/search`, {

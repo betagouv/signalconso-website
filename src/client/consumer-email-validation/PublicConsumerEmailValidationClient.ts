@@ -1,8 +1,8 @@
-import {ApiClientInterface} from '../ApiClient'
+import {ApiClient} from '../ApiClient'
 import {ConsumerEmailResult} from './ConsumerEmailValidation'
 
 export class PublicConsumerEmailValidationClient {
-  constructor(private client: ApiClientInterface) {}
+  constructor(private client: ApiClient) {}
 
   readonly check = (email: string) => {
     return this.client.post<{valid: boolean}>('/email-validation/check', {body: {email}})

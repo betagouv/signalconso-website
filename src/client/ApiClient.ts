@@ -10,12 +10,6 @@ interface RequestOptions {
   readonly responseType?: ResponseType
 }
 
-export interface ApiClientInterface {
-  readonly baseUrl: string
-  readonly get: <T = any>(uri: string, options?: RequestOptions) => Promise<T>
-  readonly post: <T = any>(uri: string, options?: RequestOptions) => Promise<T>
-}
-
 type StatusCode = 'front-side' | 200 | 301 | 302 | 400 | 401 | 403 | 404 | 423 | 500 | 504
 
 interface ApiErrorDetails {
@@ -40,7 +34,7 @@ export class ApiError extends Error {
 
 type Method = 'POST' | 'GET' | 'PUT' | 'DELETE' | 'PATCH'
 
-export class ApiClient implements ApiClientInterface {
+export class ApiClient {
   private axiosInstance: AxiosInstance
   private headers: any | undefined
 
