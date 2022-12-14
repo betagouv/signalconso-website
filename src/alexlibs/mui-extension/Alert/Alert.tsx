@@ -1,7 +1,7 @@
 import * as React from 'react'
 import {CSSProperties, ReactNode, useState} from 'react'
 import {Box, BoxProps, darken, Icon, IconButton} from '@mui/material'
-import {usePersistentState} from '../../react-persistent-state/usePersistentState'
+import {usePersistentState} from '../../../hooks/usePersistentState'
 import {colorError, colorInfo, colorSuccess, colorWarning} from '../_core/style/color'
 
 const height = (dense?: boolean) => (dense ? 44 : 52)

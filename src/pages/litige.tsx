@@ -1,13 +1,13 @@
 import Head from 'next/head'
 import {pageDefinitions} from 'core/pageDefinition'
-import {Page} from 'shared/Page/Page'
-import {AccordionPanel, AccordionPanels} from 'shared/AccordionPanel/AccordionPanel'
+import {Page} from 'components_simple/Page/Page'
+import {AccordionPanel, AccordionPanels} from 'components_simple/AccordionPanel/AccordionPanel'
 import {externalLinks} from 'core/externalLinks'
 import {Alert, Txt} from '../alexlibs/mui-extension'
-import {Panel} from 'shared/Panel/Panel'
+import {Panel} from 'components_simple/Panel/Panel'
 import {Icon} from '@mui/material'
-import {useAnalyticContext} from 'core/analytic/AnalyticContext'
-import {ContractualDisputeActions, ContractualDisputeNames, EventCategories} from 'core/analytic/analytic'
+import {useAnalyticContext} from 'analytic/AnalyticContext'
+import {ContractualDisputeActions, ContractualDisputeNames, EventCategories} from 'analytic/analytic'
 
 const Litige = () => {
   const _analytic = useAnalyticContext()

@@ -1,10 +1,10 @@
 import {Tab, Tabs} from '@mui/material'
 import {pageDefinitions} from 'core/pageDefinition'
-import {CentreAideConso} from 'feature/CentreAide/CentreAideConso'
-import {CentreAidePro} from 'feature/CentreAide/CentreAidePro'
+import {CentreAideConso} from 'components_feature/CentreAide/CentreAideConso'
+import {CentreAidePro} from 'components_feature/CentreAide/CentreAidePro'
 import Head from 'next/head'
 import {useState} from 'react'
-import {Page} from 'shared/Page/Page'
+import {Page} from 'components_simple/Page/Page'
 
 const a11yProps = (index: number) => {
   return {
