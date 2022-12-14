@@ -2,7 +2,6 @@ import {Panel, PanelActions, PanelBody} from 'shared/Panel/Panel'
 import {Fender, Txt} from '../../../alexlibs/mui-extension'
 import {Box, BoxProps, Icon} from '@mui/material'
 import {useReportFlowContext} from '../ReportFlowContext'
-import {useEffectFn} from '../../../alexlibs/react-hooks-lib/reactHooksUtils'
 import {useEffect, useMemo} from 'react'
 import {fnSwitch} from '../../../alexlibs/ts-utils'
 import {useConstantContext} from 'core/context/ConstantContext'
@@ -47,7 +46,9 @@ export const Acknowledgement = () => {
     }
   }, [countries, report])
 
-  useEffectFn(countries.error, toastError)
+  useEffect(() => {
+    if (countries.error) toastError(countries.error)
+  }, [countries.error])
 
   if (country || !report.companyAddress.country) {
     return <_Acknowledgement createdReport={report} country={country} />

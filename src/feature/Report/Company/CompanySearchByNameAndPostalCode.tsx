@@ -6,11 +6,10 @@ import {Panel, PanelActions, PanelBody} from 'shared/Panel/Panel'
 import {useApiSdk} from 'core/context/ApiSdk'
 import {useToast} from 'core/toast'
 import {useFetcher} from '../../../alexlibs/react-hooks-lib/UseFetcher'
-import {useEffectFn} from '../../../alexlibs/react-hooks-lib/reactHooksUtils'
 import {ScButton} from 'shared/Button/Button'
 import {Txt} from '../../../alexlibs/mui-extension'
 import {Animate} from 'shared/Animate/Animate'
-import React, {ReactNode} from 'react'
+import React, {ReactNode, useEffect} from 'react'
 import {map} from '../../../alexlibs/ts-utils'
 import {useAnalyticContext} from 'core/analytic/AnalyticContext'
 import {CompanySearchEventActions, EventCategories} from 'core/analytic/analytic'
@@ -45,8 +44,9 @@ export const CompanySearchByNameAndPostalCode = ({children}: Props) => {
     _search.fetch({force: true, clean: true}, form.name, form.postalCode)
   }
 
-  useEffectFn(_search.error, toastError)
-
+  useEffect(() => {
+    if (_search.error) toastError(_search.error)
+  }, [_search.error])
   return (
     <>
       <Animate>

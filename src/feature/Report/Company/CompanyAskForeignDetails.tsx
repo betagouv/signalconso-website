@@ -7,7 +7,6 @@ import {Animate} from 'shared/Animate/Animate'
 import {Autocomplete, Box} from '@mui/material'
 import {useConstantContext} from 'core/context/ConstantContext'
 import React, {useEffect} from 'react'
-import {useEffectFn} from '../../../alexlibs/react-hooks-lib/reactHooksUtils'
 import {useToast} from 'core/toast'
 import {StepperActionsNext} from 'shared/ReportFlowStepper/StepperActionsNext'
 import {Alert, Txt} from '../../../alexlibs/mui-extension'
@@ -43,7 +42,9 @@ export const CompanyAskForeignDetails = ({onSubmit}: Props) => {
   useEffect(() => {
     countries.fetch({force: false, clean: false})
   }, [])
-  useEffectFn(countries.error, toastError)
+  useEffect(() => {
+    if (countries.error) toastError(countries.error)
+  }, [countries.error])
 
   return (
     <Animate>

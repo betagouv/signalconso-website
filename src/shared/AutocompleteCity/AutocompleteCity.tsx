@@ -1,7 +1,6 @@
 import {throttle} from 'core/lodashNamedExport'
 import {useI18n} from 'core/i18n'
 import {useFetcher} from '../../alexlibs/react-hooks-lib/UseFetcher'
-import {useEffectFn} from '../../alexlibs/react-hooks-lib/reactHooksUtils'
 import {Autocomplete, CircularProgress} from '@mui/material'
 import React, {forwardRef, useEffect, useMemo, useState} from 'react'
 import {ScInput, ScInputProps} from '../Input/ScInput'
@@ -53,9 +52,9 @@ export const AutocompleteCity = forwardRef(
       fetch({force: true, clean: false}, inputValue)
     }, [inputValue, fetch])
 
-    useEffectFn(value, _ => {
-      setInputValue(`${_.postalCode} ${_.city}`)
-    })
+    useEffect(() => {
+      if (value) setInputValue(`${value.postalCode} ${value.city}`)
+    }, [value])
 
     return (
       <Autocomplete
