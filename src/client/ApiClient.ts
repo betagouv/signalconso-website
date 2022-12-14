@@ -1,7 +1,7 @@
 import axios, {AxiosResponse, ResponseType} from 'axios'
 import * as qs from 'qs'
 
-export interface RequestOption {
+interface RequestOption {
   readonly qs?: any
   readonly headers?: any
   readonly body?: any
@@ -9,7 +9,7 @@ export interface RequestOption {
   readonly responseType?: ResponseType
 }
 
-export interface ApiClientParams {
+interface ApiClientParams {
   readonly baseUrl: string
   readonly headers?: any
   readonly requestInterceptor?: (options?: RequestOption) => Promise<RequestOption> | RequestOption
@@ -29,9 +29,9 @@ export interface ApiClientApi {
   readonly patch: <T = any>(uri: string, options?: RequestOption) => Promise<T>
 }
 
-export type StatusCode = 'front-side' | 200 | 301 | 302 | 400 | 401 | 403 | 404 | 423 | 500 | 504
+type StatusCode = 'front-side' | 200 | 301 | 302 | 400 | 401 | 403 | 404 | 423 | 500 | 504
 
-export interface ApiErrorDetails {
+interface ApiErrorDetails {
   code: StatusCode
   id?: string
   request: {
@@ -51,19 +51,13 @@ export class ApiError extends Error {
   }
 }
 
-export interface ApiDetailedError {
-  code: StatusCode
-  message: Detail
-  error?: Error
-}
-
-export interface Detail {
+interface Detail {
   type: string
   title: string
   details: string
 }
 
-export type Method = 'POST' | 'GET' | 'PUT' | 'DELETE' | 'PATCH'
+type Method = 'POST' | 'GET' | 'PUT' | 'DELETE' | 'PATCH'
 
 export class ApiClient {
   private readonly request: (method: Method, url: string, options?: RequestOption) => Promise<any>
