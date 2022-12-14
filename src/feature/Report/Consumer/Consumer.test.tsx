@@ -20,9 +20,7 @@ class Fixture {
 describe('Consumer', () => {
   const mock = {
     apiSdkMock: {
-      consumerEmail: {
-        check: () => Promise.resolve({valid: true}),
-      },
+      checkEmail: () => Promise.resolve({valid: true}),
       website: {
         searchForeignCompaniesByUrl: (url: string) => Promise.resolve([]),
         searchCompaniesByUrl: (url: string) =>

@@ -76,7 +76,7 @@ export const ReportFileAdd = ({onUploaded, fileOrigin}: Props) => {
         .then(file => {
           return file
         })
-        .then(file => apiSdk.document.upload(file, fileOrigin))
+        .then(file => apiSdk.uploadDocument(file, fileOrigin))
         .then(onUploaded)
         .catch(e => {
           toastError(e)

@@ -1,11 +1,9 @@
 import {appConfig} from 'conf/appConfig'
+import {ConsumerEmailResult, Subcategory} from 'model'
 import {ApiClient} from './ApiClient'
 import {WebsiteCompanySearchResult} from './company/Company'
 import {Country} from './constant/Country'
-import {PublicConstantClient} from './constant/PublicConstantClient'
-import {PublicConsumerEmailValidationClient} from './consumer-email-validation/PublicConsumerEmailValidationClient'
-import {FileClient} from './file/FileClient'
-import {RatingClient} from './rating/RatingClient'
+import {FileOrigin, UploadedFile} from './file/UploadedFile'
 import {Report} from './report/Report'
 import {ReportDraft} from './report/ReportDraft'
 
@@ -17,17 +15,6 @@ export class SignalConsoPublicSdk {
       Accept: 'application/json',
     },
   })
-  readonly constant: PublicConstantClient
-  readonly document: FileClient
-  readonly rating: RatingClient
-  readonly consumerEmail: PublicConsumerEmailValidationClient
-
-  constructor() {
-    this.constant = new PublicConstantClient(this.client)
-    this.document = new FileClient(this.client)
-    this.rating = new RatingClient(this.client)
-    this.consumerEmail = new PublicConsumerEmailValidationClient(this.client)
-  }
 
   searchCompaniesByUrl = (url: string) => {
     return this.client.get<WebsiteCompanySearchResult>(`/companies/hosts`, {qs: {url}})
@@ -51,6 +38,37 @@ export class SignalConsoPublicSdk {
       date: new Date(date),
       ...rest,
     }))
+  }
+
+  getCountries = () => this.client.get<Country[]>(`/constants/countries`)
+
+  getDocumentLink = (file: UploadedFile) => `${this.client.baseUrl}/reports/files/${file.id}/${encodeURI(file.filename)}`
+
+  uploadDocument = (file: File, origin: FileOrigin) => {
+    const fileFormData: FormData = new FormData()
+    fileFormData.append('reportFile', file, file.name)
+    fileFormData.append('reportFileOrigin', origin)
+    return this.client.post<UploadedFile>(`reports/files`, {body: fileFormData})
+  }
+
+  rateSubcategory = (category: string, subcategories: Subcategory[], positive: boolean): Promise<void> => {
+    return this.client.post(`/rating`, {
+      body: {
+        category,
+        subcategories: subcategories
+          ? subcategories.map(subcategory => (subcategory.title ? subcategory.title : subcategory))
+          : [''],
+        positive,
+      },
+    })
+  }
+
+  checkEmail = (email: string) => {
+    return this.client.post<{valid: boolean}>('/email-validation/check', {body: {email}})
+  }
+
+  checkEmailAndValidate = (email: string, confirmationCode: string) => {
+    return this.client.post<ConsumerEmailResult>('/email-validation/check-and-validate', {body: {email, confirmationCode}})
   }
 }
 
