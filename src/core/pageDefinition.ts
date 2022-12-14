@@ -1,10 +1,3 @@
-export interface PageDefinition {
-  title: string
-  description: string
-}
-
-export type PageDefinitions = typeof pageDefinitions
-
 export const pageDefinitions = {
   default: {
     title: 'SignalConso, un service public pour les consommateurs',
