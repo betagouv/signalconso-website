@@ -1,13 +1,13 @@
 import {Icon} from '@mui/material'
 import {Txt} from 'alexlibs/mui-extension'
-import {dateToFrenchFormat} from 'core/helper/utils'
+import {dateToFrenchFormat} from 'utils/utils'
 import {pageDefinitions} from 'core/pageDefinition'
-import {COLOR_DARK_BLUE, COLOR_LIGHT_BLUE} from 'core/theme/theme'
+import {COLOR_DARK_BLUE, COLOR_LIGHT_BLUE} from 'core/theme'
 import Head from 'next/head'
 import {ReactNode, useMemo, useState} from 'react'
-import {SimpleDatepicker} from 'shared/Datepicker/SimpleDatepicker'
-import {Page} from 'shared/Page/Page'
-import {Panel, PanelBody} from 'shared/Panel/Panel'
+import {SimpleDatepicker} from 'components_simple/Datepicker/SimpleDatepicker'
+import {Page} from 'components_simple/Page/Page'
+import {Panel, PanelBody} from 'components_simple/Panel/Panel'
 
 const closingDays = [
   {day: 1, month: 0},

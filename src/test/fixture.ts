@@ -1,12 +1,12 @@
 import {ReportStep, ReportStepHelper} from 'core/reportStep'
 import randomstring from 'randomstring'
-import {Report, ReportStatus} from '../client/report/Report'
-import {Company, CompanySearchResult, WebsiteCompanySearchResult} from '../client/company/Company'
-import {FileOrigin} from '../client/file/UploadedFile'
-import {ReportDraft, ReportDraftConsumer} from '../client/report/ReportDraft'
-import {Information, ReportTag, Subcategory} from '../anomaly/Anomaly'
-import {Address} from '../model'
-import {allAnomalies} from 'anomaly/Anomalies'
+import {Report, ReportStatus} from '../model/Report'
+import {Company, CompanySearchResult, WebsiteCompanySearchResult} from '../model/Company'
+import {FileOrigin} from '../model/UploadedFile'
+import {ReportDraft, ReportDraftConsumer} from '../model/ReportDraft'
+import {Information, ReportTag, Subcategory} from '../anomalies/Anomaly'
+import {Address} from '../model/Address'
+import {allAnomalies} from 'anomalies/Anomalies'
 
 export class Fixture {
   private static readonly lastNames = ['Doe', 'Durand', 'Dupont']
