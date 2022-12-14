@@ -2,7 +2,7 @@ import {Panel, PanelActions, PanelBody} from 'shared/Panel/Panel'
 import {Fender, Txt} from '../../../alexlibs/mui-extension'
 import {Box, BoxProps, Icon} from '@mui/material'
 import {useReportFlowContext} from '../ReportFlowContext'
-import {useEffectFn, useMemoFn} from '../../../alexlibs/react-hooks-lib/reactHooksUtils'
+import {useEffectFn} from '../../../alexlibs/react-hooks-lib/reactHooksUtils'
 import {useEffect, useMemo} from 'react'
 import {fnSwitch} from '../../../alexlibs/ts-utils'
 import {useConstantContext} from 'core/context/ConstantContext'
@@ -56,7 +56,8 @@ export const Acknowledgement = () => {
 }
 
 export const _Acknowledgement = ({createdReport, country}: {createdReport: Report; country: Country | undefined}) => {
-  const reportCase = useMemoFn(createdReport, _ => {
+  const reportCase = useMemo(() => {
+    const _ = createdReport
     if (_.tags.includes(ReportTag.ReponseConso)) {
       return AcknowledgmentCases.ReponseConso
     } else if (_.employeeConsumer) {
@@ -72,7 +73,7 @@ export const _Acknowledgement = ({createdReport, country}: {createdReport: Repor
     } else {
       return AcknowledgmentCases.Default
     }
-  })
+  }, [createdReport])
 
   return fnSwitch(reportCase, {
     [AcknowledgmentCases.ReponseConso]: () => (
