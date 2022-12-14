@@ -1,5 +1,5 @@
-import { ApiClientApi } from './ApiClient'
-import { PublicCompanyClient } from './company/PublicCompanyClient'
+import {ApiClientApi} from './ApiClient'
+import {PublicCompanyClient} from './company/PublicCompanyClient'
 
 export class CompanyPublicSdk {
   private readonly client: ApiClientApi
