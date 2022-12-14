@@ -1,4 +1,4 @@
-import {ApiClientInterface} from '../ApiClient'
+import {ApiClient} from '../ApiClient'
 
 export type PublicStat =
   | 'PromesseAction'
@@ -14,7 +14,7 @@ export interface CountByDate {
 }
 
 export class PublicStatsClient {
-  constructor(private client: ApiClientInterface) {}
+  constructor(private client: ApiClient) {}
 
   getPublicStatCount = (publicStat: PublicStat) => {
     return this.client.get<number>(`stats/reports/public/count`, {qs: {publicStat}})

@@ -1,10 +1,10 @@
 import {Id, Report} from '../../model'
-import {ApiClientInterface} from '../ApiClient'
+import {ApiClient} from '../ApiClient'
 import {ReportDraft} from './ReportDraft'
 import {ResponseConsumerReview} from '../../model/review'
 
 export class PublicReportClient {
-  constructor(private client: ApiClientInterface) {}
+  constructor(private client: ApiClient) {}
 
   readonly mapReport = (report: {[key in keyof Report]: any}): Report => ({
     ...report,
