@@ -5,7 +5,7 @@ import {useConstantContext} from 'core/context/ConstantContext'
 import {MenuItem, Select} from '@mui/material'
 import {ReportTag} from '../../anomaly/Anomaly'
 import {Report} from '../../client/report/Report'
-import { Enum } from 'alexlibs/ts-utils/Enum'
+import {Enum} from 'alexlibs/ts-utils/Enum'
 
 export const PlaygroundAcknowledgment = () => {
   const [type, setType] = useState<AcknowledgmentCases>(AcknowledgmentCases.ReponseConso)
