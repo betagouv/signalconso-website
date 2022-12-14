@@ -1,5 +1,5 @@
 import {useEffect, useMemo, useState} from 'react'
-import {LocalStorageEntity} from '../../alexlibs/react-persistent-state'
+import {LocalStorageEntity} from '../../alexlibs/react-persistent-state/localStorageApi'
 import {useToast} from 'core/toast'
 import Link from 'next/link'
 import {siteMap} from 'core/siteMap'
