@@ -12,7 +12,7 @@ import {ReportDraft2} from 'core/model/ReportDraft'
 import {DeepPartial} from '../alexlibs/ts-utils'
 import {AnalyticProvider} from 'core/analytic/AnalyticContext'
 import {SignalConsoPublicSdk} from '../client/SignalConsoPublicSdk'
-import {CompanyPublicSdk} from '../client/CompanyPublicSdk'
+import {CompanyPublicClient} from '../client/CompanyPublicClient'
 
 const AllTheProviders =
   (options?: Options) =>
@@ -86,7 +86,7 @@ export const AccessReportFlow = ({
 
 interface Options {
   apiSdkMock?: DeepPartial<SignalConsoPublicSdk>
-  companyApiSdk?: DeepPartial<CompanyPublicSdk>
+  companyApiSdk?: DeepPartial<CompanyPublicClient>
 }
 
 export interface ScRenderResult extends RenderResult {

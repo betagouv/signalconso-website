@@ -100,9 +100,7 @@ describe('Details: single date not in future', () => {
             },
           },
           companyApiSdk: {
-            company: {
-              searchCompanies: (search: string, searchPostalCode: string) => Promise.resolve([]),
-            },
+            searchCompanies: (search: string, searchPostalCode: string) => Promise.resolve([]),
           },
         },
       )

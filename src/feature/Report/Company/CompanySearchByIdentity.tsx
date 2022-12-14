@@ -30,7 +30,7 @@ export const CompanySearchByIdentity = ({children}: Props) => {
   const {companyApiSdk} = useApiSdk()
   const {toastError} = useToast()
   const _analytic = useAnalyticContext()
-  const _searchByIdentity = useFetcher(companyApiSdk.company.searchCompaniesByIdentity)
+  const _searchByIdentity = useFetcher(companyApiSdk.searchCompaniesByIdentity)
   const {register, handleSubmit, reset} = useForm<Form>()
   const inputEl = useRef<HTMLInputElement>(null)
 
