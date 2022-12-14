@@ -15,7 +15,7 @@ import {AccordionInline} from 'shared/AccordionInline/AccordionInline'
 import {useAnalyticContext} from 'core/analytic/AnalyticContext'
 import {EventCategories, ReportEventActions} from 'core/analytic/analytic'
 import {last} from 'core/lodashNamedExport'
-import {ReportStepperPath, ReportStepperTitle} from '../ReportFlow'
+import {ReportStepPathInAnalytics, ReportStepTitleInAnalytics} from '../ReportFlow'
 import {Anomaly, Information, Subcategory} from '../../../anomaly/Anomaly'
 
 interface Props {
@@ -30,7 +30,7 @@ export const ProblemInformation = ({anomaly, subcategories, information}: Props)
   const {apiSdk} = useApiSdk()
   const [votedPositive, setVotedPositive] = useState<boolean | undefined>()
   useEffect(() => {
-    _analytic.trackPage(`${anomaly.path}/${ReportStepperPath.Information}`, ReportStepperTitle.Information)
+    _analytic.trackPage(`${anomaly.path}/${ReportStepPathInAnalytics.Information}`, ReportStepTitleInAnalytics.Information)
     _analytic.trackEvent(
       EventCategories.report,
       ReportEventActions.outOfBounds,
