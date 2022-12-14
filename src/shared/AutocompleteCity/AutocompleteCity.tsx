@@ -1,6 +1,7 @@
 import {throttle} from 'core/lodashNamedExport'
 import {useI18n} from 'core/i18n'
-import {useEffectFn, useFetcher} from '../../alexlibs/react-hooks-lib'
+import {useFetcher} from '../../alexlibs/react-hooks-lib/UseFetcher'
+import {useEffectFn} from '../../alexlibs/react-hooks-lib/reactHooksUtils'
 import {Autocomplete, CircularProgress} from '@mui/material'
 import React, {forwardRef, useEffect, useMemo, useState} from 'react'
 import {ScInput, ScInputProps} from '../Input/ScInput'

@@ -6,7 +6,7 @@ import React, {useEffect} from 'react'
 import {Bar, BarChart, CartesianGrid, Legend, ResponsiveContainer, Tooltip, XAxis, YAxis} from 'recharts'
 import {Panel} from 'shared/Panel/Panel'
 import {Txt} from '../../alexlibs/mui-extension'
-import {useFetcher} from '../../alexlibs/react-hooks-lib'
+import {useFetcher} from '../../alexlibs/react-hooks-lib/UseFetcher'
 import {map} from '../../alexlibs/ts-utils'
 
 interface Props {

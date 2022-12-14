@@ -1,7 +1,7 @@
 import {useApiSdk} from 'core/context/ApiSdk'
 import {ReportDraft2} from 'core/model/ReportDraft'
 import React, {Dispatch, ReactNode, SetStateAction, useContext, useState} from 'react'
-import {useFetcher, UseFetcher} from '../../alexlibs/react-hooks-lib'
+import {useFetcher, UseFetcher} from '../../alexlibs/react-hooks-lib/UseFetcher'
 import {SignalConsoPublicSdk} from '../../client/SignalConsoPublicSdk'
 
 interface ReportFlowContextProps {
