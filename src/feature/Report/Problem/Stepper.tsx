@@ -1,14 +1,8 @@
 import React, {ReactElement, ReactNode, useMemo} from 'react'
 
-export interface ProblemStepperProps {
+interface ProblemStepperProps {
   renderDone?: ReactNode
   children: Array<ReactElement<ProblemStepProps>>
-}
-
-export interface ProblemStepProps {
-  isDone?: boolean
-  hidden?: boolean
-  children: ReactNode
 }
 
 export const Stepper = ({children, renderDone}: ProblemStepperProps) => {
@@ -28,6 +22,12 @@ export const Stepper = ({children, renderDone}: ProblemStepperProps) => {
       {isDone && renderDone}
     </>
   )
+}
+
+interface ProblemStepProps {
+  isDone?: boolean
+  hidden?: boolean
+  children: ReactNode
 }
 
 export const Step = ({isDone, hidden, children}: ProblemStepProps) => {

@@ -39,8 +39,6 @@ export class SpecifyFormUtils {
   static readonly isSpecifyInputName = (name: string) => name.includes('_specify')
 }
 
-export const getSpecifyInputName = (index: number) => `${index}_specify`
-
 export const isSpecifyInputName = (name: string) => name.includes('_specify')
 
 export const Details = () => {
