@@ -4,13 +4,12 @@ import {ScInput} from 'shared/Input/ScInput'
 import {Panel, PanelActions, PanelBody} from 'shared/Panel/Panel'
 import {useApiSdk} from 'core/context/ApiSdk'
 import {useFetcher} from '../../../alexlibs/react-hooks-lib/UseFetcher'
-import {useEffectFn} from '../../../alexlibs/react-hooks-lib/reactHooksUtils'
 import {ScButton} from 'shared/Button/Button'
 import {useForm} from 'react-hook-form'
 import {useToast} from 'core/toast'
 import {IconBtn} from '../../../alexlibs/mui-extension'
 import {Box, Icon} from '@mui/material'
-import React, {ReactNode, useRef} from 'react'
+import React, {ReactNode, useEffect, useRef} from 'react'
 import {Animate} from 'shared/Animate/Animate'
 import {map} from '../../../alexlibs/ts-utils'
 import {CompanySearchEventActions, EventCategories} from 'core/analytic/analytic'
@@ -46,7 +45,9 @@ export const CompanySearchByIdentity = ({children}: Props) => {
     inputEl.current?.focus()
   }
 
-  useEffectFn(_searchByIdentity.error, toastError)
+  useEffect(() => {
+    if (_searchByIdentity.error) toastError(_searchByIdentity.error)
+  }, [_searchByIdentity.error])
 
   return (
     <>

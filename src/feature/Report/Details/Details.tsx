@@ -22,7 +22,6 @@ import {getDraftReportInputs} from './draftReportInputs'
 import {appConfig} from 'conf/appConfig'
 import {useReportFlowStepperContext} from 'shared/ReportFlowStepper/ReportFlowStepper'
 import {ControllerProps} from 'react-hook-form/dist/types/controller'
-import {useEffectFn} from '../../../alexlibs/react-hooks-lib/reactHooksUtils'
 import {DetailInputValues2} from 'core/model/ReportDraft'
 import {DetailsSpecifyInput} from './DetailsSpecifyInput'
 import {useAnalyticContext} from 'core/analytic/AnalyticContext'
@@ -115,7 +114,10 @@ export const _Details = ({
       reset(formValues)
     }
   }, [initialValues])
-  useEffectFn(initialFiles, setUploadedFiles)
+
+  useEffect(() => {
+    if (initialFiles) setUploadedFiles(initialFiles)
+  }, [initialFiles])
 
   return (
     <>

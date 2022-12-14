@@ -1,11 +1,10 @@
 import {ScInput} from 'shared/Input/ScInput'
 import {IconBtn, Txt} from '../../../alexlibs/mui-extension'
-import React, {ReactNode, useState} from 'react'
+import React, {ReactNode, useEffect, useState} from 'react'
 import {useI18n} from 'core/i18n'
 import {useApiSdk} from 'core/context/ApiSdk'
 import {ScButton} from 'shared/Button/Button'
 import {useForm} from 'react-hook-form'
-import {useEffectFn} from '../../../alexlibs/react-hooks-lib/reactHooksUtils'
 import {useFetcher} from '../../../alexlibs/react-hooks-lib/UseFetcher'
 import {useToast} from 'core/toast'
 import {Box, BoxProps, Icon, Tooltip} from '@mui/material'
@@ -43,7 +42,9 @@ export const CompanyByWebsite = ({value, children, ...props}: Props) => {
 
   const [companies, setCompanies] = useState<CompanySearchResult[] | undefined>(undefined)
 
-  useEffectFn(_searchCompany.error, toastError)
+  useEffect(() => {
+    if (_searchCompany.error) toastError(_searchCompany.error)
+  }, [_searchCompany.error])
 
   const submit = async (form: Form) => {
     _searchCompany.clearCache()
