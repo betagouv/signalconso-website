@@ -9,16 +9,18 @@ export const ProblemStepper = ({children, renderDone}: ProblemStepperProps) => {
   const isDone = useMemo(() => {
     return children.every(_ => _.props.hidden || _.props.isDone)
   }, [children])
-  const res: ReactElement<ProblemStepProps>[] = []
+
+  const displayedChildren: ReactElement<ProblemStepProps>[] = []
   for (let i = 0; i < children.length; i++) {
-    if (!children[i].props.hidden) {
-      res.push(children[i])
-      if (!children[i].props.isDone) break
+    const child = children[i]
+    if (!child.props.hidden) {
+      displayedChildren.push(child)
+      if (!child.props.isDone) break
     }
   }
   return (
     <>
-      {res}
+      {displayedChildren}
       {isDone && renderDone}
     </>
   )
@@ -30,6 +32,6 @@ interface ProblemStepProps {
   children: ReactNode
 }
 
-export const ProblemStepperStep = ({isDone, hidden, children}: ProblemStepProps) => {
+export const ProblemStepperStep = ({children}: ProblemStepProps) => {
   return <>{children}</>
 }
