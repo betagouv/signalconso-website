@@ -2,9 +2,9 @@ import {instanceOfSubcategoryInformation} from 'anomaly/Anomalies'
 import {useMemo} from 'react'
 import {Category, Subcategory} from '../../../anomaly/Anomaly'
 
-export const useSelectedSubcategoriesUtils = (anomaly: Category, selectedSubCategories: Subcategory[]) => {
+export const useSelectedSubcategoriesData = (anomaly: Category, selectedSubCategories: Subcategory[]) => {
   const tagsFromSelected = useMemo(() => {
-    return (selectedSubCategories ?? []).flatMap(_ => _.tags ?? [])
+    return selectedSubCategories.flatMap(_ => _.tags ?? [])
   }, [selectedSubCategories])
 
   const lastSubcategories: Subcategory | undefined = useMemo(() => {
@@ -17,7 +17,7 @@ export const useSelectedSubcategoriesUtils = (anomaly: Category, selectedSubCate
 
   const showEmployeeConsumer = useMemo(() => {
     return !instanceOfSubcategoryInformation(lastSubcategories)
-  }, [isLastSubcategory])
+  }, [lastSubcategories])
 
   const companyKindFromSelected = useMemo(() => {
     return [...selectedSubCategories].reverse().find(_ => !!_.companyKind)?.companyKind
