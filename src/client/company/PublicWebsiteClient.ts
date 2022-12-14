@@ -1,9 +1,9 @@
-import {ApiClientApi} from '../ApiClient'
+import {ApiClientInterface} from '../ApiClient'
 import {Country} from '../constant/Country'
 import {CompanySearchResult, WebsiteCompanySearchResult} from './Company'
 
 export class PublicWebsiteClient {
-  constructor(private client: ApiClientApi) {}
+  constructor(private client: ApiClientInterface) {}
 
   readonly searchCompaniesByUrl = (url: string) => {
     return this.client.get<WebsiteCompanySearchResult>(`/companies/hosts`, {qs: {url}})

@@ -1,7 +1,7 @@
 import {PublicCompanyClient} from './company/PublicCompanyClient'
 import {PublicReportClient} from './report/PublicReportClient'
 import {PublicStatsClient} from './stats/PublicStatsClient'
-import {ApiClientApi} from './ApiClient'
+import {ApiClientInterface} from './ApiClient'
 import {PublicConsumerEmailValidationClient} from './consumer-email-validation/PublicConsumerEmailValidationClient'
 import {PublicConstantClient} from './constant/PublicConstantClient'
 import {FileClient} from './file/FileClient'
@@ -9,7 +9,7 @@ import {RatingClient} from './rating/RatingClient'
 import {PublicWebsiteClient} from './company/PublicWebsiteClient'
 
 export class SignalConsoPublicSdk {
-  private readonly client: ApiClientApi
+  private readonly client: ApiClientInterface
   readonly website: PublicWebsiteClient
   readonly report: PublicReportClient
   readonly stats: PublicStatsClient
@@ -18,7 +18,7 @@ export class SignalConsoPublicSdk {
   readonly rating: RatingClient
   readonly consumerEmail: PublicConsumerEmailValidationClient
 
-  constructor(client: ApiClientApi) {
+  constructor(client: ApiClientInterface) {
     this.client = client
     this.website = new PublicWebsiteClient(this.client)
     this.report = new PublicReportClient(this.client)
