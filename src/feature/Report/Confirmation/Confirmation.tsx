@@ -6,7 +6,7 @@ import {Animate} from 'shared/Animate/Animate'
 import {Box, Chip, Icon} from '@mui/material'
 import {AnomalyImage} from 'shared/AnomalyCard/AnomalyImage'
 import {AddressComponent} from 'shared/Address/Address'
-import {StepperActions} from 'shared/Stepper/StepperActions'
+import {ReportFlowStepperActions} from 'shared/ReportFlowStepper/ReportFlowStepperActions'
 import {ReportDraft2} from 'core/model/ReportDraft'
 import {ReportFiles} from 'shared/UploadFile/ReportFiles'
 import {useToast} from 'core/toast'
@@ -122,7 +122,7 @@ export const _Confirmation = ({draft, anomaly}: {anomaly: Pick<Anomaly, 'sprite'
             )}
           </ConfirmationStep>
         </ConfirmationStepper>
-        <StepperActions
+        <ReportFlowStepperActions
           nextIcon="send"
           loadingNext={_reportFlow.createReport.loading}
           nextButtonLabel={draft.forwardToReponseConso ? m.confirmationBtnReponseConso : m.confirmationBtn}

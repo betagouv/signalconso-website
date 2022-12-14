@@ -6,7 +6,7 @@ import {fnSwitch} from '../../alexlibs/ts-utils'
 import {SxProps} from '@mui/system'
 
 interface StepperHeaderProps extends BoxProps {
-  steps: string[]
+  stepsLabels: string[]
   currentStep: number
   goTo?: (index: number) => void
   stepSize?: number
@@ -16,8 +16,16 @@ interface StepperHeaderProps extends BoxProps {
 
 type StepState = 'done' | 'current' | 'not_done'
 
-export const StepperHeader = ({sx, steps, currentStep, goTo, stepSize = 32, stepMargin = 8, hideLabel}: StepperHeaderProps) => {
-  const isDone = currentStep >= steps.length
+export const ReportFlowStepperHeader = ({
+  sx,
+  stepsLabels,
+  currentStep,
+  goTo,
+  stepSize = 32,
+  stepMargin = 8,
+  hideLabel,
+}: StepperHeaderProps) => {
+  const isDone = currentStep >= stepsLabels.length
   const {isMobileWidthMax} = useWindowWidth()
   return (
     <Box
@@ -28,7 +36,7 @@ export const StepperHeader = ({sx, steps, currentStep, goTo, stepSize = 32, step
         ...sx,
       }}
     >
-      {steps.map((step, i) => {
+      {stepsLabels.map((step, i) => {
         const state: StepState = currentStep > i ? 'done' : currentStep === i ? 'current' : 'not_done'
         return (
           <Box key={step} sx={{flex: 1}} onClick={goTo ? () => i < currentStep && !isDone && goTo(i) : undefined}>

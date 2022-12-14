@@ -7,7 +7,7 @@ import {CompanySearchResultComponent} from './CompanySearchResult'
 import {CompanyAskIsForeign, IsForeignCompany} from './CompanyAskIsForeign'
 import {ScButton} from 'shared/Button/Button'
 import {ReportDraft2} from 'core/model/ReportDraft'
-import {useStepperContext} from 'shared/Stepper/Stepper'
+import {useReportFlowStepperContext} from 'shared/ReportFlowStepper/ReportFlowStepper'
 import {fnSwitch} from '../../../alexlibs/ts-utils'
 import {CompanySearchByNameAndPostalCode} from './CompanySearchByNameAndPostalCode'
 import {CompanySearchByIdentity} from './CompanySearchByIdentity'
@@ -19,7 +19,7 @@ import {Txt} from '../../../alexlibs/mui-extension'
 import {Row} from 'shared/Row/Row'
 import {AddressComponent} from 'shared/Address/Address'
 import {Panel, PanelActions, PanelBody} from 'shared/Panel/Panel'
-import {StepperActionsNext} from 'shared/Stepper/StepperActionsNext'
+import {StepperActionsNext} from 'shared/ReportFlowStepper/StepperActionsNext'
 import {CompanyAskConsumerStreet} from './CompanyAskConsumerStreet'
 import {CompanyWebsiteCountry} from './CompanyWebsiteCountry'
 import {useAnalyticContext} from 'core/analytic/AnalyticContext'
@@ -38,7 +38,7 @@ interface CompanyWithRequiredProps extends CompanyProps {
 export const Company = ({}: CompanyProps) => {
   const _analytic = useAnalyticContext()
   const _reportFlow = useReportFlowContext()
-  const _stepper = useStepperContext()
+  const _stepper = useReportFlowStepperContext()
   const draft = _reportFlow.reportDraft
   if (draft.companyDraft) {
     return <CompanyFilled draft={draft} onClear={() => _reportFlow.setReportDraft(_ => ({..._, companyDraft: undefined}))} />
@@ -56,7 +56,7 @@ export const Company = ({}: CompanyProps) => {
 }
 
 export const CompanyFilled = ({draft, onClear}: {draft: Partial<ReportDraft2>; onClear: () => void}) => {
-  const _stepper = useStepperContext()
+  const _stepper = useReportFlowStepperContext()
   const {m} = useI18n()
   if (!draft.companyDraft) {
     throw new Error(`companyDraft should be defined ${JSON.stringify(draft)}`)

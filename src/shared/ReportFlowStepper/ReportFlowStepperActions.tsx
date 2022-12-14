@@ -1,7 +1,7 @@
 import {Box} from '@mui/material'
 import {useI18n} from 'core/i18n'
 import {ScButton} from '../Button/Button'
-import {useStepperContext} from './Stepper'
+import {useReportFlowStepperContext} from './ReportFlowStepper'
 import {StepperActionsNext} from './StepperActionsNext'
 
 interface Props {
@@ -15,9 +15,18 @@ interface Props {
   prev?: (prev: () => void) => void
 }
 
-export const StepperActions = ({nextButtonLabel, nextIcon, hidePrev, hideNext, loadingNext, loadingPrev, next, prev}: Props) => {
+export const ReportFlowStepperActions = ({
+  nextButtonLabel,
+  nextIcon,
+  hidePrev,
+  hideNext,
+  loadingNext,
+  loadingPrev,
+  next,
+  prev,
+}: Props) => {
   const {m} = useI18n()
-  const _stepper = useStepperContext()
+  const _stepper = useReportFlowStepperContext()
   return (
     <Box sx={{display: 'flex', alignItems: 'center', justifyContent: 'space-between', mt: 3}}>
       {_stepper.currentStep > 0 && !hidePrev && (

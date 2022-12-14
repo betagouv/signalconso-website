@@ -4,26 +4,43 @@ import {useAnalyticContext} from 'core/analytic/AnalyticContext'
 import {useI18n} from 'core/i18n'
 import {ReportDraft2} from 'core/model/ReportDraft'
 import {useEffect, useMemo} from 'react'
-import {StepperActions} from 'shared/Stepper/StepperActions'
+import {ReportFlowStepperActions} from 'shared/ReportFlowStepper/ReportFlowStepperActions'
 import {instanceOfSubcategoryInformation} from '../../../anomaly/Anomalies'
 import {Anomaly, CompanyKinds, ReportTag, Subcategory} from '../../../anomaly/Anomaly'
 import {useReportFlowContext} from '../ReportFlowContext'
 import {ProblemContratualDisputeWarnPanel} from './ProblemContratualDisputeWarnPanel'
 import {ProblemInformation} from './ProblemInformation'
 import {ProblemSelect} from './ProblemSelect'
-import {Step, Stepper} from './Stepper'
-import {useSelectedSubcategoriesUtils} from './useSelectedSubcategoriesUtils'
+import {ProblemStepperStep, ProblemStepper} from './ProblemStepper'
+import {useSelectedSubcategoriesData} from './useSelectedSubcategoriesData'
 
 interface Props {
   anomaly: Anomaly
 }
 
+function adjustTags(
+  tags: ReportTag[],
+  draft: Partial<ReportDraft2>,
+  companyKindFromSelected: CompanyKinds | undefined,
+): ReportTag[] {
+  let res = tags
+  if (companyKindFromSelected === CompanyKinds.WEBSITE || draft.companyKind === CompanyKinds.WEBSITE) {
+    res = [...res, ReportTag.Internet]
+  }
+  if (draft.forwardToReponseConso !== true) {
+    res = res.filter(_ => _ !== ReportTag.ReponseConso)
+  }
+  return res
+}
+
 export const Problem = ({anomaly}: Props) => {
   const _analytic = useAnalyticContext()
+
   const {m} = useI18n()
   const displayReponseConso = useMemo(() => Math.random() * 100 < appConfig.reponseConsoDisplayRate, [])
   const {reportDraft, setReportDraft, clearReportDraft} = useReportFlowContext()
 
+  // reset the draft when switching the root category
   useEffect(() => {
     if (anomaly.category !== reportDraft.category) {
       _analytic.trackEvent(EventCategories.report, ReportEventActions.validateCategory, anomaly.category)
@@ -32,25 +49,17 @@ export const Problem = ({anomaly}: Props) => {
     }
   }, [anomaly.category])
 
-  const {tagsFromSelected, lastSubcategories, isLastSubcategory, showEmployeeConsumer, companyKindFromSelected} =
-    useSelectedSubcategoriesUtils(anomaly, reportDraft?.subcategories ?? [])
+  const {tagsFromSelected, lastSubcategories, isLastSubcategory, companyKindFromSelected} = useSelectedSubcategoriesData(
+    anomaly,
+    reportDraft?.subcategories ?? [],
+  )
 
-  const filterTags = (tagsFromSelected: ReportTag[], draft: Partial<ReportDraft2>): ReportTag[] => {
-    if (companyKindFromSelected === CompanyKinds.WEBSITE || draft.companyKind === CompanyKinds.WEBSITE) {
-      tagsFromSelected.push(ReportTag.Internet)
-    }
-    if (!(draft.forwardToReponseConso ?? false)) {
-      return tagsFromSelected.filter(_ => _ !== ReportTag.ReponseConso)
-    }
-    return tagsFromSelected
-  }
-
-  const submit = (next: () => void) => {
+  function onSubmit(next: () => void): void {
     setReportDraft(draft => {
       const {subcategories, ..._anomaly} = anomaly
       return {
         ...draft,
-        tags: filterTags(tagsFromSelected, draft),
+        tags: adjustTags(tagsFromSelected, draft, companyKindFromSelected),
         companyKind: companyKindFromSelected ?? draft.companyKind ?? CompanyKinds.SIRET,
         anomaly: _anomaly,
       }
@@ -104,8 +113,8 @@ export const Problem = ({anomaly}: Props) => {
             information={(lastSubcategories as any).information}
           />
         ) : (
-          <Stepper renderDone={<StepperActions next={submit} />}>
-            <Step isDone={reportDraft.employeeConsumer !== undefined}>
+          <ProblemStepper renderDone={<ReportFlowStepperActions next={onSubmit} />}>
+            <ProblemStepperStep isDone={reportDraft.employeeConsumer !== undefined}>
               <ProblemSelect
                 id="select-employeeconsumer"
                 title={m.problemDoYouWorkInCompany}
@@ -122,8 +131,8 @@ export const Problem = ({anomaly}: Props) => {
                   },
                 ]}
               />
-            </Step>
-            <Step isDone={reportDraft.companyKind !== undefined} hidden={!!companyKindFromSelected}>
+            </ProblemStepperStep>
+            <ProblemStepperStep isDone={reportDraft.companyKind !== undefined} hidden={!!companyKindFromSelected}>
               <ProblemSelect
                 id="select-companyKind"
                 title={m.problemIsInternetCompany}
@@ -141,8 +150,8 @@ export const Problem = ({anomaly}: Props) => {
                   },
                 ]}
               />
-            </Step>
-            <Step
+            </ProblemStepperStep>
+            <ProblemStepperStep
               isDone={reportDraft.contractualDispute !== undefined || reportDraft.forwardToReponseConso !== undefined}
               hidden={reportDraft.employeeConsumer === true}
             >
@@ -202,11 +211,11 @@ export const Problem = ({anomaly}: Props) => {
                   }
                 }}
               />
-            </Step>
-            <Step isDone={true} hidden={reportDraft.contractualDispute !== true}>
+            </ProblemStepperStep>
+            <ProblemStepperStep isDone={true} hidden={reportDraft.contractualDispute !== true}>
               <ProblemContratualDisputeWarnPanel />
-            </Step>
-          </Stepper>
+            </ProblemStepperStep>
+          </ProblemStepper>
         ))}
     </>
   )

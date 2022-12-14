@@ -29,10 +29,3 @@ export interface Company {
   isPublic: boolean
   isOpen: boolean
 }
-
-export interface CompanySearch extends PaginatedFilters {
-  readonly departments?: string[]
-  readonly activityCodes?: string[]
-  emailsWithAccess?: string
-  identity?: string
-}

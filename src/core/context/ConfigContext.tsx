@@ -27,6 +27,7 @@ export const ConfigProvider = ({config, children}: Props) => {
   )
 }
 
+// I'm pretty sure we should import the config object directly instead of using this context
 export const useConfig = (): ConfigProps => {
   return useContext<ConfigProps>(Config)
 }

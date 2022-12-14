@@ -9,10 +9,10 @@ import {regexp} from 'core/utils/regexp'
 import {ScRadioGroup, ScRadioGroupItem} from 'shared/RadioGroup'
 import {useReportFlowContext} from '../ReportFlowContext'
 import {Alert, Txt} from '../../../alexlibs/mui-extension'
-import {StepperActions} from 'shared/Stepper/StepperActions'
+import {ReportFlowStepperActions} from 'shared/ReportFlowStepper/ReportFlowStepperActions'
 import {useApiSdk} from 'core/context/ApiSdk'
 import {useFetcher} from '../../../alexlibs/react-hooks-lib'
-import {useStepperContext} from 'shared/Stepper/Stepper'
+import {useReportFlowStepperContext} from 'shared/ReportFlowStepper/ReportFlowStepper'
 import {ConsumerValidationDialog} from './ConsumerValidationDialog'
 import {ReportDraft2} from 'core/model/ReportDraft'
 import {DeepPartial} from '../../../alexlibs/ts-utils'
@@ -35,7 +35,7 @@ interface ConsumerForm {
 }
 
 export const Consumer = () => {
-  const _stepper = useStepperContext()
+  const _stepper = useReportFlowStepperContext()
   const _reportFlow = useReportFlowContext()
   const draft = _reportFlow.reportDraft
   return (
@@ -213,7 +213,7 @@ export const _Consumer = ({
         onClose={() => setOpenValidationDialog(false)}
         onValidated={saveAndNext}
       />
-      <StepperActions
+      <ReportFlowStepperActions
         loadingNext={_checkEmail.loading}
         next={() => {
           _form.handleSubmit(form => {
