@@ -4,11 +4,11 @@ import {StepperHeader} from './StepperHeader'
 export interface StepProps {
   name: string
   label: string
-  component: () => ReactNode
+  component: () => JSX.Element
 }
 
 interface StepperProps {
-  renderDone?: () => ReactNode
+  renderDone: () => JSX.Element
   steps: StepProps[]
   initialStep?: number
   onStepChange?: (props: StepProps, index: number) => void
@@ -27,13 +27,15 @@ export const StepperContext = React.createContext<StepperContext>({
 
 export const Stepper = React.memo(({steps, initialStep, renderDone, onStepChange}: StepperProps) => {
   const [currentStep, setCurrentStep] = useState(initialStep ?? 0)
-  const maxStep = useMemo(() => steps.length + (renderDone ? 1 : 0), [steps])
+  const maxStep = useMemo(() => steps.length + 1, [steps])
   const scrollTop = () => window.scrollTo(0, 0)
   const isDone = currentStep >= steps.length
 
   useEffect(() => {
     onStepChange?.(steps[currentStep], currentStep)
   }, [currentStep])
+
+  const Step: () => JSX.Element = currentStep > steps.length - 1 ? renderDone : steps[currentStep].component
 
   return (
     <StepperContext.Provider
@@ -57,10 +59,7 @@ export const Stepper = React.memo(({steps, initialStep, renderDone, onStepChange
       }}
     >
       <StepperHeader steps={steps.map(_ => _.label)} currentStep={currentStep} goTo={setCurrentStep} />
-      {(() => {
-        const Step: any = currentStep > steps.length - 1 ? renderDone : steps[currentStep].component
-        return <Step />
-      })()}
+      <Step />
     </StepperContext.Provider>
   )
 })
