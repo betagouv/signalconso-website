@@ -1,7 +1,7 @@
 import {UploadedFile} from '../file/UploadedFile'
 import {DetailInputValue} from './Report'
 import {Address, CompanyKinds, ReportTag, Subcategory} from '../../model'
-import {map} from '../../alexlibs/ts-utils'
+import {ifDefined} from '../../alexlibs/ts-utils'
 import {uniqBy} from 'core/lodashNamedExport'
 
 export enum Gender {
@@ -77,7 +77,7 @@ export class ReportDraft {
       ...draft,
       details: draft.details,
       gender: draft.consumer.gender,
-      subcategories: map(draft.subcategories, subcategories => subcategories.map(_ => _.title ?? _)),
+      subcategories: ifDefined(draft.subcategories, subcategories => subcategories.map(_ => _.title ?? _)),
       firstName: draft.consumer.firstName,
       lastName: draft.consumer.lastName,
       email: draft.consumer.email,

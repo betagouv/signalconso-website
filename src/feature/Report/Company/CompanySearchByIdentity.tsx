@@ -11,7 +11,7 @@ import {IconBtn} from '../../../alexlibs/mui-extension'
 import {Box, Icon} from '@mui/material'
 import React, {ReactNode, useEffect, useRef} from 'react'
 import {Animate} from 'shared/Animate/Animate'
-import {map} from '../../../alexlibs/ts-utils'
+import {ifDefined} from '../../../alexlibs/ts-utils'
 import {CompanySearchEventActions, EventCategories} from 'core/analytic/analytic'
 import {useAnalyticContext} from 'core/analytic/AnalyticContext'
 import {CompanySearchByIdentityHelpDialog} from './CompanySearchByIdentityHelpDialog'
@@ -94,7 +94,7 @@ export const CompanySearchByIdentity = ({children}: Props) => {
           </form>
         </Panel>
       </Animate>
-      {map(_searchByIdentity.entity, children)}
+      {ifDefined(_searchByIdentity.entity, children)}
     </>
   )
 }

@@ -3,9 +3,9 @@ import {useEffect, useMemo, useState} from 'react'
 import {Fixture} from '../../test/fixture'
 import {useConstantContext} from 'core/context/ConstantContext'
 import {MenuItem, Select} from '@mui/material'
-import {Enum} from '../../alexlibs/ts-utils'
 import {ReportTag} from '../../anomaly/Anomaly'
 import {Report} from '../../client/report/Report'
+import { Enum } from 'alexlibs/ts-utils/Enum'
 
 export const PlaygroundAcknowledgment = () => {
   const [type, setType] = useState<AcknowledgmentCases>(AcknowledgmentCases.ReponseConso)

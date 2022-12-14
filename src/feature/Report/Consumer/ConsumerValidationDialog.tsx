@@ -8,7 +8,9 @@ import {Controller, useForm} from 'react-hook-form'
 import {ScButton} from 'shared/Button/Button'
 import {Alert, Txt} from '../../../alexlibs/mui-extension'
 import {useFetcher} from '../../../alexlibs/react-hooks-lib/UseFetcher'
-import {delay, duration, fnSwitch} from '../../../alexlibs/ts-utils'
+import {duration} from '../../../alexlibs/ts-utils/Duration'
+import {fnSwitch} from '../../../alexlibs/ts-utils/FnSwitch'
+import {delay} from '../../../alexlibs/ts-utils'
 import {InputValidationCode} from './InputValidationCode'
 
 interface Props {

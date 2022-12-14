@@ -8,7 +8,7 @@ import {useEffect, useState} from 'react'
 import {ScButton} from 'shared/Button/Button'
 import {Page} from 'shared/Page/Page'
 import {IconBtn, Txt} from '../alexlibs/mui-extension'
-import {fnSwitch} from '../alexlibs/ts-utils'
+import {fnSwitch} from '../alexlibs/ts-utils/FnSwitch'
 import {
   allVisibleAnomalies,
   instanceOfAnomaly,

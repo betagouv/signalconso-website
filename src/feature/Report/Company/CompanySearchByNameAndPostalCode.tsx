@@ -10,7 +10,7 @@ import {ScButton} from 'shared/Button/Button'
 import {Txt} from '../../../alexlibs/mui-extension'
 import {Animate} from 'shared/Animate/Animate'
 import React, {ReactNode, useEffect} from 'react'
-import {map} from '../../../alexlibs/ts-utils'
+import {ifDefined} from '../../../alexlibs/ts-utils'
 import {useAnalyticContext} from 'core/analytic/AnalyticContext'
 import {CompanySearchEventActions, EventCategories} from 'core/analytic/analytic'
 import {AutocompleteCity} from 'shared/AutocompleteCity/AutocompleteCity'
@@ -94,7 +94,7 @@ export const CompanySearchByNameAndPostalCode = ({children}: Props) => {
           </form>
         </Panel>
       </Animate>
-      {map(_search.entity, children)}
+      {ifDefined(_search.entity, children)}
     </>
   )
 }
