@@ -16,7 +16,15 @@ interface StepperHeaderProps extends BoxProps {
 
 type StepState = 'done' | 'current' | 'not_done'
 
-export const StepperHeader = ({sx, steps, currentStep, goTo, stepSize = 32, stepMargin = 8, hideLabel}: StepperHeaderProps) => {
+export const ReportFlowStepperHeader = ({
+  sx,
+  steps,
+  currentStep,
+  goTo,
+  stepSize = 32,
+  stepMargin = 8,
+  hideLabel,
+}: StepperHeaderProps) => {
   const isDone = currentStep >= steps.length
   const {isMobileWidthMax} = useWindowWidth()
   return (

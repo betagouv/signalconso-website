@@ -1,7 +1,7 @@
 import React, {ReactNode, useContext, useEffect, useMemo, useState} from 'react'
-import {StepperHeader} from './StepperHeader'
+import {ReportFlowStepperHeader} from './ReportFlowStepperHeader'
 
-export interface StepProps {
+interface StepProps {
   name: string
   label: string
   component: () => JSX.Element
@@ -14,18 +14,18 @@ interface StepperProps {
   onStepChange?: (props: StepProps, index: number) => void
 }
 
-interface StepperContext {
+interface ReportFlowStepperContext {
   currentStep: number
   goTo: (i: number) => void
   next: () => void
   prev: () => void
 }
 
-export const StepperContext = React.createContext<StepperContext>({
+export const ReportFlowStepperContext = React.createContext<ReportFlowStepperContext>({
   currentStep: 0,
-} as StepperContext)
+} as ReportFlowStepperContext)
 
-export const Stepper = React.memo(({steps, initialStep, renderDone, onStepChange}: StepperProps) => {
+export const ReportFlowStepper = React.memo(({steps, initialStep, renderDone, onStepChange}: StepperProps) => {
   const [currentStep, setCurrentStep] = useState(initialStep ?? 0)
   const maxStep = useMemo(() => steps.length + 1, [steps])
   const scrollTop = () => window.scrollTo(0, 0)
@@ -38,7 +38,7 @@ export const Stepper = React.memo(({steps, initialStep, renderDone, onStepChange
   const Step: () => JSX.Element = currentStep > steps.length - 1 ? renderDone : steps[currentStep].component
 
   return (
-    <StepperContext.Provider
+    <ReportFlowStepperContext.Provider
       value={{
         currentStep,
         goTo: (i: number) => {
@@ -58,12 +58,12 @@ export const Stepper = React.memo(({steps, initialStep, renderDone, onStepChange
         },
       }}
     >
-      <StepperHeader steps={steps.map(_ => _.label)} currentStep={currentStep} goTo={setCurrentStep} />
+      <ReportFlowStepperHeader steps={steps.map(_ => _.label)} currentStep={currentStep} goTo={setCurrentStep} />
       <Step />
-    </StepperContext.Provider>
+    </ReportFlowStepperContext.Provider>
   )
 })
 
-export const useStepperContext = () => {
-  return useContext<StepperContext>(StepperContext)
+export const useReportFlowStepperContext = () => {
+  return useContext<ReportFlowStepperContext>(ReportFlowStepperContext)
 }

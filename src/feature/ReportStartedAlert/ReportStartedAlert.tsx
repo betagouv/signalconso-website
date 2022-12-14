@@ -7,7 +7,7 @@ import {Txt} from '../../alexlibs/mui-extension'
 import {ScButton} from 'shared/Button/Button'
 import Link from 'next/link'
 import {ReportStepHelper} from 'core/reportStep'
-import {StepperHeader} from 'shared/Stepper/StepperHeader'
+import {ReportFlowStepperHeader} from 'shared/ReportFlowStepper/ReportFlowStepperHeader'
 
 export const ReportStartedAlert = () => {
   const _report = useReportFlowContext()
@@ -40,7 +40,7 @@ export const ReportStartedAlert = () => {
             <Txt block color="hint">
               {_report.reportDraft.anomaly.category}
             </Txt>
-            <StepperHeader
+            <ReportFlowStepperHeader
               sx={{my: 1.5, mx: '-22px'}}
               hideLabel
               currentStep={currentStep}

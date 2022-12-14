@@ -5,7 +5,7 @@ import {Box} from '@mui/material'
 import {ScButton} from 'shared/Button/Button'
 import {useI18n} from 'core/i18n'
 import {useReportFlowContext} from '../ReportFlowContext'
-import {useStepperContext} from 'shared/Stepper/Stepper'
+import {useReportFlowStepperContext} from 'shared/ReportFlowStepper/ReportFlowStepper'
 
 interface ConfirmationStepperProps {
   children: Array<ReactElement<ConfirmationStepProps>>
@@ -24,7 +24,7 @@ export const ConfirmationStepper = ({children}: ConfirmationStepperProps) => {
 export const ConfirmationStep = ({title, children, index}: ConfirmationStepProps) => {
   const indexSize = 40
   const {m} = useI18n()
-  const _stepper = useStepperContext()
+  const _stepper = useReportFlowStepperContext()
   return (
     <Panel
       title={
