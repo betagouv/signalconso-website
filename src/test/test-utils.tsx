@@ -7,7 +7,7 @@ import {ReportFlowProvider, useReportFlowContext} from 'feature/Report/ReportFlo
 import {Provide} from 'shared/Provide/Provide'
 import {ApiSdkProvider} from 'core/context/ApiSdk'
 import {fr} from 'core/i18n/localization/fr'
-import {StepperContext} from 'shared/Stepper/Stepper'
+import {ReportFlowStepperContext} from 'shared/ReportFlowStepper/ReportFlowStepper'
 import {ReportDraft2} from 'core/model/ReportDraft'
 import {DeepPartial} from '../alexlibs/ts-utils'
 import {AnalyticProvider} from 'core/analytic/AnalyticContext'
@@ -62,7 +62,7 @@ export const DummyStepperProvider = ({
   onPrev?: () => void
 }) => {
   return (
-    <StepperContext.Provider
+    <ReportFlowStepperContext.Provider
       value={{
         currentStep,
         goTo: onGoTo ?? (() => void 0),
@@ -71,7 +71,7 @@ export const DummyStepperProvider = ({
       }}
     >
       {children}
-    </StepperContext.Provider>
+    </ReportFlowStepperContext.Provider>
   )
 }
 export const AccessReportFlow = ({

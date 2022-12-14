@@ -7,7 +7,7 @@ import {fnSwitch, mapFor} from '../../../alexlibs/ts-utils'
 import {useI18n} from 'core/i18n'
 import {Controller, useForm} from 'react-hook-form'
 import {ReportFiles} from 'shared/UploadFile/ReportFiles'
-import {StepperActions} from 'shared/Stepper/StepperActions'
+import {ReportFlowStepperActions} from 'shared/ReportFlowStepper/ReportFlowStepperActions'
 import {FormLayout} from 'shared/FormLayout/FormLayout'
 import {Animate} from 'shared/Animate/Animate'
 import {Panel, PanelBody} from 'shared/Panel/Panel'
@@ -20,7 +20,7 @@ import {DetailsAlertProduitDangereux} from './DetailsAlertProduitDangereux'
 import {last} from 'core/lodashNamedExport'
 import {getDraftReportInputs} from './draftReportInputs'
 import {appConfig} from 'conf/appConfig'
-import {useStepperContext} from 'shared/Stepper/Stepper'
+import {useReportFlowStepperContext} from 'shared/ReportFlowStepper/ReportFlowStepper'
 import {ControllerProps} from 'react-hook-form/dist/types/controller'
 import {useEffectFn} from '../../../alexlibs/react-hooks-lib'
 import {DetailInputValues2} from 'core/model/ReportDraft'
@@ -44,7 +44,7 @@ export const isSpecifyInputName = (name: string) => name.includes('_specify')
 export const Details = () => {
   const _reportFlow = useReportFlowContext()
   const _analytic = useAnalyticContext()
-  const _stepper = useStepperContext()
+  const _stepper = useReportFlowStepperContext()
   const draft = _reportFlow.reportDraft
   const inputs = useMemo(() => {
     if (draft.subcategories) {
@@ -336,7 +336,7 @@ export const _Details = ({
           </PanelBody>
         </Panel>
       </Animate>
-      <StepperActions
+      <ReportFlowStepperActions
         next={() => {
           handleSubmit(detailInputValues => {
             onSubmit(detailInputValues, uploadedFiles)

@@ -4,14 +4,14 @@ import {useAnalyticContext} from 'core/analytic/AnalyticContext'
 import {useI18n} from 'core/i18n'
 import {ReportDraft2} from 'core/model/ReportDraft'
 import {useEffect, useMemo} from 'react'
-import {StepperActions} from 'shared/Stepper/StepperActions'
+import {ReportFlowStepperActions} from 'shared/ReportFlowStepper/ReportFlowStepperActions'
 import {instanceOfSubcategoryInformation} from '../../../anomaly/Anomalies'
 import {Anomaly, CompanyKinds, ReportTag, Subcategory} from '../../../anomaly/Anomaly'
 import {useReportFlowContext} from '../ReportFlowContext'
 import {ProblemContratualDisputeWarnPanel} from './ProblemContratualDisputeWarnPanel'
 import {ProblemInformation} from './ProblemInformation'
 import {ProblemSelect} from './ProblemSelect'
-import {Step, Stepper} from './Stepper'
+import {ProblemStepperStep, ProblemStepper} from './ProblemStepper'
 import {useSelectedSubcategoriesUtils} from './useSelectedSubcategoriesUtils'
 
 interface Props {
@@ -104,8 +104,8 @@ export const Problem = ({anomaly}: Props) => {
             information={(lastSubcategories as any).information}
           />
         ) : (
-          <Stepper renderDone={<StepperActions next={submit} />}>
-            <Step isDone={reportDraft.employeeConsumer !== undefined}>
+          <ProblemStepper renderDone={<ReportFlowStepperActions next={submit} />}>
+            <ProblemStepperStep isDone={reportDraft.employeeConsumer !== undefined}>
               <ProblemSelect
                 id="select-employeeconsumer"
                 title={m.problemDoYouWorkInCompany}
@@ -122,8 +122,8 @@ export const Problem = ({anomaly}: Props) => {
                   },
                 ]}
               />
-            </Step>
-            <Step isDone={reportDraft.companyKind !== undefined} hidden={!!companyKindFromSelected}>
+            </ProblemStepperStep>
+            <ProblemStepperStep isDone={reportDraft.companyKind !== undefined} hidden={!!companyKindFromSelected}>
               <ProblemSelect
                 id="select-companyKind"
                 title={m.problemIsInternetCompany}
@@ -141,8 +141,8 @@ export const Problem = ({anomaly}: Props) => {
                   },
                 ]}
               />
-            </Step>
-            <Step
+            </ProblemStepperStep>
+            <ProblemStepperStep
               isDone={reportDraft.contractualDispute !== undefined || reportDraft.forwardToReponseConso !== undefined}
               hidden={reportDraft.employeeConsumer === true}
             >
@@ -202,11 +202,11 @@ export const Problem = ({anomaly}: Props) => {
                   }
                 }}
               />
-            </Step>
-            <Step isDone={true} hidden={reportDraft.contractualDispute !== true}>
+            </ProblemStepperStep>
+            <ProblemStepperStep isDone={true} hidden={reportDraft.contractualDispute !== true}>
               <ProblemContratualDisputeWarnPanel />
-            </Step>
-          </Stepper>
+            </ProblemStepperStep>
+          </ProblemStepper>
         ))}
     </>
   )

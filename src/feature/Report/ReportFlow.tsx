@@ -1,4 +1,4 @@
-import {Stepper} from 'shared/Stepper/Stepper'
+import {ReportFlowStepper} from 'shared/ReportFlowStepper/ReportFlowStepper'
 import {Problem} from './Problem/Problem'
 import {Details} from './Details/Details'
 import {Company} from './Company/Company'
@@ -39,7 +39,7 @@ export const ReportFlow = React.memo(({initialStep, anomaly}: Props) => {
   const _analytics = useAnalyticContext()
   const {m} = useI18n()
   return (
-    <Stepper
+    <ReportFlowStepper
       initialStep={initialStep}
       renderDone={Acknowledgement}
       onStepChange={(props, index) => {

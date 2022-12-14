@@ -9,7 +9,7 @@ import {useConstantContext} from 'core/context/ConstantContext'
 import React, {useEffect} from 'react'
 import {useEffectFn} from '../../../alexlibs/react-hooks-lib'
 import {useToast} from 'core/toast'
-import {StepperActionsNext} from 'shared/Stepper/StepperActionsNext'
+import {StepperActionsNext} from 'shared/ReportFlowStepper/StepperActionsNext'
 import {Alert, Txt} from '../../../alexlibs/mui-extension'
 import {Country} from '../../../client/constant/Country'
 
