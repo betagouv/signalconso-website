@@ -8,7 +8,7 @@ interface ReportFlowContextProps {
   reportDraft: Partial<ReportDraft2>
   setReportDraft: Dispatch<SetStateAction<Partial<ReportDraft2>>>
   clearReportDraft: () => void
-  createReport: UseFetcher<SignalConsoPublicSdk['report']['create']>
+  createReport: UseFetcher<SignalConsoPublicSdk['createReport']>
 }
 
 const ReportFlowContext = React.createContext<ReportFlowContextProps>({} as ReportFlowContextProps)
@@ -20,7 +20,7 @@ interface ReportFlowProviderProps {
 export const ReportFlowProvider = ({children}: ReportFlowProviderProps) => {
   const {apiSdk} = useApiSdk()
   const [reportDraft, setReportDraft] = useState<Partial<ReportDraft2>>({})
-  const createReport = useFetcher(apiSdk.report.create)
+  const createReport = useFetcher(apiSdk.createReport)
   return (
     <ReportFlowContext.Provider
       value={{
