@@ -42,23 +42,21 @@ describe('Details: single date not in future', () => {
         />,
         {
           apiSdkMock: {
-            website: {
-              searchForeignCompaniesByUrl: (url: string) => Promise.resolve(),
-              searchCompaniesByUrl: (url: string) =>
-                Promise.resolve(
-                  fnSwitch(
-                    url,
-                    {
-                      'known.site': Fixture.genCompanySearchResult(),
-                      'marketplace.site': Fixture.genCompanySearchResult(),
-                    },
-                    () => ({
-                      exactMatch: [],
-                      similarHosts: [],
-                    }),
-                  ),
+            searchForeignCompaniesByUrl: (url: string) => Promise.resolve(),
+            searchCompaniesByUrl: (url: string) =>
+              Promise.resolve(
+                fnSwitch(
+                  url,
+                  {
+                    'known.site': Fixture.genCompanySearchResult(),
+                    'marketplace.site': Fixture.genCompanySearchResult(),
+                  },
+                  () => ({
+                    exactMatch: [],
+                    similarHosts: [],
+                  }),
                 ),
-            },
+              ),
           },
         },
       )
@@ -90,14 +88,12 @@ describe('Details: single date not in future', () => {
         />,
         {
           apiSdkMock: {
-            website: {
-              searchForeignCompaniesByUrl: (url: string) => Promise.resolve([]),
-              searchCompaniesByUrl: (url: string) =>
-                Promise.resolve({
-                  exactMatch: [],
-                  similarHosts: [],
-                }),
-            },
+            searchForeignCompaniesByUrl: (url: string) => Promise.resolve([]),
+            searchCompaniesByUrl: (url: string) =>
+              Promise.resolve({
+                exactMatch: [],
+                similarHosts: [],
+              }),
           },
           companyApiSdk: {
             searchCompanies: (search: string, searchPostalCode: string) => Promise.resolve([]),
