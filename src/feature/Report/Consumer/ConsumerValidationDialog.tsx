@@ -1,6 +1,6 @@
 import {LoadingButton} from '@mui/lab'
 import {Button, Dialog, DialogActions, DialogContent, DialogTitle, Icon, LinearProgress} from '@mui/material'
-import {useApiSdk} from 'core/context/ApiSdk'
+import {useApiClients} from 'core/context/ApiClientsContext'
 import {useI18n} from 'core/i18n'
 import {ValidationRejectReason} from 'model'
 import {useState} from 'react'
@@ -27,10 +27,10 @@ interface ValidationForm {
 
 export const ConsumerValidationDialog = ({loading, open, consumerEmail, onClose, onValidated}: Props) => {
   const _form = useForm<ValidationForm>()
-  const {apiSdk} = useApiSdk()
+  const {signalConsoApiClient} = useApiClients()
   const {m} = useI18n()
-  const _validateEmail = useFetcher(apiSdk.checkEmailAndValidate)
-  const _checkEmail = useFetcher(apiSdk.checkEmail)
+  const _validateEmail = useFetcher(signalConsoApiClient.checkEmailAndValidate)
+  const _checkEmail = useFetcher(signalConsoApiClient.checkEmail)
   const [disableResendButton, setDisableResendButton] = useState(false)
 
   const isEmailValid: boolean | undefined = _validateEmail.entity?.valid

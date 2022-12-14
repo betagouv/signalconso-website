@@ -1,14 +1,27 @@
 import {appConfig} from 'conf/appConfig'
 import {ConsumerEmailResult, Subcategory} from 'model'
-import {ApiClient} from './ApiClient'
+import {BaseApiClient} from './BaseApiClient'
 import {WebsiteCompanySearchResult} from './company/Company'
 import {Country} from './constant/Country'
 import {FileOrigin, UploadedFile} from './file/UploadedFile'
 import {Report} from './report/Report'
 import {ReportDraft} from './report/ReportDraft'
 
-export class SignalConsoPublicSdk {
-  private readonly client: ApiClient = new ApiClient({
+type PublicStat =
+  | 'PromesseAction'
+  | 'Reports'
+  | 'TransmittedPercentage'
+  | 'ReadPercentage'
+  | 'ResponsePercentage'
+  | 'WebsitePercentage'
+
+export type CountByDate = {
+  date: Date
+  count: number
+}
+
+export class SignalConsoApiClient {
+  private readonly client: BaseApiClient = new BaseApiClient({
     baseUrl: appConfig.apiBaseUrl + '/api',
     headers: {
       'Content-Type': 'application/json',
@@ -25,7 +38,16 @@ export class SignalConsoPublicSdk {
   }
 
   createReport = (draft: ReportDraft) => {
-    return this.client.post<Report>(`/reports`, {body: ReportDraft.toApi(draft)}).then(mapReport)
+    return this.client.post<Report>(`/reports`, {body: ReportDraft.toApi(draft)}).then(
+      (report: {[key in keyof Report]: any}): Report => ({
+        ...report,
+        companyAddress: {
+          ...report.companyAddress,
+          country: report.companyAddress.country?.name,
+        },
+        creationDate: new Date(report.creationDate),
+      }),
+    )
   }
 
   getPublicStatCount = (publicStat: PublicStat) => {
@@ -70,26 +92,4 @@ export class SignalConsoPublicSdk {
   checkEmailAndValidate = (email: string, confirmationCode: string) => {
     return this.client.post<ConsumerEmailResult>('/email-validation/check-and-validate', {body: {email, confirmationCode}})
   }
-}
-
-const mapReport = (report: {[key in keyof Report]: any}): Report => ({
-  ...report,
-  companyAddress: {
-    ...report.companyAddress,
-    country: report.companyAddress.country?.name,
-  },
-  creationDate: new Date(report.creationDate),
-})
-
-type PublicStat =
-  | 'PromesseAction'
-  | 'Reports'
-  | 'TransmittedPercentage'
-  | 'ReadPercentage'
-  | 'ResponsePercentage'
-  | 'WebsitePercentage'
-
-export type CountByDate = {
-  date: Date
-  count: number
 }

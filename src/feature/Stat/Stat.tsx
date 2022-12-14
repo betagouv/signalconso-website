@@ -1,6 +1,6 @@
 import {Skeleton} from '@mui/material'
 import {Box} from '@mui/system'
-import {CountByDate} from 'client/SignalConsoPublicSdk'
+import {CountByDate} from 'client/SignalConsoApiClient'
 import {useI18n} from 'core/i18n'
 import React, {useEffect} from 'react'
 import {Bar, BarChart, CartesianGrid, Legend, ResponsiveContainer, Tooltip, XAxis, YAxis} from 'recharts'

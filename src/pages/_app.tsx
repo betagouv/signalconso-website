@@ -6,7 +6,7 @@ import {scTheme} from 'core/theme/theme'
 import {Provide} from 'shared/Provide/Provide'
 import {Footer} from 'core/component/Footer'
 import {I18nProvider} from 'core/i18n'
-import {ApiSdkProvider} from 'core/context/ApiSdk'
+import {ApiClientsProvider} from 'core/context/ApiClientsContext'
 import {CacheProvider, EmotionCache} from '@emotion/react'
 import createEmotionCache from 'core/createEmotionCache'
 import {ToastProvider} from '../alexlibs/mui-extension'
@@ -46,7 +46,7 @@ const App = ({emotionCache = clientSideEmotionCache, ...props}: ScAppProps) => {
         _ => <StyledEngineProvider children={_} />,
         _ => <ThemeProvider theme={scTheme} children={_} />,
         _ => <I18nProvider children={_} />,
-        _ => <ApiSdkProvider children={_} />,
+        _ => <ApiClientsProvider children={_} />,
         _ => <CssBaseline children={_} />,
         _ => <ToastProvider horizontal="right" children={_} />,
         _ => <ReportFlowProvider children={_} />,

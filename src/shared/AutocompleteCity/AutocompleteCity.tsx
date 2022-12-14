@@ -5,7 +5,7 @@ import {Autocomplete, CircularProgress} from '@mui/material'
 import React, {forwardRef, useEffect, useMemo, useState} from 'react'
 import {ScInput, ScInputProps} from '../Input/ScInput'
 import {Txt} from '../../alexlibs/mui-extension'
-import {useApiSdk} from '../../core/context/ApiSdk'
+import {useApiClients} from '../../core/context/ApiClientsContext'
 
 export interface AutocompleteCityValue {
   city?: string
@@ -31,7 +31,7 @@ const defaultCityOption = (i: string) =>
 export const AutocompleteCity = forwardRef(
   ({label, placeholder, value, onChange, ...inputProps}: AutocompleteCityProps, ref: any) => {
     const {m} = useI18n()
-    const api = useFetcher(useApiSdk().apiAddressSdk.fetchCity)
+    const api = useFetcher(useApiClients().adresseApiClient.fetchCity)
     const [open, setOpen] = useState(false)
     const [inputValue, setInputValue] = useState('')
 

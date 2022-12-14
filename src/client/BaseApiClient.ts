@@ -34,7 +34,7 @@ export class ApiError extends Error {
 
 type Method = 'POST' | 'GET' | 'PUT' | 'DELETE' | 'PATCH'
 
-export class ApiClient {
+export class BaseApiClient {
   private axiosInstance: AxiosInstance
   private headers: any | undefined
 

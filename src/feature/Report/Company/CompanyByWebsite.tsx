@@ -2,7 +2,7 @@ import {ScInput} from 'shared/Input/ScInput'
 import {IconBtn, Txt} from '../../../alexlibs/mui-extension'
 import React, {ReactNode, useEffect, useState} from 'react'
 import {useI18n} from 'core/i18n'
-import {useApiSdk} from 'core/context/ApiSdk'
+import {useApiClients} from 'core/context/ApiClientsContext'
 import {ScButton} from 'shared/Button/Button'
 import {useForm} from 'react-hook-form'
 import {useFetcher} from '../../../alexlibs/react-hooks-lib/UseFetcher'
@@ -26,9 +26,9 @@ interface Props extends Omit<BoxProps, 'onSubmit' | 'children'> {
 
 export const CompanyByWebsite = ({value, children, ...props}: Props) => {
   const {m} = useI18n()
-  const {apiSdk} = useApiSdk()
-  const _searchCompany = useFetcher(apiSdk.searchCompaniesByUrl)
-  const _searchCountry = useFetcher(apiSdk.searchForeignCompaniesByUrl)
+  const {signalConsoApiClient} = useApiClients()
+  const _searchCompany = useFetcher(signalConsoApiClient.searchCompaniesByUrl)
+  const _searchCountry = useFetcher(signalConsoApiClient.searchForeignCompaniesByUrl)
   const _analytic = useAnalyticContext()
   const {toastError} = useToast()
   const {

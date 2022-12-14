@@ -2,7 +2,7 @@ import React, {useRef, useState} from 'react'
 import {Box, Button, CircularProgress, Icon, Theme, Tooltip} from '@mui/material'
 import {reportFileConfig} from './reportFileConfig'
 import {useI18n} from 'core/i18n'
-import {useApiSdk} from 'core/context/ApiSdk'
+import {useApiClients} from 'core/context/ApiClientsContext'
 import {appConfig} from '../../conf/appConfig'
 import {styleUtils} from 'core/theme/theme'
 import {useToast} from 'core/toast'
@@ -47,7 +47,7 @@ interface Props {
 
 export const ReportFileAdd = ({onUploaded, fileOrigin}: Props) => {
   const {m} = useI18n()
-  const {apiSdk} = useApiSdk()
+  const {signalConsoApiClient} = useApiClients()
   const {toastError} = useToast()
 
   const [uploading, setUploading] = useState(false)
@@ -76,7 +76,7 @@ export const ReportFileAdd = ({onUploaded, fileOrigin}: Props) => {
         .then(file => {
           return file
         })
-        .then(file => apiSdk.uploadDocument(file, fileOrigin))
+        .then(file => signalConsoApiClient.uploadDocument(file, fileOrigin))
         .then(onUploaded)
         .catch(e => {
           toastError(e)
