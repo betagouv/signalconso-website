@@ -10,7 +10,7 @@ import {Alert, Txt} from '../../../alexlibs/mui-extension'
 import {useFetcher} from '../../../alexlibs/react-hooks-lib/UseFetcher'
 import {duration} from '../../../alexlibs/ts-utils/Duration'
 import {fnSwitch} from '../../../alexlibs/ts-utils/FnSwitch'
-import {delay} from '../../../alexlibs/ts-utils'
+import {timeoutPromise} from '../../../alexlibs/ts-utils'
 import {InputValidationCode} from './InputValidationCode'
 
 interface Props {
@@ -40,7 +40,7 @@ export const ConsumerValidationDialog = ({loading, open, consumerEmail, onClose,
     if (!isEmailValid) {
       const res = await _validateEmail.fetch({clean: false}, consumerEmail, form.code)
       if (res.valid) {
-        await delay(500)
+        await timeoutPromise(500)
         onValidated()
       }
     }

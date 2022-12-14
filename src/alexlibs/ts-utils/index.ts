@@ -1,7 +1,6 @@
-export const delay =
-  <T>(ms: number) =>
-  (t: T): Promise<T> =>
-    new Promise(resolve => setTimeout(() => resolve(t), ms))
+export function timeoutPromise(ms: number): Promise<void> {
+  return new Promise<void>(resolve => setTimeout(() => resolve(), ms))
+}
 
 export const ifDefined = <T, R>(t: T | undefined, fn: (t: T) => R): R | undefined => {
   return t !== undefined ? fn(t) : undefined
