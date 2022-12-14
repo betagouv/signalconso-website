@@ -40,7 +40,7 @@ const AllTheProviders =
           ),
           _ => <ThemeProvider theme={scTheme} children={_} />,
           _ => <I18nProvider children={_} />,
-          _ => <ReportFlowProvider children={_} initialReport={options?.initialReport} />,
+          _ => <ReportFlowProvider children={_} />,
         ]}
       >
         {children}
@@ -89,7 +89,6 @@ export const AccessReportFlow = ({
 }
 
 interface Options {
-  initialReport?: Partial<ReportDraft2>
   apiSdkMock?: DeepPartial<SignalConsoPublicSdk>
   companyApiSdk?: DeepPartial<CompanyPublicSdk>
 }

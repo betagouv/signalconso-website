@@ -1,12 +1,10 @@
-import React, {Dispatch, ReactNode, SetStateAction, useContext, useState} from 'react'
-import {usePersistentState} from '../../alexlibs/react-persistent-state'
-import {ReportDraft2} from 'core/model/ReportDraft'
-import {useFetcher} from '../../alexlibs/react-hooks-lib'
 import {useApiSdk} from 'core/context/ApiSdk'
-import {UseFetcher} from '../../alexlibs/react-hooks-lib'
+import {ReportDraft2} from 'core/model/ReportDraft'
+import React, {Dispatch, ReactNode, SetStateAction, useContext, useState} from 'react'
+import {useFetcher, UseFetcher} from '../../alexlibs/react-hooks-lib'
 import {SignalConsoPublicSdk} from '../../client/SignalConsoPublicSdk'
 
-export interface ReportFlowContextProps {
+interface ReportFlowContextProps {
   reportDraft: Partial<ReportDraft2>
   setReportDraft: Dispatch<SetStateAction<Partial<ReportDraft2>>>
   clearReportDraft: () => void
@@ -17,12 +15,11 @@ const ReportFlowContext = React.createContext<ReportFlowContextProps>({} as Repo
 
 interface ReportFlowProviderProps {
   children: ReactNode
-  initialReport?: Partial<ReportDraft2>
 }
 
-export const ReportFlowProvider = ({initialReport, children}: ReportFlowProviderProps) => {
+export const ReportFlowProvider = ({children}: ReportFlowProviderProps) => {
   const {apiSdk} = useApiSdk()
-  const [reportDraft, setReportDraft] = useState<Partial<ReportDraft2>>(initialReport ?? {})
+  const [reportDraft, setReportDraft] = useState<Partial<ReportDraft2>>({})
   const createReport = useFetcher(apiSdk.report.create)
   return (
     <ReportFlowContext.Provider

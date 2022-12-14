@@ -12,18 +12,35 @@ import {ProblemContratualDisputeWarnPanel} from './ProblemContratualDisputeWarnP
 import {ProblemInformation} from './ProblemInformation'
 import {ProblemSelect} from './ProblemSelect'
 import {ProblemStepperStep, ProblemStepper} from './ProblemStepper'
-import {useSelectedSubcategoriesUtils} from './useSelectedSubcategoriesUtils'
+import {useSelectedSubcategoriesData} from './useSelectedSubcategoriesData'
 
 interface Props {
   anomaly: Anomaly
 }
 
+function adjustTags(
+  tags: ReportTag[],
+  draft: Partial<ReportDraft2>,
+  companyKindFromSelected: CompanyKinds | undefined,
+): ReportTag[] {
+  let res = tags
+  if (companyKindFromSelected === CompanyKinds.WEBSITE || draft.companyKind === CompanyKinds.WEBSITE) {
+    res = [...res, ReportTag.Internet]
+  }
+  if (draft.forwardToReponseConso !== true) {
+    res = res.filter(_ => _ !== ReportTag.ReponseConso)
+  }
+  return res
+}
+
 export const Problem = ({anomaly}: Props) => {
   const _analytic = useAnalyticContext()
+
   const {m} = useI18n()
   const displayReponseConso = useMemo(() => Math.random() * 100 < appConfig.reponseConsoDisplayRate, [])
   const {reportDraft, setReportDraft, clearReportDraft} = useReportFlowContext()
 
+  // reset the draft when switching the root category
   useEffect(() => {
     if (anomaly.category !== reportDraft.category) {
       _analytic.trackEvent(EventCategories.report, ReportEventActions.validateCategory, anomaly.category)
@@ -32,25 +49,17 @@ export const Problem = ({anomaly}: Props) => {
     }
   }, [anomaly.category])
 
-  const {tagsFromSelected, lastSubcategories, isLastSubcategory, showEmployeeConsumer, companyKindFromSelected} =
-    useSelectedSubcategoriesUtils(anomaly, reportDraft?.subcategories ?? [])
+  const {tagsFromSelected, lastSubcategories, isLastSubcategory, companyKindFromSelected} = useSelectedSubcategoriesData(
+    anomaly,
+    reportDraft?.subcategories ?? [],
+  )
 
-  const filterTags = (tagsFromSelected: ReportTag[], draft: Partial<ReportDraft2>): ReportTag[] => {
-    if (companyKindFromSelected === CompanyKinds.WEBSITE || draft.companyKind === CompanyKinds.WEBSITE) {
-      tagsFromSelected.push(ReportTag.Internet)
-    }
-    if (!(draft.forwardToReponseConso ?? false)) {
-      return tagsFromSelected.filter(_ => _ !== ReportTag.ReponseConso)
-    }
-    return tagsFromSelected
-  }
-
-  const submit = (next: () => void) => {
+  function onSubmit(next: () => void): void {
     setReportDraft(draft => {
       const {subcategories, ..._anomaly} = anomaly
       return {
         ...draft,
-        tags: filterTags(tagsFromSelected, draft),
+        tags: adjustTags(tagsFromSelected, draft, companyKindFromSelected),
         companyKind: companyKindFromSelected ?? draft.companyKind ?? CompanyKinds.SIRET,
         anomaly: _anomaly,
       }
@@ -104,7 +113,7 @@ export const Problem = ({anomaly}: Props) => {
             information={(lastSubcategories as any).information}
           />
         ) : (
-          <ProblemStepper renderDone={<ReportFlowStepperActions next={submit} />}>
+          <ProblemStepper renderDone={<ReportFlowStepperActions next={onSubmit} />}>
             <ProblemStepperStep isDone={reportDraft.employeeConsumer !== undefined}>
               <ProblemSelect
                 id="select-employeeconsumer"
