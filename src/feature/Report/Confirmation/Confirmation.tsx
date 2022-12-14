@@ -34,7 +34,7 @@ export const _Confirmation = ({draft, anomaly}: {anomaly: Pick<Anomaly, 'sprite'
   useEffect(_reportFlow.createReport.clearCache, [])
 
   return (
-    <Animate autoScrollTo={true} animate={true}>
+    <Animate autoScrollTo={true}>
       <div>
         <Txt sx={{mb: 2}} block size="title">
           {m.confirmationTitle}

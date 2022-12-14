@@ -5,7 +5,6 @@ import {Panel, PanelBody, PanelProps} from 'shared/Panel/Panel'
 import {Animate} from 'shared/Animate/Animate'
 
 interface ProblemSelectProps<T> extends Omit<PanelProps, 'onChange'> {
-  animatePanel?: boolean
   autoScrollToPanel?: boolean
   title?: string
   value?: T
@@ -17,18 +16,10 @@ interface ProblemSelectProps<T> extends Omit<PanelProps, 'onChange'> {
   }[]
 }
 
-export const ProblemSelect = <T,>({
-  animatePanel,
-  autoScrollToPanel,
-  title,
-  value,
-  options,
-  onChange,
-  ...other
-}: ProblemSelectProps<T>) => {
+export const ProblemSelect = <T,>({autoScrollToPanel, title, value, options, onChange, ...other}: ProblemSelectProps<T>) => {
   const t = useTheme()
   return (
-    <Animate animate={animatePanel} autoScrollTo={autoScrollToPanel}>
+    <Animate autoScrollTo={autoScrollToPanel}>
       <Panel
         sx={{position: 'relative', border: 'none !important', paddingTop: t => t.spacing(1) + ' !important'}}
         title={<span dangerouslySetInnerHTML={{__html: title ?? 'Pouvez-vous préciser ?'}} />}
