@@ -1,4 +1,4 @@
-import {Page} from 'shared/Page/Page'
+import {Page} from 'components_simple/Page/Page'
 import Link from 'next/link'
 import {siteMap} from 'core/siteMap'
 import Head from 'next/head'

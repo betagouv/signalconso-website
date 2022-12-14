@@ -1,6 +1,6 @@
 import {ReactNode} from 'react'
-import {Panel, PanelBody} from 'shared/Panel/Panel'
-import {Page} from 'shared/Page/Page'
+import {Panel, PanelBody} from 'components_simple/Panel/Panel'
+import {Page} from 'components_simple/Page/Page'
 import {Box} from '@mui/material'
 import Head from 'next/head'
 import {pageDefinitions} from 'core/pageDefinition'
