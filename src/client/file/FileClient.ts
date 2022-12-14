@@ -1,8 +1,8 @@
-import {ApiClientApi} from '../ApiClient'
+import {ApiClientInterface} from '../ApiClient'
 import {FileOrigin, UploadedFile} from './UploadedFile'
 
 export class FileClient {
-  constructor(private client: ApiClientApi) {}
+  constructor(private client: ApiClientInterface) {}
 
   readonly getLink = (file: UploadedFile) => `${this.client.baseUrl}/reports/files/${file.id}/${encodeURI(file.filename)}`
 
@@ -11,9 +11,5 @@ export class FileClient {
     fileFormData.append('reportFile', file, file.name)
     fileFormData.append('reportFileOrigin', origin)
     return this.client.post<UploadedFile>(`reports/files`, {body: fileFormData})
-  }
-
-  readonly remove = (file: UploadedFile) => {
-    return this.client.delete(`/reports/files/${file.id}/${encodeURI(file.filename)}`)
   }
 }

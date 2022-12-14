@@ -1,11 +1,11 @@
-import {ApiClientApi} from './ApiClient'
+import {ApiClientInterface} from './ApiClient'
 import {PublicCompanyClient} from './company/PublicCompanyClient'
 
 export class CompanyPublicSdk {
-  private readonly client: ApiClientApi
+  private readonly client: ApiClientInterface
   readonly company: PublicCompanyClient
 
-  constructor(client: ApiClientApi) {
+  constructor(client: ApiClientInterface) {
     this.client = client
     this.company = new PublicCompanyClient(this.client)
   }
