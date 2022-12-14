@@ -134,16 +134,7 @@ export enum AccountEventActions {
   registerUser = "Inscription d'un utilisateur",
 }
 
-export enum AccountEventNames {
-  userAlreadyRegistered = 'Compte déjà existant',
-}
-
 export enum CompanyAccessEventActions {
   addCompanyToAccount = "Ajout d'une entreprise à un compte",
   activateCompanyCode = "Activation d'une entreprise",
-}
-
-export enum ActionResultNames {
-  success = 'Succès',
-  fail = 'Echec',
 }
