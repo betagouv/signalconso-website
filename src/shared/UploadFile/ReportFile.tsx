@@ -21,7 +21,7 @@ export const ReportFile = ({file, onRemove}: ReportFileProps) => {
   const {apiSdk} = useApiSdk()
   const {m} = useI18n()
 
-  const fileUrl = apiSdk.document.getLink(file)
+  const fileUrl = apiSdk.getDocumentLink(file)
 
   const remove = async () => {
     onRemove?.(file)

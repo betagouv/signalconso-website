@@ -46,9 +46,7 @@ describe('Problem', () => {
   it('should route to information page when receive subcategories ending with information', async () => {
     const app = render(<Problem anomaly={ProblemFixture.anomaly} />, {
       apiSdkMock: {
-        rating: {
-          rate: (...args: any[]) => Promise.resolve(),
-        } as any,
+        rateSubcategory: (...args: any[]) => Promise.resolve(),
         searchForeignCompaniesByUrl: (url: string) => Promise.resolve([]),
         searchCompaniesByUrl: (url: string) =>
           Promise.resolve({

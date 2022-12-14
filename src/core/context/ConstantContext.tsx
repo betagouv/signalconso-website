@@ -6,7 +6,7 @@ import {SignalConsoPublicSdk} from '../../client/SignalConsoPublicSdk'
 import {ApiError} from '../../client/ApiClient'
 
 export interface ConstantContextProps {
-  countries: UseFetcher<SignalConsoPublicSdk['constant']['getCountries'], ApiError>
+  countries: UseFetcher<SignalConsoPublicSdk['getCountries'], ApiError>
 }
 
 interface Props {
@@ -19,7 +19,7 @@ const ConstantContext = React.createContext<ConstantContextProps>(defaultContext
 
 export const ConstantProvider = ({children}: Props) => {
   const {apiSdk} = useApiSdk()
-  const _countries = useFetcher(apiSdk.constant.getCountries)
+  const _countries = useFetcher(apiSdk.getCountries)
   return (
     <ConstantContext.Provider
       value={{

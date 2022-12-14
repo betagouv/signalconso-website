@@ -39,7 +39,7 @@ export const ProblemInformation = ({anomaly, subcategories, information}: Props)
   }, [anomaly, subcategories])
   const _vote = useFetcher(
     mapPromise({
-      promise: apiSdk.rating.rate,
+      promise: apiSdk.rateSubcategory,
       mapThen: () => ({rated: true}),
     }),
   )

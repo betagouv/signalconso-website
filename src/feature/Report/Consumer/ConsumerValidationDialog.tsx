@@ -29,8 +29,8 @@ export const ConsumerValidationDialog = ({loading, open, consumerEmail, onClose,
   const _form = useForm<ValidationForm>()
   const {apiSdk} = useApiSdk()
   const {m} = useI18n()
-  const _validateEmail = useFetcher(apiSdk.consumerEmail.checkAndValidate)
-  const _checkEmail = useFetcher(apiSdk.consumerEmail.check)
+  const _validateEmail = useFetcher(apiSdk.checkEmailAndValidate)
+  const _checkEmail = useFetcher(apiSdk.checkEmail)
   const [disableResendButton, setDisableResendButton] = useState(false)
 
   const isEmailValid: boolean | undefined = _validateEmail.entity?.valid
