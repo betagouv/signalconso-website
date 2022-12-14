@@ -1,3 +1,4 @@
+import {appConfig} from 'conf/appConfig'
 import {ApiClient} from '../../client/ApiClient'
 
 export type AdresseType = 'locality' | 'municipality' | 'street' | 'housenumber'
@@ -40,7 +41,7 @@ interface ApiAdresseResult {
 const excludedCityWithDistrict = ['Paris', 'Marseille', 'Lyon']
 
 export class ApiAdresseClient {
-  constructor(private client: ApiClient) {}
+  private client = new ApiClient({baseUrl: appConfig.apiAdresseUrl})
 
   readonly fetchCity = (q: string): Promise<City[]> => {
     if (q === '') return Promise.resolve([])

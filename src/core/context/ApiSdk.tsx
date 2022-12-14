@@ -1,21 +1,19 @@
 import * as React from 'react'
 import {ReactNode, useContext} from 'react'
-import {ApiAdresseClient} from '../client/ApiAdresseClient'
-import {useConfig} from './ConfigContext'
+import {CompanyPublicClient} from '../../client/CompanyPublicClient'
 import {SignalConsoPublicSdk} from '../../client/SignalConsoPublicSdk'
-import {ApiClient} from '../../client/ApiClient'
-import {CompanyPublicSdk} from '../../client/CompanyPublicSdk'
+import {ApiAdresseClient} from '../client/ApiAdresseClient'
 
 export interface ApiSdkProps {
   apiSdk: SignalConsoPublicSdk
-  companyApiSdk: CompanyPublicSdk
+  companyApiSdk: CompanyPublicClient
   apiAddressSdk: ApiAdresseClient
 }
 
 interface Props {
   overrideForTests?: {
     apiSdk?: SignalConsoPublicSdk
-    companyApiSdk?: CompanyPublicSdk
+    companyApiSdk?: CompanyPublicClient
     apiAddressSdk?: ApiAdresseClient
   }
   children: ReactNode
@@ -26,34 +24,12 @@ const defaultContext: Partial<ApiSdkProps> = {}
 const ApiSdk = React.createContext<ApiSdkProps>(defaultContext as ApiSdkProps)
 
 export const ApiSdkProvider = ({overrideForTests, children}: Props) => {
-  const config = useConfig().config
-
   return (
     <ApiSdk.Provider
       value={{
-        apiSdk:
-          overrideForTests?.apiSdk ??
-          new SignalConsoPublicSdk(
-            new ApiClient({
-              baseUrl: config.apiBaseUrl + '/api',
-              headers: {
-                'Content-Type': 'application/json',
-                Accept: 'application/json',
-              },
-            }),
-          ),
-        companyApiSdk:
-          overrideForTests?.companyApiSdk ??
-          new CompanyPublicSdk(
-            new ApiClient({
-              baseUrl: config.apiCompanyUrl + '/api',
-              headers: {
-                'Content-Type': 'application/json',
-                Accept: 'application/json',
-              },
-            }),
-          ),
-        apiAddressSdk: overrideForTests?.apiAddressSdk ?? new ApiAdresseClient(new ApiClient({baseUrl: config.apiAdresseUrl})),
+        apiSdk: overrideForTests?.apiSdk ?? new SignalConsoPublicSdk(),
+        companyApiSdk: overrideForTests?.companyApiSdk ?? new CompanyPublicClient(),
+        apiAddressSdk: overrideForTests?.apiAddressSdk ?? new ApiAdresseClient(),
       }}
     >
       {children}

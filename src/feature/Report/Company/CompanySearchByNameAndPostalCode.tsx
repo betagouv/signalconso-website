@@ -29,7 +29,7 @@ export const CompanySearchByNameAndPostalCode = ({children}: Props) => {
   const {m} = useI18n()
   const {apiSdk, companyApiSdk} = useApiSdk()
   const {toastError} = useToast()
-  const _search = useFetcher(companyApiSdk.company.searchCompanies)
+  const _search = useFetcher(companyApiSdk.searchCompanies)
   const _analytic = useAnalyticContext()
   const {
     control,
