@@ -1,3 +1,5 @@
+import {isServerSide} from 'core/helper/utils'
+
 function noTrailingSlash(str: string) {
   return str.replace(/\/$/, '')
 }
@@ -36,3 +38,15 @@ export const appConfig = {
 }
 
 export type AppConfig = typeof appConfig
+
+function logAppConfig() {
+  // server side only
+  if (isServerSide()) {
+    console.log('AppConfig :')
+    Object.entries(appConfig).forEach(([k, v]) => {
+      console.log(`- ${k} :`, v)
+    })
+  }
+}
+
+logAppConfig()
