@@ -16,7 +16,7 @@ interface Props {
   anomaly: Anomaly
 }
 
-export enum ReportStepperPath {
+export enum ReportStepPathInAnalytics {
   Problem = 'le-probleme',
   Details = 'la-description',
   Company = 'le-commerçant',
@@ -26,7 +26,7 @@ export enum ReportStepperPath {
   Information = 'information',
 }
 
-export enum ReportStepperTitle {
+export enum ReportStepTitleInAnalytics {
   Problem = `Étape 1: Le problème - SignalConso`,
   Details = `Étape 2: La description - SignalConso`,
   Company = `Étape 3: L'entreprise - SignalConso`,
@@ -41,12 +41,6 @@ export const ReportFlow = React.memo(({initialStep, anomaly}: Props) => {
   return (
     <ReportFlowStepper
       initialStep={initialStep}
-      renderDone={Acknowledgement}
-      onStepChange={(props, index) => {
-        const path = Object.values(ReportStepperPath)[index]
-        const title = Object.values(ReportStepperTitle)[index]
-        _analytics.trackPage(`/${anomaly.path}/${path}`, title)
-      }}
       steps={[
         {
           name: ReportStep.Problem,
@@ -74,6 +68,12 @@ export const ReportFlow = React.memo(({initialStep, anomaly}: Props) => {
           component: () => <Confirmation />,
         },
       ]}
+      onStepChange={index => {
+        const path = Object.values(ReportStepPathInAnalytics)[index]
+        const title = Object.values(ReportStepTitleInAnalytics)[index]
+        _analytics.trackPage(`/${anomaly.path}/${path}`, title)
+      }}
+      renderDone={Acknowledgement}
     />
   )
 })

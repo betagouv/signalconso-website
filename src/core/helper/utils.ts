@@ -33,3 +33,7 @@ export const dateToIsoFormatWithoutTime = (d: Date) => {
 }
 
 export const frenchDateFormat = 'dd/MM/yyyy'
+
+export function scrollTop() {
+  window.scrollTo(0, 0)
+}
