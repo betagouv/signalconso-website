@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import {pageDefinitions} from 'core/pageDefinition'
 import {Page} from 'shared/Page/Page'
-import {useApiSdk} from 'core/context/ApiSdk'
+import {useApiClients} from 'core/context/ApiClientsContext'
 import {useI18n} from 'core/i18n'
 import {Stat} from 'feature/Stat/Stat'
 import {Icon} from '@mui/material'
@@ -9,7 +9,7 @@ import {Txt} from '../alexlibs/mui-extension'
 import {ReportStatus} from '../client/report/Report'
 
 const Stats = () => {
-  const apiSdk = useApiSdk().apiSdk
+  const apiClient = useApiClients().signalConsoApiClient
   const {m} = useI18n()
 
   return (
@@ -33,43 +33,43 @@ const Stats = () => {
       <Stat
         title={m.acceptedReportStat}
         name={m.acceptedReportStatName}
-        count={() => apiSdk.getPublicStatCount('PromesseAction')}
-        curve={() => apiSdk.getPublicStatCurve('PromesseAction')}
+        count={() => apiClient.getPublicStatCount('PromesseAction')}
+        curve={() => apiClient.getPublicStatCurve('PromesseAction')}
       />
       <Stat
         title={m.reportsCountStat}
         name={m.reportsCountStatName}
-        count={() => apiSdk.getPublicStatCount('Reports')}
-        curve={() => apiSdk.getPublicStatCurve('Reports')}
+        count={() => apiClient.getPublicStatCount('Reports')}
+        curve={() => apiClient.getPublicStatCurve('Reports')}
       />
       <Stat
         title={m.transmittedRateStat}
         name={m.transmittedRateStatName}
         description={m.transmittedRateDescription}
-        count={() => apiSdk.getPublicStatCount('TransmittedPercentage')}
-        curve={() => apiSdk.getPublicStatCurve('TransmittedPercentage')}
+        count={() => apiClient.getPublicStatCount('TransmittedPercentage')}
+        curve={() => apiClient.getPublicStatCurve('TransmittedPercentage')}
         percentage
       />
       <Stat
         title={m.readRateStat}
         name={m.readRateStatName}
         description={m.readRateDescription}
-        count={() => apiSdk.getPublicStatCount('ReadPercentage')}
-        curve={() => apiSdk.getPublicStatCurve('ReadPercentage')}
+        count={() => apiClient.getPublicStatCount('ReadPercentage')}
+        curve={() => apiClient.getPublicStatCurve('ReadPercentage')}
         percentage
       />
       <Stat
         title={m.respondedRateStat}
         name={m.respondedRateStatName}
         description={m.respondedRateDescription}
-        count={() => apiSdk.getPublicStatCount('ResponsePercentage')}
-        curve={() => apiSdk.getPublicStatCurve('ResponsePercentage')}
+        count={() => apiClient.getPublicStatCount('ResponsePercentage')}
+        curve={() => apiClient.getPublicStatCurve('ResponsePercentage')}
         percentage
       />
       <Stat
         title={m.websiteReportsRateStat}
         name={m.respondedRateStatName}
-        count={() => apiSdk.getPublicStatCount('WebsitePercentage')}
+        count={() => apiClient.getPublicStatCount('WebsitePercentage')}
         percentage
       />
       <p>

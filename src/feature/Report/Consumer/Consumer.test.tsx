@@ -19,7 +19,7 @@ class Fixture {
 
 describe('Consumer', () => {
   const mock = {
-    apiSdkMock: {
+    signalConsoApiClient: {
       checkEmail: () => Promise.resolve({valid: true}),
       website: {
         searchForeignCompaniesByUrl: (url: string) => Promise.resolve([]),

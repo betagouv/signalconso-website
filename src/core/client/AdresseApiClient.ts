@@ -1,5 +1,5 @@
 import {appConfig} from 'conf/appConfig'
-import {ApiClient} from '../../client/ApiClient'
+import {BaseApiClient} from '../../client/BaseApiClient'
 
 export type AdresseType = 'locality' | 'municipality' | 'street' | 'housenumber'
 
@@ -40,8 +40,8 @@ interface ApiAdresseResult {
 //, otherwise when city name is provided with no district the api is returning the firs district by default ( for 'Paris' only,  postalCode will be 75001) .
 const excludedCityWithDistrict = ['Paris', 'Marseille', 'Lyon']
 
-export class ApiAdresseClient {
-  private client = new ApiClient({baseUrl: appConfig.apiAdresseUrl})
+export class AdresseApiClient {
+  private client = new BaseApiClient({baseUrl: appConfig.apiAdresseUrl})
 
   readonly fetchCity = (q: string): Promise<City[]> => {
     if (q === '') return Promise.resolve([])

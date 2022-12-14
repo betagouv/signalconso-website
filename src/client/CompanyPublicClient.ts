@@ -1,9 +1,9 @@
 import {appConfig} from 'conf/appConfig'
-import {ApiClient} from './ApiClient'
+import {BaseApiClient} from './BaseApiClient'
 import {CompanySearchResult} from './company/Company'
 
 export class CompanyPublicClient {
-  private client = new ApiClient({
+  private client = new BaseApiClient({
     baseUrl: appConfig.apiCompanyUrl + '/api',
     headers: {
       'Content-Type': 'application/json',

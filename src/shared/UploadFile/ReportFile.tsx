@@ -3,7 +3,7 @@ import {extensionToType, FileType, reportFileConfig} from './reportFileConfig'
 import React from 'react'
 import {IconBtn} from '../../alexlibs/mui-extension'
 import {useI18n} from 'core/i18n'
-import {useApiSdk} from 'core/context/ApiSdk'
+import {useApiClients} from 'core/context/ApiClientsContext'
 import {ScDialog} from '../Dialog/ScDialog'
 import {UploadedFile} from '../../client/file/UploadedFile'
 
@@ -18,10 +18,10 @@ const cardMargin = 1
 
 export const ReportFile = ({file, onRemove}: ReportFileProps) => {
   const fileType = extensionToType(file.filename)
-  const {apiSdk} = useApiSdk()
+  const {signalConsoApiClient} = useApiClients()
   const {m} = useI18n()
 
-  const fileUrl = apiSdk.getDocumentLink(file)
+  const fileUrl = signalConsoApiClient.getDocumentLink(file)
 
   const remove = async () => {
     onRemove?.(file)

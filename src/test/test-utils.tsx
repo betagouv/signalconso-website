@@ -5,27 +5,27 @@ import {ThemeProvider} from '@mui/material'
 import {I18nProvider} from 'core/i18n'
 import {ReportFlowProvider, useReportFlowContext} from 'feature/Report/ReportFlowContext'
 import {Provide} from 'shared/Provide/Provide'
-import {ApiSdkProvider} from 'core/context/ApiSdk'
+import {ApiClientsProvider} from 'core/context/ApiClientsContext'
 import {fr} from 'core/i18n/localization/fr'
 import {ReportFlowStepperContext} from 'shared/ReportFlowStepper/ReportFlowStepper'
 import {ReportDraft2} from 'core/model/ReportDraft'
 import {DeepPartial} from '../alexlibs/ts-utils'
 import {AnalyticProvider} from 'core/analytic/AnalyticContext'
-import {SignalConsoPublicSdk} from '../client/SignalConsoPublicSdk'
+import {SignalConsoApiClient} from '../client/SignalConsoApiClient'
 import {CompanyPublicClient} from '../client/CompanyPublicClient'
 
 const AllTheProviders =
   (options?: Options) =>
   ({children}: any) => {
-    const apiSdksOverrides = {
-      apiSdk: {
+    const apiClientsOverrides = {
+      signalConsoApiClient: {
         report: {
           create: () => void 0,
         },
-        ...(options?.apiSdkMock ?? ({} as any)),
+        ...(options?.signalConsoApiClient ?? ({} as any)),
       },
-      companyApiSdk: {...(options?.companyApiSdk ?? ({} as any))},
-      apiAddressSdk: {
+      companyApiClient: {...(options?.companyApiClient ?? ({} as any))},
+      adresseApiClient: {
         fetchCity: (q: string) => Promise.resolve([]),
       } as any,
     }
@@ -33,7 +33,7 @@ const AllTheProviders =
       <Provide
         providers={[
           _ => <AnalyticProvider children={_} analytic={{trackEvent: () => void 0} as any} />,
-          _ => <ApiSdkProvider children={_} overrideForTests={apiSdksOverrides} />,
+          _ => <ApiClientsProvider children={_} overrideForTests={apiClientsOverrides} />,
           _ => <ThemeProvider theme={scTheme} children={_} />,
           _ => <I18nProvider children={_} />,
           _ => <ReportFlowProvider children={_} />,
@@ -85,8 +85,8 @@ export const AccessReportFlow = ({
 }
 
 interface Options {
-  apiSdkMock?: DeepPartial<SignalConsoPublicSdk>
-  companyApiSdk?: DeepPartial<CompanyPublicClient>
+  signalConsoApiClient?: DeepPartial<SignalConsoApiClient>
+  companyApiClient?: DeepPartial<CompanyPublicClient>
 }
 
 export interface ScRenderResult extends RenderResult {

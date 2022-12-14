@@ -1,14 +1,14 @@
-import {useApiSdk} from 'core/context/ApiSdk'
+import {useApiClients} from 'core/context/ApiClientsContext'
 import {ReportDraft2} from 'core/model/ReportDraft'
 import React, {Dispatch, ReactNode, SetStateAction, useContext, useState} from 'react'
 import {useFetcher, UseFetcher} from '../../alexlibs/react-hooks-lib/UseFetcher'
-import {SignalConsoPublicSdk} from '../../client/SignalConsoPublicSdk'
+import {SignalConsoApiClient} from '../../client/SignalConsoApiClient'
 
 interface ReportFlowContextProps {
   reportDraft: Partial<ReportDraft2>
   setReportDraft: Dispatch<SetStateAction<Partial<ReportDraft2>>>
   clearReportDraft: () => void
-  createReport: UseFetcher<SignalConsoPublicSdk['createReport']>
+  createReport: UseFetcher<SignalConsoApiClient['createReport']>
 }
 
 const ReportFlowContext = React.createContext<ReportFlowContextProps>({} as ReportFlowContextProps)
@@ -18,9 +18,9 @@ interface ReportFlowProviderProps {
 }
 
 export const ReportFlowProvider = ({children}: ReportFlowProviderProps) => {
-  const {apiSdk} = useApiSdk()
+  const {signalConsoApiClient} = useApiClients()
   const [reportDraft, setReportDraft] = useState<Partial<ReportDraft2>>({})
-  const createReport = useFetcher(apiSdk.createReport)
+  const createReport = useFetcher(signalConsoApiClient.createReport)
   return (
     <ReportFlowContext.Provider
       value={{

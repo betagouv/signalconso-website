@@ -41,7 +41,7 @@ describe('Details: single date not in future', () => {
           }}
         />,
         {
-          apiSdkMock: {
+          signalConsoApiClient: {
             searchForeignCompaniesByUrl: (url: string) => Promise.resolve(),
             searchCompaniesByUrl: (url: string) =>
               Promise.resolve(
@@ -87,7 +87,7 @@ describe('Details: single date not in future', () => {
           onUpdateReportDraft={x => ReportDraft2.merge(draft, x)}
         />,
         {
-          apiSdkMock: {
+          signalConsoApiClient: {
             searchForeignCompaniesByUrl: (url: string) => Promise.resolve([]),
             searchCompaniesByUrl: (url: string) =>
               Promise.resolve({
@@ -95,7 +95,7 @@ describe('Details: single date not in future', () => {
                 similarHosts: [],
               }),
           },
-          companyApiSdk: {
+          companyApiClient: {
             searchCompanies: (search: string, searchPostalCode: string) => Promise.resolve([]),
           },
         },

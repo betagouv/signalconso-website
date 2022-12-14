@@ -4,7 +4,7 @@ import {useI18n} from 'core/i18n'
 import {Fender, Txt} from '../../../alexlibs/mui-extension'
 import {IconBtn} from '../../../alexlibs/mui-extension'
 import {Icon} from '@mui/material'
-import {useApiSdk} from 'core/context/ApiSdk'
+import {useApiClients} from 'core/context/ApiClientsContext'
 import {useFetcher} from '../../../alexlibs/react-hooks-lib/UseFetcher'
 import {ScButton} from 'shared/Button/Button'
 import Link from 'next/link'
@@ -27,7 +27,7 @@ interface Props {
 export const ProblemInformation = ({anomaly, subcategories, information}: Props) => {
   const _analytic = useAnalyticContext()
   const {m} = useI18n()
-  const {apiSdk} = useApiSdk()
+  const {signalConsoApiClient} = useApiClients()
   const [votedPositive, setVotedPositive] = useState<boolean | undefined>()
   useEffect(() => {
     _analytic.trackPage(`${anomaly.path}/${ReportStepPathInAnalytics.Information}`, ReportStepTitleInAnalytics.Information)
@@ -39,7 +39,7 @@ export const ProblemInformation = ({anomaly, subcategories, information}: Props)
   }, [anomaly, subcategories])
   const _vote = useFetcher(
     mapPromise({
-      promise: apiSdk.rateSubcategory,
+      promise: signalConsoApiClient.rateSubcategory,
       mapThen: () => ({rated: true}),
     }),
   )

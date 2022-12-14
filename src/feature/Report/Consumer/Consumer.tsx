@@ -10,7 +10,7 @@ import {ScRadioGroup, ScRadioGroupItem} from 'shared/RadioGroup'
 import {useReportFlowContext} from '../ReportFlowContext'
 import {Alert, Txt} from '../../../alexlibs/mui-extension'
 import {ReportFlowStepperActions} from 'shared/ReportFlowStepper/ReportFlowStepperActions'
-import {useApiSdk} from 'core/context/ApiSdk'
+import {useApiClients} from 'core/context/ApiClientsContext'
 import {useFetcher} from '../../../alexlibs/react-hooks-lib/UseFetcher'
 import {useReportFlowStepperContext} from 'shared/ReportFlowStepper/ReportFlowStepper'
 import {ConsumerValidationDialog} from './ConsumerValidationDialog'
@@ -58,8 +58,8 @@ export const _Consumer = ({
 }) => {
   const {m} = useI18n()
   const [openValidationDialog, setOpenValidationDialog] = useState<boolean>(false)
-  const {apiSdk} = useApiSdk()
-  const _checkEmail = useFetcher(apiSdk.checkEmail)
+  const {signalConsoApiClient} = useApiClients()
+  const _checkEmail = useFetcher(signalConsoApiClient.checkEmail)
   const _form = useForm<ConsumerForm>()
   const _analytic = useAnalyticContext()
   const {isXsOrLess} = useWindowWidth()

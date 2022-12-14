@@ -3,7 +3,7 @@ import {FormLayout} from 'shared/FormLayout/FormLayout'
 import {Controller, useForm} from 'react-hook-form'
 import {ScInput} from 'shared/Input/ScInput'
 import {Panel, PanelActions, PanelBody} from 'shared/Panel/Panel'
-import {useApiSdk} from 'core/context/ApiSdk'
+import {useApiClients} from 'core/context/ApiClientsContext'
 import {useToast} from 'core/toast'
 import {useFetcher} from '../../../alexlibs/react-hooks-lib/UseFetcher'
 import {ScButton} from 'shared/Button/Button'
@@ -27,9 +27,9 @@ interface Props {
 
 export const CompanySearchByNameAndPostalCode = ({children}: Props) => {
   const {m} = useI18n()
-  const {apiSdk, companyApiSdk} = useApiSdk()
+  const {signalConsoApiClient, companyApiClient: companyApiClient} = useApiClients()
   const {toastError} = useToast()
-  const _search = useFetcher(companyApiSdk.searchCompanies)
+  const _search = useFetcher(companyApiClient.searchCompanies)
   const _analytic = useAnalyticContext()
   const {
     control,
