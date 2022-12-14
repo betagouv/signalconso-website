@@ -1,7 +1,7 @@
 import {Box, BoxProps, Tab, Tabs} from '@mui/material'
 import {Page} from 'shared/Page/Page'
 import {useState} from 'react'
-import {fnSwitch} from '../alexlibs/ts-utils'
+import {fnSwitch} from '../alexlibs/ts-utils/FnSwitch'
 import Head from 'next/head'
 import {pageDefinitions} from 'core/pageDefinition'
 

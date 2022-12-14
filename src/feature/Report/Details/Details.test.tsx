@@ -9,7 +9,7 @@ import {format} from 'date-fns'
 import {appConfig} from 'conf/appConfig'
 import {DetailsFixtureInput, DetailsFixtureValue} from 'feature/Playground/PlaygroundDetails'
 import {waitFor} from '@testing-library/dom'
-import {mapFor} from '../../../alexlibs/ts-utils'
+import {mapNTimes} from '../../../alexlibs/ts-utils'
 import {DetailInputValues2} from 'core/model/ReportDraft'
 import {frenchDateFormat} from 'core/helper/utils'
 
@@ -160,7 +160,7 @@ describe('Details: textarea', () => {
   })
 
   it('should prevent submit exceed char limit', async () => {
-    const stringAboveLimit = mapFor(appConfig.maxDescriptionInputLength + 1, () => 'a').reduce((acc, _) => acc + _, '')
+    const stringAboveLimit = mapNTimes(appConfig.maxDescriptionInputLength + 1, () => 'a').reduce((acc, _) => acc + _, '')
     fireEvent.change(app.container.querySelector('textarea:not([aria-hidden=true])')!, {target: {value: stringAboveLimit}})
     await clickBtnSubmit(app)
     hasErrors(app, 1)
@@ -168,7 +168,7 @@ describe('Details: textarea', () => {
   })
 
   it('should submit and update', async () => {
-    const stringAboveLimit = mapFor(appConfig.maxDescriptionInputLength - 1, () => 'a').reduce((acc, _) => acc + _, '')
+    const stringAboveLimit = mapNTimes(appConfig.maxDescriptionInputLength - 1, () => 'a').reduce((acc, _) => acc + _, '')
     fireEvent.change(app.container.querySelector('textarea:not([aria-hidden=true])')!, {target: {value: stringAboveLimit}})
     await clickBtnSubmit(app)
     hasErrors(app, 0)

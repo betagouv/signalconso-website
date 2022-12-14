@@ -1,4 +1,4 @@
-import {mapFor} from '../../alexlibs/ts-utils'
+import {mapNTimes} from '../../alexlibs/ts-utils'
 
 export const rawDepartments = [
   {
@@ -92,7 +92,7 @@ export const rawDepartments = [
     name: 'Bouches-du-Rh\u00f4ne',
     slug: 'bouches du rhone',
   },
-  ...mapFor(15, i => ({
+  ...mapNTimes(15, i => ({
     id: 13 + i + 1,
     region_code: '93',
     code: '' + (13000 + i + 1),
@@ -498,7 +498,7 @@ export const rawDepartments = [
     name: 'Rh\u00f4ne',
     slug: 'rhone',
   },
-  ...mapFor(15, i => ({
+  ...mapNTimes(15, i => ({
     id: 70 + i + 1,
     region_code: '84',
     code: '' + (69000 + i + 1),
@@ -547,7 +547,7 @@ export const rawDepartments = [
     name: 'Paris',
     slug: 'paris',
   },
-  ...mapFor(19, i => ({
+  ...mapNTimes(19, i => ({
     id: 760 + i + 1,
     region_code: '11',
     code: '' + (75000 + i + 1),

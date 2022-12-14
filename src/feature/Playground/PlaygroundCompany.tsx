@@ -3,7 +3,7 @@ import {useState} from 'react'
 import {ReportDraft2} from 'core/model/ReportDraft'
 import {Box, Card, CardContent, MenuItem, Select, useTheme} from '@mui/material'
 import {styleUtils} from 'core/theme/theme'
-import {Enum} from '../../alexlibs/ts-utils'
+import {Enum} from '../../alexlibs/ts-utils/Enum'
 import {CompanyKinds, ReportTag} from '../../anomaly/Anomaly'
 
 export const PlaygroundCompany = () => {

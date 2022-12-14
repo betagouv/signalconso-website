@@ -7,7 +7,7 @@ import {Bar, BarChart, CartesianGrid, Legend, ResponsiveContainer, Tooltip, XAxi
 import {Panel} from 'shared/Panel/Panel'
 import {Txt} from '../../alexlibs/mui-extension'
 import {useFetcher} from '../../alexlibs/react-hooks-lib/UseFetcher'
-import {map} from '../../alexlibs/ts-utils'
+import {ifDefined} from '../../alexlibs/ts-utils'
 
 interface Props {
   name?: string
@@ -45,7 +45,7 @@ export const Stat = React.memo(({name, count, curve, title, description, percent
             color: t => t.palette.primary.main,
           }}
         >
-          {map(_count.entity ?? undefined, formatLargeNumber)} {percentage && '%'}
+          {ifDefined(_count.entity ?? undefined, formatLargeNumber)} {percentage && '%'}
         </Txt>
 
         <Txt block bold>

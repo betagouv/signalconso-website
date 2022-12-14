@@ -3,7 +3,8 @@ import {Alert, Txt} from '../../../alexlibs/mui-extension'
 import {useReportFlowContext} from '../ReportFlowContext'
 import {parseISO} from 'date-fns'
 import {ScDatepickerFr} from 'shared/Datepicker/ScDatepickerFr'
-import {fnSwitch, mapFor} from '../../../alexlibs/ts-utils'
+import {fnSwitch} from '../../../alexlibs/ts-utils/FnSwitch'
+import {mapNTimes} from '../../../alexlibs/ts-utils'
 import {useI18n} from 'core/i18n'
 import {Controller, useForm} from 'react-hook-form'
 import {ReportFiles} from 'shared/UploadFile/ReportFiles'
@@ -220,7 +221,7 @@ export const _Details = ({
                             helperText={errorMessage}
                             error={hasErrors}
                           >
-                            {mapFor(24, i => (
+                            {mapNTimes(24, i => (
                               <MenuItem key={i} value={`de ${i}h à ${i + 1}h`}>
                                 {m.timeFromTo(i, i + 1)}
                               </MenuItem>
