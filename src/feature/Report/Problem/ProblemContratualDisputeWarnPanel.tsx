@@ -4,15 +4,12 @@ import React from 'react'
 import {Animate} from 'shared/Animate/Animate'
 import {useI18n} from 'core/i18n'
 
-interface Props extends PanelProps {
-  animatePanel?: boolean
-  autoScrollToPanel?: boolean
-}
+interface Props extends PanelProps {}
 
-export const ProblemContratualDisputeWarnPanel = ({animatePanel, autoScrollToPanel}: Props) => {
+export const ProblemContratualDisputeWarnPanel = ({}: Props) => {
   const {m} = useI18n()
   return (
-    <Animate animate={animatePanel} autoScrollTo={autoScrollToPanel}>
+    <Animate>
       <Panel
         id="panel-contractual-dispute"
         border

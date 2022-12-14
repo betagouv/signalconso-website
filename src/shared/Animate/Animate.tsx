@@ -4,32 +4,21 @@ import {useTimeout} from '../../alexlibs/react-hooks-lib/reactHooksUtils'
 import {useTheme} from '@mui/material'
 
 export interface AnimateProps {
-  direction?: 'X' | 'Y'
-  delay?: number
   children: any
   autoScrollTo?: boolean
-  animationDuration?: number
-  translateAnimation?: number
-  offsetY?: number
-  animate?: boolean
 }
 
 let idCounter = 0
 
-export const Animate = ({
-  direction = 'Y',
-  translateAnimation = 50,
-  offsetY = 90,
-  autoScrollTo = true,
-  animate = true,
-  children,
-  delay,
-  animationDuration = 500,
-}: AnimateProps) => {
+export const Animate = ({autoScrollTo = true, children}: AnimateProps) => {
   const theme = useTheme()
   const [appeared, setAppeared] = useState<boolean>(false)
   const ref = useRef(null)
   const id = useMemo(() => idCounter++, [])
+  const animationDuration = 500
+  const direction = 'Y'
+  const offsetY = 90
+  const translateAnimation = 50
 
   const scrollTo = () => {
     if (autoScrollTo && ref) {
@@ -42,8 +31,8 @@ export const Animate = ({
   }
 
   useTimeout(() => {
-    if (animate) setAppeared(true)
-  }, delay || 0)
+    setAppeared(true)
+  }, 0)
   useTimeout(scrollTo, 0)
 
   return React.cloneElement(children, {
@@ -52,7 +41,7 @@ export const Animate = ({
       transition: theme.transitions.create('all', {duration: animationDuration, delay: 50}),
       opacity: 0,
       transform: `translate${direction}(${translateAnimation}px)`,
-      ...(appeared || !animate
+      ...(appeared
         ? {
             opacity: 1,
             transform: `translate${direction}(0)`,
