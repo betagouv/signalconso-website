@@ -24,7 +24,6 @@ import {useAnalyticContext} from 'analytic/AnalyticContext'
 import {EventCategories, ReportEventActions} from 'analytic/analytic'
 import {useWindowWidth} from 'hooks/useWindowWidth'
 import {Gender, genders, ReportDraft} from '../../../model/ReportDraft'
-import {ReportTag} from '../../../anomalies/Anomaly'
 
 interface ConsumerForm {
   firstName: string

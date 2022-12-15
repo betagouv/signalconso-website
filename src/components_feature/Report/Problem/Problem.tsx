@@ -12,7 +12,7 @@ import {ProblemContratualDisputeWarnPanel} from './ProblemContratualDisputeWarnP
 import {ProblemInformation} from './ProblemInformation'
 import {ProblemSelect} from './ProblemSelect'
 import {ProblemStepperStep, ProblemStepper} from './ProblemStepper'
-import {useSelectedSubcategoriesData} from './useSelectedSubcategoriesData'
+import {computeSelectedSubcategoriesData} from './useSelectedSubcategoriesData'
 
 interface Props {
   anomaly: Anomaly
@@ -33,11 +33,14 @@ function adjustTags(
   return res
 }
 
+function chooseIfReponseConsoDisplayed(): boolean {
+  return Math.random() * 100 < appConfig.reponseConsoDisplayRate
+}
+
 export const Problem = ({anomaly}: Props) => {
   const _analytic = useAnalyticContext()
-
   const {m} = useI18n()
-  const displayReponseConso = useMemo(() => Math.random() * 100 < appConfig.reponseConsoDisplayRate, [])
+  const displayReponseConso = useMemo(chooseIfReponseConsoDisplayed, [])
   const {reportDraft, setReportDraft, clearReportDraft} = useReportFlowContext()
 
   // reset the draft when switching the root category
@@ -49,10 +52,9 @@ export const Problem = ({anomaly}: Props) => {
     }
   }, [anomaly.category])
 
-  const {tagsFromSelected, lastSubcategories, isLastSubcategory, companyKindFromSelected} = useSelectedSubcategoriesData(
-    anomaly,
-    reportDraft?.subcategories ?? [],
-  )
+  const {tagsFromSelected, lastSubcategories, isLastSubcategory, companyKindFromSelected} = useMemo(() => {
+    return computeSelectedSubcategoriesData(reportDraft.subcategories ?? [])
+  }, [reportDraft.subcategories])
 
   function onSubmit(next: () => void): void {
     setReportDraft(draft => {
