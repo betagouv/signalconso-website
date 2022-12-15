@@ -1,4 +1,4 @@
-import {Btn, BtnProps} from '../../alexlibs/mui-extension'
+import {Btn, BtnProps} from '../../alexlibs/mui-extension/Btn/Btn'
 import {forwardRef} from 'react'
 
 export interface ScButtonProps extends BtnProps {}
