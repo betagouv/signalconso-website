@@ -8,7 +8,7 @@ import {styleUtils} from 'core/theme'
 import {useToast} from 'hooks/useToast'
 import {SxProps} from '@mui/system'
 import {FileOrigin, UploadedFile} from '../../model/UploadedFile'
-import {CompressFile} from '../../model/CompressFile'
+import {compressFile} from '../../utils/compressFile'
 
 const styles: {[key: string]: SxProps<Theme>} = {
   root: {
@@ -72,7 +72,7 @@ export const ReportFileAdd = ({onUploaded, fileOrigin}: Props) => {
         return
       }
       setUploading(true)
-      CompressFile.compress(file)
+      compressFile(file)
         .then(file => {
           return file
         })
