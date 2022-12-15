@@ -1,5 +1,5 @@
 import {ReportTag} from 'anomalies/Anomaly'
-import {Address} from 'cluster'
+import {Address} from './Address'
 import {DetailInputValue, ReportStatus} from './Report'
 import {Gender} from './ReportDraft'
 
@@ -33,6 +33,7 @@ export interface ApiReportDraft {
   reponseconsoCode?: string[]
   ccrfCode?: string[]
 }
+
 // That's exactly what we receive from the API
 // Equivalent to Report (its JSON representation) in scala code
 export interface ApiCreatedReport {

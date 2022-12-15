@@ -7,6 +7,7 @@ import {Report} from '../model/Report'
 import {ReportDraft} from '../model/ReportDraft'
 import {Subcategory} from 'anomalies/Anomaly'
 import {ConsumerEmailResult} from 'model/ConsumerEmailValidation'
+import {ApiReportDraft} from 'model/reportsFromApi'
 
 type PublicStat =
   | 'PromesseAction'
@@ -39,7 +40,8 @@ export class SignalConsoApiClient {
   }
 
   createReport = (draft: ReportDraft) => {
-    return this.client.post<Report>(`/reports`, {body: ReportDraft.toApi(draft)}).then(
+    const body: ApiReportDraft = ReportDraft.toApi(draft)
+    return this.client.post<Report>(`/reports`, {body}).then(
       (report: {[key in keyof Report]: any}): Report => ({
         ...report,
         companyAddress: {

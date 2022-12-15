@@ -3,6 +3,7 @@ import {DetailInputValue} from './Report'
 import {ifDefined} from '../utils/utils'
 import {CompanyKinds, ReportTag, Subcategory} from 'anomalies/Anomaly'
 import {Address} from './Address'
+import {ApiReportDraft} from './reportsFromApi'
 
 export enum Gender {
   Male = 'Male',
@@ -61,12 +62,12 @@ export class ReportDraft {
     )
   }
 
-  static readonly toApi = (draft: ReportDraft): any => {
+  static readonly toApi = (draft: ReportDraft): ApiReportDraft => {
     return {
       ...draft,
       details: draft.details,
       gender: draft.consumer.gender,
-      subcategories: ifDefined(draft.subcategories, subcategories => subcategories.map(_ => _.title ?? _)),
+      subcategories: draft.subcategories.map(_ => _.title),
       firstName: draft.consumer.firstName,
       lastName: draft.consumer.lastName,
       email: draft.consumer.email,
@@ -82,6 +83,9 @@ export class ReportDraft {
       companyActivityCode: draft.companyDraft.activityCode,
       websiteURL: draft.companyDraft.website,
       phone: draft.companyDraft.phone,
+      // pretty sure these fields aren't actually optional in the draft
+      employeeConsumer: draft.employeeConsumer ?? false,
+      tags: draft.tags ?? [],
     }
   }
 }
