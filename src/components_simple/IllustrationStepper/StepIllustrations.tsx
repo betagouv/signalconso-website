@@ -4,7 +4,7 @@ import Image, {StaticImageData} from 'next/image'
 import {styleUtils} from 'core/theme'
 import SwipeableViews from 'react-swipeable-views'
 import {useState} from 'react'
-import {IconBtn} from '../../alexlibs/mui-extension'
+import {IconBtn} from '../../alexlibs/mui-extension/IconBtn/IconBtn'
 
 interface IllustrationStepperStepProps {
   title: string

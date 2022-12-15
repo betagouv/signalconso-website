@@ -1,7 +1,7 @@
 import {Box, Icon, Tooltip} from '@mui/material'
 import {extensionToType, FileType, reportFileConfig} from './reportFileConfig'
 import React from 'react'
-import {IconBtn} from '../../alexlibs/mui-extension'
+import {IconBtn} from '../../alexlibs/mui-extension/IconBtn/IconBtn'
 import {useI18n} from 'i18n'
 import {useApiClients} from 'context/ApiClientsContext'
 import {ScDialog} from '../Dialog/ScDialog'

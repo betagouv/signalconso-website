@@ -1,5 +1,6 @@
 import {ScInput} from 'components_simple/Input/ScInput'
-import {IconBtn, Txt} from '../../../alexlibs/mui-extension'
+import {Txt} from '../../../alexlibs/mui-extension'
+import {IconBtn} from '../../../alexlibs/mui-extension/IconBtn/IconBtn'
 import React, {ReactNode, useEffect, useState} from 'react'
 import {useI18n} from 'i18n'
 import {useApiClients} from 'context/ApiClientsContext'
