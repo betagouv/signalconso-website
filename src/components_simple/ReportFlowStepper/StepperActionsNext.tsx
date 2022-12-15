@@ -1,5 +1,5 @@
 import {ScButton} from '../Button/Button'
-import {BtnProps} from '../../alexlibs/mui-extension'
+import {BtnProps} from '../../alexlibs/mui-extension/Btn/Btn'
 import {useI18n} from 'i18n'
 
 interface Props extends BtnProps {}

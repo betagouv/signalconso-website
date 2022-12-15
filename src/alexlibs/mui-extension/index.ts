@@ -1,5 +1,4 @@
 export * from './IconBtn'
-export * from './Btn'
 export * from './Confirm'
 export * from './Page'
 export * from './Toast'
