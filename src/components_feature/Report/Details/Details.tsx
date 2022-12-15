@@ -138,7 +138,7 @@ export const _Details = ({
               </>
             )}
           </Alert>
-          {(tags ?? []).includes(ReportTag.ProduitDangereux) && <DetailsAlertProduitDangereux />}
+          {(tags ?? []).includes('ProduitDangereux') && <DetailsAlertProduitDangereux />}
 
           <br />
 

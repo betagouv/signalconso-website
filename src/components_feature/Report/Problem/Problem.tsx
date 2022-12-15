@@ -25,10 +25,10 @@ function adjustTags(
 ): ReportTag[] {
   let res = tags
   if (companyKindFromSelected === CompanyKinds.WEBSITE || draft.companyKind === CompanyKinds.WEBSITE) {
-    res = [...res, ReportTag.Internet]
+    res = [...res, 'Internet']
   }
   if (draft.forwardToReponseConso !== true) {
-    res = res.filter(_ => _ !== ReportTag.ReponseConso)
+    res = res.filter(_ => _ !== 'ReponseConso')
   }
   return res
 }
@@ -75,7 +75,7 @@ export const Problem = ({anomaly}: Props) => {
       copy.subcategories[index] = subcategory
       copy.details = {}
       copy.subcategories = [...copy.subcategories]
-      copy.tags = copy.tags ? copy.tags.filter(_ => _ !== ReportTag.Internet) : undefined
+      copy.tags = copy.tags ? copy.tags.filter(_ => _ !== 'Internet') : undefined
       copy.companyKind = undefined
       _analytic.trackEvent(
         EventCategories.report,
@@ -145,8 +145,7 @@ export const Problem = ({anomaly}: Props) => {
                   },
                   {
                     title: m.problemIsInternetCompanyNo,
-                    value:
-                      tagsFromSelected.indexOf(ReportTag.ProduitDangereux) === -1 ? CompanyKinds.SIRET : CompanyKinds.LOCATION,
+                    value: tagsFromSelected.indexOf('ProduitDangereux') === -1 ? CompanyKinds.SIRET : CompanyKinds.LOCATION,
                   },
                 ]}
               />
@@ -174,7 +173,7 @@ export const Problem = ({anomaly}: Props) => {
                     description: m.problemContractualDisputeFormNoDesc,
                     value: 2,
                   },
-                  ...(displayReponseConso && tagsFromSelected.includes(ReportTag.ReponseConso)
+                  ...(displayReponseConso && tagsFromSelected.includes('ReponseConso')
                     ? [
                         {
                           title: m.problemContractualDisputeFormReponseConso,

@@ -1,11 +1,10 @@
-import {_Acknowledgement, AcknowledgmentCases} from '../Report/Acknowledgement/Acknowledgement'
-import {useEffect, useMemo, useState} from 'react'
-import {Fixture} from '../../test/fixture'
-import {useConstantContext} from 'context/ConstantContext'
 import {MenuItem, Select} from '@mui/material'
-import {ReportTag} from '../../anomalies/Anomaly'
-import {CreatedReport} from '../../model/CreatedReport'
+import {useConstantContext} from 'context/ConstantContext'
+import {useEffect, useMemo, useState} from 'react'
 import {Enum} from 'utils/Enum'
+import {CreatedReport} from '../../model/CreatedReport'
+import {Fixture} from '../../test/fixture'
+import {AcknowledgmentCases, _Acknowledgement} from '../Report/Acknowledgement/Acknowledgement'
 
 export const PlaygroundAcknowledgment = () => {
   const [type, setType] = useState<AcknowledgmentCases>(AcknowledgmentCases.ReponseConso)
@@ -14,7 +13,7 @@ export const PlaygroundAcknowledgment = () => {
   const {countries} = useConstantContext()
   const report = useMemo(() => {
     const reportsSwitch: {[key in AcknowledgmentCases]: () => CreatedReport} = {
-      [AcknowledgmentCases.ReponseConso]: () => ({...baseReport, tags: [ReportTag.ReponseConso]}),
+      [AcknowledgmentCases.ReponseConso]: () => ({...baseReport, tags: ['ReponseConso']}),
       [AcknowledgmentCases.EmployeeReport]: () => ({...baseReport, employeeConsumer: true}),
       [AcknowledgmentCases.ForeignCompany]: () => ({
         ...baseReport,
@@ -24,13 +23,13 @@ export const PlaygroundAcknowledgment = () => {
       [AcknowledgmentCases.NotTransmittable]: () => ({
         ...baseReport,
         employeeConsumer: false,
-        tags: [ReportTag.ProduitDangereux],
+        tags: ['ProduitDangereux'],
       }),
       [AcknowledgmentCases.FrenchCompanyWithoutSIRET]: () => ({...baseReport, employeeConsumer: false, companySiret: undefined}),
       [AcknowledgmentCases.ContractualDisputeWithSIRET]: () => ({
         ...baseReport,
         employeeConsumer: false,
-        tags: [ReportTag.LitigeContractuel],
+        tags: ['LitigeContractuel'],
       }),
       [AcknowledgmentCases.Default]: () => ({...baseReport, employeeConsumer: false, tags: []}),
     }
