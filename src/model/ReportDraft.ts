@@ -5,10 +5,8 @@ import {CompanyKinds, ReportTag, Subcategory} from 'anomalies/Anomaly'
 import {Address} from './Address'
 import {ApiReportDraft} from './reportsFromApi'
 
-export enum Gender {
-  Male = 'Male',
-  Female = 'Female',
-}
+export const genders = ['Male', 'Female'] as const
+export type Gender = typeof genders[number]
 
 export interface ReportDraftConsumer {
   firstName: string
