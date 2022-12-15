@@ -1,32 +1,13 @@
-import {ReportTag, Subcategory} from 'anomalies/Anomaly'
+import {ReportTag} from 'anomalies/Anomaly'
 import {Address} from './Address'
-import {Gender} from './ReportDraft'
 
 export interface Report {
-  id: string
-  gender?: Gender
-  category: string
-  subcategories: Subcategory[]
   tags: ReportTag[]
-  companyId: string
-  companyName: string
   companyAddress: Address
   companySiret?: string
   websiteURL?: string
-  vendor?: string
-  phone?: string
-  details: DetailInputValue[]
-  firstName: string
-  lastName: string
-  email: string
-  consumerPhone?: string
-  consumerReferenceNumber?: string
   employeeConsumer: boolean
   contactAgreement: boolean
-  creationDate: Date
-  status: ReportStatus
-  reponseconsoCode: string[]
-  ccrfCode: string[]
 }
 
 export interface DetailInputValue {

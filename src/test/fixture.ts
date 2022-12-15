@@ -79,27 +79,12 @@ export class Fixture {
     const company = Fixture.genCompany()
     const subcategories = [Fixture.genSubcategory(), Fixture.genSubcategory()]
     return {
-      id: randomstring.generate(),
-      category: Fixture.oneOf(allAnomalies.map(_ => _.category)),
-      subcategories: [Fixture.genSubcategory(), Fixture.genSubcategory()],
-      companyId: randomstring.generate(),
-      companyName: randomstring.generate({capitalization: 'lowercase', charset: 'alphabetic'}),
       companyAddress: Fixture.genAddress(),
       companySiret: company.siret,
       websiteURL: randomstring.generate(),
-      // phone: Fixture.genPhone(),
       tags: subcategories.filter(_ => !!_.tags).flatMap(_ => _.tags!),
-      details: Fixture.genDetails(),
-      firstName: randomstring.generate({capitalization: 'lowercase', charset: 'alphabetic'}),
-      lastName: randomstring.generate({capitalization: 'lowercase', charset: 'alphabetic'}),
-      email: Fixture.genEmail(),
-      consumerPhone: Fixture.genPhone(),
       employeeConsumer: Fixture.genBoolean(),
       contactAgreement: Fixture.genBoolean(),
-      creationDate: new Date(),
-      status: Fixture.genStatus(),
-      reponseconsoCode: [],
-      ccrfCode: [],
     }
   }
 
