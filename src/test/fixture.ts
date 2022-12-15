@@ -1,6 +1,6 @@
 import {ReportStep, ReportStepHelper} from 'core/reportStep'
 import randomstring from 'randomstring'
-import {Report, ReportStatus} from '../model/Report'
+import {CreatedReport, ReportStatus} from '../model/CreatedReport'
 import {Company, CompanySearchResult, WebsiteCompanySearchResult} from '../model/Company'
 import {FileOrigin} from '../model/UploadedFile'
 import {ReportDraft, ReportDraftConsumer} from '../model/ReportDraft'
@@ -75,7 +75,7 @@ export class Fixture {
     },
   ]
 
-  static readonly genReport = (): Report => {
+  static readonly genReport = (): CreatedReport => {
     const company = Fixture.genCompany()
     const subcategories = [Fixture.genSubcategory(), Fixture.genSubcategory()]
     return {

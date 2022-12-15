@@ -1,6 +1,6 @@
 import {ReportTag} from 'anomalies/Anomaly'
 import {Address, ApiAdress} from './Address'
-import {DetailInputValue, ReportStatus} from './Report'
+import {DetailInputValue, ReportStatus} from './CreatedReport'
 import {Gender} from './ReportDraft'
 
 // That's exactly what we should send to the API

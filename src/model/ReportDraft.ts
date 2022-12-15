@@ -1,5 +1,5 @@
 import {UploadedFile} from './UploadedFile'
-import {DetailInputValue} from './Report'
+import {DetailInputValue} from './CreatedReport'
 import {ifDefined} from '../utils/utils'
 import {CompanyKinds, ReportTag, Subcategory} from 'anomalies/Anomaly'
 import {Address} from './Address'

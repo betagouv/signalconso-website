@@ -1,7 +1,7 @@
 import {ReportTag} from 'anomalies/Anomaly'
 import {Address} from './Address'
 
-export interface Report {
+export interface CreatedReport {
   tags: ReportTag[]
   companyAddress: Address
   companySiret?: string

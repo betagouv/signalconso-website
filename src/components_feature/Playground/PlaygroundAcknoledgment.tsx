@@ -4,7 +4,7 @@ import {Fixture} from '../../test/fixture'
 import {useConstantContext} from 'context/ConstantContext'
 import {MenuItem, Select} from '@mui/material'
 import {ReportTag} from '../../anomalies/Anomaly'
-import {Report} from '../../model/Report'
+import {CreatedReport} from '../../model/CreatedReport'
 import {Enum} from 'utils/Enum'
 
 export const PlaygroundAcknowledgment = () => {
@@ -13,7 +13,7 @@ export const PlaygroundAcknowledgment = () => {
   const baseReport = useMemo(Fixture.genReport, [])
   const {countries} = useConstantContext()
   const report = useMemo(() => {
-    const reportsSwitch: {[key in AcknowledgmentCases]: () => Report} = {
+    const reportsSwitch: {[key in AcknowledgmentCases]: () => CreatedReport} = {
       [AcknowledgmentCases.ReponseConso]: () => ({...baseReport, tags: [ReportTag.ReponseConso]}),
       [AcknowledgmentCases.EmployeeReport]: () => ({...baseReport, employeeConsumer: true}),
       [AcknowledgmentCases.ForeignCompany]: () => ({
