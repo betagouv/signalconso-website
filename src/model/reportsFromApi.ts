@@ -1,6 +1,6 @@
 import {ReportTag} from 'anomalies/Anomaly'
 import {Address, ApiAdress} from './Address'
-import {DetailInputValue, ReportStatus} from './CreatedReport'
+import {DetailInputValue} from './CreatedReport'
 import {Gender} from './ReportDraft'
 
 // That's exactly what we should send to the API
@@ -47,7 +47,7 @@ export interface ApiCreatedReport {
   companySiret?: string
   creationDate: Date
   contactAgreement: boolean
-  status: ReportStatus
+  status: unknown // no need to type precisely
   websiteURL?: string
   host?: string
   vendor?: string
