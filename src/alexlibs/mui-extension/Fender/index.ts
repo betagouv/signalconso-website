@@ -1,1 +1,0 @@
-export {Fender} from './Fender'

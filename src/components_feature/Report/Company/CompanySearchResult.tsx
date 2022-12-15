@@ -1,4 +1,4 @@
-import {Fender, Txt} from '../../../alexlibs/mui-extension'
+import {Txt} from '../../../alexlibs/mui-extension'
 import {Box, BoxProps, Icon} from '@mui/material'
 import React, {useEffect, useState} from 'react'
 import {Panel, PanelActions, PanelBody} from 'components_simple/Panel/Panel'
@@ -15,6 +15,7 @@ import {CompanySearchEventActions, EventCategories} from 'analytic/analytic'
 import {useToast} from '../../../hooks/useToast'
 import {CompanySearchResult} from '../../../model/Company'
 import {Report} from '../../../model/Report'
+import {Fender} from 'alexlibs/mui-extension/Fender/Fender'
 
 interface Props extends Omit<BoxProps, 'onSubmit'> {
   companies: CompanySearchResult[]

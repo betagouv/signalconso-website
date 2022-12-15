@@ -1,5 +1,5 @@
 import {Panel, PanelActions, PanelBody} from 'components_simple/Panel/Panel'
-import {Fender, Txt} from '../../../alexlibs/mui-extension'
+import {Txt} from '../../../alexlibs/mui-extension'
 import {Box, BoxProps, Icon} from '@mui/material'
 import {useReportFlowContext} from '../ReportFlowContext'
 import {useEffect, useMemo} from 'react'
@@ -16,6 +16,7 @@ import {ReportTag} from '../../../anomalies/Anomaly'
 import {ReportDraft} from '../../../model/ReportDraft'
 import {Report} from '../../../model/Report'
 import {Country} from '../../../model/Country'
+import {Fender} from 'alexlibs/mui-extension/Fender/Fender'
 
 export enum AcknowledgmentCases {
   ReponseConso = 'ReponseConso',
