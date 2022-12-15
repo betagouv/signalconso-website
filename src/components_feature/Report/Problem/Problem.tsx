@@ -13,6 +13,7 @@ import {ProblemInformation} from './ProblemInformation'
 import {ProblemSelect} from './ProblemSelect'
 import {ProblemStepperStep, ProblemStepper} from './ProblemStepper'
 import {computeSelectedSubcategoriesData} from './useSelectedSubcategoriesData'
+import {ReportDraft} from 'model/ReportDraft'
 
 interface Props {
   anomaly: Anomaly
@@ -35,6 +36,18 @@ function adjustTags(
 
 function chooseIfReponseConsoDisplayed(): boolean {
   return Math.random() * 100 < appConfig.reponseConsoDisplayRate
+}
+
+function adjustReportDraftAfterSubcategoriesChange(report: Partial<ReportDraft2>, subcategory: Subcategory, index: number) {
+  const copy = {...report}
+  copy.subcategories = report.subcategories ?? []
+  copy.subcategories.length = index
+  copy.subcategories[index] = subcategory
+  copy.details = {}
+  copy.subcategories = [...copy.subcategories]
+  copy.tags = copy.tags ? copy.tags.filter(_ => _ !== 'Internet') : undefined
+  copy.companyKind = undefined
+  return copy
 }
 
 export const Problem = ({anomaly}: Props) => {
@@ -71,34 +84,27 @@ export const Problem = ({anomaly}: Props) => {
 
   const handleSubcategoriesChange = (subcategory: Subcategory, index: number) => {
     setReportDraft(report => {
-      const copy = {...report}
-      copy.subcategories = report.subcategories ?? []
-      copy.subcategories.length = index
-      copy.subcategories[index] = subcategory
-      copy.details = {}
-      copy.subcategories = [...copy.subcategories]
-      copy.tags = copy.tags ? copy.tags.filter(_ => _ !== 'Internet') : undefined
-      copy.companyKind = undefined
+      const newReport = adjustReportDraftAfterSubcategoriesChange(report, subcategory, index)
       _analytic.trackEvent(
         EventCategories.report,
         ReportEventActions.validateSubcategory,
-        copy.subcategories.map(_ => _.title),
+        newReport.subcategories?.map(_ => _.title) ?? [],
       )
-      return copy
+      return newReport
     })
   }
   return (
     <>
       {[anomaly, ...(reportDraft.subcategories ?? [])].map(
-        (c, i) =>
-          c.subcategories && (
+        (category, idx) =>
+          category.subcategories && (
             <ProblemSelect
-              autoScrollToPanel={i !== 0}
-              key={c.id}
-              title={c.subcategoriesTitle}
-              value={reportDraft.subcategories?.[i]?.id}
-              onChange={id => handleSubcategoriesChange(c.subcategories?.find(_ => _.id === id)!, i)}
-              options={(c.subcategories ?? []).map((_, i) => ({
+              autoScrollToPanel={idx !== 0}
+              key={category.id}
+              title={category.subcategoriesTitle}
+              value={reportDraft.subcategories?.[idx]?.id}
+              onChange={id => handleSubcategoriesChange(category.subcategories?.find(_ => _.id === id)!, idx)}
+              options={(category.subcategories ?? []).map((_, i) => ({
                 title: _.title,
                 description: _.example,
                 value: _.id,
@@ -112,7 +118,7 @@ export const Problem = ({anomaly}: Props) => {
           <ProblemInformation
             anomaly={anomaly}
             subcategories={reportDraft.subcategories}
-            information={(lastSubcategories as any).information}
+            information={lastSubcategories.information}
           />
         ) : (
           <ProblemStepper renderDone={<ReportFlowStepperActions next={onSubmit} />}>
