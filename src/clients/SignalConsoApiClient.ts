@@ -3,7 +3,7 @@ import {BaseApiClient} from './BaseApiClient'
 import {WebsiteCompanySearchResult} from '../model/Company'
 import {Country} from '../model/Country'
 import {FileOrigin, UploadedFile} from '../model/UploadedFile'
-import {Report} from '../model/Report'
+import {CreatedReport} from '../model/CreatedReport'
 import {ReportDraft} from '../model/ReportDraft'
 import {Subcategory} from 'anomalies/Anomaly'
 import {ConsumerEmailResult} from 'model/ConsumerEmailValidation'
@@ -39,12 +39,12 @@ export class SignalConsoApiClient {
     return this.client.get<Country[]>(`/websites/search-url`, {qs: {url}})
   }
 
-  createReport = async (draft: ReportDraft): Promise<Report> => {
+  createReport = async (draft: ReportDraft): Promise<CreatedReport> => {
     const apiReportDraft: ApiReportDraft = ReportDraft.toApi(draft)
 
     const reportFromApi = await this.client.post<ApiCreatedReport>(`/reports`, {body: apiReportDraft})
 
-    const res: Report = {
+    const res: CreatedReport = {
       ...reportFromApi,
       companyAddress: {
         ...reportFromApi.companyAddress,

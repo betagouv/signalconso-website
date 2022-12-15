@@ -15,7 +15,7 @@ import {
   DetailInputType,
 } from '../../anomalies/Anomaly'
 import {UploadedFile} from '../../model/UploadedFile'
-import {DetailInputValue} from '../../model/Report'
+import {DetailInputValue} from '../../model/CreatedReport'
 
 export class DetailsFixtureInput {
   static readonly text: DetailInputText = {

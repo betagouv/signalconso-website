@@ -6,7 +6,7 @@ import {useI18n} from 'i18n/I18n'
 import {Stat} from 'components_feature/Stat/Stat'
 import {Icon} from '@mui/material'
 import {Txt} from '../alexlibs/mui-extension/Txt/Txt'
-import {ReportStatus} from '../model/Report'
+import {ReportStatus} from '../model/CreatedReport'
 
 const Stats = () => {
   const apiClient = useApiClients().signalConsoApiClient

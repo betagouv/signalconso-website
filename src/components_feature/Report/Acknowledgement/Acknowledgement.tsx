@@ -14,7 +14,7 @@ import Link from 'next/link'
 import {siteMap} from 'core/siteMap'
 import {ReportTag} from '../../../anomalies/Anomaly'
 import {ReportDraft} from '../../../model/ReportDraft'
-import {Report} from '../../../model/Report'
+import {CreatedReport} from '../../../model/CreatedReport'
 import {Country} from '../../../model/Country'
 import {Fender} from 'alexlibs/mui-extension/Fender/Fender'
 
@@ -57,7 +57,7 @@ export const Acknowledgement = () => {
   return <Fender type="loading" />
 }
 
-export const _Acknowledgement = ({createdReport, country}: {createdReport: Report; country: Country | undefined}) => {
+export const _Acknowledgement = ({createdReport, country}: {createdReport: CreatedReport; country: Country | undefined}) => {
   const reportCase = useMemo(() => {
     const _ = createdReport
     if (_.tags.includes(ReportTag.ReponseConso)) {
