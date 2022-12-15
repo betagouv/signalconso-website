@@ -1,5 +1,5 @@
 import {Icon} from '@mui/material'
-import {Txt} from 'alexlibs/mui-extension'
+import {Txt} from 'alexlibs/mui-extension/Txt/Txt'
 import {dateToFrenchFormat} from 'utils/utils'
 import {pageDefinitions} from 'core/pageDefinition'
 import {COLOR_DARK_BLUE, COLOR_LIGHT_BLUE} from 'core/theme'

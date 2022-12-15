@@ -4,7 +4,7 @@ import {useFetcher} from '../../hooks/useFetcher'
 import {Autocomplete, CircularProgress} from '@mui/material'
 import React, {forwardRef, useEffect, useMemo, useState} from 'react'
 import {ScInput, ScInputProps} from '../Input/ScInput'
-import {Txt} from '../../alexlibs/mui-extension'
+import {Txt} from '../../alexlibs/mui-extension/Txt/Txt'
 import {useApiClients} from '../../context/ApiClientsContext'
 
 export interface AutocompleteCityValue {

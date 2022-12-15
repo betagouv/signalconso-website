@@ -1,4 +1,4 @@
-import {Txt} from '../../../alexlibs/mui-extension'
+import {Txt} from '../../../alexlibs/mui-extension/Txt/Txt'
 import {Box, BoxProps, Icon} from '@mui/material'
 import React, {useEffect, useState} from 'react'
 import {Panel, PanelActions, PanelBody} from 'components_simple/Panel/Panel'
