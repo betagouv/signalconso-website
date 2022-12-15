@@ -1,7 +1,7 @@
 import {Animate} from 'components_simple/Animate/Animate'
 import {Panel, PanelBody} from 'components_simple/Panel/Panel'
 import {useI18n} from 'i18n'
-import {Fender, Txt} from '../../../alexlibs/mui-extension'
+import {Txt} from '../../../alexlibs/mui-extension'
 import {IconBtn} from '../../../alexlibs/mui-extension'
 import {Icon} from '@mui/material'
 import {useApiClients} from 'context/ApiClientsContext'
@@ -17,6 +17,7 @@ import {EventCategories, ReportEventActions} from 'analytic/analytic'
 import {last} from 'utils/lodashNamedExport'
 import {ReportStepPathInAnalytics, ReportStepTitleInAnalytics} from '../ReportFlow'
 import {Anomaly, Information, Subcategory} from '../../../anomalies/Anomaly'
+import {Fender} from 'alexlibs/mui-extension/Fender/Fender'
 
 interface Props {
   anomaly: Anomaly
