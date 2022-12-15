@@ -1,4 +1,5 @@
-import {ScRadioGroup, ScRadioGroupItem} from 'components_simple/RadioGroup'
+import {ScRadioGroupItem} from 'components_simple/RadioGroup/RadioGroupItem'
+import {ScRadioGroup} from 'components_simple/RadioGroup/RadioGroup'
 import {Panel, PanelActions, PanelBody} from 'components_simple/Panel/Panel'
 import {useI18n} from 'i18n/I18n'
 import {StepperActionsNext} from 'components_simple/ReportFlowStepper/StepperActionsNext'

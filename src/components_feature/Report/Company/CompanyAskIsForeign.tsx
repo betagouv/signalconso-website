@@ -1,6 +1,7 @@
 import {Panel, PanelBody} from 'components_simple/Panel/Panel'
 import {useI18n} from 'i18n/I18n'
-import {ScRadioGroup, ScRadioGroupItem} from 'components_simple/RadioGroup'
+import {ScRadioGroupItem} from 'components_simple/RadioGroup/RadioGroupItem'
+import {ScRadioGroup} from 'components_simple/RadioGroup/RadioGroup'
 import {Txt} from '../../../alexlibs/mui-extension/Txt/Txt'
 import {Animate} from 'components_simple/Animate/Animate'
 import {ReactNode, useState} from 'react'
