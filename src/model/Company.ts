@@ -1,4 +1,5 @@
-import {Address, Id, PaginatedFilters} from '.'
+import {Address} from './Address'
+import {Id} from './Common'
 
 export interface CompanySearchResult {
   siret: string

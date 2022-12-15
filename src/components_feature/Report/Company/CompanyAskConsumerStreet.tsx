@@ -8,7 +8,7 @@ import {Animate} from 'components_simple/Animate/Animate'
 import {Alert, Txt} from '../../../alexlibs/mui-extension'
 import {StepperActionsNext} from 'components_simple/ReportFlowStepper/StepperActionsNext'
 import {AutocompleteCity, AutocompleteCityValue} from 'components_simple/AutocompleteCity/AutocompleteCity'
-import {Address} from '../../../model'
+import {Address} from 'model/Address'
 
 interface Form {
   street: string

@@ -1,5 +1,4 @@
-import {DetailInputType} from 'model'
-import {DetailInput} from 'model'
+import {DetailInput, DetailInputType} from 'anomalies/Anomaly'
 
 export const getDefaultValueFromInput = (detailInput: DetailInput): string | undefined => {
   if (detailInput.type === DetailInputType.DATE || detailInput.type === DetailInputType.DATE_NOT_IN_FUTURE) {

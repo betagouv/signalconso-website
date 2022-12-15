@@ -1,5 +1,7 @@
-import {Address, ReportTag, Subcategory, UploadedFile} from '.'
+import {ReportTag, Subcategory} from 'anomalies/Anomaly'
+import {Address} from './Address'
 import {Gender} from './ReportDraft'
+import {UploadedFile} from './UploadedFile'
 
 export const ReportingDateLabel = 'Date du constat'
 export const ReportingTimeslotLabel = 'Heure du constat'

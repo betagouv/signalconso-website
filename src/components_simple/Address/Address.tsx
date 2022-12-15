@@ -1,5 +1,5 @@
+import {Address} from 'model/Address'
 import React from 'react'
-import {Address} from '../../model'
 
 interface Props {
   address: Address
