@@ -1,7 +1,6 @@
 import {ReportTag, Subcategory} from 'anomalies/Anomaly'
 import {Address} from './Address'
 import {Gender} from './ReportDraft'
-
 export interface Report {
   id: string
   gender?: Gender
@@ -50,8 +49,4 @@ export enum ReportStatusPro {
   NonConsulte = 'NonConsulte',
   ARepondre = 'ARepondre',
   Cloture = 'Cloture',
-}
-
-export class Report {
-  static readonly isGovernmentCompany = (_?: {activityCode?: string}): boolean => _?.activityCode?.startsWith('84.') ?? false
 }

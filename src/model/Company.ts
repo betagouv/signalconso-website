@@ -29,3 +29,5 @@ export interface Company {
   isPublic: boolean
   isOpen: boolean
 }
+
+export const isGovernmentCompany = (_?: {activityCode?: string}): boolean => _?.activityCode?.startsWith('84.') ?? false

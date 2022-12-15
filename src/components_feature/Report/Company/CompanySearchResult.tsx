@@ -14,8 +14,7 @@ import {StepperActionsNext} from 'components_simple/ReportFlowStepper/StepperAct
 import {useAnalyticContext} from 'analytic/AnalyticContext'
 import {CompanySearchEventActions, EventCategories} from 'analytic/analytic'
 import {useToast} from '../../../hooks/useToast'
-import {CompanySearchResult} from '../../../model/Company'
-import {Report} from '../../../model/Report'
+import {CompanySearchResult, isGovernmentCompany} from '../../../model/Company'
 import {Fender} from 'alexlibs/mui-extension/Fender/Fender'
 
 interface Props extends Omit<BoxProps, 'onSubmit'> {
@@ -96,7 +95,7 @@ export const CompanySearchResultComponent = ({companies, onSubmit}: Props) => {
             <form
               onSubmit={handleSubmit(form => {
                 const selectedCompany = companies.find(_ => _.siret === form.result)!
-                if (Report.isGovernmentCompany(selectedCompany)) {
+                if (isGovernmentCompany(selectedCompany)) {
                   toastError({message: m.cannotReportGovernmentCompany})
                 } else {
                   selectedCompany.isMarketPlace ? setSelected(selectedCompany) : submit(selectedCompany)
@@ -116,7 +115,7 @@ export const CompanySearchResultComponent = ({companies, onSubmit}: Props) => {
                   render={({field}) => (
                     <ScRadioGroup {...field} error={!!errors.result}>
                       {companies.map(company => {
-                        const isGovernment = Report.isGovernmentCompany(company)
+                        const isGovernment = isGovernmentCompany(company)
                         return (
                           <ScRadioGroupItem key={company.siret} value={company.siret!}>
                             <Txt truncate block bold>
