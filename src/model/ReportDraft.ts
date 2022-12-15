@@ -1,9 +1,8 @@
-import {UploadedFile} from './UploadedFile'
-import {DetailInputValue} from './CreatedReport'
-import {ifDefined} from '../utils/utils'
 import {CompanyKinds, ReportTag, Subcategory} from 'anomalies/Anomaly'
 import {Address} from './Address'
+import {DetailInputValue} from './CreatedReport'
 import {ApiReportDraft} from './reportsFromApi'
+import {UploadedFile} from './UploadedFile'
 
 export const genders = ['Male', 'Female'] as const
 export type Gender = typeof genders[number]

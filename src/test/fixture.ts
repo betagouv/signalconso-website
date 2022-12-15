@@ -1,6 +1,6 @@
 import {ReportStep, ReportStepHelper} from 'core/reportStep'
 import randomstring from 'randomstring'
-import {CreatedReport, ReportStatus} from '../model/CreatedReport'
+import {CreatedReport} from '../model/CreatedReport'
 import {Company, CompanySearchResult, WebsiteCompanySearchResult} from '../model/Company'
 import {FileOrigin} from '../model/UploadedFile'
 import {ReportDraft, ReportDraftConsumer} from '../model/ReportDraft'
@@ -48,16 +48,6 @@ export class Fixture {
       })
     )
   }
-
-  // private static readonly genCompanyAccessLevel = (siret?: string) => {
-  //   return {
-  //     ...Fixture.genCompany(),
-  //     ...(siret ? {siret} : {}),
-  //     level: Fixture.oneOf(['admin', 'member']),
-  //   }
-  // }
-
-  private static readonly genStatus = () => Fixture.oneOf(Object.values(ReportStatus))
 
   private static readonly genDetails = () => [
     {label: "Date de constat (ou date d'achat) :", value: '09/03/2022'},
