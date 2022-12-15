@@ -5,12 +5,13 @@ import {useI18n} from 'i18n'
 import {useState} from 'react'
 import {Controller, useForm} from 'react-hook-form'
 import {ScButton} from 'components_simple/Button/Button'
-import {Alert, Txt} from '../../../alexlibs/mui-extension'
+import {Txt} from '../../../alexlibs/mui-extension'
 import {useFetcher} from '../../../hooks/useFetcher'
 import {duration} from '../../../utils/Duration'
 import {timeoutPromise} from '../../../utils/utils'
 import {InputValidationCode} from './InputValidationCode'
 import {ValidationRejectReason} from 'model/ConsumerEmailValidation'
+import {Alert} from 'alexlibs/mui-extension/Alert/Alert'
 
 interface Props {
   loading?: boolean

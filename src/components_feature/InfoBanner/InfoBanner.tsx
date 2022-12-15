@@ -1,4 +1,4 @@
-import {Alert} from '../../alexlibs/mui-extension'
+import {Alert} from '../../alexlibs/mui-extension/Alert/Alert'
 import {useConfig} from 'context/ConfigContext'
 import {useWindowWidth} from '../../hooks/useWindowWidth'
 
