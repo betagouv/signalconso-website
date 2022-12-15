@@ -1,5 +1,4 @@
 import {Address} from './Address'
-import {Id} from './Common'
 
 export interface CompanySearchResult {
   siret: string
@@ -20,7 +19,7 @@ export interface WebsiteCompanySearchResult {
 }
 
 export interface Company {
-  id: Id
+  id: string
   siret: string
   creationDate: Date
   name: string

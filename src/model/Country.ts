@@ -4,13 +4,3 @@ export interface Country {
   european: boolean
   transfer: boolean
 }
-
-export interface Region {
-  label: string
-  departments: Department[]
-}
-
-export interface Department {
-  code: string
-  label: string
-}

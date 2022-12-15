@@ -7,6 +7,5 @@ import _sortBy from 'lodash/sortBy'
 import _last from 'lodash/last'
 
 export const sortBy = _sortBy
-export const uniqBy = _uniqBy
 export const throttle = _throttle
 export const last = _last
