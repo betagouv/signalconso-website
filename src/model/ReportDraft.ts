@@ -48,10 +48,6 @@ export interface ReportDraft {
 }
 
 export class ReportDraft {
-  static readonly getCompanyKindFomSubcategories = (r: ReportDraft): CompanyKinds | undefined => {
-    return r.subcategories?.reverse().find(_ => !!_.companyKind)?.companyKind
-  }
-
   static readonly isTransmittableToPro = (r: Pick<ReportDraft, 'employeeConsumer' | 'tags'>): boolean => {
     return !r.employeeConsumer && !(r.tags ?? []).find(_ => ['ReponseConso', 'ProduitDangereux', 'Bloctel'].includes(_))
   }
