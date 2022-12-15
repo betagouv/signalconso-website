@@ -149,7 +149,7 @@ export const _Consumer = ({
               />
             </FormLayout>
           </Row>
-          {!draft.tags?.includes(ReportTag.Bloctel) && (
+          {!draft.tags?.includes('Bloctel') && (
             <Row icon="phone">
               <FormLayout label={m.phoneOptional}>
                 <ScInput

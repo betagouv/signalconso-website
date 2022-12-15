@@ -53,10 +53,7 @@ export class ReportDraft {
   }
 
   static readonly isTransmittableToPro = (r: Pick<ReportDraft, 'employeeConsumer' | 'tags'>): boolean => {
-    return (
-      !r.employeeConsumer &&
-      !(r.tags ?? []).find(_ => [ReportTag.ReponseConso, ReportTag.ProduitDangereux, ReportTag.Bloctel].includes(_))
-    )
+    return !r.employeeConsumer && !(r.tags ?? []).find(_ => ['ReponseConso', 'ProduitDangereux', 'Bloctel'].includes(_))
   }
 
   static readonly toApi = (draft: ReportDraft): ApiReportDraft => {

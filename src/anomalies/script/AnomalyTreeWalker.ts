@@ -97,7 +97,7 @@ export class AnomalyTreeWalker {
     }
   }
 
-  assertIsAllowedString(possibleValues: string[]) {
+  assertIsAllowedString(possibleValues: readonly string[]) {
     this.assertIsString()
     if (!possibleValues.includes(this.value)) {
       throw this.err(`should be one of ${possibleValues.join(', ')} ${this.printActualValue()}`)
@@ -121,7 +121,7 @@ export class AnomalyTreeWalker {
     this.intoChilds().forEach(_ => _.assertIsString())
   }
 
-  assertIsArrayOfAllowedStrings(possibleValues: string[]) {
+  assertIsArrayOfAllowedStrings(possibleValues: readonly string[]) {
     this.assertIsArray()
     this.intoChilds().forEach(_ => _.assertIsAllowedString(possibleValues))
   }

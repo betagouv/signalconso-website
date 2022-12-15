@@ -4,7 +4,7 @@ import {CreatedReport} from '../model/CreatedReport'
 import {Company, CompanySearchResult, WebsiteCompanySearchResult} from '../model/Company'
 import {FileOrigin} from '../model/UploadedFile'
 import {ReportDraft, ReportDraftConsumer} from '../model/ReportDraft'
-import {Information, ReportTag, Subcategory} from '../anomalies/Anomaly'
+import {Information, ReportTag, reportTags, Subcategory} from '../anomalies/Anomaly'
 import {Address} from '../model/Address'
 import {allAnomalies} from 'anomalies/Anomalies'
 
@@ -161,7 +161,7 @@ export class Fixture {
     return <Subcategory>{
       title: randomstring.generate({capitalization: 'lowercase', charset: 'alphabetic'}),
       id: randomstring.generate(),
-      tags: Fixture.oneOf([null, ...Object.keys(ReportTag)]),
+      tags: Fixture.oneOf([null, ...reportTags]),
       ...params,
     }
   }

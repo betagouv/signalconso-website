@@ -60,7 +60,7 @@ export const Acknowledgement = () => {
 export const _Acknowledgement = ({createdReport, country}: {createdReport: CreatedReport; country: Country | undefined}) => {
   const reportCase = useMemo(() => {
     const _ = createdReport
-    if (_.tags.includes(ReportTag.ReponseConso)) {
+    if (_.tags.includes('ReponseConso')) {
       return AcknowledgmentCases.ReponseConso
     } else if (_.employeeConsumer) {
       return AcknowledgmentCases.EmployeeReport
@@ -70,7 +70,7 @@ export const _Acknowledgement = ({createdReport, country}: {createdReport: Creat
       return AcknowledgmentCases.NotTransmittable
     } else if (!_.companySiret) {
       return AcknowledgmentCases.FrenchCompanyWithoutSIRET
-    } else if (_.tags.includes(ReportTag.LitigeContractuel) && _.companySiret) {
+    } else if (_.tags.includes('LitigeContractuel') && _.companySiret) {
       return AcknowledgmentCases.ContractualDisputeWithSIRET
     } else {
       return AcknowledgmentCases.Default
@@ -123,7 +123,7 @@ export const _Acknowledgement = ({createdReport, country}: {createdReport: Creat
     [AcknowledgmentCases.ForeignCompany]: () => (
       <AcknowledgementLayout
         title="Que va-t-il se passer pour l'entreprise ?"
-        showChargeBack={createdReport.tags.includes(ReportTag.LitigeContractuel) && !!createdReport.websiteURL}
+        showChargeBack={createdReport.tags.includes('LitigeContractuel') && !!createdReport.websiteURL}
       >
         <p>Vous avez indiqué que l’entreprise est une entreprise étrangère ({country?.name}).</p>
         <p>Votre signalement ne sera pas transmis à cette entreprise.</p>
@@ -211,7 +211,7 @@ export const _Acknowledgement = ({createdReport, country}: {createdReport: Creat
     [AcknowledgmentCases.ContractualDisputeWithSIRET]: () => (
       <AcknowledgementLayout
         title="Que va-t-il se passer pour l'entreprise ?"
-        showChargeBack={createdReport.tags.includes(ReportTag.LitigeContractuel) && !!createdReport.websiteURL}
+        showChargeBack={createdReport.tags.includes('LitigeContractuel') && !!createdReport.websiteURL}
       >
         <Row
           icon={

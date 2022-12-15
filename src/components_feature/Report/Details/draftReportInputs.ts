@@ -40,7 +40,7 @@ export const getDraftReportInputs = ({
   } else {
     res.push(...DraftReportDefaultInputs.defaults())
   }
-  if (tags?.includes(ReportTag.ReponseConso)) {
+  if (tags?.includes('ReponseConso')) {
     const i = res.findIndex(
       _ => _.type === DetailInputType.TEXTAREA && !_.label.includes(DraftReportDefaultInputs.description().label),
     )

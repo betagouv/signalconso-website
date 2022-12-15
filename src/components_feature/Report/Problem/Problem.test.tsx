@@ -15,7 +15,7 @@ class ProblemFixture {
   static readonly internetSubcategory = Fixture.genSubcategory({companyKind: CompanyKinds.WEBSITE})
   static readonly reponseConsoSubcategory = Fixture.genSubcategory({
     companyKind: CompanyKinds.WEBSITE,
-    tags: [ReportTag.ReponseConso],
+    tags: ['ReponseConso'],
   })
   static readonly infoSubcategory = Fixture.genSubcategory({information: Fixture.genInformation()})
   static readonly subcategories = [
@@ -298,7 +298,7 @@ describe('Problem', () => {
     clickBtnSubmit(app)
     expect(report?.employeeConsumer).toEqual(false)
     expect(report?.forwardToReponseConso).toEqual(true)
-    expect(report?.tags?.includes(ReportTag.ReponseConso)).toEqual(true)
+    expect(report?.tags?.includes('ReponseConso')).toEqual(true)
   })
 
   it('should ask add ReponseConso tag when related option is not selected', () => {
@@ -321,6 +321,6 @@ describe('Problem', () => {
     clickBtnSubmit(app)
     expect(report?.employeeConsumer).toEqual(false)
     expect(report?.forwardToReponseConso).not.toEqual(true)
-    expect((report?.tags ?? []).includes(ReportTag.ReponseConso)).toEqual(false)
+    expect((report?.tags ?? []).includes('ReponseConso')).toEqual(false)
   })
 })
