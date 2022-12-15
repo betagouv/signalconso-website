@@ -3,7 +3,7 @@ import {TextMaskCustom} from './InputValidationCodeMask'
 import {Box, useTheme} from '@mui/material'
 import {ScInput, ScInputProps} from 'components_simple/Input/ScInput'
 import React from 'react'
-import {useI18n} from 'i18n'
+import {useI18n} from 'i18n/I18n'
 
 interface Props extends ScInputProps {}
 

@@ -1,5 +1,5 @@
 import {Page} from '../components_simple/Page/Page'
-import {useI18n} from '../i18n'
+import {useI18n} from '../i18n/I18n'
 import {ScButton} from '../components_simple/Button/Button'
 import {siteMap} from '../core/siteMap'
 import Link from 'next/link'

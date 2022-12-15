@@ -1,5 +1,5 @@
 import {Panel, PanelBody} from 'components_simple/Panel/Panel'
-import {useI18n} from 'i18n'
+import {useI18n} from 'i18n/I18n'
 import {Grid} from '@mui/material'
 import React, {useState} from 'react'
 import {ScInput} from 'components_simple/Input/ScInput'

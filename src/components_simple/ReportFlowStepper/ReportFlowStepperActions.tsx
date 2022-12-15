@@ -1,5 +1,5 @@
 import {Box} from '@mui/material'
-import {useI18n} from 'i18n'
+import {useI18n} from 'i18n/I18n'
 import {ScButton} from '../Button/Button'
 import {useReportFlowStepperContext} from './ReportFlowStepper'
 import {StepperActionsNext} from './StepperActionsNext'

@@ -1,7 +1,7 @@
 import {Skeleton} from '@mui/material'
 import {Box} from '@mui/system'
 import {CountByDate} from 'clients/SignalConsoApiClient'
-import {useI18n} from 'i18n'
+import {useI18n} from 'i18n/I18n'
 import React, {useEffect} from 'react'
 import {Bar, BarChart, CartesianGrid, Legend, ResponsiveContainer, Tooltip, XAxis, YAxis} from 'recharts'
 import {Panel} from 'components_simple/Panel/Panel'

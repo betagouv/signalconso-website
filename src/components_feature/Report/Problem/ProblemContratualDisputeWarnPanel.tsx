@@ -2,7 +2,7 @@ import {Panel, PanelBody, PanelProps} from 'components_simple/Panel/Panel'
 import {Txt} from '../../../alexlibs/mui-extension/Txt/Txt'
 import React from 'react'
 import {Animate} from 'components_simple/Animate/Animate'
-import {useI18n} from 'i18n'
+import {useI18n} from 'i18n/I18n'
 
 interface Props extends PanelProps {}
 

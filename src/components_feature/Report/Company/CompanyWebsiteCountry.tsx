@@ -1,6 +1,6 @@
 import {ScRadioGroup, ScRadioGroupItem} from 'components_simple/RadioGroup'
 import {Panel, PanelActions, PanelBody} from 'components_simple/Panel/Panel'
-import {useI18n} from 'i18n'
+import {useI18n} from 'i18n/I18n'
 import {StepperActionsNext} from 'components_simple/ReportFlowStepper/StepperActionsNext'
 import React from 'react'
 import {Controller, useForm} from 'react-hook-form'

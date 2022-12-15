@@ -4,7 +4,7 @@ import {useToast} from 'hooks/useToast'
 import Link from 'next/link'
 import {siteMap} from 'core/siteMap'
 import {ScButton} from 'components_simple/Button/Button'
-import {useI18n} from 'i18n'
+import {useI18n} from 'i18n/I18n'
 
 export const useRgpdBanner = () => {
   const {m} = useI18n()

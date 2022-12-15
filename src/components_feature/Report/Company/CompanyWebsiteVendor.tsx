@@ -1,6 +1,6 @@
 import {Panel, PanelActions, PanelBody} from 'components_simple/Panel/Panel'
 import {Animate} from 'components_simple/Animate/Animate'
-import {useI18n} from 'i18n'
+import {useI18n} from 'i18n/I18n'
 import {Alert} from '../../../alexlibs/mui-extension/Alert/Alert'
 import {ScInput} from 'components_simple/Input/ScInput'
 import {FormLayout} from 'components_simple/FormLayout/FormLayout'
