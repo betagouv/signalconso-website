@@ -2,7 +2,7 @@
 import * as React from 'react'
 import {SvgIcon} from '@mui/material'
 
-const FacebookIcon = (props: any) => (
+export const FacebookIcon = (props: any) => (
   <SvgIcon {...props}>
     <svg x="0px" y="0px" width="100%" height="100%" viewBox="0 0 60.8 60.8">
       <g>
@@ -15,5 +15,3 @@ const FacebookIcon = (props: any) => (
     </svg>
   </SvgIcon>
 )
-
-export default FacebookIcon
