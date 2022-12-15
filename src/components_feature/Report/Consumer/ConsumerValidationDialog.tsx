@@ -1,7 +1,7 @@
 import {LoadingButton} from '@mui/lab'
 import {Button, Dialog, DialogActions, DialogContent, DialogTitle, Icon, LinearProgress} from '@mui/material'
 import {useApiClients} from 'context/ApiClientsContext'
-import {useI18n} from 'i18n'
+import {useI18n} from 'i18n/I18n'
 import {useState} from 'react'
 import {Controller, useForm} from 'react-hook-form'
 import {ScButton} from 'components_simple/Button/Button'

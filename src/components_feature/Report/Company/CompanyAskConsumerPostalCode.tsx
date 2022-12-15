@@ -1,7 +1,7 @@
 import {Panel, PanelActions, PanelBody} from 'components_simple/Panel/Panel'
 import {FormLayout} from 'components_simple/FormLayout/FormLayout'
 import React from 'react'
-import {useI18n} from 'i18n'
+import {useI18n} from 'i18n/I18n'
 import {Controller, useForm} from 'react-hook-form'
 import {Animate} from 'components_simple/Animate/Animate'
 import {StepperActionsNext} from 'components_simple/ReportFlowStepper/StepperActionsNext'

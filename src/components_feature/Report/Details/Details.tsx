@@ -12,7 +12,7 @@ import {ReportFlowStepperActions} from 'components_simple/ReportFlowStepper/Repo
 import {ScSelect} from 'components_simple/Select/Select'
 import {ReportFiles} from 'components_simple/UploadFile/ReportFiles'
 import {appConfig} from 'core/appConfig'
-import {useI18n} from 'i18n'
+import {useI18n} from 'i18n/I18n'
 import {DetailInputValues2} from 'model/ReportDraft2'
 import {useEffect, useMemo, useState} from 'react'
 import {Controller, useForm} from 'react-hook-form'

@@ -1,4 +1,4 @@
-import {useI18n} from 'i18n'
+import {useI18n} from 'i18n/I18n'
 import {Controller, useForm} from 'react-hook-form'
 import {Panel, PanelActions, PanelBody} from 'components_simple/Panel/Panel'
 import {ScInput} from 'components_simple/Input/ScInput'

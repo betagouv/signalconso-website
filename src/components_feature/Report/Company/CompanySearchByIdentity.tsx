@@ -1,5 +1,5 @@
 import {FormLayout} from 'components_simple/FormLayout/FormLayout'
-import {useI18n} from 'i18n'
+import {useI18n} from 'i18n/I18n'
 import {ScInput} from 'components_simple/Input/ScInput'
 import {Panel, PanelActions, PanelBody} from 'components_simple/Panel/Panel'
 import {useApiClients} from 'context/ApiClientsContext'

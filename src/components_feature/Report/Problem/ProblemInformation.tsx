@@ -1,6 +1,6 @@
 import {Animate} from 'components_simple/Animate/Animate'
 import {Panel, PanelBody} from 'components_simple/Panel/Panel'
-import {useI18n} from 'i18n'
+import {useI18n} from 'i18n/I18n'
 import {Txt} from '../../../alexlibs/mui-extension/Txt/Txt'
 import {IconBtn} from '../../../alexlibs/mui-extension/IconBtn/IconBtn'
 import {Icon} from '@mui/material'
