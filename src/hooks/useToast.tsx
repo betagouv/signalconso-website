@@ -1,4 +1,4 @@
-import {useToast as useMuiToast} from '../alexlibs/mui-extension'
+import {useToast as useMuiToast} from '../alexlibs/mui-extension/Toast/Toast'
 import {useI18n} from '../i18n'
 import {ApiError} from '../clients/BaseApiClient'
 
