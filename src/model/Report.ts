@@ -1,6 +1,7 @@
 import {ReportTag, Subcategory} from 'anomalies/Anomaly'
 import {Address} from './Address'
 import {Gender} from './ReportDraft'
+
 export interface Report {
   id: string
   gender?: Gender

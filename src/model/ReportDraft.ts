@@ -54,17 +54,6 @@ export class ReportDraft {
     return r.subcategories?.reverse().find(_ => !!_.companyKind)?.companyKind
   }
 
-  static readonly tags = (r: ReportDraft): ReportTag[] => {
-    const tags = (r.subcategories ?? []).flatMap(_ => _.tags ?? [])
-    if (ReportDraft.getCompanyKindFomSubcategories(r) === CompanyKinds.WEBSITE) {
-      tags.push(ReportTag.Internet)
-    }
-    if (!r.forwardToReponseConso) {
-      return tags.filter(_ => _ !== ReportTag.ReponseConso)
-    }
-    return tags
-  }
-
   static readonly isTransmittableToPro = (r: Pick<ReportDraft, 'employeeConsumer' | 'tags'>): boolean => {
     return (
       !r.employeeConsumer &&
