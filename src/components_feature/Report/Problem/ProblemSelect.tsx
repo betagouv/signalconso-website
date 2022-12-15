@@ -1,5 +1,6 @@
 import {Box, useTheme} from '@mui/material'
-import {ScRadioGroup, ScRadioGroupItem} from 'components_simple/RadioGroup'
+import {ScRadioGroupItem} from 'components_simple/RadioGroup/RadioGroupItem'
+import {ScRadioGroup} from 'components_simple/RadioGroup/RadioGroup'
 import React from 'react'
 import {Panel, PanelBody, PanelProps} from 'components_simple/Panel/Panel'
 import {Animate} from 'components_simple/Animate/Animate'
