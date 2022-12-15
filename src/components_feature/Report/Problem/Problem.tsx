@@ -39,14 +39,10 @@ function chooseIfReponseConsoDisplayed(): boolean {
 }
 
 function adjustReportDraftAfterSubcategoriesChange(report: Partial<ReportDraft2>, subcategory: Subcategory, index: number) {
-  const copy = {...report}
-  copy.subcategories = report.subcategories ?? []
-  copy.subcategories.length = index
-  copy.subcategories[index] = subcategory
-  copy.details = {}
-  copy.subcategories = [...copy.subcategories]
-  copy.tags = copy.tags ? copy.tags.filter(_ => _ !== 'Internet') : undefined
-  copy.companyKind = undefined
+  const subcategoriesToKeep = (report.subcategories ?? []).slice(0, index)
+  const subcategories = [...subcategoriesToKeep, subcategory]
+  const tags = report.tags?.filter(_ => _ !== 'Internet') ?? undefined
+  const copy = {...report, subcategories, tags, details: {}, companyKind: undefined}
   return copy
 }
 
