@@ -3,10 +3,6 @@ import {Address} from './Address'
 import {Gender} from './ReportDraft'
 import {UploadedFile} from './UploadedFile'
 
-export const ReportingDateLabel = 'Date du constat'
-export const ReportingTimeslotLabel = 'Heure du constat'
-export const DescriptionLabel = 'Description'
-
 export interface Report {
   id: string
   gender?: Gender
@@ -37,11 +33,6 @@ export interface Report {
 export interface DetailInputValue {
   label: string
   value: string
-}
-
-export interface ReportSearchResult {
-  report: Report
-  files: UploadedFile[]
 }
 
 export enum ReportStatus {
