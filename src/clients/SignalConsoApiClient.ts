@@ -7,7 +7,7 @@ import {Report} from '../model/Report'
 import {ReportDraft} from '../model/ReportDraft'
 import {Subcategory} from 'anomalies/Anomaly'
 import {ConsumerEmailResult} from 'model/ConsumerEmailValidation'
-import {ApiReportDraft} from 'model/reportsFromApi'
+import {ApiCreatedReport, ApiReportDraft} from 'model/reportsFromApi'
 
 type PublicStat =
   | 'PromesseAction'
@@ -39,18 +39,19 @@ export class SignalConsoApiClient {
     return this.client.get<Country[]>(`/websites/search-url`, {qs: {url}})
   }
 
-  createReport = (draft: ReportDraft) => {
-    const body: ApiReportDraft = ReportDraft.toApi(draft)
-    return this.client.post<Report>(`/reports`, {body}).then(
-      (report: {[key in keyof Report]: any}): Report => ({
-        ...report,
-        companyAddress: {
-          ...report.companyAddress,
-          country: report.companyAddress.country?.name,
-        },
-        creationDate: new Date(report.creationDate),
-      }),
-    )
+  createReport = async (draft: ReportDraft): Promise<Report> => {
+    const apiReportDraft: ApiReportDraft = ReportDraft.toApi(draft)
+
+    const reportFromApi = await this.client.post<ApiCreatedReport>(`/reports`, {body: apiReportDraft})
+
+    const res: Report = {
+      ...reportFromApi,
+      companyAddress: {
+        ...reportFromApi.companyAddress,
+        country: reportFromApi.companyAddress.country?.name,
+      },
+    }
+    return res
   }
 
   getPublicStatCount = (publicStat: PublicStat) => {
