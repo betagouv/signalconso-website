@@ -8,7 +8,7 @@ import {StepperActionsNext} from 'components_simple/ReportFlowStepper/StepperAct
 import {Alert, Txt} from '../../../alexlibs/mui-extension'
 import {AutocompleteCityValue} from 'components_simple/AutocompleteCity/AutocompleteCity'
 import {AutocompleteCity} from 'components_simple/AutocompleteCity/AutocompleteCity'
-import {Address} from '../../../model'
+import {Address} from 'model/Address'
 
 interface Form {
   place: AutocompleteCityValue

@@ -1,11 +1,12 @@
 import {appConfig} from 'core/appConfig'
-import {ConsumerEmailResult, Subcategory} from 'model'
 import {BaseApiClient} from './BaseApiClient'
 import {WebsiteCompanySearchResult} from '../model/Company'
 import {Country} from '../model/Country'
 import {FileOrigin, UploadedFile} from '../model/UploadedFile'
 import {Report} from '../model/Report'
 import {ReportDraft} from '../model/ReportDraft'
+import {Subcategory} from 'anomalies/Anomaly'
+import {ConsumerEmailResult} from 'model/ConsumerEmailValidation'
 
 type PublicStat =
   | 'PromesseAction'

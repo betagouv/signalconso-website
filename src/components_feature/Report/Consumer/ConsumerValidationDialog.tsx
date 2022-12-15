@@ -2,16 +2,15 @@ import {LoadingButton} from '@mui/lab'
 import {Button, Dialog, DialogActions, DialogContent, DialogTitle, Icon, LinearProgress} from '@mui/material'
 import {useApiClients} from 'context/ApiClientsContext'
 import {useI18n} from 'i18n'
-import {ValidationRejectReason} from 'model'
 import {useState} from 'react'
 import {Controller, useForm} from 'react-hook-form'
 import {ScButton} from 'components_simple/Button/Button'
 import {Alert, Txt} from '../../../alexlibs/mui-extension'
 import {useFetcher} from '../../../hooks/useFetcher'
 import {duration} from '../../../utils/Duration'
-import {fnSwitch} from '../../../utils/FnSwitch'
 import {timeoutPromise} from '../../../utils/utils'
 import {InputValidationCode} from './InputValidationCode'
+import {ValidationRejectReason} from 'model/ConsumerEmailValidation'
 
 interface Props {
   loading?: boolean

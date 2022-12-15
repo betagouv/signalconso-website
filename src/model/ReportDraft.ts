@@ -1,7 +1,8 @@
 import {UploadedFile} from './UploadedFile'
 import {DetailInputValue} from './Report'
-import {Address, CompanyKinds, ReportTag, Subcategory} from '.'
 import {ifDefined} from '../utils/utils'
+import {CompanyKinds, ReportTag, Subcategory} from 'anomalies/Anomaly'
+import {Address} from './Address'
 
 export enum Gender {
   Male = 'Male',
