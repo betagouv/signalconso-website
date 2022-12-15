@@ -26,7 +26,6 @@ export const PlaygroundConfirmation = () => {
           anomaly={anomaly}
           draft={{
             ...draft,
-            // companyKind: CompanyKinds.LOCATION
           }}
         />
       )}

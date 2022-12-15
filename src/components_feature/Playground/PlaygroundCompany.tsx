@@ -3,19 +3,17 @@ import {useState} from 'react'
 import {ReportDraft2} from 'model/ReportDraft2'
 import {Box, Card, CardContent, MenuItem, Select, useTheme} from '@mui/material'
 import {styleUtils} from 'core/theme'
-import {Enum} from '../../utils/Enum'
-import {CompanyKinds, ReportTag} from '../../anomalies/Anomaly'
+import {companyKinds, CompanyKinds, ReportTag} from '../../anomalies/Anomaly'
 
 export const PlaygroundCompany = () => {
   const theme = useTheme()
   const [report, setReport] = useState<Partial<ReportDraft2>>({})
-  const [companyKind, setCompanyKind] = useState(CompanyKinds.SIRET)
-  const [tag, setTag] = useState<ReportTag | undefined>()
+  const [companyKind, setCompanyKind] = useState<CompanyKinds>('SIRET')
   return (
     <>
       <Box sx={{mb: 2}}>
         <Select sx={{mr: 1}} size="small" value={companyKind} onChange={e => setCompanyKind(e.target.value as CompanyKinds)}>
-          {Enum.keys(CompanyKinds).map(_ => (
+          {companyKinds.map(_ => (
             <MenuItem value={_} key={_}>
               {_}
             </MenuItem>
