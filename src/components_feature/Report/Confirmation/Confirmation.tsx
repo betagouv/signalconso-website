@@ -1,6 +1,6 @@
 import {useReportFlowContext} from '../ReportFlowContext'
 import {useI18n} from 'i18n'
-import {Txt} from '../../../alexlibs/mui-extension'
+import {Txt} from '../../../alexlibs/mui-extension/Txt/Txt'
 import {Alert} from '../../../alexlibs/mui-extension/Alert/Alert'
 import {ConfirmationStep, ConfirmationStepper} from './ConfirmationStepper'
 import {Animate} from 'components_simple/Animate/Animate'

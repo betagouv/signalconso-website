@@ -1,10 +1,10 @@
 import {Box} from '@mui/material'
 import {TeamMember} from '../../core/team'
-import {Txt} from '../../alexlibs/mui-extension'
 import {Animate} from '../../components_simple/Animate/Animate'
 import {useState} from 'react'
 import {useTimeout} from 'hooks/useTimeout'
 import Image from 'next/image'
+import {Txt} from '../../alexlibs/mui-extension/Txt/Txt'
 
 interface Props {
   member: TeamMember

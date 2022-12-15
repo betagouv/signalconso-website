@@ -1,5 +1,5 @@
 import {ScInput} from 'components_simple/Input/ScInput'
-import {Txt} from '../../../alexlibs/mui-extension'
+import {Txt} from '../../../alexlibs/mui-extension/Txt/Txt'
 import React, {ReactNode, useState} from 'react'
 import {useI18n} from 'i18n'
 import {ScButton} from 'components_simple/Button/Button'

@@ -5,7 +5,7 @@ import {useI18n} from 'i18n'
 import React, {useEffect} from 'react'
 import {Bar, BarChart, CartesianGrid, Legend, ResponsiveContainer, Tooltip, XAxis, YAxis} from 'recharts'
 import {Panel} from 'components_simple/Panel/Panel'
-import {Txt} from '../../alexlibs/mui-extension'
+import {Txt} from '../../alexlibs/mui-extension/Txt/Txt'
 import {useFetcher} from '../../hooks/useFetcher'
 import {ifDefined} from '../../utils/utils'
 

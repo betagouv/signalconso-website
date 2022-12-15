@@ -1,5 +1,5 @@
 import {alpha, Box, useTheme} from '@mui/material'
-import {Txt} from '../../alexlibs/mui-extension'
+import {Txt} from '../../alexlibs/mui-extension/Txt/Txt'
 import Link from 'next/link'
 import {AnomalyImage} from './AnomalyImage'
 import {Anomaly} from '../../anomalies/Anomaly'

@@ -2,7 +2,7 @@ import {Box} from '@mui/material'
 import React, {useEffect, useState} from 'react'
 import {ReportFileAdd} from './ReportFileAdd'
 import {ReportFile} from './ReportFile'
-import {Txt} from '../../alexlibs/mui-extension'
+import {Txt} from '../../alexlibs/mui-extension/Txt/Txt'
 import {useI18n} from 'i18n'
 import {FileOrigin, UploadedFile} from '../../model/UploadedFile'
 

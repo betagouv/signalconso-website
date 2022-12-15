@@ -1,5 +1,5 @@
 import {Panel, PanelActions, PanelBody} from 'components_simple/Panel/Panel'
-import {Txt} from '../../../alexlibs/mui-extension'
+import {Txt} from '../../../alexlibs/mui-extension/Txt/Txt'
 import {Box, BoxProps, Icon} from '@mui/material'
 import {useReportFlowContext} from '../ReportFlowContext'
 import {useEffect, useMemo} from 'react'
