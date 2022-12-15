@@ -1,4 +1,3 @@
-export * from './IconBtn'
 export * from './Page'
 export * from './Toast'
 export * from './Txt/Txt'

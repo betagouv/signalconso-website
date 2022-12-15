@@ -5,7 +5,7 @@ import {useI18n} from 'i18n'
 import {ScButton} from 'components_simple/Button/Button'
 import {useForm} from 'react-hook-form'
 import {Box, BoxProps, Icon} from '@mui/material'
-import {IconBtn} from '../../../alexlibs/mui-extension'
+import {IconBtn} from '../../../alexlibs/mui-extension/IconBtn/IconBtn'
 import {Panel, PanelBody} from 'components_simple/Panel/Panel'
 import {Animate} from 'components_simple/Animate/Animate'
 

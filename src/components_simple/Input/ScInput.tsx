@@ -1,6 +1,6 @@
 import {FilledInputProps, Icon, TextField, TextFieldProps, Tooltip} from '@mui/material'
 import React from 'react'
-import {IconBtn} from '../../alexlibs/mui-extension'
+import {IconBtn} from '../../alexlibs/mui-extension/IconBtn/IconBtn'
 import {useI18n} from 'i18n'
 
 export type ScInputProps = Omit<TextFieldProps, 'variant' | 'margin'> & {
