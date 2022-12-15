@@ -24,7 +24,7 @@ function adjustTags(
   companyKindFromSelected: CompanyKinds | undefined,
 ): ReportTag[] {
   let res = tags
-  if (companyKindFromSelected === CompanyKinds.WEBSITE || draft.companyKind === CompanyKinds.WEBSITE) {
+  if (companyKindFromSelected === 'WEBSITE' || draft.companyKind === 'WEBSITE') {
     res = [...res, 'Internet']
   }
   if (draft.forwardToReponseConso !== true) {
@@ -60,7 +60,7 @@ export const Problem = ({anomaly}: Props) => {
       return {
         ...draft,
         tags: adjustTags(tagsFromSelected, draft, companyKindFromSelected),
-        companyKind: companyKindFromSelected ?? draft.companyKind ?? CompanyKinds.SIRET,
+        companyKind: companyKindFromSelected ?? draft.companyKind ?? 'SIRET',
         anomaly: _anomaly,
       }
     })
@@ -133,7 +133,7 @@ export const Problem = ({anomaly}: Props) => {
               />
             </ProblemStepperStep>
             <ProblemStepperStep isDone={reportDraft.companyKind !== undefined} hidden={!!companyKindFromSelected}>
-              <ProblemSelect
+              <ProblemSelect<CompanyKinds>
                 id="select-companyKind"
                 title={m.problemIsInternetCompany}
                 value={reportDraft.companyKind}
@@ -141,11 +141,11 @@ export const Problem = ({anomaly}: Props) => {
                 options={[
                   {
                     title: m.yes,
-                    value: CompanyKinds.WEBSITE,
+                    value: 'WEBSITE',
                   },
                   {
                     title: m.problemIsInternetCompanyNo,
-                    value: tagsFromSelected.indexOf('ProduitDangereux') === -1 ? CompanyKinds.SIRET : CompanyKinds.LOCATION,
+                    value: tagsFromSelected.indexOf('ProduitDangereux') === -1 ? 'SIRET' : 'LOCATION',
                   },
                 ]}
               />

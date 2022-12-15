@@ -1,4 +1,4 @@
-import {CompanyKinds, DetailInputType, ReportTag, reportTags} from '../Anomaly'
+import {companyKinds, CompanyKinds, DetailInputType, ReportTag, reportTags} from '../Anomaly'
 import {AnomalyTreeWalker, ObjectSpec} from './AnomalyTreeWalker'
 
 // /!\ This effectively duplicates the structure
@@ -37,7 +37,7 @@ const baseSubcategorySpec: ObjectSpec = {
   example: _ => _.ifDefined()?.assertIsString(),
   reponseconsoCode: _ => _.ifDefined()?.ifNotNull()?.assertIsArrayOfString(),
   ccrfCode: _ => _.ifDefined()?.assertIsArrayOfString(),
-  companyKind: _ => _.ifDefined()?.assertIsAllowedString(Object.values(CompanyKinds)),
+  companyKind: _ => _.ifDefined()?.assertIsAllowedString(companyKinds),
   // a Subcategory is always a Category
   // this triggers the recursion
   ...baseCategorySpec,

@@ -12,9 +12,9 @@ import {Anomaly, CompanyKinds, ReportTag} from '../../../anomalies/Anomaly'
 
 class ProblemFixture {
   static readonly simpleSubcategory = Fixture.genSubcategory()
-  static readonly internetSubcategory = Fixture.genSubcategory({companyKind: CompanyKinds.WEBSITE})
+  static readonly internetSubcategory = Fixture.genSubcategory({companyKind: 'WEBSITE'})
   static readonly reponseConsoSubcategory = Fixture.genSubcategory({
-    companyKind: CompanyKinds.WEBSITE,
+    companyKind: 'WEBSITE',
     tags: ['ReponseConso'],
   })
   static readonly infoSubcategory = Fixture.genSubcategory({information: Fixture.genInformation()})
@@ -174,7 +174,7 @@ describe('Problem', () => {
     fireEvent.click(app.getByText(ProblemFixture.simpleSubcategory.title))
     clickEmployeeConsumer(app, 'no')
     clickCompanyKind(app, 'internet')
-    expect(report?.companyKind).toEqual(CompanyKinds.WEBSITE)
+    expect(report?.companyKind).toEqual('WEBSITE')
   })
 
   it(`shouldn't ask companyKind when defined`, () => {
