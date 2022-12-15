@@ -14,7 +14,7 @@
     "test": "jest",
     "test-no-html-output": "DEBUG_PRINT_LIMIT=1 jest",
     "test-dev": "jest --config=jest.config.ts --watch",
-    "generate-json": "ts-node -O \"{\\\"module\\\":\\\"commonjs\\\"}\" src/anomaly/script/generate-json-files.ts",
+    "generate-json": "ts-node -O \"{\\\"module\\\":\\\"commonjs\\\"}\" src/anomalies/script/generate-json-files.ts",
     "format": "prettier --write .",
     "checkformat": "prettier --check .",
     "checktypes": "tsc --noEmit"

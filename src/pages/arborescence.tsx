@@ -1,20 +1,20 @@
 import {Box, Checkbox, Icon, Radio, useTheme} from '@mui/material'
-import {sortBy} from 'core/lodashNamedExport'
+import {sortBy} from 'utils/lodashNamedExport'
 import {pageDefinitions} from 'core/pageDefinition'
-import {styleUtils} from 'core/theme/theme'
-import {getOptionsFromInput, getPlaceholderFromInput} from 'feature/Report/Details/DetailInputsUtils'
+import {styleUtils} from 'core/theme'
+import {getOptionsFromInput, getPlaceholderFromInput} from 'components_feature/Report/Details/DetailInputsUtils'
 import Head from 'next/head'
 import {useEffect, useState} from 'react'
-import {ScButton} from 'shared/Button/Button'
-import {Page} from 'shared/Page/Page'
+import {ScButton} from 'components_simple/Button/Button'
+import {Page} from 'components_simple/Page/Page'
 import {IconBtn, Txt} from '../alexlibs/mui-extension'
-import {fnSwitch} from '../alexlibs/ts-utils'
+import {fnSwitch} from '../utils/FnSwitch'
 import {
   allVisibleAnomalies,
   instanceOfAnomaly,
   instanceOfSubcategoryInformation,
   instanceOfSubcategoryInput,
-} from '../anomaly/Anomalies'
+} from '../anomalies/Anomalies'
 import {
   Anomaly,
   DetailInputType,
@@ -22,7 +22,7 @@ import {
   SubcategoryBase,
   SubcategoryInformation,
   SubcategoryInput,
-} from '../anomaly/Anomaly'
+} from '../anomalies/Anomaly'
 
 const Node = ({anomaly, open}: {anomaly: Anomaly | Subcategory; open?: boolean}) => {
   const iconWidth = 40

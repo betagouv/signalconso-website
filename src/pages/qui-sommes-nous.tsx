@@ -1,134 +1,14 @@
 import Head from 'next/head'
-import {Panel, PanelBody} from 'shared/Panel/Panel'
+import {Panel, PanelBody} from 'components_simple/Panel/Panel'
 import {pageDefinitions} from 'core/pageDefinition'
-import {Page} from 'shared/Page/Page'
-import {MemberCard} from 'feature/MemberCard/MemberCard'
+import {Page} from 'components_simple/Page/Page'
+import {MemberCard} from 'components_feature/MemberCard/MemberCard'
 import {Grid} from '@mui/material'
 import Link from 'next/link'
 import {siteMap} from 'core/siteMap'
-
-export interface Member {
-  name: string
-  role: string
-  dgccrf?: boolean
-  disabled?: boolean
-  avatar: string
-}
+import {team} from 'core/team'
 
 // Avatars générés sur face.co
-const members: Member[] = [
-  {
-    name: 'Guillaume Rossmann',
-    role: 'Chef de produit',
-    dgccrf: true,
-    avatar: 'avatar-guillaumerossmann.png',
-  },
-  {
-    name: 'Ingrid Godefroy',
-    role: 'Chargée de déploiement',
-    avatar: 'avatar-ingridgodefroy.png',
-  },
-  {
-    name: 'Guillaume de Gérando',
-    role: 'Chargé de déploiement',
-    avatar: 'avatar-guillaumedegerando.png',
-  },
-  {
-    name: 'Nathaniel Richand',
-    role: "Coach Startup d'État",
-    avatar: 'avatar-nathanielrichand.png',
-  },
-  {
-    name: 'Saïd Sedoud',
-    role: 'Développeur informatique',
-    avatar: 'avatar-saidsedoud.png',
-  },
-  {
-    name: 'Emmanuel Letallieur',
-    role: 'Développeur informatique',
-    avatar: 'avatar-emmanuelletallieur.png',
-  },
-  {
-    name: 'Alexandre Annic',
-    role: 'Développeur informatique',
-    avatar: 'avatar-alexandreannic.png',
-    disabled: true,
-  },
-  {
-    name: 'Quentin Kurtz',
-    role: 'Chargé de déploiement',
-    avatar: 'avatar-quentinkurtz.png',
-    disabled: true,
-  },
-  {
-    name: 'Jérôme Rivals',
-    role: 'Développeur informatique',
-    avatar: 'avatar-jerome.png',
-    disabled: true,
-  },
-  {
-    name: 'Julien Rayneau',
-    role: "Coach Startup d'État",
-    avatar: 'avatar-julien.png',
-    disabled: true,
-  },
-  {
-    name: 'Magali Marcel',
-    role: 'Chef de produit',
-    dgccrf: true,
-    disabled: true,
-    avatar: 'avatar-magali.png',
-  },
-  {
-    name: 'Valentine Michaud',
-    role: 'Chargée de déploiement',
-    avatar: 'avatar-valentine.png',
-    disabled: true,
-  },
-  {
-    name: 'Jules Garavelli',
-    role: 'Chargé de déploiement',
-    avatar: 'avatar-jules.png',
-    disabled: true,
-  },
-  {
-    name: 'Grégoire Aubert',
-    role: 'Chargé de déploiement',
-    avatar: 'avatar-gregoire.png',
-    disabled: true,
-  },
-  {
-    name: 'Agnès Mayanobe',
-    role: 'Chargé de déploiement',
-    avatar: 'avatar-agnes.png',
-    dgccrf: true,
-    disabled: true,
-  },
-  {
-    name: 'Thomas Chaumeny',
-    role: 'Développeur informatique',
-    avatar: 'avatar-thomas.png',
-    disabled: true,
-  },
-  {
-    name: 'Pierre-Olivier Mauguet',
-    role: 'Développeur informatique',
-    avatar: 'avatar-pierre-olivier.png',
-    disabled: true,
-  },
-  {
-    name: 'Franck Coufourier',
-    role: 'Développeur informatique',
-    avatar: 'avatar-franck.png',
-    disabled: true,
-  },
-  {
-    name: 'Alexandre Michel',
-    role: 'Chargé de déploiement',
-    avatar: 'avatar-alexandre.png',
-    disabled: true,
-  },
-]
 
 const QuiSommesNous = () => {
   return (
@@ -177,9 +57,14 @@ const QuiSommesNous = () => {
           <h2>Notre équipe</h2>
           <div>
             <Grid container spacing={2}>
-              {members.map(_ => (
+              {team.current.map(_ => (
                 <Grid key={_.avatar} item xs={12} sm={6}>
                   <MemberCard key={_.avatar} member={_} />
+                </Grid>
+              ))}
+              {team.former.map(_ => (
+                <Grid key={_.avatar} item xs={12} sm={6}>
+                  <MemberCard key={_.avatar} member={_} disabled />
                 </Grid>
               ))}
             </Grid>

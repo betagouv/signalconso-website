@@ -1,4 +1,4 @@
-import {appConfig} from '../conf/appConfig'
+import {appConfig} from './appConfig'
 
 export const siteMap = {
   index: `/`,

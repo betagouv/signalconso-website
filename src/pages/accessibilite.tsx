@@ -1,5 +1,5 @@
-import {Panel, PanelBody} from 'shared/Panel/Panel'
-import {Page} from 'shared/Page/Page'
+import {Panel, PanelBody} from 'components_simple/Panel/Panel'
+import {Page} from 'components_simple/Page/Page'
 import Link from 'next/link'
 import {siteMap} from 'core/siteMap'
 import Head from 'next/head'

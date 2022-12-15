@@ -1,43 +1,39 @@
 import React, {ReactNode, useEffect} from 'react'
 import {render, RenderResult} from '@testing-library/react'
-import {scTheme} from 'core/theme/theme'
+import {scTheme} from 'core/theme'
 import {ThemeProvider} from '@mui/material'
-import {I18nProvider} from 'core/i18n'
-import {ReportFlowProvider, useReportFlowContext} from 'feature/Report/ReportFlowContext'
-import {Provide} from 'shared/Provide/Provide'
-import {ApiSdkProvider} from 'core/context/ApiSdk'
-import {fr} from 'core/i18n/localization/fr'
-import {ReportFlowStepperContext} from 'shared/ReportFlowStepper/ReportFlowStepper'
-import {ReportDraft2} from 'core/model/ReportDraft'
-import {DeepPartial} from '../alexlibs/ts-utils'
-import {AnalyticProvider} from 'core/analytic/AnalyticContext'
-import {SignalConsoPublicSdk} from '../client/SignalConsoPublicSdk'
-import {CompanyPublicSdk} from '../client/CompanyPublicSdk'
+import {I18nProvider} from 'i18n'
+import {ReportFlowProvider, useReportFlowContext} from 'components_feature/Report/ReportFlowContext'
+import {Provide} from 'components_simple/Provide/Provide'
+import {ApiClientsProvider} from 'context/ApiClientsContext'
+import {fr} from 'i18n/localization/fr'
+import {ReportFlowStepperContext} from 'components_simple/ReportFlowStepper/ReportFlowStepper'
+import {ReportDraft2} from 'model/ReportDraft2'
+import {DeepPartial} from '../utils/utils'
+import {AnalyticProvider} from 'analytic/AnalyticContext'
+import {SignalConsoApiClient} from '../clients/SignalConsoApiClient'
+import {CompanyPublicClient} from '../clients/CompanyPublicClient'
 
 const AllTheProviders =
   (options?: Options) =>
   ({children}: any) => {
+    const apiClientsOverrides = {
+      signalConsoApiClient: {
+        report: {
+          create: () => void 0,
+        },
+        ...(options?.signalConsoApiClient ?? ({} as any)),
+      },
+      companyApiClient: {...(options?.companyApiClient ?? ({} as any))},
+      adresseApiClient: {
+        fetchCity: (q: string) => Promise.resolve([]),
+      } as any,
+    }
     return (
       <Provide
         providers={[
           _ => <AnalyticProvider children={_} analytic={{trackEvent: () => void 0} as any} />,
-          _ => (
-            <ApiSdkProvider
-              children={_}
-              apiSdk={{
-                report: {
-                  create: () => void 0,
-                },
-                ...(options?.apiSdkMock ?? ({} as any)),
-              }}
-              companyApiSdk={{...(options?.companyApiSdk ?? ({} as any))}}
-              apiAddressSdk={
-                {
-                  fetchCity: (q: string) => Promise.resolve([]),
-                } as any
-              }
-            />
-          ),
+          _ => <ApiClientsProvider children={_} overrideForTests={apiClientsOverrides} />,
           _ => <ThemeProvider theme={scTheme} children={_} />,
           _ => <I18nProvider children={_} />,
           _ => <ReportFlowProvider children={_} />,
@@ -89,8 +85,8 @@ export const AccessReportFlow = ({
 }
 
 interface Options {
-  apiSdkMock?: DeepPartial<SignalConsoPublicSdk>
-  companyApiSdk?: DeepPartial<CompanyPublicSdk>
+  signalConsoApiClient?: DeepPartial<SignalConsoApiClient>
+  companyApiClient?: DeepPartial<CompanyPublicClient>
 }
 
 export interface ScRenderResult extends RenderResult {

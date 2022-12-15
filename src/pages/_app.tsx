@@ -1,26 +1,26 @@
 import type {AppProps} from 'next/app'
 import {StyledEngineProvider} from '@mui/styled-engine'
 import {Box, CssBaseline, ThemeProvider} from '@mui/material'
-import {Header, headerHeight} from 'core/component/Header'
-import {scTheme} from 'core/theme/theme'
-import {Provide} from 'shared/Provide/Provide'
-import {Footer} from 'core/component/Footer'
-import {I18nProvider} from 'core/i18n'
-import {ApiSdkProvider} from 'core/context/ApiSdk'
+import {Header, headerHeight} from 'components_simple/Header'
+import {scTheme} from 'core/theme'
+import {Provide} from 'components_simple/Provide/Provide'
+import {Footer} from 'components_simple/Footer'
+import {I18nProvider} from 'i18n'
+import {ApiClientsProvider} from 'context/ApiClientsContext'
 import {CacheProvider, EmotionCache} from '@emotion/react'
 import createEmotionCache from 'core/createEmotionCache'
 import {ToastProvider} from '../alexlibs/mui-extension'
-import {ReportFlowProvider} from 'feature/Report/ReportFlowContext'
-import {ConstantProvider} from 'core/context/ConstantContext'
-import {appConfig} from '../conf/appConfig'
+import {ReportFlowProvider} from 'components_feature/Report/ReportFlowContext'
+import {ConstantProvider} from 'context/ConstantContext'
+import {appConfig} from '../core/appConfig'
 import Script from 'next/script'
-import {AnalyticProvider} from 'core/analytic/AnalyticContext'
-import {Matomo} from 'core/plugins/matomo'
-import {Sentry} from 'core/plugins/sentry'
-import {Atinternet} from 'core/plugins/atinternet'
-import {Analytic} from 'core/analytic/analytic'
+import {AnalyticProvider} from 'analytic/AnalyticContext'
+import {Matomo} from 'plugins/matomo'
+import {Sentry} from 'plugins/sentry'
+import {Atinternet} from 'plugins/atinternet'
+import {Analytic} from 'analytic/analytic'
 import {useEffect, useState} from 'react'
-import {ConfigProvider, useConfig} from 'core/context/ConfigContext'
+import {ConfigProvider, useConfig} from 'context/ConfigContext'
 import Head from 'next/head'
 
 interface ScAppProps extends AppProps {
@@ -46,7 +46,7 @@ const App = ({emotionCache = clientSideEmotionCache, ...props}: ScAppProps) => {
         _ => <StyledEngineProvider children={_} />,
         _ => <ThemeProvider theme={scTheme} children={_} />,
         _ => <I18nProvider children={_} />,
-        _ => <ApiSdkProvider children={_} />,
+        _ => <ApiClientsProvider children={_} />,
         _ => <CssBaseline children={_} />,
         _ => <ToastProvider horizontal="right" children={_} />,
         _ => <ReportFlowProvider children={_} />,
