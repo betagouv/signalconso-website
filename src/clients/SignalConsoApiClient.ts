@@ -43,12 +43,16 @@ export class SignalConsoApiClient {
     const apiReportDraft: ApiReportDraft = ReportDraft.toApi(draft)
 
     const reportFromApi = await this.client.post<ApiCreatedReport>(`/reports`, {body: apiReportDraft})
-
+    const {tags, companyAddress, companySiret, websiteURL, employeeConsumer, contactAgreement} = reportFromApi
     const res: CreatedReport = {
-      ...reportFromApi,
+      tags,
+      employeeConsumer,
+      contactAgreement,
+      ...(companySiret !== null ? {companySiret} : null),
+      ...(websiteURL !== null ? {websiteURL} : null),
       companyAddress: {
-        ...reportFromApi.companyAddress,
-        country: reportFromApi.companyAddress.country?.name,
+        ...companyAddress,
+        country: companyAddress.country?.name,
       },
     }
     return res

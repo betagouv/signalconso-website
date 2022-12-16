@@ -41,27 +41,27 @@ export interface ApiCreatedReport {
   category: string
   subcategories: string[]
   details: DetailInputValue[]
-  companyId?: string
-  companyName?: string
+  companyId: string | null
+  companyName: string | null
   companyAddress: ApiAdress
-  companySiret?: string
+  companySiret: string | null
   creationDate: Date
   contactAgreement: boolean
   status: unknown // no need to type precisely
-  websiteURL?: string
-  host?: string
-  vendor?: string
+  websiteURL: string | null
+  host: string | null
+  vendor: string | null
   tags: ReportTag[]
-  activityCode?: string
+  activityCode: string | null
   expirationDate: string
   firstName: string
   lastName: string
   email: string
-  consumerReferenceNumber?: string
+  consumerReferenceNumber: string | null
   ccrfCode: string[]
-  phone?: string
-  consumerPhone?: string
+  phone: string | null
+  consumerPhone: string | null
   employeeConsumer: boolean
   reponseconsoCode: string[]
-  gender?: Gender
+  gender: Gender | null
 }
