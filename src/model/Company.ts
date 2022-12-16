@@ -1,4 +1,4 @@
-import {Address, Id, PaginatedFilters} from '.'
+import {Address} from './Address'
 
 export interface CompanySearchResult {
   siret: string
@@ -19,7 +19,7 @@ export interface WebsiteCompanySearchResult {
 }
 
 export interface Company {
-  id: Id
+  id: string
   siret: string
   creationDate: Date
   name: string
@@ -29,3 +29,5 @@ export interface Company {
   isPublic: boolean
   isOpen: boolean
 }
+
+export const isGovernmentCompany = (_?: {activityCode?: string}): boolean => _?.activityCode?.startsWith('84.') ?? false

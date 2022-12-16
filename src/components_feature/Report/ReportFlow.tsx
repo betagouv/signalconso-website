@@ -2,7 +2,7 @@ import {ReportFlowStepper} from 'components_simple/ReportFlowStepper/ReportFlowS
 import {Problem} from './Problem/Problem'
 import {Details} from './Details/Details'
 import {Company} from './Company/Company'
-import {useI18n} from 'i18n'
+import {useI18n} from 'i18n/I18n'
 import {Consumer} from './Consumer/Consumer'
 import {Confirmation} from './Confirmation/Confirmation'
 import React from 'react'

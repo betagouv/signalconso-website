@@ -1,9 +1,10 @@
-import {Fender, Txt} from '../../../alexlibs/mui-extension'
+import {Txt} from '../../../alexlibs/mui-extension/Txt/Txt'
 import {Box, BoxProps, Icon} from '@mui/material'
 import React, {useEffect, useState} from 'react'
 import {Panel, PanelActions, PanelBody} from 'components_simple/Panel/Panel'
-import {useI18n} from 'i18n'
-import {ScRadioGroup, ScRadioGroupItem} from 'components_simple/RadioGroup'
+import {useI18n} from 'i18n/I18n'
+import {ScRadioGroupItem} from 'components_simple/RadioGroup/RadioGroupItem'
+import {ScRadioGroup} from 'components_simple/RadioGroup/RadioGroup'
 import {styleUtils} from 'core/theme'
 import {AddressComponent} from 'components_simple/Address/Address'
 import {Animate} from 'components_simple/Animate/Animate'
@@ -13,8 +14,8 @@ import {StepperActionsNext} from 'components_simple/ReportFlowStepper/StepperAct
 import {useAnalyticContext} from 'analytic/AnalyticContext'
 import {CompanySearchEventActions, EventCategories} from 'analytic/analytic'
 import {useToast} from '../../../hooks/useToast'
-import {CompanySearchResult} from '../../../model/Company'
-import {Report} from '../../../model/Report'
+import {CompanySearchResult, isGovernmentCompany} from '../../../model/Company'
+import {Fender} from 'alexlibs/mui-extension/Fender/Fender'
 
 interface Props extends Omit<BoxProps, 'onSubmit'> {
   companies: CompanySearchResult[]
@@ -94,7 +95,7 @@ export const CompanySearchResultComponent = ({companies, onSubmit}: Props) => {
             <form
               onSubmit={handleSubmit(form => {
                 const selectedCompany = companies.find(_ => _.siret === form.result)!
-                if (Report.isGovernmentCompany(selectedCompany)) {
+                if (isGovernmentCompany(selectedCompany)) {
                   toastError({message: m.cannotReportGovernmentCompany})
                 } else {
                   selectedCompany.isMarketPlace ? setSelected(selectedCompany) : submit(selectedCompany)
@@ -114,7 +115,7 @@ export const CompanySearchResultComponent = ({companies, onSubmit}: Props) => {
                   render={({field}) => (
                     <ScRadioGroup {...field} error={!!errors.result}>
                       {companies.map(company => {
-                        const isGovernment = Report.isGovernmentCompany(company)
+                        const isGovernment = isGovernmentCompany(company)
                         return (
                           <ScRadioGroupItem key={company.siret} value={company.siret!}>
                             <Txt truncate block bold>

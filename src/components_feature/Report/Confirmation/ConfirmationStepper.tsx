@@ -1,9 +1,9 @@
 import React, {ReactElement, ReactNode} from 'react'
 import {Panel, PanelBody} from 'components_simple/Panel/Panel'
-import {Txt} from '../../../alexlibs/mui-extension'
+import {Txt} from '../../../alexlibs/mui-extension/Txt/Txt'
 import {Box} from '@mui/material'
 import {ScButton} from 'components_simple/Button/Button'
-import {useI18n} from 'i18n'
+import {useI18n} from 'i18n/I18n'
 import {useReportFlowContext} from '../ReportFlowContext'
 import {useReportFlowStepperContext} from 'components_simple/ReportFlowStepper/ReportFlowStepper'
 

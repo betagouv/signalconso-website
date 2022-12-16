@@ -3,12 +3,12 @@ import {siteMap} from '../core/siteMap'
 import {Box, Icon, Menu, MenuItem, useScrollTrigger, useTheme} from '@mui/material'
 import {styleUtils} from '../core/theme'
 import {ScButton, ScButtonProps} from 'components_simple/Button/Button'
-import {useI18n} from '../i18n'
+import {useI18n} from '../i18n/I18n'
 import {appConfig} from '../core/appConfig'
 import {BtnAdmin} from './BtnAdmin'
 import {useMemo, useState} from 'react'
 import {useWindowWidth} from 'hooks/useWindowWidth'
-import {IconBtn} from '../alexlibs/mui-extension'
+import {IconBtn} from '../alexlibs/mui-extension/IconBtn/IconBtn'
 
 interface HeaderItemProps extends ScButtonProps {
   href?: string

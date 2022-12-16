@@ -1,5 +1,5 @@
 import {ReactNode} from 'react'
-import {Txt} from '../../alexlibs/mui-extension'
+import {Txt} from '../../alexlibs/mui-extension/Txt/Txt'
 import {Box, BoxProps, Card, CardProps} from '@mui/material'
 import {styleUtils} from '../../core/theme'
 

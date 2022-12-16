@@ -4,7 +4,7 @@ import {DeepPartial} from '../utils/utils'
 import {CompanyDraft, ReportDraft, ReportDraftConsumer} from './ReportDraft'
 import {Anomaly, DetailInput} from '../anomalies/Anomaly'
 import {DetailInputValue} from './Report'
-import {Address} from '.'
+import {Address} from './Address'
 
 export type DetailInputValues2 = {[key: string]: string | string[]}
 

@@ -1,8 +1,8 @@
 import * as React from 'react'
 import {EventHandler, ReactElement, SyntheticEvent, useState} from 'react'
 import {Button, Dialog, DialogActions, DialogContent, DialogProps, DialogTitle, PaperProps} from '@mui/material'
-import {useI18n} from 'i18n'
-import {Txt} from '../../../alexlibs/mui-extension'
+import {useI18n} from 'i18n/I18n'
+import {Txt} from '../../../alexlibs/mui-extension/Txt/Txt'
 import {AccordionPanel, AccordionPanels} from 'components_simple/AccordionPanel/AccordionPanel'
 
 export interface ConfirmProps extends Omit<DialogProps, 'children' | 'onClick' | 'open'> {

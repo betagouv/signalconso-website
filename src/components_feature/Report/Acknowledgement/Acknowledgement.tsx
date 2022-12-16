@@ -1,5 +1,5 @@
 import {Panel, PanelActions, PanelBody} from 'components_simple/Panel/Panel'
-import {Fender, Txt} from '../../../alexlibs/mui-extension'
+import {Txt} from '../../../alexlibs/mui-extension/Txt/Txt'
 import {Box, BoxProps, Icon} from '@mui/material'
 import {useReportFlowContext} from '../ReportFlowContext'
 import {useEffect, useMemo} from 'react'
@@ -9,13 +9,14 @@ import {useToast} from 'hooks/useToast'
 import {Row} from 'components_simple/Row/Row'
 import {externalLinks} from 'core/externalLinks'
 import {ScButton} from 'components_simple/Button/Button'
-import {useI18n} from 'i18n'
+import {useI18n} from 'i18n/I18n'
 import Link from 'next/link'
 import {siteMap} from 'core/siteMap'
 import {ReportTag} from '../../../anomalies/Anomaly'
 import {ReportDraft} from '../../../model/ReportDraft'
 import {Report} from '../../../model/Report'
 import {Country} from '../../../model/Country'
+import {Fender} from 'alexlibs/mui-extension/Fender/Fender'
 
 export enum AcknowledgmentCases {
   ReponseConso = 'ReponseConso',

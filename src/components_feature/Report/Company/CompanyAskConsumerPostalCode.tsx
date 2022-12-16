@@ -1,14 +1,15 @@
 import {Panel, PanelActions, PanelBody} from 'components_simple/Panel/Panel'
 import {FormLayout} from 'components_simple/FormLayout/FormLayout'
 import React from 'react'
-import {useI18n} from 'i18n'
+import {useI18n} from 'i18n/I18n'
 import {Controller, useForm} from 'react-hook-form'
 import {Animate} from 'components_simple/Animate/Animate'
 import {StepperActionsNext} from 'components_simple/ReportFlowStepper/StepperActionsNext'
-import {Alert, Txt} from '../../../alexlibs/mui-extension'
+import {Txt} from '../../../alexlibs/mui-extension/Txt/Txt'
+import {Alert} from '../../../alexlibs/mui-extension/Alert/Alert'
 import {AutocompleteCityValue} from 'components_simple/AutocompleteCity/AutocompleteCity'
 import {AutocompleteCity} from 'components_simple/AutocompleteCity/AutocompleteCity'
-import {Address} from '../../../model'
+import {Address} from 'model/Address'
 
 interface Form {
   place: AutocompleteCityValue

@@ -1,7 +1,7 @@
 import {appConfig} from 'core/appConfig'
 import {EventCategories, ReportEventActions} from 'analytic/analytic'
 import {useAnalyticContext} from 'analytic/AnalyticContext'
-import {useI18n} from 'i18n'
+import {useI18n} from 'i18n/I18n'
 import {ReportDraft2} from 'model/ReportDraft2'
 import {useEffect, useMemo} from 'react'
 import {ReportFlowStepperActions} from 'components_simple/ReportFlowStepper/ReportFlowStepperActions'

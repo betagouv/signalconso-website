@@ -1,7 +1,6 @@
 import * as React from 'react'
-import {Page as MuiPage} from '../../alexlibs/mui-extension'
+import {Page as MuiPage, PageProps as MuiPageProps} from '../../alexlibs/mui-extension/Page/Page'
 import {Box, LinearProgress} from '@mui/material'
-import {PageProps as MuiPageProps} from '../../alexlibs/mui-extension'
 
 export const pageWidth = {
   large: 1100,

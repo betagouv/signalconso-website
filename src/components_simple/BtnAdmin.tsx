@@ -1,6 +1,6 @@
 import {ScButton} from 'components_simple/Button/Button'
 import {ButtonProps} from '@mui/material'
-import {useI18n} from '../i18n'
+import {useI18n} from '../i18n/I18n'
 import {siteMap} from '../core/siteMap'
 import {useWindowWidth} from '../hooks/useWindowWidth'
 

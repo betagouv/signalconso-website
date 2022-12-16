@@ -1,4 +1,5 @@
-import {FacebookIcon, TwitterIcon} from '../alexlibs/mui-extension'
+import {FacebookIcon} from '../alexlibs/mui-extension/icon/FacebookIcon'
+import {TwitterIcon} from '../alexlibs/mui-extension/icon/TwitterIcon'
 import {alpha, Box, Grid, Theme, useTheme} from '@mui/material'
 import Link from 'next/link'
 import {SxProps} from '@mui/system'

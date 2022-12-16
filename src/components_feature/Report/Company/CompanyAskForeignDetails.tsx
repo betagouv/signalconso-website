@@ -1,4 +1,4 @@
-import {useI18n} from 'i18n'
+import {useI18n} from 'i18n/I18n'
 import {FormLayout} from 'components_simple/FormLayout/FormLayout'
 import {Controller, useForm} from 'react-hook-form'
 import {ScInput} from 'components_simple/Input/ScInput'
@@ -9,7 +9,8 @@ import {useConstantContext} from 'context/ConstantContext'
 import React, {useEffect} from 'react'
 import {useToast} from 'hooks/useToast'
 import {StepperActionsNext} from 'components_simple/ReportFlowStepper/StepperActionsNext'
-import {Alert, Txt} from '../../../alexlibs/mui-extension'
+import {Txt} from '../../../alexlibs/mui-extension/Txt/Txt'
+import {Alert} from '../../../alexlibs/mui-extension/Alert/Alert'
 import {Country} from '../../../model/Country'
 
 interface Form {

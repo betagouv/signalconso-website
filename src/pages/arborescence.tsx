@@ -7,7 +7,8 @@ import Head from 'next/head'
 import {useEffect, useState} from 'react'
 import {ScButton} from 'components_simple/Button/Button'
 import {Page} from 'components_simple/Page/Page'
-import {IconBtn, Txt} from '../alexlibs/mui-extension'
+import {Txt} from '../alexlibs/mui-extension/Txt/Txt'
+import {IconBtn} from '../alexlibs/mui-extension/IconBtn/IconBtn'
 import {fnSwitch} from '../utils/FnSwitch'
 import {
   allVisibleAnomalies,

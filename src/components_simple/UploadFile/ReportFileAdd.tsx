@@ -1,14 +1,14 @@
 import React, {useRef, useState} from 'react'
 import {Box, Button, CircularProgress, Icon, Theme, Tooltip} from '@mui/material'
 import {reportFileConfig} from './reportFileConfig'
-import {useI18n} from 'i18n'
+import {useI18n} from 'i18n/I18n'
 import {useApiClients} from 'context/ApiClientsContext'
 import {appConfig} from '../../core/appConfig'
 import {styleUtils} from 'core/theme'
 import {useToast} from 'hooks/useToast'
 import {SxProps} from '@mui/system'
 import {FileOrigin, UploadedFile} from '../../model/UploadedFile'
-import {CompressFile} from '../../model/CompressFile'
+import {compressFile} from '../../utils/compressFile'
 
 const styles: {[key: string]: SxProps<Theme>} = {
   root: {
@@ -72,7 +72,7 @@ export const ReportFileAdd = ({onUploaded, fileOrigin}: Props) => {
         return
       }
       setUploading(true)
-      CompressFile.compress(file)
+      compressFile(file)
         .then(file => {
           return file
         })

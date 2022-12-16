@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import {pageDefinitions} from 'core/pageDefinition'
 import {Page} from 'components_simple/Page/Page'
-import {Alert} from '../alexlibs/mui-extension'
+import {Alert} from '../alexlibs/mui-extension/Alert/Alert'
 
 const Contact = () => {
   return (

@@ -1,7 +1,8 @@
 import {UploadedFile} from './UploadedFile'
 import {DetailInputValue} from './Report'
-import {Address, CompanyKinds, ReportTag, Subcategory} from '.'
 import {ifDefined} from '../utils/utils'
+import {CompanyKinds, ReportTag, Subcategory} from 'anomalies/Anomaly'
+import {Address} from './Address'
 
 export enum Gender {
   Male = 'Male',
@@ -51,17 +52,6 @@ export interface ReportDraft {
 export class ReportDraft {
   static readonly getCompanyKindFomSubcategories = (r: ReportDraft): CompanyKinds | undefined => {
     return r.subcategories?.reverse().find(_ => !!_.companyKind)?.companyKind
-  }
-
-  static readonly tags = (r: ReportDraft): ReportTag[] => {
-    const tags = (r.subcategories ?? []).flatMap(_ => _.tags ?? [])
-    if (ReportDraft.getCompanyKindFomSubcategories(r) === CompanyKinds.WEBSITE) {
-      tags.push(ReportTag.Internet)
-    }
-    if (!r.forwardToReponseConso) {
-      return tags.filter(_ => _ !== ReportTag.ReponseConso)
-    }
-    return tags
   }
 
   static readonly isTransmittableToPro = (r: Pick<ReportDraft, 'employeeConsumer' | 'tags'>): boolean => {
