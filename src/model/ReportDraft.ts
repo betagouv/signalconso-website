@@ -1,13 +1,11 @@
-import {UploadedFile} from './UploadedFile'
-import {DetailInputValue} from './Report'
-import {ifDefined} from '../utils/utils'
 import {CompanyKinds, ReportTag, Subcategory} from 'anomalies/Anomaly'
 import {Address} from './Address'
+import {DetailInputValue} from './CreatedReport'
+import {ApiReportDraft} from './reportsFromApi'
+import {UploadedFile} from './UploadedFile'
 
-export enum Gender {
-  Male = 'Male',
-  Female = 'Female',
-}
+export const genders = ['Male', 'Female'] as const
+export type Gender = typeof genders[number]
 
 export interface ReportDraftConsumer {
   firstName: string
@@ -50,23 +48,16 @@ export interface ReportDraft {
 }
 
 export class ReportDraft {
-  static readonly getCompanyKindFomSubcategories = (r: ReportDraft): CompanyKinds | undefined => {
-    return r.subcategories?.reverse().find(_ => !!_.companyKind)?.companyKind
-  }
-
   static readonly isTransmittableToPro = (r: Pick<ReportDraft, 'employeeConsumer' | 'tags'>): boolean => {
-    return (
-      !r.employeeConsumer &&
-      !(r.tags ?? []).find(_ => [ReportTag.ReponseConso, ReportTag.ProduitDangereux, ReportTag.Bloctel].includes(_))
-    )
+    return !r.employeeConsumer && !(r.tags ?? []).find(_ => ['ReponseConso', 'ProduitDangereux', 'Bloctel'].includes(_))
   }
 
-  static readonly toApi = (draft: ReportDraft): any => {
+  static readonly toApi = (draft: ReportDraft): ApiReportDraft => {
     return {
       ...draft,
       details: draft.details,
       gender: draft.consumer.gender,
-      subcategories: ifDefined(draft.subcategories, subcategories => subcategories.map(_ => _.title ?? _)),
+      subcategories: draft.subcategories.map(_ => _.title),
       firstName: draft.consumer.firstName,
       lastName: draft.consumer.lastName,
       email: draft.consumer.email,
@@ -82,6 +73,9 @@ export class ReportDraft {
       companyActivityCode: draft.companyDraft.activityCode,
       websiteURL: draft.companyDraft.website,
       phone: draft.companyDraft.phone,
+      // pretty sure these fields aren't actually optional in the draft
+      employeeConsumer: draft.employeeConsumer ?? false,
+      tags: draft.tags ?? [],
     }
   }
 }

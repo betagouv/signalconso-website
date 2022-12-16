@@ -1,10 +1,10 @@
 import {ReportStep, ReportStepHelper} from 'core/reportStep'
 import randomstring from 'randomstring'
-import {Report, ReportStatus} from '../model/Report'
+import {CreatedReport} from '../model/CreatedReport'
 import {Company, CompanySearchResult, WebsiteCompanySearchResult} from '../model/Company'
 import {FileOrigin} from '../model/UploadedFile'
 import {ReportDraft, ReportDraftConsumer} from '../model/ReportDraft'
-import {Information, ReportTag, Subcategory} from '../anomalies/Anomaly'
+import {Information, ReportTag, reportTags, Subcategory} from '../anomalies/Anomaly'
 import {Address} from '../model/Address'
 import {allAnomalies} from 'anomalies/Anomalies'
 
@@ -49,16 +49,6 @@ export class Fixture {
     )
   }
 
-  // private static readonly genCompanyAccessLevel = (siret?: string) => {
-  //   return {
-  //     ...Fixture.genCompany(),
-  //     ...(siret ? {siret} : {}),
-  //     level: Fixture.oneOf(['admin', 'member']),
-  //   }
-  // }
-
-  private static readonly genStatus = () => Fixture.oneOf(Object.values(ReportStatus))
-
   private static readonly genDetails = () => [
     {label: "Date de constat (ou date d'achat) :", value: '09/03/2022'},
     {label: 'Quel est le nom du produit :', value: 'oo'},
@@ -75,31 +65,16 @@ export class Fixture {
     },
   ]
 
-  static readonly genReport = (): Report => {
+  static readonly genReport = (): CreatedReport => {
     const company = Fixture.genCompany()
     const subcategories = [Fixture.genSubcategory(), Fixture.genSubcategory()]
     return {
-      id: randomstring.generate(),
-      category: Fixture.oneOf(allAnomalies.map(_ => _.category)),
-      subcategories: [Fixture.genSubcategory(), Fixture.genSubcategory()],
-      companyId: randomstring.generate(),
-      companyName: randomstring.generate({capitalization: 'lowercase', charset: 'alphabetic'}),
       companyAddress: Fixture.genAddress(),
       companySiret: company.siret,
       websiteURL: randomstring.generate(),
-      // phone: Fixture.genPhone(),
       tags: subcategories.filter(_ => !!_.tags).flatMap(_ => _.tags!),
-      details: Fixture.genDetails(),
-      firstName: randomstring.generate({capitalization: 'lowercase', charset: 'alphabetic'}),
-      lastName: randomstring.generate({capitalization: 'lowercase', charset: 'alphabetic'}),
-      email: Fixture.genEmail(),
-      consumerPhone: Fixture.genPhone(),
       employeeConsumer: Fixture.genBoolean(),
       contactAgreement: Fixture.genBoolean(),
-      creationDate: new Date(),
-      status: Fixture.genStatus(),
-      reponseconsoCode: [],
-      ccrfCode: [],
     }
   }
 
@@ -186,7 +161,7 @@ export class Fixture {
     return <Subcategory>{
       title: randomstring.generate({capitalization: 'lowercase', charset: 'alphabetic'}),
       id: randomstring.generate(),
-      tags: Fixture.oneOf([null, ...Object.keys(ReportTag)]),
+      tags: Fixture.oneOf([null, ...reportTags]),
       ...params,
     }
   }

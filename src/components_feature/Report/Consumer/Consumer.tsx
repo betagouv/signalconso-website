@@ -23,8 +23,7 @@ import {Row} from 'components_simple/Row/Row'
 import {useAnalyticContext} from 'analytic/AnalyticContext'
 import {EventCategories, ReportEventActions} from 'analytic/analytic'
 import {useWindowWidth} from 'hooks/useWindowWidth'
-import {Gender, ReportDraft} from '../../../model/ReportDraft'
-import {ReportTag} from '../../../anomalies/Anomaly'
+import {Gender, genders, ReportDraft} from '../../../model/ReportDraft'
 
 interface ConsumerForm {
   firstName: string
@@ -99,8 +98,9 @@ export const _Consumer = ({
                 control={_form.control}
                 render={({field}) => (
                   <ScRadioGroup {...field} inline={!isXsOrLess} dense sx={{mt: 1, mb: 2}}>
-                    <ScRadioGroupItem value={Gender.Male} title={m.gender[Gender.Male]} />
-                    <ScRadioGroupItem value={Gender.Female} title={m.gender[Gender.Female]} />
+                    {genders.map(gender => (
+                      <ScRadioGroupItem key={gender} value={gender} title={m.gender[gender]} />
+                    ))}
                     <ScRadioGroupItem value={undefined} title={m.unknownGender} />
                   </ScRadioGroup>
                 )}
@@ -148,7 +148,7 @@ export const _Consumer = ({
               />
             </FormLayout>
           </Row>
-          {!draft.tags?.includes(ReportTag.Bloctel) && (
+          {!draft.tags?.includes('Bloctel') && (
             <Row icon="phone">
               <FormLayout label={m.phoneOptional}>
                 <ScInput

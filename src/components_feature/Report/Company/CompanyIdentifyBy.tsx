@@ -31,11 +31,11 @@ export const CompanyIdentifyBy = ({companyKind, value, children}: Props) => {
           </Txt>
           <PanelBody>
             <ScRadioGroup value={value} onChange={setIdentifyBy}>
-              {companyKind !== CompanyKinds.INFLUENCEUR && (
+              {companyKind !== 'INFLUENCEUR' && (
                 <ScRadioGroupItem value={IdentifyBy.NAME} title={m.identifyBy_name} description={m.identifyBy_nameDesc} />
               )}
               <ScRadioGroupItem value={IdentifyBy.IDENTITY} title={m.identifyBy_identity} />
-              {companyKind !== CompanyKinds.SIRET && (
+              {companyKind !== 'SIRET' && (
                 <ScRadioGroupItem value={IdentifyBy.NONE} title={m.identifyBy_none} description={m.identifyBy_noneDesc} />
               )}
             </ScRadioGroup>

@@ -151,7 +151,7 @@ export const _Company = ({draft, onUpdateReportDraft}: CompanyWithRequiredProps)
               </CompanySearchByIdentity>
             ),
             [IdentifyBy.NONE]: () =>
-              draft.companyKind === CompanyKinds.LOCATION ? (
+              draft.companyKind === 'LOCATION' ? (
                 <CompanyAskConsumerStreet
                   onChange={form => {
                     onUpdateReportDraft({
@@ -227,8 +227,8 @@ export const _Company = ({draft, onUpdateReportDraft}: CompanyWithRequiredProps)
       {fnSwitch(
         draft.companyKind!,
         {
-          [CompanyKinds.PHONE]: () => <CompanyByPhone>{phone => commonTree({phone})}</CompanyByPhone>,
-          [CompanyKinds.WEBSITE]: () => (
+          ['PHONE']: () => <CompanyByPhone>{phone => commonTree({phone})}</CompanyByPhone>,
+          ['WEBSITE']: () => (
             <CompanyByWebsite>
               {(website, companies, countries) =>
                 countries ? (

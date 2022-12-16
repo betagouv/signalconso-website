@@ -3,10 +3,11 @@ import {BaseApiClient} from './BaseApiClient'
 import {WebsiteCompanySearchResult} from '../model/Company'
 import {Country} from '../model/Country'
 import {FileOrigin, UploadedFile} from '../model/UploadedFile'
-import {Report} from '../model/Report'
+import {CreatedReport} from '../model/CreatedReport'
 import {ReportDraft} from '../model/ReportDraft'
 import {Subcategory} from 'anomalies/Anomaly'
 import {ConsumerEmailResult} from 'model/ConsumerEmailValidation'
+import {ApiCreatedReport, ApiReportDraft} from 'model/reportsFromApi'
 
 type PublicStat =
   | 'PromesseAction'
@@ -38,17 +39,23 @@ export class SignalConsoApiClient {
     return this.client.get<Country[]>(`/websites/search-url`, {qs: {url}})
   }
 
-  createReport = (draft: ReportDraft) => {
-    return this.client.post<Report>(`/reports`, {body: ReportDraft.toApi(draft)}).then(
-      (report: {[key in keyof Report]: any}): Report => ({
-        ...report,
-        companyAddress: {
-          ...report.companyAddress,
-          country: report.companyAddress.country?.name,
-        },
-        creationDate: new Date(report.creationDate),
-      }),
-    )
+  createReport = async (draft: ReportDraft): Promise<CreatedReport> => {
+    const apiReportDraft: ApiReportDraft = ReportDraft.toApi(draft)
+
+    const reportFromApi = await this.client.post<ApiCreatedReport>(`/reports`, {body: apiReportDraft})
+    const {tags, companyAddress, companySiret, websiteURL, employeeConsumer, contactAgreement} = reportFromApi
+    const res: CreatedReport = {
+      tags,
+      employeeConsumer,
+      contactAgreement,
+      ...(companySiret !== null ? {companySiret} : null),
+      ...(websiteURL !== null ? {websiteURL} : null),
+      companyAddress: {
+        ...companyAddress,
+        country: companyAddress.country?.name,
+      },
+    }
+    return res
   }
 
   getPublicStatCount = (publicStat: PublicStat) => {

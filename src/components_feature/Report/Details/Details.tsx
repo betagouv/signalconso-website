@@ -36,7 +36,6 @@ import {getDraftReportInputs} from './draftReportInputs'
 export class SpecifyFormUtils {
   static readonly keyword = '(à préciser)'
   static readonly getInputName = (index: number) => `${index}_specify`
-  static readonly isSpecifyInputName = (name: string) => name.includes('_specify')
 }
 
 export const isSpecifyInputName = (name: string) => name.includes('_specify')
@@ -138,7 +137,7 @@ export const _Details = ({
               </>
             )}
           </Alert>
-          {(tags ?? []).includes(ReportTag.ProduitDangereux) && <DetailsAlertProduitDangereux />}
+          {(tags ?? []).includes('ProduitDangereux') && <DetailsAlertProduitDangereux />}
 
           <br />
 

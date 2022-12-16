@@ -41,30 +41,26 @@ export interface SubcategoryInformation extends SubcategoryBase {
   information: Information
 }
 
-export enum ReportTag {
-  LitigeContractuel = 'LitigeContractuel',
-  Hygiene = 'Hygiene',
-  ProduitDangereux = 'ProduitDangereux',
-  DemarchageADomicile = 'DemarchageADomicile',
-  Ehpad = 'Ehpad',
-  DemarchageTelephonique = 'DemarchageTelephonique',
-  AbsenceDeMediateur = 'AbsenceDeMediateur',
-  Bloctel = 'Bloctel',
-  Influenceur = 'Influenceur',
-  ReponseConso = 'ReponseConso',
-  Internet = 'Internet',
-  ProduitIndustriel = 'ProduitIndustriel',
-  ProduitAlimentaire = 'ProduitAlimentaire',
-  CompagnieAerienne = 'CompagnieAerienne',
-}
+export const reportTags = [
+  'LitigeContractuel',
+  'Hygiene',
+  'ProduitDangereux',
+  'DemarchageADomicile',
+  'Ehpad',
+  'DemarchageTelephonique',
+  'AbsenceDeMediateur',
+  'Bloctel',
+  'Influenceur',
+  'ReponseConso',
+  'Internet',
+  'ProduitIndustriel',
+  'ProduitAlimentaire',
+  'CompagnieAerienne',
+] as const
+export type ReportTag = typeof reportTags[number]
 
-export enum CompanyKinds {
-  SIRET = 'SIRET',
-  WEBSITE = 'WEBSITE',
-  PHONE = 'PHONE',
-  LOCATION = 'LOCATION',
-  INFLUENCEUR = 'INFLUENCEUR',
-}
+export const companyKinds = ['SIRET', 'WEBSITE', 'PHONE', 'LOCATION', 'INFLUENCEUR'] as const
+export type CompanyKinds = typeof companyKinds[number]
 
 export interface Information {
   title?: string

@@ -1,6 +1,5 @@
-import {_Consumer} from '../Report/Consumer/Consumer'
 import {Card, CardContent} from '@mui/material'
-import {CompanyKinds} from '../../anomalies/Anomaly'
+import {_Consumer} from '../Report/Consumer/Consumer'
 
 export const PlaygroundConsumer = () => {
   return (
@@ -9,7 +8,7 @@ export const PlaygroundConsumer = () => {
         <CardContent>
           <_Consumer
             draft={{
-              companyKind: CompanyKinds.LOCATION,
+              companyKind: 'LOCATION',
             }}
             onSubmit={x => alert(JSON.stringify(x))}
           />

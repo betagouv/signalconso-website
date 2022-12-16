@@ -19,10 +19,6 @@ export class ReportStepHelper {
     ReportStep.Acknowledgment,
   ]
 
-  static readonly count = ReportStepHelper.reportStepOrdered.length
-
-  static readonly getByIndex = (i: number): ReportStepHelper => ReportStepHelper.reportStepOrdered[i]
-
   static readonly getIndexByStep = (step: ReportStep): number => ReportStepHelper.reportStepOrdered.indexOf(step)
 
   static readonly reportStepDone = (r: Partial<ReportDraft2>) => ({

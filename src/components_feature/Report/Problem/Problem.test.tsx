@@ -12,10 +12,10 @@ import {Anomaly, CompanyKinds, ReportTag} from '../../../anomalies/Anomaly'
 
 class ProblemFixture {
   static readonly simpleSubcategory = Fixture.genSubcategory()
-  static readonly internetSubcategory = Fixture.genSubcategory({companyKind: CompanyKinds.WEBSITE})
+  static readonly internetSubcategory = Fixture.genSubcategory({companyKind: 'WEBSITE'})
   static readonly reponseConsoSubcategory = Fixture.genSubcategory({
-    companyKind: CompanyKinds.WEBSITE,
-    tags: [ReportTag.ReponseConso],
+    companyKind: 'WEBSITE',
+    tags: ['ReponseConso'],
   })
   static readonly infoSubcategory = Fixture.genSubcategory({information: Fixture.genInformation()})
   static readonly subcategories = [
@@ -174,7 +174,7 @@ describe('Problem', () => {
     fireEvent.click(app.getByText(ProblemFixture.simpleSubcategory.title))
     clickEmployeeConsumer(app, 'no')
     clickCompanyKind(app, 'internet')
-    expect(report?.companyKind).toEqual(CompanyKinds.WEBSITE)
+    expect(report?.companyKind).toEqual('WEBSITE')
   })
 
   it(`shouldn't ask companyKind when defined`, () => {
@@ -298,7 +298,7 @@ describe('Problem', () => {
     clickBtnSubmit(app)
     expect(report?.employeeConsumer).toEqual(false)
     expect(report?.forwardToReponseConso).toEqual(true)
-    expect(report?.tags?.includes(ReportTag.ReponseConso)).toEqual(true)
+    expect(report?.tags?.includes('ReponseConso')).toEqual(true)
   })
 
   it('should ask add ReponseConso tag when related option is not selected', () => {
@@ -321,6 +321,6 @@ describe('Problem', () => {
     clickBtnSubmit(app)
     expect(report?.employeeConsumer).toEqual(false)
     expect(report?.forwardToReponseConso).not.toEqual(true)
-    expect((report?.tags ?? []).includes(ReportTag.ReponseConso)).toEqual(false)
+    expect((report?.tags ?? []).includes('ReponseConso')).toEqual(false)
   })
 })

@@ -29,12 +29,12 @@ describe('Details: single date not in future', () => {
     fireEvent.click(app.getByText(btnText))
   }
 
-  describe('CompanyKinds.WEBSITE', () => {
+  describe('WEBSITE', () => {
     beforeEach(() => {
       app = render(
         <_Company
           draft={{
-            companyKind: CompanyKinds.WEBSITE,
+            companyKind: 'WEBSITE',
           }}
           onUpdateReportDraft={x => {
             draft = ReportDraft2.merge(draft, x)
@@ -77,12 +77,12 @@ describe('Details: single date not in future', () => {
     })
   })
 
-  describe('CompanyKinds.LOCATION', () => {
+  describe('LOCATION', () => {
     beforeEach(() => {
       app = render(
         <_Company
           draft={{
-            companyKind: CompanyKinds.LOCATION,
+            companyKind: 'LOCATION',
           }}
           onUpdateReportDraft={x => ReportDraft2.merge(draft, x)}
         />,

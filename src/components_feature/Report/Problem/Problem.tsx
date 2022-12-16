@@ -12,7 +12,8 @@ import {ProblemContratualDisputeWarnPanel} from './ProblemContratualDisputeWarnP
 import {ProblemInformation} from './ProblemInformation'
 import {ProblemSelect} from './ProblemSelect'
 import {ProblemStepperStep, ProblemStepper} from './ProblemStepper'
-import {useSelectedSubcategoriesData} from './useSelectedSubcategoriesData'
+import {computeSelectedSubcategoriesData} from './useSelectedSubcategoriesData'
+import {ReportDraft} from 'model/ReportDraft'
 
 interface Props {
   anomaly: Anomaly
@@ -24,20 +25,31 @@ function adjustTags(
   companyKindFromSelected: CompanyKinds | undefined,
 ): ReportTag[] {
   let res = tags
-  if (companyKindFromSelected === CompanyKinds.WEBSITE || draft.companyKind === CompanyKinds.WEBSITE) {
-    res = [...res, ReportTag.Internet]
+  if (companyKindFromSelected === 'WEBSITE' || draft.companyKind === 'WEBSITE') {
+    res = [...res, 'Internet']
   }
   if (draft.forwardToReponseConso !== true) {
-    res = res.filter(_ => _ !== ReportTag.ReponseConso)
+    res = res.filter(_ => _ !== 'ReponseConso')
   }
   return res
 }
 
+function chooseIfReponseConsoDisplayed(): boolean {
+  return Math.random() * 100 < appConfig.reponseConsoDisplayRate
+}
+
+function adjustReportDraftAfterSubcategoriesChange(report: Partial<ReportDraft2>, subcategory: Subcategory, index: number) {
+  const subcategoriesToKeep = (report.subcategories ?? []).slice(0, index)
+  const subcategories = [...subcategoriesToKeep, subcategory]
+  const tags = report.tags?.filter(_ => _ !== 'Internet') ?? undefined
+  const copy = {...report, subcategories, tags, details: {}, companyKind: undefined}
+  return copy
+}
+
 export const Problem = ({anomaly}: Props) => {
   const _analytic = useAnalyticContext()
-
   const {m} = useI18n()
-  const displayReponseConso = useMemo(() => Math.random() * 100 < appConfig.reponseConsoDisplayRate, [])
+  const displayReponseConso = useMemo(chooseIfReponseConsoDisplayed, [])
   const {reportDraft, setReportDraft, clearReportDraft} = useReportFlowContext()
 
   // reset the draft when switching the root category
@@ -49,10 +61,9 @@ export const Problem = ({anomaly}: Props) => {
     }
   }, [anomaly.category])
 
-  const {tagsFromSelected, lastSubcategories, isLastSubcategory, companyKindFromSelected} = useSelectedSubcategoriesData(
-    anomaly,
-    reportDraft?.subcategories ?? [],
-  )
+  const {tagsFromSelected, lastSubcategories, isLastSubcategory, companyKindFromSelected} = useMemo(() => {
+    return computeSelectedSubcategoriesData(reportDraft.subcategories ?? [])
+  }, [reportDraft.subcategories])
 
   function onSubmit(next: () => void): void {
     setReportDraft(draft => {
@@ -60,7 +71,7 @@ export const Problem = ({anomaly}: Props) => {
       return {
         ...draft,
         tags: adjustTags(tagsFromSelected, draft, companyKindFromSelected),
-        companyKind: companyKindFromSelected ?? draft.companyKind ?? CompanyKinds.SIRET,
+        companyKind: companyKindFromSelected ?? draft.companyKind ?? 'SIRET',
         anomaly: _anomaly,
       }
     })
@@ -69,34 +80,27 @@ export const Problem = ({anomaly}: Props) => {
 
   const handleSubcategoriesChange = (subcategory: Subcategory, index: number) => {
     setReportDraft(report => {
-      const copy = {...report}
-      copy.subcategories = report.subcategories ?? []
-      copy.subcategories.length = index
-      copy.subcategories[index] = subcategory
-      copy.details = {}
-      copy.subcategories = [...copy.subcategories]
-      copy.tags = copy.tags ? copy.tags.filter(_ => _ !== ReportTag.Internet) : undefined
-      copy.companyKind = undefined
+      const newReport = adjustReportDraftAfterSubcategoriesChange(report, subcategory, index)
       _analytic.trackEvent(
         EventCategories.report,
         ReportEventActions.validateSubcategory,
-        copy.subcategories.map(_ => _.title),
+        newReport.subcategories?.map(_ => _.title) ?? [],
       )
-      return copy
+      return newReport
     })
   }
   return (
     <>
       {[anomaly, ...(reportDraft.subcategories ?? [])].map(
-        (c, i) =>
-          c.subcategories && (
+        (category, idx) =>
+          category.subcategories && (
             <ProblemSelect
-              autoScrollToPanel={i !== 0}
-              key={c.id}
-              title={c.subcategoriesTitle}
-              value={reportDraft.subcategories?.[i]?.id}
-              onChange={id => handleSubcategoriesChange(c.subcategories?.find(_ => _.id === id)!, i)}
-              options={(c.subcategories ?? []).map((_, i) => ({
+              autoScrollToPanel={idx !== 0}
+              key={category.id}
+              title={category.subcategoriesTitle}
+              value={reportDraft.subcategories?.[idx]?.id}
+              onChange={id => handleSubcategoriesChange(category.subcategories?.find(_ => _.id === id)!, idx)}
+              options={(category.subcategories ?? []).map((_, i) => ({
                 title: _.title,
                 description: _.example,
                 value: _.id,
@@ -110,7 +114,7 @@ export const Problem = ({anomaly}: Props) => {
           <ProblemInformation
             anomaly={anomaly}
             subcategories={reportDraft.subcategories}
-            information={(lastSubcategories as any).information}
+            information={lastSubcategories.information}
           />
         ) : (
           <ProblemStepper renderDone={<ReportFlowStepperActions next={onSubmit} />}>
@@ -133,7 +137,7 @@ export const Problem = ({anomaly}: Props) => {
               />
             </ProblemStepperStep>
             <ProblemStepperStep isDone={reportDraft.companyKind !== undefined} hidden={!!companyKindFromSelected}>
-              <ProblemSelect
+              <ProblemSelect<CompanyKinds>
                 id="select-companyKind"
                 title={m.problemIsInternetCompany}
                 value={reportDraft.companyKind}
@@ -141,12 +145,11 @@ export const Problem = ({anomaly}: Props) => {
                 options={[
                   {
                     title: m.yes,
-                    value: CompanyKinds.WEBSITE,
+                    value: 'WEBSITE',
                   },
                   {
                     title: m.problemIsInternetCompanyNo,
-                    value:
-                      tagsFromSelected.indexOf(ReportTag.ProduitDangereux) === -1 ? CompanyKinds.SIRET : CompanyKinds.LOCATION,
+                    value: tagsFromSelected.indexOf('ProduitDangereux') === -1 ? 'SIRET' : 'LOCATION',
                   },
                 ]}
               />
@@ -174,7 +177,7 @@ export const Problem = ({anomaly}: Props) => {
                     description: m.problemContractualDisputeFormNoDesc,
                     value: 2,
                   },
-                  ...(displayReponseConso && tagsFromSelected.includes(ReportTag.ReponseConso)
+                  ...(displayReponseConso && tagsFromSelected.includes('ReponseConso')
                     ? [
                         {
                           title: m.problemContractualDisputeFormReponseConso,
