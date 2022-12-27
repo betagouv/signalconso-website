@@ -256,7 +256,7 @@
                     optional: true
               - title: Utilisation de termes laissant croire qu'il s'agit d'une structure publique
                 ccrfCode:
-                  -'271'
+                  - '271'
                 tags:
                   - ReponseConso
                 detailInputs:
@@ -298,7 +298,7 @@
                     optional: true
               - title: Présentation des travaux comme étant obligatoires
                 ccrfCode:
-                  -'271'
+                  - '271'
                 tags:
                   - ReponseConso
                 detailInputs:
@@ -319,7 +319,7 @@
                     optional: true
               - title: Promesse d'économies d'énergie surestimées
                 ccrfCode:
-                  -'271'
+                  - '271'
                 tags:
                   - ReponseConso
                 detailInputs:
@@ -488,11 +488,11 @@
             example: Crédit affecté au contrat de travaux / rénovation
             subcategories:
               - title: Absence d'informations
-                  ccrfCode:
-                    - '21A'
-                    - '23A'
-                    - '23B'
-                    - '23C'
+                ccrfCode:
+                  - '21A'
+                  - '23A'
+                  - '23B'
+                  - '23C'
                 tags:
                   - ReponseConso
                 reponseconsoCode:
@@ -1469,7 +1469,7 @@
                       optional: true
                 - title: Utilisation de termes laissant croire qu'il s'agit d'une structure publique
                   ccrfCode:
-                    -'271'
+                    - '271'
                   tags:
                     - ReponseConso
                   detailInputs:
@@ -1511,7 +1511,7 @@
                       optional: true
                 - title: Présentation des travaux comme étant obligatoires
                   ccrfCode:
-                    -'271'
+                    - '271'
                   tags:
                     - ReponseConso
                   detailInputs:
@@ -1532,7 +1532,7 @@
                       optional: true
                 - title: Promesse d'économies d'énergie surestimées
                   ccrfCode:
-                    -'271'
+                    - '271'
                   tags:
                     - ReponseConso
                   detailInputs:
@@ -1853,7 +1853,7 @@
                       optional: true
                 - title: Utilisation de termes laissant croire qu'il s'agit d'une structure publique
                   ccrfCode:
-                    -'271'
+                    - '271'
                   tags:
                     - ReponseConso
                   detailInputs:
@@ -1895,7 +1895,7 @@
                       optional: true
                 - title: Présentation des travaux comme étant obligatoires
                   ccrfCode:
-                    -'271'
+                    - '271'
                   tags:
                     - ReponseConso
                   detailInputs:
@@ -1916,7 +1916,7 @@
                       optional: true
                 - title: Promesse d'économies d'énergie surestimées
                   ccrfCode:
-                    -'271'
+                    - '271'
                   tags:
                     - ReponseConso
                   detailInputs:
@@ -2238,7 +2238,7 @@
                   optional: true
             - title: Utilisation de termes laissant croire qu'il s'agit d'une structure publique
               ccrfCode:
-                -'271'
+                - '271'
               tags:
                 - ReponseConso
               detailInputs:
@@ -2280,7 +2280,7 @@
                   optional: true
             - title: Présentation des travaux comme étant obligatoires
               ccrfCode:
-                -'271'
+                - '271'
               tags:
                 - ReponseConso
               detailInputs:
@@ -2301,7 +2301,7 @@
                   optional: true
             - title: Promesse d'économies d'énergie surestimées
               ccrfCode:
-                -'271'
+                - '271'
               tags:
                 - ReponseConso
               detailInputs:
