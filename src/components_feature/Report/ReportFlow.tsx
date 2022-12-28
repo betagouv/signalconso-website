@@ -36,7 +36,7 @@ export const ReportFlow = React.memo(({initialStep, anomaly}: Props) => {
       initialStep={initialStep}
       anomaly={anomaly}
       onStepChange={step => {
-        const index = step === 'done' ? reportSteps.length : getStepIndex(step)
+        const index = step === 'Done' ? reportSteps.length : getStepIndex(step)
         const path = Object.values(ReportStepPathInAnalytics)[index]
         const title = Object.values(ReportStepTitleInAnalytics)[index]
         _analytics.trackPage(`/${anomaly.path}/${path}`, title)

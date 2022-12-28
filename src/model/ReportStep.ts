@@ -6,8 +6,8 @@ export type ReportStep = typeof reportSteps[number]
 export const firstReportStep = reportSteps[0]
 export const lastReportStep = reportSteps[reportSteps.length - 1]
 
-// 'done' is like a special bonus step, not included in the original list
-export type ReportStepOrDone = ReportStep | 'done'
+// 'Done' is like a special bonus step, not included in the original list
+export type ReportStepOrDone = ReportStep | 'Done'
 
 // TMP for retrocompat
 export function getStepIndex(step: ReportStep): number {
@@ -16,12 +16,12 @@ export function getStepIndex(step: ReportStep): number {
 
 // TMP for retrocompat
 export function stepToIndex(step: ReportStepOrDone): number {
-  return step === 'done' ? reportSteps.length : getStepIndex(step)
+  return step === 'Done' ? reportSteps.length : getStepIndex(step)
 }
 
 // TMP for retrocompat
 export function indexToStepOrDone(index: number): ReportStepOrDone {
-  return index >= reportSteps.length ? 'done' : reportSteps[index]
+  return index >= reportSteps.length ? 'Done' : reportSteps[index]
 }
 
 function isBuildingStepDone(r: Partial<ReportDraft2>, step: ReportStep) {
