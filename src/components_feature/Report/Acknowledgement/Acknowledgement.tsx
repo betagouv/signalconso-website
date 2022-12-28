@@ -331,7 +331,7 @@ const AcknowledgementLayout = ({
 
           <p>
             En cas d’erreur sur votre signalement, envoyez un email à<br />
-            <Txt link>
+            <Txt link span>
               <a href="mailto:support@signal.conso.gouv.fr?subject=incident">support@signal.conso.gouv.fr</a>
             </Txt>
           </p>

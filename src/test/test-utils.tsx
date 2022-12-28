@@ -13,6 +13,7 @@ import {DeepPartial} from '../utils/utils'
 import {AnalyticProvider} from 'analytic/AnalyticContext'
 import {SignalConsoApiClient} from '../clients/SignalConsoApiClient'
 import {CompanyPublicClient} from '../clients/CompanyPublicClient'
+import {ReportStepOrDone} from 'model/ReportStep'
 
 const AllTheProviders =
   (options?: Options) =>
@@ -52,8 +53,8 @@ export const DummyStepperProvider = ({
   onPrev,
 }: {
   children: ReactNode
-  currentStep: number
-  onGoTo?: (i: number) => void
+  currentStep: ReportStepOrDone
+  onGoTo?: (step: ReportStepOrDone) => void
   onNext?: () => void
   onPrev?: () => void
 }) => {

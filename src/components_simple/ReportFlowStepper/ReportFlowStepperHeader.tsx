@@ -1,32 +1,49 @@
-import React from 'react'
 import {alpha, Box, BoxProps, Theme} from '@mui/material'
-import {useWindowWidth} from 'hooks/useWindowWidth'
-import {styleUtils} from 'core/theme'
-import {fnSwitch} from '../../utils/FnSwitch'
 import {SxProps} from '@mui/system'
+import {styleUtils} from 'core/theme'
+import {useWindowWidth} from 'hooks/useWindowWidth'
+import {useI18n} from 'i18n/I18n'
+import {getStepIndex, ReportStep, ReportStepOrDone, reportSteps} from 'model/ReportStep'
+import {fnSwitch} from '../../utils/FnSwitch'
 
 interface StepperHeaderProps extends BoxProps {
-  stepsLabels: string[]
-  currentStep: number
-  goTo?: (index: number) => void
+  currentStep: ReportStepOrDone
+  goTo?: (step: ReportStepOrDone) => void
   stepSize?: number
   stepMargin?: number
   hideLabel?: boolean
 }
 
-type StepState = 'done' | 'current' | 'not_done'
+type StepStatus = 'pastStep' | 'currentStep' | 'futureStep'
 
 export const ReportFlowStepperHeader = ({
   sx,
-  stepsLabels,
   currentStep,
   goTo,
   stepSize = 32,
   stepMargin = 8,
   hideLabel,
 }: StepperHeaderProps) => {
-  const isDone = currentStep >= stepsLabels.length
+  const {m} = useI18n()
+
+  const isDone = currentStep === 'Done'
   const {isMobileWidthMax} = useWindowWidth()
+
+  function getStepStatus(step: ReportStep): StepStatus {
+    if (step === currentStep) {
+      return 'currentStep'
+    }
+    if (currentStep === 'Done' || getStepIndex(step) < getStepIndex(currentStep)) {
+      return 'pastStep'
+    }
+    return 'futureStep'
+  }
+
+  function getStepLabel(step: ReportStep) {
+    const stepsLabels = [m.step_problem, m.step_description, m.step_company, m.step_consumer, m.step_confirm]
+    return stepsLabels[getStepIndex(step)]
+  }
+
   return (
     <Box
       sx={{
@@ -36,14 +53,16 @@ export const ReportFlowStepperHeader = ({
         ...sx,
       }}
     >
-      {stepsLabels.map((step, i) => {
-        const state: StepState = currentStep > i ? 'done' : currentStep === i ? 'current' : 'not_done'
+      {reportSteps.map((step, stepIndex) => {
+        const stepLabel = getStepLabel(step)
+        const stepStatus = getStepStatus(step)
+        const onClick = goTo && stepStatus === 'pastStep' && !isDone ? () => goTo(step) : undefined
         return (
-          <Box key={step} sx={{flex: 1}} onClick={goTo ? () => i < currentStep && !isDone && goTo(i) : undefined}>
+          <Box key={stepLabel} sx={{flex: 1}} onClick={onClick}>
             <Box
               sx={{
                 ...(goTo && {
-                  cursor: state === 'not_done' || isDone ? 'not-allowed' : 'pointer',
+                  cursor: stepStatus === 'futureStep' || isDone ? 'not-allowed' : 'pointer',
                 }),
                 display: 'flex',
                 position: 'relative',
@@ -52,7 +71,7 @@ export const ReportFlowStepperHeader = ({
                 flexDirection: 'column',
               }}
             >
-              {i > 0 && (
+              {stepIndex > 0 && (
                 <Box
                   sx={{
                     display: 'block',
@@ -60,7 +79,7 @@ export const ReportFlowStepperHeader = ({
                     top: stepSize / 2 - 1,
                     left: `calc(-50% + ${stepSize / 2 + stepMargin}px)`,
                     right: `calc(50% + ${stepSize / 2 + stepMargin}px)`,
-                    ...(state === 'not_done'
+                    ...(stepStatus === 'futureStep'
                       ? {
                           borderTop: (t: Theme) => '2px solid ' + t.palette.divider,
                         }
@@ -85,37 +104,37 @@ export const ReportFlowStepperHeader = ({
                   transition: t => t.transitions.create('all'),
                   mr: 1,
                   ml: 1,
-                  ...fnSwitch<StepState, SxProps<Theme>>(state, {
-                    done: {
+                  ...fnSwitch<StepStatus, SxProps<Theme>>(stepStatus, {
+                    pastStep: {
                       background: t => t.palette.success.light,
                       color: t => t.palette.success.contrastText,
                     },
-                    current: {
+                    currentStep: {
                       boxShadow: t => `0px 0px 0px ${stepSize > 30 ? 4 : 2}px ${alpha(t.palette.primary.main, 0.3)}`,
                       color: t => t.palette.primary.contrastText,
                       bgcolor: 'primary.main',
                     },
-                    not_done: {
+                    futureStep: {
                       border: t => `2px solid ${t.palette.divider}`,
                       color: t => t.palette.text.disabled,
                     },
                   }),
                 }}
               >
-                {i + 1}
+                {stepIndex + 1}
               </Box>
-              {!hideLabel && (!isMobileWidthMax || step === 'current') && (
+              {!hideLabel && !isMobileWidthMax && (
                 <Box
                   sx={{
                     mt: 1,
                     textAlign: 'center',
-                    ...fnSwitch<StepState, SxProps<Theme>>(
-                      state,
+                    ...fnSwitch<StepStatus, SxProps<Theme>>(
+                      stepStatus,
                       {
-                        current: {
+                        currentStep: {
                           fontWeight: t => t.typography.fontWeightBold,
                         },
-                        not_done: {
+                        futureStep: {
                           color: t => t.palette.text.disabled,
                         },
                       },
@@ -123,7 +142,7 @@ export const ReportFlowStepperHeader = ({
                     ),
                   }}
                 >
-                  {step}
+                  {stepLabel}
                 </Box>
               )}
             </Box>

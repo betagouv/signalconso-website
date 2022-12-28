@@ -1,6 +1,6 @@
 import {useTheme} from '@mui/material'
 import {allAnomalies} from 'anomalies/Anomalies'
-import {ReportStep} from 'core/reportStep'
+import {ReportStep} from 'model/ReportStep'
 import {styleUtils} from 'core/theme'
 import {useEffect, useState} from 'react'
 import {Anomaly} from '../../anomalies/Anomaly'
@@ -9,7 +9,7 @@ import {Fixture} from '../../test/fixture'
 import {_Confirmation} from '../Report/Confirmation/Confirmation'
 
 export const PlaygroundConfirmation = () => {
-  const [draft, setDraft] = useState<ReportDraft>(Fixture.genDraftReport(ReportStep.Confirmation) as ReportDraft)
+  const [draft, setDraft] = useState<ReportDraft>(Fixture.genDraftReport('Confirmation') as ReportDraft)
   const [anomaly, setAnomaly] = useState<Anomaly | undefined>()
   const theme = useTheme()
   useEffect(() => {

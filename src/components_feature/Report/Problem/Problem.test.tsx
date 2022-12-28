@@ -9,6 +9,7 @@ import {fnSwitch} from '../../../utils/FnSwitch'
 import {ReportDraft2} from 'model/ReportDraft2'
 import {Fixture} from '../../../test/fixture'
 import {Anomaly, CompanyKinds, ReportTag} from '../../../anomalies/Anomaly'
+import {firstReportStep} from 'model/ReportStep'
 
 class ProblemFixture {
   static readonly simpleSubcategory = Fixture.genSubcategory()
@@ -198,7 +199,7 @@ describe('Problem', () => {
     let onNextCalled = false
     const app = render(
       <DummyStepperProvider
-        currentStep={0}
+        currentStep={firstReportStep}
         onNext={() => {
           onNextCalled = true
         }}
@@ -223,7 +224,7 @@ describe('Problem', () => {
   it('should not display contractual dispute warning', () => {
     let report: undefined | Partial<ReportDraft2>
     const app = render(
-      <DummyStepperProvider currentStep={0}>
+      <DummyStepperProvider currentStep={firstReportStep}>
         <AccessReportFlow
           onReportChange={r => {
             report = r
@@ -243,7 +244,7 @@ describe('Problem', () => {
   it('should not ask ReponseConso when no tag', () => {
     let report: undefined | Partial<ReportDraft2>
     const app = render(
-      <DummyStepperProvider currentStep={0}>
+      <DummyStepperProvider currentStep={firstReportStep}>
         <AccessReportFlow
           onReportChange={r => {
             report = r
@@ -261,7 +262,7 @@ describe('Problem', () => {
   it('should not ask ReponseConso nor contractual dispute when employeeConsumer = true', () => {
     let report: undefined | Partial<ReportDraft2>
     const app = render(
-      <DummyStepperProvider currentStep={0}>
+      <DummyStepperProvider currentStep={firstReportStep}>
         <AccessReportFlow
           onReportChange={r => {
             report = r
@@ -281,7 +282,7 @@ describe('Problem', () => {
   it('should ask ReponseConso when tagged', () => {
     let report: undefined | Partial<ReportDraft2>
     const app = render(
-      <DummyStepperProvider currentStep={0}>
+      <DummyStepperProvider currentStep={firstReportStep}>
         <AccessReportFlow
           onReportChange={r => {
             report = r
@@ -304,7 +305,7 @@ describe('Problem', () => {
   it('should ask add ReponseConso tag when related option is not selected', () => {
     let report: undefined | Partial<ReportDraft2>
     const app = render(
-      <DummyStepperProvider currentStep={0}>
+      <DummyStepperProvider currentStep={firstReportStep}>
         <AccessReportFlow
           onReportChange={r => {
             report = r
