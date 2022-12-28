@@ -110,7 +110,6 @@ export class Fixture {
         consumer: Fixture.genConsumer(),
         contactAgreement: Fixture.genBoolean(),
       }),
-      Acknowledgment: _ => _,
     }
     return reportSteps
       .filter((_, i) => i <= getStepIndex(lastStep))
