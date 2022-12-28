@@ -6,7 +6,6 @@ import {ReportStep} from 'model/ReportStep'
 interface StepperProps {
   initialStep: number
   steps: {
-    name: ReportStep
     label: string
     component: () => JSX.Element
   }[]
@@ -34,7 +33,7 @@ export const ReportFlowStepper = ({steps, initialStep, renderDone, onStepChange}
     onStepChange(currentStep)
   }, [currentStep])
 
-  const DisplayedStep: () => JSX.Element = currentStep > steps.length - 1 ? renderDone : steps[currentStep].component
+  const DisplayedStep: () => JSX.Element = isDone ? renderDone : steps[currentStep].component
 
   const context = {
     currentStep,
