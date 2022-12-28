@@ -4,7 +4,6 @@ import {Confirmation} from 'components_feature/Report/Confirmation/Confirmation'
 import {Consumer} from 'components_feature/Report/Consumer/Consumer'
 import {Details} from 'components_feature/Report/Details/Details'
 import {Problem} from 'components_feature/Report/Problem/Problem'
-import {useI18n} from 'i18n/I18n'
 import {getNextStep, getPreviousStep, getStepIndex, ReportStep, ReportStepOrDone} from 'model/ReportStep'
 import React, {useContext, useEffect, useState} from 'react'
 import {scrollTop} from 'utils/utils'
@@ -28,7 +27,6 @@ export const ReportFlowStepperContext = React.createContext<ReportFlowStepperCon
 
 export const ReportFlowStepper = ({anomaly, initialStep, renderDone, onStepChange}: StepperProps) => {
   const [currentStep, setCurrentStep] = useState<ReportStepOrDone>(initialStep)
-  const {m} = useI18n()
 
   const steps: {
     component: () => JSX.Element
