@@ -3,7 +3,7 @@ import {ReportDraft2} from './ReportDraft2'
 const reportBuildingSteps = ['BuildingProblem', 'BuildingDetails', 'BuildingCompany', 'BuildingConsumer'] as const
 export type ReportBuildingStep = typeof reportBuildingSteps[number]
 
-export const reportSteps = [...reportBuildingSteps, 'Confirmation', 'Acknowledgment'] as const
+export const reportSteps = [...reportBuildingSteps, 'Confirmation'] as const
 export type ReportStep = typeof reportSteps[number]
 
 export function getStepIndex(step: ReportStep): number {
