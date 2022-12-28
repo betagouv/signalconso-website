@@ -11,6 +11,7 @@ import {
   indexToStepOrDone,
   lastReportStep,
   ReportStep,
+  ReportStepOrDone,
   reportSteps,
   stepToIndex,
 } from 'model/ReportStep'
@@ -31,9 +32,6 @@ interface ReportFlowStepperContext {
   next: () => void
   prev: () => void
 }
-
-// 'done' is like a special bonus step, not included in the original list
-export type ReportStepOrDone = ReportStep | 'done'
 
 export const ReportFlowStepperContext = React.createContext<ReportFlowStepperContext>({} as ReportFlowStepperContext)
 
@@ -96,16 +94,9 @@ export const ReportFlowStepper = ({anomaly, initialStep, renderDone, onStepChang
     },
   }
 
-  // tmp, for retrocompat with lower components
-  // TODO go lower and apply the change everywhere
-  const currentStepIndex = stepToIndex(currentStep)
-  function goToWithIndex(idx: number) {
-    setCurrentStep(indexToStepOrDone(idx))
-  }
-
   return (
     <ReportFlowStepperContext.Provider value={context}>
-      <ReportFlowStepperHeader stepsLabels={steps.map(_ => _.label)} currentStep={currentStepIndex} goTo={goToWithIndex} />
+      <ReportFlowStepperHeader stepsLabels={steps.map(_ => _.label)} currentStep={currentStep} goTo={setCurrentStep} />
       <DisplayedStep />
     </ReportFlowStepperContext.Provider>
   )

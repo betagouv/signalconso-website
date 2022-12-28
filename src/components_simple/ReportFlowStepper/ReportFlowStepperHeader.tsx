@@ -4,11 +4,12 @@ import {useWindowWidth} from 'hooks/useWindowWidth'
 import {styleUtils} from 'core/theme'
 import {fnSwitch} from '../../utils/FnSwitch'
 import {SxProps} from '@mui/system'
+import {indexToStepOrDone, ReportStepOrDone, stepToIndex} from 'model/ReportStep'
 
 interface StepperHeaderProps extends BoxProps {
   stepsLabels: string[]
-  currentStep: number
-  goTo?: (index: number) => void
+  currentStep: ReportStepOrDone
+  goTo?: (step: ReportStepOrDone) => void
   stepSize?: number
   stepMargin?: number
   hideLabel?: boolean
@@ -25,7 +26,15 @@ export const ReportFlowStepperHeader = ({
   stepMargin = 8,
   hideLabel,
 }: StepperHeaderProps) => {
-  const isDone = currentStep >= stepsLabels.length
+  // TODO virer l'usage des indexes
+  const currentStepIndex = stepToIndex(currentStep)
+
+  const goToWithIndex =
+    goTo &&
+    ((idx: number) => {
+      goTo(indexToStepOrDone(idx))
+    })
+  const isDone = currentStepIndex >= stepsLabels.length
   const {isMobileWidthMax} = useWindowWidth()
   return (
     <Box
@@ -37,9 +46,13 @@ export const ReportFlowStepperHeader = ({
       }}
     >
       {stepsLabels.map((step, i) => {
-        const state: StepState = currentStep > i ? 'done' : currentStep === i ? 'current' : 'not_done'
+        const state: StepState = currentStepIndex > i ? 'done' : currentStepIndex === i ? 'current' : 'not_done'
         return (
-          <Box key={step} sx={{flex: 1}} onClick={goTo ? () => i < currentStep && !isDone && goTo(i) : undefined}>
+          <Box
+            key={step}
+            sx={{flex: 1}}
+            onClick={goToWithIndex ? () => i < currentStepIndex && !isDone && goToWithIndex(i) : undefined}
+          >
             <Box
               sx={{
                 ...(goTo && {

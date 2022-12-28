@@ -1,4 +1,3 @@
-import {ReportStepOrDone} from 'components_simple/ReportFlowStepper/ReportFlowStepper'
 import {ReportDraft2} from './ReportDraft2'
 
 export const reportSteps = ['BuildingProblem', 'BuildingDetails', 'BuildingCompany', 'BuildingConsumer', 'Confirmation'] as const
@@ -6,6 +5,9 @@ export type ReportStep = typeof reportSteps[number]
 
 export const firstReportStep = reportSteps[0]
 export const lastReportStep = reportSteps[reportSteps.length - 1]
+
+// 'done' is like a special bonus step, not included in the original list
+export type ReportStepOrDone = ReportStep | 'done'
 
 // TMP for retrocompat
 export function getStepIndex(step: ReportStep): number {
@@ -38,6 +40,6 @@ function isBuildingStepDone(r: Partial<ReportDraft2>, step: ReportStep) {
   }
 }
 
-export function findCurrentStepForReport(report: Partial<ReportDraft2>): number {
-  return reportSteps.findIndex(step => !isBuildingStepDone(report, step))
+export function findCurrentStepForReport(report: Partial<ReportDraft2>): ReportStep {
+  return reportSteps.find(step => !isBuildingStepDone(report, step))!
 }

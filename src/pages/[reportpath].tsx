@@ -1,6 +1,6 @@
 import {Box, Icon} from '@mui/material'
 import {undefinedIfNull} from 'utils/utils'
-import {findCurrentStepForReport, reportSteps} from 'model/ReportStep'
+import {findCurrentStepForReport, firstReportStep, reportSteps} from 'model/ReportStep'
 import {siteMap} from 'core/siteMap'
 import {styleUtils} from 'core/theme'
 import {useReportFlowContext} from 'components_feature/Report/ReportFlowContext'
@@ -69,9 +69,8 @@ const NoSSR = dynamic(() => Promise.resolve(ReportFlowInitializer), {ssr: false}
 
 function ReportFlowInitializer({anomaly}: {anomaly: Anomaly}) {
   const _reportFlow = useReportFlowContext()
-  const initialStepIndex =
-    anomaly.category === _reportFlow.reportDraft.category ? findCurrentStepForReport(_reportFlow.reportDraft) : 0
-  const initialStep = reportSteps[initialStepIndex]
+  const initialStep =
+    anomaly.category === _reportFlow.reportDraft.category ? findCurrentStepForReport(_reportFlow.reportDraft) : firstReportStep
   return <ReportFlow initialStep={initialStep} anomaly={anomaly} />
 }
 
