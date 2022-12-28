@@ -25,8 +25,7 @@ export const ReportFlowStepperContext = React.createContext<ReportFlowStepperCon
   currentStep: 0,
 } as ReportFlowStepperContext)
 
-// the react.memo is probably useless ?
-export const ReportFlowStepper = React.memo(({steps, initialStep, renderDone, onStepChange}: StepperProps) => {
+export const ReportFlowStepper = ({steps, initialStep, renderDone, onStepChange}: StepperProps) => {
   const [currentStep, setCurrentStep] = useState(initialStep)
   const maxStep = steps.length + 1
   const isDone = currentStep >= steps.length
@@ -61,7 +60,7 @@ export const ReportFlowStepper = React.memo(({steps, initialStep, renderDone, on
       <DisplayedStep />
     </ReportFlowStepperContext.Provider>
   )
-})
+}
 
 export const useReportFlowStepperContext = () => {
   return useContext<ReportFlowStepperContext>(ReportFlowStepperContext)
