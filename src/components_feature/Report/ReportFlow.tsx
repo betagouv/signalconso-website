@@ -42,27 +42,22 @@ export const ReportFlow = React.memo(({initialStep, anomaly}: Props) => {
       initialStep={initialStep}
       steps={[
         {
-          name: 'BuildingProblem',
           label: m.step_problem,
           component: () => <Problem anomaly={anomaly} />,
         },
         {
-          name: 'BuildingDetails',
           label: m.step_description,
           component: () => <Details />,
         },
         {
-          name: 'BuildingCompany',
           label: m.step_company,
           component: () => <Company />,
         },
         {
-          name: 'BuildingConsumer',
           label: m.step_consumer,
           component: () => <Consumer />,
         },
         {
-          name: 'Confirmation',
           label: m.step_confirm,
           component: () => <Confirmation />,
         },
