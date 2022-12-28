@@ -40,27 +40,21 @@ export const ReportFlowStepper = ({anomaly, initialStep, renderDone, onStepChang
   const {m} = useI18n()
 
   const steps: {
-    label: string
     component: () => JSX.Element
   }[] = [
     {
-      label: m.step_problem,
       component: () => <Problem anomaly={anomaly} />,
     },
     {
-      label: m.step_description,
       component: () => <Details />,
     },
     {
-      label: m.step_company,
       component: () => <Company />,
     },
     {
-      label: m.step_consumer,
       component: () => <Consumer />,
     },
     {
-      label: m.step_confirm,
       component: () => <Confirmation />,
     },
   ]
@@ -96,7 +90,7 @@ export const ReportFlowStepper = ({anomaly, initialStep, renderDone, onStepChang
 
   return (
     <ReportFlowStepperContext.Provider value={context}>
-      <ReportFlowStepperHeader stepsLabels={steps.map(_ => _.label)} currentStep={currentStep} goTo={setCurrentStep} />
+      <ReportFlowStepperHeader currentStep={currentStep} goTo={setCurrentStep} />
       <DisplayedStep />
     </ReportFlowStepperContext.Provider>
   )
