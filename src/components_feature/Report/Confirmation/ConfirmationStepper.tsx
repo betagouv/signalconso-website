@@ -6,6 +6,7 @@ import {ScButton} from 'components_simple/Button/Button'
 import {useI18n} from 'i18n/I18n'
 import {useReportFlowContext} from '../ReportFlowContext'
 import {useReportFlowStepperContext} from 'components_simple/ReportFlowStepper/ReportFlowStepper'
+import {indexToStepOrDone} from 'model/ReportStep'
 
 interface ConfirmationStepperProps {
   children: Array<ReactElement<ConfirmationStepProps>>
@@ -39,7 +40,9 @@ export const ConfirmationStep = ({title, children, index}: ConfirmationStepProps
             variant="outlined"
             icon="edit"
             color="primary"
-            onClick={() => _stepper.goTo(index!)}
+            onClick={() => {
+              _stepper.goTo(indexToStepOrDone(index!))
+            }}
           >
             {m.edit}
           </ScButton>
