@@ -66,19 +66,13 @@ const AnomalyPage = ({reportPath}: {reportPath: string}) => {
   )
 }
 // https://nextjs.org/docs/advanced-features/dynamic-import#with-no-ssr
-const NoSSR = dynamic(
-  () =>
-    Promise.resolve(({anomaly}: {anomaly: Anomaly}) => {
-      const _reportFlow = useReportFlowContext()
-      const initialStep = useMemo(() => {
-        if (anomaly.category === _reportFlow.reportDraft.category) {
-          return ReportStepHelper.reportCurrentStep(_reportFlow.reportDraft)
-        }
-        return 0
-      }, [])
-      return <ReportFlow initialStep={initialStep} anomaly={anomaly} />
-    }),
-  {ssr: false},
-)
+const NoSSR = dynamic(() => Promise.resolve(ReportFlowInitializer), {ssr: false})
+
+function ReportFlowInitializer({anomaly}: {anomaly: Anomaly}) {
+  const _reportFlow = useReportFlowContext()
+  const initialStep =
+    anomaly.category === _reportFlow.reportDraft.category ? ReportStepHelper.reportCurrentStep(_reportFlow.reportDraft) : 0
+  return <ReportFlow initialStep={initialStep} anomaly={anomaly} />
+}
 
 export default AnomalyPage
