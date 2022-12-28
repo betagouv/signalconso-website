@@ -10,12 +10,12 @@ export const lastReportStep = reportSteps[reportSteps.length - 1]
 export type ReportStepOrDone = ReportStep | 'Done'
 
 export function getNextStep(step: ReportStep): ReportStepOrDone {
-  return reportSteps[getStepIndex(step) + 1]
+  return indexToStepOrDone(getStepIndex(step) + 1)
 }
 
 export function getPreviousStep(step: ReportStep): ReportStepOrDone {
   if (step === firstReportStep) return step
-  return reportSteps[getStepIndex(step) - 1]
+  return indexToStepOrDone(getStepIndex(step) - 1)
 }
 
 export function getStepIndex(step: ReportStep): number {
@@ -54,7 +54,7 @@ function isBuildingStepDone(r: Partial<ReportDraft2>, step: ReportStep) {
     case 'BuildingConsumer':
       return !!r.consumer?.email && !!r.consumer?.firstName && !!r.consumer?.lastName
     case 'Confirmation':
-      // if all other steps are done, we want to go to Confirmation
+      // if all other steps are completed, we want to go to Confirmation
       return false
   }
 }
