@@ -46,7 +46,6 @@ export const ReportStartedAlert = () => {
               currentStep={currentStep}
               stepSize={26}
               stepMargin={4}
-              stepsLabels={[m.step_problem, m.step_description, m.step_company, m.step_consumer, m.step_confirm]}
             />
             <Box sx={{display: 'flex', justifyContent: 'flex-end', mt: 2}}>
               <ScButton size="small" color="error" sx={{mr: 1}} onClick={_report.clearReportDraft}>

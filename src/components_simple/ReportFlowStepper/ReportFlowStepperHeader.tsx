@@ -5,9 +5,9 @@ import {styleUtils} from 'core/theme'
 import {fnSwitch} from '../../utils/FnSwitch'
 import {SxProps} from '@mui/system'
 import {indexToStepOrDone, ReportStepOrDone, stepToIndex} from 'model/ReportStep'
+import {useI18n} from 'i18n/I18n'
 
 interface StepperHeaderProps extends BoxProps {
-  stepsLabels: string[]
   currentStep: ReportStepOrDone
   goTo?: (step: ReportStepOrDone) => void
   stepSize?: number
@@ -19,13 +19,13 @@ type StepState = 'done' | 'current' | 'not_done'
 
 export const ReportFlowStepperHeader = ({
   sx,
-  stepsLabels,
   currentStep,
   goTo,
   stepSize = 32,
   stepMargin = 8,
   hideLabel,
 }: StepperHeaderProps) => {
+  const {m} = useI18n()
   // TODO virer l'usage des indexes
   const currentStepIndex = stepToIndex(currentStep)
 
@@ -34,6 +34,7 @@ export const ReportFlowStepperHeader = ({
     ((idx: number) => {
       goTo(indexToStepOrDone(idx))
     })
+  const stepsLabels = [m.step_problem, m.step_description, m.step_company, m.step_consumer, m.step_confirm]
   const isDone = currentStepIndex >= stepsLabels.length
   const {isMobileWidthMax} = useWindowWidth()
   return (
