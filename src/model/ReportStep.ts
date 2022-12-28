@@ -15,11 +15,6 @@ export function getStepIndex(step: ReportStep): number {
 }
 
 // TMP for retrocompat
-export function stepToIndex(step: ReportStepOrDone): number {
-  return step === 'Done' ? reportSteps.length : getStepIndex(step)
-}
-
-// TMP for retrocompat
 export function indexToStepOrDone(index: number): ReportStepOrDone {
   return index >= reportSteps.length ? 'Done' : reportSteps[index]
 }

@@ -1,11 +1,10 @@
-import React from 'react'
 import {alpha, Box, BoxProps, Theme} from '@mui/material'
-import {useWindowWidth} from 'hooks/useWindowWidth'
-import {styleUtils} from 'core/theme'
-import {fnSwitch} from '../../utils/FnSwitch'
 import {SxProps} from '@mui/system'
-import {indexToStepOrDone, ReportStepOrDone, reportSteps, stepToIndex} from 'model/ReportStep'
+import {styleUtils} from 'core/theme'
+import {useWindowWidth} from 'hooks/useWindowWidth'
 import {useI18n} from 'i18n/I18n'
+import {getStepIndex, ReportStep, ReportStepOrDone, reportSteps} from 'model/ReportStep'
+import {fnSwitch} from '../../utils/FnSwitch'
 
 interface StepperHeaderProps extends BoxProps {
   currentStep: ReportStepOrDone
@@ -26,12 +25,25 @@ export const ReportFlowStepperHeader = ({
   hideLabel,
 }: StepperHeaderProps) => {
   const {m} = useI18n()
-  // TODO virer l'usage des indexes
 
-  const stepsLabels = [m.step_problem, m.step_description, m.step_company, m.step_consumer, m.step_confirm]
   const isDone = currentStep === 'Done'
   const {isMobileWidthMax} = useWindowWidth()
-  const currentStepIndex = stepToIndex(currentStep)
+
+  function getStepStatus(step: ReportStep): StepStatus {
+    if (step === currentStep) {
+      return 'currentStep'
+    }
+    if (currentStep === 'Done' || getStepIndex(step) < getStepIndex(currentStep)) {
+      return 'pastStep'
+    }
+    return 'futureStep'
+  }
+
+  function getStepLabel(step: ReportStep) {
+    const stepsLabels = [m.step_problem, m.step_description, m.step_company, m.step_consumer, m.step_confirm]
+    return stepsLabels[getStepIndex(step)]
+  }
+
   return (
     <Box
       sx={{
@@ -41,9 +53,9 @@ export const ReportFlowStepperHeader = ({
         ...sx,
       }}
     >
-      {reportSteps.map((step, i) => {
-        const stepLabel = stepsLabels[i]
-        const stepStatus: StepStatus = currentStepIndex > i ? 'pastStep' : currentStepIndex === i ? 'currentStep' : 'futureStep'
+      {reportSteps.map((step, stepIndex) => {
+        const stepLabel = getStepLabel(step)
+        const stepStatus = getStepStatus(step)
         const onClick = goTo && stepStatus === 'pastStep' && !isDone ? () => goTo(step) : undefined
         return (
           <Box key={stepLabel} sx={{flex: 1}} onClick={onClick}>
@@ -59,7 +71,7 @@ export const ReportFlowStepperHeader = ({
                 flexDirection: 'column',
               }}
             >
-              {i > 0 && (
+              {stepIndex > 0 && (
                 <Box
                   sx={{
                     display: 'block',
@@ -109,7 +121,7 @@ export const ReportFlowStepperHeader = ({
                   }),
                 }}
               >
-                {i + 1}
+                {stepIndex + 1}
               </Box>
               {!hideLabel && !isMobileWidthMax && (
                 <Box

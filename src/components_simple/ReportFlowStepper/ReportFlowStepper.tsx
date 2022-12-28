@@ -5,16 +5,7 @@ import {Consumer} from 'components_feature/Report/Consumer/Consumer'
 import {Details} from 'components_feature/Report/Details/Details'
 import {Problem} from 'components_feature/Report/Problem/Problem'
 import {useI18n} from 'i18n/I18n'
-import {
-  firstReportStep,
-  getStepIndex,
-  indexToStepOrDone,
-  lastReportStep,
-  ReportStep,
-  ReportStepOrDone,
-  reportSteps,
-  stepToIndex,
-} from 'model/ReportStep'
+import {firstReportStep, getStepIndex, lastReportStep, ReportStep, ReportStepOrDone, reportSteps} from 'model/ReportStep'
 import React, {useContext, useEffect, useState} from 'react'
 import {scrollTop} from 'utils/utils'
 import {ReportFlowStepperHeader} from './ReportFlowStepperHeader'
