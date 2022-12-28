@@ -1,17 +1,12 @@
-import {ReportFlowStepper} from 'components_simple/ReportFlowStepper/ReportFlowStepper'
-import {Problem} from './Problem/Problem'
-import {Details} from './Details/Details'
-import {Company} from './Company/Company'
-import {useI18n} from 'i18n/I18n'
-import {Consumer} from './Consumer/Consumer'
-import {Confirmation} from './Confirmation/Confirmation'
-import React from 'react'
-import {Acknowledgement} from './Acknowledgement/Acknowledgement'
 import {useAnalyticContext} from 'analytic/AnalyticContext'
+import {ReportFlowStepper} from 'components_simple/ReportFlowStepper/ReportFlowStepper'
+import {getStepIndex, ReportStep, reportSteps} from 'model/ReportStep'
+import React from 'react'
 import {Anomaly} from '../../anomalies/Anomaly'
+import {Acknowledgement} from './Acknowledgement/Acknowledgement'
 
 interface Props {
-  initialStep: number
+  initialStep: ReportStep
   anomaly: Anomaly
 }
 
@@ -40,7 +35,8 @@ export const ReportFlow = React.memo(({initialStep, anomaly}: Props) => {
     <ReportFlowStepper
       initialStep={initialStep}
       anomaly={anomaly}
-      onStepChange={index => {
+      onStepChange={step => {
+        const index = step === 'done' ? reportSteps.length : getStepIndex(step)
         const path = Object.values(ReportStepPathInAnalytics)[index]
         const title = Object.values(ReportStepTitleInAnalytics)[index]
         _analytics.trackPage(`/${anomaly.path}/${path}`, title)

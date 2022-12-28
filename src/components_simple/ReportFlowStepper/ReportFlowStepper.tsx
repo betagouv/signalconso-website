@@ -5,30 +5,40 @@ import {Consumer} from 'components_feature/Report/Consumer/Consumer'
 import {Details} from 'components_feature/Report/Details/Details'
 import {Problem} from 'components_feature/Report/Problem/Problem'
 import {useI18n} from 'i18n/I18n'
+import {
+  firstReportStep,
+  getStepIndex,
+  indexToStepOrDone,
+  lastReportStep,
+  ReportStep,
+  reportSteps,
+  stepToIndex,
+} from 'model/ReportStep'
 import React, {useContext, useEffect, useState} from 'react'
 import {scrollTop} from 'utils/utils'
 import {ReportFlowStepperHeader} from './ReportFlowStepperHeader'
 
 interface StepperProps {
-  initialStep: number
+  initialStep: ReportStep
   anomaly: Anomaly
-  onStepChange: (index: number) => void
+  onStepChange: (step: ReportStepOrDone) => void
   renderDone: () => JSX.Element
 }
 
 interface ReportFlowStepperContext {
-  currentStep: number
-  goTo: (i: number) => void
+  currentStep: ReportStepOrDone
+  goTo: (step: ReportStepOrDone) => void
   next: () => void
   prev: () => void
 }
 
-export const ReportFlowStepperContext = React.createContext<ReportFlowStepperContext>({
-  currentStep: 0,
-} as ReportFlowStepperContext)
+// 'done' is like a special bonus step, not included in the original list
+export type ReportStepOrDone = ReportStep | 'done'
+
+export const ReportFlowStepperContext = React.createContext<ReportFlowStepperContext>({} as ReportFlowStepperContext)
 
 export const ReportFlowStepper = ({anomaly, initialStep, renderDone, onStepChange}: StepperProps) => {
-  const [currentStep, setCurrentStep] = useState(initialStep)
+  const [currentStep, setCurrentStep] = useState<ReportStepOrDone>(initialStep)
   const {m} = useI18n()
 
   const steps: {
@@ -57,36 +67,45 @@ export const ReportFlowStepper = ({anomaly, initialStep, renderDone, onStepChang
     },
   ]
 
-  const maxStep = steps.length + 1
-  const isDone = currentStep >= steps.length
+  const isDone = currentStep === 'done'
 
   useEffect(() => {
     onStepChange(currentStep)
   }, [currentStep])
 
-  const DisplayedStep: () => JSX.Element = isDone ? renderDone : steps[currentStep].component
+  const DisplayedStep: () => JSX.Element = isDone ? renderDone : steps[getStepIndex(currentStep)].component
 
   const context = {
     currentStep,
-    goTo: (i: number) => {
+    goTo: (step: ReportStepOrDone) => {
       if (isDone) return
-      setCurrentStep(_ => Math.max(Math.min(i, maxStep), 0))
+      setCurrentStep(step)
       scrollTop()
     },
     next: () => {
       if (isDone) return
-      setCurrentStep(_ => Math.min(_ + 1, maxStep))
+      const newStep = currentStep === lastReportStep ? 'done' : reportSteps[getStepIndex(currentStep) + 1]
+      setCurrentStep(newStep)
       scrollTop()
     },
     prev: () => {
       if (isDone) return
-      setCurrentStep(_ => Math.max(_ - 1, 0))
+      const newStep = currentStep === firstReportStep ? firstReportStep : reportSteps[getStepIndex(currentStep) - 1]
+      setCurrentStep(newStep)
       scrollTop()
     },
   }
+
+  // tmp, for retrocompat with lower components
+  // TODO go lower and apply the change everywhere
+  const currentStepIndex = stepToIndex(currentStep)
+  function goToWithIndex(idx: number) {
+    setCurrentStep(indexToStepOrDone(idx))
+  }
+
   return (
     <ReportFlowStepperContext.Provider value={context}>
-      <ReportFlowStepperHeader stepsLabels={steps.map(_ => _.label)} currentStep={currentStep} goTo={setCurrentStep} />
+      <ReportFlowStepperHeader stepsLabels={steps.map(_ => _.label)} currentStep={currentStepIndex} goTo={goToWithIndex} />
       <DisplayedStep />
     </ReportFlowStepperContext.Provider>
   )

@@ -7,7 +7,7 @@ import {ReportFlowProvider, useReportFlowContext} from 'components_feature/Repor
 import {Provide} from 'components_simple/Provide/Provide'
 import {ApiClientsProvider} from 'context/ApiClientsContext'
 import {fr} from 'i18n/localization/fr'
-import {ReportFlowStepperContext} from 'components_simple/ReportFlowStepper/ReportFlowStepper'
+import {ReportFlowStepperContext, ReportStepOrDone} from 'components_simple/ReportFlowStepper/ReportFlowStepper'
 import {ReportDraft2} from 'model/ReportDraft2'
 import {DeepPartial} from '../utils/utils'
 import {AnalyticProvider} from 'analytic/AnalyticContext'
@@ -52,8 +52,8 @@ export const DummyStepperProvider = ({
   onPrev,
 }: {
   children: ReactNode
-  currentStep: number
-  onGoTo?: (i: number) => void
+  currentStep: ReportStepOrDone
+  onGoTo?: (step: ReportStepOrDone) => void
   onNext?: () => void
   onPrev?: () => void
 }) => {

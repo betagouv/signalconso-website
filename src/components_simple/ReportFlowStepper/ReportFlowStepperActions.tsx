@@ -1,5 +1,6 @@
 import {Box} from '@mui/material'
 import {useI18n} from 'i18n/I18n'
+import {firstReportStep} from 'model/ReportStep'
 import {ScButton} from '../Button/Button'
 import {useReportFlowStepperContext} from './ReportFlowStepper'
 import {StepperActionsNext} from './StepperActionsNext'
@@ -29,7 +30,7 @@ export const ReportFlowStepperActions = ({
   const _stepper = useReportFlowStepperContext()
   return (
     <Box sx={{display: 'flex', alignItems: 'center', justifyContent: 'space-between', mt: 3}}>
-      {_stepper.currentStep > 0 && !hidePrev && (
+      {_stepper.currentStep !== firstReportStep && !hidePrev && (
         <ScButton
           loading={loadingPrev}
           sx={{marginRight: 'auto'}}
