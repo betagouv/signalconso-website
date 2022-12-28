@@ -1,40 +1,34 @@
 import {ReportDraft2} from './ReportDraft2'
 
-export enum ReportStep {
-  Problem = 'problem',
-  Details = 'details',
-  Company = 'company',
-  Consumer = 'consumer',
-  Confirmation = 'confirmation',
-  Acknowledgment = 'acknowledgment',
-}
+const reportBuildingSteps = ['BuildingProblem', 'BuildingDetails', 'BuildingCompany', 'BuildingConsumer'] as const
+export type ReportBuildingStep = typeof reportBuildingSteps[number]
 
-const buildingSteps = [ReportStep.Problem, ReportStep.Details, ReportStep.Company, ReportStep.Consumer] as const
-
-export const reportStepsOrdered = [...buildingSteps, ReportStep.Confirmation, ReportStep.Acknowledgment]
+export const reportSteps = [...reportBuildingSteps, 'Confirmation', 'Acknowledgment'] as const
+export type ReportStep = typeof reportSteps[number]
 
 export function getStepIndex(step: ReportStep): number {
-  return reportStepsOrdered.indexOf(step)
+  return reportSteps.indexOf(step)
 }
 
-function isStepDone(
-  r: Partial<ReportDraft2>,
-  step: ReportStep.Problem | ReportStep.Details | ReportStep.Company | ReportStep.Consumer,
-) {
+function isBuildingStepDone(r: Partial<ReportDraft2>, step: ReportBuildingStep) {
   switch (step) {
-    case ReportStep.Problem:
+    case 'BuildingProblem':
       return !!r.category && !!r.subcategories && !!r.contractualDispute !== undefined && r.employeeConsumer !== undefined
-    case ReportStep.Details:
+    case 'BuildingDetails':
       return !!r.details
-    case ReportStep.Company:
+    case 'BuildingCompany':
       return !!r.companyDraft?.siret || !!r.companyDraft?.address.postalCode
-    case ReportStep.Consumer:
+    case 'BuildingConsumer':
       return !!r.consumer?.email && !!r.consumer?.firstName && !!r.consumer?.lastName
   }
 }
 
 export function findCurrentStepForReport(report: Partial<ReportDraft2>): number {
-  const index = buildingSteps.findIndex(step => !isStepDone(report, step))
-  const res = index > -1 ? index : buildingSteps.length
+  const index = reportBuildingSteps.findIndex(step => !isBuildingStepDone(report, step))
+  const res =
+    index > -1
+      ? index
+      : // if all building steps are done, we can go to Confirmation
+        reportBuildingSteps.length
   return res
 }

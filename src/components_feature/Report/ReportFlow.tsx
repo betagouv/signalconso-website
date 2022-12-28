@@ -7,7 +7,6 @@ import {Consumer} from './Consumer/Consumer'
 import {Confirmation} from './Confirmation/Confirmation'
 import React from 'react'
 import {Acknowledgement} from './Acknowledgement/Acknowledgement'
-import {ReportStep} from 'model/ReportStep'
 import {useAnalyticContext} from 'analytic/AnalyticContext'
 import {Anomaly} from '../../anomalies/Anomaly'
 
@@ -43,27 +42,27 @@ export const ReportFlow = React.memo(({initialStep, anomaly}: Props) => {
       initialStep={initialStep}
       steps={[
         {
-          name: ReportStep.Problem,
+          name: 'BuildingProblem',
           label: m.step_problem,
           component: () => <Problem anomaly={anomaly} />,
         },
         {
-          name: ReportStep.Details,
+          name: 'BuildingDetails',
           label: m.step_description,
           component: () => <Details />,
         },
         {
-          name: ReportStep.Company,
+          name: 'BuildingCompany',
           label: m.step_company,
           component: () => <Company />,
         },
         {
-          name: ReportStep.Consumer,
+          name: 'BuildingConsumer',
           label: m.step_consumer,
           component: () => <Consumer />,
         },
         {
-          name: ReportStep.Confirmation,
+          name: 'Confirmation',
           label: m.step_confirm,
           component: () => <Confirmation />,
         },

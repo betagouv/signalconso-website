@@ -1,11 +1,12 @@
 import {scrollTop} from 'utils/utils'
 import React, {ReactNode, useContext, useEffect, useMemo, useState} from 'react'
 import {ReportFlowStepperHeader} from './ReportFlowStepperHeader'
+import {ReportStep} from 'model/ReportStep'
 
 interface StepperProps {
   initialStep: number
   steps: {
-    name: string
+    name: ReportStep
     label: string
     component: () => JSX.Element
   }[]

@@ -1,12 +1,12 @@
-import {getStepIndex, ReportStep, reportStepsOrdered} from 'model/ReportStep'
-import randomstring from 'randomstring'
-import {CreatedReport} from '../model/CreatedReport'
-import {Company, CompanySearchResult, WebsiteCompanySearchResult} from '../model/Company'
-import {FileOrigin} from '../model/UploadedFile'
-import {ReportDraft, ReportDraftConsumer} from '../model/ReportDraft'
-import {Information, ReportTag, reportTags, Subcategory} from '../anomalies/Anomaly'
-import {Address} from '../model/Address'
 import {allAnomalies} from 'anomalies/Anomalies'
+import {getStepIndex, ReportStep, reportSteps} from 'model/ReportStep'
+import randomstring from 'randomstring'
+import {Information, reportTags, Subcategory} from '../anomalies/Anomaly'
+import {Address} from '../model/Address'
+import {Company, CompanySearchResult, WebsiteCompanySearchResult} from '../model/Company'
+import {CreatedReport} from '../model/CreatedReport'
+import {ReportDraft, ReportDraftConsumer} from '../model/ReportDraft'
+import {FileOrigin} from '../model/UploadedFile'
 
 export class Fixture {
   private static readonly lastNames = ['Doe', 'Durand', 'Dupont']
@@ -80,15 +80,15 @@ export class Fixture {
 
   static readonly genDraftReport = (lastStep: ReportStep): Partial<ReportDraft> => {
     const stepOrder: {[key in ReportStep]: (_: Partial<ReportDraft>) => Partial<ReportDraft>} = {
-      [ReportStep.Problem]: _ => ({
+      BuildingProblem: _ => ({
         ..._,
         category: Fixture.oneOf(allAnomalies.map(_ => _.category)),
       }),
-      [ReportStep.Details]: _ => ({
+      BuildingDetails: _ => ({
         ..._,
         subcategories: [Fixture.genSubcategory(), Fixture.genSubcategory()],
       }),
-      [ReportStep.Company]: _ => ({
+      BuildingCompany: _ => ({
         ..._,
         details: Fixture.genDetails(),
         employeeConsumer: Fixture.genBoolean(),
@@ -101,18 +101,18 @@ export class Fixture {
           },
         ],
       }),
-      [ReportStep.Consumer]: _ => ({
+      BuildingConsumer: _ => ({
         ..._,
         companyDraft: Fixture.genCompany(),
       }),
-      [ReportStep.Confirmation]: _ => ({
+      Confirmation: _ => ({
         ..._,
         consumer: Fixture.genConsumer(),
         contactAgreement: Fixture.genBoolean(),
       }),
-      [ReportStep.Acknowledgment]: _ => _,
+      Acknowledgment: _ => _,
     }
-    return reportStepsOrdered
+    return reportSteps
       .filter((_, i) => i <= getStepIndex(lastStep))
       .reduce((draft: Partial<ReportDraft>, step: ReportStep) => {
         return stepOrder[step](draft)
