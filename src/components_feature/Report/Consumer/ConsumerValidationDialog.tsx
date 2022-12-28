@@ -105,8 +105,12 @@ export const ConsumerValidationDialog = ({loading, open, consumerEmail, onClose,
           color={isEmailValid ? 'success' : 'primary'}
           onClick={onSubmitButtonClick}
           loading={_validateEmail.loading}
-          loadingPosition="start"
-          startIcon={isEmailValid ? <Icon>check_circle</Icon> : undefined}
+          {...(isEmailValid
+            ? {
+                startIcon: <Icon>check_circle</Icon>,
+                loadingPosition: 'start',
+              }
+            : null)}
           variant="contained"
         >
           {isEmailValid ? m.validated : m.verify}
