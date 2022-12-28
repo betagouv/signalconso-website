@@ -1,6 +1,6 @@
 import {useTheme} from '@mui/material'
 import {allAnomalies} from 'anomalies/Anomalies'
-import {ReportStep} from 'core/reportStep'
+import {ReportStep} from 'model/ReportStep'
 import {styleUtils} from 'core/theme'
 import {useEffect, useState} from 'react'
 import {Anomaly} from '../../anomalies/Anomaly'

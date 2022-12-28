@@ -1,4 +1,4 @@
-import {ReportStep, ReportStepHelper} from 'core/reportStep'
+import {getStepIndex, ReportStep, reportStepsOrdered} from 'model/ReportStep'
 import randomstring from 'randomstring'
 import {CreatedReport} from '../model/CreatedReport'
 import {Company, CompanySearchResult, WebsiteCompanySearchResult} from '../model/Company'
@@ -112,8 +112,8 @@ export class Fixture {
       }),
       [ReportStep.Acknowledgment]: _ => _,
     }
-    return ReportStepHelper.reportStepOrdered
-      .filter((_, i) => i <= ReportStepHelper.getIndexByStep(lastStep))
+    return reportStepsOrdered
+      .filter((_, i) => i <= getStepIndex(lastStep))
       .reduce((draft: Partial<ReportDraft>, step: ReportStep) => {
         return stepOrder[step](draft)
       }, {})
