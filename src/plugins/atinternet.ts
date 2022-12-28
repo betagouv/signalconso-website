@@ -1,4 +1,10 @@
-declare const ATInternet: any
+import {appConfig} from 'core/appConfig'
+
+declare global {
+  interface Window {
+    ATInternet: any
+  }
+}
 
 export interface ATIPageInfo {
   name: string
@@ -14,7 +20,11 @@ export class Atinternet {
 
   static readonly init = (): undefined | Atinternet => {
     try {
-      const atTag = new ATInternet.Tracker.Tag()
+      if (!appConfig.atInternet_siteId) {
+        console.warn(`ATInternet not configured, disabled`)
+        return
+      }
+      const atTag = new window.ATInternet.Tracker.Tag()
       atTag.privacy.setVisitorMode('cnil', 'exempt')
       return new Atinternet(atTag)
     } catch (e) {
