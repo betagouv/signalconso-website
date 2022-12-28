@@ -6,13 +6,13 @@ import {useI18n} from 'i18n/I18n'
 import {Txt} from '../../alexlibs/mui-extension/Txt/Txt'
 import {ScButton} from 'components_simple/Button/Button'
 import Link from 'next/link'
-import {ReportStepHelper} from 'core/reportStep'
+import {findCurrentStepForReport} from 'model/ReportStep'
 import {ReportFlowStepperHeader} from 'components_simple/ReportFlowStepper/ReportFlowStepperHeader'
 
 export const ReportStartedAlert = () => {
   const _report = useReportFlowContext()
   const hasStoredReport = useMemo(() => !!_report.reportDraft.anomaly, [_report.reportDraft])
-  const currentStep = useMemo(() => ReportStepHelper.reportCurrentStep(_report.reportDraft), [_report.reportDraft])
+  const currentStep = useMemo(() => findCurrentStepForReport(_report.reportDraft), [_report.reportDraft])
   const {m} = useI18n()
   if (hasStoredReport && _report.reportDraft.anomaly) {
     return (

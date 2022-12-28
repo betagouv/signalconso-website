@@ -1,6 +1,6 @@
 import {Box, Icon} from '@mui/material'
 import {undefinedIfNull} from 'utils/utils'
-import {ReportStepHelper} from 'core/reportStep'
+import {findCurrentStepForReport} from 'model/ReportStep'
 import {siteMap} from 'core/siteMap'
 import {styleUtils} from 'core/theme'
 import {useReportFlowContext} from 'components_feature/Report/ReportFlowContext'
@@ -8,7 +8,6 @@ import {GetStaticPaths, GetStaticProps} from 'next'
 import dynamic from 'next/dynamic'
 import Head from 'next/head'
 import Link from 'next/link'
-import {useMemo} from 'react'
 import {Page} from 'components_simple/Page/Page'
 import {IconBtn} from '../alexlibs/mui-extension/IconBtn/IconBtn'
 import {allAnomalies} from '../anomalies/Anomalies'
@@ -71,7 +70,7 @@ const NoSSR = dynamic(() => Promise.resolve(ReportFlowInitializer), {ssr: false}
 function ReportFlowInitializer({anomaly}: {anomaly: Anomaly}) {
   const _reportFlow = useReportFlowContext()
   const initialStep =
-    anomaly.category === _reportFlow.reportDraft.category ? ReportStepHelper.reportCurrentStep(_reportFlow.reportDraft) : 0
+    anomaly.category === _reportFlow.reportDraft.category ? findCurrentStepForReport(_reportFlow.reportDraft) : 0
   return <ReportFlow initialStep={initialStep} anomaly={anomaly} />
 }
 

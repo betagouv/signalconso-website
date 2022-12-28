@@ -7,7 +7,7 @@ import {Consumer} from './Consumer/Consumer'
 import {Confirmation} from './Confirmation/Confirmation'
 import React from 'react'
 import {Acknowledgement} from './Acknowledgement/Acknowledgement'
-import {ReportStep} from 'core/reportStep'
+import {ReportStep} from 'model/ReportStep'
 import {useAnalyticContext} from 'analytic/AnalyticContext'
 import {Anomaly} from '../../anomalies/Anomaly'
 
