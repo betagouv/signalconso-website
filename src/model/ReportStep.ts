@@ -9,29 +9,32 @@ export enum ReportStep {
   Acknowledgment = 'acknowledgment',
 }
 
-export const reportStepsOrdered = [
-  ReportStep.Problem,
-  ReportStep.Details,
-  ReportStep.Company,
-  ReportStep.Consumer,
-  ReportStep.Confirmation,
-  ReportStep.Acknowledgment,
-]
+const buildingSteps = [ReportStep.Problem, ReportStep.Details, ReportStep.Company, ReportStep.Consumer] as const
+
+export const reportStepsOrdered = [...buildingSteps, ReportStep.Confirmation, ReportStep.Acknowledgment]
 
 export function getStepIndex(step: ReportStep): number {
   return reportStepsOrdered.indexOf(step)
 }
-function getWhichStepsAreDone(r: Partial<ReportDraft2>) {
-  return {
-    problem: !!r.category && !!r.subcategories && !!r.contractualDispute !== undefined && r.employeeConsumer !== undefined,
-    description: !!r.details,
-    company: !!r.companyDraft?.siret || !!r.companyDraft?.address.postalCode,
-    consumer: !!r.consumer?.email && !!r.consumer?.firstName && !!r.consumer?.lastName,
+
+function isStepDone(
+  r: Partial<ReportDraft2>,
+  step: ReportStep.Problem | ReportStep.Details | ReportStep.Company | ReportStep.Consumer,
+) {
+  switch (step) {
+    case ReportStep.Problem:
+      return !!r.category && !!r.subcategories && !!r.contractualDispute !== undefined && r.employeeConsumer !== undefined
+    case ReportStep.Details:
+      return !!r.details
+    case ReportStep.Company:
+      return !!r.companyDraft?.siret || !!r.companyDraft?.address.postalCode
+    case ReportStep.Consumer:
+      return !!r.consumer?.email && !!r.consumer?.firstName && !!r.consumer?.lastName
   }
 }
 
 export function findCurrentStepForReport(report: Partial<ReportDraft2>): number {
-  const values = Object.values(getWhichStepsAreDone(report))
-  const index = values.findIndex(_ => !_)
-  return index > -1 ? index : values.length
+  const index = buildingSteps.findIndex(step => !isStepDone(report, step))
+  const res = index > -1 ? index : buildingSteps.length
+  return res
 }
