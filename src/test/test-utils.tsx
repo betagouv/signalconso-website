@@ -7,12 +7,13 @@ import {ReportFlowProvider, useReportFlowContext} from 'components_feature/Repor
 import {Provide} from 'components_simple/Provide/Provide'
 import {ApiClientsProvider} from 'context/ApiClientsContext'
 import {fr} from 'i18n/localization/fr'
-import {ReportFlowStepperContext, ReportStepOrDone} from 'components_simple/ReportFlowStepper/ReportFlowStepper'
+import {ReportFlowStepperContext} from 'components_simple/ReportFlowStepper/ReportFlowStepper'
 import {ReportDraft2} from 'model/ReportDraft2'
 import {DeepPartial} from '../utils/utils'
 import {AnalyticProvider} from 'analytic/AnalyticContext'
 import {SignalConsoApiClient} from '../clients/SignalConsoApiClient'
 import {CompanyPublicClient} from '../clients/CompanyPublicClient'
+import {ReportStepOrDone} from 'model/ReportStep'
 
 const AllTheProviders =
   (options?: Options) =>
