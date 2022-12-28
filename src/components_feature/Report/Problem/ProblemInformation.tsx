@@ -1,23 +1,23 @@
-import {Animate} from 'components_simple/Animate/Animate'
-import {Panel, PanelBody} from 'components_simple/Panel/Panel'
-import {useI18n} from 'i18n/I18n'
-import {Txt} from '../../../alexlibs/mui-extension/Txt/Txt'
-import {IconBtn} from '../../../alexlibs/mui-extension/IconBtn/IconBtn'
 import {Icon} from '@mui/material'
-import {useApiClients} from 'context/ApiClientsContext'
-import {useFetcher} from '../../../hooks/useFetcher'
-import {ScButton} from 'components_simple/Button/Button'
-import Link from 'next/link'
-import {siteMap} from 'core/siteMap'
-import {mapPromise} from '../../../utils/MapPromise'
-import {useEffect, useState} from 'react'
-import {AccordionInline} from 'components_simple/AccordionInline/AccordionInline'
-import {useAnalyticContext} from 'analytic/AnalyticContext'
-import {EventCategories, ReportEventActions} from 'analytic/analytic'
-import {last} from 'utils/lodashNamedExport'
-import {ReportStepPathInAnalytics, ReportStepTitleInAnalytics} from '../ReportFlow'
-import {Anomaly, Information, Subcategory} from '../../../anomalies/Anomaly'
 import {Fender} from 'alexlibs/mui-extension/Fender/Fender'
+import {EventCategories, ReportEventActions} from 'analytic/analytic'
+import {useAnalyticContext} from 'analytic/AnalyticContext'
+import {AccordionInline} from 'components_simple/AccordionInline/AccordionInline'
+import {Animate} from 'components_simple/Animate/Animate'
+import {ScButton} from 'components_simple/Button/Button'
+import {Panel, PanelBody} from 'components_simple/Panel/Panel'
+import {useApiClients} from 'context/ApiClientsContext'
+import {siteMap} from 'core/siteMap'
+import {useI18n} from 'i18n/I18n'
+import {getAnalyticsForStep} from 'model/ReportStep'
+import Link from 'next/link'
+import {useEffect, useState} from 'react'
+import {last} from 'utils/lodashNamedExport'
+import {IconBtn} from '../../../alexlibs/mui-extension/IconBtn/IconBtn'
+import {Txt} from '../../../alexlibs/mui-extension/Txt/Txt'
+import {Anomaly, Information, Subcategory} from '../../../anomalies/Anomaly'
+import {useFetcher} from '../../../hooks/useFetcher'
+import {mapPromise} from '../../../utils/MapPromise'
 
 interface Props {
   anomaly: Anomaly
@@ -31,7 +31,9 @@ export const ProblemInformation = ({anomaly, subcategories, information}: Props)
   const {signalConsoApiClient} = useApiClients()
   const [votedPositive, setVotedPositive] = useState<boolean | undefined>()
   useEffect(() => {
-    _analytic.trackPage(`${anomaly.path}/${ReportStepPathInAnalytics.Information}`, ReportStepTitleInAnalytics.Information)
+    // ce tracking est un peu étrange, on réutilise une valeur de la step finale 'Done', mais pas une autre. Je soupçonne une erreur
+    const {title} = getAnalyticsForStep('Done')
+    _analytic.trackPage(`${anomaly.path}/information`, title)
     _analytic.trackEvent(
       EventCategories.report,
       ReportEventActions.outOfBounds,
