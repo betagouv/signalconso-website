@@ -5,7 +5,7 @@ import {Consumer} from 'components_feature/Report/Consumer/Consumer'
 import {Details} from 'components_feature/Report/Details/Details'
 import {Problem} from 'components_feature/Report/Problem/Problem'
 import {useI18n} from 'i18n/I18n'
-import {firstReportStep, getStepIndex, lastReportStep, ReportStep, ReportStepOrDone, reportSteps} from 'model/ReportStep'
+import {getNextStep, getPreviousStep, getStepIndex, ReportStep, ReportStepOrDone} from 'model/ReportStep'
 import React, {useContext, useEffect, useState} from 'react'
 import {scrollTop} from 'utils/utils'
 import {ReportFlowStepperHeader} from './ReportFlowStepperHeader'
@@ -67,14 +67,12 @@ export const ReportFlowStepper = ({anomaly, initialStep, renderDone, onStepChang
     },
     next: () => {
       if (isDone) return
-      const newStep = currentStep === lastReportStep ? 'Done' : reportSteps[getStepIndex(currentStep) + 1]
-      setCurrentStep(newStep)
+      setCurrentStep(getNextStep(currentStep))
       scrollTop()
     },
     prev: () => {
       if (isDone) return
-      const newStep = currentStep === firstReportStep ? firstReportStep : reportSteps[getStepIndex(currentStep) - 1]
-      setCurrentStep(newStep)
+      setCurrentStep(getPreviousStep(currentStep))
       scrollTop()
     },
   }

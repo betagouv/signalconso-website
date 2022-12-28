@@ -9,12 +9,19 @@ export const lastReportStep = reportSteps[reportSteps.length - 1]
 // 'Done' is like a special bonus step, not included in the original list
 export type ReportStepOrDone = ReportStep | 'Done'
 
-// TMP for retrocompat
+export function getNextStep(step: ReportStep): ReportStepOrDone {
+  return reportSteps[getStepIndex(step) + 1]
+}
+
+export function getPreviousStep(step: ReportStep): ReportStepOrDone {
+  if (step === firstReportStep) return step
+  return reportSteps[getStepIndex(step) - 1]
+}
+
 export function getStepIndex(step: ReportStep): number {
   return reportSteps.indexOf(step)
 }
 
-// TMP for retrocompat
 export function indexToStepOrDone(index: number): ReportStepOrDone {
   return index >= reportSteps.length ? 'Done' : reportSteps[index]
 }
