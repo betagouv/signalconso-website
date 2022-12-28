@@ -1,16 +1,13 @@
 import {ReportDraft2} from './ReportDraft2'
 
-const reportBuildingSteps = ['BuildingProblem', 'BuildingDetails', 'BuildingCompany', 'BuildingConsumer'] as const
-export type ReportBuildingStep = typeof reportBuildingSteps[number]
-
-export const reportSteps = [...reportBuildingSteps, 'Confirmation'] as const
+export const reportSteps = ['BuildingProblem', 'BuildingDetails', 'BuildingCompany', 'BuildingConsumer', 'Confirmation'] as const
 export type ReportStep = typeof reportSteps[number]
 
 export function getStepIndex(step: ReportStep): number {
   return reportSteps.indexOf(step)
 }
 
-function isBuildingStepDone(r: Partial<ReportDraft2>, step: ReportBuildingStep) {
+function isBuildingStepDone(r: Partial<ReportDraft2>, step: ReportStep) {
   switch (step) {
     case 'BuildingProblem':
       return !!r.category && !!r.subcategories && !!r.contractualDispute !== undefined && r.employeeConsumer !== undefined
@@ -20,15 +17,12 @@ function isBuildingStepDone(r: Partial<ReportDraft2>, step: ReportBuildingStep) 
       return !!r.companyDraft?.siret || !!r.companyDraft?.address.postalCode
     case 'BuildingConsumer':
       return !!r.consumer?.email && !!r.consumer?.firstName && !!r.consumer?.lastName
+    case 'Confirmation':
+      // if all other steps are done, we want to go to Confirmation
+      return false
   }
 }
 
 export function findCurrentStepForReport(report: Partial<ReportDraft2>): number {
-  const index = reportBuildingSteps.findIndex(step => !isBuildingStepDone(report, step))
-  const res =
-    index > -1
-      ? index
-      : // if all building steps are done, we can go to Confirmation
-        reportBuildingSteps.length
-  return res
+  return reportSteps.findIndex(step => !isBuildingStepDone(report, step))
 }
