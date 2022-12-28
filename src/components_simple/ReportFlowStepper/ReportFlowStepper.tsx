@@ -59,7 +59,7 @@ export const ReportFlowStepper = ({anomaly, initialStep, renderDone, onStepChang
     },
   ]
 
-  const isDone = currentStep === 'done'
+  const isDone = currentStep === 'Done'
 
   useEffect(() => {
     onStepChange(currentStep)
@@ -76,7 +76,7 @@ export const ReportFlowStepper = ({anomaly, initialStep, renderDone, onStepChang
     },
     next: () => {
       if (isDone) return
-      const newStep = currentStep === lastReportStep ? 'done' : reportSteps[getStepIndex(currentStep) + 1]
+      const newStep = currentStep === lastReportStep ? 'Done' : reportSteps[getStepIndex(currentStep) + 1]
       setCurrentStep(newStep)
       scrollTop()
     },
