@@ -1,14 +1,17 @@
+import {Anomaly} from 'anomalies/Anomaly'
+import {Company} from 'components_feature/Report/Company/Company'
+import {Confirmation} from 'components_feature/Report/Confirmation/Confirmation'
+import {Consumer} from 'components_feature/Report/Consumer/Consumer'
+import {Details} from 'components_feature/Report/Details/Details'
+import {Problem} from 'components_feature/Report/Problem/Problem'
+import {useI18n} from 'i18n/I18n'
+import React, {useContext, useEffect, useState} from 'react'
 import {scrollTop} from 'utils/utils'
-import React, {ReactNode, useContext, useEffect, useMemo, useState} from 'react'
 import {ReportFlowStepperHeader} from './ReportFlowStepperHeader'
-import {ReportStep} from 'model/ReportStep'
 
 interface StepperProps {
   initialStep: number
-  steps: {
-    label: string
-    component: () => JSX.Element
-  }[]
+  anomaly: Anomaly
   onStepChange: (index: number) => void
   renderDone: () => JSX.Element
 }
@@ -24,8 +27,36 @@ export const ReportFlowStepperContext = React.createContext<ReportFlowStepperCon
   currentStep: 0,
 } as ReportFlowStepperContext)
 
-export const ReportFlowStepper = ({steps, initialStep, renderDone, onStepChange}: StepperProps) => {
+export const ReportFlowStepper = ({anomaly, initialStep, renderDone, onStepChange}: StepperProps) => {
   const [currentStep, setCurrentStep] = useState(initialStep)
+  const {m} = useI18n()
+
+  const steps: {
+    label: string
+    component: () => JSX.Element
+  }[] = [
+    {
+      label: m.step_problem,
+      component: () => <Problem anomaly={anomaly} />,
+    },
+    {
+      label: m.step_description,
+      component: () => <Details />,
+    },
+    {
+      label: m.step_company,
+      component: () => <Company />,
+    },
+    {
+      label: m.step_consumer,
+      component: () => <Consumer />,
+    },
+    {
+      label: m.step_confirm,
+      component: () => <Confirmation />,
+    },
+  ]
+
   const maxStep = steps.length + 1
   const isDone = currentStep >= steps.length
 

@@ -36,32 +36,10 @@ export enum ReportStepTitleInAnalytics {
 
 export const ReportFlow = React.memo(({initialStep, anomaly}: Props) => {
   const _analytics = useAnalyticContext()
-  const {m} = useI18n()
   return (
     <ReportFlowStepper
       initialStep={initialStep}
-      steps={[
-        {
-          label: m.step_problem,
-          component: () => <Problem anomaly={anomaly} />,
-        },
-        {
-          label: m.step_description,
-          component: () => <Details />,
-        },
-        {
-          label: m.step_company,
-          component: () => <Company />,
-        },
-        {
-          label: m.step_consumer,
-          component: () => <Consumer />,
-        },
-        {
-          label: m.step_confirm,
-          component: () => <Confirmation />,
-        },
-      ]}
+      anomaly={anomaly}
       onStepChange={index => {
         const path = Object.values(ReportStepPathInAnalytics)[index]
         const title = Object.values(ReportStepTitleInAnalytics)[index]
