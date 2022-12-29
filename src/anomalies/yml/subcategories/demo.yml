@@ -44,8 +44,8 @@
       companyKind: PHONE
     - title: Sous cat avec companyKind LOCATION
       companyKind: LOCATION
-    - title: Sous cat avec companyKind INFLUENCEUR
-      companyKind: INFLUENCEUR
+    - title: Sous cat avec companyKind SOCIAL
+      companyKind: SOCIAL
 - title: Sous category pour tester les "information" (bloc bloquant)
   subcategories:
     - title: Sous cat avec information complete

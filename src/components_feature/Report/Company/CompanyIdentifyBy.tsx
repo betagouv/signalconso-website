@@ -31,7 +31,7 @@ export const CompanyIdentifyBy = ({companyKind, value, children}: Props) => {
           </Txt>
           <PanelBody>
             <ScRadioGroup value={value} onChange={setIdentifyBy}>
-              {companyKind !== 'INFLUENCEUR' && (
+              {companyKind !== 'SOCIAL' && (
                 <ScRadioGroupItem value={IdentifyBy.NAME} title={m.identifyBy_name} description={m.identifyBy_nameDesc} />
               )}
               <ScRadioGroupItem value={IdentifyBy.IDENTITY} title={m.identifyBy_identity} />

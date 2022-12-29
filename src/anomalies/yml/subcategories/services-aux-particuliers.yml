@@ -44,7 +44,7 @@
           tags:
             - DemarchageTelephonique
         - title: Démarchage sur les Réseaux Sociaux
-          companyKind: LOCATION
+          companyKind: SOCIAL
           tags:
             - DemarchageInternet
           detailInputs:

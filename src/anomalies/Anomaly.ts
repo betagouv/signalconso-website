@@ -60,7 +60,7 @@ export const reportTags = [
 ] as const
 export type ReportTag = typeof reportTags[number]
 
-export const companyKinds = ['SIRET', 'WEBSITE', 'PHONE', 'LOCATION', 'INFLUENCEUR'] as const
+export const companyKinds = ['SIRET', 'WEBSITE', 'PHONE', 'LOCATION', 'SOCIAL'] as const
 export type CompanyKinds = typeof companyKinds[number]
 
 export interface Information {
