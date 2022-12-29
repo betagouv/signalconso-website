@@ -48,6 +48,7 @@ export const reportTags = [
   'DemarchageADomicile',
   'Ehpad',
   'DemarchageTelephonique',
+  'DemarchageInternet',
   'AbsenceDeMediateur',
   'Bloctel',
   'Influenceur',

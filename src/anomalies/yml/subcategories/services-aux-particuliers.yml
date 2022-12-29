@@ -44,8 +44,8 @@
           tags:
             - DemarchageTelephonique
         - title: Démarchage sur les Réseaux Sociaux
-#          tags:
-#            - DemarchageInternet
+          tags:
+            - DemarchageInternet
           detailInputs:
             - label: Nom ou pseudonyme qui vous a contacté
               type: TEXT
