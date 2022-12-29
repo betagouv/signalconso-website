@@ -317,7 +317,7 @@ export const fr = {
     noItsForeign: `Non, elle est à l'étranger`,
     companyHowToFindCountry: `Comment retrouver le pays d'une entreprise ?`,
     iDontKnown: `Je ne sais pas`,
-    phoneNumberHavingCalled: `Numéro de téléphone vous ayant appelé`,
+    phoneNumberHavingCalled: `Numéro de téléphone vous ayant contacté`,
     phoneNumberHavingCalledPlaceholder: `Ex: 06 00 00 00 00`,
     noMatchingCompany: `Aucun établissement ne correspond à la recherche.`,
     youCanOnlyReportFrenchCompanies: `Vous pouvez identifier des entreprises privées établies en France uniquement.`,

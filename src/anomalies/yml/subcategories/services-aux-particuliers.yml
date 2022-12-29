@@ -1,18 +1,11 @@
 - title: Formation
   example: 'Exemple : Démarchage Compte Personnel de Formation, CPF, information trompeuse ou mensongère'
   subcategories:
-    - title: Publicité et pratique du professionnel
-      example: "Exemple : démarchage, absence d'information, information trompeuse ou mensongère"
-      tags:
-        - LitigeContractuel
+    - title: Démarchage
+      example: "Exemple : Démarchage téléphonique, SMS, en message personnel sur les réseaux sociaux"
       ccrfCode:
-        - '23B'
+        - '23E'
       subcategories:
-        - title: Absence d'information ou information incomplète
-          ccrfCode:
-            - '23B'
-          tags:
-            - LitigeContractuel
         - title: Démarchage à domicile
           ccrfCode:
             - '221'
@@ -42,88 +35,129 @@
             - '221'
           tags:
             - DemarchageTelephonique
-          subcategories:
-            - title: Information mensongère ou trompeuse
-              example: "Mise en avant d'un label ou d'un signe de qualité non ou plus détenu"
-              ccrfCode:
-                - '23b'
-                - '275'
-                - '267'
-              reponseconsoCode:
-                - '210'
-              detailInputs:
-                - label: Qu'est-ce qui est trompeur ou mensonger&#160;?
-                  type: RADIO
-                  options:
-                    - Le discours du professionnel
-                    - Le site internet
-                    - Les documents mis à votre disposition par le professionnel (courrier, flyer, plaquette de présentation...)
-                    - Autre (à préciser)
-                - label: Description
-                  type: TEXTAREA
-                - label: Date de l'appel
-                  type: DATE
-                  defaultValue: SYSDATE
-                - label: Heure de l'appel (facultatif)
-                  type: TIMESLOT
-                  optional: true
-            - title: Référence abusive à des partenariats avec l'État ou de grandes entreprises
-              ccrfCode:
-                - '23b'
-              detailInputs:
-                - label: Qu'est-ce qui est trompeur ou mensonger&#160;?
-                  type: RADIO
-                  options:
-                    - Le discours du professionnel
-                    - Le site internet
-                    - Les documents mis à votre disposition par le professionnel (courrier, flyer, plaquette de présentation...)
-                    - Autre (à préciser)
-                - label: Description
-                  type: TEXTAREA
-                - label: Date de l'appel
-                  type: DATE
-                  defaultValue: SYSDATE
-                - label: Heure de l'appel (facultatif)
-                  type: TIMESLOT
-                  optional: true
-            - title: Utilisation de termes laissant croire qu'il s'agit d'une structure publique
-              ccrfCode:
-                - '23b'
-              detailInputs:
-                - label: Qu'est-ce qui est trompeur ou mensonger&#160;?
-                  type: RADIO
-                  options:
-                    - Le discours du professionnel
-                    - Le site internet
-                    - Les documents mis à votre disposition par le professionnel (courrier, flyer, plaquette de présentation...)
-                    - Autre (à préciser)
-                - label: Description
-                  type: TEXTAREA
-                - label: Date de l'appel
-                  type: DATE
-                  defaultValue: SYSDATE
-                - label: Heure de l'appel (facultatif)
-                  type: TIMESLOT
-                  optional: true
-            - title: Usurpation d'identité de la part du professionnel
-              ccrfCode:
-                - '23b'
-              detailInputs:
-                - label: Qu'est-ce qui est trompeur ou mensonger&#160;?
-                  type: RADIO
-                  options:
-                    - Le discours du professionnel
-                    - Le site internet
-                    - Les documents mis à votre disposition par le professionnel (flyer, plaquette de présentation...)
-                    - Autre (à préciser)
-                - label: Description
-                  type: TEXTAREA
-                - label: Date de l'appel
-                  type: DATE
-                  defaultValue: SYSDATE
-                - label: Heure de l'appel (facultatif)
-                  type: TIMESLOT
-                  optional: true
+        - title: Démarchage par SMS
+          companyKind: PHONE
+          ccrfCode:
+            - '227'
+          reponseconsoCode:
+            - '221'
+          tags:
+            - DemarchageTelephonique
+        - title: Démarchage sur les Réseaux Sociaux
+          companyKind: SOCIAL
+          tags:
+            - DemarchageInternet
+          detailInputs:
+            - label: Nom ou pseudonyme qui vous a contacté
+              type: TEXT
+              placeholder: Nom ou pseudonyme
+            - label: Nom de la formation (facultatif)
+              type: TEXT
+            - label: Pouvez-vous préciser la plateforme utilisée ?
+              type: RADIO
+              options:
+                - TikTok
+                - Facebook
+                - Instagram
+                - Twitter
+                - Linkedin
+                - Messenger
+                - Snapchat
+                - autre (à préciser)
+    - title: Publicité et pratique du professionnel
+      example: "Exemple : absence d'information, information trompeuse ou mensongère"
+      tags:
+        - LitigeContractuel
+      ccrfCode:
+        - '23B'
+      subcategories:
+        - title: Absence d'information ou information incomplète
+          ccrfCode:
+            - '23B'
+          tags:
+            - LitigeContractuel
+        - title: Information mensongère ou trompeuse
+          example: "Mise en avant d'un label ou d'un signe de qualité non ou plus détenu"
+          ccrfCode:
+            - '23b'
+            - '275'
+            - '267'
+          reponseconsoCode:
+            - '210'
+          detailInputs:
+            - label: Qu'est-ce qui est trompeur ou mensonger&#160;?
+              type: RADIO
+              options:
+                - Le discours du professionnel
+                - Le site internet
+                - Les documents mis à votre disposition par le professionnel (courrier, flyer, plaquette de présentation...)
+                - Autre (à préciser)
+            - label: Description
+              type: TEXTAREA
+            - label: Date de l'appel
+              type: DATE
+              defaultValue: SYSDATE
+            - label: Heure de l'appel (facultatif)
+              type: TIMESLOT
+              optional: true
+        - title: Référence abusive à des partenariats avec l'État ou de grandes entreprises
+          ccrfCode:
+            - '23b'
+          detailInputs:
+            - label: Qu'est-ce qui est trompeur ou mensonger&#160;?
+              type: RADIO
+              options:
+                - Le discours du professionnel
+                - Le site internet
+                - Les documents mis à votre disposition par le professionnel (courrier, flyer, plaquette de présentation...)
+                - Autre (à préciser)
+            - label: Description
+              type: TEXTAREA
+            - label: Date de l'appel
+              type: DATE
+              defaultValue: SYSDATE
+            - label: Heure de l'appel (facultatif)
+              type: TIMESLOT
+              optional: true
+        - title: Utilisation de termes laissant croire qu'il s'agit d'une structure publique
+          ccrfCode:
+            - '23b'
+          detailInputs:
+            - label: Qu'est-ce qui est trompeur ou mensonger&#160;?
+              type: RADIO
+              options:
+                - Le discours du professionnel
+                - Le site internet
+                - Les documents mis à votre disposition par le professionnel (courrier, flyer, plaquette de présentation...)
+                - Autre (à préciser)
+            - label: Description
+              type: TEXTAREA
+            - label: Date de l'appel
+              type: DATE
+              defaultValue: SYSDATE
+            - label: Heure de l'appel (facultatif)
+              type: TIMESLOT
+              optional: true
+        - title: Usurpation d'identité de la part du professionnel
+          ccrfCode:
+            - '23b'
+          detailInputs:
+            - label: Qu'est-ce qui est trompeur ou mensonger&#160;?
+              type: RADIO
+              options:
+                - Le discours du professionnel
+                - Le site internet
+                - Les documents mis à votre disposition par le professionnel (flyer, plaquette de présentation...)
+                - Autre (à préciser)
+            - label: Description
+              type: TEXTAREA
+            - label: Date de l'appel
+              type: DATE
+              defaultValue: SYSDATE
+            - label: Heure de l'appel (facultatif)
+              type: TIMESLOT
+              optional: true
+        - title: Autre
     - title: Contrat
       example: 'Exemple : contrat non respecté, délai de rétractation, clause abusive'
       ccrfCode:
