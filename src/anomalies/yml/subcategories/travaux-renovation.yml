@@ -1,5 +1,5 @@
 - title: Dépannage
-  example: "Vous faites appel à un professionnel dans l'urgence à votre domicile (par exemple : vous avez perdu votre clef d'appartement et vous contactez un serrurier pour qu'il vienne vous l'ouvrir, vous appelez un plombier suite à l'explosion de votre canalisation)"
+  example: "Vous faites appel à une entreprise dans l'urgence à votre domicile (par exemple : vous avez perdu votre clef d'appartement et vous contactez un serrurier pour qu'il vienne vous l'ouvrir, vous appelez un plombier suite à l'explosion de votre canalisation)"
   tags:
     - LitigeContractuel
   subcategories:
@@ -8,6 +8,8 @@
         - '21B'
       subcategories:
         - title: Prix exagéré
+          reponseconsoCode:
+            - '622'
           information:
             title: Ceci ne constitue pas un motif de signalement.
             content: Les professionnels ont le droit de choisir leurs prix.
@@ -16,14 +18,17 @@
         - title: Prix non affiché
           reponseconsoCode:
             - '212'
+            - '411'
           tags:
             - ReponseConso
         - title: Prix final non conforme au prix annoncé
           reponseconsoCode:
             - '451'
+            - '418'
+            - '623'
           tags:
             - ReponseConso
-    - title: Publicité et pratique du professionnel
+    - title: Publicité et pratique de l'entreprise
       example: "Exemple : information trompeuse ou mensongère, absence d'information, contrainte"
       subcategories:
         - title: Absence d'information ou information incomplète
@@ -61,9 +66,12 @@
             - label: Heure du constat (facultatif)
               type: TIMESLOT
               optional: true
-        - title: Contrainte du professionnel
+        - title: Contrainte de l'entreprise
           reponseconsoCode:
             - '210'
+            - '234'
+          tags:
+            - ReponseConso
           detailInputs:
             - label: Précisez les informations sur le contexte
               type: TEXTAREA
@@ -82,7 +90,2024 @@
           example: Constat d'un défaut résultant d'une mauvaise exécution des travaux
         - title: Autre
     - title: Autre
-- title: Travaux / rénovation
+- title: Rénovation énergétique
+  example: "Vous avez été démarché ou vous avez faites appel à une entreprise pour l'installation d'équipement ou la réalisation de travaux de rénovation énergétique (isolation, installation d'un système de chauffage, panneaux solaire)"
+  subcategories:
+    - title: Démarchage téléphonique
+      #            Amélioration a prévoir avec le bureau sectoriel : L'entreprise vous a t-elle rappelée pour autre chose ??
+      companyKind: PHONE
+      ccrfCode:
+        - '227'
+        - '23E'
+      reponseconsoCode:
+        - '221'
+      tags:
+      #            - ReponseConso
+        - DemarchageTelephonique
+      detailInputs:
+        - label: Date de l'appel
+          type: DATE
+          defaultValue: SYSDATE
+        - label: Est-ce que le vendeur s'est fait passer pour une autre entreprise&#160;?
+          type: RADIO
+          options:
+            - Non
+            - Oui (à préciser)
+        - label: Décrivez nous plus en détails ce qui s'est passé
+          type: TEXTAREA
+    - title: Audit énergétique
+      subcategories:
+      - title: Prix
+        example: 'Exemple : prix non affiché, devis non respecté'
+        ccrfCode:
+          - '21B'
+          - '213'
+        tags:
+         - LitigeContractuel
+        subcategories:
+          - title: Prix exagéré / élevé
+            information:
+              title: Ceci ne constitue pas un motif de signalement.
+              content: Les professionnels ont le droit de choisir leurs prix.
+                <br />Par contre, les prix doivent être clairement indiqués pour que vous soyez au courant avant d'acheter ou de commander.
+              outOfScope: true
+          - title: Prix final non conforme au prix annoncé
+            reponseconsoCode:
+              - '451'
+              - '418'
+            tags:
+              - ReponseConso
+          - title: Prix non affiché
+            reponseconsoCode:
+              - '212'
+              - '411'
+            tags:
+              - ReponseConso
+      - title: Publicité et pratique de l'entreprise
+        example: "Exemple : absence d'information, information trompeuse ou mensongère, démarchage à domicile"
+        tags:
+          - LitigeContractuel
+        ccrfCode:
+          - '21A'
+          - '23B'
+        reponseconsoCode:
+          - '451'
+          - '418'
+        subcategories:
+          - title: Absence d'information ou information incomplète
+            ccrfCode:
+              - '271'
+            tags:
+              - LitigeContractuel
+              - ReponseConso
+            subcategories:
+              - title: Caractéristiques techniques des produits non précisées
+                ccrfCode:
+                  - '273'
+                reponseconsoCode:
+                  - '411'
+              - title: Prix indiqué de manière globale et non détaillée
+                reponseconsoCode:
+                  - '411'
+                  - '212'
+              - title: Date de livraison des produits ou réalisation des travaux non précisée
+                reponseconsoCode:
+                  - '414'
+                  - '413'
+              - title: Autre
+                reponseconsoCode:
+                  - '411'
+          - title: Démarchage à domicile
+            companyKind: LOCATION
+            ccrfCode:
+              - '221'
+              - '226'
+            reponseconsoCode:
+              - '221'
+              - '411'
+            tags:
+              - ReponseConso
+              - DemarchageADomicile
+            detailInputs:
+              - label: Que s'est-il passé ?
+                type: RADIO
+                options:
+                  - Le vendeur s'est fait passer pour une autre entreprise (à préciser)
+                  - Le vendeur m'a fait signer des papiers sans me dire que c'était un contrat ou un bon de commande.
+                  - Autre (à préciser)
+              - label: Avez-vous payé au moment du démarchage&#160;?
+                type: RADIO
+                options:
+                  - Oui
+                  - Non
+              - label: Date du démarchage
+                type: DATE
+                defaultValue: SYSDATE
+          - title: Information mensongère ou trompeuse
+            tags:
+              - ReponseConso
+            ccrfCode:
+              - '23B'
+            reponseconsoCode:
+              - '210'
+            subcategories:
+              - title: Mise en avant d'un label ou d'un signe de qualité non ou plus détenu
+                ccrfCode:
+                  - '271'
+                  - '275'
+                tags:
+                  - ReponseConso
+                detailInputs:
+                  - label: Qu'est-ce qui est trompeur ou mensonger&#160;?
+                    type: RADIO
+                    options:
+                      - Le discours du professionnel
+                      - Le site internet
+                      - Les documents mis à votre disposition par le professionnel (flyer, plaquette de présentation...)
+                      - Autre (à préciser)
+                  - label: Description
+                    type: TEXTAREA
+                  - label: Date du constat
+                    type: DATE
+                    defaultValue: SYSDATE
+                  - label: Heure du constat (facultatif)
+                    type: TIMESLOT
+                    optional: true
+              - title: Référence abusive à des partenariats avec l'État ou de grandes entreprises d'énergie
+                ccrfCode:
+                  - '271'
+                tags:
+                  - ReponseConso
+                detailInputs:
+                  - label: Qu'est-ce qui est trompeur ou mensonger&#160;?
+                    type: RADIO
+                    options:
+                      - Le discours du professionnel
+                      - Le site internet
+                      - Les documents mis à votre disposition par le professionnel (flyer, plaquette de présentation...)
+                      - Autre (à préciser)
+                  - label: Description
+                    type: TEXTAREA
+                  - label: Date du constat
+                    type: DATE
+                    defaultValue: SYSDATE
+                  - label: Heure du constat (facultatif)
+                    type: TIMESLOT
+                    optional: true
+              - title: Utilisation de termes laissant croire qu'il s'agit d'une structure publique
+                ccrfCode:
+                  - '271'
+                tags:
+                  - ReponseConso
+                detailInputs:
+                  - label: Qu'est-ce qui est trompeur ou mensonger&#160;?
+                    type: RADIO
+                    options:
+                      - Le discours du professionnel
+                      - Le site internet
+                      - Les documents mis à votre disposition par le professionnel (flyer, plaquette de présentation...)
+                      - Autre (à préciser)
+                  - label: Description
+                    type: TEXTAREA
+                  - label: Date du constat
+                    type: DATE
+                    defaultValue: SYSDATE
+                  - label: Heure du constat (facultatif)
+                    type: TIMESLOT
+                    optional: true
+              - title: Usurpation d'identité de la part du professionnel
+                ccrfCode:
+                  - '23C'
+                tags:
+                  - ReponseConso
+                detailInputs:
+                  - label: Qu'est-ce qui est trompeur ou mensonger&#160;?
+                    type: RADIO
+                    options:
+                      - Le discours du professionnel
+                      - Le site internet
+                      - Les documents mis à votre disposition par le professionnel (flyer, plaquette de présentation...)
+                      - Autre (à préciser)
+                  - label: Description
+                    type: TEXTAREA
+                  - label: Date du constat
+                    type: DATE
+                    defaultValue: SYSDATE
+                  - label: Heure du constat (facultatif)
+                    type: TIMESLOT
+                    optional: true
+              - title: Présentation des travaux comme étant obligatoires
+                ccrfCode:
+                  - '271'
+                tags:
+                  - ReponseConso
+                detailInputs:
+                  - label: Qu'est-ce qui est trompeur ou mensonger&#160;?
+                    type: RADIO
+                    options:
+                      - Le discours du professionnel
+                      - Le site internet
+                      - Les documents mis à votre disposition par le professionnel (flyer, plaquette de présentation...)
+                      - Autre (à préciser)
+                  - label: Description
+                    type: TEXTAREA
+                  - label: Date du constat
+                    type: DATE
+                    defaultValue: SYSDATE
+                  - label: Heure du constat (facultatif)
+                    type: TIMESLOT
+                    optional: true
+              - title: Promesse d'économies d'énergie surestimées
+                ccrfCode:
+                  - '271'
+                tags:
+                  - ReponseConso
+                detailInputs:
+                  - label: Qu'est-ce qui est trompeur ou mensonger&#160;?
+                    type: RADIO
+                    options:
+                      - Le discours du professionnel
+                      - Le site internet
+                      - Les documents mis à votre disposition par le professionnel (flyer, plaquette de présentation...)
+                      - Autre (à préciser)
+                  - label: Description
+                    type: TEXTAREA
+                  - label: Date du constat
+                    type: DATE
+                    defaultValue: SYSDATE
+                  - label: Heure du constat (facultatif)
+                    type: TIMESLOT
+                    optional: true
+              - title: Autre
+                detailInputs:
+                  - label: Qu'est-ce qui est trompeur ou mensonger&#160;?
+                    type: RADIO
+                    options:
+                      - Le discours du professionnel
+                      - Le site internet
+                      - Les documents mis à votre disposition par le professionnel (flyer, plaquette de présentation...)
+                      - Autre (à préciser)
+                  - label: À propos de quoi est-ce trompeur&#160;?
+                    type: RADIO
+                    options:
+                      - Le prix
+                      - La nature des travaux
+                      - Les qualités et aptitudes du professionnel (artisans, normes...)
+                  - label: Description
+                    type: TEXTAREA
+                  - label: Date du constat
+                    type: DATE
+                    defaultValue: SYSDATE
+                  - label: Heure du constat (facultatif)
+                    type: TIMESLOT
+                    optional: true
+          - title: Contrainte du professionnel
+            ccrfCode:
+              - '23C'
+              - '23D'
+            reponseconsoCode:
+              - '210'
+              - '234'
+            tags:
+              - ReponseConso
+            detailInputs:
+              - label: Précisez les informations sur le contexte
+                type: TEXTAREA
+              - label: Date du constat
+                type: DATE
+                defaultValue: SYSDATE
+              - label: Heure du constat (facultatif)
+                type: TIMESLOT
+                optional: true             
+          - title: Autre
+      - title: Prestation
+        example: 'Exemple : malfaçons sur le chantier, travaux commencés mais jamais terminés'
+        ccrfCode:
+          - '161'
+          - '334'
+        subcategories:
+          - title: Malfaçon
+            example: Constat d'un défaut résultant d'une mauvaise exécution des travaux
+            reponseconsoCode:
+              - '446'
+          - title: Les travaux ne sont toujours pas terminés
+            reponseconsoCode:
+              - '443'
+              - '442'
+            tags:
+              - LitigeContractuel
+      - title: Contrat
+        example: 'Exemple : contrat non respecté, délai de rétractation, clause abusive'
+        subcategories:
+          - title: Droit de rétractation
+            example: Une fois le contrat signé, vous souhaitez revenir en arrière
+            subcategoriesTitle: Où avez-vous signé le contrat ?
+            subcategories:
+              - title: À votre domicile
+                example: Un démarcheur est venu chez vous
+                ccrfCode:
+                  - '220'
+                  - '221'
+                tags:
+                  - ReponseConso
+                reponseconsoCode:
+                  - '2213'
+                  - '2214'
+                  - '2216'
+              - title: À distance
+                example: 'Exemple : sur internet'
+                ccrfCode:
+                  - '220'
+                  - '221'
+                tags:
+                  - ReponseConso
+                reponseconsoCode:
+                  - '2213'
+                  - '2214'
+                  - '2203'
+              - title: Au lieu habituel d'activité du professionnel
+                ccrfCode:
+                  - '226'
+                reponseconsoCode:
+                  - '621'
+                information:
+                  title: Vous ne pouvez plus vous retracter
+                  content: Il n'y a pas de délai de rétractation pour votre cas.
+                  outOfScope: true
+              - title: Sur un stand dans une foire ou salon
+                ccrfCode:
+                  - '220'
+                  - '221'
+                subcategoriesTitle: Avez-vous un crédit affecté ?
+                subcategories:
+                  - title: Non
+                    information:
+                      title: Vous ne pouvez plus vous retracter
+                      content: Il n'y a pas de délai de rétractation pour votre cas.
+                      outOfScope: true
+                  - title: Oui
+                    tags:
+                      - ReponseConso
+                    reponseconsoCode:
+                      - '2206'
+                      - '2214'
+                      - '2213'
+                      - '411'
+          - title: Contrat non respecté
+            ccrfCode:
+              - '21C'
+              - '21D'
+              - '226'
+            reponseconsoCode:
+              - '443'
+              - '446'
+            tags:
+              - LitigeContractuel
+          - title: Clause abusive
+            example: Vous souhaitez dénoncer une clause qui vous est particulièrement défavorable
+            ccrfCode:
+              - '21C'
+            reponseconsoCode:
+              - '214'
+            tags:
+              - ReponseConso
+              - LitigeContractuel
+          - title: Autre
+            tags:
+              - LitigeContractuel
+      - title: Crédits pour les travaux / garanties
+        example: "Défaut d'information, absence de remise du contrat de crédit, engagement financier mensuel supérieur à celui annoncé par le vendeur, annonce d'autofinancement de l'installation"
+        tags:
+          - LitigeContractuel
+        subcategories:
+          - title: Crédit destiné à financer vos travaux
+            ccrfCode:
+              - '23A'
+              - '23B'
+              - '23C'
+            example: Crédit affecté au contrat de travaux / rénovation
+            subcategories:
+              - title: Absence d'informations
+                ccrfCode:
+                  - '21A'
+                  - '23A'
+                  - '23B'
+                  - '23C'
+                tags:
+                  - ReponseConso
+                reponseconsoCode:
+                  - '2406'
+                  - '411'
+                  - '2206'
+                subcategories:
+                  - title: Avant la souscription
+                  - title: Vous ne saviez pas que vous vous engagiez pour des travaux
+                  - title: Vous ne saviez pas que vous vous engagiez pour un crédit
+                  - title: Vous n'avez pas reçu de contrat
+              - title: Autre
+                example: "Engagement financier mensuel supérieur à celui annoncé par le vendeur ; annonce d’autofinancement de l’installation"
+          - title: Garanties
+            ccrfCode:
+              - '21A'
+              - '23A'
+              - '23B'
+            reponseconsoCode:
+              - '469'
+            subcategories:
+              - title: Garantie de parfait achèvement
+                reponseconsoCode:
+                  - '469'
+              - title: Garantie biennale
+                tags:
+                  - ReponseConso
+                reponseconsoCode:
+                  - '469'
+                  - '411'
+              - title: Garantie décennale
+                reponseconsoCode:
+                  - '469'
+                  - '411'        
+              - title: Responsabilité contractuelle de droit commun
+      - title: Autre
+        tags:
+          - LitigeContractuel
+    - title: chauffage
+      example: "Par exemple : pompe à chaleur, chauffage au bois, chauffe-eau thermodynamique"
+      subcategories:
+        - title: Prix
+          example: 'Exemple : prix non affiché, devis non respecté'
+          ccrfCode:
+            - '21B'
+            - '213'
+          tags:
+          - LitigeContractuel
+          subcategories:
+            - title: Prix exagéré / élevé
+              information:
+                title: Ceci ne constitue pas un motif de signalement.
+                content: Les professionnels ont le droit de choisir leurs prix.
+                  <br />Par contre, les prix doivent être clairement indiqués pour que vous soyez au courant avant d'acheter ou de commander.
+                outOfScope: true
+            - title: Prix final non conforme au prix annoncé
+              reponseconsoCode:
+                - '451'
+                - '418'
+              tags:
+                - ReponseConso
+            - title: Prix non affiché
+              reponseconsoCode:
+                - '212'
+                - '411'
+              tags:
+                - ReponseConso
+        - title: Publicité et pratique de l'entreprise
+          example: "Exemple : absence d'information, information trompeuse ou mensongère, démarchage à domicile"
+          tags:
+            - LitigeContractuel
+          ccrfCode:
+            - '21A'
+            - '23B'
+          subcategories:
+            - title: Absence d'information ou information incomplète
+              tags:
+                - LitigeContractuel
+                - ReponseConso
+              subcategories:
+                - title: Caractéristiques techniques des produits non précisées
+                  ccrfCode:
+                    - '273'
+                  reponseconsoCode:
+                    - '411'
+                - title: Prix indiqué de manière globale et non détaillée
+                  reponseconsoCode:
+                    - '411'
+                    - '212'
+                - title: Date de livraison des produits ou réalisation des travaux non précisée
+                  reponseconsoCode:
+                    - '414'
+                    - '413'
+                - title: Autre
+                  reponseconsoCode:
+                    - '411'
+            - title: Démarchage à domicile
+              companyKind: LOCATION
+              ccrfCode:
+                - '221'
+                - '226'
+              reponseconsoCode:
+                - '221'
+                - '411'
+              tags:
+                - ReponseConso
+                - DemarchageADomicile
+              detailInputs:
+                - label: Que s'est-il passé ?
+                  type: RADIO
+                  options:
+                    - Le vendeur s'est fait passer pour une autre entreprise (à préciser)
+                    - Le vendeur m'a fait signer des papiers sans me dire que c'était un contrat ou un bon de commande.
+                    - Autre (à préciser)
+                - label: Avez-vous payé au moment du démarchage&#160;?
+                  type: RADIO
+                  options:
+                    - Oui
+                    - Non
+                - label: Date du démarchage
+                  type: DATE
+                  defaultValue: SYSDATE
+            - title: Information mensongère ou trompeuse
+              tags:
+                - ReponseConso
+              ccrfCode:
+                - '23B'
+              reponseconsoCode:
+                - '210'
+              subcategories:
+                - title: Mise en avant d'un label ou d'un signe de qualité non ou plus détenu
+                  ccrfCode:
+                    - '271'
+                    - '275'
+                  tags:
+                    - ReponseConso
+                  detailInputs:
+                    - label: Qu'est-ce qui est trompeur ou mensonger&#160;?
+                      type: RADIO
+                      options:
+                        - Le discours du professionnel
+                        - Le site internet
+                        - Les documents mis à votre disposition par le professionnel (flyer, plaquette de présentation...)
+                        - Autre (à préciser)
+                    - label: Description
+                      type: TEXTAREA
+                    - label: Date du constat
+                      type: DATE
+                      defaultValue: SYSDATE
+                    - label: Heure du constat (facultatif)
+                      type: TIMESLOT
+                      optional: true
+                - title: Référence abusive à des partenariats avec l'État ou de grandes entreprises d'énergie
+                  ccrfCode:
+                    - '271'
+                  tags:
+                    - ReponseConso
+                  detailInputs:
+                    - label: Qu'est-ce qui est trompeur ou mensonger&#160;?
+                      type: RADIO
+                      options:
+                        - Le discours du professionnel
+                        - Le site internet
+                        - Les documents mis à votre disposition par le professionnel (flyer, plaquette de présentation...)
+                        - Autre (à préciser)
+                    - label: Description
+                      type: TEXTAREA
+                    - label: Date du constat
+                      type: DATE
+                      defaultValue: SYSDATE
+                    - label: Heure du constat (facultatif)
+                      type: TIMESLOT
+                      optional: true
+                - title: Utilisation de termes laissant croire qu'il s'agit d'une structure publique
+                  ccrfCode:
+                    - '271'
+                  tags:
+                    - ReponseConso
+                  detailInputs:
+                    - label: Qu'est-ce qui est trompeur ou mensonger&#160;?
+                      type: RADIO
+                      options:
+                        - Le discours du professionnel
+                        - Le site internet
+                        - Les documents mis à votre disposition par le professionnel (flyer, plaquette de présentation...)
+                        - Autre (à préciser)
+                    - label: Description
+                      type: TEXTAREA
+                    - label: Date du constat
+                      type: DATE
+                      defaultValue: SYSDATE
+                    - label: Heure du constat (facultatif)
+                      type: TIMESLOT
+                      optional: true
+                - title: Usurpation d'identité de la part du professionnel
+                  ccrfCode:
+                    - '271'
+                  tags:
+                    - ReponseConso
+                  detailInputs:
+                    - label: Qu'est-ce qui est trompeur ou mensonger&#160;?
+                      type: RADIO
+                      options:
+                        - Le discours du professionnel
+                        - Le site internet
+                        - Les documents mis à votre disposition par le professionnel (flyer, plaquette de présentation...)
+                        - Autre (à préciser)
+                    - label: Description
+                      type: TEXTAREA
+                    - label: Date du constat
+                      type: DATE
+                      defaultValue: SYSDATE
+                    - label: Heure du constat (facultatif)
+                      type: TIMESLOT
+                      optional: true
+                - title: Présentation des travaux comme étant obligatoires
+                  ccrfCode:
+                    - '271'
+                  tags:
+                    - ReponseConso
+                  detailInputs:
+                    - label: Qu'est-ce qui est trompeur ou mensonger&#160;?
+                      type: RADIO
+                      options:
+                        - Le discours du professionnel
+                        - Le site internet
+                        - Les documents mis à votre disposition par le professionnel (flyer, plaquette de présentation...)
+                        - Autre (à préciser)
+                    - label: Description
+                      type: TEXTAREA
+                    - label: Date du constat
+                      type: DATE
+                      defaultValue: SYSDATE
+                    - label: Heure du constat (facultatif)
+                      type: TIMESLOT
+                      optional: true
+                - title: Promesse d'économies d'énergie surestimées
+                  ccrfCode:
+                    - '271'
+                  tags:
+                    - ReponseConso
+                  detailInputs:
+                    - label: Qu'est-ce qui est trompeur ou mensonger&#160;?
+                      type: RADIO
+                      options:
+                        - Le discours du professionnel
+                        - Le site internet
+                        - Les documents mis à votre disposition par le professionnel (flyer, plaquette de présentation...)
+                        - Autre (à préciser)
+                    - label: Description
+                      type: TEXTAREA
+                    - label: Date du constat
+                      type: DATE
+                      defaultValue: SYSDATE
+                    - label: Heure du constat (facultatif)
+                      type: TIMESLOT
+                      optional: true
+                - title: Autre
+                  detailInputs:
+                    - label: Qu'est-ce qui est trompeur ou mensonger&#160;?
+                      type: RADIO
+                      options:
+                        - Le discours du professionnel
+                        - Le site internet
+                        - Les documents mis à votre disposition par le professionnel (flyer, plaquette de présentation...)
+                        - Autre (à préciser)
+                    - label: À propos de quoi est-ce trompeur&#160;?
+                      type: RADIO
+                      options:
+                        - Le prix
+                        - La nature des travaux
+                        - Les qualités et aptitudes du professionnel (artisans, normes...)
+                    - label: Description
+                      type: TEXTAREA
+                    - label: Date du constat
+                      type: DATE
+                      defaultValue: SYSDATE
+                    - label: Heure du constat (facultatif)
+                      type: TIMESLOT
+                      optional: true
+            - title: Contrainte du professionnel
+              tags:
+                - ReponseConso
+              ccrfCode:
+                - '23C'
+                - '23D'
+              reponseconsoCode:
+                - '210'
+              detailInputs:
+                - label: Précisez les informations sur le contexte
+                  type: TEXTAREA
+                - label: Date du constat
+                  type: DATE
+                  defaultValue: SYSDATE
+                - label: Heure du constat (facultatif)
+                  type: TIMESLOT
+                  optional: true             
+            - title: Autre
+              reponseconsoCode:
+                - '446'
+        - title: Prestation
+          example: 'Exemple : malfaçons sur le chantier, travaux commencés mais jamais terminés'
+          ccrfCode:
+            - '161'
+            - '334'
+          subcategories:
+            - title: Malfaçon
+              example: Constat d'un défaut résultant d'une mauvaise exécution des travaux
+              reponseconsoCode:
+                - '446'
+                - '442'
+            - title: Les travaux ne sont toujours pas terminés
+              reponseconsoCode:
+                - '2213'
+                - '2214'
+                - '2216'
+              tags:
+                - LitigeContractuel
+        - title: Contrat
+          example: 'Exemple : contrat non respecté, délai de rétractation, clause abusive'
+          subcategories:
+            - title: Droit de rétractation
+              example: Une fois le contrat signé, vous souhaitez revenir en arrière
+              ccrfCode:
+                - '21A'
+                - '21D'
+              subcategoriesTitle: Où avez-vous signé le contrat ?
+              subcategories:
+                - title: À votre domicile
+                  example: Un démarcheur est venu chez vous
+                  ccrfCode:
+                    - '220'
+                    - '221'
+                  tags:
+                    - ReponseConso
+                  reponseconsoCode:
+                    - '2213'
+                    - '2214'
+                    - '2203'
+                - title: À distance
+                  example: 'Exemple : sur internet'
+                  ccrfCode:
+                    - '220'
+                    - '221'
+                  tags:
+                    - ReponseConso
+                  reponseconsoCode:
+                    - '621'
+                - title: Au lieu habituel d'activité du professionnel
+                  information:
+                    title: Vous ne pouvez plus vous retracter
+                    content: Il n'y a pas de délai de rétractation pour votre cas.
+                    outOfScope: true
+                - title: Sur un stand dans une foire ou salon
+                  subcategoriesTitle: Avez-vous un crédit affecté ?
+                  ccrfCode:
+                    - '220'
+                    - '221'
+                  subcategories:
+                    - title: Non
+                      reponseconsoCode:
+                        - '2206'
+                        - '2214'
+                        - '2213'
+                        - '411'
+                      information:
+                        title: Vous ne pouvez plus vous retracter
+                        content: Il n'y a pas de délai de rétractation pour votre cas.
+                        outOfScope: true
+                    - title: Oui
+                      reponseconsoCode:
+                        - '446'
+            - title: Contrat non respecté
+              ccrfCode:
+                - '21C'
+                - '21D'
+                - '226'
+              reponseconsoCode:
+                - '443'
+              tags:
+                - LitigeContractuel
+            - title: Clause abusive
+              example: Vous souhaitez dénoncer une clause qui vous est particulièrement défavorable
+              ccrfCode:
+                - '21C'
+              reponseconsoCode:
+                - '214'
+              tags:
+                - ReponseConso
+                - LitigeContractuel
+            - title: Autre
+              tags:
+                - LitigeContractuel
+        - title: Crédits pour les travaux / garanties
+          example: "Défaut d'information, absence de remise du contrat de crédit, engagement financier mensuel supérieur à celui annoncé par le vendeur, annonce d'autofinancement de l'installation"
+          ccrfCode:
+            - '21A'
+          tags:
+            - LitigeContractuel
+          subcategories:
+            - title: Crédit destiné à financer vos travaux
+              example: Crédit affecté au contrat de travaux / rénovation
+              ccrfCode:
+                - '23A'
+                - '23B'
+                - '23C'
+              subcategories:
+                - title: Absence d'informations
+                  ccrfCode:
+                    - '21A'
+                    - '23A'
+                    - '23B'
+                    - '23C'
+                  tags:
+                    - ReponseConso
+                  reponseconsoCode:
+                    - '2406'
+                    - '411'
+                    - '2206'
+                  subcategories:
+                    - title: Avant la souscription
+                    - title: Vous ne saviez pas que vous vous engagiez pour des travaux
+                    - title: Vous ne saviez pas que vous vous engagiez pour un crédit
+                    - title: Vous n'avez pas reçu de contrat
+                - title: Autre
+                  example: "Engagement financier mensuel supérieur à celui annoncé par le vendeur ; annonce d’autofinancement de l’installation"
+            - title: Garanties
+              ccrfCode:
+                - '23A'
+                - '23B'
+                - '23C'
+              reponseconsoCode:
+                - '469'
+              subcategories:
+                - title: Garantie de parfait achèvement
+                - title: Garantie biennale
+                  tags:
+                    - ReponseConso
+                  reponseconsoCode:
+                  - '411'
+                - title: Garantie décennale
+                - title: Responsabilité contractuelle de droit commun
+        - title: Autre
+          tags:
+            - LitigeContractuel
+    - title: Isolation
+      example: "L'isolation des murs, des combles, du garage/sous-sol, le remplacement de portes/fenêtres"
+      subcategories:
+        - title: Prix
+          example: 'Exemple : prix non affiché, devis non respecté'
+          ccrfCode:
+            - '21B'
+            - '213'
+          tags:
+          - LitigeContractuel
+          subcategories:
+            - title: Prix exagéré / élevé
+              information:
+                title: Ceci ne constitue pas un motif de signalement.
+                content: Les professionnels ont le droit de choisir leurs prix.
+                  <br />Par contre, les prix doivent être clairement indiqués pour que vous soyez au courant avant d'acheter ou de commander.
+                outOfScope: true
+            - title: Prix final non conforme au prix annoncé
+              reponseconsoCode:
+                - '451'
+                - '418'
+              tags:
+                - ReponseConso
+            - title: Prix non affiché
+              reponseconsoCode:
+                - '212'
+              tags:
+                - ReponseConso
+        - title: Publicité et pratique de l'entreprise
+          example: "Exemple : absence d'information, information trompeuse ou mensongère, démarchage"
+          tags:
+            - LitigeContractuel
+          ccrfCode:
+            - '21A'
+            - '23B'
+          subcategories:
+            - title: Absence d'information ou information incomplète
+              tags:
+                - LitigeContractuel
+                - ReponseConso
+              subcategories:
+                - title: Caractéristiques techniques des produits non précisées
+                  ccrfCode:
+                    - '273'
+                  reponseconsoCode:
+                    - '411'
+                - title: Prix indiqué de manière globale et non détaillée
+                  reponseconsoCode:
+                    - '411'
+                    - '212'
+                - title: Date de livraison des produits ou réalisation des travaux non précisée
+                  reponseconsoCode:
+                    - '414'
+                    - '413'
+                - title: Autre
+                  reponseconsoCode:
+                    - '411'
+            - title: Démarchage à domicile
+              companyKind: LOCATION
+              ccrfCode:
+                - '221'
+                - '226'
+              reponseconsoCode:
+                - '221'
+              tags:
+                - ReponseConso
+                - DemarchageADomicile
+              detailInputs:
+                - label: Que s'est-il passé ?
+                  type: RADIO
+                  options:
+                    - Le vendeur s'est fait passer pour une autre entreprise (à préciser)
+                    - Le vendeur m'a fait signer des papiers sans me dire que c'était un contrat ou un bon de commande.
+                    - Autre (à préciser)
+                - label: Avez-vous payé au moment du démarchage&#160;?
+                  type: RADIO
+                  options:
+                    - Oui
+                    - Non
+                - label: Date du démarchage
+                  type: DATE
+                  defaultValue: SYSDATE
+            - title: Information mensongère ou trompeuse
+              tags:
+                - ReponseConso
+              ccrfCode:
+                - '23B'
+              reponseconsoCode:
+                - '210'
+              subcategories:
+                - title: Mise en avant d'un label ou d'un signe de qualité non ou plus détenu
+                  ccrfCode:
+                    - '271'
+                    - '275'
+                  tags:
+                    - ReponseConso
+                  detailInputs:
+                    - label: Qu'est-ce qui est trompeur ou mensonger&#160;?
+                      type: RADIO
+                      options:
+                        - Le discours du professionnel
+                        - Le site internet
+                        - Les documents mis à votre disposition par le professionnel (flyer, plaquette de présentation...)
+                        - Autre (à préciser)
+                    - label: Description
+                      type: TEXTAREA
+                    - label: Date du constat
+                      type: DATE
+                      defaultValue: SYSDATE
+                    - label: Heure du constat (facultatif)
+                      type: TIMESLOT
+                      optional: true
+                - title: Référence abusive à des partenariats avec l'État ou de grandes entreprises d'énergie
+                  ccrfCode:
+                    - '271'
+                  tags:
+                    - ReponseConso
+                  detailInputs:
+                    - label: Qu'est-ce qui est trompeur ou mensonger&#160;?
+                      type: RADIO
+                      options:
+                        - Le discours du professionnel
+                        - Le site internet
+                        - Les documents mis à votre disposition par le professionnel (flyer, plaquette de présentation...)
+                        - Autre (à préciser)
+                    - label: Description
+                      type: TEXTAREA
+                    - label: Date du constat
+                      type: DATE
+                      defaultValue: SYSDATE
+                    - label: Heure du constat (facultatif)
+                      type: TIMESLOT
+                      optional: true
+                - title: Utilisation de termes laissant croire qu'il s'agit d'une structure publique
+                  ccrfCode:
+                    - '271'
+                  tags:
+                    - ReponseConso
+                  detailInputs:
+                    - label: Qu'est-ce qui est trompeur ou mensonger&#160;?
+                      type: RADIO
+                      options:
+                        - Le discours du professionnel
+                        - Le site internet
+                        - Les documents mis à votre disposition par le professionnel (flyer, plaquette de présentation...)
+                        - Autre (à préciser)
+                    - label: Description
+                      type: TEXTAREA
+                    - label: Date du constat
+                      type: DATE
+                      defaultValue: SYSDATE
+                    - label: Heure du constat (facultatif)
+                      type: TIMESLOT
+                      optional: true
+                - title: Usurpation d'identité de la part du professionnel
+                  ccrfCode:
+                    - '271'
+                  tags:
+                    - ReponseConso
+                  detailInputs:
+                    - label: Qu'est-ce qui est trompeur ou mensonger&#160;?
+                      type: RADIO
+                      options:
+                        - Le discours du professionnel
+                        - Le site internet
+                        - Les documents mis à votre disposition par le professionnel (flyer, plaquette de présentation...)
+                        - Autre (à préciser)
+                    - label: Description
+                      type: TEXTAREA
+                    - label: Date du constat
+                      type: DATE
+                      defaultValue: SYSDATE
+                    - label: Heure du constat (facultatif)
+                      type: TIMESLOT
+                      optional: true
+                - title: Présentation des travaux comme étant obligatoires
+                  ccrfCode:
+                    - '271'
+                  tags:
+                    - ReponseConso
+                  detailInputs:
+                    - label: Qu'est-ce qui est trompeur ou mensonger&#160;?
+                      type: RADIO
+                      options:
+                        - Le discours du professionnel
+                        - Le site internet
+                        - Les documents mis à votre disposition par le professionnel (flyer, plaquette de présentation...)
+                        - Autre (à préciser)
+                    - label: Description
+                      type: TEXTAREA
+                    - label: Date du constat
+                      type: DATE
+                      defaultValue: SYSDATE
+                    - label: Heure du constat (facultatif)
+                      type: TIMESLOT
+                      optional: true
+                - title: Promesse d'économies d'énergie surestimées
+                  ccrfCode:
+                    - '271'
+                  tags:
+                    - ReponseConso
+                  detailInputs:
+                    - label: Qu'est-ce qui est trompeur ou mensonger&#160;?
+                      type: RADIO
+                      options:
+                        - Le discours du professionnel
+                        - Le site internet
+                        - Les documents mis à votre disposition par le professionnel (flyer, plaquette de présentation...)
+                        - Autre (à préciser)
+                    - label: Description
+                      type: TEXTAREA
+                    - label: Date du constat
+                      type: DATE
+                      defaultValue: SYSDATE
+                    - label: Heure du constat (facultatif)
+                      type: TIMESLOT
+                      optional: true
+                - title: Autre
+                  detailInputs:
+                    - label: Qu'est-ce qui est trompeur ou mensonger&#160;?
+                      type: RADIO
+                      options:
+                        - Le discours du professionnel
+                        - Le site internet
+                        - Les documents mis à votre disposition par le professionnel (flyer, plaquette de présentation...)
+                        - Autre (à préciser)
+                    - label: À propos de quoi est-ce trompeur&#160;?
+                      type: RADIO
+                      options:
+                        - Le prix
+                        - La nature des travaux
+                        - Les qualités et aptitudes du professionnel (artisans, normes...)
+                    - label: Description
+                      type: TEXTAREA
+                    - label: Date du constat
+                      type: DATE
+                      defaultValue: SYSDATE
+                    - label: Heure du constat (facultatif)
+                      type: TIMESLOT
+                      optional: true
+            - title: Contrainte du professionnel
+              tags:
+                - ReponseConso
+              ccrfCode:
+                - '23C'
+                - '23D'
+              reponseconsoCode:
+                - '210'
+              detailInputs:
+                - label: Précisez les informations sur le contexte
+                  type: TEXTAREA
+                - label: Date du constat
+                  type: DATE
+                  defaultValue: SYSDATE
+                - label: Heure du constat (facultatif)
+                  type: TIMESLOT
+                  optional: true             
+            - title: Autre
+        - title: Prestation
+          example: 'Exemple : malfaçons sur le chantier, travaux commencés mais jamais terminés'
+          ccrfCode:
+            - '161'
+            - '334'
+          subcategories:
+            - title: Malfaçon
+              example: Constat d'un défaut résultant d'une mauvaise exécution des travaux
+              reponseconsoCode:
+                - '446'
+            - title: Les travaux ne sont toujours pas terminés
+              reponseconsoCode:
+                - '443'
+              tags:
+                - LitigeContractuel
+        - title: Contrat
+          example: 'Exemple : contrat non respecté, délai de rétractation, clause abusive'
+          subcategories:
+            - title: Droit de rétractation
+              example: Une fois le contrat signé, vous souhaitez revenir en arrière
+              ccrfCode:
+                - '21A'
+                - '21D'
+              subcategoriesTitle: Où avez-vous signé le contrat ?
+              subcategories:
+                - title: À votre domicile
+                  example: Un démarcheur est venu chez vous
+                  ccrfCode:
+                    - '221'
+                    - '226'
+                  tags:
+                    - ReponseConso
+                  reponseconsoCode:
+                    - '2213'
+                    - '2214'
+                - title: À distance
+                  example: 'Exemple : sur internet'
+                  ccrfCode:
+                    - '220'
+                    - '221'
+                  tags:
+                    - ReponseConso
+                  reponseconsoCode:
+                    - '2213'
+                    - '2214'
+                - title: Au lieu habituel d'activité du professionnel
+                  information:
+                    title: Vous ne pouvez plus vous retracter
+                    content: Il n'y a pas de délai de rétractation pour votre cas.
+                    outOfScope: true
+                - title: Sur un stand dans une foire ou salon
+                  subcategoriesTitle: Avez-vous un crédit affecté ?
+                  ccrfCode:
+                    - '220'
+                    - '221'
+                  subcategories:
+                    - title: Non
+                      information:
+                        title: Vous ne pouvez plus vous retracter
+                        content: Il n'y a pas de délai de rétractation pour votre cas.
+                        outOfScope: true
+                    - title: Oui
+                      reponseconsoCode:
+                        - '2206'
+                        - '2214'
+                        - '2213'
+            - title: Contrat non respecté
+              ccrfCode:
+                - '21C'
+                - '21D'
+                - '226'
+              reponseconsoCode:
+                - '443'
+              tags:
+                - LitigeContractuel
+            - title: Clause abusive
+              example: Vous souhaitez dénoncer une clause qui vous est particulièrement défavorable
+              ccrfCode:
+                - '21C'
+              reponseconsoCode:
+                - '214'
+              tags:
+                - ReponseConso
+                - LitigeContractuel
+            - title: Autre
+              tags:
+                - LitigeContractuel
+        - title: Crédits pour les travaux / garanties
+          example: "Défaut d'information, absence de remise du contrat de crédit, engagement financier mensuel supérieur à celui annoncé par le vendeur, annonce d'autofinancement de l'installation"
+          ccrfCode:
+            - '21A'
+          tags:
+            - LitigeContractuel
+          subcategories:
+            - title: Crédit financé pour vos travaux
+              example: Crédit affecté au contrat de travaux / rénovation
+              ccrfCode:
+                - '23A'
+                - '23B'
+                - '23C'
+              subcategories:
+                - title: Absence d'informations
+                  ccrfCode:
+                    - '21A'
+                    - '23A'
+                    - '23B'
+                    - '23C'
+                  tags:
+                    - ReponseConso
+                  reponseconsoCode:
+                    - '2406'
+                    - '411'
+                    - '2206'
+                  subcategories:
+                    - title: Avant la souscription
+                    - title: Vous ne saviez pas que vous vous engagiez pour des travaux
+                    - title: Vous ne saviez pas que vous vous engagiez pour un crédit
+                    - title: Vous n'avez pas reçu de contrat
+                - title: Autre
+                  example: "Engagement financier mensuel supérieur à celui annoncé par le vendeur ; annonce d’autofinancement de l’installation"
+            - title: Garanties
+              ccrfCode:
+                - '23A'
+                - '23B'
+                - '23C'
+              reponseconsoCode:
+                - '469'
+              subcategories:
+                - title: Garantie de parfait achèvement
+                - title: Garantie biennale
+                  tags:
+                    - ReponseConso
+                  reponseconsoCode:
+                    - '411'
+                - title: Garantie décennale
+                - title: Responsabilité contractuelle de droit commun
+        - title: Autre
+          tags:
+            - LitigeContractuel
+    - title: Ventilation
+      subcategories:
+        - title: Prix
+          example: 'Exemple : prix non affiché, devis non respecté'
+          ccrfCode:
+            - '21B'
+            - '213'
+          tags:
+          - LitigeContractuel
+          subcategories:
+            - title: Prix exagéré / élevé
+              information:
+                title: Ceci ne constitue pas un motif de signalement.
+                content: Les professionnels ont le droit de choisir leurs prix.
+                  <br />Par contre, les prix doivent être clairement indiqués pour que vous soyez au courant avant d'acheter ou de commander.
+                outOfScope: true
+            - title: Prix final non conforme au prix annoncé
+              reponseconsoCode:
+                - '451'
+                - '418'
+              tags:
+                - ReponseConso
+            - title: Prix non affiché
+              reponseconsoCode:
+                - '212'
+              tags:
+                - ReponseConso
+        - title: Publicité et pratique de l'entreprise
+          example: "Exemple : absence d'information, information trompeuse ou mensongère, démarchage"
+          tags:
+            - LitigeContractuel
+          ccrfCode:
+            - '21A'
+            - '23B'
+          subcategories:
+            - title: Absence d'information ou information incomplète
+              tags:
+                - LitigeContractuel
+                - ReponseConso
+              subcategories:
+                - title: Caractéristiques techniques des produits non précisées
+                  ccrfCode:
+                    - '273'
+                  reponseconsoCode:
+                    - '411'
+                - title: Prix indiqué de manière globale et non détaillée
+                  reponseconsoCode:
+                    - '411'
+                    - '212'
+                - title: Date de livraison des produits ou réalisation des travaux non précisée
+                  reponseconsoCode:
+                    - '414'
+                    - '413'
+                - title: Autre
+                  reponseconsoCode:
+                    - '411'
+            - title: Démarchage à domicile
+              companyKind: LOCATION
+              ccrfCode:
+                - '221'
+                - '226'
+              reponseconsoCode:
+                - '221'
+              tags:
+                - ReponseConso
+                - DemarchageADomicile
+              detailInputs:
+                - label: Que s'est-il passé ?
+                  type: RADIO
+                  options:
+                    - Le vendeur s'est fait passer pour une autre entreprise (à préciser)
+                    - Le vendeur m'a fait signer des papiers sans me dire que c'était un contrat ou un bon de commande.
+                    - Autre (à préciser)
+                - label: Avez-vous payé au moment du démarchage&#160;?
+                  type: RADIO
+                  options:
+                    - Oui
+                    - Non
+                - label: Date du démarchage
+                  type: DATE
+                  defaultValue: SYSDATE
+            - title: Information mensongère ou trompeuse
+              tags:
+                - ReponseConso
+              ccrfCode:
+                - '23B'
+              reponseconsoCode:
+                - '210'
+              subcategories:
+                - title: Mise en avant d'un label ou d'un signe de qualité non ou plus détenu
+                  ccrfCode:
+                    - '271'
+                    - '275'
+                  tags:
+                    - ReponseConso
+                  detailInputs:
+                    - label: Qu'est-ce qui est trompeur ou mensonger&#160;?
+                      type: RADIO
+                      options:
+                        - Le discours du professionnel
+                        - Le site internet
+                        - Les documents mis à votre disposition par le professionnel (flyer, plaquette de présentation...)
+                        - Autre (à préciser)
+                    - label: Description
+                      type: TEXTAREA
+                    - label: Date du constat
+                      type: DATE
+                      defaultValue: SYSDATE
+                    - label: Heure du constat (facultatif)
+                      type: TIMESLOT
+                      optional: true
+                - title: Référence abusive à des partenariats avec l'État ou de grandes entreprises d'énergie
+                  ccrfCode:
+                    - '271'
+                  tags:
+                    - ReponseConso
+                  detailInputs:
+                    - label: Qu'est-ce qui est trompeur ou mensonger&#160;?
+                      type: RADIO
+                      options:
+                        - Le discours du professionnel
+                        - Le site internet
+                        - Les documents mis à votre disposition par le professionnel (flyer, plaquette de présentation...)
+                        - Autre (à préciser)
+                    - label: Description
+                      type: TEXTAREA
+                    - label: Date du constat
+                      type: DATE
+                      defaultValue: SYSDATE
+                    - label: Heure du constat (facultatif)
+                      type: TIMESLOT
+                      optional: true
+                - title: Utilisation de termes laissant croire qu'il s'agit d'une structure publique
+                  ccrfCode:
+                    - '271'
+                  tags:
+                    - ReponseConso
+                  detailInputs:
+                    - label: Qu'est-ce qui est trompeur ou mensonger&#160;?
+                      type: RADIO
+                      options:
+                        - Le discours du professionnel
+                        - Le site internet
+                        - Les documents mis à votre disposition par le professionnel (flyer, plaquette de présentation...)
+                        - Autre (à préciser)
+                    - label: Description
+                      type: TEXTAREA
+                    - label: Date du constat
+                      type: DATE
+                      defaultValue: SYSDATE
+                    - label: Heure du constat (facultatif)
+                      type: TIMESLOT
+                      optional: true
+                - title: Usurpation d'identité de la part du professionnel
+                  ccrfCode:
+                    - '23C'
+                  tags:
+                    - ReponseConso
+                  detailInputs:
+                    - label: Qu'est-ce qui est trompeur ou mensonger&#160;?
+                      type: RADIO
+                      options:
+                        - Le discours du professionnel
+                        - Le site internet
+                        - Les documents mis à votre disposition par le professionnel (flyer, plaquette de présentation...)
+                        - Autre (à préciser)
+                    - label: Description
+                      type: TEXTAREA
+                    - label: Date du constat
+                      type: DATE
+                      defaultValue: SYSDATE
+                    - label: Heure du constat (facultatif)
+                      type: TIMESLOT
+                      optional: true
+                - title: Présentation des travaux comme étant obligatoires
+                  ccrfCode:
+                    - '271'
+                  tags:
+                    - ReponseConso
+                  detailInputs:
+                    - label: Qu'est-ce qui est trompeur ou mensonger&#160;?
+                      type: RADIO
+                      options:
+                        - Le discours du professionnel
+                        - Le site internet
+                        - Les documents mis à votre disposition par le professionnel (flyer, plaquette de présentation...)
+                        - Autre (à préciser)
+                    - label: Description
+                      type: TEXTAREA
+                    - label: Date du constat
+                      type: DATE
+                      defaultValue: SYSDATE
+                    - label: Heure du constat (facultatif)
+                      type: TIMESLOT
+                      optional: true
+                - title: Promesse d'économies d'énergie surestimées
+                  ccrfCode:
+                    - '271'
+                  tags:
+                    - ReponseConso
+                  detailInputs:
+                    - label: Qu'est-ce qui est trompeur ou mensonger&#160;?
+                      type: RADIO
+                      options:
+                        - Le discours du professionnel
+                        - Le site internet
+                        - Les documents mis à votre disposition par le professionnel (flyer, plaquette de présentation...)
+                        - Autre (à préciser)
+                    - label: Description
+                      type: TEXTAREA
+                    - label: Date du constat
+                      type: DATE
+                      defaultValue: SYSDATE
+                    - label: Heure du constat (facultatif)
+                      type: TIMESLOT
+                      optional: true
+                - title: Autre
+                  detailInputs:
+                    - label: Qu'est-ce qui est trompeur ou mensonger&#160;?
+                      type: RADIO
+                      options:
+                        - Le discours du professionnel
+                        - Le site internet
+                        - Les documents mis à votre disposition par le professionnel (flyer, plaquette de présentation...)
+                        - Autre (à préciser)
+                    - label: À propos de quoi est-ce trompeur&#160;?
+                      type: RADIO
+                      options:
+                        - Le prix
+                        - La nature des travaux
+                        - Les qualités et aptitudes du professionnel (artisans, normes...)
+                    - label: Description
+                      type: TEXTAREA
+                    - label: Date du constat
+                      type: DATE
+                      defaultValue: SYSDATE
+                    - label: Heure du constat (facultatif)
+                      type: TIMESLOT
+                      optional: true
+            - title: Contrainte du professionnel
+              tags:
+                - ReponseConso
+              ccrfCode:
+                - '23C'
+                - '23D'
+              reponseconsoCode:
+                - '210'
+              detailInputs:
+                - label: Précisez les informations sur le contexte
+                  type: TEXTAREA
+                - label: Date du constat
+                  type: DATE
+                  defaultValue: SYSDATE
+                - label: Heure du constat (facultatif)
+                  type: TIMESLOT
+                  optional: true             
+            - title: Autre
+        - title: Prestation
+          example: 'Exemple : malfaçons sur le chantier, travaux commencés mais jamais terminés'
+          ccrfCode:
+            - '161'
+            - '334'
+          subcategories:
+            - title: Malfaçon
+              example: Constat d'un défaut résultant d'une mauvaise exécution des travaux
+              reponseconsoCode:
+                - '446'
+            - title: Les travaux ne sont toujours pas terminés
+              reponseconsoCode:
+                - '443'
+              tags:
+                - LitigeContractuel
+        - title: Contrat
+          example: 'Exemple : contrat non respecté, délai de rétractation, clause abusive'
+          subcategories:
+            - title: Droit de rétractation
+              example: Une fois le contrat signé, vous souhaitez revenir en arrière
+              subcategoriesTitle: Où avez-vous signé le contrat ?
+              subcategories:
+                - title: À votre domicile
+                  example: Un démarcheur est venu chez vous
+                  ccrfCode:
+                    - '221'
+                    - '226'
+                  tags:
+                    - ReponseConso
+                  reponseconsoCode:
+                    - '2213'
+                    - '2214'
+                - title: À distance
+                  example: 'Exemple : sur internet'
+                  ccrfCode:
+                    - '220'
+                    - '221'
+                  tags:
+                    - ReponseConso
+                  reponseconsoCode:
+                    - '2213'
+                    - '2214'
+                - title: Au lieu habituel d'activité du professionnel
+                  information:
+                    title: Vous ne pouvez plus vous retracter
+                    content: Il n'y a pas de délai de rétractation pour votre cas.
+                    outOfScope: true
+                - title: Sur un stand dans une foire ou salon
+                  ccrfCode:
+                    - '220'
+                    - '221'
+                  subcategoriesTitle: Avez-vous un crédit affecté ?
+                  subcategories:
+                    - title: Non
+                      information:
+                        title: Vous ne pouvez plus vous retracter
+                        content: Il n'y a pas de délai de rétractation pour votre cas.
+                        outOfScope: true
+                    - title: Oui
+                      reponseconsoCode:
+                        - '2206'
+                        - '2214'
+                        - '2213'
+            - title: Contrat non respecté
+              ccrfCode:
+                - '21C'
+                - '21D'
+                - '226'
+              reponseconsoCode:
+                - '443'
+              tags:
+                - LitigeContractuel
+            - title: Clause abusive
+              example: Vous souhaitez dénoncer une clause qui vous est particulièrement défavorable
+              ccrfCode:
+                - '21C'
+              reponseconsoCode:
+                - '214'
+              tags:
+                - ReponseConso
+                - LitigeContractuel
+            - title: Autre
+              tags:
+                - LitigeContractuel
+        - title: Crédits pour les travaux / garanties
+          example: "Défaut d'information, absence de remise du contrat de crédit, engagement financier mensuel supérieur à celui annoncé par le vendeur, annonce d'autofinancement de l'installation"
+          tags:
+            - LitigeContractuel
+          subcategories:
+            - title: Crédit financé pour vos travaux
+              example: Crédit affecté au contrat de travaux / rénovation
+              subcategories:
+                - title: Absence d'informations
+                  ccrfCode:
+                    - '21A'
+                    - '23A'
+                    - '23B'
+                    - '23C'
+                  tags:
+                    - ReponseConso
+                  reponseconsoCode:
+                    - '2406'
+                    - '411'
+                    - '2206'
+                  subcategories:
+                    - title: Avant la souscription
+                    - title: Vous ne saviez pas que vous vous engagiez pour des travaux
+                    - title: Vous ne saviez pas que vous vous engagiez pour un crédit
+                    - title: Vous n'avez pas reçu de contrat
+                - title: Autre
+                  example: "Engagement financier mensuel supérieur à celui annoncé par le vendeur ; annonce d’autofinancement de l’installation"
+            - title: Garanties
+              ccrfCode:
+                - '23A'
+                - '23B'
+                - '23C'
+              reponseconsoCode:
+                - '469'
+              subcategories:
+                - title: Garantie de parfait achèvement
+                - title: Garantie biennale
+                  tags:
+                    - ReponseConso
+                  reponseconsoCode:
+                    - '411'
+                - title: Garantie décennale
+                - title: Responsabilité contractuelle de droit commun
+        - title: Autre
+          tags:
+            - LitigeContractuel
+    - title: Production d'énergies renouvelables
+      example: L'instation d'équipements solaire, petites éoliennes domestiques
+      subcategories:
+        - title: Prix
+          example: 'Exemple : prix non affiché, devis non respecté'
+          ccrfCode:
+            - '21B'
+          tags:
+          - LitigeContractuel
+          subcategories:
+            - title: Prix exagéré / élevé
+              information:
+                title: Ceci ne constitue pas un motif de signalement.
+                content: Les professionnels ont le droit de choisir leurs prix.
+                  <br />Par contre, les prix doivent être clairement indiqués pour que vous soyez au courant avant d'acheter ou de commander.
+                outOfScope: true
+            - title: Prix final non conforme au prix annoncé
+              reponseconsoCode:
+                - '451'
+                - '418'
+              tags:
+                - ReponseConso
+            - title: Prix non affiché
+              reponseconsoCode:
+                - '212'
+              tags:
+                - ReponseConso
+        - title: Publicité et pratique de l'entreprise
+          example: "Exemple : absence d'information, information trompeuse ou mensongère, démarchage"
+          tags:
+            - LitigeContractuel
+          ccrfCode:
+            - '23B'
+          subcategories:
+            - title: Absence d'information ou information incomplète
+              tags:
+                - LitigeContractuel
+                - ReponseConso
+              subcategories:
+                - title: Caractéristiques techniques des produits non précisées
+                  reponseconsoCode:
+                    - '411'
+                - title: Prix indiqué de manière globale et non détaillée
+                  reponseconsoCode:
+                    - '411'
+                    - '212'
+                - title: Date de livraison des produits ou réalisation des travaux non précisée
+                  reponseconsoCode:
+                    - '414'
+                    - '413'
+                - title: Autre
+                  reponseconsoCode:
+                    - '411'
+            - title: Démarchage à domicile
+              companyKind: LOCATION
+              ccrfCode:
+                - '221'
+                - '226'
+              reponseconsoCode:
+                - '221'
+              tags:
+                - ReponseConso
+                - DemarchageADomicile
+              detailInputs:
+                - label: Que s'est-il passé ?
+                  type: RADIO
+                  options:
+                    - Le vendeur s'est fait passer pour une autre entreprise (à préciser)
+                    - Le vendeur m'a fait signer des papiers sans me dire que c'était un contrat ou un bon de commande.
+                    - Autre (à préciser)
+                - label: Avez-vous payé au moment du démarchage&#160;?
+                  type: RADIO
+                  options:
+                    - Oui
+                    - Non
+                - label: Date du démarchage
+                  type: DATE
+                  defaultValue: SYSDATE
+            - title: Information mensongère ou trompeuse
+              tags:
+                - ReponseConso
+              ccrfCode:
+                - '23B'
+              reponseconsoCode:
+                - '210'
+              subcategories:
+                - title: Mise en avant d'un label ou d'un signe de qualité non ou plus détenu
+                  ccrfCode:
+                    - '271'
+                    - '275'
+                  tags:
+                    - ReponseConso
+                  detailInputs:
+                    - label: Qu'est-ce qui est trompeur ou mensonger&#160;?
+                      type: RADIO
+                      options:
+                        - Le discours du professionnel
+                        - Le site internet
+                        - Les documents mis à votre disposition par le professionnel (flyer, plaquette de présentation...)
+                        - Autre (à préciser)
+                    - label: Description
+                      type: TEXTAREA
+                    - label: Date du constat
+                      type: DATE
+                      defaultValue: SYSDATE
+                    - label: Heure du constat (facultatif)
+                      type: TIMESLOT
+                      optional: true
+                - title: Référence abusive à des partenariats avec l'État ou de grandes entreprises d'énergie
+                  ccrfCode:
+                    - '271'
+                  tags:
+                    - ReponseConso
+                  detailInputs:
+                    - label: Qu'est-ce qui est trompeur ou mensonger&#160;?
+                      type: RADIO
+                      options:
+                        - Le discours du professionnel
+                        - Le site internet
+                        - Les documents mis à votre disposition par le professionnel (flyer, plaquette de présentation...)
+                        - Autre (à préciser)
+                    - label: Description
+                      type: TEXTAREA
+                    - label: Date du constat
+                      type: DATE
+                      defaultValue: SYSDATE
+                    - label: Heure du constat (facultatif)
+                      type: TIMESLOT
+                      optional: true
+                - title: Utilisation de termes laissant croire qu'il s'agit d'une structure publique
+                  ccrfCode:
+                    - '271'
+                  tags:
+                    - ReponseConso
+                  detailInputs:
+                    - label: Qu'est-ce qui est trompeur ou mensonger&#160;?
+                      type: RADIO
+                      options:
+                        - Le discours du professionnel
+                        - Le site internet
+                        - Les documents mis à votre disposition par le professionnel (flyer, plaquette de présentation...)
+                        - Autre (à préciser)
+                    - label: Description
+                      type: TEXTAREA
+                    - label: Date du constat
+                      type: DATE
+                      defaultValue: SYSDATE
+                    - label: Heure du constat (facultatif)
+                      type: TIMESLOT
+                      optional: true
+                - title: Usurpation d'identité de la part du professionnel
+                  ccrfCode:
+                    - '23C'
+                  tags:
+                    - ReponseConso
+                  detailInputs:
+                    - label: Qu'est-ce qui est trompeur ou mensonger&#160;?
+                      type: RADIO
+                      options:
+                        - Le discours du professionnel
+                        - Le site internet
+                        - Les documents mis à votre disposition par le professionnel (flyer, plaquette de présentation...)
+                        - Autre (à préciser)
+                    - label: Description
+                      type: TEXTAREA
+                    - label: Date du constat
+                      type: DATE
+                      defaultValue: SYSDATE
+                    - label: Heure du constat (facultatif)
+                      type: TIMESLOT
+                      optional: true
+                - title: Présentation des travaux comme étant obligatoires
+                  ccrfCode:
+                    - '271'
+                  tags:
+                    - ReponseConso
+                  detailInputs:
+                    - label: Qu'est-ce qui est trompeur ou mensonger&#160;?
+                      type: RADIO
+                      options:
+                        - Le discours du professionnel
+                        - Le site internet
+                        - Les documents mis à votre disposition par le professionnel (flyer, plaquette de présentation...)
+                        - Autre (à préciser)
+                    - label: Description
+                      type: TEXTAREA
+                    - label: Date du constat
+                      type: DATE
+                      defaultValue: SYSDATE
+                    - label: Heure du constat (facultatif)
+                      type: TIMESLOT
+                      optional: true
+                - title: Promesse d'économies d'énergie surestimées
+                  ccrfCode:
+                    - '271'
+                  tags:
+                    - ReponseConso
+                  detailInputs:
+                    - label: Qu'est-ce qui est trompeur ou mensonger&#160;?
+                      type: RADIO
+                      options:
+                        - Le discours du professionnel
+                        - Le site internet
+                        - Les documents mis à votre disposition par le professionnel (flyer, plaquette de présentation...)
+                        - Autre (à préciser)
+                    - label: Description
+                      type: TEXTAREA
+                    - label: Date du constat
+                      type: DATE
+                      defaultValue: SYSDATE
+                    - label: Heure du constat (facultatif)
+                      type: TIMESLOT
+                      optional: true
+                - title: Autre
+                  detailInputs:
+                    - label: Qu'est-ce qui est trompeur ou mensonger&#160;?
+                      type: RADIO
+                      options:
+                        - Le discours du professionnel
+                        - Le site internet
+                        - Les documents mis à votre disposition par le professionnel (flyer, plaquette de présentation...)
+                        - Autre (à préciser)
+                    - label: À propos de quoi est-ce trompeur&#160;?
+                      type: RADIO
+                      options:
+                        - Le prix
+                        - La nature des travaux
+                        - Les qualités et aptitudes du professionnel (artisans, normes...)
+                    - label: Description
+                      type: TEXTAREA
+                    - label: Date du constat
+                      type: DATE
+                      defaultValue: SYSDATE
+                    - label: Heure du constat (facultatif)
+                      type: TIMESLOT
+                      optional: true
+            - title: Contrainte du professionnel
+              tags:
+                - ReponseConso
+              ccrfCode:
+                - '23C'
+                - '23D'
+              reponseconsoCode:
+                - '210'
+              detailInputs:
+                - label: Précisez les informations sur le contexte
+                  type: TEXTAREA
+                - label: Date du constat
+                  type: DATE
+                  defaultValue: SYSDATE
+                - label: Heure du constat (facultatif)
+                  type: TIMESLOT
+                  optional: true             
+            - title: Autre
+        - title: Prestation
+          example: 'Exemple : malfaçons sur le chantier, travaux commencés mais jamais terminés'
+          ccrfCode:
+            - '161'
+            - '334'
+          subcategories:
+            - title: Malfaçon
+              example: Constat d'un défaut résultant d'une mauvaise exécution des travaux
+              reponseconsoCode:
+                - '446'
+            - title: Les travaux ne sont toujours pas terminés
+              reponseconsoCode:
+                - '443'
+              tags:
+                - LitigeContractuel
+        - title: Contrat
+          example: 'Exemple : contrat non respecté, délai de rétractation, clause abusive'
+          subcategories:
+            - title: Droit de rétractation
+              example: Une fois le contrat signé, vous souhaitez revenir en arrière
+              subcategoriesTitle: Où avez-vous signé le contrat ?
+              subcategories:
+                - title: À votre domicile
+                  example: Un démarcheur est venu chez vous
+                  ccrfCode:
+                    - '221'
+                    - '226'
+                  tags:
+                    - ReponseConso
+                  reponseconsoCode:
+                    - '2213'
+                    - '2214'
+                - title: À distance
+                  example: 'Exemple : sur internet'
+                  ccrfCode:
+                    - '220'
+                    - '221'
+                  tags:
+                    - ReponseConso
+                  reponseconsoCode:
+                    - '2213'
+                    - '2214'
+                - title: Au lieu habituel d'activité du professionnel
+                  information:
+                    title: Vous ne pouvez plus vous retracter
+                    content: Il n'y a pas de délai de rétractation pour votre cas.
+                    outOfScope: true
+                - title: Sur un stand dans une foire ou salon
+                  ccrfCode:
+                    - '220'
+                    - '221'
+                  subcategoriesTitle: Avez-vous un crédit affecté ?
+                  subcategories:
+                    - title: Non
+                      information:
+                        title: Vous ne pouvez plus vous retracter
+                        content: Il n'y a pas de délai de rétractation pour votre cas.
+                        outOfScope: true
+                    - title: Oui
+                      reponseconsoCode:
+                        - '2206'
+                        - '2214'
+                        - '2213'
+            - title: Contrat non respecté
+              ccrfCode:
+                - '21C'
+                - '21D'
+                - '226'
+              reponseconsoCode:
+                - '443'
+              tags:
+                - LitigeContractuel
+            - title: Clause abusive
+              example: Vous souhaitez dénoncer une clause qui vous est particulièrement défavorable
+              ccrfCode:
+                - '21C'
+              reponseconsoCode:
+                - '214'
+              tags:
+                - ReponseConso
+                - LitigeContractuel
+            - title: Autre
+              tags:
+                - LitigeContractuel
+        - title: Crédits pour les travaux / garanties
+          example: "Défaut d'information, absence de remise du contrat de crédit, engagement financier mensuel supérieur à celui annoncé par le vendeur, annonce d'autofinancement de l'installation"
+          tags:
+            - LitigeContractuel
+          subcategories:
+            - title: Crédit financé pour vos travaux
+              example: Crédit affecté au contrat de travaux / rénovation
+              subcategories:
+                - title: Absence d'informations
+                  ccrfCode:
+                    - '21A'
+                    - '23A'
+                    - '23B'
+                    - '23C'
+                  tags:
+                    - ReponseConso
+                  reponseconsoCode:
+                    - '2406'
+                    - '411'
+                    - '2206'
+                  subcategories:
+                    - title: Avant la souscription
+                    - title: Vous ne saviez pas que vous vous engagiez pour des travaux
+                    - title: Vous ne saviez pas que vous vous engagiez pour un crédit
+                    - title: Vous n'avez pas reçu de contrat
+                - title: Autre
+                  example: "Engagement financier mensuel supérieur à celui annoncé par le vendeur ; annonce d’autofinancement de l’installation"
+            - title: Garanties
+              ccrfCode:
+                - '21A'
+                - '23A'
+                - '23B'
+              reponseconsoCode:
+                - '469'
+              subcategories:
+                - title: Garantie de parfait achèvement
+                - title: Garantie biennale
+                  tags:
+                    - ReponseConso
+                  reponseconsoCode:
+                    - '411'
+                - title: Garantie décennale
+                - title: Responsabilité contractuelle de droit commun
+        - title: Autre
+          tags:
+            - LitigeContractuel
+- title: Autres Travaux
+  example: "Par exemple : la construction de votre maison ou l'adaption de votre logement à un handicape ou pour une personne agée"
   subcategories:
     - title: Prix
       example: 'Exemple : prix non affiché, devis non respecté'
@@ -100,6 +2125,7 @@
         - title: Prix final non conforme au prix annoncé
           reponseconsoCode:
             - '451'
+            - '418'
           tags:
             - ReponseConso
         - title: Prix non affiché
@@ -107,11 +2133,12 @@
             - '212'
           tags:
             - ReponseConso
-    - title: Publicité et pratique du professionnel
-      example: "Exemple : absence d'information, information trompeuse ou mensongère, démarchage"
+    - title: Publicité et pratique de l'entreprise
+      example: "Exemple : absence d'information, information trompeuse ou mensongère, démarchage à domicile"
       tags:
         - LitigeContractuel
       ccrfCode:
+        - '21A'
         - '23B'
       subcategories:
         - title: Absence d'information ou information incomplète
@@ -135,6 +2162,9 @@
                 - '411'
         - title: Démarchage à domicile
           companyKind: LOCATION
+          ccrfCode:
+            - '220'
+            - '221'
           reponseconsoCode:
             - '221'
           tags:
@@ -155,29 +2185,18 @@
             - label: Date du démarchage
               type: DATE
               defaultValue: SYSDATE
-        - title: Démarchage téléphonique
-          companyKind: PHONE
-          reponseconsoCode:
-            - '221'
-          tags:
-            #            - ReponseConso
-            - DemarchageTelephonique
-          detailInputs:
-            - label: Date de l'appel
-              type: DATE
-              defaultValue: SYSDATE
-            - label: Est-ce que le vendeur s'est fait passer pour une autre entreprise&#160;?
-              type: RADIO
-              options:
-                - Non
-                - Oui (à préciser)
-            - label: Décrivez nous plus en détails ce qui s'est passé
-              type: TEXTAREA
         - title: Information mensongère ou trompeuse
+          tags:
+            - ReponseConso
+          ccrfCode:
+            - '23B'
           reponseconsoCode:
             - '210'
           subcategories:
             - title: Mise en avant d'un label ou d'un signe de qualité non ou plus détenu
+              ccrfCode:
+                - '271'
+                - '275'
               tags:
                 - ReponseConso
               detailInputs:
@@ -197,6 +2216,8 @@
                   type: TIMESLOT
                   optional: true
             - title: Référence abusive à des partenariats avec l'État ou de grandes entreprises d'énergie
+              ccrfCode:
+                - '271'
               tags:
                 - ReponseConso
               detailInputs:
@@ -216,6 +2237,8 @@
                   type: TIMESLOT
                   optional: true
             - title: Utilisation de termes laissant croire qu'il s'agit d'une structure publique
+              ccrfCode:
+                - '271'
               tags:
                 - ReponseConso
               detailInputs:
@@ -235,6 +2258,8 @@
                   type: TIMESLOT
                   optional: true
             - title: Usurpation d'identité de la part du professionnel
+              ccrfCode:
+                - '23C'
               tags:
                 - ReponseConso
               detailInputs:
@@ -254,6 +2279,8 @@
                   type: TIMESLOT
                   optional: true
             - title: Présentation des travaux comme étant obligatoires
+              ccrfCode:
+                - '271'
               tags:
                 - ReponseConso
               detailInputs:
@@ -273,6 +2300,8 @@
                   type: TIMESLOT
                   optional: true
             - title: Promesse d'économies d'énergie surestimées
+              ccrfCode:
+                - '271'
               tags:
                 - ReponseConso
               detailInputs:
@@ -315,6 +2344,11 @@
                   type: TIMESLOT
                   optional: true
         - title: Contrainte du professionnel
+          tags:
+            - ReponseConso
+          ccrfCode:
+            - '23C'
+            - '23D'
           reponseconsoCode:
             - '210'
           detailInputs:
@@ -325,10 +2359,13 @@
               defaultValue: SYSDATE
             - label: Heure du constat (facultatif)
               type: TIMESLOT
-              optional: true
+              optional: true             
         - title: Autre
     - title: Prestation
       example: 'Exemple : malfaçons sur le chantier, travaux commencés mais jamais terminés'
+      ccrfCode:
+        - '161'
+        - '334'
       subcategories:
         - title: Malfaçon
           example: Constat d'un défaut résultant d'une mauvaise exécution des travaux
@@ -348,6 +2385,9 @@
           subcategories:
             - title: À votre domicile
               example: Un démarcheur est venu chez vous
+              ccrfCode:
+                - '221'
+                - '226'
               tags:
                 - ReponseConso
               reponseconsoCode:
@@ -355,6 +2395,9 @@
                 - '2214'
             - title: À distance
               example: 'Exemple : sur internet'
+              ccrfCode:
+                - '220'
+                - '221'
               tags:
                 - ReponseConso
               reponseconsoCode:
@@ -366,6 +2409,9 @@
                 content: Il n'y a pas de délai de rétractation pour votre cas.
                 outOfScope: true
             - title: Sur un stand dans une foire ou salon
+              ccrfCode:
+                - '220'
+                - '221'
               subcategoriesTitle: Avez-vous un crédit affecté ?
               subcategories:
                 - title: Non
@@ -379,12 +2425,18 @@
                     - '2214'
                     - '2213'
         - title: Contrat non respecté
+          ccrfCode:
+            - '21C'
+            - '21D'
+            - '226'
           reponseconsoCode:
             - '443'
           tags:
             - LitigeContractuel
         - title: Clause abusive
           example: Vous souhaitez dénoncer une clause qui vous est particulièrement défavorable
+          ccrfCode:
+            - '21C'
           reponseconsoCode:
             - '214'
           tags:
@@ -393,32 +2445,51 @@
         - title: Autre
           tags:
             - LitigeContractuel
-    - title: Crédits / garanties
+    - title: Crédits pour les travaux / garanties
+      example: "Défaut d'information, absence de remise du contrat de crédit, engagement financier mensuel supérieur à celui annoncé par le vendeur, annonce d'autofinancement de l'installation"
       tags:
         - LitigeContractuel
       subcategories:
         - title: Crédit financé pour vos travaux
           example: Crédit affecté au contrat de travaux / rénovation
+          ccrfCode:
+            - '23A'
+            - '23B'
+            - '23C'
           subcategories:
             - title: Absence d'informations
+              ccrfCode:
+                - '21A'
+                - '23A'
+                - '23B'
+                - '23C'
               tags:
                 - ReponseConso
+              reponseconsoCode:
+                - '2406'
+                - '411'
+                - '2206'
               subcategories:
                 - title: Avant la souscription
-                  reponseconsoCode:
-                    - '2406'
-                    - '411'
-                - title: Vous ne saviez pas que vous vous engagiez
-                  reponseconsoCode:
-                    - '2206'
-                    - '210'
+                - title: Vous ne saviez pas que vous vous engagiez pour des travaux
+                - title: Vous ne saviez pas que vous vous engagiez pour un crédit
+                - title: Vous n'avez pas reçu de contrat
             - title: Autre
+              example: "Engagement financier mensuel supérieur à celui annoncé par le vendeur ; annonce d’autofinancement de l’installation"
         - title: Garanties
+          ccrfCode:
+            - '23A'
+            - '23B'
+            - '23C'
           reponseconsoCode:
             - '469'
           subcategories:
             - title: Garantie de parfait achèvement
             - title: Garantie biennale
+              tags:
+                - ReponseConso
+              reponseconsoCode:
+                - '411'
             - title: Garantie décennale
             - title: Responsabilité contractuelle de droit commun
     - title: Autre
