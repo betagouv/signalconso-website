@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">signalconso-website</string>
+    <string name="title_activity_main">signalconso-website</string>
+    <string name="package_name">com.signalconso.app</string>
+    <string name="custom_url_scheme">com.signalconso.app</string>
+</resources>
