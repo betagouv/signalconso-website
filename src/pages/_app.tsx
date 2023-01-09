@@ -22,7 +22,7 @@ import {Analytic} from 'analytic/analytic'
 import {useEffect, useState} from 'react'
 import {ConfigProvider, useConfig} from 'context/ConfigContext'
 import Head from 'next/head'
-
+import {App as CapacitorApp} from '@capacitor/app'
 interface ScAppProps extends AppProps {
   emotionCache?: EmotionCache
 }
@@ -35,6 +35,10 @@ const App = ({emotionCache = clientSideEmotionCache, ...props}: ScAppProps) => {
     const matomo = Matomo.init({siteId: appConfig.matomo_siteId, url: appConfig.matomo_url})
     const atInternet = Atinternet.init()
     setAnalytic(Analytic.init({appConfig, matomo, atInternet}))
+
+    CapacitorApp.addListener('backButton', () => {
+      window.history.back()
+    })
   }, [])
   const [analytic, setAnalytic] = useState<Analytic | undefined>()
   return (

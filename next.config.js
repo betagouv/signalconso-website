@@ -63,6 +63,9 @@ const securityHeaders = [
 module.exports = withTM({
   productionBrowserSourceMaps: true,
   reactStrictMode: true,
+  images: {
+    unoptimized: true,
+  },
   async redirects() {
     return redirects
   },
