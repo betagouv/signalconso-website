@@ -23,6 +23,7 @@ import {useEffect, useState} from 'react'
 import {ConfigProvider, useConfig} from 'context/ConfigContext'
 import Head from 'next/head'
 import {App as CapacitorApp} from '@capacitor/app'
+import {Camera, CameraResultType} from '@capacitor/camera'
 interface ScAppProps extends AppProps {
   emotionCache?: EmotionCache
 }

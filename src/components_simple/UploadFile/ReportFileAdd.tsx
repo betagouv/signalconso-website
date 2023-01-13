@@ -1,4 +1,4 @@
-import React, {useRef, useState} from 'react'
+import React, {useMemo, useRef, useState} from 'react'
 import {Box, Button, CircularProgress, Icon, Theme, Tooltip} from '@mui/material'
 import {reportFileConfig} from './reportFileConfig'
 import {useI18n} from 'i18n/I18n'
@@ -9,6 +9,8 @@ import {useToast} from 'hooks/useToast'
 import {SxProps} from '@mui/system'
 import {FileOrigin, UploadedFile} from '../../model/UploadedFile'
 import {compressFile} from '../../utils/compressFile'
+import {Camera, CameraResultType} from '@capacitor/camera'
+import {LocalStorageEntity} from '../../utils/localStorageApi'
 
 const styles: {[key: string]: SxProps<Theme>} = {
   root: {
@@ -53,9 +55,20 @@ export const ReportFileAdd = ({onUploaded, fileOrigin}: Props) => {
   const [uploading, setUploading] = useState(false)
   const [errorMessage, setErrorMessage] = useState<string | undefined>(undefined)
   const fileInputEl = useRef<HTMLInputElement>(null)
+  const storage = useMemo(() => new LocalStorageEntity<boolean>('yoyoyoyoyyo'), [])
+
+  storage.save(true)
+  const takePicture = async () => {
+    const image = await Camera.getPhoto({
+      quality: 90,
+      allowEditing: true,
+      resultType: CameraResultType.Uri,
+    })
+  }
 
   const openFileSelection = () => {
-    fileInputEl.current!.click()
+    // fileInputEl.current!.click()
+    takePicture()
   }
 
   const handleChange = (files: FileList | null) => {
@@ -95,12 +108,19 @@ export const ReportFileAdd = ({onUploaded, fileOrigin}: Props) => {
     )
   } else {
     return (
-      <Tooltip title={m.addAttachmentFile}>
+      <Tooltip title="TEST TEST">
         <Button sx={styles.root} onClick={openFileSelection}>
           <Box sx={styles.body}>
             <Icon sx={styles.icon}>add</Icon>
           </Box>
-          <input style={{display: 'none'}} type="file" ref={fileInputEl} onChange={e => handleChange(e.target.files)} />
+          <input
+            style={{display: 'none'}}
+            accept="image/*"
+            capture="environment"
+            type="image"
+            ref={fileInputEl}
+            onChange={e => handleChange(e.target.files)}
+          />
         </Button>
       </Tooltip>
     )
