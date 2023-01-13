@@ -2,10 +2,13 @@
   example: 'Exemple : Démarchage Compte Personnel de Formation, CPF, information trompeuse ou mensongère'
   subcategories:
     - title: Démarchage
-      example: "Exemple : Démarchage téléphonique, SMS, en message personnel sur les réseaux sociaux"
+      example: "Exemple : Démarchage téléphonique, SMS, démarchage par courriel, en message personnel sur les réseaux sociaux"
       ccrfCode:
         - '23E'
       subcategories:
+        - title: Démarchage par courriel
+          ccrfCode:
+            - '221'
         - title: Démarchage à domicile
           ccrfCode:
             - '221'
