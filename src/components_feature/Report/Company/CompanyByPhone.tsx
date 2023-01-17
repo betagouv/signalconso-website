@@ -46,6 +46,7 @@ export const CompanyByPhone = ({value, children, ...props}: Props) => {
                 <Txt color="disabled"> *</Txt>
               </Txt>
               <ScInput
+                type="number"
                 defaultValue={value}
                 disabled={!!phone}
                 {...register('phone', {

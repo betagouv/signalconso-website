@@ -53,6 +53,7 @@ export const ReportFileAdd = ({onUploaded, fileOrigin}: Props) => {
   const {toastError} = useToast()
 
   const [uploading, setUploading] = useState(false)
+  const [fileName, setfileName] = useState('NONE')
   const [errorMessage, setErrorMessage] = useState<string | undefined>(undefined)
   const fileInputEl = useRef<HTMLInputElement>(null)
   const storage = useMemo(() => new LocalStorageEntity<boolean>('yoyoyoyoyyo'), [])
@@ -64,6 +65,14 @@ export const ReportFileAdd = ({onUploaded, fileOrigin}: Props) => {
       allowEditing: true,
       resultType: CameraResultType.Uri,
     })
+      .then(c => {
+        setfileName(c.webPath ?? '')
+        return c
+      })
+      .then(c => (c.webPath ? fetch(c.webPath) : Promise.reject('Cannot find b64 str')))
+      .then(c => c.blob())
+      .then(b => new File([b], 'test.jpg'))
+      .then(b => handleFileChange(b))
   }
 
   const openFileSelection = () => {
@@ -98,6 +107,30 @@ export const ReportFileAdd = ({onUploaded, fileOrigin}: Props) => {
     }
   }
 
+  const handleFileChange = (file: File) => {
+    if (file.size > appConfig.upload_maxSizeMb * 1024 * 1024) {
+      toastError({message: m.invalidSize(appConfig.upload_maxSizeMb)})
+      setErrorMessage(m.invalidSize(appConfig.upload_maxSizeMb))
+      return
+    }
+    if (file.name.length > 255) {
+      toastError({message: m.invalidFileNameSize(255)})
+      setErrorMessage(m.invalidFileNameSize(255))
+      return
+    }
+    setUploading(true)
+    compressFile(file)
+      .then(file => {
+        return file
+      })
+      .then(file => signalConsoApiClient.uploadDocument(file, fileOrigin))
+      .then(onUploaded)
+      .catch(e => {
+        toastError(e)
+      })
+      .finally(() => setUploading(false))
+  }
+
   if (uploading) {
     return (
       <Box sx={styles.root}>
@@ -108,7 +141,7 @@ export const ReportFileAdd = ({onUploaded, fileOrigin}: Props) => {
     )
   } else {
     return (
-      <Tooltip title="TEST TEST">
+      <Tooltip title={fileName}>
         <Button sx={styles.root} onClick={openFileSelection}>
           <Box sx={styles.body}>
             <Icon sx={styles.icon}>add</Icon>

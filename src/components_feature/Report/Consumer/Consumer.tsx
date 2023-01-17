@@ -1,7 +1,7 @@
 import {Panel, PanelBody} from 'components_simple/Panel/Panel'
 import {useI18n} from 'i18n/I18n'
-import {Grid} from '@mui/material'
-import React, {useState} from 'react'
+import {Button, Grid} from '@mui/material'
+import React, {useMemo, useState} from 'react'
 import {ScInput} from 'components_simple/Input/ScInput'
 import {FormLayout} from 'components_simple/FormLayout/FormLayout'
 import {Controller, useForm} from 'react-hook-form'
@@ -24,6 +24,7 @@ import {useAnalyticContext} from 'analytic/AnalyticContext'
 import {EventCategories, ReportEventActions} from 'analytic/analytic'
 import {useWindowWidth} from 'hooks/useWindowWidth'
 import {Gender, genders, ReportDraft} from '../../../model/ReportDraft'
+import {LocalStorageEntity} from '../../../utils/localStorageApi'
 
 interface ConsumerForm {
   firstName: string
@@ -64,6 +65,7 @@ export const _Consumer = ({
   const _form = useForm<ConsumerForm>()
   const _analytic = useAnalyticContext()
   const {isXsOrLess} = useWindowWidth()
+  const storageName = useMemo(() => new LocalStorageEntity<string>('name'), [])
 
   const showContactAgreement = ReportDraft.isTransmittableToPro(draft) && draft.contractualDispute !== true
 
@@ -112,7 +114,7 @@ export const _Consumer = ({
                 <FormLayout label={m.firstName} required>
                   <ScInput
                     fullWidth
-                    defaultValue={draft.consumer?.firstName ?? ''}
+                    defaultValue={draft.consumer?.firstName ?? storageName.load()}
                     {..._form.register('firstName', {required: {value: true, message: m.required}})}
                     {...getErrors('firstName')}
                   />
@@ -128,6 +130,7 @@ export const _Consumer = ({
                   />
                 </FormLayout>
               </Grid>
+              <Button onClick={() => storageName.save(_form.getValues().firstName)}>Save name </Button>
             </Grid>
           </Row>
           <Row icon="email">
@@ -152,6 +155,7 @@ export const _Consumer = ({
             <Row icon="phone">
               <FormLayout label={m.phoneOptional}>
                 <ScInput
+                  type="number"
                   placeholder={m.phonePlaceholder}
                   fullWidth
                   defaultValue={draft.consumer?.phone ?? ''}
