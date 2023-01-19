@@ -24,6 +24,8 @@ import {ConfigProvider, useConfig} from 'context/ConfigContext'
 import Head from 'next/head'
 import {App as CapacitorApp} from '@capacitor/app'
 import {Camera, CameraResultType} from '@capacitor/camera'
+import {Capacitor} from '@capacitor/core'
+
 interface ScAppProps extends AppProps {
   emotionCache?: EmotionCache
 }
@@ -90,7 +92,7 @@ const _App = ({Component, pageProps, router}: AppProps) => {
           <Component {...pageProps} />
         </Box>
         <Header />
-        <Footer />
+        {!Capacitor.isNativePlatform() && <Footer />}
       </div>
     </>
   )
