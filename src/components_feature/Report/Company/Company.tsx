@@ -26,7 +26,6 @@ import {useAnalyticContext} from 'analytic/AnalyticContext'
 import {EventCategories, ReportEventActions} from 'analytic/analytic'
 import {CompanyDraft, ReportDraft} from '../../../model/ReportDraft'
 import {CompanySearchResult} from '../../../model/Company'
-import {CompanyKinds} from '../../../anomalies/Anomaly'
 
 interface CompanyProps {}
 
@@ -129,7 +128,10 @@ export const _Company = ({draft, onUpdateReportDraft}: CompanyWithRequiredProps)
                     companies={companies ?? []}
                     onSubmit={company => {
                       onUpdateReportDraft({
-                        companyDraft: company,
+                        companyDraft: {
+                          ...company,
+                          ...phoneOrWebsite,
+                        },
                       })
                     }}
                   />
@@ -143,7 +145,10 @@ export const _Company = ({draft, onUpdateReportDraft}: CompanyWithRequiredProps)
                     companies={companies ?? []}
                     onSubmit={company => {
                       onUpdateReportDraft({
-                        companyDraft: company,
+                        companyDraft: {
+                          ...company,
+                          ...phoneOrWebsite,
+                        },
                       })
                     }}
                   />
