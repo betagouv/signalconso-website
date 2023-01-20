@@ -54,3 +54,4 @@ src/anomalies/yml/anomalies.json
 !.yarn/releases
 !.yarn/sdks
 !.yarn/versions 
+/android/
