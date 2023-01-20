@@ -1,40 +1,64 @@
 - title: Téléphonie / internet
-  tags:
-    - LitigeContractuel
   subcategories:
     - title: 'Mon forfait : prix, contrat et facture'
-      example: 'Exemples : Une promotion non appliquée, une augmentation de tarif, une erreur dans la durée d’engagement de votre abonnement, une erreur de facturation…'
+      example: "Exemple : mon forfait a été augmenté, je ne suis pas d'accord avec ma facture"
       subcategories:
         - title: Le prix de mon forfait a été augmenté (ou va être augmenté)
           example: "Exemple : ajout automatique d'une option payante, augmentation du nombre d'heures, augmentation des données disponibles..."
           subcategoriesTitle: Pour quelle raison votre forfait a été augmenté (ou va être augmenté) ?
           subcategories:
-            - title: Modification concernant les SMS, MMS, données ou débit disponibles
-              example: "Exemple : augmentation du nombre d'heures, augmentation du nombre de sms, modification concernant les sms, mms ou appels..."
-              tags:
-                - ReponseConso
-              subcategoriesTitle: Avez-vous reçu un email ou un courrier pour vous prévenir (un mois avant) ?
+            - title: Augmentation du débit ou des données disponibles
+              example: 'Exemple : passage de 20 Go à 40 Go pour 5 euros de plus'
+              subcategoriesTitle: Avez-vous reçu un email ou un courrier pour vous prévenir (un mois avant) ?
+              ccrfCode:
+                - '21A'
               subcategories:
                 - title: Oui, j'ai été prévenu par email ou courrier
-                  information: !!import/single ../common/info/tel-Supportdurable.yml
-                - title: Non, j'ai reçu seulement un sms
                   reponseconsoCode:
                     - '421'
                     - '2202'
-                  information: !!import/single ../common/info/tel-Supportdurable.yml
+                  information: !!import/single ../common/info/tel.yml
+                - title: Non, j'ai reçu seulement un sms
+                  tags:
+                    - ReponseConso
+                    - LitigeContractuel
                 - title: Non, je n'ai rien reçu du tout
                   reponseconsoCode:
                     - '421'
-                  detailInputs:
-                    - label: Date du début de l'augementation (vous pouvez préciser le premier mois facturé)
-                      type: DATE
-                    - label: Quel est le nom de cette option ?
-                      type: TEXT
-                      placeholder: "Indiquez l'intitulé figurant la facture"
-                    - label: Quel est son prix ?
-                      type: TEXT
+                  tags:
+                    - ReponseConso
+                    - LitigeContractuel
+            - title: Modification concernant les sms, mms ou appels
+              tags:
+                - ReponseConso
+              example: "Exemple : augmentation du nombre d'heures, augmentation du nombre de sms..."
+              subcategoriesTitle: Avez-vous reçu un email ou un courrier pour vous prévenir (un mois avant) ?
+              ccrfCode:
+                - '21A'
+              subcategories:
+                - title: Oui, j'ai été prévenu par email ou courrier
+                  ccrfCode:
+                    - '226'
+                  information: !!import/single ../common/info/tel.yml
+                - title: Non, j'ai reçu seulement un sms
+                  ccrfCode:
+                    - '226'
+                  reponseconsoCode:
+                    - '421'
+                    - '2202'
+                  tags:
+                    - LitigeContractuel
+                - title: Non, je n'ai rien reçu du tout
+                  ccrfCode:
+                    - '421'
+                  reponseconsoCode:
+                    - '421'
+                  tags:
+                    - LitigeContractuel
             - title: Rajout d'une option payante
               example: 'Exemple : chaine télé supplémentaire, option cyber-sécurité, option livre audio, option musique...'
+              ccrfCode:
+                - '21A'
               subcategoriesTitle: Quel est le type d'option ?
               subcategories:
                 - title: option liée à la data (Go), aux appels, aux sms, au débit, à la présentation du numéro
@@ -43,69 +67,75 @@
                   subcategoriesTitle: Avez-vous reçu un email ou un courrier pour vous prévenir ?
                   subcategories:
                     - title: Oui, j'ai été prévenu par email ou courrier
+                      ccrfCode:
+                        - '226'
                       information: !!import/single ../common/info/tel.yml
-                    - title: Non, j'ai reçu seulement un SMS
-                      information: !!import/single ../common/info/tel-Supportdurable.yml
                     - title: Non, je n'ai rien reçu
+                      ccrfCode:
+                        - '421'
+                      tags:
+                        - LitigeContractuel
                       detailInputs:
                         - label: Date du début de l'option (vous pouvez préciser le premier mois facturé)
                           type: DATE
                         - label: Quel est le nom de cette option ?
                           type: TEXT
-                          placeholder: Indiquez l'intitulé figurant la facture
-                        - label: Quel est son prix ?
-                          type: TEXT
-                - title: option liée à la musique, des livres, une chaine télé, un anti-virus est rajoutée
+                          placeholder: "Indiquez l'intitulé figurant la facture"
+                - title: option liée à la musique, des livres, une chaine télé, un anti-virus
+                  ccrfCode:
+                    - '226'
                   reponseconsoCode:
                     - '421'
-                  subcategories:
-                    - title: J'avais déjà un service identique dans mon offre
-                      example: 'Exemple : j’ai déjà accès à la télévision et un bouquet de chaînes est rajouté à mon abonnement'
-                      subcategories:
-                        - title: Oui, j'ai été prévenu par email ou courrier
-                          information: !!import/single ../common/info/tel.yml
-                        - title: Non, j'ai reçu seulement un SMS
-                          information: !!import/single ../common/info/tel-Supportdurable.yml
-                        - title: Non, je n'ai rien reçu
-                          detailInputs:
-                            - label: Date du début de l'option (vous pouvez préciser le premier mois facturé)
-                              type: DATE
-                            - label: Quel est le nom de cette option ?
-                              type: TEXT
-                              placeholder: "Indiquez l'intitulé figurant la facture"
-                            - label: Quel est son prix ?
-                              type: TEXT
-                            - label: Comment avez-vous été prévenu de cette option ?
-                              type: RADIO
-                              options:
-                                - email
-                                - courrier papier
-                                - sms
-                                - message dans l'espace client
-                                - "je n'ai rien reçu"
-                            - label: Si vous avez reçu un courrier / email / sms, quelle est sa date ?
-                              type: DATE
-                              optional: true
-                    - title: Je n'avais pas déjà un service identique dans mon offre
-                      information: !!import/single ../common/info/tel.yml
+                  tags:
+                    - LitigeContractuel
+                  detailInputs:
+                    - label: À partir de quand cette option va-t-elle être payante ?
+                      type: DATE
+                    - label: Quel est le nom de cette option ?
+                      type: TEXT
+                      placeholder: "Indiquez l'intitulé figurant sur l'email ou la facture"
+                    - label: Quel est son prix ?
+                      type: TEXT
+                    - label: Comment avez-vous été prévenu de cette option ?
+                      type: RADIO
+                      options:
+                        - email
+                        - courrier papier
+                        - sms
+                        - message dans l'espace client
+                        - "je n'ai rien reçu"
+                    - label: Si vous avez reçu un courrier / email / sms, quelle est sa date ?
+                      type: DATE
+                      optional: true
             - title: Le lien pour refuser l'augmentation de mon forfait ne fonctionne pas
+              ccrfCode:
+                - '21A'
+                - '21E'
+                - '23B'
               reponseconsoCode:
                 - '444'
                 - '210'
               tags:
                 - ReponseConso
+                - LitigeContractuel
         - title: L'offre / la promotion que je devais avoir n'a pas été appliquée
+          ccrfCode:
+            - '23B'
           reponseconsoCode:
             - '2212'
             - '210'
           tags:
             - ReponseConso
+            - LitigeContractuel
         - title: Autre problème de facturation ou de contrat
+          ccrfCode:
+            - '23B'
           reponseconsoCode:
             - '2212'
             - '623'
           tags:
             - ReponseConso
+            - LitigeContractuel
           subcategories:
             - title: Utilisation de mon forfait à l'étranger
               reponseconsoCode:
@@ -116,131 +146,66 @@
                 - '457'
                 - '411'
     - title: Qualité du réseau
-      example: 'Exemple : je ne capte pas, je capte mal, débit faible, mon service de télévision est en panne, je ne peux pas recevoir la télévision avec mon offre ...'
+      example: 'Exemple : je ne capte pas, je capte mal, débit faible'
       information:
         title: La qualité du réseau est mauvaise
-        content: Les problèmes de réseau ou d'éligibilité ne peuvent pas être signalés sur SignalConso.
-          <br> Vous devez les signaler à l'ARCEP (Autorité de régulation des communications électroniques, des postes et de la distribution de la presse) sur leur site dédié  <a href="https://jalerte.arcep.fr/" target="_blank" /> J'alerte l'Arcep </a>
-    - title: Eligibilité à une offre
-      subcategories:
-        - title: Mon domicile n’est pas éligible à la fibre, à l’ADSL ou à une box 4G
-          information:
-            content: Les problèmes d'éligbilités ne peuvent pas être signalés sur SignalConso. <br> Vous devez les signaler à l'ARCEP (Autorité de régulation des communications électroniques, des postes et de la distribution de la presse) sur leur site dédié  <a href="https://jalerte.arcep.fr/" target="_blank" /> J'alerte l'Arcep </a>
-        - title: Mon domicile n’est pas éligible qu’à la fibre alors que je veux de l’ADSL
-          information:
-            content: Nous ne doutons pas que vous ayez réellement rencontré un problème mais... il ne s’agit pas d’une fraude.
-              <br> La loi permet aux entreprises de proposer les produits et les services de leur choix. Les opérateurs sont donc libres de commercialiser des offres utilisant une technologie spécifique plutôt qu’une autre.
-            actions:
-              - question: Que pouvez-vous faire&#160;?
-                answer:
-                  <b> Si un opérateur ne propose pas la technologie que vous souhaitez à l’adresse de votre domicile, il est possible qu’un autre opérateur le propose. Il vous faut comparer les offres.
-                  <br> Pour vous aider, vous pouvez vérifier votre éligibilité à une technologie pour les principaux opérateurs sur le site <a href="https://maconnexioninternet.arcep.fr/" target="_blank">maconnexioninternet.arcep.fr</a>.
-        - title: Un opérateur m’a annoncé éligible à une technologie alors que ce n’est pas le cas
+        content: Les problèmes de réseau ou d'éligibilité ne peuvent pas être signalés sur SignalConso. <br> Vous devez les signaler à l'ARCEP (Autorité de régulation des communications électroniques, des postes et de la distribution de la presse) sur leur site dédié  <a href="https://jalerte.arcep.fr/" target="_blank" /> J'alerte l'Arcep </a>
     - title: Résiliation / changement d'opérateur
+      tags:
+        - LitigeContractuel
       subcategories:
         - title: Frais de résiliation
+          ccrfCode:
+            - '21A'
           reponseconsoCode:
             - '477'
             - '473'
         - title: Restitution du matériel
+          ccrfCode:
+            - '21A'
           reponseconsoCode:
             - '477'
             - '473'
-        - title: Problème avec le RIO (Relevé d'Identité Opérateur) ou ma portabilité
-          tags:
-            - ReponseConso
+        - title: Problème avec le RIO (Relevé d'Identité Opérateur)
+          ccrfCode:
+            - '21A'
           reponseconsoCode:
-            - '210'
-          subcategories:
-            - title: Problème avec mon RIO
-              information:
-                title: Si vous souhaitez garder votre numéro de téléphone, vous ne devez pas résilier le contrat qui vous lie à l’opérateur.
-                content:
-                  C’est votre nouvel opérateur qui effectuera cette démarche dans le cadre d’une demande de portabilité. Votre nouvel opérateur vous demandera votre relevé d’identité opérateur (RIO) disponible automatiquement en appelant le 3179.
-                  <br> Si votre portabilité ne s’est pas effectuée le jour prévu.
-                actions:
-                  - question: Que pouvez-vous faire&#160;?
-                    answer:
-                      <br> Je contacte le service client du nouveau opérateur par téléphone ou par mail. Je peux demander une indemnisation pour tout retard ou abus dans la prestation de conservation du numéro.
-                      <br> Si je ne suis pas satifait. Je contact le médaiteur des communications gratuitement via <a href="https://www.mediation-telecom.org/" target="_blank">mediation-telecom.org</a>
-            - title: L'opérateur a perdu mon numéro
-              information:
-                title: Plusieurs SMS d’information doivent normalement vous être envoyés jusqu’au transfert effectif du numéro vers votre nouvel opérateur.
-                content: Si votre portabilité ne s’est pas effectuée le jour prévu.
-                actions:
-                  - question: Que pouvez-vous faire&#160;?
-                    answer:
-                      <br> Je contacte le service client du nouveau opérateur par téléphone ou par mail. Je peux demander une indemnisation pour tout retard ou abus dans la prestation de conservation du numéro.
-                      <br> Si je ne suis pas satifait. Je contact le médaiteur des communications gratuitement via <a href="https://www.mediation-telecom.org/" target="_blank">mediation-telecom.org</a>.
-            - title: Ma portabilité est en retard
-              information:
-                title: Plusieurs SMS d’information doivent normalement vous être envoyés jusqu’au transfert effectif du numéro vers votre nouvel opérateur.
-                content: Si votre portabilité ne s’est pas effectuée le jour prévu.
-                actions:
-                  - question: Que pouvez-vous faire&#160;?
-                    answer:
-                      <br> Je contacte le service client du nouveau opérateur par téléphone ou par mail. Je peux demander une indemnisation pour tout retard ou abus dans la prestation de conservation du numéro.
-                      <br> Si je ne suis pas satifait. Je contact le médaiteur des communications gratuitement via <a href="https://www.mediation-telecom.org/" target="_blank">mediation-telecom.org</a>.
+            - '477'
         - title: Mon ancien opérateur continue de me prélever
+          ccrfCode:
+            - '23B'
           reponseconsoCode:
             - '474'
-        - title: Le technicien n'est pas passé
-          information:
-            title: Le technicien ne s’est pas rendu à votre domicile
-            content: Si vous venez de changer d’opérateur ou de déménager en gardant votre numéro et que le technicien ne s’est pas rendu à votre domicile pour le rendez-vous d’installation. Vous avez droit à une indemnisation.
-            actions:
-              - question: Que pouvez-vous faire&#160;?
-                answer:
-                  <br> Je contacte le service client du nouveau opérateur par téléphone ou par mail. Je peux demander une indemnisation.
-                  <br> Si je ne suis pas satifait. Je contact le médaiteur des communications gratuitement via <a href="https://www.mediation-telecom.org/" target="_blank">mediation-telecom.org</a>.
     - title: Appels, sms ou emails indésirables
       example: 'Exemple : spams, appel incessant, rappel vers un numéro payant'
       subcategories:
         - title: J'ai répondu à un sms ou j'ai rappelé un numéro qui était payant sans le savoir
           information: !!import/single ../common/info/called-paid-number.yml
         - title: Je reçois des spams dans mes emails
+          ccrfCode:
+            - '23b'
           reponseconsoCode:
             - '2207'
             - '2218'
         - title: J'ai eu un problème de démarchage téléphonique
-          information:
-            title: Revenez en arrière et utilisez plutôt la catégorie spécifique
-            content: Renovation énergétique ? Utilisez la catégorie "Travaux / Rénovation" <br> Des appels indésirabls ? Utilisez la catégorie "Démarches abusif"
-    - title: Vol ou perte de téléphone
-      example: 'Je rencontre des problèmes liés à la perte ou au vol de mon téléphone portable'
-      subcategories:
-        - title: On m'a volé téléphone ou j'ai perdu mon téléphone
-          information:
-            title: Les problèmes liés à la perte ou au vol de votre téléphone portable ne peuvent être signalés sur SignalConso.
-            content:
-              <br> Alertez votre opérateur dès la constatation du vol ou de la perte de votre mobile, que vous soyez en France ou à l’étranger, afin que votre ligne soit suspendue et obtenir une nouvelle carte SIM
-              <br> En cas de vol de votre mobile, portez plainte au commissariat de police le plus proche ou à la gendarmerie dans les 48 heures suivant le sinistre.
-              <br> Si votre assurance couvre le vol ou la perte de votre mobile, contactez votre assureur qui vous donnera la marche à suivre.
-              <br> Le numéro IMEI (International Mobile Equipement Identity) associé à votre mobile vous sera demandé pour effectuer ces démarches.
-              <br> C'est quoi le numéro IMEI ?
-              <br> Ce numéro sert à identifier votre téléphone portable. Ce numéro est unique du téléphone (peu importe le propriétaire et l'opérateur). Un code IMEI est composé de 15 à 17 chiffres.
-        - title: On me réclame le paiement du crédit lié à l’achat de mon appareil, ou le paiement de la location, alors que je ne suis plus en possession de mon téléphone
-          information:
-            title: Les problèmes liés à la perte ou au vol de votre téléphone portable ne peuvent être signalés sur SignalConso.
-            content:
-              <br> La suspension de votre ligne, à la suite de la perte ou du vol de votre téléphone portable, n’entraîne pas l’arrêt de la facturation de votre abonnement. Le remboursement de l’abonnement au prorata de la durée de suspension de votre ligne pourra vous être accordé, si les Conditions Générales d’Abonnement de votre opérateur le prévoient.
-              <br> Si vous avez souscrit un contrat soumis à une période initiale d’engagement, la déclaration de vol ou de perte de portable ne constitue pas non plus un motif légitime de résiliation anticipée.
-              <br> Des pénalités sont susceptibles d’être facturées par l’opérateur si vous suspendez vos paiements ou les prélèvements auprès de votre banque.
-              <br> Vous pouvez écrire un courrier ou un e-mail à votre opérateur afin de lui demander de résoudre votre problème. Si la réponse du service client n’est pas satisfaisante pouvez écrire un courrier ou un e-mail au service consommateur de votre opérateur afin de lui demander de résoudre votre problème.
-              <br> Si vous n'avez pas de réponse de votre opérateur ou si la réponse ne vous satisfait pas, vous pouvez contacter le médiateur des communications électroniques à <a href="https://www.mediation-telecom.org/" target="_blank">mediation-telecom.org</a>.
-              <br> En cas de difficultés, vous pouvez les signaler à l’ARCEP (Autorité de régulation des communications électroniques, des postes et de la distribution de la presse) sur le site dédié <a href="https://jalerte.arcep.fr/" target="_blank">j’alerte l’Arcep</a>
-        - title: On me réclame le paiement d'abonnement, alors que je ne suis plus en possession de mon téléphone
-          information:
-            title: Les problèmes liés à la perte ou au vol de votre téléphone portable ne peuvent être signalés sur SignalConso.
-            content:
-              <br> La déclaration de vol ou de perte de portable ne constitue pas un motif légitime de résiliation permettant de vous exonérer de la facilité de paiement ou du crédit souscrit lors de l’achat de téléphone portable.
-              <br> De même, dans le cas où vous seriez engagé par un contrat de location de mobile, le vol ou la perte du terminal loué ne vous exonère pas du paiement des loyers restant à courir jusqu’à la fin de la période initiale d’engagement, ni des frais de non-restitution du mobile loué..
-              <br> Des pénalités sont susceptibles d’être facturées, si vous suspendez le paiement de vos loyers ou de vos remboursements auprès de votre banque.
-              <br> La souscription d’une assurance pourra vous permettre d’obtenir une indemnisation et de remplacer votre téléphone (une franchise peut toutefois être requise).
-        - title: Malgré l’assurance perte ou vol que j’ai souscrite pour mon téléphone
-          example: 'mon assureur refuse de répondre à mes demandes d’indemnisation, ou me réclame des justificatifs que j’ai déjà fournis ou sans rapport avec mon sinistre.'
+          ccrfCode:
+            - '227'
+          reponseconsoCode:
+            - '221'
+          companyKind: PHONE
           tags:
-            - ReponseConso
+            - DemarchageTelephonique
+          detailInputs:
+            - label: Date de l'appel
+              type: DATE
+              defaultValue: SYSDATE
+            - label: Est-ce que le vendeur s'est fait passer pour une autre entreprise&#160;?
+              type: RADIO
+              options:
+                - Non
+                - Oui (à préciser)
+            - label: Décrivez nous plus en détails ce qui s'est passé
+              type: TEXTAREA
     - title: Autre
       example: 'Exemple : téléphone acheté avec le forfait, service client injoignable'
       tags:
@@ -249,200 +214,20 @@
       subcategories:
         - title: Qualité du service client
           example: 'Exemple : pas de réponse du service client, service client payant'
+          ccrfCode:
+            - '23b'
           reponseconsoCode:
             - '466'
             - '467'
         - title: Téléphone acheté avec le forfait
+          ccrfCode:
+            - '21a'
           reponseconsoCode:
             - '447'
             - '464'
-        - title: Je conteste mon inscription au Fichier PREVENTEL
-          example: 'Je conteste mon inscription ou je souhaite obtenir l’effacement de mes données'
-          information:
-            title: Ce type de problème ne doit pas être signalé sur SignalConso.
-            content: Le fichier PREVENTEL est une base de données informatisée, autorisée par la CNIL. Il rassemble l’identité des clients qui ont des impayés de téléphonie mobile égaux ou supérieurs à 30 €, ainsi que celle des personnes ayant souscrit un contrat de téléphonie mobile de manière irrégulière, en présentant des pièces justificatives (carte d’identité, documents bancaires,...) falsifiées ou inexactes.
-            actions:
-              - question: Que pouvez-vous faire&#160;?
-                answer:
-                  <br> Si vous pensez être victime d’une inscription abusive, que votre identité figure toujours dans le fichier malgré régularisation de votre part ou au-delà de la durée de conservation autorisée (3 ans, ou 5 ans si vous faites l’objet d’au moins 3 inscriptions simultanément), vous devez contacter le service consommateur de l’opérateur à l’origine de cette inscription.
-                  <br>
-                  <br> Si vous ne savez pas qui est cet opérateur ou depuis quand date votre inscription, vous pouvez le demander sur le site <a href="https://www.preventel.fr/" target="_blanck">PREVENTEL</a>.
-                  <br>
-                  <br> Vous avez régularisé votre situation auprès de votre opérateur mais vous êtes toujours inscrit sur PREVENTEL, <a href="https://www.cnil.fr/fr/plaintes" target="_blanck">adressez une plainte à la CNIL</a>.
-                  <br>
-                  <br> Dans les autres cas (litige concernant la réalité ou le montant de la dette notamment), si vous n'avez pas de réponse de votre opérateur ou si la réponse ne vous satisfait pas, vous pouvez contacter le médiateur des communications électroniques à <a href="https://www.mediation-telecom.org/" target="_blank">mediation-telecom.org</a>.
-        - title: Je suis victime de pratiques agressives de la part d’une agence de recouvrement ou d’un commissaire de justice (ex-huissier de justice)
-          example: 'on me réclame des frais ou des pénalités de retard excessifs, le paiement d’une dette que je conteste'
-          subcategories:
-            - title: On me réclame des frais ou des pénalités de retard excessifs, le paiement d’une dette que je conteste.
-              information:
-                title: Ce type de problème ne doit pas être signalé sur SignalConso.
-                content:
-                  Votre opérateur peut, par l’intermédiaire d’une agence de recouvrement ou d’un commissaire de justice (ex-huissier de justice), vous adresser un courrier à titre amiable afin d’obtenir un paiement volontaire de votre part, en l’absence de décision de justice.
-                  <br> Vous pouvez écrire un courrier ou un e-mail à votre opérateur afin de lui demander de résoudre votre problème. Si la réponse du service client n’est pas satisfaisante pouvez écrire un courrier ou un e-mail au service consommateur de votre opérateur afin de lui demander de résoudre votre problème.
-                  <br> Si vous n'avez pas de réponse de votre opérateur ou si la réponse ne vous satisfait pas, vous pouvez contacter le médiateur des communications électroniques à <a href="https://www.mediation-telecom.org/" target="_blank">mediation-telecom.org</a>.
-                  <br> En cas de difficultés, vous pouvez les signaler à l’ARCEP (Autorité de régulation des communications électroniques, des postes et de la distribution de la presse) sur le site dédié <a href="https://jalerte.arcep.fr/" target="_blank">j’alerte l’Arcep</a>
-            - title: Je suis contacté à répétions.
-              information:
-                title: Ce type de problème ne doit pas être signalé sur SignalConso.
-                content: 'Le fait d’être contacté de façon répétées et insistantes ou victime de menaces peut dans certains cas être considéré comme une pratique agressive interdite par la loi.'
-                actions:
-                  - question: Que pouvez-vous faire&#160;?
-                    answer: <br> Je contacte l'Ordre des commissaire de justice sur le site <a href="https://commissaire-justice.fr/" target="_blank">commissaire-justice.fr</a>, s’il s’agit d’une société de recouvrement de créances.
-            - title: On me présente des documents à la présentation ou au contenu trompeur ou on porte atteinte à ma vie privée
-              information:
-                title: Ce type de problème ne doit pas être signalé sur SignalConso.
-                content: 'L’utilisation de documents trompeurs laissant penser qu&#39;il s&#39;agit une action de recouvrement forcé (après décision de justice) et vous menace de saisie, Ou les appels téléphoniques intempestifs, les visites à votre famille, à vos voisins, à votre employeur, susceptibles de porter atteinte à votre vie privée, sont des pratiques illégales.'
-                actions:
-                  - question: Que pouvez-vous faire&#160;?
-                    answer: <br> Je dénonce les faits auprès du procureur de la République.
-        - title: On me refuse la mise en place d’un prélèvement sur un compte bancaire situé dans la zone SEPA
-          example: Je ne peux pas payer avec mon compte bancaire en Belgique.
-          tags:
-            - ReponseConso
-        - title: J’ai un problème pour obtenir le déverrouillage (« désimlockage ») de mon téléphone portable
-          information:
-            title: Ce type de problème ne doit pas être signalé sur SignalConso.
-            content:
-              '<br> Vous pouvez demander à tout moment à l’opérateur qui vous a vendu un terminal verrouillé – et à lui seul – de le déverrouiller.
-              <br> La gratuité du déverrouillage dépend de l’existence ou non d’une durée d’engagement et de la durée écoulée depuis la date de conclusion du contrat.
-              <br> Contrat avec engagement :
-              <br> De manière générale, le déverrouillage est gratuit jusqu’à  six mois après la date de souscription de l’abonnement.  Au-delà, tous les opérateurs ont l’obligation de déverrouiller gratuitement et sans délai les terminaux qu’ils ont vendus verrouillés.
-              <br> Toutefois, pour les consommateurs abonnés à un opérateur membre de la Fédération Française des Télécommunications (Orange, Bouygues Télécom, SFR, OMEA TELECOM (Virgin Mobile, Télé 2 mobile, Breizh mobile, Casino Mobile), M6 Mobile, NRJ Mobile, La Poste Telecom, Universal Mobile), ce délai de déverrouillage gratuit est ramené à trois mois.
-              <br> En cas de contestation sur le montant principal réclamé, vous pouvez adresser un courrier ou un e-mail à votre opérateur afin de lui demander de résoudre votre problème Ou à son service consommateur.
-              <br> si vous n’avez pas de réponse de votre opérateur ou si la réponse ne vous satisfait pas, vous pouvez contacter le médiateur des communications électroniques à <a href="https://www.mediation-telecom.org/" target="_blank">mediation-telecom.org</a>.
-              <br> Vous devez les signaler à l’ARCEP (Autorité de régulation des communications électroniques, des postes et de la distribution de la presse) sur leur site dédié  <a href="https://jalerte.arcep.fr/" target="_blank" /> J’alerte l’Arcep </a>'
-        - title: Des dégradations ont étaient commises lors de l’installation de ma ligne ou de la fibre
-          information:
-            title: Ce type de problème ne doit pas être signalé sur SignalConso.
-            content:
-              'Nous ne doutons pas que vous ayez réellement rencontré un préjudice. Mais, les problèmes liés à des dégradations commises lors de l’installation d’une ligne, dans votre domicile, ne peuvent être signalés sur SignalConso
-              <br> Ces travaux de raccordement peuvent parfois être peu esthétiques (câble visible, percement de certaines cloisons, installation dans un mur d’un nouveau boîtier dédié à la « fibre », etc...) et peuvent donc générer des litiges.
-              <br> Lors de l’installation, il est recommandé de prêter une attention toute particulière aux travaux effectués à son domicile et dans les parties communes. En cas de doute sur la nature des travaux effectués, le client ne doit pas hésiter à demander des explications au technicien présent sur les lieux. Il est recommandé de prendre des photos des lieux et de formuler immédiatement des réserves écrites, idéalement directement sur la fiche d’intervention
-              <br> Le cas échéant, vous pouvez contacter le service client de votre opérateur par téléphone ou par mail afin de demander une indemnisation. En cas de contestation, vous pouvez adresser un courrier ou un e-mail à votre opérateur afin de lui demander de résoudre votre problème Ou à son service consommateur.
-              <br> si vous navez pas de réponse de votre opérateur ou si la réponse ne vous satisfait pas, vous pouvez contacter le médiateur des communications électroniques à <a href="https://www.mediation-telecom.org/" target="_blank">mediation-telecom.org</a>.'
-        - title: Autre
 - title: Abonnement télévision
-  subcategories:
-    - title: J'ai une offre avec mon opérateur internet
-      subcategories:
-        - title: Mon abonnement a été modifié
-          subcategories:
-            - title: Ajout ou modification d'une option payante
-              subcategories:
-                - title: Option liée à une chaine de télé, à la data, aux appels, aux sms, au débit.
-                  subcategories:
-                    - title: J'ai été prévenu par email ou courrier
-                      information: !!import/single ../common/info/tel-Supportdurable.yml
-                    - title: Non, j'ai reçu seulement un sms
-                      reponseconsoCode:
-                        - '421'
-                        - '2202'
-                      information: !!import/single ../common/info/tel-Supportdurable.yml
-                    - title: Non, je n'ai rien reçu du tout
-                      reponseconsoCode:
-                        - '421'
-                      detailInputs:
-                        - label: Date du début de l'augementation (vous pouvez préciser le premier mois facturé)
-                          type: DATE
-                        - label: Quel est le nom de cette option ?
-                          type: TEXT
-                          placeholder: "Indiquez l'intitulé figurant la facture"
-                        - label: Quel est son prix ?
-                          type: TEXT
-                - title: Option liée à la musique, des livres, un anti-virus...
-                  subcategories:
-                    - title: J'avais déjà un service identiques dans mon offre
-                      subcategories:
-                        - title: J'ai été prévenu par email ou courrier
-                          information: !!import/single ../common/info/tel.yml
-                        - title: Non, j'ai reçu seulement un sms
-                          reponseconsoCode:
-                            - '421'
-                            - '2202'
-                          information: !!import/single ../common/info/tel-Supportdurable.yml
-                        - title: Non, je n'ai rien reçu du tout
-                          reponseconsoCode:
-                            - '421'
-                          detailInputs:
-                            - label: Date du début de l'option (vous pouvez préciser le premier mois facturé)
-                              type: DATE
-                            - label: Quel est le nom de cette option ?
-                              type: TEXT
-                              placeholder: "Indiquez l'intitulé figurant la facture"
-                            - label: Quel est son prix ?
-                              type: TEXT
-                            - label: Comment avez-vous été prévenu de cette option ?
-                              type: RADIO
-                              options:
-                                - email
-                                - courrier papier
-                                - sms
-                                - message dans l'espace client
-                                - "je n'ai rien reçu"
-                            - label: Si vous avez reçu un courrier / email / sms, quelle est sa date ?
-                              type: DATE
-                              optional: true
-                    - title: Je n'avais pas un service identique dans mon offre
-                      information: !!import/single ../common/info/tel.yml
-            - title: Le lien pour refuser l'augementation de mon forfait ne fonctionne pas
-              reponseconsoCode:
-                - '444'
-                - '210'
-              tags:
-                - ReponseConso
-        - title: Résilisation et changement d'opérateur
-          subcategories:
-            - title: Frais de résiliation
-              reponseconsoCode:
-                - '477'
-                - '473'
-            - title: Restitution du matériel
-              reponseconsoCode:
-                - '477'
-                - '473'
-            - title: Mon ancien opérateur continue de me prélever
-              reponseconsoCode:
-                - '474'
-            - title: Le technicien n'est pas passé
-              information:
-                title: Le technicien ne s’est pas rendu à votre domicile
-                content: Si vous venez de changer d'opérateur ou de déménager en gardant votre numéro et que le technicien ne s'est pas rendu à votre domicile pour le rendez-vous d'installation. Vous avez droit à une indemnisation.
-                actions:
-                  - question: Que pouvez-vous faire&#160;?
-                    answer:
-                      <br> Je contacte le service client du nouveau opérateur par téléphone ou par mail. Je peux demander une indemnisation.
-                      <br> Si je ne suis pas satifait. Je contact le médaiteur des communications gratuitement via <a href="https://www.mediation-telecom.org/" target="_blank">mediation-telecom.org</a>."
-    - title: J'ai une offre en dehors de mon opérateur internet
-    - title: Démarchage
-      tags:
-        - ReponseConso
-      subcategories:
-        - title: Démarchage à domicile
-          ccrfCode:
-            - '221'
-          companyKind: LOCATION
-          reponseconsoCode:
-            - '221'
-          tags:
-            - DemarchageADomicile
-        - title: Démarchage téléphonique
-          ccrfCode:
-            - '227'
-          companyKind: PHONE
-          reponseconsoCode:
-            - '221'
-          tags:
-            - DemarchageTelephonique
-    - title: Problème avec un site internet
-      reponseconsoCode:
-        - '4442'
-      companyKind: WEBSITE
-    - title: Autre
-      reponseconsoCode:
-        - '443'
-        - '446'
-- title: Abonnement presse
+  tags:
+    - ReponseConso
   subcategories:
     - title: Démarchage à domicile
       ccrfCode:
@@ -452,8 +237,8 @@
         - '221'
       tags:
         - DemarchageADomicile
-    - title: Démarchage téléphonique
-      ccrfCode:
+    - title: DemarchageTelephonique
+      ccrfCode: 
         - '227'
       companyKind: PHONE
       reponseconsoCode:
@@ -461,16 +246,50 @@
       tags:
         - DemarchageTelephonique
     - title: Problème avec un site internet
+      ccrfCode:
+        - '220'
+      reponseconsoCode:
+        - '4442'
+      companyKind: WEBSITE
+    - title: Autre
+      ccrfCode:
+        - '23b'
       reponseconsoCode:
         - '443'
         - '446'
-      companyKind: WEBSITE
-    - title: Autre
+- title: Abonnement presse
   reponseconsoCode:
     - '442'
     - '230'
   tags:
     - ReponseConso
+  subcategories:
+    - title: Démarchage à domicile
+      ccrfCode:
+        - '221'
+      companyKind: LOCATION
+      reponseconsoCode:
+        - '221'
+      tags:
+        - DemarchageADomicile
+    - title: DemarchageTelephonique
+      ccrfCode: 
+        - '227'
+      companyKind: PHONE
+      reponseconsoCode:
+        - '221'
+      tags:
+        - DemarchageTelephonique
+    - title: Problème avec un site internet
+      ccrfCode:
+        - '221'
+      reponseconsoCode:
+        - '443'
+        - '446'
+      companyKind: WEBSITE
+    - title: Autre
+      ccrfCode:
+        - '23b'
 - title: Produit dangereux
   example: 'Exemple : téléphone, accessoire'
   tags:
@@ -492,5 +311,7 @@
       tags:
         - ProduitIndustriel
 - title: Autre
+  ccrfCode:
+    - '23b'
   reponseconsoCode:
     - '679'
