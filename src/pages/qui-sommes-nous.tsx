@@ -12,7 +12,7 @@ import {team} from 'core/team'
 
 const QuiSommesNous = () => {
   return (
-    <Page size="small" className="blog">
+    <Page size="regular" className="blog">
       <Head>
         <title>{pageDefinitions.quiSommesNous.title}</title>
         <meta name="description" content={pageDefinitions.quiSommesNous.description} />

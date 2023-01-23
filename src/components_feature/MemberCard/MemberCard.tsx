@@ -43,17 +43,23 @@ export const MemberCard = ({member, disabled}: Props) => {
               <Txt truncate block bold size="big">
                 {member.name}
               </Txt>
-              <Txt truncate block color="hint">
-                {member.role}
-              </Txt>
-              {member.dgccrf ? (
-                <Txt block color="hint">
-                  Inspecteur{' '}
-                  <abbr title="Direction Générale de la Concurrence, Consommation et Répression des Fraudes">DGCCRF</abbr>
+              {member.role.map((role, index) => (
+                <Txt truncate block key={index} color="hint">
+                  {role}
                 </Txt>
-              ) : (
-                <Txt block />
-              )}
+              ))}
+
+              {/*<Txt truncate block color="hint">*/}
+              {/*  {member.role}*/}
+              {/*</Txt>*/}
+              {/*{member.dgccrf ? (*/}
+              {/*  <Txt block color="hint">*/}
+              {/*    Inspecteur{' '}*/}
+              {/*    <abbr title="Direction Générale de la Concurrence, Consommation et Répression des Fraudes">DGCCRF</abbr>*/}
+              {/*  </Txt>*/}
+              {/*) : (*/}
+              {/*  <Txt block />*/}
+              {/*)}*/}
             </Box>
           </Animate>
         </>
