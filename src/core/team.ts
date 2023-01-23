@@ -21,6 +21,7 @@ export const team = {
     {
       name: 'Guillaume de Gérando',
       role: 'Chargé de déploiement',
+      dgccrf: true,
       avatar: 'avatar-guillaumedegerando.png',
     },
     {
