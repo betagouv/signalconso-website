@@ -18,6 +18,7 @@ import {Txt} from '../../../alexlibs/mui-extension/Txt/Txt'
 import {Anomaly, Information, Subcategory} from '../../../anomalies/Anomaly'
 import {useFetcher} from '../../../hooks/useFetcher'
 import {mapPromise} from '../../../utils/MapPromise'
+import {LinkBackToHome} from '../../../components_simple/LinkBackToHome'
 
 interface Props {
   anomaly: Anomaly
@@ -117,19 +118,7 @@ export const ProblemInformation = ({anomaly, subcategories, information}: Props)
           )}
         </Panel>
       </Animate>
-      <Link href={siteMap.index}>
-        <ScButton
-          icon="home"
-          variant="contained"
-          sx={{
-            display: 'block',
-            margin: 'auto',
-            mt: 3,
-          }}
-        >
-          {m.backToHome}
-        </ScButton>
-      </Link>
+      <LinkBackToHome />
     </>
   )
 }

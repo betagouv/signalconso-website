@@ -13,6 +13,7 @@ import {IconBtn} from '../alexlibs/mui-extension/IconBtn/IconBtn'
 import {allAnomalies} from '../anomalies/Anomalies'
 import {Anomaly} from '../anomalies/Anomaly'
 import {ReportFlow} from '../components_feature/Report/ReportFlow'
+import {useRouter} from 'next/router'
 
 export const getStaticPaths: GetStaticPaths = () => {
   const paths = allAnomalies.map(_ => ({
@@ -33,6 +34,7 @@ export const getStaticProps: GetStaticProps = ({params = {}}) => {
 
 const AnomalyPage = ({reportPath}: {reportPath: string}) => {
   const anomaly = allAnomalies.find(_ => _.path === reportPath)
+  const {query} = useRouter()
   if (!anomaly) {
     throw new Error(`Cannot find anomaly for reportPath : ${reportPath}`)
   }
@@ -43,11 +45,13 @@ const AnomalyPage = ({reportPath}: {reportPath: string}) => {
         <meta name="description" content={undefinedIfNull(anomaly.seoDescription ?? anomaly.description)} />
       </Head>
       <Box sx={{display: 'flex', alignItems: 'center', mb: 2, color: t => t.palette.text.secondary}}>
-        <Link href={siteMap.index}>
-          <IconBtn>
-            <Icon>chevron_left</Icon>
-          </IconBtn>
-        </Link>
+        {query.app_type != 'mobile' && (
+          <Link href={siteMap.index}>
+            <IconBtn>
+              <Icon>chevron_left</Icon>
+            </IconBtn>
+          </Link>
+        )}
         <Box
           component="h1"
           sx={{

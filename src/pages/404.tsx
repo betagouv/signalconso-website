@@ -6,6 +6,7 @@ import Link from 'next/link'
 import {Box} from '@mui/material'
 import Head from 'next/head'
 import {Fender} from 'alexlibs/mui-extension/Fender/Fender'
+import {LinkBackToHome} from '../components_simple/LinkBackToHome'
 
 const NotFound = () => {
   const {m} = useI18n()
@@ -20,19 +21,7 @@ const NotFound = () => {
         title={m.pageNotFoundTitle}
         description={<Box sx={{mt: 1}} dangerouslySetInnerHTML={{__html: m.pageNotFoundDesc}} />}
       >
-        <Link href={siteMap.index}>
-          <ScButton
-            icon="home"
-            variant="contained"
-            sx={{
-              display: 'block',
-              margin: 'auto',
-              mt: 3,
-            }}
-          >
-            {m.backToHome}
-          </ScButton>
-        </Link>
+        <LinkBackToHome />
       </Fender>
     </Page>
   )
