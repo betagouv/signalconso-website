@@ -48,18 +48,6 @@ export const MemberCard = ({member, disabled}: Props) => {
                   {role}
                 </Txt>
               ))}
-
-              {/*<Txt truncate block color="hint">*/}
-              {/*  {member.role}*/}
-              {/*</Txt>*/}
-              {/*{member.dgccrf ? (*/}
-              {/*  <Txt block color="hint">*/}
-              {/*    Inspecteur{' '}*/}
-              {/*    <abbr title="Direction Générale de la Concurrence, Consommation et Répression des Fraudes">DGCCRF</abbr>*/}
-              {/*  </Txt>*/}
-              {/*) : (*/}
-              {/*  <Txt block />*/}
-              {/*)}*/}
             </Box>
           </Animate>
         </>
