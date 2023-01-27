@@ -27,7 +27,7 @@ list:
   - category: Achat (Magasin ou Internet)
     title: Signalez un achat en magasin ou sur internet à la répression des fraudes
     path: achat-magasin
-    description: Prix, promotion, qualité, poids, garantie, commande non reçue, non conforme ou abîmée, …
+    description: Prix, promotion, qualité, poids, garantie, commande non reçue / non conforme ou abîmée, …
     seoDescription: Vous avez eu un problème de prix, sur une promotion ou de qualité. Vous n'avez pas reçu votre commande ou celle-ci est abîmée, le service client n'est pas joignable ou insatisfaisant...
     id: '2'
     sprite: category-store
@@ -70,7 +70,7 @@ list:
   - category: Intoxication alimentaire
     title: Vous êtes malade, diarrhée, nausée, fièvre suite à un repas, signalez-le à la DGCCRF
     path: intoxication-alimentaire
-    description: Vous avez été malade (vomissement, diarrhée) après avoir mangé un aliment suspect (goût, odeur, aspect)
+    description: Vous avez été malade (vomissement, diarrhée) après avoir mangé un aliment suspect (goût, odeur, aspect), …
     seoDescription: Vous êtes souffrant, avez des problèmes de digestion après avoir mangé un aliment suspect, goût, odeur de la nourriture ? Mal au ventre, estomac, vomissement ?
     id: '9'
     sprite: category-disease
@@ -111,7 +111,7 @@ list:
   - category: Secteur de la santé
     title: Signalez un problème avec un professionnel de santé à la répression des fraudes
     path: sante
-    description: Professionnels de santé, médecines non conventionnelles, honoraires, hôpital, clinique, allégations trompeuses, parapharmacie
+    description: Professionnels de santé, médecines non conventionnelles, honoraires, hôpital, clinique, allégations trompeuses, parapharmacie, …
     seoDescription: Vous avez eu un reste à charge trop élevé, un non-respect du 100% santé, n'avez pas eu de devis par votre clinique, hôpital, opticien ou les effets mis en avant en parapharmacie sont trompeurs...
     id: '3'
     sprite: category-health
@@ -160,7 +160,7 @@ list:
   - category: Démarchage abusif
     title: Vous avez un problème de démarchage abusif malgré Bloctel ? Signalez-le à la DGCCRF
     path: bloctel
-    description: Appels indésirables incessants, spams, sms, malgré Bloctel
+    description: Appels indésirables incessants, spams, démarchage sms malgré Bloctel, …
     seoDescription: Vous avez un problème d’appels indésirables, inconnus, incessants, de spams, de sms, de télé vente, d’arnaque au CPF, à la formation professionnelle
     id: '17'
     sprite: category-bloctel
