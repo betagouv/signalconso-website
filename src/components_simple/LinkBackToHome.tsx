@@ -8,8 +8,8 @@ import {useRouter} from 'next/router'
 
 export const LinkBackToHome = ({...props}: ButtonProps) => {
   const {m} = useI18n()
-  const {query} = useRouter()
-  return query.app_type != 'mobile' ? (
+  const router = useRouter()
+  return router && router.query.app_type != 'mobile' ? (
     <Link href={siteMap.index}>
       <ScButton {...props} color="primary" variant="contained" icon="home">
         {m.backToHome}
