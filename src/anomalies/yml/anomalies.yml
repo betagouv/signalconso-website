@@ -16,7 +16,7 @@ list:
     id: '19'
     sprite: category-covid
     subcategories: !!import/single subcategories/coronavirus.yml
-  - category: Café / Restaurant / Bar
+  - category: Café / Restaurant
     title: Signalez un problème avec un café / restaurant à la répression des fraudes
     path: cafe-restaurant
     description: Descriptions incorrectes (origine, fait maison, AOP/IGP, allergènes, …), manque d’hygiène, problème à la commande ou à la livraison, …
