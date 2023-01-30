@@ -22,6 +22,7 @@ import {Analytic} from 'analytic/analytic'
 import {useEffect, useState} from 'react'
 import {ConfigProvider, useConfig} from 'context/ConfigContext'
 import Head from 'next/head'
+import {useRouter} from 'next/router'
 
 interface ScAppProps extends AppProps {
   emotionCache?: EmotionCache
@@ -60,6 +61,7 @@ const App = ({emotionCache = clientSideEmotionCache, ...props}: ScAppProps) => {
 
 const _App = ({Component, pageProps, router}: AppProps) => {
   const {config} = useConfig()
+  const {query} = useRouter()
   return (
     <>
       <Head>
@@ -73,19 +75,22 @@ const _App = ({Component, pageProps, router}: AppProps) => {
         />
       )}
       <div className="root">
-        {/*<Head>*/}
-        {/*  <meta name="theme-color" content={theme.palette.primary.main}/>*/}
-        {/*</Head>*/}
-        <Box
-          sx={{
-            flex: 1,
-            marginTop: `${headerHeight.normal}px`,
-          }}
-        >
+        {query.app_type != 'mobile' ? (
+          <>
+            <Box
+              sx={{
+                flex: 1,
+                marginTop: `${headerHeight.normal}px`,
+              }}
+            >
+              <Component {...pageProps} />
+            </Box>
+            <Header />
+            <Footer />
+          </>
+        ) : (
           <Component {...pageProps} />
-        </Box>
-        <Header />
-        <Footer />
+        )}
       </div>
     </>
   )

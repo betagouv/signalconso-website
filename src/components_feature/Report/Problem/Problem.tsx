@@ -61,7 +61,14 @@ export const Problem = ({anomaly}: Props) => {
     }
   }, [anomaly.category])
 
-  const {tagsFromSelected, lastSubcategories, isLastSubcategory, companyKindFromSelected} = useMemo(() => {
+  const {
+    tagsFromSelected,
+    lastSubcategories,
+    isLastSubcategory,
+    companyKindFromSelected,
+    responseconsoCodeFromSelected,
+    ccrfCodeFromSelected,
+  } = useMemo(() => {
     return computeSelectedSubcategoriesData(reportDraft.subcategories ?? [])
   }, [reportDraft.subcategories])
 
@@ -70,6 +77,8 @@ export const Problem = ({anomaly}: Props) => {
       const {subcategories, ..._anomaly} = anomaly
       return {
         ...draft,
+        ccrfCode: ccrfCodeFromSelected,
+        reponseconsoCode: responseconsoCodeFromSelected,
         tags: adjustTags(tagsFromSelected, draft, companyKindFromSelected),
         companyKind: companyKindFromSelected ?? draft.companyKind ?? 'SIRET',
         anomaly: _anomaly,

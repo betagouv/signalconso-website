@@ -17,6 +17,7 @@ import {ReportDraft} from '../../../model/ReportDraft'
 import {CreatedReport} from '../../../model/CreatedReport'
 import {Country} from '../../../model/Country'
 import {Fender} from 'alexlibs/mui-extension/Fender/Fender'
+import {LinkBackToHome} from '../../../components_simple/LinkBackToHome'
 
 export enum AcknowledgmentCases {
   ReponseConso = 'ReponseConso',
@@ -337,11 +338,7 @@ const AcknowledgementLayout = ({
           </p>
         </PanelBody>
         <PanelActions sx={{justifyContent: 'flex-start'}}>
-          <Link href={siteMap.index}>
-            <ScButton color="primary" variant="contained" icon="home">
-              {m.backToHome}
-            </ScButton>
-          </Link>
+          <LinkBackToHome />
         </PanelActions>
       </Panel>
     </>
