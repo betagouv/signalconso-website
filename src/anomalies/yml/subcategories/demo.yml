@@ -4,154 +4,188 @@
   subcategoriesTitle: (subcategoriesTitle) Titre ou question introduisant le choix des sous catégories suivantes
   subcategories:
     - title: (title) Une sous sous category minimale
+      reponseconsoCode:
+        - 'A'
+        - 'B'
+      ccrfCode:
+        - '1'
+        - '2'
+        - '3'
+      subcategories:
+        - title: Sous cat avec tag LitigeContractuel
+          reponseconsoCode:
+            - 'C'
+            - 'D'
+          ccrfCode:
+            - '4'
+            - '5'
+            - '6'
+          tags:
+            - LitigeContractuel
+        - title: Sous cat avec X Y
+          reponseconsoCode:
+            - 'X'
+            - 'Y'
+        - title: Sous cat avec 41 52
+          ccrfCode:
+            - '41'
+            - '52'
+        - title: Sous cat avec rien
     - title: (title) Une autre
 
 - title: Sous category avec un fileLabel
+  reponseconsoCode:
+    - 'E'
+    - 'F'
+  ccrfCode:
+    - '7'
+    - '8'
+    - '9'
   example: Cette sous category a un fileLabel, visible sur la page suivante
   fileLabel: (fileLabel) Le label expliquant les fichiers à uploader
-- title: Sous category avec des champs en plus invisibles
-  example: Cette sous category utilise a des valeurs spécifiées dans les champs reponseconsoCode, ccrfCode, et elle a aussi deux tags quelconques (Hygiene et Ehpad). Tout cela ne devrait avoir aucune conséquence visuellement, ce sont juste des infos transmises à l'API
-  tags:
-    - Hygiene
-    - Ehpad
-  reponseconsoCode:
-    - '321'
-    - '323'
-  ccrfCode:
-    - '145'
-    - '23F'
-    - '146'
-- title: Sous category pour tester divers tags
-  example: Pour tester les tags LitigeContractuel, ReponseConso, etc.
-  subcategories:
-    - title: Sous cat avec tag LitigeContractuel
-      tags:
-        - LitigeContractuel
-    - title: Sous cat avec tag ReponseConso
-      tags:
-        - ReponseConso
-    - title: Sous cat avec tag ProduitDangereux
-      tags:
-        - ProduitDangereux
-- title: Sous category pour tester les companyKind
-  example: Pour tester chaque type de CompanyKind (SIRET, WEBSITE, etc.)
-  subcategories:
-    - title: Sous cat avec companyKind SIRET
-      companyKind: SIRET
-    - title: Sous cat avec companyKind WEBSITE
-      companyKind: WEBSITE
-    - title: Sous cat avec companyKind PHONE
-      companyKind: PHONE
-    - title: Sous cat avec companyKind LOCATION
-      companyKind: LOCATION
-    - title: Sous cat avec companyKind SOCIAL
-      companyKind: SOCIAL
-- title: Sous category pour tester les "information" (bloc bloquant)
-  subcategories:
-    - title: Sous cat avec information complete
-      example: Bloc d'information avec tous les champs remplis, et quelques "actions"
-      information:
-        title: Title du bloc d'information
-        subTitle: Subtitle du bloc d'information
-        content: Content du bloc d'information
-        actions:
-          - question: Première "action", champ "question"
-            answer: Première "action", champ "answer"
-          - question: Seconde "action", champ "question"
-            answer: Seconde "action", champ "answer"
-            example: Seconde "action", champ "example"
-    - title: Sous cat avec "outOfScope" à true
-      information:
-        title: Title du bloc d'information
-        content: Content du bloc d'information
-        outOfScope: true
-    - title: Sous cat avec juste un "content"
-      information:
-        content: Content du bloc d'information
-    - title: Sous cat avec juste un "title"
-      information:
-        title: Title du bloc d'information
-    - title: Sous cat avec juste un "subtitle"
-      information:
-        subTitle: Title du bloc d'information
-    - title: Sous cat avec juste une "action"
-      information:
-        actions:
-          - question: Première "action", champ "question"
-            answer: Première "action", champ "answer"
-- title: Sous category pour tester les "detailInputs"
-  example: Sous cat avec toutes les variantes possibles de detailInputs
-    (TEXT, DATE, etc.)
-  detailInputs:
-    - label: simple input texte (le type TEXT)
-      type: TEXT
-    - label: input texte optionnel
-      type: TEXT
-      optional: true
-    - label: input texte avec placeholder
-      type: TEXT
-      placeholder: ceci est le placeholder de l'input texte
-
-    - label: simple input de zone de texte (TEXTAREA)
-      type: TEXTAREA
-    - label: zone de texte optionnelle
-      type: TEXTAREA
-      optional: true
-    - label: zone de texte avec placeholder
-      type: TEXTAREA
-      placeholder: ceci le placeholder de la zone de texte
-
-    - label: simple input date (DATE)
-      type: DATE
-    - label: input date optionnel
-      type: DATE
-      optional: true
-    - label: input date avec la date courante comme valeur par défaut
-      type: DATE
-      defaultValue: SYSDATE
-    - label: input date avec la date courante comme valeur par défaut, et qui est optionnel
-      type: DATE
-      optional: true
-      defaultValue: SYSDATE
-
-    - label: input de type date mais qui bloque les dates futures (DATE_NOT_IN_FUTURE)
-      type: DATE_NOT_IN_FUTURE
-    - label: input de type date non future, avec la date courante comme valeur par défaut
-      type: DATE_NOT_IN_FUTURE
-      defaultValue: SYSDATE
-
-    - label: input radio
-      type: RADIO
-      options:
-        - première option
-        - seconde option
-        - troisième option qu'il faut préciser (à préciser)
-        - quatrième option
-    - label: input radio optionnel
-      type: RADIO
-      options:
-        - première option
-        - seconde option
-      optional: true
-
-    - label: input checkbox
-
-      type: CHECKBOX
-      options:
-        - première option
-        - seconde option
-        - troisième option qu'il faut préciser (à préciser)
-        - quatrième option
-        - cinquième option qu'il faut aussi préciser (à préciser)
-    - label: input checkbox optionnel
-      type: CHECKBOX
-      options:
-        - première option
-        - seconde option
-      optional: true
-
-    - label: input timeslot
-      type: TIMESLOT
-    - label: input timeslot optionnel
-      type: TIMESLOT
-      optional: true
+#- title: Sous category avec des champs en plus invisibles
+#  example: Cette sous category utilise a des valeurs spécifiées dans les champs reponseconsoCode, ccrfCode, et elle a aussi deux tags quelconques (Hygiene et Ehpad). Tout cela ne devrait avoir aucune conséquence visuellement, ce sont juste des infos transmises à l'API
+#  tags:
+#    - Hygiene
+#    - Ehpad
+#  reponseconsoCode:
+#    - '321'
+#    - '323'
+#  ccrfCode:
+#    - '145'
+#    - '23F'
+#    - '146'
+#- title: Sous category pour tester divers tags
+#  example: Pour tester les tags LitigeContractuel, ReponseConso, etc.
+#  subcategories:
+#    - title: Sous cat avec tag LitigeContractuel
+#      tags:
+#        - LitigeContractuel
+#    - title: Sous cat avec tag ReponseConso
+#      tags:
+#        - ReponseConso
+#    - title: Sous cat avec tag ProduitDangereux
+#      tags:
+#        - ProduitDangereux
+#- title: Sous category pour tester les companyKind
+#  example: Pour tester chaque type de CompanyKind (SIRET, WEBSITE, etc.)
+#  subcategories:
+#    - title: Sous cat avec companyKind SIRET
+#      companyKind: SIRET
+#    - title: Sous cat avec companyKind WEBSITE
+#      companyKind: WEBSITE
+#    - title: Sous cat avec companyKind PHONE
+#      companyKind: PHONE
+#    - title: Sous cat avec companyKind LOCATION
+#      companyKind: LOCATION
+#    - title: Sous cat avec companyKind SOCIAL
+#      companyKind: SOCIAL
+#- title: Sous category pour tester les "information" (bloc bloquant)
+#  subcategories:
+#    - title: Sous cat avec information complete
+#      example: Bloc d'information avec tous les champs remplis, et quelques "actions"
+#      information:
+#        title: Title du bloc d'information
+#        subTitle: Subtitle du bloc d'information
+#        content: Content du bloc d'information
+#        actions:
+#          - question: Première "action", champ "question"
+#            answer: Première "action", champ "answer"
+#          - question: Seconde "action", champ "question"
+#            answer: Seconde "action", champ "answer"
+#            example: Seconde "action", champ "example"
+#    - title: Sous cat avec "outOfScope" à true
+#      information:
+#        title: Title du bloc d'information
+#        content: Content du bloc d'information
+#        outOfScope: true
+#    - title: Sous cat avec juste un "content"
+#      information:
+#        content: Content du bloc d'information
+#    - title: Sous cat avec juste un "title"
+#      information:
+#        title: Title du bloc d'information
+#    - title: Sous cat avec juste un "subtitle"
+#      information:
+#        subTitle: Title du bloc d'information
+#    - title: Sous cat avec juste une "action"
+#      information:
+#        actions:
+#          - question: Première "action", champ "question"
+#            answer: Première "action", champ "answer"
+#- title: Sous category pour tester les "detailInputs"
+#  example: Sous cat avec toutes les variantes possibles de detailInputs
+#    (TEXT, DATE, etc.)
+#  detailInputs:
+#    - label: simple input texte (le type TEXT)
+#      type: TEXT
+#    - label: input texte optionnel
+#      type: TEXT
+#      optional: true
+#    - label: input texte avec placeholder
+#      type: TEXT
+#      placeholder: ceci est le placeholder de l'input texte
+#
+#    - label: simple input de zone de texte (TEXTAREA)
+#      type: TEXTAREA
+#    - label: zone de texte optionnelle
+#      type: TEXTAREA
+#      optional: true
+#    - label: zone de texte avec placeholder
+#      type: TEXTAREA
+#      placeholder: ceci le placeholder de la zone de texte
+#
+#    - label: simple input date (DATE)
+#      type: DATE
+#    - label: input date optionnel
+#      type: DATE
+#      optional: true
+#    - label: input date avec la date courante comme valeur par défaut
+#      type: DATE
+#      defaultValue: SYSDATE
+#    - label: input date avec la date courante comme valeur par défaut, et qui est optionnel
+#      type: DATE
+#      optional: true
+#      defaultValue: SYSDATE
+#
+#    - label: input de type date mais qui bloque les dates futures (DATE_NOT_IN_FUTURE)
+#      type: DATE_NOT_IN_FUTURE
+#    - label: input de type date non future, avec la date courante comme valeur par défaut
+#      type: DATE_NOT_IN_FUTURE
+#      defaultValue: SYSDATE
+#
+#    - label: input radio
+#      type: RADIO
+#      options:
+#        - première option
+#        - seconde option
+#        - troisième option qu'il faut préciser (à préciser)
+#        - quatrième option
+#    - label: input radio optionnel
+#      type: RADIO
+#      options:
+#        - première option
+#        - seconde option
+#      optional: true
+#
+#    - label: input checkbox
+#
+#      type: CHECKBOX
+#      options:
+#        - première option
+#        - seconde option
+#        - troisième option qu'il faut préciser (à préciser)
+#        - quatrième option
+#        - cinquième option qu'il faut aussi préciser (à préciser)
+#    - label: input checkbox optionnel
+#      type: CHECKBOX
+#      options:
+#        - première option
+#        - seconde option
+#      optional: true
+#
+#    - label: input timeslot
+#      type: TIMESLOT
+#    - label: input timeslot optionnel
+#      type: TIMESLOT
+#      optional: true
