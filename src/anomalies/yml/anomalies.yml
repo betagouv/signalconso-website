@@ -8,14 +8,6 @@ list:
     sprite: none
     subcategories: !!import/single subcategories/retrait-rappel.yml
     subcategoriesTitle: Avez-vous consommé le produit ?
-  - category: COVID-19 (coronavirus)
-    title: Signalez à la DGCCRF un problème lié à la COVID-19, gel, masque, test PCR
-    path: coronavirus
-    description: gel hydroalcoolique, masque, arnaque liée au COVID-19, distanciation physique...
-    seoDescription: Vous avez un problème lié au coronavirus, gel hydroalcoolique, autotests, antigéniques, non port du masque, non respect des règles d’hygiène ou de la distanciation physique
-    id: '19'
-    sprite: category-covid
-    subcategories: !!import/single subcategories/coronavirus.yml
   - category: Café / Restaurant
     title: Signalez un problème avec un café / restaurant à la répression des fraudes
     path: cafe-restaurant
