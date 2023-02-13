@@ -42,7 +42,7 @@ function adjustReportDraftAfterSubcategoriesChange(report: Partial<ReportDraft2>
   const subcategoriesToKeep = (report.subcategories ?? []).slice(0, index)
   const subcategories = [...subcategoriesToKeep, subcategory]
   const tags = report.tags?.filter(_ => _ !== 'Internet') ?? undefined
-  const copy = {...report, subcategories, tags, details: {}, companyKind: undefined}
+  const copy = {...report, subcategories, tags, details: {}, companyKind: undefined, companyDraft: undefined}
   return copy
 }
 
