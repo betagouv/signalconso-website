@@ -45,20 +45,39 @@ allVisibleAnomalies().forEach(anomaly => {
   )
 
   result.forEach(res => {
-    const ccrfCodeCodeQueryFragment =
-      res.ccrfCode && res.ccrfCode.length > 0 ? ` SET ccrf_code =  '{${res.ccrfCode.join(',')}}'` : undefined
+    var ccrfCode = [...new Set(res.ccrfCode)]
+    var reponseconsoCode = [...new Set(res.reponseconsoCode)]
+
+    const ccrfCodeCodeQueryFragment = ccrfCode && ccrfCode.length > 0 ? ` SET ccrf_code =  '{${ccrfCode.join(',')}}'` : undefined
 
     const reponseConsoCodeQueryFragment =
-      res.reponseconsoCode && res.reponseconsoCode.length > 0
-        ? ` SET reponseconso_code =  '{${res.reponseconsoCode.join(',')}}'`
-        : undefined
+      reponseconsoCode && reponseconsoCode.length > 0 ? ` SET reponseconso_code =  '{${reponseconsoCode.join(',')}}'` : undefined
 
-    if (ccrfCodeCodeQueryFragment || reponseConsoCodeQueryFragment) {
+    if (ccrfCodeCodeQueryFragment) {
       console.log(`UPDATE reports
-                      ${reponseConsoCodeQueryFragment}
                       ${ccrfCodeCodeQueryFragment}
-                      WHERE category = '${res.category}'
-                      AND subcategories = '{${res.subCategoryTree.join(',')}}'
+                      WHERE category = $$${res.category}$$
+                      AND subcategories = ARRAY[${res.subCategoryTree
+                        .map(x => {
+                          return `$$${x}$$`
+                        })
+                        .join(',')}]::varchar[]
+                      AND creation_date > '2022-01-01'::timestamp
+                      AND ccrf_code = '{}'
+                      ;`)
+    }
+
+    if (reponseConsoCodeQueryFragment) {
+      console.log(`UPDATE reports
+                      ${reponseConsoCodeQueryFragment} 
+                      WHERE category = $$${res.category}$$
+                      AND subcategories = ARRAY[${res.subCategoryTree
+                        .map(x => {
+                          return `$$${x}$$`
+                        })
+                        .join(',')}]::varchar[]
+                      AND creation_date > '2022-01-01'::timestamp
+                      AND reponseconso_code = '{}'
                       ;`)
     }
   })
