@@ -11,7 +11,7 @@ list:
   - category: Café / Restaurant
     title: Signalez un problème avec un café / restaurant à la répression des fraudes
     path: cafe-restaurant
-    description: bar, cafétéria, food truck, application pour se faire livrer un repas...
+    description: Descriptions incorrectes, manque d’hygiène, problème à la commande ou à la livraison, …
     seoDescription: Les descriptions sont incorrectes (origine, fait maison, allergènes, halal). L'établissement est sale, insalubre, problème de fraîcheur, d'hygiène, intoxication ou problème à la commande / livraison
     id: '4'
     sprite: category-restaurant
@@ -19,7 +19,7 @@ list:
   - category: Achat (Magasin ou Internet)
     title: Signalez un achat en magasin ou sur internet à la répression des fraudes
     path: achat-magasin
-    description: supermarché, boulangerie, magasin de jouet, achat en ligne...
+    description: Prix, promotion, qualité, poids, garantie, commande non reçue / non conforme ou abîmée, …
     seoDescription: Vous avez eu un problème de prix, sur une promotion ou de qualité. Vous n'avez pas reçu votre commande ou celle-ci est abîmée, le service client n'est pas joignable ou insatisfaisant...
     id: '2'
     sprite: category-store
@@ -28,7 +28,7 @@ list:
   - category: Services aux particuliers
     title: Signalez un problème avec un service / prestation à la répression des fraudes
     path: services-aux-particuliers
-    description: coiffeur, pressing, aide à la personne, nuisible, formation, maison de retraite...
+    description: CPF, coiffeur, garde d’enfants, nuisibles, ménage, maison de retraite, envoi de colis, …
     seoDescription: Vous avez un problème avec un organisme de formation, coiffeur, esthéticien, tatoueur, ménage, déménageur, aide à domicile, garde ou accompagnement d'enfants...
     id: '5'
     sprite: category-service
@@ -37,7 +37,7 @@ list:
   - category: Eau / Gaz / Electricité
     title: Signalez un problème d'eau, gaz ou électricité à la répression des fraudes
     path: eau-gaz-electricite
-    description: contrat et facture eau, gaz et électricité...
+    description: Contrat, prélèvement, énergie, facture excessive, dépassement de consommation, …
     seoDescription: Vous avez un problème de contrat d’énergie, de prélèvement, une facture excessive, un dépassement de consommation ou vous avez eu une fuite d’eau, de canalisation.
     id: '6'
     sprite: category-energy
@@ -45,7 +45,7 @@ list:
   - category: Téléphonie / Fournisseur d'accès internet / médias
     title: Signalez un problème de forfait à la répression des fraudes
     path: tel-internet-media
-    description: forfait internet, abonnement de musique ou de vidéo en ligne, téléphone...
+    description: Options non souscrites facturées, forfait, abonnement mobile ou box, frais de résiliation, …
     seoDescription: Votre opérateur vous a facturé des options non souscrites, votre abonnement mobile ou box est en augmentation ou a été reconduit abusivement, vous avez un doute sur les frais de résiliation.
     id: '7'
     sprite: category-internet
@@ -53,7 +53,7 @@ list:
   - category: Banque / Assurance / Mutuelle
     title: Signalez un problème de banque, assurance, mutuelle à la DGCCRF
     path: banque-assurance-mutuelle
-    description: banque en ligne, crédit, assurance auto...
+    description: Frais bancaires, remboursement, sinistre, prise en charge optique/dentaire, …
     seoDescription: Vous avez un problème de frais bancaires, carte, CB, remboursement, déclaration de sinistre, prise en charge optique/dentaire, indemnisation, contrat d’assurance, prévoyance
     id: '8'
     sprite: category-bank
@@ -62,7 +62,7 @@ list:
   - category: Intoxication alimentaire
     title: Vous êtes malade, diarrhée, nausée, fièvre suite à un repas, signalez-le à la DGCCRF
     path: intoxication-alimentaire
-    description: Vous avez été malade (vomissement, diarrhée, maux de ventre) après avoir consommé un aliment.
+    description: Vous avez été malade (vomissement, diarrhée) après avoir mangé un aliment suspect
     seoDescription: Vous êtes souffrant, avez des problèmes de digestion après avoir mangé un aliment suspect, goût, odeur de la nourriture ? Mal au ventre, estomac, vomissement ?
     id: '9'
     sprite: category-disease
@@ -71,7 +71,7 @@ list:
   - category: Internet (hors achats)
     title: Signalez un problème d'arnaque en ligne à la répression des fraudes
     path: internet
-    description: Influenceur, piratage de carte, escroquerie par email, site d'incitation à la haine...
+    description: Influenceur sponsorisé, rémunération, marque, harcèlement sur internet, …
     seoDescription: Vous avez été victime d'une publicité trompeuse sur internet, vous souhaitez signaler un influenceur sponsorisé qui n'indique pas sa rémunération par une marque...
     id: '16'
     sprite: category-ecommerce
@@ -79,7 +79,7 @@ list:
   - category: Travaux / Rénovation
     title: Signalez un problème de travaux ou rénovation à la répression des fraudes
     path: travaux-renovation
-    description: dépannage, plombier, rénovation énergétique, site de devis travaux...
+    description: Artisan (serrurier, plombier, pompe à chaleur, …), démarchage téléphonique pour rénovation énergétique, …
     seoDescription: Vous avez fait intervenir un artisan (serrurier, plombier, isolation, pompe à chaleur, chaudière, prime rénov, fenêtre, ...) et vous avez un souci de délais d'exécution, de devis, malfaçon, ...
     id: '12'
     sprite: category-craft
@@ -87,7 +87,7 @@ list:
   - category: Voyage / Loisirs
     title: Signalez un problème de séjour, vol, voyage à la répression des fraudes
     path: voyage-loisirs
-    description: hôtel, billet d'avion, taxi, comparateur de prix, concert, salle de sport, jeux en ligne...
+    description: Annulation, retard, avion, train, bateau, taxi, VTC, avion, hôtel, camping, spectacle, salle de sport, …
     seoDescription: Vous avez un problème d’annulation, retard, remboursement concernant une réservation d’un billet d’avion, train, bateau, taxi, VTC, hôtel, camping ou un soucis de bagage
     id: '10'
     sprite: category-hobbies
@@ -95,7 +95,7 @@ list:
   - category: Immobilier
     title: Signalez un problème de loyer, syndic, copropriété, DPE, charges à la DGCCRF
     path: immobilier
-    description: location, agence immobiliere, syndicat de copropriété...
+    description: Loyer, syndic, copropriété, agence immobilière, location, vente, mandat, état des lieux, DPE, …
     seoDescription: Vous avez un problème avec une copropriété, agence immobilière, syndic, notaire en tant que locataire ou propriétaire, un souci de loyer, bail, DPE, location, vente ou mandat
     id: '11'
     sprite: category-real-estate
@@ -103,7 +103,7 @@ list:
   - category: Secteur de la santé
     title: Signalez un problème avec un professionnel de santé à la répression des fraudes
     path: sante
-    description: dentiste, opticien, produits de pharmacie, clinique, site de téléconsultation...
+    description: Professionnels de santé, médecines non conventionnelles, parapharmacie, …
     seoDescription: Vous avez eu un reste à charge trop élevé, un non-respect du 100% santé, n'avez pas eu de devis par votre clinique, hôpital, opticien ou les effets mis en avant en parapharmacie sont trompeurs...
     id: '3'
     sprite: category-health
@@ -112,7 +112,7 @@ list:
   - category: Voiture / Véhicule / Vélo
     title: Signalez un problème lié à la réparation, entretien, contrôle technique d’une voiture
     path: voiture-vehicule
-    description: vente et réparation de voiture, location, auto-école, pneu, accessoire...
+    description: Garagiste, auto-école, location, réparation, contrôle technique, véhicule neuf ou occasion, garantie, …
     seoDescription: Vous avez un problème avec un garagiste, agence de location suite à la réparation d’un pneu, d’une panne, la vente d’un véhicule neuf ou d’occasion, la non application de la garantie constructeur
     id: '13'
     sprite: category-transport
@@ -121,7 +121,7 @@ list:
   - category: Animaux
     title: Signalez un problème d’animaux, garde, vétérinaire, élevage, toilettage à la DGCCRF
     path: animaux
-    description: vétérinaire, aliment pour animaux, site internet de garde d'animaux...
+    description: Croquettes, chien, chat, vétérinaire, garde, assurance santé animaux, élevage, pedigree, …
     seoDescription: Vous avez un problème avec un(e) pet sitter, pension, assurance santé animaux, animalerie, pedigree LOOF, éleveur, toiletteur, croquettes, chien, chat, NAC, cheval
     id: '14'
     sprite: category-pet
@@ -129,7 +129,7 @@ list:
   - category: Démarches administratives
     title: Signalez un problème de médiation ou de faux courrier administratif à la DGCCRF
     path: demarches-administratives
-    description: absence d'information sur le médiateur, faux courrier administratif, achat d'acte de naissance...
+    description: Faux courriers administratifs, services payants (Crit’Air, …), faux frais d’enregistrement, …
     seoDescription: Vous avez un problème d’arnaques, services payants pour papiers d’identité, actes d’état civil, certificat d’immatriculation, Crit’Air, carte Vitale, KBis, frais d’enregistrement
     id: '15'
     sprite: category-admin
@@ -152,7 +152,7 @@ list:
   - category: Démarchage abusif
     title: Vous avez un problème de démarchage abusif malgré Bloctel ? Signalez-le à la DGCCRF
     path: bloctel
-    description: spams, appels indésirables malgré Bloctel
+    description: Appels indésirables incessants, spams, démarchage SMS malgré Bloctel, …
     seoDescription: Vous avez un problème d’appels indésirables, inconnus, incessants, de spams, de sms, de télé vente, d’arnaque au CPF, à la formation professionnelle
     id: '17'
     sprite: category-bloctel

@@ -24,6 +24,7 @@ import {useAnalyticContext} from 'analytic/AnalyticContext'
 import {EventCategories, ReportEventActions} from 'analytic/analytic'
 import {useWindowWidth} from 'hooks/useWindowWidth'
 import {Gender, genders, ReportDraft} from '../../../model/ReportDraft'
+import {useToast} from '../../../hooks/useToast'
 
 interface ConsumerForm {
   firstName: string
@@ -64,6 +65,7 @@ export const _Consumer = ({
   const _form = useForm<ConsumerForm>()
   const _analytic = useAnalyticContext()
   const {isXsOrLess} = useWindowWidth()
+  const {toastError} = useToast()
 
   const showContactAgreement = ReportDraft.isTransmittableToPro(draft) && draft.contractualDispute !== true
 
@@ -219,10 +221,15 @@ export const _Consumer = ({
         loadingNext={_checkEmail.loading}
         next={() => {
           _form.handleSubmit(form => {
-            _checkEmail.fetch({}, form.email).then(res => {
-              if (res.valid) saveAndNext()
-              else setOpenValidationDialog(true)
-            })
+            _checkEmail
+              .fetch({}, form.email)
+              .then(res => {
+                if (res.valid) saveAndNext()
+                else setOpenValidationDialog(true)
+              })
+              .catch(e => {
+                toastError(e)
+              })
           })()
         }}
       />
