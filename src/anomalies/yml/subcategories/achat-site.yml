@@ -3,35 +3,42 @@
   companyKind: WEBSITE
   subcategories:
     - title: Publicité trompeuse ou mensonger
-      example: 'Exemple : fausse description d'un produit, fausse vertu, promesse environnementale, publicité pour un produit jamais disponible, etc'
+      example: >-
+        Exemple : fausse description d'un produit, fausse vertu, promesse environnementale, publicité pour un produit jamais disponible, etc
       ccrfCode:
         - '23B'
       reponseconsoCode:
         - '210'
         - '220'
     - title: Siret, SIRET, RCS non visible sur le site
-      example: 'Exemple : Je ne trouve aucune information sur l'identité de l'entreprise sur le site'
+      example: >- 
+        Exemple : Je ne trouve aucune information sur l'identité de l'entreprise sur le site'
       ccrfCode:
         - '220'
         - '21A'
     - title: Impossible de contacter l'entreprise
-      example: 'Exemple : Je ne trouve pas sur le site aucun formulaire de contact, d'adresse postale, aucun mail ou de numéro de téléphone.'
+      example: >-
+        Exemple : Je ne trouve pas sur le site aucun formulaire de contact, d'adresse postale, aucun mail ou de numéro de téléphone.
       ccrfCode:
         - '220'
         - '21A'
     - title: Frais d'abonnement
-      example: 'Exemple : J'ai commandé un produit et maintien tous les mois, on me prélève un abonnement que je ne voulais pas.'
+      example: >-
+        Exemple : J'ai commandé un produit et maintien tous les mois, on me prélève un abonnement que je ne voulais pas.
       ccrfCode:
         - '23B'      
     - title: Le site a disparue 
-      example: 'Exemple : Il y a un mois, j'ai commandé un produit qui n'est jamais arrivé et le site a disparu.'
-        information:
-          title: Ce type de problème ne doit pas être signalé sur SignalConso
-          subTitle: Il concerne la police ou la gendarmerie
-          content: Nous vous invitons à utiliser le site dédié <br><a href="https://www.pre-plainte-en-ligne.gouv.fr/" target="_blank">https://www.pre-plainte-en-ligne.gouv.fr/</a>
+      example: >-
+        Exemple : Il y a un mois, j'ai commandé un produit qui n'est jamais arrivé et le site a disparu.
+      information:
+        title: Ce type de problème ne doit pas être signalé sur SignalConso
+        subTitle: Il concerne la police ou la gendarmerie
+        content: >-
+          Nous vous invitons à utiliser le site dédié <br><a href="https://www.pre-plainte-en-ligne.gouv.fr/" target="_blank">https://www.pre-plainte-en-ligne.gouv.fr/</a>
     - title: Autre 
 - title: Le prix
-  example: 'Exemple : il manque les prix, fausse réduction de prix, soldes, promotion'
+  example: >-
+    Exemple : il manque les prix, fausse réduction de prix, soldes, promotion
   companyKind: WEBSITE
   subcategories:
     - title: Il manque des prix / les prix sont illisibles
@@ -59,12 +66,13 @@
       information:
         title: Les commerçants ont le droit de choisir leurs prix.
         outOfScope: true
-        content: "Par contre, les prix doivent être clairement indiqués pour que vous soyez au courant avant d'acheter.
-      <br/> Par exemple, il est autorisé de vendre une bouteille d'eau à 8 euros ou une baguette de pain à 5 euros. C'est au consommateur de bien regarder les prix avant d'acheter.
-      <br/><br/><b>Le saviez-vous ?</b>
-      <br/> Il existe quelques exceptions à ce principe. Certains prix sont réglementés, c'est-à-dire qu'ils sont encadrés par la loi.
-      <br/> Par exemple, le prix des livres est réglementé.
-      <br/><br/> Un commerçant n'a pas le droit de vendre à un prix trop bas : il ne peut pas vendre un produit moins cher que ce qu'il lui a coûté. Il existe quelques situations où il a le droit de vendre en dessous du prix d'achat, comme la période des soldes."
+        content: >-
+          Par contre, les prix doivent être clairement indiqués pour que vous soyez au courant avant d'acheter.
+          <br/> Par exemple, il est autorisé de vendre une bouteille d'eau à 8 euros ou une baguette de pain à 5 euros. C'est au consommateur de bien regarder les prix avant d'acheter.
+          <br/><br/><b>Le saviez-vous ?</b>
+          <br/> Il existe quelques exceptions à ce principe. Certains prix sont réglementés, c'est-à-dire qu'ils sont encadrés par la loi.
+          <br/> Par exemple, le prix des livres est réglementé.
+          <br/><br/> Un commerçant n'a pas le droit de vendre à un prix trop bas : il ne peut pas vendre un produit moins cher que ce qu'il lui a coûté. Il existe quelques situations où il a le droit de vendre en dessous du prix d'achat, comme la période des soldes.
     - title: Fausse réduction de prix
       example: 'Exemple : fausse promotion pendant les soldes, faux temps limite, fausse liquidation totale'
       tags:
@@ -91,7 +99,8 @@
         - label: Description
           type: TEXTAREA
     - title: Différence de prix entre le site et le montant payé
-      example: 'Exemple : J'ai acheté des chaussures 19€ et mon relève de compte, j'ai payé 29€. 
+      example: >-
+        Exemple : J'ai acheté des chaussures 19€ et mon relève de compte, j'ai payé 29€.
       ccrfCode:
         - '271'
 - title: Une commande effecutée
@@ -99,48 +108,60 @@
   companyKind: WEBSITE
   subcategories:
     - title: Commande jamais livrée et le site a fermé
-      example: 'Exemple : 'Le site, où j'ai commandé à disparu et je n'ai rien reçu de ma commande.'
+      example: >-
+        Exemple : Le site où j'ai commandé à disparu et je n'ai rien reçu de ma commande.
       information:
         title: Ce type de problème ne doit pas être signalé sur SignalConso
         subTitle: Il concerne la police ou la gendarmerie
         content: Nous vous invitons à utiliser le site dédié <br><a href="https://www.pre-plainte-en-ligne.gouv.fr/" target="_blank">https://www.pre-plainte-en-ligne.gouv.fr/</a>
     - title: Commande jamais livrée et le site est toujours ouvert
-      example: 'Exemple : Cela fait un mois que j'ai commandé et je n'ai pas d'information sur le site.'
+      example: >-
+        Exemple : Cela fait un mois que j'ai commandé et je n'ai pas d'information sur le site.
       ccrfCode:
         - '23B'
     - title: Le produit est différent de la description ou j'ai reçu un autre produit à la place
-      example: 'Exemple : J'ai commandé des chaussures et j'ai reçu un porte-clés en forme de chaussure.'
+      example: >-
+        Exemple : J'ai commandé des chaussures et j'ai reçu un porte-clés en forme de chaussure.
       ccrfCode:
         - '23B'
         - '271'
     - title: Commande incomplète
-      example: 'Exemple : J'ai commandé deux téléphones, j'en ai reçu qu'un seul et l'entreprise ne veut pas me livrer'
+      example: >-
+        Exemple : J'ai commandé deux téléphones, j'en ai reçu qu'un seul et l'entreprise ne veut pas me livrer'
       ccrfCode:
         - '23B'
     - title: Livraison en retard ou colis perdu
-      example: 'Exemple : On m'a promis une livraison sous 10 jours, j'ai eu mon produit 6 mois plus tard.'
+      example: >-
+        Exemple : On m'a promis une livraison sous 10 jours, j'ai eu mon produit 6 mois plus tard.'
       ccrfCode:
         - '23B'
       subcategories:
         - title: J'ai choisi le transporteur en dehors de la sélection propose par l'entreprise
-          example: 'Exemple : J'ai refusé tous les transporteurs de l'entreprise, j'ai obligé l'entreprise à prendre mon transporteur.
+          example: >-
+            Exemple : J'ai refusé tous les transporteurs de l'entreprise, j'ai obligé l'entreprise à prendre mon transporteur.
         - title: L'entreprise m'a imposé le transporteur sur une liste lors de la commande
-          example: 'Exemple : J'ai choisi entre livraison à domicile ou à point de retrait sur une liste précise.'
+          example: >-
+            Exemple : J'ai choisi entre livraison à domicile ou à point de retrait sur une liste précise.
     - title: Produit endommagé lors du transport
-      example: 'Exemple : J'ai reçu une chaise cassée dans un colis éventré'
+      example: >-
+        Exemple : J'ai reçu une chaise cassée dans un colis éventré'
       ccrfCode:
         - '23B'
       subcategories:
         - title: J'ai choisi le transporteur en dehors de la sélection propose par l'entreprise
-          example: 'Exemple : J'ai refusé tous les transporteurs de l'entreprise, j'ai obligé l'entreprise à prendre mon transporteur.
+          example: >-
+            Exemple : J'ai refusé tous les transporteurs de l'entreprise, j'ai obligé l'entreprise à prendre mon transporteur.
         - title: L'entreprise m'a imposé le transporteur sur une liste lors de la commande
-          example: 'Exemple : J'ai choisi entre livraison à domicile ou à point de retrait sur une liste précise.'
+          example: >-
+            Exemple : J'ai choisi entre livraison à domicile ou à point de retrait sur une liste précise.
     - title: Garantie légale de conformité ou la garantie commerciale 
-      example: 'Exemple : Je n'arrive pas à utiliser la garantie légale de conformité de 2 ans, alors que cela fait 1 an que j'ai l'appareil'
+      example: >-
+        Exemple : Je n'arrive pas à utiliser la garantie légale de conformité de 2 ans, alors que cela fait 1 an que j'ai l'appareil
       ccrfCode:
         - '21D'
     - title: Le Service après vente ne me répond plus (SAV)
-      example: 'Exemple : Le SAV m'a promis un remboursement, je n'ai rien reçu et le SAV répond toujours que le virement arrive
+      example: >-
+        Exemple : Le SAV m'a promis un remboursement, je n'ai rien reçu et le SAV répond toujours que le virement arrive
       ccrfCode:
         - '23B'
     - title: Autre 
