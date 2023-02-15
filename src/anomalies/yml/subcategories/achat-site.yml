@@ -1,0 +1,208 @@
+- title: Le site internet en lui-même
+  example: 'Exemple : publicité trompeuse, absence de mentions obligatoire, service client'
+  companyKind: WEBSITE
+  subcategories:
+    - title: Publicité trompeuse ou mensonger
+      example: 'Exemple : fausse description d'un produit, fausse vertu, promesse environnementale, publicité pour un produit jamais disponible, etc'
+      ccrfCode:
+        - '23B'
+      reponseconsoCode:
+        - '210'
+        - '220'
+    - title: Siret, SIRET, RCS non visible sur le site
+      example: 'Exemple : Je ne trouve aucune information sur l'identité de l'entreprise sur le site'
+      ccrfCode:
+        - '220'
+        - '21A'
+    - title: Impossible de contacter l'entreprise
+      example: 'Exemple : Je ne trouve pas sur le site aucun formulaire de contact, d'adresse postale, aucun mail ou de numéro de téléphone.'
+      ccrfCode:
+        - '220'
+        - '21A'
+    - title: Frais d'abonnement
+      example: 'Exemple : J'ai commandé un produit et maintien tous les mois, on me prélève un abonnement que je ne voulais pas.'
+      ccrfCode:
+        - '23B'      
+    - title: Le site a disparue 
+      example: 'Exemple : Il y a un mois, j'ai commandé un produit qui n'est jamais arrivé et le site a disparu.'
+        information:
+          title: Ce type de problème ne doit pas être signalé sur SignalConso
+          subTitle: Il concerne la police ou la gendarmerie
+          content: Nous vous invitons à utiliser le site dédié <br><a href="https://www.pre-plainte-en-ligne.gouv.fr/" target="_blank">https://www.pre-plainte-en-ligne.gouv.fr/</a>
+    - title: Autre 
+- title: Le prix
+  example: 'Exemple : il manque les prix, fausse réduction de prix, soldes, promotion'
+  companyKind: WEBSITE
+  subcategories:
+    - title: Il manque des prix / les prix sont illisibles
+      ccrfCode:
+        - '163'
+      tags:
+        - ReponseConso
+      reponseconsoCode:
+        - '212'
+        - '210'
+        - '224'
+      detailInputs:
+        - label: Veuillez préciser
+          type: RADIO
+          options:
+            - Prix pas affiché
+            - Prix illisible
+            - Autre (à préciser)
+        - label: Date du constat
+          type: DATE
+          defaultValue: SYSDATE
+        - label: Description
+          type: TEXTAREA
+    - title: Les prix sont plus élevés qu'ailleurs
+      information:
+        title: Les commerçants ont le droit de choisir leurs prix.
+        outOfScope: true
+        content: "Par contre, les prix doivent être clairement indiqués pour que vous soyez au courant avant d'acheter.
+      <br/> Par exemple, il est autorisé de vendre une bouteille d'eau à 8 euros ou une baguette de pain à 5 euros. C'est au consommateur de bien regarder les prix avant d'acheter.
+      <br/><br/><b>Le saviez-vous ?</b>
+      <br/> Il existe quelques exceptions à ce principe. Certains prix sont réglementés, c'est-à-dire qu'ils sont encadrés par la loi.
+      <br/> Par exemple, le prix des livres est réglementé.
+      <br/><br/> Un commerçant n'a pas le droit de vendre à un prix trop bas : il ne peut pas vendre un produit moins cher que ce qu'il lui a coûté. Il existe quelques situations où il a le droit de vendre en dessous du prix d'achat, comme la période des soldes."
+    - title: Fausse réduction de prix
+      example: 'Exemple : fausse promotion pendant les soldes, faux temps limite, fausse liquidation totale'
+      tags:
+        - ReponseConso
+      ccrfCode:
+        - '145'
+        - '23F'
+        - '146'
+      reponseconsoCode:
+        - '224'
+        - '210'
+        - '212'
+      detailInputs:
+        - label: "Il s'agit d'un problème sur:"
+          type: RADIO
+          options:
+            - Les soldes
+            - Une promotion
+            - Une liquidation
+            - Autre (à préciser)
+        - label: Date du constat
+          type: DATE
+          defaultValue: SYSDATE
+        - label: Description
+          type: TEXTAREA
+    - title: Différence de prix entre le site et le montant payé
+      example: 'Exemple : J'ai acheté des chaussures 19€ et mon relève de compte, j'ai payé 29€. 
+      ccrfCode:
+        - '271'
+- title: Une commande effecutée
+  example: 'Exemple : commande jamais livrée, produit non conforme à la description '
+  companyKind: WEBSITE
+  subcategories:
+    - title: Commande jamais livrée et le site a fermé
+      example: 'Exemple : 'Le site, où j'ai commandé à disparu et je n'ai rien reçu de ma commande.'
+      information:
+        title: Ce type de problème ne doit pas être signalé sur SignalConso
+        subTitle: Il concerne la police ou la gendarmerie
+        content: Nous vous invitons à utiliser le site dédié <br><a href="https://www.pre-plainte-en-ligne.gouv.fr/" target="_blank">https://www.pre-plainte-en-ligne.gouv.fr/</a>
+    - title: Commande jamais livrée et le site est toujours ouvert
+      example: 'Exemple : Cela fait un mois que j'ai commandé et je n'ai pas d'information sur le site.'
+      ccrfCode:
+        - '23B'
+    - title: Le produit est différent de la description ou j'ai reçu un autre produit à la place
+      example: 'Exemple : J'ai commandé des chaussures et j'ai reçu un porte-clés en forme de chaussure.'
+      ccrfCode:
+        - '23B'
+        - '271'
+    - title: Commande incomplète
+      example: 'Exemple : J'ai commandé deux téléphones, j'en ai reçu qu'un seul et l'entreprise ne veut pas me livrer'
+      ccrfCode:
+        - '23B'
+    - title: Livraison en retard ou colis perdu
+      example: 'Exemple : On m'a promis une livraison sous 10 jours, j'ai eu mon produit 6 mois plus tard.'
+      ccrfCode:
+        - '23B'
+      subcategories:
+        - title: J'ai choisi le transporteur en dehors de la sélection propose par l'entreprise
+          example: 'Exemple : J'ai refusé tous les transporteurs de l'entreprise, j'ai obligé l'entreprise à prendre mon transporteur.
+        - title: L'entreprise m'a imposé le transporteur sur une liste lors de la commande
+          example: 'Exemple : J'ai choisi entre livraison à domicile ou à point de retrait sur une liste précise.'
+    - title: Produit endommagé lors du transport
+      example: 'Exemple : J'ai reçu une chaise cassée dans un colis éventré'
+      ccrfCode:
+        - '23B'
+      subcategories:
+        - title: J'ai choisi le transporteur en dehors de la sélection propose par l'entreprise
+          example: 'Exemple : J'ai refusé tous les transporteurs de l'entreprise, j'ai obligé l'entreprise à prendre mon transporteur.
+        - title: L'entreprise m'a imposé le transporteur sur une liste lors de la commande
+          example: 'Exemple : J'ai choisi entre livraison à domicile ou à point de retrait sur une liste précise.'
+    - title: Garantie légale de conformité ou la garantie commerciale 
+      example: 'Exemple : Je n'arrive pas à utiliser la garantie légale de conformité de 2 ans, alors que cela fait 1 an que j'ai l'appareil'
+      ccrfCode:
+        - '21D'
+    - title: Le Service après vente ne me répond plus (SAV)
+      example: 'Exemple : Le SAV m'a promis un remboursement, je n'ai rien reçu et le SAV répond toujours que le virement arrive
+      ccrfCode:
+        - '23B'
+    - title: Autre 
+- title: Un produit dangereux
+  example: 'Exemple : jouet, cosmétique'
+  tags:
+    - ProduitDangereux
+  subcategories:
+    - title: Produit alimentaire
+      tags:
+        - ProduitAlimentaire
+      reponseconsoCode:
+      subcategories: !!import/single ../common/produit-alimentaire.yml
+    - title: Jouet, puériculture, matériel scolaire
+      tags:
+        - ProduitIndustriel
+      subcategoriesTitle: Quel est le risque&#160;?
+      subcategories: !!import/single ../common/produit-dangereux.yml
+    - title: Cosmétique, produit d'hygiène, produit de tatouage
+      tags:
+        - ProduitIndustriel
+      subcategoriesTitle: Quel est le risque&#160;?
+      subcategories: !!import/single ../common/produit-dangereux.yml
+    - title: Vêtement, textile, sac à main, bijou
+      tags:
+        - ProduitIndustriel
+      subcategoriesTitle: Quel est le risque&#160;?
+      subcategories: !!import/single ../common/produit-dangereux.yml
+    - title: Équipement de protection
+      tags:
+        - ProduitIndustriel
+      subcategoriesTitle: Quel est le risque&#160;?
+      subcategories: !!import/single ../common/produit-dangereux.yml
+    - title: Feu d'artifice
+      tags:
+        - ProduitIndustriel
+      subcategoriesTitle: Quel est le risque&#160;?
+      subcategories: !!import/single ../common/produit-dangereux.yml
+    - title: Meuble
+      tags:
+        - ProduitIndustriel
+      subcategoriesTitle: Quel est le risque&#160;?
+      subcategories: !!import/single ../common/produit-dangereux.yml
+    - title: Produit d'entretien, produit chimique, engrais
+      tags:
+        - ProduitIndustriel
+      subcategoriesTitle: Quel est le risque&#160;?
+      subcategories: !!import/single ../common/produit-dangereux.yml
+    - title: Appareil électrique
+        - ProduitIndustriel
+      subcategoriesTitle: Quel est le risque&#160;?
+      subcategories: !!import/single ../common/produit-dangereux.yml
+    - title: Outil
+        - ProduitIndustriel
+      subcategoriesTitle: Quel est le risque&#160;?
+      subcategories: !!import/single ../common/produit-dangereux.yml
+    - title: Autre
+      subcategoriesTitle: Quel est le risque&#160;?
+      subcategories: !!import/single ../common/produit-dangereux.yml
+- title: "J'ai vendu un objet sur internet et je n'ai pas été payé"
+  example: "Exemple : Escroquerie d'un faux acheteur"
+  information:
+    title: Ce type de problème ne doit pas être signalé sur SignalConso
+    subTitle: Il concerne la police ou la gendarmerie
+    content: Nous vous invitons à utiliser le site dédié <br><a href="https://www.service-public.fr/particuliers/vosdroits/F34019" target="_blank">https://www.service-public.fr/particuliers/vosdroits/F34019</a>
