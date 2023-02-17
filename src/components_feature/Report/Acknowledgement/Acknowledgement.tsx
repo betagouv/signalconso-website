@@ -1,23 +1,19 @@
-import {Panel, PanelActions, PanelBody} from 'components_simple/Panel/Panel'
-import {Txt} from '../../../alexlibs/mui-extension/Txt/Txt'
 import {Box, BoxProps, Icon} from '@mui/material'
-import {useReportFlowContext} from '../ReportFlowContext'
-import {useEffect, useMemo} from 'react'
-import {fnSwitch} from '../../../utils/FnSwitch'
-import {useConstantContext} from 'context/ConstantContext'
-import {useToast} from 'hooks/useToast'
-import {Row} from 'components_simple/Row/Row'
-import {externalLinks} from 'core/externalLinks'
-import {ScButton} from 'components_simple/Button/Button'
-import {useI18n} from 'i18n/I18n'
-import Link from 'next/link'
-import {siteMap} from 'core/siteMap'
-import {ReportTag} from '../../../anomalies/Anomaly'
-import {ReportDraft} from '../../../model/ReportDraft'
-import {CreatedReport} from '../../../model/CreatedReport'
-import {Country} from '../../../model/Country'
 import {Fender} from 'alexlibs/mui-extension/Fender/Fender'
+import {Panel, PanelActions, PanelBody} from 'components_simple/Panel/Panel'
+import {Row} from 'components_simple/Row/Row'
+import {useConstantContext} from 'context/ConstantContext'
+import {externalLinks} from 'core/externalLinks'
+import {useToast} from 'hooks/useToast'
+import {useI18n} from 'i18n/I18n'
+import {useEffect, useMemo} from 'react'
+import {Txt} from '../../../alexlibs/mui-extension/Txt/Txt'
 import {LinkBackToHome} from '../../../components_simple/LinkBackToHome'
+import {Country} from '../../../model/Country'
+import {CreatedReport} from '../../../model/CreatedReport'
+import {ReportDraft} from '../../../model/ReportDraft'
+import {fnSwitch} from '../../../utils/FnSwitch'
+import {useReportFlowContext} from '../ReportFlowContext'
 
 export enum AcknowledgmentCases {
   ReponseConso = 'ReponseConso',
@@ -29,7 +25,7 @@ export enum AcknowledgmentCases {
   Default = 'Default',
 }
 
-export const Acknowledgement = () => {
+export const Acknowledgement = ({isWebView}: {isWebView: boolean}) => {
   const {
     createReport: {entity: report},
   } = useReportFlowContext()
@@ -53,12 +49,20 @@ export const Acknowledgement = () => {
   }, [countries.error])
 
   if (country || !report.companyAddress.country) {
-    return <_Acknowledgement createdReport={report} country={country} />
+    return <_Acknowledgement createdReport={report} {...{isWebView, country}} />
   }
   return <Fender type="loading" />
 }
 
-export const _Acknowledgement = ({createdReport, country}: {createdReport: CreatedReport; country: Country | undefined}) => {
+export const _Acknowledgement = ({
+  createdReport,
+  country,
+  isWebView,
+}: {
+  createdReport: CreatedReport
+  country: Country | undefined
+  isWebView: boolean
+}) => {
   const reportCase = useMemo(() => {
     const _ = createdReport
     if (_.tags.includes('ReponseConso')) {
@@ -78,9 +82,10 @@ export const _Acknowledgement = ({createdReport, country}: {createdReport: Creat
     }
   }, [createdReport])
 
+  const subProps = {isWebView}
   return fnSwitch(reportCase, {
     [AcknowledgmentCases.ReponseConso]: () => (
-      <AcknowledgementLayout title="Que va-t-il se passer pour l'entreprise ?">
+      <AcknowledgementLayout title="Que va-t-il se passer pour l'entreprise ?" {...subProps}>
         <Row
           icon={
             <Icon aria-hidden="true" sx={{color: t => t.palette.success.light}}>
@@ -112,7 +117,7 @@ export const _Acknowledgement = ({createdReport, country}: {createdReport: Creat
       </AcknowledgementLayout>
     ),
     [AcknowledgmentCases.EmployeeReport]: () => (
-      <AcknowledgementLayout title="Que va-t-il se passer pour l'entreprise ?">
+      <AcknowledgementLayout title="Que va-t-il se passer pour l'entreprise ?" {...subProps}>
         <p>Vous avez indiqué être employé de l'entreprise que vous avez signalé.</p>
         <p>
           Afin de garantir la sécurité de votre emploi, votre signalement ne sera pas transmis à l'entreprise. Par contre, il a
@@ -125,6 +130,7 @@ export const _Acknowledgement = ({createdReport, country}: {createdReport: Creat
       <AcknowledgementLayout
         title="Que va-t-il se passer pour l'entreprise ?"
         showChargeBack={createdReport.tags.includes('LitigeContractuel') && !!createdReport.websiteURL}
+        {...subProps}
       >
         <p>Vous avez indiqué que l’entreprise est une entreprise étrangère ({country?.name}).</p>
         <p>Votre signalement ne sera pas transmis à cette entreprise.</p>
@@ -165,7 +171,7 @@ export const _Acknowledgement = ({createdReport, country}: {createdReport: Creat
       </AcknowledgementLayout>
     ),
     [AcknowledgmentCases.NotTransmittable]: () => (
-      <AcknowledgementLayout title="Que va-t-il se passer maintenant ?">
+      <AcknowledgementLayout title="Que va-t-il se passer maintenant ?" {...subProps}>
         <Row
           icon={
             <Icon aria-hidden="true" sx={{color: t => t.palette.success.light}}>
@@ -198,7 +204,7 @@ export const _Acknowledgement = ({createdReport, country}: {createdReport: Creat
       </AcknowledgementLayout>
     ),
     [AcknowledgmentCases.FrenchCompanyWithoutSIRET]: () => (
-      <AcknowledgementLayout title="Que va-t-il se passer pour l'entreprise ?">
+      <AcknowledgementLayout title="Que va-t-il se passer pour l'entreprise ?" {...subProps}>
         <p>
           Votre signalement est transmis à la répression des fraudes (
           <abbr title="Direction Générale de la Concurrence, Consommation et Répression des Fraudes">DGCCRF</abbr>).
@@ -213,6 +219,7 @@ export const _Acknowledgement = ({createdReport, country}: {createdReport: Creat
       <AcknowledgementLayout
         title="Que va-t-il se passer pour l'entreprise ?"
         showChargeBack={createdReport.tags.includes('LitigeContractuel') && !!createdReport.websiteURL}
+        {...subProps}
       >
         <Row
           icon={
@@ -249,7 +256,7 @@ export const _Acknowledgement = ({createdReport, country}: {createdReport: Creat
       </AcknowledgementLayout>
     ),
     [AcknowledgmentCases.Default]: () => (
-      <AcknowledgementLayout title="Que va-t-il se passer pour l'entreprise ?">
+      <AcknowledgementLayout title="Que va-t-il se passer pour l'entreprise ?" {...subProps}>
         {createdReport.contactAgreement ? (
           <>
             <p>
@@ -284,9 +291,11 @@ const AcknowledgementLayout = ({
   title,
   children,
   showChargeBack,
+  isWebView,
 }: {
   showChargeBack?: boolean
   title?: string
+  isWebView: boolean
 } & BoxProps) => {
   const {m} = useI18n()
   return (
@@ -338,7 +347,7 @@ const AcknowledgementLayout = ({
           </p>
         </PanelBody>
         <PanelActions sx={{justifyContent: 'flex-start'}}>
-          <LinkBackToHome />
+          <LinkBackToHome {...{isWebView}} />
         </PanelActions>
       </Panel>
     </>

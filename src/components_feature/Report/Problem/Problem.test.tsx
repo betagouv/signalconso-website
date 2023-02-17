@@ -1,15 +1,14 @@
 /**
  * @jest-environment jsdom
  */
-import React from 'react'
-import {Problem} from './Problem'
-import {AccessReportFlow, DummyStepperProvider, fireEvent, render, ScRenderResult} from 'test/test-utils'
 import '@testing-library/jest-dom'
-import {fnSwitch} from '../../../utils/FnSwitch'
 import {ReportDraft2} from 'model/ReportDraft2'
-import {Fixture} from '../../../test/fixture'
-import {Anomaly, CompanyKinds, ReportTag} from '../../../anomalies/Anomaly'
 import {firstReportStep} from 'model/ReportStep'
+import {AccessReportFlow, DummyStepperProvider, fireEvent, render, ScRenderResult} from 'test/test-utils'
+import {Anomaly} from '../../../anomalies/Anomaly'
+import {Fixture} from '../../../test/fixture'
+import {fnSwitch} from '../../../utils/FnSwitch'
+import {Problem} from './Problem'
 
 class ProblemFixture {
   static readonly simpleSubcategory = Fixture.genSubcategory()
@@ -36,16 +35,18 @@ class ProblemFixture {
   }
 }
 
+const props = {isWebView: false}
+
 describe('Problem', () => {
   it('should display subcategories', () => {
-    const app = render(<Problem anomaly={ProblemFixture.anomaly} />)
+    const app = render(<Problem {...props} anomaly={ProblemFixture.anomaly} />)
     ProblemFixture.anomaly.subcategories?.forEach(s => {
       expect(app.container.textContent).toContain(s.title)
     })
   })
 
   it('should route to information page when receive subcategories ending with information', async () => {
-    const app = render(<Problem anomaly={ProblemFixture.anomaly} />, {
+    const app = render(<Problem {...props} anomaly={ProblemFixture.anomaly} />, {
       signalConsoApiClient: {
         rateSubcategory: (...args: any[]) => Promise.resolve(),
         searchForeignCompaniesByUrl: (url: string) => Promise.resolve([]),
@@ -61,7 +62,7 @@ describe('Problem', () => {
   })
 
   it('should request the user if he is an employee of the company or not when receive subcategories', () => {
-    const app = render(<Problem anomaly={ProblemFixture.anomaly} />)
+    const app = render(<Problem {...props} anomaly={ProblemFixture.anomaly} />)
     fireEvent.click(app.getByText(ProblemFixture.simpleSubcategory.title))
     expect(app.container.textContent).toContain(app.m.problemDoYouWorkInCompany)
     expect(app.container.textContent).toContain(app.m.problemDoYouWorkInCompanyNo)
@@ -135,7 +136,7 @@ describe('Problem', () => {
           report = r
         }}
       >
-        <Problem anomaly={ProblemFixture.anomaly} />
+        <Problem {...props} anomaly={ProblemFixture.anomaly} />
       </AccessReportFlow>,
     )
     fireEvent.click(app.getByText(ProblemFixture.simpleSubcategory.title))
@@ -152,7 +153,7 @@ describe('Problem', () => {
           report = r
         }}
       >
-        <Problem anomaly={ProblemFixture.anomaly} />
+        <Problem {...props} anomaly={ProblemFixture.anomaly} />
       </AccessReportFlow>,
     )
     fireEvent.click(app.getByText(ProblemFixture.simpleSubcategory.title))
@@ -169,7 +170,7 @@ describe('Problem', () => {
           report = r
         }}
       >
-        <Problem anomaly={ProblemFixture.anomaly} />
+        <Problem {...props} anomaly={ProblemFixture.anomaly} />
       </AccessReportFlow>,
     )
     fireEvent.click(app.getByText(ProblemFixture.simpleSubcategory.title))
@@ -186,7 +187,7 @@ describe('Problem', () => {
           report = r
         }}
       >
-        <Problem anomaly={ProblemFixture.anomaly} />
+        <Problem {...props} anomaly={ProblemFixture.anomaly} />
       </AccessReportFlow>,
     )
     fireEvent.click(app.getByText(ProblemFixture.internetSubcategory.title))
@@ -209,7 +210,7 @@ describe('Problem', () => {
             report = r
           }}
         >
-          <Problem anomaly={ProblemFixture.anomaly} />
+          <Problem {...props} anomaly={ProblemFixture.anomaly} />
         </AccessReportFlow>
       </DummyStepperProvider>,
     )
@@ -230,7 +231,7 @@ describe('Problem', () => {
             report = r
           }}
         >
-          <Problem anomaly={ProblemFixture.anomaly} />
+          <Problem {...props} anomaly={ProblemFixture.anomaly} />
         </AccessReportFlow>
       </DummyStepperProvider>,
     )
@@ -250,7 +251,7 @@ describe('Problem', () => {
             report = r
           }}
         >
-          <Problem anomaly={ProblemFixture.anomaly} />
+          <Problem {...props} anomaly={ProblemFixture.anomaly} />
         </AccessReportFlow>
       </DummyStepperProvider>,
     )
@@ -268,7 +269,7 @@ describe('Problem', () => {
             report = r
           }}
         >
-          <Problem anomaly={ProblemFixture.anomaly} />
+          <Problem {...props} anomaly={ProblemFixture.anomaly} />
         </AccessReportFlow>
       </DummyStepperProvider>,
     )
@@ -288,7 +289,7 @@ describe('Problem', () => {
             report = r
           }}
         >
-          <Problem anomaly={ProblemFixture.anomaly} />
+          <Problem {...props} anomaly={ProblemFixture.anomaly} />
         </AccessReportFlow>
       </DummyStepperProvider>,
     )
@@ -311,7 +312,7 @@ describe('Problem', () => {
             report = r
           }}
         >
-          <Problem anomaly={ProblemFixture.anomaly} />
+          <Problem {...props} anomaly={ProblemFixture.anomaly} />
         </AccessReportFlow>
       </DummyStepperProvider>,
     )

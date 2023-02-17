@@ -1,21 +1,16 @@
 import {ScButton} from 'components_simple/Button/Button'
-import {ButtonProps} from '@mui/material'
-import {useI18n} from '../i18n/I18n'
-import {siteMap} from '../core/siteMap'
-import {useWindowWidth} from '../hooks/useWindowWidth'
 import Link from 'next/link'
-import {useRouter} from 'next/router'
+import {siteMap} from '../core/siteMap'
+import {useI18n} from '../i18n/I18n'
 
-export const LinkBackToHome = ({...props}: ButtonProps) => {
+export const LinkBackToHome = ({isWebView}: {isWebView: boolean}) => {
   const {m} = useI18n()
-  const router = useRouter()
-  return router && router.query.app_type != 'mobile' ? (
+
+  return isWebView ? null : (
     <Link href={siteMap.index}>
-      <ScButton {...props} color="primary" variant="contained" icon="home">
+      <ScButton color="primary" variant="contained" icon="home">
         {m.backToHome}
       </ScButton>
     </Link>
-  ) : (
-    <></>
   )
 }

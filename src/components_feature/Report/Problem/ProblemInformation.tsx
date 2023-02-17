@@ -24,9 +24,10 @@ interface Props {
   anomaly: Anomaly
   subcategories: Subcategory[]
   information: Information
+  isWebView: boolean
 }
 
-export const ProblemInformation = ({anomaly, subcategories, information}: Props) => {
+export const ProblemInformation = ({anomaly, subcategories, information, isWebView}: Props) => {
   const _analytic = useAnalyticContext()
   const {m} = useI18n()
   const {signalConsoApiClient} = useApiClients()
@@ -118,7 +119,7 @@ export const ProblemInformation = ({anomaly, subcategories, information}: Props)
           )}
         </Panel>
       </Animate>
-      <LinkBackToHome />
+      <LinkBackToHome {...{isWebView}} />
     </>
   )
 }
