@@ -1,5 +1,5 @@
 import {useRouter} from 'next/router'
-import * as reportPathPage from '../core/reportPathPage'
+import * as reportPathPage from '../reusablePages/reportPathPage'
 
 export const getStaticPaths = reportPathPage.getStaticPaths
 

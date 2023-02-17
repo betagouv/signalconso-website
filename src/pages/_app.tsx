@@ -58,15 +58,10 @@ const App = ({emotionCache = clientSideEmotionCache, ...props}: ScAppProps) => {
   )
 }
 
-type AppPropsWithMaybeWebview = AppProps & {
-  Component: {
-    isWebView?: boolean
-  }
-}
-
-const _App = ({Component, pageProps, router}: AppPropsWithMaybeWebview) => {
+const _App = ({Component, pageProps, router}: AppProps) => {
   const {config} = useConfig()
-  const isWebView = Component.isWebView ?? router.query.app_type === 'mobile'
+
+  const isWebView = router.pathname.startsWith('/webview/') ?? router.query.app_type === 'mobile'
   return (
     <>
       <Head>
