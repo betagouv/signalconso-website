@@ -6,9 +6,9 @@
     - title: Avez-vous demander d'être rappeler par l'entreprise ?
       subcategories:
         - title: Oui
-            information:
-              title: C'est possible d'être appeler par l'entreprise
-              content: Vous avez demander d'être par l'entreprise, donc il a le droit de vous rappel suite à votre demande.
+          information:
+            title: C'est possible d'être appeler par l'entreprise
+            content: Vous avez demander d'être par l'entreprise, donc il a le droit de vous rappel suite à votre demande.
         - title: Non
           detailInputs:
             - label: Date de l'appel
@@ -32,9 +32,9 @@
       - title: Avez-vous demander d'être rappeler par l'entreprise ?
         subcategories:
           - title: Oui
-              information:
-                title: C'est possible d'être appeler par l'entreprise
-                content: Vous avez demander d'être par l'entreprise, donc il a le droit de vous rappel suite à votre demande.
+            information:
+              title: C'est possible d'être appeler par l'entreprise
+              content: Vous avez demander d'être par l'entreprise, donc il a le droit de vous rappel suite à votre demande.
           - title: Non
             detailInputs:
               - label: Date de l'appel
@@ -52,9 +52,9 @@
       - title: Avez-vous demander d'être rappeler par l'entreprise ?
         subcategories:
           - title: Oui
-              information:
-                title: C'est possible d'être appeler par l'entreprise
-                content: Vous avez demander d'être par l'entreprise, donc il a le droit de vous rappel suite à votre demande.
+            information:
+              title: C'est possible d'être appeler par l'entreprise
+              content: Vous avez demander d'être par l'entreprise, donc il a le droit de vous rappel suite à votre demande.
           - title: Non
             detailInputs:
               - label: Date de l'appel
@@ -72,9 +72,9 @@
       - title: Avez-vous demander d'être rappeler par l'entreprise ?
         subcategories:
           - title: Oui
-              information:
-                title: C'est possible d'être appeler par l'entreprise
-                content: Vous avez demander d'être par l'entreprise, donc il a le droit de vous rappel suite à votre demande.
+            information:
+              title: C'est possible d'être appeler par l'entreprise
+              content: Vous avez demander d'être par l'entreprise, donc il a le droit de vous rappel suite à votre demande.
           - title: Non
             detailInputs:
               - label: Date de l'appel
@@ -92,9 +92,9 @@
       - title: Avez-vous demander d'être rappeler par l'entreprise ?
         subcategories:
           - title: Oui
-              information:
-                title: C'est possible d'être appeler par l'entreprise
-                content: Vous avez demander d'être par l'entreprise, donc il a le droit de vous rappel suite à votre demande.
+            information:
+              title: C'est possible d'être appeler par l'entreprise
+              content: Vous avez demander d'être par l'entreprise, donc il a le droit de vous rappel suite à votre demande.
           - title: Non
             detailInputs:
               - label: Date de l'appel
@@ -112,9 +112,9 @@
       - title: Avez-vous demander d'être rappeler par l'entreprise ?
         subcategories:
           - title: Oui
-              information:
-                title: C'est possible d'être appeler par l'entreprise
-                content: Vous avez demander d'être par l'entreprise, donc il a le droit de vous rappel suite à votre demande.
+            information:
+              title: C'est possible d'être appeler par l'entreprise
+              content: Vous avez demander d'être par l'entreprise, donc il a le droit de vous rappel suite à votre demande.
           - title: Non
             detailInputs:
               - label: Date de l'appel
