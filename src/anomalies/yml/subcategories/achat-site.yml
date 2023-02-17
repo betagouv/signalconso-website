@@ -266,6 +266,7 @@
                 - '464'
                 - '465'
               subcategoriesTitle: Avez-vous acheté ce produit neuf ou d'occasion&#160;?
+              subcategories:
                 - title: Neuf
                   subcategoriesTitle: Quand avez-vous acheté le produit&#160;?
                   subcategories:
