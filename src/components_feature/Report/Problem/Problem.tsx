@@ -13,10 +13,10 @@ import {ProblemInformation} from './ProblemInformation'
 import {ProblemSelect} from './ProblemSelect'
 import {ProblemStepperStep, ProblemStepper} from './ProblemStepper'
 import {computeSelectedSubcategoriesData} from './useSelectedSubcategoriesData'
-import {ReportDraft} from 'model/ReportDraft'
 
 interface Props {
   anomaly: Anomaly
+  isWebView: boolean
 }
 
 function adjustTags(
@@ -46,7 +46,7 @@ function adjustReportDraftAfterSubcategoriesChange(report: Partial<ReportDraft2>
   return copy
 }
 
-export const Problem = ({anomaly}: Props) => {
+export const Problem = ({anomaly, isWebView}: Props) => {
   const _analytic = useAnalyticContext()
   const {m} = useI18n()
   const displayReponseConso = useMemo(chooseIfReponseConsoDisplayed, [])
@@ -124,6 +124,7 @@ export const Problem = ({anomaly}: Props) => {
             anomaly={anomaly}
             subcategories={reportDraft.subcategories}
             information={lastSubcategories.information}
+            {...{isWebView}}
           />
         ) : (
           <ProblemStepper renderDone={<ReportFlowStepperActions next={onSubmit} />}>

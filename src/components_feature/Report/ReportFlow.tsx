@@ -8,19 +8,19 @@ import {Acknowledgement} from './Acknowledgement/Acknowledgement'
 interface Props {
   initialStep: ReportStep
   anomaly: Anomaly
+  isWebView: boolean
 }
 
-export const ReportFlow = React.memo(({initialStep, anomaly}: Props) => {
+export const ReportFlow = React.memo(({initialStep, anomaly, isWebView}: Props) => {
   const _analytics = useAnalyticContext()
   return (
     <ReportFlowStepper
-      initialStep={initialStep}
-      anomaly={anomaly}
+      {...{initialStep, anomaly, isWebView}}
       onStepChange={step => {
         const {path, title} = getAnalyticsForStep(step)
         _analytics.trackPage(`/${anomaly.path}/${path}`, title)
       }}
-      renderDone={Acknowledgement}
+      renderDone={() => <Acknowledgement {...{isWebView}} />}
     />
   )
 })
