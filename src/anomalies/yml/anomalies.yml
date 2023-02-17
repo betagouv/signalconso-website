@@ -8,12 +8,12 @@ list:
     sprite: none
     subcategories: !!import/single subcategories/retrait-rappel.yml
     subcategoriesTitle: Avez-vous consommé le produit ?
-  - category: Achat en ligne
+  - category: Achat sur internet ou sur application mobile
     title: Signalez un site d'achat à la répression des fraudes
     path: achat-site
     description: Prix, promotion, qualité, poids, garantie, problème de livraison, …
     seoDescription: Vous avez eu un problème de prix, sur une promotion ou de qualité. Vous n'avez pas reçu votre commande ou celle-ci est abîmée, le service client n'est pas joignable ou insatisfaisant...
-    id: '1'
+    id: '2'
     sprite: category-site
     subcategoriesTitle: Votre problème concerne
     subcategories: !!import/single subcategories/achat-site.yml
@@ -22,7 +22,7 @@ list:
     path: achat-magasin
     description: Prix, promotion, qualité, poids, garantie, …
     seoDescription: Vous avez eu un problème de prix, sur une promotion ou de qualité. Vous n'avez pas reçu votre commande ou celle-ci est abîmée, le service client n'est pas joignable ou insatisfaisant...
-    id: '2'
+    id: '1'
     sprite: category-store
     subcategoriesTitle: Votre problème concerne
     subcategories: !!import/single subcategories/achat-magasin.yml
