@@ -69,11 +69,9 @@ const _App = ({Component, pageProps, router}: AppPropsWithMaybeWebview) => {
   const isWebView = Component.isWebView ?? router.query.app_type === 'mobile'
   return (
     <>
-      (
       <Head>
         <link rel="canonical" href={config.appBaseUrl + router.asPath} />
       </Head>
-      )
       {config.atInternet_siteId && !isWebView && (
         <Script
           type="text/javascript"
