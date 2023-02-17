@@ -1,3 +1,159 @@
+- title: Avez-vous reçu un appel commerciale pendant le week-end ?
+  companyKind: PHONE
+  tags:
+    - DemarchageTelephonique
+  subcategories:
+    - title: Avez-vous demander d'être rappeler par l'entreprise ?
+      subcategories:
+        - title: Oui
+            information:
+              title: C'est possible d'être appeler par l'entreprise
+              content: Vous avez demander d'être par l'entreprise, donc il a le droit de vous rappel suite à votre demande.
+        - title: Non
+          detailInputs:
+            - label: Date de l'appel
+              type: DATE
+              defaultValue: SYSDATE
+            - label: Est-ce que le vendeur s'est fait passer pour une autre entreprise&#160;?
+              type: RADIO
+              options:
+                - Non
+                - Oui (à préciser)
+            - label: Décrivez nous plus en détails ce qui s'est passé
+              type: TEXTAREA
+- title: Avez-vous reçu un appel commerciale pendant le semaine ?
+  companyKind: PHONE
+  tags:
+    - DemarchageTelephonique
+  subcategoriesTitle: 'A quelle tranche horaire ?'
+  subcategories:
+    - title: De 0h01 à 9h59
+      subcategories:
+      - title: Avez-vous demander d'être rappeler par l'entreprise ?
+        subcategories:
+          - title: Oui
+              information:
+                title: C'est possible d'être appeler par l'entreprise
+                content: Vous avez demander d'être par l'entreprise, donc il a le droit de vous rappel suite à votre demande.
+          - title: Non
+            detailInputs:
+              - label: Date de l'appel
+                type: DATE
+                defaultValue: SYSDATE
+              - label: Est-ce que le vendeur s'est fait passer pour une autre entreprise&#160;?
+                type: RADIO
+                options:
+                  - Non
+                  - Oui (à préciser)
+              - label: Décrivez nous plus en détails ce qui s'est passé
+                type: TEXTAREA
+    - title: De 10h00 à 12h59
+      subcategories:
+      - title: Avez-vous demander d'être rappeler par l'entreprise ?
+        subcategories:
+          - title: Oui
+              information:
+                title: C'est possible d'être appeler par l'entreprise
+                content: Vous avez demander d'être par l'entreprise, donc il a le droit de vous rappel suite à votre demande.
+          - title: Non
+            detailInputs:
+              - label: Date de l'appel
+                type: DATE
+                defaultValue: SYSDATE
+              - label: Est-ce que le vendeur s'est fait passer pour une autre entreprise&#160;?
+                type: RADIO
+                options:
+                  - Non
+                  - Oui (à préciser)
+              - label: Décrivez nous plus en détails ce qui s'est passé
+                type: TEXTAREA
+    - title: De 13h00 à 13h59
+      subcategories:
+      - title: Avez-vous demander d'être rappeler par l'entreprise ?
+        subcategories:
+          - title: Oui
+              information:
+                title: C'est possible d'être appeler par l'entreprise
+                content: Vous avez demander d'être par l'entreprise, donc il a le droit de vous rappel suite à votre demande.
+          - title: Non
+            detailInputs:
+              - label: Date de l'appel
+                type: DATE
+                defaultValue: SYSDATE
+              - label: Est-ce que le vendeur s'est fait passer pour une autre entreprise&#160;?
+                type: RADIO
+                options:
+                  - Non
+                  - Oui (à préciser)
+              - label: Décrivez nous plus en détails ce qui s'est passé
+                type: TEXTAREA
+    - title: De 14h00 à 20h00
+      subcategories:
+      - title: Avez-vous demander d'être rappeler par l'entreprise ?
+        subcategories:
+          - title: Oui
+              information:
+                title: C'est possible d'être appeler par l'entreprise
+                content: Vous avez demander d'être par l'entreprise, donc il a le droit de vous rappel suite à votre demande.
+          - title: Non
+            detailInputs:
+              - label: Date de l'appel
+                type: DATE
+                defaultValue: SYSDATE
+              - label: Est-ce que le vendeur s'est fait passer pour une autre entreprise&#160;?
+                type: RADIO
+                options:
+                  - Non
+                  - Oui (à préciser)
+              - label: Décrivez nous plus en détails ce qui s'est passé
+                type: TEXTAREA
+    - title: De 20h01 à 0h00
+      subcategories:
+      - title: Avez-vous demander d'être rappeler par l'entreprise ?
+        subcategories:
+          - title: Oui
+              information:
+                title: C'est possible d'être appeler par l'entreprise
+                content: Vous avez demander d'être par l'entreprise, donc il a le droit de vous rappel suite à votre demande.
+          - title: Non
+            detailInputs:
+              - label: Date de l'appel
+                type: DATE
+                defaultValue: SYSDATE
+              - label: Est-ce que le vendeur s'est fait passer pour une autre entreprise&#160;?
+                type: RADIO
+                options:
+                  - Non
+                  - Oui (à préciser)
+              - label: Décrivez nous plus en détails ce qui s'est passé
+                type: TEXTAREA
+- title: Sur les 30 derniers jours, il y a au moins 5 appels d'un même numéro qui m'a essayé de me contacter ?
+  companyKind: PHONE
+  tags:
+    - DemarchageTelephonique
+  detailInputs:
+  - label: Date du premier appel
+    type: DATE
+    defaultValue: SYSDATE
+  - label: Date du second appel
+    type: DATE
+    defaultValue: SYSDATE
+  - label: Date du troisième appel
+    type: DATE
+    defaultValue: SYSDATE  
+  - label: Date du quatième appel
+    type: DATE
+    defaultValue: SYSDATE
+  - label: Date du cinquième appel
+    type: DATE
+    defaultValue: SYSDATE
+  - label: Est-ce que le vendeur s'est fait passer pour une autre entreprise&#160;?
+    type: RADIO
+    options:
+      - Non
+      - Oui (à préciser)
+  - label: Décrivez nous plus en détails ce qui s'est passé
+    type: TEXTAREA
 - title: Je reçois des appels pour effectuer des travaux ou sur de la rénovation énergétique
   information:
     title: Revenez en arrière et utilisez plutôt la catégorie spécifique à votre problème 🙂
@@ -5,7 +161,7 @@
 - title: Je reçois des appels pour effectuer des Formations en utilisant mon CPF
   information:
     title: Revenez en arrière et utilisez plutôt la catégorie spécifique à votre problème 🙂
-    content: Un appel, un SMS, un message personnel sur les réseaux sociaux, en lien avec le CPF ou compte de formation personnel ? Utilisez la catégorie "Services aux particuliers" puis "Formation". Il est interdit de démarcher des titulaires d'un compte personnel de formation.
+    content: Un appel, un SMS, un message personnel sur les réseaux sociaux, en lien avec le CPF ou compte de formation personnel ? Utilisez la catégorie "Services aux particuliers" puis "Formation". Il est interdit de démarcher des titulaires d'un compte personnel de formation.'
 - title: Je reçois des appels indésirables alors que je suis inscrit sur Bloctel
   information:
     content: <p>Vous recevez des appels indésirables alors que vous êtes inscrit sur Bloctel.</p>
@@ -47,5 +203,5 @@
   information:
     content:
       Le Service Relation Consommateur est ouvert au 01 73 26 81 45 de 8 h 00 à 17 h 00 uniquement les jours ouvrés (Prix d'un appel vers un numéro fixe, suivant opérateur). Ce service est à disposition pour aider à gérer ou utiliser l' « Espace consommateur » du site Bloctel.
-      <br/><br/>En revanche, il ne donne aucune information sur le suivi des signalements, les modalités de connexion à Internet ou sur les questions d'ordre juridique.
+      <br/><br/>En revanche, il ne donne aucune information sur le suivi des signalements, les modalités de connexion à Internet ou sur les questions d'ordre juridique.'
       <br/><br/>Vous pouvez accès à la Foire aux questions de Bloctel sur https://www.bloctel.gouv.fr/faq
