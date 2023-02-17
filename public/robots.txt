@@ -20,3 +20,4 @@ Disallow: /*information
 Disallow: /entreprise/*
 Disallow: /entreprises*
 Disallow: /mes-entreprises
+Disallow: /webview*

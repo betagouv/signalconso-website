@@ -65,7 +65,7 @@ export const PlaygroundAcknowledgment = () => {
         </Select>
       )}
       <hr />
-      <_Acknowledgement createdReport={report} country={country} />
+      <_Acknowledgement createdReport={report} country={country} isWebView={false} />
     </>
   )
 }

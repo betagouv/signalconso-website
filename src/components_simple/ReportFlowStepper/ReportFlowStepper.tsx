@@ -14,6 +14,7 @@ interface StepperProps {
   anomaly: Anomaly
   onStepChange: (step: ReportStepOrDone) => void
   renderDone: () => JSX.Element
+  isWebView: boolean
 }
 
 interface ReportFlowStepperContext {
@@ -25,14 +26,14 @@ interface ReportFlowStepperContext {
 
 export const ReportFlowStepperContext = React.createContext<ReportFlowStepperContext>({} as ReportFlowStepperContext)
 
-export const ReportFlowStepper = ({anomaly, initialStep, renderDone, onStepChange}: StepperProps) => {
+export const ReportFlowStepper = ({anomaly, initialStep, renderDone, onStepChange, isWebView}: StepperProps) => {
   const [currentStep, setCurrentStep] = useState<ReportStepOrDone>(initialStep)
 
   const steps: {
     component: () => JSX.Element
   }[] = [
     {
-      component: () => <Problem anomaly={anomaly} />,
+      component: () => <Problem {...{isWebView, anomaly}} />,
     },
     {
       component: () => <Details />,
