@@ -158,7 +158,7 @@
   companyKind: WEBSITE
   subcategories:
     - title: C'est un aliment ou une boisson
-      exemple: >-
+      example: >-
         Exemple : bonbon, viande, conserve, vin, bouteille de vin
       tags:
         - ProduitAlimentaire
@@ -170,7 +170,7 @@
             - '23B'
             - '271'
         - title: Produit "A consommer jusqu'au" reçu après cette date
-          exemple: >-
+          example: >-
             Exemple : A consommer jusqu'au 17/02/XXXX, j'ai reçu le colis 18/02/XXXX
           ccrfCode:
             - '323'
@@ -231,7 +231,7 @@
             - '277'
         - title: Autre 
     - title: C'est un objet
-      exemple: >-
+      example: >-
         'Exemple : jouet, électroménager, vêtement, savon, vaisselle, meuble'
       tags:
         - ProduitIndustriel   
