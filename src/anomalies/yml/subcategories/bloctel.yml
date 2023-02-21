@@ -1,27 +1,26 @@
-- title: Avez-vous reçu un appel commerciale pendant le week-end ?
+- title: Avez-vous reçu un appel commercial pendant le week-end ou à un jour férié ?
   companyKind: PHONE
   tags:
     - DemarchageTelephonique
+  subcategoriesTitle: Avez-vous demandé d'être rappelé par l'entreprise ?
   subcategories:
-    - title: Avez-vous demander d'être rappeler par l'entreprise ?
-      subcategories:
-        - title: Oui
-          information:
-            title: C'est possible d'être appeler par l'entreprise
-            content: Vous avez demander d'être par l'entreprise, donc il a le droit de vous rappel suite à votre demande.
-        - title: Non
-          detailInputs:
-            - label: Date de l'appel
-              type: DATE
-              defaultValue: SYSDATE
-            - label: Est-ce que le vendeur s'est fait passer pour une autre entreprise&#160;?
-              type: RADIO
-              options:
-                - Non
-                - Oui (à préciser)
-            - label: Décrivez nous plus en détails ce qui s'est passé
-              type: TEXTAREA
-- title: Avez-vous reçu un appel commerciale pendant le semaine ?
+    - title: Oui
+      information:
+        title: C'est possible d'être appelé par l'entreprise
+        content: Vous avez demandé d'être par l'entreprise, donc il a le droit de vous rappel suite à votre demande.
+    - title: Non
+      detailInputs:
+        - label: Date de l'appel
+          type: DATE
+          defaultValue: SYSDATE
+        - label: Est-ce que le vendeur s'est fait passer pour une autre entreprise&#160;?
+          type: RADIO
+          options:
+            - Non
+            - Oui (à préciser)
+        - label: Décrivez-nous plus en détail ce qui s'est passé
+          type: TEXTAREA
+- title: Avez-vous reçu un appel commercial pendant la semaine ?
   companyKind: PHONE
   tags:
     - DemarchageTelephonique
@@ -29,12 +28,12 @@
   subcategories:
     - title: De 0h01 à 9h59
       subcategories:
-      - title: Avez-vous demander d'être rappeler par l'entreprise ?
+      - title: Avez-vous demandé d'être rappelé par l'entreprise ?
         subcategories:
           - title: Oui
             information:
-              title: C'est possible d'être appeler par l'entreprise
-              content: Vous avez demander d'être par l'entreprise, donc il a le droit de vous rappel suite à votre demande.
+              title: C'est possible d'être appelé par l'entreprise
+              content: Vous avez demandé d'être par l'entreprise, donc il a le droit de vous rappel suite à votre demande.
           - title: Non
             detailInputs:
               - label: Date de l'appel
@@ -45,11 +44,11 @@
                 options:
                   - Non
                   - Oui (à préciser)
-              - label: Décrivez nous plus en détails ce qui s'est passé
+              - label: Décrivez-nous plus en détail ce qui s'est passé
                 type: TEXTAREA
     - title: De 10h00 à 12h59
       subcategories:
-      - title: Avez-vous demander d'être rappeler par l'entreprise ?
+      - title: Avez-vous demandé d'être rappelé par l'entreprise ?
         subcategories:
           - title: Oui
             information:
@@ -65,16 +64,16 @@
                 options:
                   - Non
                   - Oui (à préciser)
-              - label: Décrivez nous plus en détails ce qui s'est passé
+              - label: Décrivez-nous plus en détail ce qui s'est passé
                 type: TEXTAREA
     - title: De 13h00 à 13h59
       subcategories:
-      - title: Avez-vous demander d'être rappeler par l'entreprise ?
+      - title: Avez-vous demandé d'être rappelé par l'entreprise ?
         subcategories:
           - title: Oui
             information:
-              title: C'est possible d'être appeler par l'entreprise
-              content: Vous avez demander d'être par l'entreprise, donc il a le droit de vous rappel suite à votre demande.
+              title: C'est possible d'être appelé par l'entreprise
+              content: Vous avez demandé d'être par l'entreprise, donc il a le droit de vous rappel suite à votre demande.
           - title: Non
             detailInputs:
               - label: Date de l'appel
@@ -85,16 +84,16 @@
                 options:
                   - Non
                   - Oui (à préciser)
-              - label: Décrivez nous plus en détails ce qui s'est passé
+              - label: Décrivez-nous plus en détail ce qui s'est passé
                 type: TEXTAREA
     - title: De 14h00 à 20h00
       subcategories:
-      - title: Avez-vous demander d'être rappeler par l'entreprise ?
+      - title: Avez-vous demandé d'être rappelé par l'entreprise ?
         subcategories:
           - title: Oui
             information:
-              title: C'est possible d'être appeler par l'entreprise
-              content: Vous avez demander d'être par l'entreprise, donc il a le droit de vous rappel suite à votre demande.
+              title: C'est possible d'être appelé par l'entreprise
+              content: Vous avez demandé d'être par l'entreprise, donc il a le droit de vous rappel suite à votre demande.
           - title: Non
             detailInputs:
               - label: Date de l'appel
@@ -105,16 +104,16 @@
                 options:
                   - Non
                   - Oui (à préciser)
-              - label: Décrivez nous plus en détails ce qui s'est passé
+              - label: Décrivez-nous plus en détail ce qui s'est passé
                 type: TEXTAREA
     - title: De 20h01 à 0h00
       subcategories:
-      - title: Avez-vous demander d'être rappeler par l'entreprise ?
+      - title: Avez-vous demandé d'être rappelé par l'entreprise ?
         subcategories:
           - title: Oui
             information:
-              title: C'est possible d'être appeler par l'entreprise
-              content: Vous avez demander d'être par l'entreprise, donc il a le droit de vous rappel suite à votre demande.
+              title: C'est possible d'être appelé par l'entreprise
+              content: Vous avez demandé d'être par l'entreprise, donc il a le droit de vous rappel suite à votre demande.
           - title: Non
             detailInputs:
               - label: Date de l'appel
@@ -125,7 +124,7 @@
                 options:
                   - Non
                   - Oui (à préciser)
-              - label: Décrivez nous plus en détails ce qui s'est passé
+              - label: Décrivez-nous plus en détail ce qui s'est passé
                 type: TEXTAREA
 - title: Sur les 30 derniers jours, il y a au moins 5 appels d'un même numéro qui m'a essayé de me contacter ?
   companyKind: PHONE
