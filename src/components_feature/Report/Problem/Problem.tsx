@@ -13,10 +13,12 @@ import {ProblemInformation} from './ProblemInformation'
 import {ProblemSelect} from './ProblemSelect'
 import {ProblemStepperStep, ProblemStepper} from './ProblemStepper'
 import {computeSelectedSubcategoriesData} from './useSelectedSubcategoriesData'
+import {StepNavigation} from 'components_simple/ReportFlowStepper/ReportFlowStepper'
 
 interface Props {
   anomaly: Anomaly
   isWebView: boolean
+  stepNavigation: StepNavigation
 }
 
 function adjustTags(
@@ -46,7 +48,7 @@ function adjustReportDraftAfterSubcategoriesChange(report: Partial<ReportDraft2>
   return copy
 }
 
-export const Problem = ({anomaly, isWebView}: Props) => {
+export const Problem = ({anomaly, isWebView, stepNavigation}: Props) => {
   const _analytic = useAnalyticContext()
   const {m} = useI18n()
   const displayReponseConso = useMemo(chooseIfReponseConsoDisplayed, [])
@@ -104,7 +106,7 @@ export const Problem = ({anomaly, isWebView}: Props) => {
         (category, idx) =>
           category.subcategories && (
             <ProblemSelect
-              autoScrollToPanel={idx !== 0}
+              autoScrollTo={idx !== 0}
               key={category.id}
               title={category.subcategoriesTitle}
               value={reportDraft.subcategories?.[idx]?.id}
@@ -127,7 +129,7 @@ export const Problem = ({anomaly, isWebView}: Props) => {
             {...{isWebView}}
           />
         ) : (
-          <ProblemStepper renderDone={<ReportFlowStepperActions next={onSubmit} />}>
+          <ProblemStepper renderDone={<ReportFlowStepperActions next={onSubmit} {...{stepNavigation}} />}>
             <ProblemStepperStep isDone={reportDraft.employeeConsumer !== undefined}>
               <ProblemSelect
                 id="select-employeeconsumer"

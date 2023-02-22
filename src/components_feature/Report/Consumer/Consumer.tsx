@@ -1,30 +1,30 @@
-import {Panel, PanelBody} from 'components_simple/Panel/Panel'
-import {useI18n} from 'i18n/I18n'
 import {Grid} from '@mui/material'
-import React, {useState} from 'react'
-import {ScInput} from 'components_simple/Input/ScInput'
+import {EventCategories, ReportEventActions} from 'analytic/analytic'
+import {useAnalyticContext} from 'analytic/AnalyticContext'
 import {FormLayout} from 'components_simple/FormLayout/FormLayout'
+import {ScInput} from 'components_simple/Input/ScInput'
+import {Panel, PanelBody} from 'components_simple/Panel/Panel'
+import {ScRadioGroup} from 'components_simple/RadioGroup/RadioGroup'
+import {ScRadioGroupItem} from 'components_simple/RadioGroup/RadioGroupItem'
+import {StepNavigation} from 'components_simple/ReportFlowStepper/ReportFlowStepper'
+import {ReportFlowStepperActions} from 'components_simple/ReportFlowStepper/ReportFlowStepperActions'
+import {Row} from 'components_simple/Row/Row'
+import {useApiClients} from 'context/ApiClientsContext'
+import {useWindowWidth} from 'hooks/useWindowWidth'
+import {useI18n} from 'i18n/I18n'
+import {ReportDraft2} from 'model/ReportDraft2'
+import {useState} from 'react'
 import {Controller, useForm} from 'react-hook-form'
 import {regexp} from 'utils/regexp'
-import {ScRadioGroupItem} from 'components_simple/RadioGroup/RadioGroupItem'
-import {ScRadioGroup} from 'components_simple/RadioGroup/RadioGroup'
-import {useReportFlowContext} from '../ReportFlowContext'
-import {Txt} from '../../../alexlibs/mui-extension/Txt/Txt'
 import {Alert} from '../../../alexlibs/mui-extension/Alert/Alert'
-import {ReportFlowStepperActions} from 'components_simple/ReportFlowStepper/ReportFlowStepperActions'
-import {useApiClients} from 'context/ApiClientsContext'
-import {useFetcher} from '../../../hooks/useFetcher'
-import {useReportFlowStepperContext} from 'components_simple/ReportFlowStepper/ReportFlowStepper'
-import {ConsumerValidationDialog} from './ConsumerValidationDialog'
-import {ReportDraft2} from 'model/ReportDraft2'
-import {DeepPartial} from '../../../utils/utils'
+import {Txt} from '../../../alexlibs/mui-extension/Txt/Txt'
 import {appConfig} from '../../../core/appConfig'
-import {Row} from 'components_simple/Row/Row'
-import {useAnalyticContext} from 'analytic/AnalyticContext'
-import {EventCategories, ReportEventActions} from 'analytic/analytic'
-import {useWindowWidth} from 'hooks/useWindowWidth'
-import {Gender, genders, ReportDraft} from '../../../model/ReportDraft'
+import {useFetcher} from '../../../hooks/useFetcher'
 import {useToast} from '../../../hooks/useToast'
+import {Gender, genders, ReportDraft} from '../../../model/ReportDraft'
+import {DeepPartial} from '../../../utils/utils'
+import {useReportFlowContext} from '../ReportFlowContext'
+import {ConsumerValidationDialog} from './ConsumerValidationDialog'
 
 interface ConsumerForm {
   firstName: string
@@ -36,8 +36,7 @@ interface ConsumerForm {
   gender?: Gender
 }
 
-export const Consumer = () => {
-  const _stepper = useReportFlowStepperContext()
+export const Consumer = ({stepNavigation}: {stepNavigation: StepNavigation}) => {
   const _reportFlow = useReportFlowContext()
   const draft = _reportFlow.reportDraft
   return (
@@ -45,8 +44,9 @@ export const Consumer = () => {
       draft={draft}
       onSubmit={changes => {
         _reportFlow.setReportDraft(_ => ReportDraft2.merge(_, changes))
-        _stepper.next()
+        stepNavigation.next()
       }}
+      {...{stepNavigation}}
     />
   )
 }
@@ -54,9 +54,11 @@ export const Consumer = () => {
 export const _Consumer = ({
   draft,
   onSubmit,
+  stepNavigation,
 }: {
   draft: Partial<ReportDraft2>
   onSubmit: (_: DeepPartial<ReportDraft2>) => void
+  stepNavigation: StepNavigation
 }) => {
   const {m} = useI18n()
   const [openValidationDialog, setOpenValidationDialog] = useState<boolean>(false)
@@ -232,6 +234,7 @@ export const _Consumer = ({
               })
           })()
         }}
+        {...{stepNavigation}}
       />
     </>
   )

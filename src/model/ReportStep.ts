@@ -26,6 +26,13 @@ export function indexToStepOrDone(index: number): ReportStepOrDone {
   return index >= reportSteps.length ? 'Done' : reportSteps[index]
 }
 
+export function indexToStep(index: number): ReportStep {
+  const step = indexToStepOrDone(index)
+  if (step === 'Done') {
+    throw new Error(`index ${index} is for Done`)
+  }
+  return step
+}
 export function getAnalyticsForStep(step: ReportStepOrDone) {
   switch (step) {
     case 'BuildingProblem':

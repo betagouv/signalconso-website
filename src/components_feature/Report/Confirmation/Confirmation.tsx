@@ -1,39 +1,51 @@
-import {useReportFlowContext} from '../ReportFlowContext'
-import {useI18n} from 'i18n/I18n'
-import {Txt} from '../../../alexlibs/mui-extension/Txt/Txt'
-import {Alert} from '../../../alexlibs/mui-extension/Alert/Alert'
-import {ConfirmationStep, ConfirmationStepper} from './ConfirmationStepper'
-import {Animate} from 'components_simple/Animate/Animate'
 import {Box, Chip, Icon} from '@mui/material'
-import {AnomalyImage} from 'components_simple/AnomalyCard/AnomalyImage'
+import {EventCategories, ReportEventActions} from 'analytic/analytic'
+import {useAnalyticContext} from 'analytic/AnalyticContext'
 import {AddressComponent} from 'components_simple/Address/Address'
+import {Animate} from 'components_simple/Animate/Animate'
+import {AnomalyImage} from 'components_simple/AnomalyCard/AnomalyImage'
+import {StepNavigation} from 'components_simple/ReportFlowStepper/ReportFlowStepper'
 import {ReportFlowStepperActions} from 'components_simple/ReportFlowStepper/ReportFlowStepperActions'
-import {ReportDraft2} from 'model/ReportDraft2'
+import {Row} from 'components_simple/Row/Row'
 import {ReportFiles} from 'components_simple/UploadFile/ReportFiles'
 import {useToast} from 'hooks/useToast'
-import {Row} from 'components_simple/Row/Row'
-import React, {useEffect} from 'react'
-import {useAnalyticContext} from 'analytic/AnalyticContext'
-import {EventCategories, ReportEventActions} from 'analytic/analytic'
-import {FileOrigin} from '../../../model/UploadedFile'
-import {ReportDraft} from '../../../model/ReportDraft'
+import {useI18n} from 'i18n/I18n'
+import {ReportDraft2} from 'model/ReportDraft2'
+import {useEffect} from 'react'
+import {Alert} from '../../../alexlibs/mui-extension/Alert/Alert'
+import {Txt} from '../../../alexlibs/mui-extension/Txt/Txt'
 import {Anomaly} from '../../../anomalies/Anomaly'
+import {ReportDraft} from '../../../model/ReportDraft'
+import {FileOrigin} from '../../../model/UploadedFile'
+import {useReportCreateContext} from '../ReportCreateContext'
+import {useReportFlowContext} from '../ReportFlowContext'
+import {ConfirmationStep, ConfirmationStepper} from './ConfirmationStepper'
 
-export const Confirmation = ({}: {}) => {
+export const Confirmation = ({stepNavigation}: {stepNavigation: StepNavigation}) => {
   const _reportFlow = useReportFlowContext()
   const draft = _reportFlow.reportDraft as ReportDraft2
   const parsedDraft = ReportDraft2.toReportDraft(draft)
-  return <_Confirmation anomaly={draft.anomaly} draft={parsedDraft} />
+  return <_Confirmation anomaly={draft.anomaly} draft={parsedDraft} {...{stepNavigation}} />
 }
 
-export const _Confirmation = ({draft, anomaly}: {anomaly: Pick<Anomaly, 'sprite'>; draft: ReportDraft}) => {
+export const _Confirmation = ({
+  draft,
+  anomaly,
+  stepNavigation,
+}: {
+  anomaly: Pick<Anomaly, 'sprite'>
+  draft: ReportDraft
+  stepNavigation: StepNavigation
+}) => {
   const {m} = useI18n()
   const {toastError} = useToast()
   const _reportFlow = useReportFlowContext()
+  const _reportCreate = useReportCreateContext()
   const _analytic = useAnalyticContext()
 
-  useEffect(_reportFlow.createReport.clearCache, [])
+  useEffect(_reportCreate.createReport.clearCache, [])
 
+  const goToStep = stepNavigation.goTo
   return (
     <Animate autoScrollTo={true}>
       <div>
@@ -45,7 +57,7 @@ export const _Confirmation = ({draft, anomaly}: {anomaly: Pick<Anomaly, 'sprite'
         </Alert>
 
         <ConfirmationStepper>
-          <ConfirmationStep title={m.step_problem}>
+          <ConfirmationStep title={m.step_problem} {...{goToStep}}>
             <Box sx={{display: 'flex'}}>
               <AnomalyImage anomaly={anomaly} sx={{mr: 2}} />
               <Box>
@@ -60,7 +72,7 @@ export const _Confirmation = ({draft, anomaly}: {anomaly: Pick<Anomaly, 'sprite'
               </Box>
             </Box>
           </ConfirmationStep>
-          <ConfirmationStep title={m.step_description}>
+          <ConfirmationStep title={m.step_description} {...{goToStep}}>
             {draft.details.map(({label, value}) => (
               <Box key={label} sx={{mb: 1}}>
                 <Txt block bold sx={{mr: 1}} dangerouslySetInnerHTML={{__html: label}} />
@@ -74,7 +86,7 @@ export const _Confirmation = ({draft, anomaly}: {anomaly: Pick<Anomaly, 'sprite'
               <ReportFiles fileOrigin={FileOrigin.Consumer} hideAddBtn files={draft.uploadedFiles} />
             </Box>
           </ConfirmationStep>
-          <ConfirmationStep title={m.step_company}>
+          <ConfirmationStep title={m.step_company} {...{goToStep}}>
             <Txt size="big" bold block>
               {draft.companyDraft.name} {draft.companyDraft.brand ?? ''}
             </Txt>
@@ -101,7 +113,7 @@ export const _Confirmation = ({draft, anomaly}: {anomaly: Pick<Anomaly, 'sprite'
               </Row>
             )}
           </ConfirmationStep>
-          <ConfirmationStep title={m.step_consumer}>
+          <ConfirmationStep title={m.step_consumer} {...{goToStep}}>
             <Row icon="person">
               {draft.consumer.gender ? m.gender[draft.consumer.gender] + ' ' : ''}
               {draft.consumer.firstName} {draft.consumer.lastName}
@@ -125,11 +137,11 @@ export const _Confirmation = ({draft, anomaly}: {anomaly: Pick<Anomaly, 'sprite'
         </ConfirmationStepper>
         <ReportFlowStepperActions
           nextIcon="send"
-          loadingNext={_reportFlow.createReport.loading}
+          loadingNext={_reportCreate.createReport.loading}
           nextButtonLabel={draft.forwardToReponseConso ? m.confirmationBtnReponseConso : m.confirmationBtn}
           next={next => {
             _analytic.trackEvent(EventCategories.report, ReportEventActions.validateConfirmation)
-            _reportFlow.createReport
+            _reportCreate.createReport
               .fetch({}, draft)
               .then(() => {
                 next()
@@ -141,6 +153,7 @@ export const _Confirmation = ({draft, anomaly}: {anomaly: Pick<Anomaly, 'sprite'
                 toastError(e)
               })
           }}
+          {...{stepNavigation}}
         />
       </div>
     </Animate>

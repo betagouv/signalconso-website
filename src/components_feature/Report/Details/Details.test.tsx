@@ -12,6 +12,7 @@ import {waitFor} from '@testing-library/dom'
 import {mapNTimes} from '../../../utils/utils'
 import {DetailInputValues2} from 'model/ReportDraft2'
 import {frenchDateFormat} from 'utils/utils'
+import {dummyStepNavigation} from 'components_feature/Playground/PlaygroundConfirmation'
 
 const clickBtnSubmit = async (app: ScRenderResult) => {
   const btnSubmit = app.container.querySelector('#btn-submit') as HTMLButtonElement
@@ -44,6 +45,7 @@ describe('Details: single date not in future', () => {
         onSubmit={x => {
           inputValues = x
         }}
+        stepNavigation={dummyStepNavigation}
       />,
     )
   })
@@ -88,6 +90,7 @@ describe('Details: checkbox', () => {
         onSubmit={x => {
           inputValues = x
         }}
+        stepNavigation={dummyStepNavigation}
       />,
     )
   })
@@ -148,6 +151,7 @@ describe('Details: textarea', () => {
         onSubmit={x => {
           inputValues = x
         }}
+        stepNavigation={dummyStepNavigation}
       />,
     )
   })
@@ -203,6 +207,7 @@ describe('Details: initialize values', () => {
         onSubmit={x => {
           inputValues = x
         }}
+        stepNavigation={dummyStepNavigation}
       />,
     )
   })
