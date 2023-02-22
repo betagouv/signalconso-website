@@ -5,6 +5,7 @@ import {fireEvent, render, ScRenderResult, waitFor} from '../../../test/test-uti
 import React from 'react'
 import {ReportDraft2} from 'model/ReportDraft2'
 import {_Consumer} from './Consumer'
+import {dummyStepNavigation} from 'components_feature/Playground/PlaygroundConfirmation'
 
 class Fixture {
   static readonly consumer = {
@@ -55,6 +56,7 @@ describe('Consumer', () => {
           onSubmit={x => {
             submitted = x as any
           }}
+          stepNavigation={dummyStepNavigation}
         />,
         mock,
       )
@@ -93,6 +95,7 @@ describe('Consumer', () => {
           onSubmit={x => {
             submitted = x as any
           }}
+          stepNavigation={dummyStepNavigation}
         />,
         mock,
       )

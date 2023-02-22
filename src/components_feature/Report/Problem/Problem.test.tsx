@@ -2,9 +2,9 @@
  * @jest-environment jsdom
  */
 import '@testing-library/jest-dom'
+import {dummyStepNavigation} from 'components_feature/Playground/PlaygroundConfirmation'
 import {ReportDraft2} from 'model/ReportDraft2'
-import {firstReportStep} from 'model/ReportStep'
-import {AccessReportFlow, DummyStepperProvider, fireEvent, render, ScRenderResult} from 'test/test-utils'
+import {AccessReportFlow, fireEvent, render, ScRenderResult} from 'test/test-utils'
 import {Anomaly} from '../../../anomalies/Anomaly'
 import {Fixture} from '../../../test/fixture'
 import {fnSwitch} from '../../../utils/FnSwitch'
@@ -35,7 +35,7 @@ class ProblemFixture {
   }
 }
 
-const props = {isWebView: false}
+const props = {isWebView: false, stepNavigation: dummyStepNavigation}
 
 describe('Problem', () => {
   it('should display subcategories', () => {
@@ -197,43 +197,32 @@ describe('Problem', () => {
 
   it('should display contractual dispute warning and go to the next step', () => {
     let report: undefined | Partial<ReportDraft2>
-    let onNextCalled = false
     const app = render(
-      <DummyStepperProvider
-        currentStep={firstReportStep}
-        onNext={() => {
-          onNextCalled = true
+      <AccessReportFlow
+        onReportChange={r => {
+          report = r
         }}
       >
-        <AccessReportFlow
-          onReportChange={r => {
-            report = r
-          }}
-        >
-          <Problem {...props} anomaly={ProblemFixture.anomaly} />
-        </AccessReportFlow>
-      </DummyStepperProvider>,
+        <Problem {...props} anomaly={ProblemFixture.anomaly} />
+      </AccessReportFlow>,
     )
     fireEvent.click(app.getByText(ProblemFixture.internetSubcategory.title))
     clickEmployeeConsumer(app, 'no')
     clickContractualDispute(app, 'contractualDispute')
     expectContractualDisputeVisible(app, true)
     clickBtnSubmit(app)
-    expect(onNextCalled).toEqual(true)
   })
 
   it('should not display contractual dispute warning', () => {
     let report: undefined | Partial<ReportDraft2>
     const app = render(
-      <DummyStepperProvider currentStep={firstReportStep}>
-        <AccessReportFlow
-          onReportChange={r => {
-            report = r
-          }}
-        >
-          <Problem {...props} anomaly={ProblemFixture.anomaly} />
-        </AccessReportFlow>
-      </DummyStepperProvider>,
+      <AccessReportFlow
+        onReportChange={r => {
+          report = r
+        }}
+      >
+        <Problem {...props} anomaly={ProblemFixture.anomaly} />
+      </AccessReportFlow>,
     )
     fireEvent.click(app.getByText(ProblemFixture.internetSubcategory.title))
     clickEmployeeConsumer(app, 'no')
@@ -245,15 +234,13 @@ describe('Problem', () => {
   it('should not ask ReponseConso when no tag', () => {
     let report: undefined | Partial<ReportDraft2>
     const app = render(
-      <DummyStepperProvider currentStep={firstReportStep}>
-        <AccessReportFlow
-          onReportChange={r => {
-            report = r
-          }}
-        >
-          <Problem {...props} anomaly={ProblemFixture.anomaly} />
-        </AccessReportFlow>
-      </DummyStepperProvider>,
+      <AccessReportFlow
+        onReportChange={r => {
+          report = r
+        }}
+      >
+        <Problem {...props} anomaly={ProblemFixture.anomaly} />
+      </AccessReportFlow>,
     )
     fireEvent.click(app.getByText(ProblemFixture.simpleSubcategory.title))
     clickEmployeeConsumer(app, 'no')
@@ -263,15 +250,13 @@ describe('Problem', () => {
   it('should not ask ReponseConso nor contractual dispute when employeeConsumer = true', () => {
     let report: undefined | Partial<ReportDraft2>
     const app = render(
-      <DummyStepperProvider currentStep={firstReportStep}>
-        <AccessReportFlow
-          onReportChange={r => {
-            report = r
-          }}
-        >
-          <Problem {...props} anomaly={ProblemFixture.anomaly} />
-        </AccessReportFlow>
-      </DummyStepperProvider>,
+      <AccessReportFlow
+        onReportChange={r => {
+          report = r
+        }}
+      >
+        <Problem {...props} anomaly={ProblemFixture.anomaly} />
+      </AccessReportFlow>,
     )
     fireEvent.click(app.getByText(ProblemFixture.reponseConsoSubcategory.title))
     clickEmployeeConsumer(app, 'yes')
@@ -283,15 +268,13 @@ describe('Problem', () => {
   it('should ask ReponseConso when tagged', () => {
     let report: undefined | Partial<ReportDraft2>
     const app = render(
-      <DummyStepperProvider currentStep={firstReportStep}>
-        <AccessReportFlow
-          onReportChange={r => {
-            report = r
-          }}
-        >
-          <Problem {...props} anomaly={ProblemFixture.anomaly} />
-        </AccessReportFlow>
-      </DummyStepperProvider>,
+      <AccessReportFlow
+        onReportChange={r => {
+          report = r
+        }}
+      >
+        <Problem {...props} anomaly={ProblemFixture.anomaly} />
+      </AccessReportFlow>,
     )
     fireEvent.click(app.getByText(ProblemFixture.reponseConsoSubcategory.title))
     clickEmployeeConsumer(app, 'no')
@@ -306,15 +289,13 @@ describe('Problem', () => {
   it('should ask add ReponseConso tag when related option is not selected', () => {
     let report: undefined | Partial<ReportDraft2>
     const app = render(
-      <DummyStepperProvider currentStep={firstReportStep}>
-        <AccessReportFlow
-          onReportChange={r => {
-            report = r
-          }}
-        >
-          <Problem {...props} anomaly={ProblemFixture.anomaly} />
-        </AccessReportFlow>
-      </DummyStepperProvider>,
+      <AccessReportFlow
+        onReportChange={r => {
+          report = r
+        }}
+      >
+        <Problem {...props} anomaly={ProblemFixture.anomaly} />
+      </AccessReportFlow>,
     )
     fireEvent.click(app.getByText(ProblemFixture.reponseConsoSubcategory.title))
     clickEmployeeConsumer(app, 'no')

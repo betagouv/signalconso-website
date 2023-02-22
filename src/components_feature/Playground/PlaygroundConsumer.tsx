@@ -1,5 +1,6 @@
 import {Card, CardContent} from '@mui/material'
 import {_Consumer} from '../Report/Consumer/Consumer'
+import {dummyStepNavigation} from './PlaygroundConfirmation'
 
 export const PlaygroundConsumer = () => {
   return (
@@ -11,6 +12,7 @@ export const PlaygroundConsumer = () => {
               companyKind: 'LOCATION',
             }}
             onSubmit={x => alert(JSON.stringify(x))}
+            stepNavigation={dummyStepNavigation}
           />
         </CardContent>
       </Card>

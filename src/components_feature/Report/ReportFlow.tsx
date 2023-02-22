@@ -3,7 +3,6 @@ import {ReportFlowStepper} from 'components_simple/ReportFlowStepper/ReportFlowS
 import {getAnalyticsForStep, ReportStep} from 'model/ReportStep'
 import React from 'react'
 import {Anomaly} from '../../anomalies/Anomaly'
-import {Acknowledgement} from './Acknowledgement/Acknowledgement'
 
 interface Props {
   initialStep: ReportStep
@@ -11,7 +10,7 @@ interface Props {
   isWebView: boolean
 }
 
-export const ReportFlow = React.memo(({initialStep, anomaly, isWebView}: Props) => {
+export const ReportFlow = ({initialStep, anomaly, isWebView}: Props) => {
   const _analytics = useAnalyticContext()
   return (
     <ReportFlowStepper
@@ -20,7 +19,6 @@ export const ReportFlow = React.memo(({initialStep, anomaly, isWebView}: Props) 
         const {path, title} = getAnalyticsForStep(step)
         _analytics.trackPage(`/${anomaly.path}/${path}`, title)
       }}
-      renderDone={() => <Acknowledgement {...{isWebView}} />}
     />
   )
-})
+}

@@ -13,7 +13,7 @@ import {Country} from '../../../model/Country'
 import {CreatedReport} from '../../../model/CreatedReport'
 import {ReportDraft} from '../../../model/ReportDraft'
 import {fnSwitch} from '../../../utils/FnSwitch'
-import {useReportFlowContext} from '../ReportFlowContext'
+import {useReportCreateContext} from '../ReportCreateContext'
 
 export enum AcknowledgmentCases {
   ReponseConso = 'ReponseConso',
@@ -28,7 +28,7 @@ export enum AcknowledgmentCases {
 export const Acknowledgement = ({isWebView}: {isWebView: boolean}) => {
   const {
     createReport: {entity: report},
-  } = useReportFlowContext()
+  } = useReportCreateContext()
   const {countries} = useConstantContext()
   const {toastError} = useToast()
   if (!report) {

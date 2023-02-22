@@ -1,19 +1,18 @@
-import React, {ReactNode, useEffect} from 'react'
-import {render, RenderResult} from '@testing-library/react'
-import {scTheme} from 'core/theme'
 import {ThemeProvider} from '@mui/material'
-import {I18nProvider} from 'i18n/I18n'
+import {render, RenderResult} from '@testing-library/react'
+import {AnalyticProvider} from 'analytic/AnalyticContext'
+import {ReportCreateProvider} from 'components_feature/Report/ReportCreateContext'
 import {ReportFlowProvider, useReportFlowContext} from 'components_feature/Report/ReportFlowContext'
 import {Provide} from 'components_simple/Provide/Provide'
 import {ApiClientsProvider} from 'context/ApiClientsContext'
+import {scTheme} from 'core/theme'
+import {I18nProvider} from 'i18n/I18n'
 import {fr} from 'i18n/localization/fr'
-import {ReportFlowStepperContext} from 'components_simple/ReportFlowStepper/ReportFlowStepper'
 import {ReportDraft2} from 'model/ReportDraft2'
-import {DeepPartial} from '../utils/utils'
-import {AnalyticProvider} from 'analytic/AnalyticContext'
-import {SignalConsoApiClient} from '../clients/SignalConsoApiClient'
+import React, {ReactNode, useEffect} from 'react'
 import {CompanyPublicClient} from '../clients/CompanyPublicClient'
-import {ReportStepOrDone} from 'model/ReportStep'
+import {SignalConsoApiClient} from '../clients/SignalConsoApiClient'
+import {DeepPartial} from '../utils/utils'
 
 const AllTheProviders =
   (options?: Options) =>
@@ -37,6 +36,7 @@ const AllTheProviders =
           _ => <ApiClientsProvider children={_} overrideForTests={apiClientsOverrides} />,
           _ => <ThemeProvider theme={scTheme} children={_} />,
           _ => <I18nProvider children={_} />,
+          _ => <ReportCreateProvider children={_} />,
           _ => <ReportFlowProvider children={_} />,
         ]}
       >
@@ -45,32 +45,6 @@ const AllTheProviders =
     )
   }
 
-export const DummyStepperProvider = ({
-  children,
-  currentStep,
-  onGoTo,
-  onNext,
-  onPrev,
-}: {
-  children: ReactNode
-  currentStep: ReportStepOrDone
-  onGoTo?: (step: ReportStepOrDone) => void
-  onNext?: () => void
-  onPrev?: () => void
-}) => {
-  return (
-    <ReportFlowStepperContext.Provider
-      value={{
-        currentStep,
-        goTo: onGoTo ?? (() => void 0),
-        next: onNext ?? (() => void 0),
-        prev: onPrev ?? (() => void 0),
-      }}
-    >
-      {children}
-    </ReportFlowStepperContext.Provider>
-  )
-}
 export const AccessReportFlow = ({
   children,
   onReportChange,
@@ -103,6 +77,5 @@ const customRender = (ui: React.ReactElement, options?: Options) => {
 
 // re-export everything
 export * from '@testing-library/react'
-
 // override render method
 export {customRender as render}
