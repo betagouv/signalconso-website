@@ -52,14 +52,14 @@ export const Problem = ({anomaly, isWebView, stepNavigation}: Props) => {
   const _analytic = useAnalyticContext()
   const {m} = useI18n()
   const displayReponseConso = useMemo(chooseIfReponseConsoDisplayed, [])
-  const {reportDraft, setReportDraft, clearReportDraft} = useReportFlowContext()
+  const {reportDraft, setReportDraft, resetFlow} = useReportFlowContext()
 
   // reset the draft when switching the root category
   useEffect(() => {
     if (anomaly.category !== reportDraft.category) {
       _analytic.trackEvent(EventCategories.report, ReportEventActions.validateCategory, anomaly.category)
-      clearReportDraft()
-      setReportDraft({category: anomaly.category})
+      resetFlow()
+      setReportDraft(_ => ({category: anomaly.category}))
     }
   }, [anomaly.category])
 

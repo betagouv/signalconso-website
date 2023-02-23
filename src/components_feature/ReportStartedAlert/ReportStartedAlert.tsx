@@ -8,6 +8,7 @@ import {ScButton} from 'components_simple/Button/Button'
 import Link from 'next/link'
 import {findCurrentStepForReport} from 'model/ReportStep'
 import {ReportFlowStepperHeader} from 'components_simple/ReportFlowStepper/ReportFlowStepperHeader'
+import {buildPathForStep} from 'components_simple/ReportFlowStepper/ReportFlowStepper'
 
 export const ReportStartedAlert = () => {
   const _report = useReportFlowContext()
@@ -48,10 +49,10 @@ export const ReportStartedAlert = () => {
               stepMargin={4}
             />
             <Box sx={{display: 'flex', justifyContent: 'flex-end', mt: 2}}>
-              <ScButton size="small" color="error" sx={{mr: 1}} onClick={_report.clearReportDraft}>
+              <ScButton size="small" color="error" sx={{mr: 1}} onClick={_report.resetFlow}>
                 {m.delete}
               </ScButton>
-              <Link href={_report.reportDraft.anomaly.path}>
+              <Link href={buildPathForStep(_report.reportDraft.anomaly, currentStep)}>
                 <ScButton size="small" color="primary" variant="contained">
                   {m.continue}
                 </ScButton>

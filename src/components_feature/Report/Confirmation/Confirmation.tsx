@@ -144,9 +144,8 @@ export const _Confirmation = ({
             _reportCreate.createReport
               .fetch({}, draft)
               .then(() => {
-                next()
-                _reportFlow.clearReportDraft()
                 _analytic.trackEvent(EventCategories.report, ReportEventActions.reportSendSuccess)
+                next()
               })
               .catch(e => {
                 _analytic.trackEvent(EventCategories.report, ReportEventActions.reportSendFail)

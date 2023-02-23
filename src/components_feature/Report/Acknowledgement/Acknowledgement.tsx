@@ -14,6 +14,7 @@ import {CreatedReport} from '../../../model/CreatedReport'
 import {ReportDraft} from '../../../model/ReportDraft'
 import {fnSwitch} from '../../../utils/FnSwitch'
 import {useReportCreateContext} from '../ReportCreateContext'
+import {useReportFlowContext} from '../ReportFlowContext'
 
 export enum AcknowledgmentCases {
   ReponseConso = 'ReponseConso',
@@ -29,8 +30,15 @@ export const Acknowledgement = ({isWebView}: {isWebView: boolean}) => {
   const {
     createReport: {entity: report},
   } = useReportCreateContext()
+  const _reportFlow = useReportFlowContext()
   const {countries} = useConstantContext()
   const {toastError} = useToast()
+
+  useEffect(() => {
+    // When this component is displayed, the draft should be cleared so we can't go back
+    _reportFlow.resetFlow()
+  }, [])
+
   if (!report) {
     throw new Error(`No reported created.`)
   }
