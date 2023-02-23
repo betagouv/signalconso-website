@@ -1,5 +1,5 @@
 import {allAnomalies} from 'anomalies/Anomalies'
-import {getStepIndex, ReportStep, reportSteps} from 'model/ReportStep'
+import {getIndexForStep, ReportStep, reportSteps} from 'model/ReportStep'
 import randomstring from 'randomstring'
 import {Information, reportTags, Subcategory} from '../anomalies/Anomaly'
 import {Address} from '../model/Address'
@@ -112,7 +112,7 @@ export class Fixture {
       }),
     }
     return reportSteps
-      .filter((_, i) => i <= getStepIndex(lastStep))
+      .filter((_, i) => i <= getIndexForStep(lastStep))
       .reduce((draft: Partial<ReportDraft>, step: ReportStep) => {
         return stepOrder[step](draft)
       }, {})

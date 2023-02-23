@@ -38,7 +38,7 @@ export const ConfirmationStep = ({title, children, index, goToStep}: Confirmatio
             icon="edit"
             color="primary"
             onClick={() => {
-              goToStep(indexToStep(index!))
+              goToStep(indexToStep(index! + 1))
             }}
           >
             {m.edit}

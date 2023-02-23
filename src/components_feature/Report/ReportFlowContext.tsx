@@ -1,10 +1,10 @@
 import {ReportDraft2} from 'model/ReportDraft2'
-import React, {Dispatch, ReactNode, SetStateAction, useContext, useState} from 'react'
+import React, {ReactNode, useContext, useState} from 'react'
 
 interface ReportFlowContextProps {
   reportDraft: Partial<ReportDraft2>
-  setReportDraft: Dispatch<SetStateAction<Partial<ReportDraft2>>>
-  clearReportDraft: () => void
+  setReportDraft: (fn: (_: Partial<ReportDraft2>) => Partial<ReportDraft2>) => void
+  resetFlow: () => void
 }
 
 const ReportFlowContext = React.createContext<ReportFlowContextProps>({} as ReportFlowContextProps)
@@ -16,7 +16,7 @@ export const ReportFlowProvider = ({children}: {children: ReactNode}) => {
       value={{
         reportDraft,
         setReportDraft,
-        clearReportDraft: () => {
+        resetFlow: () => {
           setReportDraft({})
         },
       }}
