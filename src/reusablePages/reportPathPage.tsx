@@ -1,9 +1,8 @@
 import {Box, Icon} from '@mui/material'
-import {useReportFlowContext} from 'components_feature/Report/ReportFlowContext'
 import {Page} from 'components_simple/Page/Page'
+import {ReportFlowStepper} from 'components_simple/ReportFlowStepper/ReportFlowStepper'
 import {siteMap} from 'core/siteMap'
 import {styleUtils} from 'core/theme'
-import {findCurrentStepForReport, firstReportStep} from 'model/ReportStep'
 import {GetStaticPaths, GetStaticProps} from 'next'
 import dynamic from 'next/dynamic'
 import Head from 'next/head'
@@ -11,8 +10,6 @@ import Link from 'next/link'
 import {undefinedIfNull} from 'utils/utils'
 import {IconBtn} from '../alexlibs/mui-extension/IconBtn/IconBtn'
 import {allAnomalies} from '../anomalies/Anomalies'
-import {Anomaly} from '../anomalies/Anomaly'
-import {ReportFlow} from '../components_feature/Report/ReportFlow'
 
 export const getStaticPaths: GetStaticPaths = () => {
   const paths = allAnomalies.map(_ => ({
@@ -62,16 +59,9 @@ export const ReportPathPage = ({reportPath, isWebView = false}: {reportPath: str
           {anomaly.category}
         </Box>
       </Box>
-      <NoSSR {...{anomaly, isWebView}} />
+      <ReportFlowStepperWithoutSsr {...{anomaly, isWebView}} />
     </Page>
   )
 }
 // https://nextjs.org/docs/advanced-features/dynamic-import#with-no-ssr
-const NoSSR = dynamic(() => Promise.resolve(ReportFlowInitializer), {ssr: false})
-
-function ReportFlowInitializer({anomaly, isWebView}: {anomaly: Anomaly; isWebView: boolean}) {
-  const _reportFlow = useReportFlowContext()
-  const initialStep =
-    anomaly.category === _reportFlow.reportDraft.category ? findCurrentStepForReport(_reportFlow.reportDraft) : firstReportStep
-  return <ReportFlow {...{anomaly, initialStep, isWebView}} />
-}
+const ReportFlowStepperWithoutSsr = dynamic(() => Promise.resolve(ReportFlowStepper), {ssr: false})
