@@ -5,7 +5,7 @@ import {PlaygroundAcknowledgment} from 'components_feature/Playground/Playground
 import {PlaygroundDetails} from 'components_feature/Playground/PlaygroundDetails'
 import {PlaygroundConsumer} from 'components_feature/Playground/PlaygroundConsumer'
 import {PlaygroundCompany} from 'components_feature/Playground/PlaygroundCompany'
-import {PlaygroundConfirmation} from 'components_feature/Playground/PlaygroundConfirmation'
+import {dummyStepNavigation, PlaygroundConfirmation} from 'components_feature/Playground/PlaygroundConfirmation'
 import {Fixture} from '../test/fixture'
 import {Divider, Tab, Tabs} from '@mui/material'
 
@@ -27,6 +27,7 @@ const Playground = () => {
             },
           }}
           onClear={console.log}
+          stepNavigation={dummyStepNavigation}
         />
       ),
     },

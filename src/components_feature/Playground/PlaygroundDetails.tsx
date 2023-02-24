@@ -16,6 +16,7 @@ import {
 } from '../../anomalies/Anomaly'
 import {UploadedFile} from '../../model/UploadedFile'
 import {DetailInputValue} from '../../model/CreatedReport'
+import {dummyStepNavigation} from './PlaygroundConfirmation'
 
 export class DetailsFixtureInput {
   static readonly text: DetailInputText = {
@@ -115,6 +116,7 @@ export const PlaygroundDetails = () => {
               setResultInputs(ReportDraft2.parseDetails(res, inputs))
               setResultFiles(files)
             }}
+            stepNavigation={dummyStepNavigation}
           />
         </CardContent>
       </Card>

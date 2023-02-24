@@ -10,20 +10,40 @@ export const lastReportStep = reportSteps[reportSteps.length - 1]
 export type ReportStepOrDone = ReportStep | 'Done'
 
 export function getNextStep(step: ReportStep): ReportStepOrDone {
-  return indexToStepOrDone(getStepIndex(step) + 1)
+  return indexToStepOrDone(getIndexForStep(step) + 1)
 }
 
 export function getPreviousStep(step: ReportStep): ReportStepOrDone {
   if (step === firstReportStep) return step
-  return indexToStepOrDone(getStepIndex(step) - 1)
+  return indexToStepOrDone(getIndexForStep(step) - 1)
 }
 
-export function getStepIndex(step: ReportStep): number {
-  return reportSteps.indexOf(step)
+export function getIndexForStep(step: ReportStep): number {
+  return reportSteps.indexOf(step) + 1
+}
+
+// /!\ Step indexes start at 1, because it looks better in the URL
+export function getIndexForStepOrDone(step: ReportStepOrDone): number {
+  return step === 'Done' ? reportSteps.length + 1 : getIndexForStep(step)
 }
 
 export function indexToStepOrDone(index: number): ReportStepOrDone {
-  return index >= reportSteps.length ? 'Done' : reportSteps[index]
+  if (index < 1 || index > reportSteps.length + 1) {
+    throw new Error(`Invalid step index ${index}`)
+  }
+  return index == reportSteps.length + 1 ? 'Done' : reportSteps[index - 1]
+}
+
+export function indexToStep(index: number): ReportStep {
+  const step = indexToStepOrDone(index)
+  if (step === 'Done') {
+    throw new Error(`index ${index} is for Done`)
+  }
+  return step
+}
+
+export function isStepBeforeOrEqual(a: ReportStepOrDone, b: ReportStepOrDone) {
+  return getIndexForStepOrDone(a) <= getIndexForStepOrDone(b)
 }
 
 export function getAnalyticsForStep(step: ReportStepOrDone) {

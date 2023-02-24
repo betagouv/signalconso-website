@@ -8,7 +8,6 @@ import {ScInput} from 'components_simple/Input/ScInput'
 import {Panel, PanelBody} from 'components_simple/Panel/Panel'
 import {ScRadioGroupItem} from 'components_simple/RadioGroup/RadioGroupItem'
 import {ScRadioGroup} from 'components_simple/RadioGroup/RadioGroup'
-import {useReportFlowStepperContext} from 'components_simple/ReportFlowStepper/ReportFlowStepper'
 import {ReportFlowStepperActions} from 'components_simple/ReportFlowStepper/ReportFlowStepperActions'
 import {ScSelect} from 'components_simple/Select/Select'
 import {ReportFiles} from 'components_simple/UploadFile/ReportFiles'
@@ -32,6 +31,7 @@ import {getDefaultValueFromInput, getOptionsFromInput, getPlaceholderFromInput} 
 import {DetailsAlertProduitDangereux} from './DetailsAlertProduitDangereux'
 import {DetailsSpecifyInput} from './DetailsSpecifyInput'
 import {getDraftReportInputs} from './draftReportInputs'
+import {StepNavigation} from 'components_simple/ReportFlowStepper/ReportFlowStepper'
 
 export class SpecifyFormUtils {
   static readonly keyword = '(à préciser)'
@@ -40,10 +40,9 @@ export class SpecifyFormUtils {
 
 export const isSpecifyInputName = (name: string) => name.includes('_specify')
 
-export const Details = () => {
+export const Details = ({stepNavigation}: {stepNavigation: StepNavigation}) => {
   const _reportFlow = useReportFlowContext()
   const _analytic = useAnalyticContext()
-  const _stepper = useReportFlowStepperContext()
   const draft = _reportFlow.reportDraft
   const inputs = useMemo(() => {
     if (draft.subcategories) {
@@ -70,9 +69,10 @@ export const Details = () => {
       tags={draft.tags ?? []}
       onSubmit={(detailInputValues, uploadedFiles) => {
         _reportFlow.setReportDraft(_ => ({..._, uploadedFiles, details: detailInputValues}))
-        _stepper.next()
+        stepNavigation.next()
         _analytic.trackEvent(EventCategories.report, ReportEventActions.validateDetails)
       }}
+      {...{stepNavigation}}
     />
   )
 }
@@ -87,6 +87,7 @@ export const _Details = ({
   contractualDispute,
   employeeConsumer,
   onSubmit,
+  stepNavigation,
 }: {
   inputs: DetailInput[]
   onSubmit: (values: DetailInputValues2, files?: UploadedFile[]) => void
@@ -97,6 +98,7 @@ export const _Details = ({
   contractualDispute?: boolean
   employeeConsumer?: boolean
   tags?: ReportTag[]
+  stepNavigation: StepNavigation
 }) => {
   const [uploadedFiles, setUploadedFiles] = useState<undefined | UploadedFile[]>()
   const {m} = useI18n()
@@ -344,6 +346,7 @@ export const _Details = ({
             onSubmit(detailInputValues, uploadedFiles)
           })()
         }}
+        {...{stepNavigation}}
       />
     </>
   )

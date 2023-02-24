@@ -1,12 +1,12 @@
-import {Box, useTheme} from '@mui/material'
-import {ScRadioGroupItem} from 'components_simple/RadioGroup/RadioGroupItem'
-import {ScRadioGroup} from 'components_simple/RadioGroup/RadioGroup'
-import React from 'react'
-import {Panel, PanelBody, PanelProps} from 'components_simple/Panel/Panel'
+import {Box, SxProps} from '@mui/material'
+import {Theme} from '@mui/system'
 import {Animate} from 'components_simple/Animate/Animate'
+import {Panel, PanelBody} from 'components_simple/Panel/Panel'
+import {ScRadioGroup} from 'components_simple/RadioGroup/RadioGroup'
+import {ScRadioGroupItem} from 'components_simple/RadioGroup/RadioGroupItem'
 
-interface ProblemSelectProps<T> extends Omit<PanelProps, 'onChange'> {
-  autoScrollToPanel?: boolean
+interface ProblemSelectProps<T> {
+  autoScrollTo?: boolean
   title?: string
   value?: T
   onChange: (_: T) => void
@@ -15,18 +15,19 @@ interface ProblemSelectProps<T> extends Omit<PanelProps, 'onChange'> {
     description?: string
     value: T
   }[]
+  id?: string
 }
 
-export const ProblemSelect = <T,>({autoScrollToPanel, title, value, options, onChange, ...other}: ProblemSelectProps<T>) => {
-  const t = useTheme()
+export const ProblemSelect = <T,>({autoScrollTo, title: titleRaw, value, options, onChange, id}: ProblemSelectProps<T>) => {
+  const sx: SxProps<Theme> = {
+    position: 'relative',
+    border: 'none !important',
+    paddingTop: t => t.spacing(1) + ' !important',
+  }
+  const title = <span dangerouslySetInnerHTML={{__html: titleRaw ?? 'Pouvez-vous préciser ?'}} />
   return (
-    <Animate autoScrollTo={autoScrollToPanel}>
-      <Panel
-        sx={{position: 'relative', border: 'none !important', paddingTop: t => t.spacing(1) + ' !important'}}
-        title={<span dangerouslySetInnerHTML={{__html: title ?? 'Pouvez-vous préciser ?'}} />}
-        {...other}
-      >
-        <Box sx={{position: 'absolute', top: -90, display: 'block'}} />
+    <Animate {...{autoScrollTo}}>
+      <Panel {...{sx, title, id}}>
         <PanelBody>
           <ScRadioGroup value={value} onChange={onChange} sx={{mb: 2}}>
             {options.map(option => (

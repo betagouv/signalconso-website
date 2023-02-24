@@ -1,12 +1,20 @@
 import {useTheme} from '@mui/material'
 import {allAnomalies} from 'anomalies/Anomalies'
-import {ReportStep} from 'model/ReportStep'
+import {firstReportStep, ReportStep} from 'model/ReportStep'
 import {styleUtils} from 'core/theme'
 import {useEffect, useState} from 'react'
 import {Anomaly} from '../../anomalies/Anomaly'
 import {ReportDraft} from '../../model/ReportDraft'
 import {Fixture} from '../../test/fixture'
 import {_Confirmation} from '../Report/Confirmation/Confirmation'
+import {StepNavigation} from 'components_simple/ReportFlowStepper/ReportFlowStepper'
+
+export const dummyStepNavigation: StepNavigation = {
+  currentStep: firstReportStep,
+  goTo: () => {},
+  next: () => {},
+  prev: () => {},
+}
 
 export const PlaygroundConfirmation = () => {
   const [draft, setDraft] = useState<ReportDraft>(Fixture.genDraftReport('Confirmation') as ReportDraft)
@@ -27,6 +35,7 @@ export const PlaygroundConfirmation = () => {
           draft={{
             ...draft,
           }}
+          stepNavigation={dummyStepNavigation}
         />
       )}
     </>

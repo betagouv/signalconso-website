@@ -3,6 +3,7 @@ import {Box, CssBaseline, ThemeProvider} from '@mui/material'
 import {StyledEngineProvider} from '@mui/styled-engine'
 import {Analytic} from 'analytic/analytic'
 import {AnalyticProvider} from 'analytic/AnalyticContext'
+import {ReportCreateProvider} from 'components_feature/Report/ReportCreateContext'
 import {ReportFlowProvider} from 'components_feature/Report/ReportFlowContext'
 import {Footer} from 'components_simple/Footer'
 import {Header, headerHeight} from 'components_simple/Header'
@@ -49,6 +50,7 @@ const App = ({emotionCache = clientSideEmotionCache, ...props}: ScAppProps) => {
         _ => <ApiClientsProvider children={_} />,
         _ => <CssBaseline children={_} />,
         _ => <ToastProvider horizontal="right" children={_} />,
+        _ => <ReportCreateProvider children={_} />,
         _ => <ReportFlowProvider children={_} />,
         _ => <ConstantProvider children={_} />,
       ]}

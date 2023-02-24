@@ -3,7 +3,7 @@ import {SxProps} from '@mui/system'
 import {styleUtils} from 'core/theme'
 import {useWindowWidth} from 'hooks/useWindowWidth'
 import {useI18n} from 'i18n/I18n'
-import {getStepIndex, ReportStep, ReportStepOrDone, reportSteps} from 'model/ReportStep'
+import {getIndexForStep, ReportStep, ReportStepOrDone, reportSteps} from 'model/ReportStep'
 import {fnSwitch} from '../../utils/FnSwitch'
 
 interface StepperHeaderProps extends BoxProps {
@@ -33,7 +33,7 @@ export const ReportFlowStepperHeader = ({
     if (step === currentStep) {
       return 'currentStep'
     }
-    if (currentStep === 'Done' || getStepIndex(step) < getStepIndex(currentStep)) {
+    if (currentStep === 'Done' || getIndexForStep(step) < getIndexForStep(currentStep)) {
       return 'pastStep'
     }
     return 'futureStep'
@@ -41,7 +41,7 @@ export const ReportFlowStepperHeader = ({
 
   function getStepLabel(step: ReportStep) {
     const stepsLabels = [m.step_problem, m.step_description, m.step_company, m.step_consumer, m.step_confirm]
-    return stepsLabels[getStepIndex(step)]
+    return stepsLabels[getIndexForStep(step) - 1]
   }
 
   return (
