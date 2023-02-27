@@ -78,7 +78,9 @@ const _App = ({Component, pageProps, router}: AppProps) => {
       )}
       <div className="root">
         {isWebView ? (
-          <Component {...pageProps} />
+          <Box sx={{mt: 1}}>
+            <Component {...pageProps} />
+          </Box>
         ) : (
           <>
             <Box
