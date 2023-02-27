@@ -8,7 +8,7 @@ export const getStaticProps = reportPathPage.getStaticProps
 const Page = ({reportPath}: {reportPath: string}) => {
   const router = useRouter()
   // legacy way to do the webview, kept temporarily
-  const isWebView = router.query.app_type == 'mobile'
+  const isWebView = router.pathname.startsWith('/webview/') ?? router.query.app_type === 'mobile'
   return <reportPathPage.ReportPathPage {...{reportPath, isWebView}} />
 }
 
