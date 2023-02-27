@@ -70,7 +70,8 @@ function isBuildingStepDone(r: Partial<ReportDraft2>, step: ReportStep) {
     case 'BuildingDetails':
       return !!r.details
     case 'BuildingCompany':
-      return !!r.companyDraft?.siret || !!r.companyDraft?.address.postalCode
+      // When the website is in a foreign country, only the country is specified
+      return !!r.companyDraft?.siret || !!r.companyDraft?.address.postalCode || r.companyDraft?.address.country
     case 'BuildingConsumer':
       return !!r.consumer?.email && !!r.consumer?.firstName && !!r.consumer?.lastName
     case 'Confirmation':
