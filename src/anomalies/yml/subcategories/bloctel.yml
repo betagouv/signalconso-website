@@ -27,106 +27,101 @@
   subcategoriesTitle: 'A quelle tranche horaire ?'
   subcategories:
     - title: De 0h01 à 9h59
+      subcategoriesTitle: Avez-vous demandé d'être rappelé par l'entreprise ?
       subcategories:
-      - title: Avez-vous demandé d'être rappelé par l'entreprise ?
-        subcategories:
-          - title: Oui
-            information:
-              title: C'est possible d'être appelé par l'entreprise
-              content: Vous avez demandé d'être par l'entreprise, donc il a le droit de vous rappel suite à votre demande.
-          - title: Non
-            detailInputs:
-              - label: Date de l'appel
-                type: DATE
-                defaultValue: SYSDATE
-              - label: Est-ce que le vendeur s'est fait passer pour une autre entreprise&#160;?
-                type: RADIO
-                options:
-                  - Non
-                  - Oui (à préciser)
-              - label: Décrivez-nous plus en détail ce qui s'est passé
-                type: TEXTAREA
+        - title: Oui
+          information:
+            title: C'est possible d'être appelé par l'entreprise
+            content: Vous avez demandé d'être par l'entreprise, donc il a le droit de vous rappel suite à votre demande.
+        - title: Non
+          detailInputs:
+            - label: Date de l'appel
+              type: DATE
+              defaultValue: SYSDATE
+            - label: Est-ce que le vendeur s'est fait passer pour une autre entreprise&#160;?
+              type: RADIO
+              options:
+                - Non
+                - Oui (à préciser)
+            - label: Décrivez-nous plus en détail ce qui s'est passé
+              type: TEXTAREA
     - title: De 10h00 à 12h59
+      subcategoriesTitle: Avez-vous demandé d'être rappelé par l'entreprise ?
       subcategories:
-      - title: Avez-vous demandé d'être rappelé par l'entreprise ?
-        subcategories:
-          - title: Oui
-            information:
-              title: C'est possible d'être appeler par l'entreprise
-              content: Vous avez demander d'être par l'entreprise, donc il a le droit de vous rappel suite à votre demande.
-          - title: Non
-            detailInputs:
-              - label: Date de l'appel
-                type: DATE
-                defaultValue: SYSDATE
-              - label: Est-ce que le vendeur s'est fait passer pour une autre entreprise&#160;?
-                type: RADIO
-                options:
-                  - Non
-                  - Oui (à préciser)
-              - label: Décrivez-nous plus en détail ce qui s'est passé
-                type: TEXTAREA
+        - title: Oui
+          information:
+            title: C'est possible d'être appelé par l'entreprise
+            content: Vous avez demandé d'être par l'entreprise, donc il a le droit de vous rappel suite à votre demande.
+        - title: Non
+          detailInputs:
+            - label: Date de l'appel
+              type: DATE
+              defaultValue: SYSDATE
+            - label: Est-ce que le vendeur s'est fait passer pour une autre entreprise&#160;?
+              type: RADIO
+              options:
+                - Non
+                - Oui (à préciser)
+            - label: Décrivez-nous plus en détail ce qui s'est passé
+              type: TEXTAREA
     - title: De 13h00 à 13h59
+      subcategoriesTitle: Avez-vous demandé d'être rappelé par l'entreprise ?
       subcategories:
-      - title: Avez-vous demandé d'être rappelé par l'entreprise ?
-        subcategories:
-          - title: Oui
-            information:
-              title: C'est possible d'être appelé par l'entreprise
-              content: Vous avez demandé d'être par l'entreprise, donc il a le droit de vous rappel suite à votre demande.
-          - title: Non
-            detailInputs:
-              - label: Date de l'appel
-                type: DATE
-                defaultValue: SYSDATE
-              - label: Est-ce que le vendeur s'est fait passer pour une autre entreprise&#160;?
-                type: RADIO
-                options:
-                  - Non
-                  - Oui (à préciser)
-              - label: Décrivez-nous plus en détail ce qui s'est passé
-                type: TEXTAREA
+        - title: Oui
+          information:
+            title: C'est possible d'être appelé par l'entreprise
+            content: Vous avez demandé d'être par l'entreprise, donc il a le droit de vous rappel suite à votre demande.
+        - title: Non
+          detailInputs:
+            - label: Date de l'appel
+              type: DATE
+              defaultValue: SYSDATE
+            - label: Est-ce que le vendeur s'est fait passer pour une autre entreprise&#160;?
+              type: RADIO
+              options:
+                - Non
+                - Oui (à préciser)
+            - label: Décrivez-nous plus en détail ce qui s'est passé
+              type: TEXTAREA
     - title: De 14h00 à 20h00
+      subcategoriesTitle: Avez-vous demandé d'être rappelé par l'entreprise ?
       subcategories:
-      - title: Avez-vous demandé d'être rappelé par l'entreprise ?
-        subcategories:
-          - title: Oui
-            information:
-              title: C'est possible d'être appelé par l'entreprise
-              content: Vous avez demandé d'être par l'entreprise, donc il a le droit de vous rappel suite à votre demande.
-          - title: Non
-            detailInputs:
-              - label: Date de l'appel
-                type: DATE
-                defaultValue: SYSDATE
-              - label: Est-ce que le vendeur s'est fait passer pour une autre entreprise&#160;?
-                type: RADIO
-                options:
-                  - Non
-                  - Oui (à préciser)
-              - label: Décrivez-nous plus en détail ce qui s'est passé
-                type: TEXTAREA
+        - title: Oui
+          information:
+            title: C'est possible d'être appelé par l'entreprise
+            content: Vous avez demandé d'être par l'entreprise, donc il a le droit de vous rappel suite à votre demande.
+        - title: Non
+          detailInputs:
+            - label: Date de l'appel
+              type: DATE
+              defaultValue: SYSDATE
+            - label: Est-ce que le vendeur s'est fait passer pour une autre entreprise&#160;?
+              type: RADIO
+              options:
+                - Non
+                - Oui (à préciser)
+            - label: Décrivez-nous plus en détail ce qui s'est passé
+              type: TEXTAREA
     - title: De 20h01 à 0h00
+      subcategoriesTitle: Avez-vous demandé d'être rappelé par l'entreprise ?
       subcategories:
-      - title: Avez-vous demandé d'être rappelé par l'entreprise ?
-        subcategories:
-          - title: Oui
-            information:
-              title: C'est possible d'être appelé par l'entreprise
-              content: Vous avez demandé d'être par l'entreprise, donc il a le droit de vous rappel suite à votre demande.
-          - title: Non
-            detailInputs:
-              - label: Date de l'appel
-                type: DATE
-                defaultValue: SYSDATE
-              - label: Est-ce que le vendeur s'est fait passer pour une autre entreprise&#160;?
-                type: RADIO
-                options:
-                  - Non
-                  - Oui (à préciser)
-              - label: Décrivez-nous plus en détail ce qui s'est passé
-                type: TEXTAREA
-- title: Sur les 30 derniers jours, il y a au moins 5 appels d'un même numéro qui m'a essayé de me contacter ?
+        - title: Oui
+          information:
+            title: C'est possible d'être appelé par l'entreprise
+            content: Vous avez demandé d'être par l'entreprise, donc il a le droit de vous rappel suite à votre demande.
+        - title: Non
+          detailInputs:
+            - label: Date de l'appel
+              type: DATE
+              defaultValue: SYSDATE
+            - label: Est-ce que le vendeur s'est fait passer pour une autre entreprise&#160;?
+              type: RADIO
+              options:
+                - Non
+                - Oui (à préciser)
+            - label: Décrivez-nous plus en détail ce qui s'est passé
+              type: TEXTAREA
+- title: Sur les 30 derniers jours, il y a au moins 5 appels de la même entreprise qui a essayé de me contacter ?
   companyKind: PHONE
   tags:
     - DemarchageTelephonique
