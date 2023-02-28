@@ -1,4 +1,4 @@
-- title: Avez-vous reçu un appel commercial pendant le week-end ou à un jour férié ?
+- title: Avez-vous reçu un appel commercial pendant le week-end ou un jour férié ?
   companyKind: PHONE
   tags:
     - DemarchageTelephonique
@@ -153,6 +153,10 @@
       - Oui (à préciser)
   - label: Décrivez nous plus en détails ce qui s'est passé
     type: TEXTAREA
+- title: Avez-vous reçu un appel d'une entreprise à qui vous aviez dit NON pour être démarché pendant les 60 jours suivant le refus ?
+  companyKind: PHONE
+  tags:
+    - DemarchageTelephonique
 - title: Je reçois des appels pour effectuer des travaux ou sur de la rénovation énergétique
   information:
     title: Revenez en arrière et utilisez plutôt la catégorie spécifique à votre problème 🙂
