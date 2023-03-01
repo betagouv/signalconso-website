@@ -1,4 +1,4 @@
-import {companyKinds, CompanyKinds, DetailInputType, ReportTag, reportTags} from '../Anomaly'
+import {companyKinds, CompanyKinds, DetailInputType, ReportTag, reportTags, reportTagsAllowedInYaml} from '../Anomaly'
 import {AnomalyTreeWalker, ObjectSpec} from './AnomalyTreeWalker'
 
 // /!\ This effectively duplicates the structure
@@ -33,7 +33,7 @@ const anomalySpec: ObjectSpec = {
 }
 
 const baseSubcategorySpec: ObjectSpec = {
-  tags: _ => _.ifDefined()?.assertIsArrayOfAllowedStrings(reportTags),
+  tags: _ => _.ifDefined()?.assertIsArrayOfAllowedStrings(reportTagsAllowedInYaml),
   example: _ => _.ifDefined()?.assertIsString(),
   reponseconsoCode: _ => _.ifDefined()?.ifNotNull()?.assertIsArrayOfString(),
   ccrfCode: _ => _.ifDefined()?.assertIsArrayOfString(),
