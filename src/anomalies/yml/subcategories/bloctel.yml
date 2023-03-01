@@ -59,17 +59,23 @@
             title: C'est possible d'être appelé par l'entreprise
             content: Vous avez demandé d'être par l'entreprise, donc il a le droit de vous rappel suite à votre demande.
         - title: Non
-          detailInputs:
-            - label: Date de l'appel
-              type: DATE
-              defaultValue: SYSDATE
-            - label: Est-ce que le vendeur s'est fait passer pour une autre entreprise&#160;?
-              type: RADIO
-              options:
-                - Non
-                - Oui (à préciser)
-            - label: Décrivez-nous plus en détail ce qui s'est passé
-              type: TEXTAREA
+          subcategoriesTitle: Je suis inscrit sur Bloctel
+          subcategories:
+            - title: Oui
+                information:
+                content: <p>Vous recevez des appels indésirables alors que vous êtes inscrit sur Bloctel.</p>
+                <p>Les problèmes de démarchage abusif ne peuvent pas être signalés sur SignalConso.</p>
+                <p>
+                Vous devez les signaler sur Bloctel sur leur site dédié
+                <a href="https://www.bloctel.gouv.fr/accueil">https://www.bloctel.gouv.fr/accueil</a>
+                </p>
+            - title: Non
+              information:
+              title: C'est un horaire autoriser pour démarchage le démarchage téléphonique
+              content: Les démarchages téléphonique sont autorisés en semaine de : <p> 10h à 13h, </p> <p> et, </p> <p> 14h à 20h, </p> 
+              <p>Les problèmes de démarchage abusif ne peuvent pas être signalés sur SignalConso. </p>
+              <p> Vous pouvez vous inscrire sur Bloctel. </p>
+              <p> Bloctel est un service gratuit permettant d'inscrire son numéro, celui de son conjoint ou de ses enfants, pour s'opposer au démarchage téléphonique sur ces numéros. <a href="https://www.bloctel.gouv.fr/accueil">https://www.bloctel.gouv.fr/accueil</a> </p>
     - title: De 13h00 à 13h59
       subcategoriesTitle: Avez-vous demandé d'être rappelé par l'entreprise ?
       subcategories:
@@ -97,17 +103,23 @@
             title: C'est possible d'être appelé par l'entreprise
             content: Vous avez demandé d'être par l'entreprise, donc il a le droit de vous rappel suite à votre demande.
         - title: Non
-          detailInputs:
-            - label: Date de l'appel
-              type: DATE
-              defaultValue: SYSDATE
-            - label: Est-ce que le vendeur s'est fait passer pour une autre entreprise&#160;?
-              type: RADIO
-              options:
-                - Non
-                - Oui (à préciser)
-            - label: Décrivez-nous plus en détail ce qui s'est passé
-              type: TEXTAREA
+          subcategoriesTitle: Je suis inscrit sur Bloctel
+          subcategories:
+            - title: Oui
+                information:
+                content: <p>Vous recevez des appels indésirables alors que vous êtes inscrit sur Bloctel.</p>
+                <p>Les problèmes de démarchage abusif ne peuvent pas être signalés sur SignalConso.</p>
+                <p>
+                Vous devez les signaler sur Bloctel sur leur site dédié
+                <a href="https://www.bloctel.gouv.fr/accueil">https://www.bloctel.gouv.fr/accueil</a>
+                </p>
+            - title: Non
+              information:
+              title: C'est un horaire autoriser pour démarchage le démarchage téléphonique
+              content: Les démarchages téléphonique sont autorisés en semaine de : <p> 10h à 13h, </p> <p> et, </p> <p> 14h à 20h, </p> 
+              <p>Les problèmes de démarchage abusif ne peuvent pas être signalés sur SignalConso. </p>
+              <p> Vous pouvez vous inscrire sur Bloctel. </p>
+              <p> Bloctel est un service gratuit permettant d'inscrire son numéro, celui de son conjoint ou de ses enfants, pour s'opposer au démarchage téléphonique sur ces numéros. <a href="https://www.bloctel.gouv.fr/accueil">https://www.bloctel.gouv.fr/accueil</a> </p>
     - title: De 20h01 à 0h00
       subcategoriesTitle: Avez-vous demandé d'être rappelé par l'entreprise ?
       subcategories:
