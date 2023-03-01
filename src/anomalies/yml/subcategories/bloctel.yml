@@ -10,7 +10,7 @@
     - title: Oui
       information:
         title: C'est possible d'être appelé par l'entreprise
-        content: Vous avez demandé à être appelé par l'entreprise, il a donc le droit de vous rappeler suite à votre demande.
+        content: Vous avez demandé à être rappelé par l'entreprise, elle a donc le droit de vous appeler suite à votre demande.
     - title: Non
       detailInputs:
         - label: Date de l'appel
@@ -38,7 +38,7 @@
         - title: Oui
           information:
             title: C'est possible d'être appelé par l'entreprise
-            content: Vous avez demandé à être appelé par l'entreprise, donc il a le droit de vous rappeler suite à votre demande.
+            content: Vous avez demandé à être rappelé par l'entreprise, elle a donc le droit de vous appeler suite à votre demande.
         - title: Non
           detailInputs:
             - label: Date de l'appel
@@ -57,7 +57,7 @@
         - title: Oui
           information:
             title: C'est possible d'être appelé par l'entreprise
-            content: Vous avez demandé à être appelé par l'entreprise, donc il a le droit de vous rappeler suite à votre demande.
+            content: Vous avez demandé à être rappelé par l'entreprise, elle a donc le droit de vous appeler suite à votre demande.
         - title: Non
           subcategoriesTitle: Je suis inscrit sur Bloctel
           subcategories:
@@ -84,7 +84,7 @@
         - title: Oui
           information:
             title: C'est possible d'être appelé par l'entreprise
-            content: Vous avez demandé à être appelé par l'entreprise, donc il a le droit de vous rappeler suite à votre demande.
+            content: Vous avez demandé à être rappelé par l'entreprise, elle a donc le droit de vous appeler suite à votre demande.
         - title: Non
           detailInputs:
             - label: Date de l'appel
@@ -103,7 +103,7 @@
         - title: Oui
           information:
             title: C'est possible d'être appelé par l'entreprise
-            content: Vous avez demandé à être appelé par l'entreprise, donc il a le droit de vous rappeler suite à votre demande.
+            content: Vous avez demandé à être rappelé par l'entreprise, elle a donc le droit de vous appeler suite à votre demande.
         - title: Non
           subcategoriesTitle: Je suis inscrit sur Bloctel
           subcategories:
@@ -130,7 +130,7 @@
         - title: Oui
           information:
             title: C'est possible d'être appelé par l'entreprise
-            content: Vous avez demandé à être appelé par l'entreprise, donc il a le droit de vous rappeler suite à votre demande.
+            content: Vous avez demandé à être rappelé par l'entreprise, elle a donc le droit de vous appeler suite à votre demande.
         - title: Non
           detailInputs:
             - label: Date de l'appel
@@ -160,7 +160,7 @@
   - label: Date du troisième appel
     type: DATE
     defaultValue: SYSDATE  
-  - label: Date du quatième appel
+  - label: Date du quatrième appel
     type: DATE
     defaultValue: SYSDATE
   - label: Date du cinquième appel
