@@ -83,6 +83,12 @@ export class BaseApiClient {
             request,
             error: _,
           })
+        } else if (_.code === 'ERR_NETWORK') {
+          throw new ApiError(`SignalConso est inaccessible, veuillez vérifier votre connexion.`, {
+            code: 'front-side',
+            error: _,
+            request,
+          })
         }
         throw new ApiError(`Something not caught went wrong`, {
           code: 'front-side',
