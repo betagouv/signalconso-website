@@ -501,8 +501,6 @@
           example: 'Exemple : le magasin refuse de me reprendre un article'
           ccrfCode:
             - '21D'
-          tags:
-            - LitigeContractuel
           subcategoriesTitle: Pourquoi voulez-vous retourner ou échanger votre article ?
           subcategories:
             - title: Il présente un défaut ou il ne marche plus

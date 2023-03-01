@@ -22,11 +22,8 @@
     - '23F'
     - '146'
 - title: Sous category pour tester divers tags
-  example: Pour tester les tags LitigeContractuel, ReponseConso, etc.
+  example: Pour tester les tags ReponseConso, ProduitDangereux, etc.
   subcategories:
-    - title: Sous cat avec tag LitigeContractuel
-      tags:
-        - LitigeContractuel
     - title: Sous cat avec tag ReponseConso
       tags:
         - ReponseConso
