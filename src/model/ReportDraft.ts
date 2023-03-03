@@ -3,7 +3,7 @@ import {Address} from './Address'
 import {DetailInputValue} from './CreatedReport'
 import {ApiReportDraft} from './reportsFromApi'
 import {UploadedFile} from './UploadedFile'
-
+import uniq from 'lodash/uniq'
 export const genders = ['Male', 'Female'] as const
 export type Gender = typeof genders[number]
 
@@ -53,8 +53,17 @@ export class ReportDraft {
   }
 
   static readonly toApi = (draft: ReportDraft): ApiReportDraft => {
+    const {contractualDispute, forwardToReponseConso, ...restOfDraft} = draft
+
+    const additionalTags: ReportTag[] = [
+      ...(contractualDispute ? (['LitigeContractuel'] as const) : []),
+      ...(forwardToReponseConso ? (['ReponseConso'] as const) : []),
+    ]
+
+    const tags = uniq([...(draft.tags ?? []), ...additionalTags])
+
     return {
-      ...draft,
+      ...restOfDraft,
       details: draft.details,
       gender: draft.consumer.gender,
       subcategories: draft.subcategories.map(_ => _.title),
@@ -75,7 +84,7 @@ export class ReportDraft {
       phone: draft.companyDraft.phone,
       // pretty sure these fields aren't actually optional in the draft
       employeeConsumer: draft.employeeConsumer ?? false,
-      tags: draft.tags ?? [],
+      tags,
     }
   }
 }
