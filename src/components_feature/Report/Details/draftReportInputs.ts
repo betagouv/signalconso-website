@@ -1,3 +1,4 @@
+import {ReportDraft2} from 'model/ReportDraft2'
 import {last} from 'utils/lodashNamedExport'
 import {instanceOfSubcategoryInput} from '../../../anomalies/Anomalies'
 import {DetailInput, DetailInputType, ReportTag, Subcategory} from '../../../anomalies/Anomaly'
@@ -23,13 +24,8 @@ export class DraftReportDefaultInputs {
   static readonly defaults = (): DetailInput[] => [DraftReportDefaultInputs.date(), DraftReportDefaultInputs.description()]
 }
 
-export const getDraftReportInputs = ({
-  subcategories,
-  tags,
-}: {
-  subcategories: Subcategory[]
-  tags?: ReportTag[]
-}): DetailInput[] => {
+export const getDraftReportInputs = (draft: Partial<ReportDraft2>): DetailInput[] => {
+  const {subcategories, forwardToReponseConso} = draft
   const lastSubcategories = last(subcategories)
   const res: DetailInput[] = []
   if (instanceOfSubcategoryInput(lastSubcategories)) {
@@ -40,7 +36,7 @@ export const getDraftReportInputs = ({
   } else {
     res.push(...DraftReportDefaultInputs.defaults())
   }
-  if (tags?.includes('ReponseConso')) {
+  if (forwardToReponseConso === true) {
     const i = res.findIndex(
       _ => _.type === DetailInputType.TEXTAREA && !_.label.includes(DraftReportDefaultInputs.description().label),
     )

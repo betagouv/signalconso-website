@@ -13,7 +13,7 @@ import {ScSelect} from 'components_simple/Select/Select'
 import {ReportFiles} from 'components_simple/UploadFile/ReportFiles'
 import {appConfig} from 'core/appConfig'
 import {useI18n} from 'i18n/I18n'
-import {DetailInputValues2} from 'model/ReportDraft2'
+import {DetailInputValues2, ReportDraft2} from 'model/ReportDraft2'
 import {useEffect, useMemo, useState} from 'react'
 import {Controller, useForm} from 'react-hook-form'
 import {ControllerProps} from 'react-hook-form/dist/types/controller'
@@ -46,7 +46,7 @@ export const Details = ({stepNavigation}: {stepNavigation: StepNavigation}) => {
   const draft = _reportFlow.reportDraft
   const inputs = useMemo(() => {
     if (draft.subcategories) {
-      return getDraftReportInputs({subcategories: draft.subcategories, tags: draft.tags})
+      return getDraftReportInputs(draft)
     }
   }, [draft.subcategories, draft.tags, draft.forwardToReponseConso])
 
@@ -73,6 +73,7 @@ export const Details = ({stepNavigation}: {stepNavigation: StepNavigation}) => {
         _analytic.trackEvent(EventCategories.report, ReportEventActions.validateDetails)
       }}
       {...{stepNavigation}}
+      forwardToReponseConso={draft.forwardToReponseConso}
     />
   )
 }
@@ -88,6 +89,7 @@ export const _Details = ({
   employeeConsumer,
   onSubmit,
   stepNavigation,
+  forwardToReponseConso,
 }: {
   inputs: DetailInput[]
   onSubmit: (values: DetailInputValues2, files?: UploadedFile[]) => void
@@ -99,6 +101,7 @@ export const _Details = ({
   employeeConsumer?: boolean
   tags?: ReportTag[]
   stepNavigation: StepNavigation
+  forwardToReponseConso: ReportDraft2['forwardToReponseConso']
 }) => {
   const [uploadedFiles, setUploadedFiles] = useState<undefined | UploadedFile[]>()
   const {m} = useI18n()
@@ -320,7 +323,7 @@ export const _Details = ({
       <Animate autoScrollTo={false}>
         <Panel title={fileLabel ?? m.attachments}>
           <PanelBody>
-            {ReportDraft.isTransmittableToPro({tags, employeeConsumer}) && (
+            {ReportDraft.isTransmittableToPro({tags, employeeConsumer, forwardToReponseConso}) && (
               <>
                 {!contractualDispute && (
                   <Txt color="hint" block gutterBottom dangerouslySetInnerHTML={{__html: m.attachmentsDescAnonymous}} />

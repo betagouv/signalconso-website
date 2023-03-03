@@ -30,9 +30,9 @@ function adjustTags(
   if (companyKindFromSelected === 'WEBSITE' || draft.companyKind === 'WEBSITE') {
     res = [...res, 'Internet']
   }
-  if (draft.forwardToReponseConso !== true) {
-    res = res.filter(_ => _ !== 'ReponseConso')
-  }
+  // This tag is used in the arborescence only to offer the choice of 'forwardToReponseConso'
+  // If selected, the tag will be added back just before submitting to the API
+  res = res.filter(_ => _ !== 'ReponseConso')
   return res
 }
 

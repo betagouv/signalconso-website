@@ -283,7 +283,7 @@ describe('Problem', () => {
     clickBtnSubmit(app)
     expect(report?.employeeConsumer).toEqual(false)
     expect(report?.forwardToReponseConso).toEqual(true)
-    expect(report?.tags?.includes('ReponseConso')).toEqual(true)
+    expect(report?.tags?.includes('ReponseConso')).toEqual(false)
   })
 
   it('should ask add ReponseConso tag when related option is not selected', () => {

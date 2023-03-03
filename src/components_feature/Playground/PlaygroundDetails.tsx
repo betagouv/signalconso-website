@@ -117,6 +117,7 @@ export const PlaygroundDetails = () => {
               setResultFiles(files)
             }}
             stepNavigation={dummyStepNavigation}
+            forwardToReponseConso={undefined}
           />
         </CardContent>
       </Card>

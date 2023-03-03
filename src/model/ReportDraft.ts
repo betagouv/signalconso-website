@@ -48,8 +48,14 @@ export interface ReportDraft {
 }
 
 export class ReportDraft {
-  static readonly isTransmittableToPro = (r: Pick<ReportDraft, 'employeeConsumer' | 'tags'>): boolean => {
-    return !r.employeeConsumer && !(r.tags ?? []).find(_ => ['ReponseConso', 'ProduitDangereux', 'Bloctel'].includes(_))
+  static readonly isTransmittableToPro = (
+    r: Pick<ReportDraft, 'employeeConsumer' | 'tags' | 'forwardToReponseConso'>,
+  ): boolean => {
+    return (
+      !r.employeeConsumer &&
+      !(r.tags ?? []).find(_ => ['ProduitDangereux', 'Bloctel'].includes(_)) &&
+      r.forwardToReponseConso !== true
+    )
   }
 
   static readonly toApi = (draft: ReportDraft): ApiReportDraft => {
