@@ -45,7 +45,9 @@ function adjustReportDraftAfterSubcategoriesChange(report: Partial<ReportDraft2>
   const subcategoriesToKeep = (report.subcategories ?? []).slice(0, index)
   const subcategories = [...subcategoriesToKeep, subcategory]
   const tags = report.tags?.filter(_ => _ !== 'Internet') ?? undefined
-  const copy = {...report, subcategories, tags, details: {}, companyKind: undefined, companyDraft: undefined}
+  // L'option "getAnswer" n'est pas disponible pour toutes les catégories, on la nettoie pour être safe
+  const consumerWish = report.consumerWish === 'getAnswer' ? undefined : report.consumerWish
+  const copy = {...report, subcategories, tags, details: {}, companyKind: undefined, companyDraft: undefined, consumerWish}
   return copy
 }
 
