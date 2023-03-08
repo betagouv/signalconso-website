@@ -50,7 +50,7 @@
                   reponseconsoCode:
                     - '421'
             - title: Rajout d'une option payante
-              example: 'Exemple : chaine télé supplémentaire, option cyber-sécurité, option livre audio, option musique...'
+              example: 'Exemple : chaîne télé supplémentaire, option cyber-sécurité, option livre audio, option musique...'
               ccrfCode:
                 - '21A'
               subcategoriesTitle: Quel est le type d'option ?
@@ -73,7 +73,7 @@
                         - label: Quel est le nom de cette option ?
                           type: TEXT
                           placeholder: "Indiquez l'intitulé figurant la facture"
-                - title: option liée à la musique, des livres, une chaine télé, un anti-virus
+                - title: option liée à la musique, des livres, une chaîne télé, un anti-virus
                   ccrfCode:
                     - '226'
                   reponseconsoCode:
@@ -136,7 +136,7 @@
       example: 'Exemple : je ne capte pas, je capte mal, débit faible'
       information:
         title: La qualité du réseau est mauvaise
-        content: Les problèmes de réseau ou d'éligibilité ne peuvent pas être signalés sur SignalConso. <br> Vous devez les signaler à l'ARCEP (Autorité de régulation des communications électroniques, des postes et de la distribution de la presse) sur leur site dédié  <a href="https://jalerte.arcep.fr/" target="_blank" /> J'alerte l'Arcep </a>
+        content: Les problèmes de réseau ou d'éligibilité ne peuvent pas être signalés sur SignalConso. <br> Vous devez les signaler à l'Arcep (Autorité de régulation des communications électroniques, des postes et de la distribution de la presse) sur leur site dédié  <a href="https://jalerte.arcep.fr/" target="_blank" /> J'alerte l'Arcep </a>
     - title: Résiliation / changement d'opérateur
       subcategories:
         - title: Frais de résiliation

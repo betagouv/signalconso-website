@@ -63,7 +63,7 @@
                 - Facebook
                 - Instagram
                 - Twitter
-                - Linkedin
+                - LinkedIn
                 - Messenger
                 - Snapchat
                 - autre (à préciser)
@@ -598,7 +598,7 @@
         - title: Je ne suis pas d'accord avec l'état des lieux
           reponseconsoCode:
             - '451'
-        - title: La caution demandée à l'entrée est très elevée
+        - title: La caution demandée à l'entrée est très élevée
           tags:
             - ReponseConso
           subcategories:
@@ -635,7 +635,7 @@
     - title: Maltraitance
       information:
         content:
-          Vous ne pouvez pas signaler un cas de maltraitance sur SignalConso.<br> Vous pouvez vous rendre au commissariat de police ou à la gendarmerie. <br> Vous pouvez appeler le 3977. C'est le numéro d’appel national unique pour les victimes ou les témoins de maltraitance envers les personnes handicapées ou agées.
+          Vous ne pouvez pas signaler un cas de maltraitance sur SignalConso.<br> Vous pouvez vous rendre au commissariat de police ou à la gendarmerie. <br> Vous pouvez appeler le 3977. C'est le numéro d’appel national unique pour les victimes ou les témoins de maltraitance envers les personnes handicapées ou âgées.
           <br><br> Le site officiel <a href="https://www.pour-les-personnes-agees.gouv.fr/exercer-ses-droits/en-cas-de-maltraitance" target="_blank">www.pour-les-personnes-agees.gouv.fr</a> vous propose toutes les solutions possibles pour signaler un cas de maltraitance.
         outOfScope: true
     - title: Autre
@@ -667,7 +667,7 @@
         - '210'
       tags:
         - ReponseConso
-    - title: Le personnel n'est pas aimable ou respecteux
+    - title: Le personnel n'est pas aimable ou respectueuse
       information: !!import/single ../common/info/amabilite.yml
     - title: Le personnel ne dispose pas des diplômes requis
       ccrfCode:

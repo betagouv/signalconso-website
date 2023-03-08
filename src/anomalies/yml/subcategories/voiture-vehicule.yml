@@ -25,7 +25,7 @@
               information: !!import/single ../common/info/amabilite.yml
             - title: Autre
     - title: Location en libre-service
-      example: 'Exemple : location de vélo, trotinette, voiture électrique par une borne'
+      example: 'Exemple : location de vélo, trottinette, voiture électrique par une borne'
       subcategories:
         - title: Prix / paiement
           reponseconsoCode:

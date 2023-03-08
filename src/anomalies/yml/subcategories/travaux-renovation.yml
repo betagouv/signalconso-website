@@ -421,7 +421,7 @@
                 reponseconsoCode:
                   - '621'
                 information:
-                  title: Vous ne pouvez plus vous retracter
+                  title: Vous ne pouvez plus vous rétracter
                   content: Il n'y a pas de délai de rétractation pour votre cas.
                   outOfScope: true
               - title: Sur un stand dans une foire ou salon
@@ -432,7 +432,7 @@
                 subcategories:
                   - title: Non
                     information:
-                      title: Vous ne pouvez plus vous retracter
+                      title: Vous ne pouvez plus vous rétracter
                       content: Il n'y a pas de délai de rétractation pour votre cas.
                       outOfScope: true
                   - title: Oui
@@ -817,7 +817,7 @@
                     - '621'
                 - title: Au lieu habituel d'activité du professionnel
                   information:
-                    title: Vous ne pouvez plus vous retracter
+                    title: Vous ne pouvez plus vous rétracter
                     content: Il n'y a pas de délai de rétractation pour votre cas.
                     outOfScope: true
                 - title: Sur un stand dans une foire ou salon
@@ -833,7 +833,7 @@
                         - '2213'
                         - '411'
                       information:
-                        title: Vous ne pouvez plus vous retracter
+                        title: Vous ne pouvez plus vous rétracter
                         content: Il n'y a pas de délai de rétractation pour votre cas.
                         outOfScope: true
                     - title: Oui
@@ -1201,7 +1201,7 @@
                     - '2214'
                 - title: Au lieu habituel d'activité du professionnel
                   information:
-                    title: Vous ne pouvez plus vous retracter
+                    title: Vous ne pouvez plus vous rétracter
                     content: Il n'y a pas de délai de rétractation pour votre cas.
                     outOfScope: true
                 - title: Sur un stand dans une foire ou salon
@@ -1212,7 +1212,7 @@
                   subcategories:
                     - title: Non
                       information:
-                        title: Vous ne pouvez plus vous retracter
+                        title: Vous ne pouvez plus vous rétracter
                         content: Il n'y a pas de délai de rétractation pour votre cas.
                         outOfScope: true
                     - title: Oui
@@ -1578,7 +1578,7 @@
                     - '2214'
                 - title: Au lieu habituel d'activité du professionnel
                   information:
-                    title: Vous ne pouvez plus vous retracter
+                    title: Vous ne pouvez plus vous rétracter
                     content: Il n'y a pas de délai de rétractation pour votre cas.
                     outOfScope: true
                 - title: Sur un stand dans une foire ou salon
@@ -1589,7 +1589,7 @@
                   subcategories:
                     - title: Non
                       information:
-                        title: Vous ne pouvez plus vous retracter
+                        title: Vous ne pouvez plus vous rétracter
                         content: Il n'y a pas de délai de rétractation pour votre cas.
                         outOfScope: true
                     - title: Oui
@@ -1946,7 +1946,7 @@
                     - '2214'
                 - title: Au lieu habituel d'activité du professionnel
                   information:
-                    title: Vous ne pouvez plus vous retracter
+                    title: Vous ne pouvez plus vous rétracter
                     content: Il n'y a pas de délai de rétractation pour votre cas.
                     outOfScope: true
                 - title: Sur un stand dans une foire ou salon
@@ -1957,7 +1957,7 @@
                   subcategories:
                     - title: Non
                       information:
-                        title: Vous ne pouvez plus vous retracter
+                        title: Vous ne pouvez plus vous rétracter
                         content: Il n'y a pas de délai de rétractation pour votre cas.
                         outOfScope: true
                     - title: Oui
@@ -2315,7 +2315,7 @@
                 - '2214'
             - title: Au lieu habituel d'activité du professionnel
               information:
-                title: Vous ne pouvez plus vous retracter
+                title: Vous ne pouvez plus vous rétracter
                 content: Il n'y a pas de délai de rétractation pour votre cas.
                 outOfScope: true
             - title: Sur un stand dans une foire ou salon
@@ -2326,7 +2326,7 @@
               subcategories:
                 - title: Non
                   information:
-                    title: Vous ne pouvez plus vous retracter
+                    title: Vous ne pouvez plus vous rétracter
                     content: Il n'y a pas de délai de rétractation pour votre cas.
                     outOfScope: true
                 - title: Oui

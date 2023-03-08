@@ -713,7 +713,7 @@
                 - title: Problème avec une carte cadeau
                   reponseconsoCode:
                     - '643'
-                - title: Le commerçant a réfusé de me faire une détaxe alors que je vis à l'étranger
+                - title: Le commerçant a refusé de me faire une détaxe alors que je vis à l'étranger
                   information:
                     title: Le commerçant a le droit de refuser de faire une détaxe sur vos achats.
                     content:

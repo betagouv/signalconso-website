@@ -16,10 +16,10 @@
   subcategoriesTitle: À qui appartient ce site internet&#160;?
   subcategories:
     - title: À une administration
-      example: "Exemple : site internet d'une mairie. Les sites officiels de l'Etat doivent se terminer par gouv.fr ou .fr et jamais par .gouv.org ou .gouv.com. Vérifiez les mentions légales du site."
+      example: "Exemple : site internet d'une mairie. Les sites officiels de l’État doivent se terminer par gouv.fr ou .fr et jamais par .gouv.org ou .gouv.com. Vérifiez les mentions légales du site."
       information: !!import/single ../common/info/administration.yml
     - title: À une entreprise
-      example: "Un site avec une Marianne ou un drapeau tricolore n'appartient pas forcément à l'Etat. Ces entreprises entretiennent une confusion pour tromper les consommateurs."
+      example: "Un site avec une Marianne ou un drapeau tricolore n'appartient pas forcément à l’État. Ces entreprises entretiennent une confusion pour tromper les consommateurs."
       reponseconsoCode:
         - '210'
         - '511'
