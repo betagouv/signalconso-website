@@ -10,8 +10,10 @@ export enum FileType {
   Other = 'Other',
 }
 
+export const extractFileExt = (fileName: string) => fileName.substring(fileName.lastIndexOf('.') + 1).toLowerCase()
+
 export const extensionToType = (fileName: string): FileType | undefined => {
-  const ext = fileName.substr(fileName.lastIndexOf('.') + 1).toLowerCase()
+  const ext = extractFileExt(fileName)
   switch (ext) {
     case 'jpg':
     case 'jpeg':
