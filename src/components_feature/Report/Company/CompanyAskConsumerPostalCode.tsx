@@ -10,6 +10,8 @@ import {Alert} from '../../../alexlibs/mui-extension/Alert/Alert'
 import {AutocompleteCityValue} from 'components_simple/AutocompleteCity/AutocompleteCity'
 import {AutocompleteCity} from 'components_simple/AutocompleteCity/AutocompleteCity'
 import {Address} from 'model/Address'
+import {CompanyKinds} from '../../../anomalies/Anomaly'
+import {fnSwitch} from '../../../utils/FnSwitch'
 
 interface Form {
   place: AutocompleteCityValue
@@ -18,9 +20,10 @@ interface Form {
 interface Props {
   value?: Pick<Address, 'city' | 'postalCode'>
   onChange: (_: Pick<Address, 'city' | 'postalCode'>) => void
+  companyKind: CompanyKinds
 }
 
-export const CompanyAskConsumerPostalCode = ({value, onChange}: Props) => {
+export const CompanyAskConsumerPostalCode = ({value, onChange, companyKind}: Props) => {
   const {m} = useI18n()
   const {
     handleSubmit,
@@ -32,7 +35,18 @@ export const CompanyAskConsumerPostalCode = ({value, onChange}: Props) => {
     <Animate>
       <Panel id="CompanyAskConsumerPostalCode">
         <Alert dense type="info" sx={{mb: 2}} deletable>
-          <Txt size="small" dangerouslySetInnerHTML={{__html: m.cantIdentifyCompany}} />
+          <Txt
+            size="small"
+            dangerouslySetInnerHTML={{
+              __html: fnSwitch<CompanyKinds, string>(companyKind, {
+                SIRET: m.cantIdentifyCompany,
+                WEBSITE: m.cantIdentifyWebsiteCompany,
+                PHONE: m.cantIdentifyPhoneCompany,
+                LOCATION: m.cantIdentifyLocationCompany,
+                SOCIAL: m.cantIdentifyCompany,
+              }),
+            }}
+          />
         </Alert>
         <form onSubmit={handleSubmit(_ => onChange(_.place))}>
           <PanelBody>
