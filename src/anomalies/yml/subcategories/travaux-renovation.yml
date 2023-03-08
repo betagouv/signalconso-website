@@ -89,7 +89,7 @@
         - title: Autre
     - title: Autre
 - title: Rénovation énergétique
-  example: "Vous avez été démarché ou vous avez fait appel à une entreprise pour l'installation d'équipements ou la réalisation de travaux de rénovation énergétique (isolation, installation d'un système de chauffage, panneaux solaire)"
+  example: "Vous avez été démarché ou vous avez fait appel à une entreprise pour l'installation d'équipements ou la réalisation de travaux de rénovation énergétique (isolation, installation d'un système de chauffage, panneaux solaires)"
   subcategories:
     - title: Démarchage téléphonique
       #            Amélioration a prévoir avec le bureau sectoriel : L'entreprise vous a t-elle rappelée pour autre chose ??
@@ -1656,7 +1656,7 @@
                 - title: Responsabilité contractuelle de droit commun
         - title: Autre
     - title: Production d'énergies renouvelables
-      example: L'instation d'équipements solaire, petites éoliennes domestiques
+      example: L'installation d'équipements solaires, petites éoliennes domestiques
       subcategories:
         - title: Prix
           example: 'Exemple : prix non affiché, devis non respecté'
@@ -2024,7 +2024,7 @@
                 - title: Responsabilité contractuelle de droit commun
         - title: Autre
 - title: Autres Travaux
-  example: "Par exemple : la construction de votre maison ou l'adaptation de votre logement à un handicape ou pour une personne âgée"
+  example: "Par exemple : la construction de votre maison ou l'adaptation de votre logement à un handicap ou pour une personne âgée"
   subcategories:
     - title: Prix
       example: 'Exemple : prix non affiché, devis non respecté'
