@@ -118,10 +118,10 @@
                   </p>
             - title: Non
               information:
-                title: C'est un horaire autoriser pour le démarchage téléphonique
+                title: C'est un horaire autorisé pour le démarchage téléphonique
                 content: |- 
                   Les démarchages téléphonique sont autorisés en semaine de : <p> 10h à 13h, </p> <p> et, </p> <p> 14h à 20h, </p> 
-                  <p>Les problèmes de démarchage abusifs ne peuvent pas être signalés sur SignalConso. </p>
+                  <p>Les problèmes de démarchage abusif ne peuvent pas être signalés sur SignalConso. </p>
                   <p> Vous pouvez vous inscrire sur Bloctel. </p>
                   <p> Bloctel est un service gratuit permettant d'inscrire son numéro, celui de son conjoint ou de ses enfants, pour s'opposer au démarchage téléphonique sur ces numéros. <a href="https://www.bloctel.gouv.fr/accueil">https://www.bloctel.gouv.fr/accueil</a> </p>
     - title: De 20h01 à 0h00
@@ -228,6 +228,6 @@
   companyKind: PHONE
   information:
     content:
-      Le Service Relation Consommateur est ouvert au 01 73 26 81 45 de 8 h 00 à 17 h 00 uniquement les jours ouvrés (Prix d'un appel vers un numéro fixe, suivant opérateur). Ce service est à disposition pour aider à gérer ou utiliser l' « Espace consommateur » du site Bloctel.
+      Le Service Relation Consommateur est ouvert au 01 73 26 81 45 de 8 h 00 à 17 h 00 uniquement les jours ouvrés (prix d'un appel vers un numéro fixe, suivant opérateur). Ce service est à disposition pour aider à gérer ou utiliser l' « Espace consommateur » du site Bloctel.
       <br/><br/>En revanche, il ne donne aucune information sur le suivi des signalements, les modalités de connexion à Internet ou sur les questions d'ordre juridique.'
-      <br/><br/>Vous pouvez accès à la Foire aux questions de Bloctel sur <a href="https://www.bloctel.gouv.fr/faq" target="_blank" />bloctel.gouv.fr</a>
+      <br/><br/>Vous pouvez accéder à la Foire aux questions de Bloctel sur <a href="https://www.bloctel.gouv.fr/faq" target="_blank" />bloctel.gouv.fr</a>
