@@ -1,7 +1,5 @@
 - title: Produit de santé
   example: 'Exemple : médicament, bas de contention, prothèse, lunette, pansement, fauteuil roulant, compléments alimentaires, autres produits achetés en pharmacie ou rayon pharmacie'
-  tags:
-    - LitigeContractuel
   subcategories:
     - title: J'ai eu un problème de santé / sécurité avec un produit
       example: 'Exemple : allergie, vomissement, électrocution'
@@ -112,8 +110,6 @@
           type: TEXT
 - title: Professionnel de la santé et médecine douce
   example: 'Exemple : dentiste, opticien, kiné, psychiatre, médecine douce'
-  tags:
-    - LitigeContractuel
   subcategoriesTitle: 'Quel type de médecine exerce-t-il ?'
   subcategories:
     - title: La médecine dite "conventionnelle"
@@ -361,8 +357,6 @@
             - '226'
             - '220'
 - title: Hôpital / Clinique
-  tags:
-    - LitigeContractuel
   subcategories:
     - title: J'ai subi un mauvais traitement ou j'ai été mal soigné
       information:
@@ -422,7 +416,6 @@
             - '226'
           tags:
             - ReponseConso
-            - LitigeContractuel
           detailInputs:
             - label: Date de constat
               type: DATE
@@ -447,15 +440,11 @@
           reponseconsoCode:
             - '226'
             - '162'
-          tags:
-            - LitigeContractuel
     - title: Problème de commande
       reponseconsoCode:
         - '220'
         - '226'
         - '162'
-      tags:
-        - LitigeContractuel
     - title: Autre
       subcategories:
         - title: Problème d'accessibilité
@@ -485,7 +474,6 @@
   example: 'et autre transport sanitaire (exemple : taxi)'
   tags:
     - ReponseConso
-    - LitigeContractuel
   reponseconsoCode:
     - '212'
     - '226'
@@ -496,7 +484,6 @@
       example: "Exemple : les prix ne sont pas affichés, pas de remise d'une facture"
       tags:
         - ReponseConso
-        - LitigeContractuel
       subcategories:
         - title: Les prix ne sont pas affichés
           example: 'Exemple : les prix des soins ne sont pas affichés, les prix affichés ne sont pas très clairs'
@@ -551,8 +538,6 @@
       reponseconsoCode:
         - '210'
         - '220'
-      tags:
-        - LitigeContractuel
       detailInputs:
         - label: Date de constat
           type: DATE
@@ -581,7 +566,6 @@
         - '422'
       tags:
         - ReponseConso
-        - LitigeContractuel
     - title: Autre
       subcategories:
         - title: Problème d'accessibilité

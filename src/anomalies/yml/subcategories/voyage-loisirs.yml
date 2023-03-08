@@ -9,8 +9,6 @@
       subcategories:
         - title: Refus de faire la course
           example: "Exemple : le taxi refuse de vous prendre car ce n'est pas assez loin"
-          tags:
-            - LitigeContractuel
           ccrfCode:
             - '23e'
           reponseconsoCode:
@@ -51,7 +49,6 @@
             - '164'
           tags:
             - ReponseConso
-            - LitigeContractuel
           subcategories:
             - title: Je pense que le trajet n'était pas le plus direct
               detailInputs:
@@ -176,8 +173,6 @@
                       placeholder: Immatriculation du véhicule, numéro ADS...
                   fileLabel: Joindre tout document utile pour appuyer votre signalement.
             - title: J'ai été prélevé deux fois
-              tags:
-                - LitigeContractuel
               detailInputs:
                 - label: Date de la course ?
                   type: DATE
@@ -190,13 +185,9 @@
             - title: Le chauffeur n'était pas aimable
               information: !!import/single ../common/info/amabilite.yml
             - title: Autre
-              tags:
-                - LitigeContractuel
     - title: VTC (voiture avec chauffeur)
       companyKind: 'WEBSITE'
       example: Les VTC n'ont pas de signe particulier sur les voitures. Vous devez faire une réservation pour prendre un VTC. La plupart de ces réservations se font sur internet.
-      tags:
-        - LitigeContractuel
       subcategories:
         - title: Une remise ou une offre promotionnelle qui n'est pas appliquée ou qui est mensongère
           ccrfCode:
@@ -288,7 +279,6 @@
           example: 'Exemple : fausse réduction, supplément imprévu'
           tags:
             - ReponseConso
-            - LitigeContractuel
           detailInputs:
             - label: Date du constat
               type: DATE
@@ -301,13 +291,10 @@
               placeholder: Quel était le prix initial ? Quel est le prix final ?
           fileLabel: Vous pouvez joindre des éléments pour appuyer votre signalement.
         - title: Autre
-          tags:
-            - LitigeContractuel
     - title: Informations concernant le logement / Publicité
       example: "Exemple : publicité trompeuse, absence d'information"
       tags:
         - ReponseConso
-        - LitigeContractuel
       subcategories:
         - title: Absence d'information
           ccrfCode:
@@ -344,8 +331,6 @@
               optional: true
     - title: Qualité de la chambre / de l'hébergement
       example: 'Exemple : hôtel sale, chambre insonorisée, pas de sauna alors que le site mentionne un sauna'
-      tags:
-        - LitigeContractuel
       subcategories:
         - title: L'hébergement ne correspond pas à ce qui m'a été vendu
           example: "Exemple : j'avais demandé une chambre avec vue sur la mer et on m'a attribué une vue côté parking, le petit-déjeuner était compris dans le prix de la nuitée or un supplément m'a été demandé"
@@ -375,8 +360,6 @@
         - '453'
         - '481'
         - '4241'
-      tags:
-        - LitigeContractuel
       subcategoriesTitle: Qui a annulé la réservation&#160;?
       subcategories:
         - title: l'hôtel, le camping, le gérant...
@@ -516,17 +499,13 @@
             - '210'
           tags:
             - ReponseConso
-            - LitigeContractuel
         - title: Autre
-          tags:
-            - LitigeContractuel
     - title: Publicité
       example: "Exemple : publicité trompeuse, absence d'information"
       ccrfCode:
         - '23b'
       tags:
         - ReponseConso
-        - LitigeContractuel
       subcategories:
         - title: Absence d'information
           reponseconsoCode:
@@ -559,8 +538,6 @@
     - title: Prestation
       ccrfCode:
         - '23b'
-      tags:
-        - LitigeContractuel
       subcategories:
         - title: La prestation ne correspond pas à ce que l'agence m'a vendu
           reponseconsoCode:
@@ -577,8 +554,6 @@
         - '481'
         - '4241'
         - '424'
-      tags:
-        - LitigeContractuel
     - title: Assurance
       ccrfCode:
         - '21a'
@@ -587,11 +562,7 @@
         - '481'
         - '4241'
         - '424'
-      tags:
-        - LitigeContractuel
     - title: Autre
-      tags:
-        - LitigeContractuel
       subcategories:
         - title: Le personnel n'était pas aimable
           information: !!import/single ../common/info/amabilite.yml
@@ -641,17 +612,13 @@
           example: 'Exemple : fausse réduction, suppléments non prévus'
           tags:
             - ReponseConso
-            - LitigeContractuel
           reponseconsoCode:
             - '210'
         - title: Autre
           tags:
             - ReponseConso
-            - LitigeContractuel
     - title: Publicité
       example: "Exemple : publicité trompeuse, absence d'information"
-      tags:
-        - LitigeContractuel
       subcategories:
         - title: Absence d'information
           ccrfCode:
@@ -694,11 +661,7 @@
         - '481'
         - '424'
         - '4241'
-      tags:
-        - LitigeContractuel
     - title: Assurance
-      tags:
-        - LitigeContractuel
       subcategories:
         - title: Annulation
           ccrfCode:
@@ -717,8 +680,6 @@
       example: 'Exemple : TGV max, pass Navigo'
       ccrfCode:
         - '21c'
-      tags:
-        - LitigeContractuel
     - title: Autre
       subcategories:
         - title: Le personnel n'était pas aimable
@@ -738,8 +699,6 @@
                   type: TEXTAREA
               fileLabel: Vous pouvez joindre des éléments (photo, carte d'assistance...) pour appuyer votre signalement.
         - title: Autre
-          tags:
-            - LitigeContractuel
 - title: Sport
   example: 'Exemple : piscine, salle de sport'
   subcategories:
@@ -767,16 +726,13 @@
             - '210'
           tags:
             - ReponseConso
-            - LitigeContractuel
         - title: Autre
           tags:
             - ReponseConso
-            - LitigeContractuel
     - title: Publicité
       example: "Exemple : publicité trompeuse, absence d'information"
       tags:
         - ReponseConso
-        - LitigeContractuel
       subcategories:
         - title: Absence d'information
           ccrfCode:
@@ -814,8 +770,6 @@
       example: 'Exemple : contrat non respecté, clause abusive'
       ccrfCode:
         - '21c'
-      tags:
-        - LitigeContractuel
       subcategories:
         - title: Clause abusive
           reponseconsoCode:
@@ -861,8 +815,6 @@
     - title: Autre
       ccrfCode:
         - '332'
-      tags:
-        - LitigeContractuel
       subcategories:
         - title: Equipement
         - title: Compléments alimentaires
@@ -905,18 +857,15 @@
             - '210'
           tags:
             - ReponseConso
-            - LitigeContractuel
         - title: Autre
           tags:
             - ReponseConso
-            - LitigeContractuel
     - title: Publicité
       example: "Exemple : publicité mensongère, absence d'information"
       ccrfCode:
         - '23b'
       tags:
         - ReponseConso
-        - LitigeContractuel
       subcategories:
         - title: Absence d'information
           reponseconsoCode:
@@ -953,8 +902,6 @@
         - '424'
         - '4241'
         - '481'
-      tags:
-        - LitigeContractuel
     - title: Autre
       subcategories:
         - title: Problème d'accessibilité
@@ -976,10 +923,8 @@
         - title: Autre
           tags:
             - ReponseConso
-            - LitigeContractuel
 - title: Autre
   tags:
-    - LitigeContractuel
     - ReponseConso
   subcategories:
     - title: Abonnement

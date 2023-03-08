@@ -69,7 +69,7 @@ export const _Consumer = ({
   const {isXsOrLess} = useWindowWidth()
   const {toastError} = useToast()
 
-  const showContactAgreement = ReportDraft.isTransmittableToPro(draft) && draft.contractualDispute !== true
+  const showContactAgreement = ReportDraft.isTransmittableToPro(draft) && draft.consumerWish !== 'fixContractualDispute'
 
   const getErrors = (name: keyof ConsumerForm): {error: boolean; helperText?: string} => ({
     error: !!_form.formState.errors[name],
@@ -83,7 +83,7 @@ export const _Consumer = ({
       consumer: consumer,
       contactAgreement: (() => {
         if (!ReportDraft.isTransmittableToPro(draft)) return false
-        if (draft.contractualDispute) return true
+        if (draft.consumerWish === 'fixContractualDispute') return true
         return contactAgreement
       })(),
     })

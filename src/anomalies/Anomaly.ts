@@ -23,7 +23,7 @@ export interface Anomaly extends Category {
 }
 
 export interface SubcategoryBase extends Category {
-  tags?: ReportTag[]
+  tags?: ReportTagAllowedInYaml[]
   example?: string
   reponseconsoCode?: string[] | null
   ccrfCode?: string[]
@@ -41,8 +41,7 @@ export interface SubcategoryInformation extends SubcategoryBase {
   information: Information
 }
 
-export const reportTags = [
-  'LitigeContractuel',
+export const reportTagsAllowedInYaml = [
   'Hygiene',
   'ProduitDangereux',
   'DemarchageADomicile',
@@ -58,6 +57,9 @@ export const reportTags = [
   'ProduitAlimentaire',
   'CompagnieAerienne',
 ] as const
+export type ReportTagAllowedInYaml = typeof reportTagsAllowedInYaml[number]
+
+export const reportTags = ['LitigeContractuel', ...reportTagsAllowedInYaml] as const
 export type ReportTag = typeof reportTags[number]
 
 export const companyKinds = ['SIRET', 'WEBSITE', 'PHONE', 'LOCATION', 'SOCIAL'] as const

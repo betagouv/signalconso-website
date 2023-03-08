@@ -15,7 +15,7 @@ export interface ReportDraft2 extends Omit<ReportDraft, 'details'> {
 
 export class ReportDraft2 {
   static readonly toReportDraft = (d: ReportDraft2): ReportDraft => {
-    const inputs = getDraftReportInputs({subcategories: d.subcategories, tags: d.tags})
+    const inputs = getDraftReportInputs(d)
     return {
       ...d,
       details: ReportDraft2.parseDetails(d.details, inputs),

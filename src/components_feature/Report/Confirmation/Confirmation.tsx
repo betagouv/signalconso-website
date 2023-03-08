@@ -138,7 +138,7 @@ export const _Confirmation = ({
         <ReportFlowStepperActions
           nextIcon="send"
           loadingNext={_reportCreate.createReport.loading}
-          nextButtonLabel={draft.forwardToReponseConso ? m.confirmationBtnReponseConso : m.confirmationBtn}
+          nextButtonLabel={draft.consumerWish === 'getAnswer' ? m.confirmationBtnReponseConso : m.confirmationBtn}
           next={next => {
             _analytic.trackEvent(EventCategories.report, ReportEventActions.validateConfirmation)
             _reportCreate.createReport

@@ -69,16 +69,12 @@
                 - autre (à préciser)
     - title: Publicité et pratique du professionnel
       example: "Exemple : absence d'information, information trompeuse ou mensongère"
-      tags:
-        - LitigeContractuel
       ccrfCode:
         - '23B'
       subcategories:
         - title: Absence d'information ou information incomplète
           ccrfCode:
             - '23B'
-          tags:
-            - LitigeContractuel
         - title: Information mensongère ou trompeuse
           example: "Mise en avant d'un label ou d'un signe de qualité non ou plus détenu"
           ccrfCode:
@@ -186,33 +182,23 @@
                 content: Vous avez signé le contrat sur un stand de l'entreprise dans une foire ou un salon. Il n'y a pas de délai de rétractation dans ce cas.
                 outOfScope: true
         - title: Contrat non respecté
-          tags:
-            - LitigeContractuel
         - title: Clause abusive
           example: Vous souhaitez dénoncer une clause qui vous est particulièrement défavorable
           ccrfCode:
             - '21C'
-          tags:
-            - LitigeContractuel
         - title: Autre
-          tags:
-            - LitigeContractuel
     - title: Autre
 - title: Service de lutte contre les rats, les punaises de lits, désinfection
   example: 'Exemple : la désinfection, la désinsectisation, la dératisation, lutte contre les nuisibles'
   subcategories:
     - title: Publicité et pratique du professionnel
       example: "Exemple : absence d'information, information trompeuse ou mensongère, démarchage"
-      tags:
-        - LitigeContractuel
       ccrfCode:
         - '23B'
       subcategories:
         - title: Absence d'information ou information incomplète
           ccrfCode:
             - '23b'
-          tags:
-            - LitigeContractuel
           subcategories:
             - title: Caractéristiques techniques des produits non précisées
             - title: Prix indiqué de manière globale et non détaillée
@@ -334,8 +320,6 @@
         - title: Publicité des prestations mensongère
           ccrfCode:
             - '23b'
-          tags:
-            - LitigeContractuel
         - title: Le personnel ne dispose pas des diplômes requis
           ccrfCode:
             - '23F'
@@ -346,8 +330,6 @@
             - title: Je subis des nuisances à cause des odeurs, du bruit...
               information: !!import/single ../common/info/voisinage.yml
             - title: Autre
-              tags:
-                - LitigeContractuel
         - title: Le personnel n'est pas aimable
           information: !!import/single ../common/info/amabilite.yml
     - title: Esthéticien
@@ -380,8 +362,6 @@
         - title: Publicité des prestations mensongère
           ccrfCode:
             - '23b'
-          tags:
-            - LitigeContractuel
         - title: Le personnel ne dispose pas des diplômes requis
           ccrfCode:
             - '23F'
@@ -392,8 +372,6 @@
             - title: Je subis des nuisances à cause des odeurs, du bruit...
               information: !!import/single ../common/info/voisinage.yml
             - title: Autre
-              tags:
-                - LitigeContractuel
         - title: Le personnel n'est pas aimable
           information: !!import/single ../common/info/amabilite.yml
     - title: Cabine UV
@@ -426,8 +404,6 @@
         - title: Publicité des prestations mensongère
           ccrfCode:
             - '23b'
-          tags:
-            - LitigeContractuel
         - title: Le personnel ne dispose pas des diplômes requis
           ccrfCode:
             - '23F'
@@ -438,8 +414,6 @@
             - title: Je subis des nuisances à cause des odeurs, du bruit...
               information: !!import/single ../common/info/voisinage.yml
             - title: Autre
-              tags:
-                - LitigeContractuel
         - title: Le personnel n'est pas aimable
           information: !!import/single ../common/info/amabilite.yml
     - title: Massage
@@ -478,8 +452,6 @@
         - title: Publicité des prestations mensongère
           ccrfCode:
             - '23b'
-          tags:
-            - LitigeContractuel
         - title: Le personnel ne dispose pas des diplômes requis
           ccrfCode:
             - '23F'
@@ -490,8 +462,6 @@
             - title: Je subis des nuisances à cause des odeurs, du bruit...
               information: !!import/single ../common/info/voisinage.yml
             - title: Autre
-              tags:
-                - LitigeContractuel
         - title: Le personnel n'est pas aimable
           information: !!import/single ../common/info/amabilite.yml
 - title: Vie quotidienne
@@ -504,8 +474,6 @@
       reponseconsoCode:
         - '411'
         - '212'
-      tags:
-        - LitigeContractuel
     - title: Moyens de paiement
       example: 'Exemple : carte bancaire refusée'
       subcategories: !!import/single ../common/paiement.yml
@@ -516,7 +484,6 @@
         - '210'
       tags:
         - ReponseConso
-        - LitigeContractuel
     - title: Problème d'hygiène
       reponseconsoCode:
         - '446'
@@ -528,8 +495,6 @@
     - title: Autre
       reponseconsoCode:
         - '210'
-      tags:
-        - LitigeContractuel
 - title: Aide à la personne
   example: "Garde d'enfant de moins de 3 ans, garde d'enfants handicapés de moins de 18 ans, garde de personnes âgées dépendantes ou handicapées, services d'aide et d'accompagnement à domicile (SAAD)"
   subcategories:
@@ -540,8 +505,6 @@
       reponseconsoCode:
         - '411'
         - '212'
-      tags:
-        - LitigeContractuel
     - title: Moyens de paiement
       example: 'Exemple : carte bancaire refusée'
       subcategories: !!import/single ../common/paiement.yml
@@ -559,17 +522,13 @@
         - '210'
       tags:
         - ReponseConso
-        - LitigeContractuel
     - title: Le personnel n'est pas aimable
       information: !!import/single ../common/info/amabilite.yml
     - title: Autre
       reponseconsoCode:
         - '210'
-      tags:
-        - LitigeContractuel
 - title: Maison de retraite (ehpad)
   tags:
-    - LitigeContractuel
     - Ehpad
   subcategories:
     - title: Tarifs / facture
@@ -695,7 +654,6 @@
         - '212'
       tags:
         - ReponseConso
-        - LitigeContractuel
     - title: Moyens de paiement
       example: 'Exemple : carte bancaire refusée'
       subcategories: !!import/single ../common/paiement.yml
@@ -709,7 +667,6 @@
         - '210'
       tags:
         - ReponseConso
-        - LitigeContractuel
     - title: Le personnel n'est pas aimable ou respecteux
       information: !!import/single ../common/info/amabilite.yml
     - title: Le personnel ne dispose pas des diplômes requis
@@ -734,14 +691,11 @@
         - '442'
       tags:
         - ReponseConso
-        - LitigeContractuel
     - title: Agence matrimoniale (agence de rencontre)
       reponseconsoCode:
         - '2263'
         - '473'
         - '226'
-      tags:
-        - LitigeContractuel
     - title: Autre
       reponseconsoCode:
         - '210'

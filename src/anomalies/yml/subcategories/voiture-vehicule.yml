@@ -1,12 +1,8 @@
 - title: Location
   example: 'Exemple : location de voiture, location de vélo, location longue durée'
-  tags:
-    - LitigeContractuel
   subcategories:
     - title: Location de voiture auprès d'une agence ou d'un magasin
       example: "Exemple : agence à l'aéroport, location de camionnette dans un supermarché, plate-forme de location sur internet"
-      tags:
-        - LitigeContractuel
       subcategories:
         - title: Prix / paiement
           reponseconsoCode:
@@ -30,8 +26,6 @@
             - title: Autre
     - title: Location en libre-service
       example: 'Exemple : location de vélo, trotinette, voiture électrique par une borne'
-      tags:
-        - LitigeContractuel
       subcategories:
         - title: Prix / paiement
           reponseconsoCode:
@@ -48,8 +42,6 @@
           reponseconsoCode:
             - '679'
     - title: Location longue durée (leasing, LDD, LOA...)
-      tags:
-        - LitigeContractuel
       subcategories:
         - title: Prix / paiement
           reponseconsoCode:
@@ -85,8 +77,6 @@
             - '679'
 - title: Réparation, révision, vente de véhicule
   example: 'Exemple : garagiste, dépanneur, contrôle technique'
-  tags:
-    - LitigeContractuel
   subcategories:
     - title: Prix / paiement
       reponseconsoCode:

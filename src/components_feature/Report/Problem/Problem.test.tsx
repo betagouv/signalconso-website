@@ -282,8 +282,8 @@ describe('Problem', () => {
     expectContractualDisputeVisible(app, false)
     clickBtnSubmit(app)
     expect(report?.employeeConsumer).toEqual(false)
-    expect(report?.forwardToReponseConso).toEqual(true)
-    expect(report?.tags?.includes('ReponseConso')).toEqual(true)
+    expect(report?.consumerWish).toEqual('getAnswer')
+    expect(report?.tags?.includes('ReponseConso')).toEqual(false)
   })
 
   it('should ask add ReponseConso tag when related option is not selected', () => {
@@ -303,7 +303,7 @@ describe('Problem', () => {
     expectContractualDisputeVisible(app, false)
     clickBtnSubmit(app)
     expect(report?.employeeConsumer).toEqual(false)
-    expect(report?.forwardToReponseConso).not.toEqual(true)
+    expect(report?.consumerWish).not.toEqual('getAnswer')
     expect((report?.tags ?? []).includes('ReponseConso')).toEqual(false)
   })
 })
