@@ -22,7 +22,7 @@ import {dateToFrenchFormat, isDateInRange} from 'utils/utils'
 import {Txt} from '../../../alexlibs/mui-extension/Txt/Txt'
 import {Alert} from '../../../alexlibs/mui-extension/Alert/Alert'
 import {DetailInput, DetailInputType, ReportTag, SubcategoryInput} from '../../../anomalies/Anomaly'
-import {ReportDraft} from '../../../model/ReportDraft'
+import {ConsumerWish, ReportDraft} from '../../../model/ReportDraft'
 import {FileOrigin, UploadedFile} from '../../../model/UploadedFile'
 import {fnSwitch} from '../../../utils/FnSwitch'
 import {mapNTimes} from '../../../utils/utils'
@@ -48,11 +48,11 @@ export const Details = ({stepNavigation}: {stepNavigation: StepNavigation}) => {
     if (draft.subcategories) {
       return getDraftReportInputs(draft)
     }
-  }, [draft.subcategories, draft.tags, draft.forwardToReponseConso])
+  }, [draft.subcategories, draft.tags, draft.consumerWish])
 
   useEffect(() => {
     _reportFlow.setReportDraft(_ => ({..._, details: undefined}))
-  }, [draft.subcategories, draft.tags, draft.forwardToReponseConso])
+  }, [draft.subcategories, draft.tags, draft.consumerWish])
 
   if (!inputs || draft.employeeConsumer === undefined) {
     throw new Error(`This step should not be accessible ${draft.employeeConsumer} - ${JSON.stringify(inputs)}`)
@@ -65,7 +65,6 @@ export const Details = ({stepNavigation}: {stepNavigation: StepNavigation}) => {
       inputs={inputs}
       fileLabel={(last(draft.subcategories) as SubcategoryInput).fileLabel}
       employeeConsumer={draft.employeeConsumer}
-      contractualDispute={draft.contractualDispute}
       tags={draft.tags ?? []}
       onSubmit={(detailInputValues, uploadedFiles) => {
         _reportFlow.setReportDraft(_ => ({..._, uploadedFiles, details: detailInputValues}))
@@ -73,7 +72,7 @@ export const Details = ({stepNavigation}: {stepNavigation: StepNavigation}) => {
         _analytic.trackEvent(EventCategories.report, ReportEventActions.validateDetails)
       }}
       {...{stepNavigation}}
-      forwardToReponseConso={draft.forwardToReponseConso}
+      consumerWish={draft.consumerWish}
     />
   )
 }
@@ -85,11 +84,10 @@ export const _Details = ({
   fileLabel,
   tags,
   isTransmittable,
-  contractualDispute,
   employeeConsumer,
   onSubmit,
   stepNavigation,
-  forwardToReponseConso,
+  consumerWish,
 }: {
   inputs: DetailInput[]
   onSubmit: (values: DetailInputValues2, files?: UploadedFile[]) => void
@@ -97,11 +95,10 @@ export const _Details = ({
   initialFiles?: UploadedFile[]
   fileLabel?: string
   isTransmittable?: boolean
-  contractualDispute?: boolean
   employeeConsumer?: boolean
   tags?: ReportTag[]
   stepNavigation: StepNavigation
-  forwardToReponseConso: ReportDraft2['forwardToReponseConso']
+  consumerWish?: ConsumerWish
 }) => {
   const [uploadedFiles, setUploadedFiles] = useState<undefined | UploadedFile[]>()
   const {m} = useI18n()
@@ -132,7 +129,9 @@ export const _Details = ({
             {isTransmittable ? (
               <>
                 <span dangerouslySetInnerHTML={{__html: m.detailsTextAreaTransmittable}} />
-                {!contractualDispute && <span dangerouslySetInnerHTML={{__html: m.detailsTextAreaTransmittableAnonymous}} />}
+                {consumerWish !== 'fixContractualDispute' && (
+                  <span dangerouslySetInnerHTML={{__html: m.detailsTextAreaTransmittableAnonymous}} />
+                )}
               </>
             ) : (
               <>
@@ -323,9 +322,9 @@ export const _Details = ({
       <Animate autoScrollTo={false}>
         <Panel title={fileLabel ?? m.attachments}>
           <PanelBody>
-            {ReportDraft.isTransmittableToPro({tags, employeeConsumer, forwardToReponseConso}) && (
+            {ReportDraft.isTransmittableToPro({tags, employeeConsumer, consumerWish}) && (
               <>
-                {!contractualDispute && (
+                {consumerWish !== 'fixContractualDispute' && (
                   <Txt color="hint" block gutterBottom dangerouslySetInnerHTML={{__html: m.attachmentsDescAnonymous}} />
                 )}
                 <Alert dense type="info" sx={{mb: 2}} deletable>

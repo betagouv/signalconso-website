@@ -46,7 +46,7 @@ describe('Details: single date not in future', () => {
           inputValues = x
         }}
         stepNavigation={dummyStepNavigation}
-        forwardToReponseConso={undefined}
+        consumerWish={undefined}
       />,
     )
   })
@@ -92,7 +92,7 @@ describe('Details: checkbox', () => {
           inputValues = x
         }}
         stepNavigation={dummyStepNavigation}
-        forwardToReponseConso={undefined}
+        consumerWish={undefined}
       />,
     )
   })
@@ -154,7 +154,7 @@ describe('Details: textarea', () => {
           inputValues = x
         }}
         stepNavigation={dummyStepNavigation}
-        forwardToReponseConso={undefined}
+        consumerWish={undefined}
       />,
     )
   })
@@ -211,7 +211,7 @@ describe('Details: initialize values', () => {
           inputValues = x
         }}
         stepNavigation={dummyStepNavigation}
-        forwardToReponseConso={undefined}
+        consumerWish={undefined}
       />,
     )
   })

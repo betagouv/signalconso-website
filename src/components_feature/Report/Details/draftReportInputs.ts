@@ -25,7 +25,7 @@ export class DraftReportDefaultInputs {
 }
 
 export const getDraftReportInputs = (draft: Partial<ReportDraft2>): DetailInput[] => {
-  const {subcategories, forwardToReponseConso} = draft
+  const {subcategories, consumerWish} = draft
   const lastSubcategories = last(subcategories)
   const res: DetailInput[] = []
   if (instanceOfSubcategoryInput(lastSubcategories)) {
@@ -36,7 +36,7 @@ export const getDraftReportInputs = (draft: Partial<ReportDraft2>): DetailInput[
   } else {
     res.push(...DraftReportDefaultInputs.defaults())
   }
-  if (forwardToReponseConso === true) {
+  if (consumerWish === 'getAnswer') {
     const i = res.findIndex(
       _ => _.type === DetailInputType.TEXTAREA && !_.label.includes(DraftReportDefaultInputs.description().label),
     )

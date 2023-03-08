@@ -14,6 +14,7 @@ import {ProblemSelect} from './ProblemSelect'
 import {ProblemStepperStep, ProblemStepper} from './ProblemStepper'
 import {computeSelectedSubcategoriesData} from './useSelectedSubcategoriesData'
 import {StepNavigation} from 'components_simple/ReportFlowStepper/ReportFlowStepper'
+import {ConsumerWish} from 'model/ReportDraft'
 
 interface Props {
   anomaly: Anomaly
@@ -30,7 +31,7 @@ function adjustTags(
   if (companyKindFromSelected === 'WEBSITE' || draft.companyKind === 'WEBSITE') {
     res = [...res, 'Internet']
   }
-  // This tag is used in the arborescence only to offer the choice of 'forwardToReponseConso'
+  // This tag is used in the arborescence only to offer the choice of 'getAnswer'
   // If selected, the tag will be added back just before submitting to the API
   res = res.filter(_ => _ !== 'ReponseConso')
   return res
@@ -166,68 +167,48 @@ export const Problem = ({anomaly, isWebView, stepNavigation}: Props) => {
                 ]}
               />
             </ProblemStepperStep>
-            <ProblemStepperStep
-              isDone={reportDraft.contractualDispute !== undefined || reportDraft.forwardToReponseConso !== undefined}
-              hidden={reportDraft.employeeConsumer === true}
-            >
+            <ProblemStepperStep isDone={reportDraft.consumerWish !== undefined} hidden={reportDraft.employeeConsumer === true}>
               <ProblemSelect
                 id="select-contractualDispute"
                 title="Que souhaitez-vous faire ?"
-                value={(() => {
-                  if (reportDraft.contractualDispute === true) return 1
-                  if (reportDraft.contractualDispute === false) return 2
-                  if (reportDraft.forwardToReponseConso === true) return 3
-                })()}
+                value={reportDraft.consumerWish}
                 options={[
                   {
                     title: m.problemContractualDisputeFormYes,
                     description: m.problemContractualDisputeFormDesc,
-                    value: 1,
+                    value: 'fixContractualDispute',
                   },
                   {
                     title: m.problemContractualDisputeFormNo,
                     description: m.problemContractualDisputeFormNoDesc,
-                    value: 2,
+                    value: 'companyImprovement',
                   },
                   ...(displayReponseConso && tagsFromSelected.includes('ReponseConso')
                     ? [
                         {
                           title: m.problemContractualDisputeFormReponseConso,
-                          value: 3,
+                          value: 'getAnswer' as const,
                         },
                       ]
                     : []),
                 ]}
-                onChange={(value: number) => {
+                onChange={(value: ConsumerWish) => {
                   const updateAndTrack = (change: Partial<ReportDraft2>) => {
                     setReportDraft(old => {
                       const d = {...old, ...change}
                       _analytic.trackEvent(
                         EventCategories.report,
                         ReportEventActions.contactualReport,
-                        d.contractualDispute ? 'Oui' : 'Non',
+                        d.consumerWish === 'fixContractualDispute' ? 'Oui' : 'Non',
                       )
                       return d
                     })
                   }
-                  switch (value) {
-                    case 1: {
-                      updateAndTrack({forwardToReponseConso: undefined, contractualDispute: true})
-                      break
-                    }
-                    case 2: {
-                      updateAndTrack({forwardToReponseConso: undefined, contractualDispute: false})
-                      break
-                    }
-                    case 3: {
-                      updateAndTrack({forwardToReponseConso: true, contractualDispute: undefined})
-                      break
-                    }
-                  }
+                  updateAndTrack({consumerWish: value})
                 }}
               />
             </ProblemStepperStep>
-            <ProblemStepperStep isDone={true} hidden={reportDraft.contractualDispute !== true}>
+            <ProblemStepperStep isDone={true} hidden={reportDraft.consumerWish !== 'fixContractualDispute'}>
               <ProblemContratualDisputeWarnPanel />
             </ProblemStepperStep>
           </ProblemStepper>

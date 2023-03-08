@@ -15,7 +15,7 @@ describe('getDraftReportInputs', () => {
   it('should generate default inputs including reponseConso inputs', () => {
     const inputs = getDraftReportInputs({
       subcategories: [Fixture.genSubcategory()],
-      forwardToReponseConso: true,
+      consumerWish: 'getAnswer',
     })
     expect(inputs).toEqual([
       DraftReportDefaultInputs.date(),
@@ -33,7 +33,7 @@ describe('getDraftReportInputs', () => {
 
   it('should generate custom input with reponseconso', () => {
     const inputs = getDraftReportInputs({
-      forwardToReponseConso: true,
+      consumerWish: 'getAnswer',
       subcategories: [Fixture.genSubcategory(), {id: '', title: '', detailInputs: [DetailsFixtureInput.date]}],
     })
     expect(inputs).toEqual([

@@ -42,28 +42,38 @@ export interface ReportDraft {
   ccrfCode?: string[]
   reponseconsoCode?: string[]
   tags?: ReportTag[]
-  contractualDispute?: boolean
-  forwardToReponseConso?: boolean
+  consumerWish?: ConsumerWish
   companyKind?: CompanyKinds
 }
 
+export type ConsumerWish =
+  // - on empêche l'utilisateur d'être anonyme
+  // - on met le tag LitigeContractuel
+  // C'est tout.
+  // En vrai cela ne change donc pas grand chose pour l'utilisateur
+  | 'fixContractualDispute'
+  // Cas standard
+  | 'companyImprovement'
+  // - on met le tag ReponseConso
+  // - on met le flag forwardToReponseConso
+  // - on ne transmet pas à l'entreprise
+  | 'getAnswer'
+
 export class ReportDraft {
-  static readonly isTransmittableToPro = (
-    r: Pick<ReportDraft, 'employeeConsumer' | 'tags' | 'forwardToReponseConso'>,
-  ): boolean => {
+  static readonly isTransmittableToPro = (r: Pick<ReportDraft, 'employeeConsumer' | 'tags' | 'consumerWish'>): boolean => {
     return (
       !r.employeeConsumer &&
       !(r.tags ?? []).find(_ => ['ProduitDangereux', 'Bloctel'].includes(_)) &&
-      r.forwardToReponseConso !== true
+      r.consumerWish !== 'getAnswer'
     )
   }
 
   static readonly toApi = (draft: ReportDraft): ApiReportDraft => {
-    const {contractualDispute, forwardToReponseConso, ...restOfDraft} = draft
+    const {consumerWish, ...restOfDraft} = draft
 
     const additionalTags: ReportTag[] = [
-      ...(contractualDispute ? (['LitigeContractuel'] as const) : []),
-      ...(forwardToReponseConso ? (['ReponseConso'] as const) : []),
+      ...(consumerWish === 'fixContractualDispute' ? (['LitigeContractuel'] as const) : []),
+      ...(consumerWish === 'getAnswer' ? (['ReponseConso'] as const) : []),
     ]
 
     const tags = uniq([...(draft.tags ?? []), ...additionalTags])
@@ -88,6 +98,7 @@ export class ReportDraft {
       companyActivityCode: draft.companyDraft.activityCode,
       websiteURL: draft.companyDraft.website,
       phone: draft.companyDraft.phone,
+      forwardToReponseConso: consumerWish === 'getAnswer',
       // pretty sure these fields aren't actually optional in the draft
       employeeConsumer: draft.employeeConsumer ?? false,
       tags,
