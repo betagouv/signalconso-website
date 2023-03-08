@@ -1,7 +1,5 @@
 - title: Dépannage
   example: "Vous faites appel à une entreprise dans l'urgence à votre domicile (par exemple : vous avez perdu votre clef d'appartement et vous contactez un serrurier pour qu'il vienne vous l'ouvrir, vous appelez un plombier suite à l'explosion de votre canalisation)"
-  tags:
-    - LitigeContractuel
   subcategories:
     - title: Prix
       ccrfCode:
@@ -101,7 +99,6 @@
         - '23E'
       reponseconsoCode:
         - '221'
-      tags:
       #            - ReponseConso
         - DemarchageTelephonique
       detailInputs:
@@ -122,8 +119,6 @@
         ccrfCode:
           - '21B'
           - '213'
-        tags:
-         - LitigeContractuel
         subcategories:
           - title: Prix exagéré / élevé
             information:
@@ -145,8 +140,6 @@
               - ReponseConso
       - title: Publicité et pratique de l'entreprise
         example: "Exemple : absence d'information, information trompeuse ou mensongère, démarchage à domicile"
-        tags:
-          - LitigeContractuel
         ccrfCode:
           - '21A'
           - '23B'
@@ -158,7 +151,6 @@
             ccrfCode:
               - '271'
             tags:
-              - LitigeContractuel
               - ReponseConso
             subcategories:
               - title: Caractéristiques techniques des produits non précisées
@@ -394,8 +386,6 @@
             reponseconsoCode:
               - '443'
               - '442'
-            tags:
-              - LitigeContractuel
       - title: Contrat
         example: 'Exemple : contrat non respecté, délai de rétractation, clause abusive'
         subcategories:
@@ -461,8 +451,6 @@
             reponseconsoCode:
               - '443'
               - '446'
-            tags:
-              - LitigeContractuel
           - title: Clause abusive
             example: Vous souhaitez dénoncer une clause qui vous est particulièrement défavorable
             ccrfCode:
@@ -471,14 +459,9 @@
               - '214'
             tags:
               - ReponseConso
-              - LitigeContractuel
           - title: Autre
-            tags:
-              - LitigeContractuel
       - title: Crédits pour les travaux / garanties
         example: "Défaut d'information, absence de remise du contrat de crédit, engagement financier mensuel supérieur à celui annoncé par le vendeur, annonce d'autofinancement de l'installation"
-        tags:
-          - LitigeContractuel
         subcategories:
           - title: Crédit destiné à financer vos travaux
             ccrfCode:
@@ -529,8 +512,6 @@
                   - '411'        
               - title: Responsabilité contractuelle de droit commun
       - title: Autre
-        tags:
-          - LitigeContractuel
     - title: chauffage
       example: "Par exemple : pompe à chaleur, chauffage au bois, chauffe-eau thermodynamique"
       subcategories:
@@ -539,8 +520,6 @@
           ccrfCode:
             - '21B'
             - '213'
-          tags:
-          - LitigeContractuel
           subcategories:
             - title: Prix exagéré / élevé
               information:
@@ -562,15 +541,12 @@
                 - ReponseConso
         - title: Publicité et pratique de l'entreprise
           example: "Exemple : absence d'information, information trompeuse ou mensongère, démarchage à domicile"
-          tags:
-            - LitigeContractuel
           ccrfCode:
             - '21A'
             - '23B'
           subcategories:
             - title: Absence d'information ou information incomplète
               tags:
-                - LitigeContractuel
                 - ReponseConso
               subcategories:
                 - title: Caractéristiques techniques des produits non précisées
@@ -809,8 +785,6 @@
                 - '2213'
                 - '2214'
                 - '2216'
-              tags:
-                - LitigeContractuel
         - title: Contrat
           example: 'Exemple : contrat non respecté, délai de rétractation, clause abusive'
           subcategories:
@@ -872,8 +846,6 @@
                 - '226'
               reponseconsoCode:
                 - '443'
-              tags:
-                - LitigeContractuel
             - title: Clause abusive
               example: Vous souhaitez dénoncer une clause qui vous est particulièrement défavorable
               ccrfCode:
@@ -882,16 +854,11 @@
                 - '214'
               tags:
                 - ReponseConso
-                - LitigeContractuel
             - title: Autre
-              tags:
-                - LitigeContractuel
         - title: Crédits pour les travaux / garanties
           example: "Défaut d'information, absence de remise du contrat de crédit, engagement financier mensuel supérieur à celui annoncé par le vendeur, annonce d'autofinancement de l'installation"
           ccrfCode:
             - '21A'
-          tags:
-            - LitigeContractuel
           subcategories:
             - title: Crédit destiné à financer vos travaux
               example: Crédit affecté au contrat de travaux / rénovation
@@ -936,8 +903,6 @@
                 - title: Garantie décennale
                 - title: Responsabilité contractuelle de droit commun
         - title: Autre
-          tags:
-            - LitigeContractuel
     - title: Isolation
       example: "L'isolation des murs, des combles, du garage/sous-sol, le remplacement de portes/fenêtres"
       subcategories:
@@ -946,8 +911,6 @@
           ccrfCode:
             - '21B'
             - '213'
-          tags:
-          - LitigeContractuel
           subcategories:
             - title: Prix exagéré / élevé
               information:
@@ -968,15 +931,12 @@
                 - ReponseConso
         - title: Publicité et pratique de l'entreprise
           example: "Exemple : absence d'information, information trompeuse ou mensongère, démarchage"
-          tags:
-            - LitigeContractuel
           ccrfCode:
             - '21A'
             - '23B'
           subcategories:
             - title: Absence d'information ou information incomplète
               tags:
-                - LitigeContractuel
                 - ReponseConso
               subcategories:
                 - title: Caractéristiques techniques des produits non précisées
@@ -1209,8 +1169,6 @@
             - title: Les travaux ne sont toujours pas terminés
               reponseconsoCode:
                 - '443'
-              tags:
-                - LitigeContractuel
         - title: Contrat
           example: 'Exemple : contrat non respecté, délai de rétractation, clause abusive'
           subcategories:
@@ -1269,8 +1227,6 @@
                 - '226'
               reponseconsoCode:
                 - '443'
-              tags:
-                - LitigeContractuel
             - title: Clause abusive
               example: Vous souhaitez dénoncer une clause qui vous est particulièrement défavorable
               ccrfCode:
@@ -1279,16 +1235,11 @@
                 - '214'
               tags:
                 - ReponseConso
-                - LitigeContractuel
             - title: Autre
-              tags:
-                - LitigeContractuel
         - title: Crédits pour les travaux / garanties
           example: "Défaut d'information, absence de remise du contrat de crédit, engagement financier mensuel supérieur à celui annoncé par le vendeur, annonce d'autofinancement de l'installation"
           ccrfCode:
             - '21A'
-          tags:
-            - LitigeContractuel
           subcategories:
             - title: Crédit financé pour vos travaux
               example: Crédit affecté au contrat de travaux / rénovation
@@ -1333,8 +1284,6 @@
                 - title: Garantie décennale
                 - title: Responsabilité contractuelle de droit commun
         - title: Autre
-          tags:
-            - LitigeContractuel
     - title: Ventilation
       subcategories:
         - title: Prix
@@ -1342,8 +1291,6 @@
           ccrfCode:
             - '21B'
             - '213'
-          tags:
-          - LitigeContractuel
           subcategories:
             - title: Prix exagéré / élevé
               information:
@@ -1364,15 +1311,12 @@
                 - ReponseConso
         - title: Publicité et pratique de l'entreprise
           example: "Exemple : absence d'information, information trompeuse ou mensongère, démarchage"
-          tags:
-            - LitigeContractuel
           ccrfCode:
             - '21A'
             - '23B'
           subcategories:
             - title: Absence d'information ou information incomplète
               tags:
-                - LitigeContractuel
                 - ReponseConso
               subcategories:
                 - title: Caractéristiques techniques des produits non précisées
@@ -1605,8 +1549,6 @@
             - title: Les travaux ne sont toujours pas terminés
               reponseconsoCode:
                 - '443'
-              tags:
-                - LitigeContractuel
         - title: Contrat
           example: 'Exemple : contrat non respecté, délai de rétractation, clause abusive'
           subcategories:
@@ -1662,8 +1604,6 @@
                 - '226'
               reponseconsoCode:
                 - '443'
-              tags:
-                - LitigeContractuel
             - title: Clause abusive
               example: Vous souhaitez dénoncer une clause qui vous est particulièrement défavorable
               ccrfCode:
@@ -1672,14 +1612,9 @@
                 - '214'
               tags:
                 - ReponseConso
-                - LitigeContractuel
             - title: Autre
-              tags:
-                - LitigeContractuel
         - title: Crédits pour les travaux / garanties
           example: "Défaut d'information, absence de remise du contrat de crédit, engagement financier mensuel supérieur à celui annoncé par le vendeur, annonce d'autofinancement de l'installation"
-          tags:
-            - LitigeContractuel
           subcategories:
             - title: Crédit financé pour vos travaux
               example: Crédit affecté au contrat de travaux / rénovation
@@ -1720,8 +1655,6 @@
                 - title: Garantie décennale
                 - title: Responsabilité contractuelle de droit commun
         - title: Autre
-          tags:
-            - LitigeContractuel
     - title: Production d'énergies renouvelables
       example: L'instation d'équipements solaire, petites éoliennes domestiques
       subcategories:
@@ -1729,8 +1662,6 @@
           example: 'Exemple : prix non affiché, devis non respecté'
           ccrfCode:
             - '21B'
-          tags:
-          - LitigeContractuel
           subcategories:
             - title: Prix exagéré / élevé
               information:
@@ -1751,14 +1682,11 @@
                 - ReponseConso
         - title: Publicité et pratique de l'entreprise
           example: "Exemple : absence d'information, information trompeuse ou mensongère, démarchage"
-          tags:
-            - LitigeContractuel
           ccrfCode:
             - '23B'
           subcategories:
             - title: Absence d'information ou information incomplète
               tags:
-                - LitigeContractuel
                 - ReponseConso
               subcategories:
                 - title: Caractéristiques techniques des produits non précisées
@@ -1989,8 +1917,6 @@
             - title: Les travaux ne sont toujours pas terminés
               reponseconsoCode:
                 - '443'
-              tags:
-                - LitigeContractuel
         - title: Contrat
           example: 'Exemple : contrat non respecté, délai de rétractation, clause abusive'
           subcategories:
@@ -2046,8 +1972,6 @@
                 - '226'
               reponseconsoCode:
                 - '443'
-              tags:
-                - LitigeContractuel
             - title: Clause abusive
               example: Vous souhaitez dénoncer une clause qui vous est particulièrement défavorable
               ccrfCode:
@@ -2056,14 +1980,9 @@
                 - '214'
               tags:
                 - ReponseConso
-                - LitigeContractuel
             - title: Autre
-              tags:
-                - LitigeContractuel
         - title: Crédits pour les travaux / garanties
           example: "Défaut d'information, absence de remise du contrat de crédit, engagement financier mensuel supérieur à celui annoncé par le vendeur, annonce d'autofinancement de l'installation"
-          tags:
-            - LitigeContractuel
           subcategories:
             - title: Crédit financé pour vos travaux
               example: Crédit affecté au contrat de travaux / rénovation
@@ -2104,8 +2023,6 @@
                 - title: Garantie décennale
                 - title: Responsabilité contractuelle de droit commun
         - title: Autre
-          tags:
-            - LitigeContractuel
 - title: Autres Travaux
   example: "Par exemple : la construction de votre maison ou l'adaptation de votre logement à un handicape ou pour une personne âgée"
   subcategories:
@@ -2113,8 +2030,6 @@
       example: 'Exemple : prix non affiché, devis non respecté'
       ccrfCode:
         - '21B'
-      tags:
-        - LitigeContractuel
       subcategories:
         - title: Prix exagéré / élevé
           information:
@@ -2135,15 +2050,12 @@
             - ReponseConso
     - title: Publicité et pratique de l'entreprise
       example: "Exemple : absence d'information, information trompeuse ou mensongère, démarchage à domicile"
-      tags:
-        - LitigeContractuel
       ccrfCode:
         - '21A'
         - '23B'
       subcategories:
         - title: Absence d'information ou information incomplète
           tags:
-            - LitigeContractuel
             - ReponseConso
           subcategories:
             - title: Caractéristiques techniques des produits non précisées
@@ -2374,8 +2286,6 @@
         - title: Les travaux ne sont toujours pas terminés
           reponseconsoCode:
             - '443'
-          tags:
-            - LitigeContractuel
     - title: Contrat
       example: 'Exemple : contrat non respecté, délai de rétractation, clause abusive'
       subcategories:
@@ -2431,8 +2341,6 @@
             - '226'
           reponseconsoCode:
             - '443'
-          tags:
-            - LitigeContractuel
         - title: Clause abusive
           example: Vous souhaitez dénoncer une clause qui vous est particulièrement défavorable
           ccrfCode:
@@ -2441,14 +2349,9 @@
             - '214'
           tags:
             - ReponseConso
-            - LitigeContractuel
         - title: Autre
-          tags:
-            - LitigeContractuel
     - title: Crédits pour les travaux / garanties
       example: "Défaut d'information, absence de remise du contrat de crédit, engagement financier mensuel supérieur à celui annoncé par le vendeur, annonce d'autofinancement de l'installation"
-      tags:
-        - LitigeContractuel
       subcategories:
         - title: Crédit financé pour vos travaux
           example: Crédit affecté au contrat de travaux / rénovation
@@ -2493,8 +2396,6 @@
             - title: Garantie décennale
             - title: Responsabilité contractuelle de droit commun
     - title: Autre
-      tags:
-        - LitigeContractuel
 - title: Produit dangereux
   example: 'Exemple : marteau, perceuse'
   tags:

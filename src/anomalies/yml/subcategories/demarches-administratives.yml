@@ -12,7 +12,6 @@
     - '511'
   tags:
     - ReponseConso
-    - LitigeContractuel
 - title: Site internet pour obtenir un document administratif (casier, acte de naissance, vignette crit'air)
   subcategoriesTitle: À qui appartient ce site internet&#160;?
   subcategories:
@@ -26,7 +25,6 @@
         - '511'
       tags:
         - ReponseConso
-        - LitigeContractuel
 - title: Carte des numéros utiles de la mairie (numéro urgence serrurier, plombier...)
   reponseconsoCode:
     - '210'
@@ -46,5 +44,3 @@
         - '521'
         - '210'
         - '492'
-      tags:
-        - LitigeContractuel

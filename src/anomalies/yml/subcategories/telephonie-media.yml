@@ -21,13 +21,11 @@
                 - title: Non, j'ai reçu seulement un sms
                   tags:
                     - ReponseConso
-                    - LitigeContractuel
                 - title: Non, je n'ai rien reçu du tout
                   reponseconsoCode:
                     - '421'
                   tags:
                     - ReponseConso
-                    - LitigeContractuel
             - title: Modification concernant les sms, mms ou appels
               tags:
                 - ReponseConso
@@ -46,15 +44,11 @@
                   reponseconsoCode:
                     - '421'
                     - '2202'
-                  tags:
-                    - LitigeContractuel
                 - title: Non, je n'ai rien reçu du tout
                   ccrfCode:
                     - '421'
                   reponseconsoCode:
                     - '421'
-                  tags:
-                    - LitigeContractuel
             - title: Rajout d'une option payante
               example: 'Exemple : chaine télé supplémentaire, option cyber-sécurité, option livre audio, option musique...'
               ccrfCode:
@@ -73,8 +67,6 @@
                     - title: Non, je n'ai rien reçu
                       ccrfCode:
                         - '421'
-                      tags:
-                        - LitigeContractuel
                       detailInputs:
                         - label: Date du début de l'option (vous pouvez préciser le premier mois facturé)
                           type: DATE
@@ -86,8 +78,6 @@
                     - '226'
                   reponseconsoCode:
                     - '421'
-                  tags:
-                    - LitigeContractuel
                   detailInputs:
                     - label: À partir de quand cette option va-t-elle être payante ?
                       type: DATE
@@ -117,7 +107,6 @@
                 - '210'
               tags:
                 - ReponseConso
-                - LitigeContractuel
         - title: L'offre / la promotion que je devais avoir n'a pas été appliquée
           ccrfCode:
             - '23B'
@@ -126,7 +115,6 @@
             - '210'
           tags:
             - ReponseConso
-            - LitigeContractuel
         - title: Autre problème de facturation ou de contrat
           ccrfCode:
             - '23B'
@@ -135,7 +123,6 @@
             - '623'
           tags:
             - ReponseConso
-            - LitigeContractuel
           subcategories:
             - title: Utilisation de mon forfait à l'étranger
               reponseconsoCode:
@@ -151,8 +138,6 @@
         title: La qualité du réseau est mauvaise
         content: Les problèmes de réseau ou d'éligibilité ne peuvent pas être signalés sur SignalConso. <br> Vous devez les signaler à l'ARCEP (Autorité de régulation des communications électroniques, des postes et de la distribution de la presse) sur leur site dédié  <a href="https://jalerte.arcep.fr/" target="_blank" /> J'alerte l'Arcep </a>
     - title: Résiliation / changement d'opérateur
-      tags:
-        - LitigeContractuel
       subcategories:
         - title: Frais de résiliation
           ccrfCode:
@@ -210,7 +195,6 @@
       example: 'Exemple : téléphone acheté avec le forfait, service client injoignable'
       tags:
         - ReponseConso
-        - LitigeContractuel
       subcategories:
         - title: Qualité du service client
           example: 'Exemple : pas de réponse du service client, service client payant'

@@ -153,8 +153,6 @@
     - title: J'ai payé plus cher que le prix affiché
       reponseconsoCode:
         - '212'
-      tags:
-        - LitigeContractuel
       detailInputs:
         - label: Date du constat
           type: DATE

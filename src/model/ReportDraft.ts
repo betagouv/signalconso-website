@@ -3,7 +3,7 @@ import {Address} from './Address'
 import {DetailInputValue} from './CreatedReport'
 import {ApiReportDraft} from './reportsFromApi'
 import {UploadedFile} from './UploadedFile'
-
+import uniq from 'lodash/uniq'
 export const genders = ['Male', 'Female'] as const
 export type Gender = typeof genders[number]
 
@@ -42,19 +42,44 @@ export interface ReportDraft {
   ccrfCode?: string[]
   reponseconsoCode?: string[]
   tags?: ReportTag[]
-  contractualDispute?: boolean
-  forwardToReponseConso?: boolean
+  consumerWish?: ConsumerWish
   companyKind?: CompanyKinds
 }
 
+export type ConsumerWish =
+  // - on empêche l'utilisateur d'être anonyme
+  // - on met le tag LitigeContractuel
+  // C'est tout.
+  // En vrai cela ne change donc pas grand chose pour l'utilisateur
+  | 'fixContractualDispute'
+  // Cas standard
+  | 'companyImprovement'
+  // - on met le tag ReponseConso
+  // - on met le flag forwardToReponseConso
+  // - on ne transmet pas à l'entreprise
+  | 'getAnswer'
+
 export class ReportDraft {
-  static readonly isTransmittableToPro = (r: Pick<ReportDraft, 'employeeConsumer' | 'tags'>): boolean => {
-    return !r.employeeConsumer && !(r.tags ?? []).find(_ => ['ReponseConso', 'ProduitDangereux', 'Bloctel'].includes(_))
+  static readonly isTransmittableToPro = (r: Pick<ReportDraft, 'employeeConsumer' | 'tags' | 'consumerWish'>): boolean => {
+    return (
+      !r.employeeConsumer &&
+      !(r.tags ?? []).find(_ => ['ProduitDangereux', 'Bloctel'].includes(_)) &&
+      r.consumerWish !== 'getAnswer'
+    )
   }
 
   static readonly toApi = (draft: ReportDraft): ApiReportDraft => {
+    const {consumerWish, ...restOfDraft} = draft
+
+    const additionalTags: ReportTag[] = [
+      ...(consumerWish === 'fixContractualDispute' ? (['LitigeContractuel'] as const) : []),
+      ...(consumerWish === 'getAnswer' ? (['ReponseConso'] as const) : []),
+    ]
+
+    const tags = uniq([...(draft.tags ?? []), ...additionalTags])
+
     return {
-      ...draft,
+      ...restOfDraft,
       details: draft.details,
       gender: draft.consumer.gender,
       subcategories: draft.subcategories.map(_ => _.title),
@@ -73,9 +98,10 @@ export class ReportDraft {
       companyActivityCode: draft.companyDraft.activityCode,
       websiteURL: draft.companyDraft.website,
       phone: draft.companyDraft.phone,
+      forwardToReponseConso: consumerWish === 'getAnswer',
       // pretty sure these fields aren't actually optional in the draft
       employeeConsumer: draft.employeeConsumer ?? false,
-      tags: draft.tags ?? [],
+      tags,
     }
   }
 }

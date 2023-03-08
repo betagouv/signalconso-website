@@ -6,8 +6,6 @@
         - title: Le distributeur refuse de m'ouvrir un contrat car je suis locataire et non propriétaire
         - title: Le distributeur me demande de payer une avance sur ma consommation
           subcategoriesTitle: Quand doit-être remboursée cette avance ?
-          tags:
-            - LitigeContractuel
           subcategories:
             - title: Elle sera déduite à ma première facture d'eau
               information:
@@ -33,7 +31,6 @@
         - title: Une clause du contrat (règlement de service) est abusive, c'est-à-dire qu'elle désavantage fortement le consommateur.
           tags:
             - ReponseConso
-            - LitigeContractuel
           detailInputs:
             - label: Date du constat (ou du contrat)
               type: DATE
@@ -44,12 +41,10 @@
         - title: Autre
           tags:
             - ReponseConso
-            - LitigeContractuel
     - title: Coupure de l'eau pour impayé
       example: Mon débit d'eau a été réduit car je ne peux payer ma facture
       tags:
         - ReponseConso
-        - LitigeContractuel
       detailInputs:
         - label: Date du contrat
           type: DATE
@@ -96,8 +91,6 @@
             - label: Décrivez nous plus en détails ce qui s'est passé
               type: TEXTAREA
 - title: Gaz / Electricité
-  tags:
-    - LitigeContractuel
   subcategories:
     - title: Démarchage à domicile
       example: 'Exemple : vendeur prétend être envoyé par EDF, démarcheur agressif'
@@ -275,5 +268,4 @@
     - '271'
     - '212'
   tags:
-    - LitigeContractuel
     - ReponseConso

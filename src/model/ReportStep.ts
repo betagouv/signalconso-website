@@ -66,7 +66,7 @@ export function getAnalyticsForStep(step: ReportStepOrDone) {
 function isBuildingStepDone(r: Partial<ReportDraft2>, step: ReportStep) {
   switch (step) {
     case 'BuildingProblem':
-      return !!r.category && !!r.subcategories && !!r.contractualDispute !== undefined && r.employeeConsumer !== undefined
+      return !!r.category && !!r.subcategories && !!r.consumerWish
     case 'BuildingDetails':
       return !!r.details
     case 'BuildingCompany':

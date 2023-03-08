@@ -2,7 +2,6 @@
   example: 'Exemple : banque classique, banque en ligne'
   tags:
     - ReponseConso
-    - LitigeContractuel
   subcategories:
     - title: Frais bancaires
       example: 'Exemple : prix non affiché, augmentation des frais bancaires sans prévenir'
@@ -19,8 +18,6 @@
       reponseconsoCode:
         - '210'
         - '411'
-      tags:
-        - LitigeContractuel
       subcategories:
         - title: Démarchage téléphonique
           companyKind: PHONE
@@ -67,7 +64,6 @@
     - title: Publicité
       example: 'Exemple : publicité trompeuse, démarchage à domicile, démarchage téléphonique'
       tags:
-        - LitigeContractuel
         - ReponseConso
       subcategories:
         - title: Démarchage à domicile
@@ -122,13 +118,9 @@
       example: 'Exemple : service client injoignable'
       reponseconsoCode:
         - '491'
-      tags:
-        - LitigeContractuel
     - title: Autre
       reponseconsoCode:
         - '679'
-      tags:
-        - LitigeContractuel
 - title: Assurance maladie (sécurité sociale)
   information:
     title: Vous ne pouvez pas utiliser SignalConso pour signaler un problème avec l'assurance maladie.
