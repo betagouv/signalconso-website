@@ -80,6 +80,8 @@ export const Problem = ({anomaly, isWebView, stepNavigation}: Props) => {
   function onSubmit(next: () => void): void {
     setReportDraft(draft => {
       const {subcategories, ..._anomaly} = anomaly
+      // employeeConsumer don't get this choice, we automatically apply the standard option
+      const consumerWish = draft.employeeConsumer ? 'companyImprovement' : draft.consumerWish
       return {
         ...draft,
         ccrfCode: ccrfCodeFromSelected,
@@ -87,6 +89,7 @@ export const Problem = ({anomaly, isWebView, stepNavigation}: Props) => {
         tags: adjustTags(tagsFromSelected, draft, companyKindFromSelected),
         companyKind: companyKindFromSelected ?? draft.companyKind ?? 'SIRET',
         anomaly: _anomaly,
+        consumerWish,
       }
     })
     next()
