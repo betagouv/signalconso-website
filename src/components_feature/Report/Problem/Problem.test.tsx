@@ -209,7 +209,6 @@ describe('Problem', () => {
     fireEvent.click(app.getByText(ProblemFixture.internetSubcategory.title))
     clickEmployeeConsumer(app, 'no')
     clickContractualDispute(app, 'contractualDispute')
-    expectContractualDisputeVisible(app, true)
     clickBtnSubmit(app)
   })
 

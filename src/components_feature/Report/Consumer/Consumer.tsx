@@ -24,6 +24,7 @@ import {useToast} from '../../../hooks/useToast'
 import {Gender, genders, ReportDraft} from '../../../model/ReportDraft'
 import {DeepPartial} from '../../../utils/utils'
 import {useReportFlowContext} from '../ReportFlowContext'
+import {ConsumerAnonymousInformation} from './ConsumerAnonymousInformation'
 import {ConsumerValidationDialog} from './ConsumerValidationDialog'
 
 interface ConsumerForm {
@@ -68,6 +69,7 @@ export const _Consumer = ({
   const _analytic = useAnalyticContext()
   const {isXsOrLess} = useWindowWidth()
   const {toastError} = useToast()
+  const watchContactAgreement = _form.watch('contactAgreement')
 
   const showContactAgreement = ReportDraft.isTransmittableToPro(draft) && draft.consumerWish !== 'fixContractualDispute'
 
@@ -182,34 +184,41 @@ export const _Consumer = ({
             </FormLayout>
           </Row>
           {showContactAgreement && (
-            <Row icon="https" sx={{mt: 3}}>
-              <Controller
-                control={_form.control}
-                name="contactAgreement"
-                defaultValue={draft.contactAgreement}
-                rules={{
-                  validate: {
-                    isChecked: value => {
-                      return value !== undefined || m.required
+            <>
+              <Row icon="https" sx={{mt: 3}}>
+                <Controller
+                  control={_form.control}
+                  name="contactAgreement"
+                  defaultValue={draft.contactAgreement}
+                  rules={{
+                    validate: {
+                      isChecked: value => {
+                        return value !== undefined || m.required
+                      },
                     },
-                  },
-                }}
-                render={({field}) => (
-                  <ScRadioGroup {...field} {...getErrors('contactAgreement')}>
-                    <ScRadioGroupItem
-                      value={true}
-                      title={m.contactAgreementTrueTitle}
-                      description={<Txt size="small" dangerouslySetInnerHTML={{__html: m.contactAgreementTrueDesc}} />}
-                    />
-                    <ScRadioGroupItem
-                      value={false}
-                      title={m.contactAgreementFalseTitle}
-                      description={<Txt size="small" dangerouslySetInnerHTML={{__html: m.contactAgreementFalseDesc}} />}
-                    />
-                  </ScRadioGroup>
-                )}
-              />
-            </Row>
+                  }}
+                  render={({field}) => (
+                    <ScRadioGroup {...field} {...getErrors('contactAgreement')}>
+                      <ScRadioGroupItem
+                        value={true}
+                        title={m.contactAgreementTrueTitle}
+                        description={<Txt size="small" dangerouslySetInnerHTML={{__html: m.contactAgreementTrueDesc}} />}
+                      />
+                      <ScRadioGroupItem
+                        value={false}
+                        title={m.contactAgreementFalseTitle}
+                        description={<Txt size="small" dangerouslySetInnerHTML={{__html: m.contactAgreementFalseDesc}} />}
+                      />
+                    </ScRadioGroup>
+                  )}
+                />
+              </Row>
+              {watchContactAgreement === false && (
+                <Row sx={{mt: 3}}>
+                  <ConsumerAnonymousInformation />
+                </Row>
+              )}
+            </>
           )}
         </PanelBody>
       </Panel>
