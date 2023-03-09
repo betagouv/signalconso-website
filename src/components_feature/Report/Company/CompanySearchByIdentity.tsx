@@ -69,6 +69,7 @@ export const CompanySearchByIdentity = ({children}: Props) => {
                 }
               >
                 <ScInput
+                  type="number"
                   inputRef={inputEl}
                   {...register('identity', {
                     required: {value: true, message: m.required},

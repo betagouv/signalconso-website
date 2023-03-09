@@ -139,6 +139,7 @@ export const _Consumer = ({
           <Row icon="email">
             <FormLayout label={m.email} required>
               <ScInput
+                type="email"
                 fullWidth
                 defaultValue={draft.consumer?.email ?? ''}
                 {...getErrors('email')}
@@ -158,6 +159,7 @@ export const _Consumer = ({
             <Row icon="phone">
               <FormLayout label={m.phoneOptional}>
                 <ScInput
+                  type="tel"
                   placeholder={m.phonePlaceholder}
                   fullWidth
                   defaultValue={draft.consumer?.phone ?? ''}

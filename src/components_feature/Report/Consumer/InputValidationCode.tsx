@@ -14,6 +14,7 @@ export const InputValidationCode = ({...other}: Props) => {
   return (
     <Box sx={{display: 'flex', justifyContent: 'center'}}>
       <ScInput
+        type="number"
         {...other}
         sx={{
           maxWidth: 178,
