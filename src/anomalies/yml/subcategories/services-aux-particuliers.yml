@@ -260,7 +260,7 @@
     - title: Prix
       ccrfCode:
         - '21b'
-      example: 'Exemple : il manque les prix,prix exagéré, prix différent du devis'
+      example: 'Exemple : il manque les prix, prix exagéré, prix différent du devis'
       subcategories:
         - title: Prix exagéré / élevé / Les prix sont plus élevés qu'ailleurs
           information:
@@ -293,7 +293,7 @@
     - title: Coiffeur
       subcategories:
         - title: Prix
-          example: 'Exemple : il manque les prix,prix exagéré, prix différent du devis'
+          example: 'Exemple : il manque les prix, prix exagéré, prix différent du devis'
           ccrfCode:
             - '21b'
           subcategories:
@@ -335,7 +335,7 @@
     - title: Esthéticien
       subcategories:
         - title: Prix des soins
-          example: 'Exemple : il manque les prix,prix exagéré, prix différent du devis'
+          example: 'Exemple : il manque les prix, prix exagéré, prix différent du devis'
           ccrfCode:
             - '21b'
           subcategories:
@@ -377,7 +377,7 @@
     - title: Cabine UV
       subcategories:
         - title: Prix
-          example: 'Exemple : il manque les prix,prix exagéré, prix différent du devis'
+          example: 'Exemple : il manque les prix, prix exagéré, prix différent du devis'
           ccrfCode:
             - '21b'
           subcategories:
@@ -419,7 +419,7 @@
     - title: Massage
       subcategories:
         - title: Prix
-          example: 'Exemple : il manque les prix,prix exagéré, prix différent du devis'
+          example: 'Exemple : il manque les prix, prix exagéré, prix différent du devis'
           ccrfCode:
             - '21b'
           subcategories:
@@ -646,7 +646,7 @@
 - title: Services funéraires
   subcategories:
     - title: Prix des prestations
-      example: 'Exemple : le prix final ne correspond pas du devis, prix des soins de conservation'
+      example: 'Exemple : le prix final ne correspond pas au devis, prix des soins de conservation'
       ccrfCode:
         - '21b'
       reponseconsoCode:
@@ -667,7 +667,7 @@
         - '210'
       tags:
         - ReponseConso
-    - title: Le personnel n'est pas aimable ou respectueuse
+    - title: Le personnel n'est pas aimable ou respectueux
       information: !!import/single ../common/info/amabilite.yml
     - title: Le personnel ne dispose pas des diplômes requis
       ccrfCode:
