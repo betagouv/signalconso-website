@@ -17,7 +17,7 @@ const redirects = hostsToRedirect.map(host => ({
 // See https://nextjs.org/docs/advanced-features/security-headers for implementation details
 
 const ContentSecurityPolicy = [
-  `default-src 'self' http://localhost:3000 *.aticdn.net *.data.gouv.fr; 'unsafe-eval'`,
+  `default-src 'self' *.aticdn.net *.data.gouv.fr;`,
   `script-src 'self' 'unsafe-eval';`,
   `connect-src 'self' *.sentry.io *.data.gouv.fr ${process.env.NEXT_PUBLIC_API_BASE_URL} ${process.env.NEXT_PUBLIC_COMPANY_API_BASE_URL};`,
   `worker-src \'self\' ${process.env.NEXT_PUBLIC_API_BASE_URL} ${process.env.NEXT_PUBLIC_COMPANY_API_BASE_URL} blob:;`,
