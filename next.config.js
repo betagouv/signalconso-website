@@ -16,7 +16,7 @@ const redirects = hostsToRedirect.map(host => ({
 //TRELLO-1522 : Implement security headers as DGCCRF is monitoring the website via https://observatory.mozilla.org/
 // See https://nextjs.org/docs/advanced-features/security-headers for implementation details
 
-const CommonContentSecurityPolicy = [
+const ContentSecurityPolicy = [
   `default-src 'self' *.aticdn.net *.data.gouv.fr;`,
   `script-src 'self' 'unsafe-eval';`,
   `connect-src 'self' *.sentry.io *.data.gouv.fr ${process.env.NEXT_PUBLIC_API_BASE_URL} ${process.env.NEXT_PUBLIC_COMPANY_API_BASE_URL};`,
@@ -29,14 +29,6 @@ const CommonContentSecurityPolicy = [
   `font-src https://fonts.gstatic.com;`,
   `report-uri /csp-violation-report-endpoint/;`,
 ]
-
-const ContentSecurityPolicy =
-  process.env.NEXT_PUBLIC_NODE_ENV === 'development'
-    ? CommonContentSecurityPolicy.concat([
-        //https://github.com/vercel/next.js/issues/14221 need unsafe eval for next js to work in dev env...
-        `script-src 'self' 'unsafe-eval';`,
-      ])
-    : CommonContentSecurityPolicy
 
 const securityHeaders = [
   {
