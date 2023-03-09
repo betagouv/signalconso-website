@@ -8,7 +8,7 @@ import {ReportFlowStepperActions} from 'components_simple/ReportFlowStepper/Repo
 import {instanceOfSubcategoryInformation} from '../../../anomalies/Anomalies'
 import {Anomaly, CompanyKinds, ReportTag, Subcategory} from '../../../anomalies/Anomaly'
 import {useReportFlowContext} from '../ReportFlowContext'
-import {ProblemContratualDisputeWarnPanel} from './ProblemContratualDisputeWarnPanel'
+import {ProblemConsumerWishInformation, ProblemContractualDisputeWarnPanel} from './ProblemConsumerWishInformation'
 import {ProblemInformation} from './ProblemInformation'
 import {ProblemSelect} from './ProblemSelect'
 import {ProblemStepperStep, ProblemStepper} from './ProblemStepper'
@@ -106,6 +106,7 @@ export const Problem = ({anomaly, isWebView, stepNavigation}: Props) => {
       return newReport
     })
   }
+
   return (
     <>
       {[anomaly, ...(reportDraft.subcategories ?? [])].map(
@@ -192,6 +193,8 @@ export const Problem = ({anomaly, isWebView, stepNavigation}: Props) => {
                     ? [
                         {
                           title: m.problemContractualDisputeFormReponseConso,
+                          description:
+                            "Exemple : Quelle est la durée de validité du devis qu'on m'a donné ? Un magasin peut-il vendre des produits périmés ? ...",
                           value: 'getAnswer' as const,
                         },
                       ]
@@ -213,8 +216,13 @@ export const Problem = ({anomaly, isWebView, stepNavigation}: Props) => {
                 }}
               />
             </ProblemStepperStep>
+            <ProblemStepperStep isDone={true} hidden={!reportDraft.consumerWish}>
+              {appConfig.enableBlueExplanations && reportDraft.consumerWish && (
+                <ProblemConsumerWishInformation consumerWish={reportDraft.consumerWish} />
+              )}
+            </ProblemStepperStep>
             <ProblemStepperStep isDone={true} hidden={reportDraft.consumerWish !== 'fixContractualDispute'}>
-              <ProblemContratualDisputeWarnPanel />
+              {appConfig.enableBlueExplanations || <ProblemContractualDisputeWarnPanel />}
             </ProblemStepperStep>
           </ProblemStepper>
         ))}

@@ -14,6 +14,12 @@ interface AlertProps extends BoxProps {
   gutterBottom?: boolean
 }
 
+export const alertInfoBackgroundColor = 'rgba(50, 200, 255, .08)'
+export const alertInfoTextColor = darken(colorInfo, 0.1)
+
+export const alertWarningBackgroundColor = 'rgba(255, 128, 0, .08)'
+export const alertWarningTextColor = darken(colorWarning, 0.1)
+
 export const Alert = ({
   type,
   dense,
@@ -69,16 +75,16 @@ export const Alert = ({
             color: darken(colorSuccess, 0.1),
           },
           info: {
-            background: 'rgba(50, 200, 255, .08)', //'#e1f5fe',
-            color: darken(colorInfo, 0.1),
+            background: alertInfoBackgroundColor, //'#e1f5fe',
+            color: alertInfoTextColor,
           },
           error: {
             background: 'rgba(255, 0, 0, .08)', //'#ffdede',
             color: darken(colorError, 0.1),
           },
           warning: {
-            background: 'rgba(255, 128, 0, .08)',
-            color: darken(colorWarning, 0.1),
+            background: alertWarningBackgroundColor,
+            color: alertWarningTextColor,
           },
         }[type],
         ...((!isVisible || !isPersistentVisible) && {

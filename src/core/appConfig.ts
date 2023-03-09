@@ -35,6 +35,9 @@ export const appConfig = {
   infoBannerOnMobile: readBool(process.env.NEXT_PUBLIC_INFO_BANNER_ON_MOBILE),
   dummyEmailDomain: ['@yopmail.com'],
   atInternet_siteId: process.env.NEXT_PUBLIC_ATINTERNET_SITE_ID,
+  // TRELLO-1671
+  // Temporaire, pour montrer ces nouveaux wordings à des gens de la DGCCRF sur démo
+  enableBlueExplanations: readBool(process.env.NEXT_PUBLIC_ENABLE_BLUE_EXPLANATIONS),
 }
 
 export type AppConfig = typeof appConfig
