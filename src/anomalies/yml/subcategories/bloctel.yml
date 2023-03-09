@@ -202,14 +202,14 @@
 #      information:
 #        content:
 #          Nous ne doutons pas que vous ayez réellement rencontré un problème mais si vous avez reçu un appel en lien avec votre entreprise, il ne s’agit pas d’un démarchage abusif.
-#          <br/><br/>BlocTel est un outil réservé aux consommateurs. Les professionnels ne peuvent pas utiliser la plateforme pour lutter contre le démarchage abusif.
+#          <br/><br/>Bloctel est un outil réservé aux consommateurs. Les professionnels ne peuvent pas utiliser la plateforme pour lutter contre le démarchage abusif.
 #    - title: Je suis client de l’entreprise ou j’ai demandé à être rappelé
 #      example: 'Exemple : j’ai un contrat avec l’entreprise, j’ai demandé un devis ...'
 #      information:
 #        content: Nous ne doutons pas que vous ayez réellement rencontré un problème mais si vous avez un contrat avec l’entreprise ou que vous avez laissé vos coordonnées pour être rappelé, il ne s’agit pas d’un démarchage abusif. L’entreprise peut vous contacter.
 #    - title: L’appel a pour but de me vendre des journaux
 #      information:
-#        content: Nous ne doutons pas que vous ayez réellement rencontré un problème mais la vente de journaux, de magazines, de périodiques fait partie des exceptions, il ne s’agit pas d’un démarchage abusif. Même si vous êtes inscrits sur BlocTel, l’entreprise est autorisée à vous joindre.
+#        content: Nous ne doutons pas que vous ayez réellement rencontré un problème mais la vente de journaux, de magazines, de périodiques fait partie des exceptions, il ne s’agit pas d’un démarchage abusif. Même si vous êtes inscrits sur Bloctel, l’entreprise est autorisée à vous joindre.
 #    - title: L’appel concerne un sondage
 #      information:
 #        content:
