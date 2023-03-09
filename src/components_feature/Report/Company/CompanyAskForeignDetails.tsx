@@ -12,6 +12,8 @@ import {StepperActionsNext} from 'components_simple/ReportFlowStepper/StepperAct
 import {Txt} from '../../../alexlibs/mui-extension/Txt/Txt'
 import {Alert} from '../../../alexlibs/mui-extension/Alert/Alert'
 import {Country} from '../../../model/Country'
+import {fnSwitch} from '../../../utils/FnSwitch'
+import {CompanyKinds} from '../../../anomalies/Anomaly'
 
 interface Form {
   name: string
@@ -21,6 +23,7 @@ interface Form {
 
 interface Props {
   onSubmit: (form: Form) => void
+  companyKind: CompanyKinds
 }
 
 const countryToFlag = (isoCode: string) => {
@@ -29,7 +32,7 @@ const countryToFlag = (isoCode: string) => {
     : isoCode
 }
 
-export const CompanyAskForeignDetails = ({onSubmit}: Props) => {
+export const CompanyAskForeignDetails = ({onSubmit, companyKind}: Props) => {
   const {m} = useI18n()
   const {countries} = useConstantContext()
   const {toastError} = useToast()
@@ -100,7 +103,18 @@ export const CompanyAskForeignDetails = ({onSubmit}: Props) => {
             </FormLayout>
             <br />
             <Alert dense type="info" sx={{mb: 2}} deletable>
-              <Txt size="small" dangerouslySetInnerHTML={{__html: m.cantIdentifyCompany}} />
+              <Txt
+                size="small"
+                dangerouslySetInnerHTML={{
+                  __html: fnSwitch<CompanyKinds, string>(companyKind, {
+                    SIRET: m.cantIdentifyCompany,
+                    WEBSITE: m.cantIdentifyWebsiteCompany,
+                    PHONE: m.cantIdentifyPhoneCompany,
+                    LOCATION: m.cantIdentifyLocationCompany,
+                    SOCIAL: m.cantIdentifyCompany,
+                  }),
+                }}
+              />
             </Alert>
             <FormLayout required label={m.yourPostalCode}>
               <ScInput

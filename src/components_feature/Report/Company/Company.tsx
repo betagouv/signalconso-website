@@ -185,6 +185,7 @@ export const _Company = ({draft, onUpdateReportDraft}: CompanyWithRequiredProps)
                     fnSwitch(isForeign, {
                       [IsForeignCompany.Yes]: () => (
                         <CompanyAskConsumerPostalCode
+                          companyKind={draft.companyKind!}
                           onChange={form => {
                             onUpdateReportDraft({
                               companyDraft: {
@@ -199,6 +200,7 @@ export const _Company = ({draft, onUpdateReportDraft}: CompanyWithRequiredProps)
                       ),
                       [IsForeignCompany.No]: () => (
                         <CompanyAskForeignDetails
+                          companyKind={draft.companyKind!}
                           onSubmit={form => {
                             onUpdateReportDraft({
                               companyDraft: {
@@ -215,6 +217,7 @@ export const _Company = ({draft, onUpdateReportDraft}: CompanyWithRequiredProps)
                       ),
                       [IsForeignCompany.Unknown]: () => (
                         <CompanyAskConsumerPostalCode
+                          companyKind={draft.companyKind!}
                           onChange={form => {
                             onUpdateReportDraft({
                               companyDraft: {

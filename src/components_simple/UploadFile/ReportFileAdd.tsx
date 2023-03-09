@@ -1,6 +1,6 @@
 import React, {useRef, useState} from 'react'
 import {Box, Button, CircularProgress, Icon, Theme, Tooltip} from '@mui/material'
-import {reportFileConfig} from './reportFileConfig'
+import {extractFileExt, reportFileConfig} from './reportFileConfig'
 import {useI18n} from 'i18n/I18n'
 import {useApiClients} from 'context/ApiClientsContext'
 import {appConfig} from '../../core/appConfig'
@@ -58,6 +58,23 @@ export const ReportFileAdd = ({onUploaded, fileOrigin}: Props) => {
     fileInputEl.current!.click()
   }
 
+  const heicToJpg = async (file: File): Promise<File> => {
+    // heic2any needs to access the 'window' object, which is not available when importing the lib at the top of the file
+    // because we are doing static rendering using next.js.
+    // So we have to import it here to send it to the client side.
+    const heic2any = (await import('heic2any')).default
+    const newFileName = file.name.replace(/\.heic$/i, '.jpg')
+    const lastModified = Date.now()
+    if (typeof window !== 'undefined') {
+      let jpgType = 'image/jpeg'
+      const blob = await heic2any({blob: file, toType: jpgType})
+      if (Array.isArray(blob)) return new File(blob, newFileName, {type: jpgType, lastModified: lastModified})
+      else return new File([blob], newFileName, {type: jpgType, lastModified: lastModified})
+    } else {
+      throw {message: '.heic files are not supported on your device'}
+    }
+  }
+
   const handleChange = (files: FileList | null) => {
     if (files && files[0]) {
       const file: File = files[0]
@@ -71,8 +88,14 @@ export const ReportFileAdd = ({onUploaded, fileOrigin}: Props) => {
         setErrorMessage(m.invalidFileNameSize(255))
         return
       }
+
       setUploading(true)
-      compressFile(file)
+
+      const fileExt = extractFileExt(file.name)
+      const fileToUpload = fileExt === 'heic' ? heicToJpg(file) : Promise.resolve(file)
+
+      fileToUpload
+        .then(file => compressFile(file))
         .then(file => {
           return file
         })
