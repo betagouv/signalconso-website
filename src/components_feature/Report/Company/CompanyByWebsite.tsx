@@ -128,7 +128,6 @@ export const CompanyByWebsite = ({value, children, ...props}: Props) => {
                 <Txt color="disabled"> *</Txt>
               </Txt>
               <ScInput
-                type="url"
                 InputProps={{
                   endAdornment: (
                     <Tooltip title={m.edit}>
