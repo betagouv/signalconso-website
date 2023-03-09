@@ -5,6 +5,7 @@ export const regexpPattern = {
   siren: '[0-9]{9}',
   siret: '[0-9]{14}',
   emailValidationCode: '[0-9]{6}',
+  emojis: "^[A-Za-z0-9\\u00C0-\\u017F\\'`\\-.\\s]*$",
 }
 
 export const regexp = Object.entries(regexpPattern).reduce(
