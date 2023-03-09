@@ -1,5 +1,6 @@
 import {Box} from '@mui/material'
 import {Animate} from 'components_simple/Animate/Animate'
+import {Panel, PanelBody} from 'components_simple/Panel/Panel'
 import {useI18n} from 'i18n/I18n'
 import {ConsumerWish} from 'model/ReportDraft'
 import {alertInfoBackgroundColor, alertInfoTextColor} from '../../../alexlibs/mui-extension/Alert/Alert'
@@ -43,4 +44,24 @@ function pickText(consumerWish: ConsumerWish) {
     case 'getAnswer':
       return `Un agent vous répondra prochainement. L'entreprise ne sera pas informée de votre démarche.`
   }
+}
+
+// Legacy wording, should disappear soon
+export const ProblemContractualDisputeWarnPanel = () => {
+  const {m} = useI18n()
+  return (
+    <Animate>
+      <Panel
+        id="panel-contractual-dispute"
+        border
+        title={m.problemContractualDisputeTitle}
+        desc={m.problemContractualDisputeDesc}
+      >
+        <PanelBody>
+          <Txt bold>{m.problemContractualDisputeInfoTitle}</Txt>
+          <Txt color="hint" dangerouslySetInnerHTML={{__html: m.problemContractualDisputeInfo}} />
+        </PanelBody>
+      </Panel>
+    </Animate>
+  )
 }

@@ -8,7 +8,7 @@ import {ReportFlowStepperActions} from 'components_simple/ReportFlowStepper/Repo
 import {instanceOfSubcategoryInformation} from '../../../anomalies/Anomalies'
 import {Anomaly, CompanyKinds, ReportTag, Subcategory} from '../../../anomalies/Anomaly'
 import {useReportFlowContext} from '../ReportFlowContext'
-import {ProblemConsumerWishInformation} from './ProblemConsumerWishInformation'
+import {ProblemConsumerWishInformation, ProblemContractualDisputeWarnPanel} from './ProblemConsumerWishInformation'
 import {ProblemInformation} from './ProblemInformation'
 import {ProblemSelect} from './ProblemSelect'
 import {ProblemStepperStep, ProblemStepper} from './ProblemStepper'
@@ -217,7 +217,12 @@ export const Problem = ({anomaly, isWebView, stepNavigation}: Props) => {
               />
             </ProblemStepperStep>
             <ProblemStepperStep isDone={true} hidden={!reportDraft.consumerWish}>
-              {reportDraft.consumerWish && <ProblemConsumerWishInformation consumerWish={reportDraft.consumerWish} />}
+              {appConfig.enableBlueExplanations && reportDraft.consumerWish && (
+                <ProblemConsumerWishInformation consumerWish={reportDraft.consumerWish} />
+              )}
+            </ProblemStepperStep>
+            <ProblemStepperStep isDone={true} hidden={reportDraft.consumerWish !== 'fixContractualDispute'}>
+              {appConfig.enableBlueExplanations || <ProblemContractualDisputeWarnPanel />}
             </ProblemStepperStep>
           </ProblemStepper>
         ))}
