@@ -119,7 +119,10 @@ export const _Consumer = ({
                   <ScInput
                     fullWidth
                     defaultValue={draft.consumer?.firstName ?? ''}
-                    {..._form.register('firstName', {required: {value: true, message: m.required}})}
+                    {..._form.register('firstName', {
+                      required: {value: true, message: m.required},
+                      pattern: {value: regexp.emojis, message: m.invalidName},
+                    })}
                     {...getErrors('firstName')}
                   />
                 </FormLayout>
@@ -129,7 +132,10 @@ export const _Consumer = ({
                   <ScInput
                     fullWidth
                     defaultValue={draft.consumer?.lastName ?? ''}
-                    {..._form.register('lastName', {required: {value: true, message: m.required}})}
+                    {..._form.register('lastName', {
+                      required: {value: true, message: m.required},
+                      pattern: {value: regexp.emojis, message: m.invalidName},
+                    })}
                     {...getErrors('lastName')}
                   />
                 </FormLayout>
