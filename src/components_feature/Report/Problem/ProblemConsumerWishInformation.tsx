@@ -5,6 +5,7 @@ import {useI18n} from 'i18n/I18n'
 import {ConsumerWish} from 'model/ReportDraft'
 import {alertInfoBackgroundColor, alertInfoTextColor} from '../../../alexlibs/mui-extension/Alert/Alert'
 import {Txt} from '../../../alexlibs/mui-extension/Txt/Txt'
+import {I18nContextProps} from 'i18n/I18n'
 
 export function ProblemConsumerWishInformation({consumerWish}: {consumerWish: ConsumerWish}) {
   const {m} = useI18n()
@@ -20,29 +21,25 @@ export function ProblemConsumerWishInformation({consumerWish}: {consumerWish: Co
         }}
       >
         <Txt sx={textStyle} block>
-          {pickText(consumerWish)}
+          {pickText(m, consumerWish)}
         </Txt>
         <Txt sx={{mt: 2, ...textStyle}} block>
-          La répression des fraudes pourra décider de mener une enquête sur l'entreprise grâce à vos informations.
+          {m.consumerWishInvestigationIsPossible}
         </Txt>
       </Box>
     </Animate>
   )
 }
 
-function pickText(consumerWish: ConsumerWish) {
+function pickText(m: I18nContextProps['m'], consumerWish: ConsumerWish) {
+  m.consumerWishFixContractualDispute
   switch (consumerWish) {
     case 'fixContractualDispute':
-      return (
-        <>
-          Votre signalement sera transmis à l'entreprise. La répression des fraudes ne s'occupe pas de résoudre les problèmes
-          individuels, mais <strong>faire le signalement peut inciter l'entreprise à vous répondre.</strong>
-        </>
-      )
+      return <span dangerouslySetInnerHTML={{__html: m.consumerWishFixContractualDispute}} />
     case 'companyImprovement':
-      return `Votre signalement sera transmis à l'entreprise. Vous aurez la possibilité de rester anonyme.`
+      return m.consumerWishCompanyImprovement
     case 'getAnswer':
-      return `Un agent vous répondra prochainement. L'entreprise ne sera pas informée de votre démarche.`
+      return m.consumerWishGetAnswer
   }
 }
 

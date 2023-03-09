@@ -18,8 +18,7 @@ export function ConsumerAnonymousInformation() {
         }}
       >
         <Txt sx={textStyle} block>
-          Vous restez anonyme, mais l'entreprise ne sera pas en mesure de résoudre votre problème en particulier. Pas de
-          remboursement, de réponse personnalisée, ...
+          {m.consumerAnonymousInformation}
         </Txt>
       </Box>
     </Animate>

@@ -264,6 +264,12 @@ export const fr = {
         </li>
       </ul>
     `,
+    consumerWishFixContractualDispute: `Votre signalement sera transmis à l'entreprise. La répression des fraudes ne s'occupe pas de résoudre les problèmes
+    individuels, mais <strong>faire le signalement peut inciter l'entreprise à vous répondre.</strong>`,
+    consumerWishCompanyImprovement: `Votre signalement sera transmis à l'entreprise. Vous aurez la possibilité de rester anonyme.`,
+    consumerWishGetAnswer: `Un agent vous répondra prochainement. L'entreprise ne sera pas informée de votre démarche.`,
+    consumerWishInvestigationIsPossible:
+      "La répression des fraudes pourra décider de mener une enquête sur l'entreprise grâce à vos informations.",
     informationRatingSaved: `Votre avis a bien été enregistré, nous vous en remercions.`,
     informationTitle: `Emmh, nous ne pouvons pas traiter votre signalement.`,
     informationReportOutOfScope: `Nous ne doutons pas que vous ayez réellement rencontré un problème mais... il ne s’agit pas d’une fraude.`,
@@ -367,6 +373,8 @@ export const fr = {
       Pendant l'enquête, si les enquêteurs ont besoin de révéler votre identité à la justice ou à votre employeur, ils vous demanderont l'autorisation avant.
       <b>Vous pourrez refuser.</b>
     `,
+    consumerAnonymousInformation: `Vous restez anonyme, mais l'entreprise ne sera pas en mesure de résoudre votre problème en particulier. Pas de
+    remboursement, de réponse personnalisée, ...`,
     confirmationTitle: `Récapitulatif de votre problème`,
     confirmationAlertTransmittable: `Vérifiez votre signalement avant de l’envoyer à l'entreprise et à la répression des fraudes.`,
     confirmationAlert: `Vérifiez votre signalement avant de l’envoyer à la répression des fraudes.`,
