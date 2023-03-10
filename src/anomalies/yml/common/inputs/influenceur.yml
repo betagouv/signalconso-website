@@ -8,12 +8,12 @@
 - label: Pouvez-vous préciser la plateforme utilisée ?
   type: RADIO
   options:
-    - Youtube
+    - YouTube
     - TikTok
     - Facebook
     - Instagram
     - Twitter
-    - Linkedin
+    - LinkedIn
     - Messenger
     - Snapchat
     - autre (à préciser)

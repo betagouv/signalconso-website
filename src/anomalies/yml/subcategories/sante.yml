@@ -104,7 +104,7 @@
             - bas de contention
             - appareil de mesure (thermomètre, tensiomètre...)
             - autre (à préciser)
-        - label: Quelle sa marque et sa référence / numéro de modèle ? Vous pouvez trouver ces informations sur votre facture d'achat.
+        - label: Quelle est sa marque et sa référence / numéro de modèle ? Vous pouvez trouver ces informations sur votre facture d'achat.
           type: TEXT
         - label: 'Expliquez le problème en quelques mots :'
           type: TEXT
@@ -143,7 +143,7 @@
           detailInputs:
             - label: Date du constat
               type: DATE
-            - label: Quel est le problème ? (plsuieurs réponses possibles)
+            - label: Quel est le problème ? (plusieurs réponses possibles)
               type: CHECKBOX
               options:
                 - pas d'indication au niveau de sa plaque
@@ -168,7 +168,7 @@
             - ReponseConso
           subcategories:
             - title: Je n'ai pas eu de devis écrit
-              example: Un devis est obligatoire dès que les dépassements d'honoraires et la prestation dépassent 70 euros. Un devis est obligatoire en cas de pose de couronne, implant, bridge... Un devis est oligatoire en chirurgie esthétique.
+              example: Un devis est obligatoire dès que les dépassements d'honoraires et la prestation dépassent 70 euros. Un devis est obligatoire en cas de pose de couronne, implant, bridge... Un devis est obligatoire en chirurgie esthétique.
               reponseconsoCode:
                 - '2121'
                 - '226'
@@ -396,7 +396,7 @@
         - label: Quel est le prix de ce supplément ?
           type: TEXT
           optional: true
-        - label: L'hôpital / clinique vous a t-il justifié ce supplément ?
+        - label: L'hôpital / clinique vous a-t-il justifié ce supplément ?
           type: RADIO
           options:
             - Oui (à préciser)
@@ -434,7 +434,7 @@
             content:
               Le pharmacien peut choisir les prix des médicaments non remboursables, et des produits divers de la pharmacie (biberon, brosse à dent, crème...). Les prix doivent être clairement indiqués sans devoir les demander.
               Cas particulier des médicaments remboursables !
-              Le prix des médicaments remboursables est fixe. Ces prix sont en ligne sur le site <a href="http://base-donnees-publique.medicaments.gouv.fr" target="_blank"> http://base-donnees-publique.medicaments.gouv.fr/</a>
+              Les prix des médicaments remboursables sont fixes. Ces prix sont en ligne sur le site <a href="http://base-donnees-publique.medicaments.gouv.fr" target="_blank"> http://base-donnees-publique.medicaments.gouv.fr/</a>
             outOfScope: true
         - title: Autre
           reponseconsoCode:
