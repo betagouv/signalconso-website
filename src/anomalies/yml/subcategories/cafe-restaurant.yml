@@ -52,7 +52,7 @@
               options:
                 - La cuisine et zone de production / stockage
                 - Salle du restaurant, du bar
-                - Le lieu de vente (vitrine réfigérée)
+                - Le lieu de vente (vitrine réfrigérée)
                 - Les WC
                 - Autre (à préciser)
             - label: Quel est le problème&#160;?
@@ -66,7 +66,7 @@
                 - Sol / mur
                 - Vitrine, réfrigérateur
                 - Matériel de fabrication, équipement en cuisine
-                - Equipements pour les clients (table, plateaux, couverts, micro-ondes...)
+                - Équipements pour les clients (table, plateaux, couverts, micro-ondes...)
                 - Autre (à préciser)
           fileLabel: Merci de joindre si possible une photo pour appuyer votre signalement.
         - title: Je subis des nuisances à cause des odeurs, du bruit
@@ -111,7 +111,7 @@
               type: TEXT
           fileLabel: Merci de joindre si possible tout document (photo) pour appuyer votre signalement.
     - title: Problème de température
-      example: 'Exemple : rupture de la chaine du froid'
+      example: 'Exemple : rupture de la chaîne du froid'
       reponseconsoCode:
         - '322'
       detailInputs:

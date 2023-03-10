@@ -35,7 +35,7 @@
     - '445'
   companyKind: SIRET
 - title: Un problème de harcèlement ou de chantage en ligne
-  example: "Exemple : email d'un hackeur vous demandant de l'argent, chantage à la webcam"
+  example: "Exemple : email d'un hacker vous demandant de l'argent, chantage à la webcam"
   information:
     title: Ce type de problème ne doit pas être signalé sur SignalConso
     subTitle: Il concerne la police

@@ -12,7 +12,7 @@
         outOfScope: true
     - title: Mes pièces / billets étaient en mauvais état
       information:
-        content: Le paiement en pièces ou billets en mauvais état peut être refusé. <br /> "Vous pouvez échanger vos billets abîmés auprès d'agence bancaire comme la Banque de France."
+        content: Le paiement en pièces ou billets en mauvais état peut être refusé. <br /> "Vous pouvez échanger vos billets abîmés auprès d'agences bancaires comme la Banque de France."
         outOfScope: true
     - title: Je souhaitais payer pour un montant de 1 000 euros (ou plus) ou donner plus de 50 pièces
       information:

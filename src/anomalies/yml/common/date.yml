@@ -32,7 +32,7 @@
         actions:
           - question: Vous souhaitez que votre commerçant propose des rabais pour les produits bientôt périmés&#160;?
             answer: Contacter directement le service client de votre magasin pour leur proposer.
-- title: Cas particulier des oeufs
+- title: Cas particulier des œufs
   reponseconsoCode:
     - '323'
   detailInputs:

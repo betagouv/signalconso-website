@@ -5,7 +5,7 @@
   type: TIMESLOT
 - label: Votre numéro de téléphone
   type: TEXT
-- label: Votre numéro d'inscription bloctel (recommandé)
+- label: Votre numéro d'inscription Bloctel (recommandé)
   type: TEXT
   optional: true
 - label: L'appel concernait
@@ -18,7 +18,7 @@
     - Voyage / Loisirs
     - Services aux particuliers
     - Voiture / Véhicule / Vélo
-    - Eau / Gaz / Electricité
+    - Eau / Gaz / Électricité
     - Travaux / Rénovation
     - Produits alimentaires, boissons,
     - Jeux, voyance
@@ -26,7 +26,7 @@
     - Équipement pour personne (mode, textiles, chaussures, ...)
     - Équipement pour maison (ameublement, électroménager, ...)
     - Autre
-- label: "Le vendeur s'est fait passer pour:"
+- label: "Le vendeur s'est fait passer pour :"
   type: RADIO
   options:
     - Administration

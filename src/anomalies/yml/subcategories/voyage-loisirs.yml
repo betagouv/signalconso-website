@@ -18,7 +18,7 @@
             - title: Trajet trop court ou pas assez rentable
             - title: Présence de mon chien
             - title: Mes bagages / objets ne rentrent pas dans le coffre
-            - title: Etat d'ébriété ou de violence
+            - title: État d'ébriété ou de violence
             - title: Borne taxi à proximité
             - title: Autre
         - title: Les prix ne sont pas affichés dans la voiture
@@ -153,7 +153,7 @@
             - title: Refus de prendre les chèques
               tags:
                 - ReponseConso
-              subcategoriesTitle: Etait-ce indiqué sur la voiture ?
+              subcategoriesTitle: Était-ce indiqué sur la voiture ?
               subcategories:
                 - title: Oui
                   information:
@@ -544,7 +544,7 @@
             - '210'
           tags:
             - ReponseConso
-          example: 'Exemple : une excursion était prévue dans le voyage et elle a été annulée sans motifs'
+          example: 'Exemple : une excursion était prévue dans le voyage et elle a été annulée sans motif'
         - title: Autre
     - title: Annulation / remboursement
       ccrfCode:
@@ -816,7 +816,7 @@
       ccrfCode:
         - '332'
       subcategories:
-        - title: Equipement
+        - title: Équipement
         - title: Compléments alimentaires
           tags:
             - ReponseConso
