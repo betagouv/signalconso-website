@@ -9,6 +9,7 @@ import {BtnAdmin} from './BtnAdmin'
 import {useMemo, useState} from 'react'
 import {useWindowWidth} from 'hooks/useWindowWidth'
 import {IconBtn} from '../alexlibs/mui-extension/IconBtn/IconBtn'
+import Image from 'next/image'
 
 interface HeaderItemProps extends ScButtonProps {
   href?: string
@@ -86,14 +87,15 @@ export const Header = () => {
       }}
     >
       {scrolled || width.isMobileWidthMax ? (
-        <img style={{height: 38, marginRight: theme.spacing(3)}} src="/image/gouv-mobile.svg" alt={m.logoAltGouv} />
+        <Image width={140} height={38} style={{marginRight: theme.spacing(3)}} src="/image/gouv-mobile.svg" alt={m.logoAltGouv} />
       ) : (
-        <img style={{height: 110, marginRight: theme.spacing(3)}} src="/image/gouv.new.png" alt={m.logoAltGouv} />
+        <Image width={180} height={110} style={{marginRight: theme.spacing(3)}} src="/image/gouv.new.png" alt={m.logoAltGouv} />
       )}
       <Link href={siteMap.index}>
         <a>
-          <img
-            style={{height: scrolled || width.isMobileWidthMax ? 40 : 60}}
+          <Image
+            height={scrolled || width.isMobileWidthMax ? 40 : 60}
+            width={scrolled || width.isMobileWidthMax ? '90' : '130'}
             src="/image/logo-signalconso.svg"
             alt={m.logoAltSignalconso}
           />

@@ -17,7 +17,6 @@ import * as React from 'react'
 import Document, {Head, Html, Main, NextScript} from 'next/document'
 import createEmotionServer from '@emotion/server/create-instance'
 import createEmotionCache from 'core/createEmotionCache'
-import {appConfig} from '../core/appConfig'
 
 export default class MyDocument extends Document {
   render() {
@@ -59,7 +58,7 @@ export default class MyDocument extends Document {
           <link rel="preconnect" href="https://fonts.gstatic.com" />
           <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
           {/*<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet" />*/}
-          {/*<link rel="preload" href="/font/Evolventa/Evolventa-Regular.woff2" as="font"/>*/}
+          <link rel="preload" href="/font/Evolventa/Evolventa-Regular.woff2" as="font" />
           <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
           {/* Inject MUI styles first to match with the prepend: true configuration. */}
           {(this.props as any).emotionStyleTags}

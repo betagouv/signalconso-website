@@ -5,6 +5,10 @@
 // They use the object spread syntax { ... }, not supported by Safari 10
 const withTM = require('next-transpile-modules')(['react-hook-form'])
 
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+  enabled: process.env.ANALYZE === 'true',
+})
+
 const hostsToRedirect = ['www.signal.conso.gouv.fr', 'signalconso.beta.gouv.fr', 'www.signalconso.beta.gouv.fr']
 const redirects = hostsToRedirect.map(host => ({
   source: '/:path*',
@@ -53,19 +57,21 @@ const securityHeaders = [
   },
 ]
 
-module.exports = withTM({
-  productionBrowserSourceMaps: true,
-  reactStrictMode: true,
-  async redirects() {
-    return redirects
-  },
-  async headers() {
-    return [
-      {
-        // Apply these headers to all routes in your application.
-        source: '/:path*',
-        headers: securityHeaders,
-      },
-    ]
-  },
-})
+module.exports = withBundleAnalyzer(
+  withTM({
+    productionBrowserSourceMaps: true,
+    reactStrictMode: true,
+    async redirects() {
+      return redirects
+    },
+    async headers() {
+      return [
+        {
+          // Apply these headers to all routes in your application.
+          source: '/:path*',
+          headers: securityHeaders,
+        },
+      ]
+    },
+  }),
+)

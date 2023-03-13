@@ -5,6 +5,7 @@ import Link from 'next/link'
 import {SxProps} from '@mui/system'
 import {Section} from './Section'
 import {siteMap} from '../core/siteMap'
+import Image from 'next/image'
 
 const sxList: SxProps<Theme> = {
   listStyle: 'none',
@@ -25,13 +26,6 @@ export const Footer = () => {
   const theme = useTheme()
   return (
     <>
-      {/*<Box sx={{*/}
-      {/*  height: 8 * 3,*/}
-      {/*  borderTopLeftRadius: '50%',*/}
-      {/*  borderTopRightRadius: '50%',*/}
-      {/*  background: theme.palette.secondary.main,*/}
-      {/*}}>*/}
-      {/*</Box>*/}
       <Section
         component="footer"
         style={{
@@ -111,8 +105,9 @@ export const Footer = () => {
                     rel="noreferrer"
                     title="Accédez au site de la DGCCRF (nouvelle fenêtre)"
                   >
-                    <img
-                      style={{borderRadius: 2, height: iconHeight}}
+                    <Image
+                      height={iconHeight}
+                      width="70%"
                       alt="Logo de la Direction Générale de la Concurrence, de la Consommation et de la Répression des Fraudes"
                       src="/image/logo-dgccrf.png"
                       loading="lazy"
@@ -126,8 +121,9 @@ export const Footer = () => {
                     rel="noreferrer"
                     title="Accédez au site de la Direction interministérielle de la transformation publique (nouvelle fenêtre)"
                   >
-                    <img
-                      style={{borderRadius: 2, height: iconHeight}}
+                    <Image
+                      height={iconHeight}
+                      width="70%"
                       alt="Logo de la Direction interministérielle de la transformation publique"
                       src="/image/service-publics.png"
                       loading="lazy"
@@ -141,8 +137,9 @@ export const Footer = () => {
                     rel="noreferrer"
                     title="Accédez au site de la Direction interministérielle de la transformation publique (nouvelle fenêtre)"
                   >
-                    <img
-                      style={{height: iconHeight + 4}}
+                    <Image
+                      height={iconHeight + 4}
+                      width={iconHeight + 4}
                       alt="Logo Bercy vert"
                       src="/image/logo-bercyvert-vector-BLANC.png"
                       loading="lazy"

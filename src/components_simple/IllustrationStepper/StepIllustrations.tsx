@@ -37,7 +37,14 @@ export const IllustrationStepperMobile = ({steps}: IllustrationStepperProps) => 
                 position: 'relative',
               }}
             >
-              <Image src={step.image} alt={step.alt} objectFit="contain" layout="fill" />
+              <Image
+                src={step.image}
+                alt={step.alt}
+                objectFit="contain"
+                layout="fill"
+                priority={steps[0] === step}
+                quality={50}
+              />
             </Box>
             <Box
               sx={{
@@ -143,12 +150,6 @@ export const IllustrationStepperLarge = ({steps}: IllustrationStepperProps) => {
           >
             <Image src={image} alt={alt} objectFit="contain" layout="fill" />
           </div>
-          {/*<div style={{*/}
-          {/*  border: `3px solid ${theme.palette.divider}`,*/}
-          {/*  borderRadius: 40,*/}
-          {/*  height: 20,*/}
-          {/*  width: 20,*/}
-          {/*}}></div>*/}
           <Box
             sx={{
               display: 'flex',

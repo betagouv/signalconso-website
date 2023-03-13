@@ -4,13 +4,11 @@ import {SxProps} from '@mui/system'
 import {allVisibleAnomalies} from 'anomalies/Anomalies'
 import {Section} from 'components_simple/Section'
 import {useI18n} from 'i18n/I18n'
-import {sortBy} from 'utils/lodashNamedExport'
 import {useWindowWidth} from 'hooks/useWindowWidth'
 import {InfoBanner} from 'components_feature/InfoBanner/InfoBanner'
-import {ReportStartedAlert} from 'components_feature/ReportStartedAlert/ReportStartedAlert'
 import {useRgpdBanner} from 'components_feature/RgpdBanner/RgpdBanner'
 import Head from 'next/head'
-import {useEffect} from 'react'
+import {useEffect, useMemo} from 'react'
 import {AnomalyCard} from 'components_simple/AnomalyCard/AnomalyCard'
 import {ScButton} from 'components_simple/Button/Button'
 import {IllustrationStepper} from 'components_simple/IllustrationStepper/StepIllustrations'
@@ -19,12 +17,16 @@ import company from '../../public/image/illustrations/company.png'
 import consumer from '../../public/image/illustrations/consumer.png'
 import dgccrf from '../../public/image/illustrations/dgccrf.png'
 import report from '../../public/image/illustrations/report.png'
+import dynamic from 'next/dynamic'
+import {useReportFlowContext} from '../components_feature/Report/ReportFlowContext'
 
 const sxTitle: SxProps<Theme> = {
   fontSize: 24,
   mb: 3,
   mt: 2,
 }
+
+const ReportStartedAlert = dynamic(() => import('components_feature/ReportStartedAlert/ReportStartedAlert'), {ssr: false})
 
 const Home = () => {
   const {m} = useI18n()
@@ -33,7 +35,10 @@ const Home = () => {
   useEffect(() => {
     smoothscroll.polyfill()
   }, [])
-  const anomalies = sortBy(allVisibleAnomalies(), _ => parseInt(_.id))
+  const anomalies = allVisibleAnomalies()
+  const _report = useReportFlowContext()
+  const hasStoredReport = useMemo(() => !!_report.reportDraft.anomaly, [_report.reportDraft])
+
   return (
     <>
       <Head>
@@ -70,10 +75,6 @@ const Home = () => {
                 alt: 'company',
               },
               {title: 'La répression des fraudes intervient si nécessaire.', image: dgccrf, alt: 'dgccrf'},
-              // {title: 'Vous avez rencontré un problème<br/>avec une entreprise&#160;?', image: consumer, alt: 'consumer'},
-              // {title: 'Faites un signalement<br/>avec SignalConso.', image: report, alt: 'report'},
-              // {title: 'L\'entreprise est prévenue<br/>et peut intervenir.', image: company, alt: 'company'},
-              // {title: 'La répression des fraudes intervient si nécessaire.', image: dgccrf, alt: 'dgccrf'},
             ]}
           />
 
@@ -118,7 +119,7 @@ const Home = () => {
           </Grid>
         </Section>
       </main>
-      <ReportStartedAlert />
+      {hasStoredReport ? <ReportStartedAlert /> : <></>}
     </>
   )
 }

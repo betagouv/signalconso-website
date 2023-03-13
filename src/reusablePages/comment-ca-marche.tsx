@@ -4,6 +4,7 @@ import {Page} from 'components_simple/Page/Page'
 import {Box} from '@mui/material'
 import Head from 'next/head'
 import {pageDefinitions} from 'core/pageDefinition'
+import Image from 'next/image'
 
 const Card = ({title, img, children}: {title: string; img: string; children?: ReactNode}) => {
   return (
@@ -16,7 +17,7 @@ const Card = ({title, img, children}: {title: string; img: string; children?: Re
         <h3>{title}</h3>
         <Box sx={{display: 'flex'}}>
           <Box sx={{mr: 2}}>{children}</Box>
-          <img src={img} width="200px" height="200px" />
+          <Image src={img} width="200px" height="200px" loading={'lazy'} priority />
         </Box>
       </PanelBody>
     </Panel>
