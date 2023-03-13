@@ -97,6 +97,12 @@ export class AnomalyTreeWalker {
     }
   }
 
+  assertIsSlug() {
+    if (typeof this.value !== 'string' || !this.value.match(/^(([a-z])+)$/i)) {
+      throw this.err(`should be a simple string without spaces ${this.printActualValue()}`)
+    }
+  }
+
   assertIsAllowedString(possibleValues: readonly string[]) {
     this.assertIsString()
     if (!possibleValues.includes(this.value)) {
