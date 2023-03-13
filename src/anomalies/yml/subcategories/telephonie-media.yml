@@ -221,7 +221,7 @@
         - '221'
       tags:
         - DemarchageADomicile
-    - title: DemarchageTelephonique
+    - title: Démarchage téléphonique
       ccrfCode: 
         - '227'
       companyKind: PHONE
@@ -256,7 +256,7 @@
         - '221'
       tags:
         - DemarchageADomicile
-    - title: DemarchageTelephonique
+    - title: Démarchage téléphonique
       ccrfCode: 
         - '227'
       companyKind: PHONE
