@@ -99,6 +99,7 @@
         - '23E'
       reponseconsoCode:
         - '221'
+      tags:
       #            - ReponseConso
         - DemarchageTelephonique
       detailInputs:
