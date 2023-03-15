@@ -4,37 +4,40 @@ import {CompanyPublicClient} from '../clients/CompanyPublicClient'
 import {SignalConsoApiClient} from '../clients/SignalConsoApiClient'
 import {AdresseApiClient} from '../clients/AdresseApiClient'
 
-interface ApiClientsContextProps {
+interface ApiClients {
   signalConsoApiClient: SignalConsoApiClient
   companyApiClient: CompanyPublicClient
   adresseApiClient: AdresseApiClient
 }
 
-interface Props {
+const ApiClientsContext = React.createContext({} as ApiClients)
+
+const signalConsoApiClient = new SignalConsoApiClient()
+const companyApiClient = new CompanyPublicClient()
+const adresseApiClient = new AdresseApiClient()
+
+export const ApiClientsProvider = ({
+  overrideForTests,
+  children,
+}: {
   overrideForTests?: {
     signalConsoApiClient?: SignalConsoApiClient
     companyApiClient?: CompanyPublicClient
     adresseApiClient?: AdresseApiClient
   }
   children: ReactNode
-}
-
-const ApiClients = React.createContext<ApiClientsContextProps>({} as ApiClientsContextProps)
-
-export const ApiClientsProvider = ({overrideForTests, children}: Props) => {
+}) => {
   return (
-    <ApiClients.Provider
+    <ApiClientsContext.Provider
       value={{
-        signalConsoApiClient: overrideForTests?.signalConsoApiClient ?? new SignalConsoApiClient(),
-        companyApiClient: overrideForTests?.companyApiClient ?? new CompanyPublicClient(),
-        adresseApiClient: overrideForTests?.adresseApiClient ?? new AdresseApiClient(),
+        signalConsoApiClient: overrideForTests?.signalConsoApiClient ?? signalConsoApiClient,
+        companyApiClient: overrideForTests?.companyApiClient ?? companyApiClient,
+        adresseApiClient: overrideForTests?.adresseApiClient ?? adresseApiClient,
       }}
     >
       {children}
-    </ApiClients.Provider>
+    </ApiClientsContext.Provider>
   )
 }
 
-export const useApiClients = (): ApiClientsContextProps => {
-  return useContext<ApiClientsContextProps>(ApiClients)
-}
+export const useApiClients = () => useContext(ApiClientsContext)

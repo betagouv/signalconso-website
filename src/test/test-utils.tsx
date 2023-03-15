@@ -3,13 +3,14 @@ import {render, RenderResult} from '@testing-library/react'
 import {AnalyticProvider} from 'analytic/AnalyticContext'
 import {ReportCreateProvider} from 'components_feature/Report/ReportCreateContext'
 import {ReportFlowProvider, useReportFlowContext} from 'components_feature/Report/ReportFlowContext'
-import {Provide} from 'components_simple/Provide/Provide'
+import {ProvidersChain} from 'components_simple/ProvidersChain/ProvidersChain'
 import {ApiClientsProvider} from 'context/ApiClientsContext'
 import {scTheme} from 'core/theme'
 import {I18nProvider} from 'i18n/I18n'
 import {fr} from 'i18n/localization/fr'
 import {ReportDraft2} from 'model/ReportDraft2'
 import React, {ReactNode, useEffect} from 'react'
+import {QueryClient, QueryClientProvider} from '@tanstack/react-query'
 import {CompanyPublicClient} from '../clients/CompanyPublicClient'
 import {SignalConsoApiClient} from '../clients/SignalConsoApiClient'
 import {DeepPartial} from '../utils/utils'
@@ -29,9 +30,18 @@ const AllTheProviders =
         fetchCity: (q: string) => Promise.resolve([]),
       } as any,
     }
+    const queryClient = new QueryClient({
+      defaultOptions: {
+        queries: {
+          // turns retries off for tests
+          retry: false,
+        },
+      },
+    })
     return (
-      <Provide
+      <ProvidersChain
         providers={[
+          _ => <QueryClientProvider client={queryClient} children={_} />,
           _ => <AnalyticProvider children={_} analytic={{trackEvent: () => void 0} as any} />,
           _ => <ApiClientsProvider children={_} overrideForTests={apiClientsOverrides} />,
           _ => <ThemeProvider theme={scTheme} children={_} />,
@@ -41,7 +51,7 @@ const AllTheProviders =
         ]}
       >
         {children}
-      </Provide>
+      </ProvidersChain>
     )
   }
 
