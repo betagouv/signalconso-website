@@ -1,16 +1,14 @@
-import {useI18n} from 'i18n/I18n'
+import {Autocomplete, Box} from '@mui/material'
+import {useGetCountries} from 'clients/apiHooks'
+import {Animate} from 'components_simple/Animate/Animate'
 import {FormLayout} from 'components_simple/FormLayout/FormLayout'
-import {Controller, useForm} from 'react-hook-form'
 import {ScInput} from 'components_simple/Input/ScInput'
 import {Panel, PanelActions, PanelBody} from 'components_simple/Panel/Panel'
-import {Animate} from 'components_simple/Animate/Animate'
-import {Autocomplete, Box} from '@mui/material'
-import {useConstantContext} from 'context/ConstantContext'
-import React, {useEffect} from 'react'
-import {useToast} from 'hooks/useToast'
 import {StepperActionsNext} from 'components_simple/ReportFlowStepper/StepperActionsNext'
-import {Txt} from '../../../alexlibs/mui-extension/Txt/Txt'
+import {useI18n} from 'i18n/I18n'
+import {Controller, useForm} from 'react-hook-form'
 import {Alert} from '../../../alexlibs/mui-extension/Alert/Alert'
+import {Txt} from '../../../alexlibs/mui-extension/Txt/Txt'
 import {Country} from '../../../model/Country'
 import {fnSwitch} from '../../../utils/FnSwitch'
 import {CompanyKinds} from '../../../anomalies/Anomaly'
@@ -34,21 +32,13 @@ const countryToFlag = (isoCode: string) => {
 
 export const CompanyAskForeignDetails = ({onSubmit, companyKind}: Props) => {
   const {m} = useI18n()
-  const {countries} = useConstantContext()
-  const {toastError} = useToast()
+  const _countries = useGetCountries()
   const {
     control,
     handleSubmit,
     register,
     formState: {errors},
   } = useForm<Form>()
-
-  useEffect(() => {
-    countries.fetch({force: false, clean: false})
-  }, [])
-  useEffect(() => {
-    if (countries.error) toastError(countries.error)
-  }, [countries.error])
 
   return (
     <Animate>
@@ -85,8 +75,8 @@ export const CompanyAskForeignDetails = ({onSubmit, companyKind}: Props) => {
                         {option.name}
                       </li>
                     )}
-                    loading={countries.loading}
-                    options={countries.entity ?? []}
+                    loading={_countries.isLoading}
+                    options={_countries.data ?? []}
                     getOptionLabel={_ => _.name}
                     renderInput={params => (
                       <ScInput
