@@ -1,10 +1,9 @@
 import {Box, BoxProps, Icon} from '@mui/material'
 import {Fender} from 'alexlibs/mui-extension/Fender/Fender'
+import {useGetCountries} from 'clients/apiHooks'
 import {Panel, PanelActions, PanelBody} from 'components_simple/Panel/Panel'
 import {Row} from 'components_simple/Row/Row'
-import {useConstantContext} from 'context/ConstantContext'
 import {externalLinks} from 'core/externalLinks'
-import {useToast} from 'hooks/useToast'
 import {useI18n} from 'i18n/I18n'
 import {useEffect, useMemo} from 'react'
 import {Txt} from '../../../alexlibs/mui-extension/Txt/Txt'
@@ -31,8 +30,7 @@ export const Acknowledgement = ({isWebView}: {isWebView: boolean}) => {
     createReport: {entity: report},
   } = useReportCreateContext()
   const _reportFlow = useReportFlowContext()
-  const {countries} = useConstantContext()
-  const {toastError} = useToast()
+  const {data: countries} = useGetCountries()
 
   useEffect(() => {
     // When this component is displayed, the draft should be cleared so we can't go back
@@ -43,18 +41,11 @@ export const Acknowledgement = ({isWebView}: {isWebView: boolean}) => {
     throw new Error(`No reported created.`)
   }
 
-  useEffect(() => {
-    countries.fetch({force: false, clean: false})
-  }, [])
   const country = useMemo(() => {
-    if (countries.entity && report && report.companyAddress.country) {
-      return countries.entity?.find(_ => report.companyAddress.country === _.name)
+    if (countries && report && report.companyAddress.country) {
+      return countries?.find(_ => report.companyAddress.country === _.name)
     }
   }, [countries, report])
-
-  useEffect(() => {
-    if (countries.error) toastError(countries.error)
-  }, [countries.error])
 
   if (country || !report.companyAddress.country) {
     return <_Acknowledgement createdReport={report} {...{isWebView, country}} />

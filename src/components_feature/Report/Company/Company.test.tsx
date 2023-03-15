@@ -1,16 +1,13 @@
 /**
  * @jest-environment jsdom
  */
-import {fireEvent, render, ScRenderResult} from '../../../test/test-utils'
-import React from 'react'
-import {_Company} from './Company'
-import {ReportDraft2} from 'model/ReportDraft2'
-import {IdentifyBy} from './CompanyIdentifyBy'
-import {fnSwitch} from '../../../utils/FnSwitch'
-import {Fixture} from '../../../test/fixture'
 import {waitFor} from '@testing-library/dom'
-import {CompanyKinds} from '../../../anomalies/Anomaly'
-import {CompanySearchResult, WebsiteCompanySearchResult} from '../../../model/Company'
+import {ReportDraft2} from 'model/ReportDraft2'
+import {Fixture} from '../../../test/fixture'
+import {fireEvent, render, ScRenderResult} from '../../../test/test-utils'
+import {fnSwitch} from '../../../utils/FnSwitch'
+import {_Company} from './Company'
+import {IdentifyBy} from './CompanyIdentifyBy'
 
 describe('Details: single date not in future', () => {
   let app: ScRenderResult
@@ -42,7 +39,7 @@ describe('Details: single date not in future', () => {
         />,
         {
           signalConsoApiClient: {
-            searchForeignCompaniesByUrl: (url: string) => Promise.resolve(),
+            searchForeignCompaniesByUrl: (url: string) => Promise.resolve([]),
             searchCompaniesByUrl: (url: string) =>
               Promise.resolve(
                 fnSwitch(

@@ -1,6 +1,6 @@
 import {MenuItem, Select} from '@mui/material'
-import {useConstantContext} from 'context/ConstantContext'
-import {useEffect, useMemo, useState} from 'react'
+import {useGetCountries} from 'clients/apiHooks'
+import {useMemo, useState} from 'react'
 import {Enum} from 'utils/Enum'
 import {CreatedReport} from '../../model/CreatedReport'
 import {Fixture} from '../../test/fixture'
@@ -10,7 +10,7 @@ export const PlaygroundAcknowledgment = () => {
   const [type, setType] = useState<AcknowledgmentCases>(AcknowledgmentCases.ReponseConso)
   const [demoCountry, setDemoCountry] = useState('Espagne')
   const baseReport = useMemo(Fixture.genReport, [])
-  const {countries} = useConstantContext()
+  const {data: countries} = useGetCountries()
   const report = useMemo(() => {
     const reportsSwitch: {[key in AcknowledgmentCases]: () => CreatedReport} = {
       [AcknowledgmentCases.ReponseConso]: () => ({...baseReport, tags: ['ReponseConso']}),
@@ -36,13 +36,9 @@ export const PlaygroundAcknowledgment = () => {
     return reportsSwitch[type]()
   }, [type, demoCountry])
 
-  useEffect(() => {
-    countries.fetch({force: false, clean: false})
-  }, [])
-
   const country = useMemo(() => {
-    if (countries.entity && report && report.companyAddress.country) {
-      return countries.entity?.find(_ => report.companyAddress.country === _.name)
+    if (countries && report && report.companyAddress.country) {
+      return countries?.find(_ => report.companyAddress.country === _.name)
     }
   }, [countries, report])
 
