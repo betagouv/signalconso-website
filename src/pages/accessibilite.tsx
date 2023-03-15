@@ -8,7 +8,7 @@ import {externalLinks} from 'core/externalLinks'
 
 const Accessibilite = () => {
   return (
-    <Page size="small" className="blog">
+    <Page maxWidth="small" className="blog">
       <Head>
         <title>{pageDefinitions.accessibilite.title}</title>
         <meta name="description" content={pageDefinitions.accessibilite.description} />

@@ -23,6 +23,7 @@ import {useEffect, useState} from 'react'
 import {QueryClient, QueryClientProvider} from '@tanstack/react-query'
 import {ToastProvider} from '../alexlibs/mui-extension/Toast/Toast'
 import {appConfig} from '../core/appConfig'
+import '../globals.css'
 
 interface ScAppProps extends AppProps {
   emotionCache?: EmotionCache

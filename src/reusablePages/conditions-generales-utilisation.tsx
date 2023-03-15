@@ -15,7 +15,7 @@ const a11yProps = (index: number) => {
 export const ConditionsGeneralesUtilisation = () => {
   const [activeTab, setActiveTab] = useState(0)
   return (
-    <Page size="small" className="blog">
+    <Page maxWidth="small" className="blog">
       <Head>
         <title>{pageDefinitions.conditionsGeneralesUtilisation.title}</title>
         <meta name="description" content={pageDefinitions.conditionsGeneralesUtilisation.description} />

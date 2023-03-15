@@ -6,7 +6,7 @@ import {pageDefinitions} from 'core/pageDefinition'
 
 const Cookies = () => {
   return (
-    <Page size="small" className="blog">
+    <Page maxWidth="small" className="blog">
       <Head>
         <title>{pageDefinitions.cookies.title}</title>
         <meta name="description" content={pageDefinitions.cookies.description} />

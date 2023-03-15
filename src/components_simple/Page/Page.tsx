@@ -1,35 +1,28 @@
-import * as React from 'react'
-import {Page as MuiPage, PageProps as MuiPageProps} from '../../alexlibs/mui-extension/Page/Page'
-import {Box, LinearProgress} from '@mui/material'
+import {Box} from '@mui/material'
+import {ReactNode} from 'react'
 
-export const pageWidth = {
-  large: 1100,
-  regular: 932,
-  small: 680,
-}
-
-export interface PageProps extends MuiPageProps {
-  large?: boolean
-  size?: 'large' | 'small' | 'regular'
-  loading?: boolean
-}
-
-export const Page = ({loading, size, sx, ...props}: PageProps) => {
+export const Page = ({
+  maxWidth = 'regular',
+  className,
+  children,
+}: {
+  maxWidth?: 'small' | 'regular' | number
+  className?: string
+  children: ReactNode
+}) => {
+  const mw = maxWidth === 'small' ? 680 : maxWidth === 'regular' ? 932 : maxWidth
   return (
-    <>
-      {loading && (
-        <Box sx={{position: 'relative'}}>
-          <LinearProgress
-            sx={{
-              position: 'absolute',
-              top: 0,
-              right: 0,
-              left: 0,
-            }}
-          />
-        </Box>
-      )}
-      <MuiPage width={pageWidth[size ?? 'regular']} sx={{...sx, py: 3, px: 2}} {...props} />
-    </>
+    <Box
+      {...{className}}
+      sx={{
+        margin: 'auto',
+        width: '100%',
+        maxWidth: mw,
+        py: 3,
+        px: 2,
+      }}
+    >
+      {children}
+    </Box>
   )
 }
