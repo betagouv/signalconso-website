@@ -45,8 +45,6 @@ function adjustReportDraftAfterSubcategoriesChange(report: Partial<ReportDraft2>
   const subcategoriesToKeep = (report.subcategories ?? []).slice(0, index)
   const subcategories = [...subcategoriesToKeep, subcategory]
   const tags = report.tags?.filter(_ => _ !== 'Internet') ?? undefined
-  // L'option "getAnswer" n'est pas disponible pour toutes les catégories, on la nettoie pour être safe
-  const consumerWish = report.consumerWish === 'getAnswer' ? undefined : report.consumerWish
 
   //Recompute company kind based on current report selected subcategories
   const lastCategoryCompanyKind = subcategories
@@ -61,7 +59,11 @@ function adjustReportDraftAfterSubcategoriesChange(report: Partial<ReportDraft2>
     details: {},
     companyKind: lastCategoryCompanyKind,
     companyDraft: undefined,
-    consumerWish,
+    // Category has changed, user need to reconfirm consumerWish & employeeConsumer because :
+    // - Some categories have "getAnswer" (that is not available for all categories so we have to clean up those properties)
+    // - Some categories set default values for these properties (CompanyKind SOCIAL)
+    consumerWish: undefined,
+    employeeConsumer: undefined,
   }
   return copy
 }
