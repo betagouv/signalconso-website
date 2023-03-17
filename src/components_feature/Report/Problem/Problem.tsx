@@ -45,9 +45,26 @@ function adjustReportDraftAfterSubcategoriesChange(report: Partial<ReportDraft2>
   const subcategoriesToKeep = (report.subcategories ?? []).slice(0, index)
   const subcategories = [...subcategoriesToKeep, subcategory]
   const tags = report.tags?.filter(_ => _ !== 'Internet') ?? undefined
-  // L'option "getAnswer" n'est pas disponible pour toutes les catégories, on la nettoie pour être safe
-  const consumerWish = report.consumerWish === 'getAnswer' ? undefined : report.consumerWish
-  const copy = {...report, subcategories, tags, details: {}, companyKind: undefined, companyDraft: undefined, consumerWish}
+
+  //Recompute company kind based on current report selected subcategories
+  const lastCategoryCompanyKind = subcategories
+    .map(_ => _.companyKind)
+    .filter(_ => _ !== undefined)
+    .pop()
+
+  const copy = {
+    ...report,
+    subcategories,
+    tags,
+    details: {},
+    companyKind: lastCategoryCompanyKind,
+    companyDraft: undefined,
+    // Category has changed, user need to reconfirm consumerWish & employeeConsumer because :
+    // - Some categories have "getAnswer" (that is not available for all categories so we have to clean up those properties)
+    // - Some categories set default values for these properties (CompanyKind SOCIAL)
+    consumerWish: undefined,
+    employeeConsumer: undefined,
+  }
   return copy
 }
 
@@ -80,9 +97,12 @@ export const Problem = ({anomaly, isWebView, stepNavigation}: Props) => {
   function onSubmit(next: () => void): void {
     setReportDraft(draft => {
       const {subcategories, ..._anomaly} = anomaly
-      // employeeConsumer don't get this choice, we automatically apply the standard option
-      const consumerWish = draft.employeeConsumer ? 'companyImprovement' : draft.consumerWish
-      return {
+      // employeeConsumer and reports on social influencer don't get this choice, we automatically apply the standard option
+      const consumerWish = draft.employeeConsumer || draft.companyKind === 'SOCIAL' ? 'companyImprovement' : draft.consumerWish
+      //Company kind 'SOCIAL' cannot be employee consumer report
+      const employeeConsumer = draft.companyKind === 'SOCIAL' ? false : draft.employeeConsumer
+
+      const updatedDraft = {
         ...draft,
         ccrfCode: ccrfCodeFromSelected,
         reponseconsoCode: responseconsoCodeFromSelected,
@@ -90,7 +110,9 @@ export const Problem = ({anomaly, isWebView, stepNavigation}: Props) => {
         companyKind: companyKindFromSelected ?? draft.companyKind ?? 'SIRET',
         anomaly: _anomaly,
         consumerWish,
+        employeeConsumer,
       }
+      return updatedDraft
     })
     next()
   }
@@ -137,7 +159,7 @@ export const Problem = ({anomaly, isWebView, stepNavigation}: Props) => {
           />
         ) : (
           <ProblemStepper renderDone={<ReportFlowStepperActions next={onSubmit} {...{stepNavigation}} />}>
-            <ProblemStepperStep isDone={reportDraft.employeeConsumer !== undefined}>
+            <ProblemStepperStep isDone={reportDraft.employeeConsumer !== undefined} hidden={reportDraft.companyKind === 'SOCIAL'}>
               <ProblemSelect
                 id="select-employeeconsumer"
                 title={m.problemDoYouWorkInCompany}
@@ -173,7 +195,10 @@ export const Problem = ({anomaly, isWebView, stepNavigation}: Props) => {
                 ]}
               />
             </ProblemStepperStep>
-            <ProblemStepperStep isDone={reportDraft.consumerWish !== undefined} hidden={reportDraft.employeeConsumer === true}>
+            <ProblemStepperStep
+              isDone={reportDraft.consumerWish !== undefined}
+              hidden={reportDraft.employeeConsumer === true || reportDraft.companyKind === 'SOCIAL'}
+            >
               <ProblemSelect
                 id="select-contractualDispute"
                 title="Que souhaitez-vous faire ?"

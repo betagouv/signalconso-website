@@ -1,4 +1,5 @@
 - title: Un influenceur ou une influenceuse
+  subcategoriesTitle: Que souhaitez-vous signaler ?
   companyKind: SOCIAL
   example: "Exemple : publicité trompeuse, l'influenceur n'indique pas qu'il est rémunéré par une marque"
   ccrfCode:
@@ -8,14 +9,31 @@
     - '210'
   subcategories:
     - title: Publicité trompeuse
+      example: Fausses allégations sur l’origine, les caractéristiques ou les résultats attendus de l’utilisation d’un produit
       tags:
         - Influenceur
       subcategoriesTitle: Publicité trompeuse
       detailInputs: !!import/single ../common/inputs/influenceur.yml
-    - title: L'influenceur n'indique pas qu'il est rémunéré par une marque
+    - title: L'influenceur n'indique pas le caractère commercial de sa publication
       tags:
         - Influenceur
-      subcategoriesTitle: L'influenceur n'indique pas qu'il est rémunéré par une marque
+      subcategoriesTitle: L'influenceur n'indique pas le caractère commercial de sa publication
+      detailInputs: !!import/single ../common/inputs/influenceur.yml
+    - title: Publicité pour un produit dangereux
+      tags:
+        - Influenceur
+        - ProduitDangereux
+      subcategoriesTitle: Publicité pour un produit dangereux
+      detailInputs: !!import/single ../common/inputs/influenceur.yml
+    - title: Publicité pour un produit interdit à la vente
+      tags:
+        - Influenceur
+      subcategoriesTitle: Publicité pour un produit interdit à la vente
+      detailInputs: !!import/single ../common/inputs/influenceur.yml
+    - title: L’influenceur n’est pas identifié (raison sociale, nom, prénom, etc.)
+      tags:
+        - Influenceur
+      subcategoriesTitle: L’influenceur n’est pas identifié (raison sociale, nom, prénom, etc.)
       detailInputs: !!import/single ../common/inputs/influenceur.yml
     - title: Autre
       tags:
