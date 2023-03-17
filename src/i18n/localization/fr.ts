@@ -39,6 +39,16 @@ export const fr = {
   formatDuration,
   formatLargeNumber,
   messages: {
+    SocialNetwork: {
+      YOUTUBE: 'Youtube',
+      FACEBOOK: 'Facebook',
+      INSTAGRAM: 'Instagram',
+      TIKTOK: 'TikTok',
+      TWITTER: 'Twitter',
+      LINKEDIN: 'LinkedIn',
+      SNAPCHAT: 'Snapchat',
+      TWITCH: 'Twitch',
+    },
     signalconsoCatchWord: ` Signalez un problème à <b>l’entreprise</b>,<br/>renseignez-vous sur vos droits avec <b>la répression des fraudes</b> ! `,
     yes: 'Oui',
     no: 'Non',

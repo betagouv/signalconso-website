@@ -1,7 +1,7 @@
-import {CompanyKinds, ReportTag, Subcategory} from 'anomalies/Anomaly'
+import {CompanyKinds, ReportTag, socialNetworks, SocialNetworks, Subcategory} from 'anomalies/Anomaly'
 import {Address} from './Address'
 import {DetailInputValue} from './CreatedReport'
-import {ApiReportDraft} from './reportsFromApi'
+import {ApiInfluencer, ApiReportDraft} from './reportsFromApi'
 import {UploadedFile} from './UploadedFile'
 import uniq from 'lodash/uniq'
 export const genders = ['Male', 'Female'] as const
@@ -32,7 +32,7 @@ export interface CompanyDraft {
 export interface ReportDraft {
   category: string
   subcategories: Subcategory[]
-  companyDraft: CompanyDraft
+  companyDraft?: CompanyDraft
   details: DetailInputValue[]
   uploadedFiles?: UploadedFile[]
   consumer: ReportDraftConsumer
@@ -44,6 +44,12 @@ export interface ReportDraft {
   tags?: ReportTag[]
   consumerWish?: ConsumerWish
   companyKind?: CompanyKinds
+  influencer?: Influencer
+}
+
+export interface Influencer {
+  socialNetwork: SocialNetworks
+  name: string
 }
 
 export type ConsumerWish =
@@ -78,6 +84,31 @@ export class ReportDraft {
 
     const tags = uniq([...(draft.tags ?? []), ...additionalTags])
 
+    const toApiSocialNetwork = (socialNetwork: SocialNetworks): string => {
+      switch (socialNetwork) {
+        case 'YOUTUBE':
+          return 'Youtube'
+        case 'FACEBOOK':
+          return 'Facebook'
+        case 'INSTAGRAM':
+          return 'Instagram'
+        case 'TIKTOK':
+          return 'TikTok'
+        case 'TWITTER':
+          return 'Twitter'
+        case 'LINKEDIN':
+          return 'LinkedIn'
+        case 'SNAPCHAT':
+          return 'Snapchat'
+        case 'TWITCH':
+          return 'Twitch'
+      }
+    }
+    const toApiInfluencer = (influencer: Influencer): ApiInfluencer => ({
+      name: influencer.name,
+      socialNetwork: toApiSocialNetwork(influencer.socialNetwork),
+    })
+
     return {
       ...restOfDraft,
       details: draft.details,
@@ -89,19 +120,20 @@ export class ReportDraft {
       consumerPhone: draft.consumer.phone,
       consumerReferenceNumber: draft.consumer.referenceNumber,
       fileIds: draft.uploadedFiles?.map(file => file.id) ?? [],
-      companyName: draft.companyDraft.name,
-      companyAddress: draft.companyDraft.address,
-      companySiret: draft.companyDraft.siret,
-      companyIsHeadOffice: draft.companyDraft.isHeadOffice,
-      companyIsPublic: draft.companyDraft.isPublic,
-      companyIsOpen: draft.companyDraft.isOpen,
-      companyActivityCode: draft.companyDraft.activityCode,
-      websiteURL: draft.companyDraft.website,
-      phone: draft.companyDraft.phone,
+      companyName: draft.companyDraft?.name,
+      companyAddress: draft.companyDraft?.address,
+      companySiret: draft.companyDraft?.siret,
+      companyIsHeadOffice: draft.companyDraft?.isHeadOffice,
+      companyIsPublic: draft.companyDraft?.isPublic,
+      companyIsOpen: draft.companyDraft?.isOpen,
+      companyActivityCode: draft.companyDraft?.activityCode,
+      websiteURL: draft.companyDraft?.website,
+      phone: draft.companyDraft?.phone,
       forwardToReponseConso: consumerWish === 'getAnswer',
       // pretty sure these fields aren't actually optional in the draft
       employeeConsumer: draft.employeeConsumer ?? false,
       tags,
+      influencer: draft.influencer ? toApiInfluencer(draft.influencer) : undefined,
     }
   }
 }

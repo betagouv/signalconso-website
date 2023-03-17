@@ -25,6 +25,8 @@ import {CompanySearchByIdentity} from './CompanySearchByIdentity'
 import {CompanySearchByNameAndPostalCode} from './CompanySearchByNameAndPostalCode'
 import {CompanySearchResultComponent} from './CompanySearchResult'
 import {CompanyWebsiteCountry} from './CompanyWebsiteCountry'
+import {InfluencerBySocialNetwork} from './InfluencerBySocialNetwork'
+import {SocialNetworks} from '../../../anomalies/Anomaly'
 
 interface CompanyWithRequiredProps {
   draft: Pick<ReportDraft, 'companyKind'>
@@ -36,6 +38,14 @@ export const Company = ({stepNavigation}: {stepNavigation: StepNavigation}) => {
   const _reportFlow = useReportFlowContext()
 
   const draft = _reportFlow.reportDraft
+  if (draft.influencer) {
+    return (
+      <InfluencerFilled
+        {...{stepNavigation, draft}}
+        onClear={() => _reportFlow.setReportDraft(_ => ({..._, influencer: undefined}))}
+      />
+    )
+  }
   if (draft.companyDraft) {
     return (
       <CompanyFilled
@@ -53,6 +63,60 @@ export const Company = ({stepNavigation}: {stepNavigation: StepNavigation}) => {
         _analytic.trackEvent(EventCategories.report, ReportEventActions.validateCompany)
       }}
     />
+  )
+}
+
+export const InfluencerFilled = ({
+  draft,
+  onClear,
+  stepNavigation,
+}: {
+  draft: Partial<ReportDraft2>
+  onClear: () => void
+  stepNavigation: StepNavigation
+}) => {
+  const {m} = useI18n()
+  if (!draft.influencer) {
+    throw new Error(`influencer should be defined ${JSON.stringify(draft)}`)
+  }
+  const socialNetworkIcon = (socialNetwork: SocialNetworks) => {
+    switch (socialNetwork) {
+      case 'YOUTUBE':
+        return 'youtube'
+      case 'FACEBOOK':
+        return 'facebook'
+      case 'INSTAGRAM':
+        return 'instagram'
+      case 'TIKTOK':
+        return 'tiktok'
+      case 'TWITTER':
+        return 'twitter'
+      case 'LINKEDIN':
+        return 'linkedin'
+      case 'SNAPCHAT':
+        return 'snapchat'
+      case 'TWITCH':
+        return 'twitch'
+    }
+  }
+
+  return (
+    <Panel title="Influenceur identifié">
+      <PanelBody>
+        <Row dense icon={socialNetworkIcon(draft.influencer.socialNetwork)}>
+          <Txt color="hint">{m.SocialNetwork[draft.influencer.socialNetwork]}</Txt>
+        </Row>
+        <Row dense icon="portrait">
+          <Txt color="hint">{draft.influencer.name}</Txt>
+        </Row>
+      </PanelBody>
+      <PanelActions>
+        <ScButton color="primary" variant="outlined" onClick={onClear} icon="edit">
+          {m.edit}
+        </ScButton>
+        <StepperActionsNext onClick={stepNavigation.next} />
+      </PanelActions>
+    </Panel>
   )
 }
 
@@ -82,11 +146,13 @@ export const CompanyFilled = ({
             <Txt bold>{draft.companyDraft.siret}</Txt>
           </Txt>
         )}
-        <Row dense icon="location_on">
-          <Txt color="hint">
-            <AddressComponent address={draft.companyDraft.address} />
-          </Txt>
-        </Row>
+        {draft.companyDraft.siret && (
+          <Row dense icon="location_on">
+            <Txt color="hint">
+              <AddressComponent address={draft.companyDraft.address} />
+            </Txt>
+          </Row>
+        )}
         {draft.companyDraft.website && (
           <Row dense icon="link">
             <Txt color="hint">{draft.companyDraft.website}</Txt>
@@ -244,6 +310,18 @@ export const _Company = ({draft, onUpdateReportDraft}: CompanyWithRequiredProps)
       {fnSwitch(
         draft.companyKind!,
         {
+          ['SOCIAL']: () => (
+            <InfluencerBySocialNetwork
+              onSubmit={(socialNetwork, influencer) => {
+                onUpdateReportDraft({
+                  influencer: {
+                    socialNetwork,
+                    name: influencer,
+                  },
+                })
+              }}
+            />
+          ),
           ['PHONE']: () => <CompanyByPhone>{phone => commonTree({phone})}</CompanyByPhone>,
           ['WEBSITE']: () => (
             <CompanyByWebsite>

@@ -60,22 +60,41 @@ export class ReportDraft2 {
       })
   }
 
+  static readonly mergeCompanies = (base?: CompanyDraft, newValue?: DeepPartial<CompanyDraft>): CompanyDraft | undefined => {
+    if (newValue) {
+      return {
+        ...base,
+        ...(newValue as CompanyDraft),
+        address: {
+          ...base?.address,
+          ...(newValue.address as Address),
+        },
+      }
+    } else {
+      return newValue
+    }
+  }
+
+  static readonly mergeConsumer = (
+    base?: ReportDraftConsumer,
+    newValue?: DeepPartial<ReportDraftConsumer>,
+  ): ReportDraftConsumer | undefined => {
+    if (newValue) {
+      return {
+        ...base,
+        ...(newValue as ReportDraftConsumer),
+      }
+    } else {
+      return newValue
+    }
+  }
+
   static readonly merge = (base: Partial<ReportDraft2>, newValue: DeepPartial<ReportDraft2>): Partial<ReportDraft2> => {
     return {
       ...base,
       ...(newValue as ReportDraft2),
-      companyDraft: {
-        ...base.companyDraft,
-        ...(newValue.companyDraft as CompanyDraft),
-        address: {
-          ...base.companyDraft?.address,
-          ...(newValue.companyDraft?.address as Address),
-        },
-      },
-      consumer: {
-        ...base.consumer,
-        ...(newValue.consumer as ReportDraftConsumer),
-      },
+      companyDraft: ReportDraft2.mergeCompanies(base.companyDraft, newValue.companyDraft),
+      consumer: ReportDraft2.mergeConsumer(base.consumer, newValue.consumer),
     }
   }
 }
