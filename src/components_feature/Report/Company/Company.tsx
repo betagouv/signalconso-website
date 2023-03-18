@@ -26,7 +26,7 @@ import {CompanySearchByNameAndPostalCode} from './CompanySearchByNameAndPostalCo
 import {CompanySearchResultComponent} from './CompanySearchResult'
 import {CompanyWebsiteCountry} from './CompanyWebsiteCountry'
 import {InfluencerBySocialNetwork} from './InfluencerBySocialNetwork'
-import {SocialNetworks} from '../../../anomalies/Anomaly'
+import {SocialNetworkRow} from '../../../components_simple/SocialNetworkRow/SocialNetworkRow'
 
 interface CompanyWithRequiredProps {
   draft: Pick<ReportDraft, 'companyKind'>
@@ -79,33 +79,11 @@ export const InfluencerFilled = ({
   if (!draft.influencer) {
     throw new Error(`influencer should be defined ${JSON.stringify(draft)}`)
   }
-  const socialNetworkIcon = (socialNetwork: SocialNetworks) => {
-    switch (socialNetwork) {
-      case 'YOUTUBE':
-        return 'youtube'
-      case 'FACEBOOK':
-        return 'facebook'
-      case 'INSTAGRAM':
-        return 'instagram'
-      case 'TIKTOK':
-        return 'tiktok'
-      case 'TWITTER':
-        return 'twitter'
-      case 'LINKEDIN':
-        return 'linkedin'
-      case 'SNAPCHAT':
-        return 'snapchat'
-      case 'TWITCH':
-        return 'twitch'
-    }
-  }
 
   return (
     <Panel title="Influenceur identifié">
       <PanelBody>
-        <Row dense icon={socialNetworkIcon(draft.influencer.socialNetwork)}>
-          <Txt color="hint">{m.SocialNetwork[draft.influencer.socialNetwork]}</Txt>
-        </Row>
+        <SocialNetworkRow socialNetwork={draft.influencer.socialNetwork} />
         <Row dense icon="portrait">
           <Txt color="hint">{draft.influencer.name}</Txt>
         </Row>

@@ -71,7 +71,7 @@ export class ReportDraft2 {
         },
       }
     } else {
-      return newValue
+      return base
     }
   }
 
@@ -85,7 +85,7 @@ export class ReportDraft2 {
         ...(newValue as ReportDraftConsumer),
       }
     } else {
-      return newValue
+      return base
     }
   }
 
