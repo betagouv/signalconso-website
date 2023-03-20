@@ -225,19 +225,16 @@ export const Problem = ({anomaly, isWebView, stepNavigation}: Props) => {
                       ]
                     : []),
                 ]}
-                onChange={(value: ConsumerWish) => {
-                  const updateAndTrack = (change: Partial<ReportDraft2>) => {
-                    setReportDraft(old => {
-                      const d = {...old, ...change}
-                      _analytic.trackEvent(
-                        EventCategories.report,
-                        ReportEventActions.contactualReport,
-                        d.consumerWish === 'fixContractualDispute' ? 'Oui' : 'Non',
-                      )
-                      return d
-                    })
-                  }
-                  updateAndTrack({consumerWish: value})
+                onChange={(consumerWish: ConsumerWish) => {
+                  setReportDraft(report => {
+                    const updated = {...report, consumerWish}
+                    _analytic.trackEvent(
+                      EventCategories.report,
+                      ReportEventActions.contactualReport,
+                      updated.consumerWish === 'fixContractualDispute' ? 'Oui' : 'Non',
+                    )
+                    return updated
+                  })
                 }}
               />
             </ProblemStepperStep>

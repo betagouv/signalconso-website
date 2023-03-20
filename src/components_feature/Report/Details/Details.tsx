@@ -50,10 +50,6 @@ export const Details = ({stepNavigation}: {stepNavigation: StepNavigation}) => {
     }
   }, [draft.subcategories, draft.tags, draft.consumerWish])
 
-  useEffect(() => {
-    _reportFlow.setReportDraft(_ => ({..._, details: undefined}))
-  }, [draft.subcategories, draft.tags, draft.consumerWish])
-
   if (!inputs || draft.employeeConsumer === undefined) {
     throw new Error(`This step should not be accessible ${draft.employeeConsumer} - ${JSON.stringify(inputs)}`)
   }
