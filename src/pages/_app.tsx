@@ -75,7 +75,7 @@ const _App = ({Component, pageProps, router}: AppProps) => {
         <Script
           type="text/javascript"
           src={`https://tag.aticdn.net/${config.atInternet_siteId}/smarttag.js`}
-          strategy="beforeInteractive"
+          strategy="afterInteractive"
         />
       )}
       <div className="root">
