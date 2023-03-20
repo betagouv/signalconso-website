@@ -17,7 +17,7 @@ const Card = ({title, img, children}: {title: string; img: string; children?: Re
         <h3>{title}</h3>
         <Box sx={{display: 'flex'}}>
           <Box sx={{mr: 2}}>{children}</Box>
-          <Image src={img} width="200px" height="200px" loading={'lazy'} priority />
+          <Image src={img} width="200px" height="200px" priority />
         </Box>
       </PanelBody>
     </Panel>

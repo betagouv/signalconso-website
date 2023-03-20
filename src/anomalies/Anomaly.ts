@@ -14,8 +14,6 @@ export interface Category {
   subcategories?: Subcategory[]
 }
 
-export interface BaseAnomaly extends Omit<Anomaly, 'subcategoriesTitle' | 'subcategories'> {}
-
 export interface Anomaly extends Category {
   category: string
   description: string
