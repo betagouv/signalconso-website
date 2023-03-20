@@ -81,9 +81,9 @@ export const InfluencerFilled = ({
   }
 
   return (
-    <Panel title="Influenceur identifié">
+    <Panel title={m.influencerIdentifiedTitle}>
       <PanelBody>
-        <SocialNetworkRow socialNetwork={draft.influencer.socialNetwork} />
+        <SocialNetworkRow socialNetwork={draft.influencer.socialNetwork} color="hint" />
         <Row dense icon="portrait">
           <Txt color="hint">{draft.influencer.name}</Txt>
         </Row>

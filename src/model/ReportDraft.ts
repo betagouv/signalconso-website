@@ -74,20 +74,11 @@ export class ReportDraft {
     )
   }
 
-  static readonly toApi = (draft: ReportDraft): ApiReportDraft => {
-    const {consumerWish, ...restOfDraft} = draft
-
-    const additionalTags: ReportTag[] = [
-      ...(consumerWish === 'fixContractualDispute' ? (['LitigeContractuel'] as const) : []),
-      ...(consumerWish === 'getAnswer' ? (['ReponseConso'] as const) : []),
-    ]
-
-    const tags = uniq([...(draft.tags ?? []), ...additionalTags])
-
+  static readonly toApiInfluencer = (influencer: Influencer): ApiInfluencer => {
     const toApiSocialNetwork = (socialNetwork: SocialNetworks): string => {
       switch (socialNetwork) {
         case 'YOUTUBE':
-          return 'Youtube'
+          return 'YouTube'
         case 'FACEBOOK':
           return 'Facebook'
         case 'INSTAGRAM':
@@ -104,10 +95,22 @@ export class ReportDraft {
           return 'Twitch'
       }
     }
-    const toApiInfluencer = (influencer: Influencer): ApiInfluencer => ({
+
+    return {
       name: influencer.name,
       socialNetwork: toApiSocialNetwork(influencer.socialNetwork),
-    })
+    }
+  }
+
+  static readonly toApi = (draft: ReportDraft): ApiReportDraft => {
+    const {consumerWish, ...restOfDraft} = draft
+
+    const additionalTags: ReportTag[] = [
+      ...(consumerWish === 'fixContractualDispute' ? (['LitigeContractuel'] as const) : []),
+      ...(consumerWish === 'getAnswer' ? (['ReponseConso'] as const) : []),
+    ]
+
+    const tags = uniq([...(draft.tags ?? []), ...additionalTags])
 
     return {
       ...restOfDraft,
@@ -133,7 +136,7 @@ export class ReportDraft {
       // pretty sure these fields aren't actually optional in the draft
       employeeConsumer: draft.employeeConsumer ?? false,
       tags,
-      influencer: draft.influencer ? toApiInfluencer(draft.influencer) : undefined,
+      influencer: draft.influencer ? ReportDraft.toApiInfluencer(draft.influencer) : undefined,
     }
   }
 }

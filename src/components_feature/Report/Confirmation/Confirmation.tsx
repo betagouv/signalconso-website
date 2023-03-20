@@ -117,11 +117,11 @@ export const _Confirmation = ({
             </ConfirmationStep>
           )}
           {draft.influencer && (
-            <ConfirmationStep title="Influenceur" {...{goToStep}}>
+            <ConfirmationStep title={m.step_influencer} {...{goToStep}}>
               <Txt size="big" bold block>
                 Réseau social
               </Txt>
-              <SocialNetworkRow socialNetwork={draft.influencer.socialNetwork} />
+              <SocialNetworkRow socialNetwork={draft.influencer.socialNetwork} color="hint" />
               <Txt size="big" bold block>
                 Nom de l'influenceur
               </Txt>

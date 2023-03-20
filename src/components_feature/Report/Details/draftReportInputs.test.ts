@@ -2,7 +2,7 @@ import '@testing-library/jest-dom'
 import {DraftReportDefaultInputs, getDraftReportInputs} from './draftReportInputs'
 import {Fixture} from '../../../test/fixture'
 import {DetailsFixtureInput} from '../../Playground/PlaygroundDetails'
-import {ReportTag} from '../../../anomalies/Anomaly'
+import {DetailInputType, ReportTag} from '../../../anomalies/Anomaly'
 
 describe('getDraftReportInputs', () => {
   it('should generate default inputs', () => {
@@ -20,13 +20,17 @@ describe('getDraftReportInputs', () => {
     expect(inputs).toEqual([
       DraftReportDefaultInputs.date(),
       DraftReportDefaultInputs.description(),
-      DraftReportDefaultInputs.reponseConso,
+      DraftReportDefaultInputs.reponseConso(),
     ])
   })
 
   it('should generate single input with optional textarea', () => {
     const inputs = getDraftReportInputs({
-      subcategories: [Fixture.genSubcategory()],
+      subcategories: [
+        Fixture.genSubcategory({
+          detailInputs: [DetailsFixtureInput.text],
+        }),
+      ],
     })
     expect(inputs).toEqual([DetailsFixtureInput.text, DraftReportDefaultInputs.description(true)])
   })
@@ -39,7 +43,7 @@ describe('getDraftReportInputs', () => {
     expect(inputs).toEqual([
       DetailsFixtureInput.date,
       DraftReportDefaultInputs.description(true),
-      DraftReportDefaultInputs.reponseConso,
+      DraftReportDefaultInputs.reponseConso(),
     ])
   })
 })

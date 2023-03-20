@@ -3,7 +3,7 @@ import type {Config} from '@jest/types'
 const buildConfig = async (): Promise<Config.InitialOptions> => {
   return {
     testEnvironment: 'jsdom',
-    testMatch: ['**/*test.tsx'],
+    testMatch: ['**/*test.tsx', '**/*test.ts'],
     moduleDirectories: ['node_modules', 'src'],
     setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
     testPathIgnorePatterns: ['<rootDir>/.next/', '<rootDir>/node_modules/'],

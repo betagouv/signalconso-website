@@ -10,6 +10,7 @@ import React from 'react'
 import {StepperActionsNext} from '../../../components_simple/ReportFlowStepper/StepperActionsNext'
 import {Box} from '@mui/material'
 import {Txt} from '../../../alexlibs/mui-extension/Txt/Txt'
+import {SocialNetworkRow} from '../../../components_simple/SocialNetworkRow/SocialNetworkRow'
 
 interface Props {
   onSubmit: (socialNetwork: SocialNetworks, influencer: string) => void
@@ -59,7 +60,12 @@ export const InfluencerBySocialNetwork = ({onSubmit}: Props) => {
                 render={({field: {onChange, value}}) => (
                   <ScRadioGroup dense value={value} onChange={onChange}>
                     {socialNetworks.map(socialNetwork => (
-                      <ScRadioGroupItem dense key={socialNetwork} value={socialNetwork} title={m.SocialNetwork[socialNetwork]} />
+                      <ScRadioGroupItem
+                        dense
+                        key={socialNetwork}
+                        value={socialNetwork}
+                        title={<SocialNetworkRow socialNetwork={socialNetwork} />}
+                      />
                     ))}
                   </ScRadioGroup>
                 )}

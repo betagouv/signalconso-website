@@ -2,6 +2,7 @@ import {SocialNetworks} from '../../anomalies/Anomaly'
 import {Txt} from '../../alexlibs/mui-extension/Txt/Txt'
 import {Row} from '../Row/Row'
 import {useI18n} from '../../i18n/I18n'
+import Image from 'next/image'
 
 const socialNetworkIcon = (socialNetwork: SocialNetworks) => {
   switch (socialNetwork) {
@@ -26,13 +27,15 @@ const socialNetworkIcon = (socialNetwork: SocialNetworks) => {
 
 interface Props {
   socialNetwork: SocialNetworks
+  color?: 'primary' | 'secondary' | 'disabled' | 'hint' | 'default' | 'error'
 }
 
-export const SocialNetworkRow = ({socialNetwork}: Props) => {
+export const SocialNetworkRow = ({socialNetwork, color}: Props) => {
   const {m} = useI18n()
+  const src = `/icons/${socialNetworkIcon(socialNetwork)}.svg`
   return (
-    <Row dense icon={socialNetworkIcon(socialNetwork)}>
-      <Txt color="hint">{m.SocialNetwork[socialNetwork]}</Txt>
+    <Row dense icon={<Image src={src} width={24} height={24} />}>
+      <Txt color={color}>{m.SocialNetwork[socialNetwork]}</Txt>
     </Row>
   )
 }
