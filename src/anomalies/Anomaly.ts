@@ -1,3 +1,5 @@
+import {BoxProps} from '@mui/material'
+
 export interface Category {
   // ex: 2.2.1.3.1.1.1
   // For the Anomaly we write them in the yaml

@@ -10,7 +10,7 @@ import {findCurrentStepForReport} from 'model/ReportStep'
 import {ReportFlowStepperHeader} from 'components_simple/ReportFlowStepper/ReportFlowStepperHeader'
 import {buildPathForStep} from 'components_simple/ReportFlowStepper/ReportFlowStepper'
 
-export const ReportStartedAlert = () => {
+export default function ReportStartedAlert() {
   const _report = useReportFlowContext()
   const hasStoredReport = useMemo(() => !!_report.reportDraft.anomaly, [_report.reportDraft])
   const currentStep = useMemo(() => findCurrentStepForReport(_report.reportDraft), [_report.reportDraft])

@@ -1,5 +1,4 @@
 import {Box, Checkbox, Icon, Radio, useTheme} from '@mui/material'
-import {sortBy} from 'utils/lodashNamedExport'
 import {pageDefinitions} from 'core/pageDefinition'
 import {styleUtils} from 'core/theme'
 import {getOptionsFromInput, getPlaceholderFromInput} from 'components_feature/Report/Details/DetailInputsUtils'
@@ -201,7 +200,7 @@ const NodeInfo = ({anomaly}: {anomaly: SubcategoryInformation}) => {
 const Arborescence = () => {
   const [openAll, setOpenAll] = useState(false)
   const [disabled, setDisabled] = useState(false)
-  const anomalies = sortBy(allVisibleAnomalies(), _ => _.id)
+  const anomalies = allVisibleAnomalies()
   return (
     <Page>
       <Head>

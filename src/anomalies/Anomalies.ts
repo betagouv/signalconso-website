@@ -5,7 +5,11 @@ import anomaliesJSON from './yml/anomalies.json'
 export const allAnomalies = anomaliesJSON.list as Anomaly[]
 
 export const allVisibleAnomalies = () =>
-  allAnomalies.filter(_ => !_.hidden && (!_.isHiddenDemoCategory || appConfig.showDemoCategory))
+  allAnomalies
+    .filter(_ => !_.hidden && (!_.isHiddenDemoCategory || appConfig.showDemoCategory))
+    .sort((a, b) => {
+      return parseInt(a.id) - parseInt(b.id)
+    })
 
 export const instanceOfSubcategoryInput = (_?: Category): _ is SubcategoryInput => {
   return !!(_ as SubcategoryInput)?.detailInputs
