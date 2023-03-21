@@ -7,7 +7,7 @@ import {useI18n} from '../i18n/I18n'
 import {appConfig} from '../core/appConfig'
 import {BtnAdmin} from './BtnAdmin'
 import {useMemo, useState} from 'react'
-import {useWindowWidth} from 'hooks/useWindowWidth'
+import {useBreakpoints} from 'hooks/useBreakpoints'
 import {IconBtn} from '../alexlibs/mui-extension/IconBtn/IconBtn'
 import Image from 'next/image'
 
@@ -48,7 +48,7 @@ export const headerHeight = {
 export const Header = () => {
   const theme = useTheme()
   const {m} = useI18n()
-  const width = useWindowWidth()
+  const {isLgOrMore} = useBreakpoints()
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
   const isMobileMenuOpen = !!anchorEl
   const scrolled = useScrollTrigger({
@@ -64,6 +64,8 @@ export const Header = () => {
     ],
     [],
   )
+
+  const tinyVersion = scrolled || !isLgOrMore
 
   return (
     <Box
@@ -86,7 +88,7 @@ export const Header = () => {
         }),
       }}
     >
-      {scrolled || width.isMobileWidthMax ? (
+      {tinyVersion ? (
         <Image width={140} height={38} style={{marginRight: theme.spacing(3)}} src="/image/gouv-mobile.svg" alt={m.logoAltGouv} />
       ) : (
         <Image width={180} height={110} style={{marginRight: theme.spacing(3)}} src="/image/gouv.new.png" alt={m.logoAltGouv} />
@@ -94,45 +96,40 @@ export const Header = () => {
       <Link href={siteMap.index}>
         <a>
           <Image
-            height={scrolled || width.isMobileWidthMax ? 40 : 60}
-            width={scrolled || width.isMobileWidthMax ? '90' : '130'}
+            height={tinyVersion ? 40 : 60}
+            width={tinyVersion ? '90' : '130'}
             src="/image/logo-signalconso.svg"
             alt={m.logoAltSignalconso}
           />
         </a>
       </Link>
 
-      {width.isMobileWidthMax && (
-        <>
-          <IconBtn
-            aria-controls={isMobileMenuOpen ? 'basic-menu' : undefined}
-            aria-haspopup="true"
-            aria-expanded={isMobileMenuOpen ? 'true' : undefined}
-            sx={{marginLeft: 'auto'}}
-            onClick={e => setAnchorEl(e.currentTarget)}
-          >
-            <Icon>menu</Icon>
-          </IconBtn>
-          <Menu anchorEl={anchorEl} onClose={() => setAnchorEl(null)} open={isMobileMenuOpen}>
-            {menuItems.map(_ => (
-              <Link key={_.href} href={_.href}>
-                <MenuItem onClick={() => setAnchorEl(null)}>{_.label}</MenuItem>
-              </Link>
-            ))}
-          </Menu>
-        </>
-      )}
-      {!width.isMobileWidthMax && (
-        <nav style={{marginLeft: 'auto', display: 'flex', alignItems: 'center'}}>
-          <ul style={{listStyle: 'none', display: 'flex', alignItems: 'center', margin: 0}}>
-            {menuItems.map(_ => (
-              <li key={_.href}>
-                <HeaderItem href={_.href}>{_.label}</HeaderItem>
-              </li>
-            ))}
-          </ul>
-        </nav>
-      )}
+      <div className="lg:hidden ml-auto">
+        <IconBtn
+          aria-controls={isMobileMenuOpen ? 'basic-menu' : undefined}
+          aria-haspopup="true"
+          aria-expanded={isMobileMenuOpen ? 'true' : undefined}
+          onClick={e => setAnchorEl(e.currentTarget)}
+        >
+          <Icon>menu</Icon>
+        </IconBtn>
+        <Menu anchorEl={anchorEl} onClose={() => setAnchorEl(null)} open={isMobileMenuOpen}>
+          {menuItems.map(_ => (
+            <Link key={_.href} href={_.href}>
+              <MenuItem onClick={() => setAnchorEl(null)}>{_.label}</MenuItem>
+            </Link>
+          ))}
+        </Menu>
+      </div>
+      <nav className="hidden lg:flex items-center ml-auto">
+        <ul style={{listStyle: 'none', display: 'flex', alignItems: 'center', margin: 0}}>
+          {menuItems.map(_ => (
+            <li key={_.href}>
+              <HeaderItem href={_.href}>{_.label}</HeaderItem>
+            </li>
+          ))}
+        </ul>
+      </nav>
       <BtnAdmin sx={{ml: 1}} />
     </Box>
   )

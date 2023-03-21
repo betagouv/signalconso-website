@@ -1,7 +1,6 @@
 import {alpha, Box, BoxProps, Theme} from '@mui/material'
 import {SxProps} from '@mui/system'
 import {styleUtils} from 'core/theme'
-import {useWindowWidth} from 'hooks/useWindowWidth'
 import {useI18n} from 'i18n/I18n'
 import {getIndexForStep, ReportStep, ReportStepOrDone, reportSteps} from 'model/ReportStep'
 import {fnSwitch} from '../../utils/FnSwitch'
@@ -27,7 +26,6 @@ export const ReportFlowStepperHeader = ({
   const {m} = useI18n()
 
   const isDone = currentStep === 'Done'
-  const {isMobileWidthMax} = useWindowWidth()
 
   function getStepStatus(step: ReportStep): StepStatus {
     if (step === currentStep) {
@@ -123,27 +121,14 @@ export const ReportFlowStepperHeader = ({
               >
                 {stepIndex + 1}
               </Box>
-              {!hideLabel && !isMobileWidthMax && (
-                <Box
-                  sx={{
-                    mt: 1,
-                    textAlign: 'center',
-                    ...fnSwitch<StepStatus, SxProps<Theme>>(
-                      stepStatus,
-                      {
-                        currentStep: {
-                          fontWeight: t => t.typography.fontWeightBold,
-                        },
-                        futureStep: {
-                          color: t => t.palette.text.disabled,
-                        },
-                      },
-                      () => ({}),
-                    ),
-                  }}
+              {!hideLabel && (
+                <div
+                  className={`mt-2 hidden lg:block text-center ${
+                    stepStatus === 'currentStep' ? 'font-medium' : stepStatus === 'futureStep' ? 'text-gray-500' : ''
+                  }`}
                 >
                   {stepLabel}
-                </Box>
+                </div>
               )}
             </Box>
           </Box>

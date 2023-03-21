@@ -2,11 +2,9 @@ import {ScButton} from 'components_simple/Button/Button'
 import {ButtonProps} from '@mui/material'
 import {useI18n} from '../i18n/I18n'
 import {siteMap} from '../core/siteMap'
-import {useWindowWidth} from '../hooks/useWindowWidth'
 
 export const BtnAdmin = ({sx, ...props}: ButtonProps) => {
   const {m} = useI18n()
-  const width = useWindowWidth()
   return (
     <ScButton
       href={siteMap.connexion}
@@ -16,7 +14,7 @@ export const BtnAdmin = ({sx, ...props}: ButtonProps) => {
       {...props}
       sx={{whiteSpace: 'nowrap', ...sx}}
     >
-      {width.isMobileWidthMax ? '' : m.menu_authSpace}
+      <span className="hidden lg:inline">{m.menu_authSpace}</span>
     </ScButton>
   )
 }
