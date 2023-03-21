@@ -24,7 +24,7 @@ export function ProblemConsumerWishInformation({consumerWish}: {consumerWish: Co
           {pickText(m, consumerWish)}
         </Txt>
         <Txt sx={{mt: 2, ...textStyle}} block>
-          {m.consumerWishInvestigationIsPossible}
+          {pickSecondText(m, consumerWish)}
         </Txt>
       </Box>
     </Animate>
@@ -32,7 +32,6 @@ export function ProblemConsumerWishInformation({consumerWish}: {consumerWish: Co
 }
 
 function pickText(m: I18nContextProps['m'], consumerWish: ConsumerWish) {
-  m.consumerWishFixContractualDispute
   switch (consumerWish) {
     case 'fixContractualDispute':
       return <span dangerouslySetInnerHTML={{__html: m.consumerWishFixContractualDispute}} />
@@ -40,6 +39,17 @@ function pickText(m: I18nContextProps['m'], consumerWish: ConsumerWish) {
       return m.consumerWishCompanyImprovement
     case 'getAnswer':
       return m.consumerWishGetAnswer
+  }
+}
+
+function pickSecondText(m: I18nContextProps['m'], consumerWish: ConsumerWish) {
+  m.consumerWishFixContractualDispute
+  switch (consumerWish) {
+    case 'fixContractualDispute':
+    case 'companyImprovement':
+      return m.consumerWishInvestigationIsPossible
+    case 'getAnswer':
+      return m.consumerWishInvestigationIsPossible2
   }
 }
 
