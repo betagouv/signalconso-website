@@ -171,7 +171,7 @@ const buildScTheme = (): Theme => {
             },
           },
           p: {
-            textAlign: 'justify',
+            // textAlign: 'justify',
           },
           a: {
             color: 'inherit',

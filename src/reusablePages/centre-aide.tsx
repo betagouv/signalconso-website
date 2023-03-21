@@ -16,12 +16,12 @@ const a11yProps = (index: number) => {
 export const CentreAide = () => {
   const [activeTab, setActiveTab] = useState(0)
   return (
-    <Page size="small" className="blog">
+    <Page maxWidth="small" className="blog">
       <Head>
         <title>{pageDefinitions.centreAide.title}</title>
         <meta name="description" content={pageDefinitions.centreAide.description} />
       </Head>
-      <h1>Centre d'aide</h1>
+      <h1 className="mb-6">Centre d'aide</h1>
       <Tabs
         value={activeTab}
         onChange={(e, i) => setActiveTab(i)}

@@ -47,7 +47,7 @@ const DelaiDeRetractation = () => {
   const [contractDate, setContractDate] = useState<Date | undefined>()
   const deadlineDate = useMemo(() => (contractDate ? calculRetractationDeadline(contractDate) : undefined), [contractDate])
   return (
-    <Page size="small" className="blog">
+    <Page maxWidth="small" className="blog">
       <Head>
         <title>{pageDefinitions.delaiRetractation.title}</title>
         <meta name="description" content={pageDefinitions.delaiRetractation.description} />

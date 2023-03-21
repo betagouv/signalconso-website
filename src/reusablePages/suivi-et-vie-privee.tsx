@@ -7,7 +7,7 @@ import {pageDefinitions} from 'core/pageDefinition'
 
 export const SuiviEtViePrivee = () => {
   return (
-    <Page size="small" className="blog">
+    <Page maxWidth="small" className="blog">
       <Head>
         <title>{pageDefinitions.suiviEtViePrivee.title}</title>
         <meta name="description" content={pageDefinitions.suiviEtViePrivee.description} />
