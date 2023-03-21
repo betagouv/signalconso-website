@@ -34,7 +34,7 @@ export const ReportPathPage = ({reportPath, isWebView = false}: {reportPath: str
     throw new Error(`Cannot find anomaly for reportPath : ${reportPath}`)
   }
   return (
-    <Page width={624}>
+    <Page maxWidth={624}>
       <Head>
         <title>{anomaly.title + ' - SignalConso'}</title>
         <meta name="description" content={undefinedIfNull(anomaly.seoDescription ?? anomaly.description)} />

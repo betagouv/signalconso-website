@@ -5,11 +5,16 @@ import {Box, BoxProps} from '@mui/material'
 import {externalLinks} from 'core/externalLinks'
 import {appConfig} from 'core/appConfig'
 import * as React from 'react'
+import {ReactNode} from 'react'
+
+function Title({children}: {children: ReactNode}) {
+  return <h2 className="mb-4">{children}</h2>
+}
 
 export const CentreAideConso = (props: BoxProps) => {
   return (
     <Box {...props}>
-      <h2>Généralités</h2>
+      <Title>Généralités</Title>
       <AccordionPanels>
         <AccordionPanel title={`Comment fonctionne SignalConso ?`}>
           <p>
@@ -18,7 +23,7 @@ export const CentreAideConso = (props: BoxProps) => {
         </AccordionPanel>
       </AccordionPanels>
 
-      <h2 className="pt-5">Je veux faire un signalement</h2>
+      <Title>Je veux faire un signalement</Title>
       <AccordionPanels>
         <AccordionPanel title={`Je ne trouve pas la bonne catégorie`}>
           <p>
@@ -83,7 +88,7 @@ export const CentreAideConso = (props: BoxProps) => {
         </AccordionPanel>
       </AccordionPanels>
 
-      <h2 className="pt-5">J'ai fait un signalement</h2>
+      <Title>J'ai fait un signalement</Title>
       <AccordionPanels>
         <AccordionPanel title={`Je n'ai pas de nouvelle depuis que j'ai fait mon signalement`}>
           <p>
@@ -131,7 +136,7 @@ export const CentreAideConso = (props: BoxProps) => {
           </p>
         </AccordionPanel>
       </AccordionPanels>
-      <h2 className="pt-5">Je veux poser une question à la répression des fraudes</h2>
+      <Title>Je veux poser une question à la répression des fraudes</Title>
       <AccordionPanels>
         <AccordionPanel title={`Je ne trouve pas où le faire`}>
           <p>
@@ -160,7 +165,7 @@ export const CentreAideConso = (props: BoxProps) => {
           </p>
         </AccordionPanel>
       </AccordionPanels>
-      <h2 className="pt-5">J’ai posé une question à la répression des fraudes</h2>
+      <Title>J’ai posé une question à la répression des fraudes</Title>
       <AccordionPanels>
         <AccordionPanel title={`Je n’ai pas de nouvelle`}>
           <p>

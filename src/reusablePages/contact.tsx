@@ -5,7 +5,7 @@ import {Alert} from '../alexlibs/mui-extension/Alert/Alert'
 
 export const Contact = () => {
   return (
-    <Page size="small" className="blog">
+    <Page maxWidth="small" className="blog">
       <Head>
         <title>{pageDefinitions.contact.title}</title>
         <meta name="description" content={pageDefinitions.contact.description} />

@@ -36,7 +36,7 @@ const Playground = () => {
     {label: 'acknowledgment', component: () => <PlaygroundAcknowledgment />},
   ]
   return (
-    <Page size="small">
+    <Page maxWidth="small">
       <Tabs value={value} onChange={(e, value) => setValue(value)}>
         {tabs.map(tab => (
           <Tab key={tab.label} label={tab.label} />
