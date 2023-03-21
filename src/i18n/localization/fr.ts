@@ -266,9 +266,11 @@ export const fr = {
     consumerWishFixContractualDispute: `Votre signalement sera transmis à l'entreprise. La répression des fraudes ne s'occupe pas de résoudre les problèmes
     individuels, mais <strong>faire le signalement peut inciter l'entreprise à vous répondre.</strong>`,
     consumerWishCompanyImprovement: `Votre signalement sera transmis à l'entreprise. Vous aurez la possibilité de rester anonyme.`,
-    consumerWishGetAnswer: `Un agent vous répondra prochainement. L'entreprise ne sera pas informée de votre démarche.`,
+    consumerWishGetAnswer: `Un agent vous répondra sous les plus brefs délais.`,
     consumerWishInvestigationIsPossible:
       "La répression des fraudes pourra décider de mener une enquête sur l'entreprise grâce à vos informations.",
+    consumerWishInvestigationIsPossible2:
+      'Si les signalements sont trop nombreux ou fréquents pour un établissement, les enquêteurs de la répression des fraudes interviendront auprès des professionnels.',
     informationRatingSaved: `Votre avis a bien été enregistré, nous vous en remercions.`,
     informationTitle: `Emmh, nous ne pouvons pas traiter votre signalement.`,
     informationReportOutOfScope: `Nous ne doutons pas que vous ayez réellement rencontré un problème mais... il ne s’agit pas d’une fraude.`,
