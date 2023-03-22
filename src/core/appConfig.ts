@@ -32,7 +32,6 @@ export const appConfig = {
   matomo_url: process.env.NEXT_PUBLIC_MATOMO_URL,
   maxDescriptionInputLength: 1000,
   infoBanner: process.env.NEXT_PUBLIC_INFO_BANNER,
-  infoBannerOnMobile: readBool(process.env.NEXT_PUBLIC_INFO_BANNER_ON_MOBILE),
   dummyEmailDomain: ['@yopmail.com'],
   atInternet_siteId: process.env.NEXT_PUBLIC_ATINTERNET_SITE_ID,
   // TRELLO-1671

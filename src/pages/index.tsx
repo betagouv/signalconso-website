@@ -4,7 +4,6 @@ import {SxProps} from '@mui/system'
 import {allVisibleAnomalies} from 'anomalies/Anomalies'
 import {Section} from 'components_simple/Section'
 import {useI18n} from 'i18n/I18n'
-import {useWindowWidth} from 'hooks/useWindowWidth'
 import {InfoBanner} from 'components_feature/InfoBanner/InfoBanner'
 import {useRgpdBanner} from 'components_feature/RgpdBanner/RgpdBanner'
 import Head from 'next/head'
@@ -30,7 +29,6 @@ const ReportStartedAlert = dynamic(() => import('components_feature/ReportStarte
 
 const Home = () => {
   const {m} = useI18n()
-  const {isMobileWidthMax} = useWindowWidth()
   useRgpdBanner()
   useEffect(() => {
     smoothscroll.polyfill()
@@ -50,14 +48,8 @@ const Home = () => {
       </Head>
       <InfoBanner />
       <main>
-        <Section
-          sx={{
-            background: t => t.palette.primary.main,
-            color: t => t.palette.primary.contrastText,
-            textAlign: 'center',
-            padding: isMobileWidthMax ? 1 : 5,
-            fontSize: isMobileWidthMax ? 22 : 32,
-          }}
+        <section
+          className="bg-sclightblue text-white text-center px-4 py-6 xl:px-10 xl:py-14  text-[22px] xl:text-[32px]"
           dangerouslySetInnerHTML={{__html: m.signalconsoCatchWord}}
         />
 
