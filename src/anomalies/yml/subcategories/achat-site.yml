@@ -1,0 +1,474 @@
+- title: Le site internet en lui-même
+  example: 'Exemple : publicité trompeuse, absence des informations obligatoires'
+  companyKind: WEBSITE
+  subcategories:
+    - title: Publicité trompeuse ou mensonger
+      example: >-
+        Exemple : fausse description d'un produit, fausse promesse sur origine, le résultat, impact environnementale, produit jamais disponible, faux stock affiché, faux compte-à-rebours, etc
+      ccrfCode:
+        - '23B'
+      reponseconsoCode:
+        - '210'
+        - '220'
+    - title: Impossible d'identifier l'entreprise
+      example: >- 
+        Exemple : Je ne trouve aucune information sur l'identité de l'entreprise sur le site (pas de coordonnées postales, téléphoniques, mail, pas d'adresse postale, pas de siret/Sirent/RCS)'
+      ccrfCode:
+        - '220'
+        - '21A'
+    - title: Impossible de contacter l'entreprise
+      example: >-
+        Exemple : Je ne trouve pas sur le site aucun formulaire de contact, d'adresse postale, aucun mail ou de numéro de téléphone.
+      ccrfCode:
+        - '220'
+        - '21A'
+    - title: Absence d'information avant de commander
+      example: >-
+        Exemple : Je ne suis pas informé que c'est un abonnement, je n'ai pas d'information sur mon droit de rétractation, je n'ai pas d'information sur le coût de renvoie des colis.
+      ccrfCode:
+        - '23B'      
+    - title: Le site a disparu 
+      example: >-
+        Exemple : Il y a un mois, j'ai commandé un produit qui n'est jamais arrivé et le site a disparu.
+      information:
+        title: Ce type de problème ne doit pas être signalé sur SignalConso
+        subTitle: Il concerne la police ou la gendarmerie
+        content: >-
+          Mais, sachez que grâce à la procédure de chargeback, ou rétrofacturation, vous pouvez être remboursé gratuitement suite à un achat effectué en ligne <br><a href="https://www.economie.gouv.fr/ target="_blank">https://www.economie.gouv.fr/particuliers/procedure-chargeback</a>. 
+          <br/> Nous vous invitons à utiliser le site dédié <br><a href="https://www.service-public.fr/ target="_blank">https://www.service-public.fr/particuliers/vosdroits/N31138#0_0</a>
+    - title: Autre 
+- title: Le prix
+  example: >-
+    Exemple : il manque les prix, fausse réduction de prix, soldes, promotion
+  companyKind: WEBSITE
+  subcategories:
+    - title: Il manque des prix / les prix sont illisibles
+      ccrfCode:
+        - '163'
+      tags:
+        - ReponseConso
+      reponseconsoCode:
+        - '212'
+        - '210'
+        - '224'
+      detailInputs:
+        - label: Veuillez préciser
+          type: RADIO
+          options:
+            - Prix pas affiché
+            - Prix illisible
+            - Autre (à préciser)
+        - label: Date du constat
+          type: DATE
+          defaultValue: SYSDATE
+        - label: Description
+          type: TEXTAREA
+    - title: Les prix sont plus élevés qu'ailleurs
+      information:
+        title: Les commerçants ont le droit de choisir leurs prix.
+        outOfScope: true
+        content: >-
+          Par contre, les prix doivent être clairement indiqués pour que vous soyez au courant avant d'acheter.
+          <br/> Par exemple, il est autorisé de vendre une bouteille d'eau à 8 euros ou une baguette de pain à 5 euros. C'est au consommateur de bien regarder les prix avant d'acheter.
+          <br/><br/><b>Le saviez-vous ?</b>
+          <br/> Il existe quelques exceptions à ce principe. Certains prix sont réglementés, c'est-à-dire qu'ils sont encadrés par la loi.
+          <br/> Par exemple, le prix des livres est réglementé.
+          <br/><br/> Un commerçant n'a pas le droit de vendre à un prix trop bas : il ne peut pas vendre un produit moins cher que ce qu'il lui a coûté. Il existe quelques situations où il a le droit de vendre en dessous du prix d'achat, comme la période des soldes.
+    - title: Fausse réduction de prix
+      example: 'Exemple : fausse promotion, faux temps limite, fausse liquidation totale'
+      tags:
+        - ReponseConso
+      ccrfCode:
+        - '145'
+        - '23F'
+        - '146'
+      reponseconsoCode:
+        - '224'
+        - '210'
+        - '212'
+      detailInputs:
+        - label: "Il s'agit d'un problème sur :"
+          type: RADIO
+          options:
+            - Les soldes
+            - Une promotion
+            - Une liquidation
+            - Autre (à préciser)
+        - label: Date du constat
+          type: DATE
+          defaultValue: SYSDATE
+        - label: Description
+          type: TEXTAREA
+    - title: Abonnement cachés, frais supplémentaires non averti
+      example: >-
+        Exemple : J'ai acheté des chaussures 19€ et mon relève de compte, j'ai payé 29€. J'ai commandé un produit, on me prélève un abonnement que je ne voulais pas, l'entreprise a ajouté des frais supplémentaires sans m'avertir.
+      ccrfCode:
+        - '271'
+      reponseconsoCode:
+        - '210'     
+- title: Une commande effecutée
+  example: 'Exemple : commande jamais livrée, retard de livraison, commande incomplète ou endommage'
+  companyKind: WEBSITE
+  subcategories:
+    - title: Commande jamais livrée et le site a fermé
+      example: >-
+        Exemple : Le site où j'ai commandé à disparu et je n'ai rien reçu de ma commande.
+      information:
+        title: Ce type de problème ne doit pas être signalé sur SignalConso
+        subTitle: Il concerne la police ou la gendarmerie
+        content: >-
+          Mais, sachez que grâce à la procédure de chargeback, ou rétrofacturation, vous pouvez être remboursé gratuitement suite à un achat effectué en ligne <br><a href="https://www.economie.gouv.fr/ target="_blank">https://www.economie.gouv.fr/particuliers/procedure-chargeback</a>. 
+          <br/> Nous vous invitons à utiliser le site dédié <br><a href="https://www.service-public.fr/ target="_blank">https://www.service-public.fr/particuliers/vosdroits/N31138#0_0</a>
+    - title: Commande jamais livrée et le site est toujours ouvert
+      example: >-
+        Exemple : Cela fait un mois que j'ai commandé et je n'ai pas d'information sur le site.
+      ccrfCode:
+        - '23B'
+    - title: Commande incomplète
+      example: >-
+        Exemple : J'ai commandé deux téléphones, j'en ai reçu qu'un seul et l'entreprise ne veut pas me livrer'
+      ccrfCode:
+        - '23B'
+    - title: Livraison en retard ou colis perdu
+      example: >-
+        Exemple : On m'a promis une livraison sous 10 jours, j'ai eu mon produit 6 mois plus tard.'
+      ccrfCode:
+        - '23B'
+      subcategories:
+        - title: J'ai choisi le transporteur en dehors de la sélection propose par l'entreprise
+          example: >-
+            Exemple : J'ai refusé tous les transporteurs de l'entreprise, j'ai obligé l'entreprise à prendre mon transporteur.
+        - title: L'entreprise m'a imposé le transporteur sur une liste lors de la commande
+          example: >-
+            Exemple : J'ai choisi entre livraison à domicile ou à point de retrait sur une liste précise.
+    - title: Produit endommagé lors du transport
+      example: >-
+        Exemple : J'ai reçu une chaise cassée dans un colis éventré'
+      ccrfCode:
+        - '23B'
+      subcategories:
+        - title: J'ai choisi le transporteur en dehors de la sélection propose par l'entreprise
+          example: >-
+            Exemple : J'ai refusé tous les transporteurs de l'entreprise, j'ai obligé l'entreprise à prendre mon transporteur.
+        - title: L'entreprise m'a imposé le transporteur sur une liste lors de la commande
+          example: >-
+            Exemple : J'ai choisi entre livraison à domicile ou à point de retrait sur une liste précise.
+    - title: Le Service après vente ne me répond plus (SAV)
+      example: >-
+        Exemple : Le SAV m'a promis un remboursement, je n'ai rien reçu et le SAV répond toujours que le virement arrive
+      ccrfCode:
+        - '23B'
+- title: Un produit
+  example: 'Exemple : produit non conforme à la description, problème sur la qualité ou la quantité'
+  companyKind: WEBSITE
+  subcategories:
+    - title: C'est un aliment ou une boisson
+      example: >-
+        Exemple : bonbon, viande, conserve, vin, bouteille de vin
+      tags:
+        - ProduitAlimentaire
+      subcategories:
+        - title: Le produit est différent de la description ou j'ai reçu un autre produit à la place
+          example: >-
+            Exemple : J'ai commandé des chaussures et j'ai reçu un porte-clés en forme de chaussure.
+          ccrfCode:
+            - '23B'
+            - '271'
+        - title: Produit "A consommer jusqu'au" reçu après cette date
+          example: >-
+            Exemple : A consommer jusqu'au 17/02/XXXX, j'ai reçu le colis 18/02/XXXX
+          ccrfCode:
+            - '323'
+          subcategoriesTitle: Quelle phrase est écrite devant la date&#160;?
+          subcategories: !!import/single ../common/date.yml
+        - title: Problème avec l'emballage ou l'étiquette
+          example: >-
+            'Exemple : liste des ingrédients manquante, logo trompeur'
+          tags:
+            - ReponseConso
+          subcategories:
+            - title: Informations manquantes
+              reponseconsoCode:
+                - '273'
+                - '323'
+                - '274'
+              detailInputs:
+                - label: Quelle information manque-t-il&#160;?
+                  type: RADIO
+                  options:
+                    - Date limite
+                    - Allergènes
+                    - Liste des ingrédients
+                    - Pas d'étiquette du tout
+                    - Autre (à préciser)
+                - label: Date du constat (ou d'achat suivant le cas)
+                  type: DATE_NOT_IN_FUTURE
+                  defaultValue: SYSDATE
+                - label: Type de produit
+                  type: TEXT
+                - label: Nom /marque
+                  type: TEXT
+                - label: Qu'avez-vous constaté&#160;?
+                  type: TEXTAREA
+              fileLabel: Photos du produit
+        - title: Informations sur l'emballage uniquement en langue étrangère
+          example: >-
+            'Aucune information traduite en français'
+          reponseconsoCode:
+            - '273'
+            - '211'
+          detailInputs:
+            - label: Date du constat (ou d'achat suivant le cas)
+              type: DATE_NOT_IN_FUTURE
+              defaultValue: SYSDATE
+            - label: Type de produit
+              type: TEXT
+            - label: Nom /marque
+              type: TEXT
+            - label: Qu'avez-vous constaté&#160;?
+              type: TEXTAREA
+        - title: La quantité annoncée est non conforme
+          example: >-
+            'Exemple : J'ai commander 500 gr de chocolat, je reçois 300 gr'
+          reponseconsoCode:
+            - '210'
+            - '276'
+            - '277'
+        - title: Autre 
+    - title: C'est un objet
+      example: >-
+        'Exemple : jouet, électroménager, vêtement, savon, vaisselle, meuble'
+      tags:
+        - ProduitIndustriel   
+      subcategories:  
+        - title: Informations sur l'emballage et notice uniquement en langue étrangère
+          example: >-
+            'Aucune information traduite en français, la notice d'utilisation n'est pas en français'
+          reponseconsoCode:
+            - '273'
+            - '211'
+          detailInputs:
+            - label: Date du constat (ou d'achat suivant le cas)
+              type: DATE_NOT_IN_FUTURE
+              defaultValue: SYSDATE
+            - label: Type de produit
+              type: TEXT
+            - label: Nom /marque
+              type: TEXT
+            - label: Qu'avez-vous constaté&#160;?
+              type: TEXTAREA
+        - title: Impossible de renvoier un produit et de me faire rembourser
+          example: >-
+            'Exemple : l'entreprise refuse de me reprendre un article'
+          ccrfCode:
+            - '21D'
+          subcategoriesTitle: Pourquoi voulez-vous retourner ou échanger votre article ?
+          subcategories:
+            - title: Il présente un défaut ou il ne marche plus
+              reponseconsoCode:
+                - '464'
+                - '465'
+              subcategoriesTitle: Avez-vous acheté ce produit neuf ou d'occasion&#160;?
+              subcategories:
+                - title: Neuf
+                  subcategoriesTitle: Quand avez-vous acheté le produit&#160;?
+                  subcategories:
+                    - title: Il y a moins de 2 ans
+                      detailInputs:
+                        - label: Date d'achat
+                          type: DATE
+                        - label: Nom du produit
+                          type: TEXT
+                        - label: Date du constat
+                          type: DATE
+                          defaultValue: SYSDATE
+                        - label: Interlocuteur
+                          type: RADIO
+                          options:
+                            - Téléphone
+                            - Mail
+                            - Courrier
+                        - label: Pour quelle raison le commerçant ne veut-il pas vous reprendre le produit&#160;?
+                          type: TEXTAREA
+                      fileLabel: Preuve d'achat / publicité / offre de vente
+                    - title: Il y a plus de 2 ans
+                      subcategoriesTitle: Bénéficiez-vous d'une extension garantie&#160;?
+                      subcategories:
+                        - title: Oui
+                          example: 'Exemple : garantie contractuelle, garantie constructeur, extension de garantie, échange à neuf'
+                          subcategoriesTitle: Les conditions de reprise sont indiquées dans votre contrat de garantie.
+                            <br />Avant de faire un signalement, relisez les conditions écrites dans ce contrat.
+                          subcategories:
+                            - title: J'ai pris connaissance des conditions écrites dans mon contrat de garantie
+                              detailInputs:
+                                - label: Date d'achat
+                                  type: DATE
+                                - label: Nom du produit
+                                  type: TEXT
+                                - label: Date de fin de la garantie supplémentaire
+                                  type: DATE
+                                - label: Date du constat
+                                  type: DATE
+                                  defaultValue: SYSDATE
+                                - label: Motif de refus
+                                  type: TEXT
+                              fileLabel: Contrat de garantie / publicité de l'offre de vente / document se référant à la garantie
+                        - title: Non
+                          information:
+                            title: <b>Votre produit n'est plus couvert par la garantie.</b>
+                            content:
+                              Votre produit n'est plus couvert par la garantie de base, appelée "garantie légale de conformité".
+                              <br/>La garantie légale de conformité est de 2 ans pour tous les produits neufs et de 6 mois pour tous les produits d'occasion. Elle ne s'applique pas pour les achats entre particuliers.
+                            outOfScope: true
+                            actions:
+                              - question: 'Vous souhaitez attaquer l''entreprise pour "vices cachés"&#160;?'
+                                example: "Un vice caché d'un produit est un défaut :
+                                  <ul>
+                                  <li>qui rend le produit inutilisable, </li>
+                                  <li>présent dès le départ et</li>
+                                  <li>que vous ne connaissiez pas quand vous avez acheté le produit.</li>
+                                  </ul>"
+                                answer:
+                                  C'est à vous de prouver l'existence du vice caché, avec un rapport d'expertise par exemple.
+                                  <br/>Vous avez deux ans à partir de la découverte de ce défaut pour faire la demande .
+                - title: Occasion 
+                  subcategoriesTitle: Quand avez-vous acheté le produit&#160;?
+                  subcategories:
+                    - title: Il y a moins de 6 mois
+                      detailInputs:
+                        - label: Date d'achat
+                          type: DATE
+                        - label: Nom du produit
+                          type: TEXT
+                        - label: Date du constat
+                          type: DATE
+                          defaultValue: SYSDATE
+                        - label: Interlocuteur
+                          type: RADIO
+                          options:
+                            - Vendeur
+                            - Accueil magasin
+                            - Service client (téléphone, mail, courrier)
+                        - label: Pour quelle raison le commerçant ne veut-il pas vous reprendre le produit&#160;?
+                          type: TEXTAREA
+                      fileLabel: Preuve d'achat / publicité / offre de vente
+                    - title: Il y a plus de 6 mois
+                      subcategoriesTitle: Bénéficiez-vous d'une extension garantie&#160;?
+                      subcategories:
+                        - title: Oui
+                          example: 'Exemple : garantie contractuelle, garantie constructeur, extension de garantie, échange à neuf'
+                          subcategoriesTitle: Les conditions de reprise sont indiquées dans votre contrat de garantie.
+                            <br /> Avant de faire un signalement, relisez les conditions écrites dans ce contrat.
+                          subcategories:
+                            - title: J'ai pris connaissance des conditions écrites dans mon contrat de garantie
+                              detailInputs:
+                                - label: Date d'achat
+                                  type: DATE
+                                - label: Nom du produit
+                                  type: TEXT
+                                - label: Date de fin de garantie supplémentaire
+                                  type: DATE
+                                - label: Date du constat
+                                  type: DATE
+                                  defaultValue: SYSDATE
+                                - label: Motif de refus
+                                  type: TEXT
+                              fileLabel: Contrat de garantie / publicité de l'offre de vente / document se référant à la garantie
+                        - title: Non
+                          information:
+                            title: <b>Votre produit n'est plus couvert par la garantie.</b>
+                            content: Votre produit n'est plus couvert par la garantie de base, appelée "garantie légale de conformité". La garantie légale de conformité est de 2 ans pour tous les produits neufs et de 6 mois pour tous les produits d'occasion.
+                            outOfScope: true
+                            actions:
+                              - question: 'Vous souhaitez attaquer l''entreprise pour "vices cachés"&#160;?'
+                                example: "Un vice caché d'un produit est un défaut :
+                                  <ul>
+                                  <li>qui rend le produit inutilisable, </li>
+                                  <li>présent dès le départ et</li>
+                                  <li>que vous ne connaissiez pas quand vous avez acheté le produit.</li>
+                                  </ul>"
+                                answer:
+                                  C'est à vous de prouver l'existence du vice caché, avec un rapport d'expertise par exemple.
+                                  <br/>Vous avez deux ans à partir de la découverte du défaut pour faire la demande .
+            - title: Délai de réflexion ou de rétactation
+              example: >-
+                'Exemple : Dans les 14 jours après la livraion, je veux retourner parce que le vêtement trop petit, j'ai changé d'avis, prix moins cher ailleurs, je n'aime pas la couleur, ...'
+              detailInputs:
+                - label: Date de livraison
+                  type: DATE
+                - label: Nom du produit
+                  type: TEXT
+                - label: Date du constat
+                  type: DATE
+                  defaultValue: SYSDATE
+                - label: Interlocuteur
+                  type: RADIO
+                  options:
+                    - Téléphone
+                    - Mail
+                    - Courrier
+                - label: Pour quelle raison le commerçant ne veut-il pas vous reprendre le produit&#160;?
+                  type: TEXTAREA
+        - title: Autre   
+- title: Un produit dangereux
+  example: 'Exemple : jouet, cosmétique'
+  tags:
+    - ProduitDangereux
+  subcategories:
+    - title: Produit alimentaire
+      tags:
+        - ProduitAlimentaire
+      reponseconsoCode:
+      subcategories: !!import/single ../common/produit-alimentaire.yml
+    - title: Jouet, puériculture, matériel scolaire
+      tags:
+        - ProduitIndustriel
+      subcategoriesTitle: Quel est le risque&#160;?
+      subcategories: !!import/single ../common/produit-dangereux.yml
+    - title: Cosmétique, produit d'hygiène, produit de tatouage
+      tags:
+        - ProduitIndustriel
+      subcategoriesTitle: Quel est le risque&#160;?
+      subcategories: !!import/single ../common/produit-dangereux.yml
+    - title: Vêtement, textile, sac à main, bijou
+      tags:
+        - ProduitIndustriel
+      subcategoriesTitle: Quel est le risque&#160;?
+      subcategories: !!import/single ../common/produit-dangereux.yml
+    - title: Équipement de protection
+      tags:
+        - ProduitIndustriel
+      subcategoriesTitle: Quel est le risque&#160;?
+      subcategories: !!import/single ../common/produit-dangereux.yml
+    - title: Feu d'artifice
+      tags:
+        - ProduitIndustriel
+      subcategoriesTitle: Quel est le risque&#160;?
+      subcategories: !!import/single ../common/produit-dangereux.yml
+    - title: Meuble
+      tags:
+        - ProduitIndustriel
+      subcategoriesTitle: Quel est le risque&#160;?
+      subcategories: !!import/single ../common/produit-dangereux.yml
+    - title: Produit d'entretien, produit chimique, engrais
+      tags:
+        - ProduitIndustriel
+      subcategoriesTitle: Quel est le risque&#160;?
+      subcategories: !!import/single ../common/produit-dangereux.yml
+    - title: Appareil électrique
+        - ProduitIndustriel
+      subcategoriesTitle: Quel est le risque&#160;?
+      subcategories: !!import/single ../common/produit-dangereux.yml
+    - title: Outil
+        - ProduitIndustriel
+      subcategoriesTitle: Quel est le risque&#160;?
+      subcategories: !!import/single ../common/produit-dangereux.yml
+    - title: Autre
+      subcategoriesTitle: Quel est le risque&#160;?
+      subcategories: !!import/single ../common/produit-dangereux.yml
+- title: "J'ai vendu un objet sur internet et je n'ai pas été payé"
+  example: "Exemple : Escroquerie d'un faux acheteur"
+  information:
+    title: Ce type de problème ne doit pas être signalé sur SignalConso
+    subTitle: Il concerne la police ou la gendarmerie
+    content: Nous vous invitons à utiliser le site dédié <br><a href="https://www.service-public.fr/particuliers/vosdroits/F34019" target="_blank">https://www.service-public.fr/particuliers/vosdroits/F34019</a>
