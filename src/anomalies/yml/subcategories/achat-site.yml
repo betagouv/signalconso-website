@@ -4,7 +4,7 @@
   subcategories:
     - title: Publicité trompeuse ou mensonger
       example: >-
-        Exemple : fausse description d'un produit, fausse promesse sur origine, le résultat, impact environnementale, produit jamais disponible, faux stock affiché, faux compte-à-rebours, etc
+        Exemple : fausse description d'un produit, fausse promesse sur l'origine, le résultat, l'impact environnemental, produit jamais disponible, faux stock affiché, faux compte à rebours, etc.
       ccrfCode:
         - '23B'
       reponseconsoCode:
@@ -12,19 +12,19 @@
         - '220'
     - title: Impossible d'identifier l'entreprise
       example: >- 
-        Exemple : Je ne trouve aucune information sur l'identité de l'entreprise sur le site (pas de coordonnées postales, téléphoniques, mail, pas d'adresse postale, pas de siret/Sirent/RCS)'
+        Exemple : Je ne trouve aucune information sur l'identité de l'entreprise sur le site (pas de coordonnées postales, téléphoniques, mail, pas d'adresse postale, pas de SIRET/SIREN/RCS)'
       ccrfCode:
         - '220'
         - '21A'
     - title: Impossible de contacter l'entreprise
       example: >-
-        Exemple : Je ne trouve pas sur le site aucun formulaire de contact, d'adresse postale, aucun mail ou de numéro de téléphone.
+        Exemple : Je ne trouve sur le site aucun formulaire de contact, adresse postale, aucun mail ou numéro de téléphone.
       ccrfCode:
         - '220'
         - '21A'
     - title: Absence d'information avant de commander
       example: >-
-        Exemple : Je ne suis pas informé que c'est un abonnement, je n'ai pas d'information sur mon droit de rétractation, je n'ai pas d'information sur le coût de renvoie des colis.
+        Exemple : Je ne suis pas informé que c'est un abonnement, je n'ai pas d'information sur mon droit de rétractation, je n'ai pas d'information sur le coût de renvoi des colis.
       ccrfCode:
         - '23B'      
     - title: Le site a disparu 
@@ -99,20 +99,20 @@
           defaultValue: SYSDATE
         - label: Description
           type: TEXTAREA
-    - title: Abonnement cachés, frais supplémentaires non averti
+    - title: Abonnement caché, frais supplémentaires non averti
       example: >-
         Exemple : J'ai acheté des chaussures 19€ et mon relève de compte, j'ai payé 29€. J'ai commandé un produit, on me prélève un abonnement que je ne voulais pas, l'entreprise a ajouté des frais supplémentaires sans m'avertir.
       ccrfCode:
         - '271'
       reponseconsoCode:
         - '210'     
-- title: Une commande effecutée
-  example: 'Exemple : commande jamais livrée, retard de livraison, commande incomplète ou endommage'
+- title: Une commande effectuée
+  example: 'Exemple : commande jamais livrée, retard de livraison, commande incomplète ou endommagée'
   companyKind: WEBSITE
   subcategories:
     - title: Commande jamais livrée et le site a fermé
       example: >-
-        Exemple : Le site où j'ai commandé à disparu et je n'ai rien reçu de ma commande.
+        Exemple : Le site où j'ai commandé a disparu et je n'ai rien reçu de ma commande.
       information:
         title: Ce type de problème ne doit pas être signalé sur SignalConso
         subTitle: Il concerne la police ou la gendarmerie
@@ -126,7 +126,7 @@
         - '23B'
     - title: Commande incomplète
       example: >-
-        Exemple : J'ai commandé deux téléphones, j'en ai reçu qu'un seul et l'entreprise ne veut pas me livrer'
+        Exemple : J'ai commandé deux téléphones, je n'en ai reçu qu'un seul et l'entreprise ne veut pas me livrer'
       ccrfCode:
         - '23B'
     - title: Livraison en retard ou colis perdu
@@ -135,25 +135,25 @@
       ccrfCode:
         - '23B'
       subcategories:
-        - title: J'ai choisi le transporteur en dehors de la sélection propose par l'entreprise
+        - title: J'ai choisi le transporteur en dehors de la sélection proposée par l'entreprise
           example: >-
             Exemple : J'ai refusé tous les transporteurs de l'entreprise, j'ai obligé l'entreprise à prendre mon transporteur.
         - title: L'entreprise m'a imposé le transporteur sur une liste lors de la commande
           example: >-
-            Exemple : J'ai choisi entre livraison à domicile ou à point de retrait sur une liste précise.
+            Exemple : J'ai choisi entre livraison à domicile ou en point de retrait sur une liste précise.
     - title: Produit endommagé lors du transport
       example: >-
         Exemple : J'ai reçu une chaise cassée dans un colis éventré'
       ccrfCode:
         - '23B'
       subcategories:
-        - title: J'ai choisi le transporteur en dehors de la sélection propose par l'entreprise
+        - title: J'ai choisi le transporteur en dehors de la sélection proposée par l'entreprise
           example: >-
             Exemple : J'ai refusé tous les transporteurs de l'entreprise, j'ai obligé l'entreprise à prendre mon transporteur.
         - title: L'entreprise m'a imposé le transporteur sur une liste lors de la commande
           example: >-
-            Exemple : J'ai choisi entre livraison à domicile ou à point de retrait sur une liste précise.
-    - title: Le Service après vente ne me répond plus (SAV)
+            Exemple : J'ai choisi entre livraison à domicile ou en point de retrait sur une liste précise.
+    - title: Le Service Après-Vente ne me répond plus (SAV)
       example: >-
         Exemple : Le SAV m'a promis un remboursement, je n'ai rien reçu et le SAV répond toujours que le virement arrive
       ccrfCode:
@@ -213,7 +213,7 @@
               fileLabel: Photos du produit
         - title: Informations sur l'emballage uniquement en langue étrangère
           example: >-
-            'Aucune information traduite en français'
+            Aucune information traduite en français
           reponseconsoCode:
             - '273'
             - '211'
@@ -229,7 +229,7 @@
               type: TEXTAREA
         - title: La quantité annoncée est non conforme
           example: >-
-            'Exemple : J'ai commander 500 gr de chocolat, je reçois 300 gr'
+            Exemple : J'ai commander 500 gr de chocolat, je reçois 300 gr
           reponseconsoCode:
             - '210'
             - '276'
@@ -237,13 +237,13 @@
         - title: Autre 
     - title: C'est un objet
       example: >-
-        'Exemple : jouet, électroménager, vêtement, savon, vaisselle, meuble'
+        Exemple : jouet, électroménager, vêtement, savon, vaisselle, meuble
       tags:
         - ProduitIndustriel   
       subcategories:  
         - title: Informations sur l'emballage et notice uniquement en langue étrangère
           example: >-
-            'Aucune information traduite en français, la notice d'utilisation n'est pas en français'
+            Aucune information traduite en français, la notice d'utilisation n'est pas en français
           reponseconsoCode:
             - '273'
             - '211'
@@ -257,9 +257,9 @@
               type: TEXT
             - label: Qu'avez-vous constaté&#160;?
               type: TEXTAREA
-        - title: Impossible de renvoier un produit et de me faire rembourser
+        - title: Impossible de renvoyer un produit et de me faire rembourser
           example: >-
-            'Exemple : l'entreprise refuse de me reprendre un article'
+            Exemple : l'entreprise refuse de me reprendre un article
           ccrfCode:
             - '21D'
           subcategoriesTitle: Pourquoi voulez-vous retourner ou échanger votre article ?
@@ -292,7 +292,7 @@
                           type: TEXTAREA
                       fileLabel: Preuve d'achat / publicité / offre de vente
                     - title: Il y a plus de 2 ans
-                      subcategoriesTitle: Bénéficiez-vous d'une extension garantie&#160;?
+                      subcategoriesTitle: Bénéficiez-vous d'une extension de garantie&#160;?
                       subcategories:
                         - title: Oui
                           example: 'Exemple : garantie contractuelle, garantie constructeur, extension de garantie, échange à neuf'
@@ -330,7 +330,7 @@
                                   </ul>"
                                 answer:
                                   C'est à vous de prouver l'existence du vice caché, avec un rapport d'expertise par exemple.
-                                  <br/>Vous avez deux ans à partir de la découverte de ce défaut pour faire la demande .
+                                  <br/>Vous avez deux ans à partir de la découverte de ce défaut pour faire la demande.
                 - title: Occasion 
                   subcategoriesTitle: Quand avez-vous acheté le produit&#160;?
                   subcategories:
@@ -390,9 +390,9 @@
                                 answer:
                                   C'est à vous de prouver l'existence du vice caché, avec un rapport d'expertise par exemple.
                                   <br/>Vous avez deux ans à partir de la découverte du défaut pour faire la demande .
-            - title: Délai de réflexion ou de rétactation
+            - title: Délai de réflexion ou de rétractation
               example: >-
-                'Exemple : Dans les 14 jours après la livraion, je veux retourner parce que le vêtement trop petit, j'ai changé d'avis, prix moins cher ailleurs, je n'aime pas la couleur, ...'
+                Exemple : Dans les 14 jours après la livraison, je veux le renvoyer parce que le vêtement est trop petit, j'ai changé d'avis, prix moins cher ailleurs, je n'aime pas la couleur, ...
               detailInputs:
                 - label: Date de livraison
                   type: DATE
