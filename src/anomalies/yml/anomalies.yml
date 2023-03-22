@@ -36,7 +36,7 @@ list:
     description: Influenceur sponsorisé, rémunération, marque, harcèlement sur internet, …
     seoDescription: Vous avez été victime d'une publicité trompeuse sur internet, vous souhaitez signaler un influenceur sponsorisé qui n'indique pas sa rémunération par une marque...
     id: '30'
-    sprite: category-ecommerce
+    sprite: category-internet
     subcategories: !!import/single subcategories/internet.yml  
 
   - category: Travaux / Rénovation
@@ -54,7 +54,7 @@ list:
     description: Options non souscrites facturées, forfait, abonnement mobile ou box, frais de résiliation, …
     seoDescription: Votre opérateur vous a facturé des options non souscrites, votre abonnement mobile ou box est en augmentation ou a été reconduit abusivement, vous avez un doute sur les frais de résiliation.
     id: '50'
-    sprite: category-internet
+    sprite: category-telephonie-media
     subcategories: !!import/single subcategories/telephonie-media.yml
 
   - category: Voyage / Loisirs
@@ -167,7 +167,7 @@ list:
     description: Appels indésirables incessants, spams, démarchage SMS malgré Bloctel, …
     seoDescription: Vous avez un problème d’appels indésirables, inconnus, incessants, de spams, de sms, de télé vente, d’arnaque au CPF, à la formation professionnelle
     id: '170'
-    sprite: category-bloctel
+    sprite: category-demarchage
     subcategories: !!import/single subcategories/bloctel.yml
 
   # - category: Travail au noir
