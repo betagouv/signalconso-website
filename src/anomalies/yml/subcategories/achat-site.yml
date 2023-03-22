@@ -34,7 +34,8 @@
         title: Ce type de problème ne doit pas être signalé sur SignalConso
         subTitle: Il concerne la police ou la gendarmerie
         content: >-
-          Nous vous invitons à utiliser le site dédié <br><a href="https://www.service-public.fr/ target="_blank">https://www.service-public.fr/particuliers/vosdroits/N31138#0_0</a>
+          Mais, sachez que grâce à la procédure de chargeback, ou rétrofacturation, vous pouvez être remboursé gratuitement suite à un achat effectué en ligne <br><a href="https://www.economie.gouv.fr/ target="_blank">https://www.economie.gouv.fr/particuliers/procedure-chargeback</a>. 
+          <br/> Nous vous invitons à utiliser le site dédié <br><a href="https://www.service-public.fr/ target="_blank">https://www.service-public.fr/particuliers/vosdroits/N31138#0_0</a>
     - title: Autre 
 - title: Le prix
   example: >-
@@ -115,7 +116,9 @@
       information:
         title: Ce type de problème ne doit pas être signalé sur SignalConso
         subTitle: Il concerne la police ou la gendarmerie
-        content: Nous vous invitons à utiliser le site dédié <br><a href="https://www.pre-plainte-en-ligne.gouv.fr/" target="_blank">https://www.pre-plainte-en-ligne.gouv.fr/</a>
+        content: >-
+          Mais, sachez que grâce à la procédure de chargeback, ou rétrofacturation, vous pouvez être remboursé gratuitement suite à un achat effectué en ligne <br><a href="https://www.economie.gouv.fr/ target="_blank">https://www.economie.gouv.fr/particuliers/procedure-chargeback</a>. 
+          <br/> Nous vous invitons à utiliser le site dédié <br><a href="https://www.service-public.fr/ target="_blank">https://www.service-public.fr/particuliers/vosdroits/N31138#0_0</a>
     - title: Commande jamais livrée et le site est toujours ouvert
       example: >-
         Exemple : Cela fait un mois que j'ai commandé et je n'ai pas d'information sur le site.
