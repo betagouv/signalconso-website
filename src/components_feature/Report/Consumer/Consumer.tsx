@@ -10,7 +10,7 @@ import {StepNavigation} from 'components_simple/ReportFlowStepper/ReportFlowStep
 import {ReportFlowStepperActions} from 'components_simple/ReportFlowStepper/ReportFlowStepperActions'
 import {Row} from 'components_simple/Row/Row'
 import {useApiClients} from 'context/ApiClientsContext'
-import {useWindowWidth} from 'hooks/useWindowWidth'
+import {useBreakpoints} from 'hooks/useBreakpoints'
 import {useI18n} from 'i18n/I18n'
 import {ReportDraft2} from 'model/ReportDraft2'
 import {useState} from 'react'
@@ -67,7 +67,7 @@ export const _Consumer = ({
   const _checkEmail = useFetcher(signalConsoApiClient.checkEmail)
   const _form = useForm<ConsumerForm>()
   const _analytic = useAnalyticContext()
-  const {isXsOrLess} = useWindowWidth()
+  const {isSmOrMore} = useBreakpoints()
   const {toastError} = useToast()
   const watchContactAgreement = _form.watch('contactAgreement')
 
@@ -103,7 +103,7 @@ export const _Consumer = ({
                 defaultValue={draft.consumer?.gender}
                 control={_form.control}
                 render={({field}) => (
-                  <ScRadioGroup {...field} inline={!isXsOrLess} dense sx={{mt: 1, mb: 2}}>
+                  <ScRadioGroup {...field} inline={isSmOrMore} dense sx={{mt: 1, mb: 2}}>
                     {genders.map(gender => (
                       <ScRadioGroupItem key={gender} value={gender} title={m.gender[gender]} />
                     ))}

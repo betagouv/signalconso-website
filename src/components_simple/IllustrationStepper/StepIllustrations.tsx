@@ -1,5 +1,4 @@
 import {alpha, Box, useTheme} from '@mui/material'
-import {useWindowWidth} from 'hooks/useWindowWidth'
 import Image, {StaticImageData} from 'next/image'
 import {styleUtils} from 'core/theme'
 import SwipeableViews from 'react-swipeable-views'
@@ -19,14 +18,18 @@ interface IllustrationStepperProps {
 export const carouselCss = {}
 
 export const IllustrationStepper = ({steps}: IllustrationStepperProps) => {
-  const {isSmOrLess} = useWindowWidth()
-  return isSmOrLess ? <IllustrationStepperMobile steps={steps} /> : <IllustrationStepperLarge steps={steps} />
+  return (
+    <>
+      <IllustrationStepperMobile steps={steps} />
+      <IllustrationStepperLarge steps={steps} />
+    </>
+  )
 }
 //
 export const IllustrationStepperMobile = ({steps}: IllustrationStepperProps) => {
   const [index, setIndex] = useState(0)
   return (
-    <>
+    <div className="lg:hidden">
       <SwipeableViews enableMouseEvents index={index} onChangeIndex={setIndex}>
         {steps.map(step => (
           <Box key={step.alt}>
@@ -85,18 +88,17 @@ export const IllustrationStepperMobile = ({steps}: IllustrationStepperProps) => 
           </IconBtn>
         ))}
       </Box>
-    </>
+    </div>
   )
 }
 
 export const IllustrationStepperLarge = ({steps}: IllustrationStepperProps) => {
-  const {isMdOrLess, isLgOrLess} = useWindowWidth()
   const dotSize = 22
   const borderSize = 2
   const stepperMargin = 24
   const theme = useTheme()
   return (
-    <div style={{display: 'flex', alignItems: 'center'}}>
+    <div className="items-center hidden lg:flex">
       {steps.map(({image, alt, title}) => (
         <Box
           key={alt}
@@ -137,31 +139,11 @@ export const IllustrationStepperLarge = ({steps}: IllustrationStepperProps) => {
             },
           }}
         >
-          <div
-            style={{
-              height: (() => {
-                if (isMdOrLess) return 140
-                if (isLgOrLess) return 220
-                return 240
-              })(),
-              width: '100%',
-              position: 'relative',
-            }}
-          >
+          <div className="w-full relative h-60 lg:h-36 xl:h-56">
             <Image src={image} alt={alt} objectFit="contain" layout="fill" />
           </div>
-          <Box
-            sx={{
-              display: 'flex',
-              alignItems: 'center',
-              mx: 0.5,
-              my: 0,
-              fontSize: t => (isMdOrLess ? styleUtils(t).fontSize.normal : styleUtils(t).fontSize.big),
-              fontWeight: t => t.typography.fontWeightBold,
-              maxWidth: 300,
-              minHeight: 70,
-            }}
-            component="h2"
+          <h2
+            className="flex items-center mx-1 my-0 text-sm xl:text-base font-medium max-w-xs h-16"
             dangerouslySetInnerHTML={{__html: title}}
           />
         </Box>
