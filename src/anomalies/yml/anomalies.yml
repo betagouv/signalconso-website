@@ -20,7 +20,7 @@ list:
     subcategoriesTitle: Votre problème concerne
     subcategories: !!import/single subcategories/achat-magasin.yml
 
-  - category: Achat sur internet ou sur application mobile
+  - category: Achat sur internet
     title: Signalez un site d'achat à la répression des fraudes
     path: achat-site
     description: Prix, promotion, qualité, poids, garantie, problème de livraison, …
