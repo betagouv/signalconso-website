@@ -123,7 +123,7 @@ export const _Confirmation = ({
               </Txt>
               <SocialNetworkRow socialNetwork={draft.influencer.socialNetwork} color="hint" />
               <Txt size="big" bold block>
-                Nom de l'influenceur
+                Nom de l'influenceur ou influenceuse
               </Txt>
               <Row dense icon="portrait">
                 <Txt color="hint">{draft.influencer.name}</Txt>
