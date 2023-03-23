@@ -2,7 +2,7 @@
   example: 'Exemple : publicité trompeuse, absence des informations obligatoires'
   companyKind: WEBSITE
   subcategories:
-    - title: Publicité trompeuse ou mensonger
+    - title: Publicité trompeuse ou mensongère
       example: >-
         Exemple : fausse description d'un produit, fausse promesse sur l'origine, le résultat, l'impact environnemental, produit jamais disponible, faux stock affiché, faux compte à rebours, etc.
       ccrfCode:
@@ -12,7 +12,7 @@
         - '220'
     - title: Impossible d'identifier l'entreprise
       example: >- 
-        Exemple : Je ne trouve aucune information sur l'identité de l'entreprise sur le site (pas de coordonnées postales, téléphoniques, mail, pas d'adresse postale, pas de SIRET/SIREN/RCS)'
+        Exemple : Je ne trouve aucune information sur l'identité de l'entreprise sur le site (pas de coordonnées postales, téléphoniques, mail, pas d'adresse postale, pas de SIRET/SIREN/RCS)
       ccrfCode:
         - '220'
         - '21A'
@@ -99,9 +99,9 @@
           defaultValue: SYSDATE
         - label: Description
           type: TEXTAREA
-    - title: Abonnement caché, frais supplémentaires non averti
+    - title: Abonnement caché, frais supplémentaires non indiqués
       example: >-
-        Exemple : J'ai acheté des chaussures 19€ et mon relève de compte, j'ai payé 29€. J'ai commandé un produit, on me prélève un abonnement que je ne voulais pas, l'entreprise a ajouté des frais supplémentaires sans m'avertir.
+        Exemple : J'ai acheté des chaussures 19€ et mon relevé de compte, j'ai payé 29€. J'ai commandé un produit, on me prélève un abonnement que je ne voulais pas, l'entreprise a ajouté des frais supplémentaires sans m'avertir.
       ccrfCode:
         - '271'
       reponseconsoCode:
@@ -126,12 +126,12 @@
         - '23B'
     - title: Commande incomplète
       example: >-
-        Exemple : J'ai commandé deux téléphones, je n'en ai reçu qu'un seul et l'entreprise ne veut pas me livrer'
+        Exemple : J'ai commandé deux téléphones, je n'en ai reçu qu'un seul et l'entreprise ne veut pas me livrer
       ccrfCode:
         - '23B'
     - title: Livraison en retard ou colis perdu
       example: >-
-        Exemple : On m'a promis une livraison sous 10 jours, j'ai eu mon produit 6 mois plus tard.'
+        Exemple : On m'a promis une livraison sous 10 jours, j'ai eu mon produit 6 mois plus tard.
       ccrfCode:
         - '23B'
       subcategories:
@@ -143,7 +143,7 @@
             Exemple : J'ai choisi entre livraison à domicile ou en point de retrait sur une liste précise.
     - title: Produit endommagé lors du transport
       example: >-
-        Exemple : J'ai reçu une chaise cassée dans un colis éventré'
+        Exemple : J'ai reçu une chaise cassée dans un colis éventré
       ccrfCode:
         - '23B'
       subcategories:
@@ -153,7 +153,7 @@
         - title: L'entreprise m'a imposé le transporteur sur une liste lors de la commande
           example: >-
             Exemple : J'ai choisi entre livraison à domicile ou en point de retrait sur une liste précise.
-    - title: Le Service Après-Vente ne me répond plus (SAV)
+    - title: Le service après-vente ne me répond plus (SAV)
       example: >-
         Exemple : Le SAV m'a promis un remboursement, je n'ai rien reçu et le SAV répond toujours que le virement arrive
       ccrfCode:
@@ -183,7 +183,7 @@
           subcategories: !!import/single ../common/date.yml
         - title: Problème avec l'emballage ou l'étiquette
           example: >-
-            'Exemple : liste des ingrédients manquante, logo trompeur'
+            Exemple : liste des ingrédients manquante, logo trompeur
           tags:
             - ReponseConso
           subcategories:
@@ -229,7 +229,7 @@
               type: TEXTAREA
         - title: La quantité annoncée est non conforme
           example: >-
-            Exemple : J'ai commander 500 gr de chocolat, je reçois 300 gr
+            Exemple : J'ai commandé 500 gr de chocolat, je reçois 300 gr
           reponseconsoCode:
             - '210'
             - '276'
