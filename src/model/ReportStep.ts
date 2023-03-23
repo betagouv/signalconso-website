@@ -71,7 +71,7 @@ function isBuildingStepDone(r: Partial<ReportDraft2>, step: ReportStep) {
       return !!r.details
     case 'BuildingCompany':
       // When the website is in a foreign country, only the country is specified
-      return !!r.companyDraft?.siret || !!r.companyDraft?.address.postalCode || r.companyDraft?.address.country
+      return !!r.companyDraft?.siret || !!r.companyDraft?.address.postalCode || r.companyDraft?.address.country || !!r.influencer
     case 'BuildingConsumer':
       return !!r.consumer?.email && !!r.consumer?.firstName && !!r.consumer?.lastName
     case 'Confirmation':

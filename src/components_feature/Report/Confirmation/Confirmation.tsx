@@ -20,6 +20,7 @@ import {FileOrigin} from '../../../model/UploadedFile'
 import {useReportCreateContext} from '../ReportCreateContext'
 import {useReportFlowContext} from '../ReportFlowContext'
 import {ConfirmationStep, ConfirmationStepper} from './ConfirmationStepper'
+import {SocialNetworkRow} from '../../../components_simple/SocialNetworkRow/SocialNetworkRow'
 
 export const Confirmation = ({stepNavigation}: {stepNavigation: StepNavigation}) => {
   const _reportFlow = useReportFlowContext()
@@ -86,33 +87,49 @@ export const _Confirmation = ({
               <ReportFiles fileOrigin={FileOrigin.Consumer} hideAddBtn files={draft.uploadedFiles} />
             </Box>
           </ConfirmationStep>
-          <ConfirmationStep title={m.step_company} {...{goToStep}}>
-            <Txt size="big" bold block>
-              {draft.companyDraft.name} {draft.companyDraft.brand ?? ''}
-            </Txt>
+          {draft.companyDraft && (
+            <ConfirmationStep title={m.step_company} {...{goToStep}}>
+              <Txt size="big" bold block>
+                {draft.companyDraft.name} {draft.companyDraft.brand ?? ''}
+              </Txt>
 
-            {draft.companyDraft.siret && (
-              <Txt color="hint" block sx={{mb: 1}}>
-                <Txt>SIRET:&nbsp;</Txt>
-                <Txt bold>{draft.companyDraft.siret}</Txt>
-              </Txt>
-            )}
-            <Row dense icon="location_on">
-              <Txt color="hint">
-                <AddressComponent address={draft.companyDraft.address} />
-              </Txt>
-            </Row>
-            {draft.companyDraft.website && (
-              <Row dense icon="link">
-                <Txt color="hint">{draft.companyDraft.website}</Txt>
+              {draft.companyDraft.siret && (
+                <Txt color="hint" block sx={{mb: 1}}>
+                  <Txt>SIRET:&nbsp;</Txt>
+                  <Txt bold>{draft.companyDraft.siret}</Txt>
+                </Txt>
+              )}
+              <Row dense icon="location_on">
+                <Txt color="hint">
+                  <AddressComponent address={draft.companyDraft.address} />
+                </Txt>
               </Row>
-            )}
-            {draft.companyDraft.phone && (
-              <Row dense icon="phone">
-                <Txt color="hint">{draft.companyDraft.phone}</Txt>
+              {draft.companyDraft.website && (
+                <Row dense icon="link">
+                  <Txt color="hint">{draft.companyDraft.website}</Txt>
+                </Row>
+              )}
+              {draft.companyDraft.phone && (
+                <Row dense icon="phone">
+                  <Txt color="hint">{draft.companyDraft.phone}</Txt>
+                </Row>
+              )}
+            </ConfirmationStep>
+          )}
+          {draft.influencer && (
+            <ConfirmationStep title={m.step_influencer} {...{goToStep}}>
+              <Txt size="big" bold block>
+                Réseau social
+              </Txt>
+              <SocialNetworkRow socialNetwork={draft.influencer.socialNetwork} color="hint" />
+              <Txt size="big" bold block>
+                Nom de l'influenceur
+              </Txt>
+              <Row dense icon="portrait">
+                <Txt color="hint">{draft.influencer.name}</Txt>
               </Row>
-            )}
-          </ConfirmationStep>
+            </ConfirmationStep>
+          )}
           <ConfirmationStep title={m.step_consumer} {...{goToStep}}>
             <Row icon="person">
               {draft.consumer.gender ? m.gender[draft.consumer.gender] + ' ' : ''}

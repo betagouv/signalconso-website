@@ -3,6 +3,11 @@ import {Address, ApiAdress} from './Address'
 import {DetailInputValue} from './CreatedReport'
 import {Gender} from './ReportDraft'
 
+export interface ApiInfluencer {
+  socialNetwork: string
+  name: string
+}
+
 // That's exactly what we should send to the API
 // Equivalent to ReportDraft in scala code
 export interface ApiReportDraft {
@@ -32,6 +37,7 @@ export interface ApiReportDraft {
   tags: ReportTag[]
   reponseconsoCode?: string[]
   ccrfCode?: string[]
+  influencer?: ApiInfluencer
 }
 
 // That's exactly what we receive from the API

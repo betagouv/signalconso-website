@@ -39,6 +39,16 @@ export const fr = {
   formatDuration,
   formatLargeNumber,
   messages: {
+    SocialNetwork: {
+      YOUTUBE: 'Youtube',
+      FACEBOOK: 'Facebook',
+      INSTAGRAM: 'Instagram',
+      TIKTOK: 'TikTok',
+      TWITTER: 'Twitter',
+      LINKEDIN: 'LinkedIn',
+      SNAPCHAT: 'Snapchat',
+      TWITCH: 'Twitch',
+    },
     signalconsoCatchWord: ` Signalez un problème à <b>l’entreprise</b>,<br/>renseignez-vous sur vos droits avec <b>la répression des fraudes</b> ! `,
     yes: 'Oui',
     no: 'Non',
@@ -170,6 +180,7 @@ export const fr = {
     step_problem: `Problème`,
     step_description: `Description`,
     step_company: `Entreprise`,
+    step_influencer: `Influencer`,
     step_consumer: `Consommateur`,
     step_confirm: `Confirmation`,
     step_pageTitle_problem: `Étape : Le problème`,
@@ -344,6 +355,7 @@ export const fr = {
     reportedCompanyName: `Nom ou enseigne de l'entreprise signalée`,
     reportedCompanyNamePlaceholder: `Ex: Boulangerie Petit Jean`,
     companyIdentifiedTitle: `Entreprise identifiée`,
+    influencerIdentifiedTitle: `Influenceur identifiée`,
     companyIdentityHelperWhere: `Où trouver ces identifiants ?`,
     companyIdentityHelper: `A quoi correspondent ces identifiants ?`,
     companyIdentityHelperWhereDesc: `
