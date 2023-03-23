@@ -180,7 +180,7 @@ export const fr = {
     step_problem: `Problème`,
     step_description: `Description`,
     step_company: `Entreprise`,
-    step_influencer: `Influencer`,
+    step_influencer: `Influenceur`,
     step_consumer: `Consommateur`,
     step_confirm: `Confirmation`,
     step_pageTitle_problem: `Étape : Le problème`,
@@ -355,7 +355,7 @@ export const fr = {
     reportedCompanyName: `Nom ou enseigne de l'entreprise signalée`,
     reportedCompanyNamePlaceholder: `Ex: Boulangerie Petit Jean`,
     companyIdentifiedTitle: `Entreprise identifiée`,
-    influencerIdentifiedTitle: `Influenceur identifiée`,
+    influencerIdentifiedTitle: `Influenceur ou influenceuse identifié(e)`,
     companyIdentityHelperWhere: `Où trouver ces identifiants ?`,
     companyIdentityHelper: `A quoi correspondent ces identifiants ?`,
     companyIdentityHelperWhereDesc: `
