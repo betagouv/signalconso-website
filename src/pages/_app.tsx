@@ -16,7 +16,6 @@ import {I18nProvider} from 'i18n/I18n'
 import type {AppProps} from 'next/app'
 import Head from 'next/head'
 import Script from 'next/script'
-import {Atinternet} from 'plugins/atinternet'
 import {Matomo} from 'plugins/matomo'
 import {Sentry} from 'plugins/sentry'
 import {useEffect, useState} from 'react'
@@ -24,6 +23,7 @@ import {QueryClient, QueryClientProvider} from '@tanstack/react-query'
 import {ToastProvider} from '../alexlibs/mui-extension/Toast/Toast'
 import {appConfig} from '../core/appConfig'
 import '../globals.css'
+import {Eularian} from '../plugins/eularian'
 
 interface ScAppProps extends AppProps {
   emotionCache?: EmotionCache
@@ -37,8 +37,8 @@ const App = ({emotionCache = clientSideEmotionCache, ...props}: ScAppProps) => {
   useEffect(() => {
     Sentry.init(appConfig)
     const matomo = Matomo.init({siteId: appConfig.matomo_siteId, url: appConfig.matomo_url})
-    const atInternet = Atinternet.init()
-    setAnalytic(Analytic.init({appConfig, matomo, atInternet}))
+    const eularian = Eularian.init()
+    setAnalytic(Analytic.init({appConfig, matomo, eularian}))
   }, [])
   const [analytic, setAnalytic] = useState<Analytic | undefined>()
   return (
@@ -72,11 +72,12 @@ const _App = ({Component, pageProps, router}: AppProps) => {
       <Head>
         <link rel="canonical" href={config.appBaseUrl + router.asPath} />
       </Head>
-      {config.atInternet_siteId && !isWebView && (
+      {!isWebView && (
         <Script
-          type="text/javascript"
-          src={`https://tag.aticdn.net/${config.atInternet_siteId}/smarttag.js`}
-          strategy="afterInteractive"
+          id="eulerian-analytics"
+          dangerouslySetInnerHTML={{
+            __html: `(function(e,a){var i=e.length,y=5381,k='script',s=window,v=document,o=v.createElement(k);for(;i;){i-=1;y=(y*33)^e.charCodeAt(i)}y='_EA_'+(y>>>=0);(function(e,a,s,y){s[a]=s[a]||function(){(s[y]=s[y]||[]).push(arguments);s[y].eah=e;};}(e,a,s,y));i=new Date/1E7|0;o.ea=y;y=i%26;o.async=1;o.src='//'+e+'/'+String.fromCharCode(97+y,122-y,65+y)+(i%1E3)+'.js?2';s=v.getElementsByTagName(k)[0];s.parentNode.insertBefore(o,s);})('wykp.signal.conso.gouv.fr','EA_push');`,
+          }}
         />
       )}
       <div className="root">

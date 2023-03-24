@@ -33,7 +33,6 @@ export const appConfig = {
   maxDescriptionInputLength: 1000,
   infoBanner: process.env.NEXT_PUBLIC_INFO_BANNER,
   dummyEmailDomain: ['@yopmail.com'],
-  atInternet_siteId: process.env.NEXT_PUBLIC_ATINTERNET_SITE_ID,
   // TRELLO-1671
   // Temporaire, pour montrer ces nouveaux wordings à des gens de la DGCCRF sur démo
   enableBlueExplanations: readBool(process.env.NEXT_PUBLIC_ENABLE_BLUE_EXPLANATIONS),
