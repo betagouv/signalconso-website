@@ -35,6 +35,11 @@
     </url>
 
     <url>
+        <loc>https://signal.conso.gouv.fr/achat-site</loc>
+        <priority>0.4</priority>
+    </url>
+
+    <url>
         <loc>https://signal.conso.gouv.fr/services-aux-particuliers</loc>
         <priority>0.4</priority>
     </url>
