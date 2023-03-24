@@ -12,7 +12,6 @@ export class Eularian {
     if (!window.EA_push) {
       window.EA_push = []
     }
-    console.log(path)
     window.EA_push(['path', path])
   }
 }

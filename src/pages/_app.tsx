@@ -72,7 +72,7 @@ const _App = ({Component, pageProps, router}: AppProps) => {
       <Head>
         <link rel="canonical" href={config.appBaseUrl + router.asPath} />
       </Head>
-      {!isWebView && (
+      {!isWebView && !config.isDev && (
         <Script
           nonce="eYhD6rb8vLVwXsAmnbKl/Q=="
           id="eulerian-analytics"
