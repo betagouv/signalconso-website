@@ -190,7 +190,7 @@ export const fr = {
     step_pageTitle_confirm: `Confirmation`,
     timeFromTo: (from: number, to: number) => `De ${from}h à ${to}h`,
     detailsTextAreaTransmittable: `Ce texte sera <b>lu par l'entreprise</b>. La répression des fraudes pourra également le consulter.`,
-    detailsTextAreaTransmittableAnonymous: `Si vous ne souhaitez pas que l'entreprise connaisse votre identité, <b>ne citez rien de personnel</b>.`,
+    detailsTextAreaTransmittableAnonymous: ` Si vous ne souhaitez pas que l'entreprise connaisse votre identité, <b>ne citez rien de personnel</b>.`,
     detailsTextAreaNotTransmittable: `Ce texte sera lu <b>uniquement par la répression des fraudes.</b>`,
     detailsTextAreaEmployeeConsumer: `Rien ne sera communiqué à votre employeur.`,
     pageNotFoundTitle: `Cette adresse n'existe plus.`,
