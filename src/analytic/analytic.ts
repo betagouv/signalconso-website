@@ -1,35 +1,31 @@
 import {AppConfig, appConfig} from '../core/appConfig'
 import {Matomo} from '../plugins/matomo'
-import {Atinternet} from '../plugins/atinternet'
 import {Router} from 'next/router'
+import {Eularian} from '../plugins/eularian'
 
 export class Analytic {
   static readonly init = ({
     appConfig,
     matomo,
-    atInternet,
+    eularian,
   }: {
     appConfig: AppConfig
     matomo: Matomo | undefined
-    atInternet: Atinternet | undefined
+    eularian: Eularian | undefined
   }) => {
-    return new Analytic(appConfig, matomo, atInternet)
+    return new Analytic(appConfig, matomo, eularian)
   }
 
   private log = (...args: (string | undefined)[]) => {
     console.debug('[Analytic]', ...args)
   }
 
-  private constructor(
-    private appConfig: AppConfig,
-    private matomo: Matomo | undefined,
-    private atInternet: Atinternet | undefined,
-  ) {
+  private constructor(private appConfig: AppConfig, private matomo: Matomo | undefined, private eularian: Eularian | undefined) {
     Router.events.on('routeChangeComplete', (path: string): void => {
       this.log('[routeChangeComplete]', path)
       if (!this.appConfig.isDev) {
         matomo?.trackPage(path)
-        atInternet?.send({name: path})
+        eularian?.send(path)
       }
     })
   }
@@ -38,7 +34,6 @@ export class Analytic {
     this.log('[trackPage]', path, title)
     if (!this.appConfig.isDev) {
       this.matomo?.trackPage(path, title)
-      this.atInternet?.send({level2: 'Visitor', name: path})
     }
   }
 
@@ -46,15 +41,6 @@ export class Analytic {
     this.log('[trackEvent]', category, action, name, value)
     if (!appConfig.isDev) {
       try {
-        this.atInternet?.send({
-          level2: 'Visitor',
-          name: category,
-          chapter1: action,
-          chapter2: name,
-          customObject: {
-            value,
-          },
-        })
         this.matomo?.push(['trackEvent', category, action, name, value])
       } catch (e: any) {
         console.error('[Analytic]', e)

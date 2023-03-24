@@ -67,6 +67,9 @@ export type ReportTag = typeof reportTags[number]
 export const companyKinds = ['SIRET', 'WEBSITE', 'PHONE', 'LOCATION', 'SOCIAL'] as const
 export type CompanyKinds = typeof companyKinds[number]
 
+export const socialNetworks = ['YOUTUBE', 'FACEBOOK', 'INSTAGRAM', 'TIKTOK', 'TWITTER', 'LINKEDIN', 'SNAPCHAT', 'TWITCH'] as const
+export type SocialNetworks = typeof socialNetworks[number]
+
 export interface Information {
   title?: string
   content?: string

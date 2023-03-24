@@ -7,7 +7,7 @@ import React, {ReactElement, ReactNode} from 'react'
 import {Txt} from '../../../alexlibs/mui-extension/Txt/Txt'
 
 interface ConfirmationStepperProps {
-  children: Array<ReactElement<ConfirmationStepProps>>
+  children: Array<ReactElement<ConfirmationStepProps> | undefined>
 }
 
 interface ConfirmationStepProps {
@@ -17,8 +17,19 @@ interface ConfirmationStepProps {
   goToStep: (step: ReportStep) => void
 }
 
+function notEmpty<TValue>(value: TValue | null | undefined): value is TValue {
+  if (value === null || value === undefined) return false
+  const testDummy: TValue = value
+  return true
+}
 export const ConfirmationStepper = ({children}: ConfirmationStepperProps) => {
-  return <>{children.map((child, index) => React.cloneElement(child, {...child.props, key: index, index}))}</>
+  return (
+    <>
+      {children.filter(notEmpty).map((child, index) => {
+        return React.cloneElement(child, {...child.props, key: index, index})
+      })}
+    </>
+  )
 }
 
 export const ConfirmationStep = ({title, children, index, goToStep}: ConfirmationStepProps) => {
