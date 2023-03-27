@@ -16,6 +16,7 @@ export interface Category {
 
 export interface Anomaly extends Category {
   category: string
+  categoryLabel: string
   description: string
   seoDescription?: string
   path: string
