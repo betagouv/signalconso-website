@@ -15,6 +15,7 @@ const Cookies = () => {
       <Panel>
         <PanelBody>
           <h2>Ce site n’affiche pas de bannière de consentement aux cookies, pourquoi ?</h2>
+          <br />
           <p>
             C’est vrai, vous n’avez pas eu à cliquer sur un bloc qui recouvre la moitié de la page pour dire que vous êtes
             d’accord avec le dépôt de cookies — même si vous ne savez pas ce que ça veut dire !
@@ -31,19 +32,23 @@ const Cookies = () => {
             d'éventuels problèmes de navigation;
           </p>
           <h2>Cookies</h2>
+          <br />
           <p>
             Définition : Le cookie est un petit fichier texte enregistré par le navigateur de votre ordinateur, tablette ou
             smartphone. Le cookie, enregistré sur votre ordinateur lorsque vous consultez le site SignalConso, permet de conserver
             des données utilisateur décrites ci-dessous afin de faciliter la navigation et de permettre certaines fonctionnalités.
           </p>
           <h3>Nature des cookies déposés sur le site SignalConso:</h3>
+          <br />
           <p>
             Nous utilisons que des cookies techniques qui permettent et facilitent votre navigation. Certains sont indispensables
             et ne sauraient être supprimés sans affecter gravement l’accès au site et la navigation, d’autres auraient pour
             conséquence une navigation dégradée.
           </p>
           <h3>Liste des cookies déposés</h3>
-          <p>Les cookies d'analyse de mesure d'audience (Xiti - AT Internet / Matomo);</p>
+          <br />
+          <p>Les cookies d'analyse de mesure d'audience (Eulerian / Matomo);</p>
+          <br />
           <table>
             <thead>
               <tr>
@@ -54,13 +59,8 @@ const Cookies = () => {
             </thead>
             <tbody>
               <tr>
-                <td>atuserid</td>
-                <td>Cookie At Internet/Xiti</td>
-                <td>13 mois</td>
-              </tr>
-              <tr>
-                <td>atautdority</td>
-                <td>Cookie At Internet/Xiti</td>
+                <td>etuix</td>
+                <td>Cookie Eulerian</td>
                 <td>13 mois</td>
               </tr>
               <tr>
@@ -90,9 +90,9 @@ const Cookies = () => {
             de pages vues, le nombre de visites, leur fréquence de retour, …).
           </p>
           <p>
-            Nous utilisons l‘outil de mesure d’audience AT Internet. Cet outil est dispensé du recueil de consentement de
+            Nous utilisons l‘outil de mesure d’audience Eulerian. Cet outil est dispensé du recueil de consentement de
             l'internaute relatif au dépôt des cookies Analytics, l'autorité française de protection des données (CNIL) ayant
-            accordé une exemption au cookie Web Analytics d’AT Internet (
+            accordé une exemption au cookie Web Analytics d’Eulerian (
             <a href="https://www.cnil.fr/fr/cookies-solutions-pour-les-outils-de-mesure-daudience">en savoir plus</a>).
           </p>
           <p>
@@ -101,13 +101,12 @@ const Cookies = () => {
             personne.
           </p>
           <p>
-            Les noms des cookies utilisés sont pour At-Internet atuserid et atauthority. Leur durée de conservation est de 13
-            mois. Elles ne sont pas cédées à des tiers ni utilisées à d'autres fins.
+            Les noms des cookies utilisés sont pour Eulerian Etuix. Leur durée de conservation est de 13 mois. Elles ne sont pas
+            cédées à des tiers ni utilisées à d'autres fins.
           </p>
           <p>
             Il en est de même pour l’outil de mesure d’audience de Matomo qui permet de conserver l’historique des données de
-            statistiques anonymes de fréquentation récoltées depuis le lancement de SignalConso, avant le transfert vers
-            At-Internet
+            statistiques anonymes de fréquentation récoltées depuis le lancement de SignalConso
           </p>
           <p>
             Les noms des cookies utilisés sont pour Matomo _pk_session, _pk_id, _pk_ref. Leur durée va de de 30 mn à 13 mois.
@@ -118,6 +117,7 @@ const Cookies = () => {
             rubrique <a href={siteMap.suiviEtViePrivee}>suivi d'audience et vie privée</a>
           </p>
           <h3>Comment accepter ou refuser les cookies:</h3>
+          <br />
           <p>
             Vous avez la possibilité de paramétrer leur navigateur pour supprimer les cookies déjà installés sur leur terminal,
             pour être invités à accepter ou refuser l’installation de cookies au cas par cas ou pour accepter ou refuser
