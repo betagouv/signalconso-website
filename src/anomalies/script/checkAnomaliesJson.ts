@@ -22,7 +22,8 @@ const baseCategorySpec: ObjectSpec = {
 
 const anomalySpec: ObjectSpec = {
   id: _ => _.ifDefined()?.assertIsString(),
-  category: _ => _.assertIsString(),
+  category: _ => _.assertIsSlug(),
+  categoryLabel: _ => _.assertIsString(),
   seoDescription: _ => _.ifDefined()?.assertIsString(),
   path: _ => _.assertIsString(),
   description: _ => _.assertIsString(),

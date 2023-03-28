@@ -56,7 +56,7 @@ export const ReportPathPage = ({reportPath, isWebView = false}: {reportPath: str
             fontSize: t => styleUtils(t).fontSize.title,
           }}
         >
-          {anomaly.category}
+          {anomaly.categoryLabel}
         </Box>
       </Box>
       <ReportFlowStepperWithoutSsr {...{anomaly, isWebView}} />

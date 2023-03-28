@@ -1,6 +1,7 @@
 ---
 list:
-  - category: Retrait-Rappel spécifique
+  - category: RetraitRappelSpecifique
+    categoryLabel: Retrait-Rappel spécifique
     title: Retrait-Rappel spécifique
     path: retrait-rappel
     description: Retrait-Rappel spécifique.
@@ -9,8 +10,9 @@ list:
     subcategories: !!import/single subcategories/retrait-rappel.yml
     subcategoriesTitle: Avez-vous consommé le produit ?
     id: '5'
- 
-  - category: Achat en Magasin
+
+  - category: AchatMagasin
+    categoryLabel: Achat en Magasin
     title: Signalez un achat en magasin à la répression des fraudes
     path: achat-magasin
     description: Prix, promotion, qualité, poids, garantie, …
@@ -20,7 +22,8 @@ list:
     subcategoriesTitle: Votre problème concerne
     subcategories: !!import/single subcategories/achat-magasin.yml
 
-  - category: Achat sur internet
+  - category: AchatInternet
+    categoryLabel: Achat sur internet
     title: Signalez un site d'achat à la répression des fraudes
     path: achat-site
     description: Prix, promotion, qualité, poids, garantie, problème de livraison, …
@@ -29,17 +32,19 @@ list:
     sprite: category-site
     subcategoriesTitle: Votre problème concerne
     subcategories: !!import/single subcategories/achat-site.yml
-    
-  - category: Internet (hors achats)
+
+  - category: Internet
+    categoryLabel: Internet (hors achats)
     title: Signalez un problème d'arnaque en ligne à la répression des fraudes
     path: internet
     description: Influenceur sponsorisé, rémunération, marque, harcèlement sur internet, …
     seoDescription: Vous avez été victime d'une publicité trompeuse sur internet, vous souhaitez signaler un influenceur sponsorisé qui n'indique pas sa rémunération par une marque...
     id: '30'
     sprite: category-internet
-    subcategories: !!import/single subcategories/internet.yml  
+    subcategories: !!import/single subcategories/internet.yml
 
-  - category: Travaux / Rénovation
+  - category: TravauxRenovations
+    categoryLabel: Travaux / Rénovation
     title: Signalez un problème de travaux ou rénovation à la répression des fraudes
     path: travaux-renovation
     description: Artisan (serrurier, plombier, pompe à chaleur, …), démarchage téléphonique pour rénovation énergétique, …
@@ -48,7 +53,8 @@ list:
     sprite: category-craft
     subcategories: !!import/single subcategories/travaux-renovation.yml
 
-  - category: Téléphonie / Fournisseur d'accès internet / médias
+  - category: TelephonieFaiMedias
+    categoryLabel: Téléphonie / Fournisseur d'accès internet / médias
     title: Signalez un problème de forfait à la répression des fraudes
     path: tel-internet-media
     description: Options non souscrites facturées, forfait, abonnement mobile ou box, frais de résiliation, …
@@ -57,7 +63,8 @@ list:
     sprite: category-telephonie-media
     subcategories: !!import/single subcategories/telephonie-media.yml
 
-  - category: Voyage / Loisirs
+  - category: VoyageLoisirs
+    categoryLabel: Voyage / Loisirs
     title: Signalez un problème de séjour, vol, voyage à la répression des fraudes
     path: voyage-loisirs
     description: Annulation, retard, avion, train, bateau, taxi, VTC, avion, hôtel, camping, spectacle, salle de sport, …
@@ -66,7 +73,8 @@ list:
     sprite: category-hobbies
     subcategories: !!import/single subcategories/voyage-loisirs.yml
 
-  - category: Banque / Assurance / Mutuelle
+  - category: BanqueAssuranceMutuelle
+    categoryLabel: Banque / Assurance / Mutuelle
     title: Signalez un problème de banque, assurance, mutuelle à la DGCCRF
     path: banque-assurance-mutuelle
     description: Frais bancaires, remboursement, sinistre, prise en charge optique/dentaire, …
@@ -76,16 +84,18 @@ list:
     subcategories: !!import/single subcategories/banque-assurance-mutuelle.yml
     subcategoriesTitle: Il s'agit d'un problème principalement lié à
 
-  - category: Café / Restaurant
+  - category: CafeRestaurant
+    categoryLabel: Café / Restaurant
     title: Signalez un problème avec un café / restaurant à la répression des fraudes
     path: cafe-restaurant
     description: Descriptions incorrectes, manque d’hygiène, problème à la commande ou à la livraison, …
     seoDescription: Les descriptions sont incorrectes (origine, fait maison, allergènes, halal). L'établissement est sale, insalubre, problème de fraîcheur, d'hygiène, intoxication ou problème à la commande / livraison
     id: '80'
     sprite: category-restaurant
-    subcategories: !!import/single subcategories/cafe-restaurant.yml  
+    subcategories: !!import/single subcategories/cafe-restaurant.yml
 
-  - category: Voiture / Véhicule / Vélo
+  - category: VoitureVehiculeVelo
+    categoryLabel: Voiture / Véhicule / Vélo
     title: Signalez un problème lié à la réparation, entretien, contrôle technique d’une voiture
     path: voiture-vehicule
     description: Garagiste, auto-école, location, réparation, contrôle technique, véhicule neuf ou occasion, garantie, …
@@ -95,7 +105,8 @@ list:
     subcategoriesTitle: 'Pouvez-vous préciser &#160;?'
     subcategories: !!import/single subcategories/voiture-vehicule.yml
 
-  - category: Services aux particuliers
+  - category: ServicesAuxParticuliers
+    categoryLabel: Services aux particuliers
     title: Signalez un problème avec un service / prestation à la répression des fraudes
     path: services-aux-particuliers
     description: CPF, coiffeur, garde d’enfants, nuisibles, ménage, maison de retraite, envoi de colis, …
@@ -105,7 +116,8 @@ list:
     subcategoriesTitle: Votre problème concerne
     subcategories: !!import/single subcategories/services-aux-particuliers.yml
 
-  - category: Eau / Gaz / Electricité
+  - category: EauGazElectricite
+    categoryLabel: Eau / Gaz / Electricité
     title: Signalez un problème d'eau, gaz ou électricité à la répression des fraudes
     path: eau-gaz-electricite
     description: Contrat, prélèvement, énergie, facture excessive, dépassement de consommation, …
@@ -115,6 +127,7 @@ list:
     subcategories: !!import/single subcategories/eau-gaz-electricite.yml
 
   - category: Immobilier
+    categoryLabel: Immobilier
     title: Signalez un problème de loyer, syndic, copropriété, DPE, charges à la DGCCRF
     path: immobilier
     description: Loyer, syndic, copropriété, agence immobilière, location, vente, mandat, état des lieux, DPE, …
@@ -123,7 +136,8 @@ list:
     sprite: category-real-estate
     subcategories: !!import/single subcategories/immobilier.yml
 
-  - category: Démarches administratives
+  - category: DemarchesAdministratives
+    categoryLabel: Démarches administratives
     title: Signalez un problème de médiation ou de faux courrier administratif à la DGCCRF
     path: demarches-administratives
     description: Faux courriers administratifs, services payants (Crit’Air, …), faux frais d’enregistrement, …
@@ -132,7 +146,8 @@ list:
     sprite: category-admin
     subcategories: !!import/single subcategories/demarches-administratives.yml
 
-  - category: Intoxication alimentaire
+  - category: IntoxicationAlimentaire
+    categoryLabel: Intoxication alimentaire
     title: Vous êtes malade, diarrhée, nausée, fièvre suite à un repas, signalez-le à la DGCCRF
     path: intoxication-alimentaire
     description: Vous avez été malade (vomissement, diarrhée) après avoir mangé un aliment suspect
@@ -142,7 +157,8 @@ list:
     subcategories: !!import/single subcategories/intoxication-alimentaire.yml
     subcategoriesTitle: 'Avez-vous été malade ?'
 
-  - category: Secteur de la santé
+  - category: Sante
+    categoryLabel: Secteur de la santé
     title: Signalez un problème avec un professionnel de santé à la répression des fraudes
     path: sante
     description: Professionnels de santé, médecines non conventionnelles, parapharmacie, …
@@ -150,9 +166,10 @@ list:
     id: '150'
     sprite: category-health
     subcategoriesTitle: 'Votre problème concerne :'
-    subcategories: !!import/single subcategories/sante.yml  
+    subcategories: !!import/single subcategories/sante.yml
 
   - category: Animaux
+    categoryLabel: Animaux
     title: Signalez un problème d’animaux, garde, vétérinaire, élevage, toilettage à la DGCCRF
     path: animaux
     description: Croquettes, chien, chat, vétérinaire, garde, assurance santé animaux, élevage, pedigree, …
@@ -161,7 +178,8 @@ list:
     sprite: category-pet
     subcategories: !!import/single subcategories/animaux.yml
 
-  - category: Démarchage abusif
+  - category: DemarchageAbusif
+    categoryLabel: Démarchage abusif
     title: Vous avez un problème de démarchage abusif malgré Bloctel ? Signalez-le à la DGCCRF
     path: bloctel
     description: Appels indésirables incessants, spams, démarchage SMS malgré Bloctel, …
@@ -185,8 +203,9 @@ list:
   #       <li>écrire à la police/gendarmerie</li>
   #       </ul>
   #       La DGCCRF (répression des fraudes) ne s’occupe pas des cas de travail au noir.
-  
-  - category: (category) Une category de démo
+
+  - category: DemoCategory
+    categoryLabel: (category) Une category de démo
     isHiddenDemoCategory: true
     title: (title) Le title de la category
     path: pathdelacategory

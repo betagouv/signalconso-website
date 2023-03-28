@@ -12,6 +12,11 @@ export const team = {
       avatar: 'avatar-guillaumerossmann.png',
     },
     {
+      name: 'Aline Gauthier',
+      role: ['Chef de produit stagiaire'],
+      avatar: 'avatar-aline.png',
+    },
+    {
       name: 'Ingrid Godefroy',
       role: ['Chargée de déploiement'],
       avatar: 'avatar-ingridgodefroy.png',
@@ -34,7 +39,17 @@ export const team = {
     {
       name: 'Emmanuel Letailleur',
       role: ['Développeur informatique'],
-      avatar: 'avatar-emmanuelletallieur.png',
+      avatar: 'avatar-emmanuel.png',
+    },
+    {
+      name: 'Charles Dufour',
+      role: ['Développeur informatique'],
+      avatar: 'avatar-charles.png',
+    },
+    {
+      name: 'Nicolas Serra',
+      role: ['Développeur informatique'],
+      avatar: 'avatar-nicolas.png',
     },
   ],
   former: [
