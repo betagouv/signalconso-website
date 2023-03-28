@@ -55,7 +55,7 @@ function parseStepFromQueryString(stepParamRaw: string | string[] | undefined): 
   return null
 }
 
-export function buildPathForStep(anomaly: Anomaly, step: ReportStepOrDone) {
+export function buildPathForStep(anomaly: Pick<Anomaly, 'path'>, step: ReportStepOrDone) {
   const {path} = anomaly
   const queryString = step === firstReportStep ? '' : `?step=${getIndexForStepOrDone(step)}`
   return `${path}${queryString}`

@@ -34,7 +34,7 @@ export const _Confirmation = ({
   anomaly,
   stepNavigation,
 }: {
-  anomaly: Pick<Anomaly, 'sprite'>
+  anomaly: Pick<Anomaly, 'img'>
   draft: ReportDraft
   stepNavigation: StepNavigation
 }) => {

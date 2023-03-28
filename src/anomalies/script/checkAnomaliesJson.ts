@@ -14,23 +14,20 @@ const rootSpec: ObjectSpec = {
     }),
 }
 
-const baseCategorySpec: ObjectSpec = {
-  title: _ => _.assertIsString(),
-  subcategoriesTitle: _ => _.ifDefined()?.assertIsString(),
-  subcategories: _ => _.ifDefined()?.assertIsArrayWith(assertIsSubcategory),
-}
-
 const anomalySpec: ObjectSpec = {
-  id: _ => _.ifDefined()?.assertIsString(),
   category: _ => _.assertIsSlug(),
-  categoryLabel: _ => _.assertIsString(),
-  seoDescription: _ => _.ifDefined()?.assertIsString(),
   path: _ => _.assertIsString(),
+  id: _ => _.assertIsString(),
+  title: _ => _.assertIsString(),
   description: _ => _.assertIsString(),
-  sprite: _ => _.assertIsString(),
+  seoTitle: _ => _.assertIsString(),
+  seoDescription: _ => _.ifDefined()?.assertIsString(),
+  img: _ => _.assertIsString(),
   hidden: _ => _.ifDefined()?.assertIsBoolean(),
   isHiddenDemoCategory: _ => _.ifDefined()?.assertIsBoolean(),
-  ...baseCategorySpec,
+  subcategoriesTitle: _ => _.ifDefined()?.assertIsString(),
+  // triggers the recursion
+  subcategories: _ => _.assertIsArrayWith(assertIsSubcategory),
 }
 
 const baseSubcategorySpec: ObjectSpec = {
@@ -39,9 +36,10 @@ const baseSubcategorySpec: ObjectSpec = {
   reponseconsoCode: _ => _.ifDefined()?.ifNotNull()?.assertIsArrayOfString(),
   ccrfCode: _ => _.ifDefined()?.assertIsArrayOfString(),
   companyKind: _ => _.ifDefined()?.assertIsAllowedString(companyKinds),
-  // a Subcategory is always a Category
-  // this triggers the recursion
-  ...baseCategorySpec,
+  title: _ => _.assertIsString(),
+  subcategoriesTitle: _ => _.ifDefined()?.assertIsString(),
+  // triggers the recursion
+  subcategories: _ => _.ifDefined()?.assertIsArrayWith(assertIsSubcategory),
 }
 
 const informationSubcategorySpec: ObjectSpec = {

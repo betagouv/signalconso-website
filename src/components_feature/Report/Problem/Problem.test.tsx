@@ -27,10 +27,10 @@ class ProblemFixture {
   static readonly anomaly: Anomaly = {
     id: '1',
     category: '',
-    categoryLabel: '',
     title: '',
+    seoTitle: '',
     path: 'myPath',
-    sprite: 'category-restaurant',
+    img: 'category-restaurant',
     description: 'my description',
     subcategories: ProblemFixture.subcategories,
   }
