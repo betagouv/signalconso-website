@@ -1,14 +1,14 @@
 - title: Téléphonie / internet
   subcategories:
     - title: 'Mon forfait : prix, contrat et facture'
-      example: "Exemple : mon forfait a été augmenté, je ne suis pas d'accord avec ma facture"
+      desc: "Exemple : mon forfait a été augmenté, je ne suis pas d'accord avec ma facture"
       subcategories:
         - title: Le prix de mon forfait a été augmenté (ou va être augmenté)
-          example: "Exemple : ajout automatique d'une option payante, augmentation du nombre d'heures, augmentation des données disponibles..."
+          desc: "Exemple : ajout automatique d'une option payante, augmentation du nombre d'heures, augmentation des données disponibles..."
           subcategoriesTitle: Pour quelle raison votre forfait a été augmenté (ou va être augmenté) ?
           subcategories:
             - title: Augmentation du débit ou des données disponibles
-              example: 'Exemple : passage de 20 Go à 40 Go pour 5 euros de plus'
+              desc: 'Exemple : passage de 20 Go à 40 Go pour 5 euros de plus'
               subcategoriesTitle: Avez-vous reçu un email ou un courrier pour vous prévenir (un mois avant) ?
               ccrfCode:
                 - '21A'
@@ -17,7 +17,7 @@
                   reponseconsoCode:
                     - '421'
                     - '2202'
-                  information: !!import/single ../common/info/tel.yml
+                  blockingInfo: !!import/single ../common/info/tel.yml
                 - title: Non, j'ai reçu seulement un sms
                   tags:
                     - ReponseConso
@@ -29,7 +29,7 @@
             - title: Modification concernant les sms, mms ou appels
               tags:
                 - ReponseConso
-              example: "Exemple : augmentation du nombre d'heures, augmentation du nombre de sms..."
+              desc: "Exemple : augmentation du nombre d'heures, augmentation du nombre de sms..."
               subcategoriesTitle: Avez-vous reçu un email ou un courrier pour vous prévenir (un mois avant) ?
               ccrfCode:
                 - '21A'
@@ -37,7 +37,7 @@
                 - title: Oui, j'ai été prévenu par email ou courrier
                   ccrfCode:
                     - '226'
-                  information: !!import/single ../common/info/tel.yml
+                  blockingInfo: !!import/single ../common/info/tel.yml
                 - title: Non, j'ai reçu seulement un sms
                   ccrfCode:
                     - '226'
@@ -50,7 +50,7 @@
                   reponseconsoCode:
                     - '421'
             - title: Rajout d'une option payante
-              example: 'Exemple : chaîne télé supplémentaire, option cyber-sécurité, option livre audio, option musique...'
+              desc: 'Exemple : chaîne télé supplémentaire, option cyber-sécurité, option livre audio, option musique...'
               ccrfCode:
                 - '21A'
               subcategoriesTitle: Quel est le type d'option ?
@@ -63,7 +63,7 @@
                     - title: Oui, j'ai été prévenu par email ou courrier
                       ccrfCode:
                         - '226'
-                      information: !!import/single ../common/info/tel.yml
+                      blockingInfo: !!import/single ../common/info/tel.yml
                     - title: Non, je n'ai rien reçu
                       ccrfCode:
                         - '421'
@@ -133,8 +133,8 @@
                 - '457'
                 - '411'
     - title: Qualité du réseau
-      example: 'Exemple : je ne capte pas, je capte mal, débit faible'
-      information:
+      desc: 'Exemple : je ne capte pas, je capte mal, débit faible'
+      blockingInfo:
         title: La qualité du réseau est mauvaise
         content: Les problèmes de réseau ou d'éligibilité ne peuvent pas être signalés sur SignalConso. <br> Vous devez les signaler à l'Arcep (Autorité de régulation des communications électroniques, des postes et de la distribution de la presse) sur leur site dédié  <a href="https://jalerte.arcep.fr/" target="_blank" /> J'alerte l'Arcep </a>
     - title: Résiliation / changement d'opérateur
@@ -162,10 +162,10 @@
           reponseconsoCode:
             - '474'
     - title: Appels, sms ou emails indésirables
-      example: 'Exemple : spams, appels incessants, rappel vers un numéro payant'
+      desc: 'Exemple : spams, appels incessants, rappel vers un numéro payant'
       subcategories:
         - title: J'ai répondu à un sms ou j'ai rappelé un numéro qui était payant sans le savoir
-          information: !!import/single ../common/info/called-paid-number.yml
+          blockingInfo: !!import/single ../common/info/called-paid-number.yml
         - title: Je reçois des spams dans mes emails
           ccrfCode:
             - '23b'
@@ -192,12 +192,12 @@
             - label: Décrivez nous plus en détails ce qui s'est passé
               type: TEXTAREA
     - title: Autre
-      example: 'Exemple : téléphone acheté avec le forfait, service client injoignable'
+      desc: 'Exemple : téléphone acheté avec le forfait, service client injoignable'
       tags:
         - ReponseConso
       subcategories:
         - title: Qualité du service client
-          example: 'Exemple : pas de réponse du service client, service client payant'
+          desc: 'Exemple : pas de réponse du service client, service client payant'
           ccrfCode:
             - '23b'
           reponseconsoCode:
@@ -275,7 +275,7 @@
       ccrfCode:
         - '23b'
 - title: Produit dangereux
-  example: 'Exemple : téléphone, accessoire'
+  desc: 'Exemple : téléphone, accessoire'
   tags:
     - ProduitDangereux
   subcategories:

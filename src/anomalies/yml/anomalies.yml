@@ -1,217 +1,216 @@
----
-list:
-  - category: RetraitRappelSpecifique
-    categoryLabel: Retrait-Rappel spécifique
-    title: Retrait-Rappel spécifique
-    path: retrait-rappel
-    description: Retrait-Rappel spécifique.
-    hidden: true
-    sprite: none
-    subcategories: !!import/single subcategories/retrait-rappel.yml
-    subcategoriesTitle: Avez-vous consommé le produit ?
-    id: '5'
 
-  - category: AchatMagasin
-    categoryLabel: Achat en Magasin
-    title: Signalez un achat en magasin à la répression des fraudes
-    path: achat-magasin
-    description: Prix, promotion, qualité, poids, garantie, …
-    seoDescription: Vous avez eu un problème de prix, sur une promotion ou de qualité. Vous n'avez pas reçu votre commande ou celle-ci est abîmée, le service client n'est pas joignable ou insatisfaisant...
-    id: '10'
-    sprite: category-store
-    subcategoriesTitle: Votre problème concerne
-    subcategories: !!import/single subcategories/achat-magasin.yml
+- category: RetraitRappelSpecifique
+  title: Retrait-Rappel spécifique
+  seoTitle: Retrait-Rappel spécifique
+  path: retrait-rappel
+  description: Retrait-Rappel spécifique.
+  hidden: true
+  img: none
+  subcategories: !!import/single subcategories/retrait-rappel.yml
+  subcategoriesTitle: Avez-vous consommé le produit ?
+  id: '5'
 
-  - category: AchatInternet
-    categoryLabel: Achat sur internet
-    title: Signalez un site d'achat à la répression des fraudes
-    path: achat-site
-    description: Prix, promotion, qualité, poids, garantie, problème de livraison, …
-    seoDescription: Vous avez eu un problème de prix, sur une promotion ou de qualité. Vous n'avez pas reçu votre commande ou celle-ci est abîmée, le service client n'est pas joignable ou insatisfaisant...
-    id: '20'
-    sprite: category-site
-    subcategoriesTitle: Votre problème concerne
-    subcategories: !!import/single subcategories/achat-site.yml
+- category: AchatMagasin
+  title: Achat en Magasin
+  seoTitle: Signalez un achat en magasin à la répression des fraudes
+  path: achat-magasin
+  description: Prix, promotion, qualité, poids, garantie, …
+  seoDescription: Vous avez eu un problème de prix, sur une promotion ou de qualité. Vous n'avez pas reçu votre commande ou celle-ci est abîmée, le service client n'est pas joignable ou insatisfaisant...
+  id: '10'
+  img: category-store
+  subcategoriesTitle: Votre problème concerne
+  subcategories: !!import/single subcategories/achat-magasin.yml
 
-  - category: Internet
-    categoryLabel: Internet (hors achats)
-    title: Signalez un problème d'arnaque en ligne à la répression des fraudes
-    path: internet
-    description: Influenceur sponsorisé, rémunération, marque, harcèlement sur internet, …
-    seoDescription: Vous avez été victime d'une publicité trompeuse sur internet, vous souhaitez signaler un influenceur sponsorisé qui n'indique pas sa rémunération par une marque...
-    id: '30'
-    sprite: category-internet
-    subcategories: !!import/single subcategories/internet.yml
+- category: AchatInternet
+  title: Achat sur internet
+  seoTitle: Signalez un site d'achat à la répression des fraudes
+  path: achat-site
+  description: Prix, promotion, qualité, poids, garantie, problème de livraison, …
+  seoDescription: Vous avez eu un problème de prix, sur une promotion ou de qualité. Vous n'avez pas reçu votre commande ou celle-ci est abîmée, le service client n'est pas joignable ou insatisfaisant...
+  id: '20'
+  img: category-site
+  subcategoriesTitle: Votre problème concerne
+  subcategories: !!import/single subcategories/achat-site.yml
 
-  - category: TravauxRenovations
-    categoryLabel: Travaux / Rénovation
-    title: Signalez un problème de travaux ou rénovation à la répression des fraudes
-    path: travaux-renovation
-    description: Artisan (serrurier, plombier, pompe à chaleur, …), démarchage téléphonique pour rénovation énergétique, …
-    seoDescription: Vous avez fait intervenir un artisan (serrurier, plombier, isolation, pompe à chaleur, chaudière, prime rénov, fenêtre, ...) et vous avez un souci de délais d'exécution, de devis, malfaçon, ...
-    id: '40'
-    sprite: category-craft
-    subcategories: !!import/single subcategories/travaux-renovation.yml
+- category: Internet
+  title: Internet (hors achats)
+  seoTitle: Signalez un problème d'arnaque en ligne à la répression des fraudes
+  path: internet
+  description: Influenceur sponsorisé, rémunération, marque, harcèlement sur internet, …
+  seoDescription: Vous avez été victime d'une publicité trompeuse sur internet, vous souhaitez signaler un influenceur sponsorisé qui n'indique pas sa rémunération par une marque...
+  id: '30'
+  img: category-internet
+  subcategories: !!import/single subcategories/internet.yml
 
-  - category: TelephonieFaiMedias
-    categoryLabel: Téléphonie / Fournisseur d'accès internet / médias
-    title: Signalez un problème de forfait à la répression des fraudes
-    path: tel-internet-media
-    description: Options non souscrites facturées, forfait, abonnement mobile ou box, frais de résiliation, …
-    seoDescription: Votre opérateur vous a facturé des options non souscrites, votre abonnement mobile ou box est en augmentation ou a été reconduit abusivement, vous avez un doute sur les frais de résiliation.
-    id: '50'
-    sprite: category-telephonie-media
-    subcategories: !!import/single subcategories/telephonie-media.yml
+- category: TravauxRenovations
+  title: Travaux / Rénovation
+  seoTitle: Signalez un problème de travaux ou rénovation à la répression des fraudes
+  path: travaux-renovation
+  description: Artisan (serrurier, plombier, pompe à chaleur, …), démarchage téléphonique pour rénovation énergétique, …
+  seoDescription: Vous avez fait intervenir un artisan (serrurier, plombier, isolation, pompe à chaleur, chaudière, prime rénov, fenêtre, ...) et vous avez un souci de délais d'exécution, de devis, malfaçon, ...
+  id: '40'
+  img: category-craft
+  subcategories: !!import/single subcategories/travaux-renovation.yml
 
-  - category: VoyageLoisirs
-    categoryLabel: Voyage / Loisirs
-    title: Signalez un problème de séjour, vol, voyage à la répression des fraudes
-    path: voyage-loisirs
-    description: Annulation, retard, avion, train, bateau, taxi, VTC, avion, hôtel, camping, spectacle, salle de sport, …
-    seoDescription: Vous avez un problème d’annulation, retard, remboursement concernant une réservation d’un billet d’avion, train, bateau, taxi, VTC, hôtel, camping ou un soucis de bagage
-    id: '60'
-    sprite: category-hobbies
-    subcategories: !!import/single subcategories/voyage-loisirs.yml
+- category: TelephonieFaiMedias
+  title: Téléphonie / Fournisseur d'accès internet / médias
+  seoTitle: Signalez un problème de forfait à la répression des fraudes
+  path: tel-internet-media
+  description: Options non souscrites facturées, forfait, abonnement mobile ou box, frais de résiliation, …
+  seoDescription: Votre opérateur vous a facturé des options non souscrites, votre abonnement mobile ou box est en augmentation ou a été reconduit abusivement, vous avez un doute sur les frais de résiliation.
+  id: '50'
+  img: category-telephonie-media
+  subcategories: !!import/single subcategories/telephonie-media.yml
 
-  - category: BanqueAssuranceMutuelle
-    categoryLabel: Banque / Assurance / Mutuelle
-    title: Signalez un problème de banque, assurance, mutuelle à la DGCCRF
-    path: banque-assurance-mutuelle
-    description: Frais bancaires, remboursement, sinistre, prise en charge optique/dentaire, …
-    seoDescription: Vous avez un problème de frais bancaires, carte, CB, remboursement, déclaration de sinistre, prise en charge optique/dentaire, indemnisation, contrat d’assurance, prévoyance
-    id: '70'
-    sprite: category-bank
-    subcategories: !!import/single subcategories/banque-assurance-mutuelle.yml
-    subcategoriesTitle: Il s'agit d'un problème principalement lié à
+- category: VoyageLoisirs
+  title: Voyage / Loisirs
+  seoTitle: Signalez un problème de séjour, vol, voyage à la répression des fraudes
+  path: voyage-loisirs
+  description: Annulation, retard, avion, train, bateau, taxi, VTC, avion, hôtel, camping, spectacle, salle de sport, …
+  seoDescription: Vous avez un problème d’annulation, retard, remboursement concernant une réservation d’un billet d’avion, train, bateau, taxi, VTC, hôtel, camping ou un soucis de bagage
+  id: '60'
+  img: category-hobbies
+  subcategories: !!import/single subcategories/voyage-loisirs.yml
 
-  - category: CafeRestaurant
-    categoryLabel: Café / Restaurant
-    title: Signalez un problème avec un café / restaurant à la répression des fraudes
-    path: cafe-restaurant
-    description: Descriptions incorrectes, manque d’hygiène, problème à la commande ou à la livraison, …
-    seoDescription: Les descriptions sont incorrectes (origine, fait maison, allergènes, halal). L'établissement est sale, insalubre, problème de fraîcheur, d'hygiène, intoxication ou problème à la commande / livraison
-    id: '80'
-    sprite: category-restaurant
-    subcategories: !!import/single subcategories/cafe-restaurant.yml
+- category: BanqueAssuranceMutuelle
+  title: Banque / Assurance / Mutuelle
+  seoTitle: Signalez un problème de banque, assurance, mutuelle à la DGCCRF
+  path: banque-assurance-mutuelle
+  description: Frais bancaires, remboursement, sinistre, prise en charge optique/dentaire, …
+  seoDescription: Vous avez un problème de frais bancaires, carte, CB, remboursement, déclaration de sinistre, prise en charge optique/dentaire, indemnisation, contrat d’assurance, prévoyance
+  id: '70'
+  img: category-bank
+  subcategories: !!import/single subcategories/banque-assurance-mutuelle.yml
+  subcategoriesTitle: Il s'agit d'un problème principalement lié à
 
-  - category: VoitureVehiculeVelo
-    categoryLabel: Voiture / Véhicule / Vélo
-    title: Signalez un problème lié à la réparation, entretien, contrôle technique d’une voiture
-    path: voiture-vehicule
-    description: Garagiste, auto-école, location, réparation, contrôle technique, véhicule neuf ou occasion, garantie, …
-    seoDescription: Vous avez un problème avec un garagiste, agence de location suite à la réparation d’un pneu, d’une panne, la vente d’un véhicule neuf ou d’occasion, la non application de la garantie constructeur
-    id: '90'
-    sprite: category-transport
-    subcategoriesTitle: 'Pouvez-vous préciser &#160;?'
-    subcategories: !!import/single subcategories/voiture-vehicule.yml
+- category: CafeRestaurant
+  title: Café / Restaurant
+  seoTitle: Signalez un problème avec un café / restaurant à la répression des fraudes
+  path: cafe-restaurant
+  description: Descriptions incorrectes, manque d’hygiène, problème à la commande ou à la livraison, …
+  seoDescription: Les descriptions sont incorrectes (origine, fait maison, allergènes, halal). L'établissement est sale, insalubre, problème de fraîcheur, d'hygiène, intoxication ou problème à la commande / livraison
+  id: '80'
+  img: category-restaurant
+  subcategories: !!import/single subcategories/cafe-restaurant.yml
 
-  - category: ServicesAuxParticuliers
-    categoryLabel: Services aux particuliers
-    title: Signalez un problème avec un service / prestation à la répression des fraudes
-    path: services-aux-particuliers
-    description: CPF, coiffeur, garde d’enfants, nuisibles, ménage, maison de retraite, envoi de colis, …
-    seoDescription: Vous avez un problème avec un organisme de formation, coiffeur, esthéticien, tatoueur, ménage, déménageur, aide à domicile, garde ou accompagnement d'enfants...
-    id: '100'
-    sprite: category-service
-    subcategoriesTitle: Votre problème concerne
-    subcategories: !!import/single subcategories/services-aux-particuliers.yml
+- category: VoitureVehiculeVelo
+  title: Voiture / Véhicule / Vélo
+  seoTitle: Signalez un problème lié à la réparation, entretien, contrôle technique d’une voiture
+  path: voiture-vehicule
+  description: Garagiste, auto-école, location, réparation, contrôle technique, véhicule neuf ou occasion, garantie, …
+  seoDescription: Vous avez un problème avec un garagiste, agence de location suite à la réparation d’un pneu, d’une panne, la vente d’un véhicule neuf ou d’occasion, la non application de la garantie constructeur
+  id: '90'
+  img: category-transport
+  subcategoriesTitle: 'Pouvez-vous préciser &#160;?'
+  subcategories: !!import/single subcategories/voiture-vehicule.yml
 
-  - category: EauGazElectricite
-    categoryLabel: Eau / Gaz / Electricité
-    title: Signalez un problème d'eau, gaz ou électricité à la répression des fraudes
-    path: eau-gaz-electricite
-    description: Contrat, prélèvement, énergie, facture excessive, dépassement de consommation, …
-    seoDescription: Vous avez un problème de contrat d’énergie, de prélèvement, une facture excessive, un dépassement de consommation ou vous avez eu une fuite d’eau, de canalisation.
-    id: '110'
-    sprite: category-energy
-    subcategories: !!import/single subcategories/eau-gaz-electricite.yml
+- category: ServicesAuxParticuliers
+  title: Services aux particuliers
+  seoTitle: Signalez un problème avec un service / prestation à la répression des fraudes
+  path: services-aux-particuliers
+  description: CPF, coiffeur, garde d’enfants, nuisibles, ménage, maison de retraite, envoi de colis, …
+  seoDescription: Vous avez un problème avec un organisme de formation, coiffeur, esthéticien, tatoueur, ménage, déménageur, aide à domicile, garde ou accompagnement d'enfants...
+  id: '100'
+  img: category-service
+  subcategoriesTitle: Votre problème concerne
+  subcategories: !!import/single subcategories/services-aux-particuliers.yml
 
-  - category: Immobilier
-    categoryLabel: Immobilier
-    title: Signalez un problème de loyer, syndic, copropriété, DPE, charges à la DGCCRF
-    path: immobilier
-    description: Loyer, syndic, copropriété, agence immobilière, location, vente, mandat, état des lieux, DPE, …
-    seoDescription: Vous avez un problème avec une copropriété, agence immobilière, syndic, notaire en tant que locataire ou propriétaire, un souci de loyer, bail, DPE, location, vente ou mandat
-    id: '120'
-    sprite: category-real-estate
-    subcategories: !!import/single subcategories/immobilier.yml
+- category: EauGazElectricite
+  title: Eau / Gaz / Electricité
+  seoTitle: Signalez un problème d'eau, gaz ou électricité à la répression des fraudes
+  path: eau-gaz-electricite
+  description: Contrat, prélèvement, énergie, facture excessive, dépassement de consommation, …
+  seoDescription: Vous avez un problème de contrat d’énergie, de prélèvement, une facture excessive, un dépassement de consommation ou vous avez eu une fuite d’eau, de canalisation.
+  id: '110'
+  img: category-energy
+  subcategories: !!import/single subcategories/eau-gaz-electricite.yml
 
-  - category: DemarchesAdministratives
-    categoryLabel: Démarches administratives
-    title: Signalez un problème de médiation ou de faux courrier administratif à la DGCCRF
-    path: demarches-administratives
-    description: Faux courriers administratifs, services payants (Crit’Air, …), faux frais d’enregistrement, …
-    seoDescription: Vous avez un problème d’arnaques, services payants pour papiers d’identité, actes d’état civil, certificat d’immatriculation, Crit’Air, carte Vitale, KBis, frais d’enregistrement
-    id: '130'
-    sprite: category-admin
-    subcategories: !!import/single subcategories/demarches-administratives.yml
+- category: Immobilier
+  title: Immobilier
+  seoTitle: Signalez un problème de loyer, syndic, copropriété, DPE, charges à la DGCCRF
+  path: immobilier
+  description: Loyer, syndic, copropriété, agence immobilière, location, vente, mandat, état des lieux, DPE, …
+  seoDescription: Vous avez un problème avec une copropriété, agence immobilière, syndic, notaire en tant que locataire ou propriétaire, un souci de loyer, bail, DPE, location, vente ou mandat
+  id: '120'
+  img: category-real-estate
+  subcategories: !!import/single subcategories/immobilier.yml
 
-  - category: IntoxicationAlimentaire
-    categoryLabel: Intoxication alimentaire
-    title: Vous êtes malade, diarrhée, nausée, fièvre suite à un repas, signalez-le à la DGCCRF
-    path: intoxication-alimentaire
-    description: Vous avez été malade (vomissement, diarrhée) après avoir mangé un aliment suspect
-    seoDescription: Vous êtes souffrant, avez des problèmes de digestion après avoir mangé un aliment suspect, goût, odeur de la nourriture ? Mal au ventre, estomac, vomissement ?
-    id: '140'
-    sprite: category-disease
-    subcategories: !!import/single subcategories/intoxication-alimentaire.yml
-    subcategoriesTitle: 'Avez-vous été malade ?'
+- category: DemarchesAdministratives
+  title: Démarches administratives
+  seoTitle: Signalez un problème de médiation ou de faux courrier administratif à la DGCCRF
+  path: demarches-administratives
+  description: Faux courriers administratifs, services payants (Crit’Air, …), faux frais d’enregistrement, …
+  seoDescription: Vous avez un problème d’arnaques, services payants pour papiers d’identité, actes d’état civil, certificat d’immatriculation, Crit’Air, carte Vitale, KBis, frais d’enregistrement
+  id: '130'
+  img: category-admin
+  subcategories: !!import/single subcategories/demarches-administratives.yml
 
-  - category: Sante
-    categoryLabel: Secteur de la santé
-    title: Signalez un problème avec un professionnel de santé à la répression des fraudes
-    path: sante
-    description: Professionnels de santé, médecines non conventionnelles, parapharmacie, …
-    seoDescription: Vous avez eu un reste à charge trop élevé, un non-respect du 100% santé, n'avez pas eu de devis par votre clinique, hôpital, opticien ou les effets mis en avant en parapharmacie sont trompeurs...
-    id: '150'
-    sprite: category-health
-    subcategoriesTitle: 'Votre problème concerne :'
-    subcategories: !!import/single subcategories/sante.yml
+- category: IntoxicationAlimentaire
+  title: Intoxication alimentaire
+  seoTitle: Vous êtes malade, diarrhée, nausée, fièvre suite à un repas, signalez-le à la DGCCRF
+  path: intoxication-alimentaire
+  description: Vous avez été malade (vomissement, diarrhée) après avoir mangé un aliment suspect
+  seoDescription: Vous êtes souffrant, avez des problèmes de digestion après avoir mangé un aliment suspect, goût, odeur de la nourriture ? Mal au ventre, estomac, vomissement ?
+  id: '140'
+  img: category-disease
+  subcategories: !!import/single subcategories/intoxication-alimentaire.yml
+  subcategoriesTitle: 'Avez-vous été malade ?'
 
-  - category: Animaux
-    categoryLabel: Animaux
-    title: Signalez un problème d’animaux, garde, vétérinaire, élevage, toilettage à la DGCCRF
-    path: animaux
-    description: Croquettes, chien, chat, vétérinaire, garde, assurance santé animaux, élevage, pedigree, …
-    seoDescription: Vous avez un problème avec un(e) pet sitter, pension, assurance santé animaux, animalerie, pedigree LOOF, éleveur, toiletteur, croquettes, chien, chat, NAC, cheval
-    id: '160'
-    sprite: category-pet
-    subcategories: !!import/single subcategories/animaux.yml
+- category: Sante
+  title: Secteur de la santé
+  seoTitle: Signalez un problème avec un professionnel de santé à la répression des fraudes
+  path: sante
+  description: Professionnels de santé, médecines non conventionnelles, parapharmacie, …
+  seoDescription: Vous avez eu un reste à charge trop élevé, un non-respect du 100% santé, n'avez pas eu de devis par votre clinique, hôpital, opticien ou les effets mis en avant en parapharmacie sont trompeurs...
+  id: '150'
+  img: category-health
+  subcategoriesTitle: 'Votre problème concerne :'
+  subcategories: !!import/single subcategories/sante.yml
 
-  - category: DemarchageAbusif
-    categoryLabel: Démarchage abusif
-    title: Vous avez un problème de démarchage abusif malgré Bloctel ? Signalez-le à la DGCCRF
-    path: bloctel
-    description: Appels indésirables incessants, spams, démarchage SMS malgré Bloctel, …
-    seoDescription: Vous avez un problème d’appels indésirables, inconnus, incessants, de spams, de sms, de télé vente, d’arnaque au CPF, à la formation professionnelle
-    id: '170'
-    sprite: category-demarchage
-    subcategories: !!import/single subcategories/bloctel.yml
+- category: Animaux
+  title: Animaux
+  seoTitle: Signalez un problème d’animaux, garde, vétérinaire, élevage, toilettage à la DGCCRF
+  path: animaux
+  description: Croquettes, chien, chat, vétérinaire, garde, assurance santé animaux, élevage, pedigree, …
+  seoDescription: Vous avez un problème avec un(e) pet sitter, pension, assurance santé animaux, animalerie, pedigree LOOF, éleveur, toiletteur, croquettes, chien, chat, NAC, cheval
+  id: '160'
+  img: category-pet
+  subcategories: !!import/single subcategories/animaux.yml
 
-  # - category: Travail au noir
-  #   title: Travail au noir
-  #   path: travail-au-noir
-  #   hidden: true
-  #   sprite: none
-  #   information:
-  #     subTitle: Vous souhaitez signaler un cas de travail au noir ?
-  #     content: Pour signaler du travail dissimulé (travail au noir), vous pouvez&nbsp;:&nbsp;
-  #       <ul>
-  #       <li>envoyer un email à cette adresse&nbsp;:&nbsp;<a href="mailto:fraude.npdc@urssaf.fr">fraude.npdc@urssaf.fr</a></li>
-  #       <li>écrire  à l’inspection du travail en contactant la <a href="http://direccte.gouv.fr/" target="_blank">DIRECCTE</a> de la région concernée</li>
-  #       <li>écrire à la brigade de contrôle et de recherche des impôts</li>
-  #       <li>écrire à la police/gendarmerie</li>
-  #       </ul>
-  #       La DGCCRF (répression des fraudes) ne s’occupe pas des cas de travail au noir.
+- category: DemarchageAbusif
+  title: Démarchage abusif
+  seoTitle: Vous avez un problème de démarchage abusif malgré Bloctel ? Signalez-le à la DGCCRF
+  path: bloctel
+  description: Appels indésirables incessants, spams, démarchage SMS malgré Bloctel, …
+  seoDescription: Vous avez un problème d’appels indésirables, inconnus, incessants, de spams, de sms, de télé vente, d’arnaque au CPF, à la formation professionnelle
+  id: '170'
+  img: category-demarchage
+  subcategories: !!import/single subcategories/bloctel.yml
 
-  - category: DemoCategory
-    categoryLabel: (category) Une category de démo
-    isHiddenDemoCategory: true
-    title: (title) Le title de la category
-    path: pathdelacategory
-    description: (description) Description de la category
-    seoDescription: (seoDescription) Description SEO de la category
-    id: '200'
-    sprite: category-restaurant
-    subcategoriesTitle: (subcategoriesTitle de la category racine) Titre ou question introduisant le choix des sous catégories
-    subcategories: !!import/single subcategories/demo.yml
+# - category: Travail au noir
+#   seoTitle: Travail au noir
+#   path: travail-au-noir
+#   hidden: true
+#   img: none
+#   blockingInfo:
+#     subTitle: Vous souhaitez signaler un cas de travail au noir ?
+#     content: Pour signaler du travail dissimulé (travail au noir), vous pouvez&nbsp;:&nbsp;
+#       <ul>
+#       <li>envoyer un email à cette adresse&nbsp;:&nbsp;<a href="mailto:fraude.npdc@urssaf.fr">fraude.npdc@urssaf.fr</a></li>
+#       <li>écrire  à l’inspection du travail en contactant la <a href="http://direccte.gouv.fr/" target="_blank">DIRECCTE</a> de la région concernée</li>
+#       <li>écrire à la brigade de contrôle et de recherche des impôts</li>
+#       <li>écrire à la police/gendarmerie</li>
+#       </ul>
+#       La DGCCRF (répression des fraudes) ne s’occupe pas des cas de travail au noir.
+
+- category: DemoCategory
+  title: (category) Une category de démo
+  isHiddenDemoCategory: true
+  seoTitle: (title) Le title de la category
+  path: pathdelacategory
+  description: (description) Description de la category
+  seoDescription: (seoDescription) Description SEO de la category
+  id: '200'
+  img: category-restaurant
+  subcategoriesTitle: (subcategoriesTitle de la category racine) Titre ou question introduisant le choix des sous catégories
+  subcategories: !!import/single subcategories/demo.yml

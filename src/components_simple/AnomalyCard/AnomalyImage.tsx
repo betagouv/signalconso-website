@@ -3,7 +3,7 @@ import {Anomaly} from '../../anomalies/Anomaly'
 import Image from 'next/image'
 
 interface Props extends BoxProps {
-  anomaly: Pick<Anomaly, 'sprite'>
+  anomaly: Pick<Anomaly, 'img'>
   scale?: number
 }
 
@@ -19,15 +19,9 @@ export const AnomalyImage = ({anomaly, className, scale = 1, sx, ...other}: Prop
         maxHeight: size,
         marginRight: 1,
       }}
-      className={`${className ?? ''} sprite-${anomaly.sprite}`}
+      className={`${className ?? ''} sprite-${anomaly.img}`}
     >
-      <Image
-        width={'100%'}
-        height={'100%'}
-        objectFit={'contain'}
-        src={`/image/pictos/${anomaly.sprite}.png`}
-        alt={anomaly.sprite}
-      />
+      <Image width={'100%'} height={'100%'} objectFit={'contain'} src={`/image/pictos/${anomaly.img}.png`} alt={anomaly.img} />
     </Box>
   )
 }

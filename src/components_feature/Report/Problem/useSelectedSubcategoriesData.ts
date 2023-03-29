@@ -1,4 +1,4 @@
-import {instanceOfSubcategoryInformation} from 'anomalies/Anomalies'
+import {instanceOfSubcategoryWithInfoWall} from 'anomalies/Anomalies'
 import {Subcategory} from '../../../anomalies/Anomaly'
 
 export function computeSelectedSubcategoriesData(selectedSubCategories: Subcategory[]) {
@@ -11,7 +11,7 @@ export function computeSelectedSubcategoriesData(selectedSubCategories: Subcateg
 
   const isLastSubcategory = lastSubcategories && !lastSubcategories.subcategories
 
-  const showEmployeeConsumer = !instanceOfSubcategoryInformation(lastSubcategories)
+  const showEmployeeConsumer = !instanceOfSubcategoryWithInfoWall(lastSubcategories)
 
   const companyKindFromSelected = [...selectedSubCategories].reverse().find(_ => !!_.companyKind)?.companyKind
 

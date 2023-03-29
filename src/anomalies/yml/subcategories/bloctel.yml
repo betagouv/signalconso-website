@@ -8,7 +8,7 @@
   subcategoriesTitle: Avez-vous demandé à être rappelé par l'entreprise ?
   subcategories:
     - title: Oui
-      information:
+      blockingInfo:
         title: C'est possible d'être appelé par l'entreprise
         content: Vous avez demandé à être rappelé par l'entreprise, elle a donc le droit de vous appeler suite à votre demande.
     - title: Non
@@ -36,7 +36,7 @@
       subcategoriesTitle: Avez-vous demandé à être rappelé par l'entreprise ?
       subcategories:
         - title: Oui
-          information:
+          blockingInfo:
             title: C'est possible d'être appelé par l'entreprise
             content: Vous avez demandé à être rappelé par l'entreprise, elle a donc le droit de vous appeler suite à votre demande.
         - title: Non
@@ -55,14 +55,14 @@
       subcategoriesTitle: Avez-vous demandé à être rappelé par l'entreprise ?
       subcategories:
         - title: Oui
-          information:
+          blockingInfo:
             title: C'est possible d'être appelé par l'entreprise
             content: Vous avez demandé à être rappelé par l'entreprise, elle a donc le droit de vous appeler suite à votre demande.
         - title: Non
           subcategoriesTitle: Je suis inscrit sur Bloctel
           subcategories:
             - title: Oui
-              information:
+              blockingInfo:
                 content: |-
                   <p>Vous recevez des appels indésirables alors que vous êtes inscrit sur Bloctel.</p>
                   <p>Les problèmes de démarchage abusif ne peuvent pas être signalés sur SignalConso.</p>
@@ -71,7 +71,7 @@
                   <a href="https://www.bloctel.gouv.fr/accueil">https://www.bloctel.gouv.fr/accueil</a>
                   </p>
             - title: Non
-              information:
+              blockingInfo:
                 title: C'est un horaire autorisé pour le démarchage téléphonique
                 content: |-
                   Les démarchages téléphoniques sont autorisés en semaine de : <p> 10h à 13h, </p> <p> et, </p> <p> 14h à 20h, </p> 
@@ -82,7 +82,7 @@
       subcategoriesTitle: Avez-vous demandé à être rappelé par l'entreprise ?
       subcategories:
         - title: Oui
-          information:
+          blockingInfo:
             title: C'est possible d'être appelé par l'entreprise
             content: Vous avez demandé à être rappelé par l'entreprise, elle a donc le droit de vous appeler suite à votre demande.
         - title: Non
@@ -101,14 +101,14 @@
       subcategoriesTitle: Avez-vous demandé à être rappelé par l'entreprise ?
       subcategories:
         - title: Oui
-          information:
+          blockingInfo:
             title: C'est possible d'être appelé par l'entreprise
             content: Vous avez demandé à être rappelé par l'entreprise, elle a donc le droit de vous appeler suite à votre demande.
         - title: Non
           subcategoriesTitle: Je suis inscrit sur Bloctel
           subcategories:
             - title: Oui
-              information:
+              blockingInfo:
                 content: |-
                   <p>Vous recevez des appels indésirables alors que vous êtes inscrit sur Bloctel.</p>
                   <p>Les problèmes de démarchage abusifs ne peuvent pas être signalés sur SignalConso.</p>
@@ -117,7 +117,7 @@
                   <a href="https://www.bloctel.gouv.fr/accueil">https://www.bloctel.gouv.fr/accueil</a>
                   </p>
             - title: Non
-              information:
+              blockingInfo:
                 title: C'est un horaire autorisé pour le démarchage téléphonique
                 content: |- 
                   Les démarchages téléphonique sont autorisés en semaine de : <p> 10h à 13h, </p> <p> et, </p> <p> 14h à 20h, </p> 
@@ -128,7 +128,7 @@
       subcategoriesTitle: Avez-vous demandé à être rappelé par l'entreprise ?
       subcategories:
         - title: Oui
-          information:
+          blockingInfo:
             title: C'est possible d'être appelé par l'entreprise
             content: Vous avez demandé à être rappelé par l'entreprise, elle a donc le droit de vous appeler suite à votre demande.
         - title: Non
@@ -181,15 +181,15 @@
   tags:
     - DemarchageTelephonique
 - title: Je reçois des appels pour effectuer des travaux ou sur de la rénovation énergétique
-  information:
+  blockingInfo:
     title: Revenez en arrière et utilisez plutôt la catégorie spécifique à votre problème 🙂
     content: Un appel pour faire installer des panneaux solaires ou une pompe à chaleur chez moi ? Utilisez la catégorie <a href="https://signal.conso.gouv.fr/travaux-renovation" target="_blank" />"Travaux / Rénovation"</a>. Il est interdit de démarcher pour des travaux ou réaliser de la rénovation énergétique.
 - title: Je reçois des appels pour effectuer des Formations en utilisant mon CPF
-  information:
+  blockingInfo:
     title: Revenez en arrière et utilisez plutôt la catégorie spécifique à votre problème 🙂
     content: Un appel, un SMS, un message personnel sur les réseaux sociaux, en lien avec le CPF ou compte de formation personnel ? Utilisez la catégorie <a href="https://signal.conso.gouv.fr/services-aux-particuliers" target="_blank" />"Services aux particuliers"</a> puis "Formation". Il est interdit de démarcher des titulaires d'un compte personnel de formation.'
 - title: Je reçois des appels indésirables alors que je suis inscrit sur Bloctel
-  information:
+  blockingInfo:
     content: <p>Vous recevez des appels indésirables alors que vous êtes inscrit sur Bloctel.</p>
       <p>Les problèmes de démarchage abusif ne peuvent pas être signalés sur SignalConso.</p>
       <p>
@@ -199,19 +199,19 @@
 #  companyKind: PHONE
 #  subcategories:
 #    - title: L’appel concerne mon entreprise
-#      information:
+#      blockingInfo:
 #        content:
 #          Nous ne doutons pas que vous ayez réellement rencontré un problème mais si vous avez reçu un appel en lien avec votre entreprise, il ne s’agit pas d’un démarchage abusif.
 #          <br/><br/>Bloctel est un outil réservé aux consommateurs. Les professionnels ne peuvent pas utiliser la plateforme pour lutter contre le démarchage abusif.
 #    - title: Je suis client de l’entreprise ou j’ai demandé à être rappelé
-#      example: 'Exemple : j’ai un contrat avec l’entreprise, j’ai demandé un devis ...'
-#      information:
+#      desc: 'Exemple : j’ai un contrat avec l’entreprise, j’ai demandé un devis ...'
+#      blockingInfo:
 #        content: Nous ne doutons pas que vous ayez réellement rencontré un problème mais si vous avez un contrat avec l’entreprise ou que vous avez laissé vos coordonnées pour être rappelé, il ne s’agit pas d’un démarchage abusif. L’entreprise peut vous contacter.
 #    - title: L’appel a pour but de me vendre des journaux
-#      information:
+#      blockingInfo:
 #        content: Nous ne doutons pas que vous ayez réellement rencontré un problème mais la vente de journaux, de magazines, de périodiques fait partie des exceptions, il ne s’agit pas d’un démarchage abusif. Même si vous êtes inscrits sur Bloctel, l’entreprise est autorisée à vous joindre.
 #    - title: L’appel concerne un sondage
-#      information:
+#      blockingInfo:
 #        content:
 #          Nous ne doutons pas que vous ayez réellement rencontré un problème mais si l’appel concerne un sondage et que l’entreprise n’a pas cherché à vous vendre un objet ou un service, que vous n’avez pas donné vos coordonnées bancaires ou que vous n’avez pas reçu de message de confirmation de commande d’un produit ou d’un service, il ne s’agit pas d’un démarchage abusif. Cela ressemble à un véritable sondage pour simplement connaître votre avis, ce n’est pas du démarchage commercial.
 #          <br/><br/>Toutefois, si l’entreprise a essayé de vous vendre un objet ou un service ou que vous avez donné vos coordonnées bancaires, cela correspond à du démarchage commercial. Vous devez revenir en arrière et aller sur « L’entreprise veut me vendre un objet ou un service et je ne suis pas client chez eux. »
@@ -222,11 +222,11 @@
 #      detailInputs: !!import/single ../common/inputs/bloctel.yml
 - title: J’ai répondu à un SMS ou j’ai rappelé un numéro qui était payant sans le savoir
   companyKind: PHONE
-  information: !!import/single ../common/info/called-paid-number.yml
+  blockingInfo: !!import/single ../common/info/called-paid-number.yml
 - title: Je souhaite contacter le Service Relation Consommateur de Bloctel
-  example: 'Question sur gestion de mon compte Bloctel, gérer mes données personnelles sur Bloctel'
+  desc: 'Question sur gestion de mon compte Bloctel, gérer mes données personnelles sur Bloctel'
   companyKind: PHONE
-  information:
+  blockingInfo:
     content:
       Le Service Relation Consommateur est ouvert au 01 73 26 81 45 de 8 h 00 à 17 h 00 uniquement les jours ouvrés (prix d'un appel vers un numéro fixe, suivant opérateur). Ce service est à disposition pour aider à gérer ou utiliser l' « Espace consommateur » du site Bloctel.
       <br/><br/>En revanche, il ne donne aucune information sur le suivi des signalements, les modalités de connexion à Internet ou sur les questions d'ordre juridique.'

@@ -16,10 +16,10 @@
   subcategoriesTitle: À qui appartient ce site internet&#160;?
   subcategories:
     - title: À une administration
-      example: "Exemple : site internet d'une mairie. Les sites officiels de l’État doivent se terminer par gouv.fr ou .fr et jamais par .gouv.org ou .gouv.com. Vérifiez les mentions légales du site."
-      information: !!import/single ../common/info/administration.yml
+      desc: "Exemple : site internet d'une mairie. Les sites officiels de l’État doivent se terminer par gouv.fr ou .fr et jamais par .gouv.org ou .gouv.com. Vérifiez les mentions légales du site."
+      blockingInfo: !!import/single ../common/info/administration.yml
     - title: À une entreprise
-      example: "Un site avec une Marianne ou un drapeau tricolore n'appartient pas forcément à l’État. Ces entreprises entretiennent une confusion pour tromper les consommateurs."
+      desc: "Un site avec une Marianne ou un drapeau tricolore n'appartient pas forcément à l’État. Ces entreprises entretiennent une confusion pour tromper les consommateurs."
       reponseconsoCode:
         - '210'
         - '511'
@@ -36,8 +36,8 @@
   subcategoriesTitle: Que voulez-vous signaler ?
   subcategories:
     - title: Une administration
-      example: 'Exemple : ma mairie, mon centre des impôts'
-      information: !!import/single ../common/info/administration.yml
+      desc: 'Exemple : ma mairie, mon centre des impôts'
+      blockingInfo: !!import/single ../common/info/administration.yml
     - title: Une entreprise privée
       reponseconsoCode:
         - '220'

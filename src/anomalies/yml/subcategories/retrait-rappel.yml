@@ -2,7 +2,7 @@
   subcategoriesTitle: Avez-vous été malade ?
   subcategories:
     - title: Oui
-      information:
+      blockingInfo:
         title: Vous n'êtes pas au bon endroit
         content: Utilisez la catégorie "Intoxication alimentaire" en revenant en arrière ou en cliquant sur <a href="https://signal.conso.gouv.fr/intoxication-alimentaire">ce lien</a>.
     - title: Non

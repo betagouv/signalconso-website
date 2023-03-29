@@ -12,17 +12,10 @@ import {fnSwitch} from '../utils/FnSwitch'
 import {
   allVisibleAnomalies,
   instanceOfAnomaly,
-  instanceOfSubcategoryInformation,
-  instanceOfSubcategoryInput,
+  instanceOfSubcategoryWithInfoWall,
+  instanceOfSubcategoryWithInputs,
 } from '../anomalies/Anomalies'
-import {
-  Anomaly,
-  DetailInputType,
-  Subcategory,
-  SubcategoryBase,
-  SubcategoryInformation,
-  SubcategoryInput,
-} from '../anomalies/Anomaly'
+import {Anomaly, DetailInputType, Subcategory, SubcategoryWithInfoWall, StandardSubcategory} from '../anomalies/Anomaly'
 
 const Node = ({anomaly, open}: {anomaly: Anomaly | Subcategory; open?: boolean}) => {
   const iconWidth = 40
@@ -60,14 +53,14 @@ const Node = ({anomaly, open}: {anomaly: Anomaly | Subcategory; open?: boolean})
           {instanceOfAnomaly(anomaly) && anomaly.description && (
             <Txt block size="small" color="hint" dangerouslySetInnerHTML={{__html: anomaly.description}} />
           )}
-          {(anomaly as SubcategoryBase).reponseconsoCode && (
+          {(anomaly as Subcategory).reponseconsoCode && (
             <Txt key={1} size="small" color="hint">
               <b>ReponseConso codes:</b>&nbsp;
-              {(anomaly as SubcategoryBase).reponseconsoCode?.join(', ')}
+              {(anomaly as Subcategory).reponseconsoCode?.join(', ')}
             </Txt>
           )}
           <Box>
-            {(anomaly as SubcategoryBase).tags?.map(tag => (
+            {(anomaly as Subcategory).tags?.map(tag => (
               <Box
                 sx={{
                   mr: 1,
@@ -87,8 +80,8 @@ const Node = ({anomaly, open}: {anomaly: Anomaly | Subcategory; open?: boolean})
               </Box>
             ))}
           </Box>
-          {instanceOfSubcategoryInformation(anomaly) && <NodeInfo anomaly={anomaly} />}
-          {instanceOfSubcategoryInput(anomaly) && <NodeInput anomaly={anomaly} />}
+          {instanceOfSubcategoryWithInfoWall(anomaly) && <NodeInfo anomaly={anomaly} />}
+          {instanceOfSubcategoryWithInputs(anomaly) && <NodeInput anomaly={anomaly} />}
         </Box>
         {isOpen && anomaly.subcategories && (
           <Box
@@ -116,7 +109,7 @@ const Node = ({anomaly, open}: {anomaly: Anomaly | Subcategory; open?: boolean})
   )
 }
 
-const NodeInput = ({anomaly}: {anomaly: SubcategoryInput}) => {
+const NodeInput = ({anomaly}: {anomaly: StandardSubcategory}) => {
   return (
     <>
       {anomaly.detailInputs?.map(input => (
@@ -167,28 +160,28 @@ const NodeInput = ({anomaly}: {anomaly: SubcategoryInput}) => {
   )
 }
 
-const NodeInfo = ({anomaly}: {anomaly: SubcategoryInformation}) => {
+const NodeInfo = ({anomaly}: {anomaly: SubcategoryWithInfoWall}) => {
   return (
     <>
-      {anomaly.information.title && <div dangerouslySetInnerHTML={{__html: anomaly.information.title}} />}
-      {anomaly.information.subTitle && <div dangerouslySetInnerHTML={{__html: anomaly.information.subTitle}} />}
-      {anomaly.information.content && (
-        <Txt color="hint" size="small" dangerouslySetInnerHTML={{__html: anomaly.information.content}} />
+      {anomaly.blockingInfo.title && <div dangerouslySetInnerHTML={{__html: anomaly.blockingInfo.title}} />}
+      {anomaly.blockingInfo.subTitle && <div dangerouslySetInnerHTML={{__html: anomaly.blockingInfo.subTitle}} />}
+      {anomaly.blockingInfo.content && (
+        <Txt color="hint" size="small" dangerouslySetInnerHTML={{__html: anomaly.blockingInfo.content}} />
       )}
-      {anomaly.information.actions && (
+      {anomaly.blockingInfo.questions && (
         <Txt color="hint" size="small">
           <ul>
-            {anomaly.information.actions.map(action => (
+            {anomaly.blockingInfo.questions.map(action => (
               <li key={action.question}>
                 <Txt bold dangerouslySetInnerHTML={{__html: action.question}} />
-                {action.example && <div dangerouslySetInnerHTML={{__html: action.example}} />}
+                {action.desc && <div dangerouslySetInnerHTML={{__html: action.desc}} />}
                 <div dangerouslySetInnerHTML={{__html: action.answer}} />
               </li>
             ))}
           </ul>
         </Txt>
       )}
-      {anomaly.information.outOfScope && (
+      {anomaly.blockingInfo.notAFraudMessage && (
         <Txt color="hint" size="small">
           Nous ne doutons pas que vous ayez réellement rencontré un problème mais... il ne s’agit pas d’une fraude.
         </Txt>

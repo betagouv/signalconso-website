@@ -1,8 +1,8 @@
 - title: Agence immobilière
-  example: "Exemple : location, vente, gestion locative, mandataire indépendant, marchand de liste, chasseur d'appartements"
+  desc: "Exemple : location, vente, gestion locative, mandataire indépendant, marchand de liste, chasseur d'appartements"
   subcategories:
     - title: Je cherche une location ou un bien à acheter
-      example: 'Exemple : marchand de liste, annonce immobilière, dossier de location'
+      desc: 'Exemple : marchand de liste, annonce immobilière, dossier de location'
       subcategories:
         - title: Je cherche une location
           subcategories:
@@ -19,14 +19,14 @@
                 - '212'
                 - '220'
             - title: Annonces de location incomplètes ou mensongères (en vitrine ou sur internet)
-              example: "Exemple : loyer annoncé faux, descriptif de l'appartement mensonger"
+              desc: "Exemple : loyer annoncé faux, descriptif de l'appartement mensonger"
               tags:
                 - ReponseConso
               reponseconsoCode:
                 - '210'
                 - '220'
             - title: Demande d'un document interdit pour le dossier de location
-              example: 'Exemple : relevé bancaire, photocopie de la carte vitale'
+              desc: 'Exemple : relevé bancaire, photocopie de la carte vitale'
               tags:
                 - ReponseConso
               reponseconsoCode:
@@ -39,7 +39,7 @@
         - title: Je cherche à acheter
           subcategories:
             - title: Diffusion d'annonces de biens non disponibles à la vente (en vitrine ou sur internet)
-              example: 'Exemple : la maison affichée en vitrine est en fait déjà vendue'
+              desc: 'Exemple : la maison affichée en vitrine est en fait déjà vendue'
               tags:
                 - ReponseConso
               reponseconsoCode:
@@ -55,17 +55,17 @@
               reponseconsoCode:
                 - '210'
                 - '220'
-              example: "Exemple : absence de DPE, descriptif d'un appartement mensonger"
+              desc: "Exemple : absence de DPE, descriptif d'un appartement mensonger"
               tags:
                 - ReponseConso
             - title: Problème avec une offre d'achat ou un compromis de vente
               reponseconsoCode:
                 - '425'
-              example: 'Exemple : refus de mon offre au prix sans justification'
+              desc: 'Exemple : refus de mon offre au prix sans justification'
               tags:
                 - ReponseConso
             - title: Cas particulier d'un chasseur d'appartements
-              example: "Exemple : frais d'étude alors que c'est interdit"
+              desc: "Exemple : frais d'étude alors que c'est interdit"
               reponseconsoCode:
                 - '2269'
                 - '425'
@@ -78,7 +78,7 @@
               tags:
                 - ReponseConso
     - title: J'ai un problème en tant que locataire
-      example: 'Exemple : état des lieux, charges, loyer'
+      desc: 'Exemple : état des lieux, charges, loyer'
       subcategories:
         - title: Charges / honoraires
           reponseconsoCode:
@@ -96,12 +96,12 @@
           reponseconsoCode:
             - '632'
             - '634'
-          example: 'Exemple : clause abusive dans le contrat'
+          desc: 'Exemple : clause abusive dans le contrat'
         - title: Autre
           reponseconsoCode:
             - '679'
     - title: J'ai un problème en tant que propriétaire
-      example: 'Exemple : gestion locative, mise en vente'
+      desc: 'Exemple : gestion locative, mise en vente'
       subcategories:
         - title: Gestion locative
           subcategories:
@@ -112,7 +112,7 @@
                 - '442'
                 - '443'
                 - '446'
-              example: 'Exemple : clause abusive dans le contrat'
+              desc: 'Exemple : clause abusive dans le contrat'
             - title: Honoraires
               tags:
                 - ReponseConso
@@ -133,7 +133,7 @@
             - ReponseConso
           subcategories:
             - title: Mise en vente sans mandat
-              example: 'Exemple : une agence a mis mon bien en vente sans mandat signé '
+              desc: 'Exemple : une agence a mis mon bien en vente sans mandat signé '
               reponseconsoCode:
                 - '425'
               tags:
@@ -144,7 +144,7 @@
               tags:
                 - ReponseConso
             - title: Discours trompeur
-              example: "Exemple : L'agent immobilier m'a promis de vendre sous 7 jours"
+              desc: "Exemple : L'agent immobilier m'a promis de vendre sous 7 jours"
               reponseconsoCode:
                 - '210'
               tags:
@@ -155,7 +155,7 @@
     - title: Autre
       subcategories:
         - title: Problème d'accessibilité de l'agence
-          information: !!import/single ../common/info/accessibilite.yml
+          blockingInfo: !!import/single ../common/info/accessibilite.yml
           reponseconsoCode:
             - '679'
         - title: Le personnel ne dispose pas des diplômes ou qualifications requises
@@ -171,10 +171,10 @@
     - title: Problème avec mon locataire / propriétaire
       reponseconsoCode:
         - '634'
-      information:
+      blockingInfo:
         title: Votre problème ne rentre pas dans le cadre de SignalConso.
         content: La répression des fraudes n'a pas le pouvoir d'agir pour les conflits entre deux particuliers. <br> Vous pouvez passer par un médiateur ou un conciliateur de justice.
-        actions:
+        questions:
           - question: Le médiateur civil&#160;
             answer: Le médiateur civil est une personne indépendante chargée de trouver une solution amiable. <br> Le recours à un médiateur est payant. <br> Pour en savoir plus, consultez le site <a href="https://www.service-public.fr/particuliers/vosdroits/F1822" target="_blank"/>service-public.fr</a>
           - question: Le conciliateur de justice&#160;
@@ -186,7 +186,7 @@
 - title: Syndic de copropriété
   subcategories:
     - title: Facturation
-      example: 'Exemple : frais facturés injustifiés ou facturés plus chers que prévu'
+      desc: 'Exemple : frais facturés injustifiés ou facturés plus chers que prévu'
       reponseconsoCode:
         - '451'
       subcategoriesTitle: "Le détail des frais est marqué dans le contrat de syndic. Avant de faire un signalement, veuillez vérifier ce contrat au chapitre 7. Si vous ne l'avez pas, demandez le à votre syndic. Ce document est obligatoire et gratuit."
@@ -202,19 +202,19 @@
     - title: Contrat de syndic
       reponseconsoCode:
         - '2262'
-      example: 'Exemple : clause abusive dans le contrat'
+      desc: 'Exemple : clause abusive dans le contrat'
     - title: Documents à disposition des copropriétaires
-      example: 'Exemple : pas de fiche synthétique de copropriété'
+      desc: 'Exemple : pas de fiche synthétique de copropriété'
       reponseconsoCode:
         - '633'
       tags:
         - ReponseConso
     - title: Gestion des travaux par le syndic
-      example: 'Exemple: devis, choix des prestataires'
+      desc: 'Exemple: devis, choix des prestataires'
       reponseconsoCode:
         - '633'
     - title: Absence de réponse du syndic
-      example: 'Exemple : aucune réponse malgré des relances'
+      desc: 'Exemple : aucune réponse malgré des relances'
       reponseconsoCode:
         - '633'
     - title: Autre

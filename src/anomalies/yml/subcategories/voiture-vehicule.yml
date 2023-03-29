@@ -1,8 +1,8 @@
 - title: Location
-  example: 'Exemple : location de voiture, location de vélo, location longue durée'
+  desc: 'Exemple : location de voiture, location de vélo, location longue durée'
   subcategories:
     - title: Location de voiture auprès d'une agence ou d'un magasin
-      example: "Exemple : agence à l'aéroport, location de camionnette dans un supermarché, plate-forme de location sur internet"
+      desc: "Exemple : agence à l'aéroport, location de camionnette dans un supermarché, plate-forme de location sur internet"
       subcategories:
         - title: Prix / paiement
           reponseconsoCode:
@@ -16,16 +16,16 @@
             - '411'
           tags:
             - ReponseConso
-          example: 'Exemple : caractéristiques du véhicule, équipements fournis'
+          desc: 'Exemple : caractéristiques du véhicule, équipements fournis'
         - title: Autre
           reponseconsoCode:
             - '679'
           subcategories:
             - title: Personnel peu aimable
-              information: !!import/single ../common/info/amabilite.yml
+              blockingInfo: !!import/single ../common/info/amabilite.yml
             - title: Autre
     - title: Location en libre-service
-      example: 'Exemple : location de vélo, trottinette, voiture électrique par une borne'
+      desc: 'Exemple : location de vélo, trottinette, voiture électrique par une borne'
       subcategories:
         - title: Prix / paiement
           reponseconsoCode:
@@ -76,7 +76,7 @@
           reponseconsoCode:
             - '679'
 - title: Réparation, révision, vente de véhicule
-  example: 'Exemple : garagiste, dépanneur, contrôle technique'
+  desc: 'Exemple : garagiste, dépanneur, contrôle technique'
   subcategories:
     - title: Prix / paiement
       reponseconsoCode:
@@ -84,14 +84,14 @@
         - '623'
       tags:
         - ReponseConso
-      example: 'Exemple : devis non détaillé, devis non respecté, délais'
+      desc: 'Exemple : devis non détaillé, devis non respecté, délais'
     - title: Prestation mal réalisée ou pas réalisée
       reponseconsoCode:
         - '446'
         - '271'
       tags:
         - ReponseConso
-      example: "Exemple : malfaçon, panne non réparée, pose d'un équipement endommagé, pièce d'origine douteuse"
+      desc: "Exemple : malfaçon, panne non réparée, pose d'un équipement endommagé, pièce d'origine douteuse"
     - title: Publicité mensongère
       reponseconsoCode:
         - '210'
@@ -104,10 +104,10 @@
         - '271'
       subcategories:
         - title: Personnel peu aimable
-          information: !!import/single ../common/info/amabilite.yml
+          blockingInfo: !!import/single ../common/info/amabilite.yml
         - title: Autre
 - title: Permis / leçons de conduite
-  example: 'Exemple : auto-école'
+  desc: 'Exemple : auto-école'
   subcategories:
     - title: Prix / paiement
       reponseconsoCode:
@@ -115,19 +115,19 @@
         - '623'
       tags:
         - ReponseConso
-      example: 'Exemple : prix non affiché, forfait obligatoire'
+      desc: 'Exemple : prix non affiché, forfait obligatoire'
     - title: Publicité mensongère
       reponseconsoCode:
         - '210'
       tags:
         - ReponseConso
-      example: "Exemple : publicité trompeuse avec un nombre d'heures infaisable"
+      desc: "Exemple : publicité trompeuse avec un nombre d'heures infaisable"
     - title: Autre
       tags:
         - ReponseConso
       reponseconsoCode:
         - '214'
-      example: 'Exemple : clause abusive dans le contrat, obligation de payer des heures régulièrement, heure de conduite qui ne dure pas une heure'
+      desc: 'Exemple : clause abusive dans le contrat, obligation de payer des heures régulièrement, heure de conduite qui ne dure pas une heure'
       subcategories:
         - title: Clause abusive dans le contrat
           tags:
@@ -139,12 +139,12 @@
           tags:
             - ReponseConso
         - title: Le personnel (moniteur) n'est pas aimable
-          information: !!import/single ../common/info/amabilite.yml
+          blockingInfo: !!import/single ../common/info/amabilite.yml
         - title: Autre
           tags:
             - ReponseConso
 - title: Produit dangereux
-  example: 'Exemple : voiture, vélo, pneu'
+  desc: 'Exemple : voiture, vélo, pneu'
   reponseconsoCode:
     - '352'
     - '617'
@@ -167,7 +167,7 @@
       subcategoriesTitle: Quel est le risque&#160;?
       subcategories: !!import/single ../common/produit-dangereux.yml
 - title: Autre
-  example: 'Exemple : fourrière'
+  desc: 'Exemple : fourrière'
   reponseconsoCode:
     - '679'
   tags:

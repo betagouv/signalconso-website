@@ -38,7 +38,7 @@
       detailInputs: !!import/single ../common/inputs/intoxication-alimentaire.yml
       fileLabel: Photos du produit / de l'emballage / du ticket / de la facture
 - title: Non
-  information:
+  blockingInfo:
     title: Revenez en arrière et utilisez plutôt la catégorie spécifique à votre problème 🙂
     content: 'Pour un repas au restaurant ? Utilisez la catégorie "Café / Restaurant".<br/>
       Un produit acheté en magasin ? Utilisez la catégorie "Achat (Magasin ou Internet)".<br/>'

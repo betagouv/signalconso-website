@@ -50,7 +50,7 @@ export const AnomalyCard = ({anomaly}: AnomalyCardProps) => {
               lineHeight: 1.3,
             }}
           >
-            {anomaly.categoryLabel}
+            {anomaly.title}
           </h3>
           <Txt color="hint" sx={{fontSize: '0.9rem'}}>
             {anomaly.description}

@@ -17,7 +17,7 @@ class ProblemFixture {
     companyKind: 'WEBSITE',
     tags: ['ReponseConso'],
   })
-  static readonly infoSubcategory = Fixture.genSubcategory({information: Fixture.genInformation()})
+  static readonly infoSubcategory = Fixture.genSubcategory({blockingInfo: Fixture.genInformation()})
   static readonly subcategories = [
     ProblemFixture.simpleSubcategory,
     ProblemFixture.internetSubcategory,
@@ -27,10 +27,10 @@ class ProblemFixture {
   static readonly anomaly: Anomaly = {
     id: '1',
     category: '',
-    categoryLabel: '',
     title: '',
+    seoTitle: '',
     path: 'myPath',
-    sprite: 'category-restaurant',
+    img: 'category-restaurant',
     description: 'my description',
     subcategories: ProblemFixture.subcategories,
   }

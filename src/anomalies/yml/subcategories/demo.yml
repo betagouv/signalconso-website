@@ -1,16 +1,16 @@
 - title: (title) Première sous category du fichier demo.yml, absolument minimale
 - title: Seconde sous category un peu plus étoffée
-  example: (example) Texte explicatif de la sous category
+  desc: (desc) Texte explicatif de la sous category
   subcategoriesTitle: (subcategoriesTitle) Titre ou question introduisant le choix des sous catégories suivantes
   subcategories:
     - title: (title) Une sous sous category minimale
     - title: (title) Une autre
 
 - title: Sous category avec un fileLabel
-  example: Cette sous category a un fileLabel, visible sur la page suivante
+  desc: Cette sous category a un fileLabel, visible sur la page suivante
   fileLabel: (fileLabel) Le label expliquant les fichiers à uploader
 - title: Sous category avec des champs en plus invisibles
-  example: Cette sous category utilise a des valeurs spécifiées dans les champs reponseconsoCode, ccrfCode, et elle a aussi deux tags quelconques (Hygiene et Ehpad). Tout cela ne devrait avoir aucune conséquence visuellement, ce sont juste des infos transmises à l'API
+  desc: Cette sous category utilise a des valeurs spécifiées dans les champs reponseconsoCode, ccrfCode, et elle a aussi deux tags quelconques (Hygiene et Ehpad). Tout cela ne devrait avoir aucune conséquence visuellement, ce sont juste des infos transmises à l'API
   tags:
     - Hygiene
     - Ehpad
@@ -22,7 +22,7 @@
     - '23F'
     - '146'
 - title: Sous category pour tester divers tags
-  example: Pour tester les tags ReponseConso, ProduitDangereux, etc.
+  desc: Pour tester les tags ReponseConso, ProduitDangereux, etc.
   subcategories:
     - title: Sous cat avec tag ReponseConso
       tags:
@@ -31,7 +31,7 @@
       tags:
         - ProduitDangereux
 - title: Sous category pour tester les companyKind
-  example: Pour tester chaque type de CompanyKind (SIRET, WEBSITE, etc.)
+  desc: Pour tester chaque type de CompanyKind (SIRET, WEBSITE, etc.)
   subcategories:
     - title: Sous cat avec companyKind SIRET
       companyKind: SIRET
@@ -43,41 +43,41 @@
       companyKind: LOCATION
     - title: Sous cat avec companyKind SOCIAL
       companyKind: SOCIAL
-- title: Sous category pour tester les "information" (bloc bloquant)
+- title: Sous category pour tester les "blockingInfo"
   subcategories:
-    - title: Sous cat avec information complete
-      example: Bloc d'information avec tous les champs remplis, et quelques "actions"
-      information:
+    - title: Sous cat avec blockingInfo complet
+      desc: Bloc d'information avec tous les champs remplis, et quelques "actions"
+      blockingInfo:
         title: Title du bloc d'information
         subTitle: Subtitle du bloc d'information
         content: Content du bloc d'information
-        actions:
+        questions:
           - question: Première "action", champ "question"
             answer: Première "action", champ "answer"
           - question: Seconde "action", champ "question"
             answer: Seconde "action", champ "answer"
-            example: Seconde "action", champ "example"
-    - title: Sous cat avec "outOfScope" à true
-      information:
+            desc: Seconde "action", champ "desc"
+    - title: Sous cat avec "notAFraudMessage" à true
+      blockingInfo:
         title: Title du bloc d'information
         content: Content du bloc d'information
-        outOfScope: true
+        notAFraudMessage: true
     - title: Sous cat avec juste un "content"
-      information:
+      blockingInfo:
         content: Content du bloc d'information
     - title: Sous cat avec juste un "title"
-      information:
+      blockingInfo:
         title: Title du bloc d'information
     - title: Sous cat avec juste un "subtitle"
-      information:
+      blockingInfo:
         subTitle: Title du bloc d'information
     - title: Sous cat avec juste une "action"
-      information:
-        actions:
+      blockingInfo:
+        questions:
           - question: Première "action", champ "question"
             answer: Première "action", champ "answer"
 - title: Sous category pour tester les "detailInputs"
-  example: Sous cat avec toutes les variantes possibles de detailInputs
+  desc: Sous cat avec toutes les variantes possibles de detailInputs
     (TEXT, DATE, etc.)
   detailInputs:
     - label: simple input texte (le type TEXT)

@@ -1,20 +1,20 @@
 - title: Banque
-  example: 'Exemple : banque classique, banque en ligne'
+  desc: 'Exemple : banque classique, banque en ligne'
   tags:
     - ReponseConso
   subcategories:
     - title: Frais bancaires
-      example: 'Exemple : prix non affiché, augmentation des frais bancaires sans prévenir'
+      desc: 'Exemple : prix non affiché, augmentation des frais bancaires sans prévenir'
       reponseconsoCode:
         - '164'
         - '645'
     - title: Contrat
-      example: 'Exemple : contrat de crédit non conforme'
+      desc: 'Exemple : contrat de crédit non conforme'
       reponseconsoCode:
         - '411'
         - '416'
     - title: Publicité
-      example: 'Exemple : publicité pour un crédit non conforme, démarchage téléphonique'
+      desc: 'Exemple : publicité pour un crédit non conforme, démarchage téléphonique'
       reponseconsoCode:
         - '210'
         - '411'
@@ -40,7 +40,7 @@
         - title: Autre
           companyKind: SIRET
     - title: Service client
-      example: 'Exemple : service client injoignable'
+      desc: 'Exemple : service client injoignable'
       reponseconsoCode:
         - '466'
         - '467'
@@ -51,18 +51,18 @@
 - title: Assurance / mutuelle
   subcategories:
     - title: Contrat
-      example: 'Exemple : contrat non respecté, échéancier non reçu'
+      desc: 'Exemple : contrat non respecté, échéancier non reçu'
       tags:
         - ReponseConso
       reponseconsoCode:
         - '425'
         - '411'
     - title: Remboursement / dédommagement
-      example: 'Exemple : remboursement non reçu'
+      desc: 'Exemple : remboursement non reçu'
       reponseconsoCode:
         - '679'
     - title: Publicité
-      example: 'Exemple : publicité trompeuse, démarchage à domicile, démarchage téléphonique'
+      desc: 'Exemple : publicité trompeuse, démarchage à domicile, démarchage téléphonique'
       tags:
         - ReponseConso
       subcategories:
@@ -115,13 +115,13 @@
             - ReponseConso
           companyKind: SIRET
     - title: Service client
-      example: 'Exemple : service client injoignable'
+      desc: 'Exemple : service client injoignable'
       reponseconsoCode:
         - '491'
     - title: Autre
       reponseconsoCode:
         - '679'
 - title: Assurance maladie (sécurité sociale)
-  information:
+  blockingInfo:
     title: Vous ne pouvez pas utiliser SignalConso pour signaler un problème avec l'assurance maladie.
     content: "Si vous souhaitez faire une réclamation, vous devez contacter directement votre caisse d'assurance maladie. Il existe également un médiateur. Renseignez-vous auprès de votre caisse ou sur le site <a href='https://www.ameli.fr' target='_blank' />www.ameli.fr</a>"

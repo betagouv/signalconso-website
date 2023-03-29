@@ -36,7 +36,7 @@ export const ReportPathPage = ({reportPath, isWebView = false}: {reportPath: str
   return (
     <Page maxWidth={624}>
       <Head>
-        <title>{anomaly.title + ' - SignalConso'}</title>
+        <title>{anomaly.seoTitle + ' - SignalConso'}</title>
         <meta name="description" content={undefinedIfNull(anomaly.seoDescription ?? anomaly.description)} />
       </Head>
       <Box sx={{display: 'flex', alignItems: 'center', mb: 2, color: t => t.palette.text.secondary}}>
@@ -56,7 +56,7 @@ export const ReportPathPage = ({reportPath, isWebView = false}: {reportPath: str
             fontSize: t => styleUtils(t).fontSize.title,
           }}
         >
-          {anomaly.categoryLabel}
+          {anomaly.title}
         </Box>
       </Box>
       <ReportFlowStepperWithoutSsr {...{anomaly, isWebView}} />

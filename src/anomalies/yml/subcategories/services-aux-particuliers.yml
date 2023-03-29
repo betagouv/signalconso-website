@@ -1,8 +1,8 @@
 - title: Formation
-  example: 'Exemple : Démarchage Compte Personnel de Formation, CPF, information trompeuse ou mensongère'
+  desc: 'Exemple : Démarchage Compte Personnel de Formation, CPF, information trompeuse ou mensongère'
   subcategories:
     - title: Démarchage
-      example: "Exemple : Démarchage téléphonique, SMS, démarchage par courriel, en message personnel sur les réseaux sociaux"
+      desc: "Exemple : Démarchage téléphonique, SMS, démarchage par courriel, en message personnel sur les réseaux sociaux"
       ccrfCode:
         - '23E'
       subcategories:
@@ -68,7 +68,7 @@
                 - Snapchat
                 - autre (à préciser)
     - title: Publicité et pratique du professionnel
-      example: "Exemple : absence d'information, information trompeuse ou mensongère"
+      desc: "Exemple : absence d'information, information trompeuse ou mensongère"
       ccrfCode:
         - '23B'
       subcategories:
@@ -76,7 +76,7 @@
           ccrfCode:
             - '23B'
         - title: Information mensongère ou trompeuse
-          example: "Mise en avant d'un label ou d'un signe de qualité non ou plus détenu"
+          desc: "Mise en avant d'un label ou d'un signe de qualité non ou plus détenu"
           ccrfCode:
             - '23b'
             - '275'
@@ -158,41 +158,41 @@
               optional: true
         - title: Autre
     - title: Contrat
-      example: 'Exemple : contrat non respecté, délai de rétractation, clause abusive'
+      desc: 'Exemple : contrat non respecté, délai de rétractation, clause abusive'
       ccrfCode:
         - '21c'
       subcategories:
         - title: Droit de rétractation
-          example: Une fois le contrat signé, vous souhaitez revenir en arrière
+          desc: Une fois le contrat signé, vous souhaitez revenir en arrière
           subcategoriesTitle: Où avez-vous signé le contrat ?
           subcategories:
             - title: À votre domicile
-              example: Un démarcheur est venu chez vous
+              desc: Un démarcheur est venu chez vous
             - title: À distance
-              example: 'Exemple : sur internet'
+              desc: 'Exemple : sur internet'
             - title: Au lieu habituel d'activité du professionnel
-              example: Dans son bureau, sa boutique, etc.
-              information:
+              desc: Dans son bureau, sa boutique, etc.
+              blockingInfo:
                 title: Vous ne pouvez plus vous rétracter
                 content: Vous avez signé le contrat chez l'entreprise. Il n'y a pas de délai de rétractation dans ce cas.
-                outOfScope: true
+                notAFraudMessage: true
             - title: Sur un stand dans une foire ou salon
-              information:
+              blockingInfo:
                 title: Vous ne pouvez plus vous rétracter
                 content: Vous avez signé le contrat sur un stand de l'entreprise dans une foire ou un salon. Il n'y a pas de délai de rétractation dans ce cas.
-                outOfScope: true
+                notAFraudMessage: true
         - title: Contrat non respecté
         - title: Clause abusive
-          example: Vous souhaitez dénoncer une clause qui vous est particulièrement défavorable
+          desc: Vous souhaitez dénoncer une clause qui vous est particulièrement défavorable
           ccrfCode:
             - '21C'
         - title: Autre
     - title: Autre
 - title: Service de lutte contre les rats, les punaises de lits, désinfection
-  example: 'Exemple : la désinfection, la désinsectisation, la dératisation, lutte contre les nuisibles'
+  desc: 'Exemple : la désinfection, la désinsectisation, la dératisation, lutte contre les nuisibles'
   subcategories:
     - title: Publicité et pratique du professionnel
-      example: "Exemple : absence d'information, information trompeuse ou mensongère, démarchage"
+      desc: "Exemple : absence d'information, information trompeuse ou mensongère, démarchage"
       ccrfCode:
         - '23B'
       subcategories:
@@ -235,7 +235,7 @@
             - DemarchageTelephonique
           subcategories:
             - title: Information mensongère ou trompeuse
-              example: "Mise en avant d'un label ou d'un signe de qualité non ou plus détenu"
+              desc: "Mise en avant d'un label ou d'un signe de qualité non ou plus détenu"
               ccrfCode:
                 - '23b'
                 - '275'
@@ -260,14 +260,14 @@
     - title: Prix
       ccrfCode:
         - '21b'
-      example: 'Exemple : il manque les prix, prix exagéré, prix différent du devis'
+      desc: 'Exemple : il manque les prix, prix exagéré, prix différent du devis'
       subcategories:
         - title: Prix exagéré / élevé / Les prix sont plus élevés qu'ailleurs
-          information:
+          blockingInfo:
             title: Les commerçants ont le droit de choisir leurs prix.
             content: Les professionnels ont le droit de choisir leurs prix.
               <br />Par contre, les prix doivent être clairement indiqués pour que vous soyez au courant avant d'acheter, de commander ou avant la prestation.
-            outOfScope: true
+            notAFraudMessage: true
         - title: Prix final non conforme au prix annoncé
           ccrfCode:
             - '23b'
@@ -285,24 +285,24 @@
     - title: Prestation
       subcategories:
         - title: Malfaçon
-          example: Constat d'un défaut résultant d'une mauvaise exécution des travaux
+          desc: Constat d'un défaut résultant d'une mauvaise exécution des travaux
         - title: Autre
 - title: Bien-être
-  example: 'Exemple : coiffeur, esthéticien, Cabinet UV, salon de massage'
+  desc: 'Exemple : coiffeur, esthéticien, Cabinet UV, salon de massage'
   subcategories:
     - title: Coiffeur
       subcategories:
         - title: Prix
-          example: 'Exemple : il manque les prix, prix exagéré, prix différent du devis'
+          desc: 'Exemple : il manque les prix, prix exagéré, prix différent du devis'
           ccrfCode:
             - '21b'
           subcategories:
             - title: Prix exagéré / élevé / Les prix sont plus élevés qu'ailleurs
-              information:
+              blockingInfo:
                 title: Les commerçants ont le droit de choisir leurs prix.
                 content: Les professionnels ont le droit de choisir leurs prix.
                   <br />Par contre, les prix doivent être clairement indiqués pour que vous soyez au courant avant d'acheter, de commander ou avant la prestation.
-                outOfScope: true
+                notAFraudMessage: true
             - title: Prix final non conforme au prix annoncé
             - title: Il manque des prix / les prix sont illisibles
               ccrfCode:
@@ -315,7 +315,7 @@
                     - Prix illisible
                     - Autre (à préciser)
         - title: Moyens de paiement
-          example: 'Exemple : carte bancaire refusée'
+          desc: 'Exemple : carte bancaire refusée'
           subcategories: !!import/single ../common/paiement.yml
         - title: Publicité des prestations mensongère
           ccrfCode:
@@ -328,23 +328,23 @@
             - '446'
           subcategories:
             - title: Je subis des nuisances à cause des odeurs, du bruit...
-              information: !!import/single ../common/info/voisinage.yml
+              blockingInfo: !!import/single ../common/info/voisinage.yml
             - title: Autre
         - title: Le personnel n'est pas aimable
-          information: !!import/single ../common/info/amabilite.yml
+          blockingInfo: !!import/single ../common/info/amabilite.yml
     - title: Esthéticien
       subcategories:
         - title: Prix des soins
-          example: 'Exemple : il manque les prix, prix exagéré, prix différent du devis'
+          desc: 'Exemple : il manque les prix, prix exagéré, prix différent du devis'
           ccrfCode:
             - '21b'
           subcategories:
             - title: Prix exagéré / élevé / Les prix sont plus élevés qu'ailleurs
-              information:
+              blockingInfo:
                 title: Les commerçants ont le droit de choisir leurs prix.
                 content: Les professionnels ont le droit de choisir leurs prix.
                   <br />Par contre, les prix doivent être clairement indiqués pour que vous soyez au courant avant d'acheter, de commander ou avant la prestation.
-                outOfScope: true
+                notAFraudMessage: true
             - title: Prix final non conforme au prix annoncé
             - title: Il manque des prix / les prix sont illisibles
               ccrfCode:
@@ -357,7 +357,7 @@
                     - Prix illisible
                     - Autre (à préciser)
         - title: Moyens de paiement
-          example: 'Exemple : carte bancaire refusée'
+          desc: 'Exemple : carte bancaire refusée'
           subcategories: !!import/single ../common/paiement.yml
         - title: Publicité des prestations mensongère
           ccrfCode:
@@ -370,23 +370,23 @@
             - '446'
           subcategories:
             - title: Je subis des nuisances à cause des odeurs, du bruit...
-              information: !!import/single ../common/info/voisinage.yml
+              blockingInfo: !!import/single ../common/info/voisinage.yml
             - title: Autre
         - title: Le personnel n'est pas aimable
-          information: !!import/single ../common/info/amabilite.yml
+          blockingInfo: !!import/single ../common/info/amabilite.yml
     - title: Cabine UV
       subcategories:
         - title: Prix
-          example: 'Exemple : il manque les prix, prix exagéré, prix différent du devis'
+          desc: 'Exemple : il manque les prix, prix exagéré, prix différent du devis'
           ccrfCode:
             - '21b'
           subcategories:
             - title: Prix exagéré / élevé / Les prix sont plus élevés qu'ailleurs
-              information:
+              blockingInfo:
                 title: Les commerçants ont le droit de choisir leurs prix.
                 content: Les professionnels ont le droit de choisir leurs prix.
                   <br />Par contre, les prix doivent être clairement indiqués pour que vous soyez au courant avant d'acheter, de commander ou avant la prestation.
-                outOfScope: true
+                notAFraudMessage: true
             - title: Prix final non conforme au prix annoncé
             - title: Il manque des prix / les prix sont illisibles
               ccrfCode:
@@ -399,7 +399,7 @@
                     - Prix illisible
                     - Autre (à préciser)
         - title: Moyens de paiement
-          example: 'Exemple : carte bancaire refusée'
+          desc: 'Exemple : carte bancaire refusée'
           subcategories: !!import/single ../common/paiement.yml
         - title: Publicité des prestations mensongère
           ccrfCode:
@@ -412,21 +412,21 @@
             - '446'
           subcategories:
             - title: Je subis des nuisances à cause des odeurs, du bruit...
-              information: !!import/single ../common/info/voisinage.yml
+              blockingInfo: !!import/single ../common/info/voisinage.yml
             - title: Autre
         - title: Le personnel n'est pas aimable
-          information: !!import/single ../common/info/amabilite.yml
+          blockingInfo: !!import/single ../common/info/amabilite.yml
     - title: Massage
       subcategories:
         - title: Prix
-          example: 'Exemple : il manque les prix, prix exagéré, prix différent du devis'
+          desc: 'Exemple : il manque les prix, prix exagéré, prix différent du devis'
           ccrfCode:
             - '21b'
           subcategories:
             - title: Prix exagéré / élevé / Les prix sont plus élevés qu'ailleurs
-              information:
+              blockingInfo:
                 title: Les commerçants ont le droit de choisir leurs prix.
-                outOfScope: true
+                notAFraudMessage: true
                 content: Les professionnels ont le droit de choisir leurs prix.
                   <br />Par contre, les prix doivent être clairement indiqués pour que vous soyez au courant avant d'acheter, de commander ou avant la prestation.
             - title: Prix final non conforme au prix annoncé
@@ -447,7 +447,7 @@
                 - label: Description
                   type: TEXTAREA
         - title: Moyens de paiement
-          example: 'Exemple : carte bancaire refusée'
+          desc: 'Exemple : carte bancaire refusée'
           subcategories: !!import/single ../common/paiement.yml
         - title: Publicité des prestations mensongère
           ccrfCode:
@@ -460,22 +460,22 @@
             - '446'
           subcategories:
             - title: Je subis des nuisances à cause des odeurs, du bruit...
-              information: !!import/single ../common/info/voisinage.yml
+              blockingInfo: !!import/single ../common/info/voisinage.yml
             - title: Autre
         - title: Le personnel n'est pas aimable
-          information: !!import/single ../common/info/amabilite.yml
+          blockingInfo: !!import/single ../common/info/amabilite.yml
 - title: Vie quotidienne
-  example: "Exemple : conciergerie, pressing, cordonnier, ménage, garde d'enfants"
+  desc: "Exemple : conciergerie, pressing, cordonnier, ménage, garde d'enfants"
   subcategories:
     - title: Prix des prestations
-      example: 'Exemple : promotion non appliquée, prix en vitrine pas à jour, prix non respecté'
+      desc: 'Exemple : promotion non appliquée, prix en vitrine pas à jour, prix non respecté'
       ccrfCode:
         - '21b'
       reponseconsoCode:
         - '411'
         - '212'
     - title: Moyens de paiement
-      example: 'Exemple : carte bancaire refusée'
+      desc: 'Exemple : carte bancaire refusée'
       subcategories: !!import/single ../common/paiement.yml
     - title: Publicité des prestations mensongère
       ccrfCode:
@@ -489,24 +489,24 @@
         - '446'
       subcategories:
         - title: Je subis des nuisances à cause des odeurs, du bruit...
-          information: !!import/single ../common/info/voisinage.yml
+          blockingInfo: !!import/single ../common/info/voisinage.yml
     - title: Le personnel n'est pas aimable
-      information: !!import/single ../common/info/amabilite.yml
+      blockingInfo: !!import/single ../common/info/amabilite.yml
     - title: Autre
       reponseconsoCode:
         - '210'
 - title: Aide à la personne
-  example: "Garde d'enfant de moins de 3 ans, garde d'enfants handicapés de moins de 18 ans, garde de personnes âgées dépendantes ou handicapées, services d'aide et d'accompagnement à domicile (SAAD)"
+  desc: "Garde d'enfant de moins de 3 ans, garde d'enfants handicapés de moins de 18 ans, garde de personnes âgées dépendantes ou handicapées, services d'aide et d'accompagnement à domicile (SAAD)"
   subcategories:
     - title: Prix des prestations
-      example: 'Exemple : promotion non appliquée, prix en vitrine pas à jour, prix non respecté'
+      desc: 'Exemple : promotion non appliquée, prix en vitrine pas à jour, prix non respecté'
       ccrfCode:
         - '21b'
       reponseconsoCode:
         - '411'
         - '212'
     - title: Moyens de paiement
-      example: 'Exemple : carte bancaire refusée'
+      desc: 'Exemple : carte bancaire refusée'
       subcategories: !!import/single ../common/paiement.yml
     - title: Le personnel ne dispose pas des diplômes requis
       ccrfCode:
@@ -523,7 +523,7 @@
       tags:
         - ReponseConso
     - title: Le personnel n'est pas aimable
-      information: !!import/single ../common/info/amabilite.yml
+      blockingInfo: !!import/single ../common/info/amabilite.yml
     - title: Autre
       reponseconsoCode:
         - '210'
@@ -537,7 +537,7 @@
         - '135'
       subcategories:
         - title: Les tarifs ne sont pas communiqués clairement
-          example: 'Exemple : les prix des options ne sont pas dans le contrat'
+          desc: 'Exemple : les prix des options ne sont pas dans le contrat'
           reponseconsoCode:
             - '411'
             - '212'
@@ -555,19 +555,19 @@
           tags:
             - ReponseConso
         - title: Les prix sont élevés pour la prestation
-          information:
+          blockingInfo:
             title: Les prix sont choisis librement par les maisons de retraite.
             content: Par contre, les prix doivent être clairement indiqués pour que vous soyez au courant avant de signer un contrat ou avant de prendre des options.
-            outOfScope: true
+            notAFraudMessage: true
     - title: Contrat
-      example: 'Exemple : je veux résilier le contrat, les activités ne correspondent pas à mon contrat'
+      desc: 'Exemple : je veux résilier le contrat, les activités ne correspondent pas à mon contrat'
       ccrfCode:
         - '21c'
       reponseconsoCode:
         - '210'
       subcategories:
         - title: Le contrat n'est pas respecté
-          example: "Exemple : le contrat prévoit des fruits tous les jours et ce n'est pas le cas"
+          desc: "Exemple : le contrat prévoit des fruits tous les jours et ce n'est pas le cas"
         - title: Je veux résilier le contrat
           reponseconsoCode:
             - '226'
@@ -575,14 +575,14 @@
           tags:
             - ReponseConso
         - title: Une clause dans le contrat est abusive, c'est-à-dire qu’elle désavantage fortement le résident
-          example: "Exemple : imposer un préavis de 2 mois au résident pour résilier le contrat alors que la maison de retraite a un préavis d'1 mois seulement"
+          desc: "Exemple : imposer un préavis de 2 mois au résident pour résilier le contrat alors que la maison de retraite a un préavis d'1 mois seulement"
           reponseconsoCode:
             - '422'
             - '214'
           tags:
             - ReponseConso
     - title: Emménagement / sortie de la chambre
-      example: "Exemple : état des lieux d'entrée ou de sortie, caution"
+      desc: "Exemple : état des lieux d'entrée ou de sortie, caution"
       ccrfCode:
         - '21c'
         - '23f'
@@ -608,7 +608,7 @@
                   reponseconsoCode:
                     - '2262'
                 - title: Non
-                  information:
+                  blockingInfo:
                     title: Une caution (somme d'argent) peut être demandée, mais elle ne doit pas dépasser le tarif mensuel d'hébergement.
                     content: Retrouvez plus d'informations sur <a href="https://www.service-public.fr/particuliers/vosdroits/F763" target="_blank">https://www.service-public.fr/particuliers/vosdroits/F763</a>
             - title: Je n'ai toujours pas récupéré la caution
@@ -616,7 +616,7 @@
                 - title: Quand avez-vous libéré la chambre ?
                   subcategories:
                     - title: Il y a moins de 30 jours
-                      information:
+                      blockingInfo:
                         title: Soyez encore un peu patient :)
                         content: La maison de retraite a 30 jours pour vous rendre la caution.
                     - title: Il y a plus de 30 jours
@@ -625,7 +625,7 @@
                         - '226'
             - title: Autre
     - title: Publicité mensongère
-      example: "Exemple : le site internet mentionne un grand parc alors que ce n'est pas le cas, la brochure parle des animations régulières alors qu'il y en a très peu"
+      desc: "Exemple : le site internet mentionne un grand parc alors que ce n'est pas le cas, la brochure parle des animations régulières alors qu'il y en a très peu"
       ccrfCode:
         - '23b'
       reponseconsoCode:
@@ -633,11 +633,11 @@
       tags:
         - ReponseConso
     - title: Maltraitance
-      information:
+      blockingInfo:
         content:
           Vous ne pouvez pas signaler un cas de maltraitance sur SignalConso.<br> Vous pouvez vous rendre au commissariat de police ou à la gendarmerie. <br> Vous pouvez appeler le 3977. C'est le numéro d’appel national unique pour les victimes ou les témoins de maltraitance envers les personnes handicapées ou âgées.
           <br><br> Le site officiel <a href="https://www.pour-les-personnes-agees.gouv.fr/exercer-ses-droits/en-cas-de-maltraitance" target="_blank">www.pour-les-personnes-agees.gouv.fr</a> vous propose toutes les solutions possibles pour signaler un cas de maltraitance.
-        outOfScope: true
+        notAFraudMessage: true
     - title: Autre
       reponseconsoCode:
         - '210'
@@ -646,7 +646,7 @@
 - title: Services funéraires
   subcategories:
     - title: Prix des prestations
-      example: 'Exemple : le prix final ne correspond pas au devis, prix des soins de conservation'
+      desc: 'Exemple : le prix final ne correspond pas au devis, prix des soins de conservation'
       ccrfCode:
         - '21b'
       reponseconsoCode:
@@ -655,12 +655,12 @@
       tags:
         - ReponseConso
     - title: Moyens de paiement
-      example: 'Exemple : carte bancaire refusée'
+      desc: 'Exemple : carte bancaire refusée'
       subcategories: !!import/single ../common/paiement.yml
       tags:
         - ReponseConso
     - title: Publicité des prestations mensongère
-      example: "Exemple : composition d'un cercueil non conforme"
+      desc: "Exemple : composition d'un cercueil non conforme"
       ccrfCode:
         - '23b'
       reponseconsoCode:
@@ -668,7 +668,7 @@
       tags:
         - ReponseConso
     - title: Le personnel n'est pas aimable ou respectueux
-      information: !!import/single ../common/info/amabilite.yml
+      blockingInfo: !!import/single ../common/info/amabilite.yml
     - title: Le personnel ne dispose pas des diplômes requis
       ccrfCode:
         - '23f'
@@ -681,7 +681,7 @@
       reponseconsoCode:
         - '210'
 - title: Autre type d'entreprise de service
-  example: 'Exemple : déménageur, agence de rencontre. Pour la livraison de repas à domicile, choisir la catégorie Café / Restaurant'
+  desc: 'Exemple : déménageur, agence de rencontre. Pour la livraison de repas à domicile, choisir la catégorie Café / Restaurant'
   subcategories:
     - title: Déménageur
       reponseconsoCode:

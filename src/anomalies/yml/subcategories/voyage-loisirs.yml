@@ -2,13 +2,13 @@
   subcategories:
     - title: Taxi
       companyKind: SIRET
-      example: Les taxis sont reconnaissables avec l'enseigne lumineuse sur le toit. Les voitures qui n'ont pas cette enseigne ne sont pas des "vrais" taxis.
+      desc: Les taxis sont reconnaissables avec l'enseigne lumineuse sur le toit. Les voitures qui n'ont pas cette enseigne ne sont pas des "vrais" taxis.
       ccrfCode:
         - '23f'
         - '164'
       subcategories:
         - title: Refus de faire la course
-          example: "Exemple : le taxi refuse de vous prendre car ce n'est pas assez loin"
+          desc: "Exemple : le taxi refuse de vous prendre car ce n'est pas assez loin"
           ccrfCode:
             - '23e'
           reponseconsoCode:
@@ -22,7 +22,7 @@
             - title: Borne taxi à proximité
             - title: Autre
         - title: Les prix ne sont pas affichés dans la voiture
-          example: Une affiche avec les prix et les suppléments doit être visible dans la voiture.
+          desc: Une affiche avec les prix et les suppléments doit être visible dans la voiture.
           ccrfCode:
             - '21b'
           reponseconsoCode:
@@ -30,7 +30,7 @@
           tags:
             - ReponseConso
         - title: Refus de prendre votre carte bancaire
-          example: Tous les taxis ont obligation de prendre la carte bancaire quel que soit le montant.
+          desc: Tous les taxis ont obligation de prendre la carte bancaire quel que soit le montant.
           ccrfCode:
             - '21a'
           reponseconsoCode:
@@ -132,7 +132,7 @@
             - title: Le chauffeur n'a pas appliqué le prix prévu pour le forfait
               tags:
                 - ReponseConso
-              example: Dans certaines villes, il existe des forfaits (c'est-à-dire un prix unique connu à l'avance) pour faire les trajets vers ou depuis un aéroport. Le prix de ces forfaits est fixe.
+              desc: Dans certaines villes, il existe des forfaits (c'est-à-dire un prix unique connu à l'avance) pour faire les trajets vers ou depuis un aéroport. Le prix de ces forfaits est fixe.
               detailInputs:
                 - label: Date de la course
                   type: DATE
@@ -156,10 +156,10 @@
               subcategoriesTitle: Était-ce indiqué sur la voiture ?
               subcategories:
                 - title: Oui
-                  information:
+                  blockingInfo:
                     title: Si c'est indiqué, un chauffeur de taxi a le droit de refuser les chèques.
                     content: À la différence de la carte bancaire, un taxi a le droit de refuser les chèques.<br> Il doit l'afficher sur la voiture.
-                    outOfScope: true
+                    notAFraudMessage: true
                 - title: Non
                   detailInputs:
                     - label: Date de la course
@@ -183,11 +183,11 @@
                   placeholder: Identification du taxi, nom de la centrale d'appel...
               fileLabel: Joindre la note (facture) et tout document utile pour appuyer votre signalement (extrait de relevé bancaire).
             - title: Le chauffeur n'était pas aimable
-              information: !!import/single ../common/info/amabilite.yml
+              blockingInfo: !!import/single ../common/info/amabilite.yml
             - title: Autre
     - title: VTC (voiture avec chauffeur)
       companyKind: 'WEBSITE'
-      example: Les VTC n'ont pas de signe particulier sur les voitures. Vous devez faire une réservation pour prendre un VTC. La plupart de ces réservations se font sur internet.
+      desc: Les VTC n'ont pas de signe particulier sur les voitures. Vous devez faire une réservation pour prendre un VTC. La plupart de ces réservations se font sur internet.
       subcategories:
         - title: Une remise ou une offre promotionnelle qui n'est pas appliquée ou qui est mensongère
           ccrfCode:
@@ -237,19 +237,19 @@
         - title: Autre
           subcategories:
             - title: Le chauffeur n'était pas aimable
-              information: !!import/single ../common/info/amabilite.yml
+              blockingInfo: !!import/single ../common/info/amabilite.yml
             - title: Autre
     - title: Un chauffeur qui s'est proposé dans la rue ou à l'aéroport
-      information:
+      blockingInfo:
         title: Il s'agit d'un chauffeur non déclaré ("faux" taxi ou taxi clandestin)
         content:
           Lorsqu'un véhicule n'est pas identifié comme un taxi "officiel" (c'est-à-dire une enseigne lumineuse sur le toit, un numéro d'identification marqué sur la voiture) ou que vous ne l'avez pas réservé, il s'agit souvent de taxi clandestin ou "faux" taxi. <br> Ces "faux" taxis sont interdits. <br> Ils proposent souvent "taxi taxi" et sont par exemple dans les aéroports ou près des lieux de sorties le soir. <br><br>
           Comme ces chauffeurs ne sont pas déclarés, il n'est pas possible de faire un signalement sur notre plate-forme.
-        actions:
+        questions:
           - question: Que faire en cas de problème avec un "faux" taxi&#160;?
             answer: Vous devez contacter le plus rapidement possible la police ou la gendarmerie.
 - title: Hébergement
-  example: "Exemple : hôtel, camping, chambre d'hôte, location saisonnière"
+  desc: "Exemple : hôtel, camping, chambre d'hôte, location saisonnière"
   subcategories:
     - title: Prix
       subcategories:
@@ -258,11 +258,11 @@
             - '21b'
           reponseconsoCode:
             - '622'
-          information:
+          blockingInfo:
             title: Ceci ne constitue pas un motif de signalement.
             content: Les professionnels ont le droit de choisir leurs prix.
               <br />Par contre, les prix doivent être clairement indiqués pour que vous soyez au courant avant d'acheter ou de commander.
-            outOfScope: true
+            notAFraudMessage: true
         - title: Prix non affiché
           ccrfCode:
             - '21b'
@@ -270,13 +270,13 @@
             - '212'
           tags:
             - ReponseConso
-          example: 'Exemple: sur un site, un catalogue'
+          desc: 'Exemple: sur un site, un catalogue'
         - title: Prix final non-conforme au prix annoncé
           ccrfCode:
             - '23b'
           reponseconsoCode:
             - '210'
-          example: 'Exemple : fausse réduction, supplément imprévu'
+          desc: 'Exemple : fausse réduction, supplément imprévu'
           tags:
             - ReponseConso
           detailInputs:
@@ -292,7 +292,7 @@
           fileLabel: Vous pouvez joindre des éléments pour appuyer votre signalement.
         - title: Autre
     - title: Informations concernant le logement / Publicité
-      example: "Exemple : publicité trompeuse, absence d'information"
+      desc: "Exemple : publicité trompeuse, absence d'information"
       tags:
         - ReponseConso
       subcategories:
@@ -330,10 +330,10 @@
               type: TIMESLOT
               optional: true
     - title: Qualité de la chambre / de l'hébergement
-      example: 'Exemple : hôtel sale, chambre insonorisée, pas de sauna alors que le site mentionne un sauna'
+      desc: 'Exemple : hôtel sale, chambre insonorisée, pas de sauna alors que le site mentionne un sauna'
       subcategories:
         - title: L'hébergement ne correspond pas à ce qui m'a été vendu
-          example: "Exemple : j'avais demandé une chambre avec vue sur la mer et on m'a attribué une vue côté parking, le petit-déjeuner était compris dans le prix de la nuitée or un supplément m'a été demandé"
+          desc: "Exemple : j'avais demandé une chambre avec vue sur la mer et on m'a attribué une vue côté parking, le petit-déjeuner était compris dans le prix de la nuitée or un supplément m'a été demandé"
           ccrfCode:
             - '23b'
           reponseconsoCode:
@@ -341,17 +341,17 @@
           tags:
             - ReponseConso
         - title: Problème d'hygiène ou de propreté
-          example: 'Exemple : chambre sale, sauna sale, puces de lit'
-          information:
+          desc: 'Exemple : chambre sale, sauna sale, puces de lit'
+          blockingInfo:
             title: Vous souhaitez signaler un problème d'hygiène ou de propreté d'un logement ?
             content: La répression des fraudes n'est pas compétente pour ces problèmes. Vous pouvez contacter la mairie et/ou le Service Communal d’Hygiène et de la Santé de la commune de l'hébergement.
         - title: Problème de bruit
-          example: 'Exemple : chambre bruyante, mauvaise isolation'
-          information:
+          desc: 'Exemple : chambre bruyante, mauvaise isolation'
+          blockingInfo:
             title: Vous souhaitez signaler un problème de bruit ?
             content: La répression des fraudes n'est pas compétente pour ces problèmes. Vous pouvez contacter la mairie de la commune de l'hébergement.
         - title: Problème d'accessibilité
-          information: !!import/single ../common/info/accessibilite.yml
+          blockingInfo: !!import/single ../common/info/accessibilite.yml
         - title: Autre
     - title: Annulation / remboursement
       ccrfCode:
@@ -368,12 +368,12 @@
           subcategories:
             - title: Oui
             - title: Non
-              information:
+              blockingInfo:
                 title: Les arrhes
                 content: Les sommes versées à l'hôtelier lors de la commande ne sont pas restituées (ce sont les arrhes). Vous disposez peut-être d'une assurance annulation grâce à votre carte bancaire, (notamment si vous avez payé le voyage avec une carte Gold ou Visa Premier), adressez-vous à votre banque.
-                outOfScope: true
+                notAFraudMessage: true
     - title: Produit dangereux
-      example: 'Exemple : lit'
+      desc: 'Exemple : lit'
       tags:
         - ProduitDangereux
       subcategories:
@@ -449,7 +449,7 @@
         - title: On a refusé de me donner une chambre
           tags:
             - ReponseConso
-          example: "Exemple : Refus pour un motif discriminatoire, au motif d'enfant"
+          desc: "Exemple : Refus pour un motif discriminatoire, au motif d'enfant"
           detailInputs:
             - label: Date du problème
               type: DATE
@@ -461,7 +461,7 @@
           subcategoriesTitle: Est-ce un chien d'assistance&#160;?
           subcategories:
             - title: Non
-              information: !!import/single ../common/info/chienassistance.yml
+              blockingInfo: !!import/single ../common/info/chienassistance.yml
             - title: Oui (je possède la carte d'assistance)
               detailInputs:
                 - label: Date du refus
@@ -470,8 +470,8 @@
                   type: TEXTAREA
               fileLabel: Vous pouvez joindre des éléments (photo, carte d'assistance...) pour appuyer votre signalement.
         - title: Le personnel est peu aimable
-          example: "Exemple : l'accueil est froid, le personnel parle mal aux clients"
-          information: !!import/single ../common/info/amabilite.yml
+          desc: "Exemple : l'accueil est froid, le personnel parle mal aux clients"
+          blockingInfo: !!import/single ../common/info/amabilite.yml
 - title: Agence de voyage
   subcategories:
     - title: Prix
@@ -479,19 +479,19 @@
         - '21b'
       subcategories:
         - title: Prix exagéré
-          information:
+          blockingInfo:
             title: Ceci ne constitue pas un motif de signalement.
             content: Les professionnels ont le droit de choisir leurs prix.
               <br />Par contre, les prix doivent être clairement indiqués pour que vous soyez au courant avant d'acheter ou de commander.
-            outOfScope: true
+            notAFraudMessage: true
         - title: Prix non affiché
-          example: 'Exemple : sur un site, un catalogue'
+          desc: 'Exemple : sur un site, un catalogue'
           reponseconsoCode:
             - '212'
           tags:
             - ReponseConso
         - title: Prix final non-conforme au prix annoncé
-          example: 'Exemple : fausse réduction, suppléments non prévus'
+          desc: 'Exemple : fausse réduction, suppléments non prévus'
           ccrfCode:
             - '23b'
           reponseconsoCode:
@@ -501,7 +501,7 @@
             - ReponseConso
         - title: Autre
     - title: Publicité
-      example: "Exemple : publicité trompeuse, absence d'information"
+      desc: "Exemple : publicité trompeuse, absence d'information"
       ccrfCode:
         - '23b'
       tags:
@@ -544,7 +544,7 @@
             - '210'
           tags:
             - ReponseConso
-          example: 'Exemple : une excursion était prévue dans le voyage et elle a été annulée sans motif'
+          desc: 'Exemple : une excursion était prévue dans le voyage et elle a été annulée sans motif'
         - title: Autre
     - title: Annulation / remboursement
       ccrfCode:
@@ -565,15 +565,15 @@
     - title: Autre
       subcategories:
         - title: Le personnel n'était pas aimable
-          information: !!import/single ../common/info/amabilite.yml
+          blockingInfo: !!import/single ../common/info/amabilite.yml
         - title: Problème d'accessibilité de l'agence
-          information: !!import/single ../common/info/accessibilite.yml
+          blockingInfo: !!import/single ../common/info/accessibilite.yml
         - title: Autre
           tags:
             - ReponseConso
 - title: Compagnie aérienne
-  example: "Exemple : Vol annulé, vol retardé, déclassement, refus d'embarquement"
-  information:
+  desc: "Exemple : Vol annulé, vol retardé, déclassement, refus d'embarquement"
+  blockingInfo:
     title: Oups, nous ne pouvons pas traiter votre signalement.
     content: 'Vous avez acheté votre billet d''avion directement auprès d''une compagnie aérienne.
       <br />Vous avez eu un problème de déclassement, un refus d''embarquement, votre vol a été retardé ou annulé.
@@ -588,7 +588,7 @@
 #  tags:
 #    - CompagnieAerienne
 - title: Transports en commun
-  example: 'Exemple : avion, train, bateau'
+  desc: 'Exemple : avion, train, bateau'
   subcategories:
     - title: Prix
       ccrfCode:
@@ -597,19 +597,19 @@
         - title: Prix exagéré
           reponseconsoCode:
             - '622'
-          information:
+          blockingInfo:
             title: Ceci ne constitue pas un motif de signalement.
             content: Les professionnels ont le droit de choisir leurs prix.
               <br />Par contre, les prix doivent être clairement indiqués pour que vous soyez au courant avant d'acheter ou de commander.
-            outOfScope: true
+            notAFraudMessage: true
         - title: Prix non affiché
-          example: 'Exemple : sur un site, un catalogue'
+          desc: 'Exemple : sur un site, un catalogue'
           reponseconsoCode:
             - '212'
           tags:
             - ReponseConso
         - title: Prix final non-conforme au prix annoncé
-          example: 'Exemple : fausse réduction, suppléments non prévus'
+          desc: 'Exemple : fausse réduction, suppléments non prévus'
           tags:
             - ReponseConso
           reponseconsoCode:
@@ -618,7 +618,7 @@
           tags:
             - ReponseConso
     - title: Publicité
-      example: "Exemple : publicité trompeuse, absence d'information"
+      desc: "Exemple : publicité trompeuse, absence d'information"
       subcategories:
         - title: Absence d'information
           ccrfCode:
@@ -677,20 +677,20 @@
             - '21b'
         - title: Autre
     - title: Abonnement de transport
-      example: 'Exemple : TGV max, pass Navigo'
+      desc: 'Exemple : TGV max, pass Navigo'
       ccrfCode:
         - '21c'
     - title: Autre
       subcategories:
         - title: Le personnel n'était pas aimable
-          information: !!import/single ../common/info/amabilite.yml
+          blockingInfo: !!import/single ../common/info/amabilite.yml
         - title: Problème d'accessibilité
-          information: !!import/single ../common/info/accessibilite.yml
+          blockingInfo: !!import/single ../common/info/accessibilite.yml
         - title: Mon animal a été refusé
           subcategoriesTitle: Est-ce un chien d'assistance&#160;?
           subcategories:
             - title: Non
-              information: !!import/single ../common/info/chienassistance.yml
+              blockingInfo: !!import/single ../common/info/chienassistance.yml
             - title: Oui (je possède la carte d'assistance)
               detailInputs:
                 - label: Date du refus
@@ -700,7 +700,7 @@
               fileLabel: Vous pouvez joindre des éléments (photo, carte d'assistance...) pour appuyer votre signalement.
         - title: Autre
 - title: Sport
-  example: 'Exemple : piscine, salle de sport'
+  desc: 'Exemple : piscine, salle de sport'
   subcategories:
     - title: Prix
       ccrfCode:
@@ -709,19 +709,19 @@
         - title: Prix exagéré
           reponseconsoCode:
             - '622'
-          information:
+          blockingInfo:
             title: Ceci ne constitue pas un motif de signalement.
             content: Les professionnels ont le droit de choisir leurs prix.
               <br />Par contre, les prix doivent être clairement indiqués pour que vous soyez au courant avant d'acheter ou de commander.
-            outOfScope: true
+            notAFraudMessage: true
         - title: Prix non affiché
-          example: 'Exemple : sur un site, un catalogue'
+          desc: 'Exemple : sur un site, un catalogue'
           reponseconsoCode:
             - '212'
           tags:
             - ReponseConso
         - title: Prix final non-conforme au prix annoncé
-          example: 'Exemple : fausse réduction, suppléments non prévus'
+          desc: 'Exemple : fausse réduction, suppléments non prévus'
           reponseconsoCode:
             - '210'
           tags:
@@ -730,7 +730,7 @@
           tags:
             - ReponseConso
     - title: Publicité
-      example: "Exemple : publicité trompeuse, absence d'information"
+      desc: "Exemple : publicité trompeuse, absence d'information"
       tags:
         - ReponseConso
       subcategories:
@@ -767,7 +767,7 @@
               type: TIMESLOT
               optional: true
     - title: Contrat et abonnement
-      example: 'Exemple : contrat non respecté, clause abusive'
+      desc: 'Exemple : contrat non respecté, clause abusive'
       ccrfCode:
         - '21c'
       subcategories:
@@ -780,7 +780,7 @@
           reponseconsoCode:
             - '446'
     - title: Produit dangereux
-      example: 'Exemple : équipement de protection'
+      desc: 'Exemple : équipement de protection'
       tags:
         - ProduitDangereux
       subcategories:
@@ -824,14 +824,14 @@
           tags:
             - ReponseConso
         - title: Problème d'accessibilité
-          information: !!import/single ../common/info/accessibilite.yml
+          blockingInfo: !!import/single ../common/info/accessibilite.yml
         - title: Le personnel n'était pas aimable
-          information: !!import/single ../common/info/amabilite.yml
+          blockingInfo: !!import/single ../common/info/amabilite.yml
         - title: Autre
           tags:
             - ReponseConso
 - title: Divertissement culturel
-  example: 'Exemple : musée, cinéma, concert'
+  desc: 'Exemple : musée, cinéma, concert'
   subcategories:
     - title: Prix
       ccrfCode:
@@ -840,19 +840,19 @@
         - title: Prix exagéré
           reponseconsoCode:
             - '622'
-          information:
+          blockingInfo:
             title: Ceci ne constitue pas un motif de signalement.
             content: Les professionnels ont le droit de choisir leurs prix.
               <br />Par contre, les prix doivent être clairement indiqués pour que vous soyez au courant avant d'acheter ou de commander.
-            outOfScope: true
+            notAFraudMessage: true
         - title: Prix non affiché
-          example: 'Exemple : sur un site, un catalogue'
+          desc: 'Exemple : sur un site, un catalogue'
           reponseconsoCode:
             - '212'
           tags:
             - ReponseConso
         - title: Prix final non-conforme au prix annoncé
-          example: 'Exemple : fausse réduction, suppléments non prévus'
+          desc: 'Exemple : fausse réduction, suppléments non prévus'
           reponseconsoCode:
             - '210'
           tags:
@@ -861,7 +861,7 @@
           tags:
             - ReponseConso
     - title: Publicité
-      example: "Exemple : publicité mensongère, absence d'information"
+      desc: "Exemple : publicité mensongère, absence d'information"
       ccrfCode:
         - '23b'
       tags:
@@ -905,14 +905,14 @@
     - title: Autre
       subcategories:
         - title: Problème d'accessibilité
-          information: !!import/single ../common/info/accessibilite.yml
+          blockingInfo: !!import/single ../common/info/accessibilite.yml
         - title: Le personnel n'était pas aimable
-          information: !!import/single ../common/info/amabilite.yml
+          blockingInfo: !!import/single ../common/info/amabilite.yml
         - title: Mon chien a été refusé
           subcategoriesTitle: Est-ce un chien d'assistance&#160;?
           subcategories:
             - title: Non
-              information: !!import/single ../common/info/chienassistance.yml
+              blockingInfo: !!import/single ../common/info/chienassistance.yml
             - title: Oui (je possède la carte d'assistance)
               detailInputs:
                 - label: Date du refus
@@ -928,6 +928,6 @@
     - ReponseConso
   subcategories:
     - title: Abonnement
-      example: 'Exemple : abonnement magazine'
+      desc: 'Exemple : abonnement magazine'
     - title: Coffret cadeau / box
     - title: Autre
