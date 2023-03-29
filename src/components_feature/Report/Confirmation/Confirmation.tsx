@@ -21,6 +21,7 @@ import {useReportCreateContext} from '../ReportCreateContext'
 import {useReportFlowContext} from '../ReportFlowContext'
 import {ConfirmationStep, ConfirmationStepper} from './ConfirmationStepper'
 import {SocialNetworkRow} from '../../../components_simple/SocialNetworkRow/SocialNetworkRow'
+import {findAnomaly} from 'anomalies/Anomalies'
 
 export const Confirmation = ({stepNavigation}: {stepNavigation: StepNavigation}) => {
   const _reportFlow = useReportFlowContext()
@@ -63,7 +64,7 @@ export const _Confirmation = ({
               <AnomalyImage anomaly={anomaly} sx={{mr: 2}} />
               <Box>
                 <Txt block size="big" bold sx={{mb: 1}}>
-                  {draft.category}
+                  {findAnomaly(draft.category).title}
                 </Txt>
                 {draft.subcategories.map(_ => (
                   <Row dense icon="subdirectory_arrow_right" key={_.title}>

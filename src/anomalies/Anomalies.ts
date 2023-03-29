@@ -22,3 +22,11 @@ export const instanceOfSubcategoryInformation = (_?: Anomaly | SubcategoryBase):
 export const instanceOfAnomaly = (_?: Anomaly | SubcategoryBase): _ is Anomaly => {
   return !!(_ as Anomaly)?.category
 }
+
+export function findAnomaly(category: string): Anomaly {
+  const res = allAnomalies.find(_ => _.category === category)
+  if (!res) {
+    throw new Error(`Can't find anomaly "${category}"`)
+  }
+  return res
+}

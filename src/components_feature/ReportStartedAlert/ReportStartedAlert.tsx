@@ -39,7 +39,7 @@ export default function ReportStartedAlert() {
               </Txt>
             </Box>
             <Txt block color="hint">
-              {_report.reportDraft.anomaly.category}
+              {_report.reportDraft.anomaly.title}
             </Txt>
             <ReportFlowStepperHeader
               sx={{my: 1.5, mx: '-22px'}}
