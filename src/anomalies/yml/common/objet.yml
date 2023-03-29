@@ -1,9 +1,9 @@
 - title: Garantie et remboursement
-  example: 'Exemple : retour, garantie, échange'
+  desc: 'Exemple : retour, garantie, échange'
   subcategoriesTitle: Pourquoi voulez-vous retourner ou échanger votre article ?
   subcategories: !!import/single ../common/garantie.yml
 - title: Notice et emballage
-  example: 'Exemple : données de la classe énergétique absente, étiquette du vêtement incomplète, notice de fonctionnement uniquement en anglais'
+  desc: 'Exemple : données de la classe énergétique absente, étiquette du vêtement incomplète, notice de fonctionnement uniquement en anglais'
   subcategories:
     - title: Informations manquantes
       reponseconsoCode:
@@ -34,7 +34,7 @@
           type: TEXTAREA
       fileLabel: Photos du code barre / n° de lot / référence
     - title: Informations du produit ou notice uniquement en langue étrangère
-      example: Aucune information traduite en français
+      desc: Aucune information traduite en français
       subcategoriesTitle: Où avez-vous acheté votre produit&#160;?
       tags:
         - ReponseConso
@@ -53,10 +53,10 @@
             - label: Description
               type: TEXTAREA
         - title: À l'étranger
-          information:
+          blockingInfo:
             title: L'obligation d'utiliser la langue française ne s'applique pas dans les autres pays.
     - title: Informations trompeuses ou fausses
-      example: 'Exemple : "en or" alors qu''il s''agit de "plaqué or", "fabriqué en France" alors que ce n''est pas le cas '
+      desc: 'Exemple : "en or" alors qu''il s''agit de "plaqué or", "fabriqué en France" alors que ce n''est pas le cas '
       reponseconsoCode:
         - '210'
         - '271'
@@ -80,7 +80,7 @@
         - label: Description
           type: TEXTAREA
 - title: Durée de vie trop courte
-  example: Vous trouvez que la durée de vie de votre appareil est trop courte
+  desc: Vous trouvez que la durée de vie de votre appareil est trop courte
   detailInputs:
     - label: Date d'achat
       type: DATE
@@ -103,7 +103,7 @@
     - title: Un produit emballé par le fabricant comme une boîte de conserve, un paquet, une bouteille
       tags:
         - ReponseConso
-      example: "La quantité est directement imprimée sur l'emballage par le fabricant"
+      desc: "La quantité est directement imprimée sur l'emballage par le fabricant"
       detailInputs:
         - label: La lettre "e" est-elle écrite à côté de l'indication du poids/volume&#160;?
           type: RADIO
@@ -117,7 +117,7 @@
         - label: Quelle erreur a été constatée&#160;?
           type: TEXTAREA
     - title: Un produit emballé et étiqueté par le vendeur comme une barquette de viande
-      example: 'La quantité est marquée sur une étiquette collée par le commerçant'
+      desc: 'La quantité est marquée sur une étiquette collée par le commerçant'
       detailInputs:
         - label: Date du constat ou d'achat
           type: DATE
@@ -131,7 +131,7 @@
         - label: Description
           type: TEXTAREA
     - title: Un produit sans emballage, directement consommé
-      example: 'Exemple : verre de vin dans un café, plat au restaurant'
+      desc: 'Exemple : verre de vin dans un café, plat au restaurant'
       detailInputs:
         - label: Date du constat ou d'achat
           type: DATE
@@ -141,7 +141,7 @@
         - label: Description
           type: TEXTAREA
 - title: Produit en retrait / rappel
-  example: Le produit vendu fait l'objet d'une mesure de retrait / rappel des autorités
+  desc: Le produit vendu fait l'objet d'une mesure de retrait / rappel des autorités
   reponseconsoCode:
     - '311'
     - '331'

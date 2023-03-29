@@ -17,7 +17,7 @@ class ProblemFixture {
     companyKind: 'WEBSITE',
     tags: ['ReponseConso'],
   })
-  static readonly infoSubcategory = Fixture.genSubcategory({information: Fixture.genInformation()})
+  static readonly infoSubcategory = Fixture.genSubcategory({blockingInfo: Fixture.genInformation()})
   static readonly subcategories = [
     ProblemFixture.simpleSubcategory,
     ProblemFixture.internetSubcategory,

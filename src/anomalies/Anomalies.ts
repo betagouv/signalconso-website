@@ -1,8 +1,8 @@
 import {appConfig} from 'core/appConfig'
-import {Anomaly, SubcategoryBase, SubcategoryInformation, SubcategoryInput} from './Anomaly'
+import {Anomaly, Subcategory, SubcategoryWithInfoWall, StandardSubcategory, DetailInput} from './Anomaly'
 import anomaliesJSON from './yml/anomalies.json'
 
-export const allAnomalies = anomaliesJSON.list as Anomaly[]
+export const allAnomalies = anomaliesJSON as Anomaly[]
 
 export const allVisibleAnomalies = () =>
   allAnomalies
@@ -11,15 +11,17 @@ export const allVisibleAnomalies = () =>
       return parseInt(a.id) - parseInt(b.id)
     })
 
-export const instanceOfSubcategoryInput = (_?: Anomaly | SubcategoryBase): _ is SubcategoryInput => {
-  return !!(_ as SubcategoryInput)?.detailInputs
+export const instanceOfSubcategoryWithInputs = (
+  _?: Anomaly | Subcategory,
+): _ is StandardSubcategory & {detailInputs: DetailInput[]} => {
+  return !!(_ as StandardSubcategory)?.detailInputs
 }
 
-export const instanceOfSubcategoryInformation = (_?: Anomaly | SubcategoryBase): _ is SubcategoryInformation => {
-  return !!(_ as SubcategoryInformation)?.information
+export const instanceOfSubcategoryWithInfoWall = (_?: Anomaly | Subcategory): _ is SubcategoryWithInfoWall => {
+  return !!(_ as SubcategoryWithInfoWall)?.blockingInfo
 }
 
-export const instanceOfAnomaly = (_?: Anomaly | SubcategoryBase): _ is Anomaly => {
+export const instanceOfAnomaly = (_?: Anomaly | Subcategory): _ is Anomaly => {
   return !!(_ as Anomaly)?.category
 }
 

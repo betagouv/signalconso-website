@@ -1,19 +1,19 @@
 - title: Un magasin physique
-  example: 'Exemple : grande surface, épicerie, stand dans un marché, boulangerie'
+  desc: 'Exemple : grande surface, épicerie, stand dans un marché, boulangerie'
   companyKind: SIRET
   subcategories:
     - title: Un problème qui concerne le magasin de façon générale
-      example: 'Exemple : prix manquant, prix faux en caisse, magasin sale'
+      desc: 'Exemple : prix manquant, prix faux en caisse, magasin sale'
       subcategories:
         - title: Prix
-          example: 'Exemple : prix faux en caisse, prix pas affiché'
+          desc: 'Exemple : prix faux en caisse, prix pas affiché'
           tags:
             - ReponseConso
           subcategories:
             - title: Le prix à la caisse est différent du prix affiché
               ccrfCode:
                 - '163'
-              example: 'Exemple : le prix à la caisse est de 5 euros alors que le prix affiché en rayon est de 3 euros'
+              desc: 'Exemple : le prix à la caisse est de 5 euros alors que le prix affiché en rayon est de 3 euros'
               reponseconsoCode:
                 - '212'
                 - '210'
@@ -65,9 +65,9 @@
                 - label: Description
                   type: TEXTAREA
             - title: Les prix sont plus élevés qu'ailleurs
-              information:
+              blockingInfo:
                 title: Les commerçants ont le droit de choisir leurs prix.
-                outOfScope: true
+                notAFraudMessage: true
                 content: "Par contre, les prix doivent être clairement indiqués pour que vous soyez au courant avant d'acheter.
                   <br/> Par exemple, il est autorisé de vendre une bouteille d'eau à 8 euros ou une baguette de pain à 5 euros. C'est au consommateur de bien regarder les prix avant d'acheter.
                   <br/><br/><b>Le saviez-vous ?</b>
@@ -75,7 +75,7 @@
                   <br/> Par exemple, le prix des livres est réglementé.
                   <br/><br/> Un commerçant n'a pas le droit de vendre à un prix trop bas : il ne peut pas vendre un produit moins cher que ce qu'il lui a coûté. Il existe quelques situations où il a le droit de vendre en dessous du prix d'achat, comme la période des soldes."
             - title: Fausse réduction de prix
-              example: 'Exemple : fausse promotion pendant les soldes, fausse liquidation totale'
+              desc: 'Exemple : fausse promotion pendant les soldes, fausse liquidation totale'
               ccrfCode:
                 - '145'
                 - '23F'
@@ -101,7 +101,7 @@
           tags:
             - Hygiene
             - ProduitAlimentaire
-          example: 'Exemple : magasin sale, produit pas au frais, mauvaises odeurs'
+          desc: 'Exemple : magasin sale, produit pas au frais, mauvaises odeurs'
           subcategories:
             - title: Hygiène des locaux et du matériel
               ccrfCode:
@@ -143,14 +143,14 @@
                   type: TIMESLOT
                   optional: true
             - title: Hygiène du personnel
-              example: 'Exemple : tenue sale ou inadaptée'
+              desc: 'Exemple : tenue sale ou inadaptée'
               ccrfCode:
                 - '312'
               subcategories:
                 - title: Tenue de travail inadaptée
                   subcategories:
                     - title: Pas de gants ou pas de coiffe
-                      information:
+                      blockingInfo:
                         title: Cet incident ne doit pas nécessairement être signalé.
                         content: |-
                           La loi précise que les personnes qui travaillent dans un endroit où sont manipulés des aliments doivent respecter un niveau élevé de propreté personnelle et doivent porter des tenues adaptées et propres.
@@ -170,9 +170,9 @@
                     - '312'
                   reponseconsoCode:
                     - '312'
-                  example: 'Exemple : personne qui fume dans un local de production'
+                  desc: 'Exemple : personne qui fume dans un local de production'
                 - title: Présence d'animaux
-                  example: 'Exemple : rats, cafards'
+                  desc: 'Exemple : rats, cafards'
                   ccrfCode:
                     - '312'
                   reponseconsoCode:
@@ -201,7 +201,7 @@
                       type: TIMESLOT
                       optional: true
             - title: Problème de température
-              example: 'Exemple : rupture de la chaîne du froid'
+              desc: 'Exemple : rupture de la chaîne du froid'
               ccrfCode:
                 - '322'
               reponseconsoCode:
@@ -228,8 +228,8 @@
                   type: TIMESLOT
                   optional: true
             - title: Je subis des nuisances à cause du magasin
-              example: 'Exemple : les odeurs des poubelles arrivent dans mon appartement, les clients se garent devant chez moi'
-              information: !!import/single ../common/info/voisinage.yml
+              desc: 'Exemple : les odeurs des poubelles arrivent dans mon appartement, les clients se garent devant chez moi'
+              blockingInfo: !!import/single ../common/info/voisinage.yml
             - title: Autre problème d'hygiène
               ccrfCode:
                 - '312'
@@ -251,33 +251,33 @@
                 - '323'
               subcategories:
                 - title: Des produits vendus au rayon frais
-                  example: 'Exemple : viande, poisson, quiche, jambon'
+                  desc: 'Exemple : viande, poisson, quiche, jambon'
                   reponseconsoCode:
                     - '323'
                   subcategoriesTitle: La date est-elle <b>dépassée</b> au moment de la vente ou de l'achat&#160;?
                   subcategories:
                     - title: Oui
                     - title: Non
-                      information:
+                      blockingInfo:
                         title: Le commerçant a le droit de vendre un produit jusqu'au jour indiqué sur la date limite de consommation (DLC).
                         content:
                           Par exemple, si la date est le 13 avril, il est possible de vendre le produit le 13 avril mais pas le 14 avril.
                           <br/>Le commerçant peut choisir de faire une réduction du prix pour les dates "courtes" mais ce n'est pas une obligation.
                           <br/>Le commerçant peut indiquer que les produits périment bientôt ou le jour-même mais ce n'est pas une obligation.
-                        outOfScope: true
-                        actions:
+                        notAFraudMessage: true
+                        questions:
                           - question: Vous souhaitez que votre commerçant propose des rabais pour les produits bientôt périmés&#160;?
                             answer: Contacter directement le service client de votre magasin pour lui proposer.
                 - title: Des produits vendus à température ambiante
-                  example: 'Exemple : chocolat, conserve, compote, petits pots'
-                  information:
+                  desc: 'Exemple : chocolat, conserve, compote, petits pots'
+                  blockingInfo:
                     title: Ce problème n'est pas un motif de signalement.
                     content:
                       Les produits vendus à température ambiante comme des compotes, du chocolat, des biscuits ou des conserves ont une date qu'on appelle date de durabilité minimale (anciennement appelée DLUO).
                       <br/><br/><b>Le commerçant a le droit de vendre un produit avec cette date dépassée.</b>
                       <br/><br/>Cette date est seulement une indication. Au-delà de celle-ci, l'aliment peut perdre certaines de ses qualités gustatives ou nutritionnelles mais peut être consommé sans danger pour la santé. Il n'est pas nécessaire de le jeter.
-                    outOfScope: true
-                    actions:
+                    notAFraudMessage: true
+                    questions:
                       - question: Vous souhaitez néanmoins faire part de votre mécontentement&#160;?
                         answer: Contacter directement le service client de votre magasin pour lui expliquer.
             - title: Un produit périmé en particulier
@@ -286,7 +286,7 @@
               subcategoriesTitle: Quelle phrase est écrite devant la date&#160;?
               subcategories: !!import/single ../common/date.yml
         - title: Publicité
-          example: 'Exemple : publicité trompeuse, produit du catalogue indisponible'
+          desc: 'Exemple : publicité trompeuse, produit du catalogue indisponible'
           tags:
             - ReponseConso
           subcategories:
@@ -323,7 +323,7 @@
                   placeholder: 'Lien vers la publicité'
               fileLabel: Photo(s) de la publicité si possible
             - title: Informations de vente mensongères
-              example: 'Exemple : pancarte "produits locaux" or ce n''est pas le cas, affiche "pain bio" or ce n''est pas le cas'
+              desc: 'Exemple : pancarte "produits locaux" or ce n''est pas le cas, affiche "pain bio" or ce n''est pas le cas'
               ccrfCode:
                 - '23B'
               reponseconsoCode:
@@ -365,7 +365,7 @@
                     - Non
               fileLabel: Photo(s) si possible
         - title: Remboursement / garantie
-          example: 'Exemple : le magasin refuse de me reprendre un article'
+          desc: 'Exemple : le magasin refuse de me reprendre un article'
           ccrfCode:
             - '21D'
           subcategoriesTitle: Pourquoi voulez-vous retourner ou échanger votre article ?
@@ -401,7 +401,7 @@
                       subcategoriesTitle: Bénéficiez-vous d'une extension garantie&#160;?
                       subcategories:
                         - title: Oui
-                          example: 'Exemple : garantie contractuelle, garantie constructeur, extension de garantie, échange à neuf'
+                          desc: 'Exemple : garantie contractuelle, garantie constructeur, extension de garantie, échange à neuf'
                           subcategoriesTitle: Les conditions de reprise sont indiquées dans votre contrat de garantie.
                             <br />Avant de faire un signalement, relisez les conditions écrites dans ce contrat.
                           subcategories:
@@ -420,15 +420,15 @@
                                   type: TEXT
                               fileLabel: Contrat de garantie / publicité de l'offre de vente / document se référant à la garantie
                         - title: Non
-                          information:
+                          blockingInfo:
                             title: <b>Votre produit n'est plus couvert par la garantie.</b>
                             content:
                               Votre produit n'est plus couvert par la garantie de base, appelée "garantie légale de conformité".
                               <br/>La garantie légale de conformité est de 2 ans pour tous les produits neufs et de 6 mois pour tous les produits d'occasion. Elle ne s'applique pas pour les achats entre particuliers.
-                            outOfScope: true
-                            actions:
+                            notAFraudMessage: true
+                            questions:
                               - question: 'Vous souhaitez attaquer l''entreprise pour "vices cachés"&#160;?'
-                                example: "Un vice caché d'un produit est un défaut :
+                                desc: "Un vice caché d'un produit est un défaut :
                                   <ul>
                                   <li>qui rend le produit inutilisable, </li>
                                   <li>présent dès le départ et</li>
@@ -462,7 +462,7 @@
                       subcategoriesTitle: Bénéficiez-vous d'une extension garantie&#160;?
                       subcategories:
                         - title: Oui
-                          example: 'Exemple : garantie contractuelle, garantie constructeur, extension de garantie, échange à neuf'
+                          desc: 'Exemple : garantie contractuelle, garantie constructeur, extension de garantie, échange à neuf'
                           subcategoriesTitle: Les conditions de reprise sont indiquées dans votre contrat de garantie.
                             <br /> Avant de faire un signalement, relisez les conditions écrites dans ce contrat.
                           subcategories:
@@ -481,13 +481,13 @@
                                   type: TEXT
                               fileLabel: Contrat de garantie / publicité de l'offre de vente / document se référant à la garantie
                         - title: Non
-                          information:
+                          blockingInfo:
                             title: <b>Votre produit n'est plus couvert par la garantie.</b>
                             content: Votre produit n'est plus couvert par la garantie de base, appelée "garantie légale de conformité". La garantie légale de conformité est de 2 ans pour tous les produits neufs et de 6 mois pour tous les produits d'occasion.
-                            outOfScope: true
-                            actions:
+                            notAFraudMessage: true
+                            questions:
                               - question: 'Vous souhaitez attaquer l''entreprise pour "vices cachés"&#160;?'
-                                example: "Un vice caché d'un produit est un défaut :
+                                desc: "Un vice caché d'un produit est un défaut :
                                   <ul>
                                   <li>qui rend le produit inutilisable, </li>
                                   <li>présent dès le départ et</li>
@@ -499,7 +499,7 @@
             - title: Autre raison
               tags:
                 - ReponseConso
-              example: "Exemple: vêtement trop petit, cadeau en doublon, j'ai changé d'avis, prix moins cher ailleurs, je n'aime pas la couleur"
+              desc: "Exemple: vêtement trop petit, cadeau en doublon, j'ai changé d'avis, prix moins cher ailleurs, je n'aime pas la couleur"
               subcategoriesTitle: Le remboursement ou la reprise d'un article dans un magasin n'est pas une obligation. Vous êtes-vous assuré qu’il proposait bien l'échange ou le remboursement des articles&#160;?
               subcategories:
                 - title: Oui
@@ -510,13 +510,13 @@
                 - title: Non
                   reponseconsoCode:
                     - '621'
-                  information:
+                  blockingInfo:
                     title: Vous ne pouvez pas exiger le remboursement, l'échange ou l'annulation gratuite de votre contrat.
                     content: En effet, dans votre cas, rien n'oblige un commerçant à le faire.
                       <br />Si vous annulez un contrat ou un abonnement, vous aurez peut-être des frais d'annulation.
-                    outOfScope: true
+                    notAFraudMessage: true
         - title: Moyens de paiement
-          example: 'Exemple : refus de la carte bancaire'
+          desc: 'Exemple : refus de la carte bancaire'
           subcategories:
             - title: Le commerçant refuse que je paie en espèces
               subcategoriesTitle: Pourquoi le commerçant a-t-il refusé que vous payiez en espèces&#160;?
@@ -526,18 +526,18 @@
                     - '643'
                     - '454'
                 - title: Il n'avait pas assez de monnaie
-                  information:
+                  blockingInfo:
                     content: C'est à vous de faire l'appoint. Le  vendeur peut refuser le paiement en espèces s'il ne dispose pas de suffisamment de monnaie.
-                    outOfScope: true
+                    notAFraudMessage: true
                 - title: Mes pièces / billets étaient en mauvais état
-                  information:
+                  blockingInfo:
                     content: Le paiement en pièces ou billets en mauvais état peut être refusé.
-                    outOfScope: true
+                    notAFraudMessage: true
                 - title: Le prix était supérieur à 1 000 euros ou à 50 pièces
-                  information:
+                  blockingInfo:
                     content: Il est interdit pour un commerçant d'accepter des paiements en espèces de plus de 1 000 euros.
                       <br/> Un commerçant peut refuser un paiement en espèces si celui-ci est composé de plus de 50 pièces.
-                    outOfScope: true
+                    notAFraudMessage: true
                 - title: Autres
             - title: Le commerçant refuse que je paie par carte bancaire ou chèque
               subcategoriesTitle: Pour quelle raison le commerçant a-t-il refusé votre chèque / carte bancaire&#160;?
@@ -546,13 +546,13 @@
                   subcategoriesTitle: Ce minimum est-il indiqué visiblement&#160;?
                   subcategories:
                     - title: Oui
-                      example: 'Exemple : sur une affiche au niveau des caisses'
-                      information:
+                      desc: 'Exemple : sur une affiche au niveau des caisses'
+                      blockingInfo:
                         title:
                           Le commerçant a le droit d'exiger un minimum d'achat pour les paiements par carte bancaire et par chèque.
                           <br/> Si vous voulez acheter un produit moins cher que le minimum d'achat, c'est à vous de trouver de la monnaie.
                         content: "Le minimum d'achat doit être indiqué très visiblement. Par exemple : affichage à l'entrée du magasin ou à la caisse..."
-                        outOfScope: true
+                        notAFraudMessage: true
                     - title: Non
                       reponseconsoCode:
                         - '643'
@@ -561,17 +561,17 @@
                   subcategoriesTitle: Le commerçant a-t-il indiqué clairement qu'il refusait la carte bleue ou les chèques&#160;?
                   subcategories:
                     - title: Oui
-                      example: 'Exemple : sur une affiche au niveau des caisses'
-                      information:
+                      desc: 'Exemple : sur une affiche au niveau des caisses'
+                      blockingInfo:
                         title: Le commerçant a le droit de refuser les chèques ou la carte bancaire.
                         content: "Il doit l'indiquer très visiblement au consommateur. Par exemple : affichage à l'entrée du magasin ou à la caisse..."
-                        outOfScope: true
+                        notAFraudMessage: true
                     - title: Non
                       reponseconsoCode:
                         - '643'
                         - '411'
                 - title: Autre
-                  example: 'Exemple : problème avec le terminal de paiement'
+                  desc: 'Exemple : problème avec le terminal de paiement'
             - title: Autre problème de prix ou paiement
               subcategories:
                 - title: Problème avec le cash-back
@@ -581,26 +581,26 @@
                   reponseconsoCode:
                     - '643'
                 - title: Le commerçant a refusé de me faire une détaxe alors que je vis à l'étranger
-                  information:
+                  blockingInfo:
                     title: Le commerçant a le droit de refuser de faire une détaxe sur vos achats.
                     content:
                       La vente en détaxe est une exonération de la taxe sur la valeur ajoutée (TVA) sur le prix de biens achetés par des personnes de passage en France, soumise à conditions.
                       <br /> Le commerçant est libre d'appliquer la détaxe, qui est facultative. L'acheteur ne peut pas l'exiger du vendeur.
                       Retrouvez plus d'information sur le site <a href="https://www.service-public.fr/professionnels-entreprises/vosdroits/F20558" target="_blank">service-public.fr</a>
-                    outOfScope: true
+                    notAFraudMessage: true
                 - title: Autre
                   reponseconsoCode:
                     - '643'
         - title: Autre
           subcategories:
             - title: Problème d'accessibilité
-              information: !!import/single ../common/info/accessibilite.yml
+              blockingInfo: !!import/single ../common/info/accessibilite.yml
             - title: Problème lié à l'écologie
-              example: 'Exemple : sac en plastique, éclairage de nuit '
+              desc: 'Exemple : sac en plastique, éclairage de nuit '
               reponseconsoCode:
                 - '673'
             - title: Problème de voisinage
-              example: 'Exemple : bruit, odeur, voiture mal garée'
+              desc: 'Exemple : bruit, odeur, voiture mal garée'
               reponseconsoCode:
                 - '312'
             - title: Autre
@@ -608,20 +608,20 @@
                 - '673'
                 - '312'
     - title: Un problème avec un produit en particulier
-      example: "Exemple : il manque des informations sur l'emballage, le produit est douteux"
+      desc: "Exemple : il manque des informations sur l'emballage, le produit est douteux"
       subcategories:
         - title: C'est un aliment ou une boisson
-          example: 'Exemple : bonbon, viande, pain, conserve, vin, eau en bouteille'
+          desc: 'Exemple : bonbon, viande, pain, conserve, vin, eau en bouteille'
           subcategories: !!import/single ../common/nourriture.yml
           tags:
             - ProduitAlimentaire
         - title: C'est un objet
-          example: 'Exemple : jouet, électroménager, vêtement, savon, vaisselle, meuble'
+          desc: 'Exemple : jouet, électroménager, vêtement, savon, vaisselle, meuble'
           subcategories: !!import/single ../common/objet.yml
           tags:
             - ProduitIndustriel
     - title: Un produit dangereux
-      example: 'Exemple : jouet, cosmétique'
+      desc: 'Exemple : jouet, cosmétique'
       companyKind: LOCATION
       tags:
         - ProduitDangereux
@@ -698,7 +698,7 @@
     - DemarchageADomicile
   subcategories:
     - title: C'est un aliment ou une boisson
-      example: 'Exemple : bonbon, viande, pain, conserve, vin, eau en bouteille'
+      desc: 'Exemple : bonbon, viande, pain, conserve, vin, eau en bouteille'
       tags:
         - ProduitAlimentaire
         - ReponseConso
@@ -718,7 +718,7 @@
           type: DATE
           defaultValue: SYSDATE
     - title: C'est un objet
-      example: 'Exemple : jouet, électroménager, vêtement, savon, vaisselle, meuble'
+      desc: 'Exemple : jouet, électroménager, vêtement, savon, vaisselle, meuble'
       tags:
         - ProduitIndustriel
         - ReponseConso
@@ -738,7 +738,7 @@
           type: DATE
           defaultValue: SYSDATE
     - title: C'est un produit dangereux
-      example: 'Exemple : jouet, cosmétique'
+      desc: 'Exemple : jouet, cosmétique'
       companyKind: LOCATION
       tags:
         - ProduitDangereux

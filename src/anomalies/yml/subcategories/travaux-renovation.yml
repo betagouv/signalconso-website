@@ -1,5 +1,5 @@
 - title: Dépannage
-  example: "Vous faites appel à une entreprise dans l'urgence à votre domicile (par exemple : vous avez perdu votre clef d'appartement et vous contactez un serrurier pour qu'il vienne vous l'ouvrir, vous appelez un plombier suite à l'explosion de votre canalisation)"
+  desc: "Vous faites appel à une entreprise dans l'urgence à votre domicile (par exemple : vous avez perdu votre clef d'appartement et vous contactez un serrurier pour qu'il vienne vous l'ouvrir, vous appelez un plombier suite à l'explosion de votre canalisation)"
   subcategories:
     - title: Prix
       ccrfCode:
@@ -8,11 +8,11 @@
         - title: Prix exagéré
           reponseconsoCode:
             - '622'
-          information:
+          blockingInfo:
             title: Ceci ne constitue pas un motif de signalement.
             content: Les professionnels ont le droit de choisir leurs prix.
               <br />Par contre, les prix doivent être clairement indiqués pour que vous soyez au courant avant d'acheter ou de commander.
-            outOfScope: true
+            notAFraudMessage: true
         - title: Prix non affiché
           reponseconsoCode:
             - '212'
@@ -27,7 +27,7 @@
           tags:
             - ReponseConso
     - title: Publicité et pratique de l'entreprise
-      example: "Exemple : information trompeuse ou mensongère, absence d'information, contrainte"
+      desc: "Exemple : information trompeuse ou mensongère, absence d'information, contrainte"
       subcategories:
         - title: Absence d'information ou information incomplète
           ccrfCode:
@@ -85,11 +85,11 @@
     - title: Prestation
       subcategories:
         - title: Malfaçon
-          example: Constat d'un défaut résultant d'une mauvaise exécution des travaux
+          desc: Constat d'un défaut résultant d'une mauvaise exécution des travaux
         - title: Autre
     - title: Autre
 - title: Rénovation énergétique
-  example: "Vous avez été démarché ou vous avez fait appel à une entreprise pour l'installation d'équipements ou la réalisation de travaux de rénovation énergétique (isolation, installation d'un système de chauffage, panneaux solaires)"
+  desc: "Vous avez été démarché ou vous avez fait appel à une entreprise pour l'installation d'équipements ou la réalisation de travaux de rénovation énergétique (isolation, installation d'un système de chauffage, panneaux solaires)"
   subcategories:
     - title: Démarchage téléphonique
       #            Amélioration a prévoir avec le bureau sectoriel : L'entreprise vous a t-elle rappelée pour autre chose ??
@@ -116,17 +116,17 @@
     - title: Audit énergétique
       subcategories:
       - title: Prix
-        example: 'Exemple : prix non affiché, devis non respecté'
+        desc: 'Exemple : prix non affiché, devis non respecté'
         ccrfCode:
           - '21B'
           - '213'
         subcategories:
           - title: Prix exagéré / élevé
-            information:
+            blockingInfo:
               title: Ceci ne constitue pas un motif de signalement.
               content: Les professionnels ont le droit de choisir leurs prix.
                 <br />Par contre, les prix doivent être clairement indiqués pour que vous soyez au courant avant d'acheter ou de commander.
-              outOfScope: true
+              notAFraudMessage: true
           - title: Prix final non conforme au prix annoncé
             reponseconsoCode:
               - '451'
@@ -140,7 +140,7 @@
             tags:
               - ReponseConso
       - title: Publicité et pratique de l'entreprise
-        example: "Exemple : absence d'information, information trompeuse ou mensongère, démarchage à domicile"
+        desc: "Exemple : absence d'information, information trompeuse ou mensongère, démarchage à domicile"
         ccrfCode:
           - '21A'
           - '23B'
@@ -374,13 +374,13 @@
                 optional: true             
           - title: Autre
       - title: Prestation
-        example: 'Exemple : malfaçons sur le chantier, travaux commencés mais jamais terminés'
+        desc: 'Exemple : malfaçons sur le chantier, travaux commencés mais jamais terminés'
         ccrfCode:
           - '161'
           - '334'
         subcategories:
           - title: Malfaçon
-            example: Constat d'un défaut résultant d'une mauvaise exécution des travaux
+            desc: Constat d'un défaut résultant d'une mauvaise exécution des travaux
             reponseconsoCode:
               - '446'
           - title: Les travaux ne sont toujours pas terminés
@@ -388,14 +388,14 @@
               - '443'
               - '442'
       - title: Contrat
-        example: 'Exemple : contrat non respecté, délai de rétractation, clause abusive'
+        desc: 'Exemple : contrat non respecté, délai de rétractation, clause abusive'
         subcategories:
           - title: Droit de rétractation
-            example: Une fois le contrat signé, vous souhaitez revenir en arrière
+            desc: Une fois le contrat signé, vous souhaitez revenir en arrière
             subcategoriesTitle: Où avez-vous signé le contrat ?
             subcategories:
               - title: À votre domicile
-                example: Un démarcheur est venu chez vous
+                desc: Un démarcheur est venu chez vous
                 ccrfCode:
                   - '220'
                   - '221'
@@ -406,7 +406,7 @@
                   - '2214'
                   - '2216'
               - title: À distance
-                example: 'Exemple : sur internet'
+                desc: 'Exemple : sur internet'
                 ccrfCode:
                   - '220'
                   - '221'
@@ -421,10 +421,10 @@
                   - '226'
                 reponseconsoCode:
                   - '621'
-                information:
+                blockingInfo:
                   title: Vous ne pouvez plus vous rétracter
                   content: Il n'y a pas de délai de rétractation pour votre cas.
-                  outOfScope: true
+                  notAFraudMessage: true
               - title: Sur un stand dans une foire ou salon
                 ccrfCode:
                   - '220'
@@ -432,10 +432,10 @@
                 subcategoriesTitle: Avez-vous un crédit affecté ?
                 subcategories:
                   - title: Non
-                    information:
+                    blockingInfo:
                       title: Vous ne pouvez plus vous rétracter
                       content: Il n'y a pas de délai de rétractation pour votre cas.
-                      outOfScope: true
+                      notAFraudMessage: true
                   - title: Oui
                     tags:
                       - ReponseConso
@@ -453,7 +453,7 @@
               - '443'
               - '446'
           - title: Clause abusive
-            example: Vous souhaitez dénoncer une clause qui vous est particulièrement défavorable
+            desc: Vous souhaitez dénoncer une clause qui vous est particulièrement défavorable
             ccrfCode:
               - '21C'
             reponseconsoCode:
@@ -462,14 +462,14 @@
               - ReponseConso
           - title: Autre
       - title: Crédits pour les travaux / garanties
-        example: "Défaut d'information, absence de remise du contrat de crédit, engagement financier mensuel supérieur à celui annoncé par le vendeur, annonce d'autofinancement de l'installation"
+        desc: "Défaut d'information, absence de remise du contrat de crédit, engagement financier mensuel supérieur à celui annoncé par le vendeur, annonce d'autofinancement de l'installation"
         subcategories:
           - title: Crédit destiné à financer vos travaux
             ccrfCode:
               - '23A'
               - '23B'
               - '23C'
-            example: Crédit affecté au contrat de travaux / rénovation
+            desc: Crédit affecté au contrat de travaux / rénovation
             subcategories:
               - title: Absence d'informations
                 ccrfCode:
@@ -489,7 +489,7 @@
                   - title: Vous ne saviez pas que vous vous engagiez pour un crédit
                   - title: Vous n'avez pas reçu de contrat
               - title: Autre
-                example: "Engagement financier mensuel supérieur à celui annoncé par le vendeur ; annonce d’autofinancement de l’installation"
+                desc: "Engagement financier mensuel supérieur à celui annoncé par le vendeur ; annonce d’autofinancement de l’installation"
           - title: Garanties
             ccrfCode:
               - '21A'
@@ -514,20 +514,20 @@
               - title: Responsabilité contractuelle de droit commun
       - title: Autre
     - title: chauffage
-      example: "Par exemple : pompe à chaleur, chauffage au bois, chauffe-eau thermodynamique"
+      desc: "Par exemple : pompe à chaleur, chauffage au bois, chauffe-eau thermodynamique"
       subcategories:
         - title: Prix
-          example: 'Exemple : prix non affiché, devis non respecté'
+          desc: 'Exemple : prix non affiché, devis non respecté'
           ccrfCode:
             - '21B'
             - '213'
           subcategories:
             - title: Prix exagéré / élevé
-              information:
+              blockingInfo:
                 title: Ceci ne constitue pas un motif de signalement.
                 content: Les professionnels ont le droit de choisir leurs prix.
                   <br />Par contre, les prix doivent être clairement indiqués pour que vous soyez au courant avant d'acheter ou de commander.
-                outOfScope: true
+                notAFraudMessage: true
             - title: Prix final non conforme au prix annoncé
               reponseconsoCode:
                 - '451'
@@ -541,7 +541,7 @@
               tags:
                 - ReponseConso
         - title: Publicité et pratique de l'entreprise
-          example: "Exemple : absence d'information, information trompeuse ou mensongère, démarchage à domicile"
+          desc: "Exemple : absence d'information, information trompeuse ou mensongère, démarchage à domicile"
           ccrfCode:
             - '21A'
             - '23B'
@@ -771,13 +771,13 @@
               reponseconsoCode:
                 - '446'
         - title: Prestation
-          example: 'Exemple : malfaçons sur le chantier, travaux commencés mais jamais terminés'
+          desc: 'Exemple : malfaçons sur le chantier, travaux commencés mais jamais terminés'
           ccrfCode:
             - '161'
             - '334'
           subcategories:
             - title: Malfaçon
-              example: Constat d'un défaut résultant d'une mauvaise exécution des travaux
+              desc: Constat d'un défaut résultant d'une mauvaise exécution des travaux
               reponseconsoCode:
                 - '446'
                 - '442'
@@ -787,17 +787,17 @@
                 - '2214'
                 - '2216'
         - title: Contrat
-          example: 'Exemple : contrat non respecté, délai de rétractation, clause abusive'
+          desc: 'Exemple : contrat non respecté, délai de rétractation, clause abusive'
           subcategories:
             - title: Droit de rétractation
-              example: Une fois le contrat signé, vous souhaitez revenir en arrière
+              desc: Une fois le contrat signé, vous souhaitez revenir en arrière
               ccrfCode:
                 - '21A'
                 - '21D'
               subcategoriesTitle: Où avez-vous signé le contrat ?
               subcategories:
                 - title: À votre domicile
-                  example: Un démarcheur est venu chez vous
+                  desc: Un démarcheur est venu chez vous
                   ccrfCode:
                     - '220'
                     - '221'
@@ -808,7 +808,7 @@
                     - '2214'
                     - '2203'
                 - title: À distance
-                  example: 'Exemple : sur internet'
+                  desc: 'Exemple : sur internet'
                   ccrfCode:
                     - '220'
                     - '221'
@@ -817,10 +817,10 @@
                   reponseconsoCode:
                     - '621'
                 - title: Au lieu habituel d'activité du professionnel
-                  information:
+                  blockingInfo:
                     title: Vous ne pouvez plus vous rétracter
                     content: Il n'y a pas de délai de rétractation pour votre cas.
-                    outOfScope: true
+                    notAFraudMessage: true
                 - title: Sur un stand dans une foire ou salon
                   subcategoriesTitle: Avez-vous un crédit affecté ?
                   ccrfCode:
@@ -833,10 +833,10 @@
                         - '2214'
                         - '2213'
                         - '411'
-                      information:
+                      blockingInfo:
                         title: Vous ne pouvez plus vous rétracter
                         content: Il n'y a pas de délai de rétractation pour votre cas.
-                        outOfScope: true
+                        notAFraudMessage: true
                     - title: Oui
                       reponseconsoCode:
                         - '446'
@@ -848,7 +848,7 @@
               reponseconsoCode:
                 - '443'
             - title: Clause abusive
-              example: Vous souhaitez dénoncer une clause qui vous est particulièrement défavorable
+              desc: Vous souhaitez dénoncer une clause qui vous est particulièrement défavorable
               ccrfCode:
                 - '21C'
               reponseconsoCode:
@@ -857,12 +857,12 @@
                 - ReponseConso
             - title: Autre
         - title: Crédits pour les travaux / garanties
-          example: "Défaut d'information, absence de remise du contrat de crédit, engagement financier mensuel supérieur à celui annoncé par le vendeur, annonce d'autofinancement de l'installation"
+          desc: "Défaut d'information, absence de remise du contrat de crédit, engagement financier mensuel supérieur à celui annoncé par le vendeur, annonce d'autofinancement de l'installation"
           ccrfCode:
             - '21A'
           subcategories:
             - title: Crédit destiné à financer vos travaux
-              example: Crédit affecté au contrat de travaux / rénovation
+              desc: Crédit affecté au contrat de travaux / rénovation
               ccrfCode:
                 - '23A'
                 - '23B'
@@ -886,7 +886,7 @@
                     - title: Vous ne saviez pas que vous vous engagiez pour un crédit
                     - title: Vous n'avez pas reçu de contrat
                 - title: Autre
-                  example: "Engagement financier mensuel supérieur à celui annoncé par le vendeur ; annonce d’autofinancement de l’installation"
+                  desc: "Engagement financier mensuel supérieur à celui annoncé par le vendeur ; annonce d’autofinancement de l’installation"
             - title: Garanties
               ccrfCode:
                 - '23A'
@@ -905,20 +905,20 @@
                 - title: Responsabilité contractuelle de droit commun
         - title: Autre
     - title: Isolation
-      example: "L'isolation des murs, des combles, du garage/sous-sol, le remplacement de portes/fenêtres"
+      desc: "L'isolation des murs, des combles, du garage/sous-sol, le remplacement de portes/fenêtres"
       subcategories:
         - title: Prix
-          example: 'Exemple : prix non affiché, devis non respecté'
+          desc: 'Exemple : prix non affiché, devis non respecté'
           ccrfCode:
             - '21B'
             - '213'
           subcategories:
             - title: Prix exagéré / élevé
-              information:
+              blockingInfo:
                 title: Ceci ne constitue pas un motif de signalement.
                 content: Les professionnels ont le droit de choisir leurs prix.
                   <br />Par contre, les prix doivent être clairement indiqués pour que vous soyez au courant avant d'acheter ou de commander.
-                outOfScope: true
+                notAFraudMessage: true
             - title: Prix final non conforme au prix annoncé
               reponseconsoCode:
                 - '451'
@@ -931,7 +931,7 @@
               tags:
                 - ReponseConso
         - title: Publicité et pratique de l'entreprise
-          example: "Exemple : absence d'information, information trompeuse ou mensongère, démarchage"
+          desc: "Exemple : absence d'information, information trompeuse ou mensongère, démarchage"
           ccrfCode:
             - '21A'
             - '23B'
@@ -1158,30 +1158,30 @@
                   optional: true             
             - title: Autre
         - title: Prestation
-          example: 'Exemple : malfaçons sur le chantier, travaux commencés mais jamais terminés'
+          desc: 'Exemple : malfaçons sur le chantier, travaux commencés mais jamais terminés'
           ccrfCode:
             - '161'
             - '334'
           subcategories:
             - title: Malfaçon
-              example: Constat d'un défaut résultant d'une mauvaise exécution des travaux
+              desc: Constat d'un défaut résultant d'une mauvaise exécution des travaux
               reponseconsoCode:
                 - '446'
             - title: Les travaux ne sont toujours pas terminés
               reponseconsoCode:
                 - '443'
         - title: Contrat
-          example: 'Exemple : contrat non respecté, délai de rétractation, clause abusive'
+          desc: 'Exemple : contrat non respecté, délai de rétractation, clause abusive'
           subcategories:
             - title: Droit de rétractation
-              example: Une fois le contrat signé, vous souhaitez revenir en arrière
+              desc: Une fois le contrat signé, vous souhaitez revenir en arrière
               ccrfCode:
                 - '21A'
                 - '21D'
               subcategoriesTitle: Où avez-vous signé le contrat ?
               subcategories:
                 - title: À votre domicile
-                  example: Un démarcheur est venu chez vous
+                  desc: Un démarcheur est venu chez vous
                   ccrfCode:
                     - '221'
                     - '226'
@@ -1191,7 +1191,7 @@
                     - '2213'
                     - '2214'
                 - title: À distance
-                  example: 'Exemple : sur internet'
+                  desc: 'Exemple : sur internet'
                   ccrfCode:
                     - '220'
                     - '221'
@@ -1201,10 +1201,10 @@
                     - '2213'
                     - '2214'
                 - title: Au lieu habituel d'activité du professionnel
-                  information:
+                  blockingInfo:
                     title: Vous ne pouvez plus vous rétracter
                     content: Il n'y a pas de délai de rétractation pour votre cas.
-                    outOfScope: true
+                    notAFraudMessage: true
                 - title: Sur un stand dans une foire ou salon
                   subcategoriesTitle: Avez-vous un crédit affecté ?
                   ccrfCode:
@@ -1212,10 +1212,10 @@
                     - '221'
                   subcategories:
                     - title: Non
-                      information:
+                      blockingInfo:
                         title: Vous ne pouvez plus vous rétracter
                         content: Il n'y a pas de délai de rétractation pour votre cas.
-                        outOfScope: true
+                        notAFraudMessage: true
                     - title: Oui
                       reponseconsoCode:
                         - '2206'
@@ -1229,7 +1229,7 @@
               reponseconsoCode:
                 - '443'
             - title: Clause abusive
-              example: Vous souhaitez dénoncer une clause qui vous est particulièrement défavorable
+              desc: Vous souhaitez dénoncer une clause qui vous est particulièrement défavorable
               ccrfCode:
                 - '21C'
               reponseconsoCode:
@@ -1238,12 +1238,12 @@
                 - ReponseConso
             - title: Autre
         - title: Crédits pour les travaux / garanties
-          example: "Défaut d'information, absence de remise du contrat de crédit, engagement financier mensuel supérieur à celui annoncé par le vendeur, annonce d'autofinancement de l'installation"
+          desc: "Défaut d'information, absence de remise du contrat de crédit, engagement financier mensuel supérieur à celui annoncé par le vendeur, annonce d'autofinancement de l'installation"
           ccrfCode:
             - '21A'
           subcategories:
             - title: Crédit financé pour vos travaux
-              example: Crédit affecté au contrat de travaux / rénovation
+              desc: Crédit affecté au contrat de travaux / rénovation
               ccrfCode:
                 - '23A'
                 - '23B'
@@ -1267,7 +1267,7 @@
                     - title: Vous ne saviez pas que vous vous engagiez pour un crédit
                     - title: Vous n'avez pas reçu de contrat
                 - title: Autre
-                  example: "Engagement financier mensuel supérieur à celui annoncé par le vendeur ; annonce d’autofinancement de l’installation"
+                  desc: "Engagement financier mensuel supérieur à celui annoncé par le vendeur ; annonce d’autofinancement de l’installation"
             - title: Garanties
               ccrfCode:
                 - '23A'
@@ -1288,17 +1288,17 @@
     - title: Ventilation
       subcategories:
         - title: Prix
-          example: 'Exemple : prix non affiché, devis non respecté'
+          desc: 'Exemple : prix non affiché, devis non respecté'
           ccrfCode:
             - '21B'
             - '213'
           subcategories:
             - title: Prix exagéré / élevé
-              information:
+              blockingInfo:
                 title: Ceci ne constitue pas un motif de signalement.
                 content: Les professionnels ont le droit de choisir leurs prix.
                   <br />Par contre, les prix doivent être clairement indiqués pour que vous soyez au courant avant d'acheter ou de commander.
-                outOfScope: true
+                notAFraudMessage: true
             - title: Prix final non conforme au prix annoncé
               reponseconsoCode:
                 - '451'
@@ -1311,7 +1311,7 @@
               tags:
                 - ReponseConso
         - title: Publicité et pratique de l'entreprise
-          example: "Exemple : absence d'information, information trompeuse ou mensongère, démarchage"
+          desc: "Exemple : absence d'information, information trompeuse ou mensongère, démarchage"
           ccrfCode:
             - '21A'
             - '23B'
@@ -1538,27 +1538,27 @@
                   optional: true             
             - title: Autre
         - title: Prestation
-          example: 'Exemple : malfaçons sur le chantier, travaux commencés mais jamais terminés'
+          desc: 'Exemple : malfaçons sur le chantier, travaux commencés mais jamais terminés'
           ccrfCode:
             - '161'
             - '334'
           subcategories:
             - title: Malfaçon
-              example: Constat d'un défaut résultant d'une mauvaise exécution des travaux
+              desc: Constat d'un défaut résultant d'une mauvaise exécution des travaux
               reponseconsoCode:
                 - '446'
             - title: Les travaux ne sont toujours pas terminés
               reponseconsoCode:
                 - '443'
         - title: Contrat
-          example: 'Exemple : contrat non respecté, délai de rétractation, clause abusive'
+          desc: 'Exemple : contrat non respecté, délai de rétractation, clause abusive'
           subcategories:
             - title: Droit de rétractation
-              example: Une fois le contrat signé, vous souhaitez revenir en arrière
+              desc: Une fois le contrat signé, vous souhaitez revenir en arrière
               subcategoriesTitle: Où avez-vous signé le contrat ?
               subcategories:
                 - title: À votre domicile
-                  example: Un démarcheur est venu chez vous
+                  desc: Un démarcheur est venu chez vous
                   ccrfCode:
                     - '221'
                     - '226'
@@ -1568,7 +1568,7 @@
                     - '2213'
                     - '2214'
                 - title: À distance
-                  example: 'Exemple : sur internet'
+                  desc: 'Exemple : sur internet'
                   ccrfCode:
                     - '220'
                     - '221'
@@ -1578,10 +1578,10 @@
                     - '2213'
                     - '2214'
                 - title: Au lieu habituel d'activité du professionnel
-                  information:
+                  blockingInfo:
                     title: Vous ne pouvez plus vous rétracter
                     content: Il n'y a pas de délai de rétractation pour votre cas.
-                    outOfScope: true
+                    notAFraudMessage: true
                 - title: Sur un stand dans une foire ou salon
                   ccrfCode:
                     - '220'
@@ -1589,10 +1589,10 @@
                   subcategoriesTitle: Avez-vous un crédit affecté ?
                   subcategories:
                     - title: Non
-                      information:
+                      blockingInfo:
                         title: Vous ne pouvez plus vous rétracter
                         content: Il n'y a pas de délai de rétractation pour votre cas.
-                        outOfScope: true
+                        notAFraudMessage: true
                     - title: Oui
                       reponseconsoCode:
                         - '2206'
@@ -1606,7 +1606,7 @@
               reponseconsoCode:
                 - '443'
             - title: Clause abusive
-              example: Vous souhaitez dénoncer une clause qui vous est particulièrement défavorable
+              desc: Vous souhaitez dénoncer une clause qui vous est particulièrement défavorable
               ccrfCode:
                 - '21C'
               reponseconsoCode:
@@ -1615,10 +1615,10 @@
                 - ReponseConso
             - title: Autre
         - title: Crédits pour les travaux / garanties
-          example: "Défaut d'information, absence de remise du contrat de crédit, engagement financier mensuel supérieur à celui annoncé par le vendeur, annonce d'autofinancement de l'installation"
+          desc: "Défaut d'information, absence de remise du contrat de crédit, engagement financier mensuel supérieur à celui annoncé par le vendeur, annonce d'autofinancement de l'installation"
           subcategories:
             - title: Crédit financé pour vos travaux
-              example: Crédit affecté au contrat de travaux / rénovation
+              desc: Crédit affecté au contrat de travaux / rénovation
               subcategories:
                 - title: Absence d'informations
                   ccrfCode:
@@ -1638,7 +1638,7 @@
                     - title: Vous ne saviez pas que vous vous engagiez pour un crédit
                     - title: Vous n'avez pas reçu de contrat
                 - title: Autre
-                  example: "Engagement financier mensuel supérieur à celui annoncé par le vendeur ; annonce d’autofinancement de l’installation"
+                  desc: "Engagement financier mensuel supérieur à celui annoncé par le vendeur ; annonce d’autofinancement de l’installation"
             - title: Garanties
               ccrfCode:
                 - '23A'
@@ -1657,19 +1657,19 @@
                 - title: Responsabilité contractuelle de droit commun
         - title: Autre
     - title: Production d'énergies renouvelables
-      example: L'installation d'équipements solaires, petites éoliennes domestiques
+      desc: L'installation d'équipements solaires, petites éoliennes domestiques
       subcategories:
         - title: Prix
-          example: 'Exemple : prix non affiché, devis non respecté'
+          desc: 'Exemple : prix non affiché, devis non respecté'
           ccrfCode:
             - '21B'
           subcategories:
             - title: Prix exagéré / élevé
-              information:
+              blockingInfo:
                 title: Ceci ne constitue pas un motif de signalement.
                 content: Les professionnels ont le droit de choisir leurs prix.
                   <br />Par contre, les prix doivent être clairement indiqués pour que vous soyez au courant avant d'acheter ou de commander.
-                outOfScope: true
+                notAFraudMessage: true
             - title: Prix final non conforme au prix annoncé
               reponseconsoCode:
                 - '451'
@@ -1682,7 +1682,7 @@
               tags:
                 - ReponseConso
         - title: Publicité et pratique de l'entreprise
-          example: "Exemple : absence d'information, information trompeuse ou mensongère, démarchage"
+          desc: "Exemple : absence d'information, information trompeuse ou mensongère, démarchage"
           ccrfCode:
             - '23B'
           subcategories:
@@ -1906,27 +1906,27 @@
                   optional: true             
             - title: Autre
         - title: Prestation
-          example: 'Exemple : malfaçons sur le chantier, travaux commencés mais jamais terminés'
+          desc: 'Exemple : malfaçons sur le chantier, travaux commencés mais jamais terminés'
           ccrfCode:
             - '161'
             - '334'
           subcategories:
             - title: Malfaçon
-              example: Constat d'un défaut résultant d'une mauvaise exécution des travaux
+              desc: Constat d'un défaut résultant d'une mauvaise exécution des travaux
               reponseconsoCode:
                 - '446'
             - title: Les travaux ne sont toujours pas terminés
               reponseconsoCode:
                 - '443'
         - title: Contrat
-          example: 'Exemple : contrat non respecté, délai de rétractation, clause abusive'
+          desc: 'Exemple : contrat non respecté, délai de rétractation, clause abusive'
           subcategories:
             - title: Droit de rétractation
-              example: Une fois le contrat signé, vous souhaitez revenir en arrière
+              desc: Une fois le contrat signé, vous souhaitez revenir en arrière
               subcategoriesTitle: Où avez-vous signé le contrat ?
               subcategories:
                 - title: À votre domicile
-                  example: Un démarcheur est venu chez vous
+                  desc: Un démarcheur est venu chez vous
                   ccrfCode:
                     - '221'
                     - '226'
@@ -1936,7 +1936,7 @@
                     - '2213'
                     - '2214'
                 - title: À distance
-                  example: 'Exemple : sur internet'
+                  desc: 'Exemple : sur internet'
                   ccrfCode:
                     - '220'
                     - '221'
@@ -1946,10 +1946,10 @@
                     - '2213'
                     - '2214'
                 - title: Au lieu habituel d'activité du professionnel
-                  information:
+                  blockingInfo:
                     title: Vous ne pouvez plus vous rétracter
                     content: Il n'y a pas de délai de rétractation pour votre cas.
-                    outOfScope: true
+                    notAFraudMessage: true
                 - title: Sur un stand dans une foire ou salon
                   ccrfCode:
                     - '220'
@@ -1957,10 +1957,10 @@
                   subcategoriesTitle: Avez-vous un crédit affecté ?
                   subcategories:
                     - title: Non
-                      information:
+                      blockingInfo:
                         title: Vous ne pouvez plus vous rétracter
                         content: Il n'y a pas de délai de rétractation pour votre cas.
-                        outOfScope: true
+                        notAFraudMessage: true
                     - title: Oui
                       reponseconsoCode:
                         - '2206'
@@ -1974,7 +1974,7 @@
               reponseconsoCode:
                 - '443'
             - title: Clause abusive
-              example: Vous souhaitez dénoncer une clause qui vous est particulièrement défavorable
+              desc: Vous souhaitez dénoncer une clause qui vous est particulièrement défavorable
               ccrfCode:
                 - '21C'
               reponseconsoCode:
@@ -1983,10 +1983,10 @@
                 - ReponseConso
             - title: Autre
         - title: Crédits pour les travaux / garanties
-          example: "Défaut d'information, absence de remise du contrat de crédit, engagement financier mensuel supérieur à celui annoncé par le vendeur, annonce d'autofinancement de l'installation"
+          desc: "Défaut d'information, absence de remise du contrat de crédit, engagement financier mensuel supérieur à celui annoncé par le vendeur, annonce d'autofinancement de l'installation"
           subcategories:
             - title: Crédit financé pour vos travaux
-              example: Crédit affecté au contrat de travaux / rénovation
+              desc: Crédit affecté au contrat de travaux / rénovation
               subcategories:
                 - title: Absence d'informations
                   ccrfCode:
@@ -2006,7 +2006,7 @@
                     - title: Vous ne saviez pas que vous vous engagiez pour un crédit
                     - title: Vous n'avez pas reçu de contrat
                 - title: Autre
-                  example: "Engagement financier mensuel supérieur à celui annoncé par le vendeur ; annonce d’autofinancement de l’installation"
+                  desc: "Engagement financier mensuel supérieur à celui annoncé par le vendeur ; annonce d’autofinancement de l’installation"
             - title: Garanties
               ccrfCode:
                 - '21A'
@@ -2025,19 +2025,19 @@
                 - title: Responsabilité contractuelle de droit commun
         - title: Autre
 - title: Autres Travaux
-  example: "Par exemple : la construction de votre maison ou l'adaptation de votre logement à un handicap ou pour une personne âgée"
+  desc: "Par exemple : la construction de votre maison ou l'adaptation de votre logement à un handicap ou pour une personne âgée"
   subcategories:
     - title: Prix
-      example: 'Exemple : prix non affiché, devis non respecté'
+      desc: 'Exemple : prix non affiché, devis non respecté'
       ccrfCode:
         - '21B'
       subcategories:
         - title: Prix exagéré / élevé
-          information:
+          blockingInfo:
             title: Ceci ne constitue pas un motif de signalement.
             content: Les professionnels ont le droit de choisir leurs prix.
               <br />Par contre, les prix doivent être clairement indiqués pour que vous soyez au courant avant d'acheter ou de commander.
-            outOfScope: true
+            notAFraudMessage: true
         - title: Prix final non conforme au prix annoncé
           reponseconsoCode:
             - '451'
@@ -2050,7 +2050,7 @@
           tags:
             - ReponseConso
     - title: Publicité et pratique de l'entreprise
-      example: "Exemple : absence d'information, information trompeuse ou mensongère, démarchage à domicile"
+      desc: "Exemple : absence d'information, information trompeuse ou mensongère, démarchage à domicile"
       ccrfCode:
         - '21A'
         - '23B'
@@ -2275,27 +2275,27 @@
               optional: true             
         - title: Autre
     - title: Prestation
-      example: 'Exemple : malfaçons sur le chantier, travaux commencés mais jamais terminés'
+      desc: 'Exemple : malfaçons sur le chantier, travaux commencés mais jamais terminés'
       ccrfCode:
         - '161'
         - '334'
       subcategories:
         - title: Malfaçon
-          example: Constat d'un défaut résultant d'une mauvaise exécution des travaux
+          desc: Constat d'un défaut résultant d'une mauvaise exécution des travaux
           reponseconsoCode:
             - '446'
         - title: Les travaux ne sont toujours pas terminés
           reponseconsoCode:
             - '443'
     - title: Contrat
-      example: 'Exemple : contrat non respecté, délai de rétractation, clause abusive'
+      desc: 'Exemple : contrat non respecté, délai de rétractation, clause abusive'
       subcategories:
         - title: Droit de rétractation
-          example: Une fois le contrat signé, vous souhaitez revenir en arrière
+          desc: Une fois le contrat signé, vous souhaitez revenir en arrière
           subcategoriesTitle: Où avez-vous signé le contrat ?
           subcategories:
             - title: À votre domicile
-              example: Un démarcheur est venu chez vous
+              desc: Un démarcheur est venu chez vous
               ccrfCode:
                 - '221'
                 - '226'
@@ -2305,7 +2305,7 @@
                 - '2213'
                 - '2214'
             - title: À distance
-              example: 'Exemple : sur internet'
+              desc: 'Exemple : sur internet'
               ccrfCode:
                 - '220'
                 - '221'
@@ -2315,10 +2315,10 @@
                 - '2213'
                 - '2214'
             - title: Au lieu habituel d'activité du professionnel
-              information:
+              blockingInfo:
                 title: Vous ne pouvez plus vous rétracter
                 content: Il n'y a pas de délai de rétractation pour votre cas.
-                outOfScope: true
+                notAFraudMessage: true
             - title: Sur un stand dans une foire ou salon
               ccrfCode:
                 - '220'
@@ -2326,10 +2326,10 @@
               subcategoriesTitle: Avez-vous un crédit affecté ?
               subcategories:
                 - title: Non
-                  information:
+                  blockingInfo:
                     title: Vous ne pouvez plus vous rétracter
                     content: Il n'y a pas de délai de rétractation pour votre cas.
-                    outOfScope: true
+                    notAFraudMessage: true
                 - title: Oui
                   reponseconsoCode:
                     - '2206'
@@ -2343,7 +2343,7 @@
           reponseconsoCode:
             - '443'
         - title: Clause abusive
-          example: Vous souhaitez dénoncer une clause qui vous est particulièrement défavorable
+          desc: Vous souhaitez dénoncer une clause qui vous est particulièrement défavorable
           ccrfCode:
             - '21C'
           reponseconsoCode:
@@ -2352,10 +2352,10 @@
             - ReponseConso
         - title: Autre
     - title: Crédits pour les travaux / garanties
-      example: "Défaut d'information, absence de remise du contrat de crédit, engagement financier mensuel supérieur à celui annoncé par le vendeur, annonce d'autofinancement de l'installation"
+      desc: "Défaut d'information, absence de remise du contrat de crédit, engagement financier mensuel supérieur à celui annoncé par le vendeur, annonce d'autofinancement de l'installation"
       subcategories:
         - title: Crédit financé pour vos travaux
-          example: Crédit affecté au contrat de travaux / rénovation
+          desc: Crédit affecté au contrat de travaux / rénovation
           ccrfCode:
             - '23A'
             - '23B'
@@ -2379,7 +2379,7 @@
                 - title: Vous ne saviez pas que vous vous engagiez pour un crédit
                 - title: Vous n'avez pas reçu de contrat
             - title: Autre
-              example: "Engagement financier mensuel supérieur à celui annoncé par le vendeur ; annonce d’autofinancement de l’installation"
+              desc: "Engagement financier mensuel supérieur à celui annoncé par le vendeur ; annonce d’autofinancement de l’installation"
         - title: Garanties
           ccrfCode:
             - '23A'
@@ -2398,7 +2398,7 @@
             - title: Responsabilité contractuelle de droit commun
     - title: Autre
 - title: Produit dangereux
-  example: 'Exemple : marteau, perceuse'
+  desc: 'Exemple : marteau, perceuse'
   tags:
     - ProduitDangereux
   subcategories:

@@ -1,4 +1,4 @@
-export interface Anomaly {
+export type Anomaly = {
   // Stored in DB, should not change
   category: string
   // URL path
@@ -18,7 +18,7 @@ export interface Anomaly {
   subcategories: Subcategory[]
 }
 
-export interface SubcategoryBase {
+type SubcategoryBase = {
   // ex: "3.2.1.3.1.1.1"
   // Not in the yaml, they are generated recursively
   // Seem to be used only once or twice in the JS to when we need a unique identifier
@@ -30,22 +30,25 @@ export interface SubcategoryBase {
   subcategoriesTitle?: string
   subcategories?: Subcategory[]
   tags?: ReportTagAllowedInYaml[]
-  example?: string
+  desc?: string
   reponseconsoCode?: string[] | null
   ccrfCode?: string[]
   companyKind?: CompanyKinds
 }
 
-export type Subcategory = SubcategoryInput | SubcategoryInformation
-
-export interface SubcategoryInput extends SubcategoryBase {
+// A typical subcategory
+export type StandardSubcategory = SubcategoryBase & {
   fileLabel?: string
   detailInputs?: DetailInput[]
 }
 
-export interface SubcategoryInformation extends SubcategoryBase {
-  information: Information
+// a subcategory that blocks the user
+// you can't do a signalement in this subcategory
+export type SubcategoryWithInfoWall = SubcategoryBase & {
+  blockingInfo: InfoWall
 }
+
+export type Subcategory = StandardSubcategory | SubcategoryWithInfoWall
 
 export const reportTagsAllowedInYaml = [
   'Hygiene',
@@ -74,17 +77,17 @@ export type CompanyKinds = typeof companyKinds[number]
 export const socialNetworks = ['YOUTUBE', 'FACEBOOK', 'INSTAGRAM', 'TIKTOK', 'TWITTER', 'LINKEDIN', 'SNAPCHAT', 'TWITCH'] as const
 export type SocialNetworks = typeof socialNetworks[number]
 
-export interface Information {
+export interface InfoWall {
   title?: string
   content?: string
-  actions?: Action[]
+  questions?: QuestionAndAnswer[]
   subTitle?: string
-  outOfScope?: boolean
+  notAFraudMessage?: boolean
 }
 
-export interface Action {
+export interface QuestionAndAnswer {
   question: string
-  example?: string
+  desc?: string
   answer: string
 }
 

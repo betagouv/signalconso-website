@@ -5,7 +5,7 @@ import {useI18n} from 'i18n/I18n'
 import {ReportDraft2} from 'model/ReportDraft2'
 import {useEffect, useMemo} from 'react'
 import {ReportFlowStepperActions} from 'components_simple/ReportFlowStepper/ReportFlowStepperActions'
-import {instanceOfSubcategoryInformation} from '../../../anomalies/Anomalies'
+import {instanceOfSubcategoryWithInfoWall} from '../../../anomalies/Anomalies'
 import {Anomaly, CompanyKinds, ReportTag, Subcategory} from '../../../anomalies/Anomaly'
 import {useReportFlowContext} from '../ReportFlowContext'
 import {ProblemConsumerWishInformation, ProblemContractualDisputeWarnPanel} from './ProblemConsumerWishInformation'
@@ -142,7 +142,7 @@ export const Problem = ({anomaly, isWebView, stepNavigation}: Props) => {
               onChange={id => handleSubcategoriesChange(category.subcategories?.find(_ => _.id === id)!, idx)}
               options={(category.subcategories ?? []).map((_, i) => ({
                 title: _.title,
-                description: _.example,
+                description: _.desc,
                 value: _.id,
               }))}
             />
@@ -150,11 +150,11 @@ export const Problem = ({anomaly, isWebView, stepNavigation}: Props) => {
       )}
       {isLastSubcategory &&
         reportDraft.subcategories &&
-        (instanceOfSubcategoryInformation(lastSubcategories) ? (
+        (instanceOfSubcategoryWithInfoWall(lastSubcategories) ? (
           <ProblemInformation
             anomaly={anomaly}
             subcategories={reportDraft.subcategories}
-            information={lastSubcategories.information}
+            information={lastSubcategories.blockingInfo}
             {...{isWebView}}
           />
         ) : (

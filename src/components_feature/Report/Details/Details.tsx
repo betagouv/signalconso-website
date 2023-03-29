@@ -21,7 +21,7 @@ import {last} from 'utils/lodashNamedExport'
 import {dateToFrenchFormat, isDateInRange} from 'utils/utils'
 import {Txt} from '../../../alexlibs/mui-extension/Txt/Txt'
 import {Alert} from '../../../alexlibs/mui-extension/Alert/Alert'
-import {DetailInput, DetailInputType, ReportTag, SubcategoryInput} from '../../../anomalies/Anomaly'
+import {DetailInput, DetailInputType, ReportTag, StandardSubcategory} from '../../../anomalies/Anomaly'
 import {ConsumerWish, ReportDraft} from '../../../model/ReportDraft'
 import {FileOrigin, UploadedFile} from '../../../model/UploadedFile'
 import {fnSwitch} from '../../../utils/FnSwitch'
@@ -59,7 +59,7 @@ export const Details = ({stepNavigation}: {stepNavigation: StepNavigation}) => {
       initialFiles={draft.uploadedFiles}
       isTransmittable={ReportDraft.isTransmittableToPro(draft)}
       inputs={inputs}
-      fileLabel={(last(draft.subcategories) as SubcategoryInput).fileLabel}
+      fileLabel={(last(draft.subcategories) as StandardSubcategory).fileLabel}
       employeeConsumer={draft.employeeConsumer}
       tags={draft.tags ?? []}
       onSubmit={(detailInputValues, uploadedFiles) => {

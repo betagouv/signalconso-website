@@ -1,7 +1,7 @@
 import {allAnomalies} from 'anomalies/Anomalies'
 import {getIndexForStep, ReportStep, reportSteps} from 'model/ReportStep'
 import randomstring from 'randomstring'
-import {Information, reportTags, socialNetworks, Subcategory} from '../anomalies/Anomaly'
+import {InfoWall, reportTags, socialNetworks, Subcategory} from '../anomalies/Anomaly'
 import {Address} from '../model/Address'
 import {Company, CompanySearchResult, WebsiteCompanySearchResult} from '../model/Company'
 import {CreatedReport} from '../model/CreatedReport'
@@ -166,7 +166,7 @@ export class Fixture {
   }
 
   static readonly genInformation = () => {
-    return <Information>{
+    return <InfoWall>{
       title: randomstring.generate(),
     }
   }

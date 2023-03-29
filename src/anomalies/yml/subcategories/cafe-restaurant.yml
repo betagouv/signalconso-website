@@ -1,15 +1,15 @@
 - title: J'ai été malade après avoir mangé
-  example: 'Exemple : vomissement, maux de ventre'
+  desc: 'Exemple : vomissement, maux de ventre'
   subcategories: !!import/single ./intoxication-alimentaire.yml
 - title: Hygiène
   companyKind: SIRET
-  example: 'Exemple : locaux sales, rat, chaîne du froid'
+  desc: 'Exemple : locaux sales, rat, chaîne du froid'
   tags:
     - Hygiene
   subcategoriesTitle: 'Vous voulez signaler&#160;:'
   subcategories:
     - title: J'ai vu un animal (nuisible)
-      example: 'Exemple : cafard, rat'
+      desc: 'Exemple : cafard, rat'
       reponseconsoCode:
         - '312'
       detailInputs:
@@ -34,12 +34,12 @@
           type: TEXT
           optional: true
     - title: Hygiène des locaux et du matériel
-      example: 'Exemple : cuisine sale, odeur de poubelle dans ma cour'
+      desc: 'Exemple : cuisine sale, odeur de poubelle dans ma cour'
       reponseconsoCode:
         - '312'
       subcategories:
         - title: Je trouve les locaux sales ou dégradés
-          example: 'Exemple : cuisine sale, WC sale'
+          desc: 'Exemple : cuisine sale, WC sale'
           detailInputs:
             - label: Date du constat
               type: DATE
@@ -70,25 +70,25 @@
                 - Autre (à préciser)
           fileLabel: Merci de joindre si possible une photo pour appuyer votre signalement.
         - title: Je subis des nuisances à cause des odeurs, du bruit
-          example: 'Exemple : les odeurs des poubelles ou de la cuisine arrivent dans mon appartement'
-          information: !!import/single ../common/info/voisinage.yml
+          desc: 'Exemple : les odeurs des poubelles ou de la cuisine arrivent dans mon appartement'
+          blockingInfo: !!import/single ../common/info/voisinage.yml
     - title: Hygiène du personnel
-      example: 'Exemple : tenue sale ou pas adaptée'
+      desc: 'Exemple : tenue sale ou pas adaptée'
       reponseconsoCode:
         - '312'
       subcategories:
         - title: La tenue de travail n'est pas adaptée
-          example: 'Exemple : pas de gants, torse-nu en cuisine'
+          desc: 'Exemple : pas de gants, torse-nu en cuisine'
           subcategories:
             - title: Les employés ne portent pas de gants ou pas de coiffe (calot, charlotte)
-              information:
+              blockingInfo:
                 title: Cet incident ne doit pas nécessairement être signalé.
                 content:
                   La loi précise que les personnes qui travaillent dans un endroit où sont manipulés des aliments, doivent respecter un niveau élevé de propreté personnelle et doivent porter des tenues adaptées et propres.
                   Les restaurateurs et commerçants peuvent choisir de faire porter des gants ou une coiffe (charlotte, calot...) à leur personnel, à condition que ceux-ci soient propres et en bon état.<br />Cependant, le lavage des mains peut également être suffisant pour éviter les contaminations. <br> Vous pouvez directement discuter avec le gérant pour lui faire part de votre questionnement.
-                outOfScope: true
+                notAFraudMessage: true
             - title: Autre problème de tenue
-              example: 'Exemple : pas de tenue spécifique, torse-nu en cuisine'
+              desc: 'Exemple : pas de tenue spécifique, torse-nu en cuisine'
               detailInputs:
                 - label: Date de constat
                   type: DATE
@@ -103,7 +103,7 @@
               type: TEXT
           fileLabel: Merci de joindre si possible tout document (photo) pour appuyer votre signalement.
         - title: Mauvaises pratiques d'hygiène
-          example: 'Exemple : personne qui fume en cuisine'
+          desc: 'Exemple : personne qui fume en cuisine'
           detailInputs:
             - label: Date de constat
               type: DATE
@@ -111,7 +111,7 @@
               type: TEXT
           fileLabel: Merci de joindre si possible tout document (photo) pour appuyer votre signalement.
     - title: Problème de température
-      example: 'Exemple : rupture de la chaîne du froid'
+      desc: 'Exemple : rupture de la chaîne du froid'
       reponseconsoCode:
         - '322'
       detailInputs:
@@ -134,14 +134,14 @@
       fileLabel: Si possible, merci de joindre une photo ou un document pour appuyer votre signalement.
 - title: Prix et paiement
   companyKind: SIRET
-  example: "Exemple : refus de la carte bancaire, j'ai payé plus cher que prévu"
+  desc: "Exemple : refus de la carte bancaire, j'ai payé plus cher que prévu"
   subcategories:
     - title: Il manque certains prix
       reponseconsoCode:
         - '212'
       tags:
         - ReponseConso
-      example: 'Exemple : absence de prix sur la carte des vins'
+      desc: 'Exemple : absence de prix sur la carte des vins'
       detailInputs:
         - label: Date du constat
           type: DATE
@@ -175,34 +175,34 @@
             - Non, aucune raison
       fileLabel: Merci de joindre une photo du menu, du site, de votre ticket afin d'appuyer votre signalement.
     - title: Je trouve que les prix sont très chers
-      example: 'Exemple : le prix du menu est très cher pour la qualité'
-      information:
+      desc: 'Exemple : le prix du menu est très cher pour la qualité'
+      blockingInfo:
         title: Les prix sont choisis librement par les commerçants.
         content:
           "Par contre, les prix doivent être clairement indiqués pour que vous soyez au courant avant d'acheter ou de commander.
           <br/> Par exemple, il est autorisé de vendre un verre de limonade à 100 euros dans un bar si le prix est bien marqué sur la carte.
           <br/> Le saviez-vous ? Un café a également le droit de faire payer l'eau du robinet si le prix est marqué. Par contre, au cours d'un repas, l'eau du robinet doit vous être fournie gratuitement."
-        outOfScope: true
+        notAFraudMessage: true
     - title: J'ai eu un problème pour payer
-      example: 'Exemple : refus de la carte bancaire'
+      desc: 'Exemple : refus de la carte bancaire'
       subcategories:
         - title: Le commerçant refuse le paiement en espèces
           subcategoriesTitle: Pourquoi le commerçant a-t-il refusé que vous payez en espèces&#160;?
           subcategories:
             - title: Il refuse tout paiement en espèces
             - title: Il n'avait pas assez de monnaie
-              information:
+              blockingInfo:
                 content: C'est à vous de faire l'appoint. Le  vendeur peut refuser le paiement en espèces s'il ne dispose pas de suffisamment de monnaie.
-                outOfScope: true
+                notAFraudMessage: true
             - title: Mes pièces / billets étaient en mauvais état
-              information:
+              blockingInfo:
                 content: Le paiement en pièces ou billets en mauvais état peut être refusé.
-                outOfScope: true
+                notAFraudMessage: true
             - title: Le paiement était supérieur à 1 000 euros ou à 50 pièces
-              information:
+              blockingInfo:
                 content: Il est interdit pour un commerçant d'accepter des paiements en espèces de plus de 1 000 euros.
                   <br/> Un commerçant peut refuser un paiement en espèces si celui-ci est composé de plus de 50 pièces.
-                outOfScope: true
+                notAFraudMessage: true
             - title: Autre
               reponseconsoCode:
                 - '521'
@@ -216,24 +216,24 @@
               subcategoriesTitle: Ce minimum est-il indiqué visiblement&#160;?
               subcategories:
                 - title: Oui
-                  example: 'Exemple : sur une affiche au niveau des caisses ou sur le menu du restaurant'
-                  information:
+                  desc: 'Exemple : sur une affiche au niveau des caisses ou sur le menu du restaurant'
+                  blockingInfo:
                     title: Le commerçant a le droit d'exiger un minimum d'achat pour ce type de paiement.
                     content: Il doit l’indiquer très visiblement au consommateur (affichage à l'entrée du magasin ou à la caisse, sur une carte du restaurant...)
-                    outOfScope: true
+                    notAFraudMessage: true
                 - title: Non
             - title: Il n'accepte jamais les paiements par chèque ou carte bleue
               subcategoriesTitle: Le commerçant a-t-il indiqué clairement qu'il refusait la carte bleue ou les chèques&#160;?
               subcategories:
                 - title: Oui
-                  example: 'Exemple : sur une affiche au niveau des caisses ou sur le menu du restaurant'
-                  information:
+                  desc: 'Exemple : sur une affiche au niveau des caisses ou sur le menu du restaurant'
+                  blockingInfo:
                     title: Le commerçant a le droit de refuser les chèques ou la carte bancaire.
                     content: Il doit l’indiquer très visiblement au consommateur (affichage à l'entrée du magasin ou à la caisse, sur une carte du restaurant...)
-                    outOfScope: true
+                    notAFraudMessage: true
                 - title: Non
             - title: Autre
-              example: 'Exemple : problème avec le terminal de paiement'
+              desc: 'Exemple : problème avec le terminal de paiement'
         - title: Autre problème de prix ou paiement
           subcategoriesTitle: 'Problème avec :'
           subcategories:
@@ -260,7 +260,7 @@
   tags:
     - ReponseConso
   companyKind: SIRET
-  example: 'Exemple : mention "fait maison" pas respectée, les vins les moins chers ne sont pas disponibles'
+  desc: 'Exemple : mention "fait maison" pas respectée, les vins les moins chers ne sont pas disponibles'
   subcategories:
     - title: Indisponibilité des produits proposés
       reponseconsoCode:
@@ -314,13 +314,13 @@
   tags:
     - ReponseConso
   companyKind: SIRET
-  example: 'Exemple : chien refusé, personnel peu aimable, refus de nous donner une table car nous avions une poussette'
+  desc: 'Exemple : chien refusé, personnel peu aimable, refus de nous donner une table car nous avions une poussette'
   subcategories:
     - title: Le personnel est peu aimable
-      example: "Exemple : l'accueil est froid, le personnel parle mal aux clients"
-      information: !!import/single ../common/info/amabilite.yml
+      desc: "Exemple : l'accueil est froid, le personnel parle mal aux clients"
+      blockingInfo: !!import/single ../common/info/amabilite.yml
     - title: On a refusé de me donner une table ou de me servir
-      example: "Exemple : Refus au motif de la présence d'enfant, pour un motif discriminatoire, refus d'une table en terrasse pour un simple café"
+      desc: "Exemple : Refus au motif de la présence d'enfant, pour un motif discriminatoire, refus d'une table en terrasse pour un simple café"
       reponseconsoCode:
         - '232'
         - '521'
@@ -335,7 +335,7 @@
       subcategoriesTitle: Est-ce un chien d'assistance&#160;?
       subcategories:
         - title: Non
-          information: !!import/single ../common/info/chienassistance.yml
+          blockingInfo: !!import/single ../common/info/chienassistance.yml
         - title: Oui (je possède la carte d'assistance)
           reponseconsoCode:
             - '521'
@@ -349,10 +349,10 @@
   tags:
     - ReponseConso
   companyKind: SIRET
-  example: 'Exemple : plat pas frais, produit surgelé, produit périmé'
+  desc: 'Exemple : plat pas frais, produit surgelé, produit périmé'
   subcategories:
     - title: Les plats ne correspondent pas à la description
-      example: 'Exemple : Produit industriel vendu sous la mention "fait maison"'
+      desc: 'Exemple : Produit industriel vendu sous la mention "fait maison"'
       reponseconsoCode:
         - '271'
       detailInputs:
@@ -376,10 +376,10 @@
             - Non
       fileLabel: Merci de joindre si possible une photo ou votre facture afin d'appuyer votre signalement.
     - title: Les produits ne sont pas bons
-      information:
+      blockingInfo:
         title: Je trouve que les produits ne sont pas bons ou de grande qualité.
         content: Si la qualité des produits ne vous a pas convenu, nous vous invitons à contacter directement l'établissement. <br> Vous pouvez notamment contacter le service client. Le service client est présent dans la plupart des restaurants et bars qui font partie d'un groupe ou d'une chaîne. Il est conçu pour recevoir ce type de plainte. <br><br> Vous ne pouvez pas faire un signalement sur SignalConso car la répression des fraudes ne pourra pas traiter votre signalement.
-        outOfScope: true
+        notAFraudMessage: true
     - title: Les produits ne sont pas frais ou certains aliments sont périmés, c'est-à-dire que les dates indiquées sont dépassées.
       reponseconsoCode:
         - '323'
@@ -401,7 +401,7 @@
   tags:
     - ReponseConso
   companyKind: 'WEBSITE'
-  example: 'Exemple : livraison non assurée, promotion non valide'
+  desc: 'Exemple : livraison non assurée, promotion non valide'
   subcategories:
     - title: problème avec la livraison
       reponseconsoCode:
@@ -419,4 +419,4 @@
       reponseconsoCode:
         - '220'
         - '521'
-      example: "Les problèmes d'hygiène ou de qualité des plats doivent être renseignées dans les catégories précédentes"
+      desc: "Les problèmes d'hygiène ou de qualité des plats doivent être renseignées dans les catégories précédentes"

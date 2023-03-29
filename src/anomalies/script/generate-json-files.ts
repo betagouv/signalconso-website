@@ -34,7 +34,7 @@ files.forEach(file => {
   // obj.version = version
   checkAnomaliesYaml(obj)
   console.log(`The YAML is valid`)
-  addUniqueId(obj.list)
+  addUniqueId(obj)
   const outputFile = path.join(root, file.output)
   console.log(`Generating JSON file ${outputFile}`)
   fs.writeFileSync(outputFile, JSON.stringify(obj, null, 2))

@@ -15,7 +15,7 @@ import {useEffect, useState} from 'react'
 import {last} from 'utils/lodashNamedExport'
 import {IconBtn} from '../../../alexlibs/mui-extension/IconBtn/IconBtn'
 import {Txt} from '../../../alexlibs/mui-extension/Txt/Txt'
-import {Anomaly, Information, Subcategory} from '../../../anomalies/Anomaly'
+import {Anomaly, InfoWall, Subcategory} from '../../../anomalies/Anomaly'
 import {useFetcher} from '../../../hooks/useFetcher'
 import {mapPromise} from '../../../utils/MapPromise'
 import {LinkBackToHome} from '../../../components_simple/LinkBackToHome'
@@ -23,7 +23,7 @@ import {LinkBackToHome} from '../../../components_simple/LinkBackToHome'
 interface Props {
   anomaly: Anomaly
   subcategories: Subcategory[]
-  information: Information
+  information: InfoWall
   isWebView: boolean
 }
 
@@ -58,7 +58,7 @@ export const ProblemInformation = ({anomaly, subcategories, information, isWebVi
       <Animate>
         <Panel id="test-info" border title={<span dangerouslySetInnerHTML={{__html: information.title ?? m.informationTitle}} />}>
           <PanelBody className="blog">
-            {information.outOfScope && (
+            {information.notAFraudMessage && (
               <Txt block gutterBottom>
                 {m.informationReportOutOfScope}
               </Txt>
@@ -67,14 +67,14 @@ export const ProblemInformation = ({anomaly, subcategories, information, isWebVi
               <Txt bold size="big" gutterBottom block dangerouslySetInnerHTML={{__html: information.subTitle}} />
             )}
             {information.content && <Txt gutterBottom block dangerouslySetInnerHTML={{__html: information.content}} />}
-            {information.actions?.map(action => (
+            {information.questions?.map(action => (
               <AccordionInline
                 sx={{mt: 1}}
                 key={action.question}
                 label={
                   <div>
                     <Txt bold block dangerouslySetInnerHTML={{__html: action.question}} />
-                    {action.example && <Txt block dangerouslySetInnerHTML={{__html: action.example}} />}
+                    {action.desc && <Txt block dangerouslySetInnerHTML={{__html: action.desc}} />}
                   </div>
                 }
               >

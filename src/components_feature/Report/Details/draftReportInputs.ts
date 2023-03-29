@@ -1,6 +1,6 @@
 import {ReportDraft2} from 'model/ReportDraft2'
 import {last} from 'utils/lodashNamedExport'
-import {instanceOfSubcategoryInput} from '../../../anomalies/Anomalies'
+import {instanceOfSubcategoryWithInputs} from '../../../anomalies/Anomalies'
 import {DetailInput, DetailInputType, ReportTag, Subcategory} from '../../../anomalies/Anomaly'
 
 export class DraftReportDefaultInputs {
@@ -28,7 +28,7 @@ export const getDraftReportInputs = (draft: Partial<ReportDraft2>): DetailInput[
   const {subcategories, consumerWish} = draft
   const lastSubcategories = last(subcategories)
   const res: DetailInput[] = []
-  if (instanceOfSubcategoryInput(lastSubcategories)) {
+  if (instanceOfSubcategoryWithInputs(lastSubcategories)) {
     res.push(...(lastSubcategories.detailInputs ?? []))
     if (!lastSubcategories.detailInputs?.some(_ => _.type === DetailInputType.TEXTAREA)) {
       res.push(DraftReportDefaultInputs.description(true))

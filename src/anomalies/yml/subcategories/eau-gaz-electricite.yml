@@ -1,14 +1,14 @@
 - title: Eau
   subcategories:
     - title: Contrat / facture
-      example: 'Exemple : la facture est élevée par rapport à ma consommation, les mentions du contrat sont abusives'
+      desc: 'Exemple : la facture est élevée par rapport à ma consommation, les mentions du contrat sont abusives'
       subcategories:
         - title: Le distributeur refuse de m'ouvrir un contrat car je suis locataire et non propriétaire
         - title: Le distributeur me demande de payer une avance sur ma consommation
           subcategoriesTitle: Quand doit-être remboursée cette avance ?
           subcategories:
             - title: Elle sera déduite à ma première facture d'eau
-              information:
+              blockingInfo:
                 title: Ce n'est pas un motif de signalement
                 content: Le distributeur peut vous demander une avance s'il est prévu de déduire cette somme de votre facture de consommation.
             - title: À la résiliation de l'abonnement ou au changement de locataire
@@ -22,10 +22,10 @@
                   type: TEXTAREA
               fileLabel: Joindre une copie du contrat ou tout document commercial relatif à cette avance.
         - title: Je ne suis pas d'accord avec la consommation indiquée sur ma facture
-          information:
+          blockingInfo:
             title: Vous devez demander à faire vérifier le compteur.
             content: Si vous recevez une facture d'eau que vous trouvez trop élevée par rapport à votre consommation habituelle et que vous avez vérifié l'absence de fuite d'eau, vous devez demander la vérification de votre compteur. Des frais vous seront facturés. Si la vérification révèle une anomalie, ces frais vous seront remboursés.
-            actions:
+            questions:
               - question: Vous souhaitez obtenir la vérification de votre compteur d’eau&#160;?
                 answer: Vous trouverez un modèle de lettre à envoyer sur le site <br><a href="https://www.inc-conso.fr/content/vous-souhaitez-obtenir-la-verification-de-votre-compteur-deau-en-raison-dune-consommation" target="_blank" />inc-conso.fr</a>
         - title: Une clause du contrat (règlement de service) est abusive, c'est-à-dire qu'elle désavantage fortement le consommateur.
@@ -42,7 +42,7 @@
           tags:
             - ReponseConso
     - title: Coupure de l'eau pour impayé
-      example: Mon débit d'eau a été réduit car je ne peux payer ma facture
+      desc: Mon débit d'eau a été réduit car je ne peux payer ma facture
       tags:
         - ReponseConso
       detailInputs:
@@ -53,19 +53,19 @@
           type: DATE
       fileLabel: Joindre une copie du contrat / règlement.
     - title: Dégâts / travaux sur les canalisations
-      example: "Exemple : fuite d'eau avant compteur"
-      information:
+      desc: "Exemple : fuite d'eau avant compteur"
+      blockingInfo:
         title: Le compteur d'eau représente la frontière entre ce qui est à votre charge et ce qui ne l'est pas.
         content: La partie située après votre compteur d'eau est à votre charge. Cela veut dire que les travaux après votre compteur sont à votre charge. Les problèmes sur les canalisations après votre compteur sont également à votre charge. <br> Les canalisations situées avant votre compteur sont des ouvrages publics. Ils relèvent donc de la responsabilité du service des eaux. Le compteur est également à la charge du service des eaux. <br> Cette règle est valable aussi même si les canalisations sont situées dans votre propriété. <br><br> Vous êtes responsable du paiement des fuites d’eau après votre compteur, mais vous pouvez bénéficier d’un droit à un écrêtement dans certains cas. Plus d'information <a href="https://www.economie.gouv.fr/files/files/directions_services/dgccrf/documentation/publications/depliants/guide-eau-15062018.pdf" target="_blank" />ici</a>
-        actions:
+        questions:
           - question: Que faire en cas de désaccord&#160;?
             answer: Contactez le service client de votre distributeur. Si vous ne trouvez pas de solution, vous pouvez saisir le médiateur de l'eau<br><a href="https://www.mediation-eau.fr/" target="_blank" />https://www.mediation-eau.fr/</a>
-        outOfScope: true
+        notAFraudMessage: true
     - title: Fosse septique
-      example: "Exemple : malfaçons sur la fosse, le bureau d'étude m'impose une marque de fosse en particulier "
+      desc: "Exemple : malfaçons sur la fosse, le bureau d'étude m'impose une marque de fosse en particulier "
       subcategories:
         - title: Malfaçons sur la pose de la fosse septique
-          example: 'Fissure, usure'
+          desc: 'Fissure, usure'
           detailInputs:
             - label: Date du constat
               type: DATE
@@ -93,7 +93,7 @@
 - title: Gaz / Électricité
   subcategories:
     - title: Démarchage à domicile
-      example: 'Exemple : vendeur prétend être envoyé par EDF, démarcheur agressif'
+      desc: 'Exemple : vendeur prétend être envoyé par EDF, démarcheur agressif'
       companyKind: LOCATION
       tags:
         - DemarchageADomicile
@@ -139,7 +139,7 @@
         - label: Décrivez nous plus en détails ce qui s'est passé
           type: TEXTAREA
     - title: Publicité mensongère ou trompeuse
-      example: 'Exemple : publicité "offre verte" mensongère'
+      desc: 'Exemple : publicité "offre verte" mensongère'
       tags:
         - ReponseConso
       reponseconsoCode:
@@ -173,12 +173,12 @@
             - Non
       fileLabel: Photo(s) si possible
     - title: Contrat
-      example: 'Exemple : reconduction de contrat, clause abusive'
+      desc: 'Exemple : reconduction de contrat, clause abusive'
       tags:
         - ReponseConso
       subcategories:
         - title: Difficultés pour résilier un contrat
-          example: "Exemple : le bulletin de rétractation n'a pas été prise en compte"
+          desc: "Exemple : le bulletin de rétractation n'a pas été prise en compte"
           subcategoriesTitle: Où avez-vous souscrit votre contrat ?
           reponseconsoCode:
             - '214'
@@ -203,10 +203,10 @@
                         - label: Précisez comment et à qui vous avez fait la demande
                           type: TEXTAREA
                     - title: Non
-                      information:
+                      blockingInfo:
                         title: Vous ne pouvez plus exiger l'annulation de votre contrat.
                         content: Une fois le délai de rétractation terminé, l'entreprise n'est plus obligée d'annuler votre contrat.
-                        outOfScope: true
+                        notAFraudMessage: true
                 - title: Un logement que vous occupiez déjà
                   subcategoriesTitle: Avez-vous demandé à faire démarrer votre contrat immédiatement ?
                   subcategories:
@@ -224,24 +224,24 @@
                             - label: Précisez comment et à qui vous avez fait la demande
                               type: TEXTAREA
                         - title: Non
-                          information:
+                          blockingInfo:
                             title: Vous ne pouvez plus exiger l'annulation de votre contrat.
                             content: Une fois le délai de rétractation terminé, l'entreprise n'est plus obligée d'annuler votre contrat.
-                            outOfScope: true
+                            notAFraudMessage: true
                     - title: Oui. J'ai renoncé au délai de rétractation.
-                      information:
+                      blockingInfo:
                         title: Vous ne pouvez plus exiger l'annulation de votre contrat.
                         content: Une fois le délai de rétractation terminé, l'entreprise n'est plus obligée d'annuler votre contrat.
-                        outOfScope: true
+                        notAFraudMessage: true
                     - title: Oui mais je n'ai pas été informé que ça annulait mon droit à la rétractation.
             - title: Dans une boutique
               reponseconsoCode:
                 - '473'
                 - '224'
-              information:
+              blockingInfo:
                 title: Vous ne pouvez plus exiger l'annulation de votre contrat.
                 content: Lorsque vous signez un contrat dans une boutique, vous ne bénéficiez pas d'un délai de rétractation.
-                outOfScope: true
+                notAFraudMessage: true
         - title: Une clause du contrat est abusive, c'est-à-dire qu'elle désavantage fortement le consommateur
           reponseconsoCode:
             - '214'

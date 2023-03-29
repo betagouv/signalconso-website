@@ -1,21 +1,21 @@
 - title: Produit de santé
-  example: 'Exemple : médicament, bas de contention, prothèse, lunette, pansement, fauteuil roulant, compléments alimentaires, autres produits achetés en pharmacie ou rayon pharmacie'
+  desc: 'Exemple : médicament, bas de contention, prothèse, lunette, pansement, fauteuil roulant, compléments alimentaires, autres produits achetés en pharmacie ou rayon pharmacie'
   subcategories:
     - title: J'ai eu un problème de santé / sécurité avec un produit
-      example: 'Exemple : allergie, vomissement, électrocution'
+      desc: 'Exemple : allergie, vomissement, électrocution'
       subcategoriesTitle: Quel est le type de produit ?
       subcategories:
         - title: Un médicament et vaccin
-          information:
+          blockingInfo:
             title: Les effets secondaires et autres réactions avec des médicaments doivent être signalés au ministère de la Santé.
             content: <br>Merci de remplir le formulaire dédié à ce type de problème sur le site <a href="https://signalement.social-sante.gouv.fr/psig_ihm_utilisateurs/index.html#/accueil" target="_blank">signalement.social-sante.gouv.fr</a>
         - title: Un objet de santé courant
-          example: 'Exemple : pansement, tensiomètre, thermomètre, bas de contention'
+          desc: 'Exemple : pansement, tensiomètre, thermomètre, bas de contention'
           tags:
             - ProduitDangereux
         - title: Un objet de santé spécifique
-          example: 'Exemple: lit médicalisé, prothèse, défibrillateur'
-          information:
+          desc: 'Exemple: lit médicalisé, prothèse, défibrillateur'
+          blockingInfo:
             title: Les effets secondaires et autres réactions avec des médicaments doivent être signalés au ministère de la Santé.
             content: <br>Merci de remplir le formulaire dédié à ce type de problème sur le site <a href="https://signalement.social-sante.gouv.fr/psig_ihm_utilisateurs/index.html#/accueil" target="_blank">signalement.social-sante.gouv.fr</a>
     - title: La publicité (ou les informations sur la boîte) est trompeuse
@@ -87,7 +87,7 @@
         - label: Décrivez nous plus en détails ce qui s'est passé
           type: TEXTAREA
     - title: Un produit de santé est de mauvaise qualité
-      example: 'Exemple : béquille qui se tord, audioprothèse qui se fissure rapidement, préservatif qui se perce'
+      desc: 'Exemple : béquille qui se tord, audioprothèse qui se fissure rapidement, préservatif qui se perce'
       reponseconsoCode:
         - '332'
         - '464'
@@ -109,14 +109,14 @@
         - label: 'Expliquez le problème en quelques mots :'
           type: TEXT
 - title: Professionnel de la santé et médecine douce
-  example: 'Exemple : dentiste, opticien, kiné, psychiatre, médecine douce'
+  desc: 'Exemple : dentiste, opticien, kiné, psychiatre, médecine douce'
   subcategoriesTitle: 'Quel type de médecine exerce-t-il ?'
   subcategories:
     - title: La médecine dite "conventionnelle"
-      example: "C'est-à-dire qu'il est : médecin généraliste, dentiste, ophtalmologue, sage-femme, infirmier, kinésithérapeute , pédicure-podologue, odontologiste, orthophoniste, orthoptiste, diététicien, psychiatre, ou autre médecin spécialiste."
+      desc: "C'est-à-dire qu'il est : médecin généraliste, dentiste, ophtalmologue, sage-femme, infirmier, kinésithérapeute , pédicure-podologue, odontologiste, orthophoniste, orthoptiste, diététicien, psychiatre, ou autre médecin spécialiste."
       subcategories:
         - title: Les tarifs ne sont pas affichés en salle d'attente
-          example: Les tarifs doivent être clairement affichés dans la salle d'attente.
+          desc: Les tarifs doivent être clairement affichés dans la salle d'attente.
           companyKind: SIRET
           tags:
             - ReponseConso
@@ -134,7 +134,7 @@
                 - les prix affichés ne sont pas à jour
           fileLabel: Vous pouvez joindre une photo pour appuyer votre signalement.
         - title: Le professionnel n'indique pas s' il est conventionné, ou s'il est secteur 1 ou secteur 2
-          example: Cette indication est obligatoire sur sa plaque (au niveau de sa porte ou du hall d'entrée) et dans la salle d'attente.
+          desc: Cette indication est obligatoire sur sa plaque (au niveau de sa porte ou du hall d'entrée) et dans la salle d'attente.
           tags:
             - ReponseConso
           reponseconsoCode:
@@ -156,19 +156,19 @@
                 - non conventionné
               optional: true
         - title: Les prix sont exagérés
-          information:
+          blockingInfo:
             title: Un professionnel de santé non conventionné peut choisir ses tarifs
             content:
               Le prix varie selon qu'il est conventionné ou non conventionné. <br> Un médecin non conventionné peut choisir librement ses prix.  Il facture des « dépassements d’honoraires ». En savoir plus<br><a href="https://www.service-public.fr/particuliers/vosdroits/F17042" target="_blank">https://www.service-public.fr/particuliers/vosdroits/F17042</a>
               <br><br>Un médecin conventionné pratiquera des tarifs classiques.
-            outOfScope: true
+            notAFraudMessage: true
         - title: Problème de devis
-          example: "Exemple : je n'ai pas eu de devis, devis pas respecté"
+          desc: "Exemple : je n'ai pas eu de devis, devis pas respecté"
           tags:
             - ReponseConso
           subcategories:
             - title: Je n'ai pas eu de devis écrit
-              example: Un devis est obligatoire dès que les dépassements d'honoraires et la prestation dépassent 70 euros. Un devis est obligatoire en cas de pose de couronne, implant, bridge... Un devis est obligatoire en chirurgie esthétique.
+              desc: Un devis est obligatoire dès que les dépassements d'honoraires et la prestation dépassent 70 euros. Un devis est obligatoire en cas de pose de couronne, implant, bridge... Un devis est obligatoire en chirurgie esthétique.
               reponseconsoCode:
                 - '2121'
                 - '226'
@@ -216,12 +216,12 @@
                 - label: Combien avez-vous payé ?
                   type: TEXT
         - title: La prestation est mal (ou pas) réalisée
-          example: "Exemple : j'ai mal été soigné"
-          information:
+          desc: "Exemple : j'ai mal été soigné"
+          blockingInfo:
             title: Porter une réclamation sur la qualité d’un soin
             content: Si vous estimez avoir mal été soigné, il existe différentes procédures. <br><br> Par exemple, vous pouvez déposer une plainte contre votre médecin auprès du Conseil Départemental de son Ordre. <br> Si vous souhaitez des dommages et intérêts, vous pouvez saisir la commission de conciliation et d’indemnisation des accidents médicaux (CCI) <br><br> Si vous avez été soigné dans un hôpital ou une clinique, vous pouvez écrire à la Commission des Usagers. Elle est présente dans chaque hôpital ou clinique. Renseignez-vous auprès du secrétariat pour la contacter. <br> <br> Retrouvez les différentes possibilités de régler votre problème sur ce <a href="https://solidarites-sante.gouv.fr/soins-et-maladies/signalement-sante-gouv-fr/ou-s-adresser-pour-effectuer-une-reclamation" target="_blank">lien</a>
     - title: La médecine dite "alternative" ou "douce"
-      example: "C'est-à-dire qu'il est : acupuncteur, ostéopathe, naturopathe, psychologue, hypnotiseur, nutritionniste, chiropracteur, sophrologue, mésothérapeute, homéopathe, phytothérapeute, aromathérapeute..."
+      desc: "C'est-à-dire qu'il est : acupuncteur, ostéopathe, naturopathe, psychologue, hypnotiseur, nutritionniste, chiropracteur, sophrologue, mésothérapeute, homéopathe, phytothérapeute, aromathérapeute..."
       subcategories:
         - title: Les prix ne sont pas affichés ou sont faux
           reponseconsoCode:
@@ -229,7 +229,7 @@
             - '210'
           tags:
             - ReponseConso
-          example: "Les prix doivent être affichés en salle d'attente."
+          desc: "Les prix doivent être affichés en salle d'attente."
           detailInputs:
             - label: Date du constat
               type: DATE
@@ -253,16 +253,16 @@
               optional: true
           fileLabel: Vous pouvez joindre une photo
         - title: Les prix sont trop chers
-          example: 'Exemple : ce naturopathe est plus cher que ceux de la région'
-          information:
+          desc: 'Exemple : ce naturopathe est plus cher que ceux de la région'
+          blockingInfo:
             title: En médecine non conventionnelle, un praticien peut choisir librement ses prix.
             content: "Il peut proposer des prix élevés et choisir d'être plus cher que ses concurrents. <br> Cependant il a une obligation : indiquer tous ces prix de façon claire. Vous devez connaître le prix avant de vous faire soigner. <br> Les prix doivent être affichés en salle d'attente de manière lisible."
-            actions:
+            questions:
               - question: Vous n'avez pas eu connaissance des prix avant&#160;?
                 answer: Faites un signalement à la rubrique "Les prix ne sont pas affichés"
-            outOfScope: true
+            notAFraudMessage: true
         - title: Je n'ai pas reçu de note (facture, ticket)
-          example: "À partir de 25 euros, votre praticien doit vous remettre une note qui décrit ce que vous avez payé. C'est une obligation."
+          desc: "À partir de 25 euros, votre praticien doit vous remettre une note qui décrit ce que vous avez payé. C'est une obligation."
           reponseconsoCode:
             - '213'
           tags:
@@ -279,7 +279,7 @@
                 - Oui
                 - Non
         - title: La publicité ou la description du soin est trompeuse
-          example: 'Exemple : durée plus courte que celle affichée, les résultats "garantis" ne se sont pas réalisés, publicité en vitrine trompeuse'
+          desc: 'Exemple : durée plus courte que celle affichée, les résultats "garantis" ne se sont pas réalisés, publicité en vitrine trompeuse'
           tags:
             - ReponseConso
           reponseconsoCode:
@@ -327,7 +327,7 @@
             - '210'
           tags:
             - ReponseConso
-          example: 'Exemple : offre promotionnelle trompeuse sur des lunettes'
+          desc: 'Exemple : offre promotionnelle trompeuse sur des lunettes'
           detailInputs:
             - label: Date du constat
               type: DATE
@@ -359,11 +359,11 @@
 - title: Hôpital / Clinique
   subcategories:
     - title: J'ai subi un mauvais traitement ou j'ai été mal soigné
-      information:
+      blockingInfo:
         title: Vous devez contacter la Commissions des Usagers
         content: Si vous estimez avoir été mal soigné ou mal traité, il est possible de saisir la Commission des Usagers. Elle est présente dans chaque hôpital ou clinique. Renseignez-vous auprès du secrétariat pour la contacter. Plus de renseignements sur cette page <br><a href="https://www.service-public.fr/particuliers/vosdroits/F10256" target="_blank">https://www.service-public.fr/particuliers/vosdroits/F10256</a>
     - title: J'ai dû payer un "forfait administratif"
-      example: Les forfaits administratifs sont souvent aux alentours de 10 euros. Ils sont justifiés par des frais de photocopies, la prise de contact avec la mutuelle, l'appel du taxi pour reconduire un malade... Ces frais sont interdits.
+      desc: Les forfaits administratifs sont souvent aux alentours de 10 euros. Ils sont justifiés par des frais de photocopies, la prise de contact avec la mutuelle, l'appel du taxi pour reconduire un malade... Ces frais sont interdits.
       tags:
         - ReponseConso
       reponseconsoCode:
@@ -378,7 +378,7 @@
     - title: J'ai été facturé pour un supplément que je n'avais pas demandé
       tags:
         - ReponseConso
-      example: 'Exemple : supplément "chambre seule" au prétexte qu''elles étaient toutes occupées, supplément "télévision" alors que je n''ai pas demandé à avoir la télévision'
+      desc: 'Exemple : supplément "chambre seule" au prétexte qu''elles étaient toutes occupées, supplément "télévision" alors que je n''ai pas demandé à avoir la télévision'
       reponseconsoCode:
         - '411'
         - '210'
@@ -410,7 +410,7 @@
     - title: Problème de prix
       subcategories:
         - title: Les prix ne sont pas indiqués
-          example: Les prix doivent être indiqués dans les rayons, visibles pour les médicaments situés derrière le comptoir. La pharmacie doit également avoir un catalogue des prix.
+          desc: Les prix doivent être indiqués dans les rayons, visibles pour les médicaments situés derrière le comptoir. La pharmacie doit également avoir un catalogue des prix.
           reponseconsoCode:
             - '212'
             - '226'
@@ -429,13 +429,13 @@
           reponseconsoCode:
             - '164'
             - '226'
-          information:
+          blockingInfo:
             title: Le pharmacien a le droit de faire les prix qu'il souhaite (sauf pour les médicaments remboursables).
             content:
               Le pharmacien peut choisir les prix des médicaments non remboursables, et des produits divers de la pharmacie (biberon, brosse à dent, crème...). Les prix doivent être clairement indiqués sans devoir les demander.
               Cas particulier des médicaments remboursables !
               Les prix des médicaments remboursables sont fixes. Ces prix sont en ligne sur le site <a href="http://base-donnees-publique.medicaments.gouv.fr" target="_blank"> http://base-donnees-publique.medicaments.gouv.fr/</a>
-            outOfScope: true
+            notAFraudMessage: true
         - title: Autre
           reponseconsoCode:
             - '226'
@@ -448,14 +448,14 @@
     - title: Autre
       subcategories:
         - title: Problème d'accessibilité
-          information: !!import/single ../common/info/accessibilite.yml
+          blockingInfo: !!import/single ../common/info/accessibilite.yml
         - title: Personnel peu aimable
-          information: !!import/single ../common/info/amabilite.yml
+          blockingInfo: !!import/single ../common/info/amabilite.yml
         - title: Mon chien a été refusé dans la pharmacie
           subcategoriesTitle: Est-ce un chien d'assistance&#160;?
           subcategories:
             - title: Non
-              information: !!import/single ../common/info/chienassistance.yml
+              blockingInfo: !!import/single ../common/info/chienassistance.yml
             - title: Oui (je possède la carte d'assistance)
               reponseconsoCode:
                 - '422'
@@ -471,22 +471,22 @@
             - '226'
             - '162'
 - title: Ambulance
-  example: 'et autre transport sanitaire (exemple : taxi)'
+  desc: 'et autre transport sanitaire (exemple : taxi)'
   tags:
     - ReponseConso
   reponseconsoCode:
     - '212'
     - '226'
 - title: Cure
-  example: 'Exemple : thalassothérapie, thermalisme'
+  desc: 'Exemple : thalassothérapie, thermalisme'
   subcategories:
     - title: Prix et facture
-      example: "Exemple : les prix ne sont pas affichés, pas de remise d'une facture"
+      desc: "Exemple : les prix ne sont pas affichés, pas de remise d'une facture"
       tags:
         - ReponseConso
       subcategories:
         - title: Les prix ne sont pas affichés
-          example: 'Exemple : les prix des soins ne sont pas affichés, les prix affichés ne sont pas très clairs'
+          desc: 'Exemple : les prix des soins ne sont pas affichés, les prix affichés ne sont pas très clairs'
           tags:
             - ReponseConso
           reponseconsoCode:
@@ -503,7 +503,7 @@
                 - les prix affichés ne sont pas clairs
           fileLabel: Si possible merci de joindre une photo pour appuyer votre signalement.
         - title: J'ai payé plus cher que les prix affichés
-          example: "Exemple : j'ai payé un supplément non prévu sans être prévenu, les prix affichés ne sont pas à jour "
+          desc: "Exemple : j'ai payé un supplément non prévu sans être prévenu, les prix affichés ne sont pas à jour "
           tags:
             - ReponseConso
           reponseconsoCode:
@@ -534,7 +534,7 @@
                 - je n'ai pas eu de facture et je ne l'ai pas demandée
                 - j'ai demandé une facture mais on ne me l'a pas donnée
     - title: Publicité mensongère
-      example: 'Exemple : spa simple déclaré en thalassothérapie, soins qui ne correspondent pas à la description sur la publicité, utilisation frauduleuse du label Qualicert'
+      desc: 'Exemple : spa simple déclaré en thalassothérapie, soins qui ne correspondent pas à la description sur la publicité, utilisation frauduleuse du label Qualicert'
       reponseconsoCode:
         - '210'
         - '220'
@@ -560,7 +560,7 @@
           type: TEXT
       fileLabel: Merci de joindre tout document (photo, pdf) pouvant appuyer votre signalement.
     - title: Contrat
-      example: "Exemple : je souhaite annuler ma cure, le contrat n'est pas clair, mon contrat n'a pas été respecté "
+      desc: "Exemple : je souhaite annuler ma cure, le contrat n'est pas clair, mon contrat n'a pas été respecté "
       reponseconsoCode:
         - '220'
         - '422'
@@ -569,14 +569,14 @@
     - title: Autre
       subcategories:
         - title: Problème d'accessibilité
-          information: !!import/single ../common/info/accessibilite.yml
+          blockingInfo: !!import/single ../common/info/accessibilite.yml
         - title: Personnel peu aimable
-          information: !!import/single ../common/info/amabilite.yml
+          blockingInfo: !!import/single ../common/info/amabilite.yml
         - title: Mon chien a été refusé
           subcategoriesTitle: Est-ce un chien d'assistance&#160;?
           subcategories:
             - title: Non
-              information: !!import/single ../common/info/chienassistance.yml
+              blockingInfo: !!import/single ../common/info/chienassistance.yml
             - title: Oui (je possède la carte d'assistance)
               reponseconsoCode:
                 - '422'
@@ -593,7 +593,7 @@
             - '220'
             - '411'
 - title: Un site internet lié au secteur de la santé
-  example: 'Exemple : site de téléconsultation avec un médecin'
+  desc: 'Exemple : site de téléconsultation avec un médecin'
   tags:
     - ReponseConso
   reponseconsoCode:

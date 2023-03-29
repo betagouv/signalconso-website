@@ -5,7 +5,7 @@ interface FnSwitch {
 }
 
 // Convenient equivalent of a 'switch', especially for JSX
-// example :
+// ex :
 //
 // fnSwitch('hello', {
 //   'foo' : <ComponentFoo />,
@@ -17,7 +17,7 @@ export const fnSwitch: FnSwitch = (value, cases, defaultCase?) => {
   const res = cases[value]
   if (!res && !defaultCase) {
     throw new Error(`
-      [fnSwtich] ${value} does not match any of theses cases ${Object.keys(cases).join(', ')}
+      [fnSwitch] ${value} does not match any of theses cases ${Object.keys(cases).join(', ')}
       and defaultCase parameter is not provided.
     `)
   }

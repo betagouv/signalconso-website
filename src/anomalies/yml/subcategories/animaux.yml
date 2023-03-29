@@ -1,15 +1,15 @@
 - title: Alimentation / Matériel pour animaux
-  example: 'Exemple : jouet, cage, laisse, croquettes'
+  desc: 'Exemple : jouet, cage, laisse, croquettes'
   reponseconsoCode:
     - '332'
     - '617'
 - title: Soins
-  example: 'Exemple : vétérinaire, toiletteur'
+  desc: 'Exemple : vétérinaire, toiletteur'
   reponseconsoCode:
     - '212'
     - '213'
 - title: Garde d'animaux
-  example: "Exemple : pension, site internet de garde d'animaux"
+  desc: "Exemple : pension, site internet de garde d'animaux"
   reponseconsoCode:
     - '212'
     - '213'
