@@ -1,11 +1,9 @@
 import {Box} from '@mui/material'
 import {Animate} from 'components_simple/Animate/Animate'
-import {Panel, PanelBody} from 'components_simple/Panel/Panel'
-import {useI18n} from 'i18n/I18n'
+import {I18nContextProps, useI18n} from 'i18n/I18n'
 import {ConsumerWish} from 'model/ReportDraft'
 import {alertInfoBackgroundColor, alertInfoTextColor} from '../../../alexlibs/mui-extension/Alert/Alert'
 import {Txt} from '../../../alexlibs/mui-extension/Txt/Txt'
-import {I18nContextProps} from 'i18n/I18n'
 
 export function ProblemConsumerWishInformation({consumerWish}: {consumerWish: ConsumerWish}) {
   const {m} = useI18n()
@@ -51,24 +49,4 @@ function pickSecondText(m: I18nContextProps['m'], consumerWish: ConsumerWish) {
     case 'getAnswer':
       return m.consumerWishInvestigationIsPossible2
   }
-}
-
-// Legacy wording, should disappear soon
-export const ProblemContractualDisputeWarnPanel = () => {
-  const {m} = useI18n()
-  return (
-    <Animate>
-      <Panel
-        id="panel-contractual-dispute"
-        border
-        title={m.problemContractualDisputeTitle}
-        desc={m.problemContractualDisputeDesc}
-      >
-        <PanelBody>
-          <Txt bold>{m.problemContractualDisputeInfoTitle}</Txt>
-          <Txt color="hint" dangerouslySetInnerHTML={{__html: m.problemContractualDisputeInfo}} />
-        </PanelBody>
-      </Panel>
-    </Animate>
-  )
 }

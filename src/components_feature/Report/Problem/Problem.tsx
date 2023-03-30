@@ -1,20 +1,20 @@
-import {appConfig} from 'core/appConfig'
 import {EventCategories, ReportEventActions} from 'analytic/analytic'
 import {useAnalyticContext} from 'analytic/AnalyticContext'
+import {StepNavigation} from 'components_simple/ReportFlowStepper/ReportFlowStepper'
+import {ReportFlowStepperActions} from 'components_simple/ReportFlowStepper/ReportFlowStepperActions'
+import {appConfig} from 'core/appConfig'
 import {useI18n} from 'i18n/I18n'
+import {ConsumerWish} from 'model/ReportDraft'
 import {ReportDraft2} from 'model/ReportDraft2'
 import {useEffect, useMemo} from 'react'
-import {ReportFlowStepperActions} from 'components_simple/ReportFlowStepper/ReportFlowStepperActions'
 import {instanceOfSubcategoryWithInfoWall} from '../../../anomalies/Anomalies'
 import {Anomaly, CompanyKinds, ReportTag, Subcategory} from '../../../anomalies/Anomaly'
 import {useReportFlowContext} from '../ReportFlowContext'
-import {ProblemConsumerWishInformation, ProblemContractualDisputeWarnPanel} from './ProblemConsumerWishInformation'
+import {ProblemConsumerWishInformation} from './ProblemConsumerWishInformation'
 import {ProblemInformation} from './ProblemInformation'
 import {ProblemSelect} from './ProblemSelect'
-import {ProblemStepperStep, ProblemStepper} from './ProblemStepper'
+import {ProblemStepper, ProblemStepperStep} from './ProblemStepper'
 import {computeSelectedSubcategoriesData} from './useSelectedSubcategoriesData'
-import {StepNavigation} from 'components_simple/ReportFlowStepper/ReportFlowStepper'
-import {ConsumerWish} from 'model/ReportDraft'
 
 interface Props {
   anomaly: Anomaly
@@ -239,12 +239,7 @@ export const Problem = ({anomaly, isWebView, stepNavigation}: Props) => {
               />
             </ProblemStepperStep>
             <ProblemStepperStep isDone={true} hidden={!reportDraft.consumerWish}>
-              {appConfig.enableBlueExplanations && reportDraft.consumerWish && (
-                <ProblemConsumerWishInformation consumerWish={reportDraft.consumerWish} />
-              )}
-            </ProblemStepperStep>
-            <ProblemStepperStep isDone={true} hidden={reportDraft.consumerWish !== 'fixContractualDispute'}>
-              {appConfig.enableBlueExplanations || <ProblemContractualDisputeWarnPanel />}
+              {reportDraft.consumerWish && <ProblemConsumerWishInformation consumerWish={reportDraft.consumerWish} />}
             </ProblemStepperStep>
           </ProblemStepper>
         ))}
