@@ -254,26 +254,6 @@ export const fr = {
     problemContractualDisputeFormNo: `Signaler un problème pour que l'entreprise s'améliore`,
     problemContractualDisputeFormNoDesc: `Exemple : respect des délais, meilleur affichage des prix, hygiène irréprochable, ...`,
     problemContractualDisputeFormReponseConso: `M’informer sur mes droits auprès de la répression des fraudes`,
-    problemContractualDisputeTitle: `Ce problème est un litige`,
-    problemContractualDisputeDesc: `C'est-à-dire un problème individuel entre l’entreprise et vous. La répression des fraudes ne s’occupe pas directement de résoudre des problèmes individuels.`,
-    problemContractualDisputeInfoTitle: `Pourquoi faire un signalement ?`,
-    problemContractualDisputeInfo: `
-      <ul>
-        <li>
-          <strong>Pour augmenter vos chances de trouver une solution avec l'entreprise:</strong>
-          50% des professionnels apportent une réponse au signalement.
-        </li>
-        <li>
-          <strong>Pour l’acte citoyen:</strong>
-          les enquêteurs de la répression des fraudes ne vont pas résoudre directement votre problème mais pourront lancer une enquête
-          auprès de l’entreprise grâce à vos informations.
-        </li>
-        <li>
-          <strong>Pour faire les bonnes démarches:</strong>
-          SignalConso vous guide dans la marche à suivre pour trouver une solution ou obtenir réparation.
-        </li>
-      </ul>
-    `,
     consumerWishFixContractualDispute: `Votre signalement sera transmis à l'entreprise. La répression des fraudes ne s'occupe pas de résoudre les problèmes
     individuels, mais <strong>faire le signalement peut inciter l'entreprise à vous répondre.</strong>`,
     consumerWishCompanyImprovement: `Votre signalement sera transmis à l'entreprise. Vous aurez la possibilité de rester anonyme.`,

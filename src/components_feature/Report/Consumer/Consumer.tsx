@@ -221,7 +221,7 @@ export const _Consumer = ({
                   )}
                 />
               </Row>
-              {watchContactAgreement === false && appConfig.enableBlueExplanations && (
+              {watchContactAgreement === false && (
                 <Row sx={{mt: 3}}>
                   <ConsumerAnonymousInformation />
                 </Row>
