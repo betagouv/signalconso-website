@@ -9,6 +9,7 @@ import {useToast} from 'hooks/useToast'
 import {SxProps} from '@mui/system'
 import {FileOrigin, UploadedFile} from '../../model/UploadedFile'
 import {compressFile} from '../../utils/compressFile'
+import {ApiError} from '../../clients/BaseApiClient'
 
 const styles: {[key: string]: SxProps<Theme>} = {
   root: {
@@ -101,7 +102,8 @@ export const ReportFileAdd = ({onUploaded, fileOrigin}: Props) => {
         })
         .then(file => signalConsoApiClient.uploadDocument(file, fileOrigin))
         .then(onUploaded)
-        .catch(e => {
+        .catch((e: ApiError) => {
+          console.log(e)
           toastError(e)
         })
         .finally(() => setUploading(false))
