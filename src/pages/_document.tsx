@@ -2,11 +2,14 @@ import * as React from 'react'
 import Document, {Head, Html, Main, NextScript} from 'next/document'
 import createEmotionServer from '@emotion/server/create-instance'
 import createEmotionCache from 'core/createEmotionCache'
+import {dsfrDocumentApi} from './_app'
+
+const {getColorSchemeHtmlAttributes, augmentDocumentForDsfr} = dsfrDocumentApi
 
 export default class MyDocument extends Document {
   render() {
     return (
-      <Html lang="fr">
+      <Html lang="fr" {...getColorSchemeHtmlAttributes(this.props)}>
         <Head>
           <meta charSet="utf-8" />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -115,3 +118,5 @@ MyDocument.getInitialProps = async ctx => {
     emotionStyleTags,
   }
 }
+
+augmentDocumentForDsfr(MyDocument)

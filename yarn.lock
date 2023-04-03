@@ -714,6 +714,20 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@codegouvfr/react-dsfr@npm:^0.45.0":
+  version: 0.45.0
+  resolution: "@codegouvfr/react-dsfr@npm:0.45.0"
+  dependencies:
+    tsafe: ^1.6.0
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0 || ^18.0.0
+  bin:
+    copy-dsfr-to-public: bin/copy-dsfr-to-public.js
+    only-include-used-icons: bin/only-include-used-icons.js
+  checksum: 88924781e2669592aa450ef38e3129befa1eb21dea77e474323f091bc58bd90b1ea2f0a884857ec18a661f7055846e5864c88527181e277b51afe2ea3220bf5e
+  languageName: node
+  linkType: hard
+
 "@cspotcode/source-map-support@npm:^0.8.0":
   version: 0.8.1
   resolution: "@cspotcode/source-map-support@npm:0.8.1"
@@ -8694,6 +8708,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "signalconso-website@workspace:."
   dependencies:
+    "@codegouvfr/react-dsfr": ^0.45.0
     "@emotion/cache": 11.10.1
     "@emotion/react": 11.10.0
     "@emotion/server": 11.10.0
@@ -9539,6 +9554,13 @@ __metadata:
     ts-node-transpile-only: dist/bin-transpile.js
     ts-script: dist/bin-script-deprecated.js
   checksum: 090adff1302ab20bd3486e6b4799e90f97726ed39e02b39e566f8ab674fd5bd5f727f43615debbfc580d33c6d9d1c6b1b3ce7d8e3cca3e20530a145ffa232c35
+  languageName: node
+  linkType: hard
+
+"tsafe@npm:^1.6.0":
+  version: 1.6.0
+  resolution: "tsafe@npm:1.6.0"
+  checksum: 1cea91c1b8a2d4d4ab37f940bbbe297890c5f83cf5415f1e7450373b47f621ebb5da962786a0f3eb1756ebf947750d3ece2b5bb64740c153cc1390cf41202fe1
   languageName: node
   linkType: hard
 

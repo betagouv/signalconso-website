@@ -24,6 +24,21 @@ import {ToastProvider} from '../alexlibs/mui-extension/Toast/Toast'
 import {appConfig} from '../core/appConfig'
 import '../globals.css'
 import {Eularian} from '../plugins/eularian'
+import {createNextDsfrIntegrationApi} from '@codegouvfr/react-dsfr/next-pagesdir'
+import Link from 'next/link'
+
+declare module '@codegouvfr/react-dsfr/next-pagesdir' {
+  interface RegisterLink {
+    Link: typeof Link
+  }
+}
+
+const {withDsfr, dsfrDocumentApi} = createNextDsfrIntegrationApi({
+  defaultColorScheme: 'system',
+  Link,
+})
+
+export {dsfrDocumentApi}
 
 interface ScAppProps extends AppProps {
   emotionCache?: EmotionCache
@@ -105,4 +120,4 @@ const _App = ({Component, pageProps, router}: AppProps) => {
   )
 }
 
-export default App
+export default withDsfr(App)
