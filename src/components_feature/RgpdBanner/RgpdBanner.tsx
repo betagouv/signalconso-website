@@ -1,37 +1,44 @@
-import {useEffect, useMemo, useState} from 'react'
-import {LocalStorageEntity} from '../../utils/localStorageApi'
-import {useToast} from 'hooks/useToast'
-import Link from 'next/link'
 import {siteMap} from 'core/siteMap'
-import {ScButton} from 'components_simple/Button/Button'
 import {useI18n} from 'i18n/I18n'
+import Link from 'next/link'
+import {useEffect, useId, useState} from 'react'
+import {LocalStorageEntity} from '../../utils/localStorageApi'
 
-export const useRgpdBanner = () => {
-  const {m} = useI18n()
-  const storage = useMemo(() => new LocalStorageEntity<boolean>('rgpd-banner-hidden'), [])
+const localStorageEntity = new LocalStorageEntity<boolean>('rgpd-banner-hidden')
+
+export function RgpdBanner() {
+  // true at first so that it don't appears in SSR
   const [hidden, setHidden] = useState(true)
   useEffect(() => {
-    const hidden = storage.load()
-    if (hidden === undefined || !hidden) {
+    const hiddenInStorage = localStorageEntity.load()
+    if (hiddenInStorage !== true) {
       setHidden(false)
     }
   }, [])
-  const {toastInfo, toastWarning} = useToast()
-  useEffect(() => {
-    if (!hidden) {
-      toastInfo(m.bannerCookie, {
-        onClose: () => {
-          setHidden(true)
-          storage.save(true)
-        },
-        autoHideDuration: null,
-        keepOpenOnClickAway: true,
-        action: (
-          <Link href={siteMap.cookies} legacyBehavior>
-            <ScButton>{m.bannerCookieSeeMore}</ScButton>
-          </Link>
-        ),
-      })
-    }
-  }, [hidden])
+  const {m} = useI18n()
+  const id = useId()
+
+  function onClose() {
+    localStorageEntity.save(true)
+    setHidden(true)
+  }
+  if (hidden) {
+    return null
+  }
+  // code HTML de https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/gestionnaire-de-consentement
+  // avec le bouton de fermeture de https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/modale
+  return (
+    <div className="fr-consent-banner" id={id}>
+      <button className="fr-link--close fr-link" title="Fermer la fenêtre modale" aria-controls={id} onClick={onClose}>
+        Fermer
+      </button>
+      <h2 className="fr-h6">À propos des cookies sur signalconso.gouv.fr</h2>
+      <div className="fr-consent-banner__content">
+        <p className="fr-text--sm">
+          {m.bannerCookie} <Link href={siteMap.cookies}>{m.bannerCookieSeeMore}</Link>
+        </p>
+      </div>
+      <ul className="fr-consent-banner__buttons fr-btns-group fr-btns-group--right fr-btns-group--inline-reverse fr-btns-group--inline-sm"></ul>
+    </div>
+  )
 }

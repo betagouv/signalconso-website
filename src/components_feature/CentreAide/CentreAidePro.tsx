@@ -3,30 +3,39 @@ import {BtnAdmin} from 'components_simple/BtnAdmin'
 import Link from 'next/link'
 import {ScButton} from 'components_simple/Button/Button'
 import {siteMap} from 'core/siteMap'
-import {AccordionPanel, AccordionPanels} from 'components_simple/AccordionPanel/AccordionPanel'
+import {ReactNode} from 'react'
+import {Accordion} from '@codegouvfr/react-dsfr/Accordion'
+
+function Title({children}: {children: ReactNode}) {
+  return <h2 className="mb-4 mt-8 font-normal text-2xl">{children}</h2>
+}
+
+function Accordions({children}: {children: ReactNode}) {
+  return <div className="fr-accordions-group">{children}</div>
+}
 
 export const CentreAidePro = (props: BoxProps) => {
   return (
     <Box {...props}>
-      <h2>Généralités</h2>
-      <AccordionPanels>
-        <AccordionPanel title="Est-ce que ce service est gratuit ?">
+      <Title>Généralités</Title>
+      <Accordions>
+        <Accordion label="Est-ce que ce service est gratuit ?">
           <p>
             SignalConso est un service public gratuit, que ce soit pour les consommateurs ou les entreprises.
             <br /> Si vous recevez un courrier vous réclamant de l'argent au motif de l'utilisation de SignalConso, ne répondez
             pas à la demande et prévenez la DGCCRF de la tentative d'arnaque.
           </p>
-        </AccordionPanel>
-        <AccordionPanel title="Qui a accès aux signalements déposés sur SignalConso ?">
+        </Accordion>
+        <Accordion label="Qui a accès aux signalements déposés sur SignalConso ?">
           <p>
             {' '}
             Seule l'entreprise signalée peut consulter le signalement qui la concerne. Ils ne sont pas rendus publics auprès des
             consommateurs.
             <br />
-            L'ensemble des signalements est consultable et peut être exploité par l'administration de contrôle.
+            L'ensemble des signalements est consultable et peut être exploité par la DGCCRF.
           </p>
-        </AccordionPanel>
-        <AccordionPanel title="Mon entreprise apparait déjà sur SignalConso, a-t-elle déjà été signalée ?">
+        </Accordion>
+        <Accordion label="Mon entreprise apparait déjà sur SignalConso, a-t-elle déjà été signalée ?">
           <p>
             Afin de faciliter le dépôt du signalement par le consommateur, la base de données de l’ensemble des entreprises
             françaises a été intégrée à notre outil.
@@ -34,36 +43,36 @@ export const CentreAidePro = (props: BoxProps) => {
             C’est pourquoi votre entreprise apparaît sur notre plateforme mais en aucun cas cela signifie qu’elle a fait l’objet
             d’un signalement.
           </p>
-        </AccordionPanel>
-        <AccordionPanel title="Puis-je ouvrir un Espace Professionnel si je n'ai pas encore été signalé ?">
+        </Accordion>
+        <Accordion label="Puis-je ouvrir un Espace Professionnel si je n'ai pas encore été signalé ?">
           <p>
             Si votre entreprise n’a pas encore été signalée, et que vous n’avez donc pas reçu le courrier provenant de nos
             services, vous ne pourrez pas ouvrir d’Espace Professionnel sur SignalConso.
           </p>
-        </AccordionPanel>
-        <AccordionPanel title="Est-il obligatoire de consulter les signalements SignalConso et/ou d'y répondre ?">
+        </Accordion>
+        <Accordion label="Est-il obligatoire de consulter les signalements SignalConso et/ou d'y répondre ?">
           <p>
             SignalConso est un service d'application volontaire.
             <br />
             Vous pouvez, si vous le souhaitez, ne pas consulter les signalements déposés sur SignalConso. Dans ce cas, la DGCCRF
             et le consommateur seront avertis que le signalement n'a pas été consulté.
           </p>
-        </AccordionPanel>
-      </AccordionPanels>
-      <h2>Mon entreprise a été signalée</h2>
-      <AccordionPanels>
-        <AccordionPanel title="J'ai reçu un courrier de SignalConso car mon entreprise a été signalée. Que dois-je faire ?">
+        </Accordion>
+      </Accordions>
+      <Title>Mon entreprise a été signalée</Title>
+      <Accordions>
+        <Accordion label="J'ai reçu un courrier de SignalConso car mon entreprise a été signalée. Que dois-je faire ?">
           <p>
-            Pour connaître ce signalement, rendez-vous sur
-            <Link href={siteMap.connexion}>https://signal.conso.gouv.fr</Link>
-            avec votre code d’activation de 6 chiffres inscrit dans votre courrier SignalConso et cliquez sur le bouton
-            <BtnAdmin />
-            en haut à droite de votre écran.
+            Pour connaître ce signalement, rendez-vous sur <Link href={siteMap.index}>https://signal.conso.gouv.fr</Link> et
+            cliquez sur le bouton "Espace professionnels" dans le menu en haut de votre écran. Ou allez-directement sur cette
+            adresse : <Link href={siteMap.connexion}>{siteMap.connexion}</Link>
           </p>
           Lors de votre première connexion, vous devez vous identifier avec :
           <ul>
             <li>le numéro SIRET de votre entreprise (14 chiffres)</li>
-            <li>votre code d’activation : le numéro présent dans le courrier SignalConso (6 chiffres)</li>
+            <li>
+              votre code d’activation : c'est le numéro à 6 chiffres inscrit dans le courrier que vous avez reçu de SignalConso
+            </li>
             <li>l'adresse email que vous souhaitez lier à votre compte</li>
           </ul>
           <p>
@@ -82,12 +91,11 @@ export const CentreAidePro = (props: BoxProps) => {
             <b>Votre « Espace Professionnel » est maintenant activé !</b>
           </p>
           <p>
-            Vous pouvez y accéder avec votre mot de passe en cliquant sur le bouton
+            Vous pouvez y accéder avec votre mot de passe en cliquant sur le bouton "
             <Link href={siteMap.connexion} legacyBehavior>
-              <ScButton color="primary" variant="outlined" iconAfter="keyboard_arrow_right">
-                Connectez-vous
-              </ScButton>
+              Connectez-vous
             </Link>
+            "
           </p>
           Vous pouvez consulter les signalements concernant votre entreprise et le cas échéant :
           <ul>
@@ -110,8 +118,8 @@ export const CentreAidePro = (props: BoxProps) => {
               allowFullScreen
             />
           </p>
-        </AccordionPanel>
-        <AccordionPanel title="J'ai oublié mon mot de passe">
+        </Accordion>
+        <Accordion label="J'ai oublié mon mot de passe">
           <p>
             Vous pouvez <Link href={siteMap.lostPassword}>demander un nouveau mot de passe</Link> ou, en cas de difficultés,
             contacter par email le service&nbsp;
@@ -124,29 +132,29 @@ export const CentreAidePro = (props: BoxProps) => {
               support@signal.conso.gouv.fr
             </a>
           </p>
-        </AccordionPanel>
-        <AccordionPanel title="Est-ce que mon entreprise va être contrôlée suite à un signalement ?">
+        </Accordion>
+        <Accordion label="Est-ce que mon entreprise va être contrôlée suite à un signalement ?">
           <p>
             En fonction de la gravité et de la fréquence des signalements, les enquêteurs de la DGCCRF pourront déclencher un
             contrôle.
             <br />
             Le signalement est enregistré dans la base de données de la DGCCRF.
           </p>
-        </AccordionPanel>
-        <AccordionPanel title="Puis-je communiquer directement avec le consommateur à l’origine du signalement ?">
+        </Accordion>
+        <Accordion label="Puis-je communiquer directement avec le consommateur à l’origine du signalement ?">
           <p>
             SignalConso laisse le choix au consommateur de transmettre, ou non, ses coordonnées à l’entreprise signalée.
             <br />
             Dans tous les cas, nous communiquons avec le consommateur quant au suivi de son signalement.
           </p>
-        </AccordionPanel>
-        <AccordionPanel title="Dois-je apporter les détails des actions correctives mises en œuvre pour rectifier le problème ?">
+        </Accordion>
+        <Accordion label="Dois-je apporter les détails des actions correctives mises en œuvre pour rectifier le problème ?">
           <p>
             Les retours des entreprises sont importants afin d’améliorer le service ; ils sont également précieux pour les
             consommateurs et la DGCCRF.
           </p>
-        </AccordionPanel>
-        <AccordionPanel id="le-detail" title="Quelles informations composent un signalement ?">
+        </Accordion>
+        <Accordion label="Quelles informations composent un signalement ?">
           <p>Un signalement comporte différentes informations :</p>
           <ul>
             <li>
@@ -176,8 +184,8 @@ export const CentreAidePro = (props: BoxProps) => {
               </div>
             </li>
           </ul>
-        </AccordionPanel>
-        <AccordionPanel id="les-status" title="À quoi correspondent les différents statuts du signalement ?">
+        </Accordion>
+        <Accordion label="À quoi correspondent les différents statuts du signalement ?">
           <p>
             Une fois connecté sur votre Espace Professionnel, vous avez accès à la liste de tous les signalements déposés sur
             votre entreprise. Cette liste vous donne quelques indications sur chaque signalement sans que vous ayez besoin de les
@@ -201,8 +209,8 @@ export const CentreAidePro = (props: BoxProps) => {
             Lorsque vous avez beaucoup de signalements, vous pouvez filtrer la liste par période ou par statut. Vous pouvez aussi
             faire une extraction Excel de vos signalements en cliquant sur le bouton “Extraction excel”.
           </p>
-        </AccordionPanel>
-        <AccordionPanel title="Quelle réponse puis-je apporter ?" id="la-reponse">
+        </Accordion>
+        <Accordion label="Quelle réponse puis-je apporter ?">
           <p>
             Pour répondre au signalement, il vous suffit de cliquer sur le bouton Apporter une réponse. Trois choix s’offrent à
             vous :
@@ -224,8 +232,8 @@ export const CentreAidePro = (props: BoxProps) => {
             Une fois votre réponse validée, vous recevrez un accusé de réception. Cette réponse sera aussi visible dans la section
             "Réponse apportée".
           </p>
-        </AccordionPanel>
-        <AccordionPanel title="Et si le courrier SignalConso arrive pendant mes congés ?">
+        </Accordion>
+        <Accordion label="Et si le courrier SignalConso arrive pendant mes congés ?">
           <p>
             Vous avez reçu le courrier SignalConso mais votre entreprise était fermée pour congés annuels ? Vous avez consulté le
             signalement mais vous n’avez pas apporté immédiatement une réponse car vous attendiez la confirmation d’un
@@ -247,23 +255,23 @@ export const CentreAidePro = (props: BoxProps) => {
               vous inviter à faire le nécessaire. Au terme de ces relances, vous ne pourrez plus répondre au signalement.
             </li>
           </ul>
-        </AccordionPanel>
-        <AccordionPanel title="Je n'ai pas réagi à temps et le signalement est clôturé, que puis-je faire ?">
+        </Accordion>
+        <Accordion label="Je n'ai pas réagi à temps et le signalement est clôturé, que puis-je faire ?">
           <p>
             Vous pouvez toujours consulter le signalement, mais vous ne pourrez plus y répondre.
             <br /> Afin de limiter le nombre de signalements qui pourraient échapper à votre vigilance, nous envoyons
             régulièrement des relances sur votre adresse email. Pensez à la tenir à jour sur votre compte !
           </p>
-        </AccordionPanel>
-        <AccordionPanel title="Puis-je ouvrir plusieurs accès pour les collaborateurs de mon entreprise ?">
+        </Accordion>
+        <Accordion label="Puis-je ouvrir plusieurs accès pour les collaborateurs de mon entreprise ?">
           <p>
             Oui, vous pouvez inviter vos collaborateurs via leur adresse e-mail (fonctionnalité accessible dans la section "Gérer
             mes entreprises" du menu en haut à gauche).
             <br /> Vous pouvez les inviter comme simples collaborateurs ou comme administrateurs (dans ce cas, ils pourront
             également gérer les accès).
           </p>
-        </AccordionPanel>
-        <AccordionPanel title="Je suis en charge du suivi des signalements de différents établissements. Comment puis-je centraliser ces signalements sur un seul compte ?">
+        </Accordion>
+        <Accordion label="Je suis en charge du suivi des signalements de différents établissements. Comment puis-je centraliser ces signalements sur un seul compte ?">
           <p>
             Si vous devez suivre les signalements de différents établissements (= différents SIRETs), vous pouvez vous faciliter
             la tâche en centralisant tous les établissements suivis sur un même compte (fonctionnalité accessible depuis la
@@ -286,8 +294,8 @@ export const CentreAidePro = (props: BoxProps) => {
             celui de votre siège avec la fonctionnalité "ajouter une entreprise" et en saisissant le Siret concerné ainsi que le
             code d'activation reçu par courrier (cf vidéo ci-dessus)
           </p>
-        </AccordionPanel>
-        <AccordionPanel title="Je suis en charge du suivi des signalements de différents établissements. Comment gérer les notifications pour les tous les établissements auxquels j'ai accès ?">
+        </Accordion>
+        <Accordion label="Je suis en charge du suivi des signalements de différents établissements. Comment gérer les notifications pour les tous les établissements auxquels j'ai accès ?">
           Si vous devez suivre les signalements de différents établissements (= différents SIRETs), vous pouvez gérer les
           notifications de signalement pour chaque établissement auquel vous avez accès afin de recevoir ou non un courriel lors
           d'un nouveau signalement.
@@ -299,8 +307,8 @@ export const CentreAidePro = (props: BoxProps) => {
           <br />
           Attention, si vous désactivez les notifications, vous ne recevrez plus les nouveaux signalements par courriel. Vous
           devrez vous connecter régulièrement sur votre espace pour consulter les nouveaux signalements.
-        </AccordionPanel>
-      </AccordionPanels>
+        </Accordion>
+      </Accordions>
     </Box>
   )
 }

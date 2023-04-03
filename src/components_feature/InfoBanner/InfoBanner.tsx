@@ -1,12 +1,15 @@
-import {useConfig} from 'context/ConfigContext'
-import {Alert} from '../../alexlibs/mui-extension/Alert/Alert'
-
+import {Alert} from '@codegouvfr/react-dsfr/Alert'
+import {appConfig} from 'core/appConfig'
 export const InfoBanner = () => {
-  const config = useConfig().config
-
-  return config.infoBanner ? (
-    <Alert type="warning" className="blog" dangerouslySetInnerHTML={{__html: config.infoBanner}} />
-  ) : (
-    <></>
-  )
+  if (appConfig.infoBanner) {
+    return (
+      <Alert
+        description={<span dangerouslySetInnerHTML={{__html: appConfig.infoBanner}} />}
+        severity="warning"
+        title="Information"
+        className="fr-mt-4w"
+      />
+    )
+  }
+  return null
 }

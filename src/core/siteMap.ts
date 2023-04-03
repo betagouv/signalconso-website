@@ -9,7 +9,6 @@ export const siteMap = {
   cookies: `/cookies`,
   contact: `/contact`,
   stats: `/stats`,
-  blog: `/blog`,
   arborescence: `/arborescence`,
   accessibilite: `/accessibilite`,
   planDuSite: `/plan-du-site`,
