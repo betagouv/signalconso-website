@@ -6,6 +6,8 @@
     "node": "16.15.1"
   },
   "scripts": {
+    "predev": "only-include-used-icons",
+    "prebuild": "only-include-used-icons",
     "dev": "yarn generate-json && next dev -p 3001",
     "devdemo": "yarn generate-json && NEXT_PUBLIC_API_BASE_URL=https://demo-signalement-api.cleverapps.io next dev -p 3001",
     "build": "yarn generate-json && tsc --declaration  && next build",
@@ -22,6 +24,7 @@
   },
   "heroku-run-build-script": true,
   "dependencies": {
+    "@codegouvfr/react-dsfr": "^0.45.0",
     "@emotion/cache": "11.10.1",
     "@emotion/react": "11.10.0",
     "@emotion/server": "11.10.0",
