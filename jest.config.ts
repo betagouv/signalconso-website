@@ -1,4 +1,10 @@
 import type {Config} from '@jest/types'
+import nextJest from 'next/jest.js'
+
+const createJestConfig = nextJest({
+  // Provide the path to your Next.js app to load next.config.js and .env files in your test environment
+  dir: './',
+})
 
 const buildConfig = async (): Promise<Config.InitialOptions> => {
   return {
@@ -14,4 +20,4 @@ const buildConfig = async (): Promise<Config.InitialOptions> => {
     ],
   }
 }
-export default buildConfig
+export default createJestConfig(buildConfig)

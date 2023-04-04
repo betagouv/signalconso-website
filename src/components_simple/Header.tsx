@@ -9,7 +9,7 @@ import {BtnAdmin} from './BtnAdmin'
 import {useMemo, useState} from 'react'
 import {useBreakpoints} from 'hooks/useBreakpoints'
 import {IconBtn} from '../alexlibs/mui-extension/IconBtn/IconBtn'
-import Image from 'next/image'
+import Image from 'next/legacy/image'
 
 interface HeaderItemProps extends ScButtonProps {
   href?: string
@@ -35,7 +35,11 @@ const HeaderItem = ({href, children, style, ...props}: HeaderItemProps) => {
     </ScButton>
   )
   if (href) {
-    return <Link href={href}>{button}</Link>
+    return (
+      <Link href={href} legacyBehavior>
+        {button}
+      </Link>
+    )
   }
   return button
 }
@@ -94,14 +98,12 @@ export const Header = () => {
         <Image width={180} height={110} style={{marginRight: theme.spacing(3)}} src="/image/gouv.new.png" alt={m.logoAltGouv} />
       )}
       <Link href={siteMap.index}>
-        <a>
-          <Image
-            height={tinyVersion ? 40 : 60}
-            width={tinyVersion ? '90' : '130'}
-            src="/image/logo-signalconso.svg"
-            alt={m.logoAltSignalconso}
-          />
-        </a>
+        <Image
+          height={tinyVersion ? 40 : 60}
+          width={tinyVersion ? '90' : '130'}
+          src="/image/logo-signalconso.svg"
+          alt={m.logoAltSignalconso}
+        />
       </Link>
 
       <div className="lg:hidden ml-auto">
@@ -115,7 +117,7 @@ export const Header = () => {
         </IconBtn>
         <Menu anchorEl={anchorEl} onClose={() => setAnchorEl(null)} open={isMobileMenuOpen}>
           {menuItems.map(_ => (
-            <Link key={_.href} href={_.href}>
+            <Link key={_.href} href={_.href} legacyBehavior>
               <MenuItem onClick={() => setAnchorEl(null)}>{_.label}</MenuItem>
             </Link>
           ))}

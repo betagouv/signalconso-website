@@ -41,7 +41,7 @@ export const ReportPathPage = ({reportPath, isWebView = false}: {reportPath: str
       </Head>
       <Box sx={{display: 'flex', alignItems: 'center', mb: 2, color: t => t.palette.text.secondary}}>
         {!isWebView && (
-          <Link href={siteMap.index}>
+          <Link href={siteMap.index} legacyBehavior>
             <IconBtn>
               <Icon>chevron_left</Icon>
             </IconBtn>

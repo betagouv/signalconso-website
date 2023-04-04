@@ -11,7 +11,7 @@ const Card = ({title, img, children}: {title: string; img: string; children?: Re
       <div className="flex flex-col-reverse items-center sm:flex-row">
         <div className="mr-2">{children}</div>
         <div className="shrink-0">
-          <Image src={img} alt="illustration" width="200px" height="200px" priority />
+          <Image src={img} alt="illustration" width={200} height={200} priority />
         </div>
       </div>
     </div>

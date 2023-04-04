@@ -13,7 +13,7 @@ export const LinkBackToHome = ({isWebView}: {isWebView: boolean}) => {
       {m.backToHome}
     </ScButton>
   ) : (
-    <Link href={siteMap.index}>
+    <Link href={siteMap.index} legacyBehavior>
       <ScButton color="primary" variant="contained" icon="home">
         {m.backToHome}
       </ScButton>

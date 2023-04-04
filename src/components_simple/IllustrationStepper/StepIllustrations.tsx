@@ -1,5 +1,5 @@
 import {alpha, Box, useTheme} from '@mui/material'
-import Image, {StaticImageData} from 'next/image'
+import Image, {StaticImageData} from 'next/legacy/image'
 import {styleUtils} from 'core/theme'
 import SwipeableViews from 'react-swipeable-views'
 import {useState} from 'react'

@@ -83,7 +83,7 @@ export const CentreAidePro = (props: BoxProps) => {
           </p>
           <p>
             Vous pouvez y accéder avec votre mot de passe en cliquant sur le bouton
-            <Link href={siteMap.connexion}>
+            <Link href={siteMap.connexion} legacyBehavior>
               <ScButton color="primary" variant="outlined" iconAfter="keyboard_arrow_right">
                 Connectez-vous
               </ScButton>

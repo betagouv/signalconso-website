@@ -2,7 +2,7 @@ import {SocialNetworks} from '../../anomalies/Anomaly'
 import {Txt} from '../../alexlibs/mui-extension/Txt/Txt'
 import {Row} from '../Row/Row'
 import {useI18n} from '../../i18n/I18n'
-import Image from 'next/image'
+import Image from 'next/legacy/image'
 
 const socialNetworkIcon = (socialNetwork: SocialNetworks) => {
   switch (socialNetwork) {

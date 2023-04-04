@@ -107,7 +107,7 @@ export const Footer = () => {
                   >
                     <Image
                       height={iconHeight}
-                      width="70%"
+                      width={70}
                       alt="Logo de la Direction Générale de la Concurrence, de la Consommation et de la Répression des Fraudes"
                       src="/image/logo-dgccrf.png"
                       loading="lazy"
@@ -123,7 +123,7 @@ export const Footer = () => {
                   >
                     <Image
                       height={iconHeight}
-                      width="70%"
+                      width={70}
                       alt="Logo de la Direction interministérielle de la transformation publique"
                       src="/image/service-publics.png"
                       loading="lazy"
@@ -151,30 +151,28 @@ export const Footer = () => {
             <Grid item md={4}>
               <Box component="ul" sx={sxList}>
                 <li>
-                  <Link href={siteMap.suiviEtViePrivee}>
-                    <a>Suivi d'audience et vie privée</a>
+                  <Link href={siteMap.suiviEtViePrivee}>Suivi d'audience et vie privée</Link>
+                </li>
+                <li>
+                  <Link href={siteMap.cookies}>Gestion des cookies</Link>
+                </li>
+                <li>
+                  <Link
+                    href={siteMap.conditionsGeneralesUtilisation}
+                    title="Conditions générales d'utilisation (nouvelle fenêtre)"
+                    target="_blank"
+                  >
+                    Conditions générales d'utilisation
                   </Link>
                 </li>
                 <li>
-                  <Link href={siteMap.cookies}>
-                    <a>Gestion des cookies</a>
+                  <Link href={siteMap.accessibilite} title="Accessibilité">
+                    Accessibilité (partiellement conforme)
                   </Link>
                 </li>
                 <li>
-                  <Link href={siteMap.conditionsGeneralesUtilisation}>
-                    <a title="Conditions générales d'utilisation (nouvelle fenêtre)" target="_blank">
-                      Conditions générales d'utilisation
-                    </a>
-                  </Link>
-                </li>
-                <li>
-                  <Link href={siteMap.accessibilite}>
-                    <a title="Accessibilité">Accessibilité (partiellement conforme)</a>
-                  </Link>
-                </li>
-                <li>
-                  <Link href={siteMap.planDuSite}>
-                    <a title="Plan du site">Plan du site</a>
+                  <Link href={siteMap.planDuSite} title="Plan du site">
+                    Plan du site
                   </Link>
                 </li>
               </Box>
@@ -182,24 +180,16 @@ export const Footer = () => {
             <Grid item md={4}>
               <Box component="ul" sx={sxList}>
                 <li>
-                  <Link href={siteMap.quiSommesNous}>
-                    <a>Qui sommes-nous ?</a>
-                  </Link>
+                  <Link href={siteMap.quiSommesNous}>Qui sommes-nous ?</Link>
                 </li>
                 <li>
-                  <Link href={siteMap.connexion}>
-                    <a>Espace DGCCRF</a>
-                  </Link>
+                  <Link href={siteMap.connexion}>Espace DGCCRF</Link>
                 </li>
                 <li>
-                  <Link href={siteMap.stats}>
-                    <a>Statistiques</a>
-                  </Link>
+                  <Link href={siteMap.stats}>Statistiques</Link>
                 </li>
                 <li>
-                  <Link href={siteMap.contact}>
-                    <a>Contact</a>
-                  </Link>
+                  <Link href={siteMap.contact}>Contact</Link>
                 </li>
               </Box>
             </Grid>
