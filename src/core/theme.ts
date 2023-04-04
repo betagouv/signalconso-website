@@ -1,7 +1,6 @@
-import {red} from '@mui/material/colors'
 import {alpha, createTheme, Theme} from '@mui/material'
+import {red} from '@mui/material/colors'
 import {ThemeOptions} from '@mui/material/styles/createTheme'
-import {carouselCss} from 'components_simple/IllustrationStepper/StepIllustrations'
 
 export const styleUtils = (t: Theme) => ({
   gridSpacing: 3 as any,
@@ -75,9 +74,9 @@ const buildScTheme = (): Theme => {
     components: {
       MuiCssBaseline: {
         styleOverrides: {
-          '*': {
-            boxSizing: 'border-box',
-          },
+          // '*': {
+          //   boxSizing: 'border-box',
+          // },
           '.material-icons': {
             display: 'inherit',
           },
@@ -113,37 +112,6 @@ const buildScTheme = (): Theme => {
           main: {
             flex: 1,
           },
-          h1: {
-            ...baseTheme.typography.h4,
-            marginTop: 0,
-          },
-          h2: {
-            ...baseTheme.typography.h5,
-            marginTop: defaultSpacing * 4,
-          },
-          h3: {
-            ...baseTheme.typography.h6,
-            marginTop: defaultSpacing * 4,
-          },
-          h4: {
-            ...baseTheme.typography.h6,
-            fontSize: '1.25rem',
-          },
-          h6: {
-            color: 'red',
-            ...baseTheme.typography.h6,
-            fontSize: '1.25rem',
-          },
-          blockquote: {
-            color: baseTheme.palette.text.secondary,
-            marginLeft: 0,
-            paddingLeft: baseTheme.spacing(2),
-            borderLeft: `2px solid ${baseTheme.palette.divider}`,
-          },
-          hr: {
-            border: 'none',
-            borderBottom: `1px solid ${baseTheme.palette.divider}`,
-          },
           table: {
             background: baseTheme.palette.background.paper,
             border: `1px solid ${baseTheme.palette.divider}`,
@@ -170,17 +138,6 @@ const buildScTheme = (): Theme => {
               textTransform: 'uppercase',
             },
           },
-          p: {
-            // textAlign: 'justify',
-          },
-          a: {
-            color: 'inherit',
-            textDecoration: 'none',
-          },
-          ':focus': {
-            outline: 0,
-          },
-          ...carouselCss,
         },
       },
 
