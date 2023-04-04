@@ -18,7 +18,9 @@ import dgccrf from '../../public/image/illustrations/dgccrf.png'
 import report from '../../public/image/illustrations/report.png'
 import dynamic from 'next/dynamic'
 import {useReportFlowContext} from '../components_feature/Report/ReportFlowContext'
-
+import {Tabs} from '@codegouvfr/react-dsfr/Tabs'
+import {useIsDark} from '@codegouvfr/react-dsfr/useIsDark'
+// import {useIsDarkClientSide} from '@codegouvfr/react-dsfr/useIsDark/client'
 const sxTitle: SxProps<Theme> = {
   fontSize: 24,
   mb: 3,
@@ -36,6 +38,8 @@ const Home = () => {
   const anomalies = allVisibleAnomalies()
   const _report = useReportFlowContext()
   const hasStoredReport = useMemo(() => !!_report.reportDraft.anomaly, [_report.reportDraft])
+  const {isDark} = useIsDark()
+  // const {isDark: isDarkClientSide} = useIsDarkClientSide()
 
   return (
     <>
@@ -54,6 +58,14 @@ const Home = () => {
         />
 
         <Section>
+          <Tabs
+            tabs={[
+              {label: 'Tab 1', iconId: 'fr-icon-add-line', content: <p>Content of tab1</p>},
+              {label: 'Tab 2', iconId: 'fr-icon-ball-pen-fill', content: <p>Content of tab2</p>},
+              {label: 'Tab 3', content: <p>Content of tab3</p>},
+            ]}
+          />
+          <p>{JSON.stringify({isDark})}</p>
           <Box component="h2" sx={sxTitle}>
             Comment ça marche ?
           </Box>
