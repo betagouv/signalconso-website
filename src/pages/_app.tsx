@@ -41,7 +41,7 @@ const {withDsfr, dsfrDocumentApi} = createNextDsfrIntegrationApi({
 
 const {withAppEmotionCache, augmentDocumentWithEmotionCache} = createEmotionSsrAdvancedApproach({key: 'css'})
 
-const clientSideEmotionCache = createEmotionCache()
+// const clientSideEmotionCache = createEmotionCache()
 
 const queryClient = new QueryClient()
 
@@ -61,7 +61,7 @@ const App = (props: AppProps) => {
         _ => <AnalyticProvider analytic={analytic} children={_} />,
         // _ => <CacheProvider value={emotionCache} children={_} />,
         // _ => <StyledEngineProvider children={_} />,
-        // _ => <ThemeProvider theme={scTheme} children={_} />,
+        _ => <ThemeProvider theme={scTheme} children={_} />,
         _ => <I18nProvider children={_} />,
         _ => <ApiClientsProvider children={_} />,
         _ => <CssBaseline children={_} />,
@@ -70,12 +70,12 @@ const App = (props: AppProps) => {
         _ => <ReportFlowProvider children={_} />,
       ]}
     >
-      <_App {...props} />
+      <AppBase {...props} />
     </ProvidersChain>
   )
 }
 
-const _App = ({Component, pageProps, router}: AppProps) => {
+const AppBase = ({Component, pageProps, router}: AppProps) => {
   const {config} = useConfig()
 
   const isWebView = router.pathname.startsWith('/webview/') ?? router.query.app_type === 'mobile'
