@@ -25,6 +25,7 @@ import {appConfig} from '../core/appConfig'
 import '../globals.css'
 import {Eularian} from '../plugins/eularian'
 import {createNextDsfrIntegrationApi} from '@codegouvfr/react-dsfr/next-pagesdir'
+import {createEmotionSsrAdvancedApproach} from 'tss-react/next'
 import Link from 'next/link'
 
 declare module '@codegouvfr/react-dsfr/next-pagesdir' {
@@ -38,17 +39,13 @@ const {withDsfr, dsfrDocumentApi} = createNextDsfrIntegrationApi({
   Link,
 })
 
-export {dsfrDocumentApi}
-
-interface ScAppProps extends AppProps {
-  emotionCache?: EmotionCache
-}
+const {withAppEmotionCache, augmentDocumentWithEmotionCache} = createEmotionSsrAdvancedApproach({key: 'css'})
 
 const clientSideEmotionCache = createEmotionCache()
 
 const queryClient = new QueryClient()
 
-const App = ({emotionCache = clientSideEmotionCache, ...props}: ScAppProps) => {
+const App = (props: AppProps) => {
   useEffect(() => {
     Sentry.init(appConfig)
     const matomo = Matomo.init({siteId: appConfig.matomo_siteId, url: appConfig.matomo_url})
@@ -62,9 +59,9 @@ const App = ({emotionCache = clientSideEmotionCache, ...props}: ScAppProps) => {
         _ => <QueryClientProvider client={queryClient} children={_} />,
         _ => <ConfigProvider config={appConfig} children={_} />,
         _ => <AnalyticProvider analytic={analytic} children={_} />,
-        _ => <CacheProvider value={emotionCache} children={_} />,
-        _ => <StyledEngineProvider children={_} />,
-        _ => <ThemeProvider theme={scTheme} children={_} />,
+        // _ => <CacheProvider value={emotionCache} children={_} />,
+        // _ => <StyledEngineProvider children={_} />,
+        // _ => <ThemeProvider theme={scTheme} children={_} />,
         _ => <I18nProvider children={_} />,
         _ => <ApiClientsProvider children={_} />,
         _ => <CssBaseline children={_} />,
@@ -120,4 +117,6 @@ const _App = ({Component, pageProps, router}: AppProps) => {
   )
 }
 
-export default withDsfr(App)
+export {dsfrDocumentApi}
+export {augmentDocumentWithEmotionCache}
+export default withDsfr(withAppEmotionCache(App))
