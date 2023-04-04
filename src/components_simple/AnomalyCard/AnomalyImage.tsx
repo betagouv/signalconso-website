@@ -18,10 +18,11 @@ export const AnomalyImage = ({anomaly, className, scale = 1, sx, ...other}: Prop
         maxWidth: size,
         maxHeight: size,
         marginRight: 1,
+        position: 'relative',
       }}
       className={`${className ?? ''} sprite-${anomaly.img}`}
     >
-      <Image width={'100%'} height={'100%'} objectFit={'contain'} src={`/image/pictos/${anomaly.img}.png`} alt={anomaly.img} />
+      <Image fill style={{objectFit: 'contain'}} src={`/image/pictos/${anomaly.img}.png`} alt={anomaly.img} />
     </Box>
   )
 }

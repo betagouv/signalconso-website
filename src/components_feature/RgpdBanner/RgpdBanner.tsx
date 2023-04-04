@@ -27,7 +27,7 @@ export const useRgpdBanner = () => {
         autoHideDuration: null,
         keepOpenOnClickAway: true,
         action: (
-          <Link href={siteMap.cookies}>
+          <Link href={siteMap.cookies} legacyBehavior>
             <ScButton>{m.bannerCookieSeeMore}</ScButton>
           </Link>
         ),

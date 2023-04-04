@@ -1,5 +1,5 @@
 import {useTimeout} from 'hooks/useTimeout'
-import Image from 'next/image'
+import Image from 'next/legacy/image'
 import {useState} from 'react'
 import {Animate} from '../../components_simple/Animate/Animate'
 import {TeamMember} from '../../core/team'

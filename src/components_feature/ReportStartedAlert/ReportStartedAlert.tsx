@@ -52,7 +52,7 @@ export default function ReportStartedAlert() {
               <ScButton size="small" color="error" sx={{mr: 1}} onClick={_report.resetFlow}>
                 {m.delete}
               </ScButton>
-              <Link href={buildPathForStep(_report.reportDraft.anomaly, currentStep)}>
+              <Link href={buildPathForStep(_report.reportDraft.anomaly, currentStep)} legacyBehavior>
                 <ScButton size="small" color="primary" variant="contained">
                   {m.continue}
                 </ScButton>
