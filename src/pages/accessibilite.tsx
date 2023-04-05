@@ -13,7 +13,7 @@ const Accessibilite = () => {
         <title>{pageDefinitions.accessibilite.title}</title>
         <meta name="description" content={pageDefinitions.accessibilite.description} />
       </Head>
-      <h1>Déclaration d'accessibilité</h1>
+      <h1 className="font-normal text-4xl">Déclaration d'accessibilité</h1>
       <Panel>
         <PanelBody>
           <p>
@@ -21,22 +21,22 @@ const Accessibilite = () => {
             l’article 47 de la loi n° 2005-102 du 11 février 2005.
           </p>
           <p>Cette déclaration d’accessibilité s’applique à SignalConso.</p>
-          <h2>État de conformité</h2>
+          <h2 className="font-normal text-xl">État de conformité</h2>
           <p>
             SignalConso est <b>partiellement conforme avec le RGAA 4.0</b>. Partiellement conforme veut dire que certaines
             sections du contenu ne sont pas entièrement conformes aux standards d'accessibilités.
           </p>
-          <h2>Résultats des tests</h2>
+          <h2 className="font-normal text-xl">Résultats des tests</h2>
           <p>L’audit de conformité réalisé par évaluation externe révèle que 78% des critères RGAA sont respectés.</p>
-          <h2>Contenus non accessibles</h2>
+          <h2 className="font-normal text-xl">Contenus non accessibles</h2>
           <p>Les contenus listés ci-dessous ne sont pas accessibles pour les raisons suivantes.</p>
-          <h3>Non conformité</h3>
+          <h3 className="font-normal mt-4 text-2xl">Non conformité</h3>
           Malgré nos efforts, certains contenus sont inaccessibles. Vous trouverez ci-dessous une liste des limitations connues et
           des solutions potentielles :
           <ul>
             <li>Statistiques mensuelles</li>
           </ul>
-          <h3>Dérogations pour charge disproportionnée</h3>
+          <h3 className="font-normal mt-4 text-2xl">Dérogations pour charge disproportionnée</h3>
           <p>
             La validité HTML ne peut être garantie sur l'ensemble des pages néanmoins à notre connaissance cela ne provoque aucun
             dysfonctionnement des aides techniques. La reprise et la vérification de toutes les pages du site représenteraient une
@@ -46,28 +46,30 @@ const Accessibilite = () => {
             Les vidéos n'ont pas d'audio description, sous-titres ou transcription textuelle. La cellule ayant en charge la mise
             en ligne de ces animations n'est pas en mesure actuellement de fournir ces éléments pour l'ensemble de ces vidéos.
           </p>
-          <h2>Accès au rapport d'accessibilité</h2>
+          <h2 className="font-normal text-xl">Accès au rapport d'accessibilité</h2>
           <p>
             Vous avez accès au rapport d'accessibilité{' '}
             <a href="https://rebeca-documentation.finances.gouv.fr">sur la plateforme Rebeca</a>, en recherchant "Rapport d'audit
             d'accessibilité signal.conso.gouv.fr". Vous pourrez trouver aussi la grille d'évaluation dans les documents associés.
           </p>
-          <h2>Établissement de cette déclaration d'accessibilité</h2>
+          <h2 className="font-normal text-xl">Établissement de cette déclaration d'accessibilité</h2>
           <p>Cette déclaration a été établie le 4 Septembre 2020.</p>
-          <h3>Technologies utilisées</h3>
+          <h3 className="font-normal mt-4 text-2xl">Technologies utilisées</h3>
           <p>L'accessibilité de SignalConso s'appuie sur les technologies suivantes :</p>
           <ul>
             <li>HTML</li>
             <li>WAI-ARIA</li>
             <li>JavaScript</li>
           </ul>
-          <h3>Agents utilisateurs, technologies d’assistance et outils utilisés pour vérifier l’accessibilité</h3>
+          <h3 className="font-normal mt-4 text-2xl">
+            Agents utilisateurs, technologies d’assistance et outils utilisés pour vérifier l’accessibilité
+          </h3>
           <p>Les tests des pages web ont été effectués avec les combinaisons de navigateurs web et lecteurs d’écran suivants :</p>
           <ul>
             <li>Internet Explorer 11 et JAWS 2018</li>
             <li>Safari et VoiceOver sur Iphone</li>
           </ul>
-          <h2>Pages du site ayant fait l'objet de la vérification de conformité</h2>
+          <h2 className="font-normal text-xl">Pages du site ayant fait l'objet de la vérification de conformité</h2>
           <ol>
             <li>
               <Link href="/">Accueil</Link>
@@ -97,7 +99,7 @@ const Accessibilite = () => {
             <li>Espace pro - Mes entreprises</li>
             <li>Espace pro - Gestion des accès</li>
           </ol>
-          <h2>Amélioration et contact</h2>
+          <h2 className="font-normal text-xl">Amélioration et contact</h2>
           <p>
             Si vous n’arrivez pas à accéder à un contenu ou à un service, vous pouvez contacter le responsable de SignalConso pour
             être orienté vers une alternative accessible ou obtenir le contenu sous une autre forme.
@@ -105,7 +107,7 @@ const Accessibilite = () => {
           <ul>
             <li>E-mail : support@signal.conso.gouv.fr</li>
           </ul>
-          <h2>Voie de recours</h2>
+          <h2 className="font-normal text-xl">Voie de recours</h2>
           <p>
             Cette procédure est à utiliser dans le cas suivant : vous avez signalé au responsable du site internet un défaut
             d’accessibilité qui vous empêche d’accéder à un contenu ou à un des services du portail et vous n’avez pas obtenu de

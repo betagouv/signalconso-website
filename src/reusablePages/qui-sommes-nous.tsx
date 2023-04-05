@@ -13,10 +13,10 @@ export const QuiSommesNous = () => {
         <title>{pageDefinitions.quiSommesNous.title}</title>
         <meta name="description" content={pageDefinitions.quiSommesNous.description} />
       </Head>
-      <h1>Qui sommes-nous ?</h1>
+      <h1 className="font-normal text-4xl">Qui sommes-nous ?</h1>
       <div className="space-y-4">
         <div className="space-y-2">
-          <h2>Notre structure</h2>
+          <h2 className="font-normal text-2xl">Notre structure</h2>
           <p>
             Nous sommes ce qu’on appelle une «&nbsp;
             <a className="text-sc-lightblue" href="https://beta.gouv.fr/apropos/">
@@ -39,7 +39,7 @@ export const QuiSommesNous = () => {
         </div>
 
         <div className="space-y-2">
-          <h2>Notre façon de travailler</h2>
+          <h2 className="font-normal text-2xl">Notre façon de travailler</h2>
           <p>
             Un seul crédo : être au plus près des besoins des usagers&nbsp;! Pour ce faire, nous basons notre travail sur
             l’expérimentation. Une idée&nbsp;? Nous la testons&nbsp;!
@@ -48,7 +48,7 @@ export const QuiSommesNous = () => {
             C’est pourquoi notre produit n’est pas figé mais en perpétuelle évolution. Nous rencontrons régulièrement des
             consommateurs pour tester l’ergonomie, le vocabulaire utilisé ou les réponses apportées.
           </p>
-          <blockquote>
+          <blockquote className="text-gray-500 pl-4 border-l-2 border-gray-300">
             <p>
               «&nbsp;Je n’ai pas échoué, j’ai juste trouvé 10.000 moyens qui ne fonctionnent pas.&nbsp;»
               <br />
@@ -57,7 +57,7 @@ export const QuiSommesNous = () => {
           </blockquote>
         </div>
         <div className="space-y-2">
-          <h2>Notre équipe</h2>
+          <h2 className="font-normal text-2xl">Notre équipe</h2>
           <div className="grid gap-4 grid-cols-1 md:grid-cols-2">
             {team.current.map(_ => (
               <MemberCard key={_.avatar} member={_} />

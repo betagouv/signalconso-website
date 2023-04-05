@@ -41,6 +41,7 @@ export const AnomalyCard = ({anomaly}: AnomalyCardProps) => {
         <AnomalyImage anomaly={anomaly} sx={{mr: 2}} />
         <div>
           <h3
+            className="font-[500]"
             style={{
               fontSize: '1.15rem',
               margin: 0,

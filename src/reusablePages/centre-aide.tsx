@@ -21,7 +21,7 @@ export const CentreAide = () => {
         <title>{pageDefinitions.centreAide.title}</title>
         <meta name="description" content={pageDefinitions.centreAide.description} />
       </Head>
-      <h1 className="mb-6">Centre d'aide</h1>
+      <h1 className="mb-6 font-normal text-4xl">Centre d'aide</h1>
       <Tabs
         value={activeTab}
         onChange={(e, i) => setActiveTab(i)}

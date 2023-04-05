@@ -7,7 +7,7 @@ import {ReactNode} from 'react'
 const Card = ({title, img, children}: {title: string; img: string; children?: ReactNode}) => {
   return (
     <div className="mb-14">
-      <h3 className="mb-4">{title}</h3>
+      <h3 className="mb-4 font-normal text-xl">{title}</h3>
       <div className="flex flex-col-reverse items-center sm:flex-row">
         <div className="mr-2">{children}</div>
         <div className="shrink-0">
@@ -24,7 +24,7 @@ export const CommentCaMarche = () => {
         <title>{pageDefinitions.commentCaMarche.title}</title>
         <meta name="description" content={pageDefinitions.commentCaMarche.description} />
       </Head>
-      <h1>Comment ça marche ?</h1>
+      <h1 className="font-normal text-4xl">Comment ça marche ?</h1>
       <Card img="/image/illustrations/consumer.png" title="1. Vous avez rencontré un problème avec une entreprise&nbsp;?">
         <p>
           Vous avez rencontré un problème avec un professionnel, un commerce, en magasin ou sur internet ? En tant que
