@@ -54,9 +54,7 @@ const Home = () => {
         />
 
         <Section>
-          <Box component="h2" sx={sxTitle}>
-            Comment ça marche ?
-          </Box>
+          <h2 className="font-normal text-2xl mt-4">Comment ça marche ?</h2>
           <IllustrationStepper
             steps={[
               {title: 'Vous avez rencontré un problème avec une entreprise&#160;?', image: consumer, alt: 'consumer'},
@@ -91,7 +89,6 @@ const Home = () => {
             </ScButton>
           </Box>
         </Section>
-        <Divider />
         <Section
           id="index-categories"
           component="section"

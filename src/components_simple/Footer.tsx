@@ -29,8 +29,6 @@ export const Footer = () => {
       <Section
         component="footer"
         style={{
-          // padding: theme.spacing(3),
-          // paddingTop: 0,
           background: theme.palette.secondary.main,
           color: theme.palette.secondary.contrastText,
         }}
@@ -38,9 +36,7 @@ export const Footer = () => {
         <section className="section-small bg-secondary">
           <Grid container>
             <Grid item md={4}>
-              <Box component="h3" sx={{m: 0, fontSize: 24}}>
-                SignalConso
-              </Box>
+              <h3 className="text-white font-normal m-0">SignalConso</h3>
               <a
                 style={{
                   color: alpha(theme.palette.secondary.contrastText, 0.7),
@@ -160,7 +156,6 @@ export const Footer = () => {
                   <Link
                     href={siteMap.conditionsGeneralesUtilisation}
                     title="Conditions générales d'utilisation (nouvelle fenêtre)"
-                    target="_blank"
                   >
                     Conditions générales d'utilisation
                   </Link>

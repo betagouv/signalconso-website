@@ -5,10 +5,14 @@ import {ScButton} from 'components_simple/Button/Button'
 import {siteMap} from 'core/siteMap'
 import {AccordionPanel, AccordionPanels} from 'components_simple/AccordionPanel/AccordionPanel'
 
+function Title({children}: {children: ReactNode}) {
+  return <h2 className="mb-4 mt-8 font-normal text-2xl">{children}</h2>
+}
+
 export const CentreAidePro = (props: BoxProps) => {
   return (
     <Box {...props}>
-      <h2>Généralités</h2>
+      <Title>Généralités</Title>
       <AccordionPanels>
         <AccordionPanel title="Est-ce que ce service est gratuit ?">
           <p>
@@ -50,7 +54,7 @@ export const CentreAidePro = (props: BoxProps) => {
           </p>
         </AccordionPanel>
       </AccordionPanels>
-      <h2>Mon entreprise a été signalée</h2>
+      <Title>Mon entreprise a été signalée</Title>
       <AccordionPanels>
         <AccordionPanel title="J'ai reçu un courrier de SignalConso car mon entreprise a été signalée. Que dois-je faire ?">
           <p>

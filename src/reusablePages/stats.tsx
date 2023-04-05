@@ -18,7 +18,7 @@ const Stats = () => {
         <meta name="description" content={pageDefinitions.stats.description} />
       </Head>
       <div className="space-y-4">
-        <h1>Statistiques</h1>
+        <h1 className="font-normal text-4xl">Statistiques</h1>
         <p>
           Vous souhaitez plus d'informations sur nos statistiques consultez le site
           <br />

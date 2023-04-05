@@ -11,11 +11,10 @@ const Cookies = () => {
         <title>{pageDefinitions.cookies.title}</title>
         <meta name="description" content={pageDefinitions.cookies.description} />
       </Head>
-      <h1>Gestion des cookies</h1>
+      <h1 className="font-normal text-4xl">Gestion des cookies</h1>
       <Panel>
         <PanelBody>
-          <h2>Ce site n’affiche pas de bannière de consentement aux cookies, pourquoi ?</h2>
-          <br />
+          <h2 className="font-normal text-2xl">Ce site n’affiche pas de bannière de consentement aux cookies, pourquoi ?</h2>
           <p>
             C’est vrai, vous n’avez pas eu à cliquer sur un bloc qui recouvre la moitié de la page pour dire que vous êtes
             d’accord avec le dépôt de cookies — même si vous ne savez pas ce que ça veut dire !
@@ -31,24 +30,20 @@ const Cookies = () => {
             D’obtenir des statistiques anonymes sur la fréquentation du site afin de faire de l'analyse de contenu et détecter
             d'éventuels problèmes de navigation;
           </p>
-          <h2>Cookies</h2>
-          <br />
+          <h2 className="font-normal text-2xl">Cookies</h2>
           <p>
             Définition : Le cookie est un petit fichier texte enregistré par le navigateur de votre ordinateur, tablette ou
             smartphone. Le cookie, enregistré sur votre ordinateur lorsque vous consultez le site SignalConso, permet de conserver
             des données utilisateur décrites ci-dessous afin de faciliter la navigation et de permettre certaines fonctionnalités.
           </p>
-          <h3>Nature des cookies déposés sur le site SignalConso:</h3>
-          <br />
+          <h3 className="font-normal text-xl">Nature des cookies déposés sur le site SignalConso:</h3>
           <p>
             Nous utilisons que des cookies techniques qui permettent et facilitent votre navigation. Certains sont indispensables
             et ne sauraient être supprimés sans affecter gravement l’accès au site et la navigation, d’autres auraient pour
             conséquence une navigation dégradée.
           </p>
-          <h3>Liste des cookies déposés</h3>
-          <br />
-          <p>Les cookies d'analyse de mesure d'audience (Eulerian / Matomo);</p>
-          <br />
+          <h3 className="font-normal text-xl">Liste des cookies déposés</h3>
+          <p>Les cookies d'analyse de mesure d'audience (Eulerian / Matomo):</p>
           <table>
             <thead>
               <tr>
@@ -110,14 +105,13 @@ const Cookies = () => {
           </p>
           <p>
             Les noms des cookies utilisés sont pour Matomo _pk_session, _pk_id, _pk_ref. Leur durée va de de 30 mn à 13 mois.
-            Elles ne sont pas cédées à des tiers ni utilisées à d'autres fins
+            Elles ne sont pas cédées à des tiers ni utilisées à d'autres fins.
           </p>
           <p>
             Pour plus de renseignements sur la gestion de la vie privée sur Signal Conso, vous pouvez également consulter la
             rubrique <a href={siteMap.suiviEtViePrivee}>suivi d'audience et vie privée</a>
           </p>
-          <h3>Comment accepter ou refuser les cookies:</h3>
-          <br />
+          <h3 className="font-normal text-xl">Comment accepter ou refuser les cookies:</h3>
           <p>
             Vous avez la possibilité de paramétrer leur navigateur pour supprimer les cookies déjà installés sur leur terminal,
             pour être invités à accepter ou refuser l’installation de cookies au cas par cas ou pour accepter ou refuser
@@ -133,7 +127,6 @@ const Cookies = () => {
               <a href="https://support.microsoft.com/fr-fr/help/17442/windows-internet-explorer-delete-manage-cookies">
                 Internet Explorer
               </a>
-              <br />
               <p>
                 Dans Internet Explorer, cliquez sur le bouton Outils, puis sur Options Internet. Sous l'onglet Général, sous
                 Historique de navigation, cliquez sur Paramètres. Cliquez sur le bouton Afficher les fichiers. Cliquez sur
@@ -149,7 +142,6 @@ const Cookies = () => {
             </li>
             <li>
               <a href="https://support.google.com/chrome/answer/95647?hl=fr">Chrome</a>
-              <br />
               <p>
                 Ouvrez Google Chrome. Dans la barre d'outils du navigateur, cliquez sur Plus. Placez votre curseur sur Plus
                 d'outils, puis cliquez sur Effacer les données de navigation. Dans la fenêtre "Effacer les données de navigation",
@@ -162,7 +154,6 @@ const Cookies = () => {
               <a href="https://support.mozilla.org/fr/kb/empecher-sites-enregistrer-preferences?esab=a&s=blocking+cookies&r=2&as=s">
                 Firefox
               </a>
-              <br />
               <p>
                 Allez dans l'onglet "Outils" du navigateur puis sélectionnez le menu "Options" Dans la fenêtre qui s'affiche,
                 choisissez "Vie privée" et cliquez sur "supprimer des cookies spécifiques" Repérez les fichiers qui contiennent le
@@ -171,7 +162,6 @@ const Cookies = () => {
             </li>
             <li>
               <a href="https://support.apple.com/fr-fr/guide/safari/sfri11471/mac">Safari</a>
-              <br />
               <p>
                 Dans votre navigateur, choisissez le menu Édition {'>'} Préférences. Cliquez sur Sécurité. Cliquez sur Afficher
                 les cookies. Sélectionnez les cookies qui contiennent le nom "à compléter" et cliquez sur Effacer ou sur Tout
@@ -181,8 +171,7 @@ const Cookies = () => {
           </ul>
           <p>
             Pour plus de renseignements sur les cookies et la façon de paramétrer votre navigateur, vous pouvez également
-            consulter
-            <a href="https://www.cnil.fr/fr/cookies-les-outils-pour-les-maitriser">le site de la CNIL</a>
+            consulter <a href="https://www.cnil.fr/fr/cookies-les-outils-pour-les-maitriser">le site de la CNIL</a>
           </p>
         </PanelBody>
       </Panel>

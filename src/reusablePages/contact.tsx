@@ -11,13 +11,15 @@ export const Contact = () => {
         <meta name="description" content={pageDefinitions.contact.description} />
       </Head>
 
-      <h1>Contact</h1>
-      <Alert type="info">Avant de nous écrire, vérifiez que vous utilisez le bon contact !</Alert>
+      <h1 className="font-normal text-4xl">Contact</h1>
+      <Alert type="info" gutterBottom>
+        Avant de nous écrire, vérifiez que vous utilisez le bon contact !
+      </Alert>
 
-      <h3>Vous avez rencontré un problème avec une entreprise et vous souhaitez le signaler ?</h3>
+      <h3 className="font-normal text-xl">Vous avez rencontré un problème avec une entreprise et vous souhaitez le signaler ?</h3>
       <p>SignalConso est là pour ça ! Naviguez sur notre site et répondez simplement aux questions.</p>
 
-      <h3>Votre question concerne un problème technique rencontré sur SignalConso ?</h3>
+      <h3 className="font-normal text-xl">Votre question concerne un problème technique rencontré sur SignalConso ?</h3>
 
       <p>
         Exemple : vous ne trouvez pas le SIRET de l’entreprise que vous voulez signaler, vous rencontrez un bug lors de la

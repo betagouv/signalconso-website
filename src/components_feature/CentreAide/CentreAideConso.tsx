@@ -8,7 +8,7 @@ import * as React from 'react'
 import {ReactNode} from 'react'
 
 function Title({children}: {children: ReactNode}) {
-  return <h2 className="mb-4">{children}</h2>
+  return <h2 className="mb-4 mt-8 font-normal text-2xl">{children}</h2>
 }
 
 export const CentreAideConso = (props: BoxProps) => {

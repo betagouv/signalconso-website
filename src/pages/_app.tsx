@@ -93,7 +93,8 @@ const AppBase = ({Component, pageProps, router}: AppProps) => {
           }}
         />
       )}
-      <div className="root">
+      {/* fr-raw-link permet de désactiver le underline automatique du DSFR */}
+      <div className="root fr-raw-link">
         {isWebView ? (
           <Box sx={{mt: 1}}>
             <Component {...pageProps} />

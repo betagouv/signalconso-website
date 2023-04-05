@@ -12,10 +12,10 @@ export const SuiviEtViePrivee = () => {
         <title>{pageDefinitions.suiviEtViePrivee.title}</title>
         <meta name="description" content={pageDefinitions.suiviEtViePrivee.description} />
       </Head>
-      <h1>Suivi d'audience et vie privée</h1>
+      <h1 className="font-normal text-4xl">Suivi d'audience et vie privée</h1>
       <Panel>
         <PanelBody>
-          <h2>Données personnelles</h2>
+          <h2 className="font-normal text-2xl">Données personnelles</h2>
           <p>
             Les informations recueillies dans le formulaire de SignalConso sont enregistrées dans un fichier informatisé par
             l’équipe SignalConso (DGCCRF) pour permettre aux professionnels de se corriger et permettre à la DGCCRF de suivre les
@@ -52,9 +52,7 @@ export const SuiviEtViePrivee = () => {
             vos droits « Informatique et Libertés » ne sont pas respectés, vous pouvez adresser une réclamation à la CNIL.
           </p>
 
-          <hr />
-
-          <h2>Droit d'accès aux données</h2>
+          <h2 className="font-normal text-2xl">Droit d'accès aux données</h2>
           <p>
             Conformément au Règlement 2016/679 du 27 avril 2016 relatif à la protection des personnes physiques à l'égard du
             traitement des données à caractère personnel et à la libre circulation de ces données (RGPD) et à la loi n°78-17 du 6
@@ -71,7 +69,7 @@ export const SuiviEtViePrivee = () => {
             Pour exercer vos droits ou pour toute question sur le traitement de vos données vous pouvez contacter le référent de
             la protection des données de la DGCCRF:
           </p>
-          <ul>
+          <ul className="pl-8">
             <li>
               Par voie postale:
               <br />
@@ -83,9 +81,9 @@ export const SuiviEtViePrivee = () => {
                 75703 Paris Cedex 13.
               </cite>
             </li>
-            <br />
+            {/* <br /> */}
             <li>
-              Par voie électronique: <br />
+              Par voie électronique :{' '}
               <a href="mailto:referent-pod@dgccrf.finances.gouv.fr">referent-pod@dgccrf.finances.gouv.fr</a>
             </li>
           </ul>
@@ -106,7 +104,7 @@ export const SuiviEtViePrivee = () => {
               <br />
             </cite>
           </p>
-          <h2>Cookies déposés et opt-out</h2>
+          <h2 className="font-normal text-2xl">Cookies déposés et opt-out</h2>
           <p>
             Ce site dépose un petit fichier texte (un « cookie ») sur votre ordinateur lorsque vous le consultez. Cela nous permet
             de mesurer le nombre de visites et de comprendre quelles sont les pages les plus consultées.

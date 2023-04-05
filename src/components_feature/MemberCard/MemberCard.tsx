@@ -31,9 +31,9 @@ export const MemberCard = ({member, disabled}: Props) => {
             </div>
             <Animate autoScrollTo={false}>
               <div className="ml-3">
-                <p className="font-medium text-lg">{member.name}</p>
+                <p className="font-medium text-lg m-0">{member.name}</p>
                 {member.role.map((role, index) => (
-                  <p key={index} className="text-gray-500">
+                  <p key={index} className="text-gray-500 m-0">
                     {role}
                   </p>
                 ))}
