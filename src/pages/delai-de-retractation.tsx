@@ -41,7 +41,11 @@ const NiceH1 = ({children}: {children: ReactNode}) => (
   <h1 style={{fontWeight: 'bold', color: COLOR_DARK_BLUE, fontSize: '3rem'}}>{children}</h1>
 )
 
-const NiceH2 = ({children}: {children: ReactNode}) => <h2 style={{fontWeight: 'bold', color: COLOR_LIGHT_BLUE}}>{children}</h2>
+const NiceH2 = ({children}: {children: ReactNode}) => (
+  <h2 className="mb-4 my-6 text-2xl" style={{fontWeight: 'bold', color: COLOR_LIGHT_BLUE}}>
+    {children}
+  </h2>
+)
 
 const DelaiDeRetractation = () => {
   const [contractDate, setContractDate] = useState<Date | undefined>()
@@ -56,7 +60,7 @@ const DelaiDeRetractation = () => {
       <Panel>
         <PanelBody>
           <NiceH2>Calculez votre date limite de rétractation</NiceH2>
-          <p>Date de départ :</p>
+          <span>Date de départ :</span>
           <SimpleDatepicker value={contractDate} onChange={setContractDate} limited />
           {deadlineDate && (
             <div style={{marginTop: '20px', textAlign: 'left'}}>
