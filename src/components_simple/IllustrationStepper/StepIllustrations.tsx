@@ -15,7 +15,6 @@ interface IllustrationStepperProps {
   steps: IllustrationStepperStepProps[]
 }
 
-
 export const IllustrationStepper = ({steps}: IllustrationStepperProps) => {
   return (
     <>
