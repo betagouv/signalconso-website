@@ -80,6 +80,7 @@ export const Footer = () => {
                     target="_blank"
                     rel="noreferrer"
                     title="Retrouvez-nous sur Twitter (nouvelle fenêtre)"
+                    className="after:!hidden"
                   >
                     <TwitterIcon title="Twitter" style={{width: iconHeight, height: iconHeight}} />
                   </a>
@@ -90,6 +91,7 @@ export const Footer = () => {
                     target="_blank"
                     rel="noreferrer"
                     title="Retrouvez-nous sur Facebook (nouvelle fenêtre)"
+                    className="after:!hidden"
                   >
                     <FacebookIcon title="Facebook" style={{width: iconHeight, height: iconHeight}} />
                   </a>
@@ -100,6 +102,7 @@ export const Footer = () => {
                     target="_blank"
                     rel="noreferrer"
                     title="Accédez au site de la DGCCRF (nouvelle fenêtre)"
+                    className="after:!hidden"
                   >
                     <Image
                       height={iconHeight}
@@ -116,6 +119,7 @@ export const Footer = () => {
                     target="_blank"
                     rel="noreferrer"
                     title="Accédez au site de la Direction interministérielle de la transformation publique (nouvelle fenêtre)"
+                    className="after:!hidden"
                   >
                     <Image
                       height={iconHeight}
@@ -132,6 +136,7 @@ export const Footer = () => {
                     target="_blank"
                     rel="noreferrer"
                     title="Accédez au site de la Direction interministérielle de la transformation publique (nouvelle fenêtre)"
+                    className="after:!hidden"
                   >
                     <Image
                       height={iconHeight + 4}
