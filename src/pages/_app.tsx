@@ -1,32 +1,29 @@
-import {CacheProvider, EmotionCache} from '@emotion/react'
+import {createNextDsfrIntegrationApi} from '@codegouvfr/react-dsfr/next-pagesdir'
 import {Box, CssBaseline, ThemeProvider} from '@mui/material'
-import {StyledEngineProvider} from '@mui/styled-engine'
-import {Analytic} from 'analytic/analytic'
+import {QueryClient, QueryClientProvider} from '@tanstack/react-query'
 import {AnalyticProvider} from 'analytic/AnalyticContext'
+import {Analytic} from 'analytic/analytic'
 import {ReportCreateProvider} from 'components_feature/Report/ReportCreateContext'
 import {ReportFlowProvider} from 'components_feature/Report/ReportFlowContext'
-import {ScFooter} from 'components_simple/ScFooter'
-import {Header, headerHeight} from 'components_simple/Header'
 import {ProvidersChain} from 'components_simple/ProvidersChain/ProvidersChain'
+import {ScFooter} from 'components_simple/ScFooter'
+import {ScHeader} from 'components_simple/ScHeader'
 import {ApiClientsProvider} from 'context/ApiClientsContext'
 import {ConfigProvider, useConfig} from 'context/ConfigContext'
-import createEmotionCache from 'core/createEmotionCache'
 import {scTheme} from 'core/theme'
 import {I18nProvider} from 'i18n/I18n'
 import type {AppProps} from 'next/app'
 import Head from 'next/head'
+import Link from 'next/link'
 import Script from 'next/script'
 import {Matomo} from 'plugins/matomo'
 import {Sentry} from 'plugins/sentry'
 import {useEffect, useState} from 'react'
-import {QueryClient, QueryClientProvider} from '@tanstack/react-query'
+import {createEmotionSsrAdvancedApproach} from 'tss-react/next'
 import {ToastProvider} from '../alexlibs/mui-extension/Toast/Toast'
 import {appConfig} from '../core/appConfig'
 import '../globals.css'
 import {Eularian} from '../plugins/eularian'
-import {createNextDsfrIntegrationApi} from '@codegouvfr/react-dsfr/next-pagesdir'
-import {createEmotionSsrAdvancedApproach} from 'tss-react/next'
-import Link from 'next/link'
 
 declare module '@codegouvfr/react-dsfr/next-pagesdir' {
   interface RegisterLink {
@@ -101,15 +98,8 @@ const AppBase = ({Component, pageProps, router}: AppProps) => {
           </Box>
         ) : (
           <>
-            <Box
-              sx={{
-                flex: 1,
-                marginTop: `${headerHeight.normal}px`,
-              }}
-            >
-              <Component {...pageProps} />
-            </Box>
-            <Header />
+            <ScHeader />
+            <Component {...pageProps} />
             <ScFooter />
           </>
         )}

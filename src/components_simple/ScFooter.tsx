@@ -1,17 +1,14 @@
 import {Footer} from '@codegouvfr/react-dsfr/Footer'
 import Link from 'next/link'
 import {siteMap} from '../core/siteMap'
+import {MinistryName} from './ScHeader'
 
 export function ScFooter() {
   return (
     <>
       <FollowUs />
       <Footer
-        brandTop={
-          <>
-            Ministère <br /> de l'économie <br /> des finances <br /> et de la souveraineté <br /> industrielle et numérique
-          </>
-        }
+        brandTop={<MinistryName />}
         contentDescription={
           <>
             SignalConso est un service public gratuit pour permettre aux consommateurs de signaler les problèmes rencontrés avec
