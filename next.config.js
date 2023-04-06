@@ -21,7 +21,7 @@ const ContentSecurityPolicy = [
   `frame-ancestors 'self';`,
   `child-src 'self';`,
   `style-src 'self' 'unsafe-inline' https://fonts.googleapis.com blob:;`,
-  `font-src https://fonts.gstatic.com;`,
+  `font-src 'self' https://fonts.gstatic.com;`,
   `report-uri /csp-violation-report-endpoint/;`,
 ]
 
