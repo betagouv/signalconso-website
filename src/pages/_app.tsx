@@ -5,7 +5,7 @@ import {Analytic} from 'analytic/analytic'
 import {AnalyticProvider} from 'analytic/AnalyticContext'
 import {ReportCreateProvider} from 'components_feature/Report/ReportCreateContext'
 import {ReportFlowProvider} from 'components_feature/Report/ReportFlowContext'
-import {Footer} from 'components_simple/Footer'
+import {ScFooter} from 'components_simple/ScFooter'
 import {Header, headerHeight} from 'components_simple/Header'
 import {ProvidersChain} from 'components_simple/ProvidersChain/ProvidersChain'
 import {ApiClientsProvider} from 'context/ApiClientsContext'
@@ -110,7 +110,7 @@ const AppBase = ({Component, pageProps, router}: AppProps) => {
               <Component {...pageProps} />
             </Box>
             <Header />
-            <Footer />
+            <ScFooter />
           </>
         )}
       </div>
