@@ -4,6 +4,7 @@ import Link from 'next/link'
 import {ScButton} from 'components_simple/Button/Button'
 import {siteMap} from 'core/siteMap'
 import {AccordionPanel, AccordionPanels} from 'components_simple/AccordionPanel/AccordionPanel'
+import {ReactNode} from 'react'
 
 function Title({children}: {children: ReactNode}) {
   return <h2 className="mb-4 mt-8 font-normal text-2xl">{children}</h2>
