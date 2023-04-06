@@ -47,17 +47,7 @@ export const ReportPathPage = ({reportPath, isWebView = false}: {reportPath: str
             </IconBtn>
           </Link>
         )}
-        <Box
-          component="h1"
-          sx={{
-            ml: 0.5,
-            mb: 0,
-            p: 0,
-            fontSize: t => styleUtils(t).fontSize.title,
-          }}
-        >
-          {anomaly.title}
-        </Box>
+        <h1 className="text-lg font-normal m-0 text-gray-600">{anomaly.title}</h1>
       </Box>
       <ReportFlowStepperWithoutSsr {...{anomaly, isWebView}} />
     </Page>
