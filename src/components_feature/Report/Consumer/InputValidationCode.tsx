@@ -26,6 +26,12 @@ export const InputValidationCode = ({...other}: Props) => {
           '& input::placeholder': {
             fontFamily: 'monospace',
           },
+          '& input::-webkit-outer-spin-button,input::-webkit-inner-spin-button': {
+            '-webkit-appearance': 'none',
+          },
+          '& input[type=number]': {
+            '-moz-appearance': 'textfield',
+          },
         }}
         placeholder={m.consumerCodePlaceholder}
         inputProps={{style: {fontSize}}}
