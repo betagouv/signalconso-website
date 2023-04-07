@@ -74,7 +74,7 @@ export type ReportTag = typeof reportTags[number]
 export const companyKinds = ['SIRET', 'WEBSITE', 'PHONE', 'LOCATION', 'SOCIAL'] as const
 export type CompanyKinds = typeof companyKinds[number]
 
-export const socialNetworks = ['YOUTUBE', 'FACEBOOK', 'INSTAGRAM', 'TIKTOK', 'TWITTER', 'LINKEDIN', 'SNAPCHAT', 'TWITCH'] as const
+export const socialNetworks = ['SNAPCHAT', 'INSTAGRAM', 'FACEBOOK', 'YOUTUBE', 'TIKTOK', 'TWITTER', 'TWITCH', 'LINKEDIN'] as const
 export type SocialNetworks = typeof socialNetworks[number]
 
 export interface InfoWall {
