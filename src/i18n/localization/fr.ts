@@ -49,7 +49,7 @@ export const fr = {
       SNAPCHAT: 'Snapchat',
       TWITCH: 'Twitch',
     },
-    signalconsoCatchWord: ` Signalez un problème à l’entreprise,<br/>renseignez-vous sur vos droits avec la répression des fraudes ! `,
+    signalconsoCatchWord: ` Signalez un problème à l’entreprise,<br/>renseignez-vous sur vos droits avec la répression des fraudes&nbsp;! `,
     yes: 'Oui',
     no: 'Non',
     search: 'Rechercher',

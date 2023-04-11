@@ -1,12 +1,9 @@
+import {Button} from '@codegouvfr/react-dsfr/Button'
 import {useColors} from '@codegouvfr/react-dsfr/useColors'
-import {Box, Grid} from '@mui/material'
-import {Theme} from '@mui/material/styles'
-import {SxProps} from '@mui/system'
 import {allVisibleAnomalies} from 'anomalies/Anomalies'
 import {InfoBanner} from 'components_feature/InfoBanner/InfoBanner'
 import {useRgpdBanner} from 'components_feature/RgpdBanner/RgpdBanner'
-import {AnomalyCard} from 'components_simple/AnomalyCard/AnomalyCard'
-import {ScButton} from 'components_simple/Button/Button'
+import {AnomalyTile} from 'components_simple/AnomalyCard/AnomalyTile'
 import {IllustrationStepper} from 'components_simple/IllustrationStepper/StepIllustrations'
 import {useI18n} from 'i18n/I18n'
 import dynamic from 'next/dynamic'
@@ -18,8 +15,6 @@ import consumer from '../../public/image/illustrations/consumer.png'
 import dgccrf from '../../public/image/illustrations/dgccrf.png'
 import report from '../../public/image/illustrations/report.png'
 import {useReportFlowContext} from '../components_feature/Report/ReportFlowContext'
-import {Button} from '@codegouvfr/react-dsfr/Button'
-import {Tile} from '@codegouvfr/react-dsfr/Tile'
 
 const ReportStartedAlert = dynamic(() => import('components_feature/ReportStartedAlert/ReportStartedAlert'), {ssr: false})
 
@@ -47,7 +42,7 @@ const Home = () => {
       <main>
         <section>
           <div className="fr-container fr-pt-8w fr-pb-2w ">
-            <h1 className="fr-display--xs" dangerouslySetInnerHTML={{__html: m.signalconsoCatchWord}} />
+            <h1 dangerouslySetInnerHTML={{__html: m.signalconsoCatchWord}} />
             <IllustrationStepper
               steps={[
                 {title: 'Vous avez rencontré un problème avec une entreprise&#160;?', image: consumer, alt: 'consumer'},
@@ -83,8 +78,8 @@ const Home = () => {
             <div className="fr-container--fluid">
               <div className="fr-grid-row fr-grid-row--gutters">
                 {anomalies.map(a => (
-                  <div key={a.path} className="fr-col-12  fr-col-sm-6 fr-col-md-4 fr-col-xl-3">
-                    <AnomalyCard anomaly={a} />
+                  <div key={a.path} className="fr-col-12 fr-col-sm-6 fr-col-md-4 fr-col-xl-3">
+                    <AnomalyTile anomaly={a} />
                   </div>
                 ))}
               </div>

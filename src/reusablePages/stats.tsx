@@ -1,11 +1,10 @@
-import Head from 'next/head'
-import {pageDefinitions} from 'core/pageDefinition'
+import {Stat} from 'components_feature/Stat/Stat'
 import {Page} from 'components_simple/Page/Page'
 import {useApiClients} from 'context/ApiClientsContext'
+import {pageDefinitions} from 'core/pageDefinition'
 import {useI18n} from 'i18n/I18n'
-import {Stat} from 'components_feature/Stat/Stat'
-import {Icon} from '@mui/material'
-import {Txt} from '../alexlibs/mui-extension/Txt/Txt'
+import Head from 'next/head'
+import Link from 'next/link'
 
 const Stats = () => {
   const apiClient = useApiClients().signalConsoApiClient
@@ -22,17 +21,9 @@ const Stats = () => {
         <p>
           Vous souhaitez plus d'informations sur nos statistiques consultez le site
           <br />
-          <a
-            className="text-sclightblue"
-            target="_blank"
-            rel="noreferrer"
-            href="https://data.economie.gouv.fr/pages/signalconso/"
-          >
-            data.economie.fr&nbsp;
-            <Icon fontSize="inherit" sx={{verticalAlign: 'middle'}}>
-              open_in_new
-            </Icon>
-          </a>
+          <Link className="" target="_blank" rel="noreferrer" href="https://data.economie.gouv.fr/pages/signalconso/">
+            data.economie.fr
+          </Link>
         </p>
 
         <Stat

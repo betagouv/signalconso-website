@@ -1,11 +1,8 @@
 import {Tile} from '@codegouvfr/react-dsfr/Tile'
 import {Anomaly} from '../../anomalies/Anomaly'
 import {useReportFlowContext} from '../../components_feature/Report/ReportFlowContext'
-interface AnomalyCardProps {
-  anomaly: Anomaly
-}
 
-export const AnomalyCard = ({anomaly}: AnomalyCardProps) => {
+export const AnomalyTile = ({anomaly}: {anomaly: Anomaly}) => {
   const _reportFlow = useReportFlowContext()
   return (
     <Tile
