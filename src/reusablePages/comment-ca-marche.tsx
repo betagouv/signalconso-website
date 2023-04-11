@@ -1,66 +1,77 @@
-import {Page} from 'components_simple/Page/Page'
 import {pageDefinitions} from 'core/pageDefinition'
 import Head from 'next/head'
 import Image from 'next/image'
 import {ReactNode} from 'react'
 
-const Card = ({title, img, children}: {title: string; img: string; children?: ReactNode}) => {
-  return (
-    <div className="mb-14">
-      <h3 className="mb-4 font-normal text-xl">{title}</h3>
-      <div className="flex flex-col-reverse items-center sm:flex-row">
-        <div className="mr-2">{children}</div>
-        <div className="shrink-0">
-          <Image src={img} alt="illustration" width={200} height={200} priority />
-        </div>
-      </div>
-    </div>
-  )
-}
 export const CommentCaMarche = () => {
   return (
-    <Page maxWidth="small" className="blog">
+    <>
       <Head>
         <title>{pageDefinitions.commentCaMarche.title}</title>
         <meta name="description" content={pageDefinitions.commentCaMarche.description} />
       </Head>
-      <h1 className="font-normal text-4xl">Comment ça marche ?</h1>
-      <Card img="/image/illustrations/consumer.png" title="1. Vous avez rencontré un problème avec une entreprise&nbsp;?">
-        <p>
-          Vous avez rencontré un problème avec un professionnel, un commerce, en magasin ou sur internet ? En tant que
-          consommateur, vous pouvez le signaler sur la plateforme SignalConso.
-        </p>
-        <p>
-          Vous n’êtes pas sûr que ce soit un problème ? SignalConso vous guide afin de savoir si vous pouvez déposer un
-          signalement. Si ce n’est pas le cas, on vous expliquera pourquoi !
-        </p>
-      </Card>
-      <Card
-        img="/image/illustrations/report.png"
-        title="2. Déposez un signalement sur SignalConso ou posez une question à la répression des fraudes."
-      >
-        <p>Signalez le problème (anonymement ou non) ou posez directement votre question auprès d’un agent de la DGCCRF.</p>
-        <p>Dans tous les cas, SignalConso vous oriente et vous conseille.</p>
-      </Card>
-      <Card img="/image/illustrations/company.png" title="3. L’entreprise et la répression des fraudes sont informées.">
-        <p>
-          Si vous avez déposé un signalement, SignalConso contacte l’entreprise afin de l’en informer. L’entreprise peut alors
-          vous répondre et/ou s’améliorer, vous serez informés de son action par un email de SignalConso. Si vous avez choisi de
-          transmettre vos coordonnées à l’entreprise, elle pourra vous contacter directement.
-        </p>
-        <p>
-          Si vous choisissez d’interroger la DGCCRF sur vos droits, une réponse individualisée vous sera adressée par mail par un
-          agent de la DGCCRF.
-        </p>
-      </Card>
-      <Card img="/image/illustrations/dgccrf.png" title="4. La répression des fraudes intervient si nécessaire.">
-        <p>Votre signalement est enregistré dans la base de données de la répression des fraudes (DGCCRF).</p>
-        <p>
-          Les signalements deviennent trop nombreux pour une même entreprise ? Le problème est considéré comme grave par les
-          enquêteurs ? La répression des fraudes peut décider de surveiller ou de contrôler une entreprise grâce à votre
-          signalement.
-        </p>
-      </Card>
-    </Page>
+      <div className="fr-container fr-pt-6w fr-pb-4w ">
+        <div className="fr-grid-row ">
+          <div className="fr-col-12  fr-col-lg-10 fr-col-xl-8 ">
+            <h1>Comment ça marche ?</h1>
+            <div className="space-y-6">
+              <Card img="/image/illustrations/consumer.png" title="1. Vous avez rencontré un problème avec une entreprise&nbsp;?">
+                <p>
+                  Vous avez rencontré un problème avec un professionnel, un commerce, en magasin ou sur internet ? En tant que
+                  consommateur, vous pouvez le signaler sur la plateforme SignalConso.
+                </p>
+                <p>
+                  Vous n’êtes pas sûr que ce soit un problème ? SignalConso vous guide afin de savoir si vous pouvez déposer un
+                  signalement. Si ce n’est pas le cas, on vous expliquera pourquoi !
+                </p>
+              </Card>
+              <Card
+                img="/image/illustrations/report.png"
+                title="2. Déposez un signalement sur SignalConso ou posez une question à la répression des fraudes."
+              >
+                <p>
+                  Signalez le problème (anonymement ou non) ou posez directement votre question auprès d’un agent de la DGCCRF (la
+                  répression des fraudes).
+                </p>
+                <p>Dans tous les cas, SignalConso vous oriente et vous conseille.</p>
+              </Card>
+              <Card img="/image/illustrations/company.png" title="3. L’entreprise et la répression des fraudes sont informées.">
+                <p>
+                  Si vous avez déposé un signalement, SignalConso contacte l’entreprise afin de l’en informer. L’entreprise peut
+                  alors vous répondre et/ou s’améliorer, vous serez informés de son action par un email de SignalConso. Si vous
+                  avez choisi de transmettre vos coordonnées à l’entreprise, elle pourra vous contacter directement.
+                </p>
+                <p>
+                  Si vous choisissez d’interroger la DGCCRF sur vos droits, une réponse individualisée vous sera adressée par mail
+                  par un agent de la DGCCRF.
+                </p>
+              </Card>
+              <Card img="/image/illustrations/dgccrf.png" title="4. La répression des fraudes intervient si nécessaire.">
+                <p>Votre signalement est enregistré dans la base de données de la DGCCRF.</p>
+                <p>
+                  Les signalements deviennent trop nombreux pour une même entreprise ? Le problème est considéré comme grave par
+                  les enquêteurs ? La répression des fraudes peut décider de surveiller ou de contrôler une entreprise grâce à
+                  votre signalement.
+                </p>
+              </Card>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  )
+}
+
+const Card = ({title, img, children}: {title: string; img: string; children?: ReactNode}) => {
+  return (
+    <div className="flex flex-col-reverse items-center sm:flex-row">
+      <div className="mr-2">
+        <h2 className="fr-h4">{title}</h2>
+        {children}
+      </div>
+      <div className="shrink-0">
+        <Image src={img} alt="illustration" width={200} height={200} priority />
+      </div>
+    </div>
   )
 }
