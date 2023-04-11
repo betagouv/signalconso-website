@@ -18,12 +18,8 @@ import consumer from '../../public/image/illustrations/consumer.png'
 import dgccrf from '../../public/image/illustrations/dgccrf.png'
 import report from '../../public/image/illustrations/report.png'
 import {useReportFlowContext} from '../components_feature/Report/ReportFlowContext'
-
-const sxTitle: SxProps<Theme> = {
-  fontSize: 24,
-  mb: 3,
-  mt: 2,
-}
+import {Button} from '@codegouvfr/react-dsfr/Button'
+import {Tile} from '@codegouvfr/react-dsfr/Tile'
 
 const ReportStartedAlert = dynamic(() => import('components_feature/ReportStartedAlert/ReportStartedAlert'), {ssr: false})
 
@@ -49,60 +45,50 @@ const Home = () => {
       </Head>
       <InfoBanner />
       <main>
-        <section style={{background: dsfrTheme.decisions.background.default.grey.active}}>
-          <div className="fr-pt-8w fr-pb-2w fr-container">
+        <section>
+          <div className="fr-container fr-pt-8w fr-pb-2w ">
             <h1 className="fr-display--xs" dangerouslySetInnerHTML={{__html: m.signalconsoCatchWord}} />
+            <IllustrationStepper
+              steps={[
+                {title: 'Vous avez rencontré un problème avec une entreprise&#160;?', image: consumer, alt: 'consumer'},
+                {title: 'Faites un signalement ou posez une question à la répression des fraudes.', image: report, alt: 'report'},
+                {
+                  title: "Vous pouvez en informer l'entreprise pour qu’elle vous réponde ou se corrige.",
+                  image: company,
+                  alt: 'company',
+                },
+                {title: 'La répression des fraudes intervient si nécessaire.', image: dgccrf, alt: 'dgccrf'},
+              ]}
+            />
+            <div className="flex items-center justify-center fr-pt-2w">
+              <Button
+                iconId="fr-icon-alarm-warning-line"
+                onClick={() => {
+                  document
+                    .querySelector('#index-categories')
+                    ?.scrollIntoView({behavior: 'smooth', block: 'start', inline: 'nearest'})
+                }}
+                size="large"
+              >
+                {m.buttonReportProblem}
+              </Button>
+            </div>
           </div>
         </section>
 
-        <section className="fr-container">
-          <h2 className="font-normal text-2xl mt-4">Comment ça marche ?</h2>
-          <IllustrationStepper
-            steps={[
-              {title: 'Vous avez rencontré un problème avec une entreprise&#160;?', image: consumer, alt: 'consumer'},
-              {title: 'Faites un signalement ou posez une question à la répression des fraudes.', image: report, alt: 'report'},
-              {
-                title: "Vous pouvez en informer l'entreprise pour qu’elle vous réponde ou se corrige.",
-                image: company,
-                alt: 'company',
-              },
-              {title: 'La répression des fraudes intervient si nécessaire.', image: dgccrf, alt: 'dgccrf'},
-            ]}
-          />
-
-          <Box sx={{display: 'flex', alignItems: 'center', justifyContent: 'center', pt: 4, pb: 3}}>
-            <ScButton
-              onClick={() => {
-                document
-                  .querySelector('#index-categories')
-                  ?.scrollIntoView({behavior: 'smooth', block: 'start', inline: 'nearest'})
-              }}
-              size="large"
-              variant="contained"
-              color="error"
-              sx={{
-                textTransform: 'unset',
-                fontWeight: t => t.typography.fontWeightBold,
-                background: '#be3d4d',
-              }}
-              iconAfter="feedback"
-            >
-              {m.buttonReportProblem}
-            </ScButton>
-          </Box>
-        </section>
-        <section id="index-categories" style={{background: dsfrTheme.decisions.background.default.grey.active}}>
-          <div className="fr-container">
-            <Box component="h2" sx={{...sxTitle}}>
-              Quel problème avez-vous rencontré ?
-            </Box>
-            <Grid container spacing={3}>
-              {anomalies.map(a => (
-                <Grid key={a.path} item xs={12} sm={6} md={4}>
-                  <AnomalyCard anomaly={a} />
-                </Grid>
-              ))}
-            </Grid>
+        <section className="fr-container fr-pt-4w">{/* <h2>Comment ça marche ?</h2> */}</section>
+        <section id="index-categories" style={{background: dsfrTheme.decisions.background.actionLow.blueFrance.default}}>
+          <div className="fr-container fr-pt-8w fr-pb-8w">
+            <h2>Quel problème avez-vous rencontré ?</h2>
+            <div className="fr-container--fluid">
+              <div className="fr-grid-row fr-grid-row--gutters">
+                {anomalies.map(a => (
+                  <div key={a.path} className="fr-col-12  fr-col-sm-6 fr-col-md-4 fr-col-xl-3">
+                    <AnomalyCard anomaly={a} />
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </section>
       </main>
