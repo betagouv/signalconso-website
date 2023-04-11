@@ -1,24 +1,24 @@
-import {Box, Divider, Grid} from '@mui/material'
+import {useColors} from '@codegouvfr/react-dsfr/useColors'
+import {Box, Grid} from '@mui/material'
 import {Theme} from '@mui/material/styles'
 import {SxProps} from '@mui/system'
 import {allVisibleAnomalies} from 'anomalies/Anomalies'
-import {Section} from 'components_simple/Section'
-import {useI18n} from 'i18n/I18n'
 import {InfoBanner} from 'components_feature/InfoBanner/InfoBanner'
 import {useRgpdBanner} from 'components_feature/RgpdBanner/RgpdBanner'
-import Head from 'next/head'
-import {useEffect, useMemo} from 'react'
 import {AnomalyCard} from 'components_simple/AnomalyCard/AnomalyCard'
 import {ScButton} from 'components_simple/Button/Button'
 import {IllustrationStepper} from 'components_simple/IllustrationStepper/StepIllustrations'
+import {useI18n} from 'i18n/I18n'
+import dynamic from 'next/dynamic'
+import Head from 'next/head'
+import {useEffect, useMemo} from 'react'
 import * as smoothscroll from 'smoothscroll-polyfill'
 import company from '../../public/image/illustrations/company.png'
 import consumer from '../../public/image/illustrations/consumer.png'
 import dgccrf from '../../public/image/illustrations/dgccrf.png'
 import report from '../../public/image/illustrations/report.png'
-import dynamic from 'next/dynamic'
 import {useReportFlowContext} from '../components_feature/Report/ReportFlowContext'
-import {useColors} from '@codegouvfr/react-dsfr/useColors'
+
 const sxTitle: SxProps<Theme> = {
   fontSize: 24,
   mb: 3,
@@ -36,7 +36,6 @@ const Home = () => {
   const anomalies = allVisibleAnomalies()
   const _report = useReportFlowContext()
   const hasStoredReport = useMemo(() => !!_report.reportDraft.anomaly, [_report.reportDraft])
-
   const dsfrTheme = useColors()
 
   return (
@@ -50,13 +49,13 @@ const Home = () => {
       </Head>
       <InfoBanner />
       <main>
-        <section
-          className="text-center px-4 py-6 xl:px-10 xl:py-14  text-[22px] xl:text-[32px]"
-          dangerouslySetInnerHTML={{__html: m.signalconsoCatchWord}}
-          style={{background: dsfrTheme.decisions.background.default.grey.active}}
-        />
+        <section style={{background: dsfrTheme.decisions.background.default.grey.active}}>
+          <div className="fr-pt-8w fr-pb-2w fr-container">
+            <h1 className="fr-display--xs" dangerouslySetInnerHTML={{__html: m.signalconsoCatchWord}} />
+          </div>
+        </section>
 
-        <Section>
+        <section className="fr-container">
           <h2 className="font-normal text-2xl mt-4">Comment ça marche ?</h2>
           <IllustrationStepper
             steps={[
@@ -91,23 +90,21 @@ const Home = () => {
               {m.buttonReportProblem}
             </ScButton>
           </Box>
-        </Section>
-        <Section
-          id="index-categories"
-          component="section"
-          style={{background: dsfrTheme.decisions.background.default.grey.active}}
-        >
-          <Box component="h2" sx={{...sxTitle}}>
-            Quel problème avez-vous rencontré ?
-          </Box>
-          <Grid container spacing={3}>
-            {anomalies.map(a => (
-              <Grid key={a.path} item xs={12} sm={6} md={4}>
-                <AnomalyCard anomaly={a} />
-              </Grid>
-            ))}
-          </Grid>
-        </Section>
+        </section>
+        <section id="index-categories" style={{background: dsfrTheme.decisions.background.default.grey.active}}>
+          <div className="fr-container">
+            <Box component="h2" sx={{...sxTitle}}>
+              Quel problème avez-vous rencontré ?
+            </Box>
+            <Grid container spacing={3}>
+              {anomalies.map(a => (
+                <Grid key={a.path} item xs={12} sm={6} md={4}>
+                  <AnomalyCard anomaly={a} />
+                </Grid>
+              ))}
+            </Grid>
+          </div>
+        </section>
       </main>
       {hasStoredReport ? <ReportStartedAlert /> : <></>}
     </>

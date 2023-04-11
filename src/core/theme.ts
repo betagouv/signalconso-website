@@ -34,8 +34,6 @@ export const COLOR_LIGHT_BLUE = '#2b7c9f'
 export const COLOR_DARK_BLUE = '#1e2b50'
 
 const buildScTheme = (): Theme => {
-  const fontFamily = '"Open Sans", sans-serif'
-  const fontSize = 16
   const colorPrimary = {
     base: COLOR_LIGHT_BLUE,
     light: '#6fd3ff',
@@ -66,7 +64,6 @@ const buildScTheme = (): Theme => {
       borderRadius: 10,
     },
     typography: {
-      fontFamily,
       fontWeightBold: 500,
     },
   })
@@ -80,11 +77,10 @@ const buildScTheme = (): Theme => {
           '.material-icons': {
             display: 'inherit',
           },
-          html: {
-            fontFamily,
-            fontSize,
-            color: baseTheme.palette.text.primary,
-          },
+          // html: {
+          //   // fontSize,
+          //   // color: baseTheme.palette.text.primary,
+          // },
           '.blog': {
             a: {
               color: colorPrimary.base,
@@ -96,48 +92,47 @@ const buildScTheme = (): Theme => {
               marginTop: '.5em',
             },
           },
-          '.root': {
-            minHeight: '100vh',
-            display: 'flex',
-            flexDirection: 'column',
-          },
-          body: {
-            lineHeight: '1.5',
-            fontFamily,
-            background: baseTheme.palette.background.paper,
-            margin: 0,
-            color: baseTheme.palette.text.primary,
-            boxSizing: 'border-box',
-          },
-          main: {
-            flex: 1,
-          },
-          table: {
-            background: baseTheme.palette.background.paper,
-            border: `1px solid ${baseTheme.palette.divider}`,
-            borderLeft: 0,
-            borderRight: 0,
-            borderRadius: 2,
-            position: 'relative',
-            width: '100%',
-            borderCollapse: 'collapse',
+          // '.root': {
+          //   minHeight: '100vh',
+          //   display: 'flex',
+          //   flexDirection: 'column',
+          // },
+          // body: {
+          //   lineHeight: '1.5',
+          //   background: baseTheme.palette.background.paper,
+          //   margin: 0,
+          //   color: baseTheme.palette.text.primary,
+          //   boxSizing: 'border-box',
+          // },
+          // main: {
+          //   flex: 1,
+          // },
+          // table: {
+          //   background: baseTheme.palette.background.paper,
+          //   border: `1px solid ${baseTheme.palette.divider}`,
+          //   borderLeft: 0,
+          //   borderRight: 0,
+          //   borderRadius: 2,
+          //   position: 'relative',
+          //   width: '100%',
+          //   borderCollapse: 'collapse',
 
-            '& td': {
-              fontWeight: 400,
-              padding: '1em',
-              textAlign: 'left',
-              borderTop: `1px solid ${baseTheme.palette.divider}`,
-            },
-            '& th': {
-              padding: '1em',
-              textAlign: 'left',
-            },
-            '& thead th': {
-              background: baseTheme.palette.action.disabledBackground,
-              borderBottom: `1px solid ${baseTheme.palette.divider}`,
-              textTransform: 'uppercase',
-            },
-          },
+          //   '& td': {
+          //     fontWeight: 400,
+          //     padding: '1em',
+          //     textAlign: 'left',
+          //     borderTop: `1px solid ${baseTheme.palette.divider}`,
+          //   },
+          //   '& th': {
+          //     padding: '1em',
+          //     textAlign: 'left',
+          //   },
+          //   '& thead th': {
+          //     background: baseTheme.palette.action.disabledBackground,
+          //     borderBottom: `1px solid ${baseTheme.palette.divider}`,
+          //     textTransform: 'uppercase',
+          //   },
+          // },
         },
       },
 
