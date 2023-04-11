@@ -1,13 +1,11 @@
-import {Skeleton} from '@mui/material'
-import {Box} from '@mui/system'
 import {CountByDate} from 'clients/SignalConsoApiClient'
 import {useI18n} from 'i18n/I18n'
 import React, {useEffect} from 'react'
 import {Bar, BarChart, CartesianGrid, Legend, ResponsiveContainer, Tooltip, XAxis, YAxis} from 'recharts'
-import {Panel} from 'components_simple/Panel/Panel'
 import {Txt} from '../../alexlibs/mui-extension/Txt/Txt'
 import {useFetcher} from '../../hooks/useFetcher'
 import {ifDefined} from '../../utils/utils'
+import {useColors} from '@codegouvfr/react-dsfr/useColors'
 
 interface Props {
   name?: string
@@ -30,26 +28,23 @@ export const Stat = React.memo(({name, count, curve, title, description, percent
     if (curve) _curve.fetch({force: true, clean: true})
     _count.fetch({force: true, clean: true})
   }, [])
+  const dsfrTheme = useColors()
 
   return (
-    <div className="border border-gray-300 rounded-xl p-4">
+    <div className="border border-solid border-black p-4">
       <Txt
         block
         skeleton={_count.loading && 100}
         sx={{
           lineHeight: 1,
           fontSize: 34,
-          // fontWeight: t => t.typography.fontWeightBold,
-          color: t => t.palette.primary.main,
         }}
       >
         {ifDefined(_count.entity ?? undefined, formatLargeNumber)} {percentage && '%'}
       </Txt>
 
-      <Txt block bold>
-        {title}
-      </Txt>
-      {description && <Txt color="hint">{description}</Txt>}
+      <p>{title}</p>
+      {description && <p>{description}</p>}
 
       {curve && (
         <div className="h-40 md:h-64 lg:h-80 mt-4 flex items-center justify-center">
@@ -72,7 +67,12 @@ export const Stat = React.memo(({name, count, curve, title, description, percent
                   <YAxis />
                   <Tooltip />
                   <Legend />
-                  <Bar legendType={'none'} name={name} dataKey="count" fill="#407e99" />
+                  <Bar
+                    legendType={'none'}
+                    name={name}
+                    dataKey="count"
+                    fill={dsfrTheme.decisions.artwork.minor.blueFrance.default}
+                  />
                 </BarChart>
               </ResponsiveContainer>
             )
