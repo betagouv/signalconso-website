@@ -2,6 +2,7 @@ import Header from '@codegouvfr/react-dsfr/Header'
 import {siteMap} from '../core/siteMap'
 import {NextRouter, useRouter} from 'next/router'
 import {HTMLAttributeAnchorTarget} from 'react'
+import {appConfig} from 'core/appConfig'
 
 export function MinistryName() {
   return (
@@ -56,6 +57,7 @@ export function ScHeader() {
           buildMenuLink(router, siteMap.contact, `Contact`),
         ]),
         buildMenuLink(router, siteMap.connexion, 'Espace professionnels', '_self'),
+        ...(appConfig.showPlayground ? [buildMenuLink(router, siteMap.playground, 'Playground')] : []),
       ]}
     />
   )
