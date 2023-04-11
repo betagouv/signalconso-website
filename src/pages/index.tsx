@@ -38,10 +38,12 @@ const Home = () => {
           content="Signalez un problème au commerçant (magasins, commerces de proximité, cafés et restaurants...) et à la répression des fraudes : pratique d'hygiène, nourriture / boissons, matériel / objet, prix / paiement, publicité, services associés à l'achat."
         />
       </Head>
-      <InfoBanner />
       <main>
-        <section>
-          <div className="fr-container fr-pt-8w fr-pb-2w ">
+        <div>
+          <div className="fr-container">
+            <InfoBanner />
+          </div>
+          <div className="fr-container fr-pt-8w fr-pb-6w ">
             <h1 dangerouslySetInnerHTML={{__html: m.signalconsoCatchWord}} />
             <IllustrationStepper
               steps={[
@@ -69,10 +71,8 @@ const Home = () => {
               </Button>
             </div>
           </div>
-        </section>
-
-        <section className="fr-container fr-pt-4w">{/* <h2>Comment ça marche ?</h2> */}</section>
-        <section id="index-categories" style={{background: dsfrTheme.decisions.background.actionLow.blueFrance.default}}>
+        </div>
+        <div id="index-categories" style={{background: dsfrTheme.decisions.background.actionLow.blueFrance.default}}>
           <div className="fr-container fr-pt-8w fr-pb-8w">
             <h2>Quel problème avez-vous rencontré ?</h2>
             <div className="fr-container--fluid">
@@ -85,7 +85,7 @@ const Home = () => {
               </div>
             </div>
           </div>
-        </section>
+        </div>
       </main>
       {hasStoredReport ? <ReportStartedAlert /> : <></>}
     </>
