@@ -4,7 +4,7 @@ import {CentreAidePro} from 'components_feature/CentreAide/CentreAidePro'
 import Head from 'next/head'
 
 import {Tabs} from '@codegouvfr/react-dsfr/Tabs'
-import {StaticContentPage} from 'components_simple/HelpPageLayout'
+import {ContentPageContainer} from 'components_simple/ContentPageContainer'
 
 export const CentreAide = () => {
   return (
@@ -13,7 +13,7 @@ export const CentreAide = () => {
         <title>{pageDefinitions.centreAide.title}</title>
         <meta name="description" content={pageDefinitions.centreAide.description} />
       </Head>
-      <StaticContentPage>
+      <ContentPageContainer>
         <h1>Centre d'aide</h1>
         <Tabs
           tabs={[
@@ -21,7 +21,7 @@ export const CentreAide = () => {
             {label: 'Professionnel', iconId: 'fr-icon-store-line', content: <CentreAidePro />},
           ]}
         />
-      </StaticContentPage>
+      </ContentPageContainer>
     </>
   )
 }

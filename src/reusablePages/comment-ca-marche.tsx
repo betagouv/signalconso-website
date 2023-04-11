@@ -1,4 +1,4 @@
-import {StaticContentPage} from 'components_simple/HelpPageLayout'
+import {ContentPageContainer} from 'components_simple/ContentPageContainer'
 import {pageDefinitions} from 'core/pageDefinition'
 import Head from 'next/head'
 import Image from 'next/image'
@@ -11,7 +11,7 @@ export const CommentCaMarche = () => {
         <title>{pageDefinitions.commentCaMarche.title}</title>
         <meta name="description" content={pageDefinitions.commentCaMarche.description} />
       </Head>
-      <StaticContentPage>
+      <ContentPageContainer>
         <h1>Comment ça marche ?</h1>
         <div className="space-y-6">
           <Card img="/image/illustrations/consumer.png" title="1. Vous avez rencontré un problème avec une entreprise&nbsp;?">
@@ -54,7 +54,7 @@ export const CommentCaMarche = () => {
             </p>
           </Card>
         </div>
-      </StaticContentPage>
+      </ContentPageContainer>
     </>
   )
 }

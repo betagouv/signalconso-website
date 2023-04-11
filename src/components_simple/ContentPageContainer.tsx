@@ -1,6 +1,6 @@
 import {ReactNode} from 'react'
 
-export function StaticContentPage({children}: {children: ReactNode}) {
+export function ContentPageContainer({children}: {children: ReactNode}) {
   return (
     <div className="fr-container fr-pt-6w fr-pb-4w ">
       <div className="fr-grid-row ">

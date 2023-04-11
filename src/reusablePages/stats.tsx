@@ -1,5 +1,5 @@
 import {Stat} from 'components_feature/Stat/Stat'
-import {StaticContentPage} from 'components_simple/HelpPageLayout'
+import {ContentPageContainer} from 'components_simple/ContentPageContainer'
 import {useApiClients} from 'context/ApiClientsContext'
 import {pageDefinitions} from 'core/pageDefinition'
 import {useI18n} from 'i18n/I18n'
@@ -16,7 +16,7 @@ const Stats = () => {
         <title>{pageDefinitions.stats.title}</title>
         <meta name="description" content={pageDefinitions.stats.description} />
       </Head>
-      <StaticContentPage>
+      <ContentPageContainer>
         <h1 className="">Statistiques</h1>
         <p>
           Ces statistiques sont mises à jour en temps réel. Des statistiques complémentaires sont aussi disponibles sur le site{' '}
@@ -68,7 +68,7 @@ const Stats = () => {
             percentage
           />
         </div>
-      </StaticContentPage>
+      </ContentPageContainer>
     </>
   )
 }

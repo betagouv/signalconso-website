@@ -17,7 +17,7 @@ export const MemberCard = ({member, disabled}: Props) => {
   }, 10)
   return (
     <>
-      <div className={`flex rounded-lg border border-gray-200 p-4 ${disabled ? 'opacity-40' : ''}`}>
+      <div className={`flex border-solid border border-black p-4 ${disabled ? 'opacity-40' : ''}`}>
         {on && (
           <>
             <div className="shrink-0">
