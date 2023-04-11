@@ -18,7 +18,7 @@ import dgccrf from '../../public/image/illustrations/dgccrf.png'
 import report from '../../public/image/illustrations/report.png'
 import dynamic from 'next/dynamic'
 import {useReportFlowContext} from '../components_feature/Report/ReportFlowContext'
-
+import {useColors} from '@codegouvfr/react-dsfr/useColors'
 const sxTitle: SxProps<Theme> = {
   fontSize: 24,
   mb: 3,
@@ -37,6 +37,8 @@ const Home = () => {
   const _report = useReportFlowContext()
   const hasStoredReport = useMemo(() => !!_report.reportDraft.anomaly, [_report.reportDraft])
 
+  const dsfrTheme = useColors()
+
   return (
     <>
       <Head>
@@ -49,8 +51,9 @@ const Home = () => {
       <InfoBanner />
       <main>
         <section
-          className="bg-sclightblue text-white text-center px-4 py-6 xl:px-10 xl:py-14  text-[22px] xl:text-[32px]"
+          className="text-center px-4 py-6 xl:px-10 xl:py-14  text-[22px] xl:text-[32px]"
           dangerouslySetInnerHTML={{__html: m.signalconsoCatchWord}}
+          style={{background: dsfrTheme.decisions.background.default.grey.active}}
         />
 
         <Section>
@@ -92,11 +95,9 @@ const Home = () => {
         <Section
           id="index-categories"
           component="section"
-          sx={{
-            background: `linear-gradient(180deg,#407ca8,#2a8194 99.99%,#5a4b5f)`,
-          }}
+          style={{background: dsfrTheme.decisions.background.default.grey.active}}
         >
-          <Box component="h2" sx={{...sxTitle, color: t => t.palette.getContrastText(t.palette.primary.main)}}>
+          <Box component="h2" sx={{...sxTitle}}>
             Quel problème avez-vous rencontré ?
           </Box>
           <Grid container spacing={3}>
