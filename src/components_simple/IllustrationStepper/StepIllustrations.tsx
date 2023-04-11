@@ -19,12 +19,12 @@ export const IllustrationStepper = ({steps}: IllustrationStepperProps) => {
   return (
     <>
       <IllustrationStepperMobile steps={steps} />
-      <IllustrationStepperLarge steps={steps} />
+      <IllustrationStepperDesktop steps={steps} />
     </>
   )
 }
-//
-export const IllustrationStepperMobile = ({steps}: IllustrationStepperProps) => {
+
+const IllustrationStepperMobile = ({steps}: IllustrationStepperProps) => {
   const [index, setIndex] = useState(0)
   return (
     <div className="lg:hidden">
@@ -90,7 +90,7 @@ export const IllustrationStepperMobile = ({steps}: IllustrationStepperProps) => 
   )
 }
 
-export const IllustrationStepperLarge = ({steps}: IllustrationStepperProps) => {
+const IllustrationStepperDesktop = ({steps}: IllustrationStepperProps) => {
   const dotSize = 22
   const borderSize = 2
   const stepperMargin = 24
@@ -137,7 +137,7 @@ export const IllustrationStepperLarge = ({steps}: IllustrationStepperProps) => {
             },
           }}
         >
-          <div className="w-full relative h-60 lg:h-36 xl:h-56">
+          <div className="w-full relative h-56">
             <Image src={image} alt={alt} objectFit="contain" layout="fill" />
           </div>
           <h2

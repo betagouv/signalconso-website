@@ -57,7 +57,7 @@ const Home = () => {
                 {title: 'La répression des fraudes intervient si nécessaire.', image: dgccrf, alt: 'dgccrf'},
               ]}
             />
-            <div className="flex items-center justify-center fr-pt-2w">
+            <div className="flex items-center justify-center fr-pt-4w">
               <Button
                 iconId="fr-icon-alarm-warning-line"
                 onClick={() => {
