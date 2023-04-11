@@ -63,9 +63,7 @@ const buildScTheme = (): Theme => {
     shape: {
       borderRadius: 10,
     },
-    typography: {
-      fontWeightBold: 500,
-    },
+    typography: {},
   })
   const theme: ThemeOptions = {
     components: {
