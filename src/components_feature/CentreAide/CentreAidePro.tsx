@@ -91,12 +91,11 @@ export const CentreAidePro = (props: BoxProps) => {
             <b>Votre « Espace Professionnel » est maintenant activé !</b>
           </p>
           <p>
-            Vous pouvez y accéder avec votre mot de passe en cliquant sur le bouton
+            Vous pouvez y accéder avec votre mot de passe en cliquant sur le bouton "
             <Link href={siteMap.connexion} legacyBehavior>
-              <ScButton color="primary" variant="outlined" iconAfter="keyboard_arrow_right">
-                Connectez-vous
-              </ScButton>
+              Connectez-vous
             </Link>
+            "
           </p>
           Vous pouvez consulter les signalements concernant votre entreprise et le cas échéant :
           <ul>
