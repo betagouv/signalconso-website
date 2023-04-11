@@ -125,7 +125,13 @@ export const ReportFileAdd = ({onUploaded, fileOrigin}: Props) => {
           <Box sx={styles.body}>
             <Icon sx={styles.icon}>add</Icon>
           </Box>
-          <input style={{display: 'none'}} type="file" ref={fileInputEl} onChange={e => handleChange(e.target.files)} />
+          <input
+            style={{display: 'none'}}
+            accept={appConfig.upload_allowedExtensions.join(',')}
+            type="file"
+            ref={fileInputEl}
+            onChange={e => handleChange(e.target.files)}
+          />
         </Button>
       </Tooltip>
     )
