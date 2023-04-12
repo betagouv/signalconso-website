@@ -1,9 +1,8 @@
-import {Page} from 'components_simple/Page/Page'
-import Link from 'next/link'
+import {ContentPageContainer} from 'components_simple/ContentPageContainer'
+import {pageDefinitions} from 'core/pageDefinition'
 import {siteMap} from 'core/siteMap'
 import Head from 'next/head'
-import {pageDefinitions} from 'core/pageDefinition'
-import {ContentPageContainer} from 'components_simple/ContentPageContainer'
+import Link from 'next/link'
 
 const PlanDuSite = () => {
   return (
