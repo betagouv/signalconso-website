@@ -320,20 +320,26 @@ export const _Details = ({
           <PanelBody>
             {ReportDraft.isTransmittableToPro({tags, employeeConsumer, consumerWish}) && (
               <>
-                {consumerWish !== 'fixContractualDispute' && (
-                  <Txt color="hint" block gutterBottom dangerouslySetInnerHTML={{__html: m.attachmentsDescAnonymous}} />
-                )}
                 <Alert dense type="info" sx={{mb: 2}} deletable>
                   <Txt size="small" dangerouslySetInnerHTML={{__html: m.attachmentsDesc2}} />
                 </Alert>
+                {consumerWish !== 'fixContractualDispute' && (
+                  <Txt block gutterBottom dangerouslySetInnerHTML={{__html: m.attachmentsDescAnonymous}} />
+                )}
+                <br />
               </>
             )}
-
             <ReportFiles
               files={uploadedFiles}
               fileOrigin={FileOrigin.Consumer}
               onRemoveFile={f => setUploadedFiles(files => files?.filter(_ => _.id !== f.id))}
               onNewFile={f => setUploadedFiles(_ => [...(_ ?? []), f])}
+            />
+            <Txt
+              sx={{mt: 2, mb: 2}}
+              block
+              gutterBottom
+              dangerouslySetInnerHTML={{__html: m.attachmentsDescAllowedFormat(appConfig.upload_allowedExtensions)}}
             />
           </PanelBody>
         </Panel>
