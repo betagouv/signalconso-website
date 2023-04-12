@@ -1,9 +1,10 @@
-import {Box, BoxProps, Tab, Tabs} from '@mui/material'
 import {Page} from 'components_simple/Page/Page'
 import {useState} from 'react'
 import {fnSwitch} from '../utils/FnSwitch'
 import Head from 'next/head'
 import {pageDefinitions} from 'core/pageDefinition'
+import {ContentPageContainer} from 'components_simple/ContentPageContainer'
+import {Tabs} from '@codegouvfr/react-dsfr/Tabs'
 
 const a11yProps = (index: number) => {
   return {
@@ -15,54 +16,43 @@ const a11yProps = (index: number) => {
 export const ConditionsGeneralesUtilisation = () => {
   const [activeTab, setActiveTab] = useState(0)
   return (
-    <Page maxWidth="small" className="blog">
+    <>
       <Head>
         <title>{pageDefinitions.conditionsGeneralesUtilisation.title}</title>
         <meta name="description" content={pageDefinitions.conditionsGeneralesUtilisation.description} />
       </Head>
-      <h1 className="font-normal text-4xl">Conditions générales d'utilisation du site SignalConso</h1>
-      <Tabs
-        value={activeTab}
-        onChange={(e, i) => setActiveTab(i)}
-        sx={{
-          borderRadius: t => t.shape.borderRadius,
-          border: t => `1px solid ${t.palette.divider}`,
-        }}
-      >
-        <Tab sx={{flex: 1}} label="Consommateur" {...a11yProps(0)} />
-        <Tab sx={{flex: 1}} label="Professionnel" {...a11yProps(1)} />
-      </Tabs>
-
-      <div className="mt-4">
-        {activeTab === 0 ? (
-          <ConditionsGeneralesUtilisationConso role="tabpanel" />
-        ) : (
-          <ConditionsGeneralesUtilisationPro role="tabpanel" />
-        )}
-      </div>
-    </Page>
+      <ContentPageContainer>
+        <h1>Conditions générales d'utilisation du site SignalConso</h1>
+        <Tabs
+          tabs={[
+            {label: 'Consommateur', iconId: 'fr-icon-user-line', content: <ConditionsGeneralesUtilisationConso />},
+            {label: 'Professionnel', iconId: 'fr-icon-store-line', content: <ConditionsGeneralesUtilisationPro />},
+          ]}
+        />
+      </ContentPageContainer>
+    </>
   )
 }
 
-const ConditionsGeneralesUtilisationConso = (props: BoxProps) => {
+function ConditionsGeneralesUtilisationConso() {
   return (
-    <Box {...props}>
+    <div>
       <p>Les conditions générales d'utilisation doivent être acceptées par l’utilisateur du site.</p>
-      <h2 className="font-normal text-2xl">À quoi sert le site SignalConso ?</h2>
+      <h2 className="fr-h4">À quoi sert le site SignalConso ?</h2>
       <p>
         Le site permet aux consommateurs de connaître la réglementation et de déposer un signalement.
         <br />
         Il ne doit en aucun cas s'agir d'une urgence nécessitant l'intervention des services de secours.{' '}
         <b>Dans ce cas, il faut appeler le « 112 ».</b>
       </p>
-      <h2 className="font-normal text-2xl">Ce service est-il payant ?</h2>
+      <h2 className="fr-h4">Ce service est-il payant ?</h2>
       <p>Le site est accessible gratuitement à tout utilisateur ayant un accès à internet.</p>
-      <h2 className="font-normal text-2xl">Que peut-on signaler ?</h2>
+      <h2 className="fr-h4">Que peut-on signaler ?</h2>
       <p>
         L’utilisateur peut signaler des manquements relatifs au Code de la Consommation (principalement) et des litiges
         contractuels constatés chez une entreprise. Il n’est pas possible de signaler un litige avec un particulier.
       </p>
-      <h2 className="font-normal text-2xl">Qui traite les signalements ?</h2>
+      <h2 className="fr-h4">Qui traite les signalements ?</h2>
       <p>
         Les signalements sont traités par l’équipe SignalConso qui vérifie que le signalement rentre bien dans le périmètre du
         site et que les données reçues ne sont pas “sensibles”.
@@ -72,16 +62,16 @@ const ConditionsGeneralesUtilisationConso = (props: BoxProps) => {
         <li>par le professionnel, dont l’entreprise a été mise en cause,</li>
         <li>par les agents de la DGCCRF, qui sont habilités à faire des enquêtes.</li>
       </ul>
-      <h2 className="font-normal text-2xl">Les signalements sont-ils anonymes ?</h2>
+      <h2 className="fr-h4">Les signalements sont-ils anonymes ?</h2>
       <p>
         L’utilisateur doit s’identifier auprès de l’administration (SignalConso et DGCCRF) en donnant son nom, son prénom et son
         adresse email.
         <br />
         Par contre, l'utilisateur a la possibilité de rester anonyme vis-à-vis de l'entreprise.
       </p>
-      <h2 className="font-normal text-2xl">Existe-t-il un suivi de dossier ?</h2>
+      <h2 className="fr-h4">Existe-t-il un suivi de dossier ?</h2>
       <p>SignalConso ne propose pas de suivi personnalisé des dossiers. Les signalements sont traités de manière collective.</p>
-      <h2 className="font-normal text-2xl">Quel est le risque en cas de dénonciation mensongère ?</h2>
+      <h2 className="fr-h4">Quel est le risque en cas de dénonciation mensongère ?</h2>
       <p>
         L’article 226-10 du Code Pénal dispose que "la dénonciation, effectuée par tout moyen et dirigée contre une personne
         déterminée, d'un fait qui est de nature à entraîner des sanctions judiciaires, administratives ou disciplinaires et que
@@ -93,7 +83,7 @@ const ConditionsGeneralesUtilisationConso = (props: BoxProps) => {
         Le détournement du site de signalement pour effectuer des dénonciations mensongères fera l'objet de poursuites
         judiciaires.
       </p>
-      <h2 className="font-normal text-2xl"> Traitement des signalements abusifs ou frauduleux</h2>
+      <h2 className="fr-h4"> Traitement des signalements abusifs ou frauduleux</h2>
       <p>
         Les droit de saisine par voie électronique ne s’applique pas aux envois abusifs, notamment par leur nombre, leur caractère
         répétitif ou systématique, ou les envois susceptibles de porter atteinte à la sécurité des systèmes d’information ou
@@ -101,7 +91,7 @@ const ConditionsGeneralesUtilisationConso = (props: BoxProps) => {
         signalements répétés susceptibles de perturber le bon fonctionnement du service ou qui auraient pour effet de faire peser
         sur lui une charge disproportionnée au regard des moyens dont il dispose pourrait voir leurs adresses bloquées.
       </p>
-      <h2 className="font-normal text-2xl">Mentions légales</h2>
+      <h2 className="fr-h4">Mentions légales</h2>
       <p>
         L'édition du site https://signal.conso.gouv.fr est assurée par la Direction générale de la Concurrence, de la Consommation
         et de la Répression des fraudes (DGCCRF), située au 59 Boulevard Vincent Auriol 75013 Paris.
@@ -109,23 +99,23 @@ const ConditionsGeneralesUtilisationConso = (props: BoxProps) => {
         L'hébergeur du site https://signal.conso.gouv.fr est la société Clever Cloud dont le siège social est situé 3 rue de
         l’Allier 44000 Nantes.
       </p>
-      <h2 className="font-normal text-2xl">Propriété intellectuelle</h2>
+      <h2 className="fr-h4">Propriété intellectuelle</h2>
       <p>
         Les marques, logos, signes et tout autre contenu du site font l'objet d'une protection par le Code de la propriété
         intellectuelle et plus particulièrement par le droit d'auteur.
       </p>
-    </Box>
+    </div>
   )
 }
 
-const ConditionsGeneralesUtilisationPro = (props: BoxProps) => {
+function ConditionsGeneralesUtilisationPro() {
   return (
-    <Box {...props}>
+    <div>
       <p>
         Les conditions générales d'utilisation doivent être acceptées par le professionnel afin d’utiliser le site SignalConso.
       </p>
 
-      <h2 className="font-normal text-2xl">Gratuité de la plate-forme SignalConso</h2>
+      <h2 className="fr-h4">Gratuité de la plate-forme SignalConso</h2>
       <p>
         Le site est accessible gratuitement aux professionnels.
         <br />
@@ -143,7 +133,7 @@ const ConditionsGeneralesUtilisationPro = (props: BoxProps) => {
         </a>
       </p>
 
-      <h2 className="font-normal text-2xl">Objections quant au signalement déposé</h2>
+      <h2 className="fr-h4">Objections quant au signalement déposé</h2>
       <p>
         Si vous contestez le signalement qui a été déposé, vous pouvez le notifier directement dans votre espace professionnel.
         <br /> Votre réponse sera transmise au consommateur et à la DGCCRF. Un second espace de réponse permet d'apporter des
@@ -151,7 +141,7 @@ const ConditionsGeneralesUtilisationPro = (props: BoxProps) => {
         <br /> <b>Pour rappel, ce sont les constatations effectuées par les enquêteurs lors d’un contrôle qui font foi.</b>
       </p>
 
-      <h2 className="font-normal text-2xl">Prise de contact avec le consommateur</h2>
+      <h2 className="fr-h4">Prise de contact avec le consommateur</h2>
       <p>
         Si le consommateur a souhaité vous transférer ses coordonnées, vous pouvez le contacter. Ce contact doit être courtois et
         être fait uniquement dans le cadre du signalement. Il a notamment pour but de récupérer des informations manquantes et
@@ -167,7 +157,7 @@ const ConditionsGeneralesUtilisationPro = (props: BoxProps) => {
         Tout abus pourra entraîner des poursuites judiciaires.
       </p>
 
-      <h2 className="font-normal text-2xl">Dénonciation mensongère</h2>
+      <h2 className="fr-h4">Dénonciation mensongère</h2>
       <p>
         L’article 226-10 du Code Pénal dispose que "la dénonciation, effectuée par tout moyen et dirigée contre une personne
         déterminée, d'un fait qui est de nature à entraîner des sanctions judiciaires, administratives ou disciplinaires et que
@@ -182,7 +172,7 @@ const ConditionsGeneralesUtilisationPro = (props: BoxProps) => {
         </b>
       </p>
 
-      <h2 className="font-normal text-2xl">Mentions légales</h2>
+      <h2 className="fr-h4">Mentions légales</h2>
       <p>
         L'édition du site https://signal.conso.gouv.fr est assurée par la Direction générale de la Concurrence, de la Consommation
         et de la Répression des fraudes (DGCCRF), située au 59 Boulevard Vincent Auriol 75013 Paris.
@@ -191,11 +181,11 @@ const ConditionsGeneralesUtilisationPro = (props: BoxProps) => {
         l’Allier 44000 Nantes.
       </p>
 
-      <h2 className="font-normal text-2xl">Propriété intellectuelle</h2>
+      <h2 className="fr-h4">Propriété intellectuelle</h2>
       <p>
         Les marques, logos, signes et tout autre contenu du site font l'objet d'une protection par le Code de la propriété
         intellectuelle et plus particulièrement par le droit d'auteur.
       </p>
-    </Box>
+    </div>
   )
 }
