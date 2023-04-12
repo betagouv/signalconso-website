@@ -21,6 +21,7 @@ export function ScFooter() {
             .
           </>
         }
+        operatorLogo={{orientation: 'horizontal', imgUrl: '/image/logo-dgccrf.png', alt: 'Logo DGCCRF'}}
         websiteMapLinkProps={{href: siteMap.planDuSite}}
         accessibility="partially compliant"
         accessibilityLinkProps={{href: siteMap.accessibilite}}
@@ -28,6 +29,26 @@ export function ScFooter() {
         homeLinkProps={{href: '/', title: 'Accueil - SignalConso'}}
         personalDataLinkProps={{href: siteMap.suiviEtViePrivee}}
         cookiesManagementLinkProps={{href: siteMap.cookies}}
+        bottomItems={[
+          {
+            text: 'Espace DGCCRF',
+            linkProps: {
+              href: siteMap.connexion,
+            },
+          },
+          {
+            text: 'Infos délai de rétractation',
+            linkProps: {
+              href: siteMap.delaiRetractation,
+            },
+          },
+          {
+            text: 'Info résolution de litige',
+            linkProps: {
+              href: siteMap.litige,
+            },
+          },
+        ]}
       />
     </>
   )

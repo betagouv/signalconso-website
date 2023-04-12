@@ -79,17 +79,17 @@ const buildScTheme = (): Theme => {
           //   // fontSize,
           //   // color: baseTheme.palette.text.primary,
           // },
-          '.blog': {
-            a: {
-              color: colorPrimary.base,
-            },
-            'li + li': {
-              marginTop: defaultSpacing * 2,
-            },
-            ul: {
-              marginTop: '.5em',
-            },
-          },
+          // '.blog': {
+          //   a: {
+          //     color: colorPrimary.base,
+          //   },
+          //   'li + li': {
+          //     marginTop: defaultSpacing * 2,
+          //   },
+          //   ul: {
+          //     marginTop: '.5em',
+          //   },
+          // },
           // '.root': {
           //   minHeight: '100vh',
           //   display: 'flex',
