@@ -16,6 +16,7 @@ export const appConfig = {
   apiCompanyUrl: noTrailingSlash(process.env.NEXT_PUBLIC_COMPANY_API_BASE_URL ?? 'http://localhost:9001'),
   apiAdresseUrl: 'https://api-adresse.data.gouv.fr',
   isDev: process.env.NEXT_PUBLIC_NODE_ENV === 'development',
+  envMarker: process.env.NEXT_PUBLIC_ENV_MARKER,
   showPlayground: readBool(process.env.NEXT_PUBLIC_SHOW_PLAYGROUND),
   showDemoCategory: readBool(process.env.NEXT_PUBLIC_SHOW_DEMO_CATEGORY),
   apiBaseUrl: noTrailingSlash(process.env.NEXT_PUBLIC_API_BASE_URL ?? 'http://localhost:9000'),
