@@ -4,7 +4,6 @@ import {PlaygroundCompany} from 'components_feature/Playground/PlaygroundCompany
 import {dummyStepNavigation, PlaygroundConfirmation} from 'components_feature/Playground/PlaygroundConfirmation'
 import {PlaygroundConsumer} from 'components_feature/Playground/PlaygroundConsumer'
 import {PlaygroundDetails} from 'components_feature/Playground/PlaygroundDetails'
-import {PlaygroundDsfr} from 'components_feature/Playground/PlaygroundDsfr'
 import {CompanyFilled} from 'components_feature/Report/Company/Company'
 import {Page} from 'components_simple/Page/Page'
 import React from 'react'
@@ -35,7 +34,6 @@ const Playground = () => {
     {label: 'consumer', component: () => <PlaygroundConsumer />},
     {label: 'confirmation', component: () => <PlaygroundConfirmation />},
     {label: 'acknowledgment', component: () => <PlaygroundAcknowledgment />},
-    {label: 'DSFR', component: () => <PlaygroundDsfr />},
   ]
   return (
     <>
