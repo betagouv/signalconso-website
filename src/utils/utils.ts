@@ -68,3 +68,20 @@ export type DeepPartial<T> = {
     ? ReadonlyArray<DeepPartial<U>>
     : DeepPartial<T[P]>
 }
+
+export type Entries<T> = {
+  [K in keyof T]: [K, T[K]]
+}[keyof T][]
+
+// Equivalent of Object.entries but with more precise types
+// Not always 100% safe, see
+// https://stackoverflow.com/questions/60141960/typescript-key-value-relation-preserving-object-entries-type
+export function getEntries<T extends object>(obj: T) {
+  return Object.entries(obj) as Entries<T>
+}
+// Same for Object.keys
+export function getKeys<T extends object>(obj: T) {
+  return Object.keys(obj) as Array<keyof T>
+}
+
+export const iconArrowRight = 'fr-icon-arrow-right-s-line'

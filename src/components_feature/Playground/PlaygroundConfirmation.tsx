@@ -1,13 +1,13 @@
 import {useTheme} from '@mui/material'
 import {allAnomalies} from 'anomalies/Anomalies'
-import {firstReportStep, ReportStep} from 'model/ReportStep'
+import {StepNavigation} from 'components_simple/ReportFlowStepper/ReportFlowStepper'
 import {styleUtils} from 'core/theme'
+import {firstReportStep} from 'model/ReportStep'
 import {useEffect, useState} from 'react'
 import {Anomaly} from '../../anomalies/Anomaly'
 import {ReportDraft} from '../../model/ReportDraft'
-import {Fixture} from '../../test/fixture'
+import {Fixture, SeedableRandom} from '../../test/fixture'
 import {_Confirmation} from '../Report/Confirmation/Confirmation'
-import {StepNavigation} from 'components_simple/ReportFlowStepper/ReportFlowStepper'
 
 export const dummyStepNavigation: StepNavigation = {
   currentStep: firstReportStep,
@@ -17,7 +17,7 @@ export const dummyStepNavigation: StepNavigation = {
 }
 
 export const PlaygroundConfirmation = () => {
-  const [draft, setDraft] = useState<ReportDraft>(Fixture.genDraftReport('Confirmation') as ReportDraft)
+  const [draft] = useState<ReportDraft>(Fixture.genDraftReport('Confirmation', new SeedableRandom(1)) as ReportDraft)
   const [anomaly, setAnomaly] = useState<Anomaly | undefined>()
   const theme = useTheme()
   useEffect(() => {

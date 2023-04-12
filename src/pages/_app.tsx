@@ -1,5 +1,5 @@
 import {createNextDsfrIntegrationApi} from '@codegouvfr/react-dsfr/next-pagesdir'
-import {Box, ThemeProvider} from '@mui/material'
+import {Box, ThemeProvider, createTheme} from '@mui/material'
 import {QueryClient, QueryClientProvider} from '@tanstack/react-query'
 import {AnalyticProvider} from 'analytic/AnalyticContext'
 import {Analytic} from 'analytic/analytic'
@@ -11,7 +11,6 @@ import {ScFooter} from 'components_simple/ScFooter'
 import {ScHeader} from 'components_simple/ScHeader'
 import {ApiClientsProvider} from 'context/ApiClientsContext'
 import {ConfigProvider, useConfig} from 'context/ConfigContext'
-import {scTheme} from 'core/theme'
 import {I18nProvider} from 'i18n/I18n'
 import type {AppProps} from 'next/app'
 import Head from 'next/head'
@@ -39,7 +38,13 @@ const {withDsfr, dsfrDocumentApi} = createNextDsfrIntegrationApi({
 
 const {withAppEmotionCache, augmentDocumentWithEmotionCache} = createEmotionSsrAdvancedApproach({key: 'css'})
 
-// const clientSideEmotionCache = createEmotionCache()
+const blueFranceTheme = createTheme({
+  palette: {
+    primary: {
+      main: '#000091',
+    },
+  },
+})
 
 const queryClient = new QueryClient()
 
@@ -59,7 +64,7 @@ const App = (props: AppProps) => {
         _ => <AnalyticProvider analytic={analytic} children={_} />,
         // _ => <CacheProvider value={emotionCache} children={_} />,
         // _ => <StyledEngineProvider children={_} />,
-        _ => <ThemeProvider theme={scTheme} children={_} />,
+        _ => <ThemeProvider theme={blueFranceTheme} children={_} />,
         _ => <I18nProvider children={_} />,
         _ => <ApiClientsProvider children={_} />,
         // _ => <CssBaseline children={_} />,

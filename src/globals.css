@@ -1,3 +1,24 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* 
+from https://cssloaders.github.io/
+*/
+.sc-loader {
+  border: 1px solid #7b7b7b;
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: sc-loader-rotation 1s linear infinite;
+}
+
+@keyframes sc-loader-rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

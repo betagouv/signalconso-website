@@ -1,20 +1,20 @@
-import {useI18n} from 'i18n/I18n'
+import {useAnalyticContext} from 'analytic/AnalyticContext'
+import {CompanySearchEventActions, EventCategories} from 'analytic/analytic'
+import {Animate} from 'components_simple/Animate/Animate'
+import {AutocompleteCity} from 'components_simple/AutocompleteCity/AutocompleteCity'
+import {ButtonWithLoader} from 'components_simple/Buttons'
 import {FormLayout} from 'components_simple/FormLayout/FormLayout'
-import {Controller, useForm} from 'react-hook-form'
 import {ScInput} from 'components_simple/Input/ScInput'
 import {Panel, PanelActions, PanelBody} from 'components_simple/Panel/Panel'
 import {useApiClients} from 'context/ApiClientsContext'
 import {useToast} from 'hooks/useToast'
-import {useFetcher} from '../../../hooks/useFetcher'
-import {ScButton} from 'components_simple/Button/Button'
+import {useI18n} from 'i18n/I18n'
+import {ReactNode, useEffect} from 'react'
+import {Controller, useForm} from 'react-hook-form'
 import {Txt} from '../../../alexlibs/mui-extension/Txt/Txt'
-import {Animate} from 'components_simple/Animate/Animate'
-import React, {ReactNode, useEffect} from 'react'
-import {ifDefined} from '../../../utils/utils'
-import {useAnalyticContext} from 'analytic/AnalyticContext'
-import {CompanySearchEventActions, EventCategories} from 'analytic/analytic'
-import {AutocompleteCity} from 'components_simple/AutocompleteCity/AutocompleteCity'
+import {useFetcher} from '../../../hooks/useFetcher'
 import {CompanySearchResult} from '../../../model/Company'
+import {ifDefined} from '../../../utils/utils'
 
 interface Form {
   name: string
@@ -87,9 +87,9 @@ export const CompanySearchByNameAndPostalCode = ({children}: Props) => {
             </PanelBody>
 
             <PanelActions>
-              <ScButton color="primary" variant="contained" icon="search" type="submit" loading={_search.loading}>
+              <ButtonWithLoader loading={_search.loading} iconId="fr-icon-search-line">
                 {m.search}
-              </ScButton>
+              </ButtonWithLoader>
             </PanelActions>
           </form>
         </Panel>

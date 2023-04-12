@@ -22,8 +22,8 @@ import {
 import {useRouter} from 'next/router'
 import {useEffect} from 'react'
 import {scrollTop} from 'utils/utils'
-import {ReportFlowStepperHeader} from './ReportFlowStepperHeader'
 import {buildLinkStartReport} from 'core/siteMap'
+import {NewReportFlowStepperHeader, ReportFlowStepperHeader} from './ReportFlowStepperHeader'
 
 interface StepperProps {
   anomaly: Anomaly
@@ -131,6 +131,7 @@ export const ReportFlowStepper = ({anomaly, isWebView}: StepperProps) => {
 
   return (
     <>
+      {/* <NewReportFlowStepperHeader currentStep={step} /> */}
       <ReportFlowStepperHeader currentStep={step} goTo={setStep} />
       {step === 'BuildingProblem' && <Problem {...{isWebView, anomaly, stepNavigation}} />}
       {step === 'BuildingDetails' && <Details {...{stepNavigation}} />}

@@ -7,15 +7,23 @@ import {fireEvent, render, ScRenderResult} from 'test/test-utils'
 import {_Details, SpecifyFormUtils} from './Details'
 import {format} from 'date-fns'
 import {appConfig} from 'core/appConfig'
-import {DetailsFixtureInput, DetailsFixtureValue} from 'components_feature/Playground/PlaygroundDetails'
+import {DetailsFixtureInput} from 'components_feature/Playground/PlaygroundDetails'
 import {waitFor} from '@testing-library/dom'
 import {mapNTimes} from '../../../utils/utils'
 import {DetailInputValues2} from 'model/ReportDraft2'
 import {frenchDateFormat} from 'utils/utils'
 import {dummyStepNavigation} from 'components_feature/Playground/PlaygroundConfirmation'
 
+export class DetailsFixtureValue {
+  static readonly date = '10/11/2019'
+  static readonly text = 'some text'
+  static readonly radio = DetailsFixtureInput.radio.options![1]
+  static readonly checkbox = [DetailsFixtureInput.checkbox.options![0], DetailsFixtureInput.checkbox.options![1]]
+  static readonly textarea = 'some other text'
+}
+
 const clickBtnSubmit = async (app: ScRenderResult) => {
-  const btnSubmit = app.container.querySelector('#btn-submit') as HTMLButtonElement
+  const btnSubmit = app.container.querySelector('.stepper-next-button') as HTMLButtonElement
   if (btnSubmit === null) {
     throw new Error(`Button submit is not visible`)
   }

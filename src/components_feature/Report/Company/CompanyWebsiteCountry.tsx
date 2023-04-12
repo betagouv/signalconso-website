@@ -2,10 +2,10 @@ import {ScRadioGroupItem} from 'components_simple/RadioGroup/RadioGroupItem'
 import {ScRadioGroup} from 'components_simple/RadioGroup/RadioGroup'
 import {Panel, PanelActions, PanelBody} from 'components_simple/Panel/Panel'
 import {useI18n} from 'i18n/I18n'
-import {StepperActionsNext} from 'components_simple/ReportFlowStepper/StepperActionsNext'
 import React from 'react'
 import {Controller, useForm} from 'react-hook-form'
 import {Country} from '../../../model/Country'
+import {BtnNextSubmit} from 'components_simple/Buttons'
 
 interface Props {
   countries: Country[]
@@ -40,7 +40,7 @@ export const CompanyWebsiteCountry = ({countries, onSubmit}: Props) => {
           />
         </PanelBody>
         <PanelActions>
-          <StepperActionsNext type="submit" />
+          <BtnNextSubmit />
         </PanelActions>
       </form>
     </Panel>

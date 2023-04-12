@@ -1,15 +1,13 @@
-import {Panel, PanelActions, PanelBody} from 'components_simple/Panel/Panel'
-import {FormLayout} from 'components_simple/FormLayout/FormLayout'
-import React from 'react'
-import {useI18n} from 'i18n/I18n'
-import {Controller, useForm} from 'react-hook-form'
 import {Animate} from 'components_simple/Animate/Animate'
-import {StepperActionsNext} from 'components_simple/ReportFlowStepper/StepperActionsNext'
-import {Txt} from '../../../alexlibs/mui-extension/Txt/Txt'
-import {Alert} from '../../../alexlibs/mui-extension/Alert/Alert'
-import {AutocompleteCityValue} from 'components_simple/AutocompleteCity/AutocompleteCity'
-import {AutocompleteCity} from 'components_simple/AutocompleteCity/AutocompleteCity'
+import {AutocompleteCity, AutocompleteCityValue} from 'components_simple/AutocompleteCity/AutocompleteCity'
+import {BtnNextSubmit} from 'components_simple/Buttons'
+import {FormLayout} from 'components_simple/FormLayout/FormLayout'
+import {Panel, PanelActions, PanelBody} from 'components_simple/Panel/Panel'
+import {useI18n} from 'i18n/I18n'
 import {Address} from 'model/Address'
+import {Controller, useForm} from 'react-hook-form'
+import {Alert} from '../../../alexlibs/mui-extension/Alert/Alert'
+import {Txt} from '../../../alexlibs/mui-extension/Txt/Txt'
 import {CompanyKinds} from '../../../anomalies/Anomaly'
 import {fnSwitch} from '../../../utils/FnSwitch'
 
@@ -73,7 +71,7 @@ export const CompanyAskConsumerPostalCode = ({value, onChange, companyKind}: Pro
           </PanelBody>
 
           <PanelActions>
-            <StepperActionsNext type="submit" />
+            <BtnNextSubmit />
           </PanelActions>
         </form>
       </Panel>

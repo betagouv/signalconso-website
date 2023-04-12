@@ -44,6 +44,16 @@ export function ScHeader() {
           imgUrl: '/image/logo-signalconso.png',
           orientation: 'horizontal',
         }}
+        quickAccessItems={[
+          {
+            iconId: 'fr-icon-briefcase-line',
+            linkProps: {
+              href: siteMapExternal.connexion,
+              target: '_self',
+            },
+            text: 'Espace professionnels',
+          },
+        ]}
         // serviceTitle="SignalConso"
         // serviceTagline="un service public pour les consommateurs"
         navigation={[
@@ -55,7 +65,6 @@ export function ScHeader() {
             buildMenuLink(router, siteMap.stats, 'Statistiques'),
             buildMenuLink(router, siteMap.contact, `Contact`),
           ]),
-          buildMenuLink(router, siteMapExternal.connexion, 'Espace professionnels', '_self'),
           ...(siteMap.playground ? [buildMenuLink(router, siteMap.playground, 'Playground')] : []),
         ]}
       />
