@@ -1,26 +1,18 @@
-import Head from 'next/head'
-import {pageDefinitions} from 'core/pageDefinition'
-import {Page} from 'components_simple/Page/Page'
-import {AccordionPanel, AccordionPanels} from 'components_simple/AccordionPanel/AccordionPanel'
-import {externalLinks} from 'core/externalLinks'
-import {Txt} from '../alexlibs/mui-extension/Txt/Txt'
-import {Panel} from 'components_simple/Panel/Panel'
-import {Icon} from '@mui/material'
-import {useAnalyticContext} from 'analytic/AnalyticContext'
-import {ContractualDisputeActions, ContractualDisputeNames, EventCategories} from 'analytic/analytic'
-import {ContentPageContainer} from 'components_simple/ContentPageContainer'
 import {Alert} from '@codegouvfr/react-dsfr/Alert'
 import {CallOut} from '@codegouvfr/react-dsfr/CallOut'
-const Litige = () => {
-  const _analytic = useAnalyticContext()
+import {Icon} from '@mui/material'
+import {ContentPageContainer} from 'components_simple/ContentPageContainer'
+import {externalLinks} from 'core/externalLinks'
+import {pageDefinitions} from 'core/pageDefinition'
+import Head from 'next/head'
+import {ReactNode} from 'react'
+import {Accordion} from '@codegouvfr/react-dsfr/Accordion'
 
-  const trackCurrentStep = (i: number) => {
-    _analytic.trackEvent(
-      EventCategories.contractualDispute,
-      ContractualDisputeActions.consult,
-      `${ContractualDisputeNames.step} n°${i}`,
-    )
-  }
+function Accordions({children}: {children: ReactNode}) {
+  return <div className="fr-accordions-group">{children}</div>
+}
+
+const Litige = () => {
   return (
     <>
       <Head>
@@ -29,25 +21,23 @@ const Litige = () => {
       </Head>
       <ContentPageContainer>
         <h1>Vos démarches pour être remboursé ou trouver une solution à votre problème</h1>
-        <AccordionPanels>
-          <AccordionPanel
-            onOpen={() => trackCurrentStep(1)}
-            title="Démarche n°1"
-            desc="J’écris un courrier à l’entreprise pour demander à résoudre mon problème."
-          >
-            <h3>Quand ?</h3>
-            <p>Le plus tôt possible (conseillé).</p>
-            <p>Je peux aussi attendre de voir si l’entreprise me répond avec SignalConso.</p>
-
-            <h3>À qui ?</h3>
-            <p>Auprès du service client de l’entreprise.</p>
+        <Accordions>
+          <Accordion label="Démarche n°1 : J’écris un courrier à l’entreprise pour demander à résoudre mon problème">
+            <h3 className="fr-h6">Quand ?</h3>
             <p>
-              Je peux trouver l’adresse du service client de l’entreprise dans mon contrat, sur son site internet ou dans les
-              conditions générales de vente.
+              Le plus tôt possible (conseillé). <br />
+              Je peux aussi attendre de voir si l’entreprise me répond avec SignalConso.
             </p>
 
-            <h3>Comment ?</h3>
-            <p>En envoyant une lettre recommandée avec accusé de réception, en y joignant les deux documents ci-joints :</p>
+            <h3 className="fr-h6">À qui ?</h3>
+            <p>
+              Auprès du service client de l’entreprise.
+              <br /> Je peux trouver l’adresse du service client de l’entreprise dans mon contrat, sur son site internet ou dans
+              les conditions générales de vente.
+            </p>
+
+            <h3 className="fr-h6">Comment ?</h3>
+            <p>En envoyant une lettre recommandée avec accusé de réception, en y joignant les deux documents ci-joints&nbsp;:</p>
             <ul>
               <li>
                 <a
@@ -56,9 +46,6 @@ const Litige = () => {
                   target="_blank"
                   title="Ouverture de la lettre type (nouvelle fenêtre)"
                   download="ModeleLettreLitige.txt"
-                  onClick={() => {
-                    _analytic.trackEvent(EventCategories.contractualDispute, ContractualDisputeActions.downloadTemplate)
-                  }}
                 >
                   <Icon fontSize="small" sx={{verticalAlign: 'middle', mr: 1}}>
                     download
@@ -70,33 +57,29 @@ const Litige = () => {
             </ul>
             <p>Je garde une copie du courrier et la preuve de l’envoi.</p>
 
-            <h3>Pourquoi ?</h3>
+            <h3 className="fr-h6">Pourquoi ?</h3>
             <p>Ce courrier est la preuve de ma démarche. Il est obligatoire pour entamer d’autres démarches par la suite.</p>
-          </AccordionPanel>
-          <AccordionPanel
-            onOpen={() => trackCurrentStep(2)}
-            title="Démarche n°2"
-            desc="Je contacte un médiateur de la consommation, c’est-à-dire une personne chargée de régler les problèmes des consommateurs avec les entreprises."
-          >
-            <h3>Quand ?</h3>
+          </Accordion>
+          <Accordion label="Démarche n°2 : Je contacte un médiateur de la consommation, c’est-à-dire une personne chargée de régler les problèmes des consommateurs avec les entreprises">
+            <h3 className="fr-h6">Quand ?</h3>
             <p>Deux mois après avoir envoyé mon courrier, si je n’ai pas eu de réponse ou si la réponse ne me satisfait pas.</p>
 
-            <h3>Qui ?</h3>
+            <h3 className="fr-h6">Qui ?</h3>
             <p>
               L’entreprise a l’obligation de communiquer le nom du médiateur qu’elle a choisi. Les coordonnées du médiateur sont
               normalement écrites sur le site internet de l’entreprise ou sur le contrat, bon de commande…
             </p>
 
-            <h3>Comment ?</h3>
+            <h3 className="fr-h6">Comment ?</h3>
             <p>Je remplis le formulaire sur le site internet du médiateur ou je le contacte par voie postale.</p>
 
-            <h3>Pourquoi ?</h3>
+            <h3 className="fr-h6">Pourquoi ?</h3>
             <p>Le médiateur va m’aider à trouver un arrangement avec l’entreprise.</p>
 
-            <h3>Combien ça coûte ?</h3>
+            <h3 className="fr-h6">Combien ça coûte ?</h3>
             <p>C’est gratuit !</p>
 
-            <h3>Comment faire si je ne trouve pas le nom du médiateur ?</h3>
+            <h3 className="fr-h6">Comment faire si je ne trouve pas le nom du médiateur ?</h3>
             <p>
               Je contacte le conciliateur le plus proche de chez moi.
               <br />
@@ -110,12 +93,8 @@ const Litige = () => {
               <br />
               C’est gratuit !
             </p>
-          </AccordionPanel>
-          <AccordionPanel
-            onOpen={() => trackCurrentStep(3)}
-            title="Démarche n°3"
-            desc="Je vais en justice, c’est-à-dire que je demande un procès au tribunal."
-          >
+          </Accordion>
+          <Accordion label="Démarche n°3 : Je vais en justice, c’est-à-dire que je demande un procès au tribunal.">
             <Alert
               small
               className="fr-mt-1w fr-mb-2w"
@@ -124,14 +103,13 @@ const Litige = () => {
               pour un litige inférieur à 5 000 euros"
             />
 
-            <h3>Quand ?</h3>
+            <h3 className="fr-h6">Quand ?</h3>
             <p>Lorsque je n’ai pas trouvé de solution avec le médiateur ou le conciliateur.</p>
 
-            <h3>Comment ?</h3>
+            <h3 className="fr-h6">Comment ?</h3>
             <div>
               <p>
-                En consultant la page
-                <br />
+                En consultant la page{' '}
                 <a
                   href={externalLinks.vosDroits}
                   target="_blank"
@@ -143,16 +121,16 @@ const Litige = () => {
               </p>
             </div>
 
-            <h3>Pourquoi ?</h3>
+            <h3 className="fr-h6">Pourquoi ?</h3>
             <p>Pour que le juge du tribunal décide qui est en tort et quelles solutions doivent être mises en place.</p>
 
-            <h3>Combien ça coûte ?</h3>
+            <h3 className="fr-h6">Combien ça coûte ?</h3>
             <p>
               Aller au tribunal est gratuit mais des frais peuvent se rajouter au cours de la procédure (frais d’avocat, frais
               d’expertise…).
             </p>
-          </AccordionPanel>
-        </AccordionPanels>
+          </Accordion>
+        </Accordions>
         <CallOut
           className="fr-mt-4w fr-mb-4w"
           iconId="ri-information-line"
