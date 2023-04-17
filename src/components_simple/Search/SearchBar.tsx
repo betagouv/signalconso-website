@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect, useRef} from 'react'
 import Fuse from 'fuse.js'
 import {Anomaly} from '../../anomalies/Anomaly'
 import {useColors} from '@codegouvfr/react-dsfr/useColors'
@@ -13,6 +13,7 @@ type SearchBarProps = {
 const SearchBar: React.FC<SearchBarProps> = ({anomalies}) => {
   const [query, setQuery] = useState('')
   const [suggestions, setSuggestions] = useState<Anomaly[]>([])
+  const [showSuggestions, setShowSuggestions] = useState(false)
   const dsfrTheme = useColors()
   const fuse = new Fuse(createFuseIndex(allVisibleAnomalies()), {
     keys: ['title', 'desc'],
@@ -22,6 +23,8 @@ const SearchBar: React.FC<SearchBarProps> = ({anomalies}) => {
     ignoreLocation: true,
   })
 
+  const searchBoxRef = useRef<HTMLDivElement>(null)
+
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newQuery = event.target.value
     setQuery(newQuery)
@@ -29,22 +32,37 @@ const SearchBar: React.FC<SearchBarProps> = ({anomalies}) => {
     if (newQuery.trim() !== '') {
       const results = fuse.search(newQuery.trim()).map(result => result.item)
 
-      console.log(results.map(_ => _.desc))
-      console.log(results.map(_ => _.title))
-
       setSuggestions(results.map(_ => _.root).filter((thing, i, arr) => arr.findIndex(t => t.id === thing.id) === i))
+
+      setShowSuggestions(true)
     } else {
       setSuggestions([])
+      setShowSuggestions(false)
     }
   }
 
   const handleSelectAnomaly = (_: any) => {
     setQuery('')
     setSuggestions([])
+    setShowSuggestions(false)
   }
 
+  const handleClickOutside = (event: MouseEvent) => {
+    if (searchBoxRef.current && !searchBoxRef.current.contains(event.target as Node)) {
+      setShowSuggestions(false)
+    }
+  }
+
+  useEffect(() => {
+    document.addEventListener('mousedown', handleClickOutside)
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [])
+
   return (
-    <div className="fr-search-bar mb-8 relative" id="header-search" role="search">
+    <div className="fr-search-bar mb-8 relative" id="header-search" role="search" ref={searchBoxRef}>
       <input
         className="fr-input"
         placeholder="Rechercher par mot clé"
@@ -53,15 +71,16 @@ const SearchBar: React.FC<SearchBarProps> = ({anomalies}) => {
         name="search-784-input"
         value={query}
         onChange={handleInputChange}
+        onFocus={() => setShowSuggestions(true)}
       />
-      <div
-        className={'w-full z-20 max-h-96 overflow-y-scroll left-0 top-full shadow-xl absolute'}
-        style={{
-          background: dsfrTheme.decisions.background.overlap.grey.default,
-          // border: suggestions.length > 0 ? `1px solid black` : 0,
-        }}
-      >
-        {suggestions.length > 0 && (
+      {showSuggestions && suggestions.length > 0 && (
+        <div
+          className={'w-full z-20 max-h-96 overflow-y-scroll left-0 top-full shadow-xl absolute'}
+          style={{
+            background: dsfrTheme.decisions.background.overlap.grey.default,
+            // border: suggestions.length > 0 ? `1px solid black` : 0,
+          }}
+        >
           <ul className={'p-px  list-none w-full'}>
             {suggestions.map((category, index) => (
               <Link key={category.id} href={'/' + category.path}>
@@ -79,8 +98,8 @@ const SearchBar: React.FC<SearchBarProps> = ({anomalies}) => {
               </Link>
             ))}
           </ul>
-        )}
-      </div>
+        </div>
+      )}
     </div>
   )
 }
