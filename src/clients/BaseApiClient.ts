@@ -73,7 +73,6 @@ export class BaseApiClient {
       })
       .then((_: AxiosResponse) => _.data)
       .catch((_: any) => {
-        console.log(_)
         const request = {method, url, qs: options?.qs, body: options?.body}
         if (_.response && _.response.data) {
           const message = _.response.data.details ?? _.response.data.timeout ?? JSON.stringify(_.response.data)

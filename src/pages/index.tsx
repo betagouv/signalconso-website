@@ -1,6 +1,6 @@
 import {Button} from '@codegouvfr/react-dsfr/Button'
 import {useColors} from '@codegouvfr/react-dsfr/useColors'
-import {allVisibleAnomalies, fuseA} from 'anomalies/Anomalies'
+import {allVisibleAnomalies, createFuseIndex} from 'anomalies/Anomalies'
 import {InfoBanner} from 'components_feature/InfoBanner/InfoBanner'
 import {useRgpdBanner} from 'components_feature/RgpdBanner/RgpdBanner'
 import {AnomalyTile} from 'components_simple/AnomalyCard/AnomalyTile'
@@ -29,11 +29,6 @@ const Home = () => {
     smoothscroll.polyfill()
   }, [])
   const anomalies = allVisibleAnomalies()
-
-  const t = fuseA.search('intoxication')
-  console.log('////////')
-  console.log(t)
-  console.log('////////')
 
   const _report = useReportFlowContext()
   const hasStoredReport = useMemo(() => !!_report.reportDraft.anomaly, [_report.reportDraft])

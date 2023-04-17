@@ -1,20 +1,8 @@
 import {appConfig} from 'core/appConfig'
 import {Anomaly, Subcategory, SubcategoryWithInfoWall, StandardSubcategory, DetailInput} from './Anomaly'
 import anomaliesJSON from './yml/anomalies.json'
-import Fuse from 'fuse.js'
 
 export const allAnomalies = anomaliesJSON as Anomaly[]
-
-const options: Fuse.IFuseOptions<Anomaly> = {
-  keys: ['title', 'description'],
-  threshold: 0.2,
-  minMatchCharLength: 4,
-  distance: 100,
-  useExtendedSearch: true,
-  ignoreLocation: true,
-}
-
-export const fuseA = new Fuse(allAnomalies, options)
 
 export const allVisibleAnomalies = () =>
   allAnomalies
@@ -22,6 +10,37 @@ export const allVisibleAnomalies = () =>
     .sort((a, b) => {
       return parseInt(a.id) - parseInt(b.id)
     })
+
+type AnomalyIndex = {
+  root: Anomaly
+  id: string
+  title: string
+  desc?: string
+}
+
+export function createFuseIndex(anomalies: Anomaly[]) {
+  const res: AnomalyIndex[] = []
+
+  allVisibleAnomalies().map(anomaly => {
+    res.push({root: anomaly, id: anomaly.id, title: anomaly.title, desc: anomaly.description})
+    const subcategories = anomaly.subcategories
+    const SubcategoryAnomalies = aggregateCategories(anomaly, subcategories)
+    res.push(...SubcategoryAnomalies)
+  })
+
+  return res
+}
+
+function aggregateCategories(anomaly: Anomaly, subcategories: Subcategory[]) {
+  const res: AnomalyIndex[] = []
+  subcategories.forEach(subcategory => {
+    res.push({root: anomaly, id: subcategory.id, title: subcategory.title, desc: subcategory.desc})
+    const cat = subcategory.subcategories ? aggregateCategories(anomaly, subcategory.subcategories) : []
+    res.push(...cat)
+  })
+
+  return res
+}
 
 export const instanceOfSubcategoryWithInputs = (
   _?: Anomaly | Subcategory,

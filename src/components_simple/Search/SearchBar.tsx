@@ -4,6 +4,7 @@ import {Anomaly} from '../../anomalies/Anomaly'
 import {useColors} from '@codegouvfr/react-dsfr/useColors'
 import Link from 'next/link'
 import {cx} from '@codegouvfr/react-dsfr/tools/cx'
+import {allVisibleAnomalies, createFuseIndex} from '../../anomalies/Anomalies'
 
 type SearchBarProps = {
   anomalies: Anomaly[]
@@ -13,12 +14,11 @@ const SearchBar: React.FC<SearchBarProps> = ({anomalies}) => {
   const [query, setQuery] = useState('')
   const [suggestions, setSuggestions] = useState<Anomaly[]>([])
   const dsfrTheme = useColors()
-  const fuse = new Fuse(anomalies, {
-    keys: ['title', 'description'],
+  const fuse = new Fuse(createFuseIndex(allVisibleAnomalies()), {
+    keys: ['title', 'desc'],
     threshold: 0.2,
-    minMatchCharLength: 4,
+    minMatchCharLength: 3,
     distance: 100,
-    useExtendedSearch: true,
     ignoreLocation: true,
   })
 
@@ -28,7 +28,11 @@ const SearchBar: React.FC<SearchBarProps> = ({anomalies}) => {
 
     if (newQuery.trim() !== '') {
       const results = fuse.search(newQuery.trim()).map(result => result.item)
-      setSuggestions(results)
+
+      console.log(results.map(_ => _.desc))
+      console.log(results.map(_ => _.title))
+
+      setSuggestions(results.map(_ => _.root).filter((thing, i, arr) => arr.findIndex(t => t.id === thing.id) === i))
     } else {
       setSuggestions([])
     }
@@ -51,18 +55,18 @@ const SearchBar: React.FC<SearchBarProps> = ({anomalies}) => {
         onChange={handleInputChange}
       />
       <div
-        className={'w-full z-20 max-h-96 overflow-y-scroll left-0 top-full absolute'}
+        className={'w-full z-20 max-h-96 overflow-y-scroll left-0 top-full shadow-xl absolute'}
         style={{
           background: dsfrTheme.decisions.background.overlap.grey.default,
-          border: suggestions.length > 0 ? `1px solid black` : 0,
+          // border: suggestions.length > 0 ? `1px solid black` : 0,
         }}
       >
         {suggestions.length > 0 && (
-          <ul className={'p-px m-0 list-none w-full'}>
+          <ul className={'p-px  list-none w-full'}>
             {suggestions.map((category, index) => (
               <Link key={category.id} href={'/' + category.path}>
                 <li
-                  className={`hover:bg-[#f6f6f6] cursor-pointer p-1`}
+                  className={`hover:bg-[#f6f6f6] cursor-pointer p-1 ml-1`}
                   style={{
                     borderBottom: index !== suggestions.length - 1 ? '1px solid #ccc' : 0,
                   }}
