@@ -1,8 +1,20 @@
 import {appConfig} from 'core/appConfig'
 import {Anomaly, Subcategory, SubcategoryWithInfoWall, StandardSubcategory, DetailInput} from './Anomaly'
 import anomaliesJSON from './yml/anomalies.json'
+import Fuse from 'fuse.js'
 
 export const allAnomalies = anomaliesJSON as Anomaly[]
+
+const options: Fuse.IFuseOptions<Anomaly> = {
+  keys: ['title', 'description'],
+  threshold: 0.2,
+  minMatchCharLength: 4,
+  distance: 100,
+  useExtendedSearch: true,
+  ignoreLocation: true,
+}
+
+export const fuseA = new Fuse(allAnomalies, options)
 
 export const allVisibleAnomalies = () =>
   allAnomalies

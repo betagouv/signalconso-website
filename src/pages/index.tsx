@@ -1,6 +1,6 @@
 import {Button} from '@codegouvfr/react-dsfr/Button'
 import {useColors} from '@codegouvfr/react-dsfr/useColors'
-import {allVisibleAnomalies} from 'anomalies/Anomalies'
+import {allVisibleAnomalies, fuseA} from 'anomalies/Anomalies'
 import {InfoBanner} from 'components_feature/InfoBanner/InfoBanner'
 import {useRgpdBanner} from 'components_feature/RgpdBanner/RgpdBanner'
 import {AnomalyTile} from 'components_simple/AnomalyCard/AnomalyTile'
@@ -15,6 +15,10 @@ import consumer from '../../public/image/illustrations/consumer.png'
 import dgccrf from '../../public/image/illustrations/dgccrf.png'
 import report from '../../public/image/illustrations/report.png'
 import {useReportFlowContext} from '../components_feature/Report/ReportFlowContext'
+import {margin} from '@mui/system'
+import {bottom} from '@popperjs/core'
+import {fr} from 'date-fns/locale'
+import SearchBar from '../components_simple/Search/SearchBar'
 
 const ReportStartedAlert = dynamic(() => import('components_feature/ReportStartedAlert/ReportStartedAlert'), {ssr: false})
 
@@ -25,6 +29,12 @@ const Home = () => {
     smoothscroll.polyfill()
   }, [])
   const anomalies = allVisibleAnomalies()
+
+  const t = fuseA.search('intoxication')
+  console.log('////////')
+  console.log(t)
+  console.log('////////')
+
   const _report = useReportFlowContext()
   const hasStoredReport = useMemo(() => !!_report.reportDraft.anomaly, [_report.reportDraft])
   const dsfrTheme = useColors()
@@ -75,6 +85,7 @@ const Home = () => {
         <div id="index-categories" style={{background: dsfrTheme.decisions.background.actionLow.blueFrance.default}}>
           <div className="fr-container fr-pt-8w fr-pb-8w">
             <h2>Quel problème avez-vous rencontré ?</h2>
+            <SearchBar anomalies={anomalies} />
             <div className="fr-container--fluid">
               <div className="fr-grid-row fr-grid-row--gutters">
                 {anomalies.map(a => (
