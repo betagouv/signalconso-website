@@ -1,39 +1,49 @@
-import {CacheProvider, EmotionCache} from '@emotion/react'
-import {Box, CssBaseline, ThemeProvider} from '@mui/material'
-import {StyledEngineProvider} from '@mui/styled-engine'
-import {Analytic} from 'analytic/analytic'
+import {createNextDsfrIntegrationApi} from '@codegouvfr/react-dsfr/next-pagesdir'
+import {Box, ThemeProvider} from '@mui/material'
+import {QueryClient, QueryClientProvider} from '@tanstack/react-query'
 import {AnalyticProvider} from 'analytic/AnalyticContext'
+import {Analytic} from 'analytic/analytic'
 import {ReportCreateProvider} from 'components_feature/Report/ReportCreateContext'
 import {ReportFlowProvider} from 'components_feature/Report/ReportFlowContext'
-import {Footer} from 'components_simple/Footer'
-import {Header, headerHeight} from 'components_simple/Header'
+import {RgpdBanner} from 'components_feature/RgpdBanner/RgpdBanner'
 import {ProvidersChain} from 'components_simple/ProvidersChain/ProvidersChain'
+import {ScFooter} from 'components_simple/ScFooter'
+import {ScHeader} from 'components_simple/ScHeader'
 import {ApiClientsProvider} from 'context/ApiClientsContext'
 import {ConfigProvider, useConfig} from 'context/ConfigContext'
-import createEmotionCache from 'core/createEmotionCache'
 import {scTheme} from 'core/theme'
 import {I18nProvider} from 'i18n/I18n'
 import type {AppProps} from 'next/app'
 import Head from 'next/head'
+import Link from 'next/link'
 import Script from 'next/script'
 import {Matomo} from 'plugins/matomo'
 import {Sentry} from 'plugins/sentry'
 import {useEffect, useState} from 'react'
-import {QueryClient, QueryClientProvider} from '@tanstack/react-query'
+import {createEmotionSsrAdvancedApproach} from 'tss-react/next'
 import {ToastProvider} from '../alexlibs/mui-extension/Toast/Toast'
 import {appConfig} from '../core/appConfig'
 import '../globals.css'
 import {Eularian} from '../plugins/eularian'
 
-interface ScAppProps extends AppProps {
-  emotionCache?: EmotionCache
+declare module '@codegouvfr/react-dsfr/next-pagesdir' {
+  interface RegisterLink {
+    Link: typeof Link
+  }
 }
 
-const clientSideEmotionCache = createEmotionCache()
+const {withDsfr, dsfrDocumentApi} = createNextDsfrIntegrationApi({
+  defaultColorScheme: 'light',
+  Link,
+})
+
+const {withAppEmotionCache, augmentDocumentWithEmotionCache} = createEmotionSsrAdvancedApproach({key: 'css'})
+
+// const clientSideEmotionCache = createEmotionCache()
 
 const queryClient = new QueryClient()
 
-const App = ({emotionCache = clientSideEmotionCache, ...props}: ScAppProps) => {
+const App = (props: AppProps) => {
   useEffect(() => {
     Sentry.init(appConfig)
     const matomo = Matomo.init({siteId: appConfig.matomo_siteId, url: appConfig.matomo_url})
@@ -47,23 +57,23 @@ const App = ({emotionCache = clientSideEmotionCache, ...props}: ScAppProps) => {
         _ => <QueryClientProvider client={queryClient} children={_} />,
         _ => <ConfigProvider config={appConfig} children={_} />,
         _ => <AnalyticProvider analytic={analytic} children={_} />,
-        _ => <CacheProvider value={emotionCache} children={_} />,
-        _ => <StyledEngineProvider children={_} />,
+        // _ => <CacheProvider value={emotionCache} children={_} />,
+        // _ => <StyledEngineProvider children={_} />,
         _ => <ThemeProvider theme={scTheme} children={_} />,
         _ => <I18nProvider children={_} />,
         _ => <ApiClientsProvider children={_} />,
-        _ => <CssBaseline children={_} />,
+        // _ => <CssBaseline children={_} />,
         _ => <ToastProvider horizontal="right" children={_} />,
         _ => <ReportCreateProvider children={_} />,
         _ => <ReportFlowProvider children={_} />,
       ]}
     >
-      <_App {...props} />
+      <AppBase {...props} />
     </ProvidersChain>
   )
 }
 
-const _App = ({Component, pageProps, router}: AppProps) => {
+const AppBase = ({Component, pageProps, router}: AppProps) => {
   const {config} = useConfig()
 
   const isWebView = router.pathname.startsWith('/webview/') ?? router.query.app_type === 'mobile'
@@ -88,16 +98,10 @@ const _App = ({Component, pageProps, router}: AppProps) => {
           </Box>
         ) : (
           <>
-            <Box
-              sx={{
-                flex: 1,
-                marginTop: `${headerHeight.normal}px`,
-              }}
-            >
-              <Component {...pageProps} />
-            </Box>
-            <Header />
-            <Footer />
+            <ScHeader />
+            <Component {...pageProps} />
+            <RgpdBanner />
+            <ScFooter />
           </>
         )}
       </div>
@@ -105,4 +109,6 @@ const _App = ({Component, pageProps, router}: AppProps) => {
   )
 }
 
-export default App
+export {dsfrDocumentApi}
+export {augmentDocumentWithEmotionCache}
+export default withDsfr(withAppEmotionCache(App))

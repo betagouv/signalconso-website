@@ -6,9 +6,10 @@
     "node": "16.15.1"
   },
   "scripts": {
-    "dev": "yarn generate-json && next dev -p 3001",
-    "devdemo": "yarn generate-json && NEXT_PUBLIC_API_BASE_URL=https://demo-signalement-api.cleverapps.io next dev -p 3001",
-    "build": "yarn generate-json && tsc --declaration  && next build",
+    "beforebuild": "echo 'beforebuild starting' && yarn generate-json && only-include-used-icons && echo 'beforebuild done'",
+    "dev": "yarn beforebuild && next dev -p 3001",
+    "devdemo": "yarn beforebuild && NEXT_PUBLIC_API_BASE_URL=https://demo-signalement-api.cleverapps.io next dev -p 3001",
+    "build": "yarn beforebuild && tsc --declaration  && next build",
     "start": "next start",
     "lint": "next lint",
     "test": "jest",
@@ -22,6 +23,7 @@
   },
   "heroku-run-build-script": true,
   "dependencies": {
+    "@codegouvfr/react-dsfr": "^0.45.0",
     "@emotion/cache": "11.10.1",
     "@emotion/react": "11.10.0",
     "@emotion/server": "11.10.0",
@@ -55,6 +57,7 @@
     "recharts": "2.1.12",
     "smoothscroll-polyfill": "0.4.4",
     "tailwindcss": "^3.2.7",
+    "tss-react": "^4.8.2",
     "yaml-import": "2.0.0"
   },
   "devDependencies": {

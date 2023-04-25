@@ -1,13 +1,13 @@
-import React from 'react'
-import {Page} from 'components_simple/Page/Page'
-import {CompanyFilled} from 'components_feature/Report/Company/Company'
+import {Tab, Tabs} from '@mui/material'
 import {PlaygroundAcknowledgment} from 'components_feature/Playground/PlaygroundAcknoledgment'
-import {PlaygroundDetails} from 'components_feature/Playground/PlaygroundDetails'
-import {PlaygroundConsumer} from 'components_feature/Playground/PlaygroundConsumer'
 import {PlaygroundCompany} from 'components_feature/Playground/PlaygroundCompany'
 import {dummyStepNavigation, PlaygroundConfirmation} from 'components_feature/Playground/PlaygroundConfirmation'
+import {PlaygroundConsumer} from 'components_feature/Playground/PlaygroundConsumer'
+import {PlaygroundDetails} from 'components_feature/Playground/PlaygroundDetails'
+import {CompanyFilled} from 'components_feature/Report/Company/Company'
+import {Page} from 'components_simple/Page/Page'
+import React from 'react'
 import {Fixture} from '../test/fixture'
-import {Divider, Tab, Tabs} from '@mui/material'
 
 const Playground = () => {
   const [value, setValue] = React.useState(0)
@@ -36,15 +36,14 @@ const Playground = () => {
     {label: 'acknowledgment', component: () => <PlaygroundAcknowledgment />},
   ]
   return (
-    <Page maxWidth="small">
-      <Tabs value={value} onChange={(e, value) => setValue(value)}>
+    <>
+      <Tabs centered value={value} onChange={(e, value) => setValue(value)}>
         {tabs.map(tab => (
           <Tab key={tab.label} label={tab.label} />
         ))}
       </Tabs>
-      <Divider sx={{mb: 3}} />
-      {tabs[value].component()}
-    </Page>
+      <Page maxWidth="small">{tabs[value].component()}</Page>
+    </>
   )
 }
 

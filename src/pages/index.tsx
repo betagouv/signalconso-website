@@ -1,41 +1,31 @@
-import {Box, Divider, Grid} from '@mui/material'
-import {Theme} from '@mui/material/styles'
-import {SxProps} from '@mui/system'
+import {Button} from '@codegouvfr/react-dsfr/Button'
+import {useColors} from '@codegouvfr/react-dsfr/useColors'
 import {allVisibleAnomalies} from 'anomalies/Anomalies'
-import {Section} from 'components_simple/Section'
-import {useI18n} from 'i18n/I18n'
 import {InfoBanner} from 'components_feature/InfoBanner/InfoBanner'
-import {useRgpdBanner} from 'components_feature/RgpdBanner/RgpdBanner'
+import {AnomalyTile} from 'components_simple/AnomalyCard/AnomalyTile'
+import {IllustrationStepper} from 'components_simple/IllustrationStepper/StepIllustrations'
+import {useI18n} from 'i18n/I18n'
+import dynamic from 'next/dynamic'
 import Head from 'next/head'
 import {useEffect, useMemo} from 'react'
-import {AnomalyCard} from 'components_simple/AnomalyCard/AnomalyCard'
-import {ScButton} from 'components_simple/Button/Button'
-import {IllustrationStepper} from 'components_simple/IllustrationStepper/StepIllustrations'
 import * as smoothscroll from 'smoothscroll-polyfill'
 import company from '../../public/image/illustrations/company.png'
 import consumer from '../../public/image/illustrations/consumer.png'
 import dgccrf from '../../public/image/illustrations/dgccrf.png'
 import report from '../../public/image/illustrations/report.png'
-import dynamic from 'next/dynamic'
 import {useReportFlowContext} from '../components_feature/Report/ReportFlowContext'
-
-const sxTitle: SxProps<Theme> = {
-  fontSize: 24,
-  mb: 3,
-  mt: 2,
-}
 
 const ReportStartedAlert = dynamic(() => import('components_feature/ReportStartedAlert/ReportStartedAlert'), {ssr: false})
 
 const Home = () => {
   const {m} = useI18n()
-  useRgpdBanner()
   useEffect(() => {
     smoothscroll.polyfill()
   }, [])
   const anomalies = allVisibleAnomalies()
   const _report = useReportFlowContext()
   const hasStoredReport = useMemo(() => !!_report.reportDraft.anomaly, [_report.reportDraft])
+  const dsfrTheme = useColors()
 
   return (
     <>
@@ -46,70 +36,54 @@ const Home = () => {
           content="Signalez un problème au commerçant (magasins, commerces de proximité, cafés et restaurants...) et à la répression des fraudes : pratique d'hygiène, nourriture / boissons, matériel / objet, prix / paiement, publicité, services associés à l'achat."
         />
       </Head>
-      <InfoBanner />
       <main>
-        <section
-          className="bg-sclightblue text-white text-center px-4 py-6 xl:px-10 xl:py-14  text-[22px] xl:text-[32px]"
-          dangerouslySetInnerHTML={{__html: m.signalconsoCatchWord}}
-        />
-
-        <Section>
-          <Box component="h2" sx={sxTitle}>
-            Comment ça marche ?
-          </Box>
-          <IllustrationStepper
-            steps={[
-              {title: 'Vous avez rencontré un problème avec une entreprise&#160;?', image: consumer, alt: 'consumer'},
-              {title: 'Faites un signalement ou posez une question à la répression des fraudes.', image: report, alt: 'report'},
-              {
-                title: "Vous pouvez en informer l'entreprise pour qu’elle vous réponde ou se corrige.",
-                image: company,
-                alt: 'company',
-              },
-              {title: 'La répression des fraudes intervient si nécessaire.', image: dgccrf, alt: 'dgccrf'},
-            ]}
-          />
-
-          <Box sx={{display: 'flex', alignItems: 'center', justifyContent: 'center', pt: 4, pb: 3}}>
-            <ScButton
-              onClick={() => {
-                document
-                  .querySelector('#index-categories')
-                  ?.scrollIntoView({behavior: 'smooth', block: 'start', inline: 'nearest'})
-              }}
-              size="large"
-              variant="contained"
-              color="error"
-              sx={{
-                textTransform: 'unset',
-                fontWeight: t => t.typography.fontWeightBold,
-                background: '#be3d4d',
-              }}
-              iconAfter="feedback"
-            >
-              {m.buttonReportProblem}
-            </ScButton>
-          </Box>
-        </Section>
-        <Divider />
-        <Section
-          id="index-categories"
-          component="section"
-          sx={{
-            background: `linear-gradient(180deg,#407ca8,#2a8194 99.99%,#5a4b5f)`,
-          }}
-        >
-          <Box component="h2" sx={{...sxTitle, color: t => t.palette.getContrastText(t.palette.primary.main)}}>
-            Quel problème avez-vous rencontré ?
-          </Box>
-          <Grid container spacing={3}>
-            {anomalies.map(a => (
-              <Grid key={a.path} item xs={12} sm={6} md={4}>
-                <AnomalyCard anomaly={a} />
-              </Grid>
-            ))}
-          </Grid>
-        </Section>
+        <div>
+          <div className="fr-container">
+            <InfoBanner />
+          </div>
+          <div className="fr-container fr-pt-8w fr-pb-6w ">
+            <h1 dangerouslySetInnerHTML={{__html: m.signalconsoCatchWord}} />
+            <IllustrationStepper
+              steps={[
+                {title: 'Vous avez rencontré un problème avec une entreprise&#160;?', image: consumer, alt: 'consumer'},
+                {title: 'Faites un signalement ou posez une question à la répression des fraudes.', image: report, alt: 'report'},
+                {
+                  title: "Vous pouvez en informer l'entreprise pour qu’elle vous réponde ou se corrige.",
+                  image: company,
+                  alt: 'company',
+                },
+                {title: 'La répression des fraudes intervient si nécessaire.', image: dgccrf, alt: 'dgccrf'},
+              ]}
+            />
+            <div className="flex items-center justify-center fr-pt-4w">
+              <Button
+                iconId="fr-icon-alarm-warning-line"
+                onClick={() => {
+                  document
+                    .querySelector('#index-categories')
+                    ?.scrollIntoView({behavior: 'smooth', block: 'start', inline: 'nearest'})
+                }}
+                size="large"
+              >
+                {m.buttonReportProblem}
+              </Button>
+            </div>
+          </div>
+        </div>
+        <div id="index-categories" style={{background: dsfrTheme.decisions.background.actionLow.blueFrance.default}}>
+          <div className="fr-container fr-pt-8w fr-pb-8w">
+            <h2>Quel problème avez-vous rencontré ?</h2>
+            <div className="fr-container--fluid">
+              <div className="fr-grid-row fr-grid-row--gutters">
+                {anomalies.map(a => (
+                  <div key={a.path} className="fr-col-12 fr-col-sm-6 fr-col-md-4 fr-col-xl-3">
+                    <AnomalyTile anomaly={a} />
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
       </main>
       {hasStoredReport ? <ReportStartedAlert /> : <></>}
     </>

@@ -1,13 +1,11 @@
 import {Icon} from '@mui/material'
 import {Txt} from 'alexlibs/mui-extension/Txt/Txt'
-import {dateToFrenchFormat} from 'utils/utils'
-import {pageDefinitions} from 'core/pageDefinition'
-import {COLOR_DARK_BLUE, COLOR_LIGHT_BLUE} from 'core/theme'
-import Head from 'next/head'
-import {ReactNode, useMemo, useState} from 'react'
+import {ContentPageContainer} from 'components_simple/ContentPageContainer'
 import {SimpleDatepicker} from 'components_simple/Datepicker/SimpleDatepicker'
-import {Page} from 'components_simple/Page/Page'
-import {Panel, PanelBody} from 'components_simple/Panel/Panel'
+import {pageDefinitions} from 'core/pageDefinition'
+import Head from 'next/head'
+import {useMemo, useState} from 'react'
+import {dateToFrenchFormat} from 'utils/utils'
 
 const closingDays = [
   {day: 1, month: 0},
@@ -36,27 +34,20 @@ function isClosingDate(date: Date) {
   return isSunday || isSaturday || isClosingDay
 }
 
-// This page needs to OK lookin, but the H1/H2 in the theme can't be touched without breaking other pages in various ways
-const NiceH1 = ({children}: {children: ReactNode}) => (
-  <h1 style={{fontWeight: 'bold', color: COLOR_DARK_BLUE, fontSize: '3rem'}}>{children}</h1>
-)
-
-const NiceH2 = ({children}: {children: ReactNode}) => <h2 style={{fontWeight: 'bold', color: COLOR_LIGHT_BLUE}}>{children}</h2>
-
 const DelaiDeRetractation = () => {
   const [contractDate, setContractDate] = useState<Date | undefined>()
   const deadlineDate = useMemo(() => (contractDate ? calculRetractationDeadline(contractDate) : undefined), [contractDate])
   return (
-    <Page maxWidth="small" className="blog">
+    <>
       <Head>
         <title>{pageDefinitions.delaiRetractation.title}</title>
         <meta name="description" content={pageDefinitions.delaiRetractation.description} />
       </Head>
-      <NiceH1>Délai de rétractation</NiceH1>
-      <Panel>
-        <PanelBody>
-          <NiceH2>Calculez votre date limite de rétractation</NiceH2>
-          <p>Date de départ :</p>
+      <ContentPageContainer>
+        <h1>Délai de rétractation</h1>
+        <section className="fr-pb-4w">
+          <h2 className="fr-h4">Calculez votre date limite de rétractation</h2>
+          <span>Date de départ :</span>
           <SimpleDatepicker value={contractDate} onChange={setContractDate} limited />
           {deadlineDate && (
             <div style={{marginTop: '20px', textAlign: 'left'}}>
@@ -69,9 +60,10 @@ const DelaiDeRetractation = () => {
               </span>
             </div>
           )}
-
-          <NiceH2>Quelle est la date de départ à prendre en compte ?</NiceH2>
-          <table>
+        </section>
+        <section className="fr-pb-4w">
+          <h2 className="fr-h4">Quelle est la date de départ à prendre en compte ?</h2>
+          <table className="fr-table">
             <thead>
               <tr>
                 <th>Type de contrat</th>
@@ -97,7 +89,9 @@ const DelaiDeRetractation = () => {
               </tr>
             </tbody>
           </table>
-          <NiceH2>Vous avez 14 jours pour changer d'avis</NiceH2>
+        </section>
+        <section className="fr-pb-4w">
+          <h2 className="fr-h4">Vous avez 14 jours pour changer d'avis</h2>
           <p>Vous n'avez pas à vous justifier auprès de l'entreprise</p>
           <p>
             Il faut renvoyer{' '}
@@ -122,9 +116,9 @@ const DelaiDeRetractation = () => {
             Mais si cette information vous est fournie pendant cette prolongation, le délai est de nouveau de 14 jours. Il
             commence à la date où vous recevez l'information.
           </p>
-        </PanelBody>
-      </Panel>
-    </Page>
+        </section>
+      </ContentPageContainer>
+    </>
   )
 }
 

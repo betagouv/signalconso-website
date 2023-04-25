@@ -24,8 +24,8 @@ export const pageDefinitions = {
     description:
       "Vous signalez votre problème en remplissant le formulaire en ligne. Notre équipe contacte l'entreprise afin de l'informer de votre signalement. L'entreprise peut procéder spontanément aux corrections utiles, sans sanction. Votre signalement est enregistré à la répression des fraudes (DGCCRF).",
   },
-  centreAide: {
-    title: "Centre d'aide - SignalConso",
+  aide: {
+    title: 'Aide - SignalConso',
     description: "Consultez l'aide et les questions fréquentes sur SignalConso",
   },
   accessibilite: {
