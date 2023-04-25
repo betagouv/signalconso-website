@@ -79,9 +79,6 @@ const AppBase = ({Component, pageProps, router}: AppProps) => {
   const isWebView = router.pathname.startsWith('/webview/') ?? router.query.app_type === 'mobile'
   return (
     <>
-      <Head>
-        <link rel="canonical" href={config.appBaseUrl + router.asPath} />
-      </Head>
       {!isWebView && !config.isDev && (
         <Script
           nonce="eYhD6rb8vLVwXsAmnbKl/Q=="

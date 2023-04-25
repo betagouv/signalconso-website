@@ -1,6 +1,7 @@
 import {Tile} from '@codegouvfr/react-dsfr/Tile'
 import {Anomaly} from '../../anomalies/Anomaly'
 import {useReportFlowContext} from '../../components_feature/Report/ReportFlowContext'
+import {buildLinkStartReport} from 'core/siteMap'
 
 export const AnomalyTile = ({anomaly}: {anomaly: Anomaly}) => {
   const _reportFlow = useReportFlowContext()
@@ -9,7 +10,7 @@ export const AnomalyTile = ({anomaly}: {anomaly: Anomaly}) => {
       desc={anomaly.description}
       enlargeLink
       linkProps={{
-        href: '/' + anomaly.path,
+        href: buildLinkStartReport(anomaly),
         onClick: () => {
           // on veut repartir de zéro
           _reportFlow.resetFlow()

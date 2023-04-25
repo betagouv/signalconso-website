@@ -11,6 +11,13 @@ module.exports = {
       lg: '992px',
       xl: '1280px',
     },
+    extend: {
+      colors: {
+        sclightblue: '#2b7c9f',
+        scdarkblue: '#1e2b50',
+        scorange: '#EA9001', // orange from the logo
+      },
+    },
   },
   plugins: [],
   corePlugins: {

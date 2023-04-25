@@ -38,6 +38,9 @@ yarn-error.log*
 
 # will be generated each time the application is ran
 src/anomalies/yml/anomalies.json
+public/sitemap.xml
+
+landings.csv
 
 # Sentry
 .sentryclirc

@@ -1,6 +1,6 @@
 import {Box, Card, Slide} from '@mui/material'
 import {useReportFlowContext} from '../Report/ReportFlowContext'
-import {AnomalyImage} from 'components_simple/AnomalyCard/AnomalyImage'
+import {AnomalyImage} from 'components_simple/AnomalyTile/AnomalyImage'
 import {useMemo} from 'react'
 import {useI18n} from 'i18n/I18n'
 import {Txt} from '../../alexlibs/mui-extension/Txt/Txt'

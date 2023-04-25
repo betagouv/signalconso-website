@@ -1,4 +1,4 @@
-import {appConfig} from 'core/appConfig'
+import {appConfig} from '../core/appConfig'
 import {Anomaly, Subcategory, SubcategoryWithInfoWall, StandardSubcategory, DetailInput} from './Anomaly'
 import anomaliesJSON from './yml/anomalies.json'
 
@@ -29,6 +29,14 @@ export function findAnomaly(category: string): Anomaly {
   const res = allAnomalies.find(_ => _.category === category)
   if (!res) {
     throw new Error(`Can't find anomaly "${category}"`)
+  }
+  return res
+}
+
+export function findAnomalyByPath(categoryPath: string): Anomaly {
+  const res = allAnomalies.find(_ => _.path === categoryPath)
+  if (!res) {
+    throw new Error(`Can't find anomaly "${categoryPath}"`)
   }
   return res
 }

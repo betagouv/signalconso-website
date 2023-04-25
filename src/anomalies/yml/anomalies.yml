@@ -1,14 +1,14 @@
 
-- category: RetraitRappelSpecifique
-  title: Retrait-Rappel spécifique
-  seoTitle: Retrait-Rappel spécifique
-  path: retrait-rappel
-  description: Retrait-Rappel spécifique.
-  hidden: true
-  img: none
-  subcategories: !!import/single subcategories/retrait-rappel.yml
-  subcategoriesTitle: Avez-vous consommé le produit ?
-  id: '5'
+# - category: RetraitRappelSpecifique
+#   title: Retrait-Rappel spécifique
+#   seoTitle: Retrait-Rappel spécifique
+#   path: retrait-rappel
+#   description: Retrait-Rappel spécifique.
+#   hidden: true
+#   img: none
+#   subcategories: !!import/single subcategories/retrait-rappel.yml
+#   subcategoriesTitle: Avez-vous consommé le produit ?
+#   id: '5'
 
 - category: AchatMagasin
   title: Achat en Magasin

@@ -1,10 +1,8 @@
-import {Box, BoxProps} from '@mui/material'
-import {BtnAdmin} from 'components_simple/BtnAdmin'
-import Link from 'next/link'
-import {ScButton} from 'components_simple/Button/Button'
-import {siteMap} from 'core/siteMap'
-import {ReactNode} from 'react'
 import {Accordion} from '@codegouvfr/react-dsfr/Accordion'
+import {Box, BoxProps} from '@mui/material'
+import {siteMap, siteMapExternal} from 'core/siteMap'
+import Link from 'next/link'
+import {ReactNode} from 'react'
 
 function Title({children}: {children: ReactNode}) {
   return <h2 className="mb-4 mt-8 font-normal text-2xl">{children}</h2>
@@ -65,7 +63,7 @@ export const CentreAidePro = (props: BoxProps) => {
           <p>
             Pour connaître ce signalement, rendez-vous sur <Link href={siteMap.index}>https://signal.conso.gouv.fr</Link> et
             cliquez sur le bouton "Espace professionnels" dans le menu en haut de votre écran. Ou allez-directement sur cette
-            adresse : <Link href={siteMap.connexion}>{siteMap.connexion}</Link>
+            adresse : <Link href={siteMapExternal.connexion}>{siteMapExternal.connexion}</Link>
           </p>
           Lors de votre première connexion, vous devez vous identifier avec :
           <ul>
@@ -92,7 +90,7 @@ export const CentreAidePro = (props: BoxProps) => {
           </p>
           <p>
             Vous pouvez y accéder avec votre mot de passe en cliquant sur le bouton "
-            <Link href={siteMap.connexion} legacyBehavior>
+            <Link href={siteMapExternal.connexion} legacyBehavior>
               Connectez-vous
             </Link>
             "
@@ -121,8 +119,8 @@ export const CentreAidePro = (props: BoxProps) => {
         </Accordion>
         <Accordion label="J'ai oublié mon mot de passe">
           <p>
-            Vous pouvez <Link href={siteMap.lostPassword}>demander un nouveau mot de passe</Link> ou, en cas de difficultés,
-            contacter par email le service&nbsp;
+            Vous pouvez <Link href={siteMapExternal.lostPassword}>demander un nouveau mot de passe</Link> ou, en cas de
+            difficultés, contacter par email le service&nbsp;
             <a
               href="mailto:support@signal.conso.gouv.fr"
               target="_blank"
