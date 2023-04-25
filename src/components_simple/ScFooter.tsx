@@ -1,6 +1,6 @@
 import {Footer} from '@codegouvfr/react-dsfr/Footer'
 import Link from 'next/link'
-import {siteMap} from '../core/siteMap'
+import {siteMap, siteMapExternal} from '../core/siteMap'
 
 export function ScFooter() {
   return (
@@ -32,7 +32,7 @@ export function ScFooter() {
           {
             text: 'Espace DGCCRF',
             linkProps: {
-              href: siteMap.connexion,
+              href: siteMapExternal.connexion,
               target: '_self',
             },
           },

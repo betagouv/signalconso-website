@@ -1,6 +1,7 @@
+import {allVisibleAnomalies} from 'anomalies/Anomalies'
 import {ContentPageContainer} from 'components_simple/ContentPageContainer'
 import {pageDefinitions} from 'core/pageDefinition'
-import {siteMap} from 'core/siteMap'
+import {buildLinkLandingPage, siteMap, siteMapExternal} from 'core/siteMap'
 import Head from 'next/head'
 import Link from 'next/link'
 
@@ -51,9 +52,27 @@ const PlanDuSite = () => {
           <li>
             <Link href={siteMap.delaiRetractation}>Calculez votre délai de rétractation</Link>
           </li>
+          <li>
+            <Link href={siteMap.litige}>Conseils pour résolution d'un problème individuel (litige)</Link>
+          </li>
         </ul>
         <h2 className="fr-h4">Dépôt d'un signalement</h2>
-        <Link href={siteMap.arborescence}>Voir l'arborescence</Link>
+
+        <ul className="">
+          {allVisibleAnomalies().map(anomaly => {
+            return (
+              <li key={anomaly.path}>
+                <Link href={buildLinkLandingPage(anomaly)}>Faire un signalement pour {anomaly.title}</Link>
+              </li>
+            )
+          })}
+        </ul>
+        <hr className="mt-4" />
+        <p className="mt-4">
+          Voir aussi <Link href={siteMap.arborescence}>l'arborescence complète du dépot d'un signalement</Link>
+        </p>
+
+        <h3 className="fr-h6">Détails des étapes d'un signalement</h3>
         <ul>
           <li>Étape 1 - Le problème</li>
           <li>Étape 2 - La description</li>
@@ -61,13 +80,14 @@ const PlanDuSite = () => {
           <li>Étape 4 - Le consommateur</li>
           <li>Étape 5 - Confirmation</li>
         </ul>
+
         <h2 className="fr-h4">Espace pro</h2>
         <ul>
           <li>
-            <Link href={siteMap.companyActivation}>Activation de l'espace entreprise</Link>
+            <Link href={siteMapExternal.companyActivation}>Activation de l'espace entreprise</Link>
           </li>
           <li>
-            <Link href={siteMap.connexion}>Connexion</Link>
+            <Link href={siteMapExternal.connexion}>Connexion</Link>
           </li>
           <li>Suivi des signalements</li>
           <li>Détail du signalements</li>
@@ -78,7 +98,7 @@ const PlanDuSite = () => {
         <h2 className="fr-h4">Espace DGCCRF</h2>
         <ul>
           <li>
-            <Link href={siteMap.connexion}>Connexion</Link>
+            <Link href={siteMapExternal.connexion}>Connexion</Link>
           </li>
           <li>Suivi des signalements</li>
           <li>Détail du signalements</li>

@@ -1,5 +1,5 @@
 import {ReportDraft2} from 'model/ReportDraft2'
-import React, {ReactNode, useContext, useState} from 'react'
+import React, {ReactNode, useContext, useEffect, useState} from 'react'
 
 interface ReportFlowContextProps {
   reportDraft: Partial<ReportDraft2>
@@ -11,6 +11,11 @@ const ReportFlowContext = React.createContext<ReportFlowContextProps>({} as Repo
 
 export const ReportFlowProvider = ({children}: {children: ReactNode}) => {
   const [reportDraft, setReportDraft] = useState<Partial<ReportDraft2>>({})
+
+  useEffect(() => {
+    console.log('@@@report draft', reportDraft)
+  }, [reportDraft])
+
   return (
     <ReportFlowContext.Provider
       value={{

@@ -41,8 +41,16 @@ function chooseIfReponseConsoDisplayed(): boolean {
   return Math.random() * 100 < appConfig.reponseConsoDisplayRate
 }
 
-function adjustReportDraftAfterSubcategoriesChange(report: Partial<ReportDraft2>, subcategory: Subcategory, index: number) {
-  const subcategoriesToKeep = (report.subcategories ?? []).slice(0, index)
+export function initiateReportDraftForAnomaly(anomaly: Anomaly): Partial<ReportDraft2> {
+  return {category: anomaly.category}
+}
+
+export function adjustReportDraftAfterSubcategoriesChange(
+  report: Partial<ReportDraft2>,
+  subcategory: Subcategory,
+  subcategoryIndex: number,
+) {
+  const subcategoriesToKeep = (report.subcategories ?? []).slice(0, subcategoryIndex)
   const subcategories = [...subcategoriesToKeep, subcategory]
   const tags = report.tags?.filter(_ => _ !== 'Internet') ?? undefined
 
@@ -79,7 +87,7 @@ export const Problem = ({anomaly, isWebView, stepNavigation}: Props) => {
     if (anomaly.category !== reportDraft.category) {
       _analytic.trackEvent(EventCategories.report, ReportEventActions.validateCategory, anomaly.category)
       resetFlow()
-      setReportDraft(_ => ({category: anomaly.category}))
+      setReportDraft(_ => initiateReportDraftForAnomaly(anomaly))
     }
   }, [anomaly.category])
 

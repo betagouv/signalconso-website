@@ -1,5 +1,5 @@
 import Header from '@codegouvfr/react-dsfr/Header'
-import {siteMap} from '../core/siteMap'
+import {siteMap, siteMapExternal} from '../core/siteMap'
 import {NextRouter, useRouter} from 'next/router'
 import {HTMLAttributeAnchorTarget} from 'react'
 import {appConfig} from 'core/appConfig'
@@ -55,8 +55,8 @@ export function ScHeader() {
             buildMenuLink(router, siteMap.stats, 'Statistiques'),
             buildMenuLink(router, siteMap.contact, `Contact`),
           ]),
-          buildMenuLink(router, siteMap.connexion, 'Espace professionnels', '_self'),
-          ...(appConfig.showPlayground ? [buildMenuLink(router, siteMap.playground, 'Playground')] : []),
+          buildMenuLink(router, siteMapExternal.connexion, 'Espace professionnels', '_self'),
+          ...(siteMap.playground ? [buildMenuLink(router, siteMap.playground, 'Playground')] : []),
         ]}
       />
       <EnvMarker />

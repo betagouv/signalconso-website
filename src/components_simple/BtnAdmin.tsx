@@ -1,14 +1,14 @@
 import {ScButton} from 'components_simple/Button/Button'
 import {ButtonProps} from '@mui/material'
 import {useI18n} from '../i18n/I18n'
-import {siteMap} from '../core/siteMap'
 import {COLOR_DARK_BLUE} from 'core/theme'
+import {siteMapExternal} from '../core/siteMap'
 
 export const BtnAdmin = ({sx, ...props}: ButtonProps) => {
   const {m} = useI18n()
   return (
     <ScButton
-      href={siteMap.connexion}
+      href={siteMapExternal.connexion}
       color="secondary"
       variant="contained"
       iconAfter="lock_open"

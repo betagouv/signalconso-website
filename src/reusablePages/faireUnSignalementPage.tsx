@@ -1,7 +1,7 @@
 import {Box, Icon} from '@mui/material'
 import {Page} from 'components_simple/Page/Page'
 import {ReportFlowStepper} from 'components_simple/ReportFlowStepper/ReportFlowStepper'
-import {siteMap} from 'core/siteMap'
+import {buildLinkLandingPage, siteMap} from 'core/siteMap'
 import {styleUtils} from 'core/theme'
 import {GetStaticPaths, GetStaticProps} from 'next'
 import dynamic from 'next/dynamic'
@@ -10,32 +10,34 @@ import Link from 'next/link'
 import {undefinedIfNull} from 'utils/utils'
 import {IconBtn} from '../alexlibs/mui-extension/IconBtn/IconBtn'
 import {allAnomalies} from '../anomalies/Anomalies'
+import {appConfig} from 'core/appConfig'
 
 export const getStaticPaths: GetStaticPaths = () => {
   const paths = allAnomalies.map(_ => ({
-    params: {reportpath: _.path},
+    params: {categoryPath: _.path},
   }))
   return {paths, fallback: false}
 }
 
 export const getStaticProps: GetStaticProps = ({params = {}}) => {
-  const reportPath = params.reportpath
-  if (typeof reportPath !== 'string') {
-    throw new Error(`Unexpected type of reportPath : ${typeof reportPath}`)
+  const categoryPath = params.categoryPath
+  if (typeof categoryPath !== 'string') {
+    throw new Error(`Unexpected type of reportPath : ${typeof categoryPath}`)
   }
   return {
-    props: {reportPath},
+    props: {categoryPath},
   }
 }
 
-export const ReportPathPage = ({reportPath, isWebView = false}: {reportPath: string; isWebView?: boolean}) => {
-  const anomaly = allAnomalies.find(_ => _.path === reportPath)
+export const FaireUnSignalementPage = ({categoryPath, isWebView = false}: {categoryPath: string; isWebView?: boolean}) => {
+  const anomaly = allAnomalies.find(_ => _.path === categoryPath)
   if (!anomaly) {
-    throw new Error(`Cannot find anomaly for reportPath : ${reportPath}`)
+    throw new Error(`Cannot find anomaly for categoryPath : ${categoryPath}`)
   }
   return (
     <Page maxWidth={624}>
       <Head>
+        <link rel="canonical" href={appConfig.appBaseUrl + buildLinkLandingPage(anomaly)} key="canonical" />
         <title>{anomaly.seoTitle + ' - SignalConso'}</title>
         <meta name="description" content={undefinedIfNull(anomaly.seoDescription ?? anomaly.description)} />
       </Head>

@@ -1,7 +1,7 @@
 import {ContentPageContainer} from 'components_simple/ContentPageContainer'
 import {externalLinks} from 'core/externalLinks'
 import {pageDefinitions} from 'core/pageDefinition'
-import {siteMap} from 'core/siteMap'
+import {siteMap, siteMapExternal} from 'core/siteMap'
 import Head from 'next/head'
 import Link from 'next/link'
 
@@ -91,7 +91,7 @@ const Accessibilite = () => {
           <li>Étape 4 - Le consommateur</li>
           <li>Étape 5 - Confirmation</li>
           <li>
-            <Link href={siteMap.connexion}>Connexion à l'espace pro</Link>
+            <Link href={siteMapExternal.connexion}>Connexion à l'espace pro</Link>
           </li>
           <li>Espace pro - Suivi des signalements</li>
           <li>Espace pro - Détail du signalements</li>
