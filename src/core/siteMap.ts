@@ -1,3 +1,4 @@
+import {Anomaly} from 'anomalies/Anomaly'
 import {appConfig} from './appConfig'
 
 export const siteMap = {
@@ -5,7 +6,6 @@ export const siteMap = {
   commentCaMarche: `/comment-ca-marche`,
   suiviEtViePrivee: `/suivi-et-vie-privee`,
   centreAide: `/centre-aide`,
-  playground: `/playground`,
   cookies: `/cookies`,
   contact: `/contact`,
   stats: `/stats`,
@@ -16,7 +16,19 @@ export const siteMap = {
   litige: `/litige`,
   delaiRetractation: `/delai-de-retractation`,
   conditionsGeneralesUtilisation: `/conditions-generales-utilisation`,
+  ...(appConfig.showPlayground ? {playground: `/playground`} : null),
+}
+
+export const siteMapExternal = {
   connexion: appConfig.dashboardBaseUrl + '/connexion',
   companyActivation: appConfig.dashboardBaseUrl + '/activation',
   lostPassword: appConfig.dashboardBaseUrl + '/perte-mot-de-passe',
+}
+
+export function buildLinkStartReport(anomaly: Pick<Anomaly, 'path'>) {
+  return `/${anomaly.path}/faire-un-signalement`
+}
+
+export function buildLinkLandingPage(anomaly: Pick<Anomaly, 'path'>) {
+  return `/${anomaly.path}`
 }

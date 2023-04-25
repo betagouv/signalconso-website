@@ -23,6 +23,7 @@ import {useRouter} from 'next/router'
 import {useEffect} from 'react'
 import {scrollTop} from 'utils/utils'
 import {ReportFlowStepperHeader} from './ReportFlowStepperHeader'
+import {buildLinkStartReport} from 'core/siteMap'
 
 interface StepperProps {
   anomaly: Anomaly
@@ -56,9 +57,8 @@ function parseStepFromQueryString(stepParamRaw: string | string[] | undefined): 
 }
 
 export function buildPathForStep(anomaly: Pick<Anomaly, 'path'>, step: ReportStepOrDone) {
-  const {path} = anomaly
   const queryString = step === firstReportStep ? '' : `?step=${getIndexForStepOrDone(step)}`
-  return `${path}${queryString}`
+  return `${buildLinkStartReport(anomaly)}${queryString}`
 }
 
 function useStepFromRouter(anomaly: Anomaly) {

@@ -1,4 +1,4 @@
-import {isServerSide} from 'utils/utils'
+import {isServerSide} from '../utils/utils'
 
 function noTrailingSlash(str: string) {
   return str.replace(/\/$/, '')
@@ -20,7 +20,7 @@ export const appConfig = {
   showPlayground: readBool(process.env.NEXT_PUBLIC_SHOW_PLAYGROUND),
   showDemoCategory: readBool(process.env.NEXT_PUBLIC_SHOW_DEMO_CATEGORY),
   apiBaseUrl: noTrailingSlash(process.env.NEXT_PUBLIC_API_BASE_URL ?? 'http://localhost:9000'),
-  appBaseUrl: noTrailingSlash(process.env.NEXT_PUBLIC_APP_BASE_URL ?? 'http://localhost:4200'),
+  appBaseUrl: noTrailingSlash(process.env.NEXT_PUBLIC_APP_BASE_URL ?? 'http://localhost:3001'),
   dashboardBaseUrl: noTrailingSlash(process.env.NEXT_PUBLIC_DASHBOARD_BASE_URL ?? 'http://localhost:3000'),
   basePath: process.env.NEXT_PUBLIC_BASE_PATH ?? '/',
   upload_allowedExtensions: ['.jpg', '.jpeg', '.pdf', '.png', '.gif', '.docx', '.heic'],
