@@ -1,7 +1,6 @@
-import {red} from '@mui/material/colors'
 import {alpha, createTheme, Theme} from '@mui/material'
+import {red} from '@mui/material/colors'
 import {ThemeOptions} from '@mui/material/styles/createTheme'
-import {carouselCss} from 'components_simple/IllustrationStepper/StepIllustrations'
 
 export const styleUtils = (t: Theme) => ({
   gridSpacing: 3 as any,
@@ -35,8 +34,6 @@ export const COLOR_LIGHT_BLUE = '#2b7c9f'
 export const COLOR_DARK_BLUE = '#1e2b50'
 
 const buildScTheme = (): Theme => {
-  const fontFamily = '"Open Sans", sans-serif'
-  const fontSize = 16
   const colorPrimary = {
     base: COLOR_LIGHT_BLUE,
     light: '#6fd3ff',
@@ -66,121 +63,74 @@ const buildScTheme = (): Theme => {
     shape: {
       borderRadius: 10,
     },
-    typography: {
-      fontFamily,
-      fontWeightBold: 500,
-    },
+    typography: {},
   })
   const theme: ThemeOptions = {
     components: {
       MuiCssBaseline: {
         styleOverrides: {
-          '*': {
-            boxSizing: 'border-box',
-          },
+          // '*': {
+          //   boxSizing: 'border-box',
+          // },
           '.material-icons': {
             display: 'inherit',
           },
-          html: {
-            fontFamily,
-            fontSize,
-            color: baseTheme.palette.text.primary,
-          },
-          '.blog': {
-            a: {
-              color: colorPrimary.base,
-            },
-            'li + li': {
-              marginTop: defaultSpacing * 2,
-            },
-            ul: {
-              marginTop: '.5em',
-            },
-          },
-          '.root': {
-            minHeight: '100vh',
-            display: 'flex',
-            flexDirection: 'column',
-          },
-          body: {
-            lineHeight: '1.5',
-            fontFamily,
-            background: baseTheme.palette.background.paper,
-            margin: 0,
-            color: baseTheme.palette.text.primary,
-            boxSizing: 'border-box',
-          },
-          main: {
-            flex: 1,
-          },
-          h1: {
-            ...baseTheme.typography.h4,
-            marginTop: 0,
-          },
-          h2: {
-            ...baseTheme.typography.h5,
-            marginTop: defaultSpacing * 4,
-          },
-          h3: {
-            ...baseTheme.typography.h6,
-            marginTop: defaultSpacing * 4,
-          },
-          h4: {
-            ...baseTheme.typography.h6,
-            fontSize: '1.25rem',
-          },
-          h6: {
-            color: 'red',
-            ...baseTheme.typography.h6,
-            fontSize: '1.25rem',
-          },
-          blockquote: {
-            color: baseTheme.palette.text.secondary,
-            marginLeft: 0,
-            paddingLeft: baseTheme.spacing(2),
-            borderLeft: `2px solid ${baseTheme.palette.divider}`,
-          },
-          hr: {
-            border: 'none',
-            borderBottom: `1px solid ${baseTheme.palette.divider}`,
-          },
-          table: {
-            background: baseTheme.palette.background.paper,
-            border: `1px solid ${baseTheme.palette.divider}`,
-            borderLeft: 0,
-            borderRight: 0,
-            borderRadius: 2,
-            position: 'relative',
-            width: '100%',
-            borderCollapse: 'collapse',
+          // html: {
+          //   // fontSize,
+          //   // color: baseTheme.palette.text.primary,
+          // },
+          // '.blog': {
+          //   a: {
+          //     color: colorPrimary.base,
+          //   },
+          //   'li + li': {
+          //     marginTop: defaultSpacing * 2,
+          //   },
+          //   ul: {
+          //     marginTop: '.5em',
+          //   },
+          // },
+          // '.root': {
+          //   minHeight: '100vh',
+          //   display: 'flex',
+          //   flexDirection: 'column',
+          // },
+          // body: {
+          //   lineHeight: '1.5',
+          //   background: baseTheme.palette.background.paper,
+          //   margin: 0,
+          //   color: baseTheme.palette.text.primary,
+          //   boxSizing: 'border-box',
+          // },
+          // main: {
+          //   flex: 1,
+          // },
+          // table: {
+          //   background: baseTheme.palette.background.paper,
+          //   border: `1px solid ${baseTheme.palette.divider}`,
+          //   borderLeft: 0,
+          //   borderRight: 0,
+          //   borderRadius: 2,
+          //   position: 'relative',
+          //   width: '100%',
+          //   borderCollapse: 'collapse',
 
-            '& td': {
-              fontWeight: 400,
-              padding: '1em',
-              textAlign: 'left',
-              borderTop: `1px solid ${baseTheme.palette.divider}`,
-            },
-            '& th': {
-              padding: '1em',
-              textAlign: 'left',
-            },
-            '& thead th': {
-              background: baseTheme.palette.action.disabledBackground,
-              borderBottom: `1px solid ${baseTheme.palette.divider}`,
-              textTransform: 'uppercase',
-            },
-          },
-          p: {
-            // textAlign: 'justify',
-          },
-          a: {
-            color: 'inherit',
-            textDecoration: 'none',
-          },
-          ':focus': {
-            outline: 0,
-          },
-          ...carouselCss,
+          //   '& td': {
+          //     fontWeight: 400,
+          //     padding: '1em',
+          //     textAlign: 'left',
+          //     borderTop: `1px solid ${baseTheme.palette.divider}`,
+          //   },
+          //   '& th': {
+          //     padding: '1em',
+          //     textAlign: 'left',
+          //   },
+          //   '& thead th': {
+          //     background: baseTheme.palette.action.disabledBackground,
+          //     borderBottom: `1px solid ${baseTheme.palette.divider}`,
+          //     textTransform: 'uppercase',
+          //   },
+          // },
         },
       },
 

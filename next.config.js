@@ -21,7 +21,7 @@ const ContentSecurityPolicy = [
   `frame-ancestors 'self';`,
   `child-src 'self';`,
   `style-src 'self' 'unsafe-inline' https://fonts.googleapis.com blob:;`,
-  `font-src https://fonts.gstatic.com;`,
+  `font-src 'self' https://fonts.gstatic.com;`,
   `report-uri /csp-violation-report-endpoint/;`,
 ]
 
@@ -63,8 +63,20 @@ module.exports = {
       },
     ]
   },
-  // TRELLO-1393 the published files of react-hook-form seem not to be transpiled
-  // to a low enough version of javascript
-  // They use the object spread syntax { ... }, not supported by Safari 10
-  transpilePackages: ['react-hook-form'],
+
+  transpilePackages: [
+    '@codegouvfr/react-dsfr',
+    // TRELLO-1393 the published files of react-hook-form seem not to be transpiled
+    // to a low enough version of javascript
+    // They use the object spread syntax { ... }, not supported by Safari 10
+    'react-hook-form',
+  ],
+  // Required by @codegouvfr/react-dsfr install doc
+  webpack: config => {
+    config.module.rules.push({
+      test: /\.woff2$/,
+      type: 'asset/resource',
+    })
+    return config
+  },
 }

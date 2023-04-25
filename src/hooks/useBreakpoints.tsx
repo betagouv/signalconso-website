@@ -1,12 +1,11 @@
 import {useEffect, useState} from 'react'
 
 const breakpoints = {
-  // same as default Tailwind breakpoints
-  sm: 640,
+  // same as DSFR
+  sm: 576,
   md: 768,
-  lg: 1024,
-  xl: 1280,
-  _2xl: 1536,
+  lg: 992,
+  xl: 768,
 }
 
 // Listen to the device width in JS

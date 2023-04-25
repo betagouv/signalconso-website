@@ -34,6 +34,7 @@ export const ReportFile = ({file, onRemove}: ReportFileProps) => {
         target="_blank"
         href={fileUrl}
         rel="noreferrer"
+        className="after:!hidden"
         sx={{
           display: 'block',
           position: 'relative',

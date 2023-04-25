@@ -714,6 +714,20 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@codegouvfr/react-dsfr@npm:^0.45.0":
+  version: 0.45.0
+  resolution: "@codegouvfr/react-dsfr@npm:0.45.0"
+  dependencies:
+    tsafe: ^1.6.0
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0 || ^18.0.0
+  bin:
+    copy-dsfr-to-public: bin/copy-dsfr-to-public.js
+    only-include-used-icons: bin/only-include-used-icons.js
+  checksum: 88924781e2669592aa450ef38e3129befa1eb21dea77e474323f091bc58bd90b1ea2f0a884857ec18a661f7055846e5864c88527181e277b51afe2ea3220bf5e
+  languageName: node
+  linkType: hard
+
 "@cspotcode/source-map-support@npm:^0.8.0":
   version: 0.8.1
   resolution: "@cspotcode/source-map-support@npm:0.8.1"
@@ -742,6 +756,19 @@ __metadata:
   peerDependencies:
     "@babel/core": ^7.0.0
   checksum: e3353499c76c4422d6e900c0dfab73607056d9da86161a3f27c3459c193c4908050c5d252c68fcde231e13f02a9d8e0dc07d260317ae0e5206841e331cc4caae
+  languageName: node
+  linkType: hard
+
+"@emotion/cache@npm:*":
+  version: 11.10.5
+  resolution: "@emotion/cache@npm:11.10.5"
+  dependencies:
+    "@emotion/memoize": ^0.8.0
+    "@emotion/sheet": ^1.2.1
+    "@emotion/utils": ^1.2.0
+    "@emotion/weak-memoize": ^0.3.0
+    stylis: 4.1.3
+  checksum: 1dd2d9af2d3ecbd3d4469ecdf91a335eef6034c851b57a474471b2d2280613eb35bbed98c0368cc4625f188619fbdaf04cf07e8107aaffce94b2178444c0fe7b
   languageName: node
   linkType: hard
 
@@ -804,7 +831,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@emotion/serialize@npm:^1.1.0, @emotion/serialize@npm:^1.1.1":
+"@emotion/serialize@npm:*, @emotion/serialize@npm:^1.1.0, @emotion/serialize@npm:^1.1.1":
   version: 1.1.1
   resolution: "@emotion/serialize@npm:1.1.1"
   dependencies:
@@ -834,7 +861,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@emotion/sheet@npm:^1.2.0":
+"@emotion/sheet@npm:^1.2.0, @emotion/sheet@npm:^1.2.1":
   version: 1.2.1
   resolution: "@emotion/sheet@npm:1.2.1"
   checksum: ce78763588ea522438156344d9f592203e2da582d8d67b32e1b0b98eaba26994c6c270f8c7ad46442fc9c0a9f048685d819cd73ca87e544520fd06f0e24a1562
@@ -870,7 +897,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@emotion/utils@npm:^1.2.0":
+"@emotion/utils@npm:*, @emotion/utils@npm:^1.2.0":
   version: 1.2.0
   resolution: "@emotion/utils@npm:1.2.0"
   checksum: 55457a49ddd4db6a014ea0454dc09eaa23eedfb837095c8ff90470cb26a303f7ceb5fcc1e2190ef64683e64cfd33d3ba3ca3109cd87d12bc9e379e4195c9a4dd
@@ -8694,6 +8721,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "signalconso-website@workspace:."
   dependencies:
+    "@codegouvfr/react-dsfr": ^0.45.0
     "@emotion/cache": 11.10.1
     "@emotion/react": 11.10.0
     "@emotion/server": 11.10.0
@@ -8753,6 +8781,7 @@ __metadata:
     tailwindcss: ^3.2.7
     ts-jest: 28.0.8
     ts-node: 10.9.1
+    tss-react: ^4.8.2
     typescript: 4.7.4
     yaml-import: 2.0.0
   languageName: unknown
@@ -9542,6 +9571,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"tsafe@npm:^1.6.0":
+  version: 1.6.0
+  resolution: "tsafe@npm:1.6.0"
+  checksum: 1cea91c1b8a2d4d4ab37f940bbbe297890c5f83cf5415f1e7450373b47f621ebb5da962786a0f3eb1756ebf947750d3ece2b5bb64740c153cc1390cf41202fe1
+  languageName: node
+  linkType: hard
+
 "tsconfig-paths@npm:^3.14.1":
   version: 3.14.2
   resolution: "tsconfig-paths@npm:3.14.2"
@@ -9572,6 +9608,24 @@ __metadata:
   version: 2.5.0
   resolution: "tslib@npm:2.5.0"
   checksum: ae3ed5f9ce29932d049908ebfdf21b3a003a85653a9a140d614da6b767a93ef94f460e52c3d787f0e4f383546981713f165037dc2274df212ea9f8a4541004e1
+  languageName: node
+  linkType: hard
+
+"tss-react@npm:^4.8.2":
+  version: 4.8.2
+  resolution: "tss-react@npm:4.8.2"
+  dependencies:
+    "@emotion/cache": "*"
+    "@emotion/serialize": "*"
+    "@emotion/utils": "*"
+  peerDependencies:
+    "@emotion/react": ^11.4.1
+    "@emotion/server": ^11.4.0
+    react: ^16.8.0 || ^17.0.2 || ^18.0.0
+  peerDependenciesMeta:
+    "@emotion/server":
+      optional: true
+  checksum: d3767c13a7f2f37ac46b1127a60c68fc3806035fc6fec7493660c6a8f6830e3201c555d9bf046e0f37a7d95c4fe49fd8f9a8312bb4af6fa2f4e2afe74d8be870
   languageName: node
   linkType: hard
 
