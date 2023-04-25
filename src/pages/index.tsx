@@ -3,7 +3,7 @@ import {useColors} from '@codegouvfr/react-dsfr/useColors'
 import {allVisibleAnomalies, createFuseIndex} from 'anomalies/Anomalies'
 import {InfoBanner} from 'components_feature/InfoBanner/InfoBanner'
 import {useRgpdBanner} from 'components_feature/RgpdBanner/RgpdBanner'
-import {AnomalyTile} from 'components_simple/AnomalyCard/AnomalyTile'
+import {AnomalySearchResultTile} from 'components_simple/AnomalyCard/AnomalySearchResultTile'
 import {IllustrationStepper} from 'components_simple/IllustrationStepper/StepIllustrations'
 import {useI18n} from 'i18n/I18n'
 import dynamic from 'next/dynamic'
@@ -19,6 +19,9 @@ import {margin} from '@mui/system'
 import {bottom} from '@popperjs/core'
 import {fr} from 'date-fns/locale'
 import SearchBar from '../components_simple/Search/SearchBar'
+import Fuse from 'fuse.js'
+import {AnomalyTile} from '../components_simple/AnomalyCard/AnomalyTile'
+import {Divider} from '@mui/material'
 
 const ReportStartedAlert = dynamic(() => import('components_feature/ReportStartedAlert/ReportStartedAlert'), {ssr: false})
 
@@ -33,6 +36,18 @@ const Home = () => {
   const _report = useReportFlowContext()
   const hasStoredReport = useMemo(() => !!_report.reportDraft.anomaly, [_report.reportDraft])
   const dsfrTheme = useColors()
+
+  const fIndex = createFuseIndex(allVisibleAnomalies())
+
+  console.log(fIndex)
+
+  const fuse = new Fuse(fIndex, {
+    keys: ['title', 'desc'],
+    threshold: 0.2,
+    minMatchCharLength: 3,
+    distance: 100,
+    ignoreLocation: true,
+  })
 
   return (
     <>
@@ -79,12 +94,12 @@ const Home = () => {
         </div>
         <div id="index-categories" style={{background: dsfrTheme.decisions.background.actionLow.blueFrance.default}}>
           <div className="fr-container fr-pt-8w fr-pb-8w">
-            <h2>Quel problème avez-vous rencontré ?</h2>
             <SearchBar anomalies={anomalies} />
+
             <div className="fr-container--fluid">
               <div className="fr-grid-row fr-grid-row--gutters">
                 {anomalies.map(a => (
-                  <div key={a.path} className="fr-col-12 fr-col-sm-6 fr-col-md-4 fr-col-xl-3">
+                  <div key={a.path} className="fr-col-6">
                     <AnomalyTile anomaly={a} />
                   </div>
                 ))}

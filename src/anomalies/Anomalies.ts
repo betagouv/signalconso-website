@@ -11,31 +11,39 @@ export const allVisibleAnomalies = () =>
       return parseInt(a.id) - parseInt(b.id)
     })
 
-type AnomalyIndex = {
+export type AnomalyIndex = {
   root: Anomaly
   id: string
   title: string
-  desc?: string
+  description?: string
+  subcategories: Subcategory[]
 }
 
 export function createFuseIndex(anomalies: Anomaly[]) {
   const res: AnomalyIndex[] = []
 
   allVisibleAnomalies().map(anomaly => {
-    res.push({root: anomaly, id: anomaly.id, title: anomaly.title, desc: anomaly.description})
+    // res.push({root: anomaly, id: anomaly.id, title: anomaly.title, description: anomaly.description, subcategories: []})
     const subcategories = anomaly.subcategories
-    const SubcategoryAnomalies = aggregateCategories(anomaly, subcategories)
+    const SubcategoryAnomalies = aggregateCategories(anomaly, [], subcategories)
     res.push(...SubcategoryAnomalies)
   })
 
   return res
 }
 
-function aggregateCategories(anomaly: Anomaly, subcategories: Subcategory[]) {
+function aggregateCategories(anomaly: Anomaly, acc: Subcategory[], subcategories: Subcategory[]) {
   const res: AnomalyIndex[] = []
   subcategories.forEach(subcategory => {
-    res.push({root: anomaly, id: subcategory.id, title: subcategory.title, desc: subcategory.desc})
-    const cat = subcategory.subcategories ? aggregateCategories(anomaly, subcategory.subcategories) : []
+    const newAcc = acc.concat(subcategory)
+    res.push({
+      root: anomaly,
+      id: subcategory.id,
+      title: subcategory.title,
+      description: subcategory.desc,
+      subcategories: newAcc,
+    })
+    const cat = subcategory.subcategories ? aggregateCategories(anomaly, newAcc, subcategory.subcategories) : []
     res.push(...cat)
   })
 

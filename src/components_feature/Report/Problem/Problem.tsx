@@ -74,6 +74,10 @@ export const Problem = ({anomaly, isWebView, stepNavigation}: Props) => {
   const displayReponseConso = useMemo(chooseIfReponseConsoDisplayed, [])
   const {reportDraft, setReportDraft, resetFlow} = useReportFlowContext()
 
+  console.log('111')
+  console.log(reportDraft)
+  console.log('111')
+
   // reset the draft when switching the root category
   useEffect(() => {
     if (anomaly.category !== reportDraft.category) {
