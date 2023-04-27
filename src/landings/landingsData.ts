@@ -1,3 +1,4 @@
+// Generated file, do not edit manually
 export const landingsData = [
   {
     category: 'AchatMagasin',
@@ -5,7 +6,7 @@ export const landingsData = [
     catchPhrase:
       'Signalez un problème lors de vos achats en magasin, renseignez-vous sur vos droits avec la répression des fraudes !',
     secondaryTitle1: 'Pourquoi faire un signalement si vous rencontrez des problèmes lors de vos achats en magasin ?',
-    secondaryTitle2: 'Que va devenir votre signalement concernant un achat en ligne ?',
+    secondaryTitle2: 'Que va devenir votre signalement concernant un achat dans un magasin ?',
     sampleReports: [
       {
         text: "J'ai acheté un téléphone en date du 22/11/2022. Au bout de 4 mois, le téléphone tombe en panne, je l'amène au service après-vente qui refuse de faire marcher la garantie au motif qu'il y a un petit impact sur la coque du téléphone. Sachant que j'ai fait cet impact assez rapidement et que mon téléphone a toujours bien fonctionné, le refus de faire marcher la garantie est pour moi aberrant. Je demande donc que mon téléphone soit réparé gratuitement car j'ai une garantie magasin et l'impact sur la coque ne peut pas être la cause du dysfonctionnement.",
