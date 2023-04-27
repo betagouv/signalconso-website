@@ -110,7 +110,7 @@ describe('Problem', () => {
   }
 
   const clickBtnSubmit = (app: ScRenderResult) => {
-    const btnSubmit = app.container.querySelector('#btn-submit') as HTMLButtonElement
+    const btnSubmit = app.container.querySelector('.stepper-next-button') as HTMLButtonElement
     if (btnSubmit === null) {
       throw new Error(`Button submit is not visible`)
     }

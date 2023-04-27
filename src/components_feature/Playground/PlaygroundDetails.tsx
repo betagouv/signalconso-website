@@ -1,10 +1,11 @@
-import {Card, CardContent, Checkbox, Divider, FormControlLabel, useTheme} from '@mui/material'
+import {Checkbox} from '@codegouvfr/react-dsfr/Checkbox'
+import {useTheme} from '@mui/material'
 import {_Details} from 'components_feature/Report/Details/Details'
-import React, {useState} from 'react'
 import {styleUtils} from 'core/theme'
 import {ReportDraft2} from 'model/ReportDraft2'
+import {ChangeEvent, useState} from 'react'
+import {getEntries, getKeys} from 'utils/utils'
 import {
-  DetailInput,
   DetailInputCheckbox,
   DetailInputDate,
   DetailInputDateNotInFuture,
@@ -14,8 +15,8 @@ import {
   DetailInputTimeslot,
   DetailInputType,
 } from '../../anomalies/Anomaly'
-import {UploadedFile} from '../../model/UploadedFile'
 import {DetailInputValue} from '../../model/CreatedReport'
+import {UploadedFile} from '../../model/UploadedFile'
 import {dummyStepNavigation} from './PlaygroundConfirmation'
 
 export class DetailsFixtureInput {
@@ -64,27 +65,23 @@ export class DetailsFixtureInput {
   }
 }
 
-export class DetailsFixtureValue {
-  static readonly date = '10/11/2019'
-  static readonly text = 'some text'
-  static readonly radio = DetailsFixtureInput.radio.options![1]
-  static readonly checkbox = [DetailsFixtureInput.checkbox.options![0], DetailsFixtureInput.checkbox.options![1]]
-  static readonly textarea = 'some other text'
+const inputsConfig = {
+  text: DetailsFixtureInput.text,
+  date: DetailsFixtureInput.date,
+  dateNotInFuture: DetailsFixtureInput.dateNotInFuture,
+  dateWithNoDefault: DetailsFixtureInput.dateWithNoDefault,
+  radio: DetailsFixtureInput.radio,
+  checkbox: DetailsFixtureInput.checkbox,
+  textarea: DetailsFixtureInput.textarea,
+  timeslot: DetailsFixtureInput.timeslot,
 }
+
+type InputType = keyof typeof inputsConfig
 
 export const PlaygroundDetails = () => {
   const theme = useTheme()
-  const config = {
-    text: DetailsFixtureInput.text,
-    date: DetailsFixtureInput.date,
-    dateNotInFuture: DetailsFixtureInput.dateNotInFuture,
-    dateWithNoDefault: DetailsFixtureInput.dateWithNoDefault,
-    radio: DetailsFixtureInput.radio,
-    checkbox: DetailsFixtureInput.checkbox,
-    textarea: DetailsFixtureInput.textarea,
-    timeslot: DetailsFixtureInput.timeslot,
-  }
-  const [picked, setPicked]: any = useState({
+
+  const [inputChoices, setInputChoices] = useState({
     text: true,
     date: true,
     dateNotInFuture: true,
@@ -94,37 +91,39 @@ export const PlaygroundDetails = () => {
     textarea: true,
     timeslot: true,
   })
-  const inputs = Object.entries(picked)
-    .filter(([k, v]) => !!v)
-    .map(([k, v]) => (config as any)[k])
+  const chosenInputs = getEntries(inputChoices)
+    .filter(([, v]) => !!v)
+    .map(([k]) => inputsConfig[k])
+
   const [resultInputs, setResultInputs] = useState<DetailInputValue[] | undefined>()
   const [resultFiles, setResultFiles] = useState<UploadedFile[] | undefined>()
+
+  const checkboxOptions = getKeys(inputsConfig).map(inputType => ({
+    label: inputType,
+    nativeInputProps: {
+      onChange: (e: ChangeEvent<HTMLInputElement>) => {
+        setInputChoices(_ => ({..._, [inputType]: e.target.checked}))
+      },
+      checked: inputChoices[inputType],
+    },
+  }))
+
   return (
     <>
-      {Object.keys(config).map((key: any) => (
-        <FormControlLabel
-          key={key}
-          control={<Checkbox checked={picked[key]} onChange={e => setPicked((_: any) => ({..._, [key]: e.target.checked}))} />}
-          label={key}
-        />
-      ))}
-      <Card elevation={2}>
-        <CardContent>
-          <_Details
-            inputs={[...inputs]}
-            onSubmit={(res, files) => {
-              setResultInputs(ReportDraft2.parseDetails(res, inputs))
-              setResultFiles(files)
-            }}
-            stepNavigation={dummyStepNavigation}
-            consumerWish={undefined}
-          />
-        </CardContent>
-      </Card>
+      <Checkbox legend="Configuration des inputs à afficher" options={checkboxOptions} orientation="horizontal" />
+      <hr className="border-t-2 border-black border-solid bg-none" />
+      <_Details
+        inputs={[...chosenInputs]}
+        onSubmit={(res, files) => {
+          setResultInputs(ReportDraft2.parseDetails(res, chosenInputs))
+          setResultFiles(files)
+        }}
+        stepNavigation={dummyStepNavigation}
+        consumerWish={undefined}
+      />
       <pre style={{fontSize: styleUtils(theme).fontSize.small, lineHeight: 1.3}}>
         {JSON.stringify(resultInputs, undefined, 2)}
       </pre>
-      <Divider />
       <pre style={{fontSize: styleUtils(theme).fontSize.small, lineHeight: 1.3}}>{JSON.stringify(resultFiles, undefined, 2)}</pre>
     </>
   )

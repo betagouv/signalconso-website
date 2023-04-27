@@ -1,8 +1,8 @@
+import {Button} from '@codegouvfr/react-dsfr/Button'
 import {Box} from '@mui/material'
-import {ScButton} from 'components_simple/Button/Button'
 import {Panel, PanelBody} from 'components_simple/Panel/Panel'
 import {useI18n} from 'i18n/I18n'
-import {indexToStep, indexToStepOrDone, ReportStep} from 'model/ReportStep'
+import {ReportStep, indexToStep} from 'model/ReportStep'
 import React, {ReactElement, ReactNode} from 'react'
 import {Txt} from '../../../alexlibs/mui-extension/Txt/Txt'
 
@@ -42,18 +42,17 @@ export const ConfirmationStep = ({title, children, index, goToStep}: Confirmatio
             {index! + 1}.
           </Txt>
           <Txt>{title}</Txt>
-          <ScButton
-            sx={{marginLeft: 'auto'}}
+          <Button
+            className="ml-4"
             size="small"
-            variant="outlined"
-            icon="edit"
-            color="primary"
+            priority="secondary"
+            iconId={'fr-icon-pencil-line'}
             onClick={() => {
               goToStep(indexToStep(index! + 1))
             }}
           >
             {m.edit}
-          </ScButton>
+          </Button>
         </Box>
       }
     >

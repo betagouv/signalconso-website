@@ -7,10 +7,10 @@ import {Panel, PanelActions, PanelBody} from '../../../components_simple/Panel/P
 import {useI18n} from '../../../i18n/I18n'
 import {Controller, useForm} from 'react-hook-form'
 import React from 'react'
-import {StepperActionsNext} from '../../../components_simple/ReportFlowStepper/StepperActionsNext'
 import {Box} from '@mui/material'
 import {Txt} from '../../../alexlibs/mui-extension/Txt/Txt'
 import {SocialNetworkRow} from '../../../components_simple/SocialNetworkRow/SocialNetworkRow'
+import {BtnNextSubmit} from 'components_simple/Buttons'
 
 interface Props {
   onSubmit: (socialNetwork: SocialNetworks, influencer: string) => void
@@ -94,7 +94,7 @@ export const InfluencerBySocialNetwork = ({onSubmit}: Props) => {
                 />
               </PanelBody>
               <PanelActions>
-                <StepperActionsNext type="submit" />
+                <BtnNextSubmit />
               </PanelActions>
             </Panel>
           </Animate>

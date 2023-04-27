@@ -4,27 +4,21 @@ import {I18nContextProps, useI18n} from 'i18n/I18n'
 import {ConsumerWish} from 'model/ReportDraft'
 import {alertInfoBackgroundColor, alertInfoTextColor} from '../../../alexlibs/mui-extension/Alert/Alert'
 import {Txt} from '../../../alexlibs/mui-extension/Txt/Txt'
+import {FriendlyHelpText} from 'alexlibs/mui-extension/Alert/FriendlyHelpText'
 
 export function ProblemConsumerWishInformation({consumerWish}: {consumerWish: ConsumerWish}) {
   const {m} = useI18n()
   const textStyle = {lineHeight: '1.3'}
   return (
     <Animate>
-      <Box
-        sx={{
-          py: 2,
-          px: 4,
-          background: alertInfoBackgroundColor,
-          color: alertInfoTextColor,
-        }}
-      >
+      <FriendlyHelpText>
         <Txt sx={textStyle} block>
           {pickText(m, consumerWish)}
         </Txt>
         <Txt sx={{mt: 2, ...textStyle}} block>
           {pickSecondText(m, consumerWish)}
         </Txt>
-      </Box>
+      </FriendlyHelpText>
     </Animate>
   )
 }

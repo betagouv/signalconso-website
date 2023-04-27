@@ -1,17 +1,17 @@
 import {Autocomplete, Box} from '@mui/material'
 import {useGetCountries} from 'clients/apiHooks'
 import {Animate} from 'components_simple/Animate/Animate'
+import {BtnNextSubmit} from 'components_simple/Buttons'
 import {FormLayout} from 'components_simple/FormLayout/FormLayout'
 import {ScInput} from 'components_simple/Input/ScInput'
 import {Panel, PanelActions, PanelBody} from 'components_simple/Panel/Panel'
-import {StepperActionsNext} from 'components_simple/ReportFlowStepper/StepperActionsNext'
 import {useI18n} from 'i18n/I18n'
 import {Controller, useForm} from 'react-hook-form'
 import {Alert} from '../../../alexlibs/mui-extension/Alert/Alert'
 import {Txt} from '../../../alexlibs/mui-extension/Txt/Txt'
+import {CompanyKinds} from '../../../anomalies/Anomaly'
 import {Country} from '../../../model/Country'
 import {fnSwitch} from '../../../utils/FnSwitch'
-import {CompanyKinds} from '../../../anomalies/Anomaly'
 
 interface Form {
   name: string
@@ -120,7 +120,7 @@ export const CompanyAskForeignDetails = ({onSubmit, companyKind}: Props) => {
           </PanelBody>
 
           <PanelActions>
-            <StepperActionsNext type="submit" />
+            <BtnNextSubmit />
           </PanelActions>
         </form>
       </Panel>

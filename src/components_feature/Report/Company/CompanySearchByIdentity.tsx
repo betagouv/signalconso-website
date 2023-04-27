@@ -1,21 +1,21 @@
+import {Box, Icon} from '@mui/material'
+import {useAnalyticContext} from 'analytic/AnalyticContext'
+import {CompanySearchEventActions, EventCategories} from 'analytic/analytic'
+import {Animate} from 'components_simple/Animate/Animate'
+import {ButtonWithLoader} from 'components_simple/Buttons'
 import {FormLayout} from 'components_simple/FormLayout/FormLayout'
-import {useI18n} from 'i18n/I18n'
 import {ScInput} from 'components_simple/Input/ScInput'
 import {Panel, PanelActions, PanelBody} from 'components_simple/Panel/Panel'
 import {useApiClients} from 'context/ApiClientsContext'
-import {useFetcher} from '../../../hooks/useFetcher'
-import {ScButton} from 'components_simple/Button/Button'
-import {useForm} from 'react-hook-form'
 import {useToast} from 'hooks/useToast'
+import {useI18n} from 'i18n/I18n'
+import {ReactNode, useEffect, useRef} from 'react'
+import {useForm} from 'react-hook-form'
 import {IconBtn} from '../../../alexlibs/mui-extension/IconBtn/IconBtn'
-import {Box, Icon} from '@mui/material'
-import React, {ReactNode, useEffect, useRef} from 'react'
-import {Animate} from 'components_simple/Animate/Animate'
-import {ifDefined} from '../../../utils/utils'
-import {CompanySearchEventActions, EventCategories} from 'analytic/analytic'
-import {useAnalyticContext} from 'analytic/AnalyticContext'
-import {CompanySearchByIdentityHelpDialog} from './CompanySearchByIdentityHelpDialog'
+import {useFetcher} from '../../../hooks/useFetcher'
 import {CompanySearchResult} from '../../../model/Company'
+import {ifDefined} from '../../../utils/utils'
+import {CompanySearchByIdentityHelpDialog} from './CompanySearchByIdentityHelpDialog'
 
 interface Form {
   identity: string
@@ -88,9 +88,9 @@ export const CompanySearchByIdentity = ({children}: Props) => {
             </PanelBody>
 
             <PanelActions>
-              <ScButton color="primary" variant="contained" icon="search" type="submit" loading={_searchByIdentity.loading}>
+              <ButtonWithLoader iconId="ri-search-line" loading={_searchByIdentity.loading}>
                 {m.search}
-              </ScButton>
+              </ButtonWithLoader>
             </PanelActions>
           </form>
         </Panel>

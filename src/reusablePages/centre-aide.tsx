@@ -18,7 +18,7 @@ export const CentreAide = () => {
         <Tabs
           tabs={[
             {label: 'Consommateur', iconId: 'fr-icon-user-line', content: <CentreAideConso />},
-            {label: 'Professionnel', iconId: 'fr-icon-store-line', content: <CentreAidePro />},
+            {label: 'Professionnel', iconId: 'fr-icon-briefcase-line', content: <CentreAidePro />},
           ]}
         />
       </ContentPageContainer>

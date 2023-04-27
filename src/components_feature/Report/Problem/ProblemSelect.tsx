@@ -19,28 +19,22 @@ interface ProblemSelectProps<T> {
 }
 
 export const ProblemSelect = <T,>({autoScrollTo, title: titleRaw, value, options, onChange, id}: ProblemSelectProps<T>) => {
-  const sx: SxProps<Theme> = {
-    position: 'relative',
-    border: 'none !important',
-    paddingTop: t => t.spacing(1) + ' !important',
-  }
   const title = <span dangerouslySetInnerHTML={{__html: titleRaw ?? 'Pouvez-vous préciser ?'}} />
   return (
     <Animate {...{autoScrollTo}}>
-      <Panel {...{sx, title, id}}>
-        <PanelBody>
-          <ScRadioGroup value={value} onChange={onChange} sx={{mb: 2}}>
-            {options.map(option => (
-              <ScRadioGroupItem
-                key={option.value + ''}
-                value={option.value}
-                title={option.title}
-                description={option.description}
-              />
-            ))}
-          </ScRadioGroup>
-        </PanelBody>
-      </Panel>
+      <div {...{id}}>
+        <h2 className="fr-h6">{title}</h2>
+        <ScRadioGroup value={value} onChange={onChange} sx={{mb: 2}}>
+          {options.map(option => (
+            <ScRadioGroupItem
+              key={option.value + ''}
+              value={option.value}
+              title={option.title}
+              description={option.description}
+            />
+          ))}
+        </ScRadioGroup>
+      </div>
     </Animate>
   )
 }

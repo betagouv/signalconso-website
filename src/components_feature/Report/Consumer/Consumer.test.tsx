@@ -39,7 +39,7 @@ describe('Consumer', () => {
   }
 
   const submit = () => {
-    fireEvent.click(app.container.querySelector('#btn-submit')!)
+    fireEvent.click(app.container.querySelector('.stepper-next-button')!)
   }
 
   describe('when values are pre defined', function () {

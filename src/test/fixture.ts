@@ -1,6 +1,5 @@
 import {allAnomalies} from 'anomalies/Anomalies'
 import {getIndexForStep, ReportStep, reportSteps} from 'model/ReportStep'
-import randomstring from 'randomstring'
 import {InfoWall, reportTags, socialNetworks, Subcategory} from '../anomalies/Anomaly'
 import {Address} from '../model/Address'
 import {Company, CompanySearchResult, WebsiteCompanySearchResult} from '../model/Company'
@@ -8,48 +7,85 @@ import {CreatedReport} from '../model/CreatedReport'
 import {Influencer, ReportDraft, ReportDraftConsumer} from '../model/ReportDraft'
 import {FileOrigin} from '../model/UploadedFile'
 
-export class Fixture {
-  private static readonly lastNames = ['Doe', 'Durand', 'Dupont']
-
-  private static readonly firstNames = ['Alice', 'Bob', 'Charles', 'Danièle', 'Émilien', 'Fanny', 'Gérard']
-
-  private static readonly oneOf = (array: any[]) => {
-    return array[Math.floor(Math.random() * array.length)]
+export class SeedableRandom {
+  seed = 1
+  constructor(seed: number) {
+    this.seed = seed
+  }
+  // https://stackoverflow.com/questions/521295/seeding-the-random-number-generator-in-javascript
+  // approximately random, it's enough for us
+  // Returns a number between 0 and 1
+  number() {
+    const x = Math.sin(this.seed++) * 10000
+    return x - Math.floor(x)
   }
 
-  private static readonly genBoolean = () => {
-    return Fixture.oneOf([false, true])
+  // https://stackoverflow.com/questions/1349404/generate-random-string-characters-in-javascript
+  string({
+    length = 10,
+    charset = 'alphabetic',
+    capitalization = 'lowercase',
+  }: {length?: number; charset?: 'numeric' | 'alphabetic'; capitalization?: 'lowercase' | 'uppercase'} = {}) {
+    let result = ''
+    const characters =
+      charset === 'numeric'
+        ? '0123456789'
+        : capitalization === 'lowercase'
+        ? 'abcdefghijklmnopqrstuvwxyz'
+        : 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+    const charactersLength = characters.length
+    let counter = 0
+    while (counter < length) {
+      result += characters.charAt(Math.floor(this.number() * charactersLength))
+      counter += 1
+    }
+    return result
   }
 
-  private static readonly genSiret = () => {
-    return randomstring.generate({
+  oneOf(array: any[]) {
+    return array[Math.floor(this.number() * array.length)]
+  }
+
+  boolean() {
+    return this.oneOf([false, true])
+  }
+
+  siret() {
+    return this.string({
       length: 14,
       charset: 'numeric',
     })
   }
 
-  private static readonly genPhone = () => {
-    return randomstring.generate({
+  phone() {
+    return this.string({
       length: 10,
       charset: 'numeric',
     })
   }
 
-  static readonly genEmail = () => {
+  email() {
     return (
-      randomstring.generate({
+      this.string({
         length: 10,
         charset: 'alphabetic',
       }) +
-      '@' +
-      randomstring.generate({
+      this.string({
         length: 10,
         charset: 'alphabetic',
       })
     )
   }
+}
 
-  private static readonly genDetails = () => [
+const defaultRandom = new SeedableRandom(1)
+
+export class Fixture {
+  private static readonly lastNames = ['Doe', 'Durand', 'Dupont']
+
+  private static readonly firstNames = ['Alice', 'Bob', 'Charles', 'Danièle', 'Émilien', 'Fanny', 'Gérard']
+
+  private static readonly genDetails = (random: SeedableRandom) => [
     {label: "Date de constat (ou date d'achat) :", value: '09/03/2022'},
     {label: 'Quel est le nom du produit :', value: 'oo'},
     {
@@ -65,33 +101,33 @@ export class Fixture {
     },
   ]
 
-  static readonly genReport = (): CreatedReport => {
+  static readonly genReport = (random: SeedableRandom = defaultRandom): CreatedReport => {
     const company = Fixture.genCompany()
-    const subcategories = [Fixture.genSubcategory(), Fixture.genSubcategory()]
+    const subcategories = [Fixture.genSubcategory({}, random), Fixture.genSubcategory({}, random)]
     return {
-      companyAddress: Fixture.genAddress(),
+      companyAddress: Fixture.genAddress(random),
       companySiret: company.siret,
-      websiteURL: randomstring.generate(),
+      websiteURL: random.string(),
       tags: subcategories.filter(_ => !!_.tags).flatMap(_ => _.tags!),
-      employeeConsumer: Fixture.genBoolean(),
-      contactAgreement: Fixture.genBoolean(),
+      employeeConsumer: random.boolean(),
+      contactAgreement: random.boolean(),
     }
   }
 
-  static readonly genDraftReport = (lastStep: ReportStep): Partial<ReportDraft> => {
+  static readonly genDraftReport = (lastStep: ReportStep, random: SeedableRandom = defaultRandom): Partial<ReportDraft> => {
     const stepOrder: {[key in ReportStep]: (_: Partial<ReportDraft>) => Partial<ReportDraft>} = {
       BuildingProblem: _ => ({
         ..._,
-        category: Fixture.oneOf(allAnomalies.map(_ => _.category)),
+        category: random.oneOf(allAnomalies.map(_ => _.category)),
       }),
       BuildingDetails: _ => ({
         ..._,
-        subcategories: [Fixture.genSubcategory(), Fixture.genSubcategory()],
+        subcategories: [Fixture.genSubcategory({}, random), Fixture.genSubcategory({}, random)],
       }),
       BuildingCompany: _ => ({
         ..._,
-        details: Fixture.genDetails(),
-        employeeConsumer: Fixture.genBoolean(),
+        details: Fixture.genDetails(random),
+        employeeConsumer: random.boolean(),
         uploadedFiles: [
           {
             filename: 'Captura de pantalla 2022-03-14 a las 18.40.21.png',
@@ -103,12 +139,12 @@ export class Fixture {
       }),
       BuildingConsumer: _ => ({
         ..._,
-        companyDraft: Fixture.genCompany(),
+        companyDraft: Fixture.genCompany(random),
       }),
       Confirmation: _ => ({
         ..._,
-        consumer: Fixture.genConsumer(),
-        contactAgreement: Fixture.genBoolean(),
+        consumer: Fixture.genConsumer(random),
+        contactAgreement: random.boolean(),
       }),
     }
     return reportSteps
@@ -118,63 +154,63 @@ export class Fixture {
       }, {})
   }
 
-  static readonly genConsumer = (): ReportDraftConsumer => {
+  static readonly genConsumer = (random: SeedableRandom = defaultRandom): ReportDraftConsumer => {
     return {
-      firstName: Fixture.oneOf(Fixture.firstNames),
-      lastName: Fixture.oneOf(Fixture.lastNames),
-      email: Fixture.genEmail(),
+      firstName: random.oneOf(Fixture.firstNames),
+      lastName: random.oneOf(Fixture.lastNames),
+      email: random.email(),
     }
   }
 
-  static readonly genAddress = (): Address => {
+  static readonly genAddress = (random: SeedableRandom = defaultRandom): Address => {
     return {
-      number: randomstring.generate({charset: 'numeric', length: 2}),
-      street: randomstring.generate({charset: 'alphabetic', capitalization: 'lowercase'}),
-      city: Fixture.oneOf(['Paris', 'Tunis', 'Nairobi', 'Pont-Aven', 'Chamonix']),
-      postalCode: randomstring.generate({length: 5, charset: 'numeric'}),
+      number: random.string({charset: 'numeric', length: 2}),
+      street: random.string({charset: 'alphabetic', capitalization: 'lowercase'}),
+      city: random.oneOf(['Paris', 'Tunis', 'Nairobi', 'Pont-Aven', 'Chamonix']),
+      postalCode: random.string({length: 5, charset: 'numeric'}),
     }
   }
 
-  static readonly genCompanySearchResult = () => {
+  static readonly genCompanySearchResult = (random: SeedableRandom = defaultRandom) => {
     return <WebsiteCompanySearchResult>{
       exactMatch: [
         <CompanySearchResult>{
-          name: randomstring.generate({capitalization: 'lowercase', charset: 'alphabetic', length: 8}),
-          address: Fixture.genAddress(),
+          name: random.string({capitalization: 'lowercase', charset: 'alphabetic', length: 8}),
+          address: Fixture.genAddress(random),
         },
       ],
       similarHosts: [],
     }
   }
 
-  static readonly genCompany = () => {
+  static readonly genCompany = (random: SeedableRandom = defaultRandom) => {
     return <Company>{
-      id: randomstring.generate(),
-      name: randomstring.generate({capitalization: 'lowercase', charset: 'alphabetic', length: 8}),
-      siret: Fixture.genSiret(),
-      address: Fixture.genAddress(),
+      id: random.string(),
+      name: random.string({capitalization: 'lowercase', charset: 'alphabetic', length: 8}),
+      siret: random.siret(),
+      address: Fixture.genAddress(random),
     }
   }
 
-  static readonly genSubcategory = (params: Partial<Subcategory> = {}) => {
+  static readonly genSubcategory = (params: Partial<Subcategory> = {}, random: SeedableRandom = defaultRandom) => {
     return <Subcategory>{
-      title: randomstring.generate({capitalization: 'lowercase', charset: 'alphabetic'}),
-      id: randomstring.generate(),
-      tags: Fixture.oneOf([null, ...reportTags]),
+      title: random.string({capitalization: 'lowercase', charset: 'alphabetic'}),
+      id: random.string(),
+      tags: random.oneOf([null, ...reportTags]),
       ...params,
     }
   }
 
-  static readonly genInformation = () => {
+  static readonly genInformation = (random: SeedableRandom = defaultRandom) => {
     return <InfoWall>{
-      title: randomstring.generate(),
+      title: random.string(),
     }
   }
 
-  static readonly genInfluencer = () => {
+  static readonly genInfluencer = (random: SeedableRandom = defaultRandom) => {
     return <Influencer>{
-      socialNetwork: Fixture.oneOf([...socialNetworks]),
-      name: randomstring.generate(),
+      socialNetwork: random.oneOf([...socialNetworks]),
+      name: random.string(),
     }
   }
 }
