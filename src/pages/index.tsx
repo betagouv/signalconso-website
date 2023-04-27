@@ -1,6 +1,6 @@
 import {Button} from '@codegouvfr/react-dsfr/Button'
 import {useColors} from '@codegouvfr/react-dsfr/useColors'
-import {allVisibleAnomalies} from 'anomalies/Anomalies'
+import {allVisibleAnomalies, createFuseIndex} from 'anomalies/Anomalies'
 import {InfoBanner} from 'components_feature/InfoBanner/InfoBanner'
 import {AnomalyTile} from 'components_simple/AnomalyTile/AnomalyTile'
 import {IllustrationStepper} from 'components_simple/IllustrationStepper/StepIllustrations'
@@ -14,6 +14,8 @@ import consumer from '../../public/image/illustrations/consumer.png'
 import dgccrf from '../../public/image/illustrations/dgccrf.png'
 import report from '../../public/image/illustrations/report.png'
 import {useReportFlowContext} from '../components_feature/Report/ReportFlowContext'
+import SearchBar from '../components_simple/Search/SearchBar'
+import Fuse from 'fuse.js'
 
 const ReportStartedAlert = dynamic(() => import('components_feature/ReportStartedAlert/ReportStartedAlert'), {ssr: false})
 
@@ -26,6 +28,18 @@ const Home = () => {
   const _report = useReportFlowContext()
   const hasStoredReport = useMemo(() => !!_report.reportDraft.anomaly, [_report.reportDraft])
   const dsfrTheme = useColors()
+
+  const fIndex = createFuseIndex(allVisibleAnomalies())
+
+  console.log(fIndex)
+
+  const fuse = new Fuse(fIndex, {
+    keys: ['title', 'desc'],
+    threshold: 0.2,
+    minMatchCharLength: 3,
+    distance: 100,
+    ignoreLocation: true,
+  })
 
   return (
     <>
@@ -72,7 +86,8 @@ const Home = () => {
         </div>
         <div id="index-categories" style={{background: dsfrTheme.decisions.background.actionLow.blueFrance.default}}>
           <div className="fr-container fr-pt-8w fr-pb-8w">
-            <h2>Quel problème avez-vous rencontré ?</h2>
+            <SearchBar anomalies={anomalies} />
+
             <div className="fr-container--fluid">
               <div className="fr-grid-row fr-grid-row--gutters">
                 {anomalies.map(a => (
