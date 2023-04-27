@@ -99,7 +99,7 @@ const Home = () => {
             <div className="fr-container--fluid">
               <div className="fr-grid-row fr-grid-row--gutters">
                 {anomalies.map(a => (
-                  <div key={a.path} className="fr-col-6">
+                  <div key={a.path} className="fr-col-3">
                     <AnomalyTile anomaly={a} />
                   </div>
                 ))}
