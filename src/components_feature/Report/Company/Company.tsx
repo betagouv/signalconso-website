@@ -1,14 +1,14 @@
-import {EventCategories, ReportEventActions} from 'analytic/analytic'
+import {Button} from '@codegouvfr/react-dsfr/Button'
 import {useAnalyticContext} from 'analytic/AnalyticContext'
+import {EventCategories, ReportEventActions} from 'analytic/analytic'
 import {AddressComponent} from 'components_simple/Address/Address'
-import {ScButton} from 'components_simple/Button/Button'
 import {Panel, PanelActions, PanelBody} from 'components_simple/Panel/Panel'
 import {StepNavigation} from 'components_simple/ReportFlowStepper/ReportFlowStepper'
-import {StepperActionsNext} from 'components_simple/ReportFlowStepper/StepperActionsNext'
 import {Row} from 'components_simple/Row/Row'
 import {useI18n} from 'i18n/I18n'
 import {ReportDraft2} from 'model/ReportDraft2'
 import {Txt} from '../../../alexlibs/mui-extension/Txt/Txt'
+import {SocialNetworkRow} from '../../../components_simple/SocialNetworkRow/SocialNetworkRow'
 import {CompanySearchResult} from '../../../model/Company'
 import {CompanyDraft, ReportDraft} from '../../../model/ReportDraft'
 import {fnSwitch} from '../../../utils/FnSwitch'
@@ -26,7 +26,7 @@ import {CompanySearchByNameAndPostalCode} from './CompanySearchByNameAndPostalCo
 import {CompanySearchResultComponent} from './CompanySearchResult'
 import {CompanyWebsiteCountry} from './CompanyWebsiteCountry'
 import {InfluencerBySocialNetwork} from './InfluencerBySocialNetwork'
-import {SocialNetworkRow} from '../../../components_simple/SocialNetworkRow/SocialNetworkRow'
+import {BtnNext, BtnNextSubmit} from 'components_simple/Buttons'
 
 interface CompanyWithRequiredProps {
   draft: Pick<ReportDraft, 'companyKind'>
@@ -88,12 +88,7 @@ export const InfluencerFilled = ({
           <Txt color="hint">{draft.influencer.name}</Txt>
         </Row>
       </PanelBody>
-      <PanelActions>
-        <ScButton color="primary" variant="outlined" onClick={onClear} icon="edit">
-          {m.edit}
-        </ScButton>
-        <StepperActionsNext onClick={stepNavigation.next} />
-      </PanelActions>
+      <ActionButtons {...{onClear, stepNavigation}} />
     </Panel>
   )
 }
@@ -142,13 +137,20 @@ export const CompanyFilled = ({
           </Row>
         )}
       </PanelBody>
-      <PanelActions>
-        <ScButton color="primary" variant="outlined" onClick={onClear} icon="edit">
-          {m.edit}
-        </ScButton>
-        <StepperActionsNext onClick={stepNavigation.next} />
-      </PanelActions>
+      <ActionButtons {...{onClear, stepNavigation}} />
     </Panel>
+  )
+}
+
+function ActionButtons({onClear, stepNavigation}: {onClear: () => void; stepNavigation: StepNavigation}) {
+  const {m} = useI18n()
+  return (
+    <PanelActions>
+      <Button iconId={'fr-icon-pencil-line'} onClick={onClear} priority="secondary">
+        {m.edit}
+      </Button>
+      <BtnNext onClick={stepNavigation.next} />
+    </PanelActions>
   )
 }
 

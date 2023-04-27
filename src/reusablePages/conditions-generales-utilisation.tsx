@@ -26,7 +26,7 @@ export const ConditionsGeneralesUtilisation = () => {
         <Tabs
           tabs={[
             {label: 'Consommateur', iconId: 'fr-icon-user-line', content: <ConditionsGeneralesUtilisationConso />},
-            {label: 'Professionnel', iconId: 'fr-icon-store-line', content: <ConditionsGeneralesUtilisationPro />},
+            {label: 'Professionnel', iconId: 'fr-icon-briefcase-line', content: <ConditionsGeneralesUtilisationPro />},
           ]}
         />
       </ContentPageContainer>

@@ -1,21 +1,21 @@
-import {Txt} from '../../../alexlibs/mui-extension/Txt/Txt'
 import {Box, BoxProps, Icon} from '@mui/material'
-import React, {useEffect, useState} from 'react'
-import {Panel, PanelActions, PanelBody} from 'components_simple/Panel/Panel'
-import {useI18n} from 'i18n/I18n'
-import {ScRadioGroupItem} from 'components_simple/RadioGroup/RadioGroupItem'
-import {ScRadioGroup} from 'components_simple/RadioGroup/RadioGroup'
-import {styleUtils} from 'core/theme'
-import {AddressComponent} from 'components_simple/Address/Address'
-import {Animate} from 'components_simple/Animate/Animate'
-import {Controller, useForm} from 'react-hook-form'
-import {CompanyWebsiteVendor} from './CompanyWebsiteVendor'
-import {StepperActionsNext} from 'components_simple/ReportFlowStepper/StepperActionsNext'
+import {Fender} from 'alexlibs/mui-extension/Fender/Fender'
 import {useAnalyticContext} from 'analytic/AnalyticContext'
 import {CompanySearchEventActions, EventCategories} from 'analytic/analytic'
+import {AddressComponent} from 'components_simple/Address/Address'
+import {Animate} from 'components_simple/Animate/Animate'
+import {BtnNextSubmit} from 'components_simple/Buttons'
+import {Panel, PanelActions, PanelBody} from 'components_simple/Panel/Panel'
+import {ScRadioGroup} from 'components_simple/RadioGroup/RadioGroup'
+import {ScRadioGroupItem} from 'components_simple/RadioGroup/RadioGroupItem'
+import {styleUtils} from 'core/theme'
+import {useI18n} from 'i18n/I18n'
+import {useEffect, useState} from 'react'
+import {Controller, useForm} from 'react-hook-form'
+import {Txt} from '../../../alexlibs/mui-extension/Txt/Txt'
 import {useToast} from '../../../hooks/useToast'
 import {CompanySearchResult, isGovernmentCompany} from '../../../model/Company'
-import {Fender} from 'alexlibs/mui-extension/Fender/Fender'
+import {CompanyWebsiteVendor} from './CompanyWebsiteVendor'
 
 interface Props extends Omit<BoxProps, 'onSubmit'> {
   companies: CompanySearchResult[]
@@ -146,7 +146,7 @@ export const CompanySearchResultComponent = ({companies, onSubmit}: Props) => {
                 />
               </PanelBody>
               <PanelActions>
-                <StepperActionsNext type="submit" />
+                <BtnNextSubmit />
               </PanelActions>
             </form>
           </Panel>

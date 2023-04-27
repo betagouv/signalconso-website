@@ -1,26 +1,25 @@
 import {MenuItem} from '@mui/material'
-import {EventCategories, ReportEventActions} from 'analytic/analytic'
+import {FriendlyHelpText} from 'alexlibs/mui-extension/Alert/FriendlyHelpText'
 import {useAnalyticContext} from 'analytic/AnalyticContext'
+import {EventCategories, ReportEventActions} from 'analytic/analytic'
 import {Animate} from 'components_simple/Animate/Animate'
 import {ScDatepickerFr} from 'components_simple/Datepicker/ScDatepickerFr'
 import {FormLayout} from 'components_simple/FormLayout/FormLayout'
 import {ScInput} from 'components_simple/Input/ScInput'
-import {Panel, PanelBody} from 'components_simple/Panel/Panel'
-import {ScRadioGroupItem} from 'components_simple/RadioGroup/RadioGroupItem'
 import {ScRadioGroup} from 'components_simple/RadioGroup/RadioGroup'
+import {ScRadioGroupItem} from 'components_simple/RadioGroup/RadioGroupItem'
+import {StepNavigation} from 'components_simple/ReportFlowStepper/ReportFlowStepper'
 import {ReportFlowStepperActions} from 'components_simple/ReportFlowStepper/ReportFlowStepperActions'
 import {ScSelect} from 'components_simple/Select/Select'
 import {ReportFiles} from 'components_simple/UploadFile/ReportFiles'
 import {appConfig} from 'core/appConfig'
 import {useI18n} from 'i18n/I18n'
-import {DetailInputValues2, ReportDraft2} from 'model/ReportDraft2'
+import {DetailInputValues2} from 'model/ReportDraft2'
 import {useEffect, useMemo, useState} from 'react'
 import {Controller, useForm} from 'react-hook-form'
 import {ControllerProps} from 'react-hook-form/dist/types/controller'
 import {last} from 'utils/lodashNamedExport'
 import {dateToFrenchFormat, isDateInRange} from 'utils/utils'
-import {Txt} from '../../../alexlibs/mui-extension/Txt/Txt'
-import {Alert} from '../../../alexlibs/mui-extension/Alert/Alert'
 import {DetailInput, DetailInputType, ReportTag, StandardSubcategory} from '../../../anomalies/Anomaly'
 import {ConsumerWish, ReportDraft} from '../../../model/ReportDraft'
 import {FileOrigin, UploadedFile} from '../../../model/UploadedFile'
@@ -31,7 +30,6 @@ import {getDefaultValueFromInput, getOptionsFromInput, getPlaceholderFromInput} 
 import {DetailsAlertProduitDangereux} from './DetailsAlertProduitDangereux'
 import {DetailsSpecifyInput} from './DetailsSpecifyInput'
 import {getDraftReportInputs} from './draftReportInputs'
-import {StepNavigation} from 'components_simple/ReportFlowStepper/ReportFlowStepper'
 
 export class SpecifyFormUtils {
   static readonly keyword = '(à préciser)'
@@ -117,11 +115,13 @@ export const _Details = ({
     if (initialFiles) setUploadedFiles(initialFiles)
   }, [initialFiles])
 
+  const displayAlertProduitDangereux = (tags ?? []).includes('ProduitDangereux')
+
   return (
     <>
       <Animate autoScrollTo={false}>
-        <Panel>
-          <Alert gutterBottom type="warning">
+        <div>
+          <FriendlyHelpText>
             {isTransmittable ? (
               <>
                 <span dangerouslySetInnerHTML={{__html: m.detailsTextAreaTransmittable}} />
@@ -136,11 +136,10 @@ export const _Details = ({
                 {employeeConsumer && <span dangerouslySetInnerHTML={{__html: m.detailsTextAreaEmployeeConsumer}} />}
               </>
             )}
-          </Alert>
-          {(tags ?? []).includes('ProduitDangereux') && <DetailsAlertProduitDangereux />}
+          </FriendlyHelpText>
+          {displayAlertProduitDangereux && <DetailsAlertProduitDangereux />}
 
           <br />
-
           {inputs.map((input, inputIndex) => (
             <FormLayout
               label={<span dangerouslySetInnerHTML={{__html: input.label}} />}
@@ -313,36 +312,30 @@ export const _Details = ({
               })()}
             </FormLayout>
           ))}
-        </Panel>
+        </div>
       </Animate>
       <Animate autoScrollTo={false}>
-        <Panel title={fileLabel ?? m.attachments}>
-          <PanelBody>
-            {ReportDraft.isTransmittableToPro({tags, employeeConsumer, consumerWish}) && (
-              <>
-                <Alert dense type="info" sx={{mb: 2}} deletable>
-                  <Txt size="small" dangerouslySetInnerHTML={{__html: m.attachmentsDesc2}} />
-                </Alert>
-                {consumerWish !== 'fixContractualDispute' && (
-                  <Txt block gutterBottom dangerouslySetInnerHTML={{__html: m.attachmentsDescAnonymous}} />
-                )}
-                <br />
-              </>
-            )}
-            <ReportFiles
-              files={uploadedFiles}
-              fileOrigin={FileOrigin.Consumer}
-              onRemoveFile={f => setUploadedFiles(files => files?.filter(_ => _.id !== f.id))}
-              onNewFile={f => setUploadedFiles(_ => [...(_ ?? []), f])}
-            />
-            <Txt
-              sx={{mt: 2, mb: 2}}
-              block
-              gutterBottom
-              dangerouslySetInnerHTML={{__html: m.attachmentsDescAllowedFormat(appConfig.upload_allowedExtensions)}}
-            />
-          </PanelBody>
-        </Panel>
+        <div>
+          <h4>{fileLabel ?? m.attachments}</h4>
+          {ReportDraft.isTransmittableToPro({tags, employeeConsumer, consumerWish}) && (
+            <>
+              <FriendlyHelpText>
+                <span dangerouslySetInnerHTML={{__html: m.attachmentsDesc2}} />
+              </FriendlyHelpText>
+              {consumerWish !== 'fixContractualDispute' && <p dangerouslySetInnerHTML={{__html: m.attachmentsDescAnonymous}} />}
+            </>
+          )}
+          <ReportFiles
+            files={uploadedFiles}
+            fileOrigin={FileOrigin.Consumer}
+            onRemoveFile={f => setUploadedFiles(files => files?.filter(_ => _.id !== f.id))}
+            onNewFile={f => setUploadedFiles(_ => [...(_ ?? []), f])}
+          />
+          <p
+            className="fr-mt-2w"
+            dangerouslySetInnerHTML={{__html: m.attachmentsDescAllowedFormat(appConfig.upload_allowedExtensions)}}
+          />
+        </div>
       </Animate>
       <ReportFlowStepperActions
         next={() => {

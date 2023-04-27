@@ -1,49 +1,48 @@
-import {Tab, Tabs} from '@mui/material'
+import {Tabs} from '@codegouvfr/react-dsfr/Tabs'
 import {PlaygroundAcknowledgment} from 'components_feature/Playground/PlaygroundAcknoledgment'
 import {PlaygroundCompany} from 'components_feature/Playground/PlaygroundCompany'
-import {dummyStepNavigation, PlaygroundConfirmation} from 'components_feature/Playground/PlaygroundConfirmation'
+import {PlaygroundConfirmation, dummyStepNavigation} from 'components_feature/Playground/PlaygroundConfirmation'
 import {PlaygroundConsumer} from 'components_feature/Playground/PlaygroundConsumer'
 import {PlaygroundDetails} from 'components_feature/Playground/PlaygroundDetails'
+import {PlaygroundOther} from 'components_feature/Playground/PlaygroundOther'
 import {CompanyFilled} from 'components_feature/Report/Company/Company'
-import {Page} from 'components_simple/Page/Page'
-import React from 'react'
-import {Fixture} from '../test/fixture'
+import {ContentPageContainer} from 'components_simple/ContentPageContainer'
+
+const companyDraft = {
+  id: 'id12345',
+  name: 'NomSociété',
+  siret: '01234567890123',
+  website: 'http://blabla.fr',
+  phone: '0987654321',
+  address: {
+    number: '33',
+    street: 'avenue des Entreprises',
+    city: 'Nairobi',
+    postalCode: '13006',
+  },
+  isHeadOffice: true,
+  isPublic: true,
+  isOpen: true,
+}
 
 const Playground = () => {
-  const [value, setValue] = React.useState(0)
-
-  const tabs = [
-    {label: 'details', component: () => <PlaygroundDetails />},
-    {label: 'company', component: () => <PlaygroundCompany />},
-    {
-      label: 'companyFilled',
-      component: () => (
-        <CompanyFilled
-          draft={{
-            companyDraft: {
-              ...Fixture.genCompany(),
-              website: 'http://blabla.fr',
-              phone: '0987654321',
-            },
-          }}
-          onClear={console.log}
-          stepNavigation={dummyStepNavigation}
-        />
-      ),
-    },
-    {label: 'consumer', component: () => <PlaygroundConsumer />},
-    {label: 'confirmation', component: () => <PlaygroundConfirmation />},
-    {label: 'acknowledgment', component: () => <PlaygroundAcknowledgment />},
-  ]
   return (
-    <>
-      <Tabs centered value={value} onChange={(e, value) => setValue(value)}>
-        {tabs.map(tab => (
-          <Tab key={tab.label} label={tab.label} />
-        ))}
-      </Tabs>
-      <Page maxWidth="small">{tabs[value].component()}</Page>
-    </>
+    <ContentPageContainer>
+      <Tabs
+        tabs={[
+          {label: 'details', content: <PlaygroundDetails />},
+          {label: 'company', content: <PlaygroundCompany />},
+          {
+            label: 'companyFilled',
+            content: <CompanyFilled draft={{companyDraft}} onClear={console.log} stepNavigation={dummyStepNavigation} />,
+          },
+          {label: 'consumer', content: <PlaygroundConsumer />},
+          {label: 'confirmation', content: <PlaygroundConfirmation />},
+          {label: 'acknowledgment', content: <PlaygroundAcknowledgment />},
+          {label: 'other', content: <PlaygroundOther />},
+        ]}
+      />
+    </ContentPageContainer>
   )
 }
 

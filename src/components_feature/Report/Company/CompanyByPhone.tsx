@@ -2,12 +2,12 @@ import {ScInput} from 'components_simple/Input/ScInput'
 import {Txt} from '../../../alexlibs/mui-extension/Txt/Txt'
 import React, {ReactNode, useState} from 'react'
 import {useI18n} from 'i18n/I18n'
-import {ScButton} from 'components_simple/Button/Button'
 import {useForm} from 'react-hook-form'
 import {Box, BoxProps, Icon} from '@mui/material'
 import {IconBtn} from '../../../alexlibs/mui-extension/IconBtn/IconBtn'
 import {Panel, PanelBody} from 'components_simple/Panel/Panel'
 import {Animate} from 'components_simple/Animate/Animate'
+import {Button} from '@codegouvfr/react-dsfr/Button'
 
 interface Form {
   phone: string
@@ -69,10 +69,11 @@ export const CompanyByPhone = ({value, children, ...props}: Props) => {
                     : {}
                 }
               />
-
-              <ScButton variant="contained" color="primary" sx={{mt: 2}} type="submit" disabled={!!phone}>
-                {m.continue}
-              </ScButton>
+              <div className="flex items-center justify-end">
+                <Button type="submit" disabled={!!phone} className="mt-2">
+                  {m.continue}
+                </Button>
+              </div>
             </Box>
           </PanelBody>
         </Panel>

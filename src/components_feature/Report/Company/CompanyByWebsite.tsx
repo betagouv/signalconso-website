@@ -16,6 +16,7 @@ import {IconBtn} from '../../../alexlibs/mui-extension/IconBtn/IconBtn'
 import {Txt} from '../../../alexlibs/mui-extension/Txt/Txt'
 import {CompanySearchResult} from '../../../model/Company'
 import {Country} from '../../../model/Country'
+import {Button} from '@codegouvfr/react-dsfr/Button'
 
 interface Form {
   website: string
@@ -159,9 +160,11 @@ export const CompanyByWebsite = ({value, children, ...props}: Props) => {
                 }}
               />
               {!displayedResults && (
-                <ScButton variant="contained" color="primary" sx={{mt: 2}} type="submit" loading={searchQuery.isFetching}>
-                  {m.continue}
-                </ScButton>
+                <div className="flex items-center justify-end">
+                  <Button className="mt-2" type="submit" disabled={searchQuery.isFetching}>
+                    {m.continue}
+                  </Button>
+                </div>
               )}
             </Box>
           </PanelBody>

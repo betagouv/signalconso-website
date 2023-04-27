@@ -1,4 +1,4 @@
-import {ScButton} from 'components_simple/Button/Button'
+import {Button} from '@codegouvfr/react-dsfr/Button'
 import Link from 'next/link'
 import {siteMap} from '../core/siteMap'
 import {useI18n} from '../i18n/I18n'
@@ -8,15 +8,17 @@ export const LinkBackToHome = ({isWebView}: {isWebView: boolean}) => {
 
   const sendMessageToReactNative = () => window.ReactNativeWebView?.postMessage('success')
 
-  return isWebView ? (
-    <ScButton onClick={sendMessageToReactNative} color="primary" variant="contained" icon="home">
-      {m.backToHome}
-    </ScButton>
-  ) : (
-    <Link href={siteMap.index} legacyBehavior>
-      <ScButton color="primary" variant="contained" icon="home">
-        {m.backToHome}
-      </ScButton>
-    </Link>
+  return (
+    <div className="w-full flex items-center justify-center mt-2">
+      {isWebView ? (
+        <Button onClick={sendMessageToReactNative} iconId="fr-icon-home-4-line">
+          {m.backToHome}
+        </Button>
+      ) : (
+        <Link href={siteMap.index} legacyBehavior>
+          <Button iconId="fr-icon-home-4-line">{m.backToHome}</Button>
+        </Link>
+      )}
+    </div>
   )
 }

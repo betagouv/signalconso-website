@@ -1,9 +1,10 @@
+import {Button} from '@codegouvfr/react-dsfr/Button'
 import {Box} from '@mui/material'
 import {useI18n} from 'i18n/I18n'
 import {firstReportStep} from 'model/ReportStep'
 import {ScButton} from '../Button/Button'
 import {StepNavigation} from './ReportFlowStepper'
-import {StepperActionsNext} from './StepperActionsNext'
+import {iconArrowRight} from 'utils/utils'
 
 interface Props {
   hideNext?: boolean
@@ -11,7 +12,7 @@ interface Props {
   loadingNext?: boolean
   loadingPrev?: boolean
   nextButtonLabel?: string
-  nextIcon?: string
+  nextIconSend?: boolean
   next?: (next: () => void) => void
   prev?: (prev: () => void) => void
   stepNavigation: StepNavigation
@@ -19,7 +20,7 @@ interface Props {
 
 export const ReportFlowStepperActions = ({
   nextButtonLabel,
-  nextIcon,
+  nextIconSend,
   hidePrev,
   hideNext,
   loadingNext,
@@ -32,24 +33,25 @@ export const ReportFlowStepperActions = ({
   return (
     <Box sx={{display: 'flex', alignItems: 'center', justifyContent: 'space-between', mt: 3}}>
       {stepNavigation.currentStep !== firstReportStep && !hidePrev && (
-        <ScButton
-          loading={loadingPrev}
-          sx={{marginRight: 'auto'}}
+        <Button
+          iconId={'fr-icon-arrow-left-s-line'}
           onClick={prev ? () => prev(stepNavigation.prev) : stepNavigation.prev}
-          color="primary"
-          icon="keyboard_arrow_left"
+          className="mr-auto"
+          disabled={loadingPrev}
+          priority="secondary"
         >
           {m.previous}
-        </ScButton>
+        </Button>
       )}
       {!hideNext && (
-        <StepperActionsNext
-          icon={nextIcon}
-          loading={loadingNext}
-          sx={{marginLeft: 'auto'}}
+        <Button
+          iconId={nextIconSend ? 'fr-icon-send-plane-line' : iconArrowRight}
           onClick={next ? () => next(stepNavigation.next) : stepNavigation.next}
-          children={nextButtonLabel}
-        />
+          className="ml-auto stepper-next-button"
+          disabled={loadingNext === true}
+        >
+          {nextButtonLabel ?? m.next}
+        </Button>
       )}
     </Box>
   )

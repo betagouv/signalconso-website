@@ -85,32 +85,14 @@ export const _Acknowledgement = ({
   return fnSwitch(reportCase, {
     [AcknowledgmentCases.ReponseConso]: () => (
       <AcknowledgementLayout title="Que va-t-il se passer pour l'entreprise ?" {...subProps}>
-        <Row
-          icon={
-            <Icon aria-hidden="true" sx={{color: t => t.palette.success.light}}>
-              check_circle
-            </Icon>
-          }
-        >
+        <Row icon={<Icon aria-hidden="true">check_circle</Icon>}>
           Votre question est transmise à la répression des fraudes (
           <abbr title="Direction Générale de la Concurrence, Consommation et Répression des Fraudes">DGCCRF</abbr>).
         </Row>
-        <Row
-          icon={
-            <Icon aria-hidden="true" sx={{color: t => t.palette.success.light}}>
-              check_circle
-            </Icon>
-          }
-        >
+        <Row icon={<Icon aria-hidden="true">check_circle</Icon>}>
           Vos coordonnées sont à destination des enquêteurs <b>uniquement</b>.
         </Row>
-        <Row
-          icon={
-            <Icon aria-hidden="true" sx={{color: t => t.palette.success.light}}>
-              check_circle
-            </Icon>
-          }
-        >
+        <Row icon={<Icon aria-hidden="true">check_circle</Icon>}>
           La repression des fraudes vous répondra dans les plus brefs délais.
         </Row>
       </AcknowledgementLayout>
@@ -171,32 +153,14 @@ export const _Acknowledgement = ({
     ),
     [AcknowledgmentCases.NotTransmittable]: () => (
       <AcknowledgementLayout title="Que va-t-il se passer maintenant ?" {...subProps}>
-        <Row
-          icon={
-            <Icon aria-hidden="true" sx={{color: t => t.palette.success.light}}>
-              check_circle
-            </Icon>
-          }
-        >
+        <Row icon={<Icon aria-hidden="true">check_circle</Icon>}>
           Votre signalement sera lu <b>uniquement</b> par la répression des fraudes (
           <abbr title="Direction Générale de la Concurrence, Consommation et Répression des Fraudes">DGCCRF</abbr>).
         </Row>
-        <Row
-          icon={
-            <Icon aria-hidden="true" sx={{color: t => t.palette.success.light}}>
-              check_circle
-            </Icon>
-          }
-        >
+        <Row icon={<Icon aria-hidden="true">check_circle</Icon>}>
           Vos coordonnées sont à destination des enquêteurs <b>uniquement</b>.
         </Row>
-        <Row
-          icon={
-            <Icon aria-hidden="true" sx={{color: t => t.palette.success.light}}>
-              check_circle
-            </Icon>
-          }
-        >
+        <Row icon={<Icon aria-hidden="true">check_circle</Icon>}>
           Les enquêteurs pourront être amenés à vous contacter afin de vérifier votre identité ou de vous demander des éléments
           complémentaires à votre signalement.
         </Row>
@@ -220,32 +184,14 @@ export const _Acknowledgement = ({
         showChargeBack={createdReport.tags.includes('LitigeContractuel') && !!createdReport.websiteURL}
         {...subProps}
       >
-        <Row
-          icon={
-            <Icon aria-hidden="true" sx={{color: t => t.palette.warning.main}}>
-              warning
-            </Icon>
-          }
-        >
+        <Row icon={<Icon aria-hidden="true">warning</Icon>}>
           La répression des fraudes ne gère pas directement les problèmes individuels (litiges) entre un consommateur et une
           entreprise.
         </Row>
-        <Row
-          icon={
-            <Icon aria-hidden="true" sx={{color: t => t.palette.success.light}}>
-              check_circle
-            </Icon>
-          }
-        >
+        <Row icon={<Icon aria-hidden="true">check_circle</Icon>}>
           L’entreprise a trois mois pour prendre connaissance du signalement.
         </Row>
-        <Row
-          icon={
-            <Icon aria-hidden="true" sx={{color: t => t.palette.success.light}}>
-              check_circle
-            </Icon>
-          }
-        >
+        <Row icon={<Icon aria-hidden="true">check_circle</Icon>}>
           La répression des fraudes pourra ouvrir une enquête auprès de l'établissement si de nombreux consommateurs sont
           concernés ou si la pratique est particulièrement grave.
         </Row>
@@ -311,7 +257,7 @@ const AcknowledgementLayout = ({
 
       <Panel
         title={
-          <Box sx={{display: 'flex', alignItems: 'center', color: t => t.palette.success.light}}>
+          <Box sx={{display: 'flex', alignItems: 'center'}}>
             <Icon sx={{mr: 1}}>check_circle</Icon>
             Votre signalement a été envoyé.
           </Box>

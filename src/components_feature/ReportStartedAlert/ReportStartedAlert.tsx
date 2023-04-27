@@ -1,14 +1,14 @@
+import {Button} from '@codegouvfr/react-dsfr/Button'
 import {Box, Card, Slide} from '@mui/material'
-import {useReportFlowContext} from '../Report/ReportFlowContext'
 import {AnomalyImage} from 'components_simple/AnomalyTile/AnomalyImage'
-import {useMemo} from 'react'
-import {useI18n} from 'i18n/I18n'
-import {Txt} from '../../alexlibs/mui-extension/Txt/Txt'
-import {ScButton} from 'components_simple/Button/Button'
-import Link from 'next/link'
-import {findCurrentStepForReport} from 'model/ReportStep'
-import {ReportFlowStepperHeader} from 'components_simple/ReportFlowStepper/ReportFlowStepperHeader'
 import {buildPathForStep} from 'components_simple/ReportFlowStepper/ReportFlowStepper'
+import {ReportFlowStepperHeader} from 'components_simple/ReportFlowStepper/ReportFlowStepperHeader'
+import {useI18n} from 'i18n/I18n'
+import {findCurrentStepForReport} from 'model/ReportStep'
+import Link from 'next/link'
+import {useMemo} from 'react'
+import {Txt} from '../../alexlibs/mui-extension/Txt/Txt'
+import {useReportFlowContext} from '../Report/ReportFlowContext'
 
 export default function ReportStartedAlert() {
   const _report = useReportFlowContext()
@@ -17,7 +17,7 @@ export default function ReportStartedAlert() {
   const {m} = useI18n()
   if (hasStoredReport && _report.reportDraft.anomaly) {
     return (
-      <Slide in={true} direction="up">
+      <Slide in={true} direction="up" className="z-50">
         <Card
           elevation={9}
           sx={{
@@ -26,7 +26,7 @@ export default function ReportStartedAlert() {
             display: 'flex',
             bottom: 20,
             right: 20,
-            background: t => t.palette.background.paper,
+            background: 'white',
             maxWidth: 420,
             position: 'fixed',
           }}
@@ -48,16 +48,16 @@ export default function ReportStartedAlert() {
               stepSize={26}
               stepMargin={4}
             />
-            <Box sx={{display: 'flex', justifyContent: 'flex-end', mt: 2}}>
-              <ScButton size="small" color="error" sx={{mr: 1}} onClick={_report.resetFlow}>
+            <div className="flex justify-end gap-4">
+              <Button size="small" priority="tertiary" onClick={_report.resetFlow}>
                 {m.delete}
-              </ScButton>
+              </Button>
               <Link href={buildPathForStep(_report.reportDraft.anomaly, currentStep)} legacyBehavior>
-                <ScButton size="small" color="primary" variant="contained">
+                <Button size="small" onClick={_report.resetFlow}>
                   {m.continue}
-                </ScButton>
+                </Button>
               </Link>
-            </Box>
+            </div>
           </Box>
         </Card>
       </Slide>

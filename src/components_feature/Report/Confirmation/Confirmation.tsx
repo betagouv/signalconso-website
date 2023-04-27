@@ -1,6 +1,8 @@
 import {Box, Chip, Icon} from '@mui/material'
-import {EventCategories, ReportEventActions} from 'analytic/analytic'
+import {FriendlyHelpText} from 'alexlibs/mui-extension/Alert/FriendlyHelpText'
 import {useAnalyticContext} from 'analytic/AnalyticContext'
+import {EventCategories, ReportEventActions} from 'analytic/analytic'
+import {findAnomaly} from 'anomalies/Anomalies'
 import {AddressComponent} from 'components_simple/Address/Address'
 import {Animate} from 'components_simple/Animate/Animate'
 import {AnomalyImage} from 'components_simple/AnomalyTile/AnomalyImage'
@@ -12,16 +14,14 @@ import {useToast} from 'hooks/useToast'
 import {useI18n} from 'i18n/I18n'
 import {ReportDraft2} from 'model/ReportDraft2'
 import {useEffect} from 'react'
-import {Alert} from '../../../alexlibs/mui-extension/Alert/Alert'
 import {Txt} from '../../../alexlibs/mui-extension/Txt/Txt'
 import {Anomaly} from '../../../anomalies/Anomaly'
+import {SocialNetworkRow} from '../../../components_simple/SocialNetworkRow/SocialNetworkRow'
 import {ReportDraft} from '../../../model/ReportDraft'
 import {FileOrigin} from '../../../model/UploadedFile'
 import {useReportCreateContext} from '../ReportCreateContext'
 import {useReportFlowContext} from '../ReportFlowContext'
 import {ConfirmationStep, ConfirmationStepper} from './ConfirmationStepper'
-import {SocialNetworkRow} from '../../../components_simple/SocialNetworkRow/SocialNetworkRow'
-import {findAnomaly} from 'anomalies/Anomalies'
 
 export const Confirmation = ({stepNavigation}: {stepNavigation: StepNavigation}) => {
   const _reportFlow = useReportFlowContext()
@@ -54,9 +54,9 @@ export const _Confirmation = ({
         <Txt sx={{mb: 2}} block size="title">
           {m.confirmationTitle}
         </Txt>
-        <Alert type="warning" sx={{mb: 2}}>
+        <FriendlyHelpText>
           {ReportDraft.isTransmittableToPro(draft) ? m.confirmationAlertTransmittable : m.confirmationAlert}
-        </Alert>
+        </FriendlyHelpText>
 
         <ConfirmationStepper>
           <ConfirmationStep title={m.step_problem} {...{goToStep}}>
@@ -154,7 +154,7 @@ export const _Confirmation = ({
           </ConfirmationStep>
         </ConfirmationStepper>
         <ReportFlowStepperActions
-          nextIcon="send"
+          nextIconSend
           loadingNext={_reportCreate.createReport.loading}
           nextButtonLabel={draft.consumerWish === 'getAnswer' ? m.confirmationBtnReponseConso : m.confirmationBtn}
           next={next => {

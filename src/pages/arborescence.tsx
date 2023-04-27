@@ -4,7 +4,6 @@ import {styleUtils} from 'core/theme'
 import {getOptionsFromInput, getPlaceholderFromInput} from 'components_feature/Report/Details/DetailInputsUtils'
 import Head from 'next/head'
 import {useEffect, useState} from 'react'
-import {ScButton} from 'components_simple/Button/Button'
 import {Page} from 'components_simple/Page/Page'
 import {Txt} from '../alexlibs/mui-extension/Txt/Txt'
 import {IconBtn} from '../alexlibs/mui-extension/IconBtn/IconBtn'
@@ -16,6 +15,7 @@ import {
   instanceOfSubcategoryWithInputs,
 } from '../anomalies/Anomalies'
 import {Anomaly, DetailInputType, Subcategory, SubcategoryWithInfoWall, StandardSubcategory} from '../anomalies/Anomaly'
+import Button from '@codegouvfr/react-dsfr/Button'
 
 const Node = ({anomaly, open}: {anomaly: Anomaly | Subcategory; open?: boolean}) => {
   const iconWidth = 40
@@ -202,12 +202,9 @@ const Arborescence = () => {
       </Head>
 
       <h1>Arborescence du dépot d'un signalement</h1>
-
-      <ScButton
-        loading={disabled}
-        color="primary"
-        variant="contained"
-        icon={openAll ? 'unfold_less' : 'unfold_more'}
+      <Button
+        className="mb-4"
+        disabled={disabled}
         onClick={() => {
           setDisabled(true)
           setTimeout(() => {
@@ -217,10 +214,9 @@ const Arborescence = () => {
             setDisabled(false)
           }, 100)
         }}
-        sx={{mb: 2}}
       >
         Tout déplier
-      </ScButton>
+      </Button>
 
       {anomalies.map(a => (
         <Node key={a.id} anomaly={a} open={openAll} />
