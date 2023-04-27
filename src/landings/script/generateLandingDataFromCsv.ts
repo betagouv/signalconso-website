@@ -72,7 +72,13 @@ async function start() {
     ],
   })
   console.log(`Generating output file ${outputFile}`)
-  fs.writeFileSync(outputFile, `export const landingsData = ` + JSON.stringify(data, null, 2) + ';')
+  fs.writeFileSync(
+    outputFile,
+    `// Generated file, do not edit manually
+export const landingsData = ` +
+      JSON.stringify(data, null, 2) +
+      ';',
+  )
   console.log(`You should reformat this file now ("yarn format")`)
 }
 
