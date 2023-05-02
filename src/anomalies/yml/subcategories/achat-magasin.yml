@@ -622,7 +622,6 @@
             - ProduitIndustriel
     - title: Un produit dangereux
       desc: 'Exemple : jouet, cosmétique'
-      companyKind: LOCATION
       tags:
         - ProduitDangereux
       subcategories:

@@ -56,16 +56,16 @@ function parseStepFromQueryString(stepParamRaw: string | string[] | undefined): 
   return null
 }
 
-export function buildPathForStep(anomaly: Pick<Anomaly, 'path'>, step: ReportStepOrDone) {
+export function buildPathForStep(anomaly: Pick<Anomaly, 'path'>, step: ReportStepOrDone, isWebView: boolean) {
   const queryString = step === firstReportStep ? '' : `?step=${getIndexForStepOrDone(step)}`
-  return `${buildLinkStartReport(anomaly)}${queryString}`
+  return `${buildLinkStartReport(anomaly, {isWebView})}${queryString}`
 }
 
-function useStepFromRouter(anomaly: Anomaly) {
+function useStepFromRouter(anomaly: Anomaly, isWebView: boolean) {
   const router = useRouter()
   const step = parseStepFromQueryString(router.query.step) ?? firstReportStep
   function setStep(newStep: ReportStepOrDone) {
-    const url = buildPathForStep(anomaly, newStep)
+    const url = buildPathForStep(anomaly, newStep, isWebView)
     router.push(url, undefined, {shallow: true})
     scrollTop()
   }
@@ -97,7 +97,7 @@ function useIsStepInvalid(anomaly: Anomaly, step: ReportStepOrDone): boolean {
 }
 
 export const ReportFlowStepper = ({anomaly, isWebView}: StepperProps) => {
-  const [step, setStep] = useStepFromRouter(anomaly)
+  const [step, setStep] = useStepFromRouter(anomaly, isWebView)
   const isStepInvalid = useIsStepInvalid(anomaly, step)
   useStepChangeTracking(anomaly, step)
   useEffect(() => {

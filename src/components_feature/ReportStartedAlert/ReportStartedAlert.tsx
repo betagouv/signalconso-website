@@ -52,7 +52,7 @@ export default function ReportStartedAlert() {
               <Button size="small" priority="tertiary" onClick={_report.resetFlow}>
                 {m.delete}
               </Button>
-              <Link href={buildPathForStep(_report.reportDraft.anomaly, currentStep)} legacyBehavior>
+              <Link href={buildPathForStep(_report.reportDraft.anomaly, currentStep, false)} legacyBehavior>
                 <Button size="small" onClick={_report.resetFlow}>
                   {m.continue}
                 </Button>
