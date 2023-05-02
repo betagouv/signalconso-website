@@ -25,8 +25,8 @@ export const siteMapExternal = {
   lostPassword: appConfig.dashboardBaseUrl + '/perte-mot-de-passe',
 }
 
-export function buildLinkStartReport(anomaly: Pick<Anomaly, 'path'>) {
-  return `/${anomaly.path}/faire-un-signalement`
+export function buildLinkStartReport(anomaly: Pick<Anomaly, 'path'>, {isWebView}: {isWebView: boolean} = {isWebView: false}) {
+  return isWebView ? `/webview/${anomaly.path}` : `/${anomaly.path}/faire-un-signalement`
 }
 
 export function buildLinkLandingPage(anomaly: Pick<Anomaly, 'path'>) {
