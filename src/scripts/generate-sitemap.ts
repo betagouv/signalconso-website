@@ -13,7 +13,7 @@ const outputFile = path.join('./public/sitemap.xml')
 
 const sitemapItems: SitemapItem[] = [
   ...Object.values(siteMap),
-  ...allVisibleAnomalies().flatMap(anomaly => [buildLinkStartReport(anomaly), buildLinkLandingPage(anomaly)]),
+  ...allVisibleAnomalies().map(anomaly => buildLinkLandingPage(anomaly)),
 ]
   .map(url => `${appConfig.appBaseUrl}${url}`)
   .map(url => ({url, priority: 1}))
