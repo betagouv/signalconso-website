@@ -28,3 +28,8 @@ yarn-error.log*
 .vscode
 
 .next
+
+
+src/anomalies/yml-hierarchical
+src/anomalies/yml-copy-tmp
+src/anomalies/anomalies-from-hierarchical.json

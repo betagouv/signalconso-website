@@ -1,6 +1,6 @@
 import {appConfig} from '../core/appConfig'
 import {Anomaly, Subcategory, SubcategoryWithInfoWall, StandardSubcategory, DetailInput} from './Anomaly'
-import anomaliesJSON from './yml/anomalies.json'
+import anomaliesJSON from './anomalies-from-hierarchical.json'
 
 export const allAnomalies = anomaliesJSON as Anomaly[]
 
