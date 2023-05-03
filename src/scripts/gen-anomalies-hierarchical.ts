@@ -5,11 +5,10 @@ import {rimrafSync} from 'rimraf'
 import {Subcategory} from 'anomalies/Anomaly'
 import slugify from 'slugify'
 
-const targetDir = path.resolve('./src/anomalies/bigstructure')
+const targetDir = path.resolve('./src/anomalies/hierarchical')
 
 function start() {
   console.log('targetDir', targetDir)
-
   resetDir(targetDir)
   allAnomalies.forEach((anomaly, idx) => {
     recurse(targetDir, anomaly, idx)
@@ -19,7 +18,6 @@ function start() {
 function recurse(parentDir: string, subcat: Subcategory, idxInParent: number) {
   const hasChildren = subcat.subcategories && subcat.subcategories.length > 0
 
-  // il faudra vérifier que les slugs sont uniques...
   const nameInFileSystem = `${padTo2(idxInParent + 1)}_${slugify(subcat.title, '_')}`
 
   if (hasChildren) {
