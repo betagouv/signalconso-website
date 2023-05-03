@@ -13,7 +13,7 @@ import csvParser from 'csv-parse'
 // then run this script
 
 const csvFilePath = './landings.csv'
-const outputFile = path.join(__dirname, '..', 'landingsData.ts')
+const outputFile = path.join('src', 'landings', 'landingsData.ts')
 
 async function readCsv(): Promise<string[][]> {
   return new Promise((resolve, reject) => {

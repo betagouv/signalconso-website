@@ -1,4 +1,4 @@
-import {allAnomalies} from '../Anomalies'
+import {allAnomalies} from '../anomalies/Anomalies'
 import path from 'path'
 import fs from 'fs'
 import {rimrafSync} from 'rimraf'
