@@ -25,7 +25,7 @@ function recurse(parentDir: string, subcat: Subcategory) {
   if (hasChildren) {
     const folderPath = path.join(parentDir, `${nameInFileSystem}`)
     createDir(folderPath)
-    const filePath = path.join(folderPath, 'index.json')
+    const filePath = path.join(folderPath, '__index.json')
     const {subcategories, ...rest} = subcat
     createJsonFile(filePath, rest)
 
