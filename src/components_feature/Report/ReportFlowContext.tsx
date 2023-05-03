@@ -12,10 +12,6 @@ const ReportFlowContext = React.createContext<ReportFlowContextProps>({} as Repo
 export const ReportFlowProvider = ({children}: {children: ReactNode}) => {
   const [reportDraft, setReportDraft] = useState<Partial<ReportDraft2>>({})
 
-  useEffect(() => {
-    console.log('@@@report draft', reportDraft)
-  }, [reportDraft])
-
   return (
     <ReportFlowContext.Provider
       value={{
