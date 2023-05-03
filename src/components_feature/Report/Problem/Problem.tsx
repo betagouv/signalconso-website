@@ -64,7 +64,6 @@ export function adjustReportDraftAfterSubcategoriesChange(
     ...report,
     subcategories,
     tags,
-    details: {},
     companyKind: lastCategoryCompanyKind,
     companyDraft: undefined,
     // Category has changed, user need to reconfirm consumerWish & employeeConsumer because :
