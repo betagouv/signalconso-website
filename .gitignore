@@ -59,3 +59,7 @@ landings.csv
 !.yarn/sdks
 !.yarn/versions 
 /android/
+
+
+
+src/anomalies/bigstructure/
