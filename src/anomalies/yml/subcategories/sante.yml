@@ -111,6 +111,7 @@
 - title: Professionnel de la santé, profession médicale ou paramédicale
   desc: 'Exemple : médecin généraliste, dentiste, opticien, masseur-kinésithérapeute, …'
   subcategoriesTitle: 'Quelle activité ?'
+  subcategories:
     - title: Profession médicale
       desc: 'Exemple : médecins généraliste, odontologistes, chirurgiens-dentistes, ophtalmologue et sages-femmes'
       subcategories:
@@ -341,19 +342,18 @@
       desc: 'Exemple : opticien-lunetier, audioprothésiste'
       subcategories:
         - title: Une publicité est trompeuse ou non appliquée
-          desc: 'Exemple : Offre promotionnelle trompeuse sur des lunettes'
+          desc: 'Exemple : offre promotionnelle trompeuse sur des lunettes'
           reponseconsoCode:
             - '210'
           tags:
             - ReponseConso
-          desc: 'Exemple : offre promotionnelle trompeuse sur des lunettes'
           detailInputs:
             - label: Date du constat
               type: DATE
             - label: Que trouvez-vous trompeur ?
               type: TEXTAREA
           fileLabel: Merci de joindre une photo de la publicité, du dépliant, du site internet afin d'apporter des preuves et de traiter plus rapidement votre signalement.
-        - title: 'Je n'ai pas reçu de devis'
+        - title: 'Je n''ai pas reçu de devis'
         - title: On ne m’a pas présenté l’offre sans reste à charge (100% santé)
           desc: 'En boutique et sur internet, l’offre sans reste à charge doit vous être présentée. Le devis doit aussi faire état de cette offre.'
         - title: Démarchage pour la vente d’audioprothèses
