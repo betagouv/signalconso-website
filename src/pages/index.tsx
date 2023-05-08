@@ -39,8 +39,6 @@ const Home = () => {
 
   const fIndex = createFuseIndex(allVisibleAnomalies())
 
-  console.log(fIndex)
-
   const fuse = new Fuse(fIndex, {
     keys: ['title', 'desc'],
     threshold: 0.2,

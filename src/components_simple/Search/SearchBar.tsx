@@ -1,11 +1,11 @@
-import React, {useState, useEffect, useRef} from 'react'
+import React, {useEffect, useRef, useState} from 'react'
 import Fuse from 'fuse.js'
 import {Anomaly} from '../../anomalies/Anomaly'
 import {useColors} from '@codegouvfr/react-dsfr/useColors'
-import Link from 'next/link'
-import {cx} from '@codegouvfr/react-dsfr/tools/cx'
 import {allVisibleAnomalies, AnomalyIndex, createFuseIndex} from '../../anomalies/Anomalies'
 import {AnomalySearchResultTile} from '../AnomalyCard/AnomalySearchResultTile'
+import {useAnalyticContext} from '../../analytic/AnalyticContext'
+import {EventCategories} from '../../analytic/analytic'
 
 type SearchBarProps = {
   anomalies: Anomaly[]
@@ -16,7 +16,7 @@ const SearchBar: React.FC<SearchBarProps> = ({anomalies}) => {
   const [suggestions, setSuggestions] = useState<AnomalyIndex[]>([])
   const [showSuggestions, setShowSuggestions] = useState(false)
   const dsfrTheme = useColors()
-
+  const _analytic = useAnalyticContext()
   const fIndex = createFuseIndex(allVisibleAnomalies())
 
   console.log(fIndex)
@@ -24,7 +24,7 @@ const SearchBar: React.FC<SearchBarProps> = ({anomalies}) => {
   const fuse = new Fuse(fIndex, {
     keys: ['title', 'desc'],
     threshold: 0.2,
-    minMatchCharLength: 3,
+    minMatchCharLength: 4,
     distance: 100,
     ignoreLocation: true,
   })
@@ -46,16 +46,8 @@ const SearchBar: React.FC<SearchBarProps> = ({anomalies}) => {
     }
   }
 
-  const handleSelectAnomaly = (_: any) => {
-    setQuery('')
-    setSuggestions([])
-    setShowSuggestions(false)
-  }
-
   const handleClickOutside = (event: MouseEvent) => {
-    if (searchBoxRef.current && !searchBoxRef.current.contains(event.target as Node)) {
-      setShowSuggestions(false)
-    }
+    _analytic.trackEvent(EventCategories.categorySearch, 'Recherche par mot clé', 'keyword', query)
   }
 
   useEffect(() => {
