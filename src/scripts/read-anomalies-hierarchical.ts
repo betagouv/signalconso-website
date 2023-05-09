@@ -16,7 +16,7 @@ function readNewHierarchicalAnomalies() {
     .map(_ => path.join(rootDir, _))
 
   const anomalies = anomalyDirs.map(_ => {
-    return resolveImportsRecursively(buildObjectFromFileOrFolder(_, {allowMissingIndexInDirectories: false}))
+    return resolveImportsRecursively(buildSubcategoryFromFileOrFolder(_))
   })
 
   const ymlBigFile = './src/anomalies/hierarchical.yaml'
@@ -29,19 +29,16 @@ function readNewHierarchicalAnomalies() {
   console.log(`The YAML is valid`)
 }
 
+// Read a file or a folder
 // Returns a Subcategory
 // except it can use 'customimport', so it's not exactly the correct type
-function buildObjectFromFileOrFolder(
-  _path: string,
-  {allowMissingIndexInDirectories}: {allowMissingIndexInDirectories: boolean},
-): any {
+function buildSubcategoryFromFileOrFolder(_path: string): any {
   console.log('Reading ', _path)
   const type = checkPathType(_path)
   if (type === 'missing') {
     throw new Error(`Nothing at path ${_path}`)
   } else if (type === 'file') {
-    const subcat = readFileYaml(_path)
-    return subcat
+    return readFileYaml(_path)
   } else {
     // Read __index.yaml
     const indexFile = path.join(_path, '__index.yaml')
@@ -49,14 +46,10 @@ function buildObjectFromFileOrFolder(
     if (indexType === 'dir') {
       throw new Error(`${indexFile} is supposed to be a file, not a directory`)
     }
-    let indexYaml: any = {}
     if (indexType === 'missing') {
-      if (!allowMissingIndexInDirectories) {
-        throw new Error(`Missing file __index.yaml in ${_path}`)
-      }
-    } else {
-      indexYaml = readFileYaml(indexFile)
+      throw new Error(`Missing file __index.yaml in ${_path}`)
     }
+    const indexYaml: any = readFileYaml(indexFile)
     // Read the rest (each file or folder turns into a subcat of this subcat)
     const otherFilesOrSubdirs =
       // force the order based on filenames
@@ -64,7 +57,7 @@ function buildObjectFromFileOrFolder(
         .map(_ => path.join(_path, _))
         .filter(_ => _ !== indexFile)
     const subSubcats = otherFilesOrSubdirs.map(subpath => {
-      return buildObjectFromFileOrFolder(subpath, {allowMissingIndexInDirectories})
+      return buildSubcategoryFromFileOrFolder(subpath)
     })
     // Then merge
     const subcat = {
@@ -72,6 +65,31 @@ function buildObjectFromFileOrFolder(
       subcategories: subSubcats,
     }
     return subcat
+  }
+}
+
+// Read a file or folder (within __imports)
+// Build the object or array that we're supposed to import
+//
+// the logic is slightly different if it's a folder :
+//  - we don't expect an __index.yaml
+//  - we build an array of subcategories for each file/subdir
+//    (instead of building the subcategory above)
+function buildImportableFromFileOrFolder(_path: string): any {
+  console.log('Reading ', _path)
+  const type = checkPathType(_path)
+  if (type === 'missing') {
+    throw new Error(`Nothing at path ${_path}`)
+  } else if (type === 'file') {
+    return readFileYaml(_path)
+  } else {
+    // Read the rest (each file or folder turns into a subcat of this subcat)
+    const filesOrSubdirs = sortBy(fs.readdirSync(_path), _ => _).map(_ => path.join(_path, _))
+    const subcats = filesOrSubdirs.map(subpath => {
+      // recurse with the other method
+      return buildSubcategoryFromFileOrFolder(subpath)
+    })
+    return subcats
   }
 }
 
@@ -88,17 +106,18 @@ function resolveImportsRecursively(obj: any): any {
       checkCustomImportIsValid(customimport)
       console.log('Resolving import of ', customimport)
       const fullImportPath = path.join(rootDir, customimport)
-      imported = buildObjectFromFileOrFolder(fullImportPath, {
-        // for imported subcategories, the __index may not be present
-        allowMissingIndexInDirectories: true,
-      })
+      imported = buildImportableFromFileOrFolder(fullImportPath)
     }
-    const obj2 = {...rest, ...imported}
-    // Then recurse
-    const obj3 = mapValues(obj2, v => {
-      return resolveImportsRecursively(v)
-    })
-    return obj3
+    if (Array.isArray(imported)) {
+      return imported.map(resolveImportsRecursively)
+    } else {
+      const obj2 = Array.isArray(imported) ? imported : {...rest, ...imported}
+      // Then recurse
+      const obj3 = mapValues(obj2, v => {
+        return resolveImportsRecursively(v)
+      })
+      return obj3
+    }
   }
   return obj
 }
