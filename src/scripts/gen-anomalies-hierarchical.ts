@@ -43,7 +43,10 @@ function startFromCurrentYaml() {
   })
 
   // TODO handle the imported files
-  // common/info and common/inputs can be probably just copied
+  // Copy common/info and common/inputs
+  copyWholeDir(path.join(classicYmlRoot, 'common', 'info'), path.join(targetDir, '__imports', 'info'))
+  copyWholeDir(path.join(classicYmlRoot, 'common', 'inputs'), path.join(targetDir, '__imports', 'inputs'))
+
   // common/*.yml will need to be transformed as file hierarchy
   // => parse them as YAML, type them as Subcategory[], then write them each in their own folder
 }
