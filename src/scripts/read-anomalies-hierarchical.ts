@@ -1,3 +1,4 @@
+import {checkAnomaliesYaml} from '../anomalies/checks/checkAnomaliesJson'
 import fs from 'fs'
 import fsExtra from 'fs-extra'
 import yaml from 'js-yaml'
@@ -6,7 +7,7 @@ import sortBy from 'lodash/sortBy'
 import path from 'path'
 import {rimrafSync} from 'rimraf'
 const rootDir = path.resolve('./src/anomalies/hierarchical')
-
+const jsonOutputFile = path.resolve(rootDir, '..', 'hierarchical.json')
 // Attempt to read the new file tree structure from 'hierarchical' folder
 // and resolve imports
 function readNewHierarchicalAnomalies() {
@@ -18,7 +19,14 @@ function readNewHierarchicalAnomalies() {
     return resolveImportsRecursively(buildObjectFromFileOrFolder(_, {allowMissingIndexInDirectories: false}))
   })
 
-  console.log(anomalies)
+  const ymlBigFile = './src/anomalies/hierarchical.yaml'
+  console.log(`Generating YAML file ${ymlBigFile}`)
+  writeYamlFile(ymlBigFile, anomalies)
+
+  console.log(`Generating JSON file ${jsonOutputFile}`)
+  fs.writeFileSync(jsonOutputFile, JSON.stringify(anomalies, null, 2))
+  checkAnomaliesYaml(anomalies)
+  console.log(`The YAML is valid`)
 }
 
 // Returns a Subcategory
@@ -214,6 +222,11 @@ function checkPathType(path: string): 'file' | 'dir' | 'missing' {
     return 'file'
   }
   return 'dir'
+}
+
+function writeYamlFile(filename: string, data: unknown): void {
+  const yamlData = yaml.dump(data)
+  fs.writeFileSync(filename, yamlData, 'utf8')
 }
 
 readNewHierarchicalAnomalies()
