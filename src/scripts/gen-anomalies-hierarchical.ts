@@ -36,8 +36,8 @@ function rewriteCurrentYamlAsFileTree() {
   })
 
   // Copy common/info and common/inputs
-  copyWholeDir(path.join(tmpYmlRoot, 'common', 'info'), path.join(targetDir, '__imports', 'info'))
-  copyWholeDir(path.join(tmpYmlRoot, 'common', 'inputs'), path.join(targetDir, '__imports', 'inputs'))
+  copyWholeDir(path.join(tmpYmlRoot, 'common', 'info'), path.join(targetDir, '__imports', 'blockingInfo'))
+  copyWholeDir(path.join(tmpYmlRoot, 'common', 'inputs'), path.join(targetDir, '__imports', 'detailInputs'))
 
   // Copy common/*.yml but transformed as file hierarchy
   forEachFileInDirectory(path.join(tmpYmlRoot, 'common'), f => {
@@ -54,12 +54,13 @@ function rewriteCurrentYamlAsFileTree() {
 
 // Rewrite all the :
 //
-// foo: !!import/single xxxx
+// foo: !!import/single ../relative/import/path
 //
 // as
 //
 // foo:
-//   customimport: xxx
+//   customimport: __imports/absolute/import/path
+//
 //
 // but preserve the ones in anomalies.yml
 function rewriteImports() {
@@ -78,7 +79,7 @@ function rewriteImports() {
           const key = match[2]
           const importPath = match[3]
           const replacement = `${indent}${key}:
-${indent}  customimport: ${importPath}`
+${indent}  customimport: ${adjustImportPath(importPath)}`
           fileContents = fileContents.replace(fullMatch, replacement)
           match = importStatementRegex.exec(fileContents)
         }
@@ -86,6 +87,18 @@ ${indent}  customimport: ${importPath}`
       }
     }
   })
+}
+
+function adjustImportPath(importPath: string) {
+  let s = importPath
+  s = removePrefix(s, '../common/')
+  s = removePrefix(s, './common/')
+  s = replacePrefix(s, 'info/', '__imports/blockingInfo/')
+  s = replacePrefix(s, 'inputs/', '__imports/detailInputs/')
+  if (!s.startsWith('__imports')) {
+    s = '__imports/subcategories/' + s
+  }
+  return s
 }
 
 function writeSubcatAsFileTree(parentDir: string, subcat: Subcategory, idxInParent: number) {
@@ -190,6 +203,22 @@ function extractFileName(path: string): string {
   const fileNameWithExtension = path.split('/').pop()!
   const fileNameWithoutExtension = fileNameWithExtension.replace(/\.[^/.]+$/, '')
   return fileNameWithoutExtension
+}
+
+function removePrefix(text: string, prefix: string): string {
+  if (text.startsWith(prefix)) {
+    return text.slice(prefix.length)
+  } else {
+    return text
+  }
+}
+
+function replacePrefix(text: string, prefix: string, replacement: string): string {
+  if (text.startsWith(prefix)) {
+    return replacement + text.slice(prefix.length)
+  } else {
+    return text
+  }
 }
 
 start()
