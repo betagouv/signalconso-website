@@ -44,11 +44,22 @@ function startFromCurrentYaml() {
 
   // TODO handle the imported files
   // Copy common/info and common/inputs
-  copyWholeDir(path.join(classicYmlRoot, 'common', 'info'), path.join(targetDir, '__imports', 'info'))
-  copyWholeDir(path.join(classicYmlRoot, 'common', 'inputs'), path.join(targetDir, '__imports', 'inputs'))
+  copyWholeDir(path.join(tmpYmlRoot, 'common', 'info'), path.join(targetDir, '__imports', 'info'))
+  copyWholeDir(path.join(tmpYmlRoot, 'common', 'inputs'), path.join(targetDir, '__imports', 'inputs'))
 
   // common/*.yml will need to be transformed as file hierarchy
   // => parse them as YAML, type them as Subcategory[], then write them each in their own folder
+
+  forEachFileInDirectory(path.join(tmpYmlRoot, 'common'), f => {
+    const importableSubcats = yaml.load(readFileRaw(f)) as Subcategory[]
+    const folder = path.join(targetDir, '__imports', 'subcategories', extractFileName(f))
+    resetDir(folder)
+    importableSubcats.forEach((subcat, idx) => {
+      recurse(folder, subcat, idx)
+    })
+  })
+
+  removeWholeDir(tmpYmlRoot)
 }
 
 // Rewrite all the :
@@ -62,7 +73,7 @@ function startFromCurrentYaml() {
 //
 // but preserve the ones in anomalies.yml
 function rewriteImports() {
-  forEachFileInDirectory(tmpYmlRoot, yamlPath => {
+  forEachFileInDirectoryRecursive(tmpYmlRoot, yamlPath => {
     if (yamlPath.endsWith('anomalies.yml')) {
       console.log('Preserving !!import statements in ', yamlPath)
     } else {
@@ -159,7 +170,7 @@ function readFileRaw(filePath: string): string {
   return fs.readFileSync(filePath, 'utf-8')
 }
 
-function forEachFileInDirectory(directory: string, callback: (filePath: string) => void) {
+function forEachFileInDirectoryRecursive(directory: string, callback: (filePath: string) => void) {
   const files = fs.readdirSync(directory)
   for (const file of files) {
     const filePath = path.join(directory, file)
@@ -167,9 +178,28 @@ function forEachFileInDirectory(directory: string, callback: (filePath: string) 
     if (stats.isFile()) {
       callback(filePath)
     } else if (stats.isDirectory()) {
-      forEachFileInDirectory(filePath, callback)
+      forEachFileInDirectoryRecursive(filePath, callback)
     }
   }
+}
+
+// iterate over the files directly in that directory
+// ignores the subdirectories
+function forEachFileInDirectory(directory: string, callback: (filePath: string) => void) {
+  const files = fs.readdirSync(directory)
+  for (const file of files) {
+    const filePath = path.join(directory, file)
+    const stats = fs.statSync(filePath)
+    if (stats.isFile()) {
+      callback(filePath)
+    }
+  }
+}
+
+function extractFileName(path: string): string {
+  const fileNameWithExtension = path.split('/').pop()!
+  const fileNameWithoutExtension = fileNameWithExtension.replace(/\.[^/.]+$/, '')
+  return fileNameWithoutExtension
 }
 
 start()
