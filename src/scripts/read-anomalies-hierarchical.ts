@@ -1,21 +1,58 @@
 import toml from '@iarna/toml'
-import {Anomaly, Subcategory} from 'anomalies/Anomaly'
 import fs from 'fs'
 import fsExtra from 'fs-extra'
 import yaml from 'js-yaml'
+import sortBy from 'lodash/sortBy'
 import path from 'path'
 import {rimrafSync} from 'rimraf'
-import slugify from 'slugify'
-import * as yamlImport from 'yaml-import'
-import {instanceOfAnomaly} from '../anomalies/Anomalies'
-
-const classicYmlRoot = path.resolve('./src/anomalies/yml')
-const tmpYmlRoot = path.resolve('./src/anomalies/yml2')
-const targetDir = path.resolve('./src/anomalies/hierarchical')
+const rootDir = path.resolve('./src/anomalies/hierarchical')
 
 // Attempt to read the new file tree structure from 'hierarchical' folder
 // and resolve imports
-function readNewHierarchicalAnomalies() {}
+function readNewHierarchicalAnomalies() {
+  const subcatBuildDemarchageAbusif = buildSubcatFromFileOrFolder(path.join(rootDir, '17_Demarchage_abusif'))
+
+  console.log(subcatBuildDemarchageAbusif)
+}
+
+// Returns a Subcategory
+// except it can use 'customimport', so it's not exactly the correct type
+function buildSubcatFromFileOrFolder(_path: string): any {
+  console.log('Reading ', _path)
+  const type = checkPathType(_path)
+  if (type === 'missing') {
+    throw new Error(`Nothing at path ${_path}`)
+  } else if (type === 'file') {
+    const subcat = readFileYaml(_path)
+    return subcat
+  } else {
+    // Read __index.yaml
+    const indexFile = path.join(_path, '__index.yaml')
+    const indexType = checkPathType(indexFile)
+    if (indexType === 'missing') {
+      throw new Error(`Missing file __index.yaml in ${_path}`)
+    }
+    if (indexType === 'dir') {
+      throw new Error(`${indexFile} is supposed to be a file, not a directory`)
+    }
+    const indexYaml = readFileYaml(indexFile)
+    // Read the rest (each file or folder turns into a subcat of this subcat)
+    const otherFilesOrSubdirs =
+      // force the order based on filenames
+      sortBy(fs.readdirSync(_path), _ => _)
+        .map(_ => path.join(_path, _))
+        .filter(_ => _ !== indexFile)
+    const subSubcats = otherFilesOrSubdirs.map(subpath => {
+      return buildSubcatFromFileOrFolder(subpath)
+    })
+    // Then merge
+    const subcat = {
+      ...indexYaml,
+      subcategories: subSubcats,
+    }
+    return subcat
+  }
+}
 
 function resetDir(path: string): void {
   console.log('Resetting directory', path)
@@ -42,17 +79,6 @@ function createDir(path: string): void {
   fs.mkdirSync(path, {recursive: true})
 }
 
-function createFile(path: string, content: unknown, format: typeof FILE_FORMAT): void {
-  console.log('Creating ', path)
-  let contentStr =
-    format === 'json'
-      ? JSON.stringify(content, null, 2)
-      : format === 'toml'
-      ? toml.stringify(content as any)
-      : yaml.dump(content as any)
-  fs.writeFileSync(path, contentStr, 'utf8')
-}
-
 function padTo2(num: number): string {
   return num.toString().padStart(2, '0')
 }
@@ -64,6 +90,10 @@ function copyWholeDir(source: string, destination: string) {
 
 function readFileRaw(filePath: string): string {
   return fs.readFileSync(filePath, 'utf-8')
+}
+
+function readFileYaml(filePath: string): any {
+  return yaml.load(fs.readFileSync(filePath, 'utf-8'))
 }
 
 function forEachFileInDirectoryRecursive(directory: string, callback: (filePath: string) => void) {
@@ -92,6 +122,18 @@ function forEachFileInDirectory(directory: string, callback: (filePath: string) 
   }
 }
 
+function mapEachFileOrSubdirInDirectoryExceptIndex<A>(directory: string, callback: (filePath: string) => A): A[] {
+  const res: A[] = []
+  const files = fs.readdirSync(directory)
+  // force the order based on filenames
+  const filesSorted = sortBy(files, _ => _)
+  for (const file of filesSorted) {
+    const filePath = path.join(directory, file)
+    res.push(callback(filePath))
+  }
+  return res
+}
+
 function extractFileName(path: string): string {
   const fileNameWithExtension = path.split('/').pop()!
   const fileNameWithoutExtension = fileNameWithExtension.replace(/\.[^/.]+$/, '')
@@ -111,6 +153,17 @@ function replacePrefix(text: string, prefix: string, replacement: string): strin
     return replacement + text.slice(prefix.length)
   } else {
     return text
+  }
+}
+
+function checkPathType(path: string): 'file' | 'dir' | 'missing' {
+  const stats = fs.statSync(path)
+  if (stats.isFile()) {
+    return 'file'
+  } else if (stats.isDirectory()) {
+    return 'dir'
+  } else {
+    return 'missing'
   }
 }
 

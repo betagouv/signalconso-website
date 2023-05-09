@@ -19,6 +19,7 @@
     "generate-landings": "ts-node -O \"{\\\"module\\\":\\\"commonjs\\\"}\" src/scripts/gen-landing-data.ts",
     "generate-sitemap": "ts-node -O \"{\\\"module\\\":\\\"commonjs\\\"}\" src/scripts/gen-sitemap.ts",
     "gen-tmp": "ts-node -O \"{\\\"module\\\":\\\"commonjs\\\"}\" src/scripts/gen-anomalies-hierarchical.ts",
+    "gen-tmp2": "ts-node -O \"{\\\"module\\\":\\\"commonjs\\\"}\" src/scripts/read-anomalies-hierarchical.ts",
     "format": "prettier --write .",
     "checkformat": "prettier --check .",
     "checktypes": "tsc --noEmit",
