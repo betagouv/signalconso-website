@@ -15,7 +15,7 @@ function readNewHierarchicalAnomalies() {
     .map(_ => path.join(rootDir, _))
 
   const anomalies = anomalyDirs.map(_ => {
-    resolveImportsRecursively(buildObjectFromFileOrFolder(_, {allowMissingIndexInDirectories: false}))
+    return resolveImportsRecursively(buildObjectFromFileOrFolder(_, {allowMissingIndexInDirectories: false}))
   })
 
   console.log(anomalies)
@@ -42,10 +42,13 @@ function buildObjectFromFileOrFolder(
       throw new Error(`${indexFile} is supposed to be a file, not a directory`)
     }
     let indexYaml: any = {}
-    if (indexType === 'missing' && !allowMissingIndexInDirectories) {
-      throw new Error(`Missing file __index.yaml in ${_path}`)
+    if (indexType === 'missing') {
+      if (!allowMissingIndexInDirectories) {
+        throw new Error(`Missing file __index.yaml in ${_path}`)
+      }
+    } else {
+      indexYaml = readFileYaml(indexFile)
     }
-    indexYaml = readFileYaml(indexFile)
     // Read the rest (each file or folder turns into a subcat of this subcat)
     const otherFilesOrSubdirs =
       // force the order based on filenames

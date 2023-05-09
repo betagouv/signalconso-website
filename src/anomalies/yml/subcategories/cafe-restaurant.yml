@@ -1,6 +1,6 @@
 - title: J'ai été malade après avoir mangé
   desc: 'Exemple : vomissement, maux de ventre'
-  subcategories: !!import/single ./intoxication-alimentaire.yml
+  subcategories: !!import/single ../common/intoxication-alimentaire.yml
 - title: Hygiène
   companyKind: SIRET
   desc: 'Exemple : locaux sales, rat, chaîne du froid'
