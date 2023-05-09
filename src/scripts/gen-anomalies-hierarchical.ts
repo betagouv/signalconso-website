@@ -14,10 +14,8 @@ const tmpYmlRoot = path.resolve('./src/anomalies/yml2')
 const targetDir = path.resolve('./src/anomalies/hierarchical')
 const FILE_FORMAT: 'json' | 'toml' | 'yaml' = 'yaml'
 
-function start() {
-  rewriteCurrentYamlAsFileTree()
-}
-
+// Make a copy of the classic yml folder
+// into a new 'hierarchical' folder, using the new structure and imports
 function rewriteCurrentYamlAsFileTree() {
   resetDir(targetDir)
   removeWholeDir(tmpYmlRoot)
@@ -230,4 +228,4 @@ function replacePrefix(text: string, prefix: string, replacement: string): strin
   }
 }
 
-start()
+rewriteCurrentYamlAsFileTree()
