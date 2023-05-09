@@ -22,7 +22,7 @@ function rewriteCurrentYamlAsFileTree() {
   resetDir(targetDir)
   removeWholeDir(tmpYmlRoot)
   copyWholeDir(classicYmlRoot, tmpYmlRoot)
-  rewriteImports()
+  rewriteImports(tmpYmlRoot)
 
   const tmpYamlFile = path.resolve(tmpYmlRoot, 'tmp.yml')
   const ymlFileRoot = path.join(tmpYmlRoot, 'anomalies.yml')
@@ -49,7 +49,7 @@ function rewriteCurrentYamlAsFileTree() {
     })
   })
 
-  removeWholeDir(tmpYmlRoot)
+  // removeWholeDir(tmpYmlRoot)
 }
 
 // Rewrite all the :
@@ -63,8 +63,8 @@ function rewriteCurrentYamlAsFileTree() {
 //
 //
 // but preserve the ones in anomalies.yml
-function rewriteImports() {
-  forEachFileInDirectoryRecursive(tmpYmlRoot, yamlPath => {
+function rewriteImports(dir: string) {
+  forEachFileInDirectoryRecursive(dir, yamlPath => {
     if (yamlPath.endsWith('anomalies.yml')) {
       console.log('Preserving !!import statements in ', yamlPath)
     } else {
@@ -93,6 +93,7 @@ function adjustImportPath(importPath: string) {
   let s = importPath
   s = removePrefix(s, '../common/')
   s = removePrefix(s, './common/')
+  s = removePrefix(s, './')
   s = replacePrefix(s, 'info/', '__imports/blockingInfo/')
   s = replacePrefix(s, 'inputs/', '__imports/detailInputs/')
   if (!s.startsWith('__imports')) {
@@ -104,13 +105,20 @@ function adjustImportPath(importPath: string) {
 function writeSubcatAsFileTree(parentDir: string, subcat: Subcategory, idxInParent: number) {
   const nameInFileSystem = `${padTo2(idxInParent + 1)}_${slugify(subcat.title, {strict: true, replacement: '_'})}`
   const {subcategories, id, ...rest} = subcat
-  const fileContent = {
+  let fileContent: any = {
     // preserve id only at the top level
     ...(instanceOfAnomaly(subcat) ? {id} : {}),
     ...rest,
   }
 
-  if (subcategories && subcategories.length > 0) {
+  if (subcategories && (subcategories as any).customimport) {
+    // subcategories have been replaced by an object { customimport: 'xxx' }
+    // write it as a file, with the subcategories object
+    fileContent = {...fileContent, subcategories}
+    const filePath = path.join(parentDir, `${nameInFileSystem}.${FILE_FORMAT}`)
+    createFile(filePath, fileContent, FILE_FORMAT)
+  } else if (subcategories && subcategories.length > 0) {
+    // subcategories array : we create a folder
     const folderPath = path.join(parentDir, `${nameInFileSystem}`)
     createDir(folderPath)
     const filePath = path.join(folderPath, `__index.${FILE_FORMAT}`)
@@ -119,6 +127,7 @@ function writeSubcatAsFileTree(parentDir: string, subcat: Subcategory, idxInPare
       writeSubcatAsFileTree(folderPath, subsubcat, idx)
     })
   } else {
+    // no subcategories : we create a file
     const filePath = path.join(parentDir, `${nameInFileSystem}.${FILE_FORMAT}`)
     createFile(filePath, fileContent, FILE_FORMAT)
   }
