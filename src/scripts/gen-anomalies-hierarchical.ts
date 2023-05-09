@@ -6,8 +6,8 @@ import yaml from 'js-yaml'
 import path from 'path'
 import {rimrafSync} from 'rimraf'
 import slugify from 'slugify'
-import {allAnomalies, instanceOfAnomaly} from '../anomalies/Anomalies'
 import * as yamlImport from 'yaml-import'
+import {instanceOfAnomaly} from '../anomalies/Anomalies'
 
 const classicYmlRoot = path.resolve('./src/anomalies/yml')
 const tmpYmlRoot = path.resolve('./src/anomalies/yml2')
@@ -15,17 +15,10 @@ const targetDir = path.resolve('./src/anomalies/hierarchical')
 const FILE_FORMAT: 'json' | 'toml' | 'yaml' = 'yaml'
 
 function start() {
-  startFromCurrentYaml()
+  rewriteCurrentYamlAsFileTree()
 }
 
-function startGenFromJson() {
-  resetDir(targetDir)
-  allAnomalies.forEach((anomaly, idx) => {
-    recurse(targetDir, anomaly, idx)
-  })
-}
-
-function startFromCurrentYaml() {
+function rewriteCurrentYamlAsFileTree() {
   resetDir(targetDir)
   removeWholeDir(tmpYmlRoot)
   copyWholeDir(classicYmlRoot, tmpYmlRoot)
@@ -39,23 +32,20 @@ function startFromCurrentYaml() {
   const anomaliesWithCustomImports = yaml.load(readFileRaw(tmpYamlFile)) as Anomaly[]
   removeFile(tmpYamlFile)
   anomaliesWithCustomImports.forEach((anomaly, idx) => {
-    recurse(targetDir, anomaly, idx)
+    writeSubcatAsFileTree(targetDir, anomaly, idx)
   })
 
-  // TODO handle the imported files
   // Copy common/info and common/inputs
   copyWholeDir(path.join(tmpYmlRoot, 'common', 'info'), path.join(targetDir, '__imports', 'info'))
   copyWholeDir(path.join(tmpYmlRoot, 'common', 'inputs'), path.join(targetDir, '__imports', 'inputs'))
 
-  // common/*.yml will need to be transformed as file hierarchy
-  // => parse them as YAML, type them as Subcategory[], then write them each in their own folder
-
+  // Copy common/*.yml but transformed as file hierarchy
   forEachFileInDirectory(path.join(tmpYmlRoot, 'common'), f => {
     const importableSubcats = yaml.load(readFileRaw(f)) as Subcategory[]
     const folder = path.join(targetDir, '__imports', 'subcategories', extractFileName(f))
     resetDir(folder)
     importableSubcats.forEach((subcat, idx) => {
-      recurse(folder, subcat, idx)
+      writeSubcatAsFileTree(folder, subcat, idx)
     })
   })
 
@@ -98,7 +88,7 @@ ${indent}  customimport: ${importPath}`
   })
 }
 
-function recurse(parentDir: string, subcat: Subcategory, idxInParent: number) {
+function writeSubcatAsFileTree(parentDir: string, subcat: Subcategory, idxInParent: number) {
   const nameInFileSystem = `${padTo2(idxInParent + 1)}_${slugify(subcat.title, {strict: true, replacement: '_'})}`
   const {subcategories, id, ...rest} = subcat
   const fileContent = {
@@ -113,7 +103,7 @@ function recurse(parentDir: string, subcat: Subcategory, idxInParent: number) {
     const filePath = path.join(folderPath, `__index.${FILE_FORMAT}`)
     createFile(filePath, fileContent, FILE_FORMAT)
     subcategories?.forEach((subsubcat, idx) => {
-      recurse(folderPath, subsubcat, idx)
+      writeSubcatAsFileTree(folderPath, subsubcat, idx)
     })
   } else {
     const filePath = path.join(parentDir, `${nameInFileSystem}.${FILE_FORMAT}`)
