@@ -15,7 +15,7 @@ function readNewHierarchicalAnomalies() {
     .map(_ => path.join(rootDir, _))
 
   const anomalies = anomalyDirs.map(_ => {
-    resolveImportsRecursively(buildObjectFromFileOrFolder(_))
+    resolveImportsRecursively(buildObjectFromFileOrFolder(_, {allowMissingIndexInDirectories: false}))
   })
 
   console.log(anomalies)
@@ -23,7 +23,10 @@ function readNewHierarchicalAnomalies() {
 
 // Returns a Subcategory
 // except it can use 'customimport', so it's not exactly the correct type
-function buildObjectFromFileOrFolder(_path: string): any {
+function buildObjectFromFileOrFolder(
+  _path: string,
+  {allowMissingIndexInDirectories}: {allowMissingIndexInDirectories: boolean},
+): any {
   console.log('Reading ', _path)
   const type = checkPathType(_path)
   if (type === 'missing') {
@@ -35,13 +38,14 @@ function buildObjectFromFileOrFolder(_path: string): any {
     // Read __index.yaml
     const indexFile = path.join(_path, '__index.yaml')
     const indexType = checkPathType(indexFile)
-    if (indexType === 'missing') {
-      throw new Error(`Missing file __index.yaml in ${_path}`)
-    }
     if (indexType === 'dir') {
       throw new Error(`${indexFile} is supposed to be a file, not a directory`)
     }
-    const indexYaml = readFileYaml(indexFile)
+    let indexYaml: any = {}
+    if (indexType === 'missing' && !allowMissingIndexInDirectories) {
+      throw new Error(`Missing file __index.yaml in ${_path}`)
+    }
+    indexYaml = readFileYaml(indexFile)
     // Read the rest (each file or folder turns into a subcat of this subcat)
     const otherFilesOrSubdirs =
       // force the order based on filenames
@@ -49,7 +53,7 @@ function buildObjectFromFileOrFolder(_path: string): any {
         .map(_ => path.join(_path, _))
         .filter(_ => _ !== indexFile)
     const subSubcats = otherFilesOrSubdirs.map(subpath => {
-      return buildObjectFromFileOrFolder(subpath)
+      return buildObjectFromFileOrFolder(subpath, {allowMissingIndexInDirectories})
     })
     // Then merge
     const subcat = {
@@ -73,7 +77,10 @@ function resolveImportsRecursively(obj: any): any {
       checkCustomImportIsValid(customimport)
       console.log('Resolving import of ', customimport)
       const fullImportPath = path.join(rootDir, customimport)
-      imported = buildObjectFromFileOrFolder(fullImportPath)
+      imported = buildObjectFromFileOrFolder(fullImportPath, {
+        // for imported subcategories, the __index may not be present
+        allowMissingIndexInDirectories: true,
+      })
     }
     const obj2 = {...rest, ...imported}
     // Then recurse
