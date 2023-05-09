@@ -3,6 +3,7 @@ import fs from 'fs'
 import fsExtra from 'fs-extra'
 import yaml from 'js-yaml'
 import sortBy from 'lodash/sortBy'
+import mapValues from 'lodash/mapValues'
 import path from 'path'
 import {rimrafSync} from 'rimraf'
 const rootDir = path.resolve('./src/anomalies/hierarchical')
@@ -10,14 +11,16 @@ const rootDir = path.resolve('./src/anomalies/hierarchical')
 // Attempt to read the new file tree structure from 'hierarchical' folder
 // and resolve imports
 function readNewHierarchicalAnomalies() {
-  const subcatBuildDemarchageAbusif = buildSubcatFromFileOrFolder(path.join(rootDir, '17_Demarchage_abusif'))
+  const subcatBuildDemarchageAbusif = resolveImportsRecursively(
+    buildObjectFromFileOrFolder(path.join(rootDir, '14_Intoxication_alimentaire')),
+  )
 
-  console.log(subcatBuildDemarchageAbusif)
+  console.log(JSON.stringify(subcatBuildDemarchageAbusif))
 }
 
 // Returns a Subcategory
 // except it can use 'customimport', so it's not exactly the correct type
-function buildSubcatFromFileOrFolder(_path: string): any {
+function buildObjectFromFileOrFolder(_path: string): any {
   console.log('Reading ', _path)
   const type = checkPathType(_path)
   if (type === 'missing') {
@@ -43,7 +46,7 @@ function buildSubcatFromFileOrFolder(_path: string): any {
         .map(_ => path.join(_path, _))
         .filter(_ => _ !== indexFile)
     const subSubcats = otherFilesOrSubdirs.map(subpath => {
-      return buildSubcatFromFileOrFolder(subpath)
+      return buildObjectFromFileOrFolder(subpath)
     })
     // Then merge
     const subcat = {
@@ -51,6 +54,39 @@ function buildSubcatFromFileOrFolder(_path: string): any {
       subcategories: subSubcats,
     }
     return subcat
+  }
+}
+
+function resolveImportsRecursively(obj: any): any {
+  if (Array.isArray(obj)) {
+    return obj.map(resolveImportsRecursively)
+  }
+  if (typeof obj === 'object' && obj !== null) {
+    // It's an object
+    // Resolve imports
+    const {customimport, ...rest} = obj
+    let imported = {}
+    if (customimport) {
+      checkCustomImportIsValid(customimport)
+      console.log('Resolving import of ', customimport)
+      const fullImportPath = path.join(rootDir, customimport)
+      imported = buildObjectFromFileOrFolder(fullImportPath)
+    }
+    const obj2 = {...rest, ...imported}
+    // Then recurse
+    const obj3 = mapValues(obj2, v => {
+      return resolveImportsRecursively(v)
+    })
+    return obj3
+  }
+  return obj
+}
+
+function checkCustomImportIsValid(customimport: string) {
+  // make sure that there is not funny import path
+  const validPaths = ['__imports/subcategories/', '__imports/blockingInfo/', '__imports/detailInputs/']
+  if (!validPaths.some(_ => customimport.startsWith(_))) {
+    throw new Error(`Import of "${customimport}" is invalid, it should start with one of these ${validPaths.join(', ')}`)
   }
 }
 
