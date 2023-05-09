@@ -95,7 +95,7 @@ function adjustImportPath(importPath: string) {
   s = replacePrefix(s, 'info/', '__imports/blockingInfo/')
   s = replacePrefix(s, 'inputs/', '__imports/detailInputs/')
   if (!s.startsWith('__imports')) {
-    s = '__imports/subcategories/' + s
+    s = '__imports/subcategories/' + removeExtension(s)
   }
   return s
 }
@@ -225,6 +225,15 @@ function replacePrefix(text: string, prefix: string, replacement: string): strin
     return replacement + text.slice(prefix.length)
   } else {
     return text
+  }
+}
+
+function removeExtension(s: string): string {
+  const lastDotIndex = s.lastIndexOf('.')
+  if (lastDotIndex === -1) {
+    return s
+  } else {
+    return s.substring(0, lastDotIndex)
   }
 }
 

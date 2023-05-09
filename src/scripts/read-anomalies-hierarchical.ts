@@ -1,9 +1,8 @@
-import toml from '@iarna/toml'
 import fs from 'fs'
 import fsExtra from 'fs-extra'
 import yaml from 'js-yaml'
-import sortBy from 'lodash/sortBy'
 import mapValues from 'lodash/mapValues'
+import sortBy from 'lodash/sortBy'
 import path from 'path'
 import {rimrafSync} from 'rimraf'
 const rootDir = path.resolve('./src/anomalies/hierarchical')
@@ -11,11 +10,15 @@ const rootDir = path.resolve('./src/anomalies/hierarchical')
 // Attempt to read the new file tree structure from 'hierarchical' folder
 // and resolve imports
 function readNewHierarchicalAnomalies() {
-  const subcatBuildDemarchageAbusif = resolveImportsRecursively(
-    buildObjectFromFileOrFolder(path.join(rootDir, '14_Intoxication_alimentaire')),
-  )
+  const anomalyDirs = sortBy(fs.readdirSync(rootDir), _ => _)
+    .filter(_ => _ !== '__imports')
+    .map(_ => path.join(rootDir, _))
 
-  console.log(JSON.stringify(subcatBuildDemarchageAbusif))
+  const anomalies = anomalyDirs.map(_ => {
+    resolveImportsRecursively(buildObjectFromFileOrFolder(_))
+  })
+
+  console.log(anomalies)
 }
 
 // Returns a Subcategory
@@ -193,14 +196,14 @@ function replacePrefix(text: string, prefix: string, replacement: string): strin
 }
 
 function checkPathType(path: string): 'file' | 'dir' | 'missing' {
+  if (!fs.existsSync(path)) {
+    return 'missing'
+  }
   const stats = fs.statSync(path)
   if (stats.isFile()) {
     return 'file'
-  } else if (stats.isDirectory()) {
-    return 'dir'
-  } else {
-    return 'missing'
   }
+  return 'dir'
 }
 
 readNewHierarchicalAnomalies()
