@@ -41,6 +41,11 @@ function startFromCurrentYaml() {
   anomaliesWithCustomImports.forEach((anomaly, idx) => {
     recurse(targetDir, anomaly, idx)
   })
+
+  // TODO handle the imported files
+  // common/info and common/inputs can be probably just copied
+  // common/*.yml will need to be transformed as file hierarchy
+  // => parse them as YAML, type them as Subcategory[], then write them each in their own folder
 }
 
 // Rewrite all the :
@@ -80,7 +85,7 @@ ${indent}  customimport: ${importPath}`
 }
 
 function recurse(parentDir: string, subcat: Subcategory, idxInParent: number) {
-  const nameInFileSystem = `${padTo2(idxInParent + 1)}_${slugify(subcat.title, '_')}`
+  const nameInFileSystem = `${padTo2(idxInParent + 1)}_${slugify(subcat.title, {strict: true, replacement: '_'})}`
   const {subcategories, id, ...rest} = subcat
   const fileContent = {
     // preserve id only at the top level
