@@ -4,7 +4,7 @@ import sortBy from 'lodash/sortBy'
 import path from 'path'
 
 // Sort an object keys, recursively
-// So that we can compare the JSONs
+// useful to compare JSONs
 export function sortObjectKeys(obj: any): any {
   if (Array.isArray(obj)) {
     return obj.map(sortObjectKeys)
