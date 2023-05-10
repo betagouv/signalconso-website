@@ -3,7 +3,6 @@ import yaml from 'js-yaml'
 import sortBy from 'lodash/sortBy'
 import path from 'path'
 import slugify from 'slugify'
-import {v4 as uuidv4} from 'uuid'
 
 const rootDir = path.resolve('./src/anomalies/hierarchical')
 const INDEX_YAML = '__index.yaml'
@@ -18,19 +17,16 @@ function sanitizeHierarchicalAnomalies() {
 }
 
 function sanitizeDirContents(_path: string, options: {excludedFileName?: string} = {}) {
-  console.log('Rename contents of dir ', _path)
   throwIfNotExists(_path)
   throwIfNotDir(_path)
   const excludedFileNames = [INDEX_YAML, ...(options.excludedFileName ? [options.excludedFileName] : [])]
-  // Rename everything with a random name
-  // to avoid potential conflicts when doing the true renaming
-  dirContentSorted(_path, {excludedFileNames}).map(subpath => {
-    rename(subpath, `tmp_${uuidv4()}`)
-  })
   // Rename everything with its proper name
   dirContentSorted(_path, {excludedFileNames}).map((subpath, idx) => {
-    const title = findTitleForPath(_path)
-    const newName = `${padTo2(idx + 1)}_${slugify(title, {strict: true, replacement: '_'})}`
+    const title = findTitleForPath(subpath)
+    const newIdx = padTo2(idx + 1)
+    const newTitle = slugify(title, {strict: true, replacement: '_'})
+    const extension = isFile(subpath) ? '.yaml' : ''
+    const newName = `${newIdx}_${newTitle}${extension}`
     rename(subpath, newName)
   })
   // Recurse
@@ -106,7 +102,10 @@ function throwIfNotFile(_path: string, message?: string) {
 
 function rename(_path: string, newFilename: string): void {
   const newPath = path.join(path.dirname(_path), newFilename)
-  fs.renameSync(_path, newFilename)
+  if (newPath !== _path) {
+    console.log(`Renaming ${_path} -> ${newFilename}`)
+    fs.renameSync(_path, newPath)
+  }
 }
 
 // Sort an object keys, recursively
