@@ -47,7 +47,7 @@ function rewriteCurrentYamlAsFileTree() {
     })
   })
 
-  // removeWholeDir(tmpYmlRoot)
+  removeWholeDir(tmpYmlRoot)
 }
 
 // Rewrite all the :

@@ -5,7 +5,7 @@ import sortBy from 'lodash/sortBy'
 import path from 'path'
 import {checkAnomaliesYaml} from '../anomalies/checks/checkAnomaliesJson'
 const rootDir = path.resolve('./src/anomalies/hierarchical')
-const jsonOutputFile = path.resolve(rootDir, '..', 'hierarchical.json')
+const jsonOutputFile = path.resolve(rootDir, '..', 'anomalies-from-hierarchical.json')
 
 // Attempt to read the new file tree structure from 'hierarchical' folder
 // and resolve imports
@@ -18,10 +18,6 @@ function readNewHierarchicalAnomalies() {
     return resolveImportsRecursively(buildSubcategoryFromFileOrFolder(_))
   })
 
-  const ymlBigFile = './src/anomalies/hierarchical.yaml'
-  console.log(`Generating YAML file ${ymlBigFile}`)
-  writeYamlFile(ymlBigFile, anomalies)
-
   console.log(`Generating JSON file ${jsonOutputFile}`)
   fs.writeFileSync(jsonOutputFile, JSON.stringify(anomalies, null, 2))
   checkAnomaliesYaml(anomalies)
@@ -33,38 +29,37 @@ function readNewHierarchicalAnomalies() {
 // except it can use 'customimport', so it's not exactly the correct type
 function buildSubcategoryFromFileOrFolder(_path: string): any {
   console.log('Reading ', _path)
-  const type = checkPathType(_path)
-  if (type === 'missing') {
+  if (!exists(_path)) {
     throw new Error(`Nothing at path ${_path}`)
-  } else if (type === 'file') {
-    return readFileYaml(_path)
-  } else {
-    // Read __index.yaml
-    const indexFile = path.join(_path, '__index.yaml')
-    const indexType = checkPathType(indexFile)
-    if (indexType === 'dir') {
-      throw new Error(`${indexFile} is supposed to be a file, not a directory`)
-    }
-    if (indexType === 'missing') {
-      throw new Error(`Missing file __index.yaml in ${_path}`)
-    }
-    const indexYaml: any = readFileYaml(indexFile)
-    // Read the rest (each file or folder turns into a subcat of this subcat)
-    const otherFilesOrSubdirs =
-      // force the order based on filenames
-      sortBy(fs.readdirSync(_path), _ => _)
-        .map(_ => path.join(_path, _))
-        .filter(_ => _ !== indexFile)
-    const subSubcats = otherFilesOrSubdirs.map(subpath => {
-      return buildSubcategoryFromFileOrFolder(subpath)
-    })
-    // Then merge
-    const subcat = {
-      ...indexYaml,
-      subcategories: subSubcats,
-    }
-    return subcat
   }
+  if (isFile(_path)) {
+    return readFileYaml(_path)
+  }
+  // It's a directory
+  // Read __index.yaml
+  const indexFile = path.join(_path, '__index.yaml')
+  if (!exists(indexFile)) {
+    throw new Error(`Missing file __index.yaml in ${_path}`)
+  }
+  if (!isFile(indexFile)) {
+    throw new Error(`${indexFile} is supposed to be a file, not a directory`)
+  }
+  const indexYaml: any = readFileYaml(indexFile)
+  // Read the rest (each file or folder turns into a subcat of this subcat)
+  const otherFilesOrSubdirs =
+    // force the order based on filenames
+    sortBy(fs.readdirSync(_path), _ => _)
+      .map(_ => path.join(_path, _))
+      .filter(_ => _ !== indexFile)
+  const subSubcats = otherFilesOrSubdirs.map(subpath => {
+    return buildSubcategoryFromFileOrFolder(subpath)
+  })
+  // Then merge
+  const subcat = {
+    ...indexYaml,
+    subcategories: subSubcats,
+  }
+  return subcat
 }
 
 // Read a file or folder (within __imports)
@@ -76,10 +71,10 @@ function buildSubcategoryFromFileOrFolder(_path: string): any {
 //    (instead of building the subcategory above)
 function buildImportableFromFileOrFolder(_path: string): any {
   console.log('Reading ', _path)
-  const type = checkPathType(_path)
-  if (type === 'missing') {
+  if (!exists(_path)) {
     throw new Error(`Nothing at path ${_path}`)
-  } else if (type === 'file') {
+  }
+  if (isFile(_path)) {
     return readFileYaml(_path)
   } else {
     // Read the rest (each file or folder turns into a subcat of this subcat)
@@ -133,20 +128,11 @@ function readFileYaml(filePath: string): any {
   return yaml.load(fs.readFileSync(filePath, 'utf-8'))
 }
 
-function checkPathType(path: string): 'file' | 'dir' | 'missing' {
-  if (!fs.existsSync(path)) {
-    return 'missing'
-  }
-  const stats = fs.statSync(path)
-  if (stats.isFile()) {
-    return 'file'
-  }
-  return 'dir'
+function exists(path: string) {
+  return fs.existsSync(path)
 }
-
-function writeYamlFile(filename: string, data: unknown): void {
-  const yamlData = yaml.dump(data)
-  fs.writeFileSync(filename, yamlData, 'utf8')
+function isFile(path: string) {
+  return exists(path) && fs.statSync(path).isFile()
 }
 
 readNewHierarchicalAnomalies()

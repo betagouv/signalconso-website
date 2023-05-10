@@ -32,3 +32,4 @@ yarn-error.log*
 
 src/anomalies/hierarchical
 src/anomalies/yml2
+src/anomalies/anomalies-from-hierarchical.json
