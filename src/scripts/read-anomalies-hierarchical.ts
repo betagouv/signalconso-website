@@ -28,18 +28,14 @@ function readNewHierarchicalAnomalies() {
 // except it can use 'customimport', so it's not exactly the correct type
 function buildSubcategoryFromFileOrFolder(_path: string): any {
   console.log('Reading ', _path)
-  if (!exists(_path)) {
-    throw new Error(`Nothing at path ${_path}`)
-  }
+  throwIfNotExists(_path)
   if (isFile(_path)) {
     return readFileYaml(_path)
   }
   // It's a directory
   // Read __index.yaml
   const indexFile = path.join(_path, INDEX_YAML)
-  if (!exists(indexFile)) {
-    throw new Error(`Missing file __index.yaml in ${_path}`)
-  }
+  throwIfNotExists(indexFile, `Missing file ${INDEX_YAML} in ${_path}`)
   if (!isFile(indexFile)) {
     throw new Error(`${indexFile} is supposed to be a file, not a directory`)
   }
@@ -131,11 +127,16 @@ function readFileYaml(filePath: string): any {
   return yaml.load(fs.readFileSync(filePath, 'utf-8'))
 }
 
-function exists(path: string) {
-  return fs.existsSync(path)
+function exists(_path: string) {
+  return fs.existsSync(_path)
 }
-function isFile(path: string) {
-  return exists(path) && fs.statSync(path).isFile()
+function isFile(_path: string) {
+  return exists(_path) && fs.statSync(_path).isFile()
+}
+function throwIfNotExists(_path: string, message?: string) {
+  if (!exists(_path)) {
+    throw new Error(message ?? `Nothing at path ${_path}`)
+  }
 }
 
 readNewHierarchicalAnomalies()
