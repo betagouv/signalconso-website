@@ -1,8 +1,15 @@
-import fs from 'fs'
-import yaml from 'js-yaml'
-import sortBy from 'lodash/sortBy'
 import path from 'path'
 import slugify from 'slugify'
+import {
+  dirContentSorted,
+  isFile,
+  padTo2,
+  readFileYaml,
+  renameFileOrDir,
+  throwIfNotDir,
+  throwIfNotExists,
+  throwIfNotFile,
+} from './scriptUtils'
 
 const rootDir = path.resolve('./src/anomalies/yml-hierarchical')
 const INDEX_YAML = '__index.yaml'
@@ -28,7 +35,7 @@ function sanitizeDirContents(_path: string, options: {excludedFileName?: string}
     const newTitle = slugify(title, {strict: true, replacement: '_'})
     const extension = isFile(subpath) ? '.yaml' : ''
     const newName = `${newIdx}_${newTitle}${extension}`
-    rename(subpath, newName)
+    renameFileOrDir(subpath, newName)
   })
   // Recurse
   dirContentSorted(_path, {excludedFileNames}).map(subpath => {
@@ -61,52 +68,6 @@ function readTitleInYamlFile(_path: string) {
     throw new Error(`"Title" is not a string in ${path}`)
   }
   return title
-}
-
-function padTo2(num: number): string {
-  return num.toString().padStart(2, '0')
-}
-
-// List both files and subfolders
-// Sort them by name
-function dirContentSorted<A>(dirPath: string, {excludedFileNames}: {excludedFileNames?: string[]} = {}) {
-  return sortBy(fs.readdirSync(dirPath), _ => _)
-    .filter(_ => !excludedFileNames?.includes(_))
-    .map(_ => path.join(dirPath, _))
-}
-
-function readFileYaml(filePath: string): any {
-  return yaml.load(fs.readFileSync(filePath, 'utf-8'))
-}
-
-function exists(_path: string) {
-  return fs.existsSync(_path)
-}
-function isFile(_path: string) {
-  return exists(_path) && fs.statSync(_path).isFile()
-}
-function throwIfNotExists(_path: string, message?: string) {
-  if (!exists(_path)) {
-    throw new Error(message ?? `Nothing at path ${_path}`)
-  }
-}
-function throwIfNotDir(_path: string, message?: string) {
-  if (isFile(_path)) {
-    throw new Error(message ?? `This is a file, not a directory: ${_path}`)
-  }
-}
-function throwIfNotFile(_path: string, message?: string) {
-  if (!isFile(_path)) {
-    throw new Error(message ?? `This is a file, not a directory: ${_path}`)
-  }
-}
-
-function rename(_path: string, newFilename: string): void {
-  const newPath = path.join(path.dirname(_path), newFilename)
-  if (newPath !== _path) {
-    console.log(`Renaming ${_path} -> ${newFilename}`)
-    fs.renameSync(_path, newPath)
-  }
 }
 
 sanitizeHierarchicalAnomalies()
