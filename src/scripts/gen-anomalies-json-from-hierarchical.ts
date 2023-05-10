@@ -1,10 +1,8 @@
 import fs from 'fs'
-import yaml from 'js-yaml'
 import mapValues from 'lodash/mapValues'
-import sortBy from 'lodash/sortBy'
 import path from 'path'
 import {checkAnomaliesYaml} from '../anomalies/checks/checkAnomaliesJson'
-import {sortObjectKeys} from './scriptUtils'
+import {dirContentSorted, exists, isFile, readFileYaml, sortObjectKeys, throwIfNotExists} from './scriptUtils'
 
 const rootDir = path.resolve('./src/anomalies/yml-hierarchical')
 const jsonOutputFile = path.resolve(rootDir, '..', 'anomalies-from-hierarchical.json')
@@ -13,7 +11,7 @@ const INDEX_YAML = '__index.yaml'
 // Attempt to read the new file tree structure from 'yml-hierarchical' folder
 // and resolve imports
 function readNewHierarchicalAnomalies() {
-  const anomalyDirs = dirContentSorted(rootDir, {excludedFileName: '__imports'})
+  const anomalyDirs = dirContentSorted(rootDir, {excludedFileNames: ['__imports']})
   const anomalies = anomalyDirs.map(_ => {
     return resolveImportsRecursively(buildSubcategoryFromFileOrFolder(_))
   })
@@ -42,7 +40,7 @@ function buildSubcategoryFromFileOrFolder(_path: string): any {
   }
   const indexYaml: any = readFileYaml(indexFile)
   // Read the rest (each file or folder turns into a subcat of this subcat)
-  const otherFilesOrSubdirs = dirContentSorted(_path, {excludedFileName: INDEX_YAML})
+  const otherFilesOrSubdirs = dirContentSorted(_path, {excludedFileNames: [INDEX_YAML]})
   const subSubcats = otherFilesOrSubdirs.map(subpath => {
     return buildSubcategoryFromFileOrFolder(subpath)
   })
@@ -127,27 +125,4 @@ function addUniqueId(obj: any, depth = 0, prefix?: string): void {
   })
 }
 
-// List both files and subfolders
-// Sort them by name
-function dirContentSorted<A>(dirPath: string, {excludedFileName}: {excludedFileName?: string} = {}) {
-  return sortBy(fs.readdirSync(dirPath), _ => _)
-    .filter(_ => _ !== excludedFileName)
-    .map(_ => path.join(dirPath, _))
-}
-
-function readFileYaml(filePath: string): any {
-  return yaml.load(fs.readFileSync(filePath, 'utf-8'))
-}
-
-function exists(_path: string) {
-  return fs.existsSync(_path)
-}
-function isFile(_path: string) {
-  return exists(_path) && fs.statSync(_path).isFile()
-}
-function throwIfNotExists(_path: string, message?: string) {
-  if (!exists(_path)) {
-    throw new Error(message ?? `Nothing at path ${_path}`)
-  }
-}
 readNewHierarchicalAnomalies()
