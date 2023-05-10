@@ -3,6 +3,7 @@ import path from 'path'
 import yaml from 'js-yaml'
 import * as yamlImport from 'yaml-import'
 import {checkAnomaliesYaml} from '../anomalies/checks/checkAnomaliesJson'
+import {sortObjectKeys} from './read-anomalies-hierarchical'
 
 const files = [
   {
@@ -37,5 +38,5 @@ files.forEach(file => {
   addUniqueId(obj)
   const outputFile = path.join(ymlRoot, file.output)
   console.log(`Generating JSON file ${outputFile}`)
-  fs.writeFileSync(outputFile, JSON.stringify(obj, null, 2))
+  fs.writeFileSync(outputFile, JSON.stringify(sortObjectKeys(obj), null, 2))
 })
