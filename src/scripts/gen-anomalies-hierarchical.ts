@@ -10,12 +10,12 @@ import * as yamlImport from 'yaml-import'
 import {instanceOfAnomaly} from '../anomalies/Anomalies'
 
 const classicYmlRoot = path.resolve('./src/anomalies/yml')
-const tmpYmlRoot = path.resolve('./src/anomalies/yml2')
-const targetDir = path.resolve('./src/anomalies/hierarchical')
+const tmpYmlRoot = path.resolve('./src/anomalies/yml-copy-tmp')
+const targetDir = path.resolve('./src/anomalies/yml-hierarchical')
 const FILE_FORMAT: 'json' | 'toml' | 'yaml' = 'yaml'
 
 // Make a copy of the classic yml folder
-// into a new 'hierarchical' folder, using the new structure and imports
+// into a new 'yml-hierarchical' folder, using the new structure and imports
 function rewriteCurrentYamlAsFileTree() {
   resetDir(targetDir)
   removeWholeDir(tmpYmlRoot)

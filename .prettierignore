@@ -30,6 +30,6 @@ yarn-error.log*
 .next
 
 
-src/anomalies/hierarchical
-src/anomalies/yml2
+src/anomalies/yml-hierarchical
+src/anomalies/yml-copy-tmp
 src/anomalies/anomalies-from-hierarchical.json

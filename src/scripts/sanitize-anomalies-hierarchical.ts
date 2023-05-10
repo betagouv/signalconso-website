@@ -4,7 +4,7 @@ import sortBy from 'lodash/sortBy'
 import path from 'path'
 import slugify from 'slugify'
 
-const rootDir = path.resolve('./src/anomalies/hierarchical')
+const rootDir = path.resolve('./src/anomalies/yml-hierarchical')
 const INDEX_YAML = '__index.yaml'
 
 // Walks the hierarchical file/directories structure

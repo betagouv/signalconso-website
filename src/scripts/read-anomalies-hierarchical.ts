@@ -6,11 +6,11 @@ import path from 'path'
 import {checkAnomaliesYaml} from '../anomalies/checks/checkAnomaliesJson'
 import {sortObjectKeys} from './scriptUtils'
 
-const rootDir = path.resolve('./src/anomalies/hierarchical')
+const rootDir = path.resolve('./src/anomalies/yml-hierarchical')
 const jsonOutputFile = path.resolve(rootDir, '..', 'anomalies-from-hierarchical.json')
 const INDEX_YAML = '__index.yaml'
 
-// Attempt to read the new file tree structure from 'hierarchical' folder
+// Attempt to read the new file tree structure from 'yml-hierarchical' folder
 // and resolve imports
 function readNewHierarchicalAnomalies() {
   const anomalyDirs = dirContentSorted(rootDir, {excludedFileName: '__imports'})
