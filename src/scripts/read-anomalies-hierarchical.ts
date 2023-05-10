@@ -16,11 +16,11 @@ function readNewHierarchicalAnomalies() {
   const anomalies = anomalyDirs.map(_ => {
     return resolveImportsRecursively(buildSubcategoryFromFileOrFolder(_))
   })
-
-  console.log(`Generating JSON file ${jsonOutputFile}`)
-  fs.writeFileSync(jsonOutputFile, JSON.stringify(anomalies, null, 2))
   checkAnomaliesYaml(anomalies)
   console.log(`The YAML is valid`)
+  addUniqueId(anomalies)
+  console.log(`Generating JSON file ${jsonOutputFile}`)
+  fs.writeFileSync(jsonOutputFile, JSON.stringify(anomalies, null, 2))
 }
 
 // Read a file or a folder
@@ -113,6 +113,17 @@ function checkCustomImportIsValid(customimport: string) {
   if (!validPaths.some(_ => customimport.startsWith(_))) {
     throw new Error(`Import of "${customimport}" is invalid, it should start with one of these ${validPaths.join(', ')}`)
   }
+}
+
+function addUniqueId(obj: any, depth = 0, prefix?: string): void {
+  let index = 1
+  obj.forEach((entry: any) => {
+    const id = `${prefix ? prefix + '.' : ''}${entry.id || index++}`
+    entry.id = id
+    if (entry.subcategories) {
+      addUniqueId(entry.subcategories, depth + 1, id)
+    }
+  })
 }
 
 // List both files and subfolders
