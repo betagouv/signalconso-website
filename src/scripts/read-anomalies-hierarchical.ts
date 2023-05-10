@@ -4,16 +4,15 @@ import mapValues from 'lodash/mapValues'
 import sortBy from 'lodash/sortBy'
 import path from 'path'
 import {checkAnomaliesYaml} from '../anomalies/checks/checkAnomaliesJson'
+
 const rootDir = path.resolve('./src/anomalies/hierarchical')
 const jsonOutputFile = path.resolve(rootDir, '..', 'anomalies-from-hierarchical.json')
+const INDEX_YAML = '__index.yaml'
 
 // Attempt to read the new file tree structure from 'hierarchical' folder
 // and resolve imports
 function readNewHierarchicalAnomalies() {
-  const anomalyDirs = sortBy(fs.readdirSync(rootDir), _ => _)
-    .filter(_ => _ !== '__imports')
-    .map(_ => path.join(rootDir, _))
-
+  const anomalyDirs = dirContentSorted(rootDir, {excludedFileName: '__imports'})
   const anomalies = anomalyDirs.map(_ => {
     return resolveImportsRecursively(buildSubcategoryFromFileOrFolder(_))
   })
@@ -37,7 +36,7 @@ function buildSubcategoryFromFileOrFolder(_path: string): any {
   }
   // It's a directory
   // Read __index.yaml
-  const indexFile = path.join(_path, '__index.yaml')
+  const indexFile = path.join(_path, INDEX_YAML)
   if (!exists(indexFile)) {
     throw new Error(`Missing file __index.yaml in ${_path}`)
   }
@@ -46,11 +45,7 @@ function buildSubcategoryFromFileOrFolder(_path: string): any {
   }
   const indexYaml: any = readFileYaml(indexFile)
   // Read the rest (each file or folder turns into a subcat of this subcat)
-  const otherFilesOrSubdirs =
-    // force the order based on filenames
-    sortBy(fs.readdirSync(_path), _ => _)
-      .map(_ => path.join(_path, _))
-      .filter(_ => _ !== indexFile)
+  const otherFilesOrSubdirs = dirContentSorted(_path, {excludedFileName: INDEX_YAML})
   const subSubcats = otherFilesOrSubdirs.map(subpath => {
     return buildSubcategoryFromFileOrFolder(subpath)
   })
@@ -65,7 +60,7 @@ function buildSubcategoryFromFileOrFolder(_path: string): any {
 // Read a file or folder (within __imports)
 // Build the object or array that we're supposed to import
 //
-// the logic is slightly different if it's a folder :
+// The logic is slightly different from the main method, if it's a folder :
 //  - we don't expect an __index.yaml
 //  - we build an array of subcategories for each file/subdir
 //    (instead of building the subcategory above)
@@ -78,7 +73,7 @@ function buildImportableFromFileOrFolder(_path: string): any {
     return readFileYaml(_path)
   } else {
     // Read the rest (each file or folder turns into a subcat of this subcat)
-    const filesOrSubdirs = sortBy(fs.readdirSync(_path), _ => _).map(_ => path.join(_path, _))
+    const filesOrSubdirs = dirContentSorted(_path)
     const subcats = filesOrSubdirs.map(subpath => {
       // recurse with the other method
       return buildSubcategoryFromFileOrFolder(subpath)
@@ -122,6 +117,14 @@ function checkCustomImportIsValid(customimport: string) {
   if (!validPaths.some(_ => customimport.startsWith(_))) {
     throw new Error(`Import of "${customimport}" is invalid, it should start with one of these ${validPaths.join(', ')}`)
   }
+}
+
+// List both files and subfolders
+// Sort them by name
+function dirContentSorted<A>(dirPath: string, {excludedFileName}: {excludedFileName?: string} = {}) {
+  return sortBy(fs.readdirSync(dirPath), _ => _)
+    .filter(_ => _ !== excludedFileName)
+    .map(_ => path.join(dirPath, _))
 }
 
 function readFileYaml(filePath: string): any {
