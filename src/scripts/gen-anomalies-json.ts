@@ -3,7 +3,7 @@ import path from 'path'
 import yaml from 'js-yaml'
 import * as yamlImport from 'yaml-import'
 import {checkAnomaliesYaml} from '../anomalies/checks/checkAnomaliesJson'
-import {sortObjectKeys} from './read-anomalies-hierarchical'
+import {sortObjectKeys} from './scriptUtils'
 
 const files = [
   {
