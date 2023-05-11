@@ -1,0 +1,4 @@
+title: Une administration
+desc: 'Exemple : ma mairie, mon centre des impôts'
+blockingInfo:
+  customimport: __imports/blockingInfo/administration.yml

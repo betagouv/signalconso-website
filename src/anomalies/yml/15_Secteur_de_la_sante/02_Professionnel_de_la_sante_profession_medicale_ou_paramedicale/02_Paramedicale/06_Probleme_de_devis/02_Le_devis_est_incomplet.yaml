@@ -1,0 +1,16 @@
+title: Le devis est incomplet
+reponseconsoCode:
+  - '2121'
+  - '226'
+detailInputs:
+  - label: Date du rendez-vous
+    type: DATE
+  - label: "Combien a coûté le soin au total\_?"
+    type: TEXT
+  - label: "Quelles informations manquent-ils sur votre devis \_? (plusieurs réponses possibles)"
+    type: CHECKBOX
+    options:
+      - description détaillée du soin envisagé et / ou des matériaux utilisés
+      - lieu de fabrication de la prothèse le cas échéant
+      - montant des honoraires du soin
+      - montant remboursé par l'assurance maladie

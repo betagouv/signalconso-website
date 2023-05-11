@@ -1,0 +1,8 @@
+title: Cosmétique, produit d'hygiène, produit de tatouage
+ccrfCode:
+  - 34A
+tags:
+  - ProduitIndustriel
+subcategoriesTitle: Quel est le risque&#160;?
+subcategories:
+  customimport: __imports/subcategories/produit-dangereux

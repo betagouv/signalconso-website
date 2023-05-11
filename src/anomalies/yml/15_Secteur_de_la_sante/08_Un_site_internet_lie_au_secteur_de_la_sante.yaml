@@ -1,0 +1,8 @@
+title: Un site internet lié au secteur de la santé
+desc: 'Exemple : site de téléconsultation avec un médecin'
+tags:
+  - ReponseConso
+reponseconsoCode:
+  - '220'
+  - '226'
+companyKind: WEBSITE

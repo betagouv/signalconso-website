@@ -1,0 +1,7 @@
+title: Un achat suite à la visite d'un vendeur à mon domicile
+companyKind: LOCATION
+reponseconsoCode:
+  - '221'
+  - '210'
+tags:
+  - DemarchageADomicile

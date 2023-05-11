@@ -1,0 +1,8 @@
+title: Outil
+subcategoriesTitle: Quel est le risque&#160;?
+ccrfCode:
+  - 34F
+tags:
+  - ProduitIndustriel
+subcategories:
+  customimport: __imports/subcategories/produit-dangereux

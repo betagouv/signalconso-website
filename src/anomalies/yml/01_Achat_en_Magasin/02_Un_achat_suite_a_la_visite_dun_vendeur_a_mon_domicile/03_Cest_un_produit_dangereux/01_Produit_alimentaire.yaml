@@ -1,0 +1,5 @@
+title: Produit alimentaire
+tags:
+  - ProduitAlimentaire
+subcategories:
+  customimport: __imports/subcategories/produit-alimentaire

@@ -1,0 +1,18 @@
+title: Indisponibilité des produits proposés
+reponseconsoCode:
+  - '2243'
+  - '271'
+detailInputs:
+  - label: Date du constat
+    type: DATE
+    defaultValue: SYSDATE
+  - label: Quel type de produit était indisponible&#160;?
+    type: TEXT
+    placeholder: "Exemple\_: Vin blanc, menu en promotion "
+  - label: "Le commerçant vous a-t-il donné une raison\_?"
+    type: RADIO
+    options:
+      - Non
+      - Il n'y en avait plus
+      - La carte n'est pas à jour
+      - Autre raison (à préciser)

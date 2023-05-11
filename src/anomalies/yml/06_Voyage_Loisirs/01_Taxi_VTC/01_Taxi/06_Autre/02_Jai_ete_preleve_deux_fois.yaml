@@ -1,0 +1,12 @@
+title: J'ai été prélevé deux fois
+detailInputs:
+  - label: Date de la course ?
+    type: DATE
+  - label: Montant de la course ?
+    type: TEXT
+  - label: Notez toute autre information utile.
+    type: TEXT
+    placeholder: Identification du taxi, nom de la centrale d'appel...
+fileLabel: >-
+  Joindre la note (facture) et tout document utile pour appuyer votre
+  signalement (extrait de relevé bancaire).

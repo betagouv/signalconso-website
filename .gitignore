@@ -37,7 +37,7 @@ yarn-error.log*
 *.tsbuildinfo
 
 # will be generated each time the application is ran
-src/anomalies/yml/anomalies.json
+src/anomalies/anomalies.json
 public/sitemap.xml
 
 landings.csv
@@ -59,9 +59,3 @@ landings.csv
 !.yarn/sdks
 !.yarn/versions 
 /android/
-
-
-
-src/anomalies/yml-hierarchical
-src/anomalies/yml-copy-tmp
-src/anomalies/anomalies-from-hierarchical.json

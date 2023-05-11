@@ -1,0 +1,7 @@
+title: Produit pour bébé
+tags:
+  - ProduitAlimentaire
+desc: 'Exemple : lait, plat, petit pot...'
+subcategoriesTitle: Quel est le risque&#160;?
+subcategories:
+  customimport: __imports/subcategories/produit-alimentaire-risque

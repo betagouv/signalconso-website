@@ -1,0 +1,24 @@
+title: Le prix payé n'est pas celui annoncé au départ
+ccrfCode:
+  - 23b
+  - '164'
+reponseconsoCode:
+  - '451'
+  - '210'
+tags:
+  - ReponseConso
+detailInputs:
+  - label: Date de la course
+    type: DATE
+  - label: Quel était le prix annoncé au départ ?
+    type: TEXT
+  - label: Quel prix avez-vous payé ?
+    type: TEXT
+  - label: Le chauffeur / l'entreprise vous a-t-elle donné une raison ?
+    type: RADIO
+    options:
+      - Oui (à préciser)
+      - Non
+fileLabel: >-
+  Merci de joindre tous les documents utiles pour appuyer votre signalement
+  (reçu, capture d'écran en cas d'application mobile...)

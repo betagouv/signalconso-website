@@ -1,0 +1,6 @@
+title: Oui, j'ai été prévenu par email ou courrier
+reponseconsoCode:
+  - '421'
+  - '2202'
+blockingInfo:
+  customimport: __imports/blockingInfo/tel.yml

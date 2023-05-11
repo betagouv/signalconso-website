@@ -1,0 +1,8 @@
+title: Impossible d'identifier l'entreprise
+desc: >-
+  Exemple : Je ne trouve aucune information sur l'identité de l'entreprise sur
+  le site (pas de coordonnées postales, téléphoniques, mail, pas d'adresse
+  postale, pas de SIRET/SIREN/RCS)
+ccrfCode:
+  - '220'
+  - 21A

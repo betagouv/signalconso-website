@@ -1,0 +1,8 @@
+title: Produit alimentaire
+ccrfCode:
+  - '311'
+  - '308'
+tags:
+  - ProduitAlimentaire
+subcategories:
+  customimport: __imports/subcategories/produit-alimentaire

@@ -1,0 +1,8 @@
+title: Meuble
+subcategoriesTitle: Quel est le risque&#160;?
+ccrfCode:
+  - '332'
+tags:
+  - ProduitIndustriel
+subcategories:
+  customimport: __imports/subcategories/produit-dangereux

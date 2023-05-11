@@ -1,0 +1,31 @@
+title: Je trouve les locaux sales ou dégradés
+desc: "Exemple\_: cuisine sale, WC sale"
+detailInputs:
+  - label: Date du constat
+    type: DATE
+    defaultValue: SYSDATE
+  - label: Heure du constat (facultatif)
+    type: TIMESLOT
+    optional: true
+  - label: Quel endroit est concerné&#160;?
+    type: CHECKBOX
+    options:
+      - La cuisine et zone de production / stockage
+      - Salle du restaurant, du bar
+      - Le lieu de vente (vitrine réfrigérée)
+      - Les WC
+      - Autre (à préciser)
+  - label: Quel est le problème&#160;?
+    type: CHECKBOX
+    options:
+      - C'est sale
+      - C'est dégradé, en mauvais état
+  - label: À quel niveau&#160;?
+    type: CHECKBOX
+    options:
+      - Sol / mur
+      - Vitrine, réfrigérateur
+      - Matériel de fabrication, équipement en cuisine
+      - Équipements pour les clients (table, plateaux, couverts, micro-ondes...)
+      - Autre (à préciser)
+fileLabel: Merci de joindre si possible une photo pour appuyer votre signalement.

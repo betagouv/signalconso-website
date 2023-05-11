@@ -1,0 +1,10 @@
+title: Qualité du réseau
+desc: 'Exemple : je ne capte pas, je capte mal, débit faible'
+blockingInfo:
+  title: La qualité du réseau est mauvaise
+  content: >-
+    Les problèmes de réseau ou d'éligibilité ne peuvent pas être signalés sur
+    SignalConso. <br> Vous devez les signaler à l'Arcep (Autorité de régulation
+    des communications électroniques, des postes et de la distribution de la
+    presse) sur leur site dédié  <a href="https://jalerte.arcep.fr/"
+    target="_blank" /> J'alerte l'Arcep </a>

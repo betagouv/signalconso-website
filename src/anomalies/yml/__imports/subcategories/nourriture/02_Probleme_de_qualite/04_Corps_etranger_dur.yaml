@@ -1,0 +1,20 @@
+title: Corps étranger "dur"
+desc: "Exemple\_: bout de verre, morceau de métal, dent"
+reponseconsoCode:
+  - '323'
+tags:
+  - ReponseConso
+  - ProduitDangereux
+subcategoriesTitle: Quel est le risque&#160;?
+blockingInfo:
+  title: Vous souhaitez signaler la présence d'un corps étranger "dur"
+  questions:
+    - question: >-
+        Ce cas représente une alerte et nécessite une analyse individualisée par
+        la répression des fraudes.
+      answer: >-
+        Veuillez le signaler sur le site <br><a
+        href="https://www.economie.gouv.fr/contact/contacter-la-dgccrf?dest=particulier"
+        target="_blank">https://www.economie.gouv.fr/contact/contacter-la-dgccrf?dest=particulier</a>
+subcategories:
+  customimport: __imports/subcategories/produit-alimentaire

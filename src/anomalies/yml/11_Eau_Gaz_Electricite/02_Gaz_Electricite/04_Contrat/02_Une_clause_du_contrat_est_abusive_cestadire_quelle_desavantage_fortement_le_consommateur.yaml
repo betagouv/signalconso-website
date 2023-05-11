@@ -1,0 +1,12 @@
+title: >-
+  Une clause du contrat est abusive, c'est-à-dire qu'elle désavantage fortement
+  le consommateur
+reponseconsoCode:
+  - '214'
+detailInputs:
+  - label: Date du constat (ou du contrat)
+    type: DATE
+    defaultValue: SYSDATE
+  - label: "Quelle partie du contrat / règlement trouvez-vous abusive\_?"
+    type: TEXTAREA
+fileLabel: Joindre une copie du contrat / règlement.

@@ -1,0 +1,9 @@
+title: Autre
+detailInputs:
+  customimport: __imports/detailInputs/produit-alimentaire.yml
+fileLabel: Photos du produit / de l'emballage / du ticket / de la facture / de l'accident
+reponseconsoCode:
+  - '340'
+  - '324'
+  - '322'
+  - '323'

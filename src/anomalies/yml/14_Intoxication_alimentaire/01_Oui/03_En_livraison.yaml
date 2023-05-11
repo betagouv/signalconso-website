@@ -1,0 +1,10 @@
+title: En livraison
+companyKind: LOCATION
+reponseconsoCode:
+  - '321'
+  - '324'
+tags:
+  - ProduitDangereux
+detailInputs:
+  customimport: __imports/detailInputs/intoxication-alimentaire.yml
+fileLabel: Photos du produit / de l'emballage / du ticket / de la facture

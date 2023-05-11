@@ -1,0 +1,15 @@
+title: Cas particulier des œufs
+reponseconsoCode:
+  - '323'
+detailInputs:
+  - label: "Quel est le problème\_?"
+    type: RADIO
+    options:
+      - La date est dépassée
+      - La date sera dépassée d'ici 7 jours
+  - label: Date de consommation recommandée
+    type: DATE
+  - label: Date du constat (ou date d'achat)
+    type: DATE_NOT_IN_FUTURE
+    defaultValue: SYSDATE
+fileLabel: Photo

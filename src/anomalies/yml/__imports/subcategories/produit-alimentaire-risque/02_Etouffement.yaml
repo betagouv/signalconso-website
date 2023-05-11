@@ -1,0 +1,10 @@
+title: Etouffement
+detailInputs:
+  customimport: __imports/detailInputs/produit-alimentaire.yml
+fileLabel: Photos du produit / de l'emballage / du ticket / de la facture / de l'accident
+reponseconsoCode:
+  - '311'
+  - '321'
+  - '324'
+  - '274'
+  - '210'
