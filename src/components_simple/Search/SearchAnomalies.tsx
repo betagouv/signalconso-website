@@ -68,7 +68,7 @@ const SearchAnomalies: React.FC<SearchBarProps> = ({anomalies}) => {
         {query.trim() !== '' && (
           <div
             className="w-10 group rounded-r-lg cursor-pointer hover:bg-[#1212ff] bg-[#000091] flex items-center justify-center"
-            onClick={_ => setQuery('')}
+            onClick={_ => searchQuery('')}
           >
             <span className={'text-white '}> X </span>
           </div>
@@ -102,7 +102,7 @@ const SearchAnomalies: React.FC<SearchBarProps> = ({anomalies}) => {
         <div className="fr-callout ">
           <h3 className="fr-callout__title">{i18n.m.noResultFound}</h3>
           <p className="fr-callout__text">Veuillez essayer avec un nouveau mot clé ou choisir dans la liste des catégories</p>
-          <button className="fr-btn" onClick={_ => setQuery('')}>
+          <button className="fr-btn" onClick={_ => searchQuery('')}>
             Voir toutes les catégories
           </button>
         </div>
