@@ -33,6 +33,7 @@ export const appConfig = {
   matomo_url: process.env.NEXT_PUBLIC_MATOMO_URL,
   maxDescriptionInputLength: 1000,
   infoBanner: process.env.NEXT_PUBLIC_INFO_BANNER,
+  enableSearchCategories: readBool(process.env.NEXT_PUBLIC_ENABLE_SEARCH_CATEGORIES),
   dummyEmailDomain: ['@yopmail.com'],
 }
 
