@@ -28,7 +28,7 @@ const SearchAnomalies: React.FC<SearchBarProps> = ({anomalies}) => {
   const {enableSearchCategories} = useConfig().config
   const handleInputBlur = () => {
     if (query !== '') {
-      _analytic.trackEvent(EventCategories.categorySearch, 'Recherche par mot clé', 'query', query)
+      _analytic.trackEvent(EventCategories.categorySearch, 'Recherche par mot clé', query)
     }
   }
 
