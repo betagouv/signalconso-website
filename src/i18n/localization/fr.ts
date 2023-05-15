@@ -429,7 +429,7 @@ export const fr = {
     respondedRateStatName: `% de signalements qui font l'objet d'une réponse d'un entreprise`,
 
     websiteReportsRateStat: ` des signalements déposés depuis le début de SignalConso concernent une entreprise sur internet`,
-    searchCategoryPlaceholder: `Rechercher un catégorie par mot clé`,
+    searchCategoryPlaceholder: `Rechercher une catégorie par mot clé (BETA)`,
     noResultFound: `Aucun résultat trouvé.`,
     displayAllAnomalies: `Afficher toutes les catégories`,
   },
