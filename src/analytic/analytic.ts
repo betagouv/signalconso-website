@@ -59,6 +59,7 @@ export type AnalyticAction =
   | ContractualDisputeActions
   | AccountEventActions
   | CompanyAccessEventActions
+  | 'Recherche par mot clé'
 
 export enum EventCategories {
   report = 'Signalement',
@@ -67,6 +68,7 @@ export enum EventCategories {
   account = 'Compte utilisateur',
   companyAccess = "Accès de l'entreprise",
   contractualDispute = 'Litige contractuel',
+  categorySearch = 'Recherche de catégories',
 }
 
 export enum ReportEventActions {
