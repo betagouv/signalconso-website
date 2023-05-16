@@ -1,0 +1,7 @@
+title: Prix / paiement
+reponseconsoCode:
+  - '451'
+  - '623'
+tags:
+  - ReponseConso
+desc: 'Exemple : prix non affiché, forfait obligatoire'

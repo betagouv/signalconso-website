@@ -1,0 +1,9 @@
+title: Le bureau d'étude impose une marque / modèle en particulier
+tags:
+  - ReponseConso
+detailInputs:
+  - label: Date du constat
+    type: DATE
+    defaultValue: SYSDATE
+  - label: Décrivez nous plus en détails ce qui s'est passé
+    type: TEXTAREA

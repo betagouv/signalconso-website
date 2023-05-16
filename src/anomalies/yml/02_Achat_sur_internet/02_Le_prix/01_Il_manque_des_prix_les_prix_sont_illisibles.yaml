@@ -1,0 +1,21 @@
+title: Il manque des prix / les prix sont illisibles
+ccrfCode:
+  - '163'
+tags:
+  - ReponseConso
+reponseconsoCode:
+  - '212'
+  - '210'
+  - '224'
+detailInputs:
+  - label: Veuillez préciser
+    type: RADIO
+    options:
+      - Prix pas affiché
+      - Prix illisible
+      - Autre (à préciser)
+  - label: Date du constat
+    type: DATE
+    defaultValue: SYSDATE
+  - label: Description
+    type: TEXTAREA

@@ -1,0 +1,8 @@
+title: Équipement de protection
+subcategoriesTitle: Quel est le risque&#160;?
+ccrfCode:
+  - 34e
+tags:
+  - ProduitIndustriel
+subcategories:
+  customimport: _imports/subcategories/produit-dangereux

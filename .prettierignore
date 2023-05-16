@@ -17,8 +17,8 @@
 .env.test.local
 .env.production.local
 
-/src/anomalies/yml/**/*.yml
-/src/anomalies/yml/anomalies.json
+/src/anomalies/yml/*
+/src/anomalies/anomalies.json
 
 npm-debug.log*
 yarn-debug.log*
@@ -28,8 +28,3 @@ yarn-error.log*
 .vscode
 
 .next
-
-
-src/anomalies/yml-hierarchical
-src/anomalies/yml-copy-tmp
-src/anomalies/anomalies-from-hierarchical.json

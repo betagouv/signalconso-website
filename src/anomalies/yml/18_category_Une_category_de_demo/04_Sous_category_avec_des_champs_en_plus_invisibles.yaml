@@ -1,0 +1,16 @@
+title: Sous category avec des champs en plus invisibles
+desc: >-
+  Cette sous category utilise a des valeurs spécifiées dans les champs
+  reponseconsoCode, ccrfCode, et elle a aussi deux tags quelconques (Hygiene et
+  Ehpad). Tout cela ne devrait avoir aucune conséquence visuellement, ce sont
+  juste des infos transmises à l'API
+tags:
+  - Hygiene
+  - Ehpad
+reponseconsoCode:
+  - '321'
+  - '323'
+ccrfCode:
+  - '145'
+  - 23F
+  - '146'

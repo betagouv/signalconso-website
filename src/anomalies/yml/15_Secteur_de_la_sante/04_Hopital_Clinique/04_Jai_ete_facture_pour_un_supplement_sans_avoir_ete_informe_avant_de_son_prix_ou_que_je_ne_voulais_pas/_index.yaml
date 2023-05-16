@@ -1,0 +1,9 @@
+title: >-
+  J'ai été facturé pour un supplément sans avoir été informé avant de son prix
+  ou que je ne voulais pas
+tags:
+  - ReponseConso
+desc: "Exemple\_: supplément \"chambre seule\" au prétexte qu'elles étaient toutes occupées, supplément \"télévision\" alors que je n'ai pas demandé à avoir la télévision"
+reponseconsoCode:
+  - '411'
+  - '210'

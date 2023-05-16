@@ -1,0 +1,11 @@
+title: Coupure de l'eau pour impayé
+desc: Mon débit d'eau a été réduit car je ne peux payer ma facture
+tags:
+  - ReponseConso
+detailInputs:
+  - label: Date du contrat
+    type: DATE
+    defaultValue: SYSDATE
+  - label: Date de la coupure
+    type: DATE
+fileLabel: Joindre une copie du contrat / règlement.

@@ -1,0 +1,7 @@
+title: À une administration
+desc: >-
+  Exemple : site internet d'une mairie. Les sites officiels de l’État doivent se
+  terminer par gouv.fr ou .fr et jamais par .gouv.org ou .gouv.com. Vérifiez les
+  mentions légales du site.
+blockingInfo:
+  customimport: _imports/blockingInfo/administration.yml

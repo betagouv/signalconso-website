@@ -1,0 +1,6 @@
+title: La quantité annoncée est non conforme
+desc: 'Exemple : J''ai commandé 500 gr de chocolat, je reçois 300 gr'
+reponseconsoCode:
+  - '210'
+  - '276'
+  - '277'

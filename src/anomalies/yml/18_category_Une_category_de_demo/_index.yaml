@@ -1,0 +1,12 @@
+id: '200'
+category: DemoCategory
+title: (category) Une category de démo
+isHiddenDemoCategory: true
+seoTitle: (title) Le title de la category
+path: pathdelacategory
+description: (description) Description de la category
+seoDescription: (seoDescription) Description SEO de la category
+img: category-restaurant
+subcategoriesTitle: >-
+  (subcategoriesTitle de la category racine) Titre ou question introduisant le
+  choix des sous catégories

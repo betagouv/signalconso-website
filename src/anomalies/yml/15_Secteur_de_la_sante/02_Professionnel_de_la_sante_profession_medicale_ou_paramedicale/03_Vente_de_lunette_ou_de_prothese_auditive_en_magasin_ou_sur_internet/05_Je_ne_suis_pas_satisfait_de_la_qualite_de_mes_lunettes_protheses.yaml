@@ -1,0 +1,18 @@
+title: Je ne suis pas satisfait de la qualité de mes lunettes / prothèses
+reponseconsoCode:
+  - '332'
+  - '464'
+detailInputs:
+  - label: Date du constat
+    type: DATE
+  - label: "De quel produit s'agit-il\_?"
+    type: RADIO
+    options:
+      - lunette
+      - lentilles de contact
+      - prothèse
+  - label: "Quel est la marque et le modèle\_?"
+    type: TEXT
+  - label: "Quel est le problème\_?"
+    type: TEXT
+fileLabel: Merci de joindre si possible une photo du produit ou de la facture d'achat.
