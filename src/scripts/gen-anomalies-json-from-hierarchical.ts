@@ -6,12 +6,12 @@ import {dirContentSorted, exists, isFile, readFileYaml, sortObjectKeys, throwIfN
 
 const rootDir = path.resolve('./src/anomalies/yml-hierarchical')
 const jsonOutputFile = path.resolve(rootDir, '..', 'anomalies-from-hierarchical.json')
-const INDEX_YAML = '__index.yaml'
+const INDEX_YAML = '_index.yaml'
 
 // Attempt to read the new file tree structure from 'yml-hierarchical' folder
 // and resolve imports
 function readNewHierarchicalAnomalies() {
-  const anomalyDirs = dirContentSorted(rootDir, {excludedFileNames: ['__imports']})
+  const anomalyDirs = dirContentSorted(rootDir, {excludedFileNames: ['_imports']})
   const anomalies = anomalyDirs.map(_ => {
     return resolveImportsRecursively(buildSubcategoryFromFileOrFolder(_))
   })
@@ -32,7 +32,7 @@ function buildSubcategoryFromFileOrFolder(_path: string): any {
     return readFileYaml(_path)
   }
   // It's a directory
-  // Read __index.yaml
+  // Read _index.yaml
   const indexFile = path.join(_path, INDEX_YAML)
   throwIfNotExists(indexFile, `Missing file ${INDEX_YAML} in ${_path}`)
   if (!isFile(indexFile)) {
@@ -52,11 +52,11 @@ function buildSubcategoryFromFileOrFolder(_path: string): any {
   return subcat
 }
 
-// Read a file or folder (within __imports)
+// Read a file or folder (within _imports)
 // Build the object or array that we're supposed to import
 //
 // The logic is slightly different from the main method, if it's a folder :
-//  - we don't expect an __index.yaml
+//  - we don't expect an _index.yaml
 //  - we build an array of subcategories for each file/subdir
 //    (instead of building the subcategory above)
 function buildImportableFromFileOrFolder(_path: string): any {
@@ -108,7 +108,7 @@ function resolveImportsRecursively(obj: any): any {
 
 function checkCustomImportIsValid(customimport: string) {
   // make sure that there is not funny import path
-  const validPaths = ['__imports/subcategories/', '__imports/blockingInfo/', '__imports/detailInputs/']
+  const validPaths = ['_imports/subcategories/', '_imports/blockingInfo/', '_imports/detailInputs/']
   if (!validPaths.some(_ => customimport.startsWith(_))) {
     throw new Error(`Import of "${customimport}" is invalid, it should start with one of these ${validPaths.join(', ')}`)
   }

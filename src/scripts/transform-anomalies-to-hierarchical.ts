@@ -34,13 +34,13 @@ function rewriteCurrentYamlAsFileTree() {
   })
 
   // Copy common/info and common/inputs
-  copyWholeDir(path.join(tmpYmlRoot, 'common', 'info'), path.join(targetDir, '__imports', 'blockingInfo'))
-  copyWholeDir(path.join(tmpYmlRoot, 'common', 'inputs'), path.join(targetDir, '__imports', 'detailInputs'))
+  copyWholeDir(path.join(tmpYmlRoot, 'common', 'info'), path.join(targetDir, '_imports', 'blockingInfo'))
+  copyWholeDir(path.join(tmpYmlRoot, 'common', 'inputs'), path.join(targetDir, '_imports', 'detailInputs'))
 
   // Copy common/*.yml but transformed as file hierarchy
   forEachFileInDirectory(path.join(tmpYmlRoot, 'common'), f => {
     const importableSubcats = yaml.load(readFileRaw(f)) as Subcategory[]
-    const folder = path.join(targetDir, '__imports', 'subcategories', extractFileName(f))
+    const folder = path.join(targetDir, '_imports', 'subcategories', extractFileName(f))
     resetDir(folder)
     importableSubcats.forEach((subcat, idx) => {
       writeSubcatAsFileTree(folder, subcat, idx)
@@ -57,7 +57,7 @@ function rewriteCurrentYamlAsFileTree() {
 // as
 //
 // foo:
-//   customimport: __imports/absolute/import/path
+//   customimport: _imports/absolute/import/path
 //
 //
 // but preserve the ones in anomalies.yml
@@ -92,10 +92,10 @@ function adjustImportPath(importPath: string) {
   s = removePrefix(s, '../common/')
   s = removePrefix(s, './common/')
   s = removePrefix(s, './')
-  s = replacePrefix(s, 'info/', '__imports/blockingInfo/')
-  s = replacePrefix(s, 'inputs/', '__imports/detailInputs/')
-  if (!s.startsWith('__imports')) {
-    s = '__imports/subcategories/' + removeExtension(s)
+  s = replacePrefix(s, 'info/', '_imports/blockingInfo/')
+  s = replacePrefix(s, 'inputs/', '_imports/detailInputs/')
+  if (!s.startsWith('_imports')) {
+    s = '_imports/subcategories/' + removeExtension(s)
   }
   return s
 }

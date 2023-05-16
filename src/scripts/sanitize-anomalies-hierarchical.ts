@@ -12,14 +12,14 @@ import {
 } from './scriptUtils'
 
 const rootDir = path.resolve('./src/anomalies/yml-hierarchical')
-const INDEX_YAML = '__index.yaml'
+const INDEX_YAML = '_index.yaml'
 
 // Walks the hierarchical file/directories structure
 // Rename all files/folders automatically (adjust names and numbers)
 function sanitizeHierarchicalAnomalies() {
   console.log('Renaming file/folder names if needed in ', rootDir)
-  sanitizeDirContents(rootDir, {excludedFileName: '__imports'})
-  dirContentSorted(path.join(rootDir, '__imports', 'subcategories')).forEach(subcategoriesSubDir => {
+  sanitizeDirContents(rootDir, {excludedFileName: '_imports'})
+  dirContentSorted(path.join(rootDir, '_imports', 'subcategories')).forEach(subcategoriesSubDir => {
     sanitizeDirContents(subcategoriesSubDir)
   })
 }
@@ -51,7 +51,7 @@ function findTitleForPath(_path: string) {
     // it's a leaf yaml file
     return readTitleInYamlFile(_path)
   } else {
-    // it's a dir, it should have an __index.yaml with a title
+    // it's a dir, it should have an _index.yaml with a title
     const indexPath = path.join(_path, INDEX_YAML)
     throwIfNotExists(indexPath, `Missing ${INDEX_YAML} in ${_path}`)
     throwIfNotFile(indexPath)
