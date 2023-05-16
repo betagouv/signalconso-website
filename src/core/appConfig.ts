@@ -35,18 +35,9 @@ export const appConfig = {
   infoBanner: process.env.NEXT_PUBLIC_INFO_BANNER,
   enableSearchCategories: readBool(process.env.NEXT_PUBLIC_ENABLE_SEARCH_CATEGORIES),
   dummyEmailDomain: ['@yopmail.com'],
+  // Used only to regenerate the landing page from Airtable
+  // thus no need to configure anywhere but in dev
+  airtableApiToken: process.env.NEXT_PUBLIC_AIRTABLE_API_TOKEN ?? null,
 }
 
 export type AppConfig = typeof appConfig
-
-function logAppConfig() {
-  // server side only
-  if (isServerSide()) {
-    console.log('AppConfig :')
-    Object.entries(appConfig).forEach(([k, v]) => {
-      console.log(`- ${k} :`, v)
-    })
-  }
-}
-
-logAppConfig()
