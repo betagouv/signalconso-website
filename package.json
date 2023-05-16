@@ -16,6 +16,7 @@
     "test-no-html-output": "DEBUG_PRINT_LIMIT=1 jest",
     "test-dev": "jest --config=jest.config.ts --watch",
     "generate-json": "ts-node -O \"{\\\"module\\\":\\\"commonjs\\\"}\" src/anomalies/script/generate-json-files.ts",
+    "minimize-anomalies": "ts-node -O \"{\\\"module\\\":\\\"commonjs\\\"}\" src/anomalies/script/minimize-anomalies.ts",
     "generate-landings": "ts-node -O \"{\\\"module\\\":\\\"commonjs\\\"}\" src/landings/script/generateLandingDataFromCsv.ts",
     "generate-sitemap": "ts-node -O \"{\\\"module\\\":\\\"commonjs\\\"}\" src/scripts/generate-sitemap.ts",
     "format": "prettier --write .",

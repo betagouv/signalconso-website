@@ -1,7 +1,7 @@
 - label: Date de l'accident
   type: DATE
   defaultValue: SYSDATE
-- label: Avez-vous été la seule personne malade ?&#160;?
+- label: Avez-vous été la seule personne malade&#160;?
   optional: true
   type: RADIO
   options:
