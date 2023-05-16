@@ -5,11 +5,13 @@ import {appConfig} from '../../core/appConfig'
 import {AirtableBase} from 'airtable/lib/airtable_base'
 import mapKeys from 'lodash/mapKeys'
 import findKey from 'lodash/findKey'
+import sortBy from 'lodash/sortBy'
 
 // This script reads data from our Airtable account
-// Then it outputs the wordings.
+// Then it outputs all the texts for our landing pages.
 //
-// We commit the output. The script is meant to be rerun only if needed.
+// We commit the output.
+// This script is meant to be rerun only occasionally when needed.
 
 const outputFile = path.join(__dirname, '..', 'landingsData.ts')
 
@@ -46,12 +48,14 @@ async function start() {
       }),
     }
   })
+  // we impose a consistent order, for easier diffs
+  const rowsSorted = sortBy(rowsWithAuthors, _ => _.category)
   console.log(`Generating output file ${outputFile}`)
   fs.writeFileSync(
     outputFile,
     `// Generated file, do not edit manually
   export const landingsData = ` +
-      JSON.stringify(rowsWithAuthors, null, 2) +
+      JSON.stringify(rowsSorted, null, 2) +
       ';',
   )
   console.log(`You should reformat this file now ("yarn format")`)
