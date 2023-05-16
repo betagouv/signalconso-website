@@ -1,0 +1,24 @@
+title: option liée à la musique, des livres, une chaîne télé, un anti-virus
+ccrfCode:
+  - '226'
+reponseconsoCode:
+  - '421'
+detailInputs:
+  - label: À partir de quand cette option va-t-elle être payante ?
+    type: DATE
+  - label: Quel est le nom de cette option ?
+    type: TEXT
+    placeholder: Indiquez l'intitulé figurant sur l'email ou la facture
+  - label: Quel est son prix ?
+    type: TEXT
+  - label: Comment avez-vous été prévenu de cette option ?
+    type: RADIO
+    options:
+      - email
+      - courrier papier
+      - sms
+      - message dans l'espace client
+      - je n'ai rien reçu
+  - label: Si vous avez reçu un courrier / email / sms, quelle est sa date ?
+    type: DATE
+    optional: true

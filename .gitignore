@@ -38,8 +38,10 @@ yarn-error.log*
 
 # will be generated each time the application is ran
 src/anomalies/yml/anomalies.json
-src/anomalies/yml/minimized-anomalies.json
+src/anomalies/json/anomalies.json
 public/sitemap.xml
+
+src/anomalies/yml/minimized-anomalies.json
 
 landings.csv
 
@@ -60,3 +62,4 @@ landings.csv
 !.yarn/sdks
 !.yarn/versions 
 /android/
+

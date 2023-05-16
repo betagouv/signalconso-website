@@ -1,0 +1,19 @@
+title: Je n'ai pas reçu de note (facture, ticket)
+desc: >-
+  À partir de 25 euros, votre praticien doit vous remettre une note qui décrit
+  ce que vous avez payé. C'est une obligation.
+reponseconsoCode:
+  - '213'
+tags:
+  - ReponseConso
+detailInputs:
+  - label: Date de visite
+    type: DATE
+  - label: "Si vous vous en rappelez, combien avez-vous payé\_?"
+    type: TEXT
+    optional: true
+  - label: "Avez-vous demandé une note\_?"
+    type: RADIO
+    options:
+      - Oui
+      - Non

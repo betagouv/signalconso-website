@@ -1,0 +1,24 @@
+title: Information mensongère ou trompeuse
+desc: Mise en avant d'un label ou d'un signe de qualité non ou plus détenu
+ccrfCode:
+  - 23b
+  - '275'
+  - '267'
+detailInputs:
+  - label: Qu'est-ce qui est trompeur ou mensonger&#160;?
+    type: RADIO
+    options:
+      - Le discours du professionnel
+      - Le site internet
+      - >-
+        Les documents mis à votre disposition par le professionnel (courrier,
+        flyer, plaquette de présentation...)
+      - Autre (à préciser)
+  - label: Description
+    type: TEXTAREA
+  - label: Date de l'appel
+    type: DATE
+    defaultValue: SYSDATE
+  - label: Heure de l'appel (facultatif)
+    type: TIMESLOT
+    optional: true

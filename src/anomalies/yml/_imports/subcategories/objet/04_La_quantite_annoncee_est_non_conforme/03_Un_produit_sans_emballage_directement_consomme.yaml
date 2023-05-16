@@ -1,0 +1,10 @@
+title: Un produit sans emballage, directement consommé
+desc: "Exemple\_: verre de vin dans un café, plat au restaurant"
+detailInputs:
+  - label: Date du constat ou d'achat
+    type: DATE
+    defaultValue: SYSDATE
+  - label: Nom du produit
+    type: TEXT
+  - label: Description
+    type: TEXTAREA

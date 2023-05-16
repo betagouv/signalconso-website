@@ -1,0 +1,7 @@
+title: Le prix était supérieur à 1 000 euros ou à 50 pièces
+blockingInfo:
+  content: >-
+    Il est interdit pour un commerçant d'accepter des paiements en espèces de
+    plus de 1 000 euros. <br/> Un commerçant peut refuser un paiement en espèces
+    si celui-ci est composé de plus de 50 pièces.
+  notAFraudMessage: true

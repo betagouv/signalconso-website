@@ -1,0 +1,21 @@
+title: Démarchage sur les Réseaux Sociaux
+companyKind: SOCIAL
+tags:
+  - DemarchageInternet
+detailInputs:
+  - label: Nom ou pseudonyme qui vous a contacté
+    type: TEXT
+    placeholder: Nom ou pseudonyme
+  - label: Nom de la formation (facultatif)
+    type: TEXT
+  - label: Pouvez-vous préciser la plateforme utilisée ?
+    type: RADIO
+    options:
+      - TikTok
+      - Facebook
+      - Instagram
+      - Twitter
+      - LinkedIn
+      - Messenger
+      - Snapchat
+      - autre (à préciser)

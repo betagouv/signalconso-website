@@ -1,0 +1,10 @@
+title: Il manque des prix / les prix sont illisibles
+ccrfCode:
+  - '163'
+detailInputs:
+  - label: Veuillez préciser
+    type: RADIO
+    options:
+      - absence de Prix sur le devis
+      - Prix illisible
+      - Autre (à préciser)

@@ -1,0 +1,14 @@
+title: Durée de vie trop courte
+desc: Vous trouvez que la durée de vie de votre appareil est trop courte
+detailInputs:
+  - label: Date d'achat
+    type: DATE
+  - label: Date du constat
+    type: DATE
+    defaultValue: SYSDATE
+  - label: Type de produit
+    type: TEXT
+  - label: Nom / marque / référence
+    type: TEXT
+  - label: Description
+    type: TEXTAREA

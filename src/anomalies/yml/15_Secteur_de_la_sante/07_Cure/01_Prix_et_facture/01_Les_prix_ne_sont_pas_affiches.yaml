@@ -1,0 +1,17 @@
+title: Les prix ne sont pas affichés
+desc: "Exemple\_: les prix des soins ne sont pas affichés, les prix affichés ne sont pas très clairs"
+tags:
+  - ReponseConso
+reponseconsoCode:
+  - '212'
+  - '220'
+detailInputs:
+  - label: Date de constat
+    type: DATE
+  - label: "Quel est le problème\_?"
+    type: RADIO
+    options:
+      - les prix ne sont pas affichés du tout
+      - les prix sont affichés de façon non visible
+      - les prix affichés ne sont pas clairs
+fileLabel: Si possible merci de joindre une photo pour appuyer votre signalement.

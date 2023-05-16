@@ -1,0 +1,29 @@
+title: >-
+  Les conditions d’hébergement ou les prestations en supplément ne
+  correspondaient pas au descriptif communiqué (dépliant, site internet, ...).
+desc: >-
+  Exemples : les capsules du café du plateau de courtoisie n’étaient pas
+  fournies, le repas amélioré ne l’était pas, absence du nécessaire de toilette
+  annoncé, …
+detailInputs:
+  - label: Date de sortie (ou date de la facture)
+    type: DATE
+  - label: "Quel supplément vous a-t-on facturé\_?"
+    type: TEXT
+    placeholder: chambre double, télévision, repas spécifique...
+  - label: "Aviez-vous demandé ce supplément\_?"
+    type: RADIO
+    options:
+      - Oui
+      - Non
+  - label: "Quel est le prix de ce supplément\_?"
+    type: TEXT
+    optional: true
+  - label: "L'hôpital / clinique vous a-t-il justifié ce supplément\_?"
+    type: RADIO
+    options:
+      - Oui (à préciser)
+      - Non
+fileLabel: >-
+  Merci de joindre une photo de la facture si possible afin d'appuyer votre
+  signalement.
