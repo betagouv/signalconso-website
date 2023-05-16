@@ -1,0 +1,9 @@
+title: Prix des prestations
+desc: >-
+  Exemple : promotion non appliquée, prix en vitrine pas à jour, prix non
+  respecté
+ccrfCode:
+  - 21b
+reponseconsoCode:
+  - '411'
+  - '212'

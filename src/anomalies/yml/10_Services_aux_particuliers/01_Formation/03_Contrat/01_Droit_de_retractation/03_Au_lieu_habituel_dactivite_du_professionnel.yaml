@@ -1,0 +1,8 @@
+title: Au lieu habituel d'activité du professionnel
+desc: Dans son bureau, sa boutique, etc.
+blockingInfo:
+  title: Vous ne pouvez plus vous rétracter
+  content: >-
+    Vous avez signé le contrat chez l'entreprise. Il n'y a pas de délai de
+    rétractation dans ce cas.
+  notAFraudMessage: true

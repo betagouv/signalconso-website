@@ -1,0 +1,5 @@
+title: Sous cat avec juste une "action"
+blockingInfo:
+  questions:
+    - question: Première "action", champ "question"
+      answer: Première "action", champ "answer"

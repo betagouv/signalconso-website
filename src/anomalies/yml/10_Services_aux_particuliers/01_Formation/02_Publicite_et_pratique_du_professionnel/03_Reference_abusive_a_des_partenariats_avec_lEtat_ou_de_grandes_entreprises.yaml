@@ -1,0 +1,21 @@
+title: Référence abusive à des partenariats avec l'État ou de grandes entreprises
+ccrfCode:
+  - 23b
+detailInputs:
+  - label: Qu'est-ce qui est trompeur ou mensonger&#160;?
+    type: RADIO
+    options:
+      - Le discours du professionnel
+      - Le site internet
+      - >-
+        Les documents mis à votre disposition par le professionnel (courrier,
+        flyer, plaquette de présentation...)
+      - Autre (à préciser)
+  - label: Description
+    type: TEXTAREA
+  - label: Date de l'appel
+    type: DATE
+    defaultValue: SYSDATE
+  - label: Heure de l'appel (facultatif)
+    type: TIMESLOT
+    optional: true

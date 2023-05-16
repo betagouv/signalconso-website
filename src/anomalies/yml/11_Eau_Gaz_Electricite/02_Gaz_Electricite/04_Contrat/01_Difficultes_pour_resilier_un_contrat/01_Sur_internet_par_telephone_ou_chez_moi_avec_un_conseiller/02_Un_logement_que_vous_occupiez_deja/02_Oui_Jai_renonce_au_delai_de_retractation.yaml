@@ -1,0 +1,7 @@
+title: Oui. J'ai renoncé au délai de rétractation.
+blockingInfo:
+  title: Vous ne pouvez plus exiger l'annulation de votre contrat.
+  content: >-
+    Une fois le délai de rétractation terminé, l'entreprise n'est plus obligée
+    d'annuler votre contrat.
+  notAFraudMessage: true

@@ -1,0 +1,6 @@
+title: Discours trompeur
+desc: "Exemple\_: L'agent immobilier m'a promis de vendre sous 7 jours"
+reponseconsoCode:
+  - '210'
+tags:
+  - ReponseConso

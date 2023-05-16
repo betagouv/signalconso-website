@@ -1,0 +1,36 @@
+title: Démarchage à domicile
+desc: "Exemple\_: vendeur prétend être envoyé par EDF, démarcheur agressif"
+companyKind: LOCATION
+tags:
+  - DemarchageADomicile
+  - ReponseConso
+detailInputs:
+  - label: Date du passage du vendeur
+    type: DATE
+    defaultValue: SYSDATE
+  - label: Que s'est-il passé&#160;?
+    type: CHECKBOX
+    options:
+      - le vendeur s'est fait passer pour une autre entreprise (à préciser)
+      - >-
+        le vendeur m'a fait signer des papiers sans me dire que c'était un
+        contrat
+      - >-
+        le vendeur m'a obligé à signer un nouveau contrat en m'indiquant que mon
+        contrat actuel allait être arrêté
+      - le vendeur a demandé à voir mes factures, mon compteur
+      - autre (à préciser)
+  - label: Avez-vous signé, volontairement ou non, un contrat&#160;?
+    type: RADIO
+    options:
+      - oui
+      - non
+  - label: >-
+      Date de début du contrat s'il démarre un autre jour que celui du
+      démarchage&#160;?
+    type: DATE
+    defaultValue: SYSDATE
+    optional: true
+  - label: Décrivez nous plus en détails ce qui s'est passé
+    type: TEXTAREA
+fileLabel: Si possible, joindre une copie du contrat ou tout document commercial

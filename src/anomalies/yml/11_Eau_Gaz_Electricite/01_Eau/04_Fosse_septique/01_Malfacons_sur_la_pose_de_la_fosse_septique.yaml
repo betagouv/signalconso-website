@@ -1,0 +1,8 @@
+title: Malfaçons sur la pose de la fosse septique
+desc: Fissure, usure
+detailInputs:
+  - label: Date du constat
+    type: DATE
+    defaultValue: SYSDATE
+  - label: Décrivez nous plus en détails ce qui s'est passé
+    type: TEXTAREA

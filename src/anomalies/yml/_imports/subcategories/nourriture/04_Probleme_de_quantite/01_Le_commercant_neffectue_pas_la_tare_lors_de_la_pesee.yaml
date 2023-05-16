@@ -1,0 +1,9 @@
+title: Le commerçant n'effectue pas la tare lors de la pesée
+desc: >-
+  Tarer une balance signifie imposer la valeur zéro sur une balance alors qu'il
+  y a un emballage dessus, pour ne peser que le contenu.
+detailInputs:
+  - label: Préciser le lieu (rayon) dans le cas d'un grand magasin
+    type: TEXT
+    placeholder: lieu
+    optional: true

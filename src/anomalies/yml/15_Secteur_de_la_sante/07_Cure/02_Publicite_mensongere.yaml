@@ -1,0 +1,28 @@
+title: Publicité mensongère
+desc: "Exemple\_: spa simple déclaré en thalassothérapie, soins qui ne correspondent pas à la description sur la publicité, utilisation frauduleuse du label Qualicert"
+reponseconsoCode:
+  - '210'
+  - '220'
+detailInputs:
+  - label: Date de constat
+    type: DATE
+  - label: "À propos de quoi est-ce trompeur\_?"
+    type: CHECKBOX
+    options:
+      - un label (Qualicert) ou un certificat
+      - >-
+        la description / photo du bâtiment ou des équipements (piscines,
+        bassins...)
+      - la description des soins (durée, produits utilisés...)
+      - spa simple déclaré en thalassothérapie
+      - autre (à préciser)
+  - label: "Où avez-vous vu cette information (ou photo) que vous trouvez trompeuse\_?"
+    type: RADIO
+    options:
+      - site internet ou publicité sur internet
+      - publicité papier
+      - affiche/ panneau publicitaire
+      - autre (à préciser)
+  - label: "Expliquez en quelques mots pourquoi vous trouvez cela trompeur\_:"
+    type: TEXT
+fileLabel: Merci de joindre tout document (photo, pdf) pouvant appuyer votre signalement.

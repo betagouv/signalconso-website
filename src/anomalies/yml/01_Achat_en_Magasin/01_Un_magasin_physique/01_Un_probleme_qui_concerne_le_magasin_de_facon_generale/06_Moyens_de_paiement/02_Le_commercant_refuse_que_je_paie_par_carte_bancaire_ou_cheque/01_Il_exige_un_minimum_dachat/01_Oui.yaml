@@ -1,0 +1,11 @@
+title: Oui
+desc: 'Exemple : sur une affiche au niveau des caisses'
+blockingInfo:
+  title: >-
+    Le commerçant a le droit d'exiger un minimum d'achat pour les paiements par
+    carte bancaire et par chèque. <br/> Si vous voulez acheter un produit moins
+    cher que le minimum d'achat, c'est à vous de trouver de la monnaie.
+  content: >-
+    Le minimum d'achat doit être indiqué très visiblement. Par exemple :
+    affichage à l'entrée du magasin ou à la caisse...
+  notAFraudMessage: true

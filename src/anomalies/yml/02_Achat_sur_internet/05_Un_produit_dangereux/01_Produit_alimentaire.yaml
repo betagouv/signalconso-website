@@ -1,0 +1,6 @@
+title: Produit alimentaire
+tags:
+  - ProduitAlimentaire
+reponseconsoCode: null
+subcategories:
+  customimport: _imports/subcategories/produit-alimentaire

@@ -1,0 +1,21 @@
+title: >-
+  Les produits ne sont pas frais ou certains aliments sont périmés, c'est-à-dire
+  que les dates indiquées sont dépassées.
+reponseconsoCode:
+  - '323'
+  - '321'
+detailInputs:
+  - label: Date de constat
+    type: DATE
+  - label: "Quel produit est concerné\_?"
+    type: TEXT
+  - label: "Quel est le problème\_?"
+    type: RADIO
+    options:
+      - Produit pas frais
+      - Produit avec date dépassée
+      - Insecte dans un plat
+      - Autre (à préciser)
+fileLabel: >-
+  Merci de joindre si possible une photo ou votre facture afin d'appuyer votre
+  signalement.

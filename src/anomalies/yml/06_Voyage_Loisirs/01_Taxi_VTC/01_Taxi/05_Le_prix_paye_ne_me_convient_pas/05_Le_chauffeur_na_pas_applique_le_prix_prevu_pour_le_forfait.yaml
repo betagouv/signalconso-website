@@ -1,0 +1,24 @@
+title: Le chauffeur n'a pas appliqué le prix prévu pour le forfait
+tags:
+  - ReponseConso
+desc: >-
+  Dans certaines villes, il existe des forfaits (c'est-à-dire un prix unique
+  connu à l'avance) pour faire les trajets vers ou depuis un aéroport. Le prix
+  de ces forfaits est fixe.
+detailInputs:
+  - label: Date de la course
+    type: DATE
+  - label: Adresse de départ
+    type: TEXT
+  - label: Adresse d'arrivée
+    type: TEXT
+  - label: Quel est normalement le prix du forfait pour votre trajet ?
+    type: TEXT
+  - label: Combien avez-vous payé ?
+    type: TEXT
+  - label: Notez les éléments qui permettent d'identifier le taxi.
+    type: TEXTAREA
+    placeholder: Numéro ADS, plaque d'immatriculation, entreprise de réservation...
+fileLabel: >-
+  Joindre la note (facture) de votre course ou tout document utile pour appuyer
+  votre signalement.

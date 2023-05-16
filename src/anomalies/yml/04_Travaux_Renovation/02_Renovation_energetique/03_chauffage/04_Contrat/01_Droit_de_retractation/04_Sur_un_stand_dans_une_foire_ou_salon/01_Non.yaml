@@ -1,0 +1,10 @@
+title: Non
+reponseconsoCode:
+  - '2206'
+  - '2214'
+  - '2213'
+  - '411'
+blockingInfo:
+  title: Vous ne pouvez plus vous rétracter
+  content: Il n'y a pas de délai de rétractation pour votre cas.
+  notAFraudMessage: true

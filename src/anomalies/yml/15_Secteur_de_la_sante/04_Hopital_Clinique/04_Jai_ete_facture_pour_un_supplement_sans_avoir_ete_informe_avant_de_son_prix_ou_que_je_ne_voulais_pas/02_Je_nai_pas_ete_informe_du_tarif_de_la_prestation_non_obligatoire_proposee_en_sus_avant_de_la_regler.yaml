@@ -1,0 +1,30 @@
+title: >-
+  Je n’ai pas été informé du tarif de la prestation non obligatoire proposée en
+  sus avant de la régler.
+desc: >-
+  Il doit avoir un affichage sur la description et le tarif des prestations non
+  obligatoires proposées en supplément (chambre particulière hors nécessité
+  médicale, mise à disposition d"une ligne téléphonique, chocolats, peluche, …),
+  y compris si ces frais sont pris en charge intégralement par votre mutuelle.
+detailInputs:
+  - label: Date de sortie (ou date de la facture)
+    type: DATE
+  - label: "Quel supplément vous a-t-on facturé\_?"
+    type: TEXT
+    placeholder: chambre double, télévision, repas spécifique...
+  - label: "Aviez-vous demandé ce supplément\_?"
+    type: RADIO
+    options:
+      - Oui
+      - Non
+  - label: "Quel est le prix de ce supplément\_?"
+    type: TEXT
+    optional: true
+  - label: "L'hôpital / clinique vous a-t-il justifié ce supplément\_?"
+    type: RADIO
+    options:
+      - Oui (à préciser)
+      - Non
+fileLabel: >-
+  Merci de joindre une photo de la facture si possible afin d'appuyer votre
+  signalement.

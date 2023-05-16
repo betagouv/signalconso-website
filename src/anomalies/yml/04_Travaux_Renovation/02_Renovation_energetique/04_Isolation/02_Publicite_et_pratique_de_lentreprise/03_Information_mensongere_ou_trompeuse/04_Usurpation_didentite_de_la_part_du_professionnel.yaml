@@ -1,0 +1,23 @@
+title: Usurpation d'identité de la part du professionnel
+ccrfCode:
+  - '271'
+tags:
+  - ReponseConso
+detailInputs:
+  - label: Qu'est-ce qui est trompeur ou mensonger&#160;?
+    type: RADIO
+    options:
+      - Le discours du professionnel
+      - Le site internet
+      - >-
+        Les documents mis à votre disposition par le professionnel (flyer,
+        plaquette de présentation...)
+      - Autre (à préciser)
+  - label: Description
+    type: TEXTAREA
+  - label: Date du constat
+    type: DATE
+    defaultValue: SYSDATE
+  - label: Heure du constat (facultatif)
+    type: TIMESLOT
+    optional: true

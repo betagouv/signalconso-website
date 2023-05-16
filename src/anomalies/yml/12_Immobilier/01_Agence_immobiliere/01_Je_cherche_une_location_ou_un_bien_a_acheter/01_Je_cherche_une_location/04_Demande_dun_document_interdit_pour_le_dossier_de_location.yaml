@@ -1,0 +1,6 @@
+title: Demande d'un document interdit pour le dossier de location
+desc: "Exemple\_: relevé bancaire, photocopie de la carte vitale"
+tags:
+  - ReponseConso
+reponseconsoCode:
+  - '634'
