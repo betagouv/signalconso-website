@@ -2,7 +2,7 @@ import {Footer} from '@codegouvfr/react-dsfr/Footer'
 import Link from 'next/link'
 import {siteMap, siteMapExternal} from '../core/siteMap'
 
-export const urlServicePublicPlus = `https://www.plus.transformation.gouv.fr/experience/step_1?pk_campaign=DGCCRF`
+export const urlServicePublicPlus = `https://www.plus.transformation.gouv.fr`
 
 export function ScFooter() {
   return (
