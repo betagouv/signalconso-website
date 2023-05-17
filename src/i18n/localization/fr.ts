@@ -283,7 +283,7 @@ export const fr = {
     city: `Ville`,
     attachmentsDescAnonymous: `Si vous ne souhaitez pas que l'entreprise connaisse votre identité, <b style="color: black">cachez votre nom</b> sur vos pièces jointes.`,
     attachmentsDescAllowedFormat: (formats: string[]) => `Sont acceptés les formats suivants : ${formats.join(', ')}`,
-    attachmentsDesc2: `Ajouter une pièce jointe augmente de 83 % la chance d’entraîner une mesure corrective !<br/> Vous ne devez pas communiquer de données dites "sensibles" (données bancaires ou médicales).`,
+    attachmentsDesc2: `Ajouter une pièce jointe augmente <strong>FORTEMENT</strong> vos chances d’entraîner une mesure corrective&nbsp;!<br/> Vous ne devez pas communiquer de données dites "sensibles" (données bancaires ou médicales).`,
     menu_howItWorks: `Comment ça marche ?`,
     menu_home: `Accueil`,
     menu_help: `Aide`,
