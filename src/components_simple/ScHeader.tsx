@@ -3,8 +3,9 @@ import {siteMap, siteMapExternal} from '../core/siteMap'
 import {NextRouter, useRouter} from 'next/router'
 import {HTMLAttributeAnchorTarget} from 'react'
 import {appConfig} from 'core/appConfig'
+import {urlServicePublicPlus} from './ScFooter'
 
-export function buildMenuLink(router: NextRouter, url: string, text: string, target?: HTMLAttributeAnchorTarget) {
+function buildMenuLink(router: NextRouter, url: string, text: string, target?: HTMLAttributeAnchorTarget) {
   return {
     isActive: router.pathname === url,
     linkProps: {
@@ -64,6 +65,7 @@ export function ScHeader() {
             buildMenuLink(router, siteMap.quiSommesNous, 'Qui sommes-nous ?'),
             buildMenuLink(router, siteMap.stats, 'Statistiques'),
             buildMenuLink(router, siteMap.contact, `Contact`),
+            buildMenuLink(router, urlServicePublicPlus, `Services Publics +`, '_blank'),
           ]),
           ...(siteMap.playground ? [buildMenuLink(router, siteMap.playground, 'Playground')] : []),
         ]}

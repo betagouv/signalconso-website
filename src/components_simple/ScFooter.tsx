@@ -2,6 +2,8 @@ import {Footer} from '@codegouvfr/react-dsfr/Footer'
 import Link from 'next/link'
 import {siteMap, siteMapExternal} from '../core/siteMap'
 
+export const urlServicePublicPlus = `https://www.plus.transformation.gouv.fr/experience/step_1?pk_campaign=DGCCRF`
+
 export function ScFooter() {
   return (
     <>
@@ -37,7 +39,7 @@ export function ScFooter() {
             },
           },
           {
-            text: 'Infos délai de rétractation',
+            text: 'Info délai de rétractation',
             linkProps: {
               href: siteMap.delaiRetractation,
             },
@@ -46,6 +48,12 @@ export function ScFooter() {
             text: 'Info résolution de litige',
             linkProps: {
               href: siteMap.litige,
+            },
+          },
+          {
+            text: 'Services Publics +',
+            linkProps: {
+              href: urlServicePublicPlus,
             },
           },
         ]}
