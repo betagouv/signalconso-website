@@ -27,7 +27,7 @@ interface Props extends Omit<BoxProps, 'onSubmit' | 'children'> {
   children: (websiteUrl?: string, result?: CompanySearchResult[], countries?: Country[]) => ReactNode
 }
 
-const websiteRegex = /^((http|https):\/\/)?(www\.)?[A-Za-z0-9]+([\-\.]{1}[A-Za-z0-9]+)*\.[A-Za-z]{2,}(:[0-9]{1,5})?(\/.*)?$/
+const websiteRegex = /^((http|https):\/\/)?(www\.)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,}(:[0-9]{1,5})?(\/.*)?$/i
 
 type WebsiteSearchResult =
   | {
