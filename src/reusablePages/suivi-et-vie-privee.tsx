@@ -22,16 +22,18 @@ export const SuiviEtViePrivee = () => {
           Code Commerce)
           <br />
           Les informations demandées lors du dépôt du signalement sont nécessaires pour traiter les signalements. En particulier,
-          l'adresse email pourra être utilisée par le site pour informer le consommateur du suivi de son signalement (système de
-          notification). <br />
+          l'adresse email pourra être utilisée par l'interface en ligne (tout logiciel ou application, y compris un site internet,
+          une section de site internet ou une application mobile) pour informer le consommateur du suivi de son signalement
+          (système de notification). <br />
           Les informations relatives au signalement (c’est-à-dire la déclaration et les pièces jointes) sont conservées 5 ans par
           la DGCCRF pour les besoins des enquêtes et les suites éventuelles.
         </p>
         <p>
-          La DGCCRF, en sa qualité d’exploitant du site, s'engage à n'opérer aucune commercialisation des informations
-          personnelles transmises par l'usager, Les déclarations peuvent faire l’objet d'un retraitement statistique par
-          l’administration dans le cadre de ses missions. Les informations présentes sur le site public ne comportent pas de
-          données nominatives et sont mises à disposition de manière libre et gratuite sur le site&nbsp;
+          La DGCCRF, en sa qualité d’exploitant de l'interface en ligne, s'engage à n'opérer aucune commercialisation des
+          informations personnelles transmises par l'usager, Les déclarations peuvent faire l’objet d'un retraitement statistique
+          par l’administration dans le cadre de ses missions. Les informations présentes sur l'interface en ligne public ne
+          comportent pas de données nominatives et sont mises à disposition de manière libre et gratuite sur l'interface en
+          ligne&nbsp;
           <a target="_blank" href="https://data.economie.gouv.fr">
             https://data.economie.gouv.fr
           </a>{' '}
@@ -49,8 +51,9 @@ export const SuiviEtViePrivee = () => {
         </p>
         <p>
           {' '}
-          Consultez le site cnil.fr pour plus d’informations sur vos droits. Si vous estimez, après nous avoir contactés, que vos
-          droits « Informatique et Libertés » ne sont pas respectés, vous pouvez adresser une réclamation à la CNIL.
+          Consultez l'interface en ligne cnil.fr pour plus d’informations sur vos droits. Si vous estimez, après nous avoir
+          contactés, que vos droits « Informatique et Libertés » ne sont pas respectés, vous pouvez adresser une réclamation à la
+          CNIL.
         </p>
 
         <h2 className="fr-h4">Droit d'accès aux données</h2>
@@ -87,7 +90,7 @@ export const SuiviEtViePrivee = () => {
           </li>
         </ul>
         <p>
-          Vous disposez également d’un droit à la limitation du traitement de vos données. Consultez le site &nbsp;
+          Vous disposez également d’un droit à la limitation du traitement de vos données. Consultez l'interface en ligne &nbsp;
           <a target="_blank" href="https://www.cnil.fr/">
             https://www.cnil.fr
           </a>{' '}
@@ -108,8 +111,8 @@ export const SuiviEtViePrivee = () => {
         </p>
         <h2 className="fr-h4">Cookies déposés et opt-out</h2>
         <p>
-          Ce site dépose un petit fichier texte (un « cookie ») sur votre ordinateur lorsque vous le consultez. Cela nous permet
-          de mesurer le nombre de visites et de comprendre quelles sont les pages les plus consultées.
+          Cette interface en ligne dépose un petit fichier texte (un « cookie ») sur votre ordinateur lorsque vous le consultez.
+          Cela nous permet de mesurer le nombre de visites et de comprendre quelles sont les pages les plus consultées.
         </p>
 
         <iframe
