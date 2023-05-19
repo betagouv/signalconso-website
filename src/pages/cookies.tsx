@@ -15,7 +15,7 @@ const Cookies = () => {
       </Head>
       <ContentPageContainer>
         <h1>Gestion des cookies</h1>
-        <h2 className="fr-h4">Ce site n’affiche pas de bannière de consentement aux cookies, pourquoi ?</h2>
+        <h2 className="fr-h4">Cette interface en ligne n’affiche pas de bannière de consentement aux cookies, pourquoi ?</h2>
         <p>
           C’est vrai, vous n’avez pas eu à cliquer sur un bloc qui recouvre la moitié de la page pour dire que vous êtes d’accord
           avec le dépôt de cookies — même si vous ne savez pas ce que ça veut dire !
@@ -28,20 +28,22 @@ const Cookies = () => {
         Les cookies techniques mis en place nous permettent :
         <br />
         <p>
-          D’obtenir des statistiques anonymes sur la fréquentation du site afin de faire de l'analyse de contenu et détecter
-          d'éventuels problèmes de navigation;
+          D’obtenir des statistiques anonymes sur la fréquentation de l'interface en ligne (tout logiciel ou application, y
+          compris un site internet, une section de site internet ou une application mobile) afin de faire de l'analyse de contenu
+          et détecter d'éventuels problèmes de navigation;
         </p>
         <h2 className="fr-h4">Cookies</h2>
         <p>
           Définition : Le cookie est un petit fichier texte enregistré par le navigateur de votre ordinateur, tablette ou
-          smartphone. Le cookie, enregistré sur votre ordinateur lorsque vous consultez le site SignalConso, permet de conserver
-          des données utilisateur décrites ci-dessous afin de faciliter la navigation et de permettre certaines fonctionnalités.
+          smartphone. Le cookie, enregistré sur votre ordinateur lorsque vous consultez l'interface en ligne SignalConso, permet
+          de conserver des données utilisateur décrites ci-dessous afin de faciliter la navigation et de permettre certaines
+          fonctionnalités.
         </p>
-        <h3 className="fr-h6">Nature des cookies déposés sur le site SignalConso:</h3>
+        <h3 className="fr-h6">Nature des cookies déposés sur l'interface en ligne SignalConso:</h3>
         <p>
           Nous n'utilisons que des cookies techniques qui permettent et facilitent votre navigation. Certains sont indispensables
-          et ne sauraient être supprimés sans affecter gravement l’accès au site et la navigation, d’autres auraient pour
-          conséquence une navigation dégradée.
+          et ne sauraient être supprimés sans affecter gravement l’accès à l'interface en ligne et la navigation, d’autres
+          auraient pour conséquence une navigation dégradée.
         </p>
         <h3 className="fr-h6">Liste des cookies déposés</h3>
         <p>Les cookies d'analyse de mesure d'audience (Eulerian / Matomo):</p>
@@ -78,8 +80,8 @@ const Cookies = () => {
         </table>
         <br />
         <p>
-          Afin de mieux vous servir et d’améliorer l’expérience utilisateur sur notre site, nous mesurons son audience grâce à une
-          solution utilisant la technologie des cookies.
+          Afin de mieux vous servir et d’améliorer l’expérience utilisateur sur notre interface en ligne, nous mesurons son
+          audience grâce à une solution utilisant la technologie des cookies.
         </p>
         <p>
           Les données collectées permettent de fournir uniquement des données statistiques anonymes de fréquentation (le nombre de
@@ -95,9 +97,9 @@ const Cookies = () => {
           ).
         </p>
         <p>
-          Aucune des données personnelles ne sont exploitées par le site SignalConso. Cela signifie que votre adresse IP, par
-          exemple, est anonymisée avant d’être enregistrée. Il est donc impossible d’associer vos visites sur ce site à votre
-          personne.
+          Aucune des données personnelles ne sont exploitées par l'interface en ligne SignalConso. Cela signifie que votre adresse
+          IP, par exemple, est anonymisée avant d’être enregistrée. Il est donc impossible d’associer vos visites sur cette
+          interface en ligne à votre personne.
         </p>
         <p>
           Les noms des cookies utilisés sont pour Eulerian Etuix. Leur durée de conservation est de 13 mois. Elles ne sont pas
@@ -119,8 +121,8 @@ const Cookies = () => {
         <p>
           Vous avez la possibilité de paramétrer leur navigateur pour supprimer les cookies déjà installés sur leur terminal, pour
           être invités à accepter ou refuser l’installation de cookies au cas par cas ou pour accepter ou refuser automatiquement
-          tous les cookies pour certains sites ou pour tous les sites. Toutefois, le refus d’utilisation des cookies peut empêcher
-          certaines fonctionnalités du site de fonctionner.
+          tous les cookies pour certaines interfaces en ligne ou pour toutes les interfaces en ligne. Toutefois, le refus
+          d’utilisation des cookies peut empêcher certaines fonctionnalités de l'interface en ligne de fonctionner.
         </p>
         <p>
           Les paramétrages de gestion des cookies varient selon les navigateurs. Les instructions à ce sujet pour les navigateurs
@@ -139,9 +141,9 @@ const Cookies = () => {
               Historique de navigation, cliquez sur Paramètres. Cliquez sur le bouton Afficher les fichiers. Cliquez sur l'en-tête
               de colonne Nom pour trier tous les fichiers dans l'ordre alphabétique, puis parcourez la liste jusqu'à ce que vous
               voyez des fichiers commençant par le préfixe "Cookie". (tous les cookies possèdent ce préfixe et contiennent
-              habituellement le nom du site Web qui a créé le cookie). Sélectionnez le ou les cookies comprenant le nom "à
-              compléter" et supprimez-les Fermez la fenêtre qui contient la liste des fichiers, puis cliquez deux fois sur OK pour
-              retourner dans Internet Explorer.
+              habituellement le nom de l'interface en ligne Web qui a créé le cookie). Sélectionnez le ou les cookies comprenant
+              le nom "à compléter" et supprimez-les Fermez la fenêtre qui contient la liste des fichiers, puis cliquez deux fois
+              sur OK pour retourner dans Internet Explorer.
             </p>
           </li>
           <li>
@@ -185,7 +187,7 @@ const Cookies = () => {
         <p>
           Pour plus de renseignements sur les cookies et la façon de paramétrer votre navigateur, vous pouvez également consulter{' '}
           <Link target="_blank" href="https://www.cnil.fr/fr/cookies-les-outils-pour-les-maitriser">
-            le site de la CNIL
+            l'interface en ligne de la CNIL
           </Link>
         </p>
       </ContentPageContainer>
