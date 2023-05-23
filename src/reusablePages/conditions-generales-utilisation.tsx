@@ -22,7 +22,7 @@ export const ConditionsGeneralesUtilisation = () => {
         <meta name="description" content={pageDefinitions.conditionsGeneralesUtilisation.description} />
       </Head>
       <ContentPageContainer>
-        <h1>Conditions générales d'utilisation du site SignalConso</h1>
+        <h1>Conditions générales d'utilisation de l'interface en ligne SignalConso</h1>
         <Tabs
           tabs={[
             {label: 'Consommateur', iconId: 'fr-icon-user-line', content: <ConditionsGeneralesUtilisationConso />},
@@ -37,16 +37,19 @@ export const ConditionsGeneralesUtilisation = () => {
 function ConditionsGeneralesUtilisationConso() {
   return (
     <div>
-      <p>Les conditions générales d'utilisation doivent être acceptées par l’utilisateur du site.</p>
-      <h2 className="fr-h4">À quoi sert le site SignalConso ?</h2>
       <p>
-        Le site permet aux consommateurs de connaître la réglementation et de déposer un signalement.
+        Les conditions générales d'utilisation doivent être acceptées par l’utilisateur de l'interface en ligne (tout logiciel ou
+        application, y compris un site internet, une section de site internet ou une application mobile).
+      </p>
+      <h2 className="fr-h4">À quoi sert l'interface en ligne SignalConso ?</h2>
+      <p>
+        L'interface en ligne permet aux consommateurs de connaître la réglementation et de déposer un signalement.
         <br />
         Il ne doit en aucun cas s'agir d'une urgence nécessitant l'intervention des services de secours.{' '}
         <b>Dans ce cas, il faut appeler le « 112 ».</b>
       </p>
       <h2 className="fr-h4">Ce service est-il payant ?</h2>
-      <p>Le site est accessible gratuitement à tout utilisateur ayant un accès à internet.</p>
+      <p>L'interface en ligne est accessible gratuitement à tout utilisateur ayant un accès à internet.</p>
       <h2 className="fr-h4">Que peut-on signaler ?</h2>
       <p>
         L’utilisateur peut signaler des manquements relatifs au Code de la Consommation (principalement) et des litiges
@@ -54,8 +57,8 @@ function ConditionsGeneralesUtilisationConso() {
       </p>
       <h2 className="fr-h4">Qui traite les signalements ?</h2>
       <p>
-        Les signalements sont traités par l’équipe SignalConso qui vérifie que le signalement rentre bien dans le périmètre du
-        site et que les données reçues ne sont pas “sensibles”.
+        Les signalements sont traités par l’équipe SignalConso qui vérifie que le signalement rentre bien dans le périmètre de
+        l'interface en ligne et que les données reçues ne sont pas “sensibles”.
       </p>
       Les signalements sont ensuite visibles :
       <ul>
@@ -80,8 +83,8 @@ function ConditionsGeneralesUtilisationConso() {
         soit aux supérieurs hiérarchiques ou à l'employeur de la personne dénoncée, est punie de cinq ans d'emprisonnement et de
         45 000 € d'amende."
         <br />
-        Le détournement du site de signalement pour effectuer des dénonciations mensongères fera l'objet de poursuites
-        judiciaires.
+        Le détournement de l'interface en ligne de signalement pour effectuer des dénonciations mensongères fera l'objet de
+        poursuites judiciaires.
       </p>
       <h2 className="fr-h4"> Traitement des signalements abusifs ou frauduleux</h2>
       <p>
@@ -93,16 +96,16 @@ function ConditionsGeneralesUtilisationConso() {
       </p>
       <h2 className="fr-h4">Mentions légales</h2>
       <p>
-        L'édition du site https://signal.conso.gouv.fr est assurée par la Direction générale de la Concurrence, de la Consommation
-        et de la Répression des fraudes (DGCCRF), située au 59 Boulevard Vincent Auriol 75013 Paris.
+        L'édition de l'interface en ligne https://signal.conso.gouv.fr est assurée par la Direction générale de la Concurrence, de
+        la Consommation et de la Répression des fraudes (DGCCRF), située au 59 Boulevard Vincent Auriol 75013 Paris.
         <br />
-        L'hébergeur du site https://signal.conso.gouv.fr est la société Clever Cloud dont le siège social est situé 3 rue de
-        l’Allier 44000 Nantes.
+        L'hébergeur de l'interface en ligne https://signal.conso.gouv.fr est la société Clever Cloud dont le siège social est
+        situé 3 rue de l’Allier 44000 Nantes.
       </p>
       <h2 className="fr-h4">Propriété intellectuelle</h2>
       <p>
-        Les marques, logos, signes et tout autre contenu du site font l'objet d'une protection par le Code de la propriété
-        intellectuelle et plus particulièrement par le droit d'auteur.
+        Les marques, logos, signes et tout autre contenu de l'interface en ligne font l'objet d'une protection par le Code de la
+        propriété intellectuelle et plus particulièrement par le droit d'auteur.
       </p>
     </div>
   )
@@ -112,12 +115,13 @@ function ConditionsGeneralesUtilisationPro() {
   return (
     <div>
       <p>
-        Les conditions générales d'utilisation doivent être acceptées par le professionnel afin d’utiliser le site SignalConso.
+        Les conditions générales d'utilisation doivent être acceptées par le professionnel afin d’utiliser l'interface en ligne
+        SignalConso.
       </p>
 
       <h2 className="fr-h4">Gratuité de la plate-forme SignalConso</h2>
       <p>
-        Le site est accessible gratuitement aux professionnels.
+        L'interface en ligne est accessible gratuitement aux professionnels.
         <br />
         Si vous recevez une sollicitation vous réclamant une somme d’argent dans le cadre de SignalConso, refusez la proposition
         et alertez rapidement la DIRECCTE ou la DDPP de votre secteur.
@@ -167,24 +171,24 @@ function ConditionsGeneralesUtilisationPro() {
         45 000 € d'amende."
         <br />
         <b>
-          Le détournement du site de signalement pour effectuer des dénonciations mensongères fera l'objet de poursuites
-          judiciaires.
+          Le détournement de l'interface en ligne de signalement pour effectuer des dénonciations mensongères fera l'objet de
+          poursuites judiciaires.
         </b>
       </p>
 
       <h2 className="fr-h4">Mentions légales</h2>
       <p>
-        L'édition du site https://signal.conso.gouv.fr est assurée par la Direction générale de la Concurrence, de la Consommation
-        et de la Répression des fraudes (DGCCRF), située au 59 Boulevard Vincent Auriol 75013 Paris.
+        L'édition de l'interface en ligne https://signal.conso.gouv.fr est assurée par la Direction générale de la Concurrence, de
+        la Consommation et de la Répression des fraudes (DGCCRF), située au 59 Boulevard Vincent Auriol 75013 Paris.
         <br />
-        L'hébergeur du site https://signal.conso.gouv.fr est la société Clever Cloud dont le siège social est situé 3 rue de
-        l’Allier 44000 Nantes.
+        L'hébergeur de l'interface en ligne https://signal.conso.gouv.fr est la société Clever Cloud dont le siège social est
+        situé 3 rue de l’Allier 44000 Nantes.
       </p>
 
       <h2 className="fr-h4">Propriété intellectuelle</h2>
       <p>
-        Les marques, logos, signes et tout autre contenu du site font l'objet d'une protection par le Code de la propriété
-        intellectuelle et plus particulièrement par le droit d'auteur.
+        Les marques, logos, signes et tout autre contenu de l'interface en ligne font l'objet d'une protection par le Code de la
+        propriété intellectuelle et plus particulièrement par le droit d'auteur.
       </p>
     </div>
   )

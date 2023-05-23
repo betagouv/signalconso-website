@@ -12,6 +12,7 @@ import {
   findCurrentStepForReport,
   firstReportStep,
   getAnalyticsForStep,
+  getIndexForStep,
   getIndexForStepOrDone,
   getNextStep,
   getPreviousStep,
@@ -37,10 +38,12 @@ export interface StepNavigation {
   prev: () => void
 }
 
-function useStepChangeTracking(anomaly: Anomaly, currentStep: ReportStepOrDone) {
+function useStepChangeTracking(anomaly: Anomaly, currentStep: ReportStepOrDone, isWebView: boolean) {
   const _analytics = useAnalyticContext()
   useEffect(() => {
     const {path, title} = getAnalyticsForStep(currentStep)
+    console.log('step=' + getIndexForStepOrDone(currentStep))
+    isWebView && window.ReactNativeWebView?.postMessage('step=' + getIndexForStepOrDone(currentStep) + 1)
     _analytics.trackPage(`/${anomaly.path}/${path}`, title)
   }, [currentStep])
 }
@@ -99,7 +102,7 @@ function useIsStepInvalid(anomaly: Anomaly, step: ReportStepOrDone): boolean {
 export const ReportFlowStepper = ({anomaly, isWebView}: StepperProps) => {
   const [step, setStep] = useStepFromRouter(anomaly, isWebView)
   const isStepInvalid = useIsStepInvalid(anomaly, step)
-  useStepChangeTracking(anomaly, step)
+  useStepChangeTracking(anomaly, step, isWebView)
   useEffect(() => {
     if (isStepInvalid) {
       console.warn(`Invalid step for the current state. Redirecting to first step`)
