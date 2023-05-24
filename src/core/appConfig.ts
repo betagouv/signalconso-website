@@ -12,6 +12,16 @@ function readBool(str: string | undefined) {
   return str === 'true'
 }
 
+const severities = ['info', 'warning', 'error', 'success'] as const
+type Severity = typeof severities[number]
+
+function readSeverity(severity?: string): Severity | null {
+  if (severity && severities.includes(severity as any)) {
+    return severity as Severity
+  }
+  return null
+}
+
 export const appConfig = {
   apiCompanyUrl: noTrailingSlash(process.env.NEXT_PUBLIC_COMPANY_API_BASE_URL ?? 'http://localhost:9001'),
   apiAdresseUrl: 'https://api-adresse.data.gouv.fr',
@@ -33,6 +43,7 @@ export const appConfig = {
   matomo_url: process.env.NEXT_PUBLIC_MATOMO_URL,
   maxDescriptionInputLength: 1000,
   infoBanner: process.env.NEXT_PUBLIC_INFO_BANNER,
+  infoBannerSeverity: readSeverity(process.env.NEXT_PUBLIC_INFO_BANNER_SEVERITY) ?? 'warning',
   enableSearchCategories: readBool(process.env.NEXT_PUBLIC_ENABLE_SEARCH_CATEGORIES),
   dummyEmailDomain: ['@yopmail.com'],
   // Used only to regenerate the landing page from Airtable
