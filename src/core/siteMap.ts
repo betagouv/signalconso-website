@@ -1,5 +1,6 @@
 import {Anomaly} from 'anomalies/Anomaly'
 import {appConfig} from './appConfig'
+import {LandingData} from 'landings/landingDataUtils'
 
 export const siteMap = {
   index: `/`,
@@ -29,6 +30,10 @@ export function buildLinkStartReport(anomaly: Pick<Anomaly, 'path'>, {isWebView}
   return isWebView ? `/webview/${anomaly.path}` : `/${anomaly.path}/faire-un-signalement`
 }
 
-export function buildLinkLandingPage(anomaly: Pick<Anomaly, 'path'>) {
+export function buildLinkLandingPage(landingData: LandingData) {
+  return `/${landingData.url}`
+}
+
+export function buildLinkLandingPageFromAnomaly(anomaly: Pick<Anomaly, 'path'>) {
   return `/${anomaly.path}`
 }

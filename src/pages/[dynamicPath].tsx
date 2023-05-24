@@ -1,19 +1,21 @@
 import {Button} from '@codegouvfr/react-dsfr/Button'
 import {CallOut} from '@codegouvfr/react-dsfr/CallOut'
-import {allVisibleAnomalies, findAnomalyByPath} from 'anomalies/Anomalies'
+import {useColors} from '@codegouvfr/react-dsfr/useColors'
+import {findAnomaly} from 'anomalies/Anomalies'
 import {Anomaly} from 'anomalies/Anomaly'
 import {landingsData} from 'landings/landingsData'
 import {GetStaticPaths, GetStaticProps} from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
-import {ReactNode} from 'react'
+import {ReactNode, useRef} from 'react'
 import {buildLinkStartReport, siteMap} from '../core/siteMap'
-import {useColors} from '@codegouvfr/react-dsfr/useColors'
+import {AnomalyTile} from '../components_simple/AnomalyTile/AnomalyTile'
+import {LandingData, allVisibleLandings} from 'landings/landingDataUtils'
 
 export const getStaticPaths: GetStaticPaths = () => {
-  const paths = allVisibleAnomalies().map(_ => ({
-    params: {categoryPath: _.path},
+  const paths = allVisibleLandings().map(_ => ({
+    params: {dynamicPath: _.url},
   }))
   return {
     paths,
@@ -22,46 +24,57 @@ export const getStaticPaths: GetStaticPaths = () => {
 }
 
 type Props = {
-  categoryPath: string
+  dynamicPath: string
 }
 
 export const getStaticProps: GetStaticProps<Props> = async context => {
-  const categoryPath = context.params?.categoryPath
-  if (typeof categoryPath !== 'string') {
-    throw new Error(`Missing categoryPath in context`)
+  const dynamicPath = context.params?.dynamicPath
+  if (typeof dynamicPath !== 'string') {
+    throw new Error(`Missing dynamicPath in context`)
   }
   return {
     props: {
-      categoryPath,
+      dynamicPath,
     },
   }
 }
 
-export default function CategoryLandingPage({categoryPath}: {categoryPath: string}) {
+export default function LandingPage({dynamicPath}: {dynamicPath: string}) {
   const dsfrTheme = useColors()
-  const anomaly = findAnomalyByPath(categoryPath)
-
+  const chooseCategoriesDivRef = useRef<HTMLDivElement>(null)
+  const landingData = allVisibleLandings().find(_ => _.url === dynamicPath)
+  if (!landingData) {
+    throw new Error(`Missing landings data for ${dynamicPath}`)
+  }
   const container = `fr-container`
 
-  const landingData = landingsData.find(_ => _.category === anomaly.category)
-  if (!landingData) {
-    throw new Error(`Missing landings data for ${categoryPath}`)
-  }
+  const buttonTarget =
+    landingData.targetedCategory.length > 1
+      ? () => {
+          if (chooseCategoriesDivRef.current) {
+            chooseCategoriesDivRef.current.scrollIntoView({behavior: 'smooth'})
+          }
+        }
+      : landingData.targetedCategory.length === 1
+      ? findAnomaly(landingData.targetedCategory[0])
+      : 'home'
+
+  const anomalies = landingData.targetedCategory.map(findAnomaly)
 
   return (
     <>
       <Head>
-        <title>{anomaly.seoTitle}</title>
-        <meta name="description" content={anomaly.seoDescription} />
+        <title>{landingData.seoTitle}</title>
+        <meta name="description" content={landingData.seoDescription} />
       </Head>
       <div>
         <div
           className=" text-center px-8 py-14"
           style={{background: dsfrTheme.decisions.background.actionLow.blueFrance.default}}
         >
-          <h1 className="">{anomaly.title}</h1>
+          <h1 className="">{landingData.title}</h1>
           <span className="block mt-4  text-2xl">{landingData.catchPhrase}</span>
-          <BigReportButton {...{anomaly}} className="mt-8" />
+          <BigReportButton target={buttonTarget} className="mt-8" />
         </div>
 
         <div className={`${container} mb-16`}>
@@ -95,9 +108,24 @@ export default function CategoryLandingPage({categoryPath}: {categoryPath: strin
             Votre signalement sera également enregistré dans la base de données de la DGCCRF. Cet outil leur permet de mieux
             cibler leurs contrôles et préparer les enquêtes.
           </p>
-          <div className="flex justify-center items-center">
-            <BigReportButton {...{anomaly}} className="mt-10" />
-          </div>
+          {anomalies.length > 1 ? (
+            <div ref={chooseCategoriesDivRef}>
+              <h3 className="text-2xl">Pour signalez votre problème, choisissez la catégorie correspondante</h3>
+              <div className="fr-grid-row fr-grid-row--gutters">
+                {anomalies.map(a => {
+                  return (
+                    <div className="fr-col-12 fr-col-sm-6 fr-col-md-4" key={a.category}>
+                      <AnomalyTile anomaly={a} />
+                    </div>
+                  )
+                })}
+              </div>
+            </div>
+          ) : (
+            <div className="flex justify-center items-center">
+              <BigReportButton target={buttonTarget} className="mt-10" />
+            </div>
+          )}
         </div>
         <div className={container}>
           <CallOut
@@ -129,28 +157,42 @@ export default function CategoryLandingPage({categoryPath}: {categoryPath: strin
             d’intervenir.
           </CallOut>
         </div>
-        <div className={`${container} my-12 space-y-8`}>
-          <h2 className="text-2xl font-bold">Quelques problèmes qui nous ont été signalés</h2>
-          {landingData.sampleReports.map((report, idx) => (
-            <UserQuote key={idx} {...{report}} />
-          ))}
-        </div>
+        {landingData.sampleReports.length && (
+          <div className={`${container} my-12 space-y-8`}>
+            <h2 className="text-2xl font-bold">Quelques problèmes qui nous ont été signalés</h2>
+            {landingData.sampleReports.map((report, idx) => (
+              <UserQuote key={idx} {...{report}} />
+            ))}
+          </div>
+        )}
       </div>
     </>
   )
 }
 
-function BigReportButton({className = '', anomaly}: {className?: string; anomaly: Anomaly}) {
+function BigReportButton({className = '', target}: {className?: string; target: Anomaly | 'home' | (() => void)}) {
+  const props = {
+    iconId: 'fr-icon-alarm-warning-line',
+    className,
+    size: 'large',
+  } as const
+  const text = 'Je signale un problème'
+  if (typeof target === 'function') {
+    return (
+      <Button {...props} onClick={target}>
+        {text}
+      </Button>
+    )
+  }
   return (
     <Button
-      iconId="fr-icon-alarm-warning-line"
+      {...props}
       linkProps={{
-        href: buildLinkStartReport(anomaly),
+        href: target === 'home' ? siteMap.index : buildLinkStartReport(target),
       }}
-      className={` ${className}`}
       size="large"
     >
-      Je signale un problème
+      {text}
     </Button>
   )
 }
@@ -165,7 +207,7 @@ function HeroCard({title, subtext, picto}: {title: string; subtext: string; pict
   )
 }
 
-function UserQuote({report}: {report: typeof landingsData[number]['sampleReports'][number]}) {
+function UserQuote({report}: {report: LandingData['sampleReports'][number]}) {
   // https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/citation
   // mais on override un peu le style du texte
   return (

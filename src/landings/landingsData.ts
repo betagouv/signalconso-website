@@ -1,32 +1,19 @@
-// Generated file, do not edit manually
+// ----------------------------------------------
+// ---- Generated file, do not edit manually ---
+// ----------------------------------------------
 export const landingsData = [
   {
-    secondaryTitle1: 'Pourquoi faire un signalement si vous rencontrez des problèmes lors de vos achats en ligne ?',
-    catchPhrase:
-      'Signalez un problème lors de vos achats sur internet, renseignez-vous sur vos droits avec la répression des fraudes !',
-    secondaryTitle2: 'Que va devenir votre signalement concernant un achat sur internet ?',
-    category: 'AchatInternet',
-    sampleReports: [
-      {
-        text: "Commandé sur internet le 4 avril une paire de chaussure sur le site xxx france pour la somme de 59,99 euros. A ce jour aucune nouvelle, aucune réponse aux messages laissés et pas de livraison. Aux dernières nouvelles plusieurs messages indiquent que c'est une arnaque !!! Quels sont les recours contre ce genre de voleurs ?",
-        author: 'Nour T.',
-      },
-      {
-        text: 'Bonjour, le 12/12/2022 nous avons effectué un achat en ligne sur le site XXX. La livraison devait être faite par le transporteur XXX. A deux reprises nous avons trouvé dans la boîte aux lettres 2 avis de passage non datés non signés et sans appel reçu. Après avoir contacté le service de livraison par téléphone et internet ils avaient reprogrammé une livraison. Le jour prévu de la livraison nous étions chez nous et n’avons eu ni appel ni trace de livreur. Depuis nous avons essayé de contacter à plusieurs reprises le transporteur et le site (chat, téléphone, Messenger, Twitter) mais nous n’avons à ce jour toujours pas été remboursés. Il est très difficile de joindre XXX car ils ne fonctionnent que par chat et tous se renvoient la balle. 4 mois après notre commande nous souhaiterions enfin être remboursés. Nous avons tout essayé et nous souhaiterions un peu d’aide… Sur le suivi colis est affiché livré le 15/12 alors que le 30/12 est écrit en transit… Merci',
-        author: 'Hassan M.',
-      },
-      {
-        text: "Bonjour, après maintes tentatives pour être remboursé d'une commande non reçue et passée le 12 décembre sur internet (attestation envoyée fin décembre, plus d'une vingtaine d'appels et de relances), la société de service ne traite pas mon dossier pour clore ce dernier. Je suis ainsi contraint de passer par vos services. En espérant que cela puisse m'aider, je vous remercie par avance de votre aide",
-        author: 'Nathan L.',
-      },
-    ],
-  },
-  {
-    secondaryTitle1: 'Pourquoi faire un signalement si vous rencontrez des problèmes lors de vos achats en magasin ?',
+    url: 'achat-magasin',
+    isSemiAutomatic: true,
+    seoTitle: 'Signalez un achat en magasin à la répression des fraudes',
+    seoDescription:
+      "Vous avez eu un problème de prix, sur une promotion ou de qualité, lors d'un achat dans un magasin. Vous avez repéré une infraction dans sa publicité ou son fonctionnement...",
+    title: 'Achat en Magasin',
+    targetedCategory: ['AchatMagasin'],
     catchPhrase:
       'Signalez un problème lors de vos achats en magasin, renseignez-vous sur vos droits avec la répression des fraudes !',
+    secondaryTitle1: 'Pourquoi faire un signalement si vous rencontrez des problèmes lors de vos achats en magasin ?',
     secondaryTitle2: 'Que va devenir votre signalement concernant un achat dans un magasin ?',
-    category: 'AchatMagasin',
     sampleReports: [
       {
         text: "J'ai acheté un téléphone en date du 22/11/2022. Au bout de 4 mois, le téléphone tombe en panne, je l'amène au service après-vente qui refuse de faire marcher la garantie au motif qu'il y a un petit impact sur la coque du téléphone. Sachant que j'ai fait cet impact assez rapidement et que mon téléphone a toujours bien fonctionné, le refus de faire marcher la garantie est pour moi aberrant. Je demande donc que mon téléphone soit réparé gratuitement car j'ai une garantie magasin et l'impact sur la coque ne peut pas être la cause du dysfonctionnement.",
@@ -135,10 +122,43 @@ export const landingsData = [
     ],
   },
   {
-    secondaryTitle1: 'Pourquoi signaler les difficultés relatives à vos animaux, leur alimentation ou leur garde ?',
+    url: 'achat-site',
+    isSemiAutomatic: true,
+    seoTitle: "Signalez un site d'achat à la répression des fraudes",
+    seoDescription:
+      "Vous avez eu un problème de prix, sur une promotion ou de qualité lors d'un achat sur Internet. Vous n'avez pas reçu votre commande ou celle-ci est abîmée, le service client n'est pas joignable ou insatisfaisant...",
+    title: 'Achat sur internet',
+    targetedCategory: ['AchatInternet'],
+    catchPhrase:
+      'Signalez un problème lors de vos achats sur internet, renseignez-vous sur vos droits avec la répression des fraudes !',
+    secondaryTitle1: 'Pourquoi faire un signalement si vous rencontrez des problèmes lors de vos achats en ligne ?',
+    secondaryTitle2: 'Que va devenir votre signalement concernant un achat sur internet ?',
+    sampleReports: [
+      {
+        text: "Commandé sur internet le 4 avril une paire de chaussure sur le site xxx france pour la somme de 59,99 euros. A ce jour aucune nouvelle, aucune réponse aux messages laissés et pas de livraison. Aux dernières nouvelles plusieurs messages indiquent que c'est une arnaque !!! Quels sont les recours contre ce genre de voleurs ?",
+        author: 'Nour T.',
+      },
+      {
+        text: 'Bonjour, le 12/12/2022 nous avons effectué un achat en ligne sur le site XXX. La livraison devait être faite par le transporteur XXX. A deux reprises nous avons trouvé dans la boîte aux lettres 2 avis de passage non datés non signés et sans appel reçu. Après avoir contacté le service de livraison par téléphone et internet ils avaient reprogrammé une livraison. Le jour prévu de la livraison nous étions chez nous et n’avons eu ni appel ni trace de livreur. Depuis nous avons essayé de contacter à plusieurs reprises le transporteur et le site (chat, téléphone, Messenger, Twitter) mais nous n’avons à ce jour toujours pas été remboursés. Il est très difficile de joindre XXX car ils ne fonctionnent que par chat et tous se renvoient la balle. 4 mois après notre commande nous souhaiterions enfin être remboursés. Nous avons tout essayé et nous souhaiterions un peu d’aide… Sur le suivi colis est affiché livré le 15/12 alors que le 30/12 est écrit en transit… Merci',
+        author: 'Hassan M.',
+      },
+      {
+        text: "Bonjour, après maintes tentatives pour être remboursé d'une commande non reçue et passée le 12 décembre sur internet (attestation envoyée fin décembre, plus d'une vingtaine d'appels et de relances), la société de service ne traite pas mon dossier pour clore ce dernier. Je suis ainsi contraint de passer par vos services. En espérant que cela puisse m'aider, je vous remercie par avance de votre aide",
+        author: 'Nathan L.',
+      },
+    ],
+  },
+  {
+    url: 'animaux',
+    isSemiAutomatic: true,
+    seoTitle: 'Signalez un problème d’animaux, garde, vétérinaire, élevage, toilettage à la DGCCRF',
+    seoDescription:
+      'Vous avez un problème avec un(e) pet sitter, pension, assurance santé animaux, animalerie, pedigree LOOF, éleveur, toiletteur, croquettes, chien, chat, NAC, cheval',
+    title: 'Animaux',
+    targetedCategory: ['Animaux'],
     catchPhrase: 'Signalez un problème relatif à vos animaux, renseignez-vous sur vos droits avec la répression des fraudes !',
+    secondaryTitle1: 'Pourquoi signaler les difficultés relatives à vos animaux, leur alimentation ou leur garde ?',
     secondaryTitle2: 'Que va devenir votre signalement relatif aux animaux ?',
-    category: 'Animaux',
     sampleReports: [
       {
         text: "J'ai acheté des croquettes XXX. Mon chien a été malade. Il s'avère que nous sommes plus de 5000 personnes à avoir eu ces mème problèmes. J'ai demandé le remboursement des paquets non entamés, ce qui m'a été refusé. J'aimerai qu'une enquête soit ouverte pour analyser ces croquettes et arrêter que nos animaux soient malades ou en meurent.",
@@ -155,11 +175,17 @@ export const landingsData = [
     ],
   },
   {
-    secondaryTitle1: 'Pourquoi signaler les difficultés rencontrées avec votre banque, votre mutuelle ou votre assurance ?',
+    url: 'banque-assurance-mutuelle',
+    isSemiAutomatic: true,
+    seoTitle: 'Signalez un problème de banque, assurance, mutuelle à la DGCCRF',
+    seoDescription:
+      'Vous avez un problème de frais bancaires, carte, CB, remboursement, déclaration de sinistre, prise en charge optique/dentaire, indemnisation, contrat d’assurance, prévoyance',
+    title: 'Banque / Assurance / Mutuelle',
+    targetedCategory: ['BanqueAssuranceMutuelle'],
     catchPhrase:
       'Signalez un problème à votre banque ou assurance, renseignez-vous sur vos droits avec la répression des fraudes !',
+    secondaryTitle1: 'Pourquoi signaler les difficultés rencontrées avec votre banque, votre mutuelle ou votre assurance ?',
     secondaryTitle2: 'Que va devenir votre signalement à l’encontre de votre banque, de votre mutuelle ou  de votre assurance ?',
-    category: 'BanqueAssuranceMutuelle',
     sampleReports: [
       {
         text: "Depuis le mois de décembre j'ai déclaré un sinistre dû aux intempéries d'octobre et novembre. Les différents interlocuteurs me disaient que j'allais être remboursé des frais avancés et que l'expert allait venir constater l'étendue des dégâts. Au mois de mars, l'expert vient après avoir appelé à plusieurs reprises pour constater les dégâts et savoir quoi faire. Le 24 mars alors que je n'arrive pas à vous joindre, je contourne la voie normale et réussi à vous avoir, pour vous entendre me dire que je ne serais finalement pas remboursé et que les dégâts ne sont pas à cause des intempéries, alors que depuis janvier 2022 je suis dans la maison et je n'ai pas eu d'infiltration. L'experte qui est venue a bien vu qu'il y a eu des infiltrations le jour de son passage et a dit que ça allait être pris en charges (témoins à l'appui). Au vu de la réponse du 24 mars je voudrais obtenir le rapport de l’expert pour pouvoir faire une contre-expertise. Malgré plusieurs demandes, je n’ai à ce jour toujours rien reçu et les infiltrations continue. Merci de votre aide.",
@@ -176,31 +202,16 @@ export const landingsData = [
     ],
   },
   {
-    secondaryTitle1: 'Pourquoi signaler un café ou un restaurant qui ne vous a pas donné satisfaction ?',
-    catchPhrase:
-      'Signalez un problème à votre café ou restaurant, renseignez-vous sur vos droits avec la répression des fraudes !',
-    secondaryTitle2: 'Que va devenir votre signalement à l’encontre de votre café ou restaurant ?',
-    category: 'CafeRestaurant',
-    sampleReports: [
-      {
-        text: "Cet établissement ne respecte pas les règles d'hygiènes que cela soit au niveau du matériel que de la nourriture et également du logement du personnel. J'y ai travaillé 3 jours avant de décider de ne pas y rester car je suis moi-même tombé malade suite à un problème bactériologique. Au niveau de la cuisine, les casseroles et poêles ne sont pas propres et des résidus datant des jours d’avant se voient à l'œil nu, le patron se permet de mettre un vieux seau sale sur son plan de travail où il prépare les plats et trouve cela normal de plus il ne se lave pas les mains entre chaque préparation. Il range le poisson (saumon sec) dans frigo en le couvrant juste avec du papier de poissonnier et le ressort tel quel pour le mettre en préparation si un client en demande. Il ne filme pas les aliments du frigo, se contente de mettre un sopalin humide et le range ainsi. Les murs et plans de travail sont sales, les livraisons se font à même le sol en extérieur sur le trottoir, les poubelles ne sont jamais désinfectées.",
-        author: 'Mohamed D.',
-      },
-      {
-        text: 'Ce petit restaurant situé à XXX où je suis allé diner par hasard en famille est horrible. Ce que j’ai pu y voir m’a choqué. L’endroit est très sale les toilettes, qui sont d’ailleurs mixtes, aussi. Il n’y a même pas de produits d’hygiène ni de papier toilettes. De plus la tenancière de l’établissement ne donne pas les prix et encaisse à « la tête du client ». Elle nous a servis un couscous réchauffé de la veille d’après un autre client qui était venu justement se plaindre du manque d’hygiène et n’a pas voulu nous encaisser en carte bancaire prétextant que la machine était en panne ce qui est faux puisque mon épouse l’avait aperçue encaisser un autre client auparavant… De plus au fond de la salle plusieurs groupes de jeunes fumaient et même du cannabis et une bagarre a même éclaté… Certains riverains parleraient même de trafic du sein même de ce restaurant mais je n’en ai pas vu. Il faut faire quelque chose car il est intolérable qu’un tel lieu puisse exister dans un endroit aussi emblématique.',
-        author: 'Yasmina N.',
-      },
-      {
-        text: "Je vous écris pour exprimer ma profonde insatisfaction à propos de la commande que j'ai reçue de votre part. Lorsque j'ai reçu ma commande, j'ai été choqué de constater que la nourriture était dans un état complètement inadmissible. De plus, les emballages étaient déchirés et les contenants de nourriture étaient renversés. Cela a rendu la nourriture immangeable. Je suis très déçu de la qualité de service que j'ai reçu de votre part. J'ai dépensé de l'argent pour une commande qui n'était pas à la hauteur de mes attentes. Je m'attendais à une nourriture fraîche et savoureuse, mais ce que j'ai reçu était tout le contraire. Je suis vraiment déçu de la façon dont ma commande a été traitée. Je demande donc un remboursement INTEGRAL pour ma commande. Je pense que cela est justifié car j'ai reçu un service de très mauvaise qualité. Je vous remercie de votre compréhension et j'attends votre réponse avec impatience.",
-        author: 'Nour Z.',
-      },
-    ],
-  },
-  {
-    secondaryTitle1: 'Pourquoi faire un signalement si vous êtes victime de démarchage abusif ?',
+    url: 'bloctel',
+    isSemiAutomatic: true,
+    seoTitle: 'Vous avez un problème de démarchage abusif malgré Bloctel ? Signalez-le à la DGCCRF',
+    seoDescription:
+      'Vous avez un problème d’appels indésirables, inconnus, incessants, de spams, de sms, de télé vente, d’arnaque au CPF, à la formation professionnelle',
+    title: 'Démarchage abusif',
+    targetedCategory: ['DemarchageAbusif'],
     catchPhrase: 'Signalez un problème de démarchage abusif, renseignez-vous sur vos droits avec la répression des fraudes !',
+    secondaryTitle1: 'Pourquoi faire un signalement si vous êtes victime de démarchage abusif ?',
     secondaryTitle2: 'Que devient votre signalement pour démarchage abusif ?',
-    category: 'DemarchageAbusif',
     sampleReports: [
       {
         text: "A plusieurs reprises au mois d'octobre, sur mon lieu de travail, j'ai été contacté par téléphone (harcèlement) par votre commerciale XXX, pour me vendre une parution sur les pages jaunes pour l'entreprise de mon mari. Non seulement, cet appel était non sollicité, mais il était également très intrusif et insistant. L'interlocuteur m'a proposé une offre commerciale que j'ai refusée à plusieurs reprises, mais il a continué à insister de manière agressive et désagréable. Je trouve ce comportement inacceptable et contraire à la législation en vigueur en matière de démarchage téléphonique.",
@@ -217,11 +228,44 @@ export const landingsData = [
     ],
   },
   {
-    secondaryTitle1: 'Pourquoi faire un signalement si vous rencontrez des difficultés lors de vos démarches administratives ?',
+    url: 'cafe-restaurant',
+    isSemiAutomatic: true,
+    seoTitle: 'Signalez un problème avec un café / restaurant à la répression des fraudes',
+    seoDescription:
+      "Les descriptions sont incorrectes (origine, fait maison, allergènes, halal). L'établissement est sale, insalubre, problème de fraîcheur, d'hygiène, intoxication ou problème à la commande / livraison",
+    title: 'Café / Restaurant',
+    targetedCategory: ['CafeRestaurant'],
+    catchPhrase:
+      'Signalez un problème à votre café ou restaurant, renseignez-vous sur vos droits avec la répression des fraudes !',
+    secondaryTitle1: 'Pourquoi signaler un café ou un restaurant qui ne vous a pas donné satisfaction ?',
+    secondaryTitle2: 'Que va devenir votre signalement à l’encontre de votre café ou restaurant ?',
+    sampleReports: [
+      {
+        text: "Cet établissement ne respecte pas les règles d'hygiènes que cela soit au niveau du matériel que de la nourriture et également du logement du personnel. J'y ai travaillé 3 jours avant de décider de ne pas y rester car je suis moi-même tombé malade suite à un problème bactériologique. Au niveau de la cuisine, les casseroles et poêles ne sont pas propres et des résidus datant des jours d’avant se voient à l'œil nu, le patron se permet de mettre un vieux seau sale sur son plan de travail où il prépare les plats et trouve cela normal de plus il ne se lave pas les mains entre chaque préparation. Il range le poisson (saumon sec) dans frigo en le couvrant juste avec du papier de poissonnier et le ressort tel quel pour le mettre en préparation si un client en demande. Il ne filme pas les aliments du frigo, se contente de mettre un sopalin humide et le range ainsi. Les murs et plans de travail sont sales, les livraisons se font à même le sol en extérieur sur le trottoir, les poubelles ne sont jamais désinfectées.",
+        author: 'Mohamed D.',
+      },
+      {
+        text: 'Ce petit restaurant situé à XXX où je suis allé diner par hasard en famille est horrible. Ce que j’ai pu y voir m’a choqué. L’endroit est très sale les toilettes, qui sont d’ailleurs mixtes, aussi. Il n’y a même pas de produits d’hygiène ni de papier toilettes. De plus la tenancière de l’établissement ne donne pas les prix et encaisse à « la tête du client ». Elle nous a servis un couscous réchauffé de la veille d’après un autre client qui était venu justement se plaindre du manque d’hygiène et n’a pas voulu nous encaisser en carte bancaire prétextant que la machine était en panne ce qui est faux puisque mon épouse l’avait aperçue encaisser un autre client auparavant… De plus au fond de la salle plusieurs groupes de jeunes fumaient et même du cannabis et une bagarre a même éclaté… Certains riverains parleraient même de trafic du sein même de ce restaurant mais je n’en ai pas vu. Il faut faire quelque chose car il est intolérable qu’un tel lieu puisse exister dans un endroit aussi emblématique.',
+        author: 'Yasmina N.',
+      },
+      {
+        text: "Je vous écris pour exprimer ma profonde insatisfaction à propos de la commande que j'ai reçue de votre part. Lorsque j'ai reçu ma commande, j'ai été choqué de constater que la nourriture était dans un état complètement inadmissible. De plus, les emballages étaient déchirés et les contenants de nourriture étaient renversés. Cela a rendu la nourriture immangeable. Je suis très déçu de la qualité de service que j'ai reçu de votre part. J'ai dépensé de l'argent pour une commande qui n'était pas à la hauteur de mes attentes. Je m'attendais à une nourriture fraîche et savoureuse, mais ce que j'ai reçu était tout le contraire. Je suis vraiment déçu de la façon dont ma commande a été traitée. Je demande donc un remboursement INTEGRAL pour ma commande. Je pense que cela est justifié car j'ai reçu un service de très mauvaise qualité. Je vous remercie de votre compréhension et j'attends votre réponse avec impatience.",
+        author: 'Nour Z.',
+      },
+    ],
+  },
+  {
+    url: 'demarches-administratives',
+    isSemiAutomatic: true,
+    seoTitle: 'Signalez un problème de médiation ou de faux courrier administratif à la DGCCRF',
+    seoDescription:
+      'Vous avez un problème d’arnaques, services payants pour papiers d’identité, actes d’état civil, certificat d’immatriculation, Crit’Air, carte Vitale, KBis, frais d’enregistrement',
+    title: 'Démarches administratives',
+    targetedCategory: ['DemarchesAdministratives'],
     catchPhrase:
       'Signalez un problème lors de démarches administratives, renseignez-vous sur vos droits avec la répression des fraudes !',
+    secondaryTitle1: 'Pourquoi faire un signalement si vous rencontrez des difficultés lors de vos démarches administratives ?',
     secondaryTitle2: 'Que devient votre signalement relatif à des démarches administratives ?',
-    category: 'DemarchesAdministratives',
     sampleReports: [
       {
         text: "Le 31/03/2022, j'ai fait installer des panneaux photovoltaïques via la société XXX dont le siège est à XXX. L'installation s'est bien déroulée ainsi que les échanges. À la suite de l'installation, j'ai été démarché par cette adresse mail : XXX pour récupérer la TVA. Or, il s'est avéré que j'ai reçu une lettre de relance des impôts indiquant que je n'avais pas déclarer mes panneaux. La personne des impôts en charge de mon dossier, comprenant ma situation, m'a transmis les \"bons\" contacts pour faire ma demande d'assujettissement à la TVA. Au final, l'adresse mail a reçu toutes mes informations personnelles sur l'installation des panneaux photovoltaïques et peut les utiliser à son souhait et non à usage professionnel comme je le pensais. Je vous joins les documents envoyés par XXX (4 premiers documents) et les documents officiels.",
@@ -238,27 +282,17 @@ export const landingsData = [
     ],
   },
   {
-    category: 'DemoCategory',
-    catchPhrase: "Phrase d'accroche blabla, bla bla répression des fraudes",
-    secondaryTitle1: 'Titre bla bla pourquoi faire signalement',
-    secondaryTitle2: 'Titre bla bla que va devenir le signalement',
-    sampleReports: [
-      {
-        text: "Texte d'un signalement",
-        author: 'Hugo S.',
-      },
-      {
-        text: "Texte d'un autre signalement",
-        author: 'Maria T.',
-      },
-    ],
-  },
-  {
-    secondaryTitle1: 'Pourquoi faire un signalement à l’encontre de votre fournisseur d’énergie ?',
+    url: 'eau-gaz-electricite',
+    isSemiAutomatic: true,
+    seoTitle: "Signalez un problème d'eau, gaz ou électricité à la répression des fraudes",
+    seoDescription:
+      'Vous avez un problème de contrat d’énergie, de prélèvement, une facture excessive, un dépassement de consommation ou vous avez eu une fuite d’eau, de canalisation.',
+    title: 'Eau / Gaz / Electricité',
+    targetedCategory: ['EauGazElectricite'],
     catchPhrase:
       'Signalez un problème à votre fournisseur d’énergie, renseignez-vous sur vos droits avec la répression des fraudes !',
+    secondaryTitle1: 'Pourquoi faire un signalement à l’encontre de votre fournisseur d’énergie ?',
     secondaryTitle2: 'Que va devenir votre signalement à l’encontre de votre fournisseur d’énergie ?',
-    category: 'EauGazElectricite',
     sampleReports: [
       {
         text: "Suite à la résiliation de mon contrat avec la société XXX le 09/12/2022, XXX doit me verser 43.06€. Après vous avoir transmis les justificatifs demandés, vos services auraient viré le montant sur le compte fermé de mon père décédé, puis envoyé un chèque à mon domicile, jamais parvenu. Après vous avoir fourni les copies de mes relevés de compte et une attestation de ma banque jointe démontrant qu'aucun versement XXX n'est intervenu, vous ne cessez d'ouvrir des réclamations arrivant à échéance puis ouvertes à nouveau, sans me régler et malgré les justificatifs fournis. Le dernier événement en date étant de m'informer de la nomination d'un \"conseiller spécialisé\" pour prendre ma réclamation en charge. La question se pose si votre dysfonctionnement renvoie à de l'incompétence ou de la malhonnêteté, ayant tous les justificatifs en votre possession pour régler le montant qui m'est dû depuis le 09/12. Vous remerciant de votre compréhension.",
@@ -275,10 +309,16 @@ export const landingsData = [
     ],
   },
   {
-    secondaryTitle1: "Pourquoi signaler des problèmes d'immobilier ou de loyer ?",
+    url: 'immobilier',
+    isSemiAutomatic: true,
+    seoTitle: 'Signalez un problème de loyer, syndic, copropriété, DPE, charges à la DGCCRF',
+    seoDescription:
+      'Vous avez un problème avec une copropriété, agence immobilière, syndic, notaire en tant que locataire ou propriétaire, un souci de loyer, bail, DPE, location, vente ou mandat',
+    title: 'Immobilier',
+    targetedCategory: ['Immobilier'],
     catchPhrase: "Signalez un problème d'immobilier, de loyer, renseignez-vous sur vos droits avec la répression des fraudes !",
+    secondaryTitle1: "Pourquoi signaler des problèmes d'immobilier ou de loyer ?",
     secondaryTitle2: "Que va devenir votre signalement concernant vos problèmes d'immobilier ou de loyer ?",
-    category: 'Immobilier',
     sampleReports: [
       {
         text: "On m'a établi un bail avec des documents non conformes ou manquants. Quand j'ai demandé de régulariser le bail et les paiements, on m'a répondu qu'il en était hors de question et qu'aucun geste ne serait fait. Diagnostic Gaz pour les logements de plus de 15ans non fourni et DPE plus valable à la date de signature du bail. Le nouveau DPE fourni plus d'un mois après la date de début du bail et à ma demande est moins qualitatif (note en D au lieu de C qu'on m'a annoncé). Là encore, l'agence refuse de revoir les frais d'agence alors que le service réel est clairement pas à la hauteur du professionnalisme attendu dans le coût de la prestation. Je poste ici car après plusieurs échanges avec l'agence et notamment la gestionnaire du bien qui transmet aux responsables. J'obtiens systématiquement le même retour. Nous maintenons notre position. Nous n'avons fait aucune erreur. Aucun geste ne sera fait. Je trouve cette position très hautaine et laisse aucune possibilité d'agir à l'amiable.",
@@ -295,11 +335,17 @@ export const landingsData = [
     ],
   },
   {
-    secondaryTitle1: 'Pourquoi faire un signalement si vous constatez les manquements d’un influenceur ?',
+    url: 'internet',
+    isSemiAutomatic: true,
+    seoTitle: "Signalez un problème d'arnaque en ligne à la répression des fraudes",
+    seoDescription:
+      "Vous avez été victime d'une publicité trompeuse sur internet, vous souhaitez signaler un influenceur sponsorisé qui n'indique pas sa rémunération par une marque...",
+    title: 'Internet (hors achats)',
+    targetedCategory: ['Internet'],
     catchPhrase:
       'Signalez un problème aux plateformes de médias sociaux, renseignez-vous sur vos droits avec la répression des fraudes !',
+    secondaryTitle1: 'Pourquoi faire un signalement si vous constatez les manquements d’un influenceur ?',
     secondaryTitle2: 'Que va devenir votre signalement concernant un influenceur ?',
-    category: 'Internet',
     sampleReports: [
       {
         text: "En mars 2023 j'ai participé à un concours proposé par la société XXX. Pour participer il fallait liker la page de la société, partager la publication, et taguer en commentaire un ami susceptible d’être intéressé. Le tirage au sort devait avoir lieu quelques jours plus tard. J'étais le seul participant, donc je pensais évidemment être le gagnant. N'ayant pas de nouvelle du tirage au sort, j'ai contacté ce matin ladite société pour demander si j'avais bien gagné, et on m'a répondu que non car il fallait un minimum 10 participants. Cette clause n'apparaissait nulle part sur leur publication. J'ai donc demandé le règlement du concours mais je n’ai pas eu de réponse de leur part. Quelques instants plus tard, les publications relatives au concours ont été effacées de la page. Vous trouverez en pièces jointes des captures d'écran prouvant l’existence de ce concours ainsi que ma participation.",
@@ -316,11 +362,17 @@ export const landingsData = [
     ],
   },
   {
-    secondaryTitle1: "Pourquoi faire un signalement si vous êtes victime d'une intoxication alimentaire ?",
+    url: 'intoxication-alimentaire',
+    isSemiAutomatic: true,
+    seoTitle: 'Vous êtes malade, diarrhée, nausée, fièvre suite à un repas, signalez-le à la DGCCRF',
+    seoDescription:
+      'Vous êtes souffrant, avez des problèmes de digestion après avoir mangé un aliment suspect, goût, odeur de la nourriture ? Mal au ventre, estomac, vomissement ?',
+    title: 'Intoxication alimentaire',
+    targetedCategory: ['IntoxicationAlimentaire'],
     catchPhrase:
       "Signalez un problème d'intoxication alimentaire, renseignez-vous sur vos droits avec la répression des fraudes !",
+    secondaryTitle1: "Pourquoi faire un signalement si vous êtes victime d'une intoxication alimentaire ?",
     secondaryTitle2: 'Que devient votre signalement relatif à une intoxication alimentaire ?',
-    category: 'IntoxicationAlimentaire',
     sampleReports: [
       {
         text: "Achat d'un sandwich au saumon dans une boulangerie. Diarrhées aiguës et fièvre pendant 1 semaine : contamination 2 bactéries suite à analyses de selles, j'ai du consulter un médecin.",
@@ -337,11 +389,29 @@ export const landingsData = [
     ],
   },
   {
-    secondaryTitle1: 'Pourquoi faire un signalement si vous rencontrez des problèmes dans le secteur de la santé ?',
+    url: 'pathdelacategory',
+    isSemiAutomatic: true,
+    seoTitle: '(title) Le title de la category',
+    seoDescription: '(seoDescription) Description SEO de la category',
+    title: '(category) Une category de démo',
+    targetedCategory: ['DemoCategory'],
+    catchPhrase: "Phrase d'accroche blabla, bla bla répression des fraudes",
+    secondaryTitle1: 'Titre bla bla pourquoi faire signalement',
+    secondaryTitle2: 'Titre bla bla que va devenir le signalement',
+    sampleReports: [],
+  },
+  {
+    url: 'sante',
+    isSemiAutomatic: true,
+    seoTitle: 'Signalez un problème avec un professionnel de santé à la répression des fraudes',
+    seoDescription:
+      "Vous avez eu un reste à charge trop élevé, un non-respect du 100% santé, n'avez pas eu de devis par votre clinique, hôpital, opticien ou les effets mis en avant en parapharmacie sont trompeurs...",
+    title: 'Secteur de la santé',
+    targetedCategory: ['Sante'],
     catchPhrase:
       'Signalez un problème dans le secteur de la santé, renseignez-vous sur vos droits avec la répression des fraudes !',
+    secondaryTitle1: 'Pourquoi faire un signalement si vous rencontrez des problèmes dans le secteur de la santé ?',
     secondaryTitle2: 'Que va devenir votre signalement concernant le secteur de la santé ?',
-    category: 'Sante',
     sampleReports: [
       {
         text: "Bonjour, je suis allé aujourd'hui à la Grande Pharmacie XXX. Je voulais acheter un flacon de vitamines. Le prix affiché était de 12,90 euros. Arrivé à la caisse, la \"charmante\" dame me demande 16,90 euros. Je lui signale l'erreur d'affichage de prix et elle me soutient que les prix ont augmenté et que c'est maintenant celui-là. Je proteste et insiste sur le fait qu'elle doit me faire payer le prix indiqué sur l'étiquette, que l'erreur vient d'eux et que ce n’est pas à moi, client, de payer leur erreur. Elle finit par m'envoyer \"ch…\". J'ai quitté cette pharmacie sans prendre le produit vu la mauvaise foi de cette dame (Responsable de la pharmacie ? je ne sais pas) ..., je suis parti aussitôt signaler ce litige à la police. Je pense ne pas être la seule personne à qui cela arrive. Mais personne n'ose rien dire. J'espère que mon signalement servira à quelque chose et que vous pourrez vérifier leur prix sinon c'est du vol. Merci de votre attention.",
@@ -354,11 +424,17 @@ export const landingsData = [
     ],
   },
   {
-    secondaryTitle1: 'Pourquoi faire un signalement si vous rencontrez des problèmes avec un prestataire de service ?',
+    url: 'services-aux-particuliers',
+    isSemiAutomatic: true,
+    seoTitle: 'Signalez un problème avec un service / prestation à la répression des fraudes',
+    seoDescription:
+      "Vous avez un problème avec un organisme de formation, coiffeur, esthéticien, tatoueur, ménage, déménageur, aide à domicile, garde ou accompagnement d'enfants...",
+    title: 'Services aux particuliers',
+    targetedCategory: ['ServicesAuxParticuliers'],
     catchPhrase:
       'Signalez un problème à votre prestataire de service, renseignez-vous sur vos droits avec la répression des fraudes !',
+    secondaryTitle1: 'Pourquoi faire un signalement si vous rencontrez des problèmes avec un prestataire de service ?',
     secondaryTitle2: 'Que va devenir votre signalement concernant un prestataire de service ?',
-    category: 'ServicesAuxParticuliers',
     sampleReports: [
       {
         text: "Suite à une course réservée auprès de votre société XXX en véhicule tarif éco pour faire un trajet XXX, le choix du paiement directement dans le véhicule est choisi pour 385€. Pour cause de prolongation d'hospitalisation, la course ne s'est pas faite. Je procède à l’annulation plus de 48h avant, la société nous prélève quand même 385€ de caution malgré le délai d’annulation respecté. Impossible de nous les rembourser car c’est soi-disant inscrit dans les CGV. Un avoir nous est proposé en nous demandant notre carte d'identité. 1ERE ESCROQUERIE Quelques jours plus tard, nous nous voyons encore prélevé par cette société 245€ sans notre accord. Soi-disant correspondant à la réservation d'un VAN spacieux, et donc un tarif plus cher. Or, nous avions choisi une berline tarif ECO (voir PJ). Votre société reconnait son erreur, confirme donc le remboursement à venir. Mais �� ce jour, impossible de vous joindre par mail, téléphone ou sms et le remboursement n'est pas effectué. 2EME ESCROQUERIE",
@@ -375,12 +451,18 @@ export const landingsData = [
     ],
   },
   {
-    secondaryTitle1:
-      "Pourquoi faire un signalement si vous rencontrez des problèmes avec votre opérateur mobile ou votre fournisseur d'accès internet ?",
+    url: 'tel-internet-media',
+    isSemiAutomatic: true,
+    seoTitle: 'Signalez un problème de forfait à la répression des fraudes',
+    seoDescription:
+      'Votre opérateur vous a facturé des options non souscrites, votre abonnement mobile ou box est en augmentation ou a été reconduit abusivement, vous avez un doute sur les frais de résiliation.',
+    title: "Téléphonie / Fournisseur d'accès internet / médias",
+    targetedCategory: ['TelephonieFaiMedias'],
     catchPhrase:
       "Signalez un problème avec votre opérateur mobile ou fournisseur d'accès internet, renseignez-vous sur vos droits avec la répression des fraudes !",
+    secondaryTitle1:
+      "Pourquoi faire un signalement si vous rencontrez des problèmes avec votre opérateur mobile ou votre fournisseur d'accès internet ?",
     secondaryTitle2: 'Que va devenir votre signalement concernant vos problèmes de mobile ou internet ?',
-    category: 'TelephonieFaiMedias',
     sampleReports: [
       {
         text: "Bonjour, un abonnement intitulé XXX est associé à mon forfait de téléphone depuis le mois de février. Cet abonnement a été ajouté à mon forfait sans mon accord. Cet abonnement est d'un montant de 3 euros hebdomadaire par tacite reconduction. Je n'ai jamais adhéré à ce service ni donner quelconque autorisation de prélèvement. Je souhaite l'arrêt immédiat de ce prélèvement frauduleux et exige un remboursement intégral des montant prélevés. Je joins les factures détaillées.",
@@ -397,10 +479,16 @@ export const landingsData = [
     ],
   },
   {
-    secondaryTitle1: 'Pourquoi faire un signalement si vous rencontrez des problèmes lors de travaux ou rénovation ?',
+    url: 'travaux-renovation',
+    isSemiAutomatic: true,
+    seoTitle: 'Signalez un problème de travaux ou rénovation à la répression des fraudes',
+    seoDescription:
+      "Vous avez fait intervenir un artisan (serrurier, plombier, isolation, pompe à chaleur, chaudière, prime rénov, fenêtre, ...) et vous avez un souci de délais d'exécution, de devis, malfaçon, ...",
+    title: 'Travaux / Rénovation',
+    targetedCategory: ['TravauxRenovations'],
     catchPhrase: 'Signalez un problème à votre artisan, renseignez-vous sur vos droits avec la répression des fraudes !',
+    secondaryTitle1: 'Pourquoi faire un signalement si vous rencontrez des problèmes lors de travaux ou rénovation ?',
     secondaryTitle2: 'Que va devenir votre signalement concernant vos travaux ?',
-    category: 'TravauxRenovations',
     sampleReports: [
       {
         text: 'A ce jour vous avez réalisé en partie des travaux de plomberie dans mon appartement. Durant le chantier nous avons rencontré de nombreuses fois des problèmes liés à votre installation : une fuite d’eau, une fixation des raccords défectueuse, un écoulement difficile à cause d’une pente insuffisante, un mauvais choix des diamètres de tuyaux, l’installation d’un coude à la place d’un siphon sur un évier, de nombreux raccords pour relier les tuyaux, une arrivée d’eau impossible depuis l’alimentation générale et enfin un chauffe-eau endommagé. Cette mauvaise installation a généré de nombreux dégâts : des dégâts des eaux, des trous dans les murs et les plafonds, un sol détérioré… Je tiens à souligner que ces dommages ont été intégralement à ma charge, moi, le propriétaire. A la suite de tout cela je suis dans l’obligation de mettre un terme à notre collaboration. J’ai fait appel à un autre plombier pour terminer et corriger toutes les erreurs de l’installation. Je vous demande de régler la situation à l’amiable en prenant en charge l’intégralité des coûts des travaux.',
@@ -417,11 +505,17 @@ export const landingsData = [
     ],
   },
   {
-    secondaryTitle1: 'Pourquoi faire un signalement si vous rencontrez des problèmes avec une voiture ou un véhicule ?',
+    url: 'voiture-vehicule',
+    isSemiAutomatic: true,
+    seoTitle: 'Signalez un problème lié à la réparation, entretien, contrôle technique d’une voiture',
+    seoDescription:
+      'Vous avez un problème avec un garagiste, agence de location suite à la réparation d’un pneu, d’une panne, la vente d’un véhicule neuf ou d’occasion, la non application de la garantie constructeur',
+    title: 'Voiture / Véhicule / Vélo',
+    targetedCategory: ['VoitureVehiculeVelo'],
     catchPhrase:
       'Signalez un problème de voiture ou de véhicule, renseignez-vous sur vos droits avec la répression des fraudes !',
+    secondaryTitle1: 'Pourquoi faire un signalement si vous rencontrez des problèmes avec une voiture ou un véhicule ?',
     secondaryTitle2: 'Que va devenir votre signalement concernant une voiture ou un véhicule ?',
-    category: 'VoitureVehiculeVelo',
     sampleReports: [
       {
         text: "Achat d'un véhicule de marque XXX, au garage XXX , avec lors du bon de commande une garantie de 12 mois, à la livraison pas de trace sur la facture de cette garantie ( le vendeur me dit qu'elle est en cours auprès d'un organisme et qu'elle sera du haut de gamme au regard de la valeur de cette voiture, des problèmes sont arrivés sur ce véhicule apres 350 kms parcourus et la facture a été réglée volontairement par le garage, mais à ce jour aucune trace de cette garantie, qui selon le patron du garage commencera au moment de sa mise en place de cette garantie de 12 mois même après 4 mois. Pour info les problèmes liés au véhicule auraient du être notifiés au contrôle technique. Je pense que nous sommes face à une vente en abus de confiance, un véhicule garanti n'est pas au même prix que non garanti. En l'attente d'une intervention de la part de vos services. Cordialement.",
@@ -438,10 +532,16 @@ export const landingsData = [
     ],
   },
   {
-    secondaryTitle1: 'Pourquoi signaler les difficultés relatives à un voyage, loisir ou divertissement ?',
+    url: 'voyage-loisirs',
+    isSemiAutomatic: true,
+    seoTitle: 'Signalez un problème de séjour, vol, voyage à la répression des fraudes',
+    seoDescription:
+      'Vous avez un problème d’annulation, retard, remboursement concernant une réservation d’un billet d’avion, train, bateau, taxi, VTC, hôtel, camping ou un soucis de bagage',
+    title: 'Voyage / Loisirs',
+    targetedCategory: ['VoyageLoisirs'],
     catchPhrase: 'Signalez un problème relatif à un voyage, renseignez-vous sur vos droits avec la répression des fraudes !',
+    secondaryTitle1: 'Pourquoi signaler les difficultés relatives à un voyage, loisir ou divertissement ?',
     secondaryTitle2: 'Que va devenir votre signalement relatif à un voyage ?',
-    category: 'VoyageLoisirs',
     sampleReports: [
       {
         text: "Bonjour, J'ai réservé un billet d'avion sur le site internet XXX . J'ai voulu consulter les détails et vérifier ma réservation après l'achat de celui-ci. Suite à une mauvaise manipulation, ma réservation a été annulée accidentellement. Lorsque l'annulation a été faite, il était bien stipulé que \"Si vous annulez votre voyage, nous vous rembourserons selon le tarif du billet que vous avez réservé\"(voir pièces jointes). Le site parle bien de \"tarif du billet\" et non de \"type de billet\" ? En français lorsqu'on parle de \"tarif du billet\", c'est qu'il s'agit du montant du billet réservé. Au final le site rembourse sous forme de crédit de 10 euros à utiliser sur leur site internet ! Le parcours de ce site internet est fait pour que vous vous trompiez. C'est la première fois que je fais face à une si grande arnaque.",
