@@ -1,7 +1,7 @@
-import {allVisibleAnomalies} from 'anomalies/Anomalies'
 import {ContentPageContainer} from 'components_simple/ContentPageContainer'
 import {pageDefinitions} from 'core/pageDefinition'
 import {buildLinkLandingPage, siteMap, siteMapExternal} from 'core/siteMap'
+import {allVisibleLandings} from 'landings/landingDataUtils'
 import Head from 'next/head'
 import Link from 'next/link'
 
@@ -59,10 +59,10 @@ const PlanDuSite = () => {
         <h2 className="fr-h4">Dépôt d'un signalement</h2>
 
         <ul className="">
-          {allVisibleAnomalies().map(anomaly => {
+          {allVisibleLandings().map(landingData => {
             return (
-              <li key={anomaly.path}>
-                <Link href={buildLinkLandingPage(anomaly)}>Faire un signalement pour {anomaly.title}</Link>
+              <li key={landingData.url}>
+                <Link href={buildLinkLandingPage(landingData)}>Faire un signalement pour {landingData.title}</Link>
               </li>
             )
           })}

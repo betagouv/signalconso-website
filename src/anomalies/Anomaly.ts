@@ -9,7 +9,7 @@ export type Anomaly = {
   title: string
   description: string
   seoTitle: string
-  seoDescription?: string
+  seoDescription: string
   img: string
   hidden?: boolean
   isHiddenDemoCategory?: boolean

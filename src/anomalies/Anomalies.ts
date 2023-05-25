@@ -8,7 +8,7 @@ export const allVisibleAnomalies = () =>
   allAnomalies
     .filter(_ => !_.hidden && (!_.isHiddenDemoCategory || appConfig.showDemoCategory))
     .sort((a, b) => {
-      return parseInt(a.id) - parseInt(b.id)
+      return parseInt(a.id, 10) - parseInt(b.id, 10)
     })
 
 export type AnomalyIndex = {

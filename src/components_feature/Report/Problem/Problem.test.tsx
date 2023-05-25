@@ -29,6 +29,7 @@ class ProblemFixture {
     category: '',
     title: '',
     seoTitle: '',
+    seoDescription: 'my seo description',
     path: 'myPath',
     img: 'category-restaurant',
     description: 'my description',

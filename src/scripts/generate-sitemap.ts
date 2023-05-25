@@ -1,8 +1,8 @@
 import fs from 'fs'
+import {allVisibleLandings} from '../landings/landingDataUtils'
 import path from 'path'
-import {allVisibleAnomalies} from '../anomalies/Anomalies'
 import {appConfig} from '../core/appConfig'
-import {buildLinkLandingPage, buildLinkStartReport, siteMap} from '../core/siteMap'
+import {buildLinkLandingPage, siteMap} from '../core/siteMap'
 
 interface SitemapItem {
   url: string
@@ -11,10 +11,7 @@ interface SitemapItem {
 
 const outputFile = path.join('./public/sitemap.xml')
 
-const sitemapItems: SitemapItem[] = [
-  ...Object.values(siteMap),
-  ...allVisibleAnomalies().map(anomaly => buildLinkLandingPage(anomaly)),
-]
+const sitemapItems: SitemapItem[] = [...Object.values(siteMap), ...allVisibleLandings().map(buildLinkLandingPage)]
   .map(url => `${appConfig.appBaseUrl}${url}`)
   .map(url => ({url, priority: 1}))
 
