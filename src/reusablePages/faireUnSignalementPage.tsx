@@ -1,40 +1,40 @@
 import {ReportFlowStepper} from 'components_simple/ReportFlowStepper/ReportFlowStepper'
 import {appConfig} from 'core/appConfig'
-import {buildLinkLandingPage, siteMap} from 'core/siteMap'
+import {buildLinkLandingPageFromAnomaly, siteMap} from 'core/siteMap'
 import {GetStaticPaths, GetStaticProps} from 'next'
 import dynamic from 'next/dynamic'
 import Head from 'next/head'
 import Link from 'next/link'
+import {ReactNode} from 'react'
 import {undefinedIfNull} from 'utils/utils'
 import {allAnomalies} from '../anomalies/Anomalies'
-import {ReactNode} from 'react'
 
 export const getStaticPaths: GetStaticPaths = () => {
   const paths = allAnomalies.map(_ => ({
-    params: {categoryPath: _.path},
+    params: {dynamicPath: _.path},
   }))
   return {paths, fallback: false}
 }
 
 export const getStaticProps: GetStaticProps = ({params = {}}) => {
-  const categoryPath = params.categoryPath
-  if (typeof categoryPath !== 'string') {
-    throw new Error(`Unexpected type of reportPath : ${typeof categoryPath}`)
+  const dynamicPath = params.dynamicPath
+  if (typeof dynamicPath !== 'string') {
+    throw new Error(`Unexpected type of dynamicPath : ${typeof dynamicPath}`)
   }
   return {
-    props: {categoryPath},
+    props: {dynamicPath},
   }
 }
 
-export const FaireUnSignalementPage = ({categoryPath, isWebView = false}: {categoryPath: string; isWebView?: boolean}) => {
-  const anomaly = allAnomalies.find(_ => _.path === categoryPath)
+export const FaireUnSignalementPage = ({dynamicPath, isWebView = false}: {dynamicPath: string; isWebView?: boolean}) => {
+  const anomaly = allAnomalies.find(_ => _.path === dynamicPath)
   if (!anomaly) {
-    throw new Error(`Cannot find anomaly for categoryPath : ${categoryPath}`)
+    throw new Error(`Cannot find anomaly for dynamicPath : ${dynamicPath}`)
   }
   return (
     <>
       <Head>
-        <link rel="canonical" href={appConfig.appBaseUrl + buildLinkLandingPage(anomaly)} key="canonical" />
+        <link rel="canonical" href={appConfig.appBaseUrl + buildLinkLandingPageFromAnomaly(anomaly)} key="canonical" />
         <title>{anomaly.seoTitle + ' - SignalConso'}</title>
         <meta name="description" content={undefinedIfNull(anomaly.seoDescription ?? anomaly.description)} />
       </Head>

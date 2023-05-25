@@ -4,8 +4,8 @@ export const getStaticPaths = categoryPathPage.getStaticPaths
 
 export const getStaticProps = categoryPathPage.getStaticProps
 
-const Page = ({categoryPath}: {categoryPath: string}) => {
-  return <categoryPathPage.FaireUnSignalementPage {...{categoryPath}} isWebView />
+const Page = ({dynamicPath}: {dynamicPath: string}) => {
+  return <categoryPathPage.FaireUnSignalementPage {...{dynamicPath}} />
 }
 
 export default Page
