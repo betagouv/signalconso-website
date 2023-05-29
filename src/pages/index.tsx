@@ -17,6 +17,7 @@ import {useReportFlowContext} from '../components_feature/Report/ReportFlowConte
 import SearchAnomalies from '../components_simple/Search/SearchAnomalies'
 import Fuse from 'fuse.js'
 import {useConfig} from '../context/ConfigContext'
+import {BrowserCompatAlert} from '../components_simple/BrowserCompatAlert/BrowserAlertCompat'
 
 const ReportStartedAlert = dynamic(() => import('components_feature/ReportStartedAlert/ReportStartedAlert'), {ssr: false})
 
@@ -53,6 +54,7 @@ const Home = () => {
         <div>
           <div className="fr-container">
             <InfoBanner />
+            <BrowserCompatAlert />
           </div>
           <div className="fr-container fr-pt-8w fr-pb-6w ">
             <h1 dangerouslySetInnerHTML={{__html: m.signalconsoCatchWord}} />
