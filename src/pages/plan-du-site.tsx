@@ -57,6 +57,9 @@ const PlanDuSite = () => {
           <li>
             <Link href={pagesDefs.litige.url}>Conseils pour résolution d'un problème individuel (litige)</Link>
           </li>
+          <li>
+            <Link href={pagesDefs.appMobile.url}>L'application mobile</Link>
+          </li>
         </ul>
         <h2 className="fr-h4">Dépôt d'un signalement</h2>
 

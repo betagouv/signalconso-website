@@ -34,6 +34,7 @@ export const pagesDefs = {
   litige: page(`/litige`),
   delaiRetractation: page(`/delai-de-retractation`),
   conditionsGeneralesUtilisation: page(`/conditions-generales-utilisation`, {noIndex: true}),
+  appMobile: page(`/app-mobile`),
   // only on dev/demo
   ...(appConfig.showPlayground ? {playground: page(`/playground`)} : null),
   // dashboard links
