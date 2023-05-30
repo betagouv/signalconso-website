@@ -1,6 +1,7 @@
 import {Anomaly} from 'anomalies/Anomaly'
 import {appConfig} from './appConfig'
 import {LandingData} from 'landings/landingDataUtils'
+import {NewsArticle} from 'news/newsArticlesData'
 
 type PageDef = {
   url: string
@@ -34,6 +35,7 @@ export const pagesDefs = {
   litige: page(`/litige`),
   delaiRetractation: page(`/delai-de-retractation`),
   conditionsGeneralesUtilisation: page(`/conditions-generales-utilisation`, {noIndex: true}),
+  news: page(`/news`),
   // only on dev/demo
   ...(appConfig.showPlayground ? {playground: page(`/playground`)} : null),
   // dashboard links
@@ -52,4 +54,8 @@ export function buildLinkLandingPage(landingData: LandingData) {
 
 export function buildLinkLandingPageFromAnomaly(anomaly: Pick<Anomaly, 'path'>) {
   return `/${anomaly.path}`
+}
+
+export function buildLinkNewsArticle(article: NewsArticle) {
+  return `/news/${article.slug}`
 }

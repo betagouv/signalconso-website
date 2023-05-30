@@ -29,6 +29,11 @@ export const titleAndDescriptions = {
     title: "Conditions générales d'utilisation - SignalConso",
     description: "Consultez les conditions générales d'utilisation",
   },
+  appMobile: {
+    // TODO
+    title: '',
+    description: '',
+  },
   stats: {
     title: 'Statistiques - SignalConso',
     description: 'Consultez les statistiques de SignalConso',
@@ -50,7 +55,11 @@ export const titleAndDescriptions = {
     description: 'Démarches conseillées par SignalConso pour résoudre un problème individuel (litige) avec une entreprise ',
   },
   anomaly: {
-    title: 'Arborescence',
+    title: 'Arborescence - SignalConso',
     description: "Arborescence du dépot d'un signalement",
+  },
+  news: {
+    title: 'Actualités - SignalConso',
+    description: 'Actualités et nouveautés du site SignalConso et de la répression des fraudes',
   },
 }

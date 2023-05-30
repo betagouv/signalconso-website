@@ -1,9 +1,10 @@
 import {ContentPageContainer} from 'components_simple/ContentPageContainer'
 import {allVisibleLandings} from 'landings/landingDataUtils'
 import {titleAndDescriptions} from 'core/titleAndDescriptions'
-import {buildLinkLandingPage, pagesDefs} from 'core/pagesDefinitions'
+import {buildLinkLandingPage, buildLinkNewsArticle, pagesDefs} from 'core/pagesDefinitions'
 import Head from 'next/head'
 import Link from 'next/link'
+import {newsArticlesData} from 'news/newsArticlesData'
 
 const PlanDuSite = () => {
   return (
@@ -96,6 +97,19 @@ const PlanDuSite = () => {
           <li>Mes entreprises</li>
           <li>Gestion des accès</li>
           <li>Modification du mot de passe</li>
+        </ul>
+        <h2 className="fr-h4">Actualités</h2>
+        <ul>
+          <li>
+            <Link href={pagesDefs.news.url}>Toutes les actualités</Link>
+          </li>
+          {newsArticlesData.map(article => {
+            return (
+              <li key={article.slug}>
+                <Link href={buildLinkNewsArticle(article)}>{article.title}</Link>
+              </li>
+            )
+          })}
         </ul>
         <h2 className="fr-h4">Espace DGCCRF</h2>
         <ul>

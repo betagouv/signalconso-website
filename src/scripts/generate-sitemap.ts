@@ -2,7 +2,8 @@ import fs from 'fs'
 import {allVisibleLandings} from '../landings/landingDataUtils'
 import path from 'path'
 import {appConfig} from '../core/appConfig'
-import {buildLinkLandingPage, pagesDefs} from '../core/pagesDefinitions'
+import {buildLinkLandingPage, buildLinkNewsArticle, pagesDefs} from '../core/pagesDefinitions'
+import {newsArticlesData} from '../news/newsArticlesData'
 
 interface SitemapItem {
   url: string
@@ -17,6 +18,7 @@ const sitemapItems: SitemapItem[] = [
     .filter(_ => !_.noIndex)
     .map(_ => _.url),
   ...allVisibleLandings().map(buildLinkLandingPage),
+  ...newsArticlesData.map(buildLinkNewsArticle),
 ]
   .map(url => `${appConfig.appBaseUrl}${url}`)
   .map(url => ({url, priority: 1}))
