@@ -1,7 +1,7 @@
 import {ContentPageContainer} from 'components_simple/ContentPageContainer'
-import {pageDefinitions} from 'core/pageDefinition'
-import {buildLinkLandingPage, siteMap, siteMapExternal} from 'core/siteMap'
 import {allVisibleLandings} from 'landings/landingDataUtils'
+import {titleAndDescriptions} from 'core/titleAndDescriptions'
+import {buildLinkLandingPage, pagesDefs} from 'core/pagesDefinitions'
 import Head from 'next/head'
 import Link from 'next/link'
 
@@ -9,51 +9,53 @@ const PlanDuSite = () => {
   return (
     <>
       <Head>
-        <title>{pageDefinitions.planDuSite.title}</title>
-        <meta name="description" content={pageDefinitions.planDuSite.description} />
+        <title>{titleAndDescriptions.planDuSite.title}</title>
+        <meta name="description" content={titleAndDescriptions.planDuSite.description} />
       </Head>
       <ContentPageContainer>
         <h1>Plan du site</h1>
         <h2 className="fr-h4">Pages générales</h2>
         <ul>
           <li>
-            <Link href={siteMap.index}>Accueil</Link>
+            <Link href={pagesDefs.index.url}>Accueil</Link>
           </li>
           <li>
-            <Link href={siteMap.suiviEtViePrivee}>Suivi d'audience et vie privée</Link>
+            <Link href={pagesDefs.suiviEtViePrivee.url}>Suivi d'audience et vie privée</Link>
           </li>
           <li>
-            <Link href={siteMap.cookies}>Gestion des cookies</Link>
+            <Link href={pagesDefs.cookies.url}>Gestion des cookies</Link>
           </li>
           <li>
-            <Link href={siteMap.conditionsGeneralesUtilisation}>Conditions générales d'utilisation du site SignalConso</Link>
+            <Link href={pagesDefs.conditionsGeneralesUtilisation.url}>
+              Conditions générales d'utilisation du site SignalConso
+            </Link>
           </li>
           <li>
-            <Link href={siteMap.accessibilite}>Déclaration d'accessibilité</Link>
+            <Link href={pagesDefs.accessibilite.url}>Déclaration d'accessibilité</Link>
           </li>
           <li>
-            <Link href={siteMap.planDuSite}>Plan du site</Link>
+            <Link href={pagesDefs.planDuSite.url}>Plan du site</Link>
           </li>
           <li>
-            <Link href={siteMap.quiSommesNous}>Qui sommes-nous ?</Link>
+            <Link href={pagesDefs.quiSommesNous.url}>Qui sommes-nous ?</Link>
           </li>
           <li>
-            <Link href={siteMap.commentCaMarche}>Comment ça marche ?</Link>
+            <Link href={pagesDefs.commentCaMarche.url}>Comment ça marche ?</Link>
           </li>
           <li>
-            <Link href={siteMap.stats}>Statistiques</Link>
+            <Link href={pagesDefs.stats.url}>Statistiques</Link>
           </li>
           <li>
-            <Link href={siteMap.centreAide}>Centre d'aide</Link>
+            <Link href={pagesDefs.centreAide.url}>Centre d'aide</Link>
           </li>
           <li>
-            <Link href={siteMap.contact}>Contact</Link>
+            <Link href={pagesDefs.contact.url}>Contact</Link>
           </li>
           <li>
-            <Link href={siteMap.delaiRetractation}>Calculez votre délai de rétractation</Link>
+            <Link href={pagesDefs.delaiRetractation.url}>Calculez votre délai de rétractation</Link>
           </li>
           <li>
-            <Link href={siteMap.litige}>Conseils pour résolution d'un problème individuel (litige)</Link>
+            <Link href={pagesDefs.litige.url}>Conseils pour résolution d'un problème individuel (litige)</Link>
           </li>
         </ul>
         <h2 className="fr-h4">Dépôt d'un signalement</h2>
@@ -69,7 +71,7 @@ const PlanDuSite = () => {
         </ul>
         <hr className="mt-4" />
         <p className="mt-4">
-          Voir aussi <Link href={siteMap.arborescence}>l'arborescence complète du dépot d'un signalement</Link>
+          Voir aussi <Link href={pagesDefs.arborescence.url}>l'arborescence complète du dépot d'un signalement</Link>
         </p>
 
         <h3 className="fr-h6">Détails des étapes d'un signalement</h3>
@@ -84,10 +86,10 @@ const PlanDuSite = () => {
         <h2 className="fr-h4">Espace pro</h2>
         <ul>
           <li>
-            <Link href={siteMapExternal.companyActivation}>Activation de l'espace entreprise</Link>
+            <Link href={pagesDefs.companyActivation.url}>Activation de l'espace entreprise</Link>
           </li>
           <li>
-            <Link href={siteMapExternal.connexion}>Connexion</Link>
+            <Link href={pagesDefs.connexion.url}>Connexion</Link>
           </li>
           <li>Suivi des signalements</li>
           <li>Détail du signalements</li>
@@ -98,7 +100,7 @@ const PlanDuSite = () => {
         <h2 className="fr-h4">Espace DGCCRF</h2>
         <ul>
           <li>
-            <Link href={siteMapExternal.connexion}>Connexion</Link>
+            <Link href={pagesDefs.connexion.url}>Connexion</Link>
           </li>
           <li>Suivi des signalements</li>
           <li>Détail du signalements</li>

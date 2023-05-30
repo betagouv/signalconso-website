@@ -1,5 +1,5 @@
 import {Box, Checkbox, Icon, Radio, useTheme} from '@mui/material'
-import {pageDefinitions} from 'core/pageDefinition'
+import {titleAndDescriptions} from 'core/titleAndDescriptions'
 import {styleUtils} from 'core/theme'
 import {getOptionsFromInput, getPlaceholderFromInput} from 'components_feature/Report/Details/DetailInputsUtils'
 import Head from 'next/head'
@@ -197,8 +197,8 @@ const Arborescence = () => {
   return (
     <Page>
       <Head>
-        <title>{pageDefinitions.anomaly.title}</title>
-        <meta name="description" content={pageDefinitions.anomaly.description} />
+        <title>{titleAndDescriptions.anomaly.title}</title>
+        <meta name="description" content={titleAndDescriptions.anomaly.description} />
       </Head>
 
       <h1>Arborescence du dépot d'un signalement</h1>

@@ -1,5 +1,5 @@
 import {ContentPageContainer} from 'components_simple/ContentPageContainer'
-import {pageDefinitions} from 'core/pageDefinition'
+import {titleAndDescriptions} from 'core/titleAndDescriptions'
 import Head from 'next/head'
 import Image from 'next/image'
 import {ReactNode} from 'react'
@@ -8,8 +8,8 @@ export const CommentCaMarche = () => {
   return (
     <>
       <Head>
-        <title>{pageDefinitions.commentCaMarche.title}</title>
-        <meta name="description" content={pageDefinitions.commentCaMarche.description} />
+        <title>{titleAndDescriptions.commentCaMarche.title}</title>
+        <meta name="description" content={titleAndDescriptions.commentCaMarche.description} />
       </Head>
       <ContentPageContainer>
         <h1>Comment ça marche ?</h1>

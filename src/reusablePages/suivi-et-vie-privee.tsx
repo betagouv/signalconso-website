@@ -1,6 +1,6 @@
 import {ContentPageContainer} from 'components_simple/ContentPageContainer'
-import {pageDefinitions} from 'core/pageDefinition'
-import {siteMap} from 'core/siteMap'
+import {titleAndDescriptions} from 'core/titleAndDescriptions'
+import {pagesDefs} from 'core/pagesDefinitions'
 import Head from 'next/head'
 import Link from 'next/link'
 
@@ -8,8 +8,8 @@ export const SuiviEtViePrivee = () => {
   return (
     <>
       <Head>
-        <title>{pageDefinitions.suiviEtViePrivee.title}</title>
-        <meta name="description" content={pageDefinitions.suiviEtViePrivee.description} />
+        <title>{titleAndDescriptions.suiviEtViePrivee.title}</title>
+        <meta name="description" content={titleAndDescriptions.suiviEtViePrivee.description} />
       </Head>
       <ContentPageContainer>
         <h1>Suivi d'audience et vie privée</h1>
@@ -121,7 +121,7 @@ export const SuiviEtViePrivee = () => {
         />
         <p>
           Pour plus d'information sur la gestion des cookies dans Signal Conso, consultez la rubrique{' '}
-          <Link href={siteMap.cookies}>Gestion des cookies</Link>
+          <Link href={pagesDefs.cookies.url}>Gestion des cookies</Link>
         </p>
       </ContentPageContainer>
     </>

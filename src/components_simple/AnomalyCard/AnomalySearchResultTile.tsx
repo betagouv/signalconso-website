@@ -6,7 +6,7 @@ import Link from 'next/link'
 import {useRouter} from 'next/router'
 import {AnomalyIndex} from '../../anomalies/Anomalies'
 import Image from 'next/image'
-import {buildLinkStartReport} from '../../core/siteMap'
+import {buildLinkStartReport} from '../../core/pagesDefinitions'
 
 export const AnomalySearchResultTile = ({anomaly}: {anomaly: AnomalyIndex}) => {
   const _reportFlow = useReportFlowContext()

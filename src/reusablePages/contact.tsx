@@ -1,5 +1,5 @@
 import {ContentPageContainer} from 'components_simple/ContentPageContainer'
-import {pageDefinitions} from 'core/pageDefinition'
+import {titleAndDescriptions} from 'core/titleAndDescriptions'
 import Head from 'next/head'
 import {Alert} from '@codegouvfr/react-dsfr/Alert'
 import Link from 'next/link'
@@ -8,8 +8,8 @@ export const Contact = () => {
   return (
     <>
       <Head>
-        <title>{pageDefinitions.contact.title}</title>
-        <meta name="description" content={pageDefinitions.contact.description} />
+        <title>{titleAndDescriptions.contact.title}</title>
+        <meta name="description" content={titleAndDescriptions.contact.description} />
       </Head>
       <ContentPageContainer>
         <h1>Contact</h1>

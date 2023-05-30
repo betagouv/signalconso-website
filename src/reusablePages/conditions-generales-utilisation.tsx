@@ -2,7 +2,7 @@ import {Page} from 'components_simple/Page/Page'
 import {useState} from 'react'
 import {fnSwitch} from '../utils/FnSwitch'
 import Head from 'next/head'
-import {pageDefinitions} from 'core/pageDefinition'
+import {titleAndDescriptions} from 'core/titleAndDescriptions'
 import {ContentPageContainer} from 'components_simple/ContentPageContainer'
 import {Tabs} from '@codegouvfr/react-dsfr/Tabs'
 
@@ -18,8 +18,8 @@ export const ConditionsGeneralesUtilisation = () => {
   return (
     <>
       <Head>
-        <title>{pageDefinitions.conditionsGeneralesUtilisation.title}</title>
-        <meta name="description" content={pageDefinitions.conditionsGeneralesUtilisation.description} />
+        <title>{titleAndDescriptions.conditionsGeneralesUtilisation.title}</title>
+        <meta name="description" content={titleAndDescriptions.conditionsGeneralesUtilisation.description} />
       </Head>
       <ContentPageContainer>
         <h1>Conditions générales d'utilisation de l'interface en ligne SignalConso</h1>

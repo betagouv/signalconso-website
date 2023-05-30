@@ -1,7 +1,7 @@
 import {Stat} from 'components_feature/Stat/Stat'
 import {ContentPageContainer} from 'components_simple/ContentPageContainer'
 import {useApiClients} from 'context/ApiClientsContext'
-import {pageDefinitions} from 'core/pageDefinition'
+import {titleAndDescriptions} from 'core/titleAndDescriptions'
 import {useI18n} from 'i18n/I18n'
 import Head from 'next/head'
 import Link from 'next/link'
@@ -13,8 +13,8 @@ const Stats = () => {
   return (
     <>
       <Head>
-        <title>{pageDefinitions.stats.title}</title>
-        <meta name="description" content={pageDefinitions.stats.description} />
+        <title>{titleAndDescriptions.stats.title}</title>
+        <meta name="description" content={titleAndDescriptions.stats.description} />
       </Head>
       <ContentPageContainer>
         <h1 className="">Statistiques</h1>

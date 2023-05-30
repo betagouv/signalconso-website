@@ -2,7 +2,7 @@ import {Icon} from '@mui/material'
 import {Txt} from 'alexlibs/mui-extension/Txt/Txt'
 import {ContentPageContainer} from 'components_simple/ContentPageContainer'
 import {SimpleDatepicker} from 'components_simple/Datepicker/SimpleDatepicker'
-import {pageDefinitions} from 'core/pageDefinition'
+import {titleAndDescriptions} from 'core/titleAndDescriptions'
 import Head from 'next/head'
 import {useMemo, useState} from 'react'
 import {dateToFrenchFormat} from 'utils/utils'
@@ -40,8 +40,8 @@ const DelaiDeRetractation = () => {
   return (
     <>
       <Head>
-        <title>{pageDefinitions.delaiRetractation.title}</title>
-        <meta name="description" content={pageDefinitions.delaiRetractation.description} />
+        <title>{titleAndDescriptions.delaiRetractation.title}</title>
+        <meta name="description" content={titleAndDescriptions.delaiRetractation.description} />
       </Head>
       <ContentPageContainer>
         <h1>Délai de rétractation</h1>

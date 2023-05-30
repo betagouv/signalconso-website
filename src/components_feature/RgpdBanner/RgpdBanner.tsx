@@ -1,4 +1,4 @@
-import {siteMap} from 'core/siteMap'
+import {pagesDefs} from 'core/pagesDefinitions'
 import {useI18n} from 'i18n/I18n'
 import Link from 'next/link'
 import {useEffect, useId, useState} from 'react'
@@ -35,7 +35,7 @@ export function RgpdBanner() {
       <h2 className="fr-h6">À propos des cookies sur signalconso.gouv.fr</h2>
       <div className="fr-consent-banner__content">
         <p className="fr-text--sm">
-          {m.bannerCookie} <Link href={siteMap.cookies}>{m.bannerCookieSeeMore}</Link>
+          {m.bannerCookie} <Link href={pagesDefs.cookies.url}>{m.bannerCookieSeeMore}</Link>
         </p>
       </div>
       <ul className="fr-consent-banner__buttons fr-btns-group fr-btns-group--right fr-btns-group--inline-reverse fr-btns-group--inline-sm"></ul>

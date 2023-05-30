@@ -1,6 +1,6 @@
 import {Button} from '@codegouvfr/react-dsfr/Button'
 import Link from 'next/link'
-import {siteMap} from '../core/siteMap'
+import {pagesDefs} from '../core/pagesDefinitions'
 import {useI18n} from '../i18n/I18n'
 
 export const LinkBackToHome = ({isWebView}: {isWebView: boolean}) => {
@@ -15,7 +15,7 @@ export const LinkBackToHome = ({isWebView}: {isWebView: boolean}) => {
           {m.backToHome}
         </Button>
       ) : (
-        <Link href={siteMap.index} legacyBehavior>
+        <Link href={pagesDefs.index.url} legacyBehavior>
           <Button iconId="fr-icon-home-4-line">{m.backToHome}</Button>
         </Link>
       )}
