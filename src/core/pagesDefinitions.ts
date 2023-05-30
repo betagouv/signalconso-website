@@ -19,9 +19,7 @@ function page(url: string, options: {noIndex?: boolean; isExternal?: boolean} = 
 // - the /xxx/faire-un-signalement pages
 // - the landing pages (/xxx)
 // - the /webview/xxx pages
-export const pagesDefs: {
-  [k: string]: PageDef
-} = {
+export const pagesDefs = {
   index: page('/'),
   commentCaMarche: page(`/comment-ca-marche`),
   suiviEtViePrivee: page(`/suivi-et-vie-privee`),

@@ -50,7 +50,6 @@ const blueFranceTheme = createTheme({
 
 function shouldBeNoIndex(router: Router): boolean {
   const pageDef = Object.values(pagesDefs).find(_ => _.url === router.pathname)
-  console.log('@@@ pageDef, ', pageDef, router.pathname)
   if (pageDef) {
     return pageDef.noIndex
   }

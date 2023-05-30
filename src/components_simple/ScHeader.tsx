@@ -67,7 +67,7 @@ export function ScHeader() {
             buildMenuLink(router, pagesDefs.contact.url, `Contact`),
             buildMenuLink(router, urlServicePublicPlus, `Services Publics +`, '_blank'),
           ]),
-          ...(pagesDefs.playground.url ? [buildMenuLink(router, pagesDefs.playground.url, 'Playground')] : []),
+          ...(pagesDefs.playground ? [buildMenuLink(router, pagesDefs.playground.url, 'Playground')] : []),
         ]}
       />
       <EnvMarker />
