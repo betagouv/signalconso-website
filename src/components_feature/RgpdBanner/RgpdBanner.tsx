@@ -27,9 +27,10 @@ export function RgpdBanner() {
   }
   // code HTML de https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/gestionnaire-de-consentement
   // avec le bouton de fermeture de https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/modale
+  // avec correction indiquée ici https://github.com/GouvernementFR/dsfr/issues/591
   return (
     <div className="fr-consent-banner" id={id}>
-      <button className="fr-link--close fr-link" title="Fermer la fenêtre modale" aria-controls={id} onClick={onClose}>
+      <button className="fr-btn--close fr-btn" title="Fermer la fenêtre modale" aria-controls={id} onClick={onClose}>
         Fermer
       </button>
       <h2 className="fr-h6">À propos des cookies sur signalconso.gouv.fr</h2>
