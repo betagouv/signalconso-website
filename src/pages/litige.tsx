@@ -3,7 +3,7 @@ import {CallOut} from '@codegouvfr/react-dsfr/CallOut'
 import {Icon} from '@mui/material'
 import {ContentPageContainer} from 'components_simple/ContentPageContainer'
 import {externalLinks} from 'core/externalLinks'
-import {pageDefinitions} from 'core/pageDefinition'
+import {titleAndDescriptions} from 'core/titleAndDescriptions'
 import Head from 'next/head'
 import {ReactNode} from 'react'
 import {Accordion} from '@codegouvfr/react-dsfr/Accordion'
@@ -16,8 +16,8 @@ const Litige = () => {
   return (
     <>
       <Head>
-        <title>{pageDefinitions.contractualDispute.title}</title>
-        <meta name="description" content={pageDefinitions.contractualDispute.description} />
+        <title>{titleAndDescriptions.contractualDispute.title}</title>
+        <meta name="description" content={titleAndDescriptions.contractualDispute.description} />
       </Head>
       <ContentPageContainer>
         <h1>Vos démarches pour être remboursé ou trouver une solution à votre problème</h1>

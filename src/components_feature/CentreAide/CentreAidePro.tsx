@@ -1,6 +1,6 @@
 import {Accordion} from '@codegouvfr/react-dsfr/Accordion'
 import {Box, BoxProps} from '@mui/material'
-import {siteMap, siteMapExternal} from 'core/siteMap'
+import {pagesDefs} from 'core/pagesDefinitions'
 import Link from 'next/link'
 import {ReactNode} from 'react'
 
@@ -61,9 +61,9 @@ export const CentreAidePro = (props: BoxProps) => {
       <Accordions>
         <Accordion label="J'ai reçu un courrier de SignalConso car mon entreprise a été signalée. Que dois-je faire ?">
           <p>
-            Pour connaître ce signalement, rendez-vous sur <Link href={siteMap.index}>https://signal.conso.gouv.fr</Link> et
+            Pour connaître ce signalement, rendez-vous sur <Link href={pagesDefs.index.url}>https://signal.conso.gouv.fr</Link> et
             cliquez sur le bouton "Espace professionnels" dans le menu en haut de votre écran. Ou allez-directement sur cette
-            adresse : <Link href={siteMapExternal.connexion}>{siteMapExternal.connexion}</Link>
+            adresse : <Link href={pagesDefs.connexion.url}>{pagesDefs.connexion.url}</Link>
           </p>
           Lors de votre première connexion, vous devez vous identifier avec :
           <ul>
@@ -90,7 +90,7 @@ export const CentreAidePro = (props: BoxProps) => {
           </p>
           <p>
             Vous pouvez y accéder avec votre mot de passe en cliquant sur le bouton "
-            <Link href={siteMapExternal.connexion} legacyBehavior>
+            <Link href={pagesDefs.connexion.url} legacyBehavior>
               Connectez-vous
             </Link>
             "
@@ -119,8 +119,8 @@ export const CentreAidePro = (props: BoxProps) => {
         </Accordion>
         <Accordion label="J'ai oublié mon mot de passe">
           <p>
-            Vous pouvez <Link href={siteMapExternal.lostPassword}>demander un nouveau mot de passe</Link> ou, en cas de
-            difficultés, contacter par email le service&nbsp;
+            Vous pouvez <Link href={pagesDefs.lostPassword.url}>demander un nouveau mot de passe</Link> ou, en cas de difficultés,
+            contacter par email le service&nbsp;
             <a
               href="mailto:support@signal.conso.gouv.fr"
               target="_blank"

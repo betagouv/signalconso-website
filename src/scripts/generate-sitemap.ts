@@ -2,7 +2,7 @@ import fs from 'fs'
 import {allVisibleLandings} from '../landings/landingDataUtils'
 import path from 'path'
 import {appConfig} from '../core/appConfig'
-import {buildLinkLandingPage, siteMap} from '../core/siteMap'
+import {buildLinkLandingPage, pagesDefs} from '../core/pagesDefinitions'
 
 interface SitemapItem {
   url: string
@@ -11,7 +11,13 @@ interface SitemapItem {
 
 const outputFile = path.join('./public/sitemap.xml')
 
-const sitemapItems: SitemapItem[] = [...Object.values(siteMap), ...allVisibleLandings().map(buildLinkLandingPage)]
+const sitemapItems: SitemapItem[] = [
+  ...Object.values(pagesDefs)
+    .filter(_ => !_.isExternal)
+    .filter(_ => !_.noIndex)
+    .map(_ => _.url),
+  ...allVisibleLandings().map(buildLinkLandingPage),
+]
   .map(url => `${appConfig.appBaseUrl}${url}`)
   .map(url => ({url, priority: 1}))
 

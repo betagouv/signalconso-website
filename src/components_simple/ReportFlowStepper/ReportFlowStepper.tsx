@@ -23,7 +23,7 @@ import {
 import {useRouter} from 'next/router'
 import {useEffect} from 'react'
 import {scrollTop} from 'utils/utils'
-import {buildLinkStartReport} from 'core/siteMap'
+import {buildLinkStartReport} from 'core/pagesDefinitions'
 import {NewReportFlowStepperHeader, ReportFlowStepperHeader} from './ReportFlowStepperHeader'
 
 interface StepperProps {

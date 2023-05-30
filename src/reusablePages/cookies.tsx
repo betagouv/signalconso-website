@@ -1,15 +1,15 @@
-import {siteMap} from 'core/siteMap'
 import Head from 'next/head'
-import {pageDefinitions} from 'core/pageDefinition'
+import {titleAndDescriptions} from 'core/titleAndDescriptions'
 import {ContentPageContainer} from 'components_simple/ContentPageContainer'
 import Link from 'next/link'
+import {pagesDefs} from 'core/pagesDefinitions'
 
 const Cookies = () => {
   return (
     <>
       <Head>
-        <title>{pageDefinitions.cookies.title}</title>
-        <meta name="description" content={pageDefinitions.cookies.description} />
+        <title>{titleAndDescriptions.cookies.title}</title>
+        <meta name="description" content={titleAndDescriptions.cookies.description} />
       </Head>
       <ContentPageContainer>
         <h1>Gestion des cookies</h1>
@@ -113,7 +113,7 @@ const Cookies = () => {
         </p>
         <p>
           Pour plus de renseignements sur la gestion de la vie privée sur Signal Conso, vous pouvez également consulter la
-          rubrique <Link href={siteMap.suiviEtViePrivee}>suivi d'audience et vie privée</Link>
+          rubrique <Link href={pagesDefs.suiviEtViePrivee.url}>suivi d'audience et vie privée</Link>
         </p>
         <h3 className="fr-h6">Comment accepter ou refuser les cookies:</h3>
         <p>

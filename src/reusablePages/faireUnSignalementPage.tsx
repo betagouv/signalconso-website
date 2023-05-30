@@ -1,6 +1,6 @@
 import {ReportFlowStepper} from 'components_simple/ReportFlowStepper/ReportFlowStepper'
 import {appConfig} from 'core/appConfig'
-import {buildLinkLandingPageFromAnomaly, siteMap} from 'core/siteMap'
+import {buildLinkLandingPageFromAnomaly, pagesDefs} from 'core/pagesDefinitions'
 import {GetStaticPaths, GetStaticProps} from 'next'
 import dynamic from 'next/dynamic'
 import Head from 'next/head'
@@ -42,7 +42,7 @@ export const FaireUnSignalementPage = ({dynamicPath, isWebView = false}: {dynami
       <Container {...{isWebView}}>
         <h1 className="fr-h2">
           {!isWebView && (
-            <Link href={siteMap.index} className="!bg-none mr-4">
+            <Link href={pagesDefs.index.url} className="!bg-none mr-4">
               <span className="ri-arrow-left-line" aria-hidden="true"></span>
             </Link>
           )}

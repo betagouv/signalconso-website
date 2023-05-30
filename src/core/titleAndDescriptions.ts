@@ -1,21 +1,6 @@
-export const pageDefinitions = {
-  default: {
-    title: 'SignalConso, un service public pour les consommateurs',
-    description:
-      "Signalez un problème au commerçant (magasins, commerces de proximité, cafés et restaurants...) et à la répression des fraudes : pratique d'hygiène, nourriture / boissons, matériel / objet, prix / paiement, publicité, services associés à l'achat.",
-  },
+export const titleAndDescriptions = {
   quiSommesNous: {
     title: 'Qui sommes-nous ? - SignalConso',
-    description:
-      "SignalConso est un service proposé par la DGCCRF (Direction Générale de la Concurrence, de la Consommation et de la Répression des Fraudes) au travers d'une Startup d’État. Il permet à la fois de comprendre ses droits en tant que consommateurs et d’être aidé pour les faire respecter.",
-  },
-  notfound: {
-    title: '404 Page non trouvée - SignalConso',
-    description:
-      "SignalConso est un service proposé par la DGCCRF (Direction Générale de la Concurrence, de la Consommation et de la Répression des Fraudes) au travers d'une Startup d’État. Il permet à la fois de comprendre ses droits en tant que consommateurs et d’être aidé pour les faire respecter.",
-  },
-  unavailable: {
-    title: 'Page en maintenance - SignalConso',
     description:
       "SignalConso est un service proposé par la DGCCRF (Direction Générale de la Concurrence, de la Consommation et de la Répression des Fraudes) au travers d'une Startup d’État. Il permet à la fois de comprendre ses droits en tant que consommateurs et d’être aidé pour les faire respecter.",
   },
@@ -59,30 +44,6 @@ export const pageDefinitions = {
   contact: {
     title: 'Contact - SignalConso',
     description: 'Trouvez le bon interlocuteur à contacter sur SignalConso',
-  },
-  report_problem: {
-    title: 'Le problème - SignalConso',
-    description: 'Précisez le problème associé à votre signalement sur SignalConso',
-  },
-  report_details: {
-    title: 'La description - SignalConso',
-    description: 'Apportez des détails à votre signalement sur SignalConso',
-  },
-  report_company: {
-    title: "L'entreprise - SignalConso",
-    description: "Identifiez l'entreprise concernée par votre signalement sur SignalConso",
-  },
-  report_consumer: {
-    title: 'Le consommateur - SignalConso',
-    description: 'Renseignez vos coordonnées pour authentifier votre signalement sur SignalConso',
-  },
-  report_confirmation: {
-    title: 'Confirmation - SignalConso',
-    description: 'Confirmez votre signalement sur SignalConso',
-  },
-  report_information: {
-    title: 'Information - SignalConso',
-    description: "Page d'information concernant votre signalement sur SignalConso",
   },
   contractualDispute: {
     title: "Résolution d'un problème individuel (litige) - SignalConso",

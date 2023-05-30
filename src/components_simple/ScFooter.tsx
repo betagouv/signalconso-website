@@ -1,6 +1,6 @@
 import {Footer} from '@codegouvfr/react-dsfr/Footer'
 import Link from 'next/link'
-import {siteMap, siteMapExternal} from '../core/siteMap'
+import {pagesDefs} from '../core/pagesDefinitions'
 
 export const urlServicePublicPlus = `https://www.plus.transformation.gouv.fr`
 
@@ -23,31 +23,31 @@ export function ScFooter() {
           </>
         }
         operatorLogo={{orientation: 'horizontal', imgUrl: '/image/logo-dgccrf.png', alt: 'Logo DGCCRF'}}
-        websiteMapLinkProps={{href: siteMap.planDuSite}}
+        websiteMapLinkProps={{href: pagesDefs.planDuSite.url}}
         accessibility="partially compliant"
-        accessibilityLinkProps={{href: siteMap.accessibilite}}
-        termsLinkProps={{href: siteMap.conditionsGeneralesUtilisation}}
+        accessibilityLinkProps={{href: pagesDefs.accessibilite.url}}
+        termsLinkProps={{href: pagesDefs.conditionsGeneralesUtilisation.url}}
         homeLinkProps={{href: '/', title: 'Accueil - SignalConso'}}
-        personalDataLinkProps={{href: siteMap.suiviEtViePrivee}}
-        cookiesManagementLinkProps={{href: siteMap.cookies}}
+        personalDataLinkProps={{href: pagesDefs.suiviEtViePrivee.url}}
+        cookiesManagementLinkProps={{href: pagesDefs.cookies.url}}
         bottomItems={[
           {
             text: 'Espace DGCCRF',
             linkProps: {
-              href: siteMapExternal.connexion,
+              href: pagesDefs.connexion.url,
               target: '_self',
             },
           },
           {
             text: 'Info délai de rétractation',
             linkProps: {
-              href: siteMap.delaiRetractation,
+              href: pagesDefs.delaiRetractation.url,
             },
           },
           {
             text: 'Info résolution de litige',
             linkProps: {
-              href: siteMap.litige,
+              href: pagesDefs.litige.url,
             },
           },
           {

@@ -1,6 +1,6 @@
 import {MemberCard} from 'components_feature/MemberCard/MemberCard'
 import {ContentPageContainer} from 'components_simple/ContentPageContainer'
-import {pageDefinitions} from 'core/pageDefinition'
+import {titleAndDescriptions} from 'core/titleAndDescriptions'
 import {team} from 'core/team'
 import Head from 'next/head'
 import Link from 'next/link'
@@ -11,8 +11,8 @@ export const QuiSommesNous = () => {
   return (
     <>
       <Head>
-        <title>{pageDefinitions.quiSommesNous.title}</title>
-        <meta name="description" content={pageDefinitions.quiSommesNous.description} />
+        <title>{titleAndDescriptions.quiSommesNous.title}</title>
+        <meta name="description" content={titleAndDescriptions.quiSommesNous.description} />
       </Head>
       <ContentPageContainer>
         <h1>Qui sommes-nous ?</h1>

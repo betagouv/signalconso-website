@@ -1,7 +1,7 @@
 import {ContentPageContainer} from 'components_simple/ContentPageContainer'
 import {externalLinks} from 'core/externalLinks'
-import {pageDefinitions} from 'core/pageDefinition'
-import {siteMap, siteMapExternal} from 'core/siteMap'
+import {titleAndDescriptions} from 'core/titleAndDescriptions'
+import {pagesDefs} from 'core/pagesDefinitions'
 import Head from 'next/head'
 import Link from 'next/link'
 
@@ -9,8 +9,8 @@ const Accessibilite = () => {
   return (
     <>
       <Head>
-        <title>{pageDefinitions.accessibilite.title}</title>
-        <meta name="description" content={pageDefinitions.accessibilite.description} />
+        <title>{titleAndDescriptions.accessibilite.title}</title>
+        <meta name="description" content={titleAndDescriptions.accessibilite.description} />
       </Head>
       <ContentPageContainer>
         <h1>Déclaration d'accessibilité</h1>
@@ -74,16 +74,16 @@ const Accessibilite = () => {
             <Link href="/">Accueil</Link>
           </li>
           <li>
-            <Link href={siteMap.quiSommesNous}>Qui sommes-nous ?</Link>
+            <Link href={pagesDefs.quiSommesNous.url}>Qui sommes-nous ?</Link>
           </li>
           <li>
-            <Link href={siteMap.commentCaMarche}>Comment ça marche ?</Link>
+            <Link href={pagesDefs.commentCaMarche.url}>Comment ça marche ?</Link>
           </li>
           <li>
-            <Link href={siteMap.stats}>Statistiques</Link>
+            <Link href={pagesDefs.stats.url}>Statistiques</Link>
           </li>
           <li>
-            <Link href={siteMap.centreAide}>Aide</Link>
+            <Link href={pagesDefs.centreAide.url}>Aide</Link>
           </li>
           <li>Étape 1 - Le problème</li>
           <li>Étape 2 - La description</li>
@@ -91,7 +91,7 @@ const Accessibilite = () => {
           <li>Étape 4 - Le consommateur</li>
           <li>Étape 5 - Confirmation</li>
           <li>
-            <Link href={siteMapExternal.connexion}>Connexion à l'espace pro</Link>
+            <Link href={pagesDefs.connexion.url}>Connexion à l'espace pro</Link>
           </li>
           <li>Espace pro - Suivi des signalements</li>
           <li>Espace pro - Détail du signalements</li>

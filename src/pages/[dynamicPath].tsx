@@ -3,15 +3,14 @@ import {CallOut} from '@codegouvfr/react-dsfr/CallOut'
 import {useColors} from '@codegouvfr/react-dsfr/useColors'
 import {findAnomaly} from 'anomalies/Anomalies'
 import {Anomaly} from 'anomalies/Anomaly'
-import {landingsData} from 'landings/landingsData'
+import {LandingData, allVisibleLandings} from 'landings/landingDataUtils'
 import {GetStaticPaths, GetStaticProps} from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
 import {ReactNode, useRef} from 'react'
-import {buildLinkStartReport, siteMap} from '../core/siteMap'
 import {AnomalyTile} from '../components_simple/AnomalyTile/AnomalyTile'
-import {LandingData, allVisibleLandings} from 'landings/landingDataUtils'
+import {buildLinkStartReport, pagesDefs} from '../core/pagesDefinitions'
 
 export const getStaticPaths: GetStaticPaths = () => {
   const paths = allVisibleLandings().map(_ => ({
@@ -132,7 +131,7 @@ export default function LandingPage({dynamicPath}: {dynamicPath: string}) {
             buttonProps={{
               children: 'Découvrir',
               linkProps: {
-                href: siteMap.commentCaMarche,
+                href: pagesDefs.commentCaMarche.url,
               },
             }}
             title="Qu'est-ce que Signal Conso ?"
@@ -140,7 +139,7 @@ export default function LandingPage({dynamicPath}: {dynamicPath: string}) {
             Plus de 60 millions de consommateurs fréquentent quotidiennement près de 10 millions d’établissements et font des
             achats sur internet. Et pour contrôler le droit des consommateurs ? Moins de 3 000 agents de la DGCCRF : c’est
             pourquoi le site{' '}
-            <Link href={siteMap.index} className="text-sclightblue underline">
+            <Link href={pagesDefs.index.url} className="text-sclightblue underline">
               signal.conso.gouv.fr
             </Link>{' '}
             a été lancé.
@@ -188,7 +187,7 @@ function BigReportButton({className = '', target}: {className?: string; target: 
     <Button
       {...props}
       linkProps={{
-        href: target === 'home' ? siteMap.index : buildLinkStartReport(target),
+        href: target === 'home' ? pagesDefs.index.url : buildLinkStartReport(target),
       }}
       size="large"
     >

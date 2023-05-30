@@ -1,4 +1,4 @@
-import {pageDefinitions} from 'core/pageDefinition'
+import {titleAndDescriptions} from 'core/titleAndDescriptions'
 import {CentreAideConso} from 'components_feature/CentreAide/CentreAideConso'
 import {CentreAidePro} from 'components_feature/CentreAide/CentreAidePro'
 import Head from 'next/head'
@@ -10,8 +10,8 @@ export const CentreAide = () => {
   return (
     <>
       <Head>
-        <title>{pageDefinitions.aide.title}</title>
-        <meta name="description" content={pageDefinitions.aide.description} />
+        <title>{titleAndDescriptions.aide.title}</title>
+        <meta name="description" content={titleAndDescriptions.aide.description} />
       </Head>
       <ContentPageContainer>
         <h1>Aide à l'utilisation de SignalConso</h1>

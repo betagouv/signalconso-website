@@ -1,5 +1,5 @@
 import Header from '@codegouvfr/react-dsfr/Header'
-import {siteMap, siteMapExternal} from '../core/siteMap'
+import {pagesDefs} from '../core/pagesDefinitions'
 import {NextRouter, useRouter} from 'next/router'
 import {HTMLAttributeAnchorTarget} from 'react'
 import {appConfig} from 'core/appConfig'
@@ -49,7 +49,7 @@ export function ScHeader() {
           {
             iconId: 'fr-icon-briefcase-line',
             linkProps: {
-              href: siteMapExternal.connexion,
+              href: pagesDefs.connexion.url,
               target: '_self',
             },
             text: 'Espace professionnels',
@@ -58,16 +58,16 @@ export function ScHeader() {
         // serviceTitle="SignalConso"
         // serviceTagline="un service public pour les consommateurs"
         navigation={[
-          buildMenuLink(router, siteMap.index, 'Accueil'),
-          buildMenuLink(router, siteMap.commentCaMarche, 'Comment ça marche ?'),
-          buildMenuLink(router, siteMap.centreAide, `Aide`),
+          buildMenuLink(router, pagesDefs.index.url, 'Accueil'),
+          buildMenuLink(router, pagesDefs.commentCaMarche.url, 'Comment ça marche ?'),
+          buildMenuLink(router, pagesDefs.centreAide.url, `Aide`),
           buildSubmenu('Voir aussi', [
-            buildMenuLink(router, siteMap.quiSommesNous, 'Qui sommes-nous ?'),
-            buildMenuLink(router, siteMap.stats, 'Statistiques'),
-            buildMenuLink(router, siteMap.contact, `Contact`),
+            buildMenuLink(router, pagesDefs.quiSommesNous.url, 'Qui sommes-nous ?'),
+            buildMenuLink(router, pagesDefs.stats.url, 'Statistiques'),
+            buildMenuLink(router, pagesDefs.contact.url, `Contact`),
             buildMenuLink(router, urlServicePublicPlus, `Services Publics +`, '_blank'),
           ]),
-          ...(siteMap.playground ? [buildMenuLink(router, siteMap.playground, 'Playground')] : []),
+          ...(pagesDefs.playground ? [buildMenuLink(router, pagesDefs.playground.url, 'Playground')] : []),
         ]}
       />
       <EnvMarker />

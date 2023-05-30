@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import {siteMap} from 'core/siteMap'
+import {pagesDefs} from 'core/pagesDefinitions'
 import {Box, BoxProps} from '@mui/material'
 import {externalLinks} from 'core/externalLinks'
 import {appConfig} from 'core/appConfig'
@@ -21,7 +21,7 @@ export const CentreAideConso = (props: BoxProps) => {
       <Title>Généralités</Title>
       <Accordions>
         <Accordion label={`Comment fonctionne SignalConso ?`}>
-          Consultez notre page <Link href={siteMap.commentCaMarche}>Comment ça marche</Link>.
+          Consultez notre page <Link href={pagesDefs.commentCaMarche.url}>Comment ça marche</Link>.
         </Accordion>
       </Accordions>
 
@@ -122,15 +122,16 @@ export const CentreAideConso = (props: BoxProps) => {
             <br /> C'est à vous d'entamer les démarches. Ces démarches vous ont été présentées à la fin de votre signalement et
             dans votre mail d'accusé de réception.
             <br /> Vous pouvez également les retrouver sur cette page :{' '}
-            <a href={siteMap.litige} target="_blank" rel="noreferrer">
-              {appConfig.appBaseUrl + siteMap.litige}
+            <a href={pagesDefs.litige.url} target="_blank" rel="noreferrer">
+              {appConfig.appBaseUrl + pagesDefs.litige.url}
             </a>
           </p>
         </Accordion>
         <Accordion label={`Je veux modifier ou supprimer mon signalement `}>
           <p>
             {' '}
-            Pour modifier ou supprimer votre signalement, vous pouvez <Link href={siteMap.contact}>contacter le support</Link>.
+            Pour modifier ou supprimer votre signalement, vous pouvez{' '}
+            <Link href={pagesDefs.contact.url}>contacter le support</Link>.
           </p>
         </Accordion>
       </Accordions>
