@@ -17,15 +17,15 @@ export const Contact = () => {
         <p>SignalConso est là pour ça ! Naviguez sur notre site et répondez simplement aux questions.</p>
         <h2 className="fr-h4">Votre question concerne un problème technique rencontré sur SignalConso ?</h2>
 
-        <p>
+        <div>
           Par exemple :
           <ul>
             <li>Vous ne trouvez pas le SIRET de l’entreprise que vous voulez signaler</li>
             <li>Vous rencontrez un bug lors de la navigation sur le site</li>
             <li>Vous ne trouvez pas la bonne catégorie pour votre problème</li>
           </ul>
-        </p>
-        <p>
+        </div>
+        <div>
           Dans ce cas écrivez-nous par email à&nbsp;
           <Link
             href="mailto:support@signal.conso.gouv.fr?subject=incident"
@@ -41,7 +41,7 @@ export const Contact = () => {
             signalement doit exclusivement être déposé en suivant la procédure sur la page d'accueil du site."
             title="Ne nous envoyez pas votre signalement par email... il ne sera pas lu."
           />
-        </p>
+        </div>
       </ContentPageContainer>
     </>
   )
