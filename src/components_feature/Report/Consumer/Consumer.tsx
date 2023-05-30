@@ -95,7 +95,7 @@ export const _Consumer = ({
       <Panel title={m.consumerTitle}>
         <PanelBody>
           {draft.employeeConsumer && (
-            <Alert className="blog" type="info" dense dangerouslySetInnerHTML={{__html: m.consumerIsEmployee}} sx={{mb: 3}} />
+            <Alert type="info" dense dangerouslySetInnerHTML={{__html: m.consumerIsEmployee}} sx={{mb: 3}} />
           )}
           <Row icon="person">
             <FormLayout label={m.genderOptional}>

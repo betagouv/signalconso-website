@@ -263,14 +263,13 @@ const AcknowledgementLayout = ({
           </Box>
         }
       >
-        <PanelBody className="blog">
+        <PanelBody>
           {title && (
             <Txt size="big" bold block sx={{mb: 2}}>
               {title}
             </Txt>
           )}
           {children}
-
           {showChargeBack && (
             <>
               <p>
@@ -283,7 +282,6 @@ const AcknowledgementLayout = ({
               </p>
             </>
           )}
-
           <p>
             En cas d’erreur sur votre signalement, envoyez un email à<br />
             <Txt link span>

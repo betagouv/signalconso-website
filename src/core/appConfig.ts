@@ -1,5 +1,3 @@
-import {isServerSide} from '../utils/utils'
-
 function noTrailingSlash(str: string) {
   return str.replace(/\/$/, '')
 }

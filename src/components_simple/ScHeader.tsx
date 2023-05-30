@@ -65,6 +65,7 @@ export function ScHeader() {
             buildMenuLink(router, pagesDefs.quiSommesNous.url, 'Qui sommes-nous ?'),
             buildMenuLink(router, pagesDefs.stats.url, 'Statistiques'),
             buildMenuLink(router, pagesDefs.contact.url, `Contact`),
+            buildMenuLink(router, pagesDefs.news.url, `Actualités`),
             buildMenuLink(router, urlServicePublicPlus, `Services Publics +`, '_blank'),
           ]),
           ...(pagesDefs.playground ? [buildMenuLink(router, pagesDefs.playground.url, 'Playground')] : []),
