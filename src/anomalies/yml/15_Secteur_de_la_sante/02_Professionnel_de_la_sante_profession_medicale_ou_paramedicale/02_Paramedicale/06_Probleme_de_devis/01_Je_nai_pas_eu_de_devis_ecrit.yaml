@@ -1,8 +1,6 @@
 title: Je n'ai pas eu de devis écrit
 desc: >-
-  Un devis est obligatoire dès que les dépassements d'honoraires et la
-  prestation dépassent 70 euros. Un devis est obligatoire en cas de pose de
-  couronne, implant, bridge... Un devis est obligatoire en chirurgie esthétique.
+  Un devis est obligatoire dès que les dépassements d'honoraires atteignent 70 euros. Un devis est obligatoire pour certaines aides techniques ...
 reponseconsoCode:
   - '2121'
   - '226'
