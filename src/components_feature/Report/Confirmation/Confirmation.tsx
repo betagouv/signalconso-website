@@ -13,6 +13,7 @@ import {ReportFiles} from 'components_simple/UploadFile/ReportFiles'
 import {useToast} from 'hooks/useToast'
 import {useI18n} from 'i18n/I18n'
 import {ReportDraft2} from 'model/ReportDraft2'
+import {ApiReportDraft} from 'model/reportsFromApi'
 import {useEffect} from 'react'
 import {Txt} from '../../../alexlibs/mui-extension/Txt/Txt'
 import {Anomaly} from '../../../anomalies/Anomaly'
@@ -23,21 +24,23 @@ import {useReportCreateContext} from '../ReportCreateContext'
 import {useReportFlowContext} from '../ReportFlowContext'
 import {ConfirmationStep, ConfirmationStepper} from './ConfirmationStepper'
 
-export const Confirmation = ({stepNavigation}: {stepNavigation: StepNavigation}) => {
+export const Confirmation = ({stepNavigation, isWebView}: {stepNavigation: StepNavigation; isWebView: boolean}) => {
   const _reportFlow = useReportFlowContext()
   const draft = _reportFlow.reportDraft as ReportDraft2
   const parsedDraft = ReportDraft2.toReportDraft(draft)
-  return <_Confirmation anomaly={draft.anomaly} draft={parsedDraft} {...{stepNavigation}} />
+  return <_Confirmation anomaly={draft.anomaly} draft={parsedDraft} {...{isWebView, stepNavigation}} />
 }
 
 export const _Confirmation = ({
   draft,
   anomaly,
   stepNavigation,
+  isWebView,
 }: {
   anomaly: Pick<Anomaly, 'img'>
   draft: ReportDraft
   stepNavigation: StepNavigation
+  isWebView: boolean
 }) => {
   const {m} = useI18n()
   const {toastError} = useToast()
@@ -159,8 +162,9 @@ export const _Confirmation = ({
           nextButtonLabel={draft.consumerWish === 'getAnswer' ? m.confirmationBtnReponseConso : m.confirmationBtn}
           next={next => {
             _analytic.trackEvent(EventCategories.report, ReportEventActions.validateConfirmation)
+            const metadata = buildReportMetadata({isWebView})
             _reportCreate.createReport
-              .fetch({}, draft)
+              .fetch({}, draft, metadata)
               .then(() => {
                 _analytic.trackEvent(EventCategories.report, ReportEventActions.reportSendSuccess)
                 next()
@@ -175,4 +179,31 @@ export const _Confirmation = ({
       </div>
     </Animate>
   )
+}
+
+function buildReportMetadata({isWebView}: {isWebView: boolean}): ApiReportDraft['metadata'] {
+  if (isWebView) {
+    return {
+      isMobileApp: true,
+      os: detectMobileOs(),
+    }
+  }
+  return {isMobileApp: false}
+}
+
+function detectMobileOs(): 'Ios' | 'Android' | undefined {
+  if (/android/i.test(navigator.userAgent)) {
+    return 'Android'
+  }
+
+  if (
+    ['iPad Simulator', 'iPhone Simulator', 'iPod Simulator', 'iPad', 'iPhone', 'iPod'].includes(navigator.platform) ||
+    // iPad on iOS 13 detection
+    (navigator.userAgent.includes('Mac') && 'ontouchend' in document)
+  ) {
+    return 'Ios'
+  }
+  // could happen in case of weird settings, browser extensions
+  // or if our user agent detection isn't perfect
+  return undefined
 }

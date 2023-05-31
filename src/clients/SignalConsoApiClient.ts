@@ -39,8 +39,8 @@ export class SignalConsoApiClient {
     return this.client.get<Country[]>(`/websites/search-url`, {qs: {url}})
   }
 
-  createReport = async (draft: ReportDraft): Promise<CreatedReport> => {
-    const apiReportDraft: ApiReportDraft = ReportDraft.toApi(draft)
+  createReport = async (draft: ReportDraft, metadata: ApiReportDraft['metadata']): Promise<CreatedReport> => {
+    const apiReportDraft: ApiReportDraft = ReportDraft.toApi(draft, metadata)
 
     const reportFromApi = await this.client.post<ApiCreatedReport>(`/reports`, {body: apiReportDraft})
     const {tags, companyAddress, companySiret, websiteURL, employeeConsumer, contactAgreement} = reportFromApi

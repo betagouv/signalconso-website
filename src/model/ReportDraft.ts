@@ -102,7 +102,7 @@ export class ReportDraft {
     }
   }
 
-  static readonly toApi = (draft: ReportDraft): ApiReportDraft => {
+  static readonly toApi = (draft: ReportDraft, metadata: ApiReportDraft['metadata']): ApiReportDraft => {
     const {consumerWish, ...restOfDraft} = draft
 
     const additionalTags: ReportTag[] = [
@@ -133,6 +133,7 @@ export class ReportDraft {
       websiteURL: draft.companyDraft?.website,
       phone: draft.companyDraft?.phone,
       forwardToReponseConso: consumerWish === 'getAnswer',
+      metadata,
       // pretty sure these fields aren't actually optional in the draft
       employeeConsumer: draft.employeeConsumer ?? false,
       tags,

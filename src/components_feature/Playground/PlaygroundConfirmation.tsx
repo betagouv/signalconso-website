@@ -35,6 +35,7 @@ export const PlaygroundConfirmation = () => {
           draft={{
             ...draft,
           }}
+          isWebView={false}
           stepNavigation={dummyStepNavigation}
         />
       )}
