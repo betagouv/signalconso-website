@@ -47,8 +47,6 @@ export class Matomo {
     // Wait the next tick to make sure the page title had been updated
     setTimeout(() => {
       const {protocol, hostname, port, pathname} = window.location
-      const baseUrl = `${protocol}//${hostname}${port ? ':' + port : ''}${pathname}`
-      console.log(' :: ' + baseUrl)
       this.push(['setDocumentTitle', title ?? window.document.title])
       this.push(['setCustomUrl', window.location.origin + path])
       this.push(['trackPageView'])

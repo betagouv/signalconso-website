@@ -42,8 +42,6 @@ function useStepChangeTracking(anomaly: Anomaly, currentStep: ReportStepOrDone, 
   const _analytics = useAnalyticContext()
   useEffect(() => {
     const {path, title} = getAnalyticsForStep(currentStep)
-    console.log('path : ' + path)
-    console.log('title : ' + title)
     isWebView && window.ReactNativeWebView?.postMessage('step=' + getIndexForStepOrDone(currentStep) + 1)
     _analytics.trackPage(`/${anomaly.path}/${path}`, title)
   }, [currentStep])
