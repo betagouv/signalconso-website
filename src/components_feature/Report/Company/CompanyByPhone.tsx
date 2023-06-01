@@ -51,7 +51,7 @@ export const CompanyByPhone = ({value, children, ...props}: Props) => {
                 disabled={!!phone}
                 {...register('phone', {
                   required: {value: true, message: m.required},
-                  pattern: {value: /^((\+)33|0|0033)[1-9]([.\-\s+]?\d{2}){4}$/g, message: m.invalidPhone},
+                  pattern: {value: /^((((\+)33|0|0033)[1-9]([.\-\s+]?\d{2}){4})|(\d{2,5}))$/g, message: m.invalidPhone},
                 })}
                 fullWidth
                 placeholder={m.phoneNumberHavingCalledPlaceholder}
