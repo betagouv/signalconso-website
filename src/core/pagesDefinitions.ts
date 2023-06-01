@@ -3,8 +3,6 @@ import {appConfig} from './appConfig'
 import {LandingData} from 'landings/landingDataUtils'
 import {NewsArticle} from 'actualites/newsArticlesData'
 
-type PageDef = PageDefExternal | PageDefInternal
-
 type PageDefExternal = {
   isExternal: true
   url: string
@@ -40,7 +38,6 @@ export const internalPageDefs = {
   arborescence: page(`/arborescence`),
   accessibilite: page(`/accessibilite`),
   planDuSite: page(`/plan-du-site`),
-  litige: page(`/litige`),
   actualites: page(`/actualites`),
 
   // all these are available in /webview/
@@ -53,6 +50,7 @@ export const internalPageDefs = {
   quiSommesNous: page(`/qui-sommes-nous`),
   stats: page(`/stats`),
   suiviEtViePrivee: page(`/suivi-et-vie-privee`),
+  litige: page(`/litige`),
 
   // only on dev/demo
   ...(appConfig.showPlayground ? {playground: page(`/playground`)} : null),

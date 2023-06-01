@@ -1,11 +1,9 @@
-import Link from 'next/link'
-import {pagesDefs} from 'core/pagesDefinitions'
+import {Accordion} from '@codegouvfr/react-dsfr/Accordion'
 import {Box, BoxProps} from '@mui/material'
 import {externalLinks} from 'core/externalLinks'
-import {appConfig} from 'core/appConfig'
-import * as React from 'react'
+import {pagesDefs} from 'core/pagesDefinitions'
+import Link from 'next/link'
 import {ReactNode} from 'react'
-import {Accordion} from '@codegouvfr/react-dsfr/Accordion'
 
 function Title({children}: {children: ReactNode}) {
   return <h2 className="mb-4 mt-8 font-normal text-2xl">{children}</h2>
