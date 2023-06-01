@@ -2,8 +2,8 @@ import fs from 'fs'
 import {allVisibleLandings} from '../landings/landingDataUtils'
 import path from 'path'
 import {appConfig} from '../core/appConfig'
-import {buildLinkLandingPage, buildLinkNewsArticle, pagesDefs} from '../core/pagesDefinitions'
 import {newsArticlesData} from '../actualites/newsArticlesData'
+import {buildLinkLandingPage, buildLinkNewsArticle, internalPageDefs} from '../core/pagesDefinitions'
 
 interface SitemapItem {
   url: string
@@ -13,8 +13,7 @@ interface SitemapItem {
 const outputFile = path.join('./public/sitemap.xml')
 
 const sitemapItems: SitemapItem[] = [
-  ...Object.values(pagesDefs)
-    .filter(_ => !_.isExternal)
+  ...Object.values(internalPageDefs)
     .filter(_ => !_.noIndex)
     .map(_ => _.url),
   ...allVisibleLandings().map(buildLinkLandingPage),

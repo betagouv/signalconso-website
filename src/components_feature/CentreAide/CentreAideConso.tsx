@@ -21,7 +21,7 @@ export const CentreAideConso = (props: BoxProps) => {
       <Title>Généralités</Title>
       <Accordions>
         <Accordion label={`Comment fonctionne SignalConso ?`}>
-          Consultez notre page <Link href={pagesDefs.commentCaMarche.url}>Comment ça marche</Link>.
+          Consultez notre page <Link href={pagesDefs.commentCaMarche.urlRelative}>Comment ça marche</Link>.
         </Accordion>
       </Accordions>
 
@@ -122,16 +122,16 @@ export const CentreAideConso = (props: BoxProps) => {
             <br /> C'est à vous d'entamer les démarches. Ces démarches vous ont été présentées à la fin de votre signalement et
             dans votre mail d'accusé de réception.
             <br /> Vous pouvez également les retrouver sur cette page :{' '}
-            <a href={pagesDefs.litige.url} target="_blank" rel="noreferrer">
-              {appConfig.appBaseUrl + pagesDefs.litige.url}
-            </a>
+            <Link href={pagesDefs.litige.urlRelative} rel="noreferrer">
+              Vos démarches pour être remboursé ou trouver une solution à votre problème
+            </Link>
           </p>
         </Accordion>
         <Accordion label={`Je veux modifier ou supprimer mon signalement `}>
           <p>
             {' '}
             Pour modifier ou supprimer votre signalement, vous pouvez{' '}
-            <Link href={pagesDefs.contact.url}>contacter le support</Link>.
+            <Link href={pagesDefs.contact.urlRelative}>contacter le support</Link>.
           </p>
         </Accordion>
       </Accordions>

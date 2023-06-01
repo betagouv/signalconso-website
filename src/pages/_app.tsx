@@ -25,7 +25,7 @@ import {appConfig} from '../core/appConfig'
 import '../globals.css'
 import {Eularian} from '../plugins/eularian'
 import {Router} from 'next/router'
-import {pagesDefs} from 'core/pagesDefinitions'
+import {internalPageDefs} from 'core/pagesDefinitions'
 
 declare module '@codegouvfr/react-dsfr/next-pagesdir' {
   interface RegisterLink {
@@ -49,7 +49,7 @@ const blueFranceTheme = createTheme({
 })
 
 function shouldBeNoIndex(router: Router): boolean {
-  const pageDef = Object.values(pagesDefs).find(_ => _.url === router.pathname)
+  const pageDef = Object.values(internalPageDefs).find(_ => _.url === router.pathname)
   if (pageDef) {
     return pageDef.noIndex
   }

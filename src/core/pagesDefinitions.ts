@@ -3,16 +3,65 @@ import {appConfig} from './appConfig'
 import {LandingData} from 'landings/landingDataUtils'
 import {NewsArticle} from 'actualites/newsArticlesData'
 
-type PageDef = {
+type PageDef = PageDefExternal | PageDefInternal
+
+type PageDefExternal = {
+  isExternal: true
   url: string
+}
+type PageDefInternal = {
+  isExternal: false
+  url: string
+  urlRelative: string
   noIndex: boolean
-  isExternal: boolean
 }
 
-function page(url: string, options: {noIndex?: boolean; isExternal?: boolean} = {}): PageDef {
+function page(url: string, options: {noIndex?: boolean} = {}): PageDefInternal {
   const noIndex = options.noIndex ?? false
-  const isExternal = options.isExternal ?? false
-  return {url, noIndex, isExternal}
+  return {
+    isExternal: false,
+    url,
+    // without the leading slash, it becomes a relative link
+    // useful for preserving the /webview/ prefix
+    urlRelative: url.slice(1),
+    noIndex,
+  }
+}
+
+function pageExternal(url: string): PageDefExternal {
+  return {
+    isExternal: true,
+    url,
+  }
+}
+
+export const internalPageDefs = {
+  index: page('/'),
+  arborescence: page(`/arborescence`),
+  accessibilite: page(`/accessibilite`),
+  planDuSite: page(`/plan-du-site`),
+  litige: page(`/litige`),
+  actualites: page(`/actualites`),
+
+  // all these are available in /webview/
+  centreAide: page(`/centre-aide`),
+  commentCaMarche: page(`/comment-ca-marche`),
+  conditionsGeneralesUtilisation: page(`/conditions-generales-utilisation`, {noIndex: true}),
+  contact: page(`/contact`, {noIndex: true}),
+  cookies: page(`/cookies`),
+  delaiRetractation: page(`/delai-de-retractation`),
+  quiSommesNous: page(`/qui-sommes-nous`),
+  stats: page(`/stats`),
+  suiviEtViePrivee: page(`/suivi-et-vie-privee`),
+
+  // only on dev/demo
+  ...(appConfig.showPlayground ? {playground: page(`/playground`)} : null),
+}
+
+const externalPageDefs = {
+  connexion: pageExternal(appConfig.dashboardBaseUrl + '/connexion'),
+  companyActivation: pageExternal(appConfig.dashboardBaseUrl + '/activation'),
+  lostPassword: pageExternal(appConfig.dashboardBaseUrl + '/perte-mot-de-passe'),
 }
 
 // This lists only the 'static', 'hardcoded' pages
@@ -21,27 +70,8 @@ function page(url: string, options: {noIndex?: boolean; isExternal?: boolean} = 
 // - the landing pages (/xxx)
 // - the /webview/xxx pages
 export const pagesDefs = {
-  index: page('/'),
-  commentCaMarche: page(`/comment-ca-marche`),
-  suiviEtViePrivee: page(`/suivi-et-vie-privee`),
-  centreAide: page(`/centre-aide`),
-  cookies: page(`/cookies`),
-  contact: page(`/contact`, {noIndex: true}),
-  stats: page(`/stats`),
-  arborescence: page(`/arborescence`),
-  accessibilite: page(`/accessibilite`),
-  planDuSite: page(`/plan-du-site`),
-  quiSommesNous: page(`/qui-sommes-nous`),
-  litige: page(`/litige`),
-  delaiRetractation: page(`/delai-de-retractation`),
-  conditionsGeneralesUtilisation: page(`/conditions-generales-utilisation`, {noIndex: true}),
-  actualites: page(`/actualites`),
-  // only on dev/demo
-  ...(appConfig.showPlayground ? {playground: page(`/playground`)} : null),
-  // dashboard links
-  connexion: page(appConfig.dashboardBaseUrl + '/connexion', {isExternal: true}),
-  companyActivation: page(appConfig.dashboardBaseUrl + '/activation', {isExternal: true}),
-  lostPassword: page(appConfig.dashboardBaseUrl + '/perte-mot-de-passe', {isExternal: true}),
+  ...internalPageDefs,
+  ...externalPageDefs,
 }
 
 export function buildLinkStartReport(anomaly: Pick<Anomaly, 'path'>, {isWebView}: {isWebView: boolean} = {isWebView: false}) {

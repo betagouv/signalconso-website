@@ -113,7 +113,7 @@ const Cookies = () => {
         </p>
         <p>
           Pour plus de renseignements sur la gestion de la vie privée sur Signal Conso, vous pouvez également consulter la
-          rubrique <Link href={pagesDefs.suiviEtViePrivee.url}>suivi d'audience et vie privée</Link>
+          rubrique <Link href={pagesDefs.suiviEtViePrivee.urlRelative}>suivi d'audience et vie privée</Link>
         </p>
         <h3 className="fr-h6">Comment accepter ou refuser les cookies:</h3>
         <p>
