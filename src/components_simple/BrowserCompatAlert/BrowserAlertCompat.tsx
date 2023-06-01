@@ -1,39 +1,40 @@
 import React, {useEffect, useState} from 'react'
+import {Alert} from '@codegouvfr/react-dsfr/Alert'
+import {useI18n} from '../../i18n/I18n'
 
 export const BrowserCompatAlert = () => {
-  const [browserCompatMessage, setBrowserCompatMessage] = useState<string | undefined>(undefined)
-
+  const [displayBrowserCompatMessage, setDisplayBrowserCompatMessage] = useState<boolean>(false)
+  const {m} = useI18n()
   useEffect(() => {
     const userAgent = navigator.userAgent
     const isFirefox = /Firefox/i.test(userAgent)
-    let firefoxVersion = null
+    const isChrome = /Chrome/i.test(userAgent)
+    const isEdge = /Edg/i.test(userAgent)
+    const isSafari = /^((?!chrome|android).)*safari/i.test(userAgent)
+    const isOpera = /Opera|OPR/i.test(userAgent)
+    let browserVersion = null
 
-    if (isFirefox) {
-      const match = userAgent.match(/Firefox\/(\d+)/)
-      if (match && match.length >= 2) {
-        firefoxVersion = parseInt(match[1], 10)
-        if (isFirefox && firefoxVersion && firefoxVersion < 152) {
-          setBrowserCompatMessage(
-            'Please note that this website may not be fully compatible with your current Firefox browser. We recommend upgrading to a newer version for a better experience.',
-          )
-        }
-      }
-    } else if (isChrome) {
-      // Implement
-    } else if (isEdge) {
-      // Implement
-    } else if (safari) {
-      // Implement
+    if (
+      (isFirefox && (browserVersion = getVersion(userAgent, /Firefox\/(\d+)/)) && browserVersion < 167) ||
+      (isChrome && (browserVersion = getVersion(userAgent, /Chrome\/(\d+)/)) && browserVersion < 64) ||
+      (isEdge && (browserVersion = getVersion(userAgent, /Edg\/(\d+)/)) && browserVersion < 79) ||
+      (isSafari && (browserVersion = getVersion(userAgent, /Version\/(\d+)/)) && browserVersion < 12) ||
+      (isOpera && (browserVersion = getVersion(userAgent, /OPR\/(\d+)/)) && browserVersion < 51)
+    ) {
+      setDisplayBrowserCompatMessage(true)
     }
-  }, [browserCompatMessage])
+  }, [])
 
-  console.log(browserCompatMessage)
+  console.log(displayBrowserCompatMessage)
 
-  return browserCompatMessage ? (
-    <div className="alert alert-warning" role="alert">
-      <p>{browserCompatMessage}</p>
-    </div>
+  return displayBrowserCompatMessage ? (
+    <Alert description={m.browserCompatMessage} severity="warning" title="Information" className="fr-mt-4w" />
   ) : (
     <></>
   )
+}
+
+const getVersion = (userAgent: string, regex: RegExp) => {
+  const match = userAgent.match(regex)
+  return match && match.length >= 2 ? parseInt(match[1], 10) : null
 }

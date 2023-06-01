@@ -432,5 +432,6 @@ export const fr = {
     searchCategoryPlaceholder: `Rechercher une catégorie par mot clé (BETA)`,
     noResultFound: `Aucun résultat trouvé.`,
     displayAllAnomalies: `Afficher toutes les catégories`,
+    browserCompatMessage: `Votre navigateur web est obsolète. Si vous n'utilisez pas la version la plus récente de votre navigateur, vous risquez de rencontrer certains problèmes lors de l'utilisation de SignalConso.`,
   },
 }
