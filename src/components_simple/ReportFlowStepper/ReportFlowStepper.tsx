@@ -139,7 +139,7 @@ export const ReportFlowStepper = ({anomaly, isWebView}: StepperProps) => {
       {step === 'BuildingDetails' && <Details {...{stepNavigation}} />}
       {step === 'BuildingCompany' && <Company {...{stepNavigation}} />}
       {step === 'BuildingConsumer' && <Consumer {...{stepNavigation}} />}
-      {step === 'Confirmation' && <Confirmation {...{stepNavigation}} />}
+      {step === 'Confirmation' && <Confirmation {...{isWebView, stepNavigation}} />}
       {step === 'Done' && <Acknowledgement {...{isWebView}} />}
     </>
   )

@@ -38,6 +38,12 @@ export interface ApiReportDraft {
   reponseconsoCode?: string[]
   ccrfCode?: string[]
   influencer?: ApiInfluencer
+  metadata:
+    | {
+        isMobileApp: true
+        os?: 'Ios' | 'Android'
+      }
+    | {isMobileApp: false}
 }
 
 // That's exactly what we receive from the API

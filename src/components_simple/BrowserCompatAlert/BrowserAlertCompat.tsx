@@ -15,7 +15,7 @@ export const BrowserCompatAlert = () => {
     let browserVersion = null
 
     if (
-      (isFirefox && (browserVersion = getVersion(userAgent, /Firefox\/(\d+)/)) && browserVersion < 167) ||
+      (isFirefox && (browserVersion = getVersion(userAgent, /Firefox\/(\d+)/)) && browserVersion < 67) ||
       (isChrome && (browserVersion = getVersion(userAgent, /Chrome\/(\d+)/)) && browserVersion < 64) ||
       (isEdge && (browserVersion = getVersion(userAgent, /Edg\/(\d+)/)) && browserVersion < 79) ||
       (isSafari && (browserVersion = getVersion(userAgent, /Version\/(\d+)/)) && browserVersion < 12) ||
