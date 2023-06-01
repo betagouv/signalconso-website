@@ -23,10 +23,10 @@ export class Analytic {
   private constructor(private appConfig: AppConfig, private matomo: Matomo | undefined, private eularian: Eularian | undefined) {
     Router.events.on('routeChangeComplete', (path: string): void => {
       this.log('[routeChangeComplete]', path)
-      // if (!this.appConfig.isDev) {
-      matomo?.trackPage(path)
-      eularian?.send(path)
-      // }
+      if (!this.appConfig.isDev) {
+        matomo?.trackPage(path)
+        eularian?.send(path)
+      }
     })
   }
 
