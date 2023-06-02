@@ -1,0 +1,5 @@
+title: Une téléconsultation
+desc: "Exemple\_: avec mon ordinateur ou une cabine de téléconsultation"
+reponseconsoCode:
+  - '220'
+  - '226'

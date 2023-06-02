@@ -1,7 +1,7 @@
 title: >-
   J'ai été facturé d’un supplément pour une prestation que je n'avais pas
   demandécise.
-desc: "Exemples : supplément \"chambre individuelle\" au prétexte que les chambres doubles \tétaient toutes occupées, supplément \"wifi\" alors que je n\"ai pas demandé à avoir le wifi, …"
+desc: "Exemples : supplément \"chambre individuelle\" au prétexte que les chambres doubles, elles \tétaient toutes occupées, supplément \"wifi\" alors que je n\"ai pas demandé à avoir le wifi, …"
 detailInputs:
   - label: Date de sortie (ou date de la facture)
     type: DATE

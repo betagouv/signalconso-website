@@ -1,6 +1,6 @@
 title: >-
   Le tarif du supplément facturé ne correspondait pas à celui qui m’avait été
-  communiqué.
+  communiqué sur le site ou dans l'établissement.
 desc: affichage des prix dans l’établissement, site internet, ...
 detailInputs:
   - label: Date de sortie (ou date de la facture)

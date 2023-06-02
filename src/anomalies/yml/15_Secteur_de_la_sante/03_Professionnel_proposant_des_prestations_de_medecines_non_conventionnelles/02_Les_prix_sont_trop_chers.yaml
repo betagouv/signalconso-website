@@ -2,9 +2,9 @@ title: Les prix sont trop chers
 desc: "Exemple\_: ce naturopathe est plus cher que ceux de la région"
 blockingInfo:
   title: >-
-    En médecine non conventionnelle, un praticien peut choisir librement ses
+    En médecine non conventionnelle, un professionnel peut choisir librement ses
     prix.
-  content: "Il peut proposer des prix élevés et choisir d'être plus cher que ses concurrents. <br> Cependant il a une obligation\_: indiquer tous ces prix de façon claire. Vous devez connaître le prix avant de vous faire soigner. <br> Les prix doivent être affichés en salle d'attente de manière lisible."
+  content: "Il peut proposer des prix élevés et choisir d'être plus cher que ses concurrents. <br> Cependant il a une obligation\_: indiquer tous ces prix de façon claire. Vous devez connaître le prix avant la réalisation de la prestation. <br> Les prix doivent être affichés en salle d'attente de manière lisible."
   questions:
     - question: Vous n'avez pas eu connaissance des prix avant&#160;?
       answer: Faites un signalement à la rubrique "Les prix ne sont pas affichés"
