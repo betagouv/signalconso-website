@@ -39,6 +39,96 @@ export const fr = {
   formatDuration,
   formatLargeNumber,
   messages: {
+    titleAndDescriptions: {
+      cookies: {
+        title: 'Politique de cookies',
+        description: 'Description de la politique de cookies',
+      },
+    },
+    articleAppMobile: {
+      capturesEcran: "Captures d'écran de l'application",
+      intro1:
+        "Découvrez dès maintenant la nouvelle application mobile SignalConso, qui rend vos signalements en tant que consommateur encore plus faciles et simplifie vos démarches. Téléchargez gratuitement l'application sur l'",
+      introApple: 'App Store ',
+      introBetween: 'ou le ',
+      introGoogle: 'Play Store ',
+      intro2: 'et profitez des mêmes fonctionnalités que celles offertes par notre site internet.',
+      fonctionnalites:
+        'Grâce à cette application, vous pouvez signaler rapidement tout problème lié à votre consommation (livraison, prix, qualité, contrat, etc.) et obtenir des informations sur vos droits en seulement quelques clics.',
+      statistiques:
+        "Avec plus de 320 000 utilisateurs et plus de 500 000 signalements depuis son lancement en 2020 par Bruno Le Maire, Ministre de l'Économie, des Finances et de la Souveraineté industrielle et numérique, SignalConso a su répondre aux attentes des consommateurs. Au cours des 12 derniers mois, pas moins de 195 000 signalements ont été déposés, dont 75 000 pour des achats en ligne, 23 000 pour des achats en magasin, 18 000 pour des travaux de rénovation et 14 000 liés aux voyages et aux loisirs. Les sites internet représentent plus de 43 % des signalements, couvrant des problématiques telles que la qualité des produits, les délais de livraison, les conditions de garantie, de rétractation ou de remboursement, ainsi que les défauts de mentions légales, etc.",
+      accessibilite:
+        "SignalConso est une application facilement accessible qui répond à un véritable besoin en matière de résolution des litiges de consommation au quotidien. Même si tous les consommateurs ne voient pas leurs problèmes résolus, 8 sur 10 recommandent SignalConso sur Services Publics +, la plateforme dédiée à l'amélioration des services publics.",
+      cta: "N'attendez plus, mettez SignalConso dans votre poche et faites valoir vos droits en tant que consommateur en toute simplicité !",
+      banner: 'Bannière de présentation de SignalConso',
+    },
+    cookies: {
+      gestionTitre: 'Gestion des cookies',
+      banniereTitre: 'Cette interface en ligne n’affiche pas de bannière de consentement aux cookies, pourquoi ?',
+      banniereContenu:
+        'C’est vrai, vous n’avez pas eu à cliquer sur un bloc qui recouvre la moitié de la page pour dire que vous êtes d’accord avec le dépôt de cookies — même si vous ne savez pas ce que ça veut dire !',
+      respectLoiContenu:
+        'Rien d’exceptionnel, pas de passe-droit lié à un .gouv.fr. Nous respectons simplement la loi, qui dit que certains outils de suivi d’audience, correctement configurés pour respecter la vie privée, sont exemptés d’autorisation préalable.',
+      cookiesTechniquesTitre: 'Les cookies techniques mis en place nous permettent :',
+      cookiesTechniquesContenu:
+        "D’obtenir des statistiques anonymes sur la fréquentation de l'interface en ligne (tout logiciel ou application, y compris un site internet, une section de site internet ou une application mobile) afin de faire de l'analyse de contenu et détecter d'éventuels problèmes de navigation;",
+      definitionTitre: 'Cookies',
+      definition:
+        "Définition : Le cookie est un petit fichier texte enregistré par le navigateur de votre ordinateur, tablette ou smartphone. Le cookie, enregistré sur votre ordinateur lorsque vous consultez l'interface en ligne SignalConso, permet de conserver des données utilisateur décrites ci-dessous afin de faciliter la navigation et de permettre certaines fonctionnalités.",
+      natureTitre: "Nature des cookies déposés sur l'interface en ligne SignalConso:",
+      natureContenu:
+        "Nous n'utilisons que des cookies techniques qui permettent et facilitent votre navigation. Certains sont indispensables et ne sauraient être supprimés sans affecter gravement l’accès à l'interface en ligne et la navigation, d’autres auraient pour conséquence une navigation dégradée.",
+      listeTitre: 'Liste des cookies déposés',
+      listeDescription: "Les cookies d'analyse de mesure d'audience (Eulerian / Matomo):",
+      nomCookie: 'Nom du cookie',
+      finalite: 'Finalité',
+      dureeConservation: 'Durée de conservation',
+      finaliteEulerian: 'Cookie Eulerian',
+      dureeConservationEulerian: '13 mois',
+      finaliteMatomo: 'Matomo',
+      dureeConservationMatomo1: '13 mois',
+      dureeConservationMatomo2: '6 mois',
+      dureeConservationMatomo3: '30 minutes',
+      mieuxServirContenu:
+        'Afin de mieux vous servir et d’améliorer l’expérience utilisateur sur notre interface en ligne, nous mesurons son audience grâce à une solution utilisant la technologie des cookies.',
+      donneesCollecteesContenu:
+        'Les données collectées permettent de fournir uniquement des données statistiques anonymes de fréquentation (le nombre de pages vues, le nombre de visites, leur fréquence de retour, …).',
+      outilEulerian:
+        "Nous utilisons l‘outil de mesure d’audience Eulerian. Cet outil est dispensé du recueil de consentement de l'internaute relatif au dépôt des cookies Analytics, l'autorité française de protection des données (CNIL) ayant accordé une exemption au cookie Web Analytics d’Eulerian ",
+      outilEulerianLink: 'en savoir plus',
+      anonymisation:
+        "Aucune des données personnelles ne sont exploitées par l'interface en ligne SignalConso. Cela signifie que votre adresse IP, par exemple, est anonymisée avant d’être enregistrée. Il est donc impossible d’associer vos visites sur cette interface en ligne à votre personne.",
+      cookiesEulerian:
+        "Les noms des cookies utilisés sont pour Eulerian Etuix. Leur durée de conservation est de 13 mois. Elles ne sont pas cédées à des tiers ni utilisées à d'autres fins.",
+      outilMatomo:
+        'Il en est de même pour l’outil de mesure d’audience de Matomo qui permet de conserver l’historique des données de statistiques anonymes de fréquentation récoltées depuis le lancement de SignalConso',
+      cookiesMatomo:
+        "Les noms des cookies utilisés sont pour Matomo _pk_session, _pk_id, _pk_ref. Leur durée va de de 30 mn à 13 mois. Elles ne sont pas cédées à des tiers ni utilisées à d'autres fins.",
+      renseignementsSuiviAudience:
+        'Pour plus de renseignements sur la gestion de la vie privée sur Signal Conso, vous pouvez également consulter la rubrique ',
+      renseignementsSuiviAudienceLink: "suivi d'audience et vie privée",
+      accepterRefuserTitre: 'Comment accepter ou refuser les cookies:',
+      parametrerNavigateurContenu1:
+        "Vous avez la possibilité de paramétrer leur navigateur pour supprimer les cookies déjà installés sur leur terminal, pour être invités à accepter ou refuser l’installation de cookies au cas par cas ou pour accepter ou refuser automatiquement tous les cookies pour certaines interfaces en ligne ou pour toutes les interfaces en ligne. Toutefois, le refus d’utilisation des cookies peut empêcher certaines fonctionnalités de l'interface en ligne de fonctionner.",
+      parametrerNavigateurContenu2:
+        'Les paramétrages de gestion des cookies varient selon les navigateurs. Les instructions à ce sujet pour les navigateurs les plus courants sont disponibles en cliquant sur les liens ci-dessous:',
+      internetExplorer: 'Internet Explorer',
+      internetExplorerInstructions:
+        "Dans Internet Explorer, cliquez sur le bouton Outils, puis sur Options Internet. Sous l'onglet Général, sous Historique de navigation, cliquez sur Paramètres. Cliquez sur le bouton Afficher les fichiers. Cliquez sur l'en-tête de colonne Nom pour trier tous les fichiers dans l'ordre alphabétique, puis parcourez la liste jusqu'à ce que vous voyez des fichiers commençant par le préfixe \"Cookie\". (tous les cookies possèdent ce préfixe et contiennent habituellement le nom de l'interface en ligne Web qui a créé le cookie). Sélectionnez le ou les cookies comprenant le nom \"à compléter\" et supprimez-les Fermez la fenêtre qui contient la liste des fichiers, puis cliquez deux fois sur OK pour retourner dans Internet Explorer.",
+      edge: 'Microsoft Edge',
+      chrome: 'Google Chrome',
+      chromeInstructions:
+        "Ouvrez Google Chrome. Dans la barre d'outils du navigateur, cliquez sur Plus. Placez votre curseur sur Plus d'outils, puis cliquez sur Effacer les données de navigation. Dans la fenêtre \"Effacer les données de navigation\", cochez les cases Cookies et données d'autres sites ou plug-in et Images et fichiers en cache. Utilisez le menu en haut pour sélectionner la quantité de données que vous souhaitez supprimer. Sélectionnez Depuis le début pour tout supprimer. Cliquez sur Effacer les données de navigation.",
+      firefox: 'Mozilla Firefox',
+      firefoxInstructions:
+        'Allez dans l\'onglet "Outils" du navigateur puis sélectionnez le menu "Options" Dans la fenêtre qui s\'affiche, choisissez "Vie privée" et cliquez sur "supprimer des cookies spécifiques" Repérez les fichiers qui contiennent le nom "à compléter". Sélectionnez-les et supprimez-les.',
+      safari: 'Safari',
+      safariInstructions:
+        'Dans votre navigateur, choisissez le menu Édition > Préférences. Cliquez sur Sécurité. Cliquez sur Afficher les cookies. Sélectionnez les cookies qui contiennent le nom "à compléter" et cliquez sur Effacer ou sur Tout effacer. Après avoir supprimé les cookies, cliquez sur Terminé.',
+      plusRenseignementsCNIL:
+        'Pour plus de renseignements sur les cookies et la façon de paramétrer votre navigateur, vous pouvez également consulter ',
+      plusRenseignementsCNILLink: "l'interface en ligne de la CNIL",
+    },
     SocialNetwork: {
       YOUTUBE: 'Youtube',
       FACEBOOK: 'Facebook',
@@ -194,6 +284,7 @@ export const fr = {
     detailsTextAreaNotTransmittable: `Ce texte sera lu <b>uniquement par la répression des fraudes.</b>`,
     detailsTextAreaEmployeeConsumer: `Rien ne sera communiqué à votre employeur.`,
     pageNotFoundTitle: `Cette adresse n'existe plus.`,
+    pageNotFoundHeadTitle: `SignalConso : Page non trouvée`,
     pageNotFoundDesc: `Une nouvelle version de <b>SignalConso</b> est en ligne depuis le 4 avril 2022.<br/> La page que vous recherchez existe probablement toujours,<br/> mais son adresse a changé.`,
     month_: {
       1: 'Janvier',

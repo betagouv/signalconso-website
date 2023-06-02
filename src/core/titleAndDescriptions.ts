@@ -42,10 +42,6 @@ export const titleAndDescriptions = {
     title: "Suivi d'audience et vie privée - SignalConso",
     description: "Consultez les informations concernant le suivi d'audience et le respect de la vie privée sur SignalConso",
   },
-  cookies: {
-    title: 'Gestion des cookies - SignalConso',
-    description: 'Consultez les informations concernant la gestion des cookies sur SignalConso',
-  },
   contact: {
     title: 'Contact - SignalConso',
     description: 'Trouvez le bon interlocuteur à contacter sur SignalConso',
