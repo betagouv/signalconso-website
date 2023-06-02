@@ -4,11 +4,6 @@ export const titleAndDescriptions = {
     description:
       "SignalConso est un service proposé par la DGCCRF (Direction Générale de la Concurrence, de la Consommation et de la Répression des Fraudes) au travers d'une Startup d’État. Il permet à la fois de comprendre ses droits en tant que consommateurs et d’être aidé pour les faire respecter.",
   },
-  commentCaMarche: {
-    title: 'Comment ça marche ? - SignalConso',
-    description:
-      "Vous signalez votre problème en remplissant le formulaire en ligne. Notre équipe contacte l'entreprise afin de l'informer de votre signalement. L'entreprise peut procéder spontanément aux corrections utiles, sans sanction. Votre signalement est enregistré à la répression des fraudes (DGCCRF).",
-  },
   aide: {
     title: 'Aide - SignalConso',
     description: "Consultez l'aide et les questions fréquentes sur SignalConso",

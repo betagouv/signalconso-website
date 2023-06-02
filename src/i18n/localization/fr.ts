@@ -49,6 +49,11 @@ export const fr = {
         title: '',
         description: '',
       },
+      commentCaMarche: {
+        title: 'Comment ça marche ? - SignalConso',
+        description:
+          "Vous signalez votre problème en remplissant le formulaire en ligne. Notre équipe contacte l'entreprise afin de l'informer de votre signalement. L'entreprise peut procéder spontanément aux corrections utiles, sans sanction. Votre signalement est enregistré à la répression des fraudes (DGCCRF).",
+      },
     },
     introApple: 'App Store',
     introBetween: 'ou le ',
@@ -148,6 +153,35 @@ export const fr = {
       conclusionText:
         "N'attendez plus, mettez SignalConso dans votre poche et faites valoir vos droits en tant que consommateur en toute simplicité !",
       screenshotsAlt: "Captures d'écran de l'application",
+    },
+    commentCaMarche: {
+      title: 'Comment ça marche ?',
+      step1: {
+        title: '1. Vous avez rencontré un problème avec une entreprise ?',
+        description1:
+          'Vous avez rencontré un problème avec un professionnel, un commerce, en magasin ou sur internet ? En tant que consommateur, vous pouvez le signaler sur la plateforme SignalConso.',
+        description2:
+          'Vous n’êtes pas sûr que ce soit un problème ? SignalConso vous guide afin de savoir si vous pouvez déposer un signalement. Si ce n’est pas le cas, on vous expliquera pourquoi !',
+      },
+      step2: {
+        title: '2. Déposez un signalement sur SignalConso ou posez une question à la répression des fraudes.',
+        description1:
+          'Signalez le problème (anonymement ou non) ou posez directement votre question auprès d’un agent de la DGCCRF (la répression des fraudes).',
+        description2: 'Dans tous les cas, SignalConso vous oriente et vous conseille.',
+      },
+      step3: {
+        title: '3. L’entreprise et la répression des fraudes sont informées.',
+        description1:
+          'Si vous avez déposé un signalement, SignalConso contacte l’entreprise afin de l’en informer. L’entreprise peut alors vous répondre et/ou s’améliorer, vous serez informés de son action par un email de SignalConso. Si vous avez choisi de transmettre vos coordonnées à l’entreprise, elle pourra vous contacter directement.',
+        description2:
+          'Si vous choisissez d’interroger la DGCCRF sur vos droits, une réponse individualisée vous sera adressée par mail par un agent de la DGCCRF.',
+      },
+      step4: {
+        title: '4. La répression des fraudes intervient si nécessaire.',
+        description1: 'Votre signalement est enregistré dans la base de données de la DGCCRF.',
+        description2:
+          'Les signalements deviennent trop nombreux pour une même entreprise ? Le problème est considéré comme grave par les enquêteurs ? La répression des fraudes peut décider de surveiller ou de contrôler une entreprise grâce à votre signalement.',
+      },
     },
     SocialNetwork: {
       YOUTUBE: 'Youtube',
