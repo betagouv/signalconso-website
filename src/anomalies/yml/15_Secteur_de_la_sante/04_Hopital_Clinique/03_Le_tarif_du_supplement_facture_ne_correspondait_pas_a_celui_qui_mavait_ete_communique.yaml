@@ -1,10 +1,6 @@
 title: >-
-  Les conditions d’hébergement ou les prestations en supplément ne
-  correspondaient pas au descriptif communiqué (dépliant, site internet, ...).
-desc: >-
-  Exemples : les capsules du café du plateau de courtoisie n’étaient pas
-  fournies, le repas amélioré ne l’était pas, absence du nécessaire de toilette
-  annoncé, …
+  Le tarif de prestation de confort été différent entre la facture et le communiqué sur le site ou dans l'établissement.
+desc: affichage des prix dans l’établissement, site internet, ...
 detailInputs:
   - label: Date de sortie (ou date de la facture)
     type: DATE

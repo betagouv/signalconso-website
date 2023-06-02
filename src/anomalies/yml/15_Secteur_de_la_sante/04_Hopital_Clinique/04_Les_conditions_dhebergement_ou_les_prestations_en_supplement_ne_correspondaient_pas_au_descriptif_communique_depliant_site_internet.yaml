@@ -1,11 +1,9 @@
 title: >-
-  Je n’ai pas été informé du tarif de la prestation non obligatoire proposée en
-  sus avant de la régler.
+  Les conditions d’hébergement ou les prestations de confort ne correspondaient pas au descriptif (dépliant, site internet, ...).
 desc: >-
-  Il doit avoir un affichage sur la description et le tarif des prestations non
-  obligatoires proposées en supplément (chambre particulière hors nécessité
-  médicale, mise à disposition d"une ligne téléphonique, chocolats, peluche, …),
-  y compris si ces frais sont pris en charge intégralement par votre mutuelle.
+  Exemples : les capsules du café du plateau de courtoisie n’étaient pas
+  fournies, le repas amélioré ne l’était pas, absence du nécessaire de toilette
+  annoncé, …
 detailInputs:
   - label: Date de sortie (ou date de la facture)
     type: DATE
