@@ -54,6 +54,10 @@ export const fr = {
         description:
           "Vous signalez votre problème en remplissant le formulaire en ligne. Notre équipe contacte l'entreprise afin de l'informer de votre signalement. L'entreprise peut procéder spontanément aux corrections utiles, sans sanction. Votre signalement est enregistré à la répression des fraudes (DGCCRF).",
       },
+      accessibilite: {
+        title: 'Accessibilité - SignalConso',
+        description: "Rapport d'accessibilité SignalConso",
+      },
     },
     introApple: 'App Store',
     introBetween: 'ou le ',
@@ -182,6 +186,71 @@ export const fr = {
         description2:
           'Les signalements deviennent trop nombreux pour une même entreprise ? Le problème est considéré comme grave par les enquêteurs ? La répression des fraudes peut décider de surveiller ou de contrôler une entreprise grâce à votre signalement.',
       },
+    },
+    accessibilite: {
+      pageTitle: "Déclaration d'accessibilité",
+      paragraph1:
+        "Le ministère de l'Economie, des Finances et de la Relance s’engage à rendre son service accessible, conformément à l’article 47 de la loi n° 2005-102 du 11 février 2005.",
+      paragraph2: 'Cette déclaration d’accessibilité s’applique à SignalConso.',
+      conformityStatusTitle: 'État de conformité',
+      conformityStatusText: `SignalConso est <b>partiellement conforme avec le RGAA 4.0</b>. Partiellement conforme veut dire que certaines sections du contenu ne sont pas entièrement conformes aux standards d'accessibilités.`,
+      testResultsTitle: 'Résultats des tests',
+      testResultsText: 'L’audit de conformité réalisé par évaluation externe révèle que 78% des critères RGAA sont respectés.',
+      nonAccessibleContentTitle: 'Contenus non accessibles',
+      nonAccessibleContentText: 'Les contenus listés ci-dessous ne sont pas accessibles pour les raisons suivantes.',
+      nonConformityTitle: 'Non conformité',
+      nonConformityText:
+        'Malgré nos efforts, certains contenus sont inaccessibles. Vous trouverez ci-dessous une liste des limitations connues et des solutions potentielles :',
+      monthStats: 'Statistiques mensuelles',
+      disproportionateBurdenTitle: 'Dérogations pour charge disproportionnée',
+      disproportionateBurdenText1:
+        "La validité HTML ne peut être garantie sur l'ensemble des pages néanmoins à notre connaissance cela ne provoque aucun dysfonctionnement des aides techniques. La reprise et la vérification de toutes les pages du site représenteraient une charge de travail disproportionnée par rapport au gain attendu.",
+      disproportionateBurdenText2:
+        "Les vidéos n'ont pas d'audio description, sous-titres ou transcription textuelle. La cellule ayant en charge la mise en ligne de ces animations n'est pas en mesure actuellement de fournir ces éléments pour l'ensemble de ces vidéos.",
+      accessibilityReportTitle: "Accès au rapport d'accessibilité",
+      accessibilityReportText: "Vous avez accès au rapport d'accessibilité",
+      rebecaPlatform: 'sur la plateforme Rebeca',
+      evaluationGridText:
+        ", en recherchant \"Rapport d'audit d'accessibilité signal.conso.gouv.fr\". Vous pourrez trouver aussi la grille d'évaluation dans les documents associés.",
+      declarationEstablishmentTitle: "Établissement de cette déclaration d'accessibilité",
+      declarationEstablishmentText: 'Cette déclaration a été établie le 4 Septembre 2020.',
+      usedTechnologiesTitle: 'Technologies utilisées',
+      usedTechnologiesText: "L'accessibilité de SignalConso s'appuie sur les technologies suivantes :",
+      assistiveTechnologiesTitle:
+        'Agents utilisateurs, technologies d’assistance et outils utilisés pour vérifier l’accessibilité',
+      assistiveTechnologiesText:
+        'Les tests des pages web ont été effectués avec les combinaisons de navigateurs web et lecteurs d’écran suivants :',
+      assistiveTechnologiesList1: 'Internet Explorer 11 et JAWS 2018',
+      assistiveTechnologiesList2: 'Safari et VoiceOver sur Iphone',
+      complianceVerificationPagesTitle: "Pages du site ayant fait l'objet de la vérification de conformité",
+      home: 'Accueil',
+      quiSommesNous: 'Qui sommes-nous ?',
+      commentCaMarche: 'Comment ça marche ?',
+      stats: 'Statistiques',
+      aide: 'Aide',
+      etape1: 'Étape 1 - Le problème',
+      etape2: 'Étape 2 - La description',
+      etape3: 'Étape 3 - Le commerçant',
+      etape4: 'Étape 4 - Le consommateur',
+      etape5: 'Étape 5 - Confirmation',
+      connexionEspacePro: "Connexion à l'espace pro",
+      espaceProSuivi: 'Espace pro - Suivi des signalements',
+      espaceProDetail: 'Espace pro - Détail du signalement',
+      espaceProEntreprises: 'Espace pro - Mes entreprises',
+      espaceProGestionAcces: 'Espace pro - Gestion des accès',
+      improvementContactTitle: 'Amélioration et contact',
+      improvementContactText:
+        'Si vous n’arrivez pas à accéder à un contenu ou à un service, vous pouvez contacter le responsable de SignalConso pour être orienté vers une alternative accessible ou obtenir le contenu sous une autre forme.',
+      supportEmail: 'E-mail : support@signal.conso.gouv.fr',
+      recourseTitle: 'Voie de recours',
+      recourseText:
+        'Cette procédure est à utiliser dans le cas suivant : vous avez signalé au responsable du site internet un défaut d’accessibilité qui vous empêche d’accéder à un contenu ou à un des services du portail et vous n’avez pas obtenu de réponse satisfaisante.',
+      recourseOptions: 'Vous pouvez :',
+      defenseurDesDroits: 'Écrire un message au ',
+      defenseurDesDroitsLink: 'Défenseur des droits',
+      defenseurDesDroitsDelegue: 'Contacter ',
+      defenseurDesDroitsDelegueLink: 'le délégué du Défenseur des droits dans votre région',
+      postalAddress: 'Envoyer un courrier par la poste (gratuit, ne pas mettre de timbre) :',
     },
     SocialNetwork: {
       YOUTUBE: 'Youtube',

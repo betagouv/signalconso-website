@@ -8,10 +8,6 @@ export const titleAndDescriptions = {
     title: 'Aide - SignalConso',
     description: "Consultez l'aide et les questions fréquentes sur SignalConso",
   },
-  accessibilite: {
-    title: 'Accessibilité - SignalConso',
-    description: "Rapport d'accessibilité SignalConso",
-  },
   planDuSite: {
     title: 'Plan du site - SignalConso',
     description: 'Plan du site',
