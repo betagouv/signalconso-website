@@ -13,12 +13,12 @@ export function ArticleAppMobile() {
       <p>
         {m.articleAppMobile.intro1}
         <Link href="https://apps.apple.com/fr/app/signalconso/id6447964093" target="_blank">
-          {m.articleAppMobile.introApple}
-        </Link>
-        {m.articleAppMobile.introBetween}
+          {m.introApple}
+        </Link>{' '}
+        {m.introBetween}
         <Link href="https://play.google.com/store/apps/details?id=com.signalconso.signalconso" target="_blank">
-          {m.articleAppMobile.introGoogle}
-        </Link>
+          {m.introGoogle}
+        </Link>{' '}
         {m.articleAppMobile.intro2}
       </p>
       <p>{m.articleAppMobile.fonctionnalites}</p>

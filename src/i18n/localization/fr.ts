@@ -44,14 +44,19 @@ export const fr = {
         title: 'Politique de cookies',
         description: 'Description de la politique de cookies',
       },
+      appMobile: {
+        // TODO
+        title: '',
+        description: '',
+      },
     },
+    introApple: 'App Store',
+    introBetween: 'ou le ',
+    introGoogle: 'Play Store',
     articleAppMobile: {
       capturesEcran: "Captures d'écran de l'application",
       intro1:
         "Découvrez dès maintenant la nouvelle application mobile SignalConso, qui rend vos signalements en tant que consommateur encore plus faciles et simplifie vos démarches. Téléchargez gratuitement l'application sur l'",
-      introApple: 'App Store ',
-      introBetween: 'ou le ',
-      introGoogle: 'Play Store ',
       intro2: 'et profitez des mêmes fonctionnalités que celles offertes par notre site internet.',
       fonctionnalites:
         'Grâce à cette application, vous pouvez signaler rapidement tout problème lié à votre consommation (livraison, prix, qualité, contrat, etc.) et obtenir des informations sur vos droits en seulement quelques clics.',
@@ -128,6 +133,21 @@ export const fr = {
       plusRenseignementsCNIL:
         'Pour plus de renseignements sur les cookies et la façon de paramétrer votre navigateur, vous pouvez également consulter ',
       plusRenseignementsCNILLink: "l'interface en ligne de la CNIL",
+    },
+    appMobile: {
+      pageTitle: 'SignalConso, désormais disponible en application mobile !',
+      introText1:
+        "Découvrez dès maintenant la nouvelle application mobile SignalConso, qui rend vos signalements en tant que consommateur encore plus faciles et simplifie vos démarches. Téléchargez gratuitement l'application sur l'",
+      introText2: 'et profitez des mêmes fonctionnalités que celles offertes par notre site internet.',
+      featureText:
+        'Grâce à cette application, vous pouvez signaler rapidement tout problème lié à votre consommation (livraison, prix, qualité, contrat, etc.) et obtenir des informations sur vos droits en seulement quelques clics.',
+      statisticsText:
+        "Avec plus de 320 000 utilisateurs et plus de 500 000 signalements depuis son lancement en 2020 par Bruno Le Maire, Ministre de l'Économie, des Finances et de la Souveraineté industrielle et numérique, SignalConso a su répondre aux attentes des consommateurs. Au cours des 12 derniers mois, pas moins de 195 000 signalements ont été déposés, dont 75 000 pour des achats en ligne, 23 000 pour des achats en magasin, 18 000 pour des travaux de rénovation et 14 000 liés aux voyages et aux loisirs. Les sites internet représentent plus de 43 % des signalements, couvrant des problématiques telles que la qualité des produits, les délais de livraison, les conditions de garantie, de rétractation ou de remboursement, ainsi que les défauts de mentions légales, etc.",
+      accessibilityText:
+        "SignalConso est une application facilement accessible qui répond à un véritable besoin en matière de résolution des litiges de consommation au quotidien. Même si tous les consommateurs ne voient pas leurs problèmes résolus, 8 sur 10 recommandent SignalConso sur Services Publics +, la plateforme dédiée à l'amélioration des services publics.",
+      conclusionText:
+        "N'attendez plus, mettez SignalConso dans votre poche et faites valoir vos droits en tant que consommateur en toute simplicité !",
+      screenshotsAlt: "Captures d'écran de l'application",
     },
     SocialNetwork: {
       YOUTUBE: 'Youtube',

@@ -29,11 +29,6 @@ export const titleAndDescriptions = {
     title: "Conditions générales d'utilisation - SignalConso",
     description: "Consultez les conditions générales d'utilisation",
   },
-  appMobile: {
-    // TODO
-    title: '',
-    description: '',
-  },
   stats: {
     title: 'Statistiques - SignalConso',
     description: 'Consultez les statistiques de SignalConso',
