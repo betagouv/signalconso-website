@@ -3,7 +3,7 @@ import {allVisibleLandings} from '../landings/landingDataUtils'
 import path from 'path'
 import {appConfig} from '../core/appConfig'
 import {buildLinkLandingPage, buildLinkNewsArticle, pagesDefs} from '../core/pagesDefinitions'
-import {newsArticlesData} from '../news/newsArticlesData'
+import {newsArticlesData} from '../actualites/newsArticlesData'
 
 interface SitemapItem {
   url: string

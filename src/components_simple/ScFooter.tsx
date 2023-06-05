@@ -51,6 +51,12 @@ export function ScFooter() {
             },
           },
           {
+            text: 'Actualités',
+            linkProps: {
+              href: pagesDefs.actualites.url,
+            },
+          },
+          {
             text: 'Services Publics +',
             linkProps: {
               href: urlServicePublicPlus,

@@ -1,12 +1,28 @@
 /** @type {import("next").NextConfig} */
 
 const hostsToRedirect = ['www.signal.conso.gouv.fr', 'signalconso.beta.gouv.fr', 'www.signalconso.beta.gouv.fr']
-const redirects = hostsToRedirect.map(host => ({
+const redirectsFromOtherHosts = hostsToRedirect.map(host => ({
   source: '/:path*',
   has: [{type: 'host', value: host}],
   destination: 'https://signal.conso.gouv.fr/:path*',
   permanent: true,
 }))
+// these pages have been moved
+const changedPaths = [
+  ['/news', '/actualites'],
+  [
+    '/news/signalconso-desormais-disponible-en-application-mobile',
+    '/actualites/signalconso-desormais-disponible-en-application-mobile',
+  ],
+]
+
+const redirectsForChangedPaths = changedPaths.map(([source, destination]) => ({
+  source,
+  destination,
+  permanent: true,
+}))
+
+const redirects = [...redirectsFromOtherHosts, ...redirectsForChangedPaths]
 
 //TRELLO-1522 : Implement security headers as DGCCRF is monitoring the website via https://observatory.mozilla.org/
 // See https://nextjs.org/docs/advanced-features/security-headers for implementation details

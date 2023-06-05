@@ -1,10 +1,10 @@
 import {ContentPageContainer} from 'components_simple/ContentPageContainer'
 import {pagesDefs} from 'core/pagesDefinitions'
-import {newsArticlesData} from 'news/newsArticlesData'
+import {newsArticlesData} from 'actualites/newsArticlesData'
 import {GetStaticPaths, GetStaticProps} from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
-import {isoToFrenchFormat} from 'utils/utils'
+import {isoToFrenchFormatText} from 'utils/utils'
 
 export const getStaticPaths: GetStaticPaths = () => {
   const paths = newsArticlesData.map(_ => ({
@@ -45,11 +45,11 @@ export default function LandingPage({articleSlug}: Props) {
       </Head>
       <ContentPageContainer>
         <p>
-          <span className="ri-arrow-left-line" aria-hidden="true"></span> <Link href={pagesDefs.news.url}>Actualités</Link>
+          <span className="ri-arrow-left-line" aria-hidden="true"></span> <Link href={pagesDefs.actualites.url}>Actualités</Link>
         </p>
         <h1>{article.title}</h1>
         <p>
-          <span className="text-gray-500 text-sm">{isoToFrenchFormat(article.date)}</span>
+          <span className="text-gray-500 text-sm">le {isoToFrenchFormatText(article.date)}</span>
         </p>
         <article.content />
       </ContentPageContainer>

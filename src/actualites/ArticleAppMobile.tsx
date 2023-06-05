@@ -8,7 +8,7 @@ export function ArticleAppMobile() {
         <Image
           width={177}
           height={193}
-          src={`/image/news/mobile_app_screenshots.png`}
+          src={`/image/actualites/mobile_app_screenshots.png`}
           alt={`Captures d'écran de l'application`}
         />
       </div>
@@ -53,7 +53,7 @@ export function ArticleAppMobile() {
         <Image
           width={784}
           height={416}
-          src={`/image/news/signalconso_promo_banner.jpg`}
+          src={`/image/actualites/signalconso_promo_banner.jpg`}
           alt={`Bannière de présentation de SignalConso`}
         />
       </div>

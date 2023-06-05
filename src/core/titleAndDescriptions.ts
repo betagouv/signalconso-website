@@ -58,7 +58,7 @@ export const titleAndDescriptions = {
     title: 'Arborescence - SignalConso',
     description: "Arborescence du dépot d'un signalement",
   },
-  news: {
+  actualites: {
     title: 'Actualités - SignalConso',
     description: 'Actualités et nouveautés du site SignalConso et de la répression des fraudes',
   },
