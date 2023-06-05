@@ -1,6 +1,5 @@
-title: >-
-  Le tarif de prestation de confort été différent entre la facture et le communiqué sur le site ou dans l'établissement.
-desc: affichage des prix dans l’établissement, site internet, ...
+title: J’ai dû composer un numéro surtaxé pour joindre l’établissement.
+desc: Cette facturation est interdite
 detailInputs:
   - label: Date de sortie (ou date de la facture)
     type: DATE

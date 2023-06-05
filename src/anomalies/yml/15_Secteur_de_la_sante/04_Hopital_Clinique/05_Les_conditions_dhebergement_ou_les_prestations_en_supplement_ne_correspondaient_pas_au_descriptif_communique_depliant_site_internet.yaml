@@ -1,5 +1,9 @@
-title: J’ai dû composer un numéro surtaxé pour joindre l’établissement.
-desc: Cette facturation est interdite.
+title: >-
+  Les conditions d’hébergement ou les prestations de confort ne correspondaient pas au descriptif (dépliant, site internet, ...)
+desc: >-
+  Exemples : la télévision ne fonctionnait pas, les capsules du café du plateau de courtoisie n’étaient pas
+  fournies, le repas amélioré ne l’était pas, absence du nécessaire de toilette
+  annoncé, …
 detailInputs:
   - label: Date de sortie (ou date de la facture)
     type: DATE
