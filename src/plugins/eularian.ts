@@ -9,9 +9,16 @@ export class Eularian {
   }
 
   readonly send = (path: string): void => {
-    if (!window.EA_push) {
-      window.EA_push = []
+    try {
+      if (!window.EA_push) {
+        window.EA_push = []
+      }
+      window.EA_push(['path', path])
+    } catch (e: any) {
+      console.error('[Eularian Analytic]', e)
+      if (!(e instanceof ReferenceError)) {
+        throw e
+      }
     }
-    window.EA_push(['path', path])
   }
 }

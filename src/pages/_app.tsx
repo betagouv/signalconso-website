@@ -95,7 +95,7 @@ const AppBase = ({Component, pageProps, router}: AppProps) => {
   return (
     <>
       <Head>{noIndex && <meta name="robots" content="noindex" />}</Head>
-      {!isWebView && !config.isDev && (
+      {!config.isDev && (
         <Script
           nonce="eYhD6rb8vLVwXsAmnbKl/Q=="
           id="eulerian-analytics"
