@@ -58,6 +58,10 @@ export const fr = {
         title: 'Accessibilité - SignalConso',
         description: "Rapport d'accessibilité SignalConso",
       },
+      contact: {
+        title: 'Titre de la page Contact',
+        description: 'Description de la page Contact',
+      },
     },
     introApple: 'App Store',
     introBetween: 'ou le ',
@@ -251,6 +255,22 @@ export const fr = {
       defenseurDesDroitsDelegue: 'Contacter ',
       defenseurDesDroitsDelegueLink: 'le délégué du Défenseur des droits dans votre région',
       postalAddress: 'Envoyer un courrier par la poste (gratuit, ne pas mettre de timbre) :',
+    },
+    contact: {
+      title: 'Contact',
+      problemMessage: 'Vous avez rencontré un problème avec une entreprise et vous souhaitez le signaler ?',
+      problemSolution: 'SignalConso est là pour ça ! Naviguez sur notre site et répondez simplement aux questions.',
+      technicalIssue: 'Votre question concerne un problème technique rencontré sur SignalConso ?',
+      exampleText: 'Par exemple :',
+      example1: 'Vous ne trouvez pas le SIRET de l’entreprise que vous voulez signaler',
+      example2: 'Vous rencontrez un bug lors de la navigation sur le site',
+      example3: 'Vous ne trouvez pas la bonne catégorie pour votre problème',
+      emailText: 'Dans ce cas écrivez-nous par email à',
+      emailTitle:
+        'Vous rencontrez un problème technique avec notre site ? Contactez-nous (ouverture de la messagerie par défaut).',
+      alertDescription:
+        "Cette adresse courriel n'est pas destinée au dépôt de votre signalement, qui ne pourra alors être exploité. Tout signalement doit exclusivement être déposé en suivant la procédure sur la page d'accueil du site.",
+      alertTitle: 'Ne nous envoyez pas votre signalement par email... il ne sera pas lu.',
     },
     SocialNetwork: {
       YOUTUBE: 'Youtube',

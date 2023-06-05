@@ -28,10 +28,6 @@ export const titleAndDescriptions = {
     title: "Suivi d'audience et vie privée - SignalConso",
     description: "Consultez les informations concernant le suivi d'audience et le respect de la vie privée sur SignalConso",
   },
-  contact: {
-    title: 'Contact - SignalConso',
-    description: 'Trouvez le bon interlocuteur à contacter sur SignalConso',
-  },
   contractualDispute: {
     title: "Résolution d'un problème individuel (litige) - SignalConso",
     description: 'Démarches conseillées par SignalConso pour résoudre un problème individuel (litige) avec une entreprise ',
