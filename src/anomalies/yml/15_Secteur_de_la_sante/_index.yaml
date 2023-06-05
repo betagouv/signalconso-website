@@ -12,3 +12,10 @@ seoDescription: >-
   en avant en parapharmacie sont trompeurs...
 img: category-health
 subcategoriesTitle: 'Votre problème concerne :'
+companyKindQuestion:
+  label: 'La téléconsultation a-t-elle été effectuée en cabine ou sur Internet ?'
+  options:
+    - label: En cabine
+      companyKind: SIRET
+    - label: Sur internet
+      companyKind: WEBSITE

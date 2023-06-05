@@ -23,6 +23,7 @@ const anomalySpec: ObjectSpec = {
   subcategoriesTitle: _ => _.ifDefined()?.assertIsString(),
   // triggers the recursion
   subcategories: _ => _.assertIsArrayWith(assertIsSubcategory),
+  companyKindQuestion: _ => _.ifDefined()?.assertIsObjectWith(companyKindQuestionSpec),
 }
 
 const baseSubcategorySpec: ObjectSpec = {
@@ -63,6 +64,16 @@ const standardSubcategorySpec: ObjectSpec = {
       assertIsDetailInput(detailInput)
     }),
   ...baseSubcategorySpec,
+}
+
+const companyKindQuestionSpec: ObjectSpec = {
+  label: _ => _.assertIsString(),
+  options: _ => _.assertIsArrayWith(_ => _.assertIsObjectWith(companyKindQuestionOptionSpec)),
+}
+
+const companyKindQuestionOptionSpec: ObjectSpec = {
+  label: _ => _.assertIsString(),
+  companyKind: _ => _.assertIsAllowedString(companyKinds),
 }
 
 function assertIsSubcategory(subcategory: AnomalyTreeWalker) {

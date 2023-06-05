@@ -16,6 +16,17 @@ export type Anomaly = {
   // text or question introducing the choice between the subcategories
   subcategoriesTitle?: string
   subcategories: Subcategory[]
+  companyKindQuestion?: CompanyKindQuestion
+}
+
+type CompanyKindQuestion = {
+  label: string
+  options: CompanyKindQuestionOption[]
+}
+
+type CompanyKindQuestionOption = {
+  label: string
+  companyKind: CompanyKinds
 }
 
 type SubcategoryBase = {
