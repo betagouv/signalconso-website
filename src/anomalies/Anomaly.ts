@@ -16,7 +16,6 @@ export type Anomaly = {
   // text or question introducing the choice between the subcategories
   subcategoriesTitle?: string
   subcategories: Subcategory[]
-  companyKindQuestion?: CompanyKindQuestion
 }
 
 type CompanyKindQuestion = {
@@ -45,6 +44,7 @@ type SubcategoryBase = {
   reponseconsoCode?: string[] | null
   ccrfCode?: string[]
   companyKind?: CompanyKinds
+  companyKindQuestion?: CompanyKindQuestion
 }
 
 // A typical subcategory

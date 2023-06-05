@@ -95,6 +95,7 @@ export const Problem = ({anomaly, isWebView, stepNavigation}: Props) => {
     lastSubcategories,
     isLastSubcategory,
     companyKindFromSelected,
+    companyKindQuestionFromSelected,
     responseconsoCodeFromSelected,
     ccrfCodeFromSelected,
   } = useMemo(() => {
@@ -185,13 +186,13 @@ export const Problem = ({anomaly, isWebView, stepNavigation}: Props) => {
               />
             </ProblemStepperStep>
             <ProblemStepperStep isDone={reportDraft.companyKind !== undefined} hidden={!!companyKindFromSelected}>
-              {anomaly.companyKindQuestion ? (
+              {companyKindQuestionFromSelected ? (
                 <ProblemSelect<CompanyKinds>
                   id="select-companyKind"
-                  title={anomaly.companyKindQuestion.label}
+                  title={companyKindQuestionFromSelected.label}
                   value={reportDraft.companyKind}
                   onChange={companyKind => setReportDraft(_ => ({..._, companyKind}))}
-                  options={anomaly.companyKindQuestion.options.map(option => {
+                  options={companyKindQuestionFromSelected.options.map(option => {
                     return {
                       title: option.label,
                       value: option.companyKind,
