@@ -18,6 +18,9 @@ import SearchAnomalies from '../components_simple/Search/SearchAnomalies'
 import Fuse from 'fuse.js'
 import {useConfig} from '../context/ConfigContext'
 import {BrowserCompatAlert} from '../components_simple/BrowserCompatAlert/BrowserAlertCompat'
+import {BigReportButton} from 'components_simple/Buttons'
+
+export const START_REPORT_ANCHOR = 'quel-probleme'
 
 const ReportStartedAlert = dynamic(() => import('components_feature/ReportStartedAlert/ReportStartedAlert'), {ssr: false})
 
@@ -71,21 +74,18 @@ const Home = () => {
               ]}
             />
             <div className="flex items-center justify-center fr-pt-4w">
-              <Button
-                iconId="fr-icon-alarm-warning-line"
-                onClick={() => {
+              <BigReportButton
+                target={() => {
                   document
-                    .querySelector('#index-categories')
+                    .querySelector(`#${START_REPORT_ANCHOR}`)
                     ?.scrollIntoView({behavior: 'smooth', block: 'start', inline: 'nearest'})
                 }}
-                size="large"
-              >
-                {m.buttonReportProblem}
-              </Button>
+                text={m.buttonReportProblem}
+              />
             </div>
           </div>
         </div>
-        <div id="index-categories" style={{background: dsfrTheme.decisions.background.actionLow.blueFrance.default}}>
+        <div id={START_REPORT_ANCHOR} style={{background: dsfrTheme.decisions.background.actionLow.blueFrance.default}}>
           <div className="fr-container fr-pt-8w fr-pb-8w">
             <SearchAnomalies anomalies={anomalies} />
           </div>
