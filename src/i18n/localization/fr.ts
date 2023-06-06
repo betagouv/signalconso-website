@@ -71,6 +71,10 @@ export const fr = {
         description:
           "SignalConso est un service proposé par la DGCCRF (Direction Générale de la Concurrence, de la Consommation et de la Répression des Fraudes) au travers d'une Startup d’État. Il permet à la fois de comprendre ses droits en tant que consommateurs et d’être aidé pour les faire respecter.",
       },
+      aide: {
+        title: 'Aide - SignalConso',
+        description: "Consultez l'aide et les questions fréquentes sur SignalConso",
+      },
     },
     introApple: 'App Store',
     introBetween: 'ou le ',
@@ -370,6 +374,99 @@ export const fr = {
       workingMethodQuoteAuthor: '— Thomas Edison',
       teamTitle: 'Notre équipe',
       formerMembersTitle: 'Anciens membres',
+    },
+    centreaide: {
+      title: "Aide à l'utilisation de SignalConso",
+      tab1: 'Consommateur',
+      tab2: 'Professionnel',
+    },
+    centreaideconso: {
+      generalTitle: 'Généralités',
+      howSignalConsoWorks: 'Comment fonctionne SignalConso ?',
+      howSignalConsoWorksContent: 'Consultez notre page ',
+      howSignalConsoWorksLink: 'Comment ça marche',
+      reportIssueTitle: 'Je veux faire un signalement',
+      wrongCategory: 'Je ne trouve pas la bonne catégorie',
+      wrongCategoryContent1: "Les principaux secteurs d'activité sont présents dans SignalConso.",
+      wrongCategoryContent2:
+        "En cas de doute ou pour demander la création d'une nouvelle catégorie, vous pouvez contacter le support.",
+      difficultyCompletingForm: "J'ai du mal à compléter le formulaire à l'étape 3 \"L'entreprise\"",
+      difficultyCompletingFormContent1:
+        "Les entreprises proposées dans le formulaire proviennent d'une base de données de l'Etat. Les données de cette base nous permettent ensuite de contacter l'entreprise.",
+      difficultyCompletingFormContent2: "Il existe plusieurs raisons pouvant expliquer que vous ne trouvez pas l'entreprise :",
+      difficultyCompletingFormContent3: "L'entreprise est située à l'étranger",
+      difficultyCompletingFormContent4:
+        "Si l'entreprise que vous souhaitez signaler n'est pas située en France, nous vous demanderons le nom et le pays de l'entreprise.",
+      difficultyCompletingFormContent5:
+        'Ces informations nous permettront de vous rediriger si besoin vers les autorités compétentes.',
+      difficultyCompletingFormContent6: "Je ne connais ni les identifiants ni l'adresse de l'entreprise",
+      difficultyCompletingFormContent7:
+        "C'est par exemple le cas où vous avez seulement un numéro de téléphone ou une adresse mail, sans aucune mention légale.",
+      difficultyCompletingFormContent8:
+        "Pour signaler une entreprise dont vous ne connaissez ni le nom, ni l'url du site internet, ni les identifiants, il faut contacter directement la DGCCRF de la votre département :",
+      difficultyCompletingFormContent9: "Je connais le nom et l'adresse de l'entreprise mais je ne la trouve pas",
+      difficultyCompletingFormContent10:
+        "Il arrive que le nom de l'entreprise (son nom commercial) ne soit pas identique à sa raison sociale (son nom officiel). Il arrive aussi que l'adresse de son siège ne soit pas la même que celle de l'entreprise.",
+      difficultyCompletingFormContent11:
+        "Le formulaire vous propose des éléments d'aide pour réussir à trouver son SIRET. Si malgré l'aide, vous ne parvenez pas à trouver l'entreprise, vous pouvez contacter le support.",
+      errorOnSendOrNext: 'J\'ai un message d\'erreur lorsque je clique sur "envoyer" ou "suivant"',
+      errorOnSendOrNextContent1:
+        "Vérifiez votre connexion internet et ré-essayez d'envoyer le formulaire. Ce message d'erreur apparait souvent lorsque la connection internet a été momentanément coupée.",
+      errorOnSendOrNextContent2:
+        "Vous avez peut-être tenté de faire deux fois le même signalement. Il n'est pas possible d'effectuer deux fois un même signalement (même catégorie, même entreprise) à la suite.",
+      errorOnSendOrNextContent3: "Si vous n'arrivez toujours pas à envoyer le formulaire, vous pouvez contacter le support.",
+      reportedIssueTitle: "J'ai fait un signalement",
+      noUpdateSinceReport: "Je n'ai pas de nouvelle depuis que j'ai fait mon signalement",
+      noUpdateSinceReportContent1: `Après avoir envoyé votre signalement, vous avez dû recevoir un <b>accusé d'enregistrement</b> par email. Si ce n'est pas le cas, contactez le support. Il est possible que vous n'ayez pas validé la dernière étape ou que l'adresse email que vous avez renseignée comporte une erreur.`,
+      noUpdateSinceReportContent2: 'Ensuite, vous allez recevoir les informations suivantes :',
+      noUpdateSinceReportContent3: " un email lorsque l'entreprise aura lu votre signalement (si c'est le cas)",
+      noUpdateSinceReportContent4: " un email lorsque l'entreprise vous apportera une réponse (si c'est le cas)",
+      noUpdateSinceReportContent5:
+        "ou un email pour vous dire que l'entreprise n'a pas souhaité lire ou répondre à votre signalement (si c'est le cas)",
+      noUpdateSinceReportContent6:
+        "Les entreprises ont jusqu'à 8 semaines environ pour consulter et répondre à votre signalement.",
+      noUpdateSinceReportContent7:
+        "Le délai de lecture et de réponse peut varier d'une entreprise à l'autre. Si une entreprise a déjà un compte sur SignalConso, le délai sera plus rapide.",
+      noUpdateSinceReportContent8:
+        "Si la répression des fraudes décide de faire une enquête, vous ne recevrez pas d'email pour vous le dire.",
+      howToGetRefund: 'Comment obtenir un remboursement ou résoudre mon problème ?',
+      howToGetRefundContent1:
+        'Comme indiqué sur SignalConso, la répression des fraudes va utiliser votre signalement pour cibler les entreprises à contrôler.',
+      howToGetRefundContent2:
+        'Lors de ces contrôles, elle va regarder si de mauvaises pratiques sont effectivement exercées et si oui, les sanctionner.',
+      howToGetRefundContent3:
+        "Par contre, la répression des fraudes ne s'occupe pas d'obtenir votre remboursement ou votre indemnité.",
+      howToGetRefundContent4:
+        "C'est à vous d'entamer les démarches. Ces démarches vous ont été présentées à la fin de votre signalement et dans votre mail d'accusé de réception.",
+      howToGetRefundContent5: 'Vous pouvez également les retrouver sur cette page : ',
+      howToGetRefundContent6: 'Vos démarches pour être remboursé ou trouver une solution à votre problème',
+      modifyOrDeleteReport: 'Je veux modifier ou supprimer mon signalement ',
+      modifyOrDeleteReportContent1: ' Pour modifier ou supprimer votre signalement, vous pouvez ',
+      modifyOrDeleteReportContent2: 'contacter le support',
+      askQuestionToFraudRepression: 'Je veux poser une question à la répression des fraudes',
+      cantFindWhereToAsk: 'Je ne trouve pas où le faire',
+      cantFindWhereToAskContent1:
+        'En fonction de la catégorie choisie lors de votre parcours de signalement, ce bouton va éventuellement apparaître :',
+      cantFindWhereToAskContent2: "Il n'est pas proposé dans toutes les catégories.",
+      whereToEnterQuestion: 'Où dois-je saisir ma question ?',
+      whereToEnterQuestionContent: 'Vous pourrez décrire votre situation et poser votre question à l’étape 2 :',
+      errorOnSendOrNextQuestion: 'J\'ai un message d\'erreur lorsque je clique sur "envoyer" ou "suivant"',
+      errorOnSendOrNextQuestionContent1:
+        " Vérifiez votre connexion internet et ré-essayez d'envoyer le formulaire. Ce message d'erreur apparait souvent lorsque la connection internet a été momentanément coupée.",
+      errorOnSendOrNextQuestionContent2:
+        " Vous avez peut-être tenté de faire deux fois le même signalement. Il n'est pas possible d'effectuer deux fois un même signalement (même catégorie, même entreprise) à la suite.",
+      errorOnSendOrNextQuestionContent3:
+        " Si vous n'arrivez toujours pas à envoyer le formulaire, vous pouvez contacter le support.",
+      askedQuestionToFraudRepression: 'J’ai posé une question à la répression des fraudes',
+      noResponseReceived: 'Je n’ai pas de nouvelle',
+      noResponseReceivedContent:
+        'Si vous avez bien choisi l’option «M’informer sur mes droits auprès de la répression des fraudes» et que votre demande est explicite, vous recevrez très prochainement une réponse, en général sous 8 jours maximum, selon la complexité de la situation. Il n’est pas utile d’en formuler une autre, au contraire, cela peut créer une confusion.',
+      urgentRequest: 'Ma demande est urgente',
+      urgentRequestContent:
+        'Les demandes sont analysées dans le délai le plus rapide possible. Lorsque dans une réclamation, des échéances sont en jeu, la réponse vous rappellera les droits dont vous bénéficiez pour vous aider à les faire appliquer immédiatement, si les délais contractuels le permettent encore.',
+      foundAnswerAndWantToCancel: 'J’ai trouvé la réponse, je souhaite annuler',
+      foundAnswerAndWantToCancelContent:
+        'C’est très aimable à vous de souhaiter nous en avertir, pour cela vous pouvez refaire le parcours précédent en mentionnant vos nom et prénom et la résolution de votre problème; un lien sera fait entre votre 1ère demande et ces dernières informations. Sinon, vous pouvez attendre la réponse qui vous sera apportée.',
     },
     SocialNetwork: {
       YOUTUBE: 'Youtube',
