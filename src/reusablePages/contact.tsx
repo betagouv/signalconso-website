@@ -3,44 +3,37 @@ import {titleAndDescriptions} from 'core/titleAndDescriptions'
 import Head from 'next/head'
 import {Alert} from '@codegouvfr/react-dsfr/Alert'
 import Link from 'next/link'
+import {useI18n} from '../i18n/I18n'
 
 export const Contact = () => {
+  const {m} = useI18n()
+
   return (
     <>
       <Head>
-        <title>{titleAndDescriptions.contact.title}</title>
-        <meta name="description" content={titleAndDescriptions.contact.description} />
+        <title>{m.titleAndDescriptions.contact.title}</title>
+        <meta name="description" content={m.titleAndDescriptions.contact.description} />
       </Head>
       <ContentPageContainer>
-        <h1>Contact</h1>
-        <h2 className="fr-h4">Vous avez rencontré un problème avec une entreprise et vous souhaitez le signaler ?</h2>
-        <p>SignalConso est là pour ça ! Naviguez sur notre site et répondez simplement aux questions.</p>
-        <h2 className="fr-h4">Votre question concerne un problème technique rencontré sur SignalConso ?</h2>
+        <h1>{m.contact.title}</h1>
+        <h2 className="fr-h4">{m.contact.problemMessage}</h2>
+        <p>{m.contact.problemSolution}</p>
+        <h2 className="fr-h4">{m.contact.technicalIssue}</h2>
 
         <div>
-          Par exemple :
+          {m.contact.exampleText}
           <ul>
-            <li>Vous ne trouvez pas le SIRET de l’entreprise que vous voulez signaler</li>
-            <li>Vous rencontrez un bug lors de la navigation sur le site</li>
-            <li>Vous ne trouvez pas la bonne catégorie pour votre problème</li>
+            <li>{m.contact.example1}</li>
+            <li>{m.contact.example2}</li>
+            <li>{m.contact.example3}</li>
           </ul>
         </div>
         <div>
-          Dans ce cas écrivez-nous par email à&nbsp;
-          <Link
-            href="mailto:support@signal.conso.gouv.fr?subject=incident"
-            rel="noreferrer"
-            title="Vous rencontrez un problème technique avec notre site ? Contactez-nous (ouverture de la messagerie par défaut)."
-          >
+          {m.contact.emailText}&nbsp;
+          <Link href="mailto:support@signal.conso.gouv.fr?subject=incident" rel="noreferrer" title={m.contact.emailTitle}>
             support@signal.conso.gouv.fr
           </Link>
-          <Alert
-            className="fr-mt-4w"
-            severity="warning"
-            description="Cette adresse courriel n'est pas destinée au dépôt de votre signalement, qui ne pourra alors être  exploité. Tout
-            signalement doit exclusivement être déposé en suivant la procédure sur la page d'accueil du site."
-            title="Ne nous envoyez pas votre signalement par email... il ne sera pas lu."
-          />
+          <Alert className="fr-mt-4w" severity="warning" description={m.contact.alertDescription} title={m.contact.alertTitle} />
         </div>
       </ContentPageContainer>
     </>

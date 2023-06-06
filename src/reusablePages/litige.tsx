@@ -3,149 +3,128 @@ import {CallOut} from '@codegouvfr/react-dsfr/CallOut'
 import {Icon} from '@mui/material'
 import {ContentPageContainer} from 'components_simple/ContentPageContainer'
 import {externalLinks} from 'core/externalLinks'
-import {titleAndDescriptions} from 'core/titleAndDescriptions'
 import Head from 'next/head'
 import {ReactNode} from 'react'
 import {Accordion} from '@codegouvfr/react-dsfr/Accordion'
+import {useI18n} from '../i18n/I18n'
 
 function Accordions({children}: {children: ReactNode}) {
   return <div className="fr-accordions-group">{children}</div>
 }
 
 export const Litige = () => {
+  const {m} = useI18n()
+
   return (
     <>
       <Head>
-        <title>{titleAndDescriptions.contractualDispute.title}</title>
-        <meta name="description" content={titleAndDescriptions.contractualDispute.description} />
+        <title>{m.titleAndDescriptions.contractualDispute.title}</title>
+        <meta name="description" content={m.titleAndDescriptions.contractualDispute.description} />
       </Head>
       <ContentPageContainer>
-        <h1>Vos démarches pour être remboursé ou trouver une solution à votre problème</h1>
+        <h1>{m.litige.title}</h1>
         <Accordions>
-          <Accordion label="Démarche n°1 : J’écris un courrier à l’entreprise pour demander à résoudre mon problème">
-            <h3 className="fr-h6">Quand ?</h3>
+          <Accordion label={m.litige.step1.label}>
+            <h3 className="fr-h6">{m.litige.step1.when}</h3>
             <p>
-              Le plus tôt possible (conseillé). <br />
-              Je peux aussi attendre de voir si l’entreprise me répond avec SignalConso.
+              {m.litige.step1.whenDescription1}
+              <br />
+              {m.litige.step1.whenDescription2}
             </p>
 
-            <h3 className="fr-h6">À qui ?</h3>
+            <h3 className="fr-h6">{m.litige.step1.toWhom}</h3>
             <p>
-              Auprès du service client de l’entreprise.
-              <br /> Je peux trouver l’adresse du service client de l’entreprise dans mon contrat, sur son site internet ou dans
-              les conditions générales de vente.
+              {m.litige.step1.toWhomDescription1}
+              <br />
+              {m.litige.step1.toWhomDescription2}
             </p>
 
-            <h3 className="fr-h6">Comment ?</h3>
-            <p>En envoyant une lettre recommandée avec accusé de réception, en y joignant les deux documents ci-joints&nbsp;:</p>
+            <h3 className="fr-h6">{m.litige.step1.how}</h3>
+            <p>{m.litige.step1.howDescription}</p>
             <ul>
               <li>
                 <a
                   href="/docs/ModeleLettreLitige.txt"
                   rel="noreferrer"
                   target="_blank"
-                  title="Ouverture de la lettre type (nouvelle fenêtre)"
+                  title={m.litige.step1.downloadTitle}
                   download="ModeleLettreLitige.txt"
                 >
                   <Icon fontSize="small" sx={{verticalAlign: 'middle', mr: 1}}>
                     download
                   </Icon>
-                  une lettre type à compléter (zones entre [])
+                  {m.litige.step1.templateText}
                 </a>
               </li>
-              <li>mon signalement au format PDF</li>
+              <li>{m.litige.step1.signalementText}</li>
             </ul>
-            <p>Je garde une copie du courrier et la preuve de l’envoi.</p>
+            <p>{m.litige.step1.keepCopy}</p>
 
-            <h3 className="fr-h6">Pourquoi ?</h3>
-            <p>Ce courrier est la preuve de ma démarche. Il est obligatoire pour entamer d’autres démarches par la suite.</p>
+            <h3 className="fr-h6">{m.litige.step1.why}</h3>
+            <p>{m.litige.step1.whyDescription}</p>
           </Accordion>
-          <Accordion label="Démarche n°2 : Je contacte un médiateur de la consommation, c’est-à-dire une personne chargée de régler les problèmes des consommateurs avec les entreprises">
-            <h3 className="fr-h6">Quand ?</h3>
-            <p>Deux mois après avoir envoyé mon courrier, si je n’ai pas eu de réponse ou si la réponse ne me satisfait pas.</p>
+          <Accordion label={m.litige.step2.label}>
+            <h3 className="fr-h6">{m.litige.step2.when}</h3>
+            <p>{m.litige.step2.whenDescription}</p>
 
-            <h3 className="fr-h6">Qui ?</h3>
+            <h3 className="fr-h6">{m.litige.step2.who}</h3>
+            <p>{m.litige.step2.whoDescription}</p>
+
+            <h3 className="fr-h6">{m.litige.step2.how}</h3>
+            <p>{m.litige.step2.howDescription}</p>
+
+            <h3 className="fr-h6">{m.litige.step2.why}</h3>
+            <p>{m.litige.step2.whyDescription}</p>
+
+            <h3 className="fr-h6">{m.litige.step2.cost}</h3>
+            <p>{m.litige.step2.costDescription}</p>
+
+            <h3 className="fr-h6">{m.litige.step2.whatIfNoMediator}</h3>
             <p>
-              L’entreprise a l’obligation de communiquer le nom du médiateur qu’elle a choisi. Les coordonnées du médiateur sont
-              normalement écrites sur le site internet de l’entreprise ou sur le contrat, bon de commande…
-            </p>
-
-            <h3 className="fr-h6">Comment ?</h3>
-            <p>Je remplis le formulaire sur le site internet du médiateur ou je le contacte par voie postale.</p>
-
-            <h3 className="fr-h6">Pourquoi ?</h3>
-            <p>Le médiateur va m’aider à trouver un arrangement avec l’entreprise.</p>
-
-            <h3 className="fr-h6">Combien ça coûte ?</h3>
-            <p>C’est gratuit !</p>
-
-            <h3 className="fr-h6">Comment faire si je ne trouve pas le nom du médiateur ?</h3>
-            <p>
-              Je contacte le conciliateur le plus proche de chez moi.
+              {m.litige.step2.whatIfNoMediatorDescription1}
               <br />
-              Je le cherche sur le site&nbsp;
-              <a href={externalLinks.conciliateur} target="_blank" rel="noreferrer" title="Nouvelle fenêtre">
+              {m.litige.step2.whatIfNoMediatorDescription2}
+              <a href={externalLinks.conciliateur} target="_blank" rel="noreferrer" title={m.litige.step2.newWindow}>
                 conciliateurs.fr
               </a>
               .
               <br />
-              Il va m’aider à trouver une solution avec l’entreprise.
+              {m.litige.step2.whatIfNoMediatorDescription3}
               <br />
-              C’est gratuit !
+              {m.litige.step2.whatIfNoMediatorDescription4}
             </p>
           </Accordion>
-          <Accordion label="Démarche n°3 : Je vais en justice, c’est-à-dire que je demande un procès au tribunal.">
-            <Alert
-              small
-              className="fr-mt-1w fr-mb-2w"
-              severity="warning"
-              description="Attention, il est obligatoire d’avoir fait la démarche n°2 (médiateur ou conciliateur) avant de saisir le tribunal
-              pour un litige inférieur à 5 000 euros"
-            />
+          <Accordion label={m.litige.step3.label}>
+            <Alert small className="fr-mt-1w fr-mb-2w" severity="warning" description={m.litige.step3.warning} />
 
-            <h3 className="fr-h6">Quand ?</h3>
-            <p>Lorsque je n’ai pas trouvé de solution avec le médiateur ou le conciliateur.</p>
+            <h3 className="fr-h6">{m.litige.step3.when}</h3>
+            <p>{m.litige.step3.whenDescription}</p>
 
-            <h3 className="fr-h6">Comment ?</h3>
+            <h3 className="fr-h6">{m.litige.step3.how}</h3>
             <div>
               <p>
-                En consultant la page{' '}
-                <a
-                  href={externalLinks.vosDroits}
-                  target="_blank"
-                  rel="noreferrer"
-                  title="Service public - vos droits (nouvelle fenêtre)"
-                >
+                {m.litige.step3.howConsultPage}
+                <a href={externalLinks.vosDroits} target="_blank" rel="noreferrer" title={m.litige.step3.newWindow}>
                   {externalLinks.vosDroits}
                 </a>
               </p>
             </div>
 
-            <h3 className="fr-h6">Pourquoi ?</h3>
-            <p>Pour que le juge du tribunal décide qui est en tort et quelles solutions doivent être mises en place.</p>
+            <h3 className="fr-h6">{m.litige.step3.why}</h3>
+            <p>{m.litige.step3.whyDescription}</p>
 
-            <h3 className="fr-h6">Combien ça coûte ?</h3>
-            <p>
-              Aller au tribunal est gratuit mais des frais peuvent se rajouter au cours de la procédure (frais d’avocat, frais
-              d’expertise…).
-            </p>
+            <h3 className="fr-h6">{m.litige.step3.cost}</h3>
+            <p>{m.litige.step3.costDescription}</p>
           </Accordion>
         </Accordions>
-        <CallOut
-          className="fr-mt-4w fr-mb-4w"
-          iconId="ri-information-line"
-          title="Pour réaliser ces étapes, vous pouvez contacter une association de consommateurs"
-        >
+        <CallOut className="fr-mt-4w fr-mb-4w" iconId="ri-information-line" title={m.litige.callOut.associationCallOutTitle}>
           <>
-            Une association de consommateurs pourra vous aider à écrire les courriers de réclamation ou de mise en demeure,
-            contacter l'entreprise directement, vous aider à saisir la justice.
+            {m.litige.callOut.associationCallOutDescription1}
             <br />
-            <br /> Pour bénéficier de leur aide, vous devez payer une somme, appelée « adhésion ». Pour connaître le prix de cette
-            adhésion, vous pouvez les contacter directement. En fonction de votre situation, certaines associations peuvent
-            baisser le prix de l'adhésion.
+            <br /> {m.litige.callOut.associationCallOutDescription2}
             <br />
             <br />
-            Liste des associations de consommateurs officielles :{' '}
+            {m.litige.callOut.associationListTitle}
             <a href={externalLinks.associationConso} target="_blank" rel="noreferrer">
               {externalLinks.associationConso}
             </a>
@@ -155,3 +134,5 @@ export const Litige = () => {
     </>
   )
 }
+
+export default Litige
