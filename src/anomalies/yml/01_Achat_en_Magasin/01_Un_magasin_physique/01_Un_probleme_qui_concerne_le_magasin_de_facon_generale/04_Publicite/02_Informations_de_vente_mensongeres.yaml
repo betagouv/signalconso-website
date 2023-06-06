@@ -1,0 +1,44 @@
+title: Informations de vente mensongères
+desc: >-
+  Exemple : pancarte "produits locaux" or ce n'est pas le cas, affiche "pain
+  bio" or ce n'est pas le cas
+ccrfCode:
+  - 23B
+reponseconsoCode:
+  - '210'
+  - '2243'
+  - '271'
+detailInputs:
+  - label: Date du constat
+    type: DATE
+    defaultValue: SYSDATE
+  - label: Qu'est-ce qui est trompeur&#160;?
+    type: RADIO
+    options:
+      - L'emballage d'un produit
+      - Une affiche chez le commerçant
+      - Une annonce sur un catalogue
+      - Un site internet (à préciser)
+      - Un spot télé ou radio (à préciser)
+      - Un contrat ou un devis
+      - Le discours d'un vendeur
+      - La façon de mettre en vente
+      - Autre (à préciser)
+  - label: À propos de quoi est-ce trompeur&#160;?
+    type: RADIO
+    options:
+      - L'origine du produit
+      - La composition du produit
+      - Un label (bio par exemple)
+      - Une promesse de résultat
+      - Une marque
+      - Autre (à préciser)
+  - label: Pourquoi trouvez-vous ça trompeur ?
+    type: TEXTAREA
+    optional: true
+  - label: Avez-vous déjà contacté le commerçant pour ce problème&#160;?
+    type: RADIO
+    options:
+      - Oui
+      - Non
+fileLabel: Photo(s) si possible

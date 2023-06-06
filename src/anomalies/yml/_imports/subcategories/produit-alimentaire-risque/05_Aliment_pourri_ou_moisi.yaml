@@ -1,0 +1,9 @@
+title: Aliment pourri ou moisi
+detailInputs:
+  customimport: _imports/detailInputs/produit-alimentaire.yml
+fileLabel: Photos du produit / de l'emballage / du ticket / de la facture / de l'accident
+reponseconsoCode:
+  - '321'
+  - '322'
+  - '323'
+  - '311'

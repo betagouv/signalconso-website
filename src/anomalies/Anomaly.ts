@@ -18,6 +18,16 @@ export type Anomaly = {
   subcategories: Subcategory[]
 }
 
+type CompanyKindQuestion = {
+  label: string
+  options: CompanyKindQuestionOption[]
+}
+
+type CompanyKindQuestionOption = {
+  label: string
+  companyKind: CompanyKinds
+}
+
 type SubcategoryBase = {
   // ex: "3.2.1.3.1.1.1"
   // Not in the yaml, they are generated recursively
@@ -34,6 +44,7 @@ type SubcategoryBase = {
   reponseconsoCode?: string[] | null
   ccrfCode?: string[]
   companyKind?: CompanyKinds
+  companyKindQuestion?: CompanyKindQuestion
 }
 
 // A typical subcategory

@@ -1,0 +1,24 @@
+title: Un produit vendu dans un emballage
+desc: "Exemple\_: bouteille d'eau, conserve de légumes, paquet de chips"
+detailInputs:
+  - label: 'C''est un produit vendu&#160;:'
+    type: RADIO
+    options:
+      - au rayon frais
+      - au rayon surgelé
+      - à température ambiante
+  - label: Nom du produit
+    type: TEXT
+  - label: Marque
+    type: TEXT
+  - label: Numéro de lot (si possible)
+    type: TEXT
+    placeholder: il est imprimé sur l'emballage ou près de la date de consommation
+    optional: true
+  - label: Date limite (si possible)
+    type: DATE
+    optional: true
+  - label: Date du constat (ou d'achat suivant le cas)
+    type: DATE_NOT_IN_FUTURE
+    defaultValue: SYSDATE
+fileLabel: Photo du produit

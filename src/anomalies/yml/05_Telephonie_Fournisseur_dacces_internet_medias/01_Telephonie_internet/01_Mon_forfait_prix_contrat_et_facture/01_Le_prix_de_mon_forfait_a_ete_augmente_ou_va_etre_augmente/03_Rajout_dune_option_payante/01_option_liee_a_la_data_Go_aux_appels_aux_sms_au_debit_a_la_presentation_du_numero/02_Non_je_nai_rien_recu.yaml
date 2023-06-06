@@ -1,0 +1,9 @@
+title: Non, je n'ai rien reçu
+ccrfCode:
+  - '421'
+detailInputs:
+  - label: Date du début de l'option (vous pouvez préciser le premier mois facturé)
+    type: DATE
+  - label: Quel est le nom de cette option ?
+    type: TEXT
+    placeholder: Indiquez l'intitulé figurant la facture

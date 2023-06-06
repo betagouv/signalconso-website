@@ -1,0 +1,10 @@
+title: Publicité mensongère
+desc: >-
+  Exemple : le site internet mentionne un grand parc alors que ce n'est pas le
+  cas, la brochure parle des animations régulières alors qu'il y en a très peu
+ccrfCode:
+  - 23b
+reponseconsoCode:
+  - '210'
+tags:
+  - ReponseConso

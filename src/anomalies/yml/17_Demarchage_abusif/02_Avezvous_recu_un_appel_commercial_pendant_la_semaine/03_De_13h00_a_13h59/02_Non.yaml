@@ -1,0 +1,12 @@
+title: Non
+detailInputs:
+  - label: Date de l'appel
+    type: DATE
+    defaultValue: SYSDATE
+  - label: Est-ce que le vendeur s'est fait passer pour une autre entreprise&#160;?
+    type: RADIO
+    options:
+      - Non
+      - Oui (à préciser)
+  - label: Décrivez-nous plus en détail ce qui s'est passé
+    type: TEXTAREA

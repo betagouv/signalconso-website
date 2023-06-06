@@ -1,0 +1,5 @@
+title: Oui, j'ai été prévenu par email ou courrier
+ccrfCode:
+  - '226'
+blockingInfo:
+  customimport: _imports/blockingInfo/tel.yml

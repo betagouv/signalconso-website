@@ -1,0 +1,6 @@
+title: Il n'avait pas assez de monnaie
+blockingInfo:
+  content: >-
+    C'est à vous de faire l'appoint. Le  vendeur peut refuser le paiement en
+    espèces s'il ne dispose pas de suffisamment de monnaie.
+  notAFraudMessage: true

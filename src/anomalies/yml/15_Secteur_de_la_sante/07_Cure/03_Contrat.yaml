@@ -1,0 +1,7 @@
+title: Contrat
+desc: "Exemple\_: je souhaite annuler ma cure, le contrat n'est pas clair, mon contrat n'a pas été respecté "
+reponseconsoCode:
+  - '220'
+  - '422'
+tags:
+  - ReponseConso

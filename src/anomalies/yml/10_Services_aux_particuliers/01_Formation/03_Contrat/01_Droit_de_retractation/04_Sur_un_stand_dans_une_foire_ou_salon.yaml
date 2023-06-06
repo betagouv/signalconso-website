@@ -1,0 +1,7 @@
+title: Sur un stand dans une foire ou salon
+blockingInfo:
+  title: Vous ne pouvez plus vous rétracter
+  content: >-
+    Vous avez signé le contrat sur un stand de l'entreprise dans une foire ou un
+    salon. Il n'y a pas de délai de rétractation dans ce cas.
+  notAFraudMessage: true

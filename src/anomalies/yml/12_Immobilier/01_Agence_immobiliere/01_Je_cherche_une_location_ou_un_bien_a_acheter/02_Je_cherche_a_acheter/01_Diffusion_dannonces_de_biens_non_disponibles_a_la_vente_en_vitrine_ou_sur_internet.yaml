@@ -1,0 +1,9 @@
+title: >-
+  Diffusion d'annonces de biens non disponibles à la vente (en vitrine ou sur
+  internet)
+desc: "Exemple\_: la maison affichée en vitrine est en fait déjà vendue"
+tags:
+  - ReponseConso
+reponseconsoCode:
+  - '210'
+  - '220'

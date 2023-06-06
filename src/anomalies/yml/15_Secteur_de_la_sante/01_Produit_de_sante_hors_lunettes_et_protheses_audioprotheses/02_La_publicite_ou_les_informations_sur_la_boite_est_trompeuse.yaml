@@ -1,0 +1,28 @@
+title: La publicité (ou les informations sur la boîte) est trompeuse
+tags:
+  - ReponseConso
+reponseconsoCode:
+  - '210'
+  - '271'
+detailInputs:
+  - label: Date de constat (ou date d'achat)
+    type: DATE
+  - label: "Quel est le nom du produit\_?"
+    type: TEXT
+  - label: "Pourquoi trouvez-vous la publicité trompeuse\_?"
+    type: CHECKBOX
+    options:
+      - le produit ne remplit pas sa promesse
+      - la photo du produit est trompeuse
+      - les labels (bio, naturel...) sont trompeurs
+      - autre (à préciser)
+  - label: "Où avez-vous vu ces informations\_?"
+    type: CHECKBOX
+    options:
+      - site internet
+      - publicité (affiche, dans un magazine)
+      - sur la boîte
+      - autre (à préciser)
+fileLabel: >-
+  Merci de joindre une photo de la publicité ou de la boîte afin de traiter au
+  mieux votre signalement.

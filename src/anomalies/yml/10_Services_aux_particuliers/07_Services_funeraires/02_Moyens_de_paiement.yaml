@@ -1,0 +1,6 @@
+title: Moyens de paiement
+desc: 'Exemple : carte bancaire refusée'
+tags:
+  - ReponseConso
+subcategories:
+  customimport: _imports/subcategories/paiement

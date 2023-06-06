@@ -1,0 +1,37 @@
+title: Indisponibilité des produits en publicité
+ccrfCode:
+  - 23B
+reponseconsoCode:
+  - '210'
+  - '2243'
+detailInputs:
+  - label: Date du constat
+    type: DATE
+    defaultValue: SYSDATE
+  - label: De quelle publicité s'agit-il&#160;?
+    type: RADIO
+    options:
+      - Catalogue papier
+      - Publicité sur internet
+      - Spot radio (à préciser)
+      - Spot télé (à préciser)
+      - Autre (à préciser)
+  - label: Quel est le produit que vous vouliez&#160;?
+    type: TEXT
+    placeholder: Type, nom et marque du produit
+  - label: >-
+      Le commerçant vous-a-t-il proposé de commander le produit ou d'en avoir un
+      autre équivalent&#160;?
+    type: RADIO
+    options:
+      - Oui
+      - Non
+      - Je n'ai pas demandé
+    optional: true
+  - label: >-
+      Précisez si possible la publicité concernée. Vous pouvez par exemple
+      récupérer le lien de la publicité sur le site <a
+      href="https&#58;//www.bonial.fr" target="_blank">bonial.fr</a>&#160;?
+    type: TEXT
+    placeholder: Lien vers la publicité
+fileLabel: Photo(s) de la publicité si possible
