@@ -62,6 +62,10 @@ export const fr = {
         title: 'Titre de la page Contact',
         description: 'Description de la page Contact',
       },
+      contractualDispute: {
+        title: "Résolution d'un problème individuel (litige) - SignalConso",
+        description: 'Démarches conseillées par SignalConso pour résoudre un problème individuel (litige) avec une entreprise ',
+      },
     },
     introApple: 'App Store',
     introBetween: 'ou le ',
@@ -271,6 +275,74 @@ export const fr = {
       alertDescription:
         "Cette adresse courriel n'est pas destinée au dépôt de votre signalement, qui ne pourra alors être exploité. Tout signalement doit exclusivement être déposé en suivant la procédure sur la page d'accueil du site.",
       alertTitle: 'Ne nous envoyez pas votre signalement par email... il ne sera pas lu.',
+    },
+    litige: {
+      title: 'Vos démarches pour être remboursé ou trouver une solution à votre problème',
+      step1: {
+        label: 'Démarche n°1 : J’écris un courrier à l’entreprise pour demander à résoudre mon problème',
+        when: 'Quand ?',
+        whenDescription1: 'Le plus tôt possible (conseillé).',
+        whenDescription2: 'Je peux aussi attendre de voir si l’entreprise me répond avec SignalConso.',
+        toWhom: 'À qui ?',
+        toWhomDescription1: 'Auprès du service client de l’entreprise.',
+        toWhomDescription2:
+          'Je peux trouver l’adresse du service client de l’entreprise dans mon contrat, sur son site internet ou dans les conditions générales de vente.',
+        how: 'Comment ?',
+        howDescription:
+          'En envoyant une lettre recommandée avec accusé de réception, en y joignant les deux documents ci-joints :',
+        downloadTitle: 'Ouverture de la lettre type (nouvelle fenêtre)',
+        templateText: 'une lettre type à compléter (zones entre [])',
+        signalementText: 'mon signalement au format PDF',
+        keepCopy: 'Je garde une copie du courrier et la preuve de l’envoi.',
+        why: 'Pourquoi ?',
+        whyDescription:
+          'Ce courrier est la preuve de ma démarche. Il est obligatoire pour entamer d’autres démarches par la suite.',
+      },
+      step2: {
+        label:
+          'Démarche n°2 : Je contacte un médiateur de la consommation, c’est-à-dire une personne chargée de régler les problèmes des consommateurs avec les entreprises',
+        when: 'Quand ?',
+        whenDescription:
+          'Deux mois après avoir envoyé mon courrier, si je n’ai pas eu de réponse ou si la réponse ne me satisfait pas.',
+        who: 'Qui ?',
+        whoDescription:
+          'L’entreprise a l’obligation de communiquer le nom du médiateur qu’elle a choisi. Les coordonnées du médiateur sont normalement écrites sur le site internet de l’entreprise ou sur le contrat, bon de commande…',
+        how: 'Comment ?',
+        howDescription: 'Je remplis le formulaire sur le site internet du médiateur ou je le contacte par voie postale.',
+        why: 'Pourquoi ?',
+        whyDescription: 'Le médiateur va m’aider à trouver un arrangement avec l’entreprise.',
+        cost: 'Combien ça coûte ?',
+        costDescription: 'C’est gratuit !',
+        whatIfNoMediator: 'Comment faire si je ne trouve pas le nom du médiateur ?',
+        newWindow: 'Nouvelle fenêtre',
+        whatIfNoMediatorDescription1: 'Je contacte le conciliateur le plus proche de chez moi.',
+        whatIfNoMediatorDescription2: 'Je le cherche sur le site ',
+        whatIfNoMediatorDescription3: 'Il va m’aider à trouver une solution avec l’entreprise.',
+        whatIfNoMediatorDescription4: 'C’est gratuit !',
+      },
+      step3: {
+        label: 'Démarche n°3 : Je vais en justice, c’est-à-dire que je demande un procès au tribunal.',
+        warning:
+          'Attention, il est obligatoire d’avoir fait la démarche n°2 (médiateur ou conciliateur) avant de saisir le tribunal pour un litige inférieur à 5 000 euros',
+        when: 'Quand ?',
+        whenDescription: 'Lorsque je n’ai pas trouvé de solution avec le médiateur ou le conciliateur.',
+        how: 'Comment ?',
+        howConsultPage: 'En consultant la page ',
+        newWindow: 'Service public - vos droits (nouvelle fenêtre)',
+        why: 'Pourquoi ?',
+        whyDescription: 'Pour que le juge du tribunal décide qui est en tort et quelles solutions doivent être mises en place.',
+        cost: 'Combien ça coûte ?',
+        costDescription:
+          'Aller au tribunal est gratuit mais des frais peuvent se rajouter au cours de la procédure (frais d’avocat, frais d’expertise…).',
+      },
+      callOut: {
+        associationCallOutTitle: 'Pour réaliser ces étapes, vous pouvez contacter une association de consommateurs',
+        associationCallOutDescription1:
+          "Une association de consommateurs pourra vous aider à écrire les courriers de réclamation ou de mise en demeure, contacter l'entreprise directement, vous aider à saisir la justice.",
+        associationCallOutDescription2:
+          "Pour bénéficier de leur aide, vous devez payer une somme, appelée « adhésion ». Pour connaître le prix de cette adhésion, vous pouvez les contacter directement. En fonction de votre situation, certaines associations peuvent baisser le prix de l'adhésion.",
+        associationListTitle: 'Liste des associations de consommateurs officielles : ',
+      },
     },
     SocialNetwork: {
       YOUTUBE: 'Youtube',
