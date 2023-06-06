@@ -1,5 +1,3 @@
-import {CallOut} from '@codegouvfr/react-dsfr/CallOut'
-import {BigReportButton} from 'components_simple/Buttons'
 import {ContentPageContainer} from 'components_simple/ContentPageContainer'
 import {titleAndDescriptions} from 'core/titleAndDescriptions'
 import Head from 'next/head'
@@ -32,10 +30,7 @@ export const CommentCaMarche = () => {
           >
             <p>
               Signalez le problème (anonymement ou non) ou posez directement votre question auprès d’un agent de la DGCCRF (la
-              répression des fraudes) :
-            </p>
-            <p className="text-center">
-              <BigReportButton />
+              répression des fraudes).
             </p>
             <p>Dans tous les cas, SignalConso vous oriente et vous conseille.</p>
           </Card>
@@ -58,15 +53,6 @@ export const CommentCaMarche = () => {
               signalement.
             </p>
           </Card>
-          <div className="fr-callout">
-            <p className="fr-callout__text">
-              Essayez par vous même ! Si vous avez rencontré un problème avec une entreprise, vous pouvez faire votre premier
-              signalement :{' '}
-            </p>
-            <p className="text-center">
-              <BigReportButton />
-            </p>
-          </div>
         </div>
       </ContentPageContainer>
     </>

@@ -1,7 +1,8 @@
+import {Button} from '@codegouvfr/react-dsfr/Button'
 import {CallOut} from '@codegouvfr/react-dsfr/CallOut'
 import {useColors} from '@codegouvfr/react-dsfr/useColors'
 import {findAnomaly} from 'anomalies/Anomalies'
-import {BigReportButton} from 'components_simple/Buttons'
+import {Anomaly} from 'anomalies/Anomaly'
 import {LandingData, allVisibleLandings} from 'landings/landingDataUtils'
 import {GetStaticPaths, GetStaticProps} from 'next'
 import Head from 'next/head'
@@ -9,7 +10,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import {ReactNode, useRef} from 'react'
 import {AnomalyTile} from '../components_simple/AnomalyTile/AnomalyTile'
-import {pagesDefs} from '../core/pagesDefinitions'
+import {buildLinkStartReport, pagesDefs} from '../core/pagesDefinitions'
 
 export const getStaticPaths: GetStaticPaths = () => {
   const paths = allVisibleLandings().map(_ => ({
@@ -166,6 +167,33 @@ export default function LandingPage({dynamicPath}: {dynamicPath: string}) {
         )}
       </div>
     </>
+  )
+}
+
+function BigReportButton({className = '', target}: {className?: string; target: Anomaly | 'home' | (() => void)}) {
+  const props = {
+    iconId: 'fr-icon-alarm-warning-line',
+    className,
+    size: 'large',
+  } as const
+  const text = 'Je signale un problème'
+  if (typeof target === 'function') {
+    return (
+      <Button {...props} onClick={target}>
+        {text}
+      </Button>
+    )
+  }
+  return (
+    <Button
+      {...props}
+      linkProps={{
+        href: target === 'home' ? pagesDefs.index.url : buildLinkStartReport(target),
+      }}
+      size="large"
+    >
+      {text}
+    </Button>
   )
 }
 
