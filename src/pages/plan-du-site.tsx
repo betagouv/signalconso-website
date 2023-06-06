@@ -18,7 +18,7 @@ const PlanDuSite = () => {
         <h2 className="fr-h4">Pages générales</h2>
         <ul>
           <li>
-            <Link href={pagesDefs.index.url}>Accueil</Link>
+            <Link href={pagesDefs.index.url}>Faire un signalement</Link>
           </li>
           <li>
             <Link href={pagesDefs.suiviEtViePrivee.url}>Suivi d'audience et vie privée</Link>

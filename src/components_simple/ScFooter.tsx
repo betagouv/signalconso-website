@@ -27,7 +27,7 @@ export function ScFooter() {
         accessibility="partially compliant"
         accessibilityLinkProps={{href: pagesDefs.accessibilite.url}}
         termsLinkProps={{href: pagesDefs.conditionsGeneralesUtilisation.url}}
-        homeLinkProps={{href: '/', title: 'Accueil - SignalConso'}}
+        homeLinkProps={{href: '/', title: 'Faire un signalement - SignalConso'}}
         personalDataLinkProps={{href: pagesDefs.suiviEtViePrivee.url}}
         cookiesManagementLinkProps={{href: pagesDefs.cookies.url}}
         bottomItems={[
