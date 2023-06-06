@@ -12,7 +12,7 @@ function Accordions({children}: {children: ReactNode}) {
   return <div className="fr-accordions-group">{children}</div>
 }
 
-const Litige = () => {
+export const Litige = () => {
   const {m} = useI18n()
 
   return (
