@@ -4,4 +4,4 @@ import {Metadata} from 'next'
 
 export const metadata: Metadata = getMetadata()
 
-export default Contact
+export default () => <Contact isWebView={false} />

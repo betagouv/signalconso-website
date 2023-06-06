@@ -1,8 +1,8 @@
 import {ContentPageContainer} from 'components_simple/ContentPageContainer'
-import Image from 'next/image'
+import {Metadata} from 'next'
 import {ReactNode} from 'react'
 import {getI18n} from '../i18n/I18nDictionnary'
-import {Metadata} from 'next'
+import {BigReportButton} from 'components_simple/BigReportButton/BigReportButton'
 
 export function getMetadata(): Metadata {
   const {messages} = getI18n('fr')
@@ -13,7 +13,7 @@ export function getMetadata(): Metadata {
   }
 }
 
-export const CommentCaMarche = () => {
+export const CommentCaMarche = ({isWebView}: {isWebView: boolean}) => {
   const {messages} = getI18n('fr')
 
   return (
@@ -27,6 +27,9 @@ export const CommentCaMarche = () => {
           </Card>
           <Card img="/image/illustrations/report.png" title={messages.commentCaMarche.step2.title}>
             <p>{messages.commentCaMarche.step2.description1}</p>
+            <p className="text-center">
+              <BigReportButton {...{isWebView}} />
+            </p>
             <p>{messages.commentCaMarche.step2.description2}</p>
           </Card>
           <Card img="/image/illustrations/company.png" title={messages.commentCaMarche.step3.title}>
@@ -37,6 +40,15 @@ export const CommentCaMarche = () => {
             <p>{messages.commentCaMarche.step4.description1}</p>
             <p>{messages.commentCaMarche.step4.description2}</p>
           </Card>
+          <div className="fr-callout">
+            <p className="fr-callout__text">
+              Essayez par vous même ! Si vous avez rencontré un problème avec une entreprise, vous pouvez faire votre premier
+              signalement :{' '}
+            </p>
+            <p className="text-center">
+              <BigReportButton {...{isWebView}} />
+            </p>
+          </div>
         </div>
       </ContentPageContainer>
     </>

@@ -3,4 +3,4 @@ import {Metadata} from 'next'
 
 export const metadata: Metadata = getMetadata()
 
-export default CommentCaMarche
+export default () => <CommentCaMarche isWebView />

@@ -92,3 +92,7 @@ export function getKeys<T extends object>(obj: T) {
 }
 
 export const iconArrowRight = 'fr-icon-arrow-right-s-line'
+
+export function sendMessageToReactNative(message: string) {
+  window.ReactNativeWebView?.postMessage(message)
+}
