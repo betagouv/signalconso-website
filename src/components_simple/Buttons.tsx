@@ -1,8 +1,9 @@
 import {FrIconClassName, RiIconClassName} from '@codegouvfr/react-dsfr'
 import Button from '@codegouvfr/react-dsfr/Button'
+import {buildLinkHomePickCategory} from 'core/pagesDefinitions'
 import {useI18n} from 'i18n/I18n'
 import {ReactNode} from 'react'
-import {iconArrowRight} from 'utils/utils'
+import {iconArrowRight, sendMessageToReactNative} from 'utils/utils'
 
 export function BtnNext({onClick}: {onClick: () => void}) {
   const {m} = useI18n()
@@ -47,5 +48,40 @@ export function ButtonWithLoader({
       {loading && <div className="sc-loader w-4 h-4 mr-2"></div>}
       {children}
     </Button>
+  )
+}
+
+export function BigReportButton({
+  className = '',
+  text,
+  onClick,
+  isWebView,
+}: {
+  className?: string
+  text?: string
+  onClick?: () => void
+  isWebView: boolean
+}) {
+  const {m} = useI18n()
+  const finalText = text ?? m.landing.bigReportButton
+  const props = {
+    iconId: 'fr-icon-alarm-warning-line',
+    className,
+    size: 'large',
+    children: finalText,
+  } as const
+  if (typeof onClick === 'function') {
+    return <Button {...props} onClick={onClick} />
+  }
+  if (isWebView) {
+    return <Button {...props} onClick={() => sendMessageToReactNative('home-start-report')} />
+  }
+  return (
+    <Button
+      {...props}
+      linkProps={{
+        href: buildLinkHomePickCategory(),
+      }}
+    />
   )
 }

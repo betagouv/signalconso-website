@@ -96,3 +96,7 @@ export const iconArrowRight = 'fr-icon-arrow-right-s-line'
 export function hasNoDuplicates(arr: string[]): boolean {
   return new Set(arr).size === arr.length
 }
+
+export function sendMessageToReactNative(message: string) {
+  window.ReactNativeWebView?.postMessage(message)
+}

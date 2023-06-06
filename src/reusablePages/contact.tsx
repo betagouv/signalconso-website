@@ -2,11 +2,11 @@ import {ContentPageContainer} from 'components_simple/ContentPageContainer'
 import Head from 'next/head'
 import {Alert} from '@codegouvfr/react-dsfr/Alert'
 import Link from 'next/link'
-import {useI18n} from '../i18n/I18n'
+import {BigReportButton} from 'components_simple/Buttons'
+import {useI18n} from 'i18n/I18n'
 
-export const Contact = () => {
+export const Contact = ({isWebView}: {isWebView: boolean}) => {
   const {m} = useI18n()
-
   return (
     <>
       <Head>
@@ -17,8 +17,10 @@ export const Contact = () => {
         <h1>{m.contact.title}</h1>
         <h2 className="fr-h4">{m.contact.problemMessage}</h2>
         <p>{m.contact.problemSolution}</p>
+        <div className="text-center mb-6">
+          <BigReportButton {...{isWebView}} />
+        </div>
         <h2 className="fr-h4">{m.contact.technicalIssue}</h2>
-
         <div>
           {m.contact.exampleText}
           <ul>

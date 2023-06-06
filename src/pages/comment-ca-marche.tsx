@@ -1,3 +1,5 @@
 import {CommentCaMarche} from 'reusablePages/comment-ca-marche'
 
-export default CommentCaMarche
+export default () => {
+  return <CommentCaMarche isWebView={false} />
+}

@@ -10,7 +10,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import {ReactNode, useRef} from 'react'
 import {AnomalyTile} from '../components_simple/AnomalyTile/AnomalyTile'
-import {buildLinkStartReport, pagesDefs} from '../core/pagesDefinitions'
+import {buildLinkHomePickCategory, buildLinkStartReport, pagesDefs} from '../core/pagesDefinitions'
 import {useI18n} from '../i18n/I18n'
 
 export const getStaticPaths: GetStaticPaths = () => {
@@ -75,7 +75,7 @@ export default function LandingPage({dynamicPath}: {dynamicPath: string}) {
         >
           <h1 className="">{landingData.title}</h1>
           <span className="block mt-4  text-2xl">{landingData.catchPhrase}</span>
-          <BigReportButton target={buttonTarget} className="mt-8" />
+          <BigButton target={buttonTarget} className="mt-8" />
         </div>
 
         <div className={`${container} mb-16`}>
@@ -121,7 +121,7 @@ export default function LandingPage({dynamicPath}: {dynamicPath: string}) {
             </div>
           ) : (
             <div className="flex justify-center items-center">
-              <BigReportButton target={buttonTarget} className="mt-10" />
+              <BigButton target={buttonTarget} className="mt-10" />
             </div>
           )}
         </div>
@@ -161,33 +161,6 @@ export default function LandingPage({dynamicPath}: {dynamicPath: string}) {
   )
 }
 
-function BigReportButton({className = '', target}: {className?: string; target: Anomaly | 'home' | (() => void)}) {
-  const {m} = useI18n()
-  const props = {
-    iconId: 'fr-icon-alarm-warning-line',
-    className,
-    size: 'large',
-  } as const
-  if (typeof target === 'function') {
-    return (
-      <Button {...props} onClick={target}>
-        {m.landing.bigReportButton}
-      </Button>
-    )
-  }
-  return (
-    <Button
-      {...props}
-      linkProps={{
-        href: target === 'home' ? pagesDefs.index.url : buildLinkStartReport(target),
-      }}
-      size="large"
-    >
-      {m.landing.bigReportButton}
-    </Button>
-  )
-}
-
 function HeroCard({title, subtext, picto}: {title: string; subtext: string; picto: ReactNode}) {
   return (
     <div className="border border-solid border-gray-300 border-b-4 border-b-sclightblue w-[344px] h-[220px] gap-y-2 flex flex-col items-center justify-center p-4">
@@ -210,5 +183,32 @@ function UserQuote({report}: {report: LandingData['sampleReports'][number]}) {
         <p className="fr-quote__author">{report.author}</p>
       </figcaption>
     </figure>
+  )
+}
+
+function BigButton({className = '', target = 'home'}: {className?: string; target?: Anomaly | 'home' | (() => void)}) {
+  const {m} = useI18n()
+  const props = {
+    iconId: 'fr-icon-alarm-warning-line',
+    className,
+    size: 'large',
+  } as const
+  const text = m.landing.bigReportButton
+  if (typeof target === 'function') {
+    return (
+      <Button {...props} onClick={target}>
+        {text}
+      </Button>
+    )
+  }
+  return (
+    <Button
+      {...props}
+      linkProps={{
+        href: target === 'home' ? buildLinkHomePickCategory() : buildLinkStartReport(target),
+      }}
+    >
+      {text}
+    </Button>
   )
 }

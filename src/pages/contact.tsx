@@ -1,3 +1,3 @@
 import {Contact} from 'reusablePages/contact'
 
-export default Contact
+export default () => <Contact isWebView={false} />

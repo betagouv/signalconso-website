@@ -1,12 +1,12 @@
+import {BigReportButton} from 'components_simple/Buttons'
 import {ContentPageContainer} from 'components_simple/ContentPageContainer'
 import Head from 'next/head'
 import Image from 'next/image'
 import {ReactNode} from 'react'
 import {useI18n} from '../i18n/I18n'
 
-export const CommentCaMarche = () => {
-  const {m} = useI18n() // Utilisez la fonction useI18n pour accéder aux traductions
-
+export const CommentCaMarche = ({isWebView}: {isWebView: boolean}) => {
+  const {m} = useI18n()
   return (
     <>
       <Head>
@@ -22,6 +22,9 @@ export const CommentCaMarche = () => {
           </Card>
           <Card img="/image/illustrations/report.png" title={m.commentCaMarche.step2.title}>
             <p>{m.commentCaMarche.step2.description1}</p>
+            <p className="text-center">
+              <BigReportButton {...{isWebView}} />
+            </p>
             <p>{m.commentCaMarche.step2.description2}</p>
           </Card>
           <Card img="/image/illustrations/company.png" title={m.commentCaMarche.step3.title}>
@@ -32,6 +35,15 @@ export const CommentCaMarche = () => {
             <p>{m.commentCaMarche.step4.description1}</p>
             <p>{m.commentCaMarche.step4.description2}</p>
           </Card>
+          <div className="fr-callout">
+            <p className="fr-callout__text">
+              Essayez par vous même ! Si vous avez rencontré un problème avec une entreprise, vous pouvez faire votre premier
+              signalement :{' '}
+            </p>
+            <p className="text-center">
+              <BigReportButton {...{isWebView}} />
+            </p>
+          </div>
         </div>
       </ContentPageContainer>
     </>
