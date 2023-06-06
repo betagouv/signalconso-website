@@ -8,7 +8,12 @@ export function ArticleAppMobile() {
   return (
     <div>
       <div className="float-left mr-4">
-        <Image width={177} height={193} src={`/image/actualites/mobile_app_screenshots.png`} alt={m.articleAppMobile.capturesEcran} />
+        <Image
+          width={177}
+          height={193}
+          src={`/image/actualites/mobile_app_screenshots.png`}
+          alt={m.articleAppMobile.capturesEcran}
+        />
       </div>
       <p>
         {m.articleAppMobile.intro1}
