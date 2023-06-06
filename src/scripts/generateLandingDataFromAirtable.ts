@@ -1,14 +1,14 @@
 import fs from 'fs'
 import path from 'path'
 import Airtable from 'airtable'
-import {appConfig} from '../../core/appConfig'
+import {appConfig} from '../core/appConfig'
 import {AirtableBase} from 'airtable/lib/airtable_base'
 import mapKeys from 'lodash/mapKeys'
 import findKey from 'lodash/findKey'
 import sortBy from 'lodash/sortBy'
-import {allVisibleAnomalies, findAnomaly} from '../../anomalies/Anomalies'
+import {allVisibleAnomalies, findAnomaly} from '../anomalies/Anomalies'
 import {LandingData} from 'landings/landingDataUtils'
-import {hasNoDuplicates} from '../../utils/utils'
+import {hasNoDuplicates} from '../utils/utils'
 
 // This script reads data from our Airtable account
 // Then it outputs all the texts for our landing pages.

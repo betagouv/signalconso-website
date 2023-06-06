@@ -3,8 +3,8 @@ import path from 'path'
 
 const files = [
   {
-    input: 'anomalies.json',
-    output: 'minimized-anomalies.json',
+    input: path.resolve('./src/anomalies/json/anomalies.json'),
+    output: path.resolve('./src/anomalies/json/minimized-anomalies.json'),
   },
 ]
 
@@ -17,10 +17,8 @@ const extractWantedPropsFromSubcategories = (obj: any) => {
   }
 }
 
-const root = path.join(__dirname, '..', 'yml')
-files.forEach(file => {
-  const obj = JSON.parse(fs.readFileSync(path.join(root, file.input), {encoding: 'utf-8'}))
+files.forEach(({input, output}) => {
+  const obj = JSON.parse(fs.readFileSync(input, {encoding: 'utf-8'}))
   const minimizedJson = obj.filter((_: any) => !_.isHiddenDemoCategory).map(extractWantedPropsFromSubcategories)
-  const outputFile = path.join(root, file.output)
-  fs.writeFileSync(outputFile, JSON.stringify(minimizedJson, null))
+  fs.writeFileSync(output, JSON.stringify(minimizedJson, null))
 })

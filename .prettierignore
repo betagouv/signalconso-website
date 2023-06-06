@@ -19,6 +19,7 @@
 
 /src/anomalies/yml/*
 /src/anomalies/json/anomalies.json
+/src/anomalies/json/minimized-anomalies.json
 
 npm-debug.log*
 yarn-debug.log*

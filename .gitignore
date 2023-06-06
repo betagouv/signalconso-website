@@ -41,7 +41,7 @@ src/anomalies/yml/anomalies.json
 src/anomalies/json/anomalies.json
 public/sitemap.xml
 
-src/anomalies/yml/minimized-anomalies.json
+src/anomalies/json/minimized-anomalies.json
 
 landings.csv
 
