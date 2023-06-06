@@ -7,7 +7,7 @@ import {IllustrationStepper} from 'components_simple/IllustrationStepper/StepIll
 import {useI18n} from 'i18n/I18n'
 import dynamic from 'next/dynamic'
 import Head from 'next/head'
-import {useEffect, useMemo} from 'react'
+import {useEffect, useMemo, useState} from 'react'
 import * as smoothscroll from 'smoothscroll-polyfill'
 import company from '../../public/image/illustrations/company.png'
 import consumer from '../../public/image/illustrations/consumer.png'
@@ -30,8 +30,11 @@ const Home = () => {
   const _report = useReportFlowContext()
   const hasStoredReport = useMemo(() => !!_report.reportDraft.anomaly, [_report.reportDraft])
   const dsfrTheme = useColors()
-
   const fIndex = createFuseIndex(allVisibleAnomalies())
+
+  useEffect(() => {
+    throw new Error('@fooo')
+  })
 
   const fuse = new Fuse(fIndex, {
     keys: ['title', 'desc'],

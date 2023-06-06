@@ -524,9 +524,9 @@ export const fr = {
     detailsTextAreaTransmittableAnonymous: ` Si vous ne souhaitez pas que l'entreprise connaisse votre identité, <b>ne citez rien de personnel</b>.`,
     detailsTextAreaNotTransmittable: `Ce texte sera lu <b>uniquement par la répression des fraudes.</b>`,
     detailsTextAreaEmployeeConsumer: `Rien ne sera communiqué à votre employeur.`,
-    pageNotFoundTitle: `Cette adresse n'existe plus.`,
+    pageNotFoundTitle: `Page non trouvée`,
     pageNotFoundHeadTitle: `SignalConso : Page non trouvée`,
-    pageNotFoundDesc: `Une nouvelle version de <b>SignalConso</b> est en ligne depuis le 4 avril 2022.<br/> La page que vous recherchez existe probablement toujours,<br/> mais son adresse a changé.`,
+    pageNotFoundDesc: `Vous êtes bien sur SignalConso. Mais vous avez suivi un lien vers une page qui n'existe pas, ou qui a changé d'adresse.`,
     month_: {
       1: 'Janvier',
       2: 'Février',
