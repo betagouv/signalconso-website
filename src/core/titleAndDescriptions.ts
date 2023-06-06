@@ -1,9 +1,4 @@
 export const titleAndDescriptions = {
-  quiSommesNous: {
-    title: 'Qui sommes-nous ? - SignalConso',
-    description:
-      "SignalConso est un service proposé par la DGCCRF (Direction Générale de la Concurrence, de la Consommation et de la Répression des Fraudes) au travers d'une Startup d’État. Il permet à la fois de comprendre ses droits en tant que consommateurs et d’être aidé pour les faire respecter.",
-  },
   aide: {
     title: 'Aide - SignalConso',
     description: "Consultez l'aide et les questions fréquentes sur SignalConso",

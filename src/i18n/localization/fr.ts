@@ -66,6 +66,11 @@ export const fr = {
         title: "Résolution d'un problème individuel (litige) - SignalConso",
         description: 'Démarches conseillées par SignalConso pour résoudre un problème individuel (litige) avec une entreprise ',
       },
+      quiSommesNous: {
+        title: 'Qui sommes-nous ? - SignalConso',
+        description:
+          "SignalConso est un service proposé par la DGCCRF (Direction Générale de la Concurrence, de la Consommation et de la Répression des Fraudes) au travers d'une Startup d’État. Il permet à la fois de comprendre ses droits en tant que consommateurs et d’être aidé pour les faire respecter.",
+      },
     },
     introApple: 'App Store',
     introBetween: 'ou le ',
@@ -343,6 +348,28 @@ export const fr = {
           "Pour bénéficier de leur aide, vous devez payer une somme, appelée « adhésion ». Pour connaître le prix de cette adhésion, vous pouvez les contacter directement. En fonction de votre situation, certaines associations peuvent baisser le prix de l'adhésion.",
         associationListTitle: 'Liste des associations de consommateurs officielles : ',
       },
+    },
+    quiSommesNous: {
+      title: 'Qui sommes-nous ?',
+      structureTitle: 'Notre structure',
+      structureDescription:
+        'Nous sommes ce qu’on appelle une « Startup d’État ». Il s’agit d’une petite équipe qui crée un service public numérique pour répondre à un problème qui touche les citoyens. Elle n’a pas pour objectif de faire du profit, mais de maximiser son impact social en répondant aux besoins des utilisateurs.',
+      structureDGCCRFDescription: 'Notre Startup d’État est rattachée à la ',
+      structureDGCCRFLink: 'Direction Générale de la Concurrence, de la Consommation et de la Répression des Fraudes',
+      structureDGCCRFMissionDescription:
+        "(la DGCCRF, plus connue du grand public sous le terme «la répression des fraudes») dont la mission s'articule autour de trois axes :",
+      structureDGCCRFMarketRegulation: 'la régulation concurrentielle des marchés ;',
+      structureDGCCRFConsumerProtection: 'la protection économique des consommateurs ;',
+      structureDGCCRFConsumerSafety: 'la sécurité des consommateurs.',
+      workingMethodTitle: 'Notre façon de travailler',
+      workingMethodDescription:
+        'Un seul crédo : être au plus près des besoins des usagers ! Pour ce faire, nous basons notre travail sur l’expérimentation. Une idée ? Nous la testons !',
+      workingMethodProductEvolution:
+        'C’est pourquoi notre produit n’est pas figé mais en perpétuelle évolution. Nous rencontrons régulièrement des consommateurs pour tester l’ergonomie, le vocabulaire utilisé ou les réponses apportées.',
+      workingMethodQuote: '« Je n’ai pas échoué, j’ai juste trouvé 10.000 moyens qui ne fonctionnent pas. »',
+      workingMethodQuoteAuthor: '— Thomas Edison',
+      teamTitle: 'Notre équipe',
+      formerMembersTitle: 'Anciens membres',
     },
     SocialNetwork: {
       YOUTUBE: 'Youtube',
