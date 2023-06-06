@@ -2,6 +2,20 @@ import NextErrorComponent from 'next/error'
 
 import * as Sentry from '@sentry/nextjs'
 
+function MinimalErrorPage() {
+  // S'affiche si problème de rendu, mais pas en dév
+  // Pour reproduire, faire par exemple un throw dans un useEffect, et lancer en mode prod
+  return (
+    <div className="fr-container my-32">
+      <h1>Problème technique</h1>
+      <p>
+        Il y a eu un problème d'affichage dans SignalConso. Essayez de revenir en arrière et de recommencer ce que vous étiez en
+        train de faire.
+      </p>
+    </div>
+  )
+}
+
 const MyError = ({statusCode, hasGetInitialPropsRun, err}: any) => {
   if (!hasGetInitialPropsRun && err) {
     // getInitialProps is not called in case of
@@ -11,7 +25,7 @@ const MyError = ({statusCode, hasGetInitialPropsRun, err}: any) => {
     // Flushing is not required in this case as it only happens on the client
   }
 
-  return <NextErrorComponent statusCode={statusCode} />
+  return <MinimalErrorPage />
 }
 
 MyError.getInitialProps = async (context: any) => {
