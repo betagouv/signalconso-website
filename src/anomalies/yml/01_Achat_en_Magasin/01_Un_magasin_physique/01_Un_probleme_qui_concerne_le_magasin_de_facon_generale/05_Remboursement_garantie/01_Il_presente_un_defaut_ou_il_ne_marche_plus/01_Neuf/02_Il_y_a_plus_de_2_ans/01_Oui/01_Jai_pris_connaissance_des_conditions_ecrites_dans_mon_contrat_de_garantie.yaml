@@ -1,0 +1,16 @@
+title: J'ai pris connaissance des conditions écrites dans mon contrat de garantie
+detailInputs:
+  - label: Date d'achat
+    type: DATE
+  - label: Nom du produit
+    type: TEXT
+  - label: Date de fin de la garantie supplémentaire
+    type: DATE
+  - label: Date du constat
+    type: DATE
+    defaultValue: SYSDATE
+  - label: Motif de refus
+    type: TEXT
+fileLabel: >-
+  Contrat de garantie / publicité de l'offre de vente / document se référant à
+  la garantie

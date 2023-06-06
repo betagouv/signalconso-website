@@ -1,0 +1,7 @@
+title: Produit dangereux
+desc: 'Exemple : voiture, vélo, pneu'
+reponseconsoCode:
+  - '352'
+  - '617'
+tags:
+  - ProduitDangereux

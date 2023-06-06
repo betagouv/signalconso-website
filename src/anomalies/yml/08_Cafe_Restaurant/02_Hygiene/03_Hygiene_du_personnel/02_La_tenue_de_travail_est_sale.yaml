@@ -1,0 +1,9 @@
+title: La tenue de travail est sale
+detailInputs:
+  - label: Date de constat
+    type: DATE
+  - label: "Quel est le problème\_?"
+    type: TEXT
+fileLabel: >-
+  Merci de joindre si possible tout document (photo) pour appuyer votre
+  signalement.

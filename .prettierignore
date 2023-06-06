@@ -17,8 +17,9 @@
 .env.test.local
 .env.production.local
 
-/src/anomalies/yml/**/*.yml
-/src/anomalies/yml/anomalies.json
+/src/anomalies/yml/*
+/src/anomalies/json/anomalies.json
+/src/anomalies/json/minimized-anomalies.json
 
 npm-debug.log*
 yarn-debug.log*

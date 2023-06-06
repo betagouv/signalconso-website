@@ -1,0 +1,15 @@
+title: Je ne suis pas d'accord avec la consommation indiquée sur ma facture
+blockingInfo:
+  title: Vous devez demander à faire vérifier le compteur.
+  content: >-
+    Si vous recevez une facture d'eau que vous trouvez trop élevée par rapport à
+    votre consommation habituelle et que vous avez vérifié l'absence de fuite
+    d'eau, vous devez demander la vérification de votre compteur. Des frais vous
+    seront facturés. Si la vérification révèle une anomalie, ces frais vous
+    seront remboursés.
+  questions:
+    - question: Vous souhaitez obtenir la vérification de votre compteur d’eau&#160;?
+      answer: >-
+        Vous trouverez un modèle de lettre à envoyer sur le site <br><a
+        href="https://www.inc-conso.fr/content/vous-souhaitez-obtenir-la-verification-de-votre-compteur-deau-en-raison-dune-consommation"
+        target="_blank" />inc-conso.fr</a>

@@ -1,0 +1,4 @@
+title: C'est un aliment ou une boisson
+desc: 'Exemple : bonbon, viande, conserve, vin, bouteille de vin'
+tags:
+  - ProduitAlimentaire

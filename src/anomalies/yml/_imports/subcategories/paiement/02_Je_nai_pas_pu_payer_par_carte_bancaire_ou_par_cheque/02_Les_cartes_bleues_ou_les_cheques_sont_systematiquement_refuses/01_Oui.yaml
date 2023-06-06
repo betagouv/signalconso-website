@@ -1,0 +1,8 @@
+title: Oui
+desc: "Exemple\_: sur une affiche au niveau des caisses"
+blockingInfo:
+  content: >-
+    Le commerçant a le droit de refuser les chèques ou la carte bancaire. <br/>
+    Il doit l''indiquer très visiblement au consommateur. Avec un affichage à
+    l''entrée ou à la caisse par exemple.
+  notAFraudMessage: true

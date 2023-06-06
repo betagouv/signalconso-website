@@ -1,0 +1,28 @@
+title: Démarchage à domicile
+companyKind: LOCATION
+ccrfCode:
+  - '221'
+  - '226'
+reponseconsoCode:
+  - '221'
+  - '411'
+tags:
+  - ReponseConso
+  - DemarchageADomicile
+detailInputs:
+  - label: Que s'est-il passé ?
+    type: RADIO
+    options:
+      - Le vendeur s'est fait passer pour une autre entreprise (à préciser)
+      - >-
+        Le vendeur m'a fait signer des papiers sans me dire que c'était un
+        contrat ou un bon de commande.
+      - Autre (à préciser)
+  - label: Avez-vous payé au moment du démarchage&#160;?
+    type: RADIO
+    options:
+      - Oui
+      - Non
+  - label: Date du démarchage
+    type: DATE
+    defaultValue: SYSDATE

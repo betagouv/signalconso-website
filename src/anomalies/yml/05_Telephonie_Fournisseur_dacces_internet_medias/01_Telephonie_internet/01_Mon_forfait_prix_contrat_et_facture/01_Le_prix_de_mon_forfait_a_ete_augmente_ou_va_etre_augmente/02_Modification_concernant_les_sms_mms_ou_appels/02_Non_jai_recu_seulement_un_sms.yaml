@@ -1,0 +1,6 @@
+title: Non, j'ai reçu seulement un sms
+ccrfCode:
+  - '226'
+reponseconsoCode:
+  - '421'
+  - '2202'
