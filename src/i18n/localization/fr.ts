@@ -468,6 +468,135 @@ export const fr = {
       foundAnswerAndWantToCancelContent:
         'C’est très aimable à vous de souhaiter nous en avertir, pour cela vous pouvez refaire le parcours précédent en mentionnant vos nom et prénom et la résolution de votre problème; un lien sera fait entre votre 1ère demande et ces dernières informations. Sinon, vous pouvez attendre la réponse qui vous sera apportée.',
     },
+    centreaidepro: {
+      generalitesTitle: 'Généralités',
+      gratuitLabel: 'Est-ce que ce service est gratuit ?',
+      gratuitText1: 'SignalConso est un service public gratuit, que ce soit pour les consommateurs ou les entreprises.',
+      gratuitText2:
+        " Si vous recevez un courrier vous réclamant de l'argent au motif de l'utilisation de SignalConso, ne répondez pas à la demande et prévenez la DGCCRF de la tentative d'arnaque.",
+      accesLabel: 'Qui a accès aux signalements déposés sur SignalConso ?',
+      accesText1:
+        " Seule l'entreprise signalée peut consulter le signalement qui la concerne. Ils ne sont pas rendus publics auprès des consommateurs.",
+      accesText2: "L'ensemble des signalements est consultable et peut être exploité par la DGCCRF.",
+      entrepriseSignaleeLabel: 'Mon entreprise apparait déjà sur SignalConso, a-t-elle déjà été signalée ?',
+      entrepriseSignaleeText1:
+        'Afin de faciliter le dépôt du signalement par le consommateur, la base de données de l’ensemble des entreprises françaises a été intégrée à notre outil.',
+      entrepriseSignaleeText2:
+        'C’est pourquoi votre entreprise apparaît sur notre plateforme mais en aucun cas cela signifie qu’elle a fait l’objet d’un signalement.',
+      espaceProfessionnelLabel: "Puis-je ouvrir un Espace Professionnel si je n'ai pas encore été signalé ?",
+      espaceProfessionnelText:
+        'Si votre entreprise n’a pas encore été signalée, et que vous n’avez donc pas reçu le courrier provenant de nos services, vous ne pourrez pas ouvrir d’Espace Professionnel sur SignalConso.',
+      consulterRepondreLabel: "Est-il obligatoire de consulter les signalements SignalConso et/ou d'y répondre ?",
+      consulterRepondreText1: "SignalConso est un service d'application volontaire.",
+      consulterRepondreText2:
+        "Vous pouvez, si vous le souhaitez, ne pas consulter les signalements déposés sur SignalConso. Dans ce cas, la DGCCRF et le consommateur seront avertis que le signalement n'a pas été consulté.",
+      entrepriseSignaleeTitle: 'Mon entreprise a été signalée',
+      queFaireLabel: "J'ai reçu un courrier de SignalConso car mon entreprise a été signalée. Que dois-je faire ?",
+      courrierSignalConsoText1: 'Pour connaître ce signalement, rendez-vous sur ',
+      courrierSignalConsoText2:
+        ' et cliquez sur le bouton "Espace professionnels" dans le menu en haut de votre écran. Ou allez-directement sur cette adresse : ',
+      courrierSignalConsoText3: 'Lors de votre première connexion, vous devez vous identifier avec :',
+      courrierSignalConsoText4: 'le numéro SIRET de votre entreprise (14 chiffres)',
+      courrierSignalConsoText5:
+        "votre code d’activation : c'est le numéro à 6 chiffres inscrit dans le courrier que vous avez reçu de SignalConso",
+      courrierSignalConsoText6: "l'adresse email que vous souhaitez lier à votre compte",
+      courrierSignalConsoText7:
+        'Vous recevrez ensuite un email vous invitant à valider votre compte. Renseignez ensuite vos nom et prénom, et choisissez votre mot de passe pour activer votre espace professionnel.',
+      courrierSignalConsoText8: 'Votre « Espace Professionnel » est maintenant activé !',
+      courrierSignalConsoText9: 'Vous pouvez y accéder avec votre mot de passe en cliquant sur le bouton ',
+      courrierSignalConsoText10: 'Connectez-vous',
+      consulterSignalementsText: 'Vous pouvez consulter les signalements concernant votre entreprise et le cas échéant :',
+      prendreMesuresText: 'Prendre des mesures correctives ou préventives suite au signalement',
+      contacterConsommateurText: 'Contacter le consommateur si ce dernier a souhaité vous laisser ses coordonnées',
+      motDePasseOublieLabel: "J'ai oublié mon mot de passe",
+      motDePasseOublieText1: 'Vous pouvez ',
+      motDePasseOublieText2: 'demander un nouveau mot de passe',
+      motDePasseOublieText3: '  ou, en cas de difficultés, contacter par email le service ',
+      controleSuiteSignalementLabel: 'Est-ce que mon entreprise va être contrôlée suite à un signalement ?',
+      controleSuiteSignalementText1:
+        'En fonction de la gravité et de la fréquence des signalements, les enquêteurs de la DGCCRF pourront déclencher un contrôle.',
+      controleSuiteSignalementText2: 'Le signalement est enregistré dans la base de données de la DGCCRF.',
+      communicationConsommateurLabel: 'Puis-je communiquer directement avec le consommateur à l’origine du signalement ?',
+      communicationConsommateurText1:
+        'SignalConso laisse le choix au consommateur de transmettre, ou non, ses coordonnées à l’entreprise signalée.',
+      communicationConsommateurText2:
+        'Dans tous les cas, nous communiquons avec le consommateur quant au suivi de son signalement.',
+      detailsActionsCorrectivesLabel:
+        'Dois-je apporter les détails des actions correctives mises en œuvre pour rectifier le problème ?',
+      detailsActionsCorrectivesText:
+        'Les retours des entreprises sont importants afin d’améliorer le service ; ils sont également précieux pour les consommateurs et la DGCCRF.',
+      informationsSignalementLabel: 'Quelles informations composent un signalement ?',
+      informationsSignalementText1: 'Un signalement comporte différentes informations :',
+      typeSignalementLabel: ' Type de signalement ',
+      typeSignalementText:
+        "Afin d'identifier le problème que le consommateur a rencontré et le secteur professionnel concerné, le consommateur doit répondre à une série de questions prédéfinies. Les réponses à toutes ces questions sont renseignées dans la catégorie \"Type de signalement\". Il s'agit d'éléments d'identification sur le type d'anomalie signalée.",
+      detailsLabel: ' Détails ',
+      detailsText:
+        'La section "Détails" permet au consommateur de décrire le contexte dans lequel il a rencontré le problème, d’y ajouter des précisions et de donner la date du constat. C’est aussi là que vous trouverez les éventuelles pièces jointes envoyées par le consommateur.',
+      consommateurLabel: ' Consommateur ',
+      consommateurText:
+        "La section Consommateur vous indique si le consommateur a souhaité vous laisser ses coordonnées afin d'être recontacté en direct. Si ce n’est pas le cas, vous pouvez tout de même lui indiquer une réponse à travers SignalConso. S'il a souhaité vous laisser ses coordonnées, vous pouvez le contacter directement (dans le cadre du signalement), mais n’oubliez pas de préciser cette réponse sur SignalConso pour en informer la DGCCRF.",
+      statutsSignalement: 'À quoi correspondent les différents statuts du signalement ?',
+      statutsSignalementDescription:
+        'Une fois connecté sur votre Espace Professionnel, vous avez accès à la liste de tous les signalements déposés sur votre entreprise. Cette liste vous donne quelques indications sur chaque signalement sans que vous ayez besoin de les ouvrir : la date de dépôt du signalement, le nom du consommateur si disponible, ainsi que le statut du signalement. Il existe trois statuts pour le signalement :',
+      nonConsulte: 'Non consulté ',
+      nonConsulteDescription:
+        'vous n’avez pas encore consulté ce signalement - il apparaît en gras. Dès que vous aurez cliqué dessus, le signalement passera au statut suivant.',
+      aRepondre: 'À répondre ',
+      aRepondreDescription: 'vous avez consulté le signalement mais vous n’y avez pas encore répondu.',
+      cloture: 'Clôturé ',
+      clotureDescription:
+        'le signalement est clôturé - vous y avez déjà apporté une réponse ou alors le délai de traitement a été dépassé. (cf les relances).',
+      filtrerListe:
+        'Lorsque vous avez beaucoup de signalements, vous pouvez filtrer la liste par période ou par statut. Vous pouvez aussi faire une extraction Excel de vos signalements en cliquant sur le bouton “Extraction excel”.',
+      reponsePossible: 'Quelle réponse puis-je apporter ?',
+      reponsePossibleDescription:
+        'Pour répondre au signalement, il vous suffit de cliquer sur le bouton Apporter une réponse. Trois choix s’offrent à vous :',
+      prendreEnCompte: 'Je prends en compte ce signalement',
+      estimeInfonde: "J'estime que ce signalement est infondé",
+      estimeNonConcerne: "J'estime que ce signalement ne concerne pas mon entreprise",
+      explicationReponse1:
+        'Quel que soit le choix que vous fassiez, nous vous invitons à l’expliquer au consommateur. Cette réponse sera visible par la DGCCRF.',
+      explicationReponse2:
+        'Nous vous offrons aussi la possibilité d’ajouter un commentaire et des pièces jointes destinés uniquement à la DGCCRF dans le champ de saisie spécifique. Actuellement, le site ne permet pas de transmettre les pièces jointes au consommateur.',
+      explicationReponse3:
+        'Une fois votre réponse validée, vous recevrez un accusé de réception. Cette réponse sera aussi visible dans la section "Réponse apportée".',
+      courrierPendantConges: 'Et si le courrier SignalConso arrive pendant mes congés ?',
+      courrierPendantCongesDescription:
+        'Vous avez reçu le courrier SignalConso mais votre entreprise était fermée pour congés annuels ? Vous avez consulté le signalement mais vous n’avez pas apporté immédiatement une réponse car vous attendiez la confirmation d’un collaborateur ? Pas de panique ! Après avoir récolté les retours de nombreuses entreprises, nous avons conçu un système de relances offrant de la souplesse dans le traitement du signalement :',
+      relanceCourrier: 'Relance courrier ',
+      relanceCourrierDescription1:
+        ' nous vous avons adressé un courrier vous indiquant qu’un signalement avait été déposé sur votre entreprise mais vous n’avez pas encore activé votre Espace Professionnel.',
+      relanceCourrierDescription2:
+        'Après 21 jours, nous vous adressons un nouveau courrier vous invitant à l’activer. Une nouvelle période de 21 jours est lancée, au terme de laquelle nous clôturons le signalement. Vous pourrez toujours activer votre Espace Professionnel, mais vous ne pourrez plus répondre au signalement.',
+      relanceMail: 'Relance mail ',
+      relanceMailDescription:
+        'qu’il s’agisse d’un nouveau signalement que vous n’avez pas encore consulté ou d’un signalement consulté mais resté sans réponse, nous vous envoyons un email tous les 7 jours pendant 3 semaines pour vous inviter à faire le nécessaire. Au terme de ces relances, vous ne pourrez plus répondre au signalement.',
+      signalementCloture: "Je n'ai pas réagi à temps et le signalement est clôturé, que puis-je faire ?",
+      signalementClotureDescription1: 'Vous pouvez toujours consulter le signalement, mais vous ne pourrez plus y répondre.',
+      signalementClotureDescription2:
+        'Afin de limiter le nombre de signalements qui pourraient échapper à votre vigilance, nous envoyons régulièrement des relances sur votre adresse email. Pensez à la tenir à jour sur votre compte !',
+      plusieursAcces: 'Puis-je ouvrir plusieurs accès pour les collaborateurs de mon entreprise ?',
+      plusieursAccesDescription1:
+        'Oui, vous pouvez inviter vos collaborateurs via leur adresse e-mail (fonctionnalité accessible dans la section "Gérer mes entreprises" du menu en haut à gauche).',
+      plusieursAccesDescription2:
+        'Vous pouvez les inviter comme simples collaborateurs ou comme administrateurs (dans ce cas, ils pourront également gérer les accès).',
+      suiviSignalements:
+        'Je suis en charge du suivi des signalements de différents établissements. Comment puis-je centraliser ces signalements sur un seul compte ?',
+      suiviSignalementsDescription:
+        'Si vous devez suivre les signalements de différents établissements (= différents SIRETs), vous pouvez vous faciliter  la tâche en centralisant tous les établissements suivis sur un même compte (fonctionnalité accessible depuis la section "Gérer mes entreprises" du menu en haut à gauche).',
+      nouvelleFonctionnaliteTitle: 'NOUVELLE FONCTIONNALITÉ',
+      nouvelleFonctionnalite:
+        "A partir du compte SignalConso de votre siège, vous avez désormais accès d'office à tous les signalements de vos différents établissements qui ont le même SIREN. Ainsi depuis le compte SignalConso de votre siège, vous avez accès à tous les signalements de vos établissements secondaires qui ont été signalés sans devoir vous connecter aux différents comptes. Vous avez toujours la possibilité d'ajouter des entreprises à la main qui ne portent pas le même SIREN que celui de votre siège avec la fonctionnalité \"ajouter une entreprise\" et en saisissant le Siret concerné ainsi que le code d'activation reçu par courrier (cf vidéo ci-dessus)",
+      gererNotifications:
+        "Je suis en charge du suivi des signalements de différents établissements. Comment gérer les notifications pour les tous les établissements auxquels j'ai accès ?",
+      gererNotificationsDescription1:
+        "Si vous devez suivre les signalements de différents établissements (= différents SIRETs), vous pouvez gérer les notifications de signalement pour chaque établissement auquel vous avez accès afin de recevoir ou non un courriel lors d'un nouveau signalement.",
+      gererNotificationsDescription2:
+        'Pour gérer vos notifications, rendez-vous dans "Paramètres" et cliquez sur "MODIFIER" dans "Notifications". Ici en cliquant sur le sélecteur, vous pouvez au choix activer ou désactiver les notifications pour chaque établissement.',
+      gererNotificationsDescription3:
+        'Attention, si vous désactivez les notifications, vous ne recevrez plus les nouveaux signalements par courriel. Vous devrez vous connecter régulièrement sur votre espace pour consulter les nouveaux signalements.',
+    },
     SocialNetwork: {
       YOUTUBE: 'Youtube',
       FACEBOOK: 'Facebook',
