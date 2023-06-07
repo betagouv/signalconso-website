@@ -1,8 +1,4 @@
 export const titleAndDescriptions = {
-  aide: {
-    title: 'Aide - SignalConso',
-    description: "Consultez l'aide et les questions fréquentes sur SignalConso",
-  },
   planDuSite: {
     title: 'Plan du site - SignalConso',
     description: 'Plan du site',
