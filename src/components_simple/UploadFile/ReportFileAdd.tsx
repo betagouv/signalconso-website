@@ -1,15 +1,14 @@
-import React, {useRef, useState} from 'react'
 import {Box, Button, CircularProgress, Icon, Theme, Tooltip} from '@mui/material'
-import {extractFileExt, reportFileConfig} from './reportFileConfig'
-import {useI18n} from 'i18n/I18n'
+import {SxProps} from '@mui/system'
 import {useApiClients} from 'context/ApiClientsContext'
-import {appConfig} from '../../core/appConfig'
 import {styleUtils} from 'core/theme'
 import {useToast} from 'hooks/useToast'
-import {SxProps} from '@mui/system'
+import {useI18n} from 'i18n/I18n'
+import {useRef, useState} from 'react'
+import {appConfig} from '../../core/appConfig'
 import {FileOrigin, UploadedFile} from '../../model/UploadedFile'
 import {compressFile} from '../../utils/compressFile'
-import {ApiError} from '../../clients/BaseApiClient'
+import {extractFileExt, reportFileConfig} from './reportFileConfig'
 
 const styles: {[key: string]: SxProps<Theme>} = {
   root: {
@@ -52,7 +51,6 @@ export const ReportFileAdd = ({onUploaded, fileOrigin}: Props) => {
   const {toastError} = useToast()
 
   const [uploading, setUploading] = useState(false)
-  const [errorMessage, setErrorMessage] = useState<string | undefined>(undefined)
   const fileInputEl = useRef<HTMLInputElement>(null)
 
   const openFileSelection = () => {
@@ -72,21 +70,23 @@ export const ReportFileAdd = ({onUploaded, fileOrigin}: Props) => {
       if (Array.isArray(blob)) return new File(blob, newFileName, {type: jpgType, lastModified: lastModified})
       else return new File([blob], newFileName, {type: jpgType, lastModified: lastModified})
     } else {
-      throw {message: '.heic files are not supported on your device'}
+      throw new Error('.heic files are not supported on your device')
     }
   }
 
-  const handleChange = (files: FileList | null) => {
+  const handleChange = async (files: FileList | null) => {
     if (files && files[0]) {
       const file: File = files[0]
+      if (file.size === 0) {
+        toastError(m.emptyFile)
+        return
+      }
       if (file.size > appConfig.upload_maxSizeMb * 1024 * 1024) {
-        toastError({message: m.invalidSize(appConfig.upload_maxSizeMb)})
-        setErrorMessage(m.invalidSize(appConfig.upload_maxSizeMb))
+        toastError(m.invalidSize(appConfig.upload_maxSizeMb))
         return
       }
       if (file.name.length > 255) {
-        toastError({message: m.invalidFileNameSize(255)})
-        setErrorMessage(m.invalidFileNameSize(255))
+        toastError(m.invalidFileNameSize(255))
         return
       }
 
@@ -95,18 +95,17 @@ export const ReportFileAdd = ({onUploaded, fileOrigin}: Props) => {
       const fileExt = extractFileExt(file.name)
       const fileToUpload = fileExt === 'heic' ? heicToJpg(file) : Promise.resolve(file)
 
-      fileToUpload
-        .then(file => compressFile(file))
-        .then(file => {
-          return file
-        })
-        .then(file => signalConsoApiClient.uploadDocument(file, fileOrigin))
-        .then(onUploaded)
-        .catch((e: ApiError) => {
-          console.log(e)
-          toastError(e)
-        })
-        .finally(() => setUploading(false))
+      try {
+        const f = await fileToUpload
+        const compressedFile = await compressFile(f)
+        const uploadedFile = await signalConsoApiClient.uploadDocument(compressedFile, fileOrigin)
+        onUploaded(uploadedFile)
+      } catch (e) {
+        console.error('failed to upload file', e)
+        toastError(e)
+      } finally {
+        setUploading(false)
+      }
     }
   }
 

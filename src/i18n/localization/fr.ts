@@ -827,6 +827,7 @@ export const fr = {
     buttonReportProblem: `Signalez un problème`,
     logoAltSignalconso: `Logo SignalConso / Retour à la page d'accueil`,
     logoAltGouv: `Logo gouvernement`,
+    emptyFile: `Ce fichier semble vide`,
     invalidSize: (maxSize: number) => `La taille du fichier dépasse les ${maxSize} Mb`,
     invalidFileNameSize: (maxSize: number) => `Le nom du fichier ne doit pas dépasser ${maxSize} caractères`,
     limitTo500chars: `500 caractères maximum`,

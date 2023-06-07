@@ -96,7 +96,7 @@ export const CompanySearchResultComponent = ({companies, onSubmit}: Props) => {
               onSubmit={handleSubmit(form => {
                 const selectedCompany = companies.find(_ => _.siret === form.result)!
                 if (isGovernmentCompany(selectedCompany)) {
-                  toastError({message: m.cannotReportGovernmentCompany})
+                  toastError(m.cannotReportGovernmentCompany)
                 } else {
                   selectedCompany.isMarketPlace ? setSelected(selectedCompany) : submit(selectedCompany)
                 }
