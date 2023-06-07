@@ -4,7 +4,7 @@ import {titleAndDescriptions} from 'core/titleAndDescriptions'
 import {buildLinkLandingPage, buildLinkNewsArticle, pagesDefs} from 'core/pagesDefinitions'
 import Head from 'next/head'
 import Link from 'next/link'
-import {newsArticlesData} from 'news/newsArticlesData'
+import {newsArticlesData} from 'actualites/newsArticlesData'
 
 const PlanDuSite = () => {
   return (
@@ -18,7 +18,7 @@ const PlanDuSite = () => {
         <h2 className="fr-h4">Pages générales</h2>
         <ul>
           <li>
-            <Link href={pagesDefs.index.url}>Accueil</Link>
+            <Link href={pagesDefs.index.url}>Faire un signalement</Link>
           </li>
           <li>
             <Link href={pagesDefs.suiviEtViePrivee.url}>Suivi d'audience et vie privée</Link>
@@ -101,7 +101,7 @@ const PlanDuSite = () => {
         <h2 className="fr-h4">Actualités</h2>
         <ul>
           <li>
-            <Link href={pagesDefs.news.url}>Toutes les actualités</Link>
+            <Link href={pagesDefs.actualites.url}>Toutes les actualités</Link>
           </li>
           {newsArticlesData.map(article => {
             return (

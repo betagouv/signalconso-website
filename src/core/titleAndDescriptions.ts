@@ -1,21 +1,7 @@
 export const titleAndDescriptions = {
-  quiSommesNous: {
-    title: 'Qui sommes-nous ? - SignalConso',
-    description:
-      "SignalConso est un service proposé par la DGCCRF (Direction Générale de la Concurrence, de la Consommation et de la Répression des Fraudes) au travers d'une Startup d’État. Il permet à la fois de comprendre ses droits en tant que consommateurs et d’être aidé pour les faire respecter.",
-  },
-  commentCaMarche: {
-    title: 'Comment ça marche ? - SignalConso',
-    description:
-      "Vous signalez votre problème en remplissant le formulaire en ligne. Notre équipe contacte l'entreprise afin de l'informer de votre signalement. L'entreprise peut procéder spontanément aux corrections utiles, sans sanction. Votre signalement est enregistré à la répression des fraudes (DGCCRF).",
-  },
   aide: {
     title: 'Aide - SignalConso',
     description: "Consultez l'aide et les questions fréquentes sur SignalConso",
-  },
-  accessibilite: {
-    title: 'Accessibilité - SignalConso',
-    description: "Rapport d'accessibilité SignalConso",
   },
   planDuSite: {
     title: 'Plan du site - SignalConso',
@@ -29,11 +15,6 @@ export const titleAndDescriptions = {
     title: "Conditions générales d'utilisation - SignalConso",
     description: "Consultez les conditions générales d'utilisation",
   },
-  appMobile: {
-    // TODO
-    title: '',
-    description: '',
-  },
   stats: {
     title: 'Statistiques - SignalConso',
     description: 'Consultez les statistiques de SignalConso',
@@ -42,23 +23,11 @@ export const titleAndDescriptions = {
     title: "Suivi d'audience et vie privée - SignalConso",
     description: "Consultez les informations concernant le suivi d'audience et le respect de la vie privée sur SignalConso",
   },
-  cookies: {
-    title: 'Gestion des cookies - SignalConso',
-    description: 'Consultez les informations concernant la gestion des cookies sur SignalConso',
-  },
-  contact: {
-    title: 'Contact - SignalConso',
-    description: 'Trouvez le bon interlocuteur à contacter sur SignalConso',
-  },
-  contractualDispute: {
-    title: "Résolution d'un problème individuel (litige) - SignalConso",
-    description: 'Démarches conseillées par SignalConso pour résoudre un problème individuel (litige) avec une entreprise ',
-  },
   anomaly: {
     title: 'Arborescence - SignalConso',
     description: "Arborescence du dépot d'un signalement",
   },
-  news: {
+  actualites: {
     title: 'Actualités - SignalConso',
     description: 'Actualités et nouveautés du site SignalConso et de la répression des fraudes',
   },

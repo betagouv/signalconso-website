@@ -16,6 +16,13 @@ export const isoToFrenchFormat = (d: string) => {
   return d.split('-').reverse().join('/')
 }
 
+// yyyy-mm-dd to 3 Juin 2023
+export const isoToFrenchFormatText = (d: string) => {
+  const date = new Date(d)
+  const formatter = new Intl.DateTimeFormat('fr-FR', {year: 'numeric', month: 'long', day: 'numeric'})
+  return formatter.format(date)
+}
+
 export const dateToFrenchFormat = (d: Date) => {
   return format(d, frenchDateFormat)
 }

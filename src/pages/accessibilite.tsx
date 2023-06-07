@@ -4,130 +4,111 @@ import {titleAndDescriptions} from 'core/titleAndDescriptions'
 import {pagesDefs} from 'core/pagesDefinitions'
 import Head from 'next/head'
 import Link from 'next/link'
+import {useI18n} from '../i18n/I18n'
 
 const Accessibilite = () => {
+  const {m} = useI18n()
+
   return (
     <>
       <Head>
-        <title>{titleAndDescriptions.accessibilite.title}</title>
-        <meta name="description" content={titleAndDescriptions.accessibilite.description} />
+        <title>{m.titleAndDescriptions.accessibilite.title}</title>
+        <meta name="description" content={m.titleAndDescriptions.accessibilite.description} />
       </Head>
       <ContentPageContainer>
-        <h1>Déclaration d'accessibilité</h1>
-        <p>
-          Le ministère de l'Economie, des Finances et de la Relance s’engage à rendre son service accessible, conformément à
-          l’article 47 de la loi n° 2005-102 du 11 février 2005.
-        </p>
-        <p>Cette déclaration d’accessibilité s’applique à SignalConso.</p>
-        <h2 className="fr-h3">État de conformité</h2>
-        <p>
-          SignalConso est <b>partiellement conforme avec le RGAA 4.0</b>. Partiellement conforme veut dire que certaines sections
-          du contenu ne sont pas entièrement conformes aux standards d'accessibilités.
-        </p>
-        <h2 className="fr-h3">Résultats des tests</h2>
-        <p>L’audit de conformité réalisé par évaluation externe révèle que 78% des critères RGAA sont respectés.</p>
-        <h2 className="fr-h3">Contenus non accessibles</h2>
-        <p>Les contenus listés ci-dessous ne sont pas accessibles pour les raisons suivantes.</p>
-        <h3 className="fr-h6">Non conformité</h3>
-        Malgré nos efforts, certains contenus sont inaccessibles. Vous trouverez ci-dessous une liste des limitations connues et
-        des solutions potentielles :
+        <h1>{m.accessibilite.pageTitle}</h1>
+        <p>{m.accessibilite.paragraph1}</p>
+        <p>{m.accessibilite.paragraph2}</p>
+        <h2 className="fr-h3">{m.accessibilite.conformityStatusTitle}</h2>
+        <p dangerouslySetInnerHTML={{__html: m.accessibilite.conformityStatusText}}></p>
+        <h2 className="fr-h3">{m.accessibilite.testResultsTitle}</h2>
+        <p>{m.accessibilite.testResultsText}</p>
+        <h2 className="fr-h3">{m.accessibilite.nonAccessibleContentTitle}</h2>
+        <p>{m.accessibilite.nonAccessibleContentText}</p>
+        <h3 className="fr-h6">{m.accessibilite.nonConformityTitle}</h3>
+        {m.accessibilite.nonConformityText}
         <ul>
-          <li>Statistiques mensuelles</li>
+          <li>{m.accessibilite.monthStats}</li>
         </ul>
-        <h3 className="fr-h6">Dérogations pour charge disproportionnée</h3>
+        <h3 className="fr-h6">{m.accessibilite.disproportionateBurdenTitle}</h3>
+        <p>{m.accessibilite.disproportionateBurdenText1}</p>
+        <p>{m.accessibilite.disproportionateBurdenText2}</p>
+        <h2 className="fr-h3">{m.accessibilite.accessibilityReportTitle}</h2>
         <p>
-          La validité HTML ne peut être garantie sur l'ensemble des pages néanmoins à notre connaissance cela ne provoque aucun
-          dysfonctionnement des aides techniques. La reprise et la vérification de toutes les pages du site représenteraient une
-          charge de travail disproportionnée par rapport au gain attendu.
-        </p>
-        <p>
-          Les vidéos n'ont pas d'audio description, sous-titres ou transcription textuelle. La cellule ayant en charge la mise en
-          ligne de ces animations n'est pas en mesure actuellement de fournir ces éléments pour l'ensemble de ces vidéos.
-        </p>
-        <h2 className="fr-h3">Accès au rapport d'accessibilité</h2>
-        <p>
-          Vous avez accès au rapport d'accessibilité{' '}
+          {m.accessibilite.accessibilityReportText}{' '}
           <Link target="_blank" href="https://rebeca-documentation.finances.gouv.fr">
-            sur la plateforme Rebeca
+            {m.accessibilite.rebecaPlatform}
           </Link>
-          , en recherchant "Rapport d'audit d'accessibilité signal.conso.gouv.fr". Vous pourrez trouver aussi la grille
-          d'évaluation dans les documents associés.
+          {m.accessibilite.evaluationGridText}
         </p>
-        <h2 className="fr-h3">Établissement de cette déclaration d'accessibilité</h2>
-        <p>Cette déclaration a été établie le 4 Septembre 2020.</p>
-        <h3 className="fr-h6">Technologies utilisées</h3>
-        <p>L'accessibilité de SignalConso s'appuie sur les technologies suivantes :</p>
+        <h2 className="fr-h3">{m.accessibilite.declarationEstablishmentTitle}</h2>
+        <p>{m.accessibilite.declarationEstablishmentText}</p>
+        <h3 className="fr-h6">{m.accessibilite.usedTechnologiesTitle}</h3>
+        <p>{m.accessibilite.usedTechnologiesText}</p>
         <ul>
           <li>HTML</li>
           <li>WAI-ARIA</li>
           <li>JavaScript</li>
         </ul>
-        <h3 className="fr-h6">Agents utilisateurs, technologies d’assistance et outils utilisés pour vérifier l’accessibilité</h3>
-        <p>Les tests des pages web ont été effectués avec les combinaisons de navigateurs web et lecteurs d’écran suivants :</p>
+        <h3 className="fr-h6">{m.accessibilite.assistiveTechnologiesTitle}</h3>
+        <p>{m.accessibilite.assistiveTechnologiesText}</p>
         <ul>
-          <li>Internet Explorer 11 et JAWS 2018</li>
-          <li>Safari et VoiceOver sur Iphone</li>
+          <li>{m.accessibilite.assistiveTechnologiesList1}</li>
+          <li>{m.accessibilite.assistiveTechnologiesList2}</li>
         </ul>
-        <h2 className="fr-h3">Pages du site ayant fait l'objet de la vérification de conformité</h2>
+        <h2 className="fr-h3">{m.accessibilite.complianceVerificationPagesTitle}</h2>
         <ol>
           <li>
-            <Link href="/">Accueil</Link>
+            <Link href="/">{m.accessibilite.home}</Link>
           </li>
           <li>
-            <Link href={pagesDefs.quiSommesNous.url}>Qui sommes-nous ?</Link>
+            <Link href={pagesDefs.quiSommesNous.url}>{m.accessibilite.quiSommesNous}</Link>
           </li>
           <li>
-            <Link href={pagesDefs.commentCaMarche.url}>Comment ça marche ?</Link>
+            <Link href={pagesDefs.commentCaMarche.url}>{m.accessibilite.commentCaMarche}</Link>
           </li>
           <li>
-            <Link href={pagesDefs.stats.url}>Statistiques</Link>
+            <Link href={pagesDefs.stats.url}>{m.accessibilite.stats}</Link>
           </li>
           <li>
-            <Link href={pagesDefs.centreAide.url}>Aide</Link>
+            <Link href={pagesDefs.centreAide.url}>{m.accessibilite.aide}</Link>
           </li>
-          <li>Étape 1 - Le problème</li>
-          <li>Étape 2 - La description</li>
-          <li>Étape 3 - Le commerçant</li>
-          <li>Étape 4 - Le consommateur</li>
-          <li>Étape 5 - Confirmation</li>
+          <li>{m.accessibilite.etape1}</li>
+          <li>{m.accessibilite.etape2}</li>
+          <li>{m.accessibilite.etape3}</li>
+          <li>{m.accessibilite.etape4}</li>
+          <li>{m.accessibilite.etape5}</li>
           <li>
-            <Link href={pagesDefs.connexion.url}>Connexion à l'espace pro</Link>
+            <Link href={pagesDefs.connexion.url}>{m.accessibilite.connexionEspacePro}</Link>
           </li>
-          <li>Espace pro - Suivi des signalements</li>
-          <li>Espace pro - Détail du signalements</li>
-          <li>Espace pro - Mes entreprises</li>
-          <li>Espace pro - Gestion des accès</li>
+          <li>{m.accessibilite.espaceProSuivi}</li>
+          <li>{m.accessibilite.espaceProDetail}</li>
+          <li>{m.accessibilite.espaceProEntreprises}</li>
+          <li>{m.accessibilite.espaceProGestionAcces}</li>
         </ol>
-        <h2 className="fr-h3">Amélioration et contact</h2>
-        <p>
-          Si vous n’arrivez pas à accéder à un contenu ou à un service, vous pouvez contacter le responsable de SignalConso pour
-          être orienté vers une alternative accessible ou obtenir le contenu sous une autre forme.
-        </p>
+        <h2 className="fr-h3">{m.accessibilite.improvementContactTitle}</h2>
+        <p>{m.accessibilite.improvementContactText}</p>
         <ul>
-          <li>E-mail : support@signal.conso.gouv.fr</li>
+          <li>{m.accessibilite.supportEmail}</li>
         </ul>
-        <h2 className="fr-h3">Voie de recours</h2>
-        <p>
-          Cette procédure est à utiliser dans le cas suivant : vous avez signalé au responsable du site internet un défaut
-          d’accessibilité qui vous empêche d’accéder à un contenu ou à un des services du portail et vous n’avez pas obtenu de
-          réponse satisfaisante.
-        </p>
-        <p>Vous pouvez :</p>
+        <h2 className="fr-h3">{m.accessibilite.recourseTitle}</h2>
+        <p>{m.accessibilite.recourseText}</p>
+        <p>{m.accessibilite.recourseOptions}</p>
         <ul>
           <li>
-            Écrire un message au{' '}
+            {m.accessibilite.defenseurDesDroits}
             <Link target="_blank" href={externalLinks.defenseurDesDroits}>
-              Défenseur des droits
+              {m.accessibilite.defenseurDesDroitsLink}
             </Link>
           </li>
           <li>
-            Contacter{' '}
+            {m.accessibilite.defenseurDesDroitsDelegue}
             <Link target="_blank" href={externalLinks.defenseurDesDroitsDelegue}>
-              le délégué du Défenseur des droits dans votre région
+              {m.accessibilite.defenseurDesDroitsDelegueLink}
             </Link>
           </li>
           <li>
-            Envoyer un courrier par la poste (gratuit, ne pas mettre de timbre) :
+            {m.accessibilite.postalAddress}:
             <br />
             Défenseur des droits
             <br />

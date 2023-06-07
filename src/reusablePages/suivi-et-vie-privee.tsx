@@ -121,7 +121,7 @@ export const SuiviEtViePrivee = () => {
         />
         <p>
           Pour plus d'information sur la gestion des cookies dans Signal Conso, consultez la rubrique{' '}
-          <Link href={pagesDefs.cookies.url}>Gestion des cookies</Link>
+          <Link href={pagesDefs.cookies.urlRelative}>Gestion des cookies</Link>
         </p>
       </ContentPageContainer>
     </>

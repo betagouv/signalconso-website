@@ -8,10 +8,9 @@ export const newsArticlesData = [
     slug: 'signalconso-desormais-disponible-en-application-mobile',
     title: 'SignalConso, désormais disponible en application mobile !',
     // used for SEO description
-    // used for the preview in /news (truncated)
+    // used for the preview in /news
     excerpt: `Découvrez dès maintenant la nouvelle application mobile SignalConso, qui rend vos signalements en tant que consommateur
-    encore plus faciles et simplifie vos démarches. Téléchargez gratuitement l'application sur l'App Store
-    ou le Play Store et profitez des mêmes fonctionnalités que celles offertes par notre site internet.`,
+    encore plus faciles et simplifie vos démarches.`,
     content: ArticleAppMobile,
   },
 ]

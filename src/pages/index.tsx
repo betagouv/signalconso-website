@@ -2,8 +2,8 @@ import {Button} from '@codegouvfr/react-dsfr/Button'
 import {useColors} from '@codegouvfr/react-dsfr/useColors'
 import {allVisibleAnomalies, createFuseIndex} from 'anomalies/Anomalies'
 import {InfoBanner} from 'components_feature/InfoBanner/InfoBanner'
-import {AnomalyTile} from 'components_simple/AnomalyTile/AnomalyTile'
 import {IllustrationStepper} from 'components_simple/IllustrationStepper/StepIllustrations'
+import Fuse from 'fuse.js'
 import {useI18n} from 'i18n/I18n'
 import dynamic from 'next/dynamic'
 import Head from 'next/head'
@@ -14,10 +14,8 @@ import consumer from '../../public/image/illustrations/consumer.png'
 import dgccrf from '../../public/image/illustrations/dgccrf.png'
 import report from '../../public/image/illustrations/report.png'
 import {useReportFlowContext} from '../components_feature/Report/ReportFlowContext'
-import SearchAnomalies from '../components_simple/Search/SearchAnomalies'
-import Fuse from 'fuse.js'
-import {useConfig} from '../context/ConfigContext'
 import {BrowserCompatAlert} from '../components_simple/BrowserCompatAlert/BrowserAlertCompat'
+import SearchAnomalies from '../components_simple/Search/SearchAnomalies'
 
 const ReportStartedAlert = dynamic(() => import('components_feature/ReportStartedAlert/ReportStartedAlert'), {ssr: false})
 
@@ -30,7 +28,6 @@ const Home = () => {
   const _report = useReportFlowContext()
   const hasStoredReport = useMemo(() => !!_report.reportDraft.anomaly, [_report.reportDraft])
   const dsfrTheme = useColors()
-
   const fIndex = createFuseIndex(allVisibleAnomalies())
 
   const fuse = new Fuse(fIndex, {

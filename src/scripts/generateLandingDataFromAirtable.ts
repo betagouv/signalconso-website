@@ -90,7 +90,7 @@ function validateAndTransformRow(row: RawRow): RowTranformed {
     sampleReports,
   } = row
 
-  if (!catchPhrase || !secondaryTitle1 || !secondaryTitle2) {
+  if (!catchPhrase || !secondaryTitle1) {
     throwForMissingField()
   }
 

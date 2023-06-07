@@ -95,7 +95,8 @@ export default function LandingPage({dynamicPath}: {dynamicPath: string}) {
               picto={<Image alt="Pictogramme masques joyeux" src="/image/picto_masks.png" width={80} height={72} />}
             />
           </div>
-          <h2 className="text-2xl mb-6 font-bold">{landingData.secondaryTitle2}</h2>
+
+          {landingData.secondaryTitle2 && <h2 className="text-2xl mb-6 font-bold">{landingData.secondaryTitle2}</h2>}
           <p className="text-lg">
             SignalConso s’occupe du reste. Votre signalement est envoyé à l’entreprise et il est instantanément visible par les
             agents de la DGCCRF. Si vous avez posé une question sur vos droits, un agent vous recontactera rapidement pour vous

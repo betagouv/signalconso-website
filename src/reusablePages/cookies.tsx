@@ -1,191 +1,122 @@
 import Head from 'next/head'
-import {titleAndDescriptions} from 'core/titleAndDescriptions'
 import {ContentPageContainer} from 'components_simple/ContentPageContainer'
 import Link from 'next/link'
-import {pagesDefs} from 'core/pagesDefinitions'
+import {useI18n} from '../i18n/I18n'
+import {pagesDefs} from '../core/pagesDefinitions'
 
-const Cookies = () => {
+export const Cookies = () => {
+  const {m} = useI18n() // Utilisation du hook useI18n
+
   return (
     <>
       <Head>
-        <title>{titleAndDescriptions.cookies.title}</title>
-        <meta name="description" content={titleAndDescriptions.cookies.description} />
+        <title>{m.titleAndDescriptions.cookies.title}</title>
+        <meta name="description" content={m.titleAndDescriptions.cookies.description} />
       </Head>
       <ContentPageContainer>
-        <h1>Gestion des cookies</h1>
-        <h2 className="fr-h4">Cette interface en ligne n’affiche pas de bannière de consentement aux cookies, pourquoi ?</h2>
-        <p>
-          C’est vrai, vous n’avez pas eu à cliquer sur un bloc qui recouvre la moitié de la page pour dire que vous êtes d’accord
-          avec le dépôt de cookies — même si vous ne savez pas ce que ça veut dire !
-        </p>
-        <p>
-          Rien d’exceptionnel, pas de passe-droit lié à un .gouv.fr. Nous respectons simplement la loi, qui dit que certains
-          outils de suivi d’audience, correctement configurés pour respecter la vie privée, sont exemptés d’autorisation
-          préalable.
-        </p>
-        Les cookies techniques mis en place nous permettent :
+        <h1>{m.cookies.gestionTitre}</h1>
+        <h2 className="fr-h4">{m.cookies.banniereTitre}</h2>
+        <p>{m.cookies.banniereContenu}</p>
+        <p>{m.cookies.respectLoiContenu}</p>
+        {m.cookies.cookiesTechniquesTitre}
         <br />
-        <p>
-          D’obtenir des statistiques anonymes sur la fréquentation de l'interface en ligne (tout logiciel ou application, y
-          compris un site internet, une section de site internet ou une application mobile) afin de faire de l'analyse de contenu
-          et détecter d'éventuels problèmes de navigation;
-        </p>
-        <h2 className="fr-h4">Cookies</h2>
-        <p>
-          Définition : Le cookie est un petit fichier texte enregistré par le navigateur de votre ordinateur, tablette ou
-          smartphone. Le cookie, enregistré sur votre ordinateur lorsque vous consultez l'interface en ligne SignalConso, permet
-          de conserver des données utilisateur décrites ci-dessous afin de faciliter la navigation et de permettre certaines
-          fonctionnalités.
-        </p>
-        <h3 className="fr-h6">Nature des cookies déposés sur l'interface en ligne SignalConso:</h3>
-        <p>
-          Nous n'utilisons que des cookies techniques qui permettent et facilitent votre navigation. Certains sont indispensables
-          et ne sauraient être supprimés sans affecter gravement l’accès à l'interface en ligne et la navigation, d’autres
-          auraient pour conséquence une navigation dégradée.
-        </p>
-        <h3 className="fr-h6">Liste des cookies déposés</h3>
-        <p>Les cookies d'analyse de mesure d'audience (Eulerian / Matomo):</p>
+        <p>{m.cookies.cookiesTechniquesContenu}</p>
+        <h2 className="fr-h4">{m.cookies.definitionTitre}</h2>
+        <p>{m.cookies.definition}</p>
+        <h3 className="fr-h6">{m.cookies.natureTitre}</h3>
+        <p>{m.cookies.natureContenu}</p>
+        <h3 className="fr-h6">{m.cookies.listeTitre}</h3>
+        <p>{m.cookies.listeDescription}</p>
         <table className="fr-table">
           <thead>
             <tr>
-              <th>Nom du cookie</th>
-              <th>Finalité</th>
-              <th>Durée de conservation</th>
+              <th>{m.cookies.nomCookie}</th>
+              <th>{m.cookies.finalite}</th>
+              <th>{m.cookies.dureeConservation}</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td>etuix</td>
-              <td>Cookie Eulerian</td>
-              <td>13 mois</td>
+              <td>{m.cookies.finaliteEulerian}</td>
+              <td>{m.cookies.dureeConservationEulerian}</td>
             </tr>
             <tr>
               <td>_Pk_id</td>
-              <td>Matomo</td>
-              <td>13 mois</td>
+              <td>{m.cookies.finaliteMatomo}</td>
+              <td>{m.cookies.dureeConservationMatomo1}</td>
             </tr>
             <tr>
               <td>_Pk_ref</td>
-              <td>Matomo</td>
-              <td>6 mois</td>
+              <td>{m.cookies.finaliteMatomo}</td>
+              <td>{m.cookies.dureeConservationMatomo2}</td>
             </tr>
             <tr>
               <td>_Pk_session</td>
-              <td>Matomo</td>
-              <td>30 minutes</td>
+              <td>{m.cookies.finaliteMatomo}</td>
+              <td>{m.cookies.dureeConservationMatomo3}</td>
             </tr>
           </tbody>
         </table>
         <br />
+        <p>{m.cookies.mieuxServirContenu}</p>
+        <p>{m.cookies.donneesCollecteesContenu}</p>
         <p>
-          Afin de mieux vous servir et d’améliorer l’expérience utilisateur sur notre interface en ligne, nous mesurons son
-          audience grâce à une solution utilisant la technologie des cookies.
-        </p>
-        <p>
-          Les données collectées permettent de fournir uniquement des données statistiques anonymes de fréquentation (le nombre de
-          pages vues, le nombre de visites, leur fréquence de retour, …).
-        </p>
-        <p>
-          Nous utilisons l‘outil de mesure d’audience Eulerian. Cet outil est dispensé du recueil de consentement de l'internaute
-          relatif au dépôt des cookies Analytics, l'autorité française de protection des données (CNIL) ayant accordé une
-          exemption au cookie Web Analytics d’Eulerian (
+          {m.cookies.outilEulerian}(
           <Link target="_blank" href="https://www.cnil.fr/fr/cookies-solutions-pour-les-outils-de-mesure-daudience">
-            en savoir plus
+            {m.cookies.outilEulerianLink}
           </Link>
           ).
         </p>
+        <p>{m.cookies.anonymisation}</p>
+        <p>{m.cookies.cookiesEulerian}</p>
+        <p>{m.cookies.outilMatomo}</p>
+        <p>{m.cookies.cookiesMatomo}</p>
         <p>
-          Aucune des données personnelles ne sont exploitées par l'interface en ligne SignalConso. Cela signifie que votre adresse
-          IP, par exemple, est anonymisée avant d’être enregistrée. Il est donc impossible d’associer vos visites sur cette
-          interface en ligne à votre personne.
+          {m.cookies.renseignementsSuiviAudience}
+          <Link href={pagesDefs.suiviEtViePrivee.urlRelative}>{m.cookies.renseignementsSuiviAudienceLink}</Link>
         </p>
-        <p>
-          Les noms des cookies utilisés sont pour Eulerian Etuix. Leur durée de conservation est de 13 mois. Elles ne sont pas
-          cédées à des tiers ni utilisées à d'autres fins.
-        </p>
-        <p>
-          Il en est de même pour l’outil de mesure d’audience de Matomo qui permet de conserver l’historique des données de
-          statistiques anonymes de fréquentation récoltées depuis le lancement de SignalConso
-        </p>
-        <p>
-          Les noms des cookies utilisés sont pour Matomo _pk_session, _pk_id, _pk_ref. Leur durée va de de 30 mn à 13 mois. Elles
-          ne sont pas cédées à des tiers ni utilisées à d'autres fins.
-        </p>
-        <p>
-          Pour plus de renseignements sur la gestion de la vie privée sur Signal Conso, vous pouvez également consulter la
-          rubrique <Link href={pagesDefs.suiviEtViePrivee.url}>suivi d'audience et vie privée</Link>
-        </p>
-        <h3 className="fr-h6">Comment accepter ou refuser les cookies:</h3>
-        <p>
-          Vous avez la possibilité de paramétrer leur navigateur pour supprimer les cookies déjà installés sur leur terminal, pour
-          être invités à accepter ou refuser l’installation de cookies au cas par cas ou pour accepter ou refuser automatiquement
-          tous les cookies pour certaines interfaces en ligne ou pour toutes les interfaces en ligne. Toutefois, le refus
-          d’utilisation des cookies peut empêcher certaines fonctionnalités de l'interface en ligne de fonctionner.
-        </p>
-        <p>
-          Les paramétrages de gestion des cookies varient selon les navigateurs. Les instructions à ce sujet pour les navigateurs
-          les plus courants sont disponibles en cliquant sur les liens ci-dessous:
-        </p>
+        <h3 className="fr-h6">{m.cookies.accepterRefuserTitre}</h3>
+        <p>{m.cookies.parametrerNavigateurContenu1}</p>
+        <p>{m.cookies.parametrerNavigateurContenu2}</p>
         <ul>
           <li>
             <Link
               target="_blank"
               href="https://support.microsoft.com/fr-fr/help/17442/windows-internet-explorer-delete-manage-cookies"
             >
-              Internet Explorer
+              {m.cookies.internetExplorer}
             </Link>
-            <p>
-              Dans Internet Explorer, cliquez sur le bouton Outils, puis sur Options Internet. Sous l'onglet Général, sous
-              Historique de navigation, cliquez sur Paramètres. Cliquez sur le bouton Afficher les fichiers. Cliquez sur l'en-tête
-              de colonne Nom pour trier tous les fichiers dans l'ordre alphabétique, puis parcourez la liste jusqu'à ce que vous
-              voyez des fichiers commençant par le préfixe "Cookie". (tous les cookies possèdent ce préfixe et contiennent
-              habituellement le nom de l'interface en ligne Web qui a créé le cookie). Sélectionnez le ou les cookies comprenant
-              le nom "à compléter" et supprimez-les Fermez la fenêtre qui contient la liste des fichiers, puis cliquez deux fois
-              sur OK pour retourner dans Internet Explorer.
-            </p>
+            <p>{m.cookies.internetExplorerInstructions}</p>
           </li>
           <li>
             <Link target="_blank" href="https://privacy.microsoft.com/fr-FR/windows-10-microsoft-edge-and-privacy">
-              Edge
+              {m.cookies.edge}
             </Link>
           </li>
           <li>
             <Link target="_blank" href="https://support.google.com/chrome/answer/95647?hl=fr">
-              Chrome
+              {m.cookies.chrome}
             </Link>
-            <p>
-              Ouvrez Google Chrome. Dans la barre d'outils du navigateur, cliquez sur Plus. Placez votre curseur sur Plus
-              d'outils, puis cliquez sur Effacer les données de navigation. Dans la fenêtre "Effacer les données de navigation",
-              cochez les cases Cookies et données d'autres sites ou plug-in et Images et fichiers en cache. Utilisez le menu en
-              haut pour sélectionner la quantité de données que vous souhaitez supprimer. Sélectionnez Depuis le début pour tout
-              supprimer. Cliquez sur Effacer les données de navigation.
-            </p>
+            <p>{m.cookies.chromeInstructions}</p>
           </li>
           <li>
             <Link href="https://support.mozilla.org/fr/kb/empecher-sites-enregistrer-preferences?esab=a&s=blocking+cookies&r=2&as=s">
-              Firefox
+              {m.cookies.firefox}
             </Link>
-            <p>
-              Allez dans l'onglet "Outils" du navigateur puis sélectionnez le menu "Options" Dans la fenêtre qui s'affiche,
-              choisissez "Vie privée" et cliquez sur "supprimer des cookies spécifiques" Repérez les fichiers qui contiennent le
-              nom "à compléter". Sélectionnez-les et supprimez-les.
-            </p>
+            <p>{m.cookies.firefoxInstructions}</p>
           </li>
           <li>
             <Link target="_blank" href="https://support.apple.com/fr-fr/guide/safari/sfri11471/mac">
-              Safari
+              {m.cookies.safari}
             </Link>
-            <p>
-              Dans votre navigateur, choisissez le menu Édition {'>'} Préférences. Cliquez sur Sécurité. Cliquez sur Afficher les
-              cookies. Sélectionnez les cookies qui contiennent le nom "à compléter" et cliquez sur Effacer ou sur Tout effacer.
-              Après avoir supprimé les cookies, cliquez sur Terminé.
-            </p>
+            <p>{m.cookies.safariInstructions}</p>
           </li>
         </ul>
         <p>
-          Pour plus de renseignements sur les cookies et la façon de paramétrer votre navigateur, vous pouvez également consulter{' '}
+          {m.cookies.plusRenseignementsCNIL}
           <Link target="_blank" href="https://www.cnil.fr/fr/cookies-les-outils-pour-les-maitriser">
-            l'interface en ligne de la CNIL
+            {m.cookies.plusRenseignementsCNILLink}
           </Link>
         </p>
       </ContentPageContainer>

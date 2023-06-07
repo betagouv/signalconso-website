@@ -38,7 +38,7 @@ export function ScHeader() {
         }
         homeLinkProps={{
           href: '/',
-          title: 'Accueil - SignalConso',
+          title: 'Faire un signalement - SignalConso',
         }}
         operatorLogo={{
           alt: 'SignalConso',
@@ -58,14 +58,14 @@ export function ScHeader() {
         // serviceTitle="SignalConso"
         // serviceTagline="un service public pour les consommateurs"
         navigation={[
-          buildMenuLink(router, pagesDefs.index.url, 'Accueil'),
+          buildMenuLink(router, pagesDefs.index.url, 'Faire un signalement'),
           buildMenuLink(router, pagesDefs.commentCaMarche.url, 'Comment ça marche ?'),
           buildMenuLink(router, pagesDefs.centreAide.url, `Aide`),
           buildSubmenu('Voir aussi', [
             buildMenuLink(router, pagesDefs.quiSommesNous.url, 'Qui sommes-nous ?'),
             buildMenuLink(router, pagesDefs.stats.url, 'Statistiques'),
             buildMenuLink(router, pagesDefs.contact.url, `Contact`),
-            buildMenuLink(router, pagesDefs.news.url, `Actualités`),
+            buildMenuLink(router, pagesDefs.actualites.url, `Actualités`),
             buildMenuLink(router, urlServicePublicPlus, `Services Publics +`, '_blank'),
           ]),
           ...(pagesDefs.playground ? [buildMenuLink(router, pagesDefs.playground.url, 'Playground')] : []),

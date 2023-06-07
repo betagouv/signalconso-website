@@ -10,7 +10,7 @@ const NotFound = () => {
   return (
     <Page>
       <Head>
-        <title>{'SignalConso : Page non trouvée'}</title>
+        <title>{m.pageNotFoundHeadTitle}</title>
         <meta name="description" content={m.pageNotFoundTitle} />
       </Head>
       <Fender
