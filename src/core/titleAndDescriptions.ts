@@ -15,10 +15,6 @@ export const titleAndDescriptions = {
     title: 'Statistiques - SignalConso',
     description: 'Consultez les statistiques de SignalConso',
   },
-  suiviEtViePrivee: {
-    title: "Suivi d'audience et vie privée - SignalConso",
-    description: "Consultez les informations concernant le suivi d'audience et le respect de la vie privée sur SignalConso",
-  },
   anomaly: {
     title: 'Arborescence - SignalConso',
     description: "Arborescence du dépot d'un signalement",

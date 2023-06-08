@@ -75,6 +75,10 @@ export const fr = {
         title: 'Aide - SignalConso',
         description: "Consultez l'aide et les questions fréquentes sur SignalConso",
       },
+      suiviEtViePrivee: {
+        title: "Suivi d'audience et vie privée - SignalConso",
+        description: "Consultez les informations concernant le suivi d'audience et le respect de la vie privée sur SignalConso",
+      },
     },
     introApple: 'App Store',
     introBetween: 'ou le ',
@@ -596,6 +600,49 @@ export const fr = {
         'Pour gérer vos notifications, rendez-vous dans "Paramètres" et cliquez sur "MODIFIER" dans "Notifications". Ici en cliquant sur le sélecteur, vous pouvez au choix activer ou désactiver les notifications pour chaque établissement.',
       gererNotificationsDescription3:
         'Attention, si vous désactivez les notifications, vous ne recevrez plus les nouveaux signalements par courriel. Vous devrez vous connecter régulièrement sur votre espace pour consulter les nouveaux signalements.',
+    },
+    suiviEtViePrivee: {
+      suiviAudienceViePrivee: "Suivi d'audience et vie privée",
+      donneesPersonnelles: 'Données personnelles',
+      infoRecueillies:
+        'Les informations recueillies dans le formulaire de SignalConso sont enregistrées dans un fichier informatisé par l’équipe SignalConso (DGCCRF) pour permettre aux professionnels de se corriger et permettre à la DGCCRF de suivre les signalements à des fins de contrôle. La base légale du traitement est la mission de service public de la DGCCRF, habilitée à contrôler et sanctionner les manquements relatifs au code de la consommation (L511-3 Code Conso et L450-1 Code Commerce)',
+      infoDemandees:
+        "Les informations demandées lors du dépôt du signalement sont nécessaires pour traiter les signalements. En particulier, l'adresse email pourra être utilisée par l'interface en ligne (tout logiciel ou application, y compris un site internet, une section de site internet ou une application mobile) pour informer le consommateur du suivi de son signalement (système de notification).",
+      infoSignalement:
+        'Les informations relatives au signalement (c’est-à-dire la déclaration et les pièces jointes) sont conservées 5 ans par la DGCCRF pour les besoins des enquêtes et les suites éventuelles.',
+      declarationsObjetRetraitement:
+        "La DGCCRF, en sa qualité d’exploitant de l'interface en ligne, s'engage à n'opérer aucune commercialisation des informations personnelles transmises par l'usager, Les déclarations peuvent faire l’objet d'un retraitement statistique par l’administration dans le cadre de ses missions. Les informations présentes sur l'interface en ligne public ne comportent pas de données nominatives et sont mises à disposition de manière libre et gratuite sur l'interface en ligne ",
+      aFrequenceReguliere: 'à fréquence régulière.',
+      utilisateurDroitAcces:
+        "L’utilisateur dispose d'un droit d'accès, de rectification, de suppression et d'opposition de ses données personnelles sur simple demande ",
+      parEmail: 'par email.',
+      consultezInterfaceCnil:
+        "Consultez l'interface en ligne cnil.fr pour plus d’informations sur vos droits. Si vous estimez, après nous avoir contactés, que vos droits « Informatique et Libertés » ne sont pas respectés, vous pouvez adresser une réclamation à la CNIL.",
+      droitAccesDonnees: "Droit d'accès aux données",
+      conformementRGPD:
+        "Conformément au Règlement 2016/679 du 27 avril 2016 relatif à la protection des personnes physiques à l'égard du traitement des données à caractère personnel et à la libre circulation de ces données (RGPD) et à la loi n°78-17 du 6 janvier 1978 relative à l'informatique, aux fichiers et aux libertés modifiée, les personnes concernées par ce traitement de données personnelles peuvent accéder aux données les concernant, les rectifier, demander leur effacement.",
+      utilisateurDroitAccesEmail:
+        "L’utilisateur dispose d'un droit d'accès, de rectification, de suppression et d'opposition de ses données personnelles sur simple demande par email. Ecrivez-nous à ",
+      exercerDroitsQuestionTraitement:
+        'Pour exercer vos droits ou pour toute question sur le traitement de vos données vous pouvez contacter le référent de la protection des données de la DGCCRF:',
+      voiePostale: 'Par voie postale:',
+      referentProtectionDonnees1: 'Le référent protection des données - DGCCRF - Bureau 2D',
+      referentProtectionDonnees2: '59 boulevard Vincent Auriol',
+      referentProtectionDonnees3: '75703 Paris Cedex 13.',
+      voieElectronique: 'Par voie électronique :',
+      droitLimitationTraitement1:
+        "Vous disposez également d’un droit à la limitation du traitement de vos données. Consultez l'interface en ligne  ",
+      droitLimitationTraitement2: ' pour plus d’informations sur vos droits.',
+      plusInfosGestionCookies: "Pour plus d'information sur la gestion des cookies dans Signal Conso, consultez la rubrique",
+      gestionCookies: 'Gestion des cookies',
+      cookiesDeposesOptOut: 'Cookies déposés et opt-out',
+      interfaceEnLigneDeposeCookie:
+        'Cette interface en ligne dépose un petit fichier texte (un « cookie ») sur votre ordinateur lorsque vous le consultez. Cela nous permet de mesurer le nombre de visites et de comprendre quelles sont les pages les plus consultées.',
+      droitIntroduireReclamation:
+        "Enfin, vous disposez également du droit d'introduire une réclamation auprès de l'autorité de contrôle. L'exercice de ce droit s'effectue auprès de la CNIL:",
+      commissionNationaleInformatiqueLibertes1: "Commission Nationale de l'Informatique et des Libertés",
+      commissionNationaleInformatiqueLibertes2: '3 Place de Fontenoy',
+      commissionNationaleInformatiqueLibertes3: '75007 PARIS.',
     },
     SocialNetwork: {
       YOUTUBE: 'Youtube',
