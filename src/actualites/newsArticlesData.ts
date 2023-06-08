@@ -1,8 +1,17 @@
 import {ArticleAppMobile} from './ArticleAppMobile'
+import {ArticleQuestionnaireSiteDgccrf} from './ArticleQuestionnaireSiteDgccrf'
 
 export type NewsArticle = typeof newsArticlesData[number]
 
+// This is the display order. Keep the most recents at the start of the array
 export const newsArticlesData = [
+  {
+    date: '2023-06-08',
+    slug: 'site-dgccrf-votre-avis-nous-interesse',
+    title: 'Le site internet de la DGCCRF : votre avis nous intéresse !',
+    excerpt: `La DGCCRF travaille à améliorer son site internet pour mieux répondre aux besoins des consommateurs et des professionnels. Pour nous aider à vous satisfaire au maximum, nous vous invitons à remplir un petit questionnaire en ligne.`,
+    content: ArticleQuestionnaireSiteDgccrf,
+  },
   {
     date: '2023-05-30',
     slug: 'signalconso-desormais-disponible-en-application-mobile',
