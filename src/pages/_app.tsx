@@ -20,7 +20,7 @@ import {Matomo} from 'plugins/matomo'
 import {Sentry} from 'plugins/sentry'
 import {useEffect, useState} from 'react'
 import {createEmotionSsrAdvancedApproach} from 'tss-react/next'
-import {ToastProvider} from '../alexlibs/mui-extension/Toast/Toast'
+import {ToastProvider} from '../alexlibs/mui-extension/Toast/ToastContext'
 import {appConfig} from '../core/appConfig'
 import '../globals.css'
 import {Eularian} from '../plugins/eularian'
@@ -78,7 +78,7 @@ const App = (props: AppProps) => {
         _ => <I18nProvider children={_} />,
         _ => <ApiClientsProvider children={_} />,
         // _ => <CssBaseline children={_} />,
-        _ => <ToastProvider horizontal="right" children={_} />,
+        _ => <ToastProvider children={_} />,
         _ => <ReportCreateProvider children={_} />,
         _ => <ReportFlowProvider children={_} />,
       ]}
