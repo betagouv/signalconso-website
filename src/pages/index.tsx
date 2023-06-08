@@ -16,6 +16,7 @@ import report from '../../public/image/illustrations/report.png'
 import {useReportFlowContext} from '../components_feature/Report/ReportFlowContext'
 import {BrowserCompatAlert} from '../components_simple/BrowserCompatAlert/BrowserAlertCompat'
 import SearchAnomalies from '../components_simple/Search/SearchAnomalies'
+import {MobileAppPromoBanner} from 'components_feature/InfoBanner/MobileAppPromoBanner'
 
 const ReportStartedAlert = dynamic(() => import('components_feature/ReportStartedAlert/ReportStartedAlert'), {ssr: false})
 
@@ -52,6 +53,7 @@ const Home = () => {
           <div className="fr-container">
             <InfoBanner />
             <BrowserCompatAlert />
+            <MobileAppPromoBanner />
           </div>
           <div className="fr-container fr-pt-8w fr-pb-6w ">
             <h1 dangerouslySetInnerHTML={{__html: m.signalconsoCatchWord}} />
