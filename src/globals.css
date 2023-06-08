@@ -22,3 +22,10 @@ from https://cssloaders.github.io/
     transform: rotate(360deg);
   }
 }
+
+/* 
+https://github.com/GouvernementFR/dsfr/issues/264
+*/
+.no_external_link_icon::after {
+  display: none !important;
+}
