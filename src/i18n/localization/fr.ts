@@ -87,6 +87,10 @@ export const fr = {
         title: 'Délai de rétractation - SignalConso',
         description: `Calculez votre délai légal de rétractation suite à un achat ou la signature d'un contrat`,
       },
+      conditionsGeneralesUtilisation: {
+        title: "Conditions générales d'utilisation - SignalConso",
+        description: "Consultez les conditions générales d'utilisation",
+      },
     },
     introApple: 'App Store',
     introBetween: 'ou le ',
@@ -725,6 +729,87 @@ export const fr = {
         'Si le vendeur ne vous a pas informé de votre droit de rétractation, le délai est prolongé de 12 mois à partir de la fin du délai initial de rétractation.',
       extensionOfTwelveMonths:
         "Mais si cette information vous est fournie pendant cette prolongation, le délai est de nouveau de 14 jours. Il commence à la date où vous recevez l'information.",
+    },
+    conditionsgeneralesconso: {
+      description:
+        "Les conditions générales d'utilisation doivent être acceptées par l’utilisateur de l'interface en ligne (tout logiciel ou application, y compris un site internet, une section de site internet ou une application mobile).",
+      signalConsoTitle: "À quoi sert l'interface en ligne SignalConso ?",
+      signalConsoDescriptionPart1:
+        "L'interface en ligne permet aux consommateurs de connaître la réglementation et de déposer un signalement.",
+      signalConsoDescriptionPart2:
+        "Il ne doit en aucun cas s'agir d'une urgence nécessitant l'intervention des services de secours. ",
+      appelUrgence: 'Dans ce cas, il faut appeler le « 112 ».',
+      servicePayantTitle: 'Ce service est-il payant ?',
+      servicePayantDescription: "L'interface en ligne est accessible gratuitement à tout utilisateur ayant un accès à internet.",
+      signalerTitle: 'Que peut-on signaler ?',
+      signalerDescription:
+        'L’utilisateur peut signaler des manquements relatifs au Code de la Consommation (principalement) et des litiges contractuels constatés chez une entreprise. Il n’est pas possible de signaler un litige avec un particulier.',
+      traiteSignalementsTitle: 'Qui traite les signalements ?',
+      traiteSignalementsDescription:
+        "Les signalements sont traités par l’équipe SignalConso qui vérifie que le signalement rentre bien dans le périmètre de l'interface en ligne et que les données reçues ne sont pas “sensibles”.",
+      signalementsVisibles: 'Les signalements sont ensuite visibles :',
+      signalementsVisibleEntreprise: 'par le professionnel, dont l’entreprise a été mise en cause,',
+      signalementsVisibleDGCCRF: 'par les agents de la DGCCRF, qui sont habilités à faire des enquêtes.',
+      anonymatTitle: 'Les signalements sont-ils anonymes ?',
+      anonymatDescriptionPart1:
+        'L’utilisateur doit s’identifier auprès de l’administration (SignalConso et DGCCRF) en donnant son nom, son prénom et son adresse email.',
+      anonymatDescriptionPart2: "Par contre, l'utilisateur a la possibilité de rester anonyme vis-à-vis de l'entreprise.",
+      suiviDossierTitle: 'Existe-t-il un suivi de dossier ?',
+      suiviDossierDescription:
+        'SignalConso ne propose pas de suivi personnalisé des dossiers. Les signalements sont traités de manière collective.',
+      risqueDenonciationTitle: 'Quel est le risque en cas de dénonciation mensongère ?',
+      risqueDenonciationDescription1:
+        "L’article 226-10 du Code Pénal dispose que \"la dénonciation, effectuée par tout moyen et dirigée contre une personne déterminée, d'un fait qui est de nature à entraîner des sanctions judiciaires, administratives ou disciplinaires et que l'on sait totalement ou partiellement inexact, lorsqu'elle est adressée soit à un officier de justice ou de police administrative ou judiciaire, soit à une autorité ayant le pouvoir d'y donner suite ou de saisir l'autorité compétente, soit aux supérieurs hiérarchiques ou à l'employeur de la personne dénoncée, est punie de cinq ans d'emprisonnement et de 45 000 € d'amende.\"",
+      risqueDenonciationDescription2:
+        "Le détournement de l'interface en ligne de signalement pour effectuer des dénonciations mensongères fera l'objet de poursuites judiciaires.",
+      traitementSignalementsAbusifsTitle: 'Traitement des signalements abusifs ou frauduleux',
+      traitementSignalementsAbusifsDescription:
+        'Les droit de saisine par voie électronique ne s’applique pas aux envois abusifs, notamment par leur nombre, leur caractère répétitif ou systématique, ou les envois susceptibles de porter atteinte à la sécurité des systèmes d’information ou pouvant porter atteinte au personne physique ou morale (menace de mort, insulte, ...). Dans ces conditions les signalements répétés susceptibles de perturber le bon fonctionnement du service ou qui auraient pour effet de faire peser sur lui une charge disproportionnée au regard des moyens dont il dispose pourrait voir leurs adresses bloquées.',
+      mentionsLegalesTitle: 'Mentions légales',
+      mentionsLegalesDescriptionPart1:
+        "L'édition de l'interface en ligne https://signal.conso.gouv.fr est assurée par la Direction générale de la Concurrence, de la Consommation et de la Répression des fraudes (DGCCRF), située au 59 Boulevard Vincent Auriol 75013 Paris.",
+      mentionsLegalesDescriptionPart2:
+        "L'hébergeur de l'interface en ligne https://signal.conso.gouv.fr est la société Clever Cloud dont le siège social est situé 3 rue de l’Allier 44000 Nantes.",
+      proprieteIntellectuelleTitle: 'Propriété intellectuelle',
+      proprieteIntellectuelleDescription:
+        "Les marques, logos, signes et tout autre contenu de l'interface en ligne font l'objet d'une protection par le Code de la propriété intellectuelle et plus particulièrement par le droit d'auteur.",
+    },
+    conditionsGeneralesUtilisationPro: {
+      intro:
+        "Les conditions générales d'utilisation doivent être acceptées par le professionnel afin d’utiliser l'interface en ligne SignalConso.",
+      gratuiteTitle: 'Gratuité de la plate-forme SignalConso',
+      gratuiteContent: "L'interface en ligne est accessible gratuitement aux professionnels.",
+      reclamationsContent1:
+        'Si vous recevez une sollicitation vous réclamant une somme d’argent dans le cadre de SignalConso, refusez la proposition et alertez rapidement la DIRECCTE ou la DDPP de votre secteur.',
+      reclamationsContent2: 'Coordonnées disponibles ici:',
+      coordonneesTitle: 'coordonnées des DDPP et DDCSPP (nouvelle fenêtre)',
+      coordonneesLink: 'https://www.economie.gouv.fr/dgccrf/coordonnees-des-DDPP-et-DDCSPP',
+      objectionsTitle: 'Objections quant au signalement déposé',
+      objectionsContent1:
+        'Si vous contestez le signalement qui a été déposé, vous pouvez le notifier directement dans votre espace professionnel.',
+      objectionsContent2:
+        "Votre réponse sera transmise au consommateur et à la DGCCRF. Un second espace de réponse permet d'apporter des éléments à la connaissance de la DGCCRF seulement. Vous pouvez y joindre des pièces jointes.",
+      objectionsReminder: 'Pour rappel, ce sont les constatations effectuées par les enquêteurs lors d’un contrôle qui font foi.',
+      contactTitle: 'Prise de contact avec le consommateur',
+      contactContent:
+        'Si le consommateur a souhaité vous transférer ses coordonnées, vous pouvez le contacter. Ce contact doit être courtois et être fait uniquement dans le cadre du signalement. Il a notamment pour but de récupérer des informations manquantes et traiter si besoin le litige.',
+      contactProhibitions1: 'Il est interdit d’utiliser les coordonnées du consommateur à des fins de prospections commerciales.',
+      contactProhibitions2:
+        'Il est interdit d’intimider ou de harceler le consommateur afin de lui faire retirer son signalement.',
+      contactAbuse: 'Tout abus pourra entraîner des poursuites judiciaires.',
+      denonciationTitle: 'Dénonciation mensongère',
+      denonciationContent:
+        "L’article 226-10 du Code Pénal dispose que \"la dénonciation, effectuée par tout moyen et dirigée contre une personne déterminée, d'un fait qui est de nature à entraîner des sanctions judiciaires, administratives ou disciplinaires et que l'on sait totalement ou partiellement inexact, lorsqu'elle est adressée soit à un officier de justice ou de police administrative ou judiciaire, soit à une autorité ayant le pouvoir d'y donner suite ou de saisir l'autorité compétente, soit aux supérieurs hiérarchiques ou à l'employeur de la personne dénoncée, est punie de cinq ans d'emprisonnement et de 45 000 € d'amende.\"",
+      denonciationPunishment:
+        "Le détournement de l'interface en ligne de signalement pour effectuer des dénonciations mensongères fera l'objet de poursuites judiciaires.",
+      mentionsLegalesTitle: 'Mentions légales',
+      mentionsLegalesContent:
+        "L'édition de l'interface en ligne https://signal.conso.gouv.fr est assurée par la Direction générale de la Concurrence, de la Consommation et de la Répression des fraudes (DGCCRF), située au 59 Boulevard Vincent Auriol 75013 Paris.",
+      mentionsLegalesHebergeur:
+        "L'hébergeur de l'interface en ligne https://signal.conso.gouv.fr est la société Clever Cloud dont le siège social est situé 3 rue de l’Allier 44000 Nantes.",
+      proprieteIntellectuelleTitle: 'Propriété intellectuelle',
+      proprieteIntellectuelleContent:
+        "Les marques, logos, signes et tout autre contenu de l'interface en ligne font l'objet d'une protection par le Code de la propriété intellectuelle et plus particulièrement par le droit d'auteur.",
     },
     SocialNetwork: {
       YOUTUBE: 'Youtube',
