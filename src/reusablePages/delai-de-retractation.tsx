@@ -2,10 +2,10 @@ import {Icon} from '@mui/material'
 import {Txt} from 'alexlibs/mui-extension/Txt/Txt'
 import {ContentPageContainer} from 'components_simple/ContentPageContainer'
 import {SimpleDatepicker} from 'components_simple/Datepicker/SimpleDatepicker'
-import {titleAndDescriptions} from 'core/titleAndDescriptions'
 import Head from 'next/head'
 import {useMemo, useState} from 'react'
 import {dateToFrenchFormat} from 'utils/utils'
+import {useI18n} from '../i18n/I18n'
 
 const closingDays = [
   {day: 1, month: 0},
@@ -37,17 +37,19 @@ function isClosingDate(date: Date) {
 const DelaiDeRetractation = () => {
   const [contractDate, setContractDate] = useState<Date | undefined>()
   const deadlineDate = useMemo(() => (contractDate ? calculRetractationDeadline(contractDate) : undefined), [contractDate])
+  const {m} = useI18n()
+
   return (
     <>
       <Head>
-        <title>{titleAndDescriptions.delaiRetractation.title}</title>
-        <meta name="description" content={titleAndDescriptions.delaiRetractation.description} />
+        <title>{m.titleAndDescriptions.delaiRetractation.title}</title>
+        <meta name="description" content={m.titleAndDescriptions.delaiRetractation.description} />
       </Head>
       <ContentPageContainer>
-        <h1>Délai de rétractation</h1>
+        <h1>{m.delaiRetractation.pageTitle}</h1>
         <section className="fr-pb-4w">
-          <h2 className="fr-h4">Calculez votre date limite de rétractation</h2>
-          <span>Date de départ :</span>
+          <h2 className="fr-h4">{m.delaiRetractation.calculationSectionTitle}</h2>
+          <span>{m.delaiRetractation.startDateLabel}</span>
           <SimpleDatepicker value={contractDate} onChange={setContractDate} limited />
           {deadlineDate && (
             <div style={{marginTop: '20px', textAlign: 'left'}}>
@@ -55,66 +57,65 @@ const DelaiDeRetractation = () => {
                 arrow_forward
               </Icon>
               <span style={{marginLeft: '4px', fontSize: '1.2rem'}}>
-                Vous avez jusqu'au <span style={{fontWeight: 'bold'}}>{dateToFrenchFormat(deadlineDate)}</span> pour changer
-                d'avis.
+                {m.delaiRetractation.deadlineMessagePrefix}{' '}
+                <span style={{fontWeight: 'bold'}}>{dateToFrenchFormat(deadlineDate)}</span>{' '}
+                {m.delaiRetractation.deadlineMessageSuffix}
               </span>
             </div>
           )}
         </section>
         <section className="fr-pb-4w">
-          <h2 className="fr-h4">Quelle est la date de départ à prendre en compte ?</h2>
+          <h2 className="fr-h4">{m.delaiRetractation.startDateExplanationTitle}</h2>
           <table className="fr-table">
             <thead>
               <tr>
-                <th>Type de contrat</th>
-                <th>Date à prendre en compte</th>
+                <th>{m.delaiRetractation.contractTypeHeader}</th>
+                <th>{m.delaiRetractation.dateToConsiderHeader}</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td>Contrat de prestation de services</td>
-                <td>Date de conclusion du contrat</td>
+                <td>{m.delaiRetractation.serviceContract}</td>
+                <td>{m.delaiRetractation.contractConclusionDate}</td>
               </tr>
               <tr>
-                <td>Contrats portant sur la fourniture d'eau, de gaz ou d'électricité</td>
-                <td>Date de conclusion du contrat</td>
+                <td>{m.delaiRetractation.waterGasElectricityContract}</td>
+                <td>{m.delaiRetractation.contractConclusionDate}</td>
               </tr>
               <tr>
-                <td>Produits livrés</td>
-                <td>Date de livraison</td>
+                <td>{m.delaiRetractation.deliveredProducts}</td>
+                <td>{m.delaiRetractation.deliveryDate}</td>
               </tr>
               <tr>
-                <td>Produits livrés en plusieurs paquets</td>
-                <td>Date de réception du dernier bien, lot ou pièce reçu</td>
+                <td>{m.delaiRetractation.deliveredProductsMultiplePackages}</td>
+                <td>{m.delaiRetractation.receptionDateLastItem}</td>
               </tr>
             </tbody>
           </table>
         </section>
         <section className="fr-pb-4w">
-          <h2 className="fr-h4">Vous avez 14 jours pour changer d'avis</h2>
-          <p>Vous n'avez pas à vous justifier auprès de l'entreprise</p>
+          <h2 className="fr-h4">{m.delaiRetractation.changeOfMindTitle}</h2>
+          <p>{m.delaiRetractation.justificationNotRequired}</p>
           <p>
-            Il faut renvoyer{' '}
+            {m.delaiRetractation.returnFormOrLetter}{' '}
             <Txt bolder span>
-              par lettre recommandée avec accusé de réception
+              {m.delaiRetractation.recommendedLetterWithAcknowledgment}
             </Txt>{' '}
-            le formulaire de rétractation ou une lettre écrite dans un délai de 14 jours. <br />
-            Vous pouvez aussi le faire en ligne lorsque le vendeur dispose d'un site internet et qu'il a prévu cette possibilité
-            (vous ne devez pas renvoyer seulement le colis).
+            {m.delaiRetractation.withinFourteenDays}.
             <br />
-            Un signalement sur notre site ne suffit pas pour demander la rétractation.
+            {m.delaiRetractation.canAlsoDoItOnline} {m.delaiRetractation.websiteRequirement}.
+            <br />
+            {m.delaiRetractation.reportingOnWebsiteNotSufficient}
           </p>
           <p>
-            Vous devez conserver toutes les pièces justifiant que vous avez fait les démarches dans les délais.
+            {m.delaiRetractation.keepDocumentation1}
             <br />
-            C'est pourquoi il est important de préférer un courrier avec accusé de réception.
+            {m.delaiRetractation.keepDocumentation2}
           </p>
           <p>
-            Si le vendeur ne vous a pas informé de votre droit de rétractation, le délai est prolongé de 12 mois à partir de la
-            fin du délai initial de rétractation.
+            {m.delaiRetractation.ifSellerDidNotInform}.
             <br />
-            Mais si cette information vous est fournie pendant cette prolongation, le délai est de nouveau de 14 jours. Il
-            commence à la date où vous recevez l'information.
+            {m.delaiRetractation.extensionOfTwelveMonths}.
           </p>
         </section>
       </ContentPageContainer>

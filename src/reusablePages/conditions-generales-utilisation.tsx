@@ -1,10 +1,8 @@
-import {Page} from 'components_simple/Page/Page'
 import {useState} from 'react'
-import {fnSwitch} from '../utils/FnSwitch'
 import Head from 'next/head'
-import {titleAndDescriptions} from 'core/titleAndDescriptions'
 import {ContentPageContainer} from 'components_simple/ContentPageContainer'
 import {Tabs} from '@codegouvfr/react-dsfr/Tabs'
+import {useI18n} from '../i18n/I18n'
 
 const a11yProps = (index: number) => {
   return {
@@ -15,11 +13,12 @@ const a11yProps = (index: number) => {
 
 export const ConditionsGeneralesUtilisation = () => {
   const [activeTab, setActiveTab] = useState(0)
+  const {m} = useI18n()
   return (
     <>
       <Head>
-        <title>{titleAndDescriptions.conditionsGeneralesUtilisation.title}</title>
-        <meta name="description" content={titleAndDescriptions.conditionsGeneralesUtilisation.description} />
+        <title>{m.titleAndDescriptions.conditionsGeneralesUtilisation.title}</title>
+        <meta name="description" content={m.titleAndDescriptions.conditionsGeneralesUtilisation.description} />
       </Head>
       <ContentPageContainer>
         <h1>Conditions générales d'utilisation de l'interface en ligne SignalConso</h1>
@@ -35,161 +34,118 @@ export const ConditionsGeneralesUtilisation = () => {
 }
 
 function ConditionsGeneralesUtilisationConso() {
+  const {m} = useI18n()
   return (
     <div>
+      <p>{m.conditionsgeneralesconso.description}</p>
+      <h2 className="fr-h4">{m.conditionsgeneralesconso.signalConsoTitle}</h2>
       <p>
-        Les conditions générales d'utilisation doivent être acceptées par l’utilisateur de l'interface en ligne (tout logiciel ou
-        application, y compris un site internet, une section de site internet ou une application mobile).
-      </p>
-      <h2 className="fr-h4">À quoi sert l'interface en ligne SignalConso ?</h2>
-      <p>
-        L'interface en ligne permet aux consommateurs de connaître la réglementation et de déposer un signalement.
+        {m.conditionsgeneralesconso.signalConsoDescriptionPart1}
         <br />
-        Il ne doit en aucun cas s'agir d'une urgence nécessitant l'intervention des services de secours.{' '}
-        <b>Dans ce cas, il faut appeler le « 112 ».</b>
+        {m.conditionsgeneralesconso.signalConsoDescriptionPart2}
+        <b>{m.conditionsgeneralesconso.appelUrgence}</b>
       </p>
-      <h2 className="fr-h4">Ce service est-il payant ?</h2>
-      <p>L'interface en ligne est accessible gratuitement à tout utilisateur ayant un accès à internet.</p>
-      <h2 className="fr-h4">Que peut-on signaler ?</h2>
-      <p>
-        L’utilisateur peut signaler des manquements relatifs au Code de la Consommation (principalement) et des litiges
-        contractuels constatés chez une entreprise. Il n’est pas possible de signaler un litige avec un particulier.
-      </p>
-      <h2 className="fr-h4">Qui traite les signalements ?</h2>
-      <p>
-        Les signalements sont traités par l’équipe SignalConso qui vérifie que le signalement rentre bien dans le périmètre de
-        l'interface en ligne et que les données reçues ne sont pas “sensibles”.
-      </p>
-      Les signalements sont ensuite visibles :
+      <h2 className="fr-h4">{m.conditionsgeneralesconso.servicePayantTitle}</h2>
+      <p>{m.conditionsgeneralesconso.servicePayantDescription}</p>
+      <h2 className="fr-h4">{m.conditionsgeneralesconso.signalerTitle}</h2>
+      <p>{m.conditionsgeneralesconso.signalerDescription}</p>
+      <h2 className="fr-h4">{m.conditionsgeneralesconso.traiteSignalementsTitle}</h2>
+      <p>{m.conditionsgeneralesconso.traiteSignalementsDescription}</p>
+      {m.conditionsgeneralesconso.signalementsVisibles}
       <ul>
-        <li>par le professionnel, dont l’entreprise a été mise en cause,</li>
-        <li>par les agents de la DGCCRF, qui sont habilités à faire des enquêtes.</li>
+        <li>{m.conditionsgeneralesconso.signalementsVisibleEntreprise}</li>
+        <li>{m.conditionsgeneralesconso.signalementsVisibleDGCCRF}</li>
       </ul>
-      <h2 className="fr-h4">Les signalements sont-ils anonymes ?</h2>
+      <h2 className="fr-h4">{m.conditionsgeneralesconso.anonymatTitle}</h2>
       <p>
-        L’utilisateur doit s’identifier auprès de l’administration (SignalConso et DGCCRF) en donnant son nom, son prénom et son
-        adresse email.
+        {m.conditionsgeneralesconso.anonymatDescriptionPart1}
         <br />
-        Par contre, l'utilisateur a la possibilité de rester anonyme vis-à-vis de l'entreprise.
+        {m.conditionsgeneralesconso.anonymatDescriptionPart2}
       </p>
-      <h2 className="fr-h4">Existe-t-il un suivi de dossier ?</h2>
-      <p>SignalConso ne propose pas de suivi personnalisé des dossiers. Les signalements sont traités de manière collective.</p>
-      <h2 className="fr-h4">Quel est le risque en cas de dénonciation mensongère ?</h2>
+      <h2 className="fr-h4">{m.conditionsgeneralesconso.suiviDossierTitle}</h2>
+      <p>{m.conditionsgeneralesconso.suiviDossierDescription}</p>
+      <h2 className="fr-h4">{m.conditionsgeneralesconso.risqueDenonciationTitle}</h2>
       <p>
-        L’article 226-10 du Code Pénal dispose que "la dénonciation, effectuée par tout moyen et dirigée contre une personne
-        déterminée, d'un fait qui est de nature à entraîner des sanctions judiciaires, administratives ou disciplinaires et que
-        l'on sait totalement ou partiellement inexact, lorsqu'elle est adressée soit à un officier de justice ou de police
-        administrative ou judiciaire, soit à une autorité ayant le pouvoir d'y donner suite ou de saisir l'autorité compétente,
-        soit aux supérieurs hiérarchiques ou à l'employeur de la personne dénoncée, est punie de cinq ans d'emprisonnement et de
-        45 000 € d'amende."
+        {m.conditionsgeneralesconso.risqueDenonciationDescription1}
         <br />
-        Le détournement de l'interface en ligne de signalement pour effectuer des dénonciations mensongères fera l'objet de
-        poursuites judiciaires.
+        {m.conditionsgeneralesconso.risqueDenonciationDescription2}
       </p>
-      <h2 className="fr-h4"> Traitement des signalements abusifs ou frauduleux</h2>
+      <h2 className="fr-h4">{m.conditionsgeneralesconso.traitementSignalementsAbusifsTitle}</h2>
+      <p>{m.conditionsgeneralesconso.traitementSignalementsAbusifsDescription}</p>
+      <h2 className="fr-h4">{m.conditionsgeneralesconso.mentionsLegalesTitle}</h2>
       <p>
-        Les droit de saisine par voie électronique ne s’applique pas aux envois abusifs, notamment par leur nombre, leur caractère
-        répétitif ou systématique, ou les envois susceptibles de porter atteinte à la sécurité des systèmes d’information ou
-        pouvant porter atteinte au personne physique ou morale (menace de mort, insulte, ...). Dans ces conditions les
-        signalements répétés susceptibles de perturber le bon fonctionnement du service ou qui auraient pour effet de faire peser
-        sur lui une charge disproportionnée au regard des moyens dont il dispose pourrait voir leurs adresses bloquées.
-      </p>
-      <h2 className="fr-h4">Mentions légales</h2>
-      <p>
-        L'édition de l'interface en ligne https://signal.conso.gouv.fr est assurée par la Direction générale de la Concurrence, de
-        la Consommation et de la Répression des fraudes (DGCCRF), située au 59 Boulevard Vincent Auriol 75013 Paris.
+        {m.conditionsgeneralesconso.mentionsLegalesDescriptionPart1}
         <br />
-        L'hébergeur de l'interface en ligne https://signal.conso.gouv.fr est la société Clever Cloud dont le siège social est
-        situé 3 rue de l’Allier 44000 Nantes.
+        {m.conditionsgeneralesconso.mentionsLegalesDescriptionPart2}
       </p>
-      <h2 className="fr-h4">Propriété intellectuelle</h2>
-      <p>
-        Les marques, logos, signes et tout autre contenu de l'interface en ligne font l'objet d'une protection par le Code de la
-        propriété intellectuelle et plus particulièrement par le droit d'auteur.
-      </p>
+      <h2 className="fr-h4">{m.conditionsgeneralesconso.proprieteIntellectuelleTitle}</h2>
+      <p>{m.conditionsgeneralesconso.proprieteIntellectuelleDescription}</p>
     </div>
   )
 }
 
 function ConditionsGeneralesUtilisationPro() {
+  const {m} = useI18n()
   return (
     <div>
-      <p>
-        Les conditions générales d'utilisation doivent être acceptées par le professionnel afin d’utiliser l'interface en ligne
-        SignalConso.
-      </p>
+      <p>{m.conditionsGeneralesUtilisationPro.intro}</p>
 
-      <h2 className="fr-h4">Gratuité de la plate-forme SignalConso</h2>
+      <h2 className="fr-h4">{m.conditionsGeneralesUtilisationPro.gratuiteTitle}</h2>
       <p>
-        L'interface en ligne est accessible gratuitement aux professionnels.
+        {m.conditionsGeneralesUtilisationPro.gratuiteContent}
         <br />
-        Si vous recevez une sollicitation vous réclamant une somme d’argent dans le cadre de SignalConso, refusez la proposition
-        et alertez rapidement la DIRECCTE ou la DDPP de votre secteur.
+        {m.conditionsGeneralesUtilisationPro.reclamationsContent1}
         <br />
-        Coordonnées disponibles ici:&nbsp;
+        {m.conditionsGeneralesUtilisationPro.reclamationsContent2}&nbsp;
         <a
           href="https://www.economie.gouv.fr/dgccrf/coordonnees-des-DDPP-et-DDCSPP"
           target="_blank"
           rel="noreferrer"
-          title="coordonnées des DDPP et DDCSPP (nouvelle fenêtre)"
+          title={m.conditionsGeneralesUtilisationPro.coordonneesTitle}
         >
-          https://www.economie.gouv.fr/dgccrf/coordonnees-des-DDPP-et-DDCSPP
+          {m.conditionsGeneralesUtilisationPro.coordonneesLink}
         </a>
       </p>
 
-      <h2 className="fr-h4">Objections quant au signalement déposé</h2>
+      <h2 className="fr-h4">{m.conditionsGeneralesUtilisationPro.objectionsTitle}</h2>
       <p>
-        Si vous contestez le signalement qui a été déposé, vous pouvez le notifier directement dans votre espace professionnel.
-        <br /> Votre réponse sera transmise au consommateur et à la DGCCRF. Un second espace de réponse permet d'apporter des
-        éléments à la connaissance de la DGCCRF seulement. Vous pouvez y joindre des pièces jointes.
-        <br /> <b>Pour rappel, ce sont les constatations effectuées par les enquêteurs lors d’un contrôle qui font foi.</b>
+        {m.conditionsGeneralesUtilisationPro.objectionsContent1}
+        <br />
+        {m.conditionsGeneralesUtilisationPro.objectionsContent2}
+        <br />
+        <b>{m.conditionsGeneralesUtilisationPro.objectionsReminder}</b>
       </p>
 
-      <h2 className="fr-h4">Prise de contact avec le consommateur</h2>
+      <h2 className="fr-h4">{m.conditionsGeneralesUtilisationPro.contactTitle}</h2>
       <p>
-        Si le consommateur a souhaité vous transférer ses coordonnées, vous pouvez le contacter. Ce contact doit être courtois et
-        être fait uniquement dans le cadre du signalement. Il a notamment pour but de récupérer des informations manquantes et
-        traiter si besoin le litige.
+        {m.conditionsGeneralesUtilisationPro.contactContent}
         <br />
         <b>
           {' '}
-          Il est interdit d’utiliser les coordonnées du consommateur à des fins de prospections commerciales.
+          {m.conditionsGeneralesUtilisationPro.contactProhibitions1}
           <br />
-          Il est interdit d’intimider ou de harceler le consommateur afin de lui faire retirer son signalement.
+          {m.conditionsGeneralesUtilisationPro.contactProhibitions2}
         </b>
         <br />
-        Tout abus pourra entraîner des poursuites judiciaires.
+        {m.conditionsGeneralesUtilisationPro.contactAbuse}
       </p>
 
-      <h2 className="fr-h4">Dénonciation mensongère</h2>
+      <h2 className="fr-h4">{m.conditionsGeneralesUtilisationPro.denonciationTitle}</h2>
       <p>
-        L’article 226-10 du Code Pénal dispose que "la dénonciation, effectuée par tout moyen et dirigée contre une personne
-        déterminée, d'un fait qui est de nature à entraîner des sanctions judiciaires, administratives ou disciplinaires et que
-        l'on sait totalement ou partiellement inexact, lorsqu'elle est adressée soit à un officier de justice ou de police
-        administrative ou judiciaire, soit à une autorité ayant le pouvoir d'y donner suite ou de saisir l'autorité compétente,
-        soit aux supérieurs hiérarchiques ou à l'employeur de la personne dénoncée, est punie de cinq ans d'emprisonnement et de
-        45 000 € d'amende."
+        {m.conditionsGeneralesUtilisationPro.denonciationContent}
         <br />
-        <b>
-          Le détournement de l'interface en ligne de signalement pour effectuer des dénonciations mensongères fera l'objet de
-          poursuites judiciaires.
-        </b>
+        <b>{m.conditionsGeneralesUtilisationPro.denonciationPunishment}</b>
       </p>
 
-      <h2 className="fr-h4">Mentions légales</h2>
+      <h2 className="fr-h4">{m.conditionsGeneralesUtilisationPro.mentionsLegalesTitle}</h2>
       <p>
-        L'édition de l'interface en ligne https://signal.conso.gouv.fr est assurée par la Direction générale de la Concurrence, de
-        la Consommation et de la Répression des fraudes (DGCCRF), située au 59 Boulevard Vincent Auriol 75013 Paris.
+        {m.conditionsGeneralesUtilisationPro.mentionsLegalesContent}
         <br />
-        L'hébergeur de l'interface en ligne https://signal.conso.gouv.fr est la société Clever Cloud dont le siège social est
-        situé 3 rue de l’Allier 44000 Nantes.
+        {m.conditionsGeneralesUtilisationPro.mentionsLegalesHebergeur}
       </p>
 
-      <h2 className="fr-h4">Propriété intellectuelle</h2>
-      <p>
-        Les marques, logos, signes et tout autre contenu de l'interface en ligne font l'objet d'une protection par le Code de la
-        propriété intellectuelle et plus particulièrement par le droit d'auteur.
-      </p>
+      <h2 className="fr-h4">{m.conditionsGeneralesUtilisationPro.proprieteIntellectuelleTitle}</h2>
+      <p>{m.conditionsGeneralesUtilisationPro.proprieteIntellectuelleContent}</p>
     </div>
   )
 }

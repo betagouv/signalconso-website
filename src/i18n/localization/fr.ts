@@ -75,6 +75,26 @@ export const fr = {
         title: 'Aide - SignalConso',
         description: "Consultez l'aide et les questions fréquentes sur SignalConso",
       },
+      suiviEtViePrivee: {
+        title: "Suivi d'audience et vie privée - SignalConso",
+        description: "Consultez les informations concernant le suivi d'audience et le respect de la vie privée sur SignalConso",
+      },
+      planDuSite: {
+        title: 'Plan du site - SignalConso',
+        description: 'Plan du site',
+      },
+      delaiRetractation: {
+        title: 'Délai de rétractation - SignalConso',
+        description: `Calculez votre délai légal de rétractation suite à un achat ou la signature d'un contrat`,
+      },
+      conditionsGeneralesUtilisation: {
+        title: "Conditions générales d'utilisation - SignalConso",
+        description: "Consultez les conditions générales d'utilisation",
+      },
+      stats: {
+        title: 'Statistiques - SignalConso',
+        description: 'Consultez les statistiques de SignalConso',
+      },
     },
     introApple: 'App Store',
     introBetween: 'ou le ',
@@ -597,6 +617,204 @@ export const fr = {
       gererNotificationsDescription3:
         'Attention, si vous désactivez les notifications, vous ne recevrez plus les nouveaux signalements par courriel. Vous devrez vous connecter régulièrement sur votre espace pour consulter les nouveaux signalements.',
     },
+    suiviEtViePrivee: {
+      suiviAudienceViePrivee: "Suivi d'audience et vie privée",
+      donneesPersonnelles: 'Données personnelles',
+      infoRecueillies:
+        'Les informations recueillies dans le formulaire de SignalConso sont enregistrées dans un fichier informatisé par l’équipe SignalConso (DGCCRF) pour permettre aux professionnels de se corriger et permettre à la DGCCRF de suivre les signalements à des fins de contrôle. La base légale du traitement est la mission de service public de la DGCCRF, habilitée à contrôler et sanctionner les manquements relatifs au code de la consommation (L511-3 Code Conso et L450-1 Code Commerce)',
+      infoDemandees:
+        "Les informations demandées lors du dépôt du signalement sont nécessaires pour traiter les signalements. En particulier, l'adresse email pourra être utilisée par l'interface en ligne (tout logiciel ou application, y compris un site internet, une section de site internet ou une application mobile) pour informer le consommateur du suivi de son signalement (système de notification).",
+      infoSignalement:
+        'Les informations relatives au signalement (c’est-à-dire la déclaration et les pièces jointes) sont conservées 5 ans par la DGCCRF pour les besoins des enquêtes et les suites éventuelles.',
+      declarationsObjetRetraitement:
+        "La DGCCRF, en sa qualité d’exploitant de l'interface en ligne, s'engage à n'opérer aucune commercialisation des informations personnelles transmises par l'usager, Les déclarations peuvent faire l’objet d'un retraitement statistique par l’administration dans le cadre de ses missions. Les informations présentes sur l'interface en ligne public ne comportent pas de données nominatives et sont mises à disposition de manière libre et gratuite sur l'interface en ligne ",
+      aFrequenceReguliere: 'à fréquence régulière.',
+      utilisateurDroitAcces:
+        "L’utilisateur dispose d'un droit d'accès, de rectification, de suppression et d'opposition de ses données personnelles sur simple demande ",
+      parEmail: 'par email.',
+      consultezInterfaceCnil:
+        "Consultez l'interface en ligne cnil.fr pour plus d’informations sur vos droits. Si vous estimez, après nous avoir contactés, que vos droits « Informatique et Libertés » ne sont pas respectés, vous pouvez adresser une réclamation à la CNIL.",
+      droitAccesDonnees: "Droit d'accès aux données",
+      conformementRGPD:
+        "Conformément au Règlement 2016/679 du 27 avril 2016 relatif à la protection des personnes physiques à l'égard du traitement des données à caractère personnel et à la libre circulation de ces données (RGPD) et à la loi n°78-17 du 6 janvier 1978 relative à l'informatique, aux fichiers et aux libertés modifiée, les personnes concernées par ce traitement de données personnelles peuvent accéder aux données les concernant, les rectifier, demander leur effacement.",
+      utilisateurDroitAccesEmail:
+        "L’utilisateur dispose d'un droit d'accès, de rectification, de suppression et d'opposition de ses données personnelles sur simple demande par email. Ecrivez-nous à ",
+      exercerDroitsQuestionTraitement:
+        'Pour exercer vos droits ou pour toute question sur le traitement de vos données vous pouvez contacter le référent de la protection des données de la DGCCRF:',
+      voiePostale: 'Par voie postale:',
+      referentProtectionDonnees1: 'Le référent protection des données - DGCCRF - Bureau 2D',
+      referentProtectionDonnees2: '59 boulevard Vincent Auriol',
+      referentProtectionDonnees3: '75703 Paris Cedex 13.',
+      voieElectronique: 'Par voie électronique :',
+      droitLimitationTraitement1:
+        "Vous disposez également d’un droit à la limitation du traitement de vos données. Consultez l'interface en ligne  ",
+      droitLimitationTraitement2: ' pour plus d’informations sur vos droits.',
+      plusInfosGestionCookies: "Pour plus d'information sur la gestion des cookies dans Signal Conso, consultez la rubrique",
+      gestionCookies: 'Gestion des cookies',
+      cookiesDeposesOptOut: 'Cookies déposés et opt-out',
+      interfaceEnLigneDeposeCookie:
+        'Cette interface en ligne dépose un petit fichier texte (un « cookie ») sur votre ordinateur lorsque vous le consultez. Cela nous permet de mesurer le nombre de visites et de comprendre quelles sont les pages les plus consultées.',
+      droitIntroduireReclamation:
+        "Enfin, vous disposez également du droit d'introduire une réclamation auprès de l'autorité de contrôle. L'exercice de ce droit s'effectue auprès de la CNIL:",
+      commissionNationaleInformatiqueLibertes1: "Commission Nationale de l'Informatique et des Libertés",
+      commissionNationaleInformatiqueLibertes2: '3 Place de Fontenoy',
+      commissionNationaleInformatiqueLibertes3: '75007 PARIS.',
+    },
+    planDuSite: {
+      pageTitle: 'Plan du site',
+      generalPagesSection: 'Pages générales',
+      reportIncident: 'Faire un signalement',
+      audiencePrivacy: "Suivi d'audience et vie privée",
+      cookieManagement: 'Gestion des cookies',
+      generalConditions: "Conditions générales d'utilisation du site SignalConso",
+      accessibilityDeclaration: "Déclaration d'accessibilité",
+      siteMap: 'Plan du site',
+      aboutUs: 'Qui sommes-nous ?',
+      howItWorks: 'Comment ça marche ?',
+      statistics: 'Statistiques',
+      helpCenter: "Centre d'aide",
+      contact: 'Contact',
+      calcRetractionDelay: 'Calculez votre délai de rétractation',
+      resolutionTips: "Conseils pour résolution d'un problème individuel (litige)",
+      reportIncidentSection: "Dépôt d'un signalement",
+      reportIncidentFor: 'Faire un signalement pour',
+      seeFullTree: 'Voir aussi',
+      completeTree: "l'arborescence complète du dépot d'un signalement",
+      incidentSteps: "Détails des étapes d'un signalement",
+      step1: 'Étape 1 - Le problème',
+      step2: 'Étape 2 - La description',
+      step3: 'Étape 3 - Le commerçant',
+      step4: 'Étape 4 - Le consommateur',
+      step5: 'Étape 5 - Confirmation',
+      proSpaceSection: 'Espace pro',
+      activateBusinessSpace: "Activation de l'espace entreprise",
+      login: 'Connexion',
+      incidentTracking: 'Suivi des signalements',
+      incidentDetails: 'Détail du signalements',
+      myCompanies: 'Mes entreprises',
+      accessManagement: 'Gestion des accès',
+      passwordModification: 'Modification du mot de passe',
+      newsSection: 'Actualités',
+      allNews: 'Toutes les actualités',
+      dgccrfSpaceSection: 'Espace DGCCRF',
+      companyTracking: 'Suivi des entreprises',
+      subscriptions: 'Abonnements',
+    },
+    delaiRetractation: {
+      title: 'Délai de rétractation',
+      description: 'Description du délai de rétractation',
+      pageTitle: 'Délai de rétractation',
+      calculationSectionTitle: 'Calculez votre date limite de rétractation',
+      startDateLabel: 'Date de départ :',
+      deadlineMessagePrefix: "Vous avez jusqu'au",
+      deadlineMessageSuffix: "pour changer d'avis.",
+      startDateExplanationTitle: 'Quelle est la date de départ à prendre en compte ?',
+      contractTypeHeader: 'Type de contrat',
+      dateToConsiderHeader: 'Date à prendre en compte',
+      serviceContract: 'Contrat de prestation de services',
+      contractConclusionDate: 'Date de conclusion du contrat',
+      waterGasElectricityContract: "Contrats portant sur la fourniture d'eau, de gaz ou d'électricité",
+      deliveredProducts: 'Produits livrés',
+      deliveryDate: 'Date de livraison',
+      deliveredProductsMultiplePackages: 'Produits livrés en plusieurs paquets',
+      receptionDateLastItem: 'Date de réception du dernier bien, lot ou pièce reçu',
+      changeOfMindTitle: "Vous avez 14 jours pour changer d'avis",
+      justificationNotRequired: "Vous n'avez pas à vous justifier auprès de l'entreprise",
+      returnFormOrLetter: 'Il faut renvoyer',
+      recommendedLetterWithAcknowledgment: 'par lettre recommandée avec accusé de réception',
+      withinFourteenDays: 'le formulaire de rétractation ou une lettre écrite dans un délai de 14 jours',
+      canAlsoDoItOnline:
+        "Vous pouvez aussi le faire en ligne lorsque le vendeur dispose d'un site internet et qu'il a prévu cette possibilité",
+      websiteRequirement: '(vous ne devez pas renvoyer seulement le colis)',
+      reportingOnWebsiteNotSufficient: 'Un signalement sur notre site ne suffit pas pour demander la rétractation.',
+      keepDocumentation1: 'Vous devez conserver toutes les pièces justifiant que vous avez fait les démarches dans les délais.',
+      keepDocumentation2: "C'est pourquoi il est important de préférer un courrier avec accusé de réception.",
+      ifSellerDidNotInform:
+        'Si le vendeur ne vous a pas informé de votre droit de rétractation, le délai est prolongé de 12 mois à partir de la fin du délai initial de rétractation.',
+      extensionOfTwelveMonths:
+        "Mais si cette information vous est fournie pendant cette prolongation, le délai est de nouveau de 14 jours. Il commence à la date où vous recevez l'information.",
+    },
+    conditionsgeneralesconso: {
+      description:
+        "Les conditions générales d'utilisation doivent être acceptées par l’utilisateur de l'interface en ligne (tout logiciel ou application, y compris un site internet, une section de site internet ou une application mobile).",
+      signalConsoTitle: "À quoi sert l'interface en ligne SignalConso ?",
+      signalConsoDescriptionPart1:
+        "L'interface en ligne permet aux consommateurs de connaître la réglementation et de déposer un signalement.",
+      signalConsoDescriptionPart2:
+        "Il ne doit en aucun cas s'agir d'une urgence nécessitant l'intervention des services de secours. ",
+      appelUrgence: 'Dans ce cas, il faut appeler le « 112 ».',
+      servicePayantTitle: 'Ce service est-il payant ?',
+      servicePayantDescription: "L'interface en ligne est accessible gratuitement à tout utilisateur ayant un accès à internet.",
+      signalerTitle: 'Que peut-on signaler ?',
+      signalerDescription:
+        'L’utilisateur peut signaler des manquements relatifs au Code de la Consommation (principalement) et des litiges contractuels constatés chez une entreprise. Il n’est pas possible de signaler un litige avec un particulier.',
+      traiteSignalementsTitle: 'Qui traite les signalements ?',
+      traiteSignalementsDescription:
+        "Les signalements sont traités par l’équipe SignalConso qui vérifie que le signalement rentre bien dans le périmètre de l'interface en ligne et que les données reçues ne sont pas “sensibles”.",
+      signalementsVisibles: 'Les signalements sont ensuite visibles :',
+      signalementsVisibleEntreprise: 'par le professionnel, dont l’entreprise a été mise en cause,',
+      signalementsVisibleDGCCRF: 'par les agents de la DGCCRF, qui sont habilités à faire des enquêtes.',
+      anonymatTitle: 'Les signalements sont-ils anonymes ?',
+      anonymatDescriptionPart1:
+        'L’utilisateur doit s’identifier auprès de l’administration (SignalConso et DGCCRF) en donnant son nom, son prénom et son adresse email.',
+      anonymatDescriptionPart2: "Par contre, l'utilisateur a la possibilité de rester anonyme vis-à-vis de l'entreprise.",
+      suiviDossierTitle: 'Existe-t-il un suivi de dossier ?',
+      suiviDossierDescription:
+        'SignalConso ne propose pas de suivi personnalisé des dossiers. Les signalements sont traités de manière collective.',
+      risqueDenonciationTitle: 'Quel est le risque en cas de dénonciation mensongère ?',
+      risqueDenonciationDescription1:
+        "L’article 226-10 du Code Pénal dispose que \"la dénonciation, effectuée par tout moyen et dirigée contre une personne déterminée, d'un fait qui est de nature à entraîner des sanctions judiciaires, administratives ou disciplinaires et que l'on sait totalement ou partiellement inexact, lorsqu'elle est adressée soit à un officier de justice ou de police administrative ou judiciaire, soit à une autorité ayant le pouvoir d'y donner suite ou de saisir l'autorité compétente, soit aux supérieurs hiérarchiques ou à l'employeur de la personne dénoncée, est punie de cinq ans d'emprisonnement et de 45 000 € d'amende.\"",
+      risqueDenonciationDescription2:
+        "Le détournement de l'interface en ligne de signalement pour effectuer des dénonciations mensongères fera l'objet de poursuites judiciaires.",
+      traitementSignalementsAbusifsTitle: 'Traitement des signalements abusifs ou frauduleux',
+      traitementSignalementsAbusifsDescription:
+        'Les droit de saisine par voie électronique ne s’applique pas aux envois abusifs, notamment par leur nombre, leur caractère répétitif ou systématique, ou les envois susceptibles de porter atteinte à la sécurité des systèmes d’information ou pouvant porter atteinte au personne physique ou morale (menace de mort, insulte, ...). Dans ces conditions les signalements répétés susceptibles de perturber le bon fonctionnement du service ou qui auraient pour effet de faire peser sur lui une charge disproportionnée au regard des moyens dont il dispose pourrait voir leurs adresses bloquées.',
+      mentionsLegalesTitle: 'Mentions légales',
+      mentionsLegalesDescriptionPart1:
+        "L'édition de l'interface en ligne https://signal.conso.gouv.fr est assurée par la Direction générale de la Concurrence, de la Consommation et de la Répression des fraudes (DGCCRF), située au 59 Boulevard Vincent Auriol 75013 Paris.",
+      mentionsLegalesDescriptionPart2:
+        "L'hébergeur de l'interface en ligne https://signal.conso.gouv.fr est la société Clever Cloud dont le siège social est situé 3 rue de l’Allier 44000 Nantes.",
+      proprieteIntellectuelleTitle: 'Propriété intellectuelle',
+      proprieteIntellectuelleDescription:
+        "Les marques, logos, signes et tout autre contenu de l'interface en ligne font l'objet d'une protection par le Code de la propriété intellectuelle et plus particulièrement par le droit d'auteur.",
+    },
+    conditionsGeneralesUtilisationPro: {
+      intro:
+        "Les conditions générales d'utilisation doivent être acceptées par le professionnel afin d’utiliser l'interface en ligne SignalConso.",
+      gratuiteTitle: 'Gratuité de la plate-forme SignalConso',
+      gratuiteContent: "L'interface en ligne est accessible gratuitement aux professionnels.",
+      reclamationsContent1:
+        'Si vous recevez une sollicitation vous réclamant une somme d’argent dans le cadre de SignalConso, refusez la proposition et alertez rapidement la DIRECCTE ou la DDPP de votre secteur.',
+      reclamationsContent2: 'Coordonnées disponibles ici:',
+      coordonneesTitle: 'coordonnées des DDPP et DDCSPP (nouvelle fenêtre)',
+      coordonneesLink: 'https://www.economie.gouv.fr/dgccrf/coordonnees-des-DDPP-et-DDCSPP',
+      objectionsTitle: 'Objections quant au signalement déposé',
+      objectionsContent1:
+        'Si vous contestez le signalement qui a été déposé, vous pouvez le notifier directement dans votre espace professionnel.',
+      objectionsContent2:
+        "Votre réponse sera transmise au consommateur et à la DGCCRF. Un second espace de réponse permet d'apporter des éléments à la connaissance de la DGCCRF seulement. Vous pouvez y joindre des pièces jointes.",
+      objectionsReminder: 'Pour rappel, ce sont les constatations effectuées par les enquêteurs lors d’un contrôle qui font foi.',
+      contactTitle: 'Prise de contact avec le consommateur',
+      contactContent:
+        'Si le consommateur a souhaité vous transférer ses coordonnées, vous pouvez le contacter. Ce contact doit être courtois et être fait uniquement dans le cadre du signalement. Il a notamment pour but de récupérer des informations manquantes et traiter si besoin le litige.',
+      contactProhibitions1: 'Il est interdit d’utiliser les coordonnées du consommateur à des fins de prospections commerciales.',
+      contactProhibitions2:
+        'Il est interdit d’intimider ou de harceler le consommateur afin de lui faire retirer son signalement.',
+      contactAbuse: 'Tout abus pourra entraîner des poursuites judiciaires.',
+      denonciationTitle: 'Dénonciation mensongère',
+      denonciationContent:
+        "L’article 226-10 du Code Pénal dispose que \"la dénonciation, effectuée par tout moyen et dirigée contre une personne déterminée, d'un fait qui est de nature à entraîner des sanctions judiciaires, administratives ou disciplinaires et que l'on sait totalement ou partiellement inexact, lorsqu'elle est adressée soit à un officier de justice ou de police administrative ou judiciaire, soit à une autorité ayant le pouvoir d'y donner suite ou de saisir l'autorité compétente, soit aux supérieurs hiérarchiques ou à l'employeur de la personne dénoncée, est punie de cinq ans d'emprisonnement et de 45 000 € d'amende.\"",
+      denonciationPunishment:
+        "Le détournement de l'interface en ligne de signalement pour effectuer des dénonciations mensongères fera l'objet de poursuites judiciaires.",
+      mentionsLegalesTitle: 'Mentions légales',
+      mentionsLegalesContent:
+        "L'édition de l'interface en ligne https://signal.conso.gouv.fr est assurée par la Direction générale de la Concurrence, de la Consommation et de la Répression des fraudes (DGCCRF), située au 59 Boulevard Vincent Auriol 75013 Paris.",
+      mentionsLegalesHebergeur:
+        "L'hébergeur de l'interface en ligne https://signal.conso.gouv.fr est la société Clever Cloud dont le siège social est situé 3 rue de l’Allier 44000 Nantes.",
+      proprieteIntellectuelleTitle: 'Propriété intellectuelle',
+      proprieteIntellectuelleContent:
+        "Les marques, logos, signes et tout autre contenu de l'interface en ligne font l'objet d'une protection par le Code de la propriété intellectuelle et plus particulièrement par le droit d'auteur.",
+    },
     SocialNetwork: {
       YOUTUBE: 'Youtube',
       FACEBOOK: 'Facebook',
@@ -968,6 +1186,10 @@ export const fr = {
     `,
     confirmationBtnReponseConso: `Envoyer ma question`,
     confirmationBtn: `Envoyer le signalement`,
+
+    statsTitle: 'Statistiques',
+    statsText:
+      'Ces statistiques sont mises à jour en temps réel. Des statistiques complémentaires sont aussi disponibles sur le site ',
 
     acceptedReportStat: `promesses d'action ont été faites par des entreprises depuis le début de SignalConso`,
     acceptedReportStatName: `Nombre de promesses d'action`,
