@@ -13,13 +13,13 @@ const Stats = () => {
   return (
     <>
       <Head>
-        <title>{titleAndDescriptions.stats.title}</title>
-        <meta name="description" content={titleAndDescriptions.stats.description} />
+        <title>{m.titleAndDescriptions.stats.title}</title>
+        <meta name="description" content={m.titleAndDescriptions.stats.description} />
       </Head>
       <ContentPageContainer>
-        <h1 className="">Statistiques</h1>
+        <h1 className="">{m.statsTitle}</h1>
         <p>
-          Ces statistiques sont mises à jour en temps réel. Des statistiques complémentaires sont aussi disponibles sur le site{' '}
+          {m.statsText}
           <Link className="" target="_blank" rel="noreferrer" href="https://data.economie.gouv.fr/pages/signalconso/">
             data.economie.fr
           </Link>
