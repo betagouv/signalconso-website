@@ -1,8 +1,4 @@
 export const titleAndDescriptions = {
-  stats: {
-    title: 'Statistiques - SignalConso',
-    description: 'Consultez les statistiques de SignalConso',
-  },
   anomaly: {
     title: 'Arborescence - SignalConso',
     description: "Arborescence du dépot d'un signalement",

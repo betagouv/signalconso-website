@@ -91,6 +91,10 @@ export const fr = {
         title: "Conditions générales d'utilisation - SignalConso",
         description: "Consultez les conditions générales d'utilisation",
       },
+      stats: {
+        title: 'Statistiques - SignalConso',
+        description: 'Consultez les statistiques de SignalConso',
+      },
     },
     introApple: 'App Store',
     introBetween: 'ou le ',
@@ -1182,6 +1186,10 @@ export const fr = {
     `,
     confirmationBtnReponseConso: `Envoyer ma question`,
     confirmationBtn: `Envoyer le signalement`,
+
+    statsTitle: 'Statistiques',
+    statsText:
+      'Ces statistiques sont mises à jour en temps réel. Des statistiques complémentaires sont aussi disponibles sur le site ',
 
     acceptedReportStat: `promesses d'action ont été faites par des entreprises depuis le début de SignalConso`,
     acceptedReportStatName: `Nombre de promesses d'action`,
