@@ -1,5 +1,4 @@
 import {ContentPageContainer} from 'components_simple/ContentPageContainer'
-import {titleAndDescriptions} from 'core/titleAndDescriptions'
 import Head from 'next/head'
 import {Alert} from '@codegouvfr/react-dsfr/Alert'
 import Link from 'next/link'

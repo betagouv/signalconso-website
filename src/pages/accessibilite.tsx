@@ -1,6 +1,5 @@
 import {ContentPageContainer} from 'components_simple/ContentPageContainer'
 import {externalLinks} from 'core/externalLinks'
-import {titleAndDescriptions} from 'core/titleAndDescriptions'
 import {pagesDefs} from 'core/pagesDefinitions'
 import Head from 'next/head'
 import Link from 'next/link'

@@ -100,6 +100,14 @@ export const fr = {
         description:
           "Signalez un problème au commerçant (magasins, commerces de proximité, cafés et restaurants...) et à la répression des fraudes : pratique d'hygiène, nourriture / boissons, matériel / objet, prix / paiement, publicité, services associés à l'achat.",
       },
+      anomaly: {
+        title: 'Arborescence - SignalConso',
+        description: "Arborescence du dépot d'un signalement",
+      },
+      actualites: {
+        title: 'Actualités - SignalConso',
+        description: 'Actualités et nouveautés du site SignalConso et de la répression des fraudes',
+      },
     },
     introApple: 'App Store',
     introBetween: 'ou le ',
@@ -875,6 +883,12 @@ export const fr = {
       showAllCategories: 'Voir toutes les catégories',
       other: 'Autre',
       displayAllAnomalies: `Afficher toutes les catégories`,
+    },
+    arbo: {
+      title: "Arborescence du dépot d'un signalement",
+      expandAll: 'Tout déplier',
+      notAFraudMessage:
+        'Nous ne doutons pas que vous ayez réellement rencontré un problème mais... il ne s’agit pas d’une fraude.',
     },
     yes: 'Oui',
     no: 'Non',
