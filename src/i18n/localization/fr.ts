@@ -1275,5 +1275,37 @@ export const fr = {
 
     websiteReportsRateStat: ` des signalements déposés depuis le début de SignalConso concernent une entreprise sur internet`,
     browserCompatMessage: `Votre navigateur web est obsolète. Si vous n'utilisez pas la version la plus récente de votre navigateur, vous risquez de rencontrer certains problèmes lors de l'utilisation de SignalConso.`,
+
+    minimalErrorTitle: 'Problème technique',
+    minimalErrorText:
+      "Il y a eu un problème d'affichage dans SignalConso. Essayez de revenir en arrière et de recommencer ce que vous étiez en train de faire.",
+
+    landing: {
+      bigReportButton: 'Je signale un problème',
+      heroCardTitle1: 'Parce que c’est simple !',
+      heroCardText1: 'Des questions vous guident tout au long du parcours pour vous aider à formuler votre problème.',
+      heroCardTitle2: 'Parce que c’est rapide !',
+      heroCardText2: '5 minutes à peine et votre signalement est envoyé.',
+      heroCardTitle3: 'Parce que c’est efficace',
+      heroCardText3: '65 % des entreprises répondent au signalement.',
+      signalConsoWillHandle1:
+        'SignalConso s’occupe du reste. Votre signalement est envoyé à l’entreprise et il est instantanément visible par les agents de la DGCCRF. Si vous avez posé une question sur vos droits, un agent vous recontactera rapidement pour vous répondre et vous orienter dans vos démarches.',
+      signalConsoWillHandle2:
+        'Si c’est nécessaire, vous pouvez décider de rester anonyme. Dans le cas contraire, nous transmettrons vos coordonnées à l’entreprise pour qu’elle puisse vous répondre directement.',
+      signalConsoWillHandle3:
+        'Votre signalement sera également enregistré dans la base de données de la DGCCRF. Cet outil leur permet de mieux cibler leurs contrôles et préparer les enquêtes.',
+      moreThanOneCat: 'Pour signalez votre problème, choisissez la catégorie correspondante',
+      discoverButton: 'Découvrir',
+      whatIsText1:
+        'Plus de 60 millions de consommateurs fréquentent quotidiennement près de 10 millions d’établissements et font des achats sur internet. Et pour contrôler le droit des consommateurs ? Moins de 3 000 agents de la DGCCRF : c’est pourquoi le site ',
+      whatIsText2: ' a été lancé.',
+      whatIsText3:
+        'Malgré l’action des enquêteurs, toutes les anomalies ne peuvent pas être détectées, en particulier les plus mineures et récurrentes : vous êtes, en tant que consommateur, l’acteur le mieux placé pour les repérer et faire valoir vos droits.',
+      whatIsText4:
+        'Le site vous accompagne avant, pendant et après vos achats, et vous permet de signaler en quelques clics les problèmes que vous rencontrez dans votre vie de tous les jours avec un professionnel. SignalConso est également là pour vous répondre, vous informer sur vos droits et vous accompagner dans vos démarches en vous orientant, si nécessaire, vers l’interlocuteur adapté à votre situation. ',
+      whatIsText5:
+        'Les professionnels concernés pourront prendre connaissance des signalements et corriger les anomalies spontanément. Si les signalements sont trop nombreux ou fréquents pour un établissement, les enquêteurs de la DGCCRF pourront décider d’intervenir.',
+      samples: 'Quelques problèmes qui nous ont été signalés',
+    },
   },
 }

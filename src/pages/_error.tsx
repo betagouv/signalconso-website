@@ -1,17 +1,16 @@
 import NextErrorComponent from 'next/error'
 
 import * as Sentry from '@sentry/nextjs'
+import {useI18n} from '../i18n/I18n'
 
 function MinimalErrorPage() {
+  const {m} = useI18n()
   // S'affiche si problème de rendu, mais pas en dév
   // Pour reproduire, faire par exemple un throw dans un useEffect, et lancer en mode prod
   return (
     <div className="fr-container my-32">
-      <h1>Problème technique</h1>
-      <p>
-        Il y a eu un problème d'affichage dans SignalConso. Essayez de revenir en arrière et de recommencer ce que vous étiez en
-        train de faire.
-      </p>
+      <h1>{m.minimalErrorTitle}</h1>
+      <p>{m.minimalErrorText}</p>
     </div>
   )
 }
