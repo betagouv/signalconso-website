@@ -67,11 +67,13 @@ export type ConsumerWish =
 
 export class ReportDraft {
   static readonly isTransmittableToPro = (r: Pick<ReportDraft, 'employeeConsumer' | 'tags' | 'consumerWish'>): boolean => {
-    return (
-      !r.employeeConsumer &&
-      !(r.tags ?? []).find(_ => ['ProduitDangereux', 'Bloctel'].includes(_)) &&
-      r.consumerWish !== 'getAnswer'
-    )
+    return ReportDraft.isTransmittableToProBeforePickingConsumerWish(r) && r.consumerWish !== 'getAnswer'
+  }
+
+  static readonly isTransmittableToProBeforePickingConsumerWish = (
+    r: Pick<ReportDraft, 'employeeConsumer' | 'tags'>,
+  ): boolean => {
+    return !r.employeeConsumer && !(r.tags ?? []).find(_ => ['ProduitDangereux', 'Bloctel'].includes(_))
   }
 
   static readonly toApiInfluencer = (influencer: Influencer): ApiInfluencer => {

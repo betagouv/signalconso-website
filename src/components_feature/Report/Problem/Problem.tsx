@@ -1,10 +1,10 @@
-import {EventCategories, ReportEventActions} from 'analytic/analytic'
 import {useAnalyticContext} from 'analytic/AnalyticContext'
+import {EventCategories, ReportEventActions} from 'analytic/analytic'
 import {StepNavigation} from 'components_simple/ReportFlowStepper/ReportFlowStepper'
 import {ReportFlowStepperActions} from 'components_simple/ReportFlowStepper/ReportFlowStepperActions'
 import {appConfig} from 'core/appConfig'
 import {useI18n} from 'i18n/I18n'
-import {ConsumerWish} from 'model/ReportDraft'
+import {ConsumerWish, ReportDraft} from 'model/ReportDraft'
 import {ReportDraft2} from 'model/ReportDraft2'
 import {useEffect, useMemo} from 'react'
 import {instanceOfSubcategoryWithInfoWall} from '../../../anomalies/Anomalies'
@@ -22,12 +22,12 @@ interface Props {
   stepNavigation: StepNavigation
 }
 
-function adjustTags(
-  tags: ReportTag[],
-  draft: Partial<ReportDraft2>,
-  companyKindFromSelected: CompanyKinds | undefined,
-): ReportTag[] {
-  let res = tags
+function buildTagsFromSubcategories(subcategories: Subcategory[]) {
+  return computeSelectedSubcategoriesData(subcategories).tagsFromSelected
+}
+
+function adjustTagsBeforeSubmit(draft: Partial<ReportDraft2>, companyKindFromSelected: CompanyKinds | undefined): ReportTag[] {
+  let res = draft.tags ?? []
   if (companyKindFromSelected === 'WEBSITE' || draft.companyKind === 'WEBSITE') {
     res = [...res, 'Internet']
   }
@@ -52,8 +52,7 @@ export function adjustReportDraftAfterSubcategoriesChange(
 ) {
   const subcategoriesToKeep = (report.subcategories ?? []).slice(0, subcategoryIndex)
   const subcategories = [...subcategoriesToKeep, subcategory]
-  const tags = report.tags?.filter(_ => _ !== 'Internet') ?? undefined
-
+  const tags = buildTagsFromSubcategories(subcategories)
   //Recompute company kind based on current report selected subcategories
   const lastCategoryCompanyKind = subcategories
     .map(_ => _.companyKind)
@@ -90,8 +89,10 @@ export const Problem = ({anomaly, isWebView, stepNavigation}: Props) => {
     }
   }, [anomaly.category])
 
+  const isTransmittable = ReportDraft.isTransmittableToProBeforePickingConsumerWish(reportDraft)
+  const askConsumerWish = isTransmittable && reportDraft.companyKind !== 'SOCIAL'
+
   const {
-    tagsFromSelected,
     lastSubcategories,
     isLastSubcategory,
     companyKindFromSelected,
@@ -105,8 +106,7 @@ export const Problem = ({anomaly, isWebView, stepNavigation}: Props) => {
   function onSubmit(next: () => void): void {
     setReportDraft(draft => {
       const {subcategories, ..._anomaly} = anomaly
-      // employeeConsumer and reports on social influencer don't get this choice, we automatically apply the standard option
-      const consumerWish = draft.employeeConsumer || draft.companyKind === 'SOCIAL' ? 'companyImprovement' : draft.consumerWish
+      const consumerWish = askConsumerWish ? draft.consumerWish : 'companyImprovement'
       //Company kind 'SOCIAL' cannot be employee consumer report
       const employeeConsumer = draft.companyKind === 'SOCIAL' ? false : draft.employeeConsumer
 
@@ -114,7 +114,7 @@ export const Problem = ({anomaly, isWebView, stepNavigation}: Props) => {
         ...draft,
         ccrfCode: ccrfCodeFromSelected,
         reponseconsoCode: responseconsoCodeFromSelected,
-        tags: adjustTags(tagsFromSelected, draft, companyKindFromSelected),
+        tags: adjustTagsBeforeSubmit(draft, companyKindFromSelected),
         companyKind: companyKindFromSelected ?? draft.companyKind ?? 'SIRET',
         anomaly: _anomaly,
         consumerWish,
@@ -136,6 +136,8 @@ export const Problem = ({anomaly, isWebView, stepNavigation}: Props) => {
       return newReport
     })
   }
+
+  const tags = reportDraft.tags ?? []
 
   return (
     <>
@@ -212,16 +214,13 @@ export const Problem = ({anomaly, isWebView, stepNavigation}: Props) => {
                     },
                     {
                       title: m.problemIsInternetCompanyNo,
-                      value: tagsFromSelected.indexOf('ProduitDangereux') === -1 ? 'SIRET' : 'LOCATION',
+                      value: tags.indexOf('ProduitDangereux') === -1 ? 'SIRET' : 'LOCATION',
                     },
                   ]}
                 />
               )}
             </ProblemStepperStep>
-            <ProblemStepperStep
-              isDone={reportDraft.consumerWish !== undefined}
-              hidden={reportDraft.employeeConsumer === true || reportDraft.companyKind === 'SOCIAL'}
-            >
+            <ProblemStepperStep isDone={reportDraft.consumerWish !== undefined} hidden={!askConsumerWish}>
               <ProblemSelect
                 id="select-contractualDispute"
                 title="Que souhaitez-vous faire ?"
@@ -237,7 +236,7 @@ export const Problem = ({anomaly, isWebView, stepNavigation}: Props) => {
                     description: m.problemContractualDisputeFormNoDesc,
                     value: 'companyImprovement',
                   },
-                  ...(displayReponseConso && tagsFromSelected.includes('ReponseConso')
+                  ...(displayReponseConso && tags.includes('ReponseConso')
                     ? [
                         {
                           title: m.problemContractualDisputeFormReponseConso,
@@ -261,7 +260,7 @@ export const Problem = ({anomaly, isWebView, stepNavigation}: Props) => {
                 }}
               />
             </ProblemStepperStep>
-            <ProblemStepperStep isDone={true} hidden={!reportDraft.consumerWish}>
+            <ProblemStepperStep isDone={true} hidden={!(askConsumerWish && reportDraft.consumerWish)}>
               {reportDraft.consumerWish && <ProblemConsumerWishInformation consumerWish={reportDraft.consumerWish} />}
             </ProblemStepperStep>
           </ProblemStepper>
