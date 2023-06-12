@@ -42,11 +42,8 @@ const Home = () => {
   return (
     <>
       <Head>
-        <title>SignalConso, un service public pour les consommateurs</title>
-        <meta
-          name="description"
-          content="Signalez un problème au commerçant (magasins, commerces de proximité, cafés et restaurants...) et à la répression des fraudes : pratique d'hygiène, nourriture / boissons, matériel / objet, prix / paiement, publicité, services associés à l'achat."
-        />
+        <title>{m.titleAndDescriptions.homepage.title}</title>
+        <meta name="description" content={m.titleAndDescriptions.homepage.description} />
       </Head>
       <main>
         <div>
@@ -56,17 +53,17 @@ const Home = () => {
             <MobileAppPromoBanner />
           </div>
           <div className="fr-container fr-pt-8w fr-pb-6w ">
-            <h1 dangerouslySetInnerHTML={{__html: m.signalconsoCatchWord}} />
+            <h1 dangerouslySetInnerHTML={{__html: m.homepage.signalconsoCatchWord}} />
             <IllustrationStepper
               steps={[
-                {title: 'Vous avez rencontré un problème avec une entreprise&#160;?', image: consumer, alt: 'consumer'},
-                {title: 'Faites un signalement ou posez une question à la répression des fraudes.', image: report, alt: 'report'},
+                {title: m.homepage.step1, image: consumer, alt: 'consumer'},
+                {title: m.homepage.step2, image: report, alt: 'report'},
                 {
-                  title: "Vous pouvez en informer l'entreprise pour qu’elle vous réponde ou se corrige.",
+                  title: m.homepage.step3,
                   image: company,
                   alt: 'company',
                 },
-                {title: 'La répression des fraudes intervient si nécessaire.', image: dgccrf, alt: 'dgccrf'},
+                {title: m.homepage.step4, image: dgccrf, alt: 'dgccrf'},
               ]}
             />
             <div className="flex items-center justify-center fr-pt-4w">

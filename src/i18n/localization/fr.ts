@@ -95,6 +95,11 @@ export const fr = {
         title: 'Statistiques - SignalConso',
         description: 'Consultez les statistiques de SignalConso',
       },
+      homepage: {
+        title: 'SignalConso, un service public pour les consommateurs',
+        description:
+          "Signalez un problème au commerçant (magasins, commerces de proximité, cafés et restaurants...) et à la répression des fraudes : pratique d'hygiène, nourriture / boissons, matériel / objet, prix / paiement, publicité, services associés à l'achat.",
+      },
     },
     introApple: 'App Store',
     introBetween: 'ou le ',
@@ -855,7 +860,22 @@ export const fr = {
       SNAPCHAT: 'Snapchat',
       TWITCH: 'Twitch',
     },
-    signalconsoCatchWord: ` Signalez un problème à l’entreprise,<br/>renseignez-vous sur vos droits avec la répression des fraudes&nbsp;! `,
+    homepage: {
+      signalconsoCatchWord: ` Signalez un problème à l’entreprise,<br/>renseignez-vous sur vos droits avec la répression des fraudes&nbsp;! `,
+      step1: 'Vous avez rencontré un problème avec une entreprise&#160;?',
+      step2: 'Faites un signalement ou posez une question à la répression des fraudes.',
+      step3: "Vous pouvez en informer l'entreprise pour qu’elle vous réponde ou se corrige.",
+      step4: 'La répression des fraudes intervient si nécessaire.',
+    },
+    searchAnomalies: {
+      title: 'Quel problème avez-vous rencontré ?',
+      searchCategoryPlaceholder: `Rechercher une catégorie par mot clé (BETA)`,
+      noResultFound: `Aucun résultat trouvé.`,
+      tryAnotherKeyword: 'Veuillez essayer avec un nouveau mot clé ou choisir dans la liste des catégories',
+      showAllCategories: 'Voir toutes les catégories',
+      other: 'Autre',
+      displayAllAnomalies: `Afficher toutes les catégories`,
+    },
     yes: 'Oui',
     no: 'Non',
     search: 'Rechercher',
@@ -1240,9 +1260,6 @@ export const fr = {
     respondedRateStatName: `% de signalements qui font l'objet d'une réponse d'un entreprise`,
 
     websiteReportsRateStat: ` des signalements déposés depuis le début de SignalConso concernent une entreprise sur internet`,
-    searchCategoryPlaceholder: `Rechercher une catégorie par mot clé (BETA)`,
-    noResultFound: `Aucun résultat trouvé.`,
-    displayAllAnomalies: `Afficher toutes les catégories`,
     browserCompatMessage: `Votre navigateur web est obsolète. Si vous n'utilisez pas la version la plus récente de votre navigateur, vous risquez de rencontrer certains problèmes lors de l'utilisation de SignalConso.`,
   },
 }
