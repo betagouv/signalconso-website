@@ -4,6 +4,7 @@ import {NextRouter, useRouter} from 'next/router'
 import {HTMLAttributeAnchorTarget} from 'react'
 import {appConfig} from 'core/appConfig'
 import {urlServicePublicPlus} from './ScFooter'
+import {useI18n} from '../i18n/I18n'
 
 function buildMenuLink(router: NextRouter, url: string, text: string, target?: HTMLAttributeAnchorTarget) {
   return {
@@ -26,6 +27,9 @@ function buildSubmenu(text: string, menuLinks: ReturnType<typeof buildMenuLink>[
 
 export function ScHeader() {
   const router = useRouter()
+  const {m} = useI18n()
+  // En se basant sur https://www.diplomatie.gouv.fr/en/
+  // On ne traduit pas République Française
   return (
     <>
       <Header
@@ -38,7 +42,7 @@ export function ScHeader() {
         }
         homeLinkProps={{
           href: '/',
-          title: 'Faire un signalement - SignalConso',
+          title: m.header.homeLinkTitle,
         }}
         operatorLogo={{
           alt: 'SignalConso',
@@ -52,21 +56,21 @@ export function ScHeader() {
               href: pagesDefs.connexion.url,
               target: '_self',
             },
-            text: 'Espace professionnels',
+            text: m.header.connexionLinkTitle,
           },
         ]}
         // serviceTitle="SignalConso"
         // serviceTagline="un service public pour les consommateurs"
         navigation={[
-          buildMenuLink(router, pagesDefs.index.url, 'Faire un signalement'),
-          buildMenuLink(router, pagesDefs.commentCaMarche.url, 'Comment ça marche ?'),
-          buildMenuLink(router, pagesDefs.centreAide.url, `Aide`),
-          buildSubmenu('Voir aussi', [
-            buildMenuLink(router, pagesDefs.quiSommesNous.url, 'Qui sommes-nous ?'),
-            buildMenuLink(router, pagesDefs.stats.url, 'Statistiques'),
-            buildMenuLink(router, pagesDefs.contact.url, `Contact`),
-            buildMenuLink(router, pagesDefs.actualites.url, `Actualités`),
-            buildMenuLink(router, urlServicePublicPlus, `Services Publics +`, '_blank'),
+          buildMenuLink(router, pagesDefs.index.url, m.header.indexLinkTitle),
+          buildMenuLink(router, pagesDefs.commentCaMarche.url, m.header.commentCaMarcheLinkTitle),
+          buildMenuLink(router, pagesDefs.centreAide.url, m.header.centreAideLinkTitle),
+          buildSubmenu(m.header.voirAussiTitle, [
+            buildMenuLink(router, pagesDefs.quiSommesNous.url, m.header.quiSommesNousLinkTitle),
+            buildMenuLink(router, pagesDefs.stats.url, m.header.statsLinkTitle),
+            buildMenuLink(router, pagesDefs.contact.url, m.header.contactLinkTitle),
+            buildMenuLink(router, pagesDefs.actualites.url, m.header.actualitesLinkTitle),
+            buildMenuLink(router, urlServicePublicPlus, m.header.servicePublicPlusLinkTitle, '_blank'),
           ]),
           ...(pagesDefs.playground ? [buildMenuLink(router, pagesDefs.playground.url, 'Playground')] : []),
         ]}
