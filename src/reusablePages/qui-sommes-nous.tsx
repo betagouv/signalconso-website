@@ -1,6 +1,5 @@
 import {MemberCard} from 'components_feature/MemberCard/MemberCard'
 import {ContentPageContainer} from 'components_simple/ContentPageContainer'
-import {titleAndDescriptions} from 'core/titleAndDescriptions'
 import {team} from 'core/team'
 import Head from 'next/head'
 import Link from 'next/link'

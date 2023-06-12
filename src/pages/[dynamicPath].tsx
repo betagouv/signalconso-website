@@ -11,6 +11,7 @@ import Link from 'next/link'
 import {ReactNode, useRef} from 'react'
 import {AnomalyTile} from '../components_simple/AnomalyTile/AnomalyTile'
 import {buildLinkStartReport, pagesDefs} from '../core/pagesDefinitions'
+import {useI18n} from '../i18n/I18n'
 
 export const getStaticPaths: GetStaticPaths = () => {
   const paths = allVisibleLandings().map(_ => ({
@@ -39,6 +40,7 @@ export const getStaticProps: GetStaticProps<Props> = async context => {
 }
 
 export default function LandingPage({dynamicPath}: {dynamicPath: string}) {
+  const {m} = useI18n()
   const dsfrTheme = useColors()
   const chooseCategoriesDivRef = useRef<HTMLDivElement>(null)
   const landingData = allVisibleLandings().find(_ => _.url === dynamicPath)
@@ -80,37 +82,33 @@ export default function LandingPage({dynamicPath}: {dynamicPath: string}) {
           <h2 className="text-2xl mb-8 mt-10">{landingData.secondaryTitle1}</h2>
           <div className="flex justify-between items-center gap-y-4 flex-col lg:flex-row mb-8">
             <HeroCard
-              title="Parce que c’est simple !"
-              subtext="Des questions vous guident tout au long du parcours pour vous aider à formuler votre problème."
+              title={m.landing.heroCardTitle1}
+              subtext={m.landing.heroCardText1}
               picto={<Image alt="Pictogramme crayons" src="/image/picto_crayons.png" width={80} height={80} />}
             />
             <HeroCard
-              title="Parce que c’est rapide !"
-              subtext="5 minutes à peine et votre signalement est envoyé."
+              title={m.landing.heroCardTitle2}
+              subtext={m.landing.heroCardText2}
               picto={<Image alt="Pictogramme succès" src="/image/picto_checkbox.png" width={80} height={75} />}
             />
             <HeroCard
-              title="Parce que c’est efficace"
-              subtext="65 % des entreprises répondent au signalement."
+              title={m.landing.heroCardTitle3}
+              subtext={m.landing.heroCardText3}
               picto={<Image alt="Pictogramme masques joyeux" src="/image/picto_masks.png" width={80} height={72} />}
             />
           </div>
 
           {landingData.secondaryTitle2 && <h2 className="text-2xl mb-6 font-bold">{landingData.secondaryTitle2}</h2>}
           <p className="text-lg">
-            SignalConso s’occupe du reste. Votre signalement est envoyé à l’entreprise et il est instantanément visible par les
-            agents de la DGCCRF. Si vous avez posé une question sur vos droits, un agent vous recontactera rapidement pour vous
-            répondre et vous orienter dans vos démarches.
+            {m.landing.signalConsoWillHandle1}
             <br />
-            Si c’est nécessaire, vous pouvez décider de rester anonyme. Dans le cas contraire, nous transmettrons vos coordonnées
-            à l’entreprise pour qu’elle puisse vous répondre directement.
+            {m.landing.signalConsoWillHandle2}
             <br />
-            Votre signalement sera également enregistré dans la base de données de la DGCCRF. Cet outil leur permet de mieux
-            cibler leurs contrôles et préparer les enquêtes.
+            {m.landing.signalConsoWillHandle3}
           </p>
           {anomalies.length > 1 ? (
             <div ref={chooseCategoriesDivRef}>
-              <h3 className="text-2xl">Pour signalez votre problème, choisissez la catégorie correspondante</h3>
+              <h3 className="text-2xl">{m.landing.moreThanOneCat}</h3>
               <div className="fr-grid-row fr-grid-row--gutters">
                 {anomalies.map(a => {
                   return (
@@ -130,36 +128,29 @@ export default function LandingPage({dynamicPath}: {dynamicPath: string}) {
         <div className={container}>
           <CallOut
             buttonProps={{
-              children: 'Découvrir',
+              children: m.landing.discoverButton,
               linkProps: {
                 href: pagesDefs.commentCaMarche.url,
               },
             }}
             title="Qu'est-ce que Signal Conso ?"
           >
-            Plus de 60 millions de consommateurs fréquentent quotidiennement près de 10 millions d’établissements et font des
-            achats sur internet. Et pour contrôler le droit des consommateurs ? Moins de 3 000 agents de la DGCCRF : c’est
-            pourquoi le site{' '}
+            {m.landing.whatIsText1}
             <Link href={pagesDefs.index.url} className="text-sclightblue underline">
               signal.conso.gouv.fr
-            </Link>{' '}
-            a été lancé.
+            </Link>
+            {m.landing.whatIsText2}
             <br /> <br />
-            Malgré l’action des enquêteurs, toutes les anomalies ne peuvent pas être détectées, en particulier les plus mineures
-            et récurrentes : vous êtes, en tant que consommateur, l’acteur le mieux placé pour les repérer et faire valoir vos
-            droits. <br /> <br />
-            Le site vous accompagne avant, pendant et après vos achats, et vous permet de signaler en quelques clics les problèmes
-            que vous rencontrez dans votre vie de tous les jours avec un professionnel. SignalConso est également là pour vous
-            répondre, vous informer sur vos droits et vous accompagner dans vos démarches en vous orientant, si nécessaire, vers
-            l’interlocuteur adapté à votre situation. <br /> <br />
-            Les professionnels concernés pourront prendre connaissance des signalements et corriger les anomalies spontanément. Si
-            les signalements sont trop nombreux ou fréquents pour un établissement, les enquêteurs de la DGCCRF pourront décider
-            d’intervenir.
+            {m.landing.whatIsText3}
+            <br /> <br />
+            {m.landing.whatIsText4}
+            <br /> <br />
+            {m.landing.whatIsText5}
           </CallOut>
         </div>
         {landingData.sampleReports.length && (
           <div className={`${container} my-12 space-y-8`}>
-            <h2 className="text-2xl font-bold">Quelques problèmes qui nous ont été signalés</h2>
+            <h2 className="text-2xl font-bold">{m.landing.samples}</h2>
             {landingData.sampleReports.map((report, idx) => (
               <UserQuote key={idx} {...{report}} />
             ))}
@@ -171,16 +162,16 @@ export default function LandingPage({dynamicPath}: {dynamicPath: string}) {
 }
 
 function BigReportButton({className = '', target}: {className?: string; target: Anomaly | 'home' | (() => void)}) {
+  const {m} = useI18n()
   const props = {
     iconId: 'fr-icon-alarm-warning-line',
     className,
     size: 'large',
   } as const
-  const text = 'Je signale un problème'
   if (typeof target === 'function') {
     return (
       <Button {...props} onClick={target}>
-        {text}
+        {m.landing.bigReportButton}
       </Button>
     )
   }
@@ -192,7 +183,7 @@ function BigReportButton({className = '', target}: {className?: string; target: 
       }}
       size="large"
     >
-      {text}
+      {m.landing.bigReportButton}
     </Button>
   )
 }
