@@ -1196,7 +1196,7 @@ export const fr = {
     consumerInvalidCode: `Code incorrect`,
     consumerResentEmail: `Renvoyer`,
     consumerDummyEmailNotAccepted: `Les adresses éphémères ne sont pas acceptées.`,
-    consumerCannotReportSignalConso: `Merci d'entrer l'url du site que vous souhaitez signaler, signal conso n'est pas une valeur correcte.`,
+    consumerCannotReportSignalConso: `Veuillez saisir l'URL du site que vous souhaitez signaler. 'Signal conso' n'est pas une valeur correcte.`,
     consumerValidationCodeExpired: `Code incorrect, veuillez réessayer.`,
     consumerValidationCodeInvalid: `Code incorrect, veuillez réessayer.`,
     consumerIsEmployee: `
