@@ -17,6 +17,7 @@ import {Txt} from '../../../alexlibs/mui-extension/Txt/Txt'
 import {CompanySearchResult} from '../../../model/Company'
 import {Country} from '../../../model/Country'
 import {Button} from '@codegouvfr/react-dsfr/Button'
+import {appConfig} from '../../../core/appConfig'
 
 interface Form {
   website: string
@@ -143,6 +144,11 @@ export const CompanyByWebsite = ({value, children, ...props}: Props) => {
                   pattern: {
                     value: websiteRegex,
                     message: m.invalidUrlPattern,
+                  },
+                  validate: {
+                    isSignalConsoUrl: value => {
+                      return value.includes('signal.conso.gouv.fr') ? m.consumerCannotReportSignalConso : undefined
+                    },
                   },
                 })}
                 fullWidth
