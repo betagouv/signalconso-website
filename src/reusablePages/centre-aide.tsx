@@ -1,4 +1,3 @@
-import {titleAndDescriptions} from 'core/titleAndDescriptions'
 import {CentreAideConso} from 'components_feature/CentreAide/CentreAideConso'
 import {CentreAidePro} from 'components_feature/CentreAide/CentreAidePro'
 import Head from 'next/head'

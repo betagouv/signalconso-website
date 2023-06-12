@@ -1,5 +1,4 @@
 import {Box, Checkbox, Icon, Radio, useTheme} from '@mui/material'
-import {titleAndDescriptions} from 'core/titleAndDescriptions'
 import {styleUtils} from 'core/theme'
 import {getOptionsFromInput, getPlaceholderFromInput} from 'components_feature/Report/Details/DetailInputsUtils'
 import Head from 'next/head'
@@ -16,6 +15,7 @@ import {
 } from '../anomalies/Anomalies'
 import {Anomaly, DetailInputType, Subcategory, SubcategoryWithInfoWall, StandardSubcategory} from '../anomalies/Anomaly'
 import Button from '@codegouvfr/react-dsfr/Button'
+import {useI18n} from '../i18n/I18n'
 
 const Node = ({anomaly, open}: {anomaly: Anomaly | Subcategory; open?: boolean}) => {
   const iconWidth = 40
@@ -161,6 +161,7 @@ const NodeInput = ({anomaly}: {anomaly: StandardSubcategory}) => {
 }
 
 const NodeInfo = ({anomaly}: {anomaly: SubcategoryWithInfoWall}) => {
+  const {m} = useI18n()
   return (
     <>
       {anomaly.blockingInfo.title && <div dangerouslySetInnerHTML={{__html: anomaly.blockingInfo.title}} />}
@@ -183,7 +184,7 @@ const NodeInfo = ({anomaly}: {anomaly: SubcategoryWithInfoWall}) => {
       )}
       {anomaly.blockingInfo.notAFraudMessage && (
         <Txt color="hint" size="small">
-          Nous ne doutons pas que vous ayez réellement rencontré un problème mais... il ne s’agit pas d’une fraude.
+          {m.arbo.notAFraudMessage}
         </Txt>
       )}
     </>
@@ -194,14 +195,15 @@ const Arborescence = () => {
   const [openAll, setOpenAll] = useState(false)
   const [disabled, setDisabled] = useState(false)
   const anomalies = allVisibleAnomalies()
+  const {m} = useI18n()
   return (
     <Page>
       <Head>
-        <title>{titleAndDescriptions.anomaly.title}</title>
-        <meta name="description" content={titleAndDescriptions.anomaly.description} />
+        <title>{m.titleAndDescriptions.anomaly.title}</title>
+        <meta name="description" content={m.titleAndDescriptions.anomaly.description} />
       </Head>
 
-      <h1>Arborescence du dépot d'un signalement</h1>
+      <h1>{m.arbo.title}</h1>
       <Button
         className="mb-4"
         disabled={disabled}
@@ -215,7 +217,7 @@ const Arborescence = () => {
           }, 100)
         }}
       >
-        Tout déplier
+        {m.arbo.expandAll}
       </Button>
 
       {anomalies.map(a => (

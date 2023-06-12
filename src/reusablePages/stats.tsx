@@ -1,7 +1,6 @@
 import {Stat} from 'components_feature/Stat/Stat'
 import {ContentPageContainer} from 'components_simple/ContentPageContainer'
 import {useApiClients} from 'context/ApiClientsContext'
-import {titleAndDescriptions} from 'core/titleAndDescriptions'
 import {useI18n} from 'i18n/I18n'
 import Head from 'next/head'
 import Link from 'next/link'

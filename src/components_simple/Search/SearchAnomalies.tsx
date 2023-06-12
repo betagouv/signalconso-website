@@ -51,13 +51,13 @@ const SearchAnomalies: React.FC<SearchBarProps> = ({anomalies}) => {
   }
   return (
     <>
-      <h2>Quel problème avez-vous rencontré ?</h2>
+      <h2>{i18n.m.searchAnomalies.title}</h2>
 
       <div className="fr-search-bar mb-8 relative" id="header-search" role="search" ref={searchBoxRef}>
         {enableSearchCategories && (
           <input
             className="fr-input"
-            placeholder={i18n.m.searchCategoryPlaceholder}
+            placeholder={i18n.m.searchAnomalies.searchCategoryPlaceholder}
             id="search-784-input"
             name="search-784-input"
             value={query}
@@ -88,9 +88,9 @@ const SearchAnomalies: React.FC<SearchBarProps> = ({anomalies}) => {
                   <div className="fr-card__img" />
                   <div className={'fr-card__content'}>
                     <button className={'fr-tile__title'} onClick={_ => searchQuery('')}>
-                      Autre
+                      {i18n.m.searchAnomalies.other}
                     </button>
-                    <div className={'fr-tile__body'}>{i18n.m.displayAllAnomalies}</div>
+                    <div className={'fr-tile__body'}>{i18n.m.searchAnomalies.displayAllAnomalies}</div>
                   </div>
                 </div>
               </div>
@@ -100,10 +100,10 @@ const SearchAnomalies: React.FC<SearchBarProps> = ({anomalies}) => {
       </div>
       {suggestions.length === 0 && (
         <div className="fr-callout ">
-          <h3 className="fr-callout__title">{i18n.m.noResultFound}</h3>
-          <p className="fr-callout__text">Veuillez essayer avec un nouveau mot clé ou choisir dans la liste des catégories</p>
+          <h3 className="fr-callout__title">{i18n.m.searchAnomalies.noResultFound}</h3>
+          <p className="fr-callout__text">{i18n.m.searchAnomalies.tryAnotherKeyword}</p>
           <button className="fr-btn" onClick={_ => searchQuery('')}>
-            Voir toutes les catégories
+            {i18n.m.searchAnomalies.showAllCategories}
           </button>
         </div>
       )}
