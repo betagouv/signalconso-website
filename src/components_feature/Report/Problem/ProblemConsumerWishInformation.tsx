@@ -1,10 +1,8 @@
-import {Box} from '@mui/material'
+import {FriendlyHelpText} from 'alexlibs/mui-extension/Alert/FriendlyHelpText'
 import {Animate} from 'components_simple/Animate/Animate'
 import {I18nContextProps, useI18n} from 'i18n/I18n'
 import {ConsumerWish} from 'model/ReportDraft'
-import {alertInfoBackgroundColor, alertInfoTextColor} from '../../../alexlibs/mui-extension/Alert/Alert'
 import {Txt} from '../../../alexlibs/mui-extension/Txt/Txt'
-import {FriendlyHelpText} from 'alexlibs/mui-extension/Alert/FriendlyHelpText'
 
 export function ProblemConsumerWishInformation({consumerWish}: {consumerWish: ConsumerWish}) {
   const {m} = useI18n()
