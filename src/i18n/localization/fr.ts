@@ -1032,6 +1032,11 @@ export const fr = {
     detailsTextAreaTransmittableAnonymous: ` Si vous ne souhaitez pas que l'entreprise connaisse votre identité, <b>ne citez rien de personnel</b>.`,
     detailsTextAreaNotTransmittable: `Les informations ci-dessous seront lues <b>uniquement par la répression des fraudes.</b>`,
     detailsTextAreaEmployeeConsumer: `Rien ne sera communiqué à votre employeur.`,
+    detailsAlertProduitDangereux: {
+      title: `Numéros d'urgence`,
+      text: `En cas d'une urgence vitale ou importante, vous pouvez appeler l'un des`,
+      linkText: `numéros d'urgence : Samu, pompiers, ...`,
+    },
     pageNotFoundTitle: `Page non trouvée`,
     pageNotFoundHeadTitle: `SignalConso : Page non trouvée`,
     pageNotFoundDesc: `Vous êtes bien sur SignalConso. Mais vous avez suivi un lien vers une page qui n'existe pas, ou qui a changé d'adresse.`,
