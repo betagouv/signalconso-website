@@ -121,6 +121,8 @@ export const _Details = ({
     <>
       <Animate autoScrollTo={false}>
         <div>
+          {displayAlertProduitDangereux && <DetailsAlertProduitDangereux />}
+
           <FriendlyHelpText>
             {isTransmittable ? (
               <>
@@ -137,9 +139,7 @@ export const _Details = ({
               </>
             )}
           </FriendlyHelpText>
-          {displayAlertProduitDangereux && <DetailsAlertProduitDangereux />}
 
-          <br />
           {inputs.map((input, inputIndex) => (
             <FormLayout
               label={<span dangerouslySetInnerHTML={{__html: input.label}} />}
@@ -316,7 +316,7 @@ export const _Details = ({
       </Animate>
       <Animate autoScrollTo={false}>
         <div>
-          <h4>{fileLabel ?? m.attachments}</h4>
+          <h4 className="mt-4">{fileLabel ?? m.attachments}</h4>
           {ReportDraft.isTransmittableToPro({tags, employeeConsumer, consumerWish}) && (
             <>
               <FriendlyHelpText>
