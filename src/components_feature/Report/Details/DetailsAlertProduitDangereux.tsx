@@ -2,6 +2,8 @@ import React from 'react'
 import {Alert} from '@codegouvfr/react-dsfr/Alert'
 import Link from 'next/link'
 
+const liensNumerosUrgence = 'https://www.service-public.fr/particuliers/vosdroits/F33954'
+
 export const DetailsAlertProduitDangereux = () => {
   return (
     <Alert
@@ -24,11 +26,12 @@ export const DetailsAlertProduitDangereux = () => {
           <br />
           Plus d'informations sur
           <br />
-          <Link href="https://www.gouvernement.fr/risques/connaitre-les-numeros-d-urgence" target="_blank">
-            https://www.gouvernement.fr/risques/connaitre-les-numeros-d-urgence
+          <Link href={liensNumerosUrgence} target="_blank">
+            {liensNumerosUrgence}
           </Link>
         </>
       }
+      className="mb-8"
     />
   )
 }

@@ -220,6 +220,7 @@ export const Problem = ({anomaly, isWebView, stepNavigation}: Props) => {
                 />
               )}
             </ProblemStepperStep>
+
             <ProblemStepperStep isDone={reportDraft.consumerWish !== undefined} hidden={!askConsumerWish}>
               <ProblemSelect
                 id="select-contractualDispute"
