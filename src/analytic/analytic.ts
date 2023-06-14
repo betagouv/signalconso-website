@@ -59,10 +59,12 @@ export type AnalyticAction =
   | ContractualDisputeActions
   | AccountEventActions
   | CompanyAccessEventActions
+  | ConsumerShareReviewEventActions
   | 'Recherche par mot clé'
 
 export enum EventCategories {
   report = 'Signalement',
+  consumerReview = 'Avis consommateur',
   companySearch = "Identification de l'établissement",
   authentication = 'Authentification',
   account = 'Compte utilisateur',
@@ -125,4 +127,10 @@ export enum AccountEventActions {
 export enum CompanyAccessEventActions {
   addCompanyToAccount = "Ajout d'une entreprise à un compte",
   activateCompanyCode = "Activation d'une entreprise",
+}
+
+export enum ConsumerShareReviewEventActions {
+  twitter = 'Partage sur Twitter',
+  facebook = 'Partage sur Facebook',
+  servicePublicPlus = 'Partage sur Service-public.fr',
 }
