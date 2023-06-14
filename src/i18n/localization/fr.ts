@@ -1307,5 +1307,12 @@ export const fr = {
         'Les professionnels concernés pourront prendre connaissance des signalements et corriger les anomalies spontanément. Si les signalements sont trop nombreux ou fréquents pour un établissement, les enquêteurs de la DGCCRF pourront décider d’intervenir.',
       samples: 'Quelques problèmes qui nous ont été signalés',
     },
+
+    shareYourReview: `Donner votre avis`,
+    thanksForSharingYourReview: `Votre avis a bien été pris en compte, nous vous en remercions.`,
+    youCanRateSignalConso: `Je recommande SignalConso :`,
+    youCanAddCommentForDGCCRF: `Vous pouvez, si vous le souhaitez, apporter une précision <b>à l'attention de la DGCCRF</b> qui ne sera pas transmise à l'entreprise`,
+    didTheCompanyAnsweredWell: `Est-ce que la réponse de l'entreprise vous satisfait ? <b>(Attention, une fois l'avis déposé, il ne sera plus possible de le modifier.)</b>`,
+    send: `Envoyer`,
   },
 }
