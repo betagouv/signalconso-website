@@ -8,6 +8,7 @@ import {ReportDraft} from '../model/ReportDraft'
 import {Subcategory} from 'anomalies/Anomaly'
 import {ConsumerEmailResult} from 'model/ConsumerEmailValidation'
 import {ApiCreatedReport, ApiReportDraft} from 'model/reportsFromApi'
+import {ResponseConsumerReview, ResponseConsumerReviewExists} from '../core/Events'
 
 type PublicStat =
   | 'PromesseAction'
@@ -99,5 +100,13 @@ export class SignalConsoApiClient {
 
   checkEmailAndValidate = (email: string, confirmationCode: string) => {
     return this.client.post<ConsumerEmailResult>('/email-validation/check-and-validate', {body: {email, confirmationCode}})
+  }
+
+  postReviewOnReportResponse = (reportId: string, review: ResponseConsumerReview) => {
+    return this.client.post<void>(`/reports/${reportId}/response/review`, {body: review})
+  }
+
+  reviewExists = (reportId: string) => {
+    return this.client.get<ResponseConsumerReviewExists>(`/reports/${reportId}/response/review/exists`)
   }
 }
