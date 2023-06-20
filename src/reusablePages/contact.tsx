@@ -15,6 +15,26 @@ export const Contact = () => {
       </Head>
       <ContentPageContainer>
         <h1>{m.contact.title}</h1>
+        <Alert
+          className="fr-mt-4w"
+          severity="warning"
+          description={
+            <>
+              Notre support est actuellement en cours de maintenance. Nous vous prions de bien vouloir réessayer de nous contacter
+              ultérieurement. Veuillez accepter nos excuses pour les désagréments causés.
+              <br />
+              <br />
+              En cas d'urgence, n'hésitez pas à nous contacter en message privé sur Facebook ou Twitter.
+              <br />
+              <br />
+              Nous vous remercions de votre compréhension.
+            </>
+          }
+          title="Maintenance en cours"
+        />
+        <br />
+        <br />
+
         <h2 className="fr-h4">{m.contact.problemMessage}</h2>
         <p>{m.contact.problemSolution}</p>
         <h2 className="fr-h4">{m.contact.technicalIssue}</h2>
