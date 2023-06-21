@@ -17,7 +17,8 @@ import {Txt} from '../../../alexlibs/mui-extension/Txt/Txt'
 import {CompanySearchResult} from '../../../model/Company'
 import {Country} from '../../../model/Country'
 import {Button} from '@codegouvfr/react-dsfr/Button'
-import {appConfig} from '../../../core/appConfig'
+import {SpecificWebsiteCompanyKinds} from '../../../anomalies/Anomaly'
+import {Alert} from '@codegouvfr/react-dsfr/Alert'
 
 interface Form {
   website: string
@@ -25,6 +26,7 @@ interface Form {
 
 interface Props extends Omit<BoxProps, 'onSubmit' | 'children'> {
   value?: string
+  specificWebsiteCompanyKind?: SpecificWebsiteCompanyKinds
   children: (websiteUrl?: string, result?: CompanySearchResult[], countries?: Country[]) => ReactNode
 }
 
@@ -71,7 +73,7 @@ async function searchWebsite(signalConsoApiClient: SignalConsoApiClient, website
   return {kind: 'nothing'}
 }
 
-export const CompanyByWebsite = ({value, children, ...props}: Props) => {
+export const CompanyByWebsite = ({value, children, specificWebsiteCompanyKind, ...props}: Props) => {
   const {m} = useI18n()
   const {signalConsoApiClient} = useApiClients()
   const _analytic = useAnalyticContext()
@@ -116,10 +118,33 @@ export const CompanyByWebsite = ({value, children, ...props}: Props) => {
     setWebsite(website)
   }
 
+  const websiteToReportAlert = (websiteCompanyKind: SpecificWebsiteCompanyKinds) => {
+    if (websiteCompanyKind == 'TRANSPORTER_WEBSITE') {
+      return (
+        <Alert
+          className="fr-mt-4w"
+          severity="info"
+          description={m.whichWebsiteTransporterText}
+          title={m.whichWebsiteTransporterTitle}
+        />
+      )
+    } else if (websiteCompanyKind == 'MERCHANT_WEBSITE') {
+      return (
+        <Alert
+          className="fr-mt-4w"
+          severity="info"
+          description={m.whichWebsiteMerchantText}
+          title={m.whichWebsiteMerchantTitle}
+        />
+      )
+    }
+  }
+
   return (
     <>
       <Animate>
         <Panel title={m.aboutCompany} id="CompanyByWebsite">
+          {specificWebsiteCompanyKind && websiteToReportAlert(specificWebsiteCompanyKind)}
           <PanelBody>
             <Box component="form" onSubmit={handleSubmit(onSubmit)} {...props}>
               <Txt block>
