@@ -39,6 +39,8 @@ export const CompanyAskConsumerPostalCode = ({value, onChange, companyKind}: Pro
               __html: fnSwitch<CompanyKinds, string>(companyKind, {
                 SIRET: m.cantIdentifyCompany,
                 WEBSITE: m.cantIdentifyWebsiteCompany,
+                TRANSPORTER_WEBSITE: m.cantIdentifyTransporterWebsiteCompany,
+                MERCHANT_WEBSITE: m.cantIdentifyMerchantWebsiteCompany,
                 PHONE: m.cantIdentifyPhoneCompany,
                 LOCATION: m.cantIdentifyLocationCompany,
                 SOCIAL: m.cantIdentifyCompany,

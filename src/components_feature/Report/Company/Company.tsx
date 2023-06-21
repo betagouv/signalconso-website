@@ -26,7 +26,8 @@ import {CompanySearchByNameAndPostalCode} from './CompanySearchByNameAndPostalCo
 import {CompanySearchResultComponent} from './CompanySearchResult'
 import {CompanyWebsiteCountry} from './CompanyWebsiteCountry'
 import {InfluencerBySocialNetwork} from './InfluencerBySocialNetwork'
-import {BtnNext, BtnNextSubmit} from 'components_simple/Buttons'
+import {BtnNext} from 'components_simple/Buttons'
+import {SpecificWebsiteCompanyKinds} from '../../../anomalies/Anomaly'
 
 interface CompanyWithRequiredProps {
   draft: Pick<ReportDraft, 'companyKind'>
@@ -155,6 +156,32 @@ function ActionButtons({onClear, stepNavigation}: {onClear: () => void; stepNavi
 }
 
 export const _Company = ({draft, onUpdateReportDraft}: CompanyWithRequiredProps) => {
+  const webSiteTree = (specificWebsiteCompanyKind?: SpecificWebsiteCompanyKinds) => {
+    return (
+      <CompanyByWebsite specificWebsiteCompanyKind={specificWebsiteCompanyKind}>
+        {(website, companies, countries) =>
+          countries ? (
+            <CompanyWebsiteCountry
+              countries={countries}
+              onSubmit={country => {
+                onUpdateReportDraft({
+                  companyDraft: {
+                    website,
+                    address: {
+                      country,
+                    },
+                  },
+                })
+              }}
+            />
+          ) : (
+            commonTree({website}, companies)
+          )
+        }
+      </CompanyByWebsite>
+    )
+  }
+
   const commonTree = (
     phoneOrWebsite: Pick<CompanyDraft, 'phone' | 'website'> = {},
     result: CompanySearchResult[] | undefined = undefined,
@@ -303,29 +330,9 @@ export const _Company = ({draft, onUpdateReportDraft}: CompanyWithRequiredProps)
             />
           ),
           ['PHONE']: () => <CompanyByPhone>{phone => commonTree({phone})}</CompanyByPhone>,
-          ['WEBSITE']: () => (
-            <CompanyByWebsite>
-              {(website, companies, countries) =>
-                countries ? (
-                  <CompanyWebsiteCountry
-                    countries={countries}
-                    onSubmit={country => {
-                      onUpdateReportDraft({
-                        companyDraft: {
-                          website,
-                          address: {
-                            country,
-                          },
-                        },
-                      })
-                    }}
-                  />
-                ) : (
-                  commonTree({website}, companies)
-                )
-              }
-            </CompanyByWebsite>
-          ),
+          ['TRANSPORTER_WEBSITE']: () => webSiteTree('TRANSPORTER_WEBSITE'),
+          ['MERCHANT_WEBSITE']: () => webSiteTree('MERCHANT_WEBSITE'),
+          ['WEBSITE']: () => webSiteTree(),
         },
         () => commonTree(),
       )}
