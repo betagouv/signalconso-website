@@ -1148,6 +1148,8 @@ export const fr = {
     couldYouPrecise: `Pouvez-vous préciser ?`,
     cantIdentifyCompany: `Comme vous ne pouvez pas identifier l'entreprise, merci de préciser votre localisation afin que nous puissions rediriger votre signalement vers le bon service`,
     cantIdentifyWebsiteCompany: `Comme vous ne pouvez pas identifier l'entreprise liée au site internet, merci de préciser votre localisation afin que nous puissions rediriger votre signalement vers le bon service`,
+    cantIdentifyTransporterWebsiteCompany: `Comme vous ne pouvez pas identifier le transporteur, merci de préciser votre localisation afin que nous puissions rediriger votre signalement vers le bon service`,
+    cantIdentifyMerchantWebsiteCompany: `Comme vous ne pouvez pas identifier le vendeur, merci de préciser votre localisation afin que nous puissions rediriger votre signalement vers le bon service`,
     cantIdentifyLocationCompany: `Comme vous ne pouvez pas identifier l'entreprise qui est venue à votre domicile, merci de préciser votre localisation afin que nos services puissent tenter de rapprocher ces informations avec celles qu'auraient éventuellement déposées vos voisins, ayant été en contact avec la même entreprise que vous`,
     cantIdentifyPhoneCompany: `Comme vous ne pouvez pas identifier l'entreprise que vous avez eu par téléphone, merci de préciser votre localisation afin que nos services puissent tenter de rapprocher ces informations avec celles qu'auraient éventuellement déposées vos voisins, ayant été en contact avec la même entreprise que vous`,
     companyIdentityLabel: `Numéro SIRET ou SIREN ou RCS de l'entreprise`,
@@ -1320,5 +1322,10 @@ export const fr = {
     youCanAddCommentForDGCCRF: `Vous pouvez, si vous le souhaitez, apporter une précision <b>à l'attention de la DGCCRF</b> qui ne sera pas transmise à l'entreprise`,
     didTheCompanyAnsweredWell: `Est-ce que la réponse de l'entreprise vous satisfait ? <b>(Attention, une fois l'avis déposé, il ne sera plus possible de le modifier.)</b>`,
     send: `Envoyer`,
+    whichWebsiteTransporterTitle: 'Indiquez le site du transporteur',
+    whichWebsiteMerchantTitle: 'Indiquez le site du marchand',
+    whichWebsiteTransporterText:
+      'Puisque vous avez choisi vous même votre transporteur, vous devez indiquer ici le site web de ce dernier',
+    whichWebsiteMerchantText: 'Indiquez ici le site du marchand sur lequel vous avez effectué votre achat',
   },
 }
