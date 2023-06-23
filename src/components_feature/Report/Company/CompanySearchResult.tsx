@@ -16,6 +16,8 @@ import {Txt} from '../../../alexlibs/mui-extension/Txt/Txt'
 import {useToastError} from '../../../hooks/useToastError'
 import {CompanySearchResult, isGovernmentCompany} from '../../../model/Company'
 import {CompanyWebsiteVendor} from './CompanyWebsiteVendor'
+import {appConfig} from '../../../core/appConfig'
+import {Alert} from '@codegouvfr/react-dsfr/Alert'
 
 interface Props extends Omit<BoxProps, 'onSubmit'> {
   companies: CompanySearchResult[]
@@ -79,6 +81,8 @@ export const CompanySearchResultComponent = ({companies, onSubmit}: Props) => {
     _analytic.trackEvent(EventCategories.companySearch, CompanySearchEventActions.select)
   }
 
+  const onlyClosed = companies.findIndex(_ => _.isOpen) === -1
+
   return (
     <>
       <Animate>
@@ -113,47 +117,61 @@ export const CompanySearchResultComponent = ({companies, onSubmit}: Props) => {
                   }}
                   name="result"
                   render={({field}) => (
-                    <ScRadioGroup {...field} error={!!errors.result}>
-                      {companies.map(company => {
-                        const isGovernment = isGovernmentCompany(company)
-                        return (
-                          <ScRadioGroupItem key={company.siret} value={company.siret!}>
-                            {company.commercialName ? (
-                              <Txt truncate block bold>
-                                {company.commercialName} ({company.name})
-                              </Txt>
-                            ) : (
-                              <Txt truncate block bold>
-                                {company.name}
-                              </Txt>
-                            )}
-                            {company.brand && <Txt block>{company.brand}</Txt>}
-                            {company.isHeadOffice && (
-                              <Row icon="business" sx={{color: t => t.palette.primary.main}}>
-                                {m.isHeadOffice}
-                              </Row>
-                            )}
-                            {company.activityLabel && <Row icon="label">{company.activityLabel}</Row>}
-                            {isGovernment && (
-                              <Row icon="error" sx={{color: t => t.palette.error.main}}>
-                                {m.governmentCompany}
-                              </Row>
-                            )}
-                            {company.address && (
-                              <Row icon="location_on">
-                                <AddressComponent address={company.address} />
-                              </Row>
-                            )}
-                          </ScRadioGroupItem>
-                        )
-                      })}
-                    </ScRadioGroup>
+                    <>
+                      <ScRadioGroup {...field} error={!!errors.result}>
+                        {companies.map(company => {
+                          const isGovernment = isGovernmentCompany(company)
+                          const closed = !company.isOpen
+                          return (
+                            <ScRadioGroupItem key={company.siret} value={company.siret!} disabled={closed}>
+                              <div className="flex justify-between">
+                                <div>
+                                  {company.commercialName ? (
+                                    <Txt truncate block bold>
+                                      {company.commercialName} ({company.name})
+                                    </Txt>
+                                  ) : (
+                                    <Txt truncate block bold>
+                                      {company.name}
+                                    </Txt>
+                                  )}
+                                  {company.brand && <Txt block>{company.brand}</Txt>}
+                                  {company.isHeadOffice && (
+                                    <Row icon="business" sx={{color: t => t.palette.primary.main}}>
+                                      {m.isHeadOffice}
+                                    </Row>
+                                  )}
+                                  {company.activityLabel && <Row icon="label">{company.activityLabel}</Row>}
+                                  {isGovernment && (
+                                    <Row icon="error" sx={{color: t => t.palette.error.main}}>
+                                      {m.governmentCompany}
+                                    </Row>
+                                  )}
+                                  {company.address && (
+                                    <Row icon="location_on">
+                                      <AddressComponent address={company.address} />
+                                    </Row>
+                                  )}
+                                </div>
+                                {closed && <span className="text-red-600">{m.closedCompany}</span>}
+                              </div>
+                            </ScRadioGroupItem>
+                          )
+                        })}
+                      </ScRadioGroup>
+                      {onlyClosed && (
+                        <Alert
+                          description={m.closedCompanyText}
+                          severity="warning"
+                          title={m.closedCompany}
+                          className="fr-mt-4w"
+                        />
+                      )}
+                    </>
                   )}
                 />
               </PanelBody>
-              <PanelActions>
-                <BtnNextSubmit />
-              </PanelActions>
+              <PanelActions>{!onlyClosed && <BtnNextSubmit />}</PanelActions>
             </form>
           </Panel>
         )}

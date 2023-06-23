@@ -20,7 +20,7 @@ export class CompanyPublicClient {
     })
   }
 
-  readonly searchCompaniesByIdentity = (identity: string) => {
-    return this.client.get<CompanySearchResult[]>(`/companies/search/${identity}`, {})
+  readonly searchCompaniesByIdentity = (identity: string, openOnly: boolean) => {
+    return this.client.get<CompanySearchResult[]>(`/companies/search/${identity}?openOnly=${openOnly}`, {})
   }
 }
