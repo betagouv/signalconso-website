@@ -118,9 +118,15 @@ export const CompanySearchResultComponent = ({companies, onSubmit}: Props) => {
                         const isGovernment = isGovernmentCompany(company)
                         return (
                           <ScRadioGroupItem key={company.siret} value={company.siret!}>
-                            <Txt truncate block bold>
-                              {company.name}
-                            </Txt>
+                            {company.commercialName ? (
+                              <Txt truncate block bold>
+                                {company.commercialName} ({company.name})
+                              </Txt>
+                            ) : (
+                              <Txt truncate block bold>
+                                {company.name}
+                              </Txt>
+                            )}
                             {company.brand && <Txt block>{company.brand}</Txt>}
                             {company.isHeadOffice && (
                               <Row icon="business" sx={{color: t => t.palette.primary.main}}>
