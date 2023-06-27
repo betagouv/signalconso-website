@@ -13,7 +13,7 @@ import {useI18n} from 'i18n/I18n'
 import {useEffect, useState} from 'react'
 import {Controller, useForm} from 'react-hook-form'
 import {Txt} from '../../../alexlibs/mui-extension/Txt/Txt'
-import {useToast} from '../../../hooks/useToast'
+import {useToastError} from '../../../hooks/useToastError'
 import {CompanySearchResult, isGovernmentCompany} from '../../../model/Company'
 import {CompanyWebsiteVendor} from './CompanyWebsiteVendor'
 
@@ -72,7 +72,7 @@ export const CompanySearchResultComponent = ({companies, onSubmit}: Props) => {
     formState: {errors},
   } = useForm<Form>()
 
-  const {toastError} = useToast()
+  const toastError = useToastError()
 
   const submit = (selected: CompanySearchResult, vendor?: string) => {
     onSubmit(selected, vendor)

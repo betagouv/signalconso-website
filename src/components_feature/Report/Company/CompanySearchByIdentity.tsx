@@ -7,7 +7,7 @@ import {FormLayout} from 'components_simple/FormLayout/FormLayout'
 import {ScInput} from 'components_simple/Input/ScInput'
 import {Panel, PanelActions, PanelBody} from 'components_simple/Panel/Panel'
 import {useApiClients} from 'context/ApiClientsContext'
-import {useToast} from 'hooks/useToast'
+import {useToastError} from 'hooks/useToastError'
 import {useI18n} from 'i18n/I18n'
 import {ReactNode, useEffect, useRef} from 'react'
 import {useForm} from 'react-hook-form'
@@ -28,7 +28,7 @@ interface Props {
 export const CompanySearchByIdentity = ({children}: Props) => {
   const {m} = useI18n()
   const {companyApiClient: signalConsoApiClient} = useApiClients()
-  const {toastError} = useToast()
+  const toastError = useToastError()
   const _analytic = useAnalyticContext()
   const _searchByIdentity = useFetcher(signalConsoApiClient.searchCompaniesByIdentity)
   const {register, handleSubmit, reset} = useForm<Form>()
@@ -46,7 +46,7 @@ export const CompanySearchByIdentity = ({children}: Props) => {
   }
 
   useEffect(() => {
-    if (_searchByIdentity.error) toastError(_searchByIdentity.error)
+    if (_searchByIdentity.error) toastError()
   }, [_searchByIdentity.error])
 
   return (

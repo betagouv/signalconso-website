@@ -1,6 +1,6 @@
 import {ResponseConsumerReview, ResponseEvaluation} from '../../core/Events'
 import {useI18n} from '../../i18n/I18n'
-import {useToast} from '../../hooks/useToast'
+import {useToastError} from '../../hooks/useToastError'
 import React, {useEffect, useMemo, useState} from 'react'
 import {Controller, useForm} from 'react-hook-form'
 import FacebookShareButton from '../../reviews/FacebookShareButton'
@@ -26,7 +26,7 @@ interface Form {
 
 const ConsumerReview = () => {
   const {m} = useI18n()
-  const {toastError} = useToast()
+  const toastError = useToastError()
   const router = useRouter()
   const reportId = router.query.reportId as string
   const [done, setDone] = useState(false)
@@ -59,11 +59,11 @@ const ConsumerReview = () => {
   }
 
   useEffect(() => {
-    _saveReview.error && toastError(_saveReview.error)
+    _saveReview.error && toastError()
   }, [_saveReview.error])
 
   useEffect(() => {
-    _reviewExists.error && toastError(_reviewExists.error)
+    _reviewExists.error && toastError()
   }, [_reviewExists.error])
 
   useMemo(() => {
