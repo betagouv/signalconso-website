@@ -10,7 +10,7 @@ import {StepNavigation} from 'components_simple/ReportFlowStepper/ReportFlowStep
 import {ReportFlowStepperActions} from 'components_simple/ReportFlowStepper/ReportFlowStepperActions'
 import {Row} from 'components_simple/Row/Row'
 import {ReportFiles} from 'components_simple/UploadFile/ReportFiles'
-import {getApiErrorId, translateApiError, useToastError} from 'hooks/useToastError'
+import {getApiErrorId, useToastError} from 'hooks/useToastError'
 import {useI18n} from 'i18n/I18n'
 import {ReportDraft2} from 'model/ReportDraft2'
 import {ApiReportDraft} from 'model/reportsFromApi'
