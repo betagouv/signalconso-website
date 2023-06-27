@@ -74,7 +74,6 @@ export const CompanySearchByNameAndPostalCode = ({children}: Props) => {
                   render={({field}) => (
                     <AutocompleteCity
                       {...field}
-                      value={undefined}
                       onChange={x => field.onChange(x.postalCode)}
                       error={!!errors.postalCode}
                       helperText={errors.postalCode?.message ?? ''}
