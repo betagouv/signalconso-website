@@ -1313,6 +1313,6 @@ export const fr = {
       'Puisque vous avez choisi vous même votre transporteur, vous devez indiquer ici le site web de ce dernier',
     whichWebsiteMerchantText: 'Indiquez ici le site du marchand sur lequel vous avez effectué votre achat',
 
-    thereAreSimilarReports: 'Il existe un ou plusieurs signalements similaires'
+    thereAreSimilarReports: 'Il existe un ou plusieurs signalements similaires',
   },
 }
