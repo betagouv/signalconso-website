@@ -7,7 +7,7 @@ import {FormLayout} from 'components_simple/FormLayout/FormLayout'
 import {ScInput} from 'components_simple/Input/ScInput'
 import {Panel, PanelActions, PanelBody} from 'components_simple/Panel/Panel'
 import {useApiClients} from 'context/ApiClientsContext'
-import {useToast} from 'hooks/useToast'
+import {useToastError} from 'hooks/useToastError'
 import {useI18n} from 'i18n/I18n'
 import {ReactNode, useEffect} from 'react'
 import {Controller, useForm} from 'react-hook-form'
@@ -28,7 +28,7 @@ interface Props {
 export const CompanySearchByNameAndPostalCode = ({children}: Props) => {
   const {m} = useI18n()
   const {signalConsoApiClient, companyApiClient: companyApiClient} = useApiClients()
-  const {toastError} = useToast()
+  const toastError = useToastError()
   const _search = useFetcher(companyApiClient.searchCompanies)
   const _analytic = useAnalyticContext()
   const {
@@ -45,7 +45,7 @@ export const CompanySearchByNameAndPostalCode = ({children}: Props) => {
   }
 
   useEffect(() => {
-    if (_search.error) toastError(_search.error)
+    if (_search.error) toastError()
   }, [_search.error])
   return (
     <>

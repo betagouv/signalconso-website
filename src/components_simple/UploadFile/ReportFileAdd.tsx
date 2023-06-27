@@ -2,7 +2,7 @@ import {Box, Button, CircularProgress, Icon, Theme, Tooltip} from '@mui/material
 import {SxProps} from '@mui/system'
 import {useApiClients} from 'context/ApiClientsContext'
 import {styleUtils} from 'core/theme'
-import {useToast} from 'hooks/useToast'
+import {useToastError} from 'hooks/useToastError'
 import {useI18n} from 'i18n/I18n'
 import {useRef, useState} from 'react'
 import {appConfig} from '../../core/appConfig'
@@ -48,7 +48,7 @@ interface Props {
 export const ReportFileAdd = ({onUploaded, fileOrigin}: Props) => {
   const {m} = useI18n()
   const {signalConsoApiClient} = useApiClients()
-  const {toastError} = useToast()
+  const toastError = useToastError()
 
   const [uploading, setUploading] = useState(false)
   const fileInputEl = useRef<HTMLInputElement>(null)
@@ -102,7 +102,7 @@ export const ReportFileAdd = ({onUploaded, fileOrigin}: Props) => {
         onUploaded(uploadedFile)
       } catch (e) {
         console.error('failed to upload file', e)
-        toastError(e)
+        toastError()
       } finally {
         setUploading(false)
       }

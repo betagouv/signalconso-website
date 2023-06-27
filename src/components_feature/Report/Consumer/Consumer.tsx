@@ -20,7 +20,7 @@ import {Alert} from '../../../alexlibs/mui-extension/Alert/Alert'
 import {Txt} from '../../../alexlibs/mui-extension/Txt/Txt'
 import {appConfig} from '../../../core/appConfig'
 import {useFetcher} from '../../../hooks/useFetcher'
-import {useToast} from '../../../hooks/useToast'
+import {useToastError} from '../../../hooks/useToastError'
 import {Gender, genders, ReportDraft} from '../../../model/ReportDraft'
 import {DeepPartial} from '../../../utils/utils'
 import {useReportFlowContext} from '../ReportFlowContext'
@@ -68,7 +68,7 @@ export const _Consumer = ({
   const _form = useForm<ConsumerForm>()
   const _analytic = useAnalyticContext()
   const {isSmOrMore} = useBreakpoints()
-  const {toastError} = useToast()
+  const toastError = useToastError()
   const watchContactAgreement = _form.watch('contactAgreement')
 
   const showContactAgreement = ReportDraft.isTransmittableToPro(draft) && draft.consumerWish !== 'fixContractualDispute'
@@ -246,8 +246,8 @@ export const _Consumer = ({
                 if (res.valid) saveAndNext()
                 else setOpenValidationDialog(true)
               })
-              .catch(e => {
-                toastError(e)
+              .catch(() => {
+                toastError()
               })
           })()
         }}

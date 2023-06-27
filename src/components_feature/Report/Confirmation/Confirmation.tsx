@@ -10,7 +10,7 @@ import {StepNavigation} from 'components_simple/ReportFlowStepper/ReportFlowStep
 import {ReportFlowStepperActions} from 'components_simple/ReportFlowStepper/ReportFlowStepperActions'
 import {Row} from 'components_simple/Row/Row'
 import {ReportFiles} from 'components_simple/UploadFile/ReportFiles'
-import {useToast} from 'hooks/useToast'
+import {getApiErrorId, useToastError} from 'hooks/useToastError'
 import {useI18n} from 'i18n/I18n'
 import {ReportDraft2} from 'model/ReportDraft2'
 import {ApiReportDraft} from 'model/reportsFromApi'
@@ -43,7 +43,7 @@ export const _Confirmation = ({
   isWebView: boolean
 }) => {
   const {m} = useI18n()
-  const {toastError} = useToast()
+  const toastError = useToastError()
   const _reportFlow = useReportFlowContext()
   const _reportCreate = useReportCreateContext()
   const _analytic = useAnalyticContext()
@@ -171,7 +171,7 @@ export const _Confirmation = ({
               })
               .catch(e => {
                 _analytic.trackEvent(EventCategories.report, ReportEventActions.reportSendFail)
-                toastError(e)
+                toastError(getApiErrorId(e) === 'SC-0025' ? m.thereAreSimilarReports : undefined)
               })
           }}
           {...{stepNavigation}}
