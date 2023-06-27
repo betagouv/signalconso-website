@@ -60,7 +60,6 @@ export const CompanyAskConsumerPostalCode = ({value, onChange, companyKind}: Pro
                 render={({field}) => (
                   <AutocompleteCity
                     {...field}
-                    value={undefined}
                     error={!!errors.place}
                     helperText={(errors.place as any)?.message ?? ''}
                     defaultValue={value}
