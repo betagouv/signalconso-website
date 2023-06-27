@@ -70,7 +70,7 @@ const _ScRadioGroup = <T,>(
             key: child.key ?? i,
             dense,
             error,
-            disabled,
+            disabled: child.props.disabled ?? disabled,
             multiple,
             inline,
             selected:
@@ -79,7 +79,7 @@ const _ScRadioGroup = <T,>(
                 : innerValue === child.props.value,
             onClick: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
               if (child.props.onClick) child.props.onClick(event)
-              if (!disabled) {
+              if (!(child.props.disabled ?? disabled)) {
                 const value = child.props.value
                 setInnerValue(currentValue => {
                   const newValue = (() => {
