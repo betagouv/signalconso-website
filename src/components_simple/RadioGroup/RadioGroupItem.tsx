@@ -34,6 +34,12 @@ export const ScRadioGroupItem = <T,>({
   ...rest
 }: ScRadioGroupItemProps<T>) => {
   const minHeight = dense ? 40 : 50
+  const disableSx = disabled
+    ? {
+        pointerEvents: 'none',
+        opacity: 0.6,
+      }
+    : {}
   return (
     <Box
       role={multiple ? 'checkbox' : 'radio'}
@@ -46,6 +52,7 @@ export const ScRadioGroupItem = <T,>({
         paddingBottom: '2px',
         transition: 'all .2s ease-in-out',
         cursor: 'pointer',
+        ...disableSx,
         ...(inline
           ? {
               borderRightColor: 'transparent',

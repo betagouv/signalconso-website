@@ -36,7 +36,7 @@ export const CompanySearchByIdentity = ({children}: Props) => {
 
   const search = (form: Form) => {
     _analytic.trackEvent(EventCategories.companySearch, CompanySearchEventActions.searchByIdentity, form.identity)
-    _searchByIdentity.fetch({force: true, clean: true}, form.identity)
+    _searchByIdentity.fetch({force: true, clean: true}, form.identity, false)
   }
 
   const clear = () => {

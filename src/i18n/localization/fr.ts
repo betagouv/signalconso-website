@@ -1145,6 +1145,9 @@ export const fr = {
     selectCompany: `Sélectionnez l'entreprise`,
     verify: `Vérifier`,
     isHeadOffice: 'Siège social',
+    closedCompany: 'Entreprise fermée',
+    closedCompanyText:
+      "L'entreprise que vous avez recherché n'est plus en activité. Nous ne pouvons donc malheureusement pas prendre votre signalement concernant cette entreprise.",
     governmentCompany: 'Administration publique',
     cannotReportGovernmentCompany: 'Impossible de signaler une administration publique.',
     selectCompanyDesc: `Si l'entreprise n'est pas celle recherchée, vous pouvez modifier votre recherche.`,
