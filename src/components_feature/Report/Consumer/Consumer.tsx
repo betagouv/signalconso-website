@@ -161,22 +161,20 @@ export const _Consumer = ({
               />
             </FormLayout>
           </Row>
-          {!draft.tags?.includes('Bloctel') && (
-            <Row icon="phone">
-              <FormLayout label={m.phoneOptional}>
-                <ScInput
-                  type="tel"
-                  placeholder={m.phonePlaceholder}
-                  fullWidth
-                  defaultValue={draft.consumer?.phone ?? ''}
-                  {...getErrors('phone')}
-                  {..._form.register('phone', {
-                    pattern: {value: regexp.phone, message: m.invalidPhone},
-                  })}
-                />
-              </FormLayout>
-            </Row>
-          )}
+          <Row icon="phone">
+            <FormLayout label={m.phoneOptional}>
+              <ScInput
+                type="tel"
+                placeholder={m.phonePlaceholder}
+                fullWidth
+                defaultValue={draft.consumer?.phone ?? ''}
+                {...getErrors('phone')}
+                {..._form.register('phone', {
+                  pattern: {value: regexp.phone, message: m.invalidPhone},
+                })}
+              />
+            </FormLayout>
+          </Row>
           <Row icon="receipt">
             <FormLayout label={m.referenceNumberOptional}>
               <Txt color="hint">{m.referenceNumberDesc}</Txt>

@@ -26,6 +26,9 @@ import '../globals.css'
 import {Eularian} from '../plugins/eularian'
 import {Router} from 'next/router'
 import {internalPageDefs} from 'core/pagesDefinitions'
+import {monkeyPatchDomForGoogleTranslate} from 'utils/fixGoogleTranslate'
+
+monkeyPatchDomForGoogleTranslate()
 
 declare module '@codegouvfr/react-dsfr/next-pagesdir' {
   interface RegisterLink {

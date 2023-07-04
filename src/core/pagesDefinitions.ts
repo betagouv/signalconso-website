@@ -35,7 +35,7 @@ function pageExternal(url: string): PageDefExternal {
 
 export const internalPageDefs = {
   index: page('/'),
-  arborescence: page(`/arborescence`),
+  arborescence: page(`/arborescence`, {noIndex: true}),
   accessibilite: page(`/accessibilite`),
   planDuSite: page(`/plan-du-site`),
   actualites: page(`/actualites`),
@@ -53,7 +53,7 @@ export const internalPageDefs = {
   litige: page(`/litige`),
 
   // only on dev/demo
-  ...(appConfig.showPlayground ? {playground: page(`/playground`)} : null),
+  ...(appConfig.showPlayground ? {playground: page(`/playground`, {noIndex: true})} : null),
 }
 
 const externalPageDefs = {

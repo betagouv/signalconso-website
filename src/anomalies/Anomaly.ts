@@ -69,7 +69,6 @@ export const reportTagsAllowedInYaml = [
   'DemarchageTelephonique',
   'DemarchageInternet',
   'AbsenceDeMediateur',
-  'Bloctel',
   'Influenceur',
   'ReponseConso',
   'Internet',

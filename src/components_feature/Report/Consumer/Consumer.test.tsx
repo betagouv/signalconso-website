@@ -34,10 +34,6 @@ describe('Consumer', () => {
   }
   let app: ScRenderResult
 
-  const elementShouldExists = async (querySelector: string) => {
-    await waitFor(() => expect(app.container.querySelectorAll(querySelector).length).toEqual(1))
-  }
-
   const submit = () => {
     fireEvent.click(app.container.querySelector('.stepper-next-button')!)
   }
