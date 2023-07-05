@@ -28,7 +28,12 @@ function buildTagsFromSubcategories(subcategories: Subcategory[]) {
 
 function adjustTagsBeforeSubmit(draft: Partial<ReportDraft2>, companyKindFromSelected: CompanyKinds | undefined): ReportTag[] {
   let res = draft.tags ?? []
-  if (companyKindFromSelected === 'WEBSITE' || draft.companyKind === 'WEBSITE') {
+  if (
+    companyKindFromSelected === 'WEBSITE' ||
+    draft.companyKind === 'WEBSITE' ||
+    draft.companyKind === 'MERCHANT_WEBSITE' ||
+    draft.companyKind === 'TRANSPORTER_WEBSITE'
+  ) {
     res = [...res, 'Internet']
   }
   // This tag is used in the arborescence only to offer the choice of 'getAnswer'
