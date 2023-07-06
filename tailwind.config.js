@@ -14,6 +14,7 @@ module.exports = {
     extend: {
       colors: {
         sclightblue: '#2b7c9f',
+        scbluefrance: '#000091',
         scdarkblue: '#1e2b50',
         scorange: '#EA9001', // orange from the logo
       },

@@ -1,3 +1,4 @@
+import {Alert} from '@codegouvfr/react-dsfr/Alert'
 import {Box, BoxProps, Icon} from '@mui/material'
 import {Fender} from 'alexlibs/mui-extension/Fender/Fender'
 import {useAnalyticContext} from 'analytic/AnalyticContext'
@@ -10,50 +11,35 @@ import {ScRadioGroup} from 'components_simple/RadioGroup/RadioGroup'
 import {ScRadioGroupItem} from 'components_simple/RadioGroup/RadioGroupItem'
 import {styleUtils} from 'core/theme'
 import {useI18n} from 'i18n/I18n'
-import {useEffect, useState} from 'react'
+import {ReactNode, useEffect, useState} from 'react'
 import {Controller, useForm} from 'react-hook-form'
-import {Txt} from '../../../alexlibs/mui-extension/Txt/Txt'
 import {useToastError} from '../../../hooks/useToastError'
 import {CompanySearchResult, isGovernmentCompany} from '../../../model/Company'
 import {CompanyWebsiteVendor} from './CompanyWebsiteVendor'
-import {appConfig} from '../../../core/appConfig'
-import {Alert} from '@codegouvfr/react-dsfr/Alert'
 
 interface Props extends Omit<BoxProps, 'onSubmit'> {
   companies: CompanySearchResult[]
   onSubmit: (selected: CompanySearchResult, vendor?: string) => void
 }
 
-interface RowProps extends BoxProps {
-  icon?: string
-}
-
-const Row = ({icon, children, sx, ...props}: RowProps) => {
+const Row = ({icon, children, variant}: {icon?: string; variant?: 'blue' | 'error'; children: ReactNode}) => {
+  const color = variant === 'blue' ? 'text-scbluefrance' : variant === 'error' ? 'text-red-500' : 'text-gray-500'
   return (
-    <Box
-      {...props}
-      sx={{
-        color: t => t.palette.text.secondary,
-        mb: 0.25,
-        fontSize: t => styleUtils(t).fontSize.normal,
-        display: 'flex',
-        alignItems: 'flex-start',
-        ...sx,
-      }}
-    >
-      <Icon
-        sx={{
-          mr: 0.5,
-          mt: '3px',
-          fontSize: t => styleUtils(t).fontSize.big,
-          lineHeight: 1,
-          minWidth: 20,
-        }}
-      >
-        {icon}
-      </Icon>
-      <div>{children}</div>
-    </Box>
+    <>
+      <div className={`flex items-start mb-1 text-sm ${color}`}>
+        <Icon
+          sx={{
+            mr: 0.5,
+            fontSize: t => styleUtils(t).fontSize.big,
+            lineHeight: 1,
+            minWidth: 20,
+          }}
+        >
+          {icon}
+        </Icon>
+        <div>{children}</div>
+      </div>
+    </>
   )
 }
 
@@ -89,9 +75,7 @@ export const CompanySearchResultComponent = ({companies, onSubmit}: Props) => {
         {companies.length === 0 ? (
           <Panel id="CompanySearchResult">
             <Fender type="empty" icon="sentiment_very_dissatisfied">
-              <Txt color="hint" size="big">
-                {m.noMatchingCompany}
-              </Txt>
+              <span className="text-lg text-gray-600">{m.noMatchingCompany}</span>
             </Fender>
           </Panel>
         ) : (
@@ -106,9 +90,7 @@ export const CompanySearchResultComponent = ({companies, onSubmit}: Props) => {
                 }
               })}
             >
-              <Txt block color="hint">
-                {m.selectCompanyDesc}
-              </Txt>
+              <span className="block text-gray-500">{m.selectCompanyDesc}</span>
               <PanelBody>
                 <Controller
                   control={control}
@@ -126,27 +108,27 @@ export const CompanySearchResultComponent = ({companies, onSubmit}: Props) => {
                             <ScRadioGroupItem key={company.siret} value={company.siret!} disabled={closed}>
                               <div className="flex justify-between">
                                 <div>
-                                  {company.commercialName ? (
-                                    <Txt truncate block bold>
-                                      {company.commercialName} ({company.name})
-                                    </Txt>
-                                  ) : (
-                                    <Txt truncate block bold>
-                                      {company.name}
-                                    </Txt>
-                                  )}
-                                  {company.brand && <Txt block>{company.brand}</Txt>}
+                                  <span className="font-bold block">
+                                    {company.commercialName ? `${company.commercialName} (${company.name})` : company.name}
+                                  </span>
+                                  {company.brand && <span className="block">{company.brand}</span>}
+
                                   {company.isHeadOffice && (
-                                    <Row icon="business" sx={{color: t => t.palette.primary.main}}>
+                                    <Row icon="business" variant="blue">
                                       {m.isHeadOffice}
                                     </Row>
                                   )}
+
                                   {company.activityLabel && <Row icon="label">{company.activityLabel}</Row>}
                                   {isGovernment && (
-                                    <Row icon="error" sx={{color: t => t.palette.error.main}}>
+                                    <Row icon="error" variant="error">
                                       {m.governmentCompany}
                                     </Row>
                                   )}
+
+                                  <Row icon="badge">
+                                    Numéro SIRET <span className="">{company.siret}</span>
+                                  </Row>
                                   {company.address && (
                                     <Row icon="location_on">
                                       <AddressComponent address={company.address} />
