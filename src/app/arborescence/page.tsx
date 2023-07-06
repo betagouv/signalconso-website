@@ -7,6 +7,9 @@ const genMetadata = () => {
   return {
     title: m.titleAndDescriptions.anomaly.title,
     description: m.titleAndDescriptions.anomaly.description,
+    robots: {
+      index: false,
+    },
   }
 }
 
