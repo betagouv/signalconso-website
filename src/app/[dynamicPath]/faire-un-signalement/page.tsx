@@ -31,7 +31,7 @@ export function generateMetadata(props: {params: Props}): Metadata {
 const Page = (props: {params: Props}) => {
   const anomaly = getAnomalyData(props.params)
 
-  return <categoryPathPage.FaireUnSignalementPage anomaly={anomaly} />
+  return <categoryPathPage.FaireUnSignalementPage anomaly={anomaly} isWebView={false} />
 }
 
 export default Page

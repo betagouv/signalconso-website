@@ -4,7 +4,7 @@ import {ReactNode} from 'react'
 import {ReportFlowStepperWithoutSsr} from '../components_simple/ReportFlowStepper/ReportFlowStepperWithoutSsr'
 import {Anomaly} from '../anomalies/Anomaly'
 
-export const FaireUnSignalementPage = ({anomaly, isWebView = false}: {anomaly: Anomaly; isWebView?: boolean}) => {
+export const FaireUnSignalementPage = ({anomaly, isWebView}: {anomaly: Anomaly; isWebView: boolean}) => {
   return (
     <>
       <Container {...{isWebView}}>
