@@ -1,6 +1,9 @@
+'use client'
+
 import * as React from 'react'
 import {ReactNode, useContext, useMemo} from 'react'
 import {fr} from './localization/fr'
+import {getI18n} from './I18nDictionnary'
 
 const I18nContext = React.createContext({})
 
@@ -32,12 +35,7 @@ export const useI18n = (): I18nContextProps => {
 
 export const I18nProvider = ({children, lang = AppLangs.fr}: Props) => {
   const {messages: m, ...others}: typeof fr = useMemo(() => {
-    switch (lang) {
-      case AppLangs.fr:
-        return fr
-      default:
-        return fr
-    }
+    return getI18n(lang)
   }, [lang])
 
   return (

@@ -59,8 +59,8 @@ export const fr = {
         description: "Rapport d'accessibilité SignalConso",
       },
       contact: {
-        title: 'Titre de la page Contact',
-        description: 'Description de la page Contact',
+        title: 'Contact - SignalConso',
+        description: 'Contact SignalConso',
       },
       contractualDispute: {
         title: "Résolution d'un problème individuel (litige) - SignalConso",
