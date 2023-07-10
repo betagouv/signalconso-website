@@ -23,7 +23,7 @@ export const PlaygroundAcknowledgment = () => {
       [AcknowledgmentCases.NotTransmittable]: () => ({
         ...baseReport,
         employeeConsumer: false,
-        tags: ['ProduitDangereux'],
+        tags: [],
       }),
       [AcknowledgmentCases.FrenchCompanyWithoutSIRET]: () => ({...baseReport, employeeConsumer: false, companySiret: undefined}),
       [AcknowledgmentCases.ContractualDisputeWithSIRET]: () => ({
