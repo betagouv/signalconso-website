@@ -33,7 +33,7 @@ const ConsumerReview = (props: any) => {
   const searchParams = useSearchParams()
   const pathname = usePathname()
   const router = useRouter()
-  const reportId = props.reportId as string
+  const reportId = props.params.reportId as string
   const [done, setDone] = useState(false)
   const [evaluation, setEvaluation] = useState<ResponseEvaluation | undefined>(undefined)
   const {
