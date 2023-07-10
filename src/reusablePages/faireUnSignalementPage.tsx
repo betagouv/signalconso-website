@@ -1,44 +1,12 @@
-import {ReportFlowStepper} from 'components_simple/ReportFlowStepper/ReportFlowStepper'
-import {appConfig} from 'core/appConfig'
-import {buildLinkLandingPageFromAnomaly, pagesDefs} from 'core/pagesDefinitions'
-import {GetStaticPaths, GetStaticProps} from 'next'
-import dynamic from 'next/dynamic'
-import Head from 'next/head'
+import {pagesDefs} from 'core/pagesDefinitions'
 import Link from 'next/link'
 import {ReactNode} from 'react'
-import {undefinedIfNull} from 'utils/utils'
-import {allAnomalies} from '../anomalies/Anomalies'
+import {ReportFlowStepperWithoutSsr} from '../components_simple/ReportFlowStepper/ReportFlowStepperWithoutSsr'
+import {Anomaly} from '../anomalies/Anomaly'
 
-export const getStaticPaths: GetStaticPaths = () => {
-  const paths = allAnomalies.map(_ => ({
-    params: {dynamicPath: _.path},
-  }))
-  return {paths, fallback: false}
-}
-
-export const getStaticProps: GetStaticProps = ({params = {}}) => {
-  const dynamicPath = params.dynamicPath
-  if (typeof dynamicPath !== 'string') {
-    throw new Error(`Unexpected type of dynamicPath : ${typeof dynamicPath}`)
-  }
-  return {
-    props: {dynamicPath},
-  }
-}
-
-export const FaireUnSignalementPage = ({dynamicPath, isWebView = false}: {dynamicPath: string; isWebView?: boolean}) => {
-  const anomaly = allAnomalies.find(_ => _.path === dynamicPath)
-  if (!anomaly) {
-    throw new Error(`Cannot find anomaly for dynamicPath : ${dynamicPath}`)
-  }
+export const FaireUnSignalementPage = ({anomaly, isWebView = false}: {anomaly: Anomaly; isWebView?: boolean}) => {
   return (
     <>
-      <Head>
-        <link rel="canonical" href={appConfig.appBaseUrl + buildLinkLandingPageFromAnomaly(anomaly)} key="canonical" />
-        <title>{anomaly.seoTitle + ' - SignalConso'}</title>
-        <meta name="description" content={undefinedIfNull(anomaly.seoDescription ?? anomaly.description)} />
-      </Head>
-
       <Container {...{isWebView}}>
         <h1 className="fr-h2">
           {!isWebView && (
@@ -54,7 +22,7 @@ export const FaireUnSignalementPage = ({dynamicPath, isWebView = false}: {dynami
   )
 }
 // https://nextjs.org/docs/advanced-features/dynamic-import#with-no-ssr
-const ReportFlowStepperWithoutSsr = dynamic(() => Promise.resolve(ReportFlowStepper), {ssr: false})
+// const ReportFlowStepperWithoutSsr = dynamic(() => Promise.resolve(ReportFlowStepper), {ssr: false})
 
 function Container({isWebView, children}: {isWebView: boolean; children: ReactNode}) {
   return isWebView ? (

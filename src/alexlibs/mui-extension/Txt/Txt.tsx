@@ -1,3 +1,5 @@
+'use client'
+
 import {Box, BoxProps, Skeleton} from '@mui/material'
 import * as React from 'react'
 import {forwardRef} from 'react'

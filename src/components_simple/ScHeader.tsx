@@ -1,14 +1,16 @@
+'use client'
+
 import Header from '@codegouvfr/react-dsfr/Header'
 import {pagesDefs} from '../core/pagesDefinitions'
-import {NextRouter, useRouter} from 'next/router'
 import {HTMLAttributeAnchorTarget} from 'react'
 import {appConfig} from 'core/appConfig'
 import {urlServicePublicPlus} from './ScFooter'
 import {useI18n} from '../i18n/I18n'
+import {usePathname} from 'next/navigation'
 
-function buildMenuLink(router: NextRouter, url: string, text: string, target?: HTMLAttributeAnchorTarget) {
+function buildMenuLink(pathname: String, url: string, text: string, target?: HTMLAttributeAnchorTarget) {
   return {
-    isActive: router.pathname === url,
+    isActive: pathname === url,
     linkProps: {
       href: url,
       target,
@@ -26,7 +28,7 @@ function buildSubmenu(text: string, menuLinks: ReturnType<typeof buildMenuLink>[
 }
 
 export function ScHeader() {
-  const router = useRouter()
+  const pathName = usePathname() ?? ''
   const {m} = useI18n()
   // En se basant sur https://www.diplomatie.gouv.fr/en/
   // On ne traduit pas République Française
@@ -62,17 +64,17 @@ export function ScHeader() {
         // serviceTitle="SignalConso"
         // serviceTagline="un service public pour les consommateurs"
         navigation={[
-          buildMenuLink(router, pagesDefs.index.url, m.header.indexLinkTitle),
-          buildMenuLink(router, pagesDefs.commentCaMarche.url, m.header.commentCaMarcheLinkTitle),
-          buildMenuLink(router, pagesDefs.centreAide.url, m.header.centreAideLinkTitle),
+          buildMenuLink(pathName, pagesDefs.index.url, m.header.indexLinkTitle),
+          buildMenuLink(pathName, pagesDefs.commentCaMarche.url, m.header.commentCaMarcheLinkTitle),
+          buildMenuLink(pathName, pagesDefs.centreAide.url, m.header.centreAideLinkTitle),
           buildSubmenu(m.header.voirAussiTitle, [
-            buildMenuLink(router, pagesDefs.quiSommesNous.url, m.header.quiSommesNousLinkTitle),
-            buildMenuLink(router, pagesDefs.stats.url, m.header.statsLinkTitle),
-            buildMenuLink(router, pagesDefs.contact.url, m.header.contactLinkTitle),
-            buildMenuLink(router, pagesDefs.actualites.url, m.header.actualitesLinkTitle),
-            buildMenuLink(router, urlServicePublicPlus, m.header.servicePublicPlusLinkTitle, '_blank'),
+            buildMenuLink(pathName, pagesDefs.quiSommesNous.url, m.header.quiSommesNousLinkTitle),
+            buildMenuLink(pathName, pagesDefs.stats.url, m.header.statsLinkTitle),
+            buildMenuLink(pathName, pagesDefs.contact.url, m.header.contactLinkTitle),
+            buildMenuLink(pathName, pagesDefs.actualites.url, m.header.actualitesLinkTitle),
+            buildMenuLink(pathName, urlServicePublicPlus, m.header.servicePublicPlusLinkTitle, '_blank'),
           ]),
-          ...(pagesDefs.playground ? [buildMenuLink(router, pagesDefs.playground.url, 'Playground')] : []),
+          ...(pagesDefs.playground ? [buildMenuLink(pathName, pagesDefs.playground.url, 'Playground')] : []),
         ]}
       />
       <EnvMarker />
