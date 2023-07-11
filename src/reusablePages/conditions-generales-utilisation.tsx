@@ -1,38 +1,40 @@
+import {useState} from 'react'
 import Head from 'next/head'
 import {ContentPageContainer} from 'components_simple/ContentPageContainer'
 import {Tabs} from '@codegouvfr/react-dsfr/Tabs'
-import {getI18n} from '../i18n/I18nDictionnary'
-import {Metadata} from 'next'
+import {useI18n} from '../i18n/I18n'
 
-export function getMetadata(): Metadata {
-  const {messages: m} = getI18n('fr')
-
+const a11yProps = (index: number) => {
   return {
-    title: m.titleAndDescriptions.conditionsGeneralesUtilisation.title,
-    description: m.titleAndDescriptions.conditionsGeneralesUtilisation.description,
-    robots: {
-      index: false,
-    },
+    id: `simple-tab-${index}`,
+    'aria-controls': `simple-tabpanel-${index}`,
   }
 }
 
 export const ConditionsGeneralesUtilisation = () => {
-  const {messages: m} = getI18n('fr')
+  const [activeTab, setActiveTab] = useState(0)
+  const {m} = useI18n()
   return (
-    <ContentPageContainer>
-      <h1>Conditions générales d'utilisation de l'interface en ligne SignalConso</h1>
-      <Tabs
-        tabs={[
-          {label: 'Consommateur', iconId: 'fr-icon-user-line', content: <ConditionsGeneralesUtilisationConso />},
-          {label: 'Professionnel', iconId: 'fr-icon-briefcase-line', content: <ConditionsGeneralesUtilisationPro />},
-        ]}
-      />
-    </ContentPageContainer>
+    <>
+      <Head>
+        <title>{m.titleAndDescriptions.conditionsGeneralesUtilisation.title}</title>
+        <meta name="description" content={m.titleAndDescriptions.conditionsGeneralesUtilisation.description} />
+      </Head>
+      <ContentPageContainer>
+        <h1>Conditions générales d'utilisation de l'interface en ligne SignalConso</h1>
+        <Tabs
+          tabs={[
+            {label: 'Consommateur', iconId: 'fr-icon-user-line', content: <ConditionsGeneralesUtilisationConso />},
+            {label: 'Professionnel', iconId: 'fr-icon-briefcase-line', content: <ConditionsGeneralesUtilisationPro />},
+          ]}
+        />
+      </ContentPageContainer>
+    </>
   )
 }
 
 function ConditionsGeneralesUtilisationConso() {
-  const {messages: m} = getI18n('fr')
+  const {m} = useI18n()
   return (
     <div>
       <p>{m.conditionsgeneralesconso.description}</p>
@@ -83,7 +85,7 @@ function ConditionsGeneralesUtilisationConso() {
 }
 
 function ConditionsGeneralesUtilisationPro() {
-  const {messages: m} = getI18n('fr')
+  const {m} = useI18n()
   return (
     <div>
       <p>{m.conditionsGeneralesUtilisationPro.intro}</p>

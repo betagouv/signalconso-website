@@ -1,4 +1,3 @@
-'use client'
 import * as React from 'react'
 import {ReactNode} from 'react'
 import {Box, BoxProps, CircularProgress, Icon} from '@mui/material'

@@ -1,4 +1,3 @@
-'use client'
 import {Footer} from '@codegouvfr/react-dsfr/Footer'
 import Link from 'next/link'
 import {pagesDefs} from '../core/pagesDefinitions'
@@ -30,8 +29,8 @@ export function ScFooter() {
         accessibilityLinkProps={{href: pagesDefs.accessibilite.url}}
         termsLinkProps={{href: pagesDefs.conditionsGeneralesUtilisation.url}}
         homeLinkProps={{href: '/', title: m.footer.homeLinkTitle}}
-        // personalDataLinkProps={{href: pagesDefs.suiviEtViePrivee.url}}
-        // cookiesManagementLinkProps={{href: pagesDefs.cookies.url}}
+        personalDataLinkProps={{href: pagesDefs.suiviEtViePrivee.url}}
+        cookiesManagementLinkProps={{href: pagesDefs.cookies.url}}
         bottomItems={[
           {
             text: m.footer.connexionLinkTitle,
