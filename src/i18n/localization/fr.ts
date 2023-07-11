@@ -1317,5 +1317,11 @@ export const fr = {
     whichWebsiteMerchantText: 'Indiquez ici le site du marchand sur lequel vous avez effectué votre achat',
 
     thereAreSimilarReports: 'Il existe un ou plusieurs signalements similaires',
+
+    websiteDoesNotExist1: 'Le site que vous avez indiqué semble introuvable.',
+    websiteDoesNotExist2: 'Vous avez peut-être fait une faute de frappe ?',
+    websiteDoesNotExist3: 'Il a peut-être été supprimé par son propriétaire ou hébergeur',
+    websiteDoesNotExist4:
+      "Si vous êtes certains de l'orthographe, vous pouvez tout de même le signaler, nos services pourrons le recouper avec d'autres signalements.",
   },
 }

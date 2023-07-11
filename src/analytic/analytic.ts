@@ -97,6 +97,8 @@ export enum CompanySearchEventActions {
   select = 'Sélection dans la liste de résultats',
   searchByIdentity = 'Recherche par SIRET / SIREN / RCS',
   searchByUrl = 'Recherche par URL',
+  searchedWebsiteDown = 'Site web recherché introuvable',
+  editWebsite = 'Edition du site web',
 }
 
 export enum ContractualDisputeActions {
