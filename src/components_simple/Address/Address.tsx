@@ -10,7 +10,7 @@ export const AddressComponent = ({address}: Props) => {
     <span>
       {(address.number || address.street || address.addressSupplement) && (
         <>
-          {address.number}&nbsp;
+          {address.number ? <>{address.number}&nbsp;</> : null}
           {address.street}&nbsp;
           {address.addressSupplement}
           <br />
