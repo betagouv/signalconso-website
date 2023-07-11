@@ -1,18 +1,26 @@
 import {ContentPageContainer} from 'components_simple/ContentPageContainer'
-import Head from 'next/head'
 import {Alert} from '@codegouvfr/react-dsfr/Alert'
 import Link from 'next/link'
-import {useI18n} from '../i18n/I18n'
+import {getI18n} from '../i18n/I18nDictionnary'
+import {Metadata} from 'next'
+
+export function getMetadata(): Metadata {
+  const {messages: m} = getI18n('fr')
+
+  return {
+    title: m.titleAndDescriptions.contact.title,
+    description: m.titleAndDescriptions.contact.description,
+    robots: {
+      index: false,
+    },
+  }
+}
 
 export const Contact = () => {
-  const {m} = useI18n()
+  const {messages: m} = getI18n('fr')
 
   return (
     <>
-      <Head>
-        <title>{m.titleAndDescriptions.contact.title}</title>
-        <meta name="description" content={m.titleAndDescriptions.contact.description} />
-      </Head>
       <ContentPageContainer>
         <h1>{m.contact.title}</h1>
         <h2 className="fr-h4">{m.contact.problemMessage}</h2>
