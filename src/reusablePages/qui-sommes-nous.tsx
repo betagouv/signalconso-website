@@ -4,25 +4,18 @@ import {team} from 'core/team'
 import Head from 'next/head'
 import Link from 'next/link'
 import {useI18n} from '../i18n/I18n'
-import {Metadata} from 'next'
-import {getI18n} from '../i18n/I18nDictionnary'
 
 // Avatars générés sur face.co
 
-export function getMetadata(): Metadata {
-  const {messages: m} = getI18n('fr')
-
-  return {
-    title: m.titleAndDescriptions.quiSommesNous.title,
-    description: m.titleAndDescriptions.quiSommesNous.description,
-  }
-}
-
 export const QuiSommesNous = () => {
-  const {messages: m} = getI18n('fr')
+  const {m} = useI18n()
 
   return (
     <>
+      <Head>
+        <title>{m.titleAndDescriptions.quiSommesNous.title}</title>
+        <meta name="description" content={m.titleAndDescriptions.quiSommesNous.description} />
+      </Head>
       <ContentPageContainer>
         <h1>{m.quiSommesNous.title}</h1>
         <div>

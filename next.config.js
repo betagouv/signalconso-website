@@ -82,9 +82,7 @@ module.exports = {
       },
     ]
   },
-  experimental: {
-    appDir: true,
-  },
+
   transpilePackages: [
     '@codegouvfr/react-dsfr',
     // TRELLO-1393 the published files of react-hook-form seem not to be transpiled
