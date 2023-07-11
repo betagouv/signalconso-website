@@ -1,4 +1,3 @@
-'use client'
 import {Accordion} from '@codegouvfr/react-dsfr/Accordion'
 import {Box, BoxProps} from '@mui/material'
 import {pagesDefs} from 'core/pagesDefinitions'

@@ -21,7 +21,6 @@ function readSeverity(severity?: string): Severity | null {
 }
 
 export const appConfig = {
-  siretExtractorUrl: noTrailingSlash(process.env.NEXT_PUBLIC_SIRET_EXTRACTOR_BASE_URL ?? 'http://localhost:8089'),
   apiCompanyUrl: noTrailingSlash(process.env.NEXT_PUBLIC_COMPANY_API_BASE_URL ?? 'http://localhost:9001'),
   apiAdresseUrl: 'https://api-adresse.data.gouv.fr',
   isDev: process.env.NEXT_PUBLIC_NODE_ENV === 'development',
