@@ -9,7 +9,7 @@ import {ScInput} from 'components_simple/Input/ScInput'
 import {Panel, PanelBody} from 'components_simple/Panel/Panel'
 import {useApiClients} from 'context/ApiClientsContext'
 import {useI18n} from 'i18n/I18n'
-import {ReactNode, useState} from 'react'
+import {ReactNode, useEffect, useState} from 'react'
 import {useForm} from 'react-hook-form'
 import {useQuery} from '@tanstack/react-query'
 import {IconBtn} from '../../../alexlibs/mui-extension/IconBtn/IconBtn'
@@ -19,6 +19,8 @@ import {Country} from '../../../model/Country'
 import {Button} from '@codegouvfr/react-dsfr/Button'
 import {SpecificWebsiteCompanyKinds} from '../../../anomalies/Anomaly'
 import {Alert} from '@codegouvfr/react-dsfr/Alert'
+import {SiretExtractorClient} from '../../../clients/SiretExtractorClient'
+import {appConfig} from '../../../core/appConfig'
 
 interface Form {
   website: string
@@ -47,9 +49,14 @@ type WebsiteSearchResult =
     }
   | {
       kind: 'nothing'
+      status: 'up' | 'down' | 'unknown'
     }
 
-async function searchWebsite(signalConsoApiClient: SignalConsoApiClient, website: string): Promise<WebsiteSearchResult> {
+async function searchWebsite(
+  signalConsoApiClient: SignalConsoApiClient,
+  siretExtractorClient: SiretExtractorClient,
+  website: string,
+): Promise<WebsiteSearchResult> {
   const res1 = await signalConsoApiClient.searchCompaniesByUrl(website)
   if (res1.exactMatch.length > 0) {
     return {
@@ -70,12 +77,17 @@ async function searchWebsite(signalConsoApiClient: SignalConsoApiClient, website
       countries: res2,
     }
   }
-  return {kind: 'nothing'}
+  try {
+    const status = await siretExtractorClient.dig(website)
+    return status.length === 0 ? {kind: 'nothing', status: 'down'} : {kind: 'nothing', status: 'up'}
+  } catch {
+    return {kind: 'nothing', status: 'unknown'}
+  }
 }
 
 export const CompanyByWebsite = ({value, children, specificWebsiteCompanyKind, ...props}: Props) => {
   const {m} = useI18n()
-  const {signalConsoApiClient} = useApiClients()
+  const {signalConsoApiClient, siretExtractorClient} = useApiClients()
   const _analytic = useAnalyticContext()
   const {
     getValues,
@@ -90,18 +102,29 @@ export const CompanyByWebsite = ({value, children, specificWebsiteCompanyKind, .
   const [isEditingWebsite, setIsEditingWebsite] = useState(true)
   const [hasConfirmedUnknown, setHasConfirmedUnknown] = useState(false)
 
-  const searchQuery = useQuery(['searchCompanyByWebsite', website], () => searchWebsite(signalConsoApiClient, website), {
-    enabled: !!website,
-  })
+  const searchQuery = useQuery(
+    ['searchCompanyByWebsite', website],
+    () => searchWebsite(signalConsoApiClient, siretExtractorClient, website),
+    {
+      enabled: !!website,
+    },
+  )
   useToastOnQueryError(searchQuery)
   const displayedResults = isEditingWebsite
     ? undefined
     : hasConfirmedUnknown
     ? // act as if there was no suggested result
-      {kind: 'nothing' as const}
+      {kind: 'nothing' as const, status: 'unknown' as const}
     : searchQuery.data
 
+  useEffect(() => {
+    if (searchQuery.data?.kind === 'nothing' && searchQuery.data?.status === 'down') {
+      _analytic.trackEvent(EventCategories.companySearch, CompanySearchEventActions.searchedWebsiteDown, website)
+    }
+  }, [searchQuery.data])
+
   const editWebsite = () => {
+    _analytic.trackEvent(EventCategories.companySearch, CompanySearchEventActions.editWebsite, website)
     setIsEditingWebsite(true)
     setHasConfirmedUnknown(false)
   }
@@ -205,8 +228,30 @@ export const CompanyByWebsite = ({value, children, specificWebsiteCompanyKind, .
         displayedResults.countries.length > 0 &&
         children(website, undefined, displayedResults.countries)}
       {displayedResults?.kind === 'companies' && children(website, displayedResults.companies)}
+      {displayedResults?.kind === 'nothing' && displayedResults?.status === 'down' && <WebsiteDown />}
       {displayedResults?.kind === 'nothing' && children(website)}
     </>
+  )
+}
+
+const WebsiteDown = () => {
+  const {m} = useI18n()
+  return (
+    <Alert
+      description={
+        <>
+          <p>{m.websiteDoesNotExist1}</p>
+          <ul>
+            <li>{m.websiteDoesNotExist2}</li>
+            <li>{m.websiteDoesNotExist3}</li>
+          </ul>
+          <p>{m.websiteDoesNotExist4}</p>
+        </>
+      }
+      severity="warning"
+      title={<></>}
+      className="fr-mt-4w fr-mb-4w"
+    />
   )
 }
 
