@@ -7,16 +7,16 @@ import mapKeys from 'lodash/mapKeys'
 import findKey from 'lodash/findKey'
 import sortBy from 'lodash/sortBy'
 import {allVisibleAnomalies, findAnomaly} from '../anomalies/Anomalies'
-import {LandingData} from 'landings/landingDataUtils'
-import {hasNoDuplicates} from '../utils/utils'
+import {LandingData} from '../landings/landingDataUtils'
+import groupBy from 'lodash/groupBy'
 
 // This script reads data from our Airtable account
 // Then it outputs all the texts for our landing pages.
 //
-// We commit the output.
+// WE COMMIT THE OUTPUT.
 // This script is meant to be rerun only occasionally when needed.
 
-const outputFile = path.join(__dirname, '..', 'landingsData.ts')
+const outputFile = path.join(__dirname, '..', 'landings', 'landingsData.ts')
 
 const BASE_ID = 'appdO2KcJrc2RI28f'
 const PUBLISHED_STATUS = 'PUBLIEE'
@@ -72,8 +72,11 @@ function throwForMissingField(): never {
   throw new Error(`There is at least one published row with an empty or missing mandatory field`)
 }
 
-function throwForInvalidUrlField(): never {
+function throwForInvalidUrlFieldWithSlashes(): never {
   throw new Error(`Invalid url field, it should not contain any slashes`)
+}
+function throwForInvalidUrlFieldWithSpecialChars(): never {
+  throw new Error(`Invalid url field, it should not contain any uppercase, underscore, accents or special characters`)
 }
 
 function validateAndTransformRow(row: RawRow): RowTranformed {
@@ -123,7 +126,10 @@ function validateAndTransformRow(row: RawRow): RowTranformed {
   }
 
   if (url.indexOf('/') !== -1) {
-    throwForInvalidUrlField()
+    throwForInvalidUrlFieldWithSlashes()
+  }
+  if (!/^[a-z0-9-]*$/.test(url)) {
+    throwForInvalidUrlFieldWithSpecialChars()
   }
 
   // if multiple categories, always sort them in the same order as the HP
@@ -219,17 +225,20 @@ function checkNoMissingOrDuplicateAnomalies(rows: RowTranformed[]) {
 }
 
 function checkNoDuplicates(rows: RowTranformed[]) {
-  if (!hasNoDuplicates(rows.map(_ => _.url))) {
-    throw new Error(`Several landing pages are configured on the same URL`)
-  }
-  if (!hasNoDuplicates(rows.map(_ => _.seoTitle))) {
-    throw new Error(`Several landing pages are configured with the same seoTitle`)
-  }
-  if (!hasNoDuplicates(rows.map(_ => _.seoDescription))) {
-    throw new Error(`Several landing pages are configured with the same seoDescription`)
-  }
-  if (!hasNoDuplicates(rows.map(_ => _.title))) {
-    throw new Error(`Several landing pages are configured with the same title`)
+  findDuplicatesByField(rows, _ => _.url, 'URL')
+  findDuplicatesByField(rows, _ => _.seoTitle, 'seoTitle')
+  findDuplicatesByField(rows, _ => _.seoDescription, 'seoDescription')
+  findDuplicatesByField(rows, _ => _.title, 'title')
+}
+
+function findDuplicatesByField(rows: RowTranformed[], getField: (row: RowTranformed) => string, fieldName: string) {
+  const grouped = groupBy(rows, getField)
+  for (const groupOfRows of Object.values(grouped)) {
+    if (groupOfRows.length > 1) {
+      throw new Error(
+        `Several landing pages are configured with the same ${fieldName} : ${groupOfRows.map(_ => _.url).join(', ')}`,
+      )
+    }
   }
 }
 
