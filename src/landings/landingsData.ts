@@ -641,7 +641,7 @@ export const landingsData = [
     ],
   },
   {
-    url: 'démarchage-téléphonique',
+    url: 'demarchage-telephonique',
     isSemiAutomatic: false,
     seoTitle: 'Démarchage téléphonique',
     seoDescription: 'Signalez un problème de démarchage téléphonique',
@@ -719,7 +719,7 @@ export const landingsData = [
     ],
   },
   {
-    url: 'pompe-à-chaleur-pac',
+    url: 'pompe-a-chaleur-pac',
     isSemiAutomatic: false,
     seoTitle: 'Pompe à chaleur - PAC',
     seoDescription: 'Votre problème concerne une arnaque relative à une pompe à chaleur-PAC ?\n',

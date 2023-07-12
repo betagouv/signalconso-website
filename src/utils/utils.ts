@@ -92,7 +92,3 @@ export function getKeys<T extends object>(obj: T) {
 }
 
 export const iconArrowRight = 'fr-icon-arrow-right-s-line'
-
-export function hasNoDuplicates(arr: string[]): boolean {
-  return new Set(arr).size === arr.length
-}

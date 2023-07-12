@@ -14,6 +14,8 @@ const changedPaths = [
     '/news/signalconso-desormais-disponible-en-application-mobile',
     '/actualites/signalconso-desormais-disponible-en-application-mobile',
   ],
+  ['/d%C3%A9marchage-t%C3%A9l%C3%A9phonique', '/demarchage-telephonique'],
+  ['/pompe-%C3%A0-chaleur-pac', '/pompe-a-chaleur-pac'],
 ]
 
 const redirectsForChangedPaths = changedPaths.map(([source, destination]) => ({
