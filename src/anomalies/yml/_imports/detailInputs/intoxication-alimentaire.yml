@@ -15,7 +15,7 @@
     - Oui (à préciser)
 - label: Décrivez nous plus en détails ce qui s'est passé
   type: TEXTAREA
-- label: Avez-vous déjà contacté le restaurateur ou le fabriquant pour ce problème&#160;?
+- label: Avez-vous déjà contacté le restaurateur ou le fabricant pour ce problème&#160;?
   type: RADIO
   options:
     - Oui
