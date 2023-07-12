@@ -56,10 +56,10 @@ export const DelaiDeRetractation = () => {
           <h2 className="fr-h4">{m.delaiRetractation.changeOfMindTitle}</h2>
           <p>{m.delaiRetractation.justificationNotRequired}</p>
           <p>
-            {m.delaiRetractation.returnFormOrLetter}
+            {m.delaiRetractation.returnFormOrLetter}{' '}
             <Txt bolder span>
               {m.delaiRetractation.recommendedLetterWithAcknowledgment}
-            </Txt>
+            </Txt>{' '}
             {m.delaiRetractation.withinFourteenDays}.
             <br />
             {m.delaiRetractation.canAlsoDoItOnline} {m.delaiRetractation.websiteRequirement}.
