@@ -1,10 +1,11 @@
+'use client'
 import {Button} from '@codegouvfr/react-dsfr/Button'
 import Link from 'next/link'
 import {pagesDefs} from '../core/pagesDefinitions'
-import {useI18n} from '../i18n/I18n'
+import {getI18n} from '../i18n/I18nDictionnary'
 
 export const LinkBackToHome = ({isWebView}: {isWebView: boolean}) => {
-  const {m} = useI18n()
+  const {messages: m} = getI18n('fr')
 
   const sendMessageToReactNative = () => window.ReactNativeWebView?.postMessage('success')
 
