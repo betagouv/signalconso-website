@@ -42,7 +42,7 @@ export const ConfirmationInner = ({
   stepNavigation: StepNavigation
   isWebView: boolean
 }) => {
-  const {m} = useI18n()
+  const {m, currentLang} = useI18n()
   const toastError = useToastError()
   const _reportFlow = useReportFlowContext()
   const _reportCreate = useReportCreateContext()
@@ -67,7 +67,7 @@ export const ConfirmationInner = ({
               <AnomalyImage anomaly={anomaly} sx={{mr: 2}} />
               <Box>
                 <Txt block size="big" bold sx={{mb: 1}}>
-                  {findAnomaly(draft.category).title}
+                  {findAnomaly(draft.category, currentLang).title}
                 </Txt>
                 {draft.subcategories.map(_ => (
                   <Row dense icon="subdirectory_arrow_right" key={_.title}>

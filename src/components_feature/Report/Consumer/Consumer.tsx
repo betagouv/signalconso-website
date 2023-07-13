@@ -61,7 +61,7 @@ export const ConsumerInner = ({
   onSubmit: (_: DeepPartial<ReportDraft2>) => void
   stepNavigation: StepNavigation
 }) => {
-  const {m} = useI18n()
+  const {m, currentLang} = useI18n()
   const [openValidationDialog, setOpenValidationDialog] = useState<boolean>(false)
   const {signalConsoApiClient} = useApiClients()
   const _checkEmail = useFetcher(signalConsoApiClient.checkEmail)
@@ -239,7 +239,7 @@ export const ConsumerInner = ({
         next={() => {
           _form.handleSubmit(form => {
             _checkEmail
-              .fetch({}, form.email)
+              .fetch({}, form.email, currentLang)
               .then(res => {
                 if (res.valid) saveAndNext()
                 else setOpenValidationDialog(true)

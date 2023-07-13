@@ -7,6 +7,9 @@ import {EventCategories} from '../../analytic/analytic'
 import {useAnalyticContext} from '../../analytic/AnalyticContext'
 import {useI18n} from '../../i18n/I18n'
 import {useConfig} from '../../context/ConfigContext'
+import {Alert} from '@codegouvfr/react-dsfr/Alert'
+import {TranslatedWebsiteAlert} from '../TranslatedWebsiteAlert/TranslatedWebsiteAlert'
+import {AppLangs} from '../../i18n/localization/AppLangs'
 
 type SearchBarProps = {
   anomalies: Anomaly[]
@@ -52,7 +55,7 @@ const SearchAnomalies: React.FC<SearchBarProps> = ({anomalies}) => {
   return (
     <>
       <h2>{i18n.m.searchAnomalies.title}</h2>
-
+      {i18n.currentLang === AppLangs.en && <TranslatedWebsiteAlert />}
       <div className="fr-search-bar mb-8 relative" id="header-search" role="search" ref={searchBoxRef}>
         {enableSearchCategories && (
           <input

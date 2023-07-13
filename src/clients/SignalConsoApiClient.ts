@@ -9,6 +9,7 @@ import {Subcategory} from 'anomalies/Anomaly'
 import {ConsumerEmailResult} from 'model/ConsumerEmailValidation'
 import {ApiCreatedReport, ApiReportDraft} from 'model/reportsFromApi'
 import {ResponseConsumerReview, ResponseConsumerReviewExists} from '../core/Events'
+import {AppLang} from '../i18n/localization/AppLangs'
 
 type PublicStat =
   | 'PromesseAction'
@@ -64,7 +65,12 @@ export class SignalConsoApiClient {
   }
 
   getPublicStatCurve = async (publicStat: PublicStat): Promise<CountByDate[]> => {
-    const res = await this.client.get<{count: number; date: string}[]>(`stats/reports/public/curve`, {qs: {publicStat}})
+    const res = await this.client.get<
+      {
+        count: number
+        date: string
+      }[]
+    >(`stats/reports/public/curve`, {qs: {publicStat}})
     return res.map(({date, ...rest}) => ({
       date: new Date(date),
       ...rest,
@@ -96,12 +102,17 @@ export class SignalConsoApiClient {
     })
   }
 
-  checkEmail = (email: string) => {
-    return this.client.post<{valid: boolean}>('/email-validation/check', {body: {email}})
+  checkEmail = (email: string, lang: AppLang) => {
+    return this.client.post<{valid: boolean}>('/email-validation/check', {body: {email, lang}})
   }
 
   checkEmailAndValidate = (email: string, confirmationCode: string) => {
-    return this.client.post<ConsumerEmailResult>('/email-validation/check-and-validate', {body: {email, confirmationCode}})
+    return this.client.post<ConsumerEmailResult>('/email-validation/check-and-validate', {
+      body: {
+        email,
+        confirmationCode,
+      },
+    })
   }
 
   postReviewOnReportResponse = (reportId: string, review: ResponseConsumerReview) => {

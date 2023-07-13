@@ -14,7 +14,7 @@ export default function ReportStartedAlert() {
   const _report = useReportFlowContext()
   const hasStoredReport = useMemo(() => !!_report.reportDraft.anomaly, [_report.reportDraft])
   const currentStep = useMemo(() => findCurrentStepForReport(_report.reportDraft), [_report.reportDraft])
-  const {m} = useI18n()
+  const {m, currentLang} = useI18n()
   if (hasStoredReport && _report.reportDraft.anomaly) {
     return (
       <Slide in={true} direction="up" className="z-50">
@@ -42,7 +42,7 @@ export default function ReportStartedAlert() {
               <Button size="small" priority="tertiary" onClick={_report.resetFlow}>
                 {m.delete}
               </Button>
-              <Link href={buildPathForStep(_report.reportDraft.anomaly, currentStep, false)} legacyBehavior>
+              <Link href={buildPathForStep(_report.reportDraft.anomaly, currentLang, currentStep, false)} legacyBehavior>
                 <Button size="small">{m.continue}</Button>
               </Link>
             </div>

@@ -1,0 +1,24 @@
+title: Informations manquantes
+reponseconsoCode:
+  - '273'
+  - '323'
+  - '274'
+detailInputs:
+  - label: Quelle information manque-t-il&#160;?
+    type: RADIO
+    options:
+      - Date limite
+      - Allergènes
+      - Liste des ingrédients
+      - Pas d'étiquette du tout
+      - Autre (à préciser)
+  - label: Date du constat (ou d'achat suivant le cas)
+    type: DATE_NOT_IN_FUTURE
+    defaultValue: SYSDATE
+  - label: Type de produit
+    type: TEXT
+  - label: Nom /marque
+    type: TEXT
+  - label: Qu'avez-vous constaté&#160;?
+    type: TEXTAREA
+fileLabel: Photos du produit

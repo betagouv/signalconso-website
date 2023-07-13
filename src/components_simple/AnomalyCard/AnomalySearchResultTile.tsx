@@ -7,10 +7,12 @@ import {useRouter} from 'next/router'
 import {AnomalyIndex} from '../../anomalies/Anomalies'
 import Image from 'next/image'
 import {buildLinkStartReport} from '../../core/pagesDefinitions'
+import {useI18n} from '../../i18n/I18n'
 
 export const AnomalySearchResultTile = ({anomaly}: {anomaly: AnomalyIndex}) => {
   const _reportFlow = useReportFlowContext()
   const router = useRouter()
+  const {currentLang} = useI18n()
   return (
     <div className="fr-card fr-enlarge-link fr-card--horizontal- shadow-xl">
       <div className="fr-card__header">
@@ -22,12 +24,13 @@ export const AnomalySearchResultTile = ({anomaly}: {anomaly: AnomalyIndex}) => {
             <p>Mon problème concerne :</p>
             <Link
               className={'fr-card__link'}
-              href={buildLinkStartReport(anomaly.root)}
+              href={buildLinkStartReport(anomaly.root, currentLang)}
               onClick={() => {
                 _reportFlow.resetFlow()
 
                 _reportFlow.setReportDraft(_ => ({
                   category: anomaly.root.category,
+                  lang: currentLang,
                   subcategories: anomaly.subcategories,
                 }))
               }}

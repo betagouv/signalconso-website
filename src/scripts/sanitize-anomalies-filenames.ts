@@ -16,10 +16,11 @@ const INDEX_YAML = '_index.yaml'
 
 // Walks the hierarchical file/directories structure
 // Rename all files/folders automatically (adjust names and numbers)
-function sanitizeAnomaliesFilenames() {
-  console.log('Renaming file/folder names if needed in ', rootDir)
-  sanitizeDirContents(rootDir, {excludedFileName: '_imports'})
-  dirContentSorted(path.join(rootDir, '_imports', 'subcategories')).forEach(subcategoriesSubDir => {
+function sanitizeAnomaliesFilenames(lang: 'fr' | 'en') {
+  const root = rootDir + '/' + lang
+  console.log('Renaming file/folder names if needed in ', root)
+  sanitizeDirContents(root, {excludedFileName: '_imports'})
+  dirContentSorted(path.join(root, '_imports', 'subcategories')).forEach(subcategoriesSubDir => {
     sanitizeDirContents(subcategoriesSubDir)
   })
 }
@@ -70,4 +71,5 @@ function readTitleInYamlFile(_path: string) {
   return title
 }
 
-sanitizeAnomaliesFilenames()
+sanitizeAnomaliesFilenames('fr')
+sanitizeAnomaliesFilenames('en')

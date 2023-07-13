@@ -53,9 +53,7 @@ export function ScHeader() {
             },
             text: m.header.connexionLinkTitle,
           },
-          //TODO BEGIN REVERT FOR MULTI LANG SUPPORT
-          // <Translate key="translate-button" />,
-          //TODO END REVERT FOR MULTI LANG SUPPORT
+          appConfig.translationFeatureFlagEnabled ? <Translate key="translate-button" /> : <></>,
         ]}
         // serviceTitle="SignalConso"
         // serviceTagline="un service public pour les consommateurs"

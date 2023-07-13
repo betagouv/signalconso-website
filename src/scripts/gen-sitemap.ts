@@ -29,16 +29,12 @@ function createSitemapXml(items: SitemapItem[]): string {
     .map(item => {
       const priority = `<priority>${item.priority.toFixed(1)}</priority>`
 
-      const alternateEn =
-        //TODO BEGIN REVERT FOR MULTI LANG SUPPORT
-        //   item.hasAlternate
-        //     ? `<xhtml:link
-        // rel="alternate"
-        // hreflang="en"
-        // href="${`${appConfig.appBaseUrl}/en${item.url}`}"/>`
-        //     :
-        //TODO END REVERT FOR MULTI LANG SUPPORT
-        ''
+      const alternateEn = item.hasAlternate
+        ? `<xhtml:link
+        rel="alternate"
+        hreflang="en"
+        href="${`${appConfig.appBaseUrl}/en${item.url}`}"/>`
+        : ''
 
       const alternateFr = `<xhtml:link
       rel="alternate"
@@ -48,7 +44,7 @@ function createSitemapXml(items: SitemapItem[]): string {
       return `  <url>
     <loc>${`${appConfig.appBaseUrl}/fr${item.url}`}</loc>         
     ${alternateFr}   
-    ${alternateEn}   
+    ${appConfig.translationFeatureFlagEnabled ? alternateEn : ''}   
     ${priority}
   </url>`
     })

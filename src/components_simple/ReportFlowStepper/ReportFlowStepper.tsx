@@ -27,6 +27,8 @@ import {buildLinkStartReport} from 'core/pagesDefinitions'
 import {NewReportFlowStepperHeader, ReportFlowStepperHeader} from './ReportFlowStepperHeader'
 import {useSearchParams} from 'next/navigation'
 import dynamic from 'next/dynamic'
+import {useI18n} from '../../i18n/I18n'
+import {AppLang} from '../../i18n/localization/AppLangs'
 
 interface StepperProps {
   anomaly: Anomaly
@@ -60,20 +62,23 @@ function parseStepFromQueryString(stepParamRaw: string | string[] | undefined | 
   return null
 }
 
-export function buildPathForStep(anomaly: Pick<Anomaly, 'path'>, step: ReportStepOrDone, isWebView: boolean) {
+export function buildPathForStep(anomaly: Pick<Anomaly, 'path'>, lang: AppLang, step: ReportStepOrDone, isWebView: boolean) {
   const queryString = step === firstReportStep ? '' : `?step=${getIndexForStepOrDone(step)}`
-  return `${buildLinkStartReport(anomaly, {isWebView})}${queryString}`
+  return `${buildLinkStartReport(anomaly, lang, {isWebView})}${queryString}`
 }
 
 function useStepFromRouter(anomaly: Anomaly, isWebView: boolean) {
   const query = useSearchParams()
   const router = useRouter()
+  const {currentLang} = useI18n()
   const step = (query && parseStepFromQueryString(query.get('step'))) ?? firstReportStep
+
   function setStep(newStep: ReportStepOrDone) {
-    const url = buildPathForStep(anomaly, newStep, isWebView)
+    const url = buildPathForStep(anomaly, currentLang, newStep, isWebView)
     router.push(url)
     scrollTop()
   }
+
   return [step, setStep] as const
 }
 

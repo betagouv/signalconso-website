@@ -4,25 +4,25 @@ import path from 'path'
 import {checkAnomaliesYaml} from '../anomalies/checks/checkAnomaliesJson'
 import {createDirIfNeeded, dirContentSorted, exists, isFile, readFileYaml, sortObjectKeys, throwIfNotExists} from './scriptUtils'
 
-const rootDir = path.resolve('./src/anomalies/yml')
+const rootDir = (lang: 'fr' | 'en') => path.resolve(`./src/anomalies/yml/${lang}`)
 const jsonOutputDir = path.resolve('./src/anomalies/json')
-const jsonOutputFile = path.resolve(jsonOutputDir, 'anomalies.json')
+const jsonOutputFile = (lang: 'fr' | 'en') => path.resolve(jsonOutputDir, 'anomalies' + '_' + lang + '.json')
 const INDEX_YAML = '_index.yaml'
 
 // Attempt to read the new file tree structure from 'yml' folder
 // and resolve imports
-function readAnomaliesFromYmlFileTree() {
-  console.log('Reading everything in', rootDir)
-  const anomalyDirs = dirContentSorted(rootDir, {excludedFileNames: ['_imports']})
+function readAnomaliesFromYmlFileTree(lang: 'fr' | 'en') {
+  console.log('Reading everything in', rootDir(lang))
+  const anomalyDirs = dirContentSorted(rootDir(lang), {excludedFileNames: ['_imports']})
   const anomalies = anomalyDirs.map(_ => {
-    return resolveImportsRecursively(buildSubcategoryFromFileOrFolder(_))
+    return resolveImportsRecursively(buildSubcategoryFromFileOrFolder(_), rootDir(lang))
   })
   checkAnomaliesYaml(anomalies)
   console.log(`The YAML is valid`)
   addUniqueId(anomalies)
   createDirIfNeeded(jsonOutputDir)
-  console.log(`Generating JSON file ${jsonOutputFile}`)
-  fs.writeFileSync(jsonOutputFile, JSON.stringify(sortObjectKeys(anomalies), null, 2))
+  console.log(`Generating JSON file ${jsonOutputFile(lang)}`)
+  fs.writeFileSync(jsonOutputFile(lang), JSON.stringify(sortObjectKeys(anomalies), null, 2))
 }
 
 // Read a file or a folder
@@ -80,9 +80,9 @@ function buildImportableFromFileOrFolder(_path: string): any {
   }
 }
 
-function resolveImportsRecursively(obj: any): any {
+function resolveImportsRecursively(obj: any, rootDir: string): any {
   if (Array.isArray(obj)) {
-    return obj.map(resolveImportsRecursively)
+    return obj.map(_ => resolveImportsRecursively(_, rootDir))
   }
   if (typeof obj === 'object' && obj !== null) {
     // It's an object
@@ -96,12 +96,12 @@ function resolveImportsRecursively(obj: any): any {
       imported = buildImportableFromFileOrFolder(fullImportPath)
     }
     if (Array.isArray(imported)) {
-      return imported.map(resolveImportsRecursively)
+      return imported.map(_ => resolveImportsRecursively(_, rootDir))
     } else {
       const obj2 = Array.isArray(imported) ? imported : {...rest, ...imported}
       // Then recurse
       const obj3 = mapValues(obj2, v => {
-        return resolveImportsRecursively(v)
+        return resolveImportsRecursively(v, rootDir)
       })
       return obj3
     }
@@ -128,4 +128,5 @@ function addUniqueId(obj: any, depth = 0, prefix?: string): void {
   })
 }
 
-readAnomaliesFromYmlFileTree()
+readAnomaliesFromYmlFileTree('fr')
+readAnomaliesFromYmlFileTree('en')

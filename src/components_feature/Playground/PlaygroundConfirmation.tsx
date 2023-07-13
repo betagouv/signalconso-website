@@ -8,6 +8,7 @@ import {Anomaly} from '../../anomalies/Anomaly'
 import {ReportDraft} from '../../model/ReportDraft'
 import {Fixture, SeedableRandom} from '../../test/fixture'
 import {ConfirmationInner} from '../Report/Confirmation/Confirmation'
+import {useI18n} from '../../i18n/I18n'
 
 export const dummyStepNavigation: StepNavigation = {
   currentStep: firstReportStep,
@@ -20,8 +21,9 @@ export const PlaygroundConfirmation = () => {
   const [draft] = useState<ReportDraft>(Fixture.genDraftReport('Confirmation', new SeedableRandom(1)) as ReportDraft)
   const [anomaly, setAnomaly] = useState<Anomaly | undefined>()
   const theme = useTheme()
+  const {currentLang} = useI18n()
   useEffect(() => {
-    setAnomaly(allAnomalies.find(_ => _.category === draft.category)!)
+    setAnomaly(allAnomalies(currentLang).find(_ => _.category === draft.category)!)
   }, [])
   return (
     <>

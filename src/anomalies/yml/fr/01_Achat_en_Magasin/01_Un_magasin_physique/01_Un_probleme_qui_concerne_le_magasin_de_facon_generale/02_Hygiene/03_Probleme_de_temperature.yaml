@@ -1,0 +1,27 @@
+title: Problème de température
+desc: 'Exemple : rupture de la chaîne du froid'
+ccrfCode:
+  - '322'
+reponseconsoCode:
+  - '322'
+  - '312'
+  - '310'
+tags:
+  - ReponseConso
+detailInputs:
+  - label: Quel est le problème&#160;?
+    type: RADIO
+    options:
+      - Vitrine ou réfrigérateur trop chaud, cassé ou en panne
+      - Stockage à température ambiante de produits frais ou congelés
+      - Transport à température ambiante de produits frais ou congelés
+      - Autre problème de température
+  - label: Pour corriger ce problème, dites-nous en plus
+    type: TEXTAREA
+    optional: true
+  - label: Date du constat
+    type: DATE
+    defaultValue: SYSDATE
+  - label: Heure du constat (facultatif)
+    type: TIMESLOT
+    optional: true
