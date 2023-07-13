@@ -6,11 +6,12 @@ import Link from 'next/link'
 import {useI18n} from '../i18n/I18n'
 import {Metadata} from 'next'
 import {getI18n} from '../i18n/I18nDictionnary'
+import {AppLang} from '../i18n/localization/AppLangs'
 
 // Avatars générés sur face.co
 
-export function getMetadata(): Metadata {
-  const {messages: m} = getI18n('fr')
+export function getMetadata(lang: AppLang): Metadata {
+  const {messages: m} = getI18n(lang)
 
   return {
     title: m.titleAndDescriptions.quiSommesNous.title,
@@ -18,8 +19,8 @@ export function getMetadata(): Metadata {
   }
 }
 
-export const QuiSommesNous = () => {
-  const {messages: m} = getI18n('fr')
+export const QuiSommesNous = ({params}: any) => {
+  const {messages: m} = getI18n(params.lang)
 
   return (
     <>
@@ -58,7 +59,7 @@ export const QuiSommesNous = () => {
           </div>
           <h2>{m.quiSommesNous.teamTitle}</h2>
           <ul className="p-0 list-none grid gap-4 grid-cols-1 md:grid-cols-2 fr-pb-4w">
-            {team.current.map(_ => (
+            {team(params.lang).current.map(_ => (
               <li key={_.name}>
                 <MemberCard key={_.avatar} member={_} />
               </li>
@@ -66,7 +67,7 @@ export const QuiSommesNous = () => {
           </ul>
           <h2>{m.quiSommesNous.formerMembersTitle}</h2>
           <ul className="p-0 list-none grid gap-4 grid-cols-1 md:grid-cols-2 fr-pb-4w">
-            {team.former.map(_ => (
+            {team(params.lang).former.map(_ => (
               <li key={_.name}>
                 <MemberCard key={_.avatar} member={_} disabled />
               </li>

@@ -7,17 +7,10 @@ import {appConfig} from 'core/appConfig'
 import {urlServicePublicPlus} from './ScFooter'
 import {useI18n} from '../i18n/I18n'
 import {usePathname} from 'next/navigation'
-
-function buildMenuLink(pathname: String, url: string, text: string, target?: HTMLAttributeAnchorTarget) {
-  return {
-    isActive: pathname === url,
-    linkProps: {
-      href: url,
-      target,
-    },
-    text,
-  }
-}
+import {Translate} from './Translate'
+import {AppLang, AppLangs} from '../i18n/localization/AppLangs'
+import {addLangInPath, replaceLangInPath} from '../i18n/I18nTools'
+import buildMenuLink from '../utils/MenuLink'
 
 function buildSubmenu(text: string, menuLinks: ReturnType<typeof buildMenuLink>[]) {
   return {
@@ -29,7 +22,7 @@ function buildSubmenu(text: string, menuLinks: ReturnType<typeof buildMenuLink>[
 
 export function ScHeader() {
   const pathName = usePathname() ?? ''
-  const {m} = useI18n()
+  const {m, currentLang} = useI18n()
   // En se basant sur https://www.diplomatie.gouv.fr/en/
   // On ne traduit pas République Française
   return (
@@ -43,7 +36,7 @@ export function ScHeader() {
           </>
         }
         homeLinkProps={{
-          href: '/',
+          href: `/${currentLang}`,
           title: m.header.homeLinkTitle,
         }}
         operatorLogo={{
@@ -60,21 +53,26 @@ export function ScHeader() {
             },
             text: m.header.connexionLinkTitle,
           },
+          //TODO BEGIN REVERT FOR MULTI LANG SUPPORT
+          // <Translate key="translate-button" />,
+          //TODO END REVERT FOR MULTI LANG SUPPORT
         ]}
         // serviceTitle="SignalConso"
         // serviceTagline="un service public pour les consommateurs"
         navigation={[
-          buildMenuLink(pathName, pagesDefs.index.url, m.header.indexLinkTitle),
-          buildMenuLink(pathName, pagesDefs.commentCaMarche.url, m.header.commentCaMarcheLinkTitle),
-          buildMenuLink(pathName, pagesDefs.centreAide.url, m.header.centreAideLinkTitle),
+          buildMenuLink(currentLang, pathName, pagesDefs.index.url, m.header.indexLinkTitle),
+          buildMenuLink(currentLang, pathName, pagesDefs.commentCaMarche.url, m.header.commentCaMarcheLinkTitle),
+          buildMenuLink(currentLang, pathName, pagesDefs.centreAide.url, m.header.centreAideLinkTitle),
           buildSubmenu(m.header.voirAussiTitle, [
-            buildMenuLink(pathName, pagesDefs.quiSommesNous.url, m.header.quiSommesNousLinkTitle),
-            buildMenuLink(pathName, pagesDefs.stats.url, m.header.statsLinkTitle),
-            buildMenuLink(pathName, pagesDefs.contact.url, m.header.contactLinkTitle),
-            buildMenuLink(pathName, pagesDefs.actualites.url, m.header.actualitesLinkTitle),
-            buildMenuLink(pathName, urlServicePublicPlus, m.header.servicePublicPlusLinkTitle, '_blank'),
+            buildMenuLink(currentLang, pathName, pagesDefs.quiSommesNous.url, m.header.quiSommesNousLinkTitle),
+            buildMenuLink(currentLang, pathName, pagesDefs.stats.url, m.header.statsLinkTitle),
+            buildMenuLink(currentLang, pathName, pagesDefs.contact.url, m.header.contactLinkTitle),
+            buildMenuLink(currentLang, pathName, urlServicePublicPlus, m.header.servicePublicPlusLinkTitle, '_blank'),
+            ...(currentLang === AppLangs.fr
+              ? [buildMenuLink(currentLang, pathName, pagesDefs.actualites.url, m.header.actualitesLinkTitle)]
+              : []),
           ]),
-          ...(pagesDefs.playground ? [buildMenuLink(pathName, pagesDefs.playground.url, 'Playground')] : []),
+          ...(pagesDefs.playground ? [buildMenuLink(currentLang, pathName, pagesDefs.playground.url, 'Playground')] : []),
         ]}
       />
       <EnvMarker />

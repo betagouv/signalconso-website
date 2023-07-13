@@ -4,17 +4,12 @@ import * as React from 'react'
 import {ReactNode, useContext, useMemo} from 'react'
 import {fr} from './localization/fr'
 import {getI18n} from './I18nDictionnary'
+import {AppLang, AppLangs} from './localization/AppLangs'
 
 const I18nContext = React.createContext({})
 
-export enum AppLangs {
-  fr = 'fr',
-}
-
-export type AppLang = keyof typeof AppLangs
-
 interface Props {
-  readonly lang?: AppLang
+  readonly lang: AppLang
   children: ReactNode
 }
 
@@ -27,14 +22,15 @@ export interface I18nContextProps {
   dateFromNow: (typeof fr)['dateFromNow']
   formatTime: (typeof fr)['formatTime']
   formatDateTime: (typeof fr)['formatDateTime']
+  currentLang: AppLang
 }
 
 export const useI18n = (): I18nContextProps => {
   return useContext<I18nContextProps>(I18nContext as any)
 }
 
-export const I18nProvider = ({children, lang = AppLangs.fr}: Props) => {
-  const {messages: m, ...others}: typeof fr = useMemo(() => {
+export const I18nProvider = ({children, lang}: Props) => {
+  const {messages: m, ...others}: any = useMemo(() => {
     return getI18n(lang)
   }, [lang])
 
@@ -42,6 +38,7 @@ export const I18nProvider = ({children, lang = AppLangs.fr}: Props) => {
     <I18nContext.Provider
       value={{
         availableLangs: Object.keys(AppLangs),
+        currentLang: lang,
         m,
         ...others,
       }}

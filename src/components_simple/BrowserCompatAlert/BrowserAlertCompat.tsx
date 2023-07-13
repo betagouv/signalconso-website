@@ -25,8 +25,6 @@ export const BrowserCompatAlert = () => {
     }
   }, [])
 
-  console.log(displayBrowserCompatMessage)
-
   return displayBrowserCompatMessage ? (
     <Alert description={m.browserCompatMessage} severity="warning" title="Information" className="fr-mt-4w" />
   ) : (

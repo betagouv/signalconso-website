@@ -3,9 +3,10 @@ import {Button} from '@codegouvfr/react-dsfr/Button'
 import Link from 'next/link'
 import {pagesDefs} from '../core/pagesDefinitions'
 import {getI18n} from '../i18n/I18nDictionnary'
+import {useI18n} from '../i18n/I18n'
 
 export const LinkBackToHome = ({isWebView}: {isWebView: boolean}) => {
-  const {messages: m} = getI18n('fr')
+  const {m} = useI18n()
 
   const sendMessageToReactNative = () => window.ReactNativeWebView?.postMessage('success')
 
