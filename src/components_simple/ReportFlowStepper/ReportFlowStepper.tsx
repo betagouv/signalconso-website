@@ -20,11 +20,13 @@ import {
   isStepBeforeOrEqual,
   ReportStepOrDone,
 } from 'model/ReportStep'
-import {useRouter} from 'next/router'
+import {useRouter} from 'next/navigation'
 import {useEffect} from 'react'
 import {scrollTop} from 'utils/utils'
 import {buildLinkStartReport} from 'core/pagesDefinitions'
 import {NewReportFlowStepperHeader, ReportFlowStepperHeader} from './ReportFlowStepperHeader'
+import {useSearchParams} from 'next/navigation'
+import dynamic from 'next/dynamic'
 
 interface StepperProps {
   anomaly: Anomaly
@@ -47,7 +49,7 @@ function useStepChangeTracking(anomaly: Anomaly, currentStep: ReportStepOrDone, 
   }, [currentStep])
 }
 
-function parseStepFromQueryString(stepParamRaw: string | string[] | undefined): ReportStepOrDone | null {
+function parseStepFromQueryString(stepParamRaw: string | string[] | undefined | null): ReportStepOrDone | null {
   try {
     if (typeof stepParamRaw === 'string') {
       return indexToStepOrDone(parseInt(stepParamRaw, 10))
@@ -64,11 +66,12 @@ export function buildPathForStep(anomaly: Pick<Anomaly, 'path'>, step: ReportSte
 }
 
 function useStepFromRouter(anomaly: Anomaly, isWebView: boolean) {
+  const query = useSearchParams()
   const router = useRouter()
-  const step = parseStepFromQueryString(router.query.step) ?? firstReportStep
+  const step = (query && parseStepFromQueryString(query.get('step'))) ?? firstReportStep
   function setStep(newStep: ReportStepOrDone) {
     const url = buildPathForStep(anomaly, newStep, isWebView)
-    router.push(url, undefined, {shallow: true})
+    router.push(url, {shallow: true})
     scrollTop()
   }
   return [step, setStep] as const
