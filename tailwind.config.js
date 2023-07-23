@@ -13,9 +13,10 @@ module.exports = {
     },
     extend: {
       colors: {
-        sclightblue: '#2b7c9f',
+        sclightblue: '#2b7c9f', // old blue from the old design, still in the logo
         scbluefrance: '#000091',
         scdarkblue: '#1e2b50',
+        sclightpurple: '#e3e3fd', // the background of the HP
         scorange: '#EA9001', // orange from the logo
       },
     },
