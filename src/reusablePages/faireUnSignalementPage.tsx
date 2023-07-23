@@ -3,6 +3,7 @@ import Link from 'next/link'
 import {ReactNode} from 'react'
 import {ReportFlowStepperWithoutSsr} from '../components_simple/ReportFlowStepper/ReportFlowStepperWithoutSsr'
 import {Anomaly} from '../anomalies/Anomaly'
+import {appConfig} from 'core/appConfig'
 
 export const FaireUnSignalementPage = ({anomaly, isWebView}: {anomaly: Anomaly; isWebView: boolean}) => {
   return (
@@ -26,7 +27,10 @@ export const FaireUnSignalementPage = ({anomaly, isWebView}: {anomaly: Anomaly; 
 
 function Container({isWebView, children}: {isWebView: boolean; children: ReactNode}) {
   return isWebView ? (
-    <div className="max-w-[624px] px-4 mx-auto pb-4">{children}</div>
+    <div className="max-w-[624px] px-4 mx-auto pb-4">
+      <WebviewEnvMarker />
+      {children}
+    </div>
   ) : (
     <div className="fr-container fr-pt-6w fr-pb-4w ">
       <div className="fr-grid-row ">
@@ -34,4 +38,18 @@ function Container({isWebView, children}: {isWebView: boolean; children: ReactNo
       </div>
     </div>
   )
+}
+
+function WebviewEnvMarker() {
+  const marker = appConfig.envMarker ?? (appConfig.isDev ? 'dév' : null)
+  if (marker) {
+    return (
+      <div className="absolute z-[999] pointer-events-none top-0 left-0 w-full flex items-center justify-center">
+        <div className="text-green-900 border-green-900 border border-solid w-fit p-1 text-sm bg-white bg-opacity-80">
+          webview {marker}
+        </div>
+      </div>
+    )
+  }
+  return null
 }
