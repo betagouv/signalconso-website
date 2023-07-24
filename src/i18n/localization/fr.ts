@@ -113,7 +113,6 @@ export const fr = {
     introBetween: 'ou le ',
     introGoogle: 'Play Store',
     articleAppMobile: {
-      capturesEcran: "Captures d'écran de l'application",
       intro1:
         "Découvrez dès maintenant la nouvelle application mobile SignalConso, qui rend vos signalements en tant que consommateur encore plus faciles et simplifie vos démarches. Téléchargez gratuitement l'application sur l'",
       intro2: 'et profitez des mêmes fonctionnalités que celles offertes par notre site internet.',
@@ -206,7 +205,6 @@ export const fr = {
         "SignalConso est une application facilement accessible qui répond à un véritable besoin en matière de résolution des litiges de consommation au quotidien. Même si tous les consommateurs ne voient pas leurs problèmes résolus, 8 sur 10 recommandent SignalConso sur Services Publics +, la plateforme dédiée à l'amélioration des services publics.",
       conclusionText:
         "N'attendez plus, mettez SignalConso dans votre poche et faites valoir vos droits en tant que consommateur en toute simplicité !",
-      screenshotsAlt: "Captures d'écran de l'application",
     },
     commentCaMarche: {
       title: 'Comment ça marche ?',
@@ -833,7 +831,7 @@ export const fr = {
         'SignalConso est un service public gratuit pour permettre aux consommateurs de signaler les problèmes rencontrés avec les entreprises. Faites un signalement, résolvez votre problème, ou obtenez des informations sur vos droits.',
       text2: 'Il est édité par la ',
       dgccrfLink: 'Direction Générale de la Concurrence, de la Consommation et de la Répression des Fraudes',
-      homeLinkTitle: 'Faire un signalement - SignalConso',
+      homeLinkTitle: "DGCCRF (Allez à l'accueil)",
       connexionLinkTitle: 'Espace DGCCRF',
       retractationLinkTitle: 'Info délai de rétractation',
       litigeLinkTitle: 'Info résolution de litige',
@@ -846,7 +844,7 @@ export const fr = {
       linkedinTitle: 'Retrouvez la répression des fraudes sur LinkedIn - nouvelle fenêtre',
     },
     header: {
-      homeLinkTitle: 'Faire un signalement - SignalConso',
+      homeLinkTitle: "SignalConso (Allez à l'accueil)",
       connexionLinkTitle: 'Espace professionnel',
       indexLinkTitle: 'Faire un signalement',
       commentCaMarcheLinkTitle: 'Comment ça marche ?',

@@ -43,14 +43,14 @@ const Home = () => {
             <h1 dangerouslySetInnerHTML={{__html: m.homepage.signalconsoCatchWord}} />
             <IllustrationStepper
               steps={[
-                {title: m.homepage.step1, image: consumer, alt: 'consumer'},
-                {title: m.homepage.step2, image: report, alt: 'report'},
+                {title: m.homepage.step1, image: consumer, alt: ''},
+                {title: m.homepage.step2, image: report, alt: ''},
                 {
                   title: m.homepage.step3,
                   image: company,
-                  alt: 'company',
+                  alt: '',
                 },
-                {title: m.homepage.step4, image: dgccrf, alt: 'dgccrf'},
+                {title: m.homepage.step4, image: dgccrf, alt: ''},
               ]}
             />
             <div className="flex items-center justify-center fr-pt-4w">

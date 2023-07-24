@@ -22,7 +22,7 @@ const Page = () => {
       <h1>{m.appMobile.pageTitle}</h1>
 
       <div className="float-left mr-4">
-        <Image width={177} height={193} src={`/image/actualites/mobile_app_screenshots.png`} alt={m.appMobile.screenshotsAlt} />
+        <Image width={177} height={193} src={`/image/actualites/mobile_app_screenshots.png`} alt="" />
       </div>
       <p>
         {m.appMobile.introText1}
