@@ -2505,10 +2505,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/lodash@npm:*, @types/lodash@npm:4.14.183":
+"@types/lodash@npm:*":
   version: 4.14.183
   resolution: "@types/lodash@npm:4.14.183"
   checksum: 9c754dc7a2e5f26f9c67e494cffbe5447135a4e30eb2fcbc9da05dd5fa5fbf8579059bcf15014307c1c5d1c6d1b7870860618990d96abee9389d8cb79b3ac93c
+  languageName: node
+  linkType: hard
+
+"@types/lodash@npm:4.14.195":
+  version: 4.14.195
+  resolution: "@types/lodash@npm:4.14.195"
+  checksum: 39b75ca635b3fa943d17d3d3aabc750babe4c8212485a4df166fe0516e39288e14b0c60afc6e21913cc0e5a84734633c71e617e2bd14eaa1cf51b8d7799c432e
   languageName: node
   linkType: hard
 
@@ -2668,7 +2675,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/uuid@npm:^9.0.1":
+"@types/uuid@npm:^9.0.2":
   version: 9.0.2
   resolution: "@types/uuid@npm:9.0.2"
   checksum: 1754bcf3444e1e3aeadd6e774fc328eb53bc956665e2e8fb6ec127aa8e1f43d9a224c3d22a9a6233dca8dd81a12dc7fed4d84b8876dd5ec82d40f574f7ff8b68
@@ -9627,7 +9634,7 @@ react@latest:
     "@types/fs-extra": ^11.0.1
     "@types/jest": 28.1.7
     "@types/js-yaml": ^4.0.5
-    "@types/lodash": 4.14.183
+    "@types/lodash": 4.14.195
     "@types/lodash.throttle": ^4.1.7
     "@types/lodash.uniqby": ^4.7.7
     "@types/node": 18.7.6
@@ -9637,7 +9644,7 @@ react@latest:
     "@types/react-dom": 18.0.6
     "@types/react-swipeable-views": 0.13.1
     "@types/smoothscroll-polyfill": 0.3.1
-    "@types/uuid": ^9.0.1
+    "@types/uuid": ^9.0.2
     airtable: ^0.12.1
     autoprefixer: ^10.4.14
     axios: 1.4.0
