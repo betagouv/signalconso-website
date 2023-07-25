@@ -27,3 +27,5 @@ export const styleUtils = (t: Theme) => ({
 })
 
 export const COLOR_DARK_BLUE = '#1e2b50'
+export const COLOR_BLUE_FRANCE = '#000091'
+export const COLOR_LIGHTPURPLE = '#e3e3fd'

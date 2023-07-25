@@ -376,15 +376,15 @@ export const landingsData = [
     sampleReports: [
       {
         text: "Achat d'un sandwich au saumon dans une boulangerie. Diarrhées aiguës et fièvre pendant 1 semaine : contamination 2 bactéries suite à analyses de selles, j'ai du consulter un médecin.",
-        author: 'Salma T.',
+        author: 'Mehdi M.',
       },
       {
         text: "Les pâtisseries n'avaient pas l'air fraiches lorsqu'on les a ouvertes à la maison. Nous les avons prises au goûter, et très rapidement nous avons été malades (vomissements, diarrhée). Nous avons évoqué notre incident avec des amis de la commune qui nous ont indiqué ne plus rien acheter dans cette pâtisserie, que des problèmes d'hygiène y sont connus... Nous ne le savions pas. La société est en redressement judiciaire. Le lendemain matin, nous sommes passés devant la porte du laboratoire, il y avait des crottes de chiens à l'intérieur et une forte odeur d'urine. L'immeuble est en vente, connaissant l'identité du propriétaire, nous l'avons contacté et nous a indiqué que le gérant de la pâtisserie délabrait tout, qu'il y avait des crottes partout... Nous ne retournerons plus acheter de produits là-bas, mais nous souhaitons vraiment que cela n'arrive à personne d'autre.",
-        author: 'Théo A.',
+        author: 'Ayoub L.',
       },
       {
         text: "Hier à partir de 20H30 ma fille a vomi, puis moi vers 22H, ensuite mon fils vers minuit et mon mari ce matin à 6H30. Tous les 4 avons eu des vomissements, nausées, maux de ventre, maux de tête et frissons. Et ce plusieurs fois depuis l'heure de départ, et cela continue. Grosse fatigue également. Nous avons tous déjeuné vers 13H30, des lasagnes faites maison le dimanche matin, à partir de la viande steak hachée achetée chez XXX.",
-        author: 'Théo L.',
+        author: 'Anna E.',
       },
     ],
   },
@@ -519,15 +519,15 @@ export const landingsData = [
     sampleReports: [
       {
         text: "Achat d'un véhicule de marque XXX, au garage XXX , avec lors du bon de commande une garantie de 12 mois, à la livraison pas de trace sur la facture de cette garantie ( le vendeur me dit qu'elle est en cours auprès d'un organisme et qu'elle sera du haut de gamme au regard de la valeur de cette voiture, des problèmes sont arrivés sur ce véhicule apres 350 kms parcourus et la facture a été réglée volontairement par le garage, mais à ce jour aucune trace de cette garantie, qui selon le patron du garage commencera au moment de sa mise en place de cette garantie de 12 mois même après 4 mois. Pour info les problèmes liés au véhicule auraient du être notifiés au contrôle technique. Je pense que nous sommes face à une vente en abus de confiance, un véhicule garanti n'est pas au même prix que non garanti. En l'attente d'une intervention de la part de vos services. Cordialement.",
-        author: 'Zoé A.',
+        author: 'Axel T.',
       },
       {
         text: "Suite à panne moteur sur autoroute à Sanary 83.Le dépanneur d'autoroute m'a facturé 96 euros de frais de gardiennage pour un week-end férié de Pâques (celui ci ne réparant pas la voiture) et ceci le temps que l'assistance envoie une autre dépanneuse pour l'emmener dans un autre garage de réparation agrée par l'assurance. Ce  garage ne m a pas informé des frais au préalable et sans me donner un contrat ou autre. Ps : j' avais du payé à distance (CB ) sous menace de bloquer mon véhicule chez eux (verbalement)",
-        author: 'Noémie S.',
+        author: 'Soukaina S.',
       },
       {
         text: "Bonjour, suite à une défaillance avérée du réservoir adblue de mon véhicule et après 3 mois d'échanges avec XXX, j'ai obtenu la prise en charge financière des pièces liées au changement de réservoir mais la main d'œuvre est restée à ma charge, soit 289.86 €. Or s'agissant d'un problème avéré, non lié à l'usure du véhicule, en témoigne la prise en charge des pièces à 100%, et compte tenu du faible kilométrage de ma voiture, je sollicite également le remboursement de la main d'œuvre liée à cette intervention. Vous trouverez la facture en PJ. J'ai déjà effectué cette demande auprès de XXX par anticipation sans retour positif. Étant dorénavant en possession de la facture, je réitère cette demande. Merci, cordialement.",
-        author: 'Sarah A.',
+        author: 'Enzo C.',
       },
     ],
   },
@@ -684,6 +684,152 @@ export const landingsData = [
       {
         text: "J'ai fait appel à un artisan de chez ***** pour des travaux de maçonnerie. Malgré une garantie en théorie, de nombreux problèmes sont apparus par la suite. J'ai essayé de contacter l'artisan sans succès. Je me sens arnaqué et je ne sais pas comment résoudre ce problème.",
         author: 'Nour Z.',
+      },
+    ],
+  },
+  {
+    url: 'arnaques-pose-panneaux-photovoltaiques',
+    isSemiAutomatic: false,
+    seoTitle: 'Arnaques\n  et problèmes liés à la pose de panneaux photovoltaïques',
+    seoDescription:
+      "Signalez\n  un problème d'arnaque, de malfaçon ou de performance insatisfaisante lors de\n  la pose de panneaux photovoltaïques.",
+    title: 'Arnaques\n  et problèmes liés à la pose de panneaux photovoltaïques',
+    targetedCategory: ['TravauxRenovations'],
+    catchPhrase:
+      "Signalez\n  un problème d'arnaque, de malfaçon ou de performance insatisfaisante lors de\n  la pose de panneaux photovoltaïques, renseignez-vous sur vos droits avec la\n  répression des fraudes !",
+    secondaryTitle1:
+      'Pourquoi\n  signaler des arnaques, malfaçons ou problèmes de performance liés à la pose\n  de panneaux photovoltaïques ?',
+    secondaryTitle2:
+      'Que devient votre signalement relatif\n  aux arnaques, malfaçons ou problèmes de performance liés à la pose de\n  panneaux photovoltaïques ?',
+    sampleReports: [
+      {
+        text: "J'ai fait appel à ***** pour l'installation de panneaux photovoltaïques sur le toit de ma maison. Ils m'ont promis des économies importantes sur mes factures d'énergie. Malheureusement, je n'ai constaté aucune amélioration après plusieurs mois. De plus, ils ont endommagé le toit pendant l'installation et refusent de prendre en charge les réparations. Je me sens complètement trompé.",
+        author: 'Salma T.',
+      },
+      {
+        text: "J'ai contacté ***** pour l'installation de panneaux photovoltaïques. Malheureusement, depuis l'installation, je fais face à des problèmes continus avec le système. De plus, ils ne répondent pas à mes demandes de service après-vente. Je me sens abandonné et déçu par leur manque de professionnalisme.",
+        author: 'Théo A.',
+      },
+      {
+        text: "J'ai fait appel à ***** pour installer des panneaux photovoltaïques sur ma maison. Cependant, le rendement promis n'a pas été atteint et ils refusent d'assumer la responsabilité. De plus, ils ont laissé ma propriété dans un état déplorable après l'installation. Je me sens trompé et négligé.",
+        author: 'Théo L.',
+      },
+      {
+        text: "J'ai embauché ***** pour l'installation de panneaux photovoltaïques. Malheureusement, ils ont effectué un travail de mauvaise qualité et le système ne fonctionne pas correctement. De plus, ils ont refusé de rectifier les problèmes. Je suis très déçu et je me sens arnaqué.",
+        author: 'Zoé A.',
+      },
+      {
+        text: "J'ai sollicité ***** pour l'installation de panneaux photovoltaïques. Malheureusement, les panneaux installés ne produisent pas la quantité d'énergie promise. De plus, ils ont endommagé le toit pendant l'installation et ne veulent pas réparer les dégâts. Je me sens délaissé et trompé.",
+        author: 'Noémie S.',
+      },
+      {
+        text: "J'ai fait appel à ***** pour l'installation de panneaux photovoltaïques. Cependant, ils ont mal installé les panneaux, ce qui a entraîné des problèmes d'infiltration d'eau. Malgré mes multiples demandes, ils n'ont pas résolu le problème. Je me sens complètement arnaqué.",
+        author: 'Sarah A.',
+      },
+      {
+        text: "J'ai contacté ***** pour l'installation de panneaux photovoltaïques. Ils ont effectué un travail de mauvaise qualité et ont laissé des débris sur mon terrain. De plus, ils refusent de revenir pour nettoyer ou corriger leur travail. Je me sens complètement négligé.",
+        author: 'Yasmina T.',
+      },
+      {
+        text: "J'ai engagé ***** pour installer des panneaux photovoltaïques sur mon toit. Depuis l'installation, je rencontre de nombreux problèmes avec le système et ils ne répondent pas à mes demandes de réparation. De plus, l'installation a causé des dommages à mon toit. Je suis extrêmement déçu et me sens complètement trompé.",
+        author: 'Adam S.',
+      },
+    ],
+  },
+  {
+    url: 'arnaques-primes-energie-renovation',
+    isSemiAutomatic: false,
+    seoTitle: "Arnaques\n  et problèmes liés aux primes d'énergie et aux aides à la rénovation",
+    seoDescription:
+      "Signalez\n  un problème d'arnaque, de non-attribution ou de détournement lié aux primes\n  d'énergie ou aux aides à la rénovation.",
+    title: "Arnaques\n  et problèmes liés aux primes d'énergie et aux aides à la rénovation",
+    targetedCategory: ['TravauxRenovations'],
+    catchPhrase:
+      "Signalez\n  un problème d'arnaque, de non-attribution ou de détournement lié aux primes\n  d'énergie ou aux aides à la rénovation, renseignez-vous sur vos droits avec\n  la répression des fraudes !",
+    secondaryTitle1:
+      "Pourquoi\n  signaler des arnaques, problèmes de non-attribution ou détournements liés aux\n  primes d'énergie et aux aides à la rénovation ?",
+    secondaryTitle2:
+      "Que\n  devient votre signalement relatif aux arnaques, problèmes de non-attribution\n  ou détournements liés aux primes d'énergie et aux aides à la rénovation ?",
+    sampleReports: [
+      {
+        text: "J'ai fait une demande de prime d'énergie auprès de *****. Cependant, malgré plusieurs relances, je n'ai toujours pas reçu le montant promis. Je me sens trompé et délaissé.",
+        author: 'Sofia N.',
+      },
+      {
+        text: "J'ai contacté ***** pour bénéficier d'une aide à la rénovation. Malheureusement, malgré de multiples promesses, je n'ai toujours pas reçu de prime. Je me sens ignoré et arnaqué.",
+        author: 'Dylan N.',
+      },
+      {
+        text: "J'ai demandé une prime d'énergie auprès de *****. Malgré plusieurs engagements de leur part, je n'ai toujours pas reçu le montant promis. C'est un véritable scandale.",
+        author: 'Mehdi J.',
+      },
+      {
+        text: "J'ai sollicité ***** pour une subvention d'aide à la rénovation de ma maison. Malheureusement, malgré plusieurs promesses, aucune aide n'a été accordée. Je me sens complètement lésé.",
+        author: 'Rayan M.',
+      },
+      {
+        text: "J'ai demandé une prime d'énergie auprès de *****. Malheureusement, malgré de multiples engagements, je n'ai toujours pas reçu le montant promis. Je me sens délaissé et trompé.",
+        author: 'Anna E.',
+      },
+      {
+        text: "J'ai contacté ***** pour bénéficier d'une aide à la rénovation. Cependant, malgré plusieurs promesses, je n'ai reçu aucune aide. Je me sens totalement ignoré.",
+        author: 'Noémie C.',
+      },
+      {
+        text: "J'ai fait une demande de prime d'énergie auprès de *****. Cependant, malgré plusieurs engagements de leur part, je n'ai toujours pas reçu le montant promis. C'est extrêmement frustrant.",
+        author: 'Bernard É.',
+      },
+      {
+        text: "J'ai sollicité ***** pour une aide à la rénovation de ma maison. Malheureusement, malgré plusieurs promesses, aucune aide n'a été accordée. Je me sens complètement lésé.",
+        author: 'Sarah H.',
+      },
+    ],
+  },
+  {
+    url: 'arnaques-reparation-appareils-electromenagers',
+    isSemiAutomatic: false,
+    seoTitle: "Arnaques\n  et problèmes liés aux services de réparation d'appareils électroménagers",
+    seoDescription: "Signalez\n  un problème d'arnaque, de surcoût ou de réparation inefficace d'appareils\n  électroménagers.",
+    title: "Arnaques\n  et problèmes liés aux services de réparation d'appareils électroménagers",
+    targetedCategory: ['TravauxRenovations'],
+    catchPhrase:
+      "Signalez\n  un problème d'arnaque, de surcoût ou de réparation inefficace d'appareils\n  électroménagers, renseignez-vous sur vos droits avec la répression des\n  fraudes !",
+    secondaryTitle1:
+      "Pourquoi\n  signaler des arnaques, surcoûts ou problèmes de réparation inefficace\n  d'appareils électroménagers ?",
+    secondaryTitle2:
+      "Que\n  devient votre signalement relatif aux arnaques, surcoûts ou problèmes de\n  réparation d'appareils électroménagers ?",
+    sampleReports: [
+      {
+        text: "J'ai fait appel à ***** pour la réparation de mon lave-vaisselle. Non seulement l'appareil n'est pas réparé, mais le service après-vente se montre désormais injoignable. Je me sens complètement abandonné avec un appareil toujours en panne.",
+        author: 'Ali L.',
+      },
+      {
+        text: "J'ai confié mon réfrigérateur à l'entreprise ***** pour une réparation. Cependant, le frigo est revenu dans un état pire qu'avant et l'entreprise refuse maintenant de prendre en compte mes plaintes. C'est un véritable scandale.",
+        author: 'Élias S.',
+      },
+      {
+        text: "J'ai fait appel à ***** pour la réparation de mon four. Malheureusement, le four ne fonctionne toujours pas correctement et l'entreprise ne répond plus à mes appels. Je me sens délaissé et arnaqué.",
+        author: 'Amine N.',
+      },
+      {
+        text: "J'ai engagé ***** pour réparer mon lave-linge. Non seulement l'appareil n'est pas réparé, mais l'entreprise ne prend pas la peine de répondre à mes plaintes. C'est extrêmement frustrant.",
+        author: 'Juliette A.',
+      },
+      {
+        text: "J'ai fait confiance à ***** pour réparer mon aspirateur. Cependant, non seulement l'appareil n'est pas réparé, mais l'entreprise ne répond plus à mes appels. Je me sens complètement arnaqué.",
+        author: 'Sofia M.',
+      },
+      {
+        text: "J'ai engagé l'entreprise ***** pour la réparation de mon micro-ondes. Malheureusement, l'appareil est revenu dans un état pire qu'avant et l'entreprise refuse de prendre ses responsabilités. C'est un véritable cauchemar.",
+        author: 'Ali L.',
+      },
+      {
+        text: "J'ai confié mon grille-pain à ***** pour une réparation. Cependant, non seulement l'appareil n'est pas réparé, mais l'entreprise refuse de répondre à mes plaintes. Je me sens délaissé et trahi.",
+        author: 'Ali A.',
+      },
+      {
+        text: "J'ai engagé ***** pour la réparation de mon robot de cuisine. Cependant, l'appareil n'a pas été réparé et l'entreprise ne répond plus à mes appels. Je me sens complètement lésé.",
+        author: 'Chloé Z.',
       },
     ],
   },

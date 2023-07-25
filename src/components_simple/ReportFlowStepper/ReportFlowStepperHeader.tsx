@@ -1,20 +1,17 @@
-import {alpha, Box, BoxProps, Theme} from '@mui/material'
-import {SxProps} from '@mui/system'
-import {styleUtils} from 'core/theme'
-import {useI18n} from 'i18n/I18n'
-import {getIndexForStep, ReportStep, ReportStepOrDone, reportSteps} from 'model/ReportStep'
-import {fnSwitch} from '../../utils/FnSwitch'
 import {Stepper as DsfrStepper} from '@codegouvfr/react-dsfr/Stepper'
-import {getNextStep} from 'model/ReportStep'
 import {useColors} from '@codegouvfr/react-dsfr/useColors'
+import {alpha, Box, BoxProps} from '@mui/material'
+import {COLOR_BLUE_FRANCE} from 'core/theme'
+import {useI18n} from 'i18n/I18n'
+import {getIndexForStep, getNextStep, ReportStep, ReportStepOrDone, reportSteps} from 'model/ReportStep'
 
 interface StepperHeaderProps extends BoxProps {
+  variant?: Variant
   currentStep: ReportStepOrDone
   goTo?: (step: ReportStepOrDone) => void
-  stepSize?: number
-  stepMargin?: number
-  hideLabel?: boolean
 }
+
+type Variant = 'report-started-alert' | 'standard'
 
 type StepStatus = 'pastStep' | 'currentStep' | 'futureStep'
 
@@ -37,17 +34,10 @@ export function NewReportFlowStepperHeader({currentStep}: {currentStep: ReportSt
   return null
 }
 
-export const ReportFlowStepperHeader = ({
-  sx,
-  currentStep,
-  goTo,
-  stepSize = 32,
-  stepMargin = 8,
-  hideLabel,
-}: StepperHeaderProps) => {
+export const ReportFlowStepperHeader = ({currentStep, goTo, variant = 'standard'}: StepperHeaderProps) => {
   const {m} = useI18n()
-  const dsfrTheme = useColors()
-
+  const hideLabel = variant === 'report-started-alert'
+  const stepSize = variant === 'report-started-alert' ? 26 : 32
   const isDone = currentStep === 'Done'
 
   function getStepStatus(step: ReportStep): StepStatus {
@@ -66,99 +56,81 @@ export const ReportFlowStepperHeader = ({
   }
 
   return (
-    <>
-      <Box
-        sx={{
-          display: 'flex',
-          mb: 4,
-          justifyContent: 'center',
-          ...sx,
-        }}
-      >
-        {reportSteps.map((step, stepIndex) => {
-          const stepLabel = getStepLabel(step)
-          const stepStatus = getStepStatus(step)
-          const onClick = goTo && stepStatus === 'pastStep' && !isDone ? () => goTo(step) : undefined
-          return (
-            <Box key={stepLabel} sx={{flex: 1}} onClick={onClick}>
-              <Box
-                sx={{
-                  ...(goTo && {
-                    cursor: stepStatus === 'futureStep' || isDone ? 'not-allowed' : 'pointer',
-                  }),
-                  display: 'flex',
-                  position: 'relative',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  flexDirection: 'column',
-                }}
-              >
-                {stepIndex > 0 && (
-                  <Box
-                    sx={{
-                      display: 'block',
-                      position: 'absolute',
-                      top: stepSize / 2 - 1,
-                      left: `calc(-50% + ${stepSize / 2 + stepMargin}px)`,
-                      right: `calc(50% + ${stepSize / 2 + stepMargin}px)`,
-                      ...(stepStatus === 'futureStep'
-                        ? {
-                            borderTop: (t: Theme) => '2px solid ' + t.palette.divider,
-                          }
-                        : {
-                            borderTop: '2px solid ' + dsfrTheme.decisions.background.actionHigh.blueFrance.default,
-                          }),
-                    }}
-                  />
-                )}
-                <Box
-                  sx={{
-                    height: stepSize,
-                    width: stepSize,
-                    borderRadius: stepSize,
-                    display: 'flex',
-                    alignItems: 'center',
-                    fontWeight: t => t.typography.fontWeightBold,
-                    ...(stepSize <= 30 && {
-                      fontSize: t => styleUtils(t).fontSize.small,
-                    }),
-                    justifyContent: 'center',
-                    transition: t => t.transitions.create('all'),
-                    mr: 1,
-                    ml: 1,
-                    ...fnSwitch<StepStatus, SxProps<Theme>>(stepStatus, {
-                      pastStep: {
-                        background: dsfrTheme.decisions.background.actionLow.blueFrance.default,
-                        color: dsfrTheme.decisions.text.actionHigh.blueFrance.default,
-                      },
-                      currentStep: {
-                        boxShadow: t => `0px 0px 0px ${stepSize > 30 ? 4 : 2}px ${alpha(t.palette.primary.main, 0.3)}`,
-                        color: t => t.palette.primary.contrastText,
-                        bgcolor: 'primary.main',
-                      },
-                      futureStep: {
-                        border: t => `2px solid ${t.palette.divider}`,
-                        color: t => t.palette.text.disabled,
-                      },
-                    }),
-                  }}
-                >
-                  {stepIndex + 1}
-                </Box>
-                {!hideLabel && (
-                  <div
-                    className={`mt-2 hidden lg:block text-center ${
-                      stepStatus === 'currentStep' ? 'font-medium' : stepStatus === 'futureStep' ? 'text-gray-500' : ''
-                    }`}
-                  >
-                    {stepLabel}
-                  </div>
-                )}
-              </Box>
-            </Box>
-          )
-        })}
-      </Box>
-    </>
+    <div className={`flex mb-4 justify-center ${variant === 'report-started-alert' ? 'mt-4' : ''}`}>
+      {reportSteps.map((step, stepIndex) => {
+        const stepLabel = getStepLabel(step)
+        const stepStatus = getStepStatus(step)
+        const onClick = goTo && stepStatus === 'pastStep' && !isDone ? () => goTo(step) : undefined
+        return (
+          <div className="outline-0 outline-green-500 outline-dashed flex-grow basis-0" key={stepLabel} onClick={onClick}>
+            <div
+              className={`flex flex-col relative items-center justify-center ${
+                onClick ? 'cursor-pointer' : stepStatus === 'currentStep' ? 'cursor-default' : 'cursor-not-allowed'
+              }`}
+            >
+              {stepIndex > 0 && <StepSeparator {...{stepStatus, stepSize, variant}} />}
+              <StepNumberInCircle {...{stepIndex, stepStatus, stepSize}} />
+              {!hideLabel && <StepLabel {...{stepStatus, stepLabel}} />}
+            </div>
+          </div>
+        )
+      })}
+    </div>
+  )
+}
+
+function StepNumberInCircle({stepIndex, stepStatus, stepSize}: {stepIndex: number; stepStatus: StepStatus; stepSize: number}) {
+  return (
+    <div
+      className={`flex mx-4 transition-all items-center justify-center font-bold ${
+        stepStatus === 'pastStep'
+          ? 'bg-sclightpurple text-scbluefrance'
+          : stepStatus === 'currentStep'
+          ? 'bg-scbluefrance text-white'
+          : 'border-2 border-solid border-gray-300 text-gray-400'
+      }`}
+      style={{
+        height: stepSize,
+        width: stepSize,
+        borderRadius: stepSize,
+        ...(stepStatus === 'currentStep'
+          ? {
+              boxShadow: `0px 0px 0px 4px ${alpha(COLOR_BLUE_FRANCE, 0.3)}`,
+            }
+          : {}),
+      }}
+    >
+      {stepIndex + 1}
+    </div>
+  )
+}
+
+function StepLabel({stepStatus, stepLabel}: {stepStatus: StepStatus; stepLabel: string}) {
+  return (
+    <div
+      className={`mt-2 hidden lg:block text-center ${
+        stepStatus === 'currentStep' ? 'font-medium' : stepStatus === 'futureStep' ? 'text-gray-500' : ''
+      }`}
+    >
+      {stepLabel}
+    </div>
+  )
+}
+
+function StepSeparator({stepStatus, stepSize, variant}: {stepStatus: StepStatus; stepSize: number; variant: Variant}) {
+  const stepMargin = variant === 'report-started-alert' ? 4 : 8
+  return (
+    <div
+      className={`block absolute border-0 border-t-2 border-solid ${
+        stepStatus === 'futureStep' ? 'border-gray-300' : 'border-scbluefrance'
+      }`}
+      style={{
+        top: stepSize / 2 - 1,
+        // left: variant === 'report-started-alert' ? `-13px` : `-55px`,
+        // right: variant === 'report-started-alert' ? `47px` : '105px',
+        left: `calc(-50% + ${stepSize / 2 + stepMargin}px)`,
+        right: `calc(50% + ${stepSize / 2 + stepMargin}px)`,
+      }}
+    />
   )
 }
