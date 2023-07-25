@@ -1,4 +1,4 @@
-import {ContentPageContainer} from 'components_simple/ContentPageContainer'
+import {ContentPageContainer} from 'components_simple/PageContainers'
 import {externalLinks} from 'core/externalLinks'
 import {pagesDefs} from 'core/pagesDefinitions'
 import Link from 'next/link'

@@ -1,7 +1,7 @@
 'use client'
 
 import {useI18n} from '../../i18n/I18n'
-import {ContentPageContainer} from '../../components_simple/ContentPageContainer'
+import {ContentPageContainer} from '../../components_simple/PageContainers'
 import {newsArticlesData} from '../../actualites/newsArticlesData'
 import {Card} from '@codegouvfr/react-dsfr/Card'
 import {buildLinkNewsArticle} from '../../core/pagesDefinitions'

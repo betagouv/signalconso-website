@@ -1,5 +1,5 @@
 import {Txt} from 'alexlibs/mui-extension/Txt/Txt'
-import {ContentPageContainer} from 'components_simple/ContentPageContainer'
+import {ContentPageContainer} from 'components_simple/PageContainers'
 import ComputeWithdrawalPeriod from './ComputeWithdrawalPeriod'
 import {getI18n} from '../i18n/I18nDictionnary'
 import {Metadata} from 'next'

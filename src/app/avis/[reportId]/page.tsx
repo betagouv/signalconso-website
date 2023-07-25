@@ -21,6 +21,7 @@ import {Alert} from '../../../alexlibs/mui-extension/Alert/Alert'
 import {Button} from '@codegouvfr/react-dsfr/Button'
 import {useSearchParams} from 'next/navigation'
 import {ResponseConsumerReview, ResponseEvaluation} from '../../../core/Events'
+import {ContentPageContainer, LimitedWidthPageContainer} from 'components_simple/PageContainers'
 
 interface Form {
   evaluation: ResponseEvaluation
@@ -98,7 +99,7 @@ const ConsumerReview = (props: any) => {
   }, [_reviewExists.data])
 
   return (
-    <Page>
+    <LimitedWidthPageContainer>
       {done ? (
         <>
           <Alert type="success" sx={{mb: 2}}>
@@ -160,7 +161,7 @@ const ConsumerReview = (props: any) => {
           </Panel>
         </form>
       )}
-    </Page>
+    </LimitedWidthPageContainer>
   )
 }
 

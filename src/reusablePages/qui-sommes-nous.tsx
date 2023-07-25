@@ -1,5 +1,5 @@
 import {MemberCard} from 'components_feature/MemberCard/MemberCard'
-import {ContentPageContainer} from 'components_simple/ContentPageContainer'
+import {ContentPageContainer} from 'components_simple/PageContainers'
 import {team} from 'core/team'
 import Head from 'next/head'
 import Link from 'next/link'
@@ -57,13 +57,13 @@ export const QuiSommesNous = () => {
             </blockquote>
           </div>
           <h2>{m.quiSommesNous.teamTitle}</h2>
-          <div className="grid gap-4 grid-cols-1 md:grid-cols-2 fr-pb-4w">
+          <div className="grid gap-4 grid-cols-1 md:grid-cols-2 xl:grid-cols-3 fr-pb-4w">
             {team.current.map(_ => (
               <MemberCard key={_.avatar} member={_} />
             ))}
           </div>
           <h2>{m.quiSommesNous.formerMembersTitle}</h2>
-          <div className="grid gap-4 grid-cols-1 md:grid-cols-2 fr-pb-4w">
+          <div className="grid gap-4 grid-cols-1 md:grid-cols-2 xl:grid-cols-3 fr-pb-4w">
             {team.former.map(_ => (
               <MemberCard key={_.avatar} member={_} disabled />
             ))}

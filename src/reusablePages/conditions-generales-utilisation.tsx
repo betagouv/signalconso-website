@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import {ContentPageContainer} from 'components_simple/ContentPageContainer'
+import {ContentPageContainer} from 'components_simple/PageContainers'
 import {Tabs} from '@codegouvfr/react-dsfr/Tabs'
 import {getI18n} from '../i18n/I18nDictionnary'
 import {Metadata} from 'next'

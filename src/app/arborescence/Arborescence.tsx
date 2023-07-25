@@ -19,6 +19,7 @@ import {
 import {Anomaly, DetailInputType, Subcategory, SubcategoryWithInfoWall, StandardSubcategory} from '../../anomalies/Anomaly'
 import Button from '@codegouvfr/react-dsfr/Button'
 import {useI18n} from '../../i18n/I18n'
+import {ContentPageContainer} from 'components_simple/PageContainers'
 
 const Node = ({anomaly, open}: {anomaly: Anomaly | Subcategory; open?: boolean}) => {
   const iconWidth = 40
@@ -201,7 +202,7 @@ const Arbo = () => {
   const anomalies = allVisibleAnomalies()
   const {m} = useI18n()
   return (
-    <Page>
+    <ContentPageContainer>
       <h1>{m.arbo.title}</h1>
       <Button
         className="mb-4"
@@ -222,7 +223,7 @@ const Arbo = () => {
       {anomalies.map(a => (
         <Node key={a.id} anomaly={a} open={openAll} />
       ))}
-    </Page>
+    </ContentPageContainer>
   )
 }
 

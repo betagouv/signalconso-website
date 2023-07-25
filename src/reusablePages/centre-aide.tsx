@@ -2,7 +2,7 @@ import {CentreAideConso} from 'components_feature/CentreAide/CentreAideConso'
 import {CentreAidePro} from 'components_feature/CentreAide/CentreAidePro'
 
 import {Tabs} from '@codegouvfr/react-dsfr/Tabs'
-import {ContentPageContainer} from 'components_simple/ContentPageContainer'
+import {ContentPageContainer} from 'components_simple/PageContainers'
 import {getI18n} from '../i18n/I18nDictionnary'
 import {Metadata} from 'next'
 

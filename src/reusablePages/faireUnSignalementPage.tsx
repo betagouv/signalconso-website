@@ -4,6 +4,7 @@ import {ReactNode} from 'react'
 import {ReportFlowStepperWithoutSsr} from '../components_simple/ReportFlowStepper/ReportFlowStepperWithoutSsr'
 import {Anomaly} from '../anomalies/Anomaly'
 import {appConfig} from 'core/appConfig'
+import {LimitedWidthPageContainer} from 'components_simple/PageContainers'
 
 export const FaireUnSignalementPage = ({anomaly, isWebView}: {anomaly: Anomaly; isWebView: boolean}) => {
   return (
@@ -32,11 +33,7 @@ function Container({isWebView, children}: {isWebView: boolean; children: ReactNo
       {children}
     </div>
   ) : (
-    <div className="fr-container fr-pt-6w fr-pb-4w ">
-      <div className="fr-grid-row ">
-        <div className="fr-col-12  fr-col-lg-10 fr-col-xl-8 ">{children}</div>
-      </div>
-    </div>
+    <LimitedWidthPageContainer {...{children}} />
   )
 }
 
