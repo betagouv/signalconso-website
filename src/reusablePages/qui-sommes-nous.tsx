@@ -57,17 +57,21 @@ export const QuiSommesNous = () => {
             </blockquote>
           </div>
           <h2>{m.quiSommesNous.teamTitle}</h2>
-          <div className="grid gap-4 grid-cols-1 md:grid-cols-2 fr-pb-4w">
+          <ul className="p-0 list-none grid gap-4 grid-cols-1 md:grid-cols-2 fr-pb-4w">
             {team.current.map(_ => (
-              <MemberCard key={_.avatar} member={_} />
+              <li key={_.name}>
+                <MemberCard key={_.avatar} member={_} />
+              </li>
             ))}
-          </div>
+          </ul>
           <h2>{m.quiSommesNous.formerMembersTitle}</h2>
-          <div className="grid gap-4 grid-cols-1 md:grid-cols-2 fr-pb-4w">
+          <ul className="p-0 list-none grid gap-4 grid-cols-1 md:grid-cols-2 fr-pb-4w">
             {team.former.map(_ => (
-              <MemberCard key={_.avatar} member={_} disabled />
+              <li key={_.name}>
+                <MemberCard key={_.avatar} member={_} disabled />
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
       </ContentPageContainer>
     </>
