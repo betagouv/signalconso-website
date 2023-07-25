@@ -41,7 +41,7 @@ export default function ReportStartedAlert() {
             <Txt block color="hint">
               {_report.reportDraft.anomaly.title}
             </Txt>
-            <ReportFlowStepperHeader variant="report-started-alert" currentStep={currentStep}  />
+            <ReportFlowStepperHeader variant="report-started-alert" currentStep={currentStep} />
             <div className="flex justify-end gap-4">
               <Button size="small" priority="tertiary" onClick={_report.resetFlow}>
                 {m.delete}
