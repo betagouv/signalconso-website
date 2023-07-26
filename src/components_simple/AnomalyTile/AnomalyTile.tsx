@@ -19,7 +19,7 @@ export const AnomalyTile = ({anomaly}: {anomaly: Anomaly}) => {
       }}
       title={anomaly.title}
       imageUrl={`/image/pictos/${anomaly.img}.png`}
-      imageAlt={anomaly.title}
+      imageAlt=""
     />
   )
 }

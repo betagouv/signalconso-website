@@ -22,7 +22,7 @@ export const AnomalyImage = ({anomaly, className, scale = 1, sx, ...other}: Prop
       }}
       className={`${className ?? ''} sprite-${anomaly.img}`}
     >
-      <Image fill style={{objectFit: 'contain'}} src={`/image/pictos/${anomaly.img}.png`} alt={anomaly.img} />
+      <Image fill style={{objectFit: 'contain'}} src={`/image/pictos/${anomaly.img}.png`} alt="" />
     </Box>
   )
 }

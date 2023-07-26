@@ -76,10 +76,10 @@ export const reportTagsAllowedInYaml = [
   'ProduitAlimentaire',
   'CompagnieAerienne',
 ] as const
-export type ReportTagAllowedInYaml = typeof reportTagsAllowedInYaml[number]
+export type ReportTagAllowedInYaml = (typeof reportTagsAllowedInYaml)[number]
 
 export const reportTags = ['LitigeContractuel', ...reportTagsAllowedInYaml] as const
-export type ReportTag = typeof reportTags[number]
+export type ReportTag = (typeof reportTags)[number]
 
 export const companyKinds = [
   'SIRET',
@@ -90,11 +90,11 @@ export const companyKinds = [
   'LOCATION',
   'SOCIAL',
 ] as const
-export type CompanyKinds = typeof companyKinds[number]
+export type CompanyKinds = (typeof companyKinds)[number]
 export type SpecificWebsiteCompanyKinds = Extract<CompanyKinds, 'MERCHANT_WEBSITE' | 'TRANSPORTER_WEBSITE'>
 
 export const socialNetworks = ['SNAPCHAT', 'INSTAGRAM', 'FACEBOOK', 'YOUTUBE', 'TIKTOK', 'TWITTER', 'TWITCH', 'LINKEDIN'] as const
-export type SocialNetworks = typeof socialNetworks[number]
+export type SocialNetworks = (typeof socialNetworks)[number]
 
 export interface InfoWall {
   title?: string
