@@ -15,8 +15,9 @@ export function computeSelectedSubcategoriesData(selectedSubCategories: Subcateg
 
   const companyKindFromSelected = [...selectedSubCategories].reverse().find(_ => !!_.companyKind)?.companyKind
 
-  const companyKindQuestionFromSelected = [...selectedSubCategories].reverse().find(_ => !!_.companyKindQuestion)
-    ?.companyKindQuestion
+  const companyKindQuestionFromSelected = [...selectedSubCategories]
+    .reverse()
+    .find(_ => !!_.companyKindQuestion)?.companyKindQuestion
 
   return {
     companyKindFromSelected,

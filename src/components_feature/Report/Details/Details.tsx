@@ -52,7 +52,7 @@ export const Details = ({stepNavigation}: {stepNavigation: StepNavigation}) => {
     throw new Error(`This step should not be accessible ${draft.employeeConsumer} - ${JSON.stringify(inputs)}`)
   }
   return (
-    <DetailsInner
+    <_Details
       initialValues={draft.details}
       initialFiles={draft.uploadedFiles}
       isTransmittable={ReportDraft.isTransmittableToPro(draft)}
@@ -71,7 +71,7 @@ export const Details = ({stepNavigation}: {stepNavigation: StepNavigation}) => {
   )
 }
 
-export const DetailsInner = ({
+export const _Details = ({
   initialValues,
   initialFiles,
   inputs,

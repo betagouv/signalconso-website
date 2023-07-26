@@ -71,7 +71,7 @@ function useStepFromRouter(anomaly: Anomaly, isWebView: boolean) {
   const step = (query && parseStepFromQueryString(query.get('step'))) ?? firstReportStep
   function setStep(newStep: ReportStepOrDone) {
     const url = buildPathForStep(anomaly, newStep, isWebView)
-    router.push(url)
+    router.push(url, {shallow: true})
     scrollTop()
   }
   return [step, setStep] as const

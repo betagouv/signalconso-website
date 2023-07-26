@@ -49,7 +49,9 @@ export const ReportFiles = ({
       >
         {innerFiles
           ?.filter(_ => _.origin === fileOrigin)
-          .map(_ => <ReportFile key={_.id} file={_} onRemove={hideAddBtn ? undefined : removeFile} />)}
+          .map(_ => (
+            <ReportFile key={_.id} file={_} onRemove={hideAddBtn ? undefined : removeFile} />
+          ))}
         {!hideAddBtn && <ReportFileAdd fileOrigin={fileOrigin} onUploaded={newFile} />}
       </Box>
       {hideAddBtn && innerFiles?.length === 0 && (

@@ -4,7 +4,7 @@
 import {fireEvent, render, ScRenderResult, waitFor} from '../../../test/test-utils'
 import React from 'react'
 import {ReportDraft2} from 'model/ReportDraft2'
-import {ConsumerInner} from './Consumer'
+import {_Consumer} from './Consumer'
 import {dummyStepNavigation} from 'components_feature/Playground/PlaygroundConfirmation'
 
 class Fixture {
@@ -47,7 +47,7 @@ describe('Consumer', () => {
 
     beforeEach(() => {
       app = render(
-        <ConsumerInner
+        <_Consumer
           draft={initial}
           onSubmit={x => {
             submitted = x as any
@@ -86,7 +86,7 @@ describe('Consumer', () => {
     let submitted: Partial<ReportDraft2> | undefined = undefined
     beforeEach(() => {
       app = render(
-        <ConsumerInner
+        <_Consumer
           draft={initial}
           onSubmit={x => {
             submitted = x as any

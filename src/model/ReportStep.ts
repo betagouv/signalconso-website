@@ -1,7 +1,7 @@
 import {ReportDraft2} from './ReportDraft2'
 
 export const reportSteps = ['BuildingProblem', 'BuildingDetails', 'BuildingCompany', 'BuildingConsumer', 'Confirmation'] as const
-export type ReportStep = (typeof reportSteps)[number]
+export type ReportStep = typeof reportSteps[number]
 
 export const firstReportStep = reportSteps[0]
 export const lastReportStep = reportSteps[reportSteps.length - 1]
