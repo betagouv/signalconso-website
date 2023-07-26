@@ -51,7 +51,7 @@ const Card = ({title, img, children}: {title: string; img: string; children?: Re
         {children}
       </div>
       <div className="shrink-0">
-        <img src={img} alt="illustration" width={200} height={200} />
+        <img src={img} alt="" width={200} height={200} />
       </div>
     </div>
   )
