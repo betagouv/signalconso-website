@@ -28,10 +28,10 @@ export const Confirmation = ({stepNavigation, isWebView}: {stepNavigation: StepN
   const _reportFlow = useReportFlowContext()
   const draft = _reportFlow.reportDraft as ReportDraft2
   const parsedDraft = ReportDraft2.toReportDraft(draft)
-  return <ConfirmationInner anomaly={draft.anomaly} draft={parsedDraft} {...{isWebView, stepNavigation}} />
+  return <_Confirmation anomaly={draft.anomaly} draft={parsedDraft} {...{isWebView, stepNavigation}} />
 }
 
-export const ConfirmationInner = ({
+export const _Confirmation = ({
   draft,
   anomaly,
   stepNavigation,

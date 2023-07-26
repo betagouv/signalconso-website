@@ -10,7 +10,7 @@ interface ScSelectProps<T> extends SelectProps<T> {
   helperText?: string
 }
 
-const ScSelectInner = <T,>(
+const _ScSelect = <T,>(
   {id: argId, label, className, small, fullWidth, style, helperText, error, ...selectProps}: ScSelectProps<T>,
   ref: any,
 ) => {
@@ -37,6 +37,6 @@ const ScSelectInner = <T,>(
 /**
  * Workaround because forwardRef break the generic type of ScSelect.
  */
-export const ScSelect = React.forwardRef(ScSelectInner) as <T>(
+export const ScSelect = React.forwardRef(_ScSelect) as <T>(
   props: ScSelectProps<T> & {ref?: React.ForwardedRef<any>},
-) => ReturnType<typeof ScSelectInner>
+) => ReturnType<typeof _ScSelect>

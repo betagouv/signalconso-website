@@ -81,7 +81,7 @@ const ConsumerReview = (props: any) => {
 
   useEffect(() => {
     if (searchParams && watchEvaluation) {
-      const params = new URLSearchParams(Array.from(searchParams.entries()))
+      const params = new URLSearchParams(searchParams)
       params.set('evaluation', watchEvaluation)
       router.replace(`${pathname}?${params}`)
     }

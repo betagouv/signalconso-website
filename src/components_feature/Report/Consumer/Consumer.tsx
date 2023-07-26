@@ -41,7 +41,7 @@ export const Consumer = ({stepNavigation}: {stepNavigation: StepNavigation}) => 
   const _reportFlow = useReportFlowContext()
   const draft = _reportFlow.reportDraft
   return (
-    <ConsumerInner
+    <_Consumer
       draft={draft}
       onSubmit={changes => {
         _reportFlow.setReportDraft(_ => ReportDraft2.merge(_, changes))
@@ -52,7 +52,7 @@ export const Consumer = ({stepNavigation}: {stepNavigation: StepNavigation}) => 
   )
 }
 
-export const ConsumerInner = ({
+export const _Consumer = ({
   draft,
   onSubmit,
   stepNavigation,

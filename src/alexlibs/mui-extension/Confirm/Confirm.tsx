@@ -2,12 +2,12 @@ import * as React from 'react'
 import {EventHandler, ReactElement, ReactNode, SyntheticEvent, useState} from 'react'
 import {Button, Dialog, DialogActions, DialogContent, DialogProps, DialogTitle, LinearProgress, PaperProps} from '@mui/material'
 
-export interface ConfirmProps extends Omit<DialogProps, 'children' | 'onClick' | 'open' | 'content'> {
+export interface ConfirmProps extends Omit<DialogProps, 'children' | 'onClick' | 'open'> {
   disabled?: boolean
   title?: string
   confirmLabel?: string
   cancelLabel?: string
-  content?: ReactNode
+  content?: ((content: () => void) => ReactNode) | ReactNode | string
   children: ReactElement<any>
   onConfirm?: (event: SyntheticEvent<any>, close: () => void) => void
   confirmDisabled?: boolean
@@ -66,7 +66,7 @@ export const Confirm = ({
           />
         )}
         <DialogTitle>{title}</DialogTitle>
-        <DialogContent>{content}</DialogContent>
+        <DialogContent>{typeof content === 'function' ? content(close) : content}</DialogContent>
         <DialogActions>
           <Button color="primary" onClick={() => setOpen(false)}>
             {cancelLabel || 'Cancel'}

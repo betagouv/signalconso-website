@@ -1,5 +1,5 @@
 import {Card, CardContent} from '@mui/material'
-import {ConsumerInner} from '../Report/Consumer/Consumer'
+import {_Consumer} from '../Report/Consumer/Consumer'
 import {dummyStepNavigation} from './PlaygroundConfirmation'
 
 export const PlaygroundConsumer = () => {
@@ -7,7 +7,7 @@ export const PlaygroundConsumer = () => {
     <>
       <Card elevation={2}>
         <CardContent>
-          <ConsumerInner
+          <_Consumer
             draft={{
               companyKind: 'LOCATION',
             }}

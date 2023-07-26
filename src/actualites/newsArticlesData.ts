@@ -1,7 +1,7 @@
 import {ArticleAppMobile} from './ArticleAppMobile'
 import {ArticleQuestionnaireSiteDgccrf} from './ArticleQuestionnaireSiteDgccrf'
 
-export type NewsArticle = (typeof newsArticlesData)[number]
+export type NewsArticle = typeof newsArticlesData[number]
 
 // This is the display order. Keep the most recents at the start of the array
 export const newsArticlesData = [

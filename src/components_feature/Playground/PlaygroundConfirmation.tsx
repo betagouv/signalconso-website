@@ -7,7 +7,7 @@ import {useEffect, useState} from 'react'
 import {Anomaly} from '../../anomalies/Anomaly'
 import {ReportDraft} from '../../model/ReportDraft'
 import {Fixture, SeedableRandom} from '../../test/fixture'
-import {ConfirmationInner} from '../Report/Confirmation/Confirmation'
+import {_Confirmation} from '../Report/Confirmation/Confirmation'
 
 export const dummyStepNavigation: StepNavigation = {
   currentStep: firstReportStep,
@@ -30,7 +30,7 @@ export const PlaygroundConfirmation = () => {
       </div>
       <pre style={{fontSize: styleUtils(theme).fontSize.small, lineHeight: 1.3}}>{JSON.stringify(draft, undefined, 2)}</pre>
       {anomaly && (
-        <ConfirmationInner
+        <_Confirmation
           anomaly={anomaly}
           draft={{
             ...draft,

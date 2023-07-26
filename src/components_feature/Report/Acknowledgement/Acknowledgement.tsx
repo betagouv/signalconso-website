@@ -48,12 +48,12 @@ export const Acknowledgement = ({isWebView}: {isWebView: boolean}) => {
   }, [countries, report])
 
   if (country || !report.companyAddress.country) {
-    return <AcknowledgementInner createdReport={report} {...{isWebView, country}} />
+    return <_Acknowledgement createdReport={report} {...{isWebView, country}} />
   }
   return <Fender type="loading" />
 }
 
-export const AcknowledgementInner = ({
+export const _Acknowledgement = ({
   createdReport,
   country,
   isWebView,
