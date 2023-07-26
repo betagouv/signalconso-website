@@ -4,7 +4,7 @@
 import React from 'react'
 import '@testing-library/jest-dom'
 import {fireEvent, render, ScRenderResult} from 'test/test-utils'
-import {_Details, SpecifyFormUtils} from './Details'
+import {DetailsInner, SpecifyFormUtils} from './Details'
 import {format} from 'date-fns'
 import {appConfig} from 'core/appConfig'
 import {DetailsFixtureInput} from 'components_feature/Playground/PlaygroundDetails'
@@ -48,7 +48,7 @@ describe('Details: single date not in future', () => {
 
   beforeEach(() => {
     app = render(
-      <_Details
+      <DetailsInner
         inputs={[DetailsFixtureInput.date]}
         onSubmit={x => {
           inputValues = x
@@ -94,7 +94,7 @@ describe('Details: checkbox', () => {
   beforeEach(() => {
     inputValues = undefined
     app = render(
-      <_Details
+      <DetailsInner
         inputs={[DetailsFixtureInput.radio]}
         onSubmit={x => {
           inputValues = x
@@ -156,7 +156,7 @@ describe('Details: textarea', () => {
   beforeEach(() => {
     inputValues = undefined
     app = render(
-      <_Details
+      <DetailsInner
         inputs={[DetailsFixtureInput.textarea]}
         onSubmit={x => {
           inputValues = x
@@ -206,7 +206,7 @@ describe('Details: initialize values', () => {
   beforeEach(() => {
     inputValues = undefined
     app = render(
-      <_Details
+      <DetailsInner
         initialValues={initialValues}
         inputs={[
           DetailsFixtureInput.date,

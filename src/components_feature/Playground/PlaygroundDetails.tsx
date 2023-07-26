@@ -1,6 +1,6 @@
 import {Checkbox} from '@codegouvfr/react-dsfr/Checkbox'
 import {useTheme} from '@mui/material'
-import {_Details} from 'components_feature/Report/Details/Details'
+import {DetailsInner} from 'components_feature/Report/Details/Details'
 import {styleUtils} from 'core/theme'
 import {ReportDraft2} from 'model/ReportDraft2'
 import {ChangeEvent, useState} from 'react'
@@ -112,7 +112,7 @@ export const PlaygroundDetails = () => {
     <>
       <Checkbox legend="Configuration des inputs à afficher" options={checkboxOptions} orientation="horizontal" />
       <hr className="border-t-2 border-black border-solid bg-none" />
-      <_Details
+      <DetailsInner
         inputs={[...chosenInputs]}
         onSubmit={(res, files) => {
           setResultInputs(ReportDraft2.parseDetails(res, chosenInputs))

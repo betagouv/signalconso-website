@@ -20,7 +20,11 @@ export class Analytic {
     console.debug('[Analytic]', ...args)
   }
 
-  private constructor(private appConfig: AppConfig, private matomo: Matomo | undefined, private eularian: Eularian | undefined) {
+  private constructor(
+    private appConfig: AppConfig,
+    private matomo: Matomo | undefined,
+    private eularian: Eularian | undefined,
+  ) {
     Router.events.on('routeChangeComplete', (path: string): void => {
       this.log('[routeChangeComplete]', path)
       if (!this.appConfig.isDev) {
