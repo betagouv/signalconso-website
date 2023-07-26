@@ -92,7 +92,7 @@ function StepNumberInCircle({stepIndex, stepStatus, stepSize}: {stepIndex: numbe
           ? 'bg-sclightpurple text-scbluefrance'
           : stepStatus === 'currentStep'
           ? 'bg-scbluefrance text-white'
-          : 'border-2 border-solid border-gray-300 text-gray-400'
+          : 'border-2 border-solid border-gray-300 text-gray-500'
       }`}
       style={{
         height: stepSize,
