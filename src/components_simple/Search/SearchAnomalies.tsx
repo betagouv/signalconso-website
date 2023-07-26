@@ -57,6 +57,7 @@ const SearchAnomalies: React.FC<SearchBarProps> = ({anomalies}) => {
         {enableSearchCategories && (
           <input
             className="fr-input"
+            title={i18n.m.searchAnomalies.searchCategoryPlaceholder}
             placeholder={i18n.m.searchAnomalies.searchCategoryPlaceholder}
             id="search-784-input"
             name="search-784-input"

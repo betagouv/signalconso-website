@@ -34,10 +34,13 @@ export const Stat = React.memo(({name, count, curve, title, description, percent
     <div className="border border-solid border-black p-4">
       <Txt
         block
+        component="h2"
         skeleton={_count.loading && 100}
         sx={{
           lineHeight: 1,
           fontSize: 34,
+          mb: 0,
+          fontWeight: 'normal',
         }}
       >
         {ifDefined(_count.entity ?? undefined, formatLargeNumber)} {percentage && '%'}
@@ -71,7 +74,7 @@ export const Stat = React.memo(({name, count, curve, title, description, percent
                     legendType={'none'}
                     name={name}
                     dataKey="count"
-                    fill={dsfrTheme.decisions.artwork.minor.blueFrance.default}
+                    fill={dsfrTheme.decisions.artwork.minor.blueEcume.default}
                   />
                 </BarChart>
               </ResponsiveContainer>
