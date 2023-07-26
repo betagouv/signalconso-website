@@ -31,12 +31,7 @@ export function RgpdBanner() {
   // avec correction indiquée ici https://github.com/GouvernementFR/dsfr/issues/591
   return (
     <div className="fr-consent-banner" id={id}>
-      <button
-        className="fr-btn--close fr-btn"
-        title="Fermer : À propos des cookies sur signalconso.gouv.fr"
-        aria-controls={id}
-        onClick={onClose}
-      >
+      <button className="fr-btn--close fr-btn" title="Fermer la fenêtre modale" aria-controls={id} onClick={onClose}>
         Fermer
       </button>
       <h2 className="fr-h6">À propos des cookies sur signalconso.gouv.fr</h2>

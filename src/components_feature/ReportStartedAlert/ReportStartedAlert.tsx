@@ -33,7 +33,11 @@ export default function ReportStartedAlert() {
         >
           <AnomalyImage anomaly={_report.reportDraft.anomaly} scale={0.8} sx={{mr: 1}} />
           <Box>
-            <h2 className="font-medium text-lg mb-0">{m.continueReport}</h2>
+            <Box sx={{display: 'flex', alignItems: 'center'}}>
+              <Txt size="big" bold>
+                {m.continueReport}
+              </Txt>
+            </Box>
             <Txt block color="hint">
               {_report.reportDraft.anomaly.title}
             </Txt>

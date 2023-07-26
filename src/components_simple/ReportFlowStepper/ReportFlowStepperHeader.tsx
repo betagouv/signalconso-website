@@ -56,20 +56,15 @@ export const ReportFlowStepperHeader = ({currentStep, goTo, variant = 'standard'
   }
 
   return (
-    <ol className={`flex mb-4 justify-center ${variant === 'report-started-alert' ? 'mt-4' : ''}`}>
+    <div className={`flex mb-4 justify-center ${variant === 'report-started-alert' ? 'mt-4' : ''}`}>
       {reportSteps.map((step, stepIndex) => {
         const stepLabel = getStepLabel(step)
         const stepStatus = getStepStatus(step)
         const onClick = goTo && stepStatus === 'pastStep' && !isDone ? () => goTo(step) : undefined
         return (
-          <li
-            className="outline-0 outline-green-500 outline-dashed flex flex-grow basis-0"
-            key={stepLabel}
-            onClick={onClick}
-            aria-current={stepStatus === 'currentStep' ? 'step' : undefined}
-          >
+          <div className="outline-0 outline-green-500 outline-dashed flex-grow basis-0" key={stepLabel} onClick={onClick}>
             <div
-              className={`flex flex-col relative items-center justify-center w-full ${
+              className={`flex flex-col relative items-center justify-center ${
                 onClick ? 'cursor-pointer' : stepStatus === 'currentStep' ? 'cursor-default' : 'cursor-not-allowed'
               }`}
             >
@@ -77,10 +72,10 @@ export const ReportFlowStepperHeader = ({currentStep, goTo, variant = 'standard'
               <StepNumberInCircle {...{stepIndex, stepStatus, stepSize}} />
               {!hideLabel && <StepLabel {...{stepStatus, stepLabel}} />}
             </div>
-          </li>
+          </div>
         )
       })}
-    </ol>
+    </div>
   )
 }
 
@@ -92,7 +87,7 @@ function StepNumberInCircle({stepIndex, stepStatus, stepSize}: {stepIndex: numbe
           ? 'bg-sclightpurple text-scbluefrance'
           : stepStatus === 'currentStep'
           ? 'bg-scbluefrance text-white'
-          : 'border-2 border-solid border-gray-300 text-gray-500'
+          : 'border-2 border-solid border-gray-300 text-gray-400'
       }`}
       style={{
         height: stepSize,

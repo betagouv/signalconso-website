@@ -30,7 +30,7 @@ const IllustrationStepperMobile = ({steps}: IllustrationStepperProps) => {
     <div className="lg:hidden">
       <SwipeableViews enableMouseEvents index={index} onChangeIndex={setIndex}>
         {steps.map(step => (
-          <Box key={step.title}>
+          <Box key={step.alt}>
             <Box
               sx={{
                 height: 240,
@@ -54,41 +54,38 @@ const IllustrationStepperMobile = ({steps}: IllustrationStepperProps) => {
                 fontSize: t => styleUtils(t).fontSize.normal,
                 fontWeight: t => t.typography.fontWeightBold,
               }}
-              component="p"
+              component="h2"
               dangerouslySetInnerHTML={{__html: step.title}}
             />
           </Box>
         ))}
       </SwipeableViews>
-      <ul className="mt-1 flex justify-center list-none p-0">
+      <Box sx={{mt: 1, display: 'flex', justifyContent: 'center'}}>
         {steps.map((_, i) => (
-          <li key={_.title}>
-            <IconBtn
-              aria-label={_.alt}
-              aria-current={i === index}
-              onClick={() => setIndex(i)}
-              sx={{
-                mx: 1,
-                height: 6,
-                width: 6,
-                borderRadius: '100%',
-                ...(i === index
-                  ? {
-                      background: t => `${t.palette.primary.main} !important`,
-                      border: t => `2px solid ${alpha(t.palette.primary.main, 0.7)}`,
-                    }
-                  : {
-                      // background: t => t.palette.divider,
-                      border: t => `2px solid ${alpha(t.palette.divider, 0.43)}`,
-                    }),
-              }}
-              key={_.title}
-            >
-              {''}
-            </IconBtn>
-          </li>
+          <IconBtn
+            aria-label={_.alt}
+            onClick={() => setIndex(i)}
+            sx={{
+              mx: 1,
+              height: 6,
+              width: 6,
+              borderRadius: '100%',
+              ...(i === index
+                ? {
+                    background: t => `${t.palette.primary.main} !important`,
+                    border: t => `2px solid ${alpha(t.palette.primary.main, 0.7)}`,
+                  }
+                : {
+                    // background: t => t.palette.divider,
+                    border: t => `2px solid ${t.palette.divider}`,
+                  }),
+            }}
+            key={_.alt}
+          >
+            {''}
+          </IconBtn>
         ))}
-      </ul>
+      </Box>
     </div>
   )
 }
@@ -99,11 +96,10 @@ const IllustrationStepperDesktop = ({steps}: IllustrationStepperProps) => {
   const stepperMargin = 24
   const theme = useTheme()
   return (
-    <ol className="items-center hidden lg:flex">
+    <div className="items-center hidden lg:flex">
       {steps.map(({image, alt, title}) => (
         <Box
-          component="li"
-          key={title}
+          key={alt}
           sx={{
             display: 'flex',
             flexDirection: 'column',
@@ -144,12 +140,12 @@ const IllustrationStepperDesktop = ({steps}: IllustrationStepperProps) => {
           <div className="w-full relative h-56">
             <Image src={image} alt={alt} objectFit="contain" layout="fill" />
           </div>
-          <p
+          <h2
             className="flex items-center mx-1 my-0 text-sm xl:text-base font-medium max-w-xs h-16"
             dangerouslySetInnerHTML={{__html: title}}
           />
         </Box>
       ))}
-    </ol>
+    </div>
   )
 }

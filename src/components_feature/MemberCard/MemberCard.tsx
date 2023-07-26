@@ -30,14 +30,14 @@ export const MemberCard = ({member, disabled}: Props) => {
                 height={iconSize}
                 style={{borderRadius: 6}}
                 src={`/image/avatars/${member.avatar}`}
-                alt=""
+                alt={`Avatar ${member.name}`}
               />
             </div>
             <Animate autoScrollTo={false}>
               <div className="ml-3">
                 <p className="font-medium text-lg m-0">{member.name}</p>
                 {member.role.map((role, index) => (
-                  <p key={index} className={`${disabled ? 'text-gray-600 ' : 'text-gray-500'} m-0`}>
+                  <p key={index} className="text-gray-500 m-0">
                     {role}
                   </p>
                 ))}

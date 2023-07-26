@@ -72,6 +72,7 @@ export const CentreAidePro = (props: BoxProps) => {
           <p style={{textAlign: 'center'}}>
             <iframe
               src="https://www.youtube-nocookie.com/embed/iQLmRZW8SIk"
+              frameBorder="0"
               allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
             />
@@ -91,6 +92,7 @@ export const CentreAidePro = (props: BoxProps) => {
           <p className="text-center">
             <iframe
               src="https://www.youtube-nocookie.com/embed/Zohajsmkz1I"
+              frameBorder="0"
               allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
             />
@@ -98,6 +100,7 @@ export const CentreAidePro = (props: BoxProps) => {
           <p className="text-center">
             <iframe
               src="https://www.youtube-nocookie.com/embed/up9Elzn-P7o"
+              frameBorder="0"
               allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
             />
@@ -213,6 +216,7 @@ export const CentreAidePro = (props: BoxProps) => {
           <p className="text-center">
             <iframe
               src="https://www.youtube-nocookie.com/embed/tEzRx6eU474"
+              frameBorder="0"
               allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
             />

@@ -18,7 +18,6 @@ interface Props extends BoxProps {
   noWrap?: boolean
   link?: boolean
   span?: boolean
-  component?: 'h2' | 'h1'
 }
 
 export const Txt = forwardRef(
@@ -39,7 +38,6 @@ export const Txt = forwardRef(
       noWrap,
       span,
       sx,
-      component,
       ...otherProps
     }: Props,
     ref: any,
@@ -47,7 +45,6 @@ export const Txt = forwardRef(
     return (
       <Box
         {...(span ? {component: 'span'} : null)}
-        {...(component ? {component} : null)}
         sx={{
           display: 'inline',
           lineHeight: '1.5',
