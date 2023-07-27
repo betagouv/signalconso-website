@@ -1,4 +1,4 @@
-import {ContentPageContainer} from 'components_simple/ContentPageContainer'
+import {ContentPageContainer} from 'components_simple/PageContainers'
 import {pagesDefs} from 'core/pagesDefinitions'
 import {newsArticlesData} from 'actualites/newsArticlesData'
 import {Metadata} from 'next'

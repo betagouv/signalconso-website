@@ -1,4 +1,4 @@
-import {ContentPageContainer} from 'components_simple/ContentPageContainer'
+import {ContentPageContainer} from 'components_simple/PageContainers'
 import {ReactNode} from 'react'
 import {getI18n} from '../i18n/I18nDictionnary'
 import {AppLang} from '../i18n/localization/AppLangs'
@@ -45,13 +45,13 @@ export const CommentCaMarche = ({params}: any) => {
 
 const Card = ({title, img, children}: {title: string; img: string; children?: ReactNode}) => {
   return (
-    <div className="flex flex-col-reverse items-center sm:flex-row">
-      <div className="mr-2">
-        <h2 className="fr-h4">{title}</h2>
-        {children}
-      </div>
-      <div className="shrink-0">
-        <img src={img} alt="" width={200} height={200} />
+    <div>
+      <h2 className="fr-h4">{title}</h2>
+      <div className="flex flex-col-reverse items-center sm:flex-row">
+        <div className="shrink-0">
+          <img src={img} alt="" width={200} height={200} />
+        </div>
+        <div className="ml-2">{children}</div>
       </div>
     </div>
   )

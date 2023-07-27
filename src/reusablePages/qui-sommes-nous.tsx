@@ -1,5 +1,5 @@
 import {MemberCard} from 'components_feature/MemberCard/MemberCard'
-import {ContentPageContainer} from 'components_simple/ContentPageContainer'
+import {ContentPageContainer} from 'components_simple/PageContainers'
 import {team} from 'core/team'
 import Head from 'next/head'
 import Link from 'next/link'
@@ -58,7 +58,7 @@ export const QuiSommesNous = ({params}: any) => {
             </blockquote>
           </div>
           <h2>{m.quiSommesNous.teamTitle}</h2>
-          <ul className="p-0 list-none grid gap-4 grid-cols-1 md:grid-cols-2 fr-pb-4w">
+          <ul className="p-0 list-none grid gap-4 grid-cols-1 md:grid-cols-2 xl:grid-cols-3 fr-pb-4w">
             {team(params.lang).current.map(_ => (
               <li key={_.name}>
                 <MemberCard key={_.avatar} member={_} />
@@ -66,7 +66,7 @@ export const QuiSommesNous = ({params}: any) => {
             ))}
           </ul>
           <h2>{m.quiSommesNous.formerMembersTitle}</h2>
-          <ul className="p-0 list-none grid gap-4 grid-cols-1 md:grid-cols-2 fr-pb-4w">
+          <ul className="p-0 list-none grid gap-4 grid-cols-1 md:grid-cols-2 xl:grid-cols-3 fr-pb-4w">
             {team(params.lang).former.map(_ => (
               <li key={_.name}>
                 <MemberCard key={_.avatar} member={_} disabled />

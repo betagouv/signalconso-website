@@ -1,4 +1,4 @@
-import {ContentPageContainer} from 'components_simple/ContentPageContainer'
+import {ContentPageContainer} from 'components_simple/PageContainers'
 import {allVisibleLandings} from 'landings/landingDataUtils'
 import {buildLinkLandingPage, buildLinkNewsArticle, pagesDefs} from 'core/pagesDefinitions'
 import Link from 'next/link'

@@ -1,6 +1,6 @@
 import {Alert} from '@codegouvfr/react-dsfr/Alert'
 import {CallOut} from '@codegouvfr/react-dsfr/CallOut'
-import {ContentPageContainer} from 'components_simple/ContentPageContainer'
+import {ContentPageContainer} from 'components_simple/PageContainers'
 import {externalLinks} from 'core/externalLinks'
 import {ReactNode} from 'react'
 import {Accordion} from '@codegouvfr/react-dsfr/Accordion'

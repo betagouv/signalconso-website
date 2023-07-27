@@ -8,7 +8,7 @@ import {PlaygroundConsumer} from 'components_feature/Playground/PlaygroundConsum
 import {PlaygroundDetails} from 'components_feature/Playground/PlaygroundDetails'
 import {PlaygroundOther} from 'components_feature/Playground/PlaygroundOther'
 import {CompanyFilled} from 'components_feature/Report/Company/Company'
-import {ContentPageContainer} from 'components_simple/ContentPageContainer'
+import {ContentPageContainer} from 'components_simple/PageContainers'
 
 const companyDraft = {
   id: 'id12345',
