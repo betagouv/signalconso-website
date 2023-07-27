@@ -3,36 +3,44 @@ import {ContentPageContainer} from 'components_simple/ContentPageContainer'
 import {Tabs} from '@codegouvfr/react-dsfr/Tabs'
 import {getI18n} from '../i18n/I18nDictionnary'
 import {Metadata} from 'next'
+import {AppLang} from '../i18n/localization/AppLangs'
 
-export function getMetadata(): Metadata {
-  const {messages: m} = getI18n('fr')
+export function getMetadata(lang: AppLang): Metadata {
+  const {messages} = getI18n(lang)
 
   return {
-    title: m.titleAndDescriptions.conditionsGeneralesUtilisation.title,
-    description: m.titleAndDescriptions.conditionsGeneralesUtilisation.description,
+    title: messages.titleAndDescriptions.conditionsGeneralesUtilisation.title,
+    description: messages.titleAndDescriptions.conditionsGeneralesUtilisation.description,
     robots: {
       index: false,
     },
   }
 }
 
-export const ConditionsGeneralesUtilisation = () => {
-  const {messages: m} = getI18n('fr')
+export const ConditionsGeneralesUtilisation = ({params}: any) => {
   return (
     <ContentPageContainer>
       <h1>Conditions générales d'utilisation de l'interface en ligne SignalConso</h1>
       <Tabs
         tabs={[
-          {label: 'Consommateur', iconId: 'fr-icon-user-line', content: <ConditionsGeneralesUtilisationConso />},
-          {label: 'Professionnel', iconId: 'fr-icon-briefcase-line', content: <ConditionsGeneralesUtilisationPro />},
+          {
+            label: 'Consommateur',
+            iconId: 'fr-icon-user-line',
+            content: <ConditionsGeneralesUtilisationConso lang={params.lang} />,
+          },
+          {
+            label: 'Professionnel',
+            iconId: 'fr-icon-briefcase-line',
+            content: <ConditionsGeneralesUtilisationPro lang={params.lang} />,
+          },
         ]}
       />
     </ContentPageContainer>
   )
 }
 
-function ConditionsGeneralesUtilisationConso() {
-  const {messages: m} = getI18n('fr')
+function ConditionsGeneralesUtilisationConso(params: any) {
+  const {messages: m} = getI18n(params.lang)
   return (
     <div>
       <p>{m.conditionsgeneralesconso.description}</p>
@@ -82,8 +90,9 @@ function ConditionsGeneralesUtilisationConso() {
   )
 }
 
-function ConditionsGeneralesUtilisationPro() {
-  const {messages: m} = getI18n('fr')
+function ConditionsGeneralesUtilisationPro(params: any) {
+  console.log(params)
+  const {messages: m} = getI18n(params.lang)
   return (
     <div>
       <p>{m.conditionsGeneralesUtilisationPro.intro}</p>

@@ -3,9 +3,10 @@ import {ContentPageContainer} from 'components_simple/ContentPageContainer'
 import ComputeWithdrawalPeriod from './ComputeWithdrawalPeriod'
 import {getI18n} from '../i18n/I18nDictionnary'
 import {Metadata} from 'next'
+import {AppLang} from '../i18n/localization/AppLangs'
 
-export function getMetadata(): Metadata {
-  const {messages: m} = getI18n('fr')
+export function getMetadata(lang: AppLang): Metadata {
+  const {messages: m} = getI18n(lang)
 
   return {
     title: m.titleAndDescriptions.delaiRetractation.title,
@@ -13,8 +14,8 @@ export function getMetadata(): Metadata {
   }
 }
 
-export const DelaiDeRetractation = () => {
-  const {messages: m} = getI18n('fr')
+export const DelaiDeRetractation = ({params}: any) => {
+  const {messages: m} = getI18n(params.lang)
 
   return (
     <>

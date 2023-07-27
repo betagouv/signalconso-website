@@ -1,11 +1,11 @@
 import {ContentPageContainer} from 'components_simple/ContentPageContainer'
-import Image from 'next/image'
 import {ReactNode} from 'react'
 import {getI18n} from '../i18n/I18nDictionnary'
+import {AppLang} from '../i18n/localization/AppLangs'
 import {Metadata} from 'next'
 
-export function getMetadata(): Metadata {
-  const {messages} = getI18n('fr')
+export function getMetadata(lang: AppLang): Metadata {
+  const {messages} = getI18n(lang)
 
   return {
     title: messages.titleAndDescriptions.commentCaMarche.title,
@@ -13,8 +13,8 @@ export function getMetadata(): Metadata {
   }
 }
 
-export const CommentCaMarche = () => {
-  const {messages} = getI18n('fr')
+export const CommentCaMarche = ({params}: any) => {
+  const {messages} = getI18n(params.lang)
 
   return (
     <>

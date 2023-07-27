@@ -7,19 +7,21 @@ import {Accordion} from '@codegouvfr/react-dsfr/Accordion'
 import {getI18n} from '../i18n/I18nDictionnary'
 import {Metadata} from 'next'
 import {ScIcon} from '../components_simple/ScIcon'
+import {AppLang} from '../i18n/localization/AppLangs'
 
 function Accordions({children}: {children: ReactNode}) {
   return <div className="fr-accordions-group">{children}</div>
 }
-const {messages: m} = getI18n('fr')
-export function getMetadata(): Metadata {
+export function getMetadata(lang: AppLang): Metadata {
+  const {messages: m} = getI18n(lang)
   return {
     title: m.titleAndDescriptions.contractualDispute.title,
     description: m.titleAndDescriptions.contractualDispute.description,
   }
 }
 
-export const Litige = () => {
+export const Litige = ({params}: any) => {
+  const {messages: m} = getI18n(params.lang)
   return (
     <ContentPageContainer>
       <h1>{m.litige.title}</h1>
