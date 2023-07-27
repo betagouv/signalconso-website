@@ -1,4 +1,4 @@
-import {Box, Icon, Tooltip} from '@mui/material'
+import {alpha, Box, Icon, Tooltip} from '@mui/material'
 import {extensionToType, FileType, reportFileConfig} from './reportFileConfig'
 import React from 'react'
 import {IconBtn} from '../../alexlibs/mui-extension/IconBtn/IconBtn'
@@ -35,6 +35,7 @@ export const ReportFile = ({file, onRemove}: ReportFileProps) => {
         href={fileUrl}
         rel="noreferrer"
         className="after:!hidden"
+        aria-label={`Télécharger ${file.filename}`}
         sx={{
           display: 'block',
           position: 'relative',
@@ -47,7 +48,7 @@ export const ReportFile = ({file, onRemove}: ReportFileProps) => {
         <Box
           sx={{
             display: 'inline-flex',
-            border: t => '1px solid ' + t.palette.divider,
+            border: t => '1px solid ' + alpha(t.palette.divider, 0.43),
             borderRadius: reportFileConfig.cardBorderRadius + 'px',
             height: reportFileConfig.cardSize,
             width: reportFileConfig.cardSize,
@@ -115,7 +116,7 @@ export const ReportFile = ({file, onRemove}: ReportFileProps) => {
         {onRemove && (
           <ScDialog
             title={m.removeAsk}
-            content={<span dangerouslySetInnerHTML={{__html: m.thisWillBeRemoved(file.filename)}} />}
+            content={<p className="mb-0" dangerouslySetInnerHTML={{__html: m.thisWillBeRemoved(file.filename)}} />}
             maxWidth="xs"
             onClick={e => {
               e.stopPropagation()

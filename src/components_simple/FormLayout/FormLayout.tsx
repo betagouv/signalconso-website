@@ -21,7 +21,7 @@ export const FormLayout = ({label, desc, required, children, ...sx}: Props) => {
     >
       <Txt block>
         {label}
-        {required && <Txt color="disabled"> *</Txt>}
+        {required && <Txt color="textsecondary"> *</Txt>}
       </Txt>
       <Txt block color="hint" size="small">
         {desc}

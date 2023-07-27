@@ -64,7 +64,6 @@ const IllustrationStepperMobile = ({steps}: IllustrationStepperProps) => {
         {steps.map((_, i) => (
           <li key={_.title}>
             <IconBtn
-              aria-label={_.alt}
               aria-current={i === index}
               onClick={() => setIndex(i)}
               sx={{
@@ -84,7 +83,7 @@ const IllustrationStepperMobile = ({steps}: IllustrationStepperProps) => {
               }}
               key={_.title}
             >
-              {''}
+              <span className="sr-only">{`Étape ${i + 1} sur ${steps.length}`}</span>
             </IconBtn>
           </li>
         ))}
