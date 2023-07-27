@@ -1,28 +1,22 @@
 'use client'
 
-import {useI18n} from '../../../../i18n/I18n'
-import {useToastError} from '../../../../hooks/useToastError'
-import React, {useEffect, useMemo, useState} from 'react'
-import {Controller, useForm} from 'react-hook-form'
-import FacebookShareButton from '../../../../reviews/FacebookShareButton'
-import TwitterShareButton from '../../../../reviews/TwitterShareButton'
-import ServicePublicShareButton from '../../../../reviews/ServicePublicShareButton'
-import {Panel, PanelActions, PanelBody} from '../../../../components_simple/Panel/Panel'
-import {useApiClients} from '../../../../context/ApiClientsContext'
-import {usePathname, useRouter} from 'next/navigation'
-import {ScRadioGroup} from '../../../../components_simple/RadioGroup/RadioGroup'
-import {ScRadioGroupItem} from '../../../../components_simple/RadioGroup/RadioGroupItem'
-import {Txt} from '../../../../alexlibs/mui-extension/Txt/Txt'
-import {ScInput} from '../../../../components_simple/Input/ScInput'
-import {Page} from '../../../../components_simple/Page/Page'
-import {Box} from '@mui/material'
-import {useMutation, useQuery} from '@tanstack/react-query'
-import {Alert} from '../../../../alexlibs/mui-extension/Alert/Alert'
 import {Button} from '@codegouvfr/react-dsfr/Button'
-import {useSearchParams} from 'next/navigation'
-import {ResponseConsumerReview, ResponseEvaluation} from '../../../../core/Events'
+import {useMutation, useQuery} from '@tanstack/react-query'
 import {LimitedWidthPageContainer} from 'components_simple/PageContainers'
-
+import {usePathname, useRouter, useSearchParams} from 'next/navigation'
+import {useEffect, useMemo, useState} from 'react'
+import {FieldError, useForm} from 'react-hook-form'
+import {Alert} from '@codegouvfr/react-dsfr/Alert'
+import {useApiClients} from '../../../../context/ApiClientsContext'
+import {ResponseConsumerReview, ResponseEvaluation} from '../../../../core/Events'
+import {useToastError} from '../../../../hooks/useToastError'
+import {useI18n} from '../../../../i18n/I18n'
+import FacebookShareButton from '../../../../reviews/FacebookShareButton'
+import ServicePublicShareButton from '../../../../reviews/ServicePublicShareButton'
+import TwitterShareButton from '../../../../reviews/TwitterShareButton'
+import {Input} from '@codegouvfr/react-dsfr/Input'
+import {useId} from 'react'
+import {UseFormRegisterReturn} from 'react-hook-form'
 interface Form {
   evaluation: ResponseEvaluation
   details?: string
@@ -98,70 +92,116 @@ const ConsumerReview = (props: any) => {
     }
   }, [_reviewExists.data])
 
+  const evaluationField = register('evaluation', {required: m.required})
+  const detailsField = register('details')
+
   return (
     <LimitedWidthPageContainer>
       {done ? (
         <>
-          <Alert type="success" sx={{mb: 2}}>
-            {m.thanksForSharingYourReview}
-          </Alert>
-
-          <Box sx={{mt: 3}}>
-            <Box component="p">{m.youCanRateSignalConso}</Box>
-            <Box sx={{display: 'flex', lineHeight: 1, mt: 3}}>
-              {evaluation === ResponseEvaluation.Positive && (
-                <>
-                  <FacebookShareButton />
-                  <TwitterShareButton />
-                </>
-              )}
-              <ServicePublicShareButton />
-            </Box>
-          </Box>
+          <Alert description={m.thanksForSharingYourReview} severity="success" title={m.dulyNoted} className="mt-4 mb-8" />
+          <h3>{m.youCanRateSignalConso}</h3>
+          <div className="flex">
+            {evaluation === ResponseEvaluation.Positive || (
+              <>
+                <FacebookShareButton />
+                <TwitterShareButton />
+              </>
+            )}
+            <ServicePublicShareButton />
+          </div>
         </>
       ) : (
         <form onSubmit={handleSubmit(submit)}>
-          <Panel>
+          <div>
             <h1>{m.shareYourReview}</h1>
-            <PanelBody>
-              <Txt block gutterBottom color="hint" dangerouslySetInnerHTML={{__html: m.didTheCompanyAnsweredWell}} />
-              <Controller
-                name="evaluation"
-                rules={{required: {value: true, message: m.required}}}
-                control={control}
-                render={({field}) => (
-                  <ScRadioGroup sx={{mt: 3}} inline error={!!errors.evaluation} {...field}>
-                    <ScRadioGroupItem value={ResponseEvaluation.Positive}>
-                      <div className="text-5xl leading-[0]" role="img" aria-label="happy">
-                        😀
-                      </div>
-                    </ScRadioGroupItem>
-                    <ScRadioGroupItem value={ResponseEvaluation.Neutral}>
-                      <div className="text-5xl leading-[0]" role="img" aria-label="neutral">
-                        😐
-                      </div>
-                    </ScRadioGroupItem>
-                    <ScRadioGroupItem value={ResponseEvaluation.Negative}>
-                      <div className="text-5xl leading-[0]" role="img" aria-label="sad">
-                        🙁
-                      </div>
-                    </ScRadioGroupItem>
-                  </ScRadioGroup>
-                )}
+            <div className="">
+              <EvaluationRadio {...{evaluationField}} error={errors.evaluation} />
+              <Input
+                label={<span dangerouslySetInnerHTML={{__html: m.youCanAddCommentForDGCCRF}} />}
+                textArea
+                nativeTextAreaProps={{
+                  ...detailsField,
+                }}
               />
+            </div>
 
-              <Txt sx={{mt: 3}} block color="hint" dangerouslySetInnerHTML={{__html: m.youCanAddCommentForDGCCRF}} />
-              <ScInput {...register('details')} multiline fullWidth rows={5} maxRows={12} />
-            </PanelBody>
-            <PanelActions>
+            <div className="flex justify-end mt-6">
               <Button className="mt-2" type="submit" disabled={_saveReview.isLoading}>
                 {m.send}
               </Button>
-            </PanelActions>
-          </Panel>
+            </div>
+          </div>
         </form>
       )}
     </LimitedWidthPageContainer>
+  )
+}
+
+function EvaluationRadio({evaluationField, error}: {evaluationField: UseFormRegisterReturn<string>; error?: FieldError}) {
+  // Rich Radio from DSFR
+  const {m} = useI18n()
+  const idErrorMessages = useId()
+  const idLegend = useId()
+  return (
+    <fieldset
+      className={`fr-fieldset ${error ? 'fr-fieldset--error' : ''}`}
+      id="radio-rich-hint"
+      aria-labelledby={`${idErrorMessages} ${idLegend}`}
+      {...(error ? {role: 'group'} : null)}
+    >
+      <legend className="fr-fieldset__legend--regular fr-fieldset__legend" id={idLegend}>
+        {m.didTheCompanyAnsweredWell}
+        <span className="fr-hint-text">{m.reviewIsDefinitive}</span>
+      </legend>
+      {buildOption({
+        evaluationField,
+        value: ResponseEvaluation.Positive,
+      })}
+      {buildOption({
+        evaluationField,
+        value: ResponseEvaluation.Neutral,
+      })}
+      {buildOption({
+        evaluationField,
+        value: ResponseEvaluation.Negative,
+      })}
+      <div className="fr-messages-group" id={idErrorMessages} aria-live="assertive">
+        {error && <p className="fr-message fr-message--error">{error.message ?? m.error}</p>}
+      </div>
+    </fieldset>
+  )
+}
+
+function buildOption({value, evaluationField}: {value: ResponseEvaluation; evaluationField: UseFormRegisterReturn<string>}) {
+  const {m} = useI18n()
+  const colorClass =
+    value === ResponseEvaluation.Positive
+      ? `before:text-green-600`
+      : value === ResponseEvaluation.Neutral
+      ? `before:text-gray-500`
+      : `before:text-red-600`
+  const iconFile =
+    value === ResponseEvaluation.Positive
+      ? 'emotion-line.svg'
+      : value === ResponseEvaluation.Neutral
+      ? 'emotion-normal-line.svg'
+      : 'emotion-unhappy-line.svg'
+  const label =
+    value === ResponseEvaluation.Positive ? m.iAmHappy : value === ResponseEvaluation.Neutral ? m.iAmNeutral : m.iAmUnhappy
+  const id = useId()
+  return (
+    <div className="fr-fieldset__element">
+      <div className="fr-radio-group fr-radio-rich">
+        <input type="radio" id={id} value={value} {...evaluationField} />
+        <label className="fr-label" htmlFor={id}>
+          {label}
+        </label>
+        <div className="fr-radio-rich__img">
+          <img src={`/icons/${iconFile}`} alt="" />
+        </div>
+      </div>
+    </div>
   )
 }
 
