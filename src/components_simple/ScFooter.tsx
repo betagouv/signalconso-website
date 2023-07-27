@@ -3,11 +3,15 @@ import {Footer} from '@codegouvfr/react-dsfr/Footer'
 import Link from 'next/link'
 import {pagesDefs} from '../core/pagesDefinitions'
 import {useI18n} from '../i18n/I18n'
+import buildMenuLink from '../utils/MenuLink'
+import {usePathname} from 'next/navigation'
+import {AppLangs} from '../i18n/localization/AppLangs'
 
 export const urlServicePublicPlus = `https://www.plus.transformation.gouv.fr`
 
 export function ScFooter() {
-  const {m} = useI18n()
+  const {m, currentLang} = useI18n()
+  const pathName = usePathname() ?? ''
   return (
     <>
       <FollowUs />
@@ -25,11 +29,11 @@ export function ScFooter() {
           </>
         }
         operatorLogo={{orientation: 'horizontal', imgUrl: '/image/logo-dgccrf.png', alt: 'Logo DGCCRF'}}
-        websiteMapLinkProps={{href: pagesDefs.planDuSite.url}}
+        websiteMapLinkProps={{href: `/${currentLang}${pagesDefs.planDuSite.url}`}}
         accessibility="partially compliant"
-        accessibilityLinkProps={{href: pagesDefs.accessibilite.url}}
-        termsLinkProps={{href: pagesDefs.conditionsGeneralesUtilisation.url}}
-        homeLinkProps={{href: '/', title: m.footer.homeLinkTitle}}
+        accessibilityLinkProps={{href: `/${currentLang}${pagesDefs.accessibilite.url}`}}
+        termsLinkProps={{href: `/${currentLang}${pagesDefs.conditionsGeneralesUtilisation.url}`}}
+        homeLinkProps={{href: `/${currentLang}`, title: m.footer.homeLinkTitle}}
         // personalDataLinkProps={{href: pagesDefs.suiviEtViePrivee.url}}
         // cookiesManagementLinkProps={{href: pagesDefs.cookies.url}}
         bottomItems={[
@@ -40,30 +44,17 @@ export function ScFooter() {
               target: '_self',
             },
           },
-          {
-            text: m.footer.retractationLinkTitle,
-            linkProps: {
-              href: pagesDefs.delaiRetractation.url,
-            },
-          },
-          {
-            text: m.footer.litigeLinkTitle,
-            linkProps: {
-              href: pagesDefs.litige.url,
-            },
-          },
-          {
-            text: m.footer.actualitesLinkTitle,
-            linkProps: {
-              href: pagesDefs.actualites.url,
-            },
-          },
+          buildMenuLink(currentLang, pathName, pagesDefs.delaiRetractation.url, m.footer.retractationLinkTitle),
+          buildMenuLink(currentLang, pathName, pagesDefs.litige.url, m.footer.litigeLinkTitle),
           {
             text: m.footer.servicePublicPlusLinkTitle,
             linkProps: {
               href: urlServicePublicPlus,
             },
           },
+          ...(currentLang === AppLangs.fr
+            ? [buildMenuLink(currentLang, pathName, pagesDefs.actualites.url, m.footer.actualitesLinkTitle)]
+            : []),
         ]}
       />
     </>
@@ -79,6 +70,7 @@ function MinistryName() {
     </>
   )
 }
+
 function FollowUs() {
   const {m} = useI18n()
   // not in react-dsfr yet

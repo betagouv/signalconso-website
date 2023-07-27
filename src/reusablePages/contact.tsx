@@ -3,9 +3,10 @@ import {Alert} from '@codegouvfr/react-dsfr/Alert'
 import Link from 'next/link'
 import {getI18n} from '../i18n/I18nDictionnary'
 import {Metadata} from 'next'
+import {AppLang} from '../i18n/localization/AppLangs'
 
-export function getMetadata(): Metadata {
-  const {messages: m} = getI18n('fr')
+export function getMetadata(lang: AppLang): Metadata {
+  const {messages: m} = getI18n(lang)
 
   return {
     title: m.titleAndDescriptions.contact.title,
@@ -16,8 +17,8 @@ export function getMetadata(): Metadata {
   }
 }
 
-export const Contact = () => {
-  const {messages: m} = getI18n('fr')
+export const Contact = ({params}: any) => {
+  const {messages: m} = getI18n(params.lang)
 
   return (
     <>

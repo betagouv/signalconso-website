@@ -3,9 +3,10 @@ import Link from 'next/link'
 import {pagesDefs} from '../core/pagesDefinitions'
 import {getI18n} from '../i18n/I18nDictionnary'
 import {Metadata} from 'next'
+import {AppLang} from '../i18n/localization/AppLangs'
 
-export function getMetadata(): Metadata {
-  const {messages: m} = getI18n('fr')
+export function getMetadata(lang: AppLang): Metadata {
+  const {messages: m} = getI18n(lang)
 
   return {
     title: m.titleAndDescriptions.cookies.title,
@@ -13,8 +14,8 @@ export function getMetadata(): Metadata {
   }
 }
 
-export const Cookies = () => {
-  const {messages: m} = getI18n('fr')
+export const Cookies = ({params}: any) => {
+  const {messages: m} = getI18n(params.lang)
 
   return (
     <ContentPageContainer>
@@ -59,6 +60,11 @@ export const Cookies = () => {
             <td>_Pk_session</td>
             <td>{m.cookies.finaliteMatomo}</td>
             <td>{m.cookies.dureeConservationMatomo3}</td>
+          </tr>
+          <tr>
+            <td>NEXT_LANG</td>
+            <td>{m.cookies.finaliteSC}</td>
+            <td>{m.cookies.dureeConservationLang}</td>
           </tr>
         </tbody>
       </table>

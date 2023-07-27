@@ -7,6 +7,7 @@ import {pagesDefs} from 'core/pagesDefinitions'
 import Link from 'next/link'
 import {ReactNode} from 'react'
 import {getI18n} from '../../i18n/I18nDictionnary'
+import {useI18n} from '../../i18n/I18n'
 
 function Title({children}: {children: ReactNode}) {
   return <h2 className="mb-4 mt-8 font-normal text-2xl">{children}</h2>
@@ -17,7 +18,7 @@ function Accordions({children}: {children: ReactNode}) {
 }
 
 export const CentreAideConso = (props: BoxProps) => {
-  const {messages} = getI18n('fr')
+  const {m: messages} = useI18n()
 
   return (
     <Box {...props}>

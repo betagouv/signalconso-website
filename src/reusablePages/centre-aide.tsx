@@ -5,9 +5,10 @@ import {Tabs} from '@codegouvfr/react-dsfr/Tabs'
 import {ContentPageContainer} from 'components_simple/ContentPageContainer'
 import {getI18n} from '../i18n/I18nDictionnary'
 import {Metadata} from 'next'
+import {AppLang} from '../i18n/localization/AppLangs'
 
-export function getMetadata(): Metadata {
-  const {messages} = getI18n('fr')
+export function getMetadata(lang: AppLang): Metadata {
+  const {messages} = getI18n(lang)
 
   return {
     title: messages.titleAndDescriptions.aide.title,
@@ -15,8 +16,8 @@ export function getMetadata(): Metadata {
   }
 }
 
-export const CentreAide = () => {
-  const {messages} = getI18n('fr')
+export const CentreAide = ({params}: any) => {
+  const {messages} = getI18n(params.lang)
 
   return (
     <>

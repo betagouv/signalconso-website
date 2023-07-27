@@ -12,6 +12,7 @@ import React, {ReactNode, useEffect} from 'react'
 import {CompanyPublicClient} from '../clients/CompanyPublicClient'
 import {SignalConsoApiClient} from '../clients/SignalConsoApiClient'
 import {DeepPartial} from '../utils/utils'
+import {AppLangs} from '../i18n/localization/AppLangs'
 
 const AllTheProviders =
   (options?: Options) =>
@@ -42,7 +43,7 @@ const AllTheProviders =
           _ => <QueryClientProvider client={queryClient} children={_} />,
           _ => <AnalyticProvider children={_} analytic={{trackEvent: () => void 0} as any} />,
           _ => <ApiClientsProvider children={_} overrideForTests={apiClientsOverrides} />,
-          _ => <I18nProvider children={_} />,
+          _ => <I18nProvider lang={AppLangs.fr} children={_} />,
           _ => <ReportCreateProvider children={_} />,
           _ => <ReportFlowProvider children={_} />,
         ]}
