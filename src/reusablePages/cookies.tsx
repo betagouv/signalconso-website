@@ -61,6 +61,11 @@ export const Cookies = ({params}: any) => {
             <td>{m.cookies.finaliteMatomo}</td>
             <td>{m.cookies.dureeConservationMatomo3}</td>
           </tr>
+          <tr>
+            <td>NEXT_LANG</td>
+            <td>{m.cookies.finaliteSC}</td>
+            <td>{m.cookies.dureeConservationLang}</td>
+          </tr>
         </tbody>
       </table>
       <br />

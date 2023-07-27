@@ -152,6 +152,8 @@ export const fr = {
       finaliteEulerian: 'Cookie Eulerian',
       dureeConservationEulerian: '13 mois',
       finaliteMatomo: 'Matomo',
+      finaliteSC: 'Langue sélectionnée',
+      dureeConservationLang: 'infinie',
       dureeConservationMatomo1: '13 mois',
       dureeConservationMatomo2: '6 mois',
       dureeConservationMatomo3: '30 minutes',
