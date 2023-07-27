@@ -1,4 +1,4 @@
-import {ContentPageContainer} from 'components_simple/ContentPageContainer'
+import {ContentPageContainer} from 'components_simple/PageContainers'
 import {Alert} from '@codegouvfr/react-dsfr/Alert'
 import Link from 'next/link'
 import {getI18n} from '../i18n/I18nDictionnary'

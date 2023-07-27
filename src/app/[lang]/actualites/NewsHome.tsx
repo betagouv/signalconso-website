@@ -1,7 +1,7 @@
 'use client'
 
 import {useI18n} from '../../../i18n/I18n'
-import {ContentPageContainer} from '../../../components_simple/ContentPageContainer'
+import {ContentPageContainer} from '../../../components_simple/PageContainers'
 import {newsArticlesData} from '../../../actualites/newsArticlesData'
 import {Card} from '@codegouvfr/react-dsfr/Card'
 import {buildLinkNewsArticle} from '../../../core/pagesDefinitions'
@@ -16,7 +16,7 @@ const NewsHome = () => {
       <div className="fr-grid-row fr-grid-row--gutters">
         {newsArticlesData.map(article => {
           return (
-            <div className="fr-col-12 fr-col-sm-6" key={article.slug}>
+            <div className="fr-col-12 fr-col-sm-6 fr-col-xl-4" key={article.slug}>
               <Card
                 title={article.title}
                 desc={article.excerpt}
