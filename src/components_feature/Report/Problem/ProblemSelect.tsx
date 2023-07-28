@@ -20,11 +20,12 @@ interface ProblemSelectProps<T> {
 
 export const ProblemSelect = <T,>({autoScrollTo, title: titleRaw, value, options, onChange, id}: ProblemSelectProps<T>) => {
   const title = <span dangerouslySetInnerHTML={{__html: titleRaw ?? 'Pouvez-vous préciser ?'}} />
+  const nonNullableValue = value ?? ('' as T) // To unselected to radio button when a subcategory has changed
   return (
     <Animate {...{autoScrollTo}}>
       <div {...{id}}>
         <h2 className="fr-h6">{title}</h2>
-        <ScRadioGroup value={value} onChange={onChange} sx={{mb: 2}}>
+        <ScRadioGroup value={nonNullableValue} onChange={onChange} sx={{mb: 2}}>
           {options.map(option => (
             <ScRadioGroupItem
               key={option.value + ''}
