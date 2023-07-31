@@ -153,6 +153,8 @@ export const en = {
       finaliteEulerian: 'Eulerian cookie',
       dureeConservationEulerian: '13 months',
       finaliteMatomo: 'Matomo',
+      finaliteSC: 'Selected language',
+      dureeConservationLang: 'infinite',
       dureeConservationMatomo1: '13 months',
       dureeConservationMatomo2: '6 months',
       dureeConservationMatomo3: '30 minutes',
