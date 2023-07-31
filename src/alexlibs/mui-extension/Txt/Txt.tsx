@@ -12,13 +12,13 @@ interface Props extends BoxProps {
   block?: boolean
   skeleton?: boolean | number | string
   size?: 'big' | 'title' | 'small'
-  color?: 'primary' | 'secondary' | 'disabled' | 'hint' | 'default' | 'error'
+  color?: 'primary' | 'secondary' | 'disabled' | 'hint' | 'default' | 'error' | 'textsecondary'
   uppercase?: boolean
   truncate?: boolean
   noWrap?: boolean
   link?: boolean
   span?: boolean
-  component?: 'h2' | 'h1'
+  component?: 'h2' | 'h1' | 'p'
 }
 
 export const Txt = forwardRef(
@@ -70,6 +70,9 @@ export const Txt = forwardRef(
               },
               secondary: {
                 color: (t: any) => t.palette.secondary.main,
+              },
+              textsecondary: {
+                color: (t: any) => t.palette.text.secondary,
               },
               disabled: {
                 color: (t: any) => t.palette.text.disabled,

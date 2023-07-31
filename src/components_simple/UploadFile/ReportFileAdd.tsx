@@ -1,4 +1,4 @@
-import {Box, Button, CircularProgress, Icon, Theme, Tooltip} from '@mui/material'
+import {alpha, Box, Button, CircularProgress, Icon, Theme, Tooltip} from '@mui/material'
 import {SxProps} from '@mui/system'
 import {useApiClients} from 'context/ApiClientsContext'
 import {styleUtils} from 'core/theme'
@@ -12,12 +12,12 @@ import {extractFileExt, reportFileConfig} from './reportFileConfig'
 
 const styles: {[key: string]: SxProps<Theme>} = {
   root: {
-    border: t => '1px solid ' + t.palette.divider,
+    border: t => '1px solid ' + alpha(t.palette.divider, 0.43),
     margin: 1,
     borderRadius: reportFileConfig.cardBorderRadius + 'px',
     height: reportFileConfig.cardSize,
     width: reportFileConfig.cardSize,
-    color: t => t.palette.text.disabled,
+    color: t => t.palette.text.secondary,
     overflow: 'hidden',
     display: 'inline-flex',
     alignItems: 'center',

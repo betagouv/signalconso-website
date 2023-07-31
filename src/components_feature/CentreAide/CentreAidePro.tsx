@@ -71,6 +71,7 @@ export const CentreAidePro = (props: BoxProps) => {
           <p>{m.centreaidepro.courrierSignalConsoText7}</p>
           <p style={{textAlign: 'center'}}>
             <iframe
+              title="Vidéo YouTube : TUTO SIGNALCONSO - Activer son compte"
               src="https://www.youtube-nocookie.com/embed/iQLmRZW8SIk"
               allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
@@ -90,6 +91,7 @@ export const CentreAidePro = (props: BoxProps) => {
           </ul>
           <p className="text-center">
             <iframe
+              title="Vidéo YouTube : TUTO SIGNALCONSO - Se connecter"
               src="https://www.youtube-nocookie.com/embed/Zohajsmkz1I"
               allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
@@ -97,6 +99,7 @@ export const CentreAidePro = (props: BoxProps) => {
           </p>
           <p className="text-center">
             <iframe
+              title="Vidéo YouTube : TUTO SIGNALCONSO - Consulter un signalement"
               src="https://www.youtube-nocookie.com/embed/up9Elzn-P7o"
               allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
@@ -212,6 +215,7 @@ export const CentreAidePro = (props: BoxProps) => {
           <p>{m.centreaidepro.suiviSignalementsDescription}</p>
           <p className="text-center">
             <iframe
+              title="Vidéo YouTube : TUTO SIGNALCONSO - Ajouter une entreprise"
               src="https://www.youtube-nocookie.com/embed/tEzRx6eU474"
               allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
