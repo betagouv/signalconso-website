@@ -10,10 +10,10 @@ export function ProblemConsumerWishInformation({consumerWish}: {consumerWish: Co
   return (
     <Animate>
       <FriendlyHelpText>
-        <Txt sx={textStyle} block>
+        <Txt sx={textStyle} block component="p">
           {pickText(m, consumerWish)}
         </Txt>
-        <Txt sx={{mt: 2, ...textStyle}} block>
+        <Txt sx={{mt: 2, ...textStyle}} block component="p">
           {pickSecondText(m, consumerWish)}
         </Txt>
       </FriendlyHelpText>

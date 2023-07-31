@@ -13,6 +13,7 @@ export const FaireUnSignalementPage = ({anomaly, isWebView}: {anomaly: Anomaly; 
         <h1 className="fr-h2">
           {!isWebView && (
             <Link href={pagesDefs.index.url} className="!bg-none mr-4">
+              <span className="sr-only">Allez à l'accueil</span>
               <span className="ri-arrow-left-line" aria-hidden="true"></span>
             </Link>
           )}

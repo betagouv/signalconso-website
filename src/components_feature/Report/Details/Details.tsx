@@ -126,16 +126,16 @@ export const DetailsInner = ({
           <FriendlyHelpText>
             {isTransmittable ? (
               <>
-                <span dangerouslySetInnerHTML={{__html: m.detailsTextAreaTransmittable}} />
+                <p className="mb-0" dangerouslySetInnerHTML={{__html: m.detailsTextAreaTransmittable}} />
                 {consumerWish !== 'fixContractualDispute' && (
-                  <span dangerouslySetInnerHTML={{__html: m.detailsTextAreaTransmittableAnonymous}} />
+                  <p className="mb-0" dangerouslySetInnerHTML={{__html: m.detailsTextAreaTransmittableAnonymous}} />
                 )}
               </>
             ) : (
               <>
-                <span dangerouslySetInnerHTML={{__html: m.detailsTextAreaNotTransmittable}} />
+                <p className="mb-0" dangerouslySetInnerHTML={{__html: m.detailsTextAreaNotTransmittable}} />
                 <br />
-                {employeeConsumer && <span dangerouslySetInnerHTML={{__html: m.detailsTextAreaEmployeeConsumer}} />}
+                {employeeConsumer && <p className="mb-0" dangerouslySetInnerHTML={{__html: m.detailsTextAreaEmployeeConsumer}} />}
               </>
             )}
           </FriendlyHelpText>
@@ -320,7 +320,7 @@ export const DetailsInner = ({
           {ReportDraft.isTransmittableToPro({tags, employeeConsumer, consumerWish}) && (
             <>
               <FriendlyHelpText>
-                <span dangerouslySetInnerHTML={{__html: m.attachmentsDesc2}} />
+                <p className="mb-0" dangerouslySetInnerHTML={{__html: m.attachmentsDesc2}} />
               </FriendlyHelpText>
               {consumerWish !== 'fixContractualDispute' && <p dangerouslySetInnerHTML={{__html: m.attachmentsDescAnonymous}} />}
             </>

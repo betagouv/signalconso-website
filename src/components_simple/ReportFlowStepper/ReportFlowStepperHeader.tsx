@@ -56,31 +56,33 @@ export const ReportFlowStepperHeader = ({currentStep, goTo, variant = 'standard'
   }
 
   return (
-    <ol className={`flex mb-4 justify-center ${variant === 'report-started-alert' ? 'mt-4' : ''}`}>
-      {reportSteps.map((step, stepIndex) => {
-        const stepLabel = getStepLabel(step)
-        const stepStatus = getStepStatus(step)
-        const onClick = goTo && stepStatus === 'pastStep' && !isDone ? () => goTo(step) : undefined
-        return (
-          <li
-            className="outline-0 outline-green-500 outline-dashed flex flex-grow basis-0"
-            key={stepLabel}
-            onClick={onClick}
-            aria-current={stepStatus === 'currentStep' ? 'step' : undefined}
-          >
-            <div
-              className={`flex flex-col relative items-center justify-center w-full ${
-                onClick ? 'cursor-pointer' : stepStatus === 'currentStep' ? 'cursor-default' : 'cursor-not-allowed'
-              }`}
+    <nav aria-label="Étapes de votre signalement">
+      <ol className={`flex mb-4 justify-center ${variant === 'report-started-alert' ? 'mt-4' : ''}`}>
+        {reportSteps.map((step, stepIndex) => {
+          const stepLabel = getStepLabel(step)
+          const stepStatus = getStepStatus(step)
+          const onClick = goTo && stepStatus === 'pastStep' && !isDone ? () => goTo(step) : undefined
+          return (
+            <li
+              className="outline-0 outline-green-500 outline-dashed flex flex-grow basis-0"
+              key={stepLabel}
+              onClick={onClick}
+              aria-current={stepStatus === 'currentStep' ? 'step' : undefined}
             >
-              {stepIndex > 0 && <StepSeparator {...{stepStatus, stepSize, variant}} />}
-              <StepNumberInCircle {...{stepIndex, stepStatus, stepSize}} />
-              {!hideLabel && <StepLabel {...{stepStatus, stepLabel}} />}
-            </div>
-          </li>
-        )
-      })}
-    </ol>
+              <div
+                className={`flex flex-col relative items-center justify-center w-full ${
+                  onClick ? 'cursor-pointer' : stepStatus === 'currentStep' ? 'cursor-default' : 'cursor-not-allowed'
+                }`}
+              >
+                {stepIndex > 0 && <StepSeparator {...{stepStatus, stepSize, variant}} />}
+                <StepNumberInCircle {...{stepIndex, stepStatus, stepSize}} />
+                {!hideLabel && <StepLabel {...{stepStatus, stepLabel}} />}
+              </div>
+            </li>
+          )
+        })}
+      </ol>
+    </nav>
   )
 }
 
@@ -114,7 +116,7 @@ function StepLabel({stepStatus, stepLabel}: {stepStatus: StepStatus; stepLabel: 
   return (
     <div
       className={`mt-2 hidden lg:block text-center ${
-        stepStatus === 'currentStep' ? 'font-medium' : stepStatus === 'futureStep' ? 'text-gray-500' : ''
+        stepStatus === 'currentStep' ? 'font-bold' : stepStatus === 'futureStep' ? 'text-gray-500' : ''
       }`}
     >
       {stepLabel}

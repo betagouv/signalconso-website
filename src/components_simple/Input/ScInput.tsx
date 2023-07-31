@@ -11,9 +11,17 @@ export type ScInputProps = Omit<TextFieldProps, 'variant' | 'margin'> & {
 
 export const ScInput = React.forwardRef(({small, onClear, InputProps, ...props}: ScInputProps, ref) => {
   const {m} = useI18n()
+
   return (
     <TextField
       {...props}
+      sx={{
+        input: {
+          '&::placeholder': {
+            opacity: 0.7,
+          },
+        },
+      }}
       InputProps={{
         ...InputProps,
         ...(onClear
