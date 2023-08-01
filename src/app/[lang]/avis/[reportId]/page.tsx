@@ -154,18 +154,9 @@ function EvaluationRadio({evaluationField, error}: {evaluationField: UseFormRegi
         {m.didTheCompanyAnsweredWell}
         <span className="fr-hint-text">{m.reviewIsDefinitive}</span>
       </legend>
-      {buildOption({
-        evaluationField,
-        value: ResponseEvaluation.Positive,
-      })}
-      {buildOption({
-        evaluationField,
-        value: ResponseEvaluation.Neutral,
-      })}
-      {buildOption({
-        evaluationField,
-        value: ResponseEvaluation.Negative,
-      })}
+      <Option {...{evaluationField}} value={ResponseEvaluation.Positive} />
+      <Option {...{evaluationField}} value={ResponseEvaluation.Neutral} />
+      <Option {...{evaluationField}} value={ResponseEvaluation.Negative} />
       <div className="fr-messages-group" id={idErrorMessages} aria-live="assertive">
         {error && <p className="fr-message fr-message--error">{error.message ?? m.error}</p>}
       </div>
@@ -173,14 +164,8 @@ function EvaluationRadio({evaluationField, error}: {evaluationField: UseFormRegi
   )
 }
 
-function buildOption({value, evaluationField}: {value: ResponseEvaluation; evaluationField: UseFormRegisterReturn<string>}) {
+function Option({value, evaluationField}: {value: ResponseEvaluation; evaluationField: UseFormRegisterReturn<string>}) {
   const {m} = useI18n()
-  const colorClass =
-    value === ResponseEvaluation.Positive
-      ? `before:text-green-600`
-      : value === ResponseEvaluation.Neutral
-      ? `before:text-gray-500`
-      : `before:text-red-600`
   const iconFile =
     value === ResponseEvaluation.Positive
       ? 'emotion-line.svg'
