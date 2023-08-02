@@ -32,7 +32,7 @@ const Home = () => {
   const dsfrTheme = useColors()
   return (
     <>
-      <main role="main">
+      <main role="main" id="main-content">
         <div>
           <div className="fr-container">
             <InfoBanner />

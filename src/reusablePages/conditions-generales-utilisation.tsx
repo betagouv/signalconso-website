@@ -24,12 +24,22 @@ export const ConditionsGeneralesUtilisation = ({params}: any) => {
       <Tabs
         tabs={[
           {
-            label: 'Consommateur',
+            label: (
+              <>
+                <span className="max-md:hidden">Consommateur</span>
+                <span className="md:hidden">Conso</span>
+              </>
+            ),
             iconId: 'fr-icon-user-line',
             content: <ConditionsGeneralesUtilisationConso lang={params.lang} />,
           },
           {
-            label: 'Professionnel',
+            label: (
+              <>
+                <span className="max-md:hidden">Professionnel</span>
+                <span className="md:hidden">Pro</span>
+              </>
+            ),
             iconId: 'fr-icon-briefcase-line',
             content: <ConditionsGeneralesUtilisationPro lang={params.lang} />,
           },

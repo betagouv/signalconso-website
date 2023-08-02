@@ -1113,7 +1113,7 @@ export const fr = {
     invalidUrlPattern: `Ça ne ressemble pas à un site internet`,
     noAttachment: 'Aucune pièce jointe.',
     addAttachmentFile: 'Ajouter une pièces jointe',
-    attachments: `Pièces jointes`,
+    attachments: `Pièces jointes :`,
     backToHome: `Revenir à l'accueil`,
     city: `Ville`,
     attachmentsDescAnonymous: `Si vous ne souhaitez pas que l'entreprise connaisse votre identité, <b style="color: black">cachez votre nom</b> sur vos pièces jointes.`,
