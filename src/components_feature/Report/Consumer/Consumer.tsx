@@ -117,6 +117,7 @@ export const ConsumerInner = ({
               <Grid item xs={6}>
                 <FormLayout label={m.firstName} required>
                   <ScInput
+                    autoComplete="given-name"
                     fullWidth
                     defaultValue={draft.consumer?.firstName ?? ''}
                     {..._form.register('firstName', {
@@ -130,6 +131,7 @@ export const ConsumerInner = ({
               <Grid item xs={6}>
                 <FormLayout label={m.lastName} required>
                   <ScInput
+                    autoComplete="family-name"
                     fullWidth
                     defaultValue={draft.consumer?.lastName ?? ''}
                     {..._form.register('lastName', {
@@ -145,6 +147,7 @@ export const ConsumerInner = ({
           <Row icon="email">
             <FormLayout label={m.email} required>
               <ScInput
+                autoComplete="email"
                 type="email"
                 fullWidth
                 defaultValue={draft.consumer?.email ?? ''}
@@ -164,6 +167,7 @@ export const ConsumerInner = ({
           <Row icon="phone">
             <FormLayout label={m.phoneOptional}>
               <ScInput
+                autoComplete="tel"
                 type="tel"
                 placeholder={m.phonePlaceholder}
                 fullWidth
@@ -177,7 +181,9 @@ export const ConsumerInner = ({
           </Row>
           <Row icon="receipt">
             <FormLayout label={m.referenceNumberOptional}>
-              <Txt color="hint">{m.referenceNumberDesc}</Txt>
+              <Txt color="hint" component="p">
+                {m.referenceNumberDesc}
+              </Txt>
               <ScInput
                 placeholder={m.referenceNumberPlaceholder}
                 fullWidth

@@ -94,7 +94,13 @@ export const ConsumerValidationDialog = ({loading, open, consumerEmail, onClose,
             required: {value: true, message: m.required},
           }}
           control={_form.control}
-          render={({field}) => <InputValidationCode {...field} error={!!_form.formState.errors.code || isEmailValid === false} />}
+          render={({field}) => (
+            <InputValidationCode
+              {...field}
+              error={!!_form.formState.errors.code || isEmailValid === false}
+              helperText={_form.formState.errors['code']?.message}
+            />
+          )}
         />
       </DialogContent>
       <DialogActions>

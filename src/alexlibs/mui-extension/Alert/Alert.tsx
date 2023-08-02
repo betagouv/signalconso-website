@@ -49,9 +49,21 @@ export const Alert = ({
     }
   }
 
+  const roleProp = () => {
+    switch (type) {
+      case 'warning':
+        return {role: 'alert'}
+      case 'error':
+        return {role: 'alert'}
+      default:
+        return {}
+    }
+  }
+
   return (
     <Box
       {...props}
+      {...roleProp()}
       sx={{
         // paddingLeft: t.spacing(2),
         // paddingRight: t.spacing(2),
