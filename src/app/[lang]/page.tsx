@@ -21,12 +21,12 @@ import {MobileAppPromoBanner} from 'components_feature/InfoBanner/MobileAppPromo
 const ReportStartedAlert = dynamic(() => import('components_feature/ReportStartedAlert/ReportStartedAlert'), {ssr: false})
 
 const Home = () => {
-  const {m} = useI18n()
+  const {m, currentLang} = useI18n()
   useEffect(() => {
     smoothscroll.polyfill()
   }, [])
 
-  const anomalies = allVisibleAnomalies()
+  const anomalies = allVisibleAnomalies(currentLang)
   const _report = useReportFlowContext()
   const hasStoredReport = useMemo(() => !!_report.reportDraft.anomaly, [_report.reportDraft])
   const dsfrTheme = useColors()

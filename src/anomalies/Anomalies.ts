@@ -1,11 +1,13 @@
 import {appConfig} from '../core/appConfig'
 import {Anomaly, Subcategory, SubcategoryWithInfoWall, StandardSubcategory, DetailInput} from './Anomaly'
-import anomaliesJSON from './json/anomalies.json'
+import anomaliesJSONFr from './json/anomalies_fr.json'
+import anomaliesJSONEn from './json/anomalies_en.json'
+import {AppLang, AppLangs} from '../i18n/localization/AppLangs'
 
-export const allAnomalies = anomaliesJSON as Anomaly[]
+export const allAnomalies = (lang: AppLang) => (lang === AppLangs.en ? anomaliesJSONEn : anomaliesJSONFr) as Anomaly[]
 
-export const allVisibleAnomalies = () =>
-  allAnomalies
+export const allVisibleAnomalies = (lang: AppLang) =>
+  allAnomalies(lang)
     .filter(_ => !_.hidden && (!_.isHiddenDemoCategory || appConfig.showDemoCategory))
     .sort((a, b) => {
       return parseInt(a.id, 10) - parseInt(b.id, 10)
@@ -22,7 +24,7 @@ export type AnomalyIndex = {
 export function createFuseIndex(anomalies: Anomaly[]) {
   const res: AnomalyIndex[] = []
 
-  allVisibleAnomalies().map(anomaly => {
+  anomalies.map(anomaly => {
     // res.push({root: anomaly, id: anomaly.id, title: anomaly.title, description: anomaly.description, subcategories: []})
     const subcategories = anomaly.subcategories
     const SubcategoryAnomalies = aggregateCategories(anomaly, [], subcategories)
@@ -64,16 +66,16 @@ export const instanceOfAnomaly = (_?: Anomaly | Subcategory): _ is Anomaly => {
   return !!(_ as Anomaly)?.category
 }
 
-export function findAnomaly(category: string): Anomaly {
-  const res = allAnomalies.find(_ => _.category === category)
+export function findAnomaly(category: string, lang: AppLang): Anomaly {
+  const res = allAnomalies(lang).find(_ => _.category === category)
   if (!res) {
     throw new Error(`Can't find anomaly "${category}"`)
   }
   return res
 }
 
-export function findAnomalyByPath(categoryPath: string): Anomaly {
-  const res = allAnomalies.find(_ => _.path === categoryPath)
+export function findAnomalyByPath(categoryPath: string, lang: AppLang): Anomaly {
+  const res = allAnomalies(lang).find(_ => _.path === categoryPath)
   if (!res) {
     throw new Error(`Can't find anomaly "${categoryPath}"`)
   }

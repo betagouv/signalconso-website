@@ -39,6 +39,8 @@ yarn-error.log*
 # will be generated each time the application is ran
 src/anomalies/yml/anomalies.json
 src/anomalies/json/anomalies.json
+src/anomalies/json/anomalies_en.json
+src/anomalies/json/anomalies_fr.json
 public/sitemap.xml
 
 src/anomalies/json/minimized-anomalies.json

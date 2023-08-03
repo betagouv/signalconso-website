@@ -8,10 +8,11 @@ import {notFound} from 'next/navigation'
 
 export type Props = {
   dynamicPath: string
+  lang: any
 }
 
 function getAnomalyData(params: Props) {
-  const anomaly = allAnomalies.find(_ => _.path === params.dynamicPath)
+  const anomaly = allAnomalies(params.lang).find(_ => _.path === params.dynamicPath)
 
   return anomaly
 }

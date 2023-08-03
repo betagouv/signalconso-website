@@ -6,11 +6,13 @@ import {useI18n} from '../i18n/I18n'
 import {AppLangs} from '../i18n/localization/AppLangs'
 import {setCookie} from 'cookies-next'
 import {replaceLangInPath, switchLang} from '../i18n/I18nTools'
+import {useReportCreateContext} from '../components_feature/Report/ReportCreateContext'
+import {useReportFlowContext} from '../components_feature/Report/ReportFlowContext'
 
-export const Translate = forwardRef(() => {
+export const SwitchLang = forwardRef(() => {
   const pathname = usePathname()
   const router = useRouter()
-
+  const _report = useReportFlowContext()
   const {m, currentLang} = useI18n()
 
   return (
@@ -19,6 +21,8 @@ export const Translate = forwardRef(() => {
       aria-controls="translate-1177"
       title={m.header.selectLang}
       onClick={() => {
+        //Reset report on lang switch
+        _report.resetFlow()
         const path = replaceLangInPath(pathname, switchLang(currentLang))
         setCookie('NEXT_LANG', switchLang(currentLang))
         router.push(path)

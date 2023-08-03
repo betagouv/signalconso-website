@@ -1,0 +1,5 @@
+title: C'est un produit dangereux
+desc: 'Exemple : jouet, cosmétique'
+companyKind: LOCATION
+tags:
+  - ProduitDangereux

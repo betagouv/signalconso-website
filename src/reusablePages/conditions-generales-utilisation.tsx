@@ -91,7 +91,6 @@ function ConditionsGeneralesUtilisationConso(params: any) {
 }
 
 function ConditionsGeneralesUtilisationPro(params: any) {
-  console.log(params)
   const {messages: m} = getI18n(params.lang)
   return (
     <div>

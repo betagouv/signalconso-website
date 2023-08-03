@@ -11,7 +11,7 @@ export type Props = {
 }
 
 function getAnomalyData(params: Props) {
-  const anomaly = allAnomalies.find(_ => _.path === params.dynamicPath)
+  const anomaly = allAnomalies(params.lang).find(_ => _.path === params.dynamicPath)
 
   if (!anomaly) {
     throw new Error(`Cannot find anomaly for params.id : ${params.dynamicPath}`)

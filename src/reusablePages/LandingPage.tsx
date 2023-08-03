@@ -14,6 +14,7 @@ import {ReactNode, useRef} from 'react'
 import {AnomalyTile} from '../components_simple/AnomalyTile/AnomalyTile'
 import {buildLinkStartReport, pagesDefs} from '../core/pagesDefinitions'
 import {useI18n} from '../i18n/I18n'
+import {AppLangs} from '../i18n/localization/AppLangs'
 
 type Props = {
   landingData: LandingData
@@ -35,10 +36,10 @@ export default function LandingPage(props: Props) {
           }
         }
       : landingData.targetedCategory.length === 1
-      ? findAnomaly(landingData.targetedCategory[0])
+      ? findAnomaly(landingData.targetedCategory[0], 'fr')
       : 'home'
 
-  const anomalies = landingData.targetedCategory.map(findAnomaly)
+  const anomalies = landingData.targetedCategory.map(_ => findAnomaly(_, 'fr'))
 
   return (
     <>
@@ -153,7 +154,7 @@ function BigReportButton({className = '', target}: {className?: string; target: 
     <Button
       {...props}
       linkProps={{
-        href: target === 'home' ? pagesDefs.index.url : buildLinkStartReport(target),
+        href: target === 'home' ? pagesDefs.index.url : buildLinkStartReport(target, 'fr'),
       }}
       size="large"
     >

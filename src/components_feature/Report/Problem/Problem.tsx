@@ -15,6 +15,7 @@ import {ProblemInformation} from './ProblemInformation'
 import {ProblemSelect} from './ProblemSelect'
 import {ProblemStepper, ProblemStepperStep} from './ProblemStepper'
 import {computeSelectedSubcategoriesData} from './useSelectedSubcategoriesData'
+import {AppLang} from '../../../i18n/localization/AppLangs'
 
 interface Props {
   anomaly: Anomaly
@@ -46,8 +47,8 @@ function chooseIfReponseConsoDisplayed(): boolean {
   return Math.random() * 100 < appConfig.reponseConsoDisplayRate
 }
 
-export function initiateReportDraftForAnomaly(anomaly: Anomaly): Partial<ReportDraft2> {
-  return {category: anomaly.category}
+export function initiateReportDraftForAnomaly(anomaly: Anomaly, lang: AppLang): Partial<ReportDraft2> {
+  return {category: anomaly.category, lang}
 }
 
 export function adjustReportDraftAfterSubcategoriesChange(
@@ -81,7 +82,7 @@ export function adjustReportDraftAfterSubcategoriesChange(
 
 export const Problem = ({anomaly, isWebView, stepNavigation}: Props) => {
   const _analytic = useAnalyticContext()
-  const {m} = useI18n()
+  const {m, currentLang} = useI18n()
   const displayReponseConso = useMemo(chooseIfReponseConsoDisplayed, [])
   const {reportDraft, setReportDraft, resetFlow} = useReportFlowContext()
 
@@ -90,7 +91,7 @@ export const Problem = ({anomaly, isWebView, stepNavigation}: Props) => {
     if (anomaly.category !== reportDraft.category) {
       _analytic.trackEvent(EventCategories.report, ReportEventActions.validateCategory, anomaly.category)
       resetFlow()
-      setReportDraft(_ => initiateReportDraftForAnomaly(anomaly))
+      setReportDraft(_ => initiateReportDraftForAnomaly(anomaly, currentLang))
     }
   }, [anomaly.category])
 

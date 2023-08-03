@@ -3,7 +3,7 @@
 import {useI18n} from '../../i18n/I18n'
 import * as Sentry from '@sentry/nextjs'
 
-export default async function Error({error, reset}: {error: Error; reset: () => void}) {
+export default async function GlobalError({error, reset}: {error: Error; reset: () => void}) {
   Sentry.captureException(error)
   // Flushing before returning is necessary if deploying to Vercel, see
   // https://vercel.com/docs/platform/limits#streaming-responses

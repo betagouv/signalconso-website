@@ -1,0 +1,18 @@
+title: Produit en retrait / rappel
+desc: Le produit vendu fait l'objet d'une mesure de retrait / rappel des autorités
+reponseconsoCode:
+  - '311'
+  - '331'
+detailInputs:
+  - label: Date du constat
+    type: DATE
+    defaultValue: SYSDATE
+  - label: Heure du constat
+    type: TIMESLOT
+    optional: true
+  - label: Nom du produit / marque
+    type: TEXT
+  - label: N° de lot / référence
+    type: TEXT
+  - label: Qu'avez-vous constaté&#160;?
+    type: TEXTAREA
