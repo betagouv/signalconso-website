@@ -7,7 +7,7 @@ import {appConfig} from 'core/appConfig'
 import {urlServicePublicPlus} from './ScFooter'
 import {useI18n} from '../i18n/I18n'
 import {usePathname} from 'next/navigation'
-import {Translate} from './Translate'
+import {SwitchLang} from './SwitchLang'
 import {AppLang, AppLangs} from '../i18n/localization/AppLangs'
 import {addLangInPath, replaceLangInPath} from '../i18n/I18nTools'
 import buildMenuLink from '../utils/MenuLink'
@@ -53,7 +53,7 @@ export function ScHeader() {
             },
             text: m.header.connexionLinkTitle,
           },
-          appConfig.translationFeatureFlagEnabled ? <Translate key="translate-button" /> : <></>,
+          appConfig.translationFeatureFlagEnabled ? <SwitchLang key="translate-button" /> : <></>,
         ]}
         // serviceTitle="SignalConso"
         // serviceTagline="un service public pour les consommateurs"

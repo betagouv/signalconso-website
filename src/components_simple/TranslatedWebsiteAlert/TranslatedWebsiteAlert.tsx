@@ -36,8 +36,8 @@ export const TranslatedWebsiteAlert = () => {
     >
       <span>
         <div className="m-4">
-          This is a limited version of SignalConso dedicated to consumption issues regarding individuals visiting France. If you
-          are a French resident, switch to the{' '}
+          This is a limited version of SignalConso dedicated to consumer issues regarding individuals visiting France. If you are
+          confortable with french, switch to the{' '}
           <a href={`/fr${internalPageDefs.index.url}`} rel="noreferrer">
             french website
           </a>{' '}
@@ -45,8 +45,8 @@ export const TranslatedWebsiteAlert = () => {
         </div>
         <hr style={{borderTop: '1px solid #ccc'}} />
         <div className="m-4">
-          Ceci est une version limitée de SignalConso dédiée au problèmes de consommation rencontrés par les personnes de passage
-          en france. Si vous êtes résident français, basculez sur la{' '}
+          Ceci est une version limitée de SignalConso dédiée aux problèmes de consommation rencontrés par les personnes de passage
+          en France , basculez sur la{' '}
           <a href={`/fr${internalPageDefs.index.url}`} rel="noreferrer">
             {' '}
             version française
