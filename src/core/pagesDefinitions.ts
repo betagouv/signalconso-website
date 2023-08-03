@@ -2,6 +2,7 @@ import {Anomaly} from 'anomalies/Anomaly'
 import {appConfig} from './appConfig'
 import {LandingData} from 'landings/landingDataUtils'
 import {NewsArticle} from 'actualites/newsArticlesData'
+import {AppLang} from '../i18n/localization/AppLangs'
 
 type PageDefExternal = {
   isExternal: true
@@ -12,6 +13,7 @@ type PageDefInternal = {
   url: string
   urlRelative: string
   noIndex: boolean
+  //Has alternate language available for the page
   hasAlternate: boolean
 }
 
@@ -38,7 +40,7 @@ function pageExternal(url: string): PageDefExternal {
 
 export const internalPageDefs = {
   index: page('/', {hasAlternate: true}),
-  arborescence: page(`/arborescence`, {noIndex: true}),
+  arborescence: page(`/arborescence`, {noIndex: true, hasAlternate: true}),
   accessibilite: page(`/accessibilite`, {hasAlternate: true}),
   planDuSite: page(`/plan-du-site`, {hasAlternate: true}),
   actualites: page(`/actualites`),
@@ -46,8 +48,8 @@ export const internalPageDefs = {
   // all these are available in /webview/
   centreAide: page(`/centre-aide`, {hasAlternate: true}),
   commentCaMarche: page(`/comment-ca-marche`, {hasAlternate: true}),
-  conditionsGeneralesUtilisation: page(`/conditions-generales-utilisation`, {noIndex: true}),
-  contact: page(`/contact`, {noIndex: true}),
+  conditionsGeneralesUtilisation: page(`/conditions-generales-utilisation`, {noIndex: true, hasAlternate: true}),
+  contact: page(`/contact`, {noIndex: true, hasAlternate: true}),
   cookies: page(`/cookies`, {hasAlternate: true}),
   delaiRetractation: page(`/delai-de-retractation`, {hasAlternate: true}),
   quiSommesNous: page(`/qui-sommes-nous`, {hasAlternate: true}),
@@ -56,7 +58,7 @@ export const internalPageDefs = {
   litige: page(`/litige`, {hasAlternate: true}),
 
   // only on dev/demo
-  ...(appConfig.showPlayground ? {playground: page(`/playground`, {noIndex: true})} : null),
+  ...(appConfig.showPlayground ? {playground: page(`/playground`, {noIndex: true, hasAlternate: true})} : null),
 }
 
 const externalPageDefs = {
@@ -77,13 +79,14 @@ export const pagesDefs = {
 
 export function buildLinkStartReport(
   anomaly: Pick<Anomaly, 'path'>,
+  lang: AppLang,
   {
     isWebView,
   }: {
     isWebView: boolean
   } = {isWebView: false},
 ) {
-  return isWebView ? `/webview/${anomaly.path}` : `/${anomaly.path}/faire-un-signalement`
+  return isWebView ? `/${lang}/webview/${anomaly.path}` : `/${lang}/${anomaly.path}/faire-un-signalement`
 }
 
 export function buildLinkLandingPage(landingData: LandingData) {

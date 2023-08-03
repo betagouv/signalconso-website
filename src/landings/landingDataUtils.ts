@@ -16,7 +16,7 @@ export type LandingData = {
 }
 
 export function allVisibleLandings(): LandingData[] {
-  const visibleAnomalies = allVisibleAnomalies()
+  const visibleAnomalies = allVisibleAnomalies('fr')
   // Filter out the demo landing, if the demo category is not visible
   return landingsData.filter(landingData => {
     if (landingData.isSemiAutomatic) {

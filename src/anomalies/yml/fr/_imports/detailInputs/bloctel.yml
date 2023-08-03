@@ -1,0 +1,34 @@
+- label: Date de l'appel
+  type: DATE
+  defaultValue: SYSDATE
+- label: Heure de l'appel
+  type: TIMESLOT
+- label: Votre numéro de téléphone
+  type: TEXT
+- label: Votre numéro d'inscription Bloctel (recommandé)
+  type: TEXT
+  optional: true
+- label: L'appel concernait
+  type: RADIO
+  options:
+    - Banque / Assurance / Mutuelle
+    - Secteur de la santé
+    - Immobilier
+    - Téléphonie / Fournisseur d'accès internet / médias
+    - Voyage / Loisirs
+    - Services aux particuliers
+    - Voiture / Véhicule / Vélo
+    - Eau / Gaz / Électricité
+    - Travaux / Rénovation
+    - Produits alimentaires, boissons,
+    - Jeux, voyance
+    - Spectacles, culture, loisirs
+    - Équipement pour personne (mode, textiles, chaussures, ...)
+    - Équipement pour maison (ameublement, électroménager, ...)
+    - Autre
+- label: "Le vendeur s'est fait passer pour :"
+  type: RADIO
+  options:
+    - Administration
+    - Formation professionnelle
+    - Autre.

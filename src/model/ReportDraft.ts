@@ -4,6 +4,7 @@ import {DetailInputValue} from './CreatedReport'
 import {ApiInfluencer, ApiReportDraft} from './reportsFromApi'
 import {UploadedFile} from './UploadedFile'
 import uniq from 'lodash/uniq'
+import {AppLang} from '../i18n/localization/AppLangs'
 export const genders = ['Male', 'Female'] as const
 export type Gender = (typeof genders)[number]
 
@@ -45,6 +46,7 @@ export interface ReportDraft {
   consumerWish?: ConsumerWish
   companyKind?: CompanyKinds
   influencer?: Influencer
+  lang: AppLang
 }
 
 export interface Influencer {
@@ -135,6 +137,7 @@ export class ReportDraft {
       websiteURL: draft.companyDraft?.website,
       phone: draft.companyDraft?.phone,
       forwardToReponseConso: consumerWish === 'getAnswer',
+      lang: draft.lang,
       metadata,
       // pretty sure these fields aren't actually optional in the draft
       employeeConsumer: draft.employeeConsumer ?? false,

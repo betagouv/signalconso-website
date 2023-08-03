@@ -5,6 +5,7 @@ import {ReactNode} from 'react'
 import {createNextDsfrIntegrationApi} from '@codegouvfr/react-dsfr/next-pagesdir'
 import Link from 'next/link'
 import {NextAppDirEmotionCacheProvider} from 'tss-react/next/appDir'
+import StartDsfr from './StartDsfr'
 
 type Props = {
   children: ReactNode
@@ -23,6 +24,7 @@ const {withDsfr} = createNextDsfrIntegrationApi({
 })
 
 const ThemeSetup = ({children}: Props) => {
+  StartDsfr()
   return (
     <>
       {/* MUI (but actually underlying Emotion) isn't ready to work with Next's experimental `app/` directory feature.

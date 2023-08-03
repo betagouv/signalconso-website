@@ -101,7 +101,7 @@ function validateAndTransformRow(row: RawRow): RowTranformed {
   targetedCategory = targetedCategory ?? []
   isSemiAutomatic = isSemiAutomatic ?? false
   // All the specified categories should exist
-  targetedCategory?.forEach(findAnomaly)
+  targetedCategory?.forEach(_ => findAnomaly(_, 'fr'))
 
   if (isSemiAutomatic) {
     if (targetedCategory.length !== 1) {
@@ -114,7 +114,7 @@ function validateAndTransformRow(row: RawRow): RowTranformed {
     }
     // Compute some fields from the YML
     const category = targetedCategory[0]
-    const anomaly = findAnomaly(category)
+    const anomaly = findAnomaly(category, 'fr')
     url = anomaly.path
     seoTitle = anomaly.seoTitle
     seoDescription = anomaly.seoDescription
@@ -133,7 +133,7 @@ function validateAndTransformRow(row: RawRow): RowTranformed {
   }
 
   // if multiple categories, always sort them in the same order as the HP
-  targetedCategory = sortBy(targetedCategory, _ => parseInt(findAnomaly(_).id, 10))
+  targetedCategory = sortBy(targetedCategory, _ => parseInt(findAnomaly(_, 'fr').id, 10))
 
   return {
     url,
@@ -208,7 +208,7 @@ async function readWholeTable(base: AirtableBase, tableId: string, fieldsMapping
 
 // All anomalies should have exactly 1 semi-automatic LP
 function checkNoMissingOrDuplicateAnomalies(rows: RowTranformed[]) {
-  allVisibleAnomalies().forEach(anomaly => {
+  allVisibleAnomalies('fr').forEach(anomaly => {
     const matchingRows = rows
       .filter(_ => _.isSemiAutomatic)
       .filter(_ => _.targetedCategory.length === 1 && _.targetedCategory[0] === anomaly.category)

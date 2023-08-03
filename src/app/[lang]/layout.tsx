@@ -5,6 +5,7 @@ import MuiSetup from './MuiSetup'
 import {I18nProvider} from '../../i18n/I18n'
 import {Metadata} from 'next'
 import {getHtmlAttributes} from '@codegouvfr/react-dsfr/next-appdir/getHtmlAttributes'
+import {DsfrProvider} from '@codegouvfr/react-dsfr/next-appdir/DsfrProvider'
 
 export function generateMetadata(): Metadata {
   return {
@@ -77,7 +78,7 @@ export function generateMetadata(): Metadata {
 const RootLayout = ({children, params}: {children: React.ReactNode; params: any}) => {
   return (
     <html
-      {...getHtmlAttributes({defaultColorScheme: 'light'})}
+      {...getHtmlAttributes({defaultColorScheme: 'light', lang: params.lang})}
       //NOTE: Scrollbar always visible to avoid layout shift when modal are opened
       style={{
         overflow: '-moz-scrollbars-vertical',
@@ -88,7 +89,9 @@ const RootLayout = ({children, params}: {children: React.ReactNode; params: any}
       <body>
         <I18nProvider lang={params.lang}>
           <MuiSetup>
-            <App>{children}</App>
+            <DsfrProvider lang={params.lang}>
+              <App>{children}</App>
+            </DsfrProvider>
           </MuiSetup>
         </I18nProvider>
       </body>

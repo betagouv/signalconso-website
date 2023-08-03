@@ -6,6 +6,7 @@ import {newsArticlesData} from 'actualites/newsArticlesData'
 import {getI18n} from '../../../i18n/I18nDictionnary'
 import {Metadata} from 'next'
 import {Props} from '../[dynamicPath]/faire-un-signalement/page'
+import {AppLangs} from '../../../i18n/localization/AppLangs'
 
 export function generateMetadata(props: {params: Props}): Metadata {
   const {messages: m} = getI18n(props.params.lang)
@@ -67,18 +68,20 @@ const PlanDuSite = ({params}: any) => {
         </ul>
         <h2 className="fr-h4">{m.planDuSite.reportIncidentSection}</h2>
 
-        <ul className="">
-          {allVisibleLandings().map(landingData => {
-            return (
-              <li key={landingData.url}>
-                <Link href={buildLinkLandingPage(landingData)}>
-                  {m.planDuSite.reportIncidentFor} {landingData.title}
-                </Link>
-              </li>
-            )
-          })}
-        </ul>
-        <hr className="mt-4" />
+        {params.lang === AppLangs.fr && (
+          <ul className="">
+            {allVisibleLandings().map(landingData => {
+              return (
+                <li key={landingData.url}>
+                  <Link href={buildLinkLandingPage(landingData)}>
+                    {m.planDuSite.reportIncidentFor} {landingData.title}
+                  </Link>
+                </li>
+              )
+            })}
+            <hr className="mt-4" />
+          </ul>
+        )}
         <p className="mt-4">
           {m.planDuSite.seeFullTree} <Link href={pagesDefs.arborescence.url}>{m.planDuSite.completeTree}</Link>
         </p>
@@ -106,19 +109,23 @@ const PlanDuSite = ({params}: any) => {
           <li>{m.planDuSite.accessManagement}</li>
           <li>{m.planDuSite.passwordModification}</li>
         </ul>
-        <h2 className="fr-h4">{m.planDuSite.newsSection}</h2>
-        <ul>
-          <li>
-            <Link href={pagesDefs.actualites.url}>{m.planDuSite.allNews}</Link>
-          </li>
-          {newsArticlesData.map(article => {
-            return (
-              <li key={article.slug}>
-                <Link href={buildLinkNewsArticle(article)}>{article.title}</Link>
+        {params.lang === AppLangs.fr && (
+          <>
+            <h2 className="fr-h4">{m.planDuSite.newsSection}</h2>
+            <ul>
+              <li>
+                <Link href={pagesDefs.actualites.url}>{m.planDuSite.allNews}</Link>
               </li>
-            )
-          })}
-        </ul>
+              {newsArticlesData.map(article => {
+                return (
+                  <li key={article.slug}>
+                    <Link href={buildLinkNewsArticle(article)}>{article.title}</Link>
+                  </li>
+                )
+              })}
+            </ul>
+          </>
+        )}
         <h2 className="fr-h4">{m.planDuSite.dgccrfSpaceSection}</h2>
         <ul>
           <li>

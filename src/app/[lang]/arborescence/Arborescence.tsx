@@ -198,8 +198,8 @@ const NodeInfo = ({anomaly}: {anomaly: SubcategoryWithInfoWall}) => {
 const Arbo = () => {
   const [openAll, setOpenAll] = useState(false)
   const [disabled, setDisabled] = useState(false)
-  const anomalies = allVisibleAnomalies()
-  const {m} = useI18n()
+  const {m, currentLang} = useI18n()
+  const anomalies = allVisibleAnomalies(currentLang)
   return (
     <ContentPageContainer>
       <h1>{m.arbo.title}</h1>

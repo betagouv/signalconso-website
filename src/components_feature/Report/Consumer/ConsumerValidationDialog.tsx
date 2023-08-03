@@ -28,7 +28,7 @@ interface ValidationForm {
 export const ConsumerValidationDialog = ({loading, open, consumerEmail, onClose, onValidated}: Props) => {
   const _form = useForm<ValidationForm>()
   const {signalConsoApiClient} = useApiClients()
-  const {m} = useI18n()
+  const {m, currentLang} = useI18n()
   const _validateEmail = useFetcher(signalConsoApiClient.checkEmailAndValidate)
   const _checkEmail = useFetcher(signalConsoApiClient.checkEmail)
   const [disableResendButton, setDisableResendButton] = useState(false)
@@ -73,7 +73,7 @@ export const ConsumerValidationDialog = ({loading, open, consumerEmail, onClose,
               onClick={() => {
                 setDisableResendButton(true)
                 setTimeout(() => setDisableResendButton(false), duration(15, 'second'))
-                _checkEmail.fetch({}, consumerEmail)
+                _checkEmail.fetch({}, consumerEmail, currentLang)
               }}
             >
               {m.consumerResentEmail}
