@@ -2,14 +2,15 @@ import LandingPage from '../../../reusablePages/LandingPage'
 import {allVisibleLandings} from '../../../landings/landingDataUtils'
 import {notFound} from 'next/navigation'
 import {Metadata} from 'next'
+import {AppLangs} from '../../../i18n/localization/AppLangs'
 
 export type PageProps = {
   dynamicPath: string
+  lang: any
 }
 
 function getLandingData(props: {params: PageProps}) {
-  const landingData = allVisibleLandings().find(_ => _.url === props?.params?.dynamicPath)
-  return landingData
+  return props?.params?.lang === AppLangs.fr ? allVisibleLandings().find(_ => _.url === props?.params?.dynamicPath) : undefined
 }
 
 export function generateMetadata(params: {params: PageProps}): Metadata {

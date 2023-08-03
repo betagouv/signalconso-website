@@ -684,7 +684,7 @@ export const en = {
       resolutionTips: 'Tips for resolving an individual problem (dispute)',
       reportIncidentSection: 'Reporting an incident',
       reportIncidentFor: 'Report an incident for',
-      seeFullTree: 'See also',
+      seeFullTree: 'See',
       completeTree: 'the complete tree of reporting an incident',
       incidentSteps: 'Details of the steps of an incident',
       step1: 'Step 1 - The problem',
@@ -778,7 +778,7 @@ export const en = {
       traitementSignalementsAbusifsTitle: 'Traitement des signalements abusifs ou frauduleux',
       traitementSignalementsAbusifsDescription:
         'Les droit de saisine par voie électronique ne s’applique pas aux envois abusifs, notamment par leur nombre, leur caractère répétitif ou systématique, ou les envois susceptibles de porter atteinte à la sécurité des systèmes d’information ou pouvant porter atteinte au personne physique ou morale (menace de mort, insulte, ...). Dans ces conditions les signalements répétés susceptibles de perturber le bon fonctionnement du service ou qui auraient pour effet de faire peser sur lui une charge disproportionnée au regard des moyens dont il dispose pourrait voir leurs adresses bloquées.',
-      mentionsLegalesTitle: 'Mentions légales',
+      mentionsLegalesTitle: 'Legal Notices',
       mentionsLegalesDescriptionPart1:
         "L'édition de l'interface en ligne https://signal.conso.gouv.fr est assurée par la Direction générale de la Concurrence, de la Consommation et de la Répression des fraudes (DGCCRF), située au 59 Boulevard Vincent Auriol 75013 Paris.",
       mentionsLegalesDescriptionPart2:
