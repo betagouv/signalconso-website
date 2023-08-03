@@ -65,7 +65,14 @@ export function ScHeader() {
             buildMenuLink(currentLang, pathName, pagesDefs.quiSommesNous.url, m.header.quiSommesNousLinkTitle),
             buildMenuLink(currentLang, pathName, pagesDefs.stats.url, m.header.statsLinkTitle),
             buildMenuLink(currentLang, pathName, pagesDefs.contact.url, m.header.contactLinkTitle),
-            buildMenuLink(currentLang, pathName, urlServicePublicPlus, m.header.servicePublicPlusLinkTitle, '_blank'),
+            {
+              isActive: false,
+              linkProps: {
+                href: urlServicePublicPlus,
+                target: '_blank',
+              },
+              text: m.header.servicePublicPlusLinkTitle,
+            },
             ...(currentLang === AppLangs.fr
               ? [buildMenuLink(currentLang, pathName, pagesDefs.actualites.url, m.header.actualitesLinkTitle)]
               : []),
