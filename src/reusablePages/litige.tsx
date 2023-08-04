@@ -46,7 +46,7 @@ export const Litige = ({params}: any) => {
           <ul>
             <li>
               <a
-                href="/docs/ModeleLettreLitige.txt"
+                href={`/${params.lang}/docs/ModeleLettreLitige.txt`}
                 rel="noreferrer"
                 target="_blank"
                 title={m.litige.step1.downloadTitle}
