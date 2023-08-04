@@ -73,6 +73,6 @@ function computeLang(currentCookieLang: string | undefined, headers: any) {
 export const config = {
   matcher: [
     // Skip all internal paths (_next)
-    '/((?!api|_next/static|sitemap.xml|_next/image|image|icons|favicon.ico).*)',
+    '/((?!api|_next/static|sitemap.xml|robots.txt|_next/image|image|icons|favicon.ico).*)',
   ],
 }
