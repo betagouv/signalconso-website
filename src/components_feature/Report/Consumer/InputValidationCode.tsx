@@ -1,6 +1,6 @@
 import {styleUtils} from 'core/theme'
 import {TextMaskCustom} from './InputValidationCodeMask'
-import {Box, useTheme} from '@mui/material'
+import {alpha, Box, useTheme} from '@mui/material'
 import {ScInput, ScInputProps} from 'components_simple/Input/ScInput'
 import React from 'react'
 import {useI18n} from 'i18n/I18n'
@@ -14,6 +14,7 @@ export const InputValidationCode = ({...other}: Props) => {
   return (
     <Box sx={{display: 'flex', justifyContent: 'center'}}>
       <ScInput
+        aria-label="Code de validation (6 chiffres)"
         type="number"
         {...other}
         sx={{
@@ -37,7 +38,7 @@ export const InputValidationCode = ({...other}: Props) => {
         inputProps={{style: {fontSize}}}
         InputProps={{
           inputComponent: TextMaskCustom as any,
-          startAdornment: <Box sx={{mr: 0, fontSize, color: t => t.palette.text.disabled}}>SC-</Box>,
+          startAdornment: <Box sx={{mr: 0, fontSize, color: t => alpha(t.palette.text.disabled, 0.7)}}>SC-</Box>,
         }}
       />
     </Box>

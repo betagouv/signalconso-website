@@ -18,6 +18,7 @@ module.exports = {
         scdarkblue: '#1e2b50',
         sclightpurple: '#e3e3fd', // the background of the HP
         scorange: '#EA9001', // orange from the logo
+        schint: '#656565',
       },
     },
   },

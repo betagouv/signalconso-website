@@ -4,6 +4,7 @@ import React, {ReactNode} from 'react'
 interface RowProps extends BoxProps {
   dense?: boolean
   icon?: string | ReactNode
+  component?: 'li'
 }
 
 export const Row = ({icon, dense, children, sx, ...props}: RowProps) => {

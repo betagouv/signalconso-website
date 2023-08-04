@@ -21,6 +21,7 @@ import {ReportCreateProvider} from '../../components_feature/Report/ReportCreate
 import {ReportFlowProvider} from '../../components_feature/Report/ReportFlowContext'
 import {monkeyPatchDomForGoogleTranslate} from 'utils/fixGoogleTranslate'
 import {useI18n} from '../../i18n/I18n'
+import {SkipLinks} from '@codegouvfr/react-dsfr/SkipLinks'
 
 monkeyPatchDomForGoogleTranslate()
 
@@ -82,6 +83,18 @@ const AppBase = ({children}: {children: React.ReactNode}) => {
           <Box sx={{mt: 1}}>{children}</Box>
         ) : (
           <>
+            <SkipLinks
+              links={[
+                {
+                  anchor: '#main-content',
+                  label: 'Contenu',
+                },
+                {
+                  anchor: '#fr-footer',
+                  label: 'Pied de page',
+                },
+              ]}
+            />
             <ScHeader />
             {children}
             <RgpdBanner />
