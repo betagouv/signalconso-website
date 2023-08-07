@@ -76,6 +76,10 @@ export function generateMetadata(): Metadata {
 }
 
 const RootLayout = ({children, params}: {children: React.ReactNode; params: any}) => {
+  console.log('°°°°°°°RootLayout°°°°°°°°')
+  console.log(params)
+  console.log('°°°°°°°°°°°°°°°')
+
   return (
     <html
       {...getHtmlAttributes({defaultColorScheme: 'light', lang: params.lang})}

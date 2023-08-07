@@ -1,12 +1,10 @@
 import {NextResponse} from 'next/server'
 
 import Negotiator from 'negotiator'
-import {AppLangs} from './i18n/localization/AppLangs'
+import {AppLangs, getSupportedLang, supportedLang} from './i18n/localization/AppLangs'
 import {match} from '@formatjs/intl-localematcher'
 import {internalPageDefs, pagesDefs} from './core/pagesDefinitions'
 import {appConfig} from './core/appConfig'
-
-let supportedLang = appConfig.translationFeatureFlagEnabled ? [AppLangs.en, AppLangs.fr] : [AppLangs.fr]
 
 export function middleware(request: any) {
   // Check if there is any supported locale in the pathname
@@ -39,8 +37,8 @@ export function middleware(request: any) {
   }
 }
 
-function removeUnsupportedLangInCookiesIfAny(request: any, supportedLang: AppLangs[], currentCookieLang: string) {
-  if (supportedLang.every(lang => lang != currentCookieLang)) {
+function removeUnsupportedLangInCookiesIfAny(request: any, currentCookieLang: string) {
+  if (getSupportedLang(currentCookieLang)) {
     request.cookies.delete('NEXT_LANG')
   }
 }

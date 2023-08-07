@@ -2,13 +2,19 @@
 import {Fender} from 'alexlibs/mui-extension/Fender/Fender'
 import {LinkBackToHome} from '../../components_simple/LinkBackToHome'
 import {Page} from '../../components_simple/Page/Page'
-
-import {useI18n} from '../../i18n/I18n'
+import {usePathname} from 'next/navigation'
+import {getI18n} from '../../i18n/I18nDictionnary'
+import {AppLangs, getSupportedLang} from '../../i18n/localization/AppLangs'
 
 // No metadata here, not available yet https://github.com/vercel/next.js/issues/45620
 
 export default function NotFound() {
-  const {m} = useI18n()
+  const pathname = usePathname()
+  const currentPathLang = pathname!.toLowerCase().split('/')[1]
+  const lang = getSupportedLang(currentPathLang) ?? AppLangs.fr
+
+  const {messages: m} = getI18n(lang)
+
   return (
     <Page>
       <Fender
@@ -23,7 +29,7 @@ export default function NotFound() {
           />
         }
       >
-        <LinkBackToHome isWebView={false} />
+        <LinkBackToHome isWebView={false} lang={lang} />
       </Fender>
     </Page>
   )
