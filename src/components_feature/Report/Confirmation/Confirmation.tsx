@@ -58,7 +58,9 @@ export const ConfirmationInner = ({
           {m.confirmationTitle}
         </Txt>
         <FriendlyHelpText>
-          {ReportDraft.isTransmittableToPro(draft) ? m.confirmationAlertTransmittable : m.confirmationAlert}
+          <p className="mb-0">
+            {ReportDraft.isTransmittableToPro(draft) ? m.confirmationAlertTransmittable : m.confirmationAlert}
+          </p>
         </FriendlyHelpText>
 
         <ConfirmationStepper>
@@ -66,34 +68,38 @@ export const ConfirmationInner = ({
             <Box sx={{display: 'flex'}}>
               <AnomalyImage anomaly={anomaly} sx={{mr: 2}} />
               <Box>
-                <Txt block size="big" bold sx={{mb: 1}}>
+                <Txt block size="big" bold sx={{mb: 1}} component="h3">
                   {findAnomaly(draft.category, currentLang).title}
                 </Txt>
-                {draft.subcategories.map(_ => (
-                  <Row dense icon="subdirectory_arrow_right" key={_.title}>
-                    {_.title}
-                  </Row>
-                ))}
+                <ul className="pl-0">
+                  {draft.subcategories.map(_ => (
+                    <Row dense icon="subdirectory_arrow_right" key={_.title} component="li">
+                      {_.title}
+                    </Row>
+                  ))}
+                </ul>
               </Box>
             </Box>
           </ConfirmationStep>
           <ConfirmationStep title={m.step_description} {...{goToStep}}>
-            {draft.details.map(({label, value}) => (
-              <Box key={label} sx={{mb: 1}}>
-                <Txt block bold sx={{mr: 1}} dangerouslySetInnerHTML={{__html: label}} />
-                <Txt color="hint">{value}</Txt>
-              </Box>
-            ))}
-            <Box sx={{mb: 1}}>
-              <Txt block bold sx={{mb: 1}}>
-                {m.attachments}
-              </Txt>
-              <ReportFiles fileOrigin={FileOrigin.Consumer} hideAddBtn files={draft.uploadedFiles} />
-            </Box>
+            <dl>
+              {draft.details.map(({label, value}) => (
+                <div key={label} className="mb-2">
+                  <dt className="font-medium" dangerouslySetInnerHTML={{__html: label}} />
+                  <dd className="text-schint">{value}</dd>
+                </div>
+              ))}
+              <div className="mb-2">
+                <dt className="font-medium mb-1">{m.attachments}</dt>
+                <dd>
+                  <ReportFiles fileOrigin={FileOrigin.Consumer} hideAddBtn files={draft.uploadedFiles} />
+                </dd>
+              </div>
+            </dl>
           </ConfirmationStep>
           {draft.companyDraft && (
             <ConfirmationStep title={m.step_company} {...{goToStep}}>
-              <Txt size="big" bold block>
+              <Txt size="big" bold block sx={{mb: 1}} component="h3">
                 {draft.companyDraft.name} {draft.companyDraft.brand ?? ''}
               </Txt>
 

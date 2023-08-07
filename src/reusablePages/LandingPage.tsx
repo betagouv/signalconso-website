@@ -43,7 +43,7 @@ export default function LandingPage(props: Props) {
 
   return (
     <>
-      <div>
+      <main role="main" id="main-content">
         <div
           className=" text-center px-8 py-14"
           style={{background: dsfrTheme.decisions.background.actionLow.blueFrance.default}}
@@ -131,7 +131,7 @@ export default function LandingPage(props: Props) {
             ))}
           </div>
         )}
-      </div>
+      </main>
     </>
   )
 }

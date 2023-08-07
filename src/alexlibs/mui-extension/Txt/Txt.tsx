@@ -18,7 +18,7 @@ interface Props extends BoxProps {
   noWrap?: boolean
   link?: boolean
   span?: boolean
-  component?: 'h2' | 'h1' | 'p'
+  component?: 'h3' | 'h2' | 'h1' | 'p'
 }
 
 export const Txt = forwardRef(
