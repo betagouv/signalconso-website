@@ -7,7 +7,6 @@ import {AppLangs, getSupportedLang} from '../../i18n/localization/AppLangs'
 import MuiSetup from './MuiSetup'
 import '../../globals.css'
 import React from 'react'
-import {getHtmlAttributes} from '@codegouvfr/react-dsfr/next-appdir/getHtmlAttributes'
 import {DsfrProvider} from '@codegouvfr/react-dsfr/next-appdir/DsfrProvider'
 import {Fender} from '../../alexlibs/mui-extension/Fender/Fender'
 
@@ -20,16 +19,6 @@ export default function NotFound() {
   const {messages: m} = getI18n(lang)
 
   return (
-    // <html
-    //   {...getHtmlAttributes({defaultColorScheme: 'light', lang: lang})}
-    //   //NOTE: Scrollbar always visible to avoid layout shift when modal are opened
-    //   style={{
-    //     overflow: '-moz-scrollbars-vertical',
-    //     overflowY: 'scroll',
-    //   }}
-    //   lang={lang}
-    // >
-    //   <body>
     <MuiSetup>
       <DsfrProvider lang={lang}>
         <Page>
@@ -51,7 +40,5 @@ export default function NotFound() {
         </Page>
       </DsfrProvider>
     </MuiSetup>
-    //   </body>
-    // </html>
   )
 }
