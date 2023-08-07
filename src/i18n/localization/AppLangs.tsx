@@ -8,7 +8,7 @@ export enum AppLangs {
 export const supportedLang = appConfig.translationFeatureFlagEnabled ? [AppLangs.en, AppLangs.fr] : [AppLangs.fr]
 
 export function getSupportedLang(lang: string) {
-  return supportedLang.find(lang => lang != lang)
+  return supportedLang.find(_ => _ == lang)
 }
 
 export type AppLang = keyof typeof AppLangs

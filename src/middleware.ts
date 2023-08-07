@@ -1,7 +1,7 @@
 import {NextResponse} from 'next/server'
 
 import Negotiator from 'negotiator'
-import {AppLangs, getSupportedLang} from './i18n/localization/AppLangs'
+import {AppLang, AppLangs, getSupportedLang} from './i18n/localization/AppLangs'
 import {match} from '@formatjs/intl-localematcher'
 import {internalPageDefs, pagesDefs} from './core/pagesDefinitions'
 import {appConfig} from './core/appConfig'
@@ -19,7 +19,14 @@ export function middleware(request: any) {
 
   // No local in path, get the cookie lang or header lang or default lang
   if (pathIsMissingSupportedLang) {
-    const computedLang = appConfig.translationFeatureFlagEnabled ? computeLang(currentCookieLang, request.headers) : AppLangs.fr
+    //Should always redirect to French version when /webview with no lang to ensure backward compatibility to mobile app
+    const isWebviewAndShouldRedirectToFr = isWebview(pathname)
+
+    const computedLang =
+      isWebviewAndShouldRedirectToFr || !appConfig.translationFeatureFlagEnabled
+        ? AppLangs.fr
+        : computeLang(currentCookieLang, request.headers)
+
     const redirectUrl = `/${computedLang}/${pathname}`
     return buildRedirectToNewLangResponse(request, redirectUrl, computedLang)
   } else {
@@ -37,6 +44,12 @@ export function middleware(request: any) {
       return buildRedirectToNewLangResponse(request, redirectUrl, currentPathLang)
     }
   }
+}
+
+const isWebview = (pathname: string) => {
+  const regexPattern = `^\\/webview\\/`
+  const regex = new RegExp(regexPattern)
+  return regex.test(pathname)
 }
 
 function removeUnsupportedLangInCookiesIfAny(request: any, currentCookieLang: string) {
