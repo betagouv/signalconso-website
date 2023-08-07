@@ -242,7 +242,7 @@ const AcknowledgementLayout = ({
   title?: string
   isWebView: boolean
 } & BoxProps) => {
-  const {m} = useI18n()
+  const {m, currentLang} = useI18n()
   return (
     <>
       <img
@@ -290,7 +290,7 @@ const AcknowledgementLayout = ({
           </p>
         </PanelBody>
         <PanelActions sx={{justifyContent: 'flex-start'}}>
-          <LinkBackToHome {...{isWebView}} />
+          <LinkBackToHome isWebView={isWebView} lang={currentLang} />
         </PanelActions>
       </Panel>
     </>

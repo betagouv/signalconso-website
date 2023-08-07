@@ -1,7 +1,7 @@
 import {NextResponse} from 'next/server'
 
 import Negotiator from 'negotiator'
-import {AppLangs} from './i18n/localization/AppLangs'
+import {AppLangs, getSupportedLang} from './i18n/localization/AppLangs'
 import {match} from '@formatjs/intl-localematcher'
 import {internalPageDefs, pagesDefs} from './core/pagesDefinitions'
 import {appConfig} from './core/appConfig'
@@ -15,7 +15,7 @@ export function middleware(request: any) {
   const currentPathLang = pathname!.toLowerCase().split('/')[1]
   const currentCookieLang: string | undefined = request.cookies.get('NEXT_LANG')?.value
 
-  currentCookieLang && removeUnsupportedLangInCookiesIfAny(request, supportedLang, currentCookieLang)
+  currentCookieLang && removeUnsupportedLangInCookiesIfAny(request, currentCookieLang)
 
   // No local in path, get the cookie lang or header lang or default lang
   if (pathIsMissingSupportedLang) {
@@ -39,8 +39,8 @@ export function middleware(request: any) {
   }
 }
 
-function removeUnsupportedLangInCookiesIfAny(request: any, supportedLang: AppLangs[], currentCookieLang: string) {
-  if (supportedLang.every(lang => lang != currentCookieLang)) {
+function removeUnsupportedLangInCookiesIfAny(request: any, currentCookieLang: string) {
+  if (getSupportedLang(currentCookieLang)) {
     request.cookies.delete('NEXT_LANG')
   }
 }
