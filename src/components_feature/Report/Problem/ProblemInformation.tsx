@@ -28,7 +28,7 @@ interface Props {
 
 export const ProblemInformation = ({anomaly, subcategories, information, isWebView}: Props) => {
   const _analytic = useAnalyticContext()
-  const {m} = useI18n()
+  const {m, currentLang} = useI18n()
   const {signalConsoApiClient} = useApiClients()
   const [votedPositive, setVotedPositive] = useState<boolean | undefined>()
   useEffect(() => {
@@ -115,10 +115,10 @@ export const ProblemInformation = ({anomaly, subcategories, information, isWebVi
                 <Icon style={{fontSize: 38}}>thumb_down</Icon>
               </IconBtn>
             </PanelBody>
-          )}
+          )}{' '}
         </Panel>
       </Animate>
-      <LinkBackToHome {...{isWebView}} />
+      <LinkBackToHome isWebView={isWebView} lang={currentLang} />
     </>
   )
 }

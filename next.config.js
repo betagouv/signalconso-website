@@ -7,9 +7,20 @@ const redirectsFromOtherHosts = hostsToRedirect.map(host => ({
   destination: 'https://signal.conso.gouv.fr/:path*',
   permanent: true,
 }))
+
+function redirectsToDashboard(page) {
+  return {
+    source: `/${page}`,
+    destination: `${process.env.NEXT_PUBLIC_DASHBOARD_BASE_URL}/${page}`,
+    permanent: true,
+  }
+}
+
 // these pages have been moved
 const changedPaths = [
   ['/news', '/actualites'],
+  ['/index.html', '/'],
+  ['/comment-%C3%A7a-marche', '/comment-ca-marche'],
   [
     '/news/signalconso-desormais-disponible-en-application-mobile',
     '/actualites/signalconso-desormais-disponible-en-application-mobile',
@@ -24,7 +35,12 @@ const redirectsForChangedPaths = changedPaths.map(([source, destination]) => ({
   permanent: true,
 }))
 
-const redirects = [...redirectsFromOtherHosts, ...redirectsForChangedPaths]
+const redirects = [
+  ...redirectsFromOtherHosts,
+  ...redirectsForChangedPaths,
+  redirectsToDashboard('connexion'),
+  redirectsToDashboard('activation'),
+]
 
 //TRELLO-1522 : Implement security headers as DGCCRF is monitoring the website via https://observatory.mozilla.org/
 // See https://nextjs.org/docs/advanced-features/security-headers for implementation details
