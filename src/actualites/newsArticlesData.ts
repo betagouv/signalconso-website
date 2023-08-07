@@ -7,6 +7,15 @@ export type NewsArticle = (typeof newsArticlesData)[number]
 // This is the display order. Keep the most recents at the start of the array
 export const newsArticlesData = [
   {
+    date: '2023-08-04',
+    slug: 'signalconso-une-accessibilite-renforcee-pour-tous-les-consommateurs',
+    title: 'SignalConso : Une Accessibilité Renforcée pour tous les Consommateurs',
+    // used for SEO description
+    // used for the preview in /news
+    excerpt: `SignalConso : Une Accessibilité Renforcée pour tous les Consommateurs`,
+    content: ArticleAccessibilite,
+  },
+  {
     date: '2023-06-08',
     slug: 'site-dgccrf-votre-avis-nous-interesse',
     title: 'Le site internet de la DGCCRF : votre avis nous intéresse !',
@@ -22,14 +31,5 @@ export const newsArticlesData = [
     excerpt: `Découvrez dès maintenant la nouvelle application mobile SignalConso, qui rend vos signalements en tant que consommateur
     encore plus faciles et simplifie vos démarches.`,
     content: ArticleAppMobile,
-  },
-  {
-    date: '2023-08-04',
-    slug: 'signalconso-une-accessibilite-renforcee-pour-tous-les-consommateurs',
-    title: 'SignalConso : Une Accessibilité Renforcée pour tous les Consommateurs',
-    // used for SEO description
-    // used for the preview in /news
-    excerpt: `SignalConso : Une Accessibilité Renforcée pour tous les Consommateurs`,
-    content: ArticleAccessibilite,
   },
 ]
