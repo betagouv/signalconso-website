@@ -6,6 +6,7 @@ import {I18nProvider} from '../../i18n/I18n'
 import {Metadata} from 'next'
 import {getHtmlAttributes} from '@codegouvfr/react-dsfr/next-appdir/getHtmlAttributes'
 import {DsfrProvider} from '@codegouvfr/react-dsfr/next-appdir/DsfrProvider'
+import {Fender} from '../../alexlibs/mui-extension/Fender/Fender'
 
 export function generateMetadata(): Metadata {
   return {
@@ -76,10 +77,6 @@ export function generateMetadata(): Metadata {
 }
 
 const RootLayout = ({children, params}: {children: React.ReactNode; params: any}) => {
-  console.log('°°°°°°°RootLayout°°°°°°°°')
-  console.log(params)
-  console.log('°°°°°°°°°°°°°°°')
-
   return (
     <html
       {...getHtmlAttributes({defaultColorScheme: 'light', lang: params.lang})}

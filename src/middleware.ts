@@ -1,10 +1,12 @@
 import {NextResponse} from 'next/server'
 
 import Negotiator from 'negotiator'
-import {AppLangs, getSupportedLang, supportedLang} from './i18n/localization/AppLangs'
+import {AppLangs, getSupportedLang} from './i18n/localization/AppLangs'
 import {match} from '@formatjs/intl-localematcher'
 import {internalPageDefs, pagesDefs} from './core/pagesDefinitions'
 import {appConfig} from './core/appConfig'
+
+let supportedLang = appConfig.translationFeatureFlagEnabled ? [AppLangs.en, AppLangs.fr] : [AppLangs.fr]
 
 export function middleware(request: any) {
   // Check if there is any supported locale in the pathname
@@ -13,7 +15,7 @@ export function middleware(request: any) {
   const currentPathLang = pathname!.toLowerCase().split('/')[1]
   const currentCookieLang: string | undefined = request.cookies.get('NEXT_LANG')?.value
 
-  currentCookieLang && removeUnsupportedLangInCookiesIfAny(request, supportedLang, currentCookieLang)
+  currentCookieLang && removeUnsupportedLangInCookiesIfAny(request, currentCookieLang)
 
   // No local in path, get the cookie lang or header lang or default lang
   if (pathIsMissingSupportedLang) {

@@ -22,6 +22,7 @@ import {ReportFlowProvider} from '../../components_feature/Report/ReportFlowCont
 import {monkeyPatchDomForGoogleTranslate} from 'utils/fixGoogleTranslate'
 import {useI18n} from '../../i18n/I18n'
 import {SkipLinks} from '@codegouvfr/react-dsfr/SkipLinks'
+import {Fender} from 'alexlibs/mui-extension/Fender/Fender'
 
 monkeyPatchDomForGoogleTranslate()
 
