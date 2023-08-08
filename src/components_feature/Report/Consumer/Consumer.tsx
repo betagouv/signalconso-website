@@ -5,8 +5,6 @@ import {EventCategories, ReportEventActions} from 'analytic/analytic'
 import {FormLayout} from 'components_simple/FormLayout/FormLayout'
 import {ScInput} from 'components_simple/Input/ScInput'
 import {Panel, PanelBody} from 'components_simple/Panel/Panel'
-import {ScRadioGroup} from 'components_simple/RadioGroup/RadioGroup'
-import {ScRadioGroupItem} from 'components_simple/RadioGroup/RadioGroupItem'
 import {StepNavigation} from 'components_simple/ReportFlowStepper/ReportFlowStepper'
 import {ReportFlowStepperActions} from 'components_simple/ReportFlowStepper/ReportFlowStepperActions'
 import {Row} from 'components_simple/Row/Row'
@@ -26,6 +24,7 @@ import {DeepPartial} from '../../../utils/utils'
 import {useReportFlowContext} from '../ReportFlowContext'
 import {ConsumerAnonymousInformation} from './ConsumerAnonymousInformation'
 import {ConsumerValidationDialog} from './ConsumerValidationDialog'
+import {ScRadioButtons} from '../../../components_simple/RadioGroup/ScRadioButtons'
 
 interface ConsumerForm {
   firstName: string
@@ -94,6 +93,16 @@ export const ConsumerInner = ({
       })(),
     })
   }
+
+  const gendersOptions = genders
+    .map(gender => {
+      return {
+        label: m.gender[gender],
+        value: gender as 'Male' | 'Female' | undefined,
+      }
+    })
+    .concat({label: m.unknownGender, value: undefined})
+
   return (
     <>
       <Panel title={m.consumerTitle}>
@@ -106,14 +115,7 @@ export const ConsumerInner = ({
               <Controller
                 defaultValue={draft.consumer?.gender}
                 control={_form.control}
-                render={({field}) => (
-                  <ScRadioGroup {...field} inline={isSmOrMore} dense sx={{mt: 1, mb: 2}}>
-                    {genders.map(gender => (
-                      <ScRadioGroupItem key={gender} value={gender} title={m.gender[gender]} />
-                    ))}
-                    <ScRadioGroupItem value={undefined} title={m.unknownGender} />
-                  </ScRadioGroup>
-                )}
+                render={({field}) => <ScRadioButtons {...field} orientation="horizontal" options={gendersOptions} />}
                 name={'gender'}
               />
             </FormLayout>
@@ -214,18 +216,21 @@ export const ConsumerInner = ({
                     },
                   }}
                   render={({field}) => (
-                    <ScRadioGroup {...field} {...getErrors('contactAgreement')}>
-                      <ScRadioGroupItem
-                        value={true}
-                        title={m.contactAgreementTrueTitle}
-                        description={<Txt size="small" dangerouslySetInnerHTML={{__html: m.contactAgreementTrueDesc}} />}
-                      />
-                      <ScRadioGroupItem
-                        value={false}
-                        title={m.contactAgreementFalseTitle}
-                        description={<Txt size="small" dangerouslySetInnerHTML={{__html: m.contactAgreementFalseDesc}} />}
-                      />
-                    </ScRadioGroup>
+                    <ScRadioButtons
+                      {...field}
+                      options={[
+                        {
+                          label: m.contactAgreementTrueTitle,
+                          description: <Txt size="small" dangerouslySetInnerHTML={{__html: m.contactAgreementTrueDesc}} />,
+                          value: true,
+                        },
+                        {
+                          label: m.contactAgreementFalseTitle,
+                          description: <Txt size="small" dangerouslySetInnerHTML={{__html: m.contactAgreementFalseDesc}} />,
+                          value: false,
+                        },
+                      ]}
+                    />
                   )}
                 />
               </Row>

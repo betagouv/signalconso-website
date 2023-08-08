@@ -30,6 +30,7 @@ import {getDefaultValueFromInput, getOptionsFromInput, getPlaceholderFromInput} 
 import {DetailsAlertProduitDangereux} from './DetailsAlertProduitDangereux'
 import {DetailsSpecifyInput} from './DetailsSpecifyInput'
 import {getDraftReportInputs} from './draftReportInputs'
+import {ScRadioButtons} from '../../../components_simple/RadioGroup/ScRadioButtons'
 import {Alert} from '@codegouvfr/react-dsfr/Alert'
 
 export class SpecifyFormUtils {
@@ -233,25 +234,26 @@ export const DetailsInner = ({
                     [DetailInputType.RADIO]: () =>
                       controller({
                         render: ({field}) => (
-                          <ScRadioGroup {...field} sx={{mt: 1}} dense helperText={errorMessage} error={hasErrors}>
-                            {getOptionsFromInput(input)?.map((option, i) => (
-                              <ScRadioGroupItem
-                                key={option}
-                                value={option}
-                                title={<span dangerouslySetInnerHTML={{__html: option}} />}
-                                description={
-                                  field.value === option && option.includes(SpecifyFormUtils.keyword) ? (
-                                    <DetailsSpecifyInput
-                                      control={control}
-                                      error={errors[SpecifyFormUtils.getInputName(inputIndex)]}
-                                      defaultValue={initialValues?.[SpecifyFormUtils.getInputName(inputIndex)]}
-                                      name={SpecifyFormUtils.getInputName(inputIndex)}
-                                    />
-                                  ) : undefined
+                          <ScRadioButtons
+                            {...field}
+                            options={
+                              getOptionsFromInput(input)?.map((option, i) => {
+                                return {
+                                  label: <span dangerouslySetInnerHTML={{__html: option}} />,
+                                  value: option,
+                                  specify:
+                                    field.value === option && option.includes(SpecifyFormUtils.keyword) ? (
+                                      <DetailsSpecifyInput
+                                        control={control}
+                                        error={errors[SpecifyFormUtils.getInputName(inputIndex)]}
+                                        defaultValue={initialValues?.[SpecifyFormUtils.getInputName(inputIndex)]}
+                                        name={SpecifyFormUtils.getInputName(inputIndex)}
+                                      />
+                                    ) : undefined,
                                 }
-                              />
-                            ))}
-                          </ScRadioGroup>
+                              }) ?? []
+                            }
+                          />
                         ),
                       }),
                     [DetailInputType.CHECKBOX]: () =>

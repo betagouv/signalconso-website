@@ -1,5 +1,4 @@
-import {Alert} from '@codegouvfr/react-dsfr/Alert'
-import {Box, BoxProps, Icon} from '@mui/material'
+import {BoxProps, Icon} from '@mui/material'
 import {Fender} from 'alexlibs/mui-extension/Fender/Fender'
 import {useAnalyticContext} from 'analytic/AnalyticContext'
 import {CompanySearchEventActions, EventCategories} from 'analytic/analytic'
@@ -7,8 +6,6 @@ import {AddressComponent} from 'components_simple/Address/Address'
 import {Animate} from 'components_simple/Animate/Animate'
 import {BtnNextSubmit} from 'components_simple/Buttons'
 import {Panel, PanelActions, PanelBody} from 'components_simple/Panel/Panel'
-import {ScRadioGroup} from 'components_simple/RadioGroup/RadioGroup'
-import {ScRadioGroupItem} from 'components_simple/RadioGroup/RadioGroupItem'
 import {styleUtils} from 'core/theme'
 import {useI18n} from 'i18n/I18n'
 import {ReactNode, useEffect, useState} from 'react'
@@ -16,6 +13,7 @@ import {Controller, useForm} from 'react-hook-form'
 import {useToastError} from '../../../hooks/useToastError'
 import {CompanySearchResult, isGovernmentCompany} from '../../../model/Company'
 import {CompanyWebsiteVendor} from './CompanyWebsiteVendor'
+import {ScRadioButtons} from '../../../components_simple/RadioGroup/ScRadioButtons'
 
 interface Props extends Omit<BoxProps, 'onSubmit'> {
   companies: CompanySearchResult[]
@@ -69,6 +67,43 @@ export const CompanySearchResultComponent = ({companies, onSubmit}: Props) => {
 
   const onlyClosed = companies.findIndex(_ => _.isOpen) === -1
 
+  const createCompanyEntry = (company: CompanySearchResult, closed: boolean) => {
+    const isGovernment = isGovernmentCompany(company)
+    return (
+      <div className="flex justify-between">
+        <div>
+          <span className="font-bold block">
+            {company.commercialName ? `${company.commercialName} (${company.name})` : company.name}
+          </span>
+          {company.brand && <span className="block">{company.brand}</span>}
+
+          {company.isHeadOffice && (
+            <Row icon="business" variant="blue">
+              {m.isHeadOffice}
+            </Row>
+          )}
+
+          {company.activityLabel && <Row icon="label">{company.activityLabel}</Row>}
+          {isGovernment && (
+            <Row icon="error" variant="error">
+              {m.governmentCompany}
+            </Row>
+          )}
+
+          <Row icon="badge">
+            Numéro SIRET <span className="">{company.siret}</span>
+          </Row>
+          {company.address && (
+            <Row icon="location_on">
+              <AddressComponent address={company.address} />
+            </Row>
+          )}
+        </div>
+        {closed && <span className="text-red-600">{m.closedCompany}</span>}
+      </div>
+    )
+  }
+
   return (
     <>
       <Animate>
@@ -99,57 +134,17 @@ export const CompanySearchResultComponent = ({companies, onSubmit}: Props) => {
                   }}
                   name="result"
                   render={({field}) => (
-                    <>
-                      <ScRadioGroup {...field} error={!!errors.result}>
-                        {companies.map(company => {
-                          const isGovernment = isGovernmentCompany(company)
-                          const closed = !company.isOpen
-                          return (
-                            <ScRadioGroupItem key={company.siret} value={company.siret!} disabled={closed}>
-                              <div className="flex justify-between">
-                                <div>
-                                  <span className="font-bold block">
-                                    {company.commercialName ? `${company.commercialName} (${company.name})` : company.name}
-                                  </span>
-                                  {company.brand && <span className="block">{company.brand}</span>}
-
-                                  {company.isHeadOffice && (
-                                    <Row icon="business" variant="blue">
-                                      {m.isHeadOffice}
-                                    </Row>
-                                  )}
-
-                                  {company.activityLabel && <Row icon="label">{company.activityLabel}</Row>}
-                                  {isGovernment && (
-                                    <Row icon="error" variant="error">
-                                      {m.governmentCompany}
-                                    </Row>
-                                  )}
-
-                                  <Row icon="badge">
-                                    Numéro SIRET <span className="">{company.siret}</span>
-                                  </Row>
-                                  {company.address && (
-                                    <Row icon="location_on">
-                                      <AddressComponent address={company.address} />
-                                    </Row>
-                                  )}
-                                </div>
-                                {closed && <span className="text-red-600">{m.closedCompany}</span>}
-                              </div>
-                            </ScRadioGroupItem>
-                          )
-                        })}
-                      </ScRadioGroup>
-                      {onlyClosed && (
-                        <Alert
-                          description={m.closedCompanyText}
-                          severity="warning"
-                          title={m.closedCompany}
-                          className="fr-mt-4w"
-                        />
-                      )}
-                    </>
+                    <ScRadioButtons
+                      {...field}
+                      options={companies.map(company => {
+                        const closed = !company.isOpen
+                        return {
+                          label: createCompanyEntry(company, closed),
+                          value: company.siret!,
+                          disabled: closed,
+                        }
+                      })}
+                    />
                   )}
                 />
               </PanelBody>
