@@ -1,11 +1,10 @@
-import {ScRadioGroupItem} from 'components_simple/RadioGroup/RadioGroupItem'
-import {ScRadioGroup} from 'components_simple/RadioGroup/RadioGroup'
 import {Panel, PanelActions, PanelBody} from 'components_simple/Panel/Panel'
 import {useI18n} from 'i18n/I18n'
 import React from 'react'
 import {Controller, useForm} from 'react-hook-form'
 import {Country, countryLabel} from '../../../model/Country'
 import {BtnNextSubmit} from 'components_simple/Buttons'
+import {ScRadioButtons} from '../../../components_simple/RadioGroup/ScRadioButtons'
 
 interface Props {
   countries: Country[]
@@ -31,11 +30,15 @@ export const CompanyWebsiteCountry = ({countries, onSubmit}: Props) => {
               required: {value: true, message: m.required + ' *'},
             }}
             render={({field}) => (
-              <ScRadioGroup {...field}>
-                {countries.map(_ => (
-                  <ScRadioGroupItem key={_.code} value={_.name} title={countryLabel(currentLang, _)} />
-                ))}
-              </ScRadioGroup>
+              <ScRadioButtons
+                {...field}
+                options={countries.map(_ => {
+                  return {
+                    label: countryLabel(currentLang, _),
+                    value: _.name,
+                  }
+                })}
+              />
             )}
           />
         </PanelBody>
