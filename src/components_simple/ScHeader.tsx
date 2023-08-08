@@ -48,7 +48,7 @@ export function ScHeader() {
           {
             iconId: 'fr-icon-briefcase-line',
             linkProps: {
-              href: pagesDefs.connexion.url,
+              href: pagesDefs.espaceProWelcome.url,
               target: '_self',
             },
             text: m.header.connexionLinkTitle,

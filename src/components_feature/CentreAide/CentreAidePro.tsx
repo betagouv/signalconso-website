@@ -60,7 +60,7 @@ export const CentreAidePro = (props: BoxProps) => {
             {m.centreaidepro.courrierSignalConsoText1}
             <Link href={pagesDefs.index.url}>https://signal.conso.gouv.fr</Link>
             {m.centreaidepro.courrierSignalConsoText2}
-            <Link href={pagesDefs.connexion.url}>{pagesDefs.connexion.url}</Link>
+            <Link href={pagesDefs.espaceProWelcome.url}>{pagesDefs.espaceProWelcome.url}</Link>
           </p>
           {m.centreaidepro.courrierSignalConsoText3}
           <ul>
@@ -82,7 +82,7 @@ export const CentreAidePro = (props: BoxProps) => {
           </p>
           <p>
             {m.centreaidepro.courrierSignalConsoText9}"
-            <Link href={pagesDefs.connexion.url}>{m.centreaidepro.courrierSignalConsoText10}</Link>"
+            <Link href={pagesDefs.espaceProWelcome.url}>{m.centreaidepro.courrierSignalConsoText10}</Link>"
           </p>
           {m.centreaidepro.consulterSignalementsText}
           <ul>
