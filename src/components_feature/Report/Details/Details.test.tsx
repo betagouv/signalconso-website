@@ -33,14 +33,15 @@ const clickBtnSubmit = async (app: ScRenderResult) => {
   fireEvent.click(btnSubmit)
 }
 
-const hasErrors = (app: ScRenderResult, count?: number) => {
-  const errorsCount = app.container.querySelectorAll('.Mui-error, .fr-fieldset--error').length
-  if (count !== undefined) {
-    expect(app.container.querySelectorAll('.Mui-error').length).toEqual(errorsCount)
-  } else {
-    expect(errorsCount).toBeGreaterThanOrEqual(1)
-  }
-}
+const hasErrors = (app: ScRenderResult, count?: number) =>
+  waitFor(() => {
+    const errorsCount = app.container.querySelectorAll('.Mui-error, .fr-fieldset--error').length
+    if (count !== undefined) {
+      expect(app.container.querySelectorAll('.Mui-error, .fr-fieldset--error').length).toEqual(errorsCount)
+    } else {
+      expect(errorsCount).toBeGreaterThanOrEqual(1)
+    }
+  })
 
 describe('Details: single date not in future', () => {
   let app: ScRenderResult
@@ -112,15 +113,13 @@ describe('Details: checkbox', () => {
 
   it('should prevent submit when required but nothing is selected', async () => {
     await clickBtnSubmit(app)
-    await waitFor(() => {
-      hasErrors(app)
-    })
+    await hasErrors(app)
   })
 
   it('should submit when option without (à préciser) is selected', async () => {
     fireEvent.click(app.getByText('OPTION1'))
     await clickBtnSubmit(app)
-    hasErrors(app, 0)
+    await hasErrors(app, 0)
     await waitFor(() => expect(inputValues).toEqual({0: 'OPTION1'}))
   })
 
@@ -132,14 +131,14 @@ describe('Details: checkbox', () => {
   it('should prevent submit when (à préciser) is selected but not defined', async () => {
     fireEvent.click(app.getByText('OPTION2 (à préciser)'))
     await clickBtnSubmit(app)
-    hasErrors(app, 1)
+    await hasErrors(app, 1)
   })
 
   it('should handle (à préciser) input value', async () => {
     fireEvent.click(app.getByText('OPTION2 (à préciser)'))
     fireEvent.change(app.container.querySelector('input[type=text]')!, {target: {value: 'blablabla'}})
     await clickBtnSubmit(app)
-    hasErrors(app, 0)
+    await hasErrors(app, 0)
     await waitFor(() => {
       expect(inputValues).toEqual({
         0: 'OPTION2 (à préciser)',
@@ -170,7 +169,7 @@ describe('Details: textarea', () => {
   it('should init and prevent submit when not filled', async () => {
     expect(app.container.querySelectorAll('textarea:not([aria-hidden=true])').length).toEqual(1)
     await clickBtnSubmit(app)
-    hasErrors(app, 1)
+    await hasErrors(app, 1)
     await waitFor(() => expect(inputValues).toEqual(undefined))
   })
 
@@ -178,7 +177,7 @@ describe('Details: textarea', () => {
     const stringAboveLimit = mapNTimes(appConfig.maxDescriptionInputLength + 1, () => 'a').reduce((acc, _) => acc + _, '')
     fireEvent.change(app.container.querySelector('textarea:not([aria-hidden=true])')!, {target: {value: stringAboveLimit}})
     await clickBtnSubmit(app)
-    hasErrors(app, 1)
+    await hasErrors(app, 1)
     await waitFor(() => expect(inputValues).toEqual(undefined))
   })
 
@@ -186,7 +185,7 @@ describe('Details: textarea', () => {
     const stringAboveLimit = mapNTimes(appConfig.maxDescriptionInputLength - 1, () => 'a').reduce((acc, _) => acc + _, '')
     fireEvent.change(app.container.querySelector('textarea:not([aria-hidden=true])')!, {target: {value: stringAboveLimit}})
     await clickBtnSubmit(app)
-    hasErrors(app, 0)
+    await hasErrors(app, 0)
     await waitFor(() => expect(inputValues).toEqual({0: stringAboveLimit}))
   })
 })
@@ -226,7 +225,7 @@ describe('Details: initialize values', () => {
 
   it('should submit and send the initial values', async () => {
     await clickBtnSubmit(app)
-    hasErrors(app, 0)
+    await hasErrors(app, 0)
     await waitFor(() => {
       expect(inputValues).toEqual(initialValues)
     })
