@@ -218,6 +218,8 @@ export const ConsumerInner = ({
                   render={({field}) => (
                     <ScRadioButtons
                       {...field}
+                      error={getErrors('contactAgreement').error}
+                      errorMessage={getErrors('contactAgreement').helperText}
                       options={[
                         {
                           label: m.contactAgreementTrueTitle,

@@ -236,6 +236,8 @@ export const DetailsInner = ({
                         render: ({field}) => (
                           <ScRadioButtons
                             {...field}
+                            errorMessage={errorMessage}
+                            error={hasErrors}
                             options={
                               getOptionsFromInput(input)?.map((option, i) => {
                                 return {

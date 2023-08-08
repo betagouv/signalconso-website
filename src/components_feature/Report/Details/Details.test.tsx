@@ -34,11 +34,11 @@ const clickBtnSubmit = async (app: ScRenderResult) => {
 }
 
 const hasErrors = (app: ScRenderResult, count?: number) => {
-  const errorsCount = app.container.querySelectorAll('.Mui-error').length
+  const errorsCount = app.container.querySelectorAll('.Mui-error, .fr-fieldset--error').length
   if (count !== undefined) {
     expect(app.container.querySelectorAll('.Mui-error').length).toEqual(errorsCount)
   } else {
-    expect(app.container.querySelectorAll('.Mui-error').length).toBeGreaterThanOrEqual(1)
+    expect(errorsCount).toBeGreaterThanOrEqual(1)
   }
 }
 

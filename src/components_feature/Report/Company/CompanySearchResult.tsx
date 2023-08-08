@@ -136,6 +136,7 @@ export const CompanySearchResultComponent = ({companies, onSubmit}: Props) => {
                   render={({field}) => (
                     <ScRadioButtons
                       {...field}
+                      error={!!errors.result}
                       options={companies.map(company => {
                         const closed = !company.isOpen
                         return {

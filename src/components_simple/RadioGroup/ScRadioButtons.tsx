@@ -12,6 +12,7 @@ interface ScRadioButtonsProps<V> {
     disabled?: boolean
   }[]
   value: V | undefined
+  error?: boolean
   errorMessage?: string
   orientation?: 'vertical' | 'horizontal'
 }
@@ -22,6 +23,7 @@ export const ScRadioButtons = <V,>({
   onChange,
   options,
   value: selectedValue,
+  error,
   errorMessage,
   orientation,
 }: ScRadioButtonsProps<V>) => {
@@ -42,9 +44,7 @@ export const ScRadioButtons = <V,>({
   return (
     <fieldset
       id={id}
-      className={`fr-fieldset ${orientation === 'horizontal' && 'fr-fieldset--inline'} ${
-        errorMessage ? 'fr-fieldset--error' : ''
-      }`}
+      className={`fr-fieldset ${orientation === 'horizontal' && 'fr-fieldset--inline'} ${error ? 'fr-fieldset--error' : ''}`}
       aria-labelledby={`${title && legendId} ${messagesWrapperId}`}
       role="group"
     >
@@ -72,6 +72,11 @@ export const ScRadioButtons = <V,>({
           )
         })}
       </div>
+      {error && errorMessage && (
+        <div className="fr-messages-group" id={messagesWrapperId} aria-live="assertive">
+          <p className="fr-message fr-message--error">{errorMessage}</p>
+        </div>
+      )}
     </fieldset>
   )
 }
