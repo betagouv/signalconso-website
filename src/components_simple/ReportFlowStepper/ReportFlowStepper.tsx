@@ -88,7 +88,7 @@ function useIsStepInvalid(anomaly: Anomaly, step: ReportStepOrDone): boolean {
   const {reportDraft} = _reportFlow
   if (step !== firstReportStep) {
     if (step === 'Done') {
-      if (!_reportCreate.createReport.entity) {
+      if (!_reportCreate.createReportMutation.data) {
         // No report that was created
         // the user probably jumped directly to ?step=6
         return true

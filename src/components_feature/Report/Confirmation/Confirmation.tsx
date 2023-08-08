@@ -48,8 +48,6 @@ export const ConfirmationInner = ({
   const _reportCreate = useReportCreateContext()
   const _analytic = useAnalyticContext()
 
-  useEffect(_reportCreate.createReport.clearCache, [])
-
   const goToStep = stepNavigation.goTo
   return (
     <Animate autoScrollTo={true}>
@@ -164,13 +162,13 @@ export const ConfirmationInner = ({
         </ConfirmationStepper>
         <ReportFlowStepperActions
           nextIconSend
-          loadingNext={_reportCreate.createReport.loading}
+          loadingNext={_reportCreate.createReportMutation.isLoading}
           nextButtonLabel={draft.consumerWish === 'getAnswer' ? m.confirmationBtnReponseConso : m.confirmationBtn}
           next={next => {
             _analytic.trackEvent(EventCategories.report, ReportEventActions.validateConfirmation)
             const metadata = buildReportMetadata({isWebView})
-            _reportCreate.createReport
-              .fetch({}, draft, metadata)
+            _reportCreate.createReportMutation
+              .mutateAsync({draft, metadata})
               .then(() => {
                 _analytic.trackEvent(EventCategories.report, ReportEventActions.reportSendSuccess)
                 next()

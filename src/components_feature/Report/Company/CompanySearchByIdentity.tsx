@@ -1,18 +1,18 @@
 import {Box, Icon} from '@mui/material'
+import {useQuery} from '@tanstack/react-query'
 import {useAnalyticContext} from 'analytic/AnalyticContext'
 import {CompanySearchEventActions, EventCategories} from 'analytic/analytic'
+import {useToastOnQueryError} from 'clients/apiHooks'
 import {Animate} from 'components_simple/Animate/Animate'
 import {ButtonWithLoader} from 'components_simple/Buttons'
 import {FormLayout} from 'components_simple/FormLayout/FormLayout'
 import {ScInput} from 'components_simple/Input/ScInput'
 import {Panel, PanelActions, PanelBody} from 'components_simple/Panel/Panel'
 import {useApiClients} from 'context/ApiClientsContext'
-import {useToastError} from 'hooks/useToastError'
 import {useI18n} from 'i18n/I18n'
-import {ReactNode, useEffect, useRef} from 'react'
+import {ReactNode, useRef, useState} from 'react'
 import {useForm} from 'react-hook-form'
 import {IconBtn} from '../../../alexlibs/mui-extension/IconBtn/IconBtn'
-import {useFetcher} from '../../../hooks/useFetcher'
 import {CompanySearchResult} from '../../../model/Company'
 import {ifDefined} from '../../../utils/utils'
 import {CompanySearchByIdentityHelpDialog} from './CompanySearchByIdentityHelpDialog'
@@ -27,27 +27,30 @@ interface Props {
 
 export const CompanySearchByIdentity = ({children}: Props) => {
   const {m} = useI18n()
-  const {companyApiClient: signalConsoApiClient} = useApiClients()
-  const toastError = useToastError()
+  const {companyApiClient} = useApiClients()
   const _analytic = useAnalyticContext()
-  const _searchByIdentity = useFetcher(signalConsoApiClient.searchCompaniesByIdentity)
   const {register, handleSubmit, reset} = useForm<Form>()
+  const [submittedIdentity, setSubmittedIdentity] = useState<string | undefined>(undefined)
+  const _searchByIdentity = useQuery(['searchCompaniesByIdentity', submittedIdentity], () => {
+    if (submittedIdentity) {
+      return companyApiClient.searchCompaniesByIdentity(submittedIdentity, false)
+    }
+    return null
+  })
+  useToastOnQueryError(_searchByIdentity)
+
   const inputEl = useRef<HTMLInputElement>(null)
 
-  const search = (form: Form) => {
+  function search(form: Form) {
     _analytic.trackEvent(EventCategories.companySearch, CompanySearchEventActions.searchByIdentity, form.identity)
-    _searchByIdentity.fetch({force: true, clean: true}, form.identity, false)
+    setSubmittedIdentity(form.identity)
   }
 
   const clear = () => {
     reset()
-    _searchByIdentity.clearCache()
+    setSubmittedIdentity(undefined)
     inputEl.current?.focus()
   }
-
-  useEffect(() => {
-    if (_searchByIdentity.error) toastError()
-  }, [_searchByIdentity.error])
 
   return (
     <>
@@ -88,14 +91,14 @@ export const CompanySearchByIdentity = ({children}: Props) => {
             </PanelBody>
 
             <PanelActions>
-              <ButtonWithLoader iconId="ri-search-line" loading={_searchByIdentity.loading}>
+              <ButtonWithLoader iconId="ri-search-line" loading={_searchByIdentity.isLoading}>
                 {m.search}
               </ButtonWithLoader>
             </PanelActions>
           </form>
         </Panel>
       </Animate>
-      {ifDefined(_searchByIdentity.entity, children)}
+      {_searchByIdentity.data && ifDefined(_searchByIdentity.data, children)}
     </>
   )
 }

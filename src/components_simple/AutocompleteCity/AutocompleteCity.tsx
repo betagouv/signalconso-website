@@ -1,11 +1,11 @@
-import {throttle} from 'utils/lodashNamedExport'
-import {useI18n} from 'i18n/I18n'
-import {useFetcher} from '../../hooks/useFetcher'
 import {Autocomplete, CircularProgress} from '@mui/material'
-import React, {forwardRef, useEffect, useMemo, useState} from 'react'
-import {ScInput, ScInputProps} from '../Input/ScInput'
+import {useQuery} from '@tanstack/react-query'
+import {useI18n} from 'i18n/I18n'
+import React, {forwardRef, useEffect, useState} from 'react'
 import {Txt} from '../../alexlibs/mui-extension/Txt/Txt'
 import {useApiClients} from '../../context/ApiClientsContext'
+import {ScInput, ScInputProps} from '../Input/ScInput'
+import {useThrottle} from 'utils/useThrottle'
 
 export interface AutocompleteCityValue {
   city?: string
@@ -33,15 +33,29 @@ function buildDefaultOption(input: string) {
     : []
 }
 
+function useStateWithThrottledCopy<A>(defaultValue: A): [A, React.Dispatch<React.SetStateAction<A>>, A] {
+  const [state, setState] = useState(defaultValue)
+  const [throttledCopy, setThrottledCopy] = useThrottle(state, 5)
+  useEffect(() => {
+    // always copy the first state into the second one
+    // But since it's throttled, it will delay changes a bit
+    setThrottledCopy(state)
+  }, [state])
+  // Return a normal version (to be used when displaying)
+  // And a throttled copy (doesn't update as often, but it's useful to throttle API calls based on it)
+  return [state, setState, throttledCopy]
+}
+
 export const AutocompleteCity = forwardRef(({label, placeholder, onChange, ...inputProps}: AutocompleteCityProps, ref: any) => {
   const {m} = useI18n()
-  const _fetchCity = useFetcher(useApiClients().adresseApiClient.fetchCity)
+  const [inputValue, setInputValue, throttledInputValue] = useStateWithThrottledCopy('')
+  const adresseApiClient = useApiClients().adresseApiClient
+  const _fetchCity = useQuery(['fetchCity', throttledInputValue], () => adresseApiClient.fetchCity(throttledInputValue))
   const [open, setOpen] = useState(false)
-  const [inputValue, setInputValue] = useState('')
 
   function computeCityOptions(input: string) {
-    if (_fetchCity.entity) {
-      const cities = _fetchCity.entity.map(({city, postcode}) => ({
+    if (_fetchCity.data) {
+      const cities = _fetchCity.data.map(({city, postcode}) => ({
         city,
         postalCode: postcode,
       }))
@@ -51,11 +65,6 @@ export const AutocompleteCity = forwardRef(({label, placeholder, onChange, ...in
     }
     return buildDefaultOption(input)
   }
-
-  const fetch = useMemo(() => throttle(_fetchCity.fetch, 250), [])
-  useEffect(() => {
-    fetch({force: true, clean: false}, inputValue)
-  }, [inputValue, fetch])
 
   return (
     <Autocomplete
@@ -88,7 +97,7 @@ export const AutocompleteCity = forwardRef(({label, placeholder, onChange, ...in
       options={computeCityOptions(inputValue)}
       noOptionsText={m.noOptionsText}
       loadingText={m.loading}
-      loading={_fetchCity.loading}
+      loading={_fetchCity.isLoading}
       renderInput={params => (
         <ScInput
           {...inputProps}
@@ -105,7 +114,7 @@ export const AutocompleteCity = forwardRef(({label, placeholder, onChange, ...in
             ...params.InputProps,
             endAdornment: (
               <>
-                {_fetchCity.loading ? <CircularProgress size={20} /> : null}
+                {_fetchCity.isLoading ? <CircularProgress size={20} /> : null}
                 {inputProps.InputProps?.endAdornment}
                 {params.InputProps.endAdornment}
               </>

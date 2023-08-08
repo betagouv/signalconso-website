@@ -1,22 +1,19 @@
 import {Icon} from '@mui/material'
+import {useMutation} from '@tanstack/react-query'
 import {Fender} from 'alexlibs/mui-extension/Fender/Fender'
-import {EventCategories, ReportEventActions} from 'analytic/analytic'
 import {useAnalyticContext} from 'analytic/AnalyticContext'
+import {EventCategories, ReportEventActions} from 'analytic/analytic'
 import {AccordionInline} from 'components_simple/AccordionInline/AccordionInline'
 import {Animate} from 'components_simple/Animate/Animate'
-import {ScButton} from 'components_simple/Button/Button'
 import {Panel, PanelBody} from 'components_simple/Panel/Panel'
 import {useApiClients} from 'context/ApiClientsContext'
 import {useI18n} from 'i18n/I18n'
 import {getAnalyticsForStep} from 'model/ReportStep'
-import Link from 'next/link'
 import {useEffect, useState} from 'react'
 import {last} from 'utils/lodashNamedExport'
 import {IconBtn} from '../../../alexlibs/mui-extension/IconBtn/IconBtn'
 import {Txt} from '../../../alexlibs/mui-extension/Txt/Txt'
 import {Anomaly, InfoWall, Subcategory} from '../../../anomalies/Anomaly'
-import {useFetcher} from '../../../hooks/useFetcher'
-import {mapPromise} from '../../../utils/MapPromise'
 import {LinkBackToHome} from '../../../components_simple/LinkBackToHome'
 
 interface Props {
@@ -41,15 +38,16 @@ export const ProblemInformation = ({anomaly, subcategories, information, isWebVi
       subcategories && subcategories.length > 0 ? last(subcategories)?.title : anomaly.category,
     )
   }, [anomaly, subcategories])
-  const _vote = useFetcher(
-    mapPromise({
-      promise: signalConsoApiClient.rateSubcategory,
-      mapThen: () => ({rated: true}),
-    }),
-  )
-  const vote = (positive: boolean) => {
+
+  const _vote = useMutation({
+    mutationFn: (positive: boolean) => {
+      return signalConsoApiClient.rateSubcategory(anomaly.category, subcategories, positive)
+    },
+  })
+
+  const onVote = (positive: boolean) => {
     setVotedPositive(positive)
-    _vote.fetch({}, anomaly.category, subcategories, positive)
+    _vote.mutate(positive)
   }
 
   return (
@@ -87,7 +85,7 @@ export const ProblemInformation = ({anomaly, subcategories, information, isWebVi
       </Animate>
       <Animate>
         <Panel title={m.informationWasUsefull} border>
-          {_vote.entity ? (
+          {_vote.data ? (
             <PanelBody>
               <Fender type="success" iconSize={80}>
                 {m.informationRatingSaved}
@@ -96,21 +94,21 @@ export const ProblemInformation = ({anomaly, subcategories, information, isWebVi
           ) : (
             <PanelBody sx={{display: 'flex', justifyContent: 'center'}}>
               <IconBtn
-                loading={_vote.loading && votedPositive === true}
-                disabled={_vote.loading && votedPositive === false}
+                loading={_vote.isLoading && votedPositive === true}
+                disabled={_vote.isLoading && votedPositive === false}
                 size="large"
                 color="primary"
-                onClick={() => vote(true)}
+                onClick={() => onVote(true)}
                 sx={{mr: 4}}
               >
                 <Icon style={{fontSize: 38}}>thumb_up</Icon>
               </IconBtn>
               <IconBtn
-                loading={_vote.loading && votedPositive === false}
-                disabled={_vote.loading && votedPositive === true}
+                loading={_vote.isLoading && votedPositive === false}
+                disabled={_vote.isLoading && votedPositive === true}
                 size="large"
                 color="primary"
-                onClick={() => vote(false)}
+                onClick={() => onVote(false)}
               >
                 <Icon style={{fontSize: 38}}>thumb_down</Icon>
               </IconBtn>
