@@ -81,7 +81,7 @@ const Accessibilite = ({params}: any) => {
           <li>{m.accessibilite.etape4}</li>
           <li>{m.accessibilite.etape5}</li>
           <li>
-            <Link href={pagesDefs.connexion.url}>{m.accessibilite.connexionEspacePro}</Link>
+            <Link href={pagesDefs.espaceProWelcome.url}>{m.accessibilite.connexionEspacePro}</Link>
           </li>
           <li>{m.accessibilite.espaceProSuivi}</li>
           <li>{m.accessibilite.espaceProDetail}</li>

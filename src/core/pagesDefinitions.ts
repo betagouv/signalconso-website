@@ -62,7 +62,8 @@ export const internalPageDefs = {
 }
 
 const externalPageDefs = {
-  connexion: pageExternal(appConfig.dashboardBaseUrl + '/connexion'),
+  espaceProWelcome: pageExternal(appConfig.dashboardBaseUrl),
+  espaceProConnexion: pageExternal(appConfig.dashboardBaseUrl + '/connexion'),
   companyActivation: pageExternal(appConfig.dashboardBaseUrl + '/activation'),
   lostPassword: pageExternal(appConfig.dashboardBaseUrl + '/perte-mot-de-passe'),
 }

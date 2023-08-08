@@ -40,7 +40,7 @@ export function ScFooter() {
           {
             text: m.footer.connexionLinkTitle,
             linkProps: {
-              href: pagesDefs.connexion.url,
+              href: pagesDefs.espaceProConnexion.url,
               target: '_self',
             },
           },

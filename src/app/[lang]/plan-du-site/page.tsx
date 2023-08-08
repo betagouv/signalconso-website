@@ -101,7 +101,7 @@ const PlanDuSite = ({params}: any) => {
             <Link href={pagesDefs.companyActivation.url}>{m.planDuSite.activateBusinessSpace}</Link>
           </li>
           <li>
-            <Link href={pagesDefs.connexion.url}>{m.planDuSite.login}</Link>
+            <Link href={pagesDefs.espaceProWelcome.url}>{m.planDuSite.login}</Link>
           </li>
           <li>{m.planDuSite.incidentTracking}</li>
           <li>{m.planDuSite.incidentDetails}</li>
@@ -129,7 +129,7 @@ const PlanDuSite = ({params}: any) => {
         <h2 className="fr-h4">{m.planDuSite.dgccrfSpaceSection}</h2>
         <ul>
           <li>
-            <Link href={pagesDefs.connexion.url}>{m.planDuSite.login}</Link>
+            <Link href={pagesDefs.espaceProWelcome.url}>{m.planDuSite.login}</Link>
           </li>
           <li>{m.planDuSite.incidentTracking}</li>
           <li>{m.planDuSite.incidentDetails}</li>
