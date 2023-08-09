@@ -42,6 +42,7 @@
     "@mui/material": "5.14.2",
     "@mui/styled-engine": "5.13.2",
     "@mui/system": "5.14.1",
+    "@react-hook/throttle": "^2.2.0",
     "@sentry/nextjs": "7.60.0",
     "@sentry/react": "7.60.0",
     "@sentry/tracing": "7.60.0",

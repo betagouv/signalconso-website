@@ -1758,6 +1758,26 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@react-hook/latest@npm:^1.0.2":
+  version: 1.0.3
+  resolution: "@react-hook/latest@npm:1.0.3"
+  peerDependencies:
+    react: ">=16.8"
+  checksum: 2408c9cd35c5cfa7697b6da3bc5eebef254a932ade70955074c474f23be7dd3e2f81bbba12edcc9208bd0f89c6ed366d6b11d4f6d7b1052877a0bac8f74afad4
+  languageName: node
+  linkType: hard
+
+"@react-hook/throttle@npm:^2.2.0":
+  version: 2.2.0
+  resolution: "@react-hook/throttle@npm:2.2.0"
+  dependencies:
+    "@react-hook/latest": ^1.0.2
+  peerDependencies:
+    react: ">=16.8"
+  checksum: fb763dc559602d1ba0b5c601ccfb5f1d872454727c8e827079e41819467d906b6524dbc43c7f78b6818249a31bd96c726b7ed12e68214e0cc5a00b15e939ccca
+  languageName: node
+  linkType: hard
+
 "@rollup/plugin-commonjs@npm:24.0.0":
   version: 24.0.0
   resolution: "@rollup/plugin-commonjs@npm:24.0.0"
@@ -9127,6 +9147,7 @@ __metadata:
     "@mui/material": 5.14.2
     "@mui/styled-engine": 5.13.2
     "@mui/system": 5.14.1
+    "@react-hook/throttle": ^2.2.0
     "@sentry/nextjs": 7.60.0
     "@sentry/react": 7.60.0
     "@sentry/tracing": 7.60.0

@@ -1,6 +1,7 @@
 import {Grid} from '@mui/material'
-import {EventCategories, ReportEventActions} from 'analytic/analytic'
+import {useMutation} from '@tanstack/react-query'
 import {useAnalyticContext} from 'analytic/AnalyticContext'
+import {EventCategories, ReportEventActions} from 'analytic/analytic'
 import {FormLayout} from 'components_simple/FormLayout/FormLayout'
 import {ScInput} from 'components_simple/Input/ScInput'
 import {Panel, PanelBody} from 'components_simple/Panel/Panel'
@@ -19,9 +20,8 @@ import {regexp} from 'utils/regexp'
 import {Alert} from '../../../alexlibs/mui-extension/Alert/Alert'
 import {Txt} from '../../../alexlibs/mui-extension/Txt/Txt'
 import {appConfig} from '../../../core/appConfig'
-import {useFetcher} from '../../../hooks/useFetcher'
 import {useToastError} from '../../../hooks/useToastError'
-import {Gender, genders, ReportDraft} from '../../../model/ReportDraft'
+import {Gender, ReportDraft, genders} from '../../../model/ReportDraft'
 import {DeepPartial} from '../../../utils/utils'
 import {useReportFlowContext} from '../ReportFlowContext'
 import {ConsumerAnonymousInformation} from './ConsumerAnonymousInformation'
@@ -64,7 +64,11 @@ export const ConsumerInner = ({
   const {m, currentLang} = useI18n()
   const [openValidationDialog, setOpenValidationDialog] = useState<boolean>(false)
   const {signalConsoApiClient} = useApiClients()
-  const _checkEmail = useFetcher(signalConsoApiClient.checkEmail)
+  const _checkEmail = useMutation({
+    mutationFn: (email: string) => {
+      return signalConsoApiClient.checkEmail(email, currentLang)
+    },
+  })
   const _form = useForm<ConsumerForm>()
   const _analytic = useAnalyticContext()
   const {isSmOrMore} = useBreakpoints()
@@ -241,11 +245,11 @@ export const ConsumerInner = ({
         onValidated={saveAndNext}
       />
       <ReportFlowStepperActions
-        loadingNext={_checkEmail.loading}
+        loadingNext={_checkEmail.isLoading}
         next={() => {
           _form.handleSubmit(form => {
             _checkEmail
-              .fetch({}, form.email, currentLang)
+              .mutateAsync(form.email)
               .then(res => {
                 if (res.valid) saveAndNext()
                 else setOpenValidationDialog(true)

@@ -27,7 +27,7 @@ export enum AcknowledgmentCases {
 
 export const Acknowledgement = ({isWebView}: {isWebView: boolean}) => {
   const {
-    createReport: {entity: report},
+    createReportMutation: {data: report},
   } = useReportCreateContext()
   const _reportFlow = useReportFlowContext()
   const {data: countries} = useGetCountries()

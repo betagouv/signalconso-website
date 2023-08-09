@@ -1,21 +1,29 @@
+import {UseMutationResult, useMutation} from '@tanstack/react-query'
 import {useApiClients} from 'context/ApiClientsContext'
+import {CreatedReport} from 'model/CreatedReport'
+import {ReportDraft} from 'model/ReportDraft'
+import {ApiReportDraft} from 'model/reportsFromApi'
 import React, {ReactNode, useContext} from 'react'
-import {SignalConsoApiClient} from '../../clients/SignalConsoApiClient'
-import {useFetcher, UseFetcher} from '../../hooks/useFetcher'
 
 interface ReportCreateContextProps {
-  createReport: UseFetcher<SignalConsoApiClient['createReport']>
+  createReportMutation: UseMutationResult<CreatedReport, unknown, ReportCreationArgs, unknown>
 }
 
 const context = React.createContext<ReportCreateContextProps>({} as ReportCreateContextProps)
 
+type ReportCreationArgs = {draft: ReportDraft; metadata: ApiReportDraft['metadata']}
+
 export const ReportCreateProvider = ({children}: {children: ReactNode}) => {
   const {signalConsoApiClient} = useApiClients()
-  const createReport = useFetcher(signalConsoApiClient.createReport)
+  const createReportMutation = useMutation({
+    mutationFn: ({draft, metadata}: ReportCreationArgs) => {
+      return signalConsoApiClient.createReport(draft, metadata)
+    },
+  })
   return (
     <context.Provider
       value={{
-        createReport,
+        createReportMutation,
       }}
     >
       {children}

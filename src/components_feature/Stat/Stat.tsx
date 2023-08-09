@@ -1,11 +1,11 @@
+import {useColors} from '@codegouvfr/react-dsfr/useColors'
+import {useQuery} from '@tanstack/react-query'
 import {CountByDate} from 'clients/SignalConsoApiClient'
 import {useI18n} from 'i18n/I18n'
-import React, {useEffect} from 'react'
+import React from 'react'
 import {Bar, BarChart, CartesianGrid, Legend, ResponsiveContainer, Tooltip, XAxis, YAxis} from 'recharts'
 import {Txt} from '../../alexlibs/mui-extension/Txt/Txt'
-import {useFetcher} from '../../hooks/useFetcher'
 import {ifDefined} from '../../utils/utils'
-import {useColors} from '@codegouvfr/react-dsfr/useColors'
 
 interface Props {
   name?: string
@@ -18,24 +18,20 @@ interface Props {
 
 export const Stat = React.memo(({name, count, curve, title, description, percentage}: Props) => {
   const {m, formatLargeNumber} = useI18n()
-  const _curve = useFetcher(curve ?? (() => Promise.resolve(undefined)))
-  const _count = useFetcher(count)
+
+  const _count = useQuery(['stats_count', name], count)
+  const _curve = useQuery(['stats_curve', name], curve ?? (() => Promise.resolve(undefined)), {enabled: !!curve})
   const formatCurveDate = ({date, count}: CountByDate): {date: string; count: number} => ({
     date: (m.monthShort_ as any)[date.getMonth() + 1],
     count,
   })
-  useEffect(() => {
-    if (curve) _curve.fetch({force: true, clean: true})
-    _count.fetch({force: true, clean: true})
-  }, [])
   const dsfrTheme = useColors()
-
   return (
     <div className="border border-solid border-black p-4">
       <Txt
         block
         component="h2"
-        skeleton={_count.loading && 100}
+        skeleton={_count.data ? undefined : 100}
         sx={{
           lineHeight: 1,
           fontSize: 34,
@@ -43,7 +39,7 @@ export const Stat = React.memo(({name, count, curve, title, description, percent
           fontWeight: 'normal',
         }}
       >
-        {ifDefined(_count.entity ?? undefined, formatLargeNumber)} {percentage && '%'}
+        {ifDefined(_count.data, formatLargeNumber)} {percentage && '%'}
       </Txt>
 
       <p>{title}</p>
@@ -51,13 +47,13 @@ export const Stat = React.memo(({name, count, curve, title, description, percent
 
       {curve && (
         <div className="h-40 md:h-64 lg:h-80 mt-4 flex items-center justify-center">
-          {_curve.loading ? (
+          {_curve.isLoading ? (
             <div className="h-full w-full bg-gray-200 rounded-xl" />
           ) : (
-            _curve.entity && (
+            _curve.data && (
               <ResponsiveContainer width="100%" height="100%">
                 <BarChart
-                  data={_curve.entity.map(formatCurveDate)}
+                  data={_curve.data.map(formatCurveDate)}
                   margin={{
                     top: 5,
                     right: 30,
