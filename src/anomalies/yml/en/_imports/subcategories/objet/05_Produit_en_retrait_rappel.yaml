@@ -1,5 +1,5 @@
-title: Produit en retrait / rappel
-desc: Le produit vendu fait l'objet d'une mesure de retrait / rappel des autorités
+title: Product withdrawn / recalled
+desc: The product sold is subject to a withdrawal / recall measure from the authorities
 reponseconsoCode:
   - '311'
   - '331'
@@ -7,12 +7,12 @@ detailInputs:
   - label: Date du constat
     type: DATE
     defaultValue: SYSDATE
-  - label: Heure du constat
+  - label: Time of finding
     type: TIMESLOT
     optional: true
-  - label: Nom du produit / marque
+  - label: Product / brand name
     type: TEXT
-  - label: N° de lot / référence
+  - label: Batch / reference number
     type: TEXT
-  - label: Qu'avez-vous constaté&#160;?
+  - label: What did you find ?
     type: TEXTAREA

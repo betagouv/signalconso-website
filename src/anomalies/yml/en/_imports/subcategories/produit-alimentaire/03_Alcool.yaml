@@ -1,7 +1,7 @@
-title: Alcool
+title: alcohol
 tags:
   - ProduitAlimentaire
-desc: 'Exemple : vin, cidre, bière...'
-subcategoriesTitle: Quel est le risque&#160;?
+desc: 'Example: wine, cider, beer...'
+subcategoriesTitle: What is the risk? 
 subcategories:
   customimport: _imports/subcategories/produit-alimentaire-risque

@@ -36,22 +36,47 @@ export const TranslatedWebsiteAlert = () => {
     >
       <span>
         <div className="m-4">
-          This is a limited version of SignalConso dedicated to consumer issues regarding individuals visiting France. If you are
-          confortable with french, switch to the{' '}
+          Have you encountered a consumption problem during your stay in France? This version of SignalConso is dedicated to you.
+          You can also file a report if you have a dispute following a purchase on a French website. If you're comfortable with
+          French,{' '}
           <a href={`/fr${internalPageDefs.index.url}`} rel="noreferrer">
-            french website
+            switch to this version
+          </a>
+          .
+          <br />
+          <br />
+          Tickets, flights, hotels, restaurants, transport, payments…{' '}
+          <a
+            href="https://www.economie.gouv.fr/dgccrf/2023-rugby-world-cup-and-paris-2024-olympic-and-paralympic-games-consumer-questions"
+            rel="noreferrer"
+            target="_blank"
+          >
+            Find all the answers to your questions
           </a>{' '}
-          to see full version.
+          about traveling to France and participating as a spectator in the Rugby World Cup 2023 and the Paris 2024 Olympic and
+          Paralympic Games.
         </div>
         <hr style={{borderTop: '1px solid #ccc'}} />
         <div className="m-4">
-          Ceci est une version limitée de SignalConso dédiée aux problèmes de consommation rencontrés par les personnes de passage
-          en France , basculez sur la{' '}
+          Vous avez rencontré un problème de consommation lors de votre séjour en France ? Cette version de SignalConso, en
+          anglais, vous est dédiée. Vous pouvez également y déposer un signalement si vous avez un litige suite à un achat sur un
+          site internet français. Si vous êtes à l'aise avec le français,{' '}
           <a href={`/fr${internalPageDefs.index.url}`} rel="noreferrer">
-            {' '}
-            version française
+            basculez sur cette version
+          </a>
+          .
+          <br />
+          <br />
+          Billets, avion, hôtels, restaurants, transports, paiements…{' '}
+          <a
+            href="https://www.economie.gouv.fr/dgccrf/faq-coupe-du-monde-de-rugby-2023-et-jo-2024"
+            rel="noreferrer"
+            target="_blank"
+          >
+            Retrouvez toutes les réponses à vos questions
           </a>{' '}
-          pour voir la version complète.
+          sur votre voyage en France et votre participation en tant que spectateur à la Coupe du monde de rugby 2023 et aux Jeux
+          olympiques et paralympiques de Paris 2024.
         </div>
       </span>
     </CallOut>

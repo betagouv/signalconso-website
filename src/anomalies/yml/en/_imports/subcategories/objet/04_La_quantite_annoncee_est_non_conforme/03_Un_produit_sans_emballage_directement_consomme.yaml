@@ -1,10 +1,10 @@
-title: Un produit sans emballage, directement consommé
-desc: "Exemple\_: verre de vin dans un café, plat au restaurant"
+title: A product without packaging, directly consumed
+desc: "Example\_: glass of wine in a cafe, dish in a restaurant"
 detailInputs:
-  - label: Date du constat ou d'achat
+  - label: T or purchase date
     type: DATE
     defaultValue: SYSDATE
-  - label: Nom du produit
+  - label: Product Name
     type: TEXT
   - label: Description
     type: TEXTAREA

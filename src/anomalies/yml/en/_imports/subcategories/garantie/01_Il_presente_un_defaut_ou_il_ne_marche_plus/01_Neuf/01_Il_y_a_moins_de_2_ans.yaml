@@ -1,20 +1,19 @@
-title: Il y a moins de 2 ans
+title: less than 2 years ago
 detailInputs:
-  - label: Date d'achat
+  - label: Date of purchase
     type: DATE
-  - label: Nom du produit
+  - label: Product Name
     type: TEXT
-  - label: Date du constat
+  - label: Date of finding
     type: DATE
     defaultValue: SYSDATE
-  - label: Interlocuteur
+  - label: Contact person
     type: RADIO
     options:
-      - Vendeur
-      - Accueil magasin
-      - Service client (téléphone, mail, courrier)
+      - Seller
+      - Home store
+      - Customer service (phone, email, mail)
   - label: >-
-      Pour quelle raison le commerçant ne veut pas vous reprendre le
-      produit&#160;?
+      Why does the merchant not want to take the product back from you?
     type: TEXTAREA
-fileLabel: Preuve d'achat / publicité / offre de vente
+fileLabel: Proof of purchase / advertisement / offer of sale

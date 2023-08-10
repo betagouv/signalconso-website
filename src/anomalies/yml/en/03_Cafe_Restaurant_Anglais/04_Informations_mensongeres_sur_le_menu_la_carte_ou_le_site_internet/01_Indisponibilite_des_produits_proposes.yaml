@@ -1,18 +1,8 @@
-title: Indisponibilité des produits proposés
+title: Products on offer were unavailable
 reponseconsoCode:
   - '2243'
   - '271'
 detailInputs:
-  - label: Date du constat
+  - label: Date of the finding
     type: DATE
     defaultValue: SYSDATE
-  - label: Quel type de produit était indisponible&#160;?
-    type: TEXT
-    placeholder: "Exemple\_: Vin blanc, menu en promotion "
-  - label: "Le commerçant vous a-t-il donné une raison\_?"
-    type: RADIO
-    options:
-      - Non
-      - Il n'y en avait plus
-      - La carte n'est pas à jour
-      - Autre raison (to be specified)

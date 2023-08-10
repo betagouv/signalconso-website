@@ -1,5 +1,5 @@
-title: C'est un aliment ou une boisson
-desc: 'Exemple : bonbon, viande, pain, conserve, vin, eau en bouteille'
+title: It is an item of food or drink
+desc: 'Examples: sweets, meat, bread, canned food, wine, bottled water'
 tags:
   - ProduitAlimentaire
 subcategories:

@@ -1,17 +1,10 @@
-title: Un chauffeur qui s'est proposé dans la rue ou à l'aéroport
+title: Drivers or chauffeurs offering services on the street or at the airport
 blockingInfo:
-  title: Il s'agit d'un chauffeur non déclaré ("faux" taxi ou taxi clandestin)
+  title: These are undeclared drivers ("fake" or illicit taxis).
   content: >-
-    Lorsqu'un véhicule n'est pas identifié comme un taxi "officiel"
-    (c'est-à-dire une enseigne lumineuse sur le toit, un numéro d'identification
-    marqué sur la voiture) ou que vous ne l'avez pas réservé, il s'agit souvent
-    de taxi clandestin ou "faux" taxi. <br> Ces "faux" taxis sont interdits.
-    <br> Ils proposent souvent "taxi taxi" et sont par exemple dans les
-    aéroports ou près des lieux de sorties le soir. <br><br> Comme ces
-    chauffeurs ne sont pas déclarés, il n'est pas possible de faire un
-    signalement sur notre plate-forme.
+    When a vehicle is not identifiable as "official" (i.e. no illuminated sign on the roof, no identification number on the vehicle) or you did not book it, this is usually an illicit or "fake" taxi. So-called "fake" taxis are banned.
+    They often call out "taxi taxi" in busy areas such as airport arrivals halls or close to popular nightspots.
   questions:
-    - question: Que faire en cas de problème avec un "faux" taxi&#160;?
+    - question: What should I do if I have a problem with a "fake" taxi ?
       answer: >-
-        Vous devez contacter le plus rapidement possible la police ou la
-        gendarmerie.
+        You must contact the police or the gendarmerie as soon as possible.

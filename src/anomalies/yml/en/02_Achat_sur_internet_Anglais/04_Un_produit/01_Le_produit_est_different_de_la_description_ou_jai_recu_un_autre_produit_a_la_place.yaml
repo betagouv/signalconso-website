@@ -1,9 +1,5 @@
 title: >-
-  Le produit est différent de la description ou j'ai reçu un autre produit à la
-  place
-desc: >-
-  Exemple : J'ai commandé des chaussures et j'ai reçu un porte-clés en forme de
-  chaussure.
+  Product does not match description
 ccrfCode:
-  - 23B
+  - '23B'
   - '271'

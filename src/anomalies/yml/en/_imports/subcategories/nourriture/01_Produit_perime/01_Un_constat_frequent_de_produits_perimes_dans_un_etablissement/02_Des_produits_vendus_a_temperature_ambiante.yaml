@@ -1,17 +1,17 @@
-title: Des produits vendus à température ambiante
+title: Products sold at room temperature
 desc: "Exemple\_: chocolat, conserve, compote, petits pots bébé"
 blockingInfo:
-  title: Ce problème n'est pas un motif de signalement.
+  title: This problem is not a cause for report.
   content: >-
-    Les produits vendus à température ambiante comme des compotes, des biscuits
-    ou des conserves ont une date qu'on appelle date de durabilité minimale
-    (anciennement appelée DLUO). <br/><br/><b>Le commerçant a le droit de vendre
-    un produit avec cette date dépassée.</b> <br/><br/>Cette date est seulement
-    une indication. Au-delà de celle-ci, l'aliment peut perdre certaines de ses
-    qualités gustatives ou nutritionnelles mais peut être consommé sans danger
-    pour la santé. Il n'est pas nécessaire de le jeter.
+    Products sold at room temperature such as compotes, biscuits
+    or preserves have a date called the date of minimum durability
+    (formerly called DLUO). <br/><br/><b>The trader has the right to sell
+    a product with this date passed.</b> <br/><br/>This date is only
+    an indication. Beyond this, the food may lose some of its
+    taste or nutritional qualities but can be consumed without danger
+    for health. It is not necessary to throw it away.
   questions:
-    - question: Vous souhaitez néanmoins faire part de votre mécontentement&#160;?
+    - question: Do you still wish to express your dissatisfaction?
       answer: >-
-        Contacter directement le service client de votre magasin pour leur
-        expliquer.
+        Contact your store's customer service department directly for their
+        explain.

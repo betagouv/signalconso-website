@@ -1,4 +1,2 @@
-title: Prix
-desc: 'Exemple : prix faux en caisse, prix pas affiché'
-tags:
-  - ReponseConso
+title: Price
+desc: 'Examples: wrong price applied at checkout, price not displayed'

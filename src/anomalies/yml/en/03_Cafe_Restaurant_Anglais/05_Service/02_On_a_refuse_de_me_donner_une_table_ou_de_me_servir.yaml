@@ -1,12 +1,9 @@
-title: On a refusé de me donner une table ou de me servir
-desc: "Exemple\_: Refus au motif de la présence d'enfant, pour un motif discriminatoire, refus d'une table en terrasse pour un simple café"
+title: I was refused a table or refused service
+desc: "Exemple\_: denial of service because of children present, instances of discrimination, refused a table on the terrace for a coffee"
 reponseconsoCode:
   - '232'
   - '521'
 detailInputs:
-  - label: Date du problème
+  - label: Date of the finding
     type: DATE
     defaultValue: SYSDATE
-  - label: "Pour quelle raison a-t-on refusé de vous servir ou de vous donner une table\_?"
-    type: TEXTAREA
-fileLabel: Vous pouvez joindre des éléments pour appuyer votre signalement.

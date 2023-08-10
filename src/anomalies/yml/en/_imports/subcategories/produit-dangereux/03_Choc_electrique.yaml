@@ -1,7 +1,7 @@
-title: Choc électrique
+title: Electrical shock
 detailInputs:
   customimport: _imports/detailInputs/produit-dangereux.yml
-fileLabel: Photos du produit / de la notice / du ticket / de la facture / de l'accident
+fileLabel: Product / Package / Receipt / Invoice / Crash Photos
 reponseconsoCode:
   - '344'
   - '345'

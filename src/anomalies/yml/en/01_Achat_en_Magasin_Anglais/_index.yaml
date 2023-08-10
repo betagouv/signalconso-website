@@ -1,10 +1,10 @@
 id: '10'
 category: AchatMagasin
-title: Achat en Magasin (Anglais)
-seoTitle: Signalez un achat en magasin à la répression des fraudes
+title: In-store purchases
+seoTitle: Report an in-store purchase
 path: achat-magasin
-description: Prix, promotion, qualité, poids, garantie, …
+description: Price, promotion, quality, weight, warranty, etc.
 seoDescription: >-
-  Vous avez eu un problème de prix, sur une promotion ou de qualité, lors d'un achat dans un magasin. Vous avez repéré une infraction dans sa publicité ou son fonctionnement...
+  You had a problem of price, on a promotion or of quality, during a purchase in a store. You have spotted an infringement in its advertising or operation...
 img: category-store
-subcategoriesTitle: Votre problème concerne
+subcategoriesTitle: Your problem concerns

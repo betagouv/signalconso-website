@@ -1,4 +1,0 @@
-- label: Nom du produit ou du service (facultatif)
-  type: TEXT
-  placeholder: Préciser la nature et la gravité
-  optional: true

@@ -1,8 +1,8 @@
-title: Emballage déformé
+title: Deformed packaging
 detailInputs:
   customimport: _imports/detailInputs/produit-alimentaire.yml
-fileLabel: Photos du produit / de l'emballage / du ticket / de la facture / de l'accident
-desc: 'Exemple : boite de conserve bombée'
+fileLabel: Product / Package / Receipt / Invoice / Crash Photos
+desc: 'Example: Bulging tin can'
 reponseconsoCode:
   - '323'
   - '321'

@@ -1,11 +1,10 @@
-title: Oui (je possède la carte d'assistance)
+title: Yes (I have the assistance card)
 reponseconsoCode:
   - '521'
 detailInputs:
-  - label: Date du refus
+  - label: Date of refusal
     type: DATE
-  - label: "Pouvez-vous nous décrire ce qu'il s'est passé\_?"
+  - label: "Can you describe to us what happened\_?"
     type: TEXTAREA
 fileLabel: >-
-  Vous pouvez joindre des éléments (photo, carte d'assistance...) pour appuyer
-  votre signalement.
+  You can attach elements (photo, assistance card...) to support your report.

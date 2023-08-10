@@ -1,24 +1,26 @@
-title: Un produit vendu dans un emballage
-desc: "Exemple\_: bouteille d'eau, conserve de légumes, paquet de chips"
+title: A product sold in a package
+desc: "Example\_: bottle of water, canned vegetables, packet of crisps..."
 detailInputs:
-  - label: 'C''est un produit vendu&#160;:'
+  - label: 'This is a sold product:'
     type: RADIO
     options:
-      - au rayon frais
-      - au rayon surgelé
-      - à température ambiante
-  - label: Nom du produit
+      - in the fresh section
+      - in the frozen section
+      - at room temperature
+  - label: Product Name
     type: TEXT
-  - label: Marque
+  - label: Brand
     type: TEXT
-  - label: Numéro de lot (si possible)
+  - label: Batch number (if possible)
     type: TEXT
-    placeholder: il est imprimé sur l'emballage ou près de la date de consommation
+    placeholder: it is printed on the packaging or near the date of consumption
     optional: true
-  - label: Date limite (si possible)
+  - label: Deadline (if possible)
     type: DATE
     optional: true
-  - label: Date du constat (ou d'achat suivant le cas)
+  - label: DDate T (or date of purchase as the case may be)
     type: DATE_NOT_IN_FUTURE
     defaultValue: SYSDATE
-fileLabel: Photo du produit
+  - label: "What is the problem\_?"
+    type: TEXT
+fileLabel: Product picture

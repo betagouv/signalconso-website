@@ -1,26 +1,8 @@
-title: Les plats ne correspondent pas à la description
-desc: "Exemple\_: Produit industriel vendu sous la mention \"fait maison\""
+title: Meals did not match the description
+desc: "Exemple\_: mass-market food product passed as \"home made\""
 reponseconsoCode:
   - '271'
 detailInputs:
-  - label: Date du constat
+  - label: Date of the finding
     type: DATE
     defaultValue: SYSDATE
-  - label: À propos de quoi est-ce trompeur selon vous&#160;?
-    type: RADIO
-    options:
-      - "L'origine (exemple\_: origine des vins)"
-      - 'Un label ou une mention (exemple: fait maison)'
-      - 'Une marque (exemple: la marque de rhum proposée est mensongère'
-      - Autre (to be specified)
-  - label: Précisez en quelques mots pourquoi vous trouvez cela trompeur
-    type: TEXT
-    placeholder: "Soyez factuel et courtois, merci\_!"
-  - label: Avez-vous déjà expliqué le problème au commerçant &#160;?
-    type: RADIO
-    options:
-      - Oui
-      - Non
-fileLabel: >-
-  Merci de joindre si possible une photo ou votre facture afin d'appuyer votre
-  signalement.

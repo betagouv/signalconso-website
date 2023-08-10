@@ -1,9 +1,8 @@
-title: Le commerçant n'effectue pas la tare lors de la pesée
+title: The trader does not carry out the tare during the weighing
 desc: >-
-  Tarer une balance signifie imposer la valeur zéro sur une balance alors qu'il
-  y a un emballage dessus, pour ne peser que le contenu.
+  To tare a scale means to impose the zero value on a scale while it there is a packaging on it, to weigh only the contents.
 detailInputs:
-  - label: Préciser le lieu (rayon) dans le cas d'un grand magasin
+  - label: Specify the location (radius) in the case of a department store
     type: TEXT
-    placeholder: lieu
+    placeholder: place
     optional: true

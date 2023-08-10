@@ -1,14 +1,14 @@
-title: Un produit emballé et étiqueté par le vendeur comme une barquette de viande
-desc: La quantité est marquée sur une étiquette collée par le commerçant
+title: A product packaged and labeled by the seller as a meat tray.
+desc: The quantity is marked on a label stuck by the trader.
 detailInputs:
-  - label: Date du constat ou d'achat
+  - label: T or purchase date
     type: DATE
     defaultValue: SYSDATE
-  - label: Nom du produit
+  - label: Product Name
     type: TEXT
-  - label: Elements d'identification (date limite, n° de lot)
+  - label: Identification elements (deadline, batch number)
     type: TEXT
     optional: true
-    placeholder: Elements d'identification
+    placeholder: Identification elements
   - label: Description
     type: TEXTAREA
