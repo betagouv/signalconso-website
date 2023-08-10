@@ -62,6 +62,7 @@ export const AcknowledgementInner = ({
   country: Country | undefined
   isWebView: boolean
 }) => {
+  const {m} = useI18n()
   const reportCase = useMemo(() => {
     const _ = createdReport
     if (_.tags.includes('ReponseConso')) {
@@ -84,41 +85,34 @@ export const AcknowledgementInner = ({
   const subProps = {isWebView}
   return fnSwitch(reportCase, {
     [AcknowledgmentCases.ReponseConso]: () => (
-      <AcknowledgementLayout title="Que va-t-il se passer pour l'entreprise ?" {...subProps}>
+      <AcknowledgementLayout title={m.acknoledgment.whatWillHappenToCompany} {...subProps}>
         <Row icon={<Icon aria-hidden="true">check_circle</Icon>}>
-          Votre question est transmise à la répression des fraudes (
-          <abbr title="Direction Générale de la Concurrence, Consommation et Répression des Fraudes">DGCCRF</abbr>).
+          <span dangerouslySetInnerHTML={{__html: m.acknoledgment.questionTransmittedToDGCCRF}} />
         </Row>
         <Row icon={<Icon aria-hidden="true">check_circle</Icon>}>
-          Vos coordonnées sont à destination des enquêteurs <b>uniquement</b>.
+          {' '}
+          <span dangerouslySetInnerHTML={{__html: m.acknoledgment.yourDetailsForInvestigators}} />
         </Row>
-        <Row icon={<Icon aria-hidden="true">check_circle</Icon>}>
-          La repression des fraudes vous répondra dans les plus brefs délais.
-        </Row>
+        <Row icon={<Icon aria-hidden="true">check_circle</Icon>}>{m.acknoledgment.fraudsResponseTime}</Row>
       </AcknowledgementLayout>
     ),
     [AcknowledgmentCases.EmployeeReport]: () => (
-      <AcknowledgementLayout title="Que va-t-il se passer pour l'entreprise ?" {...subProps}>
-        <p>Vous avez indiqué être employé de l'entreprise que vous avez signalé.</p>
-        <p>
-          Afin de garantir la sécurité de votre emploi, votre signalement ne sera pas transmis à l'entreprise. Par contre, il a
-          bien été enregistré dans la base de données de la répression des fraudes (
-          <abbr title="Direction Générale de la Concurrence, Consommation et Répression des Fraudes">DGCCRF</abbr>).
-        </p>
+      <AcknowledgementLayout title={m.acknoledgment.whatWillHappenToCompany} {...subProps}>
+        <p>{m.acknoledgment.youIndicatedEmployment}</p>
+        <p dangerouslySetInnerHTML={{__html: m.acknoledgment.jobSecurityGuarantee}} />
       </AcknowledgementLayout>
     ),
     [AcknowledgmentCases.ForeignCompany]: () => (
       <AcknowledgementLayout
-        title="Que va-t-il se passer pour l'entreprise ?"
+        title={m.acknoledgment.whatWillHappenToCompany}
         showChargeBack={createdReport.tags.includes('LitigeContractuel') && !!createdReport.websiteURL}
         {...subProps}
       >
-        <p>Vous avez indiqué que l’entreprise est une entreprise étrangère ({country?.name}).</p>
-        <p>Votre signalement ne sera pas transmis à cette entreprise.</p>
+        <p>{m.acknoledgment.foreignCompanyReport(country?.name || '')}</p>
+        <p>{m.acknoledgment.notSentReport}</p>
         {country?.european && (
           <p>
-            Nous vous invitons à faire votre signalement directement auprès du Centre Européen des Consommateurs. Il vous
-            apportera une assistance pour régler votre problème.
+            {m.acknoledgment.reportToEuropeanConsumers}
             <br />
             <a
               href={externalLinks.centreEuropeenConso}
@@ -132,99 +126,60 @@ export const AcknowledgementInner = ({
         )}
         {country?.transfer && country.code === 'AD' && (
           <p>
-            Nous vous invitons à faire votre signalement directement auprès du service du commerce et de la consommation d’Andorre
+            {m.acknoledgment.reportToAndorraCommerce}
             :<br />
             <a href={externalLinks.consoAndorre} rel="noreferrer" target="_blank" title="comerc.ad (nouvelle fenêtre)">
               {externalLinks.consoAndorre}
             </a>
           </p>
         )}
-        {country?.transfer && country.code !== 'AD' && (
-          <p>Par contre les enquêteurs de la répression des fraudes vont le transférer aux autorités compétentes de ce pays.</p>
-        )}
+        {country?.transfer && country.code !== 'AD' && <p>{m.acknoledgment.investigatorsTransferToAuthorities}</p>}
         {!country?.european && !country?.transfer && (
           <p>
-            Nous vous invitons à faire votre signalement auprès de econsumer.gov afin d’aider les autorités internationales à
-            lutter contre la fraude.
-            <a href={externalLinks.econsumer}>{externalLinks.econsumer}</a>
+            {m.acknoledgment.reportToEConsumer} <a href={externalLinks.econsumer}>{externalLinks.econsumer}</a>
           </p>
         )}
       </AcknowledgementLayout>
     ),
     [AcknowledgmentCases.NotTransmittable]: () => (
-      <AcknowledgementLayout title="Que va-t-il se passer maintenant ?" {...subProps}>
+      <AcknowledgementLayout title={m.acknoledgment.whatWillHappenNow} {...subProps}>
         <Row icon={<Icon aria-hidden="true">check_circle</Icon>}>
-          Votre signalement sera lu <b>uniquement</b> par la répression des fraudes (
-          <abbr title="Direction Générale de la Concurrence, Consommation et Répression des Fraudes">DGCCRF</abbr>).
+          {' '}
+          <span dangerouslySetInnerHTML={{__html: m.acknoledgment.reportReadByDGCCRF}} />
         </Row>
         <Row icon={<Icon aria-hidden="true">check_circle</Icon>}>
-          Vos coordonnées sont à destination des enquêteurs <b>uniquement</b>.
+          {' '}
+          <span dangerouslySetInnerHTML={{__html: m.acknoledgment.yourDetailsForInvestigators}} />
         </Row>
-        <Row icon={<Icon aria-hidden="true">check_circle</Icon>}>
-          Les enquêteurs pourront être amenés à vous contacter afin de vérifier votre identité ou de vous demander des éléments
-          complémentaires à votre signalement.
-        </Row>
+        <Row icon={<Icon aria-hidden="true">check_circle</Icon>}>{m.acknoledgment.investigatorContactPossible}</Row>
       </AcknowledgementLayout>
     ),
     [AcknowledgmentCases.FrenchCompanyWithoutSIRET]: () => (
-      <AcknowledgementLayout title="Que va-t-il se passer pour l'entreprise ?" {...subProps}>
-        <p>
-          Votre signalement est transmis à la répression des fraudes (
-          <abbr title="Direction Générale de la Concurrence, Consommation et Répression des Fraudes">DGCCRF</abbr>).
-        </p>
-        <p>
-          Il ne pourra en revanche pas être transmis à l'entreprise signalée, sauf si cette dernière est française et identifiable
-          par l'équipe de SignalConso. Dans ce cas, vous recevrez une notification.
-        </p>
+      <AcknowledgementLayout title={m.acknoledgment.whatWillHappenToCompany} {...subProps}>
+        <p dangerouslySetInnerHTML={{__html: m.acknoledgment.reportTransmittedToDGCCRF}} />
       </AcknowledgementLayout>
     ),
     [AcknowledgmentCases.ContractualDisputeWithSIRET]: () => (
       <AcknowledgementLayout
-        title="Que va-t-il se passer pour l'entreprise ?"
+        title={m.acknoledgment.whatWillHappenToCompany}
         showChargeBack={createdReport.tags.includes('LitigeContractuel') && !!createdReport.websiteURL}
         {...subProps}
       >
-        <Row icon={<Icon aria-hidden="true">warning</Icon>}>
-          La répression des fraudes ne gère pas directement les problèmes individuels (litiges) entre un consommateur et une
-          entreprise.
-        </Row>
-        <Row icon={<Icon aria-hidden="true">check_circle</Icon>}>
-          L’entreprise a trois mois pour prendre connaissance du signalement.
-        </Row>
-        <Row icon={<Icon aria-hidden="true">check_circle</Icon>}>
-          La répression des fraudes pourra ouvrir une enquête auprès de l'établissement si de nombreux consommateurs sont
-          concernés ou si la pratique est particulièrement grave.
-        </Row>
-        <Row icon={<Icon aria-hidden="true">mail_outline</Icon>}>
-          Vous allez recevoir un mail avec les démarches que SignalConso vous invite à commencer en parallèle.
-        </Row>
+        <Row icon={<Icon aria-hidden="true">warning</Icon>}>{m.acknoledgment.fraudsNotHandlingIndividualIssues}</Row>
+        <Row icon={<Icon aria-hidden="true">check_circle</Icon>}>{m.acknoledgment.companyHasThreeMonths}</Row>
+        <Row icon={<Icon aria-hidden="true">check_circle</Icon>}>{m.acknoledgment.fraudsCanInvestigate}</Row>
+        <Row icon={<Icon aria-hidden="true">mail_outline</Icon>}>{m.acknoledgment.emailWithNextSteps}</Row>
       </AcknowledgementLayout>
     ),
     [AcknowledgmentCases.Default]: () => (
-      <AcknowledgementLayout title="Que va-t-il se passer pour l'entreprise ?" {...subProps}>
+      <AcknowledgementLayout title={m.acknoledgment.whatWillHappenToCompany} {...subProps}>
         {createdReport.contactAgreement ? (
           <>
-            <p>
-              L'entreprise recevra votre signalement. Elle aura la possibilité de corriger directement le problème grâce à vos
-              informations. Votre nom et vos coordonnées lui seront communiqués s’il souhaite vous répondre.
-            </p>
-            <p>
-              Votre signalement est aussi transmis à la répression des fraudes (
-              <abbr title="Direction Générale de la Concurrence, Consommation et Répression des Fraudes">DGCCRF</abbr>). Si votre
-              problème concerne d’autres consommateurs, la répression des fraudes fera un contrôle de l’établissement.
-            </p>
+            <p dangerouslySetInnerHTML={{__html: m.acknoledgment.companyReceivesReport}} />
           </>
         ) : (
           <>
-            <p>
-              L'entreprise recevra votre signalement sans connaître votre identité. Elle aura la possibilité de corriger
-              directement le problème grâce à vos informations.
-            </p>
-            <p>
-              Votre signalement est aussi transmis à la répression des fraudes (
-              <abbr title="Direction Générale de la Concurrence, Consommation et Répression des Fraudes">DGCCRF</abbr>). Si votre
-              problème concerne d’autres consommateurs, la répression des fraudes fera un contrôle de l’établissement.
-            </p>
+            <p dangerouslySetInnerHTML={{__html: m.acknoledgment.companyReceivesReportWithoutIdentity}} />
           </>
         )}
       </AcknowledgementLayout>
@@ -259,7 +214,7 @@ const AcknowledgementLayout = ({
         title={
           <Box sx={{display: 'flex', alignItems: 'center'}}>
             <Icon sx={{mr: 1}}>check_circle</Icon>
-            Votre signalement a été envoyé.
+            <span dangerouslySetInnerHTML={{__html: m.acknoledgment.sentReport}} />
           </Box>
         }
       >
@@ -273,17 +228,17 @@ const AcknowledgementLayout = ({
           {showChargeBack && (
             <>
               <p>
-                <strong>Vous avez payé avec votre carte bancaire ?</strong>
+                <strong>{m.acknoledgment.paidWithCreditCard}</strong>
               </p>
               <p>
-                Grâce à la procédure de charge-back vous pouvez être remboursé gratuitement suite à un achat effectué en ligne :
+                {m.acknoledgment.chargeBack}
                 <br />
                 <a href={externalLinks.chargeBack}>{externalLinks.chargeBack}</a>
               </p>
             </>
           )}
           <p>
-            En cas d’erreur sur votre signalement, envoyez un email à<br />
+            {m.acknoledgment.emailForErrorInReport}
             <Txt link span>
               <a href="mailto:support@signal.conso.gouv.fr?subject=incident">support@signal.conso.gouv.fr</a>
             </Txt>

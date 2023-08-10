@@ -22,7 +22,7 @@ export const PlaygroundAcknowledgment = () => {
       }),
       [AcknowledgmentCases.NotTransmittable]: () => ({
         ...baseReport,
-        employeeConsumer: false,
+        employeeConsumer: true,
         tags: [],
       }),
       [AcknowledgmentCases.FrenchCompanyWithoutSIRET]: () => ({...baseReport, employeeConsumer: false, companySiret: undefined}),
