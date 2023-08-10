@@ -55,15 +55,22 @@ export const ScRadioButtons = <V,>({
         </legend>
       )}
       <div
-        className={`fr-fieldset__content fr-fieldset__element ${orientation === 'horizontal' && 'fr-fieldset__element--inline'}`}
+        className={`fr-fieldset__content fr-fieldset__element !ml-0 !mt-4 ${
+          orientation === 'horizontal' && 'fr-fieldset__element--inline'
+        }`}
       >
         {options.map(({label, description, value, specify, disabled}, i) => {
           const inputId = `radio-rich-${id}-${i}`
           const checked = value === selectedValue
           return (
-            <div key={i} className={`fr-radio-group fr-radio-rich ${disabled ? 'pointer-events-none opacity-60' : ''}`}>
+            <div
+              key={i}
+              className={`fr-radio-group !max-w-full border border-gray-300 border-solid mb-1 hover:bg-gray-100 hover:border-scbluefrance ${
+                disabled ? 'pointer-events-none opacity-60' : ''
+              } ${checked ? 'border-scbluefrance' : ''}`}
+            >
               <input type="radio" id={inputId} name={radioName} onChange={() => onChange(value)} checked={checked}></input>
-              <label className="fr-label" htmlFor={inputId}>
+              <label className="fr-label !pr-4 ml-4" htmlFor={inputId}>
                 {label}
                 {description && createDescription(description)}
                 {checked && specify}

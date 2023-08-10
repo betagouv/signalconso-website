@@ -14,6 +14,7 @@ import {useToastError} from '../../../hooks/useToastError'
 import {CompanySearchResult, isGovernmentCompany} from '../../../model/Company'
 import {CompanyWebsiteVendor} from './CompanyWebsiteVendor'
 import {ScRadioButtons} from '../../../components_simple/RadioGroup/ScRadioButtons'
+import {Alert} from '@codegouvfr/react-dsfr/Alert'
 
 interface Props extends Omit<BoxProps, 'onSubmit'> {
   companies: CompanySearchResult[]
@@ -70,7 +71,7 @@ export const CompanySearchResultComponent = ({companies, onSubmit}: Props) => {
   const createCompanyEntry = (company: CompanySearchResult, closed: boolean) => {
     const isGovernment = isGovernmentCompany(company)
     return (
-      <div className="flex justify-between">
+      <div className="flex justify-between w-full">
         <div>
           <span className="font-bold block">
             {company.commercialName ? `${company.commercialName} (${company.name})` : company.name}
@@ -134,18 +135,28 @@ export const CompanySearchResultComponent = ({companies, onSubmit}: Props) => {
                   }}
                   name="result"
                   render={({field}) => (
-                    <ScRadioButtons
-                      {...field}
-                      error={!!errors.result}
-                      options={companies.map(company => {
-                        const closed = !company.isOpen
-                        return {
-                          label: createCompanyEntry(company, closed),
-                          value: company.siret!,
-                          disabled: closed,
-                        }
-                      })}
-                    />
+                    <>
+                      <ScRadioButtons
+                        {...field}
+                        error={!!errors.result}
+                        options={companies.map(company => {
+                          const closed = !company.isOpen
+                          return {
+                            label: createCompanyEntry(company, closed),
+                            value: company.siret!,
+                            disabled: closed,
+                          }
+                        })}
+                      />
+                      {onlyClosed && (
+                        <Alert
+                          description={m.closedCompanyText}
+                          severity="warning"
+                          title={m.closedCompany}
+                          className="fr-mt-4w"
+                        />
+                      )}
+                    </>
                   )}
                 />
               </PanelBody>
