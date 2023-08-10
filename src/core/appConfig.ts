@@ -49,6 +49,7 @@ export const appConfig = {
   // Used only to regenerate the landing page from Airtable
   // thus no need to configure anywhere but in dev
   airtableApiToken: process.env.NEXT_PUBLIC_AIRTABLE_API_TOKEN ?? null,
+  maxNumberOfAttachments: readInt(process.env.NEXT_PUBLIC_MAX_NUMBER_OF_ATTACHMENTS, 20),
 }
 
 export type AppConfig = typeof appConfig
