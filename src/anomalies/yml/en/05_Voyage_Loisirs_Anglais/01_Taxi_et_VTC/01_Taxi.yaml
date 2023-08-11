@@ -1,0 +1,8 @@
+title: Taxi
+companyKind: SIRET
+desc: >-
+  Les taxis sont reconnaissables avec l'enseigne lumineuse sur le toit. Les
+  voitures qui n'ont pas cette enseigne ne sont pas des "vrais" taxis.
+ccrfCode:
+  - '23f'
+  - '164'
