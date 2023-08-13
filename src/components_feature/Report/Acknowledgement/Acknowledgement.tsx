@@ -8,7 +8,7 @@ import {useI18n} from 'i18n/I18n'
 import {useEffect, useMemo} from 'react'
 import {Txt} from '../../../alexlibs/mui-extension/Txt/Txt'
 import {LinkBackToHome} from '../../../components_simple/LinkBackToHome'
-import {Country} from '../../../model/Country'
+import {Country, countryLabel} from '../../../model/Country'
 import {CreatedReport} from '../../../model/CreatedReport'
 import {ReportDraft} from '../../../model/ReportDraft'
 import {fnSwitch} from '../../../utils/FnSwitch'
@@ -32,6 +32,8 @@ export const Acknowledgement = ({isWebView}: {isWebView: boolean}) => {
   const _reportFlow = useReportFlowContext()
   const {data: countries} = useGetCountries()
 
+  const {currentLang} = useI18n()
+
   useEffect(() => {
     // When this component is displayed, the draft should be cleared so we can't go back
     _reportFlow.resetFlow()
@@ -43,7 +45,7 @@ export const Acknowledgement = ({isWebView}: {isWebView: boolean}) => {
 
   const country = useMemo(() => {
     if (countries && report && report.companyAddress.country) {
-      return countries?.find(_ => report.companyAddress.country === _.name)
+      return countries?.find(_ => report.companyAddress.country === countryLabel(currentLang, _))
     }
   }, [countries, report])
 
@@ -62,7 +64,7 @@ export const AcknowledgementInner = ({
   country: Country | undefined
   isWebView: boolean
 }) => {
-  const {m} = useI18n()
+  const {m, currentLang} = useI18n()
   const reportCase = useMemo(() => {
     const _ = createdReport
     if (_.tags.includes('ReponseConso')) {
@@ -108,7 +110,7 @@ export const AcknowledgementInner = ({
         showChargeBack={createdReport.tags.includes('LitigeContractuel') && !!createdReport.websiteURL}
         {...subProps}
       >
-        <p>{m.acknoledgment.foreignCompanyReport(country?.name || '')}</p>
+        <p>{m.acknoledgment.foreignCompanyReport(country ? countryLabel(currentLang, country) : '')}</p>
         <p>{m.acknoledgment.notSentReport}</p>
         {country?.european && (
           <p>
