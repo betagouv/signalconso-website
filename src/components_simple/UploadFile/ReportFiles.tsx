@@ -12,12 +12,14 @@ export interface ReportFilesProps {
   onRemoveFile?: (f: UploadedFile) => void
   fileOrigin: FileOrigin
   hideAddBtn?: boolean
+  hideRemoveBtn?: boolean
 }
 
 export const ReportFiles = ({
   fileOrigin,
   files,
   hideAddBtn,
+  hideRemoveBtn,
   onRemoveFile = () => void 0,
   onNewFile = () => void 0,
 }: ReportFilesProps) => {
@@ -49,7 +51,7 @@ export const ReportFiles = ({
       >
         {innerFiles
           ?.filter(_ => _.origin === fileOrigin)
-          .map(_ => <ReportFile key={_.id} file={_} onRemove={hideAddBtn ? undefined : removeFile} />)}
+          .map(_ => <ReportFile key={_.id} file={_} onRemove={hideRemoveBtn ? undefined : removeFile} />)}
         {!hideAddBtn && <ReportFileAdd fileOrigin={fileOrigin} onUploaded={newFile} />}
       </Box>
       {hideAddBtn && innerFiles?.length === 0 && (

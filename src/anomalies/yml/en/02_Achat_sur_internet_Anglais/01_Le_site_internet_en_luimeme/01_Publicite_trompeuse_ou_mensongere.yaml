@@ -1,0 +1,10 @@
+title: Publicité trompeuse ou mensongère
+desc: >-
+  Exemple : fausse description d'un produit, fausse promesse sur l'origine, le
+  résultat, l'impact environnemental, produit jamais disponible, faux stock
+  affiché, faux compte à rebours, etc.
+ccrfCode:
+  - 23B
+reponseconsoCode:
+  - '210'
+  - '220'

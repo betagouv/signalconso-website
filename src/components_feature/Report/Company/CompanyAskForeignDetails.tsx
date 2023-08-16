@@ -10,8 +10,9 @@ import {Controller, useForm} from 'react-hook-form'
 import {Alert} from '../../../alexlibs/mui-extension/Alert/Alert'
 import {Txt} from '../../../alexlibs/mui-extension/Txt/Txt'
 import {CompanyKinds} from '../../../anomalies/Anomaly'
-import {Country} from '../../../model/Country'
+import {Country, countryLabel} from '../../../model/Country'
 import {fnSwitch} from '../../../utils/FnSwitch'
+import {AppLang, AppLangs} from '../../../i18n/localization/AppLangs'
 
 interface Form {
   name: string
@@ -31,7 +32,7 @@ const countryToFlag = (isoCode: string) => {
 }
 
 export const CompanyAskForeignDetails = ({onSubmit, companyKind}: Props) => {
-  const {m} = useI18n()
+  const {m, currentLang} = useI18n()
   const _countries = useGetCountries()
   const {
     control,
@@ -72,12 +73,12 @@ export const CompanyAskForeignDetails = ({onSubmit, companyKind}: Props) => {
                         <Box component="span" sx={{mr: 2, fontSize: 24}}>
                           {countryToFlag(option.code)}
                         </Box>{' '}
-                        {option.name}
+                        {countryLabel(currentLang, option)}
                       </li>
                     )}
                     loading={_countries.isLoading}
                     options={_countries.data ?? []}
-                    getOptionLabel={_ => _.name}
+                    getOptionLabel={_ => countryLabel(currentLang, _)}
                     renderInput={params => (
                       <ScInput
                         {...params}

@@ -4,7 +4,7 @@ import {Panel, PanelActions, PanelBody} from 'components_simple/Panel/Panel'
 import {useI18n} from 'i18n/I18n'
 import React from 'react'
 import {Controller, useForm} from 'react-hook-form'
-import {Country} from '../../../model/Country'
+import {Country, countryLabel} from '../../../model/Country'
 import {BtnNextSubmit} from 'components_simple/Buttons'
 
 interface Props {
@@ -17,7 +17,7 @@ interface Form {
 }
 
 export const CompanyWebsiteCountry = ({countries, onSubmit}: Props) => {
-  const {m} = useI18n()
+  const {m, currentLang} = useI18n()
   const {handleSubmit, register, control} = useForm<Form>()
   return (
     <Panel title={m.companySelectCountryTitle}>
@@ -33,7 +33,7 @@ export const CompanyWebsiteCountry = ({countries, onSubmit}: Props) => {
             render={({field}) => (
               <ScRadioGroup {...field}>
                 {countries.map(_ => (
-                  <ScRadioGroupItem key={_.code} value={_.name} title={_.name} />
+                  <ScRadioGroupItem key={_.code} value={_.name} title={countryLabel(currentLang, _)} />
                 ))}
               </ScRadioGroup>
             )}

@@ -30,6 +30,7 @@ import {getDefaultValueFromInput, getOptionsFromInput, getPlaceholderFromInput} 
 import {DetailsAlertProduitDangereux} from './DetailsAlertProduitDangereux'
 import {DetailsSpecifyInput} from './DetailsSpecifyInput'
 import {getDraftReportInputs} from './draftReportInputs'
+import {Alert} from '@codegouvfr/react-dsfr/Alert'
 
 export class SpecifyFormUtils {
   static readonly keyword = '(à préciser)'
@@ -116,6 +117,8 @@ export const DetailsInner = ({
   }, [initialFiles])
 
   const displayAlertProduitDangereux = (tags ?? []).includes('ProduitDangereux')
+
+  const uploadedFilesCount = uploadedFiles?.length ?? 0
 
   return (
     <>
@@ -330,11 +333,24 @@ export const DetailsInner = ({
             fileOrigin={FileOrigin.Consumer}
             onRemoveFile={f => setUploadedFiles(files => files?.filter(_ => _.id !== f.id))}
             onNewFile={f => setUploadedFiles(_ => [...(_ ?? []), f])}
+            hideAddBtn={uploadedFilesCount >= appConfig.maxNumberOfAttachments}
           />
           <p
             className="fr-mt-2w"
             dangerouslySetInnerHTML={{__html: m.attachmentsDescAllowedFormat(appConfig.upload_allowedExtensions)}}
           />
+          {uploadedFilesCount === 0 ? (
+            <p>{m.maxAttachmentsZero(appConfig.maxNumberOfAttachments)}</p>
+          ) : uploadedFilesCount === appConfig.maxNumberOfAttachments ? (
+            <Alert
+              description={m.maxAttachmentsReached(appConfig.maxNumberOfAttachments)}
+              severity="info"
+              title={<></>}
+              className="fr-mt-4w"
+            />
+          ) : (
+            <p>{m.maxAttachmentsCurrent(appConfig.maxNumberOfAttachments - uploadedFilesCount)}</p>
+          )}
         </div>
       </Animate>
       <ReportFlowStepperActions

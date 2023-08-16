@@ -37,9 +37,9 @@ export function RgpdBanner() {
         aria-controls={id}
         onClick={onClose}
       >
-        Fermer
+        {m.close}
       </button>
-      <h2 className="fr-h6">À propos des cookies sur signalconso.gouv.fr</h2>
+      <h2 className="fr-h6">{m.bannerCookieRemark}</h2>
       <div className="fr-consent-banner__content">
         <p className="fr-text--sm">
           {m.bannerCookie} <Link href={pagesDefs.cookies.url}>{m.bannerCookieSeeMore}</Link>

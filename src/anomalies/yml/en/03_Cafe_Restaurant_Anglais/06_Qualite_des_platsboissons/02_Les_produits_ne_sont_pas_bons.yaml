@@ -1,0 +1,12 @@
+title: Les produits ne sont pas bons
+blockingInfo:
+  title: Je trouve que les produits ne sont pas bons ou de grande qualité.
+  content: >-
+    Si la qualité des produits ne vous a pas convenu, nous vous invitons à
+    contacter directement l'établissement. <br> Vous pouvez notamment contacter
+    le service client. Le service client est présent dans la plupart des
+    restaurants et bars qui font partie d'un groupe ou d'une chaîne. Il est
+    conçu pour recevoir ce type de plainte. <br><br> Vous ne pouvez pas faire un
+    signalement sur SignalConso car la répression des fraudes ne pourra pas
+    traiter votre signalement.
+  notAFraudMessage: true
