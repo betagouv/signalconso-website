@@ -35,7 +35,7 @@ export const ScRadioButtons = <V,>({
 
   const createDescription = (description: ReactNode) => {
     if (typeof description === 'string') {
-      return <span className="fr-hint-text">{description}</span>
+      return <span className="text-sm text-[#666666]">{description}</span>
     } else {
       return <div className="z-10">{description}</div>
     }
@@ -67,7 +67,7 @@ export const ScRadioButtons = <V,>({
               key={i}
               className={`fr-radio-group !max-w-full border border-gray-300 border-solid mb-1 hover:bg-gray-100 hover:border-scbluefrance ${
                 disabled ? 'pointer-events-none opacity-60' : ''
-              } ${checked ? 'border-scbluefrance' : ''}`}
+              } ${checked ? 'border-scbluefrance border-2' : ''}`}
             >
               <input type="radio" id={inputId} name={radioName} onChange={() => onChange(value)} checked={checked}></input>
               <label className="fr-label !pr-4 ml-4" htmlFor={inputId}>
