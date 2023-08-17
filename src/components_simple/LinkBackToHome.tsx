@@ -18,9 +18,9 @@ export const LinkBackToHome = ({isWebView, lang}: {isWebView: boolean; lang: App
           {m.backToHome}
         </Button>
       ) : (
-        <Link href={pagesDefs.index.url} legacyBehavior>
+        <a href={pagesDefs.index.url}>
           <Button iconId="fr-icon-home-4-line">{m.backToHome}</Button>
-        </Link>
+        </a>
       )}
     </div>
   )

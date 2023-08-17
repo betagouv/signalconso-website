@@ -16,6 +16,7 @@ export default function NotFound() {
   const currentPathLang = pathname!.toLowerCase().split('/')[1]
   const lang = getSupportedLang(currentPathLang) ?? AppLangs.fr
 
+  const isWebView = pathname.includes('/webview/')
   const {messages: m} = getI18n(lang)
 
   return (
@@ -35,7 +36,7 @@ export default function NotFound() {
               />
             }
           >
-            <LinkBackToHome isWebView={false} lang={lang} />
+            <LinkBackToHome isWebView={isWebView} lang={lang} />
           </Fender>
         </Page>
       </DsfrProvider>
