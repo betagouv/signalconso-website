@@ -48,7 +48,7 @@ sub vcl_recv {
     # Set a header to categorize the URL, just to make the code easier to manage, avoid repetition
     if (
         req.url ~ "^/_next/static/" ||
-        req.url ~ "^/_next/image/"
+        req.url ~ "^/_next/image"
     ) {
         set req.http.X-Cache-Path-Kind = "asset_hashed";
     } elseif (
@@ -84,6 +84,21 @@ sub vcl_recv {
             # Here we drop cookies entirely
             # By doing this, Varnish should know that he can cache them safely
             unset req.http.Cookie;
+        }
+    }
+
+    # Clean up the accept-language header to just fr/en
+    # so we can use it safely as a cache key
+    if (req.http.Accept-Language) {
+        if (
+            # if it contains "fr" anywhere in the list of accepted languages
+            # we'll simplify it to "fr"
+            # we can't do complex regexp or handle language priorities here
+            req.http.Accept-Language ~ "fr"
+        ) {
+            set req.http.Accept-Language = "fr";
+        } else {
+            set req.http.Accept-Language = "en";
         }
     }
 
@@ -186,8 +201,6 @@ sub vcl_backend_response {
         # I don't think there is anything else
         set beresp.ttl = 0s;
     }
-
-
 }
 
 # Happens when we have all the pieces we need, and are about to send the
