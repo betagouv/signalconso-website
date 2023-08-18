@@ -1,5 +1,3 @@
-import {ScRadioGroup} from '../../../components_simple/RadioGroup/RadioGroup'
-import {ScRadioGroupItem} from '../../../components_simple/RadioGroup/RadioGroupItem'
 import {SocialNetworks, socialNetworks} from '../../../anomalies/Anomaly'
 import {ScInput} from '../../../components_simple/Input/ScInput'
 import {Animate} from '../../../components_simple/Animate/Animate'
@@ -11,6 +9,7 @@ import {Box} from '@mui/material'
 import {Txt} from '../../../alexlibs/mui-extension/Txt/Txt'
 import {SocialNetworkRow} from '../../../components_simple/SocialNetworkRow/SocialNetworkRow'
 import {BtnNextSubmit} from 'components_simple/Buttons'
+import {ScRadioButtons} from '../../../components_simple/RadioGroup/ScRadioButtons'
 
 interface Props {
   onSubmit: (socialNetwork: SocialNetworks, influencer: string) => void
@@ -31,6 +30,13 @@ export const InfluencerBySocialNetwork = ({onSubmit}: Props) => {
   } = useForm<Form>()
 
   const socialNetwork = watch('socialNetwork')
+
+  const socialNetworkOptions = socialNetworks.map(socialNetwork => {
+    return {
+      label: <SocialNetworkRow socialNetwork={socialNetwork} />,
+      value: socialNetwork,
+    }
+  })
 
   return (
     <>
@@ -57,18 +63,7 @@ export const InfluencerBySocialNetwork = ({onSubmit}: Props) => {
                 rules={{
                   required: {value: true, message: m.required},
                 }}
-                render={({field: {onChange, value}}) => (
-                  <ScRadioGroup dense value={value} onChange={onChange}>
-                    {socialNetworks.map(socialNetwork => (
-                      <ScRadioGroupItem
-                        dense
-                        key={socialNetwork}
-                        value={socialNetwork}
-                        title={<SocialNetworkRow socialNetwork={socialNetwork} />}
-                      />
-                    ))}
-                  </ScRadioGroup>
-                )}
+                render={({field}) => <ScRadioButtons {...field} options={socialNetworkOptions} />}
               />
             </PanelBody>
           </Panel>

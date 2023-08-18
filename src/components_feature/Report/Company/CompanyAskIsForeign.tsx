@@ -1,11 +1,10 @@
 import {Panel, PanelBody} from 'components_simple/Panel/Panel'
 import {useI18n} from 'i18n/I18n'
-import {ScRadioGroupItem} from 'components_simple/RadioGroup/RadioGroupItem'
-import {ScRadioGroup} from 'components_simple/RadioGroup/RadioGroup'
 import {Txt} from '../../../alexlibs/mui-extension/Txt/Txt'
 import {Animate} from 'components_simple/Animate/Animate'
 import {ReactNode, useState} from 'react'
 import {AccordionInline} from 'components_simple/AccordionInline/AccordionInline'
+import {ScRadioButtons} from '../../../components_simple/RadioGroup/ScRadioButtons'
 
 export enum IsForeignCompany {
   Yes = 'Yes',
@@ -14,11 +13,10 @@ export enum IsForeignCompany {
 }
 
 interface Props {
-  value?: IsForeignCompany
   children: (_: IsForeignCompany) => ReactNode
 }
 
-export const CompanyAskIsForeign = ({value, children}: Props) => {
+export const CompanyAskIsForeign = ({children}: Props) => {
   const {m} = useI18n()
   const [isForeignCompany, setIsForeignCompany] = useState<IsForeignCompany | undefined>()
   return (
@@ -26,19 +24,29 @@ export const CompanyAskIsForeign = ({value, children}: Props) => {
       <Animate>
         <Panel title={m.isAFrenchCompany} id="CompanyAskIsForeign">
           <PanelBody>
-            <ScRadioGroup value={value} onChange={setIsForeignCompany}>
-              <ScRadioGroupItem value={IsForeignCompany.Yes} title={m.yes} />
-              <ScRadioGroupItem
-                value={IsForeignCompany.No}
-                title={m.noItsForeign}
-                description={
-                  <AccordionInline label={m.companyHowToFindCountry} onClick={e => e.stopPropagation()}>
-                    <Txt color="hint" size="small" dangerouslySetInnerHTML={{__html: m.howToFindCompanyCountryDesc}} />
-                  </AccordionInline>
-                }
-              />
-              <ScRadioGroupItem value={IsForeignCompany.Unknown} title={m.iDontKnown} />
-            </ScRadioGroup>
+            <ScRadioButtons
+              value={isForeignCompany}
+              onChange={setIsForeignCompany}
+              options={[
+                {
+                  label: m.yes,
+                  value: IsForeignCompany.Yes,
+                },
+                {
+                  label: m.noItsForeign,
+                  value: IsForeignCompany.No,
+                  description: (
+                    <AccordionInline label={m.companyHowToFindCountry} onClick={e => e.stopPropagation()}>
+                      <Txt color="hint" size="small" dangerouslySetInnerHTML={{__html: m.howToFindCompanyCountryDesc}} />
+                    </AccordionInline>
+                  ),
+                },
+                {
+                  label: m.iDontKnown,
+                  value: IsForeignCompany.Unknown,
+                },
+              ]}
+            />
           </PanelBody>
         </Panel>
       </Animate>

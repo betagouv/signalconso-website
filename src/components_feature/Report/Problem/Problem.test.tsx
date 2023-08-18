@@ -71,7 +71,7 @@ describe('Problem', () => {
   })
 
   const clickEmployeeConsumer = (app: ScRenderResult, isEmployee: 'yes' | 'no'): void => {
-    const radios = [...app.container.querySelectorAll('#select-employeeconsumer [role=radio]')!]
+    const radios = [...app.container.querySelectorAll('#select-employeeconsumer fieldset label')!]
     if (radios.length === 0) {
       throw new Error('Employee consumer form did not appear')
     }
@@ -83,7 +83,7 @@ describe('Problem', () => {
   }
 
   const clickCompanyKind = (app: ScRenderResult, kind: 'internet' | 'not_internet') => {
-    const radios = [...app.container.querySelectorAll('#select-companyKind [role=radio]')!]
+    const radios = [...app.container.querySelectorAll('#select-companyKind fieldset label')!]
     if (radios.length === 0) {
       throw new Error('Company kind form did not appear')
     }
@@ -98,7 +98,7 @@ describe('Problem', () => {
     app: ScRenderResult,
     value: 'contractualDispute' | 'notContractualDispute' | 'reponseConso',
   ) => {
-    const radios = [...app.container.querySelectorAll('#select-contractualDispute [role=radio]')!]
+    const radios = [...app.container.querySelectorAll('#select-contractualDispute fieldset label')!]
     if (radios.length === 0) {
       throw new Error('Contractual dispute form did not appear')
     }
