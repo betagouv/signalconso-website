@@ -13,7 +13,7 @@ detailInputs:
     options:
       - Prix pas affiché
       - Prix illisible
-      - Autre (à préciser)
+      - Autre (to be specified)
   - label: Date du constat
     type: DATE
     defaultValue: SYSDATE

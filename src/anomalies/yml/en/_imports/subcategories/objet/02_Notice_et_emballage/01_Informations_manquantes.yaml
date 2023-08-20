@@ -8,7 +8,7 @@ detailInputs:
       - Composition
       - Données énergétiques
       - Disponibilité des pièces de rechange
-      - Autre (à préciser)
+      - Autre (to be specified)
   - label: Quel est le type de produit&#160;?
     type: RADIO
     options:
@@ -17,7 +17,7 @@ detailInputs:
       - Électroménager
       - Jouets
       - Électroniques
-      - Autre (à préciser)
+      - Autre (to be specified)
   - label: Date du constat ou d'achat
     type: DATE
     defaultValue: SYSDATE

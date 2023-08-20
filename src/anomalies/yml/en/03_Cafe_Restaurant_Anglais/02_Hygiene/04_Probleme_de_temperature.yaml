@@ -15,7 +15,7 @@ detailInputs:
       - Vitrine / réfrigérateur trop chaud ou en panne
       - Stockage à température ambiante de produits frais ou congelés
       - Transport à température ambiante de produits frais ou congelés
-      - Autre problème de température (à préciser)
+      - Autre problème de température (to be specified)
   - label: "Pouvez-vous préciser\_?"
     type: TEXT
     optional: true

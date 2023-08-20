@@ -11,7 +11,7 @@ detailInputs:
       - Allergènes
       - Liste des ingrédients
       - Pas d'étiquette du tout
-      - Autre (à préciser)
+      - Autre (to be specified)
   - label: Date du constat (ou d'achat suivant le cas)
     type: DATE_NOT_IN_FUTURE
     defaultValue: SYSDATE

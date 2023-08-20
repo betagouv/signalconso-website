@@ -12,7 +12,7 @@ detailInputs:
     options:
       - Alcool (vin, spiritueux...)
       - Fruits et légumes
-      - Autre (à préciser)
+      - Autre (to be specified)
   - label: Nom  et marque du produit
     type: TEXT
     optional: true
@@ -24,7 +24,7 @@ detailInputs:
       - Un label ou un certificat
       - Une promesse de résultat
       - Une marque
-      - Autres (à préciser)
+      - Autres (to be specified)
   - label: Pourquoi trouvez-vous ça trompeur&#160;?
     type: TEXTAREA
     optional: true
