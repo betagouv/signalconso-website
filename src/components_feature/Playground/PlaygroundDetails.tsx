@@ -1,6 +1,6 @@
 import {Checkbox} from '@codegouvfr/react-dsfr/Checkbox'
 import {useTheme} from '@mui/material'
-import {DetailsInner} from 'components_feature/Report/Details/Details'
+import {DetailsInner, SpecifyFormUtils} from 'components_feature/Report/Details/Details'
 import {styleUtils} from 'core/theme'
 import {ReportDraft2} from 'model/ReportDraft2'
 import {ChangeEvent, useState} from 'react'
@@ -18,6 +18,8 @@ import {
 import {DetailInputValue} from '../../model/CreatedReport'
 import {UploadedFile} from '../../model/UploadedFile'
 import {dummyStepNavigation} from './PlaygroundConfirmation'
+import {AppLang, AppLangs} from '../../i18n/localization/AppLangs'
+import {useI18n} from '../../i18n/I18n'
 
 export class DetailsFixtureInput {
   static readonly text: DetailInputText = {
@@ -47,16 +49,27 @@ export class DetailsFixtureInput {
     type: DetailInputType.DATE,
   }
 
-  static readonly radio: DetailInputRadio = {
-    label: 'Radio label',
-    type: DetailInputType.RADIO,
-    options: ['OPTION1', 'OPTION2 (à préciser)'],
+  static readonly radio = (lang: AppLang) => {
+    return {
+      label: 'Radio label',
+      type: DetailInputType.RADIO,
+      options: [
+        'OPTION1',
+        `OPTION2 ${lang === AppLangs.fr ? SpecifyFormUtils.specifyKeywordFr : SpecifyFormUtils.specifyKeywordEn}`,
+      ],
+    }
   }
 
-  static readonly checkbox: DetailInputCheckbox = {
-    label: 'Checkbox label',
-    type: DetailInputType.CHECKBOX,
-    options: ['CHECKBOX1', 'CHECKBOX2 (à préciser)', 'CHECKBOX3'],
+  static readonly checkbox = (lang: AppLang) => {
+    return {
+      label: 'Checkbox label',
+      type: DetailInputType.CHECKBOX,
+      options: [
+        'CHECKBOX1',
+        `CHECKBOX2 ${lang === AppLangs.fr ? SpecifyFormUtils.specifyKeywordFr : SpecifyFormUtils.specifyKeywordEn}`,
+        'CHECKBOX3',
+      ],
+    }
   }
 
   static readonly textarea: DetailInputTextarea = {
@@ -65,21 +78,24 @@ export class DetailsFixtureInput {
   }
 }
 
-const inputsConfig = {
-  text: DetailsFixtureInput.text,
-  date: DetailsFixtureInput.date,
-  dateNotInFuture: DetailsFixtureInput.dateNotInFuture,
-  dateWithNoDefault: DetailsFixtureInput.dateWithNoDefault,
-  radio: DetailsFixtureInput.radio,
-  checkbox: DetailsFixtureInput.checkbox,
-  textarea: DetailsFixtureInput.textarea,
-  timeslot: DetailsFixtureInput.timeslot,
+const inputsConfig = (lang: AppLang) => {
+  return {
+    text: DetailsFixtureInput.text,
+    date: DetailsFixtureInput.date,
+    dateNotInFuture: DetailsFixtureInput.dateNotInFuture,
+    dateWithNoDefault: DetailsFixtureInput.dateWithNoDefault,
+    radio: DetailsFixtureInput.radio(lang),
+    checkbox: DetailsFixtureInput.checkbox(lang),
+    textarea: DetailsFixtureInput.textarea,
+    timeslot: DetailsFixtureInput.timeslot,
+  }
 }
 
 type InputType = keyof typeof inputsConfig
 
 export const PlaygroundDetails = () => {
   const theme = useTheme()
+  const {currentLang} = useI18n()
 
   const [inputChoices, setInputChoices] = useState({
     text: true,
@@ -93,7 +109,7 @@ export const PlaygroundDetails = () => {
   })
   const chosenInputs = getEntries(inputChoices)
     .filter(([, v]) => !!v)
-    .map(([k]) => inputsConfig[k])
+    .map(([k]) => inputsConfig(currentLang)[k])
 
   const [resultInputs, setResultInputs] = useState<DetailInputValue[] | undefined>()
   const [resultFiles, setResultFiles] = useState<UploadedFile[] | undefined>()
@@ -124,7 +140,14 @@ export const PlaygroundDetails = () => {
       <pre style={{fontSize: styleUtils(theme).fontSize.small, lineHeight: 1.3}}>
         {JSON.stringify(resultInputs, undefined, 2)}
       </pre>
-      <pre style={{fontSize: styleUtils(theme).fontSize.small, lineHeight: 1.3}}>{JSON.stringify(resultFiles, undefined, 2)}</pre>
+      <pre
+        style={{
+          fontSize: styleUtils(theme).fontSize.small,
+          lineHeight: 1.3,
+        }}
+      >
+        {JSON.stringify(resultFiles, undefined, 2)}
+      </pre>
     </>
   )
 }

@@ -25,7 +25,7 @@ detailInputs:
   - label: L'avez-vous signalé au moment de payer&#160;?
     type: RADIO
     options:
-      - Oui. Pouvez-vous préciser à qui&#160;? (à préciser)
+      - Oui. Pouvez-vous préciser à qui&#160;? (to be specified)
       - Non
   - label: >-
       Si oui, le commerçant a-t-il bien voulu vous faire payer le prix

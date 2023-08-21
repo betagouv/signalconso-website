@@ -13,12 +13,16 @@ import {mapNTimes} from '../../../utils/utils'
 import {DetailInputValues2} from 'model/ReportDraft2'
 import {frenchDateFormat} from 'utils/utils'
 import {dummyStepNavigation} from 'components_feature/Playground/PlaygroundConfirmation'
+import {AppLangs} from '../../../i18n/localization/AppLangs'
 
 export class DetailsFixtureValue {
   static readonly date = '10/11/2019'
   static readonly text = 'some text'
-  static readonly radio = DetailsFixtureInput.radio.options![1]
-  static readonly checkbox = [DetailsFixtureInput.checkbox.options![0], DetailsFixtureInput.checkbox.options![1]]
+  static readonly radio = DetailsFixtureInput.radio(AppLangs.fr).options![1]
+  static readonly checkbox = [
+    DetailsFixtureInput.checkbox(AppLangs.fr).options![0],
+    DetailsFixtureInput.checkbox(AppLangs.fr).options![1],
+  ]
   static readonly textarea = 'some other text'
 }
 
@@ -96,7 +100,7 @@ describe('Details: checkbox', () => {
     inputValues = undefined
     app = render(
       <DetailsInner
-        inputs={[DetailsFixtureInput.radio]}
+        inputs={[DetailsFixtureInput.radio(AppLangs.fr)]}
         onSubmit={x => {
           inputValues = x
         }}
@@ -210,8 +214,8 @@ describe('Details: initialize values', () => {
         inputs={[
           DetailsFixtureInput.date,
           DetailsFixtureInput.text,
-          DetailsFixtureInput.radio,
-          DetailsFixtureInput.checkbox,
+          DetailsFixtureInput.radio(AppLangs.fr),
+          DetailsFixtureInput.checkbox(AppLangs.fr),
           DetailsFixtureInput.textarea,
         ]}
         onSubmit={x => {
