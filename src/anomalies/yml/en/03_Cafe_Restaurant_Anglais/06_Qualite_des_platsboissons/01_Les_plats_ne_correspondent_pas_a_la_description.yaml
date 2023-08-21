@@ -12,7 +12,7 @@ detailInputs:
       - "L'origine (exemple\_: origine des vins)"
       - 'Un label ou une mention (exemple: fait maison)'
       - 'Une marque (exemple: la marque de rhum proposée est mensongère'
-      - Autre (à préciser)
+      - Autre (to be specified)
   - label: Précisez en quelques mots pourquoi vous trouvez cela trompeur
     type: TEXT
     placeholder: "Soyez factuel et courtois, merci\_!"

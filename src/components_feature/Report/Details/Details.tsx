@@ -33,7 +33,10 @@ import {ScCheckbox} from '../../../components_simple/RadioGroup/ScCheckbox'
 import {Alert} from '@codegouvfr/react-dsfr/Alert'
 
 export class SpecifyFormUtils {
-  static readonly keyword = '(à préciser)'
+  static readonly specifyKeywordFr = '(à préciser)'
+  static readonly specifyKeywordEn = '(to be specified)'
+  static readonly hasSpecifyKeyword = (option: string) =>
+    option.includes(SpecifyFormUtils.specifyKeywordFr) || option.includes(SpecifyFormUtils.specifyKeywordEn)
   static readonly getInputName = (index: number) => `${index}_specify`
 }
 
@@ -243,7 +246,7 @@ export const DetailsInner = ({
                                   label: <span dangerouslySetInnerHTML={{__html: option}} />,
                                   value: option,
                                   specify:
-                                    field.value === option && option.includes(SpecifyFormUtils.keyword) ? (
+                                    field.value === option && SpecifyFormUtils.hasSpecifyKeyword(option) ? (
                                       <DetailsSpecifyInput
                                         control={control}
                                         error={errors[SpecifyFormUtils.getInputName(inputIndex)]}
@@ -269,7 +272,7 @@ export const DetailsInner = ({
                                   value: option,
                                   specify:
                                     (field.value as string[] | undefined)?.includes(option) &&
-                                    option.includes(SpecifyFormUtils.keyword) ? (
+                                    SpecifyFormUtils.hasSpecifyKeyword(option) ? (
                                       <DetailsSpecifyInput
                                         control={control}
                                         error={errors[SpecifyFormUtils.getInputName(inputIndex)]}

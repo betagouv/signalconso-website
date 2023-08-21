@@ -15,7 +15,7 @@ detailInputs:
       - Produit pas frais
       - Produit avec date dépassée
       - Insecte dans un plat
-      - Autre (à préciser)
+      - Autre (to be specified)
 fileLabel: >-
   Merci de joindre si possible une photo ou votre facture afin d'appuyer votre
   signalement.

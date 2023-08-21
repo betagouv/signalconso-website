@@ -24,7 +24,10 @@ export class ReportDraft2 {
 
   static readonly parseDetails = (details: DetailInputValues2, inputs: DetailInput[]): DetailInputValue[] => {
     const concatSpecifiedValued = (value: string, index: number) => {
-      return value.replace(SpecifyFormUtils.keyword, details[SpecifyFormUtils.getInputName(index)] as string)
+      const specifyKeyword = value.includes(SpecifyFormUtils.specifyKeywordFr)
+        ? SpecifyFormUtils.specifyKeywordFr
+        : SpecifyFormUtils.specifyKeywordEn
+      return value.replace(specifyKeyword, details[SpecifyFormUtils.getInputName(index)] as string)
     }
 
     const mapLabel = (label: string): string => {
@@ -47,7 +50,7 @@ export class ReportDraft2 {
             return ''
           }
           if (Array.isArray(v)) {
-            return v.map(_ => (_.includes(SpecifyFormUtils.keyword) ? concatSpecifiedValued(_, +index) : _)).join(', ')
+            return v.map(_ => (SpecifyFormUtils.hasSpecifyKeyword(_) ? concatSpecifiedValued(_, +index) : _)).join(', ')
           }
           return concatSpecifiedValued(v, +index)
         }
