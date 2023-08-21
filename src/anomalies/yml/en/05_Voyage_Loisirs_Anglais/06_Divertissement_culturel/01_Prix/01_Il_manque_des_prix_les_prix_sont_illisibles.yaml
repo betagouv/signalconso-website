@@ -12,7 +12,7 @@ detailInputs:
       - Prix pas affiché
       - Prix illisible
       - Autre (to be specified)
-  - label: Date du constat
+  - label: Date T
     type: DATE
     defaultValue: SYSDATE
   - label: Description

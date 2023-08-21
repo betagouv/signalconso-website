@@ -230,7 +230,7 @@ export const Problem = ({anomaly, isWebView, stepNavigation}: Props) => {
             <ProblemStepperStep isDone={reportDraft.consumerWish !== undefined} hidden={!askConsumerWish}>
               <ProblemSelect
                 id="select-contractualDispute"
-                title="Que souhaitez-vous faire ?"
+                title={m.whatsYourIntent}
                 value={reportDraft.consumerWish}
                 options={[
                   {
@@ -247,8 +247,7 @@ export const Problem = ({anomaly, isWebView, stepNavigation}: Props) => {
                     ? [
                         {
                           title: m.problemContractualDisputeFormReponseConso,
-                          description:
-                            "Exemple : Quelle est la durée de validité du devis qu'on m'a donné ? Un magasin peut-il vendre des produits périmés ? ...",
+                          description: m.problemContractualDisputeFormReponseConsoExample,
                           value: 'getAnswer' as const,
                         },
                       ]
@@ -260,7 +259,7 @@ export const Problem = ({anomaly, isWebView, stepNavigation}: Props) => {
                     _analytic.trackEvent(
                       EventCategories.report,
                       ReportEventActions.contactualReport,
-                      updated.consumerWish === 'fixContractualDispute' ? 'Oui' : 'Non',
+                      updated.consumerWish === 'fixContractualDispute' ? m.yes : m.no,
                     )
                     return updated
                   })

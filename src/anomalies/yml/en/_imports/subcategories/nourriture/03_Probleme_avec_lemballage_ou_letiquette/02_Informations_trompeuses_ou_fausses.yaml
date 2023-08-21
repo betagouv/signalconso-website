@@ -4,7 +4,7 @@ reponseconsoCode:
   - '273'
   - '271'
 detailInputs:
-  - label: Date du constat (ou d'achat suivant le cas)
+  - label: Date T (ou d'achat suivant le cas)
     type: DATE_NOT_IN_FUTURE
     defaultValue: SYSDATE
   - label: De quel produit s'agit-il&#160;?

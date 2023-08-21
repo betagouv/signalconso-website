@@ -45,10 +45,11 @@ export const isSpecifyInputName = (name: string) => name.includes('_specify')
 export const Details = ({stepNavigation}: {stepNavigation: StepNavigation}) => {
   const _reportFlow = useReportFlowContext()
   const _analytic = useAnalyticContext()
+  const {currentLang} = useI18n()
   const draft = _reportFlow.reportDraft
   const inputs = useMemo(() => {
     if (draft.subcategories) {
-      return getDraftReportInputs(draft)
+      return getDraftReportInputs(draft, currentLang)
     }
   }, [draft.subcategories, draft.tags, draft.consumerWish])
 

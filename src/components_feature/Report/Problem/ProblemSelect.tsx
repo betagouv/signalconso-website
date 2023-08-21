@@ -1,5 +1,6 @@
 import {Animate} from 'components_simple/Animate/Animate'
 import {ScRadioButtons} from '../../../components_simple/RadioGroup/ScRadioButtons'
+import {useI18n} from '../../../i18n/I18n'
 
 interface ProblemSelectProps<T> {
   autoScrollTo?: boolean
@@ -15,7 +16,8 @@ interface ProblemSelectProps<T> {
 }
 
 export const ProblemSelect = <T,>({autoScrollTo, title: titleRaw, value, options, onChange, id}: ProblemSelectProps<T>) => {
-  const title = <h2 className="fr-h6" dangerouslySetInnerHTML={{__html: titleRaw ?? 'Pouvez-vous préciser ?'}} />
+  const {m} = useI18n()
+  const title = <h2 className="fr-h6" dangerouslySetInnerHTML={{__html: titleRaw ?? m.couldYouPrecise}} />
   const nonNullableValue = value ?? ('' as T) // To unselected to radio button when a subcategory has changed
   return (
     <Animate {...{autoScrollTo}}>

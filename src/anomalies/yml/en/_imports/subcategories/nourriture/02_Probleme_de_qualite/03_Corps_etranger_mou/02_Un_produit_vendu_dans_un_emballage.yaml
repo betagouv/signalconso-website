@@ -18,7 +18,7 @@ detailInputs:
   - label: Date limite (si possible)
     type: DATE
     optional: true
-  - label: Date du constat (ou d'achat suivant le cas)
+  - label: Date T (ou d'achat suivant le cas)
     type: DATE_NOT_IN_FUTURE
     defaultValue: SYSDATE
 fileLabel: Photo du produit

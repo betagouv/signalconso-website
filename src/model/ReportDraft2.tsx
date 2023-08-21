@@ -5,6 +5,7 @@ import {CompanyDraft, ReportDraft, ReportDraftConsumer} from './ReportDraft'
 import {Anomaly, DetailInput} from '../anomalies/Anomaly'
 import {DetailInputValue} from './CreatedReport'
 import {Address} from './Address'
+import {AppLang} from '../i18n/localization/AppLangs'
 
 export type DetailInputValues2 = {[key: string]: string | string[]}
 
@@ -14,8 +15,8 @@ export interface ReportDraft2 extends Omit<ReportDraft, 'details'> {
 }
 
 export class ReportDraft2 {
-  static readonly toReportDraft = (d: ReportDraft2): ReportDraft => {
-    const inputs = getDraftReportInputs(d)
+  static readonly toReportDraft = (d: ReportDraft2, lang: AppLang): ReportDraft => {
+    const inputs = getDraftReportInputs(d, lang)
     return {
       ...d,
       details: ReportDraft2.parseDetails(d.details, inputs),

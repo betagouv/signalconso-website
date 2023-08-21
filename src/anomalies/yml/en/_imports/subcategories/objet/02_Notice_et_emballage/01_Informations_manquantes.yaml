@@ -18,7 +18,7 @@ detailInputs:
       - Jouets
       - Électroniques
       - Autre (to be specified)
-  - label: Date du constat ou d'achat
+  - label: Date T ou d'achat
     type: DATE
     defaultValue: SYSDATE
   - label: Nom / marque

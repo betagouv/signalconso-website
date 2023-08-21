@@ -2,10 +2,12 @@ import {ReportDraft2} from 'model/ReportDraft2'
 import {last} from 'utils/lodashNamedExport'
 import {instanceOfSubcategoryWithInputs} from '../../../anomalies/Anomalies'
 import {DetailInput, DetailInputType, ReportTag, Subcategory} from '../../../anomalies/Anomaly'
+import {useI18n} from '../../../i18n/I18n'
+import {AppLang, AppLangs} from '../../../i18n/localization/AppLangs'
 
 export class DraftReportDefaultInputs {
-  static readonly reponseConso = (): DetailInput => ({
-    label: 'Votre question',
+  static readonly reponseConso = (lang: AppLang): DetailInput => ({
+    label: lang === AppLangs.en ? 'Your question' : 'Votre question',
     type: DetailInputType.TEXTAREA,
   })
 
@@ -15,16 +17,19 @@ export class DraftReportDefaultInputs {
     ...(optional && {optional: true}),
   })
 
-  static readonly date = (): DetailInput => ({
-    label: 'Date du constat',
+  static readonly date = (lang: AppLang): DetailInput => ({
+    label: lang === AppLangs.en ? 'Date of observation' : 'Date du constat',
     type: DetailInputType.DATE_NOT_IN_FUTURE,
     defaultValue: 'SYSDATE',
   })
 
-  static readonly defaults = (): DetailInput[] => [DraftReportDefaultInputs.date(), DraftReportDefaultInputs.description()]
+  static readonly defaults = (lang: AppLang): DetailInput[] => [
+    DraftReportDefaultInputs.date(lang),
+    DraftReportDefaultInputs.description(),
+  ]
 }
 
-export const getDraftReportInputs = (draft: Partial<ReportDraft2>): DetailInput[] => {
+export const getDraftReportInputs = (draft: Partial<ReportDraft2>, lang: AppLang): DetailInput[] => {
   const {subcategories, consumerWish} = draft
   const lastSubcategories = last(subcategories)
   const res: DetailInput[] = []
@@ -34,7 +39,7 @@ export const getDraftReportInputs = (draft: Partial<ReportDraft2>): DetailInput[
       res.push(DraftReportDefaultInputs.description(true))
     }
   } else {
-    res.push(...DraftReportDefaultInputs.defaults())
+    res.push(...DraftReportDefaultInputs.defaults(lang))
   }
   if (consumerWish === 'getAnswer') {
     const i = res.findIndex(
@@ -44,7 +49,7 @@ export const getDraftReportInputs = (draft: Partial<ReportDraft2>): DetailInput[
       // ReponseConso need the description keyword to parse the reports
       res[i].label = `${DraftReportDefaultInputs.description().label} (${res[i].label})`
     }
-    res.push(DraftReportDefaultInputs.reponseConso())
+    res.push(DraftReportDefaultInputs.reponseConso(lang))
   }
   return res
 }
