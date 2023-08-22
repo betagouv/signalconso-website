@@ -4,21 +4,13 @@ export class Eularian {
     return new Eularian()
   }
 
-  private constructor() {
-    window.EA_push = window.EA_push !== null ? window.EA_push : []
-  }
+  private constructor() {}
 
   readonly send = (path: string): void => {
     try {
-      if (!window.EA_push) {
-        window.EA_push = []
-      }
       window.EA_push(['path', path])
     } catch (e: any) {
       console.error('[Eularian Analytic]', e)
-      if (!(e instanceof ReferenceError)) {
-        throw e
-      }
     }
   }
 }
