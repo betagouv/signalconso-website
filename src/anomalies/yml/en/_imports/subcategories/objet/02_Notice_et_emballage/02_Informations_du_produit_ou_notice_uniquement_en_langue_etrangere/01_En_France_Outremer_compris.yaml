@@ -2,7 +2,7 @@ title: En France (Outre-mer compris)
 reponseconsoCode:
   - '211'
 detailInputs:
-  - label: Date du constat
+  - label: Date T
     type: DATE
     defaultValue: SYSDATE
   - label: Nom / marque / type de produit

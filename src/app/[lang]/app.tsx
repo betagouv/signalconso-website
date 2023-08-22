@@ -1,28 +1,27 @@
 'use client'
+import {SkipLinks} from '@codegouvfr/react-dsfr/SkipLinks'
 import {Box} from '@mui/material'
-import '../../globals.css'
-import {ScHeader} from '../../components_simple/ScHeader'
-import {RgpdBanner} from '../../components_feature/RgpdBanner/RgpdBanner'
-import {ScFooter} from '../../components_simple/ScFooter'
-import React, {useEffect, useState} from 'react'
-import {Sentry} from '../../plugins/sentry'
-import {appConfig} from '../../core/appConfig'
-import {Matomo} from '../../plugins/matomo'
-import {Eularian} from '../../plugins/eularian'
-import {Analytic} from '../../analytic/analytic'
-import {ConfigProvider, useConfig} from '../../context/ConfigContext'
-import Script from 'next/script'
 import {QueryClient, QueryClientProvider} from '@tanstack/react-query'
-import {usePathname} from 'next/navigation'
-import {AnalyticProvider} from '../../analytic/AnalyticContext'
-import {ToastProvider} from '../../alexlibs/mui-extension/Toast/ToastContext'
 import {ApiClientsProvider} from 'context/ApiClientsContext'
+import {usePathname} from 'next/navigation'
+import Script from 'next/script'
+import React, {useEffect, useState} from 'react'
+import {monkeyPatchDomForGoogleTranslate} from 'utils/fixGoogleTranslate'
+import {ToastProvider} from '../../alexlibs/mui-extension/Toast/ToastContext'
+import {AnalyticProvider} from '../../analytic/AnalyticContext'
+import {Analytic, PageChangesListener} from '../../analytic/analytic'
 import {ReportCreateProvider} from '../../components_feature/Report/ReportCreateContext'
 import {ReportFlowProvider} from '../../components_feature/Report/ReportFlowContext'
-import {monkeyPatchDomForGoogleTranslate} from 'utils/fixGoogleTranslate'
+import {RgpdBanner} from '../../components_feature/RgpdBanner/RgpdBanner'
+import {ScFooter} from '../../components_simple/ScFooter'
+import {ScHeader} from '../../components_simple/ScHeader'
+import {ConfigProvider, useConfig} from '../../context/ConfigContext'
+import {appConfig} from '../../core/appConfig'
+import '../../globals.css'
 import {useI18n} from '../../i18n/I18n'
-import {SkipLinks} from '@codegouvfr/react-dsfr/SkipLinks'
-import {Fender} from 'alexlibs/mui-extension/Fender/Fender'
+import {Eularian} from '../../plugins/eularian'
+import {Matomo} from '../../plugins/matomo'
+import {Sentry} from '../../plugins/sentry'
 
 monkeyPatchDomForGoogleTranslate()
 
@@ -55,6 +54,7 @@ const App: ({children}: {children: React.ReactNode}) => JSX.Element = ({children
           </AnalyticProvider>
         </QueryClientProvider>
       </ApiClientsProvider>
+      {analytic && <PageChangesListener {...{analytic}} />}
     </>
   )
 }

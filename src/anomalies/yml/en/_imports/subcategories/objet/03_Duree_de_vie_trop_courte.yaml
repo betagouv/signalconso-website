@@ -3,7 +3,7 @@ desc: Vous trouvez que la durée de vie de votre appareil est trop courte
 detailInputs:
   - label: Date d'achat
     type: DATE
-  - label: Date du constat
+  - label: Date T
     type: DATE
     defaultValue: SYSDATE
   - label: Type de produit

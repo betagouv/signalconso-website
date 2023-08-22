@@ -1084,11 +1084,13 @@ export const fr = {
     problemDoYouWorkInCompanyNo: `Non, je n'y travaille pas`,
     problemIsInternetCompany: `Est-ce que votre problème concerne une entreprise sur internet ?`,
     problemIsInternetCompanyNo: `Non, pas sur internet`,
+    whatsYourIntent: `Que souhaitez-vous faire ?`,
     problemContractualDisputeFormYes: `Résoudre mon problème personnel avec l'entreprise`,
     problemContractualDisputeFormDesc: `Exemple : recevoir mon colis, être remboursé, obtenir une réponse personnalisée, ...`,
     problemContractualDisputeFormNo: `Signaler un problème pour que l'entreprise s'améliore`,
     problemContractualDisputeFormNoDesc: `Exemple : respect des délais, meilleur affichage des prix, hygiène irréprochable, ...`,
     problemContractualDisputeFormReponseConso: `M’informer sur mes droits auprès de la répression des fraudes`,
+    problemContractualDisputeFormReponseConsoExample: `Exemple : Quelle est la durée de validité du devis qu'on m'a donné ? Un magasin peut-il vendre des produits périmés ? ...`,
     consumerWishFixContractualDispute: `Votre signalement sera transmis à l'entreprise. La répression des fraudes ne s'occupe pas de résoudre les problèmes
     individuels, mais <strong>faire le signalement peut inciter l'entreprise à vous répondre.</strong>`,
     consumerWishCompanyImprovement: `Votre signalement sera transmis à l'entreprise. Vous aurez la possibilité de rester anonyme.`,

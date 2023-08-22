@@ -18,7 +18,7 @@ detailInputs:
       - Une promotion
       - Une liquidation
       - Autre (to be specified)
-  - label: Date du constat
+  - label: Date T
     type: DATE
     defaultValue: SYSDATE
   - label: Description

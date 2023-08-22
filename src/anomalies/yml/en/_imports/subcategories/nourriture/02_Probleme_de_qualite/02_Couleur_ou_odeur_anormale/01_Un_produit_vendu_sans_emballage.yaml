@@ -3,7 +3,7 @@ desc: "Exemple\_: pizza dans une boulangerie, plat dans un restaurant..."
 detailInputs:
   - label: Nom du produit
     type: TEXT
-  - label: Date du constat (ou d'achat suivant le cas)
+  - label: Date T (ou d'achat suivant le cas)
     type: DATE_NOT_IN_FUTURE
     defaultValue: SYSDATE
   - label: "Quel est le problème\_?"

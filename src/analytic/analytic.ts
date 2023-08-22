@@ -1,7 +1,8 @@
+import {usePathname, useSearchParams} from 'next/navigation'
 import {AppConfig, appConfig} from '../core/appConfig'
-import {Matomo} from '../plugins/matomo'
-import {Router} from 'next/router'
 import {Eularian} from '../plugins/eularian'
+import {Matomo} from '../plugins/matomo'
+import {useEffect} from 'react'
 
 export class Analytic {
   static readonly init = ({
@@ -24,14 +25,14 @@ export class Analytic {
     private appConfig: AppConfig,
     private matomo: Matomo | undefined,
     private eularian: Eularian | undefined,
-  ) {
-    Router.events.on('routeChangeComplete', (path: string): void => {
-      this.log('[routeChangeComplete]', path)
-      if (!this.appConfig.isDev) {
-        matomo?.trackPage(path)
-        eularian?.send(path)
-      }
-    })
+  ) {}
+
+  readonly onPageChange = (path: string) => {
+    this.log('[onPageChange]', path)
+    if (!this.appConfig.isDev) {
+      this.matomo?.trackPage(path)
+      this.eularian?.send(path)
+    }
   }
 
   readonly trackPage = (path: string, title?: string) => {
@@ -54,6 +55,16 @@ export class Analytic {
       }
     }
   }
+}
+
+export function PageChangesListener({analytic}: {analytic: Analytic}) {
+  const pathname = usePathname()
+  const searchParams = useSearchParams()
+  useEffect(() => {
+    const path = `${pathname}?${searchParams}`
+    analytic?.onPageChange(path)
+  }, [pathname, searchParams])
+  return null
 }
 
 export type AnalyticAction =

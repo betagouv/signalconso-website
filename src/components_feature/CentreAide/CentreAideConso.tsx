@@ -8,6 +8,7 @@ import Link from 'next/link'
 import {ReactNode} from 'react'
 import {getI18n} from '../../i18n/I18nDictionnary'
 import {useI18n} from '../../i18n/I18n'
+import {AppLangs} from '../../i18n/localization/AppLangs'
 
 function Title({children}: {children: ReactNode}) {
   return <h2 className="mb-4 mt-8 font-normal text-2xl">{children}</h2>
@@ -18,7 +19,7 @@ function Accordions({children}: {children: ReactNode}) {
 }
 
 export const CentreAideConso = (props: BoxProps) => {
-  const {m: messages} = useI18n()
+  const {m: messages, currentLang} = useI18n()
 
   return (
     <Box {...props}>
@@ -123,7 +124,7 @@ export const CentreAideConso = (props: BoxProps) => {
         <Accordion label={messages.centreaideconso.cantFindWhereToAsk}>
           <p>{messages.centreaideconso.cantFindWhereToAskContent1}</p>
           <img
-            src="/image/reponse_conso_button.png"
+            src={currentLang === AppLangs.en ? '/image/reponse_conso_button_en.png' : '/image/reponse_conso_button_fr.png'}
             alt="Bouton question DGCCRF"
             style={{width: '100%', marginTop: 4, marginBottom: 4}}
           />
@@ -132,7 +133,7 @@ export const CentreAideConso = (props: BoxProps) => {
         <Accordion label={messages.centreaideconso.whereToEnterQuestion}>
           <p>{messages.centreaideconso.whereToEnterQuestionContent}</p>
           <img
-            src="/image/reponse_conso_question.png"
+            src={currentLang === AppLangs.en ? '/image/reponse_conso_question_en.png' : '/image/reponse_conso_question_fr.png'}
             alt="Question DGCCRF"
             style={{width: '100%', marginTop: 4, marginBottom: 4}}
           />

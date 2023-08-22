@@ -26,8 +26,9 @@ import {ConfirmationStep, ConfirmationStepper} from './ConfirmationStepper'
 
 export const Confirmation = ({stepNavigation, isWebView}: {stepNavigation: StepNavigation; isWebView: boolean}) => {
   const _reportFlow = useReportFlowContext()
+  const {currentLang} = useI18n()
   const draft = _reportFlow.reportDraft as ReportDraft2
-  const parsedDraft = ReportDraft2.toReportDraft(draft)
+  const parsedDraft = ReportDraft2.toReportDraft(draft, currentLang)
   return <ConfirmationInner anomaly={draft.anomaly} draft={parsedDraft} {...{isWebView, stepNavigation}} />
 }
 
