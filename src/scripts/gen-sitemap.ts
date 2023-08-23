@@ -2,7 +2,7 @@ import fs from 'fs'
 import {allVisibleLandings} from '../landings/landingDataUtils'
 import path from 'path'
 import {appConfig} from '../core/appConfig'
-import {newsArticlesData} from '../actualites/newsArticlesData'
+import {newsArticlesData} from '../components_feature/actualites/newsArticlesData'
 import {buildLinkLandingPage, buildLinkNewsArticle, internalPageDefs} from '../core/pagesDefinitions'
 
 interface SitemapItem {

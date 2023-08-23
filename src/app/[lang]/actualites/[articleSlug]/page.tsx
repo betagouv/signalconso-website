@@ -1,6 +1,6 @@
 import {ContentPageContainer} from 'components_simple/PageContainers'
 import {pagesDefs} from 'core/pagesDefinitions'
-import {newsArticlesData} from 'actualites/newsArticlesData'
+import {newsArticlesData} from 'components_feature/actualites/newsArticlesData'
 import {Metadata} from 'next'
 import Link from 'next/link'
 import {isoToFrenchFormatText} from 'utils/utils'

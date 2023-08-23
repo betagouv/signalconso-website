@@ -10,7 +10,7 @@ import {usePathname} from 'next/navigation'
 import {SwitchLang} from './SwitchLang'
 import {AppLang, AppLangs} from '../i18n/localization/AppLangs'
 import {addLangInPath, replaceLangInPath} from '../i18n/I18nTools'
-import buildMenuLink from '../utils/MenuLink'
+import buildMenuLink from '../utils/menuLinks'
 
 function buildSubmenu(text: string, menuLinks: ReturnType<typeof buildMenuLink>[]) {
   return {

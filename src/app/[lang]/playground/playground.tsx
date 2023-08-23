@@ -1,13 +1,13 @@
 'use client'
 
 import {Tabs} from '@codegouvfr/react-dsfr/Tabs'
-import {PlaygroundAcknowledgment} from 'components_feature/Playground/PlaygroundAcknoledgment'
-import {PlaygroundCompany} from 'components_feature/Playground/PlaygroundCompany'
-import {PlaygroundConfirmation, dummyStepNavigation} from 'components_feature/Playground/PlaygroundConfirmation'
-import {PlaygroundConsumer} from 'components_feature/Playground/PlaygroundConsumer'
-import {PlaygroundDetails} from 'components_feature/Playground/PlaygroundDetails'
-import {PlaygroundOther} from 'components_feature/Playground/PlaygroundOther'
-import {CompanyFilled} from 'components_feature/Report/Company/Company'
+import {PlaygroundAcknowledgment} from 'components_feature/playground/PlaygroundAcknoledgment'
+import {PlaygroundCompany} from 'components_feature/playground/PlaygroundCompany'
+import {PlaygroundConfirmation, dummyStepNavigation} from 'components_feature/playground/PlaygroundConfirmation'
+import {PlaygroundConsumer} from 'components_feature/playground/PlaygroundConsumer'
+import {PlaygroundDetails} from 'components_feature/playground/PlaygroundDetails'
+import {PlaygroundOther} from 'components_feature/playground/PlaygroundOther'
+import {CompanyFilled} from 'components_feature/reportFlow/Company/Company'
 import {ContentPageContainer} from 'components_simple/PageContainers'
 
 const companyDraft = {

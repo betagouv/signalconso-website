@@ -1,4 +1,4 @@
-import {_Company} from '../Report/Company/Company'
+import {_Company} from '../reportFlow/Company/Company'
 import {useState} from 'react'
 import {ReportDraft2} from 'model/ReportDraft2'
 import {Box, Card, CardContent, MenuItem, Select, useTheme} from '@mui/material'

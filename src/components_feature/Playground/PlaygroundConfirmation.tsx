@@ -1,13 +1,13 @@
 import {useTheme} from '@mui/material'
 import {allAnomalies} from 'anomalies/Anomalies'
-import {StepNavigation} from 'components_simple/ReportFlowStepper/ReportFlowStepper'
+import {StepNavigation} from 'components_feature/reportFlow/reportFlowStepper/ReportFlowStepper'
 import {styleUtils} from 'core/theme'
 import {firstReportStep} from 'model/ReportStep'
 import {useEffect, useState} from 'react'
 import {Anomaly} from '../../anomalies/Anomaly'
 import {ReportDraft} from '../../model/ReportDraft'
 import {Fixture, SeedableRandom} from '../../test/fixture'
-import {ConfirmationInner} from '../Report/Confirmation/Confirmation'
+import {ConfirmationInner} from '../reportFlow/Confirmation/Confirmation'
 import {useI18n} from '../../i18n/I18n'
 
 export const dummyStepNavigation: StepNavigation = {

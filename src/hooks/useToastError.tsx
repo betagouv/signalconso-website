@@ -1,5 +1,5 @@
 import {ApiError} from 'clients/BaseApiClient'
-import {useToastContext} from '../alexlibs/mui-extension/Toast/ToastContext'
+import {useToastContext} from '../alexlibs/ToastContext'
 import {useI18n} from '../i18n/I18n'
 
 export const useToastError = () => {

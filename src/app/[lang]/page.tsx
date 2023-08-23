@@ -3,8 +3,8 @@
 import {Button} from '@codegouvfr/react-dsfr/Button'
 import {useColors} from '@codegouvfr/react-dsfr/useColors'
 import {allVisibleAnomalies} from 'anomalies/Anomalies'
-import {InfoBanner} from 'components_feature/InfoBanner/InfoBanner'
-import {IllustrationStepper} from 'components_simple/IllustrationStepper/StepIllustrations'
+import {InfoBanner} from 'components_simple/bigBanners/InfoBanner'
+import {IllustrationStepper} from 'components_simple/StepIllustrations'
 import {useI18n} from 'i18n/I18n'
 import dynamic from 'next/dynamic'
 import {useEffect, useMemo} from 'react'
@@ -13,12 +13,12 @@ import company from '../../../public/image/illustrations/company.png'
 import consumer from '../../../public/image/illustrations/consumer.png'
 import dgccrf from '../../../public/image/illustrations/dgccrf.png'
 import report from '../../../public/image/illustrations/report.png'
-import {useReportFlowContext} from '../../components_feature/Report/ReportFlowContext'
-import {BrowserCompatAlert} from '../../components_simple/BrowserCompatAlert/BrowserAlertCompat'
-import SearchAnomalies from '../../components_simple/Search/SearchAnomalies'
-import {MobileAppPromoBanner} from 'components_feature/InfoBanner/MobileAppPromoBanner'
+import {useReportFlowContext} from '../../components_feature/reportFlow/ReportFlowContext'
+import {BrowserCompatAlert} from '../../components_simple/bigBanners/BrowserAlertCompat'
+import SearchAnomalies from '../../components_simple/SearchAnomalies'
+import {MobileAppPromoBanner} from 'components_simple/bigBanners/MobileAppPromoBanner'
 
-const ReportStartedAlert = dynamic(() => import('components_feature/ReportStartedAlert/ReportStartedAlert'), {ssr: false})
+const ReportStartedAlert = dynamic(() => import('components_feature/ReportStartedAlert'), {ssr: false})
 
 const Home = () => {
   const {m, currentLang} = useI18n()

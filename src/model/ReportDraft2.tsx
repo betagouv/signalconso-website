@@ -1,5 +1,5 @@
-import {getDraftReportInputs} from 'components_feature/Report/Details/draftReportInputs'
-import {isSpecifyInputName, SpecifyFormUtils} from 'components_feature/Report/Details/Details'
+import {getDraftReportInputs} from 'components_feature/reportFlow/Details/draftReportInputs'
+import {isSpecifyInputName, SpecifyFormUtils} from 'components_feature/reportFlow/Details/Details'
 import {DeepPartial} from '../utils/utils'
 import {CompanyDraft, ReportDraft, ReportDraftConsumer} from './ReportDraft'
 import {Anomaly, DetailInput} from '../anomalies/Anomaly'

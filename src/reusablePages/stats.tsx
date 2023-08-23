@@ -1,6 +1,6 @@
 import {ContentPageContainer} from 'components_simple/PageContainers'
 import Link from 'next/link'
-import {StatCharts} from './StatCharts'
+import {StatCharts} from '../components_feature/stats/StatCharts'
 import {getI18n} from '../i18n/I18nDictionnary'
 import {Metadata} from 'next'
 import {AppLangs} from '../i18n/localization/AppLangs'

@@ -6,8 +6,8 @@ import {useI18n} from '../i18n/I18n'
 import {AppLangs} from '../i18n/localization/AppLangs'
 import {setCookie} from 'cookies-next'
 import {replaceLangInPath, switchLang} from '../i18n/I18nTools'
-import {useReportCreateContext} from '../components_feature/Report/ReportCreateContext'
-import {useReportFlowContext} from '../components_feature/Report/ReportFlowContext'
+import {useReportCreateContext} from '../components_feature/reportFlow/ReportCreateContext'
+import {useReportFlowContext} from '../components_feature/reportFlow/ReportFlowContext'
 
 export const SwitchLang = forwardRef(() => {
   const pathname = usePathname()

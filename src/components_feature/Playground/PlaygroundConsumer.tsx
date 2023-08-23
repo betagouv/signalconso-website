@@ -1,5 +1,5 @@
 import {Card, CardContent} from '@mui/material'
-import {ConsumerInner} from '../Report/Consumer/Consumer'
+import {ConsumerInner} from '../reportFlow/Consumer/Consumer'
 import {dummyStepNavigation} from './PlaygroundConfirmation'
 
 export const PlaygroundConsumer = () => {

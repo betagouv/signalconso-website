@@ -4,7 +4,7 @@ import {useMemo, useState} from 'react'
 import {Enum} from 'utils/Enum'
 import {CreatedReport} from '../../model/CreatedReport'
 import {Fixture} from '../../test/fixture'
-import {AcknowledgmentCases, AcknowledgementInner} from '../Report/Acknowledgement/Acknowledgement'
+import {AcknowledgmentCases, AcknowledgementInner} from '../reportFlow/Acknowledgement/Acknowledgement'
 
 export const PlaygroundAcknowledgment = () => {
   const [type, setType] = useState<AcknowledgmentCases>(AcknowledgmentCases.ReponseConso)

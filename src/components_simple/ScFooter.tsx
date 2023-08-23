@@ -3,7 +3,7 @@ import {Footer} from '@codegouvfr/react-dsfr/Footer'
 import Link from 'next/link'
 import {pagesDefs} from '../core/pagesDefinitions'
 import {useI18n} from '../i18n/I18n'
-import buildMenuLink from '../utils/MenuLink'
+import buildMenuLink from '../utils/menuLinks'
 import {usePathname} from 'next/navigation'
 import {AppLangs} from '../i18n/localization/AppLangs'
 
