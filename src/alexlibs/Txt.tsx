@@ -8,7 +8,6 @@ interface Props extends BoxProps {
   bold?: boolean
   gutterBottom?: boolean
   block?: boolean
-  skeleton?: boolean | number | string
   size?: 'big' | 'title' | 'small'
   color?: 'primary' | 'secondary' | 'disabled' | 'hint' | 'default' | 'error' | 'textsecondary'
   truncate?: boolean
@@ -18,10 +17,7 @@ interface Props extends BoxProps {
 }
 
 export const Txt = forwardRef(
-  (
-    {skeleton, children, gutterBottom, block, bold, size, link, color, truncate, span, sx, component, ...otherProps}: Props,
-    ref: any,
-  ) => {
+  ({children, gutterBottom, block, bold, size, link, color, truncate, span, sx, component, ...otherProps}: Props, ref: any) => {
     return (
       <Box
         {...(span ? {component: 'span'} : null)}
@@ -87,11 +83,7 @@ export const Txt = forwardRef(
         {...otherProps}
         ref={ref}
       >
-        {skeleton ? (
-          <Skeleton sx={{display: 'inline-block'}} width={isNaN(skeleton as any) ? '80%' : (skeleton as number)} />
-        ) : (
-          children
-        )}
+        {children}
       </Box>
     )
   },
