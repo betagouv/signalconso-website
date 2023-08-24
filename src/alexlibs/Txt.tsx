@@ -6,7 +6,6 @@ import {forwardRef} from 'react'
 
 interface Props extends BoxProps {
   bold?: boolean
-  bolder?: boolean
   italic?: boolean
   gutterBottom?: boolean
   block?: boolean
@@ -29,7 +28,6 @@ export const Txt = forwardRef(
       gutterBottom,
       block,
       bold,
-      bolder,
       size,
       link,
       italic,
@@ -92,9 +90,6 @@ export const Txt = forwardRef(
           }),
           ...(bold && {
             fontWeight: t => t.typography.fontWeightMedium,
-          }),
-          ...(bolder && {
-            fontWeight: 700,
           }),
           ...(italic && {
             fontStyle: 'italic',
