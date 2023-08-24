@@ -1,10 +1,9 @@
 'use client'
 
-import {Box, BoxProps, Skeleton} from '@mui/material'
-import * as React from 'react'
+import {Box, BoxProps} from '@mui/material'
 import {forwardRef} from 'react'
 
-interface Props extends BoxProps {
+interface Props extends Pick<BoxProps, 'children' | 'sx' | 'style' | 'className' | 'onClick' | 'dangerouslySetInnerHTML'> {
   bold?: boolean
   block?: boolean
   size?: 'big' | 'title' | 'small'
