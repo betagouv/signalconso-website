@@ -1,4 +1,4 @@
-import {Txt} from 'alexlibs/Txt'
+import {Txt} from 'components_simple/Txt'
 import {ContentPageContainer} from 'components_simple/PageContainers'
 import ComputeWithdrawalPeriod from '../components_feature/ComputeWithdrawalPeriod'
 import {getI18n} from '../i18n/I18nDictionnary'

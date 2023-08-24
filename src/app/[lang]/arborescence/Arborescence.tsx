@@ -6,7 +6,7 @@ import {styleUtils} from 'core/theme'
 import {getOptionsFromInput, getPlaceholderFromInput} from 'components_feature/reportFlow/Details/DetailInputsUtils'
 import {useEffect, useState} from 'react'
 import {Page} from '../../../components_simple/Page'
-import {Txt} from '../../../alexlibs/Txt'
+import {Txt} from '../../../components_simple/Txt'
 import {IconBtn} from '../../../alexlibs/IconBtn'
 import {fnSwitch} from '../../../utils/FnSwitch'
 import {

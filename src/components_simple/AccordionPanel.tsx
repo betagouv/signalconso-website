@@ -1,7 +1,7 @@
 import {ReactNode, useState} from 'react'
 import {Box, BoxProps, Collapse, Icon} from '@mui/material'
 import {IconBtn} from '../alexlibs/IconBtn'
-import {Txt} from '../alexlibs/Txt'
+import {Txt} from './Txt'
 
 export const AccordionPanels = ({children, ...props}: BoxProps) => {
   return <Box {...props}>{children}</Box>

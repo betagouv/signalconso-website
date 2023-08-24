@@ -4,7 +4,7 @@ import {CountByDate} from 'clients/SignalConsoApiClient'
 import {useI18n} from 'i18n/I18n'
 import React from 'react'
 import {Bar, BarChart, CartesianGrid, Legend, ResponsiveContainer, Tooltip, XAxis, YAxis} from 'recharts'
-import {Txt} from '../../alexlibs/Txt'
+import {Txt} from '../../components_simple/Txt'
 import {ifDefined} from '../../utils/utils'
 import {Skeleton} from '@mui/material'
 

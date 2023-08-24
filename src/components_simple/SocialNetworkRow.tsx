@@ -1,5 +1,5 @@
 import {SocialNetworks} from '../anomalies/Anomaly'
-import {Txt} from '../alexlibs/Txt'
+import {Txt} from './Txt'
 import {Row} from './Row'
 import {useI18n} from '../i18n/I18n'
 import Image from 'next/image'

@@ -1,6 +1,6 @@
 import React, {ReactNode, useState} from 'react'
 import {useI18n} from 'i18n/I18n'
-import {Txt} from '../../../alexlibs/Txt'
+import {Txt} from '../../../components_simple/Txt'
 import {Panel, PanelBody} from 'components_simple/Panel'
 import {Animate} from 'components_simple/Animate'
 import {CompanyKinds} from '../../../anomalies/Anomaly'

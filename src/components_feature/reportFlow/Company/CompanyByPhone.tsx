@@ -1,5 +1,5 @@
 import {ScInput} from 'components_simple/formInputs/ScInput'
-import {Txt} from '../../../alexlibs/Txt'
+import {Txt} from '../../../components_simple/Txt'
 import React, {ReactNode, useState} from 'react'
 import {useI18n} from 'i18n/I18n'
 import {useForm} from 'react-hook-form'
