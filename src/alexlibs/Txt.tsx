@@ -6,15 +6,12 @@ import {forwardRef} from 'react'
 
 interface Props extends BoxProps {
   bold?: boolean
-  italic?: boolean
   gutterBottom?: boolean
   block?: boolean
   skeleton?: boolean | number | string
   size?: 'big' | 'title' | 'small'
   color?: 'primary' | 'secondary' | 'disabled' | 'hint' | 'default' | 'error' | 'textsecondary'
-  uppercase?: boolean
   truncate?: boolean
-  noWrap?: boolean
   link?: boolean
   span?: boolean
   component?: 'h3' | 'h2' | 'h1' | 'p'
@@ -22,24 +19,7 @@ interface Props extends BoxProps {
 
 export const Txt = forwardRef(
   (
-    {
-      skeleton,
-      children,
-      gutterBottom,
-      block,
-      bold,
-      size,
-      link,
-      italic,
-      color,
-      uppercase,
-      truncate,
-      noWrap,
-      span,
-      sx,
-      component,
-      ...otherProps
-    }: Props,
+    {skeleton, children, gutterBottom, block, bold, size, link, color, truncate, span, sx, component, ...otherProps}: Props,
     ref: any,
   ) => {
     return (
@@ -91,20 +71,11 @@ export const Txt = forwardRef(
           ...(bold && {
             fontWeight: t => t.typography.fontWeightMedium,
           }),
-          ...(italic && {
-            fontStyle: 'italic',
-          }),
           ...(gutterBottom && {
             mb: 1,
           }),
           ...(link && {
             color: t => t.palette.primary.main,
-          }),
-          ...(uppercase && {
-            textTransform: 'uppercase' as any,
-          }),
-          ...(noWrap && {
-            whiteSpace: 'nowrap' as any,
           }),
           ...(truncate && {
             whiteSpace: 'nowrap' as any,
