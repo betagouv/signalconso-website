@@ -36,7 +36,6 @@ export const ScDialog = ({children, title, content, confirmLabel, onConfirm, onC
           <Button color="primary" onClick={() => setOpen(false)}>
             {m.close}
           </Button>
-
           <Button color="primary" onClick={confirm}>
             {confirmLabel}
           </Button>
