@@ -9,7 +9,7 @@ reponseconsoCode:
   - '210'
   - '224'
 detailInputs:
-  - label: Date T
+  - label: Date du constat
     type: DATE
     defaultValue: SYSDATE
   - label: Heure du constat

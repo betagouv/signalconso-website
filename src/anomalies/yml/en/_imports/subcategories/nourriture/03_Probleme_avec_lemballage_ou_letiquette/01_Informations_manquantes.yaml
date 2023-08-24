@@ -12,7 +12,7 @@ detailInputs:
       - Liste des ingrédients
       - Pas d'étiquette du tout
       - Autre (to be specified)
-  - label: Date T (ou d'achat suivant le cas)
+  - label: Date du constat (ou d'achat suivant le cas)
     type: DATE_NOT_IN_FUTURE
     defaultValue: SYSDATE
   - label: Type de produit

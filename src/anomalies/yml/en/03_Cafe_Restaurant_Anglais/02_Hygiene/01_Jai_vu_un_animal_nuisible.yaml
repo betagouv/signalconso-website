@@ -3,7 +3,7 @@ desc: "Exemple\_: cafard, rat"
 reponseconsoCode:
   - '312'
 detailInputs:
-  - label: Date T
+  - label: Date du constat
     type: DATE
     defaultValue: SYSDATE
   - label: Quel animal avez-vous vu&#160;?

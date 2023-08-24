@@ -4,7 +4,7 @@ reponseconsoCode:
   - '311'
   - '331'
 detailInputs:
-  - label: Date T
+  - label: Date du constat
     type: DATE_NOT_IN_FUTURE
     defaultValue: SYSDATE
   - label: Heure du constat
