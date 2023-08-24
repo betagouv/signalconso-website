@@ -2,9 +2,8 @@ import {Button} from '@codegouvfr/react-dsfr/Button'
 import {Box} from '@mui/material'
 import {useI18n} from 'i18n/I18n'
 import {firstReportStep} from 'model/ReportStep'
-import {ScButton} from '../../../components_simple/ScButton'
-import {StepNavigation} from './ReportFlowStepper'
 import {iconArrowRight} from 'utils/utils'
+import {StepNavigation} from './ReportFlowStepper'
 
 interface Props {
   hideNext?: boolean

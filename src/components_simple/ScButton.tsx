@@ -13,7 +13,8 @@ const sx = makeSx({
   },
 })
 
-export interface BtnProps extends ButtonProps {
+export interface BtnProps
+  extends Pick<ButtonProps, 'children' | 'sx' | 'size' | 'onClick' | 'variant' | 'disabled' | 'color' | 'type'> {
   loading?: boolean
   icon?: string
   iconAfter?: string
