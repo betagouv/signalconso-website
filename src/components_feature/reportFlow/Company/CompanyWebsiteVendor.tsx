@@ -5,7 +5,7 @@ import {ScAlert} from '../../../components_simple/ScAlert'
 import {ScInput} from 'components_simple/formInputs/ScInput'
 import {FormLayout} from 'components_simple/FormLayout'
 import {useForm} from 'react-hook-form'
-import {ScButton} from 'components_simple/Button'
+import {ScButton} from 'components_simple/ScButton'
 
 interface Form {
   websiteVendor: string

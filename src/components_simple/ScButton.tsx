@@ -2,7 +2,7 @@ import * as React from 'react'
 import {forwardRef} from 'react'
 import {Box, Button, CircularProgress, Icon} from '@mui/material'
 import {ButtonProps} from '@mui/material/Button'
-import {makeSx} from './common'
+import {makeSx} from '../alexlibs/common'
 
 const sx = makeSx({
   icon: {
@@ -19,7 +19,7 @@ export interface BtnProps extends ButtonProps {
   iconAfter?: string
 }
 
-export const Btn = forwardRef(({loading, children, disabled, icon, iconAfter, ...props}: BtnProps, ref: any) => {
+export const ScButton = forwardRef(({loading, children, disabled, icon, iconAfter, ...props}: BtnProps, ref: any) => {
   return (
     <Button {...props} disabled={disabled || loading} ref={ref}>
       <Box
