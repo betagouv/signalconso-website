@@ -1,6 +1,6 @@
 'use client'
 import {LinkBackToHome} from '../../components_simple/LinkBackToHome'
-import {Page} from '../../components_simple/Page/Page'
+import {Page} from '../../components_simple/Page'
 import {usePathname} from 'next/navigation'
 import {getI18n} from '../../i18n/I18nDictionnary'
 import {AppLangs, getSupportedLang} from '../../i18n/localization/AppLangs'
@@ -8,7 +8,7 @@ import MuiSetup from './MuiSetup'
 import '../../globals.css'
 import React from 'react'
 import {DsfrProvider} from '@codegouvfr/react-dsfr/next-appdir/DsfrProvider'
-import {Fender} from '../../alexlibs/mui-extension/Fender/Fender'
+import {Fender} from '../../alexlibs/Fender'
 
 // No metadata here, not available yet https://github.com/vercel/next.js/issues/45620
 export default function NotFound() {

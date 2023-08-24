@@ -1,5 +1,5 @@
 import {Metadata} from 'next'
-import Playground from './playground'
+import Playground from './PlaygroundPage'
 
 const genMetadata = () => {
   return {

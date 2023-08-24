@@ -1,4 +1,4 @@
-import {MemberCard} from 'components_feature/MemberCard/MemberCard'
+import {MemberCard} from 'components_simple/MemberCard'
 import {ContentPageContainer} from 'components_simple/PageContainers'
 import {team} from 'core/team'
 import Head from 'next/head'

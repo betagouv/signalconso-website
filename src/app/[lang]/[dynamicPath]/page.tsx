@@ -1,4 +1,4 @@
-import LandingPage from '../../../reusablePages/LandingPage'
+import LandingPage from '../../../components_feature/LandingPage'
 import {allVisibleLandings} from '../../../landings/landingDataUtils'
 import {notFound} from 'next/navigation'
 import {Metadata} from 'next'

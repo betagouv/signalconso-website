@@ -3,11 +3,11 @@
 import {Box, Checkbox, Radio, useTheme} from '@mui/material'
 import Icon from '@mui/material/Icon'
 import {styleUtils} from 'core/theme'
-import {getOptionsFromInput, getPlaceholderFromInput} from 'components_feature/Report/Details/DetailInputsUtils'
+import {getOptionsFromInput, getPlaceholderFromInput} from 'components_feature/reportFlow/Details/DetailInputsUtils'
 import {useEffect, useState} from 'react'
-import {Page} from '../../../components_simple/Page/Page'
-import {Txt} from '../../../alexlibs/mui-extension/Txt/Txt'
-import {IconBtn} from '../../../alexlibs/mui-extension/IconBtn/IconBtn'
+import {Page} from '../../../components_simple/Page'
+import {Txt} from '../../../alexlibs/Txt'
+import {IconBtn} from '../../../alexlibs/IconBtn'
 import {fnSwitch} from '../../../utils/FnSwitch'
 import {
   allVisibleAnomalies,

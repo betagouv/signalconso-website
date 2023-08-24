@@ -1,5 +1,5 @@
-import {CentreAideConso} from 'components_feature/CentreAide/CentreAideConso'
-import {CentreAidePro} from 'components_feature/CentreAide/CentreAidePro'
+import {CentreAideConso} from 'components_feature/centreAideComponents/CentreAideConso'
+import {CentreAidePro} from 'components_feature/centreAideComponents/CentreAidePro'
 
 import {Tabs} from '@codegouvfr/react-dsfr/Tabs'
 import {ContentPageContainer} from 'components_simple/PageContainers'

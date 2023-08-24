@@ -1,7 +1,7 @@
 import {Anomaly} from 'anomalies/Anomaly'
 import {appConfig} from './appConfig'
 import {LandingData} from 'landings/landingDataUtils'
-import {NewsArticle} from 'actualites/newsArticlesData'
+import {NewsArticle} from 'components_feature/actualites/newsArticlesData'
 import {AppLang} from '../i18n/localization/AppLangs'
 
 type PageDefExternal = {
