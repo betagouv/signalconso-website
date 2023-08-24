@@ -1183,11 +1183,17 @@ export const fr = {
     reportedCompanyNamePlaceholder: `Ex: Boulangerie Petit Jean`,
     companyIdentifiedTitle: `Entreprise identifiée`,
     influencerIdentifiedTitle: `Influenceur ou influenceuse identifié(e)`,
+    companyIdentityHelperTitle: 'Aide SIRET/SIREN',
     companyIdentityHelperWhere: `Où trouver ces identifiants ?`,
+    companyIdentityHelperWebsite: `Sur un site internet`,
+    companyIdentityHelperInvoice: `Sur une facture`,
+    companyIdentityHelperReceipt: `Sur un ticket de caisse`,
+    companyIdentityHelperCreditCardReceipt: `Sur un ticket de carte bleue`,
     companyIdentityHelper: `A quoi correspondent ces identifiants ?`,
     companyIdentityHelperWhereDesc: `
-      Vous pouvez retrouver ce numéro sur un devis, une facture ou un ticket de caisse émis par l’entreprise et également dans les mentions légales de son site internet.<br/>
-      <b>Comment faire ?</b><br/>
+      Vous pouvez retrouver ce numéro sur un devis, une facture ou un ticket de caisse émis par l’entreprise et également dans les mentions légales de son site internet.
+    `,
+    companyIdentityHelperWhereDesc0: `
       Descendez en bas de la page internet d’accueil du site en question :
     `,
     companyIdentityHelperWhereDesc2: `
