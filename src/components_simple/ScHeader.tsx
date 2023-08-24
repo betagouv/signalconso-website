@@ -76,9 +76,7 @@ export function ScHeader() {
               },
               text: m.header.servicePublicPlusLinkTitle,
             },
-            ...(currentLang === AppLangs.fr
-              ? [buildMenuLink(currentLang, pathName, pagesDefs.actualites.url, m.header.actualitesLinkTitle)]
-              : []),
+            buildMenuLink(currentLang, pathName, pagesDefs.actualites.url, m.header.actualitesLinkTitle),
           ]),
           ...(pagesDefs.playground ? [buildMenuLink(currentLang, pathName, pagesDefs.playground.url, 'Playground')] : []),
         ]}
