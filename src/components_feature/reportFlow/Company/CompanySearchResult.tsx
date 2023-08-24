@@ -110,7 +110,7 @@ export const CompanySearchResultComponent = ({companies, onSubmit}: Props) => {
       <Animate>
         {companies.length === 0 ? (
           <Panel id="CompanySearchResult">
-            <Fender type="empty" icon="sentiment_very_dissatisfied">
+            <Fender icon="sentiment_very_dissatisfied">
               <span className="text-lg text-gray-600">{m.noMatchingCompany}</span>
             </Fender>
           </Panel>

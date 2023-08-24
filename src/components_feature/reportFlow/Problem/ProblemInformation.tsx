@@ -15,6 +15,7 @@ import {IconBtn} from '../../../alexlibs/IconBtn'
 import {Txt} from '../../../alexlibs/Txt'
 import {Anomaly, InfoWall, Subcategory} from '../../../anomalies/Anomaly'
 import {LinkBackToHome} from '../../../components_simple/LinkBackToHome'
+import {colorSuccess} from 'alexlibs/color'
 
 interface Props {
   anomaly: Anomaly
@@ -87,7 +88,7 @@ export const ProblemInformation = ({anomaly, subcategories, information, isWebVi
         <Panel title={m.informationWasUsefull} border>
           {_vote.data ? (
             <PanelBody>
-              <Fender type="success" iconSize={80}>
+              <Fender iconSize={80} icon="check_circle_outline" iconColor={colorSuccess}>
                 {m.informationRatingSaved}
               </Fender>
             </PanelBody>
