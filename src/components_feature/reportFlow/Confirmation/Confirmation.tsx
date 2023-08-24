@@ -1,5 +1,5 @@
 import {Box, Chip, Icon} from '@mui/material'
-import {FriendlyHelpText} from 'alexlibs/FriendlyHelpText'
+import {FriendlyHelpText} from 'components_simple/FriendlyHelpText'
 import {useAnalyticContext} from 'analytic/AnalyticContext'
 import {EventCategories, ReportEventActions} from 'analytic/analytic'
 import {findAnomaly} from 'anomalies/Anomalies'

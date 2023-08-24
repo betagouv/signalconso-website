@@ -4,7 +4,7 @@ import {ReactNode} from 'react'
 import {Box, BoxProps, CircularProgress, Icon} from '@mui/material'
 import {colorError, colorSuccess, colorWarning} from './color'
 
-type State = 'loading' | 'error' | 'empty' | 'success' | 'warning'
+type State = 'error' | 'empty' | 'success' | 'warning'
 
 export interface FenderProps extends Omit<BoxProps, 'title'> {
   type?: State
@@ -26,8 +26,6 @@ export const Fender = ({children, icon, iconSize = 100, type = 'empty', title, d
         return renderIcon('check_circle_outline')
       case 'warning':
         return renderIcon('warning')
-      case 'loading':
-        return <CircularProgress size={iconSize - 10} />
     }
   }
 

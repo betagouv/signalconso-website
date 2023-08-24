@@ -1,5 +1,4 @@
-import {Box, BoxProps, Icon} from '@mui/material'
-import {Fender} from 'alexlibs/Fender'
+import {Box, BoxProps, CircularProgress, Icon} from '@mui/material'
 import {useGetCountries} from 'clients/apiHooks'
 import {Panel, PanelActions, PanelBody} from 'components_simple/Panel'
 import {Row} from 'components_simple/Row'
@@ -52,7 +51,12 @@ export const Acknowledgement = ({isWebView}: {isWebView: boolean}) => {
   if (country || !report.companyAddress.country) {
     return <AcknowledgementInner createdReport={report} {...{isWebView, country}} />
   }
-  return <Fender type="loading" />
+
+  return (
+    <div className="flex items-center mb-10">
+      <CircularProgress size={90} className="mx-auto" />
+    </div>
+  )
 }
 
 export const AcknowledgementInner = ({
