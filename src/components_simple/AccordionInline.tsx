@@ -1,6 +1,6 @@
 import React, {ReactNode, useEffect, useState} from 'react'
 import {Box, BoxProps, Collapse, Icon} from '@mui/material'
-import {Txt} from '../alexlibs/Txt'
+import {Txt} from './Txt'
 
 interface Props extends BoxProps {
   label: ReactNode

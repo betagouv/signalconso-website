@@ -12,7 +12,7 @@ import {useApiClients} from 'context/ApiClientsContext'
 import {useI18n} from 'i18n/I18n'
 import {ReactNode, useState} from 'react'
 import {Controller, useForm} from 'react-hook-form'
-import {Txt} from '../../../alexlibs/Txt'
+import {Txt} from '../../../components_simple/Txt'
 import {CompanySearchResult} from '../../../model/Company'
 import {ifDefined} from '../../../utils/utils'
 

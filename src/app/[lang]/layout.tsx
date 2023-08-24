@@ -6,7 +6,6 @@ import {I18nProvider} from '../../i18n/I18n'
 import {Metadata} from 'next'
 import {getHtmlAttributes} from '@codegouvfr/react-dsfr/next-appdir/getHtmlAttributes'
 import {DsfrProvider} from '@codegouvfr/react-dsfr/next-appdir/DsfrProvider'
-import {Fender} from '../../alexlibs/Fender'
 
 export function generateMetadata(): Metadata {
   return {

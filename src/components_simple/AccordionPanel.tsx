@@ -1,7 +1,6 @@
+import {Box, BoxProps, Collapse, Icon, IconButton} from '@mui/material'
 import {ReactNode, useState} from 'react'
-import {Box, BoxProps, Collapse, Icon} from '@mui/material'
-import {IconBtn} from '../alexlibs/IconBtn'
-import {Txt} from '../alexlibs/Txt'
+import {Txt} from './Txt'
 
 export const AccordionPanels = ({children, ...props}: BoxProps) => {
   return <Box {...props}>{children}</Box>
@@ -63,9 +62,9 @@ export const AccordionPanel = ({
           py: 1,
         }}
       >
-        <IconBtn size="small" color="primary" sx={{ml: 1, mr: 2}}>
+        <IconButton size="small" color="primary" sx={{ml: 1, mr: 2}}>
           <Icon>{open ? 'expand_more' : 'chevron_right'}</Icon>
-        </IconBtn>
+        </IconButton>
         <div>
           <h3 className="font-normal text-lg m-0">{title}</h3>
           <Txt color="hint" sx={{m: 0, p: 0}}>

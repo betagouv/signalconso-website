@@ -11,7 +11,7 @@ import {LinkBackToHome} from '../components_simple/LinkBackToHome'
 import React from 'react'
 import '../globals.css'
 import MuiSetup from './[lang]/MuiSetup'
-import {Fender} from '../alexlibs/Fender'
+import {Fender} from '../components_simple/Fender'
 
 export default function GlobalError({error, reset}: {error: any; reset: any}) {
   Sentry.captureException(error)

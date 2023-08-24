@@ -1,5 +1,5 @@
 import React, {ReactNode} from 'react'
-import {Txt} from '../alexlibs/Txt'
+import {Txt} from './Txt'
 import {Box, BoxProps} from '@mui/material'
 
 interface Props extends BoxProps {

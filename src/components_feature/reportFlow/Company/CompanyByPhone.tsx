@@ -1,10 +1,9 @@
 import {ScInput} from 'components_simple/formInputs/ScInput'
-import {Txt} from '../../../alexlibs/Txt'
+import {Txt} from '../../../components_simple/Txt'
 import React, {ReactNode, useState} from 'react'
 import {useI18n} from 'i18n/I18n'
 import {useForm} from 'react-hook-form'
-import {Box, BoxProps, Icon} from '@mui/material'
-import {IconBtn} from '../../../alexlibs/IconBtn'
+import {Box, BoxProps, Icon, IconButton} from '@mui/material'
 import {Panel, PanelBody} from 'components_simple/Panel'
 import {Animate} from 'components_simple/Animate'
 import {Button} from '@codegouvfr/react-dsfr/Button'
@@ -61,9 +60,9 @@ export const CompanyByPhone = ({value, children, ...props}: Props) => {
                   !!phone
                     ? {
                         endAdornment: (
-                          <IconBtn size="small" color="primary" onClick={clear}>
+                          <IconButton size="small" color="primary" onClick={clear}>
                             <Icon>clear</Icon>
-                          </IconBtn>
+                          </IconButton>
                         ),
                       }
                     : {}

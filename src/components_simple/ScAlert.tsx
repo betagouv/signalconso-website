@@ -1,36 +1,25 @@
-import * as React from 'react'
-import {CSSProperties, ReactNode, useState} from 'react'
-import {Box, BoxProps, darken, Icon, IconButton} from '@mui/material'
+import {Box, BoxProps, Icon, IconButton, darken} from '@mui/material'
+import {ReactNode, useState} from 'react'
 import {usePersistentState} from '../hooks/usePersistentState'
-import {colorError, colorInfo, colorSuccess, colorWarning} from './color'
+import {otherColorSet} from 'core/theme'
 
 const height = (dense?: boolean) => (dense ? 44 : 52)
 
-interface AlertProps extends BoxProps {
+interface Props extends Pick<BoxProps, 'children' | 'dangerouslySetInnerHTML' | 'id'> {
   type: 'info' | 'error' | 'warning' | 'success'
   deletable?: boolean
   action?: ReactNode
   dense?: boolean
-  gutterBottom?: boolean
 }
 
 export const alertInfoBackgroundColor = 'rgba(50, 200, 255, .08)'
-export const alertInfoTextColor = darken(colorInfo, 0.1)
+export const alertInfoTextColor = darken(otherColorSet.success, 0.1)
 
 export const alertWarningBackgroundColor = 'rgba(255, 128, 0, .08)'
-export const alertWarningTextColor = darken(colorWarning, 0.1)
+export const alertWarningTextColor = darken(otherColorSet.warning, 0.1)
 
-export const Alert = ({
-  type,
-  dense,
-  action,
-  deletable,
-  sx,
-  gutterBottom,
-  children,
-  dangerouslySetInnerHTML,
-  ...props
-}: AlertProps) => {
+// An alert that looks different (softer, less catchy) of the Alert from DSFR
+export const ScAlert = ({type, dense, action, deletable, children, dangerouslySetInnerHTML, ...props}: Props) => {
   const [isPersistentVisible, setPersistentIsVisible] = usePersistentState<boolean>(true, props.id || 'alert')
   const [isVisible, setIsVisible] = useState<boolean>(true)
 
@@ -65,12 +54,6 @@ export const Alert = ({
       {...props}
       {...roleProp()}
       sx={{
-        // paddingLeft: t.spacing(2),
-        // paddingRight: t.spacing(2),
-        // [t.breakpoints.up('sm')]: {
-        //   paddingLeft: t.spacing(3),
-        //   paddingRight: t.spacing(3),
-        // },
         transition: t => t.transitions.create('all'),
         // @ts-ignore
         minHeight: height(props.dense),
@@ -84,7 +67,7 @@ export const Alert = ({
         ...{
           success: {
             background: 'rgba(50, 255, 150, .08)', //'#e1ffe1',
-            color: darken(colorSuccess, 0.1),
+            color: darken(otherColorSet.success, 0.1),
           },
           info: {
             background: alertInfoBackgroundColor, //'#e1f5fe',
@@ -92,7 +75,7 @@ export const Alert = ({
           },
           error: {
             background: 'rgba(255, 0, 0, .08)', //'#ffdede',
-            color: darken(colorError, 0.1),
+            color: darken(otherColorSet.error, 0.1),
           },
           warning: {
             background: alertWarningBackgroundColor,
@@ -105,10 +88,7 @@ export const Alert = ({
           opacity: '0 !important',
           margin: '0 !important',
         }),
-        ...(gutterBottom && {
-          mb: 1,
-        }),
-        ...sx,
+        mb: 2,
       }}
     >
       <Icon

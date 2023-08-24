@@ -1,5 +1,5 @@
 import {MenuItem} from '@mui/material'
-import {FriendlyHelpText} from 'alexlibs/FriendlyHelpText'
+import {FriendlyHelpText} from 'components_simple/FriendlyHelpText'
 import {useAnalyticContext} from 'analytic/AnalyticContext'
 import {EventCategories, ReportEventActions} from 'analytic/analytic'
 import {Animate} from 'components_simple/Animate'

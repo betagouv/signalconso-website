@@ -1,10 +1,10 @@
-import {Box, BoxProps, Icon, Tooltip} from '@mui/material'
+import {Box, BoxProps, Icon, IconButton, Tooltip} from '@mui/material'
 import {CompanySearchEventActions, EventCategories} from 'analytic/analytic'
 import {useAnalyticContext} from 'analytic/AnalyticContext'
 import {useToastOnQueryError} from 'clients/apiHooks'
 import {SignalConsoApiClient} from 'clients/SignalConsoApiClient'
 import {Animate} from 'components_simple/Animate'
-import {ScButton} from 'components_simple/Button'
+import {ScButton} from 'components_simple/ScButton'
 import {ScInput} from 'components_simple/formInputs/ScInput'
 import {Panel, PanelBody} from 'components_simple/Panel'
 import {useApiClients} from 'context/ApiClientsContext'
@@ -12,15 +12,13 @@ import {useI18n} from 'i18n/I18n'
 import {ReactNode, useEffect, useState} from 'react'
 import {useForm} from 'react-hook-form'
 import {useQuery} from '@tanstack/react-query'
-import {IconBtn} from '../../../alexlibs/IconBtn'
-import {Txt} from '../../../alexlibs/Txt'
+import {Txt} from '../../../components_simple/Txt'
 import {CompanySearchResult} from '../../../model/Company'
 import {Country} from '../../../model/Country'
 import {Button} from '@codegouvfr/react-dsfr/Button'
 import {SpecificWebsiteCompanyKinds} from '../../../anomalies/Anomaly'
 import {Alert} from '@codegouvfr/react-dsfr/Alert'
 import {SiretExtractorClient} from '../../../clients/SiretExtractorClient'
-import {appConfig} from '../../../core/appConfig'
 
 interface Form {
   website: string
@@ -178,9 +176,9 @@ export const CompanyByWebsite = ({value, children, specificWebsiteCompanyKind, .
                 InputProps={{
                   endAdornment: (
                     <Tooltip title={m.edit}>
-                      <IconBtn size="small" color="primary" onClick={editWebsite}>
+                      <IconButton size="small" color="primary" onClick={editWebsite}>
                         <Icon>edit</Icon>
-                      </IconBtn>
+                      </IconButton>
                     </Tooltip>
                   ),
                 }}

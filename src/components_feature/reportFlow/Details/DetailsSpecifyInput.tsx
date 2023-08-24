@@ -1,9 +1,7 @@
+import {ScInput} from 'components_simple/formInputs/ScInput'
+import {useI18n} from 'i18n/I18n'
 import {Control, Controller} from 'react-hook-form'
 import {FieldError} from 'react-hook-form/dist/types/errors'
-import {useI18n} from 'i18n/I18n'
-import {ScInput} from 'components_simple/formInputs/ScInput'
-import {stopPropagation} from '../../../alexlibs/common'
-import React from 'react'
 
 export const DetailsSpecifyInput = ({
   name,
@@ -31,7 +29,10 @@ export const DetailsSpecifyInput = ({
           error={!!error}
           helperText={error?.message}
           autoFocus
-          onClick={stopPropagation(() => void 0)}
+          onClick={e => {
+            e.stopPropagation()
+            e.preventDefault()
+          }}
           fullWidth
           placeholder={m.specify}
         />

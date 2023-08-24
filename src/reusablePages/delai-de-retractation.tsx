@@ -1,4 +1,4 @@
-import {Txt} from 'alexlibs/Txt'
+import {Txt} from 'components_simple/Txt'
 import {ContentPageContainer} from 'components_simple/PageContainers'
 import ComputeWithdrawalPeriod from '../components_feature/ComputeWithdrawalPeriod'
 import {getI18n} from '../i18n/I18nDictionnary'
@@ -58,9 +58,7 @@ export const DelaiDeRetractation = ({params}: any) => {
           <p>{m.delaiRetractation.justificationNotRequired}</p>
           <p>
             {m.delaiRetractation.returnFormOrLetter}{' '}
-            <Txt bolder span>
-              {m.delaiRetractation.recommendedLetterWithAcknowledgment}
-            </Txt>{' '}
+            <span className="font-bold">{m.delaiRetractation.recommendedLetterWithAcknowledgment}</span>{' '}
             {m.delaiRetractation.withinFourteenDays}.
             <br />
             {m.delaiRetractation.canAlsoDoItOnline} {m.delaiRetractation.websiteRequirement}.

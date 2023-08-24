@@ -1,49 +1,21 @@
 'use client'
 
-import {Box, BoxProps, Skeleton} from '@mui/material'
-import * as React from 'react'
+import {Box, BoxProps} from '@mui/material'
 import {forwardRef} from 'react'
 
-interface Props extends BoxProps {
+interface Props extends Pick<BoxProps, 'children' | 'sx' | 'style' | 'className' | 'onClick' | 'dangerouslySetInnerHTML'> {
   bold?: boolean
-  bolder?: boolean
-  italic?: boolean
-  gutterBottom?: boolean
   block?: boolean
-  skeleton?: boolean | number | string
   size?: 'big' | 'title' | 'small'
   color?: 'primary' | 'secondary' | 'disabled' | 'hint' | 'default' | 'error' | 'textsecondary'
-  uppercase?: boolean
   truncate?: boolean
-  noWrap?: boolean
   link?: boolean
   span?: boolean
   component?: 'h3' | 'h2' | 'h1' | 'p'
 }
 
 export const Txt = forwardRef(
-  (
-    {
-      skeleton,
-      children,
-      gutterBottom,
-      block,
-      bold,
-      bolder,
-      size,
-      link,
-      italic,
-      color,
-      uppercase,
-      truncate,
-      noWrap,
-      span,
-      sx,
-      component,
-      ...otherProps
-    }: Props,
-    ref: any,
-  ) => {
+  ({children, block, bold, size, link, color, truncate, span, sx, component, ...otherProps}: Props, ref: any) => {
     return (
       <Box
         {...(span ? {component: 'span'} : null)}
@@ -93,23 +65,8 @@ export const Txt = forwardRef(
           ...(bold && {
             fontWeight: t => t.typography.fontWeightMedium,
           }),
-          ...(bolder && {
-            fontWeight: 700,
-          }),
-          ...(italic && {
-            fontStyle: 'italic',
-          }),
-          ...(gutterBottom && {
-            mb: 1,
-          }),
           ...(link && {
             color: t => t.palette.primary.main,
-          }),
-          ...(uppercase && {
-            textTransform: 'uppercase' as any,
-          }),
-          ...(noWrap && {
-            whiteSpace: 'nowrap' as any,
           }),
           ...(truncate && {
             whiteSpace: 'nowrap' as any,
@@ -121,11 +78,7 @@ export const Txt = forwardRef(
         {...otherProps}
         ref={ref}
       >
-        {skeleton ? (
-          <Skeleton sx={{display: 'inline-block'}} width={isNaN(skeleton as any) ? '80%' : (skeleton as number)} />
-        ) : (
-          children
-        )}
+        {children}
       </Box>
     )
   },

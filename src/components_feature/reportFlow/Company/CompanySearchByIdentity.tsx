@@ -1,4 +1,4 @@
-import {Box, Icon} from '@mui/material'
+import {Box, Icon, IconButton} from '@mui/material'
 import {useQuery} from '@tanstack/react-query'
 import {useAnalyticContext} from 'analytic/AnalyticContext'
 import {CompanySearchEventActions, EventCategories} from 'analytic/analytic'
@@ -12,7 +12,6 @@ import {useApiClients} from 'context/ApiClientsContext'
 import {useI18n} from 'i18n/I18n'
 import {ReactNode, useRef, useState} from 'react'
 import {useForm} from 'react-hook-form'
-import {IconBtn} from '../../../alexlibs/IconBtn'
 import {CompanySearchResult} from '../../../model/Company'
 import {ifDefined} from '../../../utils/utils'
 import {CompanySearchByIdentityHelpDialog} from './CompanySearchByIdentityHelpDialog'
@@ -64,9 +63,9 @@ export const CompanySearchByIdentity = ({children}: Props) => {
                   <Box sx={{display: 'inline-flex', alignItems: 'center'}}>
                     {m.companyIdentityLabel}
                     <CompanySearchByIdentityHelpDialog>
-                      <IconBtn sx={{ml: 1, color: t => t.palette.info.main}} size="small">
+                      <IconButton sx={{ml: 1, color: t => t.palette.info.main}} size="small">
                         <Icon>help</Icon>
-                      </IconBtn>
+                      </IconButton>
                     </CompanySearchByIdentityHelpDialog>
                   </Box>
                 }
@@ -81,9 +80,9 @@ export const CompanySearchByIdentity = ({children}: Props) => {
                   placeholder={m.companyIdentityPlaceholder}
                   InputProps={{
                     endAdornment: (
-                      <IconBtn size="small" color="primary" onClick={clear}>
+                      <IconButton size="small" color="primary" onClick={clear}>
                         <Icon>clear</Icon>
-                      </IconBtn>
+                      </IconButton>
                     ),
                   }}
                 />

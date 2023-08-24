@@ -2,24 +2,21 @@ import * as React from 'react'
 import {forwardRef} from 'react'
 import {Box, Button, CircularProgress, Icon} from '@mui/material'
 import {ButtonProps} from '@mui/material/Button'
-import {makeSx} from './common'
 
-const sx = makeSx({
-  icon: {
-    height: '22px !important',
-    lineHeight: '22px !important',
-    fontSize: '22px !important',
-    marginRight: 1,
-  },
-})
-
-export interface BtnProps extends ButtonProps {
+export interface BtnProps
+  extends Pick<ButtonProps, 'children' | 'sx' | 'size' | 'onClick' | 'variant' | 'disabled' | 'color' | 'type'> {
   loading?: boolean
   icon?: string
   iconAfter?: string
 }
 
-export const Btn = forwardRef(({loading, children, disabled, icon, iconAfter, ...props}: BtnProps, ref: any) => {
+export const ScButton = forwardRef(({loading, children, disabled, icon, iconAfter, ...props}: BtnProps, ref: any) => {
+  const iconSx = {
+    height: '22px !important',
+    lineHeight: '22px !important',
+    fontSize: '22px !important',
+    marginRight: 1,
+  }
   return (
     <Button {...props} disabled={disabled || loading} ref={ref}>
       <Box
@@ -32,7 +29,7 @@ export const Btn = forwardRef(({loading, children, disabled, icon, iconAfter, ..
         }}
       >
         {icon && (
-          <Icon fontSize={props.size} sx={sx.icon}>
+          <Icon fontSize={props.size} sx={iconSx}>
             {icon}
           </Icon>
         )}
@@ -41,7 +38,7 @@ export const Btn = forwardRef(({loading, children, disabled, icon, iconAfter, ..
           <Icon
             fontSize={props.size}
             sx={{
-              ...sx.icon,
+              ...iconSx,
               mr: 0,
               ml: 1,
             }}

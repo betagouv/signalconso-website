@@ -29,3 +29,12 @@ export const styleUtils = (t: Theme) => ({
 export const COLOR_DARK_BLUE = '#1e2b50'
 export const COLOR_BLUE_FRANCE = '#000091'
 export const COLOR_LIGHTPURPLE = '#e3e3fd'
+
+// these are not the same as the main theme. seems fishy.
+// Maybe we could try to harmonize
+export const otherColorSet = {
+  success: '#119647',
+  error: '#ea1000',
+  warning: '#FF8000',
+  info: '#0288d1',
+}

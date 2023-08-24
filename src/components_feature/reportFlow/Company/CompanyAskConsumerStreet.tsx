@@ -7,8 +7,8 @@ import {Panel, PanelActions, PanelBody} from 'components_simple/Panel'
 import {useI18n} from 'i18n/I18n'
 import {Address} from 'model/Address'
 import {Controller, useForm} from 'react-hook-form'
-import {Alert} from '../../../alexlibs/Alert'
-import {Txt} from '../../../alexlibs/Txt'
+import {ScAlert} from '../../../components_simple/ScAlert'
+import {Txt} from '../../../components_simple/Txt'
 
 interface Form {
   street: string
@@ -31,9 +31,9 @@ export const CompanyAskConsumerStreet = ({onChange}: Props) => {
   return (
     <Animate>
       <Panel id="CompanyAskConsumerStreet">
-        <Alert dense type="info" sx={{mb: 2}} deletable>
+        <ScAlert dense type="info" deletable>
           <Txt size="small" dangerouslySetInnerHTML={{__html: m.cantIdentifyLocationCompany}} />
-        </Alert>
+        </ScAlert>
         <form
           onSubmit={handleSubmit(form =>
             onChange({
