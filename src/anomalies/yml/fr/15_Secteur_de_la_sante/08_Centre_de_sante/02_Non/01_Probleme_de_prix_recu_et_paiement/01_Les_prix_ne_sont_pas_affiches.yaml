@@ -1,0 +1,10 @@
+title: Les tarifs ne sont pas affichés sur le site de prise de rendez-vous, en salle d'attente et au lieu de paiement
+desc: "Les tarifs doivent être clairement affichés dans la salle d'attente et au lieu de paiement ainsi que sur le site de prise de rendez-vous."
+ccrfCode:
+  - '21B'
+reponseconsoCode:
+  - '212'
+  - '226'
+detailInputs:
+  - label: Date de constat
+    type: DATE

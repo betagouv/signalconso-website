@@ -1,0 +1,12 @@
+title: J’ai un problème avec un avis internet 
+desc: "Exemple\_: j’ai un doute sur la véracité d’un avis, mon avis a été rejeté sans que j’en sois informé, …"
+tags:
+  - ReponseConso
+ccrfCode:
+  - '216'
+reponseconsoCode:
+  - '212'
+  - '226'
+detailInputs:
+  - label: Date de constat
+    type: DATE

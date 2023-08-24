@@ -1,0 +1,10 @@
+title: Je n'ai pas été autorisé à payer en espèce, par chèque ou carte bancaire sans en avoir été préalablement informé
+desc: "Le professionnel ne peut refuser le règlement par chèque ou par carte bancaire qu’à la condition d’avoir informé les clients en amont sur un support lisible."
+ccrfCode:
+  - '21B'
+reponseconsoCode:
+  - '212'
+  - '226'
+detailInputs:
+  - label: Date de constat
+    type: DATE

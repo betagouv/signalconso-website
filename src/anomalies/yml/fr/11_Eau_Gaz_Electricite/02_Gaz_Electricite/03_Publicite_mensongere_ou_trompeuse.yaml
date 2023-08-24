@@ -2,6 +2,8 @@ title: Publicité mensongère ou trompeuse
 desc: "Exemple\_: publicité \"offre verte\" mensongère"
 tags:
   - ReponseConso
+ccrfCode:
+  - '23B'
 reponseconsoCode:
   - '210'
 detailInputs:

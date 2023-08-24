@@ -1,0 +1,11 @@
+title: Je n’ai pas été préalablement informé du montant des dépassements d’honoraires de plus 70 euros.
+desc: "Le professionnel salarié du centre de santé doit vous informer par écrit et l'afficher avant la réalisation de l'acte médicale."
+companyKind: SIRET
+ccrfCode:
+  - '226'
+reponseconsoCode:
+  - '212'
+  - '226'
+detailInputs:
+  - label: Date de constat
+    type: DATE

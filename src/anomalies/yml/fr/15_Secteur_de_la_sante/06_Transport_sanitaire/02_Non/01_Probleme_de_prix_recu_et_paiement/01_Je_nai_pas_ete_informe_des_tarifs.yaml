@@ -1,0 +1,13 @@
+title: Je n’ai pas été informé des tarifs
+desc: "Exemple\_: Les tarifs doivent être affichés lisiblement dans le véhicule ainsi qu’au lieu de réception du public."
+companyKind: SIRET
+tags:
+  - ReponseConso
+ccrfCode:
+  - '21B'
+reponseconsoCode:
+  - '212'
+  - '226'
+detailInputs:
+  - label: Date de constat
+    type: DATE
