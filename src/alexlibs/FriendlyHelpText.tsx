@@ -1,5 +1,5 @@
 import {ReactNode} from 'react'
-import {alertInfoBackgroundColor, alertInfoTextColor} from './Alert'
+import {alertInfoBackgroundColor, alertInfoTextColor} from './AlexAlert'
 import {useColors} from '@codegouvfr/react-dsfr/useColors'
 
 export function FriendlyHelpText({children}: {children: ReactNode}) {

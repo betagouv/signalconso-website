@@ -7,7 +7,7 @@ import {ScInput} from 'components_simple/formInputs/ScInput'
 import {Panel, PanelActions, PanelBody} from 'components_simple/Panel'
 import {useI18n} from 'i18n/I18n'
 import {Controller, useForm} from 'react-hook-form'
-import {Alert} from '../../../alexlibs/Alert'
+import {AlexAlert} from '../../../alexlibs/AlexAlert'
 import {Txt} from '../../../alexlibs/Txt'
 import {CompanyKinds} from '../../../anomalies/Anomaly'
 import {Country, countryLabel} from '../../../model/Country'
@@ -93,7 +93,7 @@ export const CompanyAskForeignDetails = ({onSubmit, companyKind}: Props) => {
               />
             </FormLayout>
             <br />
-            <Alert dense type="info" sx={{mb: 2}} deletable>
+            <AlexAlert dense type="info" deletable>
               <Txt
                 size="small"
                 dangerouslySetInnerHTML={{
@@ -108,7 +108,7 @@ export const CompanyAskForeignDetails = ({onSubmit, companyKind}: Props) => {
                   }),
                 }}
               />
-            </Alert>
+            </AlexAlert>
             <FormLayout required label={m.yourPostalCode}>
               <ScInput
                 error={!!errors.postalCode}

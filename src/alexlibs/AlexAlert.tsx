@@ -6,7 +6,7 @@ import {colorError, colorInfo, colorSuccess, colorWarning} from './color'
 
 const height = (dense?: boolean) => (dense ? 44 : 52)
 
-interface AlertProps extends BoxProps {
+interface AlertProps extends Pick<BoxProps, 'children' | 'dangerouslySetInnerHTML' | 'id'> {
   type: 'info' | 'error' | 'warning' | 'success'
   deletable?: boolean
   action?: ReactNode
@@ -19,7 +19,7 @@ export const alertInfoTextColor = darken(colorInfo, 0.1)
 export const alertWarningBackgroundColor = 'rgba(255, 128, 0, .08)'
 export const alertWarningTextColor = darken(colorWarning, 0.1)
 
-export const Alert = ({type, dense, action, deletable, sx, children, dangerouslySetInnerHTML, ...props}: AlertProps) => {
+export const AlexAlert = ({type, dense, action, deletable, children, dangerouslySetInnerHTML, ...props}: AlertProps) => {
   const [isPersistentVisible, setPersistentIsVisible] = usePersistentState<boolean>(true, props.id || 'alert')
   const [isVisible, setIsVisible] = useState<boolean>(true)
 
@@ -54,12 +54,6 @@ export const Alert = ({type, dense, action, deletable, sx, children, dangerously
       {...props}
       {...roleProp()}
       sx={{
-        // paddingLeft: t.spacing(2),
-        // paddingRight: t.spacing(2),
-        // [t.breakpoints.up('sm')]: {
-        //   paddingLeft: t.spacing(3),
-        //   paddingRight: t.spacing(3),
-        // },
         transition: t => t.transitions.create('all'),
         // @ts-ignore
         minHeight: height(props.dense),
@@ -94,7 +88,7 @@ export const Alert = ({type, dense, action, deletable, sx, children, dangerously
           opacity: '0 !important',
           margin: '0 !important',
         }),
-        ...sx,
+        mb: 2,
       }}
     >
       <Icon

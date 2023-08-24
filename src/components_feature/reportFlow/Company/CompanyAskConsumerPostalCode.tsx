@@ -6,7 +6,7 @@ import {Panel, PanelActions, PanelBody} from 'components_simple/Panel'
 import {useI18n} from 'i18n/I18n'
 import {Address} from 'model/Address'
 import {Controller, useForm} from 'react-hook-form'
-import {Alert} from '../../../alexlibs/Alert'
+import {AlexAlert} from '../../../alexlibs/AlexAlert'
 import {Txt} from '../../../alexlibs/Txt'
 import {CompanyKinds} from '../../../anomalies/Anomaly'
 import {fnSwitch} from '../../../utils/FnSwitch'
@@ -32,7 +32,7 @@ export const CompanyAskConsumerPostalCode = ({value, onChange, companyKind}: Pro
   return (
     <Animate>
       <Panel id="CompanyAskConsumerPostalCode">
-        <Alert dense type="info" sx={{mb: 2}} deletable>
+        <AlexAlert dense type="info" deletable>
           <Txt
             size="small"
             dangerouslySetInnerHTML={{
@@ -47,7 +47,7 @@ export const CompanyAskConsumerPostalCode = ({value, onChange, companyKind}: Pro
               }),
             }}
           />
-        </Alert>
+        </AlexAlert>
         <form onSubmit={handleSubmit(_ => onChange(_.place))}>
           <PanelBody>
             <FormLayout required label={m.yourPostalCode} desc={m.youCanSearchByCity}>
