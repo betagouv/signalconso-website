@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom'
 import {DraftReportDefaultInputs, getDraftReportInputs} from './draftReportInputs'
 import {Fixture} from '../../../test/fixture'
-import {DetailsFixtureInput} from '../../playground/PlaygroundDetails'
+import {DetailsFixtureInput} from '../../playgroundComponents/PlaygroundDetails'
 import {DetailInputType, ReportTag} from '../../../anomalies/Anomaly'
 import {AppLangs} from '../../../i18n/localization/AppLangs'
 

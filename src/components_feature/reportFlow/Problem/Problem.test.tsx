@@ -2,7 +2,7 @@
  * @jest-environment jsdom
  */
 import '@testing-library/jest-dom'
-import {dummyStepNavigation} from 'components_feature/playground/PlaygroundConfirmation'
+import {dummyStepNavigation} from 'components_feature/playgroundComponents/PlaygroundConfirmation'
 import {ReportDraft2} from 'model/ReportDraft2'
 import {AccessReportFlow, fireEvent, render, ScRenderResult} from 'test/test-utils'
 import {Anomaly} from '../../../anomalies/Anomaly'
