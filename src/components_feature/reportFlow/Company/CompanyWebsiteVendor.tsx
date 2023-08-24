@@ -1,7 +1,7 @@
 import {Panel, PanelActions, PanelBody} from 'components_simple/Panel'
 import {Animate} from 'components_simple/Animate'
 import {useI18n} from 'i18n/I18n'
-import {AlexAlert} from '../../../alexlibs/AlexAlert'
+import {ScAlert} from '../../../components_simple/ScAlert'
 import {ScInput} from 'components_simple/formInputs/ScInput'
 import {FormLayout} from 'components_simple/FormLayout'
 import {useForm} from 'react-hook-form'
@@ -27,7 +27,7 @@ export const CompanyWebsiteVendor = ({onSubmit}: Props) => {
       <Panel title={m.companyWebsiteVendorTitle}>
         <form onSubmit={handleSubmit(form => onSubmit(form.websiteVendor))}>
           <PanelBody>
-            <AlexAlert type="info">{m.companyWebsiteVendorAlert}</AlexAlert>
+            <ScAlert type="info">{m.companyWebsiteVendorAlert}</ScAlert>
             <FormLayout required label={m.companyWebsiteVendorLabel}>
               <ScInput
                 fullWidth

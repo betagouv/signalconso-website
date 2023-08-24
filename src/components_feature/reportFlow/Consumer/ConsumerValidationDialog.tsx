@@ -1,7 +1,7 @@
 import {LoadingButton} from '@mui/lab'
 import {Button, Dialog, DialogActions, DialogContent, DialogTitle, Icon, LinearProgress} from '@mui/material'
 import {useMutation} from '@tanstack/react-query'
-import {AlexAlert} from 'alexlibs/AlexAlert'
+import {ScAlert} from 'components_simple/ScAlert'
 import {ScButton} from 'components_simple/Button'
 import {useApiClients} from 'context/ApiClientsContext'
 import {useI18n} from 'i18n/I18n'
@@ -64,7 +64,7 @@ export const ConsumerValidationDialog = ({loading, open, consumerEmail, onClose,
       )}
       <DialogTitle>{m.consumerAskCodeTitle}</DialogTitle>
       <DialogContent>
-        <AlexAlert
+        <ScAlert
           dense
           type="info"
           action={
@@ -84,11 +84,11 @@ export const ConsumerValidationDialog = ({loading, open, consumerEmail, onClose,
           }
         >
           {m.consumerEmailMayTakesTime}
-        </AlexAlert>
+        </ScAlert>
         {isEmailValid === false && (
-          <AlexAlert dense type="error">
+          <ScAlert dense type="error">
             {invalidEmailReason === 'TOO_MANY_ATTEMPTS' ? m.consumerValidationCodeExpired : m.consumerValidationCodeInvalid}
-          </AlexAlert>
+          </ScAlert>
         )}
         <Txt color="hint" block sx={{mb: 1}} dangerouslySetInnerHTML={{__html: m.consumerAskCodeDesc(consumerEmail)}} />
         <Controller

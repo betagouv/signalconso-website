@@ -1,12 +1,11 @@
-import * as React from 'react'
-import {CSSProperties, ReactNode, useState} from 'react'
-import {Box, BoxProps, darken, Icon, IconButton} from '@mui/material'
+import {Box, BoxProps, Icon, IconButton, darken} from '@mui/material'
+import {ReactNode, useState} from 'react'
 import {usePersistentState} from '../hooks/usePersistentState'
-import {colorError, colorInfo, colorSuccess, colorWarning} from './color'
+import {colorError, colorInfo, colorSuccess, colorWarning} from '../alexlibs/color'
 
 const height = (dense?: boolean) => (dense ? 44 : 52)
 
-interface AlertProps extends Pick<BoxProps, 'children' | 'dangerouslySetInnerHTML' | 'id'> {
+interface Props extends Pick<BoxProps, 'children' | 'dangerouslySetInnerHTML' | 'id'> {
   type: 'info' | 'error' | 'warning' | 'success'
   deletable?: boolean
   action?: ReactNode
@@ -19,7 +18,8 @@ export const alertInfoTextColor = darken(colorInfo, 0.1)
 export const alertWarningBackgroundColor = 'rgba(255, 128, 0, .08)'
 export const alertWarningTextColor = darken(colorWarning, 0.1)
 
-export const AlexAlert = ({type, dense, action, deletable, children, dangerouslySetInnerHTML, ...props}: AlertProps) => {
+// An alert that looks different (softer, less catchy) of the Alert from DSFR
+export const ScAlert = ({type, dense, action, deletable, children, dangerouslySetInnerHTML, ...props}: Props) => {
   const [isPersistentVisible, setPersistentIsVisible] = usePersistentState<boolean>(true, props.id || 'alert')
   const [isVisible, setIsVisible] = useState<boolean>(true)
 

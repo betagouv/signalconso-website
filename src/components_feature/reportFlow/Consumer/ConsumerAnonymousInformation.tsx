@@ -1,7 +1,7 @@
 import {Box} from '@mui/material'
 import {Animate} from 'components_simple/Animate'
 import {useI18n} from 'i18n/I18n'
-import {alertWarningBackgroundColor, alertWarningTextColor} from '../../../alexlibs/AlexAlert'
+import {alertWarningBackgroundColor, alertWarningTextColor} from '../../../components_simple/ScAlert'
 import {Txt} from '../../../alexlibs/Txt'
 
 export function ConsumerAnonymousInformation() {
