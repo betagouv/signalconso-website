@@ -1,10 +1,9 @@
 'use client'
-import * as React from 'react'
+import {Box, BoxProps, Icon} from '@mui/material'
 import {ReactNode} from 'react'
-import {Box, BoxProps, CircularProgress, Icon} from '@mui/material'
-import {colorError, colorSuccess, colorWarning} from './color'
+import {colorSuccess} from './color'
 
-type State = 'error' | 'empty' | 'success'
+type State = 'empty' | 'success'
 
 export interface FenderProps extends Omit<BoxProps, 'title'> {
   type?: State
@@ -20,8 +19,7 @@ export const Fender = ({children, icon, iconSize = 100, type = 'empty', title, d
     switch (type) {
       case 'empty':
         return renderIcon('do_not_disturb')
-      case 'error':
-        return renderIcon('error_outline')
+
       case 'success':
         return renderIcon('check_circle_outline')
     }
@@ -48,19 +46,12 @@ export const Fender = ({children, icon, iconSize = 100, type = 'empty', title, d
             mt: 1,
             lineHeight: 1,
             ...{
-              error: {
-                color: colorError,
-              },
               empty: {
                 color: (t: any) => t.palette.text.disabled,
-              },
-              warning: {
-                color: colorWarning,
               },
               success: {
                 color: colorSuccess,
               },
-              loading: null,
             }[type],
           }}
         >
