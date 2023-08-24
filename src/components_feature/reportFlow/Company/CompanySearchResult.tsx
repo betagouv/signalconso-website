@@ -1,5 +1,5 @@
 import {BoxProps, Icon} from '@mui/material'
-import {Fender} from 'alexlibs/Fender'
+import {Fender} from 'components_simple/Fender'
 import {useAnalyticContext} from 'analytic/AnalyticContext'
 import {CompanySearchEventActions, EventCategories} from 'analytic/analytic'
 import {AddressComponent} from 'components_simple/Address'

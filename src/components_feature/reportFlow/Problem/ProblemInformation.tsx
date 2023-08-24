@@ -1,6 +1,6 @@
 import {Icon} from '@mui/material'
 import {useMutation} from '@tanstack/react-query'
-import {Fender} from 'alexlibs/Fender'
+import {Fender} from 'components_simple/Fender'
 import {useAnalyticContext} from 'analytic/AnalyticContext'
 import {EventCategories, ReportEventActions} from 'analytic/analytic'
 import {AccordionInline} from 'components_simple/AccordionInline'

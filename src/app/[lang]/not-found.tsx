@@ -8,7 +8,7 @@ import MuiSetup from './MuiSetup'
 import '../../globals.css'
 import React from 'react'
 import {DsfrProvider} from '@codegouvfr/react-dsfr/next-appdir/DsfrProvider'
-import {Fender} from '../../alexlibs/Fender'
+import {Fender} from '../../components_simple/Fender'
 
 // No metadata here, not available yet https://github.com/vercel/next.js/issues/45620
 export default function NotFound() {

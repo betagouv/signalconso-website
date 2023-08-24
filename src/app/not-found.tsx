@@ -7,7 +7,7 @@ import {AppLangs, getSupportedLang} from '../i18n/localization/AppLangs'
 import '../globals.css'
 import React from 'react'
 import {DsfrProvider} from '@codegouvfr/react-dsfr/next-appdir/DsfrProvider'
-import {Fender} from '../alexlibs/Fender'
+import {Fender} from '../components_simple/Fender'
 import MuiSetup from './[lang]/MuiSetup'
 
 // No metadata here, not available yet https://github.com/vercel/next.js/issues/45620
