@@ -57,16 +57,14 @@ export const ProblemInformation = ({anomaly, subcategories, information, isWebVi
         <Panel id="test-info" border title={<span dangerouslySetInnerHTML={{__html: information.title ?? m.informationTitle}} />}>
           <PanelBody>
             {information.notAFraudMessage && (
-              <Txt block gutterBottom component="p">
+              <Txt block className="mb-2">
                 {m.informationReportOutOfScope}
               </Txt>
             )}
             {information.subTitle && (
-              <Txt bold size="big" component="p" gutterBottom block dangerouslySetInnerHTML={{__html: information.subTitle}} />
+              <Txt bold size="big" className="mb-1" block dangerouslySetInnerHTML={{__html: information.subTitle}} />
             )}
-            {information.content && (
-              <Txt component="p" gutterBottom block dangerouslySetInnerHTML={{__html: information.content}} />
-            )}
+            {information.content && <Txt block className="mb-1" dangerouslySetInnerHTML={{__html: information.content}} />}
             {information.questions?.map(action => (
               <AccordionInline
                 sx={{mt: 1}}

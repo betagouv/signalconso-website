@@ -6,7 +6,6 @@ import {forwardRef} from 'react'
 
 interface Props extends BoxProps {
   bold?: boolean
-  gutterBottom?: boolean
   block?: boolean
   size?: 'big' | 'title' | 'small'
   color?: 'primary' | 'secondary' | 'disabled' | 'hint' | 'default' | 'error' | 'textsecondary'
@@ -17,7 +16,7 @@ interface Props extends BoxProps {
 }
 
 export const Txt = forwardRef(
-  ({children, gutterBottom, block, bold, size, link, color, truncate, span, sx, component, ...otherProps}: Props, ref: any) => {
+  ({children, block, bold, size, link, color, truncate, span, sx, component, ...otherProps}: Props, ref: any) => {
     return (
       <Box
         {...(span ? {component: 'span'} : null)}
@@ -66,9 +65,6 @@ export const Txt = forwardRef(
           }),
           ...(bold && {
             fontWeight: t => t.typography.fontWeightMedium,
-          }),
-          ...(gutterBottom && {
-            mb: 1,
           }),
           ...(link && {
             color: t => t.palette.primary.main,
