@@ -11,7 +11,6 @@ interface AlertProps extends BoxProps {
   deletable?: boolean
   action?: ReactNode
   dense?: boolean
-  gutterBottom?: boolean
 }
 
 export const alertInfoBackgroundColor = 'rgba(50, 200, 255, .08)'
@@ -20,17 +19,7 @@ export const alertInfoTextColor = darken(colorInfo, 0.1)
 export const alertWarningBackgroundColor = 'rgba(255, 128, 0, .08)'
 export const alertWarningTextColor = darken(colorWarning, 0.1)
 
-export const Alert = ({
-  type,
-  dense,
-  action,
-  deletable,
-  sx,
-  gutterBottom,
-  children,
-  dangerouslySetInnerHTML,
-  ...props
-}: AlertProps) => {
+export const Alert = ({type, dense, action, deletable, sx, children, dangerouslySetInnerHTML, ...props}: AlertProps) => {
   const [isPersistentVisible, setPersistentIsVisible] = usePersistentState<boolean>(true, props.id || 'alert')
   const [isVisible, setIsVisible] = useState<boolean>(true)
 
@@ -104,9 +93,6 @@ export const Alert = ({
           height: '0 !important',
           opacity: '0 !important',
           margin: '0 !important',
-        }),
-        ...(gutterBottom && {
-          mb: 1,
         }),
         ...sx,
       }}
