@@ -1170,12 +1170,18 @@ export const en = {
     reportedCompanyNamePlaceholder: `Ex: Boulangerie Petit Jean`,
     companyIdentifiedTitle: `Company identified`,
     influencerIdentifiedTitle: `Influencer identified`,
+    companyIdentityHelperTitle: 'Help to find SIRET/SIREN',
     companyIdentityHelperWhere: `Where to find these identifiers?`,
+    companyIdentityHelperWebsite: `On a website`,
+    companyIdentityHelperInvoice: `On an invoice`,
+    companyIdentityHelperReceipt: `On a receipt`,
+    companyIdentityHelperCreditCardReceipt: `On a credit card receipt`,
     companyIdentityHelper: `What do these identifiers refer to?`,
     companyIdentityHelperWhereDesc: `
-      You can find this number on quotes, invoices and cashier receipts issued by the company, as well as in the legal notice on the company website.<br/>
-      <b>How to find this information</b><br/>
-      On the trader's website, go to the bottom of the home page.
+      You can find this number on quotes, invoices and cashier receipts issued by the company, as well as in the legal notice on the company website.
+    `,
+    companyIdentityHelperWhereDesc0: `
+       On the trader's website, go to the bottom of the home page.
     `,
     companyIdentityHelperWhereDesc2: `
       Click on "Legal notice" ("Mentions légales"). A new page should open, where you will be able to find this number easily:
