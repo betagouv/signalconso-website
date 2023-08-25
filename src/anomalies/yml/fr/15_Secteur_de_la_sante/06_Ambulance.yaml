@@ -1,7 +1,0 @@
-title: Ambulance
-desc: "et autre transport sanitaire (exemple\_: taxi)"
-tags:
-  - ReponseConso
-reponseconsoCode:
-  - '212'
-  - '226'

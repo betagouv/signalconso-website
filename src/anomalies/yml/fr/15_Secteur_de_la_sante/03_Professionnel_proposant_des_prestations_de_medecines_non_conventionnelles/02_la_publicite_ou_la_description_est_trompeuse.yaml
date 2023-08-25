@@ -1,0 +1,12 @@
+title: La publicité ou la description est trompeuse
+desc: "Exemple\_: durée plus courte que celle affichée, les résultats 'garantis' ne se sont pas réalisés, …"
+tags:
+  - ReponseConso
+ccrfCode:
+  - '23B'
+reponseconsoCode:
+  - '212'
+  - '226'
+detailInputs:
+  - label: Date de constat
+    type: DATE

@@ -1,0 +1,11 @@
+title: Les prix ne sont pas affichés dans l'établissement, ne figuraient pas dans la documentation et sur le site internet.
+desc: "Exemple\_: je n'ai pas eu de devis, devis pas respecté"
+companyKind: SIRET
+ccrfCode:
+  - '21B'
+reponseconsoCode:
+  - '212'
+  - '226'
+detailInputs:
+  - label: Date de constat
+    type: DATE

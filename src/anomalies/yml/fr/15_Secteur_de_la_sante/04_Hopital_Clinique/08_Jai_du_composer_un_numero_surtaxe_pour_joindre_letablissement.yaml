@@ -1,5 +1,9 @@
-title: J’ai dû composer un numéro surtaxé pour joindre l’établissement.
-desc: Cette facturation est interdite
+title: J’ai dû composer un numéro surtaxé pour joindre l’établissement ...
+desc: Cette facturation est interdite.
+ccrfCode:
+  - '226'
+tags:
+  - ReponseConso
 detailInputs:
   - label: Date de sortie (ou date de la facture)
     type: DATE
