@@ -13,7 +13,7 @@ detailInputs:
       - Toys
       - Electronics
       - Other (to be specified)
-  - label: Date T
+  - label: Date of finding
     type: DATE
     defaultValue: SYSDATE
   - label: Name / brand / reference

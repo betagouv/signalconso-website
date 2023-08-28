@@ -4,7 +4,7 @@ reponseconsoCode:
   - '273'
   - '271'
 detailInputs:
-  - label: Date T (or date of purchase as the case may be)
+  - label: Date of finding (or date of purchase as the case may be)
     type: DATE_NOT_IN_FUTURE
     defaultValue: SYSDATE
   - label: What product is it ?

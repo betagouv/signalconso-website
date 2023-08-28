@@ -3,7 +3,7 @@ desc: You find that the life of your device is too short
 detailInputs:
   - label: Date of purchase
     type: DATE
-  - label: Date T
+  - label: Date of finding
     type: DATE
     defaultValue: SYSDATE
   - label: Type of product

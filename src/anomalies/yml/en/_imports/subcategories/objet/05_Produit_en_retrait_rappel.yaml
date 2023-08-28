@@ -4,7 +4,7 @@ reponseconsoCode:
   - '311'
   - '331'
 detailInputs:
-  - label: Date T
+  - label: Date of finding
     type: DATE
     defaultValue: SYSDATE
   - label: Time of finding
