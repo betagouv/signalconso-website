@@ -2,7 +2,7 @@ title: In France (including Overseas)
 reponseconsoCode:
   - '211'
 detailInputs:
-  - label: Date du constat
+  - label: Date T
     type: DATE
     defaultValue: SYSDATE
   - label: Name / brand / type of product
