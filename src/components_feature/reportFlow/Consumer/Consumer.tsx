@@ -15,8 +15,8 @@ import {ReportDraft2} from 'model/ReportDraft2'
 import {useState} from 'react'
 import {Controller, useForm} from 'react-hook-form'
 import {regexp} from 'utils/regexp'
-import {Alert} from '../../../alexlibs/Alert'
-import {Txt} from '../../../alexlibs/Txt'
+import {ScAlert} from '../../../components_simple/ScAlert'
+import {Txt} from '../../../components_simple/Txt'
 import {appConfig} from '../../../core/appConfig'
 import {useToastError} from '../../../hooks/useToastError'
 import {Gender, ReportDraft, genders} from '../../../model/ReportDraft'
@@ -107,9 +107,7 @@ export const ConsumerInner = ({
     <>
       <Panel title={m.consumerTitle}>
         <PanelBody>
-          {draft.employeeConsumer && (
-            <Alert type="info" dense dangerouslySetInnerHTML={{__html: m.consumerIsEmployee}} sx={{mb: 3}} />
-          )}
+          {draft.employeeConsumer && <ScAlert type="info" dense dangerouslySetInnerHTML={{__html: m.consumerIsEmployee}} />}
           <Row icon="person">
             <FormLayout label={m.genderOptional}>
               <Controller

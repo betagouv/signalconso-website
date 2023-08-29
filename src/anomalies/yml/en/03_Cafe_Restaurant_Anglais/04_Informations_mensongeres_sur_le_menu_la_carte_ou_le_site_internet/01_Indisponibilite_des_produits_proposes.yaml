@@ -3,7 +3,7 @@ reponseconsoCode:
   - '2243'
   - '271'
 detailInputs:
-  - label: Date T
+  - label: Date du constat
     type: DATE
     defaultValue: SYSDATE
   - label: Quel type de produit était indisponible&#160;?

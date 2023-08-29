@@ -1,14 +1,14 @@
 import {LoadingButton} from '@mui/lab'
 import {Button, Dialog, DialogActions, DialogContent, DialogTitle, Icon, LinearProgress} from '@mui/material'
 import {useMutation} from '@tanstack/react-query'
-import {Alert} from 'alexlibs/Alert'
-import {ScButton} from 'components_simple/Button'
+import {ScAlert} from 'components_simple/ScAlert'
+import {ScButton} from 'components_simple/ScButton'
 import {useApiClients} from 'context/ApiClientsContext'
 import {useI18n} from 'i18n/I18n'
 import {ValidationRejectReason} from 'model/ConsumerEmailValidation'
 import {useState} from 'react'
 import {Controller, useForm} from 'react-hook-form'
-import {Txt} from '../../../alexlibs/Txt'
+import {Txt} from '../../../components_simple/Txt'
 import {duration} from '../../../utils/Duration'
 import {timeoutPromise} from '../../../utils/utils'
 import {InputValidationCode} from './InputValidationCode'
@@ -64,10 +64,9 @@ export const ConsumerValidationDialog = ({loading, open, consumerEmail, onClose,
       )}
       <DialogTitle>{m.consumerAskCodeTitle}</DialogTitle>
       <DialogContent>
-        <Alert
+        <ScAlert
           dense
           type="info"
-          sx={{mb: 2}}
           action={
             <ScButton
               disabled={disableResendButton}
@@ -85,11 +84,11 @@ export const ConsumerValidationDialog = ({loading, open, consumerEmail, onClose,
           }
         >
           {m.consumerEmailMayTakesTime}
-        </Alert>
+        </ScAlert>
         {isEmailValid === false && (
-          <Alert dense type="error" sx={{mb: 2}}>
+          <ScAlert dense type="error">
             {invalidEmailReason === 'TOO_MANY_ATTEMPTS' ? m.consumerValidationCodeExpired : m.consumerValidationCodeInvalid}
-          </Alert>
+          </ScAlert>
         )}
         <Txt color="hint" block sx={{mb: 1}} dangerouslySetInnerHTML={{__html: m.consumerAskCodeDesc(consumerEmail)}} />
         <Controller

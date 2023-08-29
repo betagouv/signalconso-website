@@ -1,7 +1,6 @@
-import {FilledInputProps, Icon, TextField, TextFieldProps, Tooltip} from '@mui/material'
-import React from 'react'
-import {IconBtn} from '../../alexlibs/IconBtn'
+import {FilledInputProps, Icon, IconButton, TextField, TextFieldProps, Tooltip} from '@mui/material'
 import {useI18n} from 'i18n/I18n'
+import React from 'react'
 
 export type ScInputProps = Omit<TextFieldProps, 'variant' | 'margin'> & {
   small?: boolean
@@ -30,9 +29,9 @@ export const ScInput = React.forwardRef(({small, onClear, InputProps, ...props}:
                 <>
                   {InputProps?.endAdornment}
                   <Tooltip title={m.clear}>
-                    <IconBtn size="small" color="primary" onClick={onClear}>
+                    <IconButton size="small" color="primary" onClick={onClear}>
                       <Icon>clear</Icon>
-                    </IconBtn>
+                    </IconButton>
                   </Tooltip>
                 </>
               ),

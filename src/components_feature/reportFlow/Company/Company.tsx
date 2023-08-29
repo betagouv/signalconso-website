@@ -8,7 +8,7 @@ import {StepNavigation} from 'components_feature/reportFlow/reportFlowStepper/Re
 import {Row} from 'components_simple/Row'
 import {useI18n} from 'i18n/I18n'
 import {ReportDraft2} from 'model/ReportDraft2'
-import {Txt} from '../../../alexlibs/Txt'
+import {Txt} from '../../../components_simple/Txt'
 import {SocialNetworkRow} from '../../../components_simple/SocialNetworkRow'
 import {CompanySearchResult} from '../../../model/Company'
 import {CompanyDraft, ReportDraft} from '../../../model/ReportDraft'

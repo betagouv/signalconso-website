@@ -3,7 +3,7 @@
 import {useI18n} from '../../i18n/I18n'
 import React from 'react'
 import {Page} from '../../components_simple/Page'
-import {Fender} from '../../alexlibs/Fender'
+import {Fender} from '../../components_simple/Fender'
 import * as Sentry from '@sentry/nextjs'
 
 export default function GlobalError({error, reset}: {error: Error; reset: () => void}) {

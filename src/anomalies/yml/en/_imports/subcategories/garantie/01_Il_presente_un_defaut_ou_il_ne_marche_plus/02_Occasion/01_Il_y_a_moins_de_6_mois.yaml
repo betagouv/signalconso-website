@@ -4,7 +4,7 @@ detailInputs:
     type: DATE
   - label: Nom du produit
     type: TEXT
-  - label: Date T
+  - label: Date du constat
     type: DATE
     defaultValue: SYSDATE
   - label: Interlocuteur

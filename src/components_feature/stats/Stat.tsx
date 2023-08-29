@@ -4,8 +4,9 @@ import {CountByDate} from 'clients/SignalConsoApiClient'
 import {useI18n} from 'i18n/I18n'
 import React from 'react'
 import {Bar, BarChart, CartesianGrid, Legend, ResponsiveContainer, Tooltip, XAxis, YAxis} from 'recharts'
-import {Txt} from '../../alexlibs/Txt'
+import {Txt} from '../../components_simple/Txt'
 import {ifDefined} from '../../utils/utils'
+import {Skeleton} from '@mui/material'
 
 interface Props {
   name?: string
@@ -28,19 +29,22 @@ export const Stat = React.memo(({name, count, curve, title, description, percent
   const dsfrTheme = useColors()
   return (
     <div className="border border-solid border-black p-4">
-      <Txt
-        block
-        component="h2"
-        skeleton={_count.data ? undefined : 100}
-        sx={{
-          lineHeight: 1,
-          fontSize: 34,
-          mb: 0,
-          fontWeight: 'normal',
-        }}
-      >
-        {ifDefined(_count.data, formatLargeNumber)} {percentage && '%'}
-      </Txt>
+      {_count.data ? (
+        <Txt
+          block
+          component="h2"
+          sx={{
+            lineHeight: 1,
+            fontSize: 34,
+            mb: 0,
+            fontWeight: 'normal',
+          }}
+        >
+          {ifDefined(_count.data, formatLargeNumber)} {percentage && '%'}
+        </Txt>
+      ) : (
+        <Skeleton className="inline-block" width={100} />
+      )}
 
       <p>{title}</p>
       {description && <p>{description}</p>}

@@ -4,7 +4,7 @@ import {Panel, PanelBody} from 'components_simple/Panel'
 import {useI18n} from 'i18n/I18n'
 import {ReportStep, indexToStep} from 'model/ReportStep'
 import React, {ReactElement, ReactNode} from 'react'
-import {Txt} from '../../../alexlibs/Txt'
+import {Txt} from '../../../components_simple/Txt'
 
 interface ConfirmationStepperProps {
   children: Array<ReactElement<ConfirmationStepProps> | undefined>

@@ -2,7 +2,7 @@ title: J'ai payé plus cher que le prix affiché
 reponseconsoCode:
   - '212'
 detailInputs:
-  - label: Date T
+  - label: Date du constat
     type: DATE
   - label: "Quel était le prix affiché\_?"
     type: TEXT

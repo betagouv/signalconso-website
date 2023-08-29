@@ -1,9 +1,8 @@
-import {alpha, Box, useTheme} from '@mui/material'
-import Image, {StaticImageData} from 'next/legacy/image'
+import {alpha, Box, IconButton, useTheme} from '@mui/material'
 import {styleUtils} from 'core/theme'
-import SwipeableViews from 'react-swipeable-views'
+import Image, {StaticImageData} from 'next/legacy/image'
 import {useState} from 'react'
-import {IconBtn} from '../alexlibs/IconBtn'
+import SwipeableViews from 'react-swipeable-views'
 
 interface IllustrationStepperStepProps {
   title: string
@@ -63,7 +62,7 @@ const IllustrationStepperMobile = ({steps}: IllustrationStepperProps) => {
       <ul className="mt-1 flex justify-center list-none p-0">
         {steps.map((_, i) => (
           <li key={_.title}>
-            <IconBtn
+            <IconButton
               aria-current={i === index}
               onClick={() => setIndex(i)}
               sx={{
@@ -84,7 +83,7 @@ const IllustrationStepperMobile = ({steps}: IllustrationStepperProps) => {
               key={_.title}
             >
               <span className="sr-only">{`Étape ${i + 1} sur ${steps.length}`}</span>
-            </IconBtn>
+            </IconButton>
           </li>
         ))}
       </ul>

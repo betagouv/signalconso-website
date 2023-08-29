@@ -3,7 +3,7 @@ desc: "Exemple\_: Produit industriel vendu sous la mention \"fait maison\""
 reponseconsoCode:
   - '271'
 detailInputs:
-  - label: Date T
+  - label: Date du constat
     type: DATE
     defaultValue: SYSDATE
   - label: À propos de quoi est-ce trompeur selon vous&#160;?

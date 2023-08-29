@@ -1,11 +1,11 @@
 import {Panel, PanelActions, PanelBody} from 'components_simple/Panel'
 import {Animate} from 'components_simple/Animate'
 import {useI18n} from 'i18n/I18n'
-import {Alert} from '../../../alexlibs/Alert'
+import {ScAlert} from '../../../components_simple/ScAlert'
 import {ScInput} from 'components_simple/formInputs/ScInput'
 import {FormLayout} from 'components_simple/FormLayout'
 import {useForm} from 'react-hook-form'
-import {ScButton} from 'components_simple/Button'
+import {ScButton} from 'components_simple/ScButton'
 
 interface Form {
   websiteVendor: string
@@ -27,9 +27,7 @@ export const CompanyWebsiteVendor = ({onSubmit}: Props) => {
       <Panel title={m.companyWebsiteVendorTitle}>
         <form onSubmit={handleSubmit(form => onSubmit(form.websiteVendor))}>
           <PanelBody>
-            <Alert type="info" sx={{mb: 2}}>
-              {m.companyWebsiteVendorAlert}
-            </Alert>
+            <ScAlert type="info">{m.companyWebsiteVendorAlert}</ScAlert>
             <FormLayout required label={m.companyWebsiteVendorLabel}>
               <ScInput
                 fullWidth

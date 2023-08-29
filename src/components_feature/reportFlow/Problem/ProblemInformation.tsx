@@ -1,6 +1,6 @@
-import {Icon} from '@mui/material'
+import {Icon, IconButton} from '@mui/material'
 import {useMutation} from '@tanstack/react-query'
-import {Fender} from 'alexlibs/Fender'
+import {Fender} from 'components_simple/Fender'
 import {useAnalyticContext} from 'analytic/AnalyticContext'
 import {EventCategories, ReportEventActions} from 'analytic/analytic'
 import {AccordionInline} from 'components_simple/AccordionInline'
@@ -11,10 +11,10 @@ import {useI18n} from 'i18n/I18n'
 import {getAnalyticsForStep} from 'model/ReportStep'
 import {useEffect, useState} from 'react'
 import {last} from 'utils/lodashNamedExport'
-import {IconBtn} from '../../../alexlibs/IconBtn'
-import {Txt} from '../../../alexlibs/Txt'
+import {Txt} from '../../../components_simple/Txt'
 import {Anomaly, InfoWall, Subcategory} from '../../../anomalies/Anomaly'
 import {LinkBackToHome} from '../../../components_simple/LinkBackToHome'
+import {otherColorSet} from 'core/theme'
 
 interface Props {
   anomaly: Anomaly
@@ -56,16 +56,14 @@ export const ProblemInformation = ({anomaly, subcategories, information, isWebVi
         <Panel id="test-info" border title={<span dangerouslySetInnerHTML={{__html: information.title ?? m.informationTitle}} />}>
           <PanelBody>
             {information.notAFraudMessage && (
-              <Txt block gutterBottom component="p">
+              <Txt block className="mb-2">
                 {m.informationReportOutOfScope}
               </Txt>
             )}
             {information.subTitle && (
-              <Txt bold size="big" component="p" gutterBottom block dangerouslySetInnerHTML={{__html: information.subTitle}} />
+              <Txt bold size="big" className="mb-1" block dangerouslySetInnerHTML={{__html: information.subTitle}} />
             )}
-            {information.content && (
-              <Txt component="p" gutterBottom block dangerouslySetInnerHTML={{__html: information.content}} />
-            )}
+            {information.content && <Txt block className="mb-1" dangerouslySetInnerHTML={{__html: information.content}} />}
             {information.questions?.map(action => (
               <AccordionInline
                 sx={{mt: 1}}
@@ -87,31 +85,18 @@ export const ProblemInformation = ({anomaly, subcategories, information, isWebVi
         <Panel title={m.informationWasUsefull} border>
           {_vote.data ? (
             <PanelBody>
-              <Fender type="success" iconSize={80}>
+              <Fender iconSize={80} icon="check_circle_outline" iconColor={otherColorSet.success}>
                 {m.informationRatingSaved}
               </Fender>
             </PanelBody>
           ) : (
             <PanelBody sx={{display: 'flex', justifyContent: 'center'}}>
-              <IconBtn
-                loading={_vote.isLoading && votedPositive === true}
-                disabled={_vote.isLoading && votedPositive === false}
-                size="large"
-                color="primary"
-                onClick={() => onVote(true)}
-                sx={{mr: 4}}
-              >
+              <IconButton disabled={_vote.isLoading} size="large" color="primary" onClick={() => onVote(true)} sx={{mr: 4}}>
                 <Icon style={{fontSize: 38}}>thumb_up</Icon>
-              </IconBtn>
-              <IconBtn
-                loading={_vote.isLoading && votedPositive === false}
-                disabled={_vote.isLoading && votedPositive === true}
-                size="large"
-                color="primary"
-                onClick={() => onVote(false)}
-              >
+              </IconButton>
+              <IconButton disabled={_vote.isLoading} size="large" color="primary" onClick={() => onVote(false)}>
                 <Icon style={{fontSize: 38}}>thumb_down</Icon>
-              </IconBtn>
+              </IconButton>
             </PanelBody>
           )}{' '}
         </Panel>

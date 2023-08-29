@@ -1,13 +1,12 @@
 'use client'
 
-import {Box, Checkbox, Radio, useTheme} from '@mui/material'
+import {Box, Checkbox, IconButton, Radio, useTheme} from '@mui/material'
 import Icon from '@mui/material/Icon'
 import {styleUtils} from 'core/theme'
 import {getOptionsFromInput, getPlaceholderFromInput} from 'components_feature/reportFlow/Details/DetailInputsUtils'
 import {useEffect, useState} from 'react'
 import {Page} from '../../../components_simple/Page'
-import {Txt} from '../../../alexlibs/Txt'
-import {IconBtn} from '../../../alexlibs/IconBtn'
+import {Txt} from '../../../components_simple/Txt'
 import {fnSwitch} from '../../../utils/FnSwitch'
 import {
   allVisibleAnomalies,
@@ -40,13 +39,13 @@ const Node = ({anomaly, open}: {anomaly: Anomaly | Subcategory; open?: boolean})
         }}
       >
         {anomaly.subcategories ? (
-          <IconBtn color="primary" onClick={() => setIsOpen(_ => !_)}>
+          <IconButton color="primary" onClick={() => setIsOpen(_ => !_)}>
             <Icon>{isOpen ? 'keyboard_arrow_down' : 'keyboard_arrow_right'}</Icon>
-          </IconBtn>
+          </IconButton>
         ) : (
-          <IconBtn disabled>
+          <IconButton disabled>
             <Icon>remove</Icon>
-          </IconBtn>
+          </IconButton>
         )}
       </Box>
       <Box>

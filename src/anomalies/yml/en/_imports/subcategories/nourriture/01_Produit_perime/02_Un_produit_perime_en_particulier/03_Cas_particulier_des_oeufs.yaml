@@ -9,7 +9,7 @@ detailInputs:
       - La date sera dépassée d'ici 7 jours
   - label: Date de consommation recommandée
     type: DATE
-  - label: Date T (ou date d'achat)
+  - label: Date du constat (ou date d'achat)
     type: DATE_NOT_IN_FUTURE
     defaultValue: SYSDATE
 fileLabel: Photo

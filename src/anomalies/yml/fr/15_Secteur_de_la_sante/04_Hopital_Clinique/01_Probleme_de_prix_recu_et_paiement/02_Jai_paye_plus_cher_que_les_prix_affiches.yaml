@@ -1,0 +1,11 @@
+title: J'ai payé plus cher que les prix affichés
+desc: "Exemple\_: les tarifs de la chambre individuelle, de l'accès à la télévision, de la presse varient par rapport au livret d'acceuil, ..."
+companyKind: SIRET
+ccrfCode:
+  - '23B'
+reponseconsoCode:
+  - '212'
+  - '226'
+detailInputs:
+  - label: Date de constat
+    type: DATE

@@ -1,0 +1,9 @@
+title: Je n’ai pas eu de devis pour l’achat ou la location d’un dispositif d’aide au maintien à domicile 
+desc: >-
+  En ce qui concerne les dispositifs d’aide au maintien à domicile (lits médicalisé, matelas anti-escarres, déambulateur, fauteuil roulant, …) un devis doit vous être remis dans certains cas (au-delà de 500€, si le produit est fait sur mesure ou si le total de la location dépasse le montant pris en charge par l’assurance maladie).
+ccrfCode:
+  - '226'
+reponseconsoCode:
+  - '212'
+  - '226'
+

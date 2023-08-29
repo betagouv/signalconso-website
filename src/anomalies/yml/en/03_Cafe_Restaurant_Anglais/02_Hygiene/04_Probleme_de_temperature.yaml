@@ -3,7 +3,7 @@ desc: "Exemple\_: rupture de la chaîne du froid"
 reponseconsoCode:
   - '322'
 detailInputs:
-  - label: Date T
+  - label: Date du constat
     type: DATE
     defaultValue: SYSDATE
   - label: Heure du constat (facultatif)

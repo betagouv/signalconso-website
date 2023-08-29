@@ -7,7 +7,7 @@ import {useI18n} from 'i18n/I18n'
 import {findCurrentStepForReport} from 'model/ReportStep'
 import Link from 'next/link'
 import {useMemo} from 'react'
-import {Txt} from '../alexlibs/Txt'
+import {Txt} from '../components_simple/Txt'
 import {useReportFlowContext} from './reportFlow/ReportFlowContext'
 
 export default function ReportStartedAlert() {

@@ -1,11 +1,9 @@
-import {alpha, Box, Icon, Tooltip} from '@mui/material'
-import {extensionToType, FileType, reportFileConfig} from './reportFileConfig'
-import React from 'react'
-import {IconBtn} from '../../alexlibs/IconBtn'
-import {useI18n} from 'i18n/I18n'
+import {alpha, Box, Icon, IconButton, Tooltip} from '@mui/material'
 import {useApiClients} from 'context/ApiClientsContext'
-import {ScDialog} from '../ScDialog'
+import {useI18n} from 'i18n/I18n'
 import {UploadedFile} from '../../model/UploadedFile'
+import {ScDialog} from '../ScDialog'
+import {extensionToType, FileType, reportFileConfig} from './reportFileConfig'
 
 export interface ReportFileProps {
   file: UploadedFile
@@ -128,7 +126,7 @@ export const ReportFile = ({file, onRemove}: ReportFileProps) => {
             }}
             confirmLabel={m.delete}
           >
-            <IconBtn
+            <IconButton
               size="small"
               className="remove-btn"
               sx={{
@@ -146,7 +144,7 @@ export const ReportFile = ({file, onRemove}: ReportFileProps) => {
               }}
             >
               <Icon>clear</Icon>
-            </IconBtn>
+            </IconButton>
           </ScDialog>
         )}
       </Box>

@@ -1,20 +1,20 @@
+import {Alert} from '@codegouvfr/react-dsfr/Alert'
 import {BoxProps, Icon} from '@mui/material'
-import {Fender} from 'alexlibs/Fender'
 import {useAnalyticContext} from 'analytic/AnalyticContext'
 import {CompanySearchEventActions, EventCategories} from 'analytic/analytic'
 import {AddressComponent} from 'components_simple/Address'
 import {Animate} from 'components_simple/Animate'
 import {BtnNextSubmit} from 'components_simple/Buttons'
+import {Fender} from 'components_simple/Fender'
 import {Panel, PanelActions, PanelBody} from 'components_simple/Panel'
 import {styleUtils} from 'core/theme'
 import {useI18n} from 'i18n/I18n'
 import {ReactNode, useEffect, useState} from 'react'
 import {Controller, useForm} from 'react-hook-form'
+import {ScRadioButtons} from '../../../components_simple/formInputs/ScRadioButtons'
 import {useToastError} from '../../../hooks/useToastError'
 import {CompanySearchResult, isGovernmentCompany} from '../../../model/Company'
 import {CompanyWebsiteVendor} from './CompanyWebsiteVendor'
-import {ScRadioButtons} from '../../../components_simple/formInputs/ScRadioButtons'
-import {Alert} from '@codegouvfr/react-dsfr/Alert'
 
 interface Props extends Omit<BoxProps, 'onSubmit'> {
   companies: CompanySearchResult[]
@@ -110,7 +110,7 @@ export const CompanySearchResultComponent = ({companies, onSubmit}: Props) => {
       <Animate>
         {companies.length === 0 ? (
           <Panel id="CompanySearchResult">
-            <Fender type="empty" icon="sentiment_very_dissatisfied">
+            <Fender icon="sentiment_very_dissatisfied">
               <span className="text-lg text-gray-600">{m.noMatchingCompany}</span>
             </Fender>
           </Panel>

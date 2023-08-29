@@ -1,0 +1,18 @@
+title: J'ai été facturé pour au moins un supplément ou forfait que je ne voulais pas
+desc: "Exemple : forfait administratif, forfait ambulatoire, forfait 'bien-être', supplément 'chambre seule' au prétexte que les chambres étaient toutes occupées ou que l'établissement n'en possédait pas, supplément 'télévision' alors que je n'ai pas demandé à avoir la télévision, …"
+detailInputs:
+  - label: Date de sortie (ou date de la facture)
+    type: DATE
+  - label: "Quel supplément vous a-t-on facturé\_?"
+    type: TEXT
+    placeholder: chambre double, télévision, repas spécifique...
+  - label: "Quel est le prix de ce supplément\_?"
+    type: TEXT
+    optional: true
+  - label: "L'hôpital / clinique vous a-t-il justifié ce supplément\_?"
+    type: RADIO
+    options:
+      - Oui (à préciser)
+      - Non
+fileLabel: >-
+  Merci de joindre une photo de la facture si possible afin d'appuyer votre signalement.
