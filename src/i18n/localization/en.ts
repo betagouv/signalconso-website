@@ -879,7 +879,7 @@ export const en = {
     arbo: {
       title: 'Sequence for reporting an issue',
       expandAll: 'Expand all',
-      notAFraudMessage: 'Although we do believe the issue you experienced was genuine, it was not an instance of fraud.',
+      notAFraudMessage: 'Although we do believe the issue you experienced was genuine, it was not a case of fraud.',
     },
     yes: 'Yes',
     no: 'No',
@@ -1086,7 +1086,7 @@ export const en = {
       'If a business receives an excessively high volume or frequent number of reports, Fraud Control will investigate the companies in question.',
     informationRatingSaved: `Your comments have been recorded, thank you.`,
     informationTitle: `Unfortunately, we are unable to take your report any further.`,
-    informationReportOutOfScope: `Although we do believe the issue you experienced was genuine, it was not an instance of fraud.`,
+    informationReportOutOfScope: `Although we do believe the issue you experienced was genuine, it was not a case of fraud.`,
     informationWasUsefull: `Was this information useful to you?`,
     buttonReportProblem: `Report an issue`,
     logoAltSignalconso: `SignalConso Logo / Return to homepage`,

@@ -1,5 +1,5 @@
 title: A product packaged and labeled by the store as a meat tray
-desc: The quantity is marked on a label affixed by the trader
+desc: The quantity is marked on a label affixed by the company
 detailInputs:
   - label: T or purchase date
     type: DATE_NOT_IN_FUTURE

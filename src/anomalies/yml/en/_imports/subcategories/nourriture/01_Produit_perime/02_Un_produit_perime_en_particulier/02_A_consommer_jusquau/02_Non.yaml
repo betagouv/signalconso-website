@@ -1,7 +1,7 @@
 title: 'No'
 blockingInfo:
   title: >-
-    The trader is not entitled to sell a product if the deadline for
+    The company is not entitled to sell a product if the deadline for
     consumption has passed.
   content: >-
     For example, if the date is April 13, it is possible to sell the
@@ -13,4 +13,4 @@ blockingInfo:
     - question: >-
         You want your merchant to offer discounts for products soon to expire?
       answer: >-
-        Contact your store's customer service department directly for their to propose.
+        Contact your store's customer service department directly. They do not have to say yes.
