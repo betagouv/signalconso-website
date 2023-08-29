@@ -11,16 +11,22 @@ export class CompanyPublicClient {
     },
   })
 
-  readonly searchCompanies = (search: string, searchPostalCode: string) => {
+  readonly searchCompanies = (search: string, searchPostalCode: string, lang: string) => {
     return this.client.get<CompanySearchResult[]>(`/companies/search`, {
       qs: {
         postalCode: searchPostalCode.toString(),
         q: search,
+        lang: lang,
       },
     })
   }
 
-  readonly searchCompaniesByIdentity = (identity: string, openOnly: boolean) => {
-    return this.client.get<CompanySearchResult[]>(`/companies/search/${identity}?openOnly=${openOnly}`, {})
+  readonly searchCompaniesByIdentity = (identity: string, openOnly: boolean, lang: string) => {
+    return this.client.get<CompanySearchResult[]>(`/companies/search/${identity}`, {
+      qs: {
+        openOnly: openOnly,
+        lang: lang,
+      },
+    })
   }
 }
