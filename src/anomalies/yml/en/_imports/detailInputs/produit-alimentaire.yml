@@ -9,7 +9,7 @@
 - label: Identification elements (Model / Serial number / Volume / Weight)
   optional: true
   type: TEXT
-- label: Did the person who consumed the food become ill and/or injured ?
+- label: Did the person who consumed the food become sick and/or injured ?
   optional: true
   type: RADIO
   options:
