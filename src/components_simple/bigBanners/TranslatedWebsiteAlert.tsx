@@ -36,8 +36,8 @@ export const TranslatedWebsiteAlert = () => {
     >
       <span>
         <div className="m-4">
-          Have you encountered a consumption problem during your stay in France? This version of SignalConso is dedicated to you.
-          You can also file a report if you have a dispute following a purchase on a French website. If you're comfortable with
+          Have you encountered a consumption problem during your stay in France? This version of SignalConso is made for you. You
+          can also file a report if you have a dispute following a purchase on a French website. If you're comfortable with
           French,{' '}
           <a href={`/fr${internalPageDefs.index.url}`} rel="noreferrer">
             switch to this version
