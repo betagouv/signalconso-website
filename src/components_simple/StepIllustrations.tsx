@@ -65,6 +65,7 @@ const IllustrationStepperMobile = ({steps}: IllustrationStepperProps) => {
             <IconButton
               aria-current={i === index}
               onClick={() => setIndex(i)}
+              className="focus:outline-2 focus:outline-blue-500"
               sx={{
                 mx: 1,
                 height: 6,
