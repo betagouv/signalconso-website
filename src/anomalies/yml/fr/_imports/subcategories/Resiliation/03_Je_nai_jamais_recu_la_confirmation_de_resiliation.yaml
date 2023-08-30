@@ -2,3 +2,5 @@ title: Je n’ai jamais reçu la confirmation de résiliation
 desc: "Exemple\_: Je ne reçois aucun mail ou courrier de confirmation de désabonnement …"
 tags:
   - ReponseConso
+reponseconsoCode:
+  - '475'
