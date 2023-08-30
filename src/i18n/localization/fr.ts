@@ -838,6 +838,8 @@ export const fr = {
       dgccrfLink: 'Direction Générale de la Concurrence, de la Consommation et de la Répression des Fraudes',
       homeLinkTitle: "DGCCRF (Allez à l'accueil)",
       connexionLinkTitle: 'Espace DGCCRF',
+      privacyTitle: 'Suivi et vie privée',
+      cookiesTitle: 'Gestion des cookies',
       retractationLinkTitle: 'Info délai de rétractation',
       litigeLinkTitle: 'Info résolution de litige',
       actualitesLinkTitle: 'Actualités',

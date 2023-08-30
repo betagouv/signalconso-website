@@ -827,6 +827,8 @@ export const en = {
       dgccrfLink: 'Directorate General for Competition Policy, Consumer Affairs and Fraud Control (DGCCRF)',
       homeLinkTitle: 'Report an issue – SignalConso',
       connexionLinkTitle: 'DGCCRF staff access',
+      privacyTitle: 'Tracking and privacy',
+      cookiesTitle: 'About cookies',
       retractationLinkTitle: 'Info – Cooling-off period',
       litigeLinkTitle: 'Info – Resolving a dispute',
       actualitesLinkTitle: 'News',
