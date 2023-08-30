@@ -1,4 +1,4 @@
-title: Il manque des prix / les prix sont illisibles
+title: Prices are missing / prices are unreadable
 ccrfCode:
   - '163'
 reponseconsoCode:
@@ -6,13 +6,13 @@ reponseconsoCode:
   - '210'
   - '224'
 detailInputs:
-  - label: Veuillez préciser
+  - label: Please specify
     type: RADIO
     options:
-      - Prix pas affiché
-      - Prix illisible
-      - Autre (to be specified)
-  - label: Date du constat
+      - Price not displayed
+      - Price illegible
+      - Other (to be specified)
+  - label: Date of finding
     type: DATE
     defaultValue: SYSDATE
   - label: Description

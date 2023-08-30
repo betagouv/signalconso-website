@@ -1,10 +1,10 @@
 id: '20'
 category: AchatInternet
-title: Achat sur internet
-seoTitle: Signalez un site d'achat à la répression des fraudes
+title: Online purchases
+seoTitle: Report a shopping site
 path: achat-site
-description: Prix, promotion, qualité, poids, garantie, problème de livraison, …
+description: Price, promotion, quality, weight, warranty, delivery issues, etc.
 seoDescription: >-
-  Vous avez eu un problème de prix, sur une promotion ou de qualité lors d'un achat sur Internet. Vous n'avez pas reçu votre commande ou celle-ci est abîmée, le service client n'est pas joignable ou insatisfaisant...
+  You had a price, promotion or quality problem when purchasing on the Internet. You have not received your order or it is damaged, customer service is unreachable or unsatisfactory...
 img: category-site
-subcategoriesTitle: Votre problème concerne
+subcategoriesTitle: Your problem concerns

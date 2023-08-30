@@ -1,7 +1,7 @@
-title: Produit sec
+title: Dry product
 tags:
   - ProduitAlimentaire
-desc: 'Exemple : épice, farine, pâtes...'
-subcategoriesTitle: Quel est le risque&#160;?
+desc: 'Example: spice, flour, pasta...'
+subcategoriesTitle: What is the risk ?
 subcategories:
   customimport: _imports/subcategories/produit-alimentaire-risque

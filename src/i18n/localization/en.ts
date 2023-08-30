@@ -55,7 +55,7 @@ export const en = {
       commentCaMarche: {
         title: 'How does it work? - SignalConso',
         description:
-          'To report an issue with a trader or business, simply complete the online form. We will notify the company that you have reported an issue. The company may opt to rectify the issue and not face further action. Your report will be logged with Fraud Control (DGCCRF).',
+          'To report an issue with a company or business, simply complete the online form. We will notify the company that you have reported an issue. The company may opt to rectify the issue and not face further action. Your report will be logged with Fraud Control (DGCCRF).',
       },
       accessibilite: {
         title: 'Accessibility - SignalConso',
@@ -67,7 +67,7 @@ export const en = {
       },
       contractualDispute: {
         title: 'Resolving an individual dispute – SignalConso',
-        description: 'SignalConso tips for resolving an individual issue or dispute with a trader or business',
+        description: 'SignalConso tips for resolving an individual issue or dispute with a company or business',
       },
       quiSommesNous: {
         title: 'Who are we? - SignalConso',
@@ -101,7 +101,7 @@ export const en = {
       homepage: {
         title: 'SignalConso, a public service for consumers',
         description:
-          'Report an issue to a trader (e.g. retailers, local stores, cafés and restaurants) and Fraud Control if you have concerns about hygiene, food and drink quality, product descriptions, pricing or payment policies, advertising or other retail services.',
+          'Report an issue to a company (e.g. retailers, local stores, cafés and restaurants) and Fraud Control if you have concerns about hygiene, food and drink quality, product descriptions, pricing or payment policies, advertising or other retail services.',
       },
       anomaly: {
         title: 'Reporting sequence – SignalConso',
@@ -121,7 +121,7 @@ export const en = {
         'Get the new SignalConso mobile app and simplify the process of reporting the issues that affect you, the consumer. Download for free on',
       intro2: 'and access all the same features available on our website.',
       fonctionnalites:
-        'Use the app to report consumer-related issues (e.g. delivery, pricing, quality, contract, etc.) and find out your rights with just a few taps.',
+        'Use the app to report consumer-related issues (e.g. delivery, pricing, quality, contract, etc.) and find out about your rights with just a few taps.',
       statistiques:
         "Since its launch in 2020 by France's Minister for the Economy, Finance and Industrial and Digital Sovereignty, Bruno Le Maire, SignalConso has handled more than half a million complaints from over 320,000 users. In the last year, we have received 195,000 reports, 75,000 of which covered online purchases, 23,000 in-store purchases, 18,000 renovation works and 14,000 travel and leisure activities. Websites accounted for more than 43% of all reports and covered issues such as product quality, delivery times, warranty terms, cooling-off periods and refund policies, or the absence of terms and conditions.",
       accessibilite:
@@ -202,7 +202,7 @@ export const en = {
         "Get the new SignalConso mobile app and simplify the process of reporting the issues that affect you, the consumer. Download for free on'",
       introText2: 'and access all the same features available on our website.',
       featureText:
-        'Use the app to report consumer-related issues (e.g. delivery, pricing, quality, contract, etc.) and find out your rights with just a few taps.',
+        'Use the app to report consumer-related issues (e.g. delivery, pricing, quality, contract, etc.) and find out about your rights with just a few taps.',
       statisticsText:
         "Since its launch in 2020 by France's Minister for the Economy, Finance and Industrial and Digital Sovereignty, Bruno Le Maire, SignalConso has handled more than half a million complaints from over 320,000 users. In the last year, we have received 195,000 reports, 75,000 of which covered online purchases, 23,000 in-store purchases, 18,000 renovation works and 14,000 travel and leisure activities. Websites accounted for more than 43% of all reports and covered issues such as product quality, delivery times, warranty terms, cooling-off periods and refund policies, or the absence of terms and conditions.",
       accessibilityText:
@@ -213,28 +213,26 @@ export const en = {
     commentCaMarche: {
       title: 'How does it work?',
       step1: {
-        title: '1. Have you run into a problem with a business?',
-        description1:
-          'Have you run into an issue with a trader or business, in-store or online? As a consumer, you can make a report to SignalConso on the dedicated platform.',
+        title: '1. Have you run into a problem with a French business?',
+        description1: `Have you run into an issue with a company or business, in-store or online, that is either French or operates in France? As a consumer, you can make a report on the SignalConso platform.`,
         description2:
-          "Not sure if your issue is consumer-related? SignalConso can advise you on whether or not to submit a report. If we advise you not to, we'll explain why!",
+          "Not sure if your issue should be reported? SignalConso can advise you on whether or not to submit a report. If we advise you not to, we'll explain why!",
       },
       step2: {
-        title: '2. Report a trader or business on SignalConso or leave a question for Fraud Control.',
-        description1:
-          'Report the problem (anonymously if you prefer) or put a question directly to a member of staff at Fraud Control.',
+        title: `2. Report the company on SignalConso or submit a question to France's Fraud Control.`,
+        description1: `Report the problem (anonymously if you prefer) or submit a question directly to a member of staff of Fraud Control.`,
         description2: 'Either way, SignalConso will provide guidance and advice.',
       },
       step3: {
-        title: '3. Both the trader in question and Fraud Control are notified.',
+        title: '3. Both the owner of the business and Fraud Control are notified.',
         description1:
-          'If you do make a report, SignalConso will contact the trader to inform them. The trader may decide to respond to you and/or address the issue. SignalConso will notify you by email as to what actions they have taken. If you give your contact details, the trader will be able to contact you directly.',
+          'If you do make a report, SignalConso will contact the owner of the company to inform them. They may decide to respond to you and/or address the issue. SignalConso will notify you by email as to what actions they have taken. If you give your contact details, the company will be able to contact you directly.',
         description2:
-          'If you submit a query about your rights to DGCCRF, you will receive a personalised email from a member of DGCCRF staff.',
+          'If you submit a query about your rights to Fraud Control, you will receive a personalised email from a member of the Fraud Control staff.',
       },
       step4: {
-        title: '4. Fraud Control get involved if necessary.',
-        description1: 'Your report will be logged on the DGCCRF database.',
+        title: '4. Fraud Control gets involved if necessary.',
+        description1: 'Your report will be added to the Fraud Control database.',
         description2:
           'Is one company receiving a high number of reports? Do investigators believe the matter is serious? Fraud Control may decide to investigate or audit a business after receiving your report.',
       },
@@ -280,7 +278,7 @@ export const en = {
       aide: 'Help',
       etape1: 'Step 1 - The problem',
       etape2: 'Step 2 - The description',
-      etape3: 'Step 3 – The trader',
+      etape3: 'Step 3 – The company',
       etape4: 'Step 4 - The consumer',
       etape5: 'Step 5 - Confirmation',
       connexionEspacePro: 'Sign in to your professional account',
@@ -305,29 +303,28 @@ export const en = {
     contact: {
       title: 'Contact',
       problemMessage: 'Have you run into a problem with a business and want to report it?',
-      problemSolution: 'SignalConso can help! Visit our website and answer a few simple questions.',
+      problemSolution: 'SignalConso can help! Go to our main page, pick a category and answer a few simple questions.',
       technicalIssue: 'Does your query relate to a technical issue with SignalConso?',
       exampleText: 'For example:',
-      example1: 'You are unable to locate the Siret number for the trader you want to report',
+      example1: 'You are unable to locate the SIRET number for the company you want to report',
       example2: 'You experience a glitch while visiting the website',
       example3: 'You are unable to find the right category for your issue',
       emailText: 'Send us an email at',
       emailTitle: 'Are you experiencing a technical issue on our site? Contact us (default email client will open).',
-      alertDescription:
-        'Your report cannot be processed via this email address, as it is not used to process reports. Reports must be submitted by following the steps shown on the home page.',
+      alertDescription: `This email address is not meant to submit your report, we wouldn't be able to process it. Reports must be submitted by following the steps shown on the home page.`,
       alertTitle: 'Do not send us a report by email – it will not be read.',
     },
     litige: {
       title: 'Apply for a refund or find a solution to your issue',
       step1: {
-        label: 'Step 1: Write to the trader or business to demand a resolution',
+        label: 'Step 1: Write to the company or business to demand a resolution',
         when: 'When?',
         whenDescription1: 'As soon as possible (recommended).',
-        whenDescription2: 'You can also wait to see if the trader or business responds via SignalConso.',
+        whenDescription2: 'You can also wait to see if the company or business responds via SignalConso.',
         toWhom: 'To whom?',
-        toWhomDescription1: 'The customer services department for the trader or business.',
+        toWhomDescription1: 'The customer services department for the company or business.',
         toWhomDescription2:
-          "You can find the trader's customer services contact details on your contract, the trader's website, or in the trader's terms and conditions of business.",
+          "You can find the company's customer services contact details on your contract, the company's website, or in the company's terms and conditions of business.",
         how: 'How?',
         howDescription:
           'Send a letter by registered post with acknowledgement of receipt, enclosing the following two documents:',
@@ -345,18 +342,18 @@ export const en = {
           'Two months after you sent your letter, if you have not received a response or the response you received was unsatisfactory.',
         who: 'Who?',
         whoDescription:
-          "The trader is required to give the name of their chosen mediator. The mediator's contact details are usually given on the trader's website, contract and/or purchase order.",
+          "The company is required to give the name of their chosen mediator. The mediator's contact details are usually given on the company's website, contract and/or purchase order.",
         how: 'How?',
         howDescription: "Complete the form on the mediator's website, or write to the postal address provided.",
         why: 'Why?',
-        whyDescription: 'The mediator will help you reach an amicable settlement with the trader.',
+        whyDescription: 'The mediator will help you reach an amicable settlement with the company.',
         cost: 'How much does it cost?',
         costDescription: 'Mediation is free of charge.',
         whatIfNoMediator: "What to do if you can't find a mediator",
         newWindow: 'New window',
         whatIfNoMediatorDescription1: 'Get in touch with your nearest conciliator.',
         whatIfNoMediatorDescription2: 'Carry out a search on the site ',
-        whatIfNoMediatorDescription3: 'A conciliator will help you reach a solution with the trader.',
+        whatIfNoMediatorDescription3: 'A conciliator will help you reach a solution with the company.',
         whatIfNoMediatorDescription4: 'The process is free of charge.',
       },
       step3: {
@@ -377,7 +374,7 @@ export const en = {
       callOut: {
         associationCallOutTitle: 'To complete these steps, you can contact a consumer association.',
         associationCallOutDescription1:
-          'Consumer associations can assist you with writing claim letters or issuing formal notices, contacting traders directly, and initiating court proceedings.',
+          'Consumer associations can assist you with writing claim letters or issuing formal notices, contacting companies directly, and initiating court proceedings.',
         associationCallOutDescription2:
           'To get assistance, you will need to pay a membership fee. For details of membership fees, contact the relevant association. Depending on your circumstances, some associations may offer a reduced membership fee.',
         associationListTitle: 'List of official consumer associations:',
@@ -387,25 +384,25 @@ export const en = {
       title: 'About us',
       structureTitle: 'Organisation',
       structureDescription:
-        'SignalConso is what we like to call a "government start-up". We are a small team engaged in providing a digital public service to address an issue that affects citizens. We are not-for-profit, but strive to achieve the greatest social impact by meeting the needs of users.',
+        'SignalConso is what we like to call a "government start-up". We are a small team engaged in providing a digital public service to address an issue that affects citizens in France. We are not for-profit, but strive to achieve the greatest social impact by meeting the needs of users.',
       structureDGCCRFDescription: 'SignalConso operates as part of the ',
-      structureDGCCRFLink: 'Directorate General for Competition Policy, Consumer Affairs and Fraud Control (DGCCRF).',
-      structureDGCCRFMissionDescription: '(more commonly known in France as "Fraud Control"). Our remit is threefold:',
+      structureDGCCRFLink: 'Directorate General for Competition Policy, Consumer Affairs and Fraud Control (DGCCRF)',
+      structureDGCCRFMissionDescription: `(more commonly known in France as "Fraud Control") - itself a part of the French Ministry of the Economy. Fraud Control's mission is threefold:`,
       structureDGCCRFMarketRegulation: 'to regulate market competition;',
       structureDGCCRFConsumerProtection: 'to protect the economic interests of consumers;',
       structureDGCCRFConsumerSafety: 'to uphold consumer safety',
       workingMethodTitle: 'How we work',
       workingMethodDescription:
-        "Our vision is simple: to keep our finger on the pulse when it comes to the needs of consumers. That's why the work we do is experience-based. If we have a theory, we'll road-test it.",
+        "Our vision is simple: to keep our finger on the pulse when it comes to the needs of consumers. That's why the work we do is experience-based. If we have an idea, we'll test it!",
       workingMethodProductEvolution:
-        'Our service is never the finished article – we are always making improvements. We regularly meet with consumers to get feedback on the responses we give, as well as how easy our website is to read and navigate.',
+        'Our platform is not static – we are always making improvements. We regularly meet with consumers to get feedback on the responses we give, as well as how easy our website is to read and navigate.',
       workingMethodQuote: '"I have not failed. I have just found 10,000 ways that do not work."',
       workingMethodQuoteAuthor: '- Thomas Edison',
       teamTitle: 'Our team',
       formerMembersTitle: 'Former members',
     },
     centreaide: {
-      title: 'SignalConso help centre',
+      title: 'SignalConso help center',
       tab1: 'Consumer',
       tab2: 'Professional',
     },
@@ -417,53 +414,54 @@ export const en = {
       howSignalConsoWorksLink: 'How it works',
       reportIssueTitle: 'I want to report an issue',
       wrongCategory: "I can't find the right category",
-      wrongCategoryContent1: 'SignalConso covers all the main business sectors.',
+      wrongCategoryContent1:
+        "In this English version of SignalConso, we cover the main business sectors typically used by a foreigner in France. If you're comfortable with French, you can instead switch to the French version, which covers all business sectors.",
       wrongCategoryContent2:
         'If you are unsure which category to choose or want us to create a new one, you can contact the support team.',
-      difficultyCompletingForm: 'I\'m having trouble completing step 3 of the form ("the trader")',
+      difficultyCompletingForm: 'I\'m having trouble completing step 3 of the form ("the company")',
       difficultyCompletingFormContent1:
-        'The list of traders on the form is taken from a government database. We use the information from the database entry to contact the trader in question.',
-      difficultyCompletingFormContent2: "The trader you're looking for might not appear for a number of reasons:",
-      difficultyCompletingFormContent3: 'The trader is based outside France',
+        'The list of companies on the form is taken from a government database. We use the information from the database entry to contact the company in question.',
+      difficultyCompletingFormContent2: "The company you're looking for might not appear for a number of reasons:",
+      difficultyCompletingFormContent3: 'The company is based outside France',
       difficultyCompletingFormContent4:
-        'If the trader you want to report is not based in France, we will ask you for their name and country.',
+        'If the company you want to report is not based in France, we will ask you for their name and country.',
       difficultyCompletingFormContent5:
         'With this information, we will be able to redirect you to the relevant authorities if necessary.',
-      difficultyCompletingFormContent6: "I don't have the trader's name or address",
+      difficultyCompletingFormContent6: "I don't have the company's name or address",
       difficultyCompletingFormContent7:
-        "This might happen if you only have a telephone number or email address and can't access the trader's terms and conditions.",
+        "This might happen if you only have a telephone number or email address and can't access the company's terms and conditions.",
       difficultyCompletingFormContent8:
-        "If you want to report a trader but don't have their name, website address or contact details, you will need to contact the DGCCRF branch for your département directly.",
-      difficultyCompletingFormContent9: "I have the trader's name and address, but I don't see it listed",
+        "If you want to report a company but don't have their name, website address or contact details, you will need to contact the DGCCRF branch for your département directly.",
+      difficultyCompletingFormContent9: "I have the company's name and address, but I don't see it listed",
       difficultyCompletingFormContent10:
-        "The name of a business (i.e. its trading name) might not be the same as its official or corporate name. The address for the company's head office may also be different from the business address.",
+        "The name of a business (i.e. its displayed name) might not be the same as its official or corporate name. The address for the company's head office may also be different from the business address.",
       difficultyCompletingFormContent11:
-        "The form can help you find a company's Siret number. If you still cannot find the business listing, you can contact the support team.",
+        "The form can help you find a company's SIRET number. The SIRET is a unique number assigned to every French company. If you still cannot find the business listing, you can contact the support team.",
       errorOnSendOrNext: 'I have an error message when I click on "send" or "next"',
       errorOnSendOrNextContent1:
         'Check your internet connection and try to send the form again. An error message often appears when an internet connection drops momentarily.',
       errorOnSendOrNextContent2:
-        'You might have tried to send the same report twice. It is not possible to send the same report (i.e. same category, same trader) twice.',
+        'You might have tried to send the same report twice. It is not possible to send the same report (i.e. same category, same company) twice.',
       errorOnSendOrNextContent3: 'If you are still unable to send the form, you can contact the support team.',
       reportedIssueTitle: 'I have made a report',
       noUpdateSinceReport: 'Since I made my report, I have not received any updates',
-      noUpdateSinceReportContent1: `After sending your report, you should have received an email containing an <b>acknowledgement of registration</b>. If you did not receive one, please contact the support team. It is possible that you did not confirm the final step or that the email address you provided contains an error.`,
+      noUpdateSinceReportContent1: `After sending your report, you should have received an email containing an <b>acknowledgement of the report</b>. If you did not receive one, please contact the support team. It is possible that you did not confirm the final step or that the email address you provided contains an error.`,
       noUpdateSinceReportContent2: 'You will then receive the following email updates:',
-      noUpdateSinceReportContent3: ' when the trader has read your report',
-      noUpdateSinceReportContent4: ' when the trader has responded to your report, or',
-      noUpdateSinceReportContent5: 'to notify you that the trader did not want to read and/or respond to your report',
-      noUpdateSinceReportContent6: 'Traders have up to eight weeks to view and respond to your report.',
+      noUpdateSinceReportContent3: ' when the company has read your report',
+      noUpdateSinceReportContent4: ' when the company has responded to your report, or',
+      noUpdateSinceReportContent5: 'to notify you that the company did not want to read and/or respond to your report',
+      noUpdateSinceReportContent6: 'Companies have up to eight weeks to view and respond to your report.',
       noUpdateSinceReportContent7:
-        'The time taken to read and respond to a report will vary from business to business. If the trader already has a SignalConso account, turnaround times will be quicker.',
+        'The time taken to read and respond to a report will vary from business to business. If the company already has a SignalConso account, turnaround times will be quicker.',
       noUpdateSinceReportContent8:
         'If Fraud Control decide to launch an investigation, you will not be notified of this by email.',
       howToGetRefund: 'How do I get a refund or resolve my issue?',
       howToGetRefundContent1:
-        'As indicated on SignalConso, Fraud Control will use your report to identify which traders should be audited.',
+        'As indicated on SignalConso, Fraud Control will use your report to identify which companies should be audited.',
       howToGetRefundContent2:
         'These checks will aim to establish if the businesses are engaging in bad practices and, where this is the case, apply appropriate penalties.',
       howToGetRefundContent3:
-        'However, Fraud Control do not get involved in the process of obtaining a refund or compensation for you.',
+        'However, Fraud Control does not get involved in the process of obtaining a refund or compensation for you.',
       howToGetRefundContent4:
         'Those actions remain your responsibility and are highlighted as potential options when you complete your report and in your confirmation email.',
       howToGetRefundContent5: 'You can also find out how to complete these actions on this page: ',
@@ -471,19 +469,19 @@ export const en = {
       modifyOrDeleteReport: 'I want to withdraw or make changes to my report',
       modifyOrDeleteReportContent1: ' To withdraw or make changes to your report, you can ',
       modifyOrDeleteReportContent2: 'contact the support team',
-      askQuestionToFraudRepression: 'I want to raise a query with Fraud Control',
+      askQuestionToFraudRepression: 'I want to ask a question to Fraud Control',
       cantFindWhereToAsk: "I can't find where to do it",
       cantFindWhereToAskContent1: 'Depending on the category you selected when making your report, this button will appear:',
-      cantFindWhereToAskContent2: 'Not available in all categories.',
-      whereToEnterQuestion: 'Where do I submit my query?',
-      whereToEnterQuestionContent: 'You will be able to give details about your situation and submit your query in step 2:',
+      cantFindWhereToAskContent2: 'It is not available in all categories.',
+      whereToEnterQuestion: 'Where do I submit my question?',
+      whereToEnterQuestionContent: 'You will be able to give details about your situation and write your question in step 2:',
       errorOnSendOrNextQuestion: 'I get an error message when I click "send" or "next"',
       errorOnSendOrNextQuestionContent1:
         'Check your internet connection and try to send the form again. An error message often appears when an internet connection drops momentarily.',
       errorOnSendOrNextQuestionContent2:
-        'You might have tried to send the same report twice. It is not possible to send the same report (i.e. same category, same trader) twice.',
+        'You might have tried to send the same report twice. It is not possible to send the same report (i.e. same category, same company) twice.',
       errorOnSendOrNextQuestionContent3: 'If you are still unable to send the form, you can contact the support team.',
-      askedQuestionToFraudRepression: 'I submitted a query to Fraud Control',
+      askedQuestionToFraudRepression: 'I asked a question to Fraud Control',
       noResponseReceived: 'I have not received any response',
       noResponseReceivedContent:
         'If you selected "I would like Fraud Control to give me information about my rights" and your request is explicit, you will receive a response shortly, typically within eight days, depending on the complexity of your query. You should avoid submitting another query, as this could cause confusion.',
@@ -681,13 +679,13 @@ export const en = {
       calcRetractionDelay: 'Figure out your cooling-off period',
       resolutionTips: 'Tips for resolving individual issues (disputes)',
       reportIncidentSection: 'Submitting a report',
-      reportIncidentFor: 'Report a trader for',
+      reportIncidentFor: 'Report a company for',
       seeFullTree: 'See also',
       completeTree: 'the reporting sequence in full',
       incidentSteps: 'Each step in the reporting process',
       step1: 'Step 1 - The problem',
       step2: 'Step 2 - The description',
-      step3: 'Step 3 - The trader',
+      step3: 'Step 3 - The company',
       step4: 'Step 4 - The consumer',
       step5: 'Step 5 - Confirmation',
       proSpaceSection: 'Professional account',
@@ -745,7 +743,7 @@ export const en = {
         "Users must agree to SignalConso's online terms of use, which cover all software and applications, including websites, sections of websites and mobile apps.",
       signalConsoTitle: 'What can the SignalConso online service be used for?',
       signalConsoDescriptionPart1:
-        "SignalConso's online service allows consumers to learn more about consumer law and their rights, as well as report an issue with a trader.",
+        "SignalConso's online service allows consumers to learn more about consumer law and their rights, as well as report an issue with a company.",
       signalConsoDescriptionPart2: 'It is not the type of service to be called on in an emergency requiring first responders. ',
       appelUrgence: 'For that, you should call 112.',
       servicePayantTitle: 'Is SignalConso a paid service?',
@@ -757,12 +755,12 @@ export const en = {
       traiteSignalementsDescription:
         'Reports are handled by our staff at SignalConso, who check to confirm that the report falls within the scope of our online service and that the information received is not "sensitive".',
       signalementsVisibles: 'Reports are made visible to the following parties:',
-      signalementsVisibleEntreprise: 'the trader, whose business is subject of the report, ',
+      signalementsVisibleEntreprise: 'the company, whose business is subject of the report, ',
       signalementsVisibleDGCCRF: 'DGCCRF staff, who are qualified to conduct investigations',
       anonymatTitle: 'Are reports anonymous ?',
       anonymatDescriptionPart1: 'Users must sign in with SignalConso and DGCCRF, giving their full name and email address.',
       anonymatDescriptionPart2:
-        'However, users may choose to keep their identity secret from the traders or businesses they report.',
+        'However, users may choose to keep their identity secret from the companies or businesses they report.',
       suiviDossierTitle: 'Is it possible to track the status of a report ?',
       suiviDossierDescription:
         'It is not possible to track the status of individual reports on SignalConso. Reports are handled collectively.',
@@ -823,11 +821,11 @@ export const en = {
     },
     footer: {
       text1:
-        'SignalConso is a free public service that allows consumers to report issues they experience with traders and businesses. Report an issue, resolve an issue you are experiencing, or find out your rights.',
+        'SignalConso is a free public service that allows consumers to report issues they experience with companies and businesses.  Make a report, resolve an issue you are experiencing, or find out about your rights.',
       text2: 'It is published by the ',
       dgccrfLink: 'Directorate General for Competition Policy, Consumer Affairs and Fraud Control (DGCCRF)',
       homeLinkTitle: 'Report an issue – SignalConso',
-      connexionLinkTitle: 'DGCCRF area',
+      connexionLinkTitle: 'DGCCRF staff access',
       retractationLinkTitle: 'Info – Cooling-off period',
       litigeLinkTitle: 'Info – Resolving a dispute',
       actualitesLinkTitle: 'News',
@@ -840,7 +838,7 @@ export const en = {
     },
     header: {
       homeLinkTitle: 'Report an issue – SignalConso',
-      connexionLinkTitle: 'Professional account',
+      connexionLinkTitle: `Business owners portal`,
       indexLinkTitle: 'Report an issue',
       commentCaMarcheLinkTitle: 'How does it work?',
       centreAideLinkTitle: 'Help center',
@@ -863,11 +861,11 @@ export const en = {
       TWITCH: 'Twitch',
     },
     homepage: {
-      signalconsoCatchWord: ` Report an issue to a business,<br/>find out your rights with Fraud Control.  `,
-      step1: 'Have you run into a problem with a business ?',
-      step2: 'Report an issue or raise a query with Fraud Control.',
-      step3: 'Notify the business so that they can respond or rectify the issue.',
-      step4: 'Fraud Control get involved if necessary.',
+      signalconsoCatchWord: ` Report an issue to a company,<br/>find out about your rights with France's Fraud Control.  `,
+      step1: 'Have you run into a problem with a French business ?',
+      step2: 'Report an issue or ask a question to Fraud Control.',
+      step3: 'You may notify the company so that they can respond or rectify the issue.',
+      step4: 'Fraud Control gets involved if necessary.',
     },
     searchAnomalies: {
       title: 'What problem did you encounter?',
@@ -881,7 +879,7 @@ export const en = {
     arbo: {
       title: 'Sequence for reporting an issue',
       expandAll: 'Expand all',
-      notAFraudMessage: 'Although we do believe the issue you experienced was genuine, it was not an instance of fraud.',
+      notAFraudMessage: 'Although we do believe the issue you experienced was genuine, it was not a case of fraud.',
     },
     yes: 'Yes',
     no: 'No',
@@ -974,7 +972,7 @@ export const en = {
     password: 'Password',
     logout: 'Logout',
     consumer: 'Consumer',
-    company: 'Trader',
+    company: 'Company',
     country: 'Country',
     countryPlaceholder: 'Ex : Italy',
     identification: 'Country identifier',
@@ -1011,13 +1009,13 @@ export const en = {
     step: 'Step',
     step_problem: `Problem`,
     step_description: `Description`,
-    step_company: `Trader`,
+    step_company: `Company`,
     step_influencer: `Influencer`,
     step_consumer: `Consumer`,
     step_confirm: `Confirmation`,
     step_pageTitle_problem: `Step : The issue`,
     step_pageTitle_description: `Description`,
-    step_pageTitle_company: `Trader`,
+    step_pageTitle_company: `Company`,
     step_pageTitle_consumer: `Consumer`,
     step_pageTitle_confirm: `Confirmation`,
     timeFromTo: (from: number, to: number) => `From ${from}h to ${to}h`,
@@ -1080,15 +1078,15 @@ export const en = {
     problemContractualDisputeFormNoDesc: `Examples in this case include meeting delivery times, displaying prices more clearly, or improving hygiene practices.`,
     problemContractualDisputeFormReponseConso: `I would like Fraud Control to give me information about my rights`,
     problemContractualDisputeFormReponseConsoExample: `Example: What is the validity period of the quotes I was given? Can a store sell expired products? ...`,
-    consumerWishFixContractualDispute: `Your report will be forwarded to the trader. Fraud Control does not get involved in resolving individual cases, but <strong>reporting an issue may encourage a business to get in touch with you.</strong>`,
-    consumerWishCompanyImprovement: `Your report will be forwarded to the trader. You may choose to remain anonymous.`,
+    consumerWishFixContractualDispute: `Your report will be forwarded to the company. Fraud Control does not get involved in resolving individual cases, but <strong>reporting an issue may encourage a business to get in touch with you.</strong>`,
+    consumerWishCompanyImprovement: `Your report will be forwarded to the company. You may choose to remain anonymous.`,
     consumerWishGetAnswer: `A member of staff will get back to you shortly.`,
     consumerWishInvestigationIsPossible: 'Fraud Control may decide to open an investigation based on the information you give.',
     consumerWishInvestigationIsPossible2:
-      'If a business receives an excessively high volume or frequent number of reports, Fraud Control will investigate the traders in question.',
+      'If a business receives an excessively high volume or frequent number of reports, Fraud Control will investigate the companies in question.',
     informationRatingSaved: `Your comments have been recorded, thank you.`,
     informationTitle: `Unfortunately, we are unable to take your report any further.`,
-    informationReportOutOfScope: `Although we do believe the issue you experienced was genuine, it was not an instance of fraud.`,
+    informationReportOutOfScope: `Although we do believe the issue you experienced was genuine, it was not a case of fraud.`,
     informationWasUsefull: `Was this information useful to you?`,
     buttonReportProblem: `Report an issue`,
     logoAltSignalconso: `SignalConso Logo / Return to homepage`,
@@ -1132,8 +1130,8 @@ export const en = {
     cantIdentifyWebsiteCompany: `As you are unable to identify the business linked to the website, please give your location so that we can forward your report to the appropriate department.`,
     cantIdentifyTransporterWebsiteCompany: `As you are unable to identify the carrier, please give your location so that we can forward your report to the appropriate department.`,
     cantIdentifyMerchantWebsiteCompany: `As you are unable to identify the seller, please give your location so that we can forward your report to the appropriate department.`,
-    cantIdentifyLocationCompany: `As you are unable to identify the company that came to your home, please give your location so that we can try to connect the information you gave to other reports involving the same trader that might have been made in your local area.`,
-    cantIdentifyPhoneCompany: `As you are unable to identify the company you spoke with on the phone, please give your location so that we can try to connect the information you gave to other reports involving the same trader that might have been made in your local area.`,
+    cantIdentifyLocationCompany: `As you are unable to identify the company that came to your home, please give your location so that we can try to connect the information you gave to other reports involving the same company that might have been made in your local area.`,
+    cantIdentifyPhoneCompany: `As you are unable to identify the company you spoke with on the phone, please give your location so that we can try to connect the information you gave to other reports involving the same company that might have been made in your local area.`,
     companyIdentityLabel: `SIRET or SIREN or RCS number of the company`,
     companyIdentityPlaceholder: `Ex: 83350861700010`,
     postalCode: `Post code`,
@@ -1181,7 +1179,7 @@ export const en = {
       You can find this number on quotes, invoices and cashier receipts issued by the company, as well as in the legal notice on the company website.
     `,
     companyIdentityHelperWhereDesc0: `
-       On the trader's website, go to the bottom of the home page.
+       On the company's website, go to the bottom of the home page.
     `,
     companyIdentityHelperWhereDesc2: `
       Click on "Legal notice" ("Mentions légales"). A new page should open, where you will be able to find this number easily:
@@ -1212,13 +1210,13 @@ export const en = {
     `,
     consumerAnonymousInformation: `You will remain anonymous, but the business will not be able to resolve your specific issue. This means that resolutions such as refunds or personalised responses will not be possible.`,
     confirmationTitle: `Summary of your issue`,
-    confirmationAlertTransmittable: `Check over your report before sending it to the trader and to Fraud Control.`,
+    confirmationAlertTransmittable: `Check over your report before sending it to the company and to Fraud Control.`,
     confirmationAlert: `Check over your report before sending it to Fraud Control.`,
     contactAgreementTrueTitle: `I am sharing`,
-    contactAgreementTrueDesc: `my contact details and reference number with the trader or business so that they can contact me regarding my report (<b>only</b>). I understand that Fraud Control will not have access to these communications and will not therefore be able to monitor them.`,
+    contactAgreementTrueDesc: `my contact details and reference number with the company or business so that they can contact me regarding my report (<b>only</b>). I understand that Fraud Control will not have access to these communications and will not therefore be able to monitor them.`,
     contactAgreementFalseTitle: `I have opted not to share`,
-    contactAgreementFalseDesc: `my contact details or reference number with the trader. Only Fraud Control will be able to access these details.`,
-    companySelectCountryTitle: `Select the country where the trader is based`,
+    contactAgreementFalseDesc: `my contact details or reference number with the company. Only Fraud Control will be able to access these details.`,
+    companySelectCountryTitle: `Select the country where the company is based`,
     companyWebsiteVendorAlert: `The business you have selected is a marketplace, i.e. a business that offers products available from third-party sellers.`,
     companyWebsiteVendorTitle: `Can you identify the seller?`,
     companyWebsiteVendorLabel: `Name of the third-party seller`,
@@ -1237,7 +1235,7 @@ export const en = {
     noMatchingCompanyDesc: `Please amend your search or include the company identifiers in your search.`,
     howToFindCompanyCountry: ``,
     howToFindCompanyCountryDesc: `
-      On the trader's website, go to one of the following links:
+      On the company's website, go to one of the following links:
       <ul>
         <li>legal notice</li>
         <li>terms and conditions (Ts&Cs)</li>
@@ -1250,7 +1248,7 @@ export const en = {
     confirmationBtn: `Send report`,
 
     statsTitle: 'Statistics',
-    statsText: 'These statistics are updated in real time. Additional statistics are also available on the site ',
+    statsText: 'These statistics are updated in real time. Additional statistics are also available on ',
 
     acceptedReportStat: `companies have promised to take action since SignalConso began`,
     acceptedReportStatName: `Number of commitments made`,
@@ -1258,18 +1256,18 @@ export const en = {
     reportsCountStat: ` reports have been submitted since SignalConso began`,
     reportsCountStatName: ` Number of reports submitted`,
 
-    transmittedRateStat: `of reports were forwarded to the trader or business in question`,
-    transmittedRateDescription: `Why not 100%? In some cases (e.g. online purchases), consumers were unable to identify the trader or business in question.`,
-    transmittedRateStatName: `% of reports forwarded to the trader or business`,
+    transmittedRateStat: `of reports were forwarded to the company or business in question`,
+    transmittedRateDescription: `Why not 100%? In some cases (e.g. online purchases), consumers were unable to identify the company or business in question.`,
+    transmittedRateStatName: `% of reports forwarded to the company or business`,
 
-    readRateStat: `of reports submitted were read by the trader or business`,
+    readRateStat: `of reports submitted were read by the company or business`,
     readRateDescription: `Why not 100%? SignalConso is a voluntary service. Businesses are not required to set up an account and read the report.`,
-    readRateStatName: `Reports read by the trader or business`,
-    respondedRateStat: `of all viewed reports received a response from the trader or business`,
+    readRateStatName: `Reports read by the company or business`,
+    respondedRateStat: `of all viewed reports received a response from the company or business`,
     respondedRateDescription: `When a business receives a report, they have the option, but not the obligation, to respond to the consumer.`,
-    respondedRateStatName: `% of reports that get a response from the trader or business`,
+    respondedRateStatName: `% of reports that get a response from the company or business`,
 
-    websiteReportsRateStat: `of reports submitted since SignalConso began related to an online business`,
+    websiteReportsRateStat: `of reports submitted since SignalConso began are related to an online business`,
     browserCompatMessage: `Your web browser is obsolete. If you are not using the most recent version of your browser, you may encounter some issues when using SignalConso.`,
 
     minimalErrorTitle: 'Technical problem',
@@ -1283,14 +1281,14 @@ export const en = {
       heroCardTitle2: 'Because it’s fast!',
       heroCardText2: 'Just 5 minutes and your report is sent.',
       heroCardTitle3: 'Because it’s effective',
-      heroCardText3: '65% of traders and businesses respond to reports.',
+      heroCardText3: '65% of companies and businesses respond to reports.',
       signalConsoWillHandle1:
-        'SignalConso takes care of the rest. Your report is sent to the trader or business and can be viewed at any time by our team at DGCCRF... tout de suite! If you asked about your rights, a member of our team will get in touch with you to respond to your query and offer guidance on what to do next.',
+        'SignalConso takes care of the rest. Your report is sent to the company or business and can be viewed at any time by our team at DGCCRF... tout de suite! If you asked about your rights, a member of our team will get in touch with you to respond to your query and offer guidance on what to do next.',
       signalConsoWillHandle2:
-        'If necessary, you can opt to remain anonymous. Otherwise, we will share your details with the trader or business, so that they can contact you directly.',
+        'If necessary, you can opt to remain anonymous. Otherwise, we will share your details with the company or business, so that they can contact you directly.',
       signalConsoWillHandle3:
         'Your report will also be logged on the DGCCRF database. This ensures our staff have the best possible information to support their checks and investigations.',
-      moreThanOneCat: 'To report a trader or business, select the appropriate category',
+      moreThanOneCat: 'To report a company or business, select the appropriate category',
       discoverButton: 'Learn more',
       whatIsText1:
         "Every day in France, some 60 million consumers buy goods and services from almost 10 million businesses. Some of these purchases take place online. How are consumer rights monitored? By our staff of 3,000 officers at DGCCRF. That's why ",
@@ -1298,15 +1296,15 @@ export const en = {
       whatIsText3:
         "Despite the best efforts of our investigators, we can't uncover everything, especially the most minor and frequent offences. That's why you, the consumer, are the one best placed to spot them and to exercise your rights.",
       whatIsText4:
-        'This site provides assistance before, during and after a purchase. In just a few clicks, you can report any issues you run into when dealing with traders or businesses. SignalConso is also on hand to respond to your queries, provide guidance about your rights as a consumer, and help you navigate the stages of the process, referring you to the appropriate person where necessary.  ',
+        'This site provides assistance before, during and after a purchase. In just a few clicks, you can report any issues you run into when dealing with companies or businesses. SignalConso is also on hand to respond to your queries, provide guidance about your rights as a consumer, and help you navigate the stages of the process, referring you to the appropriate person where necessary.  ',
       whatIsText5:
-        'Traders and businesses that are reported can view reports that you make and may opt to rectify an issue of their own accord. If a business receives an excessively high volume or frequent number of reports, the DGCCRF investigation team may take further action.',
+        'Companies and businesses that are reported can view reports that you make and may opt to rectify an issue of their own accord. If a business receives an excessively high volume or frequent number of reports, the DGCCRF investigation team may take further action.',
       samples: 'Issues that have been reported to us',
     },
     shareYourReview: `Share your review`,
     thanksForSharingYourReview: `Your comments have been taken on board, thank you.`,
     youCanRateSignalConso: `I recommend SignalConso:`,
-    youCanAddCommentForDGCCRF: `If you prefer, you can share details <b>with DGCCRF</b> that will not be forwarded to the trader or business.`,
+    youCanAddCommentForDGCCRF: `If you prefer, you can share details <b>with DGCCRF</b> that will not be forwarded to the company or business.`,
     didTheCompanyAnsweredWell: `Are you satisfied with the response you received? <b>(Note: comments cannot be edited)</b>`,
     send: `Send`,
     whichWebsiteTransporterTitle: "As you chose the carrier yourself, please provide the carrier's website address here",

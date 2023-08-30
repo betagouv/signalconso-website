@@ -1,8 +1,6 @@
-title: Problème de quantité
-desc: "Exemple\_: poids indiqué non conforme, balance non tarée"
+title: Quantity problem
+desc: "Example\_: incorrect indicated weight, scale not tared"
 reponseconsoCode:
   - '210'
   - '276'
   - '277'
-tags:
-  - ReponseConso

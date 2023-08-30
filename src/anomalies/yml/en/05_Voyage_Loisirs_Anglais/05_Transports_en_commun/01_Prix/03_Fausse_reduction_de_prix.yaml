@@ -1,22 +1,15 @@
-title: Fausse réduction de prix
-desc: 'Exemple : fausse promotion pendant les soldes, fausse liquidation totale'
+title: False or misleading reduction in price
+desc: 'Examples: fake promotions, false time limits'
 ccrfCode:
   - '145'
-  - 23F
+  - '23F'
   - '146'
 reponseconsoCode:
   - '224'
   - '210'
   - '212'
 detailInputs:
-  - label: 'Il s''agit d''un problème sur :'
-    type: RADIO
-    options:
-      - Les soldes
-      - Une promotion
-      - Une liquidation
-      - Autre (to be specified)
-  - label: Date du constat
+  - label: Date of finding
     type: DATE
     defaultValue: SYSDATE
   - label: Description

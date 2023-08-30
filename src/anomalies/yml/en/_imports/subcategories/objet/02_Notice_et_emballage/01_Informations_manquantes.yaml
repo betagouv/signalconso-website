@@ -1,28 +1,28 @@
-title: Informations manquantes
+title: Missing information
 reponseconsoCode:
   - '333'
 detailInputs:
-  - label: Quel est-le problème&#160;?
+  - label: What's the problem ?
     type: RADIO
     options:
       - Composition
-      - Données énergétiques
-      - Disponibilité des pièces de rechange
-      - Autre (to be specified)
-  - label: Quel est le type de produit&#160;?
+      - Energy data
+      - Availability of spare parts
+      - Other (to be specified)
+  - label: What is the product type ?
     type: RADIO
     options:
       - Textiles
-      - Meubles
-      - Électroménager
-      - Jouets
-      - Électroniques
-      - Autre (to be specified)
-  - label: Date du constat ou d'achat
+      - Furniture
+      - Home appliance
+      - Toys
+      - Electronics
+      - Other (to be specified)
+  - label: T or purchase date
     type: DATE
     defaultValue: SYSDATE
-  - label: Nom / marque
+  - label: Name / brand
     type: TEXT
-  - label: Qu'avez-vous constaté&#160;?
+  - label: What did you find?
     type: TEXTAREA
-fileLabel: Photos du code barre / n° de lot / référence
+fileLabel: Photos of the barcode / batch number / reference

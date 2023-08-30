@@ -1,24 +1,10 @@
-title: Problème de température
-desc: "Exemple\_: rupture de la chaîne du froid"
+title: Temperature issue
+desc: "Exemple\_: food not kept cold at all times"
 reponseconsoCode:
   - '322'
 detailInputs:
-  - label: Date du constat
+  - label: Date of the finding
     type: DATE
     defaultValue: SYSDATE
-  - label: Heure du constat (facultatif)
-    type: TIMESLOT
-    optional: true
-  - label: Quel est le problème&#160;?
-    type: RADIO
-    options:
-      - Vitrine / réfrigérateur trop chaud ou en panne
-      - Stockage à température ambiante de produits frais ou congelés
-      - Transport à température ambiante de produits frais ou congelés
-      - Autre problème de température (to be specified)
-  - label: "Pouvez-vous préciser\_?"
-    type: TEXT
-    optional: true
 fileLabel: >-
-  Si possible, merci de joindre une photo ou un document pour appuyer votre
-  signalement.
+  If possible, please attach a photo or document to support your report.

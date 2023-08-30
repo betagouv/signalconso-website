@@ -1,20 +1,16 @@
 title: >-
-  Un produit emballé par le fabricant comme une boîte de conserve, un paquet,
-  une bouteille
-tags:
-  - ReponseConso
-desc: La quantité est directement imprimée sur l'emballage par le fabricant
+  A product packaged by the manufacturer such as a tin, packet, a bottle.
+desc: The quantity is directly printed on the packaging by the manufacturer.
 detailInputs:
   - label: >-
-      La lettre "e" est-elle écrite à côté de l'indication du
-      poids/volume&#160;?
+      Is the letter "e" written next to the indication of the weight / volume ?
     type: RADIO
     options:
-      - Oui
-      - Non
-  - label: Type de produit
+      - 'Yes'
+      - 'No'
+  - label: Type of product
     type: TEXT
-  - label: Nom /marque
+  - label: Name / brand
     type: TEXT
-  - label: Quelle erreur a été constatée&#160;?
+  - label: What error was found ?
     type: TEXTAREA

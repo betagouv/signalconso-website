@@ -1,16 +1,12 @@
 id: '140'
 category: IntoxicationAlimentaire
-title: Intoxication alimentaire
+title: Food poisoning
 seoTitle: >-
-  Vous êtes malade, diarrhée, nausée, fièvre suite à un repas, signalez-le à la
-  DGCCRF
+  If you are sick, experiencing diarrhea, nausea, fever after a meal, please report it.
 path: intoxication-alimentaire
 description: >-
-  Vous avez été malade (vomissement, diarrhée) après avoir mangé un aliment
-  suspect
+  You fell sick (vomiting, diarrhea) after eating suspicious food.
 seoDescription: >-
-  Vous êtes souffrant, avez des problèmes de digestion après avoir mangé un
-  aliment suspect, goût, odeur de la nourriture ? Mal au ventre, estomac,
-  vomissement ?
+  Are you feeling unwell, having digestive issues after eating questionable food? Odd taste, smell of the food? Stomach pain, nausea, vomiting in France ?
 img: category-disease
-subcategoriesTitle: Avez-vous été malade ?
+subcategoriesTitle: Have you been sick?

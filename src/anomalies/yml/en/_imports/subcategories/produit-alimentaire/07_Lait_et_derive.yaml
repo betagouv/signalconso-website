@@ -1,7 +1,7 @@
-title: Lait et dérivé
+title: Milk and derivative
 tags:
   - ProduitAlimentaire
-desc: 'Exemple : lait, fromage, glace...'
-subcategoriesTitle: Quel est le risque&#160;?
+desc: 'Example: milk, cheese, ice cream...'
+subcategoriesTitle: What is the risk ?
 subcategories:
   customimport: _imports/subcategories/produit-alimentaire-risque

@@ -1,21 +1,10 @@
 title: >-
-  Les produits ne sont pas frais ou certains aliments sont périmés, c'est-à-dire
-  que les dates indiquées sont dépassées.
+  Items were not fresh or some produce was out of date, i.e. past their use-by dates
 reponseconsoCode:
   - '323'
   - '321'
 detailInputs:
-  - label: Date de constat
+  - label: Date of the finding
     type: DATE
-  - label: "Quel produit est concerné\_?"
-    type: TEXT
-  - label: "Quel est le problème\_?"
-    type: RADIO
-    options:
-      - Produit pas frais
-      - Produit avec date dépassée
-      - Insecte dans un plat
-      - Autre (to be specified)
 fileLabel: >-
-  Merci de joindre si possible une photo ou votre facture afin d'appuyer votre
-  signalement.
+  If possible, please attach a photo or document to support your report.

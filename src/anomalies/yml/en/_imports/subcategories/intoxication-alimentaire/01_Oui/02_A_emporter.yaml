@@ -1,4 +1,4 @@
-title: A emporter
+title: Take away
 companyKind: LOCATION
 reponseconsoCode:
   - '321'
@@ -7,4 +7,4 @@ tags:
   - ProduitDangereux
 detailInputs:
   customimport: _imports/detailInputs/intoxication-alimentaire.yml
-fileLabel: Photos du produit / de l'emballage / du ticket / de la facture
+fileLabel: Photos of product / packaging / receipt / invoice

@@ -1,9 +1,9 @@
 notAFraudMessage: true
 blockingInfo:
   content:
-    Les produits vendus à température ambiante comme des compotes, du chocolat, des biscuits ou des conserves ont une date qu'on appelle date de durabilité minimale (anciennement appelée DLUO).
-    <br/><br/><b>Le commerçant a le droit de vendre un produit avec cette date dépassée.</b>
-    <br/><br/>Cette date est seulement une indication. Au-delà de celle-ci, l'aliment peut perdre certaines de ses qualités gustatives ou nutritionnelles mais peut être consommé sans danger pour la santé. Il n'est pas nécessaire de le jeter.
+    Products sold at room temperature such as compotes, chocolate, biscuits or preserves have a date called the minimum durability date (formerly called BBD).
+    <br/><br/><b>The merchant has the right to sell a product with this expired date.</b>
+    <br/><br/>This date is only an indication. Beyond this, the food may lose some of its taste or nutritional qualities but can be consumed without danger to health. It is not necessary to throw it away.
   questions:
-    - question: Vous souhaitez néanmoins faire part de votre mécontentement&#160;?
-      answer: Contacter directement le service client de votre magasin pour leur expliquer.
+    - question: Do you still wish to express your dissatisfaction ?
+      answer: Contact your store's customer service department directly.

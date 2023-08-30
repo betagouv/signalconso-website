@@ -1,24 +1,24 @@
-- label: Date de l'accident
+- label: Date of accident
   type: DATE
   defaultValue: SYSDATE
-- label: Nom du produit
+- label: Product Name
   type: TEXT
-- label: Marque / adresse du fabricant
+- label: Manufacturer's mark / address
   optional: true
   type: TEXT
-- label: Éléments d'identification (Modèle / N° de série / Volume / Poids)
+- label: Identification elements (Model / Serial number / Volume / Weight)
   optional: true
   type: TEXT
-- label: La personne qui a consommé l'aliment est-elle tombée malade et/ou s'est-elle blessée&#160;?
+- label: Did the person who consumed the food become sick and/or injured ?
   optional: true
   type: RADIO
   options:
-    - Non
-    - Oui (to be specified)
-- label: Décrivez nous plus en détails ce qui s'est passé
+    - 'No'
+    - Yes (to be specified)
+- label: Describe in more detail what happened
   type: TEXTAREA
-- label: Avez-vous déjà contacté le commerçant ou le fabricant pour ce problème&#160;?
+- label: Have you already contacted the merchant or the manufacturer for this problem ?
   type: RADIO
   options:
-    - Oui
-    - Non
+    - 'Yes'
+    - 'No'

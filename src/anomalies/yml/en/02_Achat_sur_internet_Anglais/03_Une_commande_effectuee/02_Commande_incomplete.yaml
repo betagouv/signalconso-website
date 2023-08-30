@@ -1,6 +1,5 @@
-title: Commande incomplète
+title: Incomplete order
 desc: >-
-  Exemple : J'ai commandé deux téléphones, je n'en ai reçu qu'un seul et
-  l'entreprise ne veut pas me livrer
+  Example: I ordered two phones, but I only received one and the company refuses to l the delivery.
 ccrfCode:
-  - 23B
+  - '23B'
