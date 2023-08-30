@@ -9,7 +9,7 @@ detailInputs:
       - The date will be exceeded within 7 days
   - label: Best before date
     type: DATE
-  - label: Date of finding (or date of purchase)
+  - label: Date of discovery of the incident (or date of purchase)
     type: DATE_NOT_IN_FUTURE
     defaultValue: SYSDATE
 fileLabel: Photo

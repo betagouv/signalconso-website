@@ -4,7 +4,7 @@ reponseconsoCode:
   - '311'
   - '331'
 detailInputs:
-  - label: Date of finding
+  - label: Date of discovery of the incident
     type: DATE
     defaultValue: SYSDATE
   - label: Time of finding

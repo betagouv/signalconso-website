@@ -1,7 +1,7 @@
 - label: Date of accident
   type: DATE
   defaultValue: SYSDATE
-- label: Product Name
+- label: Product name
   type: TEXT
 - label: Manufacturer's mark / address
   optional: true
@@ -9,7 +9,7 @@
 - label: Identification elements (Model / Serial number / Volume / Weight)
   optional: true
   type: TEXT
-- label: Did the person who consumed the food become ill and/or injured ?
+- label: Was somebody injured using the item ?
   optional: true
   type: RADIO
   options:

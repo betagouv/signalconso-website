@@ -2,9 +2,9 @@ title: Less than 2 years ago
 detailInputs:
   - label: Date of purchase
     type: DATE
-  - label: Product Name
+  - label: Product name
     type: TEXT
-  - label: Date of finding
+  - label: Date of discovery of the incident
     type: DATE
     defaultValue: SYSDATE
   - label: Contact person

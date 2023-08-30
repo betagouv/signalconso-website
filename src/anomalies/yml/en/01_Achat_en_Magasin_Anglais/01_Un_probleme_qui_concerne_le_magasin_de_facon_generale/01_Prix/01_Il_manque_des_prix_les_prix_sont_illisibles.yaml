@@ -10,9 +10,9 @@ detailInputs:
     type: RADIO
     options:
       - Price not displayed
-      - Illegible price
+      - Price illegible
       - Other (to be specified)
-  - label: Date of finding
+  - label: Date of discovery of the incident
     type: DATE
     defaultValue: SYSDATE
   - label: Description

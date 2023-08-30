@@ -2,11 +2,11 @@ title: I have read the conditions written in my warranty contract
 detailInputs:
   - label: Date of purchase
     type: DATE
-  - label: Product Name
+  - label: Product name
     type: TEXT
   - label: Additional warranty end date
     type: DATE
-  - label: Date of finding
+  - label: Date of discovery of the incident
     type: DATE
     defaultValue: SYSDATE
   - label: Reason for refusal

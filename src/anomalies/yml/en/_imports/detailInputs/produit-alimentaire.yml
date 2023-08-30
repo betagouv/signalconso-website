@@ -1,7 +1,7 @@
 - label: Date of accident
   type: DATE
   defaultValue: SYSDATE
-- label: Product Name
+- label: Product name
   type: TEXT
 - label: Manufacturer's mark / address
   optional: true

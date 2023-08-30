@@ -4,7 +4,7 @@ detailInputs:
   - label: T or purchase date
     type: DATE
     defaultValue: SYSDATE
-  - label: Product Name
+  - label: Product name
     type: TEXT
   - label: Identification elements (deadline, batch number)
     type: TEXT

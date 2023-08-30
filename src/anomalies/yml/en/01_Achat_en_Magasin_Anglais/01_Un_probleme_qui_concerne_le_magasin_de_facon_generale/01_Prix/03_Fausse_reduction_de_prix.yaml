@@ -9,7 +9,7 @@ reponseconsoCode:
   - '210'
   - '212'
 detailInputs:
-  - label: Date of finding
+  - label: Date of discovery of the incident
     type: DATE
     defaultValue: SYSDATE
   - label: Description

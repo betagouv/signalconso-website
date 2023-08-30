@@ -15,7 +15,7 @@
     - Yes (to be specified)
 - label: Describe in more detail what happened
   type: TEXTAREA
-- label: Have you ever contacted the restorer or manufacturer about this issue ?
+- label: Have you ever contacted the restaurant or manufacturer about this issue ?
   type: RADIO
   options:
     - 'Yes'

@@ -7,7 +7,7 @@ detailInputs:
       - in the fresh section
       - in the frozen section
       - at room temperature
-  - label: Product Name
+  - label: Product name
     type: TEXT
   - label: Brand
     type: TEXT
@@ -18,7 +18,7 @@ detailInputs:
   - label: Deadline (if possible)
     type: DATE
     optional: true
-  - label: Date of finding (or date of purchase as the case may be)
+  - label: Date of discovery of the incident (or date of purchase if relevant)
     type: DATE_NOT_IN_FUTURE
     defaultValue: SYSDATE
   - label: "What is the problem\_?"

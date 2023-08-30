@@ -472,7 +472,8 @@ export const en = {
       askQuestionToFraudRepression: 'I want to ask a question to Fraud Control',
       cantFindWhereToAsk: "I can't find where to do it",
       cantFindWhereToAskContent1: 'Depending on the category you selected when making your report, this button will appear:',
-      cantFindWhereToAskContent2: 'It is not available in all categories.',
+      cantFindWhereToAskContent2:
+        'It is not available in all categories. Currently, in the English version of SignalConso, it is not available at all.',
       whereToEnterQuestion: 'Where do I submit my question?',
       whereToEnterQuestionContent: 'You will be able to give details about your situation and write your question in step 2:',
       errorOnSendOrNextQuestion: 'I get an error message when I click "send" or "next"',
@@ -1019,9 +1020,9 @@ export const en = {
     step_pageTitle_consumer: `Consumer`,
     step_pageTitle_confirm: `Confirmation`,
     timeFromTo: (from: number, to: number) => `From ${from}h to ${to}h`,
-    detailsTextAreaTransmittable: `The information you give below will be <b>read by the business</b>. It may also be viewed by Fraud Control.`,
-    detailsTextAreaTransmittableAnonymous: ` If you do not want the business to know your identity, <b>do not mention anything personal</b>.`,
-    detailsTextAreaNotTransmittable: `The information you give below will be read <b>by Fraud Control only.</b>`,
+    detailsTextAreaTransmittable: `The informations you write below will be <b>read by the company</b>. It may also be viewed by Fraud Control.`,
+    detailsTextAreaTransmittableAnonymous: ` If you do not want the company to know your identity, <b>do not mention anything personal</b>.`,
+    detailsTextAreaNotTransmittable: `The informations you write below will be read <b>by Fraud Control only.</b>`,
     detailsTextAreaEmployeeConsumer: `No information will be shared with your employer.`,
     detailsAlertProduitDangereux: {
       title: `Emergency numbers`,
@@ -1072,16 +1073,17 @@ export const en = {
     problemIsInternetCompany: `Does your issue relate to an online business?`,
     problemIsInternetCompanyNo: `No, not online`,
     whatsYourIntent: `What do you want to do ?`,
-    problemContractualDisputeFormYes: `Resolve my dispute with the business`,
-    problemContractualDisputeFormDesc: `Examples of resolutions include receiving the parcel, getting a refund, receiving a personalised response, or some other action.`,
-    problemContractualDisputeFormNo: `Report an issue so that the business can make improvements`,
-    problemContractualDisputeFormNoDesc: `Examples in this case include meeting delivery times, displaying prices more clearly, or improving hygiene practices.`,
+    problemContractualDisputeFormYes: `Resolve my dispute with the company`,
+    problemContractualDisputeFormDesc: `Examples: receiving the parcel, getting a refund, receiving a personalized response, ...`,
+    problemContractualDisputeFormNo: `Report an issue so that the company can make improvements`,
+    problemContractualDisputeFormNoDesc: `Examples: honoring delivery times, displaying prices more clearly, or improving hygiene practices.`,
     problemContractualDisputeFormReponseConso: `I would like Fraud Control to give me information about my rights`,
     problemContractualDisputeFormReponseConsoExample: `Example: What is the validity period of the quotes I was given? Can a store sell expired products? ...`,
-    consumerWishFixContractualDispute: `Your report will be forwarded to the company. Fraud Control does not get involved in resolving individual cases, but <strong>reporting an issue may encourage a business to get in touch with you.</strong>`,
+    consumerWishFixContractualDispute: `Your report will be forwarded to the company. Fraud Control does not get involved in resolving individual cases, but <strong>reporting the issue may encourage the company to respond to you.</strong>`,
     consumerWishCompanyImprovement: `Your report will be forwarded to the company. You may choose to remain anonymous.`,
     consumerWishGetAnswer: `A member of staff will get back to you shortly.`,
-    consumerWishInvestigationIsPossible: 'Fraud Control may decide to open an investigation based on the information you give.',
+    consumerWishInvestigationIsPossible:
+      'Fraud Control may decide to open an investigation based on the informations you provide.',
     consumerWishInvestigationIsPossible2:
       'If a business receives an excessively high volume or frequent number of reports, Fraud Control will investigate the companies in question.',
     informationRatingSaved: `Your comments have been recorded, thank you.`,
@@ -1104,9 +1106,9 @@ export const en = {
     attachments: `Attachments: `,
     backToHome: `Go back to home page`,
     city: `City`,
-    attachmentsDescAnonymous: `If you do not want the business to know your identity, <b style="color: black">remove your name</b> where it appears on your attachments.`,
+    attachmentsDescAnonymous: `If you do not want the company to know your identity, <b style="color: black">remove your name</b> where it appears on your attachments.`,
     attachmentsDescAllowedFormat: (formats: string[]) => `The following formats are accepted : ${formats.join(', ')}`,
-    attachmentsDesc2: `Including an attachment <strong>GREATLY</strong> increases your chances that corrective action will be taken.<br/> You do not need to share private or sensitive information (e.g. bank account details or medical records).`,
+    attachmentsDesc2: `Including an attachment <strong>GREATLY</strong> increases your chances that corrective action will be taken.<br/> You must not share private or sensitive information (e.g. bank account details or medical records).`,
     maxAttachmentsZero: (max: number) => `You can upload up to ${max} attachments`,
     maxAttachmentsReached: (max: number) => `${max} attachments limit reached`,
     maxAttachmentsCurrent: (current: number) => `You can still upload up to ${current} attachments`,
@@ -1115,19 +1117,19 @@ export const en = {
     menu_help: `Help`,
     menu_authSpace: `Pro space`,
     website: 'Website',
-    canYouIdentifyCompany: `Can you identify the business?`,
+    canYouIdentifyCompany: `Can you identify the company?`,
     canYouIdentifyCompanyDesc: `SignalConso needs to know this in order to be able to contact them and notify Fraud Control.`,
     websitePlaceholder: 'Example: https://www.site.com',
-    identifyBy_name: `Name and post code`,
-    identifyBy_nameDesc: `French-based business only`,
+    identifyBy_name: `By its name and post code`,
+    identifyBy_nameDesc: `French companies only`,
     identifyBy_identity: `By its SIRET or SIREN or RCS number`,
-    identifyBy_none: `I am unable to identify the business, or the business is outside France`,
-    identifyBy_noneDesc: `If you are unable to identify the business, you can continue with your report.
-      It will not be forwarded to the business, unless it is based in France and SignalConso can establish its identity.
+    identifyBy_none: `I am unable to identify the company, or the company is outside France`,
+    identifyBy_noneDesc: `If you are unable to identify the company, you can continue with your report.
+      It will not be forwarded to the company, unless it is based in France and SignalConso can establish its identity.
       In any event, the Fraud Control investigation team will be notified.`,
     couldYouPrecise: `Can you give us more details?`,
-    cantIdentifyCompany: `As you are unable to identify the business, please give your location so that we forward your report to the appropriate department.`,
-    cantIdentifyWebsiteCompany: `As you are unable to identify the business linked to the website, please give your location so that we can forward your report to the appropriate department.`,
+    cantIdentifyCompany: `As you are unable to identify the company, please give your location so that we forward your report to the appropriate department.`,
+    cantIdentifyWebsiteCompany: `As you are unable to identify the company linked to the website, please give your location so that we can forward your report to the appropriate department.`,
     cantIdentifyTransporterWebsiteCompany: `As you are unable to identify the carrier, please give your location so that we can forward your report to the appropriate department.`,
     cantIdentifyMerchantWebsiteCompany: `As you are unable to identify the seller, please give your location so that we can forward your report to the appropriate department.`,
     cantIdentifyLocationCompany: `As you are unable to identify the company that came to your home, please give your location so that we can try to connect the information you gave to other reports involving the same company that might have been made in your local area.`,
@@ -1144,6 +1146,7 @@ export const en = {
     closedCompanyText:
       'The company you are looking for has ceased trading. We cannot therefore process your report involving this company.',
     governmentCompany: 'Public-sector or government body',
+    siretNumber: 'SIRET number',
     cannotReportGovernmentCompany: 'It is not possible to report a public-sector organisation.',
     selectCompanyDesc: `If the company you are looking for does not appear, you can amend your search.`,
     isAFrenchCompany: `Is the company based in France?`,
@@ -1208,12 +1211,12 @@ export const en = {
       If our team are required to disclose your identity to a court authority or your employer as part of our investigation, they will ask for your permission first. 
       <b>You can decline this request.</b>
     `,
-    consumerAnonymousInformation: `You will remain anonymous, but the business will not be able to resolve your specific issue. This means that resolutions such as refunds or personalised responses will not be possible.`,
+    consumerAnonymousInformation: `You will remain anonymous, but the company will not be able to resolve your specific issue. This means that resolutions such as refunds or personalised responses will not be possible.`,
     confirmationTitle: `Summary of your issue`,
-    confirmationAlertTransmittable: `Check over your report before sending it to the company and to Fraud Control.`,
-    confirmationAlert: `Check over your report before sending it to Fraud Control.`,
+    confirmationAlertTransmittable: `Check every detail of your report before sending it to the company and to Fraud Control.`,
+    confirmationAlert: `Check every detail of your report before sending it to Fraud Control.`,
     contactAgreementTrueTitle: `I am sharing`,
-    contactAgreementTrueDesc: `my contact details and reference number with the company or business so that they can contact me regarding my report (<b>only</b>). I understand that Fraud Control will not have access to these communications and will not therefore be able to monitor them.`,
+    contactAgreementTrueDesc: `my contact details and reference number with the company or business so that they can contact me regarding my report (<b>and nothing else</b>). I understand that Fraud Control will not have access to these communications and will not therefore be able to monitor them.`,
     contactAgreementFalseTitle: `I have opted not to share`,
     contactAgreementFalseDesc: `my contact details or reference number with the company. Only Fraud Control will be able to access these details.`,
     companySelectCountryTitle: `Select the country where the company is based`,
@@ -1222,14 +1225,14 @@ export const en = {
     companyWebsiteVendorLabel: `Name of the third-party seller`,
     companyWebsiteVendorDesc: (companyName: string) => `Only if the seller is not ${companyName}`,
     companyIdentityHelperDesc: `
-    Siret, Siren and RCS numbers are all company identifiers.<br/>
-    Siret is a 14-digit code; Siren is a 9-digit code.<br/>
+    SIRET, SIREN and RCS numbers are all identifiers for French companies.<br/>
+    SIRET is a 14-digit code; SIREN is a 9-digit code.<br/>
     The RCS number is made up of:<br/>
       <ul>
         <li>the reference ""RCS""</li>
         <li>the name of the town/city of registration</li>
         <li>one letter (A or B)</li>
-        <li>the Siren number</li>
+        <li>the SIREN number</li>
       </ul>
     `,
     noMatchingCompanyDesc: `Please amend your search or include the company identifiers in your search.`,
@@ -1317,26 +1320,26 @@ export const en = {
       sentReport: `Your report has been sent.`,
       notSentReport: `Your report will not be sent to this business.`,
       whatWillHappenToCompany: `What will happen to the company?`,
-      questionTransmittedToDGCCRF: `Your question is forwarded to the Directorate General for Competition, Consumer Affairs, and Fraud Control (<abbr title="Direction Générale de la Concurrence, Consommation et Répression des Fraudes">DGCCRF</abbr>).`,
-      yourDetailsForInvestigators: `Your details are for <b>'investigators' use only</b>.`,
-      fraudsResponseTime: `The fraud control authority will respond to you as soon as possible.`,
+      questionTransmittedToDGCCRF: `Your question is forwarded to the Directorate General for Competition, Consumer Affairs, and Fraud Control (<abbr title="Direction Générale de la Concurrence, Consommation et Répression des Fraudes">DGCCRF</abbr>) - also known as "Fraud Control".`,
+      yourDetailsForInvestigators: `Your details are <b>for Fraud Control's investigators use only</b>.`,
+      fraudsResponseTime: `Fraud Control will respond to you as soon as possible.`,
       youIndicatedEmployment: `You indicated that you are an employee of the reported company.`,
-      jobSecurityGuarantee: `To ensure the security of your job, your report will not be sent to the company. However, it has been recorded in the fraud control authority's database (<abbr title="Direction Générale de la Concurrence, Consommation et Répression des Fraudes">DGCCRF</abbr>).`,
+      jobSecurityGuarantee: `To ensure the security of your job, your report will not be sent to the company. However, it has been recorded in Fraud Control's database (<abbr title="Direction Générale de la Concurrence, Consommation et Répression des Fraudes">DGCCRF</abbr>).`,
       foreignCompanyReport: (countryName: string) => `You indicated that the company is a foreign business (${countryName}).`,
       reportToEuropeanConsumers: `We invite you to report directly to the European Consumer Centre for assistance in resolving your issue.`,
       reportToAndorraCommerce: `We invite you to report directly to the Andorra Commerce and Consumer Service.`,
-      investigatorsTransferToAuthorities: `However, fraud control investigators will transfer it to the competent authorities of that country.`,
+      investigatorsTransferToAuthorities: `However, Fraud Control's investigators will transfer it to the competent authorities of that country.`,
       reportToEConsumer: `We encourage you to report to econsumer.gov to assist international authorities in combating fraud.`,
       whatWillHappenNow: `What will happen now?`,
-      reportReadByDGCCRF: `Your report will be read <b>only</b> by the Directorate General for Competition, Consumer Affairs, and Fraud Control (<abbr title="Direction Générale de la Concurrence, Consommation et Répression des Fraudes">DGCCRF</abbr>).`,
+      reportReadByDGCCRF: `Your report will be read <b>only</b> by the Directorate General for Competition, Consumer Affairs, and Fraud Control (<abbr title="Direction Générale de la Concurrence, Consommation et Répression des Fraudes">DGCCRF</abbr>) - also known as "Fraud Control".`,
       investigatorContactPossible: `Investigators may contact you to check your identity or request additional information regarding your report.`,
-      reportTransmittedToDGCCRF: `<p>Your report is transmitted to the Directorate General for Competition, Consumer Affairs, and Fraud Control (<abbr title="Direction Générale de la Concurrence, Consommation et Répression des Fraudes">DGCCRF</abbr>).</p><p>However, it will not be forwarded to the reported company unless the company is French and identifiable by the SignalConso team. In that case, you will receive a notification.</p>`,
-      fraudsNotHandlingIndividualIssues: `The fraud control authority does not directly handle individual issues (disputes) between a consumer and a company.`,
+      reportTransmittedToDGCCRF: `<p>Your report is transmitted to the Directorate General for Competition, Consumer Affairs, and Fraud Control (<abbr title="Direction Générale de la Concurrence, Consommation et Répression des Fraudes">DGCCRF</abbr>) - also known as "Fraud Control".</p><p>However, it will not be forwarded to the reported company unless the company is French and identifiable by the SignalConso team. In that case, you will receive a notification.</p>`,
+      fraudsNotHandlingIndividualIssues: `Fraud Control does not directly handle individual issues (disputes) between a consumer and a company.`,
       companyHasThreeMonths: `The company has three months to review the report.`,
-      fraudsCanInvestigate: `The fraud control authority may initiate an investigation with the establishment if many consumers are affected or if the practice is particularly severe.`,
+      fraudsCanInvestigate: `Fraud Control may initiate an investigation with the establishment if many consumers are affected or if the practice is particularly severe.`,
       emailWithNextSteps: `You will receive an email outlining the steps that SignalConso encourages you to take in parallel.`,
-      companyReceivesReport: `<p>The company will receive your report. It will have the opportunity to directly address the issue using your information. Your name and contact details will be provided to the company if they wish to respond to you.</p><p>Your report is also transmitted to the Directorate General for Competition, Consumer Affairs, and Fraud Control (<abbr title="Direction Générale de la Concurrence, Consommation et Répression des Fraudes">DGCCRF</abbr>). If your issue concerns other consumers, the fraud control authority will conduct an inspection of the establishment.</p>`,
-      companyReceivesReportWithoutIdentity: `<p>The company will receive your report without knowing your identity. It will have the opportunity to directly address the issue using your information.</p><p>Your report is also transmitted to the Directorate General for Competition, Consumer Affairs, and Fraud Control (<abbr title="Direction Générale de la Concurrence, Consommation et Répression des Fraudes">DGCCRF</abbr>). If your issue concerns other consumers, the fraud control authority will conduct an inspection of the establishment.</p>`,
+      companyReceivesReport: `<p>The company will receive your report. It will have the opportunity to directly address the issue using your information. Your name and contact details will be provided to the company if they wish to respond to you.</p><p>Your report is also transmitted to the Directorate General for Competition, Consumer Affairs, and Fraud Control (<abbr title="Direction Générale de la Concurrence, Consommation et Répression des Fraudes">DGCCRF</abbr>) - also known as "Fraud Control". If your issue concerns other consumers, Fraud Control will conduct an inspection of the establishment.</p>`,
+      companyReceivesReportWithoutIdentity: `<p>The company will receive your report without knowing your identity. It will have the opportunity to directly address the issue using your information.</p><p>Your report is also transmitted to the Directorate General for Competition, Consumer Affairs, and Fraud Control (<abbr title="Direction Générale de la Concurrence, Consommation et Répression des Fraudes">DGCCRF</abbr>) - also known as "Fraud Control". If your issue concerns other consumers, Fraud Control will conduct an inspection of the establishment.</p>`,
       paidWithCreditCard: `Did you pay with your credit card?`,
       chargeBack: `Through the charge-back procedure, you may be eligible for a refund following an online purchase:`,
       emailForErrorInReport: `In case of an error in your report, send an email to `,
