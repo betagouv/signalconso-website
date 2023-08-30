@@ -35,10 +35,13 @@ export function ScHeader() {
             Française
           </>
         }
-        homeLinkProps={{
-          href: `/${currentLang}`,
-          title: m.header.homeLinkTitle,
-        }}
+        homeLinkProps={
+          {
+            href: `/${currentLang}`,
+            // The accessibility audit told us not to put a title attribute here
+            // The types ask for it but actually it works without
+          } as any
+        }
         operatorLogo={{
           alt: 'SignalConso',
           imgUrl: '/image/logo-signalconso.png',
