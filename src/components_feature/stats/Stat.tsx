@@ -3,13 +3,13 @@ import {Skeleton} from '@mui/material'
 import {useQuery} from '@tanstack/react-query'
 import {CountByDate} from 'clients/SignalConsoApiClient'
 import {useI18n} from 'i18n/I18n'
-import React from 'react'
+import React, {useEffect, useId} from 'react'
 import {Bar, BarChart, CartesianGrid, Legend, ResponsiveContainer, Tooltip, XAxis, YAxis} from 'recharts'
 import {Txt} from '../../components_simple/Txt'
 import {ifDefined} from '../../utils/utils'
 
 interface Props {
-  name?: string
+  name: string
   title: string
   description?: string
   percentage?: boolean
@@ -62,8 +62,28 @@ export const Stat = React.memo(({name, count, curve, title, description, percent
   )
 })
 
-function ActualChart({data, name}: {data: {date: string; count: number}[]; name?: string}) {
+// Polling to detect when the SVG is mounted
+// The usual method with the ref attribute didn't seem to work
+// it's probably not implemented correctly by the underlying lib
+function useElementManualModification(eltId: string, applyModification: (elt: Element) => void) {
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      const elt = document.getElementById(eltId)
+      if (elt) {
+        applyModification(elt)
+        clearInterval(intervalId)
+      }
+    }, 100)
+    return () => clearInterval(intervalId)
+  }, [])
+}
+
+function ActualChart({data, name}: {data: {date: string; count: number}[]; name: string}) {
   const dsfrTheme = useColors()
+  const svgId = useId()
+  useElementManualModification(svgId, svg => {
+    svg.setAttribute('aria-label', name)
+  })
   return (
     <ResponsiveContainer width="100%" height="100%">
       <BarChart
@@ -76,6 +96,7 @@ function ActualChart({data, name}: {data: {date: string; count: number}[]; name?
         }}
         role="img"
         accessibilityLayer
+        id={svgId}
       >
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="date" />
