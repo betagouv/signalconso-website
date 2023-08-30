@@ -1,4 +1,5 @@
 import {useColors} from '@codegouvfr/react-dsfr/useColors'
+import {Skeleton} from '@mui/material'
 import {useQuery} from '@tanstack/react-query'
 import {CountByDate} from 'clients/SignalConsoApiClient'
 import {useI18n} from 'i18n/I18n'
@@ -6,7 +7,6 @@ import React from 'react'
 import {Bar, BarChart, CartesianGrid, Legend, ResponsiveContainer, Tooltip, XAxis, YAxis} from 'recharts'
 import {Txt} from '../../components_simple/Txt'
 import {ifDefined} from '../../utils/utils'
-import {Skeleton} from '@mui/material'
 
 interface Props {
   name?: string
@@ -26,7 +26,7 @@ export const Stat = React.memo(({name, count, curve, title, description, percent
     date: (m.monthShort_ as any)[date.getMonth() + 1],
     count,
   })
-  const dsfrTheme = useColors()
+
   return (
     <div className="border border-solid border-black p-4">
       {_count.data ? (
@@ -54,34 +54,36 @@ export const Stat = React.memo(({name, count, curve, title, description, percent
           {_curve.isLoading ? (
             <div className="h-full w-full bg-gray-200 rounded-xl" />
           ) : (
-            _curve.data && (
-              <ResponsiveContainer width="100%" height="100%">
-                <BarChart
-                  data={_curve.data.map(formatCurveDate)}
-                  margin={{
-                    top: 5,
-                    right: 30,
-                    left: 20,
-                    bottom: 5,
-                  }}
-                >
-                  <CartesianGrid strokeDasharray="3 3" />
-                  <XAxis dataKey="date" />
-                  <YAxis />
-                  <Tooltip />
-                  <Legend />
-                  <Bar
-                    legendType={'none'}
-                    name={name}
-                    dataKey="count"
-                    fill={dsfrTheme.decisions.artwork.minor.blueEcume.default}
-                  />
-                </BarChart>
-              </ResponsiveContainer>
-            )
+            _curve.data && <ActualChart data={_curve.data.map(formatCurveDate)} name={name} />
           )}
         </div>
       )}
     </div>
   )
 })
+
+function ActualChart({data, name}: {data: {date: string; count: number}[]; name?: string}) {
+  const dsfrTheme = useColors()
+  return (
+    <ResponsiveContainer width="100%" height="100%">
+      <BarChart
+        data={data}
+        margin={{
+          top: 5,
+          right: 30,
+          left: 20,
+          bottom: 5,
+        }}
+        role="img"
+        accessibilityLayer
+      >
+        <CartesianGrid strokeDasharray="3 3" />
+        <XAxis dataKey="date" />
+        <YAxis />
+        <Tooltip />
+        <Legend />
+        <Bar legendType={'none'} name={name} dataKey="count" fill={dsfrTheme.decisions.artwork.minor.blueEcume.default} />
+      </BarChart>
+    </ResponsiveContainer>
+  )
+}
