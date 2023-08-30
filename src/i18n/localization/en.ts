@@ -825,7 +825,7 @@ export const en = {
         'SignalConso is a free public service that allows consumers to report issues they experience with companies and businesses.  Make a report, resolve an issue you are experiencing, or find out about your rights.',
       text2: 'It is published by the ',
       dgccrfLink: 'Directorate General for Competition Policy, Consumer Affairs and Fraud Control (DGCCRF)',
-      homeLinkTitle: 'Report an issue – SignalConso',
+      homeLinkTitle: 'DGCCRF (Go to the main page)',
       connexionLinkTitle: 'DGCCRF staff access',
       privacyTitle: 'Tracking and privacy',
       cookiesTitle: 'About cookies',
@@ -840,7 +840,7 @@ export const en = {
       linkedinTitle: 'Follow Fraud Control on LinkedIn (opens in new window)',
     },
     header: {
-      homeLinkTitle: 'Report an issue – SignalConso',
+      homeLinkTitle: `SignalConso (Go to the main page)`,
       connexionLinkTitle: `Business owners portal`,
       indexLinkTitle: 'Report an issue',
       commentCaMarcheLinkTitle: 'How does it work?',
