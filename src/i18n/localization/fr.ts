@@ -1141,7 +1141,8 @@ export const fr = {
     websitePlaceholder: 'Exemple: https://www.site.fr',
     identifyBy_name: `Par son nom et son code postal`,
     identifyBy_nameDesc: `Entreprise française uniquement`,
-    identifyBy_identity: `Par son SIRET ou SIREN ou RCS`,
+    identifyBy_identity: `Par son numéro d'identification SIRET ou SIREN ou RCS`,
+    identifyBy_identityDesc: `Nous vous dirons où les trouver`,
     identifyBy_none: `Je ne peux pas identifier l'entreprise ou l'entreprise est à l'étranger`,
     identifyBy_noneDesc: `Si vous ne parvenez pas à identifier l'entreprise, vous pouvez continuer votre signalement.
       Il ne sera pas transmis à l'entreprise, sauf si cette dernière est française et identifiable par l'équipe de SignalConso.
@@ -1155,6 +1156,7 @@ export const fr = {
     cantIdentifyPhoneCompany: `Comme vous ne pouvez pas identifier l'entreprise que vous avez eu par téléphone, merci de préciser votre localisation afin que nos services puissent tenter de rapprocher ces informations avec celles qu'auraient éventuellement déposées vos voisins, ayant été en contact avec la même entreprise que vous`,
     companyIdentityLabel: `Numéro SIRET ou SIREN ou RCS de l'entreprise`,
     companyIdentityPlaceholder: `Ex: 83350861700010`,
+    howToFindThem: `Où les trouver ?`,
     postalCode: `Code postal`,
     youCanSearchByCity: `Vous pouvez chercher par ville ou saisir le code postal`,
     aboutCompany: `Informations sur l'entreprise`,
