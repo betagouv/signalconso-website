@@ -9,6 +9,7 @@ import sortBy from 'lodash/sortBy'
 import {allVisibleAnomalies, findAnomaly} from '../anomalies/Anomalies'
 import {LandingData} from '../landings/landingDataUtils'
 import groupBy from 'lodash/groupBy'
+import {AppLang, AppLangs} from '../i18n/localization/AppLangs'
 
 // This script reads data from our Airtable account
 // Then it outputs all the texts for our landing pages.
@@ -16,13 +17,14 @@ import groupBy from 'lodash/groupBy'
 // WE COMMIT THE OUTPUT.
 // This script is meant to be rerun only occasionally when needed.
 
-const outputFile = path.join(__dirname, '..', 'landings', 'landingsData.ts')
+const outputFile = (lang: AppLang) => path.join(__dirname, '..', 'landings', `landingsData_${lang}.ts`)
 
 const BASE_ID = 'appdO2KcJrc2RI28f'
 const PUBLISHED_STATUS = 'PUBLIEE'
 
 type RawRow = {
   status?: string
+  lang: AppLangs
   isSemiAutomatic?: boolean
   targetedCategory?: string[]
   url?: string
@@ -46,23 +48,24 @@ function setupAirtable() {
   return base
 }
 
-async function start() {
+async function start(lang: AppLang) {
   const base = setupAirtable()
   const rows = await readLandingPagesTable(base)
-  const rowsPublished = rows.filter(_ => _.status === PUBLISHED_STATUS)
+  const rowsPublished = rows.filter(_ => _.status === PUBLISHED_STATUS && _.lang === lang)
+
   console.log(`Found ${rowsPublished.length} landings with ${PUBLISHED_STATUS} status`)
   const rowsTranformed = rowsPublished.map(validateAndTransformRow)
-  checkNoMissingOrDuplicateAnomalies(rowsTranformed)
+  checkNoMissingOrDuplicateAnomalies(rowsTranformed, lang)
   checkNoDuplicates(rowsTranformed)
   // we impose a consistent order, for easier diffs
   const rowsSorted = sortConsistently(rowsTranformed)
   console.log(`Generating output file ${outputFile}`)
   fs.writeFileSync(
-    outputFile,
+    outputFile(lang),
     `// ----------------------------------------------
   // ---- Generated file, do not edit manually ---
   // ----------------------------------------------
-  export const landingsData = ` +
+  export const ${lang}LandingsData = ` +
       JSON.stringify(rowsSorted, null, 2) +
       ';',
   )
@@ -82,6 +85,7 @@ function throwForInvalidUrlFieldWithSpecialChars(): never {
 function validateAndTransformRow(row: RawRow): RowTranformed {
   let {
     isSemiAutomatic,
+    lang,
     url,
     seoTitle,
     seoDescription,
@@ -101,7 +105,7 @@ function validateAndTransformRow(row: RawRow): RowTranformed {
   targetedCategory = targetedCategory ?? []
   isSemiAutomatic = isSemiAutomatic ?? false
   // All the specified categories should exist
-  targetedCategory?.forEach(_ => findAnomaly(_, 'fr'))
+  targetedCategory?.forEach(_ => findAnomaly(_, lang))
 
   if (isSemiAutomatic) {
     if (targetedCategory.length !== 1) {
@@ -114,7 +118,7 @@ function validateAndTransformRow(row: RawRow): RowTranformed {
     }
     // Compute some fields from the YML
     const category = targetedCategory[0]
-    const anomaly = findAnomaly(category, 'fr')
+    const anomaly = findAnomaly(category, lang)
     url = anomaly.path
     seoTitle = anomaly.seoTitle
     seoDescription = anomaly.seoDescription
@@ -133,10 +137,11 @@ function validateAndTransformRow(row: RawRow): RowTranformed {
   }
 
   // if multiple categories, always sort them in the same order as the HP
-  targetedCategory = sortBy(targetedCategory, _ => parseInt(findAnomaly(_, 'fr').id, 10))
+  targetedCategory = sortBy(targetedCategory, _ => parseInt(findAnomaly(_, lang).id, 10))
 
   return {
     url,
+    lang,
     isSemiAutomatic,
     seoTitle,
     seoDescription,
@@ -158,6 +163,7 @@ async function readLandingPagesTable(base: AirtableBase) {
     // then select the workspace immediately in this first page
     // That's where I got these fields IDs
     status: 'fldqrsAm8Jz4LZWkC',
+    lang: 'fldp4yP7hYn3oSAmH',
     isSemiAutomatic: 'fldLJOrafPET3x1Mp',
     targetedCategory: 'fldxgFIs3QWNjM2Tj',
     url: 'fldMDKAoeiWysOEvZ',
@@ -207,16 +213,17 @@ async function readWholeTable(base: AirtableBase, tableId: string, fieldsMapping
 }
 
 // All anomalies should have exactly 1 semi-automatic LP
-function checkNoMissingOrDuplicateAnomalies(rows: RowTranformed[]) {
-  allVisibleAnomalies('fr').forEach(anomaly => {
+function checkNoMissingOrDuplicateAnomalies(rows: RowTranformed[], lang: AppLang) {
+  allVisibleAnomalies(lang).forEach(anomaly => {
     const matchingRows = rows
       .filter(_ => _.isSemiAutomatic)
       .filter(_ => _.targetedCategory.length === 1 && _.targetedCategory[0] === anomaly.category)
 
-    if (matchingRows.length === 0) {
+    if (matchingRows.length === 0 && lang === AppLangs.fr) {
+      console.log(rows)
       throw new Error(`Missing semi automatic landing page targeting specifically ${anomaly.category}`)
     }
-    if (matchingRows.length > 1) {
+    if (matchingRows.length > 1 && lang === AppLangs.fr) {
       throw new Error(
         `Several semi automatic landing pages (${matchingRows.length}) are targeting specifically ${anomaly.category}`,
       )
@@ -325,4 +332,5 @@ const seededRandom = {
   },
 }
 
-start()
+start('fr')
+start('en')

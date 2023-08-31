@@ -4,6 +4,7 @@ import path from 'path'
 import {appConfig} from '../core/appConfig'
 import {newsArticlesData} from '../components_feature/actualites/newsArticlesData'
 import {buildLinkLandingPage, buildLinkNewsArticle, internalPageDefs} from '../core/pagesDefinitions'
+import {AppLangs} from '../i18n/localization/AppLangs'
 
 interface SitemapItem {
   url: string
@@ -17,11 +18,16 @@ const sitemapItems: SitemapItem[] = [
   ...Object.values(internalPageDefs)
     .filter(_ => !_.noIndex)
     .map(_ => ({url: _.url, hasAlternate: _.hasAlternate, priority: 1})),
-  ...allVisibleLandings()
-    .map(buildLinkLandingPage)
-    .map(url => ({url, priority: 1})),
+  ...landing(AppLangs.fr),
+  ...landing(AppLangs.en),
   ...newsArticlesData.map(buildLinkNewsArticle).map(url => ({url, priority: 1})),
 ]
+
+function landing(lang: AppLangs) {
+  return allVisibleLandings(lang)
+    .map(buildLinkLandingPage)
+    .map(url => ({url, priority: 1}))
+}
 
 //See https://developers.google.com/search/docs/specialty/international/localized-versions?hl=fr#sitemap
 function createSitemapXml(items: SitemapItem[]): string {

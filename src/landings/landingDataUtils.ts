@@ -1,8 +1,11 @@
 import {allVisibleAnomalies, findAnomaly} from '../anomalies/Anomalies'
-import {landingsData} from './landingsData'
+import {enLandingsData} from './landingsData_en'
+import {frLandingsData} from './landingsData_fr'
+import {AppLangs} from '../i18n/localization/AppLangs'
 
 export type LandingData = {
   isSemiAutomatic: boolean
+  lang: string
   // can target multiple categories, or one, or zero (then we target the homepage)
   targetedCategory: string[]
   url: string
@@ -15,8 +18,9 @@ export type LandingData = {
   sampleReports: {text: string; author: string}[]
 }
 
-export function allVisibleLandings(): LandingData[] {
-  const visibleAnomalies = allVisibleAnomalies('fr')
+export function allVisibleLandings(lang: AppLangs): LandingData[] {
+  const visibleAnomalies = allVisibleAnomalies(lang)
+  const landingsData = lang === AppLangs.fr ? frLandingsData : enLandingsData
   // Filter out the demo landing, if the demo category is not visible
   return landingsData.filter(landingData => {
     if (landingData.isSemiAutomatic) {
