@@ -31,7 +31,7 @@ export const CompanyIdentifyBy = ({companyKind, children}: Props) => {
           },
         ]
       : []),
-    {label: m.identifyBy_identity, value: IdentifyBy.IDENTITY},
+    {label: m.identifyBy_identity, description: m.identifyBy_identityDesc, value: IdentifyBy.IDENTITY},
     ...(companyKind !== 'SIRET'
       ? [
           {

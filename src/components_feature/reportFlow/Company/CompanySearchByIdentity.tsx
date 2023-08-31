@@ -1,4 +1,4 @@
-import {Box, Icon, IconButton} from '@mui/material'
+import {Icon, IconButton} from '@mui/material'
 import {useQuery} from '@tanstack/react-query'
 import {useAnalyticContext} from 'analytic/AnalyticContext'
 import {CompanySearchEventActions, EventCategories} from 'analytic/analytic'
@@ -6,8 +6,8 @@ import {useToastOnQueryError} from 'clients/apiHooks'
 import {Animate} from 'components_simple/Animate'
 import {ButtonWithLoader} from 'components_simple/Buttons'
 import {FormLayout} from 'components_simple/FormLayout'
-import {ScInput} from 'components_simple/formInputs/ScInput'
 import {Panel, PanelActions, PanelBody} from 'components_simple/Panel'
+import {ScInput} from 'components_simple/formInputs/ScInput'
 import {useApiClients} from 'context/ApiClientsContext'
 import {useI18n} from 'i18n/I18n'
 import {ReactNode, useRef, useState} from 'react'
@@ -60,14 +60,12 @@ export const CompanySearchByIdentity = ({children}: Props) => {
               <FormLayout
                 required
                 label={
-                  <Box sx={{display: 'inline-flex', alignItems: 'center'}}>
-                    {m.companyIdentityLabel}
+                  <span>
+                    {m.companyIdentityLabel}{' '}
                     <CompanySearchByIdentityHelpDialog>
-                      <IconButton sx={{ml: 1, color: t => t.palette.info.main}} size="small">
-                        <Icon>help</Icon>
-                      </IconButton>
+                      <button className="text-scbluefrance">({m.howToFindThem})</button>
                     </CompanySearchByIdentityHelpDialog>
-                  </Box>
+                  </span>
                 }
               >
                 <ScInput

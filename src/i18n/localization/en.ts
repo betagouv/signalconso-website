@@ -1129,6 +1129,7 @@ export const en = {
     identifyBy_name: `By its name and post code`,
     identifyBy_nameDesc: `French companies only`,
     identifyBy_identity: `By its SIRET or SIREN or RCS number`,
+    identifyBy_identityDesc: `These numbers identify every French company. We'll tell you how to find them`,
     identifyBy_none: `I am unable to identify the company, or the company is outside France`,
     identifyBy_noneDesc: `If you are unable to identify the company, you can continue with your report.
       It will not be forwarded to the company, unless it is based in France and SignalConso can establish its identity.
@@ -1142,6 +1143,7 @@ export const en = {
     cantIdentifyPhoneCompany: `As you are unable to identify the company you spoke with on the phone, please give your location so that we can try to connect the information you gave to other reports involving the same company that might have been made in your local area.`,
     companyIdentityLabel: `SIRET or SIREN or RCS number of the company`,
     companyIdentityPlaceholder: `Ex: 83350861700010`,
+    howToFindThem: `How to find them ?`,
     postalCode: `Post code`,
     youCanSearchByCity: `You can search by town/city or enter the post code`,
     aboutCompany: `About the company`,
