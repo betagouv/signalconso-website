@@ -825,7 +825,7 @@ export const en = {
         'SignalConso is a free public service that allows consumers to report issues they experience with companies and businesses.  Make a report, resolve an issue you are experiencing, or find out about your rights.',
       text2: 'It is published by the ',
       dgccrfLink: 'Directorate General for Competition Policy, Consumer Affairs and Fraud Control (DGCCRF)',
-      homeLinkTitle: 'Report an issue – SignalConso',
+      homeLinkTitle: 'DGCCRF (Go to the main page)',
       connexionLinkTitle: 'DGCCRF staff access',
       privacyTitle: 'Tracking and privacy',
       cookiesTitle: 'About cookies',
@@ -840,7 +840,7 @@ export const en = {
       linkedinTitle: 'Follow Fraud Control on LinkedIn (opens in new window)',
     },
     header: {
-      homeLinkTitle: 'Report an issue – SignalConso',
+      homeLinkTitle: `SignalConso (Go to the main page)`,
       connexionLinkTitle: `Business owners portal`,
       indexLinkTitle: 'Report an issue',
       commentCaMarcheLinkTitle: 'How does it work?',
@@ -1062,10 +1062,14 @@ export const en = {
       11: 'Nov',
       12: 'Déc',
     },
+    inMonth: 'in',
     gender: {
       Male: 'Mr.',
       Female: 'Ms.',
     },
+    detailGraphDataAvailable: 'detailed graph data available below',
+    seeRawGraphData: 'See raw graph data',
+    fold: 'hide',
     unknownGender: `Not specified`,
     bannerCookie: `SignalConso only uses technical cookies, which do not require user consent.`,
     bannerCookieRemark: `Regarding cookies on signalconso.gouv.fr`,
@@ -1318,6 +1322,11 @@ export const en = {
     whichWebsiteMerchantText: 'Give the name of the merchant',
 
     thereAreSimilarReports: 'One or more similar reports have already been made',
+    websiteDoesNotExist1: 'The website you have indicated does not seem to be available.',
+    websiteDoesNotExist2: 'Perhaps you made a typo?',
+    websiteDoesNotExist3: 'It may have been deleted by its owner or host',
+    websiteDoesNotExist4:
+      'If you are sure of the spelling, you can still report it, and we will be able to cross-check it with other reports.',
     acknoledgment: {
       sentReport: `Your report has been sent.`,
       notSentReport: `Your report will not be sent to this business.`,

@@ -28,12 +28,18 @@ export function ScFooter() {
             .
           </>
         }
-        operatorLogo={{orientation: 'horizontal', imgUrl: '/image/logo-dgccrf.png', alt: 'Logo DGCCRF'}}
+        operatorLogo={{orientation: 'horizontal', imgUrl: '/image/logo-dgccrf.png', alt: m.footer.homeLinkTitle}}
         websiteMapLinkProps={{href: `/${currentLang}${pagesDefs.planDuSite.url}`}}
         accessibility="partially compliant"
         accessibilityLinkProps={{href: `/${currentLang}${pagesDefs.accessibilite.url}`}}
         termsLinkProps={{href: `/${currentLang}${pagesDefs.conditionsGeneralesUtilisation.url}`}}
-        homeLinkProps={{href: `/${currentLang}`, title: m.footer.homeLinkTitle}}
+        homeLinkProps={
+          {
+            href: `/${currentLang}`,
+            // The accessibility audit told us not to put a title attribute here
+            // The types ask for it but it still works without it
+          } as any
+        }
         bottomItems={[
           buildMenuLink(currentLang, pathName, pagesDefs.suiviEtViePrivee.url, m.footer.privacyTitle),
           buildMenuLink(currentLang, pathName, pagesDefs.cookies.url, m.footer.cookiesTitle),
