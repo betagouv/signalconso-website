@@ -1,6 +1,8 @@
 import {ArticleAppMobile} from './ArticleAppMobile'
 import {ArticleQuestionnaireSiteDgccrf} from './ArticleQuestionnaireSiteDgccrf'
 import {ArticleAccessibilite} from './ArticleAccessibilite'
+import {ArticleSignalConsoTraduit} from './ArticleSignalConsoTraduit'
+import {ArticleSignalConsoTranslated} from './ArticleSignalConsoTranslated'
 
 export type NewsArticle = (typeof newsArticlesData)[number]
 
@@ -44,5 +46,21 @@ export const newsArticlesData = [
     // used for the preview in /news
     excerpt: `Discover now the new mobile application SignalConso, which makes your reports as a consumer even easier and simplifies your processes.`,
     content: ArticleAppMobile,
+  },
+  {
+    date: '2023-09-08',
+    lang: 'fr',
+    slug: 'signalconso-disponible-en-anglais',
+    title: 'SignalConso en anglais afin d’être accessibles aux touristes lors de la coupe du monde de rugby 2023 🏈',
+    excerpt: `SignalConso : l’application mobile et le site traduits en anglais afin d’être accessibles aux touristes lors de la coupe du monde de rugby 2023. `,
+    content: ArticleSignalConsoTraduit,
+  },
+  {
+    date: '2023-09-08',
+    lang: 'en',
+    slug: 'signalconso-available-in-english',
+    title: 'SignalConso translated into English to be accessible to tourists during the 2023 Rugby World Cup 🏈',
+    excerpt: `SignalConso: the mobile application and the site translated into English to be accessible to tourists during the 2023 Rugby World Cup.`,
+    content: ArticleSignalConsoTranslated,
   },
 ]
