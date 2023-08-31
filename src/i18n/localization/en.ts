@@ -1079,7 +1079,7 @@ export const en = {
     problemIsInternetCompany: `Does your issue relate to an online business?`,
     problemIsInternetCompanyNo: `No, not online`,
     whatsYourIntent: `What do you want to do ?`,
-    problemContractualDisputeFormYes: `Resolve my dispute with the company`,
+    problemContractualDisputeFormYes: `Resolve my personal issue with the company`,
     problemContractualDisputeFormDesc: `Examples: receiving the parcel, getting a refund, receiving a personalized response, ...`,
     problemContractualDisputeFormNo: `Report an issue so that the company can make improvements`,
     problemContractualDisputeFormNoDesc: `Examples: honoring delivery times, displaying prices more clearly, or improving hygiene practices.`,
