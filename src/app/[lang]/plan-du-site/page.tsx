@@ -109,23 +109,21 @@ const PlanDuSite = ({params}: any) => {
           <li>{m.planDuSite.accessManagement}</li>
           <li>{m.planDuSite.passwordModification}</li>
         </ul>
-        {params.lang === AppLangs.fr && (
-          <>
-            <h2 className="fr-h4">{m.planDuSite.newsSection}</h2>
-            <ul>
-              <li>
-                <Link href={pagesDefs.actualites.url}>{m.planDuSite.allNews}</Link>
-              </li>
-              {newsArticlesData.map(article => {
-                return (
-                  <li key={article.slug}>
-                    <Link href={buildLinkNewsArticle(article)}>{article.title}</Link>
-                  </li>
-                )
-              })}
-            </ul>
-          </>
-        )}
+        <h2 className="fr-h4">{m.planDuSite.newsSection}</h2>
+        <ul>
+          <li>
+            <Link href={pagesDefs.actualites.url}>{m.planDuSite.allNews}</Link>
+          </li>
+          {newsArticlesData
+            .filter(_ => _.lang === params.lang)
+            .map(article => {
+              return (
+                <li key={article.slug}>
+                  <Link href={buildLinkNewsArticle(article)}>{article.title}</Link>
+                </li>
+              )
+            })}
+        </ul>
         <h2 className="fr-h4">{m.planDuSite.dgccrfSpaceSection}</h2>
         <ul>
           <li>

@@ -58,9 +58,7 @@ export function ScFooter() {
               href: urlServicePublicPlus,
             },
           },
-          ...(currentLang === AppLangs.fr
-            ? [buildMenuLink(currentLang, pathName, pagesDefs.actualites.url, m.footer.actualitesLinkTitle)]
-            : []),
+          buildMenuLink(currentLang, pathName, pagesDefs.actualites.url, m.footer.actualitesLinkTitle),
         ]}
       />
     </>
