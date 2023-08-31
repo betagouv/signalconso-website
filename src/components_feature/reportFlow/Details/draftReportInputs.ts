@@ -18,7 +18,7 @@ export class DraftReportDefaultInputs {
   })
 
   static readonly date = (lang: AppLang): DetailInput => ({
-    label: lang === AppLangs.en ? 'Date of observation' : 'Date du constat',
+    label: lang === AppLangs.en ? 'Date of discovery of the incident' : 'Date du constat',
     type: DetailInputType.DATE_NOT_IN_FUTURE,
     defaultValue: 'SYSDATE',
   })

@@ -1,14 +1,14 @@
-title: Durée de vie trop courte
-desc: Vous trouvez que la durée de vie de votre appareil est trop courte
+title: Lifespan too short
+desc: You find that the life of your device is too short
 detailInputs:
-  - label: Date d'achat
+  - label: Date of purchase
     type: DATE
-  - label: Date du constat
+  - label: Date of discovery of the incident
     type: DATE
     defaultValue: SYSDATE
-  - label: Type de produit
+  - label: Type of product
     type: TEXT
-  - label: Nom / marque / référence
+  - label: Name / brand / reference
     type: TEXT
   - label: Description
     type: TEXTAREA

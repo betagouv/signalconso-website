@@ -1,13 +1,10 @@
 id: '80'
 category: CafeRestaurant
-title: Café / Restaurant
-seoTitle: Signalez un problème avec un café / restaurant à la répression des fraudes
+title: Cafe / Restaurant
+seoTitle: Report an issue with a cafe/restaurant
 path: cafe-restaurant
 description: >-
-  Descriptions incorrectes, manque d’hygiène, problème à la commande ou à la
-  livraison, …
+  Incorrect description, poor hygiene, problem with ordering or delivery, etc.
 seoDescription: >-
-  Les descriptions sont incorrectes (origine, fait maison, allergènes, halal).
-  L'établissement est sale, insalubre, problème de fraîcheur, d'hygiène,
-  intoxication ou problème à la commande / livraison
+  The descriptions are incorrect (origin, homemade, allergens, halal). The establishment is dirty, unsanitary, with freshness and hygiene issues, food poisoning, or problems with the order/delivery in France.
 img: category-restaurant

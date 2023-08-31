@@ -1,16 +1,10 @@
-title: Il manque certains prix
+title: Some prices are missing
 reponseconsoCode:
   - '212'
-tags:
-  - ReponseConso
-desc: "Exemple\_: absence de prix sur la carte des vins"
+desc: "Exemple\_: no prices given on the wine list"
 detailInputs:
-  - label: Date du constat
+  - label: Date of the finding
     type: DATE
     defaultValue: SYSDATE
-  - label: Description
-    type: TEXTAREA
-    placeholder: absence de carte des vins, absence des prix à l'extérieur du restaurant
 fileLabel: >-
-  Merci de joindre si possible des éléments pour appuyer votre signalement
-  (photo du menu, photo de la vitrine...)
+  If possible, please attach a photo or document to support your report.

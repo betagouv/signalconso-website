@@ -1,4 +1,4 @@
-title: Le personnel est peu aimable
-desc: "Exemple\_: l'accueil est froid, le personnel parle mal aux clients"
+title: Unfriendly staff
+desc: "Exemple\_: unfriendly welcome, poor attitude when speaking to customers"
 blockingInfo:
   customimport: _imports/blockingInfo/amabilite.yml

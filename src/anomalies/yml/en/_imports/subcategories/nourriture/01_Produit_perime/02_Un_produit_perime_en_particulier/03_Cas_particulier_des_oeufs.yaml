@@ -1,15 +1,15 @@
-title: Cas particulier des œufs
+title: Special case of eggs
 reponseconsoCode:
   - '323'
 detailInputs:
-  - label: "Quel est le problème\_?"
+  - label: "What is the problem\_?"
     type: RADIO
     options:
-      - La date est dépassée
-      - La date sera dépassée d'ici 7 jours
-  - label: Date de consommation recommandée
+      - The date has passed
+      - The date will be exceeded within 7 days
+  - label: Best before date
     type: DATE
-  - label: Date du constat (ou date d'achat)
+  - label: Date of discovery of the incident (or date of purchase)
     type: DATE_NOT_IN_FUTURE
     defaultValue: SYSDATE
 fileLabel: Photo

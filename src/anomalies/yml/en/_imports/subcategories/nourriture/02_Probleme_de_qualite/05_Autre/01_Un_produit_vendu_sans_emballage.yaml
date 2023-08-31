@@ -1,9 +1,9 @@
-title: Un produit vendu sans emballage
-desc: "Exemple\_: pizza dans une boulangerie, plat dans un restaurant"
+title: A product sold without packaging
+desc: "Example\_: pizza in a bakery, dish in a restaurant"
 detailInputs:
-  - label: Nom du produit
+  - label: Product name
     type: TEXT
-  - label: Date du constat (ou d'achat suivant le cas)
+  - label: Date of discovery of the incident (or date of purchase if relevant)
     type: DATE_NOT_IN_FUTURE
     defaultValue: SYSDATE
-fileLabel: Photo du produit
+fileLabel: Product picture

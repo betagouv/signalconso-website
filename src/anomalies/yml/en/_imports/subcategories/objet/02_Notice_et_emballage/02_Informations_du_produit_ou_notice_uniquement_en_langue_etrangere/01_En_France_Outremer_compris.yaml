@@ -1,13 +1,13 @@
-title: En France (Outre-mer compris)
+title: In France (including Overseas)
 reponseconsoCode:
   - '211'
 detailInputs:
-  - label: Date du constat
+  - label: Date of discovery of the incident
     type: DATE
     defaultValue: SYSDATE
-  - label: Nom / marque / type de produit
+  - label: Name / brand / type of product
     type: TEXT
-  - label: Référence
+  - label: Reference
     type: TEXT
   - label: Description
     type: TEXTAREA

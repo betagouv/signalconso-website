@@ -10,10 +10,10 @@ const trad = (lang: AppLang) => {
   const t = {
     en: {
       function: {
-        headOfProduct: 'Head of product',
-        headOfProductIntern: 'Head of product (intern)',
+        headOfProduct: 'Product manager',
+        headOfProductIntern: 'Product manager (intern)',
         bussinesDev: 'Business developer',
-        bussinesCoach: 'Business coach',
+        bussinesCoach: 'Product coach',
         dev: 'Software developer',
       },
       dgccrfJob: {

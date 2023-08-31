@@ -25,14 +25,14 @@ interface Props {
 }
 
 export const CompanySearchByIdentity = ({children}: Props) => {
-  const {m} = useI18n()
+  const {m, currentLang} = useI18n()
   const {companyApiClient} = useApiClients()
   const _analytic = useAnalyticContext()
   const {register, handleSubmit, reset} = useForm<Form>()
   const [submittedIdentity, setSubmittedIdentity] = useState<string | undefined>(undefined)
   const _searchByIdentity = useQuery(['searchCompaniesByIdentity', submittedIdentity], () => {
     if (submittedIdentity) {
-      return companyApiClient.searchCompaniesByIdentity(submittedIdentity, false)
+      return companyApiClient.searchCompaniesByIdentity(submittedIdentity, false, currentLang)
     }
     return null
   })

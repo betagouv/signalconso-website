@@ -838,6 +838,8 @@ export const fr = {
       dgccrfLink: 'Direction Générale de la Concurrence, de la Consommation et de la Répression des Fraudes',
       homeLinkTitle: "DGCCRF (Allez à l'accueil)",
       connexionLinkTitle: 'Espace DGCCRF',
+      privacyTitle: 'Suivi et vie privée',
+      cookiesTitle: 'Gestion des cookies',
       retractationLinkTitle: 'Info délai de rétractation',
       litigeLinkTitle: 'Info résolution de litige',
       actualitesLinkTitle: 'Actualités',
@@ -1159,6 +1161,7 @@ export const fr = {
     closedCompanyText:
       "L'entreprise que vous avez recherché n'est plus en activité. Nous ne pouvons donc malheureusement pas prendre votre signalement concernant cette entreprise.",
     governmentCompany: 'Administration publique',
+    siretNumber: 'Numéro SIRET',
     cannotReportGovernmentCompany: 'Impossible de signaler une administration publique.',
     selectCompanyDesc: `Si l'entreprise n'est pas celle recherchée, vous pouvez modifier votre recherche.`,
     isAFrenchCompany: `Est-ce que l'entreprise est en France ?`,

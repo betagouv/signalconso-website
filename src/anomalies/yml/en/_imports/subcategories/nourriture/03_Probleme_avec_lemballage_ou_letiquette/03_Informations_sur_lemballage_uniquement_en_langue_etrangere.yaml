@@ -1,15 +1,15 @@
-title: Informations sur l'emballage uniquement en langue étrangère
-desc: Aucune information traduite en français
+title: Packaging information only in foreign language
+desc: No information translated into French
 reponseconsoCode:
   - '273'
   - '211'
 detailInputs:
-  - label: Date du constat (ou d'achat suivant le cas)
+  - label: Date of discovery of the incident (or date of purchase if relevant)
     type: DATE_NOT_IN_FUTURE
     defaultValue: SYSDATE
-  - label: Type de produit
+  - label: Type of product
     type: TEXT
-  - label: Nom /marque
+  - label: Name / brand
     type: TEXT
-  - label: Qu'avez-vous constaté&#160;?
+  - label: What did you find ?
     type: TEXTAREA

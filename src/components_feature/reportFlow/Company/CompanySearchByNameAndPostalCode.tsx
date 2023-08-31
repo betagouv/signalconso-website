@@ -26,12 +26,12 @@ interface Props {
 }
 
 export const CompanySearchByNameAndPostalCode = ({children}: Props) => {
-  const {m} = useI18n()
+  const {m, currentLang} = useI18n()
   const {companyApiClient} = useApiClients()
   const [submittedForm, setSubmittedForm] = useState<Form | undefined>()
   const _search = useQuery(['searchCompanies', submittedForm?.name, submittedForm?.postalCode], () => {
     if (submittedForm) {
-      return companyApiClient.searchCompanies(submittedForm.name, submittedForm.postalCode)
+      return companyApiClient.searchCompanies(submittedForm.name, submittedForm.postalCode, currentLang)
     }
     return null
   })

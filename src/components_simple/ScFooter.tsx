@@ -34,9 +34,9 @@ export function ScFooter() {
         accessibilityLinkProps={{href: `/${currentLang}${pagesDefs.accessibilite.url}`}}
         termsLinkProps={{href: `/${currentLang}${pagesDefs.conditionsGeneralesUtilisation.url}`}}
         homeLinkProps={{href: `/${currentLang}`, title: m.footer.homeLinkTitle}}
-        // personalDataLinkProps={{href: pagesDefs.suiviEtViePrivee.url}}
-        // cookiesManagementLinkProps={{href: pagesDefs.cookies.url}}
         bottomItems={[
+          buildMenuLink(currentLang, pathName, pagesDefs.suiviEtViePrivee.url, m.footer.privacyTitle),
+          buildMenuLink(currentLang, pathName, pagesDefs.cookies.url, m.footer.cookiesTitle),
           {
             text: m.footer.connexionLinkTitle,
             linkProps: {

@@ -92,7 +92,7 @@ export const CompanySearchResultComponent = ({companies, onSubmit}: Props) => {
           )}
 
           <Row icon="badge">
-            Numéro SIRET <span className="">{company.siret}</span>
+            {m.siretNumber} <span className="">{company.siret}</span>
           </Row>
           {company.address && (
             <Row icon="location_on">

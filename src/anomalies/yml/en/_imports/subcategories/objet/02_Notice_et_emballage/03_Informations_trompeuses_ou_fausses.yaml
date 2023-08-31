@@ -1,24 +1,22 @@
-title: Informations trompeuses ou fausses
-desc: "Exemple\_: \"en or\" alors qu'il s'agit de \"plaqué or\", \"fabriqué en France\" alors que ce n'est pas le cas "
+title: Misleading or false information
+desc: "Example\_: \"in gold\" while it is \"gold plated\", \"made in France\" while it is not"
 reponseconsoCode:
   - '210'
   - '271'
-tags:
-  - ReponseConso
 detailInputs:
-  - label: Quel est le type de produit&#160;?
+  - label: What is the product type?
     type: RADIO
     options:
       - Textiles
-      - Meubles
-      - Électroménager
-      - Jouets
-      - Électroniques
-      - Autre (to be specified)
-  - label: Date du constat
+      - Furniture
+      - Home appliance
+      - Toys
+      - Electronics
+      - Other (to be specified)
+  - label: Date of discovery of the incident
     type: DATE
     defaultValue: SYSDATE
-  - label: Nom / marque / référence
+  - label: Name / brand / reference
     type: TEXT
   - label: Description
     type: TEXTAREA

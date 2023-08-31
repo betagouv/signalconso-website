@@ -1,22 +1,22 @@
-- label: Date de l'accident
+- label: Date of accident
   type: DATE
   defaultValue: SYSDATE
-- label: Avez-vous été la seule personne malade&#160;?
+- label: Were you the only sick person ?
   optional: true
   type: RADIO
   options:
-    - Non (to be specified)
-    - Oui
-- label: Avez-vous consulté un médecin&#160;?
+    - No (to be specified)
+    - 'Yes'
+- label: Have you consulted a doctor ?
   optional: true
   type: RADIO
   options:
-    - Non
-    - Oui (to be specified)
-- label: Décrivez nous plus en détails ce qui s'est passé
+    - 'No'
+    - Yes (to be specified)
+- label: Describe in more detail what happened
   type: TEXTAREA
-- label: Avez-vous déjà contacté le restaurateur ou le fabricant pour ce problème&#160;?
+- label: Have you ever contacted the restaurant or manufacturer about this issue ?
   type: RADIO
   options:
-    - Oui
-    - Non
+    - 'Yes'
+    - 'No'

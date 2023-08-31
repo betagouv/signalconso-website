@@ -1,19 +1,17 @@
-title: Produit pas bon
+title: Product not good
 blockingInfo:
   title: >-
-    Trouver qu'un produit n'est pas bon n'est pas un motif de signalement sur
-    SignalConso.
+    Finding that a product is not good is not a reason for reporting on SignalConso.
   questions:
-    - question: Vous avez acheté votre produit en magasin&#160;?
+    - question: You bought your product in a store?
       answer: >-
-        Contactez plutôt le service client de la marque. <br/>Généralement il
-        est indiqué sur l'emballage. <br/>Si ce n'est pas le cas, contactez
-        votre commerçant afin de lui faire part de votre avis ou de votre
-        mécontentement.
-    - question: Vous avez commandé votre produit dans un bar ou un restaurant&#160;?
+        You may contact the brand's customer service. 
+        <br/> Usually it is indicated on the packaging. <br/>If not, contact
+        your merchant in order to inform him of your opinion or your dissatisfaction.
+    - question: Did you order your product from a bar or restaurant ?
       answer: >-
-        Si vous trouvez que le plat n'est pas frais ou pas assez chaud, vous
-        pouvez demander que l'on vous remplace le plat. <br/>Si votre vin est
-        bouchonné, vous pouvez demander à le changer. <br/>Par contre, si votre
-        plat ne vous convient pas pour une question de goût uniquement, le
-        restaurateur est libre de le reprendre ou non.
+        If you find that the dish is not fresh or not hot enough, you
+        can ask for the dish to be replaced. <br/>If your wine is
+        corked, you can ask to change it. <br/>However, if your
+        dish does not suit you for a matter of taste only, the
+        restorer is free to take it back or not.

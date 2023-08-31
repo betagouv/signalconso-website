@@ -1,13 +1,10 @@
-title: Compagnie aérienne
-desc: 'Exemple : Vol annulé, vol retardé, déclassement, refus d''embarquement'
+title: Transport company
+desc: 'Examples: flights, trains, ferry sailings'
 blockingInfo:
-  title: Oups, nous ne pouvons pas traiter votre signalement.
+  title: Unfortunately, we are unable to take your report any further.
   content: >-
-    Vous avez acheté votre billet d'avion directement auprès d'une compagnie
-    aérienne. <br />Vous avez eu un problème de déclassement, un refus
-    d'embarquement, votre vol a été retardé ou annulé. <br /> <br />Ce type de
-    problème ne doit pas être signalé sur SignalConso. Nous vous invitons à
-    utiliser le site dédié : <br /><a
+    You booked your flight ticket directly with an airline. 
+    <br /> You encountered an issue with downgrading, denied boarding, or your flight was delayed or cancelled. SignalConso does not handle this type of report. We recommend you visit the French Civil Aviation Authority website: <br /><a
     href="https://droits-passagers-aeriens.aviation-civile.gouv.fr">https://droits-passagers-aeriens.aviation-civile.gouv.fr</a>
-    <br /> <br />Vous avez acheté vos billets d'avions dans une agence de
-    voyages ? <br />Revenez en arrière et allez sur "Agence de voyage" :)
+    <br /> <br /> Did you book your flight through a travel agency ? 
+    <br /> Go back and select "Travel agency" :)

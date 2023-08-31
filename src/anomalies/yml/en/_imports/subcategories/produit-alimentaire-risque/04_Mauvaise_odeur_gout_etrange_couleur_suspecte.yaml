@@ -1,7 +1,7 @@
-title: Mauvaise odeur, goût étrange, couleur suspecte
+title: Bad smell, strange taste, suspicious color
 detailInputs:
   customimport: _imports/detailInputs/produit-alimentaire.yml
-fileLabel: Photos du produit / de l'emballage / du ticket / de la facture / de l'accident
+fileLabel: Product / Package / Receipt / Invoice / Crash Photos
 reponseconsoCode:
   - '321'
   - '323'

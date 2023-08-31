@@ -1,16 +1,15 @@
-title: J'ai pris connaissance des conditions écrites dans mon contrat de garantie
+title: I have read the conditions written in my warranty contract
 detailInputs:
-  - label: Date d'achat
+  - label: Date of purchase
     type: DATE
-  - label: Nom du produit
+  - label: Product name
     type: TEXT
-  - label: Date de fin de garantie supplémentaire
+  - label: Additional warranty end date
     type: DATE
-  - label: Date du constat
+  - label: Date of discovery of the incident
     type: DATE
     defaultValue: SYSDATE
-  - label: Motif de refus
+  - label: Reason for refusal
     type: TEXT
 fileLabel: >-
-  Contrat de garantie / publicité de l'offre de vente / document se référant à
-  la garantie
+  Contract of guarantee / advertisement of the offer of sale / document referring to warranty

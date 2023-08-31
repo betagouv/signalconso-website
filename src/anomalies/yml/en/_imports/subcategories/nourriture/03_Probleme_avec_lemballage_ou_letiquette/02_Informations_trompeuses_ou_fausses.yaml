@@ -1,31 +1,31 @@
-title: Informations trompeuses ou fausses
+title: Misleading or false information
 reponseconsoCode:
   - '210'
   - '273'
   - '271'
 detailInputs:
-  - label: Date du constat (ou d'achat suivant le cas)
+  - label: Date of discovery of the incident (or date of purchase if relevant)
     type: DATE_NOT_IN_FUTURE
     defaultValue: SYSDATE
-  - label: De quel produit s'agit-il&#160;?
+  - label: What product is it ?
     type: RADIO
     options:
-      - Alcool (vin, spiritueux...)
-      - Fruits et légumes
-      - Autre (to be specified)
-  - label: Nom  et marque du produit
+      - Alcohol (wine, spirits...)
+      - Fruits and vegetables
+      - Other (to be specified)
+  - label: Product name and brand
     type: TEXT
     optional: true
-  - label: À propos de quoi est-ce trompeur&#160;?
+  - label: What is it misleading about ?
     type: RADIO
     options:
-      - L'origine
-      - La composition
-      - Un label ou un certificat
-      - Une promesse de résultat
-      - Une marque
-      - Autres (to be specified)
-  - label: Pourquoi trouvez-vous ça trompeur&#160;?
+      - Origin
+      - The composition
+      - A label or certificate
+      - A promise of results
+      - A brand
+      - Other (to be specified)
+  - label: Why do you find this misleading ?
     type: TEXTAREA
     optional: true
-fileLabel: Photos du produit (si possible de tous les côtés de l'emballage)
+fileLabel: Photos of the product (if possible from all sides of the packaging)
