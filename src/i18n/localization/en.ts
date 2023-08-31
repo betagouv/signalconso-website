@@ -1313,7 +1313,7 @@ export const en = {
       samples: 'Issues that have been reported to us',
     },
     shareYourReview: `Share your review`,
-    thanksForSharingYourReview: `Your comments have been taken on board, thank you.`,
+    thanksForSharingYourReview: `Your feedback has been heard, thank you.`,
     youCanRateSignalConso: `I recommend SignalConso:`,
     youCanAddCommentForDGCCRF: `You can, if you want, provide further details <b>for Fraud Control</b>. It will <b>not be sent to the company</b>.`,
     didTheCompanyAnsweredWell: `Are you satisfied with the response you received from the company?`,
