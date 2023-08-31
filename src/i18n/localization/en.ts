@@ -1317,7 +1317,7 @@ export const en = {
     websiteDoesNotExist2: 'Perhaps you made a typo?',
     websiteDoesNotExist3: 'It may have been deleted by its owner or host',
     websiteDoesNotExist4:
-      "If you are sure of the spelling, you can still report it, and we will be able to cross-check it with other reports.",
+      'If you are sure of the spelling, you can still report it, and we will be able to cross-check it with other reports.',
     acknoledgment: {
       sentReport: `Your report has been sent.`,
       notSentReport: `Your report will not be sent to this business.`,
