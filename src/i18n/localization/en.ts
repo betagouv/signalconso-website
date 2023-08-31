@@ -1133,10 +1133,10 @@ export const en = {
     identifyBy_none: `I am unable to identify the company, or the company is outside France`,
     identifyBy_noneDesc: `If you are unable to identify the company, you can continue with your report.
       It will not be forwarded to the company, unless it is based in France and SignalConso can establish its identity.
-      In any event, the Fraud Control investigation team will be notified.`,
+      Fraud Control will still be notified.`,
     couldYouPrecise: `Can you give us more details?`,
     cantIdentifyCompany: `As you are unable to identify the company, please give your location so that we forward your report to the appropriate department.`,
-    cantIdentifyWebsiteCompany: `As you are unable to identify the company linked to the website, please give your location so that we can forward your report to the appropriate department.`,
+    cantIdentifyWebsiteCompany: `Please give your current post code of residency in France. We'll use it only to assign your report to the right Fraud Control department.`,
     cantIdentifyTransporterWebsiteCompany: `As you are unable to identify the carrier, please give your location so that we can forward your report to the appropriate department.`,
     cantIdentifyMerchantWebsiteCompany: `As you are unable to identify the seller, please give your location so that we can forward your report to the appropriate department.`,
     cantIdentifyLocationCompany: `As you are unable to identify the company that came to your home, please give your location so that we can try to connect the information you gave to other reports involving the same company that might have been made in your local area.`,
