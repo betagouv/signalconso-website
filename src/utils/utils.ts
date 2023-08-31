@@ -1,4 +1,5 @@
 import {format, parse} from 'date-fns'
+import {AppLang} from '../i18n/localization/AppLangs'
 
 export const isServerSide = () => typeof window === 'undefined'
 
@@ -17,9 +18,9 @@ export const isoToFrenchFormat = (d: string) => {
 }
 
 // yyyy-mm-dd to 3 Juin 2023
-export const isoToFrenchFormatText = (d: string) => {
+export const isoToHumanReadableText = (d: string, lang: AppLang) => {
   const date = new Date(d)
-  const formatter = new Intl.DateTimeFormat('fr-FR', {year: 'numeric', month: 'long', day: 'numeric'})
+  const formatter = new Intl.DateTimeFormat(lang, {year: 'numeric', month: 'long', day: 'numeric'})
   return formatter.format(date)
 }
 

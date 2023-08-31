@@ -3,9 +3,10 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import {useI18n} from '../../i18n/I18n'
+import {AppLangs} from '../../i18n/localization/AppLangs'
 
 export function ArticleAppMobile() {
-  const {m} = useI18n()
+  const {m, currentLang} = useI18n()
 
   return (
     <div>
@@ -30,9 +31,17 @@ export function ArticleAppMobile() {
         <strong>{m.articleAppMobile.cta}</strong>
       </p>
       {/* this banner is too large for mobile viewports, and unreadable if scaled down  */}
-      <div className="hidden lg:block">
-        <Image width={784} height={416} src={`/image/actualites/signalconso_promo_banner.jpg`} alt={m.articleAppMobile.banner} />
-      </div>
+
+      {currentLang === AppLangs.fr && (
+        <div className="hidden lg:block">
+          <Image
+            width={784}
+            height={416}
+            src={`/image/actualites/signalconso_promo_banner.jpg`}
+            alt={m.articleAppMobile.banner}
+          />
+        </div>
+      )}
     </div>
   )
 }

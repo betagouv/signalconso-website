@@ -43,7 +43,7 @@ export const internalPageDefs = {
   arborescence: page(`/arborescence`, {noIndex: true, hasAlternate: true}),
   accessibilite: page(`/accessibilite`, {hasAlternate: true}),
   planDuSite: page(`/plan-du-site`, {hasAlternate: true}),
-  actualites: page(`/actualites`),
+  actualites: page(`/actualites`, {hasAlternate: true}),
 
   // all these are available in /webview/
   centreAide: page(`/centre-aide`, {hasAlternate: true}),

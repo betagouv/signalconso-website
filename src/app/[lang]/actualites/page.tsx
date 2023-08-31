@@ -11,7 +11,7 @@ export function generateMetadata(): Metadata {
 }
 
 const Page = ({params}: any) => {
-  return params.lang == AppLangs.fr ? <NewsHome /> : notFound()
+  return <NewsHome />
 }
 
 export default Page
