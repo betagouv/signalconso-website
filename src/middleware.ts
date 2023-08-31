@@ -28,7 +28,7 @@ export function middleware(request: any) {
         : computeLang(currentCookieLang, request.headers)
 
     const redirectUrl = `/${computedLang}/${pathname}`
-    return buildRewriteToNewLangResponse(request, redirectUrl, computedLang)
+    return buildRedirectToNewLangResponse(request, redirectUrl, computedLang)
   } else {
     const noAlternateLangForCurrentPage = Object.values(internalPageDefs).filter(_ => {
       return !_.hasAlternate && pathname.includes(_.url) && currentPathLang === AppLangs.en
@@ -55,6 +55,16 @@ function removeUnsupportedLangInCookiesIfAny(request: any, currentCookieLang: st
   if (getSupportedLang(currentCookieLang)) {
     request.cookies.delete('NEXT_LANG')
   }
+}
+
+function buildRedirectToNewLangResponse(request: any, redirectUrl: string, newLang: string) {
+  // You have to clone the url to keep query params
+  const url = request.nextUrl.clone()
+  url.pathname = redirectUrl
+
+  const res = NextResponse.redirect(new URL(url, request.url))
+  res.cookies.set('NEXT_LANG', newLang)
+  return res
 }
 
 function buildRewriteToNewLangResponse(request: any, rewriteUrl: string, newLang: string) {
