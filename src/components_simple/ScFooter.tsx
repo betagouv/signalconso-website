@@ -89,7 +89,7 @@ function FollowUs() {
                 <li>
                   <Link
                     className="fr-btn--facebook fr-btn"
-                    href="https://www.facebook.com/SignalConso/"
+                    href="https://www.facebook.com/DGCCRF"
                     target="_blank"
                     title={m.footer.facebookTitle}
                   >
