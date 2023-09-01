@@ -1,0 +1,6 @@
+title: It is an item of food or drink
+tags:
+  - ProduitAlimentaire
+reponseconsoCode: null
+subcategories:
+  customimport: _imports/subcategories/produit-alimentaire
