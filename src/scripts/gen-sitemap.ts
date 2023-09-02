@@ -10,7 +10,7 @@ interface SitemapItem {
   url: string
   priority: number
   hasAlternate?: boolean
-  lang?: AppLangs
+  mainLang: AppLangs
 }
 
 const outputFile = path.join('./public/sitemap.xml')
@@ -18,16 +18,23 @@ const outputFile = path.join('./public/sitemap.xml')
 const sitemapItems: SitemapItem[] = [
   ...Object.values(internalPageDefs)
     .filter(_ => !_.noIndex)
-    .map(_ => ({url: _.url, hasAlternate: _.hasAlternate, priority: 1})),
+    .map(_ => ({url: _.url, hasAlternate: _.hasAlternate, mainLang: AppLangs.fr, priority: 1})),
   ...landing(AppLangs.fr),
   ...landing(AppLangs.en),
-  ...newsArticlesData.map(buildLinkNewsArticle).map(url => ({url, priority: 1})),
+  ...newsArticlesData
+    .map(_ => {
+      return {
+        mainLang: _.lang as AppLangs,
+        url: buildLinkNewsArticle(_),
+      }
+    })
+    .map(_ => ({..._, priority: 1})),
 ]
 
 function landing(lang: AppLangs) {
   return allVisibleLandings(lang)
-    .map(buildLinkLandingPage)
-    .map(url => ({url, lang, priority: 1}))
+    .map(_ => `/${_.url}`)
+    .map(url => ({url, lang, mainLang: lang, priority: 1}))
 }
 
 //See https://developers.google.com/search/docs/specialty/international/localized-versions?hl=fr#sitemap
@@ -43,14 +50,14 @@ function createSitemapXml(items: SitemapItem[]): string {
         href="${`${appConfig.appBaseUrl}/en${item.url}`}"/>`
         : ''
 
-      const alternateFr = `<xhtml:link
+      const alternateMain = `<xhtml:link
       rel="alternate"
-      hreflang="fr"
-      href="${`${appConfig.appBaseUrl}/fr${item.url}`}"/>`
+      hreflang="${item.mainLang}"
+      href="${`${appConfig.appBaseUrl}/${item.mainLang}${item.url}`}"/>`
 
       return `  <url>
-    <loc>${`${appConfig.appBaseUrl}${item.url}`}</loc>         
-    ${alternateFr}   
+    <loc>${`${appConfig.appBaseUrl}/${item.mainLang}${item.url}`}</loc>         
+    ${alternateMain}   
     ${appConfig.translationFeatureFlagEnabled ? alternateEn : ''}   
     ${priority}
   </url>`
