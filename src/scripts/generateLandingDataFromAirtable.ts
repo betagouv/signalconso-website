@@ -34,6 +34,16 @@ type RawRow = {
   catchPhrase?: string
   secondaryTitle1?: string
   secondaryTitle2?: string
+  otherTitle1?: string
+  otherText1?: string
+  otherTitle2?: string
+  otherText2?: string
+  otherTitle3?: string
+  otherText3?: string
+  otherTitle4?: string
+  otherText4?: string
+  otherTitle5?: string
+  otherText5?: string
   sampleReports?: string[]
 }
 
@@ -78,6 +88,7 @@ function throwForMissingField(): never {
 function throwForInvalidUrlFieldWithSlashes(): never {
   throw new Error(`Invalid url field, it should not contain any slashes`)
 }
+
 function throwForInvalidUrlFieldWithSpecialChars(): never {
   throw new Error(`Invalid url field, it should not contain any uppercase, underscore, accents or special characters`)
 }
@@ -94,13 +105,22 @@ function validateAndTransformRow(row: RawRow): RowTranformed {
     catchPhrase,
     secondaryTitle1,
     secondaryTitle2,
+    otherTitle1,
+    otherText1,
+    otherTitle2,
+    otherText2,
+    otherTitle3,
+    otherText3,
+    otherTitle4,
+    otherText4,
+    otherTitle5,
+    otherText5,
     sampleReports,
   } = row
 
   if (!catchPhrase || !secondaryTitle1) {
     throwForMissingField()
   }
-
   sampleReports = sampleReports ?? []
   targetedCategory = targetedCategory ?? []
   isSemiAutomatic = isSemiAutomatic ?? false
@@ -150,6 +170,16 @@ function validateAndTransformRow(row: RawRow): RowTranformed {
     catchPhrase,
     secondaryTitle1,
     secondaryTitle2,
+    otherTitle1,
+    otherText1,
+    otherTitle2,
+    otherText2,
+    otherTitle3,
+    otherText3,
+    otherTitle4,
+    otherText4,
+    otherTitle5,
+    otherText5,
     sampleReports: sampleReports.map(text => {
       return {text, author: genAuthorName()}
     }),
@@ -173,13 +203,29 @@ async function readLandingPagesTable(base: AirtableBase) {
     catchPhrase: 'fldLmMIfK3W79tFDN',
     secondaryTitle1: 'fldD4l9zj8ZbCgEqO',
     secondaryTitle2: 'fldT4IBImmXgE3wej',
+    otherTitle1: 'fldijUomhmaEDdInO',
+    otherText1: 'fldbMPChHqra2NQA8',
+    otherTitle2: 'fldzZwB5W8EaQYwXn',
+    otherText2: 'fldHUDzdANt0ruuG4',
+    otherTitle3: 'fldRPrvbyY7hSFlny',
+    otherText3: 'fld5pkJbF9MgowpGv',
+    otherTitle4: 'fldunGQ9J3PMyv3xM',
+    otherText4: 'fldqogPOkzcSkLsK4',
+    otherTitle5: 'fld5gGfJ6R8Ixj3C5',
+    otherText5: 'fldv15OzxETkhFwf7',
     // c'est un lookup field qui nous ramène directement le texte des signalements dans un array de string
     sampleReports: 'fldVwLtxwu1AR6npK',
   })
   return rows
 }
 
-async function readWholeTable(base: AirtableBase, tableId: string, fieldsMapping: {[k: string]: string}): Promise<any[]> {
+async function readWholeTable(
+  base: AirtableBase,
+  tableId: string,
+  fieldsMapping: {
+    [k: string]: string
+  },
+): Promise<any[]> {
   const res: any[] = []
   try {
     console.log(`Reading table ${tableId} from Airtable API`)

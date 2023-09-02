@@ -135,6 +135,7 @@
     "catchPhrase": "Signalez un problème lors de vos achats sur internet, renseignez-vous sur vos droits avec la répression des fraudes !",
     "secondaryTitle1": "Pourquoi faire un signalement si vous rencontrez des problèmes lors de vos achats en ligne ?",
     "secondaryTitle2": "Que va devenir votre signalement concernant un achat sur internet ?",
+    "otherText1": "\n",
     "sampleReports": [
       {
         "text": "Commandé sur internet le 4 avril une paire de chaussure sur le site xxx france pour la somme de 59,99 euros. A ce jour aucune nouvelle, aucune réponse aux messages laissés et pas de livraison. Aux dernières nouvelles plusieurs messages indiquent que c'est une arnaque !!! Quels sont les recours contre ce genre de voleurs ?",

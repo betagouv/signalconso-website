@@ -21,7 +21,7 @@ type Props = {
 }
 
 export default function LandingPage(props: Props) {
-  const {m} = useI18n()
+  const {m, currentLang} = useI18n()
   const dsfrTheme = useColors()
   const chooseCategoriesDivRef = useRef<HTMLDivElement>(null)
 
@@ -36,10 +36,10 @@ export default function LandingPage(props: Props) {
           }
         }
       : landingData.targetedCategory.length === 1
-      ? findAnomaly(landingData.targetedCategory[0], 'fr')
+      ? findAnomaly(landingData.targetedCategory[0], currentLang)
       : 'home'
 
-  const anomalies = landingData.targetedCategory.map(_ => findAnomaly(_, 'fr'))
+  const anomalies = landingData.targetedCategory.map(_ => findAnomaly(_, currentLang))
 
   return (
     <>
@@ -72,8 +72,35 @@ export default function LandingPage(props: Props) {
               picto={<Image alt="Pictogramme masques joyeux" src="/image/picto_masks.png" width={80} height={72} />}
             />
           </div>
+          <br />
+          <br />
+          {landingData.otherTitle1 && landingData.otherText1 && (
+            <h2 className="text-2xl mb-6 font-bold">{landingData.otherTitle1}</h2>
+          )}
+          {landingData.otherTitle1 && landingData.otherText1 && <p className="text-lg">{landingData.otherText1}</p>}
+
+          {landingData.otherTitle2 && landingData.otherText2 && (
+            <h2 className="text-2xl mb-6 font-bold">{landingData.otherTitle2}</h2>
+          )}
+          {landingData.otherTitle2 && landingData.otherText2 && <p className="text-lg">{landingData.otherText2}</p>}
+
+          {landingData.otherTitle3 && landingData.otherText3 && (
+            <h2 className="text-2xl mb-6 font-bold">{landingData.otherTitle3}</h2>
+          )}
+          {landingData.otherTitle3 && landingData.otherText3 && <p className="text-lg">{landingData.otherText3}</p>}
+
+          {landingData.otherTitle4 && landingData.otherText4 && (
+            <h2 className="text-2xl mb-6 font-bold">{landingData.otherTitle4}</h2>
+          )}
+          {landingData.otherTitle4 && landingData.otherText4 && <p className="text-lg">{landingData.otherText4}</p>}
+
+          {landingData.otherTitle5 && landingData.otherText5 && (
+            <h2 className="text-2xl mb-6 font-bold">{landingData.otherTitle5}</h2>
+          )}
+          {landingData.otherTitle5 && landingData.otherText5 && <p className="text-lg">{landingData.otherText5}</p>}
 
           {landingData.secondaryTitle2 && <h2 className="text-2xl mb-6 font-bold">{landingData.secondaryTitle2}</h2>}
+
           <p className="text-lg">
             {m.landing.signalConsoWillHandle1}
             <br />
@@ -105,13 +132,13 @@ export default function LandingPage(props: Props) {
             buttonProps={{
               children: m.landing.discoverButton,
               linkProps: {
-                href: pagesDefs.commentCaMarche.url,
+                href: `/${currentLang}/${pagesDefs.commentCaMarche.url}`,
               },
             }}
-            title="Qu'est-ce que Signal Conso ?"
+            title={m.landing.whatsSignalConso}
           >
             {m.landing.whatIsText1}
-            <Link href={pagesDefs.index.url} className="text-sclightblue underline">
+            <Link href={`/${currentLang}`} className="text-sclightblue underline">
               signal.conso.gouv.fr
             </Link>
             {m.landing.whatIsText2}
@@ -123,6 +150,7 @@ export default function LandingPage(props: Props) {
             {m.landing.whatIsText5}
           </CallOut>
         </div>
+
         {landingData.sampleReports.length && (
           <div className={`${container} my-12 space-y-8`}>
             <h2 className="text-2xl font-bold">{m.landing.samples}</h2>
@@ -137,7 +165,7 @@ export default function LandingPage(props: Props) {
 }
 
 function BigReportButton({className = '', target}: {className?: string; target: Anomaly | 'home' | (() => void)}) {
-  const {m} = useI18n()
+  const {m, currentLang} = useI18n()
   const props = {
     iconId: 'fr-icon-alarm-warning-line',
     className,
@@ -154,7 +182,7 @@ function BigReportButton({className = '', target}: {className?: string; target: 
     <Button
       {...props}
       linkProps={{
-        href: target === 'home' ? pagesDefs.index.url : buildLinkStartReport(target, 'fr'),
+        href: target === 'home' ? `/${currentLang}` : buildLinkStartReport(target, currentLang),
       }}
       size="large"
     >

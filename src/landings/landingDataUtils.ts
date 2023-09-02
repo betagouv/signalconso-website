@@ -15,6 +15,16 @@ export type LandingData = {
   catchPhrase: string
   secondaryTitle1: string
   secondaryTitle2?: string
+  otherTitle1?: string
+  otherText1?: string
+  otherTitle2?: string
+  otherText2?: string
+  otherTitle3?: string
+  otherText3?: string
+  otherTitle4?: string
+  otherText4?: string
+  otherTitle5?: string
+  otherText5?: string
   sampleReports: {text: string; author: string}[]
 }
 

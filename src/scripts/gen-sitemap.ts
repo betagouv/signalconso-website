@@ -10,6 +10,7 @@ interface SitemapItem {
   url: string
   priority: number
   hasAlternate?: boolean
+  lang?: AppLangs
 }
 
 const outputFile = path.join('./public/sitemap.xml')
@@ -26,7 +27,7 @@ const sitemapItems: SitemapItem[] = [
 function landing(lang: AppLangs) {
   return allVisibleLandings(lang)
     .map(buildLinkLandingPage)
-    .map(url => ({url, priority: 1}))
+    .map(url => ({url, lang, priority: 1}))
 }
 
 //See https://developers.google.com/search/docs/specialty/international/localized-versions?hl=fr#sitemap
@@ -48,7 +49,7 @@ function createSitemapXml(items: SitemapItem[]): string {
       href="${`${appConfig.appBaseUrl}/fr${item.url}`}"/>`
 
       return `  <url>
-    <loc>${`${appConfig.appBaseUrl}/fr${item.url}`}</loc>         
+    <loc>${`${appConfig.appBaseUrl}${item.url}`}</loc>         
     ${alternateFr}   
     ${appConfig.translationFeatureFlagEnabled ? alternateEn : ''}   
     ${priority}
