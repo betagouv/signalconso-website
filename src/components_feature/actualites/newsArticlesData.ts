@@ -3,6 +3,7 @@ import {ArticleQuestionnaireSiteDgccrf} from './ArticleQuestionnaireSiteDgccrf'
 import {ArticleAccessibilite} from './ArticleAccessibilite'
 import {ArticleSignalConsoTraduit} from './ArticleSignalConsoTraduit'
 import {ArticleSignalConsoTranslated} from './ArticleSignalConsoTranslated'
+import {AppLangs} from '../../i18n/localization/AppLangs'
 
 export type NewsArticle = (typeof newsArticlesData)[number]
 
@@ -10,7 +11,7 @@ export type NewsArticle = (typeof newsArticlesData)[number]
 export const newsArticlesData = [
   {
     date: '2023-08-04',
-    lang: 'fr',
+    lang: AppLangs.fr,
     slug: 'signalconso-une-accessibilite-renforcee-pour-tous-les-consommateurs',
     title: 'SignalConso : Une Accessibilité Renforcée pour tous les Consommateurs',
     // used for SEO description
@@ -20,7 +21,7 @@ export const newsArticlesData = [
   },
   {
     date: '2023-06-08',
-    lang: 'fr',
+    lang: AppLangs.fr,
     slug: 'site-dgccrf-votre-avis-nous-interesse',
     title: 'Le site internet de la DGCCRF : votre avis nous intéresse !',
     excerpt: `La DGCCRF travaille à améliorer son site internet pour mieux répondre aux besoins des consommateurs et des professionnels. Pour nous aider à vous satisfaire au maximum, nous vous invitons à remplir un petit questionnaire en ligne.`,
@@ -28,7 +29,7 @@ export const newsArticlesData = [
   },
   {
     date: '2023-05-30',
-    lang: 'fr',
+    lang: AppLangs.fr,
     slug: 'signalconso-desormais-disponible-en-application-mobile',
     title: 'SignalConso, désormais disponible en application mobile !',
     // used for SEO description
@@ -49,7 +50,7 @@ export const newsArticlesData = [
   },
   {
     date: '2023-09-08',
-    lang: 'fr',
+    lang: AppLangs.fr,
     slug: 'signalconso-disponible-en-anglais',
     title: 'SignalConso en anglais afin d’être accessibles aux touristes lors de la coupe du monde de rugby 2023 🏈',
     excerpt: `SignalConso : l’application mobile et le site traduits en anglais afin d’être accessibles aux touristes lors de la coupe du monde de rugby 2023. `,
@@ -57,7 +58,7 @@ export const newsArticlesData = [
   },
   {
     date: '2023-09-08',
-    lang: 'en',
+    lang: AppLangs.en,
     slug: 'signalconso-available-in-english',
     title: 'SignalConso translated into English to be accessible to tourists during the 2023 Rugby World Cup 🏈',
     excerpt: `SignalConso: the mobile application and the site translated into English to be accessible to tourists during the 2023 Rugby World Cup.`,
