@@ -3,7 +3,7 @@ import {allVisibleLandings} from '../landings/landingDataUtils'
 import path from 'path'
 import {appConfig} from '../core/appConfig'
 import {newsArticlesData} from '../components_feature/actualites/newsArticlesData'
-import {buildLinkLandingPage, buildLinkNewsArticle, internalPageDefs} from '../core/pagesDefinitions'
+import {buildLinkNewsArticle, internalPageDefs} from '../core/pagesDefinitions'
 import {AppLangs} from '../i18n/localization/AppLangs'
 
 interface SitemapItem {
@@ -20,8 +20,9 @@ const sitemapItems: SitemapItem[] = [
     .filter(_ => !_.noIndex)
     .map(_ => ({url: _.url, hasAlternate: _.hasAlternate, mainLang: AppLangs.fr, priority: 1})),
   ...landing(AppLangs.fr),
-  ...landing(AppLangs.en),
+  ...(appConfig.translationFeatureFlagEnabled ? [...landing(AppLangs.en)] : []),
   ...newsArticlesData
+    .filter(_ => appConfig.translationFeatureFlagEnabled || _.lang == AppLangs.fr)
     .map(_ => {
       return {
         mainLang: _.lang as AppLangs,
