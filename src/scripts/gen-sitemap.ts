@@ -78,8 +78,4 @@ function generateSitemap(items: SitemapItem[]): void {
   console.log(`${outputFile} generated.`)
 }
 
-console.log('appConfig.translationFeatureFlagEnabled')
-console.log(appConfig.translationFeatureFlagEnabled)
-console.log('appConfig.translationFeatureFlagEnabled')
-
 generateSitemap(sitemapItems)
