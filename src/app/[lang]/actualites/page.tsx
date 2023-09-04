@@ -1,12 +1,13 @@
 import {Metadata} from 'next'
 import NewsHome from '../../../components_feature/actualites/NewsHome'
-import {AppLangs} from '../../../i18n/localization/AppLangs'
-import {notFound} from 'next/navigation'
+import {getI18n} from '../../../i18n/I18nDictionnary'
 
-export function generateMetadata(): Metadata {
+export function generateMetadata({params}: any): Metadata {
+  const {messages} = getI18n(params.lang)
+
   return {
-    title: 'Actualités - SignalConso',
-    description: 'Actualités et nouveautés du site SignalConso et de la répression des fraudes',
+    title: messages.titleAndDescriptions.actualites.title,
+    description: messages.titleAndDescriptions.actualites.description,
   }
 }
 
