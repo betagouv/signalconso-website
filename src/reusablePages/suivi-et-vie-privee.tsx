@@ -74,7 +74,7 @@ export const SuiviEtViePrivee = ({params}: any) => {
       </ul>
       <p>
         {m.suiviEtViePrivee.droitLimitationTraitement1}
-        <a target="_blank" rel="noreferrer" href="https://www.cnil.fr/">
+        <a target="_blank" rel="noreferrer" href={`https://www.cnil.fr/${params.lang}`}>
           https://www.cnil.fr
         </a>
         {m.suiviEtViePrivee.droitLimitationTraitement2}
@@ -96,7 +96,7 @@ export const SuiviEtViePrivee = ({params}: any) => {
 
       <iframe
         className="optout"
-        src="https://stats.data.gouv.fr/index.php?module=CoreAdminHome&action=optOut&language=fr&backgroundColor=&fontColor=#212529&fontSize=16px&fontFamily=Source%20Sans%20Pro"
+        src={`https://stats.data.gouv.fr/index.php?module=CoreAdminHome&action=optOut&language=${params.lang}&backgroundColor=&fontColor=#212529&fontSize=16px&fontFamily=Source%20Sans%20Pro`}
       />
       <p>
         {m.suiviEtViePrivee.plusInfosGestionCookies}{' '}

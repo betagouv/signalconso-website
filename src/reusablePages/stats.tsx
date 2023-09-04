@@ -21,12 +21,16 @@ export const Stats = ({params}: any) => {
     <>
       <ContentPageContainer>
         <h1 className="">{m.statsTitle}</h1>
-        <p>
-          {m.statsText}
-          <Link className="" target="_blank" rel="noreferrer" href="https://data.economie.gouv.fr/pages/signalconso/">
-            data.economie.fr
-          </Link>
-        </p>
+
+        {params.lang == AppLangs.fr && (
+          <p>
+            {m.statsText}
+            <Link className="" target="_blank" rel="noreferrer" href="https://data.economie.gouv.fr/pages/signalconso/">
+              data.economie.fr
+            </Link>
+          </p>
+        )}
+
         <StatCharts />
       </ContentPageContainer>
     </>
