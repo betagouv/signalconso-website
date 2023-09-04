@@ -1303,6 +1303,7 @@ export const fr = {
 
     landing: {
       bigReportButton: 'Je signale un problème',
+      whatsSignalConso: "Qu'est-ce que Signal Conso ?",
       heroCardTitle1: 'Parce que c’est simple !',
       heroCardText1: 'Des questions vous guident tout au long du parcours pour vous aider à formuler votre problème.',
       heroCardTitle2: 'Parce que c’est rapide !',

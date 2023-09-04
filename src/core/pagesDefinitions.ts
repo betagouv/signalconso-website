@@ -91,7 +91,7 @@ export function buildLinkStartReport(
 }
 
 export function buildLinkLandingPage(landingData: LandingData) {
-  return `/${landingData.url}`
+  return `/${landingData.lang}/${landingData.url}`
 }
 
 export function buildLinkLandingPageFromAnomaly(anomaly: Pick<Anomaly, 'path'>) {

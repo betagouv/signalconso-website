@@ -10,7 +10,7 @@ export type PageProps = {
 }
 
 function getLandingData(props: {params: PageProps}) {
-  return props?.params?.lang === AppLangs.fr ? allVisibleLandings().find(_ => _.url === props?.params?.dynamicPath) : undefined
+  return props?.params?.lang ? allVisibleLandings(props?.params?.lang).find(_ => _.url === props?.params?.dynamicPath) : undefined
 }
 
 export function generateMetadata(params: {params: PageProps}): Metadata {

@@ -67,21 +67,18 @@ const PlanDuSite = ({params}: any) => {
           </li>
         </ul>
         <h2 className="fr-h4">{m.planDuSite.reportIncidentSection}</h2>
-
-        {params.lang === AppLangs.fr && (
-          <ul className="">
-            {allVisibleLandings().map(landingData => {
-              return (
-                <li key={landingData.url}>
-                  <Link href={buildLinkLandingPage(landingData)}>
-                    {m.planDuSite.reportIncidentFor} {landingData.title}
-                  </Link>
-                </li>
-              )
-            })}
-            <hr className="mt-4" />
-          </ul>
-        )}
+        <ul className="">
+          {allVisibleLandings(params.lang).map(landingData => {
+            return (
+              <li key={landingData.url}>
+                <Link href={buildLinkLandingPage(landingData)}>
+                  {m.planDuSite.reportIncidentFor} {landingData.title}
+                </Link>
+              </li>
+            )
+          })}
+          <hr className="mt-4" />
+        </ul>
         <p className="mt-4">
           {m.planDuSite.seeFullTree} <Link href={pagesDefs.arborescence.url}>{m.planDuSite.completeTree}</Link>
         </p>

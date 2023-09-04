@@ -1,9 +1,10 @@
 // ----------------------------------------------
 // ---- Generated file, do not edit manually ---
 // ----------------------------------------------
-export const landingsData = [
+export const frLandingsData = [
   {
     url: 'achat-magasin',
+    lang: 'fr',
     isSemiAutomatic: true,
     seoTitle: 'Signalez un achat en magasin à la répression des fraudes',
     seoDescription:
@@ -123,6 +124,7 @@ export const landingsData = [
   },
   {
     url: 'achat-site',
+    lang: 'fr',
     isSemiAutomatic: true,
     seoTitle: "Signalez un site d'achat à la répression des fraudes",
     seoDescription:
@@ -133,6 +135,7 @@ export const landingsData = [
       'Signalez un problème lors de vos achats sur internet, renseignez-vous sur vos droits avec la répression des fraudes !',
     secondaryTitle1: 'Pourquoi faire un signalement si vous rencontrez des problèmes lors de vos achats en ligne ?',
     secondaryTitle2: 'Que va devenir votre signalement concernant un achat sur internet ?',
+    otherText1: '\n',
     sampleReports: [
       {
         text: "Commandé sur internet le 4 avril une paire de chaussure sur le site xxx france pour la somme de 59,99 euros. A ce jour aucune nouvelle, aucune réponse aux messages laissés et pas de livraison. Aux dernières nouvelles plusieurs messages indiquent que c'est une arnaque !!! Quels sont les recours contre ce genre de voleurs ?",
@@ -150,6 +153,7 @@ export const landingsData = [
   },
   {
     url: 'animaux',
+    lang: 'fr',
     isSemiAutomatic: true,
     seoTitle: 'Signalez un problème d’animaux, garde, vétérinaire, élevage, toilettage à la DGCCRF',
     seoDescription:
@@ -176,6 +180,7 @@ export const landingsData = [
   },
   {
     url: 'banque-assurance-mutuelle',
+    lang: 'fr',
     isSemiAutomatic: true,
     seoTitle: 'Signalez un problème de banque, assurance, mutuelle à la DGCCRF',
     seoDescription:
@@ -203,6 +208,7 @@ export const landingsData = [
   },
   {
     url: 'bloctel',
+    lang: 'fr',
     isSemiAutomatic: true,
     seoTitle: 'Vous avez un problème de démarchage abusif malgré Bloctel ? Signalez-le à la DGCCRF',
     seoDescription:
@@ -229,6 +235,7 @@ export const landingsData = [
   },
   {
     url: 'cafe-restaurant',
+    lang: 'fr',
     isSemiAutomatic: true,
     seoTitle: 'Signalez un problème avec un café / restaurant à la répression des fraudes',
     seoDescription:
@@ -256,6 +263,7 @@ export const landingsData = [
   },
   {
     url: 'demarches-administratives',
+    lang: 'fr',
     isSemiAutomatic: true,
     seoTitle: 'Signalez un problème de médiation ou de faux courrier administratif à la DGCCRF',
     seoDescription:
@@ -283,6 +291,7 @@ export const landingsData = [
   },
   {
     url: 'eau-gaz-electricite',
+    lang: 'fr',
     isSemiAutomatic: true,
     seoTitle: "Signalez un problème d'eau, gaz ou électricité à la répression des fraudes",
     seoDescription:
@@ -310,6 +319,7 @@ export const landingsData = [
   },
   {
     url: 'immobilier',
+    lang: 'fr',
     isSemiAutomatic: true,
     seoTitle: 'Signalez un problème de loyer, syndic, copropriété, DPE, charges à la DGCCRF',
     seoDescription:
@@ -336,6 +346,7 @@ export const landingsData = [
   },
   {
     url: 'internet',
+    lang: 'fr',
     isSemiAutomatic: true,
     seoTitle: "Signalez un problème d'arnaque en ligne à la répression des fraudes",
     seoDescription:
@@ -363,6 +374,7 @@ export const landingsData = [
   },
   {
     url: 'intoxication-alimentaire',
+    lang: 'fr',
     isSemiAutomatic: true,
     seoTitle: 'Vous êtes malade, diarrhée, nausée, fièvre suite à un repas, signalez-le à la DGCCRF',
     seoDescription:
@@ -390,6 +402,7 @@ export const landingsData = [
   },
   {
     url: 'pathdelacategory',
+    lang: 'fr',
     isSemiAutomatic: true,
     seoTitle: '(title) Le title de la category',
     seoDescription: '(seoDescription) Description SEO de la category',
@@ -402,6 +415,7 @@ export const landingsData = [
   },
   {
     url: 'sante',
+    lang: 'fr',
     isSemiAutomatic: true,
     seoTitle: 'Signalez un problème avec un professionnel de santé à la répression des fraudes',
     seoDescription:
@@ -425,6 +439,7 @@ export const landingsData = [
   },
   {
     url: 'services-aux-particuliers',
+    lang: 'fr',
     isSemiAutomatic: true,
     seoTitle: 'Signalez un problème avec un service / prestation à la répression des fraudes',
     seoDescription:
@@ -452,6 +467,7 @@ export const landingsData = [
   },
   {
     url: 'tel-internet-media',
+    lang: 'fr',
     isSemiAutomatic: true,
     seoTitle: 'Signalez un problème de forfait à la répression des fraudes',
     seoDescription:
@@ -480,6 +496,7 @@ export const landingsData = [
   },
   {
     url: 'travaux-renovation',
+    lang: 'fr',
     isSemiAutomatic: true,
     seoTitle: 'Signalez un problème de travaux ou rénovation à la répression des fraudes',
     seoDescription:
@@ -506,6 +523,7 @@ export const landingsData = [
   },
   {
     url: 'voiture-vehicule',
+    lang: 'fr',
     isSemiAutomatic: true,
     seoTitle: 'Signalez un problème lié à la réparation, entretien, contrôle technique d’une voiture',
     seoDescription:
@@ -533,6 +551,7 @@ export const landingsData = [
   },
   {
     url: 'voyage-loisirs',
+    lang: 'fr',
     isSemiAutomatic: true,
     seoTitle: 'Signalez un problème de séjour, vol, voyage à la répression des fraudes',
     seoDescription:
@@ -559,6 +578,7 @@ export const landingsData = [
   },
   {
     url: 'arnaque-escroquerie',
+    lang: 'fr',
     isSemiAutomatic: false,
     seoTitle: 'Arnaque Escroquerie',
     seoDescription: 'Votre problème concerne une arnaque ou une escroquerie ?',
@@ -605,6 +625,7 @@ export const landingsData = [
   },
   {
     url: 'arnaques-assurance-sante',
+    lang: 'fr',
     isSemiAutomatic: false,
     seoTitle: "Arnaques à l'assurance santé",
     seoDescription:
@@ -641,6 +662,7 @@ export const landingsData = [
   },
   {
     url: 'arnaques-garanties-artisans',
+    lang: 'fr',
     isSemiAutomatic: false,
     seoTitle: 'Arnaques\n  et problèmes liés aux garanties des artisans',
     seoDescription:
@@ -689,6 +711,7 @@ export const landingsData = [
   },
   {
     url: 'arnaques-pose-panneaux-photovoltaiques',
+    lang: 'fr',
     isSemiAutomatic: false,
     seoTitle: 'Arnaques\n  et problèmes liés à la pose de panneaux photovoltaïques',
     seoDescription:
@@ -738,6 +761,7 @@ export const landingsData = [
   },
   {
     url: 'arnaques-primes-energie-renovation',
+    lang: 'fr',
     isSemiAutomatic: false,
     seoTitle: "Arnaques\n  et problèmes liés aux primes d'énergie et aux aides à la rénovation",
     seoDescription:
@@ -787,6 +811,7 @@ export const landingsData = [
   },
   {
     url: 'arnaques-reparation-appareils-electromenagers',
+    lang: 'fr',
     isSemiAutomatic: false,
     seoTitle: "Arnaques\n  et problèmes liés aux services de réparation d'appareils électroménagers",
     seoDescription: "Signalez\n  un problème d'arnaque, de surcoût ou de réparation inefficace d'appareils\n  électroménagers.",
@@ -835,6 +860,7 @@ export const landingsData = [
   },
   {
     url: 'blocage-carte-bancaire-sans-motif',
+    lang: 'fr',
     isSemiAutomatic: false,
     seoTitle: 'Blocage de votre carte bancaire sans motif',
     seoDescription: 'Votre carte bancaire a-t-elle été bloquée sans motif ? Signalez le problème pour obtenir une résolution.',
@@ -869,6 +895,7 @@ export const landingsData = [
   },
   {
     url: 'blocage-compte-bancaire-injustifie',
+    lang: 'fr',
     isSemiAutomatic: false,
     seoTitle: 'Blocage de compte bancaire injustifié',
     seoDescription:
@@ -904,6 +931,7 @@ export const landingsData = [
   },
   {
     url: 'cpf-formation',
+    lang: 'fr',
     isSemiAutomatic: false,
     seoTitle: 'Arnaque CPF',
     seoDescription:
@@ -941,6 +969,7 @@ export const landingsData = [
   },
   {
     url: 'demarchage-telephonique',
+    lang: 'fr',
     isSemiAutomatic: false,
     seoTitle: 'Démarchage téléphonique',
     seoDescription: 'Signalez un problème de démarchage téléphonique',
@@ -975,6 +1004,7 @@ export const landingsData = [
   },
   {
     url: 'fichage-bancaire-injustifie',
+    lang: 'fr',
     isSemiAutomatic: false,
     seoTitle: 'Fichage bancaire injustifié',
     seoDescription: "Vous avez été injustement fiché par une banque ? Signalez l'incident pour obtenir de l'aide.",
@@ -1010,6 +1040,7 @@ export const landingsData = [
   },
   {
     url: 'lunettes',
+    lang: 'fr',
     isSemiAutomatic: false,
     seoTitle: 'Problème lunettes',
     seoDescription: 'Signalez un problème relatif au remboursement de vos lunettes ou à la qualité de vos lunettes ?',
@@ -1054,6 +1085,7 @@ export const landingsData = [
   },
   {
     url: 'malfacons-non-conformites-batiment',
+    lang: 'fr',
     isSemiAutomatic: false,
     seoTitle: 'Malfaçons\n  et non-conformités dans le domaine du bâtiment',
     seoDescription:
@@ -1103,6 +1135,7 @@ export const landingsData = [
   },
   {
     url: 'pompe-a-chaleur-pac',
+    lang: 'fr',
     isSemiAutomatic: false,
     seoTitle: 'Pompe à chaleur - PAC',
     seoDescription: 'Votre problème concerne une arnaque relative à une pompe à chaleur-PAC ?\n',
@@ -1149,6 +1182,7 @@ export const landingsData = [
   },
   {
     url: 'prelevements-non-autorises-entreprise',
+    lang: 'fr',
     isSemiAutomatic: false,
     seoTitle: 'Prélèvements non autorisés avec une entreprise',
     seoDescription:
@@ -1184,6 +1218,7 @@ export const landingsData = [
   },
   {
     url: 'problemes-carte-credit-banque',
+    lang: 'fr',
     isSemiAutomatic: false,
     seoTitle: 'Problèmes de carte de crédit avec votre banque',
     seoDescription:
@@ -1220,6 +1255,7 @@ export const landingsData = [
   },
   {
     url: 'problemes-prelevements-banque-ligne',
+    lang: 'fr',
     isSemiAutomatic: false,
     seoTitle: 'Problèmes de prélèvements avec votre banque en ligne',
     seoDescription:
@@ -1255,6 +1291,7 @@ export const landingsData = [
   },
   {
     url: 'problemes-remboursement-mutuelle',
+    lang: 'fr',
     isSemiAutomatic: false,
     seoTitle: 'Problèmes de remboursement avec votre mutuelle',
     seoDescription:
@@ -1290,6 +1327,7 @@ export const landingsData = [
   },
   {
     url: 'renouvellement-abonnement-non-desire',
+    lang: 'fr',
     isSemiAutomatic: false,
     seoTitle: "Problèmes de renouvellement d'abonnement non désiré",
     seoDescription:
@@ -1325,6 +1363,7 @@ export const landingsData = [
   },
   {
     url: 'resiliation-non-respectee-contrat-assurance',
+    lang: 'fr',
     isSemiAutomatic: false,
     seoTitle: "Résiliation non respectée de votre contrat d'assurance",
     seoDescription:
@@ -1360,6 +1399,7 @@ export const landingsData = [
   },
   {
     url: 'retard-train',
+    lang: 'fr',
     isSemiAutomatic: false,
     seoTitle: 'Retard train',
     seoDescription: "Signalez un problème lié au retard d'un train",
@@ -1397,6 +1437,7 @@ export const landingsData = [
   },
   {
     url: 'sinistre-non-resolu-assurance',
+    lang: 'fr',
     isSemiAutomatic: false,
     seoTitle: 'Sinistre non résolu avec votre assurance',
     seoDescription:
@@ -1432,6 +1473,7 @@ export const landingsData = [
   },
   {
     url: 'substitution-assurance-emprunteur-non-respectee',
+    lang: 'fr',
     isSemiAutomatic: false,
     seoTitle: "Substitution d'assurance emprunteur non respectée",
     seoDescription:
@@ -1468,6 +1510,7 @@ export const landingsData = [
   },
   {
     url: 'vehicule-neuf',
+    lang: 'fr',
     isSemiAutomatic: false,
     seoTitle: 'Véhicule neuf',
     seoDescription: 'Votre problème concerne un véhicule neuf ?',

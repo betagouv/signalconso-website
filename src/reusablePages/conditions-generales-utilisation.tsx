@@ -18,16 +18,17 @@ export function getMetadata(lang: AppLang): Metadata {
 }
 
 export const ConditionsGeneralesUtilisation = ({params}: any) => {
+  const {messages} = getI18n(params.lang)
   return (
     <ContentPageContainer>
-      <h1>Conditions générales d'utilisation de l'interface en ligne SignalConso</h1>
+      <h1>{messages.titleAndDescriptions.conditionsGeneralesUtilisation.title}</h1>
       <Tabs
         tabs={[
           {
             label: (
               <>
-                <span className="max-md:hidden">Consommateur</span>
-                <span className="md:hidden">Conso</span>
+                <span className="max-md:hidden">{messages.centreaide.tab1}</span>
+                <span className="md:hidden">{messages.centreaide.tab1}</span>
               </>
             ),
             iconId: 'fr-icon-user-line',
@@ -36,7 +37,7 @@ export const ConditionsGeneralesUtilisation = ({params}: any) => {
           {
             label: (
               <>
-                <span className="max-md:hidden">Professionnel</span>
+                <span className="max-md:hidden">{messages.centreaide.tab2}</span>
                 <span className="md:hidden">Pro</span>
               </>
             ),
