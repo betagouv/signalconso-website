@@ -1,8 +1,8 @@
 id: '200'
 category: DemoCategory
-title: (category) Une category de démo
+title: (title) Une category de démo
 isHiddenDemoCategory: true
-seoTitle: (title) Le title de la category
+seoTitle: (seoTitle) Le titre SEO de la category
 path: pathdelacategory
 description: (description) Description de la category
 seoDescription: (seoDescription) Description SEO de la category
