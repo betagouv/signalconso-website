@@ -38,6 +38,9 @@ export const ScInput = React.forwardRef(({small, onClear, InputProps, ...props}:
             }
           : {}),
       }}
+      FormHelperTextProps={{
+        'aria-live': 'polite',
+      }}
       size="small"
       margin="dense"
       variant="outlined"

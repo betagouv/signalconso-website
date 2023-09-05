@@ -29,7 +29,11 @@ const ScSelectInner = <T,>(
         {label}
       </InputLabel>
       <Select {...selectProps} inputRef={ref} labelId={id + '-label'} id={id} />
-      {helperText && <FormHelperText error={error}>{helperText}</FormHelperText>}
+      {helperText && (
+        <FormHelperText error={error} aria-live="polite">
+          {helperText}
+        </FormHelperText>
+      )}
     </FormControl>
   )
 }

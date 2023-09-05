@@ -34,6 +34,9 @@ export const SimpleDatepicker = forwardRef(({label, value, onChange, min, max, l
         shrink: true,
         size: 'normal',
       }}
+      FormHelperTextProps={{
+        'aria-live': 'polite',
+      }}
       fullWidth
     />
   )
