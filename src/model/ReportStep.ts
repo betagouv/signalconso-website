@@ -1,5 +1,7 @@
 import {ReportDraft2} from './ReportDraft2'
 
+export const STEP_PARAM_NAME = 'step'
+
 export const reportSteps = ['BuildingProblem', 'BuildingDetails', 'BuildingCompany', 'BuildingConsumer', 'Confirmation'] as const
 export type ReportStep = (typeof reportSteps)[number]
 

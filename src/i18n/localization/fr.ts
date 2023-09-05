@@ -111,6 +111,10 @@ export const fr = {
         title: 'Actualités - SignalConso',
         description: 'Actualités et nouveautés du site SignalConso et de la répression des fraudes',
       },
+      faireUnSignalement: {
+        etape: 'Étape',
+        sur: 'sur',
+      },
     },
     introApple: 'App Store',
     introBetween: 'ou le ',
