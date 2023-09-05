@@ -1,7 +1,8 @@
-import {Button, Dialog, DialogActions, DialogContent, DialogTitle} from '@mui/material'
+import {Button} from '@codegouvfr/react-dsfr/Button'
+import {Dialog, DialogActions, DialogContent, DialogTitle} from '@mui/material'
 import {useI18n} from 'i18n/I18n'
 import * as React from 'react'
-import {ReactElement, ReactNode, SyntheticEvent, useState} from 'react'
+import {ReactElement, ReactNode, useState} from 'react'
 
 interface Props {
   title: string
@@ -33,10 +34,10 @@ export const ScDialog = ({children, title, content, confirmLabel, onConfirm}: Pr
         <DialogTitle>{title}</DialogTitle>
         <DialogContent>{content}</DialogContent>
         <DialogActions>
-          <Button color="primary" onClick={() => setOpen(false)}>
-            {m.close}
+          <Button priority="tertiary" onClick={() => setOpen(false)}>
+            {m.cancel}
           </Button>
-          <Button color="primary" onClick={confirm}>
+          <Button priority="primary" onClick={confirm} iconId="fr-icon-delete-line">
             {confirmLabel}
           </Button>
         </DialogActions>
