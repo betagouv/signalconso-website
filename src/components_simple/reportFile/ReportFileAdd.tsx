@@ -1,7 +1,7 @@
 import {alpha, Box, Button, CircularProgress, Icon, Theme, Tooltip} from '@mui/material'
 import {SxProps} from '@mui/system'
 import {useApiClients} from 'context/ApiClientsContext'
-import {styleUtils} from 'core/theme'
+import {COLOR_BLUE_FRANCE, COLOR_DARK_BLUE, COLOR_LIGHTPURPLE, styleUtils} from 'core/theme'
 import {useToastError} from 'hooks/useToastError'
 import {useI18n} from 'i18n/I18n'
 import {useRef, useState} from 'react'
@@ -14,10 +14,10 @@ const styles: {[key: string]: SxProps<Theme>} = {
   root: {
     border: t => '1px solid ' + alpha(t.palette.divider, 0.43),
     margin: 1,
-    borderRadius: reportFileConfig.cardBorderRadius + 'px',
+    borderRadius: 0,
     height: reportFileConfig.cardSize,
     width: reportFileConfig.cardSize,
-    color: t => t.palette.text.secondary,
+    color: COLOR_BLUE_FRANCE,
     overflow: 'hidden',
     display: 'inline-flex',
     alignItems: 'center',
