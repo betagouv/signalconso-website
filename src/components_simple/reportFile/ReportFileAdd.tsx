@@ -1,44 +1,12 @@
-import {alpha, Box, Button, CircularProgress, Icon, Theme, Tooltip} from '@mui/material'
-import {SxProps} from '@mui/system'
+import {Button} from '@codegouvfr/react-dsfr/Button'
 import {useApiClients} from 'context/ApiClientsContext'
-import {styleUtils} from 'core/theme'
 import {useToastError} from 'hooks/useToastError'
 import {useI18n} from 'i18n/I18n'
 import {useRef, useState} from 'react'
 import {appConfig} from '../../core/appConfig'
 import {FileOrigin, UploadedFile} from '../../model/UploadedFile'
 import {compressFile} from '../../utils/compressFile'
-import {extractFileExt, reportFileConfig} from './reportFileConfig'
-
-const styles: {[key: string]: SxProps<Theme>} = {
-  root: {
-    border: t => '1px solid ' + alpha(t.palette.divider, 0.43),
-    margin: 1,
-    borderRadius: reportFileConfig.cardBorderRadius + 'px',
-    height: reportFileConfig.cardSize,
-    width: reportFileConfig.cardSize,
-    color: t => t.palette.text.secondary,
-    overflow: 'hidden',
-    display: 'inline-flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  body: {
-    display: 'inline-flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    flexDirection: 'column',
-  },
-  icon: {
-    fontSize: 32,
-  },
-  label: {
-    fontSize: t => styleUtils(t).fontSize.small,
-    textTransform: 'initial',
-    fontWeight: 'normal',
-    lineHeight: 1.4,
-  },
-}
+import {extractFileExt} from './reportFileConfig'
 
 interface Props {
   fileOrigin: FileOrigin
@@ -109,30 +77,31 @@ export const ReportFileAdd = ({onUploaded, fileOrigin}: Props) => {
     }
   }
 
-  if (uploading) {
-    return (
-      <Box sx={styles.root}>
-        <Box sx={styles.body}>
-          <CircularProgress />
-        </Box>
-      </Box>
-    )
-  } else {
-    return (
-      <Tooltip title={m.addAttachmentFile}>
-        <Button sx={styles.root} onClick={openFileSelection}>
-          <Box sx={styles.body}>
-            <Icon sx={styles.icon}>add</Icon>
-          </Box>
-          <input
-            style={{display: 'none'}}
-            accept={appConfig.upload_allowedExtensions.join(',')}
-            type="file"
-            ref={fileInputEl}
-            onChange={e => handleChange(e.target.files)}
-          />
-        </Button>
-      </Tooltip>
-    )
-  }
+  return (
+    <>
+      <Button
+        {...(uploading
+          ? {
+              style: {
+                paddingLeft: '14px',
+              },
+            }
+          : {iconId: 'fr-icon-upload-line'})}
+        priority="secondary"
+        disabled={uploading}
+        onClick={openFileSelection}
+        className=""
+      >
+        {uploading && <div className="sc-loader w-4 h-4 mr-2"></div>}
+        Ajouter une pièce jointe
+      </Button>
+      <input
+        className="hidden"
+        accept={appConfig.upload_allowedExtensions.join(',')}
+        type="file"
+        ref={fileInputEl}
+        onChange={e => handleChange(e.target.files)}
+      />
+    </>
+  )
 }

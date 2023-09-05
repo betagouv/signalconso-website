@@ -42,17 +42,11 @@ export const ReportFiles = ({
 
   return (
     <>
-      <Box
-        sx={{
-          display: 'flex',
-          flexWrap: 'wrap',
-          margin: -1,
-        }}
-      >
+      {!hideAddBtn && <ReportFileAdd fileOrigin={fileOrigin} onUploaded={newFile} />}
+      <Box className="flex flex-wrap gap-2 mt-4">
         {innerFiles
           ?.filter(_ => _.origin === fileOrigin)
           .map(_ => <ReportFile key={_.id} file={_} onRemove={hideRemoveBtn ? undefined : removeFile} />)}
-        {!hideAddBtn && <ReportFileAdd fileOrigin={fileOrigin} onUploaded={newFile} />}
       </Box>
       {hideAddBtn && innerFiles?.length === 0 && (
         <Txt

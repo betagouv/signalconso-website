@@ -1,9 +1,9 @@
 import {Stepper as DsfrStepper} from '@codegouvfr/react-dsfr/Stepper'
-import {useColors} from '@codegouvfr/react-dsfr/useColors'
-import {alpha, Box, BoxProps} from '@mui/material'
+import {alpha, BoxProps} from '@mui/material'
 import {COLOR_BLUE_FRANCE} from 'core/theme'
 import {useI18n} from 'i18n/I18n'
 import {getIndexForStep, getNextStep, ReportStep, ReportStepOrDone, reportSteps} from 'model/ReportStep'
+import {ReactNode} from 'react'
 
 interface StepperHeaderProps extends BoxProps {
   variant?: Variant
@@ -66,24 +66,44 @@ export const ReportFlowStepperHeader = ({currentStep, goTo, variant = 'standard'
             <li
               className="outline-0 outline-green-500 outline-dashed flex flex-grow basis-0"
               key={stepLabel}
-              onClick={onClick}
               aria-current={stepStatus === 'currentStep' ? 'step' : undefined}
             >
-              <div
-                className={`flex flex-col relative items-center justify-center w-full ${
+              <MaybeLink
+                {...{onClick}}
+                className={`!bg-none !no-underline bg-gree-100 flex flex-col relative items-center justify-center w-full ${
                   onClick ? 'cursor-pointer' : stepStatus === 'currentStep' ? 'cursor-default' : 'cursor-not-allowed'
                 }`}
               >
                 {stepIndex > 0 && <StepSeparator {...{stepStatus, stepSize, variant}} />}
                 <StepNumberInCircle {...{stepIndex, stepStatus, stepSize}} />
                 {!hideLabel && <StepLabel {...{stepStatus, stepLabel}} />}
-              </div>
+              </MaybeLink>
             </li>
           )
         })}
       </ol>
     </nav>
   )
+}
+
+function MaybeLink({className, children, onClick}: {className: string; onClick?: () => void; children: ReactNode}) {
+  // Returns either a <a> or a div
+  // For accessibility purposes
+  if (onClick) {
+    return (
+      <a
+        {...{className}}
+        onClick={e => {
+          e.preventDefault()
+          onClick()
+        }}
+        href="#"
+      >
+        {children}
+      </a>
+    )
+  }
+  return <span {...{className}}>{children}</span>
 }
 
 function StepNumberInCircle({stepIndex, stepStatus, stepSize}: {stepIndex: number; stepStatus: StepStatus; stepSize: number}) {

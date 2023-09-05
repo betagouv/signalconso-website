@@ -29,6 +29,9 @@ export const ScDatepickerFr = forwardRef(({value, onChange, min, max, ...props}:
         onChange(isoToFrenchFormat(e.target.value))
       }}
       InputLabelProps={{shrink: true}}
+      FormHelperTextProps={{
+        'aria-live': 'polite',
+      }}
     />
   )
 })

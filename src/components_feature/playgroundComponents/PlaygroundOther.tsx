@@ -1,16 +1,13 @@
-import {Button} from '@codegouvfr/react-dsfr/Button'
 import {ButtonWithLoader} from 'components_simple/Buttons'
-import React, {useState} from 'react'
-import RadioButtons from '@codegouvfr/react-dsfr/RadioButtons'
-import {SocialNetworkRow} from '../../components_simple/SocialNetworkRow'
-import {ScRadioButtons} from '../../components_simple/formInputs/ScRadioButtons'
-import {Txt} from '../../components_simple/Txt'
+import {useState} from 'react'
+import {useForm} from 'react-hook-form'
 import {AccordionInline} from '../../components_simple/AccordionInline'
+import {SocialNetworkRow} from '../../components_simple/SocialNetworkRow'
+import {Txt} from '../../components_simple/Txt'
+import {ScCheckbox} from '../../components_simple/formInputs/ScCheckbox'
+import {ScRadioButtons} from '../../components_simple/formInputs/ScRadioButtons'
 import {useI18n} from '../../i18n/I18n'
 import {DetailsSpecifyInput} from '../reportFlow/Details/DetailsSpecifyInput'
-import {SpecifyFormUtils} from '../reportFlow/Details/Details'
-import {useForm} from 'react-hook-form'
-import {ScCheckbox} from '../../components_simple/formInputs/ScCheckbox'
 
 export const PlaygroundOther = () => {
   const [radioValue, setRadioValue] = useState<string | undefined>(undefined)
@@ -60,7 +57,7 @@ export const PlaygroundOther = () => {
           {
             label: 'Option 3',
             description: (
-              <AccordionInline label={m.companyHowToFindCountry} onClick={e => e.stopPropagation()}>
+              <AccordionInline label={m.companyHowToFindCountry}>
                 <Txt color="hint" size="small" dangerouslySetInnerHTML={{__html: m.howToFindCompanyCountryDesc}} />
               </AccordionInline>
             ),
@@ -99,6 +96,37 @@ export const PlaygroundOther = () => {
 
       <p>Check value: {checkValue}</p>
       <p>Specifiy check value: {specifiyCheck}</p>
+
+      <div className="border border-gray-500 border-solid p-2">
+        <p>Le composant "AccordionInline"</p>
+        <AccordionInline label={"label de l'accordéon"}>Le contenu de l'accordéon</AccordionInline>
+
+        <AccordionInline
+          label={
+            <span className="bg-purple-100">
+              Label plus <span className="font-bold">complexe</span>
+            </span>
+          }
+        >
+          <span className="bg-green-100">
+            Contenu plus <span className="font-bold">complexe</span>
+          </span>
+        </AccordionInline>
+        <AccordionInline
+          label={
+            <div className="bg-purple-100">
+              Label plus <span className="font-bold">complexe</span> et pas inline
+            </div>
+          }
+        >
+          <div className="bg-green-100">
+            <p>
+              Contenu plus <span className="font-bold">complexe</span> et pas inline
+            </p>
+            <p>Avec plusieurs lignes</p>
+          </div>
+        </AccordionInline>
+      </div>
     </>
   )
 }

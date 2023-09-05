@@ -1,43 +1,34 @@
+import {Box, Collapse, Icon} from '@mui/material'
 import React, {ReactNode, useEffect, useState} from 'react'
-import {Box, BoxProps, Collapse, Icon} from '@mui/material'
-import {Txt} from './Txt'
 
-interface Props extends BoxProps {
+interface Props {
   label: ReactNode
   children: ReactNode
-  open?: boolean
-  onClick?: (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void
+  className?: string
 }
 
-export const AccordionInline = ({open, label, children, onClick, ...props}: Props) => {
-  const [innerOpen, setInnerOpen] = useState<boolean>()
-  useEffect(() => {
-    setInnerOpen(open)
-  }, [open])
+export const AccordionInline = ({label, children, className = ''}: Props) => {
+  const [innerOpen, setInnerOpen] = useState<boolean>(false)
 
   return (
-    <Box {...props}>
-      <Txt
-        link
-        style={{display: 'flex', alignItems: 'center'}}
-        sx={{
-          '&:hover': {
-            textDecoration: 'underline',
-          },
-        }}
+    <div {...{className}}>
+      <button
+        className="flex items-center hover:underline text-base text-scbluefrance"
         onClick={e => {
-          if (onClick) onClick(e)
+          e.stopPropagation()
+          e.preventDefault()
           setInnerOpen(_ => !_)
         }}
+        aria-expanded={innerOpen}
       >
         {label}
         <Icon sx={{ml: 1}} fontSize="small">
           {innerOpen ? 'expand_less' : 'expand_more'}
         </Icon>
-      </Txt>
+      </button>
       <Collapse in={innerOpen}>
-        <Box sx={{mt: 1}}>{children}</Box>
+        <div className="mt-2">{children}</div>
       </Collapse>
-    </Box>
+    </div>
   )
 }

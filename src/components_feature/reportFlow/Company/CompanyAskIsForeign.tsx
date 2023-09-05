@@ -36,7 +36,7 @@ export const CompanyAskIsForeign = ({children}: Props) => {
                   label: m.noItsForeign,
                   value: IsForeignCompany.No,
                   description: (
-                    <AccordionInline label={m.companyHowToFindCountry} onClick={e => e.stopPropagation()}>
+                    <AccordionInline label={m.companyHowToFindCountry}>
                       <Txt color="hint" size="small" dangerouslySetInnerHTML={{__html: m.howToFindCompanyCountryDesc}} />
                     </AccordionInline>
                   ),

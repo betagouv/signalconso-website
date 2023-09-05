@@ -53,7 +53,11 @@ export const ProblemInformation = ({anomaly, subcategories, information, isWebVi
   return (
     <>
       <Animate>
-        <Panel id="test-info" border title={<span dangerouslySetInnerHTML={{__html: information.title ?? m.informationTitle}} />}>
+        <Panel
+          id="blocking-info-wall"
+          border
+          title={<span dangerouslySetInnerHTML={{__html: information.title ?? m.informationTitle}} />}
+        >
           <PanelBody>
             {information.notAFraudMessage && (
               <Txt block className="mb-2">
@@ -66,13 +70,13 @@ export const ProblemInformation = ({anomaly, subcategories, information, isWebVi
             {information.content && <Txt block className="mb-1" dangerouslySetInnerHTML={{__html: information.content}} />}
             {information.questions?.map(action => (
               <AccordionInline
-                sx={{mt: 1}}
+                className="mt-2"
                 key={action.question}
                 label={
-                  <div>
-                    <Txt bold block component="p" sx={{mb: 0}} dangerouslySetInnerHTML={{__html: action.question}} />
-                    {action.desc && <Txt block dangerouslySetInnerHTML={{__html: action.desc}} />}
-                  </div>
+                  <span className="inline-flex flex-col items-start">
+                    <span className="font-bold" dangerouslySetInnerHTML={{__html: action.question}} />
+                    {action.desc && <span dangerouslySetInnerHTML={{__html: action.desc}} />}
+                  </span>
                 }
               >
                 <Txt color="hint" component="p" dangerouslySetInnerHTML={{__html: action.answer}} />

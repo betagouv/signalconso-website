@@ -6,29 +6,27 @@ import {Confirmation} from 'components_feature/reportFlow/Confirmation/Confirmat
 import {Consumer} from 'components_feature/reportFlow/Consumer/Consumer'
 import {Details} from 'components_feature/reportFlow/Details/Details'
 import {Problem} from 'components_feature/reportFlow/Problem/Problem'
-import {useReportFlowContext} from 'components_feature/reportFlow/ReportFlowContext'
 import {useReportCreateContext} from 'components_feature/reportFlow/ReportCreateContext'
+import {useReportFlowContext} from 'components_feature/reportFlow/ReportFlowContext'
+import {buildLinkStartReport} from 'core/pagesDefinitions'
 import {
   findCurrentStepForReport,
   firstReportStep,
   getAnalyticsForStep,
-  getIndexForStep,
   getIndexForStepOrDone,
   getNextStep,
   getPreviousStep,
   indexToStepOrDone,
   isStepBeforeOrEqual,
   ReportStepOrDone,
+  STEP_PARAM_NAME,
 } from 'model/ReportStep'
-import {useRouter} from 'next/navigation'
+import {useRouter, useSearchParams} from 'next/navigation'
 import {useEffect} from 'react'
 import {scrollTop} from 'utils/utils'
-import {buildLinkStartReport} from 'core/pagesDefinitions'
-import {NewReportFlowStepperHeader, ReportFlowStepperHeader} from './ReportFlowStepperHeader'
-import {useSearchParams} from 'next/navigation'
-import dynamic from 'next/dynamic'
 import {useI18n} from '../../../i18n/I18n'
 import {AppLang} from '../../../i18n/localization/AppLangs'
+import {ReportFlowStepperHeader} from './ReportFlowStepperHeader'
 
 interface StepperProps {
   anomaly: Anomaly
@@ -46,7 +44,7 @@ function useStepChangeTracking(anomaly: Anomaly, currentStep: ReportStepOrDone, 
   const _analytics = useAnalyticContext()
   useEffect(() => {
     const {path, title} = getAnalyticsForStep(currentStep)
-    isWebView && window.ReactNativeWebView?.postMessage('step=' + getIndexForStepOrDone(currentStep) + 1)
+    isWebView && window.ReactNativeWebView?.postMessage(`${STEP_PARAM_NAME}=` + getIndexForStepOrDone(currentStep) + 1)
     _analytics.trackPage(`/${anomaly.path}/${path}`, title)
   }, [currentStep])
 }
@@ -63,7 +61,7 @@ function parseStepFromQueryString(stepParamRaw: string | string[] | undefined | 
 }
 
 export function buildPathForStep(anomaly: Pick<Anomaly, 'path'>, lang: AppLang, step: ReportStepOrDone, isWebView: boolean) {
-  const queryString = step === firstReportStep ? '' : `?step=${getIndexForStepOrDone(step)}`
+  const queryString = step === firstReportStep ? '' : `?${STEP_PARAM_NAME}=${getIndexForStepOrDone(step)}`
   return `${buildLinkStartReport(anomaly, lang, {isWebView})}${queryString}`
 }
 
@@ -71,7 +69,7 @@ function useStepFromRouter(anomaly: Anomaly, isWebView: boolean) {
   const query = useSearchParams()
   const router = useRouter()
   const {currentLang} = useI18n()
-  const step = (query && parseStepFromQueryString(query.get('step'))) ?? firstReportStep
+  const step = (query && parseStepFromQueryString(query.get(STEP_PARAM_NAME))) ?? firstReportStep
 
   function setStep(newStep: ReportStepOrDone) {
     const url = buildPathForStep(anomaly, currentLang, newStep, isWebView)
@@ -141,7 +139,6 @@ export const ReportFlowStepper = ({anomaly, isWebView}: StepperProps) => {
 
   return (
     <>
-      {/* <NewReportFlowStepperHeader currentStep={step} /> */}
       <ReportFlowStepperHeader currentStep={step} goTo={setStep} />
       {step === 'BuildingProblem' && <Problem {...{isWebView, anomaly, stepNavigation}} />}
       {step === 'BuildingDetails' && <Details {...{stepNavigation}} />}
