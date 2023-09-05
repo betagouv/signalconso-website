@@ -24,13 +24,13 @@ export const ReportFile = ({file, onRemove}: ReportFileProps) => {
 
   return (
     <Tooltip title={file.filename}>
-      <div>
+      <div className="">
         <Box
           component="a"
           target="_blank"
           href={fileUrl}
           rel="noreferrer"
-          className="after:!hidden !bg-none mx-2 mt-2"
+          className="after:!hidden !bg-none"
           aria-label={`Télécharger ${file.filename}`}
           sx={{
             display: 'block',
@@ -97,7 +97,7 @@ export const ReportFile = ({file, onRemove}: ReportFileProps) => {
               }}
               confirmLabel={m.delete}
             >
-              <Button size="small" iconId="fr-icon-delete-line" priority="tertiary no outline">
+              <Button size="small" iconId="fr-icon-delete-line" priority="tertiary no outline" className="!p-0 ">
                 {m.delete.toLowerCase()}
               </Button>
             </ScDialog>
