@@ -139,7 +139,6 @@ export const ReportFlowStepper = ({anomaly, isWebView}: StepperProps) => {
 
   return (
     <>
-      {/* <NewReportFlowStepperHeader currentStep={step} /> */}
       <ReportFlowStepperHeader currentStep={step} goTo={setStep} />
       {step === 'BuildingProblem' && <Problem {...{isWebView, anomaly, stepNavigation}} />}
       {step === 'BuildingDetails' && <Details {...{stepNavigation}} />}
