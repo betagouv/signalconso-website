@@ -91,12 +91,7 @@ export const ReportFile = ({file, onRemove}: ReportFileProps) => {
             <ScDialog
               title={m.removeAsk}
               content={<p className="mb-0" dangerouslySetInnerHTML={{__html: m.thisWillBeRemoved(file.filename)}} />}
-              maxWidth="xs"
-              onClick={e => {
-                e.stopPropagation()
-                e.preventDefault()
-              }}
-              onConfirm={(event, close) => {
+              onConfirm={close => {
                 remove()
                 close()
               }}
