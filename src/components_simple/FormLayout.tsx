@@ -1,6 +1,5 @@
-import React, {ReactNode} from 'react'
-import {Txt} from './Txt'
 import {Box, BoxProps} from '@mui/material'
+import {ReactNode} from 'react'
 
 interface Props extends BoxProps {
   label?: ReactNode
@@ -19,13 +18,13 @@ export const FormLayout = ({label, desc, required, children, ...sx}: Props) => {
         },
       }}
     >
-      <Txt block>
-        {label}
-        {required && <Txt color="textsecondary"> *</Txt>}
-      </Txt>
-      <Txt block color="hint" size="small">
-        {desc}
-      </Txt>
+      <label>
+        <span className="block">
+          {label}
+          {required && <span> *</span>}
+        </span>
+        {desc && <span className="block text-gray-600 text-sm">{desc}</span>}
+      </label>
       {children}
     </Box>
   )
