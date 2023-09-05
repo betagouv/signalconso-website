@@ -53,7 +53,11 @@ export const ProblemInformation = ({anomaly, subcategories, information, isWebVi
   return (
     <>
       <Animate>
-        <Panel id="test-info" border title={<span dangerouslySetInnerHTML={{__html: information.title ?? m.informationTitle}} />}>
+        <Panel
+          id="blocking-info-wall"
+          border
+          title={<span dangerouslySetInnerHTML={{__html: information.title ?? m.informationTitle}} />}
+        >
           <PanelBody>
             {information.notAFraudMessage && (
               <Txt block className="mb-2">

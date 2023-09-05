@@ -60,7 +60,7 @@ describe('Problem', () => {
       },
     })
     fireEvent.click(app.getByText(ProblemFixture.infoSubcategory.title))
-    expect(app.container.querySelector('#test-info')).not.toBeNull()
+    expect(app.container.querySelector('#blocking-info-wall')).not.toBeNull()
   })
 
   it('should request the user if he is an employee of the company or not when receive subcategories', () => {
