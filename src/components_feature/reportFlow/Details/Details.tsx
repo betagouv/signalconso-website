@@ -31,6 +31,7 @@ import {getDraftReportInputs} from './draftReportInputs'
 import {ScRadioButtons} from '../../../components_simple/formInputs/ScRadioButtons'
 import {ScCheckbox} from '../../../components_simple/formInputs/ScCheckbox'
 import {Alert} from '@codegouvfr/react-dsfr/Alert'
+import {ADD_FILE_HELP_ID} from 'components_simple/reportFile/ReportFileAdd'
 
 export class SpecifyFormUtils {
   static readonly specifyKeywordFr = '(à préciser)'
@@ -330,9 +331,7 @@ export const DetailsInner = ({
               <FriendlyHelpText>
                 <p className="mb-0" dangerouslySetInnerHTML={{__html: m.attachmentsDesc2}} />
               </FriendlyHelpText>
-              {consumerWish !== 'fixContractualDispute' && (
-                <p className="mb-0" dangerouslySetInnerHTML={{__html: m.attachmentsDescAnonymous}} />
-              )}
+              {consumerWish !== 'fixContractualDispute' && <p dangerouslySetInnerHTML={{__html: m.attachmentsDescAnonymous}} />}
             </>
           )}
           <ReportFiles
@@ -344,6 +343,7 @@ export const DetailsInner = ({
           />
           <p
             className="mt-2 text-sm"
+            id={ADD_FILE_HELP_ID}
             dangerouslySetInnerHTML={{__html: m.attachmentsDescAllowedFormat(appConfig.upload_allowedExtensions)}}
           />
           {uploadedFilesCount === 0 ? (
