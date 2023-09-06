@@ -17,6 +17,8 @@ import {useReportFlowContext} from '../../components_feature/reportFlow/ReportFl
 import {BrowserCompatAlert} from '../../components_simple/bigBanners/BrowserAlertCompat'
 import SearchAnomalies from '../../components_simple/SearchAnomalies'
 import {MobileAppPromoBanner} from 'components_simple/bigBanners/MobileAppPromoBanner'
+import {ForeignVisitorsQaPromoBanner} from 'components_simple/bigBanners/ForeignVisitorsQaPromoBanner'
+import {AppLangs} from 'i18n/localization/AppLangs'
 
 const ReportStartedAlert = dynamic(() => import('components_feature/ReportStartedAlert'), {ssr: false})
 
@@ -66,6 +68,7 @@ const Home = () => {
                 {m.buttonReportProblem}
               </Button>
             </div>
+            {currentLang === AppLangs.en && <ForeignVisitorsQaPromoBanner />}
           </div>
         </div>
         <div id="index-categories" style={{background: dsfrTheme.decisions.background.actionLow.blueFrance.default}}>
