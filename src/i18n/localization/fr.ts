@@ -1047,6 +1047,7 @@ export const fr = {
       text: `En cas d'une urgence vitale ou importante, vous pouvez appeler l'un des`,
       linkText: `numéros d'urgence : Samu, pompiers, ...`,
     },
+    fieldsAreRequired: `Les champs marqués d'un astérisque (*) sont obligatoires.`,
     pageNotFoundTitle: `Page non trouvée`,
     pageNotFoundHeadTitle: `SignalConso : Page non trouvée`,
     pageNotFoundDesc: `Vous êtes bien sur SignalConso. Mais vous avez suivi un lien vers une page qui n'existe pas, ou qui a changé d'adresse.`,

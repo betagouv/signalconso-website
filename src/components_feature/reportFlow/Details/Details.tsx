@@ -141,12 +141,11 @@ export const DetailsInner = ({
             ) : (
               <>
                 <p className="mb-0" dangerouslySetInnerHTML={{__html: m.detailsTextAreaNotTransmittable}} />
-                <br />
                 {employeeConsumer && <p className="mb-0" dangerouslySetInnerHTML={{__html: m.detailsTextAreaEmployeeConsumer}} />}
               </>
             )}
           </FriendlyHelpText>
-
+          <p className="text-sm">{m.fieldsAreRequired}</p>
           {inputs.map((input, inputIndex) => (
             <FieldLayout
               label={<span dangerouslySetInnerHTML={{__html: input.label}} />}
@@ -331,7 +330,9 @@ export const DetailsInner = ({
               <FriendlyHelpText>
                 <p className="mb-0" dangerouslySetInnerHTML={{__html: m.attachmentsDesc2}} />
               </FriendlyHelpText>
-              {consumerWish !== 'fixContractualDispute' && <p dangerouslySetInnerHTML={{__html: m.attachmentsDescAnonymous}} />}
+              {consumerWish !== 'fixContractualDispute' && (
+                <p className="mb-0" dangerouslySetInnerHTML={{__html: m.attachmentsDescAnonymous}} />
+              )}
             </>
           )}
           <ReportFiles
@@ -342,11 +343,11 @@ export const DetailsInner = ({
             hideAddBtn={uploadedFilesCount >= appConfig.maxNumberOfAttachments}
           />
           <p
-            className="fr-mt-2w"
+            className="mt-2 text-sm"
             dangerouslySetInnerHTML={{__html: m.attachmentsDescAllowedFormat(appConfig.upload_allowedExtensions)}}
           />
           {uploadedFilesCount === 0 ? (
-            <p>{m.maxAttachmentsZero(appConfig.maxNumberOfAttachments)}</p>
+            <p className="text-sm">{m.maxAttachmentsZero(appConfig.maxNumberOfAttachments)}</p>
           ) : uploadedFilesCount === appConfig.maxNumberOfAttachments ? (
             <Alert
               description={m.maxAttachmentsReached(appConfig.maxNumberOfAttachments)}
@@ -355,7 +356,7 @@ export const DetailsInner = ({
               className="fr-mt-4w"
             />
           ) : (
-            <p>{m.maxAttachmentsCurrent(appConfig.maxNumberOfAttachments - uploadedFilesCount)}</p>
+            <p className="text-sm">{m.maxAttachmentsCurrent(appConfig.maxNumberOfAttachments - uploadedFilesCount)}</p>
           )}
         </div>
       </Animate>
