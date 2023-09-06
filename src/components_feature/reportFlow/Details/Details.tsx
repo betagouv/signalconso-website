@@ -296,6 +296,7 @@ export const DetailsInner = ({
                       }),
                   },
                   () =>
+                    // cas de la textarea description
                     controller({
                       rules: {
                         maxLength: {value: appConfig.maxDescriptionInputLength, message: ''},
@@ -304,9 +305,18 @@ export const DetailsInner = ({
                         <ScInput
                           {...field}
                           helperText={
-                            errors[inputIndex]?.type === 'required'
-                              ? m.required
-                              : `${getValues('' + inputIndex)?.length ?? 0} / ${appConfig.maxDescriptionInputLength}`
+                            errors[inputIndex]?.type === 'required' ? (
+                              m.required
+                            ) : (
+                              <span>
+                                {getValues('' + inputIndex)?.length ?? 0} / {appConfig.maxDescriptionInputLength}
+                                <span className="hidden">
+                                  {' '}
+                                  {m.charactersTyped}
+                                  {/* reco audit accessibilité d'ajouter ce texte caché */}
+                                </span>
+                              </span>
+                            )
                           }
                           error={hasErrors}
                           multiline

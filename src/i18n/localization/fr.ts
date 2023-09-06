@@ -943,6 +943,7 @@ export const fr = {
     name: 'Nom',
     others: 'Autres',
     description: 'Description',
+    charactersTyped: 'caractères saisis',
     deploy: 'Déployer',
     unknown: 'Inconnu',
     new: 'New',

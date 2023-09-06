@@ -931,6 +931,7 @@ export const en = {
     name: 'Name',
     others: 'Others',
     description: 'Description',
+    charactersTyped: 'characters',
     deploy: 'Deploy',
     unknown: 'Unknown',
     new: 'New',
