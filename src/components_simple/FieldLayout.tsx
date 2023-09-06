@@ -1,18 +1,19 @@
-import {Box, BoxProps} from '@mui/material'
-import {ReactNode} from 'react'
+import {Box} from '@mui/material'
+import {ReactElement, ReactNode} from 'react'
 
-interface Props extends BoxProps {
+interface Props {
   label?: ReactNode
   desc?: ReactNode
   required?: boolean
-  children: ReactNode
+  children: ReactElement
+  className?: string
 }
 
-export const FormLayout = ({label, desc, required, children, ...sx}: Props) => {
+export const FieldLayout = ({label, desc, required, children, className = ''}: Props) => {
   return (
     <Box
+      className={className}
       sx={{
-        ...sx,
         '& + &': {
           mt: 2,
         },
@@ -24,8 +25,8 @@ export const FormLayout = ({label, desc, required, children, ...sx}: Props) => {
           {required && <span> *</span>}
         </span>
         {desc && <span className="block text-gray-600 text-sm">{desc}</span>}
+        {children}
       </label>
-      {children}
     </Box>
   )
 }

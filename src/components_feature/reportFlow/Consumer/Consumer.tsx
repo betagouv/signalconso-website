@@ -2,7 +2,7 @@ import {Grid} from '@mui/material'
 import {useMutation} from '@tanstack/react-query'
 import {useAnalyticContext} from 'analytic/AnalyticContext'
 import {EventCategories, ReportEventActions} from 'analytic/analytic'
-import {FormLayout} from 'components_simple/FormLayout'
+import {FieldLayout} from 'components_simple/FieldLayout'
 import {ScInput} from 'components_simple/formInputs/ScInput'
 import {Panel, PanelBody} from 'components_simple/Panel'
 import {StepNavigation} from 'components_feature/reportFlow/reportFlowStepper/ReportFlowStepper'
@@ -109,17 +109,17 @@ export const ConsumerInner = ({
         <PanelBody>
           {draft.employeeConsumer && <ScAlert type="info" dense dangerouslySetInnerHTML={{__html: m.consumerIsEmployee}} />}
           <Row icon="person">
-            <FormLayout label={m.genderOptional}>
+            <FieldLayout label={m.genderOptional}>
               <Controller
                 defaultValue={draft.consumer?.gender}
                 control={_form.control}
                 render={({field}) => <ScRadioButtons {...field} orientation="horizontal" options={gendersOptions} />}
                 name={'gender'}
               />
-            </FormLayout>
+            </FieldLayout>
             <Grid container columnSpacing={2}>
               <Grid item xs={6}>
-                <FormLayout label={m.firstName} required>
+                <FieldLayout label={m.firstName} required>
                   <ScInput
                     autoComplete="given-name"
                     fullWidth
@@ -130,10 +130,10 @@ export const ConsumerInner = ({
                     })}
                     {...getErrors('firstName')}
                   />
-                </FormLayout>
+                </FieldLayout>
               </Grid>
               <Grid item xs={6}>
-                <FormLayout label={m.lastName} required>
+                <FieldLayout label={m.lastName} required>
                   <ScInput
                     autoComplete="family-name"
                     fullWidth
@@ -144,12 +144,12 @@ export const ConsumerInner = ({
                     })}
                     {...getErrors('lastName')}
                   />
-                </FormLayout>
+                </FieldLayout>
               </Grid>
             </Grid>
           </Row>
           <Row icon="email">
-            <FormLayout label={m.email} required>
+            <FieldLayout label={m.email} required>
               <ScInput
                 autoComplete="email"
                 type="email"
@@ -166,10 +166,10 @@ export const ConsumerInner = ({
                   },
                 })}
               />
-            </FormLayout>
+            </FieldLayout>
           </Row>
           <Row icon="phone">
-            <FormLayout label={m.phoneOptional}>
+            <FieldLayout label={m.phoneOptional}>
               <ScInput
                 autoComplete="tel"
                 type="tel"
@@ -181,13 +181,10 @@ export const ConsumerInner = ({
                   pattern: {value: regexp.phone, message: m.invalidPhone},
                 })}
               />
-            </FormLayout>
+            </FieldLayout>
           </Row>
           <Row icon="receipt">
-            <FormLayout label={m.referenceNumberOptional}>
-              <Txt color="hint" component="p">
-                {m.referenceNumberDesc}
-              </Txt>
+            <FieldLayout label={m.referenceNumberOptional} desc={m.referenceNumberDesc}>
               <ScInput
                 placeholder={m.referenceNumberPlaceholder}
                 fullWidth
@@ -197,7 +194,7 @@ export const ConsumerInner = ({
                   maxLength: {value: 100, message: m.atMost100Chars},
                 })}
               />
-            </FormLayout>
+            </FieldLayout>
           </Row>
           {showContactAgreement && (
             <>
