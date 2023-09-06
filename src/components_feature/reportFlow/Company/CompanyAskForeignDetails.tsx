@@ -93,7 +93,7 @@ export const CompanyAskForeignDetails = ({onSubmit, companyKind}: Props) => {
               />
             </FieldLayout>
             <br />
-            <ScAlert dense type="info" deletable>
+            <ScAlert dense type="info">
               <Txt
                 size="small"
                 dangerouslySetInnerHTML={{

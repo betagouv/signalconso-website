@@ -32,7 +32,7 @@ export const CompanyAskConsumerPostalCode = ({value, onChange, companyKind}: Pro
   return (
     <Animate>
       <Panel id="CompanyAskConsumerPostalCode">
-        <ScAlert dense type="info" deletable>
+        <ScAlert dense type="info">
           <Txt
             size="small"
             dangerouslySetInnerHTML={{
