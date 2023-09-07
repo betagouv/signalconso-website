@@ -66,10 +66,12 @@ export const AutocompleteCity = forwardRef(({label, placeholder, onChange, ...in
     return buildDefaultOption(input)
   }
 
+  const actuallyOpen = _fetchCity.error || inputValue == '' || isPartialPostalcode(inputValue) ? false : open
+
   return (
     <Autocomplete
       ref={ref}
-      open={_fetchCity.error || inputValue == '' || isPartialPostalcode(inputValue) ? false : open}
+      open={actuallyOpen}
       onOpen={() => setOpen(true)}
       onClose={() => setOpen(false)}
       onInputChange={(event, newInputValue) => {
@@ -116,7 +118,12 @@ export const AutocompleteCity = forwardRef(({label, placeholder, onChange, ...in
               <>
                 {_fetchCity.isLoading ? <CircularProgress size={20} /> : null}
                 {inputProps.InputProps?.endAdornment}
-                {params.InputProps.endAdornment}
+                {React.cloneElement(params.InputProps.endAdornment as any, {
+                  // we keep the original adornment (arrow button)
+                  // but add some attributes asked for by accessibilty audit
+                  'aria-label': m.selectPostalCode,
+                  'aria-expanded': actuallyOpen,
+                })}
               </>
             ),
           }}

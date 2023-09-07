@@ -1153,6 +1153,7 @@ export const en = {
     companyIdentityPlaceholder: `Ex: 83350861700010`,
     howToFindThem: `How to find them ?`,
     postalCode: `Post code`,
+    selectPostalCode: `Select the post code`,
     youCanSearchByCity: `You can search by town/city or enter the post code`,
     aboutCompany: `About the company`,
     selectCompany: `Select company`,

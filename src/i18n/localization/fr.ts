@@ -1167,6 +1167,7 @@ export const fr = {
     companyIdentityPlaceholder: `Ex: 83350861700010`,
     howToFindThem: `Où les trouver ?`,
     postalCode: `Code postal`,
+    selectPostalCode: `Sélectionner le code postal`,
     youCanSearchByCity: `Vous pouvez chercher par ville ou saisir le code postal`,
     aboutCompany: `Informations sur l'entreprise`,
     selectCompany: `Sélectionnez l'entreprise`,
