@@ -107,7 +107,9 @@ export const ConsumerInner = ({
     <>
       <Panel title={m.consumerTitle}>
         <PanelBody>
-          {draft.employeeConsumer && <ScAlert type="info" dense dangerouslySetInnerHTML={{__html: m.consumerIsEmployee}} />}
+          {draft.employeeConsumer && (
+            <ScAlert type="info" dense dangerouslySetInnerHTML={{__html: `<p>${m.consumerIsEmployee}</p>`}} />
+          )}
           <Row icon="person">
             <FieldLayout label={m.genderOptional}>
               <Controller

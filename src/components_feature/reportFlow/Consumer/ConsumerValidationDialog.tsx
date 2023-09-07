@@ -83,11 +83,13 @@ export const ConsumerValidationDialog = ({loading, open, consumerEmail, onClose,
             </ScButton>
           }
         >
-          {m.consumerEmailMayTakesTime}
+          <p>{m.consumerEmailMayTakesTime}</p>
         </ScAlert>
         {isEmailValid === false && (
           <ScAlert dense type="error">
-            {invalidEmailReason === 'TOO_MANY_ATTEMPTS' ? m.consumerValidationCodeExpired : m.consumerValidationCodeInvalid}
+            <p>
+              {invalidEmailReason === 'TOO_MANY_ATTEMPTS' ? m.consumerValidationCodeExpired : m.consumerValidationCodeInvalid}
+            </p>
           </ScAlert>
         )}
         <Txt color="hint" block sx={{mb: 1}} dangerouslySetInnerHTML={{__html: m.consumerAskCodeDesc(consumerEmail)}} />

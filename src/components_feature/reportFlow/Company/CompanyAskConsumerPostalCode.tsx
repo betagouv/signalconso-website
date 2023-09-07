@@ -35,6 +35,7 @@ export const CompanyAskConsumerPostalCode = ({value, onChange, companyKind}: Pro
         <ScAlert dense type="info">
           <Txt
             size="small"
+            component="p"
             dangerouslySetInnerHTML={{
               __html: fnSwitch<CompanyKinds, string>(companyKind, {
                 SIRET: m.cantIdentifyCompany,
