@@ -13,6 +13,8 @@ interface Props {
   onUploaded: (f: UploadedFile) => void
 }
 
+export const ADD_FILE_HELP_ID = 'aide-piece-jointe'
+
 export const ReportFileAdd = ({onUploaded, fileOrigin}: Props) => {
   const {m} = useI18n()
   const {signalConsoApiClient} = useApiClients()
@@ -91,6 +93,7 @@ export const ReportFileAdd = ({onUploaded, fileOrigin}: Props) => {
         disabled={uploading}
         onClick={openFileSelection}
         className=""
+        nativeButtonProps={{'aria-describedby': ADD_FILE_HELP_ID}}
       >
         {uploading && <div className="sc-loader w-4 h-4 mr-2"></div>}
         Ajouter une pièce jointe

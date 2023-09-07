@@ -2,7 +2,7 @@ import {Autocomplete, Box} from '@mui/material'
 import {useGetCountries} from 'clients/apiHooks'
 import {Animate} from 'components_simple/Animate'
 import {BtnNextSubmit} from 'components_simple/Buttons'
-import {FormLayout} from 'components_simple/FormLayout'
+import {FieldLayout} from 'components_simple/FieldLayout'
 import {ScInput} from 'components_simple/formInputs/ScInput'
 import {Panel, PanelActions, PanelBody} from 'components_simple/Panel'
 import {useI18n} from 'i18n/I18n'
@@ -46,7 +46,7 @@ export const CompanyAskForeignDetails = ({onSubmit, companyKind}: Props) => {
       <Panel title={m.couldYouPrecise} id="CompanyAskForeignDetails">
         <form onSubmit={handleSubmit(onSubmit)}>
           <PanelBody>
-            <FormLayout required label={m.reportedCompanyName}>
+            <FieldLayout required label={m.reportedCompanyName}>
               <ScInput
                 error={!!errors.name}
                 helperText={errors.name?.message ?? ''}
@@ -56,8 +56,8 @@ export const CompanyAskForeignDetails = ({onSubmit, companyKind}: Props) => {
                   required: {value: true, message: m.required},
                 })}
               />
-            </FormLayout>
-            <FormLayout required label={m.country}>
+            </FieldLayout>
+            <FieldLayout required label={m.country}>
               <Controller
                 name="country"
                 control={control}
@@ -91,9 +91,9 @@ export const CompanyAskForeignDetails = ({onSubmit, companyKind}: Props) => {
                   />
                 )}
               />
-            </FormLayout>
+            </FieldLayout>
             <br />
-            <ScAlert dense type="info" deletable>
+            <ScAlert dense type="info">
               <Txt
                 size="small"
                 dangerouslySetInnerHTML={{
@@ -109,7 +109,7 @@ export const CompanyAskForeignDetails = ({onSubmit, companyKind}: Props) => {
                 }}
               />
             </ScAlert>
-            <FormLayout required label={m.yourPostalCode}>
+            <FieldLayout required label={m.yourPostalCode}>
               <ScInput
                 error={!!errors.postalCode}
                 helperText={errors.postalCode?.message ?? ''}
@@ -119,7 +119,7 @@ export const CompanyAskForeignDetails = ({onSubmit, companyKind}: Props) => {
                   required: {value: true, message: m.required},
                 })}
               />
-            </FormLayout>
+            </FieldLayout>
           </PanelBody>
 
           <PanelActions>

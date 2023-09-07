@@ -4,7 +4,7 @@ import {useAnalyticContext} from 'analytic/AnalyticContext'
 import {EventCategories, ReportEventActions} from 'analytic/analytic'
 import {Animate} from 'components_simple/Animate'
 import {ScDatepickerFr} from 'components_simple/formInputs/ScDatepickerFr'
-import {FormLayout} from 'components_simple/FormLayout'
+import {FieldLayout} from 'components_simple/FieldLayout'
 import {ScInput} from 'components_simple/formInputs/ScInput'
 import {StepNavigation} from 'components_feature/reportFlow/reportFlowStepper/ReportFlowStepper'
 import {ReportFlowStepperActions} from 'components_feature/reportFlow/reportFlowStepper/ReportFlowStepperActions'
@@ -31,6 +31,7 @@ import {getDraftReportInputs} from './draftReportInputs'
 import {ScRadioButtons} from '../../../components_simple/formInputs/ScRadioButtons'
 import {ScCheckbox} from '../../../components_simple/formInputs/ScCheckbox'
 import {Alert} from '@codegouvfr/react-dsfr/Alert'
+import {ADD_FILE_HELP_ID} from 'components_simple/reportFile/ReportFileAdd'
 
 export class SpecifyFormUtils {
   static readonly specifyKeywordFr = '(à préciser)'
@@ -141,20 +142,17 @@ export const DetailsInner = ({
             ) : (
               <>
                 <p className="mb-0" dangerouslySetInnerHTML={{__html: m.detailsTextAreaNotTransmittable}} />
-                <br />
                 {employeeConsumer && <p className="mb-0" dangerouslySetInnerHTML={{__html: m.detailsTextAreaEmployeeConsumer}} />}
               </>
             )}
           </FriendlyHelpText>
-
+          <p className="text-sm">{m.fieldsAreRequired}</p>
           {inputs.map((input, inputIndex) => (
-            <FormLayout
+            <FieldLayout
               label={<span dangerouslySetInnerHTML={{__html: input.label}} />}
               required={!input.optional}
               key={inputIndex}
-              sx={{
-                mb: 3,
-              }}
+              className="mb-4"
             >
               {(() => {
                 const controller = ({
@@ -298,6 +296,7 @@ export const DetailsInner = ({
                       }),
                   },
                   () =>
+                    // cas de la textarea description
                     controller({
                       rules: {
                         maxLength: {value: appConfig.maxDescriptionInputLength, message: ''},
@@ -306,9 +305,18 @@ export const DetailsInner = ({
                         <ScInput
                           {...field}
                           helperText={
-                            errors[inputIndex]?.type === 'required'
-                              ? m.required
-                              : `${getValues('' + inputIndex)?.length ?? 0} / ${appConfig.maxDescriptionInputLength}`
+                            errors[inputIndex]?.type === 'required' ? (
+                              m.required
+                            ) : (
+                              <span>
+                                {getValues('' + inputIndex)?.length ?? 0} / {appConfig.maxDescriptionInputLength}
+                                <span className="hidden">
+                                  {' '}
+                                  {m.charactersTyped}
+                                  {/* reco audit accessibilité d'ajouter ce texte caché */}
+                                </span>
+                              </span>
+                            )
                           }
                           error={hasErrors}
                           multiline
@@ -321,7 +329,7 @@ export const DetailsInner = ({
                     }),
                 )
               })()}
-            </FormLayout>
+            </FieldLayout>
           ))}
         </div>
       </Animate>
@@ -344,11 +352,12 @@ export const DetailsInner = ({
             hideAddBtn={uploadedFilesCount >= appConfig.maxNumberOfAttachments}
           />
           <p
-            className="fr-mt-2w"
+            className="mt-2 text-sm"
+            id={ADD_FILE_HELP_ID}
             dangerouslySetInnerHTML={{__html: m.attachmentsDescAllowedFormat(appConfig.upload_allowedExtensions)}}
           />
           {uploadedFilesCount === 0 ? (
-            <p>{m.maxAttachmentsZero(appConfig.maxNumberOfAttachments)}</p>
+            <p className="text-sm">{m.maxAttachmentsZero(appConfig.maxNumberOfAttachments)}</p>
           ) : uploadedFilesCount === appConfig.maxNumberOfAttachments ? (
             <Alert
               description={m.maxAttachmentsReached(appConfig.maxNumberOfAttachments)}
@@ -357,7 +366,7 @@ export const DetailsInner = ({
               className="fr-mt-4w"
             />
           ) : (
-            <p>{m.maxAttachmentsCurrent(appConfig.maxNumberOfAttachments - uploadedFilesCount)}</p>
+            <p className="text-sm">{m.maxAttachmentsCurrent(appConfig.maxNumberOfAttachments - uploadedFilesCount)}</p>
           )}
         </div>
       </Animate>

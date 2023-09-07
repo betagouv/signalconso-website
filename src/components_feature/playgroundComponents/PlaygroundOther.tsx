@@ -8,6 +8,7 @@ import {ScCheckbox} from '../../components_simple/formInputs/ScCheckbox'
 import {ScRadioButtons} from '../../components_simple/formInputs/ScRadioButtons'
 import {useI18n} from '../../i18n/I18n'
 import {DetailsSpecifyInput} from '../reportFlow/Details/DetailsSpecifyInput'
+import {ScAlert} from 'components_simple/ScAlert'
 
 export const PlaygroundOther = () => {
   const [radioValue, setRadioValue] = useState<string | undefined>(undefined)
@@ -97,7 +98,7 @@ export const PlaygroundOther = () => {
       <p>Check value: {checkValue}</p>
       <p>Specifiy check value: {specifiyCheck}</p>
 
-      <div className="border border-gray-500 border-solid p-2">
+      <div className="border border-gray-500 border-solid p-2 mb-2">
         <p>Le composant "AccordionInline"</p>
         <AccordionInline label={"label de l'accordéon"}>Le contenu de l'accordéon</AccordionInline>
 
@@ -126,6 +127,16 @@ export const PlaygroundOther = () => {
             <p>Avec plusieurs lignes</p>
           </div>
         </AccordionInline>
+      </div>
+
+      <div className="border border-gray-500 border-solid p-2 mb-2">
+        <p>Le composant "ScAlert"</p>
+        <ScAlert type="info" action="action">
+          <p>contenu</p>
+          <p>contenu</p>
+          <p>contenu</p>
+          <p>contenu</p>
+        </ScAlert>
       </div>
     </>
   )

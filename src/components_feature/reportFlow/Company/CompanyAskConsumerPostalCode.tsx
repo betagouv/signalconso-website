@@ -1,7 +1,7 @@
 import {Animate} from 'components_simple/Animate'
 import {AutocompleteCity, AutocompleteCityValue} from 'components_simple/AutocompleteCity'
 import {BtnNextSubmit} from 'components_simple/Buttons'
-import {FormLayout} from 'components_simple/FormLayout'
+import {FieldLayout} from 'components_simple/FieldLayout'
 import {Panel, PanelActions, PanelBody} from 'components_simple/Panel'
 import {useI18n} from 'i18n/I18n'
 import {Address} from 'model/Address'
@@ -32,7 +32,7 @@ export const CompanyAskConsumerPostalCode = ({value, onChange, companyKind}: Pro
   return (
     <Animate>
       <Panel id="CompanyAskConsumerPostalCode">
-        <ScAlert dense type="info" deletable>
+        <ScAlert dense type="info">
           <Txt
             size="small"
             dangerouslySetInnerHTML={{
@@ -50,7 +50,7 @@ export const CompanyAskConsumerPostalCode = ({value, onChange, companyKind}: Pro
         </ScAlert>
         <form onSubmit={handleSubmit(_ => onChange(_.place))}>
           <PanelBody>
-            <FormLayout required label={m.yourPostalCode} desc={m.youCanSearchByCity}>
+            <FieldLayout required label={m.yourPostalCode} desc={m.youCanSearchByCity}>
               <Controller
                 control={control}
                 name="place"
@@ -68,7 +68,7 @@ export const CompanyAskConsumerPostalCode = ({value, onChange, companyKind}: Pro
                   />
                 )}
               />
-            </FormLayout>
+            </FieldLayout>
           </PanelBody>
 
           <PanelActions>

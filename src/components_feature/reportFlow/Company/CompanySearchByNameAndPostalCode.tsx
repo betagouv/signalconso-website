@@ -5,7 +5,7 @@ import {useToastOnQueryError} from 'clients/apiHooks'
 import {Animate} from 'components_simple/Animate'
 import {AutocompleteCity} from 'components_simple/AutocompleteCity'
 import {ButtonWithLoader} from 'components_simple/Buttons'
-import {FormLayout} from 'components_simple/FormLayout'
+import {FieldLayout} from 'components_simple/FieldLayout'
 import {ScInput} from 'components_simple/formInputs/ScInput'
 import {Panel, PanelActions, PanelBody} from 'components_simple/Panel'
 import {useApiClients} from 'context/ApiClientsContext'
@@ -55,7 +55,7 @@ export const CompanySearchByNameAndPostalCode = ({children}: Props) => {
           <Txt color="hint">{m.youCanOnlyReportFrenchCompanies} &nbsp;</Txt>
           <form onSubmit={handleSubmit(search)}>
             <PanelBody>
-              <FormLayout required label={m.reportedCompanyName}>
+              <FieldLayout required label={m.reportedCompanyName}>
                 <ScInput
                   fullWidth
                   error={!!errors.name}
@@ -64,8 +64,8 @@ export const CompanySearchByNameAndPostalCode = ({children}: Props) => {
                     required: {value: true, message: m.required},
                   })}
                 />
-              </FormLayout>
-              <FormLayout required label={m.postalCode} desc={m.youCanSearchByCity}>
+              </FieldLayout>
+              <FieldLayout required label={m.postalCode} desc={m.youCanSearchByCity}>
                 <Controller
                   control={control}
                   name="postalCode"
@@ -83,7 +83,7 @@ export const CompanySearchByNameAndPostalCode = ({children}: Props) => {
                     />
                   )}
                 />
-              </FormLayout>
+              </FieldLayout>
             </PanelBody>
 
             <PanelActions>

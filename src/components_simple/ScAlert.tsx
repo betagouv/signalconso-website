@@ -1,13 +1,11 @@
-import {Box, BoxProps, Icon, IconButton, darken} from '@mui/material'
-import {ReactNode, useState} from 'react'
-import {usePersistentState} from '../hooks/usePersistentState'
+import {Box, BoxProps, Icon, darken} from '@mui/material'
 import {otherColorSet} from 'core/theme'
+import {ReactNode} from 'react'
 
 const height = (dense?: boolean) => (dense ? 44 : 52)
 
 interface Props extends Pick<BoxProps, 'children' | 'dangerouslySetInnerHTML' | 'id'> {
   type: 'info' | 'error' | 'warning' | 'success'
-  deletable?: boolean
   action?: ReactNode
   dense?: boolean
 }
@@ -19,10 +17,7 @@ export const alertWarningBackgroundColor = 'rgba(255, 128, 0, .08)'
 export const alertWarningTextColor = darken(otherColorSet.warning, 0.1)
 
 // An alert that looks different (softer, less catchy) of the Alert from DSFR
-export const ScAlert = ({type, dense, action, deletable, children, dangerouslySetInnerHTML, ...props}: Props) => {
-  const [isPersistentVisible, setPersistentIsVisible] = usePersistentState<boolean>(true, props.id || 'alert')
-  const [isVisible, setIsVisible] = useState<boolean>(true)
-
+export const ScAlert = ({type, dense, action, children, dangerouslySetInnerHTML, ...props}: Props) => {
   const getIconFromType = () => {
     switch (type) {
       case 'info':
@@ -82,12 +77,6 @@ export const ScAlert = ({type, dense, action, deletable, children, dangerouslySe
             color: alertWarningTextColor,
           },
         }[type],
-        ...((!isVisible || !isPersistentVisible) && {
-          minHeight: '0 !important',
-          height: '0 !important',
-          opacity: '0 !important',
-          margin: '0 !important',
-        }),
         mb: 2,
       }}
     >
@@ -110,31 +99,19 @@ export const ScAlert = ({type, dense, action, deletable, children, dangerouslySe
           px: 1,
         }}
       />
-      {action ||
-        (deletable && (
-          <Box
-            sx={{
-              textAlign: 'right',
-              mt: 1,
-              ml: 0,
-              mb: 1,
-              mr: -1,
-            }}
-          >
-            {action}
-            {deletable && (
-              <IconButton
-                onClick={() => {
-                  setIsVisible(false)
-                  setPersistentIsVisible(false)
-                }}
-                size="large"
-              >
-                <Icon>clear</Icon>
-              </IconButton>
-            )}
-          </Box>
-        ))}
+      {action && (
+        <Box
+          sx={{
+            textAlign: 'right',
+            mt: 1,
+            ml: 0,
+            mb: 1,
+            mr: -1,
+          }}
+        >
+          {action}
+        </Box>
+      )}
     </Box>
   )
 }

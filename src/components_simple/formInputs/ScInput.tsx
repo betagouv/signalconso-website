@@ -20,6 +20,11 @@ export const ScInput = React.forwardRef(({small, onClear, InputProps, ...props}:
             opacity: 0.7,
           },
         },
+        // default disabled color was a bit too light for accessibility
+        // https://github.com/mui/material-ui/issues/17572
+        '& .MuiInputBase-input.Mui-disabled': {
+          WebkitTextFillColor: '#6f6f6f',
+        },
       }}
       InputProps={{
         ...InputProps,
