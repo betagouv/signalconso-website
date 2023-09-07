@@ -5,10 +5,13 @@ import React from 'react'
 export type ScInputProps = Omit<TextFieldProps, 'variant' | 'margin'> & {
   small?: boolean
   InputProps?: Partial<FilledInputProps>
-  onClear?: () => void
+  clearable?: {
+    onClear: () => void
+    label: string
+  }
 }
 
-export const ScInput = React.forwardRef(({small, onClear, InputProps, ...props}: ScInputProps, ref) => {
+export const ScInput = React.forwardRef(({small, clearable, InputProps, ...props}: ScInputProps, ref) => {
   const {m} = useI18n()
 
   return (
@@ -28,13 +31,13 @@ export const ScInput = React.forwardRef(({small, onClear, InputProps, ...props}:
       }}
       InputProps={{
         ...InputProps,
-        ...(onClear
+        ...(clearable
           ? {
               endAdornment: (
                 <>
                   {InputProps?.endAdornment}
-                  <Tooltip title={m.clear}>
-                    <IconButton size="small" color="primary" onClick={onClear}>
+                  <Tooltip title={clearable.label}>
+                    <IconButton size="small" color="primary" onClick={clearable.onClear} aria-label={clearable.label}>
                       <Icon>clear</Icon>
                     </IconButton>
                   </Tooltip>

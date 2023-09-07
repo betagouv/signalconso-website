@@ -175,14 +175,17 @@ export const CompanyByWebsite = ({value, children, specificWebsiteCompanyKind, .
               <ScInput
                 InputProps={{
                   endAdornment: (
-                    <Tooltip title={m.edit}>
-                      <IconButton size="small" color="primary" onClick={editWebsite}>
+                    <Tooltip title={m.modifyWebsite}>
+                      <IconButton size="small" color="primary" onClick={editWebsite} aria-label={m.modifyWebsite}>
                         <Icon>edit</Icon>
                       </IconButton>
                     </Tooltip>
                   ),
                 }}
-                onClear={clearWebsite}
+                clearable={{
+                  onClear: clearWebsite,
+                  label: m.clearWebsite,
+                }}
                 defaultValue={value}
                 disabled={!!displayedResults}
                 {...register('website', {

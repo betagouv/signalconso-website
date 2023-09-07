@@ -1126,6 +1126,7 @@ export const fr = {
     suggestion: `Voulez vous dire :`,
     continueWithWebsite: (website: string) => `Continuer avec ${website}`,
     invalidUrlPattern: `Ça ne ressemble pas à un site internet`,
+
     noAttachment: 'Aucune pièce jointe.',
     addAttachmentFile: 'Ajouter une pièces jointe',
     attachments: `Pièces jointes :`,
@@ -1142,6 +1143,8 @@ export const fr = {
     menu_help: `Aide`,
     menu_authSpace: `Espace pro`,
     website: 'Site internet',
+    modifyWebsite: 'Modifier le site internet',
+    clearWebsite: 'Effacer le site internet',
     canYouIdentifyCompany: `Pouvez-vous identifier l'entreprise  ?`,
     canYouIdentifyCompanyDesc: `SignalConso en a besoin pour la contacter et informer la répression des fraudes.`,
     websitePlaceholder: 'Exemple: https://www.site.fr',
