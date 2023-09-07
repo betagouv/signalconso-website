@@ -118,12 +118,7 @@ export const AutocompleteCity = forwardRef(({label, placeholder, onChange, ...in
               <>
                 {_fetchCity.isLoading ? <CircularProgress size={20} /> : null}
                 {inputProps.InputProps?.endAdornment}
-                {React.cloneElement(params.InputProps.endAdornment as any, {
-                  // we keep the original adornment (arrow button)
-                  // but add some attributes asked for by accessibilty audit
-                  'aria-label': m.selectPostalCode,
-                  'aria-expanded': actuallyOpen,
-                })}
+                {params.InputProps.endAdornment}
               </>
             ),
           }}
