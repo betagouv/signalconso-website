@@ -1,29 +1,10 @@
-import {Box, BoxProps, Collapse, Icon, IconButton} from '@mui/material'
+import {Box, Collapse, Icon, IconButton} from '@mui/material'
 import {ReactNode, useState} from 'react'
-import {Txt} from './Txt'
 
-export const AccordionPanels = ({children, ...props}: BoxProps) => {
-  return <Box {...props}>{children}</Box>
-}
-
-export const AccordionPanel = ({
-  title,
-  desc,
-  children,
-  className,
-  onOpen,
-  ...props
-}: {
-  title: string
-  desc?: string
-  children: ReactNode
-  onOpen?: () => void
-} & BoxProps) => {
+export const AccordionPanel = ({title, children}: {title: string; children: ReactNode}) => {
   const [open, setOpen] = useState(false)
   return (
     <Box
-      {...props}
-      className={className + '-opened'}
       sx={{
         border: t => `1px solid ${t.palette.divider}`,
         ':not(:last-of-type)': {
@@ -47,9 +28,6 @@ export const AccordionPanel = ({
         role="button"
         onClick={() => {
           setOpen(_ => {
-            if (!_) {
-              onOpen?.()
-            }
             return !_
           })
         }}
@@ -67,14 +45,10 @@ export const AccordionPanel = ({
         </IconButton>
         <div>
           <h3 className="font-normal text-lg m-0">{title}</h3>
-          <Txt color="hint" sx={{m: 0, p: 0}}>
-            {desc}
-          </Txt>
         </div>
       </Box>
       <Collapse in={open}>
         <Box
-          aria-labelledby={props.id}
           sx={{
             px: 3,
             py: 1,

@@ -3,7 +3,8 @@ import {EventHandler, ReactElement, SyntheticEvent, useState} from 'react'
 import {Button, Dialog, DialogActions, DialogContent, DialogProps, DialogTitle, PaperProps} from '@mui/material'
 import {useI18n} from 'i18n/I18n'
 import {Txt} from '../../../components_simple/Txt'
-import {AccordionPanel, AccordionPanels} from 'components_simple/AccordionPanel'
+import {AccordionPanel} from 'components_simple/AccordionPanel'
+import {Box} from '@mui/system'
 
 export interface ConfirmProps extends Omit<DialogProps, 'children' | 'onClick' | 'open'> {
   children: ReactElement<any>
@@ -39,7 +40,7 @@ export const CompanySearchByIdentityHelpDialog = ({children, PaperProps, onClick
           {m.companyIdentityHelperWhereDesc}
           <br />
           <br />
-          <AccordionPanels sx={{mt: 1}}>
+          <Box sx={{mt: 1}}>
             <AccordionPanel title={m.companyIdentityHelperWebsite}>
               {m.companyIdentityHelperWhereDesc0}
               <img
@@ -71,7 +72,7 @@ export const CompanySearchByIdentityHelpDialog = ({children, PaperProps, onClick
                 style={{maxWidth: '300px', margin: 'auto', display: 'block'}}
               />
             </AccordionPanel>
-          </AccordionPanels>
+          </Box>
         </DialogContent>
         <DialogActions>
           <Button color="primary" onClick={close}>
