@@ -31,11 +31,13 @@ export const CompanySearchByIdentityHelpDialog = ({children, PaperProps, onClick
         },
       })}
       <Dialog open={open} {...props} PaperProps={PaperProps}>
-        <DialogTitle>{m.companyIdentityHelperTitle}</DialogTitle>
+        <DialogTitle>
+          <span className=" font-bold">{m.companyIdentityHelperTitle}</span>
+        </DialogTitle>
         <DialogContent>
-          <p className="text-lg font-bold mb-1"> {m.companyIdentityHelper}</p>
+          <h3 className="mb-2"> {m.companyIdentityHelper}</h3>
           <p dangerouslySetInnerHTML={{__html: m.companyIdentityHelperDesc}} />
-          <p className="text-lg font-bold mb-1"> {m.companyIdentityHelperWhere}</p>
+          <h3 className="mb-2"> {m.companyIdentityHelperWhere}</h3>
           <p>{m.companyIdentityHelperWhereDesc}</p>
           <Accordions>
             <Accordion label={m.companyIdentityHelperWebsite}>

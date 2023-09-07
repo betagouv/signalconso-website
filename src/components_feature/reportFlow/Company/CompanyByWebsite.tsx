@@ -273,9 +273,7 @@ function SimilarHosts({
     return (
       <>
         <br />
-        <Txt truncate block>
-          {m.suggestion}
-        </Txt>
+        <h3 className="text-base font-normal mb-0">{m.suggestion}</h3>
         <>
           {hosts.map((host, key) => {
             return (
