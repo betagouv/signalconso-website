@@ -1123,7 +1123,7 @@ export const fr = {
     invalidFileNameSize: (maxSize: number) => `Le nom du fichier ne doit pas dépasser ${maxSize} caractères`,
     limitTo500chars: `500 caractères maximum`,
     continue: `Continuer`,
-    suggestion: `Voulez vous dire :`,
+    suggestion: `Voulez-vous dire :`,
     continueWithWebsite: (website: string) => `Continuer avec ${website}`,
     invalidUrlPattern: `Ça ne ressemble pas à un site internet`,
 

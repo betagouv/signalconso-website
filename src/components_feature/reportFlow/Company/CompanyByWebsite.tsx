@@ -274,26 +274,30 @@ function SimilarHosts({
       <>
         <br />
         <h3 className="text-base font-normal mb-0">{m.suggestion}</h3>
-        <>
+        <ul className="list-none flex p-0 m-0">
           {hosts.map((host, key) => {
             return (
-              <ScButton
-                key={key}
-                variant="contained"
-                sx={{mt: 2, mr: 1}}
-                onClick={_ => {
-                  onPickDifferentHost(host)
-                }}
-                size={'small'}
-              >
-                {host}
-              </ScButton>
+              <li className="p-0 m-0">
+                <ScButton
+                  key={key}
+                  variant="contained"
+                  sx={{mt: 2, mr: 1}}
+                  onClick={_ => {
+                    onPickDifferentHost(host)
+                  }}
+                  size={'small'}
+                >
+                  {host}
+                </ScButton>
+              </li>
             )
           })}
-          <ScButton key={'key'} sx={{mt: 2}} variant="text" size={'small'} onClick={onConfirmUnknown}>
-            {m.continueWithWebsite(website)}
-          </ScButton>
-        </>
+          <li className="p-0 m-0">
+            <ScButton key={'key'} sx={{mt: 2}} variant="text" size={'small'} onClick={onConfirmUnknown}>
+              {m.continueWithWebsite(website)}
+            </ScButton>
+          </li>
+        </ul>
       </>
     )
   }
