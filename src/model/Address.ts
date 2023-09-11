@@ -1,5 +1,6 @@
-// That's what we send to our API
+import {Country} from './Country'
 
+// That's what we send to our API
 export interface Address {
   number?: string
   street?: string
@@ -11,16 +12,11 @@ export interface Address {
 
 // That's what we receive from our API
 
-export interface ApiAdress {
+export interface ApiAddress {
   number?: string
   street?: string
   addressSupplement?: string
   postalCode?: string
   city?: string
-  country?: {
-    code: string
-    european: boolean
-    name: string
-    transfer: boolean
-  }
+  country?: Country
 }
