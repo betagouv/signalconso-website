@@ -10,7 +10,7 @@ import {Txt} from '../../../components_simple/Txt'
 import {SocialNetworkRow} from '../../../components_simple/SocialNetworkRow'
 import {BtnNextSubmit} from 'components_simple/Buttons'
 import {ScRadioButtons} from '../../../components_simple/formInputs/ScRadioButtons'
-import {FieldLayout} from 'components_simple/FieldLayout'
+import {FieldLabel} from 'components_simple/FieldLabel'
 
 interface Props {
   onSubmit: (socialNetwork: SocialNetworks, influencer: string) => void
@@ -50,7 +50,7 @@ export const InfluencerBySocialNetwork = ({onSubmit}: Props) => {
         <Animate autoScrollTo={false}>
           <Panel id="SocialNetwork">
             <PanelBody>
-              <FieldLayout label="Réseau social" required>
+              <FieldLabel label="Réseau social" required>
                 <Controller
                   name="socialNetwork"
                   control={control}
@@ -59,7 +59,7 @@ export const InfluencerBySocialNetwork = ({onSubmit}: Props) => {
                   }}
                   render={({field}) => <ScRadioButtons {...field} options={socialNetworkOptions} className="!mt-2" />}
                 />
-              </FieldLayout>
+              </FieldLabel>
             </PanelBody>
           </Panel>
         </Animate>
@@ -67,7 +67,7 @@ export const InfluencerBySocialNetwork = ({onSubmit}: Props) => {
           <Animate>
             <Panel id="influencer">
               <PanelBody>
-                <FieldLayout label="Nom ou pseudonyme de l'influenceur ou influenceuse" required>
+                <FieldLabel label="Nom ou pseudonyme de l'influenceur ou influenceuse" required>
                   <ScInput
                     fullWidth
                     error={!!errors.influencer}
@@ -75,7 +75,7 @@ export const InfluencerBySocialNetwork = ({onSubmit}: Props) => {
                     placeholder="Nom ou pseudonyme"
                     {...register('influencer', {required: {value: true, message: m.required}})}
                   />
-                </FieldLayout>
+                </FieldLabel>
               </PanelBody>
               <PanelActions>
                 <BtnNextSubmit />

@@ -4,7 +4,7 @@ import {useAnalyticContext} from 'analytic/AnalyticContext'
 import {EventCategories, ReportEventActions} from 'analytic/analytic'
 import {Animate} from 'components_simple/Animate'
 import {ScDatepickerFr} from 'components_simple/formInputs/ScDatepickerFr'
-import {FieldLayout} from 'components_simple/FieldLayout'
+import {FieldLabel} from 'components_simple/FieldLabel'
 import {ScInput} from 'components_simple/formInputs/ScInput'
 import {StepNavigation} from 'components_feature/reportFlow/reportFlowStepper/ReportFlowStepper'
 import {ReportFlowStepperActions} from 'components_feature/reportFlow/reportFlowStepper/ReportFlowStepperActions'
@@ -148,7 +148,7 @@ export const DetailsInner = ({
           </FriendlyHelpText>
           <p className="text-sm">{m.fieldsAreRequired}</p>
           {inputs.map((input, inputIndex) => (
-            <FieldLayout
+            <FieldLabel
               label={<span dangerouslySetInnerHTML={{__html: input.label}} />}
               required={!input.optional}
               key={inputIndex}
@@ -329,7 +329,7 @@ export const DetailsInner = ({
                     }),
                 )
               })()}
-            </FieldLayout>
+            </FieldLabel>
           ))}
         </div>
       </Animate>

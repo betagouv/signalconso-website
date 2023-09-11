@@ -7,7 +7,7 @@ import {Box, BoxProps, Icon, IconButton} from '@mui/material'
 import {Panel, PanelBody} from 'components_simple/Panel'
 import {Animate} from 'components_simple/Animate'
 import {Button} from '@codegouvfr/react-dsfr/Button'
-import {FieldLayout} from 'components_simple/FieldLayout'
+import {FieldLabel} from 'components_simple/FieldLabel'
 
 interface Form {
   phone: string
@@ -41,7 +41,7 @@ export const CompanyByPhone = ({value, children, ...props}: Props) => {
         <Panel title={m.aboutCompany} id="CompanyByPhone">
           <PanelBody>
             <Box component="form" onSubmit={handleSubmit(submit)} {...props}>
-              <FieldLayout label={m.phoneNumberHavingCalled} required>
+              <FieldLabel label={m.phoneNumberHavingCalled} required>
                 <ScInput
                   type="tel"
                   defaultValue={value}
@@ -66,7 +66,7 @@ export const CompanyByPhone = ({value, children, ...props}: Props) => {
                       : {}
                   }
                 />
-              </FieldLayout>
+              </FieldLabel>
 
               <div className="flex items-center justify-end">
                 <Button type="submit" disabled={!!phone} className="mt-2">

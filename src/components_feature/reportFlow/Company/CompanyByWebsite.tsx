@@ -19,7 +19,7 @@ import {Button} from '@codegouvfr/react-dsfr/Button'
 import {SpecificWebsiteCompanyKinds} from '../../../anomalies/Anomaly'
 import {Alert} from '@codegouvfr/react-dsfr/Alert'
 import {SiretExtractorClient} from '../../../clients/SiretExtractorClient'
-import {FieldLayout} from 'components_simple/FieldLayout'
+import {FieldLabel} from 'components_simple/FieldLabel'
 
 interface Form {
   website: string
@@ -169,7 +169,7 @@ export const CompanyByWebsite = ({value, children, specificWebsiteCompanyKind, .
           {specificWebsiteCompanyKind && websiteToReportAlert(specificWebsiteCompanyKind)}
           <PanelBody>
             <Box component="form" onSubmit={handleSubmit(onSubmit)} {...props}>
-              <FieldLayout label={m.website} required>
+              <FieldLabel label={m.website} required>
                 <ScInput
                   InputProps={{
                     endAdornment: (
@@ -203,7 +203,7 @@ export const CompanyByWebsite = ({value, children, specificWebsiteCompanyKind, .
                   error={!!errors.website}
                   helperText={errors.website?.message}
                 />
-              </FieldLayout>
+              </FieldLabel>
               <br />
               <SimilarHosts
                 {...{website, displayedResults}}

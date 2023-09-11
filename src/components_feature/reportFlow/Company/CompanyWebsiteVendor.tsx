@@ -3,7 +3,7 @@ import {Animate} from 'components_simple/Animate'
 import {useI18n} from 'i18n/I18n'
 import {ScAlert} from '../../../components_simple/ScAlert'
 import {ScInput} from 'components_simple/formInputs/ScInput'
-import {FieldLayout} from 'components_simple/FieldLayout'
+import {FieldLabel} from 'components_simple/FieldLabel'
 import {useForm} from 'react-hook-form'
 import {ScButton} from 'components_simple/ScButton'
 
@@ -30,7 +30,7 @@ export const CompanyWebsiteVendor = ({onSubmit}: Props) => {
             <ScAlert type="info">
               <p>{m.companyWebsiteVendorAlert}</p>
             </ScAlert>
-            <FieldLayout required label={m.companyWebsiteVendorLabel}>
+            <FieldLabel required label={m.companyWebsiteVendorLabel}>
               <ScInput
                 fullWidth
                 error={!!errors.websiteVendor}
@@ -39,7 +39,7 @@ export const CompanyWebsiteVendor = ({onSubmit}: Props) => {
                   required: {value: true, message: m.required},
                 })}
               />
-            </FieldLayout>
+            </FieldLabel>
           </PanelBody>
           <PanelActions>
             <ScButton color="primary" variant="contained" type="submit">
