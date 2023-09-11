@@ -7,6 +7,7 @@ import {Box, BoxProps, Icon, IconButton} from '@mui/material'
 import {Panel, PanelBody} from 'components_simple/Panel'
 import {Animate} from 'components_simple/Animate'
 import {Button} from '@codegouvfr/react-dsfr/Button'
+import {FieldLayout} from 'components_simple/FieldLayout'
 
 interface Form {
   phone: string
@@ -40,34 +41,33 @@ export const CompanyByPhone = ({value, children, ...props}: Props) => {
         <Panel title={m.aboutCompany} id="CompanyByPhone">
           <PanelBody>
             <Box component="form" onSubmit={handleSubmit(submit)} {...props}>
-              <Txt block>
-                <span dangerouslySetInnerHTML={{__html: m.phoneNumberHavingCalled}} />
-                <Txt color="disabled"> *</Txt>
-              </Txt>
-              <ScInput
-                type="tel"
-                defaultValue={value}
-                disabled={!!phone}
-                {...register('phone', {
-                  required: {value: true, message: m.required},
-                  pattern: {value: /^((((\+)33|0|0033)[1-9]([.\-\s+]?\d{2}){4})|(\d{2,5}))$/g, message: m.invalidPhone},
-                })}
-                fullWidth
-                placeholder={m.phoneNumberHavingCalledPlaceholder}
-                error={!!errors.phone}
-                helperText={errors.phone?.message}
-                InputProps={
-                  !!phone
-                    ? {
-                        endAdornment: (
-                          <IconButton size="small" color="primary" onClick={clear}>
-                            <Icon>clear</Icon>
-                          </IconButton>
-                        ),
-                      }
-                    : {}
-                }
-              />
+              <FieldLayout label={m.phoneNumberHavingCalled} required>
+                <ScInput
+                  type="tel"
+                  defaultValue={value}
+                  disabled={!!phone}
+                  {...register('phone', {
+                    required: {value: true, message: m.required},
+                    pattern: {value: /^((((\+)33|0|0033)[1-9]([.\-\s+]?\d{2}){4})|(\d{2,5}))$/g, message: m.invalidPhone},
+                  })}
+                  fullWidth
+                  placeholder={m.phoneNumberHavingCalledPlaceholder}
+                  error={!!errors.phone}
+                  helperText={errors.phone?.message}
+                  InputProps={
+                    !!phone
+                      ? {
+                          endAdornment: (
+                            <IconButton size="small" color="primary" onClick={clear}>
+                              <Icon>clear</Icon>
+                            </IconButton>
+                          ),
+                        }
+                      : {}
+                  }
+                />
+              </FieldLayout>
+
               <div className="flex items-center justify-end">
                 <Button type="submit" disabled={!!phone} className="mt-2">
                   {m.continue}

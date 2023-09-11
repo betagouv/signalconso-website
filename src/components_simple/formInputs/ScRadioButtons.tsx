@@ -15,6 +15,7 @@ interface ScRadioButtonsProps<V> {
   error?: boolean
   errorMessage?: string
   orientation?: 'vertical' | 'horizontal'
+  className?: string
 }
 
 export const ScRadioButtons = <V,>({
@@ -26,6 +27,7 @@ export const ScRadioButtons = <V,>({
   error,
   errorMessage,
   orientation,
+  className = '',
 }: ScRadioButtonsProps<V>) => {
   const _id = useId()
   const id = `fr-fieldset-radio-${_id}`
@@ -44,7 +46,9 @@ export const ScRadioButtons = <V,>({
   return (
     <fieldset
       id={id}
-      className={`fr-fieldset ${orientation === 'horizontal' && 'fr-fieldset--inline'} ${error ? 'fr-fieldset--error' : ''}`}
+      className={`fr-fieldset ${orientation === 'horizontal' && 'fr-fieldset--inline'} ${
+        error ? 'fr-fieldset--error' : ''
+      } ${className}`}
       aria-labelledby={`${title && legendId} ${messagesWrapperId}`}
       role="group"
     >

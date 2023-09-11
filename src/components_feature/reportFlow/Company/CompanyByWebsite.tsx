@@ -19,6 +19,7 @@ import {Button} from '@codegouvfr/react-dsfr/Button'
 import {SpecificWebsiteCompanyKinds} from '../../../anomalies/Anomaly'
 import {Alert} from '@codegouvfr/react-dsfr/Alert'
 import {SiretExtractorClient} from '../../../clients/SiretExtractorClient'
+import {FieldLayout} from 'components_simple/FieldLayout'
 
 interface Form {
   website: string
@@ -168,43 +169,41 @@ export const CompanyByWebsite = ({value, children, specificWebsiteCompanyKind, .
           {specificWebsiteCompanyKind && websiteToReportAlert(specificWebsiteCompanyKind)}
           <PanelBody>
             <Box component="form" onSubmit={handleSubmit(onSubmit)} {...props}>
-              <Txt block>
-                <span dangerouslySetInnerHTML={{__html: m.website}} />
-                <Txt color="disabled"> *</Txt>
-              </Txt>
-              <ScInput
-                InputProps={{
-                  endAdornment: (
-                    <Tooltip title={m.modifyWebsite}>
-                      <IconButton size="small" color="primary" onClick={editWebsite} aria-label={m.modifyWebsite}>
-                        <Icon>edit</Icon>
-                      </IconButton>
-                    </Tooltip>
-                  ),
-                }}
-                clearable={{
-                  onClear: clearWebsite,
-                  label: m.clearWebsite,
-                }}
-                defaultValue={value}
-                disabled={!!displayedResults}
-                {...register('website', {
-                  required: {value: true, message: m.required},
-                  pattern: {
-                    value: websiteRegex,
-                    message: m.invalidUrlPattern,
-                  },
-                  validate: {
-                    isSignalConsoUrl: value => {
-                      return value.includes('signal.conso.gouv.fr') ? m.consumerCannotReportSignalConso : undefined
+              <FieldLayout label={m.website} required>
+                <ScInput
+                  InputProps={{
+                    endAdornment: (
+                      <Tooltip title={m.modifyWebsite}>
+                        <IconButton size="small" color="primary" onClick={editWebsite} aria-label={m.modifyWebsite}>
+                          <Icon>edit</Icon>
+                        </IconButton>
+                      </Tooltip>
+                    ),
+                  }}
+                  clearable={{
+                    onClear: clearWebsite,
+                    label: m.clearWebsite,
+                  }}
+                  defaultValue={value}
+                  disabled={!!displayedResults}
+                  {...register('website', {
+                    required: {value: true, message: m.required},
+                    pattern: {
+                      value: websiteRegex,
+                      message: m.invalidUrlPattern,
                     },
-                  },
-                })}
-                fullWidth
-                placeholder={m.websitePlaceholder}
-                error={!!errors.website}
-                helperText={errors.website?.message}
-              />
+                    validate: {
+                      isSignalConsoUrl: value => {
+                        return value.includes('signal.conso.gouv.fr') ? m.consumerCannotReportSignalConso : undefined
+                      },
+                    },
+                  })}
+                  fullWidth
+                  placeholder={m.websitePlaceholder}
+                  error={!!errors.website}
+                  helperText={errors.website?.message}
+                />
+              </FieldLayout>
               <br />
               <SimilarHosts
                 {...{website, displayedResults}}
