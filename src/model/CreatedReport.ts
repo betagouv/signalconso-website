@@ -1,9 +1,9 @@
 import {ReportTag} from 'anomalies/Anomaly'
-import {Address} from './Address'
+import {ApiAddress} from './Address'
 
 export interface CreatedReport {
   tags: ReportTag[]
-  companyAddress: Address
+  companyAddress: ApiAddress
   companySiret?: string
   websiteURL?: string
   employeeConsumer: boolean

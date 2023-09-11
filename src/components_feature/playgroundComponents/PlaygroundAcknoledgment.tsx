@@ -5,10 +5,47 @@ import {Enum} from 'utils/Enum'
 import {CreatedReport} from '../../model/CreatedReport'
 import {Fixture} from '../../test/fixture'
 import {AcknowledgmentCases, AcknowledgementInner} from '../reportFlow/Acknowledgement/Acknowledgement'
+import {Country} from '../../model/Country'
 
 export const PlaygroundAcknowledgment = () => {
+  const testCountries: Country[] = [
+    {
+      code: 'ES',
+      name: 'Espagne',
+      englishName: 'Spain',
+      european: true,
+      transfer: false,
+    },
+    {
+      code: 'CH',
+      name: 'Suisse',
+      englishName: 'Switzerland',
+      european: false,
+      transfer: false,
+    },
+    {
+      code: 'AD',
+      name: 'Andorre',
+      englishName: 'Andorra',
+      european: false,
+      transfer: false,
+    },
+    {
+      code: 'AR',
+      name: 'Argentine',
+      englishName: 'Argentina',
+      european: false,
+      transfer: false,
+    },
+  ]
   const [type, setType] = useState<AcknowledgmentCases>(AcknowledgmentCases.ReponseConso)
-  const [demoCountry, setDemoCountry] = useState('Espagne')
+  const [demoCountry, setDemoCountry] = useState<Country | undefined>({
+    code: 'ES',
+    name: 'Argentine',
+    englishName: 'Spain',
+    european: true,
+    transfer: false,
+  })
   const baseReport = useMemo(Fixture.genReport, [])
   const {data: countries} = useGetCountries()
   const report = useMemo(() => {
@@ -38,7 +75,7 @@ export const PlaygroundAcknowledgment = () => {
 
   const country = useMemo(() => {
     if (countries && report && report.companyAddress.country) {
-      return countries?.find(_ => report.companyAddress.country === _.name)
+      return countries?.find(_ => report.companyAddress.country?.code === _.code)
     }
   }, [countries, report])
 
@@ -52,10 +89,14 @@ export const PlaygroundAcknowledgment = () => {
         ))}
       </Select>
       {type === AcknowledgmentCases.ForeignCompany && (
-        <Select size="small" value={demoCountry} onChange={e => setDemoCountry(e.target.value)}>
-          {['Espagne', 'Suisse', 'Andorre', 'Argentine'].map(_ => (
-            <MenuItem value={_} key={_}>
-              {_}
+        <Select
+          size="small"
+          value={demoCountry?.code}
+          onChange={e => setDemoCountry(testCountries.find(_ => _.code === e.target.value))}
+        >
+          {testCountries.map(_ => (
+            <MenuItem value={_.code} key={_.code}>
+              {_.name}
             </MenuItem>
           ))}
         </Select>

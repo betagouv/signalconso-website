@@ -44,7 +44,7 @@ export const Acknowledgement = ({isWebView}: {isWebView: boolean}) => {
 
   const country = useMemo(() => {
     if (countries && report && report.companyAddress.country) {
-      return countries?.find(_ => report.companyAddress.country === countryLabel(currentLang, _))
+      return countries?.find(_ => report.companyAddress.country?.code === _.code)
     }
   }, [countries, report])
 

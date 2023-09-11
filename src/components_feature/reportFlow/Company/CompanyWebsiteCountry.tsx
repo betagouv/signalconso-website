@@ -8,11 +8,11 @@ import {ScRadioButtons} from '../../../components_simple/formInputs/ScRadioButto
 
 interface Props {
   countries: Country[]
-  onSubmit: (country: string) => void
+  onSubmit: (country: Country) => void
 }
 
 interface Form {
-  country: string
+  country: Country
 }
 
 export const CompanyWebsiteCountry = ({countries, onSubmit}: Props) => {
@@ -25,7 +25,7 @@ export const CompanyWebsiteCountry = ({countries, onSubmit}: Props) => {
           <Controller
             control={control}
             name="country"
-            defaultValue={countries.length === 1 ? countries[0].name : undefined}
+            defaultValue={countries.length === 1 ? countries[0] : undefined}
             rules={{
               required: {value: true, message: m.required + ' *'},
             }}
@@ -35,7 +35,7 @@ export const CompanyWebsiteCountry = ({countries, onSubmit}: Props) => {
                 options={countries.map(_ => {
                   return {
                     label: countryLabel(currentLang, _),
-                    value: _.name,
+                    value: _,
                   }
                 })}
               />

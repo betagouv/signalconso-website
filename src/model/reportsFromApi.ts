@@ -1,5 +1,5 @@
 import {ReportTag} from 'anomalies/Anomaly'
-import {Address, ApiAdress} from './Address'
+import {Address, ApiAddress} from './Address'
 import {DetailInputValue} from './CreatedReport'
 import {Gender} from './ReportDraft'
 import {AppLang} from '../i18n/localization/AppLangs'
@@ -57,7 +57,7 @@ export interface ApiCreatedReport {
   details: DetailInputValue[]
   companyId: string | null
   companyName: string | null
-  companyAddress: ApiAdress
+  companyAddress: ApiAddress
   companySiret: string | null
   creationDate: Date
   contactAgreement: boolean

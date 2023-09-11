@@ -54,7 +54,7 @@ export class SignalConsoApiClient {
       ...(websiteURL !== null ? {websiteURL} : null),
       companyAddress: {
         ...companyAddress,
-        country: companyAddress.country?.name,
+        country: companyAddress.country,
       },
     }
     return res
