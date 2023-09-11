@@ -46,10 +46,15 @@ export const CompanyIdentifyBy = ({companyKind, children}: Props) => {
   return (
     <>
       <Animate>
-        <Panel title={m.canYouIdentifyCompany} id="CompanyIdentifyBy">
-          <p className="text-gray-600 mb-1">{m.canYouIdentifyCompanyDesc}</p>
+        <Panel id="CompanyIdentifyBy">
           <PanelBody>
-            <ScRadioButtons value={identifyBy} onChange={setIdentifyBy} options={createOptions(companyKind)} />
+            <ScRadioButtons
+              value={identifyBy}
+              onChange={setIdentifyBy}
+              options={createOptions(companyKind)}
+              title={m.canYouIdentifyCompany}
+              description={m.canYouIdentifyCompanyDesc}
+            />
           </PanelBody>
         </Panel>
       </Animate>

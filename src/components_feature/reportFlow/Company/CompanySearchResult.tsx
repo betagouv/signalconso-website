@@ -115,7 +115,7 @@ export const CompanySearchResultComponent = ({companies, onSubmit}: Props) => {
             </Fender>
           </Panel>
         ) : (
-          <Panel title={m.selectCompany} id="CompanySearchResult">
+          <Panel id="CompanySearchResult">
             <form
               onSubmit={handleSubmit(form => {
                 const selectedCompany = companies.find(_ => _.siret === form.result)!
@@ -126,7 +126,6 @@ export const CompanySearchResultComponent = ({companies, onSubmit}: Props) => {
                 }
               })}
             >
-              <span className="block text-gray-500">{m.selectCompanyDesc}</span>
               <PanelBody>
                 <Controller
                   control={control}
@@ -147,6 +146,8 @@ export const CompanySearchResultComponent = ({companies, onSubmit}: Props) => {
                             disabled: closed,
                           }
                         })}
+                        title={m.selectCompany}
+                        description={m.selectCompanyDesc}
                       />
                       {onlyClosed && (
                         <Alert

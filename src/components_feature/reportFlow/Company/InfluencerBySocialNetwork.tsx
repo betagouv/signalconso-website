@@ -50,16 +50,14 @@ export const InfluencerBySocialNetwork = ({onSubmit}: Props) => {
         <Animate autoScrollTo={false}>
           <Panel id="SocialNetwork">
             <PanelBody>
-              <FieldLabel label="Réseau social" required>
-                <Controller
-                  name="socialNetwork"
-                  control={control}
-                  rules={{
-                    required: {value: true, message: m.required},
-                  }}
-                  render={({field}) => <ScRadioButtons {...field} options={socialNetworkOptions} className="!mt-2" />}
-                />
-              </FieldLabel>
+              <Controller
+                name="socialNetwork"
+                control={control}
+                rules={{
+                  required: {value: true, message: m.required},
+                }}
+                render={({field}) => <ScRadioButtons {...field} options={socialNetworkOptions} title="Réseau social" required />}
+              />
             </PanelBody>
           </Panel>
         </Animate>

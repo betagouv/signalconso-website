@@ -111,14 +111,20 @@ export const ConsumerInner = ({
             <ScAlert type="info" dense dangerouslySetInnerHTML={{__html: `<p>${m.consumerIsEmployee}</p>`}} />
           )}
           <Row icon="person">
-            <FieldLabel label={m.genderOptional}>
-              <Controller
-                defaultValue={draft.consumer?.gender}
-                control={_form.control}
-                render={({field}) => <ScRadioButtons {...field} orientation="horizontal" options={gendersOptions} />}
-                name={'gender'}
-              />
-            </FieldLabel>
+            <Controller
+              defaultValue={draft.consumer?.gender}
+              control={_form.control}
+              render={({field}) => (
+                <ScRadioButtons
+                  {...field}
+                  orientation="horizontal"
+                  options={gendersOptions}
+                  title={m.genderOptional}
+                  titleSoberStyle
+                />
+              )}
+              name={'gender'}
+            />
             <Grid container columnSpacing={2}>
               <Grid item xs={6}>
                 <FieldLabel label={m.firstName} required>

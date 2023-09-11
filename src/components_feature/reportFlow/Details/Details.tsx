@@ -239,6 +239,9 @@ export const DetailsInner = ({
                             {...field}
                             errorMessage={errorMessage}
                             error={hasErrors}
+                            // TODO ici utiliser le title, mais du coup il faut virer le FieldLabel au-dessus, c'est assez compliqué !!
+                            // TODO faire pareil pour tous les radio buttons restants ensuite
+                            // title={'sdfsdfsdfs'}
                             options={
                               getOptionsFromInput(input)?.map((option, i) => {
                                 return {

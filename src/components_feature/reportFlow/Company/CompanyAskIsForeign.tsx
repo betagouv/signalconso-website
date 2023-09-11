@@ -22,11 +22,12 @@ export const CompanyAskIsForeign = ({children}: Props) => {
   return (
     <>
       <Animate>
-        <Panel title={m.isAFrenchCompany} id="CompanyAskIsForeign">
+        <Panel>
           <PanelBody>
             <ScRadioButtons
               value={isForeignCompany}
               onChange={setIsForeignCompany}
+              title={m.isAFrenchCompany}
               options={[
                 {
                   label: m.yes,
