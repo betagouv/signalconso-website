@@ -1,7 +1,7 @@
 import {allAnomalies} from 'anomalies/Anomalies'
 import {getIndexForStep, ReportStep, reportSteps} from 'model/ReportStep'
 import {InfoWall, reportTags, socialNetworks, Subcategory} from '../anomalies/Anomaly'
-import {Address} from '../model/Address'
+import {Address, ApiAddress} from '../model/Address'
 import {Company, CompanySearchResult, WebsiteCompanySearchResult} from '../model/Company'
 import {CreatedReport} from '../model/CreatedReport'
 import {Influencer, ReportDraft, ReportDraftConsumer} from '../model/ReportDraft'
@@ -105,7 +105,7 @@ export class Fixture {
     const company = Fixture.genCompany()
     const subcategories = [Fixture.genSubcategory({}, random), Fixture.genSubcategory({}, random)]
     return {
-      companyAddress: Fixture.genAddress(random),
+      companyAddress: Fixture.genApiAddress(random),
       companySiret: company.siret,
       websiteURL: random.string(),
       tags: subcategories.filter(_ => !!_.tags).flatMap(_ => _.tags!),
@@ -168,6 +168,13 @@ export class Fixture {
       street: random.string({charset: 'alphabetic', capitalization: 'lowercase'}),
       city: random.oneOf(['Paris', 'Tunis', 'Nairobi', 'Pont-Aven', 'Chamonix']),
       postalCode: random.string({length: 5, charset: 'numeric'}),
+    }
+  }
+
+  static readonly genApiAddress = (random: SeedableRandom = defaultRandom): ApiAddress => {
+    return {
+      ...Fixture.genAddress(random),
+      country: undefined,
     }
   }
 

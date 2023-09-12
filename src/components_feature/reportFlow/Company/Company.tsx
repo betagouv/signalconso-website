@@ -169,7 +169,7 @@ export const _Company = ({draft, onUpdateReportDraft}: CompanyWithRequiredProps)
                   companyDraft: {
                     website,
                     address: {
-                      country,
+                      country: country.code,
                     },
                   },
                 })
@@ -282,7 +282,7 @@ export const _Company = ({draft, onUpdateReportDraft}: CompanyWithRequiredProps)
                                 ...phoneOrWebsite,
                                 address: {
                                   postalCode: form.postalCode,
-                                  country: form.country.name,
+                                  country: form.country.code,
                                 },
                               },
                             })

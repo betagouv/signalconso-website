@@ -88,7 +88,19 @@ function computeLang(currentCookieLang: string | undefined, headers: any) {
 
     // Use negotiator and intl-localematcher to get best locale
     let languages = new Negotiator({headers: negotiatorHeaders}).languages()
-    return currentCookieLang || match(languages, supportedLang, defaultLang)
+
+    // Handle SEO / CURL request that are not handled well
+    // See https://stackoverflow.com/questions/76447732/nextjs-13-i18n-incorrect-locale-information-provided
+    let computedLang: string
+    try {
+      computedLang = match(languages, supportedLang, defaultLang)
+    } catch (error) {
+      console.warn(error, `Unable to parse language ${languages}`)
+    } finally {
+      computedLang = defaultLang
+    }
+
+    return currentCookieLang || computedLang
   }
 }
 
