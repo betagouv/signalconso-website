@@ -1,7 +1,7 @@
 import {ReactNode, useId} from 'react'
 
 interface ScCheckboxProps<V> {
-  title?: ReactNode
+  title: ReactNode
   description?: string
   // do not respect DSFR style, less bold, less margins, etc.
   titleSoberStyle?: boolean

@@ -19,7 +19,7 @@ export const CompanyWebsiteCountry = ({countries, onSubmit}: Props) => {
   const {m, currentLang} = useI18n()
   const {handleSubmit, register, control} = useForm<Form>()
   return (
-    <Panel title={m.companySelectCountryTitle}>
+    <Panel>
       <form onSubmit={handleSubmit(f => onSubmit(f.country))}>
         <PanelBody>
           <Controller
@@ -31,6 +31,7 @@ export const CompanyWebsiteCountry = ({countries, onSubmit}: Props) => {
             }}
             render={({field}) => (
               <ScRadioButtons
+                title={m.companySelectCountryTitle}
                 {...field}
                 options={countries.map(_ => {
                   return {
