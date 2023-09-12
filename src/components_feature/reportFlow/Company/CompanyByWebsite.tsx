@@ -175,14 +175,17 @@ export const CompanyByWebsite = ({value, children, specificWebsiteCompanyKind, .
               <ScInput
                 InputProps={{
                   endAdornment: (
-                    <Tooltip title={m.edit}>
-                      <IconButton size="small" color="primary" onClick={editWebsite}>
+                    <Tooltip title={m.modifyWebsite}>
+                      <IconButton size="small" color="primary" onClick={editWebsite} aria-label={m.modifyWebsite}>
                         <Icon>edit</Icon>
                       </IconButton>
                     </Tooltip>
                   ),
                 }}
-                onClear={clearWebsite}
+                clearable={{
+                  onClear: clearWebsite,
+                  label: m.clearWebsite,
+                }}
                 defaultValue={value}
                 disabled={!!displayedResults}
                 {...register('website', {
@@ -270,9 +273,7 @@ function SimilarHosts({
     return (
       <>
         <br />
-        <Txt truncate block>
-          {m.suggestion}
-        </Txt>
+        <h3 className="text-base font-normal mb-0">{m.suggestion}</h3>
         <>
           {hosts.map((host, key) => {
             return (

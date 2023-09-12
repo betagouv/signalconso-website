@@ -31,7 +31,7 @@ const trad = (lang: AppLang) => {
       },
       dgccrfJob: {
         inspector: 'Inspecteur DGCCRF',
-        civilServant: "Attaché d'administration de l'état",
+        civilServant: "Attaché d'administration de l'État",
       },
     },
   }

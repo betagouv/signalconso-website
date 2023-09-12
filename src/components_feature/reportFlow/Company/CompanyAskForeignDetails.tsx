@@ -96,6 +96,7 @@ export const CompanyAskForeignDetails = ({onSubmit, companyKind}: Props) => {
             <ScAlert dense type="info">
               <Txt
                 size="small"
+                component="p"
                 dangerouslySetInnerHTML={{
                   __html: fnSwitch<CompanyKinds, string>(companyKind, {
                     SIRET: m.cantIdentifyCompany,

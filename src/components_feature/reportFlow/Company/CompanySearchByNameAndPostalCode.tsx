@@ -52,7 +52,7 @@ export const CompanySearchByNameAndPostalCode = ({children}: Props) => {
     <>
       <Animate>
         <Panel title={m.couldYouPrecise} id="CompanyByNameAndPostalCode">
-          <Txt color="hint">{m.youCanOnlyReportFrenchCompanies} &nbsp;</Txt>
+          <p className="text-gray-600 mb-1">{m.youCanOnlyReportFrenchCompanies}</p>
           <form onSubmit={handleSubmit(search)}>
             <PanelBody>
               <FieldLayout required label={m.reportedCompanyName}>

@@ -1,14 +1,18 @@
-import * as React from 'react'
-import {EventHandler, ReactElement, SyntheticEvent, useState} from 'react'
+import Accordion from '@codegouvfr/react-dsfr/Accordion'
 import {Button, Dialog, DialogActions, DialogContent, DialogProps, DialogTitle, PaperProps} from '@mui/material'
 import {useI18n} from 'i18n/I18n'
+import * as React from 'react'
+import {EventHandler, ReactElement, SyntheticEvent, useState} from 'react'
 import {Txt} from '../../../components_simple/Txt'
-import {AccordionPanel, AccordionPanels} from 'components_simple/AccordionPanel'
 
 export interface ConfirmProps extends Omit<DialogProps, 'children' | 'onClick' | 'open'> {
   children: ReactElement<any>
   onClick?: EventHandler<SyntheticEvent<any>>
   PaperProps?: Partial<PaperProps>
+}
+
+function Accordions({children}: {children: React.ReactNode}) {
+  return <div className="fr-accordions-group">{children}</div>
 }
 
 export const CompanySearchByIdentityHelpDialog = ({children, PaperProps, onClick, ...props}: ConfirmProps) => {
@@ -27,20 +31,16 @@ export const CompanySearchByIdentityHelpDialog = ({children, PaperProps, onClick
         },
       })}
       <Dialog open={open} {...props} PaperProps={PaperProps}>
-        <DialogTitle>{m.companyIdentityHelperTitle}</DialogTitle>
+        <DialogTitle>
+          <span className=" font-bold">{m.companyIdentityHelperTitle}</span>
+        </DialogTitle>
         <DialogContent>
-          <Txt size="big" bold block sx={{mb: 1}}>
-            {m.companyIdentityHelper}
-          </Txt>
-          <span dangerouslySetInnerHTML={{__html: m.companyIdentityHelperDesc}} />
-          <Txt size="big" bold block sx={{mb: 1}}>
-            {m.companyIdentityHelperWhere}
-          </Txt>
-          {m.companyIdentityHelperWhereDesc}
-          <br />
-          <br />
-          <AccordionPanels sx={{mt: 1}}>
-            <AccordionPanel title={m.companyIdentityHelperWebsite}>
+          <h3 className="mb-2"> {m.companyIdentityHelper}</h3>
+          <p dangerouslySetInnerHTML={{__html: m.companyIdentityHelperDesc}} />
+          <h3 className="mb-2"> {m.companyIdentityHelperWhere}</h3>
+          <p>{m.companyIdentityHelperWhereDesc}</p>
+          <Accordions>
+            <Accordion label={m.companyIdentityHelperWebsite}>
               {m.companyIdentityHelperWhereDesc0}
               <img
                 src="/image/siret-helper/siret-helper-footer.png"
@@ -53,25 +53,25 @@ export const CompanySearchByIdentityHelpDialog = ({children, PaperProps, onClick
                 alt="Sur un site internet 2 sur 2"
                 style={{width: '100%', marginTop: 4, marginBottom: 4}}
               />
-            </AccordionPanel>
-            <AccordionPanel title={m.companyIdentityHelperInvoice}>
+            </Accordion>
+            <Accordion label={m.companyIdentityHelperInvoice}>
               <img src="/image/siret-helper/siret-helper-bill.jpg" alt="Sur une facture" style={{width: '100%'}} />
-            </AccordionPanel>
-            <AccordionPanel title={m.companyIdentityHelperReceipt}>
+            </Accordion>
+            <Accordion label={m.companyIdentityHelperReceipt}>
               <img
                 src="/image/siret-helper/siret-helper-ticket.jpg"
                 alt="Sur un ticket de caisse"
                 style={{maxWidth: '300px', margin: 'auto', display: 'block'}}
               />
-            </AccordionPanel>
-            <AccordionPanel title={m.companyIdentityHelperCreditCardReceipt}>
+            </Accordion>
+            <Accordion label={m.companyIdentityHelperCreditCardReceipt}>
               <img
                 src="/image/siret-helper/siret-helper-card.jpg"
                 alt="Sur un ticket de carte bleue"
                 style={{maxWidth: '300px', margin: 'auto', display: 'block'}}
               />
-            </AccordionPanel>
-          </AccordionPanels>
+            </Accordion>
+          </Accordions>
         </DialogContent>
         <DialogActions>
           <Button color="primary" onClick={close}>

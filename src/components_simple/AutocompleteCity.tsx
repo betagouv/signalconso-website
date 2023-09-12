@@ -66,10 +66,12 @@ export const AutocompleteCity = forwardRef(({label, placeholder, onChange, ...in
     return buildDefaultOption(input)
   }
 
+  const actuallyOpen = _fetchCity.error || inputValue == '' || isPartialPostalcode(inputValue) ? false : open
+
   return (
     <Autocomplete
       ref={ref}
-      open={_fetchCity.error || inputValue == '' || isPartialPostalcode(inputValue) ? false : open}
+      open={actuallyOpen}
       onOpen={() => setOpen(true)}
       onClose={() => setOpen(false)}
       onInputChange={(event, newInputValue) => {

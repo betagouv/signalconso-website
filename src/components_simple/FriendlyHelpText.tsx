@@ -1,6 +1,5 @@
-import {ReactNode} from 'react'
-import {alertInfoBackgroundColor, alertInfoTextColor} from './ScAlert'
 import {useColors} from '@codegouvfr/react-dsfr/useColors'
+import {ReactNode} from 'react'
 
 export function FriendlyHelpText({children}: {children: ReactNode}) {
   const theme = useColors()

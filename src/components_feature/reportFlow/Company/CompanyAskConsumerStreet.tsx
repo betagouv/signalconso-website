@@ -32,7 +32,7 @@ export const CompanyAskConsumerStreet = ({onChange}: Props) => {
     <Animate>
       <Panel id="CompanyAskConsumerStreet">
         <ScAlert dense type="info">
-          <Txt size="small" dangerouslySetInnerHTML={{__html: m.cantIdentifyLocationCompany}} />
+          <Txt size="small" component="p" dangerouslySetInnerHTML={{__html: m.cantIdentifyLocationCompany}} />
         </ScAlert>
         <form
           onSubmit={handleSubmit(form =>

@@ -27,7 +27,9 @@ export const CompanyWebsiteVendor = ({onSubmit}: Props) => {
       <Panel title={m.companyWebsiteVendorTitle}>
         <form onSubmit={handleSubmit(form => onSubmit(form.websiteVendor))}>
           <PanelBody>
-            <ScAlert type="info">{m.companyWebsiteVendorAlert}</ScAlert>
+            <ScAlert type="info">
+              <p>{m.companyWebsiteVendorAlert}</p>
+            </ScAlert>
             <FieldLayout required label={m.companyWebsiteVendorLabel}>
               <ScInput
                 fullWidth
