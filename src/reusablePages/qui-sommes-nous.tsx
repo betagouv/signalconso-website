@@ -1,10 +1,8 @@
 import {MemberCard} from 'components_simple/MemberCard'
 import {ContentPageContainer} from 'components_simple/PageContainers'
 import {team} from 'core/team'
-import Head from 'next/head'
-import Link from 'next/link'
-import {useI18n} from '../i18n/I18n'
 import {Metadata} from 'next'
+import Link from 'next/link'
 import {getI18n} from '../i18n/I18nDictionnary'
 import {AppLang} from '../i18n/localization/AppLangs'
 
