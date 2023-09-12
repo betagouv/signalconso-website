@@ -146,23 +146,17 @@ export const DetailsInner = ({
           </FriendlyHelpText>
           <p className="text-sm">{m.fieldsAreRequired}</p>
           {inputs.map((input, inputIndex) => (
-            <FieldLabel
-              label={<span dangerouslySetInnerHTML={{__html: input.label}} />}
-              required={!input.optional}
+            <DetailsTypeSpecificInput
               key={inputIndex}
-              className="mb-4"
-            >
-              <DetailsTypeSpecificInput
-                {...{
-                  control,
-                  inputIndex,
-                  input,
-                  errors,
-                  initialValues,
-                  getValues,
-                }}
-              />
-            </FieldLabel>
+              {...{
+                control,
+                inputIndex,
+                input,
+                errors,
+                initialValues,
+                getValues,
+              }}
+            />
           ))}
         </div>
       </Animate>
@@ -232,7 +226,9 @@ function DetailsTypeSpecificInput({
 }) {
   const {m} = useI18n()
   const name = inputIndex.toString()
-  const baseRules = {required: {value: !input.optional, message: m.required + ' *'}}
+  const label = <span dangerouslySetInnerHTML={{__html: input.label}} />
+  const required = !input.optional
+  const baseRules = {required: {value: required, message: m.required + ' *'}}
   const maxLengthRule = {maxLength: {value: appConfig.maxDescriptionInputLength, message: ''}}
   const errorMessage = errors[inputIndex]?.message
   const hasErrors = !!errors[inputIndex]
@@ -240,32 +236,39 @@ function DetailsTypeSpecificInput({
   const unsafeControlForStringsOnly = control as Control<{[key: string]: string}>
   // for checkboxes it can be only string[]
   const unsafeControlForArrayStringsOnly = control as Control<{[key: string]: string[]}>
+  const fieldLabelProps = {
+    label,
+    required,
+    className: 'mb-4',
+  }
 
   const renderDateVariant = ({max}: {max: string}) => {
     const min = '01/01/1970'
     return (
-      <Controller
-        {...{name}}
-        control={unsafeControlForStringsOnly}
-        defaultValue={getDefaultValueFromInput(input) === 'SYSDATE' ? dateToFrenchFormat(new Date()) : undefined}
-        rules={{
-          ...baseRules,
-          validate: d => {
-            return isDateInRange(d, min, max) ? true : m.invalidDate
-          },
-        }}
-        render={({field}) => (
-          <ScDatepickerFr
-            {...field}
-            fullWidth
-            placeholder={getPlaceholderFromInput(input)}
-            min={min}
-            max={max}
-            helperText={errorMessage}
-            error={hasErrors}
-          />
-        )}
-      />
+      <FieldLabel {...fieldLabelProps}>
+        <Controller
+          {...{name}}
+          control={unsafeControlForStringsOnly}
+          defaultValue={getDefaultValueFromInput(input) === 'SYSDATE' ? dateToFrenchFormat(new Date()) : undefined}
+          rules={{
+            ...baseRules,
+            validate: d => {
+              return isDateInRange(d, min, max) ? true : m.invalidDate
+            },
+          }}
+          render={({field}) => (
+            <ScDatepickerFr
+              {...field}
+              fullWidth
+              placeholder={getPlaceholderFromInput(input)}
+              min={min}
+              max={max}
+              helperText={errorMessage}
+              error={hasErrors}
+            />
+          )}
+        />
+      </FieldLabel>
     )
   }
 
@@ -280,26 +283,28 @@ function DetailsTypeSpecificInput({
       })
     case DetailInputType.TIMESLOT:
       return (
-        <Controller
-          {...{name}}
-          control={control}
-          rules={baseRules}
-          render={({field}) => (
-            <ScSelect
-              {...field}
-              fullWidth
-              placeholder={getPlaceholderFromInput(input)}
-              helperText={errorMessage}
-              error={hasErrors}
-            >
-              {mapNTimes(24, i => (
-                <MenuItem key={i} value={`de ${i}h à ${i + 1}h`}>
-                  {m.timeFromTo(i, i + 1)}
-                </MenuItem>
-              ))}
-            </ScSelect>
-          )}
-        />
+        <FieldLabel {...fieldLabelProps}>
+          <Controller
+            {...{name}}
+            control={control}
+            rules={baseRules}
+            render={({field}) => (
+              <ScSelect
+                {...field}
+                fullWidth
+                placeholder={getPlaceholderFromInput(input)}
+                helperText={errorMessage}
+                error={hasErrors}
+              >
+                {mapNTimes(24, i => (
+                  <MenuItem key={i} value={`de ${i}h à ${i + 1}h`}>
+                    {m.timeFromTo(i, i + 1)}
+                  </MenuItem>
+                ))}
+              </ScSelect>
+            )}
+          />
+        </FieldLabel>
       )
     case DetailInputType.RADIO:
       return (
@@ -310,11 +315,11 @@ function DetailsTypeSpecificInput({
           render={({field}) => (
             <ScRadioButtons
               {...field}
+              title={label}
+              titleSoberStyle
+              {...{required}}
               errorMessage={errorMessage}
               error={hasErrors}
-              // TODO ici utiliser le title, mais du coup il faut virer le FieldLabel au-dessus, c'est assez compliqué !!
-              // TODO faire pareil pour tous les radio buttons restants ensuite
-              // title={'sdfsdfsdfs'}
               options={
                 getOptionsFromInput(input)?.map((option, i) => {
                   return {
@@ -345,6 +350,9 @@ function DetailsTypeSpecificInput({
           render={({field}) => (
             <ScCheckbox
               {...field}
+              title={label}
+              titleSoberStyle
+              {...{required}}
               options={
                 getOptionsFromInput(input)?.map(option => {
                   return {
@@ -368,45 +376,49 @@ function DetailsTypeSpecificInput({
       )
     case DetailInputType.TEXT:
       return (
-        <Controller
-          control={control}
-          {...{name}}
-          rules={{...baseRules, ...maxLengthRule}}
-          render={({field}) => <ScInput {...field} error={hasErrors} fullWidth placeholder={getPlaceholderFromInput(input)} />}
-        />
+        <FieldLabel {...fieldLabelProps}>
+          <Controller
+            control={control}
+            {...{name}}
+            rules={{...baseRules, ...maxLengthRule}}
+            render={({field}) => <ScInput {...field} error={hasErrors} fullWidth placeholder={getPlaceholderFromInput(input)} />}
+          />
+        </FieldLabel>
       )
     case DetailInputType.TEXTAREA:
       return (
-        <Controller
-          control={control}
-          {...{name}}
-          rules={{...baseRules, ...maxLengthRule}}
-          render={({field}) => (
-            <ScInput
-              {...field}
-              helperText={
-                errors[inputIndex]?.type === 'required' ? (
-                  m.required
-                ) : (
-                  <span>
-                    {getValues('' + inputIndex)?.length ?? 0} / {appConfig.maxDescriptionInputLength}
-                    <span className="hidden">
-                      {' '}
-                      {m.charactersTyped}
-                      {/* reco audit accessibilité d'ajouter ce texte caché */}
+        <FieldLabel {...fieldLabelProps}>
+          <Controller
+            control={control}
+            {...{name}}
+            rules={{...baseRules, ...maxLengthRule}}
+            render={({field}) => (
+              <ScInput
+                {...field}
+                helperText={
+                  errors[inputIndex]?.type === 'required' ? (
+                    m.required
+                  ) : (
+                    <span>
+                      {getValues('' + inputIndex)?.length ?? 0} / {appConfig.maxDescriptionInputLength}
+                      <span className="hidden">
+                        {' '}
+                        {m.charactersTyped}
+                        {/* reco audit accessibilité d'ajouter ce texte caché */}
+                      </span>
                     </span>
-                  </span>
-                )
-              }
-              error={hasErrors}
-              multiline
-              minRows={5}
-              maxRows={10}
-              fullWidth
-              placeholder={getPlaceholderFromInput(input)}
-            />
-          )}
-        />
+                  )
+                }
+                error={hasErrors}
+                multiline
+                minRows={5}
+                maxRows={10}
+                fullWidth
+                placeholder={getPlaceholderFromInput(input)}
+              />
+            )}
+          />
+        </FieldLabel>
       )
   }
 }

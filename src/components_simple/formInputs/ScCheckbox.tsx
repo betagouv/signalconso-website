@@ -3,6 +3,8 @@ import {ReactNode, useId} from 'react'
 interface ScCheckboxProps<V> {
   title?: ReactNode
   description?: string
+  // do not respect DSFR style, less bold, less margins, etc.
+  titleSoberStyle?: boolean
   onChange: (value: V[]) => void
   options: {
     label: ReactNode
@@ -12,16 +14,19 @@ interface ScCheckboxProps<V> {
   value: V[] | undefined
   error?: boolean
   errorMessage?: string
+  required?: boolean
 }
 
 export const ScCheckbox = <V,>({
   title,
+  titleSoberStyle,
   description,
   onChange,
   options,
   value: selectedValue,
   error,
   errorMessage,
+  required,
 }: ScCheckboxProps<V>) => {
   const _id = useId()
   const id = `fr-fieldset-checkbox-${_id}`
@@ -45,8 +50,9 @@ export const ScCheckbox = <V,>({
       role="group"
     >
       {title && (
-        <legend id={legendId} className="fr-fieldset__legend">
+        <legend id={legendId} className={`fr-fieldset__legend ${titleSoberStyle ? '!font-normal !pb-0' : ''}`}>
           {title}
+          {required && <span> *</span>}
           {description && <span className="fr-hint-text">{description}</span>}
         </legend>
       )}

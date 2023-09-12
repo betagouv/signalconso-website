@@ -124,7 +124,7 @@ export enum DetailInputType {
 interface DetailInputBase {
   label: string
   type: DetailInputType
-  optional?: boolean
+  optional?: boolean // if missing, means false
 }
 
 export type DetailInputText = DetailInputBase & {
