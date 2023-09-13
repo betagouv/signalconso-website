@@ -3,6 +3,8 @@ import {ReactNode, useId} from 'react'
 interface ScRadioButtonsProps<V> {
   title?: ReactNode
   description?: string
+  // do not respect DSFR style, less bold, less margins, etc.
+  titleSoberStyle?: boolean
   onChange: (value: V) => void
   options: {
     label: ReactNode
@@ -15,17 +17,22 @@ interface ScRadioButtonsProps<V> {
   error?: boolean
   errorMessage?: string
   orientation?: 'vertical' | 'horizontal'
+  className?: string
+  required?: boolean
 }
 
 export const ScRadioButtons = <V,>({
   title,
   description,
+  titleSoberStyle = false,
   onChange,
   options,
   value: selectedValue,
   error,
   errorMessage,
   orientation,
+  className = '',
+  required,
 }: ScRadioButtonsProps<V>) => {
   const _id = useId()
   const id = `fr-fieldset-radio-${_id}`
@@ -44,13 +51,16 @@ export const ScRadioButtons = <V,>({
   return (
     <fieldset
       id={id}
-      className={`fr-fieldset ${orientation === 'horizontal' && 'fr-fieldset--inline'} ${error ? 'fr-fieldset--error' : ''}`}
+      className={`fr-fieldset ${orientation === 'horizontal' && 'fr-fieldset--inline'} ${
+        error ? 'fr-fieldset--error' : ''
+      } ${className}`}
       aria-labelledby={`${title && legendId} ${messagesWrapperId}`}
       role="group"
     >
       {title && (
-        <legend id={legendId} className="fr-fieldset__legend">
+        <legend id={legendId} className={`fr-fieldset__legend ${titleSoberStyle ? '!font-normal !pb-0' : ''}`}>
           {title}
+          {required && <span> *</span>}
           {description && <span className="fr-hint-text">{description}</span>}
         </legend>
       )}

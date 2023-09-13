@@ -1,7 +1,7 @@
 import {Animate} from 'components_simple/Animate'
 import {AutocompleteCity, AutocompleteCityValue} from 'components_simple/AutocompleteCity'
 import {BtnNextSubmit} from 'components_simple/Buttons'
-import {FieldLayout} from 'components_simple/FieldLayout'
+import {FieldLabel} from 'components_simple/FieldLabel'
 import {Panel, PanelActions, PanelBody} from 'components_simple/Panel'
 import {useI18n} from 'i18n/I18n'
 import {Address} from 'model/Address'
@@ -51,7 +51,7 @@ export const CompanyAskConsumerPostalCode = ({value, onChange, companyKind}: Pro
         </ScAlert>
         <form onSubmit={handleSubmit(_ => onChange(_.place))}>
           <PanelBody>
-            <FieldLayout required label={m.yourPostalCode} desc={m.youCanSearchByCity}>
+            <FieldLabel required label={m.yourPostalCode} desc={m.youCanSearchByCity}>
               <Controller
                 control={control}
                 name="place"
@@ -69,7 +69,7 @@ export const CompanyAskConsumerPostalCode = ({value, onChange, companyKind}: Pro
                   />
                 )}
               />
-            </FieldLayout>
+            </FieldLabel>
           </PanelBody>
 
           <PanelActions>

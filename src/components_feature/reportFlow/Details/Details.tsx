@@ -1,37 +1,25 @@
-import {MenuItem} from '@mui/material'
-import {FriendlyHelpText} from 'components_simple/FriendlyHelpText'
+import {Alert} from '@codegouvfr/react-dsfr/Alert'
 import {useAnalyticContext} from 'analytic/AnalyticContext'
 import {EventCategories, ReportEventActions} from 'analytic/analytic'
-import {Animate} from 'components_simple/Animate'
-import {ScDatepickerFr} from 'components_simple/formInputs/ScDatepickerFr'
-import {FieldLayout} from 'components_simple/FieldLayout'
-import {ScInput} from 'components_simple/formInputs/ScInput'
 import {StepNavigation} from 'components_feature/reportFlow/reportFlowStepper/ReportFlowStepper'
 import {ReportFlowStepperActions} from 'components_feature/reportFlow/reportFlowStepper/ReportFlowStepperActions'
-import {ScSelect} from 'components_simple/formInputs/ScSelect'
+import {Animate} from 'components_simple/Animate'
+import {FriendlyHelpText} from 'components_simple/FriendlyHelpText'
+import {ADD_FILE_HELP_ID} from 'components_simple/reportFile/ReportFileAdd'
 import {ReportFiles} from 'components_simple/reportFile/ReportFiles'
 import {appConfig} from 'core/appConfig'
 import {useI18n} from 'i18n/I18n'
 import {DetailInputValues2} from 'model/ReportDraft2'
 import {useEffect, useMemo, useState} from 'react'
-import {Controller, useForm} from 'react-hook-form'
-import {ControllerProps} from 'react-hook-form/dist/types/controller'
+import {useForm} from 'react-hook-form'
 import {last} from 'utils/lodashNamedExport'
-import {dateToFrenchFormat, isDateInRange} from 'utils/utils'
-import {DetailInput, DetailInputType, ReportTag, StandardSubcategory} from '../../../anomalies/Anomaly'
+import {DetailInput, ReportTag, StandardSubcategory} from '../../../anomalies/Anomaly'
 import {ConsumerWish, ReportDraft} from '../../../model/ReportDraft'
 import {FileOrigin, UploadedFile} from '../../../model/UploadedFile'
-import {fnSwitch} from '../../../utils/FnSwitch'
-import {mapNTimes} from '../../../utils/utils'
 import {useReportFlowContext} from '../ReportFlowContext'
-import {getDefaultValueFromInput, getOptionsFromInput, getPlaceholderFromInput} from './DetailInputsUtils'
 import {DetailsAlertProduitDangereux} from './DetailsAlertProduitDangereux'
-import {DetailsSpecifyInput} from './DetailsSpecifyInput'
+import {DetailsInputRenderByType} from './DetailsInputRenderByType'
 import {getDraftReportInputs} from './draftReportInputs'
-import {ScRadioButtons} from '../../../components_simple/formInputs/ScRadioButtons'
-import {ScCheckbox} from '../../../components_simple/formInputs/ScCheckbox'
-import {Alert} from '@codegouvfr/react-dsfr/Alert'
-import {ADD_FILE_HELP_ID} from 'components_simple/reportFile/ReportFileAdd'
 
 export class SpecifyFormUtils {
   static readonly specifyKeywordFr = '(à préciser)'
@@ -148,188 +136,17 @@ export const DetailsInner = ({
           </FriendlyHelpText>
           <p className="text-sm">{m.fieldsAreRequired}</p>
           {inputs.map((input, inputIndex) => (
-            <FieldLayout
-              label={<span dangerouslySetInnerHTML={{__html: input.label}} />}
-              required={!input.optional}
+            <DetailsInputRenderByType
               key={inputIndex}
-              className="mb-4"
-            >
-              {(() => {
-                const controller = ({
-                  defaultValue,
-                  rules,
-                  render,
-                }: {
-                  defaultValue?: string
-                  rules?: ControllerProps<any, any>['rules']
-                  render: ControllerProps<any, any>['render']
-                }) => {
-                  return (
-                    <Controller
-                      control={control}
-                      name={'' + inputIndex}
-                      defaultValue={defaultValue ?? getDefaultValueFromInput(input)}
-                      rules={{
-                        required: {value: !input.optional, message: m.required + ' *'},
-                        ...rules,
-                      }}
-                      render={render}
-                    />
-                  )
-                }
-                const errorMessage = errors[inputIndex]?.message
-                const hasErrors = !!errors[inputIndex]
-
-                const renderDateVariant = ({max}: {max: string}) => {
-                  const min = '01/01/1970'
-                  return controller({
-                    defaultValue: getDefaultValueFromInput(input) === 'SYSDATE' ? dateToFrenchFormat(new Date()) : undefined,
-                    rules: {
-                      validate: (d: string) => {
-                        return isDateInRange(d, min, max) ? true : m.invalidDate
-                      },
-                    },
-                    render: ({field}) => (
-                      <ScDatepickerFr
-                        {...field}
-                        fullWidth
-                        placeholder={getPlaceholderFromInput(input)}
-                        min={min}
-                        max={max}
-                        helperText={errorMessage}
-                        error={hasErrors}
-                      />
-                    ),
-                  })
-                }
-
-                return fnSwitch(
-                  input.type,
-                  {
-                    [DetailInputType.DATE_NOT_IN_FUTURE]: () =>
-                      renderDateVariant({
-                        max: dateToFrenchFormat(new Date()),
-                      }),
-                    [DetailInputType.DATE]: () =>
-                      renderDateVariant({
-                        max: '01/01/2100',
-                      }),
-                    [DetailInputType.TIMESLOT]: () =>
-                      controller({
-                        render: ({field}) => (
-                          <ScSelect
-                            {...field}
-                            fullWidth
-                            placeholder={getPlaceholderFromInput(input)}
-                            helperText={errorMessage}
-                            error={hasErrors}
-                          >
-                            {mapNTimes(24, i => (
-                              <MenuItem key={i} value={`de ${i}h à ${i + 1}h`}>
-                                {m.timeFromTo(i, i + 1)}
-                              </MenuItem>
-                            ))}
-                          </ScSelect>
-                        ),
-                      }),
-                    [DetailInputType.RADIO]: () =>
-                      controller({
-                        render: ({field}) => (
-                          <ScRadioButtons
-                            {...field}
-                            errorMessage={errorMessage}
-                            error={hasErrors}
-                            options={
-                              getOptionsFromInput(input)?.map((option, i) => {
-                                return {
-                                  label: <span dangerouslySetInnerHTML={{__html: option}} />,
-                                  value: option,
-                                  specify:
-                                    field.value === option && SpecifyFormUtils.hasSpecifyKeyword(option) ? (
-                                      <DetailsSpecifyInput
-                                        control={control}
-                                        error={errors[SpecifyFormUtils.getInputName(inputIndex)]}
-                                        defaultValue={initialValues?.[SpecifyFormUtils.getInputName(inputIndex)]}
-                                        name={SpecifyFormUtils.getInputName(inputIndex)}
-                                      />
-                                    ) : undefined,
-                                }
-                              }) ?? []
-                            }
-                          />
-                        ),
-                      }),
-                    [DetailInputType.CHECKBOX]: () =>
-                      controller({
-                        render: ({field}) => (
-                          <ScCheckbox
-                            {...field}
-                            options={
-                              getOptionsFromInput(input)?.map(option => {
-                                return {
-                                  label: <span dangerouslySetInnerHTML={{__html: option}} />,
-                                  value: option,
-                                  specify:
-                                    (field.value as string[] | undefined)?.includes(option) &&
-                                    SpecifyFormUtils.hasSpecifyKeyword(option) ? (
-                                      <DetailsSpecifyInput
-                                        control={control}
-                                        error={errors[SpecifyFormUtils.getInputName(inputIndex)]}
-                                        defaultValue={initialValues?.[SpecifyFormUtils.getInputName(inputIndex)]}
-                                        name={SpecifyFormUtils.getInputName(inputIndex)}
-                                      />
-                                    ) : undefined,
-                                }
-                              }) ?? []
-                            }
-                          />
-                        ),
-                      }),
-                    [DetailInputType.TEXT]: () =>
-                      controller({
-                        rules: {
-                          maxLength: {value: appConfig.maxDescriptionInputLength, message: ''},
-                        },
-                        render: ({field}) => (
-                          <ScInput {...field} error={hasErrors} fullWidth placeholder={getPlaceholderFromInput(input)} />
-                        ),
-                      }),
-                  },
-                  () =>
-                    // cas de la textarea description
-                    controller({
-                      rules: {
-                        maxLength: {value: appConfig.maxDescriptionInputLength, message: ''},
-                      },
-                      render: ({field}) => (
-                        <ScInput
-                          {...field}
-                          helperText={
-                            errors[inputIndex]?.type === 'required' ? (
-                              m.required
-                            ) : (
-                              <span>
-                                {getValues('' + inputIndex)?.length ?? 0} / {appConfig.maxDescriptionInputLength}
-                                <span className="hidden">
-                                  {' '}
-                                  {m.charactersTyped}
-                                  {/* reco audit accessibilité d'ajouter ce texte caché */}
-                                </span>
-                              </span>
-                            )
-                          }
-                          error={hasErrors}
-                          multiline
-                          minRows={5}
-                          maxRows={10}
-                          fullWidth
-                          placeholder={getPlaceholderFromInput(input)}
-                        />
-                      ),
-                    }),
-                )
-              })()}
-            </FieldLayout>
+              {...{
+                control,
+                inputIndex,
+                input,
+                errors,
+                initialValues,
+                getValues,
+              }}
+            />
           ))}
         </div>
       </Animate>

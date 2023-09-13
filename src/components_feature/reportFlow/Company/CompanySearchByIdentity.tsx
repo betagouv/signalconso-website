@@ -5,7 +5,7 @@ import {CompanySearchEventActions, EventCategories} from 'analytic/analytic'
 import {useToastOnQueryError} from 'clients/apiHooks'
 import {Animate} from 'components_simple/Animate'
 import {ButtonWithLoader} from 'components_simple/Buttons'
-import {FieldLayout} from 'components_simple/FieldLayout'
+import {FieldLabel} from 'components_simple/FieldLabel'
 import {Panel, PanelActions, PanelBody} from 'components_simple/Panel'
 import {ScInput} from 'components_simple/formInputs/ScInput'
 import {useApiClients} from 'context/ApiClientsContext'
@@ -57,7 +57,7 @@ export const CompanySearchByIdentity = ({children}: Props) => {
         <Panel title={m.couldYouPrecise} id="CompanySearchByIdentity">
           <form onSubmit={handleSubmit(search)}>
             <PanelBody>
-              <FieldLayout
+              <FieldLabel
                 required
                 label={
                   <span>
@@ -84,7 +84,7 @@ export const CompanySearchByIdentity = ({children}: Props) => {
                     ),
                   }}
                 />
-              </FieldLayout>
+              </FieldLabel>
             </PanelBody>
 
             <PanelActions>

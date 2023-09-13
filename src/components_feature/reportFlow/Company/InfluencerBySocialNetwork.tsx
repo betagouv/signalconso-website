@@ -10,6 +10,7 @@ import {Txt} from '../../../components_simple/Txt'
 import {SocialNetworkRow} from '../../../components_simple/SocialNetworkRow'
 import {BtnNextSubmit} from 'components_simple/Buttons'
 import {ScRadioButtons} from '../../../components_simple/formInputs/ScRadioButtons'
+import {FieldLabel} from 'components_simple/FieldLabel'
 
 interface Props {
   onSubmit: (socialNetwork: SocialNetworks, influencer: string) => void
@@ -47,15 +48,7 @@ export const InfluencerBySocialNetwork = ({onSubmit}: Props) => {
         })}
       >
         <Animate autoScrollTo={false}>
-          <Panel
-            title={
-              <>
-                <Txt>Réseau social</Txt>
-                <Txt color="disabled"> *</Txt>
-              </>
-            }
-            id="SocialNetwork"
-          >
+          <Panel id="SocialNetwork">
             <PanelBody>
               <Controller
                 name="socialNetwork"
@@ -63,30 +56,24 @@ export const InfluencerBySocialNetwork = ({onSubmit}: Props) => {
                 rules={{
                   required: {value: true, message: m.required},
                 }}
-                render={({field}) => <ScRadioButtons {...field} options={socialNetworkOptions} />}
+                render={({field}) => <ScRadioButtons {...field} options={socialNetworkOptions} title="Réseau social" required />}
               />
             </PanelBody>
           </Panel>
         </Animate>
         {socialNetwork && (
           <Animate>
-            <Panel
-              title={
-                <>
-                  <Txt>Nom ou pseudonyme de l'influenceur ou influenceuse</Txt>
-                  <Txt color="disabled"> *</Txt>
-                </>
-              }
-              id="influencer"
-            >
+            <Panel id="influencer">
               <PanelBody>
-                <ScInput
-                  fullWidth
-                  error={!!errors.influencer}
-                  helperText={errors.influencer?.message}
-                  placeholder="Nom ou pseudonyme"
-                  {...register('influencer', {required: {value: true, message: m.required}})}
-                />
+                <FieldLabel label="Nom ou pseudonyme de l'influenceur ou influenceuse" required>
+                  <ScInput
+                    fullWidth
+                    error={!!errors.influencer}
+                    helperText={errors.influencer?.message}
+                    placeholder="Nom ou pseudonyme"
+                    {...register('influencer', {required: {value: true, message: m.required}})}
+                  />
+                </FieldLabel>
               </PanelBody>
               <PanelActions>
                 <BtnNextSubmit />

@@ -5,11 +5,13 @@ interface Props {
   label?: ReactNode
   desc?: ReactNode
   required?: boolean
+  // 'children' is supposed to be the <input>
+  // that way the label and input are linked, for accessibility
   children: ReactElement
   className?: string
 }
 
-export const FieldLayout = ({label, desc, required, children, className = ''}: Props) => {
+export const FieldLabel = ({label, desc, required, children, className = ''}: Props) => {
   return (
     <Box
       className={className}

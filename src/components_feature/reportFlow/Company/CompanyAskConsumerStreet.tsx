@@ -1,7 +1,7 @@
 import {Animate} from 'components_simple/Animate'
 import {AutocompleteCity, AutocompleteCityValue} from 'components_simple/AutocompleteCity'
 import {BtnNextSubmit} from 'components_simple/Buttons'
-import {FieldLayout} from 'components_simple/FieldLayout'
+import {FieldLabel} from 'components_simple/FieldLabel'
 import {ScInput} from 'components_simple/formInputs/ScInput'
 import {Panel, PanelActions, PanelBody} from 'components_simple/Panel'
 import {useI18n} from 'i18n/I18n'
@@ -44,7 +44,7 @@ export const CompanyAskConsumerStreet = ({onChange}: Props) => {
           )}
         >
           <PanelBody>
-            <FieldLayout required label={m.yourStreet} desc={m.yourStreetDesc}>
+            <FieldLabel required label={m.yourStreet} desc={m.yourStreetDesc}>
               <ScInput
                 {...register('street', {
                   required: {value: true, message: m.required},
@@ -54,8 +54,8 @@ export const CompanyAskConsumerStreet = ({onChange}: Props) => {
                 fullWidth
                 placeholder={m.yourStreetPlaceholder}
               />
-            </FieldLayout>
-            <FieldLayout required label={m.yourPostalCode} desc={m.youCanSearchByCity}>
+            </FieldLabel>
+            <FieldLabel required label={m.yourPostalCode} desc={m.youCanSearchByCity}>
               <Controller
                 control={control}
                 name="place"
@@ -72,7 +72,7 @@ export const CompanyAskConsumerStreet = ({onChange}: Props) => {
                   />
                 )}
               />
-            </FieldLayout>
+            </FieldLabel>
           </PanelBody>
 
           <PanelActions>
