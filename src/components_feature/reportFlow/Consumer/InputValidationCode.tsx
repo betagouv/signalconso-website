@@ -40,6 +40,7 @@ export const InputValidationCode = ({...other}: Props) => {
           inputComponent: TextMaskCustom as any,
           startAdornment: <Box sx={{mr: 0, fontSize, color: t => alpha(t.palette.text.disabled, 0.7)}}>SC-</Box>,
         }}
+        required={other.required}
       />
     </Box>
   )

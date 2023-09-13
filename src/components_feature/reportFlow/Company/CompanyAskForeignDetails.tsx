@@ -57,6 +57,7 @@ export const CompanyAskForeignDetails = ({onSubmit, companyKind}: Props) => {
                 {...register('name', {
                   required: {value: true, message: m.required},
                 })}
+                required
               />
             </FieldLabel>
             <FieldLabel required label={m.country}>
@@ -88,6 +89,7 @@ export const CompanyAskForeignDetails = ({onSubmit, companyKind}: Props) => {
                         helperText={(errors.country as any)?.message ?? ''}
                         placeholder={m.countryPlaceholder}
                         fullWidth
+                        required
                       />
                     )}
                   />
@@ -121,6 +123,7 @@ export const CompanyAskForeignDetails = ({onSubmit, companyKind}: Props) => {
                 {...register('postalCode', {
                   required: {value: true, message: m.required},
                 })}
+                required
               />
             </FieldLabel>
           </PanelBody>

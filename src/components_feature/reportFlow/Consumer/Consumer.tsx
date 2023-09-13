@@ -136,6 +136,7 @@ export const ConsumerInner = ({
                       required: {value: true, message: m.required},
                       pattern: {value: regexp.emojis, message: m.invalidName},
                     })}
+                    required
                     {...getErrors('firstName')}
                   />
                 </FieldLabel>
@@ -150,6 +151,7 @@ export const ConsumerInner = ({
                       required: {value: true, message: m.required},
                       pattern: {value: regexp.emojis, message: m.invalidName},
                     })}
+                    required
                     {...getErrors('lastName')}
                   />
                 </FieldLabel>
@@ -173,6 +175,7 @@ export const ConsumerInner = ({
                     },
                   },
                 })}
+                required
               />
             </FieldLabel>
           </Row>
@@ -188,6 +191,7 @@ export const ConsumerInner = ({
                 {..._form.register('phone', {
                   pattern: {value: regexp.phone, message: m.invalidPhone},
                 })}
+                required={false}
               />
             </FieldLabel>
           </Row>
@@ -201,6 +205,7 @@ export const ConsumerInner = ({
                 {..._form.register('referenceNumber', {
                   maxLength: {value: 100, message: m.atMost100Chars},
                 })}
+                required={false}
               />
             </FieldLabel>
           </Row>

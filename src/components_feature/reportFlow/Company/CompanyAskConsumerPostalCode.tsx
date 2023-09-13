@@ -68,6 +68,7 @@ export const CompanyAskConsumerPostalCode = ({value, onChange, companyKind}: Pro
                     defaultValue={value}
                     fullWidth
                     placeholder={m.yourPostalCodePlaceholder}
+                    required
                   />
                 )}
               />

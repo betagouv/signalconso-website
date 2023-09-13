@@ -52,6 +52,7 @@ export const CompanyByPhone = ({value, children, ...props}: Props) => {
                     required: {value: true, message: m.required},
                     pattern: {value: /^((((\+)33|0|0033)[1-9]([.\-\s+]?\d{2}){4})|(\d{2,5}))$/g, message: m.invalidPhone},
                   })}
+                  required
                   fullWidth
                   placeholder={m.phoneNumberHavingCalledPlaceholder}
                   error={!!errors.phone}

@@ -200,6 +200,7 @@ export const CompanyByWebsite = ({value, children, specificWebsiteCompanyKind, .
                       },
                     },
                   })}
+                  required
                   fullWidth
                   placeholder={m.websitePlaceholder}
                   error={!!errors.website}

@@ -15,6 +15,7 @@ describe('DatePicker', () => {
         onChange={v => {
           value = v
         }}
+        required
       />,
     )
     await waitFor(() => {

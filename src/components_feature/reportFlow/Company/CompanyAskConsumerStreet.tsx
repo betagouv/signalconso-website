@@ -51,6 +51,7 @@ export const CompanyAskConsumerStreet = ({onChange}: Props) => {
                 {...register('street', {
                   required: {value: true, message: m.required},
                 })}
+                required
                 error={!!errors.street}
                 helperText={(errors.street as any)?.message ?? ''}
                 fullWidth
@@ -71,6 +72,7 @@ export const CompanyAskConsumerStreet = ({onChange}: Props) => {
                     helperText={(errors.place as any)?.message ?? ''}
                     fullWidth
                     placeholder={m.yourPostalCodePlaceholder}
+                    required
                   />
                 )}
               />

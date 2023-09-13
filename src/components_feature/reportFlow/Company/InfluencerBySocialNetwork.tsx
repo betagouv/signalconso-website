@@ -74,6 +74,7 @@ export const InfluencerBySocialNetwork = ({onSubmit}: Props) => {
                     helperText={errors.influencer?.message}
                     placeholder="Nom ou pseudonyme"
                     {...register('influencer', {required: {value: true, message: m.required}})}
+                    required
                   />
                 </FieldLabel>
               </PanelBody>

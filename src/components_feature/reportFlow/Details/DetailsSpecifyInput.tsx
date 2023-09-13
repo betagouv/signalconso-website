@@ -35,6 +35,7 @@ export const DetailsSpecifyInput = ({
           }}
           fullWidth
           placeholder={m.specify}
+          required
         />
       )}
     />

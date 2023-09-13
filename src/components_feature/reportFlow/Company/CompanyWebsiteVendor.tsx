@@ -38,6 +38,7 @@ export const CompanyWebsiteVendor = ({onSubmit}: Props) => {
                 {...register('websiteVendor', {
                   required: {value: true, message: m.required},
                 })}
+                required
               />
             </FieldLabel>
           </PanelBody>

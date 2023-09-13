@@ -65,6 +65,7 @@ export const CompanySearchByNameAndPostalCode = ({children}: Props) => {
                   {...register('name', {
                     required: {value: true, message: m.required},
                   })}
+                  required
                 />
               </FieldLabel>
               <FieldLabel required label={m.postalCode} desc={m.youCanSearchByCity}>
@@ -82,6 +83,7 @@ export const CompanySearchByNameAndPostalCode = ({children}: Props) => {
                       helperText={errors.postalCode?.message ?? ''}
                       fullWidth
                       placeholder={m.yourPostalCodePlaceholder}
+                      required
                     />
                   )}
                 />

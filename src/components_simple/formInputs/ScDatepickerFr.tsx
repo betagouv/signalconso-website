@@ -8,13 +8,14 @@ import {ScInput} from './ScInput'
 export interface ScDatepickerProps extends BaseTextFieldProps {
   value?: string
   onChange: (_: string) => void
+  required: boolean
   // These are only indicative
   // The user can always go around these limits by typing a date manually instead of using the picker
   min?: string
   max?: string
 }
 
-export const ScDatepickerFr = forwardRef(({value, onChange, min, max, ...props}: ScDatepickerProps, ref: any) => {
+export const ScDatepickerFr = forwardRef(({value, onChange, required, min, max, ...props}: ScDatepickerProps, ref: any) => {
   return (
     <ScInput
       inputRef={ref}
@@ -23,6 +24,7 @@ export const ScDatepickerFr = forwardRef(({value, onChange, min, max, ...props}:
         ...(min && {min: frenchToIsoFormat(min)}),
       }}
       {...props}
+      required={required}
       type="date"
       value={value ? frenchToIsoFormat(value) : ''}
       onChange={(e: React.ChangeEvent<HTMLInputElement>) => {

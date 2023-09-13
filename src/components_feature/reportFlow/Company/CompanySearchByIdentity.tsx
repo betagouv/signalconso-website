@@ -76,6 +76,7 @@ export const CompanySearchByIdentity = ({children}: Props) => {
                   {...register('identity', {
                     required: {value: true, message: m.required},
                   })}
+                  required
                   fullWidth
                   placeholder={m.companyIdentityPlaceholder}
                   InputProps={{

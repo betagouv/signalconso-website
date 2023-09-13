@@ -72,6 +72,7 @@ export function DetailsInputRenderByType({
               max={max}
               helperText={errorMessage}
               error={hasErrors}
+              required={required}
             />
           )}
         />
@@ -188,7 +189,9 @@ export function DetailsInputRenderByType({
             control={control}
             {...{name}}
             rules={{...baseRules, ...maxLengthRule}}
-            render={({field}) => <ScInput {...field} error={hasErrors} fullWidth placeholder={getPlaceholderFromInput(input)} />}
+            render={({field}) => (
+              <ScInput {...field} error={hasErrors} fullWidth placeholder={getPlaceholderFromInput(input)} required={required} />
+            )}
           />
         </FieldLabel>
       )
@@ -222,6 +225,7 @@ export function DetailsInputRenderByType({
                 maxRows={10}
                 fullWidth
                 placeholder={getPlaceholderFromInput(input)}
+                required={required}
               />
             )}
           />
