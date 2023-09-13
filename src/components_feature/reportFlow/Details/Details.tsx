@@ -20,6 +20,7 @@ import {useReportFlowContext} from '../ReportFlowContext'
 import {DetailsAlertProduitDangereux} from './DetailsAlertProduitDangereux'
 import {DetailsInputRenderByType} from './DetailsInputRenderByType'
 import {getDraftReportInputs} from './draftReportInputs'
+import {RequiredFieldsLegend} from 'components_simple/RequiredFieldsLegend'
 
 export class SpecifyFormUtils {
   static readonly specifyKeywordFr = '(à préciser)'
@@ -134,7 +135,7 @@ export const DetailsInner = ({
               </>
             )}
           </FriendlyHelpText>
-          <p className="text-sm">{m.fieldsAreRequired}</p>
+          <RequiredFieldsLegend />
           {inputs.map((input, inputIndex) => (
             <DetailsInputRenderByType
               key={inputIndex}

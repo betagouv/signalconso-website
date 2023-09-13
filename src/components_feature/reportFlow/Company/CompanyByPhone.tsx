@@ -8,6 +8,7 @@ import {Panel, PanelBody} from 'components_simple/Panel'
 import {Animate} from 'components_simple/Animate'
 import {Button} from '@codegouvfr/react-dsfr/Button'
 import {FieldLabel} from 'components_simple/FieldLabel'
+import {RequiredFieldsLegend} from 'components_simple/RequiredFieldsLegend'
 
 interface Form {
   phone: string
@@ -40,6 +41,7 @@ export const CompanyByPhone = ({value, children, ...props}: Props) => {
       <Animate>
         <Panel title={m.aboutCompany} id="CompanyByPhone">
           <PanelBody>
+            <RequiredFieldsLegend />
             <Box component="form" onSubmit={handleSubmit(submit)} {...props}>
               <FieldLabel label={m.phoneNumberHavingCalled} required>
                 <ScInput
@@ -50,6 +52,7 @@ export const CompanyByPhone = ({value, children, ...props}: Props) => {
                     required: {value: true, message: m.required},
                     pattern: {value: /^((((\+)33|0|0033)[1-9]([.\-\s+]?\d{2}){4})|(\d{2,5}))$/g, message: m.invalidPhone},
                   })}
+                  required
                   fullWidth
                   placeholder={m.phoneNumberHavingCalledPlaceholder}
                   error={!!errors.phone}

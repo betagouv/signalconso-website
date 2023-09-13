@@ -11,6 +11,7 @@ import {SocialNetworkRow} from '../../../components_simple/SocialNetworkRow'
 import {BtnNextSubmit} from 'components_simple/Buttons'
 import {ScRadioButtons} from '../../../components_simple/formInputs/ScRadioButtons'
 import {FieldLabel} from 'components_simple/FieldLabel'
+import {RequiredFieldsLegend} from 'components_simple/RequiredFieldsLegend'
 
 interface Props {
   onSubmit: (socialNetwork: SocialNetworks, influencer: string) => void
@@ -41,6 +42,7 @@ export const InfluencerBySocialNetwork = ({onSubmit}: Props) => {
 
   return (
     <>
+      <RequiredFieldsLegend />
       <Box
         component="form"
         onSubmit={handleSubmit(form => {
@@ -56,7 +58,7 @@ export const InfluencerBySocialNetwork = ({onSubmit}: Props) => {
                 rules={{
                   required: {value: true, message: m.required},
                 }}
-                render={({field}) => <ScRadioButtons {...field} options={socialNetworkOptions} title="Réseau social" required />}
+                render={({field}) => <ScRadioButtons {...field} required options={socialNetworkOptions} title="Réseau social" />}
               />
             </PanelBody>
           </Panel>
@@ -72,6 +74,7 @@ export const InfluencerBySocialNetwork = ({onSubmit}: Props) => {
                     helperText={errors.influencer?.message}
                     placeholder="Nom ou pseudonyme"
                     {...register('influencer', {required: {value: true, message: m.required}})}
+                    required
                   />
                 </FieldLabel>
               </PanelBody>

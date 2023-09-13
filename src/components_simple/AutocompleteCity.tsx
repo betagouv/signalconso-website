@@ -122,6 +122,7 @@ export const AutocompleteCity = forwardRef(({label, placeholder, onChange, ...in
               </>
             ),
           }}
+          required={inputProps.required}
         />
       )}
     />

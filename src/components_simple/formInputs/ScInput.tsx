@@ -9,9 +9,10 @@ export type ScInputProps = Omit<TextFieldProps, 'variant' | 'margin'> & {
     onClear: () => void
     label: string
   }
+  required: boolean
 }
 
-export const ScInput = React.forwardRef(({small, clearable, InputProps, ...props}: ScInputProps, ref) => {
+export const ScInput = React.forwardRef(({required, small, clearable, InputProps, ...props}: ScInputProps, ref) => {
   const {m} = useI18n()
 
   return (
@@ -45,6 +46,7 @@ export const ScInput = React.forwardRef(({small, clearable, InputProps, ...props
               ),
             }
           : {}),
+        ...(required ? {'aria-required': true} : null),
       }}
       FormHelperTextProps={{
         'aria-live': 'polite',

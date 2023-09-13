@@ -9,7 +9,7 @@ import {ScInput} from 'components_simple/formInputs/ScInput'
 import {Panel, PanelBody} from 'components_simple/Panel'
 import {useApiClients} from 'context/ApiClientsContext'
 import {useI18n} from 'i18n/I18n'
-import {ReactNode, useEffect, useState} from 'react'
+import {ReactNode, useEffect, useRef, useState} from 'react'
 import {useForm} from 'react-hook-form'
 import {useQuery} from '@tanstack/react-query'
 import {Txt} from '../../../components_simple/Txt'
@@ -20,6 +20,8 @@ import {SpecificWebsiteCompanyKinds} from '../../../anomalies/Anomaly'
 import {Alert} from '@codegouvfr/react-dsfr/Alert'
 import {SiretExtractorClient} from '../../../clients/SiretExtractorClient'
 import {FieldLabel} from 'components_simple/FieldLabel'
+import {RequiredFieldsLegend} from 'components_simple/RequiredFieldsLegend'
+import {AutofocusedDiv} from 'components_simple/AutofocusedDiv'
 
 interface Form {
   website: string
@@ -86,6 +88,7 @@ async function searchWebsite(
 
 export const CompanyByWebsite = ({value, children, specificWebsiteCompanyKind, ...props}: Props) => {
   const {m} = useI18n()
+  const inputRef = useRef<HTMLInputElement | null>(null)
   const {signalConsoApiClient, siretExtractorClient} = useApiClients()
   const _analytic = useAnalyticContext()
   const {
@@ -121,6 +124,14 @@ export const CompanyByWebsite = ({value, children, specificWebsiteCompanyKind, .
       _analytic.trackEvent(EventCategories.companySearch, CompanySearchEventActions.searchedWebsiteDown, website)
     }
   }, [searchQuery.data])
+
+  const inputIsDisabled = !!displayedResults
+  useEffect(() => {
+    // we want take the focus back after hitting edit/clear buttons
+    if (!inputIsDisabled) {
+      inputRef.current?.focus()
+    }
+  }, [inputIsDisabled])
 
   const editWebsite = () => {
     _analytic.trackEvent(EventCategories.companySearch, CompanySearchEventActions.editWebsite, website)
@@ -162,12 +173,27 @@ export const CompanyByWebsite = ({value, children, specificWebsiteCompanyKind, .
     }
   }
 
+  const registerWebsiteResult = register('website', {
+    required: {value: true, message: m.required},
+    pattern: {
+      value: websiteRegex,
+      message: m.invalidUrlPattern,
+    },
+    validate: {
+      isSignalConsoUrl: value => {
+        return value.includes('signal.conso.gouv.fr') ? m.consumerCannotReportSignalConso : undefined
+      },
+    },
+  })
+  const {ref, ...restOfRegisterWebsiteResult} = registerWebsiteResult
+
   return (
     <>
       <Animate>
         <Panel title={m.aboutCompany} id="CompanyByWebsite">
           {specificWebsiteCompanyKind && websiteToReportAlert(specificWebsiteCompanyKind)}
           <PanelBody>
+            <RequiredFieldsLegend />
             <Box component="form" onSubmit={handleSubmit(onSubmit)} {...props}>
               <FieldLabel label={m.website} required>
                 <ScInput
@@ -185,23 +211,19 @@ export const CompanyByWebsite = ({value, children, specificWebsiteCompanyKind, .
                     label: m.clearWebsite,
                   }}
                   defaultValue={value}
-                  disabled={!!displayedResults}
-                  {...register('website', {
-                    required: {value: true, message: m.required},
-                    pattern: {
-                      value: websiteRegex,
-                      message: m.invalidUrlPattern,
-                    },
-                    validate: {
-                      isSignalConsoUrl: value => {
-                        return value.includes('signal.conso.gouv.fr') ? m.consumerCannotReportSignalConso : undefined
-                      },
-                    },
-                  })}
+                  disabled={inputIsDisabled}
+                  {...restOfRegisterWebsiteResult}
+                  ref={e => {
+                    // https://www.react-hook-form.com/faqs/#Howtosharerefusage
+                    ref(e)
+                    inputRef.current = e as any as HTMLInputElement
+                  }}
+                  required
                   fullWidth
                   placeholder={m.websitePlaceholder}
                   error={!!errors.website}
                   helperText={errors.website?.message}
+                  tabIndex={-1}
                 />
               </FieldLabel>
               <br />
@@ -224,12 +246,12 @@ export const CompanyByWebsite = ({value, children, specificWebsiteCompanyKind, .
           </PanelBody>
         </Panel>
       </Animate>
-      {displayedResults?.kind === 'countries' &&
-        displayedResults.countries.length > 0 &&
-        children(website, undefined, displayedResults.countries)}
-      {displayedResults?.kind === 'companies' && children(website, displayedResults.companies)}
+      {displayedResults?.kind === 'countries' && displayedResults.countries.length > 0 && (
+        <AutofocusedDiv>{children(website, undefined, displayedResults.countries)}</AutofocusedDiv>
+      )}
+      {displayedResults?.kind === 'companies' && <AutofocusedDiv>{children(website, displayedResults.companies)}</AutofocusedDiv>}
       {displayedResults?.kind === 'nothing' && displayedResults?.status === 'down' && <WebsiteDown />}
-      {displayedResults?.kind === 'nothing' && children(website)}
+      {displayedResults?.kind === 'nothing' && <AutofocusedDiv>{children(website)}</AutofocusedDiv>}
     </>
   )
 }
@@ -270,7 +292,7 @@ function SimilarHosts({
   if (displayedResults?.kind === 'similarHosts') {
     const {hosts} = displayedResults
     return (
-      <>
+      <AutofocusedDiv>
         <br />
         <h3 className="text-base font-normal mb-0">{m.suggestion}</h3>
         <ul className="list-none flex p-0 m-0">
@@ -296,7 +318,7 @@ function SimilarHosts({
             </ScButton>
           </li>
         </ul>
-      </>
+      </AutofocusedDiv>
     )
   }
   return null

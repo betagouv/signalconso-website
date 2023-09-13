@@ -31,6 +31,7 @@ export const CompanyWebsiteCountry = ({countries, onSubmit}: Props) => {
             }}
             render={({field}) => (
               <ScRadioButtons
+                required
                 title={m.companySelectCountryTitle}
                 {...field}
                 options={countries.map(_ => {

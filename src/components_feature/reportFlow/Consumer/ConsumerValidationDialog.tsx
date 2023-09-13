@@ -104,6 +104,7 @@ export const ConsumerValidationDialog = ({loading, open, consumerEmail, onClose,
               {...field}
               error={!!_form.formState.errors.code || isEmailValid === false}
               helperText={_form.formState.errors['code']?.message}
+              required
             />
           )}
         />

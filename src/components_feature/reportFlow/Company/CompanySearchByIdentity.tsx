@@ -15,6 +15,8 @@ import {useForm} from 'react-hook-form'
 import {CompanySearchResult} from '../../../model/Company'
 import {ifDefined} from '../../../utils/utils'
 import {CompanySearchByIdentityHelpDialog} from './CompanySearchByIdentityHelpDialog'
+import {RequiredFieldsLegend} from 'components_simple/RequiredFieldsLegend'
+import {AutofocusedDiv} from 'components_simple/AutofocusedDiv'
 
 interface Form {
   identity: string
@@ -56,6 +58,7 @@ export const CompanySearchByIdentity = ({children}: Props) => {
       <Animate>
         <Panel title={m.couldYouPrecise} id="CompanySearchByIdentity">
           <form onSubmit={handleSubmit(search)}>
+            <RequiredFieldsLegend />
             <PanelBody>
               <FieldLabel
                 required
@@ -74,6 +77,7 @@ export const CompanySearchByIdentity = ({children}: Props) => {
                   {...register('identity', {
                     required: {value: true, message: m.required},
                   })}
+                  required
                   fullWidth
                   placeholder={m.companyIdentityPlaceholder}
                   InputProps={{
@@ -95,7 +99,7 @@ export const CompanySearchByIdentity = ({children}: Props) => {
           </form>
         </Panel>
       </Animate>
-      {_searchByIdentity.data && ifDefined(_searchByIdentity.data, children)}
+      {_searchByIdentity.data && <AutofocusedDiv>{children(_searchByIdentity.data)}</AutofocusedDiv>}
     </>
   )
 }

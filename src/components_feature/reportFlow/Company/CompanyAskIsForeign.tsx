@@ -25,6 +25,8 @@ export const CompanyAskIsForeign = ({children}: Props) => {
         <Panel>
           <PanelBody>
             <ScRadioButtons
+              required
+              titleNoAutoAsterisk
               value={isForeignCompany}
               onChange={setIsForeignCompany}
               title={m.isAFrenchCompany}

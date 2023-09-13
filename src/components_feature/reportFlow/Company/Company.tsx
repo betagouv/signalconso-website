@@ -314,7 +314,7 @@ export const _Company = ({draft, onUpdateReportDraft}: CompanyWithRequiredProps)
     )
   }
   return (
-    <>
+    <div>
       {fnSwitch(
         draft.companyKind!,
         {
@@ -337,6 +337,6 @@ export const _Company = ({draft, onUpdateReportDraft}: CompanyWithRequiredProps)
         },
         () => commonTree(),
       )}
-    </>
+    </div>
   )
 }

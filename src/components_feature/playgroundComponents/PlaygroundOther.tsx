@@ -40,6 +40,7 @@ export const PlaygroundOther = () => {
         description="une desc"
         orientation="vertical"
         onChange={setRadioValue}
+        required={false}
         options={[
           {
             label: 'Option 1',
@@ -82,6 +83,7 @@ export const PlaygroundOther = () => {
         description="une check"
         onChange={setCheckValue}
         value={checkValue}
+        required={false}
         options={[
           {
             label: 'Option 1',

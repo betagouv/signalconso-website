@@ -8,10 +8,11 @@ interface ScSelectProps<T> extends SelectProps<T> {
   style?: CSSProperties
   small?: boolean
   helperText?: string
+  required: boolean
 }
 
 const ScSelectInner = <T,>(
-  {id: argId, label, className, small, fullWidth, style, helperText, error, ...selectProps}: ScSelectProps<T>,
+  {id: argId, label, className, small, fullWidth, style, helperText, error, required, ...selectProps}: ScSelectProps<T>,
   ref: any,
 ) => {
   const id: string = useMemo(() => argId ?? 'sc-select-' + Math.floor(Math.random() * 10000), [argId])
@@ -28,7 +29,7 @@ const ScSelectInner = <T,>(
       <InputLabel htmlFor={id} id={id + '-label'}>
         {label}
       </InputLabel>
-      <Select {...selectProps} inputRef={ref} labelId={id + '-label'} id={id} />
+      <Select {...selectProps} inputRef={ref} labelId={id + '-label'} id={id} {...(required ? {'aria-required': true} : null)} />
       {helperText && (
         <FormHelperText error={error} aria-live="polite">
           {helperText}
