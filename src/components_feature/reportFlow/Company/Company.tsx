@@ -157,7 +157,6 @@ function ActionButtons({onClear, stepNavigation}: {onClear: () => void; stepNavi
 }
 
 export const _Company = ({draft, onUpdateReportDraft}: CompanyWithRequiredProps) => {
-  const {m} = useI18n()
   const webSiteTree = (specificWebsiteCompanyKind?: SpecificWebsiteCompanyKinds) => {
     return (
       <CompanyByWebsite specificWebsiteCompanyKind={specificWebsiteCompanyKind}>
