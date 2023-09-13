@@ -52,15 +52,17 @@ export const CompanyIdentifyBy = ({companyKind, children}: Props) => {
   return (
     <>
       <Animate>
-        <ScRadioButtons
-          required
-          value={identifyBy}
-          onChange={setIdentifyBy}
-          options={createOptions(companyKind)}
-          title={m.canYouIdentifyCompany}
-          titleNoAutoAsterisk
-          description={m.canYouIdentifyCompanyDesc}
-        />
+        <div id="CompanyIdentifyBy">
+          <ScRadioButtons
+            required
+            value={identifyBy}
+            onChange={setIdentifyBy}
+            options={createOptions(companyKind)}
+            title={m.canYouIdentifyCompany}
+            titleNoAutoAsterisk
+            description={m.canYouIdentifyCompanyDesc}
+          />
+        </div>
       </Animate>
       {identifyBy && children(identifyBy)}
     </>
