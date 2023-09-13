@@ -103,6 +103,7 @@ export function DetailsInputRenderByType({
                 placeholder={getPlaceholderFromInput(input)}
                 helperText={errorMessage}
                 error={hasErrors}
+                required={required}
               >
                 {mapNTimes(24, i => (
                   <MenuItem key={i} value={`de ${i}h à ${i + 1}h`}>
