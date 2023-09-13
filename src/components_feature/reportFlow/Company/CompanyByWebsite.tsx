@@ -9,7 +9,7 @@ import {ScInput} from 'components_simple/formInputs/ScInput'
 import {Panel, PanelBody} from 'components_simple/Panel'
 import {useApiClients} from 'context/ApiClientsContext'
 import {useI18n} from 'i18n/I18n'
-import {ReactNode, useEffect, useState} from 'react'
+import {ReactNode, useEffect, useRef, useState} from 'react'
 import {useForm} from 'react-hook-form'
 import {useQuery} from '@tanstack/react-query'
 import {Txt} from '../../../components_simple/Txt'
@@ -87,6 +87,7 @@ async function searchWebsite(
 
 export const CompanyByWebsite = ({value, children, specificWebsiteCompanyKind, ...props}: Props) => {
   const {m} = useI18n()
+  const inputRef = useRef<HTMLInputElement | null>(null)
   const {signalConsoApiClient, siretExtractorClient} = useApiClients()
   const _analytic = useAnalyticContext()
   const {
@@ -122,6 +123,14 @@ export const CompanyByWebsite = ({value, children, specificWebsiteCompanyKind, .
       _analytic.trackEvent(EventCategories.companySearch, CompanySearchEventActions.searchedWebsiteDown, website)
     }
   }, [searchQuery.data])
+
+  const inputIsDisabled = !!displayedResults
+  useEffect(() => {
+    // we want take the focus back after hitting edit/clear buttons
+    if (!inputIsDisabled) {
+      inputRef.current?.focus()
+    }
+  }, [inputIsDisabled])
 
   const editWebsite = () => {
     _analytic.trackEvent(EventCategories.companySearch, CompanySearchEventActions.editWebsite, website)
@@ -163,6 +172,20 @@ export const CompanyByWebsite = ({value, children, specificWebsiteCompanyKind, .
     }
   }
 
+  const registerWebsiteResult = register('website', {
+    required: {value: true, message: m.required},
+    pattern: {
+      value: websiteRegex,
+      message: m.invalidUrlPattern,
+    },
+    validate: {
+      isSignalConsoUrl: value => {
+        return value.includes('signal.conso.gouv.fr') ? m.consumerCannotReportSignalConso : undefined
+      },
+    },
+  })
+  const {ref, ...restOfRegisterWebsiteResult} = registerWebsiteResult
+
   return (
     <>
       <Animate>
@@ -187,24 +210,19 @@ export const CompanyByWebsite = ({value, children, specificWebsiteCompanyKind, .
                     label: m.clearWebsite,
                   }}
                   defaultValue={value}
-                  disabled={!!displayedResults}
-                  {...register('website', {
-                    required: {value: true, message: m.required},
-                    pattern: {
-                      value: websiteRegex,
-                      message: m.invalidUrlPattern,
-                    },
-                    validate: {
-                      isSignalConsoUrl: value => {
-                        return value.includes('signal.conso.gouv.fr') ? m.consumerCannotReportSignalConso : undefined
-                      },
-                    },
-                  })}
+                  disabled={inputIsDisabled}
+                  {...restOfRegisterWebsiteResult}
+                  ref={e => {
+                    // https://www.react-hook-form.com/faqs/#Howtosharerefusage
+                    ref(e)
+                    inputRef.current = e as any as HTMLInputElement
+                  }}
                   required
                   fullWidth
                   placeholder={m.websitePlaceholder}
                   error={!!errors.website}
                   helperText={errors.website?.message}
+                  tabIndex={-1}
                 />
               </FieldLabel>
               <br />
