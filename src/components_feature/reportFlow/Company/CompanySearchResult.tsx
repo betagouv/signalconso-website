@@ -138,6 +138,7 @@ export const CompanySearchResultComponent = ({companies, onSubmit}: Props) => {
                       <ScRadioButtons
                         {...field}
                         error={!!errors.result}
+                        errorMessage={errors.result?.message}
                         options={companies.map(company => {
                           const closed = !company.isOpen
                           return {
