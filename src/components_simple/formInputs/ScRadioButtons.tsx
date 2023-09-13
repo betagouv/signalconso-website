@@ -5,6 +5,7 @@ interface ScRadioButtonsProps<V> {
   description?: string
   // do not respect DSFR style, less bold, less margins, etc.
   titleSoberStyle?: boolean
+  titleNoAutoAsterisk?: boolean
   onChange: (value: V) => void
   options: {
     label: ReactNode
@@ -18,13 +19,14 @@ interface ScRadioButtonsProps<V> {
   errorMessage?: string
   orientation?: 'vertical' | 'horizontal'
   className?: string
-  required?: boolean
+  required: boolean
 }
 
 export const ScRadioButtons = <V,>({
   title,
   description,
   titleSoberStyle = false,
+  titleNoAutoAsterisk = false,
   onChange,
   options,
   value: selectedValue,
@@ -56,11 +58,12 @@ export const ScRadioButtons = <V,>({
       } ${className}`}
       aria-labelledby={`${title && legendId} ${messagesWrapperId}`}
       role="group"
+      {...(required ? {'aria-required': true} : null)}
     >
       {title && (
         <legend id={legendId} className={`fr-fieldset__legend ${titleSoberStyle ? '!font-normal !pb-0' : ''}`}>
           {title}
-          {required && <span> *</span>}
+          {required && !titleNoAutoAsterisk && <span> *</span>}
           {description && <span className="fr-hint-text">{description}</span>}
         </legend>
       )}

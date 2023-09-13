@@ -49,10 +49,12 @@ export const CompanyIdentifyBy = ({companyKind, children}: Props) => {
         <Panel id="CompanyIdentifyBy">
           <PanelBody>
             <ScRadioButtons
+              required
               value={identifyBy}
               onChange={setIdentifyBy}
               options={createOptions(companyKind)}
               title={m.canYouIdentifyCompany}
+              titleNoAutoAsterisk
               description={m.canYouIdentifyCompanyDesc}
             />
           </PanelBody>

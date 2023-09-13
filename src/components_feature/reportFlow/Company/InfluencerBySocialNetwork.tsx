@@ -58,7 +58,7 @@ export const InfluencerBySocialNetwork = ({onSubmit}: Props) => {
                 rules={{
                   required: {value: true, message: m.required},
                 }}
-                render={({field}) => <ScRadioButtons {...field} options={socialNetworkOptions} title="Réseau social" required />}
+                render={({field}) => <ScRadioButtons {...field} required options={socialNetworkOptions} title="Réseau social" />}
               />
             </PanelBody>
           </Panel>

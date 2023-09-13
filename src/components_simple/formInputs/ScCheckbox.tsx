@@ -14,7 +14,7 @@ interface ScCheckboxProps<V> {
   value: V[] | undefined
   error?: boolean
   errorMessage?: string
-  required?: boolean
+  required: boolean
 }
 
 export const ScCheckbox = <V,>({
@@ -48,6 +48,7 @@ export const ScCheckbox = <V,>({
       className={`fr-fieldset ${error ? 'fr-fieldset--error' : ''}`}
       aria-labelledby={`${title && legendId} ${messagesWrapperId}`}
       role="group"
+      {...(required ? {'aria-required': true} : null)}
     >
       {title && (
         <legend id={legendId} className={`fr-fieldset__legend ${titleSoberStyle ? '!font-normal !pb-0' : ''}`}>

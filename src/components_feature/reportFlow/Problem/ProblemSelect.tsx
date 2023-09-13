@@ -24,6 +24,8 @@ export const ProblemSelect = <T,>({autoScrollTo, title: titleRaw, value, options
       <div {...{id}}>
         <ScRadioButtons
           title={title}
+          required
+          titleNoAutoAsterisk
           onChange={onChange}
           value={nonNullableValue}
           options={options.map(option => {

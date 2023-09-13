@@ -126,7 +126,7 @@ export function DetailsInputRenderByType({
               {...field}
               title={label}
               titleSoberStyle
-              {...{required}}
+              required={required}
               errorMessage={errorMessage}
               error={hasErrors}
               options={
@@ -161,7 +161,7 @@ export function DetailsInputRenderByType({
               {...field}
               title={label}
               titleSoberStyle
-              {...{required}}
+              required={required}
               options={
                 getOptionsFromInput(input)?.map(option => {
                   return {
