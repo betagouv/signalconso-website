@@ -39,10 +39,10 @@ export const newsArticlesData = [
     date: '2023-08-04',
     lang: AppLangs.fr,
     slug: 'signalconso-une-accessibilite-renforcee-pour-tous-les-consommateurs',
-    title: 'SignalConso : Une Accessibilité Renforcée pour tous les Consommateurs',
+    title: 'SignalConso : une accessibilité renforcée pour tous les consommateurs',
     // used for SEO description
     // used for the preview in /news
-    excerpt: `SignalConso : Une Accessibilité Renforcée pour tous les Consommateurs`,
+    excerpt: `SignalConso : une accessibilité renforcée pour tous les consommateurs`,
     content: ArticleAccessibilite,
   },
   {

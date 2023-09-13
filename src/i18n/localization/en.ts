@@ -109,7 +109,7 @@ export const en = {
       },
       actualites: {
         title: 'News - SignalConso',
-        description: "What's new at SignalConso and Fraud Control",
+        description: 'News and updates from the SignalConso website and Fraud Control',
       },
       faireUnSignalement: {
         etape: 'Step',
