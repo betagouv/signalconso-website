@@ -16,6 +16,7 @@ import {CompanySearchResult} from '../../../model/Company'
 import {ifDefined} from '../../../utils/utils'
 import {CompanySearchByIdentityHelpDialog} from './CompanySearchByIdentityHelpDialog'
 import {RequiredFieldsLegend} from 'components_simple/RequiredFieldsLegend'
+import {AutofocusedDiv} from 'components_simple/AutofocusedDiv'
 
 interface Form {
   identity: string
@@ -98,7 +99,7 @@ export const CompanySearchByIdentity = ({children}: Props) => {
           </form>
         </Panel>
       </Animate>
-      {_searchByIdentity.data && ifDefined(_searchByIdentity.data, children)}
+      {_searchByIdentity.data && <AutofocusedDiv>{children(_searchByIdentity.data)}</AutofocusedDiv>}
     </>
   )
 }

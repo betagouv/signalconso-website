@@ -21,6 +21,7 @@ import {Alert} from '@codegouvfr/react-dsfr/Alert'
 import {SiretExtractorClient} from '../../../clients/SiretExtractorClient'
 import {FieldLabel} from 'components_simple/FieldLabel'
 import {RequiredFieldsLegend} from 'components_simple/RequiredFieldsLegend'
+import {AutofocusedDiv} from 'components_simple/AutofocusedDiv'
 
 interface Form {
   website: string
@@ -245,12 +246,12 @@ export const CompanyByWebsite = ({value, children, specificWebsiteCompanyKind, .
           </PanelBody>
         </Panel>
       </Animate>
-      {displayedResults?.kind === 'countries' &&
-        displayedResults.countries.length > 0 &&
-        children(website, undefined, displayedResults.countries)}
-      {displayedResults?.kind === 'companies' && children(website, displayedResults.companies)}
+      {displayedResults?.kind === 'countries' && displayedResults.countries.length > 0 && (
+        <AutofocusedDiv>{children(website, undefined, displayedResults.countries)}</AutofocusedDiv>
+      )}
+      {displayedResults?.kind === 'companies' && <AutofocusedDiv>{children(website, displayedResults.companies)}</AutofocusedDiv>}
       {displayedResults?.kind === 'nothing' && displayedResults?.status === 'down' && <WebsiteDown />}
-      {displayedResults?.kind === 'nothing' && children(website)}
+      {displayedResults?.kind === 'nothing' && <AutofocusedDiv>{children(website)}</AutofocusedDiv>}
     </>
   )
 }
@@ -291,7 +292,7 @@ function SimilarHosts({
   if (displayedResults?.kind === 'similarHosts') {
     const {hosts} = displayedResults
     return (
-      <>
+      <AutofocusedDiv>
         <br />
         <h3 className="text-base font-normal mb-0">{m.suggestion}</h3>
         <ul className="list-none flex p-0 m-0">
@@ -317,7 +318,7 @@ function SimilarHosts({
             </ScButton>
           </li>
         </ul>
-      </>
+      </AutofocusedDiv>
     )
   }
   return null
