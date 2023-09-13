@@ -11,6 +11,7 @@ import {SocialNetworkRow} from '../../../components_simple/SocialNetworkRow'
 import {BtnNextSubmit} from 'components_simple/Buttons'
 import {ScRadioButtons} from '../../../components_simple/formInputs/ScRadioButtons'
 import {FieldLabel} from 'components_simple/FieldLabel'
+import {RequiredFieldsLegend} from 'components_simple/RequiredFieldsLegend'
 
 interface Props {
   onSubmit: (socialNetwork: SocialNetworks, influencer: string) => void
@@ -41,6 +42,7 @@ export const InfluencerBySocialNetwork = ({onSubmit}: Props) => {
 
   return (
     <>
+      <RequiredFieldsLegend />
       <Box
         component="form"
         onSubmit={handleSubmit(form => {

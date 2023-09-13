@@ -15,6 +15,7 @@ import {useForm} from 'react-hook-form'
 import {CompanySearchResult} from '../../../model/Company'
 import {ifDefined} from '../../../utils/utils'
 import {CompanySearchByIdentityHelpDialog} from './CompanySearchByIdentityHelpDialog'
+import {RequiredFieldsLegend} from 'components_simple/RequiredFieldsLegend'
 
 interface Form {
   identity: string
@@ -56,6 +57,7 @@ export const CompanySearchByIdentity = ({children}: Props) => {
       <Animate>
         <Panel title={m.couldYouPrecise} id="CompanySearchByIdentity">
           <form onSubmit={handleSubmit(search)}>
+            <RequiredFieldsLegend />
             <PanelBody>
               <FieldLabel
                 required

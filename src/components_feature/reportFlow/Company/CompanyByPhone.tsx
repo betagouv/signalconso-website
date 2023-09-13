@@ -8,6 +8,7 @@ import {Panel, PanelBody} from 'components_simple/Panel'
 import {Animate} from 'components_simple/Animate'
 import {Button} from '@codegouvfr/react-dsfr/Button'
 import {FieldLabel} from 'components_simple/FieldLabel'
+import {RequiredFieldsLegend} from 'components_simple/RequiredFieldsLegend'
 
 interface Form {
   phone: string
@@ -40,6 +41,7 @@ export const CompanyByPhone = ({value, children, ...props}: Props) => {
       <Animate>
         <Panel title={m.aboutCompany} id="CompanyByPhone">
           <PanelBody>
+            <RequiredFieldsLegend />
             <Box component="form" onSubmit={handleSubmit(submit)} {...props}>
               <FieldLabel label={m.phoneNumberHavingCalled} required>
                 <ScInput

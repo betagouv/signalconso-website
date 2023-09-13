@@ -13,6 +13,7 @@ import {CompanyKinds} from '../../../anomalies/Anomaly'
 import {Country, countryLabel} from '../../../model/Country'
 import {fnSwitch} from '../../../utils/FnSwitch'
 import {AppLang, AppLangs} from '../../../i18n/localization/AppLangs'
+import {RequiredFieldsLegend} from 'components_simple/RequiredFieldsLegend'
 
 interface Form {
   name: string
@@ -44,6 +45,7 @@ export const CompanyAskForeignDetails = ({onSubmit, companyKind}: Props) => {
   return (
     <Animate>
       <Panel title={m.couldYouPrecise} id="CompanyAskForeignDetails">
+        <RequiredFieldsLegend />
         <form onSubmit={handleSubmit(onSubmit)}>
           <PanelBody>
             <FieldLabel required label={m.reportedCompanyName}>

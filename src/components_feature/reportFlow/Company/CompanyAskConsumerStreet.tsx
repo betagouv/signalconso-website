@@ -9,6 +9,7 @@ import {Address} from 'model/Address'
 import {Controller, useForm} from 'react-hook-form'
 import {ScAlert} from '../../../components_simple/ScAlert'
 import {Txt} from '../../../components_simple/Txt'
+import {RequiredFieldsLegend} from 'components_simple/RequiredFieldsLegend'
 
 interface Form {
   street: string
@@ -34,6 +35,7 @@ export const CompanyAskConsumerStreet = ({onChange}: Props) => {
         <ScAlert dense type="info">
           <Txt size="small" component="p" dangerouslySetInnerHTML={{__html: m.cantIdentifyLocationCompany}} />
         </ScAlert>
+        <RequiredFieldsLegend />
         <form
           onSubmit={handleSubmit(form =>
             onChange({

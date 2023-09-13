@@ -10,6 +10,7 @@ import {ScAlert} from '../../../components_simple/ScAlert'
 import {Txt} from '../../../components_simple/Txt'
 import {CompanyKinds} from '../../../anomalies/Anomaly'
 import {fnSwitch} from '../../../utils/FnSwitch'
+import {RequiredFieldsLegend} from 'components_simple/RequiredFieldsLegend'
 
 interface Form {
   place: AutocompleteCityValue
@@ -49,6 +50,7 @@ export const CompanyAskConsumerPostalCode = ({value, onChange, companyKind}: Pro
             }}
           />
         </ScAlert>
+        <RequiredFieldsLegend />
         <form onSubmit={handleSubmit(_ => onChange(_.place))}>
           <PanelBody>
             <FieldLabel required label={m.yourPostalCode} desc={m.youCanSearchByCity}>

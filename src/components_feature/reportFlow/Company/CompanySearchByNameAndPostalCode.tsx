@@ -15,6 +15,7 @@ import {Controller, useForm} from 'react-hook-form'
 import {Txt} from '../../../components_simple/Txt'
 import {CompanySearchResult} from '../../../model/Company'
 import {ifDefined} from '../../../utils/utils'
+import {RequiredFieldsLegend} from 'components_simple/RequiredFieldsLegend'
 
 interface Form {
   name: string
@@ -52,7 +53,8 @@ export const CompanySearchByNameAndPostalCode = ({children}: Props) => {
     <>
       <Animate>
         <Panel title={m.couldYouPrecise} id="CompanyByNameAndPostalCode">
-          <p className="text-gray-600 mb-1">{m.youCanOnlyReportFrenchCompanies}</p>
+          <p className="text-sm mb-0">{m.youCanOnlyReportFrenchCompanies}</p>
+          <RequiredFieldsLegend />
           <form onSubmit={handleSubmit(search)}>
             <PanelBody>
               <FieldLabel required label={m.reportedCompanyName}>

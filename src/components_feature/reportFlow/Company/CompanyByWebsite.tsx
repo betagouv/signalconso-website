@@ -20,6 +20,7 @@ import {SpecificWebsiteCompanyKinds} from '../../../anomalies/Anomaly'
 import {Alert} from '@codegouvfr/react-dsfr/Alert'
 import {SiretExtractorClient} from '../../../clients/SiretExtractorClient'
 import {FieldLabel} from 'components_simple/FieldLabel'
+import {RequiredFieldsLegend} from 'components_simple/RequiredFieldsLegend'
 
 interface Form {
   website: string
@@ -168,6 +169,7 @@ export const CompanyByWebsite = ({value, children, specificWebsiteCompanyKind, .
         <Panel title={m.aboutCompany} id="CompanyByWebsite">
           {specificWebsiteCompanyKind && websiteToReportAlert(specificWebsiteCompanyKind)}
           <PanelBody>
+            <RequiredFieldsLegend />
             <Box component="form" onSubmit={handleSubmit(onSubmit)} {...props}>
               <FieldLabel label={m.website} required>
                 <ScInput
