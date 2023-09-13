@@ -276,9 +276,8 @@ function SimilarHosts({
         <ul className="list-none flex p-0 m-0">
           {hosts.map((host, key) => {
             return (
-              <li className="p-0 m-0">
+              <li className="p-0 m-0" key={key}>
                 <ScButton
-                  key={key}
                   variant="contained"
                   sx={{mt: 2, mr: 1}}
                   onClick={_ => {
