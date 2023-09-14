@@ -23,7 +23,7 @@
     "format": "prettier --write .",
     "checkformat": "prettier --check .",
     "checktypes": "tsc --noEmit",
-    "checkall": "yarn checktypes && yarn checkformat && yarn test",
+    "checkall": "yarn checktypes && yarn checkformat && yarn lint && yarn test",
     "i18nToCSV": "ts-node -O '{\"module\":\"commonjs\", \"jsx\":\"react-jsx\"}' src/scripts/i18nToCSV.ts"
   },
   "heroku-run-build-script": true,
