@@ -29,7 +29,7 @@ detailInputs:
       - Autre (à préciser)
   - label: Pour corriger ce problème, dites-nous en plus
     type: TEXTAREA
-    placeholder: rayon du magasin, type de saleté
+    placeholder: Rayon du magasin, type de saleté, ...
     optional: true
   - label: Date du constat
     type: DATE

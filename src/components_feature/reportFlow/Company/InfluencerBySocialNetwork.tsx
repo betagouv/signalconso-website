@@ -1,17 +1,14 @@
+import {Box} from '@mui/material'
+import {BtnNextSubmit} from 'components_simple/Buttons'
+import {RequiredFieldsLegend} from 'components_simple/RequiredFieldsLegend'
+import {ScTextInput} from 'components_simple/formInputs/ScTextInput'
+import {Controller, useForm} from 'react-hook-form'
 import {SocialNetworks, socialNetworks} from '../../../anomalies/Anomaly'
-import {ScInput} from '../../../components_simple/formInputs/ScInput'
 import {Animate} from '../../../components_simple/Animate'
 import {Panel, PanelActions, PanelBody} from '../../../components_simple/Panel'
-import {useI18n} from '../../../i18n/I18n'
-import {Controller, useForm} from 'react-hook-form'
-import React from 'react'
-import {Box} from '@mui/material'
-import {Txt} from '../../../components_simple/Txt'
 import {SocialNetworkRow} from '../../../components_simple/SocialNetworkRow'
-import {BtnNextSubmit} from 'components_simple/Buttons'
 import {ScRadioButtons} from '../../../components_simple/formInputs/ScRadioButtons'
-import {FieldLabel} from 'components_simple/FieldLabel'
-import {RequiredFieldsLegend} from 'components_simple/RequiredFieldsLegend'
+import {useI18n} from '../../../i18n/I18n'
 
 interface Props {
   onSubmit: (socialNetwork: SocialNetworks, influencer: string) => void
@@ -67,16 +64,14 @@ export const InfluencerBySocialNetwork = ({onSubmit}: Props) => {
           <Animate>
             <Panel id="influencer">
               <PanelBody>
-                <FieldLabel label="Nom ou pseudonyme de l'influenceur ou influenceuse" required>
-                  <ScInput
-                    fullWidth
-                    error={!!errors.influencer}
-                    helperText={errors.influencer?.message}
-                    placeholder="Nom ou pseudonyme"
-                    {...register('influencer', {required: {value: true, message: m.required}})}
-                    required
-                  />
-                </FieldLabel>
+                <ScTextInput
+                  label="Nom ou pseudonyme de l'influenceur ou influenceuse"
+                  error={!!errors.influencer}
+                  helperText={errors.influencer?.message}
+                  placeholder="Nom ou pseudonyme"
+                  {...register('influencer', {required: {value: true, message: m.required}})}
+                  required
+                />
               </PanelBody>
               <PanelActions>
                 <BtnNextSubmit />

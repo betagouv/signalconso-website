@@ -1,11 +1,10 @@
-import {Panel, PanelActions, PanelBody} from 'components_simple/Panel'
 import {Animate} from 'components_simple/Animate'
-import {useI18n} from 'i18n/I18n'
-import {ScAlert} from '../../../components_simple/ScAlert'
-import {ScInput} from 'components_simple/formInputs/ScInput'
-import {FieldLabel} from 'components_simple/FieldLabel'
-import {useForm} from 'react-hook-form'
+import {Panel, PanelActions, PanelBody} from 'components_simple/Panel'
 import {ScButton} from 'components_simple/ScButton'
+import {ScTextInput} from 'components_simple/formInputs/ScTextInput'
+import {useI18n} from 'i18n/I18n'
+import {useForm} from 'react-hook-form'
+import {ScAlert} from '../../../components_simple/ScAlert'
 
 interface Form {
   websiteVendor: string
@@ -30,17 +29,15 @@ export const CompanyWebsiteVendor = ({onSubmit}: Props) => {
             <ScAlert type="info">
               <p>{m.companyWebsiteVendorAlert}</p>
             </ScAlert>
-            <FieldLabel required label={m.companyWebsiteVendorLabel}>
-              <ScInput
-                fullWidth
-                error={!!errors.websiteVendor}
-                helperText={errors.websiteVendor?.message ?? ''}
-                {...register('websiteVendor', {
-                  required: {value: true, message: m.required},
-                })}
-                required
-              />
-            </FieldLabel>
+            <ScTextInput
+              label={m.companyWebsiteVendorLabel}
+              error={!!errors.websiteVendor}
+              helperText={errors.websiteVendor?.message ?? ''}
+              {...register('websiteVendor', {
+                required: {value: true, message: m.required},
+              })}
+              required
+            />
           </PanelBody>
           <PanelActions>
             <ScButton color="primary" variant="contained" type="submit">

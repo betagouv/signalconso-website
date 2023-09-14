@@ -3,6 +3,7 @@ import {Button, Dialog, DialogActions, DialogContent, DialogTitle, Icon, LinearP
 import {useMutation} from '@tanstack/react-query'
 import {ScAlert} from 'components_simple/ScAlert'
 import {ScButton} from 'components_simple/ScButton'
+import {ScValidationCodeInput} from 'components_simple/formInputs/ScValidationCodeInput'
 import {useApiClients} from 'context/ApiClientsContext'
 import {useI18n} from 'i18n/I18n'
 import {ValidationRejectReason} from 'model/ConsumerEmailValidation'
@@ -11,7 +12,6 @@ import {Controller, useForm} from 'react-hook-form'
 import {Txt} from '../../../components_simple/Txt'
 import {duration} from '../../../utils/Duration'
 import {timeoutPromise} from '../../../utils/utils'
-import {InputValidationCode} from './InputValidationCode'
 
 interface Props {
   loading?: boolean
@@ -100,12 +100,16 @@ export const ConsumerValidationDialog = ({loading, open, consumerEmail, onClose,
           }}
           control={_form.control}
           render={({field}) => (
-            <InputValidationCode
-              {...field}
-              error={!!_form.formState.errors.code || isEmailValid === false}
-              helperText={_form.formState.errors['code']?.message}
-              required
-            />
+            <>
+              <div className="flex justify-center mt-4">
+                <ScValidationCodeInput
+                  {...field}
+                  error={!!_form.formState.errors.code || isEmailValid === false}
+                  helperText={_form.formState.errors['code']?.message}
+                  required
+                />
+              </div>
+            </>
           )}
         />
       </DialogContent>

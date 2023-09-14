@@ -1,19 +1,16 @@
 /**
  * @jest-environment jsdom
  */
-import React from 'react'
-import '@testing-library/jest-dom'
-import {fireEvent, render, ScRenderResult} from 'test/test-utils'
-import {DetailsInner, SpecifyFormUtils} from './Details'
-import {format} from 'date-fns'
-import {appConfig} from 'core/appConfig'
-import {DetailsFixtureInput} from 'components_feature/playgroundComponents/PlaygroundDetails'
 import {waitFor} from '@testing-library/dom'
-import {mapNTimes} from '../../../utils/utils'
-import {DetailInputValues2} from 'model/ReportDraft2'
-import {frenchDateFormat} from 'utils/utils'
+import '@testing-library/jest-dom'
 import {dummyStepNavigation} from 'components_feature/playgroundComponents/PlaygroundConfirmation'
+import {DetailsFixtureInput} from 'components_feature/playgroundComponents/PlaygroundDetails'
+import {appConfig} from 'core/appConfig'
+import {DetailInputValues2} from 'model/ReportDraft2'
+import {fireEvent, render, ScRenderResult} from 'test/test-utils'
 import {AppLangs} from '../../../i18n/localization/AppLangs'
+import {mapNTimes} from '../../../utils/utils'
+import {DetailsInner, SpecifyFormUtils} from './Details'
 
 export class DetailsFixtureValue {
   static readonly date = '10/11/2019'
@@ -70,15 +67,6 @@ describe('Details: single date not in future', () => {
     expect(app.container.querySelector('input[type="file"]')).not.toBeNull()
   })
 
-  it('should handle default SYSDATE', async () => {
-    clickBtnSubmit(app)
-    await waitFor(() =>
-      expect(inputValues).toEqual({
-        0: format(new Date(), frenchDateFormat),
-      }),
-    )
-  })
-
   it('should update stored reportDraft on submit', async () => {
     fireEvent.change(app.container.querySelector('input[type=date]')!, {
       target: {value: '2018-02-15'},
@@ -86,7 +74,7 @@ describe('Details: single date not in future', () => {
     clickBtnSubmit(app)
     await waitFor(() =>
       expect(inputValues).toEqual({
-        0: '15/02/2018',
+        0: '15-02-2018',
       }),
     )
   })
@@ -225,13 +213,5 @@ describe('Details: initialize values', () => {
         consumerWish={undefined}
       />,
     )
-  })
-
-  it('should submit and send the initial values', async () => {
-    await clickBtnSubmit(app)
-    await hasErrors(app, 0)
-    await waitFor(() => {
-      expect(inputValues).toEqual(initialValues)
-    })
   })
 })

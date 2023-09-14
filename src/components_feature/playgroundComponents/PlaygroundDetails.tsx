@@ -31,19 +31,19 @@ export class DetailsFixtureInput {
   }
 
   static readonly date: DetailInputDate = {
-    label: 'Date label',
+    label: 'Date label (defaults to SYSDATE)',
     type: DetailInputType.DATE,
     defaultValue: 'SYSDATE',
   }
 
   static readonly dateNotInFuture: DetailInputDateNotInFuture = {
-    label: 'Date (not in future) label',
+    label: 'Date label (defaults to SYSDATE, not in future)',
     type: DetailInputType.DATE_NOT_IN_FUTURE,
     defaultValue: 'SYSDATE',
   }
 
   static readonly dateWithNoDefault: DetailInputDate = {
-    label: 'Date (without default to SYSDATE) label',
+    label: 'Date label (without default to SYSDATE)',
     type: DetailInputType.DATE,
   }
 
@@ -98,12 +98,12 @@ export const PlaygroundDetails = () => {
   const [inputChoices, setInputChoices] = useState({
     text: true,
     date: true,
-    dateNotInFuture: true,
-    dateWithNoDefault: true,
+    dateNotInFuture: false,
+    dateWithNoDefault: false,
     radio: true,
     checkbox: true,
     textarea: true,
-    timeslot: true,
+    timeslot: false,
   })
   const chosenInputs = getEntries(inputChoices)
     .filter(([, v]) => !!v)

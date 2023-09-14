@@ -2,14 +2,13 @@ import {Grid} from '@mui/material'
 import {useMutation} from '@tanstack/react-query'
 import {useAnalyticContext} from 'analytic/AnalyticContext'
 import {EventCategories, ReportEventActions} from 'analytic/analytic'
-import {FieldLabel} from 'components_simple/FieldLabel'
-import {ScInput} from 'components_simple/formInputs/ScInput'
-import {Panel, PanelBody} from 'components_simple/Panel'
 import {StepNavigation} from 'components_feature/reportFlow/reportFlowStepper/ReportFlowStepper'
 import {ReportFlowStepperActions} from 'components_feature/reportFlow/reportFlowStepper/ReportFlowStepperActions'
+import {Panel, PanelBody} from 'components_simple/Panel'
+import {RequiredFieldsLegend} from 'components_simple/RequiredFieldsLegend'
 import {Row} from 'components_simple/Row'
+import {ScTextInput} from 'components_simple/formInputs/ScTextInput'
 import {useApiClients} from 'context/ApiClientsContext'
-import {useBreakpoints} from 'hooks/useBreakpoints'
 import {useI18n} from 'i18n/I18n'
 import {ReportDraft2} from 'model/ReportDraft2'
 import {useState} from 'react'
@@ -17,6 +16,7 @@ import {Controller, useForm} from 'react-hook-form'
 import {regexp} from 'utils/regexp'
 import {ScAlert} from '../../../components_simple/ScAlert'
 import {Txt} from '../../../components_simple/Txt'
+import {ScRadioButtons} from '../../../components_simple/formInputs/ScRadioButtons'
 import {appConfig} from '../../../core/appConfig'
 import {useToastError} from '../../../hooks/useToastError'
 import {Gender, ReportDraft, genders} from '../../../model/ReportDraft'
@@ -24,8 +24,6 @@ import {DeepPartial} from '../../../utils/utils'
 import {useReportFlowContext} from '../ReportFlowContext'
 import {ConsumerAnonymousInformation} from './ConsumerAnonymousInformation'
 import {ConsumerValidationDialog} from './ConsumerValidationDialog'
-import {ScRadioButtons} from '../../../components_simple/formInputs/ScRadioButtons'
-import {RequiredFieldsLegend} from 'components_simple/RequiredFieldsLegend'
 
 interface ConsumerForm {
   firstName: string
@@ -69,9 +67,16 @@ export const ConsumerInner = ({
       return signalConsoApiClient.checkEmail(email, currentLang)
     },
   })
-  const _form = useForm<ConsumerForm>()
+  const _form = useForm<ConsumerForm>({
+    defaultValues: {
+      firstName: draft.consumer?.firstName,
+      lastName: draft.consumer?.lastName,
+      email: draft.consumer?.email,
+      phone: draft.consumer?.phone,
+      referenceNumber: draft.consumer?.referenceNumber,
+    },
+  })
   const _analytic = useAnalyticContext()
-  const {isSmOrMore} = useBreakpoints()
   const toastError = useToastError()
   const watchContactAgreement = _form.watch('contactAgreement')
 
@@ -130,87 +135,73 @@ export const ConsumerInner = ({
             />
             <Grid container columnSpacing={2}>
               <Grid item xs={6}>
-                <FieldLabel label={m.firstName} required>
-                  <ScInput
-                    autoComplete="given-name"
-                    fullWidth
-                    defaultValue={draft.consumer?.firstName ?? ''}
-                    {..._form.register('firstName', {
-                      required: {value: true, message: m.required},
-                      pattern: {value: regexp.emojis, message: m.invalidName},
-                    })}
-                    required
-                    {...getErrors('firstName')}
-                  />
-                </FieldLabel>
+                <ScTextInput
+                  label={m.firstName}
+                  autocomplete="given-name"
+                  {..._form.register('firstName', {
+                    required: {value: true, message: m.required},
+                    pattern: {value: regexp.emojis, message: m.invalidName},
+                  })}
+                  required
+                  {...getErrors('firstName')}
+                />
               </Grid>
               <Grid item xs={6}>
-                <FieldLabel label={m.lastName} required>
-                  <ScInput
-                    autoComplete="family-name"
-                    fullWidth
-                    defaultValue={draft.consumer?.lastName ?? ''}
-                    {..._form.register('lastName', {
-                      required: {value: true, message: m.required},
-                      pattern: {value: regexp.emojis, message: m.invalidName},
-                    })}
-                    required
-                    {...getErrors('lastName')}
-                  />
-                </FieldLabel>
+                <ScTextInput
+                  label={m.lastName}
+                  autocomplete="family-name"
+                  {..._form.register('lastName', {
+                    required: {value: true, message: m.required},
+                    pattern: {value: regexp.emojis, message: m.invalidName},
+                  })}
+                  required
+                  {...getErrors('lastName')}
+                />
               </Grid>
             </Grid>
           </Row>
           <Row icon="email">
-            <FieldLabel label={m.email} required>
-              <ScInput
-                autoComplete="email"
-                type="email"
-                fullWidth
-                defaultValue={draft.consumer?.email ?? ''}
-                {...getErrors('email')}
-                {..._form.register('email', {
-                  required: {value: true, message: m.required},
-                  pattern: {value: regexp.email, message: m.invalidEmail},
-                  validate: {
-                    isDummyEmail: value => {
-                      return !appConfig.dummyEmailDomain.find(_ => value.includes(_)) || m.consumerDummyEmailNotAccepted
-                    },
+            <ScTextInput
+              label={m.email}
+              autocomplete="email"
+              type="email"
+              {..._form.register('email', {
+                required: {value: true, message: m.required},
+                pattern: {value: regexp.email, message: m.invalidEmail},
+                validate: {
+                  isDummyEmail: value => {
+                    return !appConfig.dummyEmailDomain.find(_ => value.includes(_)) || m.consumerDummyEmailNotAccepted
                   },
-                })}
-                required
-              />
-            </FieldLabel>
+                },
+              })}
+              required
+              {...getErrors('email')}
+            />
           </Row>
           <Row icon="phone">
-            <FieldLabel label={m.phoneOptional}>
-              <ScInput
-                autoComplete="tel"
-                type="tel"
-                placeholder={m.phonePlaceholder}
-                fullWidth
-                defaultValue={draft.consumer?.phone ?? ''}
-                {...getErrors('phone')}
-                {..._form.register('phone', {
-                  pattern: {value: regexp.phone, message: m.invalidPhone},
-                })}
-                required={false}
-              />
-            </FieldLabel>
+            <ScTextInput
+              label={m.phoneOptional}
+              autocomplete="tel"
+              type="tel"
+              {..._form.register('phone', {
+                pattern: {value: regexp.phone, message: m.invalidPhone},
+              })}
+              {...getErrors('phone')}
+              required={false}
+              placeholder={m.phonePlaceholder}
+            />
           </Row>
           <Row icon="receipt">
-            <FieldLabel label={m.referenceNumberOptional} desc={m.referenceNumberDesc}>
-              <ScInput
-                placeholder={m.referenceNumberPlaceholder}
-                fullWidth
-                defaultValue={draft.consumer?.referenceNumber ?? ''}
-                {...getErrors('referenceNumber')}
-                {..._form.register('referenceNumber', {
-                  maxLength: {value: 100, message: m.atMost100Chars},
-                })}
-                required={false}
-              />
-            </FieldLabel>
+            <ScTextInput
+              label={m.referenceNumberOptional}
+              desc={m.referenceNumberDesc}
+              placeholder={m.referenceNumberPlaceholder}
+              {..._form.register('referenceNumber', {
+                maxLength: {value: 100, message: m.atMost100Chars},
+              })}
+              required={false}
+              {...getErrors('referenceNumber')}
+            />
           </Row>
           {showContactAgreement && (
             <>

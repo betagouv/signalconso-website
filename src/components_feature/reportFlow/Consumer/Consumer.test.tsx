@@ -100,7 +100,7 @@ describe('Consumer', () => {
     it('should show errors when trying to submit without values', async () => {
       submit()
       await waitFor(() => {
-        expect(app.container.querySelectorAll('.MuiFormControl-root .MuiFormHelperText-root.Mui-error').length).toEqual(3)
+        expect(app.container.querySelectorAll('.sctextinput .fr-error-text').length).toEqual(3)
       })
     })
 
