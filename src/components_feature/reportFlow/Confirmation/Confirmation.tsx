@@ -1,23 +1,22 @@
 import {Box, Chip, Icon} from '@mui/material'
-import {FriendlyHelpText} from 'components_simple/FriendlyHelpText'
 import {useAnalyticContext} from 'analytic/AnalyticContext'
 import {EventCategories, ReportEventActions} from 'analytic/analytic'
 import {findAnomaly} from 'anomalies/Anomalies'
+import {StepNavigation} from 'components_feature/reportFlow/reportFlowStepper/ReportFlowStepper'
+import {ReportFlowStepperActions} from 'components_feature/reportFlow/reportFlowStepper/ReportFlowStepperActions'
 import {AddressComponent} from 'components_simple/Address'
 import {Animate} from 'components_simple/Animate'
 import {AnomalyImage} from 'components_simple/AnomalyImage'
-import {StepNavigation} from 'components_feature/reportFlow/reportFlowStepper/ReportFlowStepper'
-import {ReportFlowStepperActions} from 'components_feature/reportFlow/reportFlowStepper/ReportFlowStepperActions'
+import {FriendlyHelpText} from 'components_simple/FriendlyHelpText'
 import {Row} from 'components_simple/Row'
 import {ReportFiles} from 'components_simple/reportFile/ReportFiles'
 import {getApiErrorId, useToastError} from 'hooks/useToastError'
 import {useI18n} from 'i18n/I18n'
 import {ReportDraft2} from 'model/ReportDraft2'
 import {ApiReportDraft} from 'model/reportsFromApi'
-import {useEffect} from 'react'
-import {Txt} from '../../../components_simple/Txt'
 import {Anomaly} from '../../../anomalies/Anomaly'
 import {SocialNetworkRow} from '../../../components_simple/SocialNetworkRow'
+import {Txt} from '../../../components_simple/Txt'
 import {ReportDraft} from '../../../model/ReportDraft'
 import {FileOrigin} from '../../../model/UploadedFile'
 import {useReportCreateContext} from '../ReportCreateContext'
@@ -101,28 +100,37 @@ export const ConfirmationInner = ({
               <Txt size="big" bold block sx={{mb: 1}} component="h3">
                 {draft.companyDraft.name} {draft.companyDraft.brand ?? ''}
               </Txt>
-
-              {draft.companyDraft.siret && (
-                <Txt color="hint" block sx={{mb: 1}}>
-                  <Txt>SIRET:&nbsp;</Txt>
-                  <Txt bold>{draft.companyDraft.siret}</Txt>
-                </Txt>
-              )}
-              <Row dense icon="location_on">
-                <Txt color="hint">
-                  <AddressComponent address={draft.companyDraft.address} />
-                </Txt>
-              </Row>
-              {draft.companyDraft.website && (
-                <Row dense icon="link">
-                  <Txt color="hint">{draft.companyDraft.website}</Txt>
-                </Row>
-              )}
-              {draft.companyDraft.phone && (
-                <Row dense icon="phone">
-                  <Txt color="hint">{draft.companyDraft.phone}</Txt>
-                </Row>
-              )}
+              <ul className="list-none">
+                {draft.companyDraft.siret && (
+                  <li className="p-0">
+                    <Txt color="hint" block sx={{mb: 1}}>
+                      <Txt>SIRET:&nbsp;</Txt>
+                      <Txt bold>{draft.companyDraft.siret}</Txt>
+                    </Txt>
+                  </li>
+                )}
+                <li className="p-0">
+                  <Row dense icon="location_on">
+                    <Txt color="hint">
+                      <AddressComponent address={draft.companyDraft.address} />
+                    </Txt>
+                  </Row>
+                </li>
+                {draft.companyDraft.website && (
+                  <li className="p-0">
+                    <Row dense icon="link">
+                      <Txt color="hint">{draft.companyDraft.website}</Txt>
+                    </Row>
+                  </li>
+                )}
+                {draft.companyDraft.phone && (
+                  <li className="p-0">
+                    <Row dense icon="phone">
+                      <Txt color="hint">{draft.companyDraft.phone}</Txt>
+                    </Row>
+                  </li>
+                )}
+              </ul>
             </ConfirmationStep>
           )}
           {draft.influencer && (
@@ -140,25 +148,41 @@ export const ConfirmationInner = ({
             </ConfirmationStep>
           )}
           <ConfirmationStep title={m.step_consumer} {...{goToStep}}>
-            <Row icon="person">
-              {draft.consumer.gender ? m.gender[draft.consumer.gender] + ' ' : ''}
-              {draft.consumer.firstName} {draft.consumer.lastName}
-            </Row>
-            <Row icon="email">{draft.consumer.email}</Row>
-            {draft.consumer.phone && <Row icon="phone">{draft.consumer.phone}</Row>}
-            {draft.consumer.referenceNumber && <Row icon="receipt">{draft.consumer.referenceNumber}</Row>}
-            {ReportDraft.isTransmittableToPro(draft) && (
-              <Row icon="https">
-                {m.contactAgreement}:&nbsp;
-                <Txt bold>
-                  {draft.contactAgreement ? (
-                    <Chip size="small" label={m.yes} color="success" variant="outlined" icon={<Icon>check_circle</Icon>} />
-                  ) : (
-                    <Chip size="small" label={m.no} color="error" variant="outlined" icon={<Icon>remove_circle</Icon>} />
-                  )}
-                </Txt>
-              </Row>
-            )}
+            <ul className="list-none">
+              <li className="p-0">
+                <Row icon="person">
+                  {draft.consumer.gender ? m.gender[draft.consumer.gender] + ' ' : ''}
+                  {draft.consumer.firstName} {draft.consumer.lastName}
+                </Row>
+              </li>
+              <li className="p-0">
+                <Row icon="email">{draft.consumer.email}</Row>
+              </li>
+              {draft.consumer.phone && (
+                <li className="p-0">
+                  <Row icon="phone">{draft.consumer.phone}</Row>
+                </li>
+              )}
+              {draft.consumer.referenceNumber && (
+                <li className="p-0">
+                  <Row icon="receipt">{draft.consumer.referenceNumber}</Row>
+                </li>
+              )}
+              {ReportDraft.isTransmittableToPro(draft) && (
+                <li className="p-0">
+                  <Row icon="https">
+                    {m.contactAgreement}:&nbsp;
+                    <Txt bold>
+                      {draft.contactAgreement ? (
+                        <Chip size="small" label={m.yes} color="success" variant="outlined" icon={<Icon>check_circle</Icon>} />
+                      ) : (
+                        <Chip size="small" label={m.no} color="error" variant="outlined" icon={<Icon>remove_circle</Icon>} />
+                      )}
+                    </Txt>
+                  </Row>
+                </li>
+              )}
+            </ul>
           </ConfirmationStep>
         </ConfirmationStepper>
         <ReportFlowStepperActions

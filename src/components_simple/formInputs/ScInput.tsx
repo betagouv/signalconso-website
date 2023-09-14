@@ -46,7 +46,9 @@ export const ScInput = React.forwardRef(({required, small, clearable, InputProps
               ),
             }
           : {}),
-        ...(required ? {'aria-required': true} : null),
+        inputProps: {
+          ...(required ? {'aria-required': true} : null),
+        },
       }}
       FormHelperTextProps={{
         'aria-live': 'polite',
