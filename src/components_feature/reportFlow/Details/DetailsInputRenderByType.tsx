@@ -15,6 +15,7 @@ import {mapNTimes} from '../../../utils/utils'
 import {getDefaultValueFromInput, getOptionsFromInput, getPlaceholderFromInput} from './DetailInputsUtils'
 import {DetailsSpecifyInput} from './DetailsSpecifyInput'
 import {SpecifyFormUtils} from './Details'
+import {ScTextarea} from 'components_simple/formInputs/ScTextarea'
 
 export function DetailsInputRenderByType({
   control,
@@ -198,13 +199,14 @@ export function DetailsInputRenderByType({
       )
     case DetailInputType.TEXTAREA:
       return (
-        <FieldLabel {...fieldLabelProps}>
-          <Controller
-            control={control}
-            {...{name}}
-            rules={{...baseRules, ...maxLengthRule}}
-            render={({field}) => (
-              <ScInput
+        <Controller
+          control={control}
+          {...{name}}
+          rules={{...baseRules, ...maxLengthRule}}
+          render={({field}) => {
+            return (
+              <ScTextarea
+                label={fieldLabelProps.label}
                 {...field}
                 helperText={
                   errors[inputIndex]?.type === 'required' ? (
@@ -212,25 +214,17 @@ export function DetailsInputRenderByType({
                   ) : (
                     <span>
                       {getValues('' + inputIndex)?.length ?? 0} / {appConfig.maxDescriptionInputLength}
-                      <span className="hidden">
-                        {' '}
-                        {m.charactersTyped}
-                        {/* reco audit accessibilité d'ajouter ce texte caché */}
-                      </span>
+                      <span> {m.charactersTyped}</span>
                     </span>
                   )
                 }
                 error={hasErrors}
-                multiline
-                minRows={5}
-                maxRows={10}
-                fullWidth
                 placeholder={getPlaceholderFromInput(input)}
                 required={required}
               />
-            )}
-          />
-        </FieldLabel>
+            )
+          }}
+        />
       )
   }
 }

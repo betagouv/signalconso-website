@@ -26,7 +26,6 @@ export type ScInputProps = Pick<
   | 'autoComplete'
   | 'FormHelperTextProps'
 > & {
-  small?: boolean
   InputProps?: Partial<FilledInputProps>
   clearable?: {
     onClear: () => void
@@ -35,7 +34,7 @@ export type ScInputProps = Pick<
   required: boolean
 }
 
-export const ScInput = React.forwardRef(({required, small, clearable, InputProps, ...props}: ScInputProps, ref) => {
+export const ScInput = React.forwardRef(({required, clearable, InputProps, ...props}: ScInputProps, ref) => {
   return (
     <TextField
       {...props}
