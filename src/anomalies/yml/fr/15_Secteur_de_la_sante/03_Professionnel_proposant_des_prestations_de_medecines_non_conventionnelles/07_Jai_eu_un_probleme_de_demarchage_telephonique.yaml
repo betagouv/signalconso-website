@@ -4,8 +4,8 @@ ccrfCode:
   - '227'
   - '23E'
 reponseconsoCode:
+  - '2210'
   - '221'
-  - '2216'
 tags:
   - DemarchageTelephonique
   - ReponseConso

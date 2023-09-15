@@ -2,5 +2,7 @@ title: Publicité trompeuse
 desc: "Exemple : offre promotionnelle trompeuse sur la parapharmacie, …"
 ccrfCode:
   - '23B'
+reponseconsoCode:
+  - '210'
 tags:
   - ReponseConso

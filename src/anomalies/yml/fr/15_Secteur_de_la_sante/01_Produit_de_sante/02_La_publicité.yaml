@@ -4,8 +4,8 @@ tags:
 ccrfCode: 
   - '23B'
 reponseconsoCode:
-  - '210'
-  - '271'
+  - '411'
+  - '643'
 detailInputs:
   - label: Date de constat (ou date d'achat)
     type: DATE

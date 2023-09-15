@@ -2,3 +2,6 @@ title: Le devis est incomplet
 desc: "Exemple\_: devis non signé par le professionnel, professionnel non identifié, tarif non renseigné, …"
 ccrfCode:
   - '226'
+reponseconsoCode:
+  - '411'
+  - '226'
