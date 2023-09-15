@@ -1,4 +1,7 @@
 title: J'ai été facturé pour au moins un supplément ou forfait que je ne voulais pas
+reponseconsoCode:
+  - '226'
+  - '2331'
 desc: "Exemple : forfait administratif, forfait ambulatoire, forfait 'bien-être', supplément 'chambre seule' au prétexte que les chambres étaient toutes occupées ou que l'établissement n'en possédait pas, supplément 'télévision' alors que je n'ai pas demandé à avoir la télévision, …"
 detailInputs:
   - label: Date de sortie (ou date de la facture)

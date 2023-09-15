@@ -4,8 +4,8 @@ companyKind: SIRET
 ccrfCode:
   - '21G'
 reponseconsoCode:
-  - '212'
   - '226'
+  - '411'
 detailInputs:
   - label: Date de constat
     type: DATE

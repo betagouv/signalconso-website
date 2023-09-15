@@ -4,6 +4,8 @@ ccrfCode:
   - '226'
 tags:
   - ReponseConso
+reponseconsoCode:
+  - '456'
 detailInputs:
   - label: Date de sortie (ou date de la facture)
     type: DATE

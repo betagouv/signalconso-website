@@ -1,4 +1,7 @@
 title: J’ai dû payer un supplément sans en avoir été informé.
+reponseconsoCode:
+  - '226'
+  - '411'
 blockingInfo:
   title: "Oups nous ne pouvons pas traiter votre signalement."
   content: >-

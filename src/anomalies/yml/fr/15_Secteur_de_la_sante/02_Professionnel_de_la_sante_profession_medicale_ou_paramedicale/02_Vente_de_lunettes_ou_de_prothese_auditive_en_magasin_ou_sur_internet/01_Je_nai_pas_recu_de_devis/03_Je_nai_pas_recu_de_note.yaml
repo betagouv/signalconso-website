@@ -3,7 +3,7 @@ companyKind: SIRET
 ccrfCode:
   - '213'
 reponseconsoCode:
-  - '212'
+  - '213'
   - '226'
 detailInputs:
   - label: Date de constat
