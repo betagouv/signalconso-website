@@ -3,3 +3,6 @@ desc: "Exemple : honoraires de vaccination, honoraires de dispensation, honorair
 ccrfCode:
   - '21B'
   - '216'
+reponseconsoCode:
+  - '411'
+  - '226'

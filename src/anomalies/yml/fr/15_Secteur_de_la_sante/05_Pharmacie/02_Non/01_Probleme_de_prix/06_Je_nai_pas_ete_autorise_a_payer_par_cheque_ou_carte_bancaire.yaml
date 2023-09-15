@@ -2,3 +2,6 @@ title: Je n'ai pas été autorisé à payer par chèque ou par carte bancaire sa
 desc: Le pharmacien peut refuser le règlement par chèque ou par carte bancaire à condition d’avoir informé les clients en amont sur un support lisible.
 ccrfCode:
   - '21B'
+reponseconsoCode:
+  - '411'
+  - '643'

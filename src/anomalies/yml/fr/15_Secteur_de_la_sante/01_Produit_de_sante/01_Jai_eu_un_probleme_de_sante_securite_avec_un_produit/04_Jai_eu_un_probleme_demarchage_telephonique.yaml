@@ -2,6 +2,9 @@ title: Démarchage téléphonique
 companyKind: PHONE
 ccrfCode:
   - '221'
+reponseconsoCode:
+  - '2210'
+  - '221'
 tags:
   - DemarchageTelephonique
 detailInputs:

@@ -3,7 +3,7 @@ desc: "Exemple\_: aucun document contractuel ne m’a été remis, le contrat n'
 ccrfCode:
   - '23B'
 reponseconsoCode:
-  - '220'
+  - '2211'
   - '422'
 tags:
   - ReponseConso
