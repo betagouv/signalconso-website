@@ -24,7 +24,7 @@ export const ReportFile = ({file, onRemove}: ReportFileProps) => {
 
   return (
     <Tooltip title={file.filename}>
-      <div className="">
+      <div className="mb-4 ml-4">
         <Box
           component="a"
           target="_blank"
@@ -41,6 +41,7 @@ export const ReportFile = ({file, onRemove}: ReportFileProps) => {
             sx={{
               display: 'inline-flex',
               border: t => '1px solid ' + alpha(t.palette.divider, 0.43),
+              borderRadius: 1,
               height: reportFileConfig.cardSize,
               width: reportFileConfig.cardSize,
               position: 'relative',
@@ -57,6 +58,7 @@ export const ReportFile = ({file, onRemove}: ReportFileProps) => {
                             position: 'absolute',
                             top: 0,
                             right: 0,
+                            borderRadius: 1,
                             left: 0,
                             bottom: 0,
                             backgroundSize: 'cover',
