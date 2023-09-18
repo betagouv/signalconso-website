@@ -128,6 +128,7 @@ export class ReportDraft {
       consumerReferenceNumber: draft.consumer.referenceNumber,
       fileIds: draft.uploadedFiles?.map(file => file.id) ?? [],
       companyName: draft.companyDraft?.name,
+      companyBrand: draft.companyDraft?.brand,
       companyAddress: draft.companyDraft?.address,
       companySiret: draft.companyDraft?.siret,
       companyIsHeadOffice: draft.companyDraft?.isHeadOffice,
