@@ -169,23 +169,23 @@ export const DetailsInner = ({
             onNewFile={f => setUploadedFiles(_ => [...(_ ?? []), f])}
             hideAddBtn={uploadedFilesCount >= appConfig.maxNumberOfAttachments}
           />
-          <p
-            className="mt-2 text-sm"
-            id={ADD_FILE_HELP_ID}
-            dangerouslySetInnerHTML={{__html: m.attachmentsDescAllowedFormat(appConfig.upload_allowedExtensions)}}
-          />
-          {uploadedFilesCount === 0 ? (
-            <p className="text-sm">{m.maxAttachmentsZero(appConfig.maxNumberOfAttachments)}</p>
-          ) : uploadedFilesCount === appConfig.maxNumberOfAttachments ? (
-            <Alert
-              description={m.maxAttachmentsReached(appConfig.maxNumberOfAttachments)}
-              severity="info"
-              title={<></>}
-              className="fr-mt-4w"
-            />
-          ) : (
-            <p className="text-sm">{m.maxAttachmentsCurrent(appConfig.maxNumberOfAttachments - uploadedFilesCount)}</p>
-          )}
+          {/*<p*/}
+          {/*  className="mt-2 text-sm"*/}
+          {/*  id={ADD_FILE_HELP_ID}*/}
+          {/*  dangerouslySetInnerHTML={{__html: m.attachmentsDescAllowedFormat(appConfig.upload_allowedExtensions)}}*/}
+          {/*/>*/}
+          {/*{uploadedFilesCount === 0 ? (*/}
+          {/*  <p className="text-sm">{m.maxAttachmentsZero(appConfig.maxNumberOfAttachments)}</p>*/}
+          {/*) : uploadedFilesCount === appConfig.maxNumberOfAttachments ? (*/}
+          {/*  <Alert*/}
+          {/*    description={m.maxAttachmentsReached(appConfig.maxNumberOfAttachments)}*/}
+          {/*    severity="info"*/}
+          {/*    title={<></>}*/}
+          {/*    className="fr-mt-4w"*/}
+          {/*  />*/}
+          {/*) : (*/}
+          {/*  <p className="text-sm">{m.maxAttachmentsCurrent(appConfig.maxNumberOfAttachments - uploadedFilesCount)}</p>*/}
+          {/*)}*/}
         </div>
       </Animate>
       <ReportFlowStepperActions

@@ -1121,6 +1121,8 @@ export const fr = {
     emptyFile: `Ce fichier semble vide`,
     invalidSize: (maxSize: number) => `La taille du fichier dépasse les ${maxSize} Mb`,
     invalidFileNameSize: (maxSize: number) => `Le nom du fichier ne doit pas dépasser ${maxSize} caractères`,
+    invalidFileExt: (fileExt: string) => `Impossible de charger un fichier avec l'extension '.${fileExt}'`,
+    dropZone: 'Cliquez sur le bouton ou déplacez un ou plusieurs fichiers ici',
     limitTo500chars: `500 caractères maximum`,
     continue: `Continuer`,
     suggestion: `Voulez-vous dire :`,
