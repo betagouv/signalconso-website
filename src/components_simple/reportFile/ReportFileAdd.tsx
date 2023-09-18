@@ -20,7 +20,7 @@ export const ADD_FILE_HELP_ID = 'aide-piece-jointe'
 export const ReportFileAdd = ({isUploading, fileOrigin, uploadFile}: Props) => {
   const [uploading, setUploading] = useState(isUploading)
   const fileInputEl = useRef<HTMLInputElement>(null)
-
+  const {m} = useI18n()
   const openFileSelection = () => {
     fileInputEl.current!.click()
   }
@@ -42,7 +42,7 @@ export const ReportFileAdd = ({isUploading, fileOrigin, uploadFile}: Props) => {
         nativeButtonProps={{'aria-describedby': ADD_FILE_HELP_ID}}
       >
         {uploading && <div className="sc-loader w-4 h-4 mr-2"></div>}
-        Ajouter une pièce jointe
+        {m.addAttachmentFile}
       </Button>
       <input
         className="hidden"

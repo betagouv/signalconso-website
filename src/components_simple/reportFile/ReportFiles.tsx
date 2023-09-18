@@ -81,9 +81,15 @@ export const ReportFiles = ({
       return
     }
 
+    const fileExt = extractFileExt(file.name)
+
+    if (!appConfig.upload_allowedExtensions.includes(`.${fileExt}`)) {
+      toastError(m.invalidFileExt(fileExt))
+      return
+    }
+
     setUploading(true)
 
-    const fileExt = extractFileExt(file.name)
     const fileToUpload = fileExt === 'heic' ? heicToJpg(file) : Promise.resolve(file)
 
     try {
@@ -139,19 +145,19 @@ export const ReportFiles = ({
         handleChange(e.dataTransfer.files)
       }}
     >
-      <Box className="flex flex-wrap gap-2 mt-4 bai-1">
+      <Box className="flex flex-wrap items-center justify-center mt-4 ">
         {innerFiles && innerFiles.length > 0 ? (
           innerFiles
             .filter(_ => _.origin === fileOrigin)
             .map(_ => <ReportFile key={_.id} file={_} onRemove={hideRemoveBtn ? undefined : removeFile} />)
         ) : (
-          <div className="flex flex-col items-center justify-center mb-4">
+          <div className=" mb-4">
             <div className="flex items-center justify-center mb-2">
               <Icon className="text-[#000091]" fontSize="large">
                 cloud_download
               </Icon>
             </div>
-            <div className="text-center text-lg">Cliquez sur le bouton ou déplacez un ou plusieurs fichiers ici</div>
+            <div className="text-center text-lg">{m.dropZone}</div>
           </div>
         )}
       </Box>
