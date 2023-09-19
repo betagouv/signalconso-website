@@ -90,7 +90,7 @@ export const ConfirmationInner = ({
               <div className="mb-2">
                 <dt className="font-medium mb-1">{m.attachments}</dt>
                 <dd>
-                  <ReportFiles fileOrigin={FileOrigin.Consumer} hideAddBtn hideRemoveBtn files={draft.uploadedFiles} />
+                  <ReportFiles fileOrigin={FileOrigin.Consumer} disableAdd hideRemoveBtn files={draft.uploadedFiles} />
                 </dd>
               </div>
             </dl>
@@ -98,8 +98,13 @@ export const ConfirmationInner = ({
           {draft.companyDraft && (
             <ConfirmationStep title={m.step_company} {...{goToStep}}>
               <Txt size="big" bold block sx={{mb: 1}} component="h3">
-                {draft.companyDraft.name} {draft.companyDraft.brand ?? ''}
+                {draft.companyDraft.name}
               </Txt>
+              {draft.companyDraft.brand && (
+                <Txt bold block sx={{mb: 2, fontStyle: 'italic'}}>
+                  {draft.companyDraft.brand}
+                </Txt>
+              )}
               <ul className="list-none">
                 {draft.companyDraft.siret && (
                   <li className="p-0">
