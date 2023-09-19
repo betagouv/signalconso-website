@@ -1,8 +1,9 @@
 import {MenuItem} from '@mui/material'
 import {FieldLabel} from 'components_simple/FieldLabel'
 import {ScDatepickerFr} from 'components_simple/formInputs/ScDatepickerFr'
-import {ScInput} from 'components_simple/formInputs/ScInput'
 import {ScSelect} from 'components_simple/formInputs/ScSelect'
+import {ScTextInput} from 'components_simple/formInputs/ScTextInput'
+import {ScTextarea} from 'components_simple/formInputs/ScTextarea'
 import {appConfig} from 'core/appConfig'
 import {useI18n} from 'i18n/I18n'
 import {DetailInputValues2} from 'model/ReportDraft2'
@@ -13,9 +14,8 @@ import {ScCheckbox} from '../../../components_simple/formInputs/ScCheckbox'
 import {ScRadioButtons} from '../../../components_simple/formInputs/ScRadioButtons'
 import {mapNTimes} from '../../../utils/utils'
 import {getDefaultValueFromInput, getOptionsFromInput, getPlaceholderFromInput} from './DetailInputsUtils'
-import {DetailsSpecifyInput} from './DetailsSpecifyInput'
 import {SpecifyFormUtils} from './Details'
-import {ScTextarea} from 'components_simple/formInputs/ScTextarea'
+import {DetailsSpecifyInput} from './DetailsSpecifyInput'
 
 export function DetailsInputRenderByType({
   control,
@@ -186,16 +186,23 @@ export function DetailsInputRenderByType({
       )
     case DetailInputType.TEXT:
       return (
-        <FieldLabel {...fieldLabelProps}>
-          <Controller
-            control={control}
-            {...{name}}
-            rules={{...baseRules, ...maxLengthRule}}
-            render={({field}) => (
-              <ScInput {...field} error={hasErrors} fullWidth placeholder={getPlaceholderFromInput(input)} required={required} />
-            )}
-          />
-        </FieldLabel>
+        <Controller
+          control={control}
+          {...{name}}
+          rules={{...baseRules, ...maxLengthRule}}
+          render={({field}) => {
+            return (
+              <ScTextInput
+                label={fieldLabelProps.label}
+                {...field}
+                helperText={errors[inputIndex]?.type === 'required' ? m.required : null}
+                error={hasErrors}
+                placeholder={getPlaceholderFromInput(input)}
+                required={required}
+              />
+            )
+          }}
+        />
       )
     case DetailInputType.TEXTAREA:
       return (

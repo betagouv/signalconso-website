@@ -1,8 +1,8 @@
 import {ForwardedRef, ReactNode, forwardRef, useId} from 'react'
 
 type Props = {
-  onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void
-  onBlur: (e: React.FocusEvent<HTMLTextAreaElement>) => void
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
+  onBlur: (e: React.FocusEvent<HTMLInputElement>) => void
   name: string
   placeholder?: string
   error: boolean
@@ -12,7 +12,7 @@ type Props = {
   desc?: ReactNode
 }
 
-export const ScTextarea = forwardRef((props: Props, ref: ForwardedRef<HTMLTextAreaElement>) => {
+export const ScTextInput = forwardRef((props: Props, ref: ForwardedRef<HTMLInputElement>) => {
   const {onChange, onBlur, name, placeholder, label, desc, error, helperText, required} = props
   const inputId = useId()
   const helperTextId = useId()
@@ -28,16 +28,16 @@ export const ScTextarea = forwardRef((props: Props, ref: ForwardedRef<HTMLTextAr
         {labelWithAsterisk}
         {desc && <span className="fr-hint-text">{desc}</span>}
       </label>
-      <textarea
+      <input
         id={inputId}
         name={name}
         onChange={onChange}
         onBlur={onBlur}
         ref={ref}
+        type="text"
         placeholder={placeholder}
         className={`fr-input ${error ? 'fr-input--error' : null}`}
         aria-describedby={helperTextId}
-        rows={5}
         {...(required ? {'aria-required': true} : null)}
       />
       {helperText && (
