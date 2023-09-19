@@ -112,8 +112,14 @@ export const CompanyFilled = ({
     <Panel title={m.companyIdentifiedTitle}>
       <PanelBody>
         <Txt size="big" bold block>
-          {draft.companyDraft.name} {draft.companyDraft.brand ?? ''}
+          {draft.companyDraft.name}
         </Txt>
+
+        {draft.companyDraft.brand && (
+          <Txt bold block sx={{mb: 2, fontStyle: 'italic'}}>
+            {draft.companyDraft.brand}
+          </Txt>
+        )}
 
         {draft.companyDraft.siret && (
           <Txt color="hint" block sx={{mb: 2}}>

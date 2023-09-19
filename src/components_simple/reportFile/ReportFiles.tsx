@@ -124,7 +124,31 @@ export const ReportFiles = ({
     isDraggingOver ? 'border-scbluefrance ' : 'border-gray-300 '
   }`
 
-  return (
+  const readOnlyBlock =
+    innerFiles && innerFiles.length > 0 ? (
+      <div className="flex flex-wrap items-center mt-4">
+        {innerFiles
+          .filter(_ => _.origin === fileOrigin)
+          .map(_ => (
+            <ReportFile key={_.id} file={_} onRemove={hideRemoveBtn ? undefined : removeFile} />
+          ))}
+      </div>
+    ) : (
+      <Txt
+        block
+        color="hint"
+        sx={{
+          marginTop: 1,
+          marginBottom: 1,
+        }}
+      >
+        {m.noAttachment}
+      </Txt>
+    )
+
+  return hideAddBtn ? (
+    readOnlyBlock
+  ) : (
     <div
       className={dropzoneClasses}
       onDragOver={e => {
@@ -162,23 +186,9 @@ export const ReportFiles = ({
         )}
       </Box>
       <div className="flex flex-col">
-        {hideAddBtn && innerFiles?.length === 0 && (
-          <Txt
-            block
-            color="hint"
-            sx={{
-              marginTop: 1,
-              marginBottom: 1,
-            }}
-          >
-            {m.noAttachment}
-          </Txt>
-        )}
-        {!hideAddBtn && (
-          <div className="text-center mb-3 mt-3">
-            <ReportFileAdd fileOrigin={fileOrigin} isUploading={uploading} uploadFile={handleChange} />
-          </div>
-        )}
+        <div className="text-center mb-3 mt-3">
+          <ReportFileAdd fileOrigin={fileOrigin} isUploading={uploading} uploadFile={handleChange} />
+        </div>
         <div className="divide-y"></div>
         <p
           className="mt-2 text-sm mb-1 text-center "
