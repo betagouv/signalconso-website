@@ -1,3 +1,4 @@
+import Button from '@codegouvfr/react-dsfr/Button'
 import {ForwardedRef, ReactNode, forwardRef, useId} from 'react'
 
 type Props = {
@@ -13,10 +14,28 @@ type Props = {
   autocomplete?: string
   defaultValue?: string
   type?: 'text' | 'email' | 'tel'
+  disabled?: boolean
+  clearable?: {
+    onClear: () => void
+  }
 }
 
 export const ScTextInput = forwardRef((props: Props, ref: ForwardedRef<HTMLInputElement>) => {
-  const {onChange, onBlur, autocomplete, name, placeholder, label, desc, error, helperText, required, type = 'text'} = props
+  const {
+    onChange,
+    onBlur,
+    autocomplete,
+    name,
+    placeholder,
+    label,
+    desc,
+    error,
+    helperText,
+    required,
+    type = 'text',
+    disabled = false,
+    clearable,
+  } = props
   const inputId = useId()
   const helperTextId = useId()
   const labelWithAsterisk = (
@@ -26,24 +45,33 @@ export const ScTextInput = forwardRef((props: Props, ref: ForwardedRef<HTMLInput
     </>
   )
   return (
-    <div className={`fr-input-group ${error ? 'fr-input-group--error' : null} sctextinput`}>
+    <div
+      className={`fr-input-group ${error ? 'fr-input-group--error' : null} ${
+        disabled ? 'fr-input-group--disabled' : null
+      } sctextinput`}
+    >
       <label className="fr-label" htmlFor={inputId}>
         {labelWithAsterisk}
         {desc && <span className="fr-hint-text">{desc}</span>}
       </label>
-      <input
-        autoComplete={autocomplete}
-        id={inputId}
-        name={name}
-        onChange={onChange}
-        onBlur={onBlur}
-        ref={ref}
-        type={type}
-        placeholder={placeholder}
-        className={`fr-input ${error ? 'fr-input--error' : null}`}
-        aria-describedby={helperTextId}
-        {...(required ? {'aria-required': true} : null)}
-      />
+
+      <div className="flex">
+        <input
+          autoComplete={autocomplete}
+          id={inputId}
+          name={name}
+          onChange={onChange}
+          onBlur={onBlur}
+          ref={ref}
+          type={type}
+          disabled={disabled}
+          placeholder={placeholder}
+          className={`fr-input ${error ? 'fr-input--error' : null}`}
+          aria-describedby={helperTextId}
+          {...(required ? {'aria-required': true} : null)}
+        />
+        {clearable && <Button iconId="fr-icon-close-line" onClick={clearable.onClear} priority="tertiary" title="Label button" />}
+      </div>
       {helperText && (
         <p id={helperTextId} className={error ? 'fr-error-text' : 'fr-info-text'} {...(error ? {'aria-live': 'polite'} : null)}>
           {helperText}
