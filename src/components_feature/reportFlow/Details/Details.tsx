@@ -167,7 +167,7 @@ export const DetailsInner = ({
             fileOrigin={FileOrigin.Consumer}
             onRemoveFile={f => setUploadedFiles(files => files?.filter(_ => _.id !== f.id))}
             onNewFile={f => setUploadedFiles(_ => [...(_ ?? []), f])}
-            hideAddBtn={uploadedFilesCount >= appConfig.maxNumberOfAttachments}
+            disableAdd={uploadedFilesCount >= appConfig.maxNumberOfAttachments}
           />
           {/*<p*/}
           {/*  className="mt-2 text-sm"*/}
