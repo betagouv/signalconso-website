@@ -90,7 +90,7 @@ export const ConfirmationInner = ({
               <div className="mb-2">
                 <dt className="font-medium mb-1">{m.attachments}</dt>
                 <dd>
-                  <ReportFiles fileOrigin={FileOrigin.Consumer} hideAddBtn hideRemoveBtn files={draft.uploadedFiles} />
+                  <ReportFiles fileOrigin={FileOrigin.Consumer} disableAdd hideRemoveBtn files={draft.uploadedFiles} />
                 </dd>
               </div>
             </dl>

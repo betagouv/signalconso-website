@@ -10,21 +10,20 @@ import {extractFileExt} from './reportFileConfig'
 import {compressFile} from '../../utils/compressFile'
 import {useApiClients} from '../../context/ApiClientsContext'
 import {useToastError} from '../../hooks/useToastError'
-import {Alert} from '@codegouvfr/react-dsfr/Alert'
 
 export interface ReportFilesProps {
   files?: UploadedFile[]
   onNewFile?: (f: UploadedFile) => void
   onRemoveFile?: (f: UploadedFile) => void
   fileOrigin: FileOrigin
-  hideAddBtn?: boolean
+  disableAdd?: boolean
   hideRemoveBtn?: boolean
 }
 
 export const ReportFiles = ({
   fileOrigin,
   files,
-  hideAddBtn,
+  disableAdd,
   hideRemoveBtn,
   onRemoveFile = () => void 0,
   onNewFile = () => void 0,
@@ -146,7 +145,7 @@ export const ReportFiles = ({
       </Txt>
     )
 
-  return hideAddBtn ? (
+  return disableAdd ? (
     readOnlyBlock
   ) : (
     <div
