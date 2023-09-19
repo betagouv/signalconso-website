@@ -1134,6 +1134,7 @@ export const en = {
     website: 'Website',
     modifyWebsite: 'Edit the website',
     clearWebsite: 'Clear the website',
+    clearPhone: 'Clear the phone number',
     canYouIdentifyCompany: `Can you identify the company?`,
     canYouIdentifyCompanyDesc: `SignalConso needs to know this in order to be able to contact them and notify Fraud Control.`,
     websitePlaceholder: 'Example: https://www.site.com',

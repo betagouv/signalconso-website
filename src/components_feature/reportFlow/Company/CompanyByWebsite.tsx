@@ -21,6 +21,7 @@ import {SpecificWebsiteCompanyKinds} from '../../../anomalies/Anomaly'
 import {SiretExtractorClient} from '../../../clients/SiretExtractorClient'
 import {CompanySearchResult} from '../../../model/Company'
 import {Country} from '../../../model/Country'
+import {ScTextInput} from 'components_simple/formInputs/ScTextInput'
 
 interface Form {
   website: string
@@ -97,7 +98,11 @@ export const CompanyByWebsite = ({value, children, specificWebsiteCompanyKind, .
     register,
     reset,
     formState: {errors},
-  } = useForm<Form>()
+  } = useForm<Form>({
+    defaultValues: {
+      website: value,
+    },
+  })
 
   const [website, setWebsite] = useState('')
   const [isEditingWebsite, setIsEditingWebsite] = useState(true)
@@ -194,7 +199,38 @@ export const CompanyByWebsite = ({value, children, specificWebsiteCompanyKind, .
           <PanelBody>
             <RequiredFieldsLegend />
             <Box component="form" onSubmit={handleSubmit(onSubmit)} {...props}>
-              <FieldLabel label={m.website} required>
+              <ScTextInput
+                label={m.website}
+                required
+                disabled={inputIsDisabled}
+                editable={
+                  inputIsDisabled
+                    ? {
+                        onEdit: editWebsite,
+                        label: m.modifyWebsite,
+                      }
+                    : undefined
+                }
+                clearable={
+                  inputIsDisabled
+                    ? {
+                        onClear: clearWebsite,
+                        label: m.clearWebsite,
+                      }
+                    : undefined
+                }
+                {...restOfRegisterWebsiteResult}
+                ref={e => {
+                  // https://www.react-hook-form.com/faqs/#Howtosharerefusage
+                  ref(e)
+                  inputRef.current = e as any as HTMLInputElement
+                }}
+                placeholder={m.websitePlaceholder}
+                error={!!errors.website}
+                helperText={errors.website?.message}
+                tabIndex={-1}
+              />
+              {/* <FieldLabel label={m.website} required>
                 <ScInput
                   InputProps={{
                     endAdornment: (
@@ -224,7 +260,7 @@ export const CompanyByWebsite = ({value, children, specificWebsiteCompanyKind, .
                   helperText={errors.website?.message}
                   tabIndex={-1}
                 />
-              </FieldLabel>
+              </FieldLabel> */}
               <br />
               <SimilarHosts
                 {...{website, displayedResults}}

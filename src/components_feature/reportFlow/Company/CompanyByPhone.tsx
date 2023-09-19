@@ -63,6 +63,7 @@ export const CompanyByPhone = ({value, children, ...props}: Props) => {
                   isSubmitted
                     ? {
                         onClear: clear,
+                        label: m.clearPhone,
                       }
                     : undefined
                 }

@@ -17,7 +17,13 @@ type Props = {
   disabled?: boolean
   clearable?: {
     onClear: () => void
+    label: string
   }
+  editable?: {
+    onEdit: () => void
+    label: string
+  }
+  tabIndex?: number
 }
 
 export const ScTextInput = forwardRef((props: Props, ref: ForwardedRef<HTMLInputElement>) => {
@@ -34,7 +40,9 @@ export const ScTextInput = forwardRef((props: Props, ref: ForwardedRef<HTMLInput
     required,
     type = 'text',
     disabled = false,
+    editable,
     clearable,
+    tabIndex,
   } = props
   const inputId = useId()
   const helperTextId = useId()
@@ -69,8 +77,12 @@ export const ScTextInput = forwardRef((props: Props, ref: ForwardedRef<HTMLInput
           className={`fr-input ${error ? 'fr-input--error' : null}`}
           aria-describedby={helperTextId}
           {...(required ? {'aria-required': true} : null)}
+          {...(tabIndex ? {tabIndex} : null)}
         />
-        {clearable && <Button iconId="fr-icon-close-line" onClick={clearable.onClear} priority="tertiary" title="Label button" />}
+        {editable && <Button iconId="fr-icon-edit-line" onClick={editable.onEdit} priority="tertiary" title={editable.label} />}
+        {clearable && (
+          <Button iconId="fr-icon-close-line" onClick={clearable.onClear} priority="tertiary" title={clearable.label} />
+        )}
       </div>
       {helperText && (
         <p id={helperTextId} className={error ? 'fr-error-text' : 'fr-info-text'} {...(error ? {'aria-live': 'polite'} : null)}>
