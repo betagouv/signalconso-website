@@ -14,6 +14,7 @@ import {Country, countryLabel} from '../../../model/Country'
 import {fnSwitch} from '../../../utils/FnSwitch'
 import {AppLang, AppLangs} from '../../../i18n/localization/AppLangs'
 import {RequiredFieldsLegend} from 'components_simple/RequiredFieldsLegend'
+import {ScTextInput} from 'components_simple/formInputs/ScTextInput'
 
 interface Form {
   name: string
@@ -48,18 +49,16 @@ export const CompanyAskForeignDetails = ({onSubmit, companyKind}: Props) => {
         <RequiredFieldsLegend />
         <form onSubmit={handleSubmit(onSubmit)}>
           <PanelBody>
-            <FieldLabel required label={m.reportedCompanyName}>
-              <ScInput
-                error={!!errors.name}
-                helperText={errors.name?.message ?? ''}
-                placeholder={m.reportedCompanyNamePlaceholder}
-                fullWidth
-                {...register('name', {
-                  required: {value: true, message: m.required},
-                })}
-                required
-              />
-            </FieldLabel>
+            <ScTextInput
+              label={m.reportedCompanyName}
+              {...register('name', {
+                required: {value: true, message: m.required},
+              })}
+              required
+              error={!!errors.name}
+              helperText={errors.name?.message ?? ''}
+              placeholder={m.reportedCompanyNamePlaceholder}
+            />
             <FieldLabel required label={m.country}>
               <Controller
                 name="country"
@@ -114,18 +113,16 @@ export const CompanyAskForeignDetails = ({onSubmit, companyKind}: Props) => {
                 }}
               />
             </ScAlert>
-            <FieldLabel required label={m.yourPostalCode}>
-              <ScInput
-                error={!!errors.postalCode}
-                helperText={errors.postalCode?.message ?? ''}
-                placeholder={m.yourPostalCodePlaceholder}
-                fullWidth
-                {...register('postalCode', {
-                  required: {value: true, message: m.required},
-                })}
-                required
-              />
-            </FieldLabel>
+            <ScTextInput
+              label={m.yourPostalCode}
+              {...register('postalCode', {
+                required: {value: true, message: m.required},
+              })}
+              required
+              error={!!errors.postalCode}
+              helperText={errors.postalCode?.message ?? ''}
+              placeholder={m.yourPostalCodePlaceholder}
+            />
           </PanelBody>
 
           <PanelActions>
