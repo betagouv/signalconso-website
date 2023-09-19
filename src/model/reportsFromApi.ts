@@ -17,6 +17,7 @@ export interface ApiReportDraft {
   subcategories: string[]
   details: DetailInputValue[]
   companyName?: string
+  companyBrand?: string
   companyAddress?: Address
   companySiret?: string
   companyActivityCode?: string
