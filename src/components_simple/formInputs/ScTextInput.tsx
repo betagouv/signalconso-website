@@ -6,14 +6,17 @@ type Props = {
   name: string
   placeholder?: string
   error: boolean
-  helperText: ReactNode
+  helperText?: ReactNode
   required: boolean
   label: ReactNode
   desc?: ReactNode
+  autocomplete?: string
+  defaultValue?: string
+  type?: 'text' | 'email' | 'tel'
 }
 
 export const ScTextInput = forwardRef((props: Props, ref: ForwardedRef<HTMLInputElement>) => {
-  const {onChange, onBlur, name, placeholder, label, desc, error, helperText, required} = props
+  const {onChange, onBlur, autocomplete, name, placeholder, label, desc, error, helperText, required, type = 'text'} = props
   const inputId = useId()
   const helperTextId = useId()
   const labelWithAsterisk = (
@@ -23,18 +26,19 @@ export const ScTextInput = forwardRef((props: Props, ref: ForwardedRef<HTMLInput
     </>
   )
   return (
-    <div className={`fr-input-group ${error ? 'fr-input-group--error' : null}`}>
+    <div className={`fr-input-group ${error ? 'fr-input-group--error' : null} sctextinput`}>
       <label className="fr-label" htmlFor={inputId}>
         {labelWithAsterisk}
         {desc && <span className="fr-hint-text">{desc}</span>}
       </label>
       <input
+        autoComplete={autocomplete}
         id={inputId}
         name={name}
         onChange={onChange}
         onBlur={onBlur}
         ref={ref}
-        type="text"
+        type={type}
         placeholder={placeholder}
         className={`fr-input ${error ? 'fr-input--error' : null}`}
         aria-describedby={helperTextId}

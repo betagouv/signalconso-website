@@ -952,6 +952,7 @@ export const en = {
     key: 'Key:',
     phone: 'Phone:',
     phoneOptional: 'Phone (optional): ',
+    optional: 'Optional',
     phonePlaceholder: 'ex : 0612345678 ',
     referenceNumberOptional: 'Reference number (optional): ',
     referenceNumberDesc:

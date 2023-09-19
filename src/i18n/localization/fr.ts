@@ -964,6 +964,7 @@ export const fr = {
     key: 'Key',
     phone: 'Téléphone',
     phoneOptional: 'Téléphone (optionnel)',
+    optional: 'Facultatif',
     phonePlaceholder: 'ex : 0612345678',
     referenceNumberOptional: 'Numéro de référence (optionnel)',
     referenceNumberDesc:
