@@ -1,4 +1,4 @@
-import {ScTextInput} from 'components_simple/formInputs/ScTextInput'
+import {ScPrecisionInput} from 'components_simple/formInputs/ScPrecisionInput'
 import {useI18n} from 'i18n/I18n'
 import {Control, Controller} from 'react-hook-form'
 import {FieldError} from 'react-hook-form/dist/types/errors'
@@ -23,20 +23,9 @@ export const DetailsSpecifyInput = ({
       rules={{
         required: {value: true, message: m.required},
       }}
-      render={({field}) => (
-        <ScTextInput
-          {...field}
-          error={!!error}
-          helperText={error?.message}
-          autoFocus
-          onClick={e => {
-            e.stopPropagation()
-            e.preventDefault()
-          }}
-          placeholder={m.specify}
-          required
-        />
-      )}
+      render={({field}) => {
+        return <ScPrecisionInput {...field} error={!!error} helperText={error?.message} required />
+      }}
     />
   )
 }

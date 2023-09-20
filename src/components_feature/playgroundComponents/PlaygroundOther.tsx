@@ -49,6 +49,7 @@ export const PlaygroundOther = () => {
           },
           {
             label: 'Option 2',
+            description: 'Description',
             value: 'b',
             specify: <DetailsSpecifyInput control={control} name="specifiyValue" />,
           },
