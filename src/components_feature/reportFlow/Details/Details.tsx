@@ -1,11 +1,10 @@
-import {Alert} from '@codegouvfr/react-dsfr/Alert'
 import {useAnalyticContext} from 'analytic/AnalyticContext'
 import {EventCategories, ReportEventActions} from 'analytic/analytic'
 import {StepNavigation} from 'components_feature/reportFlow/reportFlowStepper/ReportFlowStepper'
 import {ReportFlowStepperActions} from 'components_feature/reportFlow/reportFlowStepper/ReportFlowStepperActions'
 import {Animate} from 'components_simple/Animate'
 import {FriendlyHelpText} from 'components_simple/FriendlyHelpText'
-import {ADD_FILE_HELP_ID} from 'components_simple/reportFile/ReportFileAdd'
+import {RequiredFieldsLegend} from 'components_simple/RequiredFieldsLegend'
 import {ReportFiles} from 'components_simple/reportFile/ReportFiles'
 import {appConfig} from 'core/appConfig'
 import {useI18n} from 'i18n/I18n'
@@ -17,10 +16,10 @@ import {DetailInput, ReportTag, StandardSubcategory} from '../../../anomalies/An
 import {ConsumerWish, ReportDraft} from '../../../model/ReportDraft'
 import {FileOrigin, UploadedFile} from '../../../model/UploadedFile'
 import {useReportFlowContext} from '../ReportFlowContext'
+import {buildDefaultValues} from './DetailInputsUtils'
 import {DetailsAlertProduitDangereux} from './DetailsAlertProduitDangereux'
 import {DetailsInputRenderByType} from './DetailsInputRenderByType'
 import {getDraftReportInputs} from './draftReportInputs'
-import {RequiredFieldsLegend} from 'components_simple/RequiredFieldsLegend'
 
 export class SpecifyFormUtils {
   static readonly specifyKeywordFr = '(à préciser)'
@@ -91,6 +90,12 @@ export const DetailsInner = ({
 }) => {
   const [uploadedFiles, setUploadedFiles] = useState<undefined | UploadedFile[]>()
   const {m} = useI18n()
+
+  const defaultValues = {
+    ...buildDefaultValues(inputs),
+    ...initialValues,
+  }
+
   const {
     control,
     getValues,
@@ -98,7 +103,7 @@ export const DetailsInner = ({
     register,
     formState: {errors},
   } = useForm<DetailInputValues2>({
-    defaultValues: initialValues,
+    defaultValues,
   })
 
   useEffect(() => {

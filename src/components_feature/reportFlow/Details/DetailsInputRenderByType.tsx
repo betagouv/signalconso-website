@@ -13,7 +13,7 @@ import {DetailInput, DetailInputType} from '../../../anomalies/Anomaly'
 import {ScCheckbox} from '../../../components_simple/formInputs/ScCheckbox'
 import {ScRadioButtons} from '../../../components_simple/formInputs/ScRadioButtons'
 import {mapNTimes} from '../../../utils/utils'
-import {getDefaultValueFromInput, getOptionsFromInput, getPlaceholderFromInput} from './DetailInputsUtils'
+import {getOptionsFromInput, getPlaceholderFromInput} from './DetailInputsUtils'
 import {SpecifyFormUtils} from './Details'
 import {DetailsSpecifyInput} from './DetailsSpecifyInput'
 
@@ -58,7 +58,6 @@ export function DetailsInputRenderByType({
 
   const renderDateVariant = ({max}: {max: string}) => {
     const min = '1970-01-01'
-    const defaultValue = getDefaultValueFromInput(input) === 'SYSDATE' ? dateToIsoFormatWithoutTime(new Date()) : undefined
     return (
       <ScDatepickerNew
         {...unsafeRegisterForStringsOnly(name, {
@@ -130,7 +129,6 @@ export function DetailsInputRenderByType({
                         <DetailsSpecifyInput
                           control={control}
                           error={errors[SpecifyFormUtils.getInputName(inputIndex)]}
-                          defaultValue={initialValues?.[SpecifyFormUtils.getInputName(inputIndex)]}
                           name={SpecifyFormUtils.getInputName(inputIndex)}
                         />
                       ) : undefined,
@@ -163,7 +161,6 @@ export function DetailsInputRenderByType({
                         <DetailsSpecifyInput
                           control={control}
                           error={errors[SpecifyFormUtils.getInputName(inputIndex)]}
-                          defaultValue={initialValues?.[SpecifyFormUtils.getInputName(inputIndex)]}
                           name={SpecifyFormUtils.getInputName(inputIndex)}
                         />
                       ) : undefined,
