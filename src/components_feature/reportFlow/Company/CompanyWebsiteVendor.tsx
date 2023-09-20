@@ -6,6 +6,7 @@ import {ScInput} from 'components_simple/formInputs/ScInput'
 import {FieldLabel} from 'components_simple/FieldLabel'
 import {useForm} from 'react-hook-form'
 import {ScButton} from 'components_simple/ScButton'
+import {ScTextInput} from 'components_simple/formInputs/ScTextInput'
 
 interface Form {
   websiteVendor: string
@@ -30,17 +31,15 @@ export const CompanyWebsiteVendor = ({onSubmit}: Props) => {
             <ScAlert type="info">
               <p>{m.companyWebsiteVendorAlert}</p>
             </ScAlert>
-            <FieldLabel required label={m.companyWebsiteVendorLabel}>
-              <ScInput
-                fullWidth
-                error={!!errors.websiteVendor}
-                helperText={errors.websiteVendor?.message ?? ''}
-                {...register('websiteVendor', {
-                  required: {value: true, message: m.required},
-                })}
-                required
-              />
-            </FieldLabel>
+            <ScTextInput
+              label={m.companyWebsiteVendorLabel}
+              error={!!errors.websiteVendor}
+              helperText={errors.websiteVendor?.message ?? ''}
+              {...register('websiteVendor', {
+                required: {value: true, message: m.required},
+              })}
+              required
+            />
           </PanelBody>
           <PanelActions>
             <ScButton color="primary" variant="contained" type="submit">
