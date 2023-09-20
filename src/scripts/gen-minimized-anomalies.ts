@@ -3,8 +3,12 @@ import path from 'path'
 
 const files = [
   {
-    input: path.resolve('./src/anomalies/json/anomalies.json'),
-    output: path.resolve('./src/anomalies/json/minimized-anomalies.json'),
+    input: path.resolve('./src/anomalies/json/anomalies_fr.json'),
+    output: path.resolve('./src/anomalies/json/minimized-anomalies_fr.json'),
+  },
+  {
+    input: path.resolve('./src/anomalies/json/anomalies_en.json'),
+    output: path.resolve('./src/anomalies/json/minimized-anomalies_en.json'),
   },
 ]
 
