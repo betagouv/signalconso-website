@@ -211,14 +211,6 @@ export const CompanyByWebsite = ({value, children, specificWebsiteCompanyKind, .
                       }
                     : undefined
                 }
-                clearable={
-                  inputIsDisabled
-                    ? {
-                        onClear: clearWebsite,
-                        label: m.clearWebsite,
-                      }
-                    : undefined
-                }
                 {...restOfRegisterWebsiteResult}
                 ref={e => {
                   // https://www.react-hook-form.com/faqs/#Howtosharerefusage
@@ -230,37 +222,6 @@ export const CompanyByWebsite = ({value, children, specificWebsiteCompanyKind, .
                 helperText={errors.website?.message}
                 tabIndex={-1}
               />
-              {/* <FieldLabel label={m.website} required>
-                <ScInput
-                  InputProps={{
-                    endAdornment: (
-                      <Tooltip title={m.modifyWebsite}>
-                        <IconButton size="small" color="primary" onClick={editWebsite} aria-label={m.modifyWebsite}>
-                          <Icon>edit</Icon>
-                        </IconButton>
-                      </Tooltip>
-                    ),
-                  }}
-                  clearable={{
-                    onClear: clearWebsite,
-                    label: m.clearWebsite,
-                  }}
-                  defaultValue={value}
-                  disabled={inputIsDisabled}
-                  {...restOfRegisterWebsiteResult}
-                  ref={e => {
-                    // https://www.react-hook-form.com/faqs/#Howtosharerefusage
-                    ref(e)
-                    inputRef.current = e as any as HTMLInputElement
-                  }}
-                  required
-                  fullWidth
-                  placeholder={m.websitePlaceholder}
-                  error={!!errors.website}
-                  helperText={errors.website?.message}
-                  tabIndex={-1}
-                />
-              </FieldLabel> */}
               <br />
               <SimilarHosts
                 {...{website, displayedResults}}

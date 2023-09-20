@@ -34,7 +34,9 @@ export const CompanyByPhone = ({value, children, ...props}: Props) => {
     setPhone(form.phone)
   }
 
-  const clear = () => {
+  const edit = () => {
+    // I don'y why, it doesn't actually empty the field
+    // but at least it enables it again
     setPhone(undefined)
   }
 
@@ -59,10 +61,10 @@ export const CompanyByPhone = ({value, children, ...props}: Props) => {
                 placeholder={m.phoneNumberHavingCalledPlaceholder}
                 error={!!errors.phone}
                 helperText={errors.phone?.message}
-                clearable={
+                editable={
                   isSubmitted
                     ? {
-                        onClear: clear,
+                        onEdit: edit,
                         label: m.clearPhone,
                       }
                     : undefined
