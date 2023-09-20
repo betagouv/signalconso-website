@@ -13,7 +13,7 @@ type Props = {
   desc?: ReactNode
   autocomplete?: string
   defaultValue?: string
-  type?: 'text' | 'email' | 'tel'
+  type?: 'text' | 'email' | 'tel' | 'number'
   disabled?: boolean
   clearable?: {
     onClear: () => void

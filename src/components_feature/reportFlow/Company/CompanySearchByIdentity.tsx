@@ -1,22 +1,19 @@
-import {Icon, IconButton} from '@mui/material'
 import {useQuery} from '@tanstack/react-query'
 import {useAnalyticContext} from 'analytic/AnalyticContext'
 import {CompanySearchEventActions, EventCategories} from 'analytic/analytic'
 import {useToastOnQueryError} from 'clients/apiHooks'
 import {Animate} from 'components_simple/Animate'
+import {AutofocusedDiv} from 'components_simple/AutofocusedDiv'
 import {ButtonWithLoader} from 'components_simple/Buttons'
-import {FieldLabel} from 'components_simple/FieldLabel'
 import {Panel, PanelActions, PanelBody} from 'components_simple/Panel'
-import {ScInput} from 'components_simple/formInputs/ScInput'
+import {RequiredFieldsLegend} from 'components_simple/RequiredFieldsLegend'
+import {ScTextInput} from 'components_simple/formInputs/ScTextInput'
 import {useApiClients} from 'context/ApiClientsContext'
 import {useI18n} from 'i18n/I18n'
 import {ReactNode, useRef, useState} from 'react'
 import {useForm} from 'react-hook-form'
 import {CompanySearchResult} from '../../../model/Company'
-import {ifDefined} from '../../../utils/utils'
 import {CompanySearchByIdentityHelpDialog} from './CompanySearchByIdentityHelpDialog'
-import {RequiredFieldsLegend} from 'components_simple/RequiredFieldsLegend'
-import {AutofocusedDiv} from 'components_simple/AutofocusedDiv'
 
 interface Form {
   identity: string
@@ -40,7 +37,7 @@ export const CompanySearchByIdentity = ({children}: Props) => {
   })
   useToastOnQueryError(_searchByIdentity)
 
-  const inputEl = useRef<HTMLInputElement>(null)
+  const inputEl = useRef<HTMLInputElement | null>(null)
 
   function search(form: Form) {
     _analytic.trackEvent(EventCategories.companySearch, CompanySearchEventActions.searchByIdentity, form.identity)
@@ -53,6 +50,10 @@ export const CompanySearchByIdentity = ({children}: Props) => {
     inputEl.current?.focus()
   }
 
+  const {ref, ...restOfRegisterIdentity} = register('identity', {
+    required: {value: true, message: m.required},
+  })
+
   return (
     <>
       <Animate>
@@ -60,7 +61,7 @@ export const CompanySearchByIdentity = ({children}: Props) => {
           <form onSubmit={handleSubmit(search)}>
             <RequiredFieldsLegend />
             <PanelBody>
-              <FieldLabel
+              <ScTextInput
                 required
                 label={
                   <span>
@@ -70,25 +71,21 @@ export const CompanySearchByIdentity = ({children}: Props) => {
                     </CompanySearchByIdentityHelpDialog>
                   </span>
                 }
-              >
-                <ScInput
-                  type="number"
-                  inputRef={inputEl}
-                  {...register('identity', {
-                    required: {value: true, message: m.required},
-                  })}
-                  required
-                  fullWidth
-                  placeholder={m.companyIdentityPlaceholder}
-                  InputProps={{
-                    endAdornment: (
-                      <IconButton size="small" color="primary" onClick={clear}>
-                        <Icon>clear</Icon>
-                      </IconButton>
-                    ),
-                  }}
-                />
-              </FieldLabel>
+                type="number"
+                {...restOfRegisterIdentity}
+                ref={e => {
+                  // https://www.react-hook-form.com/faqs/#Howtosharerefusage
+                  ref(e)
+                  inputEl.current = e as any as HTMLInputElement
+                }}
+                placeholder={m.companyIdentityPlaceholder}
+                // clearable={{
+                //   onClear: clear,
+                //   label: m.clearSiret,
+                // }}
+                error={false}
+                helperText={undefined}
+              />
             </PanelBody>
 
             <PanelActions>

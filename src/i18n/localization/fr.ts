@@ -1148,6 +1148,7 @@ export const fr = {
     website: 'Site internet',
     modifyWebsite: 'Modifier le site internet',
     clearWebsite: 'Effacer le site internet',
+    clearSiret: 'Effacer le numéro',
     clearPhone: 'Effacer le numéro de téléphone',
     canYouIdentifyCompany: `Pouvez-vous identifier l'entreprise  ?`,
     canYouIdentifyCompanyDesc: `SignalConso en a besoin pour la contacter et informer la répression des fraudes.`,
