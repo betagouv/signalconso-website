@@ -6,16 +6,15 @@ import {Animate} from 'components_simple/Animate'
 import {AutocompleteCity} from 'components_simple/AutocompleteCity'
 import {ButtonWithLoader} from 'components_simple/Buttons'
 import {FieldLabel} from 'components_simple/FieldLabel'
-import {ScInput} from 'components_simple/formInputs/ScInput'
 import {Panel, PanelActions, PanelBody} from 'components_simple/Panel'
+import {RequiredFieldsLegend} from 'components_simple/RequiredFieldsLegend'
+import {ScTextInput} from 'components_simple/formInputs/ScTextInput'
 import {useApiClients} from 'context/ApiClientsContext'
 import {useI18n} from 'i18n/I18n'
 import {ReactNode, useState} from 'react'
 import {Controller, useForm} from 'react-hook-form'
-import {Txt} from '../../../components_simple/Txt'
 import {CompanySearchResult} from '../../../model/Company'
 import {ifDefined} from '../../../utils/utils'
-import {RequiredFieldsLegend} from 'components_simple/RequiredFieldsLegend'
 
 interface Form {
   name: string
@@ -57,17 +56,15 @@ export const CompanySearchByNameAndPostalCode = ({children}: Props) => {
           <RequiredFieldsLegend />
           <form onSubmit={handleSubmit(search)}>
             <PanelBody>
-              <FieldLabel required label={m.reportedCompanyName}>
-                <ScInput
-                  fullWidth
-                  error={!!errors.name}
-                  helperText={errors.name?.message}
-                  {...register('name', {
-                    required: {value: true, message: m.required},
-                  })}
-                  required
-                />
-              </FieldLabel>
+              <ScTextInput
+                label={m.reportedCompanyName}
+                error={!!errors.name}
+                helperText={errors.name?.message}
+                {...register('name', {
+                  required: {value: true, message: m.required},
+                })}
+                required
+              />
               <FieldLabel required label={m.postalCode} desc={m.youCanSearchByCity}>
                 <Controller
                   control={control}
