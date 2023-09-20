@@ -1,4 +1,4 @@
-import {ScInput} from 'components_simple/formInputs/ScInput'
+import {ScTextInput} from 'components_simple/formInputs/ScTextInput'
 import {useI18n} from 'i18n/I18n'
 import {Control, Controller} from 'react-hook-form'
 import {FieldError} from 'react-hook-form/dist/types/errors'
@@ -21,10 +21,10 @@ export const DetailsSpecifyInput = ({
       control={control}
       name={name}
       rules={{
-        required: {value: true, message: m.required + ' *'},
+        required: {value: true, message: m.required},
       }}
       render={({field}) => (
-        <ScInput
+        <ScTextInput
           {...field}
           error={!!error}
           helperText={error?.message}
@@ -33,7 +33,6 @@ export const DetailsSpecifyInput = ({
             e.stopPropagation()
             e.preventDefault()
           }}
-          fullWidth
           placeholder={m.specify}
           required
         />
