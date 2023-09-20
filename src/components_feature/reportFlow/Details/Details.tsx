@@ -95,17 +95,11 @@ export const DetailsInner = ({
     control,
     getValues,
     handleSubmit,
-    reset,
     register,
     formState: {errors},
-  } = useForm<DetailInputValues2>()
-
-  useEffect(() => {
-    if (initialValues) {
-      const formValues = Object.keys(initialValues).reduce((acc, key) => ({...acc, [key]: initialValues[key] ?? ''}), {})
-      reset(formValues)
-    }
-  }, [initialValues])
+  } = useForm<DetailInputValues2>({
+    defaultValues: initialValues,
+  })
 
   useEffect(() => {
     if (initialFiles) setUploadedFiles(initialFiles)
