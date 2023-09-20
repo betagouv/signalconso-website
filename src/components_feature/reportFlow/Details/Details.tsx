@@ -96,6 +96,7 @@ export const DetailsInner = ({
     getValues,
     handleSubmit,
     reset,
+    register,
     formState: {errors},
   } = useForm<DetailInputValues2>()
 
@@ -141,6 +142,7 @@ export const DetailsInner = ({
               key={inputIndex}
               {...{
                 control,
+                register,
                 inputIndex,
                 input,
                 errors,

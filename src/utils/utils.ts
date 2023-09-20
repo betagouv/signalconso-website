@@ -33,7 +33,14 @@ export const frenchFormatToDate = (d: string) => {
 }
 
 export const isDateInRange = (d: string, min: string, max: string) => {
-  return frenchFormatToDate(d) >= frenchFormatToDate(min) && frenchFormatToDate(d) <= frenchFormatToDate(max)
+  return (
+    isoDateStringToDateObject(d) >= isoDateStringToDateObject(min) &&
+    isoDateStringToDateObject(d) <= isoDateStringToDateObject(max)
+  )
+}
+
+export function isoDateStringToDateObject(d: string) {
+  return new Date(d)
 }
 
 export const dateToIsoFormatWithoutTime = (d: Date) => {
