@@ -1228,6 +1228,7 @@ export const fr = {
     consumerAskCodeDesc: (email: string) => `Un email vous a été envoyé à l'adresse <b>${email}</b>`,
     consumerCodePlaceholder: `______`,
     consumerEmailMayTakesTime: `L'envoi de l'email peut prendre quelques minutes`,
+    consumerValidationCode: 'Code de validation (6 chiffres)',
     consumerInvalidCode: `Code incorrect`,
     consumerResentEmail: `Renvoyer`,
     consumerDummyEmailNotAccepted: `Les adresses éphémères ne sont pas acceptées.`,
