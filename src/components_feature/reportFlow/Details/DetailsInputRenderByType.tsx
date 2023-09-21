@@ -118,8 +118,8 @@ export function DetailsInputRenderByType({
               errorMessage={errorMessage}
               error={hasErrors}
               options={
-                getOptionsFromInput(input)?.map((option, optionIndex) => {
-                  const specifyName = SpecifyFormUtils.getInputName(inputIndex, optionIndex)
+                getOptionsFromInput(input)?.map(option => {
+                  const specifyName = SpecifyFormUtils.getInputName(inputIndex)
                   return {
                     label: <span dangerouslySetInnerHTML={{__html: option}} />,
                     value: option,
@@ -152,8 +152,8 @@ export function DetailsInputRenderByType({
               titleSoberStyle
               required={required}
               options={
-                getOptionsFromInput(input)?.map((option, optionIndex) => {
-                  const specifyName = SpecifyFormUtils.getInputName(inputIndex, optionIndex)
+                getOptionsFromInput(input)?.map(option => {
+                  const specifyName = SpecifyFormUtils.getInputName(inputIndex)
                   return {
                     label: <span dangerouslySetInnerHTML={{__html: option}} />,
                     value: option,

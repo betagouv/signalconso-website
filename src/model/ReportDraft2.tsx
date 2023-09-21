@@ -29,7 +29,7 @@ export class ReportDraft2 {
         ? SpecifyFormUtils.specifyKeywordFr
         : SpecifyFormUtils.specifyKeywordEn
       // TODO pass an optionIndex here instead of 0 !!!!!
-      return value.replace(specifyKeyword, details[SpecifyFormUtils.getInputName(index, 0)] as string)
+      return value.replace(specifyKeyword, details[SpecifyFormUtils.getInputName(index)] as string)
     }
 
     const mapLabel = (label: string): string => {
