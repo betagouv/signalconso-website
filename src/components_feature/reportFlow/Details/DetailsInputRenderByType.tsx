@@ -1,6 +1,6 @@
 import {MenuItem} from '@mui/material'
 import {FieldLabel} from 'components_simple/FieldLabel'
-import {ScDatepickerNew} from 'components_simple/formInputs/ScDatepickerNew'
+import {ScDatepickerNew} from 'components_simple/formInputs/ScDatepicker'
 import {ScPrecisionInput} from 'components_simple/formInputs/ScPrecisionInput'
 import {ScSelect} from 'components_simple/formInputs/ScSelect'
 import {ScTextInput} from 'components_simple/formInputs/ScTextInput'
