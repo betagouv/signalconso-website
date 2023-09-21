@@ -74,7 +74,7 @@ describe('Details: single date not in future', () => {
     clickBtnSubmit(app)
     await waitFor(() =>
       expect(inputValues).toEqual({
-        0: '15-02-2018',
+        0: '2018-02-15',
       }),
     )
   })
@@ -179,39 +179,5 @@ describe('Details: textarea', () => {
     await clickBtnSubmit(app)
     await hasErrors(app, 0)
     await waitFor(() => expect(inputValues).toEqual({0: stringAboveLimit}))
-  })
-})
-
-describe('Details: initialize values', () => {
-  let app: ScRenderResult
-  let inputValues: undefined | DetailInputValues2
-  const initialValues = {
-    0: '01/01/2018',
-    1: DetailsFixtureValue.text,
-    2: DetailsFixtureValue.radio,
-    [SpecifyFormUtils.getInputName(2)]: 'blabla radio',
-    3: DetailsFixtureValue.checkbox,
-    [SpecifyFormUtils.getInputName(3)]: 'blabla cb',
-    4: DetailsFixtureValue.textarea,
-  }
-  beforeEach(() => {
-    inputValues = undefined
-    app = render(
-      <DetailsInner
-        initialValues={initialValues}
-        inputs={[
-          DetailsFixtureInput.date,
-          DetailsFixtureInput.text,
-          DetailsFixtureInput.radio(AppLangs.fr),
-          DetailsFixtureInput.checkbox(AppLangs.fr),
-          DetailsFixtureInput.textarea,
-        ]}
-        onSubmit={x => {
-          inputValues = x
-        }}
-        stepNavigation={dummyStepNavigation}
-        consumerWish={undefined}
-      />,
-    )
   })
 })
