@@ -2,8 +2,8 @@ title: Sous category avec juste quelques "detailInputs"
 desc: >-
   Pour faire des tests rapides
 detailInputs:
-  # - label: simple input texte (le type TEXT)
-  #   type: TEXT
+  - label: simple input texte (le type TEXT)
+    type: TEXT
   # - label: input texte optionnel
   #   type: TEXT
   #   optional: true
@@ -18,11 +18,11 @@ detailInputs:
   # - label: zone de texte avec placeholder
   #   type: TEXTAREA
   #   placeholder: ceci le placeholder de la zone de texte
-  - label: simple input date (DATE)
-    type: DATE
-  - label: input date optionnel
-    type: DATE
-    optional: true
+  # - label: simple input date (DATE)
+  #   type: DATE
+  # - label: input date optionnel
+  #   type: DATE
+  #   optional: true
   - label: input date avec la date courante comme valeur par défaut
     type: DATE
     defaultValue: SYSDATE
@@ -46,12 +46,12 @@ detailInputs:
   #     - seconde option
   #     - troisième option qu'il faut préciser (à préciser)
   #     - quatrième option qu'il faut préciser (à préciser)
-  # - label: input radio optionnel
-  #   type: RADIO
-  #   options:
-  #     - première option
-  #     - seconde option
-  #   optional: true
+  - label: input radio optionnel
+    type: RADIO
+    options:
+      - première option
+      - seconde option
+    optional: true
   # - label: input checkbox
   #   type: CHECKBOX
   #   options:
@@ -60,14 +60,14 @@ detailInputs:
   #     - troisième option qu'il faut préciser (à préciser)
   #     - quatrième option
   #     - cinquième option qu'il faut aussi préciser (à préciser)
-  # - label: input checkbox optionnel
-  #   type: CHECKBOX
-  #   options:
-  #     - première option
-  #     - seconde option
-  #   optional: true
+  - label: input checkbox optionnel
+    type: CHECKBOX
+    options:
+      - première option
+      - seconde option
+    optional: true
   # - label: input timeslot
   #   type: TIMESLOT
-  # - label: input timeslot optionnel
-  #   type: TIMESLOT
-  #   optional: true
+  - label: input timeslot optionnel
+    type: TIMESLOT
+    optional: true
