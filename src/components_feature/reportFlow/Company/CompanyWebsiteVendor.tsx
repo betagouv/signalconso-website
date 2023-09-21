@@ -1,12 +1,10 @@
-import {Panel, PanelActions, PanelBody} from 'components_simple/Panel'
 import {Animate} from 'components_simple/Animate'
-import {useI18n} from 'i18n/I18n'
-import {ScAlert} from '../../../components_simple/ScAlert'
-import {ScInput} from 'components_simple/formInputs/ScInput'
-import {FieldLabel} from 'components_simple/FieldLabel'
-import {useForm} from 'react-hook-form'
+import {Panel, PanelActions, PanelBody} from 'components_simple/Panel'
 import {ScButton} from 'components_simple/ScButton'
 import {ScTextInput} from 'components_simple/formInputs/ScTextInput'
+import {useI18n} from 'i18n/I18n'
+import {useForm} from 'react-hook-form'
+import {ScAlert} from '../../../components_simple/ScAlert'
 
 interface Form {
   websiteVendor: string

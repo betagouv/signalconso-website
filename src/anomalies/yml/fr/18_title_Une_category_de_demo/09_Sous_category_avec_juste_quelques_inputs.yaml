@@ -39,19 +39,20 @@ detailInputs:
   #     défaut
   #   type: DATE_NOT_IN_FUTURE
   #   defaultValue: SYSDATE
-  # - label: input radio
-  #   type: RADIO
-  #   options:
-  #     - première option
-  #     - seconde option
-  #     - troisième option qu'il faut préciser (à préciser)
-  #     - quatrième option qu'il faut préciser (à préciser)
-  # - label: input radio optionnel
-  #   type: RADIO
-  #   options:
-  #     - première option
-  #     - seconde option
-  #   optional: true
+  - label: input radio
+    type: RADIO
+    options:
+      - première option
+      - seconde option
+      - troisième option qu'il faut préciser (à préciser)
+      - quatrième option qu'il faut préciser (à préciser)
+  - label: input radio optionnel
+    type: RADIO
+    options:
+      - première option
+      - seconde option
+      - troisième option qu'il faut préciser (à préciser)
+    optional: true
   - label: input checkbox
     type: CHECKBOX
     options:

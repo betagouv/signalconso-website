@@ -36,6 +36,7 @@ export function DetailsInputRenderByType({
   const label = <span dangerouslySetInnerHTML={{__html: input.label}} />
   const required = !input.optional
   const baseRules = {required: {value: required, message: m.required + ' *'}}
+  const specifyInputRules = {required: {value: true, message: m.required + ' *'}}
   const maxLengthRule = {maxLength: {value: appConfig.maxDescriptionInputLength, message: ''}}
   const errorMessage = errors[inputIndex]?.message
   const hasErrors = !!errors[inputIndex]
@@ -117,7 +118,7 @@ export function DetailsInputRenderByType({
                     specify:
                       field.value === option && SpecifyFormUtils.hasSpecifyKeyword(option) ? (
                         <ScPrecisionInput
-                          {...register(specifyName, baseRules)}
+                          {...register(specifyName, specifyInputRules)}
                           error={!!errors[specifyName]}
                           helperText={errors[specifyName]?.message}
                           required
@@ -151,7 +152,7 @@ export function DetailsInputRenderByType({
                     specify:
                       (field.value as string[] | undefined)?.includes(option) && SpecifyFormUtils.hasSpecifyKeyword(option) ? (
                         <ScPrecisionInput
-                          {...register(specifyName, baseRules)}
+                          {...register(specifyName, specifyInputRules)}
                           error={!!errors[specifyName]}
                           helperText={errors[specifyName]?.message}
                           required
