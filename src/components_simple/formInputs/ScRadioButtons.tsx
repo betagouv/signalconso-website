@@ -84,9 +84,11 @@ export const ScRadioButtons = <V,>({
             >
               <input type="radio" id={inputId} name={radioName} onChange={() => onChange(value)} checked={checked}></input>
               <label className="fr-label !pr-4 ml-4" htmlFor={inputId}>
-                {label}
-                {description && createDescription(description)}
-                {checked && specify}
+                <div className="flex flex-col gap-2 items-start justify-start ">
+                  {label}
+                  {description && createDescription(description)}
+                  {checked && specify}
+                </div>
               </label>
             </div>
           )

@@ -1,11 +1,10 @@
-import {Alert} from '@codegouvfr/react-dsfr/Alert'
 import {useAnalyticContext} from 'analytic/AnalyticContext'
 import {EventCategories, ReportEventActions} from 'analytic/analytic'
 import {StepNavigation} from 'components_feature/reportFlow/reportFlowStepper/ReportFlowStepper'
 import {ReportFlowStepperActions} from 'components_feature/reportFlow/reportFlowStepper/ReportFlowStepperActions'
 import {Animate} from 'components_simple/Animate'
 import {FriendlyHelpText} from 'components_simple/FriendlyHelpText'
-import {ADD_FILE_HELP_ID} from 'components_simple/reportFile/ReportFileAdd'
+import {RequiredFieldsLegend} from 'components_simple/RequiredFieldsLegend'
 import {ReportFiles} from 'components_simple/reportFile/ReportFiles'
 import {appConfig} from 'core/appConfig'
 import {useI18n} from 'i18n/I18n'
@@ -17,17 +16,17 @@ import {DetailInput, ReportTag, StandardSubcategory} from '../../../anomalies/An
 import {ConsumerWish, ReportDraft} from '../../../model/ReportDraft'
 import {FileOrigin, UploadedFile} from '../../../model/UploadedFile'
 import {useReportFlowContext} from '../ReportFlowContext'
+import {buildDefaultValues} from './DetailInputsUtils'
 import {DetailsAlertProduitDangereux} from './DetailsAlertProduitDangereux'
 import {DetailsInputRenderByType} from './DetailsInputRenderByType'
 import {getDraftReportInputs} from './draftReportInputs'
-import {RequiredFieldsLegend} from 'components_simple/RequiredFieldsLegend'
 
 export class SpecifyFormUtils {
   static readonly specifyKeywordFr = '(à préciser)'
   static readonly specifyKeywordEn = '(to be specified)'
   static readonly hasSpecifyKeyword = (option: string) =>
     option.includes(SpecifyFormUtils.specifyKeywordFr) || option.includes(SpecifyFormUtils.specifyKeywordEn)
-  static readonly getInputName = (index: number) => `${index}_specify`
+  static readonly getInputName = (inputIndex: number) => `${inputIndex}_0_specify`
 }
 
 export const isSpecifyInputName = (name: string) => name.includes('_specify')
@@ -91,20 +90,21 @@ export const DetailsInner = ({
 }) => {
   const [uploadedFiles, setUploadedFiles] = useState<undefined | UploadedFile[]>()
   const {m} = useI18n()
+
+  const defaultValues = {
+    ...buildDefaultValues(inputs),
+    ...initialValues,
+  }
+
   const {
     control,
     getValues,
     handleSubmit,
-    reset,
+    register,
     formState: {errors},
-  } = useForm<DetailInputValues2>()
-
-  useEffect(() => {
-    if (initialValues) {
-      const formValues = Object.keys(initialValues).reduce((acc, key) => ({...acc, [key]: initialValues[key] ?? ''}), {})
-      reset(formValues)
-    }
-  }, [initialValues])
+  } = useForm<DetailInputValues2>({
+    defaultValues,
+  })
 
   useEffect(() => {
     if (initialFiles) setUploadedFiles(initialFiles)
@@ -141,10 +141,10 @@ export const DetailsInner = ({
               key={inputIndex}
               {...{
                 control,
+                register,
                 inputIndex,
                 input,
                 errors,
-                initialValues,
                 getValues,
               }}
             />

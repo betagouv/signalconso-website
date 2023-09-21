@@ -76,8 +76,10 @@ export const ScCheckbox = <V,>({
                 checked={checked}
               ></input>
               <label className="fr-label !pr-4 !pl-12 !ml-0 before:ml-12" htmlFor={inputId}>
-                {label}
-                {checked && specify}
+                <div className="flex flex-col gap-2 items-start justify-start ">
+                  {label}
+                  {checked && specify}
+                </div>
               </label>
             </div>
           )

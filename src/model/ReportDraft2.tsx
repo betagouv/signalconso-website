@@ -1,11 +1,12 @@
 import {getDraftReportInputs} from 'components_feature/reportFlow/Details/draftReportInputs'
 import {isSpecifyInputName, SpecifyFormUtils} from 'components_feature/reportFlow/Details/Details'
-import {DeepPartial} from '../utils/utils'
+import {DeepPartial, isoToFrenchFormat} from '../utils/utils'
 import {CompanyDraft, ReportDraft, ReportDraftConsumer} from './ReportDraft'
 import {Anomaly, DetailInput} from '../anomalies/Anomaly'
 import {DetailInputValue} from './CreatedReport'
 import {Address} from './Address'
 import {AppLang} from '../i18n/localization/AppLangs'
+import {isDateInput} from 'components_feature/reportFlow/Details/DetailInputsUtils'
 
 export type DetailInputValues2 = {[key: string]: string | string[]}
 
@@ -24,14 +25,14 @@ export class ReportDraft2 {
   }
 
   static readonly parseDetails = (details: DetailInputValues2, inputs: DetailInput[]): DetailInputValue[] => {
-    const concatSpecifiedValued = (value: string, index: number) => {
+    function concatSpecifiedValued(value: string, index: number) {
       const specifyKeyword = value.includes(SpecifyFormUtils.specifyKeywordFr)
         ? SpecifyFormUtils.specifyKeywordFr
         : SpecifyFormUtils.specifyKeywordEn
       return value.replace(specifyKeyword, details[SpecifyFormUtils.getInputName(index)] as string)
     }
 
-    const mapLabel = (label: string): string => {
+    function mapLabel(label: string): string {
       if (label.endsWith('?')) {
         return label.replace('?', ':')
       }
@@ -44,7 +45,8 @@ export class ReportDraft2 {
     return Object.keys(details)
       .filter(_ => !isSpecifyInputName(_))
       .map(index => {
-        const label = mapLabel(inputs[+index].label)
+        const input = inputs[+index]
+        const label = mapLabel(input.label)
 
         const prepareValue = (v: string | string[] | undefined): string => {
           if (v === undefined) {
@@ -52,6 +54,9 @@ export class ReportDraft2 {
           }
           if (Array.isArray(v)) {
             return v.map(_ => (SpecifyFormUtils.hasSpecifyKeyword(_) ? concatSpecifiedValued(_, +index) : _)).join(', ')
+          }
+          if (isDateInput(input)) {
+            return isoToFrenchFormat(v)
           }
           return concatSpecifiedValued(v, +index)
         }

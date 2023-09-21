@@ -1,27 +1,25 @@
-import {Box, BoxProps, Icon, IconButton, Tooltip} from '@mui/material'
-import {CompanySearchEventActions, EventCategories} from 'analytic/analytic'
+import {Alert} from '@codegouvfr/react-dsfr/Alert'
+import {Button} from '@codegouvfr/react-dsfr/Button'
+import {Box, BoxProps} from '@mui/material'
+import {useQuery} from '@tanstack/react-query'
 import {useAnalyticContext} from 'analytic/AnalyticContext'
-import {useToastOnQueryError} from 'clients/apiHooks'
+import {CompanySearchEventActions, EventCategories} from 'analytic/analytic'
 import {SignalConsoApiClient} from 'clients/SignalConsoApiClient'
+import {useToastOnQueryError} from 'clients/apiHooks'
 import {Animate} from 'components_simple/Animate'
-import {ScButton} from 'components_simple/ScButton'
-import {ScInput} from 'components_simple/formInputs/ScInput'
+import {AutofocusedDiv} from 'components_simple/AutofocusedDiv'
 import {Panel, PanelBody} from 'components_simple/Panel'
+import {RequiredFieldsLegend} from 'components_simple/RequiredFieldsLegend'
+import {ScButton} from 'components_simple/ScButton'
+import {ScTextInput} from 'components_simple/formInputs/ScTextInput'
 import {useApiClients} from 'context/ApiClientsContext'
 import {useI18n} from 'i18n/I18n'
 import {ReactNode, useEffect, useRef, useState} from 'react'
 import {useForm} from 'react-hook-form'
-import {useQuery} from '@tanstack/react-query'
-import {Txt} from '../../../components_simple/Txt'
+import {SpecificWebsiteCompanyKinds} from '../../../anomalies/Anomaly'
+import {SiretExtractorClient} from '../../../clients/SiretExtractorClient'
 import {CompanySearchResult} from '../../../model/Company'
 import {Country} from '../../../model/Country'
-import {Button} from '@codegouvfr/react-dsfr/Button'
-import {SpecificWebsiteCompanyKinds} from '../../../anomalies/Anomaly'
-import {Alert} from '@codegouvfr/react-dsfr/Alert'
-import {SiretExtractorClient} from '../../../clients/SiretExtractorClient'
-import {FieldLabel} from 'components_simple/FieldLabel'
-import {RequiredFieldsLegend} from 'components_simple/RequiredFieldsLegend'
-import {AutofocusedDiv} from 'components_simple/AutofocusedDiv'
 
 interface Form {
   website: string
@@ -98,7 +96,11 @@ export const CompanyByWebsite = ({value, children, specificWebsiteCompanyKind, .
     register,
     reset,
     formState: {errors},
-  } = useForm<Form>()
+  } = useForm<Form>({
+    defaultValues: {
+      website: value,
+    },
+  })
 
   const [website, setWebsite] = useState('')
   const [isEditingWebsite, setIsEditingWebsite] = useState(true)
@@ -195,37 +197,29 @@ export const CompanyByWebsite = ({value, children, specificWebsiteCompanyKind, .
           <PanelBody>
             <RequiredFieldsLegend />
             <Box component="form" onSubmit={handleSubmit(onSubmit)} {...props}>
-              <FieldLabel label={m.website} required>
-                <ScInput
-                  InputProps={{
-                    endAdornment: (
-                      <Tooltip title={m.modifyWebsite}>
-                        <IconButton size="small" color="primary" onClick={editWebsite} aria-label={m.modifyWebsite}>
-                          <Icon>edit</Icon>
-                        </IconButton>
-                      </Tooltip>
-                    ),
-                  }}
-                  clearable={{
-                    onClear: clearWebsite,
-                    label: m.clearWebsite,
-                  }}
-                  defaultValue={value}
-                  disabled={inputIsDisabled}
-                  {...restOfRegisterWebsiteResult}
-                  ref={e => {
-                    // https://www.react-hook-form.com/faqs/#Howtosharerefusage
-                    ref(e)
-                    inputRef.current = e as any as HTMLInputElement
-                  }}
-                  required
-                  fullWidth
-                  placeholder={m.websitePlaceholder}
-                  error={!!errors.website}
-                  helperText={errors.website?.message}
-                  tabIndex={-1}
-                />
-              </FieldLabel>
+              <ScTextInput
+                label={m.website}
+                required
+                disabled={inputIsDisabled}
+                editable={
+                  inputIsDisabled
+                    ? {
+                        onEdit: editWebsite,
+                        label: m.modifyWebsite,
+                      }
+                    : undefined
+                }
+                {...restOfRegisterWebsiteResult}
+                ref={e => {
+                  // https://www.react-hook-form.com/faqs/#Howtosharerefusage
+                  ref(e)
+                  inputRef.current = e as any as HTMLInputElement
+                }}
+                placeholder={m.websitePlaceholder}
+                error={!!errors.website}
+                helperText={errors.website?.message}
+                tabIndex={-1}
+              />
               <br />
               <SimilarHosts
                 {...{website, displayedResults}}

@@ -1,34 +1,34 @@
-import {MenuItem} from '@mui/material'
-import {FieldLabel} from 'components_simple/FieldLabel'
-import {ScDatepickerFr} from 'components_simple/formInputs/ScDatepickerFr'
-import {ScInput} from 'components_simple/formInputs/ScInput'
+import {ScDatepickerNew} from 'components_simple/formInputs/ScDatepicker'
+import {ScPrecisionInput} from 'components_simple/formInputs/ScPrecisionInput'
 import {ScSelect} from 'components_simple/formInputs/ScSelect'
+import {ScTextInput} from 'components_simple/formInputs/ScTextInput'
+import {ScTextarea} from 'components_simple/formInputs/ScTextarea'
 import {appConfig} from 'core/appConfig'
 import {useI18n} from 'i18n/I18n'
 import {DetailInputValues2} from 'model/ReportDraft2'
-import {Control, Controller, FieldErrors, UseFormGetValues} from 'react-hook-form'
-import {dateToFrenchFormat, isDateInRange} from 'utils/utils'
+import {Control, Controller, FieldErrors, UseFormGetValues, UseFormRegister} from 'react-hook-form'
+import {dateToIsoFormatWithoutTime, isDateInRange} from 'utils/utils'
 import {DetailInput, DetailInputType} from '../../../anomalies/Anomaly'
 import {ScCheckbox} from '../../../components_simple/formInputs/ScCheckbox'
 import {ScRadioButtons} from '../../../components_simple/formInputs/ScRadioButtons'
-import {mapNTimes} from '../../../utils/utils'
-import {getDefaultValueFromInput, getOptionsFromInput, getPlaceholderFromInput} from './DetailInputsUtils'
-import {DetailsSpecifyInput} from './DetailsSpecifyInput'
+import {getOptionsFromInput, getPlaceholderFromInput} from './DetailInputsUtils'
 import {SpecifyFormUtils} from './Details'
 
 export function DetailsInputRenderByType({
+  register,
   control,
   inputIndex,
   input,
   errors,
-  initialValues,
   getValues,
 }: {
-  control: Control<DetailInputValues2, any>
+  // we currently have a mix of controlled and uncontrolled components here
+  // so we use either register or control
+  register: UseFormRegister<DetailInputValues2>
+  control: Control<DetailInputValues2>
   inputIndex: number
   input: DetailInput
   errors: FieldErrors<DetailInputValues2>
-  initialValues: DetailInputValues2 | undefined
   getValues: UseFormGetValues<DetailInputValues2>
 }) {
   const {m} = useI18n()
@@ -36,12 +36,15 @@ export function DetailsInputRenderByType({
   const label = <span dangerouslySetInnerHTML={{__html: input.label}} />
   const required = !input.optional
   const baseRules = {required: {value: required, message: m.required + ' *'}}
+  const specifyInputRules = {required: {value: true, message: m.required + ' *'}}
   const maxLengthRule = {maxLength: {value: appConfig.maxDescriptionInputLength, message: ''}}
   const errorMessage = errors[inputIndex]?.message
   const hasErrors = !!errors[inputIndex]
   // for most input types, the value can only be a string
+  const unsafeRegisterForStringsOnly = register as UseFormRegister<{[key: string]: string}>
   const unsafeControlForStringsOnly = control as Control<{[key: string]: string}>
   // for checkboxes it can be only string[]
+  const unsafeRegisterForArrayStringsOnly = register as UseFormRegister<{[key: string]: string[]}>
   const unsafeControlForArrayStringsOnly = control as Control<{[key: string]: string[]}>
   const fieldLabelProps = {
     label,
@@ -50,70 +53,47 @@ export function DetailsInputRenderByType({
   }
 
   const renderDateVariant = ({max}: {max: string}) => {
-    const min = '01/01/1970'
+    const min = '1970-01-01'
     return (
-      <FieldLabel {...fieldLabelProps}>
-        <Controller
-          {...{name}}
-          control={unsafeControlForStringsOnly}
-          defaultValue={getDefaultValueFromInput(input) === 'SYSDATE' ? dateToFrenchFormat(new Date()) : undefined}
-          rules={{
-            ...baseRules,
-            validate: d => {
-              return isDateInRange(d, min, max) ? true : m.invalidDate
-            },
-          }}
-          render={({field}) => (
-            <ScDatepickerFr
-              {...field}
-              fullWidth
-              placeholder={getPlaceholderFromInput(input)}
-              min={min}
-              max={max}
-              helperText={errorMessage}
-              error={hasErrors}
-              required={required}
-            />
-          )}
-        />
-      </FieldLabel>
+      <ScDatepickerNew
+        {...unsafeRegisterForStringsOnly(name, {
+          ...baseRules,
+          validate: d => {
+            return isDateInRange(d, min, max) ? true : m.invalidDate
+          },
+        })}
+        label={label}
+        placeholder={getPlaceholderFromInput(input)}
+        min={min}
+        max={max}
+        helperText={errorMessage}
+        error={hasErrors}
+        required={required}
+      />
     )
   }
 
   switch (input.type) {
     case DetailInputType.DATE_NOT_IN_FUTURE:
       return renderDateVariant({
-        max: dateToFrenchFormat(new Date()),
+        max: dateToIsoFormatWithoutTime(new Date()),
       })
     case DetailInputType.DATE:
       return renderDateVariant({
-        max: '01/01/2100',
+        max: '2100-01-01',
       })
     case DetailInputType.TIMESLOT:
       return (
-        <FieldLabel {...fieldLabelProps}>
-          <Controller
-            {...{name}}
-            control={control}
-            rules={baseRules}
-            render={({field}) => (
-              <ScSelect
-                {...field}
-                fullWidth
-                placeholder={getPlaceholderFromInput(input)}
-                helperText={errorMessage}
-                error={hasErrors}
-                required={required}
-              >
-                {mapNTimes(24, i => (
-                  <MenuItem key={i} value={`de ${i}h à ${i + 1}h`}>
-                    {m.timeFromTo(i, i + 1)}
-                  </MenuItem>
-                ))}
-              </ScSelect>
-            )}
-          />
-        </FieldLabel>
+        <ScSelect
+          label={label}
+          {...unsafeRegisterForStringsOnly(name, baseRules)}
+          required={required}
+          helperText={errorMessage}
+          error={hasErrors}
+          options={[...new Array(24)].map((_, i) => {
+            return {key: `de ${i}h à ${i + 1}h`, label: m.timeFromTo(i, i + 1)}
+          })}
+        />
       )
     case DetailInputType.RADIO:
       return (
@@ -130,17 +110,18 @@ export function DetailsInputRenderByType({
               errorMessage={errorMessage}
               error={hasErrors}
               options={
-                getOptionsFromInput(input)?.map((option, i) => {
+                getOptionsFromInput(input)?.map(option => {
+                  const specifyName = SpecifyFormUtils.getInputName(inputIndex)
                   return {
                     label: <span dangerouslySetInnerHTML={{__html: option}} />,
                     value: option,
                     specify:
                       field.value === option && SpecifyFormUtils.hasSpecifyKeyword(option) ? (
-                        <DetailsSpecifyInput
-                          control={control}
-                          error={errors[SpecifyFormUtils.getInputName(inputIndex)]}
-                          defaultValue={initialValues?.[SpecifyFormUtils.getInputName(inputIndex)]}
-                          name={SpecifyFormUtils.getInputName(inputIndex)}
+                        <ScPrecisionInput
+                          {...register(specifyName, specifyInputRules)}
+                          error={!!errors[specifyName]}
+                          helperText={errors[specifyName]?.message}
+                          required
                         />
                       ) : undefined,
                   }
@@ -164,16 +145,17 @@ export function DetailsInputRenderByType({
               required={required}
               options={
                 getOptionsFromInput(input)?.map(option => {
+                  const specifyName = SpecifyFormUtils.getInputName(inputIndex)
                   return {
                     label: <span dangerouslySetInnerHTML={{__html: option}} />,
                     value: option,
                     specify:
                       (field.value as string[] | undefined)?.includes(option) && SpecifyFormUtils.hasSpecifyKeyword(option) ? (
-                        <DetailsSpecifyInput
-                          control={control}
-                          error={errors[SpecifyFormUtils.getInputName(inputIndex)]}
-                          defaultValue={initialValues?.[SpecifyFormUtils.getInputName(inputIndex)]}
-                          name={SpecifyFormUtils.getInputName(inputIndex)}
+                        <ScPrecisionInput
+                          {...register(specifyName, specifyInputRules)}
+                          error={!!errors[specifyName]}
+                          helperText={errors[specifyName]?.message}
+                          required
                         />
                       ) : undefined,
                   }
@@ -185,52 +167,34 @@ export function DetailsInputRenderByType({
       )
     case DetailInputType.TEXT:
       return (
-        <FieldLabel {...fieldLabelProps}>
-          <Controller
-            control={control}
-            {...{name}}
-            rules={{...baseRules, ...maxLengthRule}}
-            render={({field}) => (
-              <ScInput {...field} error={hasErrors} fullWidth placeholder={getPlaceholderFromInput(input)} required={required} />
-            )}
-          />
-        </FieldLabel>
+        <ScTextInput
+          label={fieldLabelProps.label}
+          {...register(name, {...baseRules, ...maxLengthRule})}
+          helperText={errors[inputIndex]?.type === 'required' ? m.required : null}
+          error={hasErrors}
+          placeholder={getPlaceholderFromInput(input)}
+          required={required}
+        />
       )
     case DetailInputType.TEXTAREA:
       return (
-        <FieldLabel {...fieldLabelProps}>
-          <Controller
-            control={control}
-            {...{name}}
-            rules={{...baseRules, ...maxLengthRule}}
-            render={({field}) => (
-              <ScInput
-                {...field}
-                helperText={
-                  errors[inputIndex]?.type === 'required' ? (
-                    m.required
-                  ) : (
-                    <span>
-                      {getValues('' + inputIndex)?.length ?? 0} / {appConfig.maxDescriptionInputLength}
-                      <span className="hidden">
-                        {' '}
-                        {m.charactersTyped}
-                        {/* reco audit accessibilité d'ajouter ce texte caché */}
-                      </span>
-                    </span>
-                  )
-                }
-                error={hasErrors}
-                multiline
-                minRows={5}
-                maxRows={10}
-                fullWidth
-                placeholder={getPlaceholderFromInput(input)}
-                required={required}
-              />
-            )}
-          />
-        </FieldLabel>
+        <ScTextarea
+          label={fieldLabelProps.label}
+          {...register(name, {...baseRules, ...maxLengthRule})}
+          helperText={
+            errors[inputIndex]?.type === 'required' ? (
+              m.required
+            ) : (
+              <span>
+                {getValues('' + inputIndex)?.length ?? 0} / {appConfig.maxDescriptionInputLength}
+                <span> {m.charactersTyped}</span>
+              </span>
+            )
+          }
+          error={hasErrors}
+          placeholder={getPlaceholderFromInput(input)}
+          required={required}
+        />
       )
   }
 }

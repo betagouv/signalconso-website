@@ -14,6 +14,7 @@ interface Props {
   label?: string
 }
 
+// A legacy datepicker that should probably be replaced by the other one
 export const SimpleDatepicker = forwardRef(({label, value, onChange, min, max, limited}: Props, ref: any) => {
   const finalMin = limited ? new Date(1970, 0, 1) : min
   const finalMax = limited ? new Date(2050, 0, 1) : max

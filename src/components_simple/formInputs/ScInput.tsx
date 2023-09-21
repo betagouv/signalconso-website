@@ -1,9 +1,31 @@
 import {FilledInputProps, Icon, IconButton, TextField, TextFieldProps, Tooltip} from '@mui/material'
-import {useI18n} from 'i18n/I18n'
 import React from 'react'
 
-export type ScInputProps = Omit<TextFieldProps, 'variant' | 'margin'> & {
-  small?: boolean
+export type ScInputProps = Pick<
+  TextFieldProps,
+  // pick props explicitly so we can understand this component better
+  | 'inputProps'
+  | 'type'
+  | 'value'
+  | 'placeholder'
+  | 'label'
+  | 'error'
+  | 'helperText'
+  | 'onChange'
+  | 'onClick'
+  | 'autoFocus'
+  | 'InputLabelProps'
+  | 'fullWidth'
+  | 'multiline'
+  | 'minRows'
+  | 'maxRows'
+  | 'inputRef'
+  | 'tabIndex'
+  | 'defaultValue'
+  | 'sx'
+  | 'autoComplete'
+  | 'FormHelperTextProps'
+> & {
   InputProps?: Partial<FilledInputProps>
   clearable?: {
     onClear: () => void
@@ -12,8 +34,7 @@ export type ScInputProps = Omit<TextFieldProps, 'variant' | 'margin'> & {
   required: boolean
 }
 
-export const ScInput = React.forwardRef(({required, small, clearable, InputProps, ...props}: ScInputProps, ref) => {
-  const {m} = useI18n()
+export const ScInput = React.forwardRef(({required, clearable, InputProps, ...props}: ScInputProps, ref) => {
   return (
     <TextField
       {...props}

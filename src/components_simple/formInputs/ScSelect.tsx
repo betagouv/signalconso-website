@@ -1,47 +1,63 @@
-import React, {CSSProperties, useMemo} from 'react'
-import {FormControl, FormHelperText, InputLabel, Select, SelectProps} from '@mui/material'
+import {useI18n} from 'i18n/I18n'
+import {ForwardedRef, ReactNode, forwardRef, useId} from 'react'
 
-interface ScSelectProps<T> extends SelectProps<T> {
-  label?: string
-  children?: React.ReactNode
-  className?: string
-  style?: CSSProperties
-  small?: boolean
-  helperText?: string
+type Props = {
+  onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void
+  onBlur: (e: React.FocusEvent<HTMLSelectElement>) => void
+  name: string
+  error: boolean
+  helperText?: ReactNode
   required: boolean
+  label?: ReactNode
+  desc?: ReactNode
+  options: {key: string; label: string}[]
 }
-
-const ScSelectInner = <T,>(
-  {id: argId, label, className, small, fullWidth, style, helperText, error, required, ...selectProps}: ScSelectProps<T>,
-  ref: any,
-) => {
-  const id: string = useMemo(() => argId ?? 'sc-select-' + Math.floor(Math.random() * 10000), [argId])
-  return (
-    <FormControl
-      error={error}
-      fullWidth={fullWidth}
-      size="small"
-      margin="dense"
-      variant="outlined"
-      className={className}
-      style={style}
-    >
-      <InputLabel htmlFor={id} id={id + '-label'}>
-        {label}
-      </InputLabel>
-      <Select {...selectProps} inputRef={ref} labelId={id + '-label'} id={id} {...(required ? {'aria-required': true} : null)} />
-      {helperText && (
-        <FormHelperText error={error} aria-live="polite">
-          {helperText}
-        </FormHelperText>
-      )}
-    </FormControl>
+export const ScSelect = forwardRef((props: Props, ref: ForwardedRef<HTMLSelectElement>) => {
+  const {onChange, onBlur, name, label, desc, error, helperText, required, options} = props
+  const inputId = useId()
+  const helperTextId = useId()
+  const labelWithAsterisk = (
+    <>
+      {label}
+      {required ? ' *' : null}
+    </>
   )
-}
+  const {m} = useI18n()
+  return (
+    <div className={`fr-select-group ${error ? 'fr-select-group--error' : null}`}>
+      {label && (
+        <label className="fr-label" htmlFor={inputId}>
+          {labelWithAsterisk}
+          {desc && <span className="fr-hint-text">{desc}</span>}
+        </label>
+      )}
 
-/**
- * Workaround because forwardRef break the generic type of ScSelect.
- */
-export const ScSelect = React.forwardRef(ScSelectInner) as <T>(
-  props: ScSelectProps<T> & {ref?: React.ForwardedRef<any>},
-) => ReturnType<typeof ScSelectInner>
+      <select
+        className="fr-select"
+        id={inputId}
+        name={name}
+        onChange={onChange}
+        onBlur={onBlur}
+        ref={ref}
+        aria-describedby={helperTextId}
+        {...(required ? {'aria-required': true} : null)}
+      >
+        <option value="" disabled hidden>
+          {m.select}
+        </option>
+        {options.map(option => {
+          return (
+            <option key={option.key} value={option.key}>
+              {option.label}
+            </option>
+          )
+        })}
+      </select>
+      {helperText && (
+        <p id={helperTextId} className={error ? 'fr-error-text' : 'fr-info-text'} {...(error ? {'aria-live': 'polite'} : null)}>
+          {helperText}
+        </p>
+      )}
+    </div>
+  )
+})
