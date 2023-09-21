@@ -1,6 +1,7 @@
 import {MenuItem} from '@mui/material'
 import {FieldLabel} from 'components_simple/FieldLabel'
 import {ScDatepickerNew} from 'components_simple/formInputs/ScDatepickerNew'
+import {ScPrecisionInput} from 'components_simple/formInputs/ScPrecisionInput'
 import {ScSelect} from 'components_simple/formInputs/ScSelect'
 import {ScTextInput} from 'components_simple/formInputs/ScTextInput'
 import {ScTextarea} from 'components_simple/formInputs/ScTextarea'
@@ -15,7 +16,6 @@ import {ScRadioButtons} from '../../../components_simple/formInputs/ScRadioButto
 import {mapNTimes} from '../../../utils/utils'
 import {getOptionsFromInput, getPlaceholderFromInput} from './DetailInputsUtils'
 import {SpecifyFormUtils} from './Details'
-import {DetailsSpecifyInput} from './DetailsSpecifyInput'
 
 export function DetailsInputRenderByType({
   register,
@@ -23,7 +23,6 @@ export function DetailsInputRenderByType({
   inputIndex,
   input,
   errors,
-  initialValues,
   getValues,
 }: {
   // we currently have a mix of controlled and uncontrolled components here
@@ -33,7 +32,6 @@ export function DetailsInputRenderByType({
   inputIndex: number
   input: DetailInput
   errors: FieldErrors<DetailInputValues2>
-  initialValues: DetailInputValues2 | undefined
   getValues: UseFormGetValues<DetailInputValues2>
 }) {
   const {m} = useI18n()
@@ -120,16 +118,18 @@ export function DetailsInputRenderByType({
               errorMessage={errorMessage}
               error={hasErrors}
               options={
-                getOptionsFromInput(input)?.map((option, i) => {
+                getOptionsFromInput(input)?.map((option, optionIndex) => {
+                  const specifyName = SpecifyFormUtils.getInputName(inputIndex, optionIndex)
                   return {
                     label: <span dangerouslySetInnerHTML={{__html: option}} />,
                     value: option,
                     specify:
                       field.value === option && SpecifyFormUtils.hasSpecifyKeyword(option) ? (
-                        <DetailsSpecifyInput
-                          control={control}
-                          error={errors[SpecifyFormUtils.getInputName(inputIndex)]}
-                          name={SpecifyFormUtils.getInputName(inputIndex)}
+                        <ScPrecisionInput
+                          {...register(specifyName)}
+                          error={!!errors[specifyName]}
+                          helperText={errors[specifyName]?.message}
+                          required
                         />
                       ) : undefined,
                   }
@@ -152,16 +152,18 @@ export function DetailsInputRenderByType({
               titleSoberStyle
               required={required}
               options={
-                getOptionsFromInput(input)?.map(option => {
+                getOptionsFromInput(input)?.map((option, optionIndex) => {
+                  const specifyName = SpecifyFormUtils.getInputName(inputIndex, optionIndex)
                   return {
                     label: <span dangerouslySetInnerHTML={{__html: option}} />,
                     value: option,
                     specify:
                       (field.value as string[] | undefined)?.includes(option) && SpecifyFormUtils.hasSpecifyKeyword(option) ? (
-                        <DetailsSpecifyInput
-                          control={control}
-                          error={errors[SpecifyFormUtils.getInputName(inputIndex)]}
-                          name={SpecifyFormUtils.getInputName(inputIndex)}
+                        <ScPrecisionInput
+                          {...register(specifyName)}
+                          error={!!errors[specifyName]}
+                          helperText={errors[specifyName]?.message}
+                          required
                         />
                       ) : undefined,
                   }

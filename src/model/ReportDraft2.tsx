@@ -28,7 +28,8 @@ export class ReportDraft2 {
       const specifyKeyword = value.includes(SpecifyFormUtils.specifyKeywordFr)
         ? SpecifyFormUtils.specifyKeywordFr
         : SpecifyFormUtils.specifyKeywordEn
-      return value.replace(specifyKeyword, details[SpecifyFormUtils.getInputName(index)] as string)
+      // TODO pass an optionIndex here instead of 0 !!!!!
+      return value.replace(specifyKeyword, details[SpecifyFormUtils.getInputName(index, 0)] as string)
     }
 
     const mapLabel = (label: string): string => {
