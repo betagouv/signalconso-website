@@ -6,7 +6,7 @@ export const shouldDateInputDefaultToNow = (detailInput: DetailInputDate | Detai
 }
 
 export function isDateInput(detailInput: DetailInput): detailInput is DetailInputDate | DetailInputDateNotInFuture {
-  return detailInput.type === DetailInputType.DATE ?? detailInput.type === DetailInputType.DATE_NOT_IN_FUTURE
+  return detailInput.type === DetailInputType.DATE || detailInput.type === DetailInputType.DATE_NOT_IN_FUTURE
 }
 
 export const getPlaceholderFromInput = (detailInput: DetailInput): string | undefined => {
