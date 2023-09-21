@@ -1,5 +1,3 @@
-import {MenuItem} from '@mui/material'
-import {FieldLabel} from 'components_simple/FieldLabel'
 import {ScDatepickerNew} from 'components_simple/formInputs/ScDatepicker'
 import {ScPrecisionInput} from 'components_simple/formInputs/ScPrecisionInput'
 import {ScSelect} from 'components_simple/formInputs/ScSelect'
@@ -13,7 +11,6 @@ import {dateToIsoFormatWithoutTime, isDateInRange} from 'utils/utils'
 import {DetailInput, DetailInputType} from '../../../anomalies/Anomaly'
 import {ScCheckbox} from '../../../components_simple/formInputs/ScCheckbox'
 import {ScRadioButtons} from '../../../components_simple/formInputs/ScRadioButtons'
-import {mapNTimes} from '../../../utils/utils'
 import {getOptionsFromInput, getPlaceholderFromInput} from './DetailInputsUtils'
 import {SpecifyFormUtils} from './Details'
 
@@ -86,22 +83,16 @@ export function DetailsInputRenderByType({
       })
     case DetailInputType.TIMESLOT:
       return (
-        <FieldLabel {...fieldLabelProps}>
-          <ScSelect
-            {...unsafeRegisterForStringsOnly(name, baseRules)}
-            fullWidth
-            placeholder={getPlaceholderFromInput(input)}
-            helperText={errorMessage}
-            error={hasErrors}
-            required={required}
-          >
-            {mapNTimes(24, i => (
-              <MenuItem key={i} value={`de ${i}h à ${i + 1}h`}>
-                {m.timeFromTo(i, i + 1)}
-              </MenuItem>
-            ))}
-          </ScSelect>
-        </FieldLabel>
+        <ScSelect
+          label={label}
+          {...unsafeRegisterForStringsOnly(name, baseRules)}
+          required={required}
+          helperText={errorMessage}
+          error={hasErrors}
+          options={[...new Array(24)].map((_, i) => {
+            return {key: `de ${i}h à ${i + 1}h`, label: m.timeFromTo(i, i + 1)}
+          })}
+        />
       )
     case DetailInputType.RADIO:
       return (

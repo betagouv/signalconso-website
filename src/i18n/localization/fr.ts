@@ -1176,6 +1176,7 @@ export const fr = {
     youCanSearchByCity: `Vous pouvez chercher par ville ou saisir le code postal`,
     aboutCompany: `Informations sur l'entreprise`,
     selectCompany: `Sélectionnez l'entreprise`,
+    select: `Sélectionnez`,
     verify: `Vérifier`,
     isHeadOffice: 'Siège social',
     closedCompany: 'Entreprise fermée',

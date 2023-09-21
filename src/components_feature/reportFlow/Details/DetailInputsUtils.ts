@@ -27,10 +27,14 @@ export function buildDefaultValues(inputs: DetailInput[]) {
   return Object.fromEntries(
     inputs
       .map((input, inputIndex) => {
+        const key = inputIndex.toString()
         if (isDateInput(input) && shouldDateInputDefaultToNow(input)) {
-          const key = inputIndex.toString()
           const val = dateToIsoFormatWithoutTime(new Date())
           return [key, val] as const
+        }
+        if (input.type == DetailInputType.TIMESLOT) {
+          // <select> needs this default so that the option "Sélectionnez une option" is picked
+          return [key, ''] as const
         }
         return null
       })

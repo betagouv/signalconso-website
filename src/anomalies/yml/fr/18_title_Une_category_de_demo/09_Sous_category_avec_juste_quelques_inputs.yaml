@@ -23,9 +23,9 @@ detailInputs:
   # - label: input date optionnel
   #   type: DATE
   #   optional: true
-  - label: input date avec la date courante comme valeur par défaut
-    type: DATE
-    defaultValue: SYSDATE
+  # - label: input date avec la date courante comme valeur par défaut
+  #   type: DATE
+  #   defaultValue: SYSDATE
   # - label: >-
   #     input date avec la date courante comme valeur par défaut, et qui est
   #     optionnel
@@ -46,12 +46,12 @@ detailInputs:
   #     - seconde option
   #     - troisième option qu'il faut préciser (à préciser)
   #     - quatrième option qu'il faut préciser (à préciser)
-  - label: input radio optionnel
-    type: RADIO
-    options:
-      - première option
-      - seconde option
-    optional: true
+  # - label: input radio optionnel
+  #   type: RADIO
+  #   options:
+  #     - première option
+  #     - seconde option
+  #   optional: true
   # - label: input checkbox
   #   type: CHECKBOX
   #   options:
@@ -60,12 +60,12 @@ detailInputs:
   #     - troisième option qu'il faut préciser (à préciser)
   #     - quatrième option
   #     - cinquième option qu'il faut aussi préciser (à préciser)
-  - label: input checkbox optionnel
-    type: CHECKBOX
-    options:
-      - première option
-      - seconde option
-    optional: true
+  # - label: input checkbox optionnel
+  #   type: CHECKBOX
+  #   options:
+  #     - première option
+  #     - seconde option
+  #   optional: true
   # - label: input timeslot
   #   type: TIMESLOT
   - label: input timeslot optionnel

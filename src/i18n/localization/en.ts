@@ -1162,6 +1162,7 @@ export const en = {
     youCanSearchByCity: `You can search by town/city or enter the post code`,
     aboutCompany: `About the company`,
     selectCompany: `Select company`,
+    select: `Select`,
     verify: `Check`,
     isHeadOffice: 'Head office',
     closedCompany: 'Company closed',
