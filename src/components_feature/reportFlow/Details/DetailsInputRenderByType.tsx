@@ -117,7 +117,7 @@ export function DetailsInputRenderByType({
                     specify:
                       field.value === option && SpecifyFormUtils.hasSpecifyKeyword(option) ? (
                         <ScPrecisionInput
-                          {...register(specifyName)}
+                          {...register(specifyName, baseRules)}
                           error={!!errors[specifyName]}
                           helperText={errors[specifyName]?.message}
                           required
@@ -151,7 +151,7 @@ export function DetailsInputRenderByType({
                     specify:
                       (field.value as string[] | undefined)?.includes(option) && SpecifyFormUtils.hasSpecifyKeyword(option) ? (
                         <ScPrecisionInput
-                          {...register(specifyName)}
+                          {...register(specifyName, baseRules)}
                           error={!!errors[specifyName]}
                           helperText={errors[specifyName]?.message}
                           required
