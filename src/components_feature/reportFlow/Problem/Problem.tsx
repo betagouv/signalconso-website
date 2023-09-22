@@ -256,11 +256,7 @@ export const Problem = ({anomaly, isWebView, stepNavigation}: Props) => {
                 onChange={(consumerWish: ConsumerWish) => {
                   setReportDraft(report => {
                     const updated = {...report, consumerWish}
-                    _analytic.trackEvent(
-                      EventCategories.report,
-                      ReportEventActions.contactualReport,
-                      updated.consumerWish === 'fixContractualDispute' ? m.yes : m.no,
-                    )
+                    _analytic.trackEvent(EventCategories.report, ReportEventActions.consumerWish, updated.consumerWish)
                     return updated
                   })
                 }}
