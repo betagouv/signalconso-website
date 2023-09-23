@@ -29,9 +29,6 @@ export const ProblemInformation = ({anomaly, subcategories, information, isWebVi
   const {signalConsoApiClient} = useApiClients()
   const [votedPositive, setVotedPositive] = useState<boolean | undefined>()
   useEffect(() => {
-    // ce tracking est un peu étrange, on réutilise une valeur de la step finale 'Done', mais pas une autre. Je soupçonne une erreur
-    const {title} = getAnalyticsForStep('Done')
-    _analytic.trackPage(`${anomaly.path}/information`, title)
     _analytic.trackEvent(
       EventCategories.report,
       ReportEventActions.outOfBounds,
