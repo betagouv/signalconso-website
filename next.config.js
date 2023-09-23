@@ -87,7 +87,7 @@ module.exports = {
     domains: ['monavis.numerique.gouv.fr'],
   },
   productionBrowserSourceMaps: true,
-  reactStrictMode: false,
+  reactStrictMode: true,
   async redirects() {
     return redirects
   },
