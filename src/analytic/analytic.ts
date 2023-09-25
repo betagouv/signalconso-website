@@ -60,10 +60,8 @@ export class Analytic {
 export function PageChangesListener({analytic}: {analytic: Analytic}) {
   const pathname = usePathname()
   const searchParams = useSearchParams()
-  useMemo(() => {
+  useEffect(() => {
     const path = `${pathname}?${searchParams}`
-    console.log(pathname)
-    console.log(searchParams.toString())
     analytic?.onPageChange(path)
   }, [pathname, searchParams])
   return null
