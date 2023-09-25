@@ -4,7 +4,6 @@ import {Analytic} from './analytic'
 
 export interface AnalyticContextProps {
   trackEvent: Analytic['trackEvent']
-  trackPage: Analytic['trackPage']
 }
 
 interface Props {
@@ -21,7 +20,6 @@ export const AnalyticProvider = ({analytic, children}: Props) => {
     <AnalyticContext.Provider
       value={{
         trackEvent: analytic?.trackEvent ?? ((...args: any[]) => {}),
-        trackPage: analytic?.trackPage ?? ((...args: any[]) => {}),
       }}
     >
       {children}

@@ -63,7 +63,6 @@ export const CompanySearchResultComponent = ({companies, onSubmit}: Props) => {
 
   const submit = (selected: CompanySearchResult, vendor?: string) => {
     onSubmit(selected, vendor)
-    _analytic.trackEvent(EventCategories.companySearch, CompanySearchEventActions.select)
   }
 
   const onlyClosed = companies.findIndex(_ => _.isOpen) === -1
