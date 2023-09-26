@@ -1,10 +1,10 @@
-import {alpha, Box, Icon, IconButton, Tooltip} from '@mui/material'
+import {Button} from '@codegouvfr/react-dsfr/Button'
+import {alpha, Box, Icon, Tooltip} from '@mui/material'
 import {useApiClients} from 'context/ApiClientsContext'
 import {useI18n} from 'i18n/I18n'
 import {UploadedFile} from '../../model/UploadedFile'
 import {ScDialog} from '../ScDialog'
 import {extensionToType, FileType, reportFileConfig} from './reportFileConfig'
-import {Button} from '@codegouvfr/react-dsfr/Button'
 
 export interface ReportFileProps {
   file: UploadedFile

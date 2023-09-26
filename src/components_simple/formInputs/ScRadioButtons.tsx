@@ -50,12 +50,11 @@ export const ScRadioButtons = <V,>({
     }
   }
 
+  const horizontal = orientation === 'horizontal'
   return (
     <fieldset
       id={id}
-      className={`fr-fieldset ${orientation === 'horizontal' && 'fr-fieldset--inline'} ${
-        error ? 'fr-fieldset--error' : ''
-      } ${className}`}
+      className={`fr-fieldset ${horizontal && 'fr-fieldset--inline'} ${error ? 'fr-fieldset--error' : ''} ${className}`}
       aria-labelledby={`${title && legendId} ${messagesWrapperId}`}
       role="group"
       {...(required ? {'aria-required': true} : null)}
@@ -67,11 +66,7 @@ export const ScRadioButtons = <V,>({
           {description && <span className="fr-hint-text">{description}</span>}
         </legend>
       )}
-      <div
-        className={`fr-fieldset__content fr-fieldset__element !ml-0 !mt-4 ${
-          orientation === 'horizontal' && 'fr-fieldset__element--inline'
-        }`}
-      >
+      <div className={`fr-fieldset__content fr-fieldset__element !ml-0 !mt-4 ${horizontal && 'fr-fieldset__element--inline'}`}>
         {options.map(({label, description, value, specify, disabled}, i) => {
           const inputId = `radio-rich-${id}-${i}`
           const checked = value === selectedValue
@@ -80,7 +75,7 @@ export const ScRadioButtons = <V,>({
               key={i}
               className={`fr-radio-group !max-w-full border border-gray-300 border-solid mb-1 hover:bg-gray-100 hover:border-scbluefrance ${
                 disabled ? 'pointer-events-none opacity-60' : ''
-              } ${checked ? 'border-scbluefrance border-2' : ''}`}
+              } ${checked ? 'border-scbluefrance border-2' : ''} ${horizontal && '!mr-1'}`}
             >
               <input type="radio" id={inputId} name={radioName} onChange={() => onChange(value)} checked={checked}></input>
               <label className="fr-label !pr-4 ml-4" htmlFor={inputId}>

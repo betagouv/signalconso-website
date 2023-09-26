@@ -1,5 +1,5 @@
 import {FrIconClassName, RiIconClassName} from '@codegouvfr/react-dsfr'
-import Button from '@codegouvfr/react-dsfr/Button'
+import Button, {ButtonProps} from '@codegouvfr/react-dsfr/Button'
 import {useI18n} from 'i18n/I18n'
 import {ReactNode} from 'react'
 import {iconArrowRight} from 'utils/utils'
@@ -27,14 +27,22 @@ export function ButtonWithLoader({
   loading,
   iconId,
   children,
+  className = '',
+  onClick,
+  priority,
+  disabled = false,
 }: {
   loading: boolean
   iconId: FrIconClassName | RiIconClassName
   children: ReactNode
+  className?: string
+  onClick?: () => void
+  priority?: ButtonProps['priority']
+  disabled?: boolean
 }) {
   return (
     <Button
-      type="submit"
+      {...(onClick ? {onClick} : {type: 'submit'})}
       {...(loading
         ? {
             style: {
@@ -42,7 +50,9 @@ export function ButtonWithLoader({
             },
           }
         : {iconId})}
-      disabled={loading}
+      disabled={disabled || loading}
+      className={className}
+      {...(priority ? {priority} : null)}
     >
       {loading && <div className="sc-loader w-4 h-4 mr-2"></div>}
       {children}

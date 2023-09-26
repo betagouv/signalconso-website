@@ -10,7 +10,6 @@ import {Animate} from 'components_simple/Animate'
 import {AutofocusedDiv} from 'components_simple/AutofocusedDiv'
 import {Panel, PanelBody} from 'components_simple/Panel'
 import {RequiredFieldsLegend} from 'components_simple/RequiredFieldsLegend'
-import {ScButton} from 'components_simple/ScButton'
 import {ScTextInput} from 'components_simple/formInputs/ScTextInput'
 import {useApiClients} from 'context/ApiClientsContext'
 import {useI18n} from 'i18n/I18n'
@@ -289,27 +288,25 @@ function SimilarHosts({
       <AutofocusedDiv>
         <br />
         <h3 className="text-base font-normal mb-0">{m.suggestion}</h3>
-        <ul className="list-none flex p-0 m-0">
+        <ul className="list-none flex p-0 m-0 mt-2 gap-2">
           {hosts.map((host, key) => {
             return (
               <li className="p-0 m-0" key={key}>
-                <ScButton
-                  variant="contained"
-                  sx={{mt: 2, mr: 1}}
+                <Button
                   onClick={_ => {
                     onPickDifferentHost(host)
                   }}
-                  size={'small'}
+                  priority="secondary"
                 >
                   {host}
-                </ScButton>
+                </Button>
               </li>
             )
           })}
           <li className="p-0 m-0">
-            <ScButton key={'key'} sx={{mt: 2}} variant="text" size={'small'} onClick={onConfirmUnknown}>
+            <Button onClick={onConfirmUnknown} priority="tertiary no outline">
               {m.continueWithWebsite(website)}
-            </ScButton>
+            </Button>
           </li>
         </ul>
       </AutofocusedDiv>

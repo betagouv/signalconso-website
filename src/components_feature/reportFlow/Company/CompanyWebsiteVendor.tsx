@@ -1,6 +1,6 @@
+import Button from '@codegouvfr/react-dsfr/Button'
 import {Animate} from 'components_simple/Animate'
 import {Panel, PanelActions, PanelBody} from 'components_simple/Panel'
-import {ScButton} from 'components_simple/ScButton'
 import {ScTextInput} from 'components_simple/formInputs/ScTextInput'
 import {useI18n} from 'i18n/I18n'
 import {useForm} from 'react-hook-form'
@@ -40,9 +40,7 @@ export const CompanyWebsiteVendor = ({onSubmit}: Props) => {
             />
           </PanelBody>
           <PanelActions>
-            <ScButton color="primary" variant="contained" type="submit">
-              {m.continue}
-            </ScButton>
+            <Button type="submit">{m.continue}</Button>
           </PanelActions>
         </form>
       </Panel>

@@ -1,9 +1,9 @@
 import Accordion from '@codegouvfr/react-dsfr/Accordion'
-import {Button, Dialog, DialogActions, DialogContent, DialogProps, DialogTitle, PaperProps} from '@mui/material'
+import Button from '@codegouvfr/react-dsfr/Button'
+import {Dialog, DialogActions, DialogContent, DialogProps, DialogTitle, PaperProps} from '@mui/material'
 import {useI18n} from 'i18n/I18n'
 import * as React from 'react'
 import {EventHandler, ReactElement, SyntheticEvent, useState} from 'react'
-import {Txt} from '../../../components_simple/Txt'
 
 export interface ConfirmProps extends Omit<DialogProps, 'children' | 'onClick' | 'open'> {
   children: ReactElement<any>
@@ -74,7 +74,7 @@ export const CompanySearchByIdentityHelpDialog = ({children, PaperProps, onClick
           </Accordions>
         </DialogContent>
         <DialogActions>
-          <Button color="primary" onClick={close}>
+          <Button onClick={close} priority="secondary">
             {m.close ?? 'Cancel'}
           </Button>
         </DialogActions>

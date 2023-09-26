@@ -1,23 +1,22 @@
 'use client'
 
+import Button from '@codegouvfr/react-dsfr/Button'
 import {Box, Checkbox, IconButton, Radio, useTheme} from '@mui/material'
 import Icon from '@mui/material/Icon'
-import {styleUtils} from 'core/theme'
 import {getOptionsFromInput, getPlaceholderFromInput} from 'components_feature/reportFlow/Details/DetailInputsUtils'
+import {ContentPageContainer} from 'components_simple/PageContainers'
+import {styleUtils} from 'core/theme'
 import {useEffect, useState} from 'react'
-import {Page} from '../../../components_simple/Page'
-import {Txt} from '../../../components_simple/Txt'
-import {fnSwitch} from '../../../utils/FnSwitch'
 import {
   allVisibleAnomalies,
   instanceOfAnomaly,
   instanceOfSubcategoryWithInfoWall,
   instanceOfSubcategoryWithInputs,
 } from '../../../anomalies/Anomalies'
-import {Anomaly, DetailInputType, Subcategory, SubcategoryWithInfoWall, StandardSubcategory} from '../../../anomalies/Anomaly'
-import Button from '@codegouvfr/react-dsfr/Button'
+import {Anomaly, DetailInputType, StandardSubcategory, Subcategory, SubcategoryWithInfoWall} from '../../../anomalies/Anomaly'
+import {Txt} from '../../../components_simple/Txt'
 import {useI18n} from '../../../i18n/I18n'
-import {ContentPageContainer} from 'components_simple/PageContainers'
+import {fnSwitch} from '../../../utils/FnSwitch'
 
 const Node = ({anomaly, open}: {anomaly: Anomaly | Subcategory; open?: boolean}) => {
   const iconWidth = 40
