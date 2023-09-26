@@ -1,6 +1,7 @@
-import {LoadingButton} from '@mui/lab'
-import {Button, Dialog, DialogActions, DialogContent, DialogTitle, Icon, LinearProgress} from '@mui/material'
+import {Button} from '@codegouvfr/react-dsfr/Button'
+import {Dialog, DialogActions, DialogContent, DialogTitle, LinearProgress} from '@mui/material'
 import {useMutation} from '@tanstack/react-query'
+import {ButtonWithLoader} from 'components_simple/Buttons'
 import {ScAlert} from 'components_simple/ScAlert'
 import {ScButton} from 'components_simple/ScButton'
 import {ScValidationCodeInput} from 'components_simple/formInputs/ScValidationCodeInput'
@@ -11,7 +12,7 @@ import {useState} from 'react'
 import {Controller, useForm} from 'react-hook-form'
 import {Txt} from '../../../components_simple/Txt'
 import {duration} from '../../../utils/Duration'
-import {timeoutPromise} from '../../../utils/utils'
+import {iconArrowRight, timeoutPromise} from '../../../utils/utils'
 
 interface Props {
   loading?: boolean
@@ -114,23 +115,18 @@ export const ConsumerValidationDialog = ({loading, open, consumerEmail, onClose,
         />
       </DialogContent>
       <DialogActions>
-        <Button color="primary" onClick={onClose}>
+        <Button onClick={onClose} priority="tertiary">
           {m.close}
         </Button>
-        <LoadingButton
-          color={isEmailValid ? 'success' : 'primary'}
-          onClick={onSubmitButtonClick}
-          loading={_validateEmail.isLoading}
-          {...(isEmailValid
-            ? {
-                startIcon: <Icon>check_circle</Icon>,
-                loadingPosition: 'start',
-              }
-            : null)}
-          variant="contained"
-        >
-          {isEmailValid ? m.validated : m.verify}
-        </LoadingButton>
+        {isEmailValid ? (
+          <Button iconId="fr-icon-success-line" disabled={true} className="!bg-green-700 !text-white">
+            {m.validated}
+          </Button>
+        ) : (
+          <ButtonWithLoader loading={_validateEmail.isLoading} onClick={onSubmitButtonClick} iconId={iconArrowRight}>
+            {m.verify}
+          </ButtonWithLoader>
+        )}
       </DialogActions>
     </Dialog>
   )

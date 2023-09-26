@@ -27,14 +27,18 @@ export function ButtonWithLoader({
   loading,
   iconId,
   children,
+  className = '',
+  onClick,
 }: {
   loading: boolean
   iconId: FrIconClassName | RiIconClassName
   children: ReactNode
+  className?: string
+  onClick?: () => void
 }) {
   return (
     <Button
-      type="submit"
+      {...(onClick ? {onClick} : {type: 'submit'})}
       {...(loading
         ? {
             style: {
@@ -43,6 +47,7 @@ export function ButtonWithLoader({
           }
         : {iconId})}
       disabled={loading}
+      className={className}
     >
       {loading && <div className="sc-loader w-4 h-4 mr-2"></div>}
       {children}
