@@ -3,7 +3,6 @@ import {Dialog, DialogActions, DialogContent, DialogTitle, LinearProgress} from 
 import {useMutation} from '@tanstack/react-query'
 import {ButtonWithLoader} from 'components_simple/Buttons'
 import {ScAlert} from 'components_simple/ScAlert'
-import {ScButton} from 'components_simple/ScButton'
 import {ScValidationCodeInput} from 'components_simple/formInputs/ScValidationCodeInput'
 import {useApiClients} from 'context/ApiClientsContext'
 import {useI18n} from 'i18n/I18n'
@@ -69,19 +68,21 @@ export const ConsumerValidationDialog = ({loading, open, consumerEmail, onClose,
           dense
           type="info"
           action={
-            <ScButton
-              disabled={disableResendButton}
-              loading={_checkEmail.isLoading}
-              size="small"
-              icon="refresh"
-              onClick={() => {
-                setDisableResendButton(true)
-                setTimeout(() => setDisableResendButton(false), duration(15, 'second'))
-                _checkEmail.mutate()
-              }}
-            >
-              {m.consumerResentEmail}
-            </ScButton>
+            <>
+              <ButtonWithLoader
+                disabled={disableResendButton}
+                loading={_checkEmail.isLoading}
+                iconId="ri-refresh-line"
+                priority="tertiary no outline"
+                onClick={() => {
+                  setDisableResendButton(true)
+                  setTimeout(() => setDisableResendButton(false), duration(15, 'second'))
+                  _checkEmail.mutate()
+                }}
+              >
+                {m.consumerResentEmail}
+              </ButtonWithLoader>
+            </>
           }
         >
           <p>{m.consumerEmailMayTakesTime}</p>

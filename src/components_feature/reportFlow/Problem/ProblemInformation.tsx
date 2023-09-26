@@ -1,20 +1,19 @@
 import {Icon, IconButton} from '@mui/material'
 import {useMutation} from '@tanstack/react-query'
-import {Fender} from 'components_simple/Fender'
 import {useAnalyticContext} from 'analytic/AnalyticContext'
 import {EventCategories, ReportEventActions} from 'analytic/analytic'
 import {AccordionInline} from 'components_simple/AccordionInline'
 import {Animate} from 'components_simple/Animate'
+import {Fender} from 'components_simple/Fender'
 import {Panel, PanelBody} from 'components_simple/Panel'
 import {useApiClients} from 'context/ApiClientsContext'
+import {otherColorSet} from 'core/theme'
 import {useI18n} from 'i18n/I18n'
-import {getAnalyticsForStep} from 'model/ReportStep'
 import {useEffect, useState} from 'react'
 import {last} from 'utils/lodashNamedExport'
-import {Txt} from '../../../components_simple/Txt'
 import {Anomaly, InfoWall, Subcategory} from '../../../anomalies/Anomaly'
 import {LinkBackToHome} from '../../../components_simple/LinkBackToHome'
-import {otherColorSet} from 'core/theme'
+import {Txt} from '../../../components_simple/Txt'
 
 interface Props {
   anomaly: Anomaly
