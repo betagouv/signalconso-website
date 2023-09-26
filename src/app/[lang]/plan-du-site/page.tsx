@@ -54,9 +54,6 @@ const PlanDuSite = ({params}: any) => {
             <Link href={pagesDefs.stats.url}>{m.planDuSite.statistics}</Link>
           </li>
           <li>
-            <Link href={pagesDefs.centreAide.url}>{m.planDuSite.helpCenter}</Link>
-          </li>
-          <li>
             <Link href={pagesDefs.contact.url}>{m.planDuSite.contact}</Link>
           </li>
           <li>

@@ -46,7 +46,6 @@ export const internalPageDefs = {
   actualites: page(`/actualites`, {hasAlternate: true}),
 
   // all these are available in /webview/
-  centreAide: page(`/centre-aide`, {hasAlternate: true}),
   commentCaMarche: page(`/comment-ca-marche`, {hasAlternate: true}),
   conditionsGeneralesUtilisation: page(`/conditions-generales-utilisation`, {noIndex: true, hasAlternate: true}),
   contact: page(`/contact`, {noIndex: true, hasAlternate: true}),
@@ -62,6 +61,7 @@ export const internalPageDefs = {
 }
 
 const externalPageDefs = {
+  centreAide: pageExternal('https://aide.signal.conso.gouv.fr'),
   espaceProWelcome: pageExternal(appConfig.dashboardBaseUrl),
   espaceProConnexion: pageExternal(appConfig.dashboardBaseUrl + '/connexion'),
   companyActivation: pageExternal(appConfig.dashboardBaseUrl + '/activation'),
