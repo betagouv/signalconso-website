@@ -5,7 +5,6 @@ reponseconsoCode:
   - '2210'
 tags:
   - DemarchageTelephonique
-  - ReponseConso
 detailInputs:
   - label: Date de l'appel
     type: DATE
