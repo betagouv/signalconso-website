@@ -16,6 +16,20 @@ function redirectsToDashboard(page) {
   }
 }
 
+const centreAideCrisp = `https://aide.signal.conso.gouv.fr`
+const redirectsForCentreAide = [
+  {
+    source: `/fr/centre-aide`,
+    destination: centreAideCrisp,
+    permanent: true,
+  },
+  {
+    source: `/en/centre-aide`,
+    destination: centreAideCrisp,
+    permanent: true,
+  },
+]
+
 // these pages have been moved
 const changedPaths = [
   ['/news', '/actualites'],
@@ -40,6 +54,7 @@ const redirects = [
   ...redirectsForChangedPaths,
   redirectsToDashboard('connexion'),
   redirectsToDashboard('activation'),
+  ...redirectsForCentreAide,
 ]
 
 //TRELLO-1522 : Implement security headers as DGCCRF is monitoring the website via https://observatory.mozilla.org/

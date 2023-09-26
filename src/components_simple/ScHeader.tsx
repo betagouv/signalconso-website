@@ -1,16 +1,13 @@
 'use client'
 
 import Header from '@codegouvfr/react-dsfr/Header'
-import {pagesDefs} from '../core/pagesDefinitions'
-import {HTMLAttributeAnchorTarget} from 'react'
 import {appConfig} from 'core/appConfig'
-import {urlServicePublicPlus} from './ScFooter'
-import {useI18n} from '../i18n/I18n'
 import {usePathname} from 'next/navigation'
-import {SwitchLang} from './SwitchLang'
-import {AppLang, AppLangs} from '../i18n/localization/AppLangs'
-import {addLangInPath, replaceLangInPath} from '../i18n/I18nTools'
+import {pagesDefs} from '../core/pagesDefinitions'
+import {useI18n} from '../i18n/I18n'
 import buildMenuLink from '../utils/menuLinks'
+import {urlServicePublicPlus} from './ScFooter'
+import {SwitchLang} from './SwitchLang'
 
 function buildSubmenu(text: string, menuLinks: ReturnType<typeof buildMenuLink>[]) {
   return {
@@ -63,7 +60,14 @@ export function ScHeader() {
         navigation={[
           buildMenuLink(currentLang, pathName, pagesDefs.index.url, m.header.indexLinkTitle),
           buildMenuLink(currentLang, pathName, pagesDefs.commentCaMarche.url, m.header.commentCaMarcheLinkTitle),
-          buildMenuLink(currentLang, pathName, pagesDefs.centreAide.url, m.header.centreAideLinkTitle),
+          {
+            isActive: false,
+            linkProps: {
+              href: pagesDefs.centreAide.url,
+              target: '_blank',
+            },
+            text: m.header.centreAideLinkTitle,
+          },
           buildSubmenu(m.header.voirAussiTitle, [
             buildMenuLink(currentLang, pathName, pagesDefs.quiSommesNous.url, m.header.quiSommesNousLinkTitle),
             buildMenuLink(currentLang, pathName, pagesDefs.stats.url, m.header.statsLinkTitle),
