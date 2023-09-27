@@ -1,20 +1,16 @@
-import {Autocomplete, Box} from '@mui/material'
-import {useGetCountries} from 'clients/apiHooks'
 import {Animate} from 'components_simple/Animate'
 import {BtnNextSubmit} from 'components_simple/Buttons'
-import {FieldLabel} from 'components_simple/FieldLabel'
-import {ScInput} from 'components_simple/formInputs/ScInput'
 import {Panel, PanelActions, PanelBody} from 'components_simple/Panel'
+import {RequiredFieldsLegend} from 'components_simple/RequiredFieldsLegend'
+import {ScAutocompleteCountry} from 'components_simple/formInputs/ScAutocompleteCountry'
+import {ScTextInput} from 'components_simple/formInputs/ScTextInput'
 import {useI18n} from 'i18n/I18n'
 import {Controller, useForm} from 'react-hook-form'
+import {CompanyKinds} from '../../../anomalies/Anomaly'
 import {ScAlert} from '../../../components_simple/ScAlert'
 import {Txt} from '../../../components_simple/Txt'
-import {CompanyKinds} from '../../../anomalies/Anomaly'
-import {Country, countryLabel} from '../../../model/Country'
+import {Country} from '../../../model/Country'
 import {fnSwitch} from '../../../utils/FnSwitch'
-import {AppLang, AppLangs} from '../../../i18n/localization/AppLangs'
-import {RequiredFieldsLegend} from 'components_simple/RequiredFieldsLegend'
-import {ScTextInput} from 'components_simple/formInputs/ScTextInput'
 
 interface Form {
   name: string
@@ -27,15 +23,14 @@ interface Props {
   companyKind: CompanyKinds
 }
 
-const countryToFlag = (isoCode: string) => {
+export const countryToFlag = (isoCode: string) => {
   return typeof String.fromCodePoint !== 'undefined'
     ? isoCode.toUpperCase().replace(/./g, char => String.fromCodePoint(char.charCodeAt(0) + 127397))
     : isoCode
 }
 
 export const CompanyAskForeignDetails = ({onSubmit, companyKind}: Props) => {
-  const {m, currentLang} = useI18n()
-  const _countries = useGetCountries()
+  const {m} = useI18n()
   const {
     control,
     handleSubmit,
@@ -59,42 +54,16 @@ export const CompanyAskForeignDetails = ({onSubmit, companyKind}: Props) => {
               helperText={errors.name?.message ?? ''}
               placeholder={m.reportedCompanyNamePlaceholder}
             />
-            <FieldLabel required label={m.country}>
-              <Controller
-                name="country"
-                control={control}
-                rules={{
-                  required: {value: true, message: m.required},
-                }}
-                render={({field}) => (
-                  <Autocomplete<Country>
-                    {...field}
-                    onChange={(e, data) => field.onChange(data)}
-                    renderOption={(props, option) => (
-                      <li {...props}>
-                        <Box component="span" sx={{mr: 2, fontSize: 24}}>
-                          {countryToFlag(option.code)}
-                        </Box>{' '}
-                        {countryLabel(currentLang, option)}
-                      </li>
-                    )}
-                    loading={_countries.isLoading}
-                    options={_countries.data ?? []}
-                    getOptionLabel={_ => countryLabel(currentLang, _)}
-                    renderInput={params => (
-                      <ScInput
-                        {...params}
-                        error={!!errors.country}
-                        helperText={(errors.country as any)?.message ?? ''}
-                        placeholder={m.countryPlaceholder}
-                        fullWidth
-                        required
-                      />
-                    )}
-                  />
-                )}
-              />
-            </FieldLabel>
+            <Controller
+              name="country"
+              control={control}
+              rules={{
+                required: {value: true, message: m.required},
+              }}
+              render={({field: {onChange, onBlur, name, ref, value}, fieldState: {error}}) => {
+                return <ScAutocompleteCountry {...{onChange, onBlur, name, value}} error={!!error} helperText={error?.message} />
+              }}
+            />
             <br />
             <ScAlert dense type="info">
               <Txt

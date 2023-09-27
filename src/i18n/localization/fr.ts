@@ -1129,7 +1129,7 @@ export const fr = {
     suggestion: `Voulez-vous dire :`,
     continueWithWebsite: (website: string) => `Continuer avec ${website}`,
     invalidUrlPattern: `Ça ne ressemble pas à un site internet`,
-
+    noResult: 'Aucun résultat',
     noAttachment: 'Aucune pièce jointe.',
     addAttachmentFile: 'Ajouter une pièces jointe',
     attachments: `Pièces jointes :`,

@@ -266,12 +266,12 @@ export const _Company = ({draft, onUpdateReportDraft}: CompanyWithRequiredProps)
                       [IsForeignCompany.Yes]: () => (
                         <CompanyAskConsumerPostalCode
                           companyKind={draft.companyKind!}
-                          onChange={form => {
+                          onChange={postalCode => {
                             onUpdateReportDraft({
                               companyDraft: {
                                 ...phoneOrWebsite,
                                 address: {
-                                  postalCode: form.postalCode,
+                                  postalCode: postalCode,
                                 },
                               },
                             })
@@ -298,12 +298,12 @@ export const _Company = ({draft, onUpdateReportDraft}: CompanyWithRequiredProps)
                       [IsForeignCompany.Unknown]: () => (
                         <CompanyAskConsumerPostalCode
                           companyKind={draft.companyKind!}
-                          onChange={form => {
+                          onChange={postalCode => {
                             onUpdateReportDraft({
                               companyDraft: {
                                 ...phoneOrWebsite,
                                 address: {
-                                  postalCode: form.postalCode,
+                                  postalCode,
                                 },
                               },
                             })
