@@ -1116,6 +1116,7 @@ export const en = {
     suggestion: `Did you mean :`,
     continueWithWebsite: (website: string) => `Continue with ${website}`,
     invalidUrlPattern: `This does not look like a website`,
+    noResult: 'No result',
     noAttachment: 'No attachment.',
     addAttachmentFile: 'Add an attachment',
     attachments: `Attachments: `,

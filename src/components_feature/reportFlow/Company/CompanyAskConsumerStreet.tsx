@@ -1,9 +1,8 @@
 import {Animate} from 'components_simple/Animate'
-import {AutocompleteCity, AutocompleteCityValue} from 'components_simple/AutocompleteCity'
 import {BtnNextSubmit} from 'components_simple/Buttons'
-import {FieldLabel} from 'components_simple/FieldLabel'
 import {Panel, PanelActions, PanelBody} from 'components_simple/Panel'
 import {RequiredFieldsLegend} from 'components_simple/RequiredFieldsLegend'
+import {ScAutocompletePostcode} from 'components_simple/formInputs/ScAutocompletePostcode'
 import {ScTextInput} from 'components_simple/formInputs/ScTextInput'
 import {useI18n} from 'i18n/I18n'
 import {Address} from 'model/Address'
@@ -13,11 +12,11 @@ import {Txt} from '../../../components_simple/Txt'
 
 interface Form {
   street: string
-  place: AutocompleteCityValue
+  postalCode: string
 }
 
 interface Props {
-  onChange: (_: Pick<Address, 'street' | 'city' | 'postalCode'>) => void
+  onChange: (_: Pick<Address, 'street' | 'postalCode'>) => void
 }
 
 export const CompanyAskConsumerStreet = ({onChange}: Props) => {
@@ -40,8 +39,7 @@ export const CompanyAskConsumerStreet = ({onChange}: Props) => {
           onSubmit={handleSubmit(form =>
             onChange({
               street: form.street,
-              city: form.place.city,
-              postalCode: form.place.postalCode,
+              postalCode: form.postalCode,
             }),
           )}
         >
@@ -57,25 +55,21 @@ export const CompanyAskConsumerStreet = ({onChange}: Props) => {
               helperText={(errors.street as any)?.message ?? ''}
               placeholder={m.yourStreetPlaceholder}
             />
-            <FieldLabel required label={m.yourPostalCode} desc={m.youCanSearchByCity}>
-              <Controller
-                control={control}
-                name="place"
-                rules={{
-                  required: {value: true, message: m.required},
-                }}
-                render={({field}) => (
-                  <AutocompleteCity
-                    {...field}
-                    error={!!errors.place}
-                    helperText={(errors.place as any)?.message ?? ''}
-                    fullWidth
-                    placeholder={m.yourPostalCodePlaceholder}
-                    required
-                  />
-                )}
-              />
-            </FieldLabel>
+            <Controller
+              control={control}
+              name="postalCode"
+              rules={{
+                required: {value: true, message: m.required},
+              }}
+              render={({field: {onChange, onBlur, name, value}, fieldState: {error}}) => (
+                <ScAutocompletePostcode
+                  label={m.yourPostalCode}
+                  {...{onChange, onBlur, name, value}}
+                  error={!!error}
+                  helperText={error?.message}
+                />
+              )}
+            />
           </PanelBody>
 
           <PanelActions>

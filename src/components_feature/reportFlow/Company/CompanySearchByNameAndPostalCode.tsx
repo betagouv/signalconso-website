@@ -3,11 +3,10 @@ import {useAnalyticContext} from 'analytic/AnalyticContext'
 import {CompanySearchEventActions, EventCategories} from 'analytic/analytic'
 import {useToastOnQueryError} from 'clients/apiHooks'
 import {Animate} from 'components_simple/Animate'
-import {AutocompleteCity} from 'components_simple/AutocompleteCity'
 import {ButtonWithLoader} from 'components_simple/Buttons'
-import {FieldLabel} from 'components_simple/FieldLabel'
 import {Panel, PanelActions, PanelBody} from 'components_simple/Panel'
 import {RequiredFieldsLegend} from 'components_simple/RequiredFieldsLegend'
+import {ScAutocompletePostcode} from 'components_simple/formInputs/ScAutocompletePostcode'
 import {ScTextInput} from 'components_simple/formInputs/ScTextInput'
 import {useApiClients} from 'context/ApiClientsContext'
 import {useI18n} from 'i18n/I18n'
@@ -65,26 +64,21 @@ export const CompanySearchByNameAndPostalCode = ({children}: Props) => {
                 })}
                 required
               />
-              <FieldLabel required label={m.postalCode} desc={m.youCanSearchByCity}>
-                <Controller
-                  control={control}
-                  name="postalCode"
-                  rules={{
-                    required: {value: true, message: m.required},
-                  }}
-                  render={({field}) => (
-                    <AutocompleteCity
-                      {...field}
-                      onChange={x => field.onChange(x.postalCode)}
-                      error={!!errors.postalCode}
-                      helperText={errors.postalCode?.message ?? ''}
-                      fullWidth
-                      placeholder={m.yourPostalCodePlaceholder}
-                      required
-                    />
-                  )}
-                />
-              </FieldLabel>
+              <Controller
+                control={control}
+                name="postalCode"
+                rules={{
+                  required: {value: true, message: m.required},
+                }}
+                render={({field: {onChange, onBlur, name, value}, fieldState: {error}}) => (
+                  <ScAutocompletePostcode
+                    label={m.postalCode}
+                    {...{onChange, onBlur, name, value}}
+                    error={!!error}
+                    helperText={error?.message}
+                  />
+                )}
+              />
             </PanelBody>
 
             <PanelActions>

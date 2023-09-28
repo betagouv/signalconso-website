@@ -22,7 +22,7 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [require('@headlessui/tailwindcss')],
   corePlugins: {
     // disable the CSS reset from Tailwind
     // thus we can inherit default styles from the DSFR on h1 etc.

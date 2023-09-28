@@ -1,4 +1,5 @@
 import {ButtonWithLoader} from 'components_simple/Buttons'
+import {ScAlert} from 'components_simple/ScAlert'
 import {useState} from 'react'
 import {useForm} from 'react-hook-form'
 import {AccordionInline} from '../../components_simple/AccordionInline'
@@ -8,7 +9,6 @@ import {ScCheckbox} from '../../components_simple/formInputs/ScCheckbox'
 import {ScRadioButtons} from '../../components_simple/formInputs/ScRadioButtons'
 import {useI18n} from '../../i18n/I18n'
 import {DetailsSpecifyInput} from '../reportFlow/Details/DetailsSpecifyInput'
-import {ScAlert} from 'components_simple/ScAlert'
 
 export const PlaygroundOther = () => {
   const [radioValue, setRadioValue] = useState<string | undefined>(undefined)
@@ -21,7 +21,9 @@ export const PlaygroundOther = () => {
 
   return (
     <>
-      <p>Button with loader (aligné plusieurs fois pour vérifier que les différentes versions prennent toujours la même place)</p>
+      <p className="">
+        Button with loader (aligné plusieurs fois pour vérifier que les différentes versions prennent toujours la même place)
+      </p>
 
       <div className="flex flex-col">
         <QuickButtonWithLoader loading={true} />
