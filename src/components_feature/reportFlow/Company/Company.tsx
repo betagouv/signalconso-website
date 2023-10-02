@@ -61,8 +61,8 @@ export const Company = ({stepNavigation}: {stepNavigation: StepNavigation}) => {
       draft={draft}
       onUpdateReportDraft={draft => {
         _reportFlow.setReportDraft(_ => ReportDraft2.merge(_, draft))
+        _reportFlow.sendReportEvent(stepNavigation.currentStep)
         stepNavigation.next()
-        _analytic.trackEvent(EventCategories.report, ReportEventActions.validateCompany)
       }}
     />
   )

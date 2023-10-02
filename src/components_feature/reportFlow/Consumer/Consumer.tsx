@@ -43,6 +43,7 @@ export const Consumer = ({stepNavigation}: {stepNavigation: StepNavigation}) => 
       draft={draft}
       onSubmit={changes => {
         _reportFlow.setReportDraft(_ => ReportDraft2.merge(_, changes))
+        _reportFlow.sendReportEvent(stepNavigation.currentStep)
         stepNavigation.next()
       }}
       {...{stepNavigation}}
@@ -62,6 +63,7 @@ export const ConsumerInner = ({
   const {m, currentLang} = useI18n()
   const [openValidationDialog, setOpenValidationDialog] = useState<boolean>(false)
   const {signalConsoApiClient} = useApiClients()
+  const _reportFlow = useReportFlowContext()
   const _checkEmail = useMutation({
     mutationFn: (email: string) => {
       return signalConsoApiClient.checkEmail(email, currentLang)
@@ -89,7 +91,8 @@ export const ConsumerInner = ({
 
   const saveAndNext = () => {
     const {contactAgreement, ...consumer} = _form.getValues()
-    _analytic.trackEvent(EventCategories.report, ReportEventActions.validateConsumer)
+    // _analytic.trackEvent(EventCategories.report, ReportEventActions.validateConsumer)
+    _reportFlow.sendReportEvent(stepNavigation.currentStep)
     onSubmit({
       consumer: consumer,
       contactAgreement: (() => {

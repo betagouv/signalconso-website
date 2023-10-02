@@ -84,7 +84,7 @@ export const Problem = ({anomaly, isWebView, stepNavigation}: Props) => {
   const _analytic = useAnalyticContext()
   const {m, currentLang} = useI18n()
   const displayReponseConso = useMemo(chooseIfReponseConsoDisplayed, [])
-  const {reportDraft, setReportDraft, resetFlow} = useReportFlowContext()
+  const {reportDraft, setReportDraft, resetFlow, sendReportEvent} = useReportFlowContext()
 
   // reset the draft when switching the root category
   useEffect(() => {
@@ -128,17 +128,14 @@ export const Problem = ({anomaly, isWebView, stepNavigation}: Props) => {
       }
       return updatedDraft
     })
+
+    sendReportEvent(stepNavigation.currentStep)
     next()
   }
 
   const handleSubcategoriesChange = (subcategory: Subcategory, index: number) => {
     setReportDraft(report => {
       const newReport = adjustReportDraftAfterSubcategoriesChange(report, subcategory, index)
-      _analytic.trackEvent(
-        EventCategories.report,
-        ReportEventActions.validateSubcategory,
-        newReport.subcategories?.map(_ => _.title) ?? [],
-      )
       return newReport
     })
   }

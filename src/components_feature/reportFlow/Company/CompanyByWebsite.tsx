@@ -19,6 +19,7 @@ import {SpecificWebsiteCompanyKinds} from '../../../anomalies/Anomaly'
 import {SiretExtractorClient} from '../../../clients/SiretExtractorClient'
 import {CompanySearchResult} from '../../../model/Company'
 import {Country} from '../../../model/Country'
+import {useReportFlowContext} from '../ReportFlowContext'
 
 interface Form {
   website: string
@@ -104,6 +105,7 @@ export const CompanyByWebsite = ({value, children, specificWebsiteCompanyKind, .
   const [website, setWebsite] = useState('')
   const [isEditingWebsite, setIsEditingWebsite] = useState(true)
   const [hasConfirmedUnknown, setHasConfirmedUnknown] = useState(false)
+  const _reportFlow = useReportFlowContext()
 
   const searchQuery = useQuery(
     ['searchCompanyByWebsite', website],
@@ -122,7 +124,11 @@ export const CompanyByWebsite = ({value, children, specificWebsiteCompanyKind, .
 
   useEffect(() => {
     if (searchQuery.data?.kind === 'nothing' && searchQuery.data?.status === 'down') {
-      _analytic.trackEvent(EventCategories.companySearch, CompanySearchEventActions.searchedWebsiteDown, website)
+      _analytic.trackEvent(
+        EventCategories.companySearch,
+        CompanySearchEventActions.searchedWebsiteDown,
+        _reportFlow.reportDraft.category + '' + website,
+      )
     }
   }, [searchQuery.data])
 
