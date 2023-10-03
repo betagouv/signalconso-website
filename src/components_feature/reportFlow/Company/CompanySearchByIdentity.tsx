@@ -67,7 +67,9 @@ export const CompanySearchByIdentity = ({children}: Props) => {
                   <span>
                     {m.companyIdentityLabel}{' '}
                     <CompanySearchByIdentityHelpDialog>
-                      <button className="text-scbluefrance">({m.howToFindThem})</button>
+                      <button className="text-scbluefrance" type="button">
+                        ({m.howToFindThem})
+                      </button>
                     </CompanySearchByIdentityHelpDialog>
                   </span>
                 }
