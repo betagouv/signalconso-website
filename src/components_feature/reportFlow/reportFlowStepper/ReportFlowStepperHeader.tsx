@@ -19,7 +19,6 @@ export function ReportFlowStepperHeader(
       }
   ),
 ) {
-  // TODO check webview
   const {m} = useI18n()
   const {step, anomalyTitle, isWebView, variant} = props
   function getLabel(step: ReportStep) {

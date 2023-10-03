@@ -112,7 +112,7 @@ export const PlaygroundDetails = () => {
   const [resultInputs, setResultInputs] = useState<DetailInputValue[] | undefined>()
   const [resultFiles, setResultFiles] = useState<UploadedFile[] | undefined>()
 
-  const checkboxOptions = getKeys(inputsConfig).map(inputType => ({
+  const checkboxOptions = getKeys(inputsConfig(currentLang)).map(inputType => ({
     label: inputType,
     nativeInputProps: {
       onChange: (e: ChangeEvent<HTMLInputElement>) => {
@@ -124,8 +124,9 @@ export const PlaygroundDetails = () => {
 
   return (
     <>
-      <Checkbox legend="Configuration des inputs à afficher" options={checkboxOptions} orientation="horizontal" />
-      <hr className="border-t-2 border-black border-solid bg-none" />
+      <div className="border border-dashed p-4 mb-8 bg-gray-100">
+        <Checkbox legend="Configuration des inputs à afficher" options={checkboxOptions} orientation="horizontal" />
+      </div>
       <DetailsInner
         inputs={[...chosenInputs]}
         onSubmit={(res, files) => {

@@ -11,7 +11,8 @@ export const PlaygroundCompany = () => {
   const [companyKind, setCompanyKind] = useState<CompanyKinds>('SIRET')
   return (
     <>
-      <Box sx={{mb: 2}}>
+      <div className="border border-dashed p-4 mb-8 bg-gray-100">
+        <span>CompanyKind : </span>
         <Select sx={{mr: 1}} size="small" value={companyKind} onChange={e => setCompanyKind(e.target.value as CompanyKinds)}>
           {companyKinds.map(_ => (
             <MenuItem value={_} key={_}>
@@ -19,7 +20,7 @@ export const PlaygroundCompany = () => {
             </MenuItem>
           ))}
         </Select>
-      </Box>
+      </div>
       <Card elevation={2}>
         <CardContent>
           <_Company
