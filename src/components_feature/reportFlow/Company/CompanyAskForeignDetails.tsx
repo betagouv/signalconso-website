@@ -11,6 +11,7 @@ import {ScAlert} from '../../../components_simple/ScAlert'
 import {Txt} from '../../../components_simple/Txt'
 import {Country} from '../../../model/Country'
 import {fnSwitch} from '../../../utils/FnSwitch'
+import {ScAutocompletePostcode} from 'components_simple/formInputs/ScAutocompletePostcode'
 
 interface Form {
   name: string
@@ -82,15 +83,20 @@ export const CompanyAskForeignDetails = ({onSubmit, companyKind}: Props) => {
                 }}
               />
             </ScAlert>
-            <ScTextInput
-              label={m.yourPostalCode}
-              {...register('postalCode', {
+            <Controller
+              control={control}
+              name="postalCode"
+              rules={{
                 required: {value: true, message: m.required},
-              })}
-              required
-              error={!!errors.postalCode}
-              helperText={errors.postalCode?.message ?? ''}
-              placeholder={m.yourPostalCodePlaceholder}
+              }}
+              render={({field: {onChange, onBlur, name, value}, fieldState: {error}}) => (
+                <ScAutocompletePostcode
+                  label={m.yourPostalCode}
+                  {...{onChange, onBlur, name, value}}
+                  error={!!error}
+                  helperText={error?.message}
+                />
+              )}
             />
           </PanelBody>
 
