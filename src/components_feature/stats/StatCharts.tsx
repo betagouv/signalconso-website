@@ -47,7 +47,7 @@ export const StatCharts = () => {
       />
       <Stat
         title={m.websiteReportsRateStat}
-        name={m.respondedRateStatName}
+        name={m.websiteReportsRateName}
         count={() => apiClient.getPublicStatCount('WebsitePercentage')}
         percentage
       />

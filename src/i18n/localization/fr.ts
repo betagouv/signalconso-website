@@ -1312,6 +1312,8 @@ export const fr = {
     respondedRateStatName: `% de signalements qui font l'objet d'une réponse d'un entreprise`,
 
     websiteReportsRateStat: ` des signalements déposés depuis le début de SignalConso concernent une entreprise sur internet`,
+    websiteReportsRateName: `% des signalements qui concernent une entreprise sur internet`,
+
     browserCompatMessage: `Votre navigateur web est obsolète. Si vous n'utilisez pas la version la plus récente de votre navigateur, vous risquez de rencontrer certains problèmes lors de l'utilisation de SignalConso.`,
 
     minimalErrorTitle: 'Problème technique',
