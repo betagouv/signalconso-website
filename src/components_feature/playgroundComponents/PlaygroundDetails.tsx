@@ -98,12 +98,12 @@ export const PlaygroundDetails = () => {
   const [inputChoices, setInputChoices] = useState({
     text: true,
     date: true,
-    dateNotInFuture: false,
-    dateWithNoDefault: false,
+    dateNotInFuture: true,
+    dateWithNoDefault: true,
     radio: true,
     checkbox: true,
     textarea: true,
-    timeslot: false,
+    timeslot: true,
   })
   const chosenInputs = getEntries(inputChoices)
     .filter(([, v]) => !!v)
