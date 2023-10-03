@@ -98,10 +98,10 @@ export const DetailsInner = ({
 
   const {
     control,
-    getValues,
     handleSubmit,
     register,
     formState: {errors},
+    watch,
   } = useForm<DetailInputValues2>({
     defaultValues,
   })
@@ -145,7 +145,7 @@ export const DetailsInner = ({
                 inputIndex,
                 input,
                 errors,
-                getValues,
+                watch,
               }}
             />
           ))}
