@@ -195,13 +195,15 @@ export const ConfirmationInner = ({
           loadingNext={_reportCreate.createReportMutation.isLoading}
           nextButtonLabel={draft.consumerWish === 'getAnswer' ? m.confirmationBtnReponseConso : m.confirmationBtn}
           next={next => {
-            _analytic.trackEvent(EventCategories.report, ReportEventActions.validateConfirmation)
+            // _analytic.trackEvent(EventCategories.report, ReportEventActions.validateConfirmation)
+            _reportFlow.sendReportEvent(stepNavigation.currentStep)
             const metadata = buildReportMetadata({isWebView})
             _reportCreate.createReportMutation
               .mutateAsync({draft, metadata})
               .then(() => {
-                _analytic.trackEvent(EventCategories.report, ReportEventActions.reportSendSuccess)
+                // _analytic.trackEvent(EventCategories.report, ReportEventActions.reportSendSuccess)
                 next()
+                _reportFlow.sendReportEvent(stepNavigation.currentStep)
               })
               .catch(e => {
                 _analytic.trackEvent(EventCategories.report, ReportEventActions.reportSendFail)

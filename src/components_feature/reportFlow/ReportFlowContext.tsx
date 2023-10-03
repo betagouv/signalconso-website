@@ -1,16 +1,54 @@
 import {ReportDraft2} from 'model/ReportDraft2'
 import React, {ReactNode, useContext, useEffect, useState} from 'react'
+import {getIndexForStep, getIndexForStepOrDone, ReportStep, ReportStepOrDone} from '../../model/ReportStep'
+import {useAnalyticContext} from '../../analytic/AnalyticContext'
+import {AnalyticAction, EventCategories, ReportEventActions} from '../../analytic/analytic'
 
 interface ReportFlowContextProps {
   reportDraft: Partial<ReportDraft2>
   setReportDraft: (fn: (_: Partial<ReportDraft2>) => Partial<ReportDraft2>) => void
   resetFlow: () => void
+  sendReportEvent: (_: ReportStepOrDone) => void
 }
 
 const ReportFlowContext = React.createContext<ReportFlowContextProps>({} as ReportFlowContextProps)
 
 export const ReportFlowProvider = ({children}: {children: ReactNode}) => {
+  const _analytic = useAnalyticContext()
   const [reportDraft, setReportDraft] = useState<Partial<ReportDraft2>>({})
+  const [currentStep, setCurrentStep] = useState<Partial<ReportStepOrDone | undefined>>(undefined)
+
+  /**
+   * Will send event at each step of the report workflow. The event must be unique, ie if a user decides to edit a previous step no step event will be triggered again
+   * @param newStep
+   */
+  const sendReportEvent = (newStep: ReportStepOrDone) => {
+    if (currentStep == undefined || getIndexForStepOrDone(newStep) > getIndexForStepOrDone(currentStep)) {
+      switch (newStep) {
+        case 'BuildingProblem':
+          _analytic.trackEvent(EventCategories.report, ReportEventActions.validateProblem)
+          break
+        case 'BuildingDetails':
+          _analytic.trackEvent(EventCategories.report, ReportEventActions.validateDetails)
+          break
+        case 'BuildingCompany':
+          _analytic.trackEvent(EventCategories.report, ReportEventActions.validateCompany)
+          break
+        case 'BuildingConsumer':
+          _analytic.trackEvent(EventCategories.report, ReportEventActions.validateConsumer)
+          break
+        case 'Confirmation':
+          _analytic.trackEvent(EventCategories.report, ReportEventActions.validateConfirmation)
+          break
+        case 'Done':
+          _analytic.trackEvent(EventCategories.report, ReportEventActions.reportSendSuccess)
+          break
+        default:
+          break
+      }
+      setCurrentStep(newStep)
+    }
+  }
 
   return (
     <ReportFlowContext.Provider
@@ -19,7 +57,9 @@ export const ReportFlowProvider = ({children}: {children: ReactNode}) => {
         setReportDraft,
         resetFlow: () => {
           setReportDraft({})
+          setCurrentStep(undefined)
         },
+        sendReportEvent,
       }}
     >
       {children}

@@ -1,4 +1,3 @@
-import {useAnalyticContext} from 'analytic/AnalyticContext'
 import {Anomaly} from 'anomalies/Anomaly'
 import {Acknowledgement} from 'components_feature/reportFlow/Acknowledgement/Acknowledgement'
 import {Company} from 'components_feature/reportFlow/Company/Company'
@@ -12,7 +11,6 @@ import {buildLinkStartReport} from 'core/pagesDefinitions'
 import {
   findCurrentStepForReport,
   firstReportStep,
-  getAnalyticsForStep,
   getIndexForStepOrDone,
   getNextStep,
   getPreviousStep,
@@ -133,10 +131,9 @@ export const ReportFlowStepper = ({anomaly, isWebView}: StepperProps) => {
     // Il va y avoir un redirect, évitons de render
     return null
   }
-
   return (
     <>
-      <ReportFlowStepperHeader currentStep={step} goTo={setStep} />
+      <ReportFlowStepperHeader {...{step, stepNavigation, isWebView}} anomalyTitle={anomaly.title} variant="main" />
       {step === 'BuildingProblem' && <Problem {...{isWebView, anomaly, stepNavigation}} />}
       {step === 'BuildingDetails' && <Details {...{stepNavigation}} />}
       {step === 'BuildingCompany' && <Company {...{stepNavigation}} />}

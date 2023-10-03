@@ -83,7 +83,7 @@ export enum EventCategories {
 export enum ReportEventActions {
   outOfBounds = "Affichage d'un message problème hors périmètre",
   validateCategory = "Sélection d'une catégorie",
-  validateSubcategory = "Sélection d'une sous catégorie",
+  validateProblem = 'Validation du problème',
   validateDetails = 'Validation de la description',
   validateCompany = "Validation de l'établissement",
   validateConsumer = 'Validation du consommateur',
