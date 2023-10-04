@@ -1,4 +1,4 @@
-import {ScDatepickerNew} from 'components_simple/formInputs/ScDatepicker'
+import {ScDatepicker} from 'components_simple/formInputs/ScDatepicker'
 import {ScPrecisionInput} from 'components_simple/formInputs/ScPrecisionInput'
 import {ScSelect} from 'components_simple/formInputs/ScSelect'
 import {ScTextInput} from 'components_simple/formInputs/ScTextInput'
@@ -55,10 +55,13 @@ export function DetailsInputRenderByType({
   const renderDateVariant = ({max}: {max: string}) => {
     const min = '1970-01-01'
     return (
-      <ScDatepickerNew
+      <ScDatepicker
         {...unsafeRegisterForStringsOnly(name, {
           ...baseRules,
           validate: d => {
+            if (d === '') {
+              return !required
+            }
             return isDateInRange(d, min, max) ? true : m.invalidDate
           },
         })}
@@ -110,8 +113,8 @@ export function DetailsInputRenderByType({
               errorMessage={errorMessage}
               error={hasErrors}
               options={
-                getOptionsFromInput(input)?.map(option => {
-                  const specifyName = SpecifyFormUtils.getInputName(inputIndex)
+                getOptionsFromInput(input)?.map((option, optionIndex) => {
+                  const specifyName = SpecifyFormUtils.getInputName(inputIndex, optionIndex)
                   return {
                     label: <span dangerouslySetInnerHTML={{__html: option}} />,
                     value: option,
@@ -137,20 +140,22 @@ export function DetailsInputRenderByType({
           control={unsafeControlForArrayStringsOnly}
           {...{name}}
           rules={baseRules}
-          render={({field}) => (
+          render={({field: {name, onBlur, onChange, ref, value}}) => (
             <ScCheckbox
-              {...field}
+              {...{name, onBlur, onChange, value}}
               title={label}
               titleSoberStyle
               required={required}
+              errorMessage={errorMessage}
+              error={hasErrors}
               options={
-                getOptionsFromInput(input)?.map(option => {
-                  const specifyName = SpecifyFormUtils.getInputName(inputIndex)
+                getOptionsFromInput(input)?.map((option, optionIndex) => {
+                  const specifyName = SpecifyFormUtils.getInputName(inputIndex, optionIndex)
                   return {
                     label: <span dangerouslySetInnerHTML={{__html: option}} />,
                     value: option,
                     specify:
-                      (field.value as string[] | undefined)?.includes(option) && SpecifyFormUtils.hasSpecifyKeyword(option) ? (
+                      (value as string[] | undefined)?.includes(option) && SpecifyFormUtils.hasSpecifyKeyword(option) ? (
                         <ScPrecisionInput
                           {...register(specifyName, specifyInputRules)}
                           error={!!errors[specifyName]}

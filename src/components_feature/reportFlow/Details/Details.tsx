@@ -26,7 +26,7 @@ export class SpecifyFormUtils {
   static readonly specifyKeywordEn = '(to be specified)'
   static readonly hasSpecifyKeyword = (option: string) =>
     option.includes(SpecifyFormUtils.specifyKeywordFr) || option.includes(SpecifyFormUtils.specifyKeywordEn)
-  static readonly getInputName = (inputIndex: number) => `${inputIndex}_0_specify`
+  static readonly getInputName = (inputIndex: number, optionIndex: number) => `${inputIndex}_${optionIndex}_specify`
 }
 
 export const isSpecifyInputName = (name: string) => name.includes('_specify')

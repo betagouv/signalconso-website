@@ -25,6 +25,7 @@ type Props = {
   }
   tabIndex?: number
   onClick?: MouseEventHandler<HTMLDivElement>
+  disableLeftBorderOnError?: boolean
 }
 export const ScTextInput = forwardRef((props: Props, ref: ForwardedRef<HTMLInputElement>) => {
   const {
@@ -45,6 +46,7 @@ export const ScTextInput = forwardRef((props: Props, ref: ForwardedRef<HTMLInput
     clearable,
     tabIndex,
     onClick = () => {},
+    disableLeftBorderOnError = false,
   } = props
   const inputId = useId()
   const helperTextId = useId()
@@ -56,8 +58,8 @@ export const ScTextInput = forwardRef((props: Props, ref: ForwardedRef<HTMLInput
   )
   return (
     <div
-      className={`fr-input-group ${error ? 'fr-input-group--error' : null} ${
-        disabled ? 'fr-input-group--disabled' : null
+      className={`fr-input-group ${error ? 'fr-input-group--error' : ''} ${disabled ? 'fr-input-group--disabled' : ''} ${
+        disableLeftBorderOnError ? 'before:!hidden' : ''
       } sctextinput`}
       onClick={onClick}
     >

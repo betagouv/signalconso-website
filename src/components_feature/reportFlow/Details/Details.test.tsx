@@ -134,7 +134,7 @@ describe('Details: checkbox', () => {
     await waitFor(() => {
       expect(inputValues).toEqual({
         0: 'OPTION2 (à préciser)',
-        [SpecifyFormUtils.getInputName(0)]: 'blablabla',
+        [SpecifyFormUtils.getInputName(0, 1)]: 'blablabla',
       })
     })
   })
