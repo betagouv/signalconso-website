@@ -17,7 +17,7 @@ export interface ScDatepickerProps {
   helperText?: ReactNode
 }
 
-export const ScDatepickerNew = forwardRef((props: ScDatepickerProps, ref: ForwardedRef<HTMLInputElement>) => {
+export const ScDatepicker = forwardRef((props: ScDatepickerProps, ref: ForwardedRef<HTMLInputElement>) => {
   const {onChange, onBlur, name, placeholder, label, desc, error, helperText, required, min, max} = props
   const inputId = useId()
   const helperTextId = useId()

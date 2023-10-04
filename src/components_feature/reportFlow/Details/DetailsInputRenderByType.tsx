@@ -1,4 +1,4 @@
-import {ScDatepickerNew} from 'components_simple/formInputs/ScDatepicker'
+import {ScDatepicker} from 'components_simple/formInputs/ScDatepicker'
 import {ScPrecisionInput} from 'components_simple/formInputs/ScPrecisionInput'
 import {ScSelect} from 'components_simple/formInputs/ScSelect'
 import {ScTextInput} from 'components_simple/formInputs/ScTextInput'
@@ -55,10 +55,13 @@ export function DetailsInputRenderByType({
   const renderDateVariant = ({max}: {max: string}) => {
     const min = '1970-01-01'
     return (
-      <ScDatepickerNew
+      <ScDatepicker
         {...unsafeRegisterForStringsOnly(name, {
           ...baseRules,
           validate: d => {
+            if (d === '') {
+              return !required
+            }
             return isDateInRange(d, min, max) ? true : m.invalidDate
           },
         })}
