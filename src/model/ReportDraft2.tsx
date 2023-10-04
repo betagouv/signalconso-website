@@ -2,7 +2,7 @@ import {getDraftReportInputs} from 'components_feature/reportFlow/Details/draftR
 import {isSpecifyInputName, SpecifyFormUtils} from 'components_feature/reportFlow/Details/Details'
 import {DeepPartial, isoToFrenchFormat} from '../utils/utils'
 import {CompanyDraft, ReportDraft, ReportDraftConsumer} from './ReportDraft'
-import {Anomaly, DetailInput} from '../anomalies/Anomaly'
+import {Anomaly, DetailInput, DetailInputType} from '../anomalies/Anomaly'
 import {DetailInputValue} from './CreatedReport'
 import {Address} from './Address'
 import {AppLang} from '../i18n/localization/AppLangs'
@@ -25,11 +25,22 @@ export class ReportDraft2 {
   }
 
   static readonly parseDetails = (details: DetailInputValues2, inputs: DetailInput[]): DetailInputValue[] => {
-    function concatSpecifiedValued(value: string, index: number) {
-      const specifyKeyword = value.includes(SpecifyFormUtils.specifyKeywordFr)
-        ? SpecifyFormUtils.specifyKeywordFr
-        : SpecifyFormUtils.specifyKeywordEn
-      return value.replace(specifyKeyword, details[SpecifyFormUtils.getInputName(index)] as string)
+    function injectSpecifiedValue(input: DetailInput, value: string, index: number): string {
+      if (input.type === DetailInputType.CHECKBOX || input.type === DetailInputType.RADIO) {
+        const specifyKeywordFound = value.includes(SpecifyFormUtils.specifyKeywordFr)
+          ? SpecifyFormUtils.specifyKeywordFr
+          : value.includes(SpecifyFormUtils.specifyKeywordEn)
+          ? SpecifyFormUtils.specifyKeywordEn
+          : null
+        if (specifyKeywordFound) {
+          const optionIndex = input.options.findIndex(_ => _ === value)
+          const specifyInputName = SpecifyFormUtils.getInputName(index, optionIndex)
+          const specifiedValue = details[specifyInputName] as string
+          const res = value.replace(specifyKeywordFound, specifiedValue)
+          return res
+        }
+      }
+      return value
     }
 
     function mapLabel(label: string): string {
@@ -45,7 +56,8 @@ export class ReportDraft2 {
     return Object.keys(details)
       .filter(_ => !isSpecifyInputName(_))
       .map(index => {
-        const input = inputs[+index]
+        const indexNb = parseInt(index, 10)
+        const input = inputs[indexNb]
         const label = mapLabel(input.label)
 
         const prepareValue = (v: string | string[] | undefined): string => {
@@ -53,12 +65,12 @@ export class ReportDraft2 {
             return ''
           }
           if (Array.isArray(v)) {
-            return v.map(_ => (SpecifyFormUtils.hasSpecifyKeyword(_) ? concatSpecifiedValued(_, +index) : _)).join(', ')
+            return v.map(_ => (SpecifyFormUtils.hasSpecifyKeyword(_) ? injectSpecifiedValue(input, _, indexNb) : _)).join(', ')
           }
           if (isDateInput(input)) {
             return isoToFrenchFormat(v)
           }
-          return concatSpecifiedValued(v, +index)
+          return injectSpecifiedValue(input, v, indexNb)
         }
 
         // I'm not sure exactly how it's possible but this can be undefined sometimes (we had sentry errors otherwise)
