@@ -11,7 +11,7 @@ interface Props extends Pick<BoxProps, 'children' | 'dangerouslySetInnerHTML' | 
 }
 
 export const alertInfoBackgroundColor = 'rgba(50, 200, 255, .08)'
-export const alertInfoTextColor = darken(otherColorSet.success, 0.1)
+export const alertInfoTextColor = darken(otherColorSet.info, 0.1)
 
 export const alertWarningBackgroundColor = 'rgba(255, 128, 0, .08)'
 export const alertWarningTextColor = darken(otherColorSet.warning, 0.1)

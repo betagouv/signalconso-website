@@ -81,27 +81,32 @@ export const PlaygroundAcknowledgment = () => {
 
   return (
     <>
-      <Select sx={{mr: 1}} size="small" value={type} onChange={e => setType(e.target.value as AcknowledgmentCases)}>
-        {Enum.keys(AcknowledgmentCases).map(_ => (
-          <MenuItem value={_} key={_}>
-            {_}
-          </MenuItem>
-        ))}
-      </Select>
-      {type === AcknowledgmentCases.ForeignCompany && (
-        <Select
-          size="small"
-          value={demoCountry?.code}
-          onChange={e => setDemoCountry(testCountries.find(_ => _.code === e.target.value))}
-        >
-          {testCountries.map(_ => (
-            <MenuItem value={_.code} key={_.code}>
-              {_.name}
+      <div className="border border-dashed p-4 mb-8 bg-gray-100">
+        <span>AcknowledgmentCase : </span>
+        <Select sx={{mr: 1}} size="small" value={type} onChange={e => setType(e.target.value as AcknowledgmentCases)}>
+          {Enum.keys(AcknowledgmentCases).map(_ => (
+            <MenuItem value={_} key={_}>
+              {_}
             </MenuItem>
           ))}
         </Select>
-      )}
-      <hr />
+        {type === AcknowledgmentCases.ForeignCompany && (
+          <>
+            <span>Country : </span>
+            <Select
+              size="small"
+              value={demoCountry?.code}
+              onChange={e => setDemoCountry(testCountries.find(_ => _.code === e.target.value))}
+            >
+              {testCountries.map(_ => (
+                <MenuItem value={_.code} key={_.code}>
+                  {_.name}
+                </MenuItem>
+              ))}
+            </Select>
+          </>
+        )}
+      </div>
       <AcknowledgementInner createdReport={report} country={country} isWebView={false} />
     </>
   )

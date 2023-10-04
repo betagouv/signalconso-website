@@ -6,7 +6,7 @@ import {ScTextarea} from 'components_simple/formInputs/ScTextarea'
 import {appConfig} from 'core/appConfig'
 import {useI18n} from 'i18n/I18n'
 import {DetailInputValues2} from 'model/ReportDraft2'
-import {Control, Controller, FieldErrors, UseFormGetValues, UseFormRegister} from 'react-hook-form'
+import {Control, Controller, FieldErrors, UseFormGetValues, UseFormRegister, UseFormWatch} from 'react-hook-form'
 import {dateToIsoFormatWithoutTime, isDateInRange} from 'utils/utils'
 import {DetailInput, DetailInputType} from '../../../anomalies/Anomaly'
 import {ScCheckbox} from '../../../components_simple/formInputs/ScCheckbox'
@@ -20,7 +20,7 @@ export function DetailsInputRenderByType({
   inputIndex,
   input,
   errors,
-  getValues,
+  watch,
 }: {
   // we currently have a mix of controlled and uncontrolled components here
   // so we use either register or control
@@ -29,7 +29,7 @@ export function DetailsInputRenderByType({
   inputIndex: number
   input: DetailInput
   errors: FieldErrors<DetailInputValues2>
-  getValues: UseFormGetValues<DetailInputValues2>
+  watch: UseFormWatch<DetailInputValues2>
 }) {
   const {m} = useI18n()
   const name = inputIndex.toString()
@@ -177,6 +177,7 @@ export function DetailsInputRenderByType({
         />
       )
     case DetailInputType.TEXTAREA:
+      const watchValue: string | string[] | undefined = watch('' + inputIndex)
       return (
         <ScTextarea
           label={fieldLabelProps.label}
@@ -186,7 +187,7 @@ export function DetailsInputRenderByType({
               m.required
             ) : (
               <span>
-                {getValues('' + inputIndex)?.length ?? 0} / {appConfig.maxDescriptionInputLength}
+                {watchValue?.length ?? 0} / {appConfig.maxDescriptionInputLength}
                 <span> {m.charactersTyped}</span>
               </span>
             )

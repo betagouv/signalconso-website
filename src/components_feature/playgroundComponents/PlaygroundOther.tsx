@@ -142,6 +142,18 @@ export const PlaygroundOther = () => {
           <p>contenu</p>
           <p>contenu</p>
         </ScAlert>
+        <ScAlert type="success" dense>
+          Un message success
+        </ScAlert>
+        <ScAlert type="info" dense>
+          Un message d'info
+        </ScAlert>
+        <ScAlert type="warning" dense>
+          Un message warning
+        </ScAlert>
+        <ScAlert type="error" dense>
+          Un message error
+        </ScAlert>
       </div>
     </>
   )
