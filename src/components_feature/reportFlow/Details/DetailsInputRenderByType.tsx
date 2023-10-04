@@ -137,12 +137,14 @@ export function DetailsInputRenderByType({
           control={unsafeControlForArrayStringsOnly}
           {...{name}}
           rules={baseRules}
-          render={({field}) => (
+          render={({field: {name, onBlur, onChange, ref, value}}) => (
             <ScCheckbox
-              {...field}
+              {...{name, onBlur, onChange, value}}
               title={label}
               titleSoberStyle
               required={required}
+              errorMessage={errorMessage}
+              error={hasErrors}
               options={
                 getOptionsFromInput(input)?.map(option => {
                   const specifyName = SpecifyFormUtils.getInputName(inputIndex)
@@ -150,7 +152,7 @@ export function DetailsInputRenderByType({
                     label: <span dangerouslySetInnerHTML={{__html: option}} />,
                     value: option,
                     specify:
-                      (field.value as string[] | undefined)?.includes(option) && SpecifyFormUtils.hasSpecifyKeyword(option) ? (
+                      (value as string[] | undefined)?.includes(option) && SpecifyFormUtils.hasSpecifyKeyword(option) ? (
                         <ScPrecisionInput
                           {...register(specifyName, specifyInputRules)}
                           error={!!errors[specifyName]}
