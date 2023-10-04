@@ -60,13 +60,13 @@ export const ScRadioButtons = <V,>({
       {...(required ? {'aria-required': true} : null)}
     >
       {title && (
-        <legend id={legendId} className={`fr-fieldset__legend ${titleSoberStyle ? '!font-normal !pb-0' : ''}`}>
+        <legend id={legendId} className={`fr-fieldset__legend ${titleSoberStyle ? '!font-normal' : ''}`}>
           {title}
           {required && !titleNoAutoAsterisk && <span> *</span>}
           {description && <span className="fr-hint-text">{description}</span>}
         </legend>
       )}
-      <div className={`fr-fieldset__content fr-fieldset__element !ml-0 !mt-4 ${horizontal && 'fr-fieldset__element--inline'}`}>
+      <div className={`fr-fieldset__content fr-fieldset__element !ml-0  ${horizontal && 'fr-fieldset__element--inline'}`}>
         {options.map(({label, description, value, specify, disabled}, i) => {
           const inputId = `radio-rich-${id}-${i}`
           const checked = value === selectedValue

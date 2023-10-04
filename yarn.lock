@@ -587,15 +587,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@codegouvfr/react-dsfr@npm:^0.75.3":
-  version: 0.75.3
-  resolution: "@codegouvfr/react-dsfr@npm:0.75.3"
+"@codegouvfr/react-dsfr@npm:^0.77.1":
+  version: 0.77.1
+  resolution: "@codegouvfr/react-dsfr@npm:0.77.1"
   dependencies:
     tsafe: ^1.6.3
   bin:
     copy-dsfr-to-public: bin/copy-dsfr-to-public.js
     only-include-used-icons: bin/only-include-used-icons.js
-  checksum: 4844d7663bed053551bc7e0450e2d64bd7a59b4e792baf08eef02f3c829a17c4dc448f67e58cece07ef072a5001a88a756c9f5246c127be96c0667242e8ef7d0
+  checksum: 0938b8d08f03fdf92fecf0bcc440839e498b864ad872785d711f6cc8870089155cf7ec12cbd8f9c682a8b55b281fcba0058f57fa1590f130cb6274d656c697c2
   languageName: node
   linkType: hard
 
@@ -9265,7 +9265,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "signalconso-website@workspace:."
   dependencies:
-    "@codegouvfr/react-dsfr": ^0.75.3
+    "@codegouvfr/react-dsfr": ^0.77.1
     "@emotion/cache": 11.11.0
     "@emotion/react": 11.11.1
     "@emotion/server": 11.11.0

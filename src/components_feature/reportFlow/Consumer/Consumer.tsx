@@ -1,17 +1,15 @@
 import {Grid} from '@mui/material'
 import {useMutation} from '@tanstack/react-query'
 import {useAnalyticContext} from 'analytic/AnalyticContext'
-import {EventCategories, ReportEventActions} from 'analytic/analytic'
 import {StepNavigation} from 'components_feature/reportFlow/reportFlowStepper/ReportFlowStepper'
 import {ReportFlowStepperActions} from 'components_feature/reportFlow/reportFlowStepper/ReportFlowStepperActions'
 import {Panel, PanelBody} from 'components_simple/Panel'
 import {RequiredFieldsLegend} from 'components_simple/RequiredFieldsLegend'
-import {Row} from 'components_simple/Row'
 import {ScTextInput} from 'components_simple/formInputs/ScTextInput'
 import {useApiClients} from 'context/ApiClientsContext'
 import {useI18n} from 'i18n/I18n'
 import {ReportDraft2} from 'model/ReportDraft2'
-import {useState} from 'react'
+import {ReactNode, useState} from 'react'
 import {Controller, useForm} from 'react-hook-form'
 import {regexp} from 'utils/regexp'
 import {ScAlert} from '../../../components_simple/ScAlert'
@@ -120,133 +118,125 @@ export const ConsumerInner = ({
             <ScAlert type="info" dense dangerouslySetInnerHTML={{__html: `<p>${m.consumerIsEmployee}</p>`}} />
           )}
           <RequiredFieldsLegend />
-          <Row icon="person">
-            <Controller
-              defaultValue={draft.consumer?.gender}
-              control={_form.control}
-              render={({field}) => (
-                <ScRadioButtons
-                  {...field}
-                  required
-                  orientation="horizontal"
-                  options={gendersOptions}
-                  title={m.genderOptional}
-                  titleSoberStyle
-                />
-              )}
-              name={'gender'}
-            />
-            <Grid container columnSpacing={2}>
-              <Grid item xs={6}>
-                <ScTextInput
-                  label={m.firstName}
-                  autocomplete="given-name"
-                  {..._form.register('firstName', {
-                    required: {value: true, message: m.required},
-                    pattern: {value: regexp.emojis, message: m.invalidName},
-                  })}
-                  required
-                  {...getErrors('firstName')}
-                />
-              </Grid>
-              <Grid item xs={6}>
-                <ScTextInput
-                  label={m.lastName}
-                  autocomplete="family-name"
-                  {..._form.register('lastName', {
-                    required: {value: true, message: m.required},
-                    pattern: {value: regexp.emojis, message: m.invalidName},
-                  })}
-                  required
-                  {...getErrors('lastName')}
-                />
-              </Grid>
+          <Controller
+            defaultValue={draft.consumer?.gender}
+            control={_form.control}
+            render={({field}) => (
+              <ScRadioButtons
+                {...field}
+                required
+                orientation="horizontal"
+                options={gendersOptions}
+                title={<WithIcon icon="ri-user-smile-line">{m.genderField}</WithIcon>}
+                titleSoberStyle
+              />
+            )}
+            name={'gender'}
+          />
+          <Grid container columnSpacing={2} className="mb-4">
+            <Grid item xs={6}>
+              <ScTextInput
+                label={<WithIcon icon="ri-account-box-line">{m.firstName}</WithIcon>}
+                autocomplete="given-name"
+                {..._form.register('firstName', {
+                  required: {value: true, message: m.required},
+                  pattern: {value: regexp.emojis, message: m.invalidName},
+                })}
+                required
+                {...getErrors('firstName')}
+              />
             </Grid>
-          </Row>
-          <Row icon="email">
-            <ScTextInput
-              label={m.email}
-              autocomplete="email"
-              type="email"
-              {..._form.register('email', {
-                required: {value: true, message: m.required},
-                pattern: {value: regexp.email, message: m.invalidEmail},
-                validate: {
-                  isDummyEmail: value => {
-                    return !appConfig.dummyEmailDomain.find(_ => value.includes(_)) || m.consumerDummyEmailNotAccepted
-                  },
+            <Grid item xs={6}>
+              <ScTextInput
+                label={<WithIcon icon="ri-account-box-line">{m.lastName}</WithIcon>}
+                autocomplete="family-name"
+                {..._form.register('lastName', {
+                  required: {value: true, message: m.required},
+                  pattern: {value: regexp.emojis, message: m.invalidName},
+                })}
+                required
+                {...getErrors('lastName')}
+                disableLeftBorderOnError
+              />
+            </Grid>
+          </Grid>
+          <ScTextInput
+            label={<WithIcon icon="fr-icon-mail-line">{m.email}</WithIcon>}
+            autocomplete="email"
+            type="email"
+            {..._form.register('email', {
+              required: {value: true, message: m.required},
+              pattern: {value: regexp.email, message: m.invalidEmail},
+              validate: {
+                isDummyEmail: value => {
+                  return !appConfig.dummyEmailDomain.find(_ => value.includes(_)) || m.consumerDummyEmailNotAccepted
                 },
-              })}
-              required
-              {...getErrors('email')}
-            />
-          </Row>
-          <Row icon="phone">
-            <ScTextInput
-              label={m.phoneOptional}
-              autocomplete="tel"
-              type="tel"
-              {..._form.register('phone', {
-                pattern: {value: regexp.phone, message: m.invalidPhone},
-              })}
-              {...getErrors('phone')}
-              required={false}
-              placeholder={m.phonePlaceholder}
-            />
-          </Row>
-          <Row icon="receipt">
-            <ScTextInput
-              label={m.referenceNumberOptional}
-              desc={m.referenceNumberDesc}
-              placeholder={m.referenceNumberPlaceholder}
-              {..._form.register('referenceNumber', {
-                maxLength: {value: 100, message: m.atMost100Chars},
-              })}
-              required={false}
-              {...getErrors('referenceNumber')}
-            />
-          </Row>
+              },
+            })}
+            required
+            {...getErrors('email')}
+          />
+          <ScTextInput
+            label={<WithIcon icon="fr-icon-phone-line">{m.phoneOptional}</WithIcon>}
+            autocomplete="tel"
+            type="tel"
+            {..._form.register('phone', {
+              pattern: {value: regexp.phone, message: m.invalidPhone},
+            })}
+            {...getErrors('phone')}
+            required={false}
+            placeholder={m.phonePlaceholder}
+          />
+          <ScTextInput
+            label={<WithIcon icon="ri-bill-line">{m.referenceNumberOptional}</WithIcon>}
+            desc={m.referenceNumberDesc}
+            placeholder={m.referenceNumberPlaceholder}
+            {..._form.register('referenceNumber', {
+              maxLength: {value: 100, message: m.atMost100Chars},
+            })}
+            required={false}
+            {...getErrors('referenceNumber')}
+          />
           {showContactAgreement && (
             <>
-              <Row icon="https" sx={{mt: 3}}>
-                <Controller
-                  control={_form.control}
-                  name="contactAgreement"
-                  defaultValue={draft.contactAgreement}
-                  rules={{
-                    validate: {
-                      isChecked: value => {
-                        return value !== undefined || m.required
-                      },
+              <Controller
+                control={_form.control}
+                name="contactAgreement"
+                defaultValue={draft.contactAgreement}
+                rules={{
+                  validate: {
+                    isChecked: value => {
+                      return value !== undefined || m.required
                     },
-                  }}
-                  render={({field}) => (
-                    <ScRadioButtons
-                      {...field}
-                      required
-                      error={getErrors('contactAgreement').error}
-                      errorMessage={getErrors('contactAgreement').helperText}
-                      options={[
-                        {
-                          label: m.contactAgreementTrueTitle,
-                          description: <Txt size="small" dangerouslySetInnerHTML={{__html: m.contactAgreementTrueDesc}} />,
-                          value: true,
-                        },
-                        {
-                          label: m.contactAgreementFalseTitle,
-                          description: <Txt size="small" dangerouslySetInnerHTML={{__html: m.contactAgreementFalseDesc}} />,
-                          value: false,
-                        },
-                      ]}
-                    />
-                  )}
-                />
-              </Row>
-              {watchContactAgreement === false && (
-                <Row sx={{mt: 3}}>
-                  <ConsumerAnonymousInformation />
-                </Row>
-              )}
+                  },
+                }}
+                render={({field}) => (
+                  <ScRadioButtons
+                    {...field}
+                    title={
+                      //  ri-shake-hands-line would be great here but it doesn't work right now because codegouv DSFR is not up to date with remixicon
+                      <WithIcon icon="ri-user-shared-line">{m.contactAgreementLabel}</WithIcon>
+                    }
+                    titleSoberStyle
+                    required
+                    error={getErrors('contactAgreement').error}
+                    errorMessage={getErrors('contactAgreement').helperText}
+                    options={[
+                      {
+                        label: m.contactAgreementTrueTitle,
+                        description: <Txt size="small" dangerouslySetInnerHTML={{__html: m.contactAgreementTrueDesc}} />,
+                        value: true,
+                      },
+                      {
+                        label: m.contactAgreementFalseTitle,
+                        description: <Txt size="small" dangerouslySetInnerHTML={{__html: m.contactAgreementFalseDesc}} />,
+                        value: false,
+                      },
+                    ]}
+                  />
+                )}
+              />
+              {watchContactAgreement === false && <ConsumerAnonymousInformation />}
             </>
           )}
         </PanelBody>
@@ -274,6 +264,14 @@ export const ConsumerInner = ({
         }}
         {...{stepNavigation}}
       />
+    </>
+  )
+}
+
+function WithIcon({children, icon}: {children: ReactNode; icon: string}) {
+  return (
+    <>
+      <span className={`${icon} mr-1`} aria-hidden="true" /> {children}
     </>
   )
 }

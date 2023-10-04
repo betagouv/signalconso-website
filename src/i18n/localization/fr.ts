@@ -970,7 +970,7 @@ export const fr = {
     referenceNumberDesc:
       'Afin de faciliter le traitement de votre signalement, précisez la référence de votre dossier. Ex : numéro de billet, ou de réservation, de facture, de contrat, de client, ...',
     referenceNumberPlaceholder: 'ex : ZYX987654321',
-    genderOptional: 'Civilité (optionnel)',
+    genderField: 'Civilité',
     value: 'Value',
     invite: 'Inviter',
     activate_all: 'Tout Activer',
@@ -1078,7 +1078,7 @@ export const fr = {
     },
     inMonth: 'en',
     gender: {
-      Male: 'M',
+      Male: 'M.',
       Female: 'Mme',
     },
     detailGraphDataAvailable: 'données détaillées du graphique disponibles ci-après',
@@ -1249,6 +1249,7 @@ export const fr = {
     confirmationTitle: `Récapitulatif de votre problème`,
     confirmationAlertTransmittable: `Vérifiez votre signalement avant de l’envoyer à l'entreprise et à la répression des fraudes.`,
     confirmationAlert: `Vérifiez votre signalement avant de l’envoyer à la répression des fraudes.`,
+    contactAgreementLabel: `Souhaitez-vous partager vos coordonnées avec l'entreprise ?`,
     contactAgreementTrueTitle: `Je partage`,
     contactAgreementTrueDesc: `mes coordonnées, et mon numéro de référence, avec l'entreprise afin qu'elle puisse me contacter dans le cadre de mon signalement (<b>uniquement</b>). J'ai conscience que la répression des fraudes n'aura pas accès à ces échanges éventuels et ne pourra donc pas les contrôler.`,
     contactAgreementFalseTitle: `Je ne partage pas`,
