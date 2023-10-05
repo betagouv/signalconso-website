@@ -28,7 +28,7 @@ export const Contact = ({isWebView, params}: {isWebView: boolean; params: any}) 
         <h1>{m.contact.title}</h1>
         <h2 className="fr-h4">{m.contact.problemMessage}</h2>
         <p>{m.contact.problemSolution}</p>
-        <div className="text-center mb-6">{isWebView ? <BigReportButtonWebView /> : <BigReportButton {...{m}} />}</div>
+        {/* <div className="text-center mb-6">{isWebView ? <BigReportButtonWebView /> : <BigReportButton {...{m}} />}</div> */}
         <h2 className="fr-h4">{m.contact.technicalIssue}</h2>
 
         <div>
