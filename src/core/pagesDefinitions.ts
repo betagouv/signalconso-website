@@ -108,3 +108,9 @@ export function buildLinkLandingPageFromAnomaly(anomaly: Pick<Anomaly, 'path'>) 
 export function buildLinkNewsArticle(article: NewsArticle) {
   return `/actualites/${article.slug}`
 }
+
+export function buildLinkHomePickCategory() {
+  return pagesDefs.index.url + `#${HP_START_REPORT_ANCHOR}`
+}
+
+export const HP_START_REPORT_ANCHOR = 'quel-probleme'

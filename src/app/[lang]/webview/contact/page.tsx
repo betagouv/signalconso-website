@@ -4,4 +4,6 @@ export async function generateMetadata({params}: any) {
   return getMetadata(params.lang)
 }
 
-export default Contact
+export default ({params}: {params: any}) => {
+  return <Contact {...{params}} isWebView />
+}

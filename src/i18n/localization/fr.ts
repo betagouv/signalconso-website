@@ -227,7 +227,7 @@ export const fr = {
       step2: {
         title: '2. Déposez un signalement sur SignalConso ou posez une question à la répression des fraudes.',
         description1:
-          'Signalez le problème (anonymement ou non) ou posez directement votre question auprès d’un agent de la DGCCRF (la répression des fraudes).',
+          'Signalez le problème (anonymement ou non) ou posez directement votre question auprès d’un agent de la DGCCRF (la répression des fraudes) :',
         description2: 'Dans tous les cas, SignalConso vous oriente et vous conseille.',
       },
       step3: {
@@ -242,6 +242,10 @@ export const fr = {
         description1: 'Votre signalement est enregistré dans la base de données de la DGCCRF.',
         description2:
           'Les signalements deviennent trop nombreux pour une même entreprise ? Le problème est considéré comme grave par les enquêteurs ? La répression des fraudes peut décider de surveiller ou de contrôler une entreprise grâce à votre signalement.',
+      },
+      callout: {
+        title: 'Essayez par vous même !',
+        desc: `Si vous avez rencontré un problème avec une entreprise, vous pouvez faire votre premier signalement :`,
       },
     },
     accessibilite: {
@@ -312,7 +316,8 @@ export const fr = {
     contact: {
       title: 'Contact',
       problemMessage: 'Vous avez rencontré un problème avec une entreprise et vous souhaitez le signaler ?',
-      problemSolution: 'SignalConso est là pour ça ! Naviguez sur notre site et répondez simplement aux questions.',
+      problemSolution:
+        'SignalConso est là pour ça ! Cliquez sur ce bouton pour commencer, et répondez simplement aux questions :',
       technicalIssue: 'Votre question concerne un problème technique rencontré sur SignalConso ?',
       exampleText: 'Par exemple :',
       example1: 'Vous ne trouvez pas le SIRET de l’entreprise que vous voulez signaler',
@@ -321,8 +326,7 @@ export const fr = {
       emailText: 'Dans ce cas écrivez-nous par email à',
       emailTitle:
         'Vous rencontrez un problème technique avec notre site ? Contactez-nous (ouverture de la messagerie par défaut).',
-      alertDescription:
-        "Cette adresse courriel n'est pas destinée au dépôt de votre signalement, qui ne pourra alors être exploité. Tout signalement doit exclusivement être déposé en suivant la procédure sur la page d'accueil du site.",
+      alertDescription: `Cette adresse courriel n'est pas destinée au dépôt de votre signalement, qui ne pourra alors être exploité. Tout signalement doit exclusivement être déposé en suivant le bouton "Je signale un problème" ci-dessus.`,
       alertTitle: 'Ne nous envoyez pas votre signalement par email... il ne sera pas lu.',
     },
     litige: {

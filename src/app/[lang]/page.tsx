@@ -19,6 +19,8 @@ import SearchAnomalies from '../../components_simple/SearchAnomalies'
 import {MobileAppPromoBanner} from 'components_simple/bigBanners/MobileAppPromoBanner'
 import {ForeignVisitorsQaPromoBanner} from 'components_simple/bigBanners/ForeignVisitorsQaPromoBanner'
 import {AppLangs} from 'i18n/localization/AppLangs'
+import {HP_START_REPORT_ANCHOR} from 'core/pagesDefinitions'
+import {bigReportButtonProps, getBigReportButtonText} from 'components_simple/buttons/buttonsUtils'
 
 const ReportStartedAlert = dynamic(() => import('components_feature/ReportStartedAlert'), {ssr: false})
 
@@ -32,6 +34,7 @@ const Home = () => {
   const _report = useReportFlowContext()
   const hasStoredReport = useMemo(() => !!_report.reportDraft.anomaly, [_report.reportDraft])
   const dsfrTheme = useColors()
+  const isWebView = false
   return (
     <>
       <main role="main" id="main-content">
@@ -57,13 +60,12 @@ const Home = () => {
             />
             <div className="flex items-center justify-center fr-pt-4w">
               <Button
-                iconId="fr-icon-alarm-warning-line"
                 onClick={() => {
                   document
-                    .querySelector('#index-categories')
+                    .querySelector(`#${HP_START_REPORT_ANCHOR}`)
                     ?.scrollIntoView({behavior: 'smooth', block: 'start', inline: 'nearest'})
                 }}
-                size="large"
+                {...bigReportButtonProps}
               >
                 {m.buttonReportProblem}
               </Button>
@@ -71,7 +73,7 @@ const Home = () => {
             {currentLang === AppLangs.en && <ForeignVisitorsQaPromoBanner />}
           </div>
         </div>
-        <div id="index-categories" style={{background: dsfrTheme.decisions.background.actionLow.blueFrance.default}}>
+        <div id={HP_START_REPORT_ANCHOR} style={{background: dsfrTheme.decisions.background.actionLow.blueFrance.default}}>
           <div className="fr-container fr-pt-8w fr-pb-8w">
             <SearchAnomalies anomalies={anomalies} />
           </div>
