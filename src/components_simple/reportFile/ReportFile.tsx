@@ -5,6 +5,7 @@ import {useI18n} from 'i18n/I18n'
 import {UploadedFile} from '../../model/UploadedFile'
 import {ScDialog} from '../ScDialog'
 import {extensionToType, FileType, reportFileConfig} from './reportFileConfig'
+import {useImageLoaderWithRetries} from './useImageLoaderWithRetries'
 
 export interface ReportFileProps {
   file: UploadedFile
@@ -53,18 +54,7 @@ export const ReportFile = ({file, onRemove}: ReportFileProps) => {
                   case FileType.Image: {
                     return (
                       <>
-                        <Box
-                          sx={{
-                            position: 'absolute',
-                            top: 0,
-                            right: 0,
-                            borderRadius: 1,
-                            left: 0,
-                            bottom: 0,
-                            backgroundSize: 'cover',
-                            backgroundImage: `url(${fileUrl})`,
-                          }}
-                        />
+                        <Thumbnail src={fileUrl} />
                         <Icon sx={{color: '#00b50f'}}>image</Icon>
                       </>
                     )
@@ -78,7 +68,6 @@ export const ReportFile = ({file, onRemove}: ReportFileProps) => {
                   default: {
                     return (
                       <>
-                        azasdsdfsd
                         <Icon>insert_drive_file</Icon>
                       </>
                     )
@@ -107,5 +96,15 @@ export const ReportFile = ({file, onRemove}: ReportFileProps) => {
         )}
       </div>
     </Tooltip>
+  )
+}
+
+function Thumbnail({src}: {src: string}) {
+  const loaded = useImageLoaderWithRetries(src)
+  return (
+    <div
+      className="absolute top-0 right-0 left-0 bottom-0 bg-cover rounded-sm"
+      {...(loaded ? {style: {backgroundImage: `url("${src}")`}} : null)}
+    />
   )
 }
