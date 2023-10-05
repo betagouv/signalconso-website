@@ -5,7 +5,7 @@ import {useI18n} from 'i18n/I18n'
 import {UploadedFile} from '../../model/UploadedFile'
 import {ScDialog} from '../ScDialog'
 import {extensionToType, FileType, reportFileConfig} from './reportFileConfig'
-import ImageLoaderWithRetry, {useImageLoaderWithRetries} from './useImageLoaderWithRetries'
+import {useImageLoaderWithRetries} from './useImageLoaderWithRetries'
 
 export interface ReportFileProps {
   file: UploadedFile
