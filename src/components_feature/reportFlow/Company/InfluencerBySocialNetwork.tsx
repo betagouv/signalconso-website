@@ -1,5 +1,5 @@
 import {Box} from '@mui/material'
-import {BtnNextSubmit} from 'components_simple/Buttons'
+import {BtnNextSubmit} from 'components_simple/buttons/Buttons'
 import {RequiredFieldsLegend} from 'components_simple/RequiredFieldsLegend'
 import {ScTextInput} from 'components_simple/formInputs/ScTextInput'
 import {Controller, useForm} from 'react-hook-form'

@@ -12,3 +12,5 @@ export const getI18n = (locale?: AppLang) => {
       return fr
   }
 }
+
+export type I18nMessages = typeof fr.messages | typeof en.messages

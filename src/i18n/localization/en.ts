@@ -224,7 +224,7 @@ export const en = {
       },
       step2: {
         title: `2. Report the company on SignalConso or submit a question to France's Fraud Control.`,
-        description1: `Report the problem (anonymously if you prefer) or submit a question directly to a member of staff of Fraud Control.`,
+        description1: `Report the problem (anonymously if you prefer) or submit a question directly to a member of staff of Fraud Control:`,
         description2: 'Either way, SignalConso will provide guidance and advice.',
       },
       step3: {
@@ -239,6 +239,10 @@ export const en = {
         description1: 'Your report will be added to the Fraud Control database.',
         description2:
           'Is one company receiving a high number of reports? Do investigators believe the matter is serious? Fraud Control may decide to investigate or audit a business after receiving your report.',
+      },
+      callout: {
+        title: 'Try it yourself!',
+        desc: `If you encountered an issue with a French company, or a company operating in France, you can make your first report:`,
       },
     },
     accessibilite: {
@@ -315,7 +319,7 @@ export const en = {
       example3: 'You are unable to find the right category for your issue',
       emailText: 'Send us an email at',
       emailTitle: 'Are you experiencing a technical issue on our site? Contact us (default email client will open).',
-      alertDescription: `This email address is not meant to submit your report, we wouldn't be able to process it. Reports must be submitted by following the steps shown on the home page.`,
+      alertDescription: `This email address is not intended for reporting your issue with a company, we wouldn't be able to process it that way. Reports of customer issues must exclusively be submitted by following the "I report an issue" button above.`,
       alertTitle: 'Do not send us a report by email – it will not be read.',
     },
     litige: {

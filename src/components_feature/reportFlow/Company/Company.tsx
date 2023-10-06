@@ -27,7 +27,7 @@ import {CompanySearchByNameAndPostalCode} from './CompanySearchByNameAndPostalCo
 import {CompanySearchResultComponent} from './CompanySearchResult'
 import {CompanyWebsiteCountry} from './CompanyWebsiteCountry'
 import {InfluencerBySocialNetwork} from './InfluencerBySocialNetwork'
-import {BtnNext} from 'components_simple/Buttons'
+import {BtnNext} from 'components_simple/buttons/Buttons'
 import {SpecificWebsiteCompanyKinds} from '../../../anomalies/Anomaly'
 
 interface CompanyWithRequiredProps {

@@ -104,3 +104,7 @@ export const iconArrowRight = 'fr-icon-arrow-right-s-line'
 export function notNull<A>(a: A | null): a is A {
   return a !== null
 }
+
+export function sendMessageToReactNative(message: string): void {
+  window.ReactNativeWebView?.postMessage(message)
+}

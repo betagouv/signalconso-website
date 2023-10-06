@@ -1,7 +1,7 @@
 import {Button} from '@codegouvfr/react-dsfr/Button'
 import {Dialog, DialogActions, DialogContent, DialogTitle, LinearProgress} from '@mui/material'
 import {useMutation} from '@tanstack/react-query'
-import {ButtonWithLoader} from 'components_simple/Buttons'
+import {ButtonWithLoader} from 'components_simple/buttons/Buttons'
 import {ScAlert} from 'components_simple/ScAlert'
 import {ScValidationCodeInput} from 'components_simple/formInputs/ScValidationCodeInput'
 import {useApiClients} from 'context/ApiClientsContext'

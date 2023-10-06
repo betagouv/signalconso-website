@@ -1,5 +1,5 @@
 import {Animate} from 'components_simple/Animate'
-import {BtnNextSubmit} from 'components_simple/Buttons'
+import {BtnNextSubmit} from 'components_simple/buttons/Buttons'
 import {Panel, PanelActions, PanelBody} from 'components_simple/Panel'
 import {RequiredFieldsLegend} from 'components_simple/RequiredFieldsLegend'
 import {ScAutocompleteCountry} from 'components_simple/formInputs/ScAutocompleteCountry'
