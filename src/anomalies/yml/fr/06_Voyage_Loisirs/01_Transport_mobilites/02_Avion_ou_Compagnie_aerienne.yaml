@@ -1,5 +1,5 @@
-title: Compagnie aérienne
-desc: 'Exemple : Vol annulé, vol retardé, déclassement, refus d''embarquement'
+title: Avion ou Compagnie aérienne
+desc: 'Exemple : Vol annulé, vol retardé, déclassement, refus d''embarquement, accessibilité'
 blockingInfo:
   title: Oups, nous ne pouvons pas traiter votre signalement.
   content: >-
