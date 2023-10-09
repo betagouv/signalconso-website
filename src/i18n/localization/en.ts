@@ -631,21 +631,34 @@ export const en = {
 
     suiviEtViePrivee: {
       suiviAudienceViePrivee: 'Visitor analytics and privacy',
-      donneesPersonnelles: 'Personal data',
-      infoRecueillies:
-        "Information that is collected from the SignalConso form is stored by SignalConso (DGCCRF) on a computer-readable file to enable correction by staff and allow DGCCRF to follow up on reports for audit purposes. The legal basis for processing is DGCCRF's public service remit, which includes checking and applying penalties for breaches of the Consumer Code (L511-3 of the Consumer Code and L450-1 of the Commercial Code).",
-      infoDemandees:
-        'Information that we ask for when submitting a report is required in order for reports to be processed. In particular, email addresses may be used by SignalConso (specifically, software and applications, including websites, sections of websites and mobile apps) to notify the consumer of any updates regarding a report (notification system).',
-      infoSignalement:
+      donneesPersonnellesTitre: 'Personal data',
+      donneesPersonnelles1:
+        'Information that is collected from the SignalConso form is stored by SignalConso (DGCCRF) on a computer-readable file to enable correction by staff and allow DGCCRF to follow up on reports for audit purposes. Consumers can also use the SignalConso form to send a complaint to the RéponseConso service.',
+      donneesPersonnelles2:
+        "The aim of RéponseConso is to analyze consumer requests made electronically via the SignalConso online platform, by telephone or by post, and provide them with a simple, appropriate response in line with the DGCCRF's public service mission of consumer protection.",
+      donneesPersonnelles3:
+        "The legal basis for processing is DGCCRF's public service remit, which includes checking and applying penalties for breaches of the Consumer Code and the Commercial Code (L511-3 of the Consumer Code and L450-1 of the Commercial Code).",
+      donneesPersonnelles4:
+        'The information we request when submitting a report is required to process the reports or to forward a complaint to the RéponseConso service.',
+      donneesPersonnelles5:
+        'In particular, email addresses may be used by SignalConso (specifically, software and applications, including websites, sections of websites and mobile apps) to notify the consumer of any updates regarding a report (notification system).',
+      donneesPersonnelles6:
+        'When the consumer receives the answer to the question posed to RéponseConso, an e-mail message is automatically sent to them to take their experience into account, redirecting them to an online form hosted by the company Eval&Go. The link used to contribute to the RéponseConso evaluation corresponds to a unique and anonymous link in the questionnaire, which therefore does not allow the person who took part to be identified.',
+      donneesPersonnelles7:
+        'This processing is necessary for the purposes of the legitimate interests pursued by the DGCCRF to improve its service and does not present a risk for the interests, freedoms and fundamental rights of the data subject.',
+      donneesPersonnelles8:
         'Details regarding a report (i.e. the statement and any attachments) are kept by DGCCRF for five years for the purpose of investigation, surveys and any consequences thereof.',
+      donneesPersonnelles9:
+        "As part of our commitment to transparency and respect for consumer privacy, we would like to inform you that the data collected when reporting dangerous products is transmitted to ANSES (Agence nationale de sécurité sanitaire, de l'alimentation, de l'environnement et du travail) as part of their public service mission. This transmission is carried out in accordance with the laws and regulations in force, and is strictly supervised to guarantee the protection of your rights and privacy.",
       declarationsObjetRetraitement:
         'DGCCRF, as operator of the online service, undertakes not to make use of any personal information shared by the user for commercial purposes. Statements may be reprocessed by the authority for statistical purposes as part of its remit. Information contained on SignalConso does not include personal or nominative data and is provided free of charge without restriction on the online service ',
       aFrequenceReguliere: 'on a regular basis.',
       utilisateurDroitAcces:
         'Users have a right of access, rectification, erasure and objection over their personal data, which can be exercised upon request ',
       parEmail: 'by email.',
-      consultezInterfaceCnil:
-        'Visit cnil.fr for more information about your data rights. If, after contacting us, you believe that your data protection rights have not been respected, you can submit a complaint to the French Data Protection Authority (CNIL).',
+      consultezInterfaceCnil1: 'Visit ',
+      consultezInterfaceCnil2:
+        ' for more information about your data rights. If, after contacting us, you believe that your data protection rights have not been respected, you can submit a complaint to the French Data Protection Authority (CNIL).',
       droitAccesDonnees: 'Right of access to data',
       conformementRGPD:
         'In accordance with Regulation (EU) 2016/679 of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data (GDPR) and the French Data Protection Act 78-17 of 6 January 1978, as amended, on data protection, computer records and privacy, persons concerned by this personal data processing action may access, rectify, or request the erasure of, their personal data.',

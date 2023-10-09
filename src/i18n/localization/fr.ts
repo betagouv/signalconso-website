@@ -642,21 +642,34 @@ export const fr = {
     },
     suiviEtViePrivee: {
       suiviAudienceViePrivee: "Suivi d'audience et vie privée",
-      donneesPersonnelles: 'Données personnelles',
-      infoRecueillies:
-        'Les informations recueillies dans le formulaire de SignalConso sont enregistrées dans un fichier informatisé par l’équipe SignalConso (DGCCRF) pour permettre aux professionnels de se corriger et permettre à la DGCCRF de suivre les signalements à des fins de contrôle. La base légale du traitement est la mission de service public de la DGCCRF, habilitée à contrôler et sanctionner les manquements relatifs au code de la consommation (L511-3 Code Conso et L450-1 Code Commerce)',
-      infoDemandees:
-        "Les informations demandées lors du dépôt du signalement sont nécessaires pour traiter les signalements. En particulier, l'adresse email pourra être utilisée par l'interface en ligne (tout logiciel ou application, y compris un site internet, une section de site internet ou une application mobile) pour informer le consommateur du suivi de son signalement (système de notification).",
-      infoSignalement:
+      donneesPersonnellesTitre: 'Données personnelles',
+      donneesPersonnelles1:
+        'Les informations recueillies dans le formulaire de SignalConso sont enregistrées dans un fichier informatisé par l’équipe SignalConso (DGCCRF) pour permettre aux professionnels de se corriger et permettre à la DGCCRF de suivre les signalements à des fins de contrôle. Le consommateur peut également s’il le souhaite transmettre une réclamation depuis le formulaire SignalConso au service RéponseConso.',
+      donneesPersonnelles2:
+        'RéponseConso a pour ambition d’analyser les demandes des consommateurs effectuées par la voie électronique depuis la plateforme en ligne SignalConso, par téléphone ou par la voie postale et leur fournir une réponse adaptée et simple conforme à la mission de service public de la DGCCRF, à savoir la protection des consommateurs.',
+      donneesPersonnelles3:
+        'La base légale de ces traitements est la mission de service public de la DGCCRF., habilitée à contrôler et sanctionner les manquements relatifs au code de la consommation et au Code de Commerce (L511-3 Code Conso et L450-1 Code Commerce)',
+      donneesPersonnelles4:
+        'Les informations demandées lors du dépôt du signalement sont nécessaires pour traiter les signalements ou transmettre une réclamation au service RéponseConso.',
+      donneesPersonnelles5:
+        "En particulier, l'adresse email pourra être utilisée par l'interface en ligne (tout logiciel ou application, y compris un site internet, une section de site internet ou une application mobile) pour informer le consommateur du suivi de son signalement (système de notification).",
+      donneesPersonnelles6:
+        'Lorsque le consommateur reçoit la réponse à la question posée à RéponseConso, un message électronique lui est envoyé automatiquement pour prendre en compte son expérience et le redirige pour ce faire vers un formulaire en ligne hébergé par la société Eval&Go. Le lien permettant de contribuer à l’évaluation de RéponseConso correspond à un lien unique et anonyme du questionnaire qui ne permet donc pas de réidentifier la personne qui y a participé.',
+      donneesPersonnelles7:
+        'Ce traitement est nécessaire aux fins des intérêts légitimes poursuivis par la DGCCRF pour améliorer son service et ne présente pas de risque pour les intérêts, les libertés et les droits fondamentaux de la personne concernée.',
+      donneesPersonnelles8:
         'Les informations relatives au signalement (c’est-à-dire la déclaration et les pièces jointes) sont conservées 5 ans par la DGCCRF pour les besoins des enquêtes et les suites éventuelles.',
+      donneesPersonnelles9:
+        'Dans le cadre de notre engagement envers la transparence et le respect de la vie privée des consommateurs, nous tenons à vous informer que, les données collectées dans le cadre d’un signalement sur les produits dangereux  sont  transmises à l’ANSES (Agence nationale de sécurité sanitaire, de l’alimentation, de l’environnement et du travail) dans le cadre de leur mission de service public . Cette transmission se fait conformément aux lois et réglementations en vigueur, et elle est strictement encadrée pour garantir la protection de vos droits et de votre vie privée.',
       declarationsObjetRetraitement:
         "La DGCCRF, en sa qualité d’exploitant de l'interface en ligne, s'engage à n'opérer aucune commercialisation des informations personnelles transmises par l'usager, Les déclarations peuvent faire l’objet d'un retraitement statistique par l’administration dans le cadre de ses missions. Les informations présentes sur l'interface en ligne public ne comportent pas de données nominatives et sont mises à disposition de manière libre et gratuite sur l'interface en ligne ",
       aFrequenceReguliere: 'à fréquence régulière.',
       utilisateurDroitAcces:
         "L’utilisateur dispose d'un droit d'accès, de rectification, de suppression et d'opposition de ses données personnelles sur simple demande ",
       parEmail: 'par email.',
-      consultezInterfaceCnil:
-        "Consultez l'interface en ligne cnil.fr pour plus d’informations sur vos droits. Si vous estimez, après nous avoir contactés, que vos droits « Informatique et Libertés » ne sont pas respectés, vous pouvez adresser une réclamation à la CNIL.",
+      consultezInterfaceCnil1: "Consultez l'interface en ligne ",
+      consultezInterfaceCnil2:
+        ' pour plus d’informations sur vos droits. Si vous estimez, après nous avoir contactés, que vos droits « Informatique et Libertés » ne sont pas respectés, vous pouvez adresser une réclamation à la CNIL.',
       droitAccesDonnees: "Droit d'accès aux données",
       conformementRGPD:
         "Conformément au Règlement 2016/679 du 27 avril 2016 relatif à la protection des personnes physiques à l'égard du traitement des données à caractère personnel et à la libre circulation de ces données (RGPD) et à la loi n°78-17 du 6 janvier 1978 relative à l'informatique, aux fichiers et aux libertés modifiée, les personnes concernées par ce traitement de données personnelles peuvent accéder aux données les concernant, les rectifier, demander leur effacement.",

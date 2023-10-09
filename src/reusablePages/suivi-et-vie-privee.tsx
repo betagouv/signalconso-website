@@ -22,13 +22,25 @@ export const SuiviEtViePrivee = ({params}: any) => {
   return (
     <ContentPageContainer>
       <h1>{m.suiviEtViePrivee.suiviAudienceViePrivee}</h1>
-      <h2 className="fr-h4">{m.suiviEtViePrivee.donneesPersonnelles}</h2>
+      <h2 className="fr-h4">{m.suiviEtViePrivee.donneesPersonnellesTitre}</h2>
       <p>
-        {m.suiviEtViePrivee.infoRecueillies}
+        {m.suiviEtViePrivee.donneesPersonnelles1}
         <br />
-        {m.suiviEtViePrivee.infoDemandees}
+        {m.suiviEtViePrivee.donneesPersonnelles2}
         <br />
-        {m.suiviEtViePrivee.infoSignalement}
+        {m.suiviEtViePrivee.donneesPersonnelles3}
+        <br />
+        {m.suiviEtViePrivee.donneesPersonnelles4}
+        <br />
+        {m.suiviEtViePrivee.donneesPersonnelles5}
+        <br />
+        {m.suiviEtViePrivee.donneesPersonnelles6}
+        <br />
+        {m.suiviEtViePrivee.donneesPersonnelles7}
+        <br />
+        {m.suiviEtViePrivee.donneesPersonnelles8}
+        <br />
+        {m.suiviEtViePrivee.donneesPersonnelles9}
       </p>
       <p>
         {m.suiviEtViePrivee.declarationsObjetRetraitement}
@@ -46,7 +58,13 @@ export const SuiviEtViePrivee = ({params}: any) => {
           {m.suiviEtViePrivee.parEmail}
         </a>
       </p>
-      <p>{m.suiviEtViePrivee.consultezInterfaceCnil}</p>
+      <p>
+        {m.suiviEtViePrivee.consultezInterfaceCnil1}
+        <a target="_blank" rel="noreferrer" href="https://cnil.fr">
+          cnil.fr
+        </a>
+        {m.suiviEtViePrivee.consultezInterfaceCnil2}
+      </p>
 
       <h2 className="fr-h4">{m.suiviEtViePrivee.droitAccesDonnees}</h2>
       <p>{m.suiviEtViePrivee.conformementRGPD}</p>
