@@ -2,7 +2,7 @@ import {ReportDraft2} from './ReportDraft2'
 
 export const STEP_PARAM_NAME = 'step'
 
-export const reportSteps = ['BuildingProblem', 'BuildingCompany', 'BuildingDetails', 'BuildingConsumer', 'Confirmation'] as const
+export const reportSteps = ['BuildingProblem', 'BuildingDetails', 'BuildingCompany', 'BuildingConsumer', 'Confirmation'] as const
 export type ReportStep = (typeof reportSteps)[number]
 
 export const firstReportStep = reportSteps[0]
@@ -52,10 +52,10 @@ export function getAnalyticsForStep(step: ReportStepOrDone) {
   switch (step) {
     case 'BuildingProblem':
       return {path: 'le-probleme', title: `Étape 1: Le problème - SignalConso`}
-    case 'BuildingCompany':
-      return {path: 'le-commerçant', title: `Étape 2: L'entreprise - SignalConso`}
     case 'BuildingDetails':
-      return {path: 'la-description', title: `Étape 3: La description - SignalConso`}
+      return {path: 'la-description', title: `Étape 2: La description - SignalConso`}
+    case 'BuildingCompany':
+      return {path: 'le-commerçant', title: `Étape 3: L'entreprise - SignalConso`}
     case 'BuildingConsumer':
       return {path: 'le-consommateur', title: `Étape 4: Le consommateur - SignalConso`}
     case 'Confirmation':
@@ -69,11 +69,11 @@ function isBuildingStepDone(r: Partial<ReportDraft2>, step: ReportStep) {
   switch (step) {
     case 'BuildingProblem':
       return !!r.category && !!r.subcategories && !!r.consumerWish
+    case 'BuildingDetails':
+      return !!r.details
     case 'BuildingCompany':
       // When the website is in a foreign country, only the country is specified
       return !!r.companyDraft?.siret || !!r.companyDraft?.address.postalCode || r.companyDraft?.address.country || !!r.influencer
-    case 'BuildingDetails':
-      return !!r.details
     case 'BuildingConsumer':
       return !!r.consumer?.email && !!r.consumer?.firstName && !!r.consumer?.lastName
     case 'Confirmation':
