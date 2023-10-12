@@ -79,22 +79,6 @@ export const ConfirmationInner = ({
               </Box>
             </Box>
           </ConfirmationStep>
-          <ConfirmationStep title={m.step_description} {...{goToStep}}>
-            <dl>
-              {draft.details.map(({label, value}) => (
-                <div key={label} className="mb-2">
-                  <dt className="font-medium" dangerouslySetInnerHTML={{__html: label}} />
-                  <dd className="text-schint">{value}</dd>
-                </div>
-              ))}
-              <div className="mb-2">
-                <dt className="font-medium mb-1">{m.attachments}</dt>
-                <dd>
-                  <ReportFiles fileOrigin={FileOrigin.Consumer} disableAdd hideRemoveBtn files={draft.uploadedFiles} />
-                </dd>
-              </div>
-            </dl>
-          </ConfirmationStep>
           {draft.companyDraft && (
             <ConfirmationStep title={m.step_company} {...{goToStep}}>
               <Txt size="big" bold block sx={{mb: 1}} component="h3">
@@ -152,6 +136,23 @@ export const ConfirmationInner = ({
               </Row>
             </ConfirmationStep>
           )}
+          <ConfirmationStep title={m.step_description} {...{goToStep}}>
+            <dl>
+              {draft.details.map(({label, value}) => (
+                <div key={label} className="mb-2">
+                  <dt className="font-medium" dangerouslySetInnerHTML={{__html: label}} />
+                  <dd className="text-schint">{value}</dd>
+                </div>
+              ))}
+              <div className="mb-2">
+                <dt className="font-medium mb-1">{m.attachments}</dt>
+                <dd>
+                  <ReportFiles fileOrigin={FileOrigin.Consumer} disableAdd hideRemoveBtn files={draft.uploadedFiles} />
+                </dd>
+              </div>
+            </dl>
+          </ConfirmationStep>
+
           <ConfirmationStep title={m.step_consumer} {...{goToStep}}>
             <ul className="list-none">
               <li className="p-0">

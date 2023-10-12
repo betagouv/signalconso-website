@@ -317,6 +317,8 @@ export const fr = {
       title: 'Contact',
       problemMessage: 'Vous avez rencontré un problème avec une entreprise et vous souhaitez le signaler ?',
       problemSolution: 'SignalConso est là pour ça ! Naviguez sur notre site et répondez simplement aux questions.',
+      problemSolutionWithButton:
+        'SignalConso est là pour ça ! Cliquez sur ce bouton pour commencer, et répondez simplement aux questions :',
       technicalIssue: 'Votre question concerne un problème technique rencontré sur SignalConso ?',
       exampleText: 'Par exemple :',
       example1: 'Vous ne trouvez pas le SIRET de l’entreprise que vous voulez signaler',

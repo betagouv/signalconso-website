@@ -312,6 +312,7 @@ export const en = {
       title: 'Contact',
       problemMessage: 'Have you run into a problem with a business and want to report it?',
       problemSolution: 'SignalConso can help! Go to our main page, pick a category and answer a few simple questions.',
+      problemSolutionWithButton: 'SignalConso can help! Click on this button to begin, and answer the questions:',
       technicalIssue: 'Does your query relate to a technical issue with SignalConso?',
       exampleText: 'For example:',
       example1: 'You are unable to locate the SIRET number for the company you want to report',

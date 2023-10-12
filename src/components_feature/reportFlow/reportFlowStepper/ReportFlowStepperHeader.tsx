@@ -22,7 +22,7 @@ export function ReportFlowStepperHeader(
   const {m} = useI18n()
   const {step, anomalyTitle, isWebView, variant} = props
   function getLabel(step: ReportStep) {
-    const stepsLabels = [m.step_problem, m.step_description, m.step_company, m.step_consumer, m.step_confirm]
+    const stepsLabels = [m.step_problem, m.step_company, m.step_description, m.step_consumer, m.step_confirm]
     return stepsLabels[getIndexForStep(step) - 1]
   }
 
