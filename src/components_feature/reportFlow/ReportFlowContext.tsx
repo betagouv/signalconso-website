@@ -1,5 +1,5 @@
 import {ReportDraft2} from 'model/ReportDraft2'
-import React, {ReactNode, useContext, useEffect, useState} from 'react'
+import React, {ReactNode, useContext, useEffect, useRef, useState} from 'react'
 import {getIndexForStep, getIndexForStepOrDone, ReportStep, ReportStepOrDone} from '../../model/ReportStep'
 import {useAnalyticContext} from '../../analytic/AnalyticContext'
 import {AnalyticAction, EventCategories, ReportEventActions} from '../../analytic/analytic'
@@ -16,14 +16,15 @@ const ReportFlowContext = React.createContext<ReportFlowContextProps>({} as Repo
 export const ReportFlowProvider = ({children}: {children: ReactNode}) => {
   const _analytic = useAnalyticContext()
   const [reportDraft, setReportDraft] = useState<Partial<ReportDraft2>>({})
-  const [currentStep, setCurrentStep] = useState<Partial<ReportStepOrDone | undefined>>(undefined)
+  // const [currentStep, setCurrentStep] = useState<ReportStepOrDone | undefined>('BuildingConsumer')
+  const currentStep = useRef<ReportStepOrDone | undefined>('BuildingConsumer')
 
   /**
    * Will send event at each step of the report workflow. The event must be unique, ie if a user decides to edit a previous step no step event will be triggered again
    * @param newStep
    */
   const sendReportEvent = (newStep: ReportStepOrDone) => {
-    if (currentStep == undefined || getIndexForStepOrDone(newStep) > getIndexForStepOrDone(currentStep)) {
+    if (currentStep.current == undefined || getIndexForStepOrDone(newStep) > getIndexForStepOrDone(currentStep.current)) {
       switch (newStep) {
         case 'BuildingProblem':
           _analytic.trackEvent(EventCategories.report, ReportEventActions.validateProblem)
@@ -46,7 +47,7 @@ export const ReportFlowProvider = ({children}: {children: ReactNode}) => {
         default:
           break
       }
-      setCurrentStep(newStep)
+      currentStep.current = newStep
     }
   }
 
@@ -57,7 +58,7 @@ export const ReportFlowProvider = ({children}: {children: ReactNode}) => {
         setReportDraft,
         resetFlow: () => {
           setReportDraft({})
-          setCurrentStep(undefined)
+          currentStep.current = undefined
         },
         sendReportEvent,
       }}
