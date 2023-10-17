@@ -46,6 +46,7 @@ export const ScDatepicker = forwardRef((props: ScDatepickerProps, ref: Forwarded
         {...(min && {min: frenchToIsoFormat(min)})}
         placeholder={placeholder}
         className={`fr-input ${error ? 'fr-input--error' : null}`}
+        {...(error ? {'aria-invalid': true} : null)}
         aria-describedby={helperTextId}
         {...(required ? {'aria-required': true} : null)}
       />

@@ -83,6 +83,7 @@ export const ScTextInput = forwardRef((props: Props, ref: ForwardedRef<HTMLInput
           placeholder={placeholder}
           className={`fr-input ${error ? 'fr-input--error' : ''} ${disabled ? '!text-gray-600 !shadow-none' : ''}`}
           aria-describedby={helperTextId}
+          {...(error ? {'aria-invalid': true} : null)}
           {...(required ? {'aria-required': true} : null)}
           {...(tabIndex && !disabled ? {tabIndex} : null)}
           {...(autoFocus ? {autoFocus} : null)}

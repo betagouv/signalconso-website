@@ -40,6 +40,7 @@ export const ScSelect = forwardRef((props: Props, ref: ForwardedRef<HTMLSelectEl
         onBlur={onBlur}
         ref={ref}
         aria-describedby={helperTextId}
+        {...(error ? {'aria-invalid': true} : null)}
         {...(required ? {'aria-required': true} : null)}
       >
         <option value="" disabled hidden>

@@ -33,6 +33,7 @@ export const ScPrecisionInput = forwardRef((props: Props, ref: ForwardedRef<HTML
         placeholder={m.specify}
         className={`fr-input ${error ? 'fr-input--error' : null}`}
         aria-describedby={helperTextId}
+        {...(error ? {'aria-invalid': true} : null)}
         {...(required ? {'aria-required': true} : null)}
         autoFocus
       />
