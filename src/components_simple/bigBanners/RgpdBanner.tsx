@@ -45,7 +45,6 @@ export function RgpdBanner() {
           {m.bannerCookie} <Link href={pagesDefs.cookies.url}>{m.bannerCookieSeeMore}</Link>
         </p>
       </div>
-      <ul className="fr-consent-banner__buttons fr-btns-group fr-btns-group--right fr-btns-group--inline-reverse fr-btns-group--inline-sm"></ul>
     </div>
   )
 }
