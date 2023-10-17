@@ -1,4 +1,4 @@
-import {Icon, IconButton} from '@mui/material'
+import Button from '@codegouvfr/react-dsfr/Button'
 import {useMutation} from '@tanstack/react-query'
 import {useAnalyticContext} from 'analytic/AnalyticContext'
 import {EventCategories, ReportEventActions} from 'analytic/analytic'
@@ -13,7 +13,6 @@ import {useEffect, useState} from 'react'
 import {last} from 'utils/lodashNamedExport'
 import {Anomaly, InfoWall, Subcategory} from '../../../anomalies/Anomaly'
 import {LinkBackToHome} from '../../../components_simple/LinkBackToHome'
-import {Txt} from '../../../components_simple/Txt'
 
 interface Props {
   anomaly: Anomaly
@@ -84,18 +83,39 @@ export const ProblemInformation = ({anomaly, subcategories, information, isWebVi
               </Fender>
             </PanelBody>
           ) : (
-            <PanelBody sx={{display: 'flex', justifyContent: 'center'}}>
-              <IconButton disabled={_vote.isLoading} size="large" color="primary" onClick={() => onVote(true)} sx={{mr: 4}}>
-                <Icon style={{fontSize: 38}}>thumb_up</Icon>
-              </IconButton>
-              <IconButton disabled={_vote.isLoading} size="large" color="primary" onClick={() => onVote(false)}>
-                <Icon style={{fontSize: 38}}>thumb_down</Icon>
-              </IconButton>
-            </PanelBody>
+            <div className="flex items-center justify-center gap-4">
+              <VoteButton disabled={_vote.isLoading} {...{onVote}} wasUseful={false} />
+              <VoteButton disabled={_vote.isLoading} {...{onVote}} wasUseful={true} />
+            </div>
           )}{' '}
         </Panel>
       </Animate>
       <LinkBackToHome isWebView={isWebView} lang={currentLang} />
     </>
+  )
+}
+
+function VoteButton({
+  disabled,
+  wasUseful,
+  onVote,
+}: {
+  disabled: boolean
+  wasUseful: boolean
+  onVote: (wasUseful: boolean) => void
+}) {
+  const {m} = useI18n()
+
+  return (
+    <Button
+      disabled={disabled}
+      iconId={wasUseful ? 'fr-icon-thumb-up-line' : 'fr-icon-thumb-down-line'}
+      onClick={() => onVote(wasUseful)}
+      priority="tertiary no outline"
+      size="large"
+      className="!p-8 !text-2xl"
+    >
+      {wasUseful ? m.yes : m.no}
+    </Button>
   )
 }
