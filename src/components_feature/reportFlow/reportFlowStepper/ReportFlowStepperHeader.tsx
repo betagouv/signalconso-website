@@ -35,13 +35,13 @@ export function ReportFlowStepperHeader(
     const isPrevBackToHome = stepIndex === 1
     return (
       <div className="fr-stepper grow">
-        <h2 className="fr-stepper__title">
+        <h1 className="fr-stepper__title">
           <span className="fr-stepper__state">
             {anomalyTitle} - {m.titleAndDescriptions.faireUnSignalement.etape} {stepIndex}{' '}
             {m.titleAndDescriptions.faireUnSignalement.sur} {stepsCount}
           </span>
           {variant === 'main' && stepTitle}
-        </h2>
+        </h1>
         <div className="fr-stepper__steps" data-fr-current-step={stepIndex} data-fr-steps={stepsCount}></div>
         {variant === 'main' && (
           <div className="flex gap-2 justify-between">
