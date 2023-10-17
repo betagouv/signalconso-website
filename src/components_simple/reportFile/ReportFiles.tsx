@@ -195,9 +195,11 @@ export const ReportFiles = ({
           dangerouslySetInnerHTML={{__html: m.attachmentsDescAllowedFormat(appConfig.upload_allowedExtensions)}}
         />
         {innerFiles?.length === appConfig.maxNumberOfAttachments ? (
-          <span className="text-sm text-center">{m.maxAttachmentsZero(appConfig.maxNumberOfAttachments)}</span>
+          <span className="text-sm text-center" role="status">
+            {m.maxAttachmentsZero(appConfig.maxNumberOfAttachments)}
+          </span>
         ) : (
-          <p className="text-sm mt-0 mb-2 text-center">
+          <p className="text-sm mt-0 mb-2 text-center" role="status">
             {m.maxAttachmentsCurrent(appConfig.maxNumberOfAttachments - (innerFiles ? innerFiles.length : 0))}
           </p>
         )}
