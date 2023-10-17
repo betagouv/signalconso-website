@@ -56,7 +56,6 @@ export const ScRadioButtons = <V,>({
       id={id}
       className={`fr-fieldset ${horizontal && 'fr-fieldset--inline'} ${error ? 'fr-fieldset--error' : ''} ${className}`}
       aria-labelledby={`${title && legendId} ${messagesWrapperId}`}
-      role="group"
       {...(required ? {'aria-required': true} : null)}
     >
       {title && (
