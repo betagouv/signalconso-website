@@ -8,6 +8,7 @@ import {useI18n} from '../i18n/I18n'
 import buildMenuLink from '../utils/menuLinks'
 import {urlServicePublicPlus} from './ScFooter'
 import {SwitchLang} from './SwitchLang'
+import {useEffect} from 'react'
 
 function buildSubmenu(text: string, menuLinks: ReturnType<typeof buildMenuLink>[]) {
   return {
@@ -22,6 +23,15 @@ export function ScHeader() {
   const {m, currentLang} = useI18n()
   // En se basant sur https://www.diplomatie.gouv.fr/en/
   // On ne traduit pas République Française
+
+  useEffect(() => {
+    const logoLink = document.querySelector('.fr-header__logo a')
+    if (logoLink) {
+      // accessibility audit asked for this
+      logoLink.setAttribute('aria-label', m.header.logoLinkLabel)
+    }
+  }, [])
+
   return (
     <>
       <Header

@@ -862,6 +862,7 @@ export const en = {
       linkedinTitle: 'Follow Fraud Control on LinkedIn (opens in new window)',
     },
     header: {
+      logoLinkLabel: 'SignalConso - République Française (Go to the main page)',
       homeLinkTitle: `SignalConso (Go to the main page)`,
       connexionLinkTitle: `Business owners portal`,
       indexLinkTitle: 'Report an issue',

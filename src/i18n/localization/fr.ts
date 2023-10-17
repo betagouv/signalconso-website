@@ -873,6 +873,7 @@ export const fr = {
       linkedinTitle: 'Retrouvez la répression des fraudes sur LinkedIn - nouvelle fenêtre',
     },
     header: {
+      logoLinkLabel: "SignalConso - République Française (Allez à l'accueil)",
       homeLinkTitle: "SignalConso (Allez à l'accueil)",
       connexionLinkTitle: 'Espace professionnel',
       indexLinkTitle: 'Faire un signalement',
