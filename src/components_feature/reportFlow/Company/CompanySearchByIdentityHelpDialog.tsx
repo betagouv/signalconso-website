@@ -44,30 +44,34 @@ export const CompanySearchByIdentityHelpDialog = ({children, PaperProps, onClick
               {m.companyIdentityHelperWhereDesc0}
               <img
                 src="/image/siret-helper/siret-helper-footer.png"
-                alt="Sur un site internet 1 sur 2"
+                alt={m.companyIdentityHelperImages.footer}
                 style={{width: '100%', marginTop: 4, marginBottom: 4}}
               />
               {m.companyIdentityHelperWhereDesc2}
               <img
                 src="/image/siret-helper/siret-helper-mentions_legales.png"
-                alt="Sur un site internet 2 sur 2"
+                alt={m.companyIdentityHelperImages.mentionsLegales}
                 style={{width: '100%', marginTop: 4, marginBottom: 4}}
               />
             </Accordion>
             <Accordion label={m.companyIdentityHelperInvoice}>
-              <img src="/image/siret-helper/siret-helper-bill.jpg" alt="Sur une facture" style={{width: '100%'}} />
+              <img
+                src="/image/siret-helper/siret-helper-bill.jpg"
+                alt={m.companyIdentityHelperImages.bill}
+                style={{width: '100%'}}
+              />
             </Accordion>
             <Accordion label={m.companyIdentityHelperReceipt}>
               <img
                 src="/image/siret-helper/siret-helper-ticket.jpg"
-                alt="Sur un ticket de caisse"
+                alt={m.companyIdentityHelperImages.ticket}
                 style={{maxWidth: '300px', margin: 'auto', display: 'block'}}
               />
             </Accordion>
             <Accordion label={m.companyIdentityHelperCreditCardReceipt}>
               <img
                 src="/image/siret-helper/siret-helper-card.jpg"
-                alt="Sur un ticket de carte bleue"
+                alt={m.companyIdentityHelperImages.card}
                 style={{maxWidth: '300px', margin: 'auto', display: 'block'}}
               />
             </Accordion>

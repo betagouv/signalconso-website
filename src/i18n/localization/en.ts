@@ -1227,6 +1227,13 @@ export const en = {
     companyIdentityHelperWhereDesc2: `
       Click on "Legal notice" ("Mentions légales"). A new page should open, where you will be able to find this number easily:
     `,
+    companyIdentityHelperImages: {
+      footer: `Example of a website footer in French containing the links C.G.V, C.G.U, Mention légales, Données personnelles, Gestions des Cookies, Avis, Contact, FAQ et Aide.`,
+      mentionsLegales: `In this example, the SIRET number is found in the paragraph under the title "Mentions légales": "Le site abcdef.fr est [...] under number 123456789".`,
+      bill: `Example of a typical invoice in French. In the top left, we see the company's name and address, followed by "SIRET: 12345679 00001". At the very bottom of the invoice, the company name appears again, along with other legal details, and again "SIRET: 12345679 00001".`,
+      ticket: `Example of a French receipt from a purchase in a store. At the very bottom of the receipt, after the total purchase price and the VAT amount, there's a line reading "SIRET: 12345679 00001".`,
+      card: `Example of a bank card receipt. Around the middle of the receipt, there's a line with "Company Name", another with "Transaction Location", and then another line that starts with zeros "00 00000" and continues with a SIRET number "123456789 001".`,
+    },
     consumerTitle: `Your contact details allow us to authenticate your report`,
     consumerAskCodeTitle: `Enter the validation code.`,
     consumerAskCodeDesc: (email: string) => `An email has been sent to <b>${email}</b>`,
