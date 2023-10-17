@@ -63,7 +63,7 @@ export function ScHeader() {
             },
             text: m.header.connexionLinkTitle,
           },
-          appConfig.translationFeatureFlagEnabled ? <SwitchLang key="translate-button" /> : <></>,
+          appConfig.translationFeatureFlagEnabled ? <SwitchLang /> : <></>,
         ]}
         // serviceTitle="SignalConso"
         // serviceTagline="un service public pour les consommateurs"

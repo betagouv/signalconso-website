@@ -874,7 +874,9 @@ export const en = {
       contactLinkTitle: 'Contact',
       actualitesLinkTitle: 'News',
       servicePublicPlusLinkTitle: 'Services Publics +',
-      selectLang: 'Select language',
+      selectLang: 'French version of the website (currently EN)',
+      currentLangCode: 'EN',
+      currentLang: 'English',
     },
     SocialNetwork: {
       YOUTUBE: 'Youtube',
