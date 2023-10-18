@@ -1,22 +1,20 @@
-import {Box, Icon} from '@mui/material'
-import React, {useEffect, useState} from 'react'
-import {ADD_FILE_HELP_ID, ReportFileAdd} from './ReportFileAdd'
-import {ReportFile} from './ReportFile'
-import {Txt} from '../Txt'
+import {Icon} from '@mui/material'
 import {useI18n} from 'i18n/I18n'
-import {FileOrigin, UploadedFile} from '../../model/UploadedFile'
-import {appConfig} from '../../core/appConfig'
-import {extractFileExt} from './reportFileConfig'
-import {compressFile} from '../../utils/compressFile'
+import React, {useEffect, useState} from 'react'
 import {useApiClients} from '../../context/ApiClientsContext'
+import {appConfig} from '../../core/appConfig'
 import {useToastError} from '../../hooks/useToastError'
+import {FileOrigin, UploadedFile} from '../../model/UploadedFile'
+import {compressFile} from '../../utils/compressFile'
+import {ReportFile} from './ReportFile'
+import {ADD_FILE_HELP_ID, ReportFileAdd} from './ReportFileAdd'
+import {extractFileExt} from './reportFileConfig'
 
 export interface ReportFilesProps {
   files: UploadedFile[]
   onNewFile: (f: UploadedFile) => void
   onRemoveFile: (f: UploadedFile) => void
   fileOrigin: FileOrigin
-  disableAdd?: boolean
 }
 
 const preventDefaultHandler = (e: React.DragEvent<HTMLElement>) => {
@@ -24,13 +22,7 @@ const preventDefaultHandler = (e: React.DragEvent<HTMLElement>) => {
   e.stopPropagation()
 }
 
-export const ReportFiles = ({
-  fileOrigin,
-  files,
-  disableAdd,
-  onRemoveFile = () => void 0,
-  onNewFile = () => void 0,
-}: ReportFilesProps) => {
+export const ReportFiles = ({fileOrigin, files, onRemoveFile = () => void 0, onNewFile = () => void 0}: ReportFilesProps) => {
   const [innerFiles, setInnerFiles] = useState<UploadedFile[]>([])
   const {m} = useI18n()
   const [isDraggingOver, setIsDraggingOver] = useState(false)
@@ -117,7 +109,7 @@ export const ReportFiles = ({
     setInnerFiles(prev => prev.filter(_ => _.id !== f.id))
   }
 
-  const dropzoneClasses = `fr-upload-group p-4 pt-10 border border-solid rounded ${
+  const dropzoneClasses = `fr-upload-group p-4 pt-8 border border-solid rounded ${
     isDraggingOver ? 'border-scbluefrance ' : 'border-gray-300 '
   }`
 
@@ -131,42 +123,47 @@ export const ReportFiles = ({
     </div>
   )
 
-  const readOnlyBlock = innerFiles.length > 0 ? thumbnails : <p className="text-gray-600">{m.noAttachment}</p>
-
   function onDrag(e: React.DragEvent<HTMLDivElement>) {
     preventDefaultHandler(e)
-    setIsDraggingOver(true)
+    if (!maxReached) {
+      setIsDraggingOver(true)
+    }
   }
   function onDrop(e: React.DragEvent<HTMLDivElement>) {
     preventDefaultHandler(e)
-    setIsDraggingOver(false)
-    handleChange(e.dataTransfer.files)
+    if (!maxReached) {
+      setIsDraggingOver(false)
+      handleChange(e.dataTransfer.files)
+    }
   }
+  const max = appConfig.maxNumberOfAttachments
+  const nothingYet = innerFiles.length <= 0
+  const maxReached = innerFiles.length >= max
 
-  return disableAdd ? (
-    readOnlyBlock
-  ) : (
+  return (
     <div className={dropzoneClasses} onDragOver={onDrag} onDragEnter={onDrag} onDragLeave={onDrag} onDrop={onDrop}>
-      {innerFiles.length > 0 ? thumbnails : <UploadInvitation />}
       <div className="flex flex-col">
-        <div className="text-center mb-3 mt-3">
-          <ReportFileAdd fileOrigin={fileOrigin} isUploading={uploading} uploadFile={handleChange} />
-        </div>
-        <div className="divide-y"></div>
-        <p
-          className="mt-2 text-sm mb-1 text-center "
-          id={ADD_FILE_HELP_ID}
-          dangerouslySetInnerHTML={{__html: m.attachmentsDescAllowedFormat(appConfig.upload_allowedExtensions)}}
-        />
-        {innerFiles.length === appConfig.maxNumberOfAttachments ? (
-          <span className="text-sm text-center" role="status">
-            {m.maxAttachmentsZero(appConfig.maxNumberOfAttachments)}
-          </span>
-        ) : (
-          <p className="text-sm mt-0 mb-2 text-center" role="status">
-            {m.maxAttachmentsCurrent(appConfig.maxNumberOfAttachments - innerFiles.length)}
-          </p>
+        {!maxReached && (
+          <>
+            {nothingYet && <UploadInvitation />}
+            <div className={`text-center ${nothingYet ? 'mb-6' : 'mb-2'}`}>
+              <ReportFileAdd fileOrigin={fileOrigin} isUploading={uploading} uploadFile={handleChange} />
+            </div>
+            <p
+              className="mt-2 text-sm mb-1 text-center "
+              id={ADD_FILE_HELP_ID}
+              dangerouslySetInnerHTML={{__html: m.attachmentsDescAllowedFormat(appConfig.upload_allowedExtensions)}}
+            />
+          </>
         )}
+        <p className="text-sm mb-2 text-center" role="status">
+          {maxReached
+            ? m.maxAttachmentsReached(max)
+            : nothingYet
+            ? m.maxAttachmentsZero(max)
+            : m.maxAttachmentsCurrent(max - innerFiles.length)}
+        </p>
+        {!nothingYet && thumbnails}
       </div>
     </div>
   )
@@ -176,7 +173,7 @@ function UploadInvitation() {
   const {m} = useI18n()
 
   return (
-    <div className="mb-4">
+    <div className="mb-6">
       <div className="flex items-center justify-center mb-2">
         <Icon className="text-scbluefrance" fontSize="large">
           cloud_download
