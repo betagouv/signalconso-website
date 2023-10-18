@@ -163,7 +163,7 @@ export const DetailsInner = ({
             </>
           )}
           <ReportFiles
-            files={uploadedFiles}
+            files={uploadedFiles ?? []}
             fileOrigin={FileOrigin.Consumer}
             onRemoveFile={f => setUploadedFiles(files => files?.filter(_ => _.id !== f.id))}
             onNewFile={f => setUploadedFiles(_ => [...(_ ?? []), f])}

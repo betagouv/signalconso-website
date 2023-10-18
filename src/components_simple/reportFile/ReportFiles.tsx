@@ -12,23 +12,21 @@ import {useApiClients} from '../../context/ApiClientsContext'
 import {useToastError} from '../../hooks/useToastError'
 
 export interface ReportFilesProps {
-  files?: UploadedFile[]
-  onNewFile?: (f: UploadedFile) => void
-  onRemoveFile?: (f: UploadedFile) => void
+  files: UploadedFile[]
+  onNewFile: (f: UploadedFile) => void
+  onRemoveFile: (f: UploadedFile) => void
   fileOrigin: FileOrigin
   disableAdd?: boolean
-  hideRemoveBtn?: boolean
 }
 
 export const ReportFiles = ({
   fileOrigin,
   files,
   disableAdd,
-  hideRemoveBtn,
   onRemoveFile = () => void 0,
   onNewFile = () => void 0,
 }: ReportFilesProps) => {
-  const [innerFiles, setInnerFiles] = useState<UploadedFile[]>()
+  const [innerFiles, setInnerFiles] = useState<UploadedFile[]>([])
   const {m} = useI18n()
   const [isDraggingOver, setIsDraggingOver] = useState(false)
   useEffect(() => {
@@ -106,12 +104,12 @@ export const ReportFiles = ({
 
   const newFile = (f: UploadedFile) => {
     onNewFile(f)
-    setInnerFiles(prev => [f, ...(prev ?? [])])
+    setInnerFiles(prev => [f, ...prev])
   }
 
   const removeFile = (f: UploadedFile) => {
     onRemoveFile(f)
-    setInnerFiles(prev => prev?.filter(_ => _.id !== f.id))
+    setInnerFiles(prev => prev.filter(_ => _.id !== f.id))
   }
 
   const preventDefaultHandler = (e: React.DragEvent<HTMLElement>) => {
@@ -124,12 +122,12 @@ export const ReportFiles = ({
   }`
 
   const readOnlyBlock =
-    innerFiles && innerFiles.length > 0 ? (
+    innerFiles.length > 0 ? (
       <div className="flex flex-wrap items-center mt-4">
         {innerFiles
           .filter(_ => _.origin === fileOrigin)
           .map(_ => (
-            <ReportFile key={_.id} file={_} onRemove={hideRemoveBtn ? undefined : removeFile} />
+            <ReportFile key={_.id} file={_} onRemove={removeFile} />
           ))}
       </div>
     ) : (
@@ -169,10 +167,8 @@ export const ReportFiles = ({
       }}
     >
       <Box className="flex flex-wrap items-center justify-center mt-4 ">
-        {innerFiles && innerFiles.length > 0 ? (
-          innerFiles
-            .filter(_ => _.origin === fileOrigin)
-            .map(_ => <ReportFile key={_.id} file={_} onRemove={hideRemoveBtn ? undefined : removeFile} />)
+        {innerFiles.length > 0 ? (
+          innerFiles.filter(_ => _.origin === fileOrigin).map(_ => <ReportFile key={_.id} file={_} onRemove={removeFile} />)
         ) : (
           <div className=" mb-4">
             <div className="flex items-center justify-center mb-2">
@@ -194,13 +190,13 @@ export const ReportFiles = ({
           id={ADD_FILE_HELP_ID}
           dangerouslySetInnerHTML={{__html: m.attachmentsDescAllowedFormat(appConfig.upload_allowedExtensions)}}
         />
-        {innerFiles?.length === appConfig.maxNumberOfAttachments ? (
+        {innerFiles.length === appConfig.maxNumberOfAttachments ? (
           <span className="text-sm text-center" role="status">
             {m.maxAttachmentsZero(appConfig.maxNumberOfAttachments)}
           </span>
         ) : (
           <p className="text-sm mt-0 mb-2 text-center" role="status">
-            {m.maxAttachmentsCurrent(appConfig.maxNumberOfAttachments - (innerFiles ? innerFiles.length : 0))}
+            {m.maxAttachmentsCurrent(appConfig.maxNumberOfAttachments - innerFiles.length)}
           </p>
         )}
       </div>
