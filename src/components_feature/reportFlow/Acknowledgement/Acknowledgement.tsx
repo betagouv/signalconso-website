@@ -31,8 +31,6 @@ export const Acknowledgement = ({isWebView}: {isWebView: boolean}) => {
   const _reportFlow = useReportFlowContext()
   const {data: countries} = useGetCountries()
 
-  const {currentLang} = useI18n()
-
   useEffect(() => {
     // When this component is displayed, the draft should be cleared so we can't go back
     _reportFlow.resetFlow()
@@ -208,7 +206,7 @@ const AcknowledgementLayout = ({
     <>
       <img
         src="/image/illustrations/company.png"
-        alt="consultation-pro-illustration"
+        alt=""
         style={{
           display: 'block',
           margin: 'auto',
@@ -216,44 +214,36 @@ const AcknowledgementLayout = ({
         }}
       />
 
-      <Panel
-        title={
-          <Box sx={{display: 'flex', alignItems: 'center'}}>
+      <div className="max-w-3xl mx-auto">
+        <h2>
+          <div className="flex items-center">
             <Icon sx={{mr: 1}}>check_circle</Icon>
             <span dangerouslySetInnerHTML={{__html: m.acknoledgment.sentReport}} />
-          </Box>
-        }
-      >
-        <PanelBody>
-          {title && (
-            <Txt size="big" bold block sx={{mb: 2}}>
-              {title}
-            </Txt>
-          )}
-          {children}
-          {showChargeBack && (
-            <>
-              <p>
-                <strong>{m.acknoledgment.paidWithCreditCard}</strong>
-              </p>
-              <p>
-                {m.acknoledgment.chargeBack}
-                <br />
-                <a href={externalLinks.chargeBack}>{externalLinks.chargeBack}</a>
-              </p>
-            </>
-          )}
-          <p>
-            {m.acknoledgment.emailForErrorInReport}
-            <Txt link span>
-              <a href="mailto:support@signal.conso.gouv.fr?subject=incident">support@signal.conso.gouv.fr</a>
-            </Txt>
-          </p>
-        </PanelBody>
-        <PanelActions sx={{justifyContent: 'flex-start'}}>
-          <LinkBackToHome isWebView={isWebView} lang={currentLang} />
-        </PanelActions>
-      </Panel>
+          </div>
+        </h2>
+
+        {title && <h3 className="fr-h5">{title}</h3>}
+        {children}
+        {showChargeBack && (
+          <>
+            <p>
+              <strong>{m.acknoledgment.paidWithCreditCard}</strong>
+            </p>
+            <p>
+              {m.acknoledgment.chargeBack}
+              <br />
+              <a href={externalLinks.chargeBack}>{externalLinks.chargeBack}</a>
+            </p>
+          </>
+        )}
+        <p>
+          {m.acknoledgment.emailForErrorInReport}
+          <Txt link span>
+            <a href="mailto:support@signal.conso.gouv.fr?subject=incident">support@signal.conso.gouv.fr</a>
+          </Txt>
+        </p>
+        <LinkBackToHome isWebView={isWebView} lang={currentLang} />
+      </div>
     </>
   )
 }
