@@ -1,34 +1,29 @@
-import {Box, Icon} from '@mui/material'
-import React, {useEffect, useState} from 'react'
-import {ADD_FILE_HELP_ID, ReportFileAdd} from './ReportFileAdd'
-import {ReportFile} from './ReportFile'
-import {Txt} from '../Txt'
+import {Icon} from '@mui/material'
 import {useI18n} from 'i18n/I18n'
-import {FileOrigin, UploadedFile} from '../../model/UploadedFile'
-import {appConfig} from '../../core/appConfig'
-import {extractFileExt} from './reportFileConfig'
-import {compressFile} from '../../utils/compressFile'
+import React, {useEffect, useState} from 'react'
 import {useApiClients} from '../../context/ApiClientsContext'
+import {appConfig} from '../../core/appConfig'
 import {useToastError} from '../../hooks/useToastError'
+import {FileOrigin, UploadedFile} from '../../model/UploadedFile'
+import {compressFile} from '../../utils/compressFile'
+import {ReportFile} from './ReportFile'
+import {ADD_FILE_HELP_ID, ReportFileAdd} from './ReportFileAdd'
+import {extractFileExt} from './reportFileConfig'
 
 export interface ReportFilesProps {
-  files?: UploadedFile[]
-  onNewFile?: (f: UploadedFile) => void
-  onRemoveFile?: (f: UploadedFile) => void
+  files: UploadedFile[]
+  onNewFile: (f: UploadedFile) => void
+  onRemoveFile: (f: UploadedFile) => void
   fileOrigin: FileOrigin
-  disableAdd?: boolean
-  hideRemoveBtn?: boolean
 }
 
-export const ReportFiles = ({
-  fileOrigin,
-  files,
-  disableAdd,
-  hideRemoveBtn,
-  onRemoveFile = () => void 0,
-  onNewFile = () => void 0,
-}: ReportFilesProps) => {
-  const [innerFiles, setInnerFiles] = useState<UploadedFile[]>()
+const preventDefaultHandler = (e: React.DragEvent<HTMLElement>) => {
+  e.preventDefault()
+  e.stopPropagation()
+}
+
+export const ReportFiles = ({fileOrigin, files, onRemoveFile = () => void 0, onNewFile = () => void 0}: ReportFilesProps) => {
+  const [innerFiles, setInnerFiles] = useState<UploadedFile[]>([])
   const {m} = useI18n()
   const [isDraggingOver, setIsDraggingOver] = useState(false)
   useEffect(() => {
@@ -106,104 +101,85 @@ export const ReportFiles = ({
 
   const newFile = (f: UploadedFile) => {
     onNewFile(f)
-    setInnerFiles(prev => [f, ...(prev ?? [])])
+    setInnerFiles(prev => [f, ...prev])
   }
 
   const removeFile = (f: UploadedFile) => {
     onRemoveFile(f)
-    setInnerFiles(prev => prev?.filter(_ => _.id !== f.id))
+    setInnerFiles(prev => prev.filter(_ => _.id !== f.id))
   }
 
-  const preventDefaultHandler = (e: React.DragEvent<HTMLElement>) => {
-    e.preventDefault()
-    e.stopPropagation()
-  }
-
-  const dropzoneClasses = `fr-upload-group p-4 pt-10 border border-solid rounded ${
+  const dropzoneClasses = `fr-upload-group p-4 pt-8 border border-solid rounded ${
     isDraggingOver ? 'border-scbluefrance ' : 'border-gray-300 '
   }`
 
-  const readOnlyBlock =
-    innerFiles && innerFiles.length > 0 ? (
-      <div className="flex flex-wrap items-center mt-4">
-        {innerFiles
-          .filter(_ => _.origin === fileOrigin)
-          .map(_ => (
-            <ReportFile key={_.id} file={_} onRemove={hideRemoveBtn ? undefined : removeFile} />
-          ))}
-      </div>
-    ) : (
-      <Txt
-        block
-        color="hint"
-        sx={{
-          marginTop: 1,
-          marginBottom: 1,
-        }}
-      >
-        {m.noAttachment}
-      </Txt>
-    )
+  const thumbnails = (
+    <div className="flex flex-wrap items-center justify-center mt-4 ">
+      {innerFiles
+        .filter(_ => _.origin === fileOrigin)
+        .map(_ => (
+          <ReportFile key={_.id} file={_} onRemove={removeFile} />
+        ))}
+    </div>
+  )
 
-  return disableAdd ? (
-    readOnlyBlock
-  ) : (
-    <div
-      className={dropzoneClasses}
-      onDragOver={e => {
-        preventDefaultHandler(e)
-        setIsDraggingOver(true)
-      }}
-      onDragEnter={e => {
-        preventDefaultHandler(e)
-        setIsDraggingOver(true)
-      }}
-      onDragLeave={e => {
-        preventDefaultHandler(e)
-        setIsDraggingOver(false)
-      }}
-      onDrop={e => {
-        preventDefaultHandler(e)
-        setIsDraggingOver(false)
-        handleChange(e.dataTransfer.files)
-      }}
-    >
-      <Box className="flex flex-wrap items-center justify-center mt-4 ">
-        {innerFiles && innerFiles.length > 0 ? (
-          innerFiles
-            .filter(_ => _.origin === fileOrigin)
-            .map(_ => <ReportFile key={_.id} file={_} onRemove={hideRemoveBtn ? undefined : removeFile} />)
-        ) : (
-          <div className=" mb-4">
-            <div className="flex items-center justify-center mb-2">
-              <Icon className="text-[#000091]" fontSize="large">
-                cloud_download
-              </Icon>
-            </div>
-            <div className="text-center text-lg">{m.dropZone}</div>
-          </div>
-        )}
-      </Box>
+  function onDrag(e: React.DragEvent<HTMLDivElement>) {
+    preventDefaultHandler(e)
+    if (!maxReached) {
+      setIsDraggingOver(true)
+    }
+  }
+  function onDrop(e: React.DragEvent<HTMLDivElement>) {
+    preventDefaultHandler(e)
+    if (!maxReached) {
+      setIsDraggingOver(false)
+      handleChange(e.dataTransfer.files)
+    }
+  }
+  const max = appConfig.maxNumberOfAttachments
+  const nothingYet = innerFiles.length <= 0
+  const maxReached = innerFiles.length >= max
+
+  return (
+    <div className={dropzoneClasses} onDragOver={onDrag} onDragEnter={onDrag} onDragLeave={onDrag} onDrop={onDrop}>
       <div className="flex flex-col">
-        <div className="text-center mb-3 mt-3">
-          <ReportFileAdd fileOrigin={fileOrigin} isUploading={uploading} uploadFile={handleChange} />
-        </div>
-        <div className="divide-y"></div>
-        <p
-          className="mt-2 text-sm mb-1 text-center "
-          id={ADD_FILE_HELP_ID}
-          dangerouslySetInnerHTML={{__html: m.attachmentsDescAllowedFormat(appConfig.upload_allowedExtensions)}}
-        />
-        {innerFiles?.length === appConfig.maxNumberOfAttachments ? (
-          <span className="text-sm text-center" role="status">
-            {m.maxAttachmentsZero(appConfig.maxNumberOfAttachments)}
-          </span>
-        ) : (
-          <p className="text-sm mt-0 mb-2 text-center" role="status">
-            {m.maxAttachmentsCurrent(appConfig.maxNumberOfAttachments - (innerFiles ? innerFiles.length : 0))}
-          </p>
+        {!maxReached && (
+          <>
+            {nothingYet && <UploadInvitation />}
+            <div className={`text-center ${nothingYet ? 'mb-6' : 'mb-2'}`}>
+              <ReportFileAdd fileOrigin={fileOrigin} isUploading={uploading} uploadFile={handleChange} />
+            </div>
+            <p
+              className="mt-2 text-sm mb-1 text-center "
+              id={ADD_FILE_HELP_ID}
+              dangerouslySetInnerHTML={{__html: m.attachmentsDescAllowedFormat(appConfig.upload_allowedExtensions)}}
+            />
+          </>
         )}
+        <p className="text-sm mb-2 text-center" role="status">
+          {maxReached
+            ? m.maxAttachmentsReached(max)
+            : nothingYet
+            ? m.maxAttachmentsZero(max)
+            : m.maxAttachmentsCurrent(max - innerFiles.length)}
+        </p>
+        {!nothingYet && thumbnails}
       </div>
+    </div>
+  )
+}
+
+function UploadInvitation() {
+  const {m} = useI18n()
+
+  return (
+    <div className="mb-6">
+      <div className="flex items-center justify-center mb-2">
+        <Icon className="text-scbluefrance" fontSize="large">
+          cloud_download
+        </Icon>
+      </div>
+      <div className="text-center text-lg">{m.dropZone}</div>
     </div>
   )
 }

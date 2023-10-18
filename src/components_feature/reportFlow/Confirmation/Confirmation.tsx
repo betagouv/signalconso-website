@@ -9,7 +9,7 @@ import {Animate} from 'components_simple/Animate'
 import {AnomalyImage} from 'components_simple/AnomalyImage'
 import {FriendlyHelpText} from 'components_simple/FriendlyHelpText'
 import {Row} from 'components_simple/Row'
-import {ReportFiles} from 'components_simple/reportFile/ReportFiles'
+import {ReportFilesConfirmation} from 'components_simple/reportFile/ReportFilesConfirmation'
 import {getApiErrorId, useToastError} from 'hooks/useToastError'
 import {useI18n} from 'i18n/I18n'
 import {ReportDraft2} from 'model/ReportDraft2'
@@ -90,7 +90,7 @@ export const ConfirmationInner = ({
               <div className="mb-2">
                 <dt className="font-medium mb-1">{m.attachments}</dt>
                 <dd>
-                  <ReportFiles fileOrigin={FileOrigin.Consumer} disableAdd hideRemoveBtn files={draft.uploadedFiles} />
+                  <ReportFilesConfirmation fileOrigin={FileOrigin.Consumer} files={draft.uploadedFiles} />
                 </dd>
               </div>
             </dl>

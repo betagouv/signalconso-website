@@ -6,6 +6,7 @@ import {Company, CompanySearchResult, WebsiteCompanySearchResult} from '../model
 import {CreatedReport} from '../model/CreatedReport'
 import {Influencer, ReportDraft, ReportDraftConsumer} from '../model/ReportDraft'
 import {FileOrigin} from '../model/UploadedFile'
+import {AppLang} from 'i18n/localization/AppLangs'
 
 export class SeedableRandom {
   seed = 1
@@ -114,11 +115,15 @@ export class Fixture {
     }
   }
 
-  static readonly genDraftReport = (lastStep: ReportStep, random: SeedableRandom = defaultRandom): Partial<ReportDraft> => {
+  static readonly genDraftReport = (
+    currentLang: AppLang,
+    lastStep: ReportStep,
+    random: SeedableRandom = defaultRandom,
+  ): Partial<ReportDraft> => {
     const stepOrder: {[key in ReportStep]: (_: Partial<ReportDraft>) => Partial<ReportDraft>} = {
       BuildingProblem: _ => ({
         ..._,
-        category: random.oneOf(allAnomalies('fr').map(_ => _.category)),
+        category: random.oneOf(allAnomalies(currentLang).map(_ => _.category)),
       }),
       BuildingDetails: _ => ({
         ..._,
