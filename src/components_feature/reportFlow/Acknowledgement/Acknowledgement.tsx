@@ -202,13 +202,12 @@ const AcknowledgementLayout = ({
       />
 
       <div className="max-w-3xl mx-auto">
-        <h2 className="">
+        <h2>
           <div className="flex items-center">
             <Icon sx={{mr: 1}}>check_circle</Icon>
             <span dangerouslySetInnerHTML={{__html: m.acknoledgment.sentReport}} />
           </div>
         </h2>
-
         {title && <h3 className="fr-h5 !text-scbluefrance">{title}</h3>}
         {children}
         {showChargeBack && (
