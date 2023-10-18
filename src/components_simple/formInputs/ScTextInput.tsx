@@ -64,9 +64,9 @@ export const ScTextInput = forwardRef((props: Props, ref: ForwardedRef<HTMLInput
       onClick={onClick}
     >
       {label && (
-        <label className="fr-label" htmlFor={inputId}>
+        <label className={`fr-label ${disabled ? '!text-gray-600' : ''}`} htmlFor={inputId}>
           {labelWithAsterisk}
-          {desc && <span className="fr-hint-text">{desc}</span>}
+          {desc && <span className={`fr-hint-text ${disabled ? '!text-gray-600' : ''}`}>{desc}</span>}
         </label>
       )}
 
@@ -79,12 +79,13 @@ export const ScTextInput = forwardRef((props: Props, ref: ForwardedRef<HTMLInput
           onBlur={onBlur}
           ref={ref}
           type={type}
-          disabled={disabled}
+          readOnly={disabled}
           placeholder={placeholder}
-          className={`fr-input ${error ? 'fr-input--error' : null}`}
+          className={`fr-input ${error ? 'fr-input--error' : ''} ${disabled ? '!text-gray-600 !shadow-none' : ''}`}
           aria-describedby={helperTextId}
+          {...(error ? {'aria-invalid': true} : null)}
           {...(required ? {'aria-required': true} : null)}
-          {...(tabIndex ? {tabIndex} : null)}
+          {...(tabIndex && !disabled ? {tabIndex} : null)}
           {...(autoFocus ? {autoFocus} : null)}
         />
         {editable && <Button iconId="fr-icon-edit-line" onClick={editable.onEdit} priority="tertiary" title={editable.label} />}

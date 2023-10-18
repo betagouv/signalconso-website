@@ -29,6 +29,7 @@ export const ScValidationCodeInput = forwardRef((props: Props, ref: ForwardedRef
           type={'number'}
           placeholder={m.consumerCodePlaceholder}
           aria-describedby={helperTextId}
+          {...(error ? {'aria-invalid': true} : null)}
           {...(required ? {'aria-required': true} : null)}
           autoFocus
         />

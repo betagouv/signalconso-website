@@ -873,6 +873,7 @@ export const fr = {
       linkedinTitle: 'Retrouvez la répression des fraudes sur LinkedIn - nouvelle fenêtre',
     },
     header: {
+      logoLinkLabel: "SignalConso - République Française (Allez à l'accueil)",
       homeLinkTitle: "SignalConso (Allez à l'accueil)",
       connexionLinkTitle: 'Espace professionnel',
       indexLinkTitle: 'Faire un signalement',
@@ -884,7 +885,9 @@ export const fr = {
       contactLinkTitle: 'Contact',
       actualitesLinkTitle: 'Actualités',
       servicePublicPlusLinkTitle: 'Services Publics +',
-      selectLang: 'Sélectionner une langue',
+      selectLang: 'Version anglaise du site (actuellement FR)',
+      currentLangCode: 'FR',
+      currentLang: 'Français',
     },
     SocialNetwork: {
       YOUTUBE: 'Youtube',
@@ -1237,6 +1240,13 @@ export const fr = {
     companyIdentityHelperWhereDesc2: `
       Cliquez sur le texte « Mentions légales », une nouvelle page va s’ouvrir sur laquelle vous trouverez facilement ce numéro :
     `,
+    companyIdentityHelperImages: {
+      footer: `Exemple de pied de page d'un site internet contenant les liens C.G.V, C.G.U, Mention légales, Données personnelles, Gestions des Cookies, Avis, Contact, FAQ et Aide.`,
+      mentionsLegales: `Dans cet exemple, le numéro de SIRET se trouve dans la paragraphe sous le titre Mention Légales : "Le site abcdef.fr est [...] immatriculée au Registre du Commerce et des Sociétés de Lille Métropole sous le numéro 123456789".`,
+      bill: `Exemple d'une facture typique. En haut à gauche, on voir le nom et l'adresse de l'entreprise, et juste après "SIRET: 12345679 00001". Tout en bas de la facture, on voit à nouveau le nom de l'entreprise, d'autres détails légaux, et "SIRET: 12345679 00001".`,
+      ticket: `Exemple d'un ticket de caisse. Tout en bas du ticket, après le prix total des achats et le montant de la TVA, on voit une ligne "SIRET: 12345679 00001".`,
+      card: `Exemple d'un ticket de carte bancaire. Vers le milieu du ticket, on voit une ligne avec "Nom de l'entreprise", une autre avec "Lieu de la transaction", puis une autre ligne qui démarre avec des zéros "00 00000" puis continue avec un numéro de SIRET "123456789 001".`,
+    },
     consumerTitle: `Vos coordonnées nous permettent d'authentifier votre signalement`,
     consumerAskCodeTitle: `Saisissez le code de validation`,
     consumerAskCodeDesc: (email: string) => `Un email vous a été envoyé à l'adresse <b>${email}</b>`,

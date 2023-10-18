@@ -29,7 +29,7 @@ export default function ReportStartedAlert() {
           }}
         >
           <Box>
-            <h2 className="fr-h5 !mb-2">{m.continueReport}</h2>
+            <h1 className="fr-h5 !mb-2">{m.continueReport}</h1>
             <ReportFlowStepperHeader
               isWebView={false}
               step={currentStep}

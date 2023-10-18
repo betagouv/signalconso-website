@@ -62,6 +62,7 @@ export function ScAutoComplete<Item>({
             id={inputId}
             aria-required
             aria-describedby={helperTextId}
+            {...(error ? {'aria-invalid': true} : null)}
             placeholder={placeholder}
           />
           <Combobox.Button className="absolute top-0 bottom-[2px] right-0 flex items-center pr-2">

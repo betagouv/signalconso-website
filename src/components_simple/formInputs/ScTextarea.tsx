@@ -38,6 +38,7 @@ export const ScTextarea = forwardRef((props: Props, ref: ForwardedRef<HTMLTextAr
         className={`fr-input ${error ? 'fr-input--error' : null}`}
         aria-describedby={helperTextId}
         rows={5}
+        {...(error ? {'aria-invalid': true} : null)}
         {...(required ? {'aria-required': true} : null)}
       />
       {helperText && (

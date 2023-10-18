@@ -11,10 +11,10 @@ interface Props extends Pick<BoxProps, 'children' | 'dangerouslySetInnerHTML' | 
 }
 
 export const alertInfoBackgroundColor = 'rgba(50, 200, 255, .08)'
-export const alertInfoTextColor = darken(otherColorSet.info, 0.1)
+const alertInfoTextColor = darken(otherColorSet.info, 0.3)
 
 export const alertWarningBackgroundColor = 'rgba(255, 128, 0, .08)'
-export const alertWarningTextColor = darken(otherColorSet.warning, 0.1)
+export const alertWarningTextColor = darken(otherColorSet.warning, 0.4)
 
 // An alert that looks different (softer, less catchy) of the Alert from DSFR
 export const ScAlert = ({type, dense, action, children, dangerouslySetInnerHTML, ...props}: Props) => {
@@ -62,7 +62,7 @@ export const ScAlert = ({type, dense, action, children, dangerouslySetInnerHTML,
         ...{
           success: {
             background: 'rgba(50, 255, 150, .08)', //'#e1ffe1',
-            color: darken(otherColorSet.success, 0.1),
+            color: darken(otherColorSet.success, 0.3),
           },
           info: {
             background: alertInfoBackgroundColor, //'#e1f5fe',
@@ -70,7 +70,7 @@ export const ScAlert = ({type, dense, action, children, dangerouslySetInnerHTML,
           },
           error: {
             background: 'rgba(255, 0, 0, .08)', //'#ffdede',
-            color: darken(otherColorSet.error, 0.1),
+            color: darken(otherColorSet.error, 0.3),
           },
           warning: {
             background: alertWarningBackgroundColor,

@@ -47,7 +47,6 @@ export const ScCheckbox = <V,>({
       id={id}
       className={`fr-fieldset ${error ? 'fr-fieldset--error' : ''}`}
       aria-labelledby={`${title && legendId} ${messagesWrapperId}`}
-      role="group"
       {...(required ? {'aria-required': true} : null)}
     >
       {title && (

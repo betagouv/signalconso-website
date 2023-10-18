@@ -88,7 +88,13 @@ export const ReportFile = ({file, onRemove}: ReportFileProps) => {
               }}
               confirmLabel={m.delete}
             >
-              <Button size="small" iconId="fr-icon-delete-line" priority="tertiary no outline" className="!p-0 ">
+              <Button
+                size="small"
+                iconId="fr-icon-delete-line"
+                priority="tertiary no outline"
+                className="!p-0"
+                nativeButtonProps={{'aria-label': `${m.delete} ${file.filename}`}}
+              >
                 {m.delete.toLowerCase()}
               </Button>
             </ScDialog>
