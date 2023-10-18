@@ -57,11 +57,6 @@ export const PlaygroundAcknowledgment = () => {
         employeeConsumer: false,
         companyAddress: {...baseReport.companyAddress, country: demoCountry},
       }),
-      [AcknowledgmentCases.NotTransmittable]: () => ({
-        ...baseReport,
-        employeeConsumer: true,
-        tags: [],
-      }),
       [AcknowledgmentCases.FrenchCompanyWithoutSIRET]: () => ({...baseReport, employeeConsumer: false, companySiret: undefined}),
       [AcknowledgmentCases.ContractualDisputeWithSIRET]: () => ({
         ...baseReport,

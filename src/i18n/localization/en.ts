@@ -1390,8 +1390,6 @@ export const en = {
       investigatorsTransferToAuthorities: `However, Fraud Control's investigators will transfer it to the competent authorities of that country.`,
       reportToEConsumer: `We encourage you to report to econsumer.gov to assist international authorities in combating fraud.`,
       whatWillHappenNow: `What will happen now?`,
-      reportReadByDGCCRF: `Your report will be read <b>only</b> by the Directorate General for Competition, Consumer Affairs, and Fraud Control (<abbr title="Direction Générale de la Concurrence, Consommation et Répression des Fraudes">DGCCRF</abbr>) - also known as "Fraud Control".`,
-      investigatorContactPossible: `Investigators may contact you to check your identity or request additional information regarding your report.`,
       reportTransmittedToDGCCRF: `<p>Your report is transmitted to the Directorate General for Competition, Consumer Affairs, and Fraud Control (<abbr title="Direction Générale de la Concurrence, Consommation et Répression des Fraudes">DGCCRF</abbr>) - also known as "Fraud Control".</p><p>However, it will not be forwarded to the reported company unless the company is French and identifiable by the SignalConso team. In that case, you will receive a notification.</p>`,
       fraudsNotHandlingIndividualIssues: `Fraud Control does not directly handle individual issues (disputes) between a consumer and a company.`,
       companyHasThreeMonths: `The company has three months to review the report.`,
