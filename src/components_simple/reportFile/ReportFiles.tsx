@@ -19,6 +19,11 @@ export interface ReportFilesProps {
   disableAdd?: boolean
 }
 
+const preventDefaultHandler = (e: React.DragEvent<HTMLElement>) => {
+  e.preventDefault()
+  e.stopPropagation()
+}
+
 export const ReportFiles = ({
   fileOrigin,
   files,
@@ -112,74 +117,37 @@ export const ReportFiles = ({
     setInnerFiles(prev => prev.filter(_ => _.id !== f.id))
   }
 
-  const preventDefaultHandler = (e: React.DragEvent<HTMLElement>) => {
-    e.preventDefault()
-    e.stopPropagation()
-  }
-
   const dropzoneClasses = `fr-upload-group p-4 pt-10 border border-solid rounded ${
     isDraggingOver ? 'border-scbluefrance ' : 'border-gray-300 '
   }`
 
-  const readOnlyBlock =
-    innerFiles.length > 0 ? (
-      <div className="flex flex-wrap items-center mt-4">
-        {innerFiles
-          .filter(_ => _.origin === fileOrigin)
-          .map(_ => (
-            <ReportFile key={_.id} file={_} onRemove={removeFile} />
-          ))}
-      </div>
-    ) : (
-      <Txt
-        block
-        color="hint"
-        sx={{
-          marginTop: 1,
-          marginBottom: 1,
-        }}
-      >
-        {m.noAttachment}
-      </Txt>
-    )
+  const thumbnails = (
+    <div className="flex flex-wrap items-center justify-center mt-4 ">
+      {innerFiles
+        .filter(_ => _.origin === fileOrigin)
+        .map(_ => (
+          <ReportFile key={_.id} file={_} onRemove={removeFile} />
+        ))}
+    </div>
+  )
+
+  const readOnlyBlock = innerFiles.length > 0 ? thumbnails : <p className="text-gray-600">{m.noAttachment}</p>
+
+  function onDrag(e: React.DragEvent<HTMLDivElement>) {
+    preventDefaultHandler(e)
+    setIsDraggingOver(true)
+  }
+  function onDrop(e: React.DragEvent<HTMLDivElement>) {
+    preventDefaultHandler(e)
+    setIsDraggingOver(false)
+    handleChange(e.dataTransfer.files)
+  }
 
   return disableAdd ? (
     readOnlyBlock
   ) : (
-    <div
-      className={dropzoneClasses}
-      onDragOver={e => {
-        preventDefaultHandler(e)
-        setIsDraggingOver(true)
-      }}
-      onDragEnter={e => {
-        preventDefaultHandler(e)
-        setIsDraggingOver(true)
-      }}
-      onDragLeave={e => {
-        preventDefaultHandler(e)
-        setIsDraggingOver(false)
-      }}
-      onDrop={e => {
-        preventDefaultHandler(e)
-        setIsDraggingOver(false)
-        handleChange(e.dataTransfer.files)
-      }}
-    >
-      <Box className="flex flex-wrap items-center justify-center mt-4 ">
-        {innerFiles.length > 0 ? (
-          innerFiles.filter(_ => _.origin === fileOrigin).map(_ => <ReportFile key={_.id} file={_} onRemove={removeFile} />)
-        ) : (
-          <div className=" mb-4">
-            <div className="flex items-center justify-center mb-2">
-              <Icon className="text-[#000091]" fontSize="large">
-                cloud_download
-              </Icon>
-            </div>
-            <div className="text-center text-lg">{m.dropZone}</div>
-          </div>
-        )}
-      </Box>
+    <div className={dropzoneClasses} onDragOver={onDrag} onDragEnter={onDrag} onDragLeave={onDrag} onDrop={onDrop}>
+      {innerFiles.length > 0 ? thumbnails : <UploadInvitation />}
       <div className="flex flex-col">
         <div className="text-center mb-3 mt-3">
           <ReportFileAdd fileOrigin={fileOrigin} isUploading={uploading} uploadFile={handleChange} />
@@ -200,6 +168,21 @@ export const ReportFiles = ({
           </p>
         )}
       </div>
+    </div>
+  )
+}
+
+function UploadInvitation() {
+  const {m} = useI18n()
+
+  return (
+    <div className="mb-4">
+      <div className="flex items-center justify-center mb-2">
+        <Icon className="text-scbluefrance" fontSize="large">
+          cloud_download
+        </Icon>
+      </div>
+      <div className="text-center text-lg">{m.dropZone}</div>
     </div>
   )
 }
