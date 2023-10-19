@@ -17,6 +17,9 @@ export const alertWarningBackgroundColor = 'rgba(255, 128, 0, .08)'
 export const alertWarningTextColor = darken(otherColorSet.warning, 0.4)
 
 // An alert that looks different (softer, less catchy) of the Alert from DSFR
+// note : you should wrap the content in <p> (one or several)
+// accessibility audit recommends it
+// and this component won't do it for you
 export const ScAlert = ({type, dense, action, children, dangerouslySetInnerHTML, ...props}: Props) => {
   const getIconFromType = () => {
     switch (type) {

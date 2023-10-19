@@ -76,7 +76,14 @@ export const ScRadioButtons = <V,>({
                 disabled ? 'pointer-events-none opacity-60' : ''
               } ${checked ? 'border-scbluefrance border-2' : ''} ${horizontal && '!mr-1'}`}
             >
-              <input type="radio" id={inputId} name={radioName} onChange={() => onChange(value)} checked={checked}></input>
+              <input
+                type="radio"
+                id={inputId}
+                name={radioName}
+                onChange={() => onChange(value)}
+                checked={checked}
+                {...(disabled ? {disabled} : null)}
+              />
               <label className="fr-label !pr-4 ml-4" htmlFor={inputId}>
                 <div className="flex flex-col gap-2 items-start justify-start ">
                   {label}

@@ -68,13 +68,11 @@ export type ConsumerWish =
   | 'getAnswer'
 
 export class ReportDraft {
-  static readonly isTransmittableToPro = (r: Pick<ReportDraft, 'employeeConsumer' | 'tags' | 'consumerWish'>): boolean => {
+  static readonly isTransmittableToPro = (r: Pick<ReportDraft, 'employeeConsumer' | 'consumerWish'>): boolean => {
     return ReportDraft.isTransmittableToProBeforePickingConsumerWish(r) && r.consumerWish !== 'getAnswer'
   }
 
-  static readonly isTransmittableToProBeforePickingConsumerWish = (
-    r: Pick<ReportDraft, 'employeeConsumer' | 'tags'>,
-  ): boolean => {
+  static readonly isTransmittableToProBeforePickingConsumerWish = (r: Pick<ReportDraft, 'employeeConsumer'>): boolean => {
     return !r.employeeConsumer
   }
 

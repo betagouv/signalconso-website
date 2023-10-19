@@ -112,8 +112,6 @@ export const DetailsInner = ({
 
   const displayAlertProduitDangereux = (tags ?? []).includes('ProduitDangereux')
 
-  const uploadedFilesCount = uploadedFiles?.length ?? 0
-
   return (
     <>
       <Animate autoScrollTo={false}>
@@ -154,7 +152,7 @@ export const DetailsInner = ({
       <Animate autoScrollTo={false}>
         <div>
           <h4 className="mt-4">{fileLabel ?? m.attachments}</h4>
-          {ReportDraft.isTransmittableToPro({tags, employeeConsumer, consumerWish}) && (
+          {ReportDraft.isTransmittableToPro({employeeConsumer, consumerWish}) && (
             <>
               <FriendlyHelpText>
                 <p className="mb-0" dangerouslySetInnerHTML={{__html: m.attachmentsDesc2}} />

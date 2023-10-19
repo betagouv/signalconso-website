@@ -1413,8 +1413,6 @@ export const fr = {
       investigatorsTransferToAuthorities: `Par contre les enquêteurs de la répression des fraudes vont le transférer aux autorités compétentes de ce pays.`,
       reportToEConsumer: `Nous vous invitons à faire votre signalement auprès de econsumer.gov afin d’aider les autorités internationales à lutter contre la fraude. `,
       whatWillHappenNow: `Que va-t-il se passer maintenant ?`,
-      reportReadByDGCCRF: `Votre signalement sera lu <b>uniquement</b> par la répression des fraudes (<abbr title="Direction Générale de la Concurrence, Consommation et Répression des Fraudes">DGCCRF</abbr>).`,
-      investigatorContactPossible: `Les enquêteurs pourront être amenés à vous contacter afin de vérifier votre identité ou de vous demander des éléments complémentaires à votre signalement.`,
       reportTransmittedToDGCCRF: `<p>Votre signalement est transmis à la répression des fraudes (<abbr title="Direction Générale de la Concurrence, Consommation et Répression des Fraudes">DGCCRF</abbr>).</p><p>Il ne pourra en revanche pas être transmis à l'entreprise signalée, sauf si cette dernière est française et identifiable par l'équipe de SignalConso. Dans ce cas, vous recevrez une notification.</p>`,
       fraudsNotHandlingIndividualIssues: `La répression des fraudes ne gère pas directement les problèmes individuels (litiges) entre un consommateur et une entreprise.`,
       companyHasThreeMonths: `L’entreprise a trois mois pour prendre connaissance du signalement.`,

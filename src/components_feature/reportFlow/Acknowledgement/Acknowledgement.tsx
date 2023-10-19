@@ -4,7 +4,7 @@ import {Panel, PanelActions, PanelBody} from 'components_simple/Panel'
 import {Row} from 'components_simple/Row'
 import {externalLinks} from 'core/externalLinks'
 import {useI18n} from 'i18n/I18n'
-import {useEffect, useMemo} from 'react'
+import {ReactNode, useEffect, useMemo} from 'react'
 import {Txt} from '../../../components_simple/Txt'
 import {LinkBackToHome} from '../../../components_simple/LinkBackToHome'
 import {Country, countryLabel} from '../../../model/Country'
@@ -18,7 +18,6 @@ export enum AcknowledgmentCases {
   ReponseConso = 'ReponseConso',
   EmployeeReport = 'EmployeeReport',
   ForeignCompany = 'ForeignCompany',
-  NotTransmittable = 'NotTransmittable',
   FrenchCompanyWithoutSIRET = 'FrenchCompanyWithoutSIRET',
   ContractualDisputeWithSIRET = 'ContractualDisputeWithSIRET',
   Default = 'Default',
@@ -30,8 +29,6 @@ export const Acknowledgement = ({isWebView}: {isWebView: boolean}) => {
   } = useReportCreateContext()
   const _reportFlow = useReportFlowContext()
   const {data: countries} = useGetCountries()
-
-  const {currentLang} = useI18n()
 
   useEffect(() => {
     // When this component is displayed, the draft should be cleared so we can't go back
@@ -77,8 +74,6 @@ export const AcknowledgementInner = ({
       return AcknowledgmentCases.EmployeeReport
     } else if (_.companyAddress.country ?? 'France' !== 'France') {
       return AcknowledgmentCases.ForeignCompany
-    } else if (!ReportDraft.isTransmittableToPro(_)) {
-      return AcknowledgmentCases.NotTransmittable
     } else if (!_.companySiret) {
       return AcknowledgmentCases.FrenchCompanyWithoutSIRET
     } else if (_.tags.includes('LitigeContractuel') && _.companySiret) {
@@ -91,15 +86,16 @@ export const AcknowledgementInner = ({
   const subProps = {isWebView}
   return fnSwitch(reportCase, {
     [AcknowledgmentCases.ReponseConso]: () => (
-      <AcknowledgementLayout title={m.acknoledgment.whatWillHappenToCompany} {...subProps}>
-        <Row icon={<Icon aria-hidden="true">check_circle</Icon>}>
-          <span dangerouslySetInnerHTML={{__html: m.acknoledgment.questionTransmittedToDGCCRF}} />
-        </Row>
-        <Row icon={<Icon aria-hidden="true">check_circle</Icon>}>
-          {' '}
-          <span dangerouslySetInnerHTML={{__html: m.acknoledgment.yourDetailsForInvestigators}} />
-        </Row>
-        <Row icon={<Icon aria-hidden="true">check_circle</Icon>}>{m.acknoledgment.fraudsResponseTime}</Row>
+      <AcknowledgementLayout title={m.acknoledgment.whatWillHappenNow} {...subProps}>
+        <List>
+          <ListItem>
+            <span dangerouslySetInnerHTML={{__html: m.acknoledgment.questionTransmittedToDGCCRF}} />
+          </ListItem>
+          <ListItem>
+            <span dangerouslySetInnerHTML={{__html: m.acknoledgment.yourDetailsForInvestigators}} />
+          </ListItem>
+          <ListItem>{m.acknoledgment.fraudsResponseTime}</ListItem>
+        </List>
       </AcknowledgementLayout>
     ),
     [AcknowledgmentCases.EmployeeReport]: () => (
@@ -147,19 +143,6 @@ export const AcknowledgementInner = ({
         )}
       </AcknowledgementLayout>
     ),
-    [AcknowledgmentCases.NotTransmittable]: () => (
-      <AcknowledgementLayout title={m.acknoledgment.whatWillHappenNow} {...subProps}>
-        <Row icon={<Icon aria-hidden="true">check_circle</Icon>}>
-          {' '}
-          <span dangerouslySetInnerHTML={{__html: m.acknoledgment.reportReadByDGCCRF}} />
-        </Row>
-        <Row icon={<Icon aria-hidden="true">check_circle</Icon>}>
-          {' '}
-          <span dangerouslySetInnerHTML={{__html: m.acknoledgment.yourDetailsForInvestigators}} />
-        </Row>
-        <Row icon={<Icon aria-hidden="true">check_circle</Icon>}>{m.acknoledgment.investigatorContactPossible}</Row>
-      </AcknowledgementLayout>
-    ),
     [AcknowledgmentCases.FrenchCompanyWithoutSIRET]: () => (
       <AcknowledgementLayout title={m.acknoledgment.whatWillHappenToCompany} {...subProps}>
         <p dangerouslySetInnerHTML={{__html: m.acknoledgment.reportTransmittedToDGCCRF}} />
@@ -171,10 +154,12 @@ export const AcknowledgementInner = ({
         showChargeBack={createdReport.tags.includes('LitigeContractuel') && !!createdReport.websiteURL}
         {...subProps}
       >
-        <Row icon={<Icon aria-hidden="true">warning</Icon>}>{m.acknoledgment.fraudsNotHandlingIndividualIssues}</Row>
-        <Row icon={<Icon aria-hidden="true">check_circle</Icon>}>{m.acknoledgment.companyHasThreeMonths}</Row>
-        <Row icon={<Icon aria-hidden="true">check_circle</Icon>}>{m.acknoledgment.fraudsCanInvestigate}</Row>
-        <Row icon={<Icon aria-hidden="true">mail_outline</Icon>}>{m.acknoledgment.emailWithNextSteps}</Row>
+        <List>
+          <ListItem icon="ri-error-warning-line">{m.acknoledgment.fraudsNotHandlingIndividualIssues}</ListItem>
+          <ListItem>{m.acknoledgment.companyHasThreeMonths}</ListItem>
+          <ListItem>{m.acknoledgment.fraudsCanInvestigate}</ListItem>
+          <ListItem icon="ri-mail-unread-line">{m.acknoledgment.emailWithNextSteps}</ListItem>
+        </List>
       </AcknowledgementLayout>
     ),
     [AcknowledgmentCases.Default]: () => (
@@ -208,7 +193,7 @@ const AcknowledgementLayout = ({
     <>
       <img
         src="/image/illustrations/company.png"
-        alt="consultation-pro-illustration"
+        alt=""
         style={{
           display: 'block',
           margin: 'auto',
@@ -216,44 +201,50 @@ const AcknowledgementLayout = ({
         }}
       />
 
-      <Panel
-        title={
-          <Box sx={{display: 'flex', alignItems: 'center'}}>
+      <div className="max-w-3xl mx-auto">
+        <h2>
+          <div className="flex items-center">
             <Icon sx={{mr: 1}}>check_circle</Icon>
             <span dangerouslySetInnerHTML={{__html: m.acknoledgment.sentReport}} />
-          </Box>
-        }
-      >
-        <PanelBody>
-          {title && (
-            <Txt size="big" bold block sx={{mb: 2}}>
-              {title}
-            </Txt>
-          )}
-          {children}
-          {showChargeBack && (
-            <>
-              <p>
-                <strong>{m.acknoledgment.paidWithCreditCard}</strong>
-              </p>
-              <p>
-                {m.acknoledgment.chargeBack}
-                <br />
-                <a href={externalLinks.chargeBack}>{externalLinks.chargeBack}</a>
-              </p>
-            </>
-          )}
-          <p>
-            {m.acknoledgment.emailForErrorInReport}
-            <Txt link span>
-              <a href="mailto:support@signal.conso.gouv.fr?subject=incident">support@signal.conso.gouv.fr</a>
-            </Txt>
-          </p>
-        </PanelBody>
-        <PanelActions sx={{justifyContent: 'flex-start'}}>
-          <LinkBackToHome isWebView={isWebView} lang={currentLang} />
-        </PanelActions>
-      </Panel>
+          </div>
+        </h2>
+        {title && <h3 className="fr-h5 !text-scbluefrance">{title}</h3>}
+        {children}
+        {showChargeBack && (
+          <>
+            <p>
+              <strong>{m.acknoledgment.paidWithCreditCard}</strong>
+            </p>
+            <p>
+              {m.acknoledgment.chargeBack}
+              <br />
+              <a href={externalLinks.chargeBack}>{externalLinks.chargeBack}</a>
+            </p>
+          </>
+        )}
+        <p className="mb-14">
+          {m.acknoledgment.emailForErrorInReport}
+          <Txt link span>
+            <a href="mailto:support@signal.conso.gouv.fr?subject=incident">support@signal.conso.gouv.fr</a>
+          </Txt>
+        </p>
+        <LinkBackToHome isWebView={isWebView} lang={currentLang} />
+      </div>
     </>
   )
+}
+
+function ListItem({icon, children}: {icon?: string; children: ReactNode}) {
+  return (
+    <li className="mb-2">
+      <div className="flex items-center justify-start gap-4">
+        <span className={`${icon ?? 'ri-arrow-right-line'}`} />
+        {children}
+      </div>
+    </li>
+  )
+}
+
+function List({children}: {children: ReactNode}) {
+  return <ul className="list-none !p-0 mb-4">{children}</ul>
 }
