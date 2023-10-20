@@ -1,0 +1,39 @@
+title: Je pense que le trajet n'était pas le plus direct
+detailInputs:
+  - label: Date de la course
+    type: DATE
+  - label: >-
+      Avez-vous demandé de prendre un itinéraire particulier en début de course
+      ?
+    type: RADIO
+    options:
+      - Oui
+      - Non
+  - label: >-
+      Avez-vous fait remarquer au chauffeur que le chemin vous paraissait trop
+      long en cours de route ? Si oui, merci de préciser sa réponse.
+    type: RADIO
+    options:
+      - Oui (à préciser)
+      - Non
+  - label: Adresse de départ
+    type: TEXT
+  - label: Heure de départ. Elle est normalement écrite sur la note (facture).
+    type: TEXT
+  - label: Adresse d'arrivée
+    type: TEXT
+  - label: >-
+      Heure d'arrivée. Elle est normalement écrite sur la note (facture). Si
+      vous la contestez, notez l'heure réelle d'arrivée.
+    type: TEXT
+  - label: >-
+      Notez le numéro ADS du taxi ou sa plaque d'immatriculation, si vous les
+      connaissez.
+    type: TEXT
+  - label: Si vous avez appelé une centrale de réservation, notez son nom.
+    type: TEXT
+  - label: Ajoutez ici toute autre information utile à votre signalement.
+    type: TEXT
+fileLabel: >-
+  Si possible, joindre une copie de la note (facture), et toute preuve du trajet
+  réellement emprunté.
