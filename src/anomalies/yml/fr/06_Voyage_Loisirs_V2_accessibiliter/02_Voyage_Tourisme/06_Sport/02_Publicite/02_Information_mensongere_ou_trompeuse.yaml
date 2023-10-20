@@ -1,0 +1,29 @@
+title: Information mensongère ou trompeuse
+ccrfCode:
+  - 23b
+reponseconsoCode:
+  - '210'
+detailInputs:
+  - label: Qu'est-ce qui est trompeur ou mensonger&#160;?
+    type: RADIO
+    options:
+      - Le discours du professionnel
+      - Le site internet
+      - >-
+        Les documents mis à votre disposition par le professionnel (flyer,
+        plaquette de présentation...)
+      - Autre (à préciser)
+  - label: À propos de quoi est-ce trompeur&#160;?
+    type: RADIO
+    options:
+      - Le prix
+      - L'hébergement et ses prestations
+      - Autre (à préciser)
+  - label: Description
+    type: TEXTAREA
+  - label: Date du constat
+    type: DATE
+    defaultValue: SYSDATE
+  - label: Heure du constat (facultatif)
+    type: TIMESLOT
+    optional: true

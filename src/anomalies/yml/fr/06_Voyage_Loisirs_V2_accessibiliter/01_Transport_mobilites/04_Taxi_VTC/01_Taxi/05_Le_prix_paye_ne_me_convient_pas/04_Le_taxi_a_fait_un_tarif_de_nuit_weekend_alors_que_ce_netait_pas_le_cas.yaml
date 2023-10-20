@@ -1,0 +1,21 @@
+title: Le taxi a fait un tarif de nuit / week-end alors que ce n'était pas le cas
+tags:
+  - ReponseConso
+detailInputs:
+  - label: Date de la course
+    type: DATE
+  - label: Adresse de départ
+    type: TEXT
+  - label: Heure de départ. Elle est normalement écrite sur la note (facture).
+    type: TEXT
+  - label: Adresse d'arrivée
+    type: TEXT
+  - label: Heure d'arrivée
+    type: TEXT
+  - label: Combien avez-vous payé ?
+    type: TEXT
+  - label: >-
+      Notez le numéro ADS du taxi ou sa plaque d'immatriculation, si vous les
+      connaissez.
+    type: TEXT
+fileLabel: Joindre si possible la note (facture) pour appuyer votre signalement.

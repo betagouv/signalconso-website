@@ -1,0 +1,19 @@
+title: Le prix au compteur était élevé dès la prise en charge
+tags:
+  - ReponseConso
+detailInputs:
+  - label: Date de la course
+    type: DATE
+  - label: Adresse de départ
+    type: TEXT
+  - label: Aviez-vous commandé votre taxi ?
+    type: RADIO
+    options:
+      - Oui, je l'avais réservé
+      - Oui, je l'ai commandé juste avant de le prendre
+      - Non, il m'a pris en charge sur une place de taxi ou dans la rue
+  - label: Quel était le montant indiqué dès le départ ?
+    type: TEXT
+fileLabel: >-
+  Joindre si possible la note (facture) de votre course pour appuyer votre
+  signalement.
