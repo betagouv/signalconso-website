@@ -2,6 +2,7 @@ import * as React from 'react'
 import {useId, useRef, useState} from 'react'
 import {useTimeout} from '../hooks/useTimeout'
 import {useTheme} from '@mui/material'
+import {useAutoscrollContext} from 'context/AutoscrollContext'
 
 export interface AnimateProps {
   children: React.ReactElement
@@ -12,6 +13,8 @@ export interface AnimateProps {
 // When the child element is mounted, it will immediately appear with a small animation
 // And optionally we will scroll to it
 export const Animate = ({autoScrollTo = true, children}: AnimateProps) => {
+  const {autoscrollEnabled} = useAutoscrollContext()
+
   const theme = useTheme()
   const [appeared, setAppeared] = useState<boolean>(false)
   const ref = useRef(null)
@@ -21,7 +24,7 @@ export const Animate = ({autoScrollTo = true, children}: AnimateProps) => {
   const startingTranslation = 50
 
   function scrollTo() {
-    if (autoScrollTo && ref) {
+    if (autoScrollTo && autoscrollEnabled && ref) {
       const el = document.getElementsByClassName('Animate-scroll-' + id)[0]
       if (el) {
         const offsetY = 90 // offset so we don't put the element at the very top of the window
