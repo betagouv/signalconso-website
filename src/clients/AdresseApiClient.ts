@@ -40,12 +40,14 @@ interface ApiAdresseResult {
 //, otherwise when city name is provided with no district the api is returning the firs district by default ( for 'Paris' only,  postalCode will be 75001) .
 const excludedCityWithDistrict = ['Paris', 'Marseille', 'Lyon']
 
+// SEE for documentation : https://adresse.data.gouv.fr/api-doc/adresse/
 export class AdresseApiClient {
   private client = new BaseApiClient({baseUrl: appConfig.apiAdresseUrl})
 
   readonly fetchCity = (q: string): Promise<City[]> => {
     if (q === '') return Promise.resolve([])
-    return this.fetch<ApiAdresseResult>(q, 'municipality')
+    const query = q
+    return this.fetch<ApiAdresseResult>(query, 'municipality')
       .then(_ => _.features.map(_ => _.properties))
       .then(_ => _.filter(_ => !excludedCityWithDistrict.includes(_.label)))
       .catch(_ => {
@@ -59,6 +61,9 @@ export class AdresseApiClient {
       qs: {
         q,
         type,
+        //Some PostalCode does not appear when we have more than one city linkend to same postal code
+
+        limit: 100,
         // autocomplete: 1
       },
     })
