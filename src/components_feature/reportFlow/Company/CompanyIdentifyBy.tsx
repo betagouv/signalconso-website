@@ -20,7 +20,6 @@ interface Props {
 
 export const CompanyIdentifyBy = ({companyKind, children}: Props) => {
   const {m} = useI18n()
-  const divRef = useRef<HTMLDivElement>(null)
   const [identifyBy, setIdentifyBy] = useState<IdentifyBy | undefined>()
 
   const createOptions = (companyKind: CompanyKinds) => [
@@ -44,10 +43,6 @@ export const CompanyIdentifyBy = ({companyKind, children}: Props) => {
         ]
       : []),
   ]
-
-  useEffect(() => {
-    divRef.current?.focus()
-  })
 
   return (
     <>
