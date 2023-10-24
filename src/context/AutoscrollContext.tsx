@@ -7,7 +7,7 @@ type AutoscrollContextShape = {
 
 const autoscrollContext = createContext<AutoscrollContextShape>(null as any)
 
-export function KeyboardNavProvider({children}: {children: ReactNode}) {
+export function AutoscrollProvider({children}: {children: ReactNode}) {
   const [autoscrollEnabled, setAutoscrollEnabled] = useState(true)
 
   function disableAutoscrollTemporarily() {

@@ -22,7 +22,7 @@ import {useI18n} from '../../i18n/I18n'
 import {Eularian} from '../../plugins/eularian'
 import {Matomo} from '../../plugins/matomo'
 import {Sentry} from '../../plugins/sentry'
-import {KeyboardNavProvider} from 'context/AutoscrollContext'
+import {AutoscrollProvider} from 'context/AutoscrollContext'
 
 monkeyPatchDomForGoogleTranslate()
 
@@ -47,9 +47,9 @@ const App: ({children}: {children: React.ReactNode}) => JSX.Element = ({children
               <ToastProvider>
                 <ReportCreateProvider>
                   <ReportFlowProvider>
-                    <KeyboardNavProvider>
+                    <AutoscrollProvider>
                       <AppBase>{children}</AppBase>
-                    </KeyboardNavProvider>
+                    </AutoscrollProvider>
                   </ReportFlowProvider>
                 </ReportCreateProvider>
               </ToastProvider>
