@@ -99,9 +99,9 @@ export const ScRadioButtons = <V,>({
                 <div className="flex flex-col gap-2 items-start justify-start ">
                   {label}
                   {description && createDescription(description)}
-                  {checked && specify}
                 </div>
               </label>
+              {checked && specify && <div className="ml-12 mr-4 mb-3 mt-[-4px] max-w-sm">{specify}</div>}
             </div>
           )
         })}
