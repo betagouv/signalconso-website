@@ -94,7 +94,6 @@ export const CompanyByWebsite = ({value, children, specificWebsiteCompanyKind, .
     setValue,
     handleSubmit,
     register,
-    reset,
     formState: {errors},
   } = useForm<Form>({
     defaultValues: {
@@ -133,23 +132,11 @@ export const CompanyByWebsite = ({value, children, specificWebsiteCompanyKind, .
   }, [searchQuery.data])
 
   const inputIsDisabled = !!displayedResults
-  useEffect(() => {
-    // we want take the focus back after hitting edit/clear buttons
-    if (!inputIsDisabled) {
-      inputRef.current?.focus()
-    }
-  }, [inputIsDisabled])
 
   const editWebsite = () => {
     _analytic.trackEvent(EventCategories.companySearch, CompanySearchEventActions.editWebsite, website)
     setIsEditingWebsite(true)
     setHasConfirmedUnknown(false)
-  }
-
-  const clearWebsite = () => {
-    setIsEditingWebsite(true)
-    setHasConfirmedUnknown(false)
-    reset()
   }
 
   function onSubmit({website}: Form) {
@@ -223,7 +210,6 @@ export const CompanyByWebsite = ({value, children, specificWebsiteCompanyKind, .
                 placeholder={m.websitePlaceholder}
                 error={!!errors.website}
                 helperText={errors.website?.message}
-                tabIndex={-1}
               />
               <br />
               <SimilarHosts

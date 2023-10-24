@@ -42,7 +42,6 @@ export const ScTextInput = forwardRef((props: Props, ref: ForwardedRef<HTMLInput
     disabled = false,
     editable,
     clearable,
-    tabIndex,
     onClick = () => {},
     disableLeftBorderOnError = false,
   } = props
@@ -83,9 +82,21 @@ export const ScTextInput = forwardRef((props: Props, ref: ForwardedRef<HTMLInput
           aria-describedby={helperTextId}
           {...(error ? {'aria-invalid': true} : null)}
           {...(required ? {'aria-required': true} : null)}
-          {...(tabIndex && !disabled ? {tabIndex} : null)}
+          // If the edit button is displayed
+          // no need for the input itself to be accessible through keyboard
+          {...(editable && disabled ? {tabIndex: -1} : null)}
         />
-        {editable && <Button iconId="fr-icon-edit-line" onClick={editable.onEdit} priority="tertiary" title={editable.label} />}
+        {editable && (
+          <Button
+            iconId="fr-icon-edit-line"
+            onClick={() => {
+              document.getElementById(inputId)?.focus()
+              editable.onEdit()
+            }}
+            priority="tertiary"
+            title={editable.label}
+          />
+        )}
         {clearable && (
           <Button iconId="fr-icon-close-line" onClick={clearable.onClear} priority="tertiary" title={clearable.label} />
         )}
