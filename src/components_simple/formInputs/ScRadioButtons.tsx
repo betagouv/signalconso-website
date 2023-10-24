@@ -1,4 +1,5 @@
-import {ReactNode, useId} from 'react'
+import {useAutoscrollContext} from 'context/AutoscrollContext'
+import {KeyboardEvent, ReactNode, useId} from 'react'
 
 interface ScRadioButtonsProps<V> {
   title?: ReactNode
@@ -37,6 +38,7 @@ export const ScRadioButtons = <V,>({
   required,
 }: ScRadioButtonsProps<V>) => {
   const _id = useId()
+  const {disableAutoscrollTemporarily} = useAutoscrollContext()
   const id = `fr-fieldset-radio-${_id}`
   const legendId = `${id}-legend`
   const radioName = `radio-name-${id}`
@@ -47,6 +49,14 @@ export const ScRadioButtons = <V,>({
       return <span className="text-sm text-[#666666]">{description}</span>
     } else {
       return <div className="z-10">{description}</div>
+    }
+  }
+
+  function onKeyDown(e: KeyboardEvent<HTMLInputElement>) {
+    // Accessibility : when navigating between the subcategories with arrow keys
+    // the autoscroll is extremely annoying
+    if (['ArrowDown', 'ArrowUp', 'ArrowLeft', 'ArrowRight'].includes(e.key)) {
+      disableAutoscrollTemporarily()
     }
   }
 
@@ -82,6 +92,7 @@ export const ScRadioButtons = <V,>({
                 name={radioName}
                 onChange={() => onChange(value)}
                 checked={checked}
+                {...{onKeyDown}}
                 {...(disabled ? {disabled} : null)}
               />
               <label className="fr-label !pr-4 ml-4" htmlFor={inputId}>
