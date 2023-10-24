@@ -44,12 +44,6 @@ export const CompanySearchByIdentity = ({children}: Props) => {
     setSubmittedIdentity(form.identity)
   }
 
-  const clear = () => {
-    reset()
-    setSubmittedIdentity(undefined)
-    inputEl.current?.focus()
-  }
-
   const {ref, ...restOfRegisterIdentity} = register('identity', {
     required: {value: true, message: m.required},
   })
