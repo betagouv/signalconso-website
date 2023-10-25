@@ -31,7 +31,6 @@ export const appConfig = {
   apiBaseUrl: noTrailingSlash(process.env.NEXT_PUBLIC_API_BASE_URL ?? 'http://localhost:9000'),
   appBaseUrl: noTrailingSlash(process.env.NEXT_PUBLIC_APP_BASE_URL ?? 'http://localhost:3001'),
   dashboardBaseUrl: noTrailingSlash(process.env.NEXT_PUBLIC_DASHBOARD_BASE_URL ?? 'http://localhost:3000'),
-  basePath: process.env.NEXT_PUBLIC_BASE_PATH ?? '/',
   upload_allowedExtensions: ['.jpg', '.jpeg', '.pdf', '.png', '.gif', '.docx', '.heic'],
   reponseConsoDisplayRate: readInt(process.env.NEXT_PUBLIC_REPONSECONSO_DISPLAY_PERCENTAGE, 100),
   upload_maxSizeMb: readInt(process.env.NEXT_PUBLIC_UPLOAD_MAX_SIZE_MB, 5),
@@ -49,7 +48,7 @@ export const appConfig = {
   // Used only to regenerate the landing page from Airtable
   // thus no need to configure anywhere but in dev
   airtableApiToken: process.env.NEXT_PUBLIC_AIRTABLE_API_TOKEN ?? null,
-  maxNumberOfAttachments: readInt(process.env.NEXT_PUBLIC_MAX_NUMBER_OF_ATTACHMENTS, 20),
+  maxNumberOfAttachments: readInt(process.env.NEXT_PUBLIC_MAX_NUMBER_OF_ATTACHMENTS, 12),
   reportButtonOnContactPage: readBool(process.env.NEXT_PUBLIC_REPORT_BUTTON_ON_CONTACT),
 }
 
