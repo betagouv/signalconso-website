@@ -91,7 +91,7 @@ export const CompanySearchByIdentity = ({children}: Props) => {
                 // we want to allow whitespaces, typically from a copy/paste
                 type="text"
                 // we want the mobile keyboard to be numeric
-                inputtype="numeric"
+                inputMode="numeric"
                 {...restOfRegisterIdentity}
                 ref={e => {
                   // https://www.react-hook-form.com/faqs/#Howtosharerefusage
