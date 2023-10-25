@@ -1,7 +1,7 @@
 import {useAutoscrollContext} from 'context/AutoscrollContext'
-import {KeyboardEvent, ReactNode, useId} from 'react'
+import {KeyboardEvent, ReactElement, ReactNode, Ref, forwardRef, useEffect, useId} from 'react'
 
-interface ScRadioButtonsProps<V> {
+interface Props<V> {
   title?: ReactNode
   description?: string
   // do not respect DSFR style, less bold, less margins, etc.
@@ -21,28 +21,45 @@ interface ScRadioButtonsProps<V> {
   orientation?: 'vertical' | 'horizontal'
   className?: string
   required: boolean
+  // If you use this component within react-hook-form, and pass the ref properly,
+  // react-hook-form will handle autofocus and scroll properly
+  // This option is only for when we use this component outside of react-hook-form
+  autoFocusOnError?: boolean
 }
+type RefType = Ref<HTMLFieldSetElement>
 
-export const ScRadioButtons = <V,>({
-  title,
-  description,
-  titleSoberStyle = false,
-  titleNoAutoAsterisk = false,
-  onChange,
-  options,
-  value: selectedValue,
-  error,
-  errorMessage,
-  orientation,
-  className = '',
-  required,
-}: ScRadioButtonsProps<V>) => {
+function ScRadioButtonsWithRef<V>(props: Props<V>, ref: RefType) {
+  const {
+    title,
+    description,
+    titleSoberStyle = false,
+    titleNoAutoAsterisk = false,
+    onChange,
+    options,
+    value: selectedValue,
+    error,
+    errorMessage,
+    orientation,
+    className = '',
+    required,
+    autoFocusOnError,
+  } = props
   const _id = useId()
   const {disableAutoscrollTemporarily} = useAutoscrollContext()
   const id = `fr-fieldset-radio-${_id}`
   const legendId = `${id}-legend`
   const radioName = `radio-name-${id}`
   const messagesWrapperId = `${id}-messages`
+
+  useEffect(() => {
+    if (error && autoFocusOnError) {
+      const element = document.getElementById(id)
+      if (element) {
+        element.focus()
+        element.scrollIntoView({block: 'center'})
+      }
+    }
+  }, [error, autoFocusOnError])
 
   const createDescription = (description: ReactNode) => {
     if (typeof description === 'string') {
@@ -67,6 +84,7 @@ export const ScRadioButtons = <V,>({
       className={`fr-fieldset ${horizontal && 'fr-fieldset--inline'} ${error ? 'fr-fieldset--error' : ''} ${className}`}
       aria-labelledby={`${title && legendId} ${messagesWrapperId}`}
       {...(required ? {'aria-required': true} : null)}
+      ref={ref}
     >
       {title && (
         <legend id={legendId} className={`fr-fieldset__legend ${titleSoberStyle ? '!font-normal' : ''}`}>
@@ -114,3 +132,7 @@ export const ScRadioButtons = <V,>({
     </fieldset>
   )
 }
+
+// forwardRef doesn't play well with generics
+// https://stackoverflow.com/questions/58469229/react-with-typescript-generics-while-using-react-forwardref
+export const ScRadioButtons = forwardRef(ScRadioButtonsWithRef) as <V>(p: Props<V> & {ref?: RefType}) => ReactElement

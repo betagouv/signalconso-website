@@ -150,6 +150,7 @@ export const CompanySearchResultComponent = ({companies, onSubmit}: Props) => {
                         })}
                         title={m.selectCompany}
                         description={m.selectCompanyDesc}
+                        autoFocusOnError
                       />
                       {onlyClosed && (
                         <Alert

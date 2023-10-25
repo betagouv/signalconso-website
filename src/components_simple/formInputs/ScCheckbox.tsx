@@ -1,6 +1,6 @@
-import {ReactNode, useId} from 'react'
+import {ReactElement, ReactNode, Ref, forwardRef, useId} from 'react'
 
-interface ScCheckboxProps<V> {
+interface Props<V> {
   title: ReactNode
   description?: string
   // do not respect DSFR style, less bold, less margins, etc.
@@ -16,18 +16,10 @@ interface ScCheckboxProps<V> {
   errorMessage?: string
   required: boolean
 }
+type RefType = Ref<HTMLFieldSetElement>
 
-export const ScCheckbox = <V,>({
-  title,
-  titleSoberStyle,
-  description,
-  onChange,
-  options,
-  value: selectedValue,
-  error,
-  errorMessage,
-  required,
-}: ScCheckboxProps<V>) => {
+const ScCheckboxWithRef = <V,>(props: Props<V>, ref: RefType) => {
+  const {title, titleSoberStyle, description, onChange, options, value: selectedValue, error, errorMessage, required} = props
   const _id = useId()
   const id = `fr-fieldset-checkbox-${_id}`
   const legendId = `${id}-legend`
@@ -48,6 +40,7 @@ export const ScCheckbox = <V,>({
       className={`fr-fieldset ${error ? 'fr-fieldset--error' : ''}`}
       aria-labelledby={`${title && legendId} ${messagesWrapperId}`}
       {...(required ? {'aria-required': true} : null)}
+      ref={ref}
     >
       {title && (
         <legend id={legendId} className={`fr-fieldset__legend ${titleSoberStyle ? '!font-normal !pb-0' : ''}`}>
@@ -90,3 +83,7 @@ export const ScCheckbox = <V,>({
     </fieldset>
   )
 }
+
+// forwardRef doesn't play well with generics
+// https://stackoverflow.com/questions/58469229/react-with-typescript-generics-while-using-react-forwardref
+export const ScCheckbox = forwardRef(ScCheckboxWithRef) as <V>(p: Props<V> & {ref?: RefType}) => ReactElement
