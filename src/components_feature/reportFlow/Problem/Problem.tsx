@@ -2,7 +2,6 @@ import {useAnalyticContext} from 'analytic/AnalyticContext'
 import {EventCategories, ReportEventActions} from 'analytic/analytic'
 import {StepNavigation} from 'components_feature/reportFlow/reportFlowStepper/ReportFlowStepper'
 import {ReportFlowStepperActions} from 'components_feature/reportFlow/reportFlowStepper/ReportFlowStepperActions'
-import {appConfig} from 'core/appConfig'
 import {useI18n} from 'i18n/I18n'
 import {ConsumerWish, ReportDraft} from 'model/ReportDraft'
 import {ReportDraft2} from 'model/ReportDraft2'
@@ -43,10 +42,6 @@ function adjustTagsBeforeSubmit(draft: Partial<ReportDraft2>, companyKindFromSel
   return res
 }
 
-function chooseIfReponseConsoDisplayed(): boolean {
-  return Math.random() * 100 < appConfig.reponseConsoDisplayRate
-}
-
 export function initiateReportDraftForAnomaly(anomaly: Anomaly, lang: AppLang): Partial<ReportDraft2> {
   return {category: anomaly.category, lang}
 }
@@ -83,7 +78,6 @@ export function adjustReportDraftAfterSubcategoriesChange(
 export const Problem = ({anomaly, isWebView, stepNavigation}: Props) => {
   const _analytic = useAnalyticContext()
   const {m, currentLang} = useI18n()
-  const displayReponseConso = useMemo(chooseIfReponseConsoDisplayed, [])
   const {reportDraft, setReportDraft, resetFlow, sendReportEvent} = useReportFlowContext()
 
   // reset the draft when switching the root category
@@ -240,7 +234,7 @@ export const Problem = ({anomaly, isWebView, stepNavigation}: Props) => {
                     description: m.problemContractualDisputeFormNoDesc,
                     value: 'companyImprovement',
                   },
-                  ...(displayReponseConso && tags.includes('ReponseConso')
+                  ...(tags.includes('ReponseConso')
                     ? [
                         {
                           title: m.problemContractualDisputeFormReponseConso,
