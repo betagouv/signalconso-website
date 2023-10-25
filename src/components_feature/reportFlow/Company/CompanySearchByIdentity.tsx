@@ -23,11 +23,25 @@ interface Props {
   children: (companies?: CompanySearchResult[]) => ReactNode
 }
 
+function purgeWhitespaces(identity: string): string {
+  // the user may copy/paste the number from a webpage
+  // with whitespaces before, after, or inside, e.g.: XXX XXX XXX
+  return identity.replace(/\s+/g, '')
+}
+
+function isSiretOrSiren(identity: string) {
+  return /^(?:\d{9}|\d{14})$/.test(identity)
+}
+
 export const CompanySearchByIdentity = ({children}: Props) => {
   const {m, currentLang} = useI18n()
   const {companyApiClient} = useApiClients()
   const _analytic = useAnalyticContext()
-  const {register, handleSubmit, reset} = useForm<Form>()
+  const {
+    register,
+    handleSubmit,
+    formState: {errors},
+  } = useForm<Form>()
   const [submittedIdentity, setSubmittedIdentity] = useState<string | undefined>(undefined)
   const _searchByIdentity = useQuery(['searchCompaniesByIdentity', submittedIdentity], () => {
     if (submittedIdentity) {
@@ -41,11 +55,18 @@ export const CompanySearchByIdentity = ({children}: Props) => {
 
   function search(form: Form) {
     _analytic.trackEvent(EventCategories.companySearch, CompanySearchEventActions.searchByIdentity, form.identity)
-    setSubmittedIdentity(form.identity)
+    setSubmittedIdentity(purgeWhitespaces(form.identity))
   }
 
   const {ref, ...restOfRegisterIdentity} = register('identity', {
     required: {value: true, message: m.required},
+    validate: s => {
+      const s2 = purgeWhitespaces(s)
+      if (isSiretOrSiren(s2)) {
+        return true
+      }
+      return "Ce n'est pas un numéro SIRET ou SIREN (14 ou 9 chiffres)"
+    },
   })
 
   return (
@@ -67,7 +88,10 @@ export const CompanySearchByIdentity = ({children}: Props) => {
                     </CompanySearchByIdentityHelpDialog>
                   </span>
                 }
-                type="number"
+                // we want to allow whitespaces, typically from a copy/paste
+                type="text"
+                // we want the mobile keyboard to be numeric
+                inputtype="numeric"
                 {...restOfRegisterIdentity}
                 ref={e => {
                   // https://www.react-hook-form.com/faqs/#Howtosharerefusage
@@ -75,12 +99,8 @@ export const CompanySearchByIdentity = ({children}: Props) => {
                   inputEl.current = e as any as HTMLInputElement
                 }}
                 placeholder={m.companyIdentityPlaceholder}
-                // clearable={{
-                //   onClear: clear,
-                //   label: m.clearSiret,
-                // }}
-                error={false}
-                helperText={undefined}
+                error={!!errors.identity}
+                helperText={errors.identity?.message}
               />
             </PanelBody>
 

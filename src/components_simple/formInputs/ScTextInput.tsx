@@ -13,6 +13,7 @@ type Props = {
   desc?: ReactNode
   autocomplete?: string
   type?: 'text' | 'email' | 'tel' | 'number'
+  inputtype?: 'numeric'
   disabled?: boolean
   clearable?: {
     onClear: () => void
@@ -39,6 +40,7 @@ export const ScTextInput = forwardRef((props: Props, ref: ForwardedRef<HTMLInput
     helperText,
     required,
     type = 'text',
+    inputtype,
     disabled = false,
     editable,
     clearable,
@@ -76,6 +78,7 @@ export const ScTextInput = forwardRef((props: Props, ref: ForwardedRef<HTMLInput
           onBlur={onBlur}
           ref={ref}
           type={type}
+          {...(inputtype ? {inputtype} : null)}
           readOnly={disabled}
           placeholder={placeholder}
           className={`fr-input ${error ? 'fr-input--error' : ''} ${disabled ? '!text-gray-600 !shadow-none' : ''}`}
