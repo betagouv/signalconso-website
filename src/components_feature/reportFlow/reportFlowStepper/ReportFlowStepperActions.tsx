@@ -8,17 +8,17 @@ interface Props {
   loadingNext?: boolean
   nextButtonLabel?: string
   nextIconSend?: boolean
-  next?: (next: () => void) => void
+  onNext: (next: () => void) => void
   stepNavigation: StepNavigation
 }
 
-export const ReportFlowStepperActions = ({nextButtonLabel, nextIconSend, loadingNext, next, stepNavigation}: Props) => {
+export const ReportFlowStepperActions = ({nextButtonLabel, nextIconSend, loadingNext, onNext, stepNavigation}: Props) => {
   const {m} = useI18n()
   return (
     <Box sx={{display: 'flex', alignItems: 'center', justifyContent: 'space-between', mt: 3}}>
       <Button
         iconId={nextIconSend ? 'fr-icon-send-plane-line' : iconArrowRight}
-        onClick={next ? () => next(stepNavigation.next) : stepNavigation.next}
+        onClick={() => onNext(stepNavigation.next)}
         className="ml-auto stepper-next-button"
         disabled={loadingNext === true}
       >

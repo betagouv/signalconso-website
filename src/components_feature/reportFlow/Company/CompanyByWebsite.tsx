@@ -142,7 +142,7 @@ export const CompanyByWebsite = ({value, children, specificWebsiteCompanyKind, .
   function onSubmit({website}: Form) {
     _analytic.trackEvent(EventCategories.companySearch, CompanySearchEventActions.searchByUrl, website)
     setIsEditingWebsite(false)
-    setWebsite(website)
+    setWebsite(website.trim())
   }
 
   const websiteToReportAlert = (websiteCompanyKind: SpecificWebsiteCompanyKinds) => {
@@ -169,14 +169,11 @@ export const CompanyByWebsite = ({value, children, specificWebsiteCompanyKind, .
 
   const registerWebsiteResult = register('website', {
     required: {value: true, message: m.required},
-    pattern: {
-      value: websiteRegex,
-      message: m.invalidUrlPattern,
-    },
-    validate: {
-      isSignalConsoUrl: value => {
-        return value.includes('signal.conso.gouv.fr') ? m.consumerCannotReportSignalConso : undefined
-      },
+    validate: value => {
+      if (!websiteRegex.test(value.trim())) {
+        return m.invalidUrlPattern
+      }
+      return value.includes('signal.conso.gouv.fr') ? m.consumerCannotReportSignalConso : undefined
     },
   })
   const {ref, ...restOfRegisterWebsiteResult} = registerWebsiteResult
@@ -189,6 +186,7 @@ export const CompanyByWebsite = ({value, children, specificWebsiteCompanyKind, .
           <PanelBody>
             <RequiredFieldsLegend />
             <Box component="form" onSubmit={handleSubmit(onSubmit)} {...props}>
+              <h1>input website</h1>
               <ScTextInput
                 label={m.website}
                 required

@@ -194,7 +194,7 @@ export const ConfirmationInner = ({
           nextIconSend
           loadingNext={_reportCreate.createReportMutation.isLoading}
           nextButtonLabel={draft.consumerWish === 'getAnswer' ? m.confirmationBtnReponseConso : m.confirmationBtn}
-          next={next => {
+          onNext={next => {
             _reportFlow.sendReportEvent('Confirmation')
             const metadata = buildReportMetadata({isWebView})
             _reportCreate.createReportMutation
