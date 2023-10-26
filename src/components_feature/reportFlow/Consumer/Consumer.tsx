@@ -249,7 +249,7 @@ export const ConsumerInner = ({
       />
       <ReportFlowStepperActions
         loadingNext={_checkEmail.isLoading}
-        next={() => {
+        onNext={() => {
           _form.handleSubmit(form => {
             _checkEmail
               .mutateAsync(form.email)

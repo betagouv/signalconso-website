@@ -165,7 +165,7 @@ export const Problem = ({anomaly, isWebView, stepNavigation}: Props) => {
             {...{isWebView}}
           />
         ) : (
-          <ProblemStepper renderDone={<ReportFlowStepperActions next={onSubmit} {...{stepNavigation}} />}>
+          <ProblemStepper renderDone={<ReportFlowStepperActions onNext={onSubmit} {...{stepNavigation}} />}>
             <ProblemStepperStep isDone={reportDraft.employeeConsumer !== undefined} hidden={reportDraft.companyKind === 'SOCIAL'}>
               <ProblemSelect
                 id="select-employeeconsumer"

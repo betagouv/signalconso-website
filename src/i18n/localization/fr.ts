@@ -1155,6 +1155,8 @@ export const fr = {
     attachmentsDesc2: `Ajouter une pièce jointe augmente <strong>FORTEMENT</strong> vos chances d’entraîner une mesure corrective&nbsp;!<br/> Vous ne devez pas communiquer de données sensibles (données bancaires ou médicales).`,
     maxAttachmentsZero: (max: number) => `Vous pouvez téléverser jusqu'à ${max} pièces jointes`,
     maxAttachmentsReached: (max: number) => `Limite de ${max} pièces jointes atteinte`,
+    maxAttachementExceeded: (max: number, toRemove: number) =>
+      `Limite de ${max} pièces jointes dépassée. Vous devez en supprimer ${toRemove}.`,
     maxAttachmentsCurrent: (current: number) => `Vous pouvez encore ajouter jusqu'à ${current} pièces jointes`,
     menu_howItWorks: `Comment ça marche ?`,
     menu_home: `Accueil`,

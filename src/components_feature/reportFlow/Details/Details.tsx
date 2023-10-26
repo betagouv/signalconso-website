@@ -18,6 +18,7 @@ import {buildDefaultValues} from './DetailInputsUtils'
 import {DetailsAlertProduitDangereux} from './DetailsAlertProduitDangereux'
 import {DetailsInputRenderByType} from './DetailsInputRenderByType'
 import {getDraftReportInputs} from './draftReportInputs'
+import {appConfig} from 'core/appConfig'
 
 export class SpecifyFormUtils {
   static readonly specifyKeywordFr = '(à préciser)'
@@ -87,6 +88,10 @@ export const DetailsInner = ({
   consumerWish?: ConsumerWish
 }) => {
   const [uploadedFiles, setUploadedFiles] = useState<undefined | UploadedFile[]>()
+  const [hasTriedToSubmit, setHasTriedToSubmit] = useState(false)
+  // can happen by uploading multiple files at once
+  const tooManyFiles = (uploadedFiles ?? []).length > appConfig.maxNumberOfAttachments
+  const showTooManyFilesError = tooManyFiles && hasTriedToSubmit
   const {m} = useI18n()
 
   const defaultValues = {
@@ -163,14 +168,19 @@ export const DetailsInner = ({
             fileOrigin={FileOrigin.Consumer}
             onRemoveFile={f => setUploadedFiles(files => files?.filter(_ => _.id !== f.id))}
             onNewFile={f => setUploadedFiles(_ => [...(_ ?? []), f])}
+            tooManyFilesError={showTooManyFilesError}
           />
         </div>
       </Animate>
       <ReportFlowStepperActions
-        next={() => {
-          handleSubmit(detailInputValues => {
-            onSubmit(detailInputValues, uploadedFiles)
-          })()
+        onNext={next => {
+          if (tooManyFiles) {
+            setHasTriedToSubmit(true)
+          } else {
+            handleSubmit(detailInputValues => {
+              onSubmit(detailInputValues, uploadedFiles)
+            })()
+          }
         }}
         {...{stepNavigation}}
       />

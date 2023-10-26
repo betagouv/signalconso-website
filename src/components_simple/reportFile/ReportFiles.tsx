@@ -15,6 +15,7 @@ export interface ReportFilesProps {
   onNewFile: (f: UploadedFile) => void
   onRemoveFile: (f: UploadedFile) => void
   fileOrigin: FileOrigin
+  tooManyFilesError: boolean
 }
 
 const preventDefaultHandler = (e: React.DragEvent<HTMLElement>) => {
@@ -22,7 +23,7 @@ const preventDefaultHandler = (e: React.DragEvent<HTMLElement>) => {
   e.stopPropagation()
 }
 
-export const ReportFiles = ({fileOrigin, files, onRemoveFile = () => void 0, onNewFile = () => void 0}: ReportFilesProps) => {
+export const ReportFiles = ({fileOrigin, files, onRemoveFile, onNewFile, tooManyFilesError}: ReportFilesProps) => {
   const [innerFiles, setInnerFiles] = useState<UploadedFile[]>([])
   const {m} = useI18n()
   const [isDraggingOver, setIsDraggingOver] = useState(false)
@@ -109,10 +110,6 @@ export const ReportFiles = ({fileOrigin, files, onRemoveFile = () => void 0, onN
     setInnerFiles(prev => prev.filter(_ => _.id !== f.id))
   }
 
-  const dropzoneClasses = `fr-upload-group p-4 pt-8 border border-solid rounded ${
-    isDraggingOver ? 'border-scbluefrance ' : 'border-gray-300 '
-  }`
-
   const thumbnails = (
     <div className="flex flex-wrap items-center justify-center mt-4 ">
       {innerFiles
@@ -138,12 +135,24 @@ export const ReportFiles = ({fileOrigin, files, onRemoveFile = () => void 0, onN
   }
   const max = appConfig.maxNumberOfAttachments
   const nothingYet = innerFiles.length <= 0
-  const maxReached = innerFiles.length >= max
+  const maxReached = innerFiles.length === max
+  // can happen with multiple uploads at once
+  const maxExceeded = innerFiles.length > max
+
+  const redErrorClasses = `before:block before:absolute before:top-0 before:bottom-0 before:left-[-15px] before:pointer-events-none before:right-0 before:border-l-2 before:border-0 before:border-l-scerrorred before:border-solid before:content-['']`
 
   return (
-    <div className={dropzoneClasses} onDragOver={onDrag} onDragEnter={onDrag} onDragLeave={onDrag} onDrop={onDrop}>
+    <div
+      className={`relative fr-upload-group p-4 pt-8 border border-solid rounded ${
+        isDraggingOver ? 'border-scbluefrance ' : 'border-gray-300 '
+      } ${tooManyFilesError ? redErrorClasses : ''}`}
+      onDragOver={onDrag}
+      onDragEnter={onDrag}
+      onDragLeave={onDrag}
+      onDrop={onDrop}
+    >
       <div className="flex flex-col">
-        {!maxReached && (
+        {!maxReached && !maxExceeded && (
           <>
             {nothingYet && <UploadInvitation />}
             <div className={`text-center ${nothingYet ? 'mb-6' : 'mb-2'}`}>
@@ -156,8 +165,10 @@ export const ReportFiles = ({fileOrigin, files, onRemoveFile = () => void 0, onN
             />
           </>
         )}
-        <p className="text-sm mb-2 text-center" role="status">
-          {maxReached
+        <p className={`text-sm mb-2 text-center ${tooManyFilesError ? 'text-scerrorred font-bold' : ''}`} role="status">
+          {maxExceeded
+            ? m.maxAttachementExceeded(max, innerFiles.length - max)
+            : maxReached
             ? m.maxAttachmentsReached(max)
             : nothingYet
             ? m.maxAttachmentsZero(max)

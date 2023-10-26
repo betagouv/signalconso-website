@@ -1142,6 +1142,8 @@ export const en = {
     attachmentsDesc2: `Including an attachment <strong>GREATLY</strong> increases your chances that corrective action will be taken.<br/> You must not share private or sensitive information (e.g. bank account details or medical records).`,
     maxAttachmentsZero: (max: number) => `You can upload up to ${max} attachments`,
     maxAttachmentsReached: (max: number) => `${max} attachments limit reached`,
+    maxAttachementExceeded: (max: number, toRemove: number) =>
+      `${max} attachments limit exceeded. You need to remove ${toRemove}.`,
     maxAttachmentsCurrent: (current: number) => `You can still upload up to ${current} attachments`,
     menu_howItWorks: `How it works?`,
     menu_home: `Home`,
