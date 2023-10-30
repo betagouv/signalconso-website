@@ -2,7 +2,7 @@ import {usePathname, useSearchParams} from 'next/navigation'
 import {AppConfig, appConfig} from '../core/appConfig'
 import {Eularian} from '../plugins/eularian'
 import {Matomo} from '../plugins/matomo'
-import {useEffect, useMemo} from 'react'
+import {useEffect} from 'react'
 
 export class Analytic {
   static readonly init = ({
@@ -78,6 +78,7 @@ export enum EventCategories {
   consumerReview = 'Avis consommateur',
   companySearch = "Identification de l'établissement",
   categorySearch = 'Recherche de catégories',
+  barcodeSearch = 'Recherche de code-barres',
 }
 
 export enum ReportEventActions {
@@ -96,6 +97,7 @@ export enum ReportEventActions {
 export enum CompanySearchEventActions {
   search = 'Recherche',
   searchByIdentity = 'Recherche par SIRET / SIREN / RCS',
+  searchByGTIN = 'Recherche par GTIN (code-barres)',
   searchByUrl = 'Recherche par URL',
   searchedWebsiteDown = 'Site web recherché introuvable',
   editWebsite = 'Edition du site web',

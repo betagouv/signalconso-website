@@ -10,6 +10,7 @@ import {ConsumerEmailResult} from 'model/ConsumerEmailValidation'
 import {ApiCreatedReport, ApiReportDraft} from 'model/reportsFromApi'
 import {ResponseConsumerReview, ResponseConsumerReviewExists} from '../core/Events'
 import {AppLang} from '../i18n/localization/AppLangs'
+import {GS1Product} from '../model/GS1Product'
 
 type PublicStat =
   | 'PromesseAction'
@@ -32,6 +33,10 @@ export class SignalConsoApiClient {
       Accept: 'application/json',
     },
   })
+
+  searchByBarcode = (barcode: string) => {
+    return this.client.get<GS1Product>(`/gs1/${barcode}`)
+  }
 
   searchCompaniesByUrl = (url: string) => {
     return this.client.get<WebsiteCompanySearchResult>(`/companies/hosts`, {qs: {url}})

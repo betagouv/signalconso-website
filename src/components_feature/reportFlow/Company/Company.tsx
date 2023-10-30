@@ -1,7 +1,6 @@
 'use client'
 import {Button} from '@codegouvfr/react-dsfr/Button'
 import {useAnalyticContext} from 'analytic/AnalyticContext'
-import {EventCategories, ReportEventActions} from 'analytic/analytic'
 import {AddressComponent} from 'components_simple/Address'
 import {Panel, PanelActions, PanelBody} from 'components_simple/Panel'
 import {StepNavigation} from 'components_feature/reportFlow/reportFlowStepper/ReportFlowStepper'
@@ -29,6 +28,8 @@ import {CompanyWebsiteCountry} from './CompanyWebsiteCountry'
 import {InfluencerBySocialNetwork} from './InfluencerBySocialNetwork'
 import {BtnNext} from 'components_simple/buttons/Buttons'
 import {SpecificWebsiteCompanyKinds} from '../../../anomalies/Anomaly'
+import {CompanySearchByBarcode} from './CompanySearchByBarcode'
+import {BarcodeSearchResult} from './BarcodeSearchResult'
 
 interface CompanyWithRequiredProps {
   draft: Pick<ReportDraft, 'companyKind'>
@@ -210,6 +211,25 @@ export const _Company = ({draft, onUpdateReportDraft}: CompanyWithRequiredProps)
       <CompanyIdentifyBy companyKind={draft.companyKind!}>
         {identifyBy =>
           fnSwitch(identifyBy, {
+            [IdentifyBy.BARCODE]: () => (
+              <CompanySearchByBarcode>
+                {(product, company) => (
+                  <BarcodeSearchResult
+                    product={product}
+                    company={company}
+                    onSubmit={(company, product) => {
+                      onUpdateReportDraft({
+                        companyDraft: {
+                          ...company,
+                          ...phoneOrWebsite,
+                        },
+                        gs1ProductId: product.id,
+                      })
+                    }}
+                  />
+                )}
+              </CompanySearchByBarcode>
+            ),
             [IdentifyBy.NAME]: () => (
               <CompanySearchByNameAndPostalCode>
                 {companies => (

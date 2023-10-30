@@ -1,4 +1,4 @@
-import {CompanyKinds, ReportTag, socialNetworks, SocialNetworks, Subcategory} from 'anomalies/Anomaly'
+import {CompanyKinds, ReportTag, SocialNetworks, Subcategory} from 'anomalies/Anomaly'
 import {Address} from './Address'
 import {DetailInputValue} from './CreatedReport'
 import {ApiInfluencer, ApiReportDraft} from './reportsFromApi'
@@ -47,6 +47,7 @@ export interface ReportDraft {
   companyKind?: CompanyKinds
   influencer?: Influencer
   lang: AppLang
+  gs1ProductId?: string
 }
 
 export interface Influencer {
