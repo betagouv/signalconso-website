@@ -48,16 +48,16 @@ function createSitemapXml(items: SitemapItem[]): string {
         ? `<xhtml:link
         rel="alternate"
         hreflang="en"
-        href="${`${appConfig.appBaseUrl}/en${item.url}`}"/>`
+        href="${`${appConfig.websiteBaseUrl}/en${item.url}`}"/>`
         : ''
 
       const alternateMain = `<xhtml:link
       rel="alternate"
       hreflang="${item.mainLang}"
-      href="${`${appConfig.appBaseUrl}/${item.mainLang}${item.url}`}"/>`
+      href="${`${appConfig.websiteBaseUrl}/${item.mainLang}${item.url}`}"/>`
 
       return `  <url>
-    <loc>${`${appConfig.appBaseUrl}/${item.mainLang}${item.url}`}</loc>         
+    <loc>${`${appConfig.websiteBaseUrl}/${item.mainLang}${item.url}`}</loc>         
     ${alternateMain}   
     ${appConfig.translationFeatureFlagEnabled ? alternateEn : ''}   
     ${priority}

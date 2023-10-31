@@ -6,13 +6,14 @@ import {I18nProvider} from '../../i18n/I18n'
 import {Metadata} from 'next'
 import {getHtmlAttributes} from '@codegouvfr/react-dsfr/next-appdir/getHtmlAttributes'
 import {DsfrProvider} from '@codegouvfr/react-dsfr/next-appdir/DsfrProvider'
+import {appConfig} from 'core/appConfig'
 
 export function generateMetadata(): Metadata {
   return {
     title: 'SignalConso',
     description:
       "Signalez un problème au commerçant (magasins, commerces de proximité, cafés et restaurants...) et à la répression des fraudes : pratique d'hygiène, nourriture / boissons, matériel / objet, prix / paiement, publicité, services associés à l'achat.",
-    metadataBase: new URL('https://signal.conso.gouv.fr/'),
+    metadataBase: new URL(appConfig.websiteBaseUrl),
     viewport: {
       width: 'device-width',
       initialScale: 1,
@@ -28,7 +29,7 @@ export function generateMetadata(): Metadata {
         },
       ],
       title: 'image/jpeg',
-      url: 'https://signal.conso.gouv.fr/',
+      url: appConfig.websiteBaseUrl,
       type: 'website',
       description: "Signaler un problème à l'entreprise en toute transparence avec la répression des fraudes",
       siteName: 'SignalConso',

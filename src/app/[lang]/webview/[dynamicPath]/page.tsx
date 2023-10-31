@@ -22,7 +22,7 @@ export function generateMetadata(props: {params: Props}): Metadata {
 
   return anomaly
     ? {
-        alternates: {canonical: appConfig.appBaseUrl + buildLinkLandingPageFromAnomaly(anomaly)},
+        alternates: {canonical: appConfig.websiteBaseUrl + buildLinkLandingPageFromAnomaly(anomaly)},
         title: anomaly.seoTitle + ' - SignalConso',
         description: undefinedIfNull(anomaly.seoDescription ?? anomaly.description),
       }
