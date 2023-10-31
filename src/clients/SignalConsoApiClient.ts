@@ -35,7 +35,7 @@ export class SignalConsoApiClient {
   })
 
   searchByBarcode = (barcode: string) => {
-    return this.client.get<GS1Product>(`/gs1/${barcode}`)
+    return this.client.get<GS1Product>(`/gs1/gtin/${barcode}`)
   }
 
   searchCompaniesByUrl = (url: string) => {

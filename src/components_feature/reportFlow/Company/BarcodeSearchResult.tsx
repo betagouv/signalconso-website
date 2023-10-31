@@ -80,15 +80,19 @@ export const BarcodeSearchResult = ({product, company, onSubmit}: BarcodeSearchR
   return product ? (
     <Panel>
       <PanelBody>
-        <h1 className="text-xl font-bold mb-2">{m.barcodeProduct}</h1>
-        <p className="ml-4 text-gray-500">{product.description ?? m.barcodeNoDescriptionFound}</p>
-        <h1 className="text-xl font-bold mb-2">{m.barcodeCompany}</h1>
+        <div className="flex items-start align-middle mb-2">
+          <Icon>shopping_cart</Icon>
+          <h1 className="text-xl font-bold mb-0 pl-2">{m.barcodeProduct}</h1>
+        </div>
+        <p className="ml-4 text-gray-500 mb-12">{product.description ?? m.barcodeNoDescriptionFound}</p>
+        <div className="flex items-start align-middle mb-2">
+          <Icon>store</Icon>
+          <h1 className="text-xl font-bold mb-0 pl-2">{m.barcodeCompany}</h1>
+        </div>
         <div className="ml-4">
           {company ? <CompanyBlock company={company} /> : <p className="text-gray-500">{m.barcodeNoCompanyFound}</p>}
         </div>
-        <div className="w-full flex flex-row-reverse mt-4">
-          {company && <BtnNext onClick={() => onSubmit(company, product)} />}
-        </div>
+        <div className="w-full flex flex-row-reverse">{company && <BtnNext onClick={() => onSubmit(company, product)} />}</div>
       </PanelBody>
     </Panel>
   ) : (
