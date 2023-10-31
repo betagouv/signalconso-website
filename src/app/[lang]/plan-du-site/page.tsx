@@ -5,16 +5,19 @@ import Link from 'next/link'
 import {newsArticlesData} from 'components_feature/actualites/newsArticlesData'
 import {getI18n} from '../../../i18n/I18nDictionnary'
 import {Metadata} from 'next'
-import {Props} from '../[dynamicPath]/faire-un-signalement/page'
-import {AppLangs} from '../../../i18n/localization/AppLangs'
+import {Params} from '../[dynamicPath]/faire-un-signalement/page'
+import {AppLangs, getSupportedLang} from '../../../i18n/localization/AppLangs'
 
-export function generateMetadata(props: {params: Props}): Metadata {
-  const {messages: m} = getI18n(props.params.lang)
-
-  return {
-    title: m.titleAndDescriptions.planDuSite.title,
-    description: m.titleAndDescriptions.planDuSite.description,
+export function generateMetadata(props: {params: Params}): Metadata {
+  const lang = getSupportedLang(props.params.lang)
+  if (lang) {
+    const {messages: m} = getI18n(lang)
+    return {
+      title: m.titleAndDescriptions.planDuSite.title,
+      description: m.titleAndDescriptions.planDuSite.description,
+    }
   }
+  return {}
 }
 
 const PlanDuSite = ({params}: any) => {

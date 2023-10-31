@@ -101,8 +101,13 @@ export function buildHardcodedLinkLandingPageFr(url: string): string | undefined
   return landingData && buildLinkLandingPage(landingData)
 }
 
-export function buildLinkLandingPageFromAnomaly(anomaly: Pick<Anomaly, 'path'>) {
-  return `/${anomaly.path}`
+export function buildLinkLandingPageFromAnomaly(lang: AppLangs, anomaly: Pick<Anomaly, 'path'>) {
+  const landings = allVisibleLandings(lang)
+  const landing = landings.find(_ => _.url === anomaly.path)
+  if (landing) {
+    return `/${lang}/${landing.url}`
+  }
+  return undefined
 }
 
 export function buildLinkNewsArticle(article: NewsArticle) {

@@ -21,8 +21,6 @@ function buildSubmenu(text: string, menuLinks: ReturnType<typeof buildMenuLink>[
 export function ScHeader() {
   const pathName = usePathname() ?? ''
   const {m, currentLang} = useI18n()
-  // En se basant sur https://www.diplomatie.gouv.fr/en/
-  // On ne traduit pas République Française
 
   useEffect(() => {
     const logoLink = document.querySelector('.fr-header__logo a')
@@ -36,6 +34,8 @@ export function ScHeader() {
     <>
       <Header
         brandTop={
+          // En se basant sur https://www.diplomatie.gouv.fr/en/
+          // On ne traduit pas République Française
           <>
             République
             <br />
