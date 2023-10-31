@@ -110,8 +110,8 @@ export function buildLinkLandingPageFromAnomaly(lang: AppLangs, anomaly: Pick<An
   return undefined
 }
 
-export function buildLinkNewsArticle(article: NewsArticle) {
-  return `/actualites/${article.slug}`
+export function buildLinkNewsArticle(article: NewsArticle, {withLangPrefix = false}: {withLangPrefix?: boolean} = {}) {
+  return `${withLangPrefix ? `/${article.lang}` : ''}/actualites/${article.slug}`
 }
 
 export function buildLinkHomePickCategory() {

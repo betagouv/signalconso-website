@@ -43,7 +43,7 @@ function createSitemapXml(items: SitemapItem[]): string {
   const urls = items
     .map(item => {
       const priority = `<priority>${item.priority.toFixed(1)}</priority>`
-
+      const mainUrl = `${appConfig.websiteBaseUrl}/${item.mainLang}${item.url}`
       const alternateEn = item.hasAlternate
         ? `<xhtml:link
         rel="alternate"
@@ -54,10 +54,10 @@ function createSitemapXml(items: SitemapItem[]): string {
       const alternateMain = `<xhtml:link
       rel="alternate"
       hreflang="${item.mainLang}"
-      href="${`${appConfig.websiteBaseUrl}/${item.mainLang}${item.url}`}"/>`
+      href="${mainUrl}"/>`
 
       return `  <url>
-    <loc>${`${appConfig.websiteBaseUrl}/${item.mainLang}${item.url}`}</loc>         
+    <loc>${mainUrl}</loc>         
     ${alternateMain}   
     ${appConfig.translationFeatureFlagEnabled ? alternateEn : ''}   
     ${priority}

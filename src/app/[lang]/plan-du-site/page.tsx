@@ -116,7 +116,7 @@ const PlanDuSite = ({params}: any) => {
             .map(article => {
               return (
                 <li key={article.slug}>
-                  <Link href={buildLinkNewsArticle(article)}>{article.title}</Link>
+                  <Link href={buildLinkNewsArticle(article, {withLangPrefix: true})}>{article.title}</Link>
                 </li>
               )
             })}
