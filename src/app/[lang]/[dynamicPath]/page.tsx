@@ -1,16 +1,22 @@
-import LandingPage from '../../../components_feature/LandingPage'
-import {allVisibleLandings} from '../../../landings/landingDataUtils'
-import {notFound} from 'next/navigation'
 import {Metadata} from 'next'
-import {AppLangs} from '../../../i18n/localization/AppLangs'
+import {notFound} from 'next/navigation'
+import LandingPage from '../../../components_feature/LandingPage'
+import {getSupportedLang} from '../../../i18n/localization/AppLangs'
+import {allVisibleLandings} from '../../../landings/landingDataUtils'
+import {buildLinkLandingPage} from 'core/pagesDefinitions'
 
-export type PageProps = {
+type PageProps = {
   dynamicPath: string
-  lang: any
+  lang: string
 }
 
 function getLandingData(props: {params: PageProps}) {
-  return props?.params?.lang ? allVisibleLandings(props?.params?.lang).find(_ => _.url === props?.params?.dynamicPath) : undefined
+  const langStr = props.params.lang
+  const lang = getSupportedLang(langStr)
+  if (lang) {
+    return allVisibleLandings(lang).find(_ => _.url === props?.params?.dynamicPath)
+  }
+  return undefined
 }
 
 export function generateMetadata(params: {params: PageProps}): Metadata {
@@ -20,6 +26,11 @@ export function generateMetadata(params: {params: PageProps}): Metadata {
     ? {
         title: landingData.seoTitle,
         description: landingData.seoDescription,
+        alternates: {
+          // Saw some weird stuff in Google Search Console about landings
+          // setting the canonical might help
+          canonical: buildLinkLandingPage(landingData),
+        },
       }
     : {}
 }

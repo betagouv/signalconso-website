@@ -1,22 +1,26 @@
 import {getI18n} from 'i18n/I18nDictionnary'
+import {getSupportedLang} from 'i18n/localization/AppLangs'
 import {STEP_PARAM_NAME, getIndexForStepOrDone, reportSteps} from 'model/ReportStep'
 import {Metadata} from 'next'
 import {notFound} from 'next/navigation'
-import {allAnomalies} from '../../../../anomalies/Anomalies'
-import {appConfig} from '../../../../core/appConfig'
-import {buildLinkLandingPageFromAnomaly} from '../../../../core/pagesDefinitions'
-import * as categoryPathPage from '../../../../reusablePages/faireUnSignalementPage'
 import {undefinedIfNull} from 'utils/utils'
+import {allAnomalies} from '../../../../anomalies/Anomalies'
+import {buildLinkLandingPageFromAnomaly, buildLinkStartReport} from '../../../../core/pagesDefinitions'
+import * as categoryPathPage from '../../../../reusablePages/faireUnSignalementPage'
 
-export type Props = {
+export type Params = {
   dynamicPath: string
-  lang: any
+  lang: string
 }
 
 type SearchParams = {[k: string]: any}
 
-function getAnomalyData(params: Props) {
-  return allAnomalies(params.lang).find(_ => _.path === params.dynamicPath)
+function getAnomalyData(params: Params) {
+  const lang = getSupportedLang(params.lang)
+  if (lang) {
+    return allAnomalies(lang).find(_ => _.path === params.dynamicPath)
+  }
+  return undefined
 }
 
 function readStepParam(searchParams: SearchParams) {
@@ -30,26 +34,37 @@ function readStepParam(searchParams: SearchParams) {
   return 1
 }
 
-export function generateMetadata(props: {params: Props; searchParams: SearchParams}): Metadata {
-  const anomaly = getAnomalyData(props.params)
-  const {messages: m} = getI18n(props.params.lang)
-  const stepParam = readStepParam(props.searchParams)
-  // Accessibility audit asked for something like this in the title
-  const stepSpecificTitle =
-    stepParam === getIndexForStepOrDone('Done')
-      ? m.acknoledgment.sentReport
-      : `${m.titleAndDescriptions.faireUnSignalement.etape} ${stepParam} ${m.titleAndDescriptions.faireUnSignalement.sur} ${reportSteps.length}`
+export function generateMetadata(props: {params: Params; searchParams: SearchParams}): Metadata {
+  const lang = getSupportedLang(props.params.lang)
+  if (lang) {
+    const anomaly = getAnomalyData(props.params)
+    if (anomaly) {
+      const {messages: m} = getI18n(lang)
+      const stepParam = readStepParam(props.searchParams)
+      // Accessibility audit asked for something like this in the title
+      const stepSpecificTitle =
+        stepParam === getIndexForStepOrDone('Done')
+          ? m.acknoledgment.sentReport
+          : `${m.titleAndDescriptions.faireUnSignalement.etape} ${stepParam} ${m.titleAndDescriptions.faireUnSignalement.sur} ${reportSteps.length}`
 
-  return anomaly
-    ? {
-        alternates: {canonical: appConfig.appBaseUrl + buildLinkLandingPageFromAnomaly(anomaly)},
+      const landingCanonical = buildLinkLandingPageFromAnomaly(lang, anomaly)
+      const canonical =
+        landingCanonical ??
+        // some anomalies in EN do not have a corresponding landing page
+        buildLinkStartReport(anomaly, lang)
+      return {
+        alternates: {
+          canonical,
+        },
         title: stepSpecificTitle + ' - ' + anomaly.seoTitle + ' - SignalConso',
         description: undefinedIfNull(anomaly.seoDescription ?? anomaly.description),
       }
-    : {}
+    }
+  }
+  return {}
 }
 
-const Page = (props: {params: Props}) => {
+const Page = (props: {params: Params}) => {
   const anomaly = getAnomalyData(props.params)
 
   return anomaly ? <categoryPathPage.FaireUnSignalementPage anomaly={anomaly} isWebView={false} /> : notFound()

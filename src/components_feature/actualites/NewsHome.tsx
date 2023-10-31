@@ -23,7 +23,7 @@ const NewsHome = () => {
                   title={article.title}
                   desc={article.excerpt}
                   linkProps={{
-                    href: buildLinkNewsArticle(article),
+                    href: buildLinkNewsArticle(article, {withLangPrefix: true}),
                   }}
                   enlargeLink
                   detail={isoToFrenchFormat(article.date)}
