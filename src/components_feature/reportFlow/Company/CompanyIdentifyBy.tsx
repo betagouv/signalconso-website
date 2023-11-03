@@ -5,7 +5,6 @@ import {CompanyKinds} from '../../../anomalies/Anomaly'
 import {ScRadioButtons} from '../../../components_simple/formInputs/ScRadioButtons'
 
 export enum IdentifyBy {
-  BARCODE = 'BARCODE',
   NAME = 'NAME',
   IDENTITY = 'IDENTITY',
   NONE = 'NONE',
@@ -21,15 +20,6 @@ export const CompanyIdentifyBy = ({companyKind, children}: Props) => {
   const [identifyBy, setIdentifyBy] = useState<IdentifyBy | undefined>()
 
   const createOptions = (companyKind: CompanyKinds) => [
-    ...(companyKind === 'PRODUCT'
-      ? [
-          {
-            label: m.identifyBy_barcode,
-            description: m.identifyBy_barcodeDesc,
-            value: IdentifyBy.BARCODE,
-          },
-        ]
-      : []),
     {label: m.identifyBy_name, description: m.identifyBy_nameDesc, value: IdentifyBy.NAME},
     {label: m.identifyBy_identity, description: m.identifyBy_identityDesc, value: IdentifyBy.IDENTITY},
     ...(companyKind !== 'SIRET'

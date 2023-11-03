@@ -3,5 +3,4 @@ export interface GS1Product {
   gtin: string
   siren?: string
   description?: string
-  creationDate: Date
 }

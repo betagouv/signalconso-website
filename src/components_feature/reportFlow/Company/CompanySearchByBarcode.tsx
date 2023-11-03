@@ -4,7 +4,6 @@ import {Animate} from '../../../components_simple/Animate'
 import {Panel, PanelActions, PanelBody} from '../../../components_simple/Panel'
 import {ScTextInput} from '../../../components_simple/formInputs/ScTextInput'
 import {CompanySearchByBarcodeHelpDialog} from './CompanySearchByBarcodeHelpDialog'
-import {RequiredFieldsLegend} from '../../../components_simple/RequiredFieldsLegend'
 import {ButtonWithLoader} from '../../../components_simple/buttons/Buttons'
 import {useForm} from 'react-hook-form'
 import {useQuery} from '@tanstack/react-query'
@@ -13,13 +12,14 @@ import {useAnalyticContext} from '../../../analytic/AnalyticContext'
 import {CompanySearchResult} from '../../../model/Company'
 import {ReactNode, useEffect, useRef, useState} from 'react'
 import {GS1Product} from '../../../model/GS1Product'
+import {Button} from '@codegouvfr/react-dsfr/Button'
 
 interface Form {
   gtin: string
 }
 
 interface Props {
-  children: (product?: GS1Product, company?: CompanySearchResult) => ReactNode
+  children: (product?: GS1Product, company?: CompanySearchResult, skipped?: boolean) => ReactNode
 }
 
 function purgeWhitespaces(identity: string): string {
@@ -62,9 +62,24 @@ export const CompanySearchByBarcode = ({children}: Props) => {
     }
   }, [_searchByBarcode.data])
 
+  const [skipped, setSkipped] = useState<boolean>(false)
+  const [editing, setEditing] = useState(true)
+
+  const skip = () => {
+    setSkipped(true)
+    setEditing(false)
+  }
+
+  const edit = () => {
+    setSkipped(false)
+    setEditing(true)
+  }
+
   function search(form: Form) {
     _analytic.trackEvent(EventCategories.barcodeSearch, CompanySearchEventActions.searchByGTIN, form.gtin)
     setSubmittedGTIN(form.gtin)
+    setSkipped(false)
+    setEditing(false)
   }
 
   const inputEl = useRef<HTMLInputElement | null>(null)
@@ -80,15 +95,18 @@ export const CompanySearchByBarcode = ({children}: Props) => {
     },
   })
 
+  const displaySkipped = skipped && !editing
+  const displayResults =
+    !skipped && !editing && ((_searchByBarcode.isFetched && !_searchByBarcode.data?.siren) || _searchByIdentity.isFetched)
+
   return (
     <>
       <Animate>
         <Panel>
           <form onSubmit={handleSubmit(search)}>
-            <RequiredFieldsLegend />
             <PanelBody>
               <ScTextInput
-                required
+                required={false}
                 label={
                   <span>
                     {m.barcodeWhereToFind}
@@ -99,10 +117,19 @@ export const CompanySearchByBarcode = ({children}: Props) => {
                     </CompanySearchByBarcodeHelpDialog>
                   </span>
                 }
+                disabled={!editing}
+                editable={
+                  editing
+                    ? undefined
+                    : {
+                        onEdit: edit,
+                        label: 'Modifier',
+                      }
+                }
                 // we want to allow whitespaces, typically from a copy/paste
                 type="text"
                 // we want the mobile keyboard to be numeric
-                inputtype="numeric"
+                inputMode="numeric"
                 {...restOfRegisterIdentity}
                 ref={e => {
                   // https://www.react-hook-form.com/faqs/#Howtosharerefusage
@@ -115,6 +142,9 @@ export const CompanySearchByBarcode = ({children}: Props) => {
               />
             </PanelBody>
             <PanelActions>
+              <Button priority="tertiary no outline" type="button" onClick={skip}>
+                Je ne connais pas le code-barres
+              </Button>
               <ButtonWithLoader iconId="ri-search-line" loading={_searchByBarcode.isFetching || _searchByIdentity.isFetching}>
                 {m.search}
               </ButtonWithLoader>
@@ -122,8 +152,8 @@ export const CompanySearchByBarcode = ({children}: Props) => {
           </form>
         </Panel>
       </Animate>
-      {((_searchByBarcode.isFetched && !_searchByBarcode.data?.siren) || _searchByIdentity.isFetched) &&
-        children(_searchByBarcode.data, _searchByIdentity.data?.at(0))}
+      {displaySkipped && children(undefined, undefined, skipped)}
+      {displayResults && children(_searchByBarcode.data, _searchByIdentity.data?.at(0), skipped)}
     </>
   )
 }

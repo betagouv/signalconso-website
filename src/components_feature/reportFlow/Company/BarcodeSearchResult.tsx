@@ -7,6 +7,7 @@ import {styleUtils} from '../../../core/theme'
 import {useI18n} from '../../../i18n/I18n'
 import {BtnNext} from '../../../components_simple/buttons/Buttons'
 import {Panel, PanelBody} from '../../../components_simple/Panel'
+import {Fender} from '../../../components_simple/Fender'
 
 interface BarcodeSearchResultPros {
   product?: GS1Product
@@ -84,18 +85,22 @@ export const BarcodeSearchResult = ({product, company, onSubmit}: BarcodeSearchR
           <Icon>shopping_cart</Icon>
           <h1 className="text-xl font-bold mb-0 pl-2">{m.barcodeProduct}</h1>
         </div>
-        <p className="ml-4 text-gray-500 mb-12">{product.description ?? m.barcodeNoDescriptionFound}</p>
+        <p className="ml-4 text-gray-600 mb-12">{product.description ?? m.barcodeNoDescriptionFound}</p>
         <div className="flex items-start align-middle mb-2">
           <Icon>store</Icon>
           <h1 className="text-xl font-bold mb-0 pl-2">{m.barcodeCompany}</h1>
         </div>
         <div className="ml-4">
-          {company ? <CompanyBlock company={company} /> : <p className="text-gray-500">{m.barcodeNoCompanyFound}</p>}
+          {company ? <CompanyBlock company={company} /> : <p className="text-gray-600">{m.barcodeNoCompanyFound}</p>}
         </div>
         <div className="w-full flex flex-row-reverse">{company && <BtnNext onClick={() => onSubmit(company, product)} />}</div>
       </PanelBody>
     </Panel>
   ) : (
-    <div className="text-xl font-bold">{m.barcodeNoProductFound}</div>
+    <Panel>
+      <Fender icon="sentiment_very_dissatisfied">
+        <span className="text-xl text-gray-600">{m.barcodeNoProductFound}</span>
+      </Fender>
+    </Panel>
   )
 }

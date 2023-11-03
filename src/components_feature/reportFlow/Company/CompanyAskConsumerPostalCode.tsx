@@ -4,7 +4,6 @@ import {Panel, PanelActions, PanelBody} from 'components_simple/Panel'
 import {RequiredFieldsLegend} from 'components_simple/RequiredFieldsLegend'
 import {ScAutocompletePostcode} from 'components_simple/formInputs/ScAutocompletePostcode'
 import {useI18n} from 'i18n/I18n'
-import {Address} from 'model/Address'
 import {Controller, useForm} from 'react-hook-form'
 import {CompanyKinds} from '../../../anomalies/Anomaly'
 import {ScAlert} from '../../../components_simple/ScAlert'
@@ -45,6 +44,7 @@ export const CompanyAskConsumerPostalCode = ({value, onChange, companyKind}: Pro
                 PHONE: m.cantIdentifyPhoneCompany,
                 LOCATION: m.cantIdentifyLocationCompany,
                 SOCIAL: m.cantIdentifyCompany,
+                PRODUCT: m.cantIdentifyCompany,
               }),
             }}
           />

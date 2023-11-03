@@ -183,15 +183,44 @@ export const _Company = ({draft, onUpdateReportDraft}: CompanyWithRequiredProps)
               }}
             />
           ) : (
-            commonTree({website}, companies)
+            commonTree({website}, undefined, companies)
           )
         }
       </CompanyByWebsite>
     )
   }
 
+  const barcodeTree = () => {
+    return (
+      <CompanySearchByBarcode>
+        {(product, company, skipped) =>
+          skipped ? (
+            commonTree()
+          ) : (
+            <>
+              <BarcodeSearchResult
+                product={product}
+                company={company}
+                onSubmit={(company, product) => {
+                  onUpdateReportDraft({
+                    companyDraft: {
+                      ...company,
+                    },
+                    gs1ProductId: product.id,
+                  })
+                }}
+              />
+              {!company && commonTree({}, product?.id, undefined)}
+            </>
+          )
+        }
+      </CompanySearchByBarcode>
+    )
+  }
+
   const commonTree = (
     phoneOrWebsite: Pick<CompanyDraft, 'phone' | 'website'> = {},
+    gs1ProductId: string | undefined = undefined,
     result: CompanySearchResult[] | undefined = undefined,
   ) => {
     return result && result.length > 0 ? (
@@ -211,25 +240,6 @@ export const _Company = ({draft, onUpdateReportDraft}: CompanyWithRequiredProps)
       <CompanyIdentifyBy companyKind={draft.companyKind!}>
         {identifyBy =>
           fnSwitch(identifyBy, {
-            [IdentifyBy.BARCODE]: () => (
-              <CompanySearchByBarcode>
-                {(product, company) => (
-                  <BarcodeSearchResult
-                    product={product}
-                    company={company}
-                    onSubmit={(company, product) => {
-                      onUpdateReportDraft({
-                        companyDraft: {
-                          ...company,
-                          ...phoneOrWebsite,
-                        },
-                        gs1ProductId: product.id,
-                      })
-                    }}
-                  />
-                )}
-              </CompanySearchByBarcode>
-            ),
             [IdentifyBy.NAME]: () => (
               <CompanySearchByNameAndPostalCode>
                 {companies => (
@@ -241,6 +251,7 @@ export const _Company = ({draft, onUpdateReportDraft}: CompanyWithRequiredProps)
                           ...company,
                           ...phoneOrWebsite,
                         },
+                        gs1ProductId,
                       })
                     }}
                   />
@@ -258,6 +269,7 @@ export const _Company = ({draft, onUpdateReportDraft}: CompanyWithRequiredProps)
                           ...company,
                           ...phoneOrWebsite,
                         },
+                        gs1ProductId,
                       })
                     }}
                   />
@@ -276,6 +288,7 @@ export const _Company = ({draft, onUpdateReportDraft}: CompanyWithRequiredProps)
                           street: form.street,
                         },
                       },
+                      gs1ProductId,
                     })
                   }}
                 />
@@ -294,6 +307,7 @@ export const _Company = ({draft, onUpdateReportDraft}: CompanyWithRequiredProps)
                                   postalCode: postalCode,
                                 },
                               },
+                              gs1ProductId,
                             })
                           }}
                         />
@@ -311,6 +325,7 @@ export const _Company = ({draft, onUpdateReportDraft}: CompanyWithRequiredProps)
                                   country: form.country.code,
                                 },
                               },
+                              gs1ProductId,
                             })
                           }}
                         />
@@ -326,6 +341,7 @@ export const _Company = ({draft, onUpdateReportDraft}: CompanyWithRequiredProps)
                                   postalCode,
                                 },
                               },
+                              gs1ProductId,
                             })
                           }}
                         />
@@ -344,6 +360,7 @@ export const _Company = ({draft, onUpdateReportDraft}: CompanyWithRequiredProps)
       {fnSwitch(
         draft.companyKind!,
         {
+          ['PRODUCT']: () => barcodeTree(),
           ['SOCIAL']: () => (
             <InfluencerBySocialNetwork
               onSubmit={(socialNetwork, influencer) => {
