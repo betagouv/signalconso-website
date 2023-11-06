@@ -13,17 +13,13 @@ type PageDefInternal = {
   url: string
   urlRelative: string
   noIndex: boolean
-  //Has alternate language available for the page
-  hasAlternate: boolean
 }
 
 function page(url: string, options: {noIndex?: boolean; hasAlternate?: boolean} = {}): PageDefInternal {
   const noIndex = options.noIndex ?? false
-  const hasAlternate = options.hasAlternate ?? false
   return {
     isExternal: false,
     url,
-    hasAlternate,
     // without the leading slash, it becomes a relative link
     // useful for preserving the /webview/ prefix
     urlRelative: url.slice(1),
@@ -39,25 +35,25 @@ function pageExternal(url: string): PageDefExternal {
 }
 
 export const internalPageDefs = {
-  index: page('/', {hasAlternate: true}),
-  arborescence: page(`/arborescence`, {noIndex: true, hasAlternate: true}),
-  accessibilite: page(`/accessibilite`, {hasAlternate: true}),
-  planDuSite: page(`/plan-du-site`, {hasAlternate: true}),
-  actualites: page(`/actualites`, {hasAlternate: true}),
+  index: page('/'),
+  arborescence: page(`/arborescence`, {noIndex: true}),
+  accessibilite: page(`/accessibilite`),
+  planDuSite: page(`/plan-du-site`),
+  actualites: page(`/actualites`),
 
   // all these are available in /webview/
-  commentCaMarche: page(`/comment-ca-marche`, {hasAlternate: true}),
-  conditionsGeneralesUtilisation: page(`/conditions-generales-utilisation`, {noIndex: true, hasAlternate: true}),
-  contact: page(`/contact`, {noIndex: true, hasAlternate: true}),
-  cookies: page(`/cookies`, {hasAlternate: true}),
-  delaiRetractation: page(`/delai-de-retractation`, {hasAlternate: true}),
-  quiSommesNous: page(`/qui-sommes-nous`, {hasAlternate: true}),
-  stats: page(`/stats`, {hasAlternate: true}),
-  suiviEtViePrivee: page(`/suivi-et-vie-privee`, {hasAlternate: true}),
-  litige: page(`/litige`, {hasAlternate: true}),
+  commentCaMarche: page(`/comment-ca-marche`),
+  conditionsGeneralesUtilisation: page(`/conditions-generales-utilisation`, {noIndex: true}),
+  contact: page(`/contact`, {noIndex: true}),
+  cookies: page(`/cookies`),
+  delaiRetractation: page(`/delai-de-retractation`),
+  quiSommesNous: page(`/qui-sommes-nous`),
+  stats: page(`/stats`),
+  suiviEtViePrivee: page(`/suivi-et-vie-privee`),
+  litige: page(`/litige`),
 
   // only on dev/demo
-  ...(appConfig.showPlayground ? {playground: page(`/playground`, {noIndex: true, hasAlternate: true})} : null),
+  ...(appConfig.showPlayground ? {playground: page(`/playground`, {noIndex: true})} : null),
 }
 
 const externalPageDefs = {

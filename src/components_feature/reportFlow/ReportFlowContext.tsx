@@ -16,8 +16,7 @@ const ReportFlowContext = React.createContext<ReportFlowContextProps>({} as Repo
 export const ReportFlowProvider = ({children}: {children: ReactNode}) => {
   const _analytic = useAnalyticContext()
   const [reportDraft, setReportDraft] = useState<Partial<ReportDraft2>>({})
-  // const [currentStep, setCurrentStep] = useState<ReportStepOrDone | undefined>('BuildingConsumer')
-  const currentStep = useRef<ReportStepOrDone | undefined>('BuildingConsumer')
+  const currentStep = useRef<ReportStepOrDone | undefined>(undefined)
 
   /**
    * Will send event at each step of the report workflow. The event must be unique, ie if a user decides to edit a previous step no step event will be triggered again
