@@ -27,12 +27,10 @@ export function SwitchLang() {
   return (
     <Link
       className={'fr-btn fr-btn--tertiary'}
-      href={path}
+      href={newPath()}
       onClick={e => {
         const p = newPath()
         e.preventDefault()
-        //Reset report on lang switch
-        _report.resetFlow()
         setCookie('NEXT_LANG', switchLang(currentLang))
         router.push(p)
       }}
