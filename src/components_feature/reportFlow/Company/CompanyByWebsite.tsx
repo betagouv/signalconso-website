@@ -186,7 +186,6 @@ export const CompanyByWebsite = ({value, children, specificWebsiteCompanyKind, .
           <PanelBody>
             <RequiredFieldsLegend />
             <Box component="form" onSubmit={handleSubmit(onSubmit)} {...props}>
-              <h1>input website</h1>
               <ScTextInput
                 label={m.website}
                 required
