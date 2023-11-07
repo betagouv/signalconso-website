@@ -29,11 +29,11 @@ export const ReportFlowProvider = ({children}: {children: ReactNode}) => {
         case 'BuildingProblem':
           _analytic.trackEvent(EventCategories.report, ReportEventActions.validateProblem)
           break
-        case 'BuildingDetails':
-          _analytic.trackEvent(EventCategories.report, ReportEventActions.validateDetails)
-          break
         case 'BuildingCompany':
           _analytic.trackEvent(EventCategories.report, ReportEventActions.validateCompany)
+          break
+        case 'BuildingDetails':
+          _analytic.trackEvent(EventCategories.report, ReportEventActions.validateDetails)
           break
         case 'BuildingConsumer':
           _analytic.trackEvent(EventCategories.report, ReportEventActions.validateConsumer)

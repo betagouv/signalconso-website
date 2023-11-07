@@ -3,7 +3,7 @@ import {ReportDraft2} from './ReportDraft2'
 
 export const STEP_PARAM_NAME = 'step'
 
-export const reportSteps = ['BuildingProblem', 'BuildingDetails', 'BuildingCompany', 'BuildingConsumer', 'Confirmation'] as const
+export const reportSteps = ['BuildingProblem', 'BuildingCompany', 'BuildingDetails', 'BuildingConsumer', 'Confirmation'] as const
 export type ReportStep = (typeof reportSteps)[number]
 
 export const firstReportStep = reportSteps[0]
@@ -56,11 +56,11 @@ function isBuildingStepDone(r: Partial<ReportDraft2>, step: ReportStep) {
   switch (step) {
     case 'BuildingProblem':
       return !!r.category && !!r.subcategories && !!r.consumerWish
-    case 'BuildingDetails':
-      return !!r.details
     case 'BuildingCompany':
       // When the website is in a foreign country, only the country is specified
       return !!r.companyDraft?.siret || !!r.companyDraft?.address.postalCode || r.companyDraft?.address.country || !!r.influencer
+    case 'BuildingDetails':
+      return !!r.details
     case 'BuildingConsumer':
       return !!r.consumer?.email && !!r.consumer?.firstName && !!r.consumer?.lastName
     case 'Confirmation':
@@ -73,10 +73,10 @@ export function getStepLabel(m: I18nMessages, step: ReportStep) {
   switch (step) {
     case 'BuildingProblem':
       return m.step_problem
-    case 'BuildingDetails':
-      return m.step_description
     case 'BuildingCompany':
       return m.step_company
+    case 'BuildingDetails':
+      return m.step_description
     case 'BuildingConsumer':
       return m.step_consumer
     case 'Confirmation':
