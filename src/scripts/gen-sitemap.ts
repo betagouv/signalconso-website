@@ -18,7 +18,7 @@ const outputFile = path.join('./public/sitemap.xml')
 const sitemapItems: SitemapItem[] = [
   ...Object.values(internalPageDefs)
     .filter(_ => !_.noIndex)
-    .map(_ => ({url: _.url, hasAlternate: true, mainLang: AppLangs.fr, priority: 1})),
+    .map(_ => ({url: _.url, hasAlternate: _.hasAlternate, mainLang: AppLangs.fr, priority: 1})),
   ...landing(AppLangs.fr),
   ...(appConfig.translationFeatureFlagEnabled ? [...landing(AppLangs.en)] : []),
   ...newsArticlesData

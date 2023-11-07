@@ -1,8 +1,9 @@
 import {NextResponse} from 'next/server'
 
 import Negotiator from 'negotiator'
-import {AppLangs, getSupportedLang} from './i18n/localization/AppLangs'
+import {AppLang, AppLangs, getSupportedLang} from './i18n/localization/AppLangs'
 import {match} from '@formatjs/intl-localematcher'
+import {internalPageDefs, pagesDefs} from './core/pagesDefinitions'
 import {appConfig} from './core/appConfig'
 
 let supportedLang = appConfig.translationFeatureFlagEnabled ? [AppLangs.en, AppLangs.fr] : [AppLangs.fr]
@@ -15,6 +16,7 @@ export function middleware(request: any) {
   const currentCookieLang: string | undefined = request.cookies.get('NEXT_LANG')?.value
 
   currentCookieLang && removeUnsupportedLangInCookiesIfAny(request, currentCookieLang)
+
   // No local in path, get the cookie lang or header lang or default lang
   if (pathIsMissingSupportedLang) {
     //Should always redirect to French version when /webview with no lang to ensure backward compatibility to mobile app
@@ -28,6 +30,14 @@ export function middleware(request: any) {
     const redirectUrl = `/${computedLang}/${pathname}`
     return buildRedirectToNewLangResponse(request, redirectUrl, computedLang)
   } else {
+    const noAlternateLangForCurrentPage = Object.values(internalPageDefs).filter(_ => {
+      return !_.hasAlternate && pathname.includes(_.url) && currentPathLang === AppLangs.en
+    })
+
+    if (noAlternateLangForCurrentPage.length > 0) {
+      return NextResponse.redirect(new URL(`${pagesDefs.index.url}`, request.url))
+    }
+
     // path contains lang but =! from cookie lang => rewrite update cookie lang
     if (currentCookieLang != currentPathLang) {
       return buildRewriteToNewLangResponse(request, pathname, currentPathLang)
