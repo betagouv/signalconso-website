@@ -1,20 +1,20 @@
 import {notFound} from 'next/navigation'
 import {allAnomalies} from '../../../../anomalies/Anomalies'
 import * as categoryPathPage from '../../../../reusablePages/faireUnSignalementPage'
+import {PageComponentProps, PathParams, buildGenerateMetadataForWebviews} from 'core/metadatas'
 
-export type Props = {
+type LocalPathParams = PathParams<{
   dynamicPath: string
-  lang: any
-}
+}>
 
-function getAnomalyData(params: Props) {
+function getAnomalyData(params: LocalPathParams) {
   const anomaly = allAnomalies(params.lang).find(_ => _.path === params.dynamicPath)
   return anomaly
 }
 
-// no need for metadata, webview is not indexed
+export const generateMetadata = buildGenerateMetadataForWebviews()
 
-const Page = (props: {params: Props}) => {
+const Page = (props: PageComponentProps<LocalPathParams>) => {
   const anomaly = getAnomalyData(props.params)
 
   return anomaly ? <categoryPathPage.FaireUnSignalementPage anomaly={anomaly} isWebView={true} /> : notFound()

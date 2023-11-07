@@ -39,6 +39,8 @@ const changedPaths = [
     '/news/signalconso-desormais-disponible-en-application-mobile',
     '/actualites/signalconso-desormais-disponible-en-application-mobile',
   ],
+  ['/fr/app-mobile', '/fr/actualites/signalconso-desormais-disponible-en-application-mobile'],
+  ['/en/app-mobile', '/en/actualites/signalconso-mobile-app-available'],
   ['/d%C3%A9marchage-t%C3%A9l%C3%A9phonique', '/demarchage-telephonique'],
   ['/pompe-%C3%A0-chaleur-pac', '/pompe-a-chaleur-pac'],
 ]

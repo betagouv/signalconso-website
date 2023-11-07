@@ -5,7 +5,7 @@ import {BigReportButtonWebView} from 'components_simple/buttons/BigReportButtonW
 import {Metadata} from 'next'
 import Link from 'next/link'
 import {getI18n} from '../i18n/I18nDictionnary'
-import {AppLang} from '../i18n/localization/AppLangs'
+import {AppLang, AppLangs} from '../i18n/localization/AppLangs'
 
 export function getMetadata(lang: AppLang): Metadata {
   const {messages: m} = getI18n(lang)
@@ -19,8 +19,8 @@ export function getMetadata(lang: AppLang): Metadata {
   }
 }
 
-export const Contact = ({isWebView, params}: {isWebView: boolean; params: any}) => {
-  const {messages: m} = getI18n(params.lang)
+export const Contact = ({isWebView, lang}: {isWebView: boolean; lang: AppLangs}) => {
+  const {messages: m} = getI18n(lang)
 
   return (
     <>

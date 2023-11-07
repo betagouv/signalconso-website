@@ -65,7 +65,7 @@ export const fr = {
         title: 'Contact - SignalConso',
         description: 'Contact SignalConso',
       },
-      contractualDispute: {
+      litige: {
         title: "Résolution d'un problème individuel (litige) - SignalConso",
         description: 'Démarches conseillées par SignalConso pour résoudre un problème individuel (litige) avec une entreprise ',
       },
@@ -98,23 +98,31 @@ export const fr = {
         title: 'Statistiques - SignalConso',
         description: 'Consultez les statistiques de SignalConso',
       },
-      homepage: {
+      index: {
         title: 'SignalConso, un service public pour les consommateurs',
         description:
           "Signalez un problème au commerçant (magasins, commerces de proximité, cafés et restaurants...) et à la répression des fraudes : pratique d'hygiène, nourriture / boissons, matériel / objet, prix / paiement, publicité, services associés à l'achat.",
       },
-      anomaly: {
+      arborescence: {
         title: 'Arborescence - SignalConso',
-        description: "Arborescence du dépot d'un signalement",
+        description: '',
       },
       actualites: {
         title: 'Actualités - SignalConso',
         description: 'Actualités et nouveautés du site SignalConso et de la répression des fraudes',
       },
-      faireUnSignalement: {
-        etape: 'Étape',
-        sur: 'sur',
+      avis: {
+        title: 'Donnez votre avis - SignalConso',
+        description: '',
       },
+      playground: {
+        title: 'Playground',
+        description: '',
+      },
+    },
+    faireUnSignalement: {
+      etape: 'Étape',
+      sur: 'sur',
     },
     introApple: 'App Store',
     introBetween: 'ou le ',

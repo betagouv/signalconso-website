@@ -12,11 +12,11 @@ import {
   instanceOfAnomaly,
   instanceOfSubcategoryWithInfoWall,
   instanceOfSubcategoryWithInputs,
-} from '../../../anomalies/Anomalies'
-import {Anomaly, DetailInputType, StandardSubcategory, Subcategory, SubcategoryWithInfoWall} from '../../../anomalies/Anomaly'
-import {Txt} from '../../../components_simple/Txt'
-import {useI18n} from '../../../i18n/I18n'
-import {fnSwitch} from '../../../utils/FnSwitch'
+} from '../anomalies/Anomalies'
+import {Anomaly, DetailInputType, StandardSubcategory, Subcategory, SubcategoryWithInfoWall} from '../anomalies/Anomaly'
+import {Txt} from '../components_simple/Txt'
+import {useI18n} from '../i18n/I18n'
+import {fnSwitch} from '../utils/FnSwitch'
 
 const Node = ({anomaly, open}: {anomaly: Anomaly | Subcategory; open?: boolean}) => {
   const iconWidth = 40

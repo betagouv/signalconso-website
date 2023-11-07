@@ -1,7 +1,6 @@
-import {DelaiDeRetractation, getMetadata} from 'reusablePages/delai-de-retractation'
+import {buildGenerateMetadataForWebviews} from 'core/metadatas'
+import {DelaiDeRetractation} from 'reusablePages/delai-de-retractation'
 
-export async function generateMetadata({params}: any) {
-  return getMetadata(params.lang)
-}
+export const generateMetadata = buildGenerateMetadataForWebviews()
 
 export default DelaiDeRetractation

@@ -1,22 +1,12 @@
 import {ContentPageContainer} from 'components_simple/PageContainers'
 import {BigReportButton} from 'components_simple/buttons/BigReportButton'
 import {BigReportButtonWebView} from 'components_simple/buttons/BigReportButtonWebview'
-import {Metadata} from 'next'
 import {ReactNode} from 'react'
 import {getI18n} from '../i18n/I18nDictionnary'
-import {AppLang} from '../i18n/localization/AppLangs'
+import {AppLangs} from 'i18n/localization/AppLangs'
 
-export function getMetadata(lang: AppLang): Metadata {
-  const {messages} = getI18n(lang)
-
-  return {
-    title: messages.titleAndDescriptions.commentCaMarche.title,
-    description: messages.titleAndDescriptions.commentCaMarche.description,
-  }
-}
-
-export const CommentCaMarche = ({isWebView, params}: {isWebView: boolean; params: any}) => {
-  const {messages: m} = getI18n(params.lang)
+export const CommentCaMarche = ({isWebView, lang}: {isWebView: boolean; lang: AppLangs}) => {
+  const {messages: m} = getI18n(lang)
 
   const reportButton = isWebView ? <BigReportButtonWebView /> : <BigReportButton {...{m}} />
   return (

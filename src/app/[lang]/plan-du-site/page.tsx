@@ -1,27 +1,16 @@
-import {ContentPageContainer} from 'components_simple/PageContainers'
-import {allVisibleLandings} from 'landings/landingDataUtils'
-import {buildLinkLandingPage, buildLinkNewsArticle, pagesDefs} from 'core/pagesDefinitions'
-import Link from 'next/link'
 import {newsArticlesData} from 'components_feature/actualites/newsArticlesData'
+import {ContentPageContainer} from 'components_simple/PageContainers'
+import {PageComponentProps, buildGenerateMetadata} from 'core/metadatas'
+import {buildLinkLandingPage, buildLinkNewsArticle, pagesDefs} from 'core/pagesDefinitions'
+import {allVisibleLandings} from 'landings/landingDataUtils'
+import Link from 'next/link'
 import {getI18n} from '../../../i18n/I18nDictionnary'
-import {Metadata} from 'next'
-import {Params} from '../[dynamicPath]/faire-un-signalement/page'
-import {AppLangs, getSupportedLang} from '../../../i18n/localization/AppLangs'
 
-export function generateMetadata(props: {params: Params}): Metadata {
-  const lang = getSupportedLang(props.params.lang)
-  if (lang) {
-    const {messages: m} = getI18n(lang)
-    return {
-      title: m.titleAndDescriptions.planDuSite.title,
-      description: m.titleAndDescriptions.planDuSite.description,
-    }
-  }
-  return {}
-}
+export const generateMetadata = buildGenerateMetadata('planDuSite')
 
-const PlanDuSite = ({params}: any) => {
-  const {messages: m} = getI18n(params.lang)
+const PlanDuSite = (props: PageComponentProps) => {
+  const lang = props.params.lang
+  const {messages: m} = getI18n(lang)
 
   return (
     <>
@@ -68,7 +57,7 @@ const PlanDuSite = ({params}: any) => {
         </ul>
         <h2 className="fr-h4">{m.planDuSite.reportIncidentSection}</h2>
         <ul className="">
-          {allVisibleLandings(params.lang).map(landingData => {
+          {allVisibleLandings(lang).map(landingData => {
             return (
               <li key={landingData.url}>
                 <Link href={buildLinkLandingPage(landingData)}>
@@ -112,7 +101,7 @@ const PlanDuSite = ({params}: any) => {
             <Link href={pagesDefs.actualites.url}>{m.planDuSite.allNews}</Link>
           </li>
           {newsArticlesData
-            .filter(_ => _.lang === params.lang)
+            .filter(_ => _.lang === lang)
             .map(article => {
               return (
                 <li key={article.slug}>

@@ -46,8 +46,7 @@ export function ReportFlowStepperHeader(
       <div className="fr-stepper grow" tabIndex={-1} ref={divRef}>
         <h1 className="fr-stepper__title">
           <span className="fr-stepper__state">
-            {anomalyTitle} - {m.titleAndDescriptions.faireUnSignalement.etape} {stepIndex}{' '}
-            {m.titleAndDescriptions.faireUnSignalement.sur} {stepsCount}
+            {anomalyTitle} - {m.faireUnSignalement.etape} {stepIndex} {m.faireUnSignalement.sur} {stepsCount}
           </span>
           {variant === 'main' && stepTitle}
         </h1>

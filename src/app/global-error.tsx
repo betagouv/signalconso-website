@@ -1,17 +1,15 @@
 'use client'
 
+import {DsfrProvider} from '@codegouvfr/react-dsfr/next-appdir/DsfrProvider'
+import {getHtmlAttributes} from '@codegouvfr/react-dsfr/next-appdir/getHtmlAttributes'
 import * as Sentry from '@sentry/nextjs'
 import {usePathname} from 'next/navigation'
-import {AppLangs, getSupportedLang} from '../i18n/localization/AppLangs'
-import {getI18n} from '../i18n/I18nDictionnary'
-import {getHtmlAttributes} from '@codegouvfr/react-dsfr/next-appdir/getHtmlAttributes'
-import {DsfrProvider} from '@codegouvfr/react-dsfr/next-appdir/DsfrProvider'
-import {Page} from '../components_simple/Page'
-import {LinkBackToHome} from '../components_simple/LinkBackToHome'
-import React from 'react'
-import '../globals.css'
-import MuiSetup from './[lang]/MuiSetup'
 import {Fender} from '../components_simple/Fender'
+import {Page} from '../components_simple/Page'
+import '../globals.css'
+import {getI18n} from '../i18n/I18nDictionnary'
+import {AppLangs, getSupportedLang} from '../i18n/localization/AppLangs'
+import MuiSetup from './[lang]/MuiSetup'
 
 export default function GlobalError({error, reset}: {error: any; reset: any}) {
   Sentry.captureException(error)

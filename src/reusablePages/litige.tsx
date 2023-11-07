@@ -1,23 +1,14 @@
+import {Accordion} from '@codegouvfr/react-dsfr/Accordion'
 import {Alert} from '@codegouvfr/react-dsfr/Alert'
 import {CallOut} from '@codegouvfr/react-dsfr/CallOut'
 import {ContentPageContainer} from 'components_simple/PageContainers'
 import {externalLinks} from 'core/externalLinks'
 import {ReactNode} from 'react'
-import {Accordion} from '@codegouvfr/react-dsfr/Accordion'
-import {getI18n} from '../i18n/I18nDictionnary'
-import {Metadata} from 'next'
 import {ScIcon} from '../components_simple/ScIcon'
-import {AppLang} from '../i18n/localization/AppLangs'
+import {getI18n} from '../i18n/I18nDictionnary'
 
 function Accordions({children}: {children: ReactNode}) {
   return <div className="fr-accordions-group">{children}</div>
-}
-export function getMetadata(lang: AppLang): Metadata {
-  const {messages: m} = getI18n(lang)
-  return {
-    title: m.titleAndDescriptions.contractualDispute.title,
-    description: m.titleAndDescriptions.contractualDispute.description,
-  }
 }
 
 export const Litige = ({params}: any) => {

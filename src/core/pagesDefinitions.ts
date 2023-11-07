@@ -1,14 +1,14 @@
 import {Anomaly} from 'anomalies/Anomaly'
-import {appConfig} from './appConfig'
-import {LandingData, allVisibleLandings} from '../landings/landingDataUtils'
 import {NewsArticle} from 'components_feature/actualites/newsArticlesData'
 import {AppLang, AppLangs} from '../i18n/localization/AppLangs'
+import {LandingData, allVisibleLandings} from '../landings/landingDataUtils'
+import {appConfig} from './appConfig'
 
 type PageDefExternal = {
   isExternal: true
   url: string
 }
-type PageDefInternal = {
+export type PageDefInternal = {
   isExternal: false
   url: string
   urlRelative: string
@@ -44,6 +44,7 @@ export const internalPageDefs = {
   accessibilite: page(`/accessibilite`, {hasAlternate: true}),
   planDuSite: page(`/plan-du-site`, {hasAlternate: true}),
   actualites: page(`/actualites`, {hasAlternate: true}),
+  playground: page(`/playground`, {noIndex: true, hasAlternate: true}),
 
   // all these are available in /webview/
   commentCaMarche: page(`/comment-ca-marche`, {hasAlternate: true}),
@@ -55,9 +56,6 @@ export const internalPageDefs = {
   stats: page(`/stats`, {hasAlternate: true}),
   suiviEtViePrivee: page(`/suivi-et-vie-privee`, {hasAlternate: true}),
   litige: page(`/litige`, {hasAlternate: true}),
-
-  // only on dev/demo
-  ...(appConfig.showPlayground ? {playground: page(`/playground`, {noIndex: true, hasAlternate: true})} : null),
 }
 
 const externalPageDefs = {
@@ -68,10 +66,12 @@ const externalPageDefs = {
   lostPassword: pageExternal(appConfig.dashboardBaseUrl + '/perte-mot-de-passe'),
 }
 
-// This lists only the 'static', 'hardcoded' pages
+// This lists only the simple, unique, hardcoded pages
 // There is also
 // - the /xxx/faire-un-signalement pages
 // - the landing pages (/xxx)
+// - the news articles (/actualites/xxx)
+// - the review url (/avis/xxx)
 // - the /webview/xxx pages
 export const pagesDefs = {
   ...internalPageDefs,

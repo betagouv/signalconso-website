@@ -4,13 +4,13 @@ import LandingPage from '../../../components_feature/LandingPage'
 import {getSupportedLang} from '../../../i18n/localization/AppLangs'
 import {allVisibleLandings} from '../../../landings/landingDataUtils'
 import {buildLinkLandingPage} from 'core/pagesDefinitions'
+import {GenerateMetadataArg, PageComponentProps, PathParams} from 'core/metadatas'
 
-type PageProps = {
+type LocalPathParams = PathParams<{
   dynamicPath: string
-  lang: string
-}
+}>
 
-function getLandingData(props: {params: PageProps}) {
+function getLandingData(props: {params: LocalPathParams}) {
   const langStr = props.params.lang
   const lang = getSupportedLang(langStr)
   if (lang) {
@@ -19,9 +19,8 @@ function getLandingData(props: {params: PageProps}) {
   return undefined
 }
 
-export function generateMetadata(params: {params: PageProps}): Metadata {
+export function generateMetadata(params: GenerateMetadataArg<LocalPathParams>): Metadata {
   const landingData = getLandingData(params)
-
   return landingData
     ? {
         title: landingData.seoTitle,
@@ -35,7 +34,7 @@ export function generateMetadata(params: {params: PageProps}): Metadata {
     : {}
 }
 
-const Page = (params: {params: PageProps}) => {
+const Page = (params: PageComponentProps<LocalPathParams>) => {
   const landingData = getLandingData(params)
   return landingData ? <LandingPage landingData={landingData} /> : notFound()
 }

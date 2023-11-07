@@ -1,7 +1,6 @@
-import {ConditionsGeneralesUtilisation, getMetadata} from 'reusablePages/conditions-generales-utilisation'
+import {buildGenerateMetadataForWebviews} from 'core/metadatas'
+import {ConditionsGeneralesUtilisation} from 'reusablePages/conditions-generales-utilisation'
 
-export async function generateMetadata({params}: any) {
-  return getMetadata(params.lang)
-}
+export const generateMetadata = buildGenerateMetadataForWebviews()
 
 export default ConditionsGeneralesUtilisation

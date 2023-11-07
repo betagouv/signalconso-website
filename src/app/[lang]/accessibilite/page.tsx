@@ -3,17 +3,12 @@ import {externalLinks} from 'core/externalLinks'
 import {pagesDefs} from 'core/pagesDefinitions'
 import Link from 'next/link'
 import {getI18n} from '../../../i18n/I18nDictionnary'
+import {PageComponentProps, buildGenerateMetadata} from 'core/metadatas'
 
-export async function generateMetadata({params}: any) {
-  const {messages: m} = getI18n(params.lang)
-  return {
-    title: m.titleAndDescriptions.accessibilite.title,
-    description: m.titleAndDescriptions.accessibilite.description,
-  }
-}
+export const generateMetadata = buildGenerateMetadata('accessibilite')
 
-const Accessibilite = ({params}: any) => {
-  const {messages: m} = getI18n(params.lang)
+const Accessibilite = (props: PageComponentProps) => {
+  const {messages: m} = getI18n(props.params.lang)
 
   return (
     <>

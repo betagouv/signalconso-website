@@ -1,14 +1,6 @@
-import {Metadata} from 'next'
-import Playground from './PlaygroundPage'
+import {buildGenerateMetadataForNoIndexPage} from 'core/metadatas'
+import Playground from '../../../components_feature/playgroundComponents/PlaygroundPage'
 
-const genMetadata = () => {
-  return {
-    robots: {
-      index: false,
-    },
-  }
-}
-
-export const metadata: Metadata = genMetadata()
+export const generateMetadata = buildGenerateMetadataForNoIndexPage('playground')
 
 export default Playground
