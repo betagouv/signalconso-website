@@ -13,7 +13,7 @@ interface ConfirmationStepperProps {
 interface ConfirmationStepProps {
   title?: ReactNode
   children?: ReactNode
-  index?: number
+  index: number
   goToStep: (step: ReportStep) => void
 }
 

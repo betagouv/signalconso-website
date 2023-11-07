@@ -12,6 +12,9 @@ export const lastReportStep = reportSteps[reportSteps.length - 1]
 // 'Done' is like a special bonus step, not included in the original list
 export type ReportStepOrDone = ReportStep | 'Done'
 
+export const buildingReportSteps = reportSteps.filter(isNotConfirmation)
+export type BuildingStep = (typeof buildingReportSteps)[number]
+
 export function getNextStep(step: ReportStep): ReportStepOrDone {
   return indexToStepOrDone(getIndexForStep(step) + 1)
 }
@@ -100,4 +103,8 @@ export function getStepLabel(m: I18nMessages, step: ReportStep) {
 
 export function findCurrentStepForReport(report: Partial<ReportDraft2>): ReportStep {
   return reportSteps.find(step => !isBuildingStepDone(report, step))!
+}
+
+function isNotConfirmation(step: ReportStep): step is Exclude<ReportStep, 'Confirmation'> {
+  return step !== 'Confirmation'
 }
