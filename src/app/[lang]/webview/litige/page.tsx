@@ -1,6 +1,6 @@
-import {Litige, getMetadata} from 'reusablePages/litige'
+import {buildGenerateMetadataForWebviews} from 'core/metadatas'
+import {Litige} from 'reusablePages/litige'
 
-export async function generateMetadata({params}: any) {
-  return getMetadata(params.lang)
-}
+export const generateMetadata = buildGenerateMetadataForWebviews()
+
 export default Litige

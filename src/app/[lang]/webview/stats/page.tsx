@@ -1,7 +1,6 @@
-import {getMetadata, Stats} from 'reusablePages/stats'
+import {buildGenerateMetadataForWebviews} from 'core/metadatas'
+import {Stats} from 'reusablePages/stats'
 
-export async function generateMetadata({params}: any) {
-  return getMetadata(params.lang)
-}
+export const generateMetadata = buildGenerateMetadataForWebviews()
 
 export default Stats

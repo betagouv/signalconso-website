@@ -1,9 +1,8 @@
-import {CommentCaMarche, getMetadata} from 'reusablePages/comment-ca-marche'
+import {PageComponentProps, buildGenerateMetadataForWebviews} from 'core/metadatas'
+import {CommentCaMarche} from 'reusablePages/comment-ca-marche'
 
-export async function generateMetadata({params}: any) {
-  return getMetadata(params.lang)
-}
+export const generateMetadata = buildGenerateMetadataForWebviews()
 
-export default ({params}: {params: any}) => {
-  return <CommentCaMarche {...{params}} isWebView />
+export default (props: PageComponentProps) => {
+  return <CommentCaMarche lang={props.params.lang} isWebView />
 }

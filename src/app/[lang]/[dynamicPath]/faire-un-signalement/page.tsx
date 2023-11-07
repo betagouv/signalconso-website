@@ -7,15 +7,13 @@ import {undefinedIfNull} from 'utils/utils'
 import {allAnomalies} from '../../../../anomalies/Anomalies'
 import {buildLinkLandingPageFromAnomaly, buildLinkStartReport} from '../../../../core/pagesDefinitions'
 import * as categoryPathPage from '../../../../reusablePages/faireUnSignalementPage'
+import {GenerateMetadataArg, PageComponentProps, PathParams, SearchParams} from 'core/metadatas'
 
-export type Params = {
+type LocalPathParams = PathParams<{
   dynamicPath: string
-  lang: string
-}
+}>
 
-type SearchParams = {[k: string]: any}
-
-function getAnomalyData(params: Params) {
+function getAnomalyData(params: LocalPathParams) {
   const lang = getSupportedLang(params.lang)
   if (lang) {
     return allAnomalies(lang).find(_ => _.path === params.dynamicPath)
@@ -34,18 +32,18 @@ function readStepParam(searchParams: SearchParams) {
   return 1
 }
 
-export function generateMetadata(props: {params: Params; searchParams: SearchParams}): Metadata {
-  const lang = getSupportedLang(props.params.lang)
+export function generateMetadata(arg: GenerateMetadataArg<LocalPathParams>): Metadata {
+  const lang = getSupportedLang(arg.params.lang)
   if (lang) {
-    const anomaly = getAnomalyData(props.params)
+    const anomaly = getAnomalyData(arg.params)
     if (anomaly) {
       const {messages: m} = getI18n(lang)
-      const stepParam = readStepParam(props.searchParams)
+      const stepParam = readStepParam(arg.searchParams)
       // Accessibility audit asked for something like this in the title
       const stepSpecificTitle =
         stepParam === getIndexForStepOrDone('Done')
           ? m.acknoledgment.sentReport
-          : `${m.titleAndDescriptions.faireUnSignalement.etape} ${stepParam} ${m.titleAndDescriptions.faireUnSignalement.sur} ${reportSteps.length}`
+          : `${m.faireUnSignalement.etape} ${stepParam} ${m.faireUnSignalement.sur} ${reportSteps.length}`
 
       const landingCanonical = buildLinkLandingPageFromAnomaly(lang, anomaly)
       const canonical =
@@ -53,20 +51,19 @@ export function generateMetadata(props: {params: Params; searchParams: SearchPar
         // some anomalies in EN do not have a corresponding landing page
         buildLinkStartReport(anomaly, lang)
       return {
+        title: stepSpecificTitle + ' - ' + anomaly.seoTitle + ' - SignalConso',
+        description: undefinedIfNull(anomaly.seoDescription ?? anomaly.description),
         alternates: {
           canonical,
         },
-        title: stepSpecificTitle + ' - ' + anomaly.seoTitle + ' - SignalConso',
-        description: undefinedIfNull(anomaly.seoDescription ?? anomaly.description),
       }
     }
   }
   return {}
 }
 
-const Page = (props: {params: Params}) => {
+const Page = (props: PageComponentProps<LocalPathParams>) => {
   const anomaly = getAnomalyData(props.params)
-
   return anomaly ? <categoryPathPage.FaireUnSignalementPage anomaly={anomaly} isWebView={false} /> : notFound()
 }
 

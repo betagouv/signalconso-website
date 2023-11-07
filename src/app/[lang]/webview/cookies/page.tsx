@@ -1,7 +1,6 @@
-import {Cookies, getMetadata} from 'reusablePages/cookies'
+import {buildGenerateMetadataForWebviews} from 'core/metadatas'
+import {Cookies} from 'reusablePages/cookies'
 
-export async function generateMetadata({params}: any) {
-  return getMetadata(params.lang)
-}
+export const generateMetadata = buildGenerateMetadataForWebviews()
 
 export default Cookies

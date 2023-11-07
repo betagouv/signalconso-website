@@ -1,7 +1,6 @@
-import {CentreAide, getMetadata} from 'reusablePages/centre-aide'
+import {buildGenerateMetadataForWebviews} from 'core/metadatas'
+import {CentreAide} from 'reusablePages/centre-aide'
 
-export async function generateMetadata({params}: any) {
-  return getMetadata(params.lang)
-}
+export const generateMetadata = buildGenerateMetadataForWebviews()
 
 export default CentreAide

@@ -1,7 +1,6 @@
+import {buildGenerateMetadata} from 'core/metadatas'
 import {DelaiDeRetractation, getMetadata} from 'reusablePages/delai-de-retractation'
 
-export async function generateMetadata({params}: any) {
-  return getMetadata(params.lang)
-}
+export const generateMetadata = buildGenerateMetadata('delaiRetractation')
 
 export default DelaiDeRetractation

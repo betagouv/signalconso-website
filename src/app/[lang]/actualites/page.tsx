@@ -1,17 +1,9 @@
-import {Metadata} from 'next'
+import {buildGenerateMetadata} from 'core/metadatas'
 import NewsHome from '../../../components_feature/actualites/NewsHome'
-import {getI18n} from '../../../i18n/I18nDictionnary'
 
-export function generateMetadata({params}: any): Metadata {
-  const {messages} = getI18n(params.lang)
+export const generateMetadata = buildGenerateMetadata('actualites')
 
-  return {
-    title: messages.titleAndDescriptions.actualites.title,
-    description: messages.titleAndDescriptions.actualites.description,
-  }
-}
-
-const Page = ({params}: any) => {
+const Page = () => {
   return <NewsHome />
 }
 

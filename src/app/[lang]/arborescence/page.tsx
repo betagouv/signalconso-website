@@ -1,15 +1,6 @@
-import Arborescence from './Arborescence'
-import {getI18n} from '../../../i18n/I18nDictionnary'
+import {buildGenerateMetadata} from 'core/metadatas'
+import Arborescence from '../../../components_feature/Arborescence'
 
-export async function generateMetadata({params}: any) {
-  const {messages: m} = getI18n(params.lang)
-  return {
-    title: m.titleAndDescriptions.anomaly.title,
-    description: m.titleAndDescriptions.anomaly.description,
-    robots: {
-      index: false,
-    },
-  }
-}
+export const generateMetadata = buildGenerateMetadata('arborescence')
 
 export default Arborescence
