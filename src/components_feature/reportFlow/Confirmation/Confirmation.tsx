@@ -22,6 +22,7 @@ import {FileOrigin} from '../../../model/UploadedFile'
 import {useReportCreateContext} from '../ReportCreateContext'
 import {useReportFlowContext} from '../ReportFlowContext'
 import {ConfirmationStep, ConfirmationStepper} from './ConfirmationStepper'
+import {BuildingStep, buildingReportSteps} from 'model/ReportStep'
 
 export const Confirmation = ({stepNavigation, isWebView}: {stepNavigation: StepNavigation; isWebView: boolean}) => {
   const _reportFlow = useReportFlowContext()
@@ -42,13 +43,12 @@ export const ConfirmationInner = ({
   stepNavigation: StepNavigation
   isWebView: boolean
 }) => {
-  const {m, currentLang} = useI18n()
+  const {m} = useI18n()
   const toastError = useToastError()
   const _reportFlow = useReportFlowContext()
   const _reportCreate = useReportCreateContext()
   const _analytic = useAnalyticContext()
 
-  const goToStep = stepNavigation.goTo
   return (
     <Animate autoScrollTo={true}>
       <div>
@@ -62,41 +62,96 @@ export const ConfirmationInner = ({
         </FriendlyHelpText>
 
         <ConfirmationStepper>
-          <ConfirmationStep title={m.step_problem} {...{goToStep}}>
-            <Box sx={{display: 'flex'}}>
-              <AnomalyImage anomaly={anomaly} sx={{mr: 2}} />
-              <Box>
-                <Txt block size="big" bold sx={{mb: 1}} component="h3">
-                  {findAnomaly(draft.category, currentLang).title}
-                </Txt>
-                <ul className="pl-0">
-                  {draft.subcategories.map(_ => (
-                    <Row dense icon="subdirectory_arrow_right" key={_.title} component="li">
-                      {_.title}
-                    </Row>
-                  ))}
-                </ul>
-              </Box>
+          {buildingReportSteps.map((step, index) => {
+            return <RenderEachStep key={step} {...{anomaly, draft, stepNavigation, index}} step={step} />
+          })}
+        </ConfirmationStepper>
+        <ReportFlowStepperActions
+          nextIconSend
+          loadingNext={_reportCreate.createReportMutation.isLoading}
+          nextButtonLabel={draft.consumerWish === 'getAnswer' ? m.confirmationBtnReponseConso : m.confirmationBtn}
+          onNext={next => {
+            _reportFlow.sendReportEvent('Confirmation')
+            const metadata = buildReportMetadata({isWebView})
+            _reportCreate.createReportMutation
+              .mutateAsync({draft, metadata})
+              .then(() => {
+                next()
+                _reportFlow.sendReportEvent('Done')
+              })
+              .catch(e => {
+                _analytic.trackEvent(EventCategories.report, ReportEventActions.reportSendFail)
+                toastError(getApiErrorId(e) === 'SC-0025' ? m.thereAreSimilarReports : undefined)
+              })
+          }}
+          {...{stepNavigation}}
+        />
+      </div>
+    </Animate>
+  )
+}
+
+function RenderEachStep({
+  step,
+  draft,
+  anomaly,
+  stepNavigation,
+  index,
+}: {
+  step: BuildingStep
+  anomaly: Pick<Anomaly, 'img'>
+  draft: ReportDraft
+  stepNavigation: StepNavigation
+  index: number
+}) {
+  const goToStep = stepNavigation.goTo
+  const {m, currentLang} = useI18n()
+
+  switch (step) {
+    case 'BuildingProblem':
+      return (
+        <ConfirmationStep title={m.step_problem} {...{goToStep, index}}>
+          <Box sx={{display: 'flex'}}>
+            <AnomalyImage anomaly={anomaly} sx={{mr: 2}} />
+            <Box>
+              <Txt block size="big" bold sx={{mb: 1}} component="h3">
+                {findAnomaly(draft.category, currentLang).title}
+              </Txt>
+              <ul className="pl-0">
+                {draft.subcategories.map(_ => (
+                  <Row dense icon="subdirectory_arrow_right" key={_.title} component="li">
+                    {_.title}
+                  </Row>
+                ))}
+              </ul>
             </Box>
-          </ConfirmationStep>
-          <ConfirmationStep title={m.step_description} {...{goToStep}}>
-            <dl>
-              {draft.details.map(({label, value}) => (
-                <div key={label} className="mb-2">
-                  <dt className="font-medium" dangerouslySetInnerHTML={{__html: label}} />
-                  <dd className="text-schint">{value}</dd>
-                </div>
-              ))}
-              <div className="mb-2">
-                <dt className="font-medium mb-1">{m.attachments}</dt>
-                <dd>
-                  <ReportFilesConfirmation fileOrigin={FileOrigin.Consumer} files={draft.uploadedFiles} />
-                </dd>
+          </Box>
+        </ConfirmationStep>
+      )
+    case 'BuildingDetails':
+      return (
+        <ConfirmationStep title={m.step_description} {...{goToStep, index}}>
+          <dl>
+            {draft.details.map(({label, value}) => (
+              <div key={label} className="mb-2">
+                <dt className="font-medium" dangerouslySetInnerHTML={{__html: label}} />
+                <dd className="text-schint">{value}</dd>
               </div>
-            </dl>
-          </ConfirmationStep>
+            ))}
+            <div className="mb-2">
+              <dt className="font-medium mb-1">{m.attachments}</dt>
+              <dd>
+                <ReportFilesConfirmation fileOrigin={FileOrigin.Consumer} files={draft.uploadedFiles} />
+              </dd>
+            </div>
+          </dl>
+        </ConfirmationStep>
+      )
+    case 'BuildingCompany':
+      return (
+        <>
           {draft.companyDraft && (
-            <ConfirmationStep title={m.step_company} {...{goToStep}}>
+            <ConfirmationStep title={m.step_company} {...{goToStep, index}}>
               <Txt size="big" bold block sx={{mb: 1}} component="h3">
                 {draft.companyDraft.name}
               </Txt>
@@ -139,7 +194,7 @@ export const ConfirmationInner = ({
             </ConfirmationStep>
           )}
           {draft.influencer && (
-            <ConfirmationStep title={m.step_influencer} {...{goToStep}}>
+            <ConfirmationStep title={m.step_influencer} {...{goToStep, index}}>
               <Txt size="big" bold block>
                 Réseau social
               </Txt>
@@ -152,67 +207,49 @@ export const ConfirmationInner = ({
               </Row>
             </ConfirmationStep>
           )}
-          <ConfirmationStep title={m.step_consumer} {...{goToStep}}>
-            <ul className="list-none">
+        </>
+      )
+    case 'BuildingConsumer':
+      return (
+        <ConfirmationStep title={m.step_consumer} {...{goToStep, index}}>
+          <ul className="list-none">
+            <li className="p-0">
+              <Row icon="person">
+                {draft.consumer.gender ? m.gender[draft.consumer.gender] + ' ' : ''}
+                {draft.consumer.firstName} {draft.consumer.lastName}
+              </Row>
+            </li>
+            <li className="p-0">
+              <Row icon="email">{draft.consumer.email}</Row>
+            </li>
+            {draft.consumer.phone && (
               <li className="p-0">
-                <Row icon="person">
-                  {draft.consumer.gender ? m.gender[draft.consumer.gender] + ' ' : ''}
-                  {draft.consumer.firstName} {draft.consumer.lastName}
+                <Row icon="phone">{draft.consumer.phone}</Row>
+              </li>
+            )}
+            {draft.consumer.referenceNumber && (
+              <li className="p-0">
+                <Row icon="receipt">{draft.consumer.referenceNumber}</Row>
+              </li>
+            )}
+            {ReportDraft.isTransmittableToPro(draft) && (
+              <li className="p-0">
+                <Row icon="https">
+                  {m.contactAgreement}:&nbsp;
+                  <Txt bold>
+                    {draft.contactAgreement ? (
+                      <Chip size="small" label={m.yes} color="success" variant="outlined" icon={<Icon>check_circle</Icon>} />
+                    ) : (
+                      <Chip size="small" label={m.no} color="error" variant="outlined" icon={<Icon>remove_circle</Icon>} />
+                    )}
+                  </Txt>
                 </Row>
               </li>
-              <li className="p-0">
-                <Row icon="email">{draft.consumer.email}</Row>
-              </li>
-              {draft.consumer.phone && (
-                <li className="p-0">
-                  <Row icon="phone">{draft.consumer.phone}</Row>
-                </li>
-              )}
-              {draft.consumer.referenceNumber && (
-                <li className="p-0">
-                  <Row icon="receipt">{draft.consumer.referenceNumber}</Row>
-                </li>
-              )}
-              {ReportDraft.isTransmittableToPro(draft) && (
-                <li className="p-0">
-                  <Row icon="https">
-                    {m.contactAgreement}:&nbsp;
-                    <Txt bold>
-                      {draft.contactAgreement ? (
-                        <Chip size="small" label={m.yes} color="success" variant="outlined" icon={<Icon>check_circle</Icon>} />
-                      ) : (
-                        <Chip size="small" label={m.no} color="error" variant="outlined" icon={<Icon>remove_circle</Icon>} />
-                      )}
-                    </Txt>
-                  </Row>
-                </li>
-              )}
-            </ul>
-          </ConfirmationStep>
-        </ConfirmationStepper>
-        <ReportFlowStepperActions
-          nextIconSend
-          loadingNext={_reportCreate.createReportMutation.isLoading}
-          nextButtonLabel={draft.consumerWish === 'getAnswer' ? m.confirmationBtnReponseConso : m.confirmationBtn}
-          onNext={next => {
-            _reportFlow.sendReportEvent('Confirmation')
-            const metadata = buildReportMetadata({isWebView})
-            _reportCreate.createReportMutation
-              .mutateAsync({draft, metadata})
-              .then(() => {
-                next()
-                _reportFlow.sendReportEvent('Done')
-              })
-              .catch(e => {
-                _analytic.trackEvent(EventCategories.report, ReportEventActions.reportSendFail)
-                toastError(getApiErrorId(e) === 'SC-0025' ? m.thereAreSimilarReports : undefined)
-              })
-          }}
-          {...{stepNavigation}}
-        />
-      </div>
-    </Animate>
-  )
+            )}
+          </ul>
+        </ConfirmationStep>
+      )
+  }
 }
 
 function buildReportMetadata({isWebView}: {isWebView: boolean}): ApiReportDraft['metadata'] {

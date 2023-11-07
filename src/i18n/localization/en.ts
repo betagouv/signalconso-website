@@ -1336,7 +1336,7 @@ export const en = {
 
     landing: {
       bigReportButton: 'Report an issue',
-      whatsSignalConso: 'What is Signal Conso ?',
+      whatsSignalConso: 'What is SignalConso ?',
       heroCardTitle1: 'Because it’s easy!',
       heroCardText1:
         'During the process, you will be asked questions to help you identify your issue and word your report properly.',

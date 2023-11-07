@@ -1,7 +1,7 @@
 import Button from '@codegouvfr/react-dsfr/Button'
 import {pagesDefs} from 'core/pagesDefinitions'
 import {useI18n} from 'i18n/I18n'
-import {ReportStep, ReportStepOrDone, getIndexForStep, getNextStep, reportSteps} from 'model/ReportStep'
+import {ReportStepOrDone, getIndexForStep, getNextStep, getStepLabel, reportSteps} from 'model/ReportStep'
 import {useEffect, useRef} from 'react'
 import {StepNavigation} from './ReportFlowStepper'
 
@@ -23,11 +23,6 @@ export function ReportFlowStepperHeader(
   const {m} = useI18n()
   const {step, anomalyTitle, isWebView, variant} = props
   const divRef = useRef<HTMLDivElement>(null)
-  function getLabel(step: ReportStep) {
-    const stepsLabels = [m.step_problem, m.step_description, m.step_company, m.step_consumer, m.step_confirm]
-    return stepsLabels[getIndexForStep(step) - 1]
-  }
-
   const isDone = step === 'Done'
   useEffect(() => {
     // On first render and after changing step
@@ -37,9 +32,9 @@ export function ReportFlowStepperHeader(
 
   if (!isDone) {
     const stepIndex = getIndexForStep(step)
-    const stepTitle = getLabel(step)
+    const stepTitle = getStepLabel(m, step)
     const nextStep = getNextStep(step)
-    const nextStepTitle = nextStep !== 'Done' ? getLabel(nextStep) : undefined
+    const nextStepTitle = nextStep !== 'Done' ? getStepLabel(m, nextStep) : undefined
     const stepsCount = reportSteps.length
     const isPrevBackToHome = stepIndex === 1
     return (

@@ -1,8 +1,9 @@
+import {I18nMessages} from 'i18n/I18nDictionnary'
 import {ReportDraft2} from './ReportDraft2'
 
 export const STEP_PARAM_NAME = 'step'
 
-export const reportSteps = ['BuildingProblem', 'BuildingDetails', 'BuildingCompany', 'BuildingConsumer', 'Confirmation'] as const
+export const reportSteps = ['BuildingProblem', 'BuildingCompany', 'BuildingDetails', 'BuildingConsumer', 'Confirmation'] as const
 export type ReportStep = (typeof reportSteps)[number]
 
 export const firstReportStep = reportSteps[0]
@@ -10,6 +11,9 @@ export const lastReportStep = reportSteps[reportSteps.length - 1]
 
 // 'Done' is like a special bonus step, not included in the original list
 export type ReportStepOrDone = ReportStep | 'Done'
+
+export const buildingReportSteps = reportSteps.filter(isNotConfirmation)
+export type BuildingStep = (typeof buildingReportSteps)[number]
 
 export function getNextStep(step: ReportStep): ReportStepOrDone {
   return indexToStepOrDone(getIndexForStep(step) + 1)
@@ -48,32 +52,15 @@ export function isStepBeforeOrEqual(a: ReportStepOrDone, b: ReportStepOrDone) {
   return getIndexForStepOrDone(a) <= getIndexForStepOrDone(b)
 }
 
-export function getAnalyticsForStep(step: ReportStepOrDone) {
-  switch (step) {
-    case 'BuildingProblem':
-      return {path: 'le-probleme', title: `Étape 1: Le problème - SignalConso`}
-    case 'BuildingDetails':
-      return {path: 'la-description', title: `Étape 2: La description - SignalConso`}
-    case 'BuildingCompany':
-      return {path: 'le-commerçant', title: `Étape 3: L'entreprise - SignalConso`}
-    case 'BuildingConsumer':
-      return {path: 'le-consommateur', title: `Étape 4: Le consommateur - SignalConso`}
-    case 'Confirmation':
-      return {path: 'confirmation', title: `Étape 5: Confirmation - SignalConso`}
-    case 'Done':
-      return {path: 'accuse-de-reception', title: `Information - SignalConso`}
-  }
-}
-
 function isBuildingStepDone(r: Partial<ReportDraft2>, step: ReportStep) {
   switch (step) {
     case 'BuildingProblem':
       return !!r.category && !!r.subcategories && !!r.consumerWish
-    case 'BuildingDetails':
-      return !!r.details
     case 'BuildingCompany':
       // When the website is in a foreign country, only the country is specified
       return !!r.companyDraft?.siret || !!r.companyDraft?.address.postalCode || r.companyDraft?.address.country || !!r.influencer
+    case 'BuildingDetails':
+      return !!r.details
     case 'BuildingConsumer':
       return !!r.consumer?.email && !!r.consumer?.firstName && !!r.consumer?.lastName
     case 'Confirmation':
@@ -82,6 +69,25 @@ function isBuildingStepDone(r: Partial<ReportDraft2>, step: ReportStep) {
   }
 }
 
+export function getStepLabel(m: I18nMessages, step: ReportStep) {
+  switch (step) {
+    case 'BuildingProblem':
+      return m.step_problem
+    case 'BuildingCompany':
+      return m.step_company
+    case 'BuildingDetails':
+      return m.step_description
+    case 'BuildingConsumer':
+      return m.step_consumer
+    case 'Confirmation':
+      return m.step_confirm
+  }
+}
+
 export function findCurrentStepForReport(report: Partial<ReportDraft2>): ReportStep {
   return reportSteps.find(step => !isBuildingStepDone(report, step))!
+}
+
+function isNotConfirmation(step: ReportStep): step is Exclude<ReportStep, 'Confirmation'> {
+  return step !== 'Confirmation'
 }
