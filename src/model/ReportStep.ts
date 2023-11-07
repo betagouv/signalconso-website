@@ -52,23 +52,6 @@ export function isStepBeforeOrEqual(a: ReportStepOrDone, b: ReportStepOrDone) {
   return getIndexForStepOrDone(a) <= getIndexForStepOrDone(b)
 }
 
-export function getAnalyticsForStep(step: ReportStepOrDone) {
-  switch (step) {
-    case 'BuildingProblem':
-      return {path: 'le-probleme', title: `Étape 1: Le problème - SignalConso`}
-    case 'BuildingDetails':
-      return {path: 'la-description', title: `Étape 2: La description - SignalConso`}
-    case 'BuildingCompany':
-      return {path: 'le-commerçant', title: `Étape 3: L'entreprise - SignalConso`}
-    case 'BuildingConsumer':
-      return {path: 'le-consommateur', title: `Étape 4: Le consommateur - SignalConso`}
-    case 'Confirmation':
-      return {path: 'confirmation', title: `Étape 5: Confirmation - SignalConso`}
-    case 'Done':
-      return {path: 'accuse-de-reception', title: `Information - SignalConso`}
-  }
-}
-
 function isBuildingStepDone(r: Partial<ReportDraft2>, step: ReportStep) {
   switch (step) {
     case 'BuildingProblem':
