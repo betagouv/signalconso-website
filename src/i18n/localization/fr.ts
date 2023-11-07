@@ -185,7 +185,7 @@ export const fr = {
       cookiesMatomo:
         "Les noms des cookies utilisés sont pour Matomo _pk_session, _pk_id, _pk_ref. Leur durée va de de 30 mn à 13 mois. Elles ne sont pas cédées à des tiers ni utilisées à d'autres fins.",
       renseignementsSuiviAudience:
-        'Pour plus de renseignements sur la gestion de la vie privée sur Signal Conso, vous pouvez également consulter la rubrique ',
+        'Pour plus de renseignements sur la gestion de la vie privée sur SignalConso, vous pouvez également consulter la rubrique ',
       renseignementsSuiviAudienceLink: "suivi d'audience et vie privée",
       accepterRefuserTitre: 'Comment accepter ou refuser les cookies:',
       parametrerNavigateurContenu1:
@@ -694,7 +694,7 @@ export const fr = {
       droitLimitationTraitement1:
         "Vous disposez également d’un droit à la limitation du traitement de vos données. Consultez l'interface en ligne  ",
       droitLimitationTraitement2: ' pour plus d’informations sur vos droits.',
-      plusInfosGestionCookies: "Pour plus d'information sur la gestion des cookies dans Signal Conso, consultez la rubrique",
+      plusInfosGestionCookies: "Pour plus d'information sur la gestion des cookies dans SignalConso, consultez la rubrique",
       gestionCookies: 'Gestion des cookies',
       cookiesDeposesOptOut: 'Cookies déposés et opt-out',
       interfaceEnLigneDeposeCookie:
@@ -1355,7 +1355,7 @@ export const fr = {
 
     landing: {
       bigReportButton: 'Je signale un problème',
-      whatsSignalConso: "Qu'est-ce que Signal Conso ?",
+      whatsSignalConso: "Qu'est-ce que SignalConso ?",
       heroCardTitle1: 'Parce que c’est simple !',
       heroCardText1: 'Des questions vous guident tout au long du parcours pour vous aider à formuler votre problème.',
       heroCardTitle2: 'Parce que c’est rapide !',

@@ -16,19 +16,19 @@ export const enLandingsData = [
     secondaryTitle2: 'What will happen after the report is filed?',
     otherTitle1: 'Concerned about ingredient substitution in catering services?',
     otherText1:
-      'Signal Conso is your free public service for reporting such issues, crucial for those with allergies or special diets. While focusing on consumer rights, we also cover related topics like safety measures in hospitality. Report problems, resolve issues, and make informed choices with Signal Conso.\n',
+      'SignalConso is your free public service for reporting such issues, crucial for those with allergies or special diets. While focusing on consumer rights, we also cover related topics like safety measures in hospitality. Report problems, resolve issues, and make informed choices with SignalConso.\n',
     otherTitle2: 'Worried about falsified use-by dates in catering services?',
     otherText2:
-      'Signal Conso helps you report and tackle such critical concerns. Incorrect dates can risk food safety and consumer health. Utilize our free public platform to report violations, resolve issues, and learn about your rights. Make safer choices with Signal Conso.\n',
+      'SignalConso helps you report and tackle such critical concerns. Incorrect dates can risk food safety and consumer health. Utilize our free public platform to report violations, resolve issues, and learn about your rights. Make safer choices with SignalConso.\n',
     otherTitle3: 'Facing issues with contaminated food in catering services?',
     otherText3:
-      'Turn to Signal Conso, your reliable public platform for reporting such serious concerns. Contaminated food poses a real risk to health and safety. Use our free service to report problems, get them resolved, and know your consumer rights.',
+      'Turn to SignalConso, your reliable public platform for reporting such serious concerns. Contaminated food poses a real risk to health and safety. Use our free service to report problems, get them resolved, and know your consumer rights.',
     otherTitle4: 'Encountered false affiliations or certifications in catering services? ',
     otherText4:
-      "False credentials not only breach trust but also risk consumer safety. Use our free platform to report issues, resolve them, and learn your rights. For concerns about counterfeiting we've got you covered too. Make informed choices with Signal Conso.",
+      "False credentials not only breach trust but also risk consumer safety. Use our free platform to report issues, resolve them, and learn your rights. For concerns about counterfeiting we've got you covered too. Make informed choices with SignalConso.",
     otherTitle5: 'Concerned about misrepresented hygiene in catering ?',
     otherText5:
-      'Signal Conso is your go-to public service for reporting such issues. Similar to hospitality sector concerns, we help you flag poor practices for immediate action. Make a report, resolve the issue, and educate yourself on consumer rights today!',
+      'SignalConso is your go-to public service for reporting such issues. Similar to hospitality sector concerns, we help you flag poor practices for immediate action. Make a report, resolve the issue, and educate yourself on consumer rights today!',
     sampleReports: [],
   },
   {
@@ -43,19 +43,19 @@ export const enLandingsData = [
     catchPhrase: 'Fight Back Against Counterfeits: Report, Resolve, Reclaim!',
     secondaryTitle1: 'Why report on counterfeits products ?',
     secondaryTitle2: 'What will happen after the report is filed?',
-    otherTitle1: 'Combatting counterfeit products? Discover solutions at Signal Conso. ',
+    otherTitle1: 'Combatting counterfeit products? Discover solutions at SignalConso. ',
     otherText1:
       "Safeguard your choices and authenticity. If you've faced such issues, we're here to help. Explore how to address the problem effectively. Looking for more consumer-related concerns? Check out our resources on hospitality sector.\n",
-    otherTitle2: 'Encountering counterfeit products online? Seek solutions at Signal Conso. ',
+    otherTitle2: 'Encountering counterfeit products online? Seek solutions at SignalConso. ',
     otherText2:
       "Defend your authenticity and make informed choices. If you've been a victim, we're here to assist. Learn how to effectively tackle this issue. Looking for more consumer-related concerns? Explore our resources on ticketing.\n",
     otherTitle3: 'Dealing with counterfeit medicine fraud? ',
     otherText3:
-      "Discover solutions on Signal Conso's Counterfeiting page. Safeguard your health and rights with expert guidance. If you've faced such issues, we're here to assist you. Find effective ways to address this concern.",
+      "Discover solutions on SignalConso's Counterfeiting page. Safeguard your health and rights with expert guidance. If you've faced such issues, we're here to assist you. Find effective ways to address this concern.",
     otherTitle4: 'Unveiling solutions against counterfeit luxury goods. ',
     otherText4:
-      "Explore Signal Conso's Counterfeiting page to protect your style and rights. If you've fallen victim, we're here to help. Discover effective strategies to combat this issue. ",
-    otherTitle5: 'Your responses to counterfeit electronics issues with Signal Conso.',
+      "Explore SignalConso's Counterfeiting page to protect your style and rights. If you've fallen victim, we're here to help. Discover effective strategies to combat this issue. ",
+    otherTitle5: 'Your responses to counterfeit electronics issues with SignalConso.',
     otherText5:
       "Our free public service empowers consumers to report concerns, find solutions, and understand their rights. If you've faced problems with counterfeit electronics, we're here to assist. Explore effective measures to address these challenges.",
     sampleReports: [],
@@ -86,7 +86,7 @@ export const enLandingsData = [
       'Beware of false advertising that promises more than it delivers, from inflated room sizes to unrealistic amenities. To make informed decisions, validate hotel information from multiple sources and use SignalConso to report discrepancies. Being an educated consumer helps you not only in hotels but also in other sectors rife with misleading claims. Arm yourself with knowledge and travel smart.',
     otherTitle5: 'Protect your personal information while enjoying the Rugby World Cup 2023. ',
     otherText5:
-      "Hotels are becoming a major target for theft of customer information. Don't let data breaches spoil your trip; take preventive measures such as choosing hotels with robust security protocols. Be equally cautious when booking event tickets; use verified platforms to ensure a secure purchase. Report issues and learn more on Signal Conso, your go-to public service for consumer protection.",
+      "Hotels are becoming a major target for theft of customer information. Don't let data breaches spoil your trip; take preventive measures such as choosing hotels with robust security protocols. Be equally cautious when booking event tickets; use verified platforms to ensure a secure purchase. Report issues and learn more on SignalConso, your go-to public service for consumer protection.",
     sampleReports: [],
   },
   {
@@ -102,16 +102,16 @@ export const enLandingsData = [
     secondaryTitle2: 'What will happen after the report is filed?',
     otherTitle1: 'Facing duplicate ticket issues for the Rugby World Cup 2023?',
     otherText1:
-      "Signal Conso has you covered. Find quick solutions to protect your purchase and enjoy an unparalleled experience. Don't let duplicate tickets ruin your game day; let us help you secure a hassle-free event.\n",
+      "SignalConso has you covered. Find quick solutions to protect your purchase and enjoy an unparalleled experience. Don't let duplicate tickets ruin your game day; let us help you secure a hassle-free event.\n",
     otherTitle2: 'Dealing with ghost tickets that disappear from your account?',
     otherText2:
-      'At Signal Conso, we offer reliable solutions to keep your event plans on track. Secure not only your tickets but also your transport to the venue. Resolve your ghost ticket issues with us now!\n',
+      'At SignalConso, we offer reliable solutions to keep your event plans on track. Secure not only your tickets but also your transport to the venue. Resolve your ghost ticket issues with us now!\n',
     otherTitle3: 'Facing issues with tickets not delivered for the Rugby World Cup 2023?',
     otherText3:
-      "Signal Conso is here to help you. Get quick solutions and ensure you don't miss out on the exceptional experience you deserve. Secure your tickets and peace of mind with us today!",
+      "SignalConso is here to help you. Get quick solutions and ensure you don't miss out on the exceptional experience you deserve. Secure your tickets and peace of mind with us today!",
     otherTitle4: 'Have you made a mistake in allocating your place at an event?',
     otherText4:
-      "Don't worry, Signal Conso has your back. We offer immediate solutions to seating problems, ensuring you get the experience you paid for. Sort out your seating problems with us and enjoy your event to the full!",
+      "Don't worry, SignalConso has your back. We offer immediate solutions to seating problems, ensuring you get the experience you paid for. Sort out your seating problems with us and enjoy your event to the full!",
     sampleReports: [],
   },
   {

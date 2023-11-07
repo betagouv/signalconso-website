@@ -17,7 +17,9 @@ import {AppLang, AppLangs} from '../i18n/localization/AppLangs'
 // WE COMMIT THE OUTPUT.
 // This script is meant to be rerun only occasionally when needed.
 
-const outputFile = (lang: AppLang) => path.join(__dirname, '..', 'landings', `landingsData_${lang}.ts`)
+function getOutputFileName(lang: AppLang) {
+  return path.join(__dirname, '..', 'landings', `landingsData_${lang}.ts`)
+}
 
 const BASE_ID = 'appdO2KcJrc2RI28f'
 const PUBLISHED_STATUS = 'PUBLIEE'
@@ -59,6 +61,7 @@ function setupAirtable() {
 }
 
 async function start(lang: AppLang) {
+  const outputFile = getOutputFileName(lang)
   const base = setupAirtable()
   const rows = await readLandingPagesTable(base)
   const rowsPublished = rows.filter(_ => _.status === PUBLISHED_STATUS && _.lang === lang)
@@ -71,7 +74,7 @@ async function start(lang: AppLang) {
   const rowsSorted = sortConsistently(rowsTranformed)
   console.log(`Generating output file ${outputFile}`)
   fs.writeFileSync(
-    outputFile(lang),
+    outputFile,
     `// ----------------------------------------------
   // ---- Generated file, do not edit manually ---
   // ----------------------------------------------
