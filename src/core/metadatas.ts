@@ -20,13 +20,16 @@ export type GenerateMetadataArg<OtherPathParams = {}> = {
   searchParams: SearchParams
 }
 
+type InternalPageDefs = keyof typeof internalPageDefs
+type InternalPageDefsWithoutPlayground = Exclude<InternalPageDefs, 'playground'>
+
 // Mutualized "generateMetadata" function
 // Works nicely for simple, unique pages (ex: /fr/contact)
 // For pages with more complex paths and rules we might need to do stuff more manually
 export function buildGenerateMetadata(
   // the name of the page must be the same in pageDefs
   // and in i18n messages
-  pageName: keyof typeof internalPageDefs & keyof I18nMessages['titleAndDescriptions'],
+  pageName: InternalPageDefsWithoutPlayground & keyof I18nMessages['titleAndDescriptions'],
 ) {
   return function (arg: GenerateMetadataArg) {
     const lang = arg.params.lang
