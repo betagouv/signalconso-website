@@ -140,10 +140,6 @@ sub vcl_hash {
 #
 # watch out, the names look similar : bereq != beresp
 sub vcl_backend_response {
-    # Ignore the Cache-Control header coming from Next.js
-    # We prefer to manage everything ourselves here
-    unset beresp.http.cache-control;
-
     if (
         # Typical request to a static asset (with hash in URL)
         bereq.http.X-Cache-Path-Kind == "asset_hashed" &&
