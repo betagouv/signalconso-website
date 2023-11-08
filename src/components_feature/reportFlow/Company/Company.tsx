@@ -206,7 +206,7 @@ export const _Company = ({draft, onUpdateReportDraft}: CompanyWithRequiredProps)
                     companyDraft: {
                       ...company,
                     },
-                    gs1ProductId: product.id,
+                    barcodeProductId: product.id,
                   })
                 }}
               />
@@ -220,7 +220,7 @@ export const _Company = ({draft, onUpdateReportDraft}: CompanyWithRequiredProps)
 
   const commonTree = (
     phoneOrWebsite: Pick<CompanyDraft, 'phone' | 'website'> = {},
-    gs1ProductId: string | undefined = undefined,
+    barcodeProductId: string | undefined = undefined,
     result: CompanySearchResult[] | undefined = undefined,
   ) => {
     return result && result.length > 0 ? (
@@ -251,7 +251,7 @@ export const _Company = ({draft, onUpdateReportDraft}: CompanyWithRequiredProps)
                           ...company,
                           ...phoneOrWebsite,
                         },
-                        gs1ProductId,
+                        barcodeProductId,
                       })
                     }}
                   />
@@ -269,7 +269,7 @@ export const _Company = ({draft, onUpdateReportDraft}: CompanyWithRequiredProps)
                           ...company,
                           ...phoneOrWebsite,
                         },
-                        gs1ProductId,
+                        barcodeProductId,
                       })
                     }}
                   />
@@ -288,7 +288,7 @@ export const _Company = ({draft, onUpdateReportDraft}: CompanyWithRequiredProps)
                           street: form.street,
                         },
                       },
-                      gs1ProductId,
+                      barcodeProductId,
                     })
                   }}
                 />
@@ -307,7 +307,7 @@ export const _Company = ({draft, onUpdateReportDraft}: CompanyWithRequiredProps)
                                   postalCode: postalCode,
                                 },
                               },
-                              gs1ProductId,
+                              barcodeProductId,
                             })
                           }}
                         />
@@ -325,7 +325,7 @@ export const _Company = ({draft, onUpdateReportDraft}: CompanyWithRequiredProps)
                                   country: form.country.code,
                                 },
                               },
-                              gs1ProductId,
+                              barcodeProductId,
                             })
                           }}
                         />
@@ -341,7 +341,7 @@ export const _Company = ({draft, onUpdateReportDraft}: CompanyWithRequiredProps)
                                   postalCode,
                                 },
                               },
-                              gs1ProductId,
+                              barcodeProductId,
                             })
                           }}
                         />

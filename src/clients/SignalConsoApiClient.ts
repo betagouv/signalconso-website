@@ -10,7 +10,7 @@ import {ConsumerEmailResult} from 'model/ConsumerEmailValidation'
 import {ApiCreatedReport, ApiReportDraft} from 'model/reportsFromApi'
 import {ResponseConsumerReview, ResponseConsumerReviewExists} from '../core/Events'
 import {AppLang} from '../i18n/localization/AppLangs'
-import {GS1Product} from '../model/GS1Product'
+import {BarcodeProduct} from '../model/BarcodeProduct'
 
 type PublicStat =
   | 'PromesseAction'
@@ -35,7 +35,7 @@ export class SignalConsoApiClient {
   })
 
   searchByBarcode = (barcode: string) => {
-    return this.client.get<GS1Product>(`/gs1/gtin/${barcode}`)
+    return this.client.get<BarcodeProduct>(`/barcode/gtin/${barcode}`)
   }
 
   searchCompaniesByUrl = (url: string) => {

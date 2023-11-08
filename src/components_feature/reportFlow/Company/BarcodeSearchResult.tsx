@@ -1,5 +1,5 @@
 import {CompanySearchResult, isGovernmentCompany} from '../../../model/Company'
-import {GS1Product} from '../../../model/GS1Product'
+import {BarcodeProduct} from '../../../model/BarcodeProduct'
 import {AddressComponent} from '../../../components_simple/Address'
 import {ReactNode} from 'react'
 import {Icon} from '@mui/material'
@@ -10,9 +10,9 @@ import {Panel, PanelBody} from '../../../components_simple/Panel'
 import {Fender} from '../../../components_simple/Fender'
 
 interface BarcodeSearchResultPros {
-  product?: GS1Product
+  product?: BarcodeProduct
   company?: CompanySearchResult
-  onSubmit: (selected: CompanySearchResult, product: GS1Product) => void
+  onSubmit: (selected: CompanySearchResult, product: BarcodeProduct) => void
 }
 
 const Row = ({icon, children, variant}: {icon?: string; variant?: 'blue' | 'error'; children: ReactNode}) => {

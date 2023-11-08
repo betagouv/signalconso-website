@@ -11,7 +11,7 @@ import {CompanySearchEventActions, EventCategories} from '../../../analytic/anal
 import {useAnalyticContext} from '../../../analytic/AnalyticContext'
 import {CompanySearchResult} from '../../../model/Company'
 import {ReactNode, useEffect, useRef, useState} from 'react'
-import {GS1Product} from '../../../model/GS1Product'
+import {BarcodeProduct} from '../../../model/BarcodeProduct'
 import {Button} from '@codegouvfr/react-dsfr/Button'
 
 interface Form {
@@ -19,7 +19,7 @@ interface Form {
 }
 
 interface Props {
-  children: (product?: GS1Product, company?: CompanySearchResult, skipped?: boolean) => ReactNode
+  children: (product?: BarcodeProduct, company?: CompanySearchResult, skipped?: boolean) => ReactNode
 }
 
 function purgeWhitespaces(identity: string): string {

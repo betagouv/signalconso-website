@@ -47,7 +47,7 @@ export interface ReportDraft {
   companyKind?: CompanyKinds
   influencer?: Influencer
   lang: AppLang
-  gs1ProductId?: string
+  barcodeProductId?: string
 }
 
 export interface Influencer {

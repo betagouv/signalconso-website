@@ -1,4 +1,4 @@
-export interface GS1Product {
+export interface BarcodeProduct {
   id: string
   gtin: string
   siren?: string
