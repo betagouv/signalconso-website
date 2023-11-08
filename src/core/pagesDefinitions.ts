@@ -45,7 +45,7 @@ export const internalPageDefs = {
   planDuSite: page(`/plan-du-site`, {hasAlternate: true}),
   actualites: page(`/actualites`, {hasAlternate: true}),
   // only on dev/demo
-  ...(appConfig.showPlayground ? {playground: page(`/playground`, {noIndex: true, hasAlternate: true})} : null),
+  ...(appConfig.showPlayground ? {playground: page(`/playground`, {noIndex: true, hasAlternate: true})} : {}),
 
   // all these are available in /webview/
   commentCaMarche: page(`/comment-ca-marche`, {hasAlternate: true}),
