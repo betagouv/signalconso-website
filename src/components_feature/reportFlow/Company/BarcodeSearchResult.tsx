@@ -85,7 +85,7 @@ export const BarcodeSearchResult = ({product, company, onSubmit}: BarcodeSearchR
           <Icon>shopping_cart</Icon>
           <h1 className="text-xl font-bold mb-0 pl-2">{m.barcodeProduct}</h1>
         </div>
-        <p className="ml-4 text-gray-600 mb-12">{product.description ?? m.barcodeNoDescriptionFound}</p>
+        <p className="ml-4 text-gray-600 mb-12">{product.productName ?? m.barcodeNoDescriptionFound}</p>
         <div className="flex items-start align-middle mb-2">
           <Icon>store</Icon>
           <h1 className="text-xl font-bold mb-0 pl-2">{m.barcodeCompany}</h1>
