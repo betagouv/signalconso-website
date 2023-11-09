@@ -3,6 +3,7 @@ import {Dialog, DialogActions, DialogContent, DialogTitle} from '@mui/material'
 import {useI18n} from 'i18n/I18n'
 import * as React from 'react'
 import {ReactElement, ReactNode, useState} from 'react'
+import {FrIconClassName, RiIconClassName} from '@codegouvfr/react-dsfr/src/fr/generatedFromCss/classNames'
 
 interface Props {
   title: string
@@ -10,9 +11,10 @@ interface Props {
   content: ReactNode
   children: ReactElement<any>
   onConfirm: (close: () => void) => void
+  iconId?: FrIconClassName | RiIconClassName
 }
 
-export const ScDialog = ({children, title, content, confirmLabel, onConfirm}: Props) => {
+export const ScDialog = ({children, title, content, confirmLabel, onConfirm, iconId}: Props) => {
   const {m} = useI18n()
   const [open, setOpen] = useState<boolean>(false)
   const close = () => setOpen(false)
@@ -37,9 +39,16 @@ export const ScDialog = ({children, title, content, confirmLabel, onConfirm}: Pr
           <Button priority="tertiary" onClick={() => setOpen(false)}>
             {m.cancel}
           </Button>
-          <Button priority="primary" onClick={confirm} iconId="fr-icon-delete-line">
-            {confirmLabel}
-          </Button>
+
+          {iconId ? (
+            <Button priority="primary" onClick={confirm} iconId={iconId}>
+              {confirmLabel}
+            </Button>
+          ) : (
+            <Button priority="primary" onClick={confirm}>
+              {confirmLabel}
+            </Button>
+          )}
         </DialogActions>
       </Dialog>
     </>

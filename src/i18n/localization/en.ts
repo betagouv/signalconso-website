@@ -755,6 +755,8 @@ export const en = {
     clear: 'Clear',
     specify: `Specify...`,
     removeAsk: 'Remove?',
+    pendingReport: 'You will lose the ongoing report if you change the language. Are you sure?',
+    switchLang: 'Switch language',
     thisWillBeRemoved: (_: string) => `The attachment <b>${_}</b> will be permanently removed.`,
     exportInXLS: 'Export to XLS',
     removeAllFilters: 'Remove all filters.',
