@@ -1,4 +1,4 @@
-import {appConfig} from 'core/appConfig'
+import {appConfig} from '@/core/appConfig'
 import {BaseApiClient} from './BaseApiClient'
 import {CompanySearchResult} from '../model/Company'
 

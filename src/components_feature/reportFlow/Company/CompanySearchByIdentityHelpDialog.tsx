@@ -1,7 +1,7 @@
 import Accordion from '@codegouvfr/react-dsfr/Accordion'
 import Button from '@codegouvfr/react-dsfr/Button'
 import {Dialog, DialogActions, DialogContent, DialogProps, DialogTitle, PaperProps} from '@mui/material'
-import {useI18n} from 'i18n/I18n'
+import {useI18n} from '@/i18n/I18n'
 import * as React from 'react'
 import {EventHandler, ReactElement, SyntheticEvent, useState} from 'react'
 

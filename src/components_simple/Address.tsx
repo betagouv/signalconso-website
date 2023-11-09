@@ -1,4 +1,4 @@
-import {Address} from 'model/Address'
+import {Address} from '@/model/Address'
 import React from 'react'
 import {countryLabel} from '../model/Country'
 import {useI18n} from '../i18n/I18n'

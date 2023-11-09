@@ -1,9 +1,9 @@
-import {ContentPageContainer} from 'components_simple/PageContainers'
-import {BigReportButton} from 'components_simple/buttons/BigReportButton'
-import {BigReportButtonWebView} from 'components_simple/buttons/BigReportButtonWebview'
+import {ContentPageContainer} from '@/components_simple/PageContainers'
+import {BigReportButton} from '@/components_simple/buttons/BigReportButton'
+import {BigReportButtonWebView} from '@/components_simple/buttons/BigReportButtonWebview'
 import {ReactNode} from 'react'
 import {getI18n} from '../i18n/I18nDictionnary'
-import {AppLangs} from 'i18n/localization/AppLangs'
+import {AppLangs} from '@/i18n/localization/AppLangs'
 
 export const CommentCaMarche = ({isWebView, lang}: {isWebView: boolean; lang: AppLangs}) => {
   const {messages: m} = getI18n(lang)

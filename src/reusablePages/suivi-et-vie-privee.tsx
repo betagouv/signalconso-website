@@ -1,5 +1,5 @@
-import {ContentPageContainer} from 'components_simple/PageContainers'
-import {pagesDefs} from 'core/pagesDefinitions'
+import {ContentPageContainer} from '@/components_simple/PageContainers'
+import {pagesDefs} from '@/core/pagesDefinitions'
 import Head from 'next/head'
 import Link from 'next/link'
 import {useI18n} from '../i18n/I18n'

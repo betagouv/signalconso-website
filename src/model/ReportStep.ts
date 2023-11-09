@@ -1,4 +1,4 @@
-import {I18nMessages} from 'i18n/I18nDictionnary'
+import {I18nMessages} from '@/i18n/I18nDictionnary'
 import {ReportDraft2} from './ReportDraft2'
 
 export const STEP_PARAM_NAME = 'step'

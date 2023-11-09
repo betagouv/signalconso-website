@@ -1,7 +1,7 @@
-import {FriendlyHelpText} from 'components_simple/FriendlyHelpText'
-import {Animate} from 'components_simple/Animate'
-import {I18nContextProps, useI18n} from 'i18n/I18n'
-import {ConsumerWish} from 'model/ReportDraft'
+import {FriendlyHelpText} from '@/components_simple/FriendlyHelpText'
+import {Animate} from '@/components_simple/Animate'
+import {I18nContextProps, useI18n} from '@/i18n/I18n'
+import {ConsumerWish} from '@/model/ReportDraft'
 import {Txt} from '../../../components_simple/Txt'
 
 export function ProblemConsumerWishInformation({consumerWish}: {consumerWish: ConsumerWish}) {

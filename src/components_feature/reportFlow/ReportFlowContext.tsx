@@ -1,4 +1,4 @@
-import {ReportDraft2} from 'model/ReportDraft2'
+import {ReportDraft2} from '@/model/ReportDraft2'
 import React, {ReactNode, useContext, useEffect, useRef, useState} from 'react'
 import {getIndexForStep, getIndexForStepOrDone, ReportStep, ReportStepOrDone} from '../../model/ReportStep'
 import {useAnalyticContext} from '../../analytic/AnalyticContext'

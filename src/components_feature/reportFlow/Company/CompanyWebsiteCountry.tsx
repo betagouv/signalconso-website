@@ -1,9 +1,9 @@
-import {Panel, PanelActions, PanelBody} from 'components_simple/Panel'
-import {useI18n} from 'i18n/I18n'
+import {Panel, PanelActions, PanelBody} from '@/components_simple/Panel'
+import {useI18n} from '@/i18n/I18n'
 import React from 'react'
 import {Controller, useForm} from 'react-hook-form'
 import {Country, countryLabel} from '../../../model/Country'
-import {BtnNextSubmit} from 'components_simple/buttons/Buttons'
+import {BtnNextSubmit} from '@/components_simple/buttons/Buttons'
 import {ScRadioButtons} from '../../../components_simple/formInputs/ScRadioButtons'
 
 interface Props {

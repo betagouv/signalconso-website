@@ -2,7 +2,7 @@
  * @jest-environment jsdom
  */
 import {waitFor} from '@testing-library/dom'
-import {ReportDraft2} from 'model/ReportDraft2'
+import {ReportDraft2} from '@/model/ReportDraft2'
 import {Fixture} from '../../../test/fixture'
 import {fireEvent, render, ScRenderResult} from '../../../test/test-utils'
 import {fnSwitch} from '../../../utils/FnSwitch'

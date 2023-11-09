@@ -1,9 +1,9 @@
-import {Panel, PanelBody} from 'components_simple/Panel'
-import {useI18n} from 'i18n/I18n'
+import {Panel, PanelBody} from '@/components_simple/Panel'
+import {useI18n} from '@/i18n/I18n'
 import {Txt} from '../../../components_simple/Txt'
-import {Animate} from 'components_simple/Animate'
+import {Animate} from '@/components_simple/Animate'
 import {ReactNode, useState} from 'react'
-import {AccordionInline} from 'components_simple/AccordionInline'
+import {AccordionInline} from '@/components_simple/AccordionInline'
 import {ScRadioButtons} from '../../../components_simple/formInputs/ScRadioButtons'
 
 export enum IsForeignCompany {

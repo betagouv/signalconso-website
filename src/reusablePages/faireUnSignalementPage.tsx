@@ -1,5 +1,5 @@
-import {LimitedWidthPageContainer} from 'components_simple/PageContainers'
-import {appConfig} from 'core/appConfig'
+import {LimitedWidthPageContainer} from '@/components_simple/PageContainers'
+import {appConfig} from '@/core/appConfig'
 import {ReactNode} from 'react'
 import {Anomaly} from '../anomalies/Anomaly'
 import {ReportFlowStepperWithoutSsr} from '../components_feature/reportFlow/reportFlowStepper/ReportFlowStepperWithoutSsr'

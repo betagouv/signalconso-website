@@ -2,15 +2,15 @@
 
 import {Button} from '@codegouvfr/react-dsfr/Button'
 import {useColors} from '@codegouvfr/react-dsfr/useColors'
-import {allVisibleAnomalies} from 'anomalies/Anomalies'
-import {IllustrationStepper} from 'components_simple/StepIllustrations'
-import {ForeignVisitorsQaPromoBanner} from 'components_simple/bigBanners/ForeignVisitorsQaPromoBanner'
-import {InfoBanner} from 'components_simple/bigBanners/InfoBanner'
-import {MobileAppPromoBanner} from 'components_simple/bigBanners/MobileAppPromoBanner'
-import {bigReportButtonProps} from 'components_simple/buttons/buttonsUtils'
-import {HP_START_REPORT_ANCHOR} from 'core/pagesDefinitions'
-import {useI18n} from 'i18n/I18n'
-import {AppLangs} from 'i18n/localization/AppLangs'
+import {allVisibleAnomalies} from '@/anomalies/Anomalies'
+import {IllustrationStepper} from '@/components_simple/StepIllustrations'
+import {ForeignVisitorsQaPromoBanner} from '@/components_simple/bigBanners/ForeignVisitorsQaPromoBanner'
+import {InfoBanner} from '@/components_simple/bigBanners/InfoBanner'
+import {MobileAppPromoBanner} from '@/components_simple/bigBanners/MobileAppPromoBanner'
+import {bigReportButtonProps} from '@/components_simple/buttons/buttonsUtils'
+import {HP_START_REPORT_ANCHOR} from '@/core/pagesDefinitions'
+import {useI18n} from '@/i18n/I18n'
+import {AppLangs} from '@/i18n/localization/AppLangs'
 import dynamic from 'next/dynamic'
 import {useEffect, useMemo} from 'react'
 import * as smoothscroll from 'smoothscroll-polyfill'
@@ -22,7 +22,7 @@ import {useReportFlowContext} from '../../components_feature/reportFlow/ReportFl
 import SearchAnomalies from '../../components_simple/SearchAnomalies'
 import {BrowserCompatAlert} from '../../components_simple/bigBanners/BrowserAlertCompat'
 
-const ReportStartedAlert = dynamic(() => import('components_feature/ReportStartedAlert'), {ssr: false})
+const ReportStartedAlert = dynamic(() => import('@/components_feature/ReportStartedAlert'), {ssr: false})
 
 export const Homepage = () => {
   const {m, currentLang} = useI18n()

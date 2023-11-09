@@ -1,5 +1,5 @@
-import {DetailInput, DetailInputDate, DetailInputDateNotInFuture, DetailInputType} from 'anomalies/Anomaly'
-import {dateToIsoFormatWithoutTime, notNull} from 'utils/utils'
+import {DetailInput, DetailInputDate, DetailInputDateNotInFuture, DetailInputType} from '@/anomalies/Anomaly'
+import {dateToIsoFormatWithoutTime, notNull} from '@/utils/utils'
 
 export const shouldDateInputDefaultToNow = (detailInput: DetailInputDate | DetailInputDateNotInFuture): boolean => {
   return detailInput.defaultValue === 'SYSDATE'

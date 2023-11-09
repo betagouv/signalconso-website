@@ -1,5 +1,5 @@
 import {Box, BoxProps, Icon, darken} from '@mui/material'
-import {otherColorSet} from 'core/theme'
+import {otherColorSet} from '@/core/theme'
 import {ReactNode} from 'react'
 
 const height = (dense?: boolean) => (dense ? 44 : 52)

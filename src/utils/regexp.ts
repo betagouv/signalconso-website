@@ -1,4 +1,4 @@
-import {AppLang} from 'i18n/localization/AppLangs'
+import {AppLang} from '@/i18n/localization/AppLangs'
 
 export const regexpPattern = {
   email: '^[^ À-ú]+@[^ \\.]+\\.[^ ]+$',

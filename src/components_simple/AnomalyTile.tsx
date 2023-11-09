@@ -1,7 +1,7 @@
 import {Tile} from '@codegouvfr/react-dsfr/Tile'
 import {Anomaly} from '../anomalies/Anomaly'
 import {useReportFlowContext} from '../components_feature/reportFlow/ReportFlowContext'
-import {buildLinkStartReport} from 'core/pagesDefinitions'
+import {buildLinkStartReport} from '@/core/pagesDefinitions'
 import {useI18n} from '../i18n/I18n'
 
 export const AnomalyTile = ({anomaly}: {anomaly: Anomaly}) => {

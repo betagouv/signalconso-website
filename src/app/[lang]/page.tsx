@@ -1,5 +1,5 @@
-import {Homepage} from 'components_feature/home/Homepage'
-import {buildGenerateMetadata} from 'core/metadatas'
+import {Homepage} from '@/components_feature/home/Homepage'
+import {buildGenerateMetadata} from '@/core/metadatas'
 
 export const generateMetadata = buildGenerateMetadata('index')
 

@@ -1,9 +1,9 @@
-import {ScPrecisionInput} from 'components_simple/formInputs/ScPrecisionInput'
-import {useI18n} from 'i18n/I18n'
+import {ScPrecisionInput} from '@/components_simple/formInputs/ScPrecisionInput'
+import {useI18n} from '@/i18n/I18n'
 import {Control, Controller} from 'react-hook-form'
-import {FieldError} from 'react-hook-form/dist/types/errors'
+// import {FieldError} from 'react-hook-form/dist/types/errors'
 
-export const DetailsSpecifyInput = ({name, control, error}: {name: string; control: Control<any, any>; error?: FieldError}) => {
+export const DetailsSpecifyInput = ({name, control, error}: {name: string; control: Control<any, any>; error?: any}) => {
   const {m} = useI18n()
   return (
     <Controller

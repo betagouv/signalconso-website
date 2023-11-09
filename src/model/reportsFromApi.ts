@@ -1,4 +1,4 @@
-import {ReportTag} from 'anomalies/Anomaly'
+import {ReportTag} from '@/anomalies/Anomaly'
 import {Address, ApiAddress} from './Address'
 import {DetailInputValue} from './CreatedReport'
 import {Gender} from './ReportDraft'

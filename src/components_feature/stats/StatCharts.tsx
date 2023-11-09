@@ -1,7 +1,7 @@
 'use client'
 import {Stat} from './Stat'
-import {useApiClients} from 'context/ApiClientsContext'
-import {useI18n} from 'i18n/I18n'
+import {useApiClients} from '@/context/ApiClientsContext'
+import {useI18n} from '@/i18n/I18n'
 
 export const StatCharts = () => {
   const apiClient = useApiClients().signalConsoApiClient

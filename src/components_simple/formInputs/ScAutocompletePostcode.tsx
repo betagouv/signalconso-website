@@ -1,8 +1,8 @@
 import {useQuery} from '@tanstack/react-query'
-import {useApiClients} from 'context/ApiClientsContext'
-import {useI18n} from 'i18n/I18n'
+import {useApiClients} from '@/context/ApiClientsContext'
+import {useI18n} from '@/i18n/I18n'
 import {useEffect, useState} from 'react'
-import {useThrottle} from 'utils/useThrottle'
+import {useThrottle} from '@/utils/useThrottle'
 import {ScAutoComplete} from './ScAutocomplete'
 
 type PostcodeOption = {

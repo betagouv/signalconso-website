@@ -1,6 +1,6 @@
 'use client'
-import {pagesDefs} from 'core/pagesDefinitions'
-import {useI18n} from 'i18n/I18n'
+import {pagesDefs} from '@/core/pagesDefinitions'
+import {useI18n} from '@/i18n/I18n'
 import Link from 'next/link'
 import {useEffect, useId, useState} from 'react'
 import {LocalStorageEntity} from '../../utils/localStorageApi'

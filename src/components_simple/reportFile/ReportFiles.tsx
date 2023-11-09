@@ -1,5 +1,5 @@
 import {Icon} from '@mui/material'
-import {useI18n} from 'i18n/I18n'
+import {useI18n} from '@/i18n/I18n'
 import React, {useEffect, useState} from 'react'
 import {useApiClients} from '../../context/ApiClientsContext'
 import {appConfig} from '../../core/appConfig'

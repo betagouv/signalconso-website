@@ -3,9 +3,9 @@
 import {Button} from '@codegouvfr/react-dsfr/Button'
 import {CallOut} from '@codegouvfr/react-dsfr/CallOut'
 import {useColors} from '@codegouvfr/react-dsfr/useColors'
-import {findAnomaly} from 'anomalies/Anomalies'
-import {Anomaly} from 'anomalies/Anomaly'
-import {LandingData} from 'landings/landingDataUtils'
+import {findAnomaly} from '@/anomalies/Anomalies'
+import {Anomaly} from '@/anomalies/Anomaly'
+import {LandingData} from '@/landings/landingDataUtils'
 
 import Image from 'next/image'
 import Link from 'next/link'
@@ -14,7 +14,7 @@ import {ReactNode, useRef} from 'react'
 import {AnomalyTile} from '../components_simple/AnomalyTile'
 import {buildLinkHomePickCategory, buildLinkStartReport, pagesDefs} from '../core/pagesDefinitions'
 import {useI18n} from '../i18n/I18n'
-import {bigReportButtonProps, getBigReportButtonText} from 'components_simple/buttons/buttonsUtils'
+import {bigReportButtonProps, getBigReportButtonText} from '@/components_simple/buttons/buttonsUtils'
 
 type Props = {
   landingData: LandingData

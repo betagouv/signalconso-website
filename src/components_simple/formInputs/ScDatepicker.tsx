@@ -1,5 +1,5 @@
 import React, {ForwardedRef, ReactNode, forwardRef, useId} from 'react'
-import {frenchToIsoFormat} from 'utils/utils'
+import {frenchToIsoFormat} from '@/utils/utils'
 
 export interface ScDatepickerProps {
   label?: ReactNode

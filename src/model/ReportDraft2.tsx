@@ -1,12 +1,12 @@
-import {getDraftReportInputs} from 'components_feature/reportFlow/Details/draftReportInputs'
-import {isSpecifyInputName, SpecifyFormUtils} from 'components_feature/reportFlow/Details/Details'
+import {getDraftReportInputs} from '@/components_feature/reportFlow/Details/draftReportInputs'
+import {isSpecifyInputName, SpecifyFormUtils} from '@/components_feature/reportFlow/Details/Details'
 import {DeepPartial, isoToFrenchFormat} from '../utils/utils'
 import {CompanyDraft, ReportDraft, ReportDraftConsumer} from './ReportDraft'
 import {Anomaly, DetailInput, DetailInputType} from '../anomalies/Anomaly'
 import {DetailInputValue} from './CreatedReport'
 import {Address} from './Address'
 import {AppLang} from '../i18n/localization/AppLangs'
-import {isDateInput} from 'components_feature/reportFlow/Details/DetailInputsUtils'
+import {isDateInput} from '@/components_feature/reportFlow/Details/DetailInputsUtils'
 
 export type DetailInputValues2 = {[key: string]: string | string[]}
 

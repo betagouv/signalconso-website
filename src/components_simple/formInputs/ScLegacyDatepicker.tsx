@@ -1,5 +1,5 @@
 import {TextField} from '@mui/material'
-import {dateToIsoFormatWithoutTime} from 'utils/utils'
+import {dateToIsoFormatWithoutTime} from '@/utils/utils'
 import React, {forwardRef} from 'react'
 
 interface Props {

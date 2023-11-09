@@ -1,5 +1,5 @@
 'use client'
-import {useTimeout} from 'hooks/useTimeout'
+import {useTimeout} from '@/hooks/useTimeout'
 import Image from 'next/legacy/image'
 import {useState} from 'react'
 import {Animate} from './Animate'
