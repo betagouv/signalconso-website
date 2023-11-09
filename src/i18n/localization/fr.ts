@@ -765,6 +765,8 @@ export const fr = {
     clear: 'Effacer',
     specify: `Précisez...`,
     removeAsk: 'Supprimer ? ',
+    pendingReport: 'Vous perdrez le signalement en cours en cas de changement de langue. Êtes-vous sûr ?',
+    switchLang: 'Changer la langue',
     thisWillBeRemoved: (_: string) => `La pièce jointe <b>${_}</b> sera définitivement supprimée.`,
     exportInXLS: 'Exporter en XLS',
     removeAllFilters: 'Supprimer les filtres',
