@@ -81,6 +81,7 @@ export const ReportFile = ({file, onRemove}: ReportFileProps) => {
           <div className="w-full text-center">
             <ScDialog
               title={m.removeAsk}
+              iconId={'fr-icon-delete-line'}
               content={<p className="mb-0" dangerouslySetInnerHTML={{__html: m.thisWillBeRemoved(file.filename)}} />}
               onConfirm={close => {
                 remove()
