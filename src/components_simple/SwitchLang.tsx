@@ -13,6 +13,7 @@ import {Button} from '@codegouvfr/react-dsfr/Button'
 export function SwitchLang() {
   const pathname = usePathname()
   const router = useRouter()
+  const _report = useReportFlowContext()
   const {m, currentLang} = useI18n()
   const path = replaceLangInPath(pathname, switchLang(currentLang))
   const home = `/${switchLang(currentLang)}`
