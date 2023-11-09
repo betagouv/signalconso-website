@@ -49,10 +49,6 @@ export const ScDialog = ({children, title, content, confirmLabel, onConfirm, ico
               {confirmLabel}
             </Button>
           )}
-
-          <Button priority="primary" onClick={confirm}>
-            {confirmLabel}
-          </Button>
         </DialogActions>
       </Dialog>
     </>
