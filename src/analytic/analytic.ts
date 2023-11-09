@@ -1,20 +1,12 @@
 import {usePathname, useSearchParams} from 'next/navigation'
-import {AppConfig, appConfig} from '../core/appConfig'
+import {useEffect} from 'react'
+import {appConfig} from '../core/appConfig'
 import {Eularian} from '../plugins/eularian'
 import {Matomo} from '../plugins/matomo'
-import {useEffect} from 'react'
 
 export class Analytic {
-  static readonly init = ({
-    appConfig,
-    matomo,
-    eularian,
-  }: {
-    appConfig: AppConfig
-    matomo: Matomo | undefined
-    eularian: Eularian | undefined
-  }) => {
-    return new Analytic(appConfig, matomo, eularian)
+  static readonly init = ({matomo, eularian}: {matomo: Matomo | undefined; eularian: Eularian | undefined}) => {
+    return new Analytic(matomo, eularian)
   }
 
   private log = (...args: (string | undefined)[]) => {
@@ -22,14 +14,13 @@ export class Analytic {
   }
 
   private constructor(
-    private appConfig: AppConfig,
     private matomo: Matomo | undefined,
     private eularian: Eularian | undefined,
   ) {}
 
   readonly onPageChange = (path: string) => {
     this.log('[onPageChange]', path)
-    if (!this.appConfig.isDev) {
+    if (!appConfig.isDev) {
       this.matomo?.trackPage(path)
       this.eularian?.send(path)
     }
@@ -37,7 +28,7 @@ export class Analytic {
 
   readonly trackPage = (path: string, title?: string) => {
     this.log('[trackPage]', path, title)
-    if (!this.appConfig.isDev) {
+    if (!appConfig.isDev) {
       this.matomo?.trackPage(path, title)
     }
   }

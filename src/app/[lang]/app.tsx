@@ -35,7 +35,7 @@ const App: ({children}: {children: React.ReactNode}) => JSX.Element = ({children
     Sentry.init(appConfig)
     const matomo = Matomo.init({siteId: appConfig.matomo_siteId, url: appConfig.matomo_url})
     const eularian = Eularian.init()
-    setAnalytic(Analytic.init({appConfig, matomo, eularian}))
+    setAnalytic(Analytic.init({matomo, eularian}))
   }, [])
 
   return (
