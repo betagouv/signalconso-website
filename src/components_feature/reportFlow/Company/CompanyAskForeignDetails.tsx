@@ -79,6 +79,7 @@ export const CompanyAskForeignDetails = ({onSubmit, companyKind}: Props) => {
                     PHONE: m.cantIdentifyPhoneCompany,
                     LOCATION: m.cantIdentifyLocationCompany,
                     SOCIAL: m.cantIdentifyCompany,
+                    PRODUCT: m.cantIdentifyCompany,
                   }),
                 }}
               />
