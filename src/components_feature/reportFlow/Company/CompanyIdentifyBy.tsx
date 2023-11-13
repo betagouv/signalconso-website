@@ -1,11 +1,8 @@
-import React, {ReactNode, useEffect, useRef, useState} from 'react'
+import React, {ReactNode, useState} from 'react'
 import {useI18n} from 'i18n/I18n'
-import {Txt} from '../../../components_simple/Txt'
-import {Panel, PanelBody} from 'components_simple/Panel'
 import {Animate} from 'components_simple/Animate'
 import {CompanyKinds} from '../../../anomalies/Anomaly'
 import {ScRadioButtons} from '../../../components_simple/formInputs/ScRadioButtons'
-import {AutofocusedDiv} from 'components_simple/AutofocusedDiv'
 
 export enum IdentifyBy {
   NAME = 'NAME',
@@ -23,15 +20,7 @@ export const CompanyIdentifyBy = ({companyKind, children}: Props) => {
   const [identifyBy, setIdentifyBy] = useState<IdentifyBy | undefined>()
 
   const createOptions = (companyKind: CompanyKinds) => [
-    ...(companyKind !== 'SOCIAL'
-      ? [
-          {
-            label: m.identifyBy_name,
-            description: m.identifyBy_nameDesc,
-            value: IdentifyBy.NAME,
-          },
-        ]
-      : []),
+    {label: m.identifyBy_name, description: m.identifyBy_nameDesc, value: IdentifyBy.NAME},
     {label: m.identifyBy_identity, description: m.identifyBy_identityDesc, value: IdentifyBy.IDENTITY},
     ...(companyKind !== 'SIRET'
       ? [
