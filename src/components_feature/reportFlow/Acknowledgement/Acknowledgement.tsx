@@ -13,6 +13,8 @@ import {ReportDraft} from '../../../model/ReportDraft'
 import {fnSwitch} from '../../../utils/FnSwitch'
 import {useReportCreateContext} from '../ReportCreateContext'
 import {useReportFlowContext} from '../ReportFlowContext'
+import imgCompany from '@/img/illustrations/company.png'
+import Image from 'next/image'
 
 export enum AcknowledgmentCases {
   ReponseConso = 'ReponseConso',
@@ -191,15 +193,7 @@ const AcknowledgementLayout = ({
   const {m, currentLang} = useI18n()
   return (
     <>
-      <img
-        src="/image/illustrations/company.png"
-        alt=""
-        style={{
-          display: 'block',
-          margin: 'auto',
-          height: 160,
-        }}
-      />
+      <Image src={imgCompany} alt="" className="block mx-auto" />
 
       <div className="max-w-3xl mx-auto">
         <h2>

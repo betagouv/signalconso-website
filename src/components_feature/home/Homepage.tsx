@@ -14,10 +14,10 @@ import {AppLangs} from '@/i18n/localization/AppLangs'
 import dynamic from 'next/dynamic'
 import {useEffect, useMemo} from 'react'
 import * as smoothscroll from 'smoothscroll-polyfill'
-import company from '../../../public/image/illustrations/company.png'
-import consumer from '../../../public/image/illustrations/consumer.png'
-import dgccrf from '../../../public/image/illustrations/dgccrf.png'
-import report from '../../../public/image/illustrations/report.png'
+import imgConsumer from '@/img/illustrations/consumer.png'
+import imgReport from '@/img/illustrations/report.png'
+import imgCompany from '@/img/illustrations/company.png'
+import imgDgccrf from '@/img/illustrations/dgccrf.png'
 import {useReportFlowContext} from '../../components_feature/reportFlow/ReportFlowContext'
 import SearchAnomalies from '../../components_simple/SearchAnomalies'
 import {BrowserCompatAlert} from '../../components_simple/bigBanners/BrowserAlertCompat'
@@ -48,14 +48,13 @@ export const Homepage = () => {
             <h1 dangerouslySetInnerHTML={{__html: m.homepage.signalconsoCatchWord}} />
             <IllustrationStepper
               steps={[
-                {title: m.homepage.step1, image: consumer, alt: ''},
-                {title: m.homepage.step2, image: report, alt: ''},
+                {title: m.homepage.step1, image: imgConsumer},
+                {title: m.homepage.step2, image: imgReport},
                 {
                   title: m.homepage.step3,
-                  image: company,
-                  alt: '',
+                  image: imgCompany,
                 },
-                {title: m.homepage.step4, image: dgccrf, alt: ''},
+                {title: m.homepage.step4, image: imgDgccrf},
               ]}
             />
             <div className="flex items-center justify-center fr-pt-4w">
