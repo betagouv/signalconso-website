@@ -4,6 +4,8 @@ import Image from 'next/image'
 import Link from 'next/link'
 import {useI18n} from '../../i18n/I18n'
 import {AppLangs} from '../../i18n/localization/AppLangs'
+import imgAppScreenshots from '@/img/actualites/mobile_app_screenshots.png'
+import imgPromoBanner from '@/img/actualites/signalconso_promo_banner.jpg'
 
 export function ArticleAppMobile() {
   const {m, currentLang} = useI18n()
@@ -11,7 +13,7 @@ export function ArticleAppMobile() {
   return (
     <div>
       <div className="float-left mr-4">
-        <Image width={177} height={193} src={`/image/actualites/mobile_app_screenshots.png`} alt="" />
+        <Image width={177} height={193} src={imgAppScreenshots} alt="" />
       </div>
       <p>
         {m.articleAppMobile.intro1}
@@ -30,16 +32,10 @@ export function ArticleAppMobile() {
       <p>
         <strong>{m.articleAppMobile.cta}</strong>
       </p>
-      {/* this banner is too large for mobile viewports, and unreadable if scaled down  */}
-
       {currentLang === AppLangs.fr && (
+        // this banner is too large for mobile viewports, and unreadable if scaled down
         <div className="hidden lg:block">
-          <Image
-            width={784}
-            height={416}
-            src={`/image/actualites/signalconso_promo_banner.jpg`}
-            alt={m.articleAppMobile.banner}
-          />
+          <Image src={imgPromoBanner} alt={m.articleAppMobile.banner} />
         </div>
       )}
     </div>

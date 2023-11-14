@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
+import imgAccessibilite from '@/img/actualites/accessibilite.jpg'
 
 export function ArticleAccessibilite() {
   return (
@@ -47,9 +48,7 @@ export function ArticleAccessibilite() {
         en matière d'informations et d'<b>assistance aux consommateurs</b>, tout en offrant une expérience utilisateur exemplaire.
       </p>
       <p>Nous avons encore des travaux sur l’accessibilité à réaliser.</p>
-      <div className="relative w-[336px] h-[224px] lg:w-[672px] lg:h-[448px] xl:w-[1008px] xl:h-[672px] mx-auto">
-        <Image fill src={`/image/actualites/accessibilite.jpg`} alt="" />
-      </div>
+      <Image className="w-full h-auto" sizes={'100vw'} src={imgAccessibilite} alt="" />
     </div>
   )
 }

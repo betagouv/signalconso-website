@@ -2,7 +2,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import {ReactNode} from 'react'
-
+import imgDonnezAvisBanner from '@/img/actualites/donnez-avis-site-internet.png'
 export function ArticleQuestionnaireSiteDgccrf() {
   return (
     <div>
@@ -19,9 +19,14 @@ export function ArticleQuestionnaireSiteDgccrf() {
         Nous vous remercions d'avance pour le temps que vous y consacrerez et pour vos commentaires. Ne vous inquiétez pas, toutes
         les données collectées resteront confidentielles et seront traitées de manière anonyme.
       </p>
-      <div className="relative w-[304px] h-[205px] md:w-[507px] md:h-[342px] mx-auto">
+      <div className="flex justify-center">
         <LinkQuestionnaire className="fr-raw-link no_external_link_icon">
-          <Image fill src={`/image/actualites/donnez-avis-site-internet.png`} alt={'Donnez votre avis sur le site internet'} />
+          <Image
+            className="w-[304px] md:w-[507px] h-auto"
+            sizes="(max-width: 576px) 304px, 507px"
+            src={imgDonnezAvisBanner}
+            alt={'Donnez votre avis sur le site internet'}
+          />
         </LinkQuestionnaire>
       </div>
     </div>
