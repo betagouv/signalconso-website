@@ -1,6 +1,6 @@
 import {MemberCard} from '@/components_simple/MemberCard'
 import {ContentPageContainer} from '@/components_simple/PageContainers'
-import {team} from '@/core/team'
+import {getTeam} from '@/core/team'
 import {Metadata} from 'next'
 import Link from 'next/link'
 import {getI18n} from '../i18n/I18nDictionnary'
@@ -57,17 +57,17 @@ export const QuiSommesNous = ({params}: any) => {
           </div>
           <h2>{m.quiSommesNous.teamTitle}</h2>
           <ul className="p-0 list-none grid gap-4 grid-cols-1 md:grid-cols-2 xl:grid-cols-3 fr-pb-4w">
-            {team(params.lang).current.map(_ => (
+            {getTeam(params.lang).current.map(_ => (
               <li key={_.name}>
-                <MemberCard key={_.avatar} member={_} />
+                <MemberCard key={_.name} member={_} />
               </li>
             ))}
           </ul>
           <h2>{m.quiSommesNous.formerMembersTitle}</h2>
           <ul className="p-0 list-none grid gap-4 grid-cols-1 md:grid-cols-2 xl:grid-cols-3 fr-pb-4w">
-            {team(params.lang).former.map(_ => (
+            {getTeam(params.lang).former.map(_ => (
               <li key={_.name}>
-                <MemberCard key={_.avatar} member={_} disabled />
+                <MemberCard key={_.name} member={_} disabled />
               </li>
             ))}
           </ul>
