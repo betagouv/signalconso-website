@@ -8,6 +8,7 @@ import {notFound} from 'next/navigation'
 import {isoToHumanReadableText} from '@/utils/utils'
 import {getI18n} from '../../../../i18n/I18nDictionnary'
 import {AppLang} from '../../../../i18n/localization/AppLangs'
+import {getArticleContent} from '@/components_feature/actualites/getArticleContent'
 
 type LocalPathParams = PathParams<{
   articleSlug: string
@@ -34,6 +35,7 @@ export default function News(props: PageComponentProps<LocalPathParams>) {
 
 function NewsArticle(props: {article: NewsArticle; lang: AppLang}) {
   const {messages} = getI18n(props.lang)
+  const ArticleContent = getArticleContent(props.article.slug)
   return (
     <ContentPageContainer>
       <p>
@@ -44,7 +46,7 @@ function NewsArticle(props: {article: NewsArticle; lang: AppLang}) {
       <p>
         <span className="text-gray-500 text-sm"> {isoToHumanReadableText(props.article.date, props.lang)}</span>
       </p>
-      <props.article.content />
+      <ArticleContent />
     </ContentPageContainer>
   )
 }
