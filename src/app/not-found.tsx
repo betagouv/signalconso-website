@@ -8,7 +8,7 @@ import '../globals.css'
 import React from 'react'
 import {DsfrProvider} from '@codegouvfr/react-dsfr/next-appdir/DsfrProvider'
 import {Fender} from '../components_simple/Fender'
-import MuiSetup from './[lang]/MuiSetup'
+import ThemeSetup from './[lang]/ThemeSetup'
 
 // No metadata here, not available yet https://github.com/vercel/next.js/issues/45620
 export default function NotFound() {
@@ -19,7 +19,7 @@ export default function NotFound() {
 
   const {messages: m} = getI18n(lang)
   return (
-    <MuiSetup>
+    <ThemeSetup>
       <DsfrProvider lang={lang}>
         <Page>
           <Fender
@@ -39,6 +39,6 @@ export default function NotFound() {
           </Fender>
         </Page>
       </DsfrProvider>
-    </MuiSetup>
+    </ThemeSetup>
   )
 }

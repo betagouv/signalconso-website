@@ -28,7 +28,7 @@ monkeyPatchDomForGoogleTranslate()
 
 const queryClient = new QueryClient()
 
-const App: ({children}: {children: React.ReactNode}) => JSX.Element = ({children}: {children: React.ReactNode}) => {
+const LayoutCore: ({children}: {children: React.ReactNode}) => JSX.Element = ({children}: {children: React.ReactNode}) => {
   const [analytic, setAnalytic] = useState<Analytic | undefined>()
 
   useEffect(() => {
@@ -48,7 +48,7 @@ const App: ({children}: {children: React.ReactNode}) => JSX.Element = ({children
                 <ReportCreateProvider>
                   <ReportFlowProvider>
                     <AutoscrollProvider>
-                      <AppBase>{children}</AppBase>
+                      <Base>{children}</Base>
                     </AutoscrollProvider>
                   </ReportFlowProvider>
                 </ReportCreateProvider>
@@ -62,7 +62,7 @@ const App: ({children}: {children: React.ReactNode}) => JSX.Element = ({children
   )
 }
 
-const AppBase = ({children}: {children: React.ReactNode}) => {
+const Base = ({children}: {children: React.ReactNode}) => {
   const {config} = useConfig()
   const {currentLang} = useI18n()
   const pathname = usePathname() ?? ''
@@ -110,4 +110,4 @@ const AppBase = ({children}: {children: React.ReactNode}) => {
   )
 }
 
-export default App
+export default LayoutCore
