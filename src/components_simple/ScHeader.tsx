@@ -1,7 +1,7 @@
 'use client'
 
 import Header from '@codegouvfr/react-dsfr/Header'
-import {appConfig} from 'core/appConfig'
+import {appConfig} from '@/core/appConfig'
 import {usePathname} from 'next/navigation'
 import {pagesDefs} from '../core/pagesDefinitions'
 import {useI18n} from '../i18n/I18n'

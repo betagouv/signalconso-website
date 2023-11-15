@@ -1,5 +1,5 @@
-import {buildGenerateMetadataForWebviews} from 'core/metadatas'
-import {Stats} from 'reusablePages/stats'
+import {buildGenerateMetadataForWebviews} from '@/core/metadatas'
+import {Stats} from '@/reusablePages/stats'
 
 export const generateMetadata = buildGenerateMetadataForWebviews()
 

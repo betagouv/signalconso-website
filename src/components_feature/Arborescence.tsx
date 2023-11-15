@@ -3,9 +3,9 @@
 import Button from '@codegouvfr/react-dsfr/Button'
 import {Box, Checkbox, IconButton, Radio, useTheme} from '@mui/material'
 import Icon from '@mui/material/Icon'
-import {getOptionsFromInput, getPlaceholderFromInput} from 'components_feature/reportFlow/Details/DetailInputsUtils'
-import {ContentPageContainer} from 'components_simple/PageContainers'
-import {styleUtils} from 'core/theme'
+import {getOptionsFromInput, getPlaceholderFromInput} from '@/components_feature/reportFlow/Details/DetailInputsUtils'
+import {ContentPageContainer} from '@/components_simple/PageContainers'
+import {styleUtils} from '@/core/theme'
 import {useEffect, useState} from 'react'
 import {
   allVisibleAnomalies,

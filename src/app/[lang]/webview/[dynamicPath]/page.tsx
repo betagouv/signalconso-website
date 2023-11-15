@@ -1,7 +1,7 @@
 import {notFound} from 'next/navigation'
 import {allAnomalies} from '../../../../anomalies/Anomalies'
 import * as categoryPathPage from '../../../../reusablePages/faireUnSignalementPage'
-import {PageComponentProps, PathParams, buildGenerateMetadataForWebviews} from 'core/metadatas'
+import {PageComponentProps, PathParams, buildGenerateMetadataForWebviews} from '@/core/metadatas'
 
 type LocalPathParams = PathParams<{
   dynamicPath: string

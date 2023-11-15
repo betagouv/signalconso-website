@@ -1,15 +1,15 @@
 import {useTheme} from '@mui/material'
-import {allAnomalies} from 'anomalies/Anomalies'
-import {StepNavigation} from 'components_feature/reportFlow/reportFlowStepper/ReportFlowStepper'
-import {styleUtils} from 'core/theme'
-import {firstReportStep} from 'model/ReportStep'
+import {allAnomalies} from '@/anomalies/Anomalies'
+import {StepNavigation} from '@/components_feature/reportFlow/reportFlowStepper/ReportFlowStepper'
+import {styleUtils} from '@/core/theme'
+import {firstReportStep} from '@/model/ReportStep'
 import {useEffect, useState} from 'react'
 import {Anomaly} from '../../anomalies/Anomaly'
 import {ReportDraft} from '../../model/ReportDraft'
 import {Fixture, SeedableRandom} from '../../test/fixture'
 import {ConfirmationInner} from '../reportFlow/Confirmation/Confirmation'
 import {useI18n} from '../../i18n/I18n'
-import {AppLangs} from 'i18n/localization/AppLangs'
+import {AppLangs} from '@/i18n/localization/AppLangs'
 
 export const dummyStepNavigation: StepNavigation = {
   currentStep: firstReportStep,

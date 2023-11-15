@@ -1,6 +1,6 @@
 import {useQuery} from '@tanstack/react-query'
-import {useApiClients} from 'context/ApiClientsContext'
-import {useToastError} from 'hooks/useToastError'
+import {useApiClients} from '@/context/ApiClientsContext'
+import {useToastError} from '@/hooks/useToastError'
 import {useEffect} from 'react'
 
 const _1hourInMs = 3600 * 1000

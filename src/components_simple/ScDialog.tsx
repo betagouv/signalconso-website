@@ -1,6 +1,6 @@
 import {Button} from '@codegouvfr/react-dsfr/Button'
 import {Dialog, DialogActions, DialogContent, DialogTitle} from '@mui/material'
-import {useI18n} from 'i18n/I18n'
+import {useI18n} from '@/i18n/I18n'
 import * as React from 'react'
 import {ReactElement, ReactNode, useState} from 'react'
 import {FrIconClassName, RiIconClassName} from '@codegouvfr/react-dsfr/src/fr/generatedFromCss/classNames'

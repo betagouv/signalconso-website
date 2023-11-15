@@ -1,5 +1,5 @@
-import {Anomaly} from 'anomalies/Anomaly'
-import {NewsArticle} from 'components_feature/actualites/newsArticlesData'
+import {Anomaly} from '@/anomalies/Anomaly'
+import {NewsArticle} from '@/components_feature/actualites/newsArticlesData'
 import {AppLang, AppLangs} from '../i18n/localization/AppLangs'
 import {LandingData, allVisibleLandings} from '../landings/landingDataUtils'
 import {appConfig} from './appConfig'

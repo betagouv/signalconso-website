@@ -4,6 +4,7 @@ import {useI18n} from '../../../i18n/I18n'
 import * as React from 'react'
 import Image from 'next/image'
 import Button from '@codegouvfr/react-dsfr/Button'
+import imgBarcode from '@/img/barcode-helper/barcode.jpg'
 
 export interface ConfirmProps extends Omit<DialogProps, 'children' | 'onClick' | 'open'> {
   children: ReactElement<any>
@@ -32,7 +33,7 @@ export const CompanySearchByBarcodeHelpDialog = ({children, PaperProps, onClick,
         </DialogTitle>
         <DialogContent>
           {m.barcodeHelp2}
-          <Image src="/image/barcode.jpg" alt="" width={500} height={315} />
+          <Image src={imgBarcode} alt="" className="max-w-[300px] w-full h-auto block mx-auto" sizes="300px" />
         </DialogContent>
         <DialogActions>
           <Button onClick={close} priority="secondary">

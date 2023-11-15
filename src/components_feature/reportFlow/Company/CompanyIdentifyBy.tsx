@@ -1,6 +1,6 @@
-import React, {ReactNode, useState} from 'react'
-import {useI18n} from 'i18n/I18n'
-import {Animate} from 'components_simple/Animate'
+import {Animate} from '@/components_simple/Animate'
+import {useI18n} from '@/i18n/I18n'
+import {ReactNode, useState} from 'react'
 import {CompanyKinds} from '../../../anomalies/Anomaly'
 import {ScRadioButtons} from '../../../components_simple/formInputs/ScRadioButtons'
 

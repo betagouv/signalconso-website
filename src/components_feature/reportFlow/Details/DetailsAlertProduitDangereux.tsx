@@ -1,7 +1,7 @@
 import React from 'react'
 import {Alert} from '@codegouvfr/react-dsfr/Alert'
 import Link from 'next/link'
-import {useI18n} from 'i18n/I18n'
+import {useI18n} from '@/i18n/I18n'
 
 const liensNumerosUrgence = 'https://www.service-public.fr/particuliers/vosdroits/F33954'
 

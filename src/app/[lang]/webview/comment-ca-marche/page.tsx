@@ -1,5 +1,5 @@
-import {PageComponentProps, buildGenerateMetadataForWebviews} from 'core/metadatas'
-import {CommentCaMarche} from 'reusablePages/comment-ca-marche'
+import {PageComponentProps, buildGenerateMetadataForWebviews} from '@/core/metadatas'
+import {CommentCaMarche} from '@/reusablePages/comment-ca-marche'
 
 export const generateMetadata = buildGenerateMetadataForWebviews()
 

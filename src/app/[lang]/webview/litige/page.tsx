@@ -1,5 +1,5 @@
-import {buildGenerateMetadataForWebviews} from 'core/metadatas'
-import {Litige} from 'reusablePages/litige'
+import {buildGenerateMetadataForWebviews} from '@/core/metadatas'
+import {Litige} from '@/reusablePages/litige'
 
 export const generateMetadata = buildGenerateMetadataForWebviews()
 

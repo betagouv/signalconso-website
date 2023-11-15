@@ -1,8 +1,8 @@
-import {newsArticlesData} from 'components_feature/actualites/newsArticlesData'
-import {ContentPageContainer} from 'components_simple/PageContainers'
-import {PageComponentProps, buildGenerateMetadata} from 'core/metadatas'
-import {buildLinkLandingPage, buildLinkNewsArticle, pagesDefs} from 'core/pagesDefinitions'
-import {allVisibleLandings} from 'landings/landingDataUtils'
+import {newsArticlesData} from '@/components_feature/actualites/newsArticlesData'
+import {ContentPageContainer} from '@/components_simple/PageContainers'
+import {PageComponentProps, buildGenerateMetadata} from '@/core/metadatas'
+import {buildLinkLandingPage, buildLinkNewsArticle, pagesDefs} from '@/core/pagesDefinitions'
+import {allVisibleLandings} from '@/landings/landingDataUtils'
 import Link from 'next/link'
 import {getI18n} from '../../../i18n/I18nDictionnary'
 

@@ -1,5 +1,5 @@
-import {I18nMessages, getI18n} from 'i18n/I18nDictionnary'
-import {AppLangs, supportedLang} from 'i18n/localization/AppLangs'
+import {I18nMessages, getI18n} from '@/i18n/I18nDictionnary'
+import {AppLangs, supportedLang} from '@/i18n/localization/AppLangs'
 import {PageDefInternal, internalPageDefs} from './pagesDefinitions'
 
 // Most pages are just under /[lang]

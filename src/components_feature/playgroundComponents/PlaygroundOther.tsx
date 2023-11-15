@@ -1,5 +1,5 @@
-import {ButtonWithLoader} from 'components_simple/buttons/Buttons'
-import {ScAlert} from 'components_simple/ScAlert'
+import {ButtonWithLoader} from '@/components_simple/buttons/Buttons'
+import {ScAlert} from '@/components_simple/ScAlert'
 import {useState} from 'react'
 import {useForm} from 'react-hook-form'
 import {AccordionInline} from '../../components_simple/AccordionInline'

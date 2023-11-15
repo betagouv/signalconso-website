@@ -1,13 +1,12 @@
 import {alpha, Box, IconButton, useTheme} from '@mui/material'
-import {styleUtils} from 'core/theme'
-import Image, {StaticImageData} from 'next/legacy/image'
+import {styleUtils} from '@/core/theme'
 import {useState} from 'react'
 import SwipeableViews from 'react-swipeable-views'
+import Image, {StaticImageData} from 'next/image'
 
 interface IllustrationStepperStepProps {
   title: string
-  image: StaticImageData | string
-  alt?: string
+  image: StaticImageData
 }
 
 interface IllustrationStepperProps {
@@ -29,23 +28,10 @@ const IllustrationStepperMobile = ({steps}: IllustrationStepperProps) => {
     <div className="lg:hidden">
       <SwipeableViews enableMouseEvents index={index} onChangeIndex={setIndex}>
         {steps.map(step => (
-          <Box key={step.title}>
-            <Box
-              sx={{
-                height: 240,
-                width: '100%',
-                position: 'relative',
-              }}
-            >
-              <Image
-                src={step.image}
-                alt={step.alt}
-                objectFit="contain"
-                layout="fill"
-                priority={steps[0] === step}
-                quality={50}
-              />
-            </Box>
+          <div key={step.title}>
+            <div className="flex justify-center">
+              <Image src={step.image} alt={''} priority={steps[0] === step} width={243} height={240} />
+            </div>
             <Box
               sx={{
                 textAlign: 'center',
@@ -56,7 +42,7 @@ const IllustrationStepperMobile = ({steps}: IllustrationStepperProps) => {
               component="p"
               dangerouslySetInnerHTML={{__html: step.title}}
             />
-          </Box>
+          </div>
         ))}
       </SwipeableViews>
       <ul className="mt-1 flex justify-center list-none p-0">
@@ -99,7 +85,7 @@ const IllustrationStepperDesktop = ({steps}: IllustrationStepperProps) => {
   const theme = useTheme()
   return (
     <ol className="items-center hidden lg:flex">
-      {steps.map(({image, alt, title}) => (
+      {steps.map(({image, title}) => (
         <Box
           component="li"
           key={title}
@@ -140,8 +126,8 @@ const IllustrationStepperDesktop = ({steps}: IllustrationStepperProps) => {
             },
           }}
         >
-          <div className="w-full relative h-56">
-            <Image src={image} alt={alt} objectFit="contain" layout="fill" />
+          <div className="w-full">
+            <Image width={226} height={224} src={image} alt={''} />
           </div>
           <p
             className="flex items-center mx-1 my-0 text-sm xl:text-base font-medium max-w-xs h-16"

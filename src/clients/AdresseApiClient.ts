@@ -1,4 +1,4 @@
-import {appConfig} from 'core/appConfig'
+import {appConfig} from '@/core/appConfig'
 import {BaseApiClient} from './BaseApiClient'
 
 export type AdresseType = 'locality' | 'municipality' | 'street' | 'housenumber'

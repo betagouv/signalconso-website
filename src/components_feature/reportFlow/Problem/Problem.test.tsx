@@ -2,9 +2,9 @@
  * @jest-environment jsdom
  */
 import '@testing-library/jest-dom'
-import {dummyStepNavigation} from 'components_feature/playgroundComponents/PlaygroundConfirmation'
-import {ReportDraft2} from 'model/ReportDraft2'
-import {AccessReportFlow, fireEvent, render, ScRenderResult} from 'test/test-utils'
+import {dummyStepNavigation} from '@/components_feature/playgroundComponents/PlaygroundConfirmation'
+import {ReportDraft2} from '@/model/ReportDraft2'
+import {AccessReportFlow, fireEvent, render, ScRenderResult} from '@/test/test-utils'
 import {Anomaly} from '../../../anomalies/Anomaly'
 import {Fixture} from '../../../test/fixture'
 import {fnSwitch} from '../../../utils/FnSwitch'
@@ -71,7 +71,7 @@ describe('Problem', () => {
   })
 
   const clickEmployeeConsumer = (app: ScRenderResult, isEmployee: 'yes' | 'no'): void => {
-    const radios = [...app.container.querySelectorAll('#select-employeeconsumer fieldset label')!]
+    const radios = Array.from(app.container.querySelectorAll('#select-employeeconsumer fieldset label')!)
     if (radios.length === 0) {
       throw new Error('Employee consumer form did not appear')
     }
@@ -83,7 +83,7 @@ describe('Problem', () => {
   }
 
   const clickCompanyKind = (app: ScRenderResult, kind: 'internet' | 'not_internet') => {
-    const radios = [...app.container.querySelectorAll('#select-companyKind fieldset label')!]
+    const radios = Array.from(app.container.querySelectorAll('#select-companyKind fieldset label')!)
     if (radios.length === 0) {
       throw new Error('Company kind form did not appear')
     }
@@ -98,7 +98,7 @@ describe('Problem', () => {
     app: ScRenderResult,
     value: 'contractualDispute' | 'notContractualDispute' | 'reponseConso',
   ) => {
-    const radios = [...app.container.querySelectorAll('#select-contractualDispute fieldset label')!]
+    const radios = Array.from(app.container.querySelectorAll('#select-contractualDispute fieldset label')!)
     if (radios.length === 0) {
       throw new Error('Contractual dispute form did not appear')
     }

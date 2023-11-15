@@ -1,6 +1,6 @@
 import {Alert} from '@codegouvfr/react-dsfr/Alert'
-import {ApiError} from 'clients/BaseApiClient'
-import {useI18n} from 'i18n/I18n'
+import {ApiError} from '@/clients/BaseApiClient'
+import {useI18n} from '@/i18n/I18n'
 import * as React from 'react'
 import {ReactNode, useContext, useState} from 'react'
 

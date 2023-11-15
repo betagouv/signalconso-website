@@ -1,13 +1,13 @@
-import {Anomaly} from 'anomalies/Anomaly'
-import {Acknowledgement} from 'components_feature/reportFlow/Acknowledgement/Acknowledgement'
-import {Company} from 'components_feature/reportFlow/Company/Company'
-import {Confirmation} from 'components_feature/reportFlow/Confirmation/Confirmation'
-import {Consumer} from 'components_feature/reportFlow/Consumer/Consumer'
-import {Details} from 'components_feature/reportFlow/Details/Details'
-import {Problem} from 'components_feature/reportFlow/Problem/Problem'
-import {useReportCreateContext} from 'components_feature/reportFlow/ReportCreateContext'
-import {useReportFlowContext} from 'components_feature/reportFlow/ReportFlowContext'
-import {buildLinkStartReport} from 'core/pagesDefinitions'
+import {Anomaly} from '@/anomalies/Anomaly'
+import {Acknowledgement} from '@/components_feature/reportFlow/Acknowledgement/Acknowledgement'
+import {Company} from '@/components_feature/reportFlow/Company/Company'
+import {Confirmation} from '@/components_feature/reportFlow/Confirmation/Confirmation'
+import {Consumer} from '@/components_feature/reportFlow/Consumer/Consumer'
+import {Details} from '@/components_feature/reportFlow/Details/Details'
+import {Problem} from '@/components_feature/reportFlow/Problem/Problem'
+import {useReportCreateContext} from '@/components_feature/reportFlow/ReportCreateContext'
+import {useReportFlowContext} from '@/components_feature/reportFlow/ReportFlowContext'
+import {buildLinkStartReport} from '@/core/pagesDefinitions'
 import {
   findCurrentStepForReport,
   firstReportStep,
@@ -18,10 +18,10 @@ import {
   isStepBeforeOrEqual,
   ReportStepOrDone,
   STEP_PARAM_NAME,
-} from 'model/ReportStep'
+} from '@/model/ReportStep'
 import {useRouter, useSearchParams} from 'next/navigation'
 import {useEffect} from 'react'
-import {scrollTop} from 'utils/utils'
+import {scrollTop} from '@/utils/utils'
 import {useI18n} from '../../../i18n/I18n'
 import {AppLang} from '../../../i18n/localization/AppLangs'
 import {ReportFlowStepperHeader} from './ReportFlowStepperHeader'

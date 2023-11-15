@@ -1,4 +1,4 @@
-import {ReportTag} from 'anomalies/Anomaly'
+import {ReportTag} from '@/anomalies/Anomaly'
 import {ApiAddress} from './Address'
 
 export interface CreatedReport {

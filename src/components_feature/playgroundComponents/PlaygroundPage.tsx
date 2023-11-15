@@ -1,14 +1,14 @@
 'use client'
 
 import {Tabs} from '@codegouvfr/react-dsfr/Tabs'
-import {PlaygroundAcknowledgment} from 'components_feature/playgroundComponents/PlaygroundAcknoledgment'
-import {PlaygroundCompany} from 'components_feature/playgroundComponents/PlaygroundCompany'
-import {PlaygroundConfirmation, dummyStepNavigation} from 'components_feature/playgroundComponents/PlaygroundConfirmation'
-import {PlaygroundConsumer} from 'components_feature/playgroundComponents/PlaygroundConsumer'
-import {PlaygroundDetails} from 'components_feature/playgroundComponents/PlaygroundDetails'
-import {PlaygroundOther} from 'components_feature/playgroundComponents/PlaygroundOther'
-import {CompanyFilled} from 'components_feature/reportFlow/Company/Company'
-import {ContentPageContainer} from 'components_simple/PageContainers'
+import {PlaygroundAcknowledgment} from '@/components_feature/playgroundComponents/PlaygroundAcknoledgment'
+import {PlaygroundCompany} from '@/components_feature/playgroundComponents/PlaygroundCompany'
+import {PlaygroundConfirmation, dummyStepNavigation} from '@/components_feature/playgroundComponents/PlaygroundConfirmation'
+import {PlaygroundConsumer} from '@/components_feature/playgroundComponents/PlaygroundConsumer'
+import {PlaygroundDetails} from '@/components_feature/playgroundComponents/PlaygroundDetails'
+import {PlaygroundOther} from '@/components_feature/playgroundComponents/PlaygroundOther'
+import {CompanyFilled} from '@/components_feature/reportFlow/Company/Company'
+import {ContentPageContainer} from '@/components_simple/PageContainers'
 
 const companyDraft = {
   id: 'id12345',

@@ -3,9 +3,9 @@
 import {Button} from '@codegouvfr/react-dsfr/Button'
 import {CallOut} from '@codegouvfr/react-dsfr/CallOut'
 import {useColors} from '@codegouvfr/react-dsfr/useColors'
-import {findAnomaly} from 'anomalies/Anomalies'
-import {Anomaly} from 'anomalies/Anomaly'
-import {LandingData} from 'landings/landingDataUtils'
+import {findAnomaly} from '@/anomalies/Anomalies'
+import {Anomaly} from '@/anomalies/Anomaly'
+import {LandingData} from '@/landings/landingDataUtils'
 
 import Image from 'next/image'
 import Link from 'next/link'
@@ -14,7 +14,11 @@ import {ReactNode, useRef} from 'react'
 import {AnomalyTile} from '../components_simple/AnomalyTile'
 import {buildLinkHomePickCategory, buildLinkStartReport, pagesDefs} from '../core/pagesDefinitions'
 import {useI18n} from '../i18n/I18n'
-import {bigReportButtonProps, getBigReportButtonText} from 'components_simple/buttons/buttonsUtils'
+import {bigReportButtonProps, getBigReportButtonText} from '@/components_simple/buttons/buttonsUtils'
+
+import imgPictoCrayons from '@/img/landings/picto_crayons.png'
+import imgPictoCheckbox from '@/img/landings/picto_checkbox.png'
+import imgPictoMasks from '@/img/landings/picto_masks.png'
 
 type Props = {
   landingData: LandingData
@@ -59,17 +63,17 @@ export default function LandingPage(props: Props) {
             <HeroCard
               title={m.landing.heroCardTitle1}
               subtext={m.landing.heroCardText1}
-              picto={<Image alt="Pictogramme crayons" src="/image/picto_crayons.png" width={80} height={80} />}
+              picto={<Image alt="" src={imgPictoCrayons} width={80} height={80} />}
             />
             <HeroCard
               title={m.landing.heroCardTitle2}
               subtext={m.landing.heroCardText2}
-              picto={<Image alt="Pictogramme succès" src="/image/picto_checkbox.png" width={80} height={75} />}
+              picto={<Image alt="" src={imgPictoCheckbox} width={80} height={75} />}
             />
             <HeroCard
               title={m.landing.heroCardTitle3}
               subtext={m.landing.heroCardText3}
-              picto={<Image alt="Pictogramme masques joyeux" src="/image/picto_masks.png" width={80} height={72} />}
+              picto={<Image alt="" src={imgPictoMasks} width={80} height={72} />}
             />
           </div>
           <br />

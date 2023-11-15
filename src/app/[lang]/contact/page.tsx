@@ -1,5 +1,5 @@
-import {PageComponentProps, buildGenerateMetadata} from 'core/metadatas'
-import {Contact} from 'reusablePages/contact'
+import {PageComponentProps, buildGenerateMetadata} from '@/core/metadatas'
+import {Contact} from '@/reusablePages/contact'
 
 export const generateMetadata = buildGenerateMetadata('contact')
 

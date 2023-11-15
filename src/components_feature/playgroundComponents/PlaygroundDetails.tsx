@@ -1,10 +1,10 @@
 import {Checkbox} from '@codegouvfr/react-dsfr/Checkbox'
 import {useTheme} from '@mui/material'
-import {DetailsInner, SpecifyFormUtils} from 'components_feature/reportFlow/Details/Details'
-import {styleUtils} from 'core/theme'
-import {ReportDraft2} from 'model/ReportDraft2'
+import {DetailsInner, SpecifyFormUtils} from '@/components_feature/reportFlow/Details/Details'
+import {styleUtils} from '@/core/theme'
+import {ReportDraft2} from '@/model/ReportDraft2'
 import {ChangeEvent, useState} from 'react'
-import {getEntries, getKeys} from 'utils/utils'
+import {getEntries, getKeys} from '@/utils/utils'
 import {
   DetailInputDate,
   DetailInputDateNotInFuture,

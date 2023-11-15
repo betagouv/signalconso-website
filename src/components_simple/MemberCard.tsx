@@ -1,5 +1,5 @@
 'use client'
-import {useTimeout} from 'hooks/useTimeout'
+import {useTimeout} from '@/hooks/useTimeout'
 import Image from 'next/legacy/image'
 import {useState} from 'react'
 import {Animate} from './Animate'
@@ -17,21 +17,13 @@ export const MemberCard = ({member, disabled}: Props) => {
   useTimeout(() => {
     setOn(true)
   }, 10)
-  const dsfrTheme = useColors()
-
   return (
     <>
       <div className={`flex p-4 ${disabled ? ' bg-gray-200 ' : '  border border-solid border-black'}`}>
         {on && (
           <>
             <div className="shrink-0">
-              <Image
-                width={iconSize}
-                height={iconSize}
-                style={{borderRadius: 6}}
-                src={`/image/avatars/${member.avatar}`}
-                alt=""
-              />
+              <Image width={iconSize} height={iconSize} src={member.avatar} alt="" />
             </div>
             <Animate autoScrollTo={false}>
               <div className="ml-3">

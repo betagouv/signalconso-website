@@ -1,8 +1,8 @@
-import {useGetCountries} from 'clients/apiHooks'
-import {countryToFlag} from 'components_feature/reportFlow/Company/CompanyAskForeignDetails'
-import {useI18n} from 'i18n/I18n'
-import {AppLangs} from 'i18n/localization/AppLangs'
-import {Country} from 'model/Country'
+import {useGetCountries} from '@/clients/apiHooks'
+import {countryToFlag} from '@/components_feature/reportFlow/Company/CompanyAskForeignDetails'
+import {useI18n} from '@/i18n/I18n'
+import {AppLangs} from '@/i18n/localization/AppLangs'
+import {Country} from '@/model/Country'
 import {useState} from 'react'
 import {ScAutoComplete} from './ScAutocomplete'
 

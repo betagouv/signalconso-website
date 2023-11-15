@@ -1,4 +1,4 @@
-import {instanceOfSubcategoryWithInfoWall} from 'anomalies/Anomalies'
+import {instanceOfSubcategoryWithInfoWall} from '@/anomalies/Anomalies'
 import {Subcategory} from '../../../anomalies/Anomaly'
 
 export function computeSelectedSubcategoriesData(selectedSubCategories: Subcategory[]) {

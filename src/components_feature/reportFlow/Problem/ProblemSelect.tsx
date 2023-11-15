@@ -1,4 +1,4 @@
-import {Animate} from 'components_simple/Animate'
+import {Animate} from '@/components_simple/Animate'
 import {ScRadioButtons} from '../../../components_simple/formInputs/ScRadioButtons'
 import {useI18n} from '../../../i18n/I18n'
 

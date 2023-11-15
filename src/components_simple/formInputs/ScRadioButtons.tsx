@@ -1,4 +1,4 @@
-import {useAutoscrollContext} from 'context/AutoscrollContext'
+import {useAutoscrollContext} from '@/context/AutoscrollContext'
 import {KeyboardEvent, ReactElement, ReactNode, Ref, forwardRef, useEffect, useId} from 'react'
 
 interface Props<V> {

@@ -1,9 +1,9 @@
 import {Box, BoxProps, CircularProgress, Icon} from '@mui/material'
-import {useGetCountries} from 'clients/apiHooks'
-import {Panel, PanelActions, PanelBody} from 'components_simple/Panel'
-import {Row} from 'components_simple/Row'
-import {externalLinks} from 'core/externalLinks'
-import {useI18n} from 'i18n/I18n'
+import {useGetCountries} from '@/clients/apiHooks'
+import {Panel, PanelActions, PanelBody} from '@/components_simple/Panel'
+import {Row} from '@/components_simple/Row'
+import {externalLinks} from '@/core/externalLinks'
+import {useI18n} from '@/i18n/I18n'
 import {ReactNode, useEffect, useMemo} from 'react'
 import {Txt} from '../../../components_simple/Txt'
 import {LinkBackToHome} from '../../../components_simple/LinkBackToHome'
@@ -13,6 +13,8 @@ import {ReportDraft} from '../../../model/ReportDraft'
 import {fnSwitch} from '../../../utils/FnSwitch'
 import {useReportCreateContext} from '../ReportCreateContext'
 import {useReportFlowContext} from '../ReportFlowContext'
+import imgCompany from '@/img/illustrations/company.png'
+import Image from 'next/image'
 
 export enum AcknowledgmentCases {
   ReponseConso = 'ReponseConso',
@@ -191,15 +193,7 @@ const AcknowledgementLayout = ({
   const {m, currentLang} = useI18n()
   return (
     <>
-      <img
-        src="/image/illustrations/company.png"
-        alt=""
-        style={{
-          display: 'block',
-          margin: 'auto',
-          height: 160,
-        }}
-      />
+      <Image src={imgCompany} alt="" className="block mx-auto" />
 
       <div className="max-w-3xl mx-auto">
         <h2>

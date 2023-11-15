@@ -3,9 +3,9 @@
  */
 import {fireEvent, render, ScRenderResult, waitFor} from '../../../test/test-utils'
 import React from 'react'
-import {ReportDraft2} from 'model/ReportDraft2'
+import {ReportDraft2} from '@/model/ReportDraft2'
 import {ConsumerInner} from './Consumer'
-import {dummyStepNavigation} from 'components_feature/playgroundComponents/PlaygroundConfirmation'
+import {dummyStepNavigation} from '@/components_feature/playgroundComponents/PlaygroundConfirmation'
 
 class Fixture {
   static readonly consumer = {

@@ -1,9 +1,9 @@
 'use client'
 
 import {Icon} from '@mui/material'
-import {SimpleDatepicker} from 'components_simple/formInputs/ScLegacyDatepicker'
+import {SimpleDatepicker} from '@/components_simple/formInputs/ScLegacyDatepicker'
 import {useMemo, useState} from 'react'
-import {dateToFrenchFormat} from 'utils/utils'
+import {dateToFrenchFormat} from '@/utils/utils'
 import {useI18n} from '../i18n/I18n'
 
 const closingDays = [

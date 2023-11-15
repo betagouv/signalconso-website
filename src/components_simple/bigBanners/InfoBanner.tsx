@@ -1,5 +1,5 @@
 import {Alert} from '@codegouvfr/react-dsfr/Alert'
-import {appConfig} from 'core/appConfig'
+import {appConfig} from '@/core/appConfig'
 
 export const InfoBanner = () => {
   if (appConfig.infoBanner) {

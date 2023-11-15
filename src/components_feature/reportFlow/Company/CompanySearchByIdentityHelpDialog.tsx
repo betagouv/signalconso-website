@@ -1,9 +1,15 @@
 import Accordion from '@codegouvfr/react-dsfr/Accordion'
 import Button from '@codegouvfr/react-dsfr/Button'
 import {Dialog, DialogActions, DialogContent, DialogProps, DialogTitle, PaperProps} from '@mui/material'
-import {useI18n} from 'i18n/I18n'
+import {useI18n} from '@/i18n/I18n'
 import * as React from 'react'
 import {EventHandler, ReactElement, SyntheticEvent, useState} from 'react'
+import imgBill from '@/img/siret-helper/siret-helper-bill.jpg'
+import imgCard from '@/img/siret-helper/siret-helper-card.jpg'
+import imgFooter from '@/img/siret-helper/siret-helper-footer.png'
+import imgMentionsLegales from '@/img/siret-helper/siret-helper-mentions_legales.png'
+import imgTicket from '@/img/siret-helper/siret-helper-ticket.jpg'
+import Image from 'next/image'
 
 export interface ConfirmProps extends Omit<DialogProps, 'children' | 'onClick' | 'open'> {
   children: ReactElement<any>
@@ -20,6 +26,16 @@ export const CompanySearchByIdentityHelpDialog = ({children, PaperProps, onClick
   const [open, setOpen] = useState<boolean>(false)
 
   const close = () => setOpen(false)
+
+  const imagePropsFullWidth = {
+    sizes: '530px',
+    className: 'w-full h-auto my-2 shadow-lg shadow-gray-300',
+  }
+
+  const imagePropsSmaller = {
+    sizes: '300px',
+    className: 'max-w-[300px] w-full h-auto my-2 block mx-auto shadow-lg shadow-gray-300',
+  }
 
   return (
     <>
@@ -42,38 +58,18 @@ export const CompanySearchByIdentityHelpDialog = ({children, PaperProps, onClick
           <Accordions>
             <Accordion label={m.companyIdentityHelperWebsite}>
               {m.companyIdentityHelperWhereDesc0}
-              <img
-                src="/image/siret-helper/siret-helper-footer.png"
-                alt={m.companyIdentityHelperImages.footer}
-                style={{width: '100%', marginTop: 4, marginBottom: 4}}
-              />
+              <Image src={imgFooter} alt={m.companyIdentityHelperImages.footer} {...imagePropsFullWidth} />
               {m.companyIdentityHelperWhereDesc2}
-              <img
-                src="/image/siret-helper/siret-helper-mentions_legales.png"
-                alt={m.companyIdentityHelperImages.mentionsLegales}
-                style={{width: '100%', marginTop: 4, marginBottom: 4}}
-              />
+              <Image src={imgMentionsLegales} alt={m.companyIdentityHelperImages.mentionsLegales} {...imagePropsFullWidth} />
             </Accordion>
             <Accordion label={m.companyIdentityHelperInvoice}>
-              <img
-                src="/image/siret-helper/siret-helper-bill.jpg"
-                alt={m.companyIdentityHelperImages.bill}
-                style={{width: '100%'}}
-              />
+              <Image src={imgBill} alt={m.companyIdentityHelperImages.bill} {...imagePropsFullWidth} />
             </Accordion>
             <Accordion label={m.companyIdentityHelperReceipt}>
-              <img
-                src="/image/siret-helper/siret-helper-ticket.jpg"
-                alt={m.companyIdentityHelperImages.ticket}
-                style={{maxWidth: '300px', margin: 'auto', display: 'block'}}
-              />
+              <Image src={imgTicket} alt={m.companyIdentityHelperImages.ticket} {...imagePropsSmaller} />
             </Accordion>
             <Accordion label={m.companyIdentityHelperCreditCardReceipt}>
-              <img
-                src="/image/siret-helper/siret-helper-card.jpg"
-                alt={m.companyIdentityHelperImages.card}
-                style={{maxWidth: '300px', margin: 'auto', display: 'block'}}
-              />
+              <Image src={imgCard} alt={m.companyIdentityHelperImages.card} {...imagePropsSmaller} />
             </Accordion>
           </Accordions>
         </DialogContent>

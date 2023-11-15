@@ -1,6 +1,6 @@
 import * as React from 'react'
 import {ReactNode, useContext} from 'react'
-import {AppConfig} from 'core/appConfig'
+import {AppConfig} from '@/core/appConfig'
 
 export interface ConfigProps {
   config: AppConfig

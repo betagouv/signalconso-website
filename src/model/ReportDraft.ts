@@ -1,10 +1,11 @@
-import {CompanyKinds, ReportTag, SocialNetworks, Subcategory} from 'anomalies/Anomaly'
+import {CompanyKinds, ReportTag, SocialNetworks, Subcategory} from '@/anomalies/Anomaly'
 import {Address} from './Address'
 import {DetailInputValue} from './CreatedReport'
 import {ApiInfluencer, ApiReportDraft} from './reportsFromApi'
 import {UploadedFile} from './UploadedFile'
 import uniq from 'lodash/uniq'
 import {AppLang} from '../i18n/localization/AppLangs'
+
 export const genders = ['Male', 'Female'] as const
 export type Gender = (typeof genders)[number]
 

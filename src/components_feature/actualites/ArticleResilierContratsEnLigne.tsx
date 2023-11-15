@@ -6,6 +6,7 @@ import Link from 'next/link'
 import {ReactNode} from 'react'
 import {useI18n} from '../../i18n/I18n'
 import {AppLangs} from '../../i18n/localization/AppLangs'
+import imgInfographieResiliation from '@/img/actualites/infographie-resiliation-contrats.jpg'
 
 function LandingLink({path, children}: {path: string; children: ReactNode}) {
   const fullUrl = buildHardcodedLinkLandingPageFr(path)
@@ -76,15 +77,10 @@ export function ArticleResilierContratsEnLigne() {
           le décret d’application sur la résiliation des contrats par voie électronique
         </Link>
       </p>
-      {/* this image is too large for mobile viewports, and unreadable if scaled down  */}
       {currentLang === AppLangs.fr && (
-        <div className="hidden lg:flex justify-center ">
-          <Image
-            width={830}
-            height={444}
-            src={`/image/actualites/infographie-resiliation-contrats.jpg`}
-            alt={m.articleAppMobile.banner}
-          />
+        // this image is too large for mobile viewports, and unreadable if scaled down
+        <div className="hidden lg:flex justify-center">
+          <Image src={imgInfographieResiliation} alt={m.articleAppMobile.banner} />
         </div>
       )}
     </div>

@@ -1,4 +1,4 @@
-import {useI18n} from 'i18n/I18n'
+import {useI18n} from '@/i18n/I18n'
 import {ForwardedRef, ReactNode, forwardRef, useId} from 'react'
 
 type Props = {

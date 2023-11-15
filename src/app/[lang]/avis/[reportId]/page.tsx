@@ -1,5 +1,5 @@
-import {ConsumerReview} from 'components_feature/ConsumerReview'
-import {PageComponentProps, PathParams, buildGenerateMetadataForNoIndexPage} from 'core/metadatas'
+import {ConsumerReview} from '@/components_feature/ConsumerReview'
+import {PageComponentProps, PathParams, buildGenerateMetadataForNoIndexPage} from '@/core/metadatas'
 
 type LocalPathParams = PathParams<{
   reportId: string

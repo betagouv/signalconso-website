@@ -1,4 +1,4 @@
-import {ContentPageContainer} from 'components_simple/PageContainers'
+import {ContentPageContainer} from '@/components_simple/PageContainers'
 import Link from 'next/link'
 import {pagesDefs} from '../core/pagesDefinitions'
 import {getI18n} from '../i18n/I18nDictionnary'

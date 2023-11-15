@@ -3,8 +3,8 @@ import {notFound} from 'next/navigation'
 import LandingPage from '../../../components_feature/LandingPage'
 import {getSupportedLang} from '../../../i18n/localization/AppLangs'
 import {allVisibleLandings} from '../../../landings/landingDataUtils'
-import {buildLinkLandingPage} from 'core/pagesDefinitions'
-import {GenerateMetadataArg, PageComponentProps, PathParams} from 'core/metadatas'
+import {buildLinkLandingPage} from '@/core/pagesDefinitions'
+import {GenerateMetadataArg, PageComponentProps, PathParams} from '@/core/metadatas'
 
 type LocalPathParams = PathParams<{
   dynamicPath: string

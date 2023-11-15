@@ -1,12 +1,12 @@
-import {allAnomalies} from 'anomalies/Anomalies'
-import {getIndexForStep, ReportStep, reportSteps} from 'model/ReportStep'
+import {allAnomalies} from '@/anomalies/Anomalies'
+import {getIndexForStep, ReportStep, reportSteps} from '@/model/ReportStep'
 import {InfoWall, reportTags, socialNetworks, Subcategory} from '../anomalies/Anomaly'
 import {Address, ApiAddress} from '../model/Address'
 import {Company, CompanySearchResult, WebsiteCompanySearchResult} from '../model/Company'
 import {CreatedReport} from '../model/CreatedReport'
 import {Influencer, ReportDraft, ReportDraftConsumer} from '../model/ReportDraft'
 import {FileOrigin} from '../model/UploadedFile'
-import {AppLang} from 'i18n/localization/AppLangs'
+import {AppLang} from '@/i18n/localization/AppLangs'
 
 export class SeedableRandom {
   seed = 1

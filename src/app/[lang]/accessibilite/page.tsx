@@ -1,9 +1,9 @@
-import {ContentPageContainer} from 'components_simple/PageContainers'
-import {externalLinks} from 'core/externalLinks'
-import {pagesDefs} from 'core/pagesDefinitions'
+import {ContentPageContainer} from '@/components_simple/PageContainers'
+import {externalLinks} from '@/core/externalLinks'
+import {pagesDefs} from '@/core/pagesDefinitions'
 import Link from 'next/link'
 import {getI18n} from '../../../i18n/I18nDictionnary'
-import {PageComponentProps, buildGenerateMetadata} from 'core/metadatas'
+import {PageComponentProps, buildGenerateMetadata} from '@/core/metadatas'
 
 export const generateMetadata = buildGenerateMetadata('accessibilite')
 

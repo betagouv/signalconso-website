@@ -1,5 +1,5 @@
 import {Combobox} from '@headlessui/react'
-import {useI18n} from 'i18n/I18n'
+import {useI18n} from '@/i18n/I18n'
 import {ChangeEvent, ReactNode, useId} from 'react'
 
 // Based on headless-ui, with rendering similar to a DSFR input

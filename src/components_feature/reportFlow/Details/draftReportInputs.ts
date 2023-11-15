@@ -1,5 +1,5 @@
-import {ReportDraft2} from 'model/ReportDraft2'
-import {last} from 'utils/lodashNamedExport'
+import {ReportDraft2} from '@/model/ReportDraft2'
+import {last} from '@/utils/lodashNamedExport'
 import {instanceOfSubcategoryWithInputs} from '../../../anomalies/Anomalies'
 import {DetailInput, DetailInputType, ReportTag, Subcategory} from '../../../anomalies/Anomaly'
 import {useI18n} from '../../../i18n/I18n'

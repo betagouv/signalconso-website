@@ -1,7 +1,7 @@
 import Button from '@codegouvfr/react-dsfr/Button'
-import {pagesDefs} from 'core/pagesDefinitions'
-import {useI18n} from 'i18n/I18n'
-import {ReportStepOrDone, getIndexForStep, getNextStep, getStepLabel, reportSteps} from 'model/ReportStep'
+import {pagesDefs} from '@/core/pagesDefinitions'
+import {useI18n} from '@/i18n/I18n'
+import {ReportStepOrDone, getIndexForStep, getNextStep, getStepLabel, reportSteps} from '@/model/ReportStep'
 import {useEffect, useRef} from 'react'
 import {StepNavigation} from './ReportFlowStepper'
 

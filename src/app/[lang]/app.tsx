@@ -2,11 +2,11 @@
 import {SkipLinks} from '@codegouvfr/react-dsfr/SkipLinks'
 import {Box} from '@mui/material'
 import {QueryClient, QueryClientProvider} from '@tanstack/react-query'
-import {ApiClientsProvider} from 'context/ApiClientsContext'
+import {ApiClientsProvider} from '@/context/ApiClientsContext'
 import {usePathname} from 'next/navigation'
 import Script from 'next/script'
 import React, {useEffect, useState} from 'react'
-import {monkeyPatchDomForGoogleTranslate} from 'utils/fixGoogleTranslate'
+import {monkeyPatchDomForGoogleTranslate} from '@/utils/fixGoogleTranslate'
 import {ToastProvider} from '../../hooks/useToastError'
 import {AnalyticProvider} from '../../analytic/AnalyticContext'
 import {Analytic, PageChangesListener} from '../../analytic/analytic'
@@ -22,7 +22,7 @@ import {useI18n} from '../../i18n/I18n'
 import {Eularian} from '../../plugins/eularian'
 import {Matomo} from '../../plugins/matomo'
 import {Sentry} from '../../plugins/sentry'
-import {AutoscrollProvider} from 'context/AutoscrollContext'
+import {AutoscrollProvider} from '@/context/AutoscrollContext'
 
 monkeyPatchDomForGoogleTranslate()
 
@@ -35,7 +35,7 @@ const App: ({children}: {children: React.ReactNode}) => JSX.Element = ({children
     Sentry.init(appConfig)
     const matomo = Matomo.init({siteId: appConfig.matomo_siteId, url: appConfig.matomo_url})
     const eularian = Eularian.init()
-    setAnalytic(Analytic.init({appConfig, matomo, eularian}))
+    setAnalytic(Analytic.init({matomo, eularian}))
   }, [])
 
   return (

@@ -1,4 +1,4 @@
-import {buildGenerateMetadata} from 'core/metadatas'
+import {buildGenerateMetadata} from '@/core/metadatas'
 import NewsHome from '../../../components_feature/actualites/NewsHome'
 
 export const generateMetadata = buildGenerateMetadata('actualites')
