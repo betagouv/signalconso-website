@@ -51,7 +51,7 @@ export const Animate = ({autoScrollTo = true, children}: AnimateProps) => {
             opacity: 1,
             transform: `translateY(0)`,
           }
-        : {opacity: 0, transform: `translateY(${startingTranslation}px)`}),
+        : {opacity: 0, transform: `translateY(-${startingTranslation}px)`}),
     },
   })
 }
