@@ -1,3 +1,4 @@
+'use client'
 import {Tile} from '@codegouvfr/react-dsfr/Tile'
 import {Anomaly} from '../anomalies/Anomaly'
 import {useReportFlowContext} from '../components_feature/reportFlow/ReportFlowContext'

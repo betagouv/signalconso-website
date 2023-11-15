@@ -1,60 +1,53 @@
-'use client'
-
-import {Button} from '@codegouvfr/react-dsfr/Button'
-import {CallOut} from '@codegouvfr/react-dsfr/CallOut'
-import {useColors} from '@codegouvfr/react-dsfr/useColors'
 import {findAnomaly} from '@/anomalies/Anomalies'
 import {Anomaly} from '@/anomalies/Anomaly'
 import {LandingData} from '@/landings/landingDataUtils'
+import {Button} from '@codegouvfr/react-dsfr/Button'
+import {CallOut} from '@codegouvfr/react-dsfr/CallOut'
 
 import Image from 'next/image'
 import Link from 'next/link'
-import {ReactNode, useRef} from 'react'
+import {ReactNode, useId} from 'react'
 
+import {bigReportButtonProps, getBigReportButtonText} from '@/components_simple/buttons/buttonsUtils'
 import {AnomalyTile} from '../components_simple/AnomalyTile'
 import {buildLinkHomePickCategory, buildLinkStartReport, pagesDefs} from '../core/pagesDefinitions'
-import {useI18n} from '../i18n/I18n'
-import {bigReportButtonProps, getBigReportButtonText} from '@/components_simple/buttons/buttonsUtils'
 
-import imgPictoCrayons from '@/img/landings/picto_crayons.png'
+import {getI18n} from '@/i18n/I18nDictionnary'
+import {AppLangs} from '@/i18n/localization/AppLangs'
 import imgPictoCheckbox from '@/img/landings/picto_checkbox.png'
+import imgPictoCrayons from '@/img/landings/picto_crayons.png'
 import imgPictoMasks from '@/img/landings/picto_masks.png'
 
 type Props = {
   landingData: LandingData
+  lang: AppLangs
 }
 
-export default function LandingPage(props: Props) {
-  const {m, currentLang} = useI18n()
-  const dsfrTheme = useColors()
-  const chooseCategoriesDivRef = useRef<HTMLDivElement>(null)
+export default function LandingPage({landingData, lang}: Props) {
+  const {m} = getI18n(lang)
 
-  const landingData = props.landingData
+  const chooseCategoriesDivId = 'choose_' + useId()
+
   const container = `fr-container`
 
   const buttonTarget =
     landingData.targetedCategory.length > 1
       ? () => {
-          if (chooseCategoriesDivRef.current) {
-            chooseCategoriesDivRef.current.scrollIntoView({behavior: 'smooth'})
-          }
+          document.querySelector(`#${chooseCategoriesDivId}`)?.scrollIntoView({behavior: 'smooth'})
         }
       : landingData.targetedCategory.length === 1
-      ? findAnomaly(landingData.targetedCategory[0], currentLang)
+      ? findAnomaly(landingData.targetedCategory[0], lang)
       : 'home'
 
-  const anomalies = landingData.targetedCategory.map(_ => findAnomaly(_, currentLang))
+  const anomalies = landingData.targetedCategory.map(_ => findAnomaly(_, lang))
 
   return (
     <>
       <main role="main" id="main-content">
-        <div
-          className=" text-center px-8 py-14"
-          style={{background: dsfrTheme.decisions.background.actionLow.blueFrance.default}}
-        >
+        <div className=" text-center px-8 py-14 bg-sclightpurple">
           <h1 className="">{landingData.title}</h1>
           <span className="block mt-4  text-2xl">{landingData.catchPhrase}</span>
-          <BigButton target={buttonTarget} className="mt-8" />
+          <BigButton target={buttonTarget} className="mt-8" {...{lang}} />
         </div>
 
         <div className={`${container} mb-16`}>
@@ -113,7 +106,7 @@ export default function LandingPage(props: Props) {
             {m.landing.signalConsoWillHandle3}
           </p>
           {anomalies.length > 1 ? (
-            <div ref={chooseCategoriesDivRef}>
+            <div id={chooseCategoriesDivId}>
               <h3 className="text-2xl">{m.landing.moreThanOneCat}</h3>
               <div className="fr-grid-row fr-grid-row--gutters">
                 {anomalies.map(a => {
@@ -127,7 +120,7 @@ export default function LandingPage(props: Props) {
             </div>
           ) : (
             <div className="flex justify-center items-center">
-              <BigButton target={buttonTarget} className="mt-10" />
+              <BigButton target={buttonTarget} className="mt-10" {...{lang}} />
             </div>
           )}
         </div>
@@ -136,13 +129,13 @@ export default function LandingPage(props: Props) {
             buttonProps={{
               children: m.landing.discoverButton,
               linkProps: {
-                href: `/${currentLang}/${pagesDefs.commentCaMarche.url}`,
+                href: `/${lang}/${pagesDefs.commentCaMarche.url}`,
               },
             }}
             title={m.landing.whatsSignalConso}
           >
             {m.landing.whatIsText1}
-            <Link href={`/${currentLang}`} className="text-sclightblue underline">
+            <Link href={`/${lang}`} className="text-sclightblue underline">
               signal.conso.gouv.fr
             </Link>
             {m.landing.whatIsText2}
@@ -193,15 +186,22 @@ function UserQuote({report}: {report: LandingData['sampleReports'][number]}) {
   )
 }
 
-function BigButton({className = '', target = 'home'}: {className?: string; target?: Anomaly | 'home' | (() => void)}) {
-  const {m} = useI18n()
-  const {currentLang} = useI18n()
+function BigButton({
+  className = '',
+  target = 'home',
+  lang,
+}: {
+  className?: string
+  target?: Anomaly | 'home' | (() => void)
+  lang: AppLangs
+}) {
+  const {m} = getI18n(lang)
   const targetProps =
     typeof target === 'function'
       ? {onClick: target}
       : {
           linkProps: {
-            href: target === 'home' ? buildLinkHomePickCategory() : buildLinkStartReport(target, currentLang, {isWebView: false}),
+            href: target === 'home' ? buildLinkHomePickCategory() : buildLinkStartReport(target, lang, {isWebView: false}),
           },
         }
   return (

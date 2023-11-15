@@ -1,5 +1,4 @@
 'use client'
-
 import * as React from 'react'
 import {ReactNode, useContext, useMemo} from 'react'
 import {fr} from './localization/fr'
@@ -17,11 +16,6 @@ export interface I18nContextProps {
   m: (typeof fr)['messages']
   availableLangs: AppLang[]
   formatLargeNumber: (typeof fr)['formatLargeNumber']
-  formatDuration: (typeof fr)['formatDuration']
-  formatDate: (typeof fr)['formatDate']
-  dateFromNow: (typeof fr)['dateFromNow']
-  formatTime: (typeof fr)['formatTime']
-  formatDateTime: (typeof fr)['formatDateTime']
   currentLang: AppLang
 }
 
