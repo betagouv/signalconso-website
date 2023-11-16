@@ -117,9 +117,9 @@ export const CompanyByWebsite = ({value, children, specificWebsiteCompanyKind, .
   const displayedResults = isEditingWebsite
     ? undefined
     : hasConfirmedUnknown
-    ? // act as if there was no suggested result
-      {kind: 'nothing' as const, status: 'unknown' as const}
-    : searchQuery.data
+      ? // act as if there was no suggested result
+        {kind: 'nothing' as const, status: 'unknown' as const}
+      : searchQuery.data
 
   useEffect(() => {
     if (searchQuery.data?.kind === 'nothing' && searchQuery.data?.status === 'down') {

@@ -32,8 +32,8 @@ export class SeedableRandom {
       charset === 'numeric'
         ? '0123456789'
         : capitalization === 'lowercase'
-        ? 'abcdefghijklmnopqrstuvwxyz'
-        : 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+          ? 'abcdefghijklmnopqrstuvwxyz'
+          : 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
     const charactersLength = characters.length
     let counter = 0
     while (counter < length) {

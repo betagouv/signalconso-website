@@ -167,8 +167,8 @@ function Option({value, evaluationField}: {value: ResponseEvaluation; evaluation
     value === ResponseEvaluation.Positive
       ? 'emotion-line.svg'
       : value === ResponseEvaluation.Neutral
-      ? 'emotion-normal-line.svg'
-      : 'emotion-unhappy-line.svg'
+        ? 'emotion-normal-line.svg'
+        : 'emotion-unhappy-line.svg'
   const label =
     value === ResponseEvaluation.Positive ? m.iAmHappy : value === ResponseEvaluation.Neutral ? m.iAmNeutral : m.iAmUnhappy
   const id = useId()
