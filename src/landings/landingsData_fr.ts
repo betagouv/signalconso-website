@@ -18,107 +18,107 @@ export const frLandingsData = [
     sampleReports: [
       {
         text: "J'ai acheté un téléphone en date du 22/11/2022. Au bout de 4 mois, le téléphone tombe en panne, je l'amène au service après-vente qui refuse de faire marcher la garantie au motif qu'il y a un petit impact sur la coque du téléphone. Sachant que j'ai fait cet impact assez rapidement et que mon téléphone a toujours bien fonctionné, le refus de faire marcher la garantie est pour moi aberrant. Je demande donc que mon téléphone soit réparé gratuitement car j'ai une garantie magasin et l'impact sur la coque ne peut pas être la cause du dysfonctionnement.",
-        author: 'Louis J.',
-      },
-      {
-        text: "Différence de prix : le prix en caisse était à 2,01 euros. Les caissiers ont simplement dit \"ce n'est pas nous qui changeons le prix\" et ne connaissaient visiblement pas la règle qui impose de facturer au prix affiché. Ils voulaient juste annuler l'article. Ce n'est pas la première fois que je constate cela dans ce magasin qui se trouve dans un quartier populaire. J'ai envoyé un mail au service client.",
-        author: 'Emma C.',
-      },
-      {
-        text: "Affiche trompeuse chez un commerçant : il dit que c'est fait maison, mais rien n'est noté. De plus, il a écrit en gros qu'il vend de la viande de Kobe alors qu'il n'est pas référencé sur le site officiel.",
-        author: 'Émile S.',
-      },
-      {
-        text: 'Bonjour, l’hypermarché XXX récupère les promotions qu’il effectue sur des produits en fidélité négative. Je m’explique en effet suite à une campagne de pub sur les fruits et légumes trop généreuse selon eux la direction a prélevé sur toutes les scanettes fidélités une somme et ainsi nous nous retrouvons avec des sommes négatives - 4 euros qui seront récupérés sur de prochaines promos !!! j’hallucine !!! de plus ce magasin vous a été signalé à plusieurs reprises pour des problèmes liés au dlv sur des produits frais (poulet qui pourrissent avant la fin de la dlv).',
-        author: 'Clara A.',
-      },
-      {
-        text: "Commerçant derrière la caisse persiste en disant qu'il n'est pas obligé d'indiquer le montant minimum de paiement en CB par un affichage car c’est lui qui décide et qu'il peut même la refuser s’il veut (comportement limite dans sa réponse).",
-        author: 'Chloé N.',
-      },
-      {
-        text: "Le vendeur m'a vendu un matelas pour 300 € qui ne correspond pas du tout à la description soi-disant matelas spécial dos mais le matelas est de très mauvaise qualité, il ne veut pas reprendre le produit car c'est un marchand ambulant et il vient de XXX et la vente s'est fait à mon domicile à XXX, j'ai le droit à un retour avec un avoir mais le vendeur ne veut plus répondre au téléphone.",
         author: 'Louis M.',
       },
       {
-        text: "Le problème du sweat est qu'à l'achat il semblait parfaitement conforme, mais une fois lavé à froid comme recommandé sur l'étiquette il a commencé à se décomposer d'une manière fulgurante. Le vendeur dit qu'il ne l'a pas vendu comme ça et refuse donc de le reprendre. Mais un vêtement se lave forcément avant d'être porté. Effectivement dans le magasin il ne semble pas présenter de défaut mais une fois mouillé, celui-ci se décompose. La décomposition a été constatée par le vendeur et celui-ci n'a rien voulu savoir.",
+        text: "Différence de prix : le prix en caisse était à 2,01 euros. Les caissiers ont simplement dit \"ce n'est pas nous qui changeons le prix\" et ne connaissaient visiblement pas la règle qui impose de facturer au prix affiché. Ils voulaient juste annuler l'article. Ce n'est pas la première fois que je constate cela dans ce magasin qui se trouve dans un quartier populaire. J'ai envoyé un mail au service client.",
         author: 'Rachid M.',
       },
       {
-        text: "J’ai acheté un tapis, en magasin, qui n'était pas présenté en magasin, mais sur le catalogue internet. Le prix catalogue, que j'ai réglé est de 359 euros, et l'étiquette sur le tapis, qui venait directement de l'entrepôt mentionnait 299 euros. J'ai fait une réclamation et l'entreprise répond que le prix à payer est celui du catalogue, en vigueur au moment de l'achat, et non de l'étiquette, qui n'est plus valable. Merci de m'indiquer quelle est la règle en la matière.",
+        text: "Affiche trompeuse chez un commerçant : il dit que c'est fait maison, mais rien n'est noté. De plus, il a écrit en gros qu'il vend de la viande de Kobe alors qu'il n'est pas référencé sur le site officiel.",
         author: 'Ayoub N.',
       },
       {
-        text: "Bonjour, j’ai récupéré en magasin un œuf de pâques dans la pâtisserie de XXX à la suite d'une commande sur internet. L'œuf était annoncé comme faisant 320g. Un peu étonnée lorsque je l'ai récupéré, je l'ai pesé : - Poids avec emballage : 305 grammes - Poids de l'œuf avec support en carton : 237 grammes. J'ai, le jour même, contacté le service client pour leur faire part de mon constat et essayer de trouver une solution (après m'être assurée que ma balance était fonctionnelle en pesant un paquet de farine neuf). Ils m'ont justifié cette différence de poids par le fait que la pâtisserie était artisanale et que lors d'une prochaine visite, je pourrais récupérer un petit sachet de fritures, en les prévenant suffisamment en avance (plus de réponses du service client depuis notamment lorsque je leur demande un échange...) Concrètement, l'œuf fait quasi 30% de moins que le poids indiqué sur l'annonce : l'artisanat ne peut justifier un tel écart.",
+        text: 'Bonjour, l’hypermarché XXX récupère les promotions qu’il effectue sur des produits en fidélité négative. Je m’explique en effet suite à une campagne de pub sur les fruits et légumes trop généreuse selon eux la direction a prélevé sur toutes les scanettes fidélités une somme et ainsi nous nous retrouvons avec des sommes négatives - 4 euros qui seront récupérés sur de prochaines promos !!! j’hallucine !!! de plus ce magasin vous a été signalé à plusieurs reprises pour des problèmes liés au dlv sur des produits frais (poulet qui pourrissent avant la fin de la dlv).',
         author: 'Jacqueline A.',
       },
       {
-        text: "Je me permets de vous écrire pour déposer une plainte concernant une infraction à la réglementation en matière de protection des consommateurs dans la chaîne de magasin de bricolage XXX. De plus, je n'ai pas été informé avant l'achat de la possibilité d'une variation de couleur, ce qui m'a empêché de faire un choix éclairé. Il est donc recommandé que XXX informe le consommateur des variations de teinte possibles, que ce soit par le biais d'un panneau explicatif en magasin ou d'une information clairement indiquée sur le site internet. De cette manière, le client pourra prendre une décision éclairée et être mieux préparé aux différences de couleur qui pourraient apparaître.",
+        text: "Commerçant derrière la caisse persiste en disant qu'il n'est pas obligé d'indiquer le montant minimum de paiement en CB par un affichage car c’est lui qui décide et qu'il peut même la refuser s’il veut (comportement limite dans sa réponse).",
         author: 'Zoé A.',
       },
       {
-        text: "Bonjour, J'ai récemment acheté des nouvelles lunettes de vue dans une boutique de centre-ville, et le vendeur m'a informé que j'aurais deux verres simples au prix de 160€ chacun, qui correspond au plafond de remboursement de ma mutuelle. Cependant, après avoir consulté la prise en charge sur le site de ma mutuelle, j'ai remarqué que le vendeur m'a facturé un verre simple à 160€ et un verre complexe à 215€, alors que les deux verres sont unifocaux (simples).",
+        text: "Le vendeur m'a vendu un matelas pour 300 € qui ne correspond pas du tout à la description soi-disant matelas spécial dos mais le matelas est de très mauvaise qualité, il ne veut pas reprendre le produit car c'est un marchand ambulant et il vient de XXX et la vente s'est fait à mon domicile à XXX, j'ai le droit à un retour avec un avoir mais le vendeur ne veut plus répondre au téléphone.",
         author: 'Adam C.',
       },
       {
-        text: "Lors du passage en caisse, j'ai constaté un écart entre le prix affiché en rayon (offre promotionnelle) et le prix en caisse. J'ai signalé cet écart et j'ai eu comme réponse \"il faut que j'aille changer le prix en rayon\" et refus de remboursement du magasin.",
+        text: "Le problème du sweat est qu'à l'achat il semblait parfaitement conforme, mais une fois lavé à froid comme recommandé sur l'étiquette il a commencé à se décomposer d'une manière fulgurante. Le vendeur dit qu'il ne l'a pas vendu comme ça et refuse donc de le reprendre. Mais un vêtement se lave forcément avant d'être porté. Effectivement dans le magasin il ne semble pas présenter de défaut mais une fois mouillé, celui-ci se décompose. La décomposition a été constatée par le vendeur et celui-ci n'a rien voulu savoir.",
         author: 'Emma A.',
       },
       {
-        text: "Le magasin XXX a refusé d'appliquer les conditions générales de vente (CGV) lors d'une demande d'échange d'article suite à l'achat d'un article ne convenant pas. Le magasin a indiqué qu'il pouvait échanger seulement de taille mais pas d'article. Nous avons donc demandé un remboursement comme le prévoit les CGV. Le magasin n'a pas accepté. Nous n'avons pu qu'obtenir un avoir. Nous souhaitons que le magasin se mette en conformité avec les CGV.",
+        text: "J’ai acheté un tapis, en magasin, qui n'était pas présenté en magasin, mais sur le catalogue internet. Le prix catalogue, que j'ai réglé est de 359 euros, et l'étiquette sur le tapis, qui venait directement de l'entrepôt mentionnait 299 euros. J'ai fait une réclamation et l'entreprise répond que le prix à payer est celui du catalogue, en vigueur au moment de l'achat, et non de l'étiquette, qui n'est plus valable. Merci de m'indiquer quelle est la règle en la matière.",
         author: 'Léa A.',
       },
       {
-        text: 'Dans les magasins de l’enseigne XXX, la même chaussure Beige/Argent est proposée à 100€ prix normal Homme et Femme. Les problèmes 1/ Le modèle Homme est mis en avant avec une remise de 25€ non appliquée au modèle femme. Il s’agit du même produit avec exactement les mêmes caractéristiques. 2/ Le modèle Homme ne commence qu’à la pointure 41,5. Donc un homme de pointure inférieure à 41,5 doit prendre le modèle femme et ne peut bénéficier de la remise. - Par ces deux faits cette promotion est discriminatoire. - D’une manière générale est-ce règlementaire de proposer deux prix pour un même produit sans informer le client de cette différentiation sexe et taille ?',
+        text: "Bonjour, j’ai récupéré en magasin un œuf de pâques dans la pâtisserie de XXX à la suite d'une commande sur internet. L'œuf était annoncé comme faisant 320g. Un peu étonnée lorsque je l'ai récupéré, je l'ai pesé : - Poids avec emballage : 305 grammes - Poids de l'œuf avec support en carton : 237 grammes. J'ai, le jour même, contacté le service client pour leur faire part de mon constat et essayer de trouver une solution (après m'être assurée que ma balance était fonctionnelle en pesant un paquet de farine neuf). Ils m'ont justifié cette différence de poids par le fait que la pâtisserie était artisanale et que lors d'une prochaine visite, je pourrais récupérer un petit sachet de fritures, en les prévenant suffisamment en avance (plus de réponses du service client depuis notamment lorsque je leur demande un échange...) Concrètement, l'œuf fait quasi 30% de moins que le poids indiqué sur l'annonce : l'artisanat ne peut justifier un tel écart.",
         author: 'Soukaina É.',
       },
       {
-        text: "Le commerçant ne veut pas reprendre le produit défectueux malgré nous avoir informés que d'autres clients avaient eu des problèmes similaires avec le même produit. Il ne vend plus de bois exotique suite à de multiples problèmes, mais refuse de rembourser ses clients. Ces lames de bois présentent des trous de termites (non conforme à la vente) et se sont défibrées au bout de deux mois de pose, ce qui est anormal pour un bois exotique. Malgré plusieurs relances, le commerçant ne souhaite rien entendre. Cependant les articles L.217-4 à L. 217-14 du Code de la consommation définissent la garantie légale de conformité. En effet, la loi stipule que la garantie légale de conformité oblige le vendeur professionnel à rembourser ou réparer les produits ayant révélé un défaut dans les deux ans à compter de leur achat. Nous vous remercions par avance de l'attention portée à notre requête.",
+        text: "Je me permets de vous écrire pour déposer une plainte concernant une infraction à la réglementation en matière de protection des consommateurs dans la chaîne de magasin de bricolage XXX. De plus, je n'ai pas été informé avant l'achat de la possibilité d'une variation de couleur, ce qui m'a empêché de faire un choix éclairé. Il est donc recommandé que XXX informe le consommateur des variations de teinte possibles, que ce soit par le biais d'un panneau explicatif en magasin ou d'une information clairement indiquée sur le site internet. De cette manière, le client pourra prendre une décision éclairée et être mieux préparé aux différences de couleur qui pourraient apparaître.",
         author: 'Nour S.',
       },
       {
-        text: "Après avoir déposé mon équipement au SAV de la boutique pour réparation, cela fait plus de 60 jours que je n'ai toujours pas récupéré mon matériel, pire, XXX n'a même pas de retour du réparateur agréé pour avoir un état d'avancement. Je ne sais pas ce qu'il en est de mon matériel et XXX me fait patienter sans informations. Je souhaite récupérer mon bien dans l'état où je l'ai déposé.",
+        text: "Bonjour, J'ai récemment acheté des nouvelles lunettes de vue dans une boutique de centre-ville, et le vendeur m'a informé que j'aurais deux verres simples au prix de 160€ chacun, qui correspond au plafond de remboursement de ma mutuelle. Cependant, après avoir consulté la prise en charge sur le site de ma mutuelle, j'ai remarqué que le vendeur m'a facturé un verre simple à 160€ et un verre complexe à 215€, alors que les deux verres sont unifocaux (simples).",
         author: 'Fatima I.',
       },
       {
-        text: "J'ai pu constater que les oursons en guimauve vendu par l'enseigne XXX était fait avec de la gélatine de porc ce qui n'est pas signifié sur l'emballage dans les ingrédients il y a indiqué juste \"gélatine \" il n'y a pas écrit si c'est de la gélatine de porc ou autre de plus les employés en point de vente ne le signalent pas je trouve ça trompeur !",
+        text: "Lors du passage en caisse, j'ai constaté un écart entre le prix affiché en rayon (offre promotionnelle) et le prix en caisse. J'ai signalé cet écart et j'ai eu comme réponse \"il faut que j'aille changer le prix en rayon\" et refus de remboursement du magasin.",
         author: 'Amira N.',
       },
       {
-        text: 'Le commerçant ne veut pas me reprendre le produit car il conteste le fait que les chaussures présentent un défaut de fabrication.',
+        text: "Le magasin XXX a refusé d'appliquer les conditions générales de vente (CGV) lors d'une demande d'échange d'article suite à l'achat d'un article ne convenant pas. Le magasin a indiqué qu'il pouvait échanger seulement de taille mais pas d'article. Nous avons donc demandé un remboursement comme le prévoit les CGV. Le magasin n'a pas accepté. Nous n'avons pu qu'obtenir un avoir. Nous souhaitons que le magasin se mette en conformité avec les CGV.",
         author: 'Ahmed S.',
       },
       {
-        text: "Le magasin refuse de traiter les garanties des achats de plus d'un mois. Le SAV renvoie le dossier vers un autre site internet, apparemment celui de son fournisseur. Le magasin doit respecter ses obligations en matière de garantie.",
+        text: 'Dans les magasins de l’enseigne XXX, la même chaussure Beige/Argent est proposée à 100€ prix normal Homme et Femme. Les problèmes 1/ Le modèle Homme est mis en avant avec une remise de 25€ non appliquée au modèle femme. Il s’agit du même produit avec exactement les mêmes caractéristiques. 2/ Le modèle Homme ne commence qu’à la pointure 41,5. Donc un homme de pointure inférieure à 41,5 doit prendre le modèle femme et ne peut bénéficier de la remise. - Par ces deux faits cette promotion est discriminatoire. - D’une manière générale est-ce règlementaire de proposer deux prix pour un même produit sans informer le client de cette différentiation sexe et taille ?',
         author: 'Timothée A.',
       },
       {
-        text: "Une promotion est affichée avec -50% sur le deuxième article. Le prix de ce même article a augmenté de 40% par rapport à la semaine dernière, revenant plus cher après promotions qu'avec les prix normaux. Ce n'est pas la première fois dans ce magasin que des produits sont affichés en promotions alors qu'ils ont très nettement augmenté par rapport à la semaine précédente.",
+        text: "Le commerçant ne veut pas reprendre le produit défectueux malgré nous avoir informés que d'autres clients avaient eu des problèmes similaires avec le même produit. Il ne vend plus de bois exotique suite à de multiples problèmes, mais refuse de rembourser ses clients. Ces lames de bois présentent des trous de termites (non conforme à la vente) et se sont défibrées au bout de deux mois de pose, ce qui est anormal pour un bois exotique. Malgré plusieurs relances, le commerçant ne souhaite rien entendre. Cependant les articles L.217-4 à L. 217-14 du Code de la consommation définissent la garantie légale de conformité. En effet, la loi stipule que la garantie légale de conformité oblige le vendeur professionnel à rembourser ou réparer les produits ayant révélé un défaut dans les deux ans à compter de leur achat. Nous vous remercions par avance de l'attention portée à notre requête.",
         author: 'Théo T.',
       },
       {
-        text: 'Les prix des produits vendus dans cette boutique ne sont pas affichés. Étant donné que les prix sont très élevés, j’ai été très surpris de constater la somme demandée par le commerçant. D’autres clients avec qui j’en ai discuté, m’ont dit qu’ils étaient également étonnés de ne pas voir d’affichage de prix, comme cela doit être le cas. Le commerçant perd sa patience, lorsqu’on lui fait constater ce qu’il n’est ni professionnel, ni tolérable. Il conviendrait de l’obliger à afficher ses prix, soit au gramme, soit au kilo soit à l’unité (barquette) ce qui éviterait des abus et des variations de prix d’un client à l’autre… Merci.',
+        text: "Après avoir déposé mon équipement au SAV de la boutique pour réparation, cela fait plus de 60 jours que je n'ai toujours pas récupéré mon matériel, pire, XXX n'a même pas de retour du réparateur agréé pour avoir un état d'avancement. Je ne sais pas ce qu'il en est de mon matériel et XXX me fait patienter sans informations. Je souhaite récupérer mon bien dans l'état où je l'ai déposé.",
         author: 'Nadia D.',
       },
       {
-        text: "Produit alimentaire en date courte. Date dépassée acheté sans vérification. Achat 26/03 date 25/03. Pourtant il y a du personnel le dimanche matin qui aurait dû retirer l'article. Ce n'est pas la 1ere fois que ça m'arrive dans ce magasin avec un produit date courte avec une date de péremption dépassée.",
+        text: "J'ai pu constater que les oursons en guimauve vendu par l'enseigne XXX était fait avec de la gélatine de porc ce qui n'est pas signifié sur l'emballage dans les ingrédients il y a indiqué juste \"gélatine \" il n'y a pas écrit si c'est de la gélatine de porc ou autre de plus les employés en point de vente ne le signalent pas je trouve ça trompeur !",
         author: 'Amine L.',
       },
       {
-        text: 'Grosse étiquette bio devant des oignons que ne le sont pas. D’autres produits, fruits et légumes, qui ne sont pas Bio sont sur le même étalage que les produits bio avec de grosses étiquettes en hauteur.',
+        text: 'Le commerçant ne veut pas me reprendre le produit car il conteste le fait que les chaussures présentent un défaut de fabrication.',
         author: 'Amine D.',
       },
       {
-        text: "Nous avons passé une commande de 9 articles dans un magasin de meubles : bahut, meuble télé, meuble vitrine, table basse et table salle à manger, 4 chaises pour un montant HT de 9429 euros. Le délai de livraison était prévu pour fin novembre 2022, les articles ont été livrés avec trois mois de retard soit le 24/02/23 sans les chaises. Nous n'arrivons pas à obtenir un délai de livraison précis pour ces 4 chaises.",
+        text: "Le magasin refuse de traiter les garanties des achats de plus d'un mois. Le SAV renvoie le dossier vers un autre site internet, apparemment celui de son fournisseur. Le magasin doit respecter ses obligations en matière de garantie.",
         author: 'Noémie M.',
       },
       {
-        text: 'La viande n’est pas bonne, mauvais entretien et hygiène déplorable. Après avoir acheté de la viande chez ce boucher nous sommes 3 à être tomber malade, maux de ventre toute la nuit. Le commerçant n’a rien voulu savoir. Aucun prix affiché sur les produits et les employés sont très sales.',
+        text: "Une promotion est affichée avec -50% sur le deuxième article. Le prix de ce même article a augmenté de 40% par rapport à la semaine dernière, revenant plus cher après promotions qu'avec les prix normaux. Ce n'est pas la première fois dans ce magasin que des produits sont affichés en promotions alors qu'ils ont très nettement augmenté par rapport à la semaine précédente.",
         author: 'Stella C.',
       },
       {
-        text: "Refus de reprise du produit et demande d'avoir pour nouvel achat refusé. Le commerçant évoque une politique de retour produit inchangée depuis plus de 30 ans et l'application d'un protocole interne de revendeur pour se détourner de ses responsabilités. Résultats : la non-reconnaissance de vice caché pourtant indiscutable dû à un problème d'assemblage et de matière rendant le produit inutilisable. Ceci équivaut à un refus d'application des garanties destinées à protéger les consommateurs des procédures multi-contextuelles des relations entre revendeur et fabricant. Finalement c'est le client qui est pénalisé. Par ailleurs une communication en magasin indique la non reprise de produits à prix réduits. Ceux-ci bénéficient pourtant des mêmes garanties. Cette communication est trompeuse et non régulière.",
+        text: 'Les prix des produits vendus dans cette boutique ne sont pas affichés. Étant donné que les prix sont très élevés, j’ai été très surpris de constater la somme demandée par le commerçant. D’autres clients avec qui j’en ai discuté, m’ont dit qu’ils étaient également étonnés de ne pas voir d’affichage de prix, comme cela doit être le cas. Le commerçant perd sa patience, lorsqu’on lui fait constater ce qu’il n’est ni professionnel, ni tolérable. Il conviendrait de l’obliger à afficher ses prix, soit au gramme, soit au kilo soit à l’unité (barquette) ce qui éviterait des abus et des variations de prix d’un client à l’autre… Merci.',
         author: 'Inès M.',
+      },
+      {
+        text: "Produit alimentaire en date courte. Date dépassée acheté sans vérification. Achat 26/03 date 25/03. Pourtant il y a du personnel le dimanche matin qui aurait dû retirer l'article. Ce n'est pas la 1ere fois que ça m'arrive dans ce magasin avec un produit date courte avec une date de péremption dépassée.",
+        author: 'Anna J.',
+      },
+      {
+        text: 'Grosse étiquette bio devant des oignons que ne le sont pas. D’autres produits, fruits et légumes, qui ne sont pas Bio sont sur le même étalage que les produits bio avec de grosses étiquettes en hauteur.',
+        author: 'Sarah A.',
+      },
+      {
+        text: "Nous avons passé une commande de 9 articles dans un magasin de meubles : bahut, meuble télé, meuble vitrine, table basse et table salle à manger, 4 chaises pour un montant HT de 9429 euros. Le délai de livraison était prévu pour fin novembre 2022, les articles ont été livrés avec trois mois de retard soit le 24/02/23 sans les chaises. Nous n'arrivons pas à obtenir un délai de livraison précis pour ces 4 chaises.",
+        author: 'Enzo M.',
+      },
+      {
+        text: 'La viande n’est pas bonne, mauvais entretien et hygiène déplorable. Après avoir acheté de la viande chez ce boucher nous sommes 3 à être tomber malade, maux de ventre toute la nuit. Le commerçant n’a rien voulu savoir. Aucun prix affiché sur les produits et les employés sont très sales.',
+        author: 'Salma T.',
+      },
+      {
+        text: "Refus de reprise du produit et demande d'avoir pour nouvel achat refusé. Le commerçant évoque une politique de retour produit inchangée depuis plus de 30 ans et l'application d'un protocole interne de revendeur pour se détourner de ses responsabilités. Résultats : la non-reconnaissance de vice caché pourtant indiscutable dû à un problème d'assemblage et de matière rendant le produit inutilisable. Ceci équivaut à un refus d'application des garanties destinées à protéger les consommateurs des procédures multi-contextuelles des relations entre revendeur et fabricant. Finalement c'est le client qui est pénalisé. Par ailleurs une communication en magasin indique la non reprise de produits à prix réduits. Ceux-ci bénéficient pourtant des mêmes garanties. Cette communication est trompeuse et non régulière.",
+        author: 'Théo A.',
       },
     ],
   },
@@ -139,15 +139,15 @@ export const frLandingsData = [
     sampleReports: [
       {
         text: "Commandé sur internet le 4 avril une paire de chaussure sur le site xxx france pour la somme de 59,99 euros. A ce jour aucune nouvelle, aucune réponse aux messages laissés et pas de livraison. Aux dernières nouvelles plusieurs messages indiquent que c'est une arnaque !!! Quels sont les recours contre ce genre de voleurs ?",
-        author: 'Michel C.',
+        author: 'Ayoub S.',
       },
       {
         text: 'Bonjour, le 12/12/2022 nous avons effectué un achat en ligne sur le site XXX. La livraison devait être faite par le transporteur XXX. A deux reprises nous avons trouvé dans la boîte aux lettres 2 avis de passage non datés non signés et sans appel reçu. Après avoir contacté le service de livraison par téléphone et internet ils avaient reprogrammé une livraison. Le jour prévu de la livraison nous étions chez nous et n’avons eu ni appel ni trace de livreur. Depuis nous avons essayé de contacter à plusieurs reprises le transporteur et le site (chat, téléphone, Messenger, Twitter) mais nous n’avons à ce jour toujours pas été remboursés. Il est très difficile de joindre XXX car ils ne fonctionnent que par chat et tous se renvoient la balle. 4 mois après notre commande nous souhaiterions enfin être remboursés. Nous avons tout essayé et nous souhaiterions un peu d’aide… Sur le suivi colis est affiché livré le 15/12 alors que le 30/12 est écrit en transit… Merci',
-        author: 'Émile A.',
+        author: 'Chloé C.',
       },
       {
         text: "Bonjour, après maintes tentatives pour être remboursé d'une commande non reçue et passée le 12 décembre sur internet (attestation envoyée fin décembre, plus d'une vingtaine d'appels et de relances), la société de service ne traite pas mon dossier pour clore ce dernier. Je suis ainsi contraint de passer par vos services. En espérant que cela puisse m'aider, je vous remercie par avance de votre aide",
-        author: 'Emma S.',
+        author: 'Ali H.',
       },
     ],
   },
@@ -249,15 +249,15 @@ export const frLandingsData = [
     sampleReports: [
       {
         text: "Cet établissement ne respecte pas les règles d'hygiènes que cela soit au niveau du matériel que de la nourriture et également du logement du personnel. J'y ai travaillé 3 jours avant de décider de ne pas y rester car je suis moi-même tombé malade suite à un problème bactériologique. Au niveau de la cuisine, les casseroles et poêles ne sont pas propres et des résidus datant des jours d’avant se voient à l'œil nu, le patron se permet de mettre un vieux seau sale sur son plan de travail où il prépare les plats et trouve cela normal de plus il ne se lave pas les mains entre chaque préparation. Il range le poisson (saumon sec) dans frigo en le couvrant juste avec du papier de poissonnier et le ressort tel quel pour le mettre en préparation si un client en demande. Il ne filme pas les aliments du frigo, se contente de mettre un sopalin humide et le range ainsi. Les murs et plans de travail sont sales, les livraisons se font à même le sol en extérieur sur le trottoir, les poubelles ne sont jamais désinfectées.",
-        author: 'Emma S.',
+        author: 'Maria É.',
       },
       {
         text: 'Ce petit restaurant situé à XXX où je suis allé diner par hasard en famille est horrible. Ce que j’ai pu y voir m’a choqué. L’endroit est très sale les toilettes, qui sont d’ailleurs mixtes, aussi. Il n’y a même pas de produits d’hygiène ni de papier toilettes. De plus la tenancière de l’établissement ne donne pas les prix et encaisse à « la tête du client ». Elle nous a servis un couscous réchauffé de la veille d’après un autre client qui était venu justement se plaindre du manque d’hygiène et n’a pas voulu nous encaisser en carte bancaire prétextant que la machine était en panne ce qui est faux puisque mon épouse l’avait aperçue encaisser un autre client auparavant… De plus au fond de la salle plusieurs groupes de jeunes fumaient et même du cannabis et une bagarre a même éclaté… Certains riverains parleraient même de trafic du sein même de ce restaurant mais je n’en ai pas vu. Il faut faire quelque chose car il est intolérable qu’un tel lieu puisse exister dans un endroit aussi emblématique.',
-        author: 'Timothée S.',
+        author: 'Margaux A.',
       },
       {
         text: "Je vous écris pour exprimer ma profonde insatisfaction à propos de la commande que j'ai reçue de votre part. Lorsque j'ai reçu ma commande, j'ai été choqué de constater que la nourriture était dans un état complètement inadmissible. De plus, les emballages étaient déchirés et les contenants de nourriture étaient renversés. Cela a rendu la nourriture immangeable. Je suis très déçu de la qualité de service que j'ai reçu de votre part. J'ai dépensé de l'argent pour une commande qui n'était pas à la hauteur de mes attentes. Je m'attendais à une nourriture fraîche et savoureuse, mais ce que j'ai reçu était tout le contraire. Je suis vraiment déçu de la façon dont ma commande a été traitée. Je demande donc un remboursement INTEGRAL pour ma commande. Je pense que cela est justifié car j'ai reçu un service de très mauvaise qualité. Je vous remercie de votre compréhension et j'attends votre réponse avec impatience.",
-        author: 'Léa L.',
+        author: 'Zahra M.',
       },
     ],
   },
@@ -277,15 +277,15 @@ export const frLandingsData = [
     sampleReports: [
       {
         text: "Le 31/03/2022, j'ai fait installer des panneaux photovoltaïques via la société XXX dont le siège est à XXX. L'installation s'est bien déroulée ainsi que les échanges. À la suite de l'installation, j'ai été démarché par cette adresse mail : XXX pour récupérer la TVA. Or, il s'est avéré que j'ai reçu une lettre de relance des impôts indiquant que je n'avais pas déclarer mes panneaux. La personne des impôts en charge de mon dossier, comprenant ma situation, m'a transmis les \"bons\" contacts pour faire ma demande d'assujettissement à la TVA. Au final, l'adresse mail a reçu toutes mes informations personnelles sur l'installation des panneaux photovoltaïques et peut les utiliser à son souhait et non à usage professionnel comme je le pensais. Je vous joins les documents envoyés par XXX (4 premiers documents) et les documents officiels.",
-        author: 'Léa N.',
+        author: 'Nadia A.',
       },
       {
         text: "Je suis arrivé sur le site XXX à la place de celui de l'ANTS et pensais traiter directement avec les autorités françaises. Cependant, un peu pressé de conclure la transaction avec mon acheteur, j'ai rempli ces formulaires, etc. et effectué à contrecœur un paiement de 59,90 € pour transférer la propriété d'une caravane. Mon acheteur m'a contacté hier soir pour me dire qu'il ne pouvait pas enregistrer le véhicule à son nom de toute façon car ils n'avaient pas encore terminé le transfert. Donc, aujourd'hui, je suis allé sur le bon site Web ANTS et j'ai effectué le transfert moi-même sans aucun frais. Il est très décevant que des entreprises tentent de tirer profit du consommateur de cette manière en utilisant Internet pour apparaître comme l'organisme officiel de l'État capable d'effectuer ce type de transfert de véhicule.",
-        author: 'Zahra T.',
+        author: 'Sarah A.',
       },
       {
         text: "Je me connecte sur le site de la mairie de XXX. Je suis dirigé sans le savoir, sur le site XXX. Ne me méfiant pas, je remplis le formulaire de renouvellement de mon passeport et règle le montant du timbre fiscal de 126 euros. Je reçois alors le récapitulatif de ma demande, le timbre fiscal, l'adresse des mairies. Je vérifie et me rends compte que le prix du timbre est en réalité de 86 euros et qu'il y a donc un écart de 30 euros. Je contacte la société www.advercity.fr qui m'affirme que le coût de 30 euros est bien annoncé sur le site. Je demande l'annulation et le remboursement de mon dossier : on me dit que cela sera fait sous 2 à 4 jours. Inquiète de cette réponse, je fais opposition sur ma carte bancaire. Je vérifie la validité du timbre fiscal sur le site des impôts qui ne retrouve pas l'achat du timbre ! Une seconde fois, je contacte XXX pour obtenir le numéro de la transaction d'achat du timbre fiscal : cela m'est refusé.",
-        author: 'Soukaina C.',
+        author: 'Dylan H.',
       },
     ],
   },
@@ -305,15 +305,15 @@ export const frLandingsData = [
     sampleReports: [
       {
         text: "Suite à la résiliation de mon contrat avec la société XXX le 09/12/2022, XXX doit me verser 43.06€. Après vous avoir transmis les justificatifs demandés, vos services auraient viré le montant sur le compte fermé de mon père décédé, puis envoyé un chèque à mon domicile, jamais parvenu. Après vous avoir fourni les copies de mes relevés de compte et une attestation de ma banque jointe démontrant qu'aucun versement XXX n'est intervenu, vous ne cessez d'ouvrir des réclamations arrivant à échéance puis ouvertes à nouveau, sans me régler et malgré les justificatifs fournis. Le dernier événement en date étant de m'informer de la nomination d'un \"conseiller spécialisé\" pour prendre ma réclamation en charge. La question se pose si votre dysfonctionnement renvoie à de l'incompétence ou de la malhonnêteté, ayant tous les justificatifs en votre possession pour régler le montant qui m'est dû depuis le 09/12. Vous remerciant de votre compréhension.",
-        author: 'Axel S.',
+        author: 'Mehdi J.',
       },
       {
         text: "Suite à mes nombreuses sollicitations envers votre entreprise XXX dont je suis client pour corriger mes index de consommations d'électricité, je n'obtiens pas de correction de votre part. En effet, vous m'attribuez un index de début et actuel erroné de (19.10.22 = 97793 KWh) alors que l'index était est 95524KWh. De plus l'index actuel est de 95881KWh. Vous avez donc procédé à la correction de l'indice actuel à la suite de nombreux échanges et l'envoi de preuves. Néanmoins, vous avez attribué un index de début bien en deçà de la réalité et ont donc remplacé l'index du 19.10.22 de 97793KWh par un index de 94950KWh a postériori. J'ai essayé de vous expliquer que ceci est une pratique non raisonnable vu que vous n'avez aucun moyen de faire une relève 5 mois après. Je vous signale donc vos pratiques pour faire payer vos clients plus que leur consommation sont douteuses !",
-        author: 'Dylan É.',
+        author: 'Ali G.',
       },
       {
         text: "Nous avons reçu un démarcheur de la société XXX le mercredi 11 janvier 2023 en fin de matinée, ce dernier n'a pas voulu rentrer dans la maison et la démarche s'est tenue sur la pelouse au moyen de son téléphone sur lequel nous avons dû signer. Suite à cette démarche nous avons changé de fournisseur de gaz. Les arguments évoqués étaient si avantageux que nous nous sommes laissé convaincre. Dans cette situation instable, nous n'avons reçu aucuns documents de la part du démarcheur et encore moins de documents concernant une possible rétractation, seulement deux factures de consommation d'un montant de 236,53 et 157,99 euros. Je n'ai pu interrompre ce contrat XXX qu'en redemandant à mon ancien fournisseur une nouvelle admission qui a pris effet le 26 mars 2023. Si j'avais eu un document de rétractation la période de fourniture XXX aurait été beaucoup plus courte. Compte tenu du préjudice je vous demande de bien vouloir examiner ma demande et d’envisager un remboursement.",
-        author: 'Stella Z.',
+        author: 'Louis B.',
       },
     ],
   },
@@ -332,15 +332,15 @@ export const frLandingsData = [
     sampleReports: [
       {
         text: "On m'a établi un bail avec des documents non conformes ou manquants. Quand j'ai demandé de régulariser le bail et les paiements, on m'a répondu qu'il en était hors de question et qu'aucun geste ne serait fait. Diagnostic Gaz pour les logements de plus de 15ans non fourni et DPE plus valable à la date de signature du bail. Le nouveau DPE fourni plus d'un mois après la date de début du bail et à ma demande est moins qualitatif (note en D au lieu de C qu'on m'a annoncé). Là encore, l'agence refuse de revoir les frais d'agence alors que le service réel est clairement pas à la hauteur du professionnalisme attendu dans le coût de la prestation. Je poste ici car après plusieurs échanges avec l'agence et notamment la gestionnaire du bien qui transmet aux responsables. J'obtiens systématiquement le même retour. Nous maintenons notre position. Nous n'avons fait aucune erreur. Aucun geste ne sera fait. Je trouve cette position très hautaine et laisse aucune possibilité d'agir à l'amiable.",
-        author: 'Mehdi M.',
+        author: 'Sarah C.',
       },
       {
         text: "Madame, Monsieur, je souhaite signaler une négligence dans mon dossier pour la signature d'un acte de vente qui a eu lieu via l'Office XXX. Un des diagnostics obligatoires était manquant. Nous venons de nous en rendre compte. J'ai voulu m'arranger à l'amiable avec l'étude notariale en proposant de rembourser la facture du diagnostic manquant. Mais ces derniers refusent car le notaire des vendeurs ne souhaite pas payer. J'ai demandé un remboursement du diagnostic qui s'élèvent à 124€... Ils ne sont pas du tout coopérants, je suis dans l'obligation de signaler ces manquements au devoir d'un notaire. Il me semble important de respecter les documents obligatoires dans le cadre d'une vente. Les erreurs peuvent arriver, même chez les notaires, mais la moindre des choses est tout de même de rattraper ces manquements. Je vous remercie pour votre aide et votre compréhension.",
-        author: 'Mohamed M.',
+        author: 'Jacqueline C.',
       },
       {
         text: "Bonjour, je suis locataire d'un appartement dont la gestion locative a été confiée à une agence immobilière. Depuis le 1er juin 2019, je reçois des quittances de loyer qui font apparaitre un montant inférieur à celui je leur verse chaque mois. Aucun justificatif de charges non plus. Je souhaite porter à votre connaissance ces manquements graves et vous ajoute en pièce jointe, le courrier que je leur adresse ce jour. Je reste à votre disposition pour toute information complémentaire que vous jugeriez utile. Bien cordialement,",
-        author: 'Mehdi J.',
+        author: 'Nathan L.',
       },
     ],
   },
@@ -360,15 +360,15 @@ export const frLandingsData = [
     sampleReports: [
       {
         text: "En mars 2023 j'ai participé à un concours proposé par la société XXX. Pour participer il fallait liker la page de la société, partager la publication, et taguer en commentaire un ami susceptible d’être intéressé. Le tirage au sort devait avoir lieu quelques jours plus tard. J'étais le seul participant, donc je pensais évidemment être le gagnant. N'ayant pas de nouvelle du tirage au sort, j'ai contacté ce matin ladite société pour demander si j'avais bien gagné, et on m'a répondu que non car il fallait un minimum 10 participants. Cette clause n'apparaissait nulle part sur leur publication. J'ai donc demandé le règlement du concours mais je n’ai pas eu de réponse de leur part. Quelques instants plus tard, les publications relatives au concours ont été effacées de la page. Vous trouverez en pièces jointes des captures d'écran prouvant l’existence de ce concours ainsi que ma participation.",
-        author: 'Anna J.',
+        author: 'Théo L.',
       },
       {
         text: "Une personne se cachant derrière une fausse identité et revendiquant à tort le titre de médecin a créé des comptes sur les réseaux sociaux pour faire de la publicité mensongère. Elle fait notamment la promotion d’un produit de type bain de bouche dont elle affirme qu'il peut traiter l'intégralité des problèmes dentaires. Elle mentionne expressément dans ses publicités les effets sur les caries, la parodontite, l’halitose et les aphtes. Toutes ces publicités sont totalement mensongères car des produits avec de telles propriétés n'existent évidemment pas. Il semblerait que la personne situe son activité en Californie. Mais elle parle français et sa cible de vente est située en France ou est du moins francophone. Il est urgent d'interdire cette page et ses publicités ayant pour objectif de tromper les consommateurs.",
-        author: 'Sarah A.',
+        author: 'Zoé A.',
       },
       {
         text: "J’ai fait l’achat d'un fond de teint et d'une poudre avec un code promo proposé sur les réseaux par une influenceuse mais je n'ai jamais reçu ma commande. Après plusieurs semaines, j'ai contacté l'influenceuse pour savoir où en était ma commande. Elle m’a dit que j'allais recevoir ma commande à plusieurs reprises et que les retards et problèmes de livraison étaient dû à la guerre en Ukraine. Au début je l’ai crue et j’ai pris mon mal en patience. Mais je n’ai aucune nouvelle du site. J’ai donc décidé de passer un appel à la poste avec les références de mon colis mais il aurait été envoyé à une adresse qui n’est pas la mienne et il semblerait en plus que le colis ne soit pas à mon nom. Mais je n’habite pas là-bas et j’ai bien passé la commande à mon nom !!! Mais après avoir fait des recherches sur internet et sur différents forums je me suis aperçu que je n'étais pas seul, loin de là. Je regrette d’avoir bêtement fait confiance à cette influenceuse.",
-        author: 'Enzo M.',
+        author: 'Noémie S.',
       },
     ],
   },
@@ -388,15 +388,15 @@ export const frLandingsData = [
     sampleReports: [
       {
         text: "Achat d'un sandwich au saumon dans une boulangerie. Diarrhées aiguës et fièvre pendant 1 semaine : contamination 2 bactéries suite à analyses de selles, j'ai du consulter un médecin.",
-        author: 'Mehdi M.',
+        author: 'Amine N.',
       },
       {
         text: "Les pâtisseries n'avaient pas l'air fraiches lorsqu'on les a ouvertes à la maison. Nous les avons prises au goûter, et très rapidement nous avons été malades (vomissements, diarrhée). Nous avons évoqué notre incident avec des amis de la commune qui nous ont indiqué ne plus rien acheter dans cette pâtisserie, que des problèmes d'hygiène y sont connus... Nous ne le savions pas. La société est en redressement judiciaire. Le lendemain matin, nous sommes passés devant la porte du laboratoire, il y avait des crottes de chiens à l'intérieur et une forte odeur d'urine. L'immeuble est en vente, connaissant l'identité du propriétaire, nous l'avons contacté et nous a indiqué que le gérant de la pâtisserie délabrait tout, qu'il y avait des crottes partout... Nous ne retournerons plus acheter de produits là-bas, mais nous souhaitons vraiment que cela n'arrive à personne d'autre.",
-        author: 'Ayoub L.',
+        author: 'Juliette A.',
       },
       {
         text: "Hier à partir de 20H30 ma fille a vomi, puis moi vers 22H, ensuite mon fils vers minuit et mon mari ce matin à 6H30. Tous les 4 avons eu des vomissements, nausées, maux de ventre, maux de tête et frissons. Et ce plusieurs fois depuis l'heure de départ, et cela continue. Grosse fatigue également. Nous avons tous déjeuné vers 13H30, des lasagnes faites maison le dimanche matin, à partir de la viande steak hachée achetée chez XXX.",
-        author: 'Anna E.',
+        author: 'Sofia M.',
       },
     ],
   },
@@ -482,15 +482,15 @@ export const frLandingsData = [
     sampleReports: [
       {
         text: "Bonjour, un abonnement intitulé XXX est associé à mon forfait de téléphone depuis le mois de février. Cet abonnement a été ajouté à mon forfait sans mon accord. Cet abonnement est d'un montant de 3 euros hebdomadaire par tacite reconduction. Je n'ai jamais adhéré à ce service ni donner quelconque autorisation de prélèvement. Je souhaite l'arrêt immédiat de ce prélèvement frauduleux et exige un remboursement intégral des montant prélevés. Je joins les factures détaillées.",
-        author: 'Alexandre G.',
+        author: 'Soukaina C.',
       },
       {
         text: "Bonjour, je viens me plaindre de l’opérateur XXX qui m'a envoyé une facture de 116.96€ qui fait suite à mon abonnement. En revanche, nulle part lors de la souscription / échange de box, j'ai été informé de la facturation de 49€ de renouvellement de la box et de 20€ pour son envoi. Facture augmentée de 69€. Cela est d'autant plus étrange qu'en théorie, les clients de plus de 5 années sont, à priori, exonérés de payer ces deux sommes comme signalé dans leurs pubs. Est-ce volontaire ? Malgré mon appel la semaine dernière, je n'ai pas de nouvelle. Veuillez m'aider dans cette démarche afin d'être remboursé de cette somme de 69€. L'information donnée est que seule la Box XXX n'est pas concernée par cette facturation supplémentaire. Box qui est indisponible pour quelques temps et l'était lors de ma demande de renouvellement. Ancienneté de 20 ans… Je vous joins la facture concernée. Cordialement,",
-        author: 'Chloé I.',
+        author: 'Timothée T.',
       },
       {
         text: "Je suis abonné à la fibre chez l’opérateur XXX depuis le 12/08/2022 et engagé sous 12 mois. L'opérateur a augmenté le forfait de base sans m'en informer et je le constate aujourd'hui sur ma facture. Pouvez m'indiquer si je reste engagé ou si je peux résilier sans frais ce contrat ?",
-        author: 'Mathis R.',
+        author: 'Chloé F.',
       },
     ],
   },
@@ -509,15 +509,15 @@ export const frLandingsData = [
     sampleReports: [
       {
         text: 'A ce jour vous avez réalisé en partie des travaux de plomberie dans mon appartement. Durant le chantier nous avons rencontré de nombreuses fois des problèmes liés à votre installation : une fuite d’eau, une fixation des raccords défectueuse, un écoulement difficile à cause d’une pente insuffisante, un mauvais choix des diamètres de tuyaux, l’installation d’un coude à la place d’un siphon sur un évier, de nombreux raccords pour relier les tuyaux, une arrivée d’eau impossible depuis l’alimentation générale et enfin un chauffe-eau endommagé. Cette mauvaise installation a généré de nombreux dégâts : des dégâts des eaux, des trous dans les murs et les plafonds, un sol détérioré… Je tiens à souligner que ces dommages ont été intégralement à ma charge, moi, le propriétaire. A la suite de tout cela je suis dans l’obligation de mettre un terme à notre collaboration. J’ai fait appel à un autre plombier pour terminer et corriger toutes les erreurs de l’installation. Je vous demande de régler la situation à l’amiable en prenant en charge l’intégralité des coûts des travaux.',
-        author: 'Yasmina D.',
+        author: 'Rachid A.',
       },
       {
         text: "J'ai contacté votre entreprise par téléphone afin de me faire faire un devis pour une potentielle installation d'un poêle à bois. Une personne est venue pour un AUDIT mais en aucun cas ne m'a informé que je devrais régler quoique ce soit... ou que cela engendrerait un engagement financier ou autre de ma part… Si à la suite de ce rendez-vous j’avais été intéressé, il aurait fallu que je donne suite or je ne l'ai pas fait... Malgré cela j'ai reçu dernièrement un courrier de votre part qui m'indique de vous faire parvenir sans délai mon avis d'imposition 2022 ainsi que ma taxe foncière 2022 sans quoi je vous serai redevable de la somme de 500 euros... J'ai essayé à plusieurs reprises de vous contacter afin d'avoir des explications mais votre entreprise est injoignable.",
-        author: 'Noémie I.',
+        author: 'Sofia Z.',
       },
       {
         text: 'Votre devis est évasif et imprécis. En effet, les informations que vous m’avez donnés oralement ne sont pas retranscrites dessus. Je constate ensuite une usurpation de ma signature sur un second devis et sur la facture. Par ailleurs, les tarifs que vous proposez sont prohibitifs, la facturation est très exagérée en ce qui concerne les services. Vous mentionnez notamment une recherche de panne à 550 euros la minute ! Vous êtes de mauvaise foi, vous usez de menaces à peine voilées. Vous vous permettez l’enregistrement de nos conversations téléphoniques sans mon accord préalable !',
-        author: 'Maria É.',
+        author: 'Gérard D.',
       },
     ],
   },
@@ -537,15 +537,15 @@ export const frLandingsData = [
     sampleReports: [
       {
         text: "Achat d'un véhicule de marque XXX, au garage XXX , avec lors du bon de commande une garantie de 12 mois, à la livraison pas de trace sur la facture de cette garantie ( le vendeur me dit qu'elle est en cours auprès d'un organisme et qu'elle sera du haut de gamme au regard de la valeur de cette voiture, des problèmes sont arrivés sur ce véhicule apres 350 kms parcourus et la facture a été réglée volontairement par le garage, mais à ce jour aucune trace de cette garantie, qui selon le patron du garage commencera au moment de sa mise en place de cette garantie de 12 mois même après 4 mois. Pour info les problèmes liés au véhicule auraient du être notifiés au contrôle technique. Je pense que nous sommes face à une vente en abus de confiance, un véhicule garanti n'est pas au même prix que non garanti. En l'attente d'une intervention de la part de vos services. Cordialement.",
-        author: 'Axel T.',
+        author: 'Mehdi J.',
       },
       {
         text: "Suite à panne moteur sur autoroute à Sanary 83.Le dépanneur d'autoroute m'a facturé 96 euros de frais de gardiennage pour un week-end férié de Pâques (celui ci ne réparant pas la voiture) et ceci le temps que l'assistance envoie une autre dépanneuse pour l'emmener dans un autre garage de réparation agrée par l'assurance. Ce  garage ne m a pas informé des frais au préalable et sans me donner un contrat ou autre. Ps : j' avais du payé à distance (CB ) sous menace de bloquer mon véhicule chez eux (verbalement)",
-        author: 'Soukaina S.',
+        author: 'Rayan M.',
       },
       {
         text: "Bonjour, suite à une défaillance avérée du réservoir adblue de mon véhicule et après 3 mois d'échanges avec XXX, j'ai obtenu la prise en charge financière des pièces liées au changement de réservoir mais la main d'œuvre est restée à ma charge, soit 289.86 €. Or s'agissant d'un problème avéré, non lié à l'usure du véhicule, en témoigne la prise en charge des pièces à 100%, et compte tenu du faible kilométrage de ma voiture, je sollicite également le remboursement de la main d'œuvre liée à cette intervention. Vous trouverez la facture en PJ. J'ai déjà effectué cette demande auprès de XXX par anticipation sans retour positif. Étant dorénavant en possession de la facture, je réitère cette demande. Merci, cordialement.",
-        author: 'Enzo C.',
+        author: 'Anna E.',
       },
     ],
   },
@@ -727,35 +727,35 @@ export const frLandingsData = [
     sampleReports: [
       {
         text: "J'ai fait appel à ***** pour l'installation de panneaux photovoltaïques sur le toit de ma maison. Ils m'ont promis des économies importantes sur mes factures d'énergie. Malheureusement, je n'ai constaté aucune amélioration après plusieurs mois. De plus, ils ont endommagé le toit pendant l'installation et refusent de prendre en charge les réparations. Je me sens complètement trompé.",
-        author: 'Salma T.',
-      },
-      {
-        text: "J'ai contacté ***** pour l'installation de panneaux photovoltaïques. Malheureusement, depuis l'installation, je fais face à des problèmes continus avec le système. De plus, ils ne répondent pas à mes demandes de service après-vente. Je me sens abandonné et déçu par leur manque de professionnalisme.",
-        author: 'Théo A.',
-      },
-      {
-        text: "J'ai fait appel à ***** pour installer des panneaux photovoltaïques sur ma maison. Cependant, le rendement promis n'a pas été atteint et ils refusent d'assumer la responsabilité. De plus, ils ont laissé ma propriété dans un état déplorable après l'installation. Je me sens trompé et négligé.",
-        author: 'Théo L.',
-      },
-      {
-        text: "J'ai embauché ***** pour l'installation de panneaux photovoltaïques. Malheureusement, ils ont effectué un travail de mauvaise qualité et le système ne fonctionne pas correctement. De plus, ils ont refusé de rectifier les problèmes. Je suis très déçu et je me sens arnaqué.",
-        author: 'Zoé A.',
-      },
-      {
-        text: "J'ai sollicité ***** pour l'installation de panneaux photovoltaïques. Malheureusement, les panneaux installés ne produisent pas la quantité d'énergie promise. De plus, ils ont endommagé le toit pendant l'installation et ne veulent pas réparer les dégâts. Je me sens délaissé et trompé.",
-        author: 'Noémie S.',
-      },
-      {
-        text: "J'ai fait appel à ***** pour l'installation de panneaux photovoltaïques. Cependant, ils ont mal installé les panneaux, ce qui a entraîné des problèmes d'infiltration d'eau. Malgré mes multiples demandes, ils n'ont pas résolu le problème. Je me sens complètement arnaqué.",
         author: 'Sarah A.',
       },
       {
-        text: "J'ai contacté ***** pour l'installation de panneaux photovoltaïques. Ils ont effectué un travail de mauvaise qualité et ont laissé des débris sur mon terrain. De plus, ils refusent de revenir pour nettoyer ou corriger leur travail. Je me sens complètement négligé.",
+        text: "J'ai contacté ***** pour l'installation de panneaux photovoltaïques. Malheureusement, depuis l'installation, je fais face à des problèmes continus avec le système. De plus, ils ne répondent pas à mes demandes de service après-vente. Je me sens abandonné et déçu par leur manque de professionnalisme.",
         author: 'Yasmina T.',
       },
       {
-        text: "J'ai engagé ***** pour installer des panneaux photovoltaïques sur mon toit. Depuis l'installation, je rencontre de nombreux problèmes avec le système et ils ne répondent pas à mes demandes de réparation. De plus, l'installation a causé des dommages à mon toit. Je suis extrêmement déçu et me sens complètement trompé.",
+        text: "J'ai fait appel à ***** pour installer des panneaux photovoltaïques sur ma maison. Cependant, le rendement promis n'a pas été atteint et ils refusent d'assumer la responsabilité. De plus, ils ont laissé ma propriété dans un état déplorable après l'installation. Je me sens trompé et négligé.",
         author: 'Adam S.',
+      },
+      {
+        text: "J'ai embauché ***** pour l'installation de panneaux photovoltaïques. Malheureusement, ils ont effectué un travail de mauvaise qualité et le système ne fonctionne pas correctement. De plus, ils ont refusé de rectifier les problèmes. Je suis très déçu et je me sens arnaqué.",
+        author: 'Mehdi M.',
+      },
+      {
+        text: "J'ai sollicité ***** pour l'installation de panneaux photovoltaïques. Malheureusement, les panneaux installés ne produisent pas la quantité d'énergie promise. De plus, ils ont endommagé le toit pendant l'installation et ne veulent pas réparer les dégâts. Je me sens délaissé et trompé.",
+        author: 'Ayoub L.',
+      },
+      {
+        text: "J'ai fait appel à ***** pour l'installation de panneaux photovoltaïques. Cependant, ils ont mal installé les panneaux, ce qui a entraîné des problèmes d'infiltration d'eau. Malgré mes multiples demandes, ils n'ont pas résolu le problème. Je me sens complètement arnaqué.",
+        author: 'Anna E.',
+      },
+      {
+        text: "J'ai contacté ***** pour l'installation de panneaux photovoltaïques. Ils ont effectué un travail de mauvaise qualité et ont laissé des débris sur mon terrain. De plus, ils refusent de revenir pour nettoyer ou corriger leur travail. Je me sens complètement négligé.",
+        author: 'Ali L.',
+      },
+      {
+        text: "J'ai engagé ***** pour installer des panneaux photovoltaïques sur mon toit. Depuis l'installation, je rencontre de nombreux problèmes avec le système et ils ne répondent pas à mes demandes de réparation. De plus, l'installation a causé des dommages à mon toit. Je suis extrêmement déçu et me sens complètement trompé.",
+        author: 'Élias S.',
       },
     ],
   },
@@ -777,35 +777,35 @@ export const frLandingsData = [
     sampleReports: [
       {
         text: "J'ai fait une demande de prime d'énergie auprès de *****. Cependant, malgré plusieurs relances, je n'ai toujours pas reçu le montant promis. Je me sens trompé et délaissé.",
-        author: 'Sofia N.',
-      },
-      {
-        text: "J'ai contacté ***** pour bénéficier d'une aide à la rénovation. Malheureusement, malgré de multiples promesses, je n'ai toujours pas reçu de prime. Je me sens ignoré et arnaqué.",
-        author: 'Dylan N.',
-      },
-      {
-        text: "J'ai demandé une prime d'énergie auprès de *****. Malgré plusieurs engagements de leur part, je n'ai toujours pas reçu le montant promis. C'est un véritable scandale.",
-        author: 'Mehdi J.',
-      },
-      {
-        text: "J'ai sollicité ***** pour une subvention d'aide à la rénovation de ma maison. Malheureusement, malgré plusieurs promesses, aucune aide n'a été accordée. Je me sens complètement lésé.",
-        author: 'Rayan M.',
-      },
-      {
-        text: "J'ai demandé une prime d'énergie auprès de *****. Malheureusement, malgré de multiples engagements, je n'ai toujours pas reçu le montant promis. Je me sens délaissé et trompé.",
-        author: 'Anna E.',
-      },
-      {
-        text: "J'ai contacté ***** pour bénéficier d'une aide à la rénovation. Cependant, malgré plusieurs promesses, je n'ai reçu aucune aide. Je me sens totalement ignoré.",
         author: 'Noémie C.',
       },
       {
-        text: "J'ai fait une demande de prime d'énergie auprès de *****. Cependant, malgré plusieurs engagements de leur part, je n'ai toujours pas reçu le montant promis. C'est extrêmement frustrant.",
+        text: "J'ai contacté ***** pour bénéficier d'une aide à la rénovation. Malheureusement, malgré de multiples promesses, je n'ai toujours pas reçu de prime. Je me sens ignoré et arnaqué.",
         author: 'Bernard É.',
       },
       {
-        text: "J'ai sollicité ***** pour une aide à la rénovation de ma maison. Malheureusement, malgré plusieurs promesses, aucune aide n'a été accordée. Je me sens complètement lésé.",
+        text: "J'ai demandé une prime d'énergie auprès de *****. Malgré plusieurs engagements de leur part, je n'ai toujours pas reçu le montant promis. C'est un véritable scandale.",
         author: 'Sarah H.',
+      },
+      {
+        text: "J'ai sollicité ***** pour une subvention d'aide à la rénovation de ma maison. Malheureusement, malgré plusieurs promesses, aucune aide n'a été accordée. Je me sens complètement lésé.",
+        author: 'Jade L.',
+      },
+      {
+        text: "J'ai demandé une prime d'énergie auprès de *****. Malheureusement, malgré de multiples engagements, je n'ai toujours pas reçu le montant promis. Je me sens délaissé et trompé.",
+        author: 'Ahmed E.',
+      },
+      {
+        text: "J'ai contacté ***** pour bénéficier d'une aide à la rénovation. Cependant, malgré plusieurs promesses, je n'ai reçu aucune aide. Je me sens totalement ignoré.",
+        author: 'Margaux T.',
+      },
+      {
+        text: "J'ai fait une demande de prime d'énergie auprès de *****. Cependant, malgré plusieurs engagements de leur part, je n'ai toujours pas reçu le montant promis. C'est extrêmement frustrant.",
+        author: 'Fatima S.',
+      },
+      {
+        text: "J'ai sollicité ***** pour une aide à la rénovation de ma maison. Malheureusement, malgré plusieurs promesses, aucune aide n'a été accordée. Je me sens complètement lésé.",
+        author: 'Alexandre M.',
       },
     ],
   },
@@ -830,31 +830,31 @@ export const frLandingsData = [
       },
       {
         text: "J'ai confié mon réfrigérateur à l'entreprise ***** pour une réparation. Cependant, le frigo est revenu dans un état pire qu'avant et l'entreprise refuse maintenant de prendre en compte mes plaintes. C'est un véritable scandale.",
-        author: 'Élias S.',
-      },
-      {
-        text: "J'ai fait appel à ***** pour la réparation de mon four. Malheureusement, le four ne fonctionne toujours pas correctement et l'entreprise ne répond plus à mes appels. Je me sens délaissé et arnaqué.",
-        author: 'Amine N.',
-      },
-      {
-        text: "J'ai engagé ***** pour réparer mon lave-linge. Non seulement l'appareil n'est pas réparé, mais l'entreprise ne prend pas la peine de répondre à mes plaintes. C'est extrêmement frustrant.",
-        author: 'Juliette A.',
-      },
-      {
-        text: "J'ai fait confiance à ***** pour réparer mon aspirateur. Cependant, non seulement l'appareil n'est pas réparé, mais l'entreprise ne répond plus à mes appels. Je me sens complètement arnaqué.",
-        author: 'Sofia M.',
-      },
-      {
-        text: "J'ai engagé l'entreprise ***** pour la réparation de mon micro-ondes. Malheureusement, l'appareil est revenu dans un état pire qu'avant et l'entreprise refuse de prendre ses responsabilités. C'est un véritable cauchemar.",
-        author: 'Ali L.',
-      },
-      {
-        text: "J'ai confié mon grille-pain à ***** pour une réparation. Cependant, non seulement l'appareil n'est pas réparé, mais l'entreprise refuse de répondre à mes plaintes. Je me sens délaissé et trahi.",
         author: 'Ali A.',
       },
       {
-        text: "J'ai engagé ***** pour la réparation de mon robot de cuisine. Cependant, l'appareil n'a pas été réparé et l'entreprise ne répond plus à mes appels. Je me sens complètement lésé.",
+        text: "J'ai fait appel à ***** pour la réparation de mon four. Malheureusement, le four ne fonctionne toujours pas correctement et l'entreprise ne répond plus à mes appels. Je me sens délaissé et arnaqué.",
         author: 'Chloé Z.',
+      },
+      {
+        text: "J'ai engagé ***** pour réparer mon lave-linge. Non seulement l'appareil n'est pas réparé, mais l'entreprise ne prend pas la peine de répondre à mes plaintes. C'est extrêmement frustrant.",
+        author: 'Axel T.',
+      },
+      {
+        text: "J'ai fait confiance à ***** pour réparer mon aspirateur. Cependant, non seulement l'appareil n'est pas réparé, mais l'entreprise ne répond plus à mes appels. Je me sens complètement arnaqué.",
+        author: 'Soukaina S.',
+      },
+      {
+        text: "J'ai engagé l'entreprise ***** pour la réparation de mon micro-ondes. Malheureusement, l'appareil est revenu dans un état pire qu'avant et l'entreprise refuse de prendre ses responsabilités. C'est un véritable cauchemar.",
+        author: 'Enzo C.',
+      },
+      {
+        text: "J'ai confié mon grille-pain à ***** pour une réparation. Cependant, non seulement l'appareil n'est pas réparé, mais l'entreprise refuse de répondre à mes plaintes. Je me sens délaissé et trahi.",
+        author: 'Sofia N.',
+      },
+      {
+        text: "J'ai engagé ***** pour la réparation de mon robot de cuisine. Cependant, l'appareil n'a pas été réparé et l'entreprise ne répond plus à mes appels. Je me sens complètement lésé.",
+        author: 'Dylan N.',
       },
     ],
   },
@@ -873,23 +873,23 @@ export const frLandingsData = [
     sampleReports: [
       {
         text: "J'ai été surpris d'apprendre que ma carte bancaire avec ***** a été bloquée sans aucune raison. J'ai contacté le service client, mais je n'ai reçu aucune explication satisfaisante.",
-        author: 'Margaux L.',
+        author: 'Louis J.',
       },
       {
         text: "J'ai essayé d'utiliser ma carte bancaire avec *****, mais elle a été refusée. Lorsque j'ai contacté la banque, ils ont dit qu'elle avait été bloquée, mais n'ont pas pu fournir de raison pour ce blocage.",
-        author: 'Dylan M.',
+        author: 'Emma C.',
       },
       {
         text: "Récemment, ma carte bancaire ***** a été bloquée sans aucun motif valable. C'est très frustrant car je suis incapable de faire des achats ou de retirer de l'argent.",
-        author: 'Ayoub S.',
+        author: 'Émile S.',
       },
       {
         text: "Ma carte bancaire avec ***** a été bloquée sans aucune explication. C'est très gênant et perturbe grandement mes transactions quotidiennes.",
-        author: 'Chloé C.',
+        author: 'Clara A.',
       },
       {
         text: "J'ai tenté d'effectuer une transaction avec ma carte bancaire chez *****, mais elle a été refusée. Après avoir contacté la banque, j'ai découvert qu'elle avait été bloquée sans raison apparente.",
-        author: 'Ali H.',
+        author: 'Chloé N.',
       },
     ],
   },
@@ -909,23 +909,23 @@ export const frLandingsData = [
     sampleReports: [
       {
         text: "En avril 2023, ma banque, *****, a bloqué mon compte sans explication. Malgré mes nombreuses tentatives pour les contacter et comprendre la raison de ce blocage, je n'ai reçu aucune réponse satisfaisante. Je suis incapable d'accéder à mes fonds et cela m'a causé beaucoup de stress et de difficultés financières.",
-        author: 'Timothée T.',
+        author: 'Axel S.',
       },
       {
         text: "En juin 2023, sans avertissement, ***** a bloqué mon compte bancaire. Je suis resté sans accès à mes fonds pendant des semaines. Malgré de nombreux appels et courriers électroniques, je n'ai reçu aucune explication claire sur les raisons de ce blocage.",
-        author: 'Chloé F.',
+        author: 'Dylan É.',
       },
       {
         text: "Mon compte chez ***** a été bloqué sans motif en mai 2023. Toutes mes tentatives pour comprendre la raison de ce blocage sont restées vaines. Cela a eu un impact sérieux sur ma vie, car je suis incapable de payer mes factures et d'accéder à mes économies.",
-        author: 'Nadia A.',
+        author: 'Stella Z.',
       },
       {
         text: "En mars 2023, j'ai reçu un message de ***** m'informant que mon compte a été bloqué. Malgré de multiples appels et messages, je n'ai pas pu obtenir une explication claire. Je suis dans une situation financière précaire à cause de ce blocage injustifié.",
-        author: 'Sarah A.',
+        author: 'Mehdi M.',
       },
       {
         text: "Mon compte chez ***** a été soudainement bloqué en juin 2023 sans aucune explication. J'ai contacté à plusieurs reprises la banque, mais aucune raison valable n'a été fournie. Ce blocage a causé de graves problèmes financiers et a perturbé mon quotidien.",
-        author: 'Dylan H.',
+        author: 'Mohamed M.',
       },
     ],
   },
@@ -1018,23 +1018,23 @@ export const frLandingsData = [
     sampleReports: [
       {
         text: "Je viens de découvrir que ***** a procédé à un fichage bancaire à mon encontre sans aucune justification. J'ai toujours été à jour dans mes remboursements et je n'ai jamais été informé d'une telle action.",
-        author: 'Margaux A.',
+        author: 'Fatima A.',
       },
       {
         text: "J'ai été informé par ma banque que ***** a injustement procédé à mon fichage bancaire. Je n'ai jamais été en retard sur mes paiements et je suis choqué par ce manque de professionnalisme.",
-        author: 'Zahra M.',
+        author: 'Anna M.',
       },
       {
         text: "J'ai récemment découvert que j'ai été inscrit sur le fichier bancaire par ***** sans raison valable. C'est inacceptable, car j'ai toujours respecté mes engagements financiers.",
-        author: 'Rachid A.',
+        author: 'Théo H.',
       },
       {
         text: "Malgré une gestion rigoureuse de mes finances, j'ai été surpris d'apprendre que ***** m'a fiché auprès de la banque de France. Je suis actuellement dans l'incapacité d'obtenir un crédit à cause de ce fichage abusif.",
-        author: 'Sofia Z.',
+        author: 'Clara M.',
       },
       {
         text: "J'ai découvert récemment que j'étais fiché par ***** malgré une bonne conduite bancaire. C'est très déconcertant et inacceptable.",
-        author: 'Gérard D.',
+        author: 'Inès M.',
       },
     ],
   },
@@ -1196,23 +1196,23 @@ export const frLandingsData = [
     sampleReports: [
       {
         text: "En mai 2023, j'ai constaté des prélèvements récurrents sur mon compte bancaire de la part d'une entreprise, *****. Je n'ai jamais autorisé ces prélèvements et malgré plusieurs tentatives pour contacter l'entreprise et ma banque, les prélèvements continuent chaque mois. J'ai besoin d'aide pour résoudre cette situation frustrante.",
-        author: 'Fatima A.',
+        author: 'Michel C.',
       },
       {
         text: "En juin 2023, j'ai réalisé que ***** avait commencé à débiter de mon compte un montant important chaque mois. En vérifiant mes relevés bancaires, j'ai constaté que ces prélèvements avaient commencé trois mois auparavant sans mon consentement. J'ai contacté à plusieurs reprises l'entreprise et ma banque, mais sans succès.",
-        author: 'Anna M.',
+        author: 'Émile A.',
       },
       {
         text: "J'ai récemment découvert que ***** prélève de mon compte bancaire un montant mensuel depuis avril 2023. Je n'ai jamais souscrit à leurs services ni donné mon accord pour ces prélèvements. Malgré mes tentatives pour les contacter et résoudre le problème, ces prélèvements continuent.",
-        author: 'Théo H.',
+        author: 'Emma S.',
       },
       {
         text: "Depuis janvier 2023, je constate un prélèvement mensuel effectué par ***** sur mon compte bancaire. Je n'ai jamais signé d'accord de prélèvement avec cette entreprise et mes tentatives pour arrêter ces prélèvements sont restées sans réponse.",
-        author: 'Clara M.',
+        author: 'Margaux L.',
       },
       {
         text: "J'ai remarqué que depuis mars 2023, ***** prélève un montant fixe de mon compte bancaire chaque mois. Je n'ai jamais autorisé ce prélèvement et malgré mes efforts pour les contacter et résoudre cette situation, les prélèvements continuent.",
-        author: 'Inès M.',
+        author: 'Dylan M.',
       },
     ],
   },
@@ -1290,6 +1290,41 @@ export const frLandingsData = [
     ],
   },
   {
+    url: 'problemes-punaises-de-lit',
+    lang: 'fr',
+    isSemiAutomatic: false,
+    seoTitle: 'Problèmes relatifs à des punaises de lit',
+    seoDescription: 'Avez-vous des problèmes relatifs à des punaises de lit ? Chiens renifleurs ?',
+    title: 'Problèmes de punaises de lit',
+    targetedCategory: ['ServicesAuxParticuliers'],
+    catchPhrase: 'Signalez un problème relatif à des punaises de lit !',
+    secondaryTitle1:
+      'Pourquoi signaler un problème relatif à des punaises de lit ? Chiens renifleurs ? Prestataires lutte contre les nuisibles ?',
+    secondaryTitle2: 'Que devient votre signalement relatif à un problème de punaises de lit ?',
+    sampleReports: [
+      {
+        text: "Je voulais vérifier que je n'avais pas de punaise de lit chez moi. J'ai téléphoné à la société ***** le 27 septembre 2023. J'ai obtenu un rendez-vous le jour même. Deux personnes sont venues avec 2 chiens : à la fin de l'inspection, ils nous ont affirmé que nous avions bien des punaises dans les chambres. Aucun compte-rendu écrit. Suite à ce constat, ils m'ont donné le numéro de téléphone d'une personne pouvant effectuer le traitement. Avant d'appeler cette personne et ayant quelques soupçons sur leur honnêteté, nous avons fait une inspection de fond en comble des chambres (matelas, sommier etc.). Nous avons mis des pièges à punaises de lit. Résultat : aucune punaise de lit n'a été trouvée, aucune trace noire ni tâche de sang sur la literie ni aucune piqure. Nous sommes convaincus que cette société est malhonnête et est en cheville avec le particulier qu'ils conseillent d'appeler pour des punaises de lit imaginaires",
+        author: 'Alexandre G.',
+      },
+      {
+        text: "L'entreprise est venue quatre fois avec ses chiens renifleurs pour un problème de punaises de lit, le travail a été effectué, mais le problème, je n'arrive plus à joindre cette société pour récupérer ma facture, envoyé des messages, des mails pas de réponse de leur part.",
+        author: 'Chloé I.',
+      },
+      {
+        text: 'La société ***** où nous avons demandé pour l’intervention le 17 août 2023. Même jour Ils sont venus dans mon appartement et ils sont déjà équipés des produits à appliquer pour tuer des punaises de lit. Ils m’ont fait presser la décision pour réaliser et payer . Et Ils m’ont rassurés que ça a suffit juste une fois de passage . Ils m’ont dit le prix qui était 420€. Quand je paye , ils ont ajouté Tax donc je devais payé 526€ TTC au final. Ce qui m’ont indiqué le prix d’abord (420€) ,c’était le prix HT. C’était déjà le façon malhonnête pour le client. Après nous avons enfin reçu la facture (3 semaines de relance) , et c’est indiqué le prix pour 2 passages alors qu’ils sont venus juste une passage. Nous sommes arnaqués par cette société, nous avons tous essayé pour joindre à eux et sans succès jusqu’à ce jour . Nous souhaitons d’être remboursé par eux , et souhaitons qu’ils n’existent plus ce genre de établissement malhonnête et arnaque qui profite aux gens qui sont en difficulté.',
+        author: 'Mathis R.',
+      },
+      {
+        text: "Le 19 août en rentrant de vacances je trouve des punaises de lits chez moi. J'appelle donc la première société que je trouve sur internet. La personne me dit qu'elle arrive et que ça fera 249 euros. J'accepte. A sa venue elle m'explique brièvement ce qui sera fait sans trop de détails. Nous patientons en bas de chez nous et 10 minutes après le début de l'intervention c'est déjà terminé. Je demande pourquoi c'était aussi rapide, il me dit que ça suffit et qu'il faudra qu'il revienne pour une autre intervention. Étant enceinte de 7 mois je demande au bout de combien de temps je peux revenir chez moi, il nous dit 3 heures et bien aérer (c'est normalement 1 semaine). Le lendemain nous découvrons avec mon mari qu'il reste plusieurs punaises de lits vivantes. Je les contacte et je n'ai pas de retours ni de réponses. Je me sens arnaquée, j'ai payé 249 euros pour un service mal fait, et j'ai un doute si ce sont de véritables professionnels. J'espère un geste de leur part",
+        author: 'Léa N.',
+      },
+      {
+        text: "Jai fait appel à ***** pour régler une infection de punaises de lit. Un 1er technicien est venu le 21/05/2023 avec un chien renifleur en me promettant qu'1 seule intervention sera suffisante, il me fait un devis à 430€ alors que sur leur site il est écrit que le traitement coute 240€, il me demande de payer en espèces, ce que je fais. Son intervention dans mon appartement n'a duré que 5min. 3 jours après, j'avais encore des punaises, donc je paie 80€ de frais de déplacement, et le 27/05/2023 un 2ème technicien vient et traite l'appartement en 3min chrono ! le lendemain, j'ai encore des punaises ! Sur leur site est écrit \"Nous incluons dans notre offre un service de contrôle. Le but est de vérifier si le traitement a été efficace et si votre habitat est entièrement désinfecté. Nos experts peuvent aussi vous proposer des conseils de prévention qui permettent d’empêcher une nouvelle infestation.\" C'est faux. Ils me raccrochent au nez et ne veulent rien entendre",
+        author: 'Zahra T.',
+      },
+    ],
+  },
+  {
     url: 'problemes-remboursement-mutuelle',
     lang: 'fr',
     isSemiAutomatic: false,
@@ -1341,23 +1376,23 @@ export const frLandingsData = [
     sampleReports: [
       {
         text: "J'ai essayé d'annuler mon abonnement chez ***** avant le renouvellement automatique, mais ils l'ont quand même renouvelé et ont prélevé les frais d'abonnement de mon compte.",
-        author: 'Ali G.',
+        author: 'Mathis F.',
       },
       {
         text: "J'ai annulé mon abonnement chez *****, mais ils ont continué à le renouveler automatiquement et à me facturer. J'ai contacté le service client, mais ils n'ont pas réussi à résoudre le problème.",
-        author: 'Louis B.',
+        author: 'Amira M.',
       },
       {
         text: "J'ai été facturé pour le renouvellement d'un abonnement que j'ai annulé avec *****. Malgré mes tentatives de résolution de ce problème, je n'ai pas reçu de réponse de leur part.",
-        author: 'Sarah C.',
+        author: 'Anna É.',
       },
       {
         text: "J'ai annulé mon abonnement avec *****, mais ils ont continué à me facturer pour un renouvellement automatique. J'ai tenté plusieurs fois de les contacter, sans succès.",
-        author: 'Jacqueline C.',
+        author: 'Mathis M.',
       },
       {
         text: "J'ai résilié mon abonnement chez *****, mais j'ai quand même été facturé pour le renouvellement automatique. Le service client n'a pas été en mesure de résoudre ce problème malgré mes nombreuses plaintes.",
-        author: 'Nathan L.',
+        author: 'Amira L.',
       },
     ],
   },
@@ -1377,23 +1412,23 @@ export const frLandingsData = [
     sampleReports: [
       {
         text: "J'ai demandé la résiliation de mon contrat d'assurance chez ***** en avril 2023. Cependant, malgré ma demande, ils continuent à prélever les cotisations sur mon compte bancaire. J'ai tenté à plusieurs reprises de les contacter, sans succès.",
-        author: 'Mathis F.',
+        author: 'Emma S.',
       },
       {
         text: 'Malgré ma demande écrite de résiliation de mon contrat avec *****, envoyée en mai 2023, ils continuent à prélever des frais mensuels sur mon compte. Mes tentatives pour résoudre ce problème ont été ignorées.',
-        author: 'Amira M.',
+        author: 'Timothée S.',
       },
       {
         text: "J'ai demandé à ***** de résilier mon contrat d'assurance en mars 2023. Malgré cela, ils continuent à prélever des primes d'assurance sur mon compte bancaire. J'ai essayé de les contacter à plusieurs reprises mais sans réponse.",
-        author: 'Anna É.',
+        author: 'Léa L.',
       },
       {
         text: "En février 2023, j'ai envoyé une demande de résiliation de mon contrat d'assurance à *****. Malgré cela, ils continuent à prélever les primes mensuelles sur mon compte. J'ai contacté plusieurs fois le service client, mais mes demandes sont restées sans réponse.",
-        author: 'Mathis M.',
+        author: 'Yasmina D.',
       },
       {
         text: "J'ai résilié mon contrat avec ***** en janvier 2023, mais ils continuent à me facturer des primes mensuelles. J'ai tenté à plusieurs reprises de les contacter pour résoudre ce problème, mais je n'ai reçu aucune réponse.",
-        author: 'Amira L.',
+        author: 'Noémie I.',
       },
     ],
   },
