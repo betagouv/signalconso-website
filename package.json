@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "engines": {
-    "node": "16.15.1"
+    "node": "20.9.0"
   },
   "scripts": {
     "beforebuild": "echo 'beforebuild starting' && yarn generate-json && yarn generate-sitemap && only-include-used-icons && echo 'beforebuild done'",
