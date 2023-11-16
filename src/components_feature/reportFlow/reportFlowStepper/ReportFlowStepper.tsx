@@ -1,3 +1,5 @@
+'use client'
+
 import {Anomaly} from '@/anomalies/Anomaly'
 import {Acknowledgement} from '@/components_feature/reportFlow/Acknowledgement/Acknowledgement'
 import {Company} from '@/components_feature/reportFlow/Company/Company'

@@ -2,12 +2,12 @@ import {LimitedWidthPageContainer} from '@/components_simple/PageContainers'
 import {appConfig} from '@/core/appConfig'
 import {ReactNode} from 'react'
 import {Anomaly} from '../anomalies/Anomaly'
-import {ReportFlowStepperWithoutSsr} from '../components_feature/reportFlow/reportFlowStepper/ReportFlowStepperWithoutSsr'
+import {ReportFlowStepper} from '@/components_feature/reportFlow/reportFlowStepper/ReportFlowStepper'
 
 export const FaireUnSignalementPage = ({anomaly, isWebView}: {anomaly: Anomaly; isWebView: boolean}) => {
   return (
     <Container {...{isWebView}}>
-      <ReportFlowStepperWithoutSsr {...{anomaly, isWebView}} />
+      <ReportFlowStepper {...{anomaly, isWebView}} />
     </Container>
   )
 }

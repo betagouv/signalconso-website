@@ -34,8 +34,8 @@ export function generateMetadata(params: GenerateMetadataArg<LocalPathParams>): 
     : {}
 }
 
-const Page = (params: PageComponentProps<LocalPathParams>) => {
-  const landingData = getLandingData(params)
-  return landingData ? <LandingPage landingData={landingData} /> : notFound()
+export default function Page(props: PageComponentProps<LocalPathParams>) {
+  const landingData = getLandingData(props)
+  const lang = props.params.lang
+  return landingData ? <LandingPage {...{landingData, lang}} /> : notFound()
 }
-export default Page

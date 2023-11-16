@@ -9,7 +9,7 @@ import {Page} from '../components_simple/Page'
 import '../globals.css'
 import {getI18n} from '../i18n/I18nDictionnary'
 import {AppLangs, getSupportedLang} from '../i18n/localization/AppLangs'
-import MuiSetup from './[lang]/MuiSetup'
+import ThemeSetup from './[lang]/ThemeSetup'
 
 export default function GlobalError({error, reset}: {error: any; reset: any}) {
   Sentry.captureException(error)
@@ -38,7 +38,7 @@ function ErrorContent() {
       lang={lang}
     >
       <body>
-        <MuiSetup>
+        <ThemeSetup>
           <DsfrProvider lang={lang}>
             <Page>
               <Fender
@@ -56,7 +56,7 @@ function ErrorContent() {
               ></Fender>
             </Page>
           </DsfrProvider>
-        </MuiSetup>
+        </ThemeSetup>
       </body>
     </html>
   )

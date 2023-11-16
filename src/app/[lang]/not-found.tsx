@@ -4,7 +4,7 @@ import {Page} from '../../components_simple/Page'
 import {usePathname} from 'next/navigation'
 import {getI18n} from '../../i18n/I18nDictionnary'
 import {AppLangs, getSupportedLang} from '../../i18n/localization/AppLangs'
-import MuiSetup from './MuiSetup'
+import ThemeSetup from './ThemeSetup'
 import '../../globals.css'
 import React from 'react'
 import {DsfrProvider} from '@codegouvfr/react-dsfr/next-appdir/DsfrProvider'
@@ -20,7 +20,7 @@ export default function NotFound() {
   const {messages: m} = getI18n(lang)
 
   return (
-    <MuiSetup>
+    <ThemeSetup>
       <DsfrProvider lang={lang}>
         <Page>
           <Fender
@@ -40,6 +40,6 @@ export default function NotFound() {
           </Fender>
         </Page>
       </DsfrProvider>
-    </MuiSetup>
+    </ThemeSetup>
   )
 }
