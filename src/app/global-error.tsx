@@ -10,6 +10,7 @@ import '../globals.css'
 import {getI18n} from '../i18n/I18nDictionnary'
 import {AppLangs, getSupportedLang} from '../i18n/localization/AppLangs'
 import ThemeSetup from './[lang]/ThemeSetup'
+import {DSFR_COLOR_SCHEME} from '@/core/theme'
 
 export default function GlobalError({error, reset}: {error: any; reset: any}) {
   Sentry.captureException(error)
@@ -29,7 +30,7 @@ function ErrorContent() {
 
   return (
     <html
-      {...getHtmlAttributes({defaultColorScheme: 'light', lang: lang})}
+      {...getHtmlAttributes({defaultColorScheme: DSFR_COLOR_SCHEME, lang: lang})}
       //NOTE: Scrollbar always visible to avoid layout shift when modal are opened
       style={{
         overflow: '-moz-scrollbars-vertical',

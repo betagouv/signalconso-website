@@ -7,6 +7,10 @@ import {Metadata} from 'next'
 import LayoutCore from './layoutCore'
 import ThemeSetup from './ThemeSetup'
 import {DsfrProvider} from '@codegouvfr/react-dsfr/next-appdir/DsfrProvider'
+import {DSFR_COLOR_SCHEME} from '@/core/theme'
+import StartDsfr from './StartDsfr'
+import {DsfrHead} from '@codegouvfr/react-dsfr/next-appdir/DsfrHead'
+import Link from 'next/link'
 
 export function generateMetadata(): Metadata {
   return layoutMetadatas
@@ -15,7 +19,7 @@ export function generateMetadata(): Metadata {
 const RootLayout = ({children, params}: {children: React.ReactNode; params: any}) => {
   return (
     <html
-      {...getHtmlAttributes({defaultColorScheme: 'light', lang: params.lang})}
+      {...getHtmlAttributes({defaultColorScheme: DSFR_COLOR_SCHEME, lang: params.lang})}
       // Scrollbar always visible to avoid layout shift when modal are opened
       style={{
         overflow: '-moz-scrollbars-vertical',
@@ -23,6 +27,10 @@ const RootLayout = ({children, params}: {children: React.ReactNode; params: any}
       }}
       lang={params.lang}
     >
+      <head>
+        <StartDsfr />
+        <DsfrHead Link={Link} />
+      </head>
       <body>
         <I18nProvider lang={params.lang}>
           <ThemeSetup>

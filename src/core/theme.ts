@@ -38,3 +38,5 @@ export const otherColorSet = {
   warning: '#FF8000',
   info: '#0288d1',
 }
+
+export const DSFR_COLOR_SCHEME = 'light'
