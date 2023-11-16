@@ -18,7 +18,11 @@ export function useToastOnQueryError(useQueryResult: {error: unknown}) {
 
 export function useGetCountries() {
   const {signalConsoApiClient} = useApiClients()
-  const _countries = useQuery(['getCountries'], () => signalConsoApiClient.getCountries(), {staleTime: _1hourInMs})
+  const _countries = useQuery({
+    queryKey: ['getCountries'],
+    queryFn: () => signalConsoApiClient.getCountries(),
+    staleTime: _1hourInMs,
+  })
   useToastOnQueryError(_countries)
   return _countries
 }

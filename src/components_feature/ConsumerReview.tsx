@@ -39,11 +39,14 @@ export const ConsumerReview = ({reportId}: {reportId: string}) => {
 
   const {signalConsoApiClient} = useApiClients()
 
-  const _saveReview = useMutation(['saveReview', reportId], (review: ResponseConsumerReview) =>
-    signalConsoApiClient.postReviewOnReportResponse(reportId, review),
-  )
+  const _saveReview = useMutation({
+    mutationKey: ['saveReview', reportId],
+    mutationFn: (review: ResponseConsumerReview) => signalConsoApiClient.postReviewOnReportResponse(reportId, review),
+  })
 
-  const _reviewExists = useQuery(['reviewExists', reportId], () => signalConsoApiClient.reviewExists(reportId), {
+  const _reviewExists = useQuery({
+    queryKey: ['reviewExists', reportId],
+    queryFn: () => signalConsoApiClient.reviewExists(reportId),
     enabled: !!reportId,
   })
 
@@ -124,7 +127,7 @@ export const ConsumerReview = ({reportId}: {reportId: string}) => {
             </div>
 
             <div className="flex justify-end mt-6">
-              <Button className="mt-2" type="submit" disabled={_saveReview.isLoading}>
+              <Button className="mt-2" type="submit" disabled={_saveReview.isPending}>
                 {m.send}
               </Button>
             </div>

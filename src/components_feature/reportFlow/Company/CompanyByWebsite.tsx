@@ -106,13 +106,11 @@ export const CompanyByWebsite = ({value, children, specificWebsiteCompanyKind, .
   const [hasConfirmedUnknown, setHasConfirmedUnknown] = useState(false)
   const _reportFlow = useReportFlowContext()
 
-  const searchQuery = useQuery(
-    ['searchCompanyByWebsite', website],
-    () => searchWebsite(signalConsoApiClient, siretExtractorClient, website),
-    {
-      enabled: !!website,
-    },
-  )
+  const searchQuery = useQuery({
+    queryKey: ['searchCompanyByWebsite', website],
+    queryFn: () => searchWebsite(signalConsoApiClient, siretExtractorClient, website),
+    enabled: !!website,
+  })
   useToastOnQueryError(searchQuery)
   const displayedResults = isEditingWebsite
     ? undefined

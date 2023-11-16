@@ -20,8 +20,12 @@ interface Props {
 export const Stat = React.memo(({name, count, curve, title, description, percentage}: Props) => {
   const {m, formatLargeNumber} = useI18n()
 
-  const _count = useQuery(['stats_count', name], count)
-  const _curve = useQuery(['stats_curve', name], curve ?? (() => Promise.resolve(undefined)), {enabled: !!curve})
+  const _count = useQuery({queryKey: ['stats_count', name], queryFn: count})
+  const _curve = useQuery({
+    queryKey: ['stats_curve', name],
+    queryFn: curve ?? (() => Promise.resolve(undefined)),
+    enabled: !!curve,
+  })
   const formatCurveDate = ({date, count}: CountByDate): {date: string; count: number} => ({
     date: (m.monthShort_ as any)[date.getMonth() + 1],
     count,
@@ -52,7 +56,7 @@ export const Stat = React.memo(({name, count, curve, title, description, percent
       {curve && (
         <>
           <div className="h-40 md:h-64 lg:h-80 mt-4 flex items-center justify-center">
-            {_curve.isLoading ? (
+            {_curve.isPending ? (
               <div className="h-full w-full bg-gray-200 rounded-xl" />
             ) : (
               _curve.data && <ActualChart data={_curve.data.map(formatCurveDate)} name={name} />

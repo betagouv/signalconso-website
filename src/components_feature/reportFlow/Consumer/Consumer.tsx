@@ -252,7 +252,7 @@ export const ConsumerInner = ({
         onValidated={saveAndNext}
       />
       <ReportFlowStepperActions
-        loadingNext={_checkEmail.isLoading}
+        loadingNext={_checkEmail.isPending}
         onNext={() => {
           _form.handleSubmit(form => {
             _checkEmail

@@ -39,22 +39,24 @@ export const CompanySearchByBarcode = ({children}: Props) => {
   } = useForm<Form>()
 
   const [submittedGTIN, setSubmittedGTIN] = useState<string | undefined>(undefined)
-  const _searchByBarcode = useQuery(
-    ['searchByBarcode', submittedGTIN],
-    () => {
+  const _searchByBarcode = useQuery({
+    queryKey: ['searchByBarcode', submittedGTIN],
+    queryFn: () => {
       return signalConsoApiClient.searchByBarcode(submittedGTIN ?? '')
     },
-    {enabled: !!submittedGTIN, retry: false},
-  )
+    enabled: !!submittedGTIN,
+    retry: false,
+  })
 
   const [submittedIdentity, setSubmittedIdentity] = useState<string | undefined>(undefined)
-  const _searchByIdentity = useQuery(
-    ['searchCompaniesByIdentity', submittedIdentity],
-    () => {
+  const _searchByIdentity = useQuery({
+    queryKey: ['searchCompaniesByIdentity', submittedIdentity],
+    queryFn: () => {
       return companyApiClient.searchCompaniesByIdentity(submittedIdentity ?? '', false, currentLang)
     },
-    {enabled: !!submittedIdentity, retry: false},
-  )
+    enabled: !!submittedIdentity,
+    retry: false,
+  })
 
   useEffect(() => {
     if (_searchByBarcode.data) {
