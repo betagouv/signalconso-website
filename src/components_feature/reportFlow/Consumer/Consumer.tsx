@@ -22,6 +22,7 @@ import {DeepPartial} from '../../../utils/utils'
 import {useReportFlowContext} from '../ReportFlowContext'
 import {ConsumerAnonymousInformation} from './ConsumerAnonymousInformation'
 import {ConsumerValidationDialog} from './ConsumerValidationDialog'
+import {AppLangs} from '@/i18n/localization/AppLangs'
 
 interface ConsumerForm {
   firstName: string
@@ -181,7 +182,10 @@ export const ConsumerInner = ({
             autocomplete="tel"
             type="tel"
             {..._form.register('phone', {
-              pattern: {value: regexp.phone, message: m.invalidPhone},
+              pattern: {
+                value: currentLang === AppLangs.fr ? regexp.phone : regexp.internationalPhone,
+                message: m.invalidPhone,
+              },
             })}
             {...getErrors('phone')}
             required={false}
