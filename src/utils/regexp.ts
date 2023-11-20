@@ -1,8 +1,7 @@
-import {AppLang} from '@/i18n/localization/AppLangs'
-
 export const regexpPattern = {
   email: '^[^ À-ú]+@[^ \\.]+\\.[^ ]+$',
   phone: '^((\\+)33|0|0033)[1-9]([.\\-\\s+]?\\d{2}){4}$',
+  internationalPhone: '^\\+?[0-9 ]{4,}$',
   yyyyMMdd: '\\d{4}-(0\\d|1[0-2])-([0-2]\\d|3[0-1])',
   siren: '[0-9]{9}',
   siret: '[0-9]{14}',
