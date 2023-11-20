@@ -83,14 +83,18 @@ function computeLang(currentCookieLang: string | undefined, headers: any) {
     // See https://stackoverflow.com/questions/76447732/nextjs-13-i18n-incorrect-locale-information-provided
     let computedLang: string
     try {
+      /**
+       * First matching supportedLang will be selected, for example for supported lang ['fr', 'en'] and default lang 'fr' :
+       * given [ 'fr', 'en-GB', 'en-US', 'en' ] -> 'fr' will be selected
+       * given [ 'en-GB', 'en-US', 'en', 'fr' ] -> 'en' will be selected
+       * given [ 'es' ] -> 'fr' will be selected
+       */
       computedLang = match(languages, supportedLang, defaultLang)
     } catch (error) {
       console.warn(error, `Unable to parse language ${languages}`)
-    } finally {
       computedLang = defaultLang
     }
-
-    return currentCookieLang || computedLang
+    return computedLang
   }
 }
 
