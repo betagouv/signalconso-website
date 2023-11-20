@@ -20,10 +20,7 @@ export function middleware(request: any) {
     //Should always redirect to French version when /webview with no lang to ensure backward compatibility to mobile app
     const isWebviewAndShouldRedirectToFr = isWebview(pathname)
 
-    const computedLang =
-      isWebviewAndShouldRedirectToFr || !appConfig.translationFeatureFlagEnabled
-        ? AppLangs.fr
-        : computeLang(currentCookieLang, request.headers)
+    const computedLang = AppLangs.fr
 
     const redirectUrl = `/${computedLang}/${pathname}`
     return buildRedirectToNewLangResponse(request, redirectUrl, computedLang)
