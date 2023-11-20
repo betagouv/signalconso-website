@@ -1,5 +1,6 @@
 title: Problème de quantité
 desc: "Exemple\_: poids indiqué non conforme, balance non tarée"
+companyKind: PRODUCT
 reponseconsoCode:
   - '210'
   - '276'

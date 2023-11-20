@@ -1,5 +1,6 @@
 title: Durée de vie trop courte
 desc: Vous trouvez que la durée de vie de votre appareil est trop courte
+companyKind: PRODUCT
 detailInputs:
   - label: Date d'achat
     type: DATE
