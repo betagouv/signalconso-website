@@ -45,11 +45,7 @@ export function generateMetadata(arg: GenerateMetadataArg<LocalPathParams>): Met
           ? m.acknoledgment.sentReport
           : `${m.faireUnSignalement.etape} ${stepParam} ${m.faireUnSignalement.sur} ${reportSteps.length}`
 
-      const landingCanonical = buildLinkLandingPageFromAnomaly(lang, anomaly)
-      const canonical =
-        landingCanonical ??
-        // some anomalies in EN do not have a corresponding landing page
-        buildLinkStartReport(anomaly, lang)
+      const canonical = buildLinkStartReport(anomaly, lang)
       return {
         title: stepSpecificTitle + ' - ' + anomaly.seoTitle + ' - SignalConso',
         description: undefinedIfNull(anomaly.seoDescription ?? anomaly.description),
