@@ -46,7 +46,7 @@ export function SwitchLang() {
           </span>
         </ScDialog>
       ) : (
-        <Link href={newPath()}>
+        <Link prefetch={false} href={newPath()}>
           {m.header.currentLangCode}
           <span className="fr-hidden-lg"> - {m.header.currentLang}</span>
         </Link>
