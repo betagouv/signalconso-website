@@ -15,7 +15,7 @@ const theme = createTheme({
   },
 })
 
-const ThemeSetup = ({children}: Props) => {
+const MuiThemeSetup = ({children}: Props) => {
   return (
     <>
       {/* MUI (but actually underlying Emotion) isn't ready to work with Next's experimental `app/` directory feature.
@@ -27,4 +27,4 @@ const ThemeSetup = ({children}: Props) => {
   )
 }
 
-export default ThemeSetup
+export default MuiThemeSetup
