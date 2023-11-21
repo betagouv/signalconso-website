@@ -84,8 +84,8 @@ export const ProblemInformation = ({anomaly, subcategories, information, isWebVi
             </PanelBody>
           ) : (
             <div className="flex items-center justify-center gap-4">
-              <VoteButton disabled={_vote.isLoading} {...{onVote}} wasUseful={false} />
-              <VoteButton disabled={_vote.isLoading} {...{onVote}} wasUseful={true} />
+              <VoteButton disabled={_vote.isPending} {...{onVote}} wasUseful={false} />
+              <VoteButton disabled={_vote.isPending} {...{onVote}} wasUseful={true} />
             </div>
           )}{' '}
         </Panel>

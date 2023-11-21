@@ -36,8 +36,8 @@ export default function LandingPage({landingData, lang}: Props) {
           document.querySelector(`#${chooseCategoriesDivId}`)?.scrollIntoView({behavior: 'smooth'})
         }
       : landingData.targetedCategory.length === 1
-      ? findAnomaly(landingData.targetedCategory[0], lang)
-      : 'home'
+        ? findAnomaly(landingData.targetedCategory[0], lang)
+        : 'home'
 
   const anomalies = landingData.targetedCategory.map(_ => findAnomaly(_, lang))
 

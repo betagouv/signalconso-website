@@ -169,10 +169,10 @@ export const ReportFiles = ({fileOrigin, files, onRemoveFile, onNewFile, tooMany
           {maxExceeded
             ? m.maxAttachementExceeded(max, innerFiles.length - max)
             : maxReached
-            ? m.maxAttachmentsReached(max)
-            : nothingYet
-            ? m.maxAttachmentsZero(max)
-            : m.maxAttachmentsCurrent(max - innerFiles.length)}
+              ? m.maxAttachmentsReached(max)
+              : nothingYet
+                ? m.maxAttachmentsZero(max)
+                : m.maxAttachmentsCurrent(max - innerFiles.length)}
         </p>
         {!nothingYet && thumbnails}
       </div>

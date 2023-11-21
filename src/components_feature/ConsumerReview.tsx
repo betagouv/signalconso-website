@@ -39,11 +39,14 @@ export const ConsumerReview = ({reportId}: {reportId: string}) => {
 
   const {signalConsoApiClient} = useApiClients()
 
-  const _saveReview = useMutation(['saveReview', reportId], (review: ResponseConsumerReview) =>
-    signalConsoApiClient.postReviewOnReportResponse(reportId, review),
-  )
+  const _saveReview = useMutation({
+    mutationKey: ['saveReview', reportId],
+    mutationFn: (review: ResponseConsumerReview) => signalConsoApiClient.postReviewOnReportResponse(reportId, review),
+  })
 
-  const _reviewExists = useQuery(['reviewExists', reportId], () => signalConsoApiClient.reviewExists(reportId), {
+  const _reviewExists = useQuery({
+    queryKey: ['reviewExists', reportId],
+    queryFn: () => signalConsoApiClient.reviewExists(reportId),
     enabled: !!reportId,
   })
 
@@ -124,7 +127,7 @@ export const ConsumerReview = ({reportId}: {reportId: string}) => {
             </div>
 
             <div className="flex justify-end mt-6">
-              <Button className="mt-2" type="submit" disabled={_saveReview.isLoading}>
+              <Button className="mt-2" type="submit" disabled={_saveReview.isPending}>
                 {m.send}
               </Button>
             </div>
@@ -167,8 +170,8 @@ function Option({value, evaluationField}: {value: ResponseEvaluation; evaluation
     value === ResponseEvaluation.Positive
       ? 'emotion-line.svg'
       : value === ResponseEvaluation.Neutral
-      ? 'emotion-normal-line.svg'
-      : 'emotion-unhappy-line.svg'
+        ? 'emotion-normal-line.svg'
+        : 'emotion-unhappy-line.svg'
   const label =
     value === ResponseEvaluation.Positive ? m.iAmHappy : value === ResponseEvaluation.Neutral ? m.iAmNeutral : m.iAmUnhappy
   const id = useId()

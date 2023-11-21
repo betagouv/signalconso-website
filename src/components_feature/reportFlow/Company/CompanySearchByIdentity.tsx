@@ -43,11 +43,14 @@ export const CompanySearchByIdentity = ({children}: Props) => {
     formState: {errors},
   } = useForm<Form>()
   const [submittedIdentity, setSubmittedIdentity] = useState<string | undefined>(undefined)
-  const _searchByIdentity = useQuery(['searchCompaniesByIdentity', submittedIdentity], () => {
-    if (submittedIdentity) {
-      return companyApiClient.searchCompaniesByIdentity(submittedIdentity, false, currentLang)
-    }
-    return null
+  const _searchByIdentity = useQuery({
+    queryKey: ['searchCompaniesByIdentity', submittedIdentity],
+    queryFn: () => {
+      if (submittedIdentity) {
+        return companyApiClient.searchCompaniesByIdentity(submittedIdentity, false, currentLang)
+      }
+      return null
+    },
   })
   useToastOnQueryError(_searchByIdentity)
 
@@ -105,7 +108,7 @@ export const CompanySearchByIdentity = ({children}: Props) => {
             </PanelBody>
 
             <PanelActions>
-              <ButtonWithLoader iconId="ri-search-line" loading={_searchByIdentity.isLoading}>
+              <ButtonWithLoader iconId="ri-search-line" loading={_searchByIdentity.isPending}>
                 {m.search}
               </ButtonWithLoader>
             </PanelActions>

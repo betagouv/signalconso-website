@@ -1,7 +1,7 @@
 import {alpha, Box, IconButton, useTheme} from '@mui/material'
 import {styleUtils} from '@/core/theme'
-import {useState} from 'react'
-import SwipeableViews from 'react-swipeable-views'
+import {ReactNode, useState} from 'react'
+import SwipeableViews, {SwipeableViewsProps} from 'react-swipeable-views'
 import Image, {StaticImageData} from 'next/image'
 
 interface IllustrationStepperStepProps {
@@ -12,6 +12,11 @@ interface IllustrationStepperStepProps {
 interface IllustrationStepperProps {
   steps: IllustrationStepperStepProps[]
 }
+
+// This package types don't work well with React 18
+// We redefine its type manually
+// It's not maintained and we should remove it anyway
+const SwipeableViewsFixed = SwipeableViews as any as (props: SwipeableViewsProps) => ReactNode
 
 export const IllustrationStepper = ({steps}: IllustrationStepperProps) => {
   return (
@@ -26,7 +31,7 @@ const IllustrationStepperMobile = ({steps}: IllustrationStepperProps) => {
   const [index, setIndex] = useState(0)
   return (
     <div className="lg:hidden">
-      <SwipeableViews enableMouseEvents index={index} onChangeIndex={setIndex}>
+      <SwipeableViewsFixed enableMouseEvents index={index} onChangeIndex={setIndex}>
         {steps.map(step => (
           <div key={step.title}>
             <div className="flex justify-center">
@@ -44,7 +49,7 @@ const IllustrationStepperMobile = ({steps}: IllustrationStepperProps) => {
             />
           </div>
         ))}
-      </SwipeableViews>
+      </SwipeableViewsFixed>
       <ul className="mt-1 flex justify-center list-none p-0">
         {steps.map((_, i) => (
           <li key={_.title}>
@@ -138,3 +143,5 @@ const IllustrationStepperDesktop = ({steps}: IllustrationStepperProps) => {
     </ol>
   )
 }
+
+function SwipeableViewsWrapper({}) {}

@@ -51,7 +51,10 @@ export function ScAutocompletePostcode(props: {
   const {m} = useI18n()
   const [query, setQuery, throttledQuery] = useStateWithThrottledCopy('')
   const adresseApiClient = useApiClients().adresseApiClient
-  const _fetchCity = useQuery(['fetchCity', throttledQuery], () => adresseApiClient.fetchCity(throttledQuery))
+  const _fetchCity = useQuery({
+    queryKey: ['fetchCity', throttledQuery],
+    queryFn: () => adresseApiClient.fetchCity(throttledQuery),
+  })
 
   function computeCityOptions(input: string): PostcodeOption[] {
     if (_fetchCity.data) {

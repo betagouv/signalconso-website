@@ -71,7 +71,7 @@ export const ConsumerValidationDialog = ({loading, open, consumerEmail, onClose,
             <>
               <ButtonWithLoader
                 disabled={disableResendButton}
-                loading={_checkEmail.isLoading}
+                loading={_checkEmail.isPending}
                 iconId="ri-refresh-line"
                 priority="tertiary no outline"
                 onClick={() => {
@@ -124,7 +124,7 @@ export const ConsumerValidationDialog = ({loading, open, consumerEmail, onClose,
             {m.validated}
           </Button>
         ) : (
-          <ButtonWithLoader loading={_validateEmail.isLoading} onClick={onSubmitButtonClick} iconId={iconArrowRight}>
+          <ButtonWithLoader loading={_validateEmail.isPending} onClick={onSubmitButtonClick} iconId={iconArrowRight}>
             {m.verify}
           </ButtonWithLoader>
         )}

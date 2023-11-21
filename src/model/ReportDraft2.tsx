@@ -30,8 +30,8 @@ export class ReportDraft2 {
         const specifyKeywordFound = value.includes(SpecifyFormUtils.specifyKeywordFr)
           ? SpecifyFormUtils.specifyKeywordFr
           : value.includes(SpecifyFormUtils.specifyKeywordEn)
-          ? SpecifyFormUtils.specifyKeywordEn
-          : null
+            ? SpecifyFormUtils.specifyKeywordEn
+            : null
         if (specifyKeywordFound) {
           const optionIndex = input.options.findIndex(_ => _ === value)
           const specifyInputName = SpecifyFormUtils.getInputName(index, optionIndex)

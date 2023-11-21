@@ -68,7 +68,7 @@ export const ConfirmationInner = ({
         </ConfirmationStepper>
         <ReportFlowStepperActions
           nextIconSend
-          loadingNext={_reportCreate.createReportMutation.isLoading}
+          loadingNext={_reportCreate.createReportMutation.isPending}
           nextButtonLabel={draft.consumerWish === 'getAnswer' ? m.confirmationBtnReponseConso : m.confirmationBtn}
           onNext={next => {
             _reportFlow.sendReportEvent('Confirmation')
