@@ -100,9 +100,6 @@ const securityHeaders = [
 ]
 
 module.exports = {
-  images: {
-    domains: ['monavis.numerique.gouv.fr'],
-  },
   productionBrowserSourceMaps: true,
   reactStrictMode: true,
   async redirects() {
