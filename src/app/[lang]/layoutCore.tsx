@@ -1,28 +1,28 @@
 'use client'
+import {ApiClientsProvider} from '@/context/ApiClientsContext'
+import {AutoscrollProvider} from '@/context/AutoscrollContext'
+import {AppLang} from '@/i18n/localization/AppLangs'
+import {monkeyPatchDomForGoogleTranslate} from '@/utils/fixGoogleTranslate'
 import {SkipLinks} from '@codegouvfr/react-dsfr/SkipLinks'
 import {Box} from '@mui/material'
 import {QueryClient, QueryClientProvider} from '@tanstack/react-query'
-import {ApiClientsProvider} from '@/context/ApiClientsContext'
 import {usePathname} from 'next/navigation'
 import Script from 'next/script'
 import React, {useEffect, useState} from 'react'
-import {monkeyPatchDomForGoogleTranslate} from '@/utils/fixGoogleTranslate'
-import {ToastProvider} from '../../hooks/useToastError'
 import {AnalyticProvider} from '../../analytic/AnalyticContext'
 import {Analytic, PageChangesListener} from '../../analytic/analytic'
 import {ReportCreateProvider} from '../../components_feature/reportFlow/ReportCreateContext'
 import {ReportFlowProvider} from '../../components_feature/reportFlow/ReportFlowContext'
-import {RgpdBanner} from '../../components_simple/bigBanners/RgpdBanner'
 import {ScFooter} from '../../components_simple/ScFooter'
 import {ScHeader} from '../../components_simple/ScHeader'
-import {ConfigProvider, useConfig} from '../../context/ConfigContext'
+import {RgpdBanner} from '../../components_simple/bigBanners/RgpdBanner'
 import {appConfig} from '../../core/appConfig'
 import '../../globals.css'
+import {ToastProvider} from '../../hooks/useToastError'
 import {useI18n} from '../../i18n/I18n'
 import {Eularian} from '../../plugins/eularian'
 import {Matomo} from '../../plugins/matomo'
 import {Sentry} from '../../plugins/sentry'
-import {AutoscrollProvider} from '@/context/AutoscrollContext'
 
 monkeyPatchDomForGoogleTranslate()
 
@@ -43,17 +43,15 @@ const LayoutCore: ({children}: {children: React.ReactNode}) => JSX.Element = ({c
       <ApiClientsProvider>
         <QueryClientProvider client={queryClient}>
           <AnalyticProvider analytic={analytic}>
-            <ConfigProvider config={appConfig}>
-              <ToastProvider>
-                <ReportCreateProvider>
-                  <ReportFlowProvider>
-                    <AutoscrollProvider>
-                      <Base>{children}</Base>
-                    </AutoscrollProvider>
-                  </ReportFlowProvider>
-                </ReportCreateProvider>
-              </ToastProvider>
-            </ConfigProvider>
+            <ToastProvider>
+              <ReportCreateProvider>
+                <ReportFlowProvider>
+                  <AutoscrollProvider>
+                    <Base>{children}</Base>
+                  </AutoscrollProvider>
+                </ReportFlowProvider>
+              </ReportCreateProvider>
+            </ToastProvider>
           </AnalyticProvider>
         </QueryClientProvider>
       </ApiClientsProvider>
@@ -62,18 +60,19 @@ const LayoutCore: ({children}: {children: React.ReactNode}) => JSX.Element = ({c
   )
 }
 
-const Base = ({children}: {children: React.ReactNode}) => {
-  const {config} = useConfig()
-  const {currentLang} = useI18n()
-  const pathname = usePathname() ?? ''
-
+function checkIsWebView(pathname: string, currentLang: AppLang) {
   const regexPattern = `^\\/${currentLang}\\/webview\\/`
   const regex = new RegExp(regexPattern)
-  const isWebView = regex.test(pathname)
+  return regex.test(pathname)
+}
 
+const Base = ({children}: {children: React.ReactNode}) => {
+  const {currentLang} = useI18n()
+  const pathname = usePathname()
+  const isWebView = checkIsWebView(pathname, currentLang)
   return (
     <>
-      {!config.isDev && (
+      {!appConfig.isDev && (
         <Script
           nonce="eYhD6rb8vLVwXsAmnbKl/Q=="
           id="eulerian-analytics"

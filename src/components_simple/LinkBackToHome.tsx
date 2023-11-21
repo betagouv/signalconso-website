@@ -8,14 +8,18 @@ import {sendMessageToReactNative} from '@/utils/utils'
 export const LinkBackToHome = ({isWebView, lang}: {isWebView: boolean; lang: AppLang}) => {
   const {messages: m} = getI18n(lang)
 
+  const buttonProps = {
+    iconId: 'fr-icon-home-4-line',
+    size: 'large',
+  } as const
   return (
     <div className="w-full flex items-center justify-center mt-2">
       {isWebView ? (
-        <Button onClick={() => sendMessageToReactNative('success')} iconId="fr-icon-home-4-line">
+        <Button onClick={() => sendMessageToReactNative('success')} {...buttonProps}>
           {m.backToHome}
         </Button>
       ) : (
-        <Button iconId="fr-icon-home-4-line" linkProps={{href: pagesDefs.index.url}}>
+        <Button linkProps={{href: pagesDefs.index.url}} {...buttonProps}>
           {m.backToHome}
         </Button>
       )}

@@ -1,15 +1,14 @@
-import React, {useRef, useState} from 'react'
+import {appConfig} from '@/core/appConfig'
 import Fuse from 'fuse.js'
-import {Anomaly} from '../anomalies/Anomaly'
-import {createFuseIndex} from '../anomalies/Anomalies'
-import {AnomalyTile} from './AnomalyTile'
-import {EventCategories} from '../analytic/analytic'
+import React, {useRef, useState} from 'react'
 import {useAnalyticContext} from '../analytic/AnalyticContext'
+import {EventCategories} from '../analytic/analytic'
+import {createFuseIndex} from '../anomalies/Anomalies'
+import {Anomaly} from '../anomalies/Anomaly'
 import {useI18n} from '../i18n/I18n'
-import {useConfig} from '../context/ConfigContext'
-import {Alert} from '@codegouvfr/react-dsfr/Alert'
-import {TranslatedWebsiteAlert} from './bigBanners/TranslatedWebsiteAlert'
 import {AppLangs} from '../i18n/localization/AppLangs'
+import {AnomalyTile} from './AnomalyTile'
+import {TranslatedWebsiteAlert} from './bigBanners/TranslatedWebsiteAlert'
 
 type SearchBarProps = {
   anomalies: Anomaly[]
@@ -28,7 +27,7 @@ const SearchAnomalies: React.FC<SearchBarProps> = ({anomalies}) => {
     distance: 100,
     ignoreLocation: true,
   })
-  const {enableSearchCategories} = useConfig().config
+  const {enableSearchCategories} = appConfig
   const handleInputBlur = () => {
     if (query !== '') {
       _analytic.trackEvent(EventCategories.categorySearch, 'Recherche par mot clé', query)

@@ -1,12 +1,9 @@
 'use client'
 
-import {useI18n} from '../../i18n/I18n'
-import React from 'react'
-import {Page} from '../../components_simple/Page'
-import {Fender} from '../../components_simple/Fender'
 import * as Sentry from '@sentry/nextjs'
+import {useI18n} from '../../i18n/I18n'
 
-export default function GlobalError({error, reset}: {error: Error; reset: () => void}) {
+export default function ErrorPage({error, reset}: {error: Error; reset: () => void}) {
   Sentry.captureException(error)
   // Flushing before returning is necessary if deploying to Vercel, see
   // https://vercel.com/docs/platform/limits#streaming-responses
@@ -17,20 +14,15 @@ export default function GlobalError({error, reset}: {error: Error; reset: () => 
 function ErrorContent() {
   const {m} = useI18n()
   return (
-    <Page>
-      <Fender
-        icon="error"
-        title={m.minimalErrorTitle}
-        description={
-          <div
-            style={{
-              marginTop: 30,
-              marginBottom: 30,
-            }}
-            dangerouslySetInnerHTML={{__html: m.minimalErrorText}}
-          />
-        }
-      ></Fender>
-    </Page>
+    <>
+      <main role="main" id="main-content">
+        <div className="fr-container">
+          <div className="my-20 py-1 px-5 border-l-[10px] border-scorange border-solid border-0">
+            <h1 className="text-scorange ">{m.minimalErrorTitle}</h1>
+            <p>{m.minimalErrorText}</p>
+          </div>
+        </div>
+      </main>
+    </>
   )
 }

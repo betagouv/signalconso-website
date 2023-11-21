@@ -6,10 +6,6 @@ export const layoutMetadatas: Metadata = {
   description:
     "Signalez un problème au commerçant (magasins, commerces de proximité, cafés et restaurants...) et à la répression des fraudes : pratique d'hygiène, nourriture / boissons, matériel / objet, prix / paiement, publicité, services associés à l'achat.",
   metadataBase: new URL(appConfig.websiteBaseUrl),
-  viewport: {
-    width: 'device-width',
-    initialScale: 1,
-  },
   openGraph: {
     images: [
       {
