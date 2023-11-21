@@ -3943,14 +3943,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cookies-next@npm:^2.1.2":
-  version: 2.1.2
-  resolution: "cookies-next@npm:2.1.2"
+"cookies-next@npm:^4.1.0":
+  version: 4.1.0
+  resolution: "cookies-next@npm:4.1.0"
   dependencies:
     "@types/cookie": ^0.4.1
     "@types/node": ^16.10.2
     cookie: ^0.4.0
-  checksum: 5c7bf4edf946f8955014417fa609a0426476a6cce7d5f4ae0e7d8309d997e55fd3e41b63dcbbb15d44f6db099f4cdada7144d3c40968deb19efb7f918f8ed7e4
+  checksum: 03e7199c0e1988d1cee4047d56afede6faaa26aa176b7f05775f341d337bfb0f62e4010e9372f5e16d4fa0311271c305c26c525672e684707c68638382443bd7
   languageName: node
   linkType: hard
 
@@ -9911,7 +9911,7 @@ __metadata:
     axios: 1.6.2
     babel-jest: 29.7.0
     browser-image-compression: 2.0.2
-    cookies-next: ^2.1.2
+    cookies-next: ^4.1.0
     csv-parse: ^5.5.2
     date-fns: 2.30.0
     eslint: 8.54.0
