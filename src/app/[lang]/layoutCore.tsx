@@ -1,6 +1,7 @@
 'use client'
 import {ApiClientsProvider} from '@/context/ApiClientsContext'
 import {AutoscrollProvider} from '@/context/AutoscrollContext'
+import {AppLang} from '@/i18n/localization/AppLangs'
 import {monkeyPatchDomForGoogleTranslate} from '@/utils/fixGoogleTranslate'
 import {SkipLinks} from '@codegouvfr/react-dsfr/SkipLinks'
 import {Box} from '@mui/material'
@@ -59,18 +60,19 @@ const LayoutCore: ({children}: {children: React.ReactNode}) => JSX.Element = ({c
   )
 }
 
-const Base = ({children}: {children: React.ReactNode}) => {
-  const config = appConfig
-  const {currentLang} = useI18n()
-  const pathname = usePathname() ?? ''
-
+function checkIsWebView(pathname: string, currentLang: AppLang) {
   const regexPattern = `^\\/${currentLang}\\/webview\\/`
   const regex = new RegExp(regexPattern)
-  const isWebView = regex.test(pathname)
+  return regex.test(pathname)
+}
 
+const Base = ({children}: {children: React.ReactNode}) => {
+  const {currentLang} = useI18n()
+  const pathname = usePathname()
+  const isWebView = checkIsWebView(pathname, currentLang)
   return (
     <>
-      {!config.isDev && (
+      {!appConfig.isDev && (
         <Script
           nonce="eYhD6rb8vLVwXsAmnbKl/Q=="
           id="eulerian-analytics"
