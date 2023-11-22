@@ -115,14 +115,13 @@ function RenderEachStep({
               <Image fill className="object-contain" src={`/image/pictos/${anomaly.img}.png`} alt="" />
             </div>
             <div>
-              <Txt block size="big" bold sx={{mb: 1}} component="h3">
-                {findAnomaly(draft.category, currentLang).title}
-              </Txt>
-              <ul className="pl-0">
+              <h3 className="fr-h6 !mb-2 !text-gray-500">{findAnomaly(draft.category, currentLang).title}</h3>
+              <ul className="pl-0 list-none">
                 {draft.subcategories.map(_ => (
-                  <Row dense icon="subdirectory_arrow_right" key={_.title} component="li">
+                  <li key={_.title} className="text-gray-500">
+                    <i className="ri-corner-down-right-line mr-2 " />
                     {_.title}
-                  </Row>
+                  </li>
                 ))}
               </ul>
             </div>
@@ -153,21 +152,15 @@ function RenderEachStep({
         <>
           {draft.companyDraft && (
             <ConfirmationStep title={m.step_company} {...{goToStep, index}}>
-              <Txt size="big" bold block sx={{mb: 1}} component="h3">
-                {draft.companyDraft.name}
-              </Txt>
-              {draft.companyDraft.brand && (
-                <Txt bold block sx={{mb: 2, fontStyle: 'italic'}}>
-                  {draft.companyDraft.brand}
-                </Txt>
-              )}
+              <h3 className="fr-h6 !text-gray-500 !mb-0">{draft.companyDraft.name}</h3>
+              {draft.companyDraft.brand && <p className="italic text-gray-500 !mb-2">{draft.companyDraft.brand}</p>}
               <ul className="list-none">
                 {draft.companyDraft.siret && (
                   <li className="p-0">
-                    <Txt color="hint" block sx={{mb: 1}}>
-                      <Txt>SIRET:&nbsp;</Txt>
-                      <Txt bold>{draft.companyDraft.siret}</Txt>
-                    </Txt>
+                    <p className="text-gray-500 mb-2">
+                      <span>SIRET:&nbsp;</span>
+                      <span className="font-bold">{draft.companyDraft.siret}</span>
+                    </p>
                   </li>
                 )}
                 <li className="p-0">
