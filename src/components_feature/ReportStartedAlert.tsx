@@ -28,7 +28,7 @@ export default function ReportStartedAlert() {
             position: 'fixed',
           }}
         >
-          <Box>
+          <div>
             <h1 className="fr-h5 !mb-2">{m.continueReport}</h1>
             <ReportFlowStepperHeader
               isWebView={false}
@@ -44,7 +44,7 @@ export default function ReportStartedAlert() {
                 <Button size="small">{m.continue}</Button>
               </Link>
             </div>
-          </Box>
+          </div>
         </Card>
       </Slide>
     )

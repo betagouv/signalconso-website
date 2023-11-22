@@ -113,7 +113,7 @@ function RenderEachStep({
         <ConfirmationStep title={m.step_problem} {...{goToStep, index}}>
           <Box sx={{display: 'flex'}}>
             <AnomalyImage anomaly={anomaly} sx={{mr: 2}} />
-            <Box>
+            <div>
               <Txt block size="big" bold sx={{mb: 1}} component="h3">
                 {findAnomaly(draft.category, currentLang).title}
               </Txt>
@@ -124,7 +124,7 @@ function RenderEachStep({
                   </Row>
                 ))}
               </ul>
-            </Box>
+            </div>
           </Box>
         </ConfirmationStep>
       )

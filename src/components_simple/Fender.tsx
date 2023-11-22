@@ -37,7 +37,7 @@ export const Fender = ({children, icon, iconSize = 100, iconColor, title, descri
         </Box>
         <Box sx={{mt: 1}}>
           {title && <Box sx={{fontSize: 24}}>{title}</Box>}
-          {description && <Box>{description}</Box>}
+          {description && <div>{description}</div>}
           {children}
         </Box>
       </div>
