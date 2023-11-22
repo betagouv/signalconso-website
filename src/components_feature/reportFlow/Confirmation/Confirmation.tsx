@@ -5,7 +5,6 @@ import {StepNavigation} from '@/components_feature/reportFlow/reportFlowStepper/
 import {ReportFlowStepperActions} from '@/components_feature/reportFlow/reportFlowStepper/ReportFlowStepperActions'
 import {AddressComponent} from '@/components_simple/Address'
 import {Animate} from '@/components_simple/Animate'
-import {AnomalyImage} from '@/components_simple/AnomalyImage'
 import {FriendlyHelpText} from '@/components_simple/FriendlyHelpText'
 import {Row} from '@/components_simple/Row'
 import {ReportFilesConfirmation} from '@/components_simple/reportFile/ReportFilesConfirmation'
@@ -14,6 +13,7 @@ import {useI18n} from '@/i18n/I18n'
 import {ReportDraft2} from '@/model/ReportDraft2'
 import {BuildingStep, buildingReportSteps} from '@/model/ReportStep'
 import {ApiReportDraft} from '@/model/reportsFromApi'
+import Image from 'next/image'
 import {Anomaly} from '../../../anomalies/Anomaly'
 import {SocialNetworkRow} from '../../../components_simple/SocialNetworkRow'
 import {Txt} from '../../../components_simple/Txt'
@@ -22,7 +22,6 @@ import {FileOrigin} from '../../../model/UploadedFile'
 import {useReportCreateContext} from '../ReportCreateContext'
 import {useReportFlowContext} from '../ReportFlowContext'
 import {ConfirmationStep, ConfirmationStepper} from './ConfirmationStepper'
-import Image from 'next/image'
 
 export const Confirmation = ({stepNavigation, isWebView}: {stepNavigation: StepNavigation; isWebView: boolean}) => {
   const _reportFlow = useReportFlowContext()

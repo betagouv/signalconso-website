@@ -84,15 +84,14 @@ export const InfluencerFilled = ({
   }
 
   return (
-    <Panel title={m.influencerIdentifiedTitle}>
-      <PanelBody>
-        <SocialNetworkRow socialNetwork={draft.influencer.socialNetwork} color="hint" />
-        <Row dense icon="portrait">
-          <Txt color="hint">{draft.influencer.name}</Txt>
-        </Row>
-      </PanelBody>
+    <div>
+      <h2 className="fr-h6">{m.influencerIdentifiedTitle}</h2>
+      <SocialNetworkRow socialNetwork={draft.influencer.socialNetwork} color="hint" />
+      <Row dense icon="portrait">
+        <span className="text-schint">{draft.influencer.name}</span>
+      </Row>
       <ActionButtons {...{onClear, stepNavigation}} />
-    </Panel>
+    </div>
   )
 }
 
@@ -154,12 +153,12 @@ export const CompanyFilled = ({
 function ActionButtons({onClear, stepNavigation}: {onClear: () => void; stepNavigation: StepNavigation}) {
   const {m} = useI18n()
   return (
-    <PanelActions>
+    <div className="flex items-center justify-end gap-2">
       <Button iconId={'fr-icon-pencil-line'} onClick={onClear} priority="secondary">
         {m.edit}
       </Button>
       <BtnNext onClick={stepNavigation.next} />
-    </PanelActions>
+    </div>
   )
 }
 
