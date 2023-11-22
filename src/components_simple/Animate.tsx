@@ -7,12 +7,13 @@ import {useAutoscrollContext} from '@/context/AutoscrollContext'
 export interface AnimateProps {
   children: React.ReactElement
   autoScrollTo?: boolean
+  fromBottom?: boolean
 }
 
 // Wrap a child element
 // When the child element is mounted, it will immediately appear with a small animation
 // And optionally we will scroll to it
-export const Animate = ({autoScrollTo = true, children}: AnimateProps) => {
+export const Animate = ({autoScrollTo = true, fromBottom = false, children}: AnimateProps) => {
   const {autoscrollEnabled} = useAutoscrollContext()
 
   const theme = useTheme()
@@ -51,7 +52,7 @@ export const Animate = ({autoScrollTo = true, children}: AnimateProps) => {
             opacity: 1,
             transform: `translateY(0)`,
           }
-        : {opacity: 0, transform: `translateY(-${startingTranslation}px)`}),
+        : {opacity: 0, transform: `translateY(${fromBottom ? '' : '-'}${startingTranslation}px)`}),
     },
   })
 }

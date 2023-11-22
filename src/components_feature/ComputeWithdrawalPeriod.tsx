@@ -1,9 +1,8 @@
 'use client'
 
-import {Icon} from '@mui/material'
 import {SimpleDatepicker} from '@/components_simple/formInputs/ScLegacyDatepicker'
-import {useMemo, useState} from 'react'
 import {dateToFrenchFormat} from '@/utils/utils'
+import {useMemo, useState} from 'react'
 import {useI18n} from '../i18n/I18n'
 
 const closingDays = [
@@ -44,13 +43,11 @@ const ComputeWithdrawalPeriod = () => {
       <span>{m.delaiRetractation.startDateLabel}</span>
       <SimpleDatepicker value={contractDate} onChange={setContractDate} limited />
       {deadlineDate && (
-        <div style={{marginTop: '20px', textAlign: 'left'}}>
-          <Icon color="secondary" sx={{verticalAlign: 'middle', fontSize: '2rem', lineHeight: '26px'}}>
-            arrow_forward
-          </Icon>
+        <div className="mt-7">
+          <i className="ri-arrow-right-line text-scbluefrance" />
           <span style={{marginLeft: '4px', fontSize: '1.2rem'}}>
             {m.delaiRetractation.deadlineMessagePrefix}{' '}
-            <span style={{fontWeight: 'bold'}}>{dateToFrenchFormat(deadlineDate)}</span>{' '}
+            <span className="font-bold text-scbluefrance">{dateToFrenchFormat(deadlineDate)}</span>{' '}
             {m.delaiRetractation.deadlineMessageSuffix}
           </span>
         </div>
