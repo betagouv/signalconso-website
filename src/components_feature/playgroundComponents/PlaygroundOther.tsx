@@ -9,6 +9,7 @@ import {ScCheckbox} from '../../components_simple/formInputs/ScCheckbox'
 import {ScRadioButtons} from '../../components_simple/formInputs/ScRadioButtons'
 import {useI18n} from '../../i18n/I18n'
 import {DetailsSpecifyInput} from '../reportFlow/Details/DetailsSpecifyInput'
+import {Spinner} from '../reportFlow/Acknowledgement/Acknowledgement'
 
 export const PlaygroundOther = () => {
   const [radioValue, setRadioValue] = useState<string | undefined>(undefined)
@@ -21,9 +22,13 @@ export const PlaygroundOther = () => {
 
   return (
     <>
-      <p className="">
+      <div className="mb-4">
+        <h6> a big animated loader, standalone</h6>
+        <div className="sc-loader-big w-10 h-10"></div>
+      </div>
+      <h6 className="">
         Button with loader (aligné plusieurs fois pour vérifier que les différentes versions prennent toujours la même place)
-      </p>
+      </h6>
 
       <div className="flex flex-col">
         <QuickButtonWithLoader loading={true} />
@@ -35,7 +40,7 @@ export const PlaygroundOther = () => {
       </div>
       <hr />
 
-      <p>Radio DSFR</p>
+      <h6>Radio DSFR</h6>
 
       <ScRadioButtons
         title="Test fieldset"
@@ -104,7 +109,7 @@ export const PlaygroundOther = () => {
       <p>Specifiy check value: {specifiyCheck}</p>
 
       <div className="border border-gray-500 border-solid p-2 mb-2">
-        <p>Le composant "AccordionInline"</p>
+        <h6>Le composant "AccordionInline"</h6>
         <AccordionInline label={"label de l'accordéon"}>Le contenu de l'accordéon</AccordionInline>
 
         <AccordionInline
@@ -135,7 +140,7 @@ export const PlaygroundOther = () => {
       </div>
 
       <div className="border border-gray-500 border-solid p-2 mb-2">
-        <p>Le composant "ScAlert"</p>
+        <h6>Le composant "ScAlert"</h6>
         <ScAlert type="info" action="action">
           <p>contenu</p>
           <p>contenu</p>

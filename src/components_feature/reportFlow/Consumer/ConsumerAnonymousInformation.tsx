@@ -1,26 +1,16 @@
-import {Box} from '@mui/material'
 import {Animate} from '@/components_simple/Animate'
 import {useI18n} from '@/i18n/I18n'
 import {alertWarningBackgroundColor, alertWarningTextColor} from '../../../components_simple/ScAlert'
-import {Txt} from '../../../components_simple/Txt'
 
 export function ConsumerAnonymousInformation() {
   const {m} = useI18n()
-  const textStyle = {lineHeight: '1.3'}
   return (
     <Animate>
-      <Box
-        sx={{
-          py: 2,
-          px: 4,
-          background: alertWarningBackgroundColor,
-          color: alertWarningTextColor,
-        }}
-      >
-        <Txt sx={textStyle} block>
-          {m.consumerAnonymousInformation}
-        </Txt>
-      </Box>
+      <div>
+        <div className="py-4 px-8" style={{background: alertWarningBackgroundColor, color: alertWarningTextColor}}>
+          <p className="mb-0">{m.consumerAnonymousInformation}</p>
+        </div>
+      </div>
     </Animate>
   )
 }

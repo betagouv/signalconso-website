@@ -1,4 +1,3 @@
-import {Box, Chip, Icon} from '@mui/material'
 import {useAnalyticContext} from '@/analytic/AnalyticContext'
 import {EventCategories, ReportEventActions} from '@/analytic/analytic'
 import {findAnomaly} from '@/anomalies/Anomalies'
@@ -13,6 +12,7 @@ import {ReportFilesConfirmation} from '@/components_simple/reportFile/ReportFile
 import {getApiErrorId, useToastError} from '@/hooks/useToastError'
 import {useI18n} from '@/i18n/I18n'
 import {ReportDraft2} from '@/model/ReportDraft2'
+import {BuildingStep, buildingReportSteps} from '@/model/ReportStep'
 import {ApiReportDraft} from '@/model/reportsFromApi'
 import {Anomaly} from '../../../anomalies/Anomaly'
 import {SocialNetworkRow} from '../../../components_simple/SocialNetworkRow'
@@ -22,7 +22,6 @@ import {FileOrigin} from '../../../model/UploadedFile'
 import {useReportCreateContext} from '../ReportCreateContext'
 import {useReportFlowContext} from '../ReportFlowContext'
 import {ConfirmationStep, ConfirmationStepper} from './ConfirmationStepper'
-import {BuildingStep, buildingReportSteps} from '@/model/ReportStep'
 
 export const Confirmation = ({stepNavigation, isWebView}: {stepNavigation: StepNavigation; isWebView: boolean}) => {
   const _reportFlow = useReportFlowContext()
@@ -111,7 +110,7 @@ function RenderEachStep({
     case 'BuildingProblem':
       return (
         <ConfirmationStep title={m.step_problem} {...{goToStep, index}}>
-          <Box sx={{display: 'flex'}}>
+          <div className="flex">
             <AnomalyImage anomaly={anomaly} sx={{mr: 2}} />
             <div>
               <Txt block size="big" bold sx={{mb: 1}} component="h3">
@@ -125,7 +124,7 @@ function RenderEachStep({
                 ))}
               </ul>
             </div>
-          </Box>
+          </div>
         </ConfirmationStep>
       )
     case 'BuildingDetails':
@@ -235,12 +234,18 @@ function RenderEachStep({
             {ReportDraft.isTransmittableToPro(draft) && (
               <li className="p-0">
                 <Row icon="https">
-                  {m.contactAgreement}:&nbsp;
+                  {m.contactAgreement} :{' '}
                   <Txt bold>
                     {draft.contactAgreement ? (
-                      <Chip size="small" label={m.yes} color="success" variant="outlined" icon={<Icon>check_circle</Icon>} />
+                      <span className=" text-green-700 font-bold">
+                        {m.yes.toLowerCase()}
+                        <i className="ri-checkbox-circle-fill ml-1" />
+                      </span>
                     ) : (
-                      <Chip size="small" label={m.no} color="error" variant="outlined" icon={<Icon>remove_circle</Icon>} />
+                      <span className=" text-red-700 font-bold">
+                        {m.no.toLowerCase()}
+                        <i className="ri-close-circle-fill ml-1" />
+                      </span>
                     )}
                   </Txt>
                 </Row>

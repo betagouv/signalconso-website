@@ -1,10 +1,10 @@
-import { useGetCountries } from '@/clients/apiHooks'
-import { Enum } from '@/utils/Enum'
-import { useMemo, useState } from 'react'
-import { Country } from '../../model/Country'
-import { CreatedReport } from '../../model/CreatedReport'
-import { Fixture } from '../../test/fixture'
-import { AcknowledgementInner, AcknowledgmentCases } from '../reportFlow/Acknowledgement/Acknowledgement'
+import {useGetCountries} from '@/clients/apiHooks'
+import {Enum} from '@/utils/Enum'
+import {useMemo, useState} from 'react'
+import {Country} from '../../model/Country'
+import {CreatedReport} from '../../model/CreatedReport'
+import {Fixture} from '../../test/fixture'
+import {AcknowledgementInner, AcknowledgmentCases} from '../reportFlow/Acknowledgement/Acknowledgement'
 
 export const PlaygroundAcknowledgment = () => {
   const testCountries: Country[] = [
