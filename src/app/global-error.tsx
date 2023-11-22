@@ -1,16 +1,14 @@
 'use client'
 
+import {ErrorPageContent} from '@/components_simple/ErrorPageContent'
+import {DSFR_COLOR_SCHEME} from '@/core/theme'
 import {DsfrProvider} from '@codegouvfr/react-dsfr/next-appdir/DsfrProvider'
 import {getHtmlAttributes} from '@codegouvfr/react-dsfr/next-appdir/getHtmlAttributes'
 import * as Sentry from '@sentry/nextjs'
 import {usePathname} from 'next/navigation'
-import {Fender} from '../components_simple/Fender'
-import {Page} from '../components_simple/Page'
 import '../globals.css'
-import {getI18n} from '../i18n/I18nDictionnary'
 import {AppLangs, getSupportedLang} from '../i18n/localization/AppLangs'
 import MuiThemeSetup from './[lang]/MuiThemeSetup'
-import {DSFR_COLOR_SCHEME} from '@/core/theme'
 
 export default function GlobalError({error, reset}: {error: any; reset: any}) {
   Sentry.captureException(error)
@@ -29,16 +27,13 @@ export default function GlobalError({error, reset}: {error: any; reset: any}) {
 // etc.
 // note for when this file is useful again :
 // It is for very rare global errors, so I think we can afford to simplify it,
-// not use i18n messages, maybe not DSFR, etc.
+// not use i18n messages, maybe not DSFR or tailwind, etc.
 
 function ErrorContent() {
   const pathname = usePathname()
   console.log(pathname)
   const currentPathLang = pathname ? pathname.toLowerCase().split('/')[1] : AppLangs.fr
   const lang = getSupportedLang(currentPathLang) ?? AppLangs.fr
-
-  const {messages: m} = getI18n(lang)
-
   return (
     <html
       {...getHtmlAttributes({defaultColorScheme: DSFR_COLOR_SCHEME, lang: lang})}
@@ -52,21 +47,7 @@ function ErrorContent() {
       <body>
         <MuiThemeSetup>
           <DsfrProvider lang={lang}>
-            <Page>
-              <Fender
-                icon="error"
-                title={m.minimalErrorTitle}
-                description={
-                  <div
-                    style={{
-                      marginTop: 30,
-                      marginBottom: 30,
-                    }}
-                    dangerouslySetInnerHTML={{__html: m.minimalErrorText}}
-                  />
-                }
-              ></Fender>
-            </Page>
+            <ErrorPageContent lang={lang} />
           </DsfrProvider>
         </MuiThemeSetup>
       </body>
