@@ -196,13 +196,9 @@ function RenderEachStep({
           )}
           {draft.influencer && (
             <ConfirmationStep title={m.step_influencer} {...{goToStep, index}}>
-              <Txt size="big" bold block>
-                Réseau social
-              </Txt>
-              <SocialNetworkRow socialNetwork={draft.influencer.socialNetwork} color="hint" />
-              <Txt size="big" bold block>
-                Nom de l'influenceur ou influenceuse
-              </Txt>
+              <p className="mb-1 font-bold">Réseau social</p>
+              <SocialNetworkRow socialNetwork={draft.influencer.socialNetwork} gray className="mb-2" />
+              <p className="mb-1 font-bold">Nom de l'influenceur ou influenceuse</p>
               <Row dense icon="portrait">
                 <Txt color="hint">{draft.influencer.name}</Txt>
               </Row>

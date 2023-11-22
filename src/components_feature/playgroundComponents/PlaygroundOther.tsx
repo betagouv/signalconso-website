@@ -1,5 +1,5 @@
-import {ButtonWithLoader} from '@/components_simple/buttons/Buttons'
 import {ScAlert} from '@/components_simple/ScAlert'
+import {ButtonWithLoader} from '@/components_simple/buttons/Buttons'
 import {useState} from 'react'
 import {useForm} from 'react-hook-form'
 import {AccordionInline} from '../../components_simple/AccordionInline'
@@ -9,7 +9,6 @@ import {ScCheckbox} from '../../components_simple/formInputs/ScCheckbox'
 import {ScRadioButtons} from '../../components_simple/formInputs/ScRadioButtons'
 import {useI18n} from '../../i18n/I18n'
 import {DetailsSpecifyInput} from '../reportFlow/Details/DetailsSpecifyInput'
-import {Spinner} from '../reportFlow/Acknowledgement/Acknowledgement'
 
 export const PlaygroundOther = () => {
   const [radioValue, setRadioValue] = useState<string | undefined>(undefined)
@@ -39,6 +38,14 @@ export const PlaygroundOther = () => {
         </div>
       </div>
       <hr />
+
+      <div className="">
+        <h6>SocialNetworkRow</h6>
+
+        <SocialNetworkRow socialNetwork="SNAPCHAT" />
+        <SocialNetworkRow socialNetwork="SNAPCHAT" gray />
+        <SocialNetworkRow socialNetwork="TWITCH" />
+      </div>
 
       <h6>Radio DSFR</h6>
 

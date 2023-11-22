@@ -24,7 +24,7 @@ import {SpecificWebsiteCompanyKinds} from '../../../anomalies/Anomaly'
 import {CompanySearchByBarcode} from './CompanySearchByBarcode'
 import {BarcodeSearchResult} from './BarcodeSearchResult'
 import {useI18n} from '@/i18n/I18n'
-import {Panel, PanelActions, PanelBody} from '@/components_simple/Panel'
+import {Panel, PanelBody} from '@/components_simple/Panel'
 import {StepNavigation} from '../reportFlowStepper/ReportFlowStepper'
 import {Row} from '@/components_simple/Row'
 import {ReportDraft2} from '@/model/ReportDraft2'
@@ -86,10 +86,11 @@ export const InfluencerFilled = ({
   return (
     <div>
       <h2 className="fr-h6">{m.influencerIdentifiedTitle}</h2>
-      <SocialNetworkRow socialNetwork={draft.influencer.socialNetwork} color="hint" />
-      <Row dense icon="portrait">
+      <SocialNetworkRow socialNetwork={draft.influencer.socialNetwork} gray className="mb-2" />
+      <div className="flex gap-2 pl-1">
+        <i className="ri-account-box-line" />
         <span className="text-schint">{draft.influencer.name}</span>
-      </Row>
+      </div>
       <ActionButtons {...{onClear, stepNavigation}} />
     </div>
   )
