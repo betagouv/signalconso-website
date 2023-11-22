@@ -101,12 +101,19 @@ export function ScHeader() {
 }
 
 function EnvMarker() {
-  const marker = appConfig.envMarker ?? (appConfig.isDev ? 'dév' : null)
+  const DEV = 'dév'
+  const marker = appConfig.envMarker ?? (appConfig.isDev ? DEV : null)
   if (marker) {
     return (
       <div className="absolute z-[999] pointer-events-none top-0 w-full flex justify-center">
         <div className="fr-container ">
-          <div className="text-green-900 border-green-900 border border-solid w-fit p-1 ml-32 mt-3 text-sm">{marker}</div>
+          <div
+            className={`${
+              marker === DEV ? ` bg-green-700 text-white font-bold uppercase text-2xl` : 'text-sm text-green-900'
+            }     border-green-900 border border-solid w-fit p-1 ml-32 mt-3 `}
+          >
+            {marker}
+          </div>
         </div>
       </div>
     )
