@@ -40,3 +40,11 @@ https://github.com/GouvernementFR/dsfr/issues/264
 .no_external_link_icon::after {
   display: none !important;
 }
+
+/*
+DSFR sizes don't go high enough
+https://www.systeme-de-design.gouv.fr/elements-d-interface/fondamentaux-techniques/icones/
+*/
+.sc-icon-xxl::before {
+  --icon-size: 6rem !important;
+}

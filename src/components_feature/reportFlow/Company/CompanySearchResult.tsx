@@ -15,6 +15,7 @@ import {ScRadioButtons} from '../../../components_simple/formInputs/ScRadioButto
 import {useToastError} from '../../../hooks/useToastError'
 import {CompanySearchResult, isGovernmentCompany} from '../../../model/Company'
 import {CompanyWebsiteVendor} from './CompanyWebsiteVendor'
+import {NoSearchResult} from './NoSearchResult'
 
 interface Props extends Omit<BoxProps, 'onSubmit'> {
   companies: CompanySearchResult[]
@@ -109,9 +110,7 @@ export const CompanySearchResultComponent = ({companies, onSubmit}: Props) => {
       <Animate>
         {companies.length === 0 ? (
           <Panel id="CompanySearchResult">
-            <Fender icon="sentiment_very_dissatisfied">
-              <span className="text-lg text-gray-600">{m.noMatchingCompany}</span>
-            </Fender>
+            <NoSearchResult text={m.noMatchingCompany} />
           </Panel>
         ) : (
           <Panel id="CompanySearchResult">
