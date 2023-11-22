@@ -1,10 +1,8 @@
-import {Button} from '@codegouvfr/react-dsfr/Button'
-import {Box} from '@mui/material'
 import {Panel, PanelBody} from '@/components_simple/Panel'
 import {useI18n} from '@/i18n/I18n'
 import {ReportStep, indexToStep} from '@/model/ReportStep'
+import {Button} from '@codegouvfr/react-dsfr/Button'
 import React, {ReactElement, ReactNode} from 'react'
-import {Txt} from '../../../components_simple/Txt'
 
 interface ConfirmationStepperProps {
   children: Array<ReactElement<ConfirmationStepProps> | undefined>
@@ -37,11 +35,9 @@ export const ConfirmationStep = ({title, children, index, goToStep}: Confirmatio
   return (
     <Panel
       title={
-        <Box sx={{display: 'flex', alignItems: 'center'}}>
-          <Txt color="hint" sx={{mr: 1}}>
-            {index! + 1}.
-          </Txt>
-          <Txt>{title}</Txt>
+        <div className="flex items-center">
+          <span className="text-schint mr-2">{index! + 1}.</span>
+          <span>{title}</span>
           <Button
             className="ml-4"
             size="small"
@@ -53,7 +49,7 @@ export const ConfirmationStep = ({title, children, index, goToStep}: Confirmatio
           >
             {m.edit}
           </Button>
-        </Box>
+        </div>
       }
     >
       <PanelBody>{children}</PanelBody>

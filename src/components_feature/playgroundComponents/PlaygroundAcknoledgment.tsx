@@ -1,11 +1,10 @@
-import {MenuItem, Select} from '@mui/material'
 import {useGetCountries} from '@/clients/apiHooks'
-import {useMemo, useState} from 'react'
 import {Enum} from '@/utils/Enum'
+import {useMemo, useState} from 'react'
+import {Country} from '../../model/Country'
 import {CreatedReport} from '../../model/CreatedReport'
 import {Fixture} from '../../test/fixture'
-import {AcknowledgmentCases, AcknowledgementInner} from '../reportFlow/Acknowledgement/Acknowledgement'
-import {Country} from '../../model/Country'
+import {AcknowledgementInner, AcknowledgmentCases} from '../reportFlow/Acknowledgement/Acknowledgement'
 
 export const PlaygroundAcknowledgment = () => {
   const testCountries: Country[] = [
@@ -76,29 +75,33 @@ export const PlaygroundAcknowledgment = () => {
 
   return (
     <>
-      <div className="border border-dashed p-4 mb-8 bg-gray-100">
+      <div className="space-x-2 border border-dashed p-4 mb-8 bg-gray-100">
         <span>AcknowledgmentCase : </span>
-        <Select sx={{mr: 1}} size="small" value={type} onChange={e => setType(e.target.value as AcknowledgmentCases)}>
+        <select
+          value={type}
+          onChange={e => setType(e.target.value as AcknowledgmentCases)}
+          className="border border-solid border-black bg-white p-2 text-base"
+        >
           {Enum.keys(AcknowledgmentCases).map(_ => (
-            <MenuItem value={_} key={_}>
+            <option value={_} key={_}>
               {_}
-            </MenuItem>
+            </option>
           ))}
-        </Select>
+        </select>
         {type === AcknowledgmentCases.ForeignCompany && (
           <>
             <span>Country : </span>
-            <Select
-              size="small"
+            <select
               value={demoCountry?.code}
               onChange={e => setDemoCountry(testCountries.find(_ => _.code === e.target.value))}
+              className="border border-solid border-black bg-white p-2 text-base"
             >
               {testCountries.map(_ => (
-                <MenuItem value={_.code} key={_.code}>
+                <option value={_.code} key={_.code}>
                   {_.name}
-                </MenuItem>
+                </option>
               ))}
-            </Select>
+            </select>
           </>
         )}
       </div>

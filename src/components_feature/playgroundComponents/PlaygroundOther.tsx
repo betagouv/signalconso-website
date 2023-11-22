@@ -1,5 +1,5 @@
-import {ButtonWithLoader} from '@/components_simple/buttons/Buttons'
 import {ScAlert} from '@/components_simple/ScAlert'
+import {ButtonWithLoader} from '@/components_simple/buttons/Buttons'
 import {useState} from 'react'
 import {useForm} from 'react-hook-form'
 import {AccordionInline} from '../../components_simple/AccordionInline'
@@ -21,9 +21,13 @@ export const PlaygroundOther = () => {
 
   return (
     <>
-      <p className="">
+      <div className="mb-4">
+        <h6> a big animated loader, standalone</h6>
+        <div className="sc-loader-big w-10 h-10"></div>
+      </div>
+      <h6 className="">
         Button with loader (aligné plusieurs fois pour vérifier que les différentes versions prennent toujours la même place)
-      </p>
+      </h6>
 
       <div className="flex flex-col">
         <QuickButtonWithLoader loading={true} />
@@ -35,7 +39,15 @@ export const PlaygroundOther = () => {
       </div>
       <hr />
 
-      <p>Radio DSFR</p>
+      <div className="">
+        <h6>SocialNetworkRow</h6>
+
+        <SocialNetworkRow socialNetwork="SNAPCHAT" />
+        <SocialNetworkRow socialNetwork="SNAPCHAT" gray />
+        <SocialNetworkRow socialNetwork="TWITCH" />
+      </div>
+
+      <h6>Radio DSFR</h6>
 
       <ScRadioButtons
         title="Test fieldset"
@@ -104,7 +116,7 @@ export const PlaygroundOther = () => {
       <p>Specifiy check value: {specifiyCheck}</p>
 
       <div className="border border-gray-500 border-solid p-2 mb-2">
-        <p>Le composant "AccordionInline"</p>
+        <h6>Le composant "AccordionInline"</h6>
         <AccordionInline label={"label de l'accordéon"}>Le contenu de l'accordéon</AccordionInline>
 
         <AccordionInline
@@ -135,7 +147,7 @@ export const PlaygroundOther = () => {
       </div>
 
       <div className="border border-gray-500 border-solid p-2 mb-2">
-        <p>Le composant "ScAlert"</p>
+        <h6>Le composant "ScAlert"</h6>
         <ScAlert type="info" action="action">
           <p>contenu</p>
           <p>contenu</p>

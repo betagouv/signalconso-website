@@ -1,16 +1,13 @@
-import Button from '@codegouvfr/react-dsfr/Button'
-import {useMutation} from '@tanstack/react-query'
 import {useAnalyticContext} from '@/analytic/AnalyticContext'
 import {EventCategories, ReportEventActions} from '@/analytic/analytic'
 import {AccordionInline} from '@/components_simple/AccordionInline'
 import {Animate} from '@/components_simple/Animate'
-import {Fender} from '@/components_simple/Fender'
-import {Panel, PanelBody} from '@/components_simple/Panel'
 import {useApiClients} from '@/context/ApiClientsContext'
-import {otherColorSet} from '@/core/theme'
 import {useI18n} from '@/i18n/I18n'
-import {useEffect, useState} from 'react'
 import {last} from '@/utils/lodashNamedExport'
+import Button from '@codegouvfr/react-dsfr/Button'
+import {useMutation} from '@tanstack/react-query'
+import {useEffect, useState} from 'react'
 import {Anomaly, InfoWall, Subcategory} from '../../../anomalies/Anomaly'
 import {LinkBackToHome} from '../../../components_simple/LinkBackToHome'
 
@@ -48,12 +45,9 @@ export const ProblemInformation = ({anomaly, subcategories, information, isWebVi
   return (
     <>
       <Animate>
-        <Panel
-          id="blocking-info-wall"
-          border
-          title={<span dangerouslySetInnerHTML={{__html: information.title ?? m.informationTitle}} />}
-        >
-          <PanelBody>
+        <div id="blocking-info-wall" className="p-4 border border-gray-300 border-solid mb-4">
+          <h2 className="fr-h6" dangerouslySetInnerHTML={{__html: information.title ?? m.informationTitle}} />
+          <div>
             {information.notAFraudMessage && <p>{m.informationReportOutOfScope}</p>}
             {information.subTitle && <p className="font-bold mb-1" dangerouslySetInnerHTML={{__html: information.subTitle}} />}
             {information.content && <p className="mb-1" dangerouslySetInnerHTML={{__html: information.content}} />}
@@ -71,24 +65,28 @@ export const ProblemInformation = ({anomaly, subcategories, information, isWebVi
                 <p className="text-gray-700" dangerouslySetInnerHTML={{__html: action.answer}} />
               </AccordionInline>
             ))}
-          </PanelBody>
-        </Panel>
+          </div>
+        </div>
       </Animate>
       <Animate>
-        <Panel title={m.informationWasUsefull} border>
+        <div className="p-4 border border-gray-300 border-solid mb-4">
+          <h2 className="fr-h6">{m.informationWasUsefull}</h2>
           {_vote.data ? (
-            <PanelBody>
-              <Fender iconSize={80} icon="check_circle_outline" iconColor={otherColorSet.success}>
-                {m.informationRatingSaved}
-              </Fender>
-            </PanelBody>
+            <div className="text-center mb-8">
+              <div className="h-[110px] mt-2 leading-4 ">
+                <i className="ri-checkbox-circle-fill sc-icon-xxl text-green-700" />
+              </div>
+              <div className="mt-2">
+                <span className="text-xl text-gray-600"> {m.informationRatingSaved}</span>
+              </div>
+            </div>
           ) : (
             <div className="flex items-center justify-center gap-4">
               <VoteButton disabled={_vote.isPending} {...{onVote}} wasUseful={false} />
               <VoteButton disabled={_vote.isPending} {...{onVote}} wasUseful={true} />
             </div>
           )}{' '}
-        </Panel>
+        </div>
       </Animate>
       <LinkBackToHome isWebView={isWebView} lang={currentLang} />
     </>

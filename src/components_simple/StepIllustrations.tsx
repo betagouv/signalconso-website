@@ -1,8 +1,8 @@
-import {alpha, Box, IconButton, useTheme} from '@mui/material'
 import {styleUtils} from '@/core/theme'
+import {alpha, Box, IconButton} from '@mui/material'
+import Image, {StaticImageData} from 'next/image'
 import {ReactNode, useState} from 'react'
 import SwipeableViews, {SwipeableViewsProps} from 'react-swipeable-views'
-import Image, {StaticImageData} from 'next/image'
 
 interface IllustrationStepperStepProps {
   title: string
@@ -87,7 +87,6 @@ const IllustrationStepperDesktop = ({steps}: IllustrationStepperProps) => {
   const dotSize = 22
   const borderSize = 2
   const stepperMargin = 24
-  const theme = useTheme()
   return (
     <ol className="items-center hidden lg:flex">
       {steps.map(({image, title}) => (
@@ -106,7 +105,7 @@ const IllustrationStepperDesktop = ({steps}: IllustrationStepperProps) => {
               bottom: -stepperMargin - borderSize,
               content: `' '`,
               height: borderSize,
-              background: theme.palette.divider,
+              background: '#ddd',
               left: 0,
               right: 0,
               position: 'absolute',
@@ -118,12 +117,12 @@ const IllustrationStepperDesktop = ({steps}: IllustrationStepperProps) => {
               right: '50%',
             },
             '&:after': {
-              boxShadow: `0px 0px 0px 4px ${theme.palette.background.paper}`,
+              boxShadow: `0px 0px 0px 4px white`,
               bottom: -stepperMargin - (dotSize + borderSize) / 2,
-              background: theme.palette.background.paper,
+              background: 'white',
               content: `' '`,
               borderRadius: 50,
-              border: `${borderSize}px solid ${theme.palette.divider}`,
+              border: `${borderSize}px solid #ddd`,
               height: dotSize,
               width: dotSize,
               position: 'absolute',

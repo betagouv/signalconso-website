@@ -4,7 +4,6 @@ import {AutoscrollProvider} from '@/context/AutoscrollContext'
 import {AppLang} from '@/i18n/localization/AppLangs'
 import {monkeyPatchDomForGoogleTranslate} from '@/utils/fixGoogleTranslate'
 import {SkipLinks} from '@codegouvfr/react-dsfr/SkipLinks'
-import {Box} from '@mui/material'
 import {QueryClient, QueryClientProvider} from '@tanstack/react-query'
 import {usePathname} from 'next/navigation'
 import Script from 'next/script'
@@ -83,7 +82,7 @@ const Base = ({children}: {children: React.ReactNode}) => {
       )}
       <div className="root">
         {isWebView ? (
-          <Box sx={{mt: 1}}>{children}</Box>
+          <div className="mt-2">{children}</div>
         ) : (
           <>
             <SkipLinks

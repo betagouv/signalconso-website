@@ -1,5 +1,3 @@
-import {Grid} from '@mui/material'
-import {useMutation} from '@tanstack/react-query'
 import {useAnalyticContext} from '@/analytic/AnalyticContext'
 import {StepNavigation} from '@/components_feature/reportFlow/reportFlowStepper/ReportFlowStepper'
 import {ReportFlowStepperActions} from '@/components_feature/reportFlow/reportFlowStepper/ReportFlowStepperActions'
@@ -8,10 +6,12 @@ import {RequiredFieldsLegend} from '@/components_simple/RequiredFieldsLegend'
 import {ScTextInput} from '@/components_simple/formInputs/ScTextInput'
 import {useApiClients} from '@/context/ApiClientsContext'
 import {useI18n} from '@/i18n/I18n'
+import {AppLangs} from '@/i18n/localization/AppLangs'
 import {ReportDraft2} from '@/model/ReportDraft2'
+import {regexp} from '@/utils/regexp'
+import {useMutation} from '@tanstack/react-query'
 import {ReactNode, useState} from 'react'
 import {Controller, useForm} from 'react-hook-form'
-import {regexp} from '@/utils/regexp'
 import {ScAlert} from '../../../components_simple/ScAlert'
 import {Txt} from '../../../components_simple/Txt'
 import {ScRadioButtons} from '../../../components_simple/formInputs/ScRadioButtons'
@@ -22,7 +22,6 @@ import {DeepPartial} from '../../../utils/utils'
 import {useReportFlowContext} from '../ReportFlowContext'
 import {ConsumerAnonymousInformation} from './ConsumerAnonymousInformation'
 import {ConsumerValidationDialog} from './ConsumerValidationDialog'
-import {AppLangs} from '@/i18n/localization/AppLangs'
 
 interface ConsumerForm {
   firstName: string
@@ -134,8 +133,8 @@ export const ConsumerInner = ({
             )}
             name={'gender'}
           />
-          <Grid container columnSpacing={2} className="mb-4">
-            <Grid item xs={6}>
+          <div className="flex gap-4 mb-4">
+            <div className="w-1/2">
               <ScTextInput
                 label={<WithIcon icon="ri-account-box-line">{m.firstName}</WithIcon>}
                 autocomplete="given-name"
@@ -146,8 +145,8 @@ export const ConsumerInner = ({
                 required
                 {...getErrors('firstName')}
               />
-            </Grid>
-            <Grid item xs={6}>
+            </div>
+            <div className="w-1/2">
               <ScTextInput
                 label={<WithIcon icon="ri-account-box-line">{m.lastName}</WithIcon>}
                 autocomplete="family-name"
@@ -159,8 +158,8 @@ export const ConsumerInner = ({
                 {...getErrors('lastName')}
                 disableLeftBorderOnError
               />
-            </Grid>
-          </Grid>
+            </div>
+          </div>
           <ScTextInput
             label={<WithIcon icon="fr-icon-mail-line">{m.email}</WithIcon>}
             autocomplete="email"

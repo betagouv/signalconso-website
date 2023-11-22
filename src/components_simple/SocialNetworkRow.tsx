@@ -1,8 +1,6 @@
-import {SocialNetworks} from '../anomalies/Anomaly'
-import {Txt} from './Txt'
-import {Row} from './Row'
-import {useI18n} from '../i18n/I18n'
 import Image from 'next/image'
+import {SocialNetworks} from '../anomalies/Anomaly'
+import {useI18n} from '../i18n/I18n'
 
 const socialNetworkIcon = (socialNetwork: SocialNetworks) => {
   switch (socialNetwork) {
@@ -27,15 +25,17 @@ const socialNetworkIcon = (socialNetwork: SocialNetworks) => {
 
 interface Props {
   socialNetwork: SocialNetworks
-  color?: 'primary' | 'secondary' | 'disabled' | 'hint' | 'default' | 'error'
+  gray?: boolean
+  className?: string
 }
 
-export const SocialNetworkRow = ({socialNetwork, color}: Props) => {
+export function SocialNetworkRow({socialNetwork, gray, className = ''}: Props) {
   const {m} = useI18n()
   const src = `/icons/${socialNetworkIcon(socialNetwork)}.svg`
   return (
-    <Row dense icon={<Image src={src} width={24} height={24} alt="" />}>
-      <Txt color={color}>{m.SocialNetwork[socialNetwork]}</Txt>
-    </Row>
+    <div className={`flex gap-2 pl-1 ${className}`}>
+      <Image src={src} width={24} height={24} alt="" />
+      <span className={gray ? 'text-gray-500' : ''}>{m.SocialNetwork[socialNetwork]}</span>
+    </div>
   )
 }

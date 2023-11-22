@@ -1,5 +1,4 @@
-import {Box, Collapse, Icon} from '@mui/material'
-import React, {ReactNode, useEffect, useState} from 'react'
+import {ReactNode, useState} from 'react'
 
 interface Props {
   label: ReactNode
@@ -8,7 +7,7 @@ interface Props {
 }
 
 export const AccordionInline = ({label, children, className = ''}: Props) => {
-  const [innerOpen, setInnerOpen] = useState<boolean>(false)
+  const [open, setOpen] = useState<boolean>(false)
 
   return (
     <div {...{className}}>
@@ -17,18 +16,14 @@ export const AccordionInline = ({label, children, className = ''}: Props) => {
         onClick={e => {
           e.stopPropagation()
           e.preventDefault()
-          setInnerOpen(_ => !_)
+          setOpen(_ => !_)
         }}
-        aria-expanded={innerOpen}
+        aria-expanded={open}
       >
         {label}
-        <Icon sx={{ml: 1}} fontSize="small">
-          {innerOpen ? 'expand_less' : 'expand_more'}
-        </Icon>
+        <i className={`${open ? 'ri-arrow-up-s-line' : 'ri-arrow-down-s-line'} fr-icon--sm`} />
       </button>
-      <Collapse in={innerOpen}>
-        <div className="mt-2">{children}</div>
-      </Collapse>
+      {open && <div>{children}</div>}
     </div>
   )
 }

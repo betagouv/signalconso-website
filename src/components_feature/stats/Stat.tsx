@@ -1,12 +1,9 @@
-import {useColors} from '@codegouvfr/react-dsfr/useColors'
-import {Skeleton} from '@mui/material'
-import {useQuery} from '@tanstack/react-query'
 import {CountByDate} from '@/clients/SignalConsoApiClient'
 import {useI18n} from '@/i18n/I18n'
+import {useColors} from '@codegouvfr/react-dsfr/useColors'
+import {useQuery} from '@tanstack/react-query'
 import React, {useEffect, useId, useState} from 'react'
 import {Bar, BarChart, CartesianGrid, Legend, ResponsiveContainer, Tooltip, XAxis, YAxis} from 'recharts'
-import {Txt} from '../../components_simple/Txt'
-import {ifDefined} from '../../utils/utils'
 
 interface Props {
   name: string
@@ -33,22 +30,15 @@ export const Stat = React.memo(({name, count, curve, title, description, percent
 
   return (
     <div className="border border-solid border-black p-4">
-      {_count.data ? (
-        <Txt
-          block
-          component="h2"
-          sx={{
-            lineHeight: 1,
-            fontSize: 34,
-            mb: 0,
-            fontWeight: 'normal',
-          }}
-        >
-          {ifDefined(_count.data, formatLargeNumber)} {percentage && '%'}
-        </Txt>
-      ) : (
-        <Skeleton className="inline-block" width={100} />
-      )}
+      <h2 className="mb-0 font-normal">
+        {_count.data !== undefined ? (
+          <>
+            {formatLargeNumber(_count.data)} {percentage && '%'}
+          </>
+        ) : (
+          <span>&nbsp;</span>
+        )}
+      </h2>
 
       <p>{title}</p>
       {description && <p>{description}</p>}

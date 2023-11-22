@@ -124,6 +124,7 @@ export class Fixture {
       BuildingProblem: _ => ({
         ..._,
         category: random.oneOf(allAnomalies(currentLang).map(_ => _.category)),
+        consumerWish: random.oneOf(['fixContractualDispute', 'companyImprovement', 'getAnswer']),
       }),
       BuildingDetails: _ => ({
         ..._,

@@ -1,4 +1,3 @@
-import {Box, Chip, Icon} from '@mui/material'
 import {useAnalyticContext} from '@/analytic/AnalyticContext'
 import {EventCategories, ReportEventActions} from '@/analytic/analytic'
 import {findAnomaly} from '@/anomalies/Anomalies'
@@ -6,14 +5,15 @@ import {StepNavigation} from '@/components_feature/reportFlow/reportFlowStepper/
 import {ReportFlowStepperActions} from '@/components_feature/reportFlow/reportFlowStepper/ReportFlowStepperActions'
 import {AddressComponent} from '@/components_simple/Address'
 import {Animate} from '@/components_simple/Animate'
-import {AnomalyImage} from '@/components_simple/AnomalyImage'
 import {FriendlyHelpText} from '@/components_simple/FriendlyHelpText'
 import {Row} from '@/components_simple/Row'
 import {ReportFilesConfirmation} from '@/components_simple/reportFile/ReportFilesConfirmation'
 import {getApiErrorId, useToastError} from '@/hooks/useToastError'
 import {useI18n} from '@/i18n/I18n'
 import {ReportDraft2} from '@/model/ReportDraft2'
+import {BuildingStep, buildingReportSteps} from '@/model/ReportStep'
 import {ApiReportDraft} from '@/model/reportsFromApi'
+import Image from 'next/image'
 import {Anomaly} from '../../../anomalies/Anomaly'
 import {SocialNetworkRow} from '../../../components_simple/SocialNetworkRow'
 import {Txt} from '../../../components_simple/Txt'
@@ -22,7 +22,6 @@ import {FileOrigin} from '../../../model/UploadedFile'
 import {useReportCreateContext} from '../ReportCreateContext'
 import {useReportFlowContext} from '../ReportFlowContext'
 import {ConfirmationStep, ConfirmationStepper} from './ConfirmationStepper'
-import {BuildingStep, buildingReportSteps} from '@/model/ReportStep'
 
 export const Confirmation = ({stepNavigation, isWebView}: {stepNavigation: StepNavigation; isWebView: boolean}) => {
   const _reportFlow = useReportFlowContext()
@@ -111,21 +110,22 @@ function RenderEachStep({
     case 'BuildingProblem':
       return (
         <ConfirmationStep title={m.step_problem} {...{goToStep, index}}>
-          <Box sx={{display: 'flex'}}>
-            <AnomalyImage anomaly={anomaly} sx={{mr: 2}} />
-            <Box>
-              <Txt block size="big" bold sx={{mb: 1}} component="h3">
-                {findAnomaly(draft.category, currentLang).title}
-              </Txt>
-              <ul className="pl-0">
+          <div className="flex">
+            <div className="relative mr-4 min-w-[72px] min-h-[72px] max-w-[72px] max-h-[72px]">
+              <Image fill className="object-contain" src={`/image/pictos/${anomaly.img}.png`} alt="" />
+            </div>
+            <div>
+              <h3 className="fr-h6 !mb-2 !text-gray-500">{findAnomaly(draft.category, currentLang).title}</h3>
+              <ul className="pl-0 list-none">
                 {draft.subcategories.map(_ => (
-                  <Row dense icon="subdirectory_arrow_right" key={_.title} component="li">
+                  <li key={_.title} className="text-gray-500">
+                    <i className="ri-corner-down-right-line mr-2 " />
                     {_.title}
-                  </Row>
+                  </li>
                 ))}
               </ul>
-            </Box>
-          </Box>
+            </div>
+          </div>
         </ConfirmationStep>
       )
     case 'BuildingDetails':
@@ -152,21 +152,15 @@ function RenderEachStep({
         <>
           {draft.companyDraft && (
             <ConfirmationStep title={m.step_company} {...{goToStep, index}}>
-              <Txt size="big" bold block sx={{mb: 1}} component="h3">
-                {draft.companyDraft.name}
-              </Txt>
-              {draft.companyDraft.brand && (
-                <Txt bold block sx={{mb: 2, fontStyle: 'italic'}}>
-                  {draft.companyDraft.brand}
-                </Txt>
-              )}
+              <h3 className="fr-h6 !text-gray-500 !mb-0">{draft.companyDraft.name}</h3>
+              {draft.companyDraft.brand && <p className="italic text-gray-500 !mb-2">{draft.companyDraft.brand}</p>}
               <ul className="list-none">
                 {draft.companyDraft.siret && (
                   <li className="p-0">
-                    <Txt color="hint" block sx={{mb: 1}}>
-                      <Txt>SIRET:&nbsp;</Txt>
-                      <Txt bold>{draft.companyDraft.siret}</Txt>
-                    </Txt>
+                    <p className="text-gray-500 mb-2">
+                      <span>SIRET:&nbsp;</span>
+                      <span className="font-bold">{draft.companyDraft.siret}</span>
+                    </p>
                   </li>
                 )}
                 <li className="p-0">
@@ -195,13 +189,9 @@ function RenderEachStep({
           )}
           {draft.influencer && (
             <ConfirmationStep title={m.step_influencer} {...{goToStep, index}}>
-              <Txt size="big" bold block>
-                Réseau social
-              </Txt>
-              <SocialNetworkRow socialNetwork={draft.influencer.socialNetwork} color="hint" />
-              <Txt size="big" bold block>
-                Nom de l'influenceur ou influenceuse
-              </Txt>
+              <p className="mb-1 font-bold">Réseau social</p>
+              <SocialNetworkRow socialNetwork={draft.influencer.socialNetwork} gray className="mb-2" />
+              <p className="mb-1 font-bold">Nom de l'influenceur ou influenceuse</p>
               <Row dense icon="portrait">
                 <Txt color="hint">{draft.influencer.name}</Txt>
               </Row>
@@ -235,12 +225,18 @@ function RenderEachStep({
             {ReportDraft.isTransmittableToPro(draft) && (
               <li className="p-0">
                 <Row icon="https">
-                  {m.contactAgreement}:&nbsp;
+                  {m.contactAgreement} :{' '}
                   <Txt bold>
                     {draft.contactAgreement ? (
-                      <Chip size="small" label={m.yes} color="success" variant="outlined" icon={<Icon>check_circle</Icon>} />
+                      <span className=" text-green-700 font-bold">
+                        {m.yes.toLowerCase()}
+                        <i className="ri-checkbox-circle-fill ml-1" />
+                      </span>
                     ) : (
-                      <Chip size="small" label={m.no} color="error" variant="outlined" icon={<Icon>remove_circle</Icon>} />
+                      <span className=" text-red-700 font-bold">
+                        {m.no.toLowerCase()}
+                        <i className="ri-close-circle-fill ml-1" />
+                      </span>
                     )}
                   </Txt>
                 </Row>

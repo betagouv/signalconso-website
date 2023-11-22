@@ -1,10 +1,8 @@
-import {Checkbox} from '@codegouvfr/react-dsfr/Checkbox'
-import {useTheme} from '@mui/material'
 import {DetailsInner, SpecifyFormUtils} from '@/components_feature/reportFlow/Details/Details'
-import {styleUtils} from '@/core/theme'
 import {ReportDraft2} from '@/model/ReportDraft2'
-import {ChangeEvent, useState} from 'react'
 import {getEntries, getKeys} from '@/utils/utils'
+import {Checkbox} from '@codegouvfr/react-dsfr/Checkbox'
+import {ChangeEvent, useState} from 'react'
 import {
   DetailInputDate,
   DetailInputDateNotInFuture,
@@ -89,10 +87,7 @@ const inputsConfig = (lang: AppLang) => {
   }
 }
 
-type InputType = keyof typeof inputsConfig
-
 export const PlaygroundDetails = () => {
-  const theme = useTheme()
   const {currentLang} = useI18n()
 
   const [inputChoices, setInputChoices] = useState({
@@ -136,17 +131,8 @@ export const PlaygroundDetails = () => {
         stepNavigation={dummyStepNavigation}
         consumerWish={undefined}
       />
-      <pre style={{fontSize: styleUtils(theme).fontSize.small, lineHeight: 1.3}}>
-        {JSON.stringify(resultInputs, undefined, 2)}
-      </pre>
-      <pre
-        style={{
-          fontSize: styleUtils(theme).fontSize.small,
-          lineHeight: 1.3,
-        }}
-      >
-        {JSON.stringify(resultFiles, undefined, 2)}
-      </pre>
+      <pre className="text-sm text-gray-500">{JSON.stringify(resultInputs, undefined, 2)}</pre>
+      <pre className="text-sm text-gray-500">{JSON.stringify(resultFiles, undefined, 2)}</pre>
     </>
   )
 }

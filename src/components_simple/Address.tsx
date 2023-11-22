@@ -6,16 +6,17 @@ import {useGetCountries} from '../clients/apiHooks'
 
 interface Props {
   address: Address
+  className?: string
 }
 
-export const AddressComponent = ({address}: Props) => {
+export const AddressComponent = ({address, className = ''}: Props) => {
   const {currentLang} = useI18n()
   const {data: countries} = useGetCountries()
 
   const country = countries?.find(_ => _.code === address.country)
 
   return (
-    <span>
+    <span {...{className}}>
       {(address.number || address.street || address.addressSupplement) && (
         <>
           {address.number ? <>{address.number}&nbsp;</> : null}

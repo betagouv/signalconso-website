@@ -1,21 +1,20 @@
 import * as React from 'react'
 import {useId, useRef, useState} from 'react'
 import {useTimeout} from '../hooks/useTimeout'
-import {useTheme} from '@mui/material'
 import {useAutoscrollContext} from '@/context/AutoscrollContext'
 
 export interface AnimateProps {
   children: React.ReactElement
   autoScrollTo?: boolean
+  fromBottom?: boolean
 }
 
 // Wrap a child element
 // When the child element is mounted, it will immediately appear with a small animation
 // And optionally we will scroll to it
-export const Animate = ({autoScrollTo = true, children}: AnimateProps) => {
+export const Animate = ({autoScrollTo = true, fromBottom = false, children}: AnimateProps) => {
   const {autoscrollEnabled} = useAutoscrollContext()
 
-  const theme = useTheme()
   const [appeared, setAppeared] = useState<boolean>(false)
   const ref = useRef(null)
   const id = useId()
@@ -44,14 +43,14 @@ export const Animate = ({autoScrollTo = true, children}: AnimateProps) => {
   return React.cloneElement(children, {
     className,
     style: {
-      transition: theme.transitions.create('all', {duration: 500, delay: 50}),
+      transition: '500ms cubic-bezier(0.4, 0, 0.2, 1) 50ms',
 
       ...(appeared
         ? {
             opacity: 1,
             transform: `translateY(0)`,
           }
-        : {opacity: 0, transform: `translateY(-${startingTranslation}px)`}),
+        : {opacity: 0, transform: `translateY(${fromBottom ? '' : '-'}${startingTranslation}px)`}),
     },
   })
 }

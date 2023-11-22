@@ -1,5 +1,6 @@
 import {format, parse} from 'date-fns'
 import {AppLang} from '../i18n/localization/AppLangs'
+import {ReactNode} from 'react'
 
 export const isServerSide = () => typeof window === 'undefined'
 
@@ -107,4 +108,9 @@ export function notNull<A>(a: A | null): a is A {
 
 export function sendMessageToReactNative(message: string): void {
   window.ReactNativeWebView?.postMessage(message)
+}
+
+// to avoid repetition
+export type ChildrenProps = {
+  children: ReactNode
 }

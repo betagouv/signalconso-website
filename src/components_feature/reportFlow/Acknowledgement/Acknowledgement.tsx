@@ -1,20 +1,16 @@
-import {Box, BoxProps, CircularProgress, Icon} from '@mui/material'
 import {useGetCountries} from '@/clients/apiHooks'
-import {Panel, PanelActions, PanelBody} from '@/components_simple/Panel'
-import {Row} from '@/components_simple/Row'
 import {externalLinks} from '@/core/externalLinks'
 import {useI18n} from '@/i18n/I18n'
+import imgCompany from '@/img/illustrations/company.png'
+import Image from 'next/image'
 import {ReactNode, useEffect, useMemo} from 'react'
-import {Txt} from '../../../components_simple/Txt'
 import {LinkBackToHome} from '../../../components_simple/LinkBackToHome'
+import {Txt} from '../../../components_simple/Txt'
 import {Country, countryLabel} from '../../../model/Country'
 import {CreatedReport} from '../../../model/CreatedReport'
-import {ReportDraft} from '../../../model/ReportDraft'
 import {fnSwitch} from '../../../utils/FnSwitch'
 import {useReportCreateContext} from '../ReportCreateContext'
 import {useReportFlowContext} from '../ReportFlowContext'
-import imgCompany from '@/img/illustrations/company.png'
-import Image from 'next/image'
 
 export enum AcknowledgmentCases {
   ReponseConso = 'ReponseConso',
@@ -52,12 +48,15 @@ export const Acknowledgement = ({isWebView}: {isWebView: boolean}) => {
   }
 
   return (
-    <div className="flex items-center mb-10">
-      <CircularProgress size={90} className="mx-auto" />
+    <div className="flex items-center justify-center mt-10 mb-10">
+      <div className="sc-loader-big w-20 h-20"></div>
     </div>
   )
 }
 
+export const Spinner = () => {
+  return <div className={`w-8 h-8 border-4 border-blue-500 rounded-full animate-spin`}></div>
+}
 export const AcknowledgementInner = ({
   createdReport,
   country,
@@ -189,7 +188,8 @@ const AcknowledgementLayout = ({
   showChargeBack?: boolean
   title?: string
   isWebView: boolean
-} & BoxProps) => {
+  children: ReactNode
+}) => {
   const {m, currentLang} = useI18n()
   return (
     <>
@@ -198,7 +198,7 @@ const AcknowledgementLayout = ({
       <div className="max-w-3xl mx-auto">
         <h2>
           <div className="flex items-center">
-            <Icon sx={{mr: 1}}>check_circle</Icon>
+            <i className="ri-checkbox-circle-fill mr-2" />
             <span dangerouslySetInnerHTML={{__html: m.acknoledgment.sentReport}} />
           </div>
         </h2>

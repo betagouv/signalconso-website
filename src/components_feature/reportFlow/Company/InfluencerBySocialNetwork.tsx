@@ -1,6 +1,5 @@
-import {Box} from '@mui/material'
-import {BtnNextSubmit} from '@/components_simple/buttons/Buttons'
 import {RequiredFieldsLegend} from '@/components_simple/RequiredFieldsLegend'
+import {BtnNextSubmit} from '@/components_simple/buttons/Buttons'
 import {ScTextInput} from '@/components_simple/formInputs/ScTextInput'
 import {Controller, useForm} from 'react-hook-form'
 import {SocialNetworks, socialNetworks} from '../../../anomalies/Anomaly'
@@ -40,8 +39,7 @@ export const InfluencerBySocialNetwork = ({onSubmit}: Props) => {
   return (
     <>
       <RequiredFieldsLegend />
-      <Box
-        component="form"
+      <form
         onSubmit={handleSubmit(form => {
           onSubmit(form.socialNetwork, form.influencer)
         })}
@@ -79,7 +77,7 @@ export const InfluencerBySocialNetwork = ({onSubmit}: Props) => {
             </Panel>
           </Animate>
         )}
-      </Box>
+      </form>
     </>
   )
 }
