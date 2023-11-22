@@ -1,16 +1,13 @@
-import Button from '@codegouvfr/react-dsfr/Button'
-import {useMutation} from '@tanstack/react-query'
 import {useAnalyticContext} from '@/analytic/AnalyticContext'
 import {EventCategories, ReportEventActions} from '@/analytic/analytic'
 import {AccordionInline} from '@/components_simple/AccordionInline'
 import {Animate} from '@/components_simple/Animate'
-import {Fender} from '@/components_simple/Fender'
-import {Panel, PanelBody} from '@/components_simple/Panel'
 import {useApiClients} from '@/context/ApiClientsContext'
-import {otherColorSet} from '@/core/theme'
 import {useI18n} from '@/i18n/I18n'
-import {useEffect, useState} from 'react'
 import {last} from '@/utils/lodashNamedExport'
+import Button from '@codegouvfr/react-dsfr/Button'
+import {useMutation} from '@tanstack/react-query'
+import {useEffect, useState} from 'react'
 import {Anomaly, InfoWall, Subcategory} from '../../../anomalies/Anomaly'
 import {LinkBackToHome} from '../../../components_simple/LinkBackToHome'
 
@@ -75,10 +72,13 @@ export const ProblemInformation = ({anomaly, subcategories, information, isWebVi
         <div className="p-4 border border-gray-300 border-solid mb-4">
           <h2 className="fr-h6">{m.informationWasUsefull}</h2>
           {_vote.data ? (
-            <div>
-              <Fender iconSize={80} icon="check_circle_outline" iconColor={otherColorSet.success}>
-                {m.informationRatingSaved}
-              </Fender>
+            <div className="text-center mb-8">
+              <div className="h-[110px] mt-2 leading-4 ">
+                <i className="ri-checkbox-circle-fill sc-icon-xxl text-green-700" />
+              </div>
+              <div className="mt-2">
+                <span className="text-xl text-gray-600"> {m.informationRatingSaved}</span>
+              </div>
             </div>
           ) : (
             <div className="flex items-center justify-center gap-4">
