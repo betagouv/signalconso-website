@@ -1,10 +1,8 @@
-import {Button} from '@codegouvfr/react-dsfr/Button'
-import {Box, BoxProps} from '@mui/material'
 import {Animate} from '@/components_simple/Animate'
-import {Panel, PanelBody} from '@/components_simple/Panel'
 import {RequiredFieldsLegend} from '@/components_simple/RequiredFieldsLegend'
 import {ScTextInput} from '@/components_simple/formInputs/ScTextInput'
 import {useI18n} from '@/i18n/I18n'
+import {Button} from '@codegouvfr/react-dsfr/Button'
 import {ReactNode, useState} from 'react'
 import {useForm} from 'react-hook-form'
 
@@ -12,12 +10,11 @@ interface Form {
   phone: string
 }
 
-interface Props extends Omit<BoxProps, 'onSubmit' | 'children'> {
-  value?: string
+interface Props {
   children: (phone?: string) => ReactNode
 }
 
-export const CompanyByPhone = ({value, children, ...props}: Props) => {
+export const CompanyByPhone = ({children}: Props) => {
   const {m} = useI18n()
   const [phone, setPhone] = useState<string | undefined>()
   const {
@@ -26,7 +23,7 @@ export const CompanyByPhone = ({value, children, ...props}: Props) => {
     formState: {errors},
   } = useForm<Form>({
     defaultValues: {
-      phone: value,
+      phone: undefined,
     },
   })
 
@@ -45,10 +42,11 @@ export const CompanyByPhone = ({value, children, ...props}: Props) => {
   return (
     <>
       <Animate>
-        <Panel title={m.aboutCompany} id="CompanyByPhone">
-          <PanelBody>
+        <div id="CompanyByPhone">
+          <h2 className="fr-h6">{m.aboutCompany}</h2>
+          <div>
             <RequiredFieldsLegend />
-            <Box component="form" onSubmit={handleSubmit(submit)} {...props}>
+            <form onSubmit={handleSubmit(submit)}>
               <ScTextInput
                 type="tel"
                 label={m.phoneNumberHavingCalled}
@@ -75,9 +73,9 @@ export const CompanyByPhone = ({value, children, ...props}: Props) => {
                   {m.continue}
                 </Button>
               </div>
-            </Box>
-          </PanelBody>
-        </Panel>
+            </form>
+          </div>
+        </div>
       </Animate>
       {phone && children(phone)}
     </>
