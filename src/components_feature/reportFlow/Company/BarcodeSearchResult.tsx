@@ -1,13 +1,12 @@
-import {CompanySearchResult, isGovernmentCompany} from '../../../model/Company'
-import {BarcodeProduct} from '../../../model/BarcodeProduct'
-import {AddressComponent} from '../../../components_simple/Address'
-import {ReactNode} from 'react'
 import {Icon} from '@mui/material'
-import {styleUtils} from '../../../core/theme'
-import {useI18n} from '../../../i18n/I18n'
-import {BtnNext} from '../../../components_simple/buttons/Buttons'
-import {Panel, PanelBody} from '../../../components_simple/Panel'
+import {ReactNode} from 'react'
+import {AddressComponent} from '../../../components_simple/Address'
 import {Fender} from '../../../components_simple/Fender'
+import {Panel, PanelBody} from '../../../components_simple/Panel'
+import {BtnNext} from '../../../components_simple/buttons/Buttons'
+import {useI18n} from '../../../i18n/I18n'
+import {BarcodeProduct} from '../../../model/BarcodeProduct'
+import {CompanySearchResult, isGovernmentCompany} from '../../../model/Company'
 
 interface BarcodeSearchResultPros {
   product?: BarcodeProduct
@@ -15,24 +14,13 @@ interface BarcodeSearchResultPros {
   onSubmit: (selected: CompanySearchResult, product: BarcodeProduct) => void
 }
 
-const Row = ({icon, children, variant}: {icon?: string; variant?: 'blue' | 'error'; children: ReactNode}) => {
+function Row({icon, children, variant}: {icon: string; variant?: 'blue' | 'error'; children: ReactNode}) {
   const color = variant === 'blue' ? 'text-scbluefrance' : variant === 'error' ? 'text-red-500' : 'text-gray-500'
   return (
-    <>
-      <div className={`flex items-start mb-1 text-sm ${color}`}>
-        <Icon
-          sx={{
-            mr: 0.5,
-            fontSize: t => styleUtils(t).fontSize.big,
-            lineHeight: 1,
-            minWidth: 20,
-          }}
-        >
-          {icon}
-        </Icon>
-        <div>{children}</div>
-      </div>
-    </>
+    <div className={`flex items-start mb-1 text-sm ${color} `}>
+      <i className={`${icon} mr-2 fr-icon--sm`} />
+      <div>{children}</div>
+    </div>
   )
 }
 
@@ -49,23 +37,23 @@ const CompanyBlock = ({company}: {company: CompanySearchResult}) => {
         {company.brand && <span className="block">{company.brand}</span>}
 
         {company.isHeadOffice && (
-          <Row icon="business" variant="blue">
+          <Row icon="ri-building-fill" variant="blue">
             {m.isHeadOffice}
           </Row>
         )}
 
-        {company.activityLabel && <Row icon="label">{company.activityLabel}</Row>}
+        {company.activityLabel && <Row icon="ri-price-tag-3-fill">{company.activityLabel}</Row>}
         {isGovernment && (
-          <Row icon="error" variant="error">
+          <Row icon="ri-error-warning-fill" variant="error">
             {m.governmentCompany}
           </Row>
         )}
 
-        <Row icon="badge">
+        <Row icon="ri-profile-fill">
           {m.siretNumber} <span className="">{company.siret}</span>
         </Row>
         {company.address && (
-          <Row icon="location_on">
+          <Row icon="ri-map-pin-2-fill">
             <AddressComponent address={company.address} />
           </Row>
         )}
@@ -79,23 +67,21 @@ export const BarcodeSearchResult = ({product, company, onSubmit}: BarcodeSearchR
   const {m} = useI18n()
 
   return product ? (
-    <Panel>
-      <PanelBody>
-        <div className="flex items-start align-middle mb-2">
-          <Icon>shopping_cart</Icon>
-          <h1 className="text-xl font-bold mb-0 pl-2">{m.barcodeProduct}</h1>
-        </div>
-        <p className="ml-4 text-gray-600 mb-12">{product.productName ?? m.barcodeNoDescriptionFound}</p>
-        <div className="flex items-start align-middle mb-2">
-          <Icon>store</Icon>
-          <h1 className="text-xl font-bold mb-0 pl-2">{m.barcodeCompany}</h1>
-        </div>
-        <div className="ml-4">
-          {company ? <CompanyBlock company={company} /> : <p className="text-gray-600">{m.barcodeNoCompanyFound}</p>}
-        </div>
-        <div className="w-full flex flex-row-reverse">{company && <BtnNext onClick={() => onSubmit(company, product)} />}</div>
-      </PanelBody>
-    </Panel>
+    <div className="mt-6 pt-10 border-t-[1px] border-0 border-solid border-gray-200">
+      <div className="flex items-start align-middle mb-2">
+        <Icon>shopping_cart</Icon>
+        <h1 className="text-xl font-bold mb-0 pl-2">{m.barcodeProduct}</h1>
+      </div>
+      <p className="ml-4 text-gray-600 mb-12">{product.productName ?? m.barcodeNoDescriptionFound}</p>
+      <div className="flex items-start align-middle mb-2">
+        <Icon>store</Icon>
+        <h1 className="text-xl font-bold mb-0 pl-2">{m.barcodeCompany}</h1>
+      </div>
+      <div className="ml-4">
+        {company ? <CompanyBlock company={company} /> : <p className="text-gray-600">{m.barcodeNoCompanyFound}</p>}
+      </div>
+      <div className="w-full flex flex-row-reverse">{company && <BtnNext onClick={() => onSubmit(company, product)} />}</div>
+    </div>
   ) : (
     <Panel>
       <Fender icon="sentiment_very_dissatisfied">
