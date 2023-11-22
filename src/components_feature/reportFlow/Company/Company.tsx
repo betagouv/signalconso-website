@@ -1,12 +1,18 @@
 'use client'
+import {AddressComponent} from '@/components_simple/Address'
+import {BtnNext} from '@/components_simple/buttons/Buttons'
+import {useI18n} from '@/i18n/I18n'
+import {ReportDraft2} from '@/model/ReportDraft2'
 import {Button} from '@codegouvfr/react-dsfr/Button'
-import {Txt} from '../../../components_simple/Txt'
+import {SpecificWebsiteCompanyKinds} from '../../../anomalies/Anomaly'
 import {SocialNetworkRow} from '../../../components_simple/SocialNetworkRow'
 import {CompanySearchResult} from '../../../model/Company'
 import {CompanyDraft, ReportDraft} from '../../../model/ReportDraft'
 import {fnSwitch} from '../../../utils/FnSwitch'
 import {DeepPartial} from '../../../utils/utils'
 import {useReportFlowContext} from '../ReportFlowContext'
+import {StepNavigation} from '../reportFlowStepper/ReportFlowStepper'
+import {BarcodeSearchResult} from './BarcodeSearchResult'
 import {CompanyAskConsumerPostalCode} from './CompanyAskConsumerPostalCode'
 import {CompanyAskConsumerStreet} from './CompanyAskConsumerStreet'
 import {CompanyAskForeignDetails} from './CompanyAskForeignDetails'
@@ -14,22 +20,12 @@ import {CompanyAskIsForeign, IsForeignCompany} from './CompanyAskIsForeign'
 import {CompanyByPhone} from './CompanyByPhone'
 import {CompanyByWebsite} from './CompanyByWebsite'
 import {CompanyIdentifyBy, IdentifyBy} from './CompanyIdentifyBy'
+import {CompanySearchByBarcode} from './CompanySearchByBarcode'
 import {CompanySearchByIdentity} from './CompanySearchByIdentity'
 import {CompanySearchByNameAndPostalCode} from './CompanySearchByNameAndPostalCode'
 import {CompanySearchResultComponent} from './CompanySearchResult'
 import {CompanyWebsiteCountry} from './CompanyWebsiteCountry'
 import {InfluencerBySocialNetwork} from './InfluencerBySocialNetwork'
-import {BtnNext} from '@/components_simple/buttons/Buttons'
-import {SpecificWebsiteCompanyKinds} from '../../../anomalies/Anomaly'
-import {CompanySearchByBarcode} from './CompanySearchByBarcode'
-import {BarcodeSearchResult} from './BarcodeSearchResult'
-import {useI18n} from '@/i18n/I18n'
-import {Panel, PanelBody} from '@/components_simple/Panel'
-import {StepNavigation} from '../reportFlowStepper/ReportFlowStepper'
-import {Row} from '@/components_simple/Row'
-import {ReportDraft2} from '@/model/ReportDraft2'
-import {useAnalyticContext} from '@/analytic/AnalyticContext'
-import {AddressComponent} from '@/components_simple/Address'
 
 interface CompanyWithRequiredProps {
   draft: Pick<ReportDraft, 'companyKind'>
@@ -37,7 +33,6 @@ interface CompanyWithRequiredProps {
 }
 
 export const Company = ({stepNavigation}: {stepNavigation: StepNavigation}) => {
-  const _analytic = useAnalyticContext()
   const _reportFlow = useReportFlowContext()
 
   const draft = _reportFlow.reportDraft
@@ -49,6 +44,7 @@ export const Company = ({stepNavigation}: {stepNavigation: StepNavigation}) => {
       />
     )
   }
+
   if (draft.companyDraft) {
     return (
       <CompanyFilled
@@ -110,44 +106,38 @@ export const CompanyFilled = ({
     throw new Error(`companyDraft should be defined ${JSON.stringify(draft)}`)
   }
   return (
-    <Panel title={m.companyIdentifiedTitle}>
-      <PanelBody>
-        <Txt size="big" bold block>
-          {draft.companyDraft.name}
-        </Txt>
-
-        {draft.companyDraft.brand && (
-          <Txt bold block sx={{mb: 2, fontStyle: 'italic'}}>
-            {draft.companyDraft.brand}
-          </Txt>
-        )}
-
+    <div>
+      <h2 className="fr-h6">{m.companyIdentifiedTitle}</h2>
+      <div>
+        <p className="mb-0 font-bold">{draft.companyDraft.name}</p>
+        {draft.companyDraft.brand && <p className="mb-0 font-bold italic">{draft.companyDraft.brand}</p>}
         {draft.companyDraft.siret && (
-          <Txt color="hint" block sx={{mb: 2}}>
-            <Txt>SIRET:&nbsp;</Txt>
-            <Txt bold>{draft.companyDraft.siret}</Txt>
-          </Txt>
+          <p className="mb-0 text-sc-gray-400">
+            <span>SIRET :&nbsp;</span>
+            <span className="font-bold">{draft.companyDraft.siret}</span>
+          </p>
         )}
         {draft.companyDraft.siret && (
-          <Row dense icon="location_on">
-            <Txt color="hint">
-              <AddressComponent address={draft.companyDraft.address} />
-            </Txt>
-          </Row>
+          <div className="flex gap-2 pl-1 ">
+            <i className="ri-map-pin-2-fill text-gray-400" />{' '}
+            <AddressComponent address={draft.companyDraft.address} className="text-gray-600" />
+          </div>
         )}
         {draft.companyDraft.website && (
-          <Row dense icon="link">
-            <Txt color="hint">{draft.companyDraft.website}</Txt>
-          </Row>
+          <div className="flex gap-2 pl-1 ">
+            <i className="ri-global-line text-gray-400" />
+            <span className="text-gray-600">{draft.companyDraft.website}</span>
+          </div>
         )}
         {draft.companyDraft.phone && (
-          <Row dense icon="phone">
-            <Txt color="hint">{draft.companyDraft.phone}</Txt>
-          </Row>
+          <div className="flex gap-2 pl-1">
+            <i className="ri-phone-line text-gray-400" />
+            <span className="text-gray-600">{draft.companyDraft.phone}</span>
+          </div>
         )}
-      </PanelBody>
+      </div>
       <ActionButtons {...{onClear, stepNavigation}} />
-    </Panel>
+    </div>
   )
 }
 
