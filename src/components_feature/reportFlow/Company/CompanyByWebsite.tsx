@@ -1,18 +1,16 @@
-import {Alert} from '@codegouvfr/react-dsfr/Alert'
-import {Button} from '@codegouvfr/react-dsfr/Button'
-import {Box, BoxProps} from '@mui/material'
-import {useQuery} from '@tanstack/react-query'
 import {useAnalyticContext} from '@/analytic/AnalyticContext'
 import {CompanySearchEventActions, EventCategories} from '@/analytic/analytic'
 import {SignalConsoApiClient} from '@/clients/SignalConsoApiClient'
 import {useToastOnQueryError} from '@/clients/apiHooks'
 import {Animate} from '@/components_simple/Animate'
 import {AutofocusedDiv} from '@/components_simple/AutofocusedDiv'
-import {Panel, PanelBody} from '@/components_simple/Panel'
 import {RequiredFieldsLegend} from '@/components_simple/RequiredFieldsLegend'
 import {ScTextInput} from '@/components_simple/formInputs/ScTextInput'
 import {useApiClients} from '@/context/ApiClientsContext'
 import {useI18n} from '@/i18n/I18n'
+import {Alert} from '@codegouvfr/react-dsfr/Alert'
+import {Button} from '@codegouvfr/react-dsfr/Button'
+import {useQuery} from '@tanstack/react-query'
 import {ReactNode, useEffect, useRef, useState} from 'react'
 import {useForm} from 'react-hook-form'
 import {SpecificWebsiteCompanyKinds} from '../../../anomalies/Anomaly'
@@ -25,9 +23,8 @@ interface Form {
   website: string
 }
 
-interface Props extends Omit<BoxProps, 'onSubmit' | 'children'> {
-  value?: string
-  specificWebsiteCompanyKind?: SpecificWebsiteCompanyKinds
+interface Props {
+  specificWebsiteCompanyKind: SpecificWebsiteCompanyKinds | undefined
   children: (websiteUrl?: string, result?: CompanySearchResult[], countries?: Country[]) => ReactNode
 }
 
@@ -84,7 +81,7 @@ async function searchWebsite(
   }
 }
 
-export const CompanyByWebsite = ({value, children, specificWebsiteCompanyKind, ...props}: Props) => {
+export const CompanyByWebsite = ({children, specificWebsiteCompanyKind}: Props) => {
   const {m} = useI18n()
   const inputRef = useRef<HTMLInputElement | null>(null)
   const {signalConsoApiClient, siretExtractorClient} = useApiClients()
@@ -97,7 +94,7 @@ export const CompanyByWebsite = ({value, children, specificWebsiteCompanyKind, .
     formState: {errors},
   } = useForm<Form>({
     defaultValues: {
-      website: value,
+      website: undefined,
     },
   })
 
@@ -179,11 +176,12 @@ export const CompanyByWebsite = ({value, children, specificWebsiteCompanyKind, .
   return (
     <>
       <Animate>
-        <Panel title={m.aboutCompany} id="CompanyByWebsite">
+        <div id="CompanyByWebsite">
+          <h2 className="fr-h6">{m.aboutCompany}</h2>
           {specificWebsiteCompanyKind && websiteToReportAlert(specificWebsiteCompanyKind)}
-          <PanelBody>
+          <div>
             <RequiredFieldsLegend />
-            <Box component="form" onSubmit={handleSubmit(onSubmit)} {...props}>
+            <form onSubmit={handleSubmit(onSubmit)}>
               <ScTextInput
                 label={m.website}
                 required
@@ -222,9 +220,9 @@ export const CompanyByWebsite = ({value, children, specificWebsiteCompanyKind, .
                   </Button>
                 </div>
               )}
-            </Box>
-          </PanelBody>
-        </Panel>
+            </form>
+          </div>
+        </div>
       </Animate>
       {displayedResults?.kind === 'countries' && displayedResults.countries.length > 0 && (
         <AutofocusedDiv>{children(website, undefined, displayedResults.countries)}</AutofocusedDiv>
