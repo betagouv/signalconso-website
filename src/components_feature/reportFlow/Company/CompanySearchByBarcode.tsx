@@ -80,6 +80,7 @@ export const CompanySearchByBarcode = ({children}: Props) => {
   function search(form: Form) {
     _analytic.trackEvent(EventCategories.barcodeSearch, CompanySearchEventActions.searchByGTIN, form.gtin)
     setSubmittedGTIN(form.gtin)
+    setSubmittedIdentity(undefined)
     setSkipped(false)
     setEditing(false)
   }
