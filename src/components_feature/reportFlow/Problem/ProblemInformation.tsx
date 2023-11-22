@@ -48,12 +48,9 @@ export const ProblemInformation = ({anomaly, subcategories, information, isWebVi
   return (
     <>
       <Animate>
-        <Panel
-          id="blocking-info-wall"
-          border
-          title={<span dangerouslySetInnerHTML={{__html: information.title ?? m.informationTitle}} />}
-        >
-          <PanelBody>
+        <div id="blocking-info-wall" className="p-4 border border-gray-300 border-solid mb-4">
+          <h2 className="fr-h6" dangerouslySetInnerHTML={{__html: information.title ?? m.informationTitle}} />
+          <div>
             {information.notAFraudMessage && <p>{m.informationReportOutOfScope}</p>}
             {information.subTitle && <p className="font-bold mb-1" dangerouslySetInnerHTML={{__html: information.subTitle}} />}
             {information.content && <p className="mb-1" dangerouslySetInnerHTML={{__html: information.content}} />}
@@ -71,24 +68,25 @@ export const ProblemInformation = ({anomaly, subcategories, information, isWebVi
                 <p className="text-gray-700" dangerouslySetInnerHTML={{__html: action.answer}} />
               </AccordionInline>
             ))}
-          </PanelBody>
-        </Panel>
+          </div>
+        </div>
       </Animate>
       <Animate>
-        <Panel title={m.informationWasUsefull} border>
+        <div className="p-4 border border-gray-300 border-solid mb-4">
+          <h2 className="fr-h6">{m.informationWasUsefull}</h2>
           {_vote.data ? (
-            <PanelBody>
+            <div>
               <Fender iconSize={80} icon="check_circle_outline" iconColor={otherColorSet.success}>
                 {m.informationRatingSaved}
               </Fender>
-            </PanelBody>
+            </div>
           ) : (
             <div className="flex items-center justify-center gap-4">
               <VoteButton disabled={_vote.isPending} {...{onVote}} wasUseful={false} />
               <VoteButton disabled={_vote.isPending} {...{onVote}} wasUseful={true} />
             </div>
           )}{' '}
-        </Panel>
+        </div>
       </Animate>
       <LinkBackToHome isWebView={isWebView} lang={currentLang} />
     </>

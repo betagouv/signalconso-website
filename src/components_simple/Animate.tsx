@@ -1,7 +1,6 @@
 import * as React from 'react'
 import {useId, useRef, useState} from 'react'
 import {useTimeout} from '../hooks/useTimeout'
-import {useTheme} from '@mui/material'
 import {useAutoscrollContext} from '@/context/AutoscrollContext'
 
 export interface AnimateProps {
@@ -16,7 +15,6 @@ export interface AnimateProps {
 export const Animate = ({autoScrollTo = true, fromBottom = false, children}: AnimateProps) => {
   const {autoscrollEnabled} = useAutoscrollContext()
 
-  const theme = useTheme()
   const [appeared, setAppeared] = useState<boolean>(false)
   const ref = useRef(null)
   const id = useId()
@@ -45,7 +43,7 @@ export const Animate = ({autoScrollTo = true, fromBottom = false, children}: Ani
   return React.cloneElement(children, {
     className,
     style: {
-      transition: theme.transitions.create('all', {duration: 500, delay: 50}),
+      transition: '500ms cubic-bezier(0.4, 0, 0.2, 1) 50ms',
 
       ...(appeared
         ? {

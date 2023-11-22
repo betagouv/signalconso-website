@@ -22,6 +22,7 @@ import {FileOrigin} from '../../../model/UploadedFile'
 import {useReportCreateContext} from '../ReportCreateContext'
 import {useReportFlowContext} from '../ReportFlowContext'
 import {ConfirmationStep, ConfirmationStepper} from './ConfirmationStepper'
+import Image from 'next/image'
 
 export const Confirmation = ({stepNavigation, isWebView}: {stepNavigation: StepNavigation; isWebView: boolean}) => {
   const _reportFlow = useReportFlowContext()
@@ -111,7 +112,9 @@ function RenderEachStep({
       return (
         <ConfirmationStep title={m.step_problem} {...{goToStep, index}}>
           <div className="flex">
-            <AnomalyImage anomaly={anomaly} sx={{mr: 2}} />
+            <div className="relative mr-4 min-w-[72px] min-h-[72px] max-w-[72px] max-h-[72px]">
+              <Image fill className="object-contain" src={`/image/pictos/${anomaly.img}.png`} alt="" />
+            </div>
             <div>
               <Txt block size="big" bold sx={{mb: 1}} component="h3">
                 {findAnomaly(draft.category, currentLang).title}

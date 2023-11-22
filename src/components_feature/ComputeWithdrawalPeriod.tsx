@@ -1,8 +1,8 @@
 'use client'
 
-import {SimpleDatepicker} from '@/components_simple/formInputs/ScLegacyDatepicker'
+import {ScDatepicker} from '@/components_simple/formInputs/ScDatepicker'
 import {dateToFrenchFormat} from '@/utils/utils'
-import {useMemo, useState} from 'react'
+import {useForm} from 'react-hook-form'
 import {useI18n} from '../i18n/I18n'
 
 const closingDays = [
@@ -32,16 +32,31 @@ function isClosingDate(date: Date) {
   return isSunday || isSaturday || isClosingDay
 }
 
-const ComputeWithdrawalPeriod = () => {
-  const [contractDate, setContractDate] = useState<Date | undefined>()
-  const deadlineDate = useMemo(() => (contractDate ? calculRetractationDeadline(contractDate) : undefined), [contractDate])
-  const {m} = useI18n()
+type Form = {
+  contractDate: string | undefined
+}
 
+const ComputeWithdrawalPeriod = () => {
+  const {
+    register,
+    watch,
+    formState: {errors},
+  } = useForm<Form>()
+  const {m} = useI18n()
+  const contractDateStr = watch('contractDate')
+  const contractDate = contractDateStr && contractDateStr.length > 0 ? new Date(contractDateStr) : undefined
+  const deadlineDate = contractDate ? calculRetractationDeadline(contractDate) : undefined
   return (
     <>
       <h2 className="fr-h4">{m.delaiRetractation.calculationSectionTitle}</h2>
-      <span>{m.delaiRetractation.startDateLabel}</span>
-      <SimpleDatepicker value={contractDate} onChange={setContractDate} limited />
+      <ScDatepicker
+        {...register('contractDate')}
+        label={m.delaiRetractation.startDateLabel}
+        min={'1970-01-01'}
+        max={'2050-01-01'}
+        error={!!errors.contractDate}
+        required={false}
+      />
       {deadlineDate && (
         <div className="mt-7">
           <i className="ri-arrow-right-line text-scbluefrance" />
