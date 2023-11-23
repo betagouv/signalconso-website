@@ -26,31 +26,35 @@ export function SwitchLang() {
     return hasAlternatePageInOtherLang ? path : home
   }
 
-  return (
+  return _report.reportDraft.category ? (
     <Button className={'fr-btn fr-btn--tertiary'}>
-      {_report.reportDraft.category ? (
-        <ScDialog
-          title={m.switchLang}
-          content={<p className="mb-0" dangerouslySetInnerHTML={{__html: m.pendingReport}} />}
-          onConfirm={close => {
-            const p = newPath()
-            setCookie('NEXT_LANG', switchLang(currentLang))
-            close()
-            router.push(p)
-          }}
-          confirmLabel={m.confirm}
-        >
-          <span>
-            {m.header.currentLangCode}
-            <span className="fr-hidden-lg"> - {m.header.currentLang}</span>
-          </span>
-        </ScDialog>
-      ) : (
-        <Link prefetch={false} href={newPath()}>
+      <ScDialog
+        title={m.switchLang}
+        content={<p className="mb-0" dangerouslySetInnerHTML={{__html: m.pendingReport}} />}
+        onConfirm={close => {
+          const p = newPath()
+          setCookie('NEXT_LANG', switchLang(currentLang))
+          close()
+          router.push(p)
+        }}
+        confirmLabel={m.confirm}
+      >
+        <span>
           {m.header.currentLangCode}
           <span className="fr-hidden-lg"> - {m.header.currentLang}</span>
-        </Link>
-      )}
+        </span>
+      </ScDialog>
+    </Button>
+  ) : (
+    <Button
+      className={'fr-btn fr-btn--tertiary'}
+      linkProps={{
+        href: newPath(),
+        title: m.header.selectLang,
+      }}
+    >
+      {m.header.currentLangCode}
+      <span className="fr-hidden-lg"> - {m.header.currentLang}</span>
     </Button>
   )
 }
