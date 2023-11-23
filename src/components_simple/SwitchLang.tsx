@@ -49,6 +49,7 @@ export function SwitchLang() {
     <Button
       className={'fr-btn fr-btn--tertiary'}
       linkProps={{
+        prefetch: false,
         href: newPath(),
         title: m.header.selectLang,
       }}
