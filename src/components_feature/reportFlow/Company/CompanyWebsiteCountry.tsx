@@ -1,10 +1,8 @@
-import {Panel, PanelActions, PanelBody} from '@/components_simple/Panel'
-import {useI18n} from '@/i18n/I18n'
-import React from 'react'
-import {Controller, useForm} from 'react-hook-form'
-import {Country, countryLabel} from '../../../model/Country'
 import {BtnNextSubmit} from '@/components_simple/buttons/Buttons'
+import {useI18n} from '@/i18n/I18n'
+import {Controller, useForm} from 'react-hook-form'
 import {ScRadioButtons} from '../../../components_simple/formInputs/ScRadioButtons'
+import {Country, countryLabel} from '../../../model/Country'
 
 interface Props {
   countries: Country[]
@@ -19,9 +17,9 @@ export const CompanyWebsiteCountry = ({countries, onSubmit}: Props) => {
   const {m, currentLang} = useI18n()
   const {handleSubmit, register, control} = useForm<Form>()
   return (
-    <Panel>
+    <div>
       <form onSubmit={handleSubmit(f => onSubmit(f.country))}>
-        <PanelBody>
+        <div>
           <Controller
             control={control}
             name="country"
@@ -43,11 +41,11 @@ export const CompanyWebsiteCountry = ({countries, onSubmit}: Props) => {
               />
             )}
           />
-        </PanelBody>
-        <PanelActions>
+        </div>
+        <div className="flex justify-end">
           <BtnNextSubmit />
-        </PanelActions>
+        </div>
       </form>
-    </Panel>
+    </div>
   )
 }
