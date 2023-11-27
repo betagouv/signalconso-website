@@ -1,9 +1,8 @@
-import {Panel, PanelBody} from '@/components_simple/Panel'
-import {useI18n} from '@/i18n/I18n'
-import {Txt} from '../../../components_simple/Txt'
-import {Animate} from '@/components_simple/Animate'
-import {ReactNode, useState} from 'react'
 import {AccordionInline} from '@/components_simple/AccordionInline'
+import {Animate} from '@/components_simple/Animate'
+import {useI18n} from '@/i18n/I18n'
+import {ReactNode, useState} from 'react'
+import {Txt} from '../../../components_simple/Txt'
 import {ScRadioButtons} from '../../../components_simple/formInputs/ScRadioButtons'
 
 export enum IsForeignCompany {
@@ -22,8 +21,8 @@ export const CompanyAskIsForeign = ({children}: Props) => {
   return (
     <>
       <Animate>
-        <Panel>
-          <PanelBody>
+        <div>
+          <div>
             <ScRadioButtons
               required
               titleNoAutoAsterisk
@@ -50,8 +49,8 @@ export const CompanyAskIsForeign = ({children}: Props) => {
                 },
               ]}
             />
-          </PanelBody>
-        </Panel>
+          </div>
+        </div>
       </Animate>
       {isForeignCompany && children(isForeignCompany)}
     </>

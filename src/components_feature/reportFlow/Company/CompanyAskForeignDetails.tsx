@@ -1,8 +1,8 @@
 import {Animate} from '@/components_simple/Animate'
-import {BtnNextSubmit} from '@/components_simple/buttons/Buttons'
-import {Panel, PanelActions, PanelBody} from '@/components_simple/Panel'
 import {RequiredFieldsLegend} from '@/components_simple/RequiredFieldsLegend'
+import {BtnNextSubmit} from '@/components_simple/buttons/Buttons'
 import {ScAutocompleteCountry} from '@/components_simple/formInputs/ScAutocompleteCountry'
+import {ScAutocompletePostcode} from '@/components_simple/formInputs/ScAutocompletePostcode'
 import {ScTextInput} from '@/components_simple/formInputs/ScTextInput'
 import {useI18n} from '@/i18n/I18n'
 import {Controller, useForm} from 'react-hook-form'
@@ -11,7 +11,6 @@ import {ScAlert} from '../../../components_simple/ScAlert'
 import {Txt} from '../../../components_simple/Txt'
 import {Country} from '../../../model/Country'
 import {fnSwitch} from '../../../utils/FnSwitch'
-import {ScAutocompletePostcode} from '@/components_simple/formInputs/ScAutocompletePostcode'
 
 interface Form {
   name: string
@@ -41,10 +40,11 @@ export const CompanyAskForeignDetails = ({onSubmit, companyKind}: Props) => {
 
   return (
     <Animate>
-      <Panel title={m.couldYouPrecise} id="CompanyAskForeignDetails">
+      <div id="CompanyAskForeignDetails">
+        <h2 className="!text-lg">{m.couldYouPrecise}</h2>
         <RequiredFieldsLegend />
         <form onSubmit={handleSubmit(onSubmit)}>
-          <PanelBody>
+          <div>
             <ScTextInput
               label={m.reportedCompanyName}
               {...register('name', {
@@ -99,13 +99,13 @@ export const CompanyAskForeignDetails = ({onSubmit, companyKind}: Props) => {
                 />
               )}
             />
-          </PanelBody>
+          </div>
 
-          <PanelActions>
+          <div className="flex justify-end">
             <BtnNextSubmit />
-          </PanelActions>
+          </div>
         </form>
-      </Panel>
+      </div>
     </Animate>
   )
 }

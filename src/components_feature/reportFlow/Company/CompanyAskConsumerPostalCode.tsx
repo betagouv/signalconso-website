@@ -1,5 +1,4 @@
 import {Animate} from '@/components_simple/Animate'
-import {Panel, PanelActions, PanelBody, Separator} from '@/components_simple/Panel'
 import {RequiredFieldsLegend} from '@/components_simple/RequiredFieldsLegend'
 import {BtnNextSubmit} from '@/components_simple/buttons/Buttons'
 import {ScAutocompletePostcode} from '@/components_simple/formInputs/ScAutocompletePostcode'
