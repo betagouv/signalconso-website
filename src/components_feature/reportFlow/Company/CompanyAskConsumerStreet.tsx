@@ -1,13 +1,13 @@
-import { Animate } from '@/components_simple/Animate'
-import { RequiredFieldsLegend } from '@/components_simple/RequiredFieldsLegend'
-import { BtnNextSubmit } from '@/components_simple/buttons/Buttons'
-import { ScAutocompletePostcode } from '@/components_simple/formInputs/ScAutocompletePostcode'
-import { ScTextInput } from '@/components_simple/formInputs/ScTextInput'
-import { useI18n } from '@/i18n/I18n'
-import { Address } from '@/model/Address'
-import { Controller, useForm } from 'react-hook-form'
-import { ScAlert } from '../../../components_simple/ScAlert'
-import { Txt } from '../../../components_simple/Txt'
+import {Animate} from '@/components_simple/Animate'
+import {RequiredFieldsLegend} from '@/components_simple/RequiredFieldsLegend'
+import {BtnNextSubmit} from '@/components_simple/buttons/Buttons'
+import {ScAutocompletePostcode} from '@/components_simple/formInputs/ScAutocompletePostcode'
+import {ScTextInput} from '@/components_simple/formInputs/ScTextInput'
+import {useI18n} from '@/i18n/I18n'
+import {Address} from '@/model/Address'
+import {Controller, useForm} from 'react-hook-form'
+import {ScAlert} from '../../../components_simple/ScAlert'
+import {Txt} from '../../../components_simple/Txt'
 
 interface Form {
   street: string
