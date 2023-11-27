@@ -1,4 +1,3 @@
-import {Panel, PanelBody} from '@/components_simple/Panel'
 import {useI18n} from '@/i18n/I18n'
 import {ReportStep, indexToStep} from '@/model/ReportStep'
 import {Button} from '@codegouvfr/react-dsfr/Button'
@@ -33,8 +32,8 @@ export const ConfirmationStepper = ({children}: ConfirmationStepperProps) => {
 export const ConfirmationStep = ({title, children, index, goToStep}: ConfirmationStepProps) => {
   const {m} = useI18n()
   return (
-    <Panel
-      title={
+    <div className={` mb-4 ${index > 0 ? 'border-t-[1px] border-solid border-gray-300 border-0 pt-6' : 'pt-2'}`}>
+      <h2 className="fr-h6">
         <div className="flex items-center">
           <span className="text-schint mr-2">{index! + 1}.</span>
           <span>{title}</span>
@@ -50,9 +49,8 @@ export const ConfirmationStep = ({title, children, index, goToStep}: Confirmatio
             {m.edit}
           </Button>
         </div>
-      }
-    >
-      <PanelBody>{children}</PanelBody>
-    </Panel>
+      </h2>
+      {children}
+    </div>
   )
 }
