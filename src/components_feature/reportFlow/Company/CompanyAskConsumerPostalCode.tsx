@@ -1,5 +1,5 @@
 import {Animate} from '@/components_simple/Animate'
-import {Panel, PanelActions, PanelBody} from '@/components_simple/Panel'
+import {Panel, PanelActions, PanelBody, Separator} from '@/components_simple/Panel'
 import {RequiredFieldsLegend} from '@/components_simple/RequiredFieldsLegend'
 import {BtnNextSubmit} from '@/components_simple/buttons/Buttons'
 import {ScAutocompletePostcode} from '@/components_simple/formInputs/ScAutocompletePostcode'
@@ -30,7 +30,8 @@ export const CompanyAskConsumerPostalCode = ({value, onChange, companyKind}: Pro
 
   return (
     <Animate>
-      <Panel id="CompanyAskConsumerPostalCode">
+      <div id="CompanyAskConsumerPostalCode">
+        <hr />
         <ScAlert dense type="info">
           <Txt
             size="small"
@@ -51,29 +52,27 @@ export const CompanyAskConsumerPostalCode = ({value, onChange, companyKind}: Pro
         </ScAlert>
         <RequiredFieldsLegend />
         <form onSubmit={handleSubmit(_ => onChange(_.postalCode))}>
-          <PanelBody>
-            <Controller
-              control={control}
-              name="postalCode"
-              rules={{
-                required: {value: true, message: m.required},
-              }}
-              render={({field: {onChange, onBlur, name, value}, fieldState: {error}}) => (
-                <ScAutocompletePostcode
-                  label={m.yourPostalCode}
-                  {...{onChange, onBlur, name, value}}
-                  error={!!error}
-                  helperText={error?.message}
-                />
-              )}
-            />
-          </PanelBody>
+          <Controller
+            control={control}
+            name="postalCode"
+            rules={{
+              required: {value: true, message: m.required},
+            }}
+            render={({field: {onChange, onBlur, name, value}, fieldState: {error}}) => (
+              <ScAutocompletePostcode
+                label={m.yourPostalCode}
+                {...{onChange, onBlur, name, value}}
+                error={!!error}
+                helperText={error?.message}
+              />
+            )}
+          />
 
-          <PanelActions>
+          <div className="flex justify-end">
             <BtnNextSubmit />
-          </PanelActions>
+          </div>
         </form>
-      </Panel>
+      </div>
     </Animate>
   )
 }
