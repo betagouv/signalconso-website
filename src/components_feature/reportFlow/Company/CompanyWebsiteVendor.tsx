@@ -1,8 +1,7 @@
-import Button from '@codegouvfr/react-dsfr/Button'
 import {Animate} from '@/components_simple/Animate'
-import {Panel, PanelActions, PanelBody} from '@/components_simple/Panel'
 import {ScTextInput} from '@/components_simple/formInputs/ScTextInput'
 import {useI18n} from '@/i18n/I18n'
+import Button from '@codegouvfr/react-dsfr/Button'
 import {useForm} from 'react-hook-form'
 import {ScAlert} from '../../../components_simple/ScAlert'
 
@@ -23,9 +22,10 @@ export const CompanyWebsiteVendor = ({onSubmit}: Props) => {
   } = useForm<Form>()
   return (
     <Animate>
-      <Panel title={m.companyWebsiteVendorTitle}>
+      <div>
+        <h2 className="text-lg">{m.companyWebsiteVendorTitle}</h2>
         <form onSubmit={handleSubmit(form => onSubmit(form.websiteVendor))}>
-          <PanelBody>
+          <div className="mb-4">
             <ScAlert type="info">
               <p>{m.companyWebsiteVendorAlert}</p>
             </ScAlert>
@@ -38,12 +38,12 @@ export const CompanyWebsiteVendor = ({onSubmit}: Props) => {
               })}
               required
             />
-          </PanelBody>
-          <PanelActions>
+          </div>
+          <div className="flex justify-end">
             <Button type="submit">{m.continue}</Button>
-          </PanelActions>
+          </div>
         </form>
-      </Panel>
+      </div>
     </Animate>
   )
 }
