@@ -1,18 +1,17 @@
-import {useI18n} from '../../../i18n/I18n'
-import {useApiClients} from '../../../context/ApiClientsContext'
-import {Animate} from '../../../components_simple/Animate'
-import {Panel, PanelActions, PanelBody} from '../../../components_simple/Panel'
-import {ScTextInput} from '../../../components_simple/formInputs/ScTextInput'
-import {CompanySearchByBarcodeHelpDialog} from './CompanySearchByBarcodeHelpDialog'
-import {ButtonWithLoader} from '../../../components_simple/buttons/Buttons'
-import {useForm} from 'react-hook-form'
-import {useQuery} from '@tanstack/react-query'
-import {CompanySearchEventActions, EventCategories} from '../../../analytic/analytic'
-import {useAnalyticContext} from '../../../analytic/AnalyticContext'
-import {CompanySearchResult} from '../../../model/Company'
-import {ReactNode, useEffect, useRef, useState} from 'react'
-import {BarcodeProduct} from '../../../model/BarcodeProduct'
 import {Button} from '@codegouvfr/react-dsfr/Button'
+import {useQuery} from '@tanstack/react-query'
+import {ReactNode, useEffect, useRef, useState} from 'react'
+import {useForm} from 'react-hook-form'
+import {useAnalyticContext} from '../../../analytic/AnalyticContext'
+import {CompanySearchEventActions, EventCategories} from '../../../analytic/analytic'
+import {Animate} from '../../../components_simple/Animate'
+import {ButtonWithLoader} from '../../../components_simple/buttons/Buttons'
+import {ScTextInput} from '../../../components_simple/formInputs/ScTextInput'
+import {useApiClients} from '../../../context/ApiClientsContext'
+import {useI18n} from '../../../i18n/I18n'
+import {BarcodeProduct} from '../../../model/BarcodeProduct'
+import {CompanySearchResult} from '../../../model/Company'
+import {CompanySearchByBarcodeHelpDialog} from './CompanySearchByBarcodeHelpDialog'
 
 interface Form {
   gtin: string
@@ -105,9 +104,9 @@ export const CompanySearchByBarcode = ({children}: Props) => {
   return (
     <>
       <Animate>
-        <Panel>
+        <div>
           <form onSubmit={handleSubmit(search)}>
-            <PanelBody>
+            <div className="mb-4">
               <ScTextInput
                 required={false}
                 label={
@@ -143,17 +142,17 @@ export const CompanySearchByBarcode = ({children}: Props) => {
                 error={!!errors.gtin}
                 helperText={errors.gtin?.message}
               />
-            </PanelBody>
-            <PanelActions>
+            </div>
+            <div className="flex justify-end gap-2">
               <Button priority="tertiary no outline" type="button" onClick={skip}>
                 Je ne connais pas le code-barres
               </Button>
               <ButtonWithLoader iconId="ri-search-line" loading={_searchByBarcode.isFetching || _searchByIdentity.isFetching}>
                 {m.search}
               </ButtonWithLoader>
-            </PanelActions>
+            </div>
           </form>
-        </Panel>
+        </div>
       </Animate>
       {displaySkipped && children(undefined, undefined, skipped)}
       {displayResults && children(_searchByBarcode.data, _searchByIdentity.data?.at(0), skipped)}
