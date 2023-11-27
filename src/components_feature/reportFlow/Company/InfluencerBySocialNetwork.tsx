@@ -45,36 +45,32 @@ export const InfluencerBySocialNetwork = ({onSubmit}: Props) => {
         })}
       >
         <Animate autoScrollTo={false}>
-          <Panel id="SocialNetwork">
-            <PanelBody>
-              <Controller
-                name="socialNetwork"
-                control={control}
-                rules={{
-                  required: {value: true, message: m.required},
-                }}
-                render={({field}) => <ScRadioButtons {...field} required options={socialNetworkOptions} title="Réseau social" />}
-              />
-            </PanelBody>
-          </Panel>
+          <div id="SocialNetwork">
+            <Controller
+              name="socialNetwork"
+              control={control}
+              rules={{
+                required: {value: true, message: m.required},
+              }}
+              render={({field}) => <ScRadioButtons {...field} required options={socialNetworkOptions} title="Réseau social" />}
+            />
+          </div>
         </Animate>
         {socialNetwork && (
           <Animate>
-            <Panel id="influencer">
-              <PanelBody>
-                <ScTextInput
-                  label="Nom ou pseudonyme de l'influenceur ou influenceuse"
-                  error={!!errors.influencer}
-                  helperText={errors.influencer?.message}
-                  placeholder="Nom ou pseudonyme"
-                  {...register('influencer', {required: {value: true, message: m.required}})}
-                  required
-                />
-              </PanelBody>
-              <PanelActions>
+            <div id="influencer">
+              <ScTextInput
+                label="Nom ou pseudonyme de l'influenceur ou influenceuse"
+                error={!!errors.influencer}
+                helperText={errors.influencer?.message}
+                placeholder="Nom ou pseudonyme"
+                {...register('influencer', {required: {value: true, message: m.required}})}
+                required
+              />
+              <div className="flex justify-end">
                 <BtnNextSubmit />
-              </PanelActions>
-            </Panel>
+              </div>
+            </div>
           </Animate>
         )}
       </form>
