@@ -1,7 +1,6 @@
 import {useAnalyticContext} from '@/analytic/AnalyticContext'
 import {StepNavigation} from '@/components_feature/reportFlow/reportFlowStepper/ReportFlowStepper'
 import {ReportFlowStepperActions} from '@/components_feature/reportFlow/reportFlowStepper/ReportFlowStepperActions'
-import {Panel, PanelBody} from '@/components_simple/Panel'
 import {RequiredFieldsLegend} from '@/components_simple/RequiredFieldsLegend'
 import {ScTextInput} from '@/components_simple/formInputs/ScTextInput'
 import {useApiClients} from '@/context/ApiClientsContext'
@@ -112,8 +111,9 @@ export const ConsumerInner = ({
 
   return (
     <>
-      <Panel title={m.consumerTitle}>
-        <PanelBody>
+      <div>
+        <h2 className="fr-h6">{m.consumerTitle}</h2>
+        <div>
           {draft.employeeConsumer && (
             <ScAlert type="info" dense dangerouslySetInnerHTML={{__html: `<p>${m.consumerIsEmployee}</p>`}} />
           )}
@@ -242,8 +242,8 @@ export const ConsumerInner = ({
               {watchContactAgreement === false && <ConsumerAnonymousInformation />}
             </>
           )}
-        </PanelBody>
-      </Panel>
+        </div>
+      </div>
       <ConsumerValidationDialog
         open={openValidationDialog}
         consumerEmail={_form.getValues().email}
