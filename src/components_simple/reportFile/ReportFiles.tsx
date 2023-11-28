@@ -143,8 +143,12 @@ export const ReportFiles = ({fileOrigin, files, onRemoveFile, onNewFile, tooMany
 
   return (
     <div
-      className={`relative fr-upload-group p-4 pt-8 border border-solid rounded ${
-        isDraggingOver ? 'border-scbluefrance ' : 'border-gray-300 '
+      className={`relative fr-upload-group p-4 pt-8 border-2  rounded ${
+        isDraggingOver
+          ? 'border-blue-500 border-solid'
+          : nothingYet
+            ? 'border-gray-500 border-dashed'
+            : 'border-gray-300 border-solid'
       } ${tooManyFilesError ? redErrorClasses : ''}`}
       onDragOver={onDrag}
       onDragEnter={onDrag}
@@ -186,9 +190,7 @@ function UploadInvitation() {
   return (
     <div className="mb-6">
       <div className="flex items-center justify-center mb-2">
-        <Icon className="text-scbluefrance" fontSize="large">
-          cloud_download
-        </Icon>
+        <i className="text-gray-300 ri-download-2-line sc-icon-xxl" />
       </div>
       <div className="text-center text-lg">{m.dropZone}</div>
     </div>

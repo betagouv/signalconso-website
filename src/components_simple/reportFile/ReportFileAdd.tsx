@@ -34,7 +34,7 @@ export const ReportFileAdd = ({isUploading, fileOrigin, uploadFile}: Props) => {
                 paddingLeft: '14px',
               },
             }
-          : {iconId: 'fr-icon-upload-line'})}
+          : {iconId: 'ri-download-2-line'})}
         priority="secondary"
         disabled={uploading}
         onClick={openFileSelection}
