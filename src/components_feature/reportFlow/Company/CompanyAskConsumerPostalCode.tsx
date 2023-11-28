@@ -31,7 +31,7 @@ export const CompanyAskConsumerPostalCode = ({value, onChange, companyKind}: Pro
     <Animate>
       <div id="CompanyAskConsumerPostalCode">
         <hr />
-        <ScAlert dense type="info">
+        <ScAlert type="info">
           <Txt
             size="small"
             component="p"

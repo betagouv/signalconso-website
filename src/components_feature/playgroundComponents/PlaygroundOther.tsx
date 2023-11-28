@@ -154,16 +154,16 @@ export const PlaygroundOther = () => {
           <p>contenu</p>
           <p className="mb-0">contenu</p>
         </ScAlert>
-        <ScAlert type="success" dense>
+        <ScAlert type="success">
           <p className="mb-0">Un message de succès</p>
         </ScAlert>
-        <ScAlert type="info" dense>
+        <ScAlert type="info">
           <p className="mb-0">Un message d'information</p>
         </ScAlert>
-        <ScAlert type="warning" dense>
+        <ScAlert type="warning">
           <p className="mb-0">Un message de warning</p>
         </ScAlert>
-        <ScAlert type="error" dense>
+        <ScAlert type="error">
           <p className="mb-0">Un message d'erreur</p>
         </ScAlert>
       </div>

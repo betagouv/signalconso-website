@@ -30,7 +30,7 @@ export const CompanyAskConsumerStreet = ({onChange}: Props) => {
   return (
     <Animate>
       <div id="CompanyAskConsumerStreet">
-        <ScAlert dense type="info">
+        <ScAlert type="info">
           <Txt size="small" component="p" dangerouslySetInnerHTML={{__html: m.cantIdentifyLocationCompany}} />
         </ScAlert>
         <RequiredFieldsLegend />

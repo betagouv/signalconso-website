@@ -114,3 +114,6 @@ export function sendMessageToReactNative(message: string): void {
 export type ChildrenProps = {
   children: ReactNode
 }
+export type MaybeChildrenProps = {
+  children?: ReactNode
+}

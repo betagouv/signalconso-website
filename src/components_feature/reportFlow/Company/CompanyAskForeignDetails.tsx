@@ -66,7 +66,7 @@ export const CompanyAskForeignDetails = ({onSubmit, companyKind}: Props) => {
               }}
             />
             <br />
-            <ScAlert dense type="info">
+            <ScAlert type="info">
               <Txt
                 size="small"
                 component="p"

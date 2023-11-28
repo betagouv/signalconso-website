@@ -64,36 +64,37 @@ export const ConsumerValidationDialog = ({loading, open, consumerEmail, onClose,
       )}
       <DialogTitle>{m.consumerAskCodeTitle}</DialogTitle>
       <DialogContent>
-        <ScAlert
-          dense
-          type="info"
-          action={
-            <>
-              <ButtonWithLoader
-                disabled={disableResendButton}
-                loading={_checkEmail.isPending}
-                iconId="ri-refresh-line"
-                priority="tertiary no outline"
-                onClick={() => {
-                  setDisableResendButton(true)
-                  setTimeout(() => setDisableResendButton(false), duration(15, 'second'))
-                  _checkEmail.mutate()
-                }}
-              >
-                {m.consumerResentEmail}
-              </ButtonWithLoader>
-            </>
-          }
-        >
-          <p>{m.consumerEmailMayTakesTime}</p>
-        </ScAlert>
-        {isEmailValid === false && (
-          <ScAlert dense type="error">
-            <p>
-              {invalidEmailReason === 'TOO_MANY_ATTEMPTS' ? m.consumerValidationCodeExpired : m.consumerValidationCodeInvalid}
-            </p>
+        <div>
+          <ScAlert
+            type="info"
+            action={
+              <>
+                <ButtonWithLoader
+                  disabled={disableResendButton}
+                  loading={_checkEmail.isPending}
+                  iconId="ri-refresh-line"
+                  priority="tertiary no outline"
+                  onClick={() => {
+                    setDisableResendButton(true)
+                    setTimeout(() => setDisableResendButton(false), duration(15, 'second'))
+                    _checkEmail.mutate()
+                  }}
+                >
+                  {m.consumerResentEmail}
+                </ButtonWithLoader>
+              </>
+            }
+          >
+            <p className="mb-0">{m.consumerEmailMayTakesTime}</p>
           </ScAlert>
-        )}
+          {isEmailValid === false && (
+            <ScAlert type="error">
+              <p className="mb-0">
+                {invalidEmailReason === 'TOO_MANY_ATTEMPTS' ? m.consumerValidationCodeExpired : m.consumerValidationCodeInvalid}
+              </p>
+            </ScAlert>
+          )}
+        </div>
         <Txt color="hint" block sx={{mb: 1}} dangerouslySetInnerHTML={{__html: m.consumerAskCodeDesc(consumerEmail)}} />
         <Controller
           name="code"

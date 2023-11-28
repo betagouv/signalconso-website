@@ -114,9 +114,7 @@ export const ConsumerInner = ({
       <div>
         <h2 className="fr-h6">{m.consumerTitle}</h2>
         <div>
-          {draft.employeeConsumer && (
-            <ScAlert type="info" dense dangerouslySetInnerHTML={{__html: `<p>${m.consumerIsEmployee}</p>`}} />
-          )}
+          {draft.employeeConsumer && <ScAlert type="info" dangerouslySetInnerHTML={{__html: `<p>${m.consumerIsEmployee}</p>`}} />}
           <RequiredFieldsLegend />
           <Controller
             defaultValue={draft.consumer?.gender}
