@@ -8,7 +8,6 @@ import {useI18n} from '@/i18n/I18n'
 import {Controller, useForm} from 'react-hook-form'
 import {CompanyKinds} from '../../../anomalies/Anomaly'
 import {ScAlert} from '../../../components_simple/ScAlert'
-import {Txt} from '../../../components_simple/Txt'
 import {Country} from '../../../model/Country'
 import {fnSwitch} from '../../../utils/FnSwitch'
 
@@ -67,9 +66,8 @@ export const CompanyAskForeignDetails = ({onSubmit, companyKind}: Props) => {
             />
             <br />
             <ScAlert type="info">
-              <Txt
-                size="small"
-                component="p"
+              <p
+                className="mb-0"
                 dangerouslySetInnerHTML={{
                   __html: fnSwitch<CompanyKinds, string>(companyKind, {
                     SIRET: m.cantIdentifyCompany,

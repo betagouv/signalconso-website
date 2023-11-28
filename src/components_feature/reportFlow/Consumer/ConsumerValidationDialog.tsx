@@ -1,15 +1,14 @@
-import {Button} from '@codegouvfr/react-dsfr/Button'
-import {Dialog, DialogActions, DialogContent, DialogTitle, LinearProgress} from '@mui/material'
-import {useMutation} from '@tanstack/react-query'
-import {ButtonWithLoader} from '@/components_simple/buttons/Buttons'
 import {ScAlert} from '@/components_simple/ScAlert'
+import {ButtonWithLoader} from '@/components_simple/buttons/Buttons'
 import {ScValidationCodeInput} from '@/components_simple/formInputs/ScValidationCodeInput'
 import {useApiClients} from '@/context/ApiClientsContext'
 import {useI18n} from '@/i18n/I18n'
 import {ValidationRejectReason} from '@/model/ConsumerEmailValidation'
+import {Button} from '@codegouvfr/react-dsfr/Button'
+import {Dialog, DialogActions, DialogContent, DialogTitle, LinearProgress} from '@mui/material'
+import {useMutation} from '@tanstack/react-query'
 import {useState} from 'react'
 import {Controller, useForm} from 'react-hook-form'
-import {Txt} from '../../../components_simple/Txt'
 import {duration} from '../../../utils/Duration'
 import {iconArrowRight, timeoutPromise} from '../../../utils/utils'
 
@@ -95,7 +94,8 @@ export const ConsumerValidationDialog = ({loading, open, consumerEmail, onClose,
             </ScAlert>
           )}
         </div>
-        <Txt color="hint" block sx={{mb: 1}} dangerouslySetInnerHTML={{__html: m.consumerAskCodeDesc(consumerEmail)}} />
+
+        <p className="mb-2" dangerouslySetInnerHTML={{__html: m.consumerAskCodeDesc(consumerEmail)}} />
         <Controller
           name="code"
           rules={{
