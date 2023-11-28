@@ -1,3 +1,5 @@
+'use client'
+
 import {findAnomaly} from '@/anomalies/Anomalies'
 import {Anomaly} from '@/anomalies/Anomaly'
 import {LandingData} from '@/landings/landingDataUtils'
@@ -33,7 +35,7 @@ export default function LandingPage({landingData, lang}: Props) {
   const buttonTarget =
     landingData.targetedCategory.length > 1
       ? () => {
-          document.querySelector(`#${chooseCategoriesDivId}`)?.scrollIntoView({behavior: 'smooth'})
+          document.querySelector(`#${CSS.escape(chooseCategoriesDivId)}`)?.scrollIntoView({behavior: 'smooth'})
         }
       : landingData.targetedCategory.length === 1
         ? findAnomaly(landingData.targetedCategory[0], lang)
