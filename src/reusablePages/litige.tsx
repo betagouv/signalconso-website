@@ -1,10 +1,9 @@
+import {ContentPageContainer} from '@/components_simple/PageContainers'
+import {externalLinks} from '@/core/externalLinks'
 import {Accordion} from '@codegouvfr/react-dsfr/Accordion'
 import {Alert} from '@codegouvfr/react-dsfr/Alert'
 import {CallOut} from '@codegouvfr/react-dsfr/CallOut'
-import {ContentPageContainer} from '@/components_simple/PageContainers'
-import {externalLinks} from '@/core/externalLinks'
 import {ReactNode} from 'react'
-import {ScIcon} from '../components_simple/ScIcon'
 import {getI18n} from '../i18n/I18nDictionnary'
 
 function Accordions({children}: {children: ReactNode}) {
@@ -43,9 +42,6 @@ export const Litige = ({params}: any) => {
                 title={m.litige.step1.downloadTitle}
                 download="ModeleLettreLitige.txt"
               >
-                <ScIcon fontSize="small" sx={{verticalAlign: 'middle', mr: 1}}>
-                  download
-                </ScIcon>
                 {m.litige.step1.templateText}
               </a>
             </li>
