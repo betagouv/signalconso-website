@@ -1,10 +1,10 @@
-import {Button} from '@codegouvfr/react-dsfr/Button'
-import {alpha, Box, Icon, Tooltip} from '@mui/material'
 import {useApiClients} from '@/context/ApiClientsContext'
 import {useI18n} from '@/i18n/I18n'
+import {Button} from '@codegouvfr/react-dsfr/Button'
+import {Icon, Tooltip} from '@mui/material'
 import {UploadedFile} from '../../model/UploadedFile'
 import {ScDialog} from '../ScDialog'
-import {extensionToType, FileType, reportFileConfig} from './reportFileConfig'
+import {extensionToType, FileType} from './reportFileConfig'
 import {useImageLoaderWithRetries} from './useImageLoaderWithRetries'
 
 export interface ReportFileProps {
@@ -26,28 +26,14 @@ export const ReportFile = ({file, onRemove}: ReportFileProps) => {
   return (
     <Tooltip title={file.filename}>
       <div className="mb-4 ml-4">
-        <Box
-          component="a"
+        <a
           target="_blank"
           href={fileUrl}
           rel="noreferrer"
-          className="after:!hidden !bg-none"
+          className="after:!hidden !bg-none block relative"
           aria-label={`Télécharger ${file.filename}`}
-          sx={{
-            display: 'block',
-            position: 'relative',
-          }}
         >
-          <Box
-            sx={{
-              display: 'inline-flex',
-              border: t => '1px solid ' + alpha(t.palette.divider, 0.43),
-              borderRadius: 1,
-              height: reportFileConfig.cardSize,
-              width: reportFileConfig.cardSize,
-              position: 'relative',
-            }}
-          >
+          <div className="inline-flex border border-solid border-gray-500 overflow-hidden rounded h-[100px] w-[100px] relative">
             <div className="flex items-center justify-center bg-cover h-full w-full">
               {(() => {
                 switch (fileType) {
@@ -75,8 +61,8 @@ export const ReportFile = ({file, onRemove}: ReportFileProps) => {
                 }
               })()}
             </div>
-          </Box>
-        </Box>
+          </div>
+        </a>
         {onRemove && (
           <div className="w-full text-center">
             <ScDialog
