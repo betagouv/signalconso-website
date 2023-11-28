@@ -1,10 +1,10 @@
 import {useApiClients} from '@/context/ApiClientsContext'
 import {useI18n} from '@/i18n/I18n'
 import {Button} from '@codegouvfr/react-dsfr/Button'
-import {Icon, Tooltip} from '@mui/material'
+import {Tooltip} from '@mui/material'
 import {UploadedFile} from '../../model/UploadedFile'
 import {ScDialog} from '../ScDialog'
-import {extensionToType, FileType} from './reportFileConfig'
+import {FileType, extensionToType} from './reportFileConfig'
 import {useImageLoaderWithRetries} from './useImageLoaderWithRetries'
 
 export interface ReportFileProps {
@@ -37,27 +37,18 @@ export const ReportFile = ({file, onRemove}: ReportFileProps) => {
             <div className="flex items-center justify-center bg-cover h-full w-full">
               {(() => {
                 switch (fileType) {
-                  case FileType.Image: {
+                  case FileType.Image:
                     return (
                       <>
                         <Thumbnail src={fileUrl} />
-                        <Icon sx={{color: '#00b50f'}}>image</Icon>
+                        <i className="ri-image-line text-gray-500" />
                       </>
                     )
-                  }
-                  case FileType.PDF: {
-                    return <Icon sx={{color: '#db4537'}}>picture_as_pdf</Icon>
-                  }
-                  case FileType.Doc: {
-                    return <Icon sx={{color: '#4185f3'}}>article</Icon>
-                  }
-                  default: {
-                    return (
-                      <>
-                        <Icon>insert_drive_file</Icon>
-                      </>
-                    )
-                  }
+                  case FileType.Doc:
+                    return <i className="ri-file-text-line text-gray-500" />
+                  case FileType.PDF:
+                  default:
+                    return <i className="ri-file-3-line text-gray-500" />
                 }
               })()}
             </div>
