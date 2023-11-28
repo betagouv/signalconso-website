@@ -2,5 +2,6 @@ title: Produit alimentaire
 tags:
   - ProduitAlimentaire
 reponseconsoCode: null
+companyKind: PRODUCT
 subcategories:
   customimport: _imports/subcategories/produit-alimentaire

@@ -1,5 +1,6 @@
 title: Produit dangereux
 desc: 'Exemple : téléphone, accessoire'
+companyKind: PRODUCT
 tags:
   - ProduitDangereux
   - ProduitIndustriel

@@ -1,5 +1,6 @@
 title: Corps étranger "dur"
 desc: "Exemple\_: bout de verre, morceau de métal, dent"
+companyKind: PRODUCT
 reponseconsoCode:
   - '323'
 tags:

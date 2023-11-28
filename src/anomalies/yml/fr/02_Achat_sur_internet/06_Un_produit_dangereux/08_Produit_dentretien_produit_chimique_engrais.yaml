@@ -1,6 +1,7 @@
 title: Produit d'entretien, produit chimique, engrais
 tags:
   - ProduitIndustriel
+companyKind: PRODUCT
 subcategoriesTitle: Quel est le risque&#160;?
 subcategories:
   customimport: _imports/subcategories/produit-dangereux
