@@ -1,15 +1,14 @@
-import {useQuery} from '@tanstack/react-query'
 import {useAnalyticContext} from '@/analytic/AnalyticContext'
 import {CompanySearchEventActions, EventCategories} from '@/analytic/analytic'
 import {useToastOnQueryError} from '@/clients/apiHooks'
 import {Animate} from '@/components_simple/Animate'
-import {ButtonWithLoader} from '@/components_simple/buttons/Buttons'
-import {Panel, PanelActions, PanelBody} from '@/components_simple/Panel'
 import {RequiredFieldsLegend} from '@/components_simple/RequiredFieldsLegend'
+import {ButtonWithLoader} from '@/components_simple/buttons/Buttons'
 import {ScAutocompletePostcode} from '@/components_simple/formInputs/ScAutocompletePostcode'
 import {ScTextInput} from '@/components_simple/formInputs/ScTextInput'
 import {useApiClients} from '@/context/ApiClientsContext'
 import {useI18n} from '@/i18n/I18n'
+import {useQuery} from '@tanstack/react-query'
 import {ReactNode, useState} from 'react'
 import {Controller, useForm} from 'react-hook-form'
 import {CompanySearchResult} from '../../../model/Company'
@@ -53,11 +52,12 @@ export const CompanySearchByNameAndPostalCode = ({children}: Props) => {
   return (
     <>
       <Animate>
-        <Panel title={m.couldYouPrecise} id="CompanyByNameAndPostalCode">
+        <div id="CompanyByNameAndPostalCode">
+          <h2 className="text-lg">{m.couldYouPrecise}</h2>
           <p className="text-sm mb-0">{m.youCanOnlyReportFrenchCompanies}</p>
           <RequiredFieldsLegend />
           <form onSubmit={handleSubmit(search)}>
-            <PanelBody>
+            <div className="mb-4">
               <ScTextInput
                 label={m.reportedCompanyName}
                 error={!!errors.name}
@@ -82,15 +82,15 @@ export const CompanySearchByNameAndPostalCode = ({children}: Props) => {
                   />
                 )}
               />
-            </PanelBody>
+            </div>
 
-            <PanelActions>
+            <div className="flex justify-end">
               <ButtonWithLoader loading={_search.isPending} iconId="fr-icon-search-line">
                 {m.search}
               </ButtonWithLoader>
-            </PanelActions>
+            </div>
           </form>
-        </Panel>
+        </div>
       </Animate>
       {_search.data && ifDefined(_search.data, children)}
     </>

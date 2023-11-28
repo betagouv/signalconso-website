@@ -24,9 +24,6 @@ export const PlaygroundConfirmation = () => {
   }, [])
   return (
     <>
-      <div>
-        <b>{anomaly?.category}</b>
-      </div>
       {anomaly && (
         <ConfirmationInner
           anomaly={anomaly}

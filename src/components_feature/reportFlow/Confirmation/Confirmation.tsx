@@ -163,25 +163,20 @@ function RenderEachStep({
                     </p>
                   </li>
                 )}
-                <li className="p-0">
-                  <Row dense icon="location_on">
-                    <Txt color="hint">
-                      <AddressComponent address={draft.companyDraft.address} />
-                    </Txt>
-                  </Row>
+                <li className="p-0 flex gap-2">
+                  <i className="ri-map-pin-2-line text-gray-400" />
+                  <AddressComponent address={draft.companyDraft.address} className="text-gray-500" />
                 </li>
                 {draft.companyDraft.website && (
-                  <li className="p-0">
-                    <Row dense icon="link">
-                      <Txt color="hint">{draft.companyDraft.website}</Txt>
-                    </Row>
+                  <li className="p-0 flex gap-2">
+                    <i className="ri-global-line text-gray-400" />
+                    <span className="text-gray-500">{draft.companyDraft.website}</span>
                   </li>
                 )}
                 {draft.companyDraft.phone && (
-                  <li className="p-0">
-                    <Row dense icon="phone">
-                      <Txt color="hint">{draft.companyDraft.phone}</Txt>
-                    </Row>
+                  <li className="p-0 flex gap-2">
+                    <i className="ri-phone-line text-gray-400" />
+                    <span className="text-gray-500">{draft.companyDraft.phone}</span>
                   </li>
                 )}
               </ul>
@@ -192,9 +187,10 @@ function RenderEachStep({
               <p className="mb-1 font-bold">Réseau social</p>
               <SocialNetworkRow socialNetwork={draft.influencer.socialNetwork} gray className="mb-2" />
               <p className="mb-1 font-bold">Nom de l'influenceur ou influenceuse</p>
-              <Row dense icon="portrait">
-                <Txt color="hint">{draft.influencer.name}</Txt>
-              </Row>
+              <div className="flex gap-2">
+                <i className="ri-account-box-line text-gray-400" />
+                <span className="text-gray-500">{draft.influencer.name}</span>
+              </div>
             </ConfirmationStep>
           )}
         </>
@@ -203,23 +199,27 @@ function RenderEachStep({
       return (
         <ConfirmationStep title={m.step_consumer} {...{goToStep, index}}>
           <ul className="list-none">
-            <li className="p-0">
-              <Row icon="person">
+            <li className="p-0 flex gap-2">
+              <div className="flex gap-2">
+                <i className="ri-account-box-line text-gray-400" />
                 {draft.consumer.gender ? m.gender[draft.consumer.gender] + ' ' : ''}
                 {draft.consumer.firstName} {draft.consumer.lastName}
-              </Row>
+              </div>
             </li>
-            <li className="p-0">
-              <Row icon="email">{draft.consumer.email}</Row>
+            <li className="p-0 flex gap-2">
+              <i className="ri-mail-line text-gray-400" />
+              <span>{draft.consumer.email}</span>
             </li>
             {draft.consumer.phone && (
-              <li className="p-0">
-                <Row icon="phone">{draft.consumer.phone}</Row>
+              <li className="p-0 flex gap-2">
+                <i className="ri-phone-line text-gray-400" />
+                <span>{draft.consumer.phone}</span>
               </li>
             )}
             {draft.consumer.referenceNumber && (
-              <li className="p-0">
-                <Row icon="receipt">{draft.consumer.referenceNumber}</Row>
+              <li className="p-0 flex gap-2">
+                <i className="ri-bill-line text-gray-400" />
+                <span>{draft.consumer.referenceNumber}</span>
               </li>
             )}
             {ReportDraft.isTransmittableToPro(draft) && (

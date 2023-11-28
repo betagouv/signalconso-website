@@ -1,7 +1,6 @@
 import {Animate} from '@/components_simple/Animate'
-import {BtnNextSubmit} from '@/components_simple/buttons/Buttons'
-import {Panel, PanelActions, PanelBody} from '@/components_simple/Panel'
 import {RequiredFieldsLegend} from '@/components_simple/RequiredFieldsLegend'
+import {BtnNextSubmit} from '@/components_simple/buttons/Buttons'
 import {ScAutocompletePostcode} from '@/components_simple/formInputs/ScAutocompletePostcode'
 import {ScTextInput} from '@/components_simple/formInputs/ScTextInput'
 import {useI18n} from '@/i18n/I18n'
@@ -30,7 +29,7 @@ export const CompanyAskConsumerStreet = ({onChange}: Props) => {
 
   return (
     <Animate>
-      <Panel id="CompanyAskConsumerStreet">
+      <div id="CompanyAskConsumerStreet">
         <ScAlert dense type="info">
           <Txt size="small" component="p" dangerouslySetInnerHTML={{__html: m.cantIdentifyLocationCompany}} />
         </ScAlert>
@@ -43,7 +42,7 @@ export const CompanyAskConsumerStreet = ({onChange}: Props) => {
             }),
           )}
         >
-          <PanelBody>
+          <div>
             <ScTextInput
               label={m.yourStreet}
               desc={m.yourStreetDesc}
@@ -70,13 +69,13 @@ export const CompanyAskConsumerStreet = ({onChange}: Props) => {
                 />
               )}
             />
-          </PanelBody>
+          </div>
 
-          <PanelActions>
+          <div className="flex justify-end">
             <BtnNextSubmit />
-          </PanelActions>
+          </div>
         </form>
-      </Panel>
+      </div>
     </Animate>
   )
 }

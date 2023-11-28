@@ -4,7 +4,6 @@ import {ScTextInput} from '@/components_simple/formInputs/ScTextInput'
 import {Controller, useForm} from 'react-hook-form'
 import {SocialNetworks, socialNetworks} from '../../../anomalies/Anomaly'
 import {Animate} from '../../../components_simple/Animate'
-import {Panel, PanelActions, PanelBody} from '../../../components_simple/Panel'
 import {SocialNetworkRow} from '../../../components_simple/SocialNetworkRow'
 import {ScRadioButtons} from '../../../components_simple/formInputs/ScRadioButtons'
 import {useI18n} from '../../../i18n/I18n'
@@ -45,36 +44,32 @@ export const InfluencerBySocialNetwork = ({onSubmit}: Props) => {
         })}
       >
         <Animate autoScrollTo={false}>
-          <Panel id="SocialNetwork">
-            <PanelBody>
-              <Controller
-                name="socialNetwork"
-                control={control}
-                rules={{
-                  required: {value: true, message: m.required},
-                }}
-                render={({field}) => <ScRadioButtons {...field} required options={socialNetworkOptions} title="Réseau social" />}
-              />
-            </PanelBody>
-          </Panel>
+          <div id="SocialNetwork">
+            <Controller
+              name="socialNetwork"
+              control={control}
+              rules={{
+                required: {value: true, message: m.required},
+              }}
+              render={({field}) => <ScRadioButtons {...field} required options={socialNetworkOptions} title="Réseau social" />}
+            />
+          </div>
         </Animate>
         {socialNetwork && (
           <Animate>
-            <Panel id="influencer">
-              <PanelBody>
-                <ScTextInput
-                  label="Nom ou pseudonyme de l'influenceur ou influenceuse"
-                  error={!!errors.influencer}
-                  helperText={errors.influencer?.message}
-                  placeholder="Nom ou pseudonyme"
-                  {...register('influencer', {required: {value: true, message: m.required}})}
-                  required
-                />
-              </PanelBody>
-              <PanelActions>
+            <div id="influencer">
+              <ScTextInput
+                label="Nom ou pseudonyme de l'influenceur ou influenceuse"
+                error={!!errors.influencer}
+                helperText={errors.influencer?.message}
+                placeholder="Nom ou pseudonyme"
+                {...register('influencer', {required: {value: true, message: m.required}})}
+                required
+              />
+              <div className="flex justify-end">
                 <BtnNextSubmit />
-              </PanelActions>
-            </Panel>
+              </div>
+            </div>
           </Animate>
         )}
       </form>

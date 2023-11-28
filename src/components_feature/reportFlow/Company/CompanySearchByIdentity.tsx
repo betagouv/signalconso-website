@@ -1,15 +1,14 @@
-import {useQuery} from '@tanstack/react-query'
 import {useAnalyticContext} from '@/analytic/AnalyticContext'
 import {CompanySearchEventActions, EventCategories} from '@/analytic/analytic'
 import {useToastOnQueryError} from '@/clients/apiHooks'
 import {Animate} from '@/components_simple/Animate'
 import {AutofocusedDiv} from '@/components_simple/AutofocusedDiv'
-import {ButtonWithLoader} from '@/components_simple/buttons/Buttons'
-import {Panel, PanelActions, PanelBody} from '@/components_simple/Panel'
 import {RequiredFieldsLegend} from '@/components_simple/RequiredFieldsLegend'
+import {ButtonWithLoader} from '@/components_simple/buttons/Buttons'
 import {ScTextInput} from '@/components_simple/formInputs/ScTextInput'
 import {useApiClients} from '@/context/ApiClientsContext'
 import {useI18n} from '@/i18n/I18n'
+import {useQuery} from '@tanstack/react-query'
 import {ReactNode, useRef, useState} from 'react'
 import {useForm} from 'react-hook-form'
 import {CompanySearchResult} from '../../../model/Company'
@@ -75,10 +74,11 @@ export const CompanySearchByIdentity = ({children}: Props) => {
   return (
     <>
       <Animate>
-        <Panel title={m.couldYouPrecise} id="CompanySearchByIdentity">
+        <div id="CompanySearchByIdentity">
+          <h2 className="!text-lg">{m.couldYouPrecise}</h2>
           <form onSubmit={handleSubmit(search)}>
             <RequiredFieldsLegend />
-            <PanelBody>
+            <div className="mb-4">
               <ScTextInput
                 required
                 label={
@@ -105,15 +105,15 @@ export const CompanySearchByIdentity = ({children}: Props) => {
                 error={!!errors.identity}
                 helperText={errors.identity?.message}
               />
-            </PanelBody>
+            </div>
 
-            <PanelActions>
+            <div className="flex justify-end">
               <ButtonWithLoader iconId="ri-search-line" loading={_searchByIdentity.isPending}>
                 {m.search}
               </ButtonWithLoader>
-            </PanelActions>
+            </div>
           </form>
-        </Panel>
+        </div>
       </Animate>
       {_searchByIdentity.data && <AutofocusedDiv>{children(_searchByIdentity.data)}</AutofocusedDiv>}
     </>
