@@ -1,0 +1,28 @@
+/* This stuff would be a bit too complex if written with Tailwind */
+.steps_desktop::before {
+  bottom: -26px;
+  content: ' ';
+  height: 2px;
+  background: #ddd;
+  left: 0;
+  right: 0;
+  position: absolute;
+}
+.steps_desktop:first-of-type::before {
+  left: 50%;
+}
+.steps_desktop:last-of-type::before {
+  right: 50%;
+}
+.steps_desktop::after {
+  box-shadow: 0px 0px 0px 4px white;
+  bottom: -36px;
+  background: white;
+  content: ' ';
+  border-radius: 50px;
+  border: 2px solid #ddd;
+  height: 22px;
+  width: 22px;
+  position: absolute;
+  right: calc(50% - 12px);
+}
