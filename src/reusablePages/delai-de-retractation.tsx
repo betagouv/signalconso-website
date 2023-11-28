@@ -1,8 +1,7 @@
-import {Txt} from '@/components_simple/Txt'
 import {ContentPageContainer} from '@/components_simple/PageContainers'
+import {Metadata} from 'next'
 import ComputeWithdrawalPeriod from '../components_feature/ComputeWithdrawalPeriod'
 import {getI18n} from '../i18n/I18nDictionnary'
-import {Metadata} from 'next'
 import {AppLang} from '../i18n/localization/AppLangs'
 
 export function getMetadata(lang: AppLang): Metadata {

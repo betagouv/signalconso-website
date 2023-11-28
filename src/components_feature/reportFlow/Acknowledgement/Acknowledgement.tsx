@@ -5,7 +5,6 @@ import imgCompany from '@/img/illustrations/company.png'
 import Image from 'next/image'
 import {ReactNode, useEffect, useMemo} from 'react'
 import {LinkBackToHome} from '../../../components_simple/LinkBackToHome'
-import {Txt} from '../../../components_simple/Txt'
 import {Country, countryLabel} from '../../../model/Country'
 import {CreatedReport} from '../../../model/CreatedReport'
 import {fnSwitch} from '../../../utils/FnSwitch'
@@ -218,9 +217,10 @@ const AcknowledgementLayout = ({
         )}
         <p className="mb-14">
           {m.acknoledgment.emailForErrorInReport}
-          <Txt link span>
-            <a href="mailto:support@signal.conso.gouv.fr?subject=incident">support@signal.conso.gouv.fr</a>
-          </Txt>
+
+          <a href="mailto:support@signal.conso.gouv.fr?subject=incident" className="text-scbluefrance">
+            support@signal.conso.gouv.fr
+          </a>
         </p>
         <LinkBackToHome isWebView={isWebView} lang={currentLang} />
       </div>

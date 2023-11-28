@@ -12,7 +12,6 @@ import {useMutation} from '@tanstack/react-query'
 import {ReactNode, useState} from 'react'
 import {Controller, useForm} from 'react-hook-form'
 import {ScAlert} from '../../../components_simple/ScAlert'
-import {Txt} from '../../../components_simple/Txt'
 import {ScRadioButtons} from '../../../components_simple/formInputs/ScRadioButtons'
 import {appConfig} from '../../../core/appConfig'
 import {useToastError} from '../../../hooks/useToastError'
@@ -225,12 +224,12 @@ export const ConsumerInner = ({
                     options={[
                       {
                         label: m.contactAgreementTrueTitle,
-                        description: <Txt size="small" dangerouslySetInnerHTML={{__html: m.contactAgreementTrueDesc}} />,
+                        description: <span className="text-sm" dangerouslySetInnerHTML={{__html: m.contactAgreementTrueDesc}} />,
                         value: true,
                       },
                       {
                         label: m.contactAgreementFalseTitle,
-                        description: <Txt size="small" dangerouslySetInnerHTML={{__html: m.contactAgreementFalseDesc}} />,
+                        description: <span className="text-sm" dangerouslySetInnerHTML={{__html: m.contactAgreementFalseDesc}} />,
                         value: false,
                       },
                     ]}

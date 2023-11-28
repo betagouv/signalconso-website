@@ -7,7 +7,6 @@ import {useI18n} from '@/i18n/I18n'
 import {Address} from '@/model/Address'
 import {Controller, useForm} from 'react-hook-form'
 import {ScAlert} from '../../../components_simple/ScAlert'
-import {Txt} from '../../../components_simple/Txt'
 
 interface Form {
   street: string
@@ -31,7 +30,7 @@ export const CompanyAskConsumerStreet = ({onChange}: Props) => {
     <Animate>
       <div id="CompanyAskConsumerStreet">
         <ScAlert type="info">
-          <Txt size="small" component="p" dangerouslySetInnerHTML={{__html: m.cantIdentifyLocationCompany}} />
+          <p className="mb-0 text-sm" dangerouslySetInnerHTML={{__html: m.cantIdentifyLocationCompany}} />
         </ScAlert>
         <RequiredFieldsLegend />
         <form

@@ -50,9 +50,7 @@ export const ConfirmationInner = ({
   return (
     <Animate autoScrollTo={true}>
       <div>
-        <Txt sx={{mb: 2}} block size="title">
-          {m.confirmationTitle}
-        </Txt>
+        <h2 className="fr-h4">{m.confirmationTitle}</h2>
         <FriendlyHelpText>
           <p className="mb-0">
             {ReportDraft.isTransmittableToPro(draft) ? m.confirmationAlertTransmittable : m.confirmationAlert}
