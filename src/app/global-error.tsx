@@ -8,7 +8,6 @@ import * as Sentry from '@sentry/nextjs'
 import {usePathname} from 'next/navigation'
 import '../globals.css'
 import {AppLangs, getSupportedLang} from '../i18n/localization/AppLangs'
-import MuiThemeSetup from './[lang]/MuiThemeSetup'
 
 export default function GlobalError({error, reset}: {error: any; reset: any}) {
   Sentry.captureException(error)
@@ -37,11 +36,9 @@ function ErrorContent() {
   return (
     <html {...getHtmlAttributes({defaultColorScheme: DSFR_COLOR_SCHEME, lang: lang})} lang={lang}>
       <body>
-        <MuiThemeSetup>
-          <DsfrProvider lang={lang}>
-            <ErrorPageContent lang={lang} />
-          </DsfrProvider>
-        </MuiThemeSetup>
+        <DsfrProvider lang={lang}>
+          <ErrorPageContent lang={lang} />
+        </DsfrProvider>
       </body>
     </html>
   )
