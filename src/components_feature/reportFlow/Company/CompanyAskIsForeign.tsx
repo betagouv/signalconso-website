@@ -2,7 +2,6 @@ import {AccordionInline} from '@/components_simple/AccordionInline'
 import {Animate} from '@/components_simple/Animate'
 import {useI18n} from '@/i18n/I18n'
 import {ReactNode, useState} from 'react'
-import {Txt} from '../../../components_simple/Txt'
 import {ScRadioButtons} from '../../../components_simple/formInputs/ScRadioButtons'
 
 export enum IsForeignCompany {
@@ -39,7 +38,10 @@ export const CompanyAskIsForeign = ({children}: Props) => {
                   value: IsForeignCompany.No,
                   description: (
                     <AccordionInline label={m.companyHowToFindCountry}>
-                      <Txt color="hint" size="small" dangerouslySetInnerHTML={{__html: m.howToFindCompanyCountryDesc}} />
+                      <p
+                        className="mb-0 text-sm text-gray-600 pt-2 px-1"
+                        dangerouslySetInnerHTML={{__html: m.howToFindCompanyCountryDesc}}
+                      />
                     </AccordionInline>
                   ),
                 },

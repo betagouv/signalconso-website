@@ -4,7 +4,6 @@ import {useState} from 'react'
 import {useForm} from 'react-hook-form'
 import {AccordionInline} from '../../components_simple/AccordionInline'
 import {SocialNetworkRow} from '../../components_simple/SocialNetworkRow'
-import {Txt} from '../../components_simple/Txt'
 import {ScCheckbox} from '../../components_simple/formInputs/ScCheckbox'
 import {ScRadioButtons} from '../../components_simple/formInputs/ScRadioButtons'
 import {useI18n} from '../../i18n/I18n'
@@ -75,7 +74,7 @@ export const PlaygroundOther = () => {
             label: 'Option 3',
             description: (
               <AccordionInline label={m.companyHowToFindCountry}>
-                <Txt color="hint" size="small" dangerouslySetInnerHTML={{__html: m.howToFindCompanyCountryDesc}} />
+                <p className="mb-0 text-gray-500 text-sm" dangerouslySetInnerHTML={{__html: m.howToFindCompanyCountryDesc}} />
               </AccordionInline>
             ),
             value: 'd',
@@ -154,16 +153,16 @@ export const PlaygroundOther = () => {
           <p>contenu</p>
           <p className="mb-0">contenu</p>
         </ScAlert>
-        <ScAlert type="success" dense>
+        <ScAlert type="success">
           <p className="mb-0">Un message de succès</p>
         </ScAlert>
-        <ScAlert type="info" dense>
+        <ScAlert type="info">
           <p className="mb-0">Un message d'information</p>
         </ScAlert>
-        <ScAlert type="warning" dense>
+        <ScAlert type="warning">
           <p className="mb-0">Un message de warning</p>
         </ScAlert>
-        <ScAlert type="error" dense>
+        <ScAlert type="error">
           <p className="mb-0">Un message d'erreur</p>
         </ScAlert>
       </div>

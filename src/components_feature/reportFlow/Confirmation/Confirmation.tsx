@@ -6,7 +6,6 @@ import {ReportFlowStepperActions} from '@/components_feature/reportFlow/reportFl
 import {AddressComponent} from '@/components_simple/Address'
 import {Animate} from '@/components_simple/Animate'
 import {FriendlyHelpText} from '@/components_simple/FriendlyHelpText'
-import {Row} from '@/components_simple/Row'
 import {ReportFilesConfirmation} from '@/components_simple/reportFile/ReportFilesConfirmation'
 import {getApiErrorId, useToastError} from '@/hooks/useToastError'
 import {useI18n} from '@/i18n/I18n'
@@ -16,7 +15,6 @@ import {ApiReportDraft} from '@/model/reportsFromApi'
 import Image from 'next/image'
 import {Anomaly} from '../../../anomalies/Anomaly'
 import {SocialNetworkRow} from '../../../components_simple/SocialNetworkRow'
-import {Txt} from '../../../components_simple/Txt'
 import {ReportDraft} from '../../../model/ReportDraft'
 import {FileOrigin} from '../../../model/UploadedFile'
 import {useReportCreateContext} from '../ReportCreateContext'
@@ -51,9 +49,7 @@ export const ConfirmationInner = ({
   return (
     <Animate autoScrollTo={true}>
       <div>
-        <Txt sx={{mb: 2}} block size="title">
-          {m.confirmationTitle}
-        </Txt>
+        <h2 className="fr-h4">{m.confirmationTitle}</h2>
         <FriendlyHelpText>
           <p className="mb-0">
             {ReportDraft.isTransmittableToPro(draft) ? m.confirmationAlertTransmittable : m.confirmationAlert}
@@ -105,6 +101,7 @@ function RenderEachStep({
 }) {
   const goToStep = stepNavigation.goTo
   const {m, currentLang} = useI18n()
+  draft.consumerWish = 'fixContractualDispute'
 
   switch (step) {
     case 'BuildingProblem':
@@ -223,23 +220,22 @@ function RenderEachStep({
               </li>
             )}
             {ReportDraft.isTransmittableToPro(draft) && (
-              <li className="p-0">
-                <Row icon="https">
-                  {m.contactAgreement} :{' '}
-                  <Txt bold>
-                    {draft.contactAgreement ? (
-                      <span className=" text-green-700 font-bold">
-                        {m.yes.toLowerCase()}
-                        <i className="ri-checkbox-circle-fill ml-1" />
-                      </span>
-                    ) : (
-                      <span className=" text-red-700 font-bold">
-                        {m.no.toLowerCase()}
-                        <i className="ri-close-circle-fill ml-1" />
-                      </span>
-                    )}
-                  </Txt>
-                </Row>
+              <li className="p-0 flex gap-2">
+                <i className="ri-lock-line text-gray-400" />
+                <span>{m.contactAgreement} : </span>
+                <span className="font-bold">
+                  {draft.contactAgreement ? (
+                    <span className=" text-green-700">
+                      {m.yes.toLowerCase()}
+                      <i className="ri-checkbox-circle-fill ml-1" />
+                    </span>
+                  ) : (
+                    <span className=" text-red-700">
+                      {m.no.toLowerCase()}
+                      <i className="ri-close-circle-fill ml-1" />
+                    </span>
+                  )}
+                </span>
               </li>
             )}
           </ul>

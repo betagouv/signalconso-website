@@ -1,21 +1,15 @@
-import {FriendlyHelpText} from '@/components_simple/FriendlyHelpText'
 import {Animate} from '@/components_simple/Animate'
+import {FriendlyHelpText} from '@/components_simple/FriendlyHelpText'
 import {I18nContextProps, useI18n} from '@/i18n/I18n'
 import {ConsumerWish} from '@/model/ReportDraft'
-import {Txt} from '../../../components_simple/Txt'
 
 export function ProblemConsumerWishInformation({consumerWish}: {consumerWish: ConsumerWish}) {
   const {m} = useI18n()
-  const textStyle = {lineHeight: '1.3'}
   return (
     <Animate>
       <FriendlyHelpText>
-        <Txt sx={textStyle} block component="p" className="mb-0">
-          {pickText(m, consumerWish)}
-        </Txt>
-        <Txt sx={{mt: 2, ...textStyle}} block component="p" className="mb-0">
-          {pickSecondText(m, consumerWish)}
-        </Txt>
+        <p className="mb-4">{pickText(m, consumerWish)}</p>
+        <p className="mb-0">{pickSecondText(m, consumerWish)}</p>
       </FriendlyHelpText>
     </Animate>
   )

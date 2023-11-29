@@ -6,7 +6,6 @@ import {useI18n} from '@/i18n/I18n'
 import {Controller, useForm} from 'react-hook-form'
 import {CompanyKinds} from '../../../anomalies/Anomaly'
 import {ScAlert} from '../../../components_simple/ScAlert'
-import {Txt} from '../../../components_simple/Txt'
 import {fnSwitch} from '../../../utils/FnSwitch'
 
 interface Form {
@@ -31,10 +30,9 @@ export const CompanyAskConsumerPostalCode = ({value, onChange, companyKind}: Pro
     <Animate>
       <div id="CompanyAskConsumerPostalCode">
         <hr />
-        <ScAlert dense type="info">
-          <Txt
-            size="small"
-            component="p"
+        <ScAlert type="info">
+          <p
+            className="mb-0"
             dangerouslySetInnerHTML={{
               __html: fnSwitch<CompanyKinds, string>(companyKind, {
                 SIRET: m.cantIdentifyCompany,

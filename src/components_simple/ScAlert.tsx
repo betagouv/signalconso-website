@@ -1,45 +1,65 @@
-import {Box, BoxProps, Icon, darken} from '@mui/material'
-import {otherColorSet} from '@/core/theme'
-import {ReactNode} from 'react'
+import {MaybeChildrenProps} from '@/utils/utils'
+import {HTMLAttributes, ReactNode} from 'react'
 
-const height = (dense?: boolean) => (dense ? 44 : 52)
-
-interface Props extends Pick<BoxProps, 'children' | 'dangerouslySetInnerHTML' | 'id'> {
+type Props = {
   type: 'info' | 'error' | 'warning' | 'success'
   action?: ReactNode
-  dense?: boolean
-}
+  id?: string
+  dangerouslySetInnerHTML?: HTMLAttributes<HTMLDivElement>['dangerouslySetInnerHTML']
+} & MaybeChildrenProps
 
 export const alertInfoBackgroundColor = 'rgba(50, 200, 255, .08)'
-const alertInfoTextColor = darken(otherColorSet.info, 0.3)
+const alertInfoTextColor = 'rgb(1, 95, 146)'
 
 export const alertWarningBackgroundColor = 'rgba(255, 128, 0, .08)'
-export const alertWarningTextColor = darken(otherColorSet.warning, 0.4)
+export const alertWarningTextColor = 'rgb(153, 76, 0)'
 
 // An alert that looks different (softer, less catchy) of the Alert from DSFR
 // note : you should wrap the content in <p> (one or several)
 // accessibility audit recommends it
 // and this component won't do it for you
-export const ScAlert = ({type, dense, action, children, dangerouslySetInnerHTML, ...props}: Props) => {
-  const getIconFromType = () => {
+export const ScAlert = ({type, action, children, dangerouslySetInnerHTML, id}: Props) => {
+  function pickIcon() {
     switch (type) {
       case 'info':
-        return 'info'
+        return 'ri-information-line'
       case 'error':
-        return 'error'
+        return 'ri-error-warning-fill'
       case 'warning':
-        return 'warning'
+        return 'ri-error-warning-line'
       case 'success':
-        return 'check_circle'
-      default:
-        return 'info'
+        return 'ri-checkbox-circle-line'
     }
   }
 
-  const roleProp = () => {
+  function pickColors() {
+    switch (type) {
+      case 'info':
+        return {
+          background: alertInfoBackgroundColor, //'#e1f5fe',
+          color: alertInfoTextColor,
+        }
+      case 'error':
+        return {
+          background: 'rgba(255, 0, 0, .08)', //'#ffdede',
+          color: 'rgb(163, 11, 0)',
+        }
+      case 'warning':
+        return {
+          background: alertWarningBackgroundColor,
+          color: alertWarningTextColor,
+        }
+      case 'success':
+        return {
+          background: 'rgba(50, 255, 150, .08)', //'#e1ffe1',
+          color: 'rgb(11, 105, 49)',
+        }
+    }
+  }
+
+  function roleProp() {
     switch (type) {
       case 'warning':
-        return {role: 'alert'}
       case 'error':
         return {role: 'alert'}
       default:
@@ -48,73 +68,19 @@ export const ScAlert = ({type, dense, action, children, dangerouslySetInnerHTML,
   }
 
   return (
-    <Box
-      {...props}
+    <div
+      {...(id ? {id} : null)}
       {...roleProp()}
-      sx={{
-        transition: t => t.transitions.create('all'),
-        // @ts-ignore
-        minHeight: height(props.dense),
-        display: 'flex',
-        alignItems: 'center',
-        overflow: 'hidden',
-        borderRadius: '4px',
-        // @ts-ignore
-        paddingLeft: dense ? 1 : 2,
-        paddingRight: dense ? 1 : 2,
-        ...{
-          success: {
-            background: 'rgba(50, 255, 150, .08)', //'#e1ffe1',
-            color: darken(otherColorSet.success, 0.3),
-          },
-          info: {
-            background: alertInfoBackgroundColor, //'#e1f5fe',
-            color: alertInfoTextColor,
-          },
-          error: {
-            background: 'rgba(255, 0, 0, .08)', //'#ffdede',
-            color: darken(otherColorSet.error, 0.3),
-          },
-          warning: {
-            background: alertWarningBackgroundColor,
-            color: alertWarningTextColor,
-          },
-        }[type],
-        mb: 2,
+      style={{
+        ...pickColors(),
       }}
+      className="flex px-2 justify-between items-center mb-2 py-4 gap-2"
     >
-      <Icon
-        sx={{
-          mr: dense ? 0 : 1,
-          height: `${height(dense)}px !important`,
-          display: 'flex',
-          alignItems: 'center',
-          alignSelf: 'flex-start',
-        }}
-      >
-        {getIconFromType()}
-      </Icon>
-      <Box
-        {...(children ? {children} : {dangerouslySetInnerHTML})}
-        sx={{
-          flex: 1,
-          py: dense ? 1 : 2,
-          px: 1,
-        }}
-      />
-      {action && (
-        <Box
-          sx={{
-            textAlign: 'right',
-            mt: 1,
-            ml: 0,
-            mb: 1,
-            mr: -1,
-          }}
-        >
-          {action}
-        </Box>
-      )}
-    </Box>
+      <div className="flex gap-2">
+        <i className={`${pickIcon()}`} />
+        <div {...{dangerouslySetInnerHTML}}>{children}</div>
+      </div>
+      {action && <div>{action}</div>}
+    </div>
   )
 }
