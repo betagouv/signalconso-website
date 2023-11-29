@@ -1,8 +1,7 @@
 import {useApiClients} from '@/context/ApiClientsContext'
 import {useI18n} from '@/i18n/I18n'
-import {Button} from '@codegouvfr/react-dsfr/Button'
 import {UploadedFile} from '../../model/UploadedFile'
-import {ScDialog} from '../ScDialog'
+import {ReportFileDeleteButton} from './ReportFileDeleteButton'
 import {FileType, extensionToType} from './reportFileConfig'
 import {useImageLoaderWithRetries} from './useImageLoaderWithRetries'
 
@@ -57,26 +56,12 @@ export const ReportFile = ({file, onRemove}: ReportFileProps) => {
       </a>
       {onRemove && (
         <div className="w-full text-center">
-          <ScDialog
-            title={m.removeAsk}
-            iconId={'fr-icon-delete-line'}
-            content={<p className="mb-0" dangerouslySetInnerHTML={{__html: m.thisWillBeRemoved(file.filename)}} />}
-            onConfirm={close => {
+          <ReportFileDeleteButton
+            filename={file.filename}
+            onConfirm={() => {
               remove()
-              close()
             }}
-            confirmLabel={m.delete}
-          >
-            <Button
-              size="small"
-              iconId="fr-icon-delete-line"
-              priority="tertiary no outline"
-              className="!p-0"
-              nativeButtonProps={{'aria-label': `${m.delete} ${file.filename}`}}
-            >
-              {m.delete.toLowerCase()}
-            </Button>
-          </ScDialog>
+          />
         </div>
       )}
     </div>
