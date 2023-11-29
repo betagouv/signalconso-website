@@ -4,27 +4,20 @@ import {ScValidationCodeInput} from '@/components_simple/formInputs/ScValidation
 import {useApiClients} from '@/context/ApiClientsContext'
 import {useI18n} from '@/i18n/I18n'
 import {ValidationRejectReason} from '@/model/ConsumerEmailValidation'
-import {Button} from '@codegouvfr/react-dsfr/Button'
-import {Dialog, DialogActions, DialogContent, DialogTitle, LinearProgress} from '@mui/material'
+import {createModal} from '@codegouvfr/react-dsfr/Modal'
 import {useMutation} from '@tanstack/react-query'
 import {useState} from 'react'
+import {createPortal} from 'react-dom'
 import {Controller, useForm} from 'react-hook-form'
 import {duration} from '../../../utils/Duration'
 import {iconArrowRight, timeoutPromise} from '../../../utils/utils'
 
-interface Props {
-  loading?: boolean
-  open?: boolean
-  consumerEmail: string
-  onClose: () => void
-  onValidated: () => void
-}
+export const consumerValidationModal = createModal({
+  id: 'consumer-validation-modal',
+  isOpenedByDefault: false,
+})
 
-interface ValidationForm {
-  code: string
-}
-
-export const ConsumerValidationDialog = ({loading, open, consumerEmail, onClose, onValidated}: Props) => {
+export function ConsumerValidationDialog2({consumerEmail, onValidated}: {consumerEmail: string; onValidated: () => void}) {
   const _form = useForm<ValidationForm>()
   const {signalConsoApiClient} = useApiClients()
   const {m, currentLang} = useI18n()
@@ -50,86 +43,81 @@ export const ConsumerValidationDialog = ({loading, open, consumerEmail, onClose,
   })
 
   return (
-    <Dialog open={!!open} maxWidth="xs">
-      {loading && (
-        <LinearProgress
-          sx={{
-            position: 'absolute',
-            top: 0,
-            right: 0,
-            left: 0,
-          }}
-        />
-      )}
-      <DialogTitle>{m.consumerAskCodeTitle}</DialogTitle>
-      <DialogContent>
-        <div>
-          <ScAlert
-            type="info"
-            action={
-              <>
-                <ButtonWithLoader
-                  disabled={disableResendButton}
-                  loading={_checkEmail.isPending}
-                  iconId="ri-refresh-line"
-                  priority="tertiary no outline"
-                  onClick={() => {
-                    setDisableResendButton(true)
-                    setTimeout(() => setDisableResendButton(false), duration(15, 'second'))
-                    _checkEmail.mutate()
-                  }}
-                >
-                  {m.consumerResentEmail}
-                </ButtonWithLoader>
-              </>
-            }
-          >
-            <p className="mb-0">{m.consumerEmailMayTakesTime}</p>
-          </ScAlert>
-          {isEmailValid === false && (
-            <ScAlert type="error">
-              <p className="mb-0">
-                {invalidEmailReason === 'TOO_MANY_ATTEMPTS' ? m.consumerValidationCodeExpired : m.consumerValidationCodeInvalid}
-              </p>
+    <>
+      {createPortal(
+        <consumerValidationModal.Component
+          title={m.consumerAskCodeTitle}
+          buttons={
+            isEmailValid
+              ? {
+                  children: m.validated,
+                  iconId: 'fr-icon-success-line',
+                  disabled: true,
+                  className: '!bg-green-700 !text-white',
+                  doClosesModal: false,
+                }
+              : {children: m.verify, iconId: iconArrowRight, onClick: onSubmitButtonClick, doClosesModal: false}
+          }
+        >
+          <div>
+            <ScAlert
+              type="info"
+              action={
+                <>
+                  <ButtonWithLoader
+                    disabled={disableResendButton}
+                    loading={_checkEmail.isPending}
+                    iconId="ri-refresh-line"
+                    priority="tertiary no outline"
+                    onClick={() => {
+                      setDisableResendButton(true)
+                      setTimeout(() => setDisableResendButton(false), duration(15, 'second'))
+                      _checkEmail.mutate()
+                    }}
+                  >
+                    {m.consumerResentEmail}
+                  </ButtonWithLoader>
+                </>
+              }
+            >
+              <p className="mb-0">{m.consumerEmailMayTakesTime}</p>
             </ScAlert>
-          )}
-        </div>
+            {isEmailValid === false && (
+              <ScAlert type="error">
+                <p className="mb-0">
+                  {invalidEmailReason === 'TOO_MANY_ATTEMPTS' ? m.consumerValidationCodeExpired : m.consumerValidationCodeInvalid}
+                </p>
+              </ScAlert>
+            )}
+          </div>
 
-        <p className="mb-2" dangerouslySetInnerHTML={{__html: m.consumerAskCodeDesc(consumerEmail)}} />
-        <Controller
-          name="code"
-          rules={{
-            required: {value: true, message: m.required},
-          }}
-          control={_form.control}
-          render={({field}) => (
-            <>
-              <div className="flex justify-center mt-4">
-                <ScValidationCodeInput
-                  {...field}
-                  error={!!_form.formState.errors.code || isEmailValid === false}
-                  helperText={_form.formState.errors['code']?.message}
-                  required
-                />
-              </div>
-            </>
-          )}
-        />
-      </DialogContent>
-      <DialogActions>
-        <Button onClick={onClose} priority="tertiary">
-          {m.close}
-        </Button>
-        {isEmailValid ? (
-          <Button iconId="fr-icon-success-line" disabled={true} className="!bg-green-700 !text-white">
-            {m.validated}
-          </Button>
-        ) : (
-          <ButtonWithLoader loading={_validateEmail.isPending} onClick={onSubmitButtonClick} iconId={iconArrowRight}>
-            {m.verify}
-          </ButtonWithLoader>
-        )}
-      </DialogActions>
-    </Dialog>
+          <p className="mb-2" dangerouslySetInnerHTML={{__html: m.consumerAskCodeDesc(consumerEmail)}} />
+          <Controller
+            name="code"
+            rules={{
+              required: {value: true, message: m.required},
+            }}
+            control={_form.control}
+            render={({field}) => (
+              <>
+                <div className="flex justify-center mt-4">
+                  <ScValidationCodeInput
+                    {...field}
+                    error={!!_form.formState.errors.code || isEmailValid === false}
+                    helperText={_form.formState.errors['code']?.message}
+                    required
+                  />
+                </div>
+              </>
+            )}
+          />
+        </consumerValidationModal.Component>,
+        document.body,
+      )}
+    </>
   )
+}
+
+interface ValidationForm {
+  code: string
 }

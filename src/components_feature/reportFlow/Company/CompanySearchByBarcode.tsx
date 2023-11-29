@@ -11,7 +11,7 @@ import {useApiClients} from '../../../context/ApiClientsContext'
 import {useI18n} from '../../../i18n/I18n'
 import {BarcodeProduct} from '../../../model/BarcodeProduct'
 import {CompanySearchResult} from '../../../model/Company'
-import {BarcodeHelpButton, CompanySearchByBarcodeHelpDialog} from './lib/BarcodeHelpButton'
+import {BarcodeHelpButton} from './lib/BarcodeHelpButton'
 
 interface Form {
   gtin: string
