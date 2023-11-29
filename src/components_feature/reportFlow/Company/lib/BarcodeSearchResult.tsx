@@ -1,9 +1,9 @@
 import {ReactNode} from 'react'
-import {AddressComponent} from '../../../components_simple/Address'
-import {BtnNext} from '../../../components_simple/buttons/Buttons'
-import {useI18n} from '../../../i18n/I18n'
-import {BarcodeProduct} from '../../../model/BarcodeProduct'
-import {CompanySearchResult, isGovernmentCompany} from '../../../model/Company'
+import {AddressComponent} from '../../../../components_simple/Address'
+import {BtnNext} from '../../../../components_simple/buttons/Buttons'
+import {useI18n} from '../../../../i18n/I18n'
+import {BarcodeProduct} from '../../../../model/BarcodeProduct'
+import {CompanySearchResult, isGovernmentCompany} from '../../../../model/Company'
 import {NoSearchResult} from './NoSearchResult'
 
 interface BarcodeSearchResultPros {

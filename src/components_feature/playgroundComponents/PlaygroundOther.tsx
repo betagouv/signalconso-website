@@ -8,6 +8,13 @@ import {ScCheckbox} from '../../components_simple/formInputs/ScCheckbox'
 import {ScRadioButtons} from '../../components_simple/formInputs/ScRadioButtons'
 import {useI18n} from '../../i18n/I18n'
 import {DetailsSpecifyInput} from '../reportFlow/Details/DetailsSpecifyInput'
+import Button from '@codegouvfr/react-dsfr/Button'
+import {createModal} from '@codegouvfr/react-dsfr/Modal'
+
+const modal = createModal({
+  id: 'playground-modal',
+  isOpenedByDefault: false,
+})
 
 export const PlaygroundOther = () => {
   const [radioValue, setRadioValue] = useState<string | undefined>(undefined)
@@ -20,6 +27,29 @@ export const PlaygroundOther = () => {
 
   return (
     <>
+      <div className="mb-4">
+        <h6> Modale du DSFR</h6>
+        <modal.Component
+          size="small"
+          title="Titre de la modale"
+          buttons={[
+            {
+              children: 'Un bouton',
+              priority: 'secondary',
+            },
+            {
+              children: `Le bouton d'action principal`,
+            },
+          ]}
+        >
+          <p>Lorem ipsum dolor</p>
+        </modal.Component>
+        <div className="flex flex-col gap-2">
+          <Button nativeButtonProps={modal.buttonProps}>Open modal (with button props)</Button>
+          <Button onClick={() => modal.open()}>Open modal (with .open())</Button>{' '}
+        </div>
+      </div>
+
       <div className="mb-4">
         <h6> a big animated loader, standalone</h6>
         <div className="sc-loader-big w-10 h-10"></div>

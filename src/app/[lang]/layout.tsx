@@ -19,15 +19,7 @@ export function generateMetadata(): Metadata {
 const RootLayout = ({children, params}: {children: React.ReactNode; params: any}) => {
   const lang = params.lang
   return (
-    <html
-      {...getHtmlAttributes({defaultColorScheme: DSFR_COLOR_SCHEME, lang})}
-      // Scrollbar always visible to avoid layout shift when modal are opened
-      style={{
-        overflow: '-moz-scrollbars-vertical',
-        overflowY: 'scroll',
-      }}
-      {...{lang}}
-    >
+    <html {...getHtmlAttributes({defaultColorScheme: DSFR_COLOR_SCHEME, lang})} {...{lang}}>
       <head>
         <StartDsfr />
         <DsfrHead Link={Link} preloadFonts={['Marianne-Regular', 'Marianne-Medium', 'Marianne-Bold']} />
