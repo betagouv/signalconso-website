@@ -11,7 +11,7 @@ import {useApiClients} from '../../../context/ApiClientsContext'
 import {useI18n} from '../../../i18n/I18n'
 import {BarcodeProduct} from '../../../model/BarcodeProduct'
 import {CompanySearchResult} from '../../../model/Company'
-import {CompanySearchByBarcodeHelpDialog} from './CompanySearchByBarcodeHelpDialog'
+import {BarcodeHelpButton} from './lib/BarcodeHelpButton'
 
 interface Form {
   gtin: string
@@ -112,11 +112,7 @@ export const CompanySearchByBarcode = ({children}: Props) => {
                 label={
                   <span>
                     {m.barcodeWhereToFind}
-                    <CompanySearchByBarcodeHelpDialog>
-                      <button className="text-scbluefrance" type="button">
-                        ({m.howToFindIt})
-                      </button>
-                    </CompanySearchByBarcodeHelpDialog>
+                    <BarcodeHelpButton />
                   </span>
                 }
                 disabled={!editing}

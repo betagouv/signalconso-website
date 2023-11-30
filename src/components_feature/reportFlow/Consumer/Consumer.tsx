@@ -1,4 +1,3 @@
-import {useAnalyticContext} from '@/analytic/AnalyticContext'
 import {StepNavigation} from '@/components_feature/reportFlow/reportFlowStepper/ReportFlowStepper'
 import {ReportFlowStepperActions} from '@/components_feature/reportFlow/reportFlowStepper/ReportFlowStepperActions'
 import {RequiredFieldsLegend} from '@/components_simple/RequiredFieldsLegend'
@@ -9,7 +8,7 @@ import {AppLangs} from '@/i18n/localization/AppLangs'
 import {ReportDraft2} from '@/model/ReportDraft2'
 import {regexp} from '@/utils/regexp'
 import {useMutation} from '@tanstack/react-query'
-import {ReactNode, useState} from 'react'
+import {ReactNode} from 'react'
 import {Controller, useForm} from 'react-hook-form'
 import {ScAlert} from '../../../components_simple/ScAlert'
 import {ScRadioButtons} from '../../../components_simple/formInputs/ScRadioButtons'
@@ -19,7 +18,7 @@ import {Gender, ReportDraft, genders} from '../../../model/ReportDraft'
 import {DeepPartial} from '../../../utils/utils'
 import {useReportFlowContext} from '../ReportFlowContext'
 import {ConsumerAnonymousInformation} from './ConsumerAnonymousInformation'
-import {ConsumerValidationDialog} from './ConsumerValidationDialog'
+import {ConsumerValidationDialog2, consumerValidationModal} from './ConsumerValidationDialog'
 
 interface ConsumerForm {
   firstName: string
@@ -57,7 +56,7 @@ export const ConsumerInner = ({
   stepNavigation: StepNavigation
 }) => {
   const {m, currentLang} = useI18n()
-  const [openValidationDialog, setOpenValidationDialog] = useState<boolean>(false)
+  // const [openValidationDialog, setOpenValidationDialog] = useState<boolean>(false)
   const {signalConsoApiClient} = useApiClients()
   const _reportFlow = useReportFlowContext()
   const _checkEmail = useMutation({
@@ -74,7 +73,6 @@ export const ConsumerInner = ({
       referenceNumber: draft.consumer?.referenceNumber,
     },
   })
-  const _analytic = useAnalyticContext()
   const toastError = useToastError()
   const watchContactAgreement = _form.watch('contactAgreement')
 
@@ -241,12 +239,13 @@ export const ConsumerInner = ({
           )}
         </div>
       </div>
-      <ConsumerValidationDialog
+      <ConsumerValidationDialog2 consumerEmail={_form.getValues().email} onValidated={saveAndNext} />
+      {/* <ConsumerValidationDialog
         open={openValidationDialog}
         consumerEmail={_form.getValues().email}
         onClose={() => setOpenValidationDialog(false)}
         onValidated={saveAndNext}
-      />
+      /> */}
       <ReportFlowStepperActions
         loadingNext={_checkEmail.isPending}
         onNext={() => {
@@ -255,7 +254,7 @@ export const ConsumerInner = ({
               .mutateAsync(form.email)
               .then(res => {
                 if (res.valid) saveAndNext()
-                else setOpenValidationDialog(true)
+                else consumerValidationModal.open()
               })
               .catch(() => {
                 toastError()

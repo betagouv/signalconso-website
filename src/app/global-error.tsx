@@ -8,7 +8,6 @@ import * as Sentry from '@sentry/nextjs'
 import {usePathname} from 'next/navigation'
 import '../globals.css'
 import {AppLangs, getSupportedLang} from '../i18n/localization/AppLangs'
-import MuiThemeSetup from './[lang]/MuiThemeSetup'
 
 export default function GlobalError({error, reset}: {error: any; reset: any}) {
   Sentry.captureException(error)
@@ -35,21 +34,11 @@ function ErrorContent() {
   const currentPathLang = pathname ? pathname.toLowerCase().split('/')[1] : AppLangs.fr
   const lang = getSupportedLang(currentPathLang) ?? AppLangs.fr
   return (
-    <html
-      {...getHtmlAttributes({defaultColorScheme: DSFR_COLOR_SCHEME, lang: lang})}
-      //NOTE: Scrollbar always visible to avoid layout shift when modal are opened
-      style={{
-        overflow: '-moz-scrollbars-vertical',
-        overflowY: 'scroll',
-      }}
-      lang={lang}
-    >
+    <html {...getHtmlAttributes({defaultColorScheme: DSFR_COLOR_SCHEME, lang: lang})} lang={lang}>
       <body>
-        <MuiThemeSetup>
-          <DsfrProvider lang={lang}>
-            <ErrorPageContent lang={lang} />
-          </DsfrProvider>
-        </MuiThemeSetup>
+        <DsfrProvider lang={lang}>
+          <ErrorPageContent lang={lang} />
+        </DsfrProvider>
       </body>
     </html>
   )

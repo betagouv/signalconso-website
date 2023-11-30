@@ -12,7 +12,7 @@ import {useQuery} from '@tanstack/react-query'
 import {ReactNode, useRef, useState} from 'react'
 import {useForm} from 'react-hook-form'
 import {CompanySearchResult} from '../../../model/Company'
-import {CompanySearchByIdentityHelpDialog} from './CompanySearchByIdentityHelpDialog'
+import {SiretHelpButton} from './lib/SiretHelpButton'
 
 interface Form {
   identity: string
@@ -83,12 +83,7 @@ export const CompanySearchByIdentity = ({children}: Props) => {
                 required
                 label={
                   <span>
-                    {m.companyIdentityLabel}{' '}
-                    <CompanySearchByIdentityHelpDialog>
-                      <button className="text-scbluefrance" type="button">
-                        ({m.howToFindThem})
-                      </button>
-                    </CompanySearchByIdentityHelpDialog>
+                    {m.companyIdentityLabel} <SiretHelpButton />
                   </span>
                 }
                 // we want to allow whitespaces, typically from a copy/paste
