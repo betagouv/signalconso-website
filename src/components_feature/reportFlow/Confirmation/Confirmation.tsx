@@ -101,7 +101,6 @@ function RenderEachStep({
 }) {
   const goToStep = stepNavigation.goTo
   const {m, currentLang} = useI18n()
-  draft.consumerWish = 'fixContractualDispute'
 
   switch (step) {
     case 'BuildingProblem':
