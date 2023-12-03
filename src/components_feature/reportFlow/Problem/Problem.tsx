@@ -15,6 +15,10 @@ import {ProblemSelect} from './ProblemSelect'
 import {ProblemStepper, ProblemStepperStep} from './ProblemStepper'
 import {computeSelectedSubcategoriesData} from './useSelectedSubcategoriesData'
 import {AppLang} from '../../../i18n/localization/AppLangs'
+import {ScAlert} from '@/components_simple/ScAlert'
+import {FriendlyHelpText} from '@/components_simple/FriendlyHelpText'
+import {useColors} from '@codegouvfr/react-dsfr/useColors'
+import CallOut from '@codegouvfr/react-dsfr/CallOut'
 
 interface Props {
   anomaly: Anomaly
@@ -77,6 +81,7 @@ export function adjustReportDraftAfterSubcategoriesChange(
 
 export const Problem = ({anomaly, isWebView, stepNavigation}: Props) => {
   const _analytic = useAnalyticContext()
+
   const {m, currentLang} = useI18n()
   const {reportDraft, setReportDraft, resetFlow, sendReportEvent} = useReportFlowContext()
 
@@ -138,6 +143,18 @@ export const Problem = ({anomaly, isWebView, stepNavigation}: Props) => {
 
   return (
     <>
+      <FriendlyHelpText>
+        <p className="mb-2 mt-4">
+          <i className="ri-information-line mr-2" />
+          Vous avez rencontré un problème avec le produit <span className="font-bold">Nutella</span> produit par l'entreprise{' '}
+          <span className="font-bold">FERRERO FRANCE COMMERCIALE</span> ?
+        </p>
+        <p className="mb-4">
+          SignalConso vous permet de remonter le problème à l'entreprise. De plus, votre signalement est visible par les agents de
+          la répression des fraudes, qui pourront intervenir si nécessaire.
+        </p>
+        <p className="text-center font-bold mb-2">Répondez-simplement aux questions, et laissez-vous guider !</p>
+      </FriendlyHelpText>
       {[anomaly, ...(reportDraft.subcategories ?? [])].map(
         (category, idx) =>
           category.subcategories && (

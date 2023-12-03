@@ -27,6 +27,8 @@ import {scrollTop} from '@/utils/utils'
 import {useI18n} from '../../../i18n/I18n'
 import {AppLang} from '../../../i18n/localization/AppLangs'
 import {ReportFlowStepperHeader} from './ReportFlowStepperHeader'
+import {useColors} from '@codegouvfr/react-dsfr/useColors'
+import CallOut from '@codegouvfr/react-dsfr/CallOut'
 
 interface StepperProps {
   anomaly: Anomaly
@@ -103,6 +105,8 @@ function useIsStepInvalid(anomaly: Anomaly, step: ReportStepOrDone): boolean {
 
 export const ReportFlowStepper = ({anomaly, isWebView}: StepperProps) => {
   const [step, setStep] = useStepFromRouter(anomaly, isWebView)
+  const theme = useColors()
+
   const isStepInvalid = useIsStepInvalid(anomaly, step)
   useStepChangePushMobileEvent(step, isWebView)
   useEffect(() => {
@@ -135,6 +139,26 @@ export const ReportFlowStepper = ({anomaly, isWebView}: StepperProps) => {
   }
   return (
     <>
+      {/* <CallOut
+        // iconId="ri-information-line"
+        title={<>Signalement d'un problème sur un produit alimentaire</>}
+        buttonProps={{
+          children: `C'est parti !`,
+          linkProps: {
+            href: `....`,
+          },
+        }}
+      >
+        <p className="mb-2 mt-4">
+          Vous avez rencontré un problème avec le produit <span className="font-bold">Nutella</span> produit par l'entreprise{' '}
+          <span className="font-bold">FERRERO FRANCE COMMERCIALE</span> ?
+        </p>
+        <p className="mb-2">
+          SignalConso vous permet de remonter le problème à l'entreprise. De plus, votre signalement est visible par les agents de
+          la répression des fraudes, qui pourront intervenir si nécessaire.
+        </p>
+        <p className="">Répondez-simplement aux questions, et laissez-vous guider !</p>
+      </CallOut> */}
       <ReportFlowStepperHeader {...{step, stepNavigation, isWebView}} anomalyTitle={anomaly.title} variant="main" />
       {step === 'BuildingProblem' && <Problem {...{isWebView, anomaly, stepNavigation}} />}
       {step === 'BuildingCompany' && <Company {...{stepNavigation}} />}

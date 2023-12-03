@@ -9,6 +9,8 @@ export function FriendlyHelpText({children}: {children: ReactNode}) {
       style={{
         background: theme.decisions.background.contrast.info.default,
         color: theme.decisions.text.default.info.default,
+        borderTop: '1px solid #0063cb',
+        borderBottom: '1px solid #0063cb',
         lineHeight: '1.3',
       }}
     >

@@ -42,14 +42,14 @@ export function ReportFlowStepperHeader(
       <div className="fr-stepper grow" tabIndex={-1} ref={divRef}>
         <H1OrP kind={variant === 'main' ? 'h1' : 'p'}>
           <span className="fr-stepper__state">
-            {anomalyTitle} - {m.faireUnSignalement.etape} {stepIndex} {m.faireUnSignalement.sur} {stepsCount}
+            Produit alimentaire - {m.faireUnSignalement.etape} {stepIndex} {m.faireUnSignalement.sur} {stepsCount}
           </span>
           {variant === 'main' && stepTitle}
         </H1OrP>
         <div className="fr-stepper__steps" data-fr-current-step={stepIndex} data-fr-steps={stepsCount}></div>
         {variant === 'main' && (
           <div className="flex gap-2 justify-between">
-            {(!isWebView || !isPrevBackToHome) && (
+            {((stepIndex !== 1 && !isWebView) || !isPrevBackToHome) && (
               <Button
                 {...(isPrevBackToHome
                   ? {
