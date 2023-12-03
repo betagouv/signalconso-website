@@ -10,6 +10,9 @@ import {useI18n} from '../../i18n/I18n'
 import {DetailsSpecifyInput} from '../reportFlow/Details/DetailsSpecifyInput'
 import Button from '@codegouvfr/react-dsfr/Button'
 import {createModal} from '@codegouvfr/react-dsfr/Modal'
+import imgRepublique from '@/img/republique_francaise.png'
+import imgSignalConsoLogo from '@/img/logo-signalconso.png'
+import Image from 'next/image'
 
 const modal = createModal({
   id: 'playground-modal',
@@ -27,6 +30,15 @@ export const PlaygroundOther = () => {
 
   return (
     <>
+      <div className="mb-4">
+        <h6>Lien qui serait sur Open Food Facts :</h6>
+        <div className="bg-white text-scbluefrance font-bold w-fit flex items-center gap-2 pl-2  pr-4 py-2 text-lg border-scbluefrance border-[1px] border-b-4 border-solid relative">
+          <Image alt="" src={imgRepublique} className="mr-4" />
+          <span className="">Je fais un signalement sur</span>
+          <Image alt="" src={imgSignalConsoLogo} />
+          <i className="ri-arrow-right-line fr-icon--lg fr-icon--lg " />
+        </div>
+      </div>
       <div className="mb-4">
         <h6> Modale du DSFR</h6>
         <modal.Component
