@@ -936,7 +936,7 @@ export const fr = {
     continue: `Continuer`,
     suggestion: `Voulez-vous dire :`,
     continueWithWebsite: (website: string) => `Continuer avec ${website}`,
-    invalidUrlPattern: `Ça ne ressemble pas à un site internet`,
+    invalidUrlPattern: `Veuillez saisir une adresse de site internet (exemple : https://www.site.fr)`,
     noResult: 'Aucun résultat',
     noAttachment: 'Aucune pièce jointe.',
     addAttachmentFile: 'Ajouter une pièces jointe',
