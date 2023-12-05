@@ -110,13 +110,15 @@ export const ReportFiles = ({fileOrigin, files, onRemoveFile, onNewFile, tooMany
   }
 
   const thumbnails = (
-    <div className="flex flex-wrap items-center justify-center mt-4 ">
+    <ul className="flex flex-wrap items-center justify-center mt-4 list-none gap-4">
       {innerFiles
         .filter(_ => _.origin === fileOrigin)
         .map(_ => (
-          <ReportFile key={_.id} file={_} onRemove={removeFile} />
+          <li key={_.id}>
+            <ReportFile file={_} onRemove={removeFile} />
+          </li>
         ))}
-    </div>
+    </ul>
   )
 
   function onDrag(e: React.DragEvent<HTMLDivElement>) {

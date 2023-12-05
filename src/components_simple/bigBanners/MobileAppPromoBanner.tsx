@@ -11,13 +11,12 @@ export const MobileAppPromoBanner = () => {
     <Alert
       description={
         <>
-          Mettez SignalConso dans votre poche ! Téléchargez notre nouvelle application mobile{' '}
-          <Link href="https://apps.apple.com/fr/app/signalconso/id6447964093">pour iOS</Link> ou{' '}
-          <Link href="https://play.google.com/store/apps/details?id=com.signalconso.signalconso">pour Android</Link>.
+          Téléchargez notre application mobile <Link href="https://apps.apple.com/fr/app/signalconso/id6447964093">pour iOS</Link>{' '}
+          ou <Link href="https://play.google.com/store/apps/details?id=com.signalconso.signalconso">pour Android</Link>.
         </>
       }
       severity={'info'}
-      title={<></>}
+      title="Mettez SignalConso dans votre poche !"
       className="fr-mt-4w md:hidden"
     />
   )
