@@ -4,6 +4,7 @@ import {useI18n} from '@/i18n/I18n'
 import {ReportStepOrDone, getIndexForStep, getNextStep, getStepLabel, reportSteps} from '@/model/ReportStep'
 import {useEffect, useRef} from 'react'
 import {StepNavigation} from './ReportFlowStepper'
+import {ChildrenProps} from '@/utils/utils'
 
 export function ReportFlowStepperHeader(
   props: {
@@ -39,12 +40,12 @@ export function ReportFlowStepperHeader(
     const isPrevBackToHome = stepIndex === 1
     return (
       <div className="fr-stepper grow" tabIndex={-1} ref={divRef}>
-        <h1 className="fr-stepper__title">
+        <H1OrP kind={variant === 'main' ? 'h1' : 'p'}>
           <span className="fr-stepper__state">
             {anomalyTitle} - {m.faireUnSignalement.etape} {stepIndex} {m.faireUnSignalement.sur} {stepsCount}
           </span>
           {variant === 'main' && stepTitle}
-        </h1>
+        </H1OrP>
         <div className="fr-stepper__steps" data-fr-current-step={stepIndex} data-fr-steps={stepsCount}></div>
         {variant === 'main' && (
           <div className="flex gap-2 justify-between">
@@ -77,4 +78,12 @@ export function ReportFlowStepperHeader(
     )
   }
   return null
+}
+
+function H1OrP({kind, children}: {kind: 'h1' | 'p'} & ChildrenProps) {
+  const className = 'fr-stepper__title'
+  if (kind === 'h1') {
+    return <h1 {...{className}}>{children}</h1>
+  }
+  return <p {...{className}}>{children}</p>
 }
