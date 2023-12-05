@@ -10,13 +10,15 @@ export interface ReportFilesConfirmationProps {
 export const ReportFilesConfirmation = ({fileOrigin, files}: ReportFilesConfirmationProps) => {
   const {m} = useI18n()
   return files && files.length > 0 ? (
-    <div className="flex flex-wrap items-center mt-4">
+    <ul className="flex flex-wrap items-center mt-4 list-none gap-4 p-0">
       {files
         .filter(_ => _.origin === fileOrigin)
         .map(_ => (
-          <ReportFile key={_.id} file={_} />
+          <li key={_.id}>
+            <ReportFile file={_} />
+          </li>
         ))}
-    </div>
+    </ul>
   ) : (
     <p className="text-gray-600">{m.noAttachment}</p>
   )

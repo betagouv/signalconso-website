@@ -22,7 +22,7 @@ export const ReportFile = ({file, onRemove}: ReportFileProps) => {
   }
 
   return (
-    <div className="mb-4 ml-4">
+    <div className="">
       <a
         target="_blank"
         href={fileUrl}
