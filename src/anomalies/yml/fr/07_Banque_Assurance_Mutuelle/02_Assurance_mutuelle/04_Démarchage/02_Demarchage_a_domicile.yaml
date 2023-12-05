@@ -5,7 +5,6 @@ reponseconsoCode:
   - '2210'
 tags:
   - DemarchageADomicile
-  - ReponseConso
 detailInputs:
   - label: "Que s'est-il passé\_?"
     type: RADIO
