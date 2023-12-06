@@ -57,6 +57,8 @@ export const internalPageDefs = {
   stats: page(`/stats`, {hasAlternate: true}),
   suiviEtViePrivee: page(`/suivi-et-vie-privee`, {hasAlternate: true}),
   litige: page(`/litige`, {hasAlternate: true}),
+  // page temporaire de POC pour mettre en place une iframe de stats via Metabase
+  statsMetabase: page(`/stats-metabase`, {hasAlternate: true, noIndex: true}),
 }
 
 const externalPageDefs = {
