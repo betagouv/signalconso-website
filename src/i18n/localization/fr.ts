@@ -98,6 +98,10 @@ export const fr = {
         title: 'Statistiques - SignalConso',
         description: 'Consultez les statistiques de SignalConso',
       },
+      statsMetabase: {
+        title: 'Statistiques - SignalConso',
+        description: 'Consultez les statistiques de SignalConso',
+      },
       index: {
         title: 'SignalConso, un service public pour les consommateurs',
         description:

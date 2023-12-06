@@ -68,7 +68,7 @@ const ContentSecurityPolicy = [
   `connect-src 'self' *.sentry.io *.data.gouv.fr ${process.env.NEXT_PUBLIC_API_BASE_URL} ${process.env.NEXT_PUBLIC_COMPANY_API_BASE_URL} ${process.env.NEXT_PUBLIC_SIRET_EXTRACTOR_BASE_URL};`,
   `worker-src \'self\' ${process.env.NEXT_PUBLIC_API_BASE_URL} ${process.env.NEXT_PUBLIC_COMPANY_API_BASE_URL} ${process.env.NEXT_PUBLIC_SIRET_EXTRACTOR_BASE_URL} blob:;`,
   `img-src 'self' data: ${process.env.NEXT_PUBLIC_APP_BASE_URL} ${process.env.NEXT_PUBLIC_API_BASE_URL} *.cellar-c2.services.clever-cloud.com *.twitter.com *.xiti.com;`,
-  `frame-src *.data.gouv.fr/ *.twitter.com https://www.youtube-nocookie.com;`,
+  `frame-src *.data.gouv.fr/ *.twitter.com https://www.youtube-nocookie.com https://app-a6c69963-eab5-4de0-bfdb-60704e9a1b01.cleverapps.io/;`,
   `frame-ancestors 'self';`,
   `child-src 'self';`,
   `style-src 'self' 'unsafe-inline' https://fonts.googleapis.com blob:;`,
