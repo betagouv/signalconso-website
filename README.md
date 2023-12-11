@@ -13,7 +13,7 @@ First, you need to set the following environment variables:
 | NEXT_PUBLIC_API_BASE_URL         |
 | NEXT_PUBLIC_SHOW_PLAYGROUND      |
 
-For example, for classic shells (bash, zsh etc...), add the following in your profile:
+For example, for classic shells (bash, zsh etc.), add the following in your profile:
 
 ```bash
 export NEXT_PUBLIC_NODE_ENV=development
