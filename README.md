@@ -22,7 +22,6 @@ export NEXT_PUBLIC_API_BASE_URL="XXX"
 export NEXT_PUBLIC_SHOW_PLAYGROUND=true
 ```
 
-
 For fish shell:
 
 ```fish
