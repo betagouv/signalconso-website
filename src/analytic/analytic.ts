@@ -1,11 +1,13 @@
 import {usePathname, useSearchParams} from 'next/navigation'
 import {useEffect} from 'react'
-import {appConfig} from '../core/appConfig'
 import {Eularian} from '../plugins/eularian'
 import {Matomo} from '../plugins/matomo'
+import {appConfig} from '@/core/appConfig'
 
 export class Analytic {
-  static readonly init = ({matomo, eularian}: {matomo: Matomo | undefined; eularian: Eularian | undefined}) => {
+  static readonly init = () => {
+    const matomo = appConfig.enableMatomo ? Matomo.init() : undefined
+    const eularian = appConfig.enableEularian ? Eularian.init() : undefined
     return new Analytic(matomo, eularian)
   }
 
@@ -20,29 +22,23 @@ export class Analytic {
 
   readonly onPageChange = (path: string) => {
     this.log('[onPageChange]', path)
-    if (!appConfig.isDev) {
-      this.matomo?.trackPage(path)
-      this.eularian?.send(path)
-    }
+    this.matomo?.trackPage(path)
+    this.eularian?.send(path)
   }
 
   readonly trackPage = (path: string, title?: string) => {
     this.log('[trackPage]', path, title)
-    if (!appConfig.isDev) {
-      this.matomo?.trackPage(path, title)
-    }
+    this.matomo?.trackPage(path, title)
   }
 
   readonly trackEvent = (category: EventCategories, action: AnalyticAction, name?: any, value?: any) => {
     this.log('[trackEvent]', category, action, name, value)
-    if (!appConfig.isDev) {
-      try {
-        this.matomo?.push(['trackEvent', category, action, name, value])
-      } catch (e: any) {
-        console.error('[Analytic]', e)
-        if (!(e instanceof ReferenceError)) {
-          throw e
-        }
+    try {
+      this.matomo?.push(['trackEvent', category, action, name, value])
+    } catch (e: any) {
+      console.error('[Analytic]', e)
+      if (!(e instanceof ReferenceError)) {
+        throw e
       }
     }
   }

@@ -32,9 +32,7 @@ const LayoutCore: ({children}: {children: React.ReactNode}) => JSX.Element = ({c
 
   useEffect(() => {
     Sentry.init(appConfig)
-    const matomo = Matomo.init({siteId: appConfig.matomo_siteId, url: appConfig.matomo_url})
-    const eularian = Eularian.init()
-    setAnalytic(Analytic.init({matomo, eularian}))
+    setAnalytic(Analytic.init())
   }, [])
 
   return (
@@ -71,7 +69,7 @@ const Base = ({children}: {children: React.ReactNode}) => {
   const isWebView = checkIsWebView(pathname, currentLang)
   return (
     <>
-      {!appConfig.isDev && (
+      {appConfig.enableEularian && (
         <Script
           nonce="eYhD6rb8vLVwXsAmnbKl/Q=="
           id="eulerian-analytics"
