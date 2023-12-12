@@ -1,46 +1,35 @@
+import {appConfig} from '@/core/appConfig'
+
 declare const window: any
 
-interface InitSettings {
-  url?: string
-  siteId?: string
-  jsTrackerFile?: string
-  phpTrackerFile?: string
-  excludeUrlsPatterns?: RegExp[]
-}
-
 export class Matomo {
-  static readonly init = (params: InitSettings): Matomo => {
-    return new Matomo(params)
+  static readonly init = (): Matomo => {
+    return new Matomo()
   }
 
-  private constructor(private params: InitSettings) {
-    window._paq = window._paq !== null ? window._paq : []
-    if (!params.url || !params.siteId) {
-      console.warn('Matomo disabled, please provide matomo url')
-      return
-    }
-    this.push(['trackPageView'])
-    this.push(['enableLinkTracking'])
-    this.push(['setTrackerUrl', `${params.url}/matomo.php`])
-    this.push(['setSiteId', params.siteId])
-    this.push(['setCookieDomain', 'signal.conso.gouv.fr'])
-    this.push(['setDomains', 'signal.conso.gouv.fr'])
-    const scriptElement = document.createElement('script')
-    const refElement = document.getElementsByTagName('script')[0]
-    scriptElement.type = 'text/javascript'
-    scriptElement.async = true
-    scriptElement.defer = true
-    scriptElement.src = `${params.url}/matomo.js`
-    if (refElement.parentNode) {
-      refElement.parentNode.insertBefore(scriptElement, refElement)
-    }
+  private constructor() {
+    const _paq = (window._paq = window._paq || [])
+    const url = 'https://stats.beta.gouv.fr/'
+    _paq.push(['trackPageView'])
+    _paq.push(['enableLinkTracking'])
+    _paq.push(['setTrackerUrl', url + 'matomo.php'])
+    _paq.push(['setSiteId', '61'])
+    _paq.push(['setCookieDomain', 'signal.conso.gouv.fr'])
+    _paq.push(['setDomains', 'signal.conso.gouv.fr'])
+    const script = document.createElement('script')
+    script.async = true
+    script.src = url + 'matomo.js'
+    const head = document.getElementsByTagName('script')[0]
+    head.parentNode?.insertBefore(script, head)
   }
 
   readonly push = (args: (number[] | string[] | number | string)[]): void => {
-    if (!window._paq) {
-      window._paq = []
+    if (appConfig.enableMatomo) {
+      if (!window._paq) {
+        window._paq = []
+      }
+      window._paq.push(args)
     }
-    window._paq.push(args)
   }
 
   readonly trackPage = (path: string, title?: string) => {
