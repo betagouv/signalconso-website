@@ -27,7 +27,12 @@ export const ReportFile = ({file, onRemove}: ReportFileProps) => {
         target="_blank"
         href={fileUrl}
         rel="noreferrer"
-        className="after:!hidden !bg-none relative flex flex-col"
+        className={
+          'after:!hidden !bg-none relative flex flex-col' +
+          // Matomo tracks all clicks on links
+          // But these filenames are potentially sensitive
+          ' matomo_ignore'
+        }
         aria-label={`Télécharger ${file.filename}`}
       >
         <div className="inline-flex border border-solid border-gray-500 overflow-hidden rounded h-[100px] w-[100px] relative">
