@@ -23,8 +23,8 @@ export class Matomo {
     this.push(['enableLinkTracking'])
     this.push(['setTrackerUrl', `${params.url}/matomo.php`])
     this.push(['setSiteId', params.siteId])
-    this.push(['setCookieDomain', '*.conso.gouv.fr'])
-    this.push(['setDomains', '*.conso.gouv.fr'])
+    this.push(['setCookieDomain', 'signal.conso.gouv.fr'])
+    this.push(['setDomains', 'signal.conso.gouv.fr'])
     const scriptElement = document.createElement('script')
     const refElement = document.getElementsByTagName('script')[0]
     scriptElement.type = 'text/javascript'
