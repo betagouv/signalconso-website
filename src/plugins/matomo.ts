@@ -21,7 +21,7 @@ export class Matomo {
     }
     this.push(['trackPageView'])
     this.push(['enableLinkTracking'])
-    this.push(['setTrackerUrl', `${params.url}/piwik.php`])
+    this.push(['setTrackerUrl', `${params.url}/matomo.php`])
     this.push(['setSiteId', params.siteId])
     this.push(['setCookieDomain', '*.conso.gouv.fr'])
     this.push(['setDomains', '*.conso.gouv.fr'])
@@ -30,7 +30,7 @@ export class Matomo {
     scriptElement.type = 'text/javascript'
     scriptElement.async = true
     scriptElement.defer = true
-    scriptElement.src = `${params.url}/piwik.js`
+    scriptElement.src = `${params.url}/matomo.js`
     if (refElement.parentNode) {
       refElement.parentNode.insertBefore(scriptElement, refElement)
     }
