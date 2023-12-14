@@ -261,69 +261,79 @@ export const fr = {
       },
     },
     accessibilite: {
-      pageTitle: "Accessibilité",
-      paragraph1:
-        "Cette page n'est pas une page d'aide.",
-      paragraph2: 'Elle vise à présenter nos engagements en matière d’accessibilité numérique puis à définir le niveau de conformité de ce présent site à la réglementation et aux référentiels en vigueur.',
-      digitalAccessibilityTitle:"Qu’est-ce que l’accessibilité numérique ?",
-      digitalAccessibilityTexte1:"L’accessibilité numérique est un ensemble de règles et de bonnes pratiques qui couvrent notamment les aspects fonctionnels, graphiques, techniques et éditoriaux.",
-      digitalAccessibilityTexte2:"Le suivi de ces règles et bonnes pratiques permet de s’assurer que les supports numériques (sites web, applications mobiles, documents PDF, etc.) sont accessibles aux personnes handicapées.",
-      digitalAccessibilityTexte3:"Un site accessible permet par exemple de :",
-      digitalAccessibilityLi1:"Personnaliser son affichage via le système d’exploitation et/ou le navigateur (agrandissement ou rétrécissement des caractères, changement de la typographie, modification des couleurs, arrêt des animations, etc.).",
-      digitalAccessibilityLi2:"Naviguer à l’aide de technologies d’assistance comme une synthèse vocale ou une plage braille.",
-      digitalAccessibilityLi3:"Naviguer sans utiliser la souris, avec le clavier uniquement, des contacteurs ou via un écran tactile.",
-      digitalAccessibilityLi4:"Consulter les vidéos et les contenus audio à l’aide de sous-titres et/ou de transcriptions.",
-      digitalAccessibilityLi5:"Etc.",
-      digitalAccessibilityCommitmentsTitle:"Engagements d’accessibilité numérique",
-      digitalAccessibilityCommitmentsTexte1:"Le ministère de l'Économie, des Finances et de la Relance s’engage à rendre son service accessibles conformément à",
-      digitalAccessibilityCommitmentsLink:"l’article 47 de la loi n°2005-102 du 11 février 2005.",
-      partialRgaaComplianceDeclarationTitle:"Déclaration de conformité partielle au RGAA",
-      partialRgaaComplianceDeclarationTexte:"Cette déclaration s’applique au site :",
-      partialRgaaComplianceDeclarationLink:"« SignalConso ».",
+      pageTitle: 'Accessibilité',
+      paragraph1: "Cette page n'est pas une page d'aide.",
+      paragraph2:
+        'Elle vise à présenter nos engagements en matière d’accessibilité numérique puis à définir le niveau de conformité de ce présent site à la réglementation et aux référentiels en vigueur.',
+      digitalAccessibilityTitle: 'Qu’est-ce que l’accessibilité numérique ?',
+      digitalAccessibilityTexte1:
+        'L’accessibilité numérique est un ensemble de règles et de bonnes pratiques qui couvrent notamment les aspects fonctionnels, graphiques, techniques et éditoriaux.',
+      digitalAccessibilityTexte2:
+        'Le suivi de ces règles et bonnes pratiques permet de s’assurer que les supports numériques (sites web, applications mobiles, documents PDF, etc.) sont accessibles aux personnes handicapées.',
+      digitalAccessibilityTexte3: 'Un site accessible permet par exemple de :',
+      digitalAccessibilityLi1:
+        'Personnaliser son affichage via le système d’exploitation et/ou le navigateur (agrandissement ou rétrécissement des caractères, changement de la typographie, modification des couleurs, arrêt des animations, etc.).',
+      digitalAccessibilityLi2: 'Naviguer à l’aide de technologies d’assistance comme une synthèse vocale ou une plage braille.',
+      digitalAccessibilityLi3:
+        'Naviguer sans utiliser la souris, avec le clavier uniquement, des contacteurs ou via un écran tactile.',
+      digitalAccessibilityLi4: 'Consulter les vidéos et les contenus audio à l’aide de sous-titres et/ou de transcriptions.',
+      digitalAccessibilityLi5: 'Etc.',
+      digitalAccessibilityCommitmentsTitle: 'Engagements d’accessibilité numérique',
+      digitalAccessibilityCommitmentsTexte1:
+        "Le ministère de l'Économie, des Finances et de la Relance s’engage à rendre son service accessibles conformément à",
+      digitalAccessibilityCommitmentsLink: 'l’article 47 de la loi n°2005-102 du 11 février 2005.',
+      partialRgaaComplianceDeclarationTitle: 'Déclaration de conformité partielle au RGAA',
+      partialRgaaComplianceDeclarationTexte: 'Cette déclaration s’applique au site :',
+      partialRgaaComplianceDeclarationLink: '« SignalConso ».',
       conformityStatusTitle: 'État de conformité',
       conformityStatusText: `Ce présent site est partiellement conforme avec le <a href="https://accessibilite.numerique.gouv.fr/" >RGAA (Référentiel Général d’Amélioration de l’Accessibilité)</a>  - version 4.1.2 en raison des non-conformités énumérées ci-après.`,
       testResultsTitle: 'Résultats des tests',
       testResultsText: 'L’audit de conformité au RGAA version 4.1.2 réalisé en juin 2023 révèle que sur l’échantillon :',
-      testResultsLi1:'Le taux de conformité global est de 98,4%. (Obtenu en divisant le nombre de critères conformes par le nombre de critères applicables.)',
-      testResultsLi2:'Le taux de conformité moyen est de 99,8%. (Obtenu en faisant la moyenne des taux de conformité de chaque page.)',
+      testResultsLi1:
+        'Le taux de conformité global est de 98,4%. (Obtenu en divisant le nombre de critères conformes par le nombre de critères applicables.)',
+      testResultsLi2:
+        'Le taux de conformité moyen est de 99,8%. (Obtenu en faisant la moyenne des taux de conformité de chaque page.)',
       nonAccessibleContentTitle: 'Contenus non accessibles',
       nonAccessibleContentText: 'Les contenus listés ci-dessous ne sont pas accessibles pour les raisons suivantes.', // a supp
       nonConformityTitle: 'Non conformité',
       nonConformityText1:
         "Dans l’étape « L’entreprise » du formulaire de signalement, si aucune entreprise n’est sélectionnée dans la section « Sélectionnez l'entreprise », l’activation du bouton « Suivant » doit déplacer la prise de focus sur le premier bouton radio de cette section.",
-      nonConformityText2:"Aussi, lorsque le champ « Site internet » est complété, sa prise de focus doit être possible.",
-      nonConformityText3:"Ce qui impacte le critère 12.8.",
+      nonConformityText2: 'Aussi, lorsque le champ « Site internet » est complété, sa prise de focus doit être possible.',
+      nonConformityText3: 'Ce qui impacte le critère 12.8.',
       monthStats: 'Statistiques mensuelles', // a supp
-      disproportionateBurdenTitle: 'Dérogations pour charge disproportionnée',// a supp
-      disproportionateBurdenText1: // a supp
+      disproportionateBurdenTitle: 'Dérogations pour charge disproportionnée', // a supp
+      // a supp
+      disproportionateBurdenText1:
         "La validité HTML ne peut être garantie sur l'ensemble des pages néanmoins à notre connaissance cela ne provoque aucun dysfonctionnement des aides techniques. La reprise et la vérification de toutes les pages du site représenteraient une charge de travail disproportionnée par rapport au gain attendu.",
-      disproportionateBurdenText2: // a supp
+      // a supp
+      disproportionateBurdenText2:
         "Les vidéos n'ont pas d'audio description, sous-titres ou transcription textuelle. La cellule ayant en charge la mise en ligne de ces animations n'est pas en mesure actuellement de fournir ces éléments pour l'ensemble de ces vidéos.",
       accessibilityReportTitle: "Accès au rapport d'accessibilité", // a supp
       accessibilityReportText: "Vous avez accès au rapport d'accessibilité", // a supp
       rebecaPlatform: 'sur la plateforme Rebeca', // a supp
-      evaluationGridText: // a supp
+      // a supp
+      evaluationGridText:
         ", en recherchant \"Rapport d'audit d'accessibilité signal.conso.gouv.fr\". Vous pourrez trouver aussi la grille d'évaluation dans les documents associés.",
-      declarationEstablishmentTitle: "Établissement de cette déclaration ",
+      declarationEstablishmentTitle: 'Établissement de cette déclaration ',
       declarationEstablishmentText: 'Cette déclaration a été établie le 12/12/2023.',
       usedTechnologiesTitle: 'Technologies utilisées pour la réalisation du site',
       usedTechnologiesText: "L'accessibilité de SignalConso s'appuie sur les technologies suivantes :", // a supp
-      assistiveTechnologiesTitle:'Environnement de test',
+      assistiveTechnologiesTitle: 'Environnement de test',
       assistiveTechnologiesText:
         'Les tests ont été effectués avec les combinaisons de navigateurs web et lecteurs d’écran suivants :',
       assistiveTechnologiesList1: 'Firefox 113.0.1 et NVDA 2023.1 (Windows 11)',
       assistiveTechnologiesList2: 'Firefox 113.0.1 et JAWS 2022 (Windows 11)',
-      assistiveTechnologiesList3: "Safari et VoiceOver (macOS 13.3.1)",
-      assistiveTechnologiesList4: "Safari et VoiceOver (iOS 16.4.1)",
-      AccessibilityAssessmentToolsTitle:"Outils pour évaluer l’accessibilité",
-      AccessibilityAssessmentToolsList1:"Colour Contrast Analyser",
-      AccessibilityAssessmentToolsList2:"Outils de développement Firefox",
-      AccessibilityAssessmentToolsList3:"Web Developer (extension Firefox)",
+      assistiveTechnologiesList3: 'Safari et VoiceOver (macOS 13.3.1)',
+      assistiveTechnologiesList4: 'Safari et VoiceOver (iOS 16.4.1)',
+      AccessibilityAssessmentToolsTitle: 'Outils pour évaluer l’accessibilité',
+      AccessibilityAssessmentToolsList1: 'Colour Contrast Analyser',
+      AccessibilityAssessmentToolsList2: 'Outils de développement Firefox',
+      AccessibilityAssessmentToolsList3: 'Web Developer (extension Firefox)',
       complianceVerificationPagesTitle: "Pages du site ayant fait l'objet de la vérification de conformité",
       home: 'Accueil',
       quiSommesNous: 'Qui sommes-nous ?',
-      planDuSite:"Plan du site",
-      MentionsLegales:"Mentions légales",
+      planDuSite: 'Plan du site',
+      MentionsLegales: 'Mentions légales',
       commentCaMarche: 'Comment ça marche ?',
       stats: 'Statistiques',
       aide: 'Aide', // a supp

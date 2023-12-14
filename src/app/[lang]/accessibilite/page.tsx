@@ -28,17 +28,25 @@ const Accessibilite = (props: PageComponentProps) => {
           <li>{m.accessibilite.digitalAccessibilityLi5}</li>
         </ul>
         <h2>{m.accessibilite.digitalAccessibilityCommitmentsTitle}</h2>
-        <p>{m.accessibilite.digitalAccessibilityCommitmentsTexte1} <a href="https://www.legifrance.gouv.fr/loda/article_lc/LEGIARTI000037388867" >{m.accessibilite.digitalAccessibilityCommitmentsLink}</a> </p>
+        <p>
+          {m.accessibilite.digitalAccessibilityCommitmentsTexte1}{' '}
+          <a href="https://www.legifrance.gouv.fr/loda/article_lc/LEGIARTI000037388867">
+            {m.accessibilite.digitalAccessibilityCommitmentsLink}
+          </a>{' '}
+        </p>
         <h2>{m.accessibilite.partialRgaaComplianceDeclarationTitle}</h2>
-        <p>{m.accessibilite.partialRgaaComplianceDeclarationTexte} <a href="https://signal.conso.gouv.fr" >{m.accessibilite.partialRgaaComplianceDeclarationLink}</a> </p>
+        <p>
+          {m.accessibilite.partialRgaaComplianceDeclarationTexte}{' '}
+          <a href="https://signal.conso.gouv.fr">{m.accessibilite.partialRgaaComplianceDeclarationLink}</a>{' '}
+        </p>
 
         <h3 className="fr-h3">{m.accessibilite.conformityStatusTitle}</h3>
         <p dangerouslySetInnerHTML={{__html: m.accessibilite.conformityStatusText}}></p>
         <h3 className="fr-h3">{m.accessibilite.testResultsTitle}</h3>
         <p>{m.accessibilite.testResultsText}</p>
         <ul>
-        <li>{m.accessibilite.testResultsLi1}</li>
-        <li>{m.accessibilite.testResultsLi2}</li>
+          <li>{m.accessibilite.testResultsLi1}</li>
+          <li>{m.accessibilite.testResultsLi2}</li>
         </ul>
         <h3 className="fr-h3">{m.accessibilite.nonAccessibleContentTitle}</h3>
         <h4 className="fr-h6">{m.accessibilite.nonConformityTitle}</h4>
