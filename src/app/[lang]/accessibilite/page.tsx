@@ -16,75 +16,89 @@ const Accessibilite = (props: PageComponentProps) => {
         <h1>{m.accessibilite.pageTitle}</h1>
         <p>{m.accessibilite.paragraph1}</p>
         <p>{m.accessibilite.paragraph2}</p>
-        <h2 className="fr-h3">{m.accessibilite.conformityStatusTitle}</h2>
-        <p dangerouslySetInnerHTML={{__html: m.accessibilite.conformityStatusText}}></p>
-        <h2 className="fr-h3">{m.accessibilite.testResultsTitle}</h2>
-        <p>{m.accessibilite.testResultsText}</p>
-        <h2 className="fr-h3">{m.accessibilite.nonAccessibleContentTitle}</h2>
-        <p>{m.accessibilite.nonAccessibleContentText}</p>
-        <h3 className="fr-h6">{m.accessibilite.nonConformityTitle}</h3>
-        {m.accessibilite.nonConformityText}
+        <h2>{m.accessibilite.digitalAccessibilityTitle}</h2>
+        <p>{m.accessibilite.digitalAccessibilityTexte1}</p>
+        <p>{m.accessibilite.digitalAccessibilityTexte2}</p>
+        <p>{m.accessibilite.digitalAccessibilityTexte3}</p>
         <ul>
-          <li>{m.accessibilite.monthStats}</li>
+          <li>{m.accessibilite.digitalAccessibilityLi1}</li>
+          <li>{m.accessibilite.digitalAccessibilityLi2}</li>
+          <li>{m.accessibilite.digitalAccessibilityLi3}</li>
+          <li>{m.accessibilite.digitalAccessibilityLi4}</li>
+          <li>{m.accessibilite.digitalAccessibilityLi5}</li>
         </ul>
-        <h3 className="fr-h6">{m.accessibilite.disproportionateBurdenTitle}</h3>
-        <p>{m.accessibilite.disproportionateBurdenText1}</p>
-        <p>{m.accessibilite.disproportionateBurdenText2}</p>
-        <h2 className="fr-h3">{m.accessibilite.accessibilityReportTitle}</h2>
-        <p>
-          {m.accessibilite.accessibilityReportText}{' '}
-          <Link target="_blank" href="https://rebeca-documentation.finances.gouv.fr">
-            {m.accessibilite.rebecaPlatform}
-          </Link>
-          {m.accessibilite.evaluationGridText}
-        </p>
-        <h2 className="fr-h3">{m.accessibilite.declarationEstablishmentTitle}</h2>
+        <h2>{m.accessibilite.digitalAccessibilityCommitmentsTitle}</h2>
+        <p>{m.accessibilite.digitalAccessibilityCommitmentsTexte1} <a href="https://www.legifrance.gouv.fr/loda/article_lc/LEGIARTI000037388867" >{m.accessibilite.digitalAccessibilityCommitmentsLink}</a> </p>
+        <h2>{m.accessibilite.partialRgaaComplianceDeclarationTitle}</h2>
+        <p>{m.accessibilite.partialRgaaComplianceDeclarationTexte} <a href="https://signal.conso.gouv.fr" >{m.accessibilite.partialRgaaComplianceDeclarationLink}</a> </p>
+
+        <h3 className="fr-h3">{m.accessibilite.conformityStatusTitle}</h3>
+        <p dangerouslySetInnerHTML={{__html: m.accessibilite.conformityStatusText}}></p>
+        <h3 className="fr-h3">{m.accessibilite.testResultsTitle}</h3>
+        <p>{m.accessibilite.testResultsText}</p>
+        <ul>
+        <li>{m.accessibilite.testResultsLi1}</li>
+        <li>{m.accessibilite.testResultsLi2}</li>
+        </ul>
+        <h3 className="fr-h3">{m.accessibilite.nonAccessibleContentTitle}</h3>
+        <h4 className="fr-h6">{m.accessibilite.nonConformityTitle}</h4>
+        <p>{m.accessibilite.nonConformityText1}</p>
+        <p>{m.accessibilite.nonConformityText2}</p>
+        <p>{m.accessibilite.nonConformityText3}</p>
+        <h3 className="fr-h3">{m.accessibilite.declarationEstablishmentTitle}</h3>
         <p>{m.accessibilite.declarationEstablishmentText}</p>
-        <h3 className="fr-h6">{m.accessibilite.usedTechnologiesTitle}</h3>
+        <h4 className="fr-h6">{m.accessibilite.usedTechnologiesTitle}</h4>
         <p>{m.accessibilite.usedTechnologiesText}</p>
         <ul>
           <li>HTML</li>
           <li>WAI-ARIA</li>
+          <li>CSS</li>
           <li>JavaScript</li>
         </ul>
-        <h3 className="fr-h6">{m.accessibilite.assistiveTechnologiesTitle}</h3>
+        <h4 className="fr-h6">{m.accessibilite.assistiveTechnologiesTitle}</h4>
         <p>{m.accessibilite.assistiveTechnologiesText}</p>
         <ul>
           <li>{m.accessibilite.assistiveTechnologiesList1}</li>
           <li>{m.accessibilite.assistiveTechnologiesList2}</li>
+          <li>{m.accessibilite.assistiveTechnologiesList3}</li>
+          <li>{m.accessibilite.assistiveTechnologiesList4}</li>
         </ul>
-        <h2 className="fr-h3">{m.accessibilite.complianceVerificationPagesTitle}</h2>
+        <h4 className="fr-h6">{m.accessibilite.AccessibilityAssessmentToolsTitle}</h4>
+        <ul>
+          <li>{m.accessibilite.AccessibilityAssessmentToolsList1}</li>
+          <li>{m.accessibilite.AccessibilityAssessmentToolsList2}</li>
+          <li>{m.accessibilite.AccessibilityAssessmentToolsList3}</li>
+        </ul>
+
+        <h4 className="fr-h6">{m.accessibilite.complianceVerificationPagesTitle}</h4>
         <ol>
           <li>
             <Link href="/">{m.accessibilite.home}</Link>
           </li>
           <li>
+            <Link href={pagesDefs.planDuSite.url}>{m.accessibilite.planDuSite}</Link>
+          </li>
+          <li>
+            <Link href={pagesDefs.conditionsGeneralesUtilisation.url}>{m.accessibilite.MentionsLegales}</Link>
+          </li>
+          <li>
             <Link href={pagesDefs.quiSommesNous.url}>{m.accessibilite.quiSommesNous}</Link>
           </li>
+
           <li>
             <Link href={pagesDefs.commentCaMarche.url}>{m.accessibilite.commentCaMarche}</Link>
           </li>
           <li>
             <Link href={pagesDefs.stats.url}>{m.accessibilite.stats}</Link>
           </li>
-          <li>
-            <Link href={pagesDefs.centreAide.url}>{m.accessibilite.aide}</Link>
-          </li>
           <li>{m.accessibilite.etape1}</li>
           <li>{m.accessibilite.etape2}</li>
           <li>{m.accessibilite.etape3}</li>
           <li>{m.accessibilite.etape4}</li>
           <li>{m.accessibilite.etape5}</li>
-          <li>
-            <Link href={pagesDefs.espaceProWelcome.url}>{m.accessibilite.connexionEspacePro}</Link>
-          </li>
-          <li>{m.accessibilite.espaceProSuivi}</li>
-          <li>{m.accessibilite.espaceProDetail}</li>
-          <li>{m.accessibilite.espaceProEntreprises}</li>
-          <li>{m.accessibilite.espaceProGestionAcces}</li>
         </ol>
-        <h2 className="fr-h3">{m.accessibilite.improvementContactTitle}</h2>
-        <p>{m.accessibilite.improvementContactText}</p>
+        <h3 className="fr-h3">{m.accessibilite.improvementContactTitle}</h3>
+        <p dangerouslySetInnerHTML={{__html: m.accessibilite.improvementContactText}}></p>
         <ul>
           <li>{m.accessibilite.supportEmail}</li>
         </ul>
