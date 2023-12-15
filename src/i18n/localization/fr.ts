@@ -294,30 +294,15 @@ export const fr = {
       testResultsLi2:
         'Le taux de conformité moyen est de 99,8%. (Obtenu en faisant la moyenne des taux de conformité de chaque page.)',
       nonAccessibleContentTitle: 'Contenus non accessibles',
-      nonAccessibleContentText: 'Les contenus listés ci-dessous ne sont pas accessibles pour les raisons suivantes.', // a supp
       nonConformityTitle: 'Non conformité',
       nonConformityText1:
         "Dans l’étape « L’entreprise » du formulaire de signalement, si aucune entreprise n’est sélectionnée dans la section « Sélectionnez l'entreprise », l’activation du bouton « Suivant » doit déplacer la prise de focus sur le premier bouton radio de cette section.",
       nonConformityText2: 'Aussi, lorsque le champ « Site internet » est complété, sa prise de focus doit être possible.',
       nonConformityText3: 'Ce qui impacte le critère 12.8.',
-      monthStats: 'Statistiques mensuelles', // a supp
-      disproportionateBurdenTitle: 'Dérogations pour charge disproportionnée', // a supp
-      // a supp
-      disproportionateBurdenText1:
-        "La validité HTML ne peut être garantie sur l'ensemble des pages néanmoins à notre connaissance cela ne provoque aucun dysfonctionnement des aides techniques. La reprise et la vérification de toutes les pages du site représenteraient une charge de travail disproportionnée par rapport au gain attendu.",
-      // a supp
-      disproportionateBurdenText2:
-        "Les vidéos n'ont pas d'audio description, sous-titres ou transcription textuelle. La cellule ayant en charge la mise en ligne de ces animations n'est pas en mesure actuellement de fournir ces éléments pour l'ensemble de ces vidéos.",
-      accessibilityReportTitle: "Accès au rapport d'accessibilité", // a supp
-      accessibilityReportText: "Vous avez accès au rapport d'accessibilité", // a supp
-      rebecaPlatform: 'sur la plateforme Rebeca', // a supp
-      // a supp
-      evaluationGridText:
-        ", en recherchant \"Rapport d'audit d'accessibilité signal.conso.gouv.fr\". Vous pourrez trouver aussi la grille d'évaluation dans les documents associés.",
       declarationEstablishmentTitle: 'Établissement de cette déclaration ',
       declarationEstablishmentText: 'Cette déclaration a été établie le 12/12/2023.',
       usedTechnologiesTitle: 'Technologies utilisées pour la réalisation du site',
-      usedTechnologiesText: "L'accessibilité de SignalConso s'appuie sur les technologies suivantes :", // a supp
+      usedTechnologiesText: "L'accessibilité de SignalConso s'appuie sur les technologies suivantes :",
       assistiveTechnologiesTitle: 'Environnement de test',
       assistiveTechnologiesText:
         'Les tests ont été effectués avec les combinaisons de navigateurs web et lecteurs d’écran suivants :',
@@ -336,17 +321,11 @@ export const fr = {
       MentionsLegales: 'Mentions légales',
       commentCaMarche: 'Comment ça marche ?',
       stats: 'Statistiques',
-      aide: 'Aide', // a supp
       etape1: 'Étape 1 - Le problème',
       etape2: 'Étape 2 - La description',
       etape3: 'Étape 3 - Le commerçant',
       etape4: 'Étape 4 - Le consommateur',
       etape5: 'Étape 5 - Confirmation',
-      connexionEspacePro: "Connexion à l'espace pro", // a supp
-      espaceProSuivi: 'Espace pro - Suivi des signalements', // a supp
-      espaceProDetail: 'Espace pro - Détail du signalement', // a supp
-      espaceProEntreprises: 'Espace pro - Mes entreprises', // a supp
-      espaceProGestionAcces: 'Espace pro - Gestion des accès', // a supp
       improvementContactTitle: 'Retour d’information et contact',
       improvementContactText:
         'Si vous n’arrivez pas à accéder à un contenu ou à un service, vous pouvez contacter le responsable du site « <a href="https://signal.conso.gouv.fr/" >« SignalConso »</a> » pour être orienté vers une alternative accessible ou obtenir le contenu sous une autre forme.',
