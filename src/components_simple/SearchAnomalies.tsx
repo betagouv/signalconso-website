@@ -1,8 +1,5 @@
-import {appConfig} from '@/core/appConfig'
 import Fuse from 'fuse.js'
 import React, {useRef, useState} from 'react'
-import {useAnalyticContext} from '../analytic/AnalyticContext'
-import {EventCategories} from '../analytic/analytic'
 import {createFuseIndex} from '../anomalies/Anomalies'
 import {Anomaly} from '../anomalies/Anomaly'
 import {useI18n} from '../i18n/I18n'
@@ -19,7 +16,6 @@ const SearchAnomalies: React.FC<SearchBarProps> = ({anomalies}) => {
   const [suggestions, setSuggestions] = useState<Anomaly[]>(anomalies)
   const i18n = useI18n()
   const fIndex = createFuseIndex(anomalies)
-  const _analytic = useAnalyticContext()
   const fuse = new Fuse(fIndex, {
     keys: ['title', 'description'],
     threshold: 0.2,
@@ -27,19 +23,8 @@ const SearchAnomalies: React.FC<SearchBarProps> = ({anomalies}) => {
     distance: 100,
     ignoreLocation: true,
   })
-  const {enableSearchCategories} = appConfig
-  const handleInputBlur = () => {
-    if (query !== '') {
-      _analytic.trackEvent(EventCategories.categorySearch, 'Recherche par mot clé', query)
-    }
-  }
 
   const searchBoxRef = useRef<HTMLDivElement>(null)
-
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const newQuery = event.target.value
-    searchQuery(newQuery)
-  }
 
   const searchQuery = (newQuery: string) => {
     setQuery(newQuery)
@@ -56,18 +41,6 @@ const SearchAnomalies: React.FC<SearchBarProps> = ({anomalies}) => {
       <h2>{i18n.m.searchAnomalies.title}</h2>
       {i18n.currentLang === AppLangs.en && <TranslatedWebsiteAlert />}
       <div className="fr-search-bar mb-8 relative" id="header-search" role="search" ref={searchBoxRef}>
-        {enableSearchCategories && (
-          <input
-            className="fr-input"
-            title={i18n.m.searchAnomalies.searchCategoryPlaceholder}
-            placeholder={i18n.m.searchAnomalies.searchCategoryPlaceholder}
-            id="search-784-input"
-            name="search-784-input"
-            value={query}
-            onChange={handleInputChange}
-            onBlur={handleInputBlur}
-          />
-        )}
         {query.trim() !== '' && (
           <div
             className="w-10 group rounded-r-lg cursor-pointer hover:bg-[#1212ff] bg-[#000091] flex items-center justify-center"

@@ -708,7 +708,6 @@ export const en = {
     },
     searchAnomalies: {
       title: 'What problem did you encounter?',
-      searchCategoryPlaceholder: `Search for a category by keyword (BETA)`,
       noResultFound: `No result found.`,
       tryAnotherKeyword: 'Please try with a new keyword or choose from the list of categories',
       showAllCategories: 'Show all categories',

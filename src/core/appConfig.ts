@@ -42,7 +42,6 @@ export const appConfig = {
   maxDescriptionInputLength: 1000,
   infoBanner: process.env.NEXT_PUBLIC_INFO_BANNER,
   infoBannerSeverity: readSeverity(process.env.NEXT_PUBLIC_INFO_BANNER_SEVERITY) ?? 'warning',
-  enableSearchCategories: readBool(process.env.NEXT_PUBLIC_ENABLE_SEARCH_CATEGORIES),
   dummyEmailDomain: ['@yopmail.com'],
   translationFeatureFlagEnabled: readBool(process.env.NEXT_PUBLIC_TRANSLATION_FEATURE_FLAG_ENABLED),
   // Used only to regenerate the landing page from Airtable
