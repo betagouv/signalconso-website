@@ -17,7 +17,7 @@ jobs:
           cache-dependency-path: yarn.lock
       - run: node --version
       - run: yarn --version
-      - run: yarn install --immutable --immutable-cache
+      - run: yarn install --immutable
       - run: yarn sanitize-anomalies-filenames
       - uses: stefanzweifel/git-auto-commit-action@v5
         with:
