@@ -1,6 +1,6 @@
 title: Rotten or Moldy Food
 detailInputs:
-  customimport: _imports/detailInputs/produit-alimentaire.yml
+  customimport: _imports/detailInputs/produit-alimentaire.yaml
 fileLabel: Product / Package / Receipt / Invoice / Crash Photos
 reponseconsoCode:
   - '321'

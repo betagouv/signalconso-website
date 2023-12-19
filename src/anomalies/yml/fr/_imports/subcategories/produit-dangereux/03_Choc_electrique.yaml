@@ -1,6 +1,6 @@
 title: Choc électrique
 detailInputs:
-  customimport: _imports/detailInputs/produit-dangereux.yml
+  customimport: _imports/detailInputs/produit-dangereux.yaml
 fileLabel: Photos du produit / de la notice / du ticket / de la facture / de l'accident
 reponseconsoCode:
   - '344'

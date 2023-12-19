@@ -1,7 +1,7 @@
 title: Blessure physique
 desc: 'Exemple : morceau de verre ou de plastique dans l''aliment'
 detailInputs:
-  customimport: _imports/detailInputs/produit-alimentaire.yml
+  customimport: _imports/detailInputs/produit-alimentaire.yaml
 fileLabel: Photos du produit / de l'emballage / du ticket / de la facture / de l'accident
 reponseconsoCode:
   - '311'

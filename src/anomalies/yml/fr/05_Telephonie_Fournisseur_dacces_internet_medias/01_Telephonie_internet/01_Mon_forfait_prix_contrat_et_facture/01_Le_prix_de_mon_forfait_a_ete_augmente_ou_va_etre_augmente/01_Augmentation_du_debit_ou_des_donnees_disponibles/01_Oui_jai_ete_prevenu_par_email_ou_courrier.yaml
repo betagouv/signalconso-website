@@ -3,4 +3,4 @@ reponseconsoCode:
   - '421'
   - '2202'
 blockingInfo:
-  customimport: _imports/blockingInfo/tel.yml
+  customimport: _imports/blockingInfo/tel.yaml
