@@ -43,6 +43,7 @@ export const CompanyAskConsumerPostalCode = ({value, onChange, companyKind}: Pro
                 LOCATION: m.cantIdentifyLocationCompany,
                 SOCIAL: m.cantIdentifyCompany,
                 PRODUCT: m.cantIdentifyCompany,
+                TRAIN: m.cantIdentifyCompany,
               }),
             }}
           />
