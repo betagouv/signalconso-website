@@ -1,8 +1,6 @@
 title: Produit rappelé toujours en vente
 desc: Le produit fait l'objet d'une mesure de rappel des autorités
-reponseconsoCode:
-  - '311'
-  - '331'
+reponseconsoCode: '311'
 detailInputs:
   - label: Date du constat
     type: DATE_NOT_IN_FUTURE

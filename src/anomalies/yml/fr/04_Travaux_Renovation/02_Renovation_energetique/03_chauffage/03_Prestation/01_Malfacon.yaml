@@ -1,5 +1,3 @@
 title: Malfaçon
 desc: Constat d'un défaut résultant d'une mauvaise exécution des travaux
-reponseconsoCode:
-  - '446'
-  - '442'
+reponseconsoCode: '446'

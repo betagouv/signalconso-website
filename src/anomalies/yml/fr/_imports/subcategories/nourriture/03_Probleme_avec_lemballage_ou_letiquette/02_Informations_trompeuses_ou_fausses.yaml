@@ -1,8 +1,5 @@
 title: Informations trompeuses ou fausses
-reponseconsoCode:
-  - '210'
-  - '273'
-  - '271'
+reponseconsoCode: '210'
 detailInputs:
   - label: Date du constat (ou d'achat suivant le cas)
     type: DATE_NOT_IN_FUTURE

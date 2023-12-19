@@ -4,7 +4,6 @@ desc: >-
   cas, la brochure parle des animations régulières alors qu'il y en a très peu
 ccrfCode:
   - 23b
-reponseconsoCode:
-  - '210'
+reponseconsoCode: '210'
 tags:
   - ReponseConso

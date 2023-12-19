@@ -1,4 +1,4 @@
 title: Other
 detailInputs:
-  customimport: _imports/detailInputs/produit-dangereux.yml
+  customimport: _imports/detailInputs/produit-dangereux.yaml
 fileLabel: Product / Package / Receipt / Invoice / Crash Photos

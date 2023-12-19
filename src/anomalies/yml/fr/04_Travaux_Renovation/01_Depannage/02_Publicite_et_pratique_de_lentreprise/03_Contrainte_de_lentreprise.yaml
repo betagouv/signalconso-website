@@ -1,7 +1,5 @@
 title: Contrainte de l'entreprise
-reponseconsoCode:
-  - '210'
-  - '234'
+reponseconsoCode: '210'
 tags:
   - ReponseConso
 detailInputs:

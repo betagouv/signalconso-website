@@ -1,7 +1,6 @@
 title: Meals did not match the description
 desc: "Exemple\_: mass-market food product passed as \"homemade\""
-reponseconsoCode:
-  - '271'
+reponseconsoCode: '271'
 detailInputs:
   - label: Date of the finding
     type: DATE

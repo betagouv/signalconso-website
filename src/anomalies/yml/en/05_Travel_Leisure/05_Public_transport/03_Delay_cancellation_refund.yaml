@@ -1,7 +1,4 @@
 title: Delay / cancellation / refund
 ccrfCode:
-  - '21c'
-reponseconsoCode:
-  - '481'
-  - '424'
-  - '4241'
+  - 21c
+reponseconsoCode: '481'

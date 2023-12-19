@@ -1,6 +1,3 @@
 title: The advertised quantity is incorrect
 subcategoriesTitle: What is the product type ?
-reponseconsoCode:
-  - '210'
-  - '276'
-  - '277'
+reponseconsoCode: '210'

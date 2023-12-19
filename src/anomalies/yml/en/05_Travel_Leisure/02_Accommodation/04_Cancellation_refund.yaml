@@ -1,8 +1,5 @@
 title: Cancellation / refund
 ccrfCode:
-  - '21a'
-reponseconsoCode:
-  - '453'
-  - '481'
-  - '4241'
+  - 21a
+reponseconsoCode: '453'
 subcategoriesTitle: Who canceled the reservation ?

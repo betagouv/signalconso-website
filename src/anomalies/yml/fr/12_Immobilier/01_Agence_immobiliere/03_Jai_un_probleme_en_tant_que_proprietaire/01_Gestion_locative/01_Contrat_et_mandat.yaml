@@ -1,8 +1,5 @@
 title: Contrat et mandat
 tags:
   - ReponseConso
-reponseconsoCode:
-  - '442'
-  - '443'
-  - '446'
+reponseconsoCode: '442'
 desc: "Exemple\_: clause abusive dans le contrat"

@@ -2,10 +2,8 @@ title: Le devis est incomplet
 desc: "Exemple\_: devis non signé par le professionnel, professionnel non identifié, montant restant à payer non renseigné, …"
 companyKind: SIRET
 ccrfCode:
-  - '21G'
-reponseconsoCode:
-  - '226'
-  - '411'
+  - 21G
+reponseconsoCode: '226'
 detailInputs:
   - label: Date de constat
     type: DATE

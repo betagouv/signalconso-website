@@ -43,8 +43,8 @@ const Node = ({anomaly, open}: {anomaly: Anomaly | Subcategory; open?: boolean})
           )}
           {(anomaly as Subcategory).reponseconsoCode && (
             <span key={1} className="text-sm text-gray-500">
-              <b>ReponseConso codes:</b>&nbsp;
-              {(anomaly as Subcategory).reponseconsoCode?.join(', ')}
+              <b>ReponseConso code:</b>&nbsp;
+              {(anomaly as Subcategory).reponseconsoCode}
             </span>
           )}
           <div>

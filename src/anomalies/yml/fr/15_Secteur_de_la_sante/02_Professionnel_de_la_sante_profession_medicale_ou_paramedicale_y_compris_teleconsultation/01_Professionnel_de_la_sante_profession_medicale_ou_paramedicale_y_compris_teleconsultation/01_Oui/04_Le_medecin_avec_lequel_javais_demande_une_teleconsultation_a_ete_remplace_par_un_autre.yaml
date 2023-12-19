@@ -1,12 +1,11 @@
-title: Le médecin avec lequel j’avais demandé une téléconsultation a été remplacé par un autre
+title: >-
+  Le médecin avec lequel j’avais demandé une téléconsultation a été remplacé par
+  un autre
 tags:
   - ReponseConso
 ccrfCode:
-  - '23B'
-reponseconsoCode:
-  - '212'
-  - '226'
-  - '210'
+  - 23B
+reponseconsoCode: '212'
 detailInputs:
   - label: Date de constat
     type: DATE

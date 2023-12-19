@@ -1,7 +1,4 @@
 title: La quantité annoncée est non conforme
 subcategoriesTitle: Quel est le type de produit&#160;?
 companyKind: PRODUCT
-reponseconsoCode:
-  - '210'
-  - '276'
-  - '277'
+reponseconsoCode: '210'

@@ -106,6 +106,14 @@ export function notNull<A>(a: A | null): a is A {
   return a !== null
 }
 
+export function notUndefined<A>(a: A | undefined): a is A {
+  return a !== undefined
+}
+
+export function lastFromArray<A>(arr: A[]): A | undefined {
+  return arr.length === 0 ? undefined : arr[arr.length - 1]
+}
+
 export function sendMessageToReactNative(message: string): void {
   window.ReactNativeWebView?.postMessage(message)
 }

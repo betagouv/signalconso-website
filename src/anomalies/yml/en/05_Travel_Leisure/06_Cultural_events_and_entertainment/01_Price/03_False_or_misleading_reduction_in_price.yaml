@@ -2,12 +2,9 @@ title: False or misleading reduction in price
 desc: 'Examples: fake promotions, false time limits'
 ccrfCode:
   - '145'
-  - '23F'
+  - 23F
   - '146'
-reponseconsoCode:
-  - '224'
-  - '210'
-  - '212'
+reponseconsoCode: '224'
 detailInputs:
   - label: Date of discovery of the incident
     type: DATE

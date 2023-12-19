@@ -1,10 +1,8 @@
 title: Yes (I have the assistance card)
-reponseconsoCode:
-  - '521'
+reponseconsoCode: '521'
 detailInputs:
   - label: Date of refusal
     type: DATE
   - label: "Can you describe to us what happened\_?"
     type: TEXTAREA
-fileLabel: >-
-  You can attach elements (photo, assistance card...) to support your report.
+fileLabel: You can attach elements (photo, assistance card...) to support your report.

@@ -2,7 +2,6 @@ title: Absence d'information ou information incomplète
 ccrfCode:
   - 21B
   - 21A
-reponseconsoCode:
-  - '411'
+reponseconsoCode: '411'
 tags:
   - ReponseConso

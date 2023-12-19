@@ -1,9 +1,7 @@
 title: J'ai eu un problème de démarchage à domicile
 ccrfCode:
   - '221'
-reponseconsoCode:
-  - '2210'
-  - '221'
+reponseconsoCode: '2210'
 companyKind: LOCATION
 tags:
   - DemarchageADomicile

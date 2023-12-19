@@ -1,8 +1,8 @@
 title: Je n’ai pas été informé du montant des honoraires pratiqués
-desc: "Exemple : honoraires de vaccination, honoraires de dispensation, honoraires pour ordonnance complexe…"
+desc: >-
+  Exemple : honoraires de vaccination, honoraires de dispensation, honoraires
+  pour ordonnance complexe…
 ccrfCode:
-  - '21B'
+  - 21B
   - '216'
-reponseconsoCode:
-  - '411'
-  - '226'
+reponseconsoCode: '411'

@@ -3,4 +3,4 @@ tags:
   - Influenceur
 subcategoriesTitle: Publicité pour un produit interdit à la vente
 detailInputs:
-  customimport: _imports/detailInputs/influenceur.yml
+  customimport: _imports/detailInputs/influenceur.yaml

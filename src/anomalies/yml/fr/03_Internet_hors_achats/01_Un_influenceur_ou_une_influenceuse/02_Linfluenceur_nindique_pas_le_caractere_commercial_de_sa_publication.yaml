@@ -3,4 +3,4 @@ tags:
   - Influenceur
 subcategoriesTitle: L'influenceur n'indique pas le caractère commercial de sa publication
 detailInputs:
-  customimport: _imports/detailInputs/influenceur.yml
+  customimport: _imports/detailInputs/influenceur.yaml

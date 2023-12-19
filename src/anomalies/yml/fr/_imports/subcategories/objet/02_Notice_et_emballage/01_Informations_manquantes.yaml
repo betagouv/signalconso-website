@@ -1,6 +1,5 @@
 title: Informations manquantes
-reponseconsoCode:
-  - '333'
+reponseconsoCode: '333'
 detailInputs:
   - label: Quel est-le problème&#160;?
     type: RADIO

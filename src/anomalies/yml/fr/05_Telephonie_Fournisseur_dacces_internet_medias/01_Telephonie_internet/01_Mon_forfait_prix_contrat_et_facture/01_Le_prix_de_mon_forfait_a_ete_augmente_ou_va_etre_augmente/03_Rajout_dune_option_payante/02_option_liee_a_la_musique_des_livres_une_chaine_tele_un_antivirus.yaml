@@ -1,8 +1,7 @@
 title: option liée à la musique, des livres, une chaîne télé, un anti-virus
 ccrfCode:
   - '226'
-reponseconsoCode:
-  - '421'
+reponseconsoCode: '421'
 detailInputs:
   - label: À partir de quand cette option va-t-elle être payante ?
     type: DATE

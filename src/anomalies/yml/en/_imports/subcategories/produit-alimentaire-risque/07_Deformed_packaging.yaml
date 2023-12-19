@@ -1,11 +1,6 @@
 title: Deformed packaging
 detailInputs:
-  customimport: _imports/detailInputs/produit-alimentaire.yml
+  customimport: _imports/detailInputs/produit-alimentaire.yaml
 fileLabel: Product / Package / Receipt / Invoice / Crash Photos
 desc: 'Example: Bulging tin can'
-reponseconsoCode:
-  - '323'
-  - '321'
-  - '324'
-  - '322'
-  - '340'
+reponseconsoCode: '323'

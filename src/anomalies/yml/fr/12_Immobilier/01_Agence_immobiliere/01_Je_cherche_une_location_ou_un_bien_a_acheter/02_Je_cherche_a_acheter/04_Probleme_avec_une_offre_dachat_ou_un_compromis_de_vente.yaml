@@ -1,6 +1,5 @@
 title: Problème avec une offre d'achat ou un compromis de vente
-reponseconsoCode:
-  - '425'
+reponseconsoCode: '425'
 desc: "Exemple\_: refus de mon offre au prix sans justification"
 tags:
   - ReponseConso

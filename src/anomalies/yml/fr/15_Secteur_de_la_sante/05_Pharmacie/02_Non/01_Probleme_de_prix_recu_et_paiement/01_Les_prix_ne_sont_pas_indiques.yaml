@@ -1,11 +1,12 @@
 title: Les prix ne sont pas indiqués
 desc: >-
-  Les prix doivent être indiqués dans les rayons, et être visibles pour les médicaments situés derrière le comptoir. La pharmacie doit également avoir un catalogue papier ou une tablette électronique des prix des médicaments non exposés à la vue du public.
+  Les prix doivent être indiqués dans les rayons, et être visibles pour les
+  médicaments situés derrière le comptoir. La pharmacie doit également avoir un
+  catalogue papier ou une tablette électronique des prix des médicaments non
+  exposés à la vue du public.
 ccrfCode:
-  - '21B'
-reponseconsoCode:
-  - '212'
-  - '226'
+  - 21B
+reponseconsoCode: '212'
 detailInputs:
   - label: Date de constat
     type: DATE

@@ -1,6 +1,5 @@
 title: Prix final non-conforme au prix annoncé
 desc: 'Exemple : fausse réduction, suppléments non prévus'
-reponseconsoCode:
-  - '210'
+reponseconsoCode: '210'
 tags:
   - ReponseConso

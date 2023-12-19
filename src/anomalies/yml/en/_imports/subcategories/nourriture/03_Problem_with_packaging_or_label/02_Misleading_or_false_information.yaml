@@ -1,8 +1,5 @@
 title: Misleading or false information
-reponseconsoCode:
-  - '210'
-  - '273'
-  - '271'
+reponseconsoCode: '210'
 detailInputs:
   - label: Date of discovery of the incident (or date of purchase if relevant)
     type: DATE_NOT_IN_FUTURE

@@ -1,10 +1,8 @@
 title: >-
-  Items were not fresh or some produce was out of date, i.e. past their use-by dates
-reponseconsoCode:
-  - '323'
-  - '321'
+  Items were not fresh or some produce was out of date, i.e. past their use-by
+  dates
+reponseconsoCode: '323'
 detailInputs:
   - label: Date of the finding
     type: DATE
-fileLabel: >-
-  If possible, please attach a photo or document to support your report.
+fileLabel: If possible, please attach a photo or document to support your report.

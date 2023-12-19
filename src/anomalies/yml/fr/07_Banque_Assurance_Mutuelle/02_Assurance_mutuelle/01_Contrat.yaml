@@ -2,6 +2,4 @@ title: Contrat
 desc: 'Exemple : prélèvement, modification du contrat, ...'
 tags:
   - ReponseConso
-reponseconsoCode:
-  - '425'
-  - '411'
+reponseconsoCode: '425'

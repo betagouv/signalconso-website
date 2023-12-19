@@ -1,11 +1,13 @@
-title: Je n'ai pas eu de facture (note) reçu de note (« facture », « reçu », « récapitulatif de paiement ») 
-desc: "À partir de 25 euros, le professionnel doit vous remettre une note qui décrit ce que vous avez payé. Un affichage vous en informe."
+title: >-
+  Je n'ai pas eu de facture (note) reçu de note (« facture », « reçu », «
+  récapitulatif de paiement »)
+desc: >-
+  À partir de 25 euros, le professionnel doit vous remettre une note qui décrit
+  ce que vous avez payé. Un affichage vous en informe.
 companyKind: SIRET
 ccrfCode:
   - '213'
-reponseconsoCode:
-  - '213'
-  - '226'
+reponseconsoCode: '213'
 detailInputs:
   - label: Date de constat
     type: DATE

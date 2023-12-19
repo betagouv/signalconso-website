@@ -1,5 +1,4 @@
 title: Problème d'accessibilité de l'agence
 blockingInfo:
-  customimport: _imports/blockingInfo/accessibilite.yml
-reponseconsoCode:
-  - '679'
+  customimport: _imports/blockingInfo/accessibilite.yaml
+reponseconsoCode: '679'

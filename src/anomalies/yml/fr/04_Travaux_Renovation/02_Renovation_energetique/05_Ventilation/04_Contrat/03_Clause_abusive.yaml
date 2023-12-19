@@ -2,7 +2,6 @@ title: Clause abusive
 desc: Vous souhaitez dénoncer une clause qui vous est particulièrement défavorable
 ccrfCode:
   - 21C
-reponseconsoCode:
-  - '214'
+reponseconsoCode: '214'
 tags:
   - ReponseConso

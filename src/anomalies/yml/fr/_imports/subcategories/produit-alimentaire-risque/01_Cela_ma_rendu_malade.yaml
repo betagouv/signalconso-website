@@ -1,13 +1,5 @@
 title: Cela m'a rendu malade
 detailInputs:
-  customimport: _imports/detailInputs/produit-alimentaire.yml
+  customimport: _imports/detailInputs/produit-alimentaire.yaml
 fileLabel: Photos du produit / de l'emballage / du ticket / de la facture / de l'accident
-reponseconsoCode:
-  - '323'
-  - '324'
-  - '273'
-  - '321'
-  - '274'
-  - '210'
-  - '322'
-  - '311'
+reponseconsoCode: '323'

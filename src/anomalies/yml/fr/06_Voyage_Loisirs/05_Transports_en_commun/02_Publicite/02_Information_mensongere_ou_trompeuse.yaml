@@ -1,8 +1,7 @@
 title: Information mensongère ou trompeuse
 ccrfCode:
   - 23b
-reponseconsoCode:
-  - '210'
+reponseconsoCode: '210'
 detailInputs:
   - label: Qu'est-ce qui est trompeur ou mensonger&#160;?
     type: RADIO

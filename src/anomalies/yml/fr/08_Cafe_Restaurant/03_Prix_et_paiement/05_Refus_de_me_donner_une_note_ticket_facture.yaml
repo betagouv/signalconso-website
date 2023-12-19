@@ -1,6 +1,5 @@
 title: Refus de me donner une note (ticket, facture)
-reponseconsoCode:
-  - '2131'
+reponseconsoCode: '2131'
 tags:
   - ReponseConso
 detailInputs:

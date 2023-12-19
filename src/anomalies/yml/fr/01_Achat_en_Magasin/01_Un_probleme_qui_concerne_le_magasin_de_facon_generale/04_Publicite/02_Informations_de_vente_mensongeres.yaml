@@ -4,10 +4,7 @@ desc: >-
   bio" or ce n'est pas le cas
 ccrfCode:
   - 23B
-reponseconsoCode:
-  - '210'
-  - '2243'
-  - '271'
+reponseconsoCode: '210'
 detailInputs:
   - label: Date du constat
     type: DATE

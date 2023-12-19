@@ -4,6 +4,4 @@ title: >-
 desc: "Exemple\_: la maison affichée en vitrine est en fait déjà vendue"
 tags:
   - ReponseConso
-reponseconsoCode:
-  - '210'
-  - '220'
+reponseconsoCode: '210'

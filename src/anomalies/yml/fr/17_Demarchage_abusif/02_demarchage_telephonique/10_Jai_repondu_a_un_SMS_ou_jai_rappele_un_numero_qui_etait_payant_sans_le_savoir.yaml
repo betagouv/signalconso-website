@@ -3,4 +3,4 @@ title: >-
   savoir
 companyKind: PHONE
 blockingInfo:
-  customimport: _imports/blockingInfo/called-paid-number.yml
+  customimport: _imports/blockingInfo/called-paid-number.yaml

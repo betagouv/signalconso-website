@@ -1,9 +1,5 @@
 title: Other
 detailInputs:
-  customimport: _imports/detailInputs/produit-alimentaire.yml
+  customimport: _imports/detailInputs/produit-alimentaire.yaml
 fileLabel: Product / Package / Receipt / Invoice / Crash Photos
-reponseconsoCode:
-  - '340'
-  - '324'
-  - '322'
-  - '323'
+reponseconsoCode: '340'

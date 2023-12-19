@@ -3,4 +3,4 @@ desc: >-
   Exemple : les odeurs des poubelles arrivent dans mon appartement, les clients
   se garent devant chez moi
 blockingInfo:
-  customimport: _imports/blockingInfo/voisinage.yml
+  customimport: _imports/blockingInfo/voisinage.yaml

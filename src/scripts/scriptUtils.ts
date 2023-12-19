@@ -24,6 +24,10 @@ export function sortObjectKeys(obj: any): any {
 export function readFileYaml(filePath: string): any {
   return yaml.load(fs.readFileSync(filePath, 'utf-8'))
 }
+export function writeFileYaml(filePath: string, content: unknown) {
+  console.log('Writing into file ', filePath)
+  return fs.writeFileSync(filePath, yaml.dump(content))
+}
 
 export function exists(_path: string) {
   return fs.existsSync(_path)
@@ -67,6 +71,26 @@ export function dirContentSorted<A>(dirPath: string, {excludedFileNames}: {exclu
   return sortBy(fs.readdirSync(dirPath), _ => _)
     .filter(_ => !excludedFileNames?.includes(_))
     .map(_ => path.join(dirPath, _))
+}
+
+export function extractFileName(_path: string) {
+  return path.basename(_path)
+}
+
+// List all files in a directory, recursively
+// Return files only
+export function listFilesRecursively(dirPath: string) {
+  function inner(subDirPath: string): string[] {
+    const contents = dirContentSorted(subDirPath)
+    const files = contents.filter(isFile)
+    const subdirs = contents.filter(_ => !isFile(_))
+
+    const filesInSubdirs = subdirs.flatMap(inner)
+    return [...files, ...filesInSubdirs]
+  }
+  throwIfNotExists(dirPath)
+  throwIfNotDir(dirPath)
+  return inner(dirPath)
 }
 
 export function padTo2(num: number): string {

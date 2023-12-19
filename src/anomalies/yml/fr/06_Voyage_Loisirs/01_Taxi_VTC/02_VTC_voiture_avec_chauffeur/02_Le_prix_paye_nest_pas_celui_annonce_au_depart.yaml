@@ -2,9 +2,7 @@ title: Le prix payé n'est pas celui annoncé au départ
 ccrfCode:
   - 23b
   - '164'
-reponseconsoCode:
-  - '451'
-  - '210'
+reponseconsoCode: '451'
 tags:
   - ReponseConso
 detailInputs:

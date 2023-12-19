@@ -3,9 +3,7 @@ desc: >-
   En boutique et sur internet, l’offre sans reste à charge doit vous être
   présentée. Le devis doit aussi faire état de cette offre.
 ccrfCode:
-  - '23G'
+  - 23G
 tags:
   - ReponseConso
-reponseconsoCode:
-  - '226'
-  - '411'
+reponseconsoCode: '226'

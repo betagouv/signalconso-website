@@ -1,15 +1,15 @@
-title: "Hard foreign body"
+title: Hard foreign body
 desc: "Example\_: piece of glass, piece of metal, tooth"
-reponseconsoCode:
-  - '323'
+reponseconsoCode: '323'
 tags:
-    - ProduitDangereux
+  - ProduitDangereux
 subcategoriesTitle: What kind of product was it ?
 blockingInfo:
   title: You want to report the presence of a "hard" foreign body
   questions:
     - question: >-
-        This case represents an alert and requires an individualized analysis by Fraud Control.
+        This case represents an alert and requires an individualized analysis by
+        Fraud Control.
       answer: >-
         Please report it on the site <br><a
         href="https://www.economie.gouv.fr/contact/contacter-la-dgccrf?dest=particulier"

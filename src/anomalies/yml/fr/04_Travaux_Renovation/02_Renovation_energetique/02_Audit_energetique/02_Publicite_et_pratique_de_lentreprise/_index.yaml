@@ -5,6 +5,4 @@ desc: >-
 ccrfCode:
   - 21A
   - 23B
-reponseconsoCode:
-  - '451'
-  - '418'
+reponseconsoCode: '451'

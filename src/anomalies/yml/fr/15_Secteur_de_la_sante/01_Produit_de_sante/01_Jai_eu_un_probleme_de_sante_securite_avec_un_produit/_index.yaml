@@ -3,6 +3,4 @@ desc: "Exemple\_: allergie, vomissement, électrocution"
 subcategoriesTitle: "Quel est le type de produit\_?"
 tags:
   - ProduitIndustriel
-reponseconsoCode:
-  - '617'
-  - '332'
+reponseconsoCode: '617'

@@ -1,8 +1,5 @@
 title: Oui (je possède la carte d'assistance)
-reponseconsoCode:
-  - '422'
-  - '220'
-  - '232'
+reponseconsoCode: '422'
 detailInputs:
   - label: Date du refus
     type: DATE

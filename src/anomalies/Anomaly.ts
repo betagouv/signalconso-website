@@ -41,7 +41,7 @@ type SubcategoryBase = {
   subcategories?: Subcategory[]
   tags?: ReportTagAllowedInYaml[]
   desc?: string
-  reponseconsoCode?: string[] | null
+  reponseconsoCode?: string
   ccrfCode?: string[]
   companyKind?: CompanyKinds
   companyKindQuestion?: CompanyKindQuestion

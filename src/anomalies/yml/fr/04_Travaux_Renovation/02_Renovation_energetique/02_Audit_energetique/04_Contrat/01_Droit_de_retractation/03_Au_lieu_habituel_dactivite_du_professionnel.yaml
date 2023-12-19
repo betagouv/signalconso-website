@@ -1,8 +1,7 @@
 title: Au lieu habituel d'activité du professionnel
 ccrfCode:
   - '226'
-reponseconsoCode:
-  - '621'
+reponseconsoCode: '621'
 blockingInfo:
   title: Vous ne pouvez plus vous rétracter
   content: Il n'y a pas de délai de rétractation pour votre cas.

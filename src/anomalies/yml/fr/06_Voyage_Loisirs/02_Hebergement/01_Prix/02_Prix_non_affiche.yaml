@@ -1,8 +1,7 @@
 title: Prix non affiché
 ccrfCode:
   - 21b
-reponseconsoCode:
-  - '212'
+reponseconsoCode: '212'
 tags:
   - ReponseConso
 desc: 'Exemple: sur un site, un catalogue'

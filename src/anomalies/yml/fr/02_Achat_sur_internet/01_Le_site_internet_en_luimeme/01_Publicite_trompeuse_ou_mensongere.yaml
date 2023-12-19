@@ -5,6 +5,4 @@ desc: >-
   affiché, faux compte à rebours, etc.
 ccrfCode:
   - 23B
-reponseconsoCode:
-  - '210'
-  - '220'
+reponseconsoCode: '210'

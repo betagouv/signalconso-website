@@ -1,6 +1,5 @@
 title: Oui
-reponseconsoCode:
-  - '323'
+reponseconsoCode: '323'
 detailInputs:
   - label: Date du constat (ou d'achat suivant le cas)
     type: DATE

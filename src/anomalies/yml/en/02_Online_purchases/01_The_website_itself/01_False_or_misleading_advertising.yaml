@@ -1,8 +1,8 @@
 title: False or misleading advertising
 desc: >-
-  Examples: false product description, false promises on product origin, results, environmental impact, permanent unavailability, fake stock on display, fake promotion countdowns, etc.
+  Examples: false product description, false promises on product origin,
+  results, environmental impact, permanent unavailability, fake stock on
+  display, fake promotion countdowns, etc.
 ccrfCode:
   - 23B
-reponseconsoCode:
-  - '210'
-  - '220'
+reponseconsoCode: '210'

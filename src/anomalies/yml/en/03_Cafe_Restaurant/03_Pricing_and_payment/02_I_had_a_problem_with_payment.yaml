@@ -1,8 +1,6 @@
 title: I had a problem with payment
-reponseconsoCode:
-  - '212'
+reponseconsoCode: '212'
 detailInputs:
   - label: Date of the finding
     type: DATE
-fileLabel: >-
-  If possible, please attach a photo or document to support your report.
+fileLabel: If possible, please attach a photo or document to support your report.

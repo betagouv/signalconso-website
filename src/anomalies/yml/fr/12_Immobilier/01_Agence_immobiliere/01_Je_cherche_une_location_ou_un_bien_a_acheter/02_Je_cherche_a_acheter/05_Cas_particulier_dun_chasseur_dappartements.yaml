@@ -1,7 +1,5 @@
 title: Cas particulier d'un chasseur d'appartements
 desc: "Exemple\_: frais d'étude alors que c'est interdit"
-reponseconsoCode:
-  - '2269'
-  - '425'
+reponseconsoCode: '2269'
 tags:
   - ReponseConso

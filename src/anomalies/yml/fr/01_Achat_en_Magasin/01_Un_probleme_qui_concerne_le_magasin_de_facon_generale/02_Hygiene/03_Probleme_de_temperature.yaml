@@ -2,10 +2,7 @@ title: Problème de température
 desc: 'Exemple : rupture de la chaîne du froid'
 ccrfCode:
   - '322'
-reponseconsoCode:
-  - '322'
-  - '312'
-  - '310'
+reponseconsoCode: '322'
 tags:
   - ReponseConso
 detailInputs:

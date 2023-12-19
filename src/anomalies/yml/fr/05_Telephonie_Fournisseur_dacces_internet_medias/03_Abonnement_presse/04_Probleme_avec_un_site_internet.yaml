@@ -1,7 +1,5 @@
 title: Problème avec un site internet
 ccrfCode:
   - '221'
-reponseconsoCode:
-  - '443'
-  - '446'
+reponseconsoCode: '443'
 companyKind: WEBSITE

@@ -1,6 +1,5 @@
 title: Je n'ai pas reçu de justificatif de paiement
-desc: "Exemple : note, « ticket vitale », « reçu » …"
+desc: 'Exemple : note, « ticket vitale », « reçu » …'
 ccrfCode:
   - '213'
-reponseconsoCode:
-  - '213'
+reponseconsoCode: '213'

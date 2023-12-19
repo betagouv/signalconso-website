@@ -1,5 +1,3 @@
 title: Bail / contrat de location
-reponseconsoCode:
-  - '632'
-  - '634'
+reponseconsoCode: '632'
 desc: "Exemple\_: clause abusive dans le contrat"

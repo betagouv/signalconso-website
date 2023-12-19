@@ -7,9 +7,7 @@ desc: >-
 tags:
   - Hygiene
   - Ehpad
-reponseconsoCode:
-  - '321'
-  - '323'
+reponseconsoCode: '321'
 ccrfCode:
   - '145'
   - 23F

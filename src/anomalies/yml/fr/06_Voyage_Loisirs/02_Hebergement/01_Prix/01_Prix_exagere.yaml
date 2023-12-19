@@ -1,8 +1,7 @@
 title: Prix exagéré
 ccrfCode:
   - 21b
-reponseconsoCode:
-  - '622'
+reponseconsoCode: '622'
 blockingInfo:
   title: Ceci ne constitue pas un motif de signalement.
   content: >-

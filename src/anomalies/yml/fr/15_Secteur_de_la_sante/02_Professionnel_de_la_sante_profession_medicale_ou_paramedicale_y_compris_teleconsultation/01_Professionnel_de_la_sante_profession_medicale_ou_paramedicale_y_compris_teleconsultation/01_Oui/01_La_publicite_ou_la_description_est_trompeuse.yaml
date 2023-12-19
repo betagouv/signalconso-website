@@ -3,10 +3,8 @@ desc: "Exemple\_: le site promettait une téléconsultation en moins de deux heu
 tags:
   - ReponseConso
 ccrfCode:
-  - '23B'
-reponseconsoCode:
-  - '212'
-  - '226'
+  - 23B
+reponseconsoCode: '212'
 detailInputs:
   - label: Date de constat
     type: DATE

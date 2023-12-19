@@ -1,6 +1,4 @@
 title: Prix / paiement
-reponseconsoCode:
-  - '451'
-  - '212'
+reponseconsoCode: '451'
 tags:
   - ReponseConso
