@@ -8,6 +8,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.MANU_GITHUB_TOKEN }}
       - uses: actions/setup-node@v4
         with:
           node-version: 20
@@ -15,9 +17,8 @@ jobs:
           cache-dependency-path: yarn.lock
       - run: node --version
       - run: yarn --version
-      - run: yarn install --frozen-lockfile
+      - run: yarn install --immutable --immutable-cache
       - run: yarn sanitize-anomalies-filenames
       - uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          token: ${{ secrets.MANU_GITHUB_TOKEN }}
           commit_message: Auto commit after sanitization of anomalies filenames
