@@ -19,4 +19,5 @@ jobs:
       - run: yarn sanitize-anomalies-filenames
       - uses: stefanzweifel/git-auto-commit-action@v5
         with:
+          token: ${{ secrets.MANU_GITHUB_TOKEN }}
           commit_message: Auto commit after sanitization of anomalies filenames
