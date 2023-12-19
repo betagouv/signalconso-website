@@ -3,8 +3,7 @@ companyKind: LOCATION
 ccrfCode:
   - '220'
   - '221'
-reponseconsoCode:
-  - '221'
+reponseconsoCode: '221'
 tags:
   - ReponseConso
   - DemarchageADomicile

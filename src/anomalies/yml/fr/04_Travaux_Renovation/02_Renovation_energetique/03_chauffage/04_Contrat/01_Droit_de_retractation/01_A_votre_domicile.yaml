@@ -5,7 +5,4 @@ ccrfCode:
   - '221'
 tags:
   - ReponseConso
-reponseconsoCode:
-  - '2213'
-  - '2214'
-  - '2203'
+reponseconsoCode: '2213'

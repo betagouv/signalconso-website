@@ -1,8 +1,7 @@
 title: Une publicité est trompeuse ou non appliquée
 desc: "Exemple\_: offre promotionnelle trompeuse sur des lunettes, mise en avant d’une caractéristique non avérée, …"
 ccrfCode:
-  - '23B'
-reponseconsoCode:
-  - '210'
+  - 23B
+reponseconsoCode: '210'
 tags:
   - ReponseConso

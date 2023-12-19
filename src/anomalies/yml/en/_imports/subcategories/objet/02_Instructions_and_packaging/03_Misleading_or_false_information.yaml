@@ -1,8 +1,6 @@
 title: Misleading or false information
 desc: "Example\_: \"in gold\" while it is \"gold plated\", \"made in France\" while it is not"
-reponseconsoCode:
-  - '210'
-  - '271'
+reponseconsoCode: '210'
 detailInputs:
   - label: What is the product type?
     type: RADIO

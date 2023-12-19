@@ -1,4 +1,5 @@
 title: Remboursement / indemnisation
-desc: 'Exemple : remboursement optique/Dentaire, indemnisation suite à sinistre (dégât des eaux, vol, ...)'
-reponseconsoCode:
-  - '679'
+desc: >-
+  Exemple : remboursement optique/Dentaire, indemnisation suite à sinistre
+  (dégât des eaux, vol, ...)
+reponseconsoCode: '679'

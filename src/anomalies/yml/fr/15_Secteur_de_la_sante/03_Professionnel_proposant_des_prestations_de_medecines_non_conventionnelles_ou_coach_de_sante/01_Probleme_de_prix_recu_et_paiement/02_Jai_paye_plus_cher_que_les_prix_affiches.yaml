@@ -3,11 +3,8 @@ desc: "Exemple\_: J'ai payé un supplément non prévu sans en être informé au
 tags:
   - ReponseConso
 ccrfCode:
-  - '23B'
-reponseconsoCode:
-  - '212'
-  - '226'
-  - '210'
+  - 23B
+reponseconsoCode: '212'
 detailInputs:
   - label: Date de constat
     type: DATE

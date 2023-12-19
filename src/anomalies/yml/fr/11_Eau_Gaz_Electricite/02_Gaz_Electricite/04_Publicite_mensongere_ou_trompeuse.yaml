@@ -3,9 +3,8 @@ desc: "Exemple\_: publicité \"offre verte\" mensongère"
 tags:
   - ReponseConso
 ccrfCode:
-  - '23B'
-reponseconsoCode:
-  - '210'
+  - 23B
+reponseconsoCode: '210'
 detailInputs:
   - label: Date du constat
     type: DATE

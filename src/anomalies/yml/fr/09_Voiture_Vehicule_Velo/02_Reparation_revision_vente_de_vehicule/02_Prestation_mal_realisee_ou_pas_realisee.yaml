@@ -1,7 +1,5 @@
 title: Prestation mal réalisée ou pas réalisée
-reponseconsoCode:
-  - '446'
-  - '271'
+reponseconsoCode: '446'
 tags:
   - ReponseConso
 desc: >-

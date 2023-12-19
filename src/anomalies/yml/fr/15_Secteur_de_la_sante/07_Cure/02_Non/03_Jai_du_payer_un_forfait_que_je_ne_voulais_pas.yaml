@@ -3,6 +3,5 @@ desc: "Exemple\_: « forfait confort », …"
 tags:
   - ReponseConso
 ccrfCode:
-  - '23E'
-reponseconsoCode:
-  - '2331'
+  - 23E
+reponseconsoCode: '2331'

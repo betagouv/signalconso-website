@@ -1,11 +1,9 @@
 title: La publicité (ou les informations sur la boîte) est trompeuse
 tags:
   - ProduitIndustriel
-ccrfCode: 
-  - '23B'
-reponseconsoCode:
-  - '411'
-  - '643'
+ccrfCode:
+  - 23B
+reponseconsoCode: '411'
 detailInputs:
   - label: Date de constat (ou date d'achat)
     type: DATE

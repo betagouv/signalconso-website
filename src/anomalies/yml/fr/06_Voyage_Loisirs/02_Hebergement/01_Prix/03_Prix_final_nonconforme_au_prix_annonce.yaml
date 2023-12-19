@@ -1,8 +1,7 @@
 title: Prix final non-conforme au prix annoncé
 ccrfCode:
   - 23b
-reponseconsoCode:
-  - '210'
+reponseconsoCode: '210'
 desc: 'Exemple : fausse réduction, supplément imprévu'
 tags:
   - ReponseConso

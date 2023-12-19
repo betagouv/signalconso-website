@@ -3,10 +3,7 @@ ccrfCode:
   - '163'
 tags:
   - ReponseConso
-reponseconsoCode:
-  - '212'
-  - '210'
-  - '224'
+reponseconsoCode: '212'
 detailInputs:
   - label: Veuillez préciser
     type: RADIO

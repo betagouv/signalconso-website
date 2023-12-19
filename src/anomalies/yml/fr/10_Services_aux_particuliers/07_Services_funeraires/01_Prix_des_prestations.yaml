@@ -4,8 +4,6 @@ desc: >-
   conservation
 ccrfCode:
   - 21b
-reponseconsoCode:
-  - '411'
-  - '212'
+reponseconsoCode: '411'
 tags:
   - ReponseConso

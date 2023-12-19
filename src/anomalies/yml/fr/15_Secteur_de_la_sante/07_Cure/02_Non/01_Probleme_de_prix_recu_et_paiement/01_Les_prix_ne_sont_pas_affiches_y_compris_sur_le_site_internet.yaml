@@ -2,10 +2,8 @@ title: Les prix ne sont pas affichés, y compris sur le site internet
 desc: "Exemple\_: les prix des soins ne sont pas affichés, les prix affichés sont illisibles."
 companyKind: SIRET
 ccrfCode:
-  - '21B'
-reponseconsoCode:
-  - '212'
-  - '226'
+  - 21B
+reponseconsoCode: '212'
 detailInputs:
   - label: Date de constat
     type: DATE

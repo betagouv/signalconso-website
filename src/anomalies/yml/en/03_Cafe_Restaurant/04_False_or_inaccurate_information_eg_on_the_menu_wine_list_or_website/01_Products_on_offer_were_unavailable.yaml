@@ -1,7 +1,5 @@
 title: Products on offer were unavailable
-reponseconsoCode:
-  - '2243'
-  - '271'
+reponseconsoCode: '2243'
 detailInputs:
   - label: Date of the finding
     type: DATE

@@ -1,7 +1,6 @@
 title: J'ai vu un animal (nuisible)
 desc: "Exemple\_: cafard, rat"
-reponseconsoCode:
-  - '312'
+reponseconsoCode: '312'
 detailInputs:
   - label: Date du constat
     type: DATE

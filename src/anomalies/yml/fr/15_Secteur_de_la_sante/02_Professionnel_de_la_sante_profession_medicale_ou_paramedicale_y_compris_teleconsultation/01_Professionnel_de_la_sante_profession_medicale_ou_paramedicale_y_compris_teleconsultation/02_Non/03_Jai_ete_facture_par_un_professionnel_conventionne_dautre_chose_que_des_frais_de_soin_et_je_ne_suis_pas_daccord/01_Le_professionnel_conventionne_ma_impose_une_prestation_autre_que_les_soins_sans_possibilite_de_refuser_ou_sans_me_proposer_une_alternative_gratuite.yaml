@@ -1,12 +1,12 @@
-title: Le professionnel conventionné m'a imposé une prestation autre que les soins sans possibilité de refuser ou sans me proposer une alternative gratuite.
+title: >-
+  Le professionnel conventionné m'a imposé une prestation autre que les soins
+  sans possibilité de refuser ou sans me proposer une alternative gratuite.
 desc: "Exemple\_: frais d’archivage numériques non pris en charge par l’assurance maladie, frais de courrier possibilité de retirer le courrier sur place, …"
 tags:
   - ReponseConso
 ccrfCode:
   - '216'
-reponseconsoCode:
-  - '212'
-  - '226'
+reponseconsoCode: '212'
 detailInputs:
   - label: Date de constat
     type: DATE

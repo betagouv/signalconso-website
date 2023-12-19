@@ -1,11 +1,15 @@
-title: Le professionnel n'indique pas s'il est conventionné, ou s'il est secteur 1 ou secteur 2.
-desc: "Pour les professions médicales et certaines professions paramédicales, cette indication est obligatoire sur les sites de prise de rendez-vous, sur la plaque (au niveau de la porte ou du hall d'entrée) et dans la salle d'attente. Les médecins indiquent aussi s'ils relèvent du secteur 1 ou du secteur 2."
+title: >-
+  Le professionnel n'indique pas s'il est conventionné, ou s'il est secteur 1 ou
+  secteur 2.
+desc: >-
+  Pour les professions médicales et certaines professions paramédicales, cette
+  indication est obligatoire sur les sites de prise de rendez-vous, sur la
+  plaque (au niveau de la porte ou du hall d'entrée) et dans la salle d'attente.
+  Les médecins indiquent aussi s'ils relèvent du secteur 1 ou du secteur 2.
 companyKind: SIRET
 ccrfCode:
   - '226'
-reponseconsoCode:
-  - '212'
-  - '226'
+reponseconsoCode: '212'
 detailInputs:
   - label: Date de constat
     type: DATE

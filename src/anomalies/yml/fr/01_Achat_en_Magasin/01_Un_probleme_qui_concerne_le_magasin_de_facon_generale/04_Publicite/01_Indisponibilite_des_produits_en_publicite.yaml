@@ -1,9 +1,7 @@
 title: Indisponibilité des produits en publicité
 ccrfCode:
   - 23B
-reponseconsoCode:
-  - '210'
-  - '2243'
+reponseconsoCode: '210'
 detailInputs:
   - label: Date du constat
     type: DATE

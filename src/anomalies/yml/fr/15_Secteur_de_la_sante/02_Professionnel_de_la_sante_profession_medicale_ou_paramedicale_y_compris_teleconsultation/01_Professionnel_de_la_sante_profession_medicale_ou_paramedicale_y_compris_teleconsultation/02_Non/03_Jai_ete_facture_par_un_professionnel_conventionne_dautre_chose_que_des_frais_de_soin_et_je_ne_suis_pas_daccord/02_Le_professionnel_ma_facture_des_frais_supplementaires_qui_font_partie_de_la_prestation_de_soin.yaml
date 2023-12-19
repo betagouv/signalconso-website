@@ -1,12 +1,12 @@
-title: Le professionnel m'a facturé des frais supplémentaires qui font partie de la prestation de soin.
+title: >-
+  Le professionnel m'a facturé des frais supplémentaires qui font partie de la
+  prestation de soin.
 desc: "Exemple\_: frais de télétransmission, frais d’asepsie (nettoyage), frais de mise à jour de la carte vitale, 'supplément de 5 euros non remboursés par l'assurance maladie', …"
 tags:
   - ReponseConso
 ccrfCode:
   - '216'
-reponseconsoCode:
-  - '212'
-  - '226'
+reponseconsoCode: '212'
 detailInputs:
   - label: Date de constat
     type: DATE

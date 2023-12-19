@@ -1,8 +1,6 @@
 title: On a refusé de me donner une table ou de me servir
 desc: "Exemple\_: Refus au motif de la présence d'enfant, pour un motif discriminatoire, refus d'une table en terrasse pour un simple café"
-reponseconsoCode:
-  - '232'
-  - '521'
+reponseconsoCode: '232'
 detailInputs:
   - label: Date du problème
     type: DATE

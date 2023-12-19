@@ -2,12 +2,4 @@ title: This made me sick
 detailInputs:
   customimport: _imports/detailInputs/produit-alimentaire.yaml
 fileLabel: Product / Package / Receipt / Invoice / Crash Photos
-reponseconsoCode:
-  - '323'
-  - '324'
-  - '273'
-  - '321'
-  - '274'
-  - '210'
-  - '322'
-  - '311'
+reponseconsoCode: '323'

@@ -1,8 +1,6 @@
 title: Démarchage à domicile
 companyKind: LOCATION
-reponseconsoCode:
-  - '221'
-  - '2210'
+reponseconsoCode: '221'
 tags:
   - DemarchageADomicile
 detailInputs:

@@ -1,8 +1,5 @@
 title: Absence d'information sur le médiateur
-reponseconsoCode:
-  - '2201'
-  - '411'
-  - '492'
+reponseconsoCode: '2201'
 tags:
   - ReponseConso
   - AbsenceDeMediateur

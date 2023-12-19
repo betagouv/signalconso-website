@@ -2,10 +2,4 @@ title: Allergy
 detailInputs:
   customimport: _imports/detailInputs/produit-alimentaire.yaml
 fileLabel: Product / Package / Receipt / Invoice / Crash Photos
-reponseconsoCode:
-  - '322'
-  - '323'
-  - '324'
-  - '340'
-  - '2734'
-  - '2732'
+reponseconsoCode: '322'

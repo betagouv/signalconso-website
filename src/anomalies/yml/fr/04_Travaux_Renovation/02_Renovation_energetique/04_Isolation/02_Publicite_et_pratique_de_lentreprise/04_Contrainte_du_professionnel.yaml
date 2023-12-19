@@ -4,8 +4,7 @@ tags:
 ccrfCode:
   - 23C
   - 23D
-reponseconsoCode:
-  - '210'
+reponseconsoCode: '210'
 detailInputs:
   - label: Précisez les informations sur le contexte
     type: TEXTAREA

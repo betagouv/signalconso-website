@@ -1,10 +1,8 @@
 title: Temperature issue
 desc: "Exemple\_: food not kept cold at all times"
-reponseconsoCode:
-  - '322'
+reponseconsoCode: '322'
 detailInputs:
   - label: Date of the finding
     type: DATE
     defaultValue: SYSDATE
-fileLabel: >-
-  If possible, please attach a photo or document to support your report.
+fileLabel: If possible, please attach a photo or document to support your report.

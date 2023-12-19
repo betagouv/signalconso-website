@@ -3,10 +3,4 @@ detailInputs:
   customimport: _imports/detailInputs/produit-alimentaire.yaml
 companyKind: PRODUCT
 fileLabel: Photos du produit / de l'emballage / du ticket / de la facture / de l'accident
-reponseconsoCode:
-  - '322'
-  - '323'
-  - '324'
-  - '340'
-  - '2734'
-  - '2732'
+reponseconsoCode: '322'

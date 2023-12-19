@@ -2,6 +2,4 @@ title: Electrical shock
 detailInputs:
   customimport: _imports/detailInputs/produit-dangereux.yaml
 fileLabel: Product / Package / Receipt / Invoice / Crash Photos
-reponseconsoCode:
-  - '344'
-  - '345'
+reponseconsoCode: '344'

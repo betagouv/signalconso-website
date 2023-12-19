@@ -1,6 +1,5 @@
 title: Mauvaises pratiques d'hygiène
 ccrfCode:
   - '312'
-reponseconsoCode:
-  - '312'
+reponseconsoCode: '312'
 desc: 'Exemple : personne qui fume dans un local de production'

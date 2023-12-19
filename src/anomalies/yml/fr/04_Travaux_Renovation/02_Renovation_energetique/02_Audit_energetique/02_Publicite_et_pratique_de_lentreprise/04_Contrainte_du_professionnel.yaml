@@ -2,9 +2,7 @@ title: Contrainte du professionnel
 ccrfCode:
   - 23C
   - 23D
-reponseconsoCode:
-  - '210'
-  - '234'
+reponseconsoCode: '210'
 tags:
   - ReponseConso
 detailInputs:

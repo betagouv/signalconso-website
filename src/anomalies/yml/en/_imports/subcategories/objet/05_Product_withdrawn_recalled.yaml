@@ -1,8 +1,8 @@
 title: Product withdrawn / recalled
-desc: The product sold is subject to a withdrawal / recall measure from the authorities
-reponseconsoCode:
-  - '311'
-  - '331'
+desc: >-
+  The product sold is subject to a withdrawal / recall measure from the
+  authorities
+reponseconsoCode: '311'
 detailInputs:
   - label: Date of discovery of the incident
     type: DATE

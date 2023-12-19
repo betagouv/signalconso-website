@@ -1,8 +1,6 @@
 title: >-
   Honoraires de vente non affichés ou différents de ceux affichés (en vitrine ou
   sur internet)
-reponseconsoCode:
-  - '212'
-  - '220'
+reponseconsoCode: '212'
 tags:
   - ReponseConso

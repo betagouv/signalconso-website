@@ -4,8 +4,6 @@ title: >-
 desc: >-
   Exemple : imposer un préavis de 2 mois au résident pour résilier le contrat
   alors que la maison de retraite a un préavis d'1 mois seulement
-reponseconsoCode:
-  - '422'
-  - '214'
+reponseconsoCode: '422'
 tags:
   - ReponseConso

@@ -1,10 +1,14 @@
 import {instanceOfSubcategoryWithInfoWall} from '@/anomalies/Anomalies'
+import {lastFromArray, notUndefined} from '@/utils/utils'
 import {Subcategory} from '../../../anomalies/Anomaly'
 
 export function computeSelectedSubcategoriesData(selectedSubCategories: Subcategory[]) {
   const tagsFromSelected = selectedSubCategories.flatMap(_ => _.tags ?? [])
 
-  const responseconsoCodeFromSelected = selectedSubCategories.flatMap(_ => _.reponseconsoCode ?? [])
+  // 2023-12 ReponseConso says we should not send them multiple reponseConso codes, it breaks something for them
+  // We should send only one code maximum, and it doesn't really matter which one
+  const responseconsoCodeFromSelected = lastFromArray(selectedSubCategories.map(_ => _.reponseconsoCode).filter(notUndefined))
+
   const ccrfCodeFromSelected = selectedSubCategories.flatMap(_ => _.ccrfCode ?? [])
 
   const lastSubcategories: Subcategory | undefined = selectedSubCategories[selectedSubCategories.length - 1]

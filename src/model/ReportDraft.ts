@@ -42,7 +42,7 @@ export interface ReportDraft {
   contactAgreement: boolean
   vendor: string
   ccrfCode?: string[]
-  reponseconsoCode?: string[]
+  reponseconsoCode?: string
   tags?: ReportTag[]
   consumerWish?: ConsumerWish
   companyKind?: CompanyKinds
@@ -107,7 +107,7 @@ export class ReportDraft {
   }
 
   static readonly toApi = (draft: ReportDraft, metadata: ApiReportDraft['metadata']): ApiReportDraft => {
-    const {consumerWish, ...restOfDraft} = draft
+    const {consumerWish, reponseconsoCode, ...restOfDraft} = draft
 
     const additionalTags: ReportTag[] = [
       ...(consumerWish === 'fixContractualDispute' ? (['LitigeContractuel'] as const) : []),
@@ -118,6 +118,7 @@ export class ReportDraft {
 
     return {
       ...restOfDraft,
+      reponseconsoCode: reponseconsoCode ? [reponseconsoCode] : undefined,
       details: draft.details,
       gender: draft.consumer.gender,
       subcategories: draft.subcategories.map(_ => _.title),

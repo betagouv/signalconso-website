@@ -3,10 +3,8 @@ desc: "Exemple\_: spa simple déclaré en thalassothérapie, soins qui ne corres
 tags:
   - ReponseConso
 ccrfCode:
-  - '23B'
-reponseconsoCode:
-  - '210'
-  - '220'
+  - 23B
+reponseconsoCode: '210'
 detailInputs:
   - label: Date de constat
     type: DATE

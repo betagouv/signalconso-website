@@ -4,5 +4,4 @@ desc: >-
   mon contrat
 ccrfCode:
   - 21c
-reponseconsoCode:
-  - '210'
+reponseconsoCode: '210'

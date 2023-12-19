@@ -1,6 +1,5 @@
 title: Special case of eggs
-reponseconsoCode:
-  - '323'
+reponseconsoCode: '323'
 detailInputs:
   - label: "What is the problem\_?"
     type: RADIO

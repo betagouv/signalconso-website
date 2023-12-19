@@ -1,8 +1,6 @@
 title: Autre problème de facturation ou de contrat
 ccrfCode:
   - 23B
-reponseconsoCode:
-  - '2212'
-  - '623'
+reponseconsoCode: '2212'
 tags:
   - ReponseConso

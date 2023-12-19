@@ -1,6 +1,5 @@
 title: Publicité mensongère
-reponseconsoCode:
-  - '210'
+reponseconsoCode: '210'
 tags:
   - ReponseConso
 desc: 'Exemple : publicité trompeuse avec un nombre d''heures infaisable'

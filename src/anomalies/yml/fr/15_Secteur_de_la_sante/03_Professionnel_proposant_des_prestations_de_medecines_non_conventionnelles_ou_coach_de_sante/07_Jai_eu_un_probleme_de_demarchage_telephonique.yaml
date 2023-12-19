@@ -2,10 +2,8 @@ title: J'ai eu un problème de démarchage téléphonique
 companyKind: PHONE
 ccrfCode:
   - '227'
-  - '23E'
-reponseconsoCode:
-  - '2210'
-  - '221'
+  - 23E
+reponseconsoCode: '2210'
 tags:
   - DemarchageTelephonique
   - ReponseConso

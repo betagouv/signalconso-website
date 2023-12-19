@@ -1,7 +1,5 @@
 title: Garde d'animaux
 desc: "Exemple\_: pension, site internet de garde d'animaux"
-reponseconsoCode:
-  - '212'
-  - '213'
+reponseconsoCode: '212'
 tags:
   - ReponseConso

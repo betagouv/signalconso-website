@@ -1,9 +1,7 @@
 title: >-
   Les produits ne sont pas frais ou certains aliments sont périmés, c'est-à-dire
   que les dates indiquées sont dépassées.
-reponseconsoCode:
-  - '323'
-  - '321'
+reponseconsoCode: '323'
 detailInputs:
   - label: Date de constat
     type: DATE

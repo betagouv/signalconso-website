@@ -1,7 +1,8 @@
 title: Hidden subscriptions, additional hidden fees
 desc: >-
-  Examples: I bought shoes for €19, but my account statement indicates that I paid €29. I ordered an item, they take a payment for a subscription I didn't want, the company added extra charges without notifying me.
+  Examples: I bought shoes for €19, but my account statement indicates that I
+  paid €29. I ordered an item, they take a payment for a subscription I didn't
+  want, the company added extra charges without notifying me.
 ccrfCode:
   - '271'
-reponseconsoCode:
-  - '210'
+reponseconsoCode: '210'

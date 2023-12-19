@@ -1,9 +1,9 @@
-title: J’ai été facturé par un centre de santé conventionné d’une prestation autre qu’une prestation de soin à laquelle je n’avais pas consenti.
+title: >-
+  J’ai été facturé par un centre de santé conventionné d’une prestation autre
+  qu’une prestation de soin à laquelle je n’avais pas consenti.
 desc: "Exemple\_: frais d’archivage numériques non pris en charge par l’assurance maladie / possibilité de refuser, frais de courrier / possibilité de retirer le courrier sur place, les frais inclus dans la prestation de soin ne peuvent être refacturés aux patients, frais de télétransmission, frais d’asepsie (nettoyage), …"
 tags:
   - ReponseConso
 ccrfCode:
   - '226'
-reponseconsoCode:
-  - '226'
-  - '2331'
+reponseconsoCode: '226'

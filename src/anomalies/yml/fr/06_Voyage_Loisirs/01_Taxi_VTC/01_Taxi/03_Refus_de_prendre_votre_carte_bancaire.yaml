@@ -4,7 +4,6 @@ desc: >-
   montant.
 ccrfCode:
   - 21a
-reponseconsoCode:
-  - '454'
+reponseconsoCode: '454'
 tags:
   - ReponseConso

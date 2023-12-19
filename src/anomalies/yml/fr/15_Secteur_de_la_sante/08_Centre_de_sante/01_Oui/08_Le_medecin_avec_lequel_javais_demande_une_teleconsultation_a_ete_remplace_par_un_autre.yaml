@@ -1,7 +1,8 @@
-title: Le médecin avec lequel j'avais demandé une téléconsultation a été remplacé par un autre. 
+title: >-
+  Le médecin avec lequel j'avais demandé une téléconsultation a été remplacé par
+  un autre.
 tags:
   - ReponseConso
 ccrfCode:
-  - '23B'
-reponseconsoCode:
-  - '210'
+  - 23B
+reponseconsoCode: '210'

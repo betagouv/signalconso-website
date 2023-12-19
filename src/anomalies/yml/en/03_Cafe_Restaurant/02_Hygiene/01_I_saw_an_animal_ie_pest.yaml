@@ -1,7 +1,6 @@
 title: I saw an animal (i.e. pest)
 desc: "Exemple\_: cafard, rat"
-reponseconsoCode:
-  - '312'
+reponseconsoCode: '312'
 detailInputs:
   - label: Date of the finding
     type: DATE

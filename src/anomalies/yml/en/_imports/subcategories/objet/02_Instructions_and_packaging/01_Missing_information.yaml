@@ -1,6 +1,5 @@
 title: Missing information
-reponseconsoCode:
-  - '333'
+reponseconsoCode: '333'
 detailInputs:
   - label: What's the problem ?
     type: RADIO

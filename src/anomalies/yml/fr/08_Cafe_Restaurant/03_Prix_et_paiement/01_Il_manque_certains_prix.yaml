@@ -1,6 +1,5 @@
 title: Il manque certains prix
-reponseconsoCode:
-  - '212'
+reponseconsoCode: '212'
 tags:
   - ReponseConso
 desc: "Exemple\_: absence de prix sur la carte des vins"

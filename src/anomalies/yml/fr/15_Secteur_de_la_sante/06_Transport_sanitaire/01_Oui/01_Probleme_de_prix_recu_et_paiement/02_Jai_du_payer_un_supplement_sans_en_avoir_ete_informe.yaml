@@ -1,10 +1,10 @@
 title: J’ai dû payer un supplément sans en avoir été informé.
-reponseconsoCode:
-  - '226'
-  - '411'
+reponseconsoCode: '226'
 blockingInfo:
-  title: "Oups nous ne pouvons pas traiter votre signalement."
+  title: Oups nous ne pouvons pas traiter votre signalement.
   content: >-
-    Ce type de problème ne doit pas être signalé sur SignalConso. Vous pouvez saisir la CPAM (Caisse primaire d'asurance maladie) de votre domicile :  <br><a
+    Ce type de problème ne doit pas être signalé sur SignalConso. Vous pouvez
+    saisir la CPAM (Caisse primaire d'asurance maladie) de votre domicile : 
+    <br><a
     href="https://www.ameli.fr/assure/adresses-et-contacts/un-autre-sujet"
     target="_blank">https://www.ameli.fr/</a>

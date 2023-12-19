@@ -1,9 +1,9 @@
 title: Je n'ai pas été informé du coût de la téléconsultation
-desc: "Avant la réalisation de la téléconsultation, vous devez être informé des frais de la téléconsultation et de leur éventuelles prise en charge."
+desc: >-
+  Avant la réalisation de la téléconsultation, vous devez être informé des frais
+  de la téléconsultation et de leur éventuelles prise en charge.
 tags:
   - ReponseConso
 ccrfCode:
   - '216'
-reponseconsoCode:
-  - '212'
-  - '226'
+reponseconsoCode: '212'

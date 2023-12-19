@@ -1,8 +1,6 @@
 title: Sur place
 companyKind: SIRET
-reponseconsoCode:
-  - '321'
-  - '324'
+reponseconsoCode: '321'
 tags:
   - ProduitDangereux
 detailInputs:

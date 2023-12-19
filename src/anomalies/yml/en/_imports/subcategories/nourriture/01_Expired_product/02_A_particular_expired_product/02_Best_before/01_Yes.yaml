@@ -1,6 +1,5 @@
 title: 'Yes'
-reponseconsoCode:
-  - '323'
+reponseconsoCode: '323'
 detailInputs:
   - label: Date of discovery of the incident (or date of purchase if relevant)
     type: DATE_NOT_IN_FUTURE

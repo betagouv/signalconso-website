@@ -1,7 +1,5 @@
 title: Dans une boutique
-reponseconsoCode:
-  - '473'
-  - '224'
+reponseconsoCode: '473'
 blockingInfo:
   title: Vous ne pouvez plus exiger l'annulation de votre contrat.
   content: >-

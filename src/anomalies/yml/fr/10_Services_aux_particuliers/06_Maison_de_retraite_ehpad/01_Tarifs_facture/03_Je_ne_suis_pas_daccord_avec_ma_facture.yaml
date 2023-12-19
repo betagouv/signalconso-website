@@ -1,6 +1,4 @@
 title: Je ne suis pas d'accord avec ma facture
-reponseconsoCode:
-  - '451'
-  - '226'
+reponseconsoCode: '451'
 tags:
   - ReponseConso

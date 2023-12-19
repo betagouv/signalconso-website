@@ -12,6 +12,10 @@ export type ObjectSpec = {[key: string]: (walker: AnomalyTreeWalker) => void}
 // focused on a child value
 //
 // Thus you can traverse a whole tree and check the type of everything
+//
+// --- NOTE : all of this homemade code should instead be done with a library like "zod"
+// --- which would avoid the duplication between the declared types and the checking
+// --- When I (Emmanuel) wrote this code, I wasn't aware of libraries like "zod"
 export class AnomalyTreeWalker {
   root: any
   path: Path = [] // current path within the root

@@ -1,6 +1,5 @@
 title: In France (including Overseas)
-reponseconsoCode:
-  - '211'
+reponseconsoCode: '211'
 detailInputs:
   - label: Date of discovery of the incident
     type: DATE

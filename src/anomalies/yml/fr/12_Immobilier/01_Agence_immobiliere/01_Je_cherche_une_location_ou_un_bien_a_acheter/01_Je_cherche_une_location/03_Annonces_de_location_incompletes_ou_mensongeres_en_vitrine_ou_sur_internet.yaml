@@ -2,6 +2,4 @@ title: Annonces de location incomplètes ou mensongères (en vitrine ou sur inte
 desc: "Exemple\_: loyer annoncé faux, descriptif de l'appartement mensonger"
 tags:
   - ReponseConso
-reponseconsoCode:
-  - '210'
-  - '220'
+reponseconsoCode: '210'

@@ -2,9 +2,4 @@ title: Choking
 detailInputs:
   customimport: _imports/detailInputs/produit-alimentaire.yaml
 fileLabel: Product / Package / Receipt / Invoice / Crash Photos
-reponseconsoCode:
-  - '311'
-  - '321'
-  - '324'
-  - '274'
-  - '210'
+reponseconsoCode: '311'

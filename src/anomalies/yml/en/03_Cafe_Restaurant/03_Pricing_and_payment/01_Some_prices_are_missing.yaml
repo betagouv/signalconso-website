@@ -1,10 +1,8 @@
 title: Some prices are missing
-reponseconsoCode:
-  - '212'
+reponseconsoCode: '212'
 desc: "Exemple\_: no prices given on the wine list"
 detailInputs:
   - label: Date of the finding
     type: DATE
     defaultValue: SYSDATE
-fileLabel: >-
-  If possible, please attach a photo or document to support your report.
+fileLabel: If possible, please attach a photo or document to support your report.

@@ -2,9 +2,4 @@ title: Allergie
 detailInputs:
   customimport: _imports/detailInputs/produit-dangereux.yaml
 fileLabel: Photos du produit / de la notice / du ticket / de la facture / de l'accident
-reponseconsoCode:
-  - '344'
-  - '346'
-  - '352'
-  - '324'
-  - '345'
+reponseconsoCode: '344'

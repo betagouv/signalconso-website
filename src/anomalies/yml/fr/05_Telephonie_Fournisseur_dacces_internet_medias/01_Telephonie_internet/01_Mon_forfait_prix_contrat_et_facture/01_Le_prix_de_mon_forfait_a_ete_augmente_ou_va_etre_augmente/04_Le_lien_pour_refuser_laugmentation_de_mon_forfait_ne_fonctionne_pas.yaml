@@ -3,8 +3,6 @@ ccrfCode:
   - 21A
   - 21E
   - 23B
-reponseconsoCode:
-  - '444'
-  - '210'
+reponseconsoCode: '444'
 tags:
   - ReponseConso

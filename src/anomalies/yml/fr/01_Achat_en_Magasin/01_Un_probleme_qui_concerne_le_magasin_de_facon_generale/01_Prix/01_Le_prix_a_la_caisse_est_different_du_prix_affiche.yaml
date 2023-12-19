@@ -4,10 +4,7 @@ ccrfCode:
 desc: >-
   Exemple : le prix à la caisse est de 5 euros alors que le prix affiché en
   rayon est de 3 euros
-reponseconsoCode:
-  - '212'
-  - '210'
-  - '224'
+reponseconsoCode: '212'
 detailInputs:
   - label: Date du constat
     type: DATE

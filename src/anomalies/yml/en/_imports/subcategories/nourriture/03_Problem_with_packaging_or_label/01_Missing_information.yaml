@@ -1,8 +1,5 @@
 title: Missing information
-reponseconsoCode:
-  - '273'
-  - '323'
-  - '274'
+reponseconsoCode: '273'
 detailInputs:
   - label: QWhat information is missing ?
     type: RADIO

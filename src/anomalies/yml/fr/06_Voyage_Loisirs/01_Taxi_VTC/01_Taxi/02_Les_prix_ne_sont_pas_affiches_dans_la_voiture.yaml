@@ -4,7 +4,6 @@ desc: >-
   voiture.
 ccrfCode:
   - 21b
-reponseconsoCode:
-  - '212'
+reponseconsoCode: '212'
 tags:
   - ReponseConso

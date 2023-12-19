@@ -1,7 +1,5 @@
 title: Indisponibilité des produits proposés
-reponseconsoCode:
-  - '2243'
-  - '271'
+reponseconsoCode: '2243'
 detailInputs:
   - label: Date du constat
     type: DATE

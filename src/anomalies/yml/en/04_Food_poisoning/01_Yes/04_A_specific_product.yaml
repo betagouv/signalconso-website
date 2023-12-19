@@ -1,8 +1,6 @@
 title: A specific product
 companyKind: LOCATION
-reponseconsoCode:
-  - '321'
-  - '324'
+reponseconsoCode: '321'
 tags:
   - ProduitDangereux
 detailInputs:
