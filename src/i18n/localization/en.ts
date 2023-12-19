@@ -107,6 +107,10 @@ export const en = {
         title: 'Reporting sequence – SignalConso',
         description: '',
       },
+      arboVisu: {
+        title: 'Reporting sequence – SignalConso',
+        description: '',
+      },
       actualites: {
         title: 'News - SignalConso',
         description: 'News and updates from the SignalConso website and Fraud Control',

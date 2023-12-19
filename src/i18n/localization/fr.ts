@@ -107,6 +107,10 @@ export const fr = {
         title: 'Arborescence - SignalConso',
         description: '',
       },
+      arboVisu: {
+        title: '',
+        description: '',
+      },
       actualites: {
         title: 'Actualités - SignalConso',
         description: 'Actualités et nouveautés du site SignalConso et de la répression des fraudes',

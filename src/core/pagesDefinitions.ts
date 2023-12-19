@@ -57,6 +57,8 @@ export const internalPageDefs = {
   stats: page(`/stats`, {hasAlternate: false}),
   suiviEtViePrivee: page(`/suivi-et-vie-privee`),
   litige: page(`/litige`),
+  // page temporaire de POC
+  arboVisu: page('/arbo-visu', {noIndex: true}),
 }
 
 const externalPageDefs = {
