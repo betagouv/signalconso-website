@@ -5,11 +5,14 @@ import {ArticleQuestionnaireSiteDgccrf} from './ArticleQuestionnaireSiteDgccrf'
 import {ArticleAccessibilite} from './ArticleAccessibilite'
 import {ArticleSignalConsoTraduit} from './ArticleSignalConsoTraduit'
 import {ArticleSignalConsoTranslated} from './ArticleSignalConsoTranslated'
+import {ArticleCodeBarres} from './ArticleCodeBarres'
 
 // We can't put import these JSX directly into the "newsArticlesData"
 // it causes too much import problems in the sitemap generation script
 export function getArticleContent(slug: (typeof newsArticlesData)[number]['slug']) {
   switch (slug) {
+    case 'signalement-par-code-barres':
+      return ArticleCodeBarres
     case 'resilier-contrats-en-ligne':
       return ArticleResilierContratsEnLigne
     case 'signalconso-mobile-app-available':
