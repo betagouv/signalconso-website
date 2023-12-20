@@ -5,12 +5,19 @@ export type NewsArticle = (typeof newsArticlesData)[number]
 // This is the display order. Keep the most recents at the start of the array
 export const newsArticlesData = [
   {
+    date: '2023-12-20',
+    lang: 'fr',
+    slug: 'signalement-par-code-barres',
+    title: "Faire son signalement à l'aide du code-barres du produit alimentaire est désormais possible !",
+    // used for SEO description
+    // used for the preview in /actualites
+    excerpt: `Fini les difficultés pour identifier le produit alimentaire pour lequel vous souhaitez déposer un signalement ! SignalConso a développé une nouvelle fonctionnalité de recherche par saisie du code-barres (GTIN) du produit.`,
+  },
+  {
     date: '2023-09-13',
     lang: 'fr',
     slug: 'resilier-contrats-en-ligne',
     title: 'Résilier ses contrats conclus sur internet est désormais très facile !',
-    // used for SEO description
-    // used for the preview in /news
     excerpt: `Fini les lettres recommandées avec accusé de réception pour mettre fin à son contrat d'assurance, d'abonnement à un opérateur téléphonique ou à une salle de sport ! Les contrats pouvant être conclus par Internet peuvent maintenant être résiliés par Internet.`,
   },
   {
@@ -18,8 +25,6 @@ export const newsArticlesData = [
     lang: 'en',
     slug: 'signalconso-mobile-app-available',
     title: 'Signal conso available on mobile app!',
-    // used for SEO description
-    // used for the preview in /news
     excerpt: `Discover now the new mobile application SignalConso, which makes your reports as a consumer even easier and simplifies your processes.`,
   },
   {
@@ -41,8 +46,6 @@ export const newsArticlesData = [
     lang: AppLangs.fr,
     slug: 'signalconso-une-accessibilite-renforcee-pour-tous-les-consommateurs',
     title: 'SignalConso : une accessibilité renforcée pour tous les consommateurs',
-    // used for SEO description
-    // used for the preview in /news
     excerpt: `SignalConso : une accessibilité renforcée pour tous les consommateurs`,
   },
   {
@@ -57,8 +60,6 @@ export const newsArticlesData = [
     lang: AppLangs.fr,
     slug: 'signalconso-desormais-disponible-en-application-mobile',
     title: 'SignalConso, désormais disponible en application mobile !',
-    // used for SEO description
-    // used for the preview in /news
     excerpt: `Découvrez dès maintenant la nouvelle application mobile SignalConso, qui rend vos signalements en tant que consommateur
     encore plus faciles et simplifie vos démarches.`,
   },

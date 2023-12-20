@@ -1,0 +1,8 @@
+title: Démarchage téléphonique
+companyKind: PHONE
+ccrfCode:
+  - '227'
+  - 23E
+reponseconsoCode: '221'
+tags:
+  - DemarchageTelephonique
