@@ -328,7 +328,7 @@ export const fr = {
       etape5: 'Étape 5 - Confirmation',
       improvementContactTitle: 'Retour d’information et contact',
       improvementContactText:
-        'Si vous n’arrivez pas à accéder à un contenu ou à un service, vous pouvez contacter le responsable du site « <a href="https://signal.conso.gouv.fr/" >« SignalConso »</a> » pour être orienté vers une alternative accessible ou obtenir le contenu sous une autre forme.',
+        'Si vous n’arrivez pas à accéder à un contenu ou à un service, vous pouvez contacter le responsable du site « <a href="https://signal.conso.gouv.fr/" > SignalConso </a> » pour être orienté vers une alternative accessible ou obtenir le contenu sous une autre forme.',
       supportEmail: 'E-mail : support@signal.conso.gouv.fr',
       recourseTitle: 'Voie de recours',
       recourseText:
