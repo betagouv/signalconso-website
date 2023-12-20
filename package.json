@@ -56,7 +56,6 @@
     "cookies-next": "^4.1.0",
     "csv-parse": "^5.5.2",
     "date-fns": "2.30.0",
-    "fuse": "^0.4.0",
     "fuse.js": "^7.0.0",
     "heic2any": "^0.0.4",
     "iframe-resizer": "^4.3.9",

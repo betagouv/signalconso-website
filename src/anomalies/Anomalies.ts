@@ -21,37 +21,6 @@ export type AnomalyIndex = {
   subcategories: Subcategory[]
 }
 
-export function createFuseIndex(anomalies: Anomaly[]) {
-  const res: AnomalyIndex[] = []
-
-  anomalies.map(anomaly => {
-    // res.push({root: anomaly, id: anomaly.id, title: anomaly.title, description: anomaly.description, subcategories: []})
-    const subcategories = anomaly.subcategories
-    const SubcategoryAnomalies = aggregateCategories(anomaly, [], subcategories)
-    res.push(...SubcategoryAnomalies)
-  })
-
-  return res
-}
-
-function aggregateCategories(anomaly: Anomaly, acc: Subcategory[], subcategories: Subcategory[]) {
-  const res: AnomalyIndex[] = []
-  subcategories.forEach(subcategory => {
-    const newAcc = acc.concat(subcategory)
-    res.push({
-      root: anomaly,
-      id: subcategory.id,
-      title: subcategory.title,
-      description: subcategory.desc,
-      subcategories: newAcc,
-    })
-    const cat = subcategory.subcategories ? aggregateCategories(anomaly, newAcc, subcategory.subcategories) : []
-    res.push(...cat)
-  })
-
-  return res
-}
-
 export const instanceOfSubcategoryWithInputs = (
   _?: Anomaly | Subcategory,
 ): _ is StandardSubcategory & {detailInputs: DetailInput[]} => {
