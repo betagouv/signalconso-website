@@ -107,9 +107,9 @@ const Accessibilite = (props: PageComponentProps) => {
         </ol>
         <h3 className="fr-h3">{m.accessibilite.improvementContactTitle}</h3>
         <p dangerouslySetInnerHTML={{__html: m.accessibilite.improvementContactText}}></p>
-        
-          <p>{m.accessibilite.supportEmail}</p>
-        
+
+        <p>{m.accessibilite.supportEmail}</p>
+
         <h2 className="fr-h3">{m.accessibilite.recourseTitle}</h2>
         <p>{m.accessibilite.recourseText}</p>
         <p>{m.accessibilite.recourseOptions}</p>
