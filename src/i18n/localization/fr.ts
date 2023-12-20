@@ -717,7 +717,6 @@ export const fr = {
     },
     searchAnomalies: {
       title: 'Quel problème avez-vous rencontré ?',
-      searchCategoryPlaceholder: `Rechercher une catégorie par mot clé (BETA)`,
       noResultFound: `Aucun résultat trouvé.`,
       tryAnotherKeyword: 'Veuillez essayer avec un nouveau mot clé ou choisir dans la liste des catégories',
       showAllCategories: 'Voir toutes les catégories',
