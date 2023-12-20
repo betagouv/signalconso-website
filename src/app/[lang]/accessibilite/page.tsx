@@ -20,13 +20,13 @@ const Accessibilite = (props: PageComponentProps) => {
         <p>{m.accessibilite.digitalAccessibilityTexte1}</p>
         <p>{m.accessibilite.digitalAccessibilityTexte2}</p>
         <p>{m.accessibilite.digitalAccessibilityTexte3}</p>
-
-        <p>- {m.accessibilite.digitalAccessibilityLi1}</p>
-        <p>- {m.accessibilite.digitalAccessibilityLi2}</p>
-        <p>- {m.accessibilite.digitalAccessibilityLi3}</p>
-        <p>- {m.accessibilite.digitalAccessibilityLi4}</p>
-        <p>- {m.accessibilite.digitalAccessibilityLi5}</p>
-
+        <ul>
+          <li>{m.accessibilite.digitalAccessibilityLi1}</li>
+          <li>{m.accessibilite.digitalAccessibilityLi2}</li>
+          <li>{m.accessibilite.digitalAccessibilityLi3}</li>
+          <li>{m.accessibilite.digitalAccessibilityLi4}</li>
+          <li>{m.accessibilite.digitalAccessibilityLi5}</li>
+        </ul>
         <h2>{m.accessibilite.digitalAccessibilityCommitmentsTitle}</h2>
         <p>
           {m.accessibilite.digitalAccessibilityCommitmentsTexte1}{' '}
@@ -44,10 +44,10 @@ const Accessibilite = (props: PageComponentProps) => {
         <p dangerouslySetInnerHTML={{__html: m.accessibilite.conformityStatusText}}></p>
         <h3 className="fr-h3">{m.accessibilite.testResultsTitle}</h3>
         <p>{m.accessibilite.testResultsText}</p>
-
-        <p>- {m.accessibilite.testResultsLi1}</p>
-        <p>- {m.accessibilite.testResultsLi2}</p>
-
+        <ul>
+          <li>{m.accessibilite.testResultsLi1}</li>
+          <li>{m.accessibilite.testResultsLi2}</li>
+        </ul>
         <h3 className="fr-h3">{m.accessibilite.nonAccessibleContentTitle}</h3>
         <h4 className="fr-h6">{m.accessibilite.nonConformityTitle}</h4>
         <p>{m.accessibilite.nonConformityText1}</p>
@@ -57,89 +57,85 @@ const Accessibilite = (props: PageComponentProps) => {
         <p>{m.accessibilite.declarationEstablishmentText}</p>
         <h4 className="fr-h6">{m.accessibilite.usedTechnologiesTitle}</h4>
         <p>{m.accessibilite.usedTechnologiesText}</p>
-
-        <p>- HTML</p>
-        <p>- WAI-ARIA</p>
-        <p>- CSS</p>
-        <p>- JavaScript</p>
-
+        <ul>
+          <li>HTML</li>
+          <li>WAI-ARIA</li>
+          <li>CSS</li>
+          <li>JavaScript</li>
+        </ul>
         <h4 className="fr-h6">{m.accessibilite.assistiveTechnologiesTitle}</h4>
         <p>{m.accessibilite.assistiveTechnologiesText}</p>
-
-        <p>- {m.accessibilite.assistiveTechnologiesList1}</p>
-        <p>- {m.accessibilite.assistiveTechnologiesList2}</p>
-        <p>- {m.accessibilite.assistiveTechnologiesList3}</p>
-        <p>- {m.accessibilite.assistiveTechnologiesList4}</p>
-
+        <ul>
+          <li>{m.accessibilite.assistiveTechnologiesList1}</li>
+          <li>{m.accessibilite.assistiveTechnologiesList2}</li>
+          <li>{m.accessibilite.assistiveTechnologiesList3}</li>
+          <li>{m.accessibilite.assistiveTechnologiesList4}</li>
+        </ul>
         <h4 className="fr-h6">{m.accessibilite.AccessibilityAssessmentToolsTitle}</h4>
-
-        <p>- {m.accessibilite.AccessibilityAssessmentToolsList1}</p>
-        <p>- {m.accessibilite.AccessibilityAssessmentToolsList2}</p>
-        <p>- {m.accessibilite.AccessibilityAssessmentToolsList3}</p>
+        <ul>
+          <li>{m.accessibilite.AccessibilityAssessmentToolsList1}</li>
+          <li>{m.accessibilite.AccessibilityAssessmentToolsList2}</li>
+          <li>{m.accessibilite.AccessibilityAssessmentToolsList3}</li>
+        </ul>
 
         <h4 className="fr-h6">{m.accessibilite.complianceVerificationPagesTitle}</h4>
+        <ol>
+          <li>
+            <Link href="/">{m.accessibilite.home}</Link>
+          </li>
+          <li>
+            <Link href={pagesDefs.planDuSite.url}>{m.accessibilite.planDuSite}</Link>
+          </li>
+          <li>
+            <Link href={pagesDefs.conditionsGeneralesUtilisation.url}>{m.accessibilite.MentionsLegales}</Link>
+          </li>
+          <li>
+            <Link href={pagesDefs.quiSommesNous.url}>{m.accessibilite.quiSommesNous}</Link>
+          </li>
 
-        <p>
-          1-
-          <Link href="/"> {m.accessibilite.home}</Link>
-        </p>
-        <p>
-          2-
-          <Link href={pagesDefs.planDuSite.url}> {m.accessibilite.planDuSite}</Link>
-        </p>
-        <p>
-          3-
-          <Link href={pagesDefs.conditionsGeneralesUtilisation.url}> {m.accessibilite.MentionsLegales}</Link>
-        </p>
-        <p>
-          4-
-          <Link href={pagesDefs.quiSommesNous.url}> {m.accessibilite.quiSommesNous}</Link>
-        </p>
-
-        <p>
-          5-
-          <Link href={pagesDefs.commentCaMarche.url}> {m.accessibilite.commentCaMarche}</Link>
-        </p>
-        <p>
-          7-
-          <Link href={pagesDefs.stats.url}> {m.accessibilite.stats}</Link>
-        </p>
-        <p>8- {m.accessibilite.etape1}</p>
-        <p>9- {m.accessibilite.etape2}</p>
-        <p>10- {m.accessibilite.etape3}</p>
-        <p>11- {m.accessibilite.etape4}</p>
-        <p>12- {m.accessibilite.etape5}</p>
-
+          <li>
+            <Link href={pagesDefs.commentCaMarche.url}>{m.accessibilite.commentCaMarche}</Link>
+          </li>
+          <li>
+            <Link href={pagesDefs.stats.url}>{m.accessibilite.stats}</Link>
+          </li>
+          <li>{m.accessibilite.etape1}</li>
+          <li>{m.accessibilite.etape2}</li>
+          <li>{m.accessibilite.etape3}</li>
+          <li>{m.accessibilite.etape4}</li>
+          <li>{m.accessibilite.etape5}</li>
+        </ol>
         <h3 className="fr-h3">{m.accessibilite.improvementContactTitle}</h3>
         <p dangerouslySetInnerHTML={{__html: m.accessibilite.improvementContactText}}></p>
-
-        <p>{m.accessibilite.supportEmail}</p>
-
+        
+          <p>{m.accessibilite.supportEmail}</p>
+        
         <h2 className="fr-h3">{m.accessibilite.recourseTitle}</h2>
         <p>{m.accessibilite.recourseText}</p>
         <p>{m.accessibilite.recourseOptions}</p>
-
-        <p>
-          - {m.accessibilite.defenseurDesDroits}
-          <Link target="_blank" href={externalLinks.defenseurDesDroits}>
-            {m.accessibilite.defenseurDesDroitsLink}
-          </Link>
-        </p>
-        <p>
-          - {m.accessibilite.defenseurDesDroitsDelegue}
-          <Link target="_blank" href={externalLinks.defenseurDesDroitsDelegue}>
-            {m.accessibilite.defenseurDesDroitsDelegueLink}
-          </Link>
-        </p>
-        <p>
-          - {m.accessibilite.postalAddress}:
-          <br />
-          &nbsp; Défenseur des droits
-          <br />
-          &nbsp; Libre réponse
-          <br />
-          &nbsp; 71120 75342 Paris CEDEX 07
-        </p>
+        <ul>
+          <li>
+            {m.accessibilite.defenseurDesDroits}
+            <Link target="_blank" href={externalLinks.defenseurDesDroits}>
+              {m.accessibilite.defenseurDesDroitsLink}
+            </Link>
+          </li>
+          <li>
+            {m.accessibilite.defenseurDesDroitsDelegue}
+            <Link target="_blank" href={externalLinks.defenseurDesDroitsDelegue}>
+              {m.accessibilite.defenseurDesDroitsDelegueLink}
+            </Link>
+          </li>
+          <li>
+            {m.accessibilite.postalAddress}:
+            <br />
+            Défenseur des droits
+            <br />
+            Libre réponse
+            <br />
+            71120 75342 Paris CEDEX 07
+          </li>
+        </ul>
       </ContentPageContainer>
     </>
   )
