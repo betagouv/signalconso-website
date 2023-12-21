@@ -210,9 +210,10 @@ export const frLandingsData = [
     url: 'bloctel',
     lang: 'fr',
     isSemiAutomatic: true,
-    seoTitle: 'Vous avez un problème de démarchage abusif malgré Bloctel ? Signalez-le à la DGCCRF',
+    seoTitle:
+      'Vous avez un problème de démarchage abusif malgré Bloctel ? Vous avez un problème de démarchage à domicile ? Signalez-le à la DGCCRF',
     seoDescription:
-      'Vous avez un problème d’appels indésirables, inconnus, incessants, de spams, de sms, de télé vente, d’arnaque au CPF, à la formation professionnelle',
+      'Vous avez un problème de démarchage à domicile ou d’appels indésirables, inconnus, incessants, de spams, de sms, de télé vente, d’arnaque au CPF, à la formation professionnelle',
     title: 'Démarchage abusif',
     targetedCategory: ['DemarchageAbusif'],
     catchPhrase: 'Signalez un problème de démarchage abusif, renseignez-vous sur vos droits avec la répression des fraudes !',
@@ -1319,7 +1320,7 @@ export const frLandingsData = [
         author: 'Léa N.',
       },
       {
-        text: "Jai fait appel à ***** pour régler une infection de punaises de lit. Un 1er technicien est venu le 21/05/2023 avec un chien renifleur en me promettant qu'1 seule intervention sera suffisante, il me fait un devis à 430€ alors que sur leur site il est écrit que le traitement coute 240€, il me demande de payer en espèces, ce que je fais. Son intervention dans mon appartement n'a duré que 5min. 3 jours après, j'avais encore des punaises, donc je paie 80€ de frais de déplacement, et le 27/05/2023 un 2ème technicien vient et traite l'appartement en 3min chrono ! le lendemain, j'ai encore des punaises ! Sur leur site est écrit \"Nous incluons dans notre offre un service de contrôle. Le but est de vérifier si le traitement a été efficace et si votre habitat est entièrement désinfecté. Nos experts peuvent aussi vous proposer des conseils de prévention qui permettent d’empêcher une nouvelle infestation.\" C'est faux. Ils me raccrochent au nez et ne veulent rien entendre",
+        text: "J'ai fait appel à ***** pour régler une infection de punaises de lit. Un 1er technicien est venu le 21/05/2023 avec un chien renifleur en me promettant qu'1 seule intervention sera suffisante, il me fait un devis à 430€ alors que sur leur site il est écrit que le traitement coute 240€, il me demande de payer en espèces, ce que je fais. Son intervention dans mon appartement n'a duré que 5min. 3 jours après, j'avais encore des punaises, donc je paie 80€ de frais de déplacement, et le 27/05/2023 un 2ème technicien vient et traite l'appartement en 3min chrono ! le lendemain, j'ai encore des punaises ! Sur leur site est écrit \"Nous incluons dans notre offre un service de contrôle. Le but est de vérifier si le traitement a été efficace et si votre habitat est entièrement désinfecté. Nos experts peuvent aussi vous proposer des conseils de prévention qui permettent d’empêcher une nouvelle infestation.\" C'est faux. Ils me raccrochent au nez et ne veulent rien entendre",
         author: 'Zahra T.',
       },
     ],
