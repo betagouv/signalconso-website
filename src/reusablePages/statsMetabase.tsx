@@ -7,11 +7,10 @@ import Link from 'next/link'
 import {useEffect} from 'react'
 import {getI18n} from '../i18n/I18nDictionnary'
 import {AppLangs} from '../i18n/localization/AppLangs'
-
-const anonMetabaseDomain = `app-2361543a-545f-4c8e-88f5-89f57aaffc78.cleverapps.io`
+import {appConfig} from '@/core/appConfig'
 
 function getDashboardUrl(dashboardId: string) {
-  return `https://${anonMetabaseDomain}/public/dashboard/${dashboardId}?#bordered=false&titled=false`
+  return `${appConfig.anonMetabaseUrl}/public/dashboard/${dashboardId}?#bordered=false&titled=false`
 }
 
 export const StatsMetabase = ({params}: any) => {
@@ -35,9 +34,15 @@ export const StatsMetabase = ({params}: any) => {
         <MetabaseIframe dashboardId="10790030-f28c-4726-afe7-d26d7e032094" />
         <h2>Les promesses d'action</h2>
         <FriendlyHelpText>
-          <i className={'ri-information-line mr-2'} />
-          Lors qu'une entreprise reçoit un signalement de SignalConso, elle est invitée à reconnaître sa faute et s'engager à
-          s'améliorer, et à réparer le tort éventuel fait au consommateur. C'est ce qu'on appelle une «promesse d'action».
+          <p className="mb-2">
+            <i className={'ri-information-line mr-2'} />
+            Lors qu'une entreprise reçoit un signalement de SignalConso, elle est invitée à reconnaître sa faute et s'engager à
+            s'améliorer, et à réparer le tort éventuel fait au consommateur. C'est ce qu'on appelle une «promesse d'action».
+          </p>
+          <p className="mb-0">
+            <span className="font-bold">C'est la métrique phare de SignalConso</span>, celle que notre équipe cherche à améliorer
+            en permanence.
+          </p>
         </FriendlyHelpText>
         <MetabaseIframe dashboardId="a42aa668-f374-48e1-9120-8610f2a2b76b" />
         <h2>Les entreprises signalées</h2>
