@@ -52,7 +52,7 @@ export const internalPageDefs = {
   cookies: page(`/cookies`),
   delaiRetractation: page(`/delai-de-retractation`),
   quiSommesNous: page(`/qui-sommes-nous`),
-  stats: page(`/stats`, {hasAlternate: true}),
+  stats: page(`/stats`, {hasAlternate: false}),
   suiviEtViePrivee: page(`/suivi-et-vie-privee`),
   litige: page(`/litige`),
 }
