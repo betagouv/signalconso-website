@@ -1,7 +1,7 @@
 import {newsArticlesData} from '@/components_feature/actualites/newsArticlesData'
 import {ContentPageContainer} from '@/components_simple/PageContainers'
 import {PageComponentProps, buildGenerateMetadata} from '@/core/metadatas'
-import {buildLinkLandingPage, buildLinkNewsArticle, pagesDefs} from '@/core/pagesDefinitions'
+import {buildLinkLandingPage, buildLinkNewsArticle, internalPageDefs, pagesDefs} from '@/core/pagesDefinitions'
 import {allVisibleLandings} from '@/landings/landingDataUtils'
 import Link from 'next/link'
 import {getI18n} from '../../../i18n/I18nDictionnary'
@@ -123,6 +123,18 @@ const PlanDuSite = (props: PageComponentProps) => {
         </ul>
       </ContentPageContainer>
     </>
+  )
+}
+
+function BasicPageLink({key}: {key: keyof typeof internalPageDefs}) {
+  const pageDef = internalPageDefs[key]
+  if (!pageDef) {
+    throw new Error(`No pageDef found for ${key}`)
+  }
+  return (
+    <li>
+      <Link href={pagesDefs[key].url}>{m.planDuSite.audiencePrivacy}</Link>
+    </li>
   )
 }
 

@@ -44,9 +44,7 @@ export const internalPageDefs = {
   accessibilite: page(`/accessibilite`),
   planDuSite: page(`/plan-du-site`),
   actualites: page(`/actualites`),
-  // only on dev/demo
-  ...(appConfig.showPlayground ? {playground: page(`/playground`, {noIndex: true})} : {}),
-
+  playground: page(`/playground`, {noIndex: true}),
   // all these are available in /webview/
   commentCaMarche: page(`/comment-ca-marche`),
   conditionsGeneralesUtilisation: page(`/conditions-generales-utilisation`, {noIndex: true}),
