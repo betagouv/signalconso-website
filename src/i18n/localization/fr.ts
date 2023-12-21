@@ -98,10 +98,6 @@ export const fr = {
         title: 'Statistiques - SignalConso',
         description: 'Consultez les statistiques de SignalConso',
       },
-      statsMetabase: {
-        title: 'Statistiques - SignalConso',
-        description: 'Consultez les statistiques de SignalConso',
-      },
       index: {
         title: 'SignalConso, un service public pour les consommateurs',
         description:
@@ -1135,10 +1131,6 @@ export const fr = {
     `,
     confirmationBtnReponseConso: `Envoyer ma question`,
     confirmationBtn: `Envoyer le signalement`,
-
-    statsTitle: 'Statistiques de SignalConso',
-    statsText:
-      'Ces statistiques sont mises à jour en temps réel. Des statistiques complémentaires sont aussi disponibles sur le site ',
 
     acceptedReportStat: `promesses d'action ont été faites par des entreprises depuis le début de SignalConso`,
     acceptedReportStatName: `Nombre de promesses d'action`,

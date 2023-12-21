@@ -19,7 +19,7 @@ export type PageDefInternal = {
 
 function page(url: string, options: {noIndex?: boolean; hasAlternate?: boolean} = {}): PageDefInternal {
   const noIndex = options.noIndex ?? false
-  const hasAlternate = options.hasAlternate ?? false
+  const hasAlternate = options.hasAlternate ?? true
   return {
     isExternal: false,
     url,
@@ -39,26 +39,24 @@ function pageExternal(url: string): PageDefExternal {
 }
 
 export const internalPageDefs = {
-  index: page('/', {hasAlternate: true}),
-  arborescence: page(`/arborescence`, {noIndex: true, hasAlternate: true}),
-  accessibilite: page(`/accessibilite`, {hasAlternate: true}),
-  planDuSite: page(`/plan-du-site`, {hasAlternate: true}),
-  actualites: page(`/actualites`, {hasAlternate: true}),
+  index: page('/'),
+  arborescence: page(`/arborescence`, {noIndex: true}),
+  accessibilite: page(`/accessibilite`),
+  planDuSite: page(`/plan-du-site`),
+  actualites: page(`/actualites`),
   // only on dev/demo
-  ...(appConfig.showPlayground ? {playground: page(`/playground`, {noIndex: true, hasAlternate: true})} : {}),
+  ...(appConfig.showPlayground ? {playground: page(`/playground`, {noIndex: true})} : {}),
 
   // all these are available in /webview/
-  commentCaMarche: page(`/comment-ca-marche`, {hasAlternate: true}),
-  conditionsGeneralesUtilisation: page(`/conditions-generales-utilisation`, {noIndex: true, hasAlternate: true}),
-  contact: page(`/contact`, {noIndex: true, hasAlternate: true}),
-  cookies: page(`/cookies`, {hasAlternate: true}),
-  delaiRetractation: page(`/delai-de-retractation`, {hasAlternate: true}),
-  quiSommesNous: page(`/qui-sommes-nous`, {hasAlternate: true}),
+  commentCaMarche: page(`/comment-ca-marche`),
+  conditionsGeneralesUtilisation: page(`/conditions-generales-utilisation`, {noIndex: true}),
+  contact: page(`/contact`, {noIndex: true}),
+  cookies: page(`/cookies`),
+  delaiRetractation: page(`/delai-de-retractation`),
+  quiSommesNous: page(`/qui-sommes-nous`),
   stats: page(`/stats`, {hasAlternate: true}),
-  suiviEtViePrivee: page(`/suivi-et-vie-privee`, {hasAlternate: true}),
-  litige: page(`/litige`, {hasAlternate: true}),
-  // page temporaire de POC pour mettre en place une iframe de stats via Metabase
-  statsMetabase: page(`/stats-metabase`, {hasAlternate: true, noIndex: true}),
+  suiviEtViePrivee: page(`/suivi-et-vie-privee`),
+  litige: page(`/litige`),
 }
 
 const externalPageDefs = {
