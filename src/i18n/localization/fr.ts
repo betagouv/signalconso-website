@@ -1136,7 +1136,7 @@ export const fr = {
     confirmationBtnReponseConso: `Envoyer ma question`,
     confirmationBtn: `Envoyer le signalement`,
 
-    statsTitle: 'Statistiques',
+    statsTitle: 'Statistiques de SignalConso',
     statsText:
       'Ces statistiques sont mises à jour en temps réel. Des statistiques complémentaires sont aussi disponibles sur le site ',
 
