@@ -211,7 +211,7 @@ export const frLandingsData = [
     lang: 'fr',
     isSemiAutomatic: true,
     seoTitle:
-      'Vous avez un problème de démarchage abusif malgré Bloctel ? Vous avez un problème de démarchage à domicile ? Signalez-le à la DGCCRF',
+      'Vous avez un problème de démarchage abusif malgré Bloctel ? Signalez-le à la DGCCRF Vous avez un problème de démarchage à domicile ? Signalez-le à la DGCCRF',
     seoDescription:
       'Vous avez un problème de démarchage à domicile ou d’appels indésirables, inconnus, incessants, de spams, de sms, de télé vente, d’arnaque au CPF, à la formation professionnelle',
     title: 'Démarchage abusif',
@@ -1150,7 +1150,7 @@ export const frLandingsData = [
       "D'ici à 2030, la fibre optique devrait avoir définitivement remplacé le réseau cuivré ADSL. Ce remplacement se fait de manière progressive, par zones géographiques. Lorsque cela affectera votre zone, votre opérateur vous informera des alternatives disponibles, incluant la fibre optique et d'autres technologies.\n\n",
     otherTitle2: 'Situation actuelle : ',
     otherText2:
-      'Actuellement, si vous disposez d’une connexion ADSL dans une zone où cette technologie est encore disponible, **il n’y a pas d’obligation de passer à la fibre optique.** Vous pouvez continuer à utiliser votre connexion ADSL.\n',
+      'Actuellement, si vous disposez d’une connexion ADSL dans une zone où cette technologie est encore disponible, il n’y a pas d’obligation de passer à la fibre optique. Vous pouvez continuer à utiliser votre connexion ADSL.\n',
     otherTitle3: "Cas de Changement d'Opérateur : ",
     otherText3:
       "Si vous envisagez de changer d'opérateur ou de souscrire un nouveau contrat Internet ou d'un déménagement, et que la fibre est disponible dans votre zone, il est possible que le nouvel opérateur vous propose uniquement une connexion fibre optique.",
