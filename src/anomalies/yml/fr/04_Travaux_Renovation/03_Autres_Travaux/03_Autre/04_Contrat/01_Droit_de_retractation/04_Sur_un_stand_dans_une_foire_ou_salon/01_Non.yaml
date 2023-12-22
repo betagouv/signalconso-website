@@ -1,0 +1,5 @@
+title: Non
+blockingInfo:
+  title: Vous ne pouvez plus vous rétracter
+  content: Il n'y a pas de délai de rétractation pour votre cas.
+  notAFraudMessage: true
