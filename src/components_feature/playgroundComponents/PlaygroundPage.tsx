@@ -10,6 +10,9 @@ import {PlaygroundOther} from '@/components_feature/playgroundComponents/Playgro
 import {CompanyFilled} from '@/components_feature/reportFlow/Company/Company'
 import {ContentPageContainer} from '@/components_simple/PageContainers'
 
+import { useEffect, useState } from 'react';
+import { useRouter, usePathname, useSearchParams } from 'next/navigation';
+
 const companyDraft = {
   id: 'id12345',
   name: 'NomSociété',
@@ -28,24 +31,52 @@ const companyDraft = {
 }
 
 const Playground = () => {
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const [selectedTabId, setSelectedTabId] = useState('details');
+
+  useEffect(() => {
+    let tabParam = searchParams.get('testcase');
+    if (!tabParam) {
+      tabParam = 'details';
+      const newUrl = `${pathname}?testcase=${tabParam}`;
+      history.pushState({}, '', newUrl);
+    }
+    setSelectedTabId(tabParam);
+  }, [searchParams]);
+
+  const handleTabChange = (tabId:string) => {
+    setSelectedTabId(tabId);
+    const newUrl = `${pathname}?testcase=${tabId}`;
+    history.pushState({}, '', newUrl);
+  };
+
   return (
     <ContentPageContainer>
       <Tabs
         tabs={[
-          {label: 'details', content: <PlaygroundDetails />},
-          {label: 'company', content: <PlaygroundCompany />},
-          {
-            label: 'companyFilled',
-            content: <CompanyFilled draft={{companyDraft}} onClear={console.log} stepNavigation={dummyStepNavigation} />,
-          },
-          {label: 'consumer', content: <PlaygroundConsumer />},
-          {label: 'confirmation', content: <PlaygroundConfirmation />},
-          {label: 'acknowledgment', content: <PlaygroundAcknowledgment />},
-          {label: 'other', content: <PlaygroundOther />},
+          { tabId: 'details', label: 'Details' },
+          { tabId: 'company', label: 'Company' },
+          { tabId: 'companyFilled', label: 'CompanyFilled' },
+          { tabId: 'consumer', label: 'Consumer' },
+          { tabId: 'confirmation', label: 'Confirmation' },
+          { tabId: 'acknowledgment', label: 'Acknowledgment' },
+          { tabId: 'other', label: 'Other' },
         ]}
-      />
+        selectedTabId={selectedTabId}
+        onTabChange={handleTabChange}
+      >
+        {selectedTabId === 'details' && <PlaygroundDetails />}
+        {selectedTabId === 'company' && <PlaygroundCompany />}
+        {/* {selectedTabId === 'companyFilled' && <CompanyFilled draft={companyDraft} />} */}
+        {selectedTabId === 'consumer' && <PlaygroundConsumer />}
+        {selectedTabId === 'confirmation' && <PlaygroundConfirmation />}
+        {selectedTabId === 'acknowledgment' && <PlaygroundAcknowledgment />}
+        {selectedTabId === 'other' && <PlaygroundOther />}
+      </Tabs>
     </ContentPageContainer>
-  )
-}
+  );
+};
 
-export default Playground
+export default Playground;
