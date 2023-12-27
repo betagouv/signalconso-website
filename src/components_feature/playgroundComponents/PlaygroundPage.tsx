@@ -12,6 +12,8 @@ import {ContentPageContainer} from '@/components_simple/PageContainers'
 
 import { useEffect, useState } from 'react';
 import { useRouter, usePathname, useSearchParams } from 'next/navigation';
+import { CompanyKinds } from '../../anomalies/Anomaly';
+
 
 const companyDraft = {
   id: 'id12345',
@@ -35,21 +37,36 @@ const Playground = () => {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const [selectedTabId, setSelectedTabId] = useState('details');
+  const [selectedCompanyKind, setSelectedCompanyKind] = useState('SIRET');
 
   useEffect(() => {
-    let tabParam = searchParams.get('testcase');
-    if (!tabParam) {
-      tabParam = 'details';
-      const newUrl = `${pathname}?testcase=${tabParam}`;
-      history.pushState({}, '', newUrl);
-    }
+    let tabParam = searchParams.get('testcase') || 'details';
+    let companyKindParam = searchParams.get('companykind') || 'SIRET';
+
     setSelectedTabId(tabParam);
-  }, [searchParams]);
+    setSelectedCompanyKind(companyKindParam);
+
+    updateURL(tabParam, companyKindParam);
+  }, [pathname, searchParams]);
+
+  const updateURL = (tabId:string, companyKind:string) => {
+    let newUrl = `${pathname}?testcase=${tabId}`;
+    if (tabId === 'company') {
+      newUrl += `&companykind=${companyKind}`;
+    }
+    history.pushState({}, '', newUrl);
+  };
 
   const handleTabChange = (tabId:string) => {
     setSelectedTabId(tabId);
-    const newUrl = `${pathname}?testcase=${tabId}`;
-    history.pushState({}, '', newUrl);
+    updateURL(tabId, selectedCompanyKind);
+  };
+
+  const handleCompanyKindChange = (companyKind:string) => {
+    setSelectedCompanyKind(companyKind);
+    if (selectedTabId === 'company') {
+      updateURL(selectedTabId, companyKind);
+    }
   };
 
   return (
@@ -68,8 +85,8 @@ const Playground = () => {
         onTabChange={handleTabChange}
       >
         {selectedTabId === 'details' && <PlaygroundDetails />}
-        {selectedTabId === 'company' && <PlaygroundCompany />}
-        {/* {selectedTabId === 'companyFilled' && <CompanyFilled draft={companyDraft} />} */}
+        {selectedTabId === 'company' && <PlaygroundCompany onCompanyKindChange={handleCompanyKindChange} />}
+        {selectedTabId === 'companyFilled' && <CompanyFilled draft={{companyDraft}} onClear={console.log} stepNavigation={dummyStepNavigation} />}
         {selectedTabId === 'consumer' && <PlaygroundConsumer />}
         {selectedTabId === 'confirmation' && <PlaygroundConfirmation />}
         {selectedTabId === 'acknowledgment' && <PlaygroundAcknowledgment />}
