@@ -6,6 +6,7 @@ import {useI18n} from '../i18n/I18n'
 import buildMenuLink from '../utils/menuLinks'
 import {usePathname} from 'next/navigation'
 import {AppLangs} from '../i18n/localization/AppLangs'
+import {appConfig} from '@/core/appConfig'
 
 export const urlServicePublicPlus = `https://www.plus.transformation.gouv.fr`
 
@@ -59,6 +60,7 @@ export function ScFooter() {
             },
           },
           buildMenuLink(currentLang, pathName, pagesDefs.actualites.url, m.footer.actualitesLinkTitle),
+          ...(appConfig.showPlayground ? [buildMenuLink(currentLang, pathName, pagesDefs.playground.url, 'Playground')] : []),
         ]}
       />
     </>

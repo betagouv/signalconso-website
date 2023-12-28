@@ -9,6 +9,7 @@ import {useReportFlowContext} from '../components_feature/reportFlow/ReportFlowC
 import {internalPageDefs} from '../core/pagesDefinitions'
 import {useI18n} from '../i18n/I18n'
 import {replaceLangInPath, switchLang} from '../i18n/I18nTools'
+import {AppLangs} from '@/i18n/localization/AppLangs'
 
 export function SwitchLang() {
   const pathname = usePathname()
@@ -20,7 +21,7 @@ export function SwitchLang() {
 
   const newPath = () => {
     const hasAlternatePageInOtherLang = Object.values(internalPageDefs).find(_ => {
-      return _.url != '/' && pathname.includes(_.url)
+      return _.url != '/' && pathname.includes(_.url) && (_.hasAlternate || currentLang === AppLangs.en)
     })
 
     return hasAlternatePageInOtherLang ? path : home
