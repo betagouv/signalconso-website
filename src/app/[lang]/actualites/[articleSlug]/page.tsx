@@ -1,4 +1,4 @@
-import {NewsArticle, newsArticlesData} from '@/components_feature/actualites/newsArticlesData'
+import {NewsArticle, getNewsArticleData} from '@/components_feature/actualites/newsArticlesData'
 import {ContentPageContainer} from '@/components_simple/PageContainers'
 import {GenerateMetadataArg, PageComponentProps, PathParams} from '@/core/metadatas'
 import {pagesDefs} from '@/core/pagesDefinitions'
@@ -15,7 +15,7 @@ type LocalPathParams = PathParams<{
 }>
 
 function getArticleData(params: LocalPathParams) {
-  return newsArticlesData.find(_ => _.slug === params.articleSlug && params.lang === _.lang)
+  return getNewsArticleData().find(_ => _.slug === params.articleSlug && params.lang === _.lang)
 }
 
 export function generateMetadata(props: GenerateMetadataArg<LocalPathParams>): Metadata {
@@ -28,7 +28,7 @@ export function generateMetadata(props: GenerateMetadataArg<LocalPathParams>): M
     : {}
 }
 
-export default function News(props: PageComponentProps<LocalPathParams>) {
+export default function Page(props: PageComponentProps<LocalPathParams>) {
   const article: NewsArticle | undefined = getArticleData(props.params)
   return article ? <NewsArticle article={article} lang={props.params.lang} /> : notFound()
 }

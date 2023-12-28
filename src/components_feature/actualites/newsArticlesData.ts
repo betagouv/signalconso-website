@@ -1,11 +1,9 @@
 import {AppLangs} from '../../i18n/localization/AppLangs'
 
-export type NewsArticle = (typeof newsArticlesData)[number]
-
-const currentDate = new Date()
+export type NewsArticle = (typeof initialNewsArticlesData)[number]
 
 // This is the display order. Keep the most recents at the start of the array
-const initialNewsArticlesData = [
+export const initialNewsArticlesData = [
   {
     date: '2024-01-03',
     lang: 'fr',
@@ -74,4 +72,8 @@ const initialNewsArticlesData = [
   },
 ] as const
 
-export const newsArticlesData = initialNewsArticlesData.filter(article => new Date(article.date) <= currentDate)
+
+export const getNewsArticleData = () => {
+  const currentDate = new Date();
+  return initialNewsArticlesData.filter(article => new Date(article.date) <= currentDate);
+};

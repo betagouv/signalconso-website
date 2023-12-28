@@ -38,8 +38,7 @@ export function ArticleAmeliorationAccessibilite() {
       </ul>
 
       <Image
-        className="max-w-full h-auto border border-gray-300 border-solid shadow-lg"
-        sizes={'100vw'}
+        className="border border-gray-300 border-solid shadow-lg"
         src={imgAccessibilityImprovements}
         alt="logo accessibilité"
       />
