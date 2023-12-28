@@ -2,7 +2,7 @@ import {AppLangs} from '../../i18n/localization/AppLangs'
 
 export type NewsArticle = (typeof newsArticlesData)[number]
 
-const currentDate = new Date();
+const currentDate = new Date()
 
 // This is the display order. Keep the most recents at the start of the array
 export const newsArticlesData = [
