@@ -17,11 +17,10 @@ export function Stats(props: PageComponentProps) {
     <>
       <ContentPageContainer>
         <h1 className="fr-h1">
-          <i className="ri-bar-chart-2-line fr-icon--lg" />
-          Statistiques de SignalConso
+          <i className="ri-bar-chart-2-line fr-icon--lg" /> Statistiques de SignalConso
         </h1>
         <p className="mb-8">
-          Ces statistiques sont mises à jour en temps réel. Des statistiques complémentaires sont aussi disponibles sur le site
+          Ces statistiques sont mises à jour en temps réel. Des statistiques complémentaires sont aussi disponibles sur le site{' '}
           <Link className="" target="_blank" rel="noreferrer" href="https://data.economie.gouv.fr/pages/signalconso/">
             data.economie.fr
           </Link>
