@@ -13,7 +13,9 @@ export type PageDefInternal = {
   url: string
   urlRelative: string
   noIndex: boolean
-  //Has alternate language available for the page
+  // Set false if the page has no english version
+  // note that a "notFound()" still has to be manually coded on this page, when the lang is english
+  // this boolean only affects the sitemap / metadatas / etc.
   hasAlternate: boolean
 }
 

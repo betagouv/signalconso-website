@@ -3,11 +3,16 @@
 import {FriendlyHelpText} from '@/components_simple/FriendlyHelpText'
 import {ContentPageContainer} from '@/components_simple/PageContainers'
 import {appConfig} from '@/core/appConfig'
+import {PageComponentProps} from '@/core/metadatas'
+import {AppLangs} from '@/i18n/localization/AppLangs'
 import {iframeResizer} from 'iframe-resizer'
 import Link from 'next/link'
+import {notFound} from 'next/navigation'
 import {useEffect} from 'react'
 
-export function Stats() {
+export function Stats(props: PageComponentProps) {
+  // We can't translate Metabase
+  throwNotFoundIfNotFr(props)
   return (
     <>
       <ContentPageContainer>
@@ -55,4 +60,10 @@ function MetabaseIframe({dashboardId, className = ''}: {dashboardId: string; cla
 
 function getDashboardUrl(dashboardId: string) {
   return `${appConfig.anonMetabaseUrl}/public/dashboard/${dashboardId}?#bordered=false&titled=false`
+}
+
+function throwNotFoundIfNotFr(props: PageComponentProps) {
+  if (props.params.lang !== AppLangs.fr) {
+    notFound()
+  }
 }
