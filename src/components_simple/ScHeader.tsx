@@ -51,7 +51,7 @@ export function ScHeader() {
         }
         operatorLogo={{
           alt: m.header.homeLinkTitle,
-          imgUrl: '/image/logo-signalconso.png',
+          imgUrl: '/image/logo-signalconso_145_61.png',
           orientation: 'horizontal',
         }}
         quickAccessItems={[
