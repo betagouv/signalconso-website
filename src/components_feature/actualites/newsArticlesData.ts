@@ -1,12 +1,14 @@
 import {AppLangs} from '../../i18n/localization/AppLangs'
 
+
+
 export type NewsArticle = (typeof newsArticlesData)[number]
 
-const currentDate = new Date()
+const currentDate = new Date();
 
 // This is the display order. Keep the most recents at the start of the array
-export const newsArticlesData = [
-  {
+const initialNewsArticlesData = [
+    {
     date: '2024-01-03',
     lang: 'fr',
     slug: 'amelioration-de-laccessibilite-de-la-plateforme-signalconso',
@@ -72,4 +74,6 @@ export const newsArticlesData = [
     excerpt: `Découvrez dès maintenant la nouvelle application mobile SignalConso, qui rend vos signalements en tant que consommateur
     encore plus faciles et simplifie vos démarches.`,
   },
-].filter(article => new Date(article.date) <= currentDate)
+] as const;
+
+export const newsArticlesData = initialNewsArticlesData.filter(article => new Date(article.date) <= currentDate);
