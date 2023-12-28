@@ -72,8 +72,7 @@ export const initialNewsArticlesData = [
   },
 ] as const
 
-
 export const getNewsArticleData = () => {
-  const currentDate = new Date();
-  return initialNewsArticlesData.filter(article => new Date(article.date) <= currentDate);
-};
+  const currentDate = new Date()
+  return initialNewsArticlesData.filter(article => new Date(article.date) <= currentDate)
+}
