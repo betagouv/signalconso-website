@@ -4,9 +4,9 @@ import imgAccessibilityImprovements from '@/img/actualites/ameliorationAccessibi
 export function ArticleAmeliorationAccessibilite() {
   return (
     <div>
-      <h2>Qu’est-ce que l’accessibilité numérique ?</h2>
+      <h2>Qu'est-ce que l'accessibilité numérique ?</h2>
       <p>
-        L’accessibilité numérique consiste à rendre les contenus et services numériques compréhensibles et utilisables par les
+        L'accessibilité numérique consiste à rendre les contenus et services numériques compréhensibles et utilisables par les
         personnes en situation de handicap.
       </p>
 
@@ -24,7 +24,7 @@ export function ArticleAmeliorationAccessibilite() {
       </p>
 
       <p>
-        L'équipe de SignalConso prévoit de continuer à apporter des améliorations progressives en termes d’accessibilité pour les
+        L'équipe de SignalConso prévoit de continuer à apporter des améliorations progressives en termes d'accessibilité pour les
         agents et les professionnels tout au long de l'année 2024.
       </p>
 

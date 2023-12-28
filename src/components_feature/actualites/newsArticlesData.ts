@@ -10,8 +10,8 @@ const initialNewsArticlesData = [
     date: '2024-01-03',
     lang: 'fr',
     slug: 'amelioration-de-laccessibilite-de-la-plateforme-signalconso',
-    title: 'Amélioration de l’accessibilité de la plateforme SignalConso !',
-    excerpt: `L’accessibilité numérique consiste à rendre les contenus et services numériques compréhensibles et utilisables par les personnes en situation de handicap.`,
+    title: `Amélioration de l'accessibilité de la plateforme SignalConso !`,
+    excerpt: `L'accessibilité numérique consiste à rendre les contenus et services numériques compréhensibles et utilisables par les personnes en situation de handicap.`,
   },
   {
     date: '2023-12-20',
