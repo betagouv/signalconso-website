@@ -7,6 +7,7 @@ import { useRouter, usePathname, useSearchParams } from 'next/navigation';
 
 interface PlaygroundCompanyProps {
   onCompanyKindChange: (companyKind: CompanyKinds) => void;
+  initialCompanyKind?: CompanyKinds;
 }
 
 export const PlaygroundCompany = ({ onCompanyKindChange, initialCompanyKind = 'SIRET' }: PlaygroundCompanyProps) => {
