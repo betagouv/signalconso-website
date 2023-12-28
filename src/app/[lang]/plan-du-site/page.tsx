@@ -1,10 +1,11 @@
 import {newsArticlesData} from '@/components_feature/actualites/newsArticlesData'
 import {ContentPageContainer} from '@/components_simple/PageContainers'
 import {PageComponentProps, buildGenerateMetadata} from '@/core/metadatas'
-import {buildLinkLandingPage, buildLinkNewsArticle, pagesDefs} from '@/core/pagesDefinitions'
+import {buildLinkLandingPage, buildLinkNewsArticle, internalPageDefs, pagesDefs} from '@/core/pagesDefinitions'
 import {allVisibleLandings} from '@/landings/landingDataUtils'
 import Link from 'next/link'
-import {getI18n} from '../../../i18n/I18nDictionnary'
+import {I18nMessages, getI18n} from '../../../i18n/I18nDictionnary'
+import {AppLang, AppLangs} from '@/i18n/localization/AppLangs'
 
 export const generateMetadata = buildGenerateMetadata('planDuSite')
 
@@ -18,42 +19,18 @@ const PlanDuSite = (props: PageComponentProps) => {
         <h1>{m.planDuSite.pageTitle}</h1>
         <h2 className="fr-h4">{m.planDuSite.generalPagesSection}</h2>
         <ul>
-          <li>
-            <Link href={pagesDefs.index.url}>{m.planDuSite.reportIncident}</Link>
-          </li>
-          <li>
-            <Link href={pagesDefs.suiviEtViePrivee.url}>{m.planDuSite.audiencePrivacy}</Link>
-          </li>
-          <li>
-            <Link href={pagesDefs.cookies.url}>{m.planDuSite.cookieManagement}</Link>
-          </li>
-          <li>
-            <Link href={pagesDefs.conditionsGeneralesUtilisation.url}>{m.planDuSite.generalConditions}</Link>
-          </li>
-          <li>
-            <Link href={pagesDefs.accessibilite.url}>{m.planDuSite.accessibilityDeclaration}</Link>
-          </li>
-          <li>
-            <Link href={pagesDefs.planDuSite.url}>{m.planDuSite.siteMap}</Link>
-          </li>
-          <li>
-            <Link href={pagesDefs.quiSommesNous.url}>{m.planDuSite.aboutUs}</Link>
-          </li>
-          <li>
-            <Link href={pagesDefs.commentCaMarche.url}>{m.planDuSite.howItWorks}</Link>
-          </li>
-          <li>
-            <Link href={pagesDefs.stats.url}>{m.planDuSite.statistics}</Link>
-          </li>
-          <li>
-            <Link href={pagesDefs.contact.url}>{m.planDuSite.contact}</Link>
-          </li>
-          <li>
-            <Link href={pagesDefs.delaiRetractation.url}>{m.planDuSite.calcRetractionDelay}</Link>
-          </li>
-          <li>
-            <Link href={pagesDefs.litige.url}>{m.planDuSite.resolutionTips}</Link>
-          </li>
+          <BasicPageLink page="index" label={m.planDuSite.reportIncident} {...{lang}} />
+          <BasicPageLink page="suiviEtViePrivee" label={m.planDuSite.audiencePrivacy} {...{lang}} />
+          <BasicPageLink page="cookies" label={m.planDuSite.cookieManagement} {...{lang}} />
+          <BasicPageLink page="conditionsGeneralesUtilisation" label={m.planDuSite.generalConditions} {...{lang}} />
+          <BasicPageLink page="accessibilite" label={m.planDuSite.accessibilityDeclaration} {...{lang}} />
+          <BasicPageLink page="planDuSite" label={m.planDuSite.siteMap} {...{lang}} />
+          <BasicPageLink page="quiSommesNous" label={m.planDuSite.aboutUs} {...{lang}} />
+          <BasicPageLink page="commentCaMarche" label={m.planDuSite.howItWorks} {...{lang}} />
+          <BasicPageLink page="stats" label={m.planDuSite.statistics} {...{lang}} />
+          <BasicPageLink page="contact" label={m.planDuSite.contact} {...{lang}} />
+          <BasicPageLink page="delaiRetractation" label={m.planDuSite.calcRetractionDelay} {...{lang}} />
+          <BasicPageLink page="litige" label={m.planDuSite.resolutionTips} {...{lang}} />
         </ul>
         <h2 className="fr-h4">{m.planDuSite.reportIncidentSection}</h2>
         <ul className="">
@@ -123,6 +100,18 @@ const PlanDuSite = (props: PageComponentProps) => {
         </ul>
       </ContentPageContainer>
     </>
+  )
+}
+
+function BasicPageLink({page, label, lang}: {page: keyof typeof internalPageDefs; label: string; lang: AppLang}) {
+  const pageDef = internalPageDefs[page]
+  if (lang !== AppLangs.fr && !pageDef.hasAlternate) {
+    return null
+  }
+  return (
+    <li>
+      <Link href={pagesDefs[page].url}>{label}</Link>
+    </li>
   )
 }
 

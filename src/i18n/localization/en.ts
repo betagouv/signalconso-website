@@ -98,10 +98,6 @@ export const en = {
         title: 'Statistics - SignalConso',
         description: 'View the statistics of SignalConso',
       },
-      statsMetabase: {
-        title: 'Statistics - SignalConso',
-        description: 'View the statistics of SignalConso',
-      },
       index: {
         title: 'SignalConso, a public service for consumers',
         description:
@@ -1123,9 +1119,6 @@ export const en = {
     `,
     confirmationBtnReponseConso: `Send query`,
     confirmationBtn: `Send report`,
-
-    statsTitle: 'Statistics',
-    statsText: 'These statistics are updated in real time. Additional statistics are also available on ',
 
     acceptedReportStat: `companies have promised to take action since SignalConso began`,
     acceptedReportStatName: `Number of commitments made`,
