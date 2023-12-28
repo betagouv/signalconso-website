@@ -1,4 +1,4 @@
-import {TreeChart} from '@/components_feature/ArboVisu'
+import {ArboVisu} from '@/components_feature/ArboVisu'
 import {buildGenerateMetadata} from '@/core/metadatas'
 
 export const generateMetadata = buildGenerateMetadata('arboVisu')
@@ -7,7 +7,7 @@ const Page = () => {
   return (
     <div className="fr-container">
       <h1>arbo visu</h1>
-      <TreeChart data={treeData} />
+      <ArboVisu />
     </div>
   )
 }
