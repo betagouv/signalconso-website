@@ -1,4 +1,4 @@
-import {newsArticlesData} from '@/components_feature/actualites/newsArticlesData'
+import {getNewsArticleData} from '@/components_feature/actualites/newsArticlesData'
 import {ContentPageContainer} from '@/components_simple/PageContainers'
 import {PageComponentProps, buildGenerateMetadata} from '@/core/metadatas'
 import {buildLinkLandingPage, buildLinkNewsArticle, pagesDefs} from '@/core/pagesDefinitions'
@@ -100,7 +100,7 @@ const PlanDuSite = (props: PageComponentProps) => {
           <li>
             <Link href={pagesDefs.actualites.url}>{m.planDuSite.allNews}</Link>
           </li>
-          {newsArticlesData
+          {getNewsArticleData()
             .filter(_ => _.lang === lang)
             .map(article => {
               return (
