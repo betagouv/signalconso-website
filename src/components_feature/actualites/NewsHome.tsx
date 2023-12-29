@@ -2,7 +2,7 @@
 
 import {useI18n} from '../../i18n/I18n'
 import {ContentPageContainer} from '../../components_simple/PageContainers'
-import {newsArticlesData} from './newsArticlesData'
+import {getNewsArticleData} from './newsArticlesData'
 import {Card} from '@codegouvfr/react-dsfr/Card'
 import {buildLinkNewsArticle} from '../../core/pagesDefinitions'
 import {isoToFrenchFormat} from '../../utils/utils'
@@ -14,7 +14,7 @@ const NewsHome = () => {
       <h1>{m.planDuSite.newsSection}</h1>
       <p>{m.titleAndDescriptions.actualites.description}</p>
       <div className="fr-grid-row fr-grid-row--gutters">
-        {newsArticlesData
+        {getNewsArticleData()
           .filter(_ => _.lang === currentLang)
           .map(article => {
             return (
