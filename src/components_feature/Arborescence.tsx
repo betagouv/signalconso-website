@@ -29,7 +29,9 @@ const Node = ({anomaly, open, displayExtra}: {anomaly: Anomaly | Subcategory; op
         {anomaly.subcategories ? (
           <button
             onClick={() => setIsOpen(_ => !_)}
-            className="bg-sclightpurple h-[40px] w-[40px] text-scbluefrance flex items-center ri-arrow-down-s-line justify-center"
+            className={`bg-sclightpurple h-[40px] w-[40px] text-scbluefrance flex items-center  justify-center ${
+              isOpen ? 'ri-arrow-down-s-line' : 'ri-arrow-right-s-line'
+            }`}
           ></button>
         ) : (
           <i className={`ri-corner-down-right-line text-indigo-400 mx-2`} />
