@@ -30,11 +30,7 @@ const Node = ({anomaly, open}: {anomaly: Anomaly | Subcategory; open?: boolean})
             className="bg-sclightpurple h-[40px] w-[40px] text-scbluefrance flex items-center ri-arrow-down-s-line justify-center"
           ></button>
         ) : (
-          <i
-            className={`${
-              instanceOfSubcategoryWithInfoWall(anomaly) ? 'ri-information-fill text-gray-500' : 'ri-file-4-line text-gray-500'
-            }  mx-2`}
-          />
+          <i className={`ri-corner-down-right-line text-indigo-400 mx-2`} />
         )}
       </div>
       <div className="grow">
@@ -80,7 +76,7 @@ const NodeInput = ({anomaly}: {anomaly: StandardSubcategory}) => {
     return (
       <details className="p-2 my-2 border-gray-300 border-solid border rounded-lg">
         <summary>
-          {nbDetails} détail{nbDetailsPlural} demandé{nbDetailsPlural}
+          <i className="ri-survey-line text-gray-500" /> {nbDetails} détail{nbDetailsPlural} demandé{nbDetailsPlural}
         </summary>
         {anomaly.detailInputs.map(input => (
           <div key={input.label}>
@@ -127,7 +123,9 @@ const NodeInfo = ({anomaly}: {anomaly: SubcategoryWithInfoWall}) => {
   const {m} = useI18n()
   return (
     <details className="p-2 my-2 border-gray-300 border-solid border rounded-lg bg-gray-500 text-white">
-      <summary className="italic px-2">Information bloquante</summary>
+      <summary>
+        <i className="ri-information-fill text-gray-200" /> Information bloquante
+      </summary>
       <div className="p-2 bg-white text-black mt-2 rounded-lg">
         {anomaly.blockingInfo.title && <div dangerouslySetInnerHTML={{__html: anomaly.blockingInfo.title}} />}
         {anomaly.blockingInfo.subTitle && <div dangerouslySetInnerHTML={{__html: anomaly.blockingInfo.subTitle}} />}
