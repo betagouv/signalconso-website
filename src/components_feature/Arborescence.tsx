@@ -18,6 +18,10 @@ import {fnSwitch} from '../utils/FnSwitch'
 const Node = ({anomaly, openAll, displayExtra}: {anomaly: Anomaly | Subcategory; openAll?: boolean; displayExtra: boolean}) => {
   const title = instanceOfAnomaly(anomaly) ? anomaly.category : anomaly.title
   const desc = instanceOfAnomaly(anomaly) ? anomaly.description : anomaly.desc
+  const reponseconsoCode = instanceOfAnomaly(anomaly) ? undefined : anomaly.reponseconsoCode
+  const ccrfCode = instanceOfAnomaly(anomaly) ? undefined : anomaly.ccrfCode
+  const tags = instanceOfAnomaly(anomaly) ? undefined : anomaly.tags
+  const companyKind = instanceOfAnomaly(anomaly) ? undefined : anomaly.companyKind
   const [isOpen, setIsOpen] = useState(false)
   useEffect(() => {
     setIsOpen(!!openAll)
@@ -38,9 +42,7 @@ const Node = ({anomaly, openAll, displayExtra}: {anomaly: Anomaly | Subcategory;
         )}
       </div>
       <div className="grow ">
-        <div
-          className={`min-h-[42px] flex flex-col justify-center pl-1 ${anomaly.subcategories ? 'bg-slate-100' : 'bg-stone-100'}`}
-        >
+        <div className={`min-h-[42px]  pl-1 ${anomaly.subcategories ? 'bg-slate-100' : 'bg-stone-100'}`}>
           <p className="mb-0">
             <span dangerouslySetInnerHTML={{__html: title}} />{' '}
             {displayExtra && (
@@ -50,20 +52,42 @@ const Node = ({anomaly, openAll, displayExtra}: {anomaly: Anomaly | Subcategory;
             )}
             {desc && <span className="ml-2 text-sm text-gray-500 mb-0 italic" dangerouslySetInnerHTML={{__html: desc}} />}
           </p>
-          {(anomaly as Subcategory).reponseconsoCode && displayExtra && (
-            <span key={1} className="text-sm text-gray-500">
-              <b>ReponseConso code:</b>&nbsp;
-              {(anomaly as Subcategory).reponseconsoCode}
+
+          {displayExtra &&
+            tags &&
+            tags.length &&
+            tags?.map(tag => (
+              <span className="border border-solid px-1 rounded mr-1 italic text-sm " key={tag}>
+                <i className="ri-price-tag-3-fill  fr-icon--sm" /> {tag}
+              </span>
+            ))}
+          {companyKind && (
+            <span className="border border-solid px-1 rounded mr-1 italic text-sm ">
+              <span className="text-xs">
+                <i className="ri-search-line fr-icon--sm" /> companyKind :
+              </span>{' '}
+              {companyKind}
             </span>
           )}
-          <div>
-            {displayExtra &&
-              (anomaly as Subcategory).tags?.map(tag => (
-                <span className="border border-solid px-1 rounded mr-1 italic text-sm " key={tag}>
-                  {tag}
-                </span>
-              ))}
-          </div>
+          {displayExtra && reponseconsoCode && (
+            <span className="border border-solid px-1 rounded mr-1 italic text-sm ">
+              {' '}
+              <span className="text-xs">
+                <i className="ri-customer-service-line fr-icon--sm" /> reponseconsoCode :
+              </span>{' '}
+              {reponseconsoCode}
+            </span>
+          )}
+          {displayExtra && ccrfCode && (
+            <span className="border border-solid px-1 rounded mr-1 italic text-sm ">
+              {' '}
+              <span className="text-xs">
+                <i className="ri-hashtag fr-icon--sm" /> ccrfCode :
+              </span>{' '}
+              {ccrfCode}
+            </span>
+          )}
+
           {instanceOfSubcategoryWithInfoWall(anomaly) && <NodeInfo anomaly={anomaly} />}
           {instanceOfSubcategoryWithInputs(anomaly) && <NodeInput anomaly={anomaly} />}
         </div>
@@ -183,7 +207,7 @@ const Arbo = () => {
       <form className="mb-4">
         <label>
           <input type="checkbox" {...register('hideExtra')} />
-          <span className="ml-2">Masquer les petits détails (ids, tags, codes RéponseConso)</span>
+          <span className="ml-2">Masquer les petits détails (ids, tags, codes RéponseConso et codes DGCCRF)</span>
         </label>
       </form>
       <Button
