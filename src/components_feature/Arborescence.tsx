@@ -30,7 +30,11 @@ const Node = ({anomaly, open}: {anomaly: Anomaly | Subcategory; open?: boolean})
             className="bg-sclightpurple h-[40px] w-[40px] text-scbluefrance flex items-center ri-arrow-down-s-line justify-center"
           ></button>
         ) : (
-          <i className="ri-file-line text-gray-500 mx-2" />
+          <i
+            className={`${
+              instanceOfSubcategoryWithInfoWall(anomaly) ? 'ri-information-fill text-gray-500' : 'ri-file-4-line text-gray-500'
+            }  mx-2`}
+          />
         )}
       </div>
       <div className="grow">
@@ -72,7 +76,8 @@ const Node = ({anomaly, open}: {anomaly: Anomaly | Subcategory; open?: boolean})
 const NodeInput = ({anomaly}: {anomaly: StandardSubcategory}) => {
   if (anomaly.detailInputs && anomaly.detailInputs.length > 0) {
     return (
-      <div className="p-2 my-2 border-gray-300 border-solid border rounded-lg">
+      <details className="p-2 my-2 border-gray-300 border-solid border rounded-lg">
+        <summary>Détails demandés</summary>
         {anomaly.detailInputs?.map(input => (
           <div key={input.label}>
             <p className="mb-0 mt-2 text-sm text-gray-600" dangerouslySetInnerHTML={{__html: input.label}} />
@@ -108,7 +113,7 @@ const NodeInput = ({anomaly}: {anomaly: StandardSubcategory}) => {
             )}
           </div>
         ))}
-      </div>
+      </details>
     )
   }
   return null
@@ -118,7 +123,7 @@ const NodeInfo = ({anomaly}: {anomaly: SubcategoryWithInfoWall}) => {
   const {m} = useI18n()
   return (
     <details className="border border-solid border-gray-300">
-      <summary className="bg-gray-500 text-white italic px-2">(information bloquante)</summary>
+      <summary className="bg-gray-500 text-white italic px-2">Information bloquante</summary>
       <div className="p-2">
         {anomaly.blockingInfo.title && <div dangerouslySetInnerHTML={{__html: anomaly.blockingInfo.title}} />}
         {anomaly.blockingInfo.subTitle && <div dangerouslySetInnerHTML={{__html: anomaly.blockingInfo.subTitle}} />}
