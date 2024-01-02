@@ -15,30 +15,32 @@ import {Anomaly, DetailInputType, StandardSubcategory, Subcategory, SubcategoryW
 import {useI18n} from '../i18n/I18n'
 import {fnSwitch} from '../utils/FnSwitch'
 
-const Node = ({anomaly, open, displayExtra}: {anomaly: Anomaly | Subcategory; open?: boolean; displayExtra: boolean}) => {
+const Node = ({anomaly, openAll, displayExtra}: {anomaly: Anomaly | Subcategory; openAll?: boolean; displayExtra: boolean}) => {
   const title = instanceOfAnomaly(anomaly) ? anomaly.category : anomaly.title
   const desc = instanceOfAnomaly(anomaly) ? anomaly.description : anomaly.desc
   const [isOpen, setIsOpen] = useState(false)
   useEffect(() => {
-    setIsOpen(!!open)
-  }, [open])
+    setIsOpen(!!openAll)
+  }, [openAll])
 
   return (
-    <div className="flex items-start mb-1 ">
-      <div className="w-[40px] mr-[8px] shrink-0">
+    <div className="flex items-start mb-1">
+      <div className="w-[40px] mr-2 shrink-0">
         {anomaly.subcategories ? (
           <button
             onClick={() => setIsOpen(_ => !_)}
-            className={`bg-sclightpurple h-[40px] w-[40px] text-scbluefrance flex items-center  justify-center ${
+            className={`bg-slate-300 h-[40px] w-[40px] text-slate-800 flex items-center  justify-center ${
               isOpen ? 'ri-arrow-down-s-line' : 'ri-arrow-right-s-line'
             }`}
           ></button>
         ) : (
-          <i className={`ri-corner-down-right-line text-indigo-400 mx-2`} />
+          <i className={`ri-corner-down-right-line text-stone-500 mx-2`} />
         )}
       </div>
-      <div className="grow">
-        <div className="min-h-[42px] flex flex-col justify-center">
+      <div className="grow ">
+        <div
+          className={`min-h-[42px] flex flex-col justify-center pl-1 ${anomaly.subcategories ? 'bg-slate-100' : 'bg-stone-100'}`}
+        >
           <p className="mb-0">
             <span dangerouslySetInnerHTML={{__html: title}} />{' '}
             {displayExtra && (
@@ -57,7 +59,7 @@ const Node = ({anomaly, open, displayExtra}: {anomaly: Anomaly | Subcategory; op
           <div>
             {displayExtra &&
               (anomaly as Subcategory).tags?.map(tag => (
-                <span className="mr-2 h-[15px] px-1 bg-gray-200 text-sm " key={tag}>
+                <span className="border border-solid px-1 rounded mr-1 italic text-sm " key={tag}>
                   {tag}
                 </span>
               ))}
@@ -68,7 +70,7 @@ const Node = ({anomaly, open, displayExtra}: {anomaly: Anomaly | Subcategory; op
         {isOpen && anomaly.subcategories && (
           <div className="my-2 relative before:h-full before:content-['_'] before:w-[1px] before:absolute before:bg-gray-500 before:left-[-28px]">
             {anomaly.subcategories.map(s => (
-              <Node open={open} key={s.id} anomaly={s} {...{displayExtra}} />
+              <Node openAll={openAll} key={s.id} anomaly={s} {...{displayExtra}} />
             ))}
           </div>
         )}
@@ -201,7 +203,7 @@ const Arbo = () => {
       </Button>
 
       {anomalies.map(a => (
-        <Node key={a.id} anomaly={a} open={openAll} {...{displayExtra}} />
+        <Node key={a.id} anomaly={a} openAll={openAll} {...{displayExtra}} />
       ))}
     </ContentPageContainer>
   )
