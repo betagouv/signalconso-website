@@ -4,6 +4,7 @@ import {getOptionsFromInput, getPlaceholderFromInput} from '@/components_feature
 import {ContentPageContainer} from '@/components_simple/PageContainers'
 import {Button} from '@codegouvfr/react-dsfr/Button'
 import {useEffect, useState} from 'react'
+import {useForm} from 'react-hook-form'
 import {
   allVisibleAnomalies,
   instanceOfAnomaly,
@@ -14,7 +15,7 @@ import {Anomaly, DetailInputType, StandardSubcategory, Subcategory, SubcategoryW
 import {useI18n} from '../i18n/I18n'
 import {fnSwitch} from '../utils/FnSwitch'
 
-const Node = ({anomaly, open}: {anomaly: Anomaly | Subcategory; open?: boolean}) => {
+const Node = ({anomaly, open, displayExtra}: {anomaly: Anomaly | Subcategory; open?: boolean; displayExtra: boolean}) => {
   const title = instanceOfAnomaly(anomaly) ? anomaly.category : anomaly.title
   const [isOpen, setIsOpen] = useState(false)
   useEffect(() => {
@@ -36,23 +37,28 @@ const Node = ({anomaly, open}: {anomaly: Anomaly | Subcategory; open?: boolean})
       <div className="grow">
         <div className="min-h-[42px] flex flex-col justify-center">
           <p className="mb-0">
-            <span dangerouslySetInnerHTML={{__html: title}} /> <span className="text-gray-500 text-xs">(id : {anomaly.id})</span>
+            <span dangerouslySetInnerHTML={{__html: title}} />{' '}
+            {displayExtra && <span className="text-gray-500 text-xs">(id : {anomaly.id})</span>}
           </p>
           {instanceOfAnomaly(anomaly) && anomaly.description && (
             <p className="text-sm text-gray-500 mb-0" dangerouslySetInnerHTML={{__html: anomaly.description}} />
           )}
-          {(anomaly as Subcategory).reponseconsoCode && (
+          {(anomaly as Subcategory).reponseconsoCode && displayExtra && (
             <span key={1} className="text-sm text-gray-500">
               <b>ReponseConso code:</b>&nbsp;
               {(anomaly as Subcategory).reponseconsoCode}
             </span>
           )}
           <div>
-            {(anomaly as Subcategory).tags?.map(tag => (
-              <div className="mr-2 rounded-lg h-[26px] px-2 bg-gray-300 inline-flex items-center text-sm text-gray-800" key={tag}>
-                {tag}
-              </div>
-            ))}
+            {displayExtra &&
+              (anomaly as Subcategory).tags?.map(tag => (
+                <div
+                  className="mr-2 rounded-lg h-[26px] px-2 bg-gray-300 inline-flex items-center text-sm text-gray-800"
+                  key={tag}
+                >
+                  {tag}
+                </div>
+              ))}
           </div>
           {instanceOfSubcategoryWithInfoWall(anomaly) && <NodeInfo anomaly={anomaly} />}
           {instanceOfSubcategoryWithInputs(anomaly) && <NodeInput anomaly={anomaly} />}
@@ -60,7 +66,7 @@ const Node = ({anomaly, open}: {anomaly: Anomaly | Subcategory; open?: boolean})
         {isOpen && anomaly.subcategories && (
           <div className="my-2 relative before:h-full before:content-['_'] before:w-[1px] before:absolute before:bg-gray-500 before:left-[-28px]">
             {anomaly.subcategories.map(s => (
-              <Node open={open} key={s.id} anomaly={s} />
+              <Node open={open} key={s.id} anomaly={s} {...{displayExtra}} />
             ))}
           </div>
         )}
@@ -151,14 +157,31 @@ const NodeInfo = ({anomaly}: {anomaly: SubcategoryWithInfoWall}) => {
   )
 }
 
+type ConfigForm = {
+  hideExtra: boolean
+}
+
 const Arbo = () => {
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: {errors},
+  } = useForm<ConfigForm>({defaultValues: {hideExtra: false}})
   const [openAll, setOpenAll] = useState(false)
   const [disabled, setDisabled] = useState(false)
   const {m, currentLang} = useI18n()
   const anomalies = allVisibleAnomalies(currentLang)
+  const displayExtra = !watch('hideExtra')
   return (
     <ContentPageContainer>
       <h1>{m.arbo.title}</h1>
+      <form className="mb-4">
+        <label>
+          <input type="checkbox" {...register('hideExtra')} />
+          <span className="ml-2">Masquer les petits détails (ids, tags, codes RéponseConso)</span>
+        </label>
+      </form>
       <Button
         className="mb-4"
         disabled={disabled}
@@ -176,7 +199,7 @@ const Arbo = () => {
       </Button>
 
       {anomalies.map(a => (
-        <Node key={a.id} anomaly={a} open={openAll} />
+        <Node key={a.id} anomaly={a} open={openAll} {...{displayExtra}} />
       ))}
     </ContentPageContainer>
   )
