@@ -17,13 +17,14 @@ import {fnSwitch} from '../utils/FnSwitch'
 
 const Node = ({anomaly, open, displayExtra}: {anomaly: Anomaly | Subcategory; open?: boolean; displayExtra: boolean}) => {
   const title = instanceOfAnomaly(anomaly) ? anomaly.category : anomaly.title
+  const desc = instanceOfAnomaly(anomaly) ? anomaly.description : anomaly.desc
   const [isOpen, setIsOpen] = useState(false)
   useEffect(() => {
     setIsOpen(!!open)
   }, [open])
 
   return (
-    <div className="flex items-start mb-4 ">
+    <div className="flex items-start mb-1 ">
       <div className="w-[40px] mr-[8px] shrink-0">
         {anomaly.subcategories ? (
           <button
@@ -38,11 +39,13 @@ const Node = ({anomaly, open, displayExtra}: {anomaly: Anomaly | Subcategory; op
         <div className="min-h-[42px] flex flex-col justify-center">
           <p className="mb-0">
             <span dangerouslySetInnerHTML={{__html: title}} />{' '}
-            {displayExtra && <span className="text-gray-500 text-xs">(id : {anomaly.id})</span>}
+            {displayExtra && (
+              <>
+                <span className="text-scbluefrance text-xs">(id : {anomaly.id}) </span>{' '}
+              </>
+            )}
+            {desc && <span className="ml-4 text-sm text-gray-500 mb-0 italic" dangerouslySetInnerHTML={{__html: desc}} />}
           </p>
-          {instanceOfAnomaly(anomaly) && anomaly.description && (
-            <p className="text-sm text-gray-500 mb-0" dangerouslySetInnerHTML={{__html: anomaly.description}} />
-          )}
           {(anomaly as Subcategory).reponseconsoCode && displayExtra && (
             <span key={1} className="text-sm text-gray-500">
               <b>ReponseConso code:</b>&nbsp;
