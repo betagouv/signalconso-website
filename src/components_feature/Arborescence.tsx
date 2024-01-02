@@ -16,7 +16,7 @@ import {useI18n} from '../i18n/I18n'
 import {fnSwitch} from '../utils/FnSwitch'
 
 const Node = ({anomaly, openAll, displayExtra}: {anomaly: Anomaly | Subcategory; openAll?: boolean; displayExtra: boolean}) => {
-  const title = instanceOfAnomaly(anomaly) ? anomaly.category : anomaly.title
+  const title = instanceOfAnomaly(anomaly) ? anomaly.title : anomaly.title
   const desc = instanceOfAnomaly(anomaly) ? anomaly.description : anomaly.desc
   const reponseconsoCode = instanceOfAnomaly(anomaly) ? undefined : anomaly.reponseconsoCode
   const ccrfCode = instanceOfAnomaly(anomaly) ? undefined : anomaly.ccrfCode
@@ -44,7 +44,11 @@ const Node = ({anomaly, openAll, displayExtra}: {anomaly: Anomaly | Subcategory;
         )}
       </div>
       <div className="grow ">
-        <div className={`min-h-[42px]  pl-1 ${anomaly.subcategories ? 'bg-slate-100' : 'bg-stone-100'}`}>
+        <div
+          className={`min-h-[40px] flex flex-col items-start justify-center pl-1 ${
+            anomaly.subcategories ? 'bg-slate-100' : 'bg-stone-100'
+          }`}
+        >
           <p className="mb-0">
             <span dangerouslySetInnerHTML={{__html: title}} />{' '}
             {displayExtra && (
@@ -54,49 +58,50 @@ const Node = ({anomaly, openAll, displayExtra}: {anomaly: Anomaly | Subcategory;
             )}
             {desc && <span className="ml-2 text-sm text-gray-500 mb-0 italic" dangerouslySetInnerHTML={{__html: desc}} />}
           </p>
-
-          {displayExtra &&
-            tags &&
-            tags.length &&
-            tags?.map(tag => (
-              <span className="border border-solid px-1 rounded mr-1 italic text-sm " key={tag}>
-                <i className="ri-price-tag-3-fill  fr-icon--sm" /> {tag}
+          <div>
+            {displayExtra &&
+              tags &&
+              tags.length &&
+              tags?.map(tag => (
+                <span className="border border-solid px-1 rounded mr-1 italic text-sm " key={tag}>
+                  <i className="ri-price-tag-3-fill  fr-icon--sm" /> {tag}
+                </span>
+              ))}
+            {displayExtra && companyKind && (
+              <span className="border border-solid px-1 rounded mr-1 italic text-sm ">
+                <span className="text-xs">
+                  <i className="ri-search-line fr-icon--sm" /> companyKind :
+                </span>{' '}
+                {companyKind}
               </span>
-            ))}
-          {displayExtra && companyKind && (
-            <span className="border border-solid px-1 rounded mr-1 italic text-sm ">
-              <span className="text-xs">
-                <i className="ri-search-line fr-icon--sm" /> companyKind :
-              </span>{' '}
-              {companyKind}
-            </span>
-          )}
-          {displayExtra && companyKindQuestion && (
-            <span className="border border-solid px-1 rounded mr-1 italic text-sm ">
-              <span className="text-xs">
-                <i className="ri-search-line fr-icon--sm" /> companyKindQuestion :
-              </span>{' '}
-              {companyKindQuestion.label} {companyKindQuestion.options.map(_ => `${_.label} => ${_.companyKind}`).join(', ')}
-            </span>
-          )}
-          {displayExtra && reponseconsoCode && (
-            <span className="border border-solid px-1 rounded mr-1 italic text-sm ">
-              {' '}
-              <span className="text-xs">
-                <i className="ri-customer-service-line fr-icon--sm" /> reponseconsoCode :
-              </span>{' '}
-              {reponseconsoCode}
-            </span>
-          )}
-          {displayExtra && ccrfCode && (
-            <span className="border border-solid px-1 rounded mr-1 italic text-sm ">
-              {' '}
-              <span className="text-xs">
-                <i className="ri-hashtag fr-icon--sm" /> ccrfCode :
-              </span>{' '}
-              {ccrfCode}
-            </span>
-          )}
+            )}
+            {displayExtra && companyKindQuestion && (
+              <span className="border border-solid px-1 rounded mr-1 italic text-sm ">
+                <span className="text-xs">
+                  <i className="ri-search-line fr-icon--sm" /> companyKindQuestion :
+                </span>{' '}
+                {companyKindQuestion.label} {companyKindQuestion.options.map(_ => `${_.label} => ${_.companyKind}`).join(', ')}
+              </span>
+            )}
+            {displayExtra && reponseconsoCode && (
+              <span className="border border-solid px-1 rounded mr-1 italic text-sm ">
+                {' '}
+                <span className="text-xs">
+                  <i className="ri-customer-service-line fr-icon--sm" /> reponseconsoCode :
+                </span>{' '}
+                {reponseconsoCode}
+              </span>
+            )}
+            {displayExtra && ccrfCode && (
+              <span className="border border-solid px-1 rounded mr-1 italic text-sm ">
+                {' '}
+                <span className="text-xs">
+                  <i className="ri-hashtag fr-icon--sm" /> ccrfCode :
+                </span>{' '}
+                {ccrfCode}
+              </span>
+            )}
+          </div>
 
           {instanceOfSubcategoryWithInfoWall(anomaly) && <NodeInfo anomaly={anomaly} />}
           {instanceOfSubcategoryWithInputs(anomaly) && <NodeInput anomaly={anomaly} />}
