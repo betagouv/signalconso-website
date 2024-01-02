@@ -30,23 +30,24 @@ const Node = ({anomaly, openAll, displayExtra}: {anomaly: Anomaly | Subcategory;
   }, [openAll])
 
   return (
-    <div className="flex items-start mb-1">
-      <div className="w-[40px] mr-2 shrink-0">
+    <div className="flex items-stretch mb-1 ">
+      <div className="w-[40px] shrink-0 ">
         {anomaly.subcategories ? (
           <button
             onClick={() => setIsOpen(_ => !_)}
-            className={`bg-slate-300 h-[40px] w-[40px] text-slate-800 flex items-center  justify-center ${
+            className={`bg-slate-300 min-h-[40px] w-[40px] text-slate-800 flex items-center  justify-center ${
               isOpen ? 'ri-arrow-down-s-line' : 'ri-arrow-right-s-line'
             }`}
           ></button>
         ) : (
-          <i className={`ri-corner-down-right-line text-stone-500 mx-2`} />
+          <div className={`bg-stone-300 min-h-[40px] h-full w-[40px] text-slate-800 flex items-center justify-center`}></div>
         )}
       </div>
+
       <div className="grow ">
         <div
           className={`min-h-[40px] flex flex-col items-start justify-center pl-1 ${
-            anomaly.subcategories ? 'bg-slate-100' : 'bg-stone-100'
+            anomaly.subcategories ? 'bg-slate-100' : 'bg-stone-200'
           }`}
         >
           <p className="mb-0">
@@ -76,7 +77,7 @@ const Node = ({anomaly, openAll, displayExtra}: {anomaly: Anomaly | Subcategory;
               </span>
             )}
             {displayExtra && companyKindQuestion && (
-              <span className="border border-solid px-1 rounded mr-1 italic text-sm ">
+              <span className="border border-solid px-1 rounded mr-1 italic text-sm">
                 <span className="text-xs">
                   <i className="ri-search-line fr-icon--sm" /> companyKindQuestion :
                 </span>{' '}
