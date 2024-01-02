@@ -22,8 +22,8 @@ const Node = ({anomaly, open}: {anomaly: Anomaly | Subcategory; open?: boolean})
   }, [open])
 
   return (
-    <div className="flex items-start mb-4">
-      <div className="w-[40px] mr-[8px]">
+    <div className="flex items-start mb-4 ">
+      <div className="w-[40px] mr-[8px] shrink-0">
         {anomaly.subcategories ? (
           <button
             onClick={() => setIsOpen(_ => !_)}
@@ -33,10 +33,10 @@ const Node = ({anomaly, open}: {anomaly: Anomaly | Subcategory; open?: boolean})
           <i className="ri-file-line text-gray-500 mx-2" />
         )}
       </div>
-      <div>
+      <div className="grow">
         <div className="min-h-[42px] flex flex-col justify-center">
           <p className="mb-0">
-            <span dangerouslySetInnerHTML={{__html: title}} /> <span className="text-gray-500">{anomaly.id}</span>
+            <span dangerouslySetInnerHTML={{__html: title}} /> <span className="text-gray-500 text-xs">(id : {anomaly.id})</span>
           </p>
           {instanceOfAnomaly(anomaly) && anomaly.description && (
             <p className="text-sm text-gray-500 mb-0" dangerouslySetInnerHTML={{__html: anomaly.description}} />
@@ -117,28 +117,30 @@ const NodeInput = ({anomaly}: {anomaly: StandardSubcategory}) => {
 const NodeInfo = ({anomaly}: {anomaly: SubcategoryWithInfoWall}) => {
   const {m} = useI18n()
   return (
-    <div className="border border-solid border-gray-300 rounded-lg my-2 p-2 ">
-      <p className=" bg-gray-500 text-white italic px-2 text-center">(information bloquante)</p>
-      {anomaly.blockingInfo.title && <div dangerouslySetInnerHTML={{__html: anomaly.blockingInfo.title}} />}
-      {anomaly.blockingInfo.subTitle && <div dangerouslySetInnerHTML={{__html: anomaly.blockingInfo.subTitle}} />}
-      {anomaly.blockingInfo.content && (
-        <span className="text-sm text-gray-500" dangerouslySetInnerHTML={{__html: anomaly.blockingInfo.content}} />
-      )}
-      {anomaly.blockingInfo.questions && (
-        <div className="text-sm text-gray-500 ">
-          <ul>
-            {anomaly.blockingInfo.questions.map(action => (
-              <li key={action.question}>
-                <span className="font-bold" dangerouslySetInnerHTML={{__html: action.question}} />
-                {action.desc && <div dangerouslySetInnerHTML={{__html: action.desc}} />}
-                <div dangerouslySetInnerHTML={{__html: action.answer}} />
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
-      {anomaly.blockingInfo.notAFraudMessage && <span className="text-sm text-gray-500">{m.arbo.notAFraudMessage}</span>}
-    </div>
+    <details className="border border-solid border-gray-300">
+      <summary className="bg-gray-500 text-white italic px-2">(information bloquante)</summary>
+      <div className="p-2">
+        {anomaly.blockingInfo.title && <div dangerouslySetInnerHTML={{__html: anomaly.blockingInfo.title}} />}
+        {anomaly.blockingInfo.subTitle && <div dangerouslySetInnerHTML={{__html: anomaly.blockingInfo.subTitle}} />}
+        {anomaly.blockingInfo.content && (
+          <span className="text-sm text-gray-500" dangerouslySetInnerHTML={{__html: anomaly.blockingInfo.content}} />
+        )}
+        {anomaly.blockingInfo.questions && (
+          <div className="text-sm text-gray-500 ">
+            <ul>
+              {anomaly.blockingInfo.questions.map(action => (
+                <li key={action.question}>
+                  <span className="font-bold" dangerouslySetInnerHTML={{__html: action.question}} />
+                  {action.desc && <div dangerouslySetInnerHTML={{__html: action.desc}} />}
+                  <div dangerouslySetInnerHTML={{__html: action.answer}} />
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+        {anomaly.blockingInfo.notAFraudMessage && <span className="text-sm text-gray-500">{m.arbo.notAFraudMessage}</span>}
+      </div>
+    </details>
   )
 }
 
