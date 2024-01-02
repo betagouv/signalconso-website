@@ -22,6 +22,8 @@ const Node = ({anomaly, openAll, displayExtra}: {anomaly: Anomaly | Subcategory;
   const ccrfCode = instanceOfAnomaly(anomaly) ? undefined : anomaly.ccrfCode
   const tags = instanceOfAnomaly(anomaly) ? undefined : anomaly.tags
   const companyKind = instanceOfAnomaly(anomaly) ? undefined : anomaly.companyKind
+  const companyKindQuestion = instanceOfAnomaly(anomaly) ? undefined : anomaly.companyKindQuestion
+  const subcategoriesTitle = anomaly.subcategoriesTitle
   const [isOpen, setIsOpen] = useState(false)
   useEffect(() => {
     setIsOpen(!!openAll)
@@ -69,6 +71,14 @@ const Node = ({anomaly, openAll, displayExtra}: {anomaly: Anomaly | Subcategory;
               {companyKind}
             </span>
           )}
+          {displayExtra && companyKindQuestion && (
+            <span className="border border-solid px-1 rounded mr-1 italic text-sm ">
+              <span className="text-xs">
+                <i className="ri-search-line fr-icon--sm" /> companyKindQuestion :
+              </span>{' '}
+              {companyKindQuestion.label} {companyKindQuestion.options.map(_ => `${_.label} => ${_.companyKind}`).join(', ')}
+            </span>
+          )}
           {displayExtra && reponseconsoCode && (
             <span className="border border-solid px-1 rounded mr-1 italic text-sm ">
               {' '}
@@ -92,11 +102,14 @@ const Node = ({anomaly, openAll, displayExtra}: {anomaly: Anomaly | Subcategory;
           {instanceOfSubcategoryWithInputs(anomaly) && <NodeInput anomaly={anomaly} />}
         </div>
         {isOpen && anomaly.subcategories && (
-          <div className="my-2 relative before:h-full before:content-['_'] before:w-[1px] before:absolute before:bg-gray-500 before:left-[-28px]">
-            {anomaly.subcategories.map(s => (
-              <Node openAll={openAll} key={s.id} anomaly={s} {...{displayExtra}} />
-            ))}
-          </div>
+          <>
+            <div className="mt-2">{subcategoriesTitle}</div>
+            <div className="my-2 relative before:h-full before:content-['_'] before:w-[1px] before:absolute before:bg-gray-500 before:left-[-28px]">
+              {anomaly.subcategories.map(s => (
+                <Node openAll={openAll} key={s.id} anomaly={s} {...{displayExtra}} />
+              ))}
+            </div>
+          </>
         )}
       </div>
     </div>
