@@ -3,7 +3,7 @@
 import {getOptionsFromInput, getPlaceholderFromInput} from '@/components_feature/reportFlow/Details/DetailInputsUtils'
 import {ContentPageContainer} from '@/components_simple/PageContainers'
 import {Button} from '@codegouvfr/react-dsfr/Button'
-import {useEffect, useState} from 'react'
+import {ReactNode, useEffect, useState} from 'react'
 import {useForm} from 'react-hook-form'
 import {
   allVisibleAnomalies,
@@ -63,45 +63,26 @@ const Node = ({anomaly, openAll, displayExtra}: {anomaly: Anomaly | Subcategory;
             {displayExtra &&
               tags &&
               tags.length &&
-              tags?.map(tag => (
-                <span className="border border-solid px-1 rounded mr-1 italic text-sm " key={tag}>
-                  <i className="ri-price-tag-3-fill  fr-icon--sm" /> {tag}
-                </span>
-              ))}
+              tags?.map(tag => <BorderedItem text={tag} icon="ri-price-tag-3-fill" key={tag} />)}
             {displayExtra && companyKind && (
-              <span className="border border-solid px-1 rounded mr-1 italic text-sm ">
-                <span className="text-xs">
-                  <i className="ri-search-line fr-icon--sm" /> companyKind :
-                </span>{' '}
-                {companyKind}
-              </span>
+              <BorderedItem text={companyKind} icon="ri-search-line" itemKindText="companyKind :" />
             )}
             {displayExtra && companyKindQuestion && (
-              <span className="border border-solid px-1 rounded mr-1 italic text-sm">
-                <span className="text-xs">
-                  <i className="ri-search-line fr-icon--sm" /> companyKindQuestion :
-                </span>{' '}
-                {companyKindQuestion.label} {companyKindQuestion.options.map(_ => `${_.label} => ${_.companyKind}`).join(', ')}
-              </span>
+              <BorderedItem
+                text={
+                  <>
+                    {companyKindQuestion.label}{' '}
+                    {companyKindQuestion.options.map(_ => `${_.label} => ${_.companyKind}`).join(', ')}
+                  </>
+                }
+                icon="ri-search-line"
+                itemKindText="companyKindQuestion :"
+              />
             )}
             {displayExtra && reponseconsoCode && (
-              <span className="border border-solid px-1 rounded mr-1 italic text-sm ">
-                {' '}
-                <span className="text-xs">
-                  <i className="ri-customer-service-line fr-icon--sm" /> reponseconsoCode :
-                </span>{' '}
-                {reponseconsoCode}
-              </span>
+              <BorderedItem text={reponseconsoCode} icon="ri-customer-service-line" itemKindText="reponseconsoCode :" />
             )}
-            {displayExtra && ccrfCode && (
-              <span className="border border-solid px-1 rounded mr-1 italic text-sm ">
-                {' '}
-                <span className="text-xs">
-                  <i className="ri-hashtag fr-icon--sm" /> ccrfCode :
-                </span>{' '}
-                {ccrfCode}
-              </span>
-            )}
+            {displayExtra && ccrfCode && <BorderedItem text={ccrfCode} icon="ri-hashtag" itemKindText="ccrfCode :" />}
           </div>
 
           {instanceOfSubcategoryWithInfoWall(anomaly) && <NodeInfo anomaly={anomaly} />}
@@ -201,6 +182,17 @@ const NodeInfo = ({anomaly}: {anomaly: SubcategoryWithInfoWall}) => {
         {anomaly.blockingInfo.notAFraudMessage && <span className="text-sm text-gray-500">{m.arbo.notAFraudMessage}</span>}
       </div>
     </details>
+  )
+}
+
+function BorderedItem({text, icon, itemKindText}: {text: ReactNode; icon: string; itemKindText?: ReactNode}) {
+  return (
+    <span className="border border-solid px-1 rounded mr-1 italic text-sm ">
+      <span className="text-xs">
+        <i className={`${icon} fr-icon--sm`} /> {itemKindText}
+      </span>{' '}
+      {text}
+    </span>
   )
 }
 
