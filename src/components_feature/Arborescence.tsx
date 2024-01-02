@@ -46,7 +46,7 @@ const Node = ({anomaly, open, displayExtra}: {anomaly: Anomaly | Subcategory; op
                 <span className="text-scbluefrance text-xs">(id : {anomaly.id}) </span>{' '}
               </>
             )}
-            {desc && <span className="ml-4 text-sm text-gray-500 mb-0 italic" dangerouslySetInnerHTML={{__html: desc}} />}
+            {desc && <span className="ml-2 text-sm text-gray-500 mb-0 italic" dangerouslySetInnerHTML={{__html: desc}} />}
           </p>
           {(anomaly as Subcategory).reponseconsoCode && displayExtra && (
             <span key={1} className="text-sm text-gray-500">
@@ -57,12 +57,9 @@ const Node = ({anomaly, open, displayExtra}: {anomaly: Anomaly | Subcategory; op
           <div>
             {displayExtra &&
               (anomaly as Subcategory).tags?.map(tag => (
-                <div
-                  className="mr-2 rounded-lg h-[26px] px-2 bg-gray-300 inline-flex items-center text-sm text-gray-800"
-                  key={tag}
-                >
+                <span className="mr-2 h-[15px] px-1 bg-gray-200 text-sm " key={tag}>
                   {tag}
-                </div>
+                </span>
               ))}
           </div>
           {instanceOfSubcategoryWithInfoWall(anomaly) && <NodeInfo anomaly={anomaly} />}
