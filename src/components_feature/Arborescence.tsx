@@ -61,7 +61,7 @@ const Node = ({anomaly, openAll, displayExtra}: {anomaly: Anomaly | Subcategory;
                 <i className="ri-price-tag-3-fill  fr-icon--sm" /> {tag}
               </span>
             ))}
-          {companyKind && (
+          {displayExtra && companyKind && (
             <span className="border border-solid px-1 rounded mr-1 italic text-sm ">
               <span className="text-xs">
                 <i className="ri-search-line fr-icon--sm" /> companyKind :
@@ -207,7 +207,7 @@ const Arbo = () => {
       <form className="mb-4">
         <label>
           <input type="checkbox" {...register('hideExtra')} />
-          <span className="ml-2">Masquer les petits détails (ids, tags, codes RéponseConso et codes DGCCRF)</span>
+          <span className="ml-2">Masquer les petits détails (ids, tags, company kind, codes RéponseConso et codes DGCCRF)</span>
         </label>
       </form>
       <Button
