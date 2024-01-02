@@ -108,45 +108,52 @@ const NodeInput = ({anomaly}: {anomaly: StandardSubcategory}) => {
     const nbDetails = anomaly.detailInputs.length
     const nbDetailsPlural = nbDetails > 1 ? 's' : ''
     return (
-      <details className="p-2 my-2 border-gray-300 border-solid border rounded-lg">
+      <details className="mx-2">
         <summary>
           <i className="ri-survey-line text-gray-500" /> {nbDetails} détail{nbDetailsPlural} demandé{nbDetailsPlural}
         </summary>
-        {anomaly.detailInputs.map(input => (
-          <div key={input.label}>
-            <p className="mb-0 mt-2 text-sm text-gray-600" dangerouslySetInnerHTML={{__html: input.label}} />
-            {fnSwitch(
-              input.type,
-              {
-                [DetailInputType.RADIO]: () => (
-                  <>
-                    {getOptionsFromInput(input)!.map(option => (
-                      <div key={option} className="flex items-center">
-                        <i className="ri-checkbox-blank-circle-line mx-2" />
-                        <span className="text-sm">{option}</span>
-                      </div>
-                    ))}
-                  </>
+        <ul className="pl-8 p-2">
+          {anomaly.detailInputs.map(input => (
+            <li
+              key={input.label}
+              className={`m-0 p-0 flex ${
+                input.type === DetailInputType.RADIO || input.type === DetailInputType.CHECKBOX ? 'flex-col' : ''
+              }`}
+            >
+              <div className="mb-0 mt-2 text-sm text-gray-600" dangerouslySetInnerHTML={{__html: `- ` + input.label}} />
+              {fnSwitch(
+                input.type,
+                {
+                  [DetailInputType.RADIO]: () => (
+                    <>
+                      {getOptionsFromInput(input)!.map(option => (
+                        <div key={option} className="flex items-center text-gray-600">
+                          <i className="ri-checkbox-blank-circle-line mx-2 fr-icon--sm " />
+                          <span className="text-sm">{option}</span>
+                        </div>
+                      ))}
+                    </>
+                  ),
+                  [DetailInputType.CHECKBOX]: () => (
+                    <>
+                      {getOptionsFromInput(input)!.map(option => (
+                        <div key={option} className="flex items-center text-gray-600">
+                          <i className="ri-checkbox-blank-line mx-2  fr-icon--sm" />
+                          <span className="text-sm">{option}</span>
+                        </div>
+                      ))}
+                    </>
+                  ),
+                },
+                () => (
+                  <div className="px-2 w-[200px] flex items-center justify-start text-gray-500 mx-2 bg-gray-100 text-sm border-gray-500 border-solid border">
+                    {getPlaceholderFromInput(input) ?? '...'}
+                  </div>
                 ),
-                [DetailInputType.CHECKBOX]: () => (
-                  <>
-                    {getOptionsFromInput(input)!.map(option => (
-                      <div key={option} className="flex items-center">
-                        <i className="ri-checkbox-blank-line mx-2" />
-                        <span className="text-sm">{option}</span>
-                      </div>
-                    ))}
-                  </>
-                ),
-              },
-              () => (
-                <div className="px-2 text-gray-500 mx-2 bg-gray-100 h-[32px] w-[200px] border-gray-500 border-solid border">
-                  {getPlaceholderFromInput(input) ?? ''}
-                </div>
-              ),
-            )}
-          </div>
-        ))}
+              )}
+            </li>
+          ))}
+        </ul>
       </details>
     )
   }
@@ -156,11 +163,11 @@ const NodeInput = ({anomaly}: {anomaly: StandardSubcategory}) => {
 const NodeInfo = ({anomaly}: {anomaly: SubcategoryWithInfoWall}) => {
   const {m} = useI18n()
   return (
-    <details className="p-2 my-2 border-gray-300 border-solid border rounded-lg bg-gray-500 text-white">
+    <details className="px-2 rounded-lg bg-gray-500 text-white">
       <summary>
-        <i className="ri-information-fill text-gray-200" /> Information bloquante
+        <i className="ri-prohibited-line text-gray-200" /> Information bloquante
       </summary>
-      <div className="p-2 bg-white text-black mt-2 rounded-lg">
+      <div className="p-2 bg-white text-black my-2 rounded-lg">
         {anomaly.blockingInfo.title && <div dangerouslySetInnerHTML={{__html: anomaly.blockingInfo.title}} />}
         {anomaly.blockingInfo.subTitle && <div dangerouslySetInnerHTML={{__html: anomaly.blockingInfo.subTitle}} />}
         {anomaly.blockingInfo.content && (
