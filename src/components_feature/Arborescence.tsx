@@ -75,10 +75,14 @@ const Node = ({anomaly, open}: {anomaly: Anomaly | Subcategory; open?: boolean})
 
 const NodeInput = ({anomaly}: {anomaly: StandardSubcategory}) => {
   if (anomaly.detailInputs && anomaly.detailInputs.length > 0) {
+    const nbDetails = anomaly.detailInputs.length
+    const nbDetailsPlural = nbDetails > 1 ? 's' : ''
     return (
       <details className="p-2 my-2 border-gray-300 border-solid border rounded-lg">
-        <summary>Détails demandés</summary>
-        {anomaly.detailInputs?.map(input => (
+        <summary>
+          {nbDetails} détail{nbDetailsPlural} demandé{nbDetailsPlural}
+        </summary>
+        {anomaly.detailInputs.map(input => (
           <div key={input.label}>
             <p className="mb-0 mt-2 text-sm text-gray-600" dangerouslySetInnerHTML={{__html: input.label}} />
             {fnSwitch(
