@@ -70,7 +70,7 @@ const Node = ({
 
       <div className="grow ">
         <div
-          className={`min-h-[40px] flex flex-col items-start justify-center pl-1 ${
+          className={`group min-h-[40px] flex flex-col items-start justify-center pl-1 ${
             anomaly.subcategories ? 'bg-slate-100' : 'bg-stone-200'
           }`}
         >
@@ -84,8 +84,8 @@ const Node = ({
               )}
               {desc && <span className="ml-2 text-sm text-gray-500 mb-0 italic" dangerouslySetInnerHTML={{__html: desc}} />}
             </div>
-            <span className="shrink-0">
-              <ZoomLinkToTarget targetNode={anomaly} currentZoom={zoomPath}>
+            <span className="shrink-0 group-hover:inline hidden">
+              <ZoomLinkToTarget targetNode={anomaly} currentZoom={zoomPath} hideIfSameAsCurrentZoom>
                 zoom <i className="ri-zoom-in-line" />
               </ZoomLinkToTarget>
             </span>
@@ -391,10 +391,12 @@ function ZoomLinkToTarget({
   children,
   targetNode,
   currentZoom,
+  hideIfSameAsCurrentZoom,
 }: {
   targetNode: CategoryNode
   children: ReactNode
   currentZoom: string[]
+  hideIfSameAsCurrentZoom?: boolean
 }) {
   const {currentLang: lang} = useI18n()
   const path = buildTitlesPath(targetNode, lang)
@@ -402,17 +404,30 @@ function ZoomLinkToTarget({
     return <span>{children}</span>
   }
   return (
-    <ZoomLink path={path} currentZoom={currentZoom}>
+    <ZoomLink path={path} currentZoom={currentZoom} hideIfSameAsCurrentZoom={hideIfSameAsCurrentZoom}>
       {children}
     </ZoomLink>
   )
 }
 
-function ZoomLink({children, path, currentZoom}: {path: string[]; children: ReactNode; currentZoom: string[]}) {
+function ZoomLink({
+  children,
+  path,
+  currentZoom,
+  hideIfSameAsCurrentZoom,
+}: {
+  path: string[]
+  children: ReactNode
+  currentZoom: string[]
+  hideIfSameAsCurrentZoom?: boolean
+}) {
   const newPathStr = path.join('___')
   const currentZoomStr = currentZoom.join('___')
   if (newPathStr === currentZoomStr) {
     // linking to current page, no need
+    if (hideIfSameAsCurrentZoom) {
+      return null
+    }
     return <span>{children}</span>
   }
   const url = `?zoom=${encodeURIComponent(newPathStr)}`
