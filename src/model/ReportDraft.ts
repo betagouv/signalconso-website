@@ -1,4 +1,4 @@
-import {CompanyKinds, ReportTag, SocialNetworks, Subcategory} from '@/anomalies/Anomaly'
+import {CompanyKinds, ReportTag, SocialNetworks, Subcategory, Ters, Trains} from '@/anomalies/Anomaly'
 import {Address} from './Address'
 import {DetailInputValue} from './CreatedReport'
 import {ApiInfluencer, ApiReportDraft} from './reportsFromApi'
@@ -49,6 +49,12 @@ export interface ReportDraft {
   influencer?: Influencer
   lang: AppLang
   barcodeProductId?: string
+  train: Train
+}
+
+export interface Train {
+  train: Trains
+  ter?: Ters
 }
 
 export interface Influencer {

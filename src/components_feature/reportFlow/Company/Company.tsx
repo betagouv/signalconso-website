@@ -26,6 +26,8 @@ import {CompanySearchByNameAndPostalCode} from './CompanySearchByNameAndPostalCo
 import {CompanySearchResultComponent} from './CompanySearchResult'
 import {CompanyWebsiteCountry} from './CompanyWebsiteCountry'
 import {InfluencerBySocialNetwork} from './InfluencerBySocialNetwork'
+import {CompanyByTrain} from '@/components_feature/reportFlow/Company/CompanyByTrain'
+import {CompanyByTrain2} from '@/components_feature/reportFlow/Company/CompanyByTrain2'
 
 interface CompanyWithRequiredProps {
   draft: Pick<ReportDraft, 'companyKind'>
@@ -350,6 +352,34 @@ export const _Company = ({draft, onUpdateReportDraft}: CompanyWithRequiredProps)
       {fnSwitch(
         draft.companyKind!,
         {
+          ['TRAIN']: () => (
+            <CompanyByTrain
+              onSubmit={(train, ter) => {
+                onUpdateReportDraft({
+                  train: {
+                    train,
+                    ter,
+                  },
+                })
+              }}
+            >
+              {() => commonTree()}
+            </CompanyByTrain>
+          ),
+          ['TRAIN_2']: () => (
+            <CompanyByTrain2
+              onSubmit={(train, ter) => {
+                onUpdateReportDraft({
+                  train: {
+                    train,
+                    ter,
+                  },
+                })
+              }}
+            >
+              {() => commonTree()}
+            </CompanyByTrain2>
+          ),
           ['PRODUCT']: () => barcodeTree(),
           ['SOCIAL']: () => (
             <InfluencerBySocialNetwork
