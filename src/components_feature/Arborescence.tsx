@@ -49,7 +49,11 @@ const Node = ({anomaly, openAll, displayExtra}: {anomaly: Anomaly | Subcategory;
             }`}
           ></button>
         ) : (
-          <div className={`bg-stone-300 min-h-[40px] h-full w-[40px] text-slate-800 flex items-center justify-center`}></div>
+          <div
+            className={`bg-stone-300 min-h-[40px] h-full w-[40px] text-stone-500 flex items-center justify-center ${
+              instanceOfSubcategoryWithInfoWall(anomaly) ? 'ri-prohibited-line' : ''
+            }`}
+          ></div>
         )}
       </div>
 
@@ -119,7 +123,7 @@ const NodeInput = ({anomaly}: {anomaly: StandardSubcategory}) => {
     return (
       <details className="mx-2">
         <summary>
-          <i className="ri-survey-line text-gray-500" /> {nbDetails} détail{nbDetailsPlural} demandé{nbDetailsPlural}
+          {nbDetails} détail{nbDetailsPlural} demandé{nbDetailsPlural}
         </summary>
         <ul className="pl-8 p-2">
           {anomaly.detailInputs.map(input => (
@@ -129,20 +133,14 @@ const NodeInput = ({anomaly}: {anomaly: StandardSubcategory}) => {
       </details>
     )
   }
-  return (
-    <div className="mx-2">
-      <i className="ri-survey-line text-gray-500" /> Pas de détail particulier demandé
-    </div>
-  )
+  return <div className="mx-2">Pas de détail particulier demandé</div>
 }
 
 const NodeInfo = ({anomaly}: {anomaly: SubcategoryWithInfoWall}) => {
   const {m} = useI18n()
   return (
-    <details className="px-2 rounded-lg bg-gray-500 text-white">
-      <summary>
-        <i className="ri-prohibited-line text-gray-200" /> Information bloquante
-      </summary>
+    <details className="px-2 rounded-lg bg-stone-500 text-white">
+      <summary>Information bloquante</summary>
       <div className="p-2 bg-white text-black my-2 rounded-lg">
         {anomaly.blockingInfo.title && <div dangerouslySetInnerHTML={{__html: anomaly.blockingInfo.title}} />}
         {anomaly.blockingInfo.subTitle && <div dangerouslySetInnerHTML={{__html: anomaly.blockingInfo.subTitle}} />}
