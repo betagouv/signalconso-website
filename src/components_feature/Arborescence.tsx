@@ -32,6 +32,7 @@ const Node = ({anomaly, openAll, displayExtra}: {anomaly: Anomaly | Subcategory;
   const companyKind = instanceOfAnomaly(anomaly) ? undefined : anomaly.companyKind
   const companyKindQuestion = instanceOfAnomaly(anomaly) ? undefined : anomaly.companyKindQuestion
   const subcategoriesTitle = anomaly.subcategoriesTitle
+  const isLeaf = !anomaly.subcategories || anomaly.subcategories.length === 0
   const [isOpen, setIsOpen] = useState(false)
   useEffect(() => {
     setIsOpen(!!openAll)
@@ -59,7 +60,7 @@ const Node = ({anomaly, openAll, displayExtra}: {anomaly: Anomaly | Subcategory;
           }`}
         >
           <p className="mb-0">
-            <span dangerouslySetInnerHTML={{__html: title}} />{' '}
+            <span dangerouslySetInnerHTML={{__html: title}} className="font-bold" />{' '}
             {displayExtra && (
               <>
                 <span className="text-scbluefrance text-xs">(id : {anomaly.id}) </span>{' '}
@@ -93,8 +94,8 @@ const Node = ({anomaly, openAll, displayExtra}: {anomaly: Anomaly | Subcategory;
             {displayExtra && ccrfCode && <BorderedItem text={ccrfCode} icon="ri-hashtag" itemKindText="ccrfCode :" />}
           </div>
 
-          {instanceOfSubcategoryWithInfoWall(anomaly) && <NodeInfo anomaly={anomaly} />}
-          {instanceOfSubcategoryWithInputs(anomaly) && <NodeInput anomaly={anomaly} />}
+          {isLeaf &&
+            (instanceOfSubcategoryWithInfoWall(anomaly) ? <NodeInfo anomaly={anomaly} /> : <NodeInput anomaly={anomaly} />)}
         </div>
         {isOpen && anomaly.subcategories && (
           <>
@@ -128,7 +129,11 @@ const NodeInput = ({anomaly}: {anomaly: StandardSubcategory}) => {
       </details>
     )
   }
-  return null
+  return (
+    <div className="mx-2">
+      <i className="ri-survey-line text-gray-500" /> Pas de détail particulier demandé
+    </div>
+  )
 }
 
 const NodeInfo = ({anomaly}: {anomaly: SubcategoryWithInfoWall}) => {
