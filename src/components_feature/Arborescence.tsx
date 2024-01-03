@@ -2,17 +2,14 @@
 
 import {getOptionsFromInput, getPlaceholderFromInput} from '@/components_feature/reportFlow/Details/DetailInputsUtils'
 import {ContentPageContainer} from '@/components_simple/PageContainers'
+import {dateToFrenchFormat} from '@/utils/utils'
 import {Button} from '@codegouvfr/react-dsfr/Button'
 import {ReactNode, useEffect, useState} from 'react'
 import {useForm} from 'react-hook-form'
-import {
-  allVisibleAnomalies,
-  instanceOfAnomaly,
-  instanceOfSubcategoryWithInfoWall,
-  instanceOfSubcategoryWithInputs,
-} from '../anomalies/Anomalies'
+import {allVisibleAnomalies, instanceOfAnomaly, instanceOfSubcategoryWithInfoWall} from '../anomalies/Anomalies'
 import {
   Anomaly,
+  CategoryNode,
   DetailInput,
   DetailInputType,
   StandardSubcategory,
@@ -21,7 +18,10 @@ import {
 } from '../anomalies/Anomaly'
 import {useI18n} from '../i18n/I18n'
 import {fnSwitch} from '../utils/FnSwitch'
-import {dateToFrenchFormat} from '@/utils/utils'
+import {useSearchParams} from 'next/navigation'
+import {AppLang} from '@/i18n/localization/AppLangs'
+import Link from 'next/link'
+import {pagesDefs} from '@/core/pagesDefinitions'
 
 const Node = ({anomaly, openAll, displayExtra}: {anomaly: Anomaly | Subcategory; openAll?: boolean; displayExtra: boolean}) => {
   const title = instanceOfAnomaly(anomaly) ? anomaly.title : anomaly.title
@@ -34,6 +34,7 @@ const Node = ({anomaly, openAll, displayExtra}: {anomaly: Anomaly | Subcategory;
   const subcategoriesTitle = anomaly.subcategoriesTitle
   const isLeaf = !anomaly.subcategories || anomaly.subcategories.length === 0
   const [isOpen, setIsOpen] = useState(false)
+  const {currentLang: lang} = useI18n()
   useEffect(() => {
     setIsOpen(!!openAll)
   }, [openAll])
@@ -64,7 +65,9 @@ const Node = ({anomaly, openAll, displayExtra}: {anomaly: Anomaly | Subcategory;
           }`}
         >
           <p className="mb-0">
-            <span dangerouslySetInnerHTML={{__html: title}} className="font-bold" />{' '}
+            <ZoomLink targetNode={anomaly}>
+              <span dangerouslySetInnerHTML={{__html: title}} className="font-bold" />
+            </ZoomLink>{' '}
             {displayExtra && (
               <>
                 <span className="text-scbluefrance text-xs">(id : {anomaly.id}) </span>{' '}
@@ -99,11 +102,15 @@ const Node = ({anomaly, openAll, displayExtra}: {anomaly: Anomaly | Subcategory;
           </div>
 
           {isLeaf &&
-            (instanceOfSubcategoryWithInfoWall(anomaly) ? <NodeInfo anomaly={anomaly} /> : <NodeInput anomaly={anomaly} />)}
+            (instanceOfSubcategoryWithInfoWall(anomaly) ? (
+              <NodeInfo anomaly={anomaly} />
+            ) : (
+              <NodeInputs anomaly={anomaly} {...{displayExtra}} />
+            ))}
         </div>
         {isOpen && anomaly.subcategories && (
           <>
-            <div className="mt-2">{subcategoriesTitle}</div>
+            {subcategoriesTitle && <div className="mt-2" dangerouslySetInnerHTML={{__html: subcategoriesTitle}} />}
             <div className="my-2 relative before:h-full before:content-['_'] before:w-[1px] before:absolute before:bg-gray-500 before:left-[-28px]">
               {anomaly.subcategories.map(s => (
                 <Node openAll={openAll} key={s.id} anomaly={s} {...{displayExtra}} />
@@ -116,24 +123,42 @@ const Node = ({anomaly, openAll, displayExtra}: {anomaly: Anomaly | Subcategory;
   )
 }
 
-const NodeInput = ({anomaly}: {anomaly: StandardSubcategory}) => {
+const NodeInputs = ({anomaly, displayExtra}: {anomaly: StandardSubcategory; displayExtra: boolean}) => {
   if (anomaly.detailInputs && anomaly.detailInputs.length > 0) {
     const nbDetails = anomaly.detailInputs.length
     const nbDetailsPlural = nbDetails > 1 ? 's' : ''
     return (
-      <details className="mx-2">
-        <summary>
-          {nbDetails} détail{nbDetailsPlural} demandé{nbDetailsPlural}
-        </summary>
-        <ul className="pl-8 p-2">
-          {anomaly.detailInputs.map(input => (
-            <InputRender input={input} key={input.label} />
-          ))}
-        </ul>
-      </details>
+      <>
+        <details className="mx-2">
+          <summary>
+            {nbDetails} détail{nbDetailsPlural} demandé{nbDetailsPlural}
+          </summary>
+          <ul className="pl-8 p-2">
+            {anomaly.detailInputs.map(input => (
+              <InputRender input={input} key={input.label} />
+            ))}
+          </ul>
+        </details>
+        <FileLabel {...{anomaly, displayExtra}} />
+      </>
     )
   }
-  return <div className="mx-2">Pas de détail particulier demandé</div>
+  return (
+    <>
+      <div className="mx-2">Pas de détail particulier demandé</div>
+      <FileLabel {...{anomaly, displayExtra}} />
+    </>
+  )
+}
+
+function FileLabel({anomaly, displayExtra}: {anomaly: StandardSubcategory; displayExtra: boolean}) {
+  if (displayExtra && anomaly.fileLabel) {
+    return (
+      <div className="text-sm">
+        <span className="text-stone-600">Label des pièces jointes</span> : "{anomaly.fileLabel}"
+      </div>
+    )
+  }
 }
 
 const NodeInfo = ({anomaly}: {anomaly: SubcategoryWithInfoWall}) => {
@@ -255,22 +280,33 @@ type ConfigForm = {
 const Arbo = () => {
   const {
     register,
-    handleSubmit,
     watch,
     formState: {errors},
   } = useForm<ConfigForm>({defaultValues: {hideExtra: false}})
   const [openAll, setOpenAll] = useState(false)
   const [disabled, setDisabled] = useState(false)
+  const searchParams = useSearchParams()
+  const zoomPath = (searchParams.get('zoom') ?? undefined)?.split('___') ?? []
   const {m, currentLang} = useI18n()
   const anomalies = allVisibleAnomalies(currentLang)
+  const topNodes = applyZoom(anomalies, zoomPath)
   const displayExtra = !watch('hideExtra')
+
   return (
     <ContentPageContainer>
       <h1>{m.arbo.title}</h1>
+      {zoomPath.length && (
+        <h2>
+          zooming on {zoomPath} <Link href={pagesDefs.arborescence.url}>(unzoom)</Link>
+        </h2>
+      )}
       <form className="mb-4">
         <label>
           <input type="checkbox" {...register('hideExtra')} />
-          <span className="ml-2">Masquer les petits détails (ids, tags, company kind, codes RéponseConso et codes DGCCRF)</span>
+          <span className="ml-2">
+            Masquer les petits détails techniques (ids, tags, company kind, codes RéponseConso et codes DGCCRF, labels des pièces
+            jointes)
+          </span>
         </label>
       </form>
       <Button
@@ -289,11 +325,63 @@ const Arbo = () => {
         {m.arbo.expandAll}
       </Button>
 
-      {anomalies.map(a => (
+      {topNodes.map(a => (
         <Node key={a.id} anomaly={a} openAll={openAll} {...{displayExtra}} />
       ))}
     </ContentPageContainer>
   )
+}
+
+function applyZoom(currentTopNodes: CategoryNode[], zoomPath: string[]): CategoryNode[] {
+  if (!zoomPath.length) {
+    return currentTopNodes
+  }
+  const [nextZoomTitle, ...restOfZoom] = zoomPath
+  const foundTopNode = currentTopNodes.find(_ => _.title === nextZoomTitle)
+  if (!foundTopNode) {
+    return []
+  }
+  if (!restOfZoom.length) {
+    return [foundTopNode]
+  }
+  return applyZoom(foundTopNode.subcategories ?? [], restOfZoom)
+}
+
+function ZoomLink({children, targetNode}: {targetNode: CategoryNode; children: ReactNode}) {
+  const {currentLang: lang} = useI18n()
+  const path = buildTitlesPath(targetNode, lang)
+  if (!path) {
+    return <span>{children}</span>
+  }
+  const url = `?zoom=${encodeURIComponent(path.join('___'))}`
+  return <Link href={url}>{children}</Link>
+}
+
+function buildTitlesPath(targetNode: CategoryNode, lang: AppLang) {
+  const allAnomalies = allVisibleAnomalies(lang)
+
+  function inner(currentNode: CategoryNode, pathSoFar: string[]): string[] | undefined {
+    const newPath = [...pathSoFar, currentNode.title]
+    if (currentNode.id === targetNode.id) {
+      // that was the node to find
+      return newPath
+    }
+    const children = currentNode.subcategories ?? []
+    for (const child of children) {
+      const result = inner(child, newPath)
+      if (result) {
+        // we found it
+        return result
+      }
+      // all children were a dead end
+    }
+  }
+  for (const anomaly of allAnomalies) {
+    const result = inner(anomaly, [])
+    if (result) {
+      return result
+    }
+  }
 }
 
 export default Arbo
