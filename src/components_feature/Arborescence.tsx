@@ -38,7 +38,7 @@ const Node = ({anomaly, openAll, displayExtra}: {anomaly: Anomaly | Subcategory;
   }, [openAll])
 
   return (
-    <div className="flex items-stretch mb-1 ">
+    <div className="flex items-stretch mb-2 ">
       <div className="w-[40px] shrink-0 ">
         {anomaly.subcategories ? (
           <button
@@ -189,6 +189,19 @@ function InputRender({input}: {input: DetailInput}) {
               </span>{' '}
               <i className="ri-calendar-line" />
             </div>
+          ),
+          [DetailInputType.DATE_NOT_IN_FUTURE]: () => (
+            <>
+              <div className="px-2 w-[200px] flex items-center gap-2 justify-between text-stone-500 mx-2 bg-stone-100 text-sm border-stone-500 border-solid border mt-1">
+                <span>
+                  {input.type === DetailInputType.DATE_NOT_IN_FUTURE && input.defaultValue === 'SYSDATE'
+                    ? dateToFrenchFormat(new Date())
+                    : ''}
+                </span>
+                <i className="ri-calendar-line" />
+              </div>
+              <div className="text-sm flex items-end text-stone-600">(date dans le passé ou celle d'aujourd'hui)</div>
+            </>
           ),
           [DetailInputType.RADIO]: () => (
             <>
