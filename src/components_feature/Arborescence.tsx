@@ -74,7 +74,7 @@ const Node = ({
             anomaly.subcategories ? 'bg-slate-100' : 'bg-stone-200'
           }`}
         >
-          <p className="mb-0 flex justify-between w-full gap-2 items-center">
+          <div className="mb-0 flex justify-between w-full gap-2 items-center">
             <div>
               <span dangerouslySetInnerHTML={{__html: title}} className="font-bold" />{' '}
               {displayExtra && (
@@ -89,7 +89,7 @@ const Node = ({
                 zoom <i className="ri-zoom-in-line" />
               </ZoomLinkToTarget>
             </span>
-          </p>
+          </div>
           <div>
             {displayExtra &&
               tags &&
