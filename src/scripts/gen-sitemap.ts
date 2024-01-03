@@ -2,7 +2,7 @@ import fs from 'fs'
 import {allVisibleLandings} from '../landings/landingDataUtils'
 import path from 'path'
 import {appConfig} from '../core/appConfig'
-import {newsArticlesData} from '../components_feature/actualites/newsArticlesData'
+import {getNewsArticleData} from '../components_feature/actualites/newsArticlesData'
 import {buildLinkNewsArticle, internalPageDefs} from '../core/pagesDefinitions'
 import {AppLangs} from '../i18n/localization/AppLangs'
 
@@ -21,7 +21,7 @@ const sitemapItems: SitemapItem[] = [
     .map(_ => ({url: _.url, hasAlternate: _.hasAlternate, mainLang: AppLangs.fr, priority: 1})),
   ...landing(AppLangs.fr),
   ...(appConfig.translationFeatureFlagEnabled ? [...landing(AppLangs.en)] : []),
-  ...newsArticlesData
+  ...getNewsArticleData()
     .filter(_ => appConfig.translationFeatureFlagEnabled || _.lang == AppLangs.fr)
     .map(_ => {
       return {

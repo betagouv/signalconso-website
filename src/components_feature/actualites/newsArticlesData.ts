@@ -1,9 +1,16 @@
 import {AppLangs} from '../../i18n/localization/AppLangs'
 
-export type NewsArticle = (typeof newsArticlesData)[number]
+export type NewsArticle = (typeof initialNewsArticlesData)[number]
 
 // This is the display order. Keep the most recents at the start of the array
-export const newsArticlesData = [
+export const initialNewsArticlesData = [
+  {
+    date: '2024-01-03',
+    lang: 'fr',
+    slug: 'amelioration-de-laccessibilite-de-la-plateforme-signalconso',
+    title: `Amélioration de l'accessibilité de la plateforme SignalConso !`,
+    excerpt: `L'accessibilité numérique consiste à rendre les contenus et services numériques compréhensibles et utilisables par les personnes en situation de handicap.`,
+  },
   {
     date: '2023-12-20',
     lang: 'fr',
@@ -64,3 +71,8 @@ export const newsArticlesData = [
     encore plus faciles et simplifie vos démarches.`,
   },
 ] as const
+
+export const getNewsArticleData = () => {
+  const currentDate = new Date()
+  return initialNewsArticlesData.filter(article => new Date(article.date) <= currentDate)
+}
