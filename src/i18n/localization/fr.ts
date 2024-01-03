@@ -721,7 +721,6 @@ export const fr = {
     },
     arbo: {
       title: "Arborescence du dépot d'un signalement",
-      expandAll: 'Tout déplier',
       notAFraudMessage:
         'Nous ne doutons pas que vous ayez réellement rencontré un problème mais... il ne s’agit pas d’une fraude.',
     },
