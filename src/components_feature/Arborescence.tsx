@@ -11,9 +11,17 @@ import {
   instanceOfSubcategoryWithInfoWall,
   instanceOfSubcategoryWithInputs,
 } from '../anomalies/Anomalies'
-import {Anomaly, DetailInputType, StandardSubcategory, Subcategory, SubcategoryWithInfoWall} from '../anomalies/Anomaly'
+import {
+  Anomaly,
+  DetailInput,
+  DetailInputType,
+  StandardSubcategory,
+  Subcategory,
+  SubcategoryWithInfoWall,
+} from '../anomalies/Anomaly'
 import {useI18n} from '../i18n/I18n'
 import {fnSwitch} from '../utils/FnSwitch'
+import {dateToFrenchFormat} from '@/utils/utils'
 
 const Node = ({anomaly, openAll, displayExtra}: {anomaly: Anomaly | Subcategory; openAll?: boolean; displayExtra: boolean}) => {
   const title = instanceOfAnomaly(anomaly) ? anomaly.title : anomaly.title
@@ -114,44 +122,7 @@ const NodeInput = ({anomaly}: {anomaly: StandardSubcategory}) => {
         </summary>
         <ul className="pl-8 p-2">
           {anomaly.detailInputs.map(input => (
-            <li
-              key={input.label}
-              className={`m-0 p-0 flex ${
-                input.type === DetailInputType.RADIO || input.type === DetailInputType.CHECKBOX ? 'flex-col' : ''
-              }`}
-            >
-              <div className="mb-0 mt-2 text-sm text-gray-600" dangerouslySetInnerHTML={{__html: `- ` + input.label}} />
-              {fnSwitch(
-                input.type,
-                {
-                  [DetailInputType.RADIO]: () => (
-                    <>
-                      {getOptionsFromInput(input)!.map(option => (
-                        <div key={option} className="flex items-center text-gray-600">
-                          <i className="ri-checkbox-blank-circle-line mx-2 fr-icon--sm " />
-                          <span className="text-sm">{option}</span>
-                        </div>
-                      ))}
-                    </>
-                  ),
-                  [DetailInputType.CHECKBOX]: () => (
-                    <>
-                      {getOptionsFromInput(input)!.map(option => (
-                        <div key={option} className="flex items-center text-gray-600">
-                          <i className="ri-checkbox-blank-line mx-2  fr-icon--sm" />
-                          <span className="text-sm">{option}</span>
-                        </div>
-                      ))}
-                    </>
-                  ),
-                },
-                () => (
-                  <div className="px-2 w-[200px] flex items-center justify-start text-gray-500 mx-2 bg-gray-100 text-sm border-gray-500 border-solid border">
-                    {getPlaceholderFromInput(input) ?? '...'}
-                  </div>
-                ),
-              )}
-            </li>
+            <InputRender input={input} key={input.label} />
           ))}
         </ul>
       </details>
@@ -189,6 +160,64 @@ const NodeInfo = ({anomaly}: {anomaly: SubcategoryWithInfoWall}) => {
         {anomaly.blockingInfo.notAFraudMessage && <span className="text-sm text-gray-500">{m.arbo.notAFraudMessage}</span>}
       </div>
     </details>
+  )
+}
+
+function InputRender({input}: {input: DetailInput}) {
+  const vertical =
+    input.type === DetailInputType.RADIO || input.type === DetailInputType.CHECKBOX || input.type === DetailInputType.TEXTAREA
+  return (
+    <li key={input.label} className={`m-0 p-0 flex ${vertical ? 'flex-col' : ''}`}>
+      <div className="mb-0 mt-2 text-sm text-gray-600" dangerouslySetInnerHTML={{__html: `- ` + input.label}} />
+      {fnSwitch(
+        input.type,
+        {
+          [DetailInputType.TEXT]: () => (
+            <div className="px-2 w-[200px] flex items-center justify-start text-stone-500 mx-2 bg-stone-100 text-sm border-stone-500 border-solid border mt-1">
+              {getPlaceholderFromInput(input) ?? ''}
+            </div>
+          ),
+          [DetailInputType.TEXTAREA]: () => (
+            <div className="px-2 w-[200px] h-[50px] flex items-center justify-start text-stone-500 mx-2 bg-stone-100 text-sm border-stone-500 border-solid border mt-1">
+              {getPlaceholderFromInput(input) ?? ''}
+            </div>
+          ),
+          [DetailInputType.DATE]: () => (
+            <div className="px-2 w-[200px] flex items-center justify-between text-stone-500 mx-2 bg-stone-100 text-sm border-stone-500 border-solid border mt-1">
+              <span>
+                {input.type === DetailInputType.DATE && input.defaultValue === 'SYSDATE' ? dateToFrenchFormat(new Date()) : ''}
+              </span>{' '}
+              <i className="ri-calendar-line" />
+            </div>
+          ),
+          [DetailInputType.RADIO]: () => (
+            <>
+              {getOptionsFromInput(input)!.map(option => (
+                <div key={option} className="flex items-center text-gray-600">
+                  <i className="ri-checkbox-blank-circle-line mx-2 fr-icon--sm " />
+                  <span className="text-sm">{option}</span>
+                </div>
+              ))}
+            </>
+          ),
+          [DetailInputType.CHECKBOX]: () => (
+            <>
+              {getOptionsFromInput(input)!.map(option => (
+                <div key={option} className="flex items-center text-gray-600">
+                  <i className="ri-checkbox-blank-line mx-2  fr-icon--sm" />
+                  <span className="text-sm">{option}</span>
+                </div>
+              ))}
+            </>
+          ),
+        },
+        () => (
+          <div className="px-2 w-[200px] flex items-center justify-start text-stone-500 mx-2 bg-stone-100 text-sm border-stone-500 border-solid border mt-1">
+            {getPlaceholderFromInput(input) ?? ''}
+          </div>
+        ),
+      )}
+    </li>
   )
 }
 
