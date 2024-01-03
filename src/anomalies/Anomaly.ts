@@ -1,3 +1,5 @@
+export type CategoryNode = Anomaly | Subcategory
+
 export type Anomaly = {
   // Stored in DB, should not change
   category: string
