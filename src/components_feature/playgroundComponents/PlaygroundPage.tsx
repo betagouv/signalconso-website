@@ -10,9 +10,9 @@ import {PlaygroundOther} from '@/components_feature/playgroundComponents/Playgro
 import {CompanyFilled} from '@/components_feature/reportFlow/Company/Company'
 import {ContentPageContainer} from '@/components_simple/PageContainers'
 
-import { useEffect, useState } from 'react';
-import { useRouter, usePathname, useSearchParams } from 'next/navigation';
-import { CompanyKinds } from '../../anomalies/Anomaly';
+import {useRouter, usePathname, useSearchParams} from 'next/navigation'
+import {CompanyKinds, companyKinds} from '../../anomalies/Anomaly'
+import {AcknowledgmentCases, AcknowledgementInner} from '../reportFlow/Acknowledgement/Acknowledgement'
 
 
 const companyDraft = {
@@ -32,68 +32,154 @@ const companyDraft = {
   isOpen: true,
 }
 
+export const playgroundTestCases = [
+  'details',
+  'company',
+  'company_siret',
+  'company_website',
+  'company_merchant_website',
+  'company_transporter_website',
+  'company_phone',
+  'company_location',
+  'company_social',
+  'company_product',
+  'companyFilled',
+  'consumer',
+  'confirmation',
+  'acknowledgment_ReponseConso',
+  'acknowledgment_EmployeeReport',
+  'acknowledgment_ForeignCompany_Espagne',
+  'acknowledgment_ForeignCompany_Suisse',
+  'acknowledgment_ForeignCompany_Andorre',
+  'acknowledgment_ForeignCompany_Argentine',
+  'acknowledgment_FrenchCompanyWithoutSIRET',
+  'acknowledgment_ContractualDisputeWithSIRET',
+  'acknowledgment_Default',
+  'other',
+] as const
+export type PlaygroundTestCase = (typeof playgroundTestCases)[number]
+
 const Playground = () => {
-  const router = useRouter();
-  const pathname = usePathname();
-  const searchParams = useSearchParams();
-  const [selectedTabId, setSelectedTabId] = useState('details');
-  const [selectedCompanyKind, setSelectedCompanyKind] = useState('SIRET');
+  const navigation = useRouter()
+  const pathname = usePathname()
+  const searchParams = useSearchParams()
+  
+  const tabParam = (searchParams.get('testcase') || 'details') as PlaygroundTestCase
+  const companyKindParam = (searchParams.get('companykind') || 'SIRET') as CompanyKinds
 
-  useEffect(() => {
-    let tabParam = searchParams.get('testcase') || 'details';
-    let companyKindParam = searchParams.get('companykind') || 'SIRET';
-
-    setSelectedTabId(tabParam);
-    setSelectedCompanyKind(companyKindParam);
-
-    updateURL(tabParam, companyKindParam);
-  }, [pathname, searchParams]);
-
-  const updateURL = (tabId:string, companyKind:string) => {
-    let newUrl = `${pathname}?testcase=${tabId}`;
-    if (tabId === 'company') {
-      newUrl += `&companykind=${companyKind}`;
+  const navigateTo = (newTabParam: PlaygroundTestCase, companyKind?: CompanyKinds) => {
+    let newUrl = `${pathname}?testcase=${newTabParam}`
+    if (companyKind) {
+      newUrl += `&companykind=${companyKind}`
     }
-    history.pushState({}, '', newUrl);
+    console.log('navigation', newUrl)
+
+    navigation.push(newUrl)
+  }
+
+  const renderLinks = () => {
+    return playgroundTestCases.map(testCase => (
+      <li key={testCase} onClick={() => navigateTo(testCase)}>
+        {testCase.replace(/_/g, ' ')} {/* Remplace les underscores par des espaces pour l'affichage */}
+      </li>
+    ));
   };
 
-  const handleTabChange = (tabId:string) => {
-    setSelectedTabId(tabId);
-    updateURL(tabId, selectedCompanyKind);
-  };
+  const renderComponent = () => {
+    console.log('Current tabParam:', tabParam);
 
-  const handleCompanyKindChange = (companyKind:string) => {
-    setSelectedCompanyKind(companyKind);
-    if (selectedTabId === 'company') {
-      updateURL(selectedTabId, companyKind);
+    let acknowledgmentCaseValue;
+  switch (tabParam) {
+    case 'acknowledgment_ReponseConso':
+      acknowledgmentCaseValue = AcknowledgmentCases.ReponseConso;
+      break;
+    case 'acknowledgment_EmployeeReport':
+      acknowledgmentCaseValue = AcknowledgmentCases.EmployeeReport;
+      break;
+    case 'acknowledgment_ForeignCompany_Espagne':
+      acknowledgmentCaseValue = AcknowledgmentCases.ForeignCompany;
+      break;
+    case 'acknowledgment_ForeignCompany_Suisse':
+      acknowledgmentCaseValue = AcknowledgmentCases.ForeignCompany;
+      break;
+    case 'acknowledgment_ForeignCompany_Andorre':
+      acknowledgmentCaseValue = AcknowledgmentCases.ForeignCompany;
+      break;
+    case 'acknowledgment_ForeignCompany_Argentine':
+      acknowledgmentCaseValue = AcknowledgmentCases.ForeignCompany;
+      break;
+    case 'acknowledgment_FrenchCompanyWithoutSIRET':
+      acknowledgmentCaseValue = AcknowledgmentCases.FrenchCompanyWithoutSIRET;
+      break;
+    case 'acknowledgment_ContractualDisputeWithSIRET':
+      acknowledgmentCaseValue = AcknowledgmentCases.ContractualDisputeWithSIRET;
+      break;
+    case 'acknowledgment_Default':
+      acknowledgmentCaseValue = AcknowledgmentCases.Default;
+      break;
+    default:
+      acknowledgmentCaseValue = AcknowledgmentCases.Default;
+  }
+    switch (tabParam) {
+      case 'details':
+        return <PlaygroundDetails />
+      case 'company':
+        return <PlaygroundCompany companyKind={companyKindParam} />
+      case 'company_siret':
+        return <PlaygroundCompany companyKind='SIRET'/>
+      case 'company_website':
+        return <PlaygroundCompany companyKind='WEBSITE'/>
+      case 'company_merchant_website':
+        return <PlaygroundCompany companyKind='MERCHANT_WEBSITE'/>
+      case 'company_transporter_website':
+        return <PlaygroundCompany companyKind='TRANSPORTER_WEBSITE'/>
+      case 'company_phone':
+        return <PlaygroundCompany companyKind='PHONE'/>
+      case 'company_location':
+        return <PlaygroundCompany companyKind='LOCATION'/>
+      case 'company_social':
+        return <PlaygroundCompany companyKind='SOCIAL'/>
+      case 'company_product':
+        return <PlaygroundCompany companyKind='PRODUCT'/>                                                        
+      case 'companyFilled':
+        return <CompanyFilled draft={{companyDraft}} onClear={console.log} stepNavigation={dummyStepNavigation} />
+      case 'consumer':
+        return <PlaygroundConsumer />
+      case 'confirmation':
+        return <PlaygroundConfirmation />
+
+        case 'acknowledgment_ReponseConso':
+          case 'acknowledgment_EmployeeReport':
+          case 'acknowledgment_ForeignCompany_Espagne':
+          case 'acknowledgment_ForeignCompany_Suisse':
+          case 'acknowledgment_ForeignCompany_Andorre':
+          case 'acknowledgment_ForeignCompany_Argentine':
+          case 'acknowledgment_FrenchCompanyWithoutSIRET':
+          case 'acknowledgment_ContractualDisputeWithSIRET':
+          case 'acknowledgment_Default':
+            return <PlaygroundAcknowledgment acknowledgmentCase={acknowledgmentCaseValue} />;
+                                                                        
+      case 'other':
+        return <PlaygroundOther />
+      default:
+        return null
     }
-  };
+  }
 
   return (
     <ContentPageContainer>
-      <Tabs
-        tabs={[
-          { tabId: 'details', label: 'Details' },
-          { tabId: 'company', label: 'Company' },
-          { tabId: 'companyFilled', label: 'CompanyFilled' },
-          { tabId: 'consumer', label: 'Consumer' },
-          { tabId: 'confirmation', label: 'Confirmation' },
-          { tabId: 'acknowledgment', label: 'Acknowledgment' },
-          { tabId: 'other', label: 'Other' },
-        ]}
-        selectedTabId={selectedTabId}
-        onTabChange={handleTabChange}
-      >
-        {selectedTabId === 'details' && <PlaygroundDetails />}
-        {selectedTabId === 'company' && <PlaygroundCompany onCompanyKindChange={handleCompanyKindChange} />}
-        {selectedTabId === 'companyFilled' && <CompanyFilled draft={{companyDraft}} onClear={console.log} stepNavigation={dummyStepNavigation} />}
-        {selectedTabId === 'consumer' && <PlaygroundConsumer />}
-        {selectedTabId === 'confirmation' && <PlaygroundConfirmation />}
-        {selectedTabId === 'acknowledgment' && <PlaygroundAcknowledgment />}
-        {selectedTabId === 'other' && <PlaygroundOther />}
-      </Tabs>
+      <ul>
+        {/* <li onClick={() => navigateTo('details')}>Details</li> */}
+        {renderLinks()}
+        {/* <li onClick={() => navigateTo('companyFilled')}>companyFilled</li>
+        <li onClick={() => navigateTo('consumer')}>Consumer</li>
+        <li onClick={() => navigateTo('confirmation')}>Confirmation</li>
+        <li onClick={() => navigateTo('acknowledgment_ReponseConso')}>Acknowledgment</li>
+        <li onClick={() => navigateTo('other')}>Other</li> */}
+      </ul>
+      {renderComponent()}
     </ContentPageContainer>
-  );
-};
+  )
+}
 
-export default Playground;
+export default Playground

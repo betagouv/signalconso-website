@@ -1,13 +1,14 @@
 import {useGetCountries} from '@/clients/apiHooks'
 import {Enum} from '@/utils/Enum'
-import {useMemo, useState} from 'react'
+import {useMemo, useState, useEffect} from 'react'
 import {Country} from '../../model/Country'
 import {CreatedReport} from '../../model/CreatedReport'
 import {Fixture} from '../../test/fixture'
 import {AcknowledgementInner, AcknowledgmentCases} from '../reportFlow/Acknowledgement/Acknowledgement'
 
-export const PlaygroundAcknowledgment = () => {
-  const testCountries: Country[] = [
+
+export const PlaygroundAcknowledgment = ({ acknowledgmentCase }: { acknowledgmentCase: AcknowledgmentCases }) => {
+    const testCountries: Country[] = [
     {
       code: 'ES',
       name: 'Espagne',
@@ -37,14 +38,19 @@ export const PlaygroundAcknowledgment = () => {
       transfer: false,
     },
   ]
-  const [type, setType] = useState<AcknowledgmentCases>(AcknowledgmentCases.ReponseConso)
-  const [demoCountry, setDemoCountry] = useState<Country | undefined>({
+  const [type, setType] = useState<AcknowledgmentCases>(acknowledgmentCase);
+    const [demoCountry, setDemoCountry] = useState<Country | undefined>({
     code: 'ES',
     name: 'Argentine',
     englishName: 'Spain',
     european: true,
     transfer: false,
   })
+
+  useEffect(() => {
+    setType(acknowledgmentCase);
+  }, [acknowledgmentCase]); 
+  
   const baseReport = useMemo(Fixture.genReport, [])
   const {data: countries} = useGetCountries()
   const report = useMemo(() => {
@@ -75,7 +81,7 @@ export const PlaygroundAcknowledgment = () => {
 
   return (
     <>
-      <div className="space-x-2 border border-dashed p-4 mb-8 bg-gray-100">
+      {/* <div className="space-x-2 border border-dashed p-4 mb-8 bg-gray-100">
         <span>AcknowledgmentCase : </span>
         <select
           value={type}
@@ -104,7 +110,7 @@ export const PlaygroundAcknowledgment = () => {
             </select>
           </>
         )}
-      </div>
+      </div> */}
       <AcknowledgementInner createdReport={report} country={country} isWebView={false} />
     </>
   )
