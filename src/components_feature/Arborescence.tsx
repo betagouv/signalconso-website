@@ -23,7 +23,17 @@ import {AppLang} from '@/i18n/localization/AppLangs'
 import Link from 'next/link'
 import {pagesDefs} from '@/core/pagesDefinitions'
 
-const Node = ({anomaly, openAll, displayExtra}: {anomaly: Anomaly | Subcategory; openAll?: boolean; displayExtra: boolean}) => {
+const Node = ({
+  anomaly,
+  openAll,
+  displayExtra,
+  zoomPath,
+}: {
+  anomaly: Anomaly | Subcategory
+  openAll?: boolean
+  displayExtra: boolean
+  zoomPath: string[]
+}) => {
   const title = instanceOfAnomaly(anomaly) ? anomaly.title : anomaly.title
   const desc = instanceOfAnomaly(anomaly) ? anomaly.description : anomaly.desc
   const reponseconsoCode = instanceOfAnomaly(anomaly) ? undefined : anomaly.reponseconsoCode
@@ -64,16 +74,21 @@ const Node = ({anomaly, openAll, displayExtra}: {anomaly: Anomaly | Subcategory;
             anomaly.subcategories ? 'bg-slate-100' : 'bg-stone-200'
           }`}
         >
-          <p className="mb-0">
-            <ZoomLinkToTarget targetNode={anomaly}>
-              <span dangerouslySetInnerHTML={{__html: title}} className="font-bold" />
-            </ZoomLinkToTarget>{' '}
-            {displayExtra && (
-              <>
-                <span className="text-scbluefrance text-xs">(id : {anomaly.id}) </span>{' '}
-              </>
-            )}
-            {desc && <span className="ml-2 text-sm text-gray-500 mb-0 italic" dangerouslySetInnerHTML={{__html: desc}} />}
+          <p className="mb-0 flex justify-between w-full gap-2 items-center">
+            <div>
+              <span dangerouslySetInnerHTML={{__html: title}} className="font-bold" />{' '}
+              {displayExtra && (
+                <>
+                  <span className="text-scbluefrance text-xs">(id : {anomaly.id}) </span>{' '}
+                </>
+              )}
+              {desc && <span className="ml-2 text-sm text-gray-500 mb-0 italic" dangerouslySetInnerHTML={{__html: desc}} />}
+            </div>
+            <span className="shrink-0">
+              <ZoomLinkToTarget targetNode={anomaly} currentZoom={zoomPath}>
+                zoom <i className="ri-zoom-in-line" />
+              </ZoomLinkToTarget>
+            </span>
           </p>
           <div>
             {displayExtra &&
@@ -113,7 +128,7 @@ const Node = ({anomaly, openAll, displayExtra}: {anomaly: Anomaly | Subcategory;
             {subcategoriesTitle && <div className="mt-2" dangerouslySetInnerHTML={{__html: subcategoriesTitle}} />}
             <div className="my-2 relative before:h-full before:content-['_'] before:w-[1px] before:absolute before:bg-gray-500 before:left-[-28px]">
               {anomaly.subcategories.map(s => (
-                <Node openAll={openAll} key={s.id} anomaly={s} {...{displayExtra}} />
+                <Node openAll={openAll} key={s.id} anomaly={s} {...{displayExtra, zoomPath}} />
               ))}
             </div>
           </>
@@ -340,7 +355,9 @@ const Arbo = () => {
                 <li key={idx} className="">
                   {idx > 0 && '>'}{' '}
                   <span className="bg-gray-300 px-2">
-                    <ZoomLink path={zoomPath.slice(0, idx + 1)}>{title}</ZoomLink>
+                    <ZoomLink path={zoomPath.slice(0, idx + 1)} currentZoom={zoomPath}>
+                      {title}
+                    </ZoomLink>
                   </span>
                 </li>
               ))}
@@ -349,7 +366,7 @@ const Arbo = () => {
         </div>
       )}
       {topNodes.map(a => (
-        <Node key={a.id} anomaly={a} openAll={openAll} {...{displayExtra}} />
+        <Node key={a.id} anomaly={a} openAll={openAll} {...{displayExtra, zoomPath}} />
       ))}
     </ContentPageContainer>
   )
@@ -370,18 +387,40 @@ function applyZoom(currentTopNodes: CategoryNode[], zoomPath: string[]): Categor
   return applyZoom(foundTopNode.subcategories ?? [], restOfZoom)
 }
 
-function ZoomLinkToTarget({children, targetNode}: {targetNode: CategoryNode; children: ReactNode}) {
+function ZoomLinkToTarget({
+  children,
+  targetNode,
+  currentZoom,
+}: {
+  targetNode: CategoryNode
+  children: ReactNode
+  currentZoom: string[]
+}) {
   const {currentLang: lang} = useI18n()
   const path = buildTitlesPath(targetNode, lang)
   if (!path) {
     return <span>{children}</span>
   }
-  return <ZoomLink path={path}>{children}</ZoomLink>
+  return (
+    <ZoomLink path={path} currentZoom={currentZoom}>
+      {children}
+    </ZoomLink>
+  )
 }
 
-function ZoomLink({children, path}: {path: string[]; children: ReactNode}) {
-  const url = `?zoom=${encodeURIComponent(path.join('___'))}`
-  return <Link href={url}>{children}</Link>
+function ZoomLink({children, path, currentZoom}: {path: string[]; children: ReactNode; currentZoom: string[]}) {
+  const newPathStr = path.join('___')
+  const currentZoomStr = currentZoom.join('___')
+  if (newPathStr === currentZoomStr) {
+    // linking to current page, no need
+    return <span>{children}</span>
+  }
+  const url = `?zoom=${encodeURIComponent(newPathStr)}`
+  return (
+    <Link href={url} className="fr-raw-link hover:underline">
+      {children}
+    </Link>
+  )
 }
 function buildTitlesPath(targetNode: CategoryNode, lang: AppLang) {
   const allAnomalies = allVisibleAnomalies(lang)
