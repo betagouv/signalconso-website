@@ -712,7 +712,6 @@ export const en = {
     },
     arbo: {
       title: 'Sequence for reporting an issue',
-      expandAll: 'Expand all',
       notAFraudMessage: 'Although we do believe the issue you experienced was genuine, it was not a case of fraud.',
     },
     yes: 'Yes',

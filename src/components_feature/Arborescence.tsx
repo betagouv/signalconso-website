@@ -65,9 +65,9 @@ const Node = ({anomaly, openAll, displayExtra}: {anomaly: Anomaly | Subcategory;
           }`}
         >
           <p className="mb-0">
-            <ZoomLink targetNode={anomaly}>
+            <ZoomLinkToTarget targetNode={anomaly}>
               <span dangerouslySetInnerHTML={{__html: title}} className="font-bold" />
-            </ZoomLink>{' '}
+            </ZoomLinkToTarget>{' '}
             {displayExtra && (
               <>
                 <span className="text-scbluefrance text-xs">(id : {anomaly.id}) </span>{' '}
@@ -295,36 +295,59 @@ const Arbo = () => {
   return (
     <ContentPageContainer>
       <h1>{m.arbo.title}</h1>
-      {zoomPath.length && (
-        <h2>
-          zooming on {zoomPath} <Link href={pagesDefs.arborescence.url}>(unzoom)</Link>
-        </h2>
-      )}
-      <form className="mb-4">
+
+      <form className="mb-4 flex flex-col gap-4">
         <label>
           <input type="checkbox" {...register('hideExtra')} />
           <span className="ml-2">
-            Masquer les petits détails techniques (ids, tags, company kind, codes RéponseConso et codes DGCCRF, labels des pièces
-            jointes)
+            Masquer les petits détails techniques{' '}
+            <span className="text-sm text-gray-700">
+              (ids, tags, companyKind, codes RéponseConso, codes DGCCRF, labels des pièces jointes)
+            </span>
           </span>
         </label>
+        <Button
+          iconId={openAll ? 'ri-arrow-up-double-line' : 'ri-arrow-down-double-line'}
+          iconPosition="right"
+          className=""
+          disabled={disabled}
+          priority="secondary"
+          onClick={() => {
+            setDisabled(true)
+            setTimeout(() => {
+              setOpenAll(_ => !_)
+            }, 1)
+            setTimeout(() => {
+              setDisabled(false)
+            }, 100)
+          }}
+        >
+          {openAll ? 'Tout replier' : 'Tout déplier'}
+        </Button>
       </form>
-      <Button
-        className="mb-4"
-        disabled={disabled}
-        onClick={() => {
-          setDisabled(true)
-          setTimeout(() => {
-            setOpenAll(_ => !_)
-          }, 1)
-          setTimeout(() => {
-            setDisabled(false)
-          }, 100)
-        }}
-      >
-        {m.arbo.expandAll}
-      </Button>
-
+      {zoomPath.length > 0 && (
+        <div className="z-[1000] border-2 border-solid  p-2 bg-yellow-100 text-black mb-8">
+          <div className="text-md mb-2">
+            Vous visualisez actuellement un <span className="font-bold">sous-ensemble</span> de l'arborescence.{' '}
+            <Link href={pagesDefs.arborescence.url} className="font-bold text-scbluefrance">
+              Cliquez ici pour revenir à l'arborescence complète
+            </Link>
+          </div>
+          <div>
+            <span> Chemin actuel :</span>
+            <ul className="inline-flex flex-wrap gap-2 list-none mb-0 p-0 ml-2">
+              {zoomPath.map((title, idx) => (
+                <li key={idx} className="">
+                  {idx > 0 && '>'}{' '}
+                  <span className="bg-gray-300 px-2">
+                    <ZoomLink path={zoomPath.slice(0, idx + 1)}>{title}</ZoomLink>
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      )}
       {topNodes.map(a => (
         <Node key={a.id} anomaly={a} openAll={openAll} {...{displayExtra}} />
       ))}
@@ -347,16 +370,19 @@ function applyZoom(currentTopNodes: CategoryNode[], zoomPath: string[]): Categor
   return applyZoom(foundTopNode.subcategories ?? [], restOfZoom)
 }
 
-function ZoomLink({children, targetNode}: {targetNode: CategoryNode; children: ReactNode}) {
+function ZoomLinkToTarget({children, targetNode}: {targetNode: CategoryNode; children: ReactNode}) {
   const {currentLang: lang} = useI18n()
   const path = buildTitlesPath(targetNode, lang)
   if (!path) {
     return <span>{children}</span>
   }
+  return <ZoomLink path={path}>{children}</ZoomLink>
+}
+
+function ZoomLink({children, path}: {path: string[]; children: ReactNode}) {
   const url = `?zoom=${encodeURIComponent(path.join('___'))}`
   return <Link href={url}>{children}</Link>
 }
-
 function buildTitlesPath(targetNode: CategoryNode, lang: AppLang) {
   const allAnomalies = allVisibleAnomalies(lang)
 
