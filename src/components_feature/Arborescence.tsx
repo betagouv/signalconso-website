@@ -211,68 +211,68 @@ function InputRender({input}: {input: DetailInput}) {
     input.type === DetailInputType.RADIO || input.type === DetailInputType.CHECKBOX || input.type === DetailInputType.TEXTAREA
   return (
     <li key={input.label} className={`m-0 p-0 flex ${vertical ? 'flex-col' : ''}`}>
-      <div className="mb-0 mt-2 text-sm text-gray-600" dangerouslySetInnerHTML={{__html: `- ` + input.label}} />
-      {fnSwitch(
-        input.type,
-        {
-          [DetailInputType.TEXT]: () => (
-            <div className="px-2 w-[200px] flex items-center justify-start text-stone-500 mx-2 bg-stone-100 text-sm border-stone-500 border-solid border mt-1">
-              {getPlaceholderFromInput(input) ?? ''}
-            </div>
-          ),
-          [DetailInputType.TEXTAREA]: () => (
-            <div className="px-2 w-[200px] h-[50px] flex items-center justify-start text-stone-500 mx-2 bg-stone-100 text-sm border-stone-500 border-solid border mt-1">
-              {getPlaceholderFromInput(input) ?? ''}
-            </div>
-          ),
-          [DetailInputType.DATE]: () => (
-            <div className="px-2 w-[200px] flex items-center justify-between text-stone-500 mx-2 bg-stone-100 text-sm border-stone-500 border-solid border mt-1">
-              <span>
-                {input.type === DetailInputType.DATE && input.defaultValue === 'SYSDATE' ? dateToFrenchFormat(new Date()) : ''}
-              </span>{' '}
-              <i className="ri-calendar-line" />
-            </div>
-          ),
-          [DetailInputType.DATE_NOT_IN_FUTURE]: () => (
-            <>
-              <div className="px-2 w-[200px] flex items-center gap-2 justify-between text-stone-500 mx-2 bg-stone-100 text-sm border-stone-500 border-solid border mt-1">
-                <span>
-                  {input.type === DetailInputType.DATE_NOT_IN_FUTURE && input.defaultValue === 'SYSDATE'
-                    ? dateToFrenchFormat(new Date())
-                    : ''}
-                </span>
-                <i className="ri-calendar-line" />
-              </div>
-              <div className="text-sm flex items-end text-stone-600">(date dans le passé ou celle d'aujourd'hui)</div>
-            </>
-          ),
-          [DetailInputType.RADIO]: () => (
-            <>
-              {getOptionsFromInput(input)!.map(option => (
-                <div key={option} className="flex items-center text-gray-600">
-                  <i className="ri-checkbox-blank-circle-line mx-2 fr-icon--sm " />
-                  <span className="text-sm">{option}</span>
-                </div>
-              ))}
-            </>
-          ),
-          [DetailInputType.CHECKBOX]: () => (
-            <>
-              {getOptionsFromInput(input)!.map(option => (
-                <div key={option} className="flex items-center text-gray-600">
-                  <i className="ri-checkbox-blank-line mx-2  fr-icon--sm" />
-                  <span className="text-sm">{option}</span>
-                </div>
-              ))}
-            </>
-          ),
-        },
-        () => (
+      <div className="mb-0 mt-2 text-sm text-gray-600">
+        <span dangerouslySetInnerHTML={{__html: `- ` + input.label}} />
+        {input.optional && <span className="italic"> (optionnel)</span>}
+      </div>
+      {fnSwitch(input.type, {
+        [DetailInputType.TEXT]: () => (
           <div className="px-2 w-[200px] flex items-center justify-start text-stone-500 mx-2 bg-stone-100 text-sm border-stone-500 border-solid border mt-1">
             {getPlaceholderFromInput(input) ?? ''}
           </div>
         ),
-      )}
+        [DetailInputType.TEXTAREA]: () => (
+          <div className="px-2 w-[200px] h-[50px] flex items-center justify-start text-stone-500 mx-2 bg-stone-100 text-sm border-stone-500 border-solid border mt-1">
+            {getPlaceholderFromInput(input) ?? ''}
+          </div>
+        ),
+        [DetailInputType.DATE]: () => (
+          <div className="px-2 w-[200px] flex items-center justify-between text-stone-500 mx-2 bg-stone-100 text-sm border-stone-500 border-solid border mt-1">
+            <span>
+              {input.type === DetailInputType.DATE && input.defaultValue === 'SYSDATE' ? dateToFrenchFormat(new Date()) : ''}
+            </span>{' '}
+            <i className="ri-calendar-line" />
+          </div>
+        ),
+        [DetailInputType.DATE_NOT_IN_FUTURE]: () => (
+          <>
+            <div className="px-2 w-[200px] flex items-center gap-2 justify-between text-stone-500 mx-2 bg-stone-100 text-sm border-stone-500 border-solid border mt-1">
+              <span>
+                {input.type === DetailInputType.DATE_NOT_IN_FUTURE && input.defaultValue === 'SYSDATE'
+                  ? dateToFrenchFormat(new Date())
+                  : ''}
+              </span>
+              <i className="ri-calendar-line" />
+            </div>
+            <div className="text-sm flex items-end text-stone-600">(date dans le passé ou celle d'aujourd'hui)</div>
+          </>
+        ),
+        [DetailInputType.TIMESLOT]: () => (
+          <div className="px-2 w-[200px] flex items-center justify-end text-stone-500 mx-2 bg-stone-100 text-sm border-stone-500 border-solid border mt-1">
+            <i className="ri-time-line" />
+          </div>
+        ),
+        [DetailInputType.RADIO]: () => (
+          <>
+            {getOptionsFromInput(input)!.map(option => (
+              <div key={option} className="flex items-center text-gray-600">
+                <i className="ri-checkbox-blank-circle-line mx-2 fr-icon--sm " />
+                <span className="text-sm">{option}</span>
+              </div>
+            ))}
+          </>
+        ),
+        [DetailInputType.CHECKBOX]: () => (
+          <>
+            {getOptionsFromInput(input)!.map(option => (
+              <div key={option} className="flex items-center text-gray-600">
+                <i className="ri-checkbox-blank-line mx-2  fr-icon--sm" />
+                <span className="text-sm">{option}</span>
+              </div>
+            ))}
+          </>
+        ),
+      })}
     </li>
   )
 }
