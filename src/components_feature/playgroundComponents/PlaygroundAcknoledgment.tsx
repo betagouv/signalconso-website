@@ -1,5 +1,4 @@
 import {useGetCountries} from '@/clients/apiHooks'
-import {Enum} from '@/utils/Enum'
 import {useMemo, useState, useEffect} from 'react'
 import {Country} from '../../model/Country'
 import {CreatedReport} from '../../model/CreatedReport'
