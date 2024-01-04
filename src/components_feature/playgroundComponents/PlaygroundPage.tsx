@@ -130,7 +130,10 @@ const Playground = () => {
 
       {!testCase ? (
         <div>
-          <p>Les liens ci-dessous permettent de reconstituer les situations décrites dans les déclarations des utilisateurs.</p>
+          <p>
+            Les liens ci-dessous permettent de tester les différents composants de l'interface sans avoir à refaire tout le
+            parcours de signalement.
+          </p>
           <div className="flex mt-4">
             <div className="flex-1">
               <h5>Général</h5>
