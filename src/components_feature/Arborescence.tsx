@@ -78,7 +78,7 @@ const Node = ({
               )}
               {desc && <span className="ml-2 text-sm text-gray-500 mb-0 italic" dangerouslySetInnerHTML={{__html: desc}} />}
             </div>
-            <span className="shrink-0 group-hover:inline hidden">
+            <span className="shrink-0 group-hover:visible invisible">
               <ZoomLinkToTarget targetNode={anomaly} currentZoom={zoomPath} hideIfSameAsCurrentZoom>
                 lien direct <i className="ri-link" />
               </ZoomLinkToTarget>
