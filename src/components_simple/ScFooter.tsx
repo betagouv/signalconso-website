@@ -31,7 +31,7 @@ export function ScFooter() {
         }
         operatorLogo={{orientation: 'horizontal', imgUrl: '/image/logo-dgccrf.png', alt: m.footer.homeLinkTitle}}
         websiteMapLinkProps={{href: `/${currentLang}${pagesDefs.planDuSite.url}`}}
-        accessibility="partially comp2096liant"
+        accessibility="partially compliant"
         accessibilityLinkProps={{href: `/${currentLang}${pagesDefs.accessibilite.url}`}}
         termsLinkProps={{href: `/${currentLang}${pagesDefs.conditionsGeneralesUtilisation.url}`}}
         homeLinkProps={
