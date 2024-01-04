@@ -130,7 +130,7 @@ const Playground = () => {
 
       {!testCase ? (
         <div>
-          <p>Les liens ci-dessous permettent de naviguer vers les différentes sections du menu Playground.</p>
+          <p>Les liens ci-dessous permettent de reconstituer les situations décrites dans les déclarations des utilisateurs.</p>
           <div className="flex mt-4">
             <div className="flex-1">
               <h5>Général</h5>
