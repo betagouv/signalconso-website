@@ -73,7 +73,6 @@ export const reportTagsAllowedInYaml = [
   'AbsenceDeMediateur',
   'Influenceur',
   'ReponseConso',
-  'Internet',
   'ProduitIndustriel',
   'ProduitAlimentaire',
   'CompagnieAerienne',
@@ -81,7 +80,7 @@ export const reportTagsAllowedInYaml = [
 ] as const
 export type ReportTagAllowedInYaml = (typeof reportTagsAllowedInYaml)[number]
 
-export const reportTags = ['LitigeContractuel', ...reportTagsAllowedInYaml] as const
+export const reportTags = ['LitigeContractuel', 'Internet',...reportTagsAllowedInYaml] as const
 export type ReportTag = (typeof reportTags)[number]
 
 export const companyKinds = [
