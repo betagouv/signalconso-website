@@ -67,7 +67,7 @@ const Playground = () => {
 
   const renderLinks = (testCases: readonly PlaygroundTestCase[]) => {
     return testCases.map(testCase => (
-      <li key={testCase} className="list-none cursor-pointer hover:text-blue-500">
+      <li key={testCase} className="list-none cursor-pointer hover:text-blue-500 ">
         <Link href={`${pathname}?testcase=${testCase}`}> {testCase.replace(/_/g, ' ')} </Link>
       </li>
     ))

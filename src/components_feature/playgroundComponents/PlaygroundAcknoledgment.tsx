@@ -42,20 +42,7 @@ export const PlaygroundAcknowledgment = ({
       transfer: false,
     },
   ]
-  const [type, setType] = useState<AcknowledgmentCases>(acknowledgmentCase)
-  const [demoCountry, setDemoCountry] = useState<Country | undefined>({
-    code: 'ES',
-    name: 'Argentine',
-    englishName: 'Spain',
-    european: true,
-    transfer: false,
-  })
-
-  useEffect(() => {
-    setType(acknowledgmentCase)
-    const foundCountry = testCountries.find(country => country.code === countryId)
-    setDemoCountry(foundCountry)
-  }, [acknowledgmentCase, countryId])
+  const foundCountry = testCountries.find(country => country.code === countryId)
 
   const baseReport = useMemo(Fixture.genReport, [])
   const {data: countries} = useGetCountries()
@@ -66,7 +53,7 @@ export const PlaygroundAcknowledgment = ({
       [AcknowledgmentCases.ForeignCompany]: () => ({
         ...baseReport,
         employeeConsumer: false,
-        companyAddress: {...baseReport.companyAddress, country: demoCountry},
+        companyAddress: {...baseReport.companyAddress, country: foundCountry},
       }),
       [AcknowledgmentCases.FrenchCompanyWithoutSIRET]: () => ({...baseReport, employeeConsumer: false, companySiret: undefined}),
       [AcknowledgmentCases.ContractualDisputeWithSIRET]: () => ({
@@ -76,8 +63,8 @@ export const PlaygroundAcknowledgment = ({
       }),
       [AcknowledgmentCases.Default]: () => ({...baseReport, employeeConsumer: false, tags: []}),
     }
-    return reportsSwitch[type]()
-  }, [type, demoCountry])
+    return reportsSwitch[acknowledgmentCase]()
+  }, [acknowledgmentCase, foundCountry])
 
   const country = useMemo(() => {
     if (countries && report && report.companyAddress.country) {
