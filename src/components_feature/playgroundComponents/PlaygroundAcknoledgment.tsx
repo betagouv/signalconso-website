@@ -6,9 +6,14 @@ import {CreatedReport} from '../../model/CreatedReport'
 import {Fixture} from '../../test/fixture'
 import {AcknowledgementInner, AcknowledgmentCases} from '../reportFlow/Acknowledgement/Acknowledgement'
 
-
-export const PlaygroundAcknowledgment = ({ acknowledgmentCase }: { acknowledgmentCase: AcknowledgmentCases }) => {
-    const testCountries: Country[] = [
+export const PlaygroundAcknowledgment = ({
+  acknowledgmentCase,
+  countryId,
+}: {
+  acknowledgmentCase: AcknowledgmentCases
+  countryId: string | null
+}) => {
+  const testCountries: Country[] = [
     {
       code: 'ES',
       name: 'Espagne',
@@ -38,8 +43,8 @@ export const PlaygroundAcknowledgment = ({ acknowledgmentCase }: { acknowledgmen
       transfer: false,
     },
   ]
-  const [type, setType] = useState<AcknowledgmentCases>(acknowledgmentCase);
-    const [demoCountry, setDemoCountry] = useState<Country | undefined>({
+  const [type, setType] = useState<AcknowledgmentCases>(acknowledgmentCase)
+  const [demoCountry, setDemoCountry] = useState<Country | undefined>({
     code: 'ES',
     name: 'Argentine',
     englishName: 'Spain',
@@ -48,9 +53,11 @@ export const PlaygroundAcknowledgment = ({ acknowledgmentCase }: { acknowledgmen
   })
 
   useEffect(() => {
-    setType(acknowledgmentCase);
-  }, [acknowledgmentCase]); 
-  
+    setType(acknowledgmentCase)
+    const foundCountry = testCountries.find(country => country.code === countryId)
+    setDemoCountry(foundCountry)
+  }, [acknowledgmentCase, countryId])
+
   const baseReport = useMemo(Fixture.genReport, [])
   const {data: countries} = useGetCountries()
   const report = useMemo(() => {
@@ -81,36 +88,6 @@ export const PlaygroundAcknowledgment = ({ acknowledgmentCase }: { acknowledgmen
 
   return (
     <>
-      {/* <div className="space-x-2 border border-dashed p-4 mb-8 bg-gray-100">
-        <span>AcknowledgmentCase : </span>
-        <select
-          value={type}
-          onChange={e => setType(e.target.value as AcknowledgmentCases)}
-          className="border border-solid border-black bg-white p-2 text-base"
-        >
-          {Enum.keys(AcknowledgmentCases).map(_ => (
-            <option value={_} key={_}>
-              {_}
-            </option>
-          ))}
-        </select>
-        {type === AcknowledgmentCases.ForeignCompany && (
-          <>
-            <span>Country : </span>
-            <select
-              value={demoCountry?.code}
-              onChange={e => setDemoCountry(testCountries.find(_ => _.code === e.target.value))}
-              className="border border-solid border-black bg-white p-2 text-base"
-            >
-              {testCountries.map(_ => (
-                <option value={_.code} key={_.code}>
-                  {_.name}
-                </option>
-              ))}
-            </select>
-          </>
-        )}
-      </div> */}
       <AcknowledgementInner createdReport={report} country={country} isWebView={false} />
     </>
   )
