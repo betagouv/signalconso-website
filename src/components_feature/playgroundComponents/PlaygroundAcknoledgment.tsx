@@ -1,12 +1,17 @@
 import {useGetCountries} from '@/clients/apiHooks'
-import {Enum} from '@/utils/Enum'
-import {useMemo, useState} from 'react'
+import {useMemo, useState, useEffect} from 'react'
 import {Country} from '../../model/Country'
 import {CreatedReport} from '../../model/CreatedReport'
 import {Fixture} from '../../test/fixture'
 import {AcknowledgementInner, AcknowledgmentCases} from '../reportFlow/Acknowledgement/Acknowledgement'
 
-export const PlaygroundAcknowledgment = () => {
+export const PlaygroundAcknowledgment = ({
+  acknowledgmentCase,
+  countryId,
+}: {
+  acknowledgmentCase: AcknowledgmentCases
+  countryId: string | null
+}) => {
   const testCountries: Country[] = [
     {
       code: 'ES',
@@ -37,14 +42,8 @@ export const PlaygroundAcknowledgment = () => {
       transfer: false,
     },
   ]
-  const [type, setType] = useState<AcknowledgmentCases>(AcknowledgmentCases.ReponseConso)
-  const [demoCountry, setDemoCountry] = useState<Country | undefined>({
-    code: 'ES',
-    name: 'Argentine',
-    englishName: 'Spain',
-    european: true,
-    transfer: false,
-  })
+  const foundCountry = testCountries.find(country => country.code === countryId)
+
   const baseReport = useMemo(Fixture.genReport, [])
   const {data: countries} = useGetCountries()
   const report = useMemo(() => {
@@ -54,7 +53,7 @@ export const PlaygroundAcknowledgment = () => {
       [AcknowledgmentCases.ForeignCompany]: () => ({
         ...baseReport,
         employeeConsumer: false,
-        companyAddress: {...baseReport.companyAddress, country: demoCountry},
+        companyAddress: {...baseReport.companyAddress, country: foundCountry},
       }),
       [AcknowledgmentCases.FrenchCompanyWithoutSIRET]: () => ({...baseReport, employeeConsumer: false, companySiret: undefined}),
       [AcknowledgmentCases.ContractualDisputeWithSIRET]: () => ({
@@ -64,8 +63,8 @@ export const PlaygroundAcknowledgment = () => {
       }),
       [AcknowledgmentCases.Default]: () => ({...baseReport, employeeConsumer: false, tags: []}),
     }
-    return reportsSwitch[type]()
-  }, [type, demoCountry])
+    return reportsSwitch[acknowledgmentCase]()
+  }, [acknowledgmentCase, foundCountry])
 
   const country = useMemo(() => {
     if (countries && report && report.companyAddress.country) {
@@ -75,36 +74,6 @@ export const PlaygroundAcknowledgment = () => {
 
   return (
     <>
-      <div className="space-x-2 border border-dashed p-4 mb-8 bg-gray-100">
-        <span>AcknowledgmentCase : </span>
-        <select
-          value={type}
-          onChange={e => setType(e.target.value as AcknowledgmentCases)}
-          className="border border-solid border-black bg-white p-2 text-base"
-        >
-          {Enum.keys(AcknowledgmentCases).map(_ => (
-            <option value={_} key={_}>
-              {_}
-            </option>
-          ))}
-        </select>
-        {type === AcknowledgmentCases.ForeignCompany && (
-          <>
-            <span>Country : </span>
-            <select
-              value={demoCountry?.code}
-              onChange={e => setDemoCountry(testCountries.find(_ => _.code === e.target.value))}
-              className="border border-solid border-black bg-white p-2 text-base"
-            >
-              {testCountries.map(_ => (
-                <option value={_.code} key={_.code}>
-                  {_.name}
-                </option>
-              ))}
-            </select>
-          </>
-        )}
-      </div>
       <AcknowledgementInner createdReport={report} country={country} isWebView={false} />
     </>
   )

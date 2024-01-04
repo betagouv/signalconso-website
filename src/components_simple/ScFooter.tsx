@@ -8,7 +8,7 @@ import {usePathname} from 'next/navigation'
 import {AppLangs} from '../i18n/localization/AppLangs'
 import {appConfig} from '@/core/appConfig'
 
-export const urlServicePublicPlus = `https://www.plus.transformation.gouv.fr`
+export const urlServicePublicPlus = `https://www.plus.transformation.gouv.fr/experience/step_1?pk_campaign=DGCCRF`
 
 export function ScFooter() {
   const {m, currentLang} = useI18n()
