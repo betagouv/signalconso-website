@@ -43,35 +43,29 @@ const Node = ({
   const companyKindQuestion = instanceOfAnomaly(anomaly) ? undefined : anomaly.companyKindQuestion
   const subcategoriesTitle = anomaly.subcategoriesTitle
   const isLeaf = !anomaly.subcategories || anomaly.subcategories.length === 0
+  const isBlocking = instanceOfSubcategoryWithInfoWall(anomaly)
   const [isOpen, setIsOpen] = useState(false)
-  const {currentLang: lang} = useI18n()
   useEffect(() => {
     setIsOpen(!!openAll)
   }, [openAll])
 
   return (
     <div className="flex items-stretch mb-2 ">
-      <div className="w-[40px] shrink-0 ">
-        {anomaly.subcategories ? (
+      {isLeaf || (
+        <div className="w-[40px] shrink-0 ">
           <button
             onClick={() => setIsOpen(_ => !_)}
-            className={`bg-slate-300 min-h-[40px] w-[40px] text-slate-800 flex items-center  justify-center ${
+            className={`bg-blue-300 min-h-[40px] w-[40px] text-slate-800 flex items-center  justify-center ${
               isOpen ? 'ri-arrow-down-s-line' : 'ri-arrow-right-s-line'
             }`}
           ></button>
-        ) : (
-          <div
-            className={`bg-stone-300 min-h-[40px] h-full w-[40px] text-stone-500 flex items-center justify-center ${
-              instanceOfSubcategoryWithInfoWall(anomaly) ? 'ri-prohibited-line' : ''
-            }`}
-          ></div>
-        )}
-      </div>
+        </div>
+      )}
 
       <div className="grow ">
         <div
-          className={`group min-h-[40px] flex flex-col items-start justify-center pl-1 ${
-            anomaly.subcategories ? 'bg-slate-100' : 'bg-stone-200'
+          className={`group min-h-[40px] flex flex-col items-start justify-center ${
+            isLeaf ? 'bg-gray-100 py-1 px-4  rounded-2xl border border-solid ' : 'bg-blue-100 pl-2 '
           }`}
         >
           <div className="mb-0 flex justify-between w-full gap-2 items-center">
@@ -86,7 +80,7 @@ const Node = ({
             </div>
             <span className="shrink-0 group-hover:inline hidden">
               <ZoomLinkToTarget targetNode={anomaly} currentZoom={zoomPath} hideIfSameAsCurrentZoom>
-                zoom <i className="ri-zoom-in-line" />
+                lien direct <i className="ri-link" />
               </ZoomLinkToTarget>
             </span>
           </div>
@@ -116,12 +110,7 @@ const Node = ({
             {displayExtra && ccrfCode && <BorderedItem text={ccrfCode} icon="ri-hashtag" itemKindText="ccrfCode :" />}
           </div>
 
-          {isLeaf &&
-            (instanceOfSubcategoryWithInfoWall(anomaly) ? (
-              <NodeInfo anomaly={anomaly} />
-            ) : (
-              <NodeInputs anomaly={anomaly} {...{displayExtra}} />
-            ))}
+          {isLeaf && (isBlocking ? <NodeInfo anomaly={anomaly} /> : <NodeInputs anomaly={anomaly} {...{displayExtra}} />)}
         </div>
         {isOpen && anomaly.subcategories && (
           <>
@@ -170,7 +159,7 @@ function FileLabel({anomaly, displayExtra}: {anomaly: StandardSubcategory; displ
   if (displayExtra && anomaly.fileLabel) {
     return (
       <div className="text-sm">
-        <span className="text-stone-600">Label des pièces jointes</span> : "{anomaly.fileLabel}"
+        <span className="text-slate-600">Label des pièces jointes</span> : "{anomaly.fileLabel}"
       </div>
     )
   }
@@ -179,7 +168,7 @@ function FileLabel({anomaly, displayExtra}: {anomaly: StandardSubcategory; displ
 const NodeInfo = ({anomaly}: {anomaly: SubcategoryWithInfoWall}) => {
   const {m} = useI18n()
   return (
-    <details className="px-2 rounded-lg bg-stone-500 text-white">
+    <details className="px-2 rounded-lg bg-slate-500 text-white">
       <summary>Information bloquante</summary>
       <div className="p-2 bg-white text-black my-2 rounded-lg">
         {anomaly.blockingInfo.title && <div dangerouslySetInnerHTML={{__html: anomaly.blockingInfo.title}} />}
@@ -217,17 +206,17 @@ function InputRender({input}: {input: DetailInput}) {
       </div>
       {fnSwitch(input.type, {
         [DetailInputType.TEXT]: () => (
-          <div className="px-2 w-[200px] flex items-center justify-start text-stone-500 mx-2 bg-stone-100 text-sm border-stone-500 border-solid border mt-1">
+          <div className="px-2 w-[200px] flex items-center justify-start text-slate-500 mx-2 bg-slate-100 text-sm border-slate-500 border-solid border mt-1">
             {getPlaceholderFromInput(input) ?? ''}
           </div>
         ),
         [DetailInputType.TEXTAREA]: () => (
-          <div className="px-2 w-[200px] h-[50px] flex items-center justify-start text-stone-500 mx-2 bg-stone-100 text-sm border-stone-500 border-solid border mt-1">
+          <div className="px-2 w-[200px] h-[50px] flex items-center justify-start text-slate-500 mx-2 bg-slate-100 text-sm border-slate-500 border-solid border mt-1">
             {getPlaceholderFromInput(input) ?? ''}
           </div>
         ),
         [DetailInputType.DATE]: () => (
-          <div className="px-2 w-[200px] flex items-center justify-between text-stone-500 mx-2 bg-stone-100 text-sm border-stone-500 border-solid border mt-1">
+          <div className="px-2 w-[200px] flex items-center justify-between text-slate-500 mx-2 bg-slate-100 text-sm border-slate-500 border-solid border mt-1">
             <span>
               {input.type === DetailInputType.DATE && input.defaultValue === 'SYSDATE' ? dateToFrenchFormat(new Date()) : ''}
             </span>{' '}
@@ -236,7 +225,7 @@ function InputRender({input}: {input: DetailInput}) {
         ),
         [DetailInputType.DATE_NOT_IN_FUTURE]: () => (
           <>
-            <div className="px-2 w-[200px] flex items-center gap-2 justify-between text-stone-500 mx-2 bg-stone-100 text-sm border-stone-500 border-solid border mt-1">
+            <div className="px-2 w-[200px] flex items-center gap-2 justify-between text-slate-500 mx-2 bg-slate-100 text-sm border-slate-500 border-solid border mt-1">
               <span>
                 {input.type === DetailInputType.DATE_NOT_IN_FUTURE && input.defaultValue === 'SYSDATE'
                   ? dateToFrenchFormat(new Date())
@@ -244,11 +233,11 @@ function InputRender({input}: {input: DetailInput}) {
               </span>
               <i className="ri-calendar-line" />
             </div>
-            <div className="text-sm flex items-end text-stone-600">(date dans le passé ou celle d'aujourd'hui)</div>
+            <div className="text-sm flex items-end text-slate-600">(date dans le passé ou celle d'aujourd'hui)</div>
           </>
         ),
         [DetailInputType.TIMESLOT]: () => (
-          <div className="px-2 w-[200px] flex items-center justify-end text-stone-500 mx-2 bg-stone-100 text-sm border-stone-500 border-solid border mt-1">
+          <div className="px-2 w-[200px] flex items-center justify-end text-slate-500 mx-2 bg-slate-100 text-sm border-slate-500 border-solid border mt-1">
             <i className="ri-time-line" />
           </div>
         ),
