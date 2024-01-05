@@ -93,7 +93,7 @@ export const companyKinds = [
   'SOCIAL',
   'PRODUCT',
 ] as const
-export type CompanyKinds = (typeof companyKinds)[number]
+export type CompanyKinds = (typeof companyKinds)[number];
 export type SpecificWebsiteCompanyKinds = Extract<CompanyKinds, 'MERCHANT_WEBSITE' | 'TRANSPORTER_WEBSITE'>
 
 export const socialNetworks = ['SNAPCHAT', 'INSTAGRAM', 'FACEBOOK', 'YOUTUBE', 'TIKTOK', 'TWITTER', 'TWITCH', 'LINKEDIN'] as const
