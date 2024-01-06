@@ -234,7 +234,7 @@ export const Problem = ({anomaly, isWebView, stepNavigation}: Props) => {
                     description: m.problemContractualDisputeFormNoDesc,
                     value: 'companyImprovement',
                   },
-                  ...(tags.includes('ReponseConso')
+                  ...(buildTagsFromSubcategories(reportDraft.subcategories).includes('ReponseConso')
                     ? [
                         {
                           title: m.problemContractualDisputeFormReponseConso,
