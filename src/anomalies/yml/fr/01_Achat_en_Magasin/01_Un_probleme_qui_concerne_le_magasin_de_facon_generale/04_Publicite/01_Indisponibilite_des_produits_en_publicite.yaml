@@ -29,7 +29,7 @@ detailInputs:
   - label: >-
       Précisez si possible la publicité concernée. Vous pouvez par exemple
       récupérer le lien de la publicité sur le site <a
-      href="https&#58;//www.bonial.fr" target="_blank">bonial.fr</a>&#160;?
+      href="https://www.bonial.fr/" target="_blank">bonial.fr</a>&#160;?
     type: TEXT
     placeholder: Lien vers la publicité
 fileLabel: Photo(s) de la publicité si possible
