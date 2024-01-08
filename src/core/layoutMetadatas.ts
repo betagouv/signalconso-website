@@ -10,7 +10,7 @@ export const layoutMetadatas: Metadata = {
     images: [
       {
         url: '/icons/screenshot.png',
-        // secureUrl: '/icons/screenshot.png',
+        secureUrl: '/icons/screenshot.png',
         type: 'image/jpeg',
         width: '1602',
         height: '1598',
