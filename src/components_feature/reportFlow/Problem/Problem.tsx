@@ -79,7 +79,9 @@ export const Problem = ({anomaly, isWebView, stepNavigation}: Props) => {
   const _analytic = useAnalyticContext()
   const {m, currentLang} = useI18n()
   const {reportDraft, setReportDraft, resetFlow, sendReportEvent} = useReportFlowContext()
-  const hasReponseConsoSubcategories = reportDraft.subcategories ? buildTagsFromSubcategories(reportDraft.subcategories).includes('ReponseConso') : false
+  const hasReponseConsoSubcategories = reportDraft.subcategories
+    ? buildTagsFromSubcategories(reportDraft.subcategories).includes('ReponseConso')
+    : false
 
   // reset the draft when switching the root category
   useEffect(() => {
