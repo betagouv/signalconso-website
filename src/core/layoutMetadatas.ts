@@ -16,7 +16,6 @@ export const layoutMetadatas: Metadata = {
         height: '1598',
       },
     ],
-    // url: appConfig.websiteBaseUrl,
     type: 'website',
     description: "Signaler un problème à l'entreprise en toute transparence avec la répression des fraudes",
     siteName: 'SignalConso',
