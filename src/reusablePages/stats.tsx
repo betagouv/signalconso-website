@@ -9,6 +9,7 @@ import {iframeResizer} from 'iframe-resizer'
 import Link from 'next/link'
 import {notFound} from 'next/navigation'
 import {useEffect} from 'react'
+import Satisfaction from '../../satisfaction'
 
 export function Stats(props: PageComponentProps) {
   // We can't translate Metabase
@@ -25,6 +26,8 @@ export function Stats(props: PageComponentProps) {
             data.economie.fr
           </Link>
         </p>
+        <h2>Taux de Satisfaction des utilisateurs de SignalConso</h2>
+        <Satisfaction/>
         <h2>Les signalements</h2>
 
         <MetabaseIframe dashboardId="10790030-f28c-4726-afe7-d26d7e032094" />
