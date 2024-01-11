@@ -50,16 +50,14 @@ export function ArticleAchatInternet() {
       <p>
         Pour en savoir plus, visitez le site de la{' '}
         <Link href="https://www.economie.gouv.fr/dgccrf/Publications/Vie-pratique/Fiches-pratiques/acheter-sur-internet">
-            DGCCRF - Acheter sur Internet
+          DGCCRF - Acheter sur Internet
         </Link>
         .
       </p>
       <p>
         Vous avez rencontré un problème en tant que consommateur ? Signalez-le sur{' '}
-        <Link href="https://www.signal.conso.gouv.fr">
-            www.signal.conso.gouv.fr
-        </Link>
-        , le site de la DGCCRF dédié au règlement à l’amiable des litiges de la consommation.
+        <Link href="https://www.signal.conso.gouv.fr">www.signal.conso.gouv.fr</Link>, le site de la DGCCRF dédié au règlement à
+        l’amiable des litiges de la consommation.
       </p>
       <Image src={imgAchatInternet} alt="" />
     </div>

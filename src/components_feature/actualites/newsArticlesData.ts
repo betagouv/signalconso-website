@@ -5,7 +5,7 @@ export type NewsArticle = (typeof initialNewsArticlesData)[number]
 // This is the display order. Keep the most recents at the start of the array
 export const initialNewsArticlesData = [
   {
-    date: '2024-01-07',
+    date: '2024-01-17',
     lang: 'fr',
     slug: 'acheter-sur-internet-en-toute-securite',
     title: `Acheter sur internet en toute sécurité : conseils SignalConso`,
