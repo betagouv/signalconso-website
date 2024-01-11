@@ -59,7 +59,7 @@ export function ArticleAchatInternet() {
         <Link href="https://www.signal.conso.gouv.fr">www.signal.conso.gouv.fr</Link>, le site de la DGCCRF dédié au règlement à
         l'amiable des litiges de la consommation.
       </p>
-      <Image className="w-auto h-auto" sizes={'100vw'} src={imgAchatInternet} alt="" />
+      <Image className="w-auto h-auto" sizes={'150vw'} src={imgAchatInternet} alt="" />
     </div>
   )
 }
