@@ -8,6 +8,7 @@ import {ArticleSignalConsoTraduit} from './ArticleSignalConsoTraduit'
 import {ArticleSignalConsoTranslated} from './ArticleSignalConsoTranslated'
 import {ArticleCodeBarres} from './ArticleCodeBarres'
 import {ArticleAmeliorationAccessibilite} from './ArticleAmeliorationAccessibilite'
+import {ArticleAchatInternet} from './ArticleAchatInternet'
 
 // We can't put import these JSX directly into the "newsArticlesData"
 // it causes too much import problems in the sitemap generation script
@@ -27,6 +28,8 @@ export function getArticleContent(slug: NewsArticle['slug']) {
       return ArticleSignalConsoTranslated
     case 'signalconso-une-accessibilite-renforcee-pour-tous-les-consommateurs':
       return ArticleAccessibilite
+    case 'acheter-sur-internet-en-toute-securite':
+      return ArticleAchatInternet
     case 'site-dgccrf-votre-avis-nous-interesse':
       return ArticleQuestionnaireSiteDgccrf
     case 'signalconso-desormais-disponible-en-application-mobile':

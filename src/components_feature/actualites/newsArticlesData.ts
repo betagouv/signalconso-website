@@ -5,11 +5,18 @@ export type NewsArticle = (typeof initialNewsArticlesData)[number]
 // This is the display order. Keep the most recents at the start of the array
 export const initialNewsArticlesData = [
   {
+    date: '2024-01-17',
+    lang: 'fr',
+    slug: 'acheter-sur-internet-en-toute-securite',
+    title: `Acheter sur internet en toute sécurité : conseils SignalConso`,
+    excerpt: `L'accessibilité numérique consiste à rendre les contenus et services numériques compréhensibles et utilisables par les personnes en situation de handicap.`,
+  },
+  {
     date: '2024-01-03',
     lang: 'fr',
     slug: 'amelioration-de-laccessibilite-de-la-plateforme-signalconso',
     title: `Amélioration de l'accessibilité de la plateforme SignalConso !`,
-    excerpt: `L'accessibilité numérique consiste à rendre les contenus et services numériques compréhensibles et utilisables par les personnes en situation de handicap.`,
+    excerpt: `Lorsque vous commandez en ligne, vous effectuez un achat à distance encadré par le Code de la consommation (art. L221-1) qui impose des obligations au vendeur en ligne et donne des droits au consommateur.`,
   },
   {
     date: '2023-12-20',
