@@ -3,7 +3,6 @@ desc: "Exemple\_: bout de verre, morceau de métal, dent"
 companyKind: PRODUCT
 reponseconsoCode: '323'
 tags:
-  - ReponseConso
   - ProduitDangereux
 subcategoriesTitle: Quel est le risque&#160;?
 blockingInfo:
