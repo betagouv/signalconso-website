@@ -9,6 +9,7 @@ import buildMenuLink from '../utils/menuLinks'
 import {urlServicePublicPlus} from './ScFooter'
 import {SwitchLang} from './SwitchLang'
 import {useEffect} from 'react'
+import {AppLangs} from '@/i18n/localization/AppLangs'
 
 function buildSubmenu(text: string, menuLinks: ReturnType<typeof buildMenuLink>[]) {
   return {
@@ -63,7 +64,7 @@ export function ScHeader() {
             },
             text: m.header.connexionLinkTitle,
           },
-          appConfig.translationFeatureFlagEnabled ? <SwitchLang /> : <></>,
+          <SwitchLang />,
         ]}
         // serviceTitle="SignalConso"
         // serviceTagline="un service public pour les consommateurs"
@@ -80,7 +81,9 @@ export function ScHeader() {
           },
           buildSubmenu(m.header.voirAussiTitle, [
             buildMenuLink(currentLang, pathName, pagesDefs.quiSommesNous.url, m.header.quiSommesNousLinkTitle),
-            buildMenuLink(currentLang, pathName, pagesDefs.stats.url, m.header.statsLinkTitle),
+            ...(pagesDefs.stats.hasAlternate || currentLang === AppLangs.fr
+              ? [buildMenuLink(currentLang, pathName, pagesDefs.stats.url, m.header.statsLinkTitle)]
+              : []),
             buildMenuLink(currentLang, pathName, pagesDefs.contact.url, m.header.contactLinkTitle),
             {
               isActive: false,

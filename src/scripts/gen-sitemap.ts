@@ -20,9 +20,8 @@ const sitemapItems: SitemapItem[] = [
     .filter(_ => !_.noIndex)
     .map(_ => ({url: _.url, hasAlternate: _.hasAlternate, mainLang: AppLangs.fr, priority: 1})),
   ...landing(AppLangs.fr),
-  ...(appConfig.translationFeatureFlagEnabled ? [...landing(AppLangs.en)] : []),
+  ...landing(AppLangs.en),
   ...getNewsArticleData()
-    .filter(_ => appConfig.translationFeatureFlagEnabled || _.lang == AppLangs.fr)
     .map(_ => {
       return {
         mainLang: _.lang as AppLangs,
@@ -59,7 +58,7 @@ function createSitemapXml(items: SitemapItem[]): string {
       return `  <url>
     <loc>${mainUrl}</loc>         
     ${alternateMain}   
-    ${appConfig.translationFeatureFlagEnabled ? alternateEn : ''}   
+    ${alternateEn}   
     ${priority}
   </url>`
     })
