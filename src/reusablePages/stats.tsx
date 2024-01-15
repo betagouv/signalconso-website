@@ -12,7 +12,6 @@ import {useEffect} from 'react'
 import satisfactionData from '../generate_stat_data/satisfaction.json'
 
 export function Stats(props: PageComponentProps) {
-  const satisfactionTitle = satisfactionData.results[0].titre_original_de_l_indicateur
   const tauxSatisfaction = satisfactionData.results[0].valeur
   // We can't translate Metabase
   throwNotFoundIfNotFr(props)
@@ -28,11 +27,16 @@ export function Stats(props: PageComponentProps) {
             data.economie.fr
           </Link>
         </p>
-        <h2>Taux de Satisfaction des utilisateurs de SignalConso</h2>
-        <p>
-          Le Taux de satisfaction des usagers vis-à-vis de la plateforme numérique SignalConso est de{' '}
-          <span className="text-blue-600 font-semibold">{tauxSatisfaction} %</span>.
-        </p>
+        {tauxSatisfaction && (
+          <>
+            <h2>Taux de Satisfaction des utilisateurs de SignalConso</h2>
+            <p>
+              Le Taux de satisfaction des usagers vis-à-vis de la plateforme numérique SignalConso est de{' '}
+              <span className="text-blue-600 font-semibold">{tauxSatisfaction} %</span>.
+            </p>
+          </>
+        )}
+
         <h2>Les signalements</h2>
 
         <MetabaseIframe dashboardId="10790030-f28c-4726-afe7-d26d7e032094" />

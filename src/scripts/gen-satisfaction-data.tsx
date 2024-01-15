@@ -50,4 +50,10 @@ async function updateJsonFile(): Promise<void> {
 }
 
 // Appeler la fonction pour mettre à jour le fichier JSON
-updateJsonFile()
+;(async () => {
+  try {
+    await updateJsonFile()
+  } catch (error) {
+    console.error('Erreur lors de la mise à jour des stats de satisfaction utilisateurs ', error)
+  }
+})()
