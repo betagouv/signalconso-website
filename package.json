@@ -6,7 +6,7 @@
     "node": "20.9.0"
   },
   "scripts": {
-    "beforebuild": "echo 'beforebuild starting' && yarn generate-json && yarn generate-sitemap && only-include-used-icons && echo 'beforebuild done'",
+    "beforebuild": "echo 'beforebuild starting' && yarn gen-satisfaction-data && yarn generate-json && yarn generate-sitemap  && only-include-used-icons && echo 'beforebuild done' ",
     "dev": "yarn beforebuild && next dev -p 3001",
     "devdemo": "yarn beforebuild && NEXT_PUBLIC_API_BASE_URL=https://demo-signalement-api.cleverapps.io next dev -p 3001",
     "build": "yarn beforebuild && tsc --declaration  && next build",
@@ -16,6 +16,7 @@
     "test-no-html-output": "DEBUG_PRINT_LIMIT=1 jest",
     "test-dev": "jest --config=jest.config.ts --watch",
     "generate-json": "ts-node -O '{\"module\":\"commonjs\", \"jsx\":\"react-jsx\"}' src/scripts/gen-anomalies-json.ts",
+    "gen-satisfaction-data": "ts-node -O '{\"module\":\"commonjs\", \"jsx\":\"react-jsx\"}' src/scripts/gen-satisfaction-data.tsx",
     "generate-minimized-anomalies": "ts-node -O '{\"module\":\"commonjs\", \"jsx\":\"react-jsx\"}' src/scripts/gen-minimized-anomalies.ts",
     "generate-landings": "ts-node -O '{\"module\":\"commonjs\", \"jsx\":\"react-jsx\"}' src/scripts/generateLandingDataFromAirtable.ts && prettier --write src/landings",
     "generate-sitemap": "ts-node -O '{\"module\":\"commonjs\", \"jsx\":\"react-jsx\"}' src/scripts/gen-sitemap.ts",
