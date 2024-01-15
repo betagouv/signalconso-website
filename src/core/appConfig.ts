@@ -43,7 +43,6 @@ export const appConfig = {
   infoBanner: process.env.NEXT_PUBLIC_INFO_BANNER,
   infoBannerSeverity: readSeverity(process.env.NEXT_PUBLIC_INFO_BANNER_SEVERITY) ?? 'warning',
   dummyEmailDomain: ['@yopmail.com'],
-  translationFeatureFlagEnabled: readBool(process.env.NEXT_PUBLIC_TRANSLATION_FEATURE_FLAG_ENABLED),
   // Used only to regenerate the landing page from Airtable
   // thus no need to configure anywhere but in dev
   airtableApiToken: process.env.NEXT_PUBLIC_AIRTABLE_API_TOKEN ?? null,

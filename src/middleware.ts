@@ -5,7 +5,7 @@ import {AppLangs, getSupportedLang} from './i18n/localization/AppLangs'
 import {match} from '@formatjs/intl-localematcher'
 import {appConfig} from './core/appConfig'
 
-let supportedLang = appConfig.translationFeatureFlagEnabled ? [AppLangs.en, AppLangs.fr] : [AppLangs.fr]
+let supportedLang = [AppLangs.en, AppLangs.fr]
 
 export function middleware(request: any) {
   // Check if there is any supported locale in the pathname
@@ -20,10 +20,7 @@ export function middleware(request: any) {
     //Should always redirect to French version when /webview with no lang to ensure backward compatibility to mobile app
     const isWebviewAndShouldRedirectToFr = isWebview(pathname)
 
-    const computedLang =
-      isWebviewAndShouldRedirectToFr || !appConfig.translationFeatureFlagEnabled
-        ? AppLangs.fr
-        : computeLang(currentCookieLang, request.headers)
+    const computedLang = isWebviewAndShouldRedirectToFr ? AppLangs.fr : computeLang(currentCookieLang, request.headers)
 
     const redirectUrl = `/${computedLang}/${pathname}`
     return buildRedirectToNewLangResponse(request, redirectUrl, computedLang)
