@@ -12,7 +12,7 @@ import {useEffect} from 'react'
 import satisfactionData from '../generate_stat_data/satisfaction.json'
 
 export function Stats(props: PageComponentProps) {
-  const tauxSatisfaction = satisfactionData.results[0].valeur
+  const tauxSatisfaction = satisfactionData?.results?.[0]?.valeur
   // We can't translate Metabase
   throwNotFoundIfNotFr(props)
   return (
@@ -29,9 +29,9 @@ export function Stats(props: PageComponentProps) {
         </p>
         {tauxSatisfaction && (
           <>
-            <h2>Taux de Satisfaction des utilisateurs de SignalConso</h2>
+            <h2>Taux de satisfaction des utilisateurs de SignalConso</h2>
             <p>
-              Le Taux de satisfaction des usagers vis-à-vis de la plateforme numérique SignalConso est de{' '}
+              Le taux de satisfaction des usagers vis-à-vis de la plateforme numérique SignalConso est de{' '}
               <span className="text-blue-600 font-semibold">{tauxSatisfaction} %</span>.
             </p>
           </>
