@@ -127,11 +127,11 @@ export const Accessibilite = (props: PageComponentProps) => {
           </li>
           <li>
             {m.accessibilite.postalAddress}:
-            <br/>
+            <br />
             Défenseur des droits
-            <br/>
+            <br />
             Libre réponse
-            <br/>
+            <br />
             71120 75342 Paris CEDEX 07
           </li>
         </ul>
