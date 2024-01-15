@@ -285,6 +285,7 @@ export const en = {
       testResultsLi1:
         'The overall compliance rate is 98.4%. (Calculated by dividing the number of conforming criteria by the number of applicable criteria.)',
       testResultsLi2: 'The average compliance rate is 99.8%. (Calculated by averaging the compliance rates of each page.)',
+      findResultsText: `The accessibility audit report is available <a href="https://rebeca-documentation.finances.gouv.fr/exl-php/resultat/rebeca_portail_recherche_avancee_internet?CTX=NOFACETTE&WHERE_IS_DOC_REF_LIT=DOC00447684" >here</a>.`,
       nonAccessibleContentTitle: 'Non-Accessible Content',
       nonConformityTitle: 'Non-Conformity',
       nonConformityText1:

@@ -46,6 +46,7 @@ export const Accessibilite = (props: PageComponentProps) => {
           <li>{m.accessibilite.testResultsLi1}</li>
           <li>{m.accessibilite.testResultsLi2}</li>
         </ul>
+        <p dangerouslySetInnerHTML={{__html: m.accessibilite.findResultsText}}></p>
         <h3 className="fr-h3">{m.accessibilite.nonAccessibleContentTitle}</h3>
         <h4 className="fr-h6">{m.accessibilite.nonConformityTitle}</h4>
         <p>{m.accessibilite.nonConformityText1}</p>
@@ -126,11 +127,11 @@ export const Accessibilite = (props: PageComponentProps) => {
           </li>
           <li>
             {m.accessibilite.postalAddress}:
-            <br />
+            <br/>
             Défenseur des droits
-            <br />
+            <br/>
             Libre réponse
-            <br />
+            <br/>
             71120 75342 Paris CEDEX 07
           </li>
         </ul>
