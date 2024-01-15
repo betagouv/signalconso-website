@@ -39,7 +39,7 @@ export function ScHeader() {
           // On ne traduit pas République Française
           <>
             République
-            <br />
+            <br/>
             Française
           </>
         }
@@ -64,7 +64,7 @@ export function ScHeader() {
             },
             text: m.header.connexionLinkTitle,
           },
-          <SwitchLang />,
+          <SwitchLang key={"switchLang"}/>,
         ]}
         // serviceTitle="SignalConso"
         // serviceTagline="un service public pour les consommateurs"
@@ -97,7 +97,7 @@ export function ScHeader() {
           ]),
         ]}
       />
-      <EnvMarker />
+      <EnvMarker/>
     </>
   )
 }
