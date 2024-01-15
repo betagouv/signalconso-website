@@ -289,6 +289,7 @@ export const fr = {
         'Le taux de conformité global est de 98,4%. (Obtenu en divisant le nombre de critères conformes par le nombre de critères applicables.)',
       testResultsLi2:
         'Le taux de conformité moyen est de 99,8%. (Obtenu en faisant la moyenne des taux de conformité de chaque page.)',
+      findResultsText: `Le rapport d'audit d'accessibilité est disponible <a href="https://rebeca-documentation.finances.gouv.fr/exl-php/resultat/rebeca_portail_recherche_avancee_internet?CTX=NOFACETTE&WHERE_IS_DOC_REF_LIT=DOC00447684" >ici</a>.`,
       nonAccessibleContentTitle: 'Contenus non accessibles',
       nonConformityTitle: 'Non conformité',
       nonConformityText1:
