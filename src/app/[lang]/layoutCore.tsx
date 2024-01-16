@@ -95,10 +95,13 @@ const Base = ({children}: {children: React.ReactNode}) => {
                 },
               ]}
             />
-            <ScHeader />
-            {children}
-            <RgpdBanner />
-            <ScFooter />
+            {/* <ScHeader /> */}
+            <div className="bg-red-100 fixed top-0 w-full h-24 shadow-lg">Header</div>
+            <div className="mt-24">content{children}</div>
+            <div className="bg-green-100 fixed bottom-0 w-full h-24">Footer</div>
+
+            {/* <RgpdBanner /> */}
+            {/* <ScFooter /> */}
           </>
         )}
       </div>

@@ -39,24 +39,9 @@ export const Homepage = () => {
     <>
       <main role="main" id="main-content">
         <div>
-          <div className="fr-container">
-            <InfoBanner />
-            <BrowserCompatAlert />
-            <MobileAppPromoBanner />
-          </div>
           <div className="fr-container fr-pt-8w fr-pb-6w ">
             <h1 dangerouslySetInnerHTML={{__html: m.homepage.signalconsoCatchWord}} />
-            <IllustrationStepper
-              steps={[
-                {title: m.homepage.step1, image: imgConsumer},
-                {title: m.homepage.step2, image: imgReport},
-                {
-                  title: m.homepage.step3,
-                  image: imgCompany,
-                },
-                {title: m.homepage.step4, image: imgDgccrf},
-              ]}
-            />
+
             <div className="flex items-center justify-center fr-pt-4w">
               <Button
                 onClick={() => {
