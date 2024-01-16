@@ -96,9 +96,16 @@ const Base = ({children}: {children: React.ReactNode}) => {
               ]}
             />
             {/* <ScHeader /> */}
-            <div className="bg-red-100 fixed top-0 w-full h-24 shadow-lg">Header</div>
-            <div className="mt-24">content{children}</div>
-            <div className="bg-green-100 fixed bottom-0 w-full h-24">Footer</div>
+            <div className="bg-red-100 fixed top-0 w-full h-24 shadow-lg z-50">Header</div>
+            <div className="mt-24 mb-24 overflow-auto">content{children}</div>
+            <div className="bg-white fixed bottom-0 w-full h-24 z-50">
+              <ul className=" flex h-full list-none m-0 p-0">
+                <FooterElement icon="ri-home-4-line" label="Accueil" active />
+                <FooterElement icon="ri-megaphone-line" label="Actualites" />
+                <FooterElement icon="ri-cake-3-line" label="Rappels de produits" />
+                <FooterElement icon="ri-government-line" label="La DGCCRF" />
+              </ul>
+            </div>
 
             {/* <RgpdBanner /> */}
             {/* <ScFooter /> */}
@@ -106,6 +113,19 @@ const Base = ({children}: {children: React.ReactNode}) => {
         )}
       </div>
     </>
+  )
+}
+
+function FooterElement({label, icon, active}: {label: string; icon: string; active?: boolean}) {
+  return (
+    <li
+      className={`flex-1 cursor-pointer flex flex-col items-center border-t-[6px] border-solid  border-0 ${
+        active ? 'border-scbluefrance' : 'border-white'
+      }`}
+    >
+      <i className={`${icon} fr-icon--lg mt-5`} />
+      <span className="text-sm text-center" dangerouslySetInnerHTML={{__html: label}} />
+    </li>
   )
 }
 
