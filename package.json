@@ -6,7 +6,7 @@
     "node": "20.9.0"
   },
   "scripts": {
-    "beforebuild": "echo 'beforebuild starting' && yarn gen-satisfaction-data && yarn generate-json && yarn generate-sitemap  && only-include-used-icons && echo 'beforebuild done' ",
+    "beforebuild": "echo 'beforebuild starting' && yarn generate-json && yarn generate-sitemap  && only-include-used-icons && echo 'beforebuild done' ",
     "dev": "yarn beforebuild && next dev -p 3001",
     "devdemo": "yarn beforebuild && NEXT_PUBLIC_API_BASE_URL=https://demo-signalement-api.cleverapps.io next dev -p 3001",
     "build": "yarn beforebuild && tsc --declaration  && next build",
