@@ -12,7 +12,7 @@ import {useEffect} from 'react'
 import satisfactionData from '../generate_stat_data/satisfaction.json'
 
 export function Stats(props: PageComponentProps) {
-  const tauxSatisfaction = satisfactionData?.results?.[0]?.valeur
+  const tauxSatisfaction = satisfactionData.valeur
   // We can't translate Metabase
   throwNotFoundIfNotFr(props)
   return (

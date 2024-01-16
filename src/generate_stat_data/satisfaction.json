@@ -1,24 +1,4 @@
 {
-  "total_count": 5,
-  "results": [
-    {
-      "code_sp_du_resultat": "IND-27_2023_94601",
-      "intitule_du_reseau": "DGCCRF",
-      "typologie": "SignalConso",
-      "code_sp_structure": "Do0Z4ijc9M",
-      "intitule_de_la_structure": "SignalConso",
-      "code_sp_de_l_indicateur": "IND-27",
-      "titre_original_de_l_indicateur": "Taux de satisfaction des usagers vis-à-vis de la plateforme numérique SignalConso",
-      "date_de_debut_de_l_evaluation": "2023-09-30",
-      "duree_de_l_evaluation": 13,
-      "frequence": "trimestrielle",
-      "valeur": 77,
-      "valeur_attendue": null,
-      "satisfait": null,
-      "insatisfait": null,
-      "ne_se_prononce_pas": null,
-      "date_de_mise_a_jour": "2023-10-30",
-      "actif": "Oui"
-    }
-  ]
+  "valeur": 77,
+  "date_de_mise_a_jour": "2023-10-30"
 }
