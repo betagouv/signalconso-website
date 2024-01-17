@@ -9,8 +9,10 @@ import {iframeResizer} from 'iframe-resizer'
 import Link from 'next/link'
 import {notFound} from 'next/navigation'
 import {useEffect} from 'react'
+import satisfactionData from '../generate_stat_data/satisfaction.json'
 
 export function Stats(props: PageComponentProps) {
+  const tauxSatisfaction = satisfactionData.valeur
   // We can't translate Metabase
   throwNotFoundIfNotFr(props)
   return (
@@ -25,9 +27,26 @@ export function Stats(props: PageComponentProps) {
             data.economie.fr
           </Link>
         </p>
-        <h2>Les signalements</h2>
 
-        <MetabaseIframe dashboardId="10790030-f28c-4726-afe7-d26d7e032094" />
+        <h2>Les signalements</h2>
+        <div className="flex flex-col md:flex-row">
+          <MetabaseIframe dashboardId="10790030-f28c-4726-afe7-d26d7e032094" />
+
+          {tauxSatisfaction && (
+            <div className=" w-full md:w-1/3 flex flex-col items-center justify-center ">
+              <p className="font-bold text-[56px] text-[#4B5874] ">{tauxSatisfaction} %</p>
+              <p className="text-[18px] text-center w-full font-bold text-[#4B5874] mb-0 ">
+                des utilisateurs de SignalConso sont satisfaits.
+              </p>
+              <p className="text-[12px] text-center w-full  text-[#4B5874] ">
+                d'après la dernière étude réalisée par{' '}
+                <Link className="" target="_blank" rel="noreferrer" href="https://www.plus.transformation.gouv.fr/">
+                  Services Publics +
+                </Link>
+              </p>
+            </div>
+          )}
+        </div>
         <h2>Les promesses d'action</h2>
         <FriendlyHelpText>
           <p className="mb-2">
