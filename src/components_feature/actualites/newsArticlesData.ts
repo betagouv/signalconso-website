@@ -16,7 +16,7 @@ export const initialNewsArticlesData = [
     lang: 'fr',
     slug: 'amelioration-de-laccessibilite-de-la-plateforme-signalconso',
     title: `Amélioration de l'accessibilité de la plateforme SignalConso !`,
-    excerpt: `Lorsque vous commandez en ligne, vous effectuez un achat à distance encadré par le Code de la consommation (art. L221-1) qui impose des obligations au vendeur en ligne et donne des droits au consommateur.`,
+    excerpt: `L'accessibilité numérique consiste à rendre les contenus et services numériques compréhensibles et utilisables par les personnes en situation de handicap.`,
   },
   {
     date: '2023-12-20',
