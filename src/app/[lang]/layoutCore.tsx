@@ -22,6 +22,12 @@ import {useI18n} from '../../i18n/I18n'
 import {Eularian} from '../../plugins/eularian'
 import {Matomo} from '../../plugins/matomo'
 import {Sentry} from '../../plugins/sentry'
+import Image from 'next/image'
+import signalConsoLogo from '@/img/logo-signalconso.png'
+import blocMarianne from '@/img/Bloc_Marianne.svg'
+import MainNavigation from '@codegouvfr/react-dsfr/MainNavigation'
+import Button from '@codegouvfr/react-dsfr/Button'
+import {bigReportButtonProps} from '@/components_simple/buttons/buttonsUtils'
 
 monkeyPatchDomForGoogleTranslate()
 
@@ -96,14 +102,29 @@ const Base = ({children}: {children: React.ReactNode}) => {
               ]}
             />
             {/* <ScHeader /> */}
-            <div className="bg-red-100 fixed top-0 w-full h-24 shadow-lg z-50">Header</div>
-            <div className="mt-24 mb-24 overflow-auto">content{children}</div>
-            <div className="bg-white fixed bottom-0 w-full h-24 z-50">
-              <ul className=" flex h-full list-none m-0 p-0">
+            <div className="bg-white fixed top-0 w-full h-[70px] shadow-lg z-50 flex items-center justify-between pl-4 pr-4">
+              {/* <div className="flex overflow-hidden  h-6 items-center justify-center">
+                  <Image src={blocMarianne} alt="Logo République Française" className="h-full w-auto" />
+                </div> */}
+              <Image src={signalConsoLogo} alt="Logo SignalConso" className="h-8 w-auto" />
+
+              <div className="flex gap-4 items-center justify-center">
+                <div className=" border border-solid border-gray-300 px-2 py-1 font-bold text-scbluefrance">🇫🇷 FR</div>
+                <i className="ri-menu-line fr-icon--lg text-black" />
+              </div>
+            </div>
+            <div className="mt-[70px] mb-[90px] overflow-auto">{children}</div>
+            <div className="fixed z-50 bottom-[100px] right-2 bg-red-200">
+              <Button size="large" iconId="ri-alarm-warning-fill" className="rounded-full !py-4">
+                Je fais un signalement
+              </Button>
+            </div>
+            <div className="bg-white fixed bottom-0 w-full h-[90px] z-50">
+              <ul className=" flex h-full list-none m-0 p-0 gap-2 px-2">
                 <FooterElement icon="ri-home-4-line" label="Accueil" active />
                 <FooterElement icon="ri-megaphone-line" label="Actualites" />
-                <FooterElement icon="ri-cake-3-line" label="Rappels de produits" />
-                <FooterElement icon="ri-government-line" label="La DGCCRF" />
+                <FooterElement icon="ri-cake-3-line" label="Rappels produits" />
+                <FooterElement icon="ri-government-line" label="La DGCCRF" active />
               </ul>
             </div>
 
@@ -119,12 +140,12 @@ const Base = ({children}: {children: React.ReactNode}) => {
 function FooterElement({label, icon, active}: {label: string; icon: string; active?: boolean}) {
   return (
     <li
-      className={`flex-1 cursor-pointer flex flex-col items-center border-t-[6px] border-solid  border-0 ${
+      className={`flex-1 cursor-pointer flex flex-col items-center border-t-[4px] border-solid  border-0 ${
         active ? 'border-scbluefrance' : 'border-white'
       }`}
     >
-      <i className={`${icon} fr-icon--lg mt-5`} />
-      <span className="text-sm text-center" dangerouslySetInnerHTML={{__html: label}} />
+      <i className={`${icon} fr-icon--lg mt-2`} />
+      <span className={`text-sm text-center`} dangerouslySetInnerHTML={{__html: label}} />
     </li>
   )
 }
