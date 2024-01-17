@@ -18,11 +18,9 @@ const SearchAnomalies: React.FC<SearchBarProps> = ({anomalies}) => {
       {i18n.currentLang === AppLangs.en && <TranslatedWebsiteAlert />}
 
       <div className="fr-container--fluid">
-        <div className="fr-grid-row fr-grid-row--gutters">
+        <div className="flex flex-col gap-6">
           {anomalies.map(a => (
-            <div key={a.id} className="fr-col-12 fr-col-sm-6 fr-col-md-4 fr-col-xl-3">
-              <AnomalyTile anomaly={a} />
-            </div>
+            <AnomalyTile anomaly={a} key={a.id} />
           ))}
         </div>
       </div>

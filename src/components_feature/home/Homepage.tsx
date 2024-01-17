@@ -21,6 +21,7 @@ import imgDgccrf from '@/img/illustrations/dgccrf.png'
 import {useReportFlowContext} from '../../components_feature/reportFlow/ReportFlowContext'
 import SearchAnomalies from '../../components_simple/SearchAnomalies'
 import {BrowserCompatAlert} from '../../components_simple/bigBanners/BrowserAlertCompat'
+import {useSearchParams} from 'next/navigation'
 
 const ReportStartedAlert = dynamic(() => import('@/components_feature/ReportStartedAlert'), {ssr: false})
 
@@ -30,38 +31,46 @@ export const Homepage = () => {
     smoothscroll.polyfill()
   }, [])
 
+  const searchParams = useSearchParams()
   const anomalies = allVisibleAnomalies(currentLang)
   const _report = useReportFlowContext()
   const hasStoredReport = useMemo(() => !!_report.reportDraft.anomaly, [_report.reportDraft])
   const dsfrTheme = useColors()
   const isWebView = false
+
+  const page = searchParams.get('page') ?? 'home'
+
   return (
     <>
       <main role="main" id="main-content">
-        <div>
-          <div className="fr-container fr-pt-8w fr-pb-6w ">
-            <h1 dangerouslySetInnerHTML={{__html: m.homepage.signalconsoCatchWord}} />
+        {page === 'home' && (
+          <div>
+            <div className="fr-container fr-pt-8w fr-pb-6w ">
+              <h1 dangerouslySetInnerHTML={{__html: m.homepage.signalconsoCatchWord}} />
 
-            <div className="flex items-center justify-center fr-pt-4w">
-              <Button
-                onClick={() => {
-                  document
-                    .querySelector(`#${HP_START_REPORT_ANCHOR}`)
-                    ?.scrollIntoView({behavior: 'smooth', block: 'start', inline: 'nearest'})
-                }}
-                {...bigReportButtonProps}
-              >
-                {m.buttonReportProblem}
-              </Button>
+              <div className="flex items-center justify-center fr-pt-4w">
+                <Button
+                  onClick={() => {
+                    document
+                      .querySelector(`#${HP_START_REPORT_ANCHOR}`)
+                      ?.scrollIntoView({behavior: 'smooth', block: 'start', inline: 'nearest'})
+                  }}
+                  {...bigReportButtonProps}
+                >
+                  {m.buttonReportProblem}
+                </Button>
+              </div>
+              {currentLang === AppLangs.en && <ForeignVisitorsQaPromoBanner />}
             </div>
-            {currentLang === AppLangs.en && <ForeignVisitorsQaPromoBanner />}
           </div>
-        </div>
-        <div id={HP_START_REPORT_ANCHOR} style={{background: dsfrTheme.decisions.background.actionLow.blueFrance.default}}>
-          <div className="fr-container fr-pt-8w fr-pb-8w">
-            <SearchAnomalies anomalies={anomalies} />
+        )}
+        {page === 'signal' && (
+          <div id={HP_START_REPORT_ANCHOR} style={{background: dsfrTheme.decisions.background.actionLow.blueFrance.default}}>
+            <div className="fr-container fr-pt-8w fr-pb-8w">
+              <SearchAnomalies anomalies={anomalies} />
+            </div>
           </div>
-        </div>
+        )}
       </main>
       {hasStoredReport ? <ReportStartedAlert /> : <></>}
     </>

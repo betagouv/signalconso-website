@@ -125,3 +125,7 @@ export type ChildrenProps = {
 export type MaybeChildrenProps = {
   children?: ReactNode
 }
+
+export function capitalizeFirstLetter(str: string) {
+  return str.charAt(0).toUpperCase() + str.slice(1)
+}
