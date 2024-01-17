@@ -20,6 +20,7 @@
 /src/anomalies/yml/*
 /src/anomalies/json/anomalies.json
 /src/anomalies/json/minimized-anomalies.json
+/src/generate_stat_data/satisfaction.json
 
 npm-debug.log*
 yarn-debug.log*

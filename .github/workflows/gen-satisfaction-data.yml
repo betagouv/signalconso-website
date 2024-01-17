@@ -1,0 +1,23 @@
+on:
+  workflow_dispatch: # can be triggered manually on github
+  schedule:
+    - cron: '0 4 * * 2,5' # At 04:00 on Tuesday and Friday.
+jobs:
+  main-job:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.MANU_GITHUB_TOKEN }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'yarn'
+          cache-dependency-path: yarn.lock
+      - run: node --version
+      - run: yarn --version
+      - run: yarn install --immutable
+      - run: yarn gen-satisfaction-data
+      - uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: Auto commit with latest satisfaction data
