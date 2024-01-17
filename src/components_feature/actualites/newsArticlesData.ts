@@ -10,7 +10,6 @@ export const initialNewsArticlesData = [
     slug: 'acheter-sur-internet-en-toute-securite',
     title: `Acheter sur internet en toute sécurité : conseils SignalConso`,
     excerpt: `Lorsque vous commandez en ligne, vous effectuez un achat à distance encadré par le Code de la consommation (art. L221-1) qui impose des obligations au vendeur en ligne et donne des droits au consommateur.`,
-
   },
   {
     date: '2024-01-03',
