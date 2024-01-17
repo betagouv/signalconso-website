@@ -29,14 +29,17 @@ export function Stats(props: PageComponentProps) {
         </p>
 
         <h2>Les signalements</h2>
-        <div className="flex">
+        <div className="flex flex-col md:flex-row">
           <MetabaseIframe dashboardId="10790030-f28c-4726-afe7-d26d7e032094" />
 
           {tauxSatisfaction && (
-            <div className="w-1/3 flex flex-col items-center justify-center border border-black rounded-[10%] p-4">
-              <p className="font-bold text-[56px] text-[#4B5874]">{tauxSatisfaction} %</p>
-              <p className="text-[17px] text-center w-full font-bold text-[#4B5874] ">
-                est le taux de satisfaction des utilisateurs de SignalConso d'après la dernière étude réalisée par{' '}
+            <div className=" w-full md:w-1/3 flex flex-col items-center justify-center ">
+              <p className="font-bold text-[56px] text-[#4B5874] ">{tauxSatisfaction} %</p>
+              <p className="text-[18px] text-center w-full font-bold text-[#4B5874] mb-0 ">
+                des utilisateurs de SignalConso sont satisfaits.
+              </p>
+              <p className="text-[12px] text-center w-full  text-[#4B5874] ">
+                d'après la dernière étude réalisée par{' '}
                 <Link className="" target="_blank" rel="noreferrer" href="https://www.plus.transformation.gouv.fr/">
                   Services Publics +
                 </Link>
