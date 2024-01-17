@@ -43,11 +43,11 @@ function pageExternal(url: string): PageDefExternal {
 export const internalPageDefs = {
   index: page('/'),
   arborescence: page(`/arborescence`, {noIndex: true}),
-  accessibilite: page(`/accessibilite`),
   planDuSite: page(`/plan-du-site`),
   actualites: page(`/actualites`),
   playground: page(`/playground`, {noIndex: true}),
   // all these are available in /webview/
+  accessibilite: page(`/accessibilite`, {noIndex: true}),
   commentCaMarche: page(`/comment-ca-marche`),
   conditionsGeneralesUtilisation: page(`/conditions-generales-utilisation`, {noIndex: true}),
   contact: page(`/contact`, {noIndex: true}),

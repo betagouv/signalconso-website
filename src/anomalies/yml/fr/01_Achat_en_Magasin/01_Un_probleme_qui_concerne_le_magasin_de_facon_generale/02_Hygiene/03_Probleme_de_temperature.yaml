@@ -2,9 +2,6 @@ title: Problème de température
 desc: 'Exemple : rupture de la chaîne du froid'
 ccrfCode:
   - '322'
-reponseconsoCode: '322'
-tags:
-  - ReponseConso
 detailInputs:
   - label: Quel est le problème&#160;?
     type: RADIO
