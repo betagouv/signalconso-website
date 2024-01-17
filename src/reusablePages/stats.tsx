@@ -27,19 +27,23 @@ export function Stats(props: PageComponentProps) {
             data.economie.fr
           </Link>
         </p>
-        {tauxSatisfaction && (
-          <>
-            <h2>Taux de satisfaction des utilisateurs de SignalConso</h2>
-            <p>
-              Le taux de satisfaction des usagers vis-à-vis de la plateforme numérique SignalConso est de{' '}
-              <span className="text-blue-600 font-semibold">{tauxSatisfaction} %</span>.
-            </p>
-          </>
-        )}
 
         <h2>Les signalements</h2>
+        <div className="flex">
+          <MetabaseIframe dashboardId="10790030-f28c-4726-afe7-d26d7e032094" />
 
-        <MetabaseIframe dashboardId="10790030-f28c-4726-afe7-d26d7e032094" />
+          {tauxSatisfaction && (
+            <div className="w-1/3 flex flex-col items-center justify-center border border-black rounded-[10%] p-4">
+              <p className="font-bold text-[56px] text-[#4B5874]">{tauxSatisfaction} %</p>
+              <p className="text-[17px] text-center w-full font-bold text-[#4B5874] ">
+                est le taux de satisfaction des utilisateurs de SignalConso d'après la dernière étude réalisée par{' '}
+                <Link className="" target="_blank" rel="noreferrer" href="https://www.plus.transformation.gouv.fr/">
+                  Services Publics +
+                </Link>
+              </p>
+            </div>
+          )}
+        </div>
         <h2>Les promesses d'action</h2>
         <FriendlyHelpText>
           <p className="mb-2">
