@@ -5,7 +5,7 @@ import {AppLang} from '@/i18n/localization/AppLangs'
 import {monkeyPatchDomForGoogleTranslate} from '@/utils/fixGoogleTranslate'
 import {SkipLinks} from '@codegouvfr/react-dsfr/SkipLinks'
 import {QueryClient, QueryClientProvider} from '@tanstack/react-query'
-import {usePathname} from 'next/navigation'
+import {usePathname, useSearchParams} from 'next/navigation'
 import Script from 'next/script'
 import React, {useEffect, useState} from 'react'
 import {AnalyticProvider} from '../../analytic/AnalyticContext'
@@ -72,6 +72,7 @@ function checkIsWebView(pathname: string, currentLang: AppLang) {
 const Base = ({children}: {children: React.ReactNode}) => {
   const {currentLang} = useI18n()
   const pathname = usePathname()
+  const searchParams = useSearchParams()
   const isWebView = checkIsWebView(pathname, currentLang)
   return (
     <>
@@ -114,17 +115,20 @@ const Base = ({children}: {children: React.ReactNode}) => {
               </div>
             </div>
             <div className="mt-[70px] mb-[90px] overflow-auto">{children}</div>
-            <div className="fixed z-50 bottom-[100px] right-2 bg-red-200">
-              <Button size="large" iconId={bigReportButtonProps.iconId} className="rounded-full !py-4">
-                Je fais un signalement
-              </Button>
-            </div>
+            {searchParams.get('page') !== 'signal' && (
+              <div className="fixed z-50 bottom-[100px] right-2 bg-red-200">
+                <Button size="large" iconId={bigReportButtonProps.iconId} className="rounded-full !py-4">
+                  Je fais un signalement
+                </Button>
+              </div>
+            )}
+
             <div className="bg-white fixed bottom-0 w-full h-[90px] z-50">
               <ul className=" flex h-full list-none m-0 p-0 gap-2 px-2">
                 <FooterElement icon="ri-home-4-line" label="Accueil" active />
                 <FooterElement icon="ri-megaphone-line" label="Actualites" />
                 <FooterElement icon="ri-cake-3-line" label="Rappels produits" />
-                <FooterElement icon="ri-government-line" label="La DGCCRF" active />
+                <FooterElement icon="ri-government-line" label="La DGCCRF" />
               </ul>
             </div>
 

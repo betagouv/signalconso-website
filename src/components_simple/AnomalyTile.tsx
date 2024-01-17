@@ -16,7 +16,7 @@ export const AnomalyTile = ({anomaly}: {anomaly: Anomaly}) => {
     .map(capitalizeFirstLetter)
     .filter(_ => _ !== '...' && _ !== '...)' && _ !== '…' && _ !== '…)')
   return (
-    <div className="bg-white p-4 relative border-b-4 border-solid border-0 border-scbluefrance">
+    <div className="bg-white p-8 relative  border-solid border border-gray-300">
       <div className="flex items-center justify-start gap-2">
         <p className="text-scbluefrance text-3xl font-bold">{title}</p>
         <img src={`/image/pictos/${anomaly.img}.png`} className="h-10 w-auto" />

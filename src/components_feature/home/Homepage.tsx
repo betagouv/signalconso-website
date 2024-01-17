@@ -66,7 +66,7 @@ export const Homepage = () => {
         )}
         {page === 'signal' && (
           <div id={HP_START_REPORT_ANCHOR} style={{background: dsfrTheme.decisions.background.actionLow.blueFrance.default}}>
-            <div className="fr-container fr-pt-8w fr-pb-8w">
+            <div className="fr-container pt-4 pb-6">
               <SearchAnomalies anomalies={anomalies} />
             </div>
           </div>
