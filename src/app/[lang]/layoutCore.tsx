@@ -108,7 +108,7 @@ const Base = ({children}: {children: React.ReactNode}) => {
                 {/* <div className="flex overflow-hidden  h-10 w-20 items-center justify-center border-solid border-2 border-white">
                   <Image src={blocMarianne} alt="Logo République Française" className="h-[40px] w-auto" />
                 </div> */}
-                <Image src={signalConsoLogo} alt="Logo SignalConso" className="h-[30px] w-auto" />
+                <Image src={signalConsoLogo} alt="Logo SignalConso" className="h-[35px] w-auto" />
               </div>
 
               <div className="flex gap-4 items-center justify-center">

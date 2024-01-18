@@ -22,7 +22,29 @@ export const CommentCaMarche = ({isWebView, lang}: {isWebView: boolean; lang: Ap
           <div className="space-y-6">
             <Card
               img={imgConsumer}
-              title="1. Votre signalement est envoyé à la fois à la répression des fraudes, et à l'entreprise."
+              title={
+                <span>
+                  1. Votre signalement est envoyé à la{' '}
+                  <span
+                  // className="bg-orange-300 px-1"
+                  // style={{
+                  //   boxShadow: 'inset 0 -2px white,inset 0 -30px #faca71',
+                  // }}
+                  >
+                    répression des fraudes
+                  </span>{' '}
+                  et à{' '}
+                  <span
+                  // className="bg-purple-300 px-1"
+                  // style={{
+                  //   boxShadow: 'inset 0 -2px white,inset 0 -30px #faca71',
+                  // }}
+                  >
+                    l'entreprise
+                  </span>
+                  .
+                </span>
+              }
             >
               <p>L'entreprise est alors invitée à vous répondre et prendre action pour s'améliorer et résoudre votre problème.</p>
               <p>{m.commentCaMarche.step1.description2}</p>
@@ -52,7 +74,7 @@ export const CommentCaMarche = ({isWebView, lang}: {isWebView: boolean; lang: Ap
   )
 }
 
-const Card = ({title, img, children}: {title: string; img: StaticImageData; children?: ReactNode}) => {
+const Card = ({title, img, children}: {title: ReactNode; img: StaticImageData; children?: ReactNode}) => {
   return (
     <div>
       <h2 className="text-lg">{title}</h2>
