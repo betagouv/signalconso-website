@@ -47,7 +47,15 @@ export const Homepage = () => {
       <main role="main" id="main-content">
         {page === 'home' && (
           <>
-            <div className="p-4 text-white bg-scbluefrance pt-8 pb-8 bordeXr-b-[12px] rouXnded-b-[5em] border-0 border-solid border-[#7a7aff]">
+            <div
+              className="p-4 text-white bg-scbluefrance pt-8 pb-2 border-b-[10px] border-0 border-solid border-[#7a7aff]"
+              style={
+                {
+                  // WebkitClipPath: 'polygon(0 100%, 0 0, 100% 0, 100% 92%, 93% 100%, 33% 100%)',
+                  // clipPath: 'polygon(0 0, 100% 0, 100% 96%, 0 100%)',
+                }
+              }
+            >
               <h2 className="text-white mb-2">Vous avez rencontré un problème avec une entreprise ?</h2>
               <p className="text-lg text-[#cfcfff] font-bold mb-8">
                 Sur Internet, ou dans un magasin, avec un artisan, une salle de sport, un démarchage par téléphone...{' '}
@@ -55,14 +63,13 @@ export const Homepage = () => {
               <p className="text-[#cfcfff] mb-4">
                 En tant que consommateur, vous pouvez le signaler sur l'application SignalConso.
               </p>
-              <div className="flex items-center justify-end mb-8 ">
-                <Button {...bigReportButtonProps}>Je fais un signalement</Button>
+              <div className="flex items-center justify-end mb-2 ">
+                <Button {...bigReportButtonProps} priority="primary" className="!text-white border-0 border-white border-solid ">
+                  Je fais un signalement
+                </Button>
               </div>
-              {/* <p>
-              Il sera envoyé à la répression des fraudes, et à l'entreprise elle-même. Celle-ci sera incitée à vous répondre et à
-              corriger votre problème.
-            </p> */}
             </div>
+
             {/* <div className="p-4  bg-white pt-8 pb-8 bordeXr-b-[12px] rouXnded-b-[5em] border-0 border-solid border-[#7a7aff]">
               <h2 className="">Comment ça marche ?</h2>
               <div className="flex items-center justify-center"></div>

@@ -20,8 +20,11 @@ export const CommentCaMarche = ({isWebView, lang}: {isWebView: boolean; lang: Ap
         <div className="max-w-4xl mx-auto">
           <h1>{m.commentCaMarche.title}</h1>
           <div className="space-y-6">
-            <Card img={imgConsumer} title={m.commentCaMarche.step1.title}>
-              <p>{m.commentCaMarche.step1.description1}</p>
+            <Card
+              img={imgConsumer}
+              title="1. Votre signalement est envoyé à la fois à la répression des fraudes, et à l'entreprise."
+            >
+              <p>L'entreprise est alors invitée à vous répondre et prendre action pour s'améliorer et résoudre votre problème.</p>
               <p>{m.commentCaMarche.step1.description2}</p>
             </Card>
             <Card img={imgReport} title={m.commentCaMarche.step2.title}>
@@ -52,7 +55,7 @@ export const CommentCaMarche = ({isWebView, lang}: {isWebView: boolean; lang: Ap
 const Card = ({title, img, children}: {title: string; img: StaticImageData; children?: ReactNode}) => {
   return (
     <div>
-      <h2 className="fr-h4">{title}</h2>
+      <h2 className="text-lg">{title}</h2>
       <div className="flex flex-col-reverse items-center sm:flex-row">
         <div className="shrink-0">
           <Image src={img} alt="" width={200} height={200} />
