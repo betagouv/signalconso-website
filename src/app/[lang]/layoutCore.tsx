@@ -118,7 +118,7 @@ const Base = ({children}: {children: React.ReactNode}) => {
             </div>
             <div className="mt-[70px] mb-[90px] overflow-auto">{children}</div>
             {searchParams.get('page') !== 'signal' && (
-              <div className="fixed z-50 bottom-[100px] right-2 bg-red-200">
+              <div className="fixed z-50 bottom-[100px] right-2">
                 <Button size="large" iconId={bigReportButtonProps.iconId} className="rounded-full !py-4">
                   Je fais un signalement
                 </Button>
