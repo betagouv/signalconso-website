@@ -60,8 +60,8 @@ export const Homepage = () => {
               <p className="text-lg text-[#cfcfff] font-bold mb-8">
                 Sur Internet, ou dans un magasin, avec un artisan, une salle de sport, un démarchage par téléphone...{' '}
               </p>
-              <p className="text-[#cfcfff] mb-4">
-                En tant que consommateur, vous pouvez le signaler sur l'application SignalConso.
+              <p className="text-[#cfcfff] mb-0">
+                <span className="font-bold text-white">En tant que consommateur, vous pouvez le signaler.</span>
               </p>
               <div className="flex items-center justify-end mb-2 ">
                 <Button {...bigReportButtonProps} priority="primary" className="!text-white border-0 border-white border-solid ">
