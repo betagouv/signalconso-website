@@ -22,6 +22,8 @@ import {useReportFlowContext} from '../../components_feature/reportFlow/ReportFl
 import SearchAnomalies from '../../components_simple/SearchAnomalies'
 import {BrowserCompatAlert} from '../../components_simple/bigBanners/BrowserAlertCompat'
 import {useSearchParams} from 'next/navigation'
+import {CommentCaMarche} from '@/reusablePages/comment-ca-marche'
+import Image from 'next/image'
 
 const ReportStartedAlert = dynamic(() => import('@/components_feature/ReportStartedAlert'), {ssr: false})
 
@@ -43,6 +45,37 @@ export const Homepage = () => {
   return (
     <>
       <main role="main" id="main-content">
+        {page === 'home' && (
+          <>
+            <div className="p-4 text-white bg-scbluefrance pt-8 pb-8 bordeXr-b-[12px] rouXnded-b-[5em] border-0 border-solid border-[#7a7aff]">
+              <h2 className="text-white mb-2">Vous avez rencontré un problème avec une entreprise ?</h2>
+              <p className="text-lg text-[#cfcfff] font-bold mb-8">
+                Sur Internet, ou dans un magasin, avec un artisan, une salle de sport, un démarchage par téléphone...{' '}
+              </p>
+              <p className="text-[#cfcfff] mb-4">
+                En tant que consommateur, vous pouvez le signaler sur l'application SignalConso.
+              </p>
+              <div className="flex items-center justify-end mb-8 ">
+                <Button {...bigReportButtonProps}>Je fais un signalement</Button>
+              </div>
+              {/* <p>
+              Il sera envoyé à la répression des fraudes, et à l'entreprise elle-même. Celle-ci sera incitée à vous répondre et à
+              corriger votre problème.
+            </p> */}
+            </div>
+            {/* <div className="p-4  bg-white pt-8 pb-8 bordeXr-b-[12px] rouXnded-b-[5em] border-0 border-solid border-[#7a7aff]">
+              <h2 className="">Comment ça marche ?</h2>
+              <div className="flex items-center justify-center"></div>
+              <p className="">
+                Votre signalement est transmis à la fois <span className="font-bold">à la répression des fraudes</span>, et{' '}
+                <span className="font-bold">à l'entreprise</span>. Celle-ci est invitée à vous répondre et à résoudre votre
+                problème.
+              </p>
+            </div> */}
+            <CommentCaMarche isWebView={false} lang={AppLangs.fr} />
+          </>
+        )}
+
         {page === 'home' && (
           <div>
             <div className="fr-container fr-pt-8w fr-pb-6w ">
