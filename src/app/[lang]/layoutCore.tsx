@@ -116,7 +116,7 @@ const Base = ({children}: {children: React.ReactNode}) => {
                 <i className="ri-menu-line fr-icon--lg text-white" />
               </div>
             </div>
-            <div className="mt-[60px] mb-[90px] overflow-auto">{children}</div>
+            <div className="mt-[60px] mb-[84px] overflow-auto">{children}</div>
             {searchParams.get('page') !== 'signal' && (
               <div className="fixed z-50 bottom-[100px] right-2">
                 <Button size="large" iconId={bigReportButtonProps.iconId} className="rounded-full !py-4">
@@ -125,7 +125,7 @@ const Base = ({children}: {children: React.ReactNode}) => {
               </div>
             )}
 
-            <div className="bg-white fixed bottom-0 w-full h-[90px] z-50">
+            <div className="bg-white fixed bottom-0 w-full h-[83px] z-50 border-t-[1px] border-solid border-0 border-gray-300">
               <ul className=" flex h-full list-none m-0 p-0 gap-2 px-2">
                 <FooterElement icon="ri-home-4-line" label="Accueil" active />
                 <FooterElement icon="ri-megaphone-line" label="Actualites" />
@@ -150,7 +150,7 @@ function FooterElement({label, icon, active}: {label: string; icon: string; acti
         active ? 'border-scbluefrance' : 'border-white'
       }`}
     >
-      <i className={`${icon} fr-icon--lg mt-2`} />
+      <i className={`${icon} mt-2 text-black`} />
       <span className={`text-sm text-center`} dangerouslySetInnerHTML={{__html: label}} />
     </li>
   )
