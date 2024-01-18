@@ -103,20 +103,20 @@ const Base = ({children}: {children: React.ReactNode}) => {
               ]}
             />
             {/* <ScHeader /> */}
-            <div className="bg-scbluefrance fixed top-0 w-full h-[70px] z-50 flex items-center justify-between px-4">
+            <div className="bg-scbluefrance fixed top-0 w-full h-[60px] z-50 flex items-center justify-between px-4">
               <div className="flex items-center justify-center gap-4">
-                <div className="flex overflow-hidden  h-10 w-16 items-center justify-center border-solid border-2 border-white">
+                {/* <div className="flex overflow-hidden  h-10 w-20 items-center justify-center border-solid border-2 border-white">
                   <Image src={blocMarianne} alt="Logo République Française" className="h-[40px] w-auto" />
-                </div>
-                <Image src={signalConsoLogo} alt="Logo SignalConso" className="h-[35px] w-auto" />
+                </div> */}
+                <Image src={signalConsoLogo} alt="Logo SignalConso" className="h-[30px] w-auto" />
               </div>
 
               <div className="flex gap-4 items-center justify-center">
-                <div className=" border border-solid border-gray-400 px-2 py-1 font-bold text-white">🇫🇷 FR</div>
+                <div className=" border border-solid border-gray-400 px-2 py-1 text-gray-200">🇫🇷 FR</div>
                 <i className="ri-menu-line fr-icon--lg text-white" />
               </div>
             </div>
-            <div className="mt-[70px] mb-[90px] overflow-auto">{children}</div>
+            <div className="mt-[60px] mb-[90px] overflow-auto">{children}</div>
             {searchParams.get('page') !== 'signal' && (
               <div className="fixed z-50 bottom-[100px] right-2">
                 <Button size="large" iconId={bigReportButtonProps.iconId} className="rounded-full !py-4">
