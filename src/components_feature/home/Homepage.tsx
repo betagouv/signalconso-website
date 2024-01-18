@@ -57,7 +57,7 @@ export const Homepage = () => {
               }
             >
               <h2 className="text-white mb-2">Vous avez rencontré un problème avec une entreprise ?</h2>
-              <p className="text-lg text-[#cfcfff] font-bold mb-8">
+              <p className="text-lg text-[#cfcfff] font-normal mb-8">
                 Sur Internet, ou dans un magasin, avec un artisan, une salle de sport, un démarchage par téléphone...{' '}
               </p>
               <p className="text-[#cfcfff] mb-0">
