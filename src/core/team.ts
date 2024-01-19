@@ -19,6 +19,7 @@ import imgNicolas from '@/img/avatars/avatar-nicolas.png'
 import imgPierre from '@/img/avatars/avatar-pierre-olivier.png'
 import imgQuentinkurtz from '@/img/avatars/avatar-quentinkurtz.png'
 import imgSaidsedoud from '@/img/avatars/avatar-saidsedoud.png'
+import imgHakimsedoud from '@/img/avatars/avatar-hakimsedoud.png'
 import imgThomas from '@/img/avatars/avatar-thomas.png'
 import imgValentine from '@/img/avatars/avatar-valentine.png'
 import {StaticImageData} from 'next/image'
@@ -42,6 +43,7 @@ const trad = (lang: AppLang) => {
         bussinesDev: 'Business developer',
         bussinesCoach: 'Product coach',
         dev: 'Software developer',
+        devIntern: 'Software developer (intern)',
       },
       dgccrfJob: {
         inspector: 'DGCCRF inspector',
@@ -55,6 +57,7 @@ const trad = (lang: AppLang) => {
         bussinesDev: 'Chargé de déploiement',
         bussinesCoach: "Coach Startup d'État",
         dev: 'Développeur informatique',
+        devIntern: 'Développeur informatique stagiaire',
       },
       dgccrfJob: {
         inspector: 'Inspecteur DGCCRF',
@@ -114,6 +117,11 @@ export function getTeam(lang: AppLang): Team {
         name: 'Nicolas Serra',
         role: [t.function.dev],
         avatar: imgNicolas,
+      },
+      {
+        name: 'Hakim Sedoud',
+        role: [t.function.devIntern],
+        avatar: imgHakimsedoud,
       },
     ],
     former: [
