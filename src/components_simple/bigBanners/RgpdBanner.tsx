@@ -13,7 +13,7 @@ export function RgpdBanner() {
   useEffect(() => {
     const hiddenInStorage = localStorageEntity.load()
     if (hiddenInStorage !== true) {
-      setHidden(false)
+      setHidden(true)
     }
   }, [])
   const {m} = useI18n()
