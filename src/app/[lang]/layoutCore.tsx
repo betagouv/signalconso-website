@@ -14,7 +14,6 @@ import {ReportCreateProvider} from '../../components_feature/reportFlow/ReportCr
 import {ReportFlowProvider} from '../../components_feature/reportFlow/ReportFlowContext'
 import {ScFooter} from '../../components_simple/ScFooter'
 import {ScHeader} from '../../components_simple/ScHeader'
-import {RgpdBanner} from '../../components_simple/bigBanners/RgpdBanner'
 import {appConfig} from '../../core/appConfig'
 import '../../globals.css'
 import {ToastProvider} from '../../hooks/useToastError'
@@ -97,7 +96,6 @@ const Base = ({children}: {children: React.ReactNode}) => {
             />
             <ScHeader />
             {children}
-            <RgpdBanner />
             <ScFooter />
           </>
         )}
