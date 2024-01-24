@@ -33,7 +33,7 @@
 # docker run --rm -it YOUR_HASH_HERE sh
 #
 # Start a container, also opening a port and keeping the default command
-# docker run -p 3001:3001 --rm -it YOUR_HASH_HERE
+# docker run -p 3000:3000 --rm -it YOUR_HASH_HERE
 #
 # For the docker-compose.yml
 # This runs the docker-compose.yml, forcing to rebuild the image from the Dockerfile
@@ -77,6 +77,7 @@ COPY .eslintrc.json ./
 ENV NEXT_PUBLIC_SHOW_DEMO_CATEGORY true
 ENV NEXT_PUBLIC_ENV_MARKER "en local depuis Docker, branché sur l'API de démo"
 ENV NEXT_PUBLIC_API_BASE_URL https://demo-signalement-api.cleverapps.io
+ENV NEXT_PUBLIC_APP_BASE_URL http://localhost:3000
 
 # Build
 RUN yarn build

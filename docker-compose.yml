@@ -2,6 +2,7 @@ version: '3.8'
 
 services:
   website:
+    # will build the image from ./Dockerfile
     build:
       context: .
     ports:
