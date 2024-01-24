@@ -3,10 +3,6 @@ version: '3.8'
 services:
   website:
     build:
-      # va construire l'image à partir du Dockerfile
       context: .
     ports:
       - '3000:3000'
-    # volumes:
-    #   - .:/app
-    #   - /app/node_modules

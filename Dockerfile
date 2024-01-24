@@ -1,3 +1,47 @@
+# This Dockerfile, along with the docker-compose.yml,
+# is designed to make a simple build of the website,
+# so that Guillaume R can launch it on his machine
+# to work on the YAML more easily.
+#
+# Guillaume will have to install Docker Desktop,
+# and then learn this single command :
+# docker-compose up --build
+#
+# This should build the website
+# (using the yarn dependencies and version of the source code he has locally)
+# on localhost:3000
+# and targeting demo's API
+#
+# When Guillaume make changes to the YAML,
+# he will have to interrupt and relaunch the docker-compose command.
+
+
+# Useful commands to help debug a Dockerfile ;
+# =========
+#
+# Build an image from Dockerfile and name it "tmp"
+# (This will log a hash of the image that may be used in the commands below)
+# docker build -t tmp .
+#
+# Start a simple container based on a node image, keep it open with an interactive shell
+# so you can type some commands to explore the available files and programs
+# (the container will be dropped after)
+# docker run --rm -it node:20.9.0-alpine sh
+
+# Start a container based on any image hash, keep it open with an interactive shell
+# (this way you can explore an image you built from a Dockerfile)
+# docker run --rm -it YOUR_HASH_HERE sh
+#
+# Start a container, also opening a port and keeping the default command
+# docker run -p 3001:3001 --rm -it YOUR_HASH_HERE
+#
+# For the docker-compose.yml
+# This runs the docker-compose.yml, forcing to rebuild the image from the Dockerfile
+# docker-compose up --build
+
+
+
+
 FROM node:20.9.0-alpine
 
 # Create an "/myapp" subfolder and cd into it
@@ -16,10 +60,10 @@ COPY .yarn/releases .yarn/releases
 
 # At this point, if I run "yarn --version", I have the correct version (3.2.1)
 
-# Install dependencies
+# Install Yarn dependencies
 RUN yarn
 
-# copy the source code and stuff required to build the site
+# Copy the source code and stuff that may be required to build the site
 COPY src src
 COPY public public
 COPY next-env.d.ts ./
@@ -27,37 +71,15 @@ COPY next.config.js ./
 COPY postcss.config.js ./
 COPY tailwind.config.js ./
 COPY tsconfig.json ./
+COPY .eslintrc.json ./
 
+# Setup env variables
 ENV NEXT_PUBLIC_SHOW_DEMO_CATEGORY true
-ENV NEXT_PUBLIC_ENV_MARKER "depuis Docker"
+ENV NEXT_PUBLIC_ENV_MARKER "en local depuis Docker, branché sur l'API de démo"
+ENV NEXT_PUBLIC_API_BASE_URL https://demo-signalement-api.cleverapps.io
 
+# Build
 RUN yarn build
 EXPOSE 3000
+# Start
 CMD ["yarn", "start"]
-
-
-
-
-# USEFUL COMMANDS
-
-
-# Build an image from Dockerfile and name it "tmp"
-#
-# docker build -t tmp .
-#
-# This will log a hash that may be used in the commands below
-
-# Start a simple container based on a simple node image, keep it open with an interactive shell
-# (it will be dropped after)
-#
-# docker run --rm -it node:20.9.0-alpine sh
-
-# Start a container based on any image hash, keep it open with an interactive shell
-#
-# docker run --rm -it YOUR_HASH_HERE sh
-
-# Opening a port and keeping the default command (so no "sh" at the end)
-# 
-# docker run -p 3001:3001 --rm -it YOUR_HASH_HERE
-
-
