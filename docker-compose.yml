@@ -2,8 +2,12 @@ version: '3.8'
 
 services:
   website:
+    container_name: websitecontainer
     # will build the image from ./Dockerfile
     build:
       context: .
     ports:
-      - '3000:3000'
+      - '3001:3001'
+    volumes:
+      # sync the YAML between local <-> Docker
+      - ./src/anomalies/yml:/myapp/src/anomalies/yml

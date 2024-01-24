@@ -4,17 +4,17 @@
 # to work on the YAML more easily.
 #
 # Guillaume will have to install Docker Desktop,
-# and then learn this single command :
+# and then launch this command
+# (this rebuilds everything from his current version of the source code,
+# and starts the website on localhost:3001)
 # docker-compose up --build
+# (and keep it running)
 #
-# This should build the website
-# (using the yarn dependencies and version of the source code he has locally)
-# on localhost:3000
-# and targeting demo's API
-#
-# When Guillaume make changes to the YAML,
-# he will have to interrupt and relaunch the docker-compose command.
-
+# Then he can do modifications on the YAML files
+# (The YAML files are synced with the Docker)
+# When he wants to validate his modifications, he can do (in another terminal) :
+# docker exec -it websitecontainer yarn generate-json
+# (this will connect to the docker, validate the YAML, and if it's valid it should refresh the website)
 
 # Useful commands to help debug a Dockerfile ;
 # =========
@@ -80,7 +80,7 @@ ENV NEXT_PUBLIC_API_BASE_URL https://demo-signalement-api.cleverapps.io
 ENV NEXT_PUBLIC_APP_BASE_URL http://localhost:3000
 
 # Build
-RUN yarn build
-EXPOSE 3000
+# RUN yarn build
+EXPOSE 3001
 # Start
-CMD ["yarn", "start"]
+CMD ["yarn", "dev"]
