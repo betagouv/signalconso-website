@@ -3,10 +3,9 @@
 # so that Guillaume R can launch it on his machine
 # to work on the YAML more easily.
 #
-# Guillaume will have to install Docker Desktop,
-# and then launch this command (and keep it running) :
-#
+# It can be launched with this command :
 # docker-compose up --build
+# Guillaume R will just use the "LAUNCH_ON_WINDOWS.bat" script which does this same command.
 #
 # This should rebuild everything from his current version of the source code,
 # and starts the website on localhost:3001.
@@ -45,6 +44,5 @@ services:
   # - We edit the YML files locally
   # - Changes are synced automatically into the "watcher" container
   # - The watcher container automatically processes the YAML and generates JSON
-  # - Changes to the JSON are synced automatically locally
-  # - Changes to the JSON are thus also synced with the "website" container
-  # - The website container detects the change (because of "next dev" hot reload) and the website is refreshed
+  # - Changes to the JSON are synced automatically locally, and thus also synced with the "website" container
+  # - The website container detects the JSON changes (thanks to the hot reload baked in "next dev"), and the website is refreshed
