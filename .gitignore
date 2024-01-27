@@ -68,3 +68,7 @@ landings.csv
 i18n.csv
 
 signalconso-website.code-workspace
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
