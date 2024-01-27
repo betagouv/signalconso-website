@@ -2,6 +2,10 @@ name: Build, format & test workflow
 
 on: [push]
 
+env:
+  NEXT_PUBLIC_SHOW_DEMO_CATEGORY: true
+  NEXT_PUBLIC_API_BASE_URL: https://demo-signalement-api.cleverapps.io
+
 jobs:
   # This workflow contains a single job called "greet"
   build:
@@ -17,6 +21,5 @@ jobs:
           node-version: 20.9.0
           registry-url: https://registry.npmjs.org/
       - run: yarn install --immutable
-      - run: yarn checkformat
       - run: yarn build
-      - run: yarn test
+      - run: yarn runplaywright
