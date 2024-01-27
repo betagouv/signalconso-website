@@ -1,4 +1,4 @@
-name: Build, format & test workflow
+name: Integration tests
 
 on: [push]
 

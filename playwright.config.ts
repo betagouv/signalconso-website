@@ -44,8 +44,7 @@ export default defineConfig({
 
   /* Run your local dev server before starting the tests */
   webServer: {
-    command:
-      'NEXT_PUBLIC_SHOW_DEMO_CATEGORY=true NEXT_PUBLIC_API_BASE_URL=https://demo-signalement-api.cleverapps.io yarn start',
+    command: 'NEXT_PUBLIC_SHOW_DEMO_CATEGORY=true NEXT_PUBLIC_API_BASE_URL=https://demo-signalement-api.cleverapps.io yarn start',
     url: 'http://localhost:3000',
     reuseExistingServer: !process.env.CI,
   },
