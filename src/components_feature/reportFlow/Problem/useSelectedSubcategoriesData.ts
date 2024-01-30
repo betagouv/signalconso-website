@@ -1,6 +1,7 @@
 import {instanceOfSubcategoryWithInfoWall} from '@/anomalies/Anomalies'
 import {lastFromArray, notUndefined} from '@/utils/utils'
-import {Subcategory} from '../../../anomalies/Anomaly'
+import {CompanyKinds, Subcategory} from '../../../anomalies/Anomaly'
+import {appConfig} from '@/core/appConfig'
 
 export function computeSelectedSubcategoriesData(selectedSubCategories: Subcategory[]) {
   const tagsFromSelected = selectedSubCategories.flatMap(_ => _.tags ?? [])
