@@ -45,6 +45,7 @@ const Node = ({
   const isLeaf = !anomaly.subcategories || anomaly.subcategories.length === 0
   const isBlocking = instanceOfSubcategoryWithInfoWall(anomaly)
   const [isOpen, setIsOpen] = useState(false)
+  const isAccessibiliteSubcategory = (instanceOfAnomaly(anomaly) ? false : anomaly.isAccessibiliteSubcategory) ?? false
   useEffect(() => {
     setIsOpen(!!openAll)
   }, [openAll])
@@ -85,6 +86,9 @@ const Node = ({
             </span>
           </div>
           <div>
+            {isAccessibiliteSubcategory && (
+              <BorderedItem text="Sous-catégorie spéciale (Accessibilité)" icon="ri-error-warning-line" />
+            )}
             {displayExtra &&
               tags &&
               tags.length &&

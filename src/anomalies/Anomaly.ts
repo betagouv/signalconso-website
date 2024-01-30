@@ -47,6 +47,8 @@ type SubcategoryBase = {
   ccrfCode?: string[]
   companyKind?: CompanyKinds
   companyKindQuestion?: CompanyKindQuestion
+  // Temporary, to control the display of one specific subcategory through a feature flag
+  isAccessibiliteSubcategory?: boolean
 }
 
 // A typical subcategory
