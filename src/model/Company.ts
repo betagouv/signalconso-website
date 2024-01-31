@@ -1,6 +1,21 @@
 import {Address} from './Address'
 
-export interface CompanySearchResult {
+// the shape expected by the main api in the report
+export interface CompanyDraft {
+  siret: string
+  name: string
+  brand?: string
+  address: Address
+  website?: string
+  phone?: string
+  activityCode?: string
+  isHeadOffice: boolean
+  isPublic: boolean
+  isOpen: boolean
+}
+
+// the shapes of companies in the api result
+export type CompanySearchResult = {
   siret: string
   name?: string
   commercialName?: string
@@ -17,18 +32,6 @@ export interface CompanySearchResult {
 export interface WebsiteCompanySearchResult {
   exactMatch: CompanySearchResult[]
   similarHosts: string[]
-}
-
-export interface Company {
-  id: string
-  siret: string
-  creationDate: Date
-  name: string
-  address: Address
-  activityCode?: string
-  isHeadOffice: boolean
-  isPublic: boolean
-  isOpen: boolean
 }
 
 export const isGovernmentCompany = (_?: {activityCode?: string}): boolean => _?.activityCode?.startsWith('84.') ?? false

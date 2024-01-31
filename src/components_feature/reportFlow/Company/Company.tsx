@@ -6,8 +6,8 @@ import {ReportDraft2} from '@/model/ReportDraft2'
 import {Button} from '@codegouvfr/react-dsfr/Button'
 import {SpecificWebsiteCompanyKinds} from '../../../anomalies/Anomaly'
 import {SocialNetworkRow} from '../../../components_simple/SocialNetworkRow'
-import {CompanySearchResult} from '../../../model/Company'
-import {CompanyDraft, ReportDraft} from '../../../model/ReportDraft'
+import {CompanyDraft, CompanySearchResult} from '../../../model/Company'
+import {ReportDraft} from '../../../model/ReportDraft'
 import {fnSwitch} from '../../../utils/FnSwitch'
 import {DeepPartial} from '../../../utils/utils'
 import {useReportFlowContext} from '../ReportFlowContext'
@@ -27,6 +27,7 @@ import {CompanySearchResultComponent} from './CompanySearchResult'
 import {CompanyWebsiteCountry} from './CompanyWebsiteCountry'
 import {InfluencerBySocialNetwork} from './InfluencerBySocialNetwork'
 import {CompanyByTrain} from '@/components_feature/reportFlow/Company/CompanyByTrain'
+import {CompanyRecap} from '@/components_simple/CompanyRecap'
 
 interface CompanyWithRequiredProps {
   draft: Pick<ReportDraft, 'companyKind'>
@@ -109,34 +110,7 @@ export const CompanyFilled = ({
   return (
     <div>
       <h2 className="fr-h6">{m.companyIdentifiedTitle}</h2>
-      <div>
-        <p className="mb-0 font-bold">{draft.companyDraft.name}</p>
-        {draft.companyDraft.brand && <p className="mb-0 font-bold italic">{draft.companyDraft.brand}</p>}
-        {draft.companyDraft.siret && (
-          <p className="mb-0 text-sc-gray-400">
-            <span>SIRET :&nbsp;</span>
-            <span className="font-bold">{draft.companyDraft.siret}</span>
-          </p>
-        )}
-        {draft.companyDraft.siret && (
-          <div className="flex gap-2 pl-1 ">
-            <i className="ri-map-pin-2-fill text-gray-400" />{' '}
-            <AddressComponent address={draft.companyDraft.address} className="text-gray-600" />
-          </div>
-        )}
-        {draft.companyDraft.website && (
-          <div className="flex gap-2 pl-1 ">
-            <i className="ri-global-line text-gray-400" />
-            <span className="text-gray-600">{draft.companyDraft.website}</span>
-          </div>
-        )}
-        {draft.companyDraft.phone && (
-          <div className="flex gap-2 pl-1">
-            <i className="ri-phone-line text-gray-400" />
-            <span className="text-gray-600">{draft.companyDraft.phone}</span>
-          </div>
-        )}
-      </div>
+      <CompanyRecap company={draft.companyDraft} kind="companyDraft" />
       <ActionButtons {...{onClear, stepNavigation}} />
     </div>
   )

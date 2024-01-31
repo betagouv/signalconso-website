@@ -151,7 +151,7 @@ const Playground = () => {
         </div>
       ) : (
         <>
-          <Button linkProps={{href: `${pathname}`}} className="mb-6">
+          <Button linkProps={{href: `${pathname}`}} className="mb-6" iconId="ri-arrow-left-line" priority="secondary">
             Retour
           </Button>
           {renderComponent()}

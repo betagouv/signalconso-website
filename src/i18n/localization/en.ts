@@ -1032,6 +1032,7 @@ export const en = {
     barcodeNoCompanyFound: 'No company associated with this barcode. Perhaps the product comes from abroad?',
     barcodeNoProductFound: 'No products found for this barcode.',
     barcodeWhereToFind: 'GTIN number found under the product barcode',
+    barcodeLabel: 'Barcode (GTIN):',
     barcodeHelp: 'Barcode help',
     barcodeHelp2: 'You will find this number under the barcode on the product or its packaging.',
     howToFindIt: `How to find it?`,
