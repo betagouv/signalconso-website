@@ -11,6 +11,7 @@ import {useToastError} from '../../../hooks/useToastError'
 import {CompanySearchResult, isGovernmentCompany} from '../../../model/Company'
 import {CompanyWebsiteVendor} from './CompanyWebsiteVendor'
 import {NoSearchResult} from './lib/NoSearchResult'
+import {CompanyRecap} from '@/components_simple/CompanyRecap'
 
 interface Props {
   companies: CompanySearchResult[]
@@ -52,43 +53,6 @@ export const CompanySearchResultComponent = ({companies, onSubmit}: Props) => {
 
   const onlyClosed = companies.findIndex(_ => _.isOpen) === -1
 
-  const createCompanyEntry = (company: CompanySearchResult, closed: boolean) => {
-    const isGovernment = isGovernmentCompany(company)
-    return (
-      <div className="flex justify-between w-full">
-        <div>
-          <span className="font-bold block">
-            {company.commercialName ? `${company.commercialName} (${company.name})` : company.name}
-          </span>
-          {company.brand && <span className="block">{company.brand}</span>}
-
-          {company.isHeadOffice && (
-            <Row icon="ri-building-fill" variant="blue">
-              {m.isHeadOffice}
-            </Row>
-          )}
-
-          {company.activityLabel && <Row icon="ri-price-tag-3-fill">{company.activityLabel}</Row>}
-          {isGovernment && (
-            <Row icon="ri-error-warning-fill" variant="error">
-              {m.governmentCompany}
-            </Row>
-          )}
-
-          <Row icon="ri-profile-fill">
-            {m.siretNumber} <span className="">{company.siret}</span>
-          </Row>
-          {company.address && (
-            <Row icon="ri-map-pin-2-fill">
-              <AddressComponent address={company.address} />
-            </Row>
-          )}
-        </div>
-        {closed && <span className="text-red-600">{m.closedCompany}</span>}
-      </div>
-    )
-  }
-
   return (
     <>
       <Animate>
@@ -127,7 +91,7 @@ export const CompanySearchResultComponent = ({companies, onSubmit}: Props) => {
                           options={companies.map(company => {
                             const closed = !company.isOpen
                             return {
-                              label: createCompanyEntry(company, closed),
+                              label: <CompanyRecap company={company} kind="companySearchResult" />,
                               value: company.siret!,
                               disabled: closed,
                             }

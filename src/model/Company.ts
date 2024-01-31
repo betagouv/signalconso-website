@@ -1,6 +1,21 @@
 import {Address} from './Address'
 
-export interface CompanySearchResult {
+// the shape expected by the main api in the report
+export interface CompanyDraft {
+  siret: string
+  name: string
+  brand?: string
+  address: Address
+  website?: string
+  phone?: string
+  activityCode?: string
+  isHeadOffice: boolean
+  isPublic: boolean
+  isOpen: boolean
+}
+
+// the shapes of companies in the api result
+export type CompanySearchResult = {
   siret: string
   name?: string
   commercialName?: string

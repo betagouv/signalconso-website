@@ -5,6 +5,7 @@ import {ApiInfluencer, ApiReportDraft} from './reportsFromApi'
 import {UploadedFile} from './UploadedFile'
 import uniq from 'lodash/uniq'
 import {AppLang} from '../i18n/localization/AppLangs'
+import {CompanyDraft} from './Company'
 
 export const genders = ['Male', 'Female'] as const
 export type Gender = (typeof genders)[number]
@@ -16,19 +17,6 @@ export interface ReportDraftConsumer {
   phone?: string
   referenceNumber?: string
   gender?: Gender
-}
-
-export interface CompanyDraft {
-  siret: string
-  name: string
-  brand?: string
-  address: Address
-  website?: string
-  phone?: string
-  activityCode?: string
-  isHeadOffice: boolean
-  isPublic: boolean
-  isOpen: boolean
 }
 
 export interface ReportDraft {

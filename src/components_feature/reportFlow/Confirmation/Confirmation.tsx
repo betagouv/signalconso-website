@@ -20,6 +20,7 @@ import {FileOrigin} from '../../../model/UploadedFile'
 import {useReportCreateContext} from '../ReportCreateContext'
 import {useReportFlowContext} from '../ReportFlowContext'
 import {ConfirmationStep, ConfirmationStepper} from './ConfirmationStepper'
+import {CompanyRecap} from '@/components_simple/CompanyRecap'
 
 export const Confirmation = ({stepNavigation, isWebView}: {stepNavigation: StepNavigation; isWebView: boolean}) => {
   const _reportFlow = useReportFlowContext()
@@ -148,34 +149,7 @@ function RenderEachStep({
         <>
           {draft.companyDraft && (
             <ConfirmationStep title={m.step_company} {...{goToStep, index}}>
-              <h3 className="fr-h6 !text-gray-500 !mb-0">{draft.companyDraft.name}</h3>
-              {draft.companyDraft.brand && <p className="italic text-gray-500 !mb-2">{draft.companyDraft.brand}</p>}
-              <ul className="list-none">
-                {draft.companyDraft.siret && (
-                  <li className="p-0">
-                    <p className="text-gray-500 mb-2">
-                      <span>SIRET:&nbsp;</span>
-                      <span className="font-bold">{draft.companyDraft.siret}</span>
-                    </p>
-                  </li>
-                )}
-                <li className="p-0 flex gap-2">
-                  <i className="ri-map-pin-2-line text-gray-400" />
-                  <AddressComponent address={draft.companyDraft.address} className="text-gray-500" />
-                </li>
-                {draft.companyDraft.website && (
-                  <li className="p-0 flex gap-2">
-                    <i className="ri-global-line text-gray-400" />
-                    <span className="text-gray-500">{draft.companyDraft.website}</span>
-                  </li>
-                )}
-                {draft.companyDraft.phone && (
-                  <li className="p-0 flex gap-2">
-                    <i className="ri-phone-line text-gray-400" />
-                    <span className="text-gray-500">{draft.companyDraft.phone}</span>
-                  </li>
-                )}
-              </ul>
+              <CompanyRecap company={draft.companyDraft} kind="companyDraft" />
             </ConfirmationStep>
           )}
           {draft.influencer && (

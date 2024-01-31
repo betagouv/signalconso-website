@@ -45,8 +45,8 @@ describe('Details: single date not in future', () => {
                 fnSwitch(
                   url,
                   {
-                    'known.site': Fixture.genCompanySearchResult(),
-                    'marketplace.site': Fixture.genCompanySearchResult(),
+                    'known.site': Fixture.genWebsiteCompanySearchResult(),
+                    'marketplace.site': Fixture.genWebsiteCompanySearchResult(),
                   },
                   () => ({
                     exactMatch: [],

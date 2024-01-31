@@ -3,9 +3,9 @@ import {AppLang} from '@/i18n/localization/AppLangs'
 import {getIndexForStep, ReportStep, reportSteps} from '@/model/ReportStep'
 import {InfoWall, reportTags, socialNetworks, Subcategory} from '../anomalies/Anomaly'
 import {Address, ApiAddress} from '../model/Address'
-import {CompanySearchResult, WebsiteCompanySearchResult} from '../model/Company'
+import {CompanyDraft, CompanySearchResult, WebsiteCompanySearchResult} from '../model/Company'
 import {CreatedReport} from '../model/CreatedReport'
-import {CompanyDraft, Influencer, ReportDraft, ReportDraftConsumer} from '../model/ReportDraft'
+import {Influencer, ReportDraft, ReportDraftConsumer} from '../model/ReportDraft'
 import {FileOrigin} from '../model/UploadedFile'
 
 export class SeedableRandom {
@@ -103,7 +103,7 @@ export class Fixture {
   ]
 
   static readonly genReport = (random: SeedableRandom = defaultRandom): CreatedReport => {
-    const company = Fixture.genCompany()
+    const company = Fixture.genCompanyDraft()
     const subcategories = [Fixture.genSubcategory({}, random), Fixture.genSubcategory({}, random)]
     return {
       companyAddress: Fixture.genApiAddress(random),
@@ -145,7 +145,7 @@ export class Fixture {
       }),
       BuildingConsumer: _ => ({
         ..._,
-        companyDraft: Fixture.genCompany(random),
+        companyDraft: Fixture.genCompanyDraft(random),
       }),
       Confirmation: _ => ({
         ..._,
@@ -184,7 +184,7 @@ export class Fixture {
     }
   }
 
-  static readonly genCompanySearchResult = (random: SeedableRandom = defaultRandom) => {
+  static readonly genWebsiteCompanySearchResult = (random: SeedableRandom = defaultRandom) => {
     return <WebsiteCompanySearchResult>{
       exactMatch: [
         <CompanySearchResult>{
@@ -196,15 +196,35 @@ export class Fixture {
     }
   }
 
-  static readonly genCompany = (random: SeedableRandom = defaultRandom) => {
+  static readonly genCompanyDraft = (random: SeedableRandom = defaultRandom) => {
     return <CompanyDraft>{
       id: random.string(),
       name: random.string({capitalization: 'lowercase', charset: 'alphabetic', length: 8}),
+      brand: random.string({capitalization: 'lowercase', charset: 'alphabetic', length: 6}),
       siret: random.siret(),
       address: Fixture.genAddress(random),
       isHeadOffice: random.boolean(),
       isPublic: random.boolean(),
       isOpen: random.boolean(),
+      website: 'https://www.website.com',
+      phone: random.phone(),
+      activityCode: '46.36B',
+    }
+  }
+
+  static readonly genCompanySearchResult = (random: SeedableRandom = defaultRandom): CompanySearchResult => {
+    return {
+      name: random.string({capitalization: 'lowercase', charset: 'alphabetic', length: 8}),
+      commercialName: random.string({capitalization: 'lowercase', charset: 'alphabetic', length: 14}),
+      brand: random.string({capitalization: 'lowercase', charset: 'alphabetic', length: 6}),
+      siret: random.siret(),
+      address: Fixture.genAddress(random),
+      isHeadOffice: random.boolean(),
+      isPublic: random.boolean(),
+      isOpen: random.boolean(),
+      activityCode: '46.36B',
+      activityLabel: 'Commerce de gros (commerce interentreprises) alimentaire spécialisé divers',
+      isMarketPlace: random.boolean(),
     }
   }
 

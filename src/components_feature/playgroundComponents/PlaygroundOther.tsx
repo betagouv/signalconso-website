@@ -10,6 +10,8 @@ import {useI18n} from '../../i18n/I18n'
 import {DetailsSpecifyInput} from '../reportFlow/Details/DetailsSpecifyInput'
 import Button from '@codegouvfr/react-dsfr/Button'
 import {createModal} from '@codegouvfr/react-dsfr/Modal'
+import {CompanyRecap} from '@/components_simple/CompanyRecap'
+import {Fixture} from '@/test/fixture'
 
 const modal = createModal({
   id: 'playground-modal',
@@ -195,6 +197,12 @@ export const PlaygroundOther = () => {
         <ScAlert type="error">
           <p className="mb-0">Un message d'erreur</p>
         </ScAlert>
+      </div>
+      <div className="border border-gray-500 border-solid p-2 mb-2">
+        <h6>Le composant "CompanyRecap"</h6>
+        <CompanyRecap company={Fixture.genCompanySearchResult()} kind="companySearchResult" />
+        <h6>Le composant "CompanyRecap" avec un CompanyDraft</h6>
+        <CompanyRecap company={Fixture.genCompanyDraft()} kind="companyDraft" />
       </div>
     </>
   )
