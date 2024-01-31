@@ -47,6 +47,8 @@ type SubcategoryBase = {
   ccrfCode?: string[]
   companyKind?: CompanyKinds
   companyKindQuestion?: CompanyKindQuestion
+  // Temporary, to control the display of one specific subcategory through a feature flag
+  isAccessibiliteSubcategory?: boolean
 }
 
 // A typical subcategory
@@ -92,12 +94,43 @@ export const companyKinds = [
   'LOCATION',
   'SOCIAL',
   'PRODUCT',
+  'TRAIN',
 ] as const
 export type CompanyKinds = (typeof companyKinds)[number]
 export type SpecificWebsiteCompanyKinds = Extract<CompanyKinds, 'MERCHANT_WEBSITE' | 'TRANSPORTER_WEBSITE'>
 
 export const socialNetworks = ['SNAPCHAT', 'INSTAGRAM', 'FACEBOOK', 'YOUTUBE', 'TIKTOK', 'TWITTER', 'TWITCH', 'LINKEDIN'] as const
 export type SocialNetworks = (typeof socialNetworks)[number]
+
+export const trains = [
+  'INOUI_INTERCITES',
+  'OUIGO',
+  'TER',
+  'TRANSILIEN',
+  'EUROSTAR',
+  'TGV_LYRIA',
+  'TGV_ITALIE',
+  'TRENITALIA',
+  'RENFE',
+  'ICE',
+  'TRAIN_DE_NUIT',
+] as const
+export type Trains = (typeof trains)[number]
+
+export const ters = [
+  'AUVERGNE_RHONE_ALPES',
+  'BOURGOGNE_FRANCHE_COMTE',
+  'BRETAGNE',
+  'CENTRE_VAL_DE_LOIRE',
+  'GRAND_EST',
+  'HAUTS_DE_FRANCE',
+  'NOUVELLE_AQUITAINE',
+  'NORMANDIE',
+  'OCCITANIE',
+  'PACA',
+  'PAYS_DE_LA_LOIRE',
+] as const
+export type Ters = (typeof ters)[number]
 
 export interface InfoWall {
   title?: string

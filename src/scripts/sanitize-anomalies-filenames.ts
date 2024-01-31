@@ -34,6 +34,8 @@ function sanitizeDirContents(_path: string, options: {excludedFileName?: string}
     const title = findTitleForPath(subpath)
     const newIdx = padTo2(idx + 1)
     const newTitle = slugify(title, {strict: true, replacement: '_'})
+      // there's a total max length of 256 for the whole path on windows...
+      .slice(0, 15)
     const extension = isFile(subpath) ? '.yaml' : ''
     const newName = `${newIdx}_${newTitle}${extension}`
     renameFileOrDir(subpath, newName)

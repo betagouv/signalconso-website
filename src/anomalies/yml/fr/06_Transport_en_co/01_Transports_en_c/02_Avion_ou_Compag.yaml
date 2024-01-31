@@ -1,0 +1,13 @@
+title: Avion ou Compagnie aérienne
+desc: 'Exemple : Vol annulé, vol retardé, déclassement, refus d''embarquement, accessibilité'
+blockingInfo:
+  title: Oups, nous ne pouvons pas traiter votre signalement.
+  content: >-
+    Vous avez acheté votre billet d'avion directement auprès d'une compagnie
+    aérienne. <br />Vous avez eu un problème de déclassement, un refus
+    d'embarquement, votre vol a été retardé ou annulé. <br /> <br />Ce type de
+    problème ne doit pas être signalé sur SignalConso. Nous vous invitons à
+    utiliser le site dédié : <br /><a
+    href="https://droits-passagers-aeriens.aviation-civile.gouv.fr/public/signalement?new-signalement=true">https://droits-passagers-aeriens.aviation-civile.gouv.fr</a>
+    <br /> <br />Vous avez acheté vos billets d'avions dans une agence de
+    voyages ? <br />Revenez en arrière et allez sur "Agence de voyage" :)

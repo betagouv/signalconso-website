@@ -37,7 +37,7 @@ const Node = ({
   const title = instanceOfAnomaly(anomaly) ? anomaly.title : anomaly.title
   const desc = instanceOfAnomaly(anomaly) ? anomaly.description : anomaly.desc
   const reponseconsoCode = instanceOfAnomaly(anomaly) ? undefined : anomaly.reponseconsoCode
-  const ccrfCode = instanceOfAnomaly(anomaly) ? undefined : anomaly.ccrfCode
+  const ccrfCodes = (instanceOfAnomaly(anomaly) ? undefined : anomaly.ccrfCode) ?? []
   const tags = instanceOfAnomaly(anomaly) ? undefined : anomaly.tags
   const companyKind = instanceOfAnomaly(anomaly) ? undefined : anomaly.companyKind
   const companyKindQuestion = instanceOfAnomaly(anomaly) ? undefined : anomaly.companyKindQuestion
@@ -45,6 +45,7 @@ const Node = ({
   const isLeaf = !anomaly.subcategories || anomaly.subcategories.length === 0
   const isBlocking = instanceOfSubcategoryWithInfoWall(anomaly)
   const [isOpen, setIsOpen] = useState(false)
+  const isAccessibiliteSubcategory = (instanceOfAnomaly(anomaly) ? false : anomaly.isAccessibiliteSubcategory) ?? false
   useEffect(() => {
     setIsOpen(!!openAll)
   }, [openAll])
@@ -85,6 +86,9 @@ const Node = ({
             </span>
           </div>
           <div>
+            {isAccessibiliteSubcategory && (
+              <BorderedItem text="Sous-catégorie spéciale (Accessibilité)" icon="ri-error-warning-line" />
+            )}
             {displayExtra &&
               tags &&
               tags.length &&
@@ -107,7 +111,10 @@ const Node = ({
             {displayExtra && reponseconsoCode && (
               <BorderedItem text={reponseconsoCode} icon="ri-customer-service-line" itemKindText="reponseconsoCode :" />
             )}
-            {displayExtra && ccrfCode && <BorderedItem text={ccrfCode} icon="ri-hashtag" itemKindText="ccrfCode :" />}
+            {displayExtra &&
+              ccrfCodes.map((_, idx) => {
+                return <BorderedItem key={`${_}_${idx}`} text={_} icon="ri-hashtag" itemKindText="ccrfCode :" />
+              })}
           </div>
 
           {isLeaf && (isBlocking ? <NodeInfo anomaly={anomaly} /> : <NodeInputs anomaly={anomaly} {...{displayExtra}} />)}
