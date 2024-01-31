@@ -1,12 +1,12 @@
 import {allAnomalies} from '@/anomalies/Anomalies'
+import {AppLang} from '@/i18n/localization/AppLangs'
 import {getIndexForStep, ReportStep, reportSteps} from '@/model/ReportStep'
 import {InfoWall, reportTags, socialNetworks, Subcategory} from '../anomalies/Anomaly'
 import {Address, ApiAddress} from '../model/Address'
-import {Company, CompanySearchResult, WebsiteCompanySearchResult} from '../model/Company'
+import {CompanySearchResult, WebsiteCompanySearchResult} from '../model/Company'
 import {CreatedReport} from '../model/CreatedReport'
-import {Influencer, ReportDraft, ReportDraftConsumer} from '../model/ReportDraft'
+import {CompanyDraft, Influencer, ReportDraft, ReportDraftConsumer} from '../model/ReportDraft'
 import {FileOrigin} from '../model/UploadedFile'
-import {AppLang} from '@/i18n/localization/AppLangs'
 
 export class SeedableRandom {
   seed = 1
@@ -197,11 +197,14 @@ export class Fixture {
   }
 
   static readonly genCompany = (random: SeedableRandom = defaultRandom) => {
-    return <Company>{
+    return <CompanyDraft>{
       id: random.string(),
       name: random.string({capitalization: 'lowercase', charset: 'alphabetic', length: 8}),
       siret: random.siret(),
       address: Fixture.genAddress(random),
+      isHeadOffice: random.boolean(),
+      isPublic: random.boolean(),
+      isOpen: random.boolean(),
     }
   }
 
