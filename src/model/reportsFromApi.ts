@@ -10,37 +10,40 @@ export interface ApiInfluencer {
 }
 
 // That's exactly what we should send to the API
-// Equivalent to ReportDraft in scala code
+// Equivalent to ReportDraft in Scala code.
+// We don't use the optional field syntax here ("?:")
+// We want to be sure to send every field to the API
 export interface ApiReportDraft {
-  gender?: Gender
+  gender: Gender | undefined
   category: string
   subcategories: string[]
   details: DetailInputValue[]
-  companyName?: string
-  companyBrand?: string
-  companyAddress?: Address
-  companySiret?: string
-  companyActivityCode?: string
-  companyIsHeadOffice?: boolean
-  companyIsOpen?: boolean
-  companyIsPublic?: boolean
-  websiteURL?: string
-  phone?: string
+  companyName: string | undefined
+  companyBrand: string | undefined
+  companyAddress: Address | undefined
+  companySiret: string | undefined
+  companyActivityCode: string | undefined
+  companyIsHeadOffice: boolean | undefined
+  companyIsOpen: boolean | undefined
+  companyIsPublic: boolean | undefined
+  websiteURL: string | undefined
+  phone: string | undefined
   firstName: string
   lastName: string
   email: string
-  consumerPhone?: string
-  consumerReferenceNumber?: string
+  consumerPhone: string | undefined
+  consumerReferenceNumber: string | undefined
   contactAgreement: boolean
   employeeConsumer: boolean
-  forwardToReponseConso?: boolean
+  forwardToReponseConso: boolean | undefined
   fileIds: string[]
-  vendor?: string
+  vendor: string | undefined
   tags: ReportTag[]
-  reponseconsoCode?: string[]
-  ccrfCode?: string[]
-  influencer?: ApiInfluencer
+  reponseconsoCode: string[] | undefined
+  ccrfCode: string[] | undefined
+  influencer: ApiInfluencer | undefined
   lang: AppLang
+  barcodeProductId: string | undefined
   metadata:
     | {
         isMobileApp: true
@@ -73,8 +76,8 @@ export interface ApiCreatedReport {
   lastName: string
   email: string
   consumerReferenceNumber: string | null
-  ccrfCode: string[]
   phone: string | null
+  ccrfCode: string[]
   consumerPhone: string | null
   employeeConsumer: boolean
   reponseconsoCode: string[]

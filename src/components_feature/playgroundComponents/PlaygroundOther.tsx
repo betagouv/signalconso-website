@@ -10,7 +10,7 @@ import {useI18n} from '../../i18n/I18n'
 import {DetailsSpecifyInput} from '../reportFlow/Details/DetailsSpecifyInput'
 import Button from '@codegouvfr/react-dsfr/Button'
 import {createModal} from '@codegouvfr/react-dsfr/Modal'
-import {CompanyRecap} from '@/components_simple/CompanyRecap'
+import {CompanyRecap} from '@/components_simple/CompanyRecap/CompanyRecap'
 import {Fixture} from '@/test/fixture'
 
 const modal = createModal({

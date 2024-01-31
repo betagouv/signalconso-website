@@ -11,7 +11,7 @@ import {useToastError} from '../../../hooks/useToastError'
 import {CompanySearchResult, isGovernmentCompany} from '../../../model/Company'
 import {CompanyWebsiteVendor} from './CompanyWebsiteVendor'
 import {NoSearchResult} from './lib/NoSearchResult'
-import {CompanyRecap} from '@/components_simple/CompanyRecap'
+import {CompanyRecap} from '@/components_simple/CompanyRecap/CompanyRecap'
 
 interface Props {
   companies: CompanySearchResult[]
