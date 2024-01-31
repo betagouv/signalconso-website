@@ -1043,6 +1043,7 @@ export const fr = {
     barcodeNoCompanyFound: "Aucune entreprise associée à ce code-barres. Le produit provient peut-être de l'étranger ?",
     barcodeNoProductFound: 'Aucun produit trouvé pour ce code-barres.',
     barcodeWhereToFind: 'Numéro (GTIN) du code-barres du produit',
+    barcodeLabel: 'Code-barres (GTIN) :',
     barcodeHelp: 'Aide code-barres',
     barcodeHelp2: 'Vous trouverez ce numéro sous le code-barres présent sur le produit ou son emballage.',
     howToFindIt: `Où le trouver ?`,

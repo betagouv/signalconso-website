@@ -71,7 +71,11 @@ export const BarcodeSearchResult = ({product, company, onSubmit}: BarcodeSearchR
             <i className="ri-shopping-cart-2-fill" />
             <h1 className="text-xl font-bold mb-0 pl-2">{m.barcodeProduct}</h1>
           </div>
-          <p className="ml-4 text-gray-600 mb-12">{product.productName ?? m.barcodeNoDescriptionFound}</p>
+          <p className="ml-4 mb-0">{product.productName ?? m.barcodeNoDescriptionFound}</p>
+          <p className="ml-4 text-gray-600 mb-12 text-sm">
+            {m.barcodeLabel} {product.gtin}
+          </p>
+
           <div className="flex items-start align-middle mb-2">
             <i className="ri-store-2-fill" />
             <h1 className="text-xl font-bold mb-0 pl-2">{m.barcodeCompany}</h1>
