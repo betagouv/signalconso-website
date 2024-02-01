@@ -1,7 +1,9 @@
 'use client'
-import {AddressComponent} from '@/components_simple/Address'
+import {CompanyByTrain} from '@/components_feature/reportFlow/Company/CompanyByTrain'
+import {CompanyRecap, CompanyRecapWithProduct} from '@/components_simple/CompanyRecap/CompanyRecap'
 import {BtnNext} from '@/components_simple/buttons/Buttons'
 import {useI18n} from '@/i18n/I18n'
+import {BarcodeProduct} from '@/model/BarcodeProduct'
 import {ReportDraft2} from '@/model/ReportDraft2'
 import {Button} from '@codegouvfr/react-dsfr/Button'
 import {SpecificWebsiteCompanyKinds} from '../../../anomalies/Anomaly'
@@ -12,7 +14,6 @@ import {fnSwitch} from '../../../utils/FnSwitch'
 import {DeepPartial} from '../../../utils/utils'
 import {useReportFlowContext} from '../ReportFlowContext'
 import {StepNavigation} from '../reportFlowStepper/ReportFlowStepper'
-import {BarcodeSearchResult} from './lib/BarcodeSearchResult'
 import {CompanyAskConsumerPostalCode} from './CompanyAskConsumerPostalCode'
 import {CompanyAskConsumerStreet} from './CompanyAskConsumerStreet'
 import {CompanyAskForeignDetails} from './CompanyAskForeignDetails'
@@ -26,8 +27,8 @@ import {CompanySearchByNameAndPostalCode} from './CompanySearchByNameAndPostalCo
 import {CompanySearchResultComponent} from './CompanySearchResult'
 import {CompanyWebsiteCountry} from './CompanyWebsiteCountry'
 import {InfluencerBySocialNetwork} from './InfluencerBySocialNetwork'
-import {CompanyByTrain} from '@/components_feature/reportFlow/Company/CompanyByTrain'
-import {CompanyRecap} from '@/components_simple/CompanyRecap'
+import {BarcodeSearchResult} from './lib/BarcodeSearchResult'
+import {ProductRecap} from '@/components_simple/CompanyRecap/ProductRecap'
 
 interface CompanyWithRequiredProps {
   draft: Pick<ReportDraft, 'companyKind'>
@@ -110,7 +111,7 @@ export const CompanyFilled = ({
   return (
     <div>
       <h2 className="fr-h6">{m.companyIdentifiedTitle}</h2>
-      <CompanyRecap company={draft.companyDraft} kind="companyDraft" />
+      <CompanyRecapWithProduct company={draft.companyDraft} kind="companyDraft" barcodeProduct={draft.barcodeProduct} />
       <ActionButtons {...{onClear, stepNavigation}} />
     </div>
   )
@@ -158,24 +159,24 @@ export const _Company = ({draft, onUpdateReportDraft}: CompanyWithRequiredProps)
   const barcodeTree = () => {
     return (
       <CompanySearchByBarcode>
-        {(product, company, skipped) =>
+        {(barcodeProduct, company, skipped) =>
           skipped ? (
             commonTree()
           ) : (
             <>
               <BarcodeSearchResult
-                product={product}
+                product={barcodeProduct}
                 company={company}
-                onSubmit={(company, product) => {
+                onSubmit={(company, barcodeProduct) => {
                   onUpdateReportDraft({
                     companyDraft: {
                       ...company,
                     },
-                    barcodeProductId: product.id,
+                    barcodeProduct,
                   })
                 }}
               />
-              {!company && commonTree({}, product?.id, undefined)}
+              {!company && commonTree({}, barcodeProduct, undefined)}
             </>
           )
         }
@@ -185,7 +186,7 @@ export const _Company = ({draft, onUpdateReportDraft}: CompanyWithRequiredProps)
 
   const commonTree = (
     phoneOrWebsite: Pick<CompanyDraft, 'phone' | 'website'> = {},
-    barcodeProductId: string | undefined = undefined,
+    barcodeProduct: BarcodeProduct | undefined = undefined,
     result: CompanySearchResult[] | undefined = undefined,
   ) => {
     return result && result.length > 0 ? (
@@ -216,7 +217,7 @@ export const _Company = ({draft, onUpdateReportDraft}: CompanyWithRequiredProps)
                           ...company,
                           ...phoneOrWebsite,
                         },
-                        barcodeProductId,
+                        barcodeProduct,
                       })
                     }}
                   />
@@ -234,7 +235,7 @@ export const _Company = ({draft, onUpdateReportDraft}: CompanyWithRequiredProps)
                           ...company,
                           ...phoneOrWebsite,
                         },
-                        barcodeProductId,
+                        barcodeProduct,
                       })
                     }}
                   />
@@ -253,7 +254,7 @@ export const _Company = ({draft, onUpdateReportDraft}: CompanyWithRequiredProps)
                           street: form.street,
                         },
                       },
-                      barcodeProductId,
+                      barcodeProduct,
                     })
                   }}
                 />
@@ -272,7 +273,7 @@ export const _Company = ({draft, onUpdateReportDraft}: CompanyWithRequiredProps)
                                   postalCode: postalCode,
                                 },
                               },
-                              barcodeProductId,
+                              barcodeProduct,
                             })
                           }}
                         />
@@ -290,7 +291,7 @@ export const _Company = ({draft, onUpdateReportDraft}: CompanyWithRequiredProps)
                                   country: form.country.code,
                                 },
                               },
-                              barcodeProductId,
+                              barcodeProduct,
                             })
                           }}
                         />
@@ -306,7 +307,7 @@ export const _Company = ({draft, onUpdateReportDraft}: CompanyWithRequiredProps)
                                   postalCode,
                                 },
                               },
-                              barcodeProductId,
+                              barcodeProduct,
                             })
                           }}
                         />

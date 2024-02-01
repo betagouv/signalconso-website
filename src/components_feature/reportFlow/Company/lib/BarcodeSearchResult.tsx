@@ -5,22 +5,13 @@ import {useI18n} from '../../../../i18n/I18n'
 import {BarcodeProduct} from '../../../../model/BarcodeProduct'
 import {CompanySearchResult, isGovernmentCompany} from '../../../../model/Company'
 import {NoSearchResult} from './NoSearchResult'
-import {CompanyRecap} from '@/components_simple/CompanyRecap'
+import {CompanyRecap} from '@/components_simple/CompanyRecap/CompanyRecap'
+import {ProductRecap} from '@/components_simple/CompanyRecap/ProductRecap'
 
 interface BarcodeSearchResultPros {
   product?: BarcodeProduct
   company?: CompanySearchResult
   onSubmit: (selected: CompanySearchResult, product: BarcodeProduct) => void
-}
-
-function Row({icon, children, variant}: {icon: string; variant?: 'blue' | 'error'; children: ReactNode}) {
-  const color = variant === 'blue' ? 'text-scbluefrance' : variant === 'error' ? 'text-red-500' : 'text-gray-500'
-  return (
-    <div className={`flex items-start mb-1 text-sm ${color} `}>
-      <i className={`${icon} mr-2 fr-icon--sm`} />
-      <div>{children}</div>
-    </div>
-  )
 }
 
 export const BarcodeSearchResult = ({product, company, onSubmit}: BarcodeSearchResultPros) => {
@@ -33,11 +24,9 @@ export const BarcodeSearchResult = ({product, company, onSubmit}: BarcodeSearchR
             <i className="ri-shopping-cart-2-fill" />
             <h1 className="text-xl font-bold mb-0 pl-2">{m.barcodeProduct}</h1>
           </div>
-          <p className="ml-4 mb-0">{product.productName ?? m.barcodeNoDescriptionFound}</p>
-          <p className="ml-4 text-gray-600 mb-12 text-sm">
-            {m.barcodeLabel} {product.gtin}
-          </p>
-
+          <div className="ml-4">
+            <ProductRecap {...{product}} />
+          </div>
           <div className="flex items-start align-middle mb-2">
             <i className="ri-store-2-fill" />
             <h1 className="text-xl font-bold mb-0 pl-2">{m.barcodeCompany}</h1>

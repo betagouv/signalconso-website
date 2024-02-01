@@ -20,7 +20,8 @@ import {FileOrigin} from '../../../model/UploadedFile'
 import {useReportCreateContext} from '../ReportCreateContext'
 import {useReportFlowContext} from '../ReportFlowContext'
 import {ConfirmationStep, ConfirmationStepper} from './ConfirmationStepper'
-import {CompanyRecap} from '@/components_simple/CompanyRecap'
+import {CompanyRecapWithProduct, CompanyRecap} from '@/components_simple/CompanyRecap/CompanyRecap'
+import {ProductRecap} from '@/components_simple/CompanyRecap/ProductRecap'
 
 export const Confirmation = ({stepNavigation, isWebView}: {stepNavigation: StepNavigation; isWebView: boolean}) => {
   const _reportFlow = useReportFlowContext()
@@ -153,7 +154,7 @@ function RenderEachStep({
         <>
           {draft.companyDraft && (
             <ConfirmationStep title={m.step_company} {...{goToStep, index}}>
-              <CompanyRecap company={draft.companyDraft} kind="companyDraft" />
+              <CompanyRecapWithProduct company={draft.companyDraft} kind="companyDraft" barcodeProduct={draft.barcodeProduct} />
             </ConfirmationStep>
           )}
           {draft.influencer && (
