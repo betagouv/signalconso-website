@@ -133,6 +133,7 @@ export const ReportFlowStepper = ({anomaly, isWebView}: StepperProps) => {
     // Il va y avoir un redirect, évitons de render
     return null
   }
+
   return (
     <>
       <ReportFlowStepperHeader {...{step, stepNavigation, isWebView}} anomalyTitle={anomaly.title} variant="main" />

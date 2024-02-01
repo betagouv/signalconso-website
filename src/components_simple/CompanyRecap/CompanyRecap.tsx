@@ -25,9 +25,16 @@ export function CompanyRecapWithProduct(
 
 type CompanyRecapProps = {company: CompanySearchResult}
 
+// Use name + commercialName if present
+// Does not use brand
+export function buildCompanyName(_: CompanyRecapProps) {
+  const name = _.company.name
+  const commercialName = _.company.commercialName
+  return commercialName ? `${commercialName} (${name})` : name
+}
+
 export function CompanyRecap(props: CompanyRecapProps) {
   const closed = props.company.isOpen === false
-  const name = props.company.name
   const brand = props.company.brand
   const siret = props.company.siret
   const address = props.company.address
@@ -41,7 +48,7 @@ export function CompanyRecap(props: CompanyRecapProps) {
   return (
     <div className="flex justify-between w-full">
       <div>
-        <span className="font-bold block">{commercialName ? `${commercialName} (${name})` : name}</span>
+        <span className="font-bold block">{buildCompanyName(props)}</span>
         {brand && <span className="block">{brand}</span>}
         {isHeadOffice && (
           <Row icon="ri-building-fill" variant="blue">
