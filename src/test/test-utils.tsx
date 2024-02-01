@@ -14,6 +14,7 @@ import {SignalConsoApiClient} from '../clients/SignalConsoApiClient'
 import {DeepPartial} from '../utils/utils'
 import {AppLangs} from '../i18n/localization/AppLangs'
 import {AutoscrollProvider} from '@/context/AutoscrollContext'
+import {OpenFfBarcodeContextProvider} from '@/components_feature/reportFlow/OpenFfBarcodeContext'
 
 const AllTheProviders =
   (options?: Options) =>
@@ -47,6 +48,7 @@ const AllTheProviders =
           _ => <I18nProvider lang={AppLangs.fr} children={_} />,
           _ => <ReportCreateProvider children={_} />,
           _ => <ReportFlowProvider children={_} />,
+          _ => <OpenFfBarcodeContextProvider children={_} />,
           _ => <AutoscrollProvider children={_} />,
         ]}
       >

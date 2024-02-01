@@ -1,4 +1,3 @@
-import {extend} from 'lodash'
 import {appConfig} from '../core/appConfig'
 import {AppLang, AppLangs} from '../i18n/localization/AppLangs'
 import {Anomaly, CategoryNode, DetailInput, StandardSubcategory, Subcategory, SubcategoryWithInfoWall} from './Anomaly'
@@ -17,6 +16,8 @@ export const allVisibleAnomalies = (lang: AppLang) =>
     .sort((a, b) => {
       return parseInt(a.id, 10) - parseInt(b.id, 10)
     })
+
+export const allAnomaliesForHomepage = (lang: AppLang) => allVisibleAnomalies(lang).filter(_ => !_.isSpecialOpenFoodFactsCategory)
 
 function removeHiddenSubcategories<A extends CategoryNode>(catNode: A): A | undefined {
   const shouldDelete = instanceOfAnomaly(catNode)

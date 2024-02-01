@@ -2,20 +2,21 @@ import {useAnalyticContext} from '@/analytic/AnalyticContext'
 import {EventCategories, ReportEventActions} from '@/analytic/analytic'
 import {StepNavigation} from '@/components_feature/reportFlow/reportFlowStepper/ReportFlowStepper'
 import {ReportFlowStepperActions} from '@/components_feature/reportFlow/reportFlowStepper/ReportFlowStepperActions'
+import {FriendlyHelpText} from '@/components_simple/FriendlyHelpText'
 import {useI18n} from '@/i18n/I18n'
 import {ConsumerWish, ReportDraft} from '@/model/ReportDraft'
 import {ReportDraft2} from '@/model/ReportDraft2'
 import {useEffect, useMemo} from 'react'
 import {instanceOfSubcategoryWithInfoWall} from '../../../anomalies/Anomalies'
 import {Anomaly, CompanyKinds, ReportTag, Subcategory} from '../../../anomalies/Anomaly'
+import {AppLang} from '../../../i18n/localization/AppLangs'
+import {useOpenFfBarcodeContext} from '../OpenFfBarcodeContext'
 import {useReportFlowContext} from '../ReportFlowContext'
 import {ProblemConsumerWishInformation} from './ProblemConsumerWishInformation'
 import {ProblemInformation} from './ProblemInformation'
 import {ProblemSelect} from './ProblemSelect'
 import {ProblemStepper, ProblemStepperStep} from './ProblemStepper'
 import {computeSelectedSubcategoriesData} from './useSelectedSubcategoriesData'
-import {AppLang} from '../../../i18n/localization/AppLangs'
-import {FriendlyHelpText} from '@/components_simple/FriendlyHelpText'
 
 interface Props {
   anomaly: Anomaly
@@ -79,7 +80,10 @@ export function adjustReportDraftAfterSubcategoriesChange(
 export const Problem = ({anomaly, isWebView, stepNavigation}: Props) => {
   const _analytic = useAnalyticContext()
   const {m, currentLang} = useI18n()
+
   const {reportDraft, setReportDraft, resetFlow, sendReportEvent} = useReportFlowContext()
+  const {getOpenFfBarcode} = useOpenFfBarcodeContext()
+  const openFfBarcode = getOpenFfBarcode(anomaly)
   const hasReponseConsoSubcategories = reportDraft.subcategories
     ? buildTagsFromSubcategories(reportDraft.subcategories).includes('ReponseConso')
     : false
@@ -142,6 +146,22 @@ export const Problem = ({anomaly, isWebView, stepNavigation}: Props) => {
 
   return (
     <>
+      {openFfBarcode && (
+        <FriendlyHelpText>
+          <p className="mb-2 mt-4">
+            <i className="ri-information-line mr-2" />
+            Vous avez rencontré un problème avec le produit <span className="font-bold">
+              {openFfBarcode} TODO NOM PRODUIT
+            </span>{' '}
+            produit par l'entreprise <span className="font-bold">TODO NOM ENTREPRISE</span> ?
+          </p>
+          <p className="mb-4">
+            SignalConso vous permet de remonter le problème à l'entreprise. De plus, votre signalement est visible par les agents
+            de la répression des fraudes, qui pourront intervenir si nécessaire.
+          </p>
+          <p className="text-center font-bold mb-2">Répondez-simplement aux questions, et laissez-vous guider !</p>
+        </FriendlyHelpText>
+      )}
       {[anomaly, ...(reportDraft.subcategories ?? [])].map(
         (category, idx) =>
           category.subcategories && (

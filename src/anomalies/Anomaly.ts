@@ -20,6 +20,7 @@ export type Anomaly = CategoryNodeBase & {
   img: string
   hidden?: boolean
   isHiddenDemoCategory?: boolean
+  isSpecialOpenFoodFactsCategory?: boolean
   // text or question introducing the choice between the subcategories
 }
 
