@@ -52,6 +52,7 @@ describe('Details: single date not in future', () => {
     app = render(
       <DetailsInner
         inputs={[DetailsFixtureInput.date]}
+        transmissionStatus={'NOT_TRANSMITTABLE'}
         onSubmit={x => {
           inputValues = x
         }}
@@ -89,6 +90,7 @@ describe('Details: checkbox', () => {
     app = render(
       <DetailsInner
         inputs={[DetailsFixtureInput.radio(AppLangs.fr)]}
+        transmissionStatus={'NOT_TRANSMITTABLE'}
         onSubmit={x => {
           inputValues = x
         }}
@@ -149,6 +151,7 @@ describe('Details: textarea', () => {
     app = render(
       <DetailsInner
         inputs={[DetailsFixtureInput.textarea]}
+        transmissionStatus={'NOT_TRANSMITTABLE'}
         onSubmit={x => {
           inputValues = x
         }}

@@ -124,6 +124,7 @@ export const PlaygroundDetails = () => {
       </div>
       <DetailsInner
         inputs={[...chosenInputs]}
+        transmissionStatus={'NOT_TRANSMITTABLE'}
         onSubmit={(res, files) => {
           setResultInputs(ReportDraft2.parseDetails(res, chosenInputs))
           setResultFiles(files)

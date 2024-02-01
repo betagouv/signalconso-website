@@ -76,7 +76,9 @@ export const ConsumerInner = ({
   const toastError = useToastError()
   const watchContactAgreement = _form.watch('contactAgreement')
 
-  const showContactAgreement = ReportDraft.isTransmittableToPro(draft) && draft.consumerWish !== 'fixContractualDispute'
+  const transmissionStatus = ReportDraft.transmissionStatus(draft)
+  const isTransmittable = transmissionStatus === 'WILL_BE_TRANSMITTED' || transmissionStatus === 'MAY_BE_TRANSMITTED'
+  const showContactAgreement = isTransmittable && draft.consumerWish !== 'fixContractualDispute'
 
   const getErrors = (name: keyof ConsumerForm): {error: boolean; helperText?: string} => ({
     error: !!_form.formState.errors[name],
@@ -90,7 +92,7 @@ export const ConsumerInner = ({
     onSubmit({
       consumer: consumer,
       contactAgreement: (() => {
-        if (!ReportDraft.isTransmittableToPro(draft)) return false
+        if (!isTransmittable) return false
         if (draft.consumerWish === 'fixContractualDispute') return true
         return contactAgreement
       })(),

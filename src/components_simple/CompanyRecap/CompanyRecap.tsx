@@ -1,11 +1,37 @@
 import {useI18n} from '@/i18n/I18n'
 import {CompanyDraft, CompanySearchResult, isGovernmentCompany} from '@/model/Company'
 import {ChildrenProps} from '@/utils/utils'
-import {AddressComponent} from './Address'
+import {AddressComponent} from '../Address'
+import {BarcodeProduct} from '@/model/BarcodeProduct'
+import {ProductRecap} from './ProductRecap'
 
-export function CompanyRecap(
-  props: {company: CompanyDraft; kind: 'companyDraft'} | {company: CompanySearchResult; kind: 'companySearchResult'},
+export function CompanyRecapWithProduct(
+  props: CompanyRecapProps & {
+    barcodeProduct?: BarcodeProduct
+  },
 ) {
+  return (
+    <>
+      {props.kind === 'companyDraft' ? (
+        <CompanyRecap company={props.company} kind={props.kind} />
+      ) : (
+        <CompanyRecap company={props.company} kind={props.kind} />
+      )}
+      {props.barcodeProduct && (
+        <>
+          <p className="mt-4 !mb-2">À propos du produit :</p>
+          <ProductRecap product={props.barcodeProduct} />
+        </>
+      )}
+    </>
+  )
+}
+
+type CompanyRecapProps =
+  | {company: CompanyDraft; kind: 'companyDraft'}
+  | {company: CompanySearchResult; kind: 'companySearchResult'}
+
+export function CompanyRecap(props: CompanyRecapProps) {
   const closed = !props.company.isOpen
   const name = props.company.name
   const brand = props.company.brand

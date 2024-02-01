@@ -7,6 +7,7 @@ import {CompanyDraft, CompanySearchResult, WebsiteCompanySearchResult} from '../
 import {CreatedReport} from '../model/CreatedReport'
 import {Influencer, ReportDraft, ReportDraftConsumer} from '../model/ReportDraft'
 import {FileOrigin} from '../model/UploadedFile'
+import {BarcodeProduct} from '@/model/BarcodeProduct'
 
 export class SeedableRandom {
   seed = 1
@@ -142,6 +143,7 @@ export class Fixture {
             origin: FileOrigin.Consumer,
           },
         ],
+        barcodeProduct: Fixture.genBarcodeProduct(),
       }),
       BuildingConsumer: _ => ({
         ..._,
@@ -234,6 +236,15 @@ export class Fixture {
       id: random.string(),
       tags: random.oneOf([null, ...reportTags]),
       ...params,
+    }
+  }
+
+  static readonly genBarcodeProduct = (random: SeedableRandom = defaultRandom): BarcodeProduct => {
+    return {
+      id: random.string(),
+      gtin: random.string(),
+      productName: random.string(),
+      siren: random.siret(),
     }
   }
 

@@ -13,6 +13,7 @@ import {usePathname, useSearchParams} from 'next/navigation'
 import {AcknowledgmentCases} from '../reportFlow/Acknowledgement/Acknowledgement'
 import Button from '@codegouvfr/react-dsfr/Button'
 import Link from 'next/link'
+import {BarcodeProduct} from '@/model/BarcodeProduct'
 
 const companyDraft = {
   id: 'id12345',
@@ -31,7 +32,14 @@ const companyDraft = {
   isOpen: true,
 }
 
-const generalTestCases = ['details', 'companyFilled', 'consumer', 'confirmation', 'other'] as const
+const barcodeProduct: BarcodeProduct = {
+  id: '2edf6be3-b072-46b5-955e-a893bf23bf3b',
+  gtin: '3017620422003',
+  siren: '803769827',
+  productName: 'Nutella',
+}
+
+const generalTestCases = ['details', 'companyFilled', 'companyFilledWithProduct', 'consumer', 'confirmation', 'other'] as const
 
 const companyTestCases = [
   'company_siret',
@@ -95,6 +103,8 @@ const Playground = () => {
         return <PlaygroundCompany companyKind="PRODUCT" />
       case 'companyFilled':
         return <CompanyFilled draft={{companyDraft}} onClear={console.log} stepNavigation={dummyStepNavigation} />
+      case 'companyFilledWithProduct':
+        return <CompanyFilled draft={{companyDraft, barcodeProduct}} onClear={console.log} stepNavigation={dummyStepNavigation} />
       case 'consumer':
         return <PlaygroundConsumer />
       case 'confirmation':
