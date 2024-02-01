@@ -16,7 +16,7 @@ import {BarcodeSearchResult} from './lib/BarcodeSearchResult'
 import {CompanyAskConsumerPostalCode} from './CompanyAskConsumerPostalCode'
 import {CompanyAskConsumerStreet} from './CompanyAskConsumerStreet'
 import {CompanyAskForeignDetails} from './CompanyAskForeignDetails'
-import {CompanyAskIsForeign, IsForeignCompany} from './CompanyAskIsForeign'
+import {CompanyAskIsFrenchOrForeign, IsAFrenchCompany} from './CompanyAskIsFrenchOrForeign'
 import {CompanyByPhone} from './CompanyByPhone'
 import {CompanyByWebsite} from './CompanyByWebsite'
 import {CompanyIdentifyBy, IdentifyBy} from './CompanyIdentifyBy'
@@ -258,10 +258,10 @@ export const _Company = ({draft, onUpdateReportDraft}: CompanyWithRequiredProps)
                   }}
                 />
               ) : (
-                <CompanyAskIsForeign>
-                  {isForeign =>
-                    fnSwitch(isForeign, {
-                      [IsForeignCompany.Yes]: () => (
+                <CompanyAskIsFrenchOrForeign>
+                  {isFrench =>
+                    fnSwitch(isFrench, {
+                      [IsAFrenchCompany.Yes]: () => (
                         <CompanyAskConsumerPostalCode
                           companyKind={draft.companyKind!}
                           onChange={postalCode => {
@@ -277,7 +277,7 @@ export const _Company = ({draft, onUpdateReportDraft}: CompanyWithRequiredProps)
                           }}
                         />
                       ),
-                      [IsForeignCompany.No]: () => (
+                      [IsAFrenchCompany.No]: () => (
                         <CompanyAskForeignDetails
                           companyKind={draft.companyKind!}
                           onSubmit={form => {
@@ -295,7 +295,7 @@ export const _Company = ({draft, onUpdateReportDraft}: CompanyWithRequiredProps)
                           }}
                         />
                       ),
-                      [IsForeignCompany.Unknown]: () => (
+                      [IsAFrenchCompany.Unknown]: () => (
                         <CompanyAskConsumerPostalCode
                           companyKind={draft.companyKind!}
                           onChange={postalCode => {
@@ -313,7 +313,7 @@ export const _Company = ({draft, onUpdateReportDraft}: CompanyWithRequiredProps)
                       ),
                     })
                   }
-                </CompanyAskIsForeign>
+                </CompanyAskIsFrenchOrForeign>
               ),
           })
         }

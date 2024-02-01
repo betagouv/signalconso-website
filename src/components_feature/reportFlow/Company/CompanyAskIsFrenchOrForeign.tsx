@@ -4,19 +4,19 @@ import {useI18n} from '@/i18n/I18n'
 import {ReactNode, useState} from 'react'
 import {ScRadioButtons} from '../../../components_simple/formInputs/ScRadioButtons'
 
-export enum IsForeignCompany {
+export enum IsAFrenchCompany {
   Yes = 'Yes',
   No = 'No',
   Unknown = 'Unknown',
 }
 
 interface Props {
-  children: (_: IsForeignCompany) => ReactNode
+  children: (_: IsAFrenchCompany) => ReactNode
 }
 
-export const CompanyAskIsForeign = ({children}: Props) => {
+export const CompanyAskIsFrenchOrForeign = ({children}: Props) => {
   const {m} = useI18n()
-  const [isForeignCompany, setIsForeignCompany] = useState<IsForeignCompany | undefined>()
+  const [isAFrenchCompany, setIsAFrenchCompany] = useState<IsAFrenchCompany | undefined>()
   return (
     <>
       <Animate>
@@ -25,17 +25,17 @@ export const CompanyAskIsForeign = ({children}: Props) => {
             <ScRadioButtons
               required
               titleNoAutoAsterisk
-              value={isForeignCompany}
-              onChange={setIsForeignCompany}
+              value={isAFrenchCompany}
+              onChange={setIsAFrenchCompany}
               title={m.isAFrenchCompany}
               options={[
                 {
                   label: m.yes,
-                  value: IsForeignCompany.Yes,
+                  value: IsAFrenchCompany.Yes,
                 },
                 {
                   label: m.noItsForeign,
-                  value: IsForeignCompany.No,
+                  value: IsAFrenchCompany.No,
                   description: (
                     <AccordionInline label={m.companyHowToFindCountry}>
                       <p
@@ -47,14 +47,14 @@ export const CompanyAskIsForeign = ({children}: Props) => {
                 },
                 {
                   label: m.iDontKnown,
-                  value: IsForeignCompany.Unknown,
+                  value: IsAFrenchCompany.Unknown,
                 },
               ]}
             />
           </div>
         </div>
       </Animate>
-      {isForeignCompany && children(isForeignCompany)}
+      {isAFrenchCompany && children(isAFrenchCompany)}
     </>
   )
 }
