@@ -893,7 +893,9 @@ export const en = {
     step_consumer: `Your contact informations`,
     step_confirm: `Confirmation`,
     timeFromTo: (from: number, to: number) => `From ${from}h to ${to}h`,
-    detailsTextAreaTransmittable: `The informations you write below will be <b>read by the company</b>. It may also be viewed by Fraud Control.`,
+    detailsTextAreaWillBeTransmitted: `The informations you write below will be <b>read by the company</b>. It may also be viewed by Fraud Control.`,
+    detailsTextAreaMayBeTransmitted: `The information below will be <b>transmitted to the company</b> if it is identified by our services. It may also be consulted by Fraud Control.`,
+    detailsTextAreaCannotBeTransmitted: `As the company is located abroad, the information below will not be transmitted to it and will be read <b>only by Fraud Control.</b>.`,
     detailsTextAreaTransmittableAnonymous: ` If you do not want the company to know your identity, <b>do not mention anything personal</b>.`,
     detailsTextAreaNotTransmittable: `The informations you write below will be read <b>by Fraud Control only.</b>`,
     detailsTextAreaEmployeeConsumer: `No information will be shared with your employer.`,
@@ -964,6 +966,7 @@ export const en = {
       'Fraud Control may decide to open an investigation based on the informations you provide.',
     consumerWishInvestigationIsPossible2:
       'If a business receives an excessively high volume or frequent number of reports, Fraud Control will investigate the companies in question.',
+    employeeConsumerInformation: `To ensure your job security, your details will not be transmitted to the company. It will be read <b>only by Fraud Control</b>.`,
     informationRatingSaved: `Your comments have been recorded, thank you.`,
     informationTitle: `Unfortunately, we are unable to take your report any further.`,
     informationReportOutOfScope: `Although we do believe the issue you experienced was genuine, it was not a case of fraud.`,
@@ -1055,6 +1058,10 @@ export const en = {
     noItsForeign: `No, it is based outside France`,
     companyHowToFindCountry: `How do I find the country where a company is based?`,
     iDontKnown: `I don't know`,
+    CannotTransmitToForeignCompany: `
+          As the company is located abroad, your report cannot be forwarded to them.
+          <b>We strongly advise you to submit your report anyway</b> to help DGCCRF agents in their investigations.
+    `,
     phoneNumberHavingCalled: `Phone number used to call you`,
     phoneNumberHavingCalledPlaceholder: `Ex: 06 00 00 00 00`,
     noMatchingCompany: `Your search did not return any results.`,

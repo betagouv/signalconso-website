@@ -903,7 +903,9 @@ export const fr = {
     step_consumer: `Vos coordonnées`,
     step_confirm: `Confirmation`,
     timeFromTo: (from: number, to: number) => `De ${from}h à ${to}h`,
-    detailsTextAreaTransmittable: `Les informations ci-dessous seront <b>lues par l'entreprise</b>. La répression des fraudes pourra également les consulter.`,
+    detailsTextAreaWillBeTransmitted: `Les informations ci-dessous seront <b>lues par l'entreprise</b>. La répression des fraudes pourra également les consulter.`,
+    detailsTextAreaMayBeTransmitted: `Les informations ci-dessous seront <b>transmises à l'entreprise</b> si celle-ci est identifiée par nos services. La répression des fraudes pourra également les consulter.`,
+    detailsTextAreaCannotBeTransmitted: `L'entreprise étant située à l'étranger, les informations ci-dessous ne lui seront pas transmises et seront lues <b>uniquement par la répression des fraudes.</b>`,
     detailsTextAreaTransmittableAnonymous: ` Si vous ne souhaitez pas que l'entreprise connaisse votre identité, <b>ne citez rien de personnel</b>.`,
     detailsTextAreaNotTransmittable: `Les informations ci-dessous seront lues <b>uniquement par la répression des fraudes.</b>`,
     detailsTextAreaEmployeeConsumer: `Rien ne sera communiqué à votre employeur.`,
@@ -970,11 +972,12 @@ export const fr = {
     consumerWishFixContractualDispute: `Votre signalement sera transmis à l'entreprise. La répression des fraudes ne s'occupe pas de résoudre les problèmes
     individuels, mais <strong>faire le signalement peut inciter l'entreprise à vous répondre.</strong>`,
     consumerWishCompanyImprovement: `Votre signalement sera transmis à l'entreprise. Vous aurez la possibilité de rester anonyme.`,
-    consumerWishGetAnswer: `Un agent vous répondra sous les plus brefs délais.`,
+    consumerWishGetAnswer: `Un agent vous répondra dans les plus brefs délais. Votre signalement ne sera pas transmis à l'entreprise.`,
     consumerWishInvestigationIsPossible:
       "La répression des fraudes pourra décider de mener une enquête sur l'entreprise grâce à vos informations.",
     consumerWishInvestigationIsPossible2:
       'Si les signalements sont trop nombreux ou fréquents pour un établissement, les enquêteurs de la répression des fraudes interviendront auprès des professionnels.',
+    employeeConsumerInformation: `Afin de garantir la sécurité de votre emploi, votre signalement ne sera pas transmis à l'entreprise. Il sera lu <b>uniquement par la répression des fraudes</b>.`,
     informationRatingSaved: `Votre avis a bien été enregistré, nous vous en remercions.`,
     informationTitle: `Emmh, nous ne pouvons pas traiter votre signalement.`,
     informationReportOutOfScope: `Nous ne doutons pas que vous ayez réellement rencontré un problème mais... il ne s’agit pas d’une fraude.`,
@@ -1066,6 +1069,10 @@ export const fr = {
     noItsForeign: `Non, elle est à l'étranger`,
     companyHowToFindCountry: `Comment retrouver le pays d'une entreprise ?`,
     iDontKnown: `Je ne sais pas`,
+    CannotTransmitToForeignCompany: `
+          L'entreprise étant située à l'étranger, votre signalement ne pourra pas lui être transmis.
+          <b>Nous vous conseillons vivement de tout de même soumettre votre signalement</b> pour aider les agents de la DGCCRF à enquêter.
+    `,
     phoneNumberHavingCalled: `Numéro de téléphone vous ayant contacté`,
     phoneNumberHavingCalledPlaceholder: `Ex: 06 00 00 00 00`,
     noMatchingCompany: `Aucun établissement ne correspond à la recherche.`,

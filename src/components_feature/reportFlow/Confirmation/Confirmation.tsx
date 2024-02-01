@@ -10,7 +10,7 @@ import {ReportFilesConfirmation} from '@/components_simple/reportFile/ReportFile
 import {getApiErrorId, useToastError} from '@/hooks/useToastError'
 import {useI18n} from '@/i18n/I18n'
 import {ReportDraft2} from '@/model/ReportDraft2'
-import {BuildingStep, buildingReportSteps} from '@/model/ReportStep'
+import {buildingReportSteps, BuildingStep} from '@/model/ReportStep'
 import {ApiReportDraft} from '@/model/reportsFromApi'
 import Image from 'next/image'
 import {Anomaly} from '../../../anomalies/Anomaly'
@@ -46,14 +46,15 @@ export const ConfirmationInner = ({
   const _reportCreate = useReportCreateContext()
   const _analytic = useAnalyticContext()
 
+  const transmissionStatus = ReportDraft.transmissionStatus(draft)
+  const isTransmittable = transmissionStatus === 'WILL_BE_TRANSMITTED' || transmissionStatus === 'MAY_BE_TRANSMITTED'
+
   return (
     <Animate autoScrollTo={true}>
       <div>
         <h2 className="fr-h4">{m.confirmationTitle}</h2>
         <FriendlyHelpText>
-          <p className="mb-0">
-            {ReportDraft.isTransmittableToPro(draft) ? m.confirmationAlertTransmittable : m.confirmationAlert}
-          </p>
+          <p className="mb-0">{isTransmittable ? m.confirmationAlertTransmittable : m.confirmationAlert}</p>
         </FriendlyHelpText>
 
         <ConfirmationStepper>
@@ -101,6 +102,9 @@ function RenderEachStep({
 }) {
   const goToStep = stepNavigation.goTo
   const {m, currentLang} = useI18n()
+
+  const transmissionStatus = ReportDraft.transmissionStatus(draft)
+  const isTransmittable = transmissionStatus === 'WILL_BE_TRANSMITTED' || transmissionStatus === 'MAY_BE_TRANSMITTED'
 
   switch (step) {
     case 'BuildingProblem':
@@ -218,7 +222,7 @@ function RenderEachStep({
                 <span>{draft.consumer.referenceNumber}</span>
               </li>
             )}
-            {ReportDraft.isTransmittableToPro(draft) && (
+            {isTransmittable && (
               <li className="p-0 flex gap-2">
                 <i className="ri-lock-line text-gray-400" />
                 <span>{m.contactAgreement} : </span>
