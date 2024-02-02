@@ -695,6 +695,7 @@ export const en = {
       LINKEDIN: 'LinkedIn',
       SNAPCHAT: 'Snapchat',
       TWITCH: 'Twitch',
+      OTHER: 'Other network',
     },
     Train: {
       INOUI_INTERCITES: 'TGV Inoui and Intercités',

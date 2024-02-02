@@ -5,7 +5,8 @@ import {Gender} from './ReportDraft'
 import {AppLang} from '../i18n/localization/AppLangs'
 
 export interface ApiInfluencer {
-  socialNetwork: string
+  socialNetwork?: string
+  otherSocialNetwork?: string
   name: string
 }
 

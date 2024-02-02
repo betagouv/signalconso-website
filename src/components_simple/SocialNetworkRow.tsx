@@ -20,6 +20,8 @@ const socialNetworkIcon = (socialNetwork: SocialNetworks) => {
       return 'snapchat'
     case 'TWITCH':
       return 'twitch'
+    case 'OTHER':
+      return null
   }
 }
 
@@ -31,10 +33,11 @@ interface Props {
 
 export function SocialNetworkRow({socialNetwork, gray, className = ''}: Props) {
   const {m} = useI18n()
-  const src = `/icons/${socialNetworkIcon(socialNetwork)}.svg`
+  const icon = socialNetworkIcon(socialNetwork)
+  const src = icon && `/icons/${icon}.svg`
   return (
     <div className={`flex gap-2 pl-1 ${className}`}>
-      <Image src={src} width={24} height={24} alt="" />
+      {src && <Image src={src} width={24} height={24} alt="" />}
       <span className={gray ? 'text-gray-500' : ''}>{m.SocialNetwork[socialNetwork]}</span>
     </div>
   )
