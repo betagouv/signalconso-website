@@ -7,12 +7,14 @@ import {Animate} from '../../../components_simple/Animate'
 import {SocialNetworkRow} from '../../../components_simple/SocialNetworkRow'
 import {ScRadioButtons} from '../../../components_simple/formInputs/ScRadioButtons'
 import {useI18n} from '../../../i18n/I18n'
+import {DetailsSpecifyInput} from '@/components_feature/reportFlow/Details/DetailsSpecifyInput'
 
 interface Props {
-  onSubmit: (socialNetwork: SocialNetworks, influencer: string) => void
+  onSubmit: (socialNetwork: SocialNetworks, influencer: string, otherSocialNetwork?: string) => void
 }
 interface Form {
   socialNetwork: SocialNetworks
+  otherSocialNetwork: string
   influencer: string
 }
 
@@ -32,6 +34,7 @@ export const InfluencerBySocialNetwork = ({onSubmit}: Props) => {
     return {
       label: <SocialNetworkRow socialNetwork={socialNetwork} />,
       value: socialNetwork,
+      specify: socialNetwork === 'OTHER' ? <DetailsSpecifyInput control={control} name="otherSocialNetwork" /> : undefined,
     }
   })
 
@@ -40,7 +43,7 @@ export const InfluencerBySocialNetwork = ({onSubmit}: Props) => {
       <RequiredFieldsLegend />
       <form
         onSubmit={handleSubmit(form => {
-          onSubmit(form.socialNetwork, form.influencer)
+          onSubmit(form.socialNetwork, form.influencer, form.otherSocialNetwork)
         })}
       >
         <Animate autoScrollTo={false}>

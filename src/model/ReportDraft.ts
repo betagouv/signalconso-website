@@ -48,6 +48,7 @@ export interface Train {
 
 export interface Influencer {
   socialNetwork: SocialNetworks
+  otherSocialNetwork?: string
   name: string
 }
 
@@ -100,7 +101,7 @@ export class ReportDraft {
   }
 
   static readonly toApiInfluencer = (influencer: Influencer): ApiInfluencer => {
-    const toApiSocialNetwork = (socialNetwork: SocialNetworks): string => {
+    const toApiSocialNetwork = (socialNetwork: SocialNetworks): string | undefined => {
       switch (socialNetwork) {
         case 'YOUTUBE':
           return 'YouTube'
@@ -118,12 +119,15 @@ export class ReportDraft {
           return 'Snapchat'
         case 'TWITCH':
           return 'Twitch'
+        case 'OTHER':
+          return undefined
       }
     }
 
     return {
       name: influencer.name,
       socialNetwork: toApiSocialNetwork(influencer.socialNetwork),
+      otherSocialNetwork: influencer.otherSocialNetwork,
     }
   }
 
