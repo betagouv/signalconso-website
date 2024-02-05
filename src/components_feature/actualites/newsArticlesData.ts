@@ -8,7 +8,7 @@ export const initialNewsArticlesData = [
     date: '2024-02-05',
     lang: 'fr',
     slug: 'conseils-de-consommation-pour-des-vacances-dhiver-sereines',
-    title: `conseils-de-consommation-pour-des-vacances-dhiver-sereines'`,
+    title: `conseils de consommation pour des vacances d'hiver sereines`,
     excerpt: `Les vacances d’hiver 2024 sont proches. Pour qu’elles soient sereines, la DGCCRF vous fournit quelques conseils de consommation relatifs aux voyages, séjours et sorties de loisirs.`,
   },
   {
