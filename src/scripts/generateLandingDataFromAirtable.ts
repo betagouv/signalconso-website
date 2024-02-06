@@ -92,8 +92,8 @@ function throwForInvalidUrlFieldWithSlashes(): never {
   throw new Error(`Invalid url field, it should not contain any slashes`)
 }
 
-function throwForInvalidUrlFieldWithSpecialChars(): never {
-  throw new Error(`Invalid url field, it should not contain any uppercase, underscore, accents or special characters`)
+function throwForInvalidUrlFieldWithSpecialChars(url: string): never {
+  throw new Error(`Invalid url field, it should not contain any uppercase, underscore, accents or special characters : ${url}`)
 }
 
 function validateAndTransformRow(row: RawRow): RowTranformed {
@@ -156,7 +156,7 @@ function validateAndTransformRow(row: RawRow): RowTranformed {
     throwForInvalidUrlFieldWithSlashes()
   }
   if (!/^[a-z0-9-]*$/.test(url)) {
-    throwForInvalidUrlFieldWithSpecialChars()
+    throwForInvalidUrlFieldWithSpecialChars(url)
   }
 
   // if multiple categories, always sort them in the same order as the HP
