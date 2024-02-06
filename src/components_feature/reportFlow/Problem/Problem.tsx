@@ -112,6 +112,17 @@ export const Problem = ({anomaly, isWebView, stepNavigation}: Props) => {
     }
   }, [anomaly.category])
 
+  useEffect(() => {
+    const barcodeProduct = _openFfBarcodeSearch.data
+    if (openFfBarcode && barcodeProduct !== null) {
+      // Set the product so that it appears pre-completed in the next step
+      setReportDraft(_ => ({
+        ..._,
+        barcodeProduct,
+      }))
+    }
+  }, [openFfBarcode, _openFfBarcodeSearch.data])
+
   const isTransmittable = ReportDraft.isTransmittableToProBeforePickingConsumerWish(reportDraft)
   const askConsumerWish = isTransmittable && reportDraft.companyKind !== 'SOCIAL'
 
