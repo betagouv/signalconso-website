@@ -44,7 +44,6 @@ export const CompanySearchByBarcode = ({children}: Props) => {
       return signalConsoApiClient.searchByBarcode(submittedGTIN ?? '')
     },
     enabled: !!submittedGTIN,
-    retry: false,
   })
 
   const [submittedIdentity, setSubmittedIdentity] = useState<string | undefined>(undefined)
