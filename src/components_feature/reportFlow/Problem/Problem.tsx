@@ -113,11 +113,13 @@ export const Problem = ({anomaly, isWebView, stepNavigation}: Props) => {
   }, [anomaly.category])
 
   useEffect(() => {
+    // when we come from openFf and we get the async data
     const barcodeProduct = _openFfBarcodeSearch.data
     if (openFfBarcode && barcodeProduct !== null) {
       // Set the product so that it appears pre-completed in the next step
       setReportDraft(_ => ({
         ..._,
+        // TODO actually we also need to fetch the company and put it there (company draft)
         barcodeProduct,
       }))
     }
@@ -143,13 +145,15 @@ export const Problem = ({anomaly, isWebView, stepNavigation}: Props) => {
       const consumerWish = askConsumerWish ? draft.consumerWish : 'companyImprovement'
       //Company kind 'SOCIAL' cannot be employee consumer report
       const employeeConsumer = draft.companyKind === 'SOCIAL' ? false : draft.employeeConsumer
-
+      const companyKind =
+        // For this category, it's always PRODUCT, regardless of the YAML.
+        anomaly.isSpecialOpenFoodFactsCategory ? 'PRODUCT' : companyKindFromSelected ?? draft.companyKind ?? 'SIRET'
       const updatedDraft = {
         ...draft,
         ccrfCode: ccrfCodeFromSelected,
         reponseconsoCode: responseconsoCodeFromSelected,
         tags: adjustTagsBeforeSubmit(draft, companyKindFromSelected),
-        companyKind: companyKindFromSelected ?? draft.companyKind ?? 'SIRET',
+        companyKind,
         anomaly: _anomaly,
         consumerWish,
         employeeConsumer,
@@ -170,7 +174,6 @@ export const Problem = ({anomaly, isWebView, stepNavigation}: Props) => {
 
   const tags = reportDraft.tags ?? []
 
-  console.log('@@@ data ', _openFfBarcodeSearch.data)
   const displayMainContent = !openFfBarcode || _openFfBarcodeSearch.status === 'success'
   return (
     <>
