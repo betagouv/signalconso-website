@@ -34,12 +34,12 @@ export class SignalConsoApiClient {
     },
   })
 
-  searchByBarcode = async (barcode: string): Promise<BarcodeProduct | undefined> => {
+  searchByBarcode = async (barcode: string): Promise<BarcodeProduct | null> => {
     try {
       return await this.client.get<BarcodeProduct>(`/barcode/gtin/${barcode}`)
     } catch (e) {
       if (e instanceof ApiError && e.details.code === 404) {
-        return undefined
+        return null
       }
       throw e
     }
