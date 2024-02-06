@@ -25,7 +25,7 @@ function removeHiddenSubcategories(anomaly: Anomaly): Anomaly {
   }
   return {
     ...anomaly,
-    subcategories: anomaly.subcategories.map(processSubcat).filter(notUndefined),
+    subcategories: anomaly.subcategories?.map(processSubcat).filter(notUndefined),
   }
 }
 
@@ -41,7 +41,7 @@ function transformCompanyKinds(anomaly: Anomaly): Anomaly {
   }
   return {
     ...anomaly,
-    subcategories: anomaly.subcategories.map(processSubcat),
+    subcategories: anomaly.subcategories?.map(processSubcat),
   }
 }
 
