@@ -1,4 +1,5 @@
 title: Informations manquantes
+desc: "Exemple\_: liste des ingrédients manquante"
 reponseconsoCode: '273'
 detailInputs:
   - label: Quelle information manque-t-il&#160;?

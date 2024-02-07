@@ -31,6 +31,7 @@ Les deux commandes que Guillaume devra retenir et taper régulièrement sont les
 
 - yarn [car on peut changer des dépendences de temps en temps]
 - yarn devyaml
+- crtl+C pour arrêter yarn devyaml
 
 J'ai essayé rapidement d'en faire un script ".bat" avec ces deux commandes, mais je n'ai pas réussi.
 

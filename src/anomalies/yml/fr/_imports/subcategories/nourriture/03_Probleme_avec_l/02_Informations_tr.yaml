@@ -1,4 +1,5 @@
 title: Informations trompeuses ou fausses
+desc: "Exemple\_: l'origine est fausse, logo trompeur"
 reponseconsoCode: '210'
 detailInputs:
   - label: Date du constat (ou d'achat suivant le cas)
