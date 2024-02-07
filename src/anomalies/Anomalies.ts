@@ -1,14 +1,16 @@
+import {extend} from 'lodash'
 import {appConfig} from '../core/appConfig'
 import {AppLang, AppLangs} from '../i18n/localization/AppLangs'
-import {Anomaly, DetailInput, StandardSubcategory, Subcategory, SubcategoryWithInfoWall} from './Anomaly'
+import {Anomaly, CategoryNode, DetailInput, StandardSubcategory, Subcategory, SubcategoryWithInfoWall} from './Anomaly'
 import anomaliesJSONEn from './json/anomalies_en.json'
 import anomaliesJSONFr from './json/anomalies_fr.json'
 
-export const allAnomalies = (lang: AppLang) =>
-  ((lang === AppLangs.en ? anomaliesJSONEn : anomaliesJSONFr) as Anomaly[])
+export const allAnomalies = (lang: AppLang) => {
+  return ((lang === AppLangs.en ? anomaliesJSONEn : anomaliesJSONFr) as Anomaly[])
     .map(removeHiddenSubcategories)
+    .filter(notUndefined)
     .map(transformCompanyKinds)
-
+}
 export const allVisibleAnomalies = (lang: AppLang) =>
   allAnomalies(lang)
     .filter(_ => !_.hidden && (!_.isHiddenDemoCategory || appConfig.showDemoCategory))
@@ -16,17 +18,20 @@ export const allVisibleAnomalies = (lang: AppLang) =>
       return parseInt(a.id, 10) - parseInt(b.id, 10)
     })
 
-function removeHiddenSubcategories(anomaly: Anomaly): Anomaly {
-  function processSubcat(_: Subcategory): Subcategory | undefined {
-    if (_.isAccessibiliteSubcategory && !appConfig.showAccessibiliteSubcategory) {
+function removeHiddenSubcategories<A extends CategoryNode>(catNode: A): A | undefined {
+  const shouldDelete = instanceOfAnomaly(catNode)
+    ? false
+    : catNode.isAccessibiliteSubcategory && !appConfig.showAccessibiliteSubcategory
+  if (!catNode.subcategories || catNode.subcategories.length == 0) {
+    if (shouldDelete) {
       return undefined
     }
-    return {..._, subcategories: _.subcategories?.map(processSubcat).filter(notUndefined)}
+    return catNode
   }
-  return {
-    ...anomaly,
-    subcategories: anomaly.subcategories.map(processSubcat).filter(notUndefined),
+  if (shouldDelete) {
+    return undefined
   }
+  return {...catNode, subcategories: catNode.subcategories.map(removeHiddenSubcategories).filter(notUndefined)}
 }
 
 function transformCompanyKinds(anomaly: Anomaly): Anomaly {
@@ -41,7 +46,7 @@ function transformCompanyKinds(anomaly: Anomaly): Anomaly {
   }
   return {
     ...anomaly,
-    subcategories: anomaly.subcategories.map(processSubcat),
+    subcategories: anomaly.subcategories?.map(processSubcat),
   }
 }
 
@@ -53,17 +58,15 @@ export type AnomalyIndex = {
   subcategories: Subcategory[]
 }
 
-export const instanceOfSubcategoryWithInputs = (
-  _?: Anomaly | Subcategory,
-): _ is StandardSubcategory & {detailInputs: DetailInput[]} => {
+export const instanceOfSubcategoryWithInputs = (_?: CategoryNode): _ is StandardSubcategory & {detailInputs: DetailInput[]} => {
   return !!(_ as StandardSubcategory)?.detailInputs
 }
 
-export const instanceOfSubcategoryWithInfoWall = (_?: Anomaly | Subcategory): _ is SubcategoryWithInfoWall => {
+export const instanceOfSubcategoryWithInfoWall = (_?: CategoryNode): _ is SubcategoryWithInfoWall => {
   return !!(_ as SubcategoryWithInfoWall)?.blockingInfo
 }
 
-export const instanceOfAnomaly = (_?: Anomaly | Subcategory): _ is Anomaly => {
+export const instanceOfAnomaly = (_?: CategoryNode): _ is Anomaly => {
   return !!(_ as Anomaly)?.category
 }
 
