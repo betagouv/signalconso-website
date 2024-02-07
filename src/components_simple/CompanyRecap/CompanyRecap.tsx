@@ -31,9 +31,16 @@ type CompanyRecapProps =
   | {company: CompanyDraft; kind: 'companyDraft'}
   | {company: CompanySearchResult; kind: 'companySearchResult'}
 
+// Use name + commercialName if present
+// Does not use brand
+export function buildCompanyName(_: CompanyRecapProps) {
+  const name = _.company.name
+  const commercialName = (_.kind === 'companySearchResult' && _.company.commercialName) || undefined
+  return commercialName ? `${commercialName} (${name})` : name
+}
+
 export function CompanyRecap(props: CompanyRecapProps) {
   const closed = !props.company.isOpen
-  const name = props.company.name
   const brand = props.company.brand
   const siret = props.company.siret
   const address = props.company.address
@@ -41,13 +48,12 @@ export function CompanyRecap(props: CompanyRecapProps) {
   const website = (props.kind === 'companyDraft' && props.company.website) || undefined
   const phone = (props.kind === 'companyDraft' && props.company.phone) || undefined
   const isGovernment = isGovernmentCompany(props.company)
-  const commercialName = (props.kind === 'companySearchResult' && props.company.commercialName) || undefined
   const activityLabel = (props.kind === 'companySearchResult' && props.company.activityLabel) || undefined
   const {m} = useI18n()
   return (
     <div className="flex justify-between w-full">
       <div>
-        <span className="font-bold block">{commercialName ? `${commercialName} (${name})` : name}</span>
+        <span className="font-bold block">{buildCompanyName(props)}</span>
         {brand && <span className="block">{brand}</span>}
         {isHeadOffice && (
           <Row icon="ri-building-fill" variant="blue">

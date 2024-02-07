@@ -3,25 +3,25 @@ import {EventCategories, ReportEventActions} from '@/analytic/analytic'
 import {StepNavigation} from '@/components_feature/reportFlow/reportFlowStepper/ReportFlowStepper'
 import {ReportFlowStepperActions} from '@/components_feature/reportFlow/reportFlowStepper/ReportFlowStepperActions'
 import {FriendlyHelpText} from '@/components_simple/FriendlyHelpText'
+import {useApiClients} from '@/context/ApiClientsContext'
 import {useI18n} from '@/i18n/I18n'
+import {BarcodeProduct} from '@/model/BarcodeProduct'
+import {CompanySearchResult, toCompanyDraft} from '@/model/Company'
 import {ConsumerWish, ReportDraft} from '@/model/ReportDraft'
 import {ReportDraft2} from '@/model/ReportDraft2'
+import {useQuery} from '@tanstack/react-query'
+import {useSearchParams} from 'next/navigation'
 import {useEffect, useMemo} from 'react'
 import {instanceOfSubcategoryWithInfoWall} from '../../../anomalies/Anomalies'
 import {Anomaly, CompanyKinds, ReportTag, Subcategory} from '../../../anomalies/Anomaly'
 import {AppLang} from '../../../i18n/localization/AppLangs'
-import {useOpenFfBarcodeContext} from '../OpenFfBarcodeContext'
 import {useReportFlowContext} from '../ReportFlowContext'
 import {ProblemConsumerWishInformation} from './ProblemConsumerWishInformation'
 import {ProblemInformation} from './ProblemInformation'
 import {ProblemSelect} from './ProblemSelect'
 import {ProblemStepper, ProblemStepperStep} from './ProblemStepper'
 import {computeSelectedSubcategoriesData} from './useSelectedSubcategoriesData'
-import {useSearchParams} from 'next/navigation'
-import {useQuery} from '@tanstack/react-query'
-import {useApiClients} from '@/context/ApiClientsContext'
-import {BarcodeProduct} from '@/model/BarcodeProduct'
-import {CompanyDraft, CompanySearchResult} from '@/model/Company'
+import {buildCompanyName} from '@/components_simple/CompanyRecap/CompanyRecap'
 
 interface Props {
   anomaly: Anomaly
@@ -100,27 +100,12 @@ export const Problem = ({anomaly, isWebView, stepNavigation}: Props) => {
       if (openFfBarcode) {
         const barcodeProduct = await signalConsoApiClient.searchByBarcode(openFfBarcode)
         if (barcodeProduct && barcodeProduct.siren) {
-          // TODO quoi faire si on a le produit mais pas le siren dans le produit ??
+          // TODO quoi faire si on a le produit mais pas le siren dans le produit ?? cela peut arrive frequemment, exemple 5449000000996 (coca)
           const companies = await companyApiClient.searchCompaniesByIdentity(barcodeProduct.siren, false, currentLang)
           // TODO quoi faire si on a pas la company ??
           if (companies.length > 0) {
             const company = companies[0]
-            if (company.name) {
-              // TODO quoi faire si pas de name ???
-              const companyDraft: CompanyDraft = {
-                siret: company.siret,
-                name: company.name,
-                brand?: company.brand,
-                address: company.address,
-                website?: undefined,
-                phone?: undefined,
-                activityCode?: company.activityCode,
-                isHeadOffice: company.isHeadOffice,
-                isPublic: company.isPublic,
-                isOpen: company.isOpen
-              }
-              return {barcodeProduct, company}
-            }
+            return {barcodeProduct, company}
           }
         }
       }
@@ -144,9 +129,8 @@ export const Problem = ({anomaly, isWebView, stepNavigation}: Props) => {
       // Set the product so that it appears pre-completed in the next step
       setReportDraft(_ => ({
         ..._,
-        // TODO actually we also need to fetch the company and put it there (company draft)
         barcodeProduct: openFfResult.barcodeProduct,
-        companyDraft: openFfResult.company,
+        companyDraft: toCompanyDraft(openFfResult.company),
       }))
     }
   }, [openFfBarcode, _openFfBarcodeSearch.data])
@@ -232,8 +216,14 @@ export const Problem = ({anomaly, isWebView, stepNavigation}: Props) => {
           <p className="mb-2 mt-4">
             <i className="ri-information-line mr-2" />
             Vous avez rencontré un problème avec le produit{' '}
-            <span className="font-bold">{_openFfBarcodeSearch.data.productName ?? _openFfBarcodeSearch.data.gtin}</span> produit
-            par l'entreprise <span className="font-bold">{_openFfBarcodeSearch.data.siren ?? 'TODO handle this case'}</span> ?
+            <span className="font-bold">
+              {_openFfBarcodeSearch.data.barcodeProduct.productName ?? _openFfBarcodeSearch.data.barcodeProduct.gtin}
+            </span>{' '}
+            produit par l'entreprise{' '}
+            <span className="font-bold">
+              {buildCompanyName({kind: 'companySearchResult', company: _openFfBarcodeSearch.data.company})}
+            </span>
+            ?
           </p>
           <p className="mb-4">
             SignalConso vous permet de remonter le problème à l'entreprise. De plus, votre signalement est visible par les agents

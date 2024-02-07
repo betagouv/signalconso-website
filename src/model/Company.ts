@@ -29,6 +29,21 @@ export type CompanySearchResult = {
   isMarketPlace: boolean
 }
 
+export function toCompanyDraft(company: CompanySearchResult): CompanyDraft {
+  return {
+    siret: company.siret,
+    name: company.name,
+    brand: company.brand,
+    address: company.address,
+    website: undefined,
+    phone: undefined,
+    activityCode: company.activityCode,
+    isHeadOffice: company.isHeadOffice,
+    isPublic: company.isPublic,
+    isOpen: company.isOpen,
+  }
+}
+
 export interface WebsiteCompanySearchResult {
   exactMatch: CompanySearchResult[]
   similarHosts: string[]
