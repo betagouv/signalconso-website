@@ -1,6 +1,6 @@
-export type CategoryNode = Anomaly|Subcategory
+export type CategoryNode = Anomaly | Subcategory
 
- interface CategoryNodeBase {
+interface CategoryNodeBase {
   subcategories?: Subcategory[]
   title: string
   id: string
