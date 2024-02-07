@@ -1,14 +1,19 @@
 export type CategoryNode = Anomaly | Subcategory
 
-export type Anomaly = {
+interface CategoryNodeBase {
+  subcategories?: Subcategory[]
+  title: string
+  id: string
+  subcategoriesTitle?: string
+}
+
+export type Anomaly = CategoryNodeBase & {
   // Stored in DB, should not change
   category: string
   // URL path
   path: string
   // used for the display order on the HP
   // and to generate the ids of the subcategories
-  id: string
-  title: string
   description: string
   seoTitle: string
   seoDescription: string
@@ -16,8 +21,6 @@ export type Anomaly = {
   hidden?: boolean
   isHiddenDemoCategory?: boolean
   // text or question introducing the choice between the subcategories
-  subcategoriesTitle?: string
-  subcategories: Subcategory[]
 }
 
 type CompanyKindQuestion = {
@@ -30,17 +33,13 @@ type CompanyKindQuestionOption = {
   companyKind: CompanyKinds
 }
 
-type SubcategoryBase = {
+type SubcategoryBase = CategoryNodeBase & {
   // ex: "3.2.1.3.1.1.1"
   // Not in the yaml, they are generated recursively
   // Seem to be used in the JS as a unique identifier for the inputs values in the forms
-  id: string
   // the main label
-  title: string
   // text or question introducing the choice between the next subcategories
   // only makes sense if there are subcategories
-  subcategoriesTitle?: string
-  subcategories?: Subcategory[]
   tags?: ReportTagAllowedInYaml[]
   desc?: string
   reponseconsoCode?: string
