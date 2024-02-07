@@ -21,7 +21,7 @@ import {useSearchParams} from 'next/navigation'
 import {useQuery} from '@tanstack/react-query'
 import {useApiClients} from '@/context/ApiClientsContext'
 import {BarcodeProduct} from '@/model/BarcodeProduct'
-import {CompanySearchResult} from '@/model/Company'
+import {CompanyDraft, CompanySearchResult} from '@/model/Company'
 
 interface Props {
   anomaly: Anomaly
@@ -105,7 +105,22 @@ export const Problem = ({anomaly, isWebView, stepNavigation}: Props) => {
           // TODO quoi faire si on a pas la company ??
           if (companies.length > 0) {
             const company = companies[0]
-            return {barcodeProduct, company}
+            if (company.name) {
+              // TODO quoi faire si pas de name ???
+              const companyDraft: CompanyDraft = {
+                siret: company.siret,
+                name: company.name,
+                brand?: company.brand,
+                address: company.address,
+                website?: undefined,
+                phone?: undefined,
+                activityCode?: company.activityCode,
+                isHeadOffice: company.isHeadOffice,
+                isPublic: company.isPublic,
+                isOpen: company.isOpen
+              }
+              return {barcodeProduct, company}
+            }
           }
         }
       }
