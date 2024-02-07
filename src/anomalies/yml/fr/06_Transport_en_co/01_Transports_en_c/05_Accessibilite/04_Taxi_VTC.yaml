@@ -1,9 +1,0 @@
-title: Taxi / VTC
-desc: 'Exemple : absence de véhicule adapté, affichage obligatoire illisible'
-blockingInfo:
-  title: Oups, nous ne pouvons pas traiter votre signalement.
-  content: >-
-    Vous avez réservé un service de transport par taxi ou VTC (Voiture de Transport avec Chauffeur) et avez rencontré des difficultés concernant l'accessibilité pour les personnes à mobilité réduite, ou vous souhaitez signaler des problèmes liés à la communication avec le chauffeur ou l'entreprise.
-    <br /><br />Ce genre de problème est important et nécessite une attention particulière. Pour signaler ces situations et contribuer à l'amélioration de l'accessibilité dans les services de taxi et VTC, nous vous invitons à contacter le correspondant accessibilité de votre département. Vous trouverez la carte des correspondants accessibilité par département sur le site dédié : 
-    <br /><a href="https://umap.openstreetmap.fr/fr/map/les-correspondants-accessibilite-par-departement_112126#6/46.695/5.251">Les correspondants accessibilite par departement</a><br />
-    <br />Si votre réservation a été effectuée par l'intermédiaire d'une agence de voyage ou d'une plateforme de réservation en ligne, et que vous rencontrez des problèmes spécifiques liés à cette réservation, nous vous suggérons de retourner à la section "Agence de voyage" ou "Plateforme de réservation en ligne" pour trouver la démarche appropriée. :)

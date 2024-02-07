@@ -1,0 +1,14 @@
+title: J'ai payé un supplément que je ne comprends pas
+detailInputs:
+  - label: Date de la course
+    type: DATE
+  - label: Quel supplément avez-vous payé ?
+    type: CHECKBOX
+    options:
+      - bagage
+      - passager supplémentaire
+      - animaux
+  - label: Combien étiez-vous de passagers (enfants compris) ?
+    type: TEXT
+  - label: Combien aviez-vous de bagages en tout ?
+    type: TEXT
