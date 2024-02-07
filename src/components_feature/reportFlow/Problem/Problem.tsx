@@ -126,11 +126,14 @@ export const Problem = ({anomaly, isWebView, stepNavigation}: Props) => {
     // when we come from openFf and we get the async data
     const openFfResult = _openFfBarcodeSearch.data
     if (openFfBarcode && openFfResult) {
-      // Set the product so that it appears pre-completed in the next step
+      // Register the data into the reportFlow
       setReportDraft(_ => ({
         ..._,
-        barcodeProduct: openFfResult.barcodeProduct,
-        companyDraft: toCompanyDraft(openFfResult.company),
+        openFf: {
+          barcode: openFfBarcode,
+          product: openFfResult.barcodeProduct,
+          company: openFfResult.company,
+        },
       }))
     }
   }, [openFfBarcode, _openFfBarcodeSearch.data])
@@ -158,6 +161,13 @@ export const Problem = ({anomaly, isWebView, stepNavigation}: Props) => {
       const companyKind =
         // For this category, it's always PRODUCT, regardless of the YAML.
         anomaly.isSpecialOpenFoodFactsCategory ? 'PRODUCT' : companyKindFromSelected ?? draft.companyKind ?? 'SIRET'
+
+      // In the openFf scenario, build the company/product from the data we fetched.
+      // We can't do it earlier because it would have been erased
+      // when switching between subcategories
+      const barcodeProduct = draft.openFf?.product ?? draft.barcodeProduct
+      const companyDraft = draft.openFf?.company ? toCompanyDraft(draft.openFf.company) : draft.companyDraft
+
       const updatedDraft = {
         ...draft,
         ccrfCode: ccrfCodeFromSelected,
@@ -167,6 +177,8 @@ export const Problem = ({anomaly, isWebView, stepNavigation}: Props) => {
         anomaly: _anomaly,
         consumerWish,
         employeeConsumer,
+        barcodeProduct,
+        companyDraft,
       }
       return updatedDraft
     })

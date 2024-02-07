@@ -1,7 +1,7 @@
 import {CompanyKinds, ReportTag, SocialNetworks, Subcategory, Ters, Trains} from '@/anomalies/Anomaly'
 import uniq from 'lodash/uniq'
 import {AppLang} from '../i18n/localization/AppLangs'
-import {CompanyDraft} from './Company'
+import {CompanyDraft, CompanySearchResult} from './Company'
 import {DetailInputValue} from './CreatedReport'
 import {UploadedFile} from './UploadedFile'
 import {ApiInfluencer, ApiReportDraft} from './reportsFromApi'
@@ -39,6 +39,13 @@ export interface ReportDraft {
   lang: AppLang
   barcodeProduct?: BarcodeProduct
   train: Train
+  openFf:
+    | {
+        barcode: string
+        product?: BarcodeProduct
+        company?: CompanySearchResult
+      }
+    | undefined
 }
 
 export interface Train {

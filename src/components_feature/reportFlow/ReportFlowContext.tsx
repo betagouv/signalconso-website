@@ -1,8 +1,8 @@
 import {ReportDraft2} from '@/model/ReportDraft2'
-import React, {ReactNode, useContext, useEffect, useRef, useState} from 'react'
-import {getIndexForStep, getIndexForStepOrDone, ReportStep, ReportStepOrDone} from '../../model/ReportStep'
+import React, {ReactNode, useContext, useRef, useState} from 'react'
 import {useAnalyticContext} from '../../analytic/AnalyticContext'
-import {AnalyticAction, EventCategories, ReportEventActions} from '../../analytic/analytic'
+import {EventCategories, ReportEventActions} from '../../analytic/analytic'
+import {ReportStepOrDone, getIndexForStepOrDone} from '../../model/ReportStep'
 
 interface ReportFlowContextProps {
   reportDraft: Partial<ReportDraft2>
