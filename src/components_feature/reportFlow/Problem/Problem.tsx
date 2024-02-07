@@ -21,6 +21,7 @@ import {useSearchParams} from 'next/navigation'
 import {useQuery} from '@tanstack/react-query'
 import {useApiClients} from '@/context/ApiClientsContext'
 import {BarcodeProduct} from '@/model/BarcodeProduct'
+import {CompanySearchResult} from '@/model/Company'
 
 interface Props {
   anomaly: Anomaly
@@ -86,20 +87,29 @@ export function adjustReportDraftAfterSubcategoriesChange(
 export const Problem = ({anomaly, isWebView, stepNavigation}: Props) => {
   const _analytic = useAnalyticContext()
   const {m, currentLang} = useI18n()
-  const {signalConsoApiClient} = useApiClients()
+  const {companyApiClient, signalConsoApiClient} = useApiClients()
   const searchParams = useSearchParams()
   const {reportDraft, setReportDraft, resetFlow, sendReportEvent} = useReportFlowContext()
   const hasReponseConsoSubcategories = reportDraft.subcategories
     ? buildTagsFromSubcategories(reportDraft.subcategories).includes('ReponseConso')
     : false
   const openFfBarcode = (anomaly.isSpecialOpenFoodFactsCategory && searchParams.get(OPENFOODFACTS_BARCODE_PARAM)) || undefined
-  const _openFfBarcodeSearch = useQuery<BarcodeProduct | null>({
+  const _openFfBarcodeSearch = useQuery<{barcodeProduct: BarcodeProduct; company: CompanySearchResult} | null>({
     queryKey: ['openFfBarcodeSearch', openFfBarcode],
-    queryFn: () => {
-      if (!openFfBarcode) {
-        return null
+    queryFn: async () => {
+      if (openFfBarcode) {
+        const barcodeProduct = await signalConsoApiClient.searchByBarcode(openFfBarcode)
+        if (barcodeProduct && barcodeProduct.siren) {
+          // TODO quoi faire si on a le produit mais pas le siren dans le produit ??
+          const companies = await companyApiClient.searchCompaniesByIdentity(barcodeProduct.siren, false, currentLang)
+          // TODO quoi faire si on a pas la company ??
+          if (companies.length > 0) {
+            const company = companies[0]
+            return {barcodeProduct, company}
+          }
+        }
       }
-      return signalConsoApiClient.searchByBarcode(openFfBarcode)
+      return null
     },
   })
 
@@ -114,13 +124,14 @@ export const Problem = ({anomaly, isWebView, stepNavigation}: Props) => {
 
   useEffect(() => {
     // when we come from openFf and we get the async data
-    const barcodeProduct = _openFfBarcodeSearch.data
-    if (openFfBarcode && barcodeProduct !== null) {
+    const openFfResult = _openFfBarcodeSearch.data
+    if (openFfBarcode && openFfResult) {
       // Set the product so that it appears pre-completed in the next step
       setReportDraft(_ => ({
         ..._,
         // TODO actually we also need to fetch the company and put it there (company draft)
-        barcodeProduct,
+        barcodeProduct: openFfResult.barcodeProduct,
+        companyDraft: openFfResult.company,
       }))
     }
   }, [openFfBarcode, _openFfBarcodeSearch.data])
