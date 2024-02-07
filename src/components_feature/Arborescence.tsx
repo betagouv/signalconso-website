@@ -29,7 +29,7 @@ const Node = ({
   displayExtra,
   zoomPath,
 }: {
-  anomaly: Anomaly | Subcategory
+  anomaly: CategoryNode
   openAll?: boolean
   displayExtra: boolean
   zoomPath: string[]

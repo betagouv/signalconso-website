@@ -1,6 +1,6 @@
 import {appConfig} from '../core/appConfig'
 import {AppLang, AppLangs} from '../i18n/localization/AppLangs'
-import {Anomaly, DetailInput, StandardSubcategory, Subcategory, SubcategoryWithInfoWall} from './Anomaly'
+import {Anomaly,CategoryNode, DetailInput, StandardSubcategory, Subcategory, SubcategoryWithInfoWall} from './Anomaly'
 import anomaliesJSONEn from './json/anomalies_en.json'
 import anomaliesJSONFr from './json/anomalies_fr.json'
 
@@ -15,6 +15,12 @@ export const allVisibleAnomalies = (lang: AppLang) =>
     .sort((a, b) => {
       return parseInt(a.id, 10) - parseInt(b.id, 10)
     })
+
+
+    // function removeHiddenSubcategories(catBase: CategoryBase): CategoryBase {
+    //   const shouldDelete =instanceOfAnomaly(catBase) ? false : (catBase.isAccessibiliteSubcategory && !appConfig.showAccessibiliteSubcategory)
+    // }
+
 
 function removeHiddenSubcategories(anomaly: Anomaly): Anomaly {
   function processSubcat(_: Subcategory): Subcategory | undefined {
@@ -54,16 +60,16 @@ export type AnomalyIndex = {
 }
 
 export const instanceOfSubcategoryWithInputs = (
-  _?: Anomaly | Subcategory,
+  _?: CategoryNode,
 ): _ is StandardSubcategory & {detailInputs: DetailInput[]} => {
   return !!(_ as StandardSubcategory)?.detailInputs
 }
 
-export const instanceOfSubcategoryWithInfoWall = (_?: Anomaly | Subcategory): _ is SubcategoryWithInfoWall => {
+export const instanceOfSubcategoryWithInfoWall = (_?: CategoryNode): _ is SubcategoryWithInfoWall => {
   return !!(_ as SubcategoryWithInfoWall)?.blockingInfo
 }
 
-export const instanceOfAnomaly = (_?: Anomaly | Subcategory): _ is Anomaly => {
+export const instanceOfAnomaly = (_?: CategoryNode): _ is Anomaly => {
   return !!(_ as Anomaly)?.category
 }
 
