@@ -3,7 +3,7 @@ import {Address} from './Address'
 // the shape expected by the main api in the report
 export interface CompanyDraft {
   siret: string
-  name: string
+  name?: string
   brand?: string
   address: Address
   website?: string
