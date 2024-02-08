@@ -80,7 +80,7 @@ export function getTeam(lang: AppLang): Team {
       },
       {
         name: 'Aline Gauthier',
-        role: [t.function.headOfProductIntern],
+        role: [t.function.headOfProduct],
         avatar: imgAline,
       },
       {
