@@ -32,11 +32,7 @@ export const BarcodeSearchResult = ({product, company, onSubmit}: BarcodeSearchR
             <h1 className="text-xl font-bold mb-0 pl-2">{m.barcodeCompany}</h1>
           </div>
           <div className="ml-4">
-            {company ? (
-              <CompanyRecap company={company} kind="companySearchResult" />
-            ) : (
-              <p className="text-gray-600">{m.barcodeNoCompanyFound}</p>
-            )}
+            {company ? <CompanyRecap company={company} /> : <p className="text-gray-600">{m.barcodeNoCompanyFound}</p>}
           </div>
           <div className="w-full flex flex-row-reverse">{company && <BtnNext onClick={() => onSubmit(company, product)} />}</div>
         </>
