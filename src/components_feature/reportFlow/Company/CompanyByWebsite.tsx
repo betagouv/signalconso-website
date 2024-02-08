@@ -60,17 +60,17 @@ async function searchWebsite(
       companies: res1.exactMatch,
     }
   }
-  if (res1.similarHosts.length > 0) {
-    return {
-      kind: 'similarHosts',
-      hosts: res1.similarHosts,
-    }
-  }
   const res2 = await signalConsoApiClient.searchForeignCompaniesByUrl(website)
   if (res2.length > 0) {
     return {
       kind: 'countries',
       countries: res2,
+    }
+  }
+  if (res1.similarHosts.length > 0) {
+    return {
+      kind: 'similarHosts',
+      hosts: res1.similarHosts,
     }
   }
   try {
