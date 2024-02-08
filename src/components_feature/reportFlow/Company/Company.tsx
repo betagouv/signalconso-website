@@ -1,13 +1,8 @@
 'use client'
 import {CompanyByTrain} from '@/components_feature/reportFlow/Company/CompanyByTrain'
-import {CompanyRecap, CompanyRecapWithProduct} from '@/components_simple/CompanyRecap/CompanyRecap'
-import {BtnNext} from '@/components_simple/buttons/Buttons'
-import {useI18n} from '@/i18n/I18n'
 import {BarcodeProduct} from '@/model/BarcodeProduct'
 import {ReportDraft2} from '@/model/ReportDraft2'
-import {Button} from '@codegouvfr/react-dsfr/Button'
 import {SpecificWebsiteCompanyKinds} from '../../../anomalies/Anomaly'
-import {SocialNetworkRow} from '../../../components_simple/SocialNetworkRow'
 import {CompanyDraft, CompanySearchResult} from '../../../model/Company'
 import {ReportDraft} from '../../../model/ReportDraft'
 import {fnSwitch} from '../../../utils/FnSwitch'
@@ -20,6 +15,7 @@ import {CompanyAskForeignDetails} from './CompanyAskForeignDetails'
 import {CompanyAskIsFrenchOrForeign, IsAFrenchCompany} from './CompanyAskIsFrenchOrForeign'
 import {CompanyByPhone} from './CompanyByPhone'
 import {CompanyByWebsite} from './CompanyByWebsite'
+import {CompanyFilled} from './CompanyFilled'
 import {CompanyIdentifyBy, IdentifyBy} from './CompanyIdentifyBy'
 import {CompanySearchByBarcode} from './CompanySearchByBarcode'
 import {CompanySearchByIdentity} from './CompanySearchByIdentity'
@@ -27,8 +23,8 @@ import {CompanySearchByNameAndPostalCode} from './CompanySearchByNameAndPostalCo
 import {CompanySearchResultComponent} from './CompanySearchResult'
 import {CompanyWebsiteCountry} from './CompanyWebsiteCountry'
 import {InfluencerBySocialNetwork} from './InfluencerBySocialNetwork'
+import {InfluencerFilled} from './InfluencerFilled'
 import {BarcodeSearchResult} from './lib/BarcodeSearchResult'
-import {ProductRecap} from '@/components_simple/CompanyRecap/ProductRecap'
 
 interface CompanyWithRequiredProps {
   draft: Pick<ReportDraft, 'companyKind'>
@@ -65,74 +61,6 @@ export const Company = ({stepNavigation}: {stepNavigation: StepNavigation}) => {
         stepNavigation.next()
       }}
     />
-  )
-}
-
-export const InfluencerFilled = ({
-  draft,
-  onClear,
-  stepNavigation,
-}: {
-  draft: Partial<ReportDraft2>
-  onClear: () => void
-  stepNavigation: StepNavigation
-}) => {
-  const {m} = useI18n()
-  if (!draft.influencer) {
-    throw new Error(`influencer should be defined ${JSON.stringify(draft)}`)
-  }
-
-  return (
-    <div>
-      <h2 className="fr-h6">{m.influencerIdentifiedTitle}</h2>
-      {draft.influencer.otherSocialNetwork ? (
-        <div className="flex">
-          <SocialNetworkRow socialNetwork={draft.influencer.socialNetwork} gray className="mb-2" />
-          <span className="text-gray-500 font-bold"> : {draft.influencer.otherSocialNetwork}</span>
-        </div>
-      ) : (
-        <SocialNetworkRow socialNetwork={draft.influencer.socialNetwork} gray className="mb-2" />
-      )}
-      <div className="flex gap-2 pl-1">
-        <i className="ri-account-box-line" />
-        <span className="text-schint">{draft.influencer.name}</span>
-      </div>
-      <ActionButtons {...{onClear, stepNavigation}} />
-    </div>
-  )
-}
-
-export const CompanyFilled = ({
-  draft,
-  onClear,
-  stepNavigation,
-}: {
-  draft: Partial<ReportDraft2>
-  onClear: () => void
-  stepNavigation: StepNavigation
-}) => {
-  const {m} = useI18n()
-  if (!draft.companyDraft) {
-    throw new Error(`companyDraft should be defined ${JSON.stringify(draft)}`)
-  }
-  return (
-    <div>
-      <h2 className="fr-h6">{m.companyIdentifiedTitle}</h2>
-      <CompanyRecapWithProduct company={draft.companyDraft} kind="companyDraft" barcodeProduct={draft.barcodeProduct} />
-      <ActionButtons {...{onClear, stepNavigation}} />
-    </div>
-  )
-}
-
-function ActionButtons({onClear, stepNavigation}: {onClear: () => void; stepNavigation: StepNavigation}) {
-  const {m} = useI18n()
-  return (
-    <div className="flex items-center justify-end gap-2">
-      <Button iconId={'fr-icon-pencil-line'} onClick={onClear} priority="secondary">
-        {m.edit}
-      </Button>
-      <BtnNext onClick={stepNavigation.next} />
-    </div>
   )
 }
 
