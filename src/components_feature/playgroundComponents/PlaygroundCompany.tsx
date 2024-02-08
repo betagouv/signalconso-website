@@ -1,7 +1,7 @@
 import {ReportDraft2} from '@/model/ReportDraft2'
 import {useState, useEffect} from 'react'
 import {CompanyKinds, companyKinds} from '../../anomalies/Anomaly'
-import {_Company} from '../reportFlow/Company/Company'
+import {CompanyIdentification} from '../reportFlow/Company/Company'
 
 interface PlaygroundCompanyProps {
   companyKind?: CompanyKinds
@@ -12,7 +12,7 @@ export const PlaygroundCompany = ({companyKind = 'SIRET'}: PlaygroundCompanyProp
 
   return (
     <>
-      <_Company
+      <CompanyIdentification
         draft={{
           companyKind,
         }}

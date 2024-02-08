@@ -26,45 +26,36 @@ import {InfluencerBySocialNetwork} from './InfluencerBySocialNetwork'
 import {InfluencerFilled} from './InfluencerFilled'
 import {BarcodeSearchResult} from './lib/BarcodeSearchResult'
 
-interface CompanyWithRequiredProps {
-  draft: Pick<ReportDraft, 'companyKind'>
-  onUpdateReportDraft: (_: DeepPartial<ReportDraft2>) => void
-}
+export function Company({stepNavigation}: {stepNavigation: StepNavigation}) {
+  const {reportDraft, setReportDraft, sendReportEvent} = useReportFlowContext()
 
-export const Company = ({stepNavigation}: {stepNavigation: StepNavigation}) => {
-  const _reportFlow = useReportFlowContext()
-
-  const draft = _reportFlow.reportDraft
+  const draft = reportDraft
   if (draft.influencer) {
-    return (
-      <InfluencerFilled
-        {...{stepNavigation, draft}}
-        onClear={() => _reportFlow.setReportDraft(_ => ({..._, influencer: undefined}))}
-      />
-    )
+    return <InfluencerFilled {...{stepNavigation, draft}} onClear={() => setReportDraft(_ => ({..._, influencer: undefined}))} />
   }
 
   if (draft.companyDraft) {
-    return (
-      <CompanyFilled
-        {...{stepNavigation, draft}}
-        onClear={() => _reportFlow.setReportDraft(_ => ({..._, companyDraft: undefined}))}
-      />
-    )
+    return <CompanyFilled {...{stepNavigation, draft}} onClear={() => setReportDraft(_ => ({..._, companyDraft: undefined}))} />
   }
   return (
-    <_Company
+    <CompanyIdentification
       draft={draft}
       onUpdateReportDraft={draft => {
-        _reportFlow.setReportDraft(_ => ReportDraft2.merge(_, draft))
-        _reportFlow.sendReportEvent(stepNavigation.currentStep)
+        setReportDraft(_ => ReportDraft2.merge(_, draft))
+        sendReportEvent(stepNavigation.currentStep)
         stepNavigation.next()
       }}
     />
   )
 }
 
-export const _Company = ({draft, onUpdateReportDraft}: CompanyWithRequiredProps) => {
+export function CompanyIdentification({
+  draft,
+  onUpdateReportDraft,
+}: {
+  draft: Pick<ReportDraft, 'companyKind'>
+  onUpdateReportDraft: (_: DeepPartial<ReportDraft2>) => void
+}) {
   const webSiteTree = (specificWebsiteCompanyKind?: SpecificWebsiteCompanyKinds) => {
     return (
       <CompanyByWebsite specificWebsiteCompanyKind={specificWebsiteCompanyKind}>

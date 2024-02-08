@@ -6,7 +6,7 @@ import {ReportDraft2} from '@/model/ReportDraft2'
 import {Fixture} from '../../../test/fixture'
 import {fireEvent, render, ScRenderResult} from '../../../test/test-utils'
 import {fnSwitch} from '../../../utils/FnSwitch'
-import {_Company} from './Company'
+import {CompanyIdentification} from './Company'
 import {IdentifyBy} from './CompanyIdentifyBy'
 
 describe('Details: single date not in future', () => {
@@ -29,7 +29,7 @@ describe('Details: single date not in future', () => {
   describe('WEBSITE', () => {
     beforeEach(() => {
       app = render(
-        <_Company
+        <CompanyIdentification
           draft={{
             companyKind: 'WEBSITE',
           }}
@@ -77,7 +77,7 @@ describe('Details: single date not in future', () => {
   describe('LOCATION', () => {
     beforeEach(() => {
       app = render(
-        <_Company
+        <CompanyIdentification
           draft={{
             companyKind: 'LOCATION',
           }}
