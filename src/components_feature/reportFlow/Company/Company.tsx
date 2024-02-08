@@ -28,21 +28,19 @@ import {BarcodeSearchResult} from './lib/BarcodeSearchResult'
 
 export function Company({stepNavigation}: {stepNavigation: StepNavigation}) {
   const {reportDraft, setReportDraft, sendReportEvent} = useReportFlowContext()
-
   const draft = reportDraft
   if (draft.influencer) {
     return <InfluencerFilled {...{stepNavigation, draft}} onClear={() => setReportDraft(_ => ({..._, influencer: undefined}))} />
   }
-
   if (draft.companyDraft) {
     return <CompanyFilled {...{stepNavigation, draft}} onClear={() => setReportDraft(_ => ({..._, companyDraft: undefined}))} />
   }
   return (
     <div>
-      <CompanyIdentification
+      <CompanyIdentificationDispatch
         draft={draft}
-        onUpdateReportDraft={draft => {
-          setReportDraft(_ => ReportDraft2.merge(_, draft))
+        updateReport={changesToDraft => {
+          setReportDraft(_ => ReportDraft2.merge(_, changesToDraft))
           sendReportEvent(stepNavigation.currentStep)
           stepNavigation.next()
         }}
@@ -51,11 +49,68 @@ export function Company({stepNavigation}: {stepNavigation: StepNavigation}) {
   )
 }
 
+type CommonProps = {
+  draft: Pick<ReportDraft, 'companyKind'>
+  // Takes a deep partial, so you can fill just some fields
+  // Those fields will be merged with the current report draft
+  updateReport: (changesToDraft: DeepPartial<ReportDraft2>) => void
+}
+
+export function CompanyIdentificationDispatch({draft, updateReport}: CommonProps) {
+  switch (draft.companyKind) {
+    case 'TRAIN':
+      return (
+        <CompanyByTrain
+          onSubmit={(train, ter) => {
+            updateReport({
+              train: {
+                train,
+                ter,
+              },
+            })
+          }}
+        />
+      )
+    case 'PRODUCT':
+      return <BarcodeTree {...{draft, updateReport}} />
+    case 'SOCIAL':
+      return (
+        <InfluencerBySocialNetwork
+          onSubmit={(socialNetwork, influencer, otherSocialNetwork) => {
+            updateReport({
+              influencer: {
+                socialNetwork,
+                otherSocialNetwork,
+                name: influencer,
+              },
+            })
+          }}
+        />
+      )
+    case 'PHONE':
+      return (
+        <CompanyByPhone>
+          {phone => (
+            <CommonTree {...{draft, updateReport}} phoneOrWebsite={{phone}} barcodeProduct={undefined} result={undefined} />
+          )}
+        </CompanyByPhone>
+      )
+    case 'TRANSPORTER_WEBSITE':
+      return <WebsiteTree {...{draft, updateReport}} specificWebsiteCompanyKind={'TRANSPORTER_WEBSITE'} />
+    case 'MERCHANT_WEBSITE':
+      return <WebsiteTree {...{draft, updateReport}} specificWebsiteCompanyKind={'MERCHANT_WEBSITE'} />
+    case 'WEBSITE':
+      return <WebsiteTree {...{draft, updateReport}} specificWebsiteCompanyKind={undefined} />
+    default:
+      return <CommonTree {...{draft, updateReport}} phoneOrWebsite={undefined} barcodeProduct={undefined} result={undefined} />
+  }
+}
+
 function WebsiteTree({
   specificWebsiteCompanyKind,
   draft,
-  onUpdateReportDraft,
-}: {specificWebsiteCompanyKind?: SpecificWebsiteCompanyKinds} & BasicProps) {
+  updateReport,
+}: {specificWebsiteCompanyKind?: SpecificWebsiteCompanyKinds} & CommonProps) {
   return (
     <CompanyByWebsite specificWebsiteCompanyKind={specificWebsiteCompanyKind}>
       {(website, companies, countries) =>
@@ -63,7 +118,7 @@ function WebsiteTree({
           <CompanyWebsiteCountry
             countries={countries}
             onSubmit={country => {
-              onUpdateReportDraft({
+              updateReport({
                 companyDraft: {
                   website,
                   address: {
@@ -74,12 +129,7 @@ function WebsiteTree({
             }}
           />
         ) : (
-          <CommonTree
-            {...{draft, onUpdateReportDraft}}
-            phoneOrWebsite={{website}}
-            barcodeProduct={undefined}
-            result={companies}
-          />
+          <CommonTree {...{draft, updateReport}} phoneOrWebsite={{website}} barcodeProduct={undefined} result={companies} />
         )
       }
     </CompanyByWebsite>
@@ -91,17 +141,17 @@ function CommonTree({
   barcodeProduct = undefined,
   result = undefined,
   draft,
-  onUpdateReportDraft,
+  updateReport,
 }: {
   phoneOrWebsite: Pick<CompanyDraft, 'phone' | 'website'> | undefined
   barcodeProduct: BarcodeProduct | undefined
   result: CompanySearchResult[] | undefined
-} & BasicProps) {
+} & CommonProps) {
   return result && result.length > 0 ? (
     <CompanySearchResultComponent
       companies={result}
       onSubmit={(company, vendor) => {
-        onUpdateReportDraft({
+        updateReport({
           companyDraft: {
             ...company,
             ...phoneOrWebsite,
@@ -120,7 +170,7 @@ function CommonTree({
                 <CompanySearchResultComponent
                   companies={companies ?? []}
                   onSubmit={company => {
-                    onUpdateReportDraft({
+                    updateReport({
                       companyDraft: {
                         ...company,
                         ...phoneOrWebsite,
@@ -138,7 +188,7 @@ function CommonTree({
                 <CompanySearchResultComponent
                   companies={companies ?? []}
                   onSubmit={company => {
-                    onUpdateReportDraft({
+                    updateReport({
                       companyDraft: {
                         ...company,
                         ...phoneOrWebsite,
@@ -154,7 +204,7 @@ function CommonTree({
             draft.companyKind === 'LOCATION' ? (
               <CompanyAskConsumerStreet
                 onChange={form => {
-                  onUpdateReportDraft({
+                  updateReport({
                     companyDraft: {
                       ...phoneOrWebsite,
                       address: {
@@ -174,7 +224,7 @@ function CommonTree({
                       <CompanyAskConsumerPostalCode
                         companyKind={draft.companyKind!}
                         onChange={postalCode => {
-                          onUpdateReportDraft({
+                          updateReport({
                             companyDraft: {
                               ...phoneOrWebsite,
                               address: {
@@ -190,7 +240,7 @@ function CommonTree({
                       <CompanyAskForeignDetails
                         companyKind={draft.companyKind!}
                         onSubmit={form => {
-                          onUpdateReportDraft({
+                          updateReport({
                             companyDraft: {
                               name: form.name,
                               ...phoneOrWebsite,
@@ -208,7 +258,7 @@ function CommonTree({
                       <CompanyAskConsumerPostalCode
                         companyKind={draft.companyKind!}
                         onChange={postalCode => {
-                          onUpdateReportDraft({
+                          updateReport({
                             companyDraft: {
                               ...phoneOrWebsite,
                               address: {
@@ -230,24 +280,19 @@ function CommonTree({
   )
 }
 
-function BarcodeTree({draft, onUpdateReportDraft}: BasicProps) {
+function BarcodeTree({draft, updateReport}: CommonProps) {
   return (
     <CompanySearchByBarcode>
       {(barcodeProduct, company, skipped) =>
         skipped ? (
-          <CommonTree
-            {...{draft, onUpdateReportDraft}}
-            phoneOrWebsite={undefined}
-            barcodeProduct={undefined}
-            result={undefined}
-          />
+          <CommonTree {...{draft, updateReport}} phoneOrWebsite={undefined} barcodeProduct={undefined} result={undefined} />
         ) : (
           <>
             <BarcodeSearchResult
               product={barcodeProduct}
               company={company}
               onSubmit={(company, barcodeProduct) => {
-                onUpdateReportDraft({
+                updateReport({
                   companyDraft: {
                     ...company,
                   },
@@ -257,7 +302,7 @@ function BarcodeTree({draft, onUpdateReportDraft}: BasicProps) {
             />
             {!company && (
               <CommonTree
-                {...{draft, onUpdateReportDraft}}
+                {...{draft, updateReport}}
                 phoneOrWebsite={undefined}
                 barcodeProduct={barcodeProduct}
                 result={undefined}
@@ -268,66 +313,4 @@ function BarcodeTree({draft, onUpdateReportDraft}: BasicProps) {
       }
     </CompanySearchByBarcode>
   )
-}
-
-type BasicProps = {
-  draft: Pick<ReportDraft, 'companyKind'>
-  onUpdateReportDraft: (_: DeepPartial<ReportDraft2>) => void
-}
-
-export function CompanyIdentification({draft, onUpdateReportDraft}: BasicProps) {
-  switch (draft.companyKind) {
-    case 'TRAIN':
-      return (
-        <CompanyByTrain
-          onSubmit={(train, ter) => {
-            onUpdateReportDraft({
-              train: {
-                train,
-                ter,
-              },
-            })
-          }}
-        />
-      )
-    case 'PRODUCT':
-      return <BarcodeTree {...{draft, onUpdateReportDraft}} />
-    case 'SOCIAL':
-      return (
-        <InfluencerBySocialNetwork
-          onSubmit={(socialNetwork, influencer, otherSocialNetwork) => {
-            onUpdateReportDraft({
-              influencer: {
-                socialNetwork,
-                otherSocialNetwork,
-                name: influencer,
-              },
-            })
-          }}
-        />
-      )
-    case 'PHONE':
-      return (
-        <CompanyByPhone>
-          {phone => (
-            <CommonTree
-              {...{draft, onUpdateReportDraft}}
-              phoneOrWebsite={{phone}}
-              barcodeProduct={undefined}
-              result={undefined}
-            />
-          )}
-        </CompanyByPhone>
-      )
-    case 'TRANSPORTER_WEBSITE':
-      return <WebsiteTree {...{draft, onUpdateReportDraft}} specificWebsiteCompanyKind={'TRANSPORTER_WEBSITE'} />
-    case 'MERCHANT_WEBSITE':
-      return <WebsiteTree {...{draft, onUpdateReportDraft}} specificWebsiteCompanyKind={'MERCHANT_WEBSITE'} />
-    case 'WEBSITE':
-      return <WebsiteTree {...{draft, onUpdateReportDraft}} specificWebsiteCompanyKind={undefined} />
-    default:
-      return (
-        <CommonTree {...{draft, onUpdateReportDraft}} phoneOrWebsite={undefined} barcodeProduct={undefined} result={undefined} />
-      )
-  }
 }

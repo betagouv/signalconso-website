@@ -12,6 +12,7 @@ import {useI18n} from '../../../i18n/I18n'
 import {BarcodeProduct} from '../../../model/BarcodeProduct'
 import {CompanySearchResult} from '../../../model/Company'
 import {BarcodeHelpButton} from './lib/BarcodeHelpButton'
+import { purgeWhitespaces } from '@/utils/utils'
 
 interface Form {
   gtin: string
@@ -21,11 +22,7 @@ interface Props {
   children: (product?: BarcodeProduct, company?: CompanySearchResult, skipped?: boolean) => ReactNode
 }
 
-function purgeWhitespaces(identity: string): string {
-  // the user may copy/paste the number from a webpage
-  // with whitespaces before, after, or inside, e.g.: XXX XXX XXX
-  return identity.replace(/\s+/g, '')
-}
+
 
 export const CompanySearchByBarcode = ({children}: Props) => {
   const {m, currentLang} = useI18n()

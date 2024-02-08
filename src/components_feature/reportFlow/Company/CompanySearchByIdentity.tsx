@@ -13,6 +13,7 @@ import {ReactNode, useRef, useState} from 'react'
 import {useForm} from 'react-hook-form'
 import {CompanySearchResult} from '../../../model/Company'
 import {SiretHelpButton} from './lib/SiretHelpButton'
+import {purgeWhitespaces} from '@/utils/utils'
 
 interface Form {
   identity: string
@@ -20,12 +21,6 @@ interface Form {
 
 interface Props {
   children: (companies?: CompanySearchResult[]) => ReactNode
-}
-
-function purgeWhitespaces(identity: string): string {
-  // the user may copy/paste the number from a webpage
-  // with whitespaces before, after, or inside, e.g.: XXX XXX XXX
-  return identity.replace(/\s+/g, '')
 }
 
 function isSiretOrSiren(identity: string) {
