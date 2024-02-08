@@ -38,14 +38,16 @@ export function Company({stepNavigation}: {stepNavigation: StepNavigation}) {
     return <CompanyFilled {...{stepNavigation, draft}} onClear={() => setReportDraft(_ => ({..._, companyDraft: undefined}))} />
   }
   return (
-    <CompanyIdentification
-      draft={draft}
-      onUpdateReportDraft={draft => {
-        setReportDraft(_ => ReportDraft2.merge(_, draft))
-        sendReportEvent(stepNavigation.currentStep)
-        stepNavigation.next()
-      }}
-    />
+    <div>
+      <CompanyIdentification
+        draft={draft}
+        onUpdateReportDraft={draft => {
+          setReportDraft(_ => ReportDraft2.merge(_, draft))
+          sendReportEvent(stepNavigation.currentStep)
+          stepNavigation.next()
+        }}
+      />
+    </div>
   )
 }
 
@@ -273,73 +275,59 @@ type BasicProps = {
   onUpdateReportDraft: (_: DeepPartial<ReportDraft2>) => void
 }
 
-export function CompanyIdentification({
-  draft,
-  onUpdateReportDraft,
-}: {
-  draft: Pick<ReportDraft, 'companyKind'>
-  onUpdateReportDraft: (_: DeepPartial<ReportDraft2>) => void
-}) {
-  return (
-    <div>
-      {fnSwitch(
-        draft.companyKind!,
-        {
-          ['TRAIN']: () => (
-            <CompanyByTrain
-              onSubmit={(train, ter) => {
-                onUpdateReportDraft({
-                  train: {
-                    train,
-                    ter,
-                  },
-                })
-              }}
+export function CompanyIdentification({draft, onUpdateReportDraft}: BasicProps) {
+  switch (draft.companyKind) {
+    case 'TRAIN':
+      return (
+        <CompanyByTrain
+          onSubmit={(train, ter) => {
+            onUpdateReportDraft({
+              train: {
+                train,
+                ter,
+              },
+            })
+          }}
+        />
+      )
+    case 'PRODUCT':
+      return <BarcodeTree {...{draft, onUpdateReportDraft}} />
+    case 'SOCIAL':
+      return (
+        <InfluencerBySocialNetwork
+          onSubmit={(socialNetwork, influencer, otherSocialNetwork) => {
+            onUpdateReportDraft({
+              influencer: {
+                socialNetwork,
+                otherSocialNetwork,
+                name: influencer,
+              },
+            })
+          }}
+        />
+      )
+    case 'PHONE':
+      return (
+        <CompanyByPhone>
+          {phone => (
+            <CommonTree
+              {...{draft, onUpdateReportDraft}}
+              phoneOrWebsite={{phone}}
+              barcodeProduct={undefined}
+              result={undefined}
             />
-          ),
-          ['PRODUCT']: () => <BarcodeTree {...{draft, onUpdateReportDraft}} />,
-          ['SOCIAL']: () => (
-            <InfluencerBySocialNetwork
-              onSubmit={(socialNetwork, influencer, otherSocialNetwork) => {
-                onUpdateReportDraft({
-                  influencer: {
-                    socialNetwork,
-                    otherSocialNetwork,
-                    name: influencer,
-                  },
-                })
-              }}
-            />
-          ),
-          ['PHONE']: () => (
-            <CompanyByPhone>
-              {phone => (
-                <CommonTree
-                  {...{draft, onUpdateReportDraft}}
-                  phoneOrWebsite={{phone}}
-                  barcodeProduct={undefined}
-                  result={undefined}
-                />
-              )}
-            </CompanyByPhone>
-          ),
-          ['TRANSPORTER_WEBSITE']: () => (
-            <WebsiteTree {...{draft, onUpdateReportDraft}} specificWebsiteCompanyKind={'TRANSPORTER_WEBSITE'} />
-          ),
-          ['MERCHANT_WEBSITE']: () => (
-            <WebsiteTree {...{draft, onUpdateReportDraft}} specificWebsiteCompanyKind={'MERCHANT_WEBSITE'} />
-          ),
-          ['WEBSITE']: () => <WebsiteTree {...{draft, onUpdateReportDraft}} specificWebsiteCompanyKind={undefined} />,
-        },
-        () => (
-          <CommonTree
-            {...{draft, onUpdateReportDraft}}
-            phoneOrWebsite={undefined}
-            barcodeProduct={undefined}
-            result={undefined}
-          />
-        ),
-      )}
-    </div>
-  )
+          )}
+        </CompanyByPhone>
+      )
+    case 'TRANSPORTER_WEBSITE':
+      return <WebsiteTree {...{draft, onUpdateReportDraft}} specificWebsiteCompanyKind={'TRANSPORTER_WEBSITE'} />
+    case 'MERCHANT_WEBSITE':
+      return <WebsiteTree {...{draft, onUpdateReportDraft}} specificWebsiteCompanyKind={'MERCHANT_WEBSITE'} />
+    case 'WEBSITE':
+      return <WebsiteTree {...{draft, onUpdateReportDraft}} specificWebsiteCompanyKind={undefined} />
+    default:
+      return (
+        <CommonTree {...{draft, onUpdateReportDraft}} phoneOrWebsite={undefined} barcodeProduct={undefined} result={undefined} />
+      )
+  }
 }
