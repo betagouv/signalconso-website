@@ -94,21 +94,27 @@ export const Problem = ({anomaly, isWebView, stepNavigation}: Props) => {
     ? buildTagsFromSubcategories(reportDraft.subcategories).includes('ReponseConso')
     : false
   const openFfBarcode = (anomaly.isSpecialOpenFoodFactsCategory && searchParams.get(OPENFOODFACTS_BARCODE_PARAM)) || undefined
-  const _openFfBarcodeSearch = useQuery<{barcodeProduct: BarcodeProduct; company: CompanySearchResult} | null>({
+  const _openFfBarcodeSearch = useQuery<{barcodeProduct: BarcodeProduct; company?: CompanySearchResult} | null>({
     queryKey: ['openFfBarcodeSearch', openFfBarcode],
     queryFn: async () => {
       if (openFfBarcode) {
         const barcodeProduct = await signalConsoApiClient.searchByBarcode(openFfBarcode)
-        if (barcodeProduct && barcodeProduct.siren) {
-          // TODO quoi faire si on a le produit mais pas le siren dans le produit ?? cela peut arrive frequemment, exemple 5449000000996 (coca)
-          const companies = await companyApiClient.searchCompaniesByIdentity(barcodeProduct.siren, false, currentLang)
-          // TODO quoi faire si on a pas la company ??
-          if (companies.length > 0) {
-            const company = companies[0]
-            return {barcodeProduct, company}
+        if (barcodeProduct) {
+          if (barcodeProduct.siren) {
+            const companies = await companyApiClient.searchCompaniesByIdentity(barcodeProduct.siren, false, currentLang)
+            if (companies.length > 0) {
+              const company = companies[0]
+              return {barcodeProduct, company}
+            }
           }
+          // No SIREN, probably associated to a foreign company
+          // Ex coca 5449000000996
+          // Or we had the SIREN but didn't find the company
+          return {barcodeProduct}
         }
       }
+      // Barcode param not present
+      // Or no product found for that barcode (probably invalid)
       return null
     },
   })
@@ -223,27 +229,56 @@ export const Problem = ({anomaly, isWebView, stepNavigation}: Props) => {
           <p className="text-center font-bold mb-2">Répondez-simplement aux questions, et laissez-vous guider !</p>
         </FriendlyHelpText>
       )}
-      {openFfBarcode && _openFfBarcodeSearch.status === 'success' && _openFfBarcodeSearch.data !== null && (
-        <FriendlyHelpText>
-          <p className="mb-2 mt-4">
-            <i className="ri-information-line mr-2" />
-            Vous avez rencontré un problème avec le produit{' '}
-            <span className="font-bold">
-              {_openFfBarcodeSearch.data.barcodeProduct.productName ?? _openFfBarcodeSearch.data.barcodeProduct.gtin}
-            </span>{' '}
-            produit par l'entreprise{' '}
-            <span className="font-bold">
-              {buildCompanyName({kind: 'companySearchResult', company: _openFfBarcodeSearch.data.company})}
-            </span>
-            ?
-          </p>
-          <p className="mb-4">
-            SignalConso vous permet de remonter le problème à l'entreprise. De plus, votre signalement est visible par les agents
-            de la répression des fraudes, qui pourront intervenir si nécessaire.
-          </p>
-          <p className="text-center font-bold mb-2">Répondez-simplement aux questions, et laissez-vous guider !</p>
-        </FriendlyHelpText>
-      )}
+      {openFfBarcode &&
+        _openFfBarcodeSearch.status === 'success' &&
+        _openFfBarcodeSearch.data !== null &&
+        !_openFfBarcodeSearch.data.company && (
+          <FriendlyHelpText>
+            {/* Cas où on a le produit mais sans l'entreprise */}
+            <p className="mb-2 mt-4">
+              <i className="ri-information-line mr-2" />
+              Vous avez rencontré un problème avec le produit{' '}
+              <span className="font-bold">
+                {_openFfBarcodeSearch.data.barcodeProduct.productName ?? _openFfBarcodeSearch.data.barcodeProduct.gtin}
+              </span>{' '}
+              ?
+            </p>
+            <p className="mb-4">
+              SignalConso vous permet de remonter le problème à l'entreprise. De plus, votre signalement est visible par les
+              agents de la répression des fraudes, qui pourront intervenir si nécessaire.
+            </p>
+            <p className="mb-4">
+              <i className="ri-alert-line mr-2" /> Nous n'avons pas pu automatiquement identifier l'entreprise à l'origine de ce
+              produit, nous demanderons donc de l'identifier manuellement.
+            </p>
+            <p className="text-center font-bold mb-2">Répondez-simplement aux questions, et laissez-vous guider !</p>
+          </FriendlyHelpText>
+        )}
+      {openFfBarcode &&
+        _openFfBarcodeSearch.status === 'success' &&
+        _openFfBarcodeSearch.data !== null &&
+        _openFfBarcodeSearch.data.company && (
+          <FriendlyHelpText>
+            {/* Cas complet */}
+            <p className="mb-2 mt-4">
+              <i className="ri-information-line mr-2" />
+              Vous avez rencontré un problème avec le produit{' '}
+              <span className="font-bold">
+                {_openFfBarcodeSearch.data.barcodeProduct.productName ?? _openFfBarcodeSearch.data.barcodeProduct.gtin}
+              </span>{' '}
+              produit par l'entreprise{' '}
+              <span className="font-bold">
+                {buildCompanyName({kind: 'companySearchResult', company: _openFfBarcodeSearch.data.company})}
+              </span>
+              ?
+            </p>
+            <p className="mb-4">
+              SignalConso vous permet de remonter le problème à l'entreprise. De plus, votre signalement est visible par les
+              agents de la répression des fraudes, qui pourront intervenir si nécessaire.
+            </p>
+            <p className="text-center font-bold mb-2">Répondez-simplement aux questions, et laissez-vous guider !</p>
+          </FriendlyHelpText>
+        )}
       {displayMainContent && (
         <>
           {[anomaly, ...(reportDraft.subcategories ?? [])].map(
