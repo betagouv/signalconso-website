@@ -283,13 +283,17 @@ function CommonTree({
 function BarcodeTree({draft, updateReport}: CommonProps) {
   return (
     <CompanySearchByBarcode>
-      {(barcodeProduct, company, skipped) =>
-        skipped ? (
-          <CommonTree {...{draft, updateReport}} phoneOrWebsite={undefined} barcodeProduct={undefined} result={undefined} />
-        ) : (
+      {results => {
+        if (results.kind === 'dont_know_barcode') {
+          return (
+            <CommonTree {...{draft, updateReport}} phoneOrWebsite={undefined} barcodeProduct={undefined} result={undefined} />
+          )
+        }
+        const {product, company} = results
+        return (
           <>
             <BarcodeSearchResult
-              product={barcodeProduct}
+              product={product}
               company={company}
               onSubmit={(company, barcodeProduct) => {
                 updateReport({
@@ -301,16 +305,11 @@ function BarcodeTree({draft, updateReport}: CommonProps) {
               }}
             />
             {!company && (
-              <CommonTree
-                {...{draft, updateReport}}
-                phoneOrWebsite={undefined}
-                barcodeProduct={barcodeProduct}
-                result={undefined}
-              />
+              <CommonTree {...{draft, updateReport}} phoneOrWebsite={undefined} barcodeProduct={product} result={undefined} />
             )}
           </>
         )
-      }
+      }}
     </CompanySearchByBarcode>
   )
 }

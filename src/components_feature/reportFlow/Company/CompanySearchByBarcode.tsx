@@ -12,17 +12,25 @@ import {useI18n} from '../../../i18n/I18n'
 import {BarcodeProduct} from '../../../model/BarcodeProduct'
 import {CompanySearchResult} from '../../../model/Company'
 import {BarcodeHelpButton} from './lib/BarcodeHelpButton'
-import { purgeWhitespaces } from '@/utils/utils'
+import {purgeWhitespaces} from '@/utils/utils'
 
 interface Form {
   gtin: string
 }
 
+type Results =
+  | {
+      kind: 'dont_know_barcode'
+    }
+  | {
+      kind: 'search_results'
+      product?: BarcodeProduct
+      company?: CompanySearchResult
+    }
+
 interface Props {
-  children: (product?: BarcodeProduct, company?: CompanySearchResult, skipped?: boolean) => ReactNode
+  children: (results: Results) => ReactNode
 }
-
-
 
 export const CompanySearchByBarcode = ({children}: Props) => {
   const {m, currentLang} = useI18n()
@@ -148,8 +156,16 @@ export const CompanySearchByBarcode = ({children}: Props) => {
           </form>
         </div>
       </Animate>
-      {displaySkipped && children(undefined, undefined, skipped)}
-      {displayResults && children(_searchByBarcode.data, _searchByIdentity.data?.at(0), skipped)}
+      {displaySkipped &&
+        children({
+          kind: 'dont_know_barcode',
+        })}
+      {displayResults &&
+        children({
+          kind: 'search_results',
+          product: _searchByBarcode.data,
+          company: _searchByIdentity.data?.at(0),
+        })}
     </>
   )
 }
