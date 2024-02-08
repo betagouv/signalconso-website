@@ -6,7 +6,6 @@ import {PlaygroundConfirmation, dummyStepNavigation} from '@/components_feature/
 import {PlaygroundConsumer} from '@/components_feature/playgroundComponents/PlaygroundConsumer'
 import {PlaygroundDetails} from '@/components_feature/playgroundComponents/PlaygroundDetails'
 import {PlaygroundOther} from '@/components_feature/playgroundComponents/PlaygroundOther'
-import {CompanyFilled} from '@/components_feature/reportFlow/Company/Company'
 import {ContentPageContainer} from '@/components_simple/PageContainers'
 
 import {usePathname, useSearchParams} from 'next/navigation'
@@ -14,6 +13,7 @@ import {AcknowledgmentCases} from '../reportFlow/Acknowledgement/Acknowledgement
 import Button from '@codegouvfr/react-dsfr/Button'
 import Link from 'next/link'
 import {BarcodeProduct} from '@/model/BarcodeProduct'
+import {CompanyFilled} from '../reportFlow/Company/CompanyFilled'
 
 const companyDraft = {
   id: 'id12345',
