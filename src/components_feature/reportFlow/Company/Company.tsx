@@ -228,6 +228,46 @@ function CommonTree({
   )
 }
 
+function BarcodeTree({draft, onUpdateReportDraft}: BasicProps) {
+  return (
+    <CompanySearchByBarcode>
+      {(barcodeProduct, company, skipped) =>
+        skipped ? (
+          <CommonTree
+            {...{draft, onUpdateReportDraft}}
+            phoneOrWebsite={undefined}
+            barcodeProduct={undefined}
+            result={undefined}
+          />
+        ) : (
+          <>
+            <BarcodeSearchResult
+              product={barcodeProduct}
+              company={company}
+              onSubmit={(company, barcodeProduct) => {
+                onUpdateReportDraft({
+                  companyDraft: {
+                    ...company,
+                  },
+                  barcodeProduct,
+                })
+              }}
+            />
+            {!company && (
+              <CommonTree
+                {...{draft, onUpdateReportDraft}}
+                phoneOrWebsite={undefined}
+                barcodeProduct={barcodeProduct}
+                result={undefined}
+              />
+            )}
+          </>
+        )
+      }
+    </CompanySearchByBarcode>
+  )
+}
+
 type BasicProps = {
   draft: Pick<ReportDraft, 'companyKind'>
   onUpdateReportDraft: (_: DeepPartial<ReportDraft2>) => void
@@ -240,46 +280,6 @@ export function CompanyIdentification({
   draft: Pick<ReportDraft, 'companyKind'>
   onUpdateReportDraft: (_: DeepPartial<ReportDraft2>) => void
 }) {
-  const barcodeTree = () => {
-    return (
-      <CompanySearchByBarcode>
-        {(barcodeProduct, company, skipped) =>
-          skipped ? (
-            <CommonTree
-              {...{draft, onUpdateReportDraft}}
-              phoneOrWebsite={undefined}
-              barcodeProduct={undefined}
-              result={undefined}
-            />
-          ) : (
-            <>
-              <BarcodeSearchResult
-                product={barcodeProduct}
-                company={company}
-                onSubmit={(company, barcodeProduct) => {
-                  onUpdateReportDraft({
-                    companyDraft: {
-                      ...company,
-                    },
-                    barcodeProduct,
-                  })
-                }}
-              />
-              {!company && (
-                <CommonTree
-                  {...{draft, onUpdateReportDraft}}
-                  phoneOrWebsite={undefined}
-                  barcodeProduct={barcodeProduct}
-                  result={undefined}
-                />
-              )}
-            </>
-          )
-        }
-      </CompanySearchByBarcode>
-    )
-  }
-
   return (
     <div>
       {fnSwitch(
@@ -297,7 +297,7 @@ export function CompanyIdentification({
               }}
             />
           ),
-          ['PRODUCT']: () => barcodeTree(),
+          ['PRODUCT']: () => <BarcodeTree {...{draft, onUpdateReportDraft}} />,
           ['SOCIAL']: () => (
             <InfluencerBySocialNetwork
               onSubmit={(socialNetwork, influencer, otherSocialNetwork) => {
