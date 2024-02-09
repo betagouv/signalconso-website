@@ -3,16 +3,12 @@ desc: Absence de places réservées
 blockingInfo:
   title: Oups, nous ne pouvons pas traiter votre signalement.
   content: >-
-    Lien à intégrer
+    La gestion de la politique de stationnement est assurée par le gestionnaire de la voirie locale, généralement la commune. 
+    <br /> 
+    <br />Toutefois, cette responsabilité peut être transférée à un établissement public de coopération intercommunale (EPCI) comme une communauté de communes ou d'agglomération. 
+    <br /> Pour tout signalement concernant le stationnement, il est recommandé d'utiliser les contacts email de la commune ou de l'EPCI. 
+    <br />
+    <br /> Concernant l'accessibilité, 2% des places de stationnement doivent être adaptées et conformes aux normes d'accessibilité des voiries et espaces publics.
 
-  questions:
-    - question: Vous souhaitez néanmoins faire part de votre mécontentement&#160;?
-      answer: >-
-        Commencez par contacter le transporteur qui assure le service. 
-        L'entreprise est votre premier point de contact et peut souvent résoudre directement votre problème.
-        <br /> 
-        <br />
-        Si vous n'obtenez pas de réponse ou si la réponse ne vous satisfait pas, vous pouvez ensuite vous adresser à l’AOM concernée. 
-        <br />En tant que donneur d'ordre du contrat d'exploitation, l'AOM a la capacité d'intervenir pour faciliter la résolution de votre problème.
-
+  
 
