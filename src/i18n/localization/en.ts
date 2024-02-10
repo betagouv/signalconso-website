@@ -1083,9 +1083,10 @@ export const en = {
     reportedCompanyNamePlaceholder: `Ex: Boulangerie Petit Jean`,
     companyIdentifiedTitle: `Company identified`,
     influencerIdentifiedTitle: `Influencer identified`,
-    influencerIdentifiedDesc: "Good news, we have recognized the name or pseudonym of the influencer",
-    influencerUnknownTitle: "Warning",
-    influencerUnknownDesc: "Make sure that the name or pseudonym exists and is spelled correctly. Accurate information will facilitate the work of our services.",
+    influencerIdentifiedDesc: 'Good news, we have recognized the name or pseudonym of the influencer',
+    influencerUnknownTitle: 'Warning',
+    influencerUnknownDesc:
+      'Make sure that the name or pseudonym exists and is spelled correctly. Accurate information will facilitate the work of our services.',
     companyIdentityHelperTitle: 'Help to find SIRET/SIREN',
     companyIdentityHelperWhere: `Where to find these identifiers?`,
     companyIdentityHelperWebsite: `On a website`,

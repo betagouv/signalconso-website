@@ -11,7 +11,7 @@ import {ApiCreatedReport, ApiReportDraft} from '@/model/reportsFromApi'
 import {ResponseConsumerReview, ResponseConsumerReviewExists} from '../core/Events'
 import {AppLang} from '../i18n/localization/AppLangs'
 import {BarcodeProduct} from '../model/BarcodeProduct'
-import {Influencer} from "@/model/Influencer";
+import {Influencer} from '@/model/Influencer'
 
 type PublicStat =
   | 'PromesseAction'
