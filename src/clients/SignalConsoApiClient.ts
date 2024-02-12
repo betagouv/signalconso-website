@@ -5,12 +5,13 @@ import {Country} from '../model/Country'
 import {FileOrigin, UploadedFile} from '../model/UploadedFile'
 import {CreatedReport} from '../model/CreatedReport'
 import {ReportDraft} from '../model/ReportDraft'
-import {Subcategory} from '@/anomalies/Anomaly'
+import {SocialNetworks, Subcategory} from '@/anomalies/Anomaly'
 import {ConsumerEmailResult} from '@/model/ConsumerEmailValidation'
 import {ApiCreatedReport, ApiReportDraft} from '@/model/reportsFromApi'
 import {ResponseConsumerReview, ResponseConsumerReviewExists} from '../core/Events'
 import {AppLang} from '../i18n/localization/AppLangs'
 import {BarcodeProduct} from '../model/BarcodeProduct'
+import {Influencer} from '@/model/Influencer'
 
 type PublicStat =
   | 'PromesseAction'
@@ -40,6 +41,10 @@ export class SignalConsoApiClient {
 
   searchCompaniesByUrl = (url: string) => {
     return this.client.get<WebsiteCompanySearchResult>(`/companies/hosts`, {qs: {url}})
+  }
+
+  searchCertifiedInfluencer = (influencer: string, socialNetwork: SocialNetworks) => {
+    return this.client.get<boolean>(`/certified-influencer`, {qs: {name: influencer, socialNetwork}})
   }
 
   searchForeignCompaniesByUrl = (url: string) => {
