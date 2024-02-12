@@ -348,12 +348,15 @@ export const _Company = ({draft, onUpdateReportDraft}: CompanyWithRequiredProps)
           ['SOCIAL']: () => (
             <InfluencerBySocialNetwork
               onSubmit={(socialNetwork, influencer, otherSocialNetwork, postalCode) => {
+                const companyDraft = postalCode
+                  ? {
+                      address: {
+                        postalCode,
+                      },
+                    }
+                  : undefined
                 onUpdateReportDraft({
-                  companyDraft: {
-                    address: {
-                      postalCode,
-                    },
-                  },
+                  companyDraft,
                   influencer: {
                     socialNetwork,
                     otherSocialNetwork,

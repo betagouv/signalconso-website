@@ -43,18 +43,13 @@ export const InfluencerBySocialNetwork = ({onSubmit}: Props) => {
   const {signalConsoApiClient} = useApiClients()
   const socialNetwork = watch('socialNetwork')
 
-  useEffect(() => {
-    setValue('influencer', '')
-    setIsEditingInfluencer(true)
-  }, [socialNetwork])
-
   const influencer = watch('influencer')
   const [isEditingInfluencer, setIsEditingInfluencer] = useState(true)
   const [certifiedInfluencer, setCertifiedInfluencer] = useState<string>()
 
   const searchQuery = useQuery({
-    queryKey: ['searchCertifiedInfluencer', influencer, socialNetwork],
-    queryFn: () => signalConsoApiClient.searchCertifiedInfluencer(influencer, socialNetwork),
+    queryKey: ['searchCertifiedInfluencer', certifiedInfluencer, socialNetwork],
+    queryFn: () => signalConsoApiClient.searchCertifiedInfluencer(certifiedInfluencer!, socialNetwork),
     enabled: !!certifiedInfluencer,
   })
 
@@ -84,7 +79,20 @@ export const InfluencerBySocialNetwork = ({onSubmit}: Props) => {
               rules={{
                 required: {value: true, message: m.required},
               }}
-              render={({field}) => <ScRadioButtons {...field} required options={socialNetworkOptions} title="Réseau social" />}
+              render={({field: {onChange, ...rest}}) => (
+                <ScRadioButtons
+                  {...rest}
+                  onChange={value => {
+                    setCertifiedInfluencer(undefined)
+                    setIsEditingInfluencer(true)
+                    setValue('influencer', '')
+                    return onChange(value)
+                  }}
+                  required
+                  options={socialNetworkOptions}
+                  title="Réseau social"
+                />
+              )}
             />
           </div>
         </Animate>
