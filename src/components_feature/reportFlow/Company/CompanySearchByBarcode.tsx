@@ -79,8 +79,13 @@ export const CompanySearchByBarcode = ({children}: Props) => {
   function search(form: Form) {
     const cleanedGtin = purgeWhitespaces(form.gtin)
     _analytic.trackEvent(EventCategories.barcodeSearch, CompanySearchEventActions.searchByGTIN, cleanedGtin)
-    setSubmittedGTIN(cleanedGtin)
-    setSubmittedIdentity(undefined)
+    if (cleanedGtin === submittedGTIN) {
+      _searchByBarcode.refetch()
+      _searchByIdentity.refetch()
+    } else {
+      setSubmittedGTIN(cleanedGtin)
+      setSubmittedIdentity(undefined)
+    }
     setSkipped(false)
     setEditing(false)
   }
