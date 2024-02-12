@@ -1093,8 +1093,6 @@ export const fr = {
     reportedCompanyName: `Nom ou enseigne de l'entreprise signalée`,
     reportedCompanyNamePlaceholder: `Ex: Boulangerie Petit Jean`,
     companyIdentifiedTitle: `Entreprise identifiée`,
-    influencerIdentifiedTitle: `Influenceur ou influenceuse identifié(e)`,
-    influencerIdentifiedDesc: `Bonne nouvelle, nous avons reconnu le nom ou pseudonyme de l'influenceur ou influenceuse`,
     influencerUnknownTitle: `Attention`,
     influencerUnknownDesc: `Assurez-vous que le nom ou le pseudonyme existe et soit correctement orthographié. Une information précise facilitera le travail de nos services.`,
     companyIdentityHelperTitle: 'Aide SIRET/SIREN',

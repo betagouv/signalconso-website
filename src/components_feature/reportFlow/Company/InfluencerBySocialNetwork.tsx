@@ -89,23 +89,16 @@ export const InfluencerBySocialNetwork = ({onSubmit}: Props) => {
     currentInfluencer: string
     isCertifiedInfluencer: boolean | undefined
   }) {
+    console.log(isCertifiedInfluencer)
     const {m} = useI18n()
-    if (!isEditingWebsite) {
+    if (isCertifiedInfluencer != undefined && !isEditingWebsite) {
       return (
         <AutofocusedDiv>
           <br />
           {isCertifiedInfluencer ? (
-            <>
-              <Alert
-                title={m.influencerIdentifiedTitle}
-                description={m.influencerIdentifiedDesc}
-                severity="success"
-                className="text-base font-normal mb-3"
-              />
-              <div className="flex justify-end">
-                <Button type="submit">{m.continueWithInfluencer(currentInfluencer)}</Button>
-              </div>
-            </>
+            <div className="flex justify-end">
+              <Button type="submit">{m.continueWithInfluencer(currentInfluencer)}</Button>
+            </div>
           ) : (
             <div className="flex-col">
               <Alert
@@ -118,7 +111,7 @@ export const InfluencerBySocialNetwork = ({onSubmit}: Props) => {
                 <Button priority={'secondary'} className={'mr-2'} onClick={_ => setIsEditingWebsite(true)}>
                   {m.edit}
                 </Button>
-                <Button type="submit">{m.continueWithWebsite(currentInfluencer)}</Button>
+                <Button type="submit">{m.continueWithInfluencer(currentInfluencer)}</Button>
               </div>
             </div>
           )}
@@ -172,10 +165,7 @@ export const InfluencerBySocialNetwork = ({onSubmit}: Props) => {
                 disabled={!isEditingWebsite}
               />
 
-              <CertifiedInfluencer
-                currentInfluencer={influencer}
-                isCertifiedInfluencer={searchQuery.data ? searchQuery.data : undefined}
-              />
+              <CertifiedInfluencer currentInfluencer={influencer} isCertifiedInfluencer={searchQuery.data} />
 
               {isEditingWebsite && (
                 <div className="flex justify-end">
