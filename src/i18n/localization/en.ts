@@ -1082,6 +1082,7 @@ export const en = {
     reportedCompanyName: `Company name or trading name of the reported business`,
     reportedCompanyNamePlaceholder: `Ex: Boulangerie Petit Jean`,
     companyIdentifiedTitle: `Company identified`,
+    influencerIdentifiedTitle: `Influencer identified`,
     influencerUnknownTitle: 'Warning',
     influencerUnknownDesc:
       'Make sure that the name or pseudonym exists and is spelled correctly. Accurate information will facilitate the work of our services.',
