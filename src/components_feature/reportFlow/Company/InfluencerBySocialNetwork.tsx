@@ -34,7 +34,7 @@ async function searchInfluencer(
   signalConsoApiClient: SignalConsoApiClient,
   influencer: string,
   socialNetwork: SocialNetworks,
-): Promise<Influencer[]> {
+): Promise<boolean> {
   return await signalConsoApiClient.searchCertifiedInfluencer(influencer, socialNetwork)
 }
 
@@ -76,25 +76,26 @@ export const InfluencerBySocialNetwork = ({onSubmit}: Props) => {
 
   const socialNetworkOptions = socialNetworks.map(socialNetwork => {
     return {
-      label: <SocialNetworkRow socialNetwork={socialNetwork} />,
+      label: <SocialNetworkRow socialNetwork={socialNetwork}/>,
       value: socialNetwork,
-      specify: socialNetwork === 'OTHER' ? <DetailsSpecifyInput control={control} name="otherSocialNetwork" /> : undefined,
+      specify: socialNetwork === 'OTHER' ?
+        <DetailsSpecifyInput control={control} name="otherSocialNetwork"/> : undefined,
     }
   })
 
   function CertifiedInfluencer({
-    currentInfluencer,
-    certifiedInfluencers,
-  }: {
+                                 currentInfluencer,
+                                 isCertifiedInfluencer,
+                               }: {
     currentInfluencer: string
-    certifiedInfluencers: string[] | undefined
+    isCertifiedInfluencer: boolean | undefined
   }) {
     const {m} = useI18n()
-    if (certifiedInfluencers && !isEditingWebsite) {
+    if ( !isEditingWebsite) {
       return (
         <AutofocusedDiv>
-          <br />
-          {certifiedInfluencers.includes(currentInfluencer) ? (
+          <br/>
+          {isCertifiedInfluencer ? (
             <>
               <Alert
                 title={m.influencerIdentifiedTitle}
@@ -130,7 +131,7 @@ export const InfluencerBySocialNetwork = ({onSubmit}: Props) => {
 
   return (
     <>
-      <RequiredFieldsLegend />
+      <RequiredFieldsLegend/>
       <form
         onSubmit={handleSubmit(form => {
           onSubmit(form.socialNetwork, form.influencer, form.otherSocialNetwork)
@@ -144,7 +145,8 @@ export const InfluencerBySocialNetwork = ({onSubmit}: Props) => {
               rules={{
                 required: {value: true, message: m.required},
               }}
-              render={({field}) => <ScRadioButtons {...field} required options={socialNetworkOptions} title="Réseau social" />}
+              render={({field}) => <ScRadioButtons {...field} required options={socialNetworkOptions}
+                                                   title="Réseau social"/>}
             />
           </div>
         </Animate>
@@ -161,12 +163,12 @@ export const InfluencerBySocialNetwork = ({onSubmit}: Props) => {
                 editable={
                   !isEditingWebsite
                     ? {
-                        onEdit: () => {
-                          setValue('influencer', '')
-                          setIsEditingWebsite(true)
-                        },
-                        label: m.modifyWebsite,
-                      }
+                      onEdit: () => {
+                        setValue('influencer', '')
+                        setIsEditingWebsite(true)
+                      },
+                      label: m.modifyWebsite,
+                    }
                     : undefined
                 }
                 disabled={!isEditingWebsite}
@@ -174,7 +176,7 @@ export const InfluencerBySocialNetwork = ({onSubmit}: Props) => {
 
               <CertifiedInfluencer
                 currentInfluencer={influencer}
-                certifiedInfluencers={searchQuery.data ? searchQuery.data.map(_ => _.name) : undefined}
+                isCertifiedInfluencer={searchQuery.data ? searchQuery.data : undefined}
               />
 
               {isEditingWebsite && (

@@ -44,7 +44,7 @@ export class SignalConsoApiClient {
   }
 
   searchCertifiedInfluencer = (influencer: string, socialNetwork: SocialNetworks) => {
-    return this.client.get<Influencer[]>(`/certified-influencer`, {qs: {name: influencer, socialNetwork}})
+    return this.client.get<boolean>(`/certified-influencer`, {qs: {name: influencer, socialNetwork}})
   }
 
   searchForeignCompaniesByUrl = (url: string) => {
