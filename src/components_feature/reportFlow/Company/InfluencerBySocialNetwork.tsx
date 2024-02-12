@@ -76,25 +76,24 @@ export const InfluencerBySocialNetwork = ({onSubmit}: Props) => {
 
   const socialNetworkOptions = socialNetworks.map(socialNetwork => {
     return {
-      label: <SocialNetworkRow socialNetwork={socialNetwork}/>,
+      label: <SocialNetworkRow socialNetwork={socialNetwork} />,
       value: socialNetwork,
-      specify: socialNetwork === 'OTHER' ?
-        <DetailsSpecifyInput control={control} name="otherSocialNetwork"/> : undefined,
+      specify: socialNetwork === 'OTHER' ? <DetailsSpecifyInput control={control} name="otherSocialNetwork" /> : undefined,
     }
   })
 
   function CertifiedInfluencer({
-                                 currentInfluencer,
-                                 isCertifiedInfluencer,
-                               }: {
+    currentInfluencer,
+    isCertifiedInfluencer,
+  }: {
     currentInfluencer: string
     isCertifiedInfluencer: boolean | undefined
   }) {
     const {m} = useI18n()
-    if ( !isEditingWebsite) {
+    if (!isEditingWebsite) {
       return (
         <AutofocusedDiv>
-          <br/>
+          <br />
           {isCertifiedInfluencer ? (
             <>
               <Alert
@@ -131,7 +130,7 @@ export const InfluencerBySocialNetwork = ({onSubmit}: Props) => {
 
   return (
     <>
-      <RequiredFieldsLegend/>
+      <RequiredFieldsLegend />
       <form
         onSubmit={handleSubmit(form => {
           onSubmit(form.socialNetwork, form.influencer, form.otherSocialNetwork)
@@ -145,8 +144,7 @@ export const InfluencerBySocialNetwork = ({onSubmit}: Props) => {
               rules={{
                 required: {value: true, message: m.required},
               }}
-              render={({field}) => <ScRadioButtons {...field} required options={socialNetworkOptions}
-                                                   title="Réseau social"/>}
+              render={({field}) => <ScRadioButtons {...field} required options={socialNetworkOptions} title="Réseau social" />}
             />
           </div>
         </Animate>
@@ -163,12 +161,12 @@ export const InfluencerBySocialNetwork = ({onSubmit}: Props) => {
                 editable={
                   !isEditingWebsite
                     ? {
-                      onEdit: () => {
-                        setValue('influencer', '')
-                        setIsEditingWebsite(true)
-                      },
-                      label: m.modifyWebsite,
-                    }
+                        onEdit: () => {
+                          setValue('influencer', '')
+                          setIsEditingWebsite(true)
+                        },
+                        label: m.modifyWebsite,
+                      }
                     : undefined
                 }
                 disabled={!isEditingWebsite}
