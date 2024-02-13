@@ -1,6 +1,6 @@
+import {useBarcodeSearch} from '@/feature/barcodeService'
 import {purgeWhitespaces} from '@/utils/utils'
 import {Button} from '@codegouvfr/react-dsfr/Button'
-import {useQuery} from '@tanstack/react-query'
 import {ReactNode, useRef, useState} from 'react'
 import {useForm} from 'react-hook-form'
 import {useAnalyticContext} from '../../../analytic/AnalyticContext'
@@ -35,8 +35,7 @@ interface Props {
 }
 
 export const CompanySearchByBarcode = ({children}: Props) => {
-  const {m, currentLang} = useI18n()
-  const {companyApiClient, signalConsoApiClient} = useApiClients()
+  const {m} = useI18n()
   const _analytic = useAnalyticContext()
   const {
     register,
@@ -46,26 +45,7 @@ export const CompanySearchByBarcode = ({children}: Props) => {
 
   const [formStatus, setFormStatus] = useState<FormStatus>({kind: 'editing'})
   const gtin = formStatus && formStatus.kind === 'submitted' ? formStatus.gtin : undefined
-  const _search = useQuery<{product?: BarcodeProduct; company?: CompanySearchResult} | undefined>({
-    queryKey: ['searchByBarcode', gtin],
-    queryFn: async () => {
-      if (gtin) {
-        const product = await signalConsoApiClient.searchByBarcode(gtin)
-        if (product) {
-          if (product.siren) {
-            const companies = await companyApiClient.searchCompaniesByIdentity(product.siren, false, currentLang)
-            if (companies && companies.length) {
-              const company = companies[0]
-              return {product, company}
-            }
-          }
-          return {product}
-        }
-        return {}
-      }
-      return undefined
-    },
-  })
+  const _search = useBarcodeSearch(gtin)
 
   const onSkip = () => setFormStatus({kind: 'skipped'})
   const onEdit = () => setFormStatus({kind: 'editing'})

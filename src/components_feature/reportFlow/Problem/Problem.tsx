@@ -22,6 +22,7 @@ import {ProblemSelect} from './ProblemSelect'
 import {ProblemStepper, ProblemStepperStep} from './ProblemStepper'
 import {computeSelectedSubcategoriesData} from './useSelectedSubcategoriesData'
 import {buildCompanyName} from '@/components_simple/CompanyRecap/CompanyRecap'
+import {useBarcodeSearch} from '@/feature/barcodeService'
 
 interface Props {
   anomaly: Anomaly
@@ -87,37 +88,14 @@ export function adjustReportDraftAfterSubcategoriesChange(
 export const Problem = ({anomaly, isWebView, stepNavigation}: Props) => {
   const _analytic = useAnalyticContext()
   const {m, currentLang} = useI18n()
-  const {companyApiClient, signalConsoApiClient} = useApiClients()
   const searchParams = useSearchParams()
   const {reportDraft, setReportDraft, resetFlow, sendReportEvent} = useReportFlowContext()
   const hasReponseConsoSubcategories = reportDraft.subcategories
     ? buildTagsFromSubcategories(reportDraft.subcategories).includes('ReponseConso')
     : false
   const openFfBarcode = (anomaly.isSpecialOpenFoodFactsCategory && searchParams.get(OPENFOODFACTS_BARCODE_PARAM)) || undefined
-  const _openFfBarcodeSearch = useQuery<{barcodeProduct: BarcodeProduct; company?: CompanySearchResult} | null>({
-    queryKey: ['openFfBarcodeSearch', openFfBarcode],
-    queryFn: async () => {
-      if (openFfBarcode) {
-        const barcodeProduct = await signalConsoApiClient.searchByBarcode(openFfBarcode)
-        if (barcodeProduct) {
-          if (barcodeProduct.siren) {
-            const companies = await companyApiClient.searchCompaniesByIdentity(barcodeProduct.siren, false, currentLang)
-            if (companies.length > 0) {
-              const company = companies[0]
-              return {barcodeProduct, company}
-            }
-          }
-          // No SIREN, probably associated to a foreign company
-          // Ex coca 5449000000996
-          // Or we had the SIREN but didn't find the company
-          return {barcodeProduct}
-        }
-      }
-      // Barcode param not present
-      // Or no product found for that barcode (probably invalid)
-      return null
-    },
-  })
+
+  const _openFfBarcodeSearch = useBarcodeSearch(openFfBarcode)
 
   // reset the draft when switching the root category
   useEffect(() => {
@@ -137,7 +115,7 @@ export const Problem = ({anomaly, isWebView, stepNavigation}: Props) => {
         ..._,
         openFf: {
           barcode: openFfBarcode,
-          product: openFfResult.barcodeProduct,
+          product: openFfResult.product,
           company: openFfResult.company,
         },
       }))
@@ -179,7 +157,7 @@ export const Problem = ({anomaly, isWebView, stepNavigation}: Props) => {
         consumerWish,
         employeeConsumer,
         categoryOverride: categoryOverrideFromSelected,
-        barcodeProduct: draft.barcodeProduct,
+        product: draft.product,
         companyDraft: draft.companyDraft,
         // In the openFf scenario
         // Only if we got all the data, then we build the company/product from it.
@@ -188,7 +166,7 @@ export const Problem = ({anomaly, isWebView, stepNavigation}: Props) => {
         // If we don't have all the data, then we will build it in step 2.
         ...(draft.openFf?.product && draft.openFf.company
           ? {
-              barcodeProduct: draft.openFf.product,
+              product: draft.openFf.product,
               companyDraft: draft.openFf.company,
             }
           : null),
@@ -238,7 +216,8 @@ export const Problem = ({anomaly, isWebView, stepNavigation}: Props) => {
       )}
       {openFfBarcode &&
         _openFfBarcodeSearch.status === 'success' &&
-        _openFfBarcodeSearch.data !== null &&
+        _openFfBarcodeSearch.data &&
+        _openFfBarcodeSearch.data.product &&
         !_openFfBarcodeSearch.data.company && (
           <FriendlyHelpText>
             {/* Cas où on a le produit mais sans l'entreprise */}
@@ -246,7 +225,7 @@ export const Problem = ({anomaly, isWebView, stepNavigation}: Props) => {
               <i className="ri-information-line mr-2" />
               Vous avez rencontré un problème avec le produit{' '}
               <span className="font-bold">
-                {_openFfBarcodeSearch.data.barcodeProduct.productName ?? _openFfBarcodeSearch.data.barcodeProduct.gtin}
+                {_openFfBarcodeSearch.data.product.productName ?? _openFfBarcodeSearch.data.product.gtin}
               </span>{' '}
               ?
             </p>
@@ -271,7 +250,7 @@ export const Problem = ({anomaly, isWebView, stepNavigation}: Props) => {
               <i className="ri-information-line mr-2" />
               Vous avez rencontré un problème avec le produit{' '}
               <span className="font-bold">
-                {_openFfBarcodeSearch.data.barcodeProduct.productName ?? _openFfBarcodeSearch.data.barcodeProduct.gtin}
+                {_openFfBarcodeSearch.data.product.productName ?? _openFfBarcodeSearch.data.product.gtin}
               </span>{' '}
               produit par l'entreprise{' '}
               <span className="font-bold">{buildCompanyName({company: _openFfBarcodeSearch.data.company})}</span>?
