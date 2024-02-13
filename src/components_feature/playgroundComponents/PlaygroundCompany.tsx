@@ -1,7 +1,7 @@
 import {ReportDraft2} from '@/model/ReportDraft2'
 import {useState, useEffect} from 'react'
 import {CompanyKinds, companyKinds} from '../../anomalies/Anomaly'
-import {_Company} from '../reportFlow/Company/Company'
+import {CompanyIdentificationDispatch} from '../reportFlow/Company/Company'
 
 interface PlaygroundCompanyProps {
   companyKind?: CompanyKinds
@@ -12,11 +12,11 @@ export const PlaygroundCompany = ({companyKind = 'SIRET'}: PlaygroundCompanyProp
 
   return (
     <>
-      <_Company
+      <CompanyIdentificationDispatch
         draft={{
           companyKind,
         }}
-        onUpdateReportDraft={x => setReport(x as Partial<ReportDraft2>)}
+        updateReport={x => setReport(x as Partial<ReportDraft2>)}
       />
       <pre className="text-gray-500 text-sm">{JSON.stringify(report, undefined, 2)}</pre>
     </>

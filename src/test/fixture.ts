@@ -211,6 +211,7 @@ export class Fixture {
       website: 'https://www.website.com',
       phone: random.phone(),
       activityCode: '46.36B',
+      isMarketPlace: random.boolean(),
     }
   }
 

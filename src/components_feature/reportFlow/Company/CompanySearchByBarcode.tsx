@@ -1,6 +1,7 @@
+import {purgeWhitespaces} from '@/utils/utils'
 import {Button} from '@codegouvfr/react-dsfr/Button'
 import {useQuery} from '@tanstack/react-query'
-import {ReactNode, useEffect, useRef, useState} from 'react'
+import {ReactNode, useRef, useState} from 'react'
 import {useForm} from 'react-hook-form'
 import {useAnalyticContext} from '../../../analytic/AnalyticContext'
 import {CompanySearchEventActions, EventCategories} from '../../../analytic/analytic'
@@ -13,18 +14,24 @@ import {BarcodeProduct} from '../../../model/BarcodeProduct'
 import {CompanySearchResult} from '../../../model/Company'
 import {BarcodeHelpButton} from './lib/BarcodeHelpButton'
 
-interface Form {
+type Form = {
   gtin: string
 }
 
-interface Props {
-  children: (product?: BarcodeProduct, company?: CompanySearchResult, skipped?: boolean) => ReactNode
-}
+type FormStatus = {kind: 'editing'} | {kind: 'skipped'} | {kind: 'submitted'; gtin: string}
 
-function purgeWhitespaces(identity: string): string {
-  // the user may copy/paste the number from a webpage
-  // with whitespaces before, after, or inside, e.g.: XXX XXX XXX
-  return identity.replace(/\s+/g, '')
+type Results =
+  | {
+      kind: 'dont_know_barcode'
+    }
+  | {
+      kind: 'search_results'
+      product?: BarcodeProduct
+      company?: CompanySearchResult
+    }
+
+interface Props {
+  children: (results: Results) => ReactNode
 }
 
 export const CompanySearchByBarcode = ({children}: Props) => {
@@ -37,57 +44,40 @@ export const CompanySearchByBarcode = ({children}: Props) => {
     formState: {errors},
   } = useForm<Form>()
 
-  const [submittedGTIN, setSubmittedGTIN] = useState<string | undefined>(undefined)
-  const _searchByBarcode = useQuery({
-    queryKey: ['searchByBarcode', submittedGTIN],
-    queryFn: () => {
-      return signalConsoApiClient.searchByBarcode(submittedGTIN ?? '')
+  const [formStatus, setFormStatus] = useState<FormStatus>({kind: 'editing'})
+  const gtin = formStatus && formStatus.kind === 'submitted' ? formStatus.gtin : undefined
+  const _search = useQuery<{product: BarcodeProduct; company?: CompanySearchResult} | undefined>({
+    queryKey: ['searchByBarcode', gtin],
+    queryFn: async () => {
+      if (gtin) {
+        const product = await signalConsoApiClient.searchByBarcode(gtin)
+        if (product.siren) {
+          const companies = await companyApiClient.searchCompaniesByIdentity(product.siren, false, currentLang)
+          if (companies && companies.length) {
+            const company = companies[0]
+            return {product, company}
+          }
+        }
+        return {product}
+      }
+      return undefined
     },
-    enabled: !!submittedGTIN,
-    retry: false,
   })
 
-  const [submittedIdentity, setSubmittedIdentity] = useState<string | undefined>(undefined)
-  const _searchByIdentity = useQuery({
-    queryKey: ['searchCompaniesByIdentity', submittedIdentity],
-    queryFn: () => {
-      return companyApiClient.searchCompaniesByIdentity(submittedIdentity ?? '', false, currentLang)
-    },
-    enabled: !!submittedIdentity,
-    retry: false,
-  })
-
-  useEffect(() => {
-    if (_searchByBarcode.data) {
-      setSubmittedIdentity(_searchByBarcode.data.siren)
-    }
-  }, [_searchByBarcode.data])
-
-  const [skipped, setSkipped] = useState<boolean>(false)
-  const [editing, setEditing] = useState(true)
-
-  const skip = () => {
-    setSkipped(true)
-    setEditing(false)
-  }
-
-  const edit = () => {
-    setSkipped(false)
-    setEditing(true)
-  }
-
-  function search(form: Form) {
-    const cleanedGtin = purgeWhitespaces(form.gtin)
-    _analytic.trackEvent(EventCategories.barcodeSearch, CompanySearchEventActions.searchByGTIN, cleanedGtin)
-    setSubmittedGTIN(cleanedGtin)
-    setSubmittedIdentity(undefined)
-    setSkipped(false)
-    setEditing(false)
+  const onSkip = () => setFormStatus({kind: 'skipped'})
+  const onEdit = () => setFormStatus({kind: 'editing'})
+  function onSubmit(form: Form) {
+    const gtin = purgeWhitespaces(form.gtin)
+    _analytic.trackEvent(EventCategories.barcodeSearch, CompanySearchEventActions.searchByGTIN, gtin)
+    setFormStatus({
+      kind: 'submitted',
+      gtin,
+    })
   }
 
   const inputEl = useRef<HTMLInputElement | null>(null)
 
-  const {ref, ...restOfRegisterIdentity} = register('gtin', {
+  const {ref, ...restOfRegisterGtin} = register('gtin', {
     required: {value: true, message: m.required},
     validate: s => {
       const s2 = purgeWhitespaces(s)
@@ -98,15 +88,11 @@ export const CompanySearchByBarcode = ({children}: Props) => {
     },
   })
 
-  const displaySkipped = skipped && !editing
-  const displayResults =
-    !skipped && !editing && ((_searchByBarcode.isFetched && !_searchByBarcode.data?.siren) || _searchByIdentity.isFetched)
-
   return (
     <>
       <Animate>
         <div>
-          <form onSubmit={handleSubmit(search)}>
+          <form onSubmit={handleSubmit(onSubmit)}>
             <div className="mb-4">
               <ScTextInput
                 required={false}
@@ -116,12 +102,12 @@ export const CompanySearchByBarcode = ({children}: Props) => {
                     <BarcodeHelpButton />
                   </span>
                 }
-                disabled={!editing}
+                disabled={formStatus.kind !== 'editing'}
                 editable={
-                  editing
+                  formStatus.kind === 'editing'
                     ? undefined
                     : {
-                        onEdit: edit,
+                        onEdit: onEdit,
                         label: 'Modifier',
                       }
                 }
@@ -129,7 +115,7 @@ export const CompanySearchByBarcode = ({children}: Props) => {
                 type="text"
                 // we want the mobile keyboard to be numeric
                 inputMode="numeric"
-                {...restOfRegisterIdentity}
+                {...restOfRegisterGtin}
                 ref={e => {
                   // https://www.react-hook-form.com/faqs/#Howtosharerefusage
                   ref(e)
@@ -141,18 +127,27 @@ export const CompanySearchByBarcode = ({children}: Props) => {
               />
             </div>
             <div className="flex justify-end gap-2">
-              <Button priority="tertiary no outline" type="button" onClick={skip}>
+              <Button priority="tertiary no outline" type="button" onClick={onSkip}>
                 Je ne connais pas le code-barres
               </Button>
-              <ButtonWithLoader iconId="ri-search-line" loading={_searchByBarcode.isFetching || _searchByIdentity.isFetching}>
+              <ButtonWithLoader iconId="ri-search-line" loading={_search.isFetching}>
                 {m.search}
               </ButtonWithLoader>
             </div>
           </form>
         </div>
       </Animate>
-      {displaySkipped && children(undefined, undefined, skipped)}
-      {displayResults && children(_searchByBarcode.data, _searchByIdentity.data?.at(0), skipped)}
+      {formStatus.kind === 'skipped' &&
+        children({
+          kind: 'dont_know_barcode',
+        })}
+      {formStatus.kind === 'submitted' &&
+        _search.data &&
+        children({
+          kind: 'search_results',
+          product: _search.data.product,
+          company: _search.data.company,
+        })}
     </>
   )
 }

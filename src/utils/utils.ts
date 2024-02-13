@@ -118,6 +118,12 @@ export function sendMessageToReactNative(message: string): void {
   window.ReactNativeWebView?.postMessage(message)
 }
 
+export function purgeWhitespaces(identity: string): string {
+  // the user may copy/paste the number from a webpage
+  // with whitespaces before, after, or inside, e.g.: XXX XXX XXX
+  return identity.replace(/\s+/g, '')
+}
+
 // to avoid repetition
 export type ChildrenProps = {
   children: ReactNode

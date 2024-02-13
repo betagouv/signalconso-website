@@ -200,9 +200,9 @@ export const PlaygroundOther = () => {
       </div>
       <div className="border border-gray-500 border-solid p-2 mb-2">
         <h6>Le composant "CompanyRecap"</h6>
-        <CompanyRecap company={Fixture.genCompanySearchResult()} kind="companySearchResult" />
+        <CompanyRecap company={Fixture.genCompanySearchResult()} />
         <h6>Le composant "CompanyRecap" avec un CompanyDraft</h6>
-        <CompanyRecap company={Fixture.genCompanyDraft()} kind="companyDraft" />
+        <CompanyRecap company={Fixture.genCompanyDraft()} />
       </div>
     </>
   )
