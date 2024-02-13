@@ -6,6 +6,7 @@ import {DetailInputValue} from './CreatedReport'
 import {UploadedFile} from './UploadedFile'
 import {ApiInfluencer, ApiReportDraft} from './reportsFromApi'
 import {BarcodeProduct} from './BarcodeProduct'
+import {report} from 'process'
 
 export const genders = ['Male', 'Female'] as const
 export type Gender = (typeof genders)[number]
@@ -141,9 +142,13 @@ export class ReportDraft {
   static readonly toApi = (draft: ReportDraft, metadata: ApiReportDraft['metadata']): ApiReportDraft => {
     const {consumerWish, reponseconsoCode, anomaly, contactAgreement, vendor, ccrfCode} = draft
 
+    const isSpecialOpenFoodFactsCategory = draft.anomaly.isSpecialOpenFoodFactsCategory
+    const categoryOverride = isSpecialOpenFoodFactsCategory ? 'AchatMagasin' : undefined
+
     const additionalTags: ReportTag[] = [
       ...(consumerWish === 'fixContractualDispute' ? (['LitigeContractuel'] as const) : []),
       ...(consumerWish === 'getAnswer' ? (['ReponseConso'] as const) : []),
+      ...(isSpecialOpenFoodFactsCategory ? (['OpenFoodFacts'] as const) : []),
     ]
 
     const tags = uniq([...(draft.tags ?? []), ...additionalTags])
@@ -152,7 +157,7 @@ export class ReportDraft {
       // We don't use the rest syntax here ("..."),
       // we prefer to be sure to fill each field explicitely
       gender: draft.consumer.gender,
-      category: anomaly.category,
+      category: categoryOverride ?? anomaly.category,
       subcategories: draft.subcategories.map(_ => _.title),
       details: draft.details,
       companyName: draft.companyDraft?.name,
