@@ -162,17 +162,9 @@ export const InfluencerBySocialNetwork = ({onSubmit}: Props) => {
                 <AutofocusedDiv>
                   <br />
                   {searchQuery.data ? (
-                    <>
-                      <Alert
-                        title={m.influencerIdentifiedTitle}
-                        description={m.influencerIdentifiedDesc}
-                        severity="success"
-                        className="text-base font-normal mb-3"
-                      />
-                      <div className="flex justify-end">
-                        <Button type="submit">{m.continueWithInfluencer(influencer)}</Button>
-                      </div>
-                    </>
+                    <div className="flex justify-end">
+                      <Button type="submit">{m.continueWithInfluencer(influencer)}</Button>
+                    </div>
                   ) : (
                     <div className="flex-col">
                       <Alert
