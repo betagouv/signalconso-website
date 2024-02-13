@@ -113,7 +113,7 @@ export const InfluencerBySocialNetwork = ({onSubmit}: Props) => {
                           setValue('influencer', '')
                           setIsEditingInfluencer(true)
                         },
-                        label: m.modifyWebsite,
+                        label: m.edit,
                       }
                     : undefined
                 }
@@ -185,7 +185,7 @@ export const InfluencerBySocialNetwork = ({onSubmit}: Props) => {
                         <Button priority={'secondary'} className={'mr-2'} onClick={_ => setIsEditingInfluencer(true)}>
                           {m.edit}
                         </Button>
-                        <Button type="submit">{m.continueWithWebsite(influencer)}</Button>
+                        <Button type="submit">{m.continueWithInfluencer(influencer)}</Button>
                       </div>
                     </div>
                   )}
