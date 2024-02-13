@@ -326,13 +326,10 @@ function BarcodeTree({draft, updateReport}: CommonProps) {
 
 function OpenFfTree({draft, updateReport}: CommonProps) {
   const {company, product} = draft.openFf ?? {}
-  const commonTree = (
-    <CommonTree {...{draft, updateReport}} phoneOrWebsite={undefined} barcodeProduct={undefined} result={undefined} />
-  )
   if (!product) {
     // We were not able to find the product with the barcode from OpenFF
-    // Let's forget about it and use the regular search
-    return commonTree
+    // Let's forget about it entirely and fallback on the regular search
+    return <CommonTree {...{draft, updateReport}} phoneOrWebsite={undefined} barcodeProduct={undefined} result={undefined} />
   }
   return (
     <>
@@ -341,14 +338,26 @@ function OpenFfTree({draft, updateReport}: CommonProps) {
         company={company}
         onSubmit={(company, barcodeProduct) => {
           updateReport({
-            companyDraft: {
-              ...company,
-            },
+            companyDraft: company,
             barcodeProduct,
           })
         }}
       />
-      {!company && commonTree}
+      {!company && (
+        <CommonTree
+          {...{draft}}
+          updateReport={changesToDraft => {
+            updateReport({
+              ...changesToDraft,
+              // we also want to keep the product
+              barcodeProduct: product,
+            })
+          }}
+          phoneOrWebsite={undefined}
+          barcodeProduct={undefined}
+          result={undefined}
+        />
+      )}
     </>
   )
 }
