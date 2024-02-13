@@ -248,8 +248,8 @@ export const Problem = ({anomaly, isWebView, stepNavigation}: Props) => {
               agents de la répression des fraudes, qui pourront intervenir si nécessaire.
             </p>
             <p className="mb-4">
-              <i className="ri-alert-line mr-2" /> Nous n'avons pas pu automatiquement identifier l'entreprise à l'origine de ce
-              produit, nous demanderons donc de l'identifier manuellement.
+              Nous n'avons pas pu automatiquement identifier l'entreprise à l'origine de ce produit, nous demanderons donc de
+              l'identifier manuellement.
             </p>
             <p className="text-center font-bold mb-2">Répondez-simplement aux questions, et laissez-vous guider !</p>
           </FriendlyHelpText>
