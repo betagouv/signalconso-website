@@ -94,6 +94,7 @@ export const companyKinds = [
   'LOCATION',
   'SOCIAL',
   'PRODUCT',
+  'PRODUCT_OPENFF',
   'TRAIN',
 ] as const
 export type CompanyKinds = (typeof companyKinds)[number]

@@ -165,14 +165,8 @@ export const Problem = ({anomaly, isWebView, stepNavigation}: Props) => {
       //Company kind 'SOCIAL' cannot be employee consumer report
       const employeeConsumer = draft.companyKind === 'SOCIAL' ? false : draft.employeeConsumer
       const companyKind =
-        // For this category, it's always PRODUCT, regardless of the YAML.
-        anomaly.isSpecialOpenFoodFactsCategory ? 'PRODUCT' : companyKindFromSelected ?? draft.companyKind ?? 'SIRET'
-
-      // In the openFf scenario, build the company/product from the data we fetched.
-      // We can't do it earlier because it would have been erased
-      // when switching between subcategories
-      const barcodeProduct = draft.openFf?.product ?? draft.barcodeProduct
-      const companyDraft = draft.openFf?.company ? draft.openFf.company : draft.companyDraft
+        // For this category, it's always PRODUCT_OPENFF, regardless of the YAML.
+        anomaly.isSpecialOpenFoodFactsCategory ? 'PRODUCT_OPENFF' : companyKindFromSelected ?? draft.companyKind ?? 'SIRET'
 
       const updatedDraft = {
         ...draft,
@@ -183,8 +177,19 @@ export const Problem = ({anomaly, isWebView, stepNavigation}: Props) => {
         anomaly: _anomaly,
         consumerWish,
         employeeConsumer,
-        barcodeProduct,
-        companyDraft,
+        barcodeProduct: draft.barcodeProduct,
+        companyDraft: draft.companyDraft,
+        // In the openFf scenario
+        // Only if we got all the data, then we build the company/product from it.
+        // We can't do it earlier because it would have been erased
+        // when switching between subcategories
+        // If we don't have all the data, then we will build it in step 2.
+        ...(draft.openFf?.product && draft.openFf.company
+          ? {
+              barcodeProduct: draft.openFf.product,
+              companyDraft: draft.openFf.company,
+            }
+          : null),
       }
       return updatedDraft
     })
