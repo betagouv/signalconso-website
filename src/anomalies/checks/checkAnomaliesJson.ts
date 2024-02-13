@@ -37,6 +37,7 @@ const baseSubcategorySpec: ObjectSpec = {
   // triggers the recursion
   subcategories: _ => _.ifDefined()?.assertIsArrayWith(assertIsSubcategory),
   companyKindQuestion: _ => _.ifDefined()?.assertIsObjectWith(companyKindQuestionSpec),
+  categoryOverride: _ => _.ifDefined()?.assertIsString(),
   isAccessibiliteSubcategory: _ => _.ifDefined()?.assertIsBoolean(),
 }
 

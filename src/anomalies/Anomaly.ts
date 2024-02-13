@@ -47,6 +47,7 @@ type SubcategoryBase = CategoryNodeBase & {
   ccrfCode?: string[]
   companyKind?: CompanyKinds
   companyKindQuestion?: CompanyKindQuestion
+  categoryOverride?: string
   // Temporary, to control the display of one specific subcategory through a feature flag
   isAccessibiliteSubcategory?: boolean
 }

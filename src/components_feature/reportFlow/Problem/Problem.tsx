@@ -154,6 +154,7 @@ export const Problem = ({anomaly, isWebView, stepNavigation}: Props) => {
     companyKindQuestionFromSelected,
     responseconsoCodeFromSelected,
     ccrfCodeFromSelected,
+    categoryOverrideFromSelected,
   } = useMemo(() => {
     return computeSelectedSubcategoriesData(reportDraft.subcategories ?? [])
   }, [reportDraft.subcategories])
@@ -168,7 +169,7 @@ export const Problem = ({anomaly, isWebView, stepNavigation}: Props) => {
         // For this category, it's always PRODUCT_OPENFF, regardless of the YAML.
         anomaly.isSpecialOpenFoodFactsCategory ? 'PRODUCT_OPENFF' : companyKindFromSelected ?? draft.companyKind ?? 'SIRET'
 
-      const updatedDraft = {
+      const updatedDraft: Partial<ReportDraft2> = {
         ...draft,
         ccrfCode: ccrfCodeFromSelected,
         reponseconsoCode: responseconsoCodeFromSelected,
@@ -177,6 +178,7 @@ export const Problem = ({anomaly, isWebView, stepNavigation}: Props) => {
         anomaly: _anomaly,
         consumerWish,
         employeeConsumer,
+        categoryOverride: categoryOverrideFromSelected,
         barcodeProduct: draft.barcodeProduct,
         companyDraft: draft.companyDraft,
         // In the openFf scenario

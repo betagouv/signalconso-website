@@ -1,7 +1,6 @@
 import {instanceOfSubcategoryWithInfoWall} from '@/anomalies/Anomalies'
 import {lastFromArray, notUndefined} from '@/utils/utils'
-import {CompanyKinds, Subcategory} from '../../../anomalies/Anomaly'
-import {appConfig} from '@/core/appConfig'
+import {Subcategory} from '../../../anomalies/Anomaly'
 
 export function computeSelectedSubcategoriesData(selectedSubCategories: Subcategory[]) {
   const tagsFromSelected = selectedSubCategories.flatMap(_ => _.tags ?? [])
@@ -23,6 +22,8 @@ export function computeSelectedSubcategoriesData(selectedSubCategories: Subcateg
   const companyKindQuestionFromSelected = [...selectedSubCategories].reverse().find(_ => !!_.companyKindQuestion)
     ?.companyKindQuestion
 
+  const categoryOverrideFromSelected = [...selectedSubCategories].reverse().find(_ => !!_.categoryOverride)?.categoryOverride
+
   return {
     companyKindFromSelected,
     companyKindQuestionFromSelected,
@@ -32,5 +33,6 @@ export function computeSelectedSubcategoriesData(selectedSubCategories: Subcateg
     showEmployeeConsumer,
     responseconsoCodeFromSelected,
     ccrfCodeFromSelected,
+    categoryOverrideFromSelected,
   }
 }
