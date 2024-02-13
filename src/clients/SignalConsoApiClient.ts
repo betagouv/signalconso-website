@@ -1,5 +1,5 @@
 import {appConfig} from '@/core/appConfig'
-import {BaseApiClient} from './BaseApiClient'
+import {ApiError, BaseApiClient} from './BaseApiClient'
 import {WebsiteCompanySearchResult} from '../model/Company'
 import {Country} from '../model/Country'
 import {FileOrigin, UploadedFile} from '../model/UploadedFile'
@@ -35,8 +35,15 @@ export class SignalConsoApiClient {
     },
   })
 
-  searchByBarcode = (barcode: string) => {
-    return this.client.get<BarcodeProduct>(`/barcode/gtin/${barcode}`)
+  searchByBarcode = async (barcode: string): Promise<BarcodeProduct | undefined> => {
+    try {
+      return await this.client.get<BarcodeProduct>(`/barcode/gtin/${barcode}`)
+    } catch (e) {
+      if (e instanceof ApiError && e.details.code === 404) {
+        return undefined
+      }
+      throw e
+    }
   }
 
   searchCompaniesByUrl = (url: string) => {

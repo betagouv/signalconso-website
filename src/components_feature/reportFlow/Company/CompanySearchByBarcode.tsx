@@ -46,19 +46,22 @@ export const CompanySearchByBarcode = ({children}: Props) => {
 
   const [formStatus, setFormStatus] = useState<FormStatus>({kind: 'editing'})
   const gtin = formStatus && formStatus.kind === 'submitted' ? formStatus.gtin : undefined
-  const _search = useQuery<{product: BarcodeProduct; company?: CompanySearchResult} | undefined>({
+  const _search = useQuery<{product?: BarcodeProduct; company?: CompanySearchResult} | undefined>({
     queryKey: ['searchByBarcode', gtin],
     queryFn: async () => {
       if (gtin) {
         const product = await signalConsoApiClient.searchByBarcode(gtin)
-        if (product.siren) {
-          const companies = await companyApiClient.searchCompaniesByIdentity(product.siren, false, currentLang)
-          if (companies && companies.length) {
-            const company = companies[0]
-            return {product, company}
+        if (product) {
+          if (product.siren) {
+            const companies = await companyApiClient.searchCompaniesByIdentity(product.siren, false, currentLang)
+            if (companies && companies.length) {
+              const company = companies[0]
+              return {product, company}
+            }
           }
+          return {product}
         }
-        return {product}
+        return {}
       }
       return undefined
     },
