@@ -1,5 +1,5 @@
 import {RequiredFieldsLegend} from '@/components_simple/RequiredFieldsLegend'
-import {BtnNext, BtnNextSubmit, ButtonWithLoader} from '@/components_simple/buttons/Buttons'
+import {BtnNextSubmit, ButtonWithLoader} from '@/components_simple/buttons/Buttons'
 import {ScTextInput} from '@/components_simple/formInputs/ScTextInput'
 import {Controller, useForm} from 'react-hook-form'
 import {SocialNetworks, socialNetworks} from '../../../anomalies/Anomaly'
@@ -10,32 +10,23 @@ import {useI18n} from '../../../i18n/I18n'
 import {DetailsSpecifyInput} from '@/components_feature/reportFlow/Details/DetailsSpecifyInput'
 import {AutofocusedDiv} from '@/components_simple/AutofocusedDiv'
 import {Button} from '@codegouvfr/react-dsfr/Button'
-import {SignalConsoApiClient} from '@/clients/SignalConsoApiClient'
-import {SiretExtractorClient} from '@/clients/SiretExtractorClient'
-import {useQuery, useQueryClient} from '@tanstack/react-query'
+import {useQuery} from '@tanstack/react-query'
 import {useApiClients} from '@/context/ApiClientsContext'
 import {useToastOnQueryError} from '@/clients/apiHooks'
-import {Influencer} from '@/model/Influencer'
 import {useEffect, useState} from 'react'
 import {Alert} from '@codegouvfr/react-dsfr/Alert'
+import {ScAutocompletePostcode} from '@/components_simple/formInputs/ScAutocompletePostcode'
+import {ScAlert} from '@/components_simple/ScAlert'
 
 interface Props {
-  onSubmit: (socialNetwork: SocialNetworks, influencer: string, otherSocialNetwork?: string) => void
+  onSubmit: (socialNetwork: SocialNetworks, influencer: string, otherSocialNetwork?: string, postalCode?: string) => void
 }
 
 interface Form {
   socialNetwork: SocialNetworks
   otherSocialNetwork: string
   influencer: string
-  certified?: boolean
-}
-
-async function searchInfluencer(
-  signalConsoApiClient: SignalConsoApiClient,
-  influencer: string,
-  socialNetwork: SocialNetworks,
-): Promise<boolean> {
-  return await signalConsoApiClient.searchCertifiedInfluencer(influencer, socialNetwork)
+  postalCode: string
 }
 
 export const InfluencerBySocialNetwork = ({onSubmit}: Props) => {
@@ -52,24 +43,14 @@ export const InfluencerBySocialNetwork = ({onSubmit}: Props) => {
   const {signalConsoApiClient} = useApiClients()
   const socialNetwork = watch('socialNetwork')
 
-  useEffect(() => {
-    setValue('influencer', '')
-    setIsEditingWebsite(true)
-  }, [socialNetwork])
-
   const influencer = watch('influencer')
-  const [isEditingWebsite, setIsEditingWebsite] = useState(true)
-  const [getCertifiedInfluencer, setGetCertifiedInfluencer] = useState(false)
+  const [isEditingInfluencer, setIsEditingInfluencer] = useState(true)
+  const [certifiedInfluencer, setCertifiedInfluencer] = useState<string>()
 
   const searchQuery = useQuery({
-    queryKey: ['searchCertifiedInfluencer', influencer, socialNetwork],
-    queryFn: () => {
-      return searchInfluencer(signalConsoApiClient, influencer, socialNetwork).then(res => {
-        setGetCertifiedInfluencer(false)
-        return res
-      })
-    },
-    enabled: getCertifiedInfluencer,
+    queryKey: ['searchCertifiedInfluencer', certifiedInfluencer, socialNetwork],
+    queryFn: () => signalConsoApiClient.searchCertifiedInfluencer(certifiedInfluencer!, socialNetwork),
+    enabled: !!certifiedInfluencer,
   })
 
   useToastOnQueryError(searchQuery)
@@ -82,51 +63,12 @@ export const InfluencerBySocialNetwork = ({onSubmit}: Props) => {
     }
   })
 
-  function CertifiedInfluencer({
-    currentInfluencer,
-    isCertifiedInfluencer,
-  }: {
-    currentInfluencer: string
-    isCertifiedInfluencer: boolean | undefined
-  }) {
-    console.log(isCertifiedInfluencer)
-    const {m} = useI18n()
-    if (isCertifiedInfluencer != undefined && !isEditingWebsite) {
-      return (
-        <AutofocusedDiv>
-          <br />
-          {isCertifiedInfluencer ? (
-            <div className="flex justify-end">
-              <Button type="submit">{m.continueWithInfluencer(currentInfluencer)}</Button>
-            </div>
-          ) : (
-            <div className="flex-col">
-              <Alert
-                title={m.influencerUnknownTitle}
-                description={m.influencerUnknownDesc}
-                severity="warning"
-                className="text-base font-normal mb-3"
-              />
-              <div className="flex flex-row justify-end">
-                <Button priority={'secondary'} className={'mr-2'} onClick={_ => setIsEditingWebsite(true)}>
-                  {m.edit}
-                </Button>
-                <Button type="submit">{m.continueWithInfluencer(currentInfluencer)}</Button>
-              </div>
-            </div>
-          )}
-        </AutofocusedDiv>
-      )
-    }
-    return null
-  }
-
   return (
     <>
       <RequiredFieldsLegend />
       <form
         onSubmit={handleSubmit(form => {
-          onSubmit(form.socialNetwork, form.influencer, form.otherSocialNetwork)
+          onSubmit(form.socialNetwork, form.influencer, form.otherSocialNetwork, form.postalCode)
         })}
       >
         <Animate autoScrollTo={false}>
@@ -137,7 +79,20 @@ export const InfluencerBySocialNetwork = ({onSubmit}: Props) => {
               rules={{
                 required: {value: true, message: m.required},
               }}
-              render={({field}) => <ScRadioButtons {...field} required options={socialNetworkOptions} title="Réseau social" />}
+              render={({field: {onChange, ...rest}}) => (
+                <ScRadioButtons
+                  {...rest}
+                  onChange={value => {
+                    setCertifiedInfluencer(undefined)
+                    setIsEditingInfluencer(true)
+                    setValue('influencer', '')
+                    return onChange(value)
+                  }}
+                  required
+                  options={socialNetworkOptions}
+                  title="Réseau social"
+                />
+              )}
             />
           </div>
         </Animate>
@@ -152,35 +107,81 @@ export const InfluencerBySocialNetwork = ({onSubmit}: Props) => {
                 {...register('influencer', {required: {value: true, message: m.required}})}
                 required
                 editable={
-                  !isEditingWebsite
+                  !isEditingInfluencer
                     ? {
                         onEdit: () => {
                           setValue('influencer', '')
-                          setIsEditingWebsite(true)
+                          setIsEditingInfluencer(true)
                         },
-                        label: m.modifyWebsite,
+                        label: m.edit,
                       }
                     : undefined
                 }
-                disabled={!isEditingWebsite}
+                disabled={!isEditingInfluencer}
               />
 
-              <CertifiedInfluencer currentInfluencer={influencer} isCertifiedInfluencer={searchQuery.data} />
-
-              {isEditingWebsite && (
+              {socialNetwork === 'OTHER' ? (
+                <>
+                  <ScAlert type="info">
+                    <p className="mb-0">{m.cantIdentifyWebsiteCompany}</p>
+                  </ScAlert>
+                  <Controller
+                    control={control}
+                    name="postalCode"
+                    rules={{
+                      required: {value: true, message: m.required},
+                    }}
+                    render={({field: {onChange, onBlur, name, value}, fieldState: {error}}) => (
+                      <ScAutocompletePostcode
+                        label={m.yourPostalCode}
+                        {...{onChange, onBlur, name, value}}
+                        error={!!error}
+                        helperText={error?.message}
+                      />
+                    )}
+                  />
+                  <div className="flex justify-end">
+                    <BtnNextSubmit />
+                  </div>
+                </>
+              ) : isEditingInfluencer ? (
                 <div className="flex justify-end">
                   <ButtonWithLoader
                     loading={searchQuery.isLoading}
-                    disabled={influencer == ''}
+                    disabled={!influencer}
                     onClick={() => {
-                      setGetCertifiedInfluencer(true)
-                      setIsEditingWebsite(false)
+                      setCertifiedInfluencer(influencer)
+                      setIsEditingInfluencer(false)
                     }}
                     iconId={'fr-icon-arrow-right-s-line'}
                   >
-                    Next
+                    {m.next}
                   </ButtonWithLoader>
                 </div>
+              ) : (
+                <AutofocusedDiv>
+                  <br />
+                  {searchQuery.data ? (
+                    <div className="flex justify-end">
+                      <Button type="submit">{m.continueWithInfluencer(influencer)}</Button>
+                    </div>
+                  ) : (
+                    <div className="flex-col">
+                      <Alert
+                        title={m.influencerUnknownTitle}
+                        description={m.influencerUnknownDesc}
+                        severity="warning"
+                        className="text-base font-normal mb-3"
+                      />
+                      <div className="flex flex-row justify-end">
+                        <Button priority={'secondary'} className={'mr-2'} onClick={_ => setIsEditingInfluencer(true)}>
+                          {m.edit}
+                        </Button>
+                        <Button type="submit">{m.continueWithInfluencer(influencer)}</Button>
+                      </div>
+                    </div>
+                  )}
+                </AutofocusedDiv>
               )}
             </div>
           </Animate>

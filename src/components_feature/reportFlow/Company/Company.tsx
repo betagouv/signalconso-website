@@ -1,6 +1,6 @@
 'use client'
 import {CompanyByTrain} from '@/components_feature/reportFlow/Company/CompanyByTrain'
-import {CompanyRecap, CompanyRecapWithProduct} from '@/components_simple/CompanyRecap/CompanyRecap'
+import {CompanyRecapWithProduct} from '@/components_simple/CompanyRecap/CompanyRecap'
 import {BtnNext} from '@/components_simple/buttons/Buttons'
 import {useI18n} from '@/i18n/I18n'
 import {BarcodeProduct} from '@/model/BarcodeProduct'
@@ -28,7 +28,6 @@ import {CompanySearchResultComponent} from './CompanySearchResult'
 import {CompanyWebsiteCountry} from './CompanyWebsiteCountry'
 import {InfluencerBySocialNetwork} from './InfluencerBySocialNetwork'
 import {BarcodeSearchResult} from './lib/BarcodeSearchResult'
-import {ProductRecap} from '@/components_simple/CompanyRecap/ProductRecap'
 
 interface CompanyWithRequiredProps {
   draft: Pick<ReportDraft, 'companyKind'>
@@ -348,8 +347,16 @@ export const _Company = ({draft, onUpdateReportDraft}: CompanyWithRequiredProps)
           ['PRODUCT']: () => barcodeTree(),
           ['SOCIAL']: () => (
             <InfluencerBySocialNetwork
-              onSubmit={(socialNetwork, influencer, otherSocialNetwork) => {
+              onSubmit={(socialNetwork, influencer, otherSocialNetwork, postalCode) => {
+                const companyDraft = postalCode
+                  ? {
+                      address: {
+                        postalCode,
+                      },
+                    }
+                  : undefined
                 onUpdateReportDraft({
+                  companyDraft,
                   influencer: {
                     socialNetwork,
                     otherSocialNetwork,
