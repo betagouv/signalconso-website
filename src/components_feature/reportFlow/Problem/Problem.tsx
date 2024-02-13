@@ -29,7 +29,7 @@ interface Props {
   stepNavigation: StepNavigation
 }
 
-const OPENFOODFACTS_BARCODE_PARAM = 'offbarcode'
+const OPENFOODFACTS_BARCODE_PARAM = 'openffgtin'
 
 function buildTagsFromSubcategories(subcategories: Subcategory[]) {
   return computeSelectedSubcategoriesData(subcategories).tagsFromSelected
