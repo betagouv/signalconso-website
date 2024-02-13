@@ -6,7 +6,6 @@ import {PlaygroundConfirmation, dummyStepNavigation} from '@/components_feature/
 import {PlaygroundConsumer} from '@/components_feature/playgroundComponents/PlaygroundConsumer'
 import {PlaygroundDetails} from '@/components_feature/playgroundComponents/PlaygroundDetails'
 import {PlaygroundOther} from '@/components_feature/playgroundComponents/PlaygroundOther'
-import {CompanyFilled} from '@/components_feature/reportFlow/Company/Company'
 import {ContentPageContainer} from '@/components_simple/PageContainers'
 
 import {usePathname, useSearchParams} from 'next/navigation'
@@ -14,9 +13,10 @@ import {AcknowledgmentCases} from '../reportFlow/Acknowledgement/Acknowledgement
 import Button from '@codegouvfr/react-dsfr/Button'
 import Link from 'next/link'
 import {BarcodeProduct} from '@/model/BarcodeProduct'
+import {CompanyFilled} from '../reportFlow/Company/CompanyFilled'
+import {CompanyDraft} from '@/model/Company'
 
-const companyDraft = {
-  id: 'id12345',
+const companyDraft: CompanyDraft = {
   name: 'NomSociété',
   siret: '01234567890123',
   website: 'http://blabla.fr',
@@ -30,6 +30,9 @@ const companyDraft = {
   isHeadOffice: true,
   isPublic: true,
   isOpen: true,
+  activityCode: '97.91B',
+  activityLabel: 'vente a distance sur catalogue specialise',
+  isMarketPlace: false,
 }
 
 const barcodeProduct: BarcodeProduct = {

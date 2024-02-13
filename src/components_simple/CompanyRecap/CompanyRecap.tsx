@@ -1,8 +1,8 @@
 import {useI18n} from '@/i18n/I18n'
-import {CompanyDraft, CompanySearchResult, isGovernmentCompany} from '@/model/Company'
+import {BarcodeProduct} from '@/model/BarcodeProduct'
+import {CompanySearchResult, isCompanyDraft, isGovernmentCompany} from '@/model/Company'
 import {ChildrenProps} from '@/utils/utils'
 import {AddressComponent} from '../Address'
-import {BarcodeProduct} from '@/model/BarcodeProduct'
 import {ProductRecap} from './ProductRecap'
 
 export function CompanyRecapWithProduct(
@@ -12,11 +12,7 @@ export function CompanyRecapWithProduct(
 ) {
   return (
     <>
-      {props.kind === 'companyDraft' ? (
-        <CompanyRecap company={props.company} kind={props.kind} />
-      ) : (
-        <CompanyRecap company={props.company} kind={props.kind} />
-      )}
+      <CompanyRecap company={props.company} />
       {props.barcodeProduct && (
         <>
           <p className="mt-4 !mb-2">À propos du produit :</p>
@@ -27,9 +23,7 @@ export function CompanyRecapWithProduct(
   )
 }
 
-type CompanyRecapProps =
-  | {company: CompanyDraft; kind: 'companyDraft'}
-  | {company: CompanySearchResult; kind: 'companySearchResult'}
+type CompanyRecapProps = {company: CompanySearchResult}
 
 export function CompanyRecap(props: CompanyRecapProps) {
   const closed = !props.company.isOpen
@@ -38,11 +32,11 @@ export function CompanyRecap(props: CompanyRecapProps) {
   const siret = props.company.siret
   const address = props.company.address
   const isHeadOffice = props.company.isHeadOffice
-  const website = (props.kind === 'companyDraft' && props.company.website) || undefined
-  const phone = (props.kind === 'companyDraft' && props.company.phone) || undefined
+  const website = isCompanyDraft(props.company) ? props.company.website : undefined
+  const phone = isCompanyDraft(props.company) ? props.company.phone : undefined
   const isGovernment = isGovernmentCompany(props.company)
-  const commercialName = (props.kind === 'companySearchResult' && props.company.commercialName) || undefined
-  const activityLabel = (props.kind === 'companySearchResult' && props.company.activityLabel) || undefined
+  const commercialName = props.company.commercialName
+  const activityLabel = props.company.activityLabel
   const {m} = useI18n()
   return (
     <div className="flex justify-between w-full">

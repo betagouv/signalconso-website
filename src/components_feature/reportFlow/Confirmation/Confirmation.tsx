@@ -3,14 +3,14 @@ import {EventCategories, ReportEventActions} from '@/analytic/analytic'
 import {findAnomaly} from '@/anomalies/Anomalies'
 import {StepNavigation} from '@/components_feature/reportFlow/reportFlowStepper/ReportFlowStepper'
 import {ReportFlowStepperActions} from '@/components_feature/reportFlow/reportFlowStepper/ReportFlowStepperActions'
-import {AddressComponent} from '@/components_simple/Address'
 import {Animate} from '@/components_simple/Animate'
+import {CompanyRecapWithProduct} from '@/components_simple/CompanyRecap/CompanyRecap'
 import {FriendlyHelpText} from '@/components_simple/FriendlyHelpText'
 import {ReportFilesConfirmation} from '@/components_simple/reportFile/ReportFilesConfirmation'
 import {getApiErrorId, useToastError} from '@/hooks/useToastError'
 import {useI18n} from '@/i18n/I18n'
 import {ReportDraft2} from '@/model/ReportDraft2'
-import {buildingReportSteps, BuildingStep} from '@/model/ReportStep'
+import {BuildingStep, buildingReportSteps} from '@/model/ReportStep'
 import {ApiReportDraft} from '@/model/reportsFromApi'
 import Image from 'next/image'
 import {Anomaly} from '../../../anomalies/Anomaly'
@@ -20,8 +20,6 @@ import {FileOrigin} from '../../../model/UploadedFile'
 import {useReportCreateContext} from '../ReportCreateContext'
 import {useReportFlowContext} from '../ReportFlowContext'
 import {ConfirmationStep, ConfirmationStepper} from './ConfirmationStepper'
-import {CompanyRecapWithProduct, CompanyRecap} from '@/components_simple/CompanyRecap/CompanyRecap'
-import {ProductRecap} from '@/components_simple/CompanyRecap/ProductRecap'
 
 export const Confirmation = ({stepNavigation, isWebView}: {stepNavigation: StepNavigation; isWebView: boolean}) => {
   const _reportFlow = useReportFlowContext()
@@ -154,7 +152,7 @@ function RenderEachStep({
         <>
           {draft.companyDraft && (
             <ConfirmationStep title={m.step_company} {...{goToStep, index}}>
-              <CompanyRecapWithProduct company={draft.companyDraft} kind="companyDraft" barcodeProduct={draft.barcodeProduct} />
+              <CompanyRecapWithProduct company={draft.companyDraft} barcodeProduct={draft.barcodeProduct} />
             </ConfirmationStep>
           )}
           {draft.influencer && (
