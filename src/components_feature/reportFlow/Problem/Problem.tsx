@@ -2,14 +2,12 @@ import {useAnalyticContext} from '@/analytic/AnalyticContext'
 import {EventCategories, ReportEventActions} from '@/analytic/analytic'
 import {StepNavigation} from '@/components_feature/reportFlow/reportFlowStepper/ReportFlowStepper'
 import {ReportFlowStepperActions} from '@/components_feature/reportFlow/reportFlowStepper/ReportFlowStepperActions'
+import {buildCompanyName} from '@/components_simple/CompanyRecap/CompanyRecap'
 import {FriendlyHelpText} from '@/components_simple/FriendlyHelpText'
-import {useApiClients} from '@/context/ApiClientsContext'
+import {useBarcodeSearch} from '@/feature/barcode'
 import {useI18n} from '@/i18n/I18n'
-import {BarcodeProduct} from '@/model/BarcodeProduct'
-import {CompanySearchResult} from '@/model/Company'
 import {ConsumerWish, ReportDraft} from '@/model/ReportDraft'
 import {ReportDraft2} from '@/model/ReportDraft2'
-import {useQuery} from '@tanstack/react-query'
 import {useSearchParams} from 'next/navigation'
 import {useEffect, useMemo} from 'react'
 import {instanceOfSubcategoryWithInfoWall} from '../../../anomalies/Anomalies'
@@ -21,16 +19,13 @@ import {ProblemInformation} from './ProblemInformation'
 import {ProblemSelect} from './ProblemSelect'
 import {ProblemStepper, ProblemStepperStep} from './ProblemStepper'
 import {computeSelectedSubcategoriesData} from './useSelectedSubcategoriesData'
-import {buildCompanyName} from '@/components_simple/CompanyRecap/CompanyRecap'
-import {useBarcodeSearch} from '@/feature/barcodeService'
+import {useOpenFfBarcodeParam} from '@/feature/openFoodFacts'
 
 interface Props {
   anomaly: Anomaly
   isWebView: boolean
   stepNavigation: StepNavigation
 }
-
-const OPENFOODFACTS_BARCODE_PARAM = 'openffgtin'
 
 function buildTagsFromSubcategories(subcategories: Subcategory[]) {
   return computeSelectedSubcategoriesData(subcategories).tagsFromSelected
@@ -88,13 +83,11 @@ export function adjustReportDraftAfterSubcategoriesChange(
 export const Problem = ({anomaly, isWebView, stepNavigation}: Props) => {
   const _analytic = useAnalyticContext()
   const {m, currentLang} = useI18n()
-  const searchParams = useSearchParams()
   const {reportDraft, setReportDraft, resetFlow, sendReportEvent} = useReportFlowContext()
   const hasReponseConsoSubcategories = reportDraft.subcategories
     ? buildTagsFromSubcategories(reportDraft.subcategories).includes('ReponseConso')
     : false
-  const openFfBarcode = (anomaly.isSpecialOpenFoodFactsCategory && searchParams.get(OPENFOODFACTS_BARCODE_PARAM)) || undefined
-
+  const openFfBarcode = useOpenFfBarcodeParam(anomaly)
   const _openFfBarcodeSearch = useBarcodeSearch(openFfBarcode)
 
   // reset the draft when switching the root category
@@ -141,7 +134,7 @@ export const Problem = ({anomaly, isWebView, stepNavigation}: Props) => {
     setReportDraft(draft => {
       const {subcategories, ..._anomaly} = anomaly
       const consumerWish = askConsumerWish ? draft.consumerWish : 'companyImprovement'
-      //Company kind 'SOCIAL' cannot be employee consumer report
+      // Company kind 'SOCIAL' cannot be employee consumer report
       const employeeConsumer = draft.companyKind === 'SOCIAL' ? false : draft.employeeConsumer
       const companyKind =
         // For this category, it's always PRODUCT_OPENFF, regardless of the YAML.
@@ -157,7 +150,7 @@ export const Problem = ({anomaly, isWebView, stepNavigation}: Props) => {
         consumerWish,
         employeeConsumer,
         categoryOverride: categoryOverrideFromSelected,
-        product: draft.product,
+        barcodeProduct: draft.barcodeProduct,
         companyDraft: draft.companyDraft,
         // In the openFf scenario
         // Only if we got all the data, then we build the company/product from it.
@@ -242,7 +235,8 @@ export const Problem = ({anomaly, isWebView, stepNavigation}: Props) => {
         )}
       {openFfBarcode &&
         _openFfBarcodeSearch.status === 'success' &&
-        _openFfBarcodeSearch.data !== null &&
+        _openFfBarcodeSearch.data &&
+        _openFfBarcodeSearch.data.product &&
         _openFfBarcodeSearch.data.company && (
           <FriendlyHelpText>
             {/* Cas complet */}

@@ -4,7 +4,7 @@ import {BarcodeProduct} from '@/model/BarcodeProduct'
 import {CompanySearchResult} from '@/model/Company'
 import {useQuery} from '@tanstack/react-query'
 
-type BarcodeSearchQueryResult = {product?: BarcodeProduct; company?: CompanySearchResult}
+export type BarcodeSearchQueryResult = {product?: BarcodeProduct; company?: CompanySearchResult}
 
 export function useBarcodeSearch(barcode?: string) {
   const {companyApiClient, signalConsoApiClient} = useApiClients()
