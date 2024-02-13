@@ -3,4 +3,16 @@ tags:
   - Influenceur
 subcategoriesTitle: Autre
 detailInputs:
-  customimport: _imports/detailInputs/influenceur.yaml
+- label: Date du constat
+  type: DATE
+  defaultValue: SYSDATE
+  optional: true
+- label: Nom du produit ou du service (facultatif)
+  type: TEXT
+  optional: true
+- label: Site internet
+  placeholder: Adresse du site internet complet ou URL
+  type: TEXT
+- label: Description
+  placeholder: Préciser la nature et la gravité
+  type: TEXTAREA
