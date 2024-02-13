@@ -52,7 +52,7 @@ function adjustTagsBeforeSubmit(draft: Partial<ReportDraft2>, companyKindFromSel
 }
 
 export function initiateReportDraftForAnomaly(anomaly: Anomaly, lang: AppLang): Partial<ReportDraft2> {
-  return {category: anomaly.category, lang}
+  return {anomaly, lang}
 }
 
 export function adjustReportDraftAfterSubcategoriesChange(
@@ -121,7 +121,7 @@ export const Problem = ({anomaly, isWebView, stepNavigation}: Props) => {
 
   // reset the draft when switching the root category
   useEffect(() => {
-    if (anomaly.category !== reportDraft.category) {
+    if (anomaly.category !== reportDraft.anomaly?.category) {
       _analytic.trackEvent(EventCategories.report, ReportEventActions.validateCategory, anomaly.category)
       resetFlow()
       setReportDraft(_ => initiateReportDraftForAnomaly(anomaly, currentLang))

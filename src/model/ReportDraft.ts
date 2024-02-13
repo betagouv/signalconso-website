@@ -1,4 +1,4 @@
-import {CompanyKinds, ReportTag, SocialNetworks, Subcategory, Ters, Trains} from '@/anomalies/Anomaly'
+import {Anomaly, CompanyKinds, ReportTag, SocialNetworks, Subcategory, Ters, Trains} from '@/anomalies/Anomaly'
 import uniq from 'lodash/uniq'
 import {AppLang} from '../i18n/localization/AppLangs'
 import {CompanyDraft, CompanySearchResult} from './Company'
@@ -20,7 +20,7 @@ export interface ReportDraftConsumer {
 }
 
 export interface ReportDraft {
-  category: string
+  anomaly: Anomaly
   subcategories: Subcategory[]
   companyDraft?: CompanyDraft
   details: DetailInputValue[]
@@ -139,7 +139,7 @@ export class ReportDraft {
   }
 
   static readonly toApi = (draft: ReportDraft, metadata: ApiReportDraft['metadata']): ApiReportDraft => {
-    const {consumerWish, reponseconsoCode, category, contactAgreement, vendor, ccrfCode} = draft
+    const {consumerWish, reponseconsoCode, anomaly, contactAgreement, vendor, ccrfCode} = draft
 
     const additionalTags: ReportTag[] = [
       ...(consumerWish === 'fixContractualDispute' ? (['LitigeContractuel'] as const) : []),
@@ -152,7 +152,7 @@ export class ReportDraft {
       // We don't use the rest syntax here ("..."),
       // we prefer to be sure to fill each field explicitely
       gender: draft.consumer.gender,
-      category,
+      category: anomaly.category,
       subcategories: draft.subcategories.map(_ => _.title),
       details: draft.details,
       companyName: draft.companyDraft?.name,

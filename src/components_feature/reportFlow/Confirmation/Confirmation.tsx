@@ -115,7 +115,7 @@ function RenderEachStep({
               <Image fill className="object-contain" src={`/image/pictos/${anomaly.img}.png`} alt="" />
             </div>
             <div>
-              <h3 className="fr-h6 !mb-2 !text-gray-500">{findAnomaly(draft.category, currentLang).title}</h3>
+              <h3 className="fr-h6 !mb-2 !text-gray-500">{findAnomaly(draft.anomaly.category, currentLang).title}</h3>
               <ul className="pl-0 list-none">
                 {draft.subcategories.map(_ => (
                   <li key={_.title} className="text-gray-500">
