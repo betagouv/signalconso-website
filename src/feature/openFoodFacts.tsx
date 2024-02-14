@@ -5,6 +5,7 @@ import {BarcodeProduct} from '@/model/BarcodeProduct'
 import {CompanySearchResult} from '@/model/Company'
 import {useSearchParams} from 'next/navigation'
 import {useBarcodeSearch} from './barcode'
+import {useMemo} from 'react'
 
 const OPENFOODFACTS_BARCODE_PARAM = 'gtin'
 
@@ -30,26 +31,29 @@ export function useOpenFfSetup(anomaly: Anomaly): OpenFfSetup {
   const barcode = useBarcodeParam(anomaly)
   const _query = useBarcodeSearch(barcode)
 
-  if (barcode) {
-    if (_query.data) {
-      return {
-        status: 'loaded',
-        result: {
-          barcode,
-          product: _query.data.product,
-          company: _query.data.company,
-        },
+  // The resulting object shouldn't change ref all the time
+  return useMemo(() => {
+    if (barcode) {
+      if (_query.data) {
+        return {
+          status: 'loaded',
+          result: {
+            barcode,
+            product: _query.data.product,
+            company: _query.data.company,
+          },
+        }
+      }
+      if (_query.status === 'pending') {
+        return {
+          status: 'loading',
+        }
       }
     }
-    if (_query.status === 'pending') {
-      return {
-        status: 'loading',
-      }
-    }
-  }
-  // We're not in the openFF case
-  // or we are, but ended up in an error case somehow. Let's forget about it.
-  return {status: 'skipped'}
+    // We're not in the openFF case
+    // or we are, but ended up in an error case somehow. Let's forget about it.
+    return {status: 'skipped'}
+  }, [barcode, _query.data, _query.status])
 }
 
 function useBarcodeParam(anomaly: Anomaly) {
