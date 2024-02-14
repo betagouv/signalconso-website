@@ -1,11 +1,10 @@
 import {Anomaly} from '@/anomalies/Anomaly'
 import {buildCompanyName} from '@/components_simple/CompanyRecap/CompanyRecap'
-import {FriendlyHelpText} from '@/components_simple/FriendlyHelpText'
 import {BarcodeProduct} from '@/model/BarcodeProduct'
 import {CompanySearchResult} from '@/model/Company'
 import {useSearchParams} from 'next/navigation'
 import {useBarcodeSearch} from './barcode'
-import {useMemo} from 'react'
+import {ReactNode, useMemo} from 'react'
 
 const OPENFOODFACTS_BARCODE_PARAM = 'gtin'
 
@@ -88,7 +87,7 @@ function Loader() {
 
 function WelcomeInvalidBarcode({barcode}: {barcode: string}) {
   return (
-    <FriendlyHelpText>
+    <BlueBanner>
       <p className="mb-2 mt-4">
         <i className="ri-information-line mr-2" />
         Vous avez rencontré un problème avec ce produit (code-barres <span className="font-bold">{barcode}</span>) ?
@@ -103,13 +102,13 @@ function WelcomeInvalidBarcode({barcode}: {barcode: string}) {
         la répression des fraudes, qui pourront intervenir si nécessaire.
       </p>
       <p className="text-center font-bold mb-2">Répondez-simplement aux questions, et laissez-vous guider !</p>
-    </FriendlyHelpText>
+    </BlueBanner>
   )
 }
 
 function WelcomeProductWithoutCompany({product}: {product: BarcodeProduct}) {
   return (
-    <FriendlyHelpText>
+    <BlueBanner>
       {/* Cas où on a le produit mais sans l'entreprise */}
       <p className="mb-2 mt-4">
         <i className="ri-information-line mr-2" />
@@ -124,12 +123,12 @@ function WelcomeProductWithoutCompany({product}: {product: BarcodeProduct}) {
         l'identifier manuellement.
       </p>
       <p className="text-center font-bold mb-2">Répondez-simplement aux questions, et laissez-vous guider !</p>
-    </FriendlyHelpText>
+    </BlueBanner>
   )
 }
 function WelcomeProductFull({product, company}: {product: BarcodeProduct; company: CompanySearchResult}) {
   return (
-    <FriendlyHelpText>
+    <BlueBanner>
       {/* Cas complet */}
       <p className="mb-2 mt-4">
         <i className="ri-information-line mr-2" />
@@ -143,6 +142,14 @@ function WelcomeProductFull({product, company}: {product: BarcodeProduct; compan
         la répression des fraudes, qui pourront intervenir si nécessaire.
       </p>
       <p className="text-center font-bold mb-2">Répondez-simplement aux questions, et laissez-vous guider !</p>
-    </FriendlyHelpText>
+    </BlueBanner>
+  )
+}
+
+function BlueBanner({children}: {children: ReactNode}) {
+  return (
+    <div className="py-4 px-8 mb-8 bg-sclightblueinfo text-scblueinfo border-y-[1px] border-0 border-solid border-scblueinfo">
+      {children}
+    </div>
   )
 }
