@@ -25,7 +25,7 @@ export function useBarcodeSearch(barcode?: string) {
         return {product}
       }
       const companies = await companyApiClient.searchCompaniesByIdentity(product.siren, false, currentLang)
-      if (companies.length) {
+      if (companies.length === 0) {
         return {product}
       }
       const company = companies[0]
