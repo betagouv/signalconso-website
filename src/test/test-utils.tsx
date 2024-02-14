@@ -1,20 +1,19 @@
-import {QueryClient, QueryClientProvider} from '@tanstack/react-query'
-import {render, RenderResult} from '@testing-library/react'
 import {AnalyticProvider} from '@/analytic/AnalyticContext'
 import {ReportCreateProvider} from '@/components_feature/reportFlow/ReportCreateContext'
 import {ReportFlowProvider, useReportFlowContext} from '@/components_feature/reportFlow/ReportFlowContext'
 import {ProvidersChain} from '@/components_simple/ProvidersChain'
 import {ApiClientsProvider} from '@/context/ApiClientsContext'
+import {AutoscrollProvider} from '@/context/AutoscrollContext'
 import {I18nProvider} from '@/i18n/I18n'
 import {fr} from '@/i18n/localization/fr'
 import {ReportDraft2} from '@/model/ReportDraft2'
+import {QueryClient, QueryClientProvider} from '@tanstack/react-query'
+import {RenderResult, render} from '@testing-library/react'
 import React, {ReactNode, useEffect} from 'react'
 import {CompanyPublicClient} from '../clients/CompanyPublicClient'
 import {SignalConsoApiClient} from '../clients/SignalConsoApiClient'
-import {DeepPartial} from '../utils/utils'
 import {AppLangs} from '../i18n/localization/AppLangs'
-import {AutoscrollProvider} from '@/context/AutoscrollContext'
-import {OpenFfBarcodeContextProvider} from '@/components_feature/reportFlow/OpenFfBarcodeContext'
+import {DeepPartial} from '../utils/utils'
 
 const AllTheProviders =
   (options?: Options) =>
@@ -48,7 +47,6 @@ const AllTheProviders =
           _ => <I18nProvider lang={AppLangs.fr} children={_} />,
           _ => <ReportCreateProvider children={_} />,
           _ => <ReportFlowProvider children={_} />,
-          _ => <OpenFfBarcodeContextProvider children={_} />,
           _ => <AutoscrollProvider children={_} />,
         ]}
       >

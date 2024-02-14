@@ -21,7 +21,6 @@ import {useI18n} from '../../i18n/I18n'
 import {Eularian} from '../../plugins/eularian'
 import {Matomo} from '../../plugins/matomo'
 import {Sentry} from '../../plugins/sentry'
-import {OpenFfBarcodeContextProvider} from '@/components_feature/reportFlow/OpenFfBarcodeContext'
 
 monkeyPatchDomForGoogleTranslate()
 
@@ -43,11 +42,9 @@ const LayoutCore: ({children}: {children: React.ReactNode}) => JSX.Element = ({c
             <ToastProvider>
               <ReportCreateProvider>
                 <ReportFlowProvider>
-                  <OpenFfBarcodeContextProvider>
-                    <AutoscrollProvider>
-                      <Base>{children}</Base>
-                    </AutoscrollProvider>
-                  </OpenFfBarcodeContextProvider>
+                  <AutoscrollProvider>
+                    <Base>{children}</Base>
+                  </AutoscrollProvider>
                 </ReportFlowProvider>
               </ReportCreateProvider>
             </ToastProvider>
