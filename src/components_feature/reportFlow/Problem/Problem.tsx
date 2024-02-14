@@ -104,7 +104,7 @@ export const Problem = ({anomaly, isWebView, stepNavigation}: Props) => {
         openFf: openFfSetup.result,
       }))
     }
-  }, [openFfSetup, setReportDraft])
+  }, [openFfSetup])
 
   const isTransmittable = ReportDraft.isTransmittableToProBeforePickingConsumerWish(reportDraft)
   const askConsumerWish = isTransmittable && reportDraft.companyKind !== 'SOCIAL'

@@ -54,7 +54,7 @@ export function useOpenFfSetup(anomaly: Anomaly): OpenFfSetup {
 
 function useBarcodeParam(anomaly: Anomaly) {
   const searchParams = useSearchParams()
-  return (anomaly.isSpecialOpenFoodFactsCategory && searchParams.get(OPENFOODFACTS_BARCODE_PARAM)) || undefined
+  return (anomaly.isSpecialOpenFoodFactsCategory && searchParams.get(OPENFOODFACTS_BARCODE_PARAM)?.trim()) || undefined
 }
 
 export function OpenFfWelcomeText({setup}: {setup: OpenFfSetup}) {
