@@ -24,8 +24,8 @@ interface Props {
   stepNavigation: StepNavigation
 }
 
-function buildTagsFromSubcategories(subcategories: Subcategory[]) {
-  return computeSelectedSubcategoriesData(subcategories).tagsFromSelected
+function buildTagsFromSubcategories(anomaly: Anomaly, subcategories: Subcategory[]) {
+  return computeSelectedSubcategoriesData(anomaly, subcategories).tagsFromSelected
 }
 
 function adjustTagsBeforeSubmit(draft: Partial<ReportDraft2>, companyKindFromSelected: CompanyKinds | undefined): ReportTag[] {
@@ -49,13 +49,14 @@ export function initiateReportDraftForAnomaly(anomaly: Anomaly, lang: AppLang): 
 }
 
 export function adjustReportDraftAfterSubcategoriesChange(
+  anomaly: Anomaly,
   report: Partial<ReportDraft2>,
   subcategory: Subcategory,
   subcategoryIndex: number,
 ) {
   const subcategoriesToKeep = (report.subcategories ?? []).slice(0, subcategoryIndex)
   const subcategories = [...subcategoriesToKeep, subcategory]
-  const tags = buildTagsFromSubcategories(subcategories)
+  const tags = buildTagsFromSubcategories(anomaly, subcategories)
   //Recompute company kind based on current report selected subcategories
   const lastCategoryCompanyKind = subcategories
     .map(_ => _.companyKind)
@@ -82,7 +83,7 @@ export const Problem = ({anomaly, isWebView, stepNavigation}: Props) => {
   const {m, currentLang} = useI18n()
   const {reportDraft, setReportDraft, resetFlow, sendReportEvent} = useReportFlowContext()
   const hasReponseConsoSubcategories = reportDraft.subcategories
-    ? buildTagsFromSubcategories(reportDraft.subcategories).includes('ReponseConso')
+    ? buildTagsFromSubcategories(anomaly, reportDraft.subcategories).includes('ReponseConso')
     : false
   const openFfSetup = useOpenFfSetup(anomaly)
 
@@ -118,7 +119,7 @@ export const Problem = ({anomaly, isWebView, stepNavigation}: Props) => {
     ccrfCodeFromSelected,
     categoryOverrideFromSelected,
   } = useMemo(() => {
-    return computeSelectedSubcategoriesData(reportDraft.subcategories ?? [])
+    return computeSelectedSubcategoriesData(anomaly, reportDraft.subcategories ?? [])
   }, [reportDraft.subcategories])
 
   function onSubmit(next: () => void): void {
@@ -127,9 +128,7 @@ export const Problem = ({anomaly, isWebView, stepNavigation}: Props) => {
       const consumerWish = askConsumerWish ? draft.consumerWish : 'companyImprovement'
       // Company kind 'SOCIAL' cannot be employee consumer report
       const employeeConsumer = draft.companyKind === 'SOCIAL' ? false : draft.employeeConsumer
-      const companyKind =
-        // For this category, it's always PRODUCT_OPENFF, regardless of the YAML.
-        anomaly.isSpecialOpenFoodFactsCategory ? 'PRODUCT_OPENFF' : companyKindFromSelected ?? draft.companyKind ?? 'SIRET'
+      const companyKind = companyKindFromSelected ?? draft.companyKind ?? 'SIRET'
 
       // In the openFf scenario
       // Only if we got all the data, then we build the company/product from it.
@@ -164,7 +163,7 @@ export const Problem = ({anomaly, isWebView, stepNavigation}: Props) => {
 
   const handleSubcategoriesChange = (subcategory: Subcategory, index: number) => {
     setReportDraft(report => {
-      const newReport = adjustReportDraftAfterSubcategoriesChange(report, subcategory, index)
+      const newReport = adjustReportDraftAfterSubcategoriesChange(anomaly, report, subcategory, index)
       return newReport
     })
   }
