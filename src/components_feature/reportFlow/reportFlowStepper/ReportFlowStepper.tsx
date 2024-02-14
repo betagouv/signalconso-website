@@ -21,7 +21,7 @@ import {
   ReportStepOrDone,
   STEP_PARAM_NAME,
 } from '@/model/ReportStep'
-import {useRouter, useSearchParams} from 'next/navigation'
+import {ReadonlyURLSearchParams, useRouter, useSearchParams} from 'next/navigation'
 import {useEffect} from 'react'
 import {scrollTop} from '@/utils/utils'
 import {useI18n} from '../../../i18n/I18n'
@@ -57,19 +57,31 @@ function parseStepFromQueryString(stepParamRaw: string | string[] | undefined | 
   return null
 }
 
-export function buildPathForStep(anomaly: Pick<Anomaly, 'path'>, lang: AppLang, step: ReportStepOrDone, isWebView: boolean) {
-  const queryString = step === firstReportStep ? '' : `?${STEP_PARAM_NAME}=${getIndexForStepOrDone(step)}`
-  return `${buildLinkStartReport(anomaly, lang, {isWebView})}${queryString}`
+export function buildPathForStep(
+  anomaly: Pick<Anomaly, 'path'>,
+  lang: AppLang,
+  step: ReportStepOrDone,
+  isWebView: boolean,
+  // in the case of OpenFF, it's better to keep the parameter when navigating
+  searchParamsToPreserve?: ReadonlyURLSearchParams,
+) {
+  const params = new URLSearchParams(searchParamsToPreserve)
+  if (step === firstReportStep) {
+    params.delete(STEP_PARAM_NAME)
+  } else {
+    params.set(STEP_PARAM_NAME, getIndexForStepOrDone(step).toString())
+  }
+  return `${buildLinkStartReport(anomaly, lang, {isWebView})}?${params.toString()}`
 }
 
 function useStepFromRouter(anomaly: Anomaly, isWebView: boolean) {
-  const query = useSearchParams()
+  const searchParams = useSearchParams()
   const router = useRouter()
   const {currentLang} = useI18n()
-  const step = (query && parseStepFromQueryString(query.get(STEP_PARAM_NAME))) ?? firstReportStep
+  const step = (searchParams && parseStepFromQueryString(searchParams.get(STEP_PARAM_NAME))) ?? firstReportStep
 
   function setStep(newStep: ReportStepOrDone) {
-    const url = buildPathForStep(anomaly, currentLang, newStep, isWebView)
+    const url = buildPathForStep(anomaly, currentLang, newStep, isWebView, searchParams)
     router.push(url)
     scrollTop()
   }
