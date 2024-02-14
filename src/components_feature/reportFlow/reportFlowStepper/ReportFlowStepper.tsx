@@ -63,9 +63,9 @@ export function buildPathForStep(
   step: ReportStepOrDone,
   isWebView: boolean,
   // in the case of OpenFF, it's better to keep the parameter when navigating
-  searchParamsToPreserve?: ReadonlyURLSearchParams,
+  otherSearchParams?: ReadonlyURLSearchParams | URLSearchParams,
 ) {
-  const params = new URLSearchParams(searchParamsToPreserve)
+  const params = new URLSearchParams(otherSearchParams)
   if (step === firstReportStep) {
     params.delete(STEP_PARAM_NAME)
   } else {

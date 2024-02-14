@@ -2,9 +2,10 @@ import {Anomaly} from '@/anomalies/Anomaly'
 import {buildCompanyName} from '@/components_simple/CompanyRecap/CompanyRecap'
 import {BarcodeProduct} from '@/model/BarcodeProduct'
 import {CompanySearchResult} from '@/model/Company'
+import {ReportDraft2} from '@/model/ReportDraft2'
 import {useSearchParams} from 'next/navigation'
-import {useBarcodeSearch} from './barcode'
 import {ReactNode, useMemo} from 'react'
+import {useBarcodeSearch} from './barcode'
 
 const OPENFOODFACTS_BARCODE_PARAM = 'gtin'
 
@@ -58,6 +59,15 @@ export function useOpenFfSetup(anomaly: Anomaly): OpenFfSetup {
 function useBarcodeParam(anomaly: Anomaly) {
   const searchParams = useSearchParams()
   return (anomaly.isSpecialOpenFoodFactsCategory && searchParams.get(OPENFOODFACTS_BARCODE_PARAM)?.trim()) || undefined
+}
+
+export function recreateOpenFfBarcodeParam(reportDraft: Partial<ReportDraft2>) {
+  const barcode = reportDraft.openFf?.barcode
+  const params = new URLSearchParams()
+  if (barcode) {
+    params.set(OPENFOODFACTS_BARCODE_PARAM, barcode)
+  }
+  return params
 }
 
 export function OpenFfWelcomeText({setup}: {setup: OpenFfSetup}) {
