@@ -131,6 +131,17 @@ export const Problem = ({anomaly, isWebView, stepNavigation}: Props) => {
         // For this category, it's always PRODUCT_OPENFF, regardless of the YAML.
         anomaly.isSpecialOpenFoodFactsCategory ? 'PRODUCT_OPENFF' : companyKindFromSelected ?? draft.companyKind ?? 'SIRET'
 
+      // In the openFf scenario
+      // Only if we got all the data, then we build the company/product from it.
+      // If we only have partial data, then we will build it in step 2.
+      const productAndCompanyOverride =
+        draft.openFf?.product && draft.openFf.company
+          ? {
+              barcodeProduct: draft.openFf.product,
+              companyDraft: draft.openFf.company,
+            }
+          : null
+
       const updatedDraft: Partial<ReportDraft2> = {
         ...draft,
         ccrfCode: ccrfCodeFromSelected,
@@ -141,17 +152,8 @@ export const Problem = ({anomaly, isWebView, stepNavigation}: Props) => {
         consumerWish,
         employeeConsumer,
         categoryOverride: categoryOverrideFromSelected,
-        barcodeProduct: draft.barcodeProduct,
-        companyDraft: draft.companyDraft,
-        // In the openFf scenario
-        // Only if we got all the data, then we build the company/product from it.
-        // If we only have partial data, then we will build it in step 2.
-        ...(draft.openFf?.product && draft.openFf.company
-          ? {
-              product: draft.openFf.product,
-              companyDraft: draft.openFf.company,
-            }
-          : null),
+        barcodeProduct: productAndCompanyOverride?.barcodeProduct ?? draft.barcodeProduct,
+        companyDraft: productAndCompanyOverride?.companyDraft ?? draft.companyDraft,
       }
       return updatedDraft
     })
