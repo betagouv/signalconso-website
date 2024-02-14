@@ -9,9 +9,3 @@ img: category-restaurant
 isSpecialOpenFoodFactsCategory: true
 subcategoriesTitle: >-
   Où avez-vous acheté ce produit ?
-
-
-# TODO
-# - Faire l'affichage et particularités du parcours OpenFoodFacts
-# - faire la logique du 'categoryOverride'
-# - gérer l'affichage de la catégorie de l'image sur la dernière étape  
