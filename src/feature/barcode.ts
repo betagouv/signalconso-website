@@ -9,11 +9,11 @@ export type BarcodeSearchQueryResult = {product?: BarcodeProduct; company?: Comp
 export function useBarcodeSearch(barcode?: string) {
   const {companyApiClient, signalConsoApiClient} = useApiClients()
   const {currentLang} = useI18n()
-  const _query = useQuery<BarcodeSearchQueryResult | undefined>({
+  const _query = useQuery<BarcodeSearchQueryResult | null>({
     queryKey: ['barcodeSearch', barcode],
     queryFn: async () => {
       if (!barcode) {
-        return undefined
+        return null
       }
       const product = await signalConsoApiClient.searchByBarcode(barcode)
       if (!product) {

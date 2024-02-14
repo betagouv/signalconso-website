@@ -6,6 +6,7 @@ import {CompanyDraft, CompanySearchResult} from './Company'
 import {DetailInputValue} from './CreatedReport'
 import {UploadedFile} from './UploadedFile'
 import {ApiInfluencer, ApiReportDraft} from './reportsFromApi'
+import {OpenFfResult} from '@/feature/openFoodFacts'
 
 export const genders = ['Male', 'Female'] as const
 export type Gender = (typeof genders)[number]
@@ -40,13 +41,7 @@ export interface ReportDraft {
   lang: AppLang
   barcodeProduct?: BarcodeProduct
   train: Train
-  openFf:
-    | {
-        barcode: string
-        product?: BarcodeProduct
-        company?: CompanySearchResult
-      }
-    | undefined
+  openFf: OpenFfResult | undefined
 }
 
 export interface Train {

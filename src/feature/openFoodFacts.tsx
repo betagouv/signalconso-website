@@ -1,17 +1,77 @@
 import {Anomaly} from '@/anomalies/Anomaly'
-import {UseQueryResult} from '@tanstack/react-query'
-import {useSearchParams} from 'next/navigation'
-import {BarcodeSearchQueryResult} from './barcode'
-import {FriendlyHelpText} from '@/components_simple/FriendlyHelpText'
 import {buildCompanyName} from '@/components_simple/CompanyRecap/CompanyRecap'
+import {FriendlyHelpText} from '@/components_simple/FriendlyHelpText'
 import {BarcodeProduct} from '@/model/BarcodeProduct'
 import {CompanySearchResult} from '@/model/Company'
+import {useSearchParams} from 'next/navigation'
+import {useBarcodeSearch} from './barcode'
 
-const OPENFOODFACTS_BARCODE_PARAM = 'openffgtin'
+const OPENFOODFACTS_BARCODE_PARAM = 'gtin'
 
-export function useOpenFfBarcodeParam(anomaly: Anomaly) {
+export type OpenFfResult = {
+  barcode: string
+  product?: BarcodeProduct
+  company?: CompanySearchResult
+}
+
+type OpenFfSetup =
+  | {
+      status: 'skipped'
+    }
+  | {
+      status: 'loading'
+    }
+  | {
+      status: 'loaded'
+      result: OpenFfResult
+    }
+
+export function useOpenFfSetup(anomaly: Anomaly): OpenFfSetup {
+  const barcode = useBarcodeParam(anomaly)
+  const _query = useBarcodeSearch(barcode)
+
+  if (barcode) {
+    if (_query.data) {
+      return {
+        status: 'loaded',
+        result: {
+          barcode,
+          product: _query.data.product,
+          company: _query.data.company,
+        },
+      }
+    }
+    if (_query.status === 'pending') {
+      return {
+        status: 'loading',
+      }
+    }
+  }
+  // We're not in the openFF case
+  // or we are, but ended up in an error case somehow. Let's forget about it.
+  return {status: 'skipped'}
+}
+
+function useBarcodeParam(anomaly: Anomaly) {
   const searchParams = useSearchParams()
   return (anomaly.isSpecialOpenFoodFactsCategory && searchParams.get(OPENFOODFACTS_BARCODE_PARAM)) || undefined
+}
+
+export function OpenFfWelcomeText({setup}: {setup: OpenFfSetup}) {
+  if (setup.status === 'skipped') {
+    return null
+  }
+  if (setup.status === 'loading') {
+    return <Loader />
+  }
+  const {barcode, product, company} = setup.result
+  if (product && company) {
+    return <WelcomeProductFull product={product} company={company} />
+  }
+  if (product) {
+    return <WelcomeProductWithoutCompany product={product} />
+  }
+  return <WelcomeInvalidBarcode barcode={barcode} />
 }
 
 function Loader() {
@@ -80,32 +140,5 @@ function WelcomeProductFull({product, company}: {product: BarcodeProduct; compan
       </p>
       <p className="text-center font-bold mb-2">Répondez-simplement aux questions, et laissez-vous guider !</p>
     </FriendlyHelpText>
-  )
-}
-
-export function OpenFfWelcomeText({
-  barcode,
-  _openFfBarcodeSearch,
-}: {
-  barcode?: string
-  _openFfBarcodeSearch: UseQueryResult<BarcodeSearchQueryResult | undefined>
-}) {
-  return (
-    <>
-      {barcode && _openFfBarcodeSearch.status === 'pending' && <Loader />}
-      {barcode && _openFfBarcodeSearch.data === null && <WelcomeInvalidBarcode barcode={barcode} />}
-      {barcode &&
-        _openFfBarcodeSearch.status === 'success' &&
-        _openFfBarcodeSearch.data &&
-        _openFfBarcodeSearch.data.product &&
-        !_openFfBarcodeSearch.data.company && <WelcomeProductWithoutCompany product={_openFfBarcodeSearch.data.product} />}
-      {barcode &&
-        _openFfBarcodeSearch.status === 'success' &&
-        _openFfBarcodeSearch.data &&
-        _openFfBarcodeSearch.data.product &&
-        _openFfBarcodeSearch.data.company && (
-          <WelcomeProductFull product={_openFfBarcodeSearch.data.product} company={_openFfBarcodeSearch.data.company} />
-        )}
-    </>
   )
 }

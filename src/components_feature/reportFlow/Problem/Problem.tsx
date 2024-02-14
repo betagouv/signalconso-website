@@ -3,8 +3,7 @@ import {EventCategories, ReportEventActions} from '@/analytic/analytic'
 import {StepNavigation} from '@/components_feature/reportFlow/reportFlowStepper/ReportFlowStepper'
 import {ReportFlowStepperActions} from '@/components_feature/reportFlow/reportFlowStepper/ReportFlowStepperActions'
 import {FriendlyHelpText} from '@/components_simple/FriendlyHelpText'
-import {useBarcodeSearch} from '@/feature/barcode'
-import {OpenFfWelcomeText, useOpenFfBarcodeParam} from '@/feature/openFoodFacts'
+import {OpenFfWelcomeText, useOpenFfSetup} from '@/feature/openFoodFacts'
 import {useI18n} from '@/i18n/I18n'
 import {ConsumerWish, ReportDraft} from '@/model/ReportDraft'
 import {ReportDraft2} from '@/model/ReportDraft2'
@@ -85,8 +84,7 @@ export const Problem = ({anomaly, isWebView, stepNavigation}: Props) => {
   const hasReponseConsoSubcategories = reportDraft.subcategories
     ? buildTagsFromSubcategories(reportDraft.subcategories).includes('ReponseConso')
     : false
-  const openFfBarcode = useOpenFfBarcodeParam(anomaly)
-  const _openFfBarcodeSearch = useBarcodeSearch(openFfBarcode)
+  const openFfSetup = useOpenFfSetup(anomaly)
 
   // reset the draft when switching the root category
   useEffect(() => {
@@ -99,19 +97,14 @@ export const Problem = ({anomaly, isWebView, stepNavigation}: Props) => {
 
   useEffect(() => {
     // when we come from openFf and we get the async data
-    const openFfResult = _openFfBarcodeSearch.data
-    if (openFfBarcode && openFfResult) {
-      // Register the data into the reportFlow
+    if (openFfSetup.status === 'loaded') {
+      // Store the data into the reportFlow
       setReportDraft(_ => ({
         ..._,
-        openFf: {
-          barcode: openFfBarcode,
-          product: openFfResult.product,
-          company: openFfResult.company,
-        },
+        openFf: openFfSetup.result,
       }))
     }
-  }, [openFfBarcode, _openFfBarcodeSearch.data])
+  }, [openFfSetup, setReportDraft])
 
   const isTransmittable = ReportDraft.isTransmittableToProBeforePickingConsumerWish(reportDraft)
   const askConsumerWish = isTransmittable && reportDraft.companyKind !== 'SOCIAL'
@@ -152,9 +145,7 @@ export const Problem = ({anomaly, isWebView, stepNavigation}: Props) => {
         companyDraft: draft.companyDraft,
         // In the openFf scenario
         // Only if we got all the data, then we build the company/product from it.
-        // We can't do it earlier because it would have been erased
-        // when switching between subcategories
-        // If we don't have all the data, then we will build it in step 2.
+        // If we only have partial data, then we will build it in step 2.
         ...(draft.openFf?.product && draft.openFf.company
           ? {
               product: draft.openFf.product,
@@ -177,12 +168,10 @@ export const Problem = ({anomaly, isWebView, stepNavigation}: Props) => {
   }
 
   const tags = reportDraft.tags ?? []
-
-  const displayMainContent = !openFfBarcode || _openFfBarcodeSearch.status === 'success'
   return (
     <>
-      <OpenFfWelcomeText barcode={openFfBarcode} _openFfBarcodeSearch={_openFfBarcodeSearch} />
-      {displayMainContent && (
+      <OpenFfWelcomeText setup={openFfSetup} />
+      {openFfSetup.status !== 'loading' && (
         <>
           {[anomaly, ...(reportDraft.subcategories ?? [])].map(
             (category, idx) =>
