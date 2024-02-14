@@ -4,6 +4,8 @@ import {useSearchParams} from 'next/navigation'
 import {BarcodeSearchQueryResult} from './barcode'
 import {FriendlyHelpText} from '@/components_simple/FriendlyHelpText'
 import {buildCompanyName} from '@/components_simple/CompanyRecap/CompanyRecap'
+import {BarcodeProduct} from '@/model/BarcodeProduct'
+import {CompanySearchResult} from '@/model/Company'
 
 const OPENFOODFACTS_BARCODE_PARAM = 'openffgtin'
 
@@ -41,6 +43,46 @@ function WelcomeInvalidBarcode({barcode}: {barcode: string}) {
   )
 }
 
+function WelcomeProductWithoutCompany({product}: {product: BarcodeProduct}) {
+  return (
+    <FriendlyHelpText>
+      {/* Cas où on a le produit mais sans l'entreprise */}
+      <p className="mb-2 mt-4">
+        <i className="ri-information-line mr-2" />
+        Vous avez rencontré un problème avec le produit <span className="font-bold">{product.productName ?? product.gtin}</span> ?
+      </p>
+      <p className="mb-4">
+        SignalConso vous permet de remonter le problème à l'entreprise. De plus, votre signalement est visible par les agents de
+        la répression des fraudes, qui pourront intervenir si nécessaire.
+      </p>
+      <p className="mb-4">
+        Nous n'avons pas pu automatiquement identifier l'entreprise à l'origine de ce produit, nous demanderons donc de
+        l'identifier manuellement.
+      </p>
+      <p className="text-center font-bold mb-2">Répondez-simplement aux questions, et laissez-vous guider !</p>
+    </FriendlyHelpText>
+  )
+}
+function WelcomeProductFull({product, company}: {product: BarcodeProduct; company: CompanySearchResult}) {
+  return (
+    <FriendlyHelpText>
+      {/* Cas complet */}
+      <p className="mb-2 mt-4">
+        <i className="ri-information-line mr-2" />
+        Vous avez rencontré un problème avec le produit <span className="font-bold">
+          {product.productName ?? product.gtin}
+        </span>{' '}
+        produit par l'entreprise <span className="font-bold">{buildCompanyName({company: company})}</span>?
+      </p>
+      <p className="mb-4">
+        SignalConso vous permet de remonter le problème à l'entreprise. De plus, votre signalement est visible par les agents de
+        la répression des fraudes, qui pourront intervenir si nécessaire.
+      </p>
+      <p className="text-center font-bold mb-2">Répondez-simplement aux questions, et laissez-vous guider !</p>
+    </FriendlyHelpText>
+  )
+}
+
 export function OpenFfWelcomeText({
   barcode,
   _openFfBarcodeSearch,
@@ -56,50 +98,13 @@ export function OpenFfWelcomeText({
         _openFfBarcodeSearch.status === 'success' &&
         _openFfBarcodeSearch.data &&
         _openFfBarcodeSearch.data.product &&
-        !_openFfBarcodeSearch.data.company && (
-          <FriendlyHelpText>
-            {/* Cas où on a le produit mais sans l'entreprise */}
-            <p className="mb-2 mt-4">
-              <i className="ri-information-line mr-2" />
-              Vous avez rencontré un problème avec le produit{' '}
-              <span className="font-bold">
-                {_openFfBarcodeSearch.data.product.productName ?? _openFfBarcodeSearch.data.product.gtin}
-              </span>{' '}
-              ?
-            </p>
-            <p className="mb-4">
-              SignalConso vous permet de remonter le problème à l'entreprise. De plus, votre signalement est visible par les
-              agents de la répression des fraudes, qui pourront intervenir si nécessaire.
-            </p>
-            <p className="mb-4">
-              Nous n'avons pas pu automatiquement identifier l'entreprise à l'origine de ce produit, nous demanderons donc de
-              l'identifier manuellement.
-            </p>
-            <p className="text-center font-bold mb-2">Répondez-simplement aux questions, et laissez-vous guider !</p>
-          </FriendlyHelpText>
-        )}
+        !_openFfBarcodeSearch.data.company && <WelcomeProductWithoutCompany product={_openFfBarcodeSearch.data.product} />}
       {barcode &&
         _openFfBarcodeSearch.status === 'success' &&
         _openFfBarcodeSearch.data &&
         _openFfBarcodeSearch.data.product &&
         _openFfBarcodeSearch.data.company && (
-          <FriendlyHelpText>
-            {/* Cas complet */}
-            <p className="mb-2 mt-4">
-              <i className="ri-information-line mr-2" />
-              Vous avez rencontré un problème avec le produit{' '}
-              <span className="font-bold">
-                {_openFfBarcodeSearch.data.product.productName ?? _openFfBarcodeSearch.data.product.gtin}
-              </span>{' '}
-              produit par l'entreprise{' '}
-              <span className="font-bold">{buildCompanyName({company: _openFfBarcodeSearch.data.company})}</span>?
-            </p>
-            <p className="mb-4">
-              SignalConso vous permet de remonter le problème à l'entreprise. De plus, votre signalement est visible par les
-              agents de la répression des fraudes, qui pourront intervenir si nécessaire.
-            </p>
-            <p className="text-center font-bold mb-2">Répondez-simplement aux questions, et laissez-vous guider !</p>
-          </FriendlyHelpText>
+          <WelcomeProductFull product={_openFfBarcodeSearch.data.product} company={_openFfBarcodeSearch.data.company} />
         )}
     </>
   )

@@ -2,13 +2,12 @@ import {useAnalyticContext} from '@/analytic/AnalyticContext'
 import {EventCategories, ReportEventActions} from '@/analytic/analytic'
 import {StepNavigation} from '@/components_feature/reportFlow/reportFlowStepper/ReportFlowStepper'
 import {ReportFlowStepperActions} from '@/components_feature/reportFlow/reportFlowStepper/ReportFlowStepperActions'
-import {buildCompanyName} from '@/components_simple/CompanyRecap/CompanyRecap'
 import {FriendlyHelpText} from '@/components_simple/FriendlyHelpText'
 import {useBarcodeSearch} from '@/feature/barcode'
+import {OpenFfWelcomeText, useOpenFfBarcodeParam} from '@/feature/openFoodFacts'
 import {useI18n} from '@/i18n/I18n'
 import {ConsumerWish, ReportDraft} from '@/model/ReportDraft'
 import {ReportDraft2} from '@/model/ReportDraft2'
-import {useSearchParams} from 'next/navigation'
 import {useEffect, useMemo} from 'react'
 import {instanceOfSubcategoryWithInfoWall} from '../../../anomalies/Anomalies'
 import {Anomaly, CompanyKinds, ReportTag, Subcategory} from '../../../anomalies/Anomaly'
@@ -19,7 +18,6 @@ import {ProblemInformation} from './ProblemInformation'
 import {ProblemSelect} from './ProblemSelect'
 import {ProblemStepper, ProblemStepperStep} from './ProblemStepper'
 import {computeSelectedSubcategoriesData} from './useSelectedSubcategoriesData'
-import {useOpenFfBarcodeParam} from '@/feature/openFoodFacts'
 
 interface Props {
   anomaly: Anomaly
@@ -183,79 +181,7 @@ export const Problem = ({anomaly, isWebView, stepNavigation}: Props) => {
   const displayMainContent = !openFfBarcode || _openFfBarcodeSearch.status === 'success'
   return (
     <>
-      {openFfBarcode && _openFfBarcodeSearch.status === 'pending' && (
-        <div className="min-h-[200px] flex items-center justify-center">
-          <div className="sc-loader-big w-20 h-20"></div>
-        </div>
-      )}
-      {openFfBarcode && _openFfBarcodeSearch.data === null && (
-        <FriendlyHelpText>
-          {/* Cas d'erreur où le barcode transmis n'est pas valide */}
-          <p className="mb-2 mt-4">
-            <i className="ri-information-line mr-2" />
-            Vous avez rencontré un problème avec ce produit (code-barres <span className="font-bold">{openFfBarcode}</span>) ?
-          </p>
-          <p className="mb-2 mt-4">
-            Nous n'avons pas pu identifier ce produit. Cependant, vous pouvez quand même faire un signalement sur SignalConso.
-            Nous vous demanderons d'identifier manuellement l'entreprise qui est à l'origine de ce produit.
-          </p>
-          <p></p>
-          <p className="mb-4">
-            SignalConso vous permet de remonter le problème à l'entreprise. De plus, votre signalement est visible par les agents
-            de la répression des fraudes, qui pourront intervenir si nécessaire.
-          </p>
-          <p className="text-center font-bold mb-2">Répondez-simplement aux questions, et laissez-vous guider !</p>
-        </FriendlyHelpText>
-      )}
-      {openFfBarcode &&
-        _openFfBarcodeSearch.status === 'success' &&
-        _openFfBarcodeSearch.data &&
-        _openFfBarcodeSearch.data.product &&
-        !_openFfBarcodeSearch.data.company && (
-          <FriendlyHelpText>
-            {/* Cas où on a le produit mais sans l'entreprise */}
-            <p className="mb-2 mt-4">
-              <i className="ri-information-line mr-2" />
-              Vous avez rencontré un problème avec le produit{' '}
-              <span className="font-bold">
-                {_openFfBarcodeSearch.data.product.productName ?? _openFfBarcodeSearch.data.product.gtin}
-              </span>{' '}
-              ?
-            </p>
-            <p className="mb-4">
-              SignalConso vous permet de remonter le problème à l'entreprise. De plus, votre signalement est visible par les
-              agents de la répression des fraudes, qui pourront intervenir si nécessaire.
-            </p>
-            <p className="mb-4">
-              Nous n'avons pas pu automatiquement identifier l'entreprise à l'origine de ce produit, nous demanderons donc de
-              l'identifier manuellement.
-            </p>
-            <p className="text-center font-bold mb-2">Répondez-simplement aux questions, et laissez-vous guider !</p>
-          </FriendlyHelpText>
-        )}
-      {openFfBarcode &&
-        _openFfBarcodeSearch.status === 'success' &&
-        _openFfBarcodeSearch.data &&
-        _openFfBarcodeSearch.data.product &&
-        _openFfBarcodeSearch.data.company && (
-          <FriendlyHelpText>
-            {/* Cas complet */}
-            <p className="mb-2 mt-4">
-              <i className="ri-information-line mr-2" />
-              Vous avez rencontré un problème avec le produit{' '}
-              <span className="font-bold">
-                {_openFfBarcodeSearch.data.product.productName ?? _openFfBarcodeSearch.data.product.gtin}
-              </span>{' '}
-              produit par l'entreprise{' '}
-              <span className="font-bold">{buildCompanyName({company: _openFfBarcodeSearch.data.company})}</span>?
-            </p>
-            <p className="mb-4">
-              SignalConso vous permet de remonter le problème à l'entreprise. De plus, votre signalement est visible par les
-              agents de la répression des fraudes, qui pourront intervenir si nécessaire.
-            </p>
-            <p className="text-center font-bold mb-2">Répondez-simplement aux questions, et laissez-vous guider !</p>
-          </FriendlyHelpText>
-        )}
+      <OpenFfWelcomeText barcode={openFfBarcode} _openFfBarcodeSearch={_openFfBarcodeSearch} />
       {displayMainContent && (
         <>
           {[anomaly, ...(reportDraft.subcategories ?? [])].map(
