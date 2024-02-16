@@ -1,0 +1,14 @@
+title: En France (Outre-mer compris)
+reponseconsoCode: '211'
+detailInputs:
+  - label: Date du constat
+    type: DATE
+    defaultValue: SYSDATE
+  - label: Site internet d'achat
+    placeholder: Adresse du site internet complet ou URL
+  - label: Nom / marque / type de produit
+    type: TEXT
+  - label: Référence
+    type: TEXT
+  - label: Description
+    type: TEXTAREA

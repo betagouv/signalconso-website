@@ -1,0 +1,8 @@
+title: Informations du produit ou notice uniquement en langue étrangère
+desc: Aucune information traduite en français
+subcategoriesTitle: Où avez-vous acheté votre produit&#160;?
+tags:
+  - ReponseConso
+detailInputs:
+- label: Site internet d'achat
+  placeholder: Adresse du site internet complet ou URL
