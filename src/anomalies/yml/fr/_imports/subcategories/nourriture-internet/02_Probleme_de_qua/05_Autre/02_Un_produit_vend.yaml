@@ -1,6 +1,9 @@
 title: Un produit vendu dans un emballage
 desc: "Exemple\_: bouteille d'eau, conserve de légumes, paquet de chips"
 detailInputs:
+  - label: Site internet d'achat
+    placeholder: Adresse du site internet complet ou URL
+    type: TEXT
   - label: 'C''est un produit vendu&#160;:'
     type: RADIO
     options:

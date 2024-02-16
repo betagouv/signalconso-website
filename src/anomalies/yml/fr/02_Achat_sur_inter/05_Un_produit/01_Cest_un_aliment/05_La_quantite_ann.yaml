@@ -5,3 +5,4 @@ reponseconsoCode: '210'
 detailInputs:
   - label: Site internet d'achat
     placeholder: Adresse du site internet complet ou URL
+    type: TEXT

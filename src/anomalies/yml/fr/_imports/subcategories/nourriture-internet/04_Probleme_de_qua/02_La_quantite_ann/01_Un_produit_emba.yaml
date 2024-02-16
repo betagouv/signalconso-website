@@ -5,6 +5,7 @@ desc: La quantité est directement imprimée sur l'emballage par le fabricant
 detailInputs:
   - label: Site internet d'achat
     placeholder: Adresse du site internet complet ou URL
+    type: TEXT
   - label: >-
       La lettre "e" est-elle écrite à côté de l'indication du
       poids/volume&#160;?

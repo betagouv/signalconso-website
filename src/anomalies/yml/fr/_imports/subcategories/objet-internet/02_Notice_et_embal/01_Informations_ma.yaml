@@ -3,6 +3,7 @@ reponseconsoCode: '333'
 detailInputs:
   - label: Site internet d'achat
     placeholder: Adresse du site internet complet ou URL
+    type: TEXT
   - label: Quel est-le problème&#160;?
     type: RADIO
     options:

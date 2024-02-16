@@ -3,6 +3,7 @@ desc: "Exemple\_: verre de vin dans un café, plat au restaurant"
 detailInputs:
   - label: Site internet d'achat
     placeholder: Adresse du site internet complet ou URL
+    type: TEXT
   - label: Date du constat ou d'achat
     type: DATE_NOT_IN_FUTURE
     defaultValue: SYSDATE

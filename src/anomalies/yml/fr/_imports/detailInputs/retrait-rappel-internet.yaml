@@ -6,6 +6,7 @@
   optional: true
 - label: Site internet d'achat
   placeholder: Adresse du site internet complet ou URL
+  type: TEXT
 - label: Nom du produit / marque
   type: TEXT
 - label: Numéro de lot / référence

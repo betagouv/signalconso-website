@@ -10,6 +10,7 @@ detailInputs:
     defaultValue: SYSDATE
   - label: Site internet d'achat
     placeholder: Adresse du site internet complet ou URL
+    type: TEXT
   - label: Type de produit
     type: TEXT
   - label: Nom /marque

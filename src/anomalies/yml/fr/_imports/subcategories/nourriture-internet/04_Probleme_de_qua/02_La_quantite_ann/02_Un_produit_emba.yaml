@@ -6,6 +6,7 @@ detailInputs:
     defaultValue: SYSDATE
   - label: Site internet d'achat
     placeholder: Adresse du site internet complet ou URL
+    type: TEXT
   - label: Nom du produit
     type: TEXT
   - label: Elements d'identification (date limite, n° de lot)

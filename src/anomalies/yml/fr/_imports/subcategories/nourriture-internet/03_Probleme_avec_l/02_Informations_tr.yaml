@@ -6,6 +6,7 @@ detailInputs:
     defaultValue: SYSDATE
   - label: Site internet d'achat
     placeholder: Adresse du site internet complet ou URL
+    type: TEXT
   - label: De quel produit s'agit-il&#160;?
     type: RADIO
     options:
