@@ -1,0 +1,8 @@
+title: A emporter
+companyKind: LOCATION
+reponseconsoCode: '321'
+tags:
+  - ProduitDangereux
+detailInputs:
+  customimport: _imports/detailInputs/intoxication-alimentaire.yaml
+fileLabel: Photos du produit / de l'emballage / du ticket / de la facture

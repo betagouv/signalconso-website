@@ -1,0 +1,14 @@
+- label: Date du constat
+  type: DATE_NOT_IN_FUTURE
+  defaultValue: SYSDATE
+- label: Heure du constat
+  type: TIMESLOT
+  optional: true
+- label: Site internet d'achat
+  placeholder: Adresse du site internet complet ou URL
+- label: Nom du produit / marque
+  type: TEXT
+- label: Numéro de lot / référence
+  type: TEXT
+- label: Qu'avez-vous constaté&#160;?
+  type: TEXTAREA
