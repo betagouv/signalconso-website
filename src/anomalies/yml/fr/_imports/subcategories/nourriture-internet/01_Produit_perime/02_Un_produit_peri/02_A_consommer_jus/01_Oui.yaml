@@ -1,0 +1,9 @@
+title: Oui
+reponseconsoCode: '323'
+detailInputs:
+  - label: Date du constat (ou d'achat suivant le cas)
+    type: DATE_NOT_IN_FUTURE
+    defaultValue: SYSDATE
+  - label: Date Limite de Consommation (DLC)
+    type: DATE
+fileLabel: Photo de la DLC / du produit / de la marque

@@ -1,0 +1,13 @@
+title: Un produit sans emballage, directement consommé
+desc: "Exemple\_: verre de vin dans un café, plat au restaurant"
+detailInputs:
+  - label: Site internet d'achat
+    placeholder: Adresse du site internet complet ou URL
+    type: TEXT
+  - label: Date du constat ou d'achat
+    type: DATE_NOT_IN_FUTURE
+    defaultValue: SYSDATE
+  - label: Nom du produit
+    type: TEXT
+  - label: Description
+    type: TEXTAREA

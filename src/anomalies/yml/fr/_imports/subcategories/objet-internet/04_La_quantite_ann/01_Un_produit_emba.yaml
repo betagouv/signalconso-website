@@ -1,0 +1,24 @@
+title: >-
+  Un produit emballé par le fabricant comme une boîte de conserve, un paquet,
+  une bouteille
+tags:
+  - ReponseConso
+desc: La quantité est directement imprimée sur l'emballage par le fabricant
+companyKind: PRODUCT
+detailInputs:
+  - label: Site internet d'achat
+    placeholder: Adresse du site internet complet ou URL
+    type: TEXT
+  - label: >-
+      La lettre "e" est-elle écrite à côté de l'indication du
+      poids/volume&#160;?
+    type: RADIO
+    options:
+      - Oui
+      - Non
+  - label: Type de produit
+    type: TEXT
+  - label: Nom /marque
+    type: TEXT
+  - label: Quelle erreur a été constatée&#160;?
+    type: TEXTAREA
