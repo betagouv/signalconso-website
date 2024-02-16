@@ -1,14 +1,6 @@
 - label: Date de l'accident
   type: DATE
   defaultValue: SYSDATE
-- label: Nom du produit
-  type: TEXT
-- label: Marque / adresse du fabricant
-  optional: true
-  type: TEXT
-- label: Éléments d'identification (Modèle / N° de série / Volume / Poids)
-  optional: true
-  type: TEXT
 - label: La personne qui a consommé l'aliment est-elle tombée malade et/ou s'est-elle blessée&#160;?
   optional: true
   type: RADIO

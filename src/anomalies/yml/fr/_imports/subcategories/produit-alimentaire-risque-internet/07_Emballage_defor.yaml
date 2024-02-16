@@ -1,0 +1,7 @@
+title: Emballage déformé
+detailInputs:
+  customimport: _imports/detailInputs/produit-alimentaire-internet.yaml
+companyKind: PRODUCT
+fileLabel: Photos du produit / de l'emballage / du ticket / de la facture / de l'accident
+desc: 'Exemple : boite de conserve bombée'
+reponseconsoCode: '323'
