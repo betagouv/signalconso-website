@@ -8,16 +8,16 @@ import Accordion from '@codegouvfr/react-dsfr/Accordion'
 import {createModal} from '@codegouvfr/react-dsfr/Modal'
 import Image from 'next/image'
 import * as React from 'react'
+import {useId} from 'react'
 import {createPortal} from 'react-dom'
-
-const modal = createModal({
-  id: 'siret-help-modal',
-  isOpenedByDefault: false,
-})
 
 export function SiretHelpButton() {
   const {m} = useI18n()
-
+  const id = useId()
+  const modal = createModal({
+    id: `siret-help-modal-${id}`,
+    isOpenedByDefault: false,
+  })
   const imagePropsFullWidth = {
     sizes: '530px',
     className: 'w-full h-auto my-2 shadow-lg shadow-gray-300',
