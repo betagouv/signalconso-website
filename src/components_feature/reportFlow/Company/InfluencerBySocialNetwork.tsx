@@ -68,7 +68,7 @@ export const InfluencerBySocialNetwork = ({onSubmit}: Props) => {
       <RequiredFieldsLegend />
       <form
         onSubmit={handleSubmit(form => {
-          onSubmit(form.socialNetwork, form.influencer, form.otherSocialNetwork, form.postalCode)
+          onSubmit(form.socialNetwork, form.influencer.toLowerCase().replaceAll(' ', ''), form.otherSocialNetwork, form.postalCode)
         })}
       >
         <Animate autoScrollTo={false}>
