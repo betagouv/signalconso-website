@@ -20,7 +20,7 @@ function pickText(m: I18nContextProps['m'], consumerWish: ConsumerWish) {
     case 'fixContractualDispute':
       return <span dangerouslySetInnerHTML={{__html: m.consumerWishFixContractualDispute}} />
     case 'companyImprovement':
-      return m.consumerWishCompanyImprovement
+      return <span dangerouslySetInnerHTML={{__html: m.consumerWishCompanyImprovement}} />
     case 'getAnswer':
       return m.consumerWishGetAnswer
   }
