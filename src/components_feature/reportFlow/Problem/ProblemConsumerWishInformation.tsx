@@ -8,21 +8,32 @@ export function ProblemConsumerWishInformation({consumerWish}: {consumerWish: Co
   return (
     <Animate>
       <FriendlyHelpText>
-        <p className="mb-4">{pickText(m, consumerWish)}</p>
-        <p className="mb-0">{pickSecondText(m, consumerWish)}</p>
+        {pickText(m, consumerWish)}
+        {pickSecondText(m, consumerWish)}
       </FriendlyHelpText>
     </Animate>
   )
 }
 
 function pickText(m: I18nContextProps['m'], consumerWish: ConsumerWish) {
+  const reminderMessage = <p className="mb-4">{m.reminderBeforeReporting}</p>
   switch (consumerWish) {
     case 'fixContractualDispute':
-      return <span dangerouslySetInnerHTML={{__html: m.consumerWishFixContractualDispute}} />
+      return (
+        <>
+          {reminderMessage}
+          <p dangerouslySetInnerHTML={{__html: m.consumerWishFixContractualDispute}} />
+        </>
+      )
     case 'companyImprovement':
-      return <span dangerouslySetInnerHTML={{__html: m.consumerWishCompanyImprovement}} />
+      return (
+        <>
+          {reminderMessage}
+          <p>{m.consumerWishCompanyImprovement}</p>
+        </>
+      )
     case 'getAnswer':
-      return m.consumerWishGetAnswer
+      return <p>{m.consumerWishGetAnswer}</p>
   }
 }
 
@@ -31,8 +42,8 @@ function pickSecondText(m: I18nContextProps['m'], consumerWish: ConsumerWish) {
   switch (consumerWish) {
     case 'fixContractualDispute':
     case 'companyImprovement':
-      return m.consumerWishInvestigationIsPossible
+      return <p className="mb-0">{m.consumerWishInvestigationIsPossible}</p>
     case 'getAnswer':
-      return m.consumerWishInvestigationIsPossible2
+      return <p className="mb-0">{m.consumerWishInvestigationIsPossible2}</p>
   }
 }
