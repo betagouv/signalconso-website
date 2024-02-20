@@ -26,7 +26,7 @@ export function CompanyRecapWithProduct(
 type CompanyRecapProps = {company: CompanySearchResult}
 
 export function CompanyRecap(props: CompanyRecapProps) {
-  const closed = !props.company.isOpen
+  const closed = props.company.isOpen === false
   const name = props.company.name
   const brand = props.company.brand
   const siret = props.company.siret
@@ -54,9 +54,11 @@ export function CompanyRecap(props: CompanyRecapProps) {
             {m.governmentCompany}
           </Row>
         )}
-        <Row icon="ri-profile-fill">
-          {m.siretNumber} <span className="">{siret}</span>
-        </Row>
+        {siret && (
+          <Row icon="ri-profile-fill">
+            {m.siretNumber} <span className="">{siret}</span>
+          </Row>
+        )}
         {address && (
           <Row icon="ri-map-pin-2-fill">
             <AddressComponent address={address} />
