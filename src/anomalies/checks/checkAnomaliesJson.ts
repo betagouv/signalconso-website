@@ -20,6 +20,7 @@ const anomalySpec: ObjectSpec = {
   img: _ => _.assertIsString(),
   hidden: _ => _.ifDefined()?.assertIsBoolean(),
   isHiddenDemoCategory: _ => _.ifDefined()?.assertIsBoolean(),
+  isSpecialOpenFoodFactsCategory: _ => _.ifDefined()?.assertIsBoolean(),
   subcategoriesTitle: _ => _.ifDefined()?.assertIsString(),
   // triggers the recursion
   subcategories: _ => _.assertIsArrayWith(assertIsSubcategory),
@@ -36,6 +37,7 @@ const baseSubcategorySpec: ObjectSpec = {
   // triggers the recursion
   subcategories: _ => _.ifDefined()?.assertIsArrayWith(assertIsSubcategory),
   companyKindQuestion: _ => _.ifDefined()?.assertIsObjectWith(companyKindQuestionSpec),
+  categoryOverride: _ => _.ifDefined()?.assertIsString(),
   isAccessibiliteSubcategory: _ => _.ifDefined()?.assertIsBoolean(),
 }
 

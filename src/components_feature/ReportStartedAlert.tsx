@@ -7,6 +7,7 @@ import {Button} from '@codegouvfr/react-dsfr/Button'
 import Link from 'next/link'
 import {useMemo} from 'react'
 import {useReportFlowContext} from './reportFlow/ReportFlowContext'
+import {recreateOpenFfBarcodeParam} from '@/feature/openFoodFacts'
 
 export default function ReportStartedAlert() {
   const _report = useReportFlowContext()
@@ -28,7 +29,16 @@ export default function ReportStartedAlert() {
             <Button size="small" priority="tertiary" onClick={_report.resetFlow}>
               {m.delete}
             </Button>
-            <Link href={buildPathForStep(_report.reportDraft.anomaly, currentLang, currentStep, false)} legacyBehavior>
+            <Link
+              href={buildPathForStep(
+                _report.reportDraft.anomaly,
+                currentLang,
+                currentStep,
+                false,
+                recreateOpenFfBarcodeParam(_report.reportDraft),
+              )}
+              legacyBehavior
+            >
               <Button size="small">{m.continue}</Button>
             </Link>
           </div>

@@ -20,6 +20,7 @@ export type Anomaly = CategoryNodeBase & {
   img: string
   hidden?: boolean
   isHiddenDemoCategory?: boolean
+  isSpecialOpenFoodFactsCategory?: boolean
   // text or question introducing the choice between the subcategories
 }
 
@@ -46,6 +47,7 @@ type SubcategoryBase = CategoryNodeBase & {
   ccrfCode?: string[]
   companyKind?: CompanyKinds
   companyKindQuestion?: CompanyKindQuestion
+  categoryOverride?: string
   // Temporary, to control the display of one specific subcategory through a feature flag
   isAccessibiliteSubcategory?: boolean
 }
@@ -81,7 +83,7 @@ export const reportTagsAllowedInYaml = [
 ] as const
 export type ReportTagAllowedInYaml = (typeof reportTagsAllowedInYaml)[number]
 
-export const reportTags = ['LitigeContractuel', 'Internet', ...reportTagsAllowedInYaml] as const
+export const reportTags = ['LitigeContractuel', 'Internet', 'OpenFoodFacts', ...reportTagsAllowedInYaml] as const
 export type ReportTag = (typeof reportTags)[number]
 
 export const companyKinds = [
@@ -93,6 +95,7 @@ export const companyKinds = [
   'LOCATION',
   'SOCIAL',
   'PRODUCT',
+  'PRODUCT_OPENFF',
   'TRAIN',
 ] as const
 export type CompanyKinds = (typeof companyKinds)[number]

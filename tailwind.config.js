@@ -18,6 +18,8 @@ module.exports = {
         scdarkblue: '#1e2b50',
         sclightpurple: '#e3e3fd', // the background of the HP
         scorange: '#EA9001', // orange from the logo
+        sclightblueinfo: '#e8edff', // used for the blue helper texts
+        scblueinfo: '#0063cb', // used for the blue helper texts
         schint: '#656565',
         scerrorred: '#ce0500', // from the DSFR, when inputs are in error
       },

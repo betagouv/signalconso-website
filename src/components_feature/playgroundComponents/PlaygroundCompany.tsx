@@ -5,15 +5,17 @@ import {CompanyIdentificationDispatch} from '../reportFlow/Company/Company'
 
 interface PlaygroundCompanyProps {
   companyKind?: CompanyKinds
+  partialReportDraft?: Partial<ReportDraft2>
 }
 
-export const PlaygroundCompany = ({companyKind = 'SIRET'}: PlaygroundCompanyProps) => {
-  const [report, setReport] = useState<Partial<ReportDraft2>>({})
+export const PlaygroundCompany = ({companyKind = 'SIRET', partialReportDraft = {}}: PlaygroundCompanyProps) => {
+  const [report, setReport] = useState<Partial<ReportDraft2>>(partialReportDraft)
 
   return (
     <>
       <CompanyIdentificationDispatch
         draft={{
+          ...partialReportDraft,
           companyKind,
         }}
         updateReport={x => setReport(x as Partial<ReportDraft2>)}

@@ -124,7 +124,7 @@ export class Fixture {
     const stepOrder: {[key in ReportStep]: (_: Partial<ReportDraft>) => Partial<ReportDraft>} = {
       BuildingProblem: _ => ({
         ..._,
-        category: random.oneOf(allAnomalies(currentLang).map(_ => _.category)),
+        category: random.oneOf(allAnomalies(currentLang)),
         consumerWish: random.oneOf(['fixContractualDispute', 'companyImprovement', 'getAnswer']),
       }),
       BuildingDetails: _ => ({

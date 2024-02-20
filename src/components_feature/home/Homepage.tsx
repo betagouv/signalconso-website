@@ -2,7 +2,7 @@
 
 import {Button} from '@codegouvfr/react-dsfr/Button'
 import {useColors} from '@codegouvfr/react-dsfr/useColors'
-import {allVisibleAnomalies} from '@/anomalies/Anomalies'
+import {allAnomaliesForHomepage} from '@/anomalies/Anomalies'
 import {IllustrationStepper} from '@/components_simple/StepIllustrations/StepIllustrations'
 import {ForeignVisitorsQaPromoBanner} from '@/components_simple/bigBanners/ForeignVisitorsQaPromoBanner'
 import {InfoBanner} from '@/components_simple/bigBanners/InfoBanner'
@@ -30,7 +30,7 @@ export const Homepage = () => {
     smoothscroll.polyfill()
   }, [])
 
-  const anomalies = allVisibleAnomalies(currentLang)
+  const anomalies = allAnomaliesForHomepage(currentLang)
   const _report = useReportFlowContext()
   const hasStoredReport = useMemo(() => !!_report.reportDraft.anomaly, [_report.reportDraft])
   const dsfrTheme = useColors()
