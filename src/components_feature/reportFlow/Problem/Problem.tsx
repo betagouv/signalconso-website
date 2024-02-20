@@ -2,20 +2,21 @@ import {useAnalyticContext} from '@/analytic/AnalyticContext'
 import {EventCategories, ReportEventActions} from '@/analytic/analytic'
 import {StepNavigation} from '@/components_feature/reportFlow/reportFlowStepper/ReportFlowStepper'
 import {ReportFlowStepperActions} from '@/components_feature/reportFlow/reportFlowStepper/ReportFlowStepperActions'
+import {FriendlyHelpText} from '@/components_simple/FriendlyHelpText'
+import {OpenFfWelcomeText, useOpenFfSetup} from '@/feature/openFoodFacts'
 import {useI18n} from '@/i18n/I18n'
 import {ConsumerWish, ReportDraft} from '@/model/ReportDraft'
 import {ReportDraft2} from '@/model/ReportDraft2'
 import {useEffect, useMemo} from 'react'
 import {instanceOfSubcategoryWithInfoWall} from '../../../anomalies/Anomalies'
 import {Anomaly, CompanyKinds, ReportTag, Subcategory} from '../../../anomalies/Anomaly'
+import {AppLang} from '../../../i18n/localization/AppLangs'
 import {useReportFlowContext} from '../ReportFlowContext'
 import {ProblemConsumerWishInformation} from './ProblemConsumerWishInformation'
 import {ProblemInformation} from './ProblemInformation'
 import {ProblemSelect} from './ProblemSelect'
 import {ProblemStepper, ProblemStepperStep} from './ProblemStepper'
 import {computeSelectedSubcategoriesData} from './useSelectedSubcategoriesData'
-import {AppLang} from '../../../i18n/localization/AppLangs'
-import {FriendlyHelpText} from '@/components_simple/FriendlyHelpText'
 
 interface Props {
   anomaly: Anomaly
@@ -23,8 +24,8 @@ interface Props {
   stepNavigation: StepNavigation
 }
 
-function buildTagsFromSubcategories(subcategories: Subcategory[]) {
-  return computeSelectedSubcategoriesData(subcategories).tagsFromSelected
+function buildTagsFromSubcategories(anomaly: Anomaly, subcategories: Subcategory[]) {
+  return computeSelectedSubcategoriesData(anomaly, subcategories).tagsFromSelected
 }
 
 function adjustTagsBeforeSubmit(draft: Partial<ReportDraft2>, companyKindFromSelected: CompanyKinds | undefined): ReportTag[] {
@@ -44,17 +45,18 @@ function adjustTagsBeforeSubmit(draft: Partial<ReportDraft2>, companyKindFromSel
 }
 
 export function initiateReportDraftForAnomaly(anomaly: Anomaly, lang: AppLang): Partial<ReportDraft2> {
-  return {category: anomaly.category, lang}
+  return {anomaly, lang}
 }
 
 export function adjustReportDraftAfterSubcategoriesChange(
+  anomaly: Anomaly,
   report: Partial<ReportDraft2>,
   subcategory: Subcategory,
   subcategoryIndex: number,
 ) {
   const subcategoriesToKeep = (report.subcategories ?? []).slice(0, subcategoryIndex)
   const subcategories = [...subcategoriesToKeep, subcategory]
-  const tags = buildTagsFromSubcategories(subcategories)
+  const tags = buildTagsFromSubcategories(anomaly, subcategories)
   //Recompute company kind based on current report selected subcategories
   const lastCategoryCompanyKind = subcategories
     .map(_ => _.companyKind)
@@ -81,17 +83,29 @@ export const Problem = ({anomaly, isWebView, stepNavigation}: Props) => {
   const {m, currentLang} = useI18n()
   const {reportDraft, setReportDraft, resetFlow, sendReportEvent} = useReportFlowContext()
   const hasReponseConsoSubcategories = reportDraft.subcategories
-    ? buildTagsFromSubcategories(reportDraft.subcategories).includes('ReponseConso')
+    ? buildTagsFromSubcategories(anomaly, reportDraft.subcategories).includes('ReponseConso')
     : false
+  const openFfSetup = useOpenFfSetup(anomaly)
 
   // reset the draft when switching the root category
   useEffect(() => {
-    if (anomaly.category !== reportDraft.category) {
+    if (anomaly.category !== reportDraft.anomaly?.category) {
       _analytic.trackEvent(EventCategories.report, ReportEventActions.validateCategory, anomaly.category)
       resetFlow()
       setReportDraft(_ => initiateReportDraftForAnomaly(anomaly, currentLang))
     }
   }, [anomaly.category])
+
+  useEffect(() => {
+    // when we come from openFf and we get the async data
+    if (openFfSetup.status === 'loaded') {
+      // Store the data into the reportFlow
+      setReportDraft(_ => ({
+        ..._,
+        openFf: openFfSetup.result,
+      }))
+    }
+  }, [openFfSetup, setReportDraft])
 
   const isTransmittable = ReportDraft.isTransmittableToProBeforePickingConsumerWish(reportDraft)
   const askConsumerWish = isTransmittable && reportDraft.companyKind !== 'SOCIAL'
@@ -103,26 +117,42 @@ export const Problem = ({anomaly, isWebView, stepNavigation}: Props) => {
     companyKindQuestionFromSelected,
     responseconsoCodeFromSelected,
     ccrfCodeFromSelected,
+    categoryOverrideFromSelected,
   } = useMemo(() => {
-    return computeSelectedSubcategoriesData(reportDraft.subcategories ?? [])
+    return computeSelectedSubcategoriesData(anomaly, reportDraft.subcategories ?? [])
   }, [reportDraft.subcategories])
 
   function onSubmit(next: () => void): void {
     setReportDraft(draft => {
       const {subcategories, ..._anomaly} = anomaly
       const consumerWish = askConsumerWish ? draft.consumerWish : 'companyImprovement'
-      //Company kind 'SOCIAL' cannot be employee consumer report
+      // Company kind 'SOCIAL' cannot be employee consumer report
       const employeeConsumer = draft.companyKind === 'SOCIAL' ? false : draft.employeeConsumer
+      const companyKind = companyKindFromSelected ?? draft.companyKind ?? 'SIRET'
 
-      const updatedDraft = {
+      // In the openFf scenario
+      // Only if we got all the data, then we build the company/product from it.
+      // If we only have partial data, then we will build it in step 2.
+      const productAndCompanyOverride =
+        draft.openFf?.product && draft.openFf.company
+          ? {
+              barcodeProduct: draft.openFf.product,
+              companyDraft: draft.openFf.company,
+            }
+          : null
+
+      const updatedDraft: Partial<ReportDraft2> = {
         ...draft,
         ccrfCode: ccrfCodeFromSelected,
         reponseconsoCode: responseconsoCodeFromSelected,
         tags: adjustTagsBeforeSubmit(draft, companyKindFromSelected),
-        companyKind: companyKindFromSelected ?? draft.companyKind ?? 'SIRET',
+        companyKind,
         anomaly: _anomaly,
         consumerWish,
         employeeConsumer,
+        categoryOverride: categoryOverrideFromSelected,
+        barcodeProduct: productAndCompanyOverride?.barcodeProduct ?? draft.barcodeProduct,
+        companyDraft: productAndCompanyOverride?.companyDraft ?? draft.companyDraft,
       }
       return updatedDraft
     })
@@ -133,140 +163,147 @@ export const Problem = ({anomaly, isWebView, stepNavigation}: Props) => {
 
   const handleSubcategoriesChange = (subcategory: Subcategory, index: number) => {
     setReportDraft(report => {
-      const newReport = adjustReportDraftAfterSubcategoriesChange(report, subcategory, index)
+      const newReport = adjustReportDraftAfterSubcategoriesChange(anomaly, report, subcategory, index)
       return newReport
     })
   }
 
   const tags = reportDraft.tags ?? []
-
   return (
     <>
-      {[anomaly, ...(reportDraft.subcategories ?? [])].map(
-        (category, idx) =>
-          category.subcategories && (
-            <ProblemSelect
-              autoScrollTo={idx !== 0}
-              key={category.id}
-              title={category.subcategoriesTitle}
-              value={reportDraft.subcategories?.[idx]?.id}
-              onChange={id => handleSubcategoriesChange(category.subcategories?.find(_ => _.id === id)!, idx)}
-              options={(category.subcategories ?? []).map((_, i) => ({
-                title: _.title,
-                description: _.desc,
-                value: _.id,
-              }))}
-            />
-          ),
-      )}
-      {isLastSubcategory &&
-        reportDraft.subcategories &&
-        (instanceOfSubcategoryWithInfoWall(lastSubcategories) ? (
-          <ProblemInformation
-            anomaly={anomaly}
-            subcategories={reportDraft.subcategories}
-            information={lastSubcategories.blockingInfo}
-            {...{isWebView}}
-          />
-        ) : (
-          <ProblemStepper renderDone={<ReportFlowStepperActions onNext={onSubmit} {...{stepNavigation}} />}>
-            <ProblemStepperStep isDone={reportDraft.employeeConsumer !== undefined} hidden={reportDraft.companyKind === 'SOCIAL'}>
-              <ProblemSelect
-                id="select-employeeconsumer"
-                title={m.problemDoYouWorkInCompany}
-                value={reportDraft.employeeConsumer}
-                onChange={employeeConsumer => setReportDraft(_ => ({..._, employeeConsumer}))}
-                options={[
-                  {
-                    title: m.problemDoYouWorkInCompanyNo,
-                    value: false,
-                  },
-                  {
-                    title: m.yes,
-                    value: true,
-                  },
-                ]}
+      <OpenFfWelcomeText setup={openFfSetup} />
+      {openFfSetup.status !== 'loading' && (
+        <>
+          {[anomaly, ...(reportDraft.subcategories ?? [])].map(
+            (category, idx) =>
+              category.subcategories && (
+                <ProblemSelect
+                  autoScrollTo={idx !== 0}
+                  key={category.id}
+                  title={category.subcategoriesTitle}
+                  value={reportDraft.subcategories?.[idx]?.id}
+                  onChange={id => handleSubcategoriesChange(category.subcategories?.find(_ => _.id === id)!, idx)}
+                  options={(category.subcategories ?? []).map((_, i) => ({
+                    title: _.title,
+                    description: _.desc,
+                    value: _.id,
+                  }))}
+                />
+              ),
+          )}
+          {isLastSubcategory &&
+            reportDraft.subcategories &&
+            (instanceOfSubcategoryWithInfoWall(lastSubcategories) ? (
+              <ProblemInformation
+                anomaly={anomaly}
+                subcategories={reportDraft.subcategories}
+                information={lastSubcategories.blockingInfo}
+                {...{isWebView}}
               />
-            </ProblemStepperStep>
-            <ProblemStepperStep isDone={true} hidden={!reportDraft.employeeConsumer}>
-              <FriendlyHelpText>
-                <p className="mb-0" dangerouslySetInnerHTML={{__html: m.employeeConsumerInformation}} />
-              </FriendlyHelpText>
-            </ProblemStepperStep>
-            <ProblemStepperStep isDone={reportDraft.companyKind !== undefined} hidden={!!companyKindFromSelected}>
-              {companyKindQuestionFromSelected ? (
-                <ProblemSelect<CompanyKinds>
-                  id="select-companyKind"
-                  title={companyKindQuestionFromSelected.label}
-                  value={reportDraft.companyKind}
-                  onChange={companyKind => setReportDraft(_ => ({..._, companyKind}))}
-                  options={companyKindQuestionFromSelected.options.map(option => {
-                    return {
-                      title: option.label,
-                      value: option.companyKind,
-                    }
-                  })}
-                />
-              ) : (
-                <ProblemSelect<CompanyKinds>
-                  id="select-companyKind"
-                  title={m.problemIsInternetCompany}
-                  value={reportDraft.companyKind}
-                  onChange={companyKind => setReportDraft(_ => ({..._, companyKind}))}
-                  options={[
-                    {
-                      title: m.yes,
-                      value: 'WEBSITE',
-                    },
-                    {
-                      title: m.problemIsInternetCompanyNo,
-                      value: tags.indexOf('ProduitDangereux') === -1 ? 'SIRET' : 'LOCATION',
-                    },
-                  ]}
-                />
-              )}
-            </ProblemStepperStep>
-
-            <ProblemStepperStep isDone={reportDraft.consumerWish !== undefined} hidden={!askConsumerWish}>
-              <ProblemSelect
-                id="select-contractualDispute"
-                title={m.whatsYourIntent}
-                value={reportDraft.consumerWish}
-                options={[
-                  {
-                    title: m.problemContractualDisputeFormYes,
-                    description: m.problemContractualDisputeFormDesc,
-                    value: 'fixContractualDispute',
-                  },
-                  {
-                    title: m.problemContractualDisputeFormNo,
-                    description: m.problemContractualDisputeFormNoDesc,
-                    value: 'companyImprovement',
-                  },
-                  ...(hasReponseConsoSubcategories
-                    ? [
+            ) : (
+              <ProblemStepper renderDone={<ReportFlowStepperActions onNext={onSubmit} {...{stepNavigation}} />}>
+                <ProblemStepperStep
+                  isDone={reportDraft.employeeConsumer !== undefined}
+                  hidden={reportDraft.companyKind === 'SOCIAL'}
+                >
+                  <ProblemSelect
+                    id="select-employeeconsumer"
+                    title={m.problemDoYouWorkInCompany}
+                    value={reportDraft.employeeConsumer}
+                    onChange={employeeConsumer => setReportDraft(_ => ({..._, employeeConsumer}))}
+                    options={[
+                      {
+                        title: m.problemDoYouWorkInCompanyNo,
+                        value: false,
+                      },
+                      {
+                        title: m.yes,
+                        value: true,
+                      },
+                    ]}
+                  />
+                </ProblemStepperStep>
+                <ProblemStepperStep isDone={true} hidden={!reportDraft.employeeConsumer}>
+                  <FriendlyHelpText>
+                    <p className="mb-0" dangerouslySetInnerHTML={{__html: m.employeeConsumerInformation}} />
+                  </FriendlyHelpText>
+                </ProblemStepperStep>
+                <ProblemStepperStep isDone={reportDraft.companyKind !== undefined} hidden={!!companyKindFromSelected}>
+                  {companyKindQuestionFromSelected ? (
+                    <ProblemSelect<CompanyKinds>
+                      id="select-companyKind"
+                      title={companyKindQuestionFromSelected.label}
+                      value={reportDraft.companyKind}
+                      onChange={companyKind => setReportDraft(_ => ({..._, companyKind}))}
+                      options={companyKindQuestionFromSelected.options.map(option => {
+                        return {
+                          title: option.label,
+                          value: option.companyKind,
+                        }
+                      })}
+                    />
+                  ) : (
+                    <ProblemSelect<CompanyKinds>
+                      id="select-companyKind"
+                      title={m.problemIsInternetCompany}
+                      value={reportDraft.companyKind}
+                      onChange={companyKind => setReportDraft(_ => ({..._, companyKind}))}
+                      options={[
                         {
-                          title: m.problemContractualDisputeFormReponseConso,
-                          description: m.problemContractualDisputeFormReponseConsoExample,
-                          value: 'getAnswer' as const,
+                          title: m.yes,
+                          value: 'WEBSITE',
                         },
-                      ]
-                    : []),
-                ]}
-                onChange={(consumerWish: ConsumerWish) => {
-                  setReportDraft(report => {
-                    const updated = {...report, consumerWish}
-                    _analytic.trackEvent(EventCategories.report, ReportEventActions.consumerWish, updated.consumerWish)
-                    return updated
-                  })
-                }}
-              />
-            </ProblemStepperStep>
-            <ProblemStepperStep isDone={true} hidden={!(askConsumerWish && reportDraft.consumerWish)}>
-              {reportDraft.consumerWish && <ProblemConsumerWishInformation consumerWish={reportDraft.consumerWish} />}
-            </ProblemStepperStep>
-          </ProblemStepper>
-        ))}
+                        {
+                          title: m.problemIsInternetCompanyNo,
+                          value: tags.indexOf('ProduitDangereux') === -1 ? 'SIRET' : 'LOCATION',
+                        },
+                      ]}
+                    />
+                  )}
+                </ProblemStepperStep>
+
+                <ProblemStepperStep isDone={reportDraft.consumerWish !== undefined} hidden={!askConsumerWish}>
+                  <ProblemSelect
+                    id="select-contractualDispute"
+                    title={m.whatsYourIntent}
+                    value={reportDraft.consumerWish}
+                    options={[
+                      {
+                        title: m.problemContractualDisputeFormYes,
+                        description: m.problemContractualDisputeFormDesc,
+                        value: 'fixContractualDispute',
+                      },
+                      {
+                        title: m.problemContractualDisputeFormNo,
+                        description: m.problemContractualDisputeFormNoDesc,
+                        value: 'companyImprovement',
+                      },
+                      ...(hasReponseConsoSubcategories
+                        ? [
+                            {
+                              title: m.problemContractualDisputeFormReponseConso,
+                              description: m.problemContractualDisputeFormReponseConsoExample,
+                              value: 'getAnswer' as const,
+                            },
+                          ]
+                        : []),
+                    ]}
+                    onChange={(consumerWish: ConsumerWish) => {
+                      setReportDraft(report => {
+                        const updated = {...report, consumerWish}
+                        _analytic.trackEvent(EventCategories.report, ReportEventActions.consumerWish, updated.consumerWish)
+                        return updated
+                      })
+                    }}
+                  />
+                </ProblemStepperStep>
+                <ProblemStepperStep isDone={true} hidden={!(askConsumerWish && reportDraft.consumerWish)}>
+                  {reportDraft.consumerWish && <ProblemConsumerWishInformation consumerWish={reportDraft.consumerWish} />}
+                </ProblemStepperStep>
+              </ProblemStepper>
+            ))}
+        </>
+      )}
     </>
   )
 }

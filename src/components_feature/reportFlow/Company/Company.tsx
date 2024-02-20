@@ -4,7 +4,6 @@ import {BarcodeProduct} from '@/model/BarcodeProduct'
 import {ReportDraft2} from '@/model/ReportDraft2'
 import {SpecificWebsiteCompanyKinds} from '../../../anomalies/Anomaly'
 import {CompanyDraft, CompanySearchResult} from '../../../model/Company'
-import {ReportDraft} from '../../../model/ReportDraft'
 import {fnSwitch} from '../../../utils/FnSwitch'
 import {DeepPartial} from '../../../utils/utils'
 import {useReportFlowContext} from '../ReportFlowContext'
@@ -50,7 +49,7 @@ export function Company({stepNavigation}: {stepNavigation: StepNavigation}) {
 }
 
 type CommonProps = {
-  draft: Pick<ReportDraft, 'companyKind'>
+  draft: Partial<ReportDraft2>
   // Takes a deep partial, so you can fill just some fields
   // Those fields will be merged with the current report draft
   updateReport: (changesToDraft: DeepPartial<ReportDraft2>) => void
@@ -73,6 +72,9 @@ export function CompanyIdentificationDispatch({draft, updateReport}: CommonProps
       )
     case 'PRODUCT':
       return <BarcodeTree {...{draft, updateReport}} />
+    case 'PRODUCT_OPENFF':
+      return <OpenFfTree {...{draft, updateReport}} />
+
     case 'SOCIAL':
       return (
         <InfluencerBySocialNetwork
@@ -319,5 +321,43 @@ function BarcodeTree({draft, updateReport}: CommonProps) {
         )
       }}
     </CompanySearchByBarcode>
+  )
+}
+
+function OpenFfTree({draft, updateReport}: CommonProps) {
+  const {company, product} = draft.openFf ?? {}
+  if (!product) {
+    // We were not able to find the product with the barcode from OpenFF
+    // Let's forget about it entirely and fallback on the regular search
+    return <CommonTree {...{draft, updateReport}} phoneOrWebsite={undefined} barcodeProduct={undefined} result={undefined} />
+  }
+  return (
+    <>
+      <BarcodeSearchResult
+        product={product}
+        company={company}
+        onSubmit={(company, barcodeProduct) => {
+          updateReport({
+            companyDraft: company,
+            barcodeProduct,
+          })
+        }}
+      />
+      {!company && (
+        <CommonTree
+          {...{draft}}
+          updateReport={changesToDraft => {
+            updateReport({
+              ...changesToDraft,
+              // we also want to keep the product
+              barcodeProduct: product,
+            })
+          }}
+          phoneOrWebsite={undefined}
+          barcodeProduct={undefined}
+          result={undefined}
+        />
+      )}
+    </>
   )
 }

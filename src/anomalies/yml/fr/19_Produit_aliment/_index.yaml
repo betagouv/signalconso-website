@@ -1,0 +1,11 @@
+id: '180'
+category: ProduitAlimentaireCodeBarres
+title: Produit alimentaire
+seoTitle: Signalez un produit alimentaire à la répression des fraudes, à partir de son code-barres
+path: alimentaire-codebarres
+description: Signalez un problème rencontré avec un aliment identifié par un code-barres.
+seoDescription: Signalez un problème rencontré avec un aliment (yaourt, conserve, biscuits, eau en bouteille, etc.) identifié par un code-barres.
+img: category-restaurant
+isSpecialOpenFoodFactsCategory: true
+subcategoriesTitle: >-
+  Où avez-vous acheté ce produit ?

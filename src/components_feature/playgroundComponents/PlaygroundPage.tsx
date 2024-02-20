@@ -53,6 +53,8 @@ const companyTestCases = [
   'company_location',
   'company_social',
   'company_product',
+  'company_product_openff_product_found_but_no_company',
+  'company_product_openff_product_not_found',
 ] as const
 
 const acknowledgmentTestCases = [
@@ -104,6 +106,34 @@ const Playground = () => {
         return <PlaygroundCompany companyKind="SOCIAL" />
       case 'company_product':
         return <PlaygroundCompany companyKind="PRODUCT" />
+      case 'company_product_openff_product_not_found':
+        return (
+          <PlaygroundCompany
+            companyKind="PRODUCT_OPENFF"
+            partialReportDraft={{
+              openFf: {
+                barcode: '123456',
+              },
+            }}
+          />
+        )
+      case 'company_product_openff_product_found_but_no_company':
+        return (
+          <PlaygroundCompany
+            companyKind="PRODUCT_OPENFF"
+            partialReportDraft={{
+              openFf: {
+                barcode: '5449000214911',
+                product: {
+                  id: '701df67c-a5a9-41ee-bc74-a5a918fe1595',
+                  gtin: '5449000214911',
+                  productName: 'Coca-cola',
+                  siren: undefined,
+                },
+              },
+            }}
+          />
+        )
       case 'companyFilled':
         return <CompanyFilled draft={{companyDraft}} onClear={console.log} stepNavigation={dummyStepNavigation} />
       case 'companyFilledWithProduct':

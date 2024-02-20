@@ -1,11 +1,12 @@
-import {CompanyKinds, ReportTag, SocialNetworks, Subcategory, Ters, Trains} from '@/anomalies/Anomaly'
+import {Anomaly, CompanyKinds, ReportTag, SocialNetworks, Subcategory, Ters, Trains} from '@/anomalies/Anomaly'
 import uniq from 'lodash/uniq'
 import {AppLang} from '../i18n/localization/AppLangs'
-import {CompanyDraft} from './Company'
+import {BarcodeProduct} from './BarcodeProduct'
+import {CompanyDraft, CompanySearchResult} from './Company'
 import {DetailInputValue} from './CreatedReport'
 import {UploadedFile} from './UploadedFile'
 import {ApiInfluencer, ApiReportDraft} from './reportsFromApi'
-import {BarcodeProduct} from './BarcodeProduct'
+import {OpenFfResult} from '@/feature/openFoodFacts'
 
 export const genders = ['Male', 'Female'] as const
 export type Gender = (typeof genders)[number]
@@ -20,8 +21,9 @@ export interface ReportDraftConsumer {
 }
 
 export interface ReportDraft {
-  category: string
+  anomaly: Anomaly
   subcategories: Subcategory[]
+  categoryOverride?: string
   companyDraft?: CompanyDraft
   details: DetailInputValue[]
   uploadedFiles?: UploadedFile[]
@@ -39,6 +41,7 @@ export interface ReportDraft {
   lang: AppLang
   barcodeProduct?: BarcodeProduct
   train: Train
+  openFf: OpenFfResult | undefined
 }
 
 export interface Train {
@@ -132,11 +135,14 @@ export class ReportDraft {
   }
 
   static readonly toApi = (draft: ReportDraft, metadata: ApiReportDraft['metadata']): ApiReportDraft => {
-    const {consumerWish, reponseconsoCode, category, contactAgreement, vendor, ccrfCode} = draft
+    const {consumerWish, reponseconsoCode, anomaly, contactAgreement, vendor, ccrfCode} = draft
+
+    const isOpenFf = draft.anomaly.isSpecialOpenFoodFactsCategory
 
     const additionalTags: ReportTag[] = [
       ...(consumerWish === 'fixContractualDispute' ? (['LitigeContractuel'] as const) : []),
       ...(consumerWish === 'getAnswer' ? (['ReponseConso'] as const) : []),
+      ...(isOpenFf ? (['OpenFoodFacts'] as const) : []),
     ]
 
     const tags = uniq([...(draft.tags ?? []), ...additionalTags])
@@ -145,7 +151,7 @@ export class ReportDraft {
       // We don't use the rest syntax here ("..."),
       // we prefer to be sure to fill each field explicitely
       gender: draft.consumer.gender,
-      category,
+      category: draft.categoryOverride ?? anomaly.category,
       subcategories: draft.subcategories.map(_ => _.title),
       details: draft.details,
       companyName: draft.companyDraft?.name,

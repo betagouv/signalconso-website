@@ -55,7 +55,7 @@ export function isStepBeforeOrEqual(a: ReportStepOrDone, b: ReportStepOrDone) {
 function isBuildingStepDone(r: Partial<ReportDraft2>, step: ReportStep) {
   switch (step) {
     case 'BuildingProblem':
-      return !!r.category && !!r.subcategories && !!r.consumerWish
+      return !!r.anomaly && !!r.subcategories && !!r.consumerWish
     case 'BuildingCompany':
       // When the website is in a foreign country, only the country is specified
       return (

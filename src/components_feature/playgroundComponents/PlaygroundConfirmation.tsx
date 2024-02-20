@@ -20,7 +20,7 @@ export const PlaygroundConfirmation = () => {
   const [draft] = useState<ReportDraft>(Fixture.genDraftReport(currentLang, 'Confirmation', new SeedableRandom(1)) as ReportDraft)
   const [anomaly, setAnomaly] = useState<Anomaly | undefined>()
   useEffect(() => {
-    setAnomaly(allAnomalies(currentLang).find(_ => _.category === draft.category)!)
+    setAnomaly(allAnomalies(currentLang).find(_ => _.category === draft.anomaly.category)!)
   }, [])
   return (
     <>

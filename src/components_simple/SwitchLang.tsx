@@ -32,7 +32,7 @@ export function SwitchLang() {
     return hasAlternatePageInOtherLang ? path : home
   }
 
-  return _report.reportDraft.category ? (
+  return _report.reportDraft.anomaly?.category ? (
     <>
       <Button className={'fr-btn fr-btn--tertiary'} nativeButtonProps={modal.buttonProps}>
         <span>
