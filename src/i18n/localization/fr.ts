@@ -972,6 +972,7 @@ export const fr = {
     problemContractualDisputeFormReponseConsoExample: `Exemple : Quelle est la durée de validité du devis qu'on m'a donné ? Un magasin peut-il vendre des produits périmés ? ...`,
     consumerWishFixContractualDispute: `Votre signalement sera transmis à l'entreprise. La répression des fraudes ne s'occupe pas de résoudre les problèmes
     individuels, mais <strong>faire le signalement peut inciter l'entreprise à vous répondre.</strong>`,
+    reminderBeforeReporting: 'Avant de faire un signalement, pensez à vous rapprocher du service client de l’entreprise.',
     consumerWishCompanyImprovement: `Votre signalement sera transmis à l'entreprise. Vous aurez la possibilité de rester anonyme.`,
     consumerWishGetAnswer: `Un agent vous répondra dans les plus brefs délais. Votre signalement ne sera pas transmis à l'entreprise.`,
     consumerWishInvestigationIsPossible:

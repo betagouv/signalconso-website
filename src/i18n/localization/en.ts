@@ -961,6 +961,7 @@ export const en = {
     problemContractualDisputeFormReponseConso: `I would like Fraud Control to give me information about my rights`,
     problemContractualDisputeFormReponseConsoExample: `Example: What is the validity period of the quotes I was given? Can a store sell expired products? ...`,
     consumerWishFixContractualDispute: `Your report will be forwarded to the company. Fraud Control does not get involved in resolving individual cases, but <strong>reporting the issue may encourage the company to respond to you.</strong>`,
+    reminderBeforeReporting: "Before submitting a report, consider contacting the company's customer service.",
     consumerWishCompanyImprovement: `Your report will be forwarded to the company. You may choose to remain anonymous.`,
     consumerWishGetAnswer: `A member of staff will get back to you shortly.`,
     consumerWishInvestigationIsPossible:
