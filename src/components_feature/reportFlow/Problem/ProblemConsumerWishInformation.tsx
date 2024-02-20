@@ -22,18 +22,18 @@ function pickText(m: I18nContextProps['m'], consumerWish: ConsumerWish) {
       return (
         <>
           {reminderMessage}
-          <p dangerouslySetInnerHTML={{__html: m.consumerWishFixContractualDispute}} />
+          <p className="mb-4" dangerouslySetInnerHTML={{__html: m.consumerWishFixContractualDispute}} />
         </>
       )
     case 'companyImprovement':
       return (
         <>
           {reminderMessage}
-          <p>{m.consumerWishCompanyImprovement}</p>
+          <p className="mb-4">{m.consumerWishCompanyImprovement}</p>
         </>
       )
     case 'getAnswer':
-      return <p>{m.consumerWishGetAnswer}</p>
+      return <p className="mb-4">{m.consumerWishGetAnswer}</p>
   }
 }
 
