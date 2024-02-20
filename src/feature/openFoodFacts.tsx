@@ -95,6 +95,8 @@ function Loader() {
   )
 }
 
+// Pas d'intertionalisation, la feature n'existe pas en version anglaise
+
 function WelcomeInvalidBarcode({barcode}: {barcode: string}) {
   return (
     <BlueBanner>
@@ -103,15 +105,15 @@ function WelcomeInvalidBarcode({barcode}: {barcode: string}) {
         Vous avez rencontré un problème avec ce produit (code-barres <span className="font-bold">{barcode}</span>) ?
       </p>
       <p className="mb-2 mt-4">
-        Nous n'avons pas pu identifier ce produit. Cependant, vous pouvez quand même faire un signalement sur SignalConso. Nous
-        vous demanderons d'identifier manuellement l'entreprise qui est à l'origine de ce produit.
+        Nous n'avons pas pu identifier ce produit. Vous pouvez néanmoins faire un signalement sur SignalConso. Nous vous
+        demanderons d'identifier manuellement l'entreprise à l'origine de ce produit.
       </p>
       <p></p>
       <p className="mb-4">
-        SignalConso vous permet de remonter le problème à l'entreprise. De plus, votre signalement est visible par les agents de
-        la répression des fraudes, qui pourront intervenir si nécessaire.
+        SignalConso vous permet de notifier le problème à l'entreprise. De plus, votre signalement est visible par les agents de
+        la répression des fraudes qui pourront intervenir si nécessaire.
       </p>
-      <p className="text-center font-bold mb-2">Répondez-simplement aux questions, et laissez-vous guider !</p>
+      <LetUsGuideYou />
     </BlueBanner>
   )
 }
@@ -125,14 +127,14 @@ function WelcomeProductWithoutCompany({product}: {product: BarcodeProduct}) {
         Vous avez rencontré un problème avec le produit <span className="font-bold">{product.productName ?? product.gtin}</span> ?
       </p>
       <p className="mb-4">
-        SignalConso vous permet de remonter le problème à l'entreprise. De plus, votre signalement est visible par les agents de
-        la répression des fraudes, qui pourront intervenir si nécessaire.
+        SignalConso vous permet d'en informer l'entreprise. De plus, votre signalement est visible par les agents de la répression
+        des fraudes qui pourront intervenir si nécessaire.
       </p>
       <p className="mb-4">
-        Nous n'avons pas pu automatiquement identifier l'entreprise à l'origine de ce produit, nous demanderons donc de
+        Nous n'avons pas pu automatiquement identifier l'entreprise à l'origine de ce produit, nous vous demanderons donc de
         l'identifier manuellement.
       </p>
-      <p className="text-center font-bold mb-2">Répondez-simplement aux questions, et laissez-vous guider !</p>
+      <LetUsGuideYou />
     </BlueBanner>
   )
 }
@@ -145,15 +147,19 @@ function WelcomeProductFull({product, company}: {product: BarcodeProduct; compan
         Vous avez rencontré un problème avec le produit <span className="font-bold">
           {product.productName ?? product.gtin}
         </span>{' '}
-        produit par l'entreprise <span className="font-bold">{buildCompanyName({company: company})}</span>?
+        produit par l'entreprise <span className="font-bold">{buildCompanyName({company: company})}</span> ?
       </p>
       <p className="mb-4">
-        SignalConso vous permet de remonter le problème à l'entreprise. De plus, votre signalement est visible par les agents de
-        la répression des fraudes, qui pourront intervenir si nécessaire.
+        SignalConso vous permet d'en informer l'entreprise. De plus, votre signalement est visible par les agents de la répression
+        des fraudes qui pourront intervenir si nécessaire.
       </p>
-      <p className="text-center font-bold mb-2">Répondez-simplement aux questions, et laissez-vous guider !</p>
+      <LetUsGuideYou />
     </BlueBanner>
   )
+}
+
+function LetUsGuideYou() {
+  return <p className="text-center font-bold mb-2">Répondez simplement aux questions et laissez-vous guider !</p>
 }
 
 function BlueBanner({children}: {children: ReactNode}) {
