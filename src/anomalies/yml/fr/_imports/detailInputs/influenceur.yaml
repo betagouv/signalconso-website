@@ -1,4 +1,7 @@
+- label: Site internet
+  placeholder: Lien ou URL de la publication, du short ou de la vidéo
+  type: TEXT
+  optional: true
 - label: Nom du produit ou du service (facultatif)
   type: TEXT
-  placeholder: Préciser la nature et la gravité
   optional: true
