@@ -40,6 +40,10 @@ export const InfluencerBySocialNetwork = ({onSubmit}: Props) => {
     formState: {errors},
   } = useForm<Form>()
 
+  const sanitizeInfluencer = (name: string) => {
+    return name.toLowerCase().replaceAll(' ', '').replaceAll('@', '')
+  }
+
   const {signalConsoApiClient} = useApiClients()
   const socialNetwork = watch('socialNetwork')
 
@@ -49,7 +53,7 @@ export const InfluencerBySocialNetwork = ({onSubmit}: Props) => {
 
   const searchQuery = useQuery({
     queryKey: ['searchCertifiedInfluencer', certifiedInfluencer, socialNetwork],
-    queryFn: () => signalConsoApiClient.searchCertifiedInfluencer(certifiedInfluencer!, socialNetwork),
+    queryFn: () => signalConsoApiClient.searchCertifiedInfluencer(sanitizeInfluencer(certifiedInfluencer!), socialNetwork),
     enabled: !!certifiedInfluencer,
   })
 
@@ -68,12 +72,7 @@ export const InfluencerBySocialNetwork = ({onSubmit}: Props) => {
       <RequiredFieldsLegend />
       <form
         onSubmit={handleSubmit(form => {
-          onSubmit(
-            form.socialNetwork,
-            form.influencer.toLowerCase().replaceAll(' ', ''),
-            form.otherSocialNetwork,
-            form.postalCode,
-          )
+          onSubmit(form.socialNetwork, sanitizeInfluencer(form.influencer), form.otherSocialNetwork, form.postalCode)
         })}
       >
         <Animate autoScrollTo={false}>
@@ -168,13 +167,13 @@ export const InfluencerBySocialNetwork = ({onSubmit}: Props) => {
                   <br />
                   {searchQuery.data ? (
                     <div className="flex justify-end">
-                      <Button type="submit">{m.continueWithInfluencer(influencer)}</Button>
+                      <Button type="submit">{m.continue}</Button>
                     </div>
                   ) : (
                     <div className="flex-col">
                       <Alert
                         title={m.influencerUnknownTitle}
-                        description={m.influencerUnknownDesc}
+                        description={m.influencerUnknownDesc(socialNetwork)}
                         severity="warning"
                         className="text-base font-normal mb-3"
                       />

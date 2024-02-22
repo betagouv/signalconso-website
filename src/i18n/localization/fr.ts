@@ -1096,7 +1096,8 @@ export const fr = {
     companyIdentifiedTitle: `Entreprise identifiée`,
     influencerIdentifiedTitle: `Influenceur ou influenceuse identifié(e)`,
     influencerUnknownTitle: `Attention`,
-    influencerUnknownDesc: `Assurez-vous que le nom ou le pseudonyme existe et soit correctement orthographié. Une information précise facilitera le travail de nos services.`,
+    influencerUnknownDesc: (socialNetwork: string) =>
+      `Il est possible que le nom ou le pseudonyme n'existe pas sur ${socialNetwork}. Assurez-vous qu'il existe et qu'il soit correctement orthographié. Une information précise facilitera le travail de nos services.`,
     companyIdentityHelperTitle: 'Aide SIRET/SIREN',
     companyIdentityHelperWhere: `Où trouver ces identifiants ?`,
     companyIdentityHelperWebsite: `Sur un site internet`,
