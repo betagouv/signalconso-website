@@ -57,6 +57,7 @@ export const internalPageDefs = {
   stats: page(`/stats`, {hasAlternate: false}),
   suiviEtViePrivee: page(`/suivi-et-vie-privee`),
   litige: page(`/litige`),
+  refundTelecom: page(`/remboursement-telecom`),
 }
 
 const externalPageDefs = {

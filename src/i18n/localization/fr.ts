@@ -47,6 +47,10 @@ export const fr = {
         title: 'Politique de cookies',
         description: 'Description de la politique de cookies',
       },
+      refundTelecom: {
+        title: "Résolution d'un problème individuel (litige) - SignalConso",
+        description: 'Démarches conseillées par SignalConso pour résoudre un problème individuel (litige) avec une entreprise ',
+      },
       appMobile: {
         // TODO
         title: '',
@@ -352,6 +356,50 @@ export const fr = {
         'Vous rencontrez un problème technique avec notre site ? Contactez-nous (ouverture de la messagerie par défaut).',
       alertDescription: `Cette adresse courriel n'est pas destinée au dépôt de votre signalement, qui ne pourra alors être exploité. Tout signalement doit exclusivement être déposé en suivant le bouton "Je signale un problème" ci-dessus.`,
       alertTitle: 'Ne nous envoyez pas votre signalement par email... il ne sera pas lu.',
+    },
+    refundTelecom: {
+      demarcheTitle: 'Vos démarches pour être remboursé ou trouver une solution à votre problème',
+      step1Title: 'Démarche n°1 : j’écris un courrier à l’entreprise pour demander à résoudre mon problème',
+      step1When: 'Quand ?',
+      step1WhenDesc1: 'Le plus tôt possible (conseillé).',
+      step1WhenDesc2: 'Je peux aussi attendre de voir si l’entreprise me répond avec SignalConso.',
+      step1ToWhom: 'À qui ?',
+      step1ToWhomDesc1: 'Auprès du service client de l’entreprise.',
+      step1ToWhomDesc2:
+        'Je peux trouver l’adresse du service client de l’entreprise dans mon contrat, sur son site internet ou dans les conditions générales de vente.',
+      step1How: 'Comment ?',
+      step1HowDesc: 'En envoyant une lettre recommandée avec accusé de réception, en y joignant les deux documents ci-joints :',
+      step1Attachment1: 'une lettre type à compléter (zones entre [])',
+      step1Attachment2: 'mon signalement au format PDF',
+      step1KeepCopy: 'Je garde une copie du courrier et la preuve de l’envoi.',
+      step1Why: 'Pourquoi ?',
+      step1WhyDesc: 'Ce courrier est la preuve de ma démarche. Il est obligatoire pour entamer d’autres démarches par la suite.',
+      step2Title:
+        'Démarche n°2 : Je contacte un médiateur de la consommation, c’est-à-dire une personne chargée de régler les problèmes des consommateurs avec les entreprises',
+      step2When: 'Quand ?',
+      step2WhenDesc:
+        'Deux mois après avoir envoyé mon courrier, si je n’ai pas eu de réponse ou si la réponse ne me satisfait pas.',
+      step2WhenDescWarn:
+        'Vous avez 1 an à partir de la date de votre réclamation écrite auprès du service clients de votre opérateur ou fournisseur pour saisir le médiateur.',
+      step2Who: 'Qui ?',
+      step2WhoDesc:
+        'L’entreprise a l’obligation de communiquer le nom du médiateur qu’elle a choisi. Les coordonnées du médiateur sont normalement écrites sur le site internet de l’entreprise ou sur le contrat, bon de commande…',
+      step2WhoDesc2:
+        'Il existe dans le secteur des communications électroniques un médiateur spécialisé pour intervenir si vous avez un différend avec votre opérateur de téléphonie (fixe ou mobile) ou votre fournisseur d’accès internet.',
+      step2WhoDesc3: ' Il s’agit de la Médiatrice des Communications Électroniques.',
+      step2MediatorAddress: 'Médiatrice des Communications Électroniques, CS 30 342, 94257 GENTILLY Cedex',
+      step2How: 'Comment ?',
+      step2HowDesc:
+        'Si le professionnel est adhérent à ce médiateur, je remplis le formulaire sur le site internet du médiateur à l’adresse : ',
+      step2OrDesc: ' Il est également possible de le contacter par voie postale à l’adresse suivante : ',
+      step2Why: 'Pourquoi ?',
+      step2WhyDesc: 'Le médiateur va m’aider à trouver un arrangement avec l’entreprise.',
+      step2Cost: 'Combien ça coûte ?',
+      step2CostDesc: 'C’est gratuit !',
+      step2NoMediatorFound: 'Comment faire si je ne trouve pas le nom du médiateur ?',
+
+      step2NoMediatorFoundDesc2: ' Il va m’aider à trouver une solution avec l’entreprise. C’est gratuit !',
+      step2NoMediatorFoundDesc: 'Je contacte le conciliateur le plus proche de chez moi. Je le cherche sur le site ',
     },
     litige: {
       title: 'Vos démarches pour être remboursé ou trouver une solution à votre problème',
@@ -670,6 +718,7 @@ export const fr = {
       cookiesTitle: 'Gestion des cookies',
       retractationLinkTitle: 'Info délai de rétractation',
       litigeLinkTitle: 'Info résolution de litige',
+      refundTelecomLinkTitle: 'Info résolution de litige télécom',
       actualitesLinkTitle: 'Actualités',
       servicePublicPlusLinkTitle: 'Services Publics +',
       suivezNous: `Suivez-nous <br /> sur les réseaux sociaux`,
