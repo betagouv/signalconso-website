@@ -1043,7 +1043,7 @@ export const en = {
     city: `City`,
     attachmentsDescAnonymous: `If you do not want the company to know your identity, <b style="color: black">remove your name</b> where it appears on your attachments.`,
     attachmentsDescAllowedFormat: (formats: string[]) => `The following formats are accepted : ${formats.join(', ')}`,
-    attachmentsDesc2: `Including an attachment <strong>GREATLY</strong> increases your chances that corrective action will be taken.<br/> You must not share private or sensitive information (e.g. bank account details or medical records).`,
+    attachmentsDesc2: `Including an attachment (for example: a contract, an invoice, exchanges with customer service...) <strong>GREATLY</strong> increases your chances that corrective action will be taken.<br/> You must not share private or sensitive information (e.g. bank account details or medical records).`,
     maxAttachmentsZero: (max: number) => `You can upload up to ${max} attachments`,
     maxAttachmentsReached: (max: number) => `${max} attachments limit reached`,
     maxAttachementExceeded: (max: number, toRemove: number) =>
