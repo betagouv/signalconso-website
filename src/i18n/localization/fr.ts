@@ -1170,6 +1170,34 @@ export const fr = {
       ticket: `Exemple d'un ticket de caisse. Tout en bas du ticket, après le prix total des achats et le montant de la TVA, on voit une ligne "SIRET: 12345679 00001".`,
       card: `Exemple d'un ticket de carte bancaire. Vers le milieu du ticket, on voit une ligne avec "Nom de l'entreprise", une autre avec "Lieu de la transaction", puis une autre ligne qui démarre avec des zéros "00 00000" puis continue avec un numéro de SIRET "123456789 001".`,
     },
+
+    clientReferenceHelperTitle: 'Aide référence client',
+    clientReferenceHelper: `A quoi correspondent ma référence client ?`,
+    clientReferenceHelperWhere: `Où trouver ma référence client ?`,
+    clientReferenceHelperWhereDesc: `
+      Vous pouvez la retrouver sur une facture, un devis émis par l’entreprise et également sur votre espace client.
+    `,
+    clientReferenceHelperDesc: `
+    Une référence client correspond à une suite de caractère qui vous identifie de manière unique.<br/>
+    En fonction de l'entreprise elle peut avoir des noms différents:<br/>
+      <ul>
+        <li>Code client</li>
+        <li>Numéro client</li>
+        <li>Numéro adonné</li>
+      </ul>
+      Si vous ne trouvez pas de référence client donnez votre numéro téléphone ou adresse email utilisée par l'entreprise pour vous contacter.<br/>
+    `,
+    clientReferenceHelperWhereDesc0: `
+      Connectez-vous à votre espace client, recherchez votre numéro de client sur la page d'accueil ou sur votre page de profil :
+    `,
+    clientReferenceHelperImages: {
+      website: `Exemple de site internet contenant une référence client.`,
+      invoice: `Exemple d'une facture typique. On peut y retrouver les informations concernant le client, parmi lesquelles la référence du client et ses coordonnées.`,
+      reservation: `Exemple d'une confirmation de réservation d'hôtel, où l'on trouve un numéro de réservation.`,
+    },
+    clientReferenceHelperInvoice: `Sur une facture`,
+    clientReferenceHelperReservation: `Sur une reservation`,
+
     consumerTitle: `Vos coordonnées nous permettent d'authentifier votre signalement`,
     consumerAskCodeTitle: `Saisissez le code de validation`,
     consumerAskCodeDesc: (email: string) => `Un email vous a été envoyé à l'adresse <b>${email}</b>`,

@@ -19,6 +19,8 @@ import {DeepPartial} from '../../../utils/utils'
 import {useReportFlowContext} from '../ReportFlowContext'
 import {ConsumerAnonymousInformation} from './ConsumerAnonymousInformation'
 import {ConsumerValidationDialog2, consumerValidationModal} from './ConsumerValidationDialog'
+import {SiretHelpButton} from '@/components_feature/reportFlow/Company/lib/SiretHelpButton'
+import {ClientReferenceHelpButton} from '@/components_feature/reportFlow/Consumer/ClientReferenceHelpButton'
 
 interface ConsumerForm {
   firstName: string
@@ -188,8 +190,12 @@ export const ConsumerInner = ({
             placeholder={m.phonePlaceholder}
           />
           <ScTextInput
-            label={<WithIcon icon="ri-bill-line">{m.referenceNumberOptional}</WithIcon>}
             desc={m.referenceNumberDesc}
+            label={
+              <span>
+                <WithIcon icon="ri-bill-line">{m.referenceNumberOptional}</WithIcon> <ClientReferenceHelpButton />
+              </span>
+            }
             placeholder={m.referenceNumberPlaceholder}
             {..._form.register('referenceNumber', {
               maxLength: {value: 100, message: m.atMost100Chars},
