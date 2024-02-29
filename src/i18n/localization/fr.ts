@@ -1172,20 +1172,20 @@ export const fr = {
     },
 
     clientReferenceHelperTitle: 'Aide référence client',
-    clientReferenceHelper: `A quoi correspondent ma référence client ?`,
+    clientReferenceHelper: `A quoi correspond ma référence client ?`,
     clientReferenceHelperWhere: `Où trouver ma référence client ?`,
     clientReferenceHelperWhereDesc: `
-      Vous pouvez la retrouver sur une facture, un devis émis par l’entreprise et également sur votre espace client.
+      Vous pouvez la retrouver sur une facture, un devis émis par l’entreprise mais également sur votre espace client. 
     `,
     clientReferenceHelperDesc: `
     Une référence client correspond à une suite de caractères qui vous identifie de manière unique.<br/>
-    En fonction de l'entreprise elle peut avoir des noms différents:<br/>
+    En fonction de l'entreprise elle peut avoir des noms différents :<br/>
       <ul>
         <li>Code client</li>
         <li>Numéro client</li>
-        <li>Numéro adonné</li>
+        <li>Numéro abonné</li>
       </ul>
-      Si vous ne trouvez pas votre référence client, donnez votre numéro de téléphone ou adresse email utilisée par l'entreprise pour vous contacter.<br/>
+      Si vous ne trouvez pas votre référence client, donnez votre numéro de téléphone ou adresse email utilisé par l'entreprise pour vous contacter.<br/>
     `,
     clientReferenceHelperWhereDesc0: `
       Connectez-vous à votre espace client, puis recherchez votre numéro de client sur la page d'accueil ou dans votre page de profil. :
