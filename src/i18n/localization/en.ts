@@ -1158,6 +1158,23 @@ export const en = {
       ticket: `Example of a French receipt from a purchase in a store. At the very bottom of the receipt, after the total purchase price and the VAT amount, there's a line reading "SIRET: 12345679 00001".`,
       card: `Example of a bank card receipt. Around the middle of the receipt, there's a line with "Company Name", another with "Transaction Location", and then another line that starts with zeros "00 00000" and continues with a SIRET number "123456789 001".`,
     },
+
+    clientReferenceHelperTitle: 'Client Reference Help',
+    clientReferenceHelper: 'What does my client reference correspond to?',
+    clientReferenceHelperWhere: 'Where can I find my client reference?',
+    clientReferenceHelperWhereDesc: 'You can find it on an invoice, a quote issued by the company, and also on your client area.',
+    clientReferenceHelperDesc: `A client reference corresponds to a series of characters that uniquely identifies you.<br/> Depending on the company, it can have different names:<br/> <ul> <li>Client code</li> <li>Client number</li> <li>Subscriber number</li> </ul> If you cannot find a client reference, provide your phone number or email address used by the company to contact you.<br/>`,
+    clientReferenceHelperWhereDesc0:
+      'Log in to your client area, look for your client number on the homepage or on your profile page:',
+    clientReferenceHelperImages: {
+      website: 'Example of a website containing a client reference.',
+      invoice:
+        "Example of a typical invoice. It can include client information, among which the client's reference and their contact details.",
+      reservation: 'Example of a hotel booking confirmation, where a reservation number is found.',
+    },
+    clientReferenceHelperInvoice: 'On an invoice',
+    clientReferenceHelperReservation: 'On a reservation',
+
     consumerTitle: `Your contact details allow us to authenticate your report`,
     consumerAskCodeTitle: `Enter the validation code.`,
     consumerAskCodeDesc: (email: string) => `An email has been sent to <b>${email}</b>`,
