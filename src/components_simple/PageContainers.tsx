@@ -1,6 +1,6 @@
-import {ReactNode} from 'react'
+import {ChildrenProps} from '@/utils/utils'
 
-export function ContentPageContainer({children}: {children: ReactNode}) {
+export function ContentPageContainer({children}: ChildrenProps) {
   return (
     <main role="main" id="main-content">
       <div className="fr-container fr-pt-6w fr-pb-4w ">{children}</div>
@@ -8,7 +8,7 @@ export function ContentPageContainer({children}: {children: ReactNode}) {
   )
 }
 
-export function LimitedWidthPageContainer({children}: {children: ReactNode}) {
+export function LimitedWidthPageContainer({children}: ChildrenProps) {
   return (
     <main role="main" id="main-content">
       <div className="fr-container fr-pt-6w fr-pb-4w ">
@@ -18,6 +18,14 @@ export function LimitedWidthPageContainer({children}: {children: ReactNode}) {
           </div>
         </div>
       </div>
+    </main>
+  )
+}
+
+export function FullWidthPageContainer({children}: ChildrenProps) {
+  return (
+    <main role="main" id="main-content">
+      {children}
     </main>
   )
 }

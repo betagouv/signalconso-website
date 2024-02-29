@@ -123,6 +123,10 @@ export const fr = {
         title: 'Playground',
         description: '',
       },
+      obligationFibre: {
+        title: `Fibre optique : installation forcée par votre opérateur Internet ?`,
+        description: `Signalez un passage à la fibre forcé par votre fournisseur d'accès Internet`,
+      },
     },
     faireUnSignalement: {
       etape: 'Étape',
@@ -568,6 +572,7 @@ export const fr = {
       contact: 'Contact',
       calcRetractionDelay: 'Calculez votre délai de rétractation',
       resolutionTips: "Conseils pour résolution d'un problème individuel (litige)",
+      obligationFibre: 'Faire un signalement pour une migration forcée vers la fibre optique',
       reportIncidentSection: "Dépôt d'un signalement",
       reportIncidentFor: 'Faire un signalement pour',
       seeFullTree: 'Voir aussi',

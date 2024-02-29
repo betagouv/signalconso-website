@@ -17,6 +17,7 @@ module.exports = {
         scbluefrance: '#000091',
         scdarkblue: '#1e2b50',
         sclightpurple: '#e3e3fd', // the background of the HP
+        sclightpurpledarker: '#cacafb', // slight variant from the previous one
         scorange: '#EA9001', // orange from the logo
         sclightblueinfo: '#e8edff', // used for the blue helper texts
         scblueinfo: '#0063cb', // used for the blue helper texts

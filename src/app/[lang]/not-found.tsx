@@ -4,6 +4,7 @@ import {LinkBackToHome} from '../../components_simple/LinkBackToHome'
 import '../../globals.css'
 import {getI18n} from '../../i18n/I18nDictionnary'
 import {AppLangs, getSupportedLang} from '../../i18n/localization/AppLangs'
+import {ContentPageContainer, FullWidthPageContainer} from '@/components_simple/PageContainers'
 
 // No metadata here, not available yet https://github.com/vercel/next.js/issues/45620
 export default function NotFound() {
@@ -15,14 +16,12 @@ export default function NotFound() {
   const {messages: m} = getI18n(lang)
 
   return (
-    <main role="main" id="main-content">
-      <div className="fr-container">
-        <div className="py-20 max-w-md mx-auto">
-          <h1>{m.pageNotFoundTitle}</h1>
-          <p>{m.pageNotFoundDesc}</p>
-          <LinkBackToHome isWebView={isWebView} lang={lang} />
-        </div>
+    <ContentPageContainer>
+      <div className="py-20 max-w-md mx-auto">
+        <h1>{m.pageNotFoundTitle}</h1>
+        <p>{m.pageNotFoundDesc}</p>
+        <LinkBackToHome isWebView={isWebView} lang={lang} />
       </div>
-    </main>
+    </ContentPageContainer>
   )
 }

@@ -21,6 +21,7 @@ import imgDgccrf from '@/img/illustrations/dgccrf.png'
 import {useReportFlowContext} from '../../components_feature/reportFlow/ReportFlowContext'
 import SearchAnomalies from '../../components_simple/SearchAnomalies'
 import {BrowserCompatAlert} from '../../components_simple/bigBanners/BrowserAlertCompat'
+import {FullWidthPageContainer} from '@/components_simple/PageContainers'
 
 const ReportStartedAlert = dynamic(() => import('@/components_feature/ReportStartedAlert'), {ssr: false})
 
@@ -34,10 +35,9 @@ export const Homepage = () => {
   const _report = useReportFlowContext()
   const hasStoredReport = useMemo(() => !!_report.reportDraft.anomaly, [_report.reportDraft])
   const dsfrTheme = useColors()
-  const isWebView = false
   return (
     <>
-      <main role="main" id="main-content">
+      <FullWidthPageContainer>
         <div>
           <div className="fr-container">
             <InfoBanner />
@@ -77,7 +77,7 @@ export const Homepage = () => {
             <SearchAnomalies anomalies={anomalies} />
           </div>
         </div>
-      </main>
+      </FullWidthPageContainer>
       {hasStoredReport ? <ReportStartedAlert /> : <></>}
     </>
   )
