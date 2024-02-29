@@ -123,6 +123,10 @@ export const en = {
         title: 'Playground',
         description: '',
       },
+      obligationFibre: {
+        title: 'TODO',
+        description: '',
+      },
     },
     faireUnSignalement: {
       etape: 'Step',
@@ -556,6 +560,7 @@ export const en = {
       contact: 'Contact',
       calcRetractionDelay: 'Figure out your cooling-off period',
       resolutionTips: 'Tips for resolving individual issues (disputes)',
+      obligationFibre: 'Report a forced migration to fiber optic Internet',
       reportIncidentSection: 'Submitting a report',
       reportIncidentFor: 'Report a company for',
       seeFullTree: 'See also',

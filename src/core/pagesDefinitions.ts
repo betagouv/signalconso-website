@@ -14,7 +14,7 @@ export type PageDefInternal = {
   urlRelative: string
   noIndex: boolean
   // Set false if the page has no english version
-  // note that a "notFound()" still has to be manually coded on this page, when the lang is english
+  // /!\ note that a "notFound()" still has to be manually coded on this page, when the lang is english
   // this boolean only affects the sitemap / metadatas / etc.
   hasAlternate: boolean
 }
@@ -58,6 +58,7 @@ export const internalPageDefs = {
   suiviEtViePrivee: page(`/suivi-et-vie-privee`),
   litige: page(`/litige`),
   refundTelecom: page(`/remboursement-telecom`),
+  obligationFibre: page('/obligation-adsl-fibre', {hasAlternate: false}),
 }
 
 const externalPageDefs = {
