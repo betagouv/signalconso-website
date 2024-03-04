@@ -69,6 +69,10 @@ export const en = {
         title: 'Resolving an individual dispute – SignalConso',
         description: 'SignalConso tips for resolving an individual issue or dispute with a company or business',
       },
+      refundTelecom: {
+        title: 'Resolving an individual dispute – SignalConso',
+        description: 'SignalConso tips for resolving an individual issue or dispute with a company or business',
+      },
       quiSommesNous: {
         title: 'Who are we? - SignalConso',
         description:
@@ -345,6 +349,49 @@ export const en = {
       emailTitle: 'Are you experiencing a technical issue on our site? Contact us (default email client will open).',
       alertDescription: `This email address is not intended for reporting your issue with a company, we wouldn't be able to process it that way. Reports of customer issues must exclusively be submitted by following the "I report an issue" button above.`,
       alertTitle: 'Do not send us a report by email – it will not be read.',
+    },
+    refundTelecom: {
+      demarcheTitle: 'Your steps to get refunded or find a solution to your problem',
+      step1Title: 'Step 1: I write a letter to the company to ask to solve my problem',
+      step1When: 'When?',
+      step1WhenDesc1: 'As soon as possible (recommended).',
+      step1WhenDesc2: 'I can also wait to see if the company responds to me with SignalConso.',
+      step1ToWhom: 'To whom?',
+      step1ToWhomDesc1: 'To the customer service of the company.',
+      step1ToWhomDesc2:
+        "I can find the address of the company's customer service in my contract, on its website, or in the general terms of sale.",
+      step1How: 'How?',
+      step1HowDesc: 'By sending a registered letter with acknowledgement of receipt, attaching the following two documents:',
+      step1Attachment1: 'a template letter to complete (areas between [])',
+      step1Attachment2: 'my report in PDF format',
+      step1KeepCopy: 'I keep a copy of the letter and proof of sending.',
+      step1Why: 'Why?',
+      step1WhyDesc: 'This letter is the proof of my approach. It is mandatory to initiate other steps later.',
+      step2Title:
+        "Step 2: I contact a consumer mediator, that is a person in charge of solving consumers' problems with companies",
+      step2When: 'When?',
+      step2WhenDesc:
+        'Two months after sending my letter, if I have not received a response or if the response does not satisfy me.',
+      step2WhenDescWarn:
+        'You have 1 year from the date of your written complaint to the customer service of your operator or supplier to seize the mediator.',
+      step2Who: 'Who?',
+      step2WhoDesc:
+        "The company is obligated to communicate the name of the mediator it has chosen. The contact details of the mediator are normally written on the company's website or on the contract, purchase order...",
+      step2WhoDesc2:
+        'In the electronic communications sector, there is a specialized mediator to intervene if you have a dispute with your telephony (landline or mobile) operator or your internet service provider.',
+      step2WhoDesc3: 'It is the Electronic Communications Mediator.',
+      step2MediatorAddress: 'Electronic Communications Mediator, CS 30 342, 94257 GENTILLY Cedex',
+      step2How: 'How?',
+      step2HowDesc:
+        "If the professional is a member of this mediator, I fill out the form on the mediator's website at the address: ",
+      step2OrDesc: 'It is also possible to contact them by mail at the following address: ',
+      step2Why: 'Why?',
+      step2WhyDesc: 'The mediator will help me find an arrangement with the company.',
+      step2Cost: 'How much does it cost?',
+      step2CostDesc: "It's free!",
+      step2NoMediatorFound: "What to do if I can't find the name of the mediator?",
+      step2NoMediatorFoundDesc2: "He will help me find a solution with the company. It's free!",
+      step2NoMediatorFoundDesc: 'I contact the conciliator closest to my home. I look for it on the website ',
     },
     litige: {
       title: 'Apply for a refund or find a solution to your issue',
@@ -661,6 +708,7 @@ export const en = {
       cookiesTitle: 'About cookies',
       retractationLinkTitle: 'Info – Cooling-off period',
       litigeLinkTitle: 'Info – Resolving a dispute',
+      refundTelecomLinkTitle: 'Info – Resolving a telecom dispute',
       actualitesLinkTitle: 'News',
       servicePublicPlusLinkTitle: 'Services Publics +',
       suivezNous: `Follow us <br /> on social media`,
@@ -995,7 +1043,7 @@ export const en = {
     city: `City`,
     attachmentsDescAnonymous: `If you do not want the company to know your identity, <b style="color: black">remove your name</b> where it appears on your attachments.`,
     attachmentsDescAllowedFormat: (formats: string[]) => `The following formats are accepted : ${formats.join(', ')}`,
-    attachmentsDesc2: `Including an attachment <strong>GREATLY</strong> increases your chances that corrective action will be taken.<br/> You must not share private or sensitive information (e.g. bank account details or medical records).`,
+    attachmentsDesc2: `Including an attachment (for example: a contract, an invoice, exchanges with customer service...) <strong>GREATLY</strong> increases your chances that corrective action will be taken.<br/> You must not share private or sensitive information (e.g. bank account details or medical records).`,
     maxAttachmentsZero: (max: number) => `You can upload up to ${max} attachments`,
     maxAttachmentsReached: (max: number) => `${max} attachments limit reached`,
     maxAttachementExceeded: (max: number, toRemove: number) =>
@@ -1110,6 +1158,23 @@ export const en = {
       ticket: `Example of a French receipt from a purchase in a store. At the very bottom of the receipt, after the total purchase price and the VAT amount, there's a line reading "SIRET: 12345679 00001".`,
       card: `Example of a bank card receipt. Around the middle of the receipt, there's a line with "Company Name", another with "Transaction Location", and then another line that starts with zeros "00 00000" and continues with a SIRET number "123456789 001".`,
     },
+
+    clientReferenceHelperTitle: 'Client Reference Help',
+    clientReferenceHelper: 'What does my client reference correspond to?',
+    clientReferenceHelperWhere: 'Where can I find my client reference?',
+    clientReferenceHelperWhereDesc: 'You can find it on an invoice, a quote issued by the company, and also on your client area.',
+    clientReferenceHelperDesc: `A client reference corresponds to a series of characters that uniquely identifies you.<br/> Depending on the company, it can have different names:<br/> <ul> <li>Client code</li> <li>Client number</li> <li>Subscriber number</li> </ul> If you cannot find a client reference, provide your phone number or email address used by the company to contact you.<br/>`,
+    clientReferenceHelperWhereDesc0:
+      'Log in to your client area, look for your client number on the homepage or on your profile page:',
+    clientReferenceHelperImages: {
+      website: 'Example of a website containing a client reference.',
+      invoice:
+        "Example of a typical invoice. It can include client information, among which the client's reference and their contact details.",
+      reservation: 'Example of a hotel booking confirmation, where a reservation number is found.',
+    },
+    clientReferenceHelperInvoice: 'On an invoice',
+    clientReferenceHelperReservation: 'On a reservation',
+
     consumerTitle: `Your contact details allow us to authenticate your report`,
     consumerAskCodeTitle: `Enter the validation code.`,
     consumerAskCodeDesc: (email: string) => `An email has been sent to <b>${email}</b>`,

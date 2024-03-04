@@ -53,6 +53,7 @@ export function ScFooter() {
           },
           buildMenuLink(currentLang, pathName, pagesDefs.delaiRetractation.url, m.footer.retractationLinkTitle),
           buildMenuLink(currentLang, pathName, pagesDefs.litige.url, m.footer.litigeLinkTitle),
+          buildMenuLink(currentLang, pathName, pagesDefs.refundTelecom.url, m.footer.refundTelecomLinkTitle),
           {
             text: m.footer.servicePublicPlusLinkTitle,
             linkProps: {
