@@ -80,6 +80,7 @@ export const reportTagsAllowedInYaml = [
   'ProduitAlimentaire',
   'CompagnieAerienne',
   'Resiliation',
+  'TransitionEcologique',
 ] as const
 export type ReportTagAllowedInYaml = (typeof reportTagsAllowedInYaml)[number]
 
