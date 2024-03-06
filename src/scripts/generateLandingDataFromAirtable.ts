@@ -6,7 +6,7 @@ import {AirtableBase} from 'airtable/lib/airtable_base'
 import mapKeys from 'lodash/mapKeys'
 import findKey from 'lodash/findKey'
 import sortBy from 'lodash/sortBy'
-import {allVisibleAnomalies, findAnomaly} from '../anomalies/Anomalies'
+import {allAnomaliesForHomepage, allVisibleAnomalies, findAnomaly} from '../anomalies/Anomalies'
 import {LandingData} from '../landings/landingDataUtils'
 import groupBy from 'lodash/groupBy'
 import {AppLang, AppLangs} from '../i18n/localization/AppLangs'
@@ -261,9 +261,9 @@ async function readWholeTable(
   return res
 }
 
-// All anomalies should have exactly 1 semi-automatic LP
+// All anomalies from the HP should have exactly 1 semi-automatic LP
 function checkNoMissingOrDuplicateAnomalies(rows: RowTranformed[], lang: AppLang) {
-  allVisibleAnomalies(lang).forEach(anomaly => {
+  allAnomaliesForHomepage(lang).forEach(anomaly => {
     const matchingRows = rows
       .filter(_ => _.isSemiAutomatic)
       .filter(_ => _.targetedCategory.length === 1 && _.targetedCategory[0] === anomaly.category)
