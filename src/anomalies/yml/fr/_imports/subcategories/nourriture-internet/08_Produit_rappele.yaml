@@ -9,6 +9,7 @@ detailInputs:
     type: TIMESLOT
     optional: true
   - label: Site internet d'achat
+    type: TEXT
     placeholder: Adresse du site internet complet ou URL
   - label: Nom du produit / marque
     type: TEXT

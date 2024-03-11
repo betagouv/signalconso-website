@@ -1,11 +1,12 @@
-title: Durée de vie trop courte
-desc: Je trouve que la durée de vie de votre appareil est trop courte ou Je soupçonne un cas d'obsolescence programmée
+title: Commercialisation interdite de produit en plastique à usage unique
+desc: "Exemple\_: sacs plastiques, vaisselle en plastique, pailles, confettis, cotons tige en plastique, sachets de thé…"
+ccrfCode:
+  - '192'
+  - 23E
 tags:
   - TransitionEcologique
 companyKind: PRODUCT
 detailInputs:
-  - label: Date d'achat
-    type: DATE
   - label: Date du constat
     type: DATE
     defaultValue: SYSDATE
