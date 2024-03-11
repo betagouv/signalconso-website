@@ -1,5 +1,7 @@
 title: Durée de vie trop courte
-desc: Vous trouvez que la durée de vie de votre appareil est trop courte
+desc: Je trouve que la durée de vie de votre appareil est trop courte ou Je soupçonne un cas d'obsolescence programmée
+tags:
+  - TransitionEcologique
 companyKind: PRODUCT
 detailInputs:
   - label: Date d'achat
@@ -7,9 +9,6 @@ detailInputs:
   - label: Date du constat
     type: DATE
     defaultValue: SYSDATE
-  - label: Site internet d'achat
-    placeholder: Adresse du site internet complet ou URL
-    type: TEXT
   - label: Type de produit
     type: TEXT
   - label: Nom / marque / référence
