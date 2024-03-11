@@ -572,6 +572,7 @@ export const fr = {
       contact: 'Contact',
       calcRetractionDelay: 'Calculez votre délai de rétractation',
       resolutionTips: "Conseils pour résolution d'un problème individuel (litige)",
+      telecomResolutionTips: "Conseils pour résolution d'un problème individuel lié au télécom (litige)",
       obligationFibre: 'Faire un signalement pour une migration forcée vers la fibre optique',
       reportIncidentSection: "Dépôt d'un signalement",
       reportIncidentFor: 'Faire un signalement pour',

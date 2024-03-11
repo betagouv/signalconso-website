@@ -1,2 +1,5 @@
 title: Dans un magasin
+companyKind: PRODUCT
 categoryOverride: AchatMagasin
+tags:
+  - ProduitAlimentaire

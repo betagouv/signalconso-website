@@ -1,5 +1,4 @@
-title: Informations trompeuses ou fausses
-reponseconsoCode: '210'
+title: Un label ou un certificat
 detailInputs:
   - label: Date du constat (ou d'achat suivant le cas)
     type: DATE_NOT_IN_FUTURE
@@ -9,20 +8,12 @@ detailInputs:
     options:
       - Alcool (vin, spiritueux...)
       - Fruits et légumes
+      - Viande
       - Autre (à préciser)
   - label: Nom  et marque du produit
     type: TEXT
     optional: true
-  - label: À propos de quoi est-ce trompeur&#160;?
-    type: RADIO
-    options:
-      - L'origine
-      - La composition
-      - Un label ou un certificat
-      - Une promesse de résultat
-      - Une marque
-      - Autres (à préciser)
-  - label: Pourquoi trouvez-vous ça trompeur&#160;?
+  - label: Pourquoi trouvez-vous le label ou le certificat trompeur&#160;?
     type: TEXTAREA
     optional: true
 fileLabel: Photos du produit (si possible de tous les côtés de l'emballage)
