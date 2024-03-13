@@ -93,7 +93,7 @@ const Node = ({
             )}
             {isHiddenDemoCategory && <BorderedItem text={'Catégorie spéciale de démo'} icon="ri-flask-line" />}
             {isSpecialOpenFoodFactsCategory && (
-              <BorderedItem text={'Catégorie spéciale pour OpenFoodFacts'} icon="ri-focus-3-line" />
+              <BorderedItem text={'Catégorie spéciale pour partenariat'} icon="ri-focus-3-line" />
             )}
             {displayExtra &&
               tags &&
