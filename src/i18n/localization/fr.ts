@@ -1202,7 +1202,7 @@ export const fr = {
       reservation: `Exemple de confirmation de réservation d'hôtel incluant un numéro de réservation.`,
     },
     clientReferenceHelperInvoice: `Sur une facture`,
-    clientReferenceHelperReservation: `Sur une reservation`,
+    clientReferenceHelperReservation: `Sur une réservation`,
 
     consumerTitle: `Vos coordonnées nous permettent d'authentifier votre signalement`,
     consumerAskCodeTitle: `Saisissez le code de validation`,

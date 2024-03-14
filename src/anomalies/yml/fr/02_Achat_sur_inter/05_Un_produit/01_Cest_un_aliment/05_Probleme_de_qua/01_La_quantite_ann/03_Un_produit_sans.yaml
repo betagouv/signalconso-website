@@ -1,8 +1,8 @@
-title: Un produit sans emballage
-desc: "Exemple\_: verre de vin dans un café, plat au restaurant"
+title: Un produit sans emballage, directement consommé
+desc: "Exemple\_: plat"
 detailInputs:
   - label: Date du constat ou d'achat
-    type: DATE
+    type: DATE_NOT_IN_FUTURE
     defaultValue: SYSDATE
   - label: Nom du produit
     type: TEXT
