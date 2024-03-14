@@ -1,8 +1,8 @@
-title: Un produit emballé et étiqueté par le vendeur
+title: Un produit emballé et étiqueté par le magasin comme une barquette de viande
 desc: La quantité est marquée sur une étiquette collée par le commerçant
 detailInputs:
   - label: Date du constat ou d'achat
-    type: DATE
+    type: DATE_NOT_IN_FUTURE
     defaultValue: SYSDATE
   - label: Nom du produit
     type: TEXT
