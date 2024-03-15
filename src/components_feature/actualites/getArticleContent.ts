@@ -10,14 +10,16 @@ import {ArticleCodeBarres} from './ArticleCodeBarres'
 import {ArticleAmeliorationAccessibilite} from './ArticleAmeliorationAccessibilite'
 import {ArticleAchatInternet} from './ArticleAchatInternet'
 import {ArticleConseilsVacancesHiver} from './ArticleConseilsVacancesHiver'
+import {ArticleFauxSitesAdministratifs} from './ArticleFauxSitesAdministratifs'
 
 // We can't put import these JSX directly into the "newsArticlesData"
 // it causes too much import problems in the sitemap generation script
 export function getArticleContent(slug: NewsArticle['slug']) {
   switch (slug) {
+    case 'faux-sites-administratifs':
+      return ArticleFauxSitesAdministratifs
     case 'conseils-de-consommation-pour-des-vacances-dhiver-sereines':
       return ArticleConseilsVacancesHiver
-
     case 'amelioration-de-laccessibilite-de-la-plateforme-signalconso':
       return ArticleAmeliorationAccessibilite
     case 'signalement-par-code-barres':
