@@ -17,7 +17,7 @@ export default function ReportStartedAlert() {
   if (hasStoredReport && _report.reportDraft.anomaly) {
     return (
       <Animate fromBottom>
-        <div className="fixed bottom-5 right-5 bg-white max-w-[420px] p-4 border-scbluefrance border-solid border-2 shadow-black shadow-md">
+        <div className="fixed bottom-5 right-5 bg-white max-w-[420px] p-4 border-scbluefrance border-solid border-2 shadow-black shadow-md z-50">
           <h1 className="fr-h5 !mb-2">{m.continueReport}</h1>
           <ReportFlowStepperHeader
             isWebView={false}
