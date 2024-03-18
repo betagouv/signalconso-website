@@ -249,7 +249,7 @@ export const fr = {
       step3: {
         title: '3. L’entreprise et la répression des fraudes sont informées.',
         description1:
-          'Si vous avez déposé un signalement, SignalConso contacte l’entreprise afin de l’en informer. L’entreprise peut alors vous répondre et/ou s’améliorer, vous serez informés de son action par un email de SignalConso. Si vous avez choisi de transmettre vos coordonnées à l’entreprise, elle pourra vous contacter directement.',
+          'Si vous avez déposé un signalement, SignalConso contacte l’entreprise afin de l’en informer. L’entreprise peut alors vous répondre et/ou s’améliorer, vous serez informé de son action par un email de SignalConso. Si vous avez choisi de transmettre vos coordonnées à l’entreprise, elle pourra vous contacter directement.',
         description2:
           'Si vous choisissez d’interroger la DGCCRF sur vos droits, une réponse individualisée vous sera adressée par mail par un agent de la DGCCRF.',
       },
@@ -467,9 +467,8 @@ export const fr = {
       callOut: {
         associationCallOutTitle: 'Pour réaliser ces étapes, vous pouvez contacter une association de consommateurs',
         associationCallOutDescription1:
-          "Une association de consommateurs pourra vous aider à écrire les courriers de réclamation ou de mise en demeure, contacter l'entreprise directement, vous aider à saisir la justice.",
-        associationCallOutDescription2:
-          "Pour bénéficier de leur aide, vous devez payer une somme, appelée « adhésion ». Pour connaître le prix de cette adhésion, vous pouvez les contacter directement. En fonction de votre situation, certaines associations peuvent baisser le prix de l'adhésion.",
+          "Une association de consommateurs pourra vous assister dans la rédaction de courriers de réclamation ou de mise en demeure, prendre contact directement avec l'entreprise concernée ou vous guider dans le processus de recours judiciaire.",
+        associationCallOutDescription2: `L'accès à leur assistance requiert néanmoins le versement d'une somme appelée "adhésion". Pour obtenir des informations sur son montant, vous pouvez les contacter directement. En fonction de votre situation, certaines associations pourront vous proposer une adhésion à tarif réduit.`,
         associationListTitle: 'Liste des associations de consommateurs officielles : ',
       },
     },
@@ -506,7 +505,7 @@ export const fr = {
       donneesPersonnelles1:
         'Les informations recueillies dans le formulaire de SignalConso sont enregistrées dans un fichier informatisé par l’équipe SignalConso (DGCCRF) pour permettre aux professionnels de se corriger et permettre à la DGCCRF de suivre les signalements à des fins de contrôle. Le consommateur peut également s’il le souhaite transmettre une réclamation depuis le formulaire SignalConso au service RéponseConso.',
       donneesPersonnelles2:
-        'RéponseConso a pour ambition d’analyser les demandes des consommateurs effectuées par la voie électronique depuis la plateforme en ligne SignalConso, par téléphone ou par la voie postale et leur fournir une réponse adaptée et simple conforme à la mission de service public de la DGCCRF, à savoir la protection des consommateurs.',
+        'RéponseConso a pour ambition d’analyser les demandes des consommateurs effectuées par voie électronique depuis la plateforme en ligne SignalConso, par téléphone ou par voie postale et leur fournir une réponse adaptée et simple conforme à la mission de service public de la DGCCRF, à savoir la protection des consommateurs.',
       donneesPersonnelles3:
         'La base légale de ces traitements est la mission de service public de la DGCCRF., habilitée à contrôler et sanctionner les manquements relatifs au code de la consommation et au Code de Commerce (L511-3 Code Conso et L450-1 Code Commerce)',
       donneesPersonnelles4:
@@ -549,7 +548,7 @@ export const fr = {
       gestionCookies: 'Gestion des cookies',
       cookiesDeposesOptOut: 'Cookies déposés et opt-out',
       interfaceEnLigneDeposeCookie:
-        'Cette interface en ligne dépose un petit fichier texte (un « cookie ») sur votre ordinateur lorsque vous le consultez. Cela nous permet de mesurer le nombre de visites et de comprendre quelles sont les pages les plus consultées.',
+        'Cette interface en ligne dépose un petit fichier texte (un « cookie ») sur votre ordinateur lorsque vous la consultez. Cela nous permet de mesurer le nombre de visites et de comprendre quelles sont les pages les plus consultées.',
       droitIntroduireReclamation:
         "Enfin, vous disposez également du droit d'introduire une réclamation auprès de l'autorité de contrôle. L'exercice de ce droit s'effectue auprès de la CNIL:",
       commissionNationaleInformatiqueLibertes1: "Commission Nationale de l'Informatique et des Libertés",
@@ -617,7 +616,7 @@ export const fr = {
       deliveredProductsMultiplePackages: 'Produits livrés en plusieurs paquets',
       receptionDateLastItem: 'Date de réception du dernier bien, lot ou pièce reçu',
       changeOfMindTitle: "Vous avez 14 jours pour changer d'avis",
-      justificationNotRequired: "Vous n'avez pas à vous justifier auprès de l'entreprise",
+      justificationNotRequired: "Vous n'avez pas à vous justifier auprès de l'entreprise.",
       returnFormOrLetter: 'Il faut renvoyer',
       recommendedLetterWithAcknowledgment: 'par lettre recommandée avec accusé de réception',
       withinFourteenDays: 'le formulaire de rétractation ou une lettre écrite dans un délai de 14 jours',
@@ -655,7 +654,7 @@ export const fr = {
       anonymatTitle: 'Les signalements sont-ils anonymes ?',
       anonymatDescriptionPart1:
         'L’utilisateur doit s’identifier auprès de l’administration (SignalConso et DGCCRF) en donnant son nom, son prénom et son adresse email.',
-      anonymatDescriptionPart2: "Par contre, l'utilisateur a la possibilité de rester anonyme vis-à-vis de l'entreprise.",
+      anonymatDescriptionPart2: "Il a néanmoins la possibilité de rester anonyme vis-à-vis de l'entreprise.",
       suiviDossierTitle: 'Existe-t-il un suivi de dossier ?',
       suiviDossierDescription:
         'SignalConso ne propose pas de suivi personnalisé des dossiers. Les signalements sont traités de manière collective.',
@@ -1055,7 +1054,7 @@ export const fr = {
     invalidUrlPattern: `Veuillez saisir une adresse de site internet (exemple : https://www.site.fr)`,
     noResult: 'Aucun résultat',
     noAttachment: 'Aucune pièce jointe.',
-    addAttachmentFile: 'Ajouter une pièces jointe',
+    addAttachmentFile: 'Ajouter une pièce jointe',
     attachments: `Pièces jointes :`,
     backToHome: `Revenir à l'accueil`,
     city: `Ville`,

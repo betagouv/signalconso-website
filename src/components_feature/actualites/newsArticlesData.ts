@@ -5,6 +5,13 @@ export type NewsArticle = (typeof initialNewsArticlesData)[number]
 // This is the display order. Keep the most recents at the start of the array
 export const initialNewsArticlesData = [
   {
+    date: '2024-03-18',
+    lang: 'fr',
+    slug: 'faux-sites-administratifs',
+    title: `Faux sites administratifs, attention aux arnaques!`,
+    excerpt: `La plupart des démarches administratives sont gratuites, pourtant de nombreux sites les font payer de manière frauduleuse.`,
+  },
+  {
     date: '2024-02-05',
     lang: 'fr',
     slug: 'conseils-de-consommation-pour-des-vacances-dhiver-sereines',

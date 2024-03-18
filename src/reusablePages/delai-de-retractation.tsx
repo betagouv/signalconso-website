@@ -70,9 +70,9 @@ export const DelaiDeRetractation = ({params}: any) => {
             {m.delaiRetractation.keepDocumentation2}
           </p>
           <p>
-            {m.delaiRetractation.ifSellerDidNotInform}.
+            {m.delaiRetractation.ifSellerDidNotInform}
             <br />
-            {m.delaiRetractation.extensionOfTwelveMonths}.
+            {m.delaiRetractation.extensionOfTwelveMonths}
           </p>
         </section>
       </ContentPageContainer>
