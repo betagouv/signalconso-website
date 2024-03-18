@@ -960,7 +960,7 @@ export const fr = {
     step_confirm: `Confirmation`,
     timeFromTo: (from: number, to: number) => `De ${from}h à ${to}h`,
     detailsTextAreaWillBeTransmitted: `Les informations ci-dessous seront <b>lues par l'entreprise</b>. La répression des fraudes pourra également les consulter.`,
-    detailsTextAreaMayBeTransmitted: `Les informations ci-dessous seront <b>transmises à l'entreprise</b> si celle-ci est identifiée par nos services. La répression des fraudes pourra également les consulter.`,
+    detailsTextAreaMayBeTransmitted: `Comme vous n’avez pas pu identifier l’entreprise signalée, votre signalement ne pourra lui être transmis que si elle est identifiable par Signal Conso et située en France. La répression des fraudes pourra quant à elle consulter les informations ci-dessous.`,
     detailsTextAreaCannotBeTransmitted: `L'entreprise étant située à l'étranger, les informations ci-dessous ne lui seront pas transmises et seront lues <b>uniquement par la répression des fraudes.</b>`,
     detailsTextAreaTransmittableAnonymous: ` Si vous ne souhaitez pas que l'entreprise connaisse votre identité, <b>ne citez rien de personnel</b>.`,
     detailsTextAreaNotTransmittable: `Les informations ci-dessous seront lues <b>uniquement par la répression des fraudes.</b>`,
