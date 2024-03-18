@@ -13,15 +13,16 @@ import {ScCheckbox} from '../../../components_simple/formInputs/ScCheckbox'
 import {ScRadioButtons} from '../../../components_simple/formInputs/ScRadioButtons'
 import {getOptionsFromInput, getPlaceholderFromInput} from './DetailInputsUtils'
 import {SpecifyFormUtils} from './Details'
+import {FriendlyHelpText} from "@/components_simple/FriendlyHelpText";
 
 export function DetailsInputRenderByType({
-  register,
-  control,
-  inputIndex,
-  input,
-  errors,
-  watch,
-}: {
+                                           register,
+                                           control,
+                                           inputIndex,
+                                           input,
+                                           errors,
+                                           watch,
+                                         }: {
   // we currently have a mix of controlled and uncontrolled components here
   // so we use either register or control
   register: UseFormRegister<DetailInputValues2>
@@ -33,7 +34,7 @@ export function DetailsInputRenderByType({
 }) {
   const {m} = useI18n()
   const name = inputIndex.toString()
-  const label = <span dangerouslySetInnerHTML={{__html: input.label}} />
+  const label = <span dangerouslySetInnerHTML={{__html: input.label}}/>
   const required = !input.optional
   const baseRules = {required: {value: required, message: m.required + ' *'}}
   const specifyInputRules = {required: {value: true, message: m.required + ' *'}}
@@ -41,18 +42,18 @@ export function DetailsInputRenderByType({
   const errorMessage = errors[inputIndex]?.message
   const hasErrors = !!errors[inputIndex]
   // for most input types, the value can only be a string
-  const unsafeRegisterForStringsOnly = register as UseFormRegister<{[key: string]: string}>
-  const unsafeControlForStringsOnly = control as Control<{[key: string]: string}>
+  const unsafeRegisterForStringsOnly = register as UseFormRegister<{ [key: string]: string }>
+  const unsafeControlForStringsOnly = control as Control<{ [key: string]: string }>
   // for checkboxes it can be only string[]
-  const unsafeRegisterForArrayStringsOnly = register as UseFormRegister<{[key: string]: string[]}>
-  const unsafeControlForArrayStringsOnly = control as Control<{[key: string]: string[]}>
+  const unsafeRegisterForArrayStringsOnly = register as UseFormRegister<{ [key: string]: string[] }>
+  const unsafeControlForArrayStringsOnly = control as Control<{ [key: string]: string[] }>
   const fieldLabelProps = {
     label,
     required,
     className: 'mb-4',
   }
 
-  const renderDateVariant = ({max}: {max: string}) => {
+  const renderDateVariant = ({max}: { max: string }) => {
     const min = '1970-01-01'
     return (
       <ScDatepicker
@@ -116,7 +117,7 @@ export function DetailsInputRenderByType({
                 getOptionsFromInput(input)?.map((option, optionIndex) => {
                   const specifyName = SpecifyFormUtils.getInputName(inputIndex, optionIndex)
                   return {
-                    label: <span dangerouslySetInnerHTML={{__html: option}} />,
+                    label: <span dangerouslySetInnerHTML={{__html: option}}/>,
                     value: option,
                     specify:
                       field.value === option && SpecifyFormUtils.hasSpecifyKeyword(option) ? (
@@ -152,7 +153,7 @@ export function DetailsInputRenderByType({
                 getOptionsFromInput(input)?.map((option, optionIndex) => {
                   const specifyName = SpecifyFormUtils.getInputName(inputIndex, optionIndex)
                   return {
-                    label: <span dangerouslySetInnerHTML={{__html: option}} />,
+                    label: <span dangerouslySetInnerHTML={{__html: option}}/>,
                     value: option,
                     specify:
                       (field.value as string[] | undefined)?.includes(option) && SpecifyFormUtils.hasSpecifyKeyword(option) ? (
@@ -184,23 +185,26 @@ export function DetailsInputRenderByType({
     case DetailInputType.TEXTAREA:
       const watchValue: string | string[] | undefined = watch('' + inputIndex)
       return (
-        <ScTextarea
-          label={fieldLabelProps.label}
-          {...register(name, {...baseRules, ...maxLengthRule})}
-          helperText={
-            errors[inputIndex]?.type === 'required' ? (
-              m.required
-            ) : (
-              <span>
+          <ScTextarea
+            label={fieldLabelProps.label}
+            desc={<p className="mb-0" dangerouslySetInnerHTML={{__html: m.detailsTextAreaDescription}}/>}
+            {...register(name, {...baseRules, ...maxLengthRule})}
+            helperText={
+              errors[inputIndex]?.type === 'required' ? (
+                m.required
+              ) : (
+
+                <span>
                 {watchValue?.length ?? 0} / {appConfig.maxDescriptionInputLength}
-                <span> {m.charactersTyped}</span>
+                  <span> {m.charactersTyped}</span>
               </span>
-            )
-          }
-          error={hasErrors}
-          placeholder={getPlaceholderFromInput(input)}
-          required={required}
-        />
+
+              )
+            }
+            error={hasErrors}
+            placeholder={getPlaceholderFromInput(input)}
+            required={required}
+          />
       )
   }
 }

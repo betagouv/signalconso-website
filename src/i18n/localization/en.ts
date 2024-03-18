@@ -953,6 +953,7 @@ export const en = {
     detailsTextAreaCannotBeTransmitted: `As the company is located abroad, the information below will not be transmitted to it and will be read <b>only by Fraud Control.</b>.`,
     detailsTextAreaTransmittableAnonymous: ` If you do not want the company to know your identity, <b>do not mention anything personal</b>.`,
     detailsTextAreaNotTransmittable: `The informations you write below will be read <b>by Fraud Control only.</b>`,
+    detailsTextAreaDescription: `To facilitate processing, <b>provide detailed information</b> about your request and <b>include all the information</b> you have in your possession.`,
     detailsTextAreaEmployeeConsumer: `No information will be shared with your employer.`,
     detailsAlertProduitDangereux: {
       title: `Emergency numbers`,

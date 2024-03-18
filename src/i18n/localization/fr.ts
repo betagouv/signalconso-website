@@ -963,6 +963,7 @@ export const fr = {
     detailsTextAreaCannotBeTransmitted: `L'entreprise étant située à l'étranger, les informations ci-dessous ne lui seront pas transmises et seront lues <b>uniquement par la répression des fraudes.</b>`,
     detailsTextAreaTransmittableAnonymous: ` Si vous ne souhaitez pas que l'entreprise connaisse votre identité, <b>ne citez rien de personnel</b>.`,
     detailsTextAreaNotTransmittable: `Les informations ci-dessous seront lues <b>uniquement par la répression des fraudes.</b>`,
+    detailsTextAreaDescription: `Pour faciliter le traitement, <b>détaillez bien</b> votre demande et <b>mettez toutes les informations</b> que vous avez en votre possession.`,
     detailsTextAreaEmployeeConsumer: `Rien ne sera communiqué à votre employeur.`,
     detailsAlertProduitDangereux: {
       title: `Numéros d'urgence`,
