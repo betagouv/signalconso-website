@@ -7,10 +7,10 @@ export function ArticleFauxSitesAdministratifs() {
   return (
     <div>
       <div className="flex flex-col md:flex-row gap-5 mb-5">
-        <div className="md:w-1/3">
+        <div className="w-full sm:w-1/2 md:w-1/2">
           <Image src={imgFauxSites} alt="src/img/actualites/ArticleFauxSitesAdministratifs.png" width={300} height={300} />
         </div>
-        <div className="md:w-2/3">
+        <div>
           <p>
             <strong>
               La plupart des démarches administratives sont gratuites, pourtant de nombreux sites les font payer de manière
