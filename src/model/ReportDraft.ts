@@ -1,4 +1,4 @@
-import {CompanyKinds, ReportTag, SocialNetworks, Subcategory, Ters, Trains} from '@/anomalies/Anomaly'
+import {CompanyKinds, NightTrains, ReportTag, SocialNetworks, Subcategory, Ters, Trains} from '@/anomalies/Anomaly'
 import uniq from 'lodash/uniq'
 import {AppLang} from '../i18n/localization/AppLangs'
 import {CompanyDraft} from './Company'
@@ -44,6 +44,7 @@ export interface ReportDraft {
 export interface Train {
   train: Trains
   ter?: Ters
+  nightTrain?: NightTrains
 }
 
 export interface Influencer {

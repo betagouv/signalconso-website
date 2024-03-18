@@ -335,15 +335,18 @@ export const _Company = ({draft, onUpdateReportDraft}: CompanyWithRequiredProps)
         {
           ['TRAIN']: () => (
             <CompanyByTrain
-              onSubmit={(train, ter) => {
+              onSubmit={(train, ter, nightTrain) => {
                 onUpdateReportDraft({
                   train: {
                     train,
                     ter,
+                    nightTrain,
                   },
                 })
               }}
-            />
+            >
+              {() => commonTree()}
+            </CompanyByTrain>
           ),
           ['PRODUCT']: () => barcodeTree(),
           ['SOCIAL']: () => (
