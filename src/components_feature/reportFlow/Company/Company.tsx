@@ -60,15 +60,20 @@ export function CompanyIdentificationDispatch({draft, updateReport}: CommonProps
     case 'TRAIN':
       return (
         <CompanyByTrain
-          onSubmit={(train, ter) => {
+          onSubmit={(train, ter, nightTrain) => {
             updateReport({
               train: {
                 train,
                 ter,
+                nightTrain,
               },
             })
           }}
-        />
+        >
+          {() => (
+            <CommonTree {...{draft, updateReport}} phoneOrWebsite={undefined} barcodeProduct={undefined} result={undefined} />
+          )}
+        </CompanyByTrain>
       )
     case 'PRODUCT':
       return <BarcodeTree {...{draft, updateReport}} />

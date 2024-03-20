@@ -769,7 +769,7 @@ export const en = {
       OUIGO: '',
       TER: '',
       TRANSILIEN: '',
-      EUROSTAR: 'including Thalys',
+      EUROSTAR: 'including Thalys, with TGV INOUI Italy, TGV INOUI Spain and DB Sncf Voyages in cooperation',
       TGV_LYRIA: '',
       TGV_ITALIE: '',
       TRENITALIA: '',
@@ -778,6 +778,7 @@ export const en = {
       TRAIN_DE_NUIT: '',
     },
     Ter: {
+      SUD: 'TER SUD',
       AUVERGNE_RHONE_ALPES: 'TER AUVERGNE-RHÔNE-ALPES',
       BOURGOGNE_FRANCHE_COMTE: 'TER BOURGOGNE-FRANCHE-COMTE',
       BRETAGNE: 'TER BRETAGNE',
@@ -789,6 +790,10 @@ export const en = {
       OCCITANIE: 'TER OCCITANIE',
       PACA: 'TER PROVENCE-ALPES-CÔTE D’AZUR',
       PAYS_DE_LA_LOIRE: 'TER PAYS DE LA LOIRE',
+    },
+    NightTrain: {
+      INTERCITE_DE_NUIT: 'Intercité de nuit',
+      AUTRE_TRAIN_DE_NUIT: 'Autre train de nuit',
     },
     trainTaken: 'Which train did you take, or did you want to take?',
     terRegion: 'Region concerned by your TER train',
