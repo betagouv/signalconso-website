@@ -131,6 +131,7 @@ export const trains = [
 export type Trains = (typeof trains)[number]
 
 export const ters = [
+  'SUD',
   'AUVERGNE_RHONE_ALPES',
   'BOURGOGNE_FRANCHE_COMTE',
   'BRETAGNE',
@@ -144,6 +145,9 @@ export const ters = [
   'PAYS_DE_LA_LOIRE',
 ] as const
 export type Ters = (typeof ters)[number]
+
+export const nightTrains = ['INTERCITE_DE_NUIT', 'AUTRE_TRAIN_DE_NUIT'] as const
+export type NightTrains = (typeof nightTrains)[number]
 
 export interface InfoWall {
   title?: string
