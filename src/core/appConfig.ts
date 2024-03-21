@@ -41,7 +41,7 @@ export const appConfig = {
   sentry_traceRate: readInt(process.env.NEXT_PUBLIC_SENTRY_TRACE_RATE, 1),
   enableMatomo: readBool(process.env.NEXT_PUBLIC_ENABLE_MATOMO),
   enableEularian: readBool(process.env.NEXT_PUBLIC_ENABLE_EULARIAN),
-  maxDescriptionInputLength: 1000,
+  maxDescriptionInputLength: 5000,
   infoBanner: process.env.NEXT_PUBLIC_INFO_BANNER,
   infoBannerSeverity: readSeverity(process.env.NEXT_PUBLIC_INFO_BANNER_SEVERITY) ?? 'warning',
   dummyEmailDomain: ['@yopmail.com'],

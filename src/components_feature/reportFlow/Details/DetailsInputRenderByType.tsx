@@ -13,6 +13,7 @@ import {ScCheckbox} from '../../../components_simple/formInputs/ScCheckbox'
 import {ScRadioButtons} from '../../../components_simple/formInputs/ScRadioButtons'
 import {getOptionsFromInput, getPlaceholderFromInput} from './DetailInputsUtils'
 import {SpecifyFormUtils} from './Details'
+import {FriendlyHelpText} from '@/components_simple/FriendlyHelpText'
 
 export function DetailsInputRenderByType({
   register,
@@ -186,6 +187,7 @@ export function DetailsInputRenderByType({
       return (
         <ScTextarea
           label={fieldLabelProps.label}
+          desc={<p className="mb-0" dangerouslySetInnerHTML={{__html: m.detailsTextAreaDescription}} />}
           {...register(name, {...baseRules, ...maxLengthRule})}
           helperText={
             errors[inputIndex]?.type === 'required' ? (

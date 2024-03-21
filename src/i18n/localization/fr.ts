@@ -778,7 +778,7 @@ export const fr = {
       OUIGO: '',
       TER: '',
       TRANSILIEN: '',
-      EUROSTAR: 'y compris Thalys',
+      EUROSTAR: 'y compris Thalys, avec TGV INOUI Italie, TGV INOUI Espagne et DB Sncf Voyages en coopération',
       TGV_LYRIA: '',
       TGV_ITALIE: '',
       TRENITALIA: '',
@@ -787,6 +787,7 @@ export const fr = {
       TRAIN_DE_NUIT: '',
     },
     Ter: {
+      SUD: 'TER SUD',
       AUVERGNE_RHONE_ALPES: 'TER AUVERGNE-RHÔNE-ALPES',
       BOURGOGNE_FRANCHE_COMTE: 'TER BOURGOGNE-FRANCHE-COMTE',
       BRETAGNE: 'TER BRETAGNE',
@@ -798,6 +799,10 @@ export const fr = {
       OCCITANIE: 'TER OCCITANIE',
       PACA: 'TER PROVENCE-ALPES-CÔTE D’AZUR',
       PAYS_DE_LA_LOIRE: 'TER PAYS DE LA LOIRE',
+    },
+    NightTrain: {
+      INTERCITE_DE_NUIT: 'Intercité de nuit',
+      AUTRE_TRAIN_DE_NUIT: 'Autre train de nuit',
     },
     trainTaken: 'Quel train avez-vous pris ou souhaitiez-vous prendre ?',
     terRegion: 'Région concernée par votre TER',
@@ -963,6 +968,7 @@ export const fr = {
     detailsTextAreaCannotBeTransmitted: `L'entreprise étant située à l'étranger, les informations ci-dessous ne lui seront pas transmises et seront lues <b>uniquement par la répression des fraudes.</b>`,
     detailsTextAreaTransmittableAnonymous: ` Si vous ne souhaitez pas que l'entreprise connaisse votre identité, <b>ne citez rien de personnel</b>.`,
     detailsTextAreaNotTransmittable: `Les informations ci-dessous seront lues <b>uniquement par la répression des fraudes.</b>`,
+    detailsTextAreaDescription: `Pour faciliter le traitement, <b>détaillez bien</b> votre demande et <b>mettez toutes les informations</b> que vous avez en votre possession.`,
     detailsTextAreaEmployeeConsumer: `Rien ne sera communiqué à votre employeur.`,
     detailsAlertProduitDangereux: {
       title: `Numéros d'urgence`,
