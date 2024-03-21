@@ -3,6 +3,7 @@ title: >-
 desc: Apparence trompeuse sur la quantitéou suremballage inutile
 tags:
   - TransitionEcologique
+  - ReponseConso
 detailInputs:
   - label: Type de produit
     type: TEXT

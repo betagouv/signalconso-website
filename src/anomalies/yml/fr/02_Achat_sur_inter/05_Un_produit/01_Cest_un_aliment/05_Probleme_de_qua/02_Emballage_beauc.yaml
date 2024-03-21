@@ -7,6 +7,7 @@ ccrfCode:
   - 23B
 tags:
   - TransitionEcologique
+  - ReponseConso
 detailInputs:
   - label: Type de produit
     type: TEXT
