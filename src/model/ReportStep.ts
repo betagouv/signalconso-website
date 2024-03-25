@@ -63,7 +63,8 @@ function isBuildingStepDone(r: Partial<ReportDraft2>, step: ReportStep) {
         !!r.companyDraft?.address.postalCode ||
         r.companyDraft?.address.country ||
         !!r.influencer ||
-        !!r.train
+        !!r.train ||
+        !!r.station
       )
     case 'BuildingDetails':
       return !!r.details

@@ -1,6 +1,7 @@
 import {Combobox} from '@headlessui/react'
 import {useI18n} from '@/i18n/I18n'
 import {ChangeEvent, ReactNode, useId} from 'react'
+import Button from '@codegouvfr/react-dsfr/Button'
 
 // Based on headless-ui, with rendering similar to a DSFR input
 // Note : we don't pass ref and value, not sure why but it seems to work
@@ -22,6 +23,8 @@ export function ScAutoComplete<Item>({
   onBlur,
   error,
   helperText,
+  disabled,
+  editable,
 }: {
   label: string
   desc?: string
@@ -39,6 +42,11 @@ export function ScAutoComplete<Item>({
   name: string
   error: boolean
   helperText?: string
+  disabled?: boolean
+  editable?: {
+    onEdit: () => void
+    label: string
+  }
 }) {
   const inputId = useId()
   const helperTextId = useId()
@@ -50,24 +58,40 @@ export function ScAutoComplete<Item>({
         <Combobox.Label htmlFor={inputId} className="fr-label">
           {label} *{desc && <span className="fr-hint-text">{desc}</span>}
         </Combobox.Label>
-        <div className="relative">
-          <Combobox.Input<Item>
-            onChange={(event: ChangeEvent<HTMLInputElement>) => {
-              setQuery(event.target.value)
-            }}
-            onBlur={onBlur}
-            displayValue={inputDisplayValue}
-            className={`fr-input ${error ? 'fr-input--error' : ''}`}
-            autoComplete="country-name"
-            id={inputId}
-            aria-required
-            aria-describedby={helperTextId}
-            {...(error ? {'aria-invalid': true} : null)}
-            placeholder={placeholder}
-          />
-          <Combobox.Button className="absolute top-0 bottom-[2px] right-0 flex items-center pr-2">
-            <span className="ri-arrow-down-s-line h-5 w-5" aria-hidden={true} />
-          </Combobox.Button>
+        <div className="flex w-full">
+          <div className="relative w-full">
+            <Combobox.Input<Item>
+              onChange={(event: ChangeEvent<HTMLInputElement>) => {
+                setQuery(event.target.value)
+              }}
+              onBlur={onBlur}
+              readOnly={disabled}
+              displayValue={inputDisplayValue}
+              className={`fr-input ${error ? 'fr-input--error' : ''}`}
+              autoComplete="country-name"
+              id={inputId}
+              aria-required
+              aria-describedby={helperTextId}
+              {...(error ? {'aria-invalid': true} : null)}
+              placeholder={placeholder}
+            />
+            {!disabled && (
+              <Combobox.Button className="absolute top-0 bottom-[2px] right-0 flex items-center pr-2">
+                <span className="ri-arrow-down-s-line h-5 w-5" aria-hidden={true} />
+              </Combobox.Button>
+            )}
+          </div>
+          {editable && (
+            <Button
+              iconId="fr-icon-edit-line"
+              onClick={() => {
+                document.getElementById(inputId)?.focus()
+                editable.onEdit()
+              }}
+              priority="tertiary"
+              title={editable.label}
+            />
+          )}
         </div>
       </div>
       <div className="relative">

@@ -797,6 +797,8 @@ export const en = {
     },
     trainTaken: 'Which train did you take, or did you want to take?',
     terRegion: 'Region concerned by your TER train',
+    whichStation: 'Which station is concerned by your report?',
+    dontKnowStation: "I don't find my station",
     homepage: {
       signalconsoCatchWord: ` Report an issue to a company,<br/>find out about your rights with France's Fraud Control.  `,
       step1: 'Have you run into a problem with a French business ?',

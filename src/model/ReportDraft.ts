@@ -41,6 +41,7 @@ export interface ReportDraft {
   lang: AppLang
   barcodeProduct?: BarcodeProduct
   train: Train
+  station: string
   openFf: OpenFfResult | undefined
 }
 

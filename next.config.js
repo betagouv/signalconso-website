@@ -65,7 +65,7 @@ const redirects = [
 const ContentSecurityPolicy = [
   `default-src 'self' *.aticdn.net *.data.gouv.fr *.beta.gouv.fr;`,
   `script-src 'self' *.signal.conso.gouv.fr *.data.gouv.fr *.beta.gouv.fr *.twitter.com 'unsafe-inline' 'unsafe-eval';`,
-  `connect-src 'self' *.sentry.io *.data.gouv.fr *.beta.gouv.fr ${process.env.NEXT_PUBLIC_API_BASE_URL} ${process.env.NEXT_PUBLIC_COMPANY_API_BASE_URL} ${process.env.NEXT_PUBLIC_SIRET_EXTRACTOR_BASE_URL};`,
+  `connect-src 'self' *.sentry.io *.data.gouv.fr *.beta.gouv.fr ressources.data.sncf.com ${process.env.NEXT_PUBLIC_API_BASE_URL} ${process.env.NEXT_PUBLIC_COMPANY_API_BASE_URL} ${process.env.NEXT_PUBLIC_SIRET_EXTRACTOR_BASE_URL};`,
   `worker-src \'self\' ${process.env.NEXT_PUBLIC_API_BASE_URL} ${process.env.NEXT_PUBLIC_COMPANY_API_BASE_URL} ${process.env.NEXT_PUBLIC_SIRET_EXTRACTOR_BASE_URL} blob:;`,
   `img-src 'self' data: ${process.env.NEXT_PUBLIC_APP_BASE_URL} ${process.env.NEXT_PUBLIC_API_BASE_URL} *.cellar-c2.services.clever-cloud.com *.twitter.com *.xiti.com *.beta.gouv.fr;`,
   `frame-src *.data.gouv.fr/ *.beta.gouv.fr *.twitter.com https://www.youtube-nocookie.com https://metabase-anon-signalconso.cleverapps.io/;`,

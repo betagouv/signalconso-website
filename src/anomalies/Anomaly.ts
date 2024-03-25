@@ -98,6 +98,7 @@ export const companyKinds = [
   'PRODUCT',
   'PRODUCT_OPENFF',
   'TRAIN',
+  'STATION',
 ] as const
 export type CompanyKinds = (typeof companyKinds)[number]
 export type SpecificWebsiteCompanyKinds = Extract<CompanyKinds, 'MERCHANT_WEBSITE' | 'TRANSPORTER_WEBSITE'>
