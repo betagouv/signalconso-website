@@ -806,6 +806,8 @@ export const fr = {
     },
     trainTaken: 'Quel train avez-vous pris ou souhaitiez-vous prendre ?',
     terRegion: 'Région concernée par votre TER',
+    whichStation: 'Quelle gare est concernée par votre signalement ?',
+    dontKnowStation: 'Je ne trouve pas ma gare',
     homepage: {
       signalconsoCatchWord: ` Signalez un problème à l’entreprise,<br/>renseignez-vous sur vos droits avec la répression des fraudes&nbsp;! `,
       step1: 'Vous avez rencontré un problème avec une entreprise&#160;?',
