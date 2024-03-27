@@ -41,6 +41,10 @@ export const CompanyAskForeignDetails = ({onSubmit, companyKind}: Props) => {
     <Animate>
       <div id="CompanyAskForeignDetails">
         <h2 className="!text-lg">{m.couldYouPrecise}</h2>
+        <ScAlert type="info">
+          <p dangerouslySetInnerHTML={{__html: m.reportAbroadWarning}} />
+          <p className="mb-0" dangerouslySetInnerHTML={{__html: m.reportAbroadAdvice}} />
+        </ScAlert>
         <RequiredFieldsLegend />
         <form onSubmit={handleSubmit(onSubmit)}>
           <div>

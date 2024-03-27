@@ -1102,6 +1102,10 @@ export const fr = {
     cantIdentifyLocationCompany: `Comme vous ne pouvez pas identifier l'entreprise qui est venue à votre domicile, merci de préciser votre localisation afin que nos services puissent tenter de rapprocher ces informations avec celles qu'auraient éventuellement déposées vos voisins, ayant été en contact avec la même entreprise que vous`,
     cantIdentifyPhoneCompany: `Comme vous ne pouvez pas identifier l'entreprise que vous avez eu par téléphone, merci de préciser votre localisation afin que nos services puissent tenter de rapprocher ces informations avec celles qu'auraient éventuellement déposées vos voisins, ayant été en contact avec la même entreprise que vous`,
     companyIdentityLabel: `Numéro SIRET ou SIREN ou RCS de l'entreprise`,
+    reportAbroadWarning:
+      "Vous tentez de signaler une entreprise située à l'étranger. Votre signalement ne pourra pas lui être transmis. <strong>Cependant, nous vous conseillons vivement de soumettre votre signalement pour orienter les enquêtes des agents de la DGCCRF.</strong>",
+    reportAbroadAdvice:
+      "Afin d’aider les autorités internationales à lutter contre la fraude, vous pouvez :<ul><li>Si l'entreprise est située dans l’UE, déposer votre litige sur ce site <a href='https://www.europe-consommateurs.eu/fr/accueil/' target='_blank' rel='noopener noreferrer'>europe-consommateurs.eu</a></li><li>Si l'entreprise est située hors UE, déposer votre litige sur ce site <a href='https://www.econsumer.gov/fr' target='_blank' rel='noopener noreferrer'>econsumer.gov</a></li></ul>",
     companyIdentityPlaceholder: `Ex: 83350861700010`,
     barcodeProduct: 'Produit',
     barcodeCompany: 'Entreprise',
