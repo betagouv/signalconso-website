@@ -90,6 +90,11 @@ export class ReportDraft {
     return !r.influencer && !r.companyDraft?.siret && !r.companyDraft?.address.postalCode && r.companyDraft?.address.country
   }
 
+  // SIRET existant mais adresse postale à l'étranger
+  static readonly foreignCompany = (r: Pick<ReportDraft, 'influencer' | 'companyDraft'>) => {
+    return !r.influencer && r.companyDraft?.siret && r.companyDraft?.address.country && r.companyDraft?.address.country !== 'FR'
+  }
+
   static readonly transmissionStatus = (
     r: Pick<ReportDraft, 'employeeConsumer' | 'consumerWish' | 'influencer' | 'companyDraft'>,
   ): TransmissionStatus => {
@@ -97,7 +102,7 @@ export class ReportDraft {
       return 'NOT_TRANSMITTABLE'
     } else if (ReportDraft.mayBeTransmittedLater(r)) {
       return 'MAY_BE_TRANSMITTED'
-    } else if (ReportDraft.cannotBeTransmitted(r)) {
+    } else if (ReportDraft.cannotBeTransmitted(r) || ReportDraft.foreignCompany(r)) {
       return 'CANNOT_BE_TRANSMITTED'
     } else {
       return 'WILL_BE_TRANSMITTED'
