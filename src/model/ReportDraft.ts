@@ -187,6 +187,8 @@ export class ReportDraft {
       influencer: draft.influencer ? ReportDraft.toApiInfluencer(draft.influencer) : undefined,
       lang: draft.lang,
       barcodeProductId: draft.barcodeProduct?.id,
+      train: draft.train,
+      station: draft.station,
       metadata,
     }
   }
