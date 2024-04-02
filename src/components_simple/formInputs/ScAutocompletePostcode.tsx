@@ -1,26 +1,12 @@
 import {useQuery} from '@tanstack/react-query'
 import {useApiClients} from '@/context/ApiClientsContext'
 import {useI18n} from '@/i18n/I18n'
-import {useEffect, useState} from 'react'
-import {useThrottle} from '@/utils/useThrottle'
 import {ScAutoComplete} from './ScAutocomplete'
+import {useStateWithThrottledCopy} from '@/hooks/useStateWithThrottledCopy'
 
 type PostcodeOption = {
   postalCode: string
   city?: string
-}
-
-function useStateWithThrottledCopy<A>(defaultValue: A): [A, React.Dispatch<React.SetStateAction<A>>, A] {
-  const [state, setState] = useState(defaultValue)
-  const [throttledCopy, setThrottledCopy] = useThrottle(state, 5)
-  useEffect(() => {
-    // always copy the first state into the second one
-    // But since it's throttled, it will delay changes a bit
-    setThrottledCopy(state)
-  }, [state])
-  // Return a normal version (to be used when displaying)
-  // And a throttled copy (doesn't update as often, but it's useful to throttle API calls based on it)
-  return [state, setState, throttledCopy]
 }
 
 function isValidPostalcode(i: string) {

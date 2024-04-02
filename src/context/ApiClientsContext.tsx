@@ -4,11 +4,13 @@ import {CompanyPublicClient} from '../clients/CompanyPublicClient'
 import {SignalConsoApiClient} from '../clients/SignalConsoApiClient'
 import {AdresseApiClient} from '../clients/AdresseApiClient'
 import {SiretExtractorClient} from '../clients/SiretExtractorClient'
+import {StationApiClient} from '@/clients/StationApiClient'
 
 interface ApiClients {
   signalConsoApiClient: SignalConsoApiClient
   companyApiClient: CompanyPublicClient
   adresseApiClient: AdresseApiClient
+  stationApiClient: StationApiClient
   siretExtractorClient: SiretExtractorClient
 }
 
@@ -17,6 +19,7 @@ const ApiClientsContext = React.createContext({} as ApiClients)
 const signalConsoApiClient = new SignalConsoApiClient()
 const companyApiClient = new CompanyPublicClient()
 const adresseApiClient = new AdresseApiClient()
+const stationApiClient = new StationApiClient()
 const siretExtractorClient = new SiretExtractorClient()
 
 export const ApiClientsProvider = ({
@@ -27,6 +30,7 @@ export const ApiClientsProvider = ({
     signalConsoApiClient?: SignalConsoApiClient
     companyApiClient?: CompanyPublicClient
     adresseApiClient?: AdresseApiClient
+    stationApiClient?: StationApiClient
     siretExtractorClient?: SiretExtractorClient
   }
   children: ReactNode
@@ -37,6 +41,7 @@ export const ApiClientsProvider = ({
         signalConsoApiClient: overrideForTests?.signalConsoApiClient ?? signalConsoApiClient,
         companyApiClient: overrideForTests?.companyApiClient ?? companyApiClient,
         adresseApiClient: overrideForTests?.adresseApiClient ?? adresseApiClient,
+        stationApiClient: overrideForTests?.stationApiClient ?? stationApiClient,
         siretExtractorClient: overrideForTests?.siretExtractorClient ?? siretExtractorClient,
       }}
     >

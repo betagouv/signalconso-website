@@ -53,6 +53,7 @@ const companyTestCases = [
   'company_location',
   'company_social',
   'company_product',
+  'company_station',
   'company_product_openff_product_found_but_no_company',
   'company_product_openff_product_not_found',
 ] as const
@@ -106,6 +107,8 @@ const Playground = () => {
         return <PlaygroundCompany companyKind="SOCIAL" />
       case 'company_product':
         return <PlaygroundCompany companyKind="PRODUCT" />
+      case 'company_station':
+        return <PlaygroundCompany companyKind="STATION" />
       case 'company_product_openff_product_not_found':
         return (
           <PlaygroundCompany
