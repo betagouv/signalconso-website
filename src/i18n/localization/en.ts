@@ -797,6 +797,12 @@ export const en = {
     trainTaken: 'Which train did you take, or did you want to take?',
     terRegion: 'Region concerned by your TER train',
     whichStation: 'Which station is concerned by your report?',
+    foreignRailwayCompany: {
+      DE: `Unfortunately, this is a German railway company. Please contact the relevant German authorities.`,
+      ES: `Unfortunately, this is a Spanish railway company. Please contact <a href='https://www.transportes.gob.es/' target='_blank' rel='noopener noreferrer'>the relevant Spanish authorities.</a>`,
+      GB: `Unfortunately, this is a British railway company. Please contact the relevant English authorities.`,
+      AT: `Unfortunately, this is an Austrian railway company. Please contact <a href='https://www.apf.gv.at/en/agency-for-passenger-rights.html' target='_blank' rel='noopener noreferrer'>the relevant Austrian authorities.</a>`,
+    },
     foreignTrainCompany: (countryName: string) =>
       `Unfortunately, this is a foreign railway company (${countryName}). Please contact customer service.`,
     dontKnowStation: "I don't find my station",

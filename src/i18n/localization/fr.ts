@@ -806,8 +806,12 @@ export const fr = {
     trainTaken: 'Quel train avez-vous pris ou souhaitiez-vous prendre ?',
     terRegion: 'Région concernée par votre TER',
     whichStation: 'Quelle gare est concernée par votre signalement ?',
-    foreignRailwayCompany: (countryName: string) =>
-      `Malheureusement, cette compagnie ferroviaire est une compagnie étrangère (${countryName}). Contactez le service client.`,
+    foreignRailwayCompany: {
+      DE: `Malheureusement, cette compagnie ferroviaire est une compagnie allemande. Merci de contacter les autorités allemandes compétentes.`,
+      ES: `Malheureusement, cette compagnie ferroviaire est une compagnie espagnole. Merci de contacter <a href='https://www.transportes.gob.es/' target='_blank' rel='noopener noreferrer'>les autorités espagnoles compétentes.</a>`,
+      GB: `Malheureusement, cette compagnie ferroviaire est une compagnie britannique. Merci de contacter les autorités anglaises compétentes.`,
+      AT: `Malheureusement, cette compagnie ferroviaire est une compagnie autrichienne. Merci de contacter <a href='https://www.apf.gv.at/en/agency-for-passenger-rights.html' target='_blank' rel='noopener noreferrer'>les autorités autrichiennes compétentes.</a>`,
+    },
     dontKnowStation: 'Je ne trouve pas ma gare',
     homepage: {
       signalconsoCatchWord: ` Signalez un problème à l’entreprise,<br/>renseignez-vous sur vos droits avec la répression des fraudes&nbsp;! `,

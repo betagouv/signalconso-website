@@ -7,8 +7,6 @@ import {useEffect} from 'react'
 import {RequiredFieldsLegend} from '@/components_simple/RequiredFieldsLegend'
 import {BtnNextSubmit} from '@/components_simple/buttons/Buttons'
 import {FriendlyHelpText} from '@/components_simple/FriendlyHelpText'
-import {useGetCountries} from '@/clients/apiHooks'
-import {countryLabel} from '@/model/Country'
 
 interface Props {
   onSubmit: (train: Trains, ter?: Ters, nightTrain?: NightTrains) => void
@@ -22,7 +20,6 @@ interface Form {
 
 export const CompanyByTrain = ({onSubmit}: Props) => {
   const {m, currentLang} = useI18n()
-  const {data: countries} = useGetCountries()
   const {
     handleSubmit,
     watch,
@@ -59,8 +56,6 @@ export const CompanyByTrain = ({onSubmit}: Props) => {
 
   const foreignCountryCode =
     train === 'ICE' ? 'DE' : train === 'RENFE' ? 'ES' : train === 'EUROSTAR' ? 'GB' : nightTrain === 'NIGHTJET' ? 'AT' : undefined
-  const foreignCountry = countries?.find(_ => _.code === foreignCountryCode)
-  const foreignCountryLabel = foreignCountry ? countryLabel(currentLang, foreignCountry) : ''
 
   const displayNextButton =
     !foreignCountryCode && !!train && ((train !== 'TER' && train !== 'TRAIN_DE_NUIT') || !!ter || !!nightTrain)
@@ -122,7 +117,11 @@ export const CompanyByTrain = ({onSubmit}: Props) => {
             </div>
           </Animate>
         )}
-        {foreignCountryCode && <FriendlyHelpText>{m.foreignRailwayCompany(foreignCountryLabel)}</FriendlyHelpText>}
+        {foreignCountryCode && (
+          <FriendlyHelpText>
+            <p dangerouslySetInnerHTML={{__html: m.foreignRailwayCompany[foreignCountryCode]}} />
+          </FriendlyHelpText>
+        )}
         {displayNextButton && (
           <div className="flex justify-end">
             <BtnNextSubmit />
