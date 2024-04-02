@@ -389,15 +389,15 @@ export const frLandingsData = [
     sampleReports: [
       {
         text: "Achat d'un sandwich au saumon dans une boulangerie. Diarrhées aiguës et fièvre pendant 1 semaine : contamination 2 bactéries suite à analyses de selles, j'ai du consulter un médecin.",
-        author: 'Nathan S.',
+        author: 'Salma N.',
       },
       {
         text: "Les pâtisseries n'avaient pas l'air fraiches lorsqu'on les a ouvertes à la maison. Nous les avons prises au goûter, et très rapidement nous avons été malades (vomissements, diarrhée). Nous avons évoqué notre incident avec des amis de la commune qui nous ont indiqué ne plus rien acheter dans cette pâtisserie, que des problèmes d'hygiène y sont connus... Nous ne le savions pas. La société est en redressement judiciaire. Le lendemain matin, nous sommes passés devant la porte du laboratoire, il y avait des crottes de chiens à l'intérieur et une forte odeur d'urine. L'immeuble est en vente, connaissant l'identité du propriétaire, nous l'avons contacté et nous a indiqué que le gérant de la pâtisserie délabrait tout, qu'il y avait des crottes partout... Nous ne retournerons plus acheter de produits là-bas, mais nous souhaitons vraiment que cela n'arrive à personne d'autre.",
-        author: 'Timothée A.',
+        author: 'Hassan Z.',
       },
       {
         text: "Hier à partir de 20H30 ma fille a vomi, puis moi vers 22H, ensuite mon fils vers minuit et mon mari ce matin à 6H30. Tous les 4 avons eu des vomissements, nausées, maux de ventre, maux de tête et frissons. Et ce plusieurs fois depuis l'heure de départ, et cela continue. Grosse fatigue également. Nous avons tous déjeuné vers 13H30, des lasagnes faites maison le dimanche matin, à partir de la viande steak hachée achetée chez XXX.",
-        author: 'Ahmed T.',
+        author: 'Louis S.',
       },
     ],
   },
@@ -538,15 +538,15 @@ export const frLandingsData = [
     sampleReports: [
       {
         text: "Achat d'un véhicule de marque XXX, au garage XXX , avec lors du bon de commande une garantie de 12 mois, à la livraison pas de trace sur la facture de cette garantie ( le vendeur me dit qu'elle est en cours auprès d'un organisme et qu'elle sera du haut de gamme au regard de la valeur de cette voiture, des problèmes sont arrivés sur ce véhicule apres 350 kms parcourus et la facture a été réglée volontairement par le garage, mais à ce jour aucune trace de cette garantie, qui selon le patron du garage commencera au moment de sa mise en place de cette garantie de 12 mois même après 4 mois. Pour info les problèmes liés au véhicule auraient du être notifiés au contrôle technique. Je pense que nous sommes face à une vente en abus de confiance, un véhicule garanti n'est pas au même prix que non garanti. En l'attente d'une intervention de la part de vos services. Cordialement.",
-        author: 'Yasmina Z.',
+        author: 'Hugo M.',
       },
       {
         text: "Suite à panne moteur sur autoroute à Sanary 83.Le dépanneur d'autoroute m'a facturé 96 euros de frais de gardiennage pour un week-end férié de Pâques (celui ci ne réparant pas la voiture) et ceci le temps que l'assistance envoie une autre dépanneuse pour l'emmener dans un autre garage de réparation agrée par l'assurance. Ce  garage ne m a pas informé des frais au préalable et sans me donner un contrat ou autre. Ps : j' avais du payé à distance (CB ) sous menace de bloquer mon véhicule chez eux (verbalement)",
-        author: 'Enzo A.',
+        author: 'Stella D.',
       },
       {
         text: "Bonjour, suite à une défaillance avérée du réservoir adblue de mon véhicule et après 3 mois d'échanges avec XXX, j'ai obtenu la prise en charge financière des pièces liées au changement de réservoir mais la main d'œuvre est restée à ma charge, soit 289.86 €. Or s'agissant d'un problème avéré, non lié à l'usure du véhicule, en témoigne la prise en charge des pièces à 100%, et compte tenu du faible kilométrage de ma voiture, je sollicite également le remboursement de la main d'œuvre liée à cette intervention. Vous trouverez la facture en PJ. J'ai déjà effectué cette demande auprès de XXX par anticipation sans retour positif. Étant dorénavant en possession de la facture, je réitère cette demande. Merci, cordialement.",
-        author: 'Salma E.',
+        author: 'Mohamed S.',
       },
     ],
   },
@@ -556,8 +556,8 @@ export const frLandingsData = [
     isSemiAutomatic: true,
     seoTitle: 'Signalez un problème de séjour, vol, voyage à la répression des fraudes',
     seoDescription:
-      'Vous avez un problème d’annulation, retard, remboursement concernant une réservation d’un billet d’avion, accessibilité, train, bateau, taxi, VTC, hôtel, camping ou un soucis de bagage',
-    title: 'Transport en commun / Mobilité / Voyage / Loisirs',
+      'Vous avez un problème d’annulation, retard, remboursement concernant une réservation d’un billet d’avion, train, bateau, taxi, VTC, hôtel, camping ou un soucis de bagage',
+    title: 'Voyage / Loisirs',
     targetedCategory: ['VoyageLoisirs'],
     catchPhrase: 'Signalez un problème relatif à un voyage, renseignez-vous sur vos droits avec la répression des fraudes !',
     secondaryTitle1: 'Pourquoi signaler les difficultés relatives à un voyage, loisir ou divertissement ?',
@@ -728,35 +728,35 @@ export const frLandingsData = [
     sampleReports: [
       {
         text: "J'ai fait appel à ***** pour l'installation de panneaux photovoltaïques sur le toit de ma maison. Ils m'ont promis des économies importantes sur mes factures d'énergie. Malheureusement, je n'ai constaté aucune amélioration après plusieurs mois. De plus, ils ont endommagé le toit pendant l'installation et refusent de prendre en charge les réparations. Je me sens complètement trompé.",
-        author: 'Hugo M.',
-      },
-      {
-        text: "J'ai contacté ***** pour l'installation de panneaux photovoltaïques. Malheureusement, depuis l'installation, je fais face à des problèmes continus avec le système. De plus, ils ne répondent pas à mes demandes de service après-vente. Je me sens abandonné et déçu par leur manque de professionnalisme.",
-        author: 'Stella D.',
-      },
-      {
-        text: "J'ai fait appel à ***** pour installer des panneaux photovoltaïques sur ma maison. Cependant, le rendement promis n'a pas été atteint et ils refusent d'assumer la responsabilité. De plus, ils ont laissé ma propriété dans un état déplorable après l'installation. Je me sens trompé et négligé.",
-        author: 'Mohamed S.',
-      },
-      {
-        text: "J'ai embauché ***** pour l'installation de panneaux photovoltaïques. Malheureusement, ils ont effectué un travail de mauvaise qualité et le système ne fonctionne pas correctement. De plus, ils ont refusé de rectifier les problèmes. Je suis très déçu et je me sens arnaqué.",
         author: 'Léa L.',
       },
       {
-        text: "J'ai sollicité ***** pour l'installation de panneaux photovoltaïques. Malheureusement, les panneaux installés ne produisent pas la quantité d'énergie promise. De plus, ils ont endommagé le toit pendant l'installation et ne veulent pas réparer les dégâts. Je me sens délaissé et trompé.",
+        text: "J'ai contacté ***** pour l'installation de panneaux photovoltaïques. Malheureusement, depuis l'installation, je fais face à des problèmes continus avec le système. De plus, ils ne répondent pas à mes demandes de service après-vente. Je me sens abandonné et déçu par leur manque de professionnalisme.",
         author: 'Adam M.',
       },
       {
-        text: "J'ai fait appel à ***** pour l'installation de panneaux photovoltaïques. Cependant, ils ont mal installé les panneaux, ce qui a entraîné des problèmes d'infiltration d'eau. Malgré mes multiples demandes, ils n'ont pas résolu le problème. Je me sens complètement arnaqué.",
+        text: "J'ai fait appel à ***** pour installer des panneaux photovoltaïques sur ma maison. Cependant, le rendement promis n'a pas été atteint et ils refusent d'assumer la responsabilité. De plus, ils ont laissé ma propriété dans un état déplorable après l'installation. Je me sens trompé et négligé.",
         author: 'Timothée A.',
       },
       {
-        text: "J'ai contacté ***** pour l'installation de panneaux photovoltaïques. Ils ont effectué un travail de mauvaise qualité et ont laissé des débris sur mon terrain. De plus, ils refusent de revenir pour nettoyer ou corriger leur travail. Je me sens complètement négligé.",
+        text: "J'ai embauché ***** pour l'installation de panneaux photovoltaïques. Malheureusement, ils ont effectué un travail de mauvaise qualité et le système ne fonctionne pas correctement. De plus, ils ont refusé de rectifier les problèmes. Je suis très déçu et je me sens arnaqué.",
         author: 'Dylan A.',
       },
       {
-        text: "J'ai engagé ***** pour installer des panneaux photovoltaïques sur mon toit. Depuis l'installation, je rencontre de nombreux problèmes avec le système et ils ne répondent pas à mes demandes de réparation. De plus, l'installation a causé des dommages à mon toit. Je suis extrêmement déçu et me sens complètement trompé.",
+        text: "J'ai sollicité ***** pour l'installation de panneaux photovoltaïques. Malheureusement, les panneaux installés ne produisent pas la quantité d'énergie promise. De plus, ils ont endommagé le toit pendant l'installation et ne veulent pas réparer les dégâts. Je me sens délaissé et trompé.",
         author: 'Léo C.',
+      },
+      {
+        text: "J'ai fait appel à ***** pour l'installation de panneaux photovoltaïques. Cependant, ils ont mal installé les panneaux, ce qui a entraîné des problèmes d'infiltration d'eau. Malgré mes multiples demandes, ils n'ont pas résolu le problème. Je me sens complètement arnaqué.",
+        author: 'Nathan S.',
+      },
+      {
+        text: "J'ai contacté ***** pour l'installation de panneaux photovoltaïques. Ils ont effectué un travail de mauvaise qualité et ont laissé des débris sur mon terrain. De plus, ils refusent de revenir pour nettoyer ou corriger leur travail. Je me sens complètement négligé.",
+        author: 'Timothée A.',
+      },
+      {
+        text: "J'ai engagé ***** pour installer des panneaux photovoltaïques sur mon toit. Depuis l'installation, je rencontre de nombreux problèmes avec le système et ils ne répondent pas à mes demandes de réparation. De plus, l'installation a causé des dommages à mon toit. Je suis extrêmement déçu et me sens complètement trompé.",
+        author: 'Ahmed T.',
       },
     ],
   },
@@ -827,35 +827,35 @@ export const frLandingsData = [
     sampleReports: [
       {
         text: "J'ai fait appel à ***** pour la réparation de mon lave-vaisselle. Non seulement l'appareil n'est pas réparé, mais le service après-vente se montre désormais injoignable. Je me sens complètement abandonné avec un appareil toujours en panne.",
-        author: 'Hassan S.',
-      },
-      {
-        text: "J'ai confié mon réfrigérateur à l'entreprise ***** pour une réparation. Cependant, le frigo est revenu dans un état pire qu'avant et l'entreprise refuse maintenant de prendre en compte mes plaintes. C'est un véritable scandale.",
-        author: 'Stella T.',
-      },
-      {
-        text: "J'ai fait appel à ***** pour la réparation de mon four. Malheureusement, le four ne fonctionne toujours pas correctement et l'entreprise ne répond plus à mes appels. Je me sens délaissé et arnaqué.",
-        author: 'Jacqueline R.',
-      },
-      {
-        text: "J'ai engagé ***** pour réparer mon lave-linge. Non seulement l'appareil n'est pas réparé, mais l'entreprise ne prend pas la peine de répondre à mes plaintes. C'est extrêmement frustrant.",
         author: 'Stella C.',
       },
       {
-        text: "J'ai fait confiance à ***** pour réparer mon aspirateur. Cependant, non seulement l'appareil n'est pas réparé, mais l'entreprise ne répond plus à mes appels. Je me sens complètement arnaqué.",
+        text: "J'ai confié mon réfrigérateur à l'entreprise ***** pour une réparation. Cependant, le frigo est revenu dans un état pire qu'avant et l'entreprise refuse maintenant de prendre en compte mes plaintes. C'est un véritable scandale.",
         author: 'Mehdi E.',
       },
       {
-        text: "J'ai engagé l'entreprise ***** pour la réparation de mon micro-ondes. Malheureusement, l'appareil est revenu dans un état pire qu'avant et l'entreprise refuse de prendre ses responsabilités. C'est un véritable cauchemar.",
+        text: "J'ai fait appel à ***** pour la réparation de mon four. Malheureusement, le four ne fonctionne toujours pas correctement et l'entreprise ne répond plus à mes appels. Je me sens délaissé et arnaqué.",
         author: 'Jules L.',
       },
       {
-        text: "J'ai confié mon grille-pain à ***** pour une réparation. Cependant, non seulement l'appareil n'est pas réparé, mais l'entreprise refuse de répondre à mes plaintes. Je me sens délaissé et trahi.",
+        text: "J'ai engagé ***** pour réparer mon lave-linge. Non seulement l'appareil n'est pas réparé, mais l'entreprise ne prend pas la peine de répondre à mes plaintes. C'est extrêmement frustrant.",
         author: 'Stella B.',
       },
       {
-        text: "J'ai engagé ***** pour la réparation de mon robot de cuisine. Cependant, l'appareil n'a pas été réparé et l'entreprise ne répond plus à mes appels. Je me sens complètement lésé.",
+        text: "J'ai fait confiance à ***** pour réparer mon aspirateur. Cependant, non seulement l'appareil n'est pas réparé, mais l'entreprise ne répond plus à mes appels. Je me sens complètement arnaqué.",
         author: 'Jules R.',
+      },
+      {
+        text: "J'ai engagé l'entreprise ***** pour la réparation de mon micro-ondes. Malheureusement, l'appareil est revenu dans un état pire qu'avant et l'entreprise refuse de prendre ses responsabilités. C'est un véritable cauchemar.",
+        author: 'Yasmina Z.',
+      },
+      {
+        text: "J'ai confié mon grille-pain à ***** pour une réparation. Cependant, non seulement l'appareil n'est pas réparé, mais l'entreprise refuse de répondre à mes plaintes. Je me sens délaissé et trahi.",
+        author: 'Enzo A.',
+      },
+      {
+        text: "J'ai engagé ***** pour la réparation de mon robot de cuisine. Cependant, l'appareil n'a pas été réparé et l'entreprise ne répond plus à mes appels. Je me sens complètement lésé.",
+        author: 'Salma E.',
       },
     ],
   },
@@ -1767,27 +1767,27 @@ export const frLandingsData = [
     sampleReports: [
       {
         text: "Mon expérience avec l'hébergement chez ***** a été affligeante. Les conditions étaient bien en-dessous de ce qui était promis dans leur description en ligne. Il y avait des problèmes d'hygiène majeurs et le niveau de bruit était insupportable. Je ne peux pas croire qu'ils puissent offrir de telles conditions à leurs clients.",
-        author: 'Salma N.',
-      },
-      {
-        text: "L'expérience cauchemardesque avec ***** m'a laissé une amertume indélébile. Les conditions d'hébergement étaient effroyables, bien loin de la description alléchante en ligne. Entre problèmes d'hygiène et nuisance sonore incessante, c'est tout bonnement inconcevable.",
-        author: 'Hassan Z.',
-      },
-      {
-        text: "Je suis horrifié par mon expérience avec *****. Les conditions d'hébergement étaient bien en-dessous de ce qui était promis. Entre les problèmes d'hygiène et le bruit constant, je suis scandalisé qu'ils puissent offrir de telles conditions à leurs clients.",
-        author: 'Louis S.',
-      },
-      {
-        text: "Je suis révolté par les conditions d'hébergement proposées par *****. Les problèmes d'hygiène et de bruit ont rendu mon séjour insupportable. C'est une honte qu'ils puissent offrir de telles conditions à leurs clients.",
         author: 'Soukaina A.',
       },
       {
-        text: "Je suis choqué par les conditions d'hébergement de *****. Entre les problèmes d'hygiène et le bruit constant, mon séjour a été un véritable enfer. C'est inacceptable et je suis déçu qu'ils puissent offrir de telles conditions à leurs clients.",
+        text: "L'expérience cauchemardesque avec ***** m'a laissé une amertume indélébile. Les conditions d'hébergement étaient effroyables, bien loin de la description alléchante en ligne. Entre problèmes d'hygiène et nuisance sonore incessante, c'est tout bonnement inconcevable.",
         author: 'Leila S.',
       },
       {
-        text: "Je suis horrifié par les conditions d'hébergement offertes par *****. Entre les problèmes d'hygiène graves et le bruit incessant, mon séjour a été insupportable. C'est inconcevable qu'ils puissent proposer de telles conditions à leurs clients.",
+        text: "Je suis horrifié par mon expérience avec *****. Les conditions d'hébergement étaient bien en-dessous de ce qui était promis. Entre les problèmes d'hygiène et le bruit constant, je suis scandalisé qu'ils puissent offrir de telles conditions à leurs clients.",
         author: 'Alexandre M.',
+      },
+      {
+        text: "Je suis révolté par les conditions d'hébergement proposées par *****. Les problèmes d'hygiène et de bruit ont rendu mon séjour insupportable. C'est une honte qu'ils puissent offrir de telles conditions à leurs clients.",
+        author: 'Hassan S.',
+      },
+      {
+        text: "Je suis choqué par les conditions d'hébergement de *****. Entre les problèmes d'hygiène et le bruit constant, mon séjour a été un véritable enfer. C'est inacceptable et je suis déçu qu'ils puissent offrir de telles conditions à leurs clients.",
+        author: 'Stella T.',
+      },
+      {
+        text: "Je suis horrifié par les conditions d'hébergement offertes par *****. Entre les problèmes d'hygiène graves et le bruit incessant, mon séjour a été insupportable. C'est inconcevable qu'ils puissent proposer de telles conditions à leurs clients.",
+        author: 'Jacqueline R.',
       },
     ],
   },
