@@ -24,6 +24,7 @@ import {CompanyWebsiteCountry} from './CompanyWebsiteCountry'
 import {InfluencerBySocialNetwork} from './InfluencerBySocialNetwork'
 import {InfluencerFilled} from './InfluencerFilled'
 import {BarcodeSearchResult} from './lib/BarcodeSearchResult'
+import {CompanyByStation} from '@/components_feature/reportFlow/Company/CompanyByStation'
 
 export function Company({stepNavigation}: {stepNavigation: StepNavigation}) {
   const {reportDraft, setReportDraft, sendReportEvent} = useReportFlowContext()
@@ -74,6 +75,20 @@ export function CompanyIdentificationDispatch({draft, updateReport}: CommonProps
             <CommonTree {...{draft, updateReport}} phoneOrWebsite={undefined} barcodeProduct={undefined} result={undefined} />
           )}
         </CompanyByTrain>
+      )
+    case 'STATION':
+      return (
+        <CompanyByStation
+          onSubmit={station =>
+            updateReport({
+              station,
+            })
+          }
+        >
+          {() => (
+            <CommonTree {...{draft, updateReport}} phoneOrWebsite={undefined} barcodeProduct={undefined} result={undefined} />
+          )}
+        </CompanyByStation>
       )
     case 'PRODUCT':
       return <BarcodeTree {...{draft, updateReport}} />
