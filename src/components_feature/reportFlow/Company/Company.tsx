@@ -70,11 +70,7 @@ export function CompanyIdentificationDispatch({draft, updateReport}: CommonProps
               },
             })
           }}
-        >
-          {() => (
-            <CommonTree {...{draft, updateReport}} phoneOrWebsite={undefined} barcodeProduct={undefined} result={undefined} />
-          )}
-        </CompanyByTrain>
+        />
       )
     case 'STATION':
       return (

@@ -3,13 +3,15 @@ import {ters, Ters, trains, Trains, NightTrains, nightTrains} from '@/anomalies/
 import {Controller, useForm} from 'react-hook-form'
 import {ScRadioButtons} from '@/components_simple/formInputs/ScRadioButtons'
 import {Animate} from '@/components_simple/Animate'
-import {ReactNode, useEffect} from 'react'
+import {useEffect} from 'react'
 import {RequiredFieldsLegend} from '@/components_simple/RequiredFieldsLegend'
 import {BtnNextSubmit} from '@/components_simple/buttons/Buttons'
+import {FriendlyHelpText} from '@/components_simple/FriendlyHelpText'
+import {useGetCountries} from '@/clients/apiHooks'
+import {countryLabel} from '@/model/Country'
 
 interface Props {
   onSubmit: (train: Trains, ter?: Ters, nightTrain?: NightTrains) => void
-  children: () => ReactNode
 }
 
 interface Form {
@@ -18,8 +20,9 @@ interface Form {
   nightTrain?: NightTrains
 }
 
-export const CompanyByTrain = ({onSubmit, children}: Props) => {
-  const {m} = useI18n()
+export const CompanyByTrain = ({onSubmit}: Props) => {
+  const {m, currentLang} = useI18n()
+  const {data: countries} = useGetCountries()
   const {
     handleSubmit,
     watch,
@@ -54,7 +57,13 @@ export const CompanyByTrain = ({onSubmit, children}: Props) => {
   const ter = watch('ter')
   const nightTrain = watch('nightTrain')
 
-  const displayNextButton = !!train && ((train !== 'TER' && train !== 'TRAIN_DE_NUIT') || !!ter || !!nightTrain)
+  const foreignCountryCode =
+    train === 'ICE' ? 'DE' : train === 'RENFE' ? 'ES' : train === 'EUROSTAR' ? 'GB' : nightTrain === 'NIGHTJET' ? 'AT' : undefined
+  const foreignCountry = countries?.find(_ => _.code === foreignCountryCode)
+  const foreignCountryLabel = foreignCountry ? countryLabel(currentLang, foreignCountry) : ''
+
+  const displayNextButton =
+    !foreignCountryCode && !!train && ((train !== 'TER' && train !== 'TRAIN_DE_NUIT') || !!ter || !!nightTrain)
 
   useEffect(() => {
     if (!!train) {
@@ -113,8 +122,8 @@ export const CompanyByTrain = ({onSubmit, children}: Props) => {
             </div>
           </Animate>
         )}
-        {nightTrain === 'AUTRE_TRAIN_DE_NUIT' && children()}
-        {displayNextButton && nightTrain !== 'AUTRE_TRAIN_DE_NUIT' && (
+        {foreignCountryCode && <FriendlyHelpText>{m.foreignRailwayCompany(foreignCountryLabel)}</FriendlyHelpText>}
+        {displayNextButton && (
           <div className="flex justify-end">
             <BtnNextSubmit />
           </div>
