@@ -117,7 +117,11 @@ export const CompanyByTrain = ({onSubmit}: Props) => {
             </div>
           </Animate>
         )}
-        {foreignCountryCode && <FriendlyHelpText><p dangerouslySetInnerHTML={{__html: m.foreignRailwayCompany[foreignCountryCode]}} /></FriendlyHelpText>}
+        {foreignCountryCode && (
+          <FriendlyHelpText>
+            <p dangerouslySetInnerHTML={{__html: m.foreignRailwayCompany[foreignCountryCode]}} />
+          </FriendlyHelpText>
+        )}
         {displayNextButton && (
           <div className="flex justify-end">
             <BtnNextSubmit />
