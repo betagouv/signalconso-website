@@ -5,10 +5,7 @@ import anomaliesJSONEn from './json/anomalies_en.json'
 import anomaliesJSONFr from './json/anomalies_fr.json'
 
 export const allAnomalies = (lang: AppLang) => {
-  return ((lang === AppLangs.en ? anomaliesJSONEn : anomaliesJSONFr) as Anomaly[])
-    .map(removeHiddenSubcategories)
-    .filter(notUndefined)
-    .map(transformCompanyKinds)
+  return ((lang === AppLangs.en ? anomaliesJSONEn : anomaliesJSONFr) as Anomaly[]).filter(notUndefined)
 }
 export const allVisibleAnomalies = (lang: AppLang) =>
   allAnomalies(lang)
@@ -18,38 +15,6 @@ export const allVisibleAnomalies = (lang: AppLang) =>
     })
 
 export const allAnomaliesForHomepage = (lang: AppLang) => allVisibleAnomalies(lang).filter(_ => !_.isSpecialOpenFoodFactsCategory)
-
-function removeHiddenSubcategories<A extends CategoryNode>(catNode: A): A | undefined {
-  const shouldDelete = instanceOfAnomaly(catNode)
-    ? false
-    : catNode.isAccessibiliteSubcategory && !appConfig.showAccessibiliteSubcategory
-  if (!catNode.subcategories || catNode.subcategories.length == 0) {
-    if (shouldDelete) {
-      return undefined
-    }
-    return catNode
-  }
-  if (shouldDelete) {
-    return undefined
-  }
-  return {...catNode, subcategories: catNode.subcategories.map(removeHiddenSubcategories).filter(notUndefined)}
-}
-
-function transformCompanyKinds(anomaly: Anomaly): Anomaly {
-  function processSubcat(_: Subcategory): Subcategory {
-    if (_.companyKind === 'TRAIN' && !appConfig.enableTrainCompanyKind) {
-      return {
-        ..._,
-        companyKind: undefined,
-      }
-    }
-    return {..._, subcategories: _.subcategories?.map(processSubcat)}
-  }
-  return {
-    ...anomaly,
-    subcategories: anomaly.subcategories?.map(processSubcat),
-  }
-}
 
 export type AnomalyIndex = {
   root: Anomaly
