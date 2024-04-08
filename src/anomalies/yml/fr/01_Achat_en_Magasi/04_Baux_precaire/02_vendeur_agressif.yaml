@@ -1,0 +1,4 @@
+title: J'ai l'impression que je ne peux pas sortir avant d'avoir fait un achat ou d'avoir pris plus d'articles.
+desc: 'Exemple : achat de draps, produits d’entretien'
+detailInputs:
+  customimport: _imports/detailInputs/baux-precaire.yaml
