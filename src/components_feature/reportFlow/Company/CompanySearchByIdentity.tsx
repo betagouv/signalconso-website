@@ -97,15 +97,6 @@ export const CompanySearchByIdentity = ({children}: Props) => {
                 helperText={errors.identity?.message}
               />
             </div>
-            <ScAlert type="info">
-              En cas de difficulté pour trouver ces informations, rendez-vous sur
-              <a href="https://annuaire-entreprises.data.gouv.fr/" target="_blank" rel="noopener noreferrer">
-                {' '}
-                l'annuaire des entreprises
-              </a>
-              .
-            </ScAlert>
-
             <div className="flex justify-end">
               <ButtonWithLoader iconId="ri-search-line" loading={_searchByIdentity.isPending}>
                 {m.search}
