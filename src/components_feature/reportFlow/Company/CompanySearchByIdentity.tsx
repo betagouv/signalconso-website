@@ -14,7 +14,6 @@ import {useForm} from 'react-hook-form'
 import {CompanySearchResult} from '../../../model/Company'
 import {SiretHelpButton} from './lib/SiretHelpButton'
 import {purgeWhitespaces} from '@/utils/utils'
-import {ScAlert} from '@/components_simple/ScAlert'
 
 interface Form {
   identity: string
