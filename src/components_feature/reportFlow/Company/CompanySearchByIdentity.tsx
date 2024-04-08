@@ -96,7 +96,6 @@ export const CompanySearchByIdentity = ({children}: Props) => {
                 helperText={errors.identity?.message}
               />
             </div>
-
             <div className="flex justify-end">
               <ButtonWithLoader iconId="ri-search-line" loading={_searchByIdentity.isPending}>
                 {m.search}
