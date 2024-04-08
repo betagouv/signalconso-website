@@ -807,10 +807,10 @@ export const fr = {
     terRegion: 'Région concernée par votre TER',
     whichStation: 'Quelle gare est concernée par votre signalement ?',
     foreignRailwayCompany: {
-      DE: `Malheureusement, cette compagnie ferroviaire est une compagnie allemande. Merci de contacter les autorités allemandes compétentes.`,
+      DE: `Malheureusement, cette compagnie ferroviaire est une compagnie allemande. Merci de contacter <a href='https://www.eba.bund.de/DE/Themen/Fahrgastrechte/Bahn/Beschwerdeformular/beschwerdeformular_node.html' target='_blank' rel='noopener noreferrer'>les autorités allemandes compétentes.</a>`,
       ES: `Malheureusement, cette compagnie ferroviaire est une compagnie espagnole. Merci de contacter <a href='https://www.transportes.gob.es/' target='_blank' rel='noopener noreferrer'>les autorités espagnoles compétentes.</a>`,
-      GB: `Malheureusement, cette compagnie ferroviaire est une compagnie britannique. Merci de contacter les autorités anglaises compétentes.`,
-      AT: `Malheureusement, cette compagnie ferroviaire est une compagnie autrichienne. Merci de contacter <a href='https://www.apf.gv.at/en/agency-for-passenger-rights.html' target='_blank' rel='noopener noreferrer'>les autorités autrichiennes compétentes.</a>`,
+      GB: `Malheureusement, cette compagnie ferroviaire est une compagnie britannique. Merci de contacter <a href='https://www.orr.gov.uk/contact-us/help-passengers' target='_blank' rel='noopener noreferrer'>les autorités anglaises compétentes.</a>`,
+      AT: `Malheureusement, cette compagnie ferroviaire est une compagnie autrichienne. Merci de contacter <a href='https://www.apf.gv.at/en/passengercomplaints.html' target='_blank' rel='noopener noreferrer'>les autorités autrichiennes compétentes.</a>`,
     },
     dontKnowStation: 'Je ne trouve pas ma gare',
     homepage: {

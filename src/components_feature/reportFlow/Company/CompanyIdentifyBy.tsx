@@ -3,6 +3,7 @@ import {useI18n} from '@/i18n/I18n'
 import {ReactNode, useState} from 'react'
 import {CompanyKinds} from '../../../anomalies/Anomaly'
 import {ScRadioButtons} from '../../../components_simple/formInputs/ScRadioButtons'
+import {ScAlert} from '@/components_simple/ScAlert'
 
 export enum IdentifyBy {
   NAME = 'NAME',
@@ -37,6 +38,14 @@ export const CompanyIdentifyBy = ({companyKind, children}: Props) => {
     <>
       <Animate>
         <div id="CompanyIdentifyBy">
+          <ScAlert type="info">
+            Pour vous aider à identifier l'entreprise, rendez-vous sur
+            <a href="https://annuaire-entreprises.data.gouv.fr/" target="_blank" rel="noopener noreferrer">
+              {' '}
+              l'annuaire des entreprises
+            </a>
+            .
+          </ScAlert>
           <ScRadioButtons
             required
             value={identifyBy}
