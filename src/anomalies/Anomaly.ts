@@ -48,8 +48,6 @@ type SubcategoryBase = CategoryNodeBase & {
   companyKind?: CompanyKinds
   companyKindQuestion?: CompanyKindQuestion
   categoryOverride?: string
-  // Temporary, to control the display of one specific subcategory through a feature flag
-  isAccessibiliteSubcategory?: boolean
 }
 
 // A typical subcategory
