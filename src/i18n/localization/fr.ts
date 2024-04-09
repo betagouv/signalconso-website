@@ -1117,7 +1117,7 @@ export const fr = {
     barcodeProduct: 'Produit',
     barcodeCompany: 'Entreprise',
     barcodeNoDescriptionFound: 'Aucune description pour ce produit.',
-    barcodeNoCompanyFound: "Aucune entreprise associée à ce code-barres. Le produit provient peut-être de l'étranger ?",
+    barcodeNoCompanyFound: 'Aucune entreprise associée à ce code-barres.',
     barcodeNoProductFound: 'Aucun produit trouvé pour ce code-barres.',
     barcodeWhereToFind: 'Numéro (GTIN) du code-barres du produit',
     barcodeLabel: 'Code-barres (GTIN) :',
