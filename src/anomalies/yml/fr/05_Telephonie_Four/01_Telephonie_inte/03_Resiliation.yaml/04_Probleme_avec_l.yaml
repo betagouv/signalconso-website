@@ -1,5 +1,5 @@
 title: Problème avec le RIO (Relevé d'Identité Opérateur)
-desc: 'Exemple : on ne me donne pas mon numéro RIO'
+desc: 'Exemple : on ne me donne pas mon numéro RIO, ma portabilité est en retard'
 ccrfCode:
   - 21A
 reponseconsoCode: '477'
