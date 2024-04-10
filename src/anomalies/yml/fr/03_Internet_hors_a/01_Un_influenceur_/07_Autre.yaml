@@ -1,5 +1,7 @@
 title: Autre
 subcategoriesTitle: Autre
+tags:
+  - Influenceur
 detailInputs:
 - label: Date du constat
   type: DATE
