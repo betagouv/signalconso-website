@@ -1,6 +1,4 @@
-title: Publicité pour un produit interdit à la vente
+title: Publicité pour un produit dangereux
 tags:
-  - Influenceur
-subcategoriesTitle: Publicité pour un produit interdit à la vente
-detailInputs:
-  customimport: _imports/detailInputs/influenceur.yaml
+  - ProduitDangereux
+subcategoriesTitle: Publicité pour un produit dangereux
