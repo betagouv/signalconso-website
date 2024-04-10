@@ -3,3 +3,5 @@ desc: "Exemple\_: Je dois payer la procédure de résilisation en plus des frais
 tags:
   - ReponseConso
 reponseconsoCode: '457'
+ccrfCode:
+  - 21A
