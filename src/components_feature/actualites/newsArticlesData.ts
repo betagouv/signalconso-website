@@ -5,6 +5,13 @@ export type NewsArticle = (typeof initialNewsArticlesData)[number]
 // This is the display order. Keep the most recents at the start of the array
 export const initialNewsArticlesData = [
   {
+    date: '2024-04-11',
+    lang: 'fr',
+    slug: 'objets-occasion-reconditionnes',
+    title: `Objets d’occasion, reconditionnés : quelles garanties pour l’acheteur ?`,
+    excerpt: `Connaissez-vous les garanties qui couvrent ces achats ? Contre quels défauts vous protègent-elles et pour combien de temps ? D’ailleurs, quelles différences entre un produit neuf, d’occasion et reconditionné ? On vous explique.`,
+  },
+  {
     date: '2024-03-18',
     lang: 'fr',
     slug: 'faux-sites-administratifs',
