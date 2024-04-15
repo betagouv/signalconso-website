@@ -13,11 +13,14 @@ import {ArticleConseilsVacancesHiver} from './ArticleConseilsVacancesHiver'
 import {ArticleFauxSitesAdministratifs} from './ArticleFauxSitesAdministratifs'
 import {ArticleOccasionReconditionnes} from '@/components_feature/actualites/ArticleOccasionReconditionnes'
 import {ArticleAMF} from '@/components_feature/actualites/ArticleAMF'
+import {ArticleMagasinsEphemeres} from '@/components_feature/actualites/ArticleMagasinsEphemeres'
 
 // We can't put import these JSX directly into the "newsArticlesData"
 // it causes too much import problems in the sitemap generation script
 export function getArticleContent(slug: NewsArticle['slug']) {
   switch (slug) {
+    case 'magasins-ephemeres':
+      return ArticleMagasinsEphemeres
     case 'amf':
       return ArticleAMF
     case 'objets-occasion-reconditionnes':
