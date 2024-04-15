@@ -1,10 +1,9 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import imgBoiteCarton from '@/img/actualites/boite_carton.png'
-import imgFauxSites from '*.png'
 import React from 'react'
 
-export function ArticlesOccasionReconditionnes() {
+export function ArticleOccasionReconditionnes() {
   return (
     <div>
       <div className="flex flex-col md:flex-row gap-5 mb-5">
