@@ -5,6 +5,13 @@ export type NewsArticle = (typeof initialNewsArticlesData)[number]
 // This is the display order. Keep the most recents at the start of the array
 export const initialNewsArticlesData = [
   {
+    date: '2024-04-18',
+    lang: 'fr',
+    slug: 'amf',
+    title: `Attention aux investissements de trading en ligne : soyez vigilant`,
+    excerpt: `Avant d’investir, il est indispensable de consulter la liste noire des sociétés et sites non autorisés publiée sur le site de l'autorité des marchés financiers (AMF).`,
+  },
+  {
     date: '2024-04-11',
     lang: 'fr',
     slug: 'objets-occasion-reconditionnes',
