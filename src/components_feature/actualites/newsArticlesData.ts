@@ -5,6 +5,13 @@ export type NewsArticle = (typeof initialNewsArticlesData)[number]
 // This is the display order. Keep the most recents at the start of the array
 export const initialNewsArticlesData = [
   {
+    date: '2024-04-23',
+    lang: 'fr',
+    slug: 'magasins-ephemeres',
+    title: `Mise en garde- pratiques commerciales trompeuses : vente de meubles dans des magasins éphémères`,
+    excerpt: `Convaincu par le discours commercial du vendeur ainsi que les remises importantes et les facilités de paiement proposées, vous avez acheté un ou plusieurs produits. Vous regrettez votre achat, mais vous êtes dans l’incapacité de contacter le vendeur.`,
+  },
+  {
     date: '2024-04-18',
     lang: 'fr',
     slug: 'amf',
