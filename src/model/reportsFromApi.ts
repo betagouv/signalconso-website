@@ -21,6 +21,8 @@ export interface ApiReportDraft {
   details: DetailInputValue[]
   companyName: string | undefined
   companyBrand: string | undefined
+  companyCommercialName: string | undefined
+  companyEstablishmentCommercialName: string | undefined
   companyAddress: Address | undefined
   companySiret: string | undefined
   companyActivityCode: string | undefined
