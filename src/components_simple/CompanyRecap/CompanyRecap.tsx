@@ -33,17 +33,30 @@ export function buildCompanyName(_: CompanyRecapProps) {
   return commercialName ? `${commercialName} (${name})` : name
 }
 
+export function buildBrandName(_: CompanyRecapProps) {
+  const brand = _.company.brand
+  const establishmentCommercialName = _.company.establishmentCommercialName
+  if (establishmentCommercialName && brand) {
+    return `${establishmentCommercialName} / ${brand}`
+  } else if (establishmentCommercialName && !brand) {
+    return `${establishmentCommercialName}`
+  } else if (!establishmentCommercialName && brand) {
+    return `${brand}`
+  } else {
+    return undefined
+  }
+}
+
 export function CompanyRecap(props: CompanyRecapProps) {
   const closed = props.company.isOpen === false
-  const brand = props.company.brand
   const siret = props.company.siret
   const address = props.company.address
   const isHeadOffice = props.company.isHeadOffice
   const website = isCompanyDraft(props.company) ? props.company.website : undefined
   const phone = isCompanyDraft(props.company) ? props.company.phone : undefined
   const isGovernment = isGovernmentCompany(props.company)
-  const commercialName = props.company.commercialName
   const activityLabel = props.company.activityLabel
+  const brand = buildBrandName(props)
   const {m} = useI18n()
   return (
     <div className="flex justify-between w-full">
