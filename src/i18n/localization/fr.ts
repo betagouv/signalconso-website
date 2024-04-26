@@ -120,7 +120,7 @@ export const fr = {
         description: '',
       },
       avisEngagement: {
-        title: 'Donnez votre avis sur l\'engagement - SignalConso',
+        title: "Donnez votre avis sur l'engagement - SignalConso",
         description: '',
       },
       playground: {

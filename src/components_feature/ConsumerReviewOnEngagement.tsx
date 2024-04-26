@@ -1,20 +1,20 @@
 'use client'
 
-import {useI18n} from "@/i18n/I18n";
-import {useToastError} from "@/hooks/useToastError";
-import {usePathname, useRouter, useSearchParams} from "next/navigation";
-import {useEffect, useId, useMemo, useState} from "react";
-import {ResponseConsumerReview, ResponseEvaluation} from "@/core/Events";
-import {FieldError, useForm, UseFormRegisterReturn} from "react-hook-form";
-import {useApiClients} from "@/context/ApiClientsContext";
-import {useMutation, useQuery} from "@tanstack/react-query";
-import {LimitedWidthPageContainer} from "@/components_simple/PageContainers";
-import {Alert} from "@codegouvfr/react-dsfr/Alert";
-import FacebookShareButton from "@/components_feature/reviews/FacebookShareButton";
-import TwitterShareButton from "@/components_feature/reviews/TwitterShareButton";
-import ServicePublicShareButton from "@/components_feature/reviews/ServicePublicShareButton";
-import {Input} from "@codegouvfr/react-dsfr/Input";
-import {Button} from "@codegouvfr/react-dsfr/Button";
+import {useI18n} from '@/i18n/I18n'
+import {useToastError} from '@/hooks/useToastError'
+import {usePathname, useRouter, useSearchParams} from 'next/navigation'
+import {useEffect, useId, useMemo, useState} from 'react'
+import {ResponseConsumerReview, ResponseEvaluation} from '@/core/Events'
+import {FieldError, useForm, UseFormRegisterReturn} from 'react-hook-form'
+import {useApiClients} from '@/context/ApiClientsContext'
+import {useMutation, useQuery} from '@tanstack/react-query'
+import {LimitedWidthPageContainer} from '@/components_simple/PageContainers'
+import {Alert} from '@codegouvfr/react-dsfr/Alert'
+import FacebookShareButton from '@/components_feature/reviews/FacebookShareButton'
+import TwitterShareButton from '@/components_feature/reviews/TwitterShareButton'
+import ServicePublicShareButton from '@/components_feature/reviews/ServicePublicShareButton'
+import {Input} from '@codegouvfr/react-dsfr/Input'
+import {Button} from '@codegouvfr/react-dsfr/Button'
 
 interface Form {
   evaluation: ResponseEvaluation
@@ -174,7 +174,11 @@ function Option({value, evaluationField}: {value: ResponseEvaluation; evaluation
         ? 'emotion-normal-line.svg'
         : 'emotion-unhappy-line.svg'
   const label =
-    value === ResponseEvaluation.Positive ? m.iAmHappyAboutCommitment : value === ResponseEvaluation.Neutral ? m.iAmNeutralAboutCommitment : m.iAmUnhappyAboutCommitment
+    value === ResponseEvaluation.Positive
+      ? m.iAmHappyAboutCommitment
+      : value === ResponseEvaluation.Neutral
+        ? m.iAmNeutralAboutCommitment
+        : m.iAmUnhappyAboutCommitment
   const id = useId()
   return (
     <div className="fr-fieldset__element">

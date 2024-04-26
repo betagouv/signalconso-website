@@ -1,5 +1,5 @@
 import {PageComponentProps, PathParams, buildGenerateMetadataForNoIndexPage} from '@/core/metadatas'
-import {ConsumerReviewOnEngagement} from "@/components_feature/ConsumerReviewOnEngagement";
+import {ConsumerReviewOnEngagement} from '@/components_feature/ConsumerReviewOnEngagement'
 
 type LocalPathParams = PathParams<{
   reportId: string
