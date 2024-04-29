@@ -58,6 +58,7 @@ export type AnalyticAction =
 export enum EventCategories {
   report = 'Signalement',
   consumerReview = 'Avis consommateur',
+  consumerEngagementReview = "Avis consommateur sur l'engagement",
   companySearch = "Identification de l'établissement",
   categorySearch = 'Recherche de catégories',
   barcodeSearch = 'Recherche de code-barres',

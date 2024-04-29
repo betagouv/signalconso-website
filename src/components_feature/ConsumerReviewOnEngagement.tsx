@@ -1,26 +1,27 @@
 'use client'
 
-import {Alert} from '@codegouvfr/react-dsfr/Alert'
-import {Button} from '@codegouvfr/react-dsfr/Button'
-import {Input} from '@codegouvfr/react-dsfr/Input'
-import {useMutation, useQuery} from '@tanstack/react-query'
-import {LimitedWidthPageContainer} from '@/components_simple/PageContainers'
+import {useI18n} from '@/i18n/I18n'
+import {useToastError} from '@/hooks/useToastError'
 import {usePathname, useRouter, useSearchParams} from 'next/navigation'
 import {useEffect, useId, useMemo, useState} from 'react'
-import {FieldError, UseFormRegisterReturn, useForm} from 'react-hook-form'
-import FacebookShareButton from '../components_feature/reviews/FacebookShareButton'
-import ServicePublicShareButton from '../components_feature/reviews/ServicePublicShareButton'
-import TwitterShareButton from '../components_feature/reviews/TwitterShareButton'
-import {useApiClients} from '../context/ApiClientsContext'
-import {ResponseConsumerReview, ResponseEvaluation} from '../core/Events'
-import {useToastError} from '../hooks/useToastError'
-import {useI18n} from '../i18n/I18n'
+import {ResponseConsumerReview, ResponseEvaluation} from '@/core/Events'
+import {FieldError, useForm, UseFormRegisterReturn} from 'react-hook-form'
+import {useApiClients} from '@/context/ApiClientsContext'
+import {useMutation, useQuery} from '@tanstack/react-query'
+import {LimitedWidthPageContainer} from '@/components_simple/PageContainers'
+import {Alert} from '@codegouvfr/react-dsfr/Alert'
+import FacebookShareButton from '@/components_feature/reviews/FacebookShareButton'
+import TwitterShareButton from '@/components_feature/reviews/TwitterShareButton'
+import ServicePublicShareButton from '@/components_feature/reviews/ServicePublicShareButton'
+import {Input} from '@codegouvfr/react-dsfr/Input'
+import {Button} from '@codegouvfr/react-dsfr/Button'
 
 interface Form {
   evaluation: ResponseEvaluation
   details?: string
 }
-export const ConsumerReview = ({reportId}: {reportId: string}) => {
+
+export const ConsumerReviewOnEngagement = ({reportId}: {reportId: string}) => {
   const {m} = useI18n()
   const toastError = useToastError()
   const searchParams = useSearchParams()
@@ -40,13 +41,13 @@ export const ConsumerReview = ({reportId}: {reportId: string}) => {
   const {signalConsoApiClient} = useApiClients()
 
   const _saveReview = useMutation({
-    mutationKey: ['saveReview', reportId],
-    mutationFn: (review: ResponseConsumerReview) => signalConsoApiClient.postReviewOnReportResponse(reportId, review),
+    mutationKey: ['postEngagementReview', reportId],
+    mutationFn: (review: ResponseConsumerReview) => signalConsoApiClient.postEngagementReview(reportId, review),
   })
 
   const _reviewExists = useQuery({
-    queryKey: ['reviewExists', reportId],
-    queryFn: () => signalConsoApiClient.reviewExists(reportId),
+    queryKey: ['engagementReviewExists', reportId],
+    queryFn: () => signalConsoApiClient.engagementReviewExists(reportId),
     enabled: !!reportId,
   })
 
@@ -104,11 +105,11 @@ export const ConsumerReview = ({reportId}: {reportId: string}) => {
           <div className="flex">
             {evaluation === ResponseEvaluation.Positive || (
               <>
-                <FacebookShareButton step="Reponse" />
-                <TwitterShareButton step="Reponse" />
+                <FacebookShareButton step="Engagement" />
+                <TwitterShareButton step="Engagement" />
               </>
             )}
-            <ServicePublicShareButton step="Reponse" />
+            <ServicePublicShareButton step="Engagement" />
           </div>
         </>
       ) : (
@@ -138,7 +139,7 @@ export const ConsumerReview = ({reportId}: {reportId: string}) => {
   )
 }
 
-function EvaluationRadio({evaluationField, error}: {evaluationField: UseFormRegisterReturn<string>; error?: FieldError}) {
+export function EvaluationRadio({evaluationField, error}: {evaluationField: UseFormRegisterReturn<string>; error?: FieldError}) {
   // Rich Radio from DSFR
   const {m} = useI18n()
   const idErrorMessages = useId()
@@ -151,7 +152,7 @@ function EvaluationRadio({evaluationField, error}: {evaluationField: UseFormRegi
       {...(error ? {role: 'group'} : null)}
     >
       <legend className="fr-fieldset__legend--regular fr-fieldset__legend" id={idLegend}>
-        {m.didTheCompanyAnsweredWell}
+        {m.didTheCompanyHonouredItsCommitment}
         <span className="fr-hint-text">{m.reviewIsDefinitive}</span>
       </legend>
       <Option {...{evaluationField}} value={ResponseEvaluation.Positive} />
@@ -173,7 +174,11 @@ function Option({value, evaluationField}: {value: ResponseEvaluation; evaluation
         ? 'emotion-normal-line.svg'
         : 'emotion-unhappy-line.svg'
   const label =
-    value === ResponseEvaluation.Positive ? m.iAmHappy : value === ResponseEvaluation.Neutral ? m.iAmNeutral : m.iAmUnhappy
+    value === ResponseEvaluation.Positive
+      ? m.iAmHappyAboutCommitment
+      : value === ResponseEvaluation.Neutral
+        ? m.iAmNeutralAboutCommitment
+        : m.iAmUnhappyAboutCommitment
   const id = useId()
   return (
     <div className="fr-fieldset__element">
