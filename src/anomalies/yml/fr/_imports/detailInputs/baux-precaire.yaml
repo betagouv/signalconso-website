@@ -1,11 +1,13 @@
-- label: J'ai reçu une invitation par
-  type: RADIO
-  options:
-    - Un démarchage téléphonique
-    - Un démarchagé à domicile
-    - Un SMS
-    - Un message personnel sur les réseaux sociaux
-    - Je n'ai pas reçu d'invitation
+- label: Date de l'appel
+  type: DATE
+  defaultValue: SYSDATE
+- label: Heure de l'appel
+  type: TIMESLOT
+- label: Votre numéro de téléphone
+  type: TEXT
+- label: Votre numéro d'inscription Bloctel (recommandé)
+  type: TEXT
+  optional: true
 - label: Adresse précise du magasin
   placeholder: Numéro de la rue, nom de la rue, code postale et le nom de la ville
   type: TEXT
