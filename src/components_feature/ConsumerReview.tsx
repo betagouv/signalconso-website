@@ -104,11 +104,11 @@ export const ConsumerReview = ({reportId}: {reportId: string}) => {
           <div className="flex">
             {evaluation === ResponseEvaluation.Positive || (
               <>
-                <FacebookShareButton />
-                <TwitterShareButton />
+                <FacebookShareButton step="Reponse" />
+                <TwitterShareButton step="Reponse" />
               </>
             )}
-            <ServicePublicShareButton />
+            <ServicePublicShareButton step="Reponse" />
           </div>
         </>
       ) : (
