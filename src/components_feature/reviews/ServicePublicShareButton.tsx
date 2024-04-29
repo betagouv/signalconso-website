@@ -4,16 +4,22 @@ import {ConsumerShareReviewEventActions, EventCategories} from '../../analytic/a
 import Image from 'next/image'
 import imgJedonnemonavis from '@/img/avis/jedonnemonavisbutton.png'
 
-const ServicePublicShareButton = () => {
+interface ServicePublicShareButtonProps {
+  step: 'Reponse' | 'Engagement'
+}
+
+const ServicePublicShareButton = ({step}: ServicePublicShareButtonProps) => {
   const _analytic = useAnalyticContext()
   const s = {
     '--underline-img': 'none',
   } as React.CSSProperties
 
+  const eventCategorie = step === 'Reponse' ? EventCategories.consumerReview : EventCategories.consumerEngagementReview
+
   return (
     <a
       style={s}
-      onClick={() => _analytic.trackEvent(EventCategories.consumerReview, ConsumerShareReviewEventActions.servicePublicPlus)}
+      onClick={() => _analytic.trackEvent(eventCategorie, ConsumerShareReviewEventActions.servicePublicPlus)}
       href="https://monavis.numerique.gouv.fr/Demarches/2071?&view-mode=formulaire-avis&nd_mode=en-ligne-enti%C3%A8rement&nd_source=button&key=5a58254dab900906fe4924e37c1c5bba"
     >
       <Image

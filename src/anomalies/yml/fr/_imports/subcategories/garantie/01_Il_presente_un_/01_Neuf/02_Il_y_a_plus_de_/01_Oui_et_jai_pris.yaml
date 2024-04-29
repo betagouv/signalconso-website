@@ -1,0 +1,22 @@
+title: Oui et j'ai pris connaissance des conditions écrites dans mon contrat de garantie
+desc: >-
+  Exemple : garantie contractuelle, garantie constructeur, extension de
+  garantie, échange à neuf
+subcategoriesTitle: >-
+  Les conditions de reprise sont indiquées dans votre contrat de garantie. <br
+  /> Avant de faire un signalement, relisez les conditions écrites dans ce
+  contrat.
+detailInputs:
+  - label: Date d'achat
+    type: DATE
+  - label: Nom du produit
+    type: TEXT
+  - label: Date de fin de garantie supplémentaire
+    type: DATE
+  - label: Date du constat
+    type: DATE
+    defaultValue: SYSDATE
+  - label: Motif de refus
+    type: TEXT
+fileLabel: >-
+  Contrat de garantie / publicité de l'offre de vente / document se référant à la garantie

@@ -3,8 +3,12 @@ subcategoriesTitle: Que souhaitez-vous signaler ?
 companyKind: SOCIAL
 desc: >-
   Exemple : publicité trompeuse, l'influenceur n'indique pas qu'il est rémunéré
-  par une marque
+  par une marque, publicité sur les CFD, Forex, Cryptos, NFT
 ccrfCode:
   - 23B
   - '271'
 reponseconsoCode: '210'
+tags:
+  - Influenceur
+detailInputs:
+  customimport: _imports/detailInputs/influenceur.yaml

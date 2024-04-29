@@ -5,6 +5,27 @@ export type NewsArticle = (typeof initialNewsArticlesData)[number]
 // This is the display order. Keep the most recents at the start of the array
 export const initialNewsArticlesData = [
   {
+    date: '2024-04-23',
+    lang: 'fr',
+    slug: 'magasins-ephemeres',
+    title: `Mise en garde- pratiques commerciales trompeuses : vente de meubles dans des magasins éphémères`,
+    excerpt: `Convaincu par le discours commercial du vendeur ainsi que les remises importantes et les facilités de paiement proposées, vous avez acheté un ou plusieurs produits. Vous regrettez votre achat, mais vous êtes dans l’incapacité de contacter le vendeur.`,
+  },
+  {
+    date: '2024-04-18',
+    lang: 'fr',
+    slug: 'amf',
+    title: `Attention aux investissements de trading en ligne : soyez vigilant`,
+    excerpt: `Avant d’investir, il est indispensable de consulter la liste noire des sociétés et sites non autorisés publiée sur le site de l'autorité des marchés financiers (AMF).`,
+  },
+  {
+    date: '2024-04-11',
+    lang: 'fr',
+    slug: 'objets-occasion-reconditionnes',
+    title: `Objets d’occasion, reconditionnés : quelles garanties pour l’acheteur ?`,
+    excerpt: `Connaissez-vous les garanties qui couvrent ces achats ? Contre quels défauts vous protègent-elles et pour combien de temps ? D’ailleurs, quelles différences entre un produit neuf, d’occasion et reconditionné ? On vous explique.`,
+  },
+  {
     date: '2024-03-18',
     lang: 'fr',
     slug: 'faux-sites-administratifs',

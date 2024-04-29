@@ -163,6 +163,8 @@ export class ReportDraft {
       details: draft.details,
       companyName: draft.companyDraft?.name,
       companyBrand: draft.companyDraft?.brand,
+      companyCommercialName: draft.companyDraft?.commercialName,
+      companyEstablishmentCommercialName: draft.companyDraft?.establishmentCommercialName,
       companyAddress: draft.companyDraft?.address,
       companySiret: draft.companyDraft?.siret,
       companyActivityCode: draft.companyDraft?.activityCode,

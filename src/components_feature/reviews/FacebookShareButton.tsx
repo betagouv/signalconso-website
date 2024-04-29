@@ -2,9 +2,15 @@ import React from 'react'
 import {ConsumerShareReviewEventActions, EventCategories} from '../../analytic/analytic'
 import {useAnalyticContext} from '../../analytic/AnalyticContext'
 
-const FacebookShareButton = () => {
+interface FacebookShareButtonProps {
+  step: 'Reponse' | 'Engagement'
+}
+
+const FacebookShareButton = ({step}: FacebookShareButtonProps) => {
   const _analytic = useAnalyticContext()
   const url = 'https://www.facebook.com/SignalConso/reviews'
+
+  const eventCategorie = step === 'Reponse' ? EventCategories.consumerReview : EventCategories.consumerEngagementReview
 
   return (
     <div>
@@ -25,7 +31,7 @@ const FacebookShareButton = () => {
           display: 'flex',
         }}
         href={url}
-        onClick={() => _analytic.trackEvent(EventCategories.consumerReview, ConsumerShareReviewEventActions.facebook)}
+        onClick={() => _analytic.trackEvent(eventCategorie, ConsumerShareReviewEventActions.facebook)}
         data-layout="button"
       >
         <svg

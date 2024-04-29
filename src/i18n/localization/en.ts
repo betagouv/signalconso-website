@@ -119,6 +119,10 @@ export const en = {
         title: 'Share your review - SignalConso',
         description: '',
       },
+      avisEngagement: {
+        title: 'Share your review on commitment - SignalConso',
+        description: '',
+      },
       playground: {
         title: 'Playground',
         description: '',

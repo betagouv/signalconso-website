@@ -1,8 +1,8 @@
+import {appConfig} from '@/core/appConfig'
 import {usePathname, useSearchParams} from 'next/navigation'
 import {useEffect} from 'react'
 import {Eularian} from '../plugins/eularian'
 import {Matomo} from '../plugins/matomo'
-import {appConfig} from '@/core/appConfig'
 
 export class Analytic {
   static readonly init = () => {
@@ -24,11 +24,6 @@ export class Analytic {
     this.log('[onPageChange]', path)
     this.matomo?.trackPage(path)
     this.eularian?.send(path)
-  }
-
-  readonly trackPage = (path: string, title?: string) => {
-    this.log('[trackPage]', path, title)
-    this.matomo?.trackPage(path, title)
   }
 
   readonly trackEvent = (category: EventCategories, action: AnalyticAction, name?: any, value?: any) => {
@@ -63,6 +58,7 @@ export type AnalyticAction =
 export enum EventCategories {
   report = 'Signalement',
   consumerReview = 'Avis consommateur',
+  consumerEngagementReview = "Avis consommateur sur l'engagement",
   companySearch = "Identification de l'établissement",
   categorySearch = 'Recherche de catégories',
   barcodeSearch = 'Recherche de code-barres',

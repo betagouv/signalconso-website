@@ -1,7 +1,7 @@
-title: Publicité pour un produit dangereux
+title: Publicité pour un produit financiers risqués, un crypto-actif ou un NFT
+desc: 'Exemple: Forex, CDF, options binaires, crypto-monnaies (Bitcoin, Ethereum, etc…), NFT.'
+subcategoriesTitle: L'influenceur n'indique pas le caractère commercial de sa publication
 tags:
   - Influenceur
-  - ProduitDangereux
-subcategoriesTitle: Publicité pour un produit dangereux
 detailInputs:
   customimport: _imports/detailInputs/influenceur.yaml
