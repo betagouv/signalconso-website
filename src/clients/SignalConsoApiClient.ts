@@ -139,4 +139,12 @@ export class SignalConsoApiClient {
   reviewExists = (reportId: string) => {
     return this.client.get<ResponseConsumerReviewExists>(`/reports/${reportId}/response/review/exists`)
   }
+
+  postEngagementReview = (reportId: string, review: ResponseConsumerReview) => {
+    return this.client.post<void>(`/reports/${reportId}/engagement/review`, {body: review})
+  }
+
+  engagementReviewExists = (reportId: string) => {
+    return this.client.get<ResponseConsumerReviewExists>(`/reports/${reportId}/engagement/review/exists`)
+  }
 }
