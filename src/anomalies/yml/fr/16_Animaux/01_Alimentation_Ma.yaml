@@ -1,3 +1,6 @@
 title: Alimentation / Matériel pour animaux
 desc: "Exemple\_: jouet, cage, laisse, croquettes"
 reponseconsoCode: '332'
+
+tags: 
+ - AlimentationMaterielAnimaux
