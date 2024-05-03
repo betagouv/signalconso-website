@@ -79,6 +79,14 @@ export const reportTagsAllowedInYaml = [
   'CompagnieAerienne',
   'Resiliation',
   'TransitionEcologique',
+  // new tags
+  'ProduitPerime',
+  'CommandeEffectuee',
+  'ImpressionTicket',
+  'QuantiteNonConforme',
+  'AppelCommercial',
+  'Prix',
+  'AlimentationMaterielAnimaux',
 ] as const
 export type ReportTagAllowedInYaml = (typeof reportTagsAllowedInYaml)[number]
 
