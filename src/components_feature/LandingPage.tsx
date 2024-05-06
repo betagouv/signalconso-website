@@ -131,7 +131,7 @@ export default function LandingPage({landingData, lang}: Props) {
           buttonProps={{
             children: m.landing.discoverButton,
             linkProps: {
-              href: `/${lang}/${pagesDefs.commentCaMarche.url}`,
+              href: `/${lang}${pagesDefs.commentCaMarche.url}`,
             },
           }}
           title={m.landing.whatsSignalConso}
