@@ -79,7 +79,6 @@ export const reportTagsAllowedInYaml = [
   'CompagnieAerienne',
   'Resiliation',
   'TransitionEcologique',
-  // new tags
   'ProduitPerime',
   'CommandeEffectuee',
   'ImpressionTicket',
