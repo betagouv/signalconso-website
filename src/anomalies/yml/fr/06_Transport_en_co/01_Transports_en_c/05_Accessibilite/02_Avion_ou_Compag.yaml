@@ -3,11 +3,12 @@ desc: 'Exemples : absence d’assistance gratuite à l’aéroport, problème d�
 blockingInfo:
   title: Oups, nous ne pouvons pas traiter votre signalement.
   content: >-
-    Vous avez acheté votre billet d'avion directement auprès d'une compagnie
-    aérienne. <br />Vous avez eu un problème de déclassement, un refus
-    d'embarquement, votre vol a été retardé ou annulé. <br /> <br />Ce type de
+    Vous êtes une personne en situation de handicap ou à mobilité réduite et vous avez eu un
+    problème lors de la réservation de votre billet, lors de votre enregistrement, lors de votre
+    embarquement ou tout autre problème dans la prestation d’assistance qui vous a été délivrée à
+    l’aéroport ou dans l’avion : <br /> <br />Ce type de
     problème ne doit pas être signalé sur SignalConso. Nous vous invitons à
     utiliser le site dédié : <br /><a
-    href="https://droits-passagers-aeriens.aviation-civile.gouv.fr/public/signalement?new-signalement=true">https://droits-passagers-aeriens.aviation-civile.gouv.fr</a>
+    href="https://www.ecologie.gouv.fr/aviation-droits-des-personnes-handicapees-et-des-personnes-mobilite-reduite">www.ecologie.gouv.fr</a>
     <br /> <br />Vous avez acheté vos billets d'avions dans une agence de
     voyages ? <br />Revenez en arrière et allez sur "Agence de voyage" :)
