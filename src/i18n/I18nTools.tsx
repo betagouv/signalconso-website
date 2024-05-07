@@ -9,5 +9,5 @@ export const replaceLangInPath = (pathname: string, lang: AppLang) => {
 }
 
 export const addLangInPath = (pathname: string, currentLang: AppLang) => {
-  return `/${currentLang}/${pathname}`
+  return `/${currentLang}${pathname}`
 }

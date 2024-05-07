@@ -12,7 +12,7 @@
 - label: Éléments d'identification (Modèle / N° de série / Volume / Poids)
   optional: true
   type: TEXT
-- label: La personne qui a utilisé le produit a-t-elle était blessée&#160;?
+- label: La personne qui a utilisé le produit a-t-elle été blessée&#160;?
   optional: true
   type: RADIO
   options:
