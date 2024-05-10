@@ -103,7 +103,7 @@ describe('Details: single date not in future', () => {
 
     it('should display radios for identification choice', async () => {
       await elementShouldExists('#CompanyIdentifyBy')
-      selectIdentifyBy(IdentifyBy.NAME)
+      selectIdentifyBy(IdentifyBy.NAME_AND_POSTAL_CODE)
       await elementShouldExists('#CompanyByNameAndPostalCode')
     })
   })
