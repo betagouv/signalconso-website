@@ -19,6 +19,7 @@ describe('Details: single date not in future', () => {
 
   const selectIdentifyBy = (ib: IdentifyBy) => {
     const btnText = fnSwitch(ib, {
+      [IdentifyBy.NAME_AND_POSTAL_CODE]: app.m.identifyBy_name_postal_code,
       [IdentifyBy.NAME]: app.m.identifyBy_name,
       [IdentifyBy.IDENTITY]: app.m.identifyBy_identity,
       [IdentifyBy.NONE]: app.m.identifyBy_none,
@@ -93,7 +94,8 @@ describe('Details: single date not in future', () => {
               }),
           },
           companyApiClient: {
-            searchCompanies: (search: string, searchPostalCode: string) => Promise.resolve([]),
+            searchCompaniesByNameAndPostalCode: (search: string, searchPostalCode: string, lang: string) => Promise.resolve([]),
+            searchHeadOfficesByName: (search: string, lang: string) => Promise.resolve([]),
           },
         },
       )
@@ -101,7 +103,7 @@ describe('Details: single date not in future', () => {
 
     it('should display radios for identification choice', async () => {
       await elementShouldExists('#CompanyIdentifyBy')
-      selectIdentifyBy(IdentifyBy.NAME)
+      selectIdentifyBy(IdentifyBy.NAME_AND_POSTAL_CODE)
       await elementShouldExists('#CompanyByNameAndPostalCode')
     })
   })
