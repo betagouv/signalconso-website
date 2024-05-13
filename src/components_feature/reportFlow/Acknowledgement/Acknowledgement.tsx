@@ -173,7 +173,6 @@ export const AcknowledgementInner = ({
   })
 }
 
-
 function ListItem({icon, children}: {icon?: string; children: ReactNode}) {
   return (
     <li className="mb-2">

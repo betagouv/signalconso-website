@@ -7,8 +7,8 @@ export interface CreatedReport {
   companySiret?: string
   websiteURL?: string
   employeeConsumer: boolean
-  contactAgreement: boolean,
-  postReportHelper? : PostReportHelper
+  contactAgreement: boolean
+  postReportHelper?: PostReportHelper
 }
 
 export interface DetailInputValue {

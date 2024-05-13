@@ -113,9 +113,9 @@ export class Fixture {
       tags: subcategories.filter(_ => !!_.tags).flatMap(_ => _.tags!),
       employeeConsumer: random.boolean(),
       contactAgreement: random.boolean(),
-      postReportHelper : {
-        title : "random title",
-        content : "random content"
+      postReportHelper: {
+        title: 'random title',
+        content: 'random content',
       },
     }
   }
@@ -239,9 +239,9 @@ export class Fixture {
     return <Subcategory>{
       title: random.string({capitalization: 'lowercase', charset: 'alphabetic'}),
       id: random.string(),
-      postReportHelper : {
-        title : "random title",
-        content : "random content"
+      postReportHelper: {
+        title: 'random title',
+        content: 'random content',
       },
       tags: random.oneOf([null, ...reportTags]),
       ...params,
