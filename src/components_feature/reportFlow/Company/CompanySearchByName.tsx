@@ -1,37 +1,35 @@
-import {useAnalyticContext} from '@/analytic/AnalyticContext'
-import {CompanySearchEventActions, EventCategories} from '@/analytic/analytic'
+import {CompanySearchResult} from '@/model/Company'
+import {ReactNode, useState} from 'react'
+import {useI18n} from '@/i18n/I18n'
+import {useApiClients} from '@/context/ApiClientsContext'
+import {useQuery} from '@tanstack/react-query'
 import {useToastOnQueryError} from '@/clients/apiHooks'
+import {useAnalyticContext} from '@/analytic/AnalyticContext'
+import {useForm} from 'react-hook-form'
+import {CompanySearchEventActions, EventCategories} from '@/analytic/analytic'
 import {Animate} from '@/components_simple/Animate'
 import {RequiredFieldsLegend} from '@/components_simple/RequiredFieldsLegend'
-import {ButtonWithLoader} from '@/components_simple/buttons/Buttons'
-import {ScAutocompletePostcode} from '@/components_simple/formInputs/ScAutocompletePostcode'
 import {ScTextInput} from '@/components_simple/formInputs/ScTextInput'
-import {useApiClients} from '@/context/ApiClientsContext'
-import {useI18n} from '@/i18n/I18n'
-import {useQuery} from '@tanstack/react-query'
-import {ReactNode, useState} from 'react'
-import {Controller, useForm} from 'react-hook-form'
-import {CompanySearchResult} from '../../../model/Company'
-import {ifDefined} from '../../../utils/utils'
+import {ButtonWithLoader} from '@/components_simple/buttons/Buttons'
+import {ifDefined} from '@/utils/utils'
 
 interface Form {
   name: string
-  postalCode: string
 }
 
 interface Props {
   children: (companies?: CompanySearchResult[]) => ReactNode
 }
 
-export const CompanySearchByNameAndPostalCode = ({children}: Props) => {
+export const CompanySearchByName = ({children}: Props) => {
   const {m, currentLang} = useI18n()
   const {companyApiClient} = useApiClients()
   const [submittedForm, setSubmittedForm] = useState<Form | undefined>()
   const _search = useQuery({
-    queryKey: ['searchCompaniesByNameAndPostalCode', submittedForm?.name, submittedForm?.postalCode],
+    queryKey: ['searchHeadOfficesByName', submittedForm?.name],
     queryFn: () => {
       if (submittedForm) {
-        return companyApiClient.searchCompaniesByNameAndPostalCode(submittedForm.name, submittedForm.postalCode, currentLang)
+        return companyApiClient.searchHeadOfficesByName(submittedForm.name, currentLang)
       }
       return null
     },
@@ -46,7 +44,7 @@ export const CompanySearchByNameAndPostalCode = ({children}: Props) => {
   } = useForm<Form>()
 
   const search = (form: Form) => {
-    _analytic.trackEvent(EventCategories.companySearch, CompanySearchEventActions.search, form.name + ' ' + form.postalCode)
+    _analytic.trackEvent(EventCategories.companySearch, CompanySearchEventActions.search, form.name)
     setSubmittedForm(form)
   }
   return (
@@ -66,21 +64,6 @@ export const CompanySearchByNameAndPostalCode = ({children}: Props) => {
                   required: {value: true, message: m.required},
                 })}
                 required
-              />
-              <Controller
-                control={control}
-                name="postalCode"
-                rules={{
-                  required: {value: true, message: m.required},
-                }}
-                render={({field: {onChange, onBlur, name, value}, fieldState: {error}}) => (
-                  <ScAutocompletePostcode
-                    label={m.postalCode}
-                    {...{onChange, onBlur, name, value}}
-                    error={!!error}
-                    helperText={error?.message}
-                  />
-                )}
               />
             </div>
 
