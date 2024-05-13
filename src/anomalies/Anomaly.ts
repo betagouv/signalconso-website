@@ -5,6 +5,12 @@ interface CategoryNodeBase {
   title: string
   id: string
   subcategoriesTitle?: string
+  postReportHelper?: PostReportHelper
+}
+
+export interface PostReportHelper {
+  title?: string
+  content?: string
 }
 
 export type Anomaly = CategoryNodeBase & {
