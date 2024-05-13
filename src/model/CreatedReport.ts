@@ -1,4 +1,4 @@
-import {ReportTag} from '@/anomalies/Anomaly'
+import {PostReportHelper, ReportTag} from '@/anomalies/Anomaly'
 import {ApiAddress} from './Address'
 
 export interface CreatedReport {
@@ -8,6 +8,7 @@ export interface CreatedReport {
   websiteURL?: string
   employeeConsumer: boolean
   contactAgreement: boolean
+  postReportHelper?: PostReportHelper
 }
 
 export interface DetailInputValue {

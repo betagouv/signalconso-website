@@ -111,7 +111,7 @@ function resolveImportsRecursively(obj: any, rootDir: string): any {
 
 function checkCustomImportIsValid(customimport: string) {
   // make sure that there is not funny import path
-  const validPaths = ['_imports/subcategories/', '_imports/blockingInfo/', '_imports/detailInputs/']
+  const validPaths = ['_imports/subcategories/', '_imports/blockingInfo/', '_imports/detailInputs/', '_imports/postreporthelper/']
   if (!validPaths.some(_ => customimport.startsWith(_))) {
     throw new Error(`Import of "${customimport}" is invalid, it should start with one of these ${validPaths.join(', ')}`)
   }
