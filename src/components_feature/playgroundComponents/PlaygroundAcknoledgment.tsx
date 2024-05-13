@@ -45,6 +45,7 @@ export const PlaygroundAcknowledgment = ({
   const foundCountry = testCountries.find(country => country.code === countryId)
 
   const baseReport = useMemo(Fixture.genReport, [])
+
   const {data: countries} = useGetCountries()
   const report = useMemo(() => {
     const reportsSwitch: {[key in AcknowledgmentCases]: () => CreatedReport} = {
