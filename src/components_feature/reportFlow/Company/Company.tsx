@@ -25,7 +25,6 @@ import {InfluencerBySocialNetwork} from './InfluencerBySocialNetwork'
 import {InfluencerFilled} from './InfluencerFilled'
 import {BarcodeSearchResult} from './lib/BarcodeSearchResult'
 import {CompanyByStation} from '@/components_feature/reportFlow/Company/CompanyByStation'
-import {CompanySearchByName} from '@/components_feature/reportFlow/Company/CompanySearchByName'
 
 export function Company({stepNavigation}: {stepNavigation: StepNavigation}) {
   const {reportDraft, setReportDraft, sendReportEvent} = useReportFlowContext()
@@ -191,7 +190,7 @@ function CommonTree({
     <CompanyIdentifyBy companyKind={draft.companyKind!}>
       {identifyBy =>
         fnSwitch(identifyBy, {
-          [IdentifyBy.NAME_AND_POSTAL_CODE]: () => (
+          [IdentifyBy.NAME]: () => (
             <CompanySearchByNameAndPostalCode>
               {companies => (
                 <CompanySearchResultComponent
@@ -208,24 +207,6 @@ function CommonTree({
                 />
               )}
             </CompanySearchByNameAndPostalCode>
-          ),
-          [IdentifyBy.NAME]: () => (
-            <CompanySearchByName>
-              {companies => (
-                <CompanySearchResultComponent
-                  companies={companies ?? []}
-                  onSubmit={company => {
-                    updateReport({
-                      companyDraft: {
-                        ...company,
-                        ...phoneOrWebsite,
-                      },
-                      barcodeProduct,
-                    })
-                  }}
-                />
-              )}
-            </CompanySearchByName>
           ),
           [IdentifyBy.IDENTITY]: () => (
             <CompanySearchByIdentity>

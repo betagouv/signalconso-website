@@ -6,7 +6,6 @@ import {ScRadioButtons} from '../../../components_simple/formInputs/ScRadioButto
 import {ScAlert} from '@/components_simple/ScAlert'
 
 export enum IdentifyBy {
-  NAME_AND_POSTAL_CODE = 'NAME_AND_POSTAL_CODE',
   NAME = 'NAME',
   IDENTITY = 'IDENTITY',
   NONE = 'NONE',
@@ -17,20 +16,12 @@ interface Props {
   children: (identifyBy: IdentifyBy) => ReactNode
 }
 
-const isDistance = (companyKind: CompanyKinds) =>
-  companyKind === 'WEBSITE' ||
-  companyKind === 'MERCHANT_WEBSITE' ||
-  companyKind === 'TRANSPORTER_WEBSITE' ||
-  companyKind === 'PHONE'
-
 export const CompanyIdentifyBy = ({companyKind, children}: Props) => {
   const {m} = useI18n()
   const [identifyBy, setIdentifyBy] = useState<IdentifyBy | undefined>()
 
   const createOptions = (companyKind: CompanyKinds) => [
-    ...(isDistance(companyKind)
-      ? [{label: m.identifyBy_name, description: m.identifyBy_nameDesc, value: IdentifyBy.NAME}]
-      : [{label: m.identifyBy_name_postal_code, description: m.identifyBy_nameDesc, value: IdentifyBy.NAME_AND_POSTAL_CODE}]),
+    {label: m.identifyBy_name, description: m.identifyBy_nameDesc, value: IdentifyBy.NAME},
     {label: m.identifyBy_identity, description: m.identifyBy_identityDesc, value: IdentifyBy.IDENTITY},
     ...(companyKind !== 'SIRET'
       ? [
