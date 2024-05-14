@@ -1762,56 +1762,6 @@ export const frLandingsData = [
     ],
   },
   {
-    url: 'malfacons-non-conformites-batiment',
-    lang: 'fr',
-    isSemiAutomatic: false,
-    seoTitle: 'Malfaçons\n  et non-conformités dans le domaine du bâtiment',
-    seoDescription:
-      'Signalez\n  un problème de malfaçon, de non-conformité ou de défauts de construction dans\n  le domaine du bâtiment.',
-    title: 'Malfaçons\n  et non-conformités dans le domaine du bâtiment',
-    targetedCategory: ['TravauxRenovations'],
-    catchPhrase:
-      'Signalez\n  un problème de malfaçon, de non-conformité ou de défauts de construction dans\n  le bâtiment, renseignez-vous sur vos droits avec la répression des fraudes !',
-    secondaryTitle1:
-      'Pourquoi\n  signaler des malfaçons, non-conformités ou défauts de construction dans le\n  domaine du bâtiment ?',
-    secondaryTitle2:
-      'Que\n  devient votre signalement relatif à des malfaçons, non-conformités ou défauts\n  de construction dans le bâtiment ?',
-    sampleReports: [
-      {
-        text: "J'ai engagé l'entreprise ***** pour construire une extension à ma maison. Toutefois, je constate de nombreuses malfaçons et l'extension n'est pas conforme aux plans initiaux. Malgré mes plaintes répétées, l'entreprise ne prend pas ses responsabilités.",
-        author: 'Hassan N.',
-      },
-      {
-        text: "J'ai fait appel à ***** pour la construction de ma nouvelle maison. Cependant, la maison présente de nombreuses malfaçons et ne correspond pas aux plans convenus. Je me sens trompé et désemparé face à cette situation.",
-        author: 'Enzo M.',
-      },
-      {
-        text: "J'ai contracté les services de ***** pour la rénovation de ma cuisine. Cependant, les travaux effectués présentent de nombreuses malfaçons et ne sont pas conformes à ce que nous avions convenu. Malgré mes tentatives de contact, l'entreprise ne répond pas.",
-        author: 'Timothée D.',
-      },
-      {
-        text: "J'ai engagé l'entreprise ***** pour la construction d'un garage attenant à ma maison. Malheureusement, le garage présente de nombreuses malfaçons et n'est pas du tout conforme aux plans. L'entreprise ne semble pas vouloir prendre ses responsabilités.",
-        author: 'Nour T.',
-      },
-      {
-        text: "J'ai fait appel à ***** pour des travaux de rénovation dans ma maison. Cependant, les travaux réalisés présentent de nombreuses malfaçons et ne sont pas conformes aux plans initiaux. Je me sens complètement arnaqué.",
-        author: 'Hassan M.',
-      },
-      {
-        text: "J'ai contracté les services de ***** pour la construction d'une nouvelle salle de bains. Toutefois, je constate de nombreuses malfaçons et la salle de bains n'est pas conforme aux plans. Malgré mes plaintes, l'entreprise ne semble pas vouloir résoudre le problème.",
-        author: 'Nathan L.',
-      },
-      {
-        text: "J'ai engagé l'entreprise ***** pour la rénovation de mon salon. Cependant, je constate de nombreuses malfaçons et le travail réalisé n'est pas conforme aux plans. Je me sens déçu et arnaqué.",
-        author: 'Leila R.',
-      },
-      {
-        text: "J'ai fait appel à ***** pour des travaux de rénovation dans ma maison. Les travaux réalisés présentent de nombreuses malfaçons et ne sont pas conformes aux plans initiaux. Malgré mes tentatives de contact, l'entreprise ne semble pas vouloir résoudre le problème.",
-        author: 'Stella J.',
-      },
-    ],
-  },
-  {
     url: 'pompe-a-chaleur-pac',
     lang: 'fr',
     isSemiAutomatic: false,

@@ -131,6 +131,10 @@ export const en = {
         title: 'TODO',
         description: '',
       },
+      malfaconsBatiment: {
+        title: 'Defects and Non-compliance in the Building Sector',
+        description: 'Have you invested in real estate or undertaken construction or renovation work and noticed any defects?',
+      },
     },
     faireUnSignalement: {
       etape: 'Step',
@@ -566,6 +570,7 @@ export const en = {
       resolutionTips: 'Tips for resolving individual issues (disputes)',
       telecomResolutionTips: 'Tips for resolving telecom individual issues (disputes)',
       obligationFibre: 'Report a forced migration to fiber optic Internet',
+      malfaçonsBatiment: 'Report a defect or non-compliance in the building sector',
       reportIncidentSection: 'Submitting a report',
       reportIncidentFor: 'Report a company for',
       seeFullTree: 'See also',

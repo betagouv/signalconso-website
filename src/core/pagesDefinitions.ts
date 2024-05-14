@@ -59,6 +59,7 @@ export const internalPageDefs = {
   litige: page(`/litige`),
   refundTelecom: page(`/remboursement-telecom`),
   obligationFibre: page('/obligation-adsl-fibre', {hasAlternate: false}),
+  malfaconsBatiment: page('/malfacons-non-conformites-batiment'),
 }
 
 const externalPageDefs = {

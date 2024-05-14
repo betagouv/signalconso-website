@@ -131,6 +131,10 @@ export const fr = {
         title: `Fibre optique : installation forcée par votre opérateur Internet ?`,
         description: `Signalez un passage à la fibre forcé par votre fournisseur d'accès Internet`,
       },
+      malfaconsBatiment: {
+        title: `Malfaçons et non-conformités dans le domaine du bâtiment`,
+        description: `Vous avez investi dans un bien immobilier ou entrepris des travaux de construction ou de rénovation et vous avez constaté des malfaçons ?`,
+      },
     },
     faireUnSignalement: {
       etape: 'Étape',
@@ -577,6 +581,7 @@ export const fr = {
       resolutionTips: "Conseils pour résolution d'un problème individuel (litige)",
       telecomResolutionTips: "Conseils pour résolution d'un problème individuel lié au télécom (litige)",
       obligationFibre: 'Faire un signalement pour une migration forcée vers la fibre optique',
+      malfaçonsBatiment: 'Faire un signalement pour une malfaçons ou une non-conformités dans le domaine du bâtiment',
       reportIncidentSection: "Dépôt d'un signalement",
       reportIncidentFor: 'Faire un signalement pour',
       seeFullTree: 'Voir aussi',
