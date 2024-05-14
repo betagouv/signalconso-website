@@ -2,7 +2,7 @@
 import {CompanyByTrain} from '@/components_feature/reportFlow/Company/CompanyByTrain'
 import {BarcodeProduct} from '@/model/BarcodeProduct'
 import {ReportDraft2} from '@/model/ReportDraft2'
-import {SpecificWebsiteCompanyKinds} from '../../../anomalies/Anomaly'
+import {SpecificProductCompanyKinds, SpecificWebsiteCompanyKinds} from '../../../anomalies/Anomaly'
 import {CompanyDraft, CompanySearchResult} from '../../../model/Company'
 import {fnSwitch} from '../../../utils/FnSwitch'
 import {DeepPartial} from '../../../utils/utils'
@@ -88,7 +88,9 @@ export function CompanyIdentificationDispatch({draft, updateReport}: CommonProps
         </CompanyByStation>
       )
     case 'PRODUCT':
-      return <BarcodeTree {...{draft, updateReport}} />
+      return <BarcodeTree {...{draft, updateReport}} specificProductCompanyKinds={'PRODUCT'} />
+    case 'PRODUCT_POINT_OF_SALE':
+      return <BarcodeTree {...{draft, updateReport}} specificProductCompanyKinds={'PRODUCT_POINT_OF_SALE'} />
     case 'PRODUCT_OPENFF':
       return <OpenFfTree {...{draft, updateReport}} />
 
@@ -325,9 +327,13 @@ function CommonTree({
   )
 }
 
-function BarcodeTree({draft, updateReport}: CommonProps) {
+function BarcodeTree({
+  specificProductCompanyKinds,
+  draft,
+  updateReport,
+}: {specificProductCompanyKinds: SpecificProductCompanyKinds} & CommonProps) {
   return (
-    <CompanySearchByBarcode>
+    <CompanySearchByBarcode searchProductOnly={specificProductCompanyKinds === 'PRODUCT_POINT_OF_SALE'}>
       {results => {
         if (results.kind === 'dont_know_barcode') {
           return (
@@ -338,6 +344,7 @@ function BarcodeTree({draft, updateReport}: CommonProps) {
         return (
           <>
             <BarcodeSearchResult
+              specificProductCompanyKinds={specificProductCompanyKinds}
               product={product}
               company={company}
               onSubmit={(company, barcodeProduct) => {
@@ -349,6 +356,9 @@ function BarcodeTree({draft, updateReport}: CommonProps) {
                 })
               }}
             />
+            {specificProductCompanyKinds === 'PRODUCT_POINT_OF_SALE' && (
+              <div className="text-xl mb-4 pt-8">Nous avons maintenant besoin de connaitre le point de vente du produit.</div>
+            )}
             {!company && (
               <CommonTree {...{draft, updateReport}} phoneOrWebsite={undefined} barcodeProduct={product} result={undefined} />
             )}
@@ -369,6 +379,7 @@ function OpenFfTree({draft, updateReport}: CommonProps) {
   return (
     <>
       <BarcodeSearchResult
+        specificProductCompanyKinds={'PRODUCT'}
         product={product}
         company={company}
         onSubmit={(company, barcodeProduct) => {

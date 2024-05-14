@@ -83,6 +83,7 @@ export const CompanyAskForeignDetails = ({onSubmit, companyKind}: Props) => {
                     LOCATION: m.cantIdentifyLocationCompany,
                     SOCIAL: m.cantIdentifyCompany,
                     PRODUCT: m.cantIdentifyCompany,
+                    PRODUCT_POINT_OF_SALE: m.cantIdentifyCompany,
                     PRODUCT_OPENFF: m.cantIdentifyCompany,
                     TRAIN: m.cantIdentifyCompany,
                     STATION: m.cantIdentifyCompany,
