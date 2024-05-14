@@ -136,8 +136,8 @@ export const en = {
         description: 'Have you invested in real estate or undertaken construction or renovation work and noticed any defects?',
       },
       obsolescencePage: {
-        title: '',
-        description: '',
+        title: 'Obsolescence programmée',
+        description: 'votre appareil a une durée de vie qui vous semble trop courte',
       },
     },
     faireUnSignalement: {

@@ -136,8 +136,8 @@ export const fr = {
         description: `Vous avez investi dans un bien immobilier ou entrepris des travaux de construction ou de rénovation et vous avez constaté des malfaçons ?`,
       },
       obsolescencePage: {
-        title: 'blabla',
-        description: 'blabla',
+        title: 'Obsolescence programmée',
+        description: 'votre appareil a une durée de vie qui vous semble trop courte',
       },
     },
     faireUnSignalement: {
