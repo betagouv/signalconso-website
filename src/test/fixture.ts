@@ -1,5 +1,6 @@
 import {allAnomalies} from '@/anomalies/Anomalies'
 import {AppLang} from '@/i18n/localization/AppLangs'
+import {BarcodeProduct} from '@/model/BarcodeProduct'
 import {getIndexForStep, ReportStep, reportSteps} from '@/model/ReportStep'
 import {InfoWall, reportTags, socialNetworks, Subcategory} from '../anomalies/Anomaly'
 import {Address, ApiAddress} from '../model/Address'
@@ -7,7 +8,6 @@ import {CompanyDraft, CompanySearchResult, WebsiteCompanySearchResult} from '../
 import {CreatedReport} from '../model/CreatedReport'
 import {Influencer, ReportDraft, ReportDraftConsumer} from '../model/ReportDraft'
 import {FileOrigin} from '../model/UploadedFile'
-import {BarcodeProduct} from '@/model/BarcodeProduct'
 
 export class SeedableRandom {
   seed = 1
@@ -128,7 +128,7 @@ export class Fixture {
     const stepOrder: {[key in ReportStep]: (_: Partial<ReportDraft>) => Partial<ReportDraft>} = {
       BuildingProblem: _ => ({
         ..._,
-        category: random.oneOf(allAnomalies(currentLang)),
+        anomaly: random.oneOf(allAnomalies(currentLang)),
         consumerWish: random.oneOf(['fixContractualDispute', 'companyImprovement', 'getAnswer']),
       }),
       BuildingDetails: _ => ({
