@@ -135,6 +135,10 @@ export const en = {
         title: 'Defects and Non-compliance in the Building Sector',
         description: 'Have you invested in real estate or undertaken construction or renovation work and noticed any defects?',
       },
+      obsolescencePage: {
+        title: '',
+        description: '',
+      },
     },
     faireUnSignalement: {
       etape: 'Step',
@@ -571,6 +575,7 @@ export const en = {
       telecomResolutionTips: 'Tips for resolving telecom individual issues (disputes)',
       obligationFibre: 'Report a forced migration to fiber optic Internet',
       malfaçonsBatiment: 'Report a defect or non-compliance in the building sector',
+      obsolescencePage: 'Report a device with a lifespan that seems too short',
       reportIncidentSection: 'Submitting a report',
       reportIncidentFor: 'Report a company for',
       seeFullTree: 'See also',

@@ -135,6 +135,10 @@ export const fr = {
         title: `Malfaçons et non-conformités dans le domaine du bâtiment`,
         description: `Vous avez investi dans un bien immobilier ou entrepris des travaux de construction ou de rénovation et vous avez constaté des malfaçons ?`,
       },
+      obsolescencePage: {
+        title: 'blabla',
+        description: 'blabla',
+      },
     },
     faireUnSignalement: {
       etape: 'Étape',
@@ -582,6 +586,7 @@ export const fr = {
       telecomResolutionTips: "Conseils pour résolution d'un problème individuel lié au télécom (litige)",
       obligationFibre: 'Faire un signalement pour une migration forcée vers la fibre optique',
       malfaçonsBatiment: 'Faire un signalement pour une malfaçons ou une non-conformités dans le domaine du bâtiment',
+      obsolescencePage: 'Faire un signalement pour un appareil dont la durée de vie vous semble trop courte',
       reportIncidentSection: "Dépôt d'un signalement",
       reportIncidentFor: 'Faire un signalement pour',
       seeFullTree: 'Voir aussi',

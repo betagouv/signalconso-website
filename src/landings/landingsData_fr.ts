@@ -1173,36 +1173,7 @@ export const frLandingsData = [
       },
     ],
   },
-  {
-    url: 'duree-de-vie-produit-obsolescence-programmee',
-    lang: 'fr',
-    isSemiAutomatic: false,
-    seoTitle: 'Duree-de-vie-produit-obsolescence-programmee',
-    seoDescription:
-      'Signalez un appareil dont la durée de vie vous semble trop courte et qui pourrait s’apparenter à de l’obsolescence programmée. ',
-    title: 'Obsolescence programmée : votre appareil a une durée de vie qui vous semble trop courte ',
-    targetedCategory: ['AchatMagasin'],
-    catchPhrase:
-      'Signalez un appareil dont la durée de vie vous semble trop courte et pourrait s’apparenter à de l’obsolescence programmée et contribuez ainsi à préserver notre environnement pour les générations futures.',
-    secondaryTitle1:
-      'Pourquoi signaler un appareil dont la durée de vie vous semble trop courte et pourrait s’apparenter à de l’obsolescence programmée ?',
-    secondaryTitle2:
-      "Que devient votre signalement relatif à l'obsolescence programmée d'un appareil dont la durée de vie vous semble trop courte ?",
-    sampleReports: [
-      {
-        text: "Après l'achat d'un réfrigérateur dans votre magasin, j'ai été consterné de constater que l'appareil est tombé en panne peu de temps après la fin de sa garantie. En consultant un réparateur indépendant, il m'a été confirmé que j'étais loin d'être le seul et que selon lui cette panne était due à une obsolescence programmée délibérée. Cette pratique est non seulement injuste pour les consommateurs, qui se retrouvent obligés de remplacer des appareils encore parfaitement fonctionnels, mais aussi néfaste pour l'environnement, en contribuant à la surproduction de déchets électroniques. Je demande des mesures urgentes pour mettre fin à cette pratique et pour garantir la durabilité des produits électroniques.",
-        author: 'Léa J.',
-      },
-      {
-        text: "J'ai acheté mon smartphone dans votre boutique il y a un peu plus de deux ans. Il a subitement cessé de fonctionner juste après la fin de sa garantie. Quand je me suis rapproché de votre boutique vous m'avez informé que vos techniciens n'étaient pas en mesure de réaliser la réparation nécessaire. Je me suis rapproché d'un réparateur indépendant qui m'a expliqué que la réparation n'était pas complexe en soit mais que les pièces de remplacement n'existaient plus depuis plusieurs mois. Cette pratique me questionne ! Merci de m'aider à trouver une solution.",
-        author: 'Hugo Y.',
-      },
-      {
-        text: "J'ai acheté un nouvel ordinateur portable dans votre magasin il y a quelques années. Je suis choqué de constater que très rapidement l'appareil a commencé à présenter des dysfonctionnements sérieux, rendant son utilisation quasiment impossible. Après avoir consulté un technicien , il m'a été confirmé qu'il ne pouvait rien faire pour moi.  Je me trouve contraint de  racheter un nouvel ordinateur alors qu'il est par ailleurs en très bon état. Cela est évidemment problématique pour mon portefeuille mais aussi pour l'environnement . Arrêtez de générer tous ces déchets électroniques inutiles ! Je comprends l'intérêt de l'obsolescence programmée pour la santé de votre société mais pensez aussi à la santé de la planète de vos enfants !  ",
-        author: 'Sarah L.',
-      },
-    ],
-  },
+
   {
     url: 'duree-de-vie-produit-obsolescence-programmee-internet',
     lang: 'fr',
