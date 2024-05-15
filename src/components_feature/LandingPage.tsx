@@ -11,15 +11,15 @@ import Link from 'next/link'
 import {ReactNode, useId} from 'react'
 
 import {bigReportButtonProps, getBigReportButtonText} from '@/components_simple/buttons/buttonsUtils'
-import {AnomalyTile} from '../components_simple/AnomalyTile'
 import {buildLinkHomePickCategory, buildLinkStartReport, pagesDefs} from '../core/pagesDefinitions'
 
+import {AnomaliesGrid} from '@/components_simple/AnomaliesGrid'
+import {FullWidthPageContainer} from '@/components_simple/PageContainers'
 import {getI18n} from '@/i18n/I18nDictionnary'
 import {AppLangs} from '@/i18n/localization/AppLangs'
 import imgPictoCheckbox from '@/img/landings/picto_checkbox.png'
 import imgPictoCrayons from '@/img/landings/picto_crayons.png'
 import imgPictoMasks from '@/img/landings/picto_masks.png'
-import {FullWidthPageContainer} from '@/components_simple/PageContainers'
 
 type Props = {
   landingData: LandingData
@@ -110,14 +110,8 @@ export default function LandingPage({landingData, lang}: Props) {
         {anomalies.length > 1 ? (
           <div id={chooseCategoriesDivId}>
             <h3 className="text-2xl">{m.landing.moreThanOneCat}</h3>
-            <div className="fr-grid-row fr-grid-row--gutters">
-              {anomalies.map(a => {
-                return (
-                  <div className="fr-col-12 fr-col-sm-6 fr-col-md-4" key={a.category}>
-                    <AnomalyTile anomaly={a} />
-                  </div>
-                )
-              })}
+            <div className="bg-sclightpurple py-8 px-4">
+              <AnomaliesGrid {...{anomalies}} />
             </div>
           </div>
         ) : (

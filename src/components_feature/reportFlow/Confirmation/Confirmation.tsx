@@ -111,9 +111,7 @@ function RenderEachStep({
       return (
         <ConfirmationStep title={m.step_problem} {...{goToStep, index}}>
           <div className="flex">
-            <div className="relative mr-4 min-w-[72px] min-h-[72px] max-w-[72px] max-h-[72px]">
-              <Image fill className="object-contain" src={`/image/pictos/${anomaly.img}.png`} alt="" />
-            </div>
+            <Image className="mr-4" width={72} height={72} src={`/image/pictos/${anomaly.img}.png`} alt="" />
             <div>
               <h3 className="fr-h6 !mb-2 !text-gray-500">{findAnomaly(draft.anomaly.category, currentLang).title}</h3>
               <ul className="pl-0 list-none">
