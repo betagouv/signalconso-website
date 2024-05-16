@@ -20,8 +20,8 @@ export function SwitchLang() {
   const home = `/${switchLang(currentLang)}`
 
   const newPath = () => {
-    const hasAlternatePageInOtherLang = Object.values(internalPageDefs).find(_ => {
-      return _.url != '/' && pathname.includes(_.url) && (_.hasAlternate || currentLang === AppLangs.en)
+    const hasEnglishVersionPageInOtherLang = Object.values(internalPageDefs).find(_ => {
+      return _.url != '/' && pathname.includes(_.url) && (_.hasEnglishVersion || currentLang === AppLangs.en)
     })
 
     // Special case for news, as not all news articles have language alternatives. When switching languages on a new article, we redirect to the news homepage.
@@ -29,7 +29,7 @@ export function SwitchLang() {
       ? addLangInPath(internalPageDefs.actualites.url, switchLang(currentLang))
       : replaceLangInPath(pathname, switchLang(currentLang))
 
-    return hasAlternatePageInOtherLang ? path : home
+    return hasEnglishVersionPageInOtherLang ? path : home
   }
 
   return _report.reportDraft.anomaly?.category ? (

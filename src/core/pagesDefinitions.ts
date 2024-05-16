@@ -16,16 +16,16 @@ export type PageDefInternal = {
   // Set false if the page has no english version
   // /!\ note that a "notFound()" still has to be manually coded on this page, when the lang is english
   // this boolean only affects the sitemap / metadatas / etc.
-  hasAlternate: boolean
+  hasEnglishVersion: boolean
 }
 
-function page(url: string, options: {noIndex?: boolean; hasAlternate?: boolean} = {}): PageDefInternal {
+function page(url: string, options: {noIndex?: boolean; hasEnglishVersion?: boolean} = {}): PageDefInternal {
   const noIndex = options.noIndex ?? false
-  const hasAlternate = options.hasAlternate ?? true
+  const hasEnglishVersion = options.hasEnglishVersion ?? true
   return {
     isExternal: false,
     url,
-    hasAlternate,
+    hasEnglishVersion,
     // without the leading slash, it becomes a relative link
     // useful for preserving the /webview/ prefix
     urlRelative: url.slice(1),
@@ -54,11 +54,13 @@ export const internalPageDefs = {
   cookies: page(`/cookies`),
   delaiRetractation: page(`/delai-de-retractation`),
   quiSommesNous: page(`/qui-sommes-nous`),
-  stats: page(`/stats`, {hasAlternate: false}),
+  stats: page(`/stats`, {hasEnglishVersion: false}),
   suiviEtViePrivee: page(`/suivi-et-vie-privee`),
   litige: page(`/litige`),
   refundTelecom: page(`/remboursement-telecom`),
-  obligationFibre: page('/obligation-adsl-fibre', {hasAlternate: false}),
+  obligationFibre: page('/obligation-adsl-fibre', {hasEnglishVersion: false}),
+  signalInfluenceur: page('/signaler-un-influenceur', {hasEnglishVersion: false}),
+  obsolescencePage: page('/duree-de-vie-produit-obsolescence-programmee', {hasEnglishVersion: false}),
 }
 
 const externalPageDefs = {

@@ -128,7 +128,15 @@ export const en = {
         description: '',
       },
       obligationFibre: {
-        title: 'TODO',
+        title: '',
+        description: '',
+      },
+      signalInfluenceur: {
+        title: '',
+        description: '',
+      },
+      obsolescencePage: {
+        title: '',
         description: '',
       },
     },
@@ -566,6 +574,8 @@ export const en = {
       resolutionTips: 'Tips for resolving individual issues (disputes)',
       telecomResolutionTips: 'Tips for resolving telecom individual issues (disputes)',
       obligationFibre: 'Report a forced migration to fiber optic Internet',
+      obsolescencePage: 'Report a device with a lifespan that seems too short',
+      signalInfluenceur: '',
       reportIncidentSection: 'Submitting a report',
       reportIncidentFor: 'Report a company for',
       seeFullTree: 'See also',
