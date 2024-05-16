@@ -62,7 +62,7 @@ export function ReportFlowStepperHeader(
                     })}
                 iconId="fr-icon-arrow-left-s-line"
                 priority="tertiary no outline"
-                className="mt-2"
+                className="mt-1 !p-0"
               >
                 {isPrevBackToHome ? m.menu_home : m.previous}
               </Button>
@@ -81,7 +81,7 @@ export function ReportFlowStepperHeader(
 }
 
 function H1OrP({kind, children}: {kind: 'h1' | 'p'} & ChildrenProps) {
-  const className = 'fr-stepper__title'
+  const className = 'fr-stepper__title mb-1'
   if (kind === 'h1') {
     return <h1 {...{className}}>{children}</h1>
   }
