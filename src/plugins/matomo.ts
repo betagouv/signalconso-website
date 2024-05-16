@@ -16,6 +16,7 @@ export class Matomo {
     _paq.push(['setSiteId', '61'])
     _paq.push(['setCookieDomain', 'signal.conso.gouv.fr'])
     _paq.push(['setDomains', 'signal.conso.gouv.fr'])
+    _paq.push(['HeatmapSessionRecording::enable'])
     const script = document.createElement('script')
     script.async = true
     script.src = url + 'matomo.js'
