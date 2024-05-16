@@ -39,7 +39,7 @@ export function ReportFlowStepperHeader(
     const stepsCount = reportSteps.length
     const isPrevBackToHome = stepIndex === 1
     return (
-      <div className="fr-stepper grow" tabIndex={-1} ref={divRef}>
+      <div className={`fr-stepper ${variant === 'report-started-alert' ? '!mb-4' : ''}`} tabIndex={-1} ref={divRef}>
         <H1OrP kind={variant === 'main' ? 'h1' : 'p'}>
           <span className="fr-stepper__state">
             {anomalyTitle} - {m.faireUnSignalement.etape} {stepIndex} {m.faireUnSignalement.sur} {stepsCount}
