@@ -1,0 +1,7 @@
+title: Faux Stock
+desc: >-
+  Exemple : On m'indique qu'il reste un petit nombre de produits et après en avoir acheté ce nombre ne change pas.
+ccrfCode:
+  - '23B'
+  - 29B
+  - 29C

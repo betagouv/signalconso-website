@@ -1,0 +1,7 @@
+title: Abonnement ou frais révélés à la fin du parcours d'acaht
+detailInputs:
+  - label: Cet abonnement ou ces frais étaient-ils précochés ?
+    type: RADIO
+    options:
+      - Oui
+      - Non

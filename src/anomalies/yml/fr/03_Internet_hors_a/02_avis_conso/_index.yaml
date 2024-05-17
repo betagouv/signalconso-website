@@ -1,0 +1,13 @@
+title: Un avis de consommateurs
+desc: >-
+  Exemple : On me demande de diffsuer des faux avis ou des faux avis sont en ligne
+subcategoriesTitle: Par quel canal avez-vous été contacté ?
+ccrfCode:
+  - 23B
+  - 216
+detailInputs:
+  - label: Nom du produit ou du service (facultatif)
+    type: TEXT
+    optional: true
+
+
