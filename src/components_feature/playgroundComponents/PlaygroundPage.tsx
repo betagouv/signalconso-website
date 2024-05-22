@@ -8,13 +8,13 @@ import {PlaygroundDetails} from '@/components_feature/playgroundComponents/Playg
 import {PlaygroundOther} from '@/components_feature/playgroundComponents/PlaygroundOther'
 import {ContentPageContainer} from '@/components_simple/PageContainers'
 
-import {usePathname, useSearchParams} from 'next/navigation'
-import {AcknowledgmentCases} from '../reportFlow/Acknowledgement/Acknowledgement'
+import {BarcodeProduct} from '@/model/BarcodeProduct'
+import {CompanyDraft} from '@/model/Company'
 import Button from '@codegouvfr/react-dsfr/Button'
 import Link from 'next/link'
-import {BarcodeProduct} from '@/model/BarcodeProduct'
+import {usePathname, useSearchParams} from 'next/navigation'
+import {AcknowledgmentCases} from '../reportFlow/Acknowledgement/Acknowledgement'
 import {CompanyFilled} from '../reportFlow/Company/CompanyFilled'
-import {CompanyDraft} from '@/model/Company'
 
 const companyDraft: CompanyDraft = {
   name: 'NomSociété',
@@ -180,16 +180,16 @@ const Playground = () => {
             Les liens ci-dessous permettent de tester les différents composants de l'interface sans avoir à refaire tout le
             parcours de signalement.
           </p>
-          <div className="flex mt-4">
-            <div className="flex-1">
+          <div className="flex flex-col xl:flex-row mt-4">
+            <div className="">
               <h5>Général</h5>
               <ul>{renderLinks(generalTestCases)}</ul>
             </div>
-            <div className="flex-1">
+            <div className="">
               <h5>Company</h5>
               <ul>{renderLinks(companyTestCases)}</ul>
             </div>
-            <div className="flex-1">
+            <div className="">
               <h5>Acknowledgment</h5>
               <ul>{renderLinks(acknowledgmentTestCases)}</ul>
             </div>
