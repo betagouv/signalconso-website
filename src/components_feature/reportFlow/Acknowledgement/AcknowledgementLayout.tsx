@@ -1,14 +1,12 @@
 'use client'
-import React, {ReactNode} from 'react'
+import {appConfig} from '@/core/appConfig'
 import {externalLinks} from '@/core/externalLinks' // Specify the path to the company logo or relevant image
 import {useI18n} from '@/i18n/I18n'
 import imgCompany from '@/img/illustrations/company.png'
-import Image from 'next/image'
-import {LinkBackToHome} from '../../../components_simple/LinkBackToHome'
-import {appConfig} from '@/core/appConfig'
 import {CreatedReport} from '@/model/CreatedReport'
-import {ReportDraft2} from '@/model/ReportDraft2'
-import {useReportFlowContext} from '@/components_feature/reportFlow/ReportFlowContext'
+import Image from 'next/image'
+import React, {ReactNode} from 'react'
+import {LinkBackToHome} from '../../../components_simple/LinkBackToHome'
 
 interface AcknowledgementLayoutProps {
   title?: string
@@ -42,14 +40,14 @@ const AcknowledgementLayout: React.FC<AcknowledgementLayoutProps> = ({
         {children}
 
         {createdReport.postReportHelper && (
-          <p>
+          <div>
             {createdReport.postReportHelper.title && (
               <h3 className="fr-h5 !text-scbluefrance">{createdReport.postReportHelper.title}</h3>
             )}
             {createdReport.postReportHelper.content && (
-              <span dangerouslySetInnerHTML={{__html: createdReport.postReportHelper.content}} />
+              <p dangerouslySetInnerHTML={{__html: createdReport.postReportHelper.content}} />
             )}
-          </p>
+          </div>
         )}
 
         {showChargeBack && (
