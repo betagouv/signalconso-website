@@ -48,7 +48,7 @@ export function ReportFlowStepperHeader(
         </H1OrP>
         <div className="fr-stepper__steps" data-fr-current-step={stepIndex} data-fr-steps={stepsCount}></div>
         {variant === 'main' && (
-          <div className="flex gap-2 justify-between">
+          <div className="flex gap-4 justify-between">
             {(!isWebView || !isPrevBackToHome) && (
               <Button
                 {...(isPrevBackToHome
