@@ -9,18 +9,16 @@ import {PlaygroundOther} from '@/components_feature/playgroundComponents/Playgro
 import {ContentPageContainer} from '@/components_simple/PageContainers'
 
 import {BarcodeProduct} from '@/model/BarcodeProduct'
-import {CompanyDraft} from '@/model/Company'
+import {CompanyDraft, CompanySearchResult} from '@/model/Company'
 import Button from '@codegouvfr/react-dsfr/Button'
 import Link from 'next/link'
 import {usePathname, useSearchParams} from 'next/navigation'
 import {AcknowledgmentCases} from '../reportFlow/Acknowledgement/Acknowledgement'
 import {CompanyFilled} from '../reportFlow/Company/CompanyFilled'
 
-const companyDraft: CompanyDraft = {
+const companySearchResult: CompanySearchResult = {
   name: 'NomSociété',
   siret: '01234567890123',
-  website: 'http://blabla.fr',
-  phone: '0987654321',
   address: {
     number: '33',
     street: 'avenue des Entreprises',
@@ -33,6 +31,12 @@ const companyDraft: CompanyDraft = {
   activityCode: '97.91B',
   activityLabel: 'vente a distance sur catalogue specialise',
   isMarketPlace: false,
+}
+
+const companyDraft: CompanyDraft = {
+  ...companySearchResult,
+  website: 'http://blabla.fr',
+  phone: '0987654321',
 }
 
 const barcodeProduct: BarcodeProduct = {
@@ -53,9 +57,11 @@ const companyTestCases = [
   'company_location',
   'company_social',
   'company_product',
-  'company_station',
+  'company_product_openff',
   'company_product_openff_product_found_but_no_company',
   'company_product_openff_product_not_found',
+  'company_train',
+  'company_station',
 ] as const
 
 const acknowledgmentTestCases = [
@@ -107,15 +113,20 @@ const Playground = () => {
         return <PlaygroundCompany companyKind="SOCIAL" />
       case 'company_product':
         return <PlaygroundCompany companyKind="PRODUCT" />
-      case 'company_station':
-        return <PlaygroundCompany companyKind="STATION" />
-      case 'company_product_openff_product_not_found':
+      case 'company_product_openff':
         return (
           <PlaygroundCompany
             companyKind="PRODUCT_OPENFF"
             partialReportDraft={{
               openFf: {
-                barcode: '123456',
+                barcode: '3017620422003',
+                product: {
+                  id: 'b02541f4-1529-4706-9572-29fd62f91d01',
+                  gtin: '3017620422003',
+                  productName: 'Nutella',
+                  siren: '803769827',
+                },
+                company: companySearchResult,
               },
             }}
           />
@@ -137,6 +148,21 @@ const Playground = () => {
             }}
           />
         )
+      case 'company_product_openff_product_not_found':
+        return (
+          <PlaygroundCompany
+            companyKind="PRODUCT_OPENFF"
+            partialReportDraft={{
+              openFf: {
+                barcode: '123456',
+              },
+            }}
+          />
+        )
+      case 'company_train':
+        return <PlaygroundCompany companyKind="TRAIN" />
+      case 'company_station':
+        return <PlaygroundCompany companyKind="STATION" />
       case 'companyFilled':
         return <CompanyFilled draft={{companyDraft}} onClear={console.log} stepNavigation={dummyStepNavigation} />
       case 'companyFilledWithProduct':
