@@ -1,8 +1,10 @@
+import {ClientReferenceHelpButton} from '@/components_feature/reportFlow/Consumer/ClientReferenceHelpButton'
 import {StepNavigation} from '@/components_feature/reportFlow/reportFlowStepper/ReportFlowStepper'
 import {ReportFlowStepperActions} from '@/components_feature/reportFlow/reportFlowStepper/ReportFlowStepperActions'
 import {RequiredFieldsLegend} from '@/components_simple/RequiredFieldsLegend'
 import {ScTextInput} from '@/components_simple/formInputs/ScTextInput'
 import {useApiClients} from '@/context/ApiClientsContext'
+import {useBreakpoints} from '@/hooks/useBreakpoints'
 import {useI18n} from '@/i18n/I18n'
 import {AppLangs} from '@/i18n/localization/AppLangs'
 import {ReportDraft2} from '@/model/ReportDraft2'
@@ -19,8 +21,6 @@ import {DeepPartial} from '../../../utils/utils'
 import {useReportFlowContext} from '../ReportFlowContext'
 import {ConsumerAnonymousInformation} from './ConsumerAnonymousInformation'
 import {ConsumerValidationDialog2, consumerValidationModal} from './ConsumerValidationDialog'
-import {SiretHelpButton} from '@/components_feature/reportFlow/Company/lib/SiretHelpButton'
-import {ClientReferenceHelpButton} from '@/components_feature/reportFlow/Consumer/ClientReferenceHelpButton'
 
 interface ConsumerForm {
   firstName: string
@@ -58,7 +58,7 @@ export const ConsumerInner = ({
   stepNavigation: StepNavigation
 }) => {
   const {m, currentLang} = useI18n()
-  // const [openValidationDialog, setOpenValidationDialog] = useState<boolean>(false)
+  const {isSmOrMore} = useBreakpoints()
   const {signalConsoApiClient} = useApiClients()
   const _reportFlow = useReportFlowContext()
   const _checkEmail = useMutation({
@@ -124,7 +124,7 @@ export const ConsumerInner = ({
               <ScRadioButtons
                 {...field}
                 required
-                orientation="horizontal"
+                orientation={isSmOrMore ? 'horizontal' : 'vertical'}
                 options={gendersOptions}
                 title={<WithIcon icon="ri-user-smile-line">{m.genderField}</WithIcon>}
                 titleSoberStyle
