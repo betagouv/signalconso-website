@@ -114,8 +114,8 @@ export class Fixture {
       employeeConsumer: random.boolean(),
       contactAgreement: random.boolean(),
       postReportHelper: {
-        title: 'random title',
-        content: 'random content',
+        title: `Titre d'aide... vous voulez en savoir plus sur [le sujet du signalement] ?`,
+        content: `Contenu d'aide... rendez-vous sur <a href=\"#" target=\"_blank\">les fiches pratiques de la DGCCRF</a>`,
       },
     }
   }

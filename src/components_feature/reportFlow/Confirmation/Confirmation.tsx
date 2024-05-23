@@ -146,7 +146,6 @@ function RenderEachStep({
         </ConfirmationStep>
       )
     case 'BuildingCompany':
-      console.log('@@@ building company', draft)
       return (
         <>
           {draft.companyDraft && (

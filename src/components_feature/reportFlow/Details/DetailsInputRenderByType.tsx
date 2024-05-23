@@ -6,14 +6,13 @@ import {ScTextarea} from '@/components_simple/formInputs/ScTextarea'
 import {appConfig} from '@/core/appConfig'
 import {useI18n} from '@/i18n/I18n'
 import {DetailInputValues2} from '@/model/ReportDraft2'
-import {Control, Controller, FieldErrors, UseFormGetValues, UseFormRegister, UseFormWatch} from 'react-hook-form'
 import {dateToIsoFormatWithoutTime, isDateInRange} from '@/utils/utils'
+import {Control, Controller, FieldErrors, UseFormRegister, UseFormWatch} from 'react-hook-form'
 import {DetailInput, DetailInputType} from '../../../anomalies/Anomaly'
 import {ScCheckbox} from '../../../components_simple/formInputs/ScCheckbox'
 import {ScRadioButtons} from '../../../components_simple/formInputs/ScRadioButtons'
 import {getOptionsFromInput, getPlaceholderFromInput} from './DetailInputsUtils'
 import {SpecifyFormUtils} from './Details'
-import {FriendlyHelpText} from '@/components_simple/FriendlyHelpText'
 
 export function DetailsInputRenderByType({
   register,
@@ -145,7 +144,6 @@ export function DetailsInputRenderByType({
             <ScCheckbox
               {...field}
               title={label}
-              titleSoberStyle
               required={required}
               errorMessage={errorMessage}
               error={hasErrors}

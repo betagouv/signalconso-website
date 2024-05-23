@@ -8,19 +8,17 @@ import {PlaygroundDetails} from '@/components_feature/playgroundComponents/Playg
 import {PlaygroundOther} from '@/components_feature/playgroundComponents/PlaygroundOther'
 import {ContentPageContainer} from '@/components_simple/PageContainers'
 
-import {usePathname, useSearchParams} from 'next/navigation'
-import {AcknowledgmentCases} from '../reportFlow/Acknowledgement/Acknowledgement'
+import {BarcodeProduct} from '@/model/BarcodeProduct'
+import {CompanyDraft, CompanySearchResult} from '@/model/Company'
 import Button from '@codegouvfr/react-dsfr/Button'
 import Link from 'next/link'
-import {BarcodeProduct} from '@/model/BarcodeProduct'
+import {usePathname, useSearchParams} from 'next/navigation'
+import {AcknowledgmentCases} from '../reportFlow/Acknowledgement/Acknowledgement'
 import {CompanyFilled} from '../reportFlow/Company/CompanyFilled'
-import {CompanyDraft} from '@/model/Company'
 
-const companyDraft: CompanyDraft = {
+const companySearchResult: CompanySearchResult = {
   name: 'NomSociété',
   siret: '01234567890123',
-  website: 'http://blabla.fr',
-  phone: '0987654321',
   address: {
     number: '33',
     street: 'avenue des Entreprises',
@@ -33,6 +31,12 @@ const companyDraft: CompanyDraft = {
   activityCode: '97.91B',
   activityLabel: 'vente a distance sur catalogue specialise',
   isMarketPlace: false,
+}
+
+const companyDraft: CompanyDraft = {
+  ...companySearchResult,
+  website: 'http://blabla.fr',
+  phone: '0987654321',
 }
 
 const barcodeProduct: BarcodeProduct = {
@@ -53,9 +57,11 @@ const companyTestCases = [
   'company_location',
   'company_social',
   'company_product',
-  'company_station',
+  'company_product_openff',
   'company_product_openff_product_found_but_no_company',
   'company_product_openff_product_not_found',
+  'company_train',
+  'company_station',
 ] as const
 
 const acknowledgmentTestCases = [
@@ -107,15 +113,20 @@ const Playground = () => {
         return <PlaygroundCompany companyKind="SOCIAL" />
       case 'company_product':
         return <PlaygroundCompany companyKind="PRODUCT" />
-      case 'company_station':
-        return <PlaygroundCompany companyKind="STATION" />
-      case 'company_product_openff_product_not_found':
+      case 'company_product_openff':
         return (
           <PlaygroundCompany
             companyKind="PRODUCT_OPENFF"
             partialReportDraft={{
               openFf: {
-                barcode: '123456',
+                barcode: '3017620422003',
+                product: {
+                  id: 'b02541f4-1529-4706-9572-29fd62f91d01',
+                  gtin: '3017620422003',
+                  productName: 'Nutella',
+                  siren: '803769827',
+                },
+                company: companySearchResult,
               },
             }}
           />
@@ -137,6 +148,21 @@ const Playground = () => {
             }}
           />
         )
+      case 'company_product_openff_product_not_found':
+        return (
+          <PlaygroundCompany
+            companyKind="PRODUCT_OPENFF"
+            partialReportDraft={{
+              openFf: {
+                barcode: '123456',
+              },
+            }}
+          />
+        )
+      case 'company_train':
+        return <PlaygroundCompany companyKind="TRAIN" />
+      case 'company_station':
+        return <PlaygroundCompany companyKind="STATION" />
       case 'companyFilled':
         return <CompanyFilled draft={{companyDraft}} onClear={console.log} stepNavigation={dummyStepNavigation} />
       case 'companyFilledWithProduct':
@@ -180,16 +206,16 @@ const Playground = () => {
             Les liens ci-dessous permettent de tester les différents composants de l'interface sans avoir à refaire tout le
             parcours de signalement.
           </p>
-          <div className="flex mt-4">
-            <div className="flex-1">
+          <div className="flex flex-col xl:flex-row mt-4">
+            <div className="">
               <h5>Général</h5>
               <ul>{renderLinks(generalTestCases)}</ul>
             </div>
-            <div className="flex-1">
+            <div className="">
               <h5>Company</h5>
               <ul>{renderLinks(companyTestCases)}</ul>
             </div>
-            <div className="flex-1">
+            <div className="">
               <h5>Acknowledgment</h5>
               <ul>{renderLinks(acknowledgmentTestCases)}</ul>
             </div>
