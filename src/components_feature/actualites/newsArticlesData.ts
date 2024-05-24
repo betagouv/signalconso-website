@@ -5,6 +5,13 @@ export type NewsArticle = (typeof initialNewsArticlesData)[number]
 // This is the display order. Keep the most recents at the start of the array
 export const initialNewsArticlesData = [
   {
+    date: '2024-05-28',
+    lang: 'fr',
+    slug: 'Reduflation-ou-shrinkflation',
+    title: `Réduflation ou shrinkflation: obligation d'informer les consommateurs dès le 1er juillet!`,
+    excerpt: `Quand shrinkflation rime avec manque d’information, les consommateurs en sont les premières victimes.`,
+  },
+  {
     date: '2024-04-23',
     lang: 'fr',
     slug: 'magasins-ephemeres',
