@@ -8,7 +8,6 @@ import {CompanySearchEventActions, EventCategories} from '../../../analytic/anal
 import {Animate} from '../../../components_simple/Animate'
 import {ButtonWithLoader} from '../../../components_simple/buttons/Buttons'
 import {ScTextInput} from '../../../components_simple/formInputs/ScTextInput'
-import {useApiClients} from '../../../context/ApiClientsContext'
 import {useI18n} from '../../../i18n/I18n'
 import {BarcodeProduct} from '../../../model/BarcodeProduct'
 import {CompanySearchResult} from '../../../model/Company'
@@ -32,9 +31,10 @@ type Results =
 
 interface Props {
   children: (results: Results) => ReactNode
+  searchProductOnly: boolean
 }
 
-export const CompanySearchByBarcode = ({children}: Props) => {
+export const CompanySearchByBarcode = ({searchProductOnly, children}: Props) => {
   const {m} = useI18n()
   const _analytic = useAnalyticContext()
   const {
@@ -45,7 +45,7 @@ export const CompanySearchByBarcode = ({children}: Props) => {
 
   const [formStatus, setFormStatus] = useState<FormStatus>({kind: 'editing'})
   const gtin = formStatus && formStatus.kind === 'submitted' ? formStatus.gtin : undefined
-  const _search = useBarcodeSearch(gtin)
+  const _search = useBarcodeSearch(gtin, searchProductOnly)
 
   const onSkip = () => setFormStatus({kind: 'skipped'})
   const onEdit = () => setFormStatus({kind: 'editing'})
