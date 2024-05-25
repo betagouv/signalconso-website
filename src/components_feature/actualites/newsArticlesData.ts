@@ -8,7 +8,7 @@ export const initialNewsArticlesData = [
     date: '2024-05-24',
     lang: AppLangs.fr,
     slug: 'signalconso-reduflation',
-    title: 'Réduflation ou shrinkflation: obligation d\'informer les consommateurs dès le 1er juillet !',
+    title: "Réduflation ou shrinkflation: obligation d'informer les consommateurs dès le 1er juillet !",
     excerpt: `Réduflation et shrinkflation sont des termes issus de la contraction de "réduction" et "inflation" (et en anglais « shrink » qui signifie rétrécir ou réduire, et inflation). Ils désignent des pratiques commerciales visant à masquer la diminution de la quantité de produits tout en maintenant voire en augmentant leurs prix.`,
   },
   {
