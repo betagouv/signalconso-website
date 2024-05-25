@@ -14,6 +14,7 @@ import {ArticleFauxSitesAdministratifs} from './ArticleFauxSitesAdministratifs'
 import {ArticleOccasionReconditionnes} from '@/components_feature/actualites/ArticleOccasionReconditionnes'
 import {ArticleAMF} from '@/components_feature/actualites/ArticleAMF'
 import {ArticleMagasinsEphemeres} from '@/components_feature/actualites/ArticleMagasinsEphemeres'
+import {ArticleEvolutionsQuantitePrix} from "@/components_feature/actualites/ArticleEvolutionsQuantitePrix";
 
 // We can't put import these JSX directly into the "newsArticlesData"
 // it causes too much import problems in the sitemap generation script
@@ -49,5 +50,7 @@ export function getArticleContent(slug: NewsArticle['slug']) {
       return ArticleQuestionnaireSiteDgccrf
     case 'signalconso-desormais-disponible-en-application-mobile':
       return ArticleAppMobile
+    case 'signalconso-reduflation':
+      return ArticleEvolutionsQuantitePrix
   }
 }
