@@ -28,6 +28,7 @@ export type Anomaly = CategoryNodeBase & {
   isHiddenDemoCategory?: boolean
   isSpecialOpenFoodFactsCategory?: boolean
   // text or question introducing the choice between the subcategories
+  isExternal?: boolean // Define if the is category is an external link
 }
 
 type CompanyKindQuestion = {

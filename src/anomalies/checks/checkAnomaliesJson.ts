@@ -19,6 +19,7 @@ const anomalySpec: ObjectSpec = {
   seoDescription: _ => _.assertIsString(),
   img: _ => _.assertIsString(),
   hidden: _ => _.ifDefined()?.assertIsBoolean(),
+  isExternal: _ => _.ifDefined()?.assertIsBoolean(),
   isHiddenDemoCategory: _ => _.ifDefined()?.assertIsBoolean(),
   isSpecialOpenFoodFactsCategory: _ => _.ifDefined()?.assertIsBoolean(),
   subcategoriesTitle: _ => _.ifDefined()?.assertIsString(),
