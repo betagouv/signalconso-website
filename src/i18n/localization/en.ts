@@ -1364,5 +1364,6 @@ export const en = {
       chargeBack: `Through the charge-back procedure, you may be eligible for a refund following an online purchase:`,
       emailForErrorInReport: `In case of an error in your report, send an email to `,
     },
+    externalLink: 'External link',
   },
 }

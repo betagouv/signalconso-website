@@ -1402,5 +1402,6 @@ export const fr = {
       chargeBack: `Grâce à la procédure de charge-back vous pouvez être remboursé gratuitement suite à un achat effectué en ligne :`,
       emailForErrorInReport: `En cas d’erreur sur votre signalement, envoyez un email à `,
     },
+    externalLink: 'Lien externe',
   },
 }
