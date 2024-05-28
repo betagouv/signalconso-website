@@ -8,6 +8,7 @@ import {notFound} from 'next/navigation'
 const obsolescenceReportPage = 'https://signal.conso.gouv.fr/fr/obsolescence/faire-un-signalement'
 
 export function obsolescencePage(props: PageComponentProps) {
+  return notFound()
   const lang = props.params.lang
   if (lang !== 'fr') {
     return notFound()
