@@ -81,7 +81,7 @@ export function ScHeader() {
           },
           buildSubmenu(m.header.voirAussiTitle, [
             buildMenuLink(currentLang, pathName, pagesDefs.quiSommesNous.url, m.header.quiSommesNousLinkTitle),
-            ...(pagesDefs.stats.hasAlternate || currentLang === AppLangs.fr
+            ...(pagesDefs.stats.hasEnglishVersion || currentLang === AppLangs.fr
               ? [buildMenuLink(currentLang, pathName, pagesDefs.stats.url, m.header.statsLinkTitle)]
               : []),
             buildMenuLink(currentLang, pathName, pagesDefs.contact.url, m.header.contactLinkTitle),

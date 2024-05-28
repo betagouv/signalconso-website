@@ -45,6 +45,8 @@ const PlanDuSite = (props: PageComponentProps) => {
             )
           })}
           <BasicPageLink page="obligationFibre" label={m.planDuSite.obligationFibre} {...{lang}} />
+          <BasicPageLink page="signalInfluenceur" label={m.planDuSite.signalInfluenceur} {...{lang}} />
+          {/* <BasicPageLink page="obsolescencePage" label={m.planDuSite.obsolescencePage} {...{lang}} /> */}
           <hr className="mt-4" />
         </ul>
         <p className="mt-4">
@@ -107,7 +109,7 @@ const PlanDuSite = (props: PageComponentProps) => {
 
 function BasicPageLink({page, label, lang}: {page: keyof typeof internalPageDefs; label: string; lang: AppLang}) {
   const pageDef = internalPageDefs[page]
-  if (lang !== AppLangs.fr && !pageDef.hasAlternate) {
+  if (lang !== AppLangs.fr && !pageDef.hasEnglishVersion) {
     return null
   }
   return (

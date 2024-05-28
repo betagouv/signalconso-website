@@ -70,7 +70,7 @@ function generateAlternatesMetadata(lang: AppLangs, pageDef: PageDefInternal) {
     : {
         alternates: {
           canonical: buildCleanUrl(lang, pageDef),
-          ...(pageDef.hasAlternate
+          ...(pageDef.hasEnglishVersion
             ? {
                 languages: Object.fromEntries(
                   supportedLang.map(l => {
