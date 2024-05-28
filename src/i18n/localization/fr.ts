@@ -131,6 +131,15 @@ export const fr = {
         title: `Fibre optique : installation forcée par votre opérateur Internet ?`,
         description: `Signalez un passage à la fibre forcé par votre fournisseur d'accès Internet`,
       },
+      signalInfluenceur: {
+        title: 'Signalez une publication frauduleuse d’un influenceur',
+        description:
+          'Vous avez repéré une publication trompeuse ou non conforme d’un influenceur sur Instagram, Snapchat, TikTok, etc. ? Signalez-la sur SignalConso.',
+      },
+      obsolescencePage: {
+        title: 'Obsolescence programmée',
+        description: 'votre appareil a une durée de vie qui vous semble trop courte',
+      },
     },
     faireUnSignalement: {
       etape: 'Étape',
@@ -577,6 +586,8 @@ export const fr = {
       resolutionTips: "Conseils pour résolution d'un problème individuel (litige)",
       telecomResolutionTips: "Conseils pour résolution d'un problème individuel lié au télécom (litige)",
       obligationFibre: 'Faire un signalement pour une migration forcée vers la fibre optique',
+      obsolescencePage: 'Faire un signalement pour un appareil dont la durée de vie vous semble trop courte',
+      signalInfluenceur: 'Faire un signalement sur un influenceur',
       reportIncidentSection: "Dépôt d'un signalement",
       reportIncidentFor: 'Faire un signalement pour',
       seeFullTree: 'Voir aussi',
