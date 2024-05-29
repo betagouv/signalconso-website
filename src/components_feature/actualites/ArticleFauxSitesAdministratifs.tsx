@@ -1,14 +1,13 @@
-import React from 'react'
-import Link from 'next/link'
+import imgFauxSites from '@/img/actualites/ArticleFauxSitesAdministratifs.png'
 import Image from 'next/image'
-import imgFauxSites from 'src/img/actualites/ArticleFauxSitesAdministratifs.png'
+import Link from 'next/link'
 
 export function ArticleFauxSitesAdministratifs() {
   return (
     <div>
       <div className="flex flex-col md:flex-row gap-5 mb-5">
         <div className="w-full sm:w-1/2 md:w-1/2">
-          <Image src={imgFauxSites} alt="src/img/actualites/ArticleFauxSitesAdministratifs.png" width={300} height={300} />
+          <Image src={imgFauxSites} alt="" width={300} height={300} />
         </div>
         <div>
           <p>
