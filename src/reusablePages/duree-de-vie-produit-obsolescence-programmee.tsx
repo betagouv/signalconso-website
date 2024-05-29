@@ -15,19 +15,15 @@ export function obsolescencePage(props: PageComponentProps) {
 
   return (
     <FullWidthPageContainer>
-      <div className="bg-scblueinfo text-white border-t-[1px] border-0 border-solid border-black">
+      <div className="bg-scblueinfo text-white">
         <div className="fr-container py-12 flex items-center justify-center">
           <div className="max-w-4xl w-full flex flex-col items-start">
-            <h1 className="flex flex-col mb-6">
-              <span className="text-3xl font-bold mb-2 text-white">
-                Obsolescence programmée et indices de durabilité et de réparabilité
-              </span>
-            </h1>
-            <p className="text-2xl mb-4">
+            <h1 className="flex flex-col mb-6 text-white">Obsolescence programmée et indices de durabilité et de réparabilité</h1>
+            <p className="text-lg mb-4">
               La durée de vie de votre appareil vous semble particulièrement courte ? Il n'existe pas de pièces détachées pour le
               réparer ? Vous n'avez pas eu connaissance de son indice de durabilité lors de son achat ?
             </p>
-            <p className="text-2xl mb-4">Que pouvez-vous faire ?</p>
+            <p className="text-lg mb-4">Que pouvez-vous faire ?</p>
             <div className="flex justify-center w-full">
               <Button
                 className="border-blue-300 border border-solid"
@@ -40,7 +36,7 @@ export function obsolescencePage(props: PageComponentProps) {
           </div>
         </div>
       </div>
-      <div className="bg-sclightpurple text-lg">
+      <div className="bg-sclightpurple ">
         <div className="fr-container py-12">
           <h2 className="text-3xl !text-slate-900 text-normal mt-2 mb-8">Dans quels cas pouvez-vous faire un signalement ?</h2>
           <div>
@@ -48,7 +44,7 @@ export function obsolescencePage(props: PageComponentProps) {
               La présence d'un <strong>indice de réparabilité</strong> est <strong> obligatoire</strong> sur les appareils
               suivants, qu'ils soient vendus en magasin ou sur Internet :
             </p>
-            <ul className="list-disc ml-8">
+            <ul className="list-disc ml-8 text-lg">
               <li>Les aspirateurs filaires</li>
               <li>Les aspirateurs non filaires</li>
               <li>Les aspirateurs robots</li>
@@ -64,8 +60,10 @@ export function obsolescencePage(props: PageComponentProps) {
               <li>Les ordinateurs portables</li>
             </ul>
             <div className="">
-              <p className="">S'il n'y a pas d'indice de réparabilité sur ces produits, vous pouvez faire un signalement.</p>
-              <p className="mt-4">
+              <p className="text-lg">
+                S'il n'y a pas d'indice de réparabilité sur ces produits, vous pouvez faire un signalement.
+              </p>
+              <p className="text-lg">
                 L'indice de réparabilité est auto attribué par les fabricants selon un cahier des charges défini par
                 l'administration. Si vous avez un doute sur cette note et que vous pensez qu'elle a pu être gonflée
                 artificiellement par les fabricants, vous pouvez faire un signalement.
