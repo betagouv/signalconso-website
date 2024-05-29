@@ -51,8 +51,9 @@ export function Stats(props: PageComponentProps) {
         <FriendlyHelpText>
           <p className="mb-2">
             <i className={'ri-information-line mr-2'} />
-            Lorsqu'une entreprise reçoit un signalement de SignalConso, elle est invitée à reconnaître sa faute et s'engager à
-            s'améliorer, et à réparer le tort éventuel fait au consommateur. C'est ce qu'on appelle une « promesse d'action ».
+            Lorsqu'une entreprise reçoit un signalement via SignalConso, elle est encouragée à reconnaître son erreur, à s'engager
+            dans un processus d'amélioration, et à réparer le préjudice éventuellement causé au consommateur. C'est ce qu'on
+            appelle une « promesse d'action ».
           </p>
           <p className="mb-0">
             <span className="font-bold">C'est la métrique phare de SignalConso</span>, celle que notre équipe cherche à améliorer

@@ -1,14 +1,14 @@
+import {getArticleContent} from '@/components_feature/actualites/getArticleContent'
 import {NewsArticle, getNewsArticleData} from '@/components_feature/actualites/newsArticlesData'
 import {ContentPageContainer} from '@/components_simple/PageContainers'
 import {GenerateMetadataArg, PageComponentProps, PathParams} from '@/core/metadatas'
 import {pagesDefs} from '@/core/pagesDefinitions'
+import {isoToHumanReadableText} from '@/utils/utils'
 import {Metadata} from 'next'
 import Link from 'next/link'
 import {notFound} from 'next/navigation'
-import {isoToHumanReadableText} from '@/utils/utils'
 import {getI18n} from '../../../../i18n/I18nDictionnary'
 import {AppLang} from '../../../../i18n/localization/AppLangs'
-import {getArticleContent} from '@/components_feature/actualites/getArticleContent'
 
 type LocalPathParams = PathParams<{
   articleSlug: string
@@ -30,10 +30,10 @@ export function generateMetadata(props: GenerateMetadataArg<LocalPathParams>): M
 
 export default function Page(props: PageComponentProps<LocalPathParams>) {
   const article: NewsArticle | undefined = getArticleData(props.params)
-  return article ? <NewsArticle article={article} lang={props.params.lang} /> : notFound()
+  return article ? <NewsArticleComponent article={article} lang={props.params.lang} /> : notFound()
 }
 
-function NewsArticle(props: {article: NewsArticle; lang: AppLang}) {
+function NewsArticleComponent(props: {article: NewsArticle; lang: AppLang}) {
   const {messages} = getI18n(props.lang)
   const ArticleContent = getArticleContent(props.article.slug)
   return (
