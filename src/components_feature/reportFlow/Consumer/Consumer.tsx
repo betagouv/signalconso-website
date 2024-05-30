@@ -14,8 +14,7 @@ import {ReactNode} from 'react'
 import {Controller, useForm} from 'react-hook-form'
 import {ScAlert} from '../../../components_simple/ScAlert'
 import {ScRadioButtons} from '../../../components_simple/formInputs/ScRadioButtons'
-import {appConfig} from '../../../core/appConfig'
-import {useToastError} from '../../../hooks/useToastError'
+import {getApiErrorId, useToastError} from '../../../hooks/useToastError'
 import {Gender, ReportDraft, genders} from '../../../model/ReportDraft'
 import {DeepPartial} from '../../../utils/utils'
 import {useReportFlowContext} from '../ReportFlowContext'
@@ -166,11 +165,6 @@ export const ConsumerInner = ({
             {..._form.register('email', {
               required: {value: true, message: m.required},
               pattern: {value: regexp.email, message: m.invalidEmail},
-              validate: {
-                isDummyEmail: value => {
-                  return !appConfig.dummyEmailDomain.find(_ => value.includes(_)) || m.consumerDummyEmailNotAccepted
-                },
-              },
             })}
             required
             {...getErrors('email')}
@@ -257,16 +251,15 @@ export const ConsumerInner = ({
       <ReportFlowStepperActions
         loadingNext={_checkEmail.isPending}
         onNext={() => {
-          _form.handleSubmit(form => {
-            _checkEmail
-              .mutateAsync(form.email)
-              .then(res => {
-                if (res.valid) saveAndNext()
-                else consumerValidationModal.open()
-              })
-              .catch(() => {
-                toastError()
-              })
+          _form.handleSubmit(async form => {
+            try {
+              const res = await _checkEmail.mutateAsync(form.email)
+              if (res.valid) saveAndNext()
+              else consumerValidationModal.open()
+            } catch (e) {
+              const msg = getApiErrorId(e) === 'SC-0020-02' ? m.consumerDummyEmailNotAccepted : undefined
+              toastError(msg)
+            }
           })()
         }}
         {...{stepNavigation}}
