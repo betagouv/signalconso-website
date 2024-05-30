@@ -1,13 +1,13 @@
-import {getDraftReportInputs} from '@/components_feature/reportFlow/Details/draftReportInputs'
-import {isSpecifyInputName, SpecifyFormUtils} from '@/components_feature/reportFlow/Details/Details'
-import {DeepPartial, isoToFrenchFormat} from '../utils/utils'
-import {ReportDraft, ReportDraftConsumer} from './ReportDraft'
-import {Anomaly, DetailInput, DetailInputType} from '../anomalies/Anomaly'
-import {DetailInputValue} from './CreatedReport'
-import {Address} from './Address'
-import {AppLang} from '../i18n/localization/AppLangs'
 import {isDateInput} from '@/components_feature/reportFlow/Details/DetailInputsUtils'
+import {isSpecifyInputName, SpecifyFormUtils} from '@/components_feature/reportFlow/Details/Details'
+import {getDraftReportInputs} from '@/components_feature/reportFlow/Details/draftReportInputs'
+import {Anomaly, DetailInput, DetailInputType} from '../anomalies/Anomaly'
+import {AppLang} from '../i18n/localization/AppLangs'
+import {DeepPartial, isoToFrenchFormat, notNull} from '../utils/utils'
+import {Address} from './Address'
 import {CompanyDraft} from './Company'
+import {DetailInputValue} from './CreatedReport'
+import {ReportDraft, ReportDraftConsumer} from './ReportDraft'
 
 export type DetailInputValues2 = {[key: string]: string | string[]}
 
@@ -59,6 +59,13 @@ export class ReportDraft2 {
       .map(index => {
         const indexNb = parseInt(index, 10)
         const input = inputs[indexNb]
+        if (!input) {
+          // we can sometimes have values for inputs that don't exist
+          // for example, if you pick the ReponseConso consumerWish, fill the "Votre question" field
+          // then go back and pick a different consumerWish.
+          // You will still have the value for "Votre question" stored, with no corresponding input
+          return null
+        }
         const label = mapLabel(input.label)
 
         const prepareValue = (v: string | string[] | undefined): string => {
@@ -80,6 +87,7 @@ export class ReportDraft2 {
 
         return {label, value: prepareValue(rawValue)}
       })
+      .filter(notNull)
   }
 
   static readonly mergeCompanies = (base?: CompanyDraft, newValue?: DeepPartial<CompanyDraft>): CompanyDraft | undefined => {
