@@ -1,4 +1,3 @@
-import {AppLang, AppLangs} from '../i18n/localization/AppLangs'
 import imgAgnes from '@/img/avatars/avatar-agnes.png'
 import imgAlexandre from '@/img/avatars/avatar-alexandre.png'
 import imgAlexandreannic from '@/img/avatars/avatar-alexandreannic.png'
@@ -9,6 +8,7 @@ import imgFranck from '@/img/avatars/avatar-franck.png'
 import imgGregoire from '@/img/avatars/avatar-gregoire.png'
 import imgGuillaumedegerando from '@/img/avatars/avatar-guillaumedegerando.png'
 import imgGuillaumerossmann from '@/img/avatars/avatar-guillaumerossmann.png'
+import imgHakimsedoud from '@/img/avatars/avatar-hakimsedoud.png'
 import imgIngridgodefroy from '@/img/avatars/avatar-ingridgodefroy.png'
 import imgJerome from '@/img/avatars/avatar-jerome.png'
 import imgJules from '@/img/avatars/avatar-jules.png'
@@ -19,10 +19,10 @@ import imgNicolas from '@/img/avatars/avatar-nicolas.png'
 import imgPierre from '@/img/avatars/avatar-pierre-olivier.png'
 import imgQuentinkurtz from '@/img/avatars/avatar-quentinkurtz.png'
 import imgSaidsedoud from '@/img/avatars/avatar-saidsedoud.png'
-import imgHakimsedoud from '@/img/avatars/avatar-hakimsedoud.png'
 import imgThomas from '@/img/avatars/avatar-thomas.png'
 import imgValentine from '@/img/avatars/avatar-valentine.png'
 import {StaticImageData} from 'next/image'
+import {AppLang, AppLangs} from '../i18n/localization/AppLangs'
 
 export type TeamMember = {
   name: string
@@ -118,13 +118,13 @@ export function getTeam(lang: AppLang): Team {
         role: [t.function.dev],
         avatar: imgNicolas,
       },
+    ],
+    former: [
       {
         name: 'Hakim Sedoud',
         role: [t.function.devIntern],
         avatar: imgHakimsedoud,
       },
-    ],
-    former: [
       {
         name: 'Alexandre Annic',
         role: [t.function.dev],
