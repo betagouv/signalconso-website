@@ -1,5 +1,10 @@
+import {CompanyRecap} from '@/components_simple/CompanyRecap/CompanyRecap'
 import {ScAlert} from '@/components_simple/ScAlert'
 import {ButtonWithLoader} from '@/components_simple/buttons/Buttons'
+import {Fixture} from '@/test/fixture'
+import {PortalToBody} from '@/utils/PortalToBody'
+import Button from '@codegouvfr/react-dsfr/Button'
+import {createModal} from '@codegouvfr/react-dsfr/Modal'
 import {useState} from 'react'
 import {useForm} from 'react-hook-form'
 import {AccordionInline} from '../../components_simple/AccordionInline'
@@ -8,10 +13,6 @@ import {ScCheckbox} from '../../components_simple/formInputs/ScCheckbox'
 import {ScRadioButtons} from '../../components_simple/formInputs/ScRadioButtons'
 import {useI18n} from '../../i18n/I18n'
 import {DetailsSpecifyInput} from '../reportFlow/Details/DetailsSpecifyInput'
-import Button from '@codegouvfr/react-dsfr/Button'
-import {createModal} from '@codegouvfr/react-dsfr/Modal'
-import {CompanyRecap} from '@/components_simple/CompanyRecap/CompanyRecap'
-import {Fixture} from '@/test/fixture'
 
 const modal = createModal({
   id: 'playground-modal',
@@ -31,21 +32,23 @@ export const PlaygroundOther = () => {
     <>
       <div className="mb-4">
         <h6> Modale du DSFR</h6>
-        <modal.Component
-          size="small"
-          title="Titre de la modale"
-          buttons={[
-            {
-              children: 'Un bouton',
-              priority: 'secondary',
-            },
-            {
-              children: `Le bouton d'action principal`,
-            },
-          ]}
-        >
-          <p>Lorem ipsum dolor</p>
-        </modal.Component>
+        <PortalToBody>
+          <modal.Component
+            size="small"
+            title="Titre de la modale"
+            buttons={[
+              {
+                children: 'Un bouton',
+                priority: 'secondary',
+              },
+              {
+                children: `Le bouton d'action principal`,
+              },
+            ]}
+          >
+            <p>Lorem ipsum dolor</p>
+          </modal.Component>
+        </PortalToBody>
         <div className="flex flex-col gap-2">
           <Button nativeButtonProps={modal.buttonProps}>Open modal (with button props)</Button>
           <Button onClick={() => modal.open()}>Open modal (with .open())</Button>{' '}
