@@ -3,12 +3,11 @@ import {useI18n} from '@/i18n/I18n'
 import customerArea from '@/img/client-reference-helper/espace-client.png'
 import invoice from '@/img/client-reference-helper/invoice.png'
 import reservation from '@/img/client-reference-helper/reservation.png'
+import {PortalToBody} from '@/utils/PortalToBody'
 import Accordion from '@codegouvfr/react-dsfr/Accordion'
 import {createModal} from '@codegouvfr/react-dsfr/Modal'
 import Image from 'next/image'
-import * as React from 'react'
 import {useId} from 'react'
-import {createPortal} from 'react-dom'
 
 export function ClientReferenceHelpButton() {
   const {m} = useI18n()
@@ -32,7 +31,7 @@ export function ClientReferenceHelpButton() {
       <button className="text-scbluefrance" type="button" {...modal.buttonProps}>
         ({m.howToFindIt})
       </button>
-      {createPortal(
+      <PortalToBody>
         <modal.Component size={'large'} title={m.clientReferenceHelperTitle}>
           <h2 className="fr-h6 "> {m.clientReferenceHelper}</h2>
           <p dangerouslySetInnerHTML={{__html: m.clientReferenceHelperDesc}} />
@@ -50,9 +49,8 @@ export function ClientReferenceHelpButton() {
               <Image src={reservation} alt={m.clientReferenceHelperImages.reservation} {...imagePropsSmaller} />
             </Accordion>
           </div>
-        </modal.Component>,
-        document.body,
-      )}
+        </modal.Component>
+      </PortalToBody>
     </>
   )
 }

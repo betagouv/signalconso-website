@@ -4,12 +4,11 @@ import imgCard from '@/img/siret-helper/siret-helper-card.jpg'
 import imgFooter from '@/img/siret-helper/siret-helper-footer.png'
 import imgMentionsLegales from '@/img/siret-helper/siret-helper-mentions_legales.png'
 import imgTicket from '@/img/siret-helper/siret-helper-ticket.jpg'
+import {PortalToBody} from '@/utils/PortalToBody'
 import Accordion from '@codegouvfr/react-dsfr/Accordion'
 import {createModal} from '@codegouvfr/react-dsfr/Modal'
 import Image from 'next/image'
-import * as React from 'react'
 import {useId} from 'react'
-import {createPortal} from 'react-dom'
 
 export function SiretHelpButton() {
   const {m} = useI18n()
@@ -33,7 +32,7 @@ export function SiretHelpButton() {
       <button className="text-scbluefrance" type="button" {...modal.buttonProps}>
         ({m.howToFindIt})
       </button>
-      {createPortal(
+      <PortalToBody>
         <modal.Component title={m.companyIdentityHelperTitle}>
           <h2 className="fr-h6 "> {m.companyIdentityHelper}</h2>
           <p dangerouslySetInnerHTML={{__html: m.companyIdentityHelperDesc}} />
@@ -56,9 +55,8 @@ export function SiretHelpButton() {
               <Image src={imgCard} alt={m.companyIdentityHelperImages.card} {...imagePropsSmaller} />
             </Accordion>
           </div>
-        </modal.Component>,
-        document.body,
-      )}
+        </modal.Component>
+      </PortalToBody>
     </>
   )
 }

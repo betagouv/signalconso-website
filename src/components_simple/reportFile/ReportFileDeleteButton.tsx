@@ -1,7 +1,7 @@
 import {useI18n} from '@/i18n/I18n'
+import {PortalToBody} from '@/utils/PortalToBody'
 import Button from '@codegouvfr/react-dsfr/Button'
 import {createModal} from '@codegouvfr/react-dsfr/Modal'
-import {createPortal} from 'react-dom'
 
 const modal = createModal({
   id: 'file-delete-modal',
@@ -24,7 +24,7 @@ export function ReportFileDeleteButton({filename, onConfirm}: {filename: string;
       >
         {m.delete.toLowerCase()}
       </Button>
-      {createPortal(
+      <PortalToBody>
         <modal.Component
           title={m.removeAsk}
           size="small"
@@ -37,9 +37,8 @@ export function ReportFileDeleteButton({filename, onConfirm}: {filename: string;
           ]}
         >
           <p className="mb-0" dangerouslySetInnerHTML={{__html: m.thisWillBeRemoved(filename)}} />
-        </modal.Component>,
-        document.body,
-      )}
+        </modal.Component>
+      </PortalToBody>
     </>
   )
 }
