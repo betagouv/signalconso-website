@@ -2,10 +2,10 @@ import {getNewsArticleData} from '@/components_feature/actualites/newsArticlesDa
 import {ContentPageContainer} from '@/components_simple/PageContainers'
 import {PageComponentProps, buildGenerateMetadata} from '@/core/metadatas'
 import {buildLinkLandingPage, buildLinkNewsArticle, internalPageDefs, pagesDefs} from '@/core/pagesDefinitions'
+import {AppLang, AppLangs} from '@/i18n/localization/AppLangs'
 import {allVisibleLandings} from '@/landings/landingDataUtils'
 import Link from 'next/link'
-import {I18nMessages, getI18n} from '../../../i18n/I18nDictionnary'
-import {AppLang, AppLangs} from '@/i18n/localization/AppLangs'
+import {getI18n} from '../../../i18n/I18nDictionnary'
 
 export const generateMetadata = buildGenerateMetadata('planDuSite')
 
@@ -112,9 +112,10 @@ function BasicPageLink({page, label, lang}: {page: keyof typeof internalPageDefs
   if (lang !== AppLangs.fr && !pageDef.hasEnglishVersion) {
     return null
   }
+  const href = `/${lang}${pagesDefs[page].url}`
   return (
     <li>
-      <Link href={pagesDefs[page].url}>{label}</Link>
+      <Link {...{href}}>{label}</Link>
     </li>
   )
 }
