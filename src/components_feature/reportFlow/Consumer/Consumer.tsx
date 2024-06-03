@@ -257,7 +257,17 @@ export const ConsumerInner = ({
               if (res.valid) saveAndNext()
               else consumerValidationModal.open()
             } catch (e) {
-              const msg = getApiErrorId(e) === 'SC-0020-02' ? m.consumerDummyEmailNotAccepted : undefined
+              const errorId = getApiErrorId(e)
+              let msg: string | undefined = undefined
+              switch (errorId) {
+                case 'SC-0020-02':
+                  msg = m.consumerDummyEmailNotAccepted
+                  break
+                case 'SC-0059':
+                  msg = m.consumerAliasEmailNotAccepted
+                  break
+              }
+
               toastError(msg)
             }
           })()
