@@ -1245,6 +1245,7 @@ export const fr = {
     consumerInvalidCode: `Code incorrect`,
     consumerResentEmail: `Renvoyer`,
     consumerDummyEmailNotAccepted: `Les adresses éphémères ne sont pas acceptées.`,
+    consumerAliasEmailNotAccepted: `Vous avez déjà utilisé un alias de cet email aujourd'hui.`,
     consumerCannotReportSignalConso: `Veuillez saisir l'URL du site que vous souhaitez signaler. 'Signal conso' n'est pas une valeur correcte.`,
     consumerValidationCodeExpired: `Code incorrect, veuillez réessayer.`,
     consumerValidationCodeInvalid: `Code incorrect, veuillez réessayer.`,
