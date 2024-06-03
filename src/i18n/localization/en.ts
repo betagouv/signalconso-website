@@ -1219,6 +1219,7 @@ export const en = {
     consumerInvalidCode: `Incorrect code`,
     consumerResentEmail: `Resend`,
     consumerDummyEmailNotAccepted: `Disposable email addresses are not accepted.`,
+    consumerAliasEmailNotAccepted: `You already have used an alias of this email today.`,
     consumerCannotReportSignalConso: `Please enter the URL of the site you want to report. 'Signal conso' is not a correct value.`,
     consumerValidationCodeExpired: `Incorrect code, please try again.`,
     consumerValidationCodeInvalid: `Incorrect code, please try again.`,
