@@ -1,0 +1,7 @@
+title: Abonnement non-indiqué
+detailInputs:
+  - label: Cet abonnement était-il précoché ?
+    type: RADIO
+    options:
+      - Oui
+      - Non

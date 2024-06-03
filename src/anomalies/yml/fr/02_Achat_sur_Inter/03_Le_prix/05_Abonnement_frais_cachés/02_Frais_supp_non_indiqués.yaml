@@ -1,0 +1,7 @@
+title: Frais supplémentaires non-indiqués
+detailInputs:
+  - label: Ces frais étaient-ils précochés ?
+    type: RADIO
+    options:
+      - Oui
+      - Non
