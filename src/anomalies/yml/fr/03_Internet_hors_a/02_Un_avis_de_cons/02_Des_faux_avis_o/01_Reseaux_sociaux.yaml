@@ -1,0 +1,7 @@
+title: Réseaux sociaux
+companyKind: SOCIAL
+detailInputs:
+  - label: Site internet
+    placeholder: Lien ou URL de la publication, du short ou de la vidéo
+    type: TEXT
+    optional: true
