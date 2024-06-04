@@ -21,24 +21,21 @@ export function obsolescencePage(props: PageComponentProps) {
             <h1 className="flex flex-col mb-6 text-white">
               La durée de vie de votre appareil vous semble particulièrement courte ?
             </h1>
-            <p className="text-2xl mb-4">Il n'existe pas de pièces détachées pour le réparer ?</p>
-            <p className="text-2xl mb-4">Son indice de durabilité n'était pas affiché lors de son achat ?</p>
+            <p className="text-2xl mb-0 font-bold">Il n'existe pas de pièces détachées pour le réparer ?</p>
+            <p className="text-2xl  mb-4 font-bold">Son indice de durabilité n'était pas affiché lors de son achat ?</p>
             <p className="text-lg mb-4">
-              Il s'agit peut-être d'un cas d'obsolescence programmée. Vous pouvez le signaler sur la plateforme SignalConso.
+              Il s'agit peut-être d'un cas d'obsolescence programmée. Vous pouvez le signaler sur la plateforme SignalConso. Votre
+              signalement sera envoyé aux agents de la répression des fraudes, ainsi qu'à l'entreprise concernée.
             </p>
+            <Button
+              className="border-blue-300 border border-solid mb-4"
+              {...bigReportButtonProps}
+              linkProps={{href: obsolescenceReportPage}}
+            >
+              Je signale un cas d'obsolescence programmée
+            </Button>
 
-            <div className="flex  w-full">
-              <Button
-                className="border-blue-300 border border-solid"
-                {...bigReportButtonProps}
-                linkProps={{href: obsolescenceReportPage}}
-              >
-                Je signale un cas d'obsolescence programmée
-              </Button>
-            </div>
-            <p className="text-lg mb-4">
-              Votre signalement sera envoyé aux agents de la répression des fraudes, ainsi qu'à l'entreprise qui vous l'a vendu.
-            </p>
+            <p className="text-lg mb-0"></p>
           </div>
         </div>
       </div>
