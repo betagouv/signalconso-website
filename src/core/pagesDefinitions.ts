@@ -61,6 +61,7 @@ export const internalPageDefs = {
   obligationFibre: page('/obligation-adsl-fibre', {hasEnglishVersion: false}),
   signalInfluenceur: page('/signaler-un-influenceur', {hasEnglishVersion: false}),
   obsolescencePage: page('/duree-de-vie-produit-obsolescence-programmee', {hasEnglishVersion: false}),
+  demarchageTelephonique: page('/demarchage-telephonique', {hasEnglishVersion: false}),
 }
 
 const externalPageDefs = {

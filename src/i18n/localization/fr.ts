@@ -140,6 +140,11 @@ export const fr = {
         title: 'Obsolescence programmée',
         description: 'votre appareil a une durée de vie qui vous semble trop courte',
       },
+      demarchageTelephonique: {
+        title: 'Démarchage téléphonique abusif',
+        description:
+          'Une entreprise vous a appelé sans respecter Bloctel, ou en ne respectant pas les règles du démarchage téléphonique',
+      },
     },
     faireUnSignalement: {
       etape: 'Étape',
