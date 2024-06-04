@@ -18,55 +18,57 @@ export function obsolescencePage(props: PageComponentProps) {
       <div className="bg-scblueinfo text-white">
         <div className="fr-container py-12 flex items-center justify-center">
           <div className="max-w-4xl w-full flex flex-col items-start">
-            <h1 className="flex flex-col mb-6 text-white">Obsolescence programmée et indices de durabilité et de réparabilité</h1>
+            <h1 className="flex flex-col mb-6 text-white">
+              La durée de vie de votre appareil vous semble particulièrement courte ?
+            </h1>
+            <p className="text-2xl mb-4">Il n'existe pas de pièces détachées pour le réparer ?</p>
+            <p className="text-2xl mb-4">Son indice de durabilité n'était pas affiché lors de son achat ?</p>
             <p className="text-lg mb-4">
-              La durée de vie de votre appareil vous semble particulièrement courte ? Il n'existe pas de pièces détachées pour le
-              réparer ? Vous n'avez pas eu connaissance de son indice de durabilité lors de son achat ?
+              Il s'agit peut-être d'un cas d'obsolescence programmée. Vous pouvez le signaler sur la plateforme SignalConso.
             </p>
-            <p className="text-lg mb-4">Que pouvez-vous faire ?</p>
-            <div className="flex justify-center w-full">
+
+            <div className="flex  w-full">
               <Button
                 className="border-blue-300 border border-solid"
                 {...bigReportButtonProps}
                 linkProps={{href: obsolescenceReportPage}}
               >
-                Je signale une obsolescence programmée
+                Je signale un cas d'obsolescence programmée
               </Button>
             </div>
+            <p className="text-lg mb-4">
+              Votre signalement sera envoyé aux agents de la répression des fraudes, ainsi qu'à l'entreprise qui vous l'a vendu.
+            </p>
           </div>
         </div>
       </div>
       <div className="bg-sclightpurple ">
         <div className="fr-container py-12">
-          <h2 className="text-3xl !text-slate-900 text-normal mt-2 mb-8">Dans quels cas pouvez-vous faire un signalement ?</h2>
+          <h2 className="text-3xl !text-slate-900 text-normal mt-2 mb-8">
+            Dans quels cas l'indice de réparabilité est obligatoire ?
+          </h2>
           <div>
             <p className="mb-0 text-lg">
               La présence d'un <strong>indice de réparabilité</strong> est <strong> obligatoire</strong> sur les appareils
               suivants, qu'ils soient vendus en magasin ou sur Internet :
             </p>
             <ul className="list-disc ml-8 text-lg">
-              <li>Les aspirateurs filaires</li>
-              <li>Les aspirateurs non filaires</li>
-              <li>Les aspirateurs robots</li>
-              <li>Les lave-linge ménagers à chargement frontal</li>
-              <li>Les lave-linge ménagers à chargement par le dessus</li>
-              <li>Les lave-vaisselle ménagers</li>
-              <li>Les nettoyeurs haute-pression</li>
               <li>Les smartphones</li>
               <li>Les téléviseurs</li>
-              <li>Les tondeuses à gazon électriques filaires</li>
-              <li>Les tondeuses électriques batteries</li>
-              <li>Les tondeuses électriques robots</li>
               <li>Les ordinateurs portables</li>
+              <li>Les aspirateurs</li>
+              <li>Les lave-linge</li>
+              <li>Les lave-vaisselle</li>
+              <li>Les nettoyeurs haute-pression (dits "Kärcher")</li>
+              <li>Les tondeuses à gazon</li>
             </ul>
             <div className="">
               <p className="text-lg">
                 S'il n'y a pas d'indice de réparabilité sur ces produits, vous pouvez faire un signalement.
               </p>
               <p className="text-lg">
-                L'indice de réparabilité est auto attribué par les fabricants selon un cahier des charges défini par
-                l'administration. Si vous avez un doute sur cette note et que vous pensez qu'elle a pu être gonflée
-                artificiellement par les fabricants, vous pouvez faire un signalement.
+                Si vous avez un doute sur la sincérité de cet indice et que vous pensez qu'il a pu être gonflé artificiellement
+                par le fabricant, vous pouvez aussi faire un signalement.
               </p>
             </div>
           </div>
