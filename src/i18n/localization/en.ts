@@ -139,6 +139,10 @@ export const en = {
         title: '',
         description: '',
       },
+      demarchageTelephonique: {
+        title: '',
+        description: '',
+      },
     },
     faireUnSignalement: {
       etape: 'Step',
