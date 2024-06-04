@@ -44,14 +44,16 @@ export function obsolescencePage(props: PageComponentProps) {
         </div>
       </div>
       <div className=" bg-sclightpurpledarker">
-        <div className="fr-container py-4 flex items-center gap-4 ">
+        <div className="fr-container py-4 flex flex-col md:flex-row md:items-center md:gap-4 ">
           <h2 className="fr-h4">Comment reconnaître l'indice de réparabilité ?</h2>
           <p className=" text-lg">
             Il s'agit d'un pictogramme de clé à molette, d'une note comprise entre 0 et 10 et d'une couleur en fonction du degré
             de réparabilité.
           </p>
-          <div className="bg-white rounded-xl p-4 pb-2">
-            <Image src={imgReparabilite8_5} alt="" />
+          <div className="flex items-center justify-center w-full md:w-auto ">
+            <div className="bg-white rounded-xl p-4 pb-2">
+              <Image src={imgReparabilite8_5} alt="" />
+            </div>
           </div>
         </div>
       </div>
@@ -64,7 +66,7 @@ export function obsolescencePage(props: PageComponentProps) {
                 La présence d'un <strong>indice de réparabilité</strong> est <strong> obligatoire</strong> sur les appareils
                 suivants, qu'ils soient vendus en magasin ou sur Internet :
               </p>
-              <p className="grid grid-cols-3 gap-0 mb-0 text-lg">
+              <p className="grid sm:grid-cols-2 md:grid-cols-3 gap-x-2 mb-0 text-lg">
                 <span className="">Les smartphones</span>
                 <span className="">Les téléviseurs</span>
                 <span className="">Les ordinateurs portables</span>
@@ -118,16 +120,16 @@ export function obsolescencePage(props: PageComponentProps) {
               <p className="text-2xl mb-8">Votre signalement ne sera pour autant pas inutile !</p>
             </div>
             <div className="flex flex-col">
-              <div className="flex gap-8 ">
-                <p className="md:w-1/3 text-xl">
+              <div className="grid md:grid-cols-3 md:gap-8">
+                <p className="text-xl">
                   Il sert à <strong>interpeler le professionnel</strong> qui aura peut-être à cœur de faire évoluer sa pratique,
                   conforme certes, mais pas forcément très écologique.
                 </p>
-                <p className="md:w-1/3 text-xl">
+                <p className="text-xl">
                   Plus encore, votre signalement fait <strong>remonter une information</strong> qui peut ensuite motiver des
                   contrôles et orienter les enquêtes de la DGCCRF pour faire progresser la consommation durable.
                 </p>
-                <p className="md:w-1/3 text-xl">
+                <p className="text-xl">
                   Avec SignalConso, <strong>vous envoyez avant tout un signal !</strong> Ne sous-estimez pas les effets de votre
                   signalement.
                 </p>
