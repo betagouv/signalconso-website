@@ -60,6 +60,7 @@ export const internalPageDefs = {
   refundTelecom: page(`/remboursement-telecom`),
   obligationFibre: page('/obligation-adsl-fibre', {hasEnglishVersion: false}),
   signalInfluenceur: page('/signaler-un-influenceur', {hasEnglishVersion: false}),
+  obsolescencePage: page('/duree-de-vie-produit-obsolescence-programmee', {hasEnglishVersion: false}),
 }
 
 const externalPageDefs = {
