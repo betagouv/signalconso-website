@@ -1,20 +1,23 @@
+import {allVisibleAnomalies} from '@/anomalies/Anomalies'
 import {FullWidthPageContainer} from '@/components_simple/PageContainers'
 import {bigReportButtonProps} from '@/components_simple/buttons/buttonsUtils'
 import {PageComponentProps} from '@/core/metadatas'
+import {buildLinkStartReport} from '@/core/pagesDefinitions'
 import {AppLangs} from '@/i18n/localization/AppLangs'
 import {ChildrenProps} from '@/utils/utils'
 import Button from '@codegouvfr/react-dsfr/Button'
 import {notFound} from 'next/navigation'
 import {getI18n} from '../i18n/I18nDictionnary'
 
-const influencerInfoPage = 'https://signal.conso.gouv.fr/fr/internet/faire-un-signalement'
-
 export function signalInfluenceur(props: PageComponentProps) {
   const lang = props.params.lang
   if (lang !== 'fr') {
     return notFound()
   }
-
+  const anomaly = allVisibleAnomalies(lang).find(_ => _.category === 'Internet')
+  if (!anomaly) {
+    throw new Error(`Can't build influenceurs landing page, didnt find the corresponding category`)
+  }
   return (
     <FullWidthPageContainer>
       <div className="bg-scblueinfo text-white border-t-[1px] border-0 border-solid border-black ">
@@ -32,7 +35,7 @@ export function signalInfluenceur(props: PageComponentProps) {
               <Button
                 className=" border-blue-300 border border-solid"
                 {...bigReportButtonProps}
-                linkProps={{href: influencerInfoPage}}
+                linkProps={{href: buildLinkStartReport(anomaly, lang, {isWebView: false})}}
               >
                 Je signale un influenceur
               </Button>
