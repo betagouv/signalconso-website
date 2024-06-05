@@ -1,5 +1,5 @@
 import {buildGenerateMetadata} from '@/core/metadatas'
-import {obsolescencePage} from '@/reusablePages/duree-de-vie-produit-obsolescence-programmee'
+import {obsolescencePage} from '@/reusablePages/manual_landings/obsolescenceProgrammee'
 
 export const generateMetadata = buildGenerateMetadata('obsolescencePage')
 

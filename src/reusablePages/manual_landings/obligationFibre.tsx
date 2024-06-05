@@ -1,27 +1,19 @@
-import {ContentPageContainer, FullWidthPageContainer} from '@/components_simple/PageContainers'
+import {FullWidthPageContainer} from '@/components_simple/PageContainers'
 import {PageComponentProps} from '@/core/metadatas'
-import {getI18n} from '../i18n/I18nDictionnary'
-import Button from '@codegouvfr/react-dsfr/Button'
-import {bigReportButtonProps} from '@/components_simple/buttons/buttonsUtils'
-import Link from 'next/link'
 import {AppLangs} from '@/i18n/localization/AppLangs'
-import {buildLinkStartReport} from '@/core/pagesDefinitions'
-import {allVisibleAnomalies} from '@/anomalies/Anomalies'
+import {getManualLpButtonProps} from '@/landings/manualLandingsUtils'
+import Button from '@codegouvfr/react-dsfr/Button'
+import Link from 'next/link'
 import {notFound} from 'next/navigation'
+import {getI18n} from '../../i18n/I18nDictionnary'
 
 const arcepInfoPage = 'https://www.arcep.fr/demarches-et-services/utilisateurs/que-va-changer-la-fermeture-du-reseau-cuivre.html'
 const pageVerifPostalCode = 'https://www.economie.gouv.fr/treshautdebit/la-fermeture-du-reseau-cuivre-dans-votre-commune'
 
-// TODO gerer i18n
-// TODO version mobile
 export function ObligationFibre(props: PageComponentProps) {
   const lang = props.params.lang
   if (lang !== 'fr') {
     return notFound()
-  }
-  const anomaly = allVisibleAnomalies(lang).find(_ => _.category === 'TelephonieFaiMedias')
-  if (!anomaly) {
-    throw new Error(`Can't build ObligationFibre page, didnt find the corresponding category`)
   }
   return (
     <FullWidthPageContainer>
@@ -41,11 +33,7 @@ export function ObligationFibre(props: PageComponentProps) {
               Faites un signalement sur la plateforme SignalConso. Votre signalement sera envoyé aux agents de la répression des
               fraudes, ainsi qu'à votre opérateur.
             </p>
-            <Button
-              className="mb-6 border-blue-300 border border-solid"
-              {...bigReportButtonProps}
-              linkProps={{href: buildLinkStartReport(anomaly, lang, {isWebView: false})}}
-            >
+            <Button className="mb-6 border-blue-300 border border-solid" {...getManualLpButtonProps(lang, 'TelephonieFaiMedias')}>
               Je signale une tentative de migration forcée vers la fibre
             </Button>
           </div>

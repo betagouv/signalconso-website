@@ -1,22 +1,16 @@
-import {allVisibleAnomalies} from '@/anomalies/Anomalies'
 import {FullWidthPageContainer} from '@/components_simple/PageContainers'
-import {bigReportButtonProps} from '@/components_simple/buttons/buttonsUtils'
 import {PageComponentProps} from '@/core/metadatas'
-import {buildLinkStartReport} from '@/core/pagesDefinitions'
 import {AppLangs} from '@/i18n/localization/AppLangs'
+import {getManualLpButtonProps} from '@/landings/manualLandingsUtils'
 import {ChildrenProps} from '@/utils/utils'
 import Button from '@codegouvfr/react-dsfr/Button'
 import {notFound} from 'next/navigation'
-import {getI18n} from '../i18n/I18nDictionnary'
+import {getI18n} from '../../i18n/I18nDictionnary'
 
 export function signalInfluenceur(props: PageComponentProps) {
   const lang = props.params.lang
   if (lang !== 'fr') {
     return notFound()
-  }
-  const anomaly = allVisibleAnomalies(lang).find(_ => _.category === 'Internet')
-  if (!anomaly) {
-    throw new Error(`Can't build influenceurs landing page, didnt find the corresponding category`)
   }
   return (
     <FullWidthPageContainer>
@@ -32,11 +26,7 @@ export function signalInfluenceur(props: PageComponentProps) {
               ainsi qu'aux agents de la répression des fraudes.
             </p>
             <div className="flex justify-center w-full">
-              <Button
-                className=" border-blue-300 border border-solid"
-                {...bigReportButtonProps}
-                linkProps={{href: buildLinkStartReport(anomaly, lang, {isWebView: false})}}
-              >
+              <Button className=" border-blue-300 border border-solid" {...getManualLpButtonProps(lang, 'Internet')}>
                 Je signale un influenceur
               </Button>
             </div>

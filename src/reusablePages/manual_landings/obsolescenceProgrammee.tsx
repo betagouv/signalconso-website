@@ -1,9 +1,7 @@
-import {allVisibleAnomalies} from '@/anomalies/Anomalies'
 import {FullWidthPageContainer} from '@/components_simple/PageContainers'
-import {bigReportButtonProps} from '@/components_simple/buttons/buttonsUtils'
 import {PageComponentProps} from '@/core/metadatas'
-import {buildLinkStartReport} from '@/core/pagesDefinitions'
 import imgReparabilite8_5 from '@/img/landings/indice_reparabilite_8_5.jpg'
+import {getManualLpButtonProps} from '@/landings/manualLandingsUtils'
 import Button from '@codegouvfr/react-dsfr/Button'
 import Image from 'next/image'
 import {notFound} from 'next/navigation'
@@ -12,10 +10,6 @@ export function obsolescencePage(props: PageComponentProps) {
   const lang = props.params.lang
   if (lang !== 'fr') {
     return notFound()
-  }
-  const anomaly = allVisibleAnomalies(lang).find(_ => _.category === 'AchatMagasin')
-  if (!anomaly) {
-    throw new Error(`Can't build obsolescence landing page, didnt find the corresponding category`)
   }
   return (
     <FullWidthPageContainer>
@@ -31,15 +25,9 @@ export function obsolescencePage(props: PageComponentProps) {
               Il s'agit peut-être d'un cas d'obsolescence programmée. Vous pouvez le signaler sur la plateforme SignalConso. Votre
               signalement sera envoyé aux agents de la répression des fraudes, ainsi qu'à l'entreprise concernée.
             </p>
-            <Button
-              className="border-blue-300 border border-solid mb-4"
-              {...bigReportButtonProps}
-              linkProps={{href: buildLinkStartReport(anomaly, lang, {isWebView: false})}}
-            >
+            <Button className="border-blue-300 border border-solid mb-4" {...getManualLpButtonProps(lang, 'AchatMagasin')}>
               Je signale un cas d'obsolescence programmée
             </Button>
-
-            <p className="text-lg mb-0"></p>
           </div>
         </div>
       </div>
