@@ -132,13 +132,21 @@ export const fr = {
         description: `Signalez un passage à la fibre forcé par votre fournisseur d'accès Internet`,
       },
       signalInfluenceur: {
-        title: 'Signalez une publication frauduleuse d’un influenceur',
+        title: "Signalez une publication frauduleuse d'un influenceur",
         description:
-          'Vous avez repéré une publication trompeuse ou non conforme d’un influenceur sur Instagram, Snapchat, TikTok, etc. ? Signalez-la sur SignalConso.',
+          "Vous avez repéré une publication trompeuse ou non conforme d'un influenceur sur Instagram, Snapchat, TikTok, etc. ? Signalez-la sur SignalConso.",
       },
       obsolescencePage: {
-        title: 'Obsolescence programmée',
-        description: 'votre appareil a une durée de vie qui vous semble trop courte',
+        title: "Signaler un cas d'obsolescence programmée",
+        description: 'Votre appareil a une durée de vie qui vous semble trop courte, indice de réparabilité manquant, ...',
+      },
+      demarchageTelephonique: {
+        title: 'Démarchage téléphonique abusif',
+        description: 'Signaler une entreprise qui vous appelle sans respecter Bloctel, ou hors des horaires autorisés',
+      },
+      intoxAlimentaire: {
+        title: 'Intoxication alimentaire : vous avez mangé dans un restaurant et vous êtes malade ?',
+        description: 'Signaler un établissement qui vous a rendu malade',
       },
     },
     faireUnSignalement: {
@@ -587,6 +595,8 @@ export const fr = {
       telecomResolutionTips: "Conseils pour résolution d'un problème individuel lié au télécom (litige)",
       obligationFibre: 'Faire un signalement pour une migration forcée vers la fibre optique',
       obsolescencePage: 'Faire un signalement pour un appareil dont la durée de vie vous semble trop courte',
+      demarchageTelephonique: 'Faire un signalement pour un démarchage téléphonique abusif (malgré Bloctel, trop fréquent, etc.)',
+      intoxAlimentaire: 'Faire un signalement pour une intoxication alimentaire',
       signalInfluenceur: 'Faire un signalement sur un influenceur',
       reportIncidentSection: "Dépôt d'un signalement",
       reportIncidentFor: 'Faire un signalement pour',

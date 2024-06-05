@@ -166,7 +166,7 @@ function HeroCard({title, subtext, picto}: {title: string; subtext: string; pict
   )
 }
 
-function UserQuote({report}: {report: LandingData['sampleReports'][number]}) {
+export function UserQuote({report}: {report: LandingData['sampleReports'][number]}) {
   // https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/citation
   // mais on override un peu le style du texte
   return (

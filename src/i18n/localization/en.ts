@@ -139,6 +139,14 @@ export const en = {
         title: '',
         description: '',
       },
+      demarchageTelephonique: {
+        title: '',
+        description: '',
+      },
+      intoxAlimentaire: {
+        title: '',
+        description: '',
+      },
     },
     faireUnSignalement: {
       etape: 'Step',
@@ -575,6 +583,8 @@ export const en = {
       telecomResolutionTips: 'Tips for resolving telecom individual issues (disputes)',
       obligationFibre: 'Report a forced migration to fiber optic Internet',
       obsolescencePage: 'Report a device with a lifespan that seems too short',
+      demarchageTelephonique: 'Report an abusive telemarketing call',
+      intoxAlimentaire: 'Report food poisoning',
       signalInfluenceur: '',
       reportIncidentSection: 'Submitting a report',
       reportIncidentFor: 'Report a company for',
