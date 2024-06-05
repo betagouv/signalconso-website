@@ -595,6 +595,8 @@ export const fr = {
       telecomResolutionTips: "Conseils pour résolution d'un problème individuel lié au télécom (litige)",
       obligationFibre: 'Faire un signalement pour une migration forcée vers la fibre optique',
       obsolescencePage: 'Faire un signalement pour un appareil dont la durée de vie vous semble trop courte',
+      demarchageTelephonique: 'Faire un signalement pour un démarchage téléphonique abusif (malgré Bloctel, trop fréquent, etc.)',
+      intoxAlimentaire: 'Faire un signalement pour une intoxication alimentaire',
       signalInfluenceur: 'Faire un signalement sur un influenceur',
       reportIncidentSection: "Dépôt d'un signalement",
       reportIncidentFor: 'Faire un signalement pour',

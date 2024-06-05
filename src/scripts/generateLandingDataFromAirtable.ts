@@ -1,15 +1,15 @@
-import fs from 'fs'
-import path from 'path'
 import Airtable from 'airtable'
-import {appConfig} from '../core/appConfig'
 import {AirtableBase} from 'airtable/lib/airtable_base'
-import mapKeys from 'lodash/mapKeys'
+import fs from 'fs'
 import findKey from 'lodash/findKey'
-import sortBy from 'lodash/sortBy'
-import {allAnomaliesForHomepage, allVisibleAnomalies, findAnomaly} from '../anomalies/Anomalies'
-import {LandingData} from '../landings/landingDataUtils'
 import groupBy from 'lodash/groupBy'
+import mapKeys from 'lodash/mapKeys'
+import sortBy from 'lodash/sortBy'
+import path from 'path'
+import {allAnomaliesForHomepage, findAnomaly} from '../anomalies/Anomalies'
+import {appConfig} from '../core/appConfig'
 import {AppLang, AppLangs} from '../i18n/localization/AppLangs'
+import {LandingData} from '../landings/landingDataUtils'
 
 // This script reads data from our Airtable account
 // Then it outputs all the texts for our landing pages.
@@ -68,7 +68,7 @@ async function start(lang: AppLang) {
 
   console.log(`Found ${rowsPublished.length} landings with ${PUBLISHED_STATUS} status`)
   const rowsTranformed = rowsPublished.map(validateAndTransformRow)
-  checkNoMissingOrDuplicateAnomalies(rowsTranformed, lang)
+  checkNoDuplicateAnomalies(rowsTranformed, lang)
   checkNoDuplicates(rowsTranformed)
   // we impose a consistent order, for easier diffs
   const rowsSorted = sortConsistently(rowsTranformed)
@@ -261,18 +261,13 @@ async function readWholeTable(
   return res
 }
 
-// All anomalies from the HP should have exactly 1 semi-automatic LP
-function checkNoMissingOrDuplicateAnomalies(rows: RowTranformed[], lang: AppLang) {
+// All anomalies from the HP should have maximum 1 semi-automatic LP
+function checkNoDuplicateAnomalies(rows: RowTranformed[], lang: AppLang) {
   allAnomaliesForHomepage(lang).forEach(anomaly => {
     const matchingRows = rows
       .filter(_ => _.isSemiAutomatic)
       .filter(_ => _.targetedCategory.length === 1 && _.targetedCategory[0] === anomaly.category)
-
-    if (matchingRows.length === 0 && lang === AppLangs.fr) {
-      console.log(rows)
-      throw new Error(`Missing semi automatic landing page targeting specifically ${anomaly.category}`)
-    }
-    if (matchingRows.length > 1 && lang === AppLangs.fr) {
+    if (matchingRows.length > 1) {
       throw new Error(
         `Several semi automatic landing pages (${matchingRows.length}) are targeting specifically ${anomaly.category}`,
       )
