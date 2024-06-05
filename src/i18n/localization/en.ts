@@ -143,6 +143,10 @@ export const en = {
         title: '',
         description: '',
       },
+      intoxAlimentaire: {
+        title: '',
+        description: '',
+      },
     },
     faireUnSignalement: {
       etape: 'Step',

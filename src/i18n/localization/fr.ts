@@ -132,18 +132,22 @@ export const fr = {
         description: `Signalez un passage à la fibre forcé par votre fournisseur d'accès Internet`,
       },
       signalInfluenceur: {
-        title: 'Signalez une publication frauduleuse d’un influenceur',
+        title: "Signalez une publication frauduleuse d'un influenceur",
         description:
-          'Vous avez repéré une publication trompeuse ou non conforme d’un influenceur sur Instagram, Snapchat, TikTok, etc. ? Signalez-la sur SignalConso.',
+          "Vous avez repéré une publication trompeuse ou non conforme d'un influenceur sur Instagram, Snapchat, TikTok, etc. ? Signalez-la sur SignalConso.",
       },
       obsolescencePage: {
-        title: 'Obsolescence programmée',
-        description: 'votre appareil a une durée de vie qui vous semble trop courte',
+        title: "Signaler un cas d'obsolescence programmée",
+        description: 'Votre appareil a une durée de vie qui vous semble trop courte, indice de réparabilité manquant, ...',
       },
       demarchageTelephonique: {
         title: 'Démarchage téléphonique abusif',
         description:
           'Une entreprise vous a appelé sans respecter Bloctel, ou en ne respectant pas les règles du démarchage téléphonique',
+      },
+      intoxAlimentaire: {
+        title: 'Intoxication alimentaire : vous avez mangé dans un restaurant et vous êtes malade ?',
+        description: 'Signaler un établissement qui vous a rendu malade',
       },
     },
     faireUnSignalement: {
