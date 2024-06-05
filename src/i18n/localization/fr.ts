@@ -142,8 +142,7 @@ export const fr = {
       },
       demarchageTelephonique: {
         title: 'Démarchage téléphonique abusif',
-        description:
-          'Une entreprise vous a appelé sans respecter Bloctel, ou en ne respectant pas les règles du démarchage téléphonique',
+        description: 'Signaler une entreprise qui vous appelle sans respecter Bloctel, ou hors des horaires autorisés',
       },
       intoxAlimentaire: {
         title: 'Intoxication alimentaire : vous avez mangé dans un restaurant et vous êtes malade ?',
