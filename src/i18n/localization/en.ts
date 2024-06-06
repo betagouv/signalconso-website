@@ -1062,6 +1062,7 @@ export const en = {
     consumerWishInvestigationIsPossible2:
       'If a business receives an excessively high volume or frequent number of reports, Fraud Control will investigate the companies in question.',
     employeeConsumerInformation: `To ensure your job security, your details will not be transmitted to the company. It will be read <b>only by Fraud Control</b>.`,
+    notTransmittableToProConsumerInformation: `Your reports will not be transmitted to the company. It will be read <b>only by Fraud Control</b>.`,
     informationRatingSaved: `Your comments have been recorded, thank you.`,
     informationTitle: `Unfortunately, we are unable to take your report any further.`,
     informationReportOutOfScope: `Although we do believe the issue you experienced was genuine, it was not a case of fraud.`,

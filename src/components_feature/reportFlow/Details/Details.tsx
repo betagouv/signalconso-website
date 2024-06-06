@@ -31,7 +31,7 @@ export class SpecifyFormUtils {
 
 export const isSpecifyInputName = (name: string) => name.includes('_specify')
 
-export const Details = ({stepNavigation}: {stepNavigation: StepNavigation}) => {
+export const Details = ({stepNavigation}: { stepNavigation: StepNavigation }) => {
   const _reportFlow = useReportFlowContext()
   const _analytic = useAnalyticContext()
   const {currentLang} = useI18n()
@@ -52,6 +52,7 @@ export const Details = ({stepNavigation}: {stepNavigation: StepNavigation}) => {
       transmissionStatus={ReportDraft.transmissionStatus(draft)}
       inputs={inputs}
       fileLabel={(last(draft.subcategories) as StandardSubcategory).fileLabel}
+      attachmentDesc={(last(draft.subcategories) as StandardSubcategory).attachmentDesc}
       employeeConsumer={draft.employeeConsumer}
       tags={draft.tags ?? []}
       onSubmit={(detailInputValues, uploadedFiles) => {
@@ -66,23 +67,25 @@ export const Details = ({stepNavigation}: {stepNavigation: StepNavigation}) => {
 }
 
 export const DetailsInner = ({
-  initialValues,
-  initialFiles,
-  inputs,
-  fileLabel,
-  tags,
-  transmissionStatus,
-  employeeConsumer,
-  onSubmit,
-  stepNavigation,
-  consumerWish,
-}: {
+                               initialValues,
+                               initialFiles,
+                               inputs,
+                               fileLabel,
+                               attachmentDesc,
+                               tags,
+                               transmissionStatus,
+                               employeeConsumer,
+                               onSubmit,
+                               stepNavigation,
+                               consumerWish,
+                             }: {
   inputs: DetailInput[]
   onSubmit: (values: DetailInputValues2, files?: UploadedFile[]) => void
   transmissionStatus: TransmissionStatus
   initialValues?: DetailInputValues2
   initialFiles?: UploadedFile[]
   fileLabel?: string
+  attachmentDesc?: string
   employeeConsumer?: boolean
   tags?: ReportTag[]
   stepNavigation: StepNavigation
@@ -120,42 +123,42 @@ export const DetailsInner = ({
     <>
       <Animate autoScrollTo={false}>
         <div>
-          {displayAlertProduitDangereux && <DetailsAlertProduitDangereux />}
+          {displayAlertProduitDangereux && <DetailsAlertProduitDangereux/>}
 
           <FriendlyHelpText>
             {fnSwitch(transmissionStatus, {
               ['WILL_BE_TRANSMITTED']: (
                 <>
-                  <p className="mb-0" dangerouslySetInnerHTML={{__html: m.detailsTextAreaWillBeTransmitted}} />
+                  <p className="mb-0" dangerouslySetInnerHTML={{__html: m.detailsTextAreaWillBeTransmitted}}/>
                   {consumerWish !== 'fixContractualDispute' && (
-                    <p className="mb-0" dangerouslySetInnerHTML={{__html: m.detailsTextAreaTransmittableAnonymous}} />
+                    <p className="mb-0" dangerouslySetInnerHTML={{__html: m.detailsTextAreaTransmittableAnonymous}}/>
                   )}
                 </>
               ),
               ['MAY_BE_TRANSMITTED']: (
                 <>
-                  <p className="mb-0" dangerouslySetInnerHTML={{__html: m.detailsTextAreaMayBeTransmitted}} />
+                  <p className="mb-0" dangerouslySetInnerHTML={{__html: m.detailsTextAreaMayBeTransmitted}}/>
                   {consumerWish !== 'fixContractualDispute' && (
-                    <p className="mb-0" dangerouslySetInnerHTML={{__html: m.detailsTextAreaTransmittableAnonymous}} />
+                    <p className="mb-0" dangerouslySetInnerHTML={{__html: m.detailsTextAreaTransmittableAnonymous}}/>
                   )}
                 </>
               ),
               ['CANNOT_BE_TRANSMITTED']: (
                 <>
-                  <p className="mb-0" dangerouslySetInnerHTML={{__html: m.detailsTextAreaCannotBeTransmitted}} />
+                  <p className="mb-0" dangerouslySetInnerHTML={{__html: m.detailsTextAreaCannotBeTransmitted}}/>
                 </>
               ),
               ['NOT_TRANSMITTABLE']: (
                 <>
-                  <p className="mb-0" dangerouslySetInnerHTML={{__html: m.detailsTextAreaNotTransmittable}} />
+                  <p className="mb-0" dangerouslySetInnerHTML={{__html: m.detailsTextAreaNotTransmittable}}/>
                   {employeeConsumer && (
-                    <p className="mb-0" dangerouslySetInnerHTML={{__html: m.detailsTextAreaEmployeeConsumer}} />
+                    <p className="mb-0" dangerouslySetInnerHTML={{__html: m.detailsTextAreaEmployeeConsumer}}/>
                   )}
                 </>
               ),
             })}
           </FriendlyHelpText>
-          <RequiredFieldsLegend />
+          <RequiredFieldsLegend/>
           {inputs.map((input, inputIndex) => (
             <DetailsInputRenderByType
               key={inputIndex}
@@ -177,9 +180,10 @@ export const DetailsInner = ({
           {transmissionStatus !== 'NOT_TRANSMITTABLE' && (
             <>
               <FriendlyHelpText>
-                <p className="mb-0" dangerouslySetInnerHTML={{__html: m.attachmentsDesc2}} />
+                <p className="mb-0" dangerouslySetInnerHTML={{__html: attachmentDesc ?? m.attachmentsDesc2}}/>
               </FriendlyHelpText>
-              {consumerWish !== 'fixContractualDispute' && <p dangerouslySetInnerHTML={{__html: m.attachmentsDescAnonymous}} />}
+              {consumerWish !== 'fixContractualDispute' &&
+                <p dangerouslySetInnerHTML={{__html: m.attachmentsDescAnonymous}}/>}
             </>
           )}
           <ReportFiles

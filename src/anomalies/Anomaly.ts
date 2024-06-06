@@ -60,6 +60,7 @@ type SubcategoryBase = CategoryNodeBase & {
 // A typical subcategory
 export type StandardSubcategory = SubcategoryBase & {
   fileLabel?: string
+  attachmentDesc?: string
   detailInputs?: DetailInput[]
 }
 
@@ -70,6 +71,8 @@ export type SubcategoryWithInfoWall = SubcategoryBase & {
 }
 
 export type Subcategory = StandardSubcategory | SubcategoryWithInfoWall
+
+export const reportTagsNotTransmittableToPro = ['BauxPrecaire']
 
 export const reportTagsAllowedInYaml = [
   'Hygiene',
@@ -93,8 +96,10 @@ export const reportTagsAllowedInYaml = [
   'AppelCommercial',
   'Prix',
   'AlimentationMaterielAnimaux',
+  ...reportTagsNotTransmittableToPro
 ] as const
 export type ReportTagAllowedInYaml = (typeof reportTagsAllowedInYaml)[number]
+
 
 export const reportTags = ['LitigeContractuel', 'Internet', 'OpenFoodFacts', ...reportTagsAllowedInYaml] as const
 export type ReportTag = (typeof reportTags)[number]

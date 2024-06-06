@@ -1072,6 +1072,7 @@ export const fr = {
     consumerWishInvestigationIsPossible2:
       'Si les signalements sont trop nombreux ou fréquents pour un établissement, les enquêteurs de la répression des fraudes interviendront auprès des professionnels.',
     employeeConsumerInformation: `Afin de garantir la sécurité de votre emploi, votre signalement ne sera pas transmis à l'entreprise. Il sera lu <b>uniquement par la répression des fraudes</b>.`,
+    notTransmittableToProConsumerInformation: `Votre signalement ne sera pas transmis à l'entreprise. Il sera lu <b>uniquement par la répression des fraudes</b>.`,
     informationRatingSaved: `Votre avis a bien été enregistré, nous vous en remercions.`,
     informationTitle: `Emmh, nous ne pouvons pas traiter votre signalement.`,
     informationReportOutOfScope: `Nous ne doutons pas que vous ayez réellement rencontré un problème mais... il ne s’agit pas d’une fraude.`,

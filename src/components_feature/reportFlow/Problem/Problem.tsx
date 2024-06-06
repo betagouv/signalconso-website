@@ -18,6 +18,7 @@ import {ProblemSelect} from './ProblemSelect'
 import {ProblemStepper, ProblemStepperStep} from './ProblemStepper'
 import {computeSelectedSubcategoriesData} from './useSelectedSubcategoriesData'
 
+
 interface Props {
   anomaly: Anomaly
   isWebView: boolean
@@ -109,6 +110,7 @@ export const Problem = ({anomaly, isWebView, stepNavigation}: Props) => {
 
   const isTransmittable = ReportDraft.isTransmittableToProBeforePickingConsumerWish(reportDraft)
   const askConsumerWish = isTransmittable && reportDraft.companyKind !== 'SOCIAL'
+
 
   const {
     lastSubcategories,
@@ -228,6 +230,11 @@ export const Problem = ({anomaly, isWebView, stepNavigation}: Props) => {
                     <p className="mb-0" dangerouslySetInnerHTML={{__html: m.employeeConsumerInformation}} />
                   </FriendlyHelpText>
                 </ProblemStepperStep>
+                <ProblemStepperStep isDone={true} hidden={ askConsumerWish || reportDraft.employeeConsumer}  >
+                  <FriendlyHelpText>
+                    <p className="mb-0" dangerouslySetInnerHTML={{__html: m.notTransmittableToProConsumerInformation}} />
+                  </FriendlyHelpText>
+                </ProblemStepperStep>
                 <ProblemStepperStep isDone={reportDraft.companyKind !== undefined} hidden={!!companyKindFromSelected}>
                   {companyKindQuestionFromSelected ? (
                     <ProblemSelect<CompanyKinds>
@@ -263,23 +270,23 @@ export const Problem = ({anomaly, isWebView, stepNavigation}: Props) => {
                 </ProblemStepperStep>
 
                 <ProblemStepperStep isDone={reportDraft.consumerWish !== undefined} hidden={!askConsumerWish}>
-                  <ProblemSelect
-                    id="select-contractualDispute"
-                    title={m.whatsYourIntent}
-                    value={reportDraft.consumerWish}
-                    options={[
-                      {
-                        title: m.problemContractualDisputeFormYes,
-                        description: m.problemContractualDisputeFormDesc,
-                        value: 'fixContractualDispute',
-                      },
-                      {
-                        title: m.problemContractualDisputeFormNo,
-                        description: m.problemContractualDisputeFormNoDesc,
-                        value: 'companyImprovement',
-                      },
-                      ...(hasReponseConsoSubcategories
-                        ? [
+                    <ProblemSelect
+                      id="select-contractualDispute"
+                      title={m.whatsYourIntent}
+                      value={reportDraft.consumerWish}
+                      options={[
+                        {
+                          title: m.problemContractualDisputeFormYes,
+                          description: m.problemContractualDisputeFormDesc,
+                          value: 'fixContractualDispute',
+                        },
+                        {
+                          title: m.problemContractualDisputeFormNo,
+                          description: m.problemContractualDisputeFormNoDesc,
+                          value: 'companyImprovement',
+                        },
+                        ...(hasReponseConsoSubcategories
+                          ? [
                             {
                               title: m.problemContractualDisputeFormReponseConso,
                               description: m.problemContractualDisputeFormReponseConsoExample,
