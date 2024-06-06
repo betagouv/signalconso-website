@@ -110,9 +110,10 @@ export class ReportDraft {
   }
 
   static readonly transmissionStatus = (
-    r: Pick<ReportDraft, 'employeeConsumer' | 'consumerWish' | 'influencer' | 'companyDraft'>,
+    r: Pick<ReportDraft, 'employeeConsumer' | 'consumerWish' | 'influencer' | 'companyDraft' | 'tags'>,
   ): TransmissionStatus => {
     if (!ReportDraft.isTransmittableToPro(r)) {
+      console.log('NOT_TRANSMITTABLE')
       return 'NOT_TRANSMITTABLE'
     } else if (ReportDraft.mayBeTransmittedLater(r)) {
       return 'MAY_BE_TRANSMITTED'

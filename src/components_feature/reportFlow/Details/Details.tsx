@@ -177,7 +177,7 @@ export const DetailsInner = ({
       <Animate autoScrollTo={false}>
         <div>
           <h4 className="mt-4">{fileLabel ?? m.attachments}</h4>
-          {transmissionStatus !== 'NOT_TRANSMITTABLE' && (
+          {transmissionStatus !== 'NOT_TRANSMITTABLE' ? (
             <>
               <FriendlyHelpText>
                 <p className="mb-0" dangerouslySetInnerHTML={{__html: attachmentDesc ?? m.attachmentsDesc2}}/>
@@ -185,7 +185,12 @@ export const DetailsInner = ({
               {consumerWish !== 'fixContractualDispute' &&
                 <p dangerouslySetInnerHTML={{__html: m.attachmentsDescAnonymous}}/>}
             </>
-          )}
+          ):
+            <FriendlyHelpText>
+              {/*Do not display any custom attachmentDesc for employee consumer reports*/}
+              <p className="mb-0" dangerouslySetInnerHTML={{__html: (!employeeConsumer && attachmentDesc) ? attachmentDesc : m.notTransmittableAttachmentsDesc2}}/>
+            </FriendlyHelpText>
+          }
           <ReportFiles
             files={uploadedFiles ?? []}
             fileOrigin={FileOrigin.Consumer}

@@ -1100,6 +1100,7 @@ export const fr = {
     attachmentsDescAnonymous: `Si vous ne souhaitez pas que l'entreprise connaisse votre identité, <b style="color: black">cachez votre nom</b> sur vos pièces jointes.`,
     attachmentsDescAllowedFormat: (formats: string[]) => `Sont acceptés les formats suivants : ${formats.join(', ')}`,
     attachmentsDesc2: `Ajouter une pièce jointe (par exemple : un contrat, une facture, des échanges avec le SAV…) augmente <strong>FORTEMENT</strong> vos chances d’entraîner une mesure corrective&nbsp;!<br/> Vous ne devez pas communiquer de données sensibles (données bancaires ou médicales).`,
+    notTransmittableAttachmentsDesc2: `Ajouter une pièce jointe (par exemple : un contrat, une facture, des échanges avec le SAV…) pour aider nos services administratifs&nbsp;!<br/> Vous ne devez pas communiquer de données sensibles (données bancaires ou médicales).`,
     maxAttachmentsZero: (max: number) => `Vous pouvez téléverser jusqu'à ${max} pièces jointes`,
     maxAttachmentsReached: (max: number) => `Limite de ${max} pièces jointes atteinte`,
     maxAttachementExceeded: (max: number, toRemove: number) =>

@@ -1,4 +1,4 @@
-title: Les vendeurs ne me remboursent pas même si tu as annulé mon achat
-desc: 'Exemple : impossible exercer mon droit de rétractation et obtenir un remboursement'
+title: Les vendeurs ne me remboursent pas même si j’ai annulé mon achat
+desc: 'Exemple : Impossible d’exercer mon droit de rétractation et d’obtenir un remboursement'
 detailInputs:
   customimport: _imports/detailInputs/baux-precaire.yaml

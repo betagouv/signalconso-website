@@ -72,6 +72,7 @@ const subcategoryWithInfoWallSpec: ObjectSpec = {
 
 const standardSubcategorySpec: ObjectSpec = {
   fileLabel: _ => _.ifDefined()?.assertIsString(),
+  attachmentDesc: _ => _.ifDefined()?.assertIsString(),
   detailInputs: _ =>
     _.ifDefined()?.assertIsArrayWith(detailInput => {
       assertIsDetailInput(detailInput)
