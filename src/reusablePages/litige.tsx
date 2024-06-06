@@ -1,5 +1,6 @@
 import {ContentPageContainer} from '@/components_simple/PageContainers'
 import {externalLinks} from '@/core/externalLinks'
+import {PageComponentProps} from '@/core/metadatas'
 import {Accordion} from '@codegouvfr/react-dsfr/Accordion'
 import {Alert} from '@codegouvfr/react-dsfr/Alert'
 import {CallOut} from '@codegouvfr/react-dsfr/CallOut'
@@ -10,8 +11,9 @@ function Accordions({children}: {children: ReactNode}) {
   return <div className="fr-accordions-group">{children}</div>
 }
 
-export const Litige = ({params}: any) => {
-  const {messages: m} = getI18n(params.lang)
+export const Litige = (props: PageComponentProps) => {
+  const {lang} = props.params
+  const {messages: m} = getI18n(lang)
   return (
     <ContentPageContainer>
       <h1>{m.litige.title}</h1>
@@ -23,20 +25,18 @@ export const Litige = ({params}: any) => {
             <br />
             {m.litige.step1.whenDescription2}
           </p>
-
           <h3 className="fr-h6">{m.litige.step1.toWhom}</h3>
           <p>
             {m.litige.step1.toWhomDescription1}
             <br />
             {m.litige.step1.toWhomDescription2}
           </p>
-
           <h3 className="fr-h6">{m.litige.step1.how}</h3>
           <p>{m.litige.step1.howDescription}</p>
           <ul>
             <li>
               <a
-                href={`/${params.lang}/docs/ModeleLettreLitige.txt`}
+                href={`/${lang}/docs/ModeleLettreLitige.txt`}
                 rel="noreferrer"
                 target="_blank"
                 title={m.litige.step1.downloadTitle}
@@ -48,26 +48,20 @@ export const Litige = ({params}: any) => {
             <li>{m.litige.step1.signalementText}</li>
           </ul>
           <p>{m.litige.step1.keepCopy}</p>
-
           <h3 className="fr-h6">{m.litige.step1.why}</h3>
           <p>{m.litige.step1.whyDescription}</p>
         </Accordion>
         <Accordion label={m.litige.step2.label}>
           <h3 className="fr-h6">{m.litige.step2.when}</h3>
           <p>{m.litige.step2.whenDescription}</p>
-
           <h3 className="fr-h6">{m.litige.step2.who}</h3>
           <p>{m.litige.step2.whoDescription}</p>
-
           <h3 className="fr-h6">{m.litige.step2.how}</h3>
           <p>{m.litige.step2.howDescription}</p>
-
           <h3 className="fr-h6">{m.litige.step2.why}</h3>
           <p>{m.litige.step2.whyDescription}</p>
-
           <h3 className="fr-h6">{m.litige.step2.cost}</h3>
           <p>{m.litige.step2.costDescription}</p>
-
           <h3 className="fr-h6">{m.litige.step2.whatIfNoMediator}</h3>
           <p>
             {m.litige.step2.whatIfNoMediatorDescription1}
@@ -98,10 +92,8 @@ export const Litige = ({params}: any) => {
               </a>
             </p>
           </div>
-
           <h3 className="fr-h6">{m.litige.step3.why}</h3>
           <p>{m.litige.step3.whyDescription}</p>
-
           <h3 className="fr-h6">{m.litige.step3.cost}</h3>
           <p>{m.litige.step3.costDescription}</p>
         </Accordion>
