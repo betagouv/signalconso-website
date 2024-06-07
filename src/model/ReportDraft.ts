@@ -2,11 +2,12 @@ import {
   Anomaly,
   CompanyKinds,
   NightTrains,
-  ReportTag, reportTagsNotTransmittableToPro,
+  ReportTag,
+  reportTagsNotTransmittableToPro,
   SocialNetworks,
   Subcategory,
   Ters,
-  Trains
+  Trains,
 } from '@/anomalies/Anomaly'
 import uniq from 'lodash/uniq'
 import {AppLang} from '../i18n/localization/AppLangs'
@@ -67,10 +68,10 @@ export interface Influencer {
 }
 
 export type ConsumerWish =
-// - on empêche l'utilisateur d'être anonyme
-// - on met le tag LitigeContractuel
-// C'est tout.
-// En vrai cela ne change donc pas grand chose pour l'utilisateur
+  // - on empêche l'utilisateur d'être anonyme
+  // - on met le tag LitigeContractuel
+  // C'est tout.
+  // En vrai cela ne change donc pas grand chose pour l'utilisateur
   | 'fixContractualDispute'
   // Cas standard
   | 'companyImprovement'
@@ -79,18 +80,16 @@ export type ConsumerWish =
   // - on ne transmet pas à l'entreprise
   | 'getAnswer'
 
-export type TransmissionStatus =
-  'NOT_TRANSMITTABLE'
-  | 'WILL_BE_TRANSMITTED'
-  | 'MAY_BE_TRANSMITTED'
-  | 'CANNOT_BE_TRANSMITTED'
+export type TransmissionStatus = 'NOT_TRANSMITTABLE' | 'WILL_BE_TRANSMITTED' | 'MAY_BE_TRANSMITTED' | 'CANNOT_BE_TRANSMITTED'
 
 export class ReportDraft {
   static readonly isTransmittableToPro = (r: Pick<ReportDraft, 'employeeConsumer' | 'consumerWish'>): boolean => {
     return ReportDraft.isTransmittableToProBeforePickingConsumerWish(r) && r.consumerWish !== 'getAnswer'
   }
 
-  static readonly isTransmittableToProBeforePickingConsumerWish = (r: Pick<ReportDraft, 'employeeConsumer' | 'tags'>): boolean => {
+  static readonly isTransmittableToProBeforePickingConsumerWish = (
+    r: Pick<ReportDraft, 'employeeConsumer' | 'tags'>,
+  ): boolean => {
     return !r.employeeConsumer && !r.tags?.some(tag => reportTagsNotTransmittableToPro.includes(tag))
   }
 

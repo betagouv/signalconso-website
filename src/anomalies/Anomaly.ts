@@ -96,10 +96,9 @@ export const reportTagsAllowedInYaml = [
   'AppelCommercial',
   'Prix',
   'AlimentationMaterielAnimaux',
-  ...reportTagsNotTransmittableToPro
+  ...reportTagsNotTransmittableToPro,
 ] as const
 export type ReportTagAllowedInYaml = (typeof reportTagsAllowedInYaml)[number]
-
 
 export const reportTags = ['LitigeContractuel', 'Internet', 'OpenFoodFacts', ...reportTagsAllowedInYaml] as const
 export type ReportTag = (typeof reportTags)[number]
