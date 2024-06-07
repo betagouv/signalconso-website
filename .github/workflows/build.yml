@@ -16,7 +16,7 @@ jobs:
         with:
           node-version: 20.9.0
           registry-url: https://registry.npmjs.org/
-      - run: ls /home/runner/work/signalconso-website/signalconso-website/src/anomalies/yml/fr/01_Achat_en_Magasi
+      - run: ls /home/runner/work/signalconso-website/signalconso-website/src/anomalies/yml/fr/
       - run: yarn install --immutable
       - run: yarn checkformat
       - run: yarn build
