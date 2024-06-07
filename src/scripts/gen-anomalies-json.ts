@@ -29,7 +29,7 @@ function readAnomaliesFromYmlFileTree(lang: 'fr' | 'en') {
 // Returns a Subcategory
 // except it can use 'customimport', so it's not exactly the correct type
 function buildSubcategoryFromFileOrFolder(_path: string): any {
-  console.log('Reading ', _path.split('/').reverse())
+  // console.log('Reading ', _path)
   throwIfNotExists(_path)
   if (isFile(_path)) {
     return readFileYaml(_path)
