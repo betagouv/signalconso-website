@@ -1,5 +1,5 @@
-import { formatDistance, formatDuration as formatDurationFns } from 'date-fns'
-import { AppLang, AppLangs } from './AppLangs'
+import {formatDistance, formatDuration as formatDurationFns} from 'date-fns'
+import {AppLang, AppLangs} from './AppLangs'
 
 const invalidDate = '-'
 
@@ -381,6 +381,15 @@ export const en = {
       leadText1: `Vous avez fait un signalement sur SignalConso pour résoudre votre problème avec une entreprise, pour être remboursé par exemple ? Le signalement via SignalConso peut fonctionner, mais pas toujours.`,
       leadText1Telecom: `Vous avez fait un signalement sur SignalConso pour résoudre votre problème avec une entreprise de télécom, pour être remboursé par exemple ? Le signalement via SignalConso peut fonctionner, mais pas toujours.`,
       leadText2: `Les démarches optionnelles ci-dessous peuvent aussi vous aider.`,
+      wrongPageHelp: {
+        text1: `Votre problème vise un fournisseur internet ou un opérateur téléphonique ? Consultez plutôt la page dédiée aux `,
+        link: `démarches concernant les entreprises de télécom`,
+      },
+      wrongPageHelpTelecom: {
+        text1: `Votre problème vise un autre secteur d'activité ? Consultez plutôt la page dédiée aux `,
+        link: `démarches pour régler les litiges`,
+        text2: ` de manière générale`,
+      },
       step1: {
         label: 'Step 1: Write to the company or business to demand a resolution',
         when: 'When?',

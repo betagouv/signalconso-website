@@ -390,6 +390,15 @@ export const fr = {
       leadText2: `Les démarches optionnelles ci-dessous peuvent aussi vous aider.`,
       titleTelecom:
         'Vos démarches pour être remboursé ou trouver une solution à votre problème avec votre opérateur de téléphonie ou fournisseur internet',
+      wrongPageHelp: {
+        text1: `Votre problème vise un fournisseur internet ou un opérateur téléphonique ? Consultez plutôt la page dédiée aux `,
+        link: `démarches concernant les entreprises de télécom`,
+      },
+      wrongPageHelpTelecom: {
+        text1: `Votre problème vise un autre secteur d'activité ? Consultez plutôt la page dédiée aux `,
+        link: `démarches pour régler les litiges`,
+        text2: ` dans tous les autres secteurs.`,
+      },
       step1: {
         label: 'Démarche n°1 : J’écris un courrier à l’entreprise pour demander à résoudre mon problème',
         when: 'Quand ?',

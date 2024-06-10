@@ -28,9 +28,10 @@ function LitigeCommon(props: PageComponentProps & {variant: 'telecom' | 'regular
   const {variant} = props
   const {lang} = props.params
   const {messages: m} = getI18n(lang)
+  const isTelecom = variant === 'telecom'
   return (
     <ContentPageContainer>
-      {variant === 'telecom' ? (
+      {isTelecom ? (
         <>
           <h1 className="mb-2">{m.litige.title}</h1>
           <p className="!text-scbluefrance fr-h4">{m.litige.subtitle}</p>
@@ -42,8 +43,9 @@ function LitigeCommon(props: PageComponentProps & {variant: 'telecom' | 'regular
             <div className="col-span-2">
               <ScAlert type="info">
                 <p className="mb-0">
-                  Votre problème vise un autre secteur d'activité ? Consultez plutôt la page dédiée aux{' '}
-                  <Link href={`/${lang}${pagesDefs.litige.url}`}>démarches pour régler les litiges</Link> de manière générale.
+                  {m.litige.wrongPageHelpTelecom.text1}
+                  <Link href={`/${lang}${pagesDefs.litige.url}`}>{m.litige.wrongPageHelpTelecom.link}</Link>
+                  {m.litige.wrongPageHelpTelecom.text2}
                 </p>
               </ScAlert>
             </div>
@@ -61,8 +63,8 @@ function LitigeCommon(props: PageComponentProps & {variant: 'telecom' | 'regular
               <ScAlert type="info">
                 <p className="mb-0">
                   <>
-                    Votre problème vise un fournisseur internet ou un opérateur téléphonique ? Consultez plutôt la page dédiée aux{' '}
-                    <Link href={`/${lang}${pagesDefs.litigeTelecom.url}`}>démarches concernant les entreprises de télécom</Link>.
+                    {m.litige.wrongPageHelp.text1}
+                    <Link href={`/${lang}${pagesDefs.litigeTelecom.url}`}>{m.litige.wrongPageHelp.link}</Link>.
                   </>
                 </p>
               </ScAlert>
@@ -107,10 +109,10 @@ function LitigeCommon(props: PageComponentProps & {variant: 'telecom' | 'regular
         </Accordion>
         <Accordion label={m.litige.step2.label}>
           <h3 className="fr-h6">{m.litige.step2.when}</h3>
-          <p>{variant === 'telecom' ? m.litige.step2.whenDescriptionTelecom : m.litige.step2.whenDescription}</p>
+          <p>{isTelecom ? m.litige.step2.whenDescriptionTelecom : m.litige.step2.whenDescription}</p>
           <h3 className="fr-h6">{m.litige.step2.who}</h3>
           <p>{m.litige.step2.whoDescription}</p>
-          {variant === 'telecom' && (
+          {isTelecom && (
             <p>
               Il existe dans le secteur des communications électroniques un médiateur spécialisé pour intervenir si vous avez un
               différend avec votre opérateur de téléphonie (fixe ou mobile) ou votre fournisseur d'accès internet. Il s'agit de la{' '}
@@ -119,7 +121,7 @@ function LitigeCommon(props: PageComponentProps & {variant: 'telecom' | 'regular
           )}
           <h3 className="fr-h6">{m.litige.step2.how}</h3>
 
-          {variant === 'telecom' ? (
+          {isTelecom ? (
             <>
               <p>
                 Si le professionnel est adhérent à ce médiateur, je remplis le formulaire sur le site internet du médiateur à
@@ -128,7 +130,7 @@ function LitigeCommon(props: PageComponentProps & {variant: 'telecom' | 'regular
                   {urlMediateurTelecom}
                 </Link>
               </p>
-              <p>Il est également possible de le contacter par voie postale à l’adresse suivante :</p>
+              <p>Il est également possible de le contacter par voie postale à l'adresse suivante :</p>
               <p className="flex flex-col items-center font-bold">
                 {' '}
                 Médiatrice des Communications Électroniques
