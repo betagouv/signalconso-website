@@ -416,6 +416,8 @@ export const fr = {
         when: 'Quand ?',
         whenDescription:
           'Deux mois après avoir envoyé mon courrier, si je n’ai pas eu de réponse ou si la réponse ne me satisfait pas.',
+        whenDescriptionTelecom:
+          'Deux mois après avoir envoyé mon courrier, si je n’ai pas eu de réponse ou si la réponse ne me satisfait pas. Vous avez un an à partir de la date de ce courrier pour saisir le médiateur.',
         who: 'Qui ?',
         whoDescription:
           'L’entreprise a l’obligation de communiquer le nom du médiateur qu’elle a choisi. Les coordonnées du médiateur sont normalement écrites sur le site internet de l’entreprise ou sur le contrat, bon de commande…',
@@ -424,13 +426,13 @@ export const fr = {
         why: 'Pourquoi ?',
         whyDescription: 'Le médiateur va m’aider à trouver un arrangement avec l’entreprise.',
         cost: 'Combien ça coûte ?',
-        costDescription: 'C’est gratuit !',
+        costDescription: `C'est gratuit.`,
         whatIfNoMediator: 'Comment faire si je ne trouve pas le nom du médiateur ?',
         newWindow: 'Nouvelle fenêtre',
         whatIfNoMediatorDescription1: 'Je contacte le conciliateur le plus proche de chez moi.',
         whatIfNoMediatorDescription2: 'Je le cherche sur le site ',
         whatIfNoMediatorDescription3: 'Il va m’aider à trouver une solution avec l’entreprise.',
-        whatIfNoMediatorDescription4: 'C’est gratuit !',
+        whatIfNoMediatorDescription4: `C'est gratuit.`,
       },
       step3: {
         label: 'Démarche n°3 : Je vais en justice, c’est-à-dire que je demande un procès au tribunal.',

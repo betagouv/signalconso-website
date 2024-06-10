@@ -1,5 +1,5 @@
-import {formatDistance, formatDuration as formatDurationFns} from 'date-fns'
-import {AppLang, AppLangs} from './AppLangs'
+import { formatDistance, formatDuration as formatDurationFns } from 'date-fns'
+import { AppLang, AppLangs } from './AppLangs'
 
 const invalidDate = '-'
 
@@ -405,6 +405,8 @@ export const en = {
         when: 'When?',
         whenDescription:
           'Two months after you sent your letter, if you have not received a response or the response you received was unsatisfactory.',
+        whenDescriptionTelecom:
+          'Deux mois après avoir envoyé mon courrier, si je n’ai pas eu de réponse ou si la réponse ne me satisfait pas. Vous avez un an à partir de la date de ce courrier pour saisir le médiateur.',
         who: 'Who?',
         whoDescription:
           "The company is required to give the name of their chosen mediator. The mediator's contact details are usually given on the company's website, contract and/or purchase order.",

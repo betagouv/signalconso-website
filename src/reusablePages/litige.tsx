@@ -107,8 +107,7 @@ function LitigeCommon(props: PageComponentProps & {variant: 'telecom' | 'regular
         </Accordion>
         <Accordion label={m.litige.step2.label}>
           <h3 className="fr-h6">{m.litige.step2.when}</h3>
-          <p>{m.litige.step2.whenDescription}</p>
-          {variant === 'telecom' && <p>Vous avez un an à partir de la date de ce courrier pour saisir le médiateur.</p>}
+          <p>{variant === 'telecom' ? m.litige.step2.whenDescriptionTelecom : m.litige.step2.whenDescription}</p>
           <h3 className="fr-h6">{m.litige.step2.who}</h3>
           <p>{m.litige.step2.whoDescription}</p>
           {variant === 'telecom' && (
