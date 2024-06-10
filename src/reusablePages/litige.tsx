@@ -22,6 +22,8 @@ export function LitigeTelecom(props: PageComponentProps) {
   return <LitigeCommon {...props} variant="telecom" />
 }
 
+const urlMediateurTelecom = 'https://www.mediation-telecom.org/saisir-le-mediateur'
+
 function LitigeCommon(props: PageComponentProps & {variant: 'telecom' | 'regular'}) {
   const {variant} = props
   const {lang} = props.params
@@ -100,10 +102,42 @@ function LitigeCommon(props: PageComponentProps & {variant: 'telecom' | 'regular
         <Accordion label={m.litige.step2.label}>
           <h3 className="fr-h6">{m.litige.step2.when}</h3>
           <p>{m.litige.step2.whenDescription}</p>
+          {variant === 'telecom' && <p>Vous avez un an à partir de la date de ce courrier pour saisir le médiateur.</p>}
           <h3 className="fr-h6">{m.litige.step2.who}</h3>
           <p>{m.litige.step2.whoDescription}</p>
+          {variant === 'telecom' && (
+            <p>
+              Il existe dans le secteur des communications électroniques un médiateur spécialisé pour intervenir si vous avez un
+              différend avec votre opérateur de téléphonie (fixe ou mobile) ou votre fournisseur d'accès internet. Il s'agit de la{' '}
+              <strong>Médiatrice des Communications Électroniques</strong>.
+            </p>
+          )}
           <h3 className="fr-h6">{m.litige.step2.how}</h3>
-          <p>{m.litige.step2.howDescription}</p>
+
+          {variant === 'telecom' ? (
+            <>
+              <p>
+                Si le professionnel est adhérent à ce médiateur, je remplis le formulaire sur le site internet du médiateur à
+                l'adresse :{' '}
+                <Link href={urlMediateurTelecom} target="_blank">
+                  {urlMediateurTelecom}
+                </Link>
+              </p>
+              <p>Il est également possible de le contacter par voie postale à l’adresse suivante :</p>
+              <p className="flex flex-col items-center font-bold">
+                {' '}
+                Médiatrice des Communications Électroniques
+                <br />
+                CS 30 342
+                <br />
+                94257 GENTILLY Cedex
+              </p>
+            </>
+          ) : (
+            <>
+              <p>{m.litige.step2.howDescription}</p>
+            </>
+          )}
           <h3 className="fr-h6">{m.litige.step2.why}</h3>
           <p>{m.litige.step2.whyDescription}</p>
           <h3 className="fr-h6">{m.litige.step2.cost}</h3>
