@@ -46,6 +46,8 @@ const changedPaths = [
   ['/fr/bloctel', '/fr/demarchage-telephonique'],
   ['/fr/duree-de-vie-produit-obsolescence-programmee-internet', '/fr/duree-de-vie-produit-obsolescence-programmee'],
   ['/fr/incidents-intoxication-alimentaire', '/fr/intoxication-alimentaire'],
+  ['/fr/remboursement-telecom', '/fr/litige/telecom'],
+  ['/en/remboursement-telecom', '/en/litige/telecom'],
 ]
 
 const redirectsForChangedPaths = changedPaths.map(([source, destination]) => ({
