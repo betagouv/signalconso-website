@@ -378,17 +378,19 @@ export const en = {
     litige: {
       title: 'Your actions to take in parallel',
       subtitle: `For a telephone operator or internet service provider`,
-      leadText1: `Vous avez fait un signalement sur SignalConso pour résoudre votre problème avec une entreprise, pour être remboursé par exemple ? Le signalement via SignalConso peut fonctionner, mais pas toujours.`,
-      leadText1Telecom: `Vous avez fait un signalement sur SignalConso pour résoudre votre problème avec une entreprise de télécom, pour être remboursé par exemple ? Le signalement via SignalConso peut fonctionner, mais pas toujours.`,
-      leadText2: `Les démarches optionnelles ci-dessous peuvent aussi vous aider.`,
+      leadText1:
+        'Did you file a report on SignalConso to resolve your issue with a company, to get a refund for example? Reporting via SignalConso can work, but not always.',
+      leadText1Telecom:
+        'Did you file a report on SignalConso to resolve your issue with a telecom company, to get a refund for example? Reporting via SignalConso can work, but not always.',
+      leadText2: 'The optional steps below may also help you.',
       wrongPageHelp: {
-        text1: `Votre problème vise un fournisseur internet ou un opérateur téléphonique ? Consultez plutôt la page dédiée aux `,
-        link: `démarches concernant les entreprises de télécom`,
+        text1: 'Is your issue with an internet provider or a telephone operator? Check out the page dedicated to ',
+        link: 'steps for telecom companies',
       },
       wrongPageHelpTelecom: {
-        text1: `Votre problème vise un autre secteur d'activité ? Consultez plutôt la page dédiée aux `,
-        link: `démarches pour régler les litiges`,
-        text2: ` de manière générale`,
+        text1: 'Is your issue in another sector? Check out the page dedicated to ',
+        link: 'steps to resolve disputes',
+        text2: ' in general',
       },
       step1: {
         label: 'Step 1: Write to the company or business to demand a resolution',
@@ -415,7 +417,7 @@ export const en = {
         whenDescription:
           'Two months after you sent your letter, if you have not received a response or the response you received was unsatisfactory.',
         whenDescriptionTelecom:
-          'Deux mois après avoir envoyé mon courrier, si je n’ai pas eu de réponse ou si la réponse ne me satisfait pas. Vous avez un an à partir de la date de ce courrier pour saisir le médiateur.',
+          'Two months after sending my letter, if I have not received a response or if the response does not satisfy me. You have one year from the date of this letter to contact the mediator.',
         who: 'Who?',
         whoDescription:
           "The company is required to give the name of their chosen mediator. The mediator's contact details are usually given on the company's website, contract and/or purchase order.",
