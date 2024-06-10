@@ -11,12 +11,22 @@ function Accordions({children}: {children: ReactNode}) {
   return <div className="fr-accordions-group">{children}</div>
 }
 
-export const Litige = (props: PageComponentProps) => {
+export function Litige(props: PageComponentProps) {
+  return <LitigeCommon {...props} variant="regular" />
+}
+
+export function LitigeTelecom(props: PageComponentProps) {
+  return <LitigeCommon {...props} variant="telecom" />
+}
+
+function LitigeCommon(props: PageComponentProps & {variant: 'telecom' | 'regular'}) {
+  const {variant} = props
   const {lang} = props.params
   const {messages: m} = getI18n(lang)
   return (
     <ContentPageContainer>
       <h1>{m.litige.title}</h1>
+      <p dangerouslySetInnerHTML={{__html: m.litige.leadText}} />
       <Accordions>
         <Accordion label={m.litige.step1.label}>
           <h3 className="fr-h6">{m.litige.step1.when}</h3>
