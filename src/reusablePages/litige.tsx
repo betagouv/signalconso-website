@@ -1,9 +1,12 @@
 import {ContentPageContainer} from '@/components_simple/PageContainers'
+import {ScAlert} from '@/components_simple/ScAlert'
 import {externalLinks} from '@/core/externalLinks'
 import {PageComponentProps} from '@/core/metadatas'
+import {pagesDefs} from '@/core/pagesDefinitions'
 import {Accordion} from '@codegouvfr/react-dsfr/Accordion'
 import {Alert} from '@codegouvfr/react-dsfr/Alert'
 import {CallOut} from '@codegouvfr/react-dsfr/CallOut'
+import Link from 'next/link'
 import {ReactNode} from 'react'
 import {getI18n} from '../i18n/I18nDictionnary'
 
@@ -25,8 +28,41 @@ function LitigeCommon(props: PageComponentProps & {variant: 'telecom' | 'regular
   const {messages: m} = getI18n(lang)
   return (
     <ContentPageContainer>
-      <h1>{m.litige.title}</h1>
-      <p dangerouslySetInnerHTML={{__html: m.litige.leadText}} />
+      {variant === 'telecom' ? (
+        <>
+          <h1 className="mb-2">{m.litige.title}</h1>
+          <p className="!text-scbluefrance fr-h4">Pour un opérateur téléphonique ou fournisseur d'accès internet</p>
+          <div className="block mb-6 lg:mb-0 lg:grid grid-cols-5 gap-4 ">
+            <p className="col-span-3" dangerouslySetInnerHTML={{__html: m.litige.leadText}} />
+            <div className="col-span-2">
+              <ScAlert type="info">
+                <p className="mb-0">
+                  Votre problème vise un autre secteur d'activité ? Consultez plutôt la page dédiée aux{' '}
+                  <Link href={`/${lang}${pagesDefs.litige.url}`}>démarches pour régler les litiges</Link> de manière générale.
+                </p>
+              </ScAlert>
+            </div>
+          </div>
+        </>
+      ) : (
+        <>
+          <h1>{m.litige.title}</h1>
+          <div className="block mb-6 lg:mb-0 lg:grid grid-cols-5 gap-4 ">
+            <p className="col-span-3" dangerouslySetInnerHTML={{__html: m.litige.leadText}} />
+            <div className="col-span-2">
+              <ScAlert type="info">
+                <p className="mb-0">
+                  <>
+                    Votre problème vise un fournisseur internet ou un opérateur téléphonique ? Consultez plutôt la page dédiée aux{' '}
+                    <Link href={`/${lang}${pagesDefs.litigeTelecom.url}`}>démarches concernant les entreprises de télécom</Link>.
+                  </>
+                </p>
+              </ScAlert>
+            </div>
+          </div>
+        </>
+      )}
+
       <Accordions>
         <Accordion label={m.litige.step1.label}>
           <h3 className="fr-h6">{m.litige.step1.when}</h3>
