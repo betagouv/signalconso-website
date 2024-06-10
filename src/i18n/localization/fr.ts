@@ -430,8 +430,13 @@ export const fr = {
         who: 'Qui ?',
         whoDescription:
           'L’entreprise a l’obligation de communiquer le nom du médiateur qu’elle a choisi. Les coordonnées du médiateur sont normalement écrites sur le site internet de l’entreprise ou sur le contrat, bon de commande…',
+        whoDescriptionTelecom: `Il existe dans le secteur des communications électroniques un médiateur spécialisé pour intervenir si vous avez un différend avec votre opérateur de téléphonie (fixe ou mobile) ou votre fournisseur d'accès internet. Il s'agit de la <strong>Médiatrice des Communications Électroniques</strong>.`,
         how: 'Comment ?',
         howDescription: 'Je remplis le formulaire sur le site internet du médiateur ou je le contacte par voie postale.',
+        howDescriptionTelecom: {
+          text1: `Si le professionnel est adhérent à ce médiateur, je remplis le formulaire sur le site internet du médiateur à l'adresse `,
+          text2: `Il est également possible de le contacter par voie postale à l'adresse suivante :`,
+        },
         why: 'Pourquoi ?',
         whyDescription: 'Le médiateur va m’aider à trouver un arrangement avec l’entreprise.',
         cost: 'Combien ça coûte ?',

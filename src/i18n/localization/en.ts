@@ -419,8 +419,13 @@ export const en = {
         who: 'Who?',
         whoDescription:
           "The company is required to give the name of their chosen mediator. The mediator's contact details are usually given on the company's website, contract and/or purchase order.",
+        whoDescriptionTelecom: `Il existe dans le secteur des communications électroniques un médiateur spécialisé pour intervenir si vous avez un différend avec votre opérateur de téléphonie (fixe ou mobile) ou votre fournisseur d'accès internet. Il s'agit de la <strong>Médiatrice des Communications Électroniques</strong>.`,
         how: 'How?',
         howDescription: "Complete the form on the mediator's website, or write to the postal address provided.",
+        howDescriptionTelecom: {
+          text1: `Si le professionnel est adhérent à ce médiateur, je remplis le formulaire sur le site internet du médiateur à l'adresse :`,
+          text2: `Il est également possible de le contacter par voie postale à l'adresse suivante :`,
+        },
         why: 'Why?',
         whyDescription: 'The mediator will help you reach an amicable settlement with the company.',
         cost: 'How much does it cost?',

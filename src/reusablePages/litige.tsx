@@ -112,25 +112,18 @@ function LitigeCommon(props: PageComponentProps & {variant: 'telecom' | 'regular
           <p>{isTelecom ? m.litige.step2.whenDescriptionTelecom : m.litige.step2.whenDescription}</p>
           <h3 className="fr-h6">{m.litige.step2.who}</h3>
           <p>{m.litige.step2.whoDescription}</p>
-          {isTelecom && (
-            <p>
-              Il existe dans le secteur des communications électroniques un médiateur spécialisé pour intervenir si vous avez un
-              différend avec votre opérateur de téléphonie (fixe ou mobile) ou votre fournisseur d'accès internet. Il s'agit de la{' '}
-              <strong>Médiatrice des Communications Électroniques</strong>.
-            </p>
-          )}
+          {isTelecom && <p dangerouslySetInnerHTML={{__html: m.litige.step2.whoDescriptionTelecom}} />}
           <h3 className="fr-h6">{m.litige.step2.how}</h3>
 
           {isTelecom ? (
             <>
               <p>
-                Si le professionnel est adhérent à ce médiateur, je remplis le formulaire sur le site internet du médiateur à
-                l'adresse :{' '}
+                {m.litige.step2.howDescriptionTelecom.text1}
                 <Link href={urlMediateurTelecom} target="_blank">
                   {urlMediateurTelecom}
                 </Link>
               </p>
-              <p>Il est également possible de le contacter par voie postale à l'adresse suivante :</p>
+              <p>{m.litige.step2.howDescriptionTelecom.text2}</p>
               <p className="flex flex-col items-center font-bold">
                 {' '}
                 Médiatrice des Communications Électroniques
