@@ -33,9 +33,12 @@ function LitigeCommon(props: PageComponentProps & {variant: 'telecom' | 'regular
       {variant === 'telecom' ? (
         <>
           <h1 className="mb-2">{m.litige.title}</h1>
-          <p className="!text-scbluefrance fr-h4">Pour un opérateur téléphonique ou fournisseur d'accès internet</p>
+          <p className="!text-scbluefrance fr-h4">{m.litige.subtitle}</p>
           <div className="block mb-6 lg:mb-0 lg:grid grid-cols-5 gap-4 ">
-            <p className="col-span-3" dangerouslySetInnerHTML={{__html: m.litige.leadText}} />
+            <div className="col-span-3">
+              <p>{m.litige.leadText1Telecom}</p>
+              <p>{m.litige.leadText2}</p>
+            </div>
             <div className="col-span-2">
               <ScAlert type="info">
                 <p className="mb-0">
@@ -50,7 +53,10 @@ function LitigeCommon(props: PageComponentProps & {variant: 'telecom' | 'regular
         <>
           <h1>{m.litige.title}</h1>
           <div className="block mb-6 lg:mb-0 lg:grid grid-cols-5 gap-4 ">
-            <p className="col-span-3" dangerouslySetInnerHTML={{__html: m.litige.leadText}} />
+            <div className="col-span-3">
+              <p>{m.litige.leadText1}</p>
+              <p>{m.litige.leadText2}</p>
+            </div>
             <div className="col-span-2">
               <ScAlert type="info">
                 <p className="mb-0">

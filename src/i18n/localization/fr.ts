@@ -384,8 +384,10 @@ export const fr = {
     },
     litige: {
       title: 'Vos démarches à conduire en parallèle',
-      leadText: `Vous avez fait un signalement sur SignalConso pour résoudre votre problème avec une entreprise, pour être remboursé par
-      exemple ? Le signalement via SignalConso peut fonctionner, mais pas toujours.<br /><br /> Les démarches optionnelles ci-dessous peuvent aussi vous aider.`,
+      subtitle: `Pour un opérateur téléphonique ou fournisseur d'accès internet`,
+      leadText1: `Vous avez fait un signalement sur SignalConso pour résoudre votre problème avec une entreprise, pour être remboursé par exemple ? Le signalement via SignalConso peut fonctionner, mais pas toujours.`,
+      leadText1Telecom: `Vous avez fait un signalement sur SignalConso pour résoudre votre problème avec une entreprise de télécom, pour être remboursé par exemple ? Le signalement via SignalConso peut fonctionner, mais pas toujours.`,
+      leadText2: `Les démarches optionnelles ci-dessous peuvent aussi vous aider.`,
       titleTelecom:
         'Vos démarches pour être remboursé ou trouver une solution à votre problème avec votre opérateur de téléphonie ou fournisseur internet',
       step1: {

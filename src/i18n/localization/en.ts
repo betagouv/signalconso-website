@@ -377,7 +377,10 @@ export const en = {
     },
     litige: {
       title: 'Your actions to take in parallel',
-      leadText: `You reported an issue on SignalConso to resolve your problem with a company, for example, to get a refund?<br/> The optional steps below might also help you:`,
+      subtitle: `For a telephone operator or internet service provider`,
+      leadText1: `Vous avez fait un signalement sur SignalConso pour résoudre votre problème avec une entreprise, pour être remboursé par exemple ? Le signalement via SignalConso peut fonctionner, mais pas toujours.`,
+      leadText1Telecom: `Vous avez fait un signalement sur SignalConso pour résoudre votre problème avec une entreprise de télécom, pour être remboursé par exemple ? Le signalement via SignalConso peut fonctionner, mais pas toujours.`,
+      leadText2: `Les démarches optionnelles ci-dessous peuvent aussi vous aider.`,
       step1: {
         label: 'Step 1: Write to the company or business to demand a resolution',
         when: 'When?',
