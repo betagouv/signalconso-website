@@ -11,10 +11,20 @@ export class CompanyPublicClient {
     },
   })
 
-  readonly searchCompanies = (search: string, searchPostalCode: string, lang: string) => {
+  readonly searchCompaniesByNameAndPostalCode = (search: string, searchPostalCode: string, lang: string) => {
     return this.client.get<CompanySearchResult[]>(`/companies/search`, {
       qs: {
         postalCode: searchPostalCode.toString(),
+        q: search,
+        lang: lang,
+      },
+    })
+  }
+
+  readonly searchHeadOfficesByName = (search: string, lang: string) => {
+    return this.client.get<CompanySearchResult[]>(`/companies/search`, {
+      qs: {
+        onlyHeadOffice: true,
         q: search,
         lang: lang,
       },

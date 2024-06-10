@@ -20,7 +20,9 @@ export const CompanyFilled = ({
   return (
     <div>
       <h2 className="fr-h6">{m.companyIdentifiedTitle}</h2>
-      <CompanyRecapWithProduct company={draft.companyDraft} barcodeProduct={draft.barcodeProduct} />
+      <div className="mb-2">
+        <CompanyRecapWithProduct company={draft.companyDraft} barcodeProduct={draft.barcodeProduct} />
+      </div>
       <CompanyActionButtons {...{onClear, stepNavigation}} />
     </div>
   )

@@ -28,10 +28,10 @@ export const CompanySearchByNameAndPostalCode = ({children}: Props) => {
   const {companyApiClient} = useApiClients()
   const [submittedForm, setSubmittedForm] = useState<Form | undefined>()
   const _search = useQuery({
-    queryKey: ['searchCompanies', submittedForm?.name, submittedForm?.postalCode],
+    queryKey: ['searchCompaniesByNameAndPostalCode', submittedForm?.name, submittedForm?.postalCode],
     queryFn: () => {
       if (submittedForm) {
-        return companyApiClient.searchCompanies(submittedForm.name, submittedForm.postalCode, currentLang)
+        return companyApiClient.searchCompaniesByNameAndPostalCode(submittedForm.name, submittedForm.postalCode, currentLang)
       }
       return null
     },

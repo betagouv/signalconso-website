@@ -1,0 +1,5 @@
+title: Train
+desc: 'Exemple : Achat impossible, information sur le voyage, retard, annulation'
+postReportHelper:
+  customimport: _imports/postreporthelper/voyager-en-train.yaml
+companyKind: TRAIN

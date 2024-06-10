@@ -1,0 +1,9 @@
+title: Taxi / VTC
+desc: 'Exemples : absence de véhicule adapté, affichage obligatoire illisible, chien d"assistance refusé'
+blockingInfo:
+  title: Oups, nous ne pouvons pas traiter votre signalement.
+  content: >-
+    Commencez par contacter le transporteur qui assure le service.
+    <br /> L'entreprise est votre premier point de contact et peut souvent résoudre directement votre problème.
+    <br />Si vous n'obtenez pas de réponse ou si la réponse ne vous satisfait pas, vous pouvez ensuite vous adresser à les Direction Départementale des Territoires et de la Mer ou Direction Départementale des Territoires (DDTM ou DDT) du département.
+    <br /><a href="https://umap.openstreetmap.fr/fr/map/les-correspondants-accessibilite-par-departement_112126#6/46.695/5.251">Liste des DDTM ou DDT</a><br />

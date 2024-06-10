@@ -8,8 +8,9 @@ type Props = {
   dangerouslySetInnerHTML?: HTMLAttributes<HTMLDivElement>['dangerouslySetInnerHTML']
 } & MaybeChildrenProps
 
-export const alertInfoBackgroundColor = 'rgba(50, 200, 255, .08)'
-const alertInfoTextColor = 'rgb(1, 95, 146)'
+// same blue colors as FriendlyHelperText
+const alertInfoBackgroundColor = '#e8edff'
+const alertInfoTextColor = '#0063cb'
 
 export const alertWarningBackgroundColor = 'rgba(255, 128, 0, .08)'
 export const alertWarningTextColor = 'rgb(153, 76, 0)'
@@ -36,7 +37,7 @@ export const ScAlert = ({type, action, children, dangerouslySetInnerHTML, id}: P
     switch (type) {
       case 'info':
         return {
-          background: alertInfoBackgroundColor, //'#e1f5fe',
+          background: alertInfoBackgroundColor,
           color: alertInfoTextColor,
         }
       case 'error':

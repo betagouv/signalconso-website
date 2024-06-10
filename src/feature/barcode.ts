@@ -6,7 +6,7 @@ import {useQuery} from '@tanstack/react-query'
 
 export type BarcodeSearchQueryResult = {product?: BarcodeProduct; company?: CompanySearchResult}
 
-export function useBarcodeSearch(barcode?: string) {
+export function useBarcodeSearch(barcode?: string, searchProductOnly?: boolean) {
   const {companyApiClient, signalConsoApiClient} = useApiClients()
   const {currentLang} = useI18n()
   const _query = useQuery<BarcodeSearchQueryResult | null>({
@@ -19,7 +19,7 @@ export function useBarcodeSearch(barcode?: string) {
       if (!product) {
         return {}
       }
-      if (!product.siren) {
+      if (!product.siren || searchProductOnly) {
         // No SIREN, probably associated to a foreign company
         // Ex coca 5449000000996
         return {product}

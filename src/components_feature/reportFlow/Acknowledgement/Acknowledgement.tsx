@@ -1,15 +1,13 @@
 import {useGetCountries} from '@/clients/apiHooks'
 import {externalLinks} from '@/core/externalLinks'
 import {useI18n} from '@/i18n/I18n'
-import imgCompany from '@/img/illustrations/company.png'
-import Image from 'next/image'
 import {ReactNode, useEffect, useMemo} from 'react'
-import {LinkBackToHome} from '../../../components_simple/LinkBackToHome'
 import {Country, countryLabel} from '../../../model/Country'
 import {CreatedReport} from '../../../model/CreatedReport'
 import {fnSwitch} from '../../../utils/FnSwitch'
 import {useReportCreateContext} from '../ReportCreateContext'
 import {useReportFlowContext} from '../ReportFlowContext'
+import AcknowledgementLayout from './AcknowledgementLayout'
 
 export enum AcknowledgmentCases {
   ReponseConso = 'ReponseConso',
@@ -53,9 +51,6 @@ export const Acknowledgement = ({isWebView}: {isWebView: boolean}) => {
   )
 }
 
-export const Spinner = () => {
-  return <div className={`w-8 h-8 border-4 border-blue-500 rounded-full animate-spin`}></div>
-}
 export const AcknowledgementInner = ({
   createdReport,
   country,
@@ -83,7 +78,7 @@ export const AcknowledgementInner = ({
     }
   }, [createdReport])
 
-  const subProps = {isWebView}
+  const subProps = {isWebView, createdReport}
   return fnSwitch(reportCase, {
     [AcknowledgmentCases.ReponseConso]: () => (
       <AcknowledgementLayout title={m.acknoledgment.whatWillHappenNow} {...subProps}>
@@ -176,56 +171,6 @@ export const AcknowledgementInner = ({
       </AcknowledgementLayout>
     ),
   })
-}
-
-const AcknowledgementLayout = ({
-  title,
-  children,
-  showChargeBack,
-  isWebView,
-}: {
-  showChargeBack?: boolean
-  title?: string
-  isWebView: boolean
-  children: ReactNode
-}) => {
-  const {m, currentLang} = useI18n()
-  return (
-    <>
-      <Image src={imgCompany} alt="" className="block mx-auto" />
-
-      <div className="max-w-3xl mx-auto">
-        <h2>
-          <div className="flex items-center">
-            <i className="ri-checkbox-circle-fill mr-2" />
-            <span dangerouslySetInnerHTML={{__html: m.acknoledgment.sentReport}} />
-          </div>
-        </h2>
-        {title && <h3 className="fr-h5 !text-scbluefrance">{title}</h3>}
-        {children}
-        {showChargeBack && (
-          <>
-            <p>
-              <strong>{m.acknoledgment.paidWithCreditCard}</strong>
-            </p>
-            <p>
-              {m.acknoledgment.chargeBack}
-              <br />
-              <a href={externalLinks.chargeBack}>{externalLinks.chargeBack}</a>
-            </p>
-          </>
-        )}
-        <p className="mb-14">
-          {m.acknoledgment.emailForErrorInReport}
-
-          <a href="mailto:support@signal.conso.gouv.fr?subject=incident" className="text-scbluefrance">
-            support@signal.conso.gouv.fr
-          </a>
-        </p>
-        <LinkBackToHome isWebView={isWebView} lang={currentLang} />
-      </div>
-    </>
-  )
 }
 
 function ListItem({icon, children}: {icon?: string; children: ReactNode}) {

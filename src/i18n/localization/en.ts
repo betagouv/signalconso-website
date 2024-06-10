@@ -128,7 +128,23 @@ export const en = {
         description: '',
       },
       obligationFibre: {
-        title: 'TODO',
+        title: '',
+        description: '',
+      },
+      signalInfluenceur: {
+        title: '',
+        description: '',
+      },
+      obsolescencePage: {
+        title: '',
+        description: '',
+      },
+      demarchageTelephonique: {
+        title: '',
+        description: '',
+      },
+      intoxAlimentaire: {
+        title: '',
         description: '',
       },
     },
@@ -566,6 +582,10 @@ export const en = {
       resolutionTips: 'Tips for resolving individual issues (disputes)',
       telecomResolutionTips: 'Tips for resolving telecom individual issues (disputes)',
       obligationFibre: 'Report a forced migration to fiber optic Internet',
+      obsolescencePage: 'Report a device with a lifespan that seems too short',
+      demarchageTelephonique: 'Report an abusive telemarketing call',
+      intoxAlimentaire: 'Report food poisoning',
+      signalInfluenceur: '',
       reportIncidentSection: 'Submitting a report',
       reportIncidentFor: 'Report a company for',
       seeFullTree: 'See also',
@@ -1042,6 +1062,7 @@ export const en = {
     consumerWishInvestigationIsPossible2:
       'If a business receives an excessively high volume or frequent number of reports, Fraud Control will investigate the companies in question.',
     employeeConsumerInformation: `To ensure your job security, your details will not be transmitted to the company. It will be read <b>only by Fraud Control</b>.`,
+    notTransmittableToProConsumerInformation: `Your reports will not be transmitted to the company. It will be read <b>only by Fraud Control</b>.`,
     informationRatingSaved: `Your comments have been recorded, thank you.`,
     informationTitle: `Unfortunately, we are unable to take your report any further.`,
     informationReportOutOfScope: `Although we do believe the issue you experienced was genuine, it was not a case of fraud.`,
@@ -1069,6 +1090,7 @@ export const en = {
     attachmentsDescAnonymous: `If you do not want the company to know your identity, <b style="color: black">remove your name</b> where it appears on your attachments.`,
     attachmentsDescAllowedFormat: (formats: string[]) => `The following formats are accepted : ${formats.join(', ')}`,
     attachmentsDesc2: `Including an attachment (for example: a contract, an invoice, exchanges with customer service...) <strong>GREATLY</strong> increases your chances that corrective action will be taken.<br/> You must not share private or sensitive information (e.g. bank account details or medical records).`,
+    notTransmittableAttachmentsDesc2: `Including an attachment (e.g., a contract, an invoice, correspondence with customer service…) greatly helps our administrative services. <br/> You must not share private or sensitive information (e.g. bank account details or medical records).`,
     maxAttachmentsZero: (max: number) => `You can upload up to ${max} attachments`,
     maxAttachmentsReached: (max: number) => `${max} attachments limit reached`,
     maxAttachementExceeded: (max: number, toRemove: number) =>
@@ -1209,6 +1231,7 @@ export const en = {
     consumerInvalidCode: `Incorrect code`,
     consumerResentEmail: `Resend`,
     consumerDummyEmailNotAccepted: `Disposable email addresses are not accepted.`,
+    consumerAliasEmailNotAccepted: `You already have used an alias of this email today.`,
     consumerCannotReportSignalConso: `Please enter the URL of the site you want to report. 'Signal conso' is not a correct value.`,
     consumerValidationCodeExpired: `Incorrect code, please try again.`,
     consumerValidationCodeInvalid: `Incorrect code, please try again.`,
@@ -1364,5 +1387,6 @@ export const en = {
       chargeBack: `Through the charge-back procedure, you may be eligible for a refund following an online purchase:`,
       emailForErrorInReport: `In case of an error in your report, send an email to `,
     },
+    externalLink: 'External link',
   },
 }

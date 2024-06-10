@@ -131,6 +131,23 @@ export const fr = {
         title: `Fibre optique : installation forcée par votre opérateur Internet ?`,
         description: `Signalez un passage à la fibre forcé par votre fournisseur d'accès Internet`,
       },
+      signalInfluenceur: {
+        title: "Signalez une publication frauduleuse d'un influenceur",
+        description:
+          "Vous avez repéré une publication trompeuse ou non conforme d'un influenceur sur Instagram, Snapchat, TikTok, etc. ? Signalez-la sur SignalConso.",
+      },
+      obsolescencePage: {
+        title: "Signaler un cas d'obsolescence programmée",
+        description: 'Votre appareil a une durée de vie qui vous semble trop courte, indice de réparabilité manquant, ...',
+      },
+      demarchageTelephonique: {
+        title: 'Démarchage téléphonique abusif',
+        description: 'Signaler une entreprise qui vous appelle sans respecter Bloctel, ou hors des horaires autorisés',
+      },
+      intoxAlimentaire: {
+        title: 'Intoxication alimentaire : vous avez mangé dans un restaurant et vous êtes malade ?',
+        description: 'Signaler un établissement qui vous a rendu malade',
+      },
     },
     faireUnSignalement: {
       etape: 'Étape',
@@ -577,6 +594,10 @@ export const fr = {
       resolutionTips: "Conseils pour résolution d'un problème individuel (litige)",
       telecomResolutionTips: "Conseils pour résolution d'un problème individuel lié au télécom (litige)",
       obligationFibre: 'Faire un signalement pour une migration forcée vers la fibre optique',
+      obsolescencePage: 'Faire un signalement pour un appareil dont la durée de vie vous semble trop courte',
+      demarchageTelephonique: 'Faire un signalement pour un démarchage téléphonique abusif (malgré Bloctel, trop fréquent, etc.)',
+      intoxAlimentaire: 'Faire un signalement pour une intoxication alimentaire',
+      signalInfluenceur: 'Faire un signalement sur un influenceur',
       reportIncidentSection: "Dépôt d'un signalement",
       reportIncidentFor: 'Faire un signalement pour',
       seeFullTree: 'Voir aussi',
@@ -1051,6 +1072,7 @@ export const fr = {
     consumerWishInvestigationIsPossible2:
       'Si les signalements sont trop nombreux ou fréquents pour un établissement, les enquêteurs de la répression des fraudes interviendront auprès des professionnels.',
     employeeConsumerInformation: `Afin de garantir la sécurité de votre emploi, votre signalement ne sera pas transmis à l'entreprise. Il sera lu <b>uniquement par la répression des fraudes</b>.`,
+    notTransmittableToProConsumerInformation: `Votre signalement ne sera pas transmis à l'entreprise. Il sera lu <b>uniquement par la répression des fraudes</b>.`,
     informationRatingSaved: `Votre avis a bien été enregistré, nous vous en remercions.`,
     informationTitle: `Emmh, nous ne pouvons pas traiter votre signalement.`,
     informationReportOutOfScope: `Nous ne doutons pas que vous ayez réellement rencontré un problème mais... il ne s’agit pas d’une fraude.`,
@@ -1078,6 +1100,7 @@ export const fr = {
     attachmentsDescAnonymous: `Si vous ne souhaitez pas que l'entreprise connaisse votre identité, <b style="color: black">cachez votre nom</b> sur vos pièces jointes.`,
     attachmentsDescAllowedFormat: (formats: string[]) => `Sont acceptés les formats suivants : ${formats.join(', ')}`,
     attachmentsDesc2: `Ajouter une pièce jointe (par exemple : un contrat, une facture, des échanges avec le SAV…) augmente <strong>FORTEMENT</strong> vos chances d’entraîner une mesure corrective&nbsp;!<br/> Vous ne devez pas communiquer de données sensibles (données bancaires ou médicales).`,
+    notTransmittableAttachmentsDesc2: `Ajouter une pièce jointe (par exemple : un contrat, une facture, des échanges avec le SAV…) pour aider nos services administratifs&nbsp;!<br/> Vous ne devez pas communiquer de données sensibles (données bancaires ou médicales).`,
     maxAttachmentsZero: (max: number) => `Vous pouvez téléverser jusqu'à ${max} pièces jointes`,
     maxAttachmentsReached: (max: number) => `Limite de ${max} pièces jointes atteinte`,
     maxAttachementExceeded: (max: number, toRemove: number) =>
@@ -1097,7 +1120,8 @@ export const fr = {
     websitePlaceholder: 'Exemple: https://www.site.fr',
     identifyBy_barcode: `Par le numéro du code-barres sur le produit`,
     identifyBy_barcodeDesc: `Nous vous dirons où le trouver`,
-    identifyBy_name: `Par son nom et son code postal`,
+    identifyBy_name_postal_code: `Par son nom et son code postal`,
+    identifyBy_name: `Par son nom`,
     identifyBy_nameDesc: `Entreprise française uniquement`,
     identifyBy_identity: `Par son numéro d'identification SIRET ou SIREN ou RCS`,
     identifyBy_identityDesc: `Nous vous dirons où les trouver`,
@@ -1233,6 +1257,7 @@ export const fr = {
     consumerInvalidCode: `Code incorrect`,
     consumerResentEmail: `Renvoyer`,
     consumerDummyEmailNotAccepted: `Les adresses éphémères ne sont pas acceptées.`,
+    consumerAliasEmailNotAccepted: `Vous avez déjà utilisé un alias de cet email aujourd'hui.`,
     consumerCannotReportSignalConso: `Veuillez saisir l'URL du site que vous souhaitez signaler. 'Signal conso' n'est pas une valeur correcte.`,
     consumerValidationCodeExpired: `Code incorrect, veuillez réessayer.`,
     consumerValidationCodeInvalid: `Code incorrect, veuillez réessayer.`,
@@ -1401,5 +1426,6 @@ export const fr = {
       chargeBack: `Grâce à la procédure de charge-back vous pouvez être remboursé gratuitement suite à un achat effectué en ligne :`,
       emailForErrorInReport: `En cas d’erreur sur votre signalement, envoyez un email à `,
     },
+    externalLink: 'Lien externe',
   },
 }

@@ -1,8 +1,10 @@
+import {ClientReferenceHelpButton} from '@/components_feature/reportFlow/Consumer/ClientReferenceHelpButton'
 import {StepNavigation} from '@/components_feature/reportFlow/reportFlowStepper/ReportFlowStepper'
 import {ReportFlowStepperActions} from '@/components_feature/reportFlow/reportFlowStepper/ReportFlowStepperActions'
 import {RequiredFieldsLegend} from '@/components_simple/RequiredFieldsLegend'
 import {ScTextInput} from '@/components_simple/formInputs/ScTextInput'
 import {useApiClients} from '@/context/ApiClientsContext'
+import {useBreakpoints} from '@/hooks/useBreakpoints'
 import {useI18n} from '@/i18n/I18n'
 import {AppLangs} from '@/i18n/localization/AppLangs'
 import {ReportDraft2} from '@/model/ReportDraft2'
@@ -12,15 +14,12 @@ import {ReactNode} from 'react'
 import {Controller, useForm} from 'react-hook-form'
 import {ScAlert} from '../../../components_simple/ScAlert'
 import {ScRadioButtons} from '../../../components_simple/formInputs/ScRadioButtons'
-import {appConfig} from '../../../core/appConfig'
-import {useToastError} from '../../../hooks/useToastError'
+import {getApiErrorId, useToastError} from '../../../hooks/useToastError'
 import {Gender, ReportDraft, genders} from '../../../model/ReportDraft'
 import {DeepPartial} from '../../../utils/utils'
 import {useReportFlowContext} from '../ReportFlowContext'
 import {ConsumerAnonymousInformation} from './ConsumerAnonymousInformation'
 import {ConsumerValidationDialog2, consumerValidationModal} from './ConsumerValidationDialog'
-import {SiretHelpButton} from '@/components_feature/reportFlow/Company/lib/SiretHelpButton'
-import {ClientReferenceHelpButton} from '@/components_feature/reportFlow/Consumer/ClientReferenceHelpButton'
 
 interface ConsumerForm {
   firstName: string
@@ -58,7 +57,7 @@ export const ConsumerInner = ({
   stepNavigation: StepNavigation
 }) => {
   const {m, currentLang} = useI18n()
-  // const [openValidationDialog, setOpenValidationDialog] = useState<boolean>(false)
+  const {isSmOrMore} = useBreakpoints()
   const {signalConsoApiClient} = useApiClients()
   const _reportFlow = useReportFlowContext()
   const _checkEmail = useMutation({
@@ -124,7 +123,7 @@ export const ConsumerInner = ({
               <ScRadioButtons
                 {...field}
                 required
-                orientation="horizontal"
+                orientation={isSmOrMore ? 'horizontal' : 'vertical'}
                 options={gendersOptions}
                 title={<WithIcon icon="ri-user-smile-line">{m.genderField}</WithIcon>}
                 titleSoberStyle
@@ -166,11 +165,6 @@ export const ConsumerInner = ({
             {..._form.register('email', {
               required: {value: true, message: m.required},
               pattern: {value: regexp.email, message: m.invalidEmail},
-              validate: {
-                isDummyEmail: value => {
-                  return !appConfig.dummyEmailDomain.find(_ => value.includes(_)) || m.consumerDummyEmailNotAccepted
-                },
-              },
             })}
             required
             {...getErrors('email')}
@@ -257,16 +251,25 @@ export const ConsumerInner = ({
       <ReportFlowStepperActions
         loadingNext={_checkEmail.isPending}
         onNext={() => {
-          _form.handleSubmit(form => {
-            _checkEmail
-              .mutateAsync(form.email)
-              .then(res => {
-                if (res.valid) saveAndNext()
-                else consumerValidationModal.open()
-              })
-              .catch(() => {
-                toastError()
-              })
+          _form.handleSubmit(async form => {
+            try {
+              const res = await _checkEmail.mutateAsync(form.email)
+              if (res.valid) saveAndNext()
+              else consumerValidationModal.open()
+            } catch (e) {
+              const errorId = getApiErrorId(e)
+              let msg: string | undefined = undefined
+              switch (errorId) {
+                case 'SC-0020-02':
+                  msg = m.consumerDummyEmailNotAccepted
+                  break
+                case 'SC-0059':
+                  msg = m.consumerAliasEmailNotAccepted
+                  break
+              }
+
+              toastError(msg)
+            }
           })()
         }}
         {...{stepNavigation}}

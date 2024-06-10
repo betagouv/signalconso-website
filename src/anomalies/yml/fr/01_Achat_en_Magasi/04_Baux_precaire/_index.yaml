@@ -1,4 +1,6 @@
 title: Je suis invité à venir retirer des cadeaux (voyages, bouteilles de vins, couteaux, bijoux) dans un magasin 
 desc: >-
   Je suis invité au lancement d'un nouveau magasin ou je suis invité à retirer un cadeau dans un magasin éphémère. 
-companyKind: SIRET
+companyKind: LOCATION
+tags:
+  - BauxPrecaire

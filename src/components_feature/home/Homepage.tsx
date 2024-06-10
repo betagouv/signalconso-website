@@ -1,8 +1,7 @@
 'use client'
 
-import {Button} from '@codegouvfr/react-dsfr/Button'
-import {useColors} from '@codegouvfr/react-dsfr/useColors'
 import {allAnomaliesForHomepage} from '@/anomalies/Anomalies'
+import {FullWidthPageContainer} from '@/components_simple/PageContainers'
 import {IllustrationStepper} from '@/components_simple/StepIllustrations/StepIllustrations'
 import {ForeignVisitorsQaPromoBanner} from '@/components_simple/bigBanners/ForeignVisitorsQaPromoBanner'
 import {InfoBanner} from '@/components_simple/bigBanners/InfoBanner'
@@ -11,17 +10,18 @@ import {bigReportButtonProps} from '@/components_simple/buttons/buttonsUtils'
 import {HP_START_REPORT_ANCHOR} from '@/core/pagesDefinitions'
 import {useI18n} from '@/i18n/I18n'
 import {AppLangs} from '@/i18n/localization/AppLangs'
+import imgCompany from '@/img/illustrations/company.png'
+import imgConsumer from '@/img/illustrations/consumer.png'
+import imgDgccrf from '@/img/illustrations/dgccrf.png'
+import imgReport from '@/img/illustrations/report.png'
+import {Button} from '@codegouvfr/react-dsfr/Button'
+import {useColors} from '@codegouvfr/react-dsfr/useColors'
 import dynamic from 'next/dynamic'
 import {useEffect, useMemo} from 'react'
 import * as smoothscroll from 'smoothscroll-polyfill'
-import imgConsumer from '@/img/illustrations/consumer.png'
-import imgReport from '@/img/illustrations/report.png'
-import imgCompany from '@/img/illustrations/company.png'
-import imgDgccrf from '@/img/illustrations/dgccrf.png'
 import {useReportFlowContext} from '../../components_feature/reportFlow/ReportFlowContext'
 import SearchAnomalies from '../../components_simple/SearchAnomalies'
 import {BrowserCompatAlert} from '../../components_simple/bigBanners/BrowserAlertCompat'
-import {FullWidthPageContainer} from '@/components_simple/PageContainers'
 
 const ReportStartedAlert = dynamic(() => import('@/components_feature/ReportStartedAlert'), {ssr: false})
 
@@ -39,10 +39,10 @@ export const Homepage = () => {
     <>
       <FullWidthPageContainer>
         <div>
+          <MobileAppPromoBanner />
           <div className="fr-container">
             <InfoBanner />
             <BrowserCompatAlert />
-            <MobileAppPromoBanner />
           </div>
           <div className="fr-container fr-pt-8w fr-pb-6w ">
             <h1 dangerouslySetInnerHTML={{__html: m.homepage.signalconsoCatchWord}} />

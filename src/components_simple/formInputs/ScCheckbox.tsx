@@ -3,8 +3,6 @@ import {ReactElement, ReactNode, Ref, forwardRef, useId} from 'react'
 interface Props<V> {
   title: ReactNode
   description?: string
-  // do not respect DSFR style, less bold, less margins, etc.
-  titleSoberStyle?: boolean
   onChange: (value: V[]) => void
   options: {
     label: ReactNode
@@ -19,7 +17,7 @@ interface Props<V> {
 type RefType = Ref<HTMLFieldSetElement>
 
 const ScCheckboxWithRef = <V,>(props: Props<V>, ref: RefType) => {
-  const {title, titleSoberStyle, description, onChange, options, value: selectedValue, error, errorMessage, required} = props
+  const {title, description, onChange, options, value: selectedValue, error, errorMessage, required} = props
   const _id = useId()
   const id = `fr-fieldset-checkbox-${_id}`
   const legendId = `${id}-legend`
@@ -43,7 +41,7 @@ const ScCheckboxWithRef = <V,>(props: Props<V>, ref: RefType) => {
       ref={ref}
     >
       {title && (
-        <legend id={legendId} className={`fr-fieldset__legend ${titleSoberStyle ? '!font-normal !pb-0' : ''}`}>
+        <legend id={legendId} className="fr-fieldset__legend fr-fieldset__legend--regular">
           {title}
           {required && <span> *</span>}
           {description && <span className="fr-hint-text">{description}</span>}

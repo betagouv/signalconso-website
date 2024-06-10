@@ -5,6 +5,12 @@ interface CategoryNodeBase {
   title: string
   id: string
   subcategoriesTitle?: string
+  postReportHelper?: PostReportHelper
+}
+
+export interface PostReportHelper {
+  title?: string
+  content?: string
 }
 
 export type Anomaly = CategoryNodeBase & {
@@ -22,6 +28,7 @@ export type Anomaly = CategoryNodeBase & {
   isHiddenDemoCategory?: boolean
   isSpecialOpenFoodFactsCategory?: boolean
   // text or question introducing the choice between the subcategories
+  isExternal?: boolean // Define if the is category is an external link
 }
 
 type CompanyKindQuestion = {
@@ -53,6 +60,7 @@ type SubcategoryBase = CategoryNodeBase & {
 // A typical subcategory
 export type StandardSubcategory = SubcategoryBase & {
   fileLabel?: string
+  attachmentDesc?: string
   detailInputs?: DetailInput[]
 }
 
@@ -63,6 +71,8 @@ export type SubcategoryWithInfoWall = SubcategoryBase & {
 }
 
 export type Subcategory = StandardSubcategory | SubcategoryWithInfoWall
+
+export const reportTagsNotTransmittableToPro = ['BauxPrecaire']
 
 export const reportTagsAllowedInYaml = [
   'Hygiene',
@@ -79,6 +89,14 @@ export const reportTagsAllowedInYaml = [
   'CompagnieAerienne',
   'Resiliation',
   'TransitionEcologique',
+  'ProduitPerime',
+  'CommandeEffectuee',
+  'ImpressionTicket',
+  'QuantiteNonConforme',
+  'AppelCommercial',
+  'Prix',
+  'AlimentationMaterielAnimaux',
+  ...reportTagsNotTransmittableToPro,
 ] as const
 export type ReportTagAllowedInYaml = (typeof reportTagsAllowedInYaml)[number]
 
@@ -94,12 +112,14 @@ export const companyKinds = [
   'LOCATION',
   'SOCIAL',
   'PRODUCT',
+  'PRODUCT_POINT_OF_SALE',
   'PRODUCT_OPENFF',
   'TRAIN',
   'STATION',
 ] as const
 export type CompanyKinds = (typeof companyKinds)[number]
 export type SpecificWebsiteCompanyKinds = Extract<CompanyKinds, 'MERCHANT_WEBSITE' | 'TRANSPORTER_WEBSITE'>
+export type SpecificProductCompanyKinds = Extract<CompanyKinds, 'PRODUCT' | 'PRODUCT_POINT_OF_SALE'>
 
 export const socialNetworks = [
   'SNAPCHAT',

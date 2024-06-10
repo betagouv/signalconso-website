@@ -39,7 +39,7 @@ export function ReportFlowStepperHeader(
     const stepsCount = reportSteps.length
     const isPrevBackToHome = stepIndex === 1
     return (
-      <div className="fr-stepper grow" tabIndex={-1} ref={divRef}>
+      <div className={`fr-stepper ${variant === 'report-started-alert' ? '!mb-4' : ''}`} tabIndex={-1} ref={divRef}>
         <H1OrP kind={variant === 'main' ? 'h1' : 'p'}>
           <span className="fr-stepper__state">
             {anomalyTitle} - {m.faireUnSignalement.etape} {stepIndex} {m.faireUnSignalement.sur} {stepsCount}
@@ -48,7 +48,7 @@ export function ReportFlowStepperHeader(
         </H1OrP>
         <div className="fr-stepper__steps" data-fr-current-step={stepIndex} data-fr-steps={stepsCount}></div>
         {variant === 'main' && (
-          <div className="flex gap-2 justify-between">
+          <div className="flex gap-4 justify-between">
             {(!isWebView || !isPrevBackToHome) && (
               <Button
                 {...(isPrevBackToHome
@@ -62,7 +62,7 @@ export function ReportFlowStepperHeader(
                     })}
                 iconId="fr-icon-arrow-left-s-line"
                 priority="tertiary no outline"
-                className="mt-2"
+                className="mt-1 !p-0"
               >
                 {isPrevBackToHome ? m.menu_home : m.previous}
               </Button>
@@ -81,7 +81,7 @@ export function ReportFlowStepperHeader(
 }
 
 function H1OrP({kind, children}: {kind: 'h1' | 'p'} & ChildrenProps) {
-  const className = 'fr-stepper__title'
+  const className = 'fr-stepper__title mb-1'
   if (kind === 'h1') {
     return <h1 {...{className}}>{children}</h1>
   }

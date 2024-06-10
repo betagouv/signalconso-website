@@ -1,5 +1,5 @@
-import React, {useEffect, useState} from 'react'
 import {Alert} from '@codegouvfr/react-dsfr/Alert'
+import {useEffect, useState} from 'react'
 import {useI18n} from '../../i18n/I18n'
 
 export const BrowserCompatAlert = () => {

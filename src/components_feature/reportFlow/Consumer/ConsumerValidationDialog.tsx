@@ -4,10 +4,10 @@ import {ScValidationCodeInput} from '@/components_simple/formInputs/ScValidation
 import {useApiClients} from '@/context/ApiClientsContext'
 import {useI18n} from '@/i18n/I18n'
 import {ValidationRejectReason} from '@/model/ConsumerEmailValidation'
+import {PortalToBody} from '@/utils/PortalToBody'
 import {createModal} from '@codegouvfr/react-dsfr/Modal'
 import {useMutation} from '@tanstack/react-query'
 import {useState} from 'react'
-import {createPortal} from 'react-dom'
 import {Controller, useForm} from 'react-hook-form'
 import {duration} from '../../../utils/Duration'
 import {iconArrowRight, timeoutPromise} from '../../../utils/utils'
@@ -44,7 +44,7 @@ export function ConsumerValidationDialog2({consumerEmail, onValidated}: {consume
 
   return (
     <>
-      {createPortal(
+      <PortalToBody>
         <consumerValidationModal.Component
           title={m.consumerAskCodeTitle}
           buttons={
@@ -111,9 +111,8 @@ export function ConsumerValidationDialog2({consumerEmail, onValidated}: {consume
               </>
             )}
           />
-        </consumerValidationModal.Component>,
-        document.body,
-      )}
+        </consumerValidationModal.Component>
+      </PortalToBody>
     </>
   )
 }
