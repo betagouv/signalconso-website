@@ -1,12 +1,11 @@
 'use client'
+import {appConfig} from '@/core/appConfig'
 import {Footer} from '@codegouvfr/react-dsfr/Footer'
 import Link from 'next/link'
+import {usePathname} from 'next/navigation'
 import {pagesDefs} from '../core/pagesDefinitions'
 import {useI18n} from '../i18n/I18n'
 import buildMenuLink from '../utils/menuLinks'
-import {usePathname} from 'next/navigation'
-import {AppLangs} from '../i18n/localization/AppLangs'
-import {appConfig} from '@/core/appConfig'
 
 export const urlServicePublicPlus = `https://www.plus.transformation.gouv.fr/experience/step_1?pk_campaign=DGCCRF`
 
@@ -53,7 +52,6 @@ export function ScFooter() {
           },
           buildMenuLink(currentLang, pathName, pagesDefs.delaiRetractation.url, m.footer.retractationLinkTitle),
           buildMenuLink(currentLang, pathName, pagesDefs.litige.url, m.footer.litigeLinkTitle),
-          buildMenuLink(currentLang, pathName, pagesDefs.refundTelecom.url, m.footer.refundTelecomLinkTitle),
           {
             text: m.footer.servicePublicPlusLinkTitle,
             linkProps: {

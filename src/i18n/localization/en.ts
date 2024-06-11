@@ -66,12 +66,13 @@ export const en = {
         description: 'Contact SignalConso',
       },
       litige: {
-        title: 'Resolving an individual dispute – SignalConso',
-        description: 'SignalConso tips for resolving an individual issue or dispute with a company or business',
+        title: 'Your steps to take in parallel - SignalConso',
+        description: 'Our advice for resolving a dispute with a company: letter, mediation, and legal action',
       },
-      refundTelecom: {
-        title: 'Resolving an individual dispute – SignalConso',
-        description: 'SignalConso tips for resolving an individual issue or dispute with a company or business',
+      litigeTelecom: {
+        title: 'Your steps to take in parallel (telecoms) - SignalConso',
+        description:
+          'Our advice for resolving a dispute with a mobile operator or internet provider: letter, mediation, and legal action',
       },
       quiSommesNous: {
         title: 'Who are we? - SignalConso',
@@ -374,51 +375,23 @@ export const en = {
       alertDescription: `This email address is not intended for reporting your issue with a company, we wouldn't be able to process it that way. Reports of customer issues must exclusively be submitted by following the "I report an issue" button above.`,
       alertTitle: 'Do not send us a report by email – it will not be read.',
     },
-    refundTelecom: {
-      demarcheTitle: 'Your steps to get refunded or find a solution to your problem',
-      step1Title: 'Step 1: I write a letter to the company to ask to solve my problem',
-      step1When: 'When?',
-      step1WhenDesc1: 'As soon as possible (recommended).',
-      step1WhenDesc2: 'I can also wait to see if the company responds to me with SignalConso.',
-      step1ToWhom: 'To whom?',
-      step1ToWhomDesc1: 'To the customer service of the company.',
-      step1ToWhomDesc2:
-        "I can find the address of the company's customer service in my contract, on its website, or in the general terms of sale.",
-      step1How: 'How?',
-      step1HowDesc: 'By sending a registered letter with acknowledgement of receipt, attaching the following two documents:',
-      step1Attachment1: 'a template letter to complete (areas between [])',
-      step1Attachment2: 'my report in PDF format',
-      step1KeepCopy: 'I keep a copy of the letter and proof of sending.',
-      step1Why: 'Why?',
-      step1WhyDesc: 'This letter is the proof of my approach. It is mandatory to initiate other steps later.',
-      step2Title:
-        "Step 2: I contact a consumer mediator, that is a person in charge of solving consumers' problems with companies",
-      step2When: 'When?',
-      step2WhenDesc:
-        'Two months after sending my letter, if I have not received a response or if the response does not satisfy me.',
-      step2WhenDescWarn:
-        'You have 1 year from the date of your written complaint to the customer service of your operator or supplier to seize the mediator.',
-      step2Who: 'Who?',
-      step2WhoDesc:
-        "The company is obligated to communicate the name of the mediator it has chosen. The contact details of the mediator are normally written on the company's website or on the contract, purchase order...",
-      step2WhoDesc2:
-        'In the electronic communications sector, there is a specialized mediator to intervene if you have a dispute with your telephony (landline or mobile) operator or your internet service provider.',
-      step2WhoDesc3: 'It is the Electronic Communications Mediator.',
-      step2MediatorAddress: 'Electronic Communications Mediator, CS 30 342, 94257 GENTILLY Cedex',
-      step2How: 'How?',
-      step2HowDesc:
-        "If the professional is a member of this mediator, I fill out the form on the mediator's website at the address: ",
-      step2OrDesc: 'It is also possible to contact them by mail at the following address: ',
-      step2Why: 'Why?',
-      step2WhyDesc: 'The mediator will help me find an arrangement with the company.',
-      step2Cost: 'How much does it cost?',
-      step2CostDesc: "It's free!",
-      step2NoMediatorFound: "What to do if I can't find the name of the mediator?",
-      step2NoMediatorFoundDesc2: "He will help me find a solution with the company. It's free!",
-      step2NoMediatorFoundDesc: 'I contact the conciliator closest to my home. I look for it on the website ',
-    },
     litige: {
-      title: 'Apply for a refund or find a solution to your issue',
+      title: 'Your actions to take in parallel',
+      subtitle: `For a telephone operator or internet service provider`,
+      leadText1:
+        'Did you file a report on SignalConso to resolve your issue with a company, to get a refund for example? Reporting via SignalConso can work, but not always.',
+      leadText1Telecom:
+        'Did you file a report on SignalConso to resolve your issue with a telecom company, to get a refund for example? Reporting via SignalConso can work, but not always.',
+      leadText2: 'The optional steps below may also help you.',
+      wrongPageHelp: {
+        text1: 'Is your issue with an internet provider or a telephone operator? Check out the page dedicated to ',
+        link: 'steps for telecom companies',
+      },
+      wrongPageHelpTelecom: {
+        text1: 'Is your issue in another sector? Check out the page dedicated to ',
+        link: 'steps to resolve disputes',
+        text2: ' in general',
+      },
       step1: {
         label: 'Step 1: Write to the company or business to demand a resolution',
         when: 'When?',
@@ -443,11 +416,19 @@ export const en = {
         when: 'When?',
         whenDescription:
           'Two months after you sent your letter, if you have not received a response or the response you received was unsatisfactory.',
+        whenDescriptionTelecom:
+          'Two months after sending my letter, if I have not received a response or if the response does not satisfy me. You have one year from the date of this letter to contact the mediator.',
         who: 'Who?',
         whoDescription:
           "The company is required to give the name of their chosen mediator. The mediator's contact details are usually given on the company's website, contract and/or purchase order.",
+        whoDescriptionTelecom:
+          'There is a specialized mediator in the electronic communications sector to intervene if you have a dispute with your telephone operator (fixed or mobile) or your internet service provider. This is the <strong>Médiatrice des Communications Électroniques</strong> (Electronic Communications Mediator).',
         how: 'How?',
         howDescription: "Complete the form on the mediator's website, or write to the postal address provided.",
+        howDescriptionTelecom: {
+          text1: "If the professional is a member of this mediator, I fill out the form on the mediator's website ",
+          text2: 'It is also possible to contact them by mail at the following address:',
+        },
         why: 'Why?',
         whyDescription: 'The mediator will help you reach an amicable settlement with the company.',
         cost: 'How much does it cost?',
@@ -738,7 +719,6 @@ export const en = {
       cookiesTitle: 'About cookies',
       retractationLinkTitle: 'Info – Cooling-off period',
       litigeLinkTitle: 'Info – Resolving a dispute',
-      refundTelecomLinkTitle: 'Info – Resolving a telecom dispute',
       actualitesLinkTitle: 'News',
       servicePublicPlusLinkTitle: 'Services Publics +',
       suivezNous: `Follow us <br /> on social media`,
