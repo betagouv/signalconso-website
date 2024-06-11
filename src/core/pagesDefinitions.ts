@@ -57,7 +57,7 @@ export const internalPageDefs = {
   stats: page(`/stats`, {hasEnglishVersion: false}),
   suiviEtViePrivee: page(`/suivi-et-vie-privee`),
   litige: page(`/litige`),
-  refundTelecom: page(`/remboursement-telecom`),
+  litigeTelecom: page(`/litige/telecom`),
   obligationFibre: page('/obligation-adsl-fibre', {hasEnglishVersion: false}),
   signalInfluenceur: page('/signaler-un-influenceur', {hasEnglishVersion: false}),
   obsolescencePage: page('/duree-de-vie-produit-obsolescence-programmee', {hasEnglishVersion: false}),
