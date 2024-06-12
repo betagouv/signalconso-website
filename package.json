@@ -83,7 +83,8 @@
     "tailwindcss": "^3.4.3",
     "tss-react": "^4.9.10",
     "uuid": "^9.0.1",
-    "yaml-import": "2.0.0"
+    "yaml-import": "2.0.0",
+    "zod": "^3.23.8"
   },
   "devDependencies": {
     "@jest/types": "29.6.3",
