@@ -1,5 +1,7 @@
 title: Some prices are missing
 reponseconsoCode: '212'
+tags:
+  - ReponseConso
 desc: "Exemple\_: no prices given on the wine list"
 detailInputs:
   - label: Date of the finding
