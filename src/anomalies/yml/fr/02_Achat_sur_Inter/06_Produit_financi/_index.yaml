@@ -1,3 +1,5 @@
-title: Produit financier 
+title: Produit financier
 desc: 'Exemple : Produits financiers risqués, Crypto-actifs, NFT'
+postReportHelper:
+  customimport: _imports/postreporthelper/placements-financiers.yaml
 companyKind: WEBSITE
