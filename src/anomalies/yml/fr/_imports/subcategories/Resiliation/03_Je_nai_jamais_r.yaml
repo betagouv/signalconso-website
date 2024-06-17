@@ -3,3 +3,7 @@ desc: "Exemple\_: Je ne reçois aucun mail ou courrier de confirmation de résil
 tags:
   - ReponseConso
 reponseconsoCode: '475'
+ccrfCode:
+  - '21A'
+  - '226'
+  - '21E'
