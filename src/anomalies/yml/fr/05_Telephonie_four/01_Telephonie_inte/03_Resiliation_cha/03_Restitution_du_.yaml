@@ -1,5 +1,6 @@
 title: Restitution du matériel
 desc: 'Exemple : absence de confirmation de retour de l"équipement, demande de restition de matériel alors que c"est déjà fait, matériel renvoyé mais facturé'
 ccrfCode:
-  - 21A
+  - '226'
+  - '21E'
 reponseconsoCode: '477'
