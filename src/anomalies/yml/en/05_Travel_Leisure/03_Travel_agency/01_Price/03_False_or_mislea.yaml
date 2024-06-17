@@ -3,3 +3,5 @@ desc: 'Examples: fake promotions, false time limits'
 ccrfCode:
   - 23b
 reponseconsoCode: '212'
+tags:
+  - ReponseConso

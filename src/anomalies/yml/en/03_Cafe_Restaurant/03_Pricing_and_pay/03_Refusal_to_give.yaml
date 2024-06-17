@@ -1,5 +1,7 @@
 title: Refusal to give me a receipt
 reponseconsoCode: '2131'
+tags:
+  - ReponseConso
 detailInputs:
   - label: Date of the finding
     type: DATE
