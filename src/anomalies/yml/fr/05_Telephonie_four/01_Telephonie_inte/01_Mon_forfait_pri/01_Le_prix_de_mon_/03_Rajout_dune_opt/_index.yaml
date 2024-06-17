@@ -3,5 +3,6 @@ desc: >-
   Exemple : chaîne télé supplémentaire, option cyber-sécurité, option livre
   audio, option musique...
 ccrfCode:
-  - 21A
+  - '226'
+  - '21B'
 subcategoriesTitle: Quel est le type d'option ?

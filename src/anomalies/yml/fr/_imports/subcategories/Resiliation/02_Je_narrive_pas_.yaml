@@ -3,3 +3,7 @@ desc: "Exemple\_: Je ne trouve pas comment résilier ou je n'y arrive pas, le bo
 tags:
   - ReponseConso
 reponseconsoCode: '473'
+ccrfCode:
+  - '21A'
+  - '226'
+  - '21E'

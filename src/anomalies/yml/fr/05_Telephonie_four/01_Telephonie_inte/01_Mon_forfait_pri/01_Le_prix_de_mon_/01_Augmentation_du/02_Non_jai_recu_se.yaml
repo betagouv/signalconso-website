@@ -1,3 +1,6 @@
 title: Non, j'ai reçu seulement un sms
 tags:
   - ReponseConso
+ccrfCode:
+  - '226'
+  - '21B'
