@@ -13,8 +13,7 @@ import {CompanyDraft, CompanySearchResult} from '@/model/Company'
 import Button from '@codegouvfr/react-dsfr/Button'
 import Link from 'next/link'
 import {usePathname, useSearchParams} from 'next/navigation'
-import {ConsumerReview} from '../ConsumerReview'
-import {ConsumerReviewOnEngagement} from '../ConsumerReviewOnEngagement'
+import {EngagementReviewPage, ResponseReviewPage} from '../ConsumerReview'
 import {AcknowledgmentCases} from '../reportFlow/Acknowledgement/Acknowledgement'
 import {CompanyFilled} from '../reportFlow/Company/CompanyFilled'
 
@@ -201,9 +200,9 @@ const Playground = () => {
       case 'acknowledgment_Default':
         return <PlaygroundAcknowledgment acknowledgmentCase={AcknowledgmentCases.Default} countryId="" />
       case 'response_review':
-        return <ConsumerReview reportId="dummy" />
+        return <ResponseReviewPage reportId="dummy" />
       case 'engagement_review':
-        return <ConsumerReviewOnEngagement reportId="dummy" />
+        return <EngagementReviewPage reportId="dummy" />
       case 'other':
         return <PlaygroundOther />
       default:

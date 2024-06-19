@@ -1,4 +1,4 @@
-import {ConsumerReview} from '@/components_feature/ConsumerReview'
+import {ResponseReviewPage} from '@/components_feature/ConsumerReview'
 import {PageComponentProps, PathParams, buildGenerateMetadataForNoIndexPage} from '@/core/metadatas'
 
 type LocalPathParams = PathParams<{
@@ -8,5 +8,5 @@ type LocalPathParams = PathParams<{
 export const generateMetadata = buildGenerateMetadataForNoIndexPage('avis')
 
 export default function Page(props: PageComponentProps<LocalPathParams>) {
-  return <ConsumerReview reportId={props.params.reportId} />
+  return <ResponseReviewPage reportId={props.params.reportId} />
 }
