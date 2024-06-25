@@ -15,9 +15,9 @@ export function getManualLpButtonProps(lang: AppLang, category: String) {
   }
 }
 
-export function LpColoredBand({children, bgClassName = ''}: ChildrenProps & {bgClassName?: string}) {
+export function LpColoredBand({children, className = ''}: ChildrenProps & {className?: string}) {
   return (
-    <div className={bgClassName}>
+    <div className={className}>
       <div className="fr-container">{children}</div>
     </div>
   )

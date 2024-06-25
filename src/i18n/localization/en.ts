@@ -148,6 +148,10 @@ export const en = {
         title: '',
         description: '',
       },
+      rappelTakata: {
+        title: '',
+        description: '',
+      },
     },
     faireUnSignalement: {
       etape: 'Step',
@@ -566,6 +570,7 @@ export const en = {
       obsolescencePage: 'Report a device with a lifespan that seems too short',
       demarchageTelephonique: 'Report an abusive telemarketing call',
       intoxAlimentaire: 'Report food poisoning',
+      rappelTakata: 'Infos about recall of Takata airbags',
       signalInfluenceur: '',
       reportIncidentSection: 'Submitting a report',
       reportIncidentFor: 'Report a company for',
