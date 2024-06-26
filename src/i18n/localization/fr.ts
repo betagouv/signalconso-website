@@ -148,11 +148,6 @@ export const fr = {
         title: 'Intoxication alimentaire : vous avez mangé dans un restaurant et vous êtes malade ?',
         description: 'Signaler un établissement qui vous a rendu malade',
       },
-      rappelTakata: {
-        title: `Information sur les rappels de voiture avec airbags Takata`,
-        description:
-          'Comment savoir si vous êtes concerné ? Comment trouver mon numéro VIN ? Signaler une difficulté pour faire les réparations',
-      },
     },
     faireUnSignalement: {
       etape: 'Étape',
@@ -580,7 +575,6 @@ export const fr = {
       obsolescencePage: 'Faire un signalement pour un appareil dont la durée de vie vous semble trop courte',
       demarchageTelephonique: 'Faire un signalement pour un démarchage téléphonique abusif (malgré Bloctel, trop fréquent, etc.)',
       intoxAlimentaire: 'Faire un signalement pour une intoxication alimentaire',
-      rappelTakata: 'Informations sur le rappel des airbags Takata',
       signalInfluenceur: 'Faire un signalement sur un influenceur',
       reportIncidentSection: "Dépôt d'un signalement",
       reportIncidentFor: 'Faire un signalement pour',

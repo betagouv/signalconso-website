@@ -49,7 +49,6 @@ const PlanDuSite = (props: PageComponentProps) => {
           <BasicPageLink page="obsolescencePage" label={m.planDuSite.obsolescencePage} {...{lang}} />
           <BasicPageLink page="demarchageTelephonique" label={m.planDuSite.demarchageTelephonique} {...{lang}} />
           <BasicPageLink page="intoxAlimentaire" label={m.planDuSite.intoxAlimentaire} {...{lang}} />
-          <BasicPageLink page="rappelTakata" label={m.planDuSite.rappelTakata} {...{lang}} />
           <hr className="mt-4" />
         </ul>
         <p className="mt-4">

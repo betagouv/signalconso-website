@@ -48,6 +48,7 @@ const changedPaths = [
   ['/fr/incidents-intoxication-alimentaire', '/fr/intoxication-alimentaire'],
   ['/fr/remboursement-telecom', '/fr/litige/telecom'],
   ['/en/remboursement-telecom', '/en/litige/telecom'],
+  ['/fr/rappel-voitures-airbags-takata', '/fr/actualites/rappel-airbag-takata'],
 ]
 
 const redirectsForChangedPaths = changedPaths.map(([source, destination]) => ({
