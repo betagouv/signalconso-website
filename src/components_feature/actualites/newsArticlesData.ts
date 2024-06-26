@@ -5,6 +5,13 @@ export type NewsArticle = (typeof initialNewsArticlesData)[number]
 // This is the display order. Keep the most recents at the start of the array
 export const initialNewsArticlesData = [
   {
+    date: '2024-06-25',
+    lang: AppLangs.fr,
+    slug: 'signalconso-mobile-app-v2',
+    title: "L’application SignalConso évolue : tour d’horizon des nouvelles fonctionnalités",
+    excerpt: `Disponible sur iOS et Google Play, celle-ci fait peau neuve pour proposer de toutes nouvelles fonctionnalités afin d’accompagner vos démarches toujours plus loin. On fait le point.`,
+  },
+  {
     date: '2024-05-24',
     lang: AppLangs.fr,
     slug: 'signalconso-reduflation',
