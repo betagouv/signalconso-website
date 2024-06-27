@@ -14,7 +14,7 @@ export const MobileAppPromoBanner = () => {
     <div className="md:hidden">
       <FriendlyHelpText margins={false}>
         <>
-          Mettez SignalConso dans votre poche ! Téléchargez notre application mobile <Link href={iosAppUrl}>pour iOS</Link> ou{' '}
+          Découvrez notre nouvelle application avec des fonctionnalités exclusives introuvables sur le site mobile. N’attendez plus pour mettre SignalConso dans votre poche ! Disponible <Link href={iosAppUrl}>pour iOS</Link> ou{' '}
           <Link href={androidAppUrl}>pour Android</Link>.
         </>
       </FriendlyHelpText>
