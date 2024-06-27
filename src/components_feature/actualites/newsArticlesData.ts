@@ -5,6 +5,13 @@ export type NewsArticle = (typeof initialNewsArticlesData)[number]
 // This is the display order. Keep the most recents at the start of the array
 export const initialNewsArticlesData = [
   {
+    date: '2024-06-26',
+    lang: AppLangs.fr,
+    slug: 'rappel-airbag-takata',
+    title: "Information sur les rappels de voiture en raison d'airbags Takata défectueux",
+    excerpt: `Depuis mai 2024, en raison d'un défaut majeur dans les airbags, des millions de véhicules sont actuellement rappelés à travers le monde. Ces airbags, fabriqués par Takata, présentent un risque sérieux pour la sécurité des occupants.`,
+  },
+  {
     date: '2024-06-25',
     lang: AppLangs.fr,
     slug: 'signalconso-mobile-app-v2',
