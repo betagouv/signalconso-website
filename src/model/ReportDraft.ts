@@ -1,4 +1,14 @@
-import {Anomaly, CompanyKinds, NightTrains, ReportTag, SocialNetworks, Subcategory, Ters, Trains} from '@/anomalies/Anomaly'
+import {
+  Anomaly,
+  CompanyKinds,
+  NightTrains,
+  ReportTag,
+  reportTagsNotTransmittableToPro,
+  SocialNetworks,
+  Subcategory,
+  Ters,
+  Trains,
+} from '@/anomalies/Anomaly'
 import uniq from 'lodash/uniq'
 import {AppLang} from '../i18n/localization/AppLangs'
 import {BarcodeProduct} from './BarcodeProduct'
@@ -77,8 +87,10 @@ export class ReportDraft {
     return ReportDraft.isTransmittableToProBeforePickingConsumerWish(r) && r.consumerWish !== 'getAnswer'
   }
 
-  static readonly isTransmittableToProBeforePickingConsumerWish = (r: Pick<ReportDraft, 'employeeConsumer'>): boolean => {
-    return !r.employeeConsumer
+  static readonly isTransmittableToProBeforePickingConsumerWish = (
+    r: Pick<ReportDraft, 'employeeConsumer' | 'tags'>,
+  ): boolean => {
+    return !r.employeeConsumer && !r.tags?.some(tag => reportTagsNotTransmittableToPro.includes(tag))
   }
 
   // Quand l'entreprise n'a pas pu être identifiée par le conso
@@ -97,9 +109,10 @@ export class ReportDraft {
   }
 
   static readonly transmissionStatus = (
-    r: Pick<ReportDraft, 'employeeConsumer' | 'consumerWish' | 'influencer' | 'companyDraft'>,
+    r: Pick<ReportDraft, 'employeeConsumer' | 'consumerWish' | 'influencer' | 'companyDraft' | 'tags'>,
   ): TransmissionStatus => {
     if (!ReportDraft.isTransmittableToPro(r)) {
+      console.log('NOT_TRANSMITTABLE')
       return 'NOT_TRANSMITTABLE'
     } else if (ReportDraft.mayBeTransmittedLater(r)) {
       return 'MAY_BE_TRANSMITTED'

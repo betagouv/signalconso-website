@@ -52,6 +52,7 @@ export const Details = ({stepNavigation}: {stepNavigation: StepNavigation}) => {
       transmissionStatus={ReportDraft.transmissionStatus(draft)}
       inputs={inputs}
       fileLabel={(last(draft.subcategories) as StandardSubcategory).fileLabel}
+      attachmentDesc={(last(draft.subcategories) as StandardSubcategory).attachmentDesc}
       employeeConsumer={draft.employeeConsumer}
       tags={draft.tags ?? []}
       onSubmit={(detailInputValues, uploadedFiles) => {
@@ -70,6 +71,7 @@ export const DetailsInner = ({
   initialFiles,
   inputs,
   fileLabel,
+  attachmentDesc,
   tags,
   transmissionStatus,
   employeeConsumer,
@@ -83,6 +85,7 @@ export const DetailsInner = ({
   initialValues?: DetailInputValues2
   initialFiles?: UploadedFile[]
   fileLabel?: string
+  attachmentDesc?: string
   employeeConsumer?: boolean
   tags?: ReportTag[]
   stepNavigation: StepNavigation
@@ -174,13 +177,23 @@ export const DetailsInner = ({
       <Animate autoScrollTo={false}>
         <div>
           <h4 className="mt-4">{fileLabel ?? m.attachments}</h4>
-          {transmissionStatus !== 'NOT_TRANSMITTABLE' && (
+          {transmissionStatus !== 'NOT_TRANSMITTABLE' ? (
             <>
               <FriendlyHelpText>
-                <p className="mb-0" dangerouslySetInnerHTML={{__html: m.attachmentsDesc2}} />
+                <p className="mb-0" dangerouslySetInnerHTML={{__html: attachmentDesc ?? m.attachmentsDesc2}} />
               </FriendlyHelpText>
               {consumerWish !== 'fixContractualDispute' && <p dangerouslySetInnerHTML={{__html: m.attachmentsDescAnonymous}} />}
             </>
+          ) : (
+            <FriendlyHelpText>
+              {/*Do not display any custom attachmentDesc for employee consumer reports*/}
+              <p
+                className="mb-0"
+                dangerouslySetInnerHTML={{
+                  __html: !employeeConsumer && attachmentDesc ? attachmentDesc : m.notTransmittableAttachmentsDesc2,
+                }}
+              />
+            </FriendlyHelpText>
           )}
           <ReportFiles
             files={uploadedFiles ?? []}

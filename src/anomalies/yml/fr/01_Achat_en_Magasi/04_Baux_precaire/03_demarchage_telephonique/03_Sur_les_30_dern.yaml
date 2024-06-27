@@ -1,0 +1,32 @@
+title: >-
+  Sur les 30 derniers jours, il y a au moins 5 appels de la même entreprise qui
+  a essayé de me contacter ?
+ccrfCode:
+  - '227'
+  - 23E
+companyKind: PHONE
+tags:
+  - DemarchageTelephonique
+detailInputs:
+  - label: Date du premier appel
+    type: DATE
+    defaultValue: SYSDATE
+  - label: Date du second appel
+    type: DATE
+    defaultValue: SYSDATE
+  - label: Date du troisième appel
+    type: DATE
+    defaultValue: SYSDATE
+  - label: Date du quatrième appel
+    type: DATE
+    defaultValue: SYSDATE
+  - label: Date du cinquième appel
+    type: DATE
+    defaultValue: SYSDATE
+  - label: Est-ce que le vendeur s'est fait passer pour une autre entreprise&#160;?
+    type: RADIO
+    options:
+      - Non
+      - Oui (à préciser)
+  - label: Décrivez nous plus en détails ce qui s'est passé
+    type: TEXTAREA

@@ -228,6 +228,11 @@ export const Problem = ({anomaly, isWebView, stepNavigation}: Props) => {
                     <p className="mb-0" dangerouslySetInnerHTML={{__html: m.employeeConsumerInformation}} />
                   </FriendlyHelpText>
                 </ProblemStepperStep>
+                <ProblemStepperStep isDone={true} hidden={askConsumerWish || reportDraft.employeeConsumer}>
+                  <FriendlyHelpText>
+                    <p className="mb-0" dangerouslySetInnerHTML={{__html: m.notTransmittableToProConsumerInformation}} />
+                  </FriendlyHelpText>
+                </ProblemStepperStep>
                 <ProblemStepperStep isDone={reportDraft.companyKind !== undefined} hidden={!!companyKindFromSelected}>
                   {companyKindQuestionFromSelected ? (
                     <ProblemSelect<CompanyKinds>
