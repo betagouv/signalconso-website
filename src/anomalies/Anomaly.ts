@@ -60,7 +60,15 @@ type SubcategoryBase = CategoryNodeBase & {
 // A typical subcategory
 export type StandardSubcategory = SubcategoryBase & {
   fileLabel?: string
+  //Customize consumer client reference input
+  customizedClientReferenceInput?: ClientReferenceInput
   detailInputs?: DetailInput[]
+}
+
+interface ClientReferenceInput {
+  label?: string
+  placeholder?: string
+  description?: string
 }
 
 // a subcategory that blocks the user

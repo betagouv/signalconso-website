@@ -20,6 +20,8 @@ import {DeepPartial} from '../../../utils/utils'
 import {useReportFlowContext} from '../ReportFlowContext'
 import {ConsumerAnonymousInformation} from './ConsumerAnonymousInformation'
 import {ConsumerValidationDialog2, consumerValidationModal} from './ConsumerValidationDialog'
+import {last} from '@/utils/lodashNamedExport'
+import {StandardSubcategory} from '@/anomalies/Anomaly'
 
 interface ConsumerForm {
   firstName: string
@@ -76,6 +78,13 @@ export const ConsumerInner = ({
   })
   const toastError = useToastError()
   const watchContactAgreement = _form.watch('contactAgreement')
+
+  const clientReferenceInput = last(
+    draft.subcategories?.filter(
+      (subcategory): subcategory is StandardSubcategory =>
+        'customizedClientReferenceInput' in subcategory && subcategory.customizedClientReferenceInput !== undefined,
+    ),
+  )?.customizedClientReferenceInput
 
   const transmissionStatus = ReportDraft.transmissionStatus(draft)
   const isTransmittable = transmissionStatus === 'WILL_BE_TRANSMITTED' || transmissionStatus === 'MAY_BE_TRANSMITTED'
@@ -184,13 +193,22 @@ export const ConsumerInner = ({
             placeholder={m.phonePlaceholder}
           />
           <ScTextInput
-            desc={m.referenceNumberDesc}
+            desc={
+              clientReferenceInput && clientReferenceInput.description ? clientReferenceInput.description : m.referenceNumberDesc
+            }
             label={
               <span>
-                <WithIcon icon="ri-bill-line">{m.referenceNumberOptional}</WithIcon> <ClientReferenceHelpButton />
+                <WithIcon icon="ri-bill-line">
+                  {clientReferenceInput && clientReferenceInput.label ? clientReferenceInput.label : m.referenceNumberOptional}
+                </WithIcon>{' '}
+                {!clientReferenceInput && <ClientReferenceHelpButton />}
               </span>
             }
-            placeholder={m.referenceNumberPlaceholder}
+            placeholder={
+              clientReferenceInput && clientReferenceInput.placeholder
+                ? clientReferenceInput.placeholder
+                : m.referenceNumberPlaceholder
+            }
             {..._form.register('referenceNumber', {
               maxLength: {value: 100, message: m.atMost100Chars},
             })}
