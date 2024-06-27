@@ -15,7 +15,7 @@ export function IntoxAlimentairePage(props: PageComponentProps) {
   }
   return (
     <FullWidthPageContainer>
-      <LpColoredBand bgClassName="bg-scblueinfo">
+      <LpColoredBand className="bg-scblueinfo">
         <div className="py-12 text-white ">
           <div className="max-w-4xl mx-auto flex flex-col items-start mb-8">
             <h1 className="fr-h2 !text-white">
@@ -54,7 +54,7 @@ export function IntoxAlimentairePage(props: PageComponentProps) {
           </div>
         </div>
       </LpColoredBand>
-      <LpColoredBand bgClassName="bg-sclightpurpledarker">
+      <LpColoredBand className="bg-sclightpurpledarker">
         <div className="py-8">
           <h3 className="fr-h4">Après votre signalement, que se passe-t-il ensuite pour l'établissement ?</h3>{' '}
           <p className="text-lg mb-4">
@@ -73,7 +73,7 @@ export function IntoxAlimentairePage(props: PageComponentProps) {
           </p>
         </div>
       </LpColoredBand>
-      <LpColoredBand bgClassName="bg-scblueinfo">
+      <LpColoredBand className="bg-scblueinfo">
         <div className="py-8">
           <h2 className="text-2xl text-center !text-white mb-12">
             Pourquoi faire un signalement sur SignalConso lors d'un démarchage téléphonique abusif ?

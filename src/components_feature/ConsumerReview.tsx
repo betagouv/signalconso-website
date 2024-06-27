@@ -1,10 +1,10 @@
 'use client'
 
+import {LimitedWidthPageContainer} from '@/components_simple/PageContainers'
 import {Alert} from '@codegouvfr/react-dsfr/Alert'
 import {Button} from '@codegouvfr/react-dsfr/Button'
 import {Input} from '@codegouvfr/react-dsfr/Input'
-import {useMutation, useQuery} from '@tanstack/react-query'
-import {LimitedWidthPageContainer} from '@/components_simple/PageContainers'
+import {UseMutationResult, UseQueryResult, useMutation, useQuery} from '@tanstack/react-query'
 import {usePathname, useRouter, useSearchParams} from 'next/navigation'
 import {useEffect, useId, useMemo, useState} from 'react'
 import {FieldError, UseFormRegisterReturn, useForm} from 'react-hook-form'
@@ -12,7 +12,7 @@ import FacebookShareButton from '../components_feature/reviews/FacebookShareButt
 import ServicePublicShareButton from '../components_feature/reviews/ServicePublicShareButton'
 import TwitterShareButton from '../components_feature/reviews/TwitterShareButton'
 import {useApiClients} from '../context/ApiClientsContext'
-import {ResponseConsumerReview, ResponseEvaluation} from '../core/Events'
+import {ResponseConsumerReview, ResponseConsumerReviewExists, ResponseEvaluation} from '../core/Events'
 import {useToastError} from '../hooks/useToastError'
 import {useI18n} from '../i18n/I18n'
 
@@ -20,25 +20,11 @@ interface Form {
   evaluation: ResponseEvaluation
   details?: string
 }
-export const ConsumerReview = ({reportId}: {reportId: string}) => {
-  const {m} = useI18n()
-  const toastError = useToastError()
-  const searchParams = useSearchParams()
-  const pathname = usePathname()
-  const router = useRouter()
-  const [done, setDone] = useState(false)
-  const [evaluation, setEvaluation] = useState<ResponseEvaluation | undefined>(undefined)
-  const {
-    register,
-    handleSubmit,
-    control,
-    reset,
-    watch,
-    formState: {errors, isValid},
-  } = useForm<Form>()
 
+type ReviewKind = 'Reponse' | 'Engagement'
+
+export function ResponseReviewPage({reportId}: {reportId: string}) {
   const {signalConsoApiClient} = useApiClients()
-
   const _saveReview = useMutation({
     mutationKey: ['saveReview', reportId],
     mutationFn: (review: ResponseConsumerReview) => signalConsoApiClient.postReviewOnReportResponse(reportId, review),
@@ -49,6 +35,48 @@ export const ConsumerReview = ({reportId}: {reportId: string}) => {
     queryFn: () => signalConsoApiClient.reviewExists(reportId),
     enabled: !!reportId,
   })
+  return <ReviewPage {...{_reviewExists, _saveReview}} reviewKind="Reponse" />
+}
+
+export function EngagementReviewPage({reportId}: {reportId: string}) {
+  const {signalConsoApiClient} = useApiClients()
+  const _saveReview = useMutation({
+    mutationKey: ['postEngagementReview', reportId],
+    mutationFn: (review: ResponseConsumerReview) => signalConsoApiClient.postEngagementReview(reportId, review),
+  })
+
+  const _reviewExists = useQuery({
+    queryKey: ['engagementReviewExists', reportId],
+    queryFn: () => signalConsoApiClient.engagementReviewExists(reportId),
+    enabled: !!reportId,
+  })
+
+  return <ReviewPage {...{_reviewExists, _saveReview}} reviewKind="Engagement" />
+}
+
+function ReviewPage({
+  _saveReview,
+  _reviewExists,
+  reviewKind,
+}: {
+  _saveReview: UseMutationResult<void, Error, ResponseConsumerReview, unknown>
+  _reviewExists: UseQueryResult<ResponseConsumerReviewExists, Error>
+  reviewKind: ReviewKind
+}) {
+  const {m} = useI18n()
+  const toastError = useToastError()
+  const searchParams = useSearchParams()
+  const pathname = usePathname()
+  const router = useRouter()
+  const [done, setDone] = useState(false)
+  const [evaluation, setEvaluation] = useState<ResponseEvaluation | undefined>(undefined)
+  const {
+    register,
+    handleSubmit,
+    reset,
+    watch,
+    formState: {errors},
+  } = useForm<Form>()
 
   const submit = async (form: Form) => {
     _saveReview.mutate({...form})
@@ -104,11 +132,11 @@ export const ConsumerReview = ({reportId}: {reportId: string}) => {
           <div className="flex">
             {evaluation === ResponseEvaluation.Positive || (
               <>
-                <FacebookShareButton step="Reponse" />
-                <TwitterShareButton step="Reponse" />
+                <FacebookShareButton {...{step: reviewKind}} />
+                <TwitterShareButton {...{step: reviewKind}} />
               </>
             )}
-            <ServicePublicShareButton step="Reponse" />
+            <ServicePublicShareButton {...{step: reviewKind}} />
           </div>
         </>
       ) : (
@@ -116,7 +144,7 @@ export const ConsumerReview = ({reportId}: {reportId: string}) => {
           <div>
             <h1>{m.shareYourReview}</h1>
             <div className="">
-              <EvaluationRadio {...{evaluationField}} error={errors.evaluation} />
+              <EvaluationRadio {...{evaluationField, reviewKind}} error={errors.evaluation} />
               <Input
                 label={<span dangerouslySetInnerHTML={{__html: m.youCanAddCommentForDGCCRF}} />}
                 textArea
@@ -138,7 +166,15 @@ export const ConsumerReview = ({reportId}: {reportId: string}) => {
   )
 }
 
-function EvaluationRadio({evaluationField, error}: {evaluationField: UseFormRegisterReturn<string>; error?: FieldError}) {
+function EvaluationRadio({
+  evaluationField,
+  error,
+  reviewKind,
+}: {
+  evaluationField: UseFormRegisterReturn<string>
+  error?: FieldError
+  reviewKind: ReviewKind
+}) {
   // Rich Radio from DSFR
   const {m} = useI18n()
   const idErrorMessages = useId()
@@ -151,12 +187,12 @@ function EvaluationRadio({evaluationField, error}: {evaluationField: UseFormRegi
       {...(error ? {role: 'group'} : null)}
     >
       <legend className="fr-fieldset__legend--regular fr-fieldset__legend" id={idLegend}>
-        {m.didTheCompanyAnsweredWell}
+        {reviewKind === 'Reponse' ? m.didTheCompanyAnsweredWell : m.didTheCompanyHonouredItsCommitment}
         <span className="fr-hint-text">{m.reviewIsDefinitive}</span>
       </legend>
-      <Option {...{evaluationField}} value={ResponseEvaluation.Positive} />
-      <Option {...{evaluationField}} value={ResponseEvaluation.Neutral} />
-      <Option {...{evaluationField}} value={ResponseEvaluation.Negative} />
+      <Option {...{evaluationField, reviewKind}} value={ResponseEvaluation.Positive} />
+      <Option {...{evaluationField, reviewKind}} value={ResponseEvaluation.Neutral} />
+      <Option {...{evaluationField, reviewKind}} value={ResponseEvaluation.Negative} />
       <div className="fr-messages-group" id={idErrorMessages} aria-live="assertive">
         {error && <p className="fr-message fr-message--error">{error.message ?? m.error}</p>}
       </div>
@@ -164,7 +200,15 @@ function EvaluationRadio({evaluationField, error}: {evaluationField: UseFormRegi
   )
 }
 
-function Option({value, evaluationField}: {value: ResponseEvaluation; evaluationField: UseFormRegisterReturn<string>}) {
+function Option({
+  value,
+  evaluationField,
+  reviewKind,
+}: {
+  value: ResponseEvaluation
+  evaluationField: UseFormRegisterReturn<string>
+  reviewKind: ReviewKind
+}) {
   const {m} = useI18n()
   const iconFile =
     value === ResponseEvaluation.Positive
@@ -173,7 +217,18 @@ function Option({value, evaluationField}: {value: ResponseEvaluation; evaluation
         ? 'emotion-normal-line.svg'
         : 'emotion-unhappy-line.svg'
   const label =
-    value === ResponseEvaluation.Positive ? m.iAmHappy : value === ResponseEvaluation.Neutral ? m.iAmNeutral : m.iAmUnhappy
+    value === ResponseEvaluation.Positive
+      ? reviewKind === 'Reponse'
+        ? m.iAmHappy
+        : m.iAmHappyAboutCommitment
+      : value === ResponseEvaluation.Neutral
+        ? reviewKind === 'Reponse'
+          ? m.iAmNeutral
+          : m.iAmNeutralAboutCommitment
+        : reviewKind === 'Reponse'
+          ? m.iAmUnhappy
+          : m.iAmUnhappyAboutCommitment
+
   const id = useId()
   return (
     <div className="fr-fieldset__element">

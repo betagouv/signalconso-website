@@ -13,6 +13,7 @@ import {CompanyDraft, CompanySearchResult} from '@/model/Company'
 import Button from '@codegouvfr/react-dsfr/Button'
 import Link from 'next/link'
 import {usePathname, useSearchParams} from 'next/navigation'
+import {EngagementReviewPage, ResponseReviewPage} from '../ConsumerReview'
 import {AcknowledgmentCases} from '../reportFlow/Acknowledgement/Acknowledgement'
 import {CompanyFilled} from '../reportFlow/Company/CompanyFilled'
 
@@ -46,7 +47,16 @@ const barcodeProduct: BarcodeProduct = {
   productName: 'Nutella',
 }
 
-const generalTestCases = ['details', 'companyFilled', 'companyFilledWithProduct', 'consumer', 'confirmation', 'other'] as const
+const generalTestCases = [
+  'details',
+  'companyFilled',
+  'companyFilledWithProduct',
+  'consumer',
+  'confirmation',
+  'response_review',
+  'engagement_review',
+  'other',
+] as const
 
 const companyTestCases = [
   'company_siret',
@@ -189,6 +199,10 @@ const Playground = () => {
         return <PlaygroundAcknowledgment acknowledgmentCase={AcknowledgmentCases.ContractualDisputeWithSIRET} countryId="" />
       case 'acknowledgment_Default':
         return <PlaygroundAcknowledgment acknowledgmentCase={AcknowledgmentCases.Default} countryId="" />
+      case 'response_review':
+        return <ResponseReviewPage reportId="dummy" />
+      case 'engagement_review':
+        return <EngagementReviewPage reportId="dummy" />
       case 'other':
         return <PlaygroundOther />
       default:

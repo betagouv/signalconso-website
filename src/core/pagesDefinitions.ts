@@ -63,6 +63,7 @@ export const internalPageDefs = {
   obsolescencePage: page('/duree-de-vie-produit-obsolescence-programmee', {hasEnglishVersion: false}),
   demarchageTelephonique: page('/demarchage-telephonique', {hasEnglishVersion: false}),
   intoxAlimentaire: page('/intoxication-alimentaire', {hasEnglishVersion: false}),
+  rappelTakata: page('/rappel-voitures-airbags-takata', {hasEnglishVersion: false}),
 }
 
 const externalPageDefs = {
