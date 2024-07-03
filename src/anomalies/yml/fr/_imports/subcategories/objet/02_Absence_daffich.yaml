@@ -4,6 +4,7 @@ desc: Un paquet de lessive qui passe de 40 lavages à 35 lavages (Réduflation o
 companyKind: PRODUCT_POINT_OF_SALE
 tags:
   - QuantiteNonConforme
+  - Shrinkflation
 detailInputs:
   - label: Date du constat
     type: DATE_NOT_IN_FUTURE
