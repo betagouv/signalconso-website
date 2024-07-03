@@ -4,6 +4,9 @@ import {CompanySearchResult, isCompanyDraft, isGovernmentCompany} from '@/model/
 import {ChildrenProps} from '@/utils/utils'
 import {AddressComponent} from '../Address'
 import {ProductRecap} from './ProductRecap'
+import {appliedSpecialLegislation} from '@/model/SpecialLegislation'
+import {ReportDraft} from '@/model/ReportDraft'
+import {ScAlert} from '@/components_simple/ScAlert'
 
 export function CompanyRecapWithProduct(
   props: CompanyRecapProps & {
@@ -12,7 +15,7 @@ export function CompanyRecapWithProduct(
 ) {
   return (
     <>
-      <CompanyRecap company={props.company} />
+      <CompanyRecap company={props.company} reportDraft={props.reportDraft} />
       {props.barcodeProduct && (
         <>
           <p className="mt-4 !mb-2">À propos du produit :</p>
@@ -23,7 +26,7 @@ export function CompanyRecapWithProduct(
   )
 }
 
-type CompanyRecapProps = {company: CompanySearchResult}
+type CompanyRecapProps = {company: CompanySearchResult; reportDraft: Pick<ReportDraft, 'companyKind'>}
 
 // Use name + commercialName if present
 // Does not use brand
@@ -48,7 +51,7 @@ export function buildBrandName(_: CompanyRecapProps) {
 }
 
 export function CompanyRecap(props: CompanyRecapProps) {
-  const closed = props.company.isOpen === false
+  const closed = !props.company.isOpen
   const siret = props.company.siret
   const address = props.company.address
   const isHeadOffice = props.company.isHeadOffice
@@ -57,6 +60,7 @@ export function CompanyRecap(props: CompanyRecapProps) {
   const isGovernment = isGovernmentCompany(props.company)
   const activityLabel = props.company.activityLabel
   const brand = buildBrandName(props)
+  const specialLegislation = appliedSpecialLegislation(props.company, props.reportDraft)
   const {m} = useI18n()
   return (
     <div className="flex justify-between w-full">
@@ -86,6 +90,9 @@ export function CompanyRecap(props: CompanyRecapProps) {
         )}
         {website && <Row icon="ri-global-line">{website}</Row>}
         {phone && <Row icon="ri-phone-line">{phone}</Row>}
+        {props.company.isOpen && specialLegislation && (
+          <ScAlert type="warning" dangerouslySetInnerHTML={{__html: m.specialLegislation[specialLegislation]}} />
+        )}
       </div>
       {closed && <span className="text-red-600">{m.closedCompany}</span>}
     </div>
