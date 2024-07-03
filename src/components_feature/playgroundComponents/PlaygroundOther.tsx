@@ -203,9 +203,11 @@ export const PlaygroundOther = () => {
       </div>
       <div className="border border-gray-500 border-solid p-2 mb-2">
         <h6>Le composant "CompanyRecap"</h6>
-        <CompanyRecap company={Fixture.genCompanySearchResult()} />
+        <CompanyRecap company={Fixture.genCompanySearchResult()} reportDraft={{tags: []}} />
         <h6>Le composant "CompanyRecap" avec un CompanyDraft</h6>
-        <CompanyRecap company={Fixture.genCompanyDraft()} />
+        <CompanyRecap company={Fixture.genCompanyDraft()} reportDraft={{tags: []}} />
+        <h6>Le composant "CompanyRecap" sur la shrinkflation</h6>
+        <CompanyRecap company={Fixture.genCompanySearchResult()} reportDraft={{tags: ['Shrinkflation']}} />
       </div>
     </>
   )

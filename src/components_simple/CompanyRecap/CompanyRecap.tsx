@@ -26,19 +26,19 @@ export function CompanyRecapWithProduct(
   )
 }
 
-type CompanyRecapProps = {company: CompanySearchResult; reportDraft: Pick<ReportDraft, 'companyKind'>}
+type CompanyRecapProps = {company: CompanySearchResult; reportDraft: Pick<ReportDraft, 'tags'>}
 
 // Use name + commercialName if present
 // Does not use brand
-export function buildCompanyName(_: CompanyRecapProps) {
-  const name = _.company.name
-  const commercialName = _.company.commercialName
+export function buildCompanyName(_: CompanySearchResult) {
+  const name = _.name
+  const commercialName = _.commercialName
   return commercialName ? `${commercialName} (${name})` : name
 }
 
-export function buildBrandName(_: CompanyRecapProps) {
-  const brand = _.company.brand
-  const establishmentCommercialName = _.company.establishmentCommercialName
+export function buildBrandName(_: CompanySearchResult) {
+  const brand = _.brand
+  const establishmentCommercialName = _.establishmentCommercialName
   if (establishmentCommercialName && brand) {
     return `${establishmentCommercialName} / ${brand}`
   } else if (establishmentCommercialName && !brand) {
@@ -59,13 +59,13 @@ export function CompanyRecap(props: CompanyRecapProps) {
   const phone = isCompanyDraft(props.company) ? props.company.phone : undefined
   const isGovernment = isGovernmentCompany(props.company)
   const activityLabel = props.company.activityLabel
-  const brand = buildBrandName(props)
+  const brand = buildBrandName(props.company)
   const specialLegislation = appliedSpecialLegislation(props.company, props.reportDraft)
   const {m} = useI18n()
   return (
     <div className="flex justify-between w-full">
       <div>
-        <span className="font-bold block">{buildCompanyName(props)}</span>
+        <span className="font-bold block">{buildCompanyName(props.company)}</span>
         {brand && <span className="block">{brand}</span>}
         {isHeadOffice && (
           <Row icon="ri-building-fill" variant="blue">
