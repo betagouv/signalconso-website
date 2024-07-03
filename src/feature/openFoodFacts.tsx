@@ -147,7 +147,7 @@ function WelcomeProductFull({product, company}: {product: BarcodeProduct; compan
         Vous avez rencontré un problème avec le produit <span className="font-bold">
           {product.productName ?? product.gtin}
         </span>{' '}
-        produit par l'entreprise <span className="font-bold">{buildCompanyName({company: company})}</span> ?
+        produit par l'entreprise <span className="font-bold">{buildCompanyName(company)}</span> ?
       </p>
       <p className="mb-4">
         SignalConso vous permet d'en informer l'entreprise. De plus, votre signalement est visible par les agents de la répression

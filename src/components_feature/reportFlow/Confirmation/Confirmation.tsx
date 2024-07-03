@@ -150,7 +150,7 @@ function RenderEachStep({
         <>
           {draft.companyDraft && (
             <ConfirmationStep title={m.step_company} {...{goToStep, index}}>
-              <CompanyRecapWithProduct company={draft.companyDraft} barcodeProduct={draft.barcodeProduct} />
+              <CompanyRecapWithProduct company={draft.companyDraft} barcodeProduct={draft.barcodeProduct} reportDraft={draft} />
             </ConfirmationStep>
           )}
           {draft.influencer && (

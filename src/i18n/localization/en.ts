@@ -1371,5 +1371,8 @@ export const en = {
       emailForErrorInReport: `In case of an error in your report, send an email to `,
     },
     externalLink: 'External link',
+    specialLegislation: {
+      SHRINKFLATION: `Only stores with a sales area of <strong>over 400m²</strong> are subject to shrinkflation regulations. This store is probably <strong>not subject</strong> to these regulations.`,
+    },
   },
 }

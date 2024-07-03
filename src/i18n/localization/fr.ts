@@ -1408,5 +1408,8 @@ export const fr = {
       emailForErrorInReport: `En cas d’erreur sur votre signalement, envoyez un email à `,
     },
     externalLink: 'Lien externe',
+    specialLegislation: {
+      SHRINKFLATION: `Seuls les magasins dont la surface de vente est <strong>supérieure à 400 m²</strong> sont concernés par la règlementation relative à la réduflation (ou shrinkflation). Il est probable que cet établissement n’y soit <strong>pas soumis.</strong>`,
+    },
   },
 }

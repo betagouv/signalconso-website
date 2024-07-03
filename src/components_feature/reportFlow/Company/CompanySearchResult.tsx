@@ -1,5 +1,4 @@
 import {useAnalyticContext} from '@/analytic/AnalyticContext'
-import {AddressComponent} from '@/components_simple/Address'
 import {Animate} from '@/components_simple/Animate'
 import {BtnNextSubmit} from '@/components_simple/buttons/Buttons'
 import {useI18n} from '@/i18n/I18n'
@@ -12,9 +11,11 @@ import {CompanySearchResult, isGovernmentCompany} from '../../../model/Company'
 import {CompanyWebsiteVendor} from './CompanyWebsiteVendor'
 import {NoSearchResult} from './lib/NoSearchResult'
 import {CompanyRecap} from '@/components_simple/CompanyRecap/CompanyRecap'
+import {ReportDraft2} from '@/model/ReportDraft2'
 
 interface Props {
   companies: CompanySearchResult[]
+  reportDraft: Partial<ReportDraft2>
   onSubmit: (selected: CompanySearchResult, vendor?: string) => void
 }
 
@@ -32,7 +33,7 @@ interface Form {
   result: string
 }
 
-export const CompanySearchResultComponent = ({companies, onSubmit}: Props) => {
+export const CompanySearchResultComponent = ({companies, reportDraft, onSubmit}: Props) => {
   const {m} = useI18n()
   const _analytic = useAnalyticContext()
   const [selected, setSelected] = useState<CompanySearchResult | undefined>()
@@ -91,7 +92,7 @@ export const CompanySearchResultComponent = ({companies, onSubmit}: Props) => {
                           options={companies.map(company => {
                             const closed = !company.isOpen
                             return {
-                              label: <CompanyRecap company={company} />,
+                              label: <CompanyRecap company={company} reportDraft={reportDraft} />,
                               value: company.siret!,
                               disabled: closed,
                             }

@@ -179,6 +179,7 @@ function CommonTree({
   return result && result.length > 0 ? (
     <CompanySearchResultComponent
       companies={result}
+      reportDraft={draft}
       onSubmit={(company, vendor) => {
         updateReport({
           companyDraft: {
@@ -198,6 +199,7 @@ function CommonTree({
               {companies => (
                 <CompanySearchResultComponent
                   companies={companies ?? []}
+                  reportDraft={draft}
                   onSubmit={company => {
                     updateReport({
                       companyDraft: {
@@ -216,6 +218,7 @@ function CommonTree({
               {companies => (
                 <CompanySearchResultComponent
                   companies={companies ?? []}
+                  reportDraft={draft}
                   onSubmit={company => {
                     updateReport({
                       companyDraft: {
@@ -234,6 +237,7 @@ function CommonTree({
               {companies => (
                 <CompanySearchResultComponent
                   companies={companies ?? []}
+                  reportDraft={draft}
                   onSubmit={company => {
                     updateReport({
                       companyDraft: {
@@ -347,6 +351,7 @@ function BarcodeTree({
               specificProductCompanyKinds={specificProductCompanyKinds}
               product={product}
               company={company}
+              reportDraft={draft}
               onSubmit={(company, barcodeProduct) => {
                 updateReport({
                   companyDraft: {
@@ -382,6 +387,7 @@ function OpenFfTree({draft, updateReport}: CommonProps) {
         specificProductCompanyKinds={'PRODUCT'}
         product={product}
         company={company}
+        reportDraft={draft}
         onSubmit={(company, barcodeProduct) => {
           updateReport({
             companyDraft: company,
