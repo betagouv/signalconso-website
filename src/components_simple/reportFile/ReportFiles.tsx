@@ -8,6 +8,7 @@ import {compressFile} from '../../utils/compressFile'
 import {ReportFile} from './ReportFile'
 import {ADD_FILE_HELP_ID, ReportFileAdd} from './ReportFileAdd'
 import {extractFileExt} from './reportFileConfig'
+import {ApiError} from '@/clients/BaseApiClient'
 
 export interface ReportFilesProps {
   files: UploadedFile[]
@@ -91,9 +92,9 @@ export const ReportFiles = ({fileOrigin, files, onRemoveFile, onNewFile, tooMany
       const compressedFile = await compressFile(f)
       const uploadedFile = await signalConsoApiClient.uploadDocument(compressedFile, fileOrigin)
       newFile(uploadedFile)
-    } catch (e) {
-      console.error('failed to upload file', e)
-      toastError()
+    } catch (e: any) {
+      console.warn('failed to upload file', e)
+      toastError(e)
     } finally {
       setUploading(false)
     }
@@ -127,6 +128,7 @@ export const ReportFiles = ({fileOrigin, files, onRemoveFile, onNewFile, tooMany
       setIsDraggingOver(true)
     }
   }
+
   function onDrop(e: React.DragEvent<HTMLDivElement>) {
     preventDefaultHandler(e)
     if (!maxReached) {
@@ -134,6 +136,7 @@ export const ReportFiles = ({fileOrigin, files, onRemoveFile, onNewFile, tooMany
       handleChange(e.dataTransfer.files)
     }
   }
+
   const max = appConfig.maxNumberOfAttachments
   const nothingYet = innerFiles.length <= 0
   const maxReached = innerFiles.length === max

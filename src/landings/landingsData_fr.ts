@@ -318,34 +318,6 @@ export const frLandingsData = [
     ],
   },
   {
-    url: 'internet',
-    lang: 'fr',
-    isSemiAutomatic: true,
-    seoTitle: "Signalez un problème d'arnaque en ligne à la répression des fraudes",
-    seoDescription:
-      "Vous avez été victime d'une publicité trompeuse sur internet, vous souhaitez signaler un influenceur sponsorisé qui n'indique pas sa rémunération par une marque...",
-    title: 'Internet (hors achats)',
-    targetedCategory: ['Internet'],
-    catchPhrase:
-      'Signalez un problème aux plateformes de médias sociaux, renseignez-vous sur vos droits avec la répression des fraudes !',
-    secondaryTitle1: 'Pourquoi faire un signalement si vous constatez les manquements d’un influenceur ?',
-    secondaryTitle2: 'Que va devenir votre signalement concernant un influenceur ?',
-    sampleReports: [
-      {
-        text: "En mars 2023 j'ai participé à un concours proposé par la société XXX. Pour participer il fallait liker la page de la société, partager la publication, et taguer en commentaire un ami susceptible d’être intéressé. Le tirage au sort devait avoir lieu quelques jours plus tard. J'étais le seul participant, donc je pensais évidemment être le gagnant. N'ayant pas de nouvelle du tirage au sort, j'ai contacté ce matin ladite société pour demander si j'avais bien gagné, et on m'a répondu que non car il fallait un minimum 10 participants. Cette clause n'apparaissait nulle part sur leur publication. J'ai donc demandé le règlement du concours mais je n’ai pas eu de réponse de leur part. Quelques instants plus tard, les publications relatives au concours ont été effacées de la page. Vous trouverez en pièces jointes des captures d'écran prouvant l’existence de ce concours ainsi que ma participation.",
-        author: 'Soukaina A.',
-      },
-      {
-        text: "Une personne se cachant derrière une fausse identité et revendiquant à tort le titre de médecin a créé des comptes sur les réseaux sociaux pour faire de la publicité mensongère. Elle fait notamment la promotion d’un produit de type bain de bouche dont elle affirme qu'il peut traiter l'intégralité des problèmes dentaires. Elle mentionne expressément dans ses publicités les effets sur les caries, la parodontite, l’halitose et les aphtes. Toutes ces publicités sont totalement mensongères car des produits avec de telles propriétés n'existent évidemment pas. Il semblerait que la personne situe son activité en Californie. Mais elle parle français et sa cible de vente est située en France ou est du moins francophone. Il est urgent d'interdire cette page et ses publicités ayant pour objectif de tromper les consommateurs.",
-        author: 'Leila S.',
-      },
-      {
-        text: "J’ai fait l’achat d'un fond de teint et d'une poudre avec un code promo proposé sur les réseaux par une influenceuse mais je n'ai jamais reçu ma commande. Après plusieurs semaines, j'ai contacté l'influenceuse pour savoir où en était ma commande. Elle m’a dit que j'allais recevoir ma commande à plusieurs reprises et que les retards et problèmes de livraison étaient dû à la guerre en Ukraine. Au début je l’ai crue et j’ai pris mon mal en patience. Mais je n’ai aucune nouvelle du site. J’ai donc décidé de passer un appel à la poste avec les références de mon colis mais il aurait été envoyé à une adresse qui n’est pas la mienne et il semblerait en plus que le colis ne soit pas à mon nom. Mais je n’habite pas là-bas et j’ai bien passé la commande à mon nom !!! Mais après avoir fait des recherches sur internet et sur différents forums je me suis aperçu que je n'étais pas seul, loin de là. Je regrette d’avoir bêtement fait confiance à cette influenceuse.",
-        author: 'Alexandre M.',
-      },
-    ],
-  },
-  {
     url: 'pathdelacategory',
     lang: 'fr',
     isSemiAutomatic: true,
@@ -482,15 +454,15 @@ export const frLandingsData = [
     sampleReports: [
       {
         text: "Achat d'un véhicule de marque XXX, au garage XXX , avec lors du bon de commande une garantie de 12 mois, à la livraison pas de trace sur la facture de cette garantie ( le vendeur me dit qu'elle est en cours auprès d'un organisme et qu'elle sera du haut de gamme au regard de la valeur de cette voiture, des problèmes sont arrivés sur ce véhicule apres 350 kms parcourus et la facture a été réglée volontairement par le garage, mais à ce jour aucune trace de cette garantie, qui selon le patron du garage commencera au moment de sa mise en place de cette garantie de 12 mois même après 4 mois. Pour info les problèmes liés au véhicule auraient du être notifiés au contrôle technique. Je pense que nous sommes face à une vente en abus de confiance, un véhicule garanti n'est pas au même prix que non garanti. En l'attente d'une intervention de la part de vos services. Cordialement.",
-        author: 'Hassan S.',
+        author: 'Soukaina A.',
       },
       {
         text: "Suite à panne moteur sur autoroute à Sanary 83.Le dépanneur d'autoroute m'a facturé 96 euros de frais de gardiennage pour un week-end férié de Pâques (celui ci ne réparant pas la voiture) et ceci le temps que l'assistance envoie une autre dépanneuse pour l'emmener dans un autre garage de réparation agrée par l'assurance. Ce  garage ne m a pas informé des frais au préalable et sans me donner un contrat ou autre. Ps : j' avais du payé à distance (CB ) sous menace de bloquer mon véhicule chez eux (verbalement)",
-        author: 'Stella T.',
+        author: 'Leila S.',
       },
       {
         text: "Bonjour, suite à une défaillance avérée du réservoir adblue de mon véhicule et après 3 mois d'échanges avec XXX, j'ai obtenu la prise en charge financière des pièces liées au changement de réservoir mais la main d'œuvre est restée à ma charge, soit 289.86 €. Or s'agissant d'un problème avéré, non lié à l'usure du véhicule, en témoigne la prise en charge des pièces à 100%, et compte tenu du faible kilométrage de ma voiture, je sollicite également le remboursement de la main d'œuvre liée à cette intervention. Vous trouverez la facture en PJ. J'ai déjà effectué cette demande auprès de XXX par anticipation sans retour positif. Étant dorénavant en possession de la facture, je réitère cette demande. Merci, cordialement.",
-        author: 'Jacqueline R.',
+        author: 'Alexandre M.',
       },
     ],
   },
@@ -538,15 +510,15 @@ export const frLandingsData = [
     sampleReports: [
       {
         text: "Dans plusieurs capsules vidéos sponsorisées, l'influenceur minimise abusivement la réalité de la pollution du secteur aéronautique. En effet, l'impression générale de respect de l'environnement est en contradiction avec la réalité factuelle en termes de pollution. Concernant la promesse de neutralité carbone, l'ADEME a l'an passé publié un document déconseillant fortement l'utilisation de ce terme par son caractère trompeur. De nombreuses études pointent l'incapacité du secteur à atteindre le net zéro en 2050 sans réduction substantielle du trafic aérien. Des affirmations telles que 0g de CO2 pour les moteurs électriques manquent de précision sur l'ensemble de la chaîne de production. L'utilisation de publicités comparatives, couplées au manque de connaissance du public, induit en erreur le récepteur quant à la pollution réelle. Il convient de tenir compte du contexte de visionnage utilisé qui renforce la capacité à induire le public en erreur.",
-        author: 'Zahra É.',
+        author: 'Stella A.',
       },
       {
         text: "Bonjour, Je vous sollicite pour vous demander d'étudier le marquage de la compensation carbone sur les stations-service de votre société. Comment pouvez-vous faire croire au consommateur qu'en achetant de l'essence et du gasoil dans votre station-service il réduit les émissions de CO2. Je trouve honteux ce genre de greenwashing qui donne un message erroné. A vous lire on pourrait penser que plus on roule plus on réduit les émissions carbones.\n",
-        author: 'Rayan S.',
+        author: 'Dylan A.',
       },
       {
         text: "En visitant le rayon des cafés, j'ai été attirée par l'emballage de votre café biologique qui annonçait fièrement sa neutralité carbone. Toutefois, en cherchant à obtenir des informations supplémentaires sur cette affirmation, je n'ai trouvé aucun rapport ni aucune preuve tangible soutenant cette déclaration. Cette absence de transparence me laisse perplexe et soulève des doutes quant à l'engagement réel de cette marque envers la durabilité environnementale. Je vous remercie de m'apporter un éclairage sur cette question et de me garantir l'intégrité des informations fournies à vos consommateurs.",
-        author: 'Leila J.',
+        author: 'Zoé A.',
       },
     ],
   },
@@ -701,35 +673,35 @@ export const frLandingsData = [
     sampleReports: [
       {
         text: "J'ai fait appel à ***** pour l'installation de panneaux photovoltaïques sur le toit de ma maison. Ils m'ont promis des économies importantes sur mes factures d'énergie. Malheureusement, je n'ai constaté aucune amélioration après plusieurs mois. De plus, ils ont endommagé le toit pendant l'installation et refusent de prendre en charge les réparations. Je me sens complètement trompé.",
-        author: 'Stella C.',
+        author: 'Hassan S.',
       },
       {
         text: "J'ai contacté ***** pour l'installation de panneaux photovoltaïques. Malheureusement, depuis l'installation, je fais face à des problèmes continus avec le système. De plus, ils ne répondent pas à mes demandes de service après-vente. Je me sens abandonné et déçu par leur manque de professionnalisme.",
-        author: 'Mehdi E.',
+        author: 'Stella T.',
       },
       {
         text: "J'ai fait appel à ***** pour installer des panneaux photovoltaïques sur ma maison. Cependant, le rendement promis n'a pas été atteint et ils refusent d'assumer la responsabilité. De plus, ils ont laissé ma propriété dans un état déplorable après l'installation. Je me sens trompé et négligé.",
-        author: 'Jules L.',
+        author: 'Jacqueline R.',
       },
       {
         text: "J'ai embauché ***** pour l'installation de panneaux photovoltaïques. Malheureusement, ils ont effectué un travail de mauvaise qualité et le système ne fonctionne pas correctement. De plus, ils ont refusé de rectifier les problèmes. Je suis très déçu et je me sens arnaqué.",
-        author: 'Stella B.',
+        author: 'Stella C.',
       },
       {
         text: "J'ai sollicité ***** pour l'installation de panneaux photovoltaïques. Malheureusement, les panneaux installés ne produisent pas la quantité d'énergie promise. De plus, ils ont endommagé le toit pendant l'installation et ne veulent pas réparer les dégâts. Je me sens délaissé et trompé.",
-        author: 'Jules R.',
+        author: 'Mehdi E.',
       },
       {
         text: "J'ai fait appel à ***** pour l'installation de panneaux photovoltaïques. Cependant, ils ont mal installé les panneaux, ce qui a entraîné des problèmes d'infiltration d'eau. Malgré mes multiples demandes, ils n'ont pas résolu le problème. Je me sens complètement arnaqué.",
-        author: 'Yasmina Z.',
+        author: 'Jules L.',
       },
       {
         text: "J'ai contacté ***** pour l'installation de panneaux photovoltaïques. Ils ont effectué un travail de mauvaise qualité et ont laissé des débris sur mon terrain. De plus, ils refusent de revenir pour nettoyer ou corriger leur travail. Je me sens complètement négligé.",
-        author: 'Enzo A.',
+        author: 'Stella B.',
       },
       {
         text: "J'ai engagé ***** pour installer des panneaux photovoltaïques sur mon toit. Depuis l'installation, je rencontre de nombreux problèmes avec le système et ils ne répondent pas à mes demandes de réparation. De plus, l'installation a causé des dommages à mon toit. Je suis extrêmement déçu et me sens complètement trompé.",
-        author: 'Salma E.',
+        author: 'Jules R.',
       },
     ],
   },
@@ -751,35 +723,35 @@ export const frLandingsData = [
     sampleReports: [
       {
         text: "J'ai fait une demande de prime d'énergie auprès de *****. Cependant, malgré plusieurs relances, je n'ai toujours pas reçu le montant promis. Je me sens trompé et délaissé.",
-        author: 'Clara S.',
+        author: 'Jules É.',
       },
       {
         text: "J'ai contacté ***** pour bénéficier d'une aide à la rénovation. Malheureusement, malgré de multiples promesses, je n'ai toujours pas reçu de prime. Je me sens ignoré et arnaqué.",
-        author: 'Sofia M.',
+        author: 'Fatima M.',
       },
       {
         text: "J'ai demandé une prime d'énergie auprès de *****. Malgré plusieurs engagements de leur part, je n'ai toujours pas reçu le montant promis. C'est un véritable scandale.",
-        author: 'Salma Y.',
+        author: 'Zahra S.',
       },
       {
         text: "J'ai sollicité ***** pour une subvention d'aide à la rénovation de ma maison. Malheureusement, malgré plusieurs promesses, aucune aide n'a été accordée. Je me sens complètement lésé.",
-        author: 'Élias F.',
+        author: 'Clara S.',
       },
       {
         text: "J'ai demandé une prime d'énergie auprès de *****. Malheureusement, malgré de multiples engagements, je n'ai toujours pas reçu le montant promis. Je me sens délaissé et trompé.",
-        author: 'Ahmed A.',
+        author: 'Sofia M.',
       },
       {
         text: "J'ai contacté ***** pour bénéficier d'une aide à la rénovation. Cependant, malgré plusieurs promesses, je n'ai reçu aucune aide. Je me sens totalement ignoré.",
-        author: 'Amine E.',
+        author: 'Salma Y.',
       },
       {
         text: "J'ai fait une demande de prime d'énergie auprès de *****. Cependant, malgré plusieurs engagements de leur part, je n'ai toujours pas reçu le montant promis. C'est extrêmement frustrant.",
-        author: 'Nathan R.',
+        author: 'Élias F.',
       },
       {
         text: "J'ai sollicité ***** pour une aide à la rénovation de ma maison. Malheureusement, malgré plusieurs promesses, aucune aide n'a été accordée. Je me sens complètement lésé.",
-        author: 'Bernard I.',
+        author: 'Ahmed A.',
       },
     ],
   },
@@ -800,35 +772,35 @@ export const frLandingsData = [
     sampleReports: [
       {
         text: "J'ai fait appel à ***** pour la réparation de mon lave-vaisselle. Non seulement l'appareil n'est pas réparé, mais le service après-vente se montre désormais injoignable. Je me sens complètement abandonné avec un appareil toujours en panne.",
-        author: 'Nadia M.',
+        author: 'Amira J.',
       },
       {
         text: "J'ai confié mon réfrigérateur à l'entreprise ***** pour une réparation. Cependant, le frigo est revenu dans un état pire qu'avant et l'entreprise refuse maintenant de prendre en compte mes plaintes. C'est un véritable scandale.",
-        author: 'Mohamed A.',
+        author: 'Leila T.',
       },
       {
         text: "J'ai fait appel à ***** pour la réparation de mon four. Malheureusement, le four ne fonctionne toujours pas correctement et l'entreprise ne répond plus à mes appels. Je me sens délaissé et arnaqué.",
-        author: 'Théo S.',
+        author: 'Sarah C.',
       },
       {
         text: "J'ai engagé ***** pour réparer mon lave-linge. Non seulement l'appareil n'est pas réparé, mais l'entreprise ne prend pas la peine de répondre à mes plaintes. C'est extrêmement frustrant.",
-        author: 'Noémie A.',
+        author: 'Nadia M.',
       },
       {
         text: "J'ai fait confiance à ***** pour réparer mon aspirateur. Cependant, non seulement l'appareil n'est pas réparé, mais l'entreprise ne répond plus à mes appels. Je me sens complètement arnaqué.",
-        author: 'Louis S.',
+        author: 'Mohamed A.',
       },
       {
         text: "J'ai engagé l'entreprise ***** pour la réparation de mon micro-ondes. Malheureusement, l'appareil est revenu dans un état pire qu'avant et l'entreprise refuse de prendre ses responsabilités. C'est un véritable cauchemar.",
-        author: 'Zahra N.',
+        author: 'Théo S.',
       },
       {
         text: "J'ai confié mon grille-pain à ***** pour une réparation. Cependant, non seulement l'appareil n'est pas réparé, mais l'entreprise refuse de répondre à mes plaintes. Je me sens délaissé et trahi.",
-        author: 'Leila J.',
+        author: 'Noémie A.',
       },
       {
         text: "J'ai engagé ***** pour la réparation de mon robot de cuisine. Cependant, l'appareil n'a pas été réparé et l'entreprise ne répond plus à mes appels. Je me sens complètement lésé.",
-        author: 'Fatima J.',
+        author: 'Louis S.',
       },
     ],
   },
@@ -1314,15 +1286,15 @@ export const frLandingsData = [
     sampleReports: [
       {
         text: "En visitant le marché de producteurs de la ville, célèbre pour son engagement envers des pratiques agricoles durables, j'ai été surpris de constater que certains stands utilisaient encore des emballages plastiques pour des quantités très réduites de fruits et légumes. Cette contradiction entre les valeurs affichées et les pratiques réelles est inacceptable. En tant que fervent défenseur de l'environnement, je trouve qu'il serait appréciable que des actions concrètes soient prises pour éliminer l'utilisation inutile de plastique dans l'emballage des produits frais sur ce marché.",
-        author: 'Axel A.',
+        author: 'Zahra É.',
       },
       {
         text: "En effectuant mes achats dans votre épicerie, j'ai remarqué que même de petites quantités de fruits et légumes, comme une seule courgette ou une poignée de tomates cerises, étaient systématiquement enveloppées dans du plastique. Cette pratique me semble non seulement superflue mais également préjudiciable à l'environnement. Il est urgent que des mesures soient prises pour éliminer l'utilisation excessive de plastique dans l'emballage de vos produits frais.",
-        author: 'Adam M.',
+        author: 'Rayan S.',
       },
       {
         text: "En faisant mes courses dans votre supermarché bio, j'ai été consternée de constater que des emballages plastiques étaient encore utilisés pour emballer des quantités minimes de fruits et légumes, même pour des portions inférieures à 1,5 kg. Cette pratique est bien loin des valeurs environnementales que votre magasin prétend promouvoir. Soucieuse de réduire mon empreinte écologique, je souhaiterais que des alternatives respectueuses de l'environnement soient mises en place pour éviter ce gaspillage de plastique inutile. Merci !",
-        author: 'Axel L.',
+        author: 'Leila J.',
       },
     ],
   },
@@ -1724,27 +1696,27 @@ export const frLandingsData = [
     sampleReports: [
       {
         text: "Mon désespoir est au plus haut. J'ai souscrit un abonnement à la salle de sport ***** avec l'espoir d'améliorer ma santé et mon bien-être. Mais depuis mon adhésion, je n'ai rencontré que des problèmes. Non seulement les équipements sont souvent hors service, mais le personnel est également très désagréable. De plus, ils ont récemment augmenté les frais d'adhésion sans en informer leurs membres.",
-        author: 'Jules I.',
+        author: 'Zahra N.',
       },
       {
         text: "Je suis à bout de nerfs avec cette salle de sport *****. Depuis mon inscription, c'est un défilé incessant de problèmes. Entre les machines défectueuses et l'attitude déplorable du personnel, je ne sais plus où donner de la tête. Pour couronner le tout, ils ont osé augmenter les frais d'adhésion sans prévenir.",
-        author: 'Soukaina S.',
+        author: 'Leila J.',
       },
       {
         text: "Je suis exaspéré par la salle de sport *****. Les équipements sont souvent hors service et l'attitude du personnel laisse à désirer. Et comme si cela ne suffisait pas, ils ont augmenté les frais d'adhésion sans préavis. C'est une honte.",
-        author: 'Louis Z.',
+        author: 'Fatima J.',
       },
       {
         text: "Je suis consterné par le comportement de la salle de sport *****. L'état des équipements est lamentable et le personnel est d'une rudesse inouïe. Pour couronner le tout, les frais d'adhésion ont été augmentés sans préavis. C'est vraiment une situation déplorable.",
-        author: 'Jules É.',
+        author: 'Jules I.',
       },
       {
         text: "Je suis désemparé par mon expérience avec la salle de sport *****. Les équipements sont constamment en panne, l'atmosphère est désagréable et pour couronner le tout, ils ont augmenté les frais d'adhésion sans aucune annonce préalable. C'est honteux.",
-        author: 'Fatima M.',
+        author: 'Soukaina S.',
       },
       {
         text: "Je suis perplexe face à la gestion de la salle de sport *****. Les équipements sont régulièrement hors d'usage, l'ambiance est loin d'être conviviale et, comble de l'ironie, ils ont augmenté les frais d'adhésion sans préavis. C'est scandaleux.",
-        author: 'Zahra S.',
+        author: 'Louis Z.',
       },
     ],
   },
@@ -1878,27 +1850,27 @@ export const frLandingsData = [
     sampleReports: [
       {
         text: "Mon expérience avec l'hébergement chez ***** a été affligeante. Les conditions étaient bien en-dessous de ce qui était promis dans leur description en ligne. Il y avait des problèmes d'hygiène majeurs et le niveau de bruit était insupportable. Je ne peux pas croire qu'ils puissent offrir de telles conditions à leurs clients.",
-        author: 'Jacqueline S.',
+        author: 'Axel A.',
       },
       {
         text: "L'expérience cauchemardesque avec ***** m'a laissé une amertume indélébile. Les conditions d'hébergement étaient effroyables, bien loin de la description alléchante en ligne. Entre problèmes d'hygiène et nuisance sonore incessante, c'est tout bonnement inconcevable.",
-        author: 'Inès I.',
+        author: 'Adam M.',
       },
       {
         text: "Je suis horrifié par mon expérience avec *****. Les conditions d'hébergement étaient bien en-dessous de ce qui était promis. Entre les problèmes d'hygiène et le bruit constant, je suis scandalisé qu'ils puissent offrir de telles conditions à leurs clients.",
-        author: 'Soukaina H.',
+        author: 'Axel L.',
       },
       {
         text: "Je suis révolté par les conditions d'hébergement proposées par *****. Les problèmes d'hygiène et de bruit ont rendu mon séjour insupportable. C'est une honte qu'ils puissent offrir de telles conditions à leurs clients.",
-        author: 'Amira J.',
+        author: 'Jacqueline S.',
       },
       {
         text: "Je suis choqué par les conditions d'hébergement de *****. Entre les problèmes d'hygiène et le bruit constant, mon séjour a été un véritable enfer. C'est inacceptable et je suis déçu qu'ils puissent offrir de telles conditions à leurs clients.",
-        author: 'Leila T.',
+        author: 'Inès I.',
       },
       {
         text: "Je suis horrifié par les conditions d'hébergement offertes par *****. Entre les problèmes d'hygiène graves et le bruit incessant, mon séjour a été insupportable. C'est inconcevable qu'ils puissent proposer de telles conditions à leurs clients.",
-        author: 'Sarah C.',
+        author: 'Soukaina H.',
       },
     ],
   },
@@ -2315,15 +2287,15 @@ export const frLandingsData = [
     sampleReports: [
       {
         text: "Ce restaurant refuse de servir de l'eau potable !",
-        author: 'Stella A.',
+        author: 'Yasmina Z.',
       },
       {
         text: "Le serveur a refusé de nous servir une carafe d'eau au prétexte que l'établissement n'avait pas d'eau potable. Malgré les remarques de plusieurs tables pour leur rappeler leur obligation, le serveur nous a répondu qu'il travaillait dans la restauration depuis plus de 25 ans et qu'il connaissait bien cette loi.\nEt de rajouter que son patron préférait payer une amende plutôt que de fournir de l'eau gratuitement. Nous avons été forcé d'acheter une bouteille d'eau plate de 75cl !!!",
-        author: 'Dylan A.',
+        author: 'Enzo A.',
       },
       {
         text: "Après avoir réglé deux repas au self, j'ai demandé une carafe d'eau au bar, avec le ticket de caisse en main. Le barman m'a répondu qu'il n'avait pas de carafe, puis m'a dit qu'il n'y avait pas d'eau potable. Impossible d'avoir de l'eau, hormis l'acheter en bouteille. Je n'ai pas vu d'affichage à l'entrée du \nrestaurant, ou près du bar ou du self, mentionnant la non existence d'eau potable. Je doute de la véracité des propos du barman concernant une eau non potable dans son établissement, vu l'emplacement !\n",
-        author: 'Zoé A.',
+        author: 'Salma E.',
       },
     ],
   },
