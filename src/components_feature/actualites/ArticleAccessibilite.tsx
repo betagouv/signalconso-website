@@ -5,7 +5,7 @@ import imgAccessibilite from '@/img/actualites/accessibilite.jpg'
 export function ArticleAccessibilite() {
   return (
     <div>
-      <h2>Faciliter la gestion des litiges entre les entreprises et les consommateurs</h2>
+      <h2 className="fr-h4">Faciliter la gestion des litiges entre les entreprises et les consommateurs</h2>
       <p>
         <b>SignalConso</b>, la plateforme incontournable{' '}
         <Link href="https://signal.conso.gouv.fr" target="_blank">
@@ -16,7 +16,7 @@ export function ArticleAccessibilite() {
         Général d'Accessibilité pour les Administrations (RGAA). Dans cet article, nous explorerons les améliorations apportées à{' '}
         <b>SignalConso</b>, mettant l'accent sur l'accessibilité accrue et l'expérience utilisateur améliorée.
       </p>
-      <h2>Contrastes de textes améliorés pour une meilleure lisibilité</h2>
+      <h2 className="fr-h4">Contrastes de textes améliorés pour une meilleure lisibilité</h2>
       <p>
         L'une des premières modifications importantes concerne les contrastes de textes. En choisissant des couleurs optimisées
         pour les polices et les arrière-plans,
@@ -24,7 +24,7 @@ export function ArticleAccessibilite() {
         visuelles. Ces ajustements de couleurs garantissent que le texte est clairement visible, sans aucune gêne liée à la
         lecture.
       </p>
-      <h2>Navigation par tabulations pour une accessibilité renforcée</h2>
+      <h2 className="fr-h4">Navigation par tabulations pour une accessibilité renforcée</h2>
       <p>
         Une avancée significative a été réalisée en rendant <b>SignalConso</b> accessible aux personnes ayant des troubles de la
         mobilité ou qui préfèrent naviguer au clavier. Désormais, les utilisateurs peuvent accéder à toutes les fonctionnalités du
@@ -38,7 +38,9 @@ export function ArticleAccessibilite() {
         normes strictes et une gouvernance bien définie, le SDE permet la création de sites Internet accessibles, ergonomiques et
         conformes aux standards de l'administration.
       </p>
-      <h2>Valoriser l’accessibilité pour faciliter le parcours utilisateur dans leur signalement de consommation</h2>
+      <h2 className="fr-h4">
+        Valoriser l’accessibilité pour faciliter le parcours utilisateur dans leur signalement de consommation
+      </h2>
       <p>
         Avec ces améliorations esthétiques et fonctionnelles, `SignalConso` s'est engagé dans une démarche résolue d'accessibilité
         et d'expérience utilisateur améliorée. Ces changements reflètent une prise de conscience essentielle en matière

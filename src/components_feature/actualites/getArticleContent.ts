@@ -1,26 +1,25 @@
-import {ArticleResilierContratsEnLigne} from './ArticleResilierContratsEnLigne'
-import {getNewsArticleData} from './newsArticlesData'
-import {NewsArticle} from './newsArticlesData'
-import {ArticleAppMobile} from './ArticleAppMobile'
-import {ArticleQuestionnaireSiteDgccrf} from './ArticleQuestionnaireSiteDgccrf'
+import {ArticleAMF} from '@/components_feature/actualites/ArticleAMF'
+import {ArticleAppMobileV2} from '@/components_feature/actualites/ArticleAppMobileV2'
+import {ArticleEvolutionsQuantitePrix} from '@/components_feature/actualites/ArticleEvolutionsQuantitePrix'
+import {ArticleMagasinsEphemeres} from '@/components_feature/actualites/ArticleMagasinsEphemeres'
+import {ArticleOccasionReconditionnes} from '@/components_feature/actualites/ArticleOccasionReconditionnes'
+import {ArticleRappelAirbagTakata} from '@/components_feature/actualites/ArticleRappelAirbagTakata'
 import {ArticleAccessibilite} from './ArticleAccessibilite'
-import {ArticleSignalConsoTraduit} from './ArticleSignalConsoTraduit'
-import {ArticleSignalConsoTranslated} from './ArticleSignalConsoTranslated'
-import {ArticleCodeBarres} from './ArticleCodeBarres'
-import {ArticleAmeliorationAccessibilite} from './ArticleAmeliorationAccessibilite'
 import {ArticleAchatInternet} from './ArticleAchatInternet'
+import {ArticleAmeliorationAccessibilite} from './ArticleAmeliorationAccessibilite'
+import {ArticleAppMobile} from './ArticleAppMobile'
+import {ArticleCodeBarres} from './ArticleCodeBarres'
 import {ArticleConseilsVacancesHiver} from './ArticleConseilsVacancesHiver'
 import {ArticleFauxSitesAdministratifs} from './ArticleFauxSitesAdministratifs'
-import {ArticleOccasionReconditionnes} from '@/components_feature/actualites/ArticleOccasionReconditionnes'
-import {ArticleAMF} from '@/components_feature/actualites/ArticleAMF'
-import {ArticleMagasinsEphemeres} from '@/components_feature/actualites/ArticleMagasinsEphemeres'
-import {ArticleEvolutionsQuantitePrix} from '@/components_feature/actualites/ArticleEvolutionsQuantitePrix'
-import {ArticleAppMobileV2} from '@/components_feature/actualites/ArticleAppMobileV2'
-import {ArticleRappelAirbagTakata} from '@/components_feature/actualites/ArticleRappelAirbagTakata'
+import {ArticleQuestionnaireSiteDgccrf} from './ArticleQuestionnaireSiteDgccrf'
+import {ArticleResilierContratsEnLigne} from './ArticleResilierContratsEnLigne'
+import {ArticleSignalConsoTraduit} from './ArticleSignalConsoTraduit'
+import {ArticleSignalConsoTranslated} from './ArticleSignalConsoTranslated'
+import {NewsArticle} from './newsArticlesData'
 
 // We can't put import these JSX directly into the "newsArticlesData"
 // it causes too much import problems in the sitemap generation script
-export function getArticleContent(slug: NewsArticle['slug']) {
+export function getArticleContent(slug: NewsArticle['slug']): () => JSX.Element {
   switch (slug) {
     case 'rappel-airbag-takata':
       return ArticleRappelAirbagTakata
@@ -58,5 +57,7 @@ export function getArticleContent(slug: NewsArticle['slug']) {
       return ArticleAppMobile
     case 'signalconso-reduflation':
       return ArticleEvolutionsQuantitePrix
+    default:
+      throw new Error(`No article content found for slug: ${slug}`)
   }
 }

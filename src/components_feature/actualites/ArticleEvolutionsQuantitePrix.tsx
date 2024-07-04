@@ -20,7 +20,7 @@ export function ArticleEvolutionsQuantitePrix() {
           </strong>
         </p>
       </div>
-      <h2>Réduflation ou shrinkflation : De quoi s’agit-il ?</h2>
+      <h2 className="fr-h4">Réduflation ou shrinkflation : De quoi s’agit-il ?</h2>
       <p>
         Réduflation et shrinkflation sont des termes issus de la contraction de "réduction" et "inflation" (et en anglais « shrink
         » qui signifie rétrécir ou réduire, et inflation). Ils désignent des pratiques commerciales visant à masquer la diminution
@@ -30,7 +30,7 @@ export function ArticleEvolutionsQuantitePrix() {
         Ces pratiques sont légales mais suscitent des critiques car les consommateurs peuvent difficilement les détecter lors de
         l'achat.
       </p>
-      <h2>Quelles mesures entreront en vigueur ?</h2>
+      <h2 className="fr-h4">Quelles mesures entreront en vigueur ?</h2>
       <p>
         L’obligation d'informer les consommateurs de ces évolutions de quantité et de prix entrera en vigueur le 1er juillet 2024.
         Cette information devra être apportée par les distributeurs de produits de grande consommation dans les grandes et
@@ -42,13 +42,13 @@ export function ArticleEvolutionsQuantitePrix() {
         prix reste inchangé ou augmente. La mention suivante devra être indiquée : « Pour ce produit, la quantité vendue est
         passée de X à Y et son prix au (unité de mesure concernée) a augmenté de …% ou …€. »
       </p>
-      <h2>Quels produits seront concernés par cette obligation ?</h2>
+      <h2 className="fr-h4">Quels produits seront concernés par cette obligation ?</h2>
       <p>
         Cette obligation légale concerne les produits préemballés de grande consommation, notamment les denrées alimentaires et
         les produits non alimentaires vendus en quantité constante (produits ménagers, produits pour bébés, etc.). Les denrées
         alimentaires préemballées à quantité variable ou vendues en vrac ne sont pas concernées.
       </p>
-      <h2>Quelles seront les sanctions en cas de non-respect de cette obligation ?</h2>
+      <h2 className="fr-h4">Quelles seront les sanctions en cas de non-respect de cette obligation ?</h2>
       <p>
         Les manquements à cette obligation seront passibles d'amendes pouvant atteindre 3 000 € pour une personne physique et 15
         000 € pour une personne morale.

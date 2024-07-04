@@ -1,7 +1,6 @@
-import Link from 'next/link'
-import Image from 'next/image'
 import imgBoiteCarton from '@/img/actualites/boite_carton.png'
-import React from 'react'
+import Image from 'next/image'
+import Link from 'next/link'
 
 export function ArticleOccasionReconditionnes() {
   return (
@@ -17,7 +16,7 @@ export function ArticleOccasionReconditionnes() {
           reconditionné ? On vous explique.
         </p>
       </div>
-      <h2>Objet neuf, d’occasion et reconditionné : quelles différences ?</h2>
+      <h2 className="fr-h4">Objet neuf, d’occasion et reconditionné : quelles différences ?</h2>
       <p>
         Un objet d’occasion se distingue aisément d’un bien neuf. Vous achetez un objet neuf quand vous en êtes le{' '}
         <strong>premier consommateur à être propriétaire du bien.</strong>
@@ -28,18 +27,18 @@ export function ArticleOccasionReconditionnes() {
         Un objet reconditionné est également{' '}
         <strong>un produit de seconde main, mais contrôlé et réparé si nécessaire, avant d’être remis en vente.</strong>
       </p>
-      <h2>Pourquoi acheter d’occasion ou reconditionné ?</h2>
+      <h2 className="fr-h4">Pourquoi acheter d’occasion ou reconditionné ?</h2>
       <p>
         Ces pratiques alternatives à l’achat neuf permettent de prolonger la durée d’utilisation des produits, et ainsi de réduire
         la consommation de ressources. Par exemple, acheter un ordinateur portable reconditionné, c’est 127 kg d’extraction de
         matières et l’équivalent de 82 km en voiture d’émissions de CO2 évités pour chaque année d’utilisation.
       </p>
-      <h2>Bien d’occasion ou reconditionné : quelles garanties ?</h2>
+      <h2 className="fr-h4">Bien d’occasion ou reconditionné : quelles garanties ?</h2>
       <p>
         Dans le cadre d’un achat, que le bien soit d’occasion ou reconditionné, 
         <strong>sachez qu'il peut être couvert par un certain nombre de garanties :</strong>
       </p>
-      <h3>La garantie légale de conformité</h3>
+      <h3 className="fr-h6">La garantie légale de conformité</h3>
       <p>
         Vous bénéficiez d’une garantie légale de conformité pour l’achat de tout bien neuf, mais aussi d’<strong>occasion</strong>
          et <strong>reconditionné</strong>. Cette garantie est un droit obligatoire fixé par la loi d’une durée de{' '}
@@ -87,7 +86,7 @@ export function ArticleOccasionReconditionnes() {
         démarchage à domicile ou de vente à distance), celui-ci sera interrompu. Le décompte du délai de rétraction démarrera dès
         la livraison d'un nouveau produit conforme, qu'il soit réparé ou remplacé.
       </p>
-      <h3>La garantie des vices cachés</h3>
+      <h3 className="fr-h6">La garantie des vices cachés</h3>
       <p>
         La garantie des vices cachés couvre tout achat d’un produit neuf, d’<strong>occasion</strong> et 
         <strong>reconditionné, excepté pour les biens issus de ventes aux enchères</strong>. Le délai pour agir est de deux ans à
@@ -102,7 +101,7 @@ export function ArticleOccasionReconditionnes() {
         <br />
         Notez que le vendeur est responsable des vices cachés, quand bien même il ne les connaissait pas au moment de la vente.
       </p>
-      <h3>La garantie commerciale</h3>
+      <h3 className="fr-h6">La garantie commerciale</h3>
       <p>
         La garantie commerciale est une garantie supplémentaire, par rapport à la garantie légale, qui peut potentiellement{' '}
         <strong>couvrir le bien acheté d'occasion</strong> ou <strong>reconditionné</strong>.
