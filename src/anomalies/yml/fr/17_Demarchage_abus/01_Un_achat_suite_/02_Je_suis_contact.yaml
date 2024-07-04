@@ -1,12 +1,21 @@
 title: >-
   Je suis contacté directement à mon domicile pour des propositions de travaux ou de rénovation énergétique
-blockingInfo:
-  title: >-
-    Revenez en arrière et utilisez plutôt la catégorie spécifique à votre
-    problème 🙂
-  content: >-
-    Je suis démarché à mon domicile pour l'installation de panneaux solaires ou d'une pompe à chaleur.
-    Utilisez la catégorie <a
-    href="https://signal.conso.gouv.fr/fr/travaux-renovation/faire-un-signalement" target="_blank"
-    />"Travaux / Rénovation"</a>. Il est interdit de démarcher pour des travaux
-    ou réaliser de la rénovation énergétique.
+companyKind: PHONE
+ccrfCode:
+  - '227'
+  - 23E
+reponseconsoCode: '221'
+tags:
+  - DemarchageTelephonique
+detailInputs:
+  - label: Date de l'appel
+    type: DATE
+    defaultValue: SYSDATE
+  - label: Est-ce que le vendeur s'est fait passer pour une autre entreprise&#160;?
+    type: RADIO
+    options:
+      - Non
+      - Oui (à préciser)
+  - label: Décrivez nous plus en détails ce qui s'est passé
+    type: TEXTAREA
+

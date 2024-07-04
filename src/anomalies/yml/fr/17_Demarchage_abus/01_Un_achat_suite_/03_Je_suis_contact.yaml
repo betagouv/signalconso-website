@@ -1,11 +1,25 @@
 title: >-
-  Je suis contacté directement à mon domicile pour des propositions de service de Banque ou d'assurance.
-blockingInfo:
-  title: >-
-    Revenez en arrière et utilisez plutôt la catégorie spécifique à votre
-    problème 🙂
-  content: >-
-    Je suis démarché à domicile pour me proposer des contracts d'assurance.
-    Utilisez la catégorie <a
-    href="https://signal.conso.gouv.fr/fr/banque-assurance-mutuelle/faire-un-signalement" target="_blank"
-    />"Banque / Assurance / Mutuelle"</a>. 
+  Je suis contacté directement à mon domicile pour acheter des produits de parapharmacie
+ccrfCode:
+  - '221'
+reponseconsoCode: '2210'
+companyKind: LOCATION
+tags:
+  - DemarchageADomicile
+detailInputs:
+  - label: "Que s'est-il passé\_?"
+    type: RADIO
+    options:
+      - Le vendeur s'est fait passer pour une autre entreprise (à préciser)
+      - >-
+        Le vendeur m'a fait signer des papiers sans me dire que c'était un
+        contrat ou un bon de commande.
+      - Autre (à préciser)
+  - label: Avez-vous payé au moment du démarchage&#160;?
+    type: RADIO
+    options:
+      - Oui
+      - Non
+  - label: Date du démarchage
+    type: DATE
+    defaultValue: SYSDATE
