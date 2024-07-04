@@ -14,8 +14,18 @@ export const ToastProvider = ({children}: {children: ReactNode}) => {
     setMessage(undefined)
   }
 
-  function toastError(message?: string) {
-    setMessage(message ?? m.anErrorOccurred)
+  function toastError(err?: any) {
+    let message: string
+
+    if (err && err instanceof ApiError) {
+      message = err.message
+    } else if (err && typeof err === 'string') {
+      message = err
+    } else {
+      message = m.anErrorOccurred
+    }
+
+    setMessage(message)
   }
 
   return (
