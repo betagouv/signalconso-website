@@ -38,7 +38,9 @@ export function ArticleAccessibilite() {
         normes strictes et une gouvernance bien définie, le SDE permet la création de sites Internet accessibles, ergonomiques et
         conformes aux standards de l'administration.
       </p>
-      <h2 className="fr-h4">Valoriser l’accessibilité pour faciliter le parcours utilisateur dans leur signalement de consommation</h2>
+      <h2 className="fr-h4">
+        Valoriser l’accessibilité pour faciliter le parcours utilisateur dans leur signalement de consommation
+      </h2>
       <p>
         Avec ces améliorations esthétiques et fonctionnelles, `SignalConso` s'est engagé dans une démarche résolue d'accessibilité
         et d'expérience utilisateur améliorée. Ces changements reflètent une prise de conscience essentielle en matière
