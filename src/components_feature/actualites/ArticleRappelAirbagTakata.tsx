@@ -1,14 +1,13 @@
-import {Accordion} from '@codegouvfr/react-dsfr/Accordion'
-import Link from 'next/link'
 import {ScAlert} from '@/components_simple/ScAlert'
 import {androidAppUrl, iosAppUrl} from '@/components_simple/bigBanners/MobileAppPromoBanner'
+import {Accordion} from '@codegouvfr/react-dsfr/Accordion'
+import Link from 'next/link'
 
 const urlSsvm = 'https://www.ecologie.gouv.fr/service-surveillance-du-marche-des-vehicules-et-des-moteurs-ssmvm'
 
 export function ArticleRappelAirbagTakata() {
   return (
     <>
-      <p className="fr-h6 ">Comment savoir si vous êtes concerné ? Quelle est la marche à suivre ?</p>
       <p className="mb-10">
         Depuis mai 2024, en raison d'un défaut majeur dans les airbags, des millions de véhicules sont actuellement rappelés à
         travers le monde. Ces airbags, fabriqués par Takata, présentent un risque sérieux pour la sécurité des occupants.

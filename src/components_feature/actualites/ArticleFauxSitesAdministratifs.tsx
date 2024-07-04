@@ -28,7 +28,7 @@ export function ArticleFauxSitesAdministratifs() {
           </p>
         </div>
       </div>
-      <h3>Conseils avant toute démarche ou comment repérer les arnaques :</h3>
+      <h2 className="fr-h4">Conseils avant toute démarche ou comment repérer les arnaques :</h2>
       <ul>
         <li>
           Consulter toujours, et en premier lieu, le portail de l'administration{' '}

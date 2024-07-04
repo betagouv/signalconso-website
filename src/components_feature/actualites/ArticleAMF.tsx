@@ -1,14 +1,13 @@
-import Link from 'next/link'
-import Image from 'next/image'
 import imgTrading from '@/img/actualites/trading.png'
-import React from 'react'
+import Image from 'next/image'
+import Link from 'next/link'
 
 export function ArticleAMF() {
   return (
     <div>
       <div className="flex flex-col md:flex-row gap-5 mb-5">
         <div className="w-full sm:w-1/2 md:w-1/2">
-          <Image src={imgTrading} width={450} height={300} alt="" />
+          <Image src={imgTrading} width={338} alt="" />
         </div>
         <p>
           Attention aux risques liés aux investissements sur des placements financiers hautement risqués et spéculatifs. Les
