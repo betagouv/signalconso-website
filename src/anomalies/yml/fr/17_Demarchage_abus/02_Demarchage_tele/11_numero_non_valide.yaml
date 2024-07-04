@@ -1,0 +1,9 @@
+title: >-
+  Je suis démarché par un opérateur utilisant un numéro commençant par 06 ou 07
+companyKind: PHONE
+tags:
+  - DemarchageTelephonique
+detailInputs:
+  - label: Date de l'appel
+    type: DATE
+    defaultValue: SYSDATE
