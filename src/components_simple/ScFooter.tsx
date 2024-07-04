@@ -85,7 +85,7 @@ function FollowUs() {
         <div className="fr-grid-row">
           <div className="fr-col-12">
             <div className="fr-follow__social">
-              <h2 className="fr-h5" dangerouslySetInnerHTML={{__html: m.footer.suivezNous}} />
+              <p className="fr-h5" dangerouslySetInnerHTML={{__html: m.footer.suivezNous}} />
               <ul className="fr-btns-group">
                 <li>
                   <Link

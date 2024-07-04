@@ -1,7 +1,7 @@
 import {FullWidthPageContainer} from '@/components_simple/PageContainers'
 import {PageComponentProps} from '@/core/metadatas'
 import {AppLangs} from '@/i18n/localization/AppLangs'
-import {getManualLpButtonProps} from '@/landings/manualLandingsUtils'
+import {BlueBandWhySignalConso, getManualLpButtonProps} from '@/landings/manualLandingsUtils'
 import {ChildrenProps} from '@/utils/utils'
 import Button from '@codegouvfr/react-dsfr/Button'
 import {notFound} from 'next/navigation'
@@ -79,12 +79,7 @@ export function signalInfluenceur(props: PageComponentProps) {
           </div>
         </div>
       </div>
-      <div className="bg-scblueinfo">
-        <div className="fr-container py-14">
-          <h2 className="text-2xl text-center !text-white mb-12">Pourquoi faire un signalement sur SignalConso ?</h2>
-          <HeroCards lang={props.params.lang} />
-        </div>
-      </div>
+      <BlueBandWhySignalConso {...{lang}} title="Pourquoi faire un signalement d'un influenceur sur SignalConso ?" />
     </FullWidthPageContainer>
   )
 }
@@ -116,7 +111,7 @@ function HeroCards({lang}: {lang: AppLangs}) {
 function HeroCard({title, subtext}: {title: string; subtext: string}) {
   return (
     <div className="md:w-1/3 text-white  gap-y-2 flex flex-col items-center justify-start">
-      <h3 className="text-lg text-white font-bold mb-0">{title}</h3>
+      <p className="text-lg text-white font-bold mb-0">{title}</p>
       <p className="text-lg text-center mb-0">{subtext}</p>
     </div>
   )
