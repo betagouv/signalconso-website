@@ -1,29 +1,27 @@
 import {FullWidthPageContainer} from '@/components_simple/PageContainers'
 import {PageComponentProps} from '@/core/metadatas'
-import {AppLangs} from '@/i18n/localization/AppLangs'
-import {getManualLpButtonProps} from '@/landings/manualLandingsUtils'
-import {ChildrenProps} from '@/utils/utils'
+import {BlueBandWhySignalConso, getManualLpButtonProps} from '@/landings/manualLandingsUtils'
 import Button from '@codegouvfr/react-dsfr/Button'
 import {notFound} from 'next/navigation'
-import {getI18n} from '../../i18n/I18nDictionnary'
 
 export function signalInfluenceur(props: PageComponentProps) {
   const lang = props.params.lang
   if (lang !== 'fr') {
     return notFound()
   }
+  const arrow = <span className="ri-arrow-right-line mr-2 fr-icon--lg" />
   return (
     <FullWidthPageContainer>
       <div className="bg-scblueinfo text-white border-t-[1px] border-0 border-solid border-black ">
         <div className="fr-container py-12 flex justify-center">
           <div className=" flex flex-col max-w-4xl">
-            <h1 className="flex flex-col">
-              <span className="mb-2 text-white">Vous avez repéré une publication frauduleuse d'un influenceur ?</span>
+            <h1 className="fr-h3 !text-white">
+              Vous avez repéré une publication frauduleuse d'un influenceur sur Instagram, Snapchat, Tiktok, Youtube, Facebook,
+              etc. ?
             </h1>
-            <p className="text-2xl ">Faites un signalement sur la plateforme SignalConso !</p>
+            <p className="text-xl ">Faites un signalement sur la plateforme SignalConso !</p>
             <p className="text-xl font-bold">
-              Votre signalement sera envoyé à l'entreprise qui l'héberge (Instagram, Snapchat, TikTok, Youtube, Facebook, etc.)
-              ainsi qu'aux agents de la répression des fraudes.
+              Votre signalement sera envoyé au réseau social ainsi qu'aux agents de la répression des fraudes.
             </p>
             <div className="flex justify-center w-full">
               <Button className=" border-blue-300 border border-solid" {...getManualLpButtonProps(lang, 'Internet')}>
@@ -35,29 +33,43 @@ export function signalInfluenceur(props: PageComponentProps) {
       </div>
       <div className="bg-sclightpurple pt-6 pb-8">
         <div className="fr-container ">
-          <div className="pt-4">
-            <h2 className="text-3xl">Dans quels cas puis-je faire un signalement ?</h2>
-            <div className="space-y-8">
-              <Case>
-                Si l'influenceur{' '}
-                <strong>n'affiche pas la mention « publicité », « sponsorisé » ou « collaboration commerciale »</strong> alors
-                qu'il est rémunéré pour sa publication.
-              </Case>
-              <Case>
-                Si l'influenceur fait de la <strong>publicité trompeuse ou mensongère</strong> : le produit n'est pas vraiment ce
-                qu'il prétend, n'est pas conforme à la description ou ne fonctionne pas.
-              </Case>
-              <Case>
-                Si l'influenceur fait de la publicité sur l'un des produits suivants :{' '}
-                <strong>
-                  investissements financiers risqués, cryptomonnaies, tabac, alcool, jeux d'argent, chirurgie ou médecine
-                  esthétique
-                </strong>
-                .
-              </Case>
-              <Case>
+          <div className="pt-4 max-w-4xl mx-auto">
+            <p className="text-lg text-left">Dans quels cas puis-je faire un signalement ?</p>
+            <div className="">
+              <h2 className="fr-h6 !mb-2">
+                {arrow}
+                L'influenceur n'affiche pas la mention « publicité », « sponsorisé » ou « collaboration commerciale »
+              </h2>
+              <p className="ml-10">
+                Si l'influenceur ne mentionne pas « publicité », « sponsorisé » ou « collaboration commerciale » alors qu'il est
+                payé pour sa publication, c'est de la publicité cachée. Cela peut induire en erreur ses abonnés sur la nature
+                commerciale du contenu.
+              </p>
+
+              <h2 className="fr-h6 !mb-2">
+                {arrow}
+                L'influenceur fait de la publicité trompeuse ou mensongère
+              </h2>
+              <p className="ml-10">
+                Le produit n'est pas vraiment ce qu'il prétend, n'est pas conforme à la description ou ne fonctionne pas.
+              </p>
+              <h2 className="fr-h6 !mb-2 ">
+                {arrow}
+                L'influenceur fait de la publicité pour des investissements financiers risqués, des cryptomonnaies, du tabac, de
+                l'alcool, des jeux d'argent, ou de la chirurgie ou médecine esthétique
+              </h2>
+              <p className="ml-10">
+                Par exemple, s'il fait de la publicité pour un service de trading, de paris sportifs, d'injections pour faire
+                grossir les lèvres, etc. La publicité pour tous ces produits est strictement régulée.
+              </p>
+              <h2 className="fr-h6 !mb-2 ">
+                {arrow}
                 S'il fait la promotion d'un <strong>produit dangereux</strong>.
-              </Case>
+              </h2>
+              <p className="ml-10">
+                Cela inclut par exemple certains produits ou méthodes pour se blanchir les dents ou la peau, des ballons de gaz
+                hilarants, etc.
+              </p>
             </div>
           </div>
         </div>
@@ -65,7 +77,7 @@ export function signalInfluenceur(props: PageComponentProps) {
       <div className="bg-sclightpurpledarker py-6">
         <div className="fr-container flex justify-center">
           <div className="max-w-4xl ">
-            <h2 className="text-2xl">Et après ?</h2>
+            <p className="fr-h3">Et après ?</p>
             <p className="text-lg ">
               <strong>Le réseau social</strong> peut décider de retirer le contenu, d'y rendre l'accès impossible ou de suspendre
               le compte.
@@ -79,45 +91,7 @@ export function signalInfluenceur(props: PageComponentProps) {
           </div>
         </div>
       </div>
-      <div className="bg-scblueinfo">
-        <div className="fr-container py-14">
-          <h2 className="text-2xl text-center !text-white mb-12">Pourquoi faire un signalement sur SignalConso ?</h2>
-          <HeroCards lang={props.params.lang} />
-        </div>
-      </div>
+      <BlueBandWhySignalConso {...{lang}} title="Pourquoi faire un signalement d'un youtubeur ou influenceur sur SignalConso ?" />
     </FullWidthPageContainer>
-  )
-}
-
-function Case({children}: ChildrenProps) {
-  return (
-    <p className="text-lg ">
-      <span className="ri-arrow-right-line mr-2 fr-icon--lg" />
-      {children}
-    </p>
-  )
-}
-
-function HeroCards({lang}: {lang: AppLangs}) {
-  const {m} = getI18n(lang)
-
-  return (
-    <div className="flex justify-between items-stretch gap-16 flex-col md:flex-row mb-8">
-      <HeroCard
-        title="Parce que c'est simple !"
-        subtext="Des questions vous guident tout au long du parcours pour vous aider à formuler votre problème."
-      />
-      <HeroCard title="Parce que c'est rapide !" subtext="5 minutes à peine et votre signalement est envoyé." />
-      <HeroCard title="Pour le geste citoyen" subtext="Pour améliorer les réseaux sociaux pour tout le monde." />
-    </div>
-  )
-}
-
-function HeroCard({title, subtext}: {title: string; subtext: string}) {
-  return (
-    <div className="md:w-1/3 text-white  gap-y-2 flex flex-col items-center justify-start">
-      <h3 className="text-lg text-white font-bold mb-0">{title}</h3>
-      <p className="text-lg text-center mb-0">{subtext}</p>
-    </div>
   )
 }

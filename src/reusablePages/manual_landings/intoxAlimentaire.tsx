@@ -1,10 +1,8 @@
 import {FullWidthPageContainer} from '@/components_simple/PageContainers'
 import {PageComponentProps} from '@/core/metadatas'
-import {AppLangs} from '@/i18n/localization/AppLangs'
-import {LpColoredBand, getManualLpButtonProps} from '@/landings/manualLandingsUtils'
+import {BlueBandWhySignalConso, LpColoredBand, getManualLpButtonProps} from '@/landings/manualLandingsUtils'
 import Button from '@codegouvfr/react-dsfr/Button'
 import {notFound} from 'next/navigation'
-import {getI18n} from '../../i18n/I18nDictionnary'
 
 const bloctel = 'https://www.bloctel.gouv.fr/'
 
@@ -73,35 +71,10 @@ export function IntoxAlimentairePage(props: PageComponentProps) {
           </p>
         </div>
       </LpColoredBand>
-      <LpColoredBand className="bg-scblueinfo">
-        <div className="py-8">
-          <h2 className="text-2xl text-center !text-white mb-12">
-            Pourquoi faire un signalement sur SignalConso lors d'un démarchage téléphonique abusif ?
-          </h2>
-          <HeroCards lang={props.params.lang} />
-        </div>
-      </LpColoredBand>
+      <BlueBandWhySignalConso
+        {...{lang}}
+        title="Pourquoi faire un signalement sur SignalConso lors d'un démarchage téléphonique abusif ?"
+      />
     </FullWidthPageContainer>
-  )
-}
-
-function HeroCards({lang}: {lang: AppLangs}) {
-  const {m} = getI18n(lang)
-
-  return (
-    <div className="flex justify-between items-stretch gap-16 flex-col md:flex-row mb-8">
-      <HeroCard title={m.landing.heroCardTitle1} subtext={m.landing.heroCardText1} />
-      <HeroCard title={m.landing.heroCardTitle2} subtext={m.landing.heroCardText2} />
-      <HeroCard title={m.landing.heroCardTitle3} subtext={m.landing.heroCardText3} />
-    </div>
-  )
-}
-
-function HeroCard({title, subtext}: {title: string; subtext: string}) {
-  return (
-    <div className="md:w-1/3 text-white  gap-y-2 flex flex-col items-center justify-start">
-      <h3 className="text-lg text-white font-bold mb-0">{title}</h3>
-      <p className="text-lg text-center mb-0">{subtext}</p>
-    </div>
   )
 }

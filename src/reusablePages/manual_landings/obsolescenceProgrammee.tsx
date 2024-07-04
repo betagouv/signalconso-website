@@ -102,22 +102,22 @@ export function obsolescencePage(props: PageComponentProps) {
           <div className="">
             <div className="max-w-4xl">
               <h2 className="text-2xl font-bold mb-8 text-white ">
-                Vous pensiez rencontrer un problème de consommation mais il s'avère finalement que la pratique du professionnel
-                que vous avez pointée n'est pas contraire à la réglementation ?
+                Vous pensiez rencontrer un problème d'obscolescence programmée mais il s'avère finalement que la pratique du
+                professionnel n'est pas contraire à la réglementation ?
               </h2>
-              <p className="text-2xl mb-8">Votre signalement ne sera pour autant pas inutile !</p>
+              <p className="text-xl mb-8">Votre signalement ne sera pour autant pas inutile !</p>
             </div>
             <div className="flex flex-col">
               <div className="grid md:grid-cols-3 md:gap-8">
-                <p className="text-xl">
+                <p className="text-lg">
                   Il sert à <strong>interpeler le professionnel</strong> qui aura peut-être à cœur de faire évoluer sa pratique,
                   conforme certes, mais pas forcément très écologique.
                 </p>
-                <p className="text-xl">
+                <p className="text-lg">
                   Plus encore, votre signalement fait <strong>remonter une information</strong> qui peut ensuite motiver des
                   contrôles et orienter les enquêtes de la DGCCRF pour faire progresser la consommation durable.
                 </p>
-                <p className="text-xl">
+                <p className="text-lg">
                   Avec SignalConso, <strong>vous envoyez avant tout un signal !</strong> Ne sous-estimez pas les effets de votre
                   signalement.
                 </p>
