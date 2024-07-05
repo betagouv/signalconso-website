@@ -1,0 +1,9 @@
+title: Problème de démarchage téléphonique
+companyKind: PHONE
+ccrfCode:
+  - '227'
+  - 23E
+reponseconsoCode: '221'
+tags:
+  - DemarchageTelephonique
+  - AppelCommercial
