@@ -18,6 +18,7 @@ import {SiretExtractorClient} from '../../../clients/SiretExtractorClient'
 import {CompanySearchResult} from '../../../model/Company'
 import {Country} from '../../../model/Country'
 import {useReportFlowContext} from '../ReportFlowContext'
+import Link from 'next/link'
 
 interface Form {
   website: string
@@ -228,9 +229,40 @@ export const CompanyByWebsite = ({children, specificWebsiteCompanyKind}: Props) 
         <AutofocusedDiv>{children(website, undefined, displayedResults.countries)}</AutofocusedDiv>
       )}
       {displayedResults?.kind === 'companies' && <AutofocusedDiv>{children(website, displayedResults.companies)}</AutofocusedDiv>}
-      {displayedResults?.kind === 'nothing' && displayedResults?.status === 'down' && <WebsiteDown />}
+      <InformationPanel website={website} displayedResults={displayedResults} />
       {displayedResults?.kind === 'nothing' && <AutofocusedDiv>{children(website)}</AutofocusedDiv>}
     </>
+  )
+}
+
+const InformationPanel = ({website, displayedResults}: {website: string; displayedResults: WebsiteSearchResult | undefined}) => {
+  const hostname = website.replace(/^((http|https):\/\/)?(www\.)?/, '')
+
+  if (displayedResults && (hostname === 'relaxsoria.com' || hostname === 'stockwan.com')) {
+    return <TheseeInformation />
+  } else if (displayedResults?.kind === 'nothing' && displayedResults?.status === 'down') {
+    return <WebsiteDown />
+  } else {
+    return null
+  }
+}
+
+const TheseeInformation = () => {
+  const {m} = useI18n()
+  return (
+    <Alert
+      description={
+        <p>
+          {m.theseeInformation}
+          <Link href="https://www.service-public.fr/particuliers/vosdroits/N31138#0_0_0_0_1_2" target="_blank">
+            {m.theseeInformationLink}
+          </Link>
+        </p>
+      }
+      severity="warning"
+      title={m.theseeInformationTitle}
+      className="fr-mt-4w fr-mb-4w"
+    />
   )
 }
 
