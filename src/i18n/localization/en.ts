@@ -1334,6 +1334,11 @@ export const en = {
     whichWebsiteMerchantText: 'Give the name of the merchant',
 
     thereAreSimilarReports: 'One or more similar reports have already been made',
+
+    theseeInformationTitle: 'File a complaint',
+    theseeInformation: 'If you have been victim of this website, we invite you to ',
+    theseeInformationLink: 'file a complaint online at Thésée',
+
     websiteDoesNotExist1: 'The website you have indicated does not seem to be available.',
     websiteDoesNotExist2: 'Perhaps you made a typo?',
     websiteDoesNotExist3: 'It may have been deleted by its owner or host',
