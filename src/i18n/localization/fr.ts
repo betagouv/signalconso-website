@@ -1369,6 +1369,10 @@ export const fr = {
 
     thereAreSimilarReports: 'Il existe un ou plusieurs signalements similaires',
 
+    theseeInformationTitle: 'Porter plainte',
+    theseeInformation: 'Si vous avez été victime de ce site, nous vous invitons à ',
+    theseeInformationLink: 'déposer plainte en ligne sur Thésée',
+
     websiteDoesNotExist1: 'Le site que vous avez indiqué semble introuvable.',
     websiteDoesNotExist2: 'Vous avez peut-être fait une faute de frappe ?',
     websiteDoesNotExist3: 'Il a peut-être été supprimé par son propriétaire ou hébergeur',
