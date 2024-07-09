@@ -12,6 +12,14 @@ export type NewsArticle = {
 // This is the display order. Keep the most recents at the start of the array
 export const initialNewsArticlesData: NewsArticle[] = [
   {
+    date: '2024-07-11',
+    lang: AppLangs.fr,
+    slug: 'faux-sites-de-vente-thesee',
+    title: 'Faux sites de vente : appel à victimes du parquet de Nanterre et de la Police Nationale',
+    title2: 'Enquête sur des escroqueries de faux sites de vente : plus de 20 000 victimes',
+    excerpt: `Si vous avez été victime de l’un des sites cités dans cet article, vous pouvez déposer plainte en ligne sur THESEE.`,
+  },
+  {
     date: '2024-06-26',
     lang: AppLangs.fr,
     slug: 'rappel-airbag-takata',
