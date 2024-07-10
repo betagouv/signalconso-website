@@ -131,7 +131,7 @@ function buildLinksList(
       links: [
         link('/arnaques-primes-energie-renovation', 'Arnaque aux primes énergie ou MaPrimeRénov'),
         link('/cpf-formation', 'Arnaque au CPF'),
-        link('/cpf-formation', `Arnaque à l'installation de pompe à chaleur PAC`),
+        link('/pompe-a-chaleur-pac', `Arnaque à l'installation de pompe à chaleur PAC`),
       ],
     },
     {
