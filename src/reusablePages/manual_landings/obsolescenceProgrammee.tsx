@@ -19,9 +19,11 @@ export function obsolescencePage(props: PageComponentProps) {
             <h1 className="flex flex-col mb-6 text-white">
               La durée de vie de votre appareil vous semble particulièrement courte ?
             </h1>
-            <p className="text-2xl mb-0 font-bold">Il n'existe pas de pièces détachées pour le réparer ?</p>
-            <p className="text-2xl  mb-4 font-bold">Son indice de réparabilité n'était pas affiché lors de son achat ?</p>
-            <p className="text-lg mb-4">
+            <h2 className="text-white text-2xl mb-4 font-normal">
+              Il n'existe pas de pièces détachées pour le réparer ? <br />
+              Son indice de réparabilité n'était pas affiché lors de son achat ?
+            </h2>
+            <p className="te mb-4">
               Il s'agit peut-être d'un cas d'obsolescence programmée. Vous pouvez le signaler sur la plateforme SignalConso. Votre
               signalement sera envoyé aux agents de la répression des fraudes, ainsi qu'à l'entreprise concernée.
             </p>
@@ -102,7 +104,7 @@ export function obsolescencePage(props: PageComponentProps) {
           <div className="">
             <div className="max-w-4xl">
               <h2 className="text-2xl font-bold mb-8 text-white ">
-                Vous pensiez rencontrer un problème d'obscolescence programmée mais il s'avère finalement que la pratique du
+                Vous pensiez rencontrer un problème d'obsolescence programmée mais il s'avère finalement que la pratique du
                 professionnel n'est pas contraire à la réglementation ?
               </h2>
               <p className="text-xl mb-8">Votre signalement ne sera pour autant pas inutile !</p>
