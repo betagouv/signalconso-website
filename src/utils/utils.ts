@@ -1,6 +1,6 @@
 import {format, parse} from 'date-fns'
-import {AppLang} from '../i18n/localization/AppLangs'
 import {ReactNode} from 'react'
+import {AppLang} from '../i18n/localization/AppLangs'
 
 export const isServerSide = () => typeof window === 'undefined'
 
@@ -122,6 +122,10 @@ export function purgeWhitespaces(identity: string): string {
   // the user may copy/paste the number from a webpage
   // with whitespaces before, after, or inside, e.g.: XXX XXX XXX
   return identity.replace(/\s+/g, '')
+}
+
+export function takeFirstFive<A>(array: A[]): [A?, A?, A?, A?, A?] {
+  return array.slice(0, 5) as any
 }
 
 // to avoid repetition

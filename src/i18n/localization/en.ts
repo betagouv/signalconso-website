@@ -571,7 +571,6 @@ export const en = {
       reportIncidentFor: 'Report a company for',
       seeFullTree: 'See also',
       completeTree: 'the reporting sequence in full',
-      incidentSteps: 'Each step in the reporting process',
       step1: 'Step 1 - The problem',
       step2: 'Step 2 - The description',
       step3: 'Step 3 - The company',
