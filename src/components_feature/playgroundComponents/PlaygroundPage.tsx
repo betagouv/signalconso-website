@@ -212,7 +212,7 @@ const Playground = () => {
 
   return (
     <ContentPageContainer>
-      <h1>Playground</h1>
+      <h1 className="fr-h2">Playground</h1>
 
       {!testCase ? (
         <div>

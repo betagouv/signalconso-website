@@ -108,8 +108,16 @@ export const en = {
         description:
           'Report an issue to a company (e.g. retailers, local stores, cafés and restaurants) and Fraud Control if you have concerns about hygiene, food and drink quality, product descriptions, pricing or payment policies, advertising or other retail services.',
       },
+      outils: {
+        title: 'Tools for internal use - SignalConso',
+        description: '',
+      },
       arborescence: {
-        title: 'Reporting sequence – SignalConso',
+        title: 'Reporting sequence - SignalConso',
+        description: '',
+      },
+      arboLinksExtract: {
+        title: `Links in reporting sequence - SignalConso`,
         description: '',
       },
       actualites: {
@@ -569,8 +577,6 @@ export const en = {
       signalInfluenceur: '',
       reportIncidentSection: 'Submitting a report',
       reportIncidentFor: 'Report a company for',
-      seeFullTree: 'See also',
-      completeTree: 'the reporting sequence in full',
       step1: 'Step 1 - The problem',
       step2: 'Step 2 - The description',
       step3: 'Step 3 - The company',

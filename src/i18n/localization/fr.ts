@@ -107,8 +107,16 @@ export const fr = {
         description:
           "Signalez un problème au commerçant (magasins, commerces de proximité, cafés et restaurants...) et à la répression des fraudes : pratique d'hygiène, nourriture / boissons, matériel / objet, prix / paiement, publicité, services associés à l'achat.",
       },
+      outils: {
+        title: 'Outils à usage interne - SignalConso',
+        description: '',
+      },
       arborescence: {
         title: 'Arborescence - SignalConso',
+        description: '',
+      },
+      arboLinksExtract: {
+        title: `Liens de l\'arborescence - SignalConso`,
         description: '',
       },
       actualites: {
@@ -578,8 +586,6 @@ export const fr = {
       signalInfluenceur: 'Faire un signalement sur un influenceur',
       reportIncidentSection: "Dépôt d'un signalement",
       reportIncidentFor: 'Faire un signalement pour',
-      seeFullTree: 'Voir aussi',
-      completeTree: "l'arborescence complète du dépot d'un signalement",
       step1: 'Étape 1 - Le problème',
       step2: 'Étape 2 - La description',
       step3: 'Étape 3 - Le commerçant',

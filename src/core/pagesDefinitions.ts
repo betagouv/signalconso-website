@@ -42,7 +42,9 @@ function pageExternal(url: string): PageDefExternal {
 
 export const internalPageDefs = {
   index: page('/'),
+  outils: page(`/outils`, {noIndex: true}),
   arborescence: page(`/arborescence`, {noIndex: true}),
+  arboLinksExtract: page(`/arborescence-liens`, {noIndex: true}),
   planDuSite: page(`/plan-du-site`),
   actualites: page(`/actualites`),
   playground: page(`/playground`, {noIndex: true}),
