@@ -55,15 +55,6 @@ const PlanDuSite = (props: PageComponentProps) => {
           {m.planDuSite.seeFullTree} <Link href={pagesDefs.arborescence.url}>{m.planDuSite.completeTree}</Link>
         </p>
 
-        <h3 className="fr-h6">{m.planDuSite.incidentSteps}</h3>
-        <ul>
-          <li>{m.planDuSite.step1}</li>
-          <li>{m.planDuSite.step2}</li>
-          <li>{m.planDuSite.step3}</li>
-          <li>{m.planDuSite.step4}</li>
-          <li>{m.planDuSite.step5}</li>
-        </ul>
-
         <h2 className="fr-h4">{m.planDuSite.proSpaceSection}</h2>
         <ul>
           <li>
@@ -72,11 +63,6 @@ const PlanDuSite = (props: PageComponentProps) => {
           <li>
             <Link href={pagesDefs.espaceProWelcome.url}>{m.planDuSite.login}</Link>
           </li>
-          <li>{m.planDuSite.incidentTracking}</li>
-          <li>{m.planDuSite.incidentDetails}</li>
-          <li>{m.planDuSite.myCompanies}</li>
-          <li>{m.planDuSite.accessManagement}</li>
-          <li>{m.planDuSite.passwordModification}</li>
         </ul>
         <h2 className="fr-h4">{m.planDuSite.newsSection}</h2>
         <ul>
@@ -98,11 +84,6 @@ const PlanDuSite = (props: PageComponentProps) => {
           <li>
             <Link href={pagesDefs.espaceProWelcome.url}>{m.planDuSite.login}</Link>
           </li>
-          <li>{m.planDuSite.incidentTracking}</li>
-          <li>{m.planDuSite.incidentDetails}</li>
-          <li>{m.planDuSite.companyTracking}</li>
-          <li>{m.planDuSite.subscriptions}</li>
-          <li>{m.planDuSite.passwordModification}</li>
         </ul>
       </ContentPageContainer>
     </>
