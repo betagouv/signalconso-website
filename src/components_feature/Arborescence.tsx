@@ -2,26 +2,18 @@
 
 import {getOptionsFromInput, getPlaceholderFromInput} from '@/components_feature/reportFlow/Details/DetailInputsUtils'
 import {ContentPageContainer} from '@/components_simple/PageContainers'
+import {pagesDefs} from '@/core/pagesDefinitions'
+import {AppLang} from '@/i18n/localization/AppLangs'
 import {dateToFrenchFormat} from '@/utils/utils'
 import {Button} from '@codegouvfr/react-dsfr/Button'
+import Link from 'next/link'
+import {useSearchParams} from 'next/navigation'
 import {ReactNode, useEffect, useState} from 'react'
 import {useForm} from 'react-hook-form'
 import {allVisibleAnomalies, instanceOfAnomaly, instanceOfSubcategoryWithInfoWall} from '../anomalies/Anomalies'
-import {
-  Anomaly,
-  CategoryNode,
-  DetailInput,
-  DetailInputType,
-  StandardSubcategory,
-  Subcategory,
-  SubcategoryWithInfoWall,
-} from '../anomalies/Anomaly'
+import {CategoryNode, DetailInput, DetailInputType, StandardSubcategory, SubcategoryWithInfoWall} from '../anomalies/Anomaly'
 import {useI18n} from '../i18n/I18n'
 import {fnSwitch} from '../utils/FnSwitch'
-import {useSearchParams} from 'next/navigation'
-import {AppLang} from '@/i18n/localization/AppLangs'
-import Link from 'next/link'
-import {pagesDefs} from '@/core/pagesDefinitions'
 
 const Node = ({
   anomaly,
@@ -304,11 +296,9 @@ const Arbo = () => {
   const anomalies = allVisibleAnomalies(currentLang)
   const topNodes = applyZoom(anomalies, zoomPath)
   const displayExtra = !watch('hideExtra')
-
   return (
     <ContentPageContainer>
-      <h1>{m.arbo.title}</h1>
-
+      <h1 className="fr-h2">{m.arbo.title}</h1>
       <form className="mb-4 flex flex-col gap-4">
         <label>
           <input type="checkbox" {...register('hideExtra')} />

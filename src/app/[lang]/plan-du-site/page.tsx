@@ -51,10 +51,6 @@ const PlanDuSite = (props: PageComponentProps) => {
           <BasicPageLink page="intoxAlimentaire" label={m.planDuSite.intoxAlimentaire} {...{lang}} />
           <hr className="mt-4" />
         </ul>
-        <p className="mt-4">
-          {m.planDuSite.seeFullTree} <Link href={pagesDefs.arborescence.url}>{m.planDuSite.completeTree}</Link>
-        </p>
-
         <h2 className="fr-h4">{m.planDuSite.proSpaceSection}</h2>
         <ul>
           <li>

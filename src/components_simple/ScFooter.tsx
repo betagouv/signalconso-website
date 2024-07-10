@@ -67,7 +67,7 @@ export function ScFooter() {
               href: urlServicePublicPlus,
             },
           },
-          ...(appConfig.showPlayground ? [link(pagesDefs.playground.url, 'Playground')] : []),
+          ...(appConfig.showOutilsInternes ? [link(pagesDefs.outils.url, 'Outils à usage interne')] : []),
         ]}
       />
     </>
