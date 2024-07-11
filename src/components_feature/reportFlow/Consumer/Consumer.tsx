@@ -1,13 +1,16 @@
+import {StandardSubcategory} from '@/anomalies/Anomaly'
 import {ClientReferenceHelpButton} from '@/components_feature/reportFlow/Consumer/ClientReferenceHelpButton'
 import {StepNavigation} from '@/components_feature/reportFlow/reportFlowStepper/ReportFlowStepper'
 import {ReportFlowStepperActions} from '@/components_feature/reportFlow/reportFlowStepper/ReportFlowStepperActions'
 import {RequiredFieldsLegend} from '@/components_simple/RequiredFieldsLegend'
 import {ScTextInput} from '@/components_simple/formInputs/ScTextInput'
 import {useApiClients} from '@/context/ApiClientsContext'
+import {getTransmissionStatus} from '@/feature/reportDraftUtils'
 import {useBreakpoints} from '@/hooks/useBreakpoints'
 import {useI18n} from '@/i18n/I18n'
 import {AppLangs} from '@/i18n/localization/AppLangs'
 import {ReportDraft2} from '@/model/ReportDraft2'
+import {last} from '@/utils/lodashNamedExport'
 import {regexp} from '@/utils/regexp'
 import {useMutation} from '@tanstack/react-query'
 import {ReactNode} from 'react'
@@ -15,13 +18,11 @@ import {Controller, useForm} from 'react-hook-form'
 import {ScAlert} from '../../../components_simple/ScAlert'
 import {ScRadioButtons} from '../../../components_simple/formInputs/ScRadioButtons'
 import {getApiErrorId, useToastError} from '../../../hooks/useToastError'
-import {Gender, ReportDraft, genders} from '../../../model/ReportDraft'
+import {Gender, genders} from '../../../model/ReportDraft'
 import {DeepPartial} from '../../../utils/utils'
 import {useReportFlowContext} from '../ReportFlowContext'
 import {ConsumerAnonymousInformation} from './ConsumerAnonymousInformation'
 import {ConsumerValidationDialog2, consumerValidationModal} from './ConsumerValidationDialog'
-import {last} from '@/utils/lodashNamedExport'
-import {StandardSubcategory} from '@/anomalies/Anomaly'
 
 interface ConsumerForm {
   firstName: string
@@ -86,7 +87,7 @@ export const ConsumerInner = ({
     ),
   )?.customizedClientReferenceInput
 
-  const transmissionStatus = ReportDraft.transmissionStatus(draft)
+  const transmissionStatus = getTransmissionStatus(draft)
   const isTransmittable = transmissionStatus === 'WILL_BE_TRANSMITTED' || transmissionStatus === 'MAY_BE_TRANSMITTED'
   const showContactAgreement = isTransmittable && draft.consumerWish !== 'fixContractualDispute'
 

@@ -4,8 +4,9 @@ import {StepNavigation} from '@/components_feature/reportFlow/reportFlowStepper/
 import {ReportFlowStepperActions} from '@/components_feature/reportFlow/reportFlowStepper/ReportFlowStepperActions'
 import {FriendlyHelpText} from '@/components_simple/FriendlyHelpText'
 import {OpenFfWelcomeText, useOpenFfSetup} from '@/feature/openFoodFacts'
+import {isTransmittableToProBeforePickingConsumerWish} from '@/feature/reportDraftUtils'
 import {useI18n} from '@/i18n/I18n'
-import {ConsumerWish, ReportDraft} from '@/model/ReportDraft'
+import {ConsumerWish} from '@/model/ReportDraft'
 import {ReportDraft2} from '@/model/ReportDraft2'
 import {useEffect, useMemo} from 'react'
 import {instanceOfSubcategoryWithInfoWall} from '../../../anomalies/Anomalies'
@@ -107,7 +108,7 @@ export const Problem = ({anomaly, isWebView, stepNavigation}: Props) => {
     }
   }, [openFfSetup, setReportDraft])
 
-  const isTransmittable = ReportDraft.isTransmittableToProBeforePickingConsumerWish(reportDraft)
+  const isTransmittable = isTransmittableToProBeforePickingConsumerWish(reportDraft)
   const askConsumerWish = isTransmittable && reportDraft.companyKind !== 'SOCIAL'
 
   const {

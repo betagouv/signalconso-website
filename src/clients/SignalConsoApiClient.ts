@@ -12,6 +12,7 @@ import {ResponseConsumerReview, ResponseConsumerReviewExists} from '../core/Even
 import {AppLang} from '../i18n/localization/AppLangs'
 import {BarcodeProduct} from '../model/BarcodeProduct'
 import {Influencer} from '@/model/Influencer'
+import {toApi} from '@/feature/reportDraftUtils'
 
 type PublicStat =
   | 'PromesseAction'
@@ -59,7 +60,7 @@ export class SignalConsoApiClient {
   }
 
   createReport = async (draft: ReportDraft, metadata: ApiReportDraft['metadata']): Promise<CreatedReport> => {
-    const apiReportDraft: ApiReportDraft = ReportDraft.toApi(draft, metadata)
+    const apiReportDraft: ApiReportDraft = toApi(draft, metadata)
 
     const reportFromApi = await this.client.post<ApiCreatedReport>(`/reports`, {body: apiReportDraft})
 
