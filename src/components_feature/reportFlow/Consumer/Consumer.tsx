@@ -5,7 +5,7 @@ import {ReportFlowStepperActions} from '@/components_feature/reportFlow/reportFl
 import {RequiredFieldsLegend} from '@/components_simple/RequiredFieldsLegend'
 import {ScTextInput} from '@/components_simple/formInputs/ScTextInput'
 import {useApiClients} from '@/context/ApiClientsContext'
-import {getTransmissionStatus} from '@/feature/reportDraftUtils'
+import {getSubcategories, getTransmissionStatus, hasLangAndCategory, hasSubcategoryIndexes} from '@/feature/reportDraftUtils'
 import {useBreakpoints} from '@/hooks/useBreakpoints'
 import {useI18n} from '@/i18n/I18n'
 import {AppLangs} from '@/i18n/localization/AppLangs'
@@ -59,6 +59,9 @@ export const ConsumerInner = ({
   onSubmit: (_: DeepPartial<ReportDraft2>) => void
   stepNavigation: StepNavigation
 }) => {
+  if (!hasLangAndCategory(draft) || !hasSubcategoryIndexes(draft)) {
+    throw new Error('This draft is not ready for the Consumer step')
+  }
   const {m, currentLang} = useI18n()
   const {isSmOrMore} = useBreakpoints()
   const {signalConsoApiClient} = useApiClients()
@@ -80,8 +83,9 @@ export const ConsumerInner = ({
   const toastError = useToastError()
   const watchContactAgreement = _form.watch('contactAgreement')
 
+  const subcategories = getSubcategories(draft)
   const clientReferenceInput = last(
-    draft.subcategories?.filter(
+    subcategories.filter(
       (subcategory): subcategory is StandardSubcategory =>
         'customizedClientReferenceInput' in subcategory && subcategory.customizedClientReferenceInput !== undefined,
     ),
@@ -261,12 +265,6 @@ export const ConsumerInner = ({
         </div>
       </div>
       <ConsumerValidationDialog2 consumerEmail={_form.getValues().email} onValidated={saveAndNext} />
-      {/* <ConsumerValidationDialog
-        open={openValidationDialog}
-        consumerEmail={_form.getValues().email}
-        onClose={() => setOpenValidationDialog(false)}
-        onValidated={saveAndNext}
-      /> */}
       <ReportFlowStepperActions
         loadingNext={_checkEmail.isPending}
         onNext={() => {

@@ -83,6 +83,7 @@ const acknowledgmentTestCases = [
   'acknowledgment_ForeignCompany_Argentine',
   'acknowledgment_FrenchCompanyWithoutSIRET',
   'acknowledgment_ContractualDisputeWithSIRET',
+  'acknowledgment_PostReportHelper',
   'acknowledgment_Default',
 ] as const
 
@@ -197,6 +198,8 @@ const Playground = () => {
         return <PlaygroundAcknowledgment acknowledgmentCase={AcknowledgmentCases.FrenchCompanyWithoutSIRET} countryId="" />
       case 'acknowledgment_ContractualDisputeWithSIRET':
         return <PlaygroundAcknowledgment acknowledgmentCase={AcknowledgmentCases.ContractualDisputeWithSIRET} countryId="" />
+      case 'acknowledgment_PostReportHelper':
+        return <PlaygroundAcknowledgment acknowledgmentCase={AcknowledgmentCases.PostReportHelper} countryId="" />
       case 'acknowledgment_Default':
         return <PlaygroundAcknowledgment acknowledgmentCase={AcknowledgmentCases.Default} countryId="" />
       case 'response_review':

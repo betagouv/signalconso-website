@@ -1,8 +1,8 @@
+import {getSubcategories, hasLangAndCategory, hasSubcategoryIndexes} from '@/feature/reportDraftUtils'
 import {ReportDraft2} from '@/model/ReportDraft2'
 import {last} from '@/utils/lodashNamedExport'
 import {instanceOfSubcategoryWithInputs} from '../../../anomalies/Anomalies'
-import {DetailInput, DetailInputType, ReportTag, Subcategory} from '../../../anomalies/Anomaly'
-import {useI18n} from '../../../i18n/I18n'
+import {DetailInput, DetailInputType} from '../../../anomalies/Anomaly'
 import {AppLang, AppLangs} from '../../../i18n/localization/AppLangs'
 
 export class DraftReportDefaultInputs {
@@ -30,7 +30,11 @@ export class DraftReportDefaultInputs {
 }
 
 export const getDraftReportInputs = (draft: Partial<ReportDraft2>, lang: AppLang): DetailInput[] => {
-  const {subcategories, consumerWish} = draft
+  if (!hasLangAndCategory(draft) || !hasSubcategoryIndexes(draft)) {
+    throw new Error('Draft should already be initialized for calculating inputs')
+  }
+  const subcategories = getSubcategories(draft)
+  const {consumerWish} = draft
   const lastSubcategories = last(subcategories)
   const res: DetailInput[] = []
   if (instanceOfSubcategoryWithInputs(lastSubcategories)) {

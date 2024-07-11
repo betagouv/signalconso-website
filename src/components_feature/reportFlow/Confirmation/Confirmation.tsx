@@ -6,7 +6,7 @@ import {Animate} from '@/components_simple/Animate'
 import {CompanyRecapWithProduct} from '@/components_simple/CompanyRecap/CompanyRecap'
 import {FriendlyHelpText} from '@/components_simple/FriendlyHelpText'
 import {ReportFilesConfirmation} from '@/components_simple/reportFile/ReportFilesConfirmation'
-import {getAnomaly, getTransmissionStatus} from '@/feature/reportDraftUtils'
+import {getAnomaly, getSubcategories, getTransmissionStatus} from '@/feature/reportDraftUtils'
 import {getApiErrorId, useToastError} from '@/hooks/useToastError'
 import {useI18n} from '@/i18n/I18n'
 import {ReportDraft2} from '@/model/ReportDraft2'
@@ -96,11 +96,11 @@ function RenderEachStep({
   index: number
 }) {
   const goToStep = stepNavigation.goTo
-  const {m, currentLang} = useI18n()
+  const {m} = useI18n()
   const anomaly = getAnomaly(draft)
   const transmissionStatus = getTransmissionStatus(draft)
   const isTransmittable = transmissionStatus === 'WILL_BE_TRANSMITTED' || transmissionStatus === 'MAY_BE_TRANSMITTED'
-
+  const subcategories = getSubcategories(draft)
   switch (step) {
     case 'BuildingProblem':
       return (
@@ -110,7 +110,7 @@ function RenderEachStep({
             <div>
               <h3 className="fr-h6 !mb-2 !text-gray-500">{anomaly.title}</h3>
               <ul className="pl-0 list-none">
-                {draft.subcategories.map(_ => (
+                {subcategories.map(_ => (
                   <li key={_.title} className="text-gray-500">
                     <i className="ri-corner-down-right-line mr-2 " />
                     {_.title}

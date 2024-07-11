@@ -137,7 +137,7 @@ export class Fixture {
       },
       BuildingDetails: _ => ({
         ..._,
-        subcategories: [Fixture.genSubcategory({}, random), Fixture.genSubcategory({}, random)],
+        subcategoriesIndexes: [0, 0],
       }),
       BuildingCompany: _ => ({
         ..._,

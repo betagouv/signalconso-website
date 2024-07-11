@@ -20,7 +20,7 @@ export interface ReportDraftConsumer {
 
 export interface ReportDraft {
   category: string
-  subcategories: Subcategory[]
+  subcategoriesIndexes: number[]
   categoryOverride?: string
   companyDraft?: CompanyDraft
   details: DetailInputValue[]

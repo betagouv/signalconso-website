@@ -1,11 +1,10 @@
 /**
  * @jest-environment jsdom
  */
-import {fireEvent, render, ScRenderResult, waitFor} from '../../../test/test-utils'
-import React from 'react'
-import {ReportDraft2} from '@/model/ReportDraft2'
-import {ConsumerInner} from './Consumer'
 import {dummyStepNavigation} from '@/components_feature/playgroundComponents/PlaygroundConfirmation'
+import {ReportDraft2} from '@/model/ReportDraft2'
+import {fireEvent, render, ScRenderResult, waitFor} from '../../../test/test-utils'
+import {ConsumerInner} from './Consumer'
 
 class Fixture {
   static readonly consumer = {
@@ -40,6 +39,9 @@ describe('Consumer', () => {
 
   describe('when values are pre defined', function () {
     let initial: Partial<ReportDraft2> = {
+      lang: 'fr',
+      category: 'DemoCategory',
+      subcategoriesIndexes: [0],
       contactAgreement: true,
       consumer: Fixture.consumer,
     }
@@ -65,7 +67,11 @@ describe('Consumer', () => {
     it('initialise if there is a draft report', async () => {
       submit()
       await waitFor(() => {
-        expect(submitted).toEqual(initial)
+        const expected: Partial<ReportDraft2> = {
+          consumer: Fixture.consumer,
+          contactAgreement: true,
+        }
+        expect(submitted).toEqual(expected)
       })
     })
 
@@ -73,14 +79,21 @@ describe('Consumer', () => {
       fireEvent.click(app.getByText(app.m.contactAgreementFalseTitle))
       submit()
       await waitFor(() => {
-        expect(submitted).toEqual({...initial, contactAgreement: false})
+        const expected: Partial<ReportDraft2> = {
+          consumer: Fixture.consumer,
+          contactAgreement: false,
+        }
+        expect(submitted).toEqual(expected)
       })
     })
   })
 
   describe('when employee consumer is true', function () {
     let initial: Partial<ReportDraft2> = {
+      category: 'DemoCategory',
+      lang: 'fr',
       employeeConsumer: true,
+      subcategoriesIndexes: [0],
     }
 
     let submitted: Partial<ReportDraft2> | undefined = undefined

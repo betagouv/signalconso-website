@@ -1,16 +1,45 @@
 import {findAnomaly} from '@/anomalies/Anomalies'
-import {ReportTag, SocialNetworks} from '@/anomalies/Anomaly'
+import {ReportTag, SocialNetworks, Subcategory} from '@/anomalies/Anomaly'
 import {Influencer, ReportDraft, TransmissionStatus} from '@/model/ReportDraft'
 import {ReportDraft2} from '@/model/ReportDraft2'
 import {ApiInfluencer, ApiReportDraft} from '@/model/reportsFromApi'
 import uniq from 'lodash/uniq'
 
-export function hasLangAndCategory(r: Partial<ReportDraft2>): r is Pick<ReportDraft, 'category' | 'lang'> {
+export function hasLangAndCategory(
+  r: Partial<ReportDraft2>,
+): r is Pick<ReportDraft, 'category' | 'lang'> & Partial<ReportDraft2> {
   return !!r.category && !!r.lang
+}
+export function hasSubcategoryIndexes(
+  r: Partial<ReportDraft2>,
+): r is Pick<ReportDraft, 'subcategoriesIndexes'> & Partial<ReportDraft2> {
+  return !!r.subcategoriesIndexes
 }
 
 export const getAnomaly = (r: Pick<ReportDraft, 'category' | 'lang'>) => {
   return findAnomaly(r.category, r.lang)
+}
+
+export const getSubcategories = (r: Pick<ReportDraft, 'subcategoriesIndexes' | 'category' | 'lang'>): Subcategory[] => {
+  const anomaly = findAnomaly(r.category, r.lang)
+  const startingIndexes = r.subcategoriesIndexes
+  const collectedSubcategories: Subcategory[] = []
+  function recurse(indexes: number[], subcategories: Subcategory[] = []) {
+    if (indexes.length === 0) {
+      return
+    }
+    const [index, ...indexesLeft] = indexes
+    const subcategory = subcategories[index]
+    if (!subcategory) {
+      throw new Error(
+        `Nonsensical subcategory indexes ${startingIndexes} for category ${r.category} (${r.lang}). Can't find index ${index} in ${subcategories.length} subcategories`,
+      )
+    }
+    collectedSubcategories.push(subcategory)
+    recurse(indexesLeft, subcategory.subcategories)
+  }
+  recurse(r.subcategoriesIndexes, anomaly.subcategories)
+  return collectedSubcategories
 }
 
 export const isTransmittableToPro = (r: Pick<ReportDraft, 'employeeConsumer' | 'consumerWish'>): boolean => {
@@ -81,6 +110,7 @@ export const toApiInfluencer = (influencer: Influencer): ApiInfluencer => {
 export const toApi = (draft: ReportDraft, metadata: ApiReportDraft['metadata']): ApiReportDraft => {
   const {consumerWish, reponseconsoCode, contactAgreement, vendor, ccrfCode} = draft
   const anomaly = getAnomaly(draft)
+  const subcategories = getSubcategories(draft)
   const isOpenFf = anomaly.isSpecialOpenFoodFactsCategory
 
   const additionalTags: ReportTag[] = [
@@ -96,7 +126,7 @@ export const toApi = (draft: ReportDraft, metadata: ApiReportDraft['metadata']):
     // we prefer to be sure to fill each field explicitely
     gender: draft.consumer.gender,
     category: draft.categoryOverride ?? draft.category,
-    subcategories: draft.subcategories.map(_ => _.title),
+    subcategories: subcategories.map(_ => _.title),
     details: draft.details,
     companyName: draft.companyDraft?.name,
     companyBrand: draft.companyDraft?.brand,
