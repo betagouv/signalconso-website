@@ -1,4 +1,4 @@
-import {Anomaly, CompanyKinds, NightTrains, ReportTag, SocialNetworks, Subcategory, Ters, Trains} from '@/anomalies/Anomaly'
+import {CompanyKinds, NightTrains, ReportTag, SocialNetworks, Subcategory, Ters, Trains} from '@/anomalies/Anomaly'
 import {OpenFfResult} from '@/feature/openFoodFacts'
 import {AppLang} from '../i18n/localization/AppLangs'
 import {BarcodeProduct} from './BarcodeProduct'
@@ -19,7 +19,7 @@ export interface ReportDraftConsumer {
 }
 
 export interface ReportDraft {
-  anomaly: Anomaly
+  category: string
   subcategories: Subcategory[]
   categoryOverride?: string
   companyDraft?: CompanyDraft

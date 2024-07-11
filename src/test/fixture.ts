@@ -126,11 +126,15 @@ export class Fixture {
     random: SeedableRandom = defaultRandom,
   ): Partial<ReportDraft> => {
     const stepOrder: {[key in ReportStep]: (_: Partial<ReportDraft>) => Partial<ReportDraft>} = {
-      BuildingProblem: _ => ({
-        ..._,
-        anomaly: random.oneOf(allAnomalies(currentLang)),
-        consumerWish: random.oneOf(['fixContractualDispute', 'companyImprovement', 'getAnswer']),
-      }),
+      BuildingProblem: _ => {
+        const anomaly = random.oneOf(allAnomalies(currentLang))
+        const category = anomaly.category
+        return {
+          ..._,
+          category,
+          consumerWish: random.oneOf(['fixContractualDispute', 'companyImprovement', 'getAnswer']),
+        }
+      },
       BuildingDetails: _ => ({
         ..._,
         subcategories: [Fixture.genSubcategory({}, random), Fixture.genSubcategory({}, random)],
@@ -147,7 +151,7 @@ export class Fixture {
             origin: FileOrigin.Consumer,
           },
         ],
-        barcodeProduct: Fixture.genBarcodeProduct(),
+        barcodeProduct: Fixture.genBarcodeProduct(random),
       }),
       BuildingConsumer: _ => ({
         ..._,
