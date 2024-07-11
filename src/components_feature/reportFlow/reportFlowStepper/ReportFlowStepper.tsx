@@ -21,9 +21,9 @@ import {
   ReportStepOrDone,
   STEP_PARAM_NAME,
 } from '@/model/ReportStep'
+import {scrollTop} from '@/utils/utils'
 import {ReadonlyURLSearchParams, useRouter, useSearchParams} from 'next/navigation'
 import {useEffect} from 'react'
-import {scrollTop} from '@/utils/utils'
 import {useI18n} from '../../../i18n/I18n'
 import {AppLang} from '../../../i18n/localization/AppLangs'
 import {ReportFlowStepperHeader} from './ReportFlowStepperHeader'
@@ -104,7 +104,7 @@ function useIsStepInvalid(anomaly: Anomaly, step: ReportStepOrDone): boolean {
       // the draft is not ready for this step
       // the user probably jumped directly to an URL like ?step=5
       return true
-    } else if (reportDraft.anomaly?.category !== anomaly.category) {
+    } else if (reportDraft.category !== anomaly.category) {
       // the draft is not for this category
       // not sure this could happen. Can't hurt to check
       return true

@@ -46,7 +46,7 @@ function adjustTagsBeforeSubmit(draft: Partial<ReportDraft2>, companyKindFromSel
 }
 
 export function initiateReportDraftForAnomaly(anomaly: Anomaly, lang: AppLang): Partial<ReportDraft2> {
-  return {anomaly, lang}
+  return {category: anomaly.category, lang}
 }
 
 export function adjustReportDraftAfterSubcategoriesChange(
@@ -90,7 +90,7 @@ export const Problem = ({anomaly, isWebView, stepNavigation}: Props) => {
 
   // reset the draft when switching the root category
   useEffect(() => {
-    if (anomaly.category !== reportDraft.anomaly?.category) {
+    if (anomaly.category !== reportDraft.category) {
       _analytic.trackEvent(EventCategories.report, ReportEventActions.validateCategory, anomaly.category)
       resetFlow()
       setReportDraft(_ => initiateReportDraftForAnomaly(anomaly, currentLang))
@@ -148,7 +148,6 @@ export const Problem = ({anomaly, isWebView, stepNavigation}: Props) => {
         reponseconsoCode: responseconsoCodeFromSelected,
         tags: adjustTagsBeforeSubmit(draft, companyKindFromSelected),
         companyKind,
-        anomaly: _anomaly,
         consumerWish,
         employeeConsumer,
         categoryOverride: categoryOverrideFromSelected,

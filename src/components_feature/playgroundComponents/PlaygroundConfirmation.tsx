@@ -1,8 +1,6 @@
-import {allAnomalies} from '@/anomalies/Anomalies'
 import {StepNavigation} from '@/components_feature/reportFlow/reportFlowStepper/ReportFlowStepper'
+import {getAnomaly} from '@/feature/reportDraftUtils'
 import {firstReportStep} from '@/model/ReportStep'
-import {useEffect, useState} from 'react'
-import {Anomaly} from '../../anomalies/Anomaly'
 import {useI18n} from '../../i18n/I18n'
 import {ReportDraft} from '../../model/ReportDraft'
 import {Fixture, SeedableRandom} from '../../test/fixture'
@@ -17,16 +15,13 @@ export const dummyStepNavigation: StepNavigation = {
 
 export const PlaygroundConfirmation = () => {
   const {currentLang} = useI18n()
-  const [draft] = useState<ReportDraft>(Fixture.genDraftReport(currentLang, 'Confirmation', new SeedableRandom(1)) as ReportDraft)
-  const [anomaly, setAnomaly] = useState<Anomaly | undefined>()
-  useEffect(() => {
-    setAnomaly(allAnomalies(currentLang).find(_ => _.category === draft.anomaly.category)!)
-  }, [])
+  const draft = Fixture.genDraftReport(currentLang, 'Confirmation', new SeedableRandom(1)) as ReportDraft
+
+  const anomaly = getAnomaly(draft)
   return (
     <>
       {anomaly && (
         <ConfirmationInner
-          anomaly={anomaly}
           draft={{
             ...draft,
           }}

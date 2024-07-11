@@ -1,7 +1,17 @@
+import {findAnomaly} from '@/anomalies/Anomalies'
 import {ReportTag, SocialNetworks} from '@/anomalies/Anomaly'
 import {Influencer, ReportDraft, TransmissionStatus} from '@/model/ReportDraft'
+import {ReportDraft2} from '@/model/ReportDraft2'
 import {ApiInfluencer, ApiReportDraft} from '@/model/reportsFromApi'
 import uniq from 'lodash/uniq'
+
+export function hasLangAndCategory(r: Partial<ReportDraft2>): r is Pick<ReportDraft, 'category' | 'lang'> {
+  return !!r.category && !!r.lang
+}
+
+export const getAnomaly = (r: Pick<ReportDraft, 'category' | 'lang'>) => {
+  return findAnomaly(r.category, r.lang)
+}
 
 export const isTransmittableToPro = (r: Pick<ReportDraft, 'employeeConsumer' | 'consumerWish'>): boolean => {
   return isTransmittableToProBeforePickingConsumerWish(r) && r.consumerWish !== 'getAnswer'
@@ -69,9 +79,9 @@ export const toApiInfluencer = (influencer: Influencer): ApiInfluencer => {
 }
 
 export const toApi = (draft: ReportDraft, metadata: ApiReportDraft['metadata']): ApiReportDraft => {
-  const {consumerWish, reponseconsoCode, anomaly, contactAgreement, vendor, ccrfCode} = draft
-
-  const isOpenFf = draft.anomaly.isSpecialOpenFoodFactsCategory
+  const {consumerWish, reponseconsoCode, contactAgreement, vendor, ccrfCode} = draft
+  const anomaly = getAnomaly(draft)
+  const isOpenFf = anomaly.isSpecialOpenFoodFactsCategory
 
   const additionalTags: ReportTag[] = [
     ...(consumerWish === 'fixContractualDispute' ? (['LitigeContractuel'] as const) : []),
@@ -85,7 +95,7 @@ export const toApi = (draft: ReportDraft, metadata: ApiReportDraft['metadata']):
     // We don't use the rest syntax here ("..."),
     // we prefer to be sure to fill each field explicitely
     gender: draft.consumer.gender,
-    category: draft.categoryOverride ?? anomaly.category,
+    category: draft.categoryOverride ?? draft.category,
     subcategories: draft.subcategories.map(_ => _.title),
     details: draft.details,
     companyName: draft.companyDraft?.name,

@@ -1,7 +1,7 @@
 import {isDateInput} from '@/components_feature/reportFlow/Details/DetailInputsUtils'
 import {isSpecifyInputName, SpecifyFormUtils} from '@/components_feature/reportFlow/Details/Details'
 import {getDraftReportInputs} from '@/components_feature/reportFlow/Details/draftReportInputs'
-import {Anomaly, DetailInput, DetailInputType} from '../anomalies/Anomaly'
+import {DetailInput, DetailInputType} from '../anomalies/Anomaly'
 import {AppLang} from '../i18n/localization/AppLangs'
 import {DeepPartial, isoToFrenchFormat, notNull} from '../utils/utils'
 import {Address} from './Address'
@@ -12,7 +12,6 @@ import {ReportDraft, ReportDraftConsumer} from './ReportDraft'
 export type DetailInputValues2 = {[key: string]: string | string[]}
 
 export interface ReportDraft2 extends Omit<ReportDraft, 'details'> {
-  anomaly: Omit<Anomaly, 'subcategories'>
   details: DetailInputValues2
 }
 
