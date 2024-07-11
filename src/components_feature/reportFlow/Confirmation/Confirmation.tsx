@@ -7,6 +7,7 @@ import {Animate} from '@/components_simple/Animate'
 import {CompanyRecapWithProduct} from '@/components_simple/CompanyRecap/CompanyRecap'
 import {FriendlyHelpText} from '@/components_simple/FriendlyHelpText'
 import {ReportFilesConfirmation} from '@/components_simple/reportFile/ReportFilesConfirmation'
+import {getTransmissionStatus} from '@/feature/reportDraftUtils'
 import {getApiErrorId, useToastError} from '@/hooks/useToastError'
 import {useI18n} from '@/i18n/I18n'
 import {ReportDraft2} from '@/model/ReportDraft2'
@@ -46,7 +47,7 @@ export const ConfirmationInner = ({
   const _reportCreate = useReportCreateContext()
   const _analytic = useAnalyticContext()
 
-  const transmissionStatus = ReportDraft.transmissionStatus(draft)
+  const transmissionStatus = getTransmissionStatus(draft)
   const isTransmittable = transmissionStatus === 'WILL_BE_TRANSMITTED' || transmissionStatus === 'MAY_BE_TRANSMITTED'
 
   return (
@@ -103,7 +104,7 @@ function RenderEachStep({
   const goToStep = stepNavigation.goTo
   const {m, currentLang} = useI18n()
 
-  const transmissionStatus = ReportDraft.transmissionStatus(draft)
+  const transmissionStatus = getTransmissionStatus(draft)
   const isTransmittable = transmissionStatus === 'WILL_BE_TRANSMITTED' || transmissionStatus === 'MAY_BE_TRANSMITTED'
 
   switch (step) {

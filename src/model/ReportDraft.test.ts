@@ -1,6 +1,6 @@
-import {ReportDraft} from './ReportDraft'
-import {Fixture} from '../test/fixture'
+import {toApiInfluencer} from '@/feature/reportDraftUtils'
 import {SocialNetworks} from '../anomalies/Anomaly'
+import {Fixture} from '../test/fixture'
 
 describe('ReportDraft.toApi', () => {
   it('should correctly convert the social network', () => {
@@ -25,7 +25,7 @@ describe('ReportDraft.toApi', () => {
       }
     }
     const influencer = Fixture.genInfluencer()
-    const result = ReportDraft.toApiInfluencer(influencer)
+    const result = toApiInfluencer(influencer)
     expect(result).toEqual({
       name: influencer.name,
       socialNetwork: toString(influencer.socialNetwork),
