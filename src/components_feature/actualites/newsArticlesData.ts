@@ -13,7 +13,7 @@ export type NewsArticle = {
 // This is the display order. Keep the most recents at the start of the array
 export const initialNewsArticlesData: NewsArticle[] = [
   {
-    date: '2024-06-11',
+    date: '2024-07-11',
     lang: AppLangs.fr,
     slug: 'faux-sites-de-vente-thesee',
     veryShortTitle: 'Faux sites de vente',
