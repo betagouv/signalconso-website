@@ -1,4 +1,4 @@
-import {companyKinds, DetailInputType, PostReportHelper, reportTagsAllowedInYaml} from '../Anomaly'
+import {companyKinds, DetailInputType, PostReportHelper, reportTagsAllowedInYaml, specialCategories} from '../Anomaly'
 import {AnomalyTreeWalker, ObjectSpec} from './AnomalyTreeWalker'
 
 // /!\ This effectively duplicates the structure
@@ -21,7 +21,7 @@ const anomalySpec: ObjectSpec = {
   hidden: _ => _.ifDefined()?.assertIsBoolean(),
   isExternal: _ => _.ifDefined()?.assertIsBoolean(),
   isHiddenDemoCategory: _ => _.ifDefined()?.assertIsBoolean(),
-  isSpecialOpenFoodFactsCategory: _ => _.ifDefined()?.assertIsBoolean(),
+  specialCategory: _ => _.ifDefined()?.assertIsAllowedString(specialCategories),
   subcategoriesTitle: _ => _.ifDefined()?.assertIsString(),
   // triggers the recursion
   subcategories: _ => _.assertIsArrayWith(assertIsSubcategory),

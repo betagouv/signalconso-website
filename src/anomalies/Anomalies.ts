@@ -14,7 +14,7 @@ export const allVisibleAnomalies = (lang: AppLang) =>
       return parseInt(a.id, 10) - parseInt(b.id, 10)
     })
 
-export const allAnomaliesForHomepage = (lang: AppLang) => allVisibleAnomalies(lang).filter(_ => !_.isSpecialOpenFoodFactsCategory)
+export const allAnomaliesForHomepage = (lang: AppLang) => allVisibleAnomalies(lang).filter(_ => !_.specialCategory)
 
 export type AnomalyIndex = {
   root: Anomaly

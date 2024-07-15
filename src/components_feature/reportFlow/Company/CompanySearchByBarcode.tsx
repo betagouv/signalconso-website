@@ -1,4 +1,4 @@
-import {useBarcodeSearch} from '@/feature/barcode'
+import {useBarcodeSearch} from '@/hooks/barcode'
 import {purgeWhitespaces} from '@/utils/utils'
 import {Button} from '@codegouvfr/react-dsfr/Button'
 import {ReactNode, useRef, useState} from 'react'

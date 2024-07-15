@@ -49,6 +49,7 @@ export interface ApiReportDraft {
   barcodeProductId: string | undefined
   train: Train | undefined
   station: string | undefined
+  rappelConsoId: number | undefined
   metadata:
     | {
         isMobileApp: true
