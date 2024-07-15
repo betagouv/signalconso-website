@@ -41,7 +41,11 @@ export function ArticleFauxSitesDeVenteThesee() {
         d'euros.
       </p>
       <p className="text-xl font-bold mt-8">
-        Si vous avez été victime de l’un des sites cités ci-dessus, vous pouvez déposer plainte en ligne sur THESEE.
+        Si vous avez été victime de l’un des sites cités ci-dessus, vous pouvez déposer plainte en ligne sur{' '}
+        <Link href="https://www.service-public.fr/particuliers/vosdroits/N31138#0_0_0_0_1_2" target="_blank">
+          THESEE
+        </Link>
+        .
       </p>
 
       <p className="mt-8">
