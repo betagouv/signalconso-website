@@ -69,7 +69,7 @@ function isBuildingStepDone(r: Partial<ReportDraft2>, step: ReportStep) {
     case 'BuildingDetails':
       return !!r.details
     case 'BuildingConsumer':
-      return !!r.consumer?.email && !!r.consumer?.firstName && !!r.consumer?.lastName
+      return !!r.step4
     case 'Confirmation':
       // if all other steps are completed, we want to go to Confirmation
       return false

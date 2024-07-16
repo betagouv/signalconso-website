@@ -60,7 +60,6 @@ export class SignalConsoApiClient {
 
   createReport = async (draft: ReportDraft, metadata: ApiReportDraft['metadata']): Promise<CreatedReport> => {
     const apiReportDraft: ApiReportDraft = toApi(draft, metadata)
-
     const reportFromApi = await this.client.post<ApiCreatedReport>(`/reports`, {body: apiReportDraft})
 
     const subcategories = getSubcategories(draft)

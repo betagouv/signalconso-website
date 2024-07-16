@@ -23,15 +23,17 @@ export interface ReportDraft {
     category: string
     lang: AppLang
   }
+  step4: {
+    consumer: ReportDraftConsumer
+    contactAgreement: boolean
+  }
   subcategoriesIndexes: number[]
   categoryOverride?: string
   companyDraft?: CompanyDraft
   details: DetailInputValue[]
   uploadedFiles?: UploadedFile[]
-  consumer: ReportDraftConsumer
   // pretty sure some of these fields aren't actually optional in the draft
   employeeConsumer?: boolean
-  contactAgreement: boolean
   vendor: string
   ccrfCode?: string[]
   reponseconsoCode?: string

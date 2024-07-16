@@ -106,7 +106,13 @@ export const toApiInfluencer = (influencer: Influencer): ApiInfluencer => {
 }
 
 export const toApi = (draft: ReportDraft, metadata: ApiReportDraft['metadata']): ApiReportDraft => {
-  const {consumerWish, reponseconsoCode, contactAgreement, vendor, ccrfCode} = draft
+  const {
+    consumerWish,
+    reponseconsoCode,
+    step4: {contactAgreement, consumer},
+    vendor,
+    ccrfCode,
+  } = draft
   const anomaly = getAnomaly(draft)
   const subcategories = getSubcategories(draft)
   const isOpenFf = anomaly.isSpecialOpenFoodFactsCategory
@@ -118,11 +124,10 @@ export const toApi = (draft: ReportDraft, metadata: ApiReportDraft['metadata']):
   ]
 
   const tags = uniq([...(draft.tags ?? []), ...additionalTags])
-
   return {
     // We don't use the rest syntax here ("..."),
     // we prefer to be sure to fill each field explicitely
-    gender: draft.consumer.gender,
+    gender: consumer.gender,
     category: draft.categoryOverride ?? draft.step0.category,
     subcategories: subcategories.map(_ => _.title),
     details: draft.details,
@@ -138,11 +143,11 @@ export const toApi = (draft: ReportDraft, metadata: ApiReportDraft['metadata']):
     companyIsPublic: draft.companyDraft?.isPublic,
     websiteURL: draft.companyDraft?.website,
     phone: draft.companyDraft?.phone,
-    firstName: draft.consumer.firstName,
-    lastName: draft.consumer.lastName,
-    email: draft.consumer.email,
-    consumerPhone: draft.consumer.phone,
-    consumerReferenceNumber: draft.consumer.referenceNumber,
+    firstName: consumer.firstName,
+    lastName: consumer.lastName,
+    email: consumer.email,
+    consumerPhone: consumer.phone,
+    consumerReferenceNumber: consumer.referenceNumber,
     contactAgreement,
     employeeConsumer: draft.employeeConsumer ?? false,
     forwardToReponseConso: consumerWish === 'getAnswer',

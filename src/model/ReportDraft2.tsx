@@ -123,7 +123,6 @@ export class ReportDraft2 {
       ...base,
       ...(newValue as ReportDraft2),
       companyDraft: ReportDraft2.mergeCompanies(base.companyDraft, newValue.companyDraft),
-      consumer: ReportDraft2.mergeConsumer(base.consumer, newValue.consumer),
     }
   }
 }

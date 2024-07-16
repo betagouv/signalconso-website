@@ -6,6 +6,11 @@ export const PlaygroundConsumer = () => {
     <>
       <ConsumerInner
         draft={{
+          step0: {
+            category: 'DemoCategory',
+            lang: 'fr',
+          },
+          subcategoriesIndexes: [0],
           companyKind: 'LOCATION',
         }}
         onSubmit={x => alert(JSON.stringify(x))}

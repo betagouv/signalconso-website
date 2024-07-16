@@ -162,30 +162,31 @@ function RenderEachStep({
         </>
       )
     case 'BuildingConsumer':
+      const {consumer} = draft.step4
       return (
         <ConfirmationStep title={m.step_consumer} {...{goToStep, index}}>
           <ul className="list-none">
             <li className="p-0 flex gap-2">
               <div className="flex gap-2">
                 <i className="ri-account-box-line text-gray-400" />
-                {draft.consumer.gender ? m.gender[draft.consumer.gender] + ' ' : ''}
-                {draft.consumer.firstName} {draft.consumer.lastName}
+                {consumer.gender ? m.gender[consumer.gender] + ' ' : ''}
+                {consumer.firstName} {consumer.lastName}
               </div>
             </li>
             <li className="p-0 flex gap-2">
               <i className="ri-mail-line text-gray-400" />
-              <span>{draft.consumer.email}</span>
+              <span>{consumer.email}</span>
             </li>
-            {draft.consumer.phone && (
+            {consumer.phone && (
               <li className="p-0 flex gap-2">
                 <i className="ri-phone-line text-gray-400" />
-                <span>{draft.consumer.phone}</span>
+                <span>{consumer.phone}</span>
               </li>
             )}
-            {draft.consumer.referenceNumber && (
+            {consumer.referenceNumber && (
               <li className="p-0 flex gap-2">
                 <i className="ri-bill-line text-gray-400" />
-                <span>{draft.consumer.referenceNumber}</span>
+                <span>{consumer.referenceNumber}</span>
               </li>
             )}
             {isTransmittable && (
@@ -193,7 +194,7 @@ function RenderEachStep({
                 <i className="ri-lock-line text-gray-400" />
                 <span>{m.contactAgreement} : </span>
                 <span className="font-bold">
-                  {draft.contactAgreement ? (
+                  {draft.step4.contactAgreement ? (
                     <span className=" text-green-700">
                       {m.yes.toLowerCase()}
                       <i className="ri-checkbox-circle-fill ml-1" />

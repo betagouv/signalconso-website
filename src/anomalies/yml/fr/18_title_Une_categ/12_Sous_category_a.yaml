@@ -1,0 +1,7 @@
+title: Sous category avec un "customizedClientReferenceInput"
+desc: >-
+  À l'étape "Consommateur", le champ "Numéro de référence" sera décrit différemment
+customizedClientReferenceInput:
+  label: Label du customizedClientReferenceInput
+  description: Description du customizedClientReferenceInput
+  placeholder: "ex : MON_CUSTOM_CLIENT_REFERENCE_INPUT"

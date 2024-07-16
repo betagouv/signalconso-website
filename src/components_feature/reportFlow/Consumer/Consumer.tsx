@@ -18,8 +18,7 @@ import {Controller, useForm} from 'react-hook-form'
 import {ScAlert} from '../../../components_simple/ScAlert'
 import {ScRadioButtons} from '../../../components_simple/formInputs/ScRadioButtons'
 import {getApiErrorId, useToastError} from '../../../hooks/useToastError'
-import {Gender, genders} from '../../../model/ReportDraft'
-import {DeepPartial} from '../../../utils/utils'
+import {Gender, genders, ReportDraft} from '../../../model/ReportDraft'
 import {useReportFlowContext} from '../ReportFlowContext'
 import {ConsumerAnonymousInformation} from './ConsumerAnonymousInformation'
 import {ConsumerValidationDialog2, consumerValidationModal} from './ConsumerValidationDialog'
@@ -41,7 +40,10 @@ export const Consumer = ({stepNavigation}: {stepNavigation: StepNavigation}) => 
     <ConsumerInner
       draft={draft}
       onSubmit={changes => {
-        _reportFlow.setReportDraft(_ => ReportDraft2.merge(_, changes))
+        _reportFlow.setReportDraft(_ => ({
+          ..._,
+          step4: changes,
+        }))
         _reportFlow.sendReportEvent(stepNavigation.currentStep)
         stepNavigation.next()
       }}
@@ -56,7 +58,7 @@ export const ConsumerInner = ({
   stepNavigation,
 }: {
   draft: Partial<ReportDraft2>
-  onSubmit: (_: DeepPartial<ReportDraft2>) => void
+  onSubmit: (_: ReportDraft['step4']) => void
   stepNavigation: StepNavigation
 }) => {
   if (!hasStep0(draft) || !hasSubcategoryIndexes(draft)) {
@@ -71,13 +73,14 @@ export const ConsumerInner = ({
       return signalConsoApiClient.checkEmail(email, currentLang)
     },
   })
+  const consumer = draft.step4?.consumer
   const _form = useForm<ConsumerForm>({
     defaultValues: {
-      firstName: draft.consumer?.firstName,
-      lastName: draft.consumer?.lastName,
-      email: draft.consumer?.email,
-      phone: draft.consumer?.phone,
-      referenceNumber: draft.consumer?.referenceNumber,
+      firstName: consumer?.firstName,
+      lastName: consumer?.lastName,
+      email: consumer?.email,
+      phone: consumer?.phone,
+      referenceNumber: consumer?.referenceNumber,
     },
   })
   const toastError = useToastError()
@@ -109,6 +112,9 @@ export const ConsumerInner = ({
       contactAgreement: (() => {
         if (!isTransmittable) return false
         if (draft.consumerWish === 'fixContractualDispute') return true
+        if (contactAgreement === undefined) {
+          throw new Error('contactAgreement should be defined at this stage')
+        }
         return contactAgreement
       })(),
     })
@@ -131,7 +137,7 @@ export const ConsumerInner = ({
           {draft.employeeConsumer && <ScAlert type="info" dangerouslySetInnerHTML={{__html: `<p>${m.consumerIsEmployee}</p>`}} />}
           <RequiredFieldsLegend />
           <Controller
-            defaultValue={draft.consumer?.gender}
+            defaultValue={consumer?.gender}
             control={_form.control}
             render={({field}) => (
               <ScRadioButtons
@@ -225,7 +231,7 @@ export const ConsumerInner = ({
               <Controller
                 control={_form.control}
                 name="contactAgreement"
-                defaultValue={draft.contactAgreement}
+                defaultValue={draft.step4?.contactAgreement}
                 rules={{
                   validate: {
                     isChecked: value => {

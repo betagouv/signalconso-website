@@ -2,6 +2,7 @@
  * @jest-environment jsdom
  */
 import {dummyStepNavigation} from '@/components_feature/playgroundComponents/PlaygroundConfirmation'
+import {ReportDraft} from '@/model/ReportDraft'
 import {ReportDraft2} from '@/model/ReportDraft2'
 import {fireEvent, render, ScRenderResult, waitFor} from '../../../test/test-utils'
 import {ConsumerInner} from './Consumer'
@@ -44,17 +45,19 @@ describe('Consumer', () => {
         category: 'DemoCategory',
       },
       subcategoriesIndexes: [0],
-      contactAgreement: true,
-      consumer: Fixture.consumer,
+      step4: {
+        contactAgreement: true,
+        consumer: Fixture.consumer,
+      },
     }
-    let submitted: Partial<ReportDraft2> | undefined = undefined
+    let submitted: ReportDraft['step4'] | undefined = undefined
 
     beforeEach(() => {
       app = render(
         <ConsumerInner
           draft={initial}
           onSubmit={x => {
-            submitted = x as any
+            submitted = x
           }}
           stepNavigation={dummyStepNavigation}
         />,
@@ -69,7 +72,7 @@ describe('Consumer', () => {
     it('initialise if there is a draft report', async () => {
       submit()
       await waitFor(() => {
-        const expected: Partial<ReportDraft2> = {
+        const expected: ReportDraft['step4'] = {
           consumer: Fixture.consumer,
           contactAgreement: true,
         }
@@ -81,7 +84,7 @@ describe('Consumer', () => {
       fireEvent.click(app.getByText(app.m.contactAgreementFalseTitle))
       submit()
       await waitFor(() => {
-        const expected: Partial<ReportDraft2> = {
+        const expected: ReportDraft['step4'] = {
           consumer: Fixture.consumer,
           contactAgreement: false,
         }
@@ -100,13 +103,13 @@ describe('Consumer', () => {
       subcategoriesIndexes: [0],
     }
 
-    let submitted: Partial<ReportDraft2> | undefined = undefined
+    let submitted: ReportDraft['step4'] | undefined = undefined
     beforeEach(() => {
       app = render(
         <ConsumerInner
           draft={initial}
           onSubmit={x => {
-            submitted = x as any
+            submitted = x
           }}
           stepNavigation={dummyStepNavigation}
         />,
@@ -132,7 +135,7 @@ describe('Consumer', () => {
 
       submit()
       await waitFor(() => {
-        const expected: Partial<ReportDraft2> = {
+        const expected: ReportDraft['step4'] = {
           consumer: Fixture.consumer,
           contactAgreement: false,
         }
