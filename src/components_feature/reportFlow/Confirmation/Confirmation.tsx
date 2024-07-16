@@ -1,19 +1,18 @@
 import {useAnalyticContext} from '@/analytic/AnalyticContext'
 import {EventCategories, ReportEventActions} from '@/analytic/analytic'
-import {findAnomaly} from '@/anomalies/Anomalies'
 import {StepNavigation} from '@/components_feature/reportFlow/reportFlowStepper/ReportFlowStepper'
 import {ReportFlowStepperActions} from '@/components_feature/reportFlow/reportFlowStepper/ReportFlowStepperActions'
 import {Animate} from '@/components_simple/Animate'
 import {CompanyRecapWithProduct} from '@/components_simple/CompanyRecap/CompanyRecap'
 import {FriendlyHelpText} from '@/components_simple/FriendlyHelpText'
 import {ReportFilesConfirmation} from '@/components_simple/reportFile/ReportFilesConfirmation'
+import {getAnomaly, getTransmissionStatus} from '@/feature/reportDraftUtils'
 import {getApiErrorId, useToastError} from '@/hooks/useToastError'
 import {useI18n} from '@/i18n/I18n'
 import {ReportDraft2} from '@/model/ReportDraft2'
 import {BuildingStep, buildingReportSteps} from '@/model/ReportStep'
 import {ApiReportDraft} from '@/model/reportsFromApi'
 import Image from 'next/image'
-import {Anomaly} from '../../../anomalies/Anomaly'
 import {SocialNetworkRow} from '../../../components_simple/SocialNetworkRow'
 import {ReportDraft} from '../../../model/ReportDraft'
 import {FileOrigin} from '../../../model/UploadedFile'
@@ -26,16 +25,14 @@ export const Confirmation = ({stepNavigation, isWebView}: {stepNavigation: StepN
   const {currentLang} = useI18n()
   const draft = _reportFlow.reportDraft as ReportDraft2
   const parsedDraft = ReportDraft2.toReportDraft(draft, currentLang)
-  return <ConfirmationInner anomaly={draft.anomaly} draft={parsedDraft} {...{isWebView, stepNavigation}} />
+  return <ConfirmationInner draft={parsedDraft} {...{isWebView, stepNavigation}} />
 }
 
 export const ConfirmationInner = ({
   draft,
-  anomaly,
   stepNavigation,
   isWebView,
 }: {
-  anomaly: Pick<Anomaly, 'img'>
   draft: ReportDraft
   stepNavigation: StepNavigation
   isWebView: boolean
@@ -46,7 +43,7 @@ export const ConfirmationInner = ({
   const _reportCreate = useReportCreateContext()
   const _analytic = useAnalyticContext()
 
-  const transmissionStatus = ReportDraft.transmissionStatus(draft)
+  const transmissionStatus = getTransmissionStatus(draft)
   const isTransmittable = transmissionStatus === 'WILL_BE_TRANSMITTED' || transmissionStatus === 'MAY_BE_TRANSMITTED'
 
   return (
@@ -59,7 +56,7 @@ export const ConfirmationInner = ({
 
         <ConfirmationStepper>
           {buildingReportSteps.map((step, index) => {
-            return <RenderEachStep key={step} {...{anomaly, draft, stepNavigation, index}} step={step} />
+            return <RenderEachStep key={step} {...{draft, stepNavigation, index}} step={step} />
           })}
         </ConfirmationStepper>
         <ReportFlowStepperActions
@@ -90,20 +87,18 @@ export const ConfirmationInner = ({
 function RenderEachStep({
   step,
   draft,
-  anomaly,
   stepNavigation,
   index,
 }: {
   step: BuildingStep
-  anomaly: Pick<Anomaly, 'img'>
   draft: ReportDraft
   stepNavigation: StepNavigation
   index: number
 }) {
   const goToStep = stepNavigation.goTo
   const {m, currentLang} = useI18n()
-
-  const transmissionStatus = ReportDraft.transmissionStatus(draft)
+  const anomaly = getAnomaly(draft)
+  const transmissionStatus = getTransmissionStatus(draft)
   const isTransmittable = transmissionStatus === 'WILL_BE_TRANSMITTED' || transmissionStatus === 'MAY_BE_TRANSMITTED'
 
   switch (step) {
@@ -113,7 +108,7 @@ function RenderEachStep({
           <div className="flex">
             <Image className="mr-4" width={72} height={72} src={`/image/pictos/${anomaly.img}.png`} alt="" />
             <div>
-              <h3 className="fr-h6 !mb-2 !text-gray-500">{findAnomaly(draft.anomaly.category, currentLang).title}</h3>
+              <h3 className="fr-h6 !mb-2 !text-gray-500">{anomaly.title}</h3>
               <ul className="pl-0 list-none">
                 {draft.subcategories.map(_ => (
                   <li key={_.title} className="text-gray-500">

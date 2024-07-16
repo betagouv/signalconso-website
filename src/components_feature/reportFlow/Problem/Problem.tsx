@@ -4,8 +4,9 @@ import {StepNavigation} from '@/components_feature/reportFlow/reportFlowStepper/
 import {ReportFlowStepperActions} from '@/components_feature/reportFlow/reportFlowStepper/ReportFlowStepperActions'
 import {FriendlyHelpText} from '@/components_simple/FriendlyHelpText'
 import {OpenFfWelcomeText, useOpenFfSetup} from '@/feature/openFoodFacts'
+import {isTransmittableToProBeforePickingConsumerWish} from '@/feature/reportDraftUtils'
 import {useI18n} from '@/i18n/I18n'
-import {ConsumerWish, ReportDraft} from '@/model/ReportDraft'
+import {ConsumerWish} from '@/model/ReportDraft'
 import {ReportDraft2} from '@/model/ReportDraft2'
 import {useEffect, useMemo} from 'react'
 import {instanceOfSubcategoryWithInfoWall} from '../../../anomalies/Anomalies'
@@ -45,7 +46,7 @@ function adjustTagsBeforeSubmit(draft: Partial<ReportDraft2>, companyKindFromSel
 }
 
 export function initiateReportDraftForAnomaly(anomaly: Anomaly, lang: AppLang): Partial<ReportDraft2> {
-  return {anomaly, lang}
+  return {category: anomaly.category, lang}
 }
 
 export function adjustReportDraftAfterSubcategoriesChange(
@@ -89,7 +90,7 @@ export const Problem = ({anomaly, isWebView, stepNavigation}: Props) => {
 
   // reset the draft when switching the root category
   useEffect(() => {
-    if (anomaly.category !== reportDraft.anomaly?.category) {
+    if (anomaly.category !== reportDraft.category) {
       _analytic.trackEvent(EventCategories.report, ReportEventActions.validateCategory, anomaly.category)
       resetFlow()
       setReportDraft(_ => initiateReportDraftForAnomaly(anomaly, currentLang))
@@ -107,7 +108,7 @@ export const Problem = ({anomaly, isWebView, stepNavigation}: Props) => {
     }
   }, [openFfSetup, setReportDraft])
 
-  const isTransmittable = ReportDraft.isTransmittableToProBeforePickingConsumerWish(reportDraft)
+  const isTransmittable = isTransmittableToProBeforePickingConsumerWish(reportDraft)
   const askConsumerWish = isTransmittable && reportDraft.companyKind !== 'SOCIAL'
 
   const {
@@ -147,7 +148,6 @@ export const Problem = ({anomaly, isWebView, stepNavigation}: Props) => {
         reponseconsoCode: responseconsoCodeFromSelected,
         tags: adjustTagsBeforeSubmit(draft, companyKindFromSelected),
         companyKind,
-        anomaly: _anomaly,
         consumerWish,
         employeeConsumer,
         categoryOverride: categoryOverrideFromSelected,

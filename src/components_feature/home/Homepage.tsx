@@ -8,6 +8,7 @@ import {InfoBanner} from '@/components_simple/bigBanners/InfoBanner'
 import {MobileAppPromoBanner} from '@/components_simple/bigBanners/MobileAppPromoBanner'
 import {bigReportButtonProps} from '@/components_simple/buttons/buttonsUtils'
 import {HP_START_REPORT_ANCHOR} from '@/core/pagesDefinitions'
+import {hasLangAndCategory} from '@/feature/reportDraftUtils'
 import {useI18n} from '@/i18n/I18n'
 import {AppLangs} from '@/i18n/localization/AppLangs'
 import imgCompany from '@/img/illustrations/company.png'
@@ -17,7 +18,7 @@ import imgReport from '@/img/illustrations/report.png'
 import {Button} from '@codegouvfr/react-dsfr/Button'
 import {useColors} from '@codegouvfr/react-dsfr/useColors'
 import dynamic from 'next/dynamic'
-import {useEffect, useMemo} from 'react'
+import {useEffect} from 'react'
 import * as smoothscroll from 'smoothscroll-polyfill'
 import {useReportFlowContext} from '../../components_feature/reportFlow/ReportFlowContext'
 import SearchAnomalies from '../../components_simple/SearchAnomalies'
@@ -32,8 +33,8 @@ export const Homepage = () => {
   }, [])
 
   const anomalies = allAnomaliesForHomepage(currentLang)
-  const _report = useReportFlowContext()
-  const hasStoredReport = useMemo(() => !!_report.reportDraft.anomaly, [_report.reportDraft])
+  const {reportDraft} = useReportFlowContext()
+  const hasStoredReport = hasLangAndCategory(reportDraft)
   const dsfrTheme = useColors()
   return (
     <>

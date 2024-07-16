@@ -11,6 +11,7 @@ import {useI18n} from '@/i18n/I18n'
 import {Alert} from '@codegouvfr/react-dsfr/Alert'
 import {Button} from '@codegouvfr/react-dsfr/Button'
 import {useQuery} from '@tanstack/react-query'
+import Link from 'next/link'
 import {ReactNode, useEffect, useRef, useState} from 'react'
 import {useForm} from 'react-hook-form'
 import {SpecificWebsiteCompanyKinds} from '../../../anomalies/Anomaly'
@@ -18,7 +19,6 @@ import {SiretExtractorClient} from '../../../clients/SiretExtractorClient'
 import {CompanySearchResult} from '../../../model/Company'
 import {Country} from '../../../model/Country'
 import {useReportFlowContext} from '../ReportFlowContext'
-import Link from 'next/link'
 
 interface Form {
   website: string
@@ -122,7 +122,7 @@ export const CompanyByWebsite = ({children, specificWebsiteCompanyKind}: Props) 
       _analytic.trackEvent(
         EventCategories.companySearch,
         CompanySearchEventActions.searchedWebsiteDown,
-        _reportFlow.reportDraft.anomaly?.category + '' + website,
+        _reportFlow.reportDraft.category + '' + website,
       )
     }
   }, [searchQuery.data])

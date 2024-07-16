@@ -1,5 +1,6 @@
 'use client'
 
+import {hasLangAndCategory} from '@/feature/reportDraftUtils'
 import {AppLangs} from '@/i18n/localization/AppLangs'
 import {PortalToBody} from '@/utils/PortalToBody'
 import {Button} from '@codegouvfr/react-dsfr/Button'
@@ -32,7 +33,7 @@ export function SwitchLang() {
     return hasEnglishVersionPageInOtherLang ? path : home
   }
 
-  return _report.reportDraft.anomaly?.category ? (
+  return hasLangAndCategory(_report.reportDraft) ? (
     <>
       <Button className={'fr-btn fr-btn--tertiary'} nativeButtonProps={modal.buttonProps}>
         <span>

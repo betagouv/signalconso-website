@@ -5,21 +5,22 @@ import {Animate} from '@/components_simple/Animate'
 import {FriendlyHelpText} from '@/components_simple/FriendlyHelpText'
 import {RequiredFieldsLegend} from '@/components_simple/RequiredFieldsLegend'
 import {ReportFiles} from '@/components_simple/reportFile/ReportFiles'
+import {appConfig} from '@/core/appConfig'
+import {getTransmissionStatus} from '@/feature/reportDraftUtils'
 import {useI18n} from '@/i18n/I18n'
 import {DetailInputValues2} from '@/model/ReportDraft2'
+import {fnSwitch} from '@/utils/FnSwitch'
+import {last} from '@/utils/lodashNamedExport'
 import {useEffect, useMemo, useState} from 'react'
 import {useForm} from 'react-hook-form'
-import {last} from '@/utils/lodashNamedExport'
 import {DetailInput, ReportTag, StandardSubcategory} from '../../../anomalies/Anomaly'
-import {ConsumerWish, ReportDraft, TransmissionStatus} from '../../../model/ReportDraft'
+import {ConsumerWish, TransmissionStatus} from '../../../model/ReportDraft'
 import {FileOrigin, UploadedFile} from '../../../model/UploadedFile'
 import {useReportFlowContext} from '../ReportFlowContext'
 import {buildDefaultValues} from './DetailInputsUtils'
 import {DetailsAlertProduitDangereux} from './DetailsAlertProduitDangereux'
 import {DetailsInputRenderByType} from './DetailsInputRenderByType'
 import {getDraftReportInputs} from './draftReportInputs'
-import {appConfig} from '@/core/appConfig'
-import {fnSwitch} from '@/utils/FnSwitch'
 
 export class SpecifyFormUtils {
   static readonly specifyKeywordFr = '(à préciser)'
@@ -49,7 +50,7 @@ export const Details = ({stepNavigation}: {stepNavigation: StepNavigation}) => {
     <DetailsInner
       initialValues={draft.details}
       initialFiles={draft.uploadedFiles}
-      transmissionStatus={ReportDraft.transmissionStatus(draft)}
+      transmissionStatus={getTransmissionStatus(draft)}
       inputs={inputs}
       fileLabel={(last(draft.subcategories) as StandardSubcategory).fileLabel}
       employeeConsumer={draft.employeeConsumer}
