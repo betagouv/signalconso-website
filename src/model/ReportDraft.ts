@@ -1,4 +1,4 @@
-import {CompanyKinds, NightTrains, ReportTag, SocialNetworks, Subcategory, Ters, Trains} from '@/anomalies/Anomaly'
+import {CompanyKinds, NightTrains, ReportTag, SocialNetworks, Ters, Trains} from '@/anomalies/Anomaly'
 import {OpenFfResult} from '@/feature/openFoodFacts'
 import {AppLang} from '../i18n/localization/AppLangs'
 import {BarcodeProduct} from './BarcodeProduct'
@@ -19,7 +19,10 @@ export interface ReportDraftConsumer {
 }
 
 export interface ReportDraft {
-  category: string
+  step0: {
+    category: string
+    lang: AppLang
+  }
   subcategoriesIndexes: number[]
   categoryOverride?: string
   companyDraft?: CompanyDraft
@@ -36,7 +39,6 @@ export interface ReportDraft {
   consumerWish?: ConsumerWish
   companyKind?: CompanyKinds
   influencer?: Influencer
-  lang: AppLang
   barcodeProduct?: BarcodeProduct
   train: Train
   station: string

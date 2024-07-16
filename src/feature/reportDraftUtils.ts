@@ -5,10 +5,8 @@ import {ReportDraft2} from '@/model/ReportDraft2'
 import {ApiInfluencer, ApiReportDraft} from '@/model/reportsFromApi'
 import uniq from 'lodash/uniq'
 
-export function hasLangAndCategory(
-  r: Partial<ReportDraft2>,
-): r is Pick<ReportDraft, 'category' | 'lang'> & Partial<ReportDraft2> {
-  return !!r.category && !!r.lang
+export function hasStep0(r: Partial<ReportDraft2>): r is Pick<ReportDraft, 'step0'> & Partial<ReportDraft2> {
+  return !!r.step0
 }
 export function hasSubcategoryIndexes(
   r: Partial<ReportDraft2>,
@@ -16,12 +14,12 @@ export function hasSubcategoryIndexes(
   return !!r.subcategoriesIndexes
 }
 
-export const getAnomaly = (r: Pick<ReportDraft, 'category' | 'lang'>) => {
-  return findAnomaly(r.category, r.lang)
+export const getAnomaly = (r: Pick<ReportDraft, 'step0'>) => {
+  return findAnomaly(r.step0.category, r.step0.lang)
 }
 
-export const getSubcategories = (r: Pick<ReportDraft, 'subcategoriesIndexes' | 'category' | 'lang'>): Subcategory[] => {
-  const anomaly = findAnomaly(r.category, r.lang)
+export const getSubcategories = (r: Pick<ReportDraft, 'subcategoriesIndexes' | 'step0'>): Subcategory[] => {
+  const anomaly = findAnomaly(r.step0.category, r.step0.lang)
   const startingIndexes = r.subcategoriesIndexes
   const collectedSubcategories: Subcategory[] = []
   function recurse(indexes: number[], subcategories: Subcategory[] = []) {
@@ -32,7 +30,7 @@ export const getSubcategories = (r: Pick<ReportDraft, 'subcategoriesIndexes' | '
     const subcategory = subcategories[index]
     if (!subcategory) {
       throw new Error(
-        `Nonsensical subcategory indexes ${startingIndexes} for category ${r.category} (${r.lang}). Can't find index ${index} in ${subcategories.length} subcategories`,
+        `Nonsensical subcategory indexes ${startingIndexes} for category ${r.step0.category} (${r.step0.lang}). Can't find index ${index} in ${subcategories.length} subcategories`,
       )
     }
     collectedSubcategories.push(subcategory)
@@ -125,7 +123,7 @@ export const toApi = (draft: ReportDraft, metadata: ApiReportDraft['metadata']):
     // We don't use the rest syntax here ("..."),
     // we prefer to be sure to fill each field explicitely
     gender: draft.consumer.gender,
-    category: draft.categoryOverride ?? draft.category,
+    category: draft.categoryOverride ?? draft.step0.category,
     subcategories: subcategories.map(_ => _.title),
     details: draft.details,
     companyName: draft.companyDraft?.name,
@@ -154,7 +152,7 @@ export const toApi = (draft: ReportDraft, metadata: ApiReportDraft['metadata']):
     reponseconsoCode: reponseconsoCode ? [reponseconsoCode] : undefined,
     ccrfCode,
     influencer: draft.influencer ? toApiInfluencer(draft.influencer) : undefined,
-    lang: draft.lang,
+    lang: draft.step0.lang,
     barcodeProductId: draft.barcodeProduct?.id,
     train: draft.train,
     station: draft.station,

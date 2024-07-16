@@ -6,7 +6,7 @@ import {FriendlyHelpText} from '@/components_simple/FriendlyHelpText'
 import {OpenFfWelcomeText, useOpenFfSetup} from '@/feature/openFoodFacts'
 import {
   getSubcategories,
-  hasLangAndCategory,
+  hasStep0,
   hasSubcategoryIndexes,
   isTransmittableToProBeforePickingConsumerWish,
 } from '@/feature/reportDraftUtils'
@@ -51,7 +51,10 @@ function adjustTagsBeforeSubmit(draft: Partial<ReportDraft2>, companyKindFromSel
 }
 
 export function initiateReportDraftForAnomaly(anomaly: Anomaly, lang: AppLang): Partial<ReportDraft2> {
-  return {category: anomaly.category, lang, subcategoriesIndexes: []}
+  return {
+    step0: {category: anomaly.category, lang},
+    subcategoriesIndexes: [],
+  }
 }
 
 export function adjustReportDraftAfterSubcategoriesChange(
@@ -60,7 +63,7 @@ export function adjustReportDraftAfterSubcategoriesChange(
   subcategoryIndex: number,
   subcategoryDepthIndex: number,
 ): Partial<ReportDraft2> {
-  if (!hasLangAndCategory(report)) {
+  if (!hasStep0(report)) {
     throw new Error('ReportDraft should have a lang and a category already')
   }
   const newSubcategoriesIndexes = [...(report.subcategoriesIndexes ?? []).slice(0, subcategoryDepthIndex), subcategoryIndex]
@@ -93,13 +96,13 @@ export const Problem = ({anomaly, isWebView, stepNavigation}: Props) => {
   const _analytic = useAnalyticContext()
   const {m, currentLang} = useI18n()
   const {reportDraft, setReportDraft, resetFlow, sendReportEvent} = useReportFlowContext()
-  const subcategories = hasLangAndCategory(reportDraft) && hasSubcategoryIndexes(reportDraft) ? getSubcategories(reportDraft) : []
+  const subcategories = hasStep0(reportDraft) && hasSubcategoryIndexes(reportDraft) ? getSubcategories(reportDraft) : []
   const hasReponseConsoSubcategories = buildTagsFromSubcategories(anomaly, subcategories).includes('ReponseConso')
   const openFfSetup = useOpenFfSetup(anomaly)
 
   // reset the draft when switching the root category
   useEffect(() => {
-    if (anomaly.category !== reportDraft.category) {
+    if (anomaly.category !== reportDraft.step0?.category) {
       _analytic.trackEvent(EventCategories.report, ReportEventActions.validateCategory, anomaly.category)
       resetFlow()
       setReportDraft(_ => initiateReportDraftForAnomaly(anomaly, currentLang))

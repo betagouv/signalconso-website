@@ -6,8 +6,10 @@ describe('getDraftReportInputs', () => {
   it('should generate default inputs', () => {
     const inputs = getDraftReportInputs(
       {
-        category: 'DemoCategory',
-        lang: 'fr',
+        step0: {
+          lang: 'fr',
+          category: 'DemoCategory',
+        },
         subcategoriesIndexes: [0],
       },
       AppLangs.fr,
@@ -18,8 +20,10 @@ describe('getDraftReportInputs', () => {
   it('should generate default inputs including reponseConso inputs', () => {
     const inputs = getDraftReportInputs(
       {
-        category: 'DemoCategory',
-        lang: 'fr',
+        step0: {
+          lang: 'fr',
+          category: 'DemoCategory',
+        },
         subcategoriesIndexes: [0],
         consumerWish: 'getAnswer',
       },
@@ -35,8 +39,10 @@ describe('getDraftReportInputs', () => {
   it('should generate inputs with optional textarea', () => {
     const inputs = getDraftReportInputs(
       {
-        category: 'DemoCategory',
-        lang: 'fr',
+        step0: {
+          lang: 'fr',
+          category: 'DemoCategory',
+        },
         subcategoriesIndexes: [8],
       },
       AppLangs.fr,
@@ -80,8 +86,10 @@ describe('getDraftReportInputs', () => {
   it('should generate custom input with reponseconso', () => {
     const inputs = getDraftReportInputs(
       {
-        category: 'DemoCategory',
-        lang: 'fr',
+        step0: {
+          lang: 'fr',
+          category: 'DemoCategory',
+        },
         subcategoriesIndexes: [4, 0],
         consumerWish: 'getAnswer',
       },

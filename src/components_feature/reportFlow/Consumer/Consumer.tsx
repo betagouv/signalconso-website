@@ -5,7 +5,7 @@ import {ReportFlowStepperActions} from '@/components_feature/reportFlow/reportFl
 import {RequiredFieldsLegend} from '@/components_simple/RequiredFieldsLegend'
 import {ScTextInput} from '@/components_simple/formInputs/ScTextInput'
 import {useApiClients} from '@/context/ApiClientsContext'
-import {getSubcategories, getTransmissionStatus, hasLangAndCategory, hasSubcategoryIndexes} from '@/feature/reportDraftUtils'
+import {getSubcategories, getTransmissionStatus, hasStep0, hasSubcategoryIndexes} from '@/feature/reportDraftUtils'
 import {useBreakpoints} from '@/hooks/useBreakpoints'
 import {useI18n} from '@/i18n/I18n'
 import {AppLangs} from '@/i18n/localization/AppLangs'
@@ -59,7 +59,7 @@ export const ConsumerInner = ({
   onSubmit: (_: DeepPartial<ReportDraft2>) => void
   stepNavigation: StepNavigation
 }) => {
-  if (!hasLangAndCategory(draft) || !hasSubcategoryIndexes(draft)) {
+  if (!hasStep0(draft) || !hasSubcategoryIndexes(draft)) {
     throw new Error('This draft is not ready for the Consumer step')
   }
   const {m, currentLang} = useI18n()

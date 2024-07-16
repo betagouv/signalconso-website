@@ -104,7 +104,7 @@ function useIsStepInvalid(anomaly: Anomaly, step: ReportStepOrDone): boolean {
       // the draft is not ready for this step
       // the user probably jumped directly to an URL like ?step=5
       return true
-    } else if (reportDraft.category !== anomaly.category) {
+    } else if (reportDraft.step0?.category !== anomaly.category) {
       // the draft is not for this category
       // not sure this could happen. Can't hurt to check
       return true

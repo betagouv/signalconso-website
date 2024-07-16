@@ -2,7 +2,7 @@ import {buildPathForStep} from '@/components_feature/reportFlow/reportFlowSteppe
 import {ReportFlowStepperHeader} from '@/components_feature/reportFlow/reportFlowStepper/ReportFlowStepperHeader'
 import {Animate} from '@/components_simple/Animate'
 import {recreateOpenFfBarcodeParam} from '@/feature/openFoodFacts'
-import {getAnomaly, hasLangAndCategory} from '@/feature/reportDraftUtils'
+import {getAnomaly, hasStep0} from '@/feature/reportDraftUtils'
 import {useI18n} from '@/i18n/I18n'
 import {findCurrentStepForReport} from '@/model/ReportStep'
 import {Button} from '@codegouvfr/react-dsfr/Button'
@@ -15,7 +15,7 @@ export default function ReportStartedAlert() {
   const {reportDraft} = _reportFlow
   const currentStep = useMemo(() => findCurrentStepForReport(reportDraft), [reportDraft])
   const {m, currentLang} = useI18n()
-  if (hasLangAndCategory(reportDraft)) {
+  if (hasStep0(reportDraft)) {
     const anomaly = getAnomaly(reportDraft)
     return (
       <Animate fromBottom>

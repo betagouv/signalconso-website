@@ -39,8 +39,10 @@ describe('Consumer', () => {
 
   describe('when values are pre defined', function () {
     let initial: Partial<ReportDraft2> = {
-      lang: 'fr',
-      category: 'DemoCategory',
+      step0: {
+        lang: 'fr',
+        category: 'DemoCategory',
+      },
       subcategoriesIndexes: [0],
       contactAgreement: true,
       consumer: Fixture.consumer,
@@ -90,8 +92,10 @@ describe('Consumer', () => {
 
   describe('when employee consumer is true', function () {
     let initial: Partial<ReportDraft2> = {
-      category: 'DemoCategory',
-      lang: 'fr',
+      step0: {
+        lang: 'fr',
+        category: 'DemoCategory',
+      },
       employeeConsumer: true,
       subcategoriesIndexes: [0],
     }
