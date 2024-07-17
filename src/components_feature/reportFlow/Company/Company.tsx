@@ -182,6 +182,10 @@ function CommonTree({
   barcodeProduct: BarcodeProduct | undefined
   result: CompanySearchResult[] | undefined
 } & CommonProps) {
+  const companyKind = draft.companyKind
+  if (!companyKind) {
+    throw new Error('The draft should have a companyKind already')
+  }
   return result && result.length > 0 ? (
     <CompanySearchResultComponent
       companies={result}
@@ -197,7 +201,7 @@ function CommonTree({
       }}
     />
   ) : (
-    <CompanyChooseIdentificationMethod companyKind={draft.companyKind!}>
+    <CompanyChooseIdentificationMethod {...{companyKind}}>
       {method => {
         switch (method) {
           case 'byNameAndPostalCode':
@@ -286,7 +290,7 @@ function CommonTree({
                     case IsAFrenchCompany.Yes:
                       return (
                         <CompanyAskConsumerPostalCode
-                          companyKind={draft.companyKind!}
+                          {...{companyKind}}
                           onChange={postalCode => {
                             updateReport({
                               companyDraft: {
@@ -303,7 +307,7 @@ function CommonTree({
                     case IsAFrenchCompany.No:
                       return (
                         <CompanyAskForeignDetails
-                          companyKind={draft.companyKind!}
+                          {...{companyKind}}
                           onSubmit={form => {
                             updateReport({
                               companyDraft: {
@@ -322,7 +326,7 @@ function CommonTree({
                     case IsAFrenchCompany.Unknown:
                       return (
                         <CompanyAskConsumerPostalCode
-                          companyKind={draft.companyKind!}
+                          {...{companyKind}}
                           onChange={postalCode => {
                             updateReport({
                               companyDraft: {
