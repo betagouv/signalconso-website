@@ -17,12 +17,12 @@ describe('Details: single date not in future', () => {
     await waitFor(() => expect(app.container.querySelectorAll(querySelector).length).toEqual(1))
   }
 
-  const selectIdentifyBy = (ib: IdentificationMethod) => {
-    const btnText = fnSwitch(ib, {
-      [IdentificationMethod.NAME_AND_POSTAL_CODE]: app.m.identifyBy_name_postal_code,
-      [IdentificationMethod.NAME]: app.m.identifyBy_name,
-      [IdentificationMethod.IDENTITY]: app.m.identifyBy_identity,
-      [IdentificationMethod.NONE]: app.m.identifyBy_none,
+  const selectIdentifyBy = (method: IdentificationMethod) => {
+    const btnText = fnSwitch(method, {
+      ['byNameAndPostalCode']: app.m.identifyBy_name_postal_code,
+      ['byName']: app.m.identifyBy_name,
+      ['byIdentifier']: app.m.identifyBy_identity,
+      ['iCannot']: app.m.identifyBy_none,
     })
     fireEvent.click(app.getByText(btnText))
   }
@@ -103,7 +103,7 @@ describe('Details: single date not in future', () => {
 
     it('should display radios for identification choice', async () => {
       await elementShouldExists('#CompanyIdentifyBy')
-      selectIdentifyBy(IdentificationMethod.NAME_AND_POSTAL_CODE)
+      selectIdentifyBy('byNameAndPostalCode')
       await elementShouldExists('#CompanyByNameAndPostalCode')
     })
   })
