@@ -8,7 +8,7 @@ import {useMemo} from 'react'
 import {Loader} from '@/feature/Loader'
 import {BlueBanner} from '@/feature/BlueBanner'
 
-const RAPPEL_CONSO_ID_PARAM = 'idrappel'
+const RAPPEL_CONSO_ID_PARAM = 'id_rappel_conso'
 
 function useIdRappelParam(anomaly: Anomaly) {
   const searchParams = useSearchParams()
@@ -31,8 +31,11 @@ export type RappelConsoResult = {
   data?: RappelConsoData
 }
 
-function extractGTINs(rappelConsoResult: RappelConsoApiResult) {
-  return rappelConsoResult.identification_des_produits.match(/\b\d{13}\b/g) ?? []
+function extractBarcodes(rappelConsoResult: RappelConsoApiResult) {
+  // Parse barcodes
+  const gtins = rappelConsoResult.identification_des_produits.match(/\b\d{13}\b/g) ?? []
+  // Remove duplicates
+  return Array.from(new Set(gtins))
 }
 
 export function useRappelConsoSetup(anomaly: Anomaly): SpecialCategorySetup<RappelConsoResult> {
@@ -48,7 +51,7 @@ export function useRappelConsoSetup(anomaly: Anomaly): SpecialCategorySetup<Rapp
             id: result.id,
             data: {
               libelle: result.libelle,
-              gtins: extractGTINs(result),
+              gtins: extractBarcodes(result),
               fiche: result.lien_vers_la_fiche_rappel,
             },
           }
@@ -86,91 +89,107 @@ export function RappelConsoWelcome({setup}: {setup: SpecialCategorySetup<RappelC
   if (setup.status === 'loading') {
     return <Loader />
   }
-  const {id, data} = setup.result
+  const {data} = setup.result
   if (data) {
-    const {gtins, libelle, fiche} = data
+    const {gtins, libelle} = data
     if (gtins.length === 0) {
-      return (
-        <BlueBanner>
-          <p className="mb-4">
-            Vous avez acheté le produit <span className="font-bold">{libelle}</span> ayant fait l'objet d'un rappel et/ou ce
-            produit est toujours mis en vente malgré le rappel ?
-          </p>
-          <p className="mb-4">
-            SignalConso vous permet d'en informer l'entreprise. De plus, votre signalement est visible par les agents de la
-            répression des fraudes qui pourront intervenir si nécessaire.
-          </p>
-          <p className="mb-4">
-            <span className="font-bold">Aucun code-barres</span> n'est associé à ce produit sur RappelConso. Nous ne pouvons donc
-            pas identifier automatiquement l'entreprise. Si vous l'avez encore, munissez-vous du produit et de son code-barres,
-            nous vous le demanderons à l'étape suivante.
-          </p>
-          <p className="text-center font-bold mb-2">
-            Pas de panique si vous ne l'avez pas, vous pourrez toujours faire le signalement ! Répondez simplement aux questions
-            et laissez-vous guider !
-          </p>
-        </BlueBanner>
-      )
+      return <RappelConsoWelcomeNoBarcode libelle={libelle} />
     } else if (gtins.length === 1) {
-      return (
-        <BlueBanner>
-          <p className="mb-4">
-            Vous avez acheté le produit <span className="font-bold">{libelle}</span> ayant fait l'objet d'un rappel et/ou ce
-            produit est toujours mis en vente malgré le rappel ?
-          </p>
-          <p className="mb-4">
-            SignalConso vous permet d'en informer l'entreprise. De plus, votre signalement est visible par les agents de la
-            répression des fraudes qui pourront intervenir si nécessaire.
-          </p>
-          <p className="text-center font-bold mb-2">Répondez simplement aux questions et laissez-vous guider !</p>
-        </BlueBanner>
-      )
+      return <RappelConsoWelcomeOneBarcode libelle={libelle} />
     } else {
-      return (
-        <BlueBanner>
-          <p className="mb-4">
-            Vous avez acheté le produit <span className="font-bold">{libelle}</span> ayant fait l'objet d'un rappel et/ou ce
-            produit est toujours mis en vente malgré le rappel ?
-          </p>
-          <p className="mb-4">
-            SignalConso vous permet d'en informer l'entreprise. De plus, votre signalement est visible par les agents de la
-            répression des fraudes qui pourront intervenir si nécessaire.
-          </p>
-          <p className="mb-4">
-            La produit que vous souhaitez signaler est associé à <span className="font-bold">plusieurs code barres / lots</span>{' '}
-            sur RappelConso. Nous ne pouvons donc pas identifier automatiquement l'entreprise. Si possible, munissez-vous du
-            produit et de son code-barres, nous vous demanderons de choisir parmi ceux fournis par RappelConso.
-          </p>
-          <p className="text-center font-bold mb-2">
-            Pas de panique si vous ne l'avez pas, vous pourrez toujours faire le signalement ! Répondez simplement aux questions
-            et laissez-vous guider !
-          </p>
-        </BlueBanner>
-      )
+      return <RappelConsoMultipleBarcode libelle={libelle} />
     }
   } else {
-    return (
-      <BlueBanner>
-        <p className="mb-4">
-          Vous avez acheté un produit ayant fait l'objet d'un rappel et/ou ce produit est toujours mis en vente malgré le rappel ?
-        </p>
-        <p className="mb-4">
-          SignalConso vous permet d'en informer l'entreprise. De plus, votre signalement est visible par les agents de la
-          répression des fraudes qui pourront intervenir si nécessaire.
-        </p>
-        <p className="mb-4">
-          Le produit que vous souhaitez signaler <span className="font-bold">n'a pas pu être identifié automatiquement</span> par
-          SignalConso. Cela arrive lorsque SignalConso <span className="font-bold">n'est pas encore synchronisé</span> avec
-          RappelConso.
-        </p>
-        <p className="mb-4">
-          En général, la synchronisation intervient dans <span className="font-bold">un délai d'une heure</span>. Vous pouvez
-          poursuivre votre signalement, mais vous devrez identifier le produit et l'entreprise manuellement. Si possible,
-          munissez-vous du produit et de son code-barres.
-        </p>
-        <p className="mb-4">Si vous le pouvez, réessayez plus tard.</p>
-        <p className="text-center font-bold mb-2">Répondez simplement aux questions et laissez-vous guider !</p>
-      </BlueBanner>
-    )
+    return <RappelConsoWelcomeNoData />
   }
+}
+
+function RappelConsoWelcomeNoBarcode({libelle}: {libelle: string}) {
+  return (
+    <BlueBanner>
+      <p className="mb-4">
+        Vous avez acheté le produit <span className="font-bold">{libelle}</span> ayant fait l'objet d'un rappel et/ou ce produit
+        est toujours mis en vente malgré le rappel ?
+      </p>
+      <p className="mb-4">
+        SignalConso vous permet d'en informer l'entreprise. De plus, votre signalement est visible par les agents de la répression
+        des fraudes qui pourront intervenir si nécessaire.
+      </p>
+      <p className="mb-4">
+        <span className="font-bold">Aucun code-barres</span> n'est associé à ce produit sur RappelConso. Nous ne pouvons donc pas
+        identifier automatiquement l'entreprise. Si vous l'avez encore, munissez-vous du produit et de son code-barres, nous vous
+        le demanderons à l'étape suivante.
+      </p>
+      <p className="text-center font-bold mb-2">
+        Pas de panique si vous ne l'avez pas, vous pourrez toujours faire le signalement ! Répondez simplement aux questions et
+        laissez-vous guider !
+      </p>
+    </BlueBanner>
+  )
+}
+
+function RappelConsoWelcomeOneBarcode({libelle}: {libelle: string}) {
+  return (
+    <BlueBanner>
+      <p className="mb-4">
+        Vous avez acheté le produit <span className="font-bold">{libelle}</span> ayant fait l'objet d'un rappel et/ou ce produit
+        est toujours mis en vente malgré le rappel ?
+      </p>
+      <p className="mb-4">
+        SignalConso vous permet d'en informer l'entreprise. De plus, votre signalement est visible par les agents de la répression
+        des fraudes qui pourront intervenir si nécessaire.
+      </p>
+      <p className="text-center font-bold mb-2">Répondez simplement aux questions et laissez-vous guider !</p>
+    </BlueBanner>
+  )
+}
+
+function RappelConsoMultipleBarcode({libelle}: {libelle: string}) {
+  return (
+    <BlueBanner>
+      <p className="mb-4">
+        Vous avez acheté le produit <span className="font-bold">{libelle}</span> ayant fait l'objet d'un rappel et/ou ce produit
+        est toujours mis en vente malgré le rappel ?
+      </p>
+      <p className="mb-4">
+        SignalConso vous permet d'en informer l'entreprise. De plus, votre signalement est visible par les agents de la répression
+        des fraudes qui pourront intervenir si nécessaire.
+      </p>
+      <p className="mb-4">
+        La produit que vous souhaitez signaler est associé à <span className="font-bold">plusieurs code barres / lots</span> sur
+        RappelConso. Nous ne pouvons donc pas identifier automatiquement l'entreprise. Si possible, munissez-vous du produit et de
+        son code-barres, nous vous demanderons de choisir parmi ceux fournis par RappelConso.
+      </p>
+      <p className="text-center font-bold mb-2">
+        Pas de panique si vous ne l'avez pas, vous pourrez toujours faire le signalement ! Répondez simplement aux questions et
+        laissez-vous guider !
+      </p>
+    </BlueBanner>
+  )
+}
+
+function RappelConsoWelcomeNoData() {
+  return (
+    <BlueBanner>
+      <p className="mb-4">
+        Vous avez acheté un produit ayant fait l'objet d'un rappel et/ou ce produit est toujours mis en vente malgré le rappel ?
+      </p>
+      <p className="mb-4">
+        SignalConso vous permet d'en informer l'entreprise. De plus, votre signalement est visible par les agents de la répression
+        des fraudes qui pourront intervenir si nécessaire.
+      </p>
+      <p className="mb-4">
+        Le produit que vous souhaitez signaler <span className="font-bold">n'a pas pu être identifié automatiquement</span> par
+        SignalConso. Cela arrive lorsque SignalConso <span className="font-bold">n'est pas encore synchronisé</span> avec
+        RappelConso.
+      </p>
+      <p className="mb-4">
+        En général, la synchronisation intervient dans <span className="font-bold">un délai d'une heure</span>. Vous pouvez
+        poursuivre votre signalement, mais vous devrez identifier le produit et l'entreprise manuellement. Si possible,
+        munissez-vous du produit et de son code-barres.
+      </p>
+      <p className="mb-4">Si vous le pouvez, réessayez plus tard.</p>
+      <p className="text-center font-bold mb-2">Répondez simplement aux questions et laissez-vous guider !</p>
+    </BlueBanner>
+  )
 }

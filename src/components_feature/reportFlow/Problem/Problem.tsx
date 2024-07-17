@@ -184,18 +184,17 @@ export const Problem = ({anomaly, isWebView, stepNavigation}: Props) => {
 
   const handleSubcategoriesChange = (subcategoryIndex: number, subcategoryDepthIndex: number) => {
     setReportDraft(report => {
-      const newReport = adjustReportDraftAfterSubcategoriesChange(anomaly, report, subcategoryIndex, subcategoryDepthIndex)
-      return newReport
+      return adjustReportDraftAfterSubcategoriesChange(anomaly, report, subcategoryIndex, subcategoryDepthIndex)
     })
   }
 
-  const specialCategoryLoading = openFfSetup.status !== 'loading' && rappelConsoSetup.status !== 'loading'
+  const specialCategoryNotLoading = openFfSetup.status !== 'loading' && rappelConsoSetup.status !== 'loading'
   const tags = reportDraft.tags ?? []
   return (
     <>
       <OpenFfWelcomeText setup={openFfSetup} />
       <RappelConsoWelcome setup={rappelConsoSetup} />
-      {specialCategoryLoading && (
+      {specialCategoryNotLoading && (
         <>
           {[anomaly, ...subcategories].map(
             (category, subcategoryDepthIdx) =>

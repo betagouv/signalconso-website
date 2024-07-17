@@ -444,9 +444,7 @@ function RCOneBarcodeTree({draft, updateReport, gtin}: {gtin: string} & CommonPr
               barcodeProduct,
             })
           }}
-          noResultsPanel={
-            <NoSearchResult text="Malheureusement, nous n'avons pas pu identifier automatiquement l'entreprise associée à ce code barre." />
-          }
+          noResultsPanel={<RappelConsoBarcodeNotFoundInGS1 />}
         />
         {!company && (
           <CommonTree {...{draft, updateReport}} phoneOrWebsite={undefined} barcodeProduct={product} result={undefined} />
@@ -460,49 +458,57 @@ function RCMutlipleBarcodesTree({draft, updateReport, gtins}: {gtins: string[]} 
   const [selectedGtin, selectGtin] = useState<string | null>()
   const _search = useBarcodeSearch(selectedGtin ?? undefined)
 
-  const options = gtins.map(gtin => {
+  const optionsWithoutUnknown = gtins.map(gtin => {
     return {
       value: gtin,
       label: gtin,
     }
   })
-  const options2 = [...options, {value: null, label: 'Je ne connais pas le code-barres'}]
+  const options = [...optionsWithoutUnknown, {value: null, label: 'Je ne connais pas le code-barres'}]
 
+  if (_search.isFetching) {
+    return <Loader />
+  } else {
+    return (
+      <>
+        <p>Le produit rappelé concerne plusieurs codes-barres. Sélectionnez celui qui concerne votre lot</p>
+        <ScRadioButtons
+          title="Quel code-barres concerne votre produit ?"
+          onChange={value => selectGtin(value)}
+          value={selectedGtin}
+          required={true}
+          options={options}
+        />
+        {selectedGtin && (
+          <BarcodeSearchResult
+            specificProductCompanyKinds={'PRODUCT'}
+            product={_search.data?.product}
+            company={_search.data?.company}
+            reportDraft={draft}
+            onSubmit={(company, barcodeProduct) => {
+              updateReport({
+                companyDraft: company,
+                barcodeProduct,
+              })
+            }}
+            noResultsPanel={<RappelConsoBarcodeNotFoundInGS1 />}
+          />
+        )}
+        {selectedGtin !== undefined && !_search.data?.company && (
+          <CommonTree
+            {...{draft, updateReport}}
+            phoneOrWebsite={undefined}
+            barcodeProduct={_search.data?.product}
+            result={undefined}
+          />
+        )}
+      </>
+    )
+  }
+}
+
+function RappelConsoBarcodeNotFoundInGS1() {
   return (
-    <>
-      <p>Le produit rappelé concerne plusieurs codes-barres. Sélectionnez celui qui concerne votre lot</p>
-      <ScRadioButtons
-        title="Quel code barre concerne votre produit ?"
-        onChange={value => selectGtin(value)}
-        value={selectedGtin}
-        required={true}
-        options={options2}
-      />
-      {selectedGtin && (
-        <BarcodeSearchResult
-          specificProductCompanyKinds={'PRODUCT'}
-          product={_search.data?.product}
-          company={_search.data?.company}
-          reportDraft={draft}
-          onSubmit={(company, barcodeProduct) => {
-            updateReport({
-              companyDraft: company,
-              barcodeProduct,
-            })
-          }}
-          noResultsPanel={
-            <NoSearchResult text="Malheureusement, nous n'avons pas pu identifier automatiquement l'entreprise associée à ce code barre." />
-          }
-        />
-      )}
-      {selectedGtin !== undefined && !_search.data?.company && (
-        <CommonTree
-          {...{draft, updateReport}}
-          phoneOrWebsite={undefined}
-          barcodeProduct={_search.data?.product}
-          result={undefined}
-        />
-      )}
-    </>
+    <NoSearchResult text="Malheureusement, nous n'avons pas pu identifier automatiquement l'entreprise associée à ce code-barres." />
   )
 }
