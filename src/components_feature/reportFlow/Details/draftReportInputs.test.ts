@@ -1,15 +1,16 @@
 import '@testing-library/jest-dom'
-import {DraftReportDefaultInputs, getDraftReportInputs} from './draftReportInputs'
-import {Fixture} from '../../../test/fixture'
-import {DetailsFixtureInput} from '../../playgroundComponents/PlaygroundDetails'
-import {DetailInputType, ReportTag} from '../../../anomalies/Anomaly'
 import {AppLangs} from '../../../i18n/localization/AppLangs'
+import {DraftReportDefaultInputs, getDraftReportInputs} from './draftReportInputs'
 
 describe('getDraftReportInputs', () => {
   it('should generate default inputs', () => {
     const inputs = getDraftReportInputs(
       {
-        subcategories: [Fixture.genSubcategory()],
+        step0: {
+          lang: 'fr',
+          category: 'DemoCategory',
+        },
+        subcategoriesIndexes: [0],
       },
       AppLangs.fr,
     )
@@ -19,7 +20,11 @@ describe('getDraftReportInputs', () => {
   it('should generate default inputs including reponseConso inputs', () => {
     const inputs = getDraftReportInputs(
       {
-        subcategories: [Fixture.genSubcategory()],
+        step0: {
+          lang: 'fr',
+          category: 'DemoCategory',
+        },
+        subcategoriesIndexes: [0],
         consumerWish: 'getAnswer',
       },
       AppLangs.fr,
@@ -31,31 +36,68 @@ describe('getDraftReportInputs', () => {
     ])
   })
 
-  it('should generate single input with optional textarea', () => {
+  it('should generate inputs with optional textarea', () => {
     const inputs = getDraftReportInputs(
       {
-        subcategories: [
-          Fixture.genSubcategory({
-            detailInputs: [DetailsFixtureInput.text],
-          }),
-        ],
+        step0: {
+          lang: 'fr',
+          category: 'DemoCategory',
+        },
+        subcategoriesIndexes: [8],
       },
       AppLangs.fr,
     )
-    expect(inputs).toEqual([DetailsFixtureInput.text, DraftReportDefaultInputs.description(true)])
+    expect(inputs).toEqual([
+      {
+        label: 'simple input texte (le type TEXT)',
+        type: 'TEXT',
+      },
+      {
+        label: 'input radio',
+        options: [
+          'première option',
+          'seconde option',
+          "troisième option qu'il faut préciser (à préciser)",
+          "quatrième option qu'il faut préciser (à préciser)",
+        ],
+        type: 'RADIO',
+      },
+      {
+        label: 'input radio optionnel',
+        optional: true,
+        options: ['première option', 'seconde option', "troisième option qu'il faut préciser (à préciser)"],
+        type: 'RADIO',
+      },
+      {
+        label: 'input checkbox',
+        options: [
+          'première option',
+          'seconde option',
+          "troisième option qu'il faut préciser (à préciser)",
+          'quatrième option',
+          "cinquième option qu'il faut aussi préciser (à préciser)",
+        ],
+        type: 'CHECKBOX',
+      },
+      DraftReportDefaultInputs.description(true),
+    ])
   })
 
   it('should generate custom input with reponseconso', () => {
     const inputs = getDraftReportInputs(
       {
+        step0: {
+          lang: 'fr',
+          category: 'DemoCategory',
+        },
+        subcategoriesIndexes: [4, 0],
         consumerWish: 'getAnswer',
-        subcategories: [Fixture.genSubcategory(), {id: '', title: '', detailInputs: [DetailsFixtureInput.date]}],
       },
       AppLangs.fr,
     )
     expect(inputs).toEqual([
-      DetailsFixtureInput.date,
-      DraftReportDefaultInputs.description(true),
+      DraftReportDefaultInputs.date('fr'),
+      DraftReportDefaultInputs.description(false),
       DraftReportDefaultInputs.reponseConso(AppLangs.fr),
     ])
   })

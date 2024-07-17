@@ -55,7 +55,7 @@ export function isStepBeforeOrEqual(a: ReportStepOrDone, b: ReportStepOrDone) {
 function isBuildingStepDone(r: Partial<ReportDraft2>, step: ReportStep) {
   switch (step) {
     case 'BuildingProblem':
-      return !!r.category && !!r.subcategories && !!r.consumerWish
+      return !!r.step0 && !!r.subcategoriesIndexes && !!r.consumerWish
     case 'BuildingCompany':
       // When the website is in a foreign country, only the country is specified
       return (
@@ -69,7 +69,7 @@ function isBuildingStepDone(r: Partial<ReportDraft2>, step: ReportStep) {
     case 'BuildingDetails':
       return !!r.details
     case 'BuildingConsumer':
-      return !!r.consumer?.email && !!r.consumer?.firstName && !!r.consumer?.lastName
+      return !!r.step4
     case 'Confirmation':
       // if all other steps are completed, we want to go to Confirmation
       return false

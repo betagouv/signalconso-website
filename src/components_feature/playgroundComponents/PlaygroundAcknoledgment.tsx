@@ -1,5 +1,5 @@
 import {useGetCountries} from '@/clients/apiHooks'
-import {useMemo, useState, useEffect} from 'react'
+import {useMemo} from 'react'
 import {Country} from '../../model/Country'
 import {CreatedReport} from '../../model/CreatedReport'
 import {Fixture} from '../../test/fixture'
@@ -61,6 +61,14 @@ export const PlaygroundAcknowledgment = ({
         ...baseReport,
         employeeConsumer: false,
         tags: ['LitigeContractuel'],
+      }),
+      [AcknowledgmentCases.PostReportHelper]: () => ({
+        ...baseReport,
+        postReportHelper: {
+          title: 'Titre du postReportHelper',
+          content:
+            'Contenu du postReportHelper avec du <strong>HTML</strong>. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. ',
+        },
       }),
       [AcknowledgmentCases.Default]: () => ({...baseReport, employeeConsumer: false, tags: []}),
     }

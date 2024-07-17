@@ -4,7 +4,12 @@ import {StepNavigation} from '@/components_feature/reportFlow/reportFlowStepper/
 import {ReportFlowStepperActions} from '@/components_feature/reportFlow/reportFlowStepper/ReportFlowStepperActions'
 import {FriendlyHelpText} from '@/components_simple/FriendlyHelpText'
 import {OpenFfWelcomeText, useOpenFfSetup} from '@/feature/openFoodFacts'
-import {isTransmittableToProBeforePickingConsumerWish} from '@/feature/reportDraftUtils'
+import {
+  getSubcategories,
+  hasStep0,
+  hasSubcategoryIndexes,
+  isTransmittableToProBeforePickingConsumerWish,
+} from '@/feature/reportDraftUtils'
 import {useI18n} from '@/i18n/I18n'
 import {ConsumerWish} from '@/model/ReportDraft'
 import {ReportDraft2} from '@/model/ReportDraft2'
@@ -46,27 +51,36 @@ function adjustTagsBeforeSubmit(draft: Partial<ReportDraft2>, companyKindFromSel
 }
 
 export function initiateReportDraftForAnomaly(anomaly: Anomaly, lang: AppLang): Partial<ReportDraft2> {
-  return {category: anomaly.category, lang}
+  return {
+    step0: {category: anomaly.category, lang},
+    subcategoriesIndexes: [],
+  }
 }
 
 export function adjustReportDraftAfterSubcategoriesChange(
   anomaly: Anomaly,
   report: Partial<ReportDraft2>,
-  subcategory: Subcategory,
   subcategoryIndex: number,
-) {
-  const subcategoriesToKeep = (report.subcategories ?? []).slice(0, subcategoryIndex)
-  const subcategories = [...subcategoriesToKeep, subcategory]
-  const tags = buildTagsFromSubcategories(anomaly, subcategories)
+  subcategoryDepthIndex: number,
+): Partial<ReportDraft2> {
+  if (!hasStep0(report)) {
+    throw new Error('ReportDraft should have a lang and a category already')
+  }
+  const newSubcategoriesIndexes = [...(report.subcategoriesIndexes ?? []).slice(0, subcategoryDepthIndex), subcategoryIndex]
+  const newSubcategories = getSubcategories({
+    ...report,
+    subcategoriesIndexes: newSubcategoriesIndexes,
+  })
+  const tags = buildTagsFromSubcategories(anomaly, newSubcategories)
   //Recompute company kind based on current report selected subcategories
-  const lastCategoryCompanyKind = subcategories
+  const lastCategoryCompanyKind = newSubcategories
     .map(_ => _.companyKind)
     .filter(_ => _ !== undefined)
     .pop()
 
-  const copy = {
+  return {
     ...report,
-    subcategories,
+    subcategoriesIndexes: newSubcategoriesIndexes,
     tags,
     companyKind: lastCategoryCompanyKind,
     companyDraft: undefined,
@@ -76,21 +90,19 @@ export function adjustReportDraftAfterSubcategoriesChange(
     consumerWish: undefined,
     employeeConsumer: undefined,
   }
-  return copy
 }
 
 export const Problem = ({anomaly, isWebView, stepNavigation}: Props) => {
   const _analytic = useAnalyticContext()
   const {m, currentLang} = useI18n()
   const {reportDraft, setReportDraft, resetFlow, sendReportEvent} = useReportFlowContext()
-  const hasReponseConsoSubcategories = reportDraft.subcategories
-    ? buildTagsFromSubcategories(anomaly, reportDraft.subcategories).includes('ReponseConso')
-    : false
+  const subcategories = hasStep0(reportDraft) && hasSubcategoryIndexes(reportDraft) ? getSubcategories(reportDraft) : []
+  const hasReponseConsoSubcategories = buildTagsFromSubcategories(anomaly, subcategories).includes('ReponseConso')
   const openFfSetup = useOpenFfSetup(anomaly)
 
   // reset the draft when switching the root category
   useEffect(() => {
-    if (anomaly.category !== reportDraft.category) {
+    if (anomaly.category !== reportDraft.step0?.category) {
       _analytic.trackEvent(EventCategories.report, ReportEventActions.validateCategory, anomaly.category)
       resetFlow()
       setReportDraft(_ => initiateReportDraftForAnomaly(anomaly, currentLang))
@@ -120,12 +132,11 @@ export const Problem = ({anomaly, isWebView, stepNavigation}: Props) => {
     ccrfCodeFromSelected,
     categoryOverrideFromSelected,
   } = useMemo(() => {
-    return computeSelectedSubcategoriesData(anomaly, reportDraft.subcategories ?? [])
-  }, [reportDraft.subcategories])
+    return computeSelectedSubcategoriesData(anomaly, subcategories)
+  }, [subcategories])
 
   function onSubmit(next: () => void): void {
     setReportDraft(draft => {
-      const {subcategories, ..._anomaly} = anomaly
       const consumerWish = askConsumerWish ? draft.consumerWish : 'companyImprovement'
       // Company kind 'SOCIAL' cannot be employee consumer report
       const employeeConsumer = draft.companyKind === 'SOCIAL' ? false : draft.employeeConsumer
@@ -161,9 +172,9 @@ export const Problem = ({anomaly, isWebView, stepNavigation}: Props) => {
     next()
   }
 
-  const handleSubcategoriesChange = (subcategory: Subcategory, index: number) => {
+  const handleSubcategoriesChange = (subcategoryIndex: number, subcategoryDepthIndex: number) => {
     setReportDraft(report => {
-      const newReport = adjustReportDraftAfterSubcategoriesChange(anomaly, report, subcategory, index)
+      const newReport = adjustReportDraftAfterSubcategoriesChange(anomaly, report, subcategoryIndex, subcategoryDepthIndex)
       return newReport
     })
   }
@@ -174,15 +185,17 @@ export const Problem = ({anomaly, isWebView, stepNavigation}: Props) => {
       <OpenFfWelcomeText setup={openFfSetup} />
       {openFfSetup.status !== 'loading' && (
         <>
-          {[anomaly, ...(reportDraft.subcategories ?? [])].map(
-            (category, idx) =>
+          {[anomaly, ...subcategories].map(
+            (category, subcategoryDepthIdx) =>
               category.subcategories && (
                 <ProblemSelect
-                  autoScrollTo={idx !== 0}
+                  autoScrollTo={subcategoryDepthIdx !== 0}
                   key={category.id}
                   title={category.subcategoriesTitle}
-                  value={reportDraft.subcategories?.[idx]?.id}
-                  onChange={id => handleSubcategoriesChange(category.subcategories?.find(_ => _.id === id)!, idx)}
+                  value={subcategories[subcategoryDepthIdx]?.id}
+                  onChange={id =>
+                    handleSubcategoriesChange(category.subcategories?.findIndex(_ => _.id === id)!, subcategoryDepthIdx)
+                  }
                   options={(category.subcategories ?? []).map((_, i) => ({
                     title: _.title,
                     description: _.desc,
@@ -192,11 +205,10 @@ export const Problem = ({anomaly, isWebView, stepNavigation}: Props) => {
               ),
           )}
           {isLastSubcategory &&
-            reportDraft.subcategories &&
             (instanceOfSubcategoryWithInfoWall(lastSubcategories) ? (
               <ProblemInformation
                 anomaly={anomaly}
-                subcategories={reportDraft.subcategories}
+                subcategories={subcategories}
                 information={lastSubcategories.blockingInfo}
                 {...{isWebView}}
               />

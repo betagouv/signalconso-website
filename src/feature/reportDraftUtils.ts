@@ -1,16 +1,43 @@
 import {findAnomaly} from '@/anomalies/Anomalies'
-import {ReportTag, SocialNetworks} from '@/anomalies/Anomaly'
+import {ReportTag, SocialNetworks, Subcategory} from '@/anomalies/Anomaly'
 import {Influencer, ReportDraft, TransmissionStatus} from '@/model/ReportDraft'
 import {ReportDraft2} from '@/model/ReportDraft2'
 import {ApiInfluencer, ApiReportDraft} from '@/model/reportsFromApi'
 import uniq from 'lodash/uniq'
 
-export function hasLangAndCategory(r: Partial<ReportDraft2>): r is Pick<ReportDraft, 'category' | 'lang'> {
-  return !!r.category && !!r.lang
+export function hasStep0(r: Partial<ReportDraft2>): r is Pick<ReportDraft, 'step0'> & Partial<ReportDraft2> {
+  return !!r.step0
+}
+export function hasSubcategoryIndexes(
+  r: Partial<ReportDraft2>,
+): r is Pick<ReportDraft, 'subcategoriesIndexes'> & Partial<ReportDraft2> {
+  return !!r.subcategoriesIndexes
 }
 
-export const getAnomaly = (r: Pick<ReportDraft, 'category' | 'lang'>) => {
-  return findAnomaly(r.category, r.lang)
+export const getAnomaly = (r: Pick<ReportDraft, 'step0'>) => {
+  return findAnomaly(r.step0.category, r.step0.lang)
+}
+
+export const getSubcategories = (r: Pick<ReportDraft, 'subcategoriesIndexes' | 'step0'>): Subcategory[] => {
+  const anomaly = findAnomaly(r.step0.category, r.step0.lang)
+  const startingIndexes = r.subcategoriesIndexes
+  const collectedSubcategories: Subcategory[] = []
+  function recurse(indexes: number[], subcategories: Subcategory[] = []) {
+    if (indexes.length === 0) {
+      return
+    }
+    const [index, ...indexesLeft] = indexes
+    const subcategory = subcategories[index]
+    if (!subcategory) {
+      throw new Error(
+        `Nonsensical subcategory indexes ${startingIndexes} for category ${r.step0.category} (${r.step0.lang}). Can't find index ${index} in ${subcategories.length} subcategories`,
+      )
+    }
+    collectedSubcategories.push(subcategory)
+    recurse(indexesLeft, subcategory.subcategories)
+  }
+  recurse(r.subcategoriesIndexes, anomaly.subcategories)
+  return collectedSubcategories
 }
 
 export const isTransmittableToPro = (r: Pick<ReportDraft, 'employeeConsumer' | 'consumerWish'>): boolean => {
@@ -79,8 +106,15 @@ export const toApiInfluencer = (influencer: Influencer): ApiInfluencer => {
 }
 
 export const toApi = (draft: ReportDraft, metadata: ApiReportDraft['metadata']): ApiReportDraft => {
-  const {consumerWish, reponseconsoCode, contactAgreement, vendor, ccrfCode} = draft
+  const {
+    consumerWish,
+    reponseconsoCode,
+    step4: {contactAgreement, consumer},
+    vendor,
+    ccrfCode,
+  } = draft
   const anomaly = getAnomaly(draft)
+  const subcategories = getSubcategories(draft)
   const isOpenFf = anomaly.isSpecialOpenFoodFactsCategory
 
   const additionalTags: ReportTag[] = [
@@ -90,13 +124,12 @@ export const toApi = (draft: ReportDraft, metadata: ApiReportDraft['metadata']):
   ]
 
   const tags = uniq([...(draft.tags ?? []), ...additionalTags])
-
   return {
     // We don't use the rest syntax here ("..."),
     // we prefer to be sure to fill each field explicitely
-    gender: draft.consumer.gender,
-    category: draft.categoryOverride ?? draft.category,
-    subcategories: draft.subcategories.map(_ => _.title),
+    gender: consumer.gender,
+    category: draft.categoryOverride ?? draft.step0.category,
+    subcategories: subcategories.map(_ => _.title),
     details: draft.details,
     companyName: draft.companyDraft?.name,
     companyBrand: draft.companyDraft?.brand,
@@ -110,11 +143,11 @@ export const toApi = (draft: ReportDraft, metadata: ApiReportDraft['metadata']):
     companyIsPublic: draft.companyDraft?.isPublic,
     websiteURL: draft.companyDraft?.website,
     phone: draft.companyDraft?.phone,
-    firstName: draft.consumer.firstName,
-    lastName: draft.consumer.lastName,
-    email: draft.consumer.email,
-    consumerPhone: draft.consumer.phone,
-    consumerReferenceNumber: draft.consumer.referenceNumber,
+    firstName: consumer.firstName,
+    lastName: consumer.lastName,
+    email: consumer.email,
+    consumerPhone: consumer.phone,
+    consumerReferenceNumber: consumer.referenceNumber,
     contactAgreement,
     employeeConsumer: draft.employeeConsumer ?? false,
     forwardToReponseConso: consumerWish === 'getAnswer',
@@ -124,7 +157,7 @@ export const toApi = (draft: ReportDraft, metadata: ApiReportDraft['metadata']):
     reponseconsoCode: reponseconsoCode ? [reponseconsoCode] : undefined,
     ccrfCode,
     influencer: draft.influencer ? toApiInfluencer(draft.influencer) : undefined,
-    lang: draft.lang,
+    lang: draft.step0.lang,
     barcodeProductId: draft.barcodeProduct?.id,
     train: draft.train,
     station: draft.station,

@@ -131,13 +131,13 @@ export class Fixture {
         const category = anomaly.category
         return {
           ..._,
-          category,
+          step0: {category, lang: currentLang},
           consumerWish: random.oneOf(['fixContractualDispute', 'companyImprovement', 'getAnswer']),
         }
       },
       BuildingDetails: _ => ({
         ..._,
-        subcategories: [Fixture.genSubcategory({}, random), Fixture.genSubcategory({}, random)],
+        subcategoriesIndexes: [0, 0],
       }),
       BuildingCompany: _ => ({
         ..._,

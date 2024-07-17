@@ -15,6 +15,7 @@ export enum AcknowledgmentCases {
   ForeignCompany = 'ForeignCompany',
   FrenchCompanyWithoutSIRET = 'FrenchCompanyWithoutSIRET',
   ContractualDisputeWithSIRET = 'ContractualDisputeWithSIRET',
+  PostReportHelper = 'PostReportHelper',
   Default = 'Default',
 }
 

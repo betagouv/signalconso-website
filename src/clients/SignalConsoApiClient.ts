@@ -1,18 +1,17 @@
-import {appConfig} from '@/core/appConfig'
-import {ApiError, BaseApiClient} from './BaseApiClient'
-import {WebsiteCompanySearchResult} from '../model/Company'
-import {Country} from '../model/Country'
-import {FileOrigin, UploadedFile} from '../model/UploadedFile'
-import {CreatedReport} from '../model/CreatedReport'
-import {ReportDraft} from '../model/ReportDraft'
 import {SocialNetworks, Subcategory} from '@/anomalies/Anomaly'
+import {appConfig} from '@/core/appConfig'
+import {getSubcategories, toApi} from '@/feature/reportDraftUtils'
 import {ConsumerEmailResult} from '@/model/ConsumerEmailValidation'
 import {ApiCreatedReport, ApiReportDraft} from '@/model/reportsFromApi'
 import {ResponseConsumerReview, ResponseConsumerReviewExists} from '../core/Events'
 import {AppLang} from '../i18n/localization/AppLangs'
 import {BarcodeProduct} from '../model/BarcodeProduct'
-import {Influencer} from '@/model/Influencer'
-import {toApi} from '@/feature/reportDraftUtils'
+import {WebsiteCompanySearchResult} from '../model/Company'
+import {Country} from '../model/Country'
+import {CreatedReport} from '../model/CreatedReport'
+import {ReportDraft} from '../model/ReportDraft'
+import {FileOrigin, UploadedFile} from '../model/UploadedFile'
+import {ApiError, BaseApiClient} from './BaseApiClient'
 
 type PublicStat =
   | 'PromesseAction'
@@ -61,10 +60,10 @@ export class SignalConsoApiClient {
 
   createReport = async (draft: ReportDraft, metadata: ApiReportDraft['metadata']): Promise<CreatedReport> => {
     const apiReportDraft: ApiReportDraft = toApi(draft, metadata)
-
     const reportFromApi = await this.client.post<ApiCreatedReport>(`/reports`, {body: apiReportDraft})
 
-    const postReportHelper = draft.subcategories?.findLast(_ => _.postReportHelper)?.postReportHelper
+    const subcategories = getSubcategories(draft)
+    const postReportHelper = subcategories.findLast(_ => _.postReportHelper)?.postReportHelper
 
     const {tags, companyAddress, companySiret, websiteURL, employeeConsumer, contactAgreement} = reportFromApi
     const res: CreatedReport = {

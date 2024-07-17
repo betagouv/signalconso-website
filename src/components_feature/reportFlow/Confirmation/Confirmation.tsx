@@ -6,7 +6,7 @@ import {Animate} from '@/components_simple/Animate'
 import {CompanyRecapWithProduct} from '@/components_simple/CompanyRecap/CompanyRecap'
 import {FriendlyHelpText} from '@/components_simple/FriendlyHelpText'
 import {ReportFilesConfirmation} from '@/components_simple/reportFile/ReportFilesConfirmation'
-import {getAnomaly, getTransmissionStatus} from '@/feature/reportDraftUtils'
+import {getAnomaly, getSubcategories, getTransmissionStatus} from '@/feature/reportDraftUtils'
 import {getApiErrorId, useToastError} from '@/hooks/useToastError'
 import {useI18n} from '@/i18n/I18n'
 import {ReportDraft2} from '@/model/ReportDraft2'
@@ -96,11 +96,11 @@ function RenderEachStep({
   index: number
 }) {
   const goToStep = stepNavigation.goTo
-  const {m, currentLang} = useI18n()
+  const {m} = useI18n()
   const anomaly = getAnomaly(draft)
   const transmissionStatus = getTransmissionStatus(draft)
   const isTransmittable = transmissionStatus === 'WILL_BE_TRANSMITTED' || transmissionStatus === 'MAY_BE_TRANSMITTED'
-
+  const subcategories = getSubcategories(draft)
   switch (step) {
     case 'BuildingProblem':
       return (
@@ -110,7 +110,7 @@ function RenderEachStep({
             <div>
               <h3 className="fr-h6 !mb-2 !text-gray-500">{anomaly.title}</h3>
               <ul className="pl-0 list-none">
-                {draft.subcategories.map(_ => (
+                {subcategories.map(_ => (
                   <li key={_.title} className="text-gray-500">
                     <i className="ri-corner-down-right-line mr-2 " />
                     {_.title}
@@ -162,30 +162,31 @@ function RenderEachStep({
         </>
       )
     case 'BuildingConsumer':
+      const {consumer} = draft.step4
       return (
         <ConfirmationStep title={m.step_consumer} {...{goToStep, index}}>
           <ul className="list-none">
             <li className="p-0 flex gap-2">
               <div className="flex gap-2">
                 <i className="ri-account-box-line text-gray-400" />
-                {draft.consumer.gender ? m.gender[draft.consumer.gender] + ' ' : ''}
-                {draft.consumer.firstName} {draft.consumer.lastName}
+                {consumer.gender ? m.gender[consumer.gender] + ' ' : ''}
+                {consumer.firstName} {consumer.lastName}
               </div>
             </li>
             <li className="p-0 flex gap-2">
               <i className="ri-mail-line text-gray-400" />
-              <span>{draft.consumer.email}</span>
+              <span>{consumer.email}</span>
             </li>
-            {draft.consumer.phone && (
+            {consumer.phone && (
               <li className="p-0 flex gap-2">
                 <i className="ri-phone-line text-gray-400" />
-                <span>{draft.consumer.phone}</span>
+                <span>{consumer.phone}</span>
               </li>
             )}
-            {draft.consumer.referenceNumber && (
+            {consumer.referenceNumber && (
               <li className="p-0 flex gap-2">
                 <i className="ri-bill-line text-gray-400" />
-                <span>{draft.consumer.referenceNumber}</span>
+                <span>{consumer.referenceNumber}</span>
               </li>
             )}
             {isTransmittable && (
@@ -193,7 +194,7 @@ function RenderEachStep({
                 <i className="ri-lock-line text-gray-400" />
                 <span>{m.contactAgreement} : </span>
                 <span className="font-bold">
-                  {draft.contactAgreement ? (
+                  {draft.step4.contactAgreement ? (
                     <span className=" text-green-700">
                       {m.yes.toLowerCase()}
                       <i className="ri-checkbox-circle-fill ml-1" />
