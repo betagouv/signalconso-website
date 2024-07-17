@@ -19,18 +19,19 @@ import {ScRadioButtons} from '../../../components_simple/formInputs/ScRadioButto
 import {useI18n} from '../../../i18n/I18n'
 
 interface Props {
-  onSubmit: (socialNetwork: SocialNetwork, influencer: string, otherSocialNetwork?: string, postalCode?: string) => void
+  onSubmit: (form: Form) => void
 }
 
 interface Form {
   socialNetwork: SocialNetwork
-  otherSocialNetwork: string
+  otherSocialNetwork?: string
   influencer: string
-  postalCode: string
+  postalCode?: string
 }
 
-export const InfluencerBySocialNetwork = ({onSubmit}: Props) => {
+export function InfluencerBySocialNetwork({onSubmit}: Props) {
   const {m} = useI18n()
+  const {signalConsoApiClient} = useApiClients()
   const {
     handleSubmit,
     watch,
@@ -39,17 +40,10 @@ export const InfluencerBySocialNetwork = ({onSubmit}: Props) => {
     setValue,
     formState: {errors},
   } = useForm<Form>()
-
-  const sanitizeInfluencer = (name: string) => {
-    return name.toLowerCase().replaceAll(' ', '').replaceAll('@', '')
-  }
-
-  const {signalConsoApiClient} = useApiClients()
   const socialNetwork = watch('socialNetwork')
-
   const influencer = watch('influencer')
   const [isEditingInfluencer, setIsEditingInfluencer] = useState(true)
-  const [certifiedInfluencer, setCertifiedInfluencer] = useState<string>()
+  const [certifiedInfluencer, setCertifiedInfluencer] = useState<string | undefined>()
 
   const searchQuery = useQuery({
     queryKey: ['searchCertifiedInfluencer', certifiedInfluencer, socialNetwork],
@@ -61,7 +55,7 @@ export const InfluencerBySocialNetwork = ({onSubmit}: Props) => {
 
   const socialNetworkOptions = socialNetworks.map(socialNetwork => {
     return {
-      label: <SocialNetworkRow socialNetwork={socialNetwork} />,
+      label: <SocialNetworkRow {...{socialNetwork}} />,
       value: socialNetwork,
       specify: socialNetwork === 'OTHER' ? <DetailsSpecifyInput control={control} name="otherSocialNetwork" /> : undefined,
     }
@@ -72,7 +66,10 @@ export const InfluencerBySocialNetwork = ({onSubmit}: Props) => {
       <RequiredFieldsLegend />
       <form
         onSubmit={handleSubmit(form => {
-          onSubmit(form.socialNetwork, sanitizeInfluencer(form.influencer), form.otherSocialNetwork, form.postalCode)
+          onSubmit({
+            ...form,
+            influencer: sanitizeInfluencer(form.influencer),
+          })
         })}
       >
         <Animate autoScrollTo={false}>
@@ -193,4 +190,8 @@ export const InfluencerBySocialNetwork = ({onSubmit}: Props) => {
       </form>
     </>
   )
+}
+
+function sanitizeInfluencer(name: string) {
+  return name.toLowerCase().replaceAll(' ', '').replaceAll('@', '')
 }

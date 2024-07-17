@@ -64,26 +64,14 @@ export function CompanyIdentificationDispatch({draft, updateReport}: CommonProps
     case 'TRAIN':
       return (
         <CompanyByTrain
-          onSubmit={(train, ter, nightTrain) => {
-            updateReport({
-              train: {
-                train,
-                ter,
-                nightTrain,
-              },
-            })
+          onSubmit={form => {
+            updateReport({train: form})
           }}
         />
       )
     case 'STATION':
       return (
-        <CompanyByStation
-          onSubmit={station =>
-            updateReport({
-              station,
-            })
-          }
-        >
+        <CompanyByStation onSubmit={station => updateReport({station})}>
           {() => (
             <CommonTree {...{draft, updateReport}} phoneOrWebsite={undefined} barcodeProduct={undefined} result={undefined} />
           )}
@@ -100,11 +88,11 @@ export function CompanyIdentificationDispatch({draft, updateReport}: CommonProps
     case 'SOCIAL':
       return (
         <InfluencerBySocialNetwork
-          onSubmit={(socialNetwork, influencer, otherSocialNetwork, postalCode) => {
+          onSubmit={({socialNetwork, influencer, otherSocialNetwork, postalCode}) => {
             const companyDraft = postalCode
               ? {
                   address: {
-                    postalCode,
+                    postalCode: postalCode,
                   },
                 }
               : undefined

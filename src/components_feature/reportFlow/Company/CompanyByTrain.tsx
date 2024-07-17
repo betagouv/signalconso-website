@@ -9,7 +9,7 @@ import {useEffect} from 'react'
 import {Controller, useForm} from 'react-hook-form'
 
 interface Props {
-  onSubmit: (train: Train, ter?: Ter, nightTrain?: NightTrain) => void
+  onSubmit: (form: Form) => void
 }
 
 interface Form {
@@ -72,7 +72,7 @@ export const CompanyByTrain = ({onSubmit}: Props) => {
       <RequiredFieldsLegend />
       <form
         onSubmit={handleSubmit(form => {
-          onSubmit(form.train, form.ter, form.nightTrain)
+          onSubmit(form)
         })}
       >
         <Animate autoScrollTo={false}>
