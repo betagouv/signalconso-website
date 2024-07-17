@@ -8,12 +8,12 @@ import {ButtonWithLoader} from '@/components_simple/buttons/Buttons'
 import {ScTextInput} from '@/components_simple/formInputs/ScTextInput'
 import {useApiClients} from '@/context/ApiClientsContext'
 import {useI18n} from '@/i18n/I18n'
+import {purgeWhitespaces} from '@/utils/utils'
 import {useQuery} from '@tanstack/react-query'
 import {ReactNode, useRef, useState} from 'react'
 import {useForm} from 'react-hook-form'
 import {CompanySearchResult} from '../../../model/Company'
 import {SiretHelpButton} from './lib/SiretHelpButton'
-import {purgeWhitespaces} from '@/utils/utils'
 
 interface Form {
   identity: string
@@ -27,7 +27,7 @@ function isSiretOrSiren(identity: string) {
   return /^(?:\d{9}|\d{14})$/.test(identity)
 }
 
-export const CompanySearchByIdentity = ({children}: Props) => {
+export const CompanySearchByIdentifier = ({children}: Props) => {
   const {m, currentLang} = useI18n()
   const {companyApiClient} = useApiClients()
   const _analytic = useAnalyticContext()

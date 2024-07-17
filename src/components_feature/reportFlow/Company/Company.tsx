@@ -23,7 +23,7 @@ import {CompanyByWebsite} from './CompanyByWebsite'
 import {CompanyChooseIdentificationMethod} from './CompanyChooseIdentificationMethod'
 import {CompanyFilled} from './CompanyFilled'
 import {CompanySearchByBarcode} from './CompanySearchByBarcode'
-import {CompanySearchByIdentity} from './CompanySearchByIdentity'
+import {CompanySearchByIdentifier} from './CompanySearchByIdentifier'
 import {CompanySearchByNameAndPostalCode} from './CompanySearchByNameAndPostalCode'
 import {CompanySearchResultComponent} from './CompanySearchResult'
 import {CompanyWebsiteCountry} from './CompanyWebsiteCountry'
@@ -242,7 +242,7 @@ function CommonTree({
             )
           case 'byIdentifier':
             return (
-              <CompanySearchByIdentity>
+              <CompanySearchByIdentifier>
                 {companies => (
                   <CompanySearchResultComponent
                     companies={companies ?? []}
@@ -258,7 +258,7 @@ function CommonTree({
                     }}
                   />
                 )}
-              </CompanySearchByIdentity>
+              </CompanySearchByIdentifier>
             )
           case 'iCannot':
             if (draft.companyKind === 'LOCATION') {
