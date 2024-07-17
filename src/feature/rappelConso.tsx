@@ -41,15 +41,15 @@ export function useRappelConsoSetup(anomaly: Anomaly): SpecialCategorySetup<Rapp
   const _query = useQuery({
     queryKey: ['rappel_conso', rappelConsoId],
     queryFn: () =>
-      rappelConsoClient.fetchRappelConso(rappelConsoId!).then(res => {
-        if (res.total_count > 0) {
-          const t = res.results[0]
+      rappelConsoClient.fetchRappelConso(rappelConsoId!).then(results => {
+        if (results.total_count > 0) {
+          const result = results.results[0]
           return {
-            id: t.id,
+            id: result.id,
             data: {
-              libelle: t.libelle,
-              gtins: extractGTINs(t),
-              fiche: t.lien_vers_la_fiche_rappel,
+              libelle: result.libelle,
+              gtins: extractGTINs(result),
+              fiche: result.lien_vers_la_fiche_rappel,
             },
           }
         } else {

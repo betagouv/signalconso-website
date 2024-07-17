@@ -31,6 +31,7 @@ import {useState} from 'react'
 import {ScSelect} from '@/components_simple/formInputs/ScSelect'
 import {ScRadioButtons} from '@/components_simple/formInputs/ScRadioButtons'
 import {NoSearchResult} from '@/components_feature/reportFlow/Company/lib/NoSearchResult'
+import {Loader} from '@/feature/Loader'
 
 export function Company({stepNavigation}: {stepNavigation: StepNavigation}) {
   const {reportDraft, setReportDraft, sendReportEvent} = useReportFlowContext()
@@ -414,45 +415,58 @@ function RappelConsoTree({draft, updateReport}: CommonProps) {
   if (!data || data.gtins.length === 0) {
     return <BarcodeTree {...{draft, updateReport}} specificProductCompanyKinds={'PRODUCT'} />
   } else if (data.gtins.length === 1) {
-    return <One {...{draft, updateReport}} gtin={data.gtins[0]} />
+    return <RCOneBarcodeTree {...{draft, updateReport}} gtin={data.gtins[0]} />
   } else {
-    return <Mutliple {...{draft, updateReport}} gtins={data.gtins} />
+    return <RCMutlipleBarcodesTree {...{draft, updateReport}} gtins={data.gtins} />
   }
 }
 
-function One({draft, updateReport, gtin}: {gtin: string} & CommonProps) {
+function RCOneBarcodeTree({draft, updateReport, gtin}: {gtin: string} & CommonProps) {
   const _search = useBarcodeSearch(gtin)
   const {product, company} = _search.data ?? {}
-  return (
-    <>
-      <p>
-        Numéro (GTIN) du code-barres du produit fourni par RappelConso : <span className="font-bold">{gtin}</span>
-      </p>
-      <BarcodeSearchResult
-        specificProductCompanyKinds={'PRODUCT'}
-        product={product}
-        company={company}
-        reportDraft={draft}
-        onSubmit={(company, barcodeProduct) => {
-          updateReport({
-            companyDraft: company,
-            barcodeProduct,
-          })
-        }}
-        noResultsPanel={
-          <NoSearchResult text="Malheureusement, nous n'avons pas pu identifier automatiquement l'entreprise associée à ce code barre." />
-        }
-      />
-      {!company && (
-        <CommonTree {...{draft, updateReport}} phoneOrWebsite={undefined} barcodeProduct={product} result={undefined} />
-      )}
-    </>
-  )
+
+  if (_search.isFetching) {
+    return <Loader />
+  } else {
+    return (
+      <>
+        <p>
+          Numéro (GTIN) du code-barres du produit fourni par RappelConso : <span className="font-bold">{gtin}</span>
+        </p>
+        <BarcodeSearchResult
+          specificProductCompanyKinds={'PRODUCT'}
+          product={product}
+          company={company}
+          reportDraft={draft}
+          onSubmit={(company, barcodeProduct) => {
+            updateReport({
+              companyDraft: company,
+              barcodeProduct,
+            })
+          }}
+          noResultsPanel={
+            <NoSearchResult text="Malheureusement, nous n'avons pas pu identifier automatiquement l'entreprise associée à ce code barre." />
+          }
+        />
+        {!company && (
+          <CommonTree {...{draft, updateReport}} phoneOrWebsite={undefined} barcodeProduct={product} result={undefined} />
+        )}
+      </>
+    )
+  }
 }
 
-function Mutliple({draft, updateReport, gtins}: {gtins: string[]} & CommonProps) {
-  const [selectedGtin, selectGtin] = useState<string>()
-  const _search = useBarcodeSearch(selectedGtin)
+function RCMutlipleBarcodesTree({draft, updateReport, gtins}: {gtins: string[]} & CommonProps) {
+  const [selectedGtin, selectGtin] = useState<string | null>()
+  const _search = useBarcodeSearch(selectedGtin ?? undefined)
+
+  const options = gtins.map(gtin => {
+    return {
+      value: gtin,
+      label: gtin,
+    }
+  })
+  const options2 = [...options, {value: null, label: 'Je ne connais pas le code-barres'}]
 
   return (
     <>
@@ -462,12 +476,7 @@ function Mutliple({draft, updateReport, gtins}: {gtins: string[]} & CommonProps)
         onChange={value => selectGtin(value)}
         value={selectedGtin}
         required={true}
-        options={gtins.map(gtin => {
-          return {
-            value: gtin,
-            label: gtin,
-          }
-        })}
+        options={options2}
       />
       {selectedGtin && (
         <BarcodeSearchResult
@@ -486,7 +495,7 @@ function Mutliple({draft, updateReport, gtins}: {gtins: string[]} & CommonProps)
           }
         />
       )}
-      {selectedGtin && !_search.data?.company && (
+      {selectedGtin !== undefined && !_search.data?.company && (
         <CommonTree
           {...{draft, updateReport}}
           phoneOrWebsite={undefined}
