@@ -10,22 +10,20 @@ import {UploadedFile} from './UploadedFile'
 export const genders = ['Male', 'Female'] as const
 export type Gender = (typeof genders)[number]
 
-export interface ReportDraftConsumer {
-  firstName: string
-  lastName: string
-  email: string
-  phone?: string
-  referenceNumber?: string
-  gender?: Gender
-}
-
 export interface ReportDraft {
   step0: {
     category: string
     lang: AppLang
   }
   step4: {
-    consumer: ReportDraftConsumer
+    consumer: {
+      firstName: string
+      lastName: string
+      email: string
+      phone?: string
+      referenceNumber?: string
+      gender?: Gender
+    }
     contactAgreement: boolean
   }
   subcategoriesIndexes: number[]

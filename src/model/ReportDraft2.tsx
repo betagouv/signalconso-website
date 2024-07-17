@@ -7,7 +7,7 @@ import {DeepPartial, isoToFrenchFormat, notNull} from '../utils/utils'
 import {Address} from './Address'
 import {CompanyDraft} from './Company'
 import {DetailInputValue} from './CreatedReport'
-import {ReportDraft, ReportDraftConsumer} from './ReportDraft'
+import {ReportDraft} from './ReportDraft'
 
 export type DetailInputValues2 = {[key: string]: string | string[]}
 
@@ -98,20 +98,6 @@ export class ReportDraft2 {
           ...base?.address,
           ...(newValue.address as Address),
         },
-      }
-    } else {
-      return base
-    }
-  }
-
-  static readonly mergeConsumer = (
-    base?: ReportDraftConsumer,
-    newValue?: DeepPartial<ReportDraftConsumer>,
-  ): ReportDraftConsumer | undefined => {
-    if (newValue) {
-      return {
-        ...base,
-        ...(newValue as ReportDraftConsumer),
       }
     } else {
       return base
