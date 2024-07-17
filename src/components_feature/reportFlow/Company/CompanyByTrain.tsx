@@ -1,21 +1,21 @@
-import {useI18n} from '@/i18n/I18n'
-import {ters, Ters, trains, Trains, NightTrains, nightTrains} from '@/anomalies/Anomaly'
-import {Controller, useForm} from 'react-hook-form'
-import {ScRadioButtons} from '@/components_simple/formInputs/ScRadioButtons'
+import {NightTrain, nightTrains, Ter, ters, Train, trains} from '@/anomalies/Anomaly'
 import {Animate} from '@/components_simple/Animate'
-import {useEffect} from 'react'
-import {RequiredFieldsLegend} from '@/components_simple/RequiredFieldsLegend'
 import {BtnNextSubmit} from '@/components_simple/buttons/Buttons'
+import {ScRadioButtons} from '@/components_simple/formInputs/ScRadioButtons'
 import {FriendlyHelpText} from '@/components_simple/FriendlyHelpText'
+import {RequiredFieldsLegend} from '@/components_simple/RequiredFieldsLegend'
+import {useI18n} from '@/i18n/I18n'
+import {useEffect} from 'react'
+import {Controller, useForm} from 'react-hook-form'
 
 interface Props {
-  onSubmit: (train: Trains, ter?: Ters, nightTrain?: NightTrains) => void
+  onSubmit: (train: Train, ter?: Ter, nightTrain?: NightTrain) => void
 }
 
 interface Form {
-  train: Trains
-  ter?: Ters
-  nightTrain?: NightTrains
+  train: Train
+  ter?: Ter
+  nightTrain?: NightTrain
 }
 
 export const CompanyByTrain = ({onSubmit}: Props) => {

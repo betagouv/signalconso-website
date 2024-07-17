@@ -1,29 +1,29 @@
+import {useToastOnQueryError} from '@/clients/apiHooks'
+import {DetailsSpecifyInput} from '@/components_feature/reportFlow/Details/DetailsSpecifyInput'
+import {AutofocusedDiv} from '@/components_simple/AutofocusedDiv'
 import {RequiredFieldsLegend} from '@/components_simple/RequiredFieldsLegend'
+import {ScAlert} from '@/components_simple/ScAlert'
 import {BtnNextSubmit, ButtonWithLoader} from '@/components_simple/buttons/Buttons'
+import {ScAutocompletePostcode} from '@/components_simple/formInputs/ScAutocompletePostcode'
 import {ScTextInput} from '@/components_simple/formInputs/ScTextInput'
+import {useApiClients} from '@/context/ApiClientsContext'
+import {Alert} from '@codegouvfr/react-dsfr/Alert'
+import {Button} from '@codegouvfr/react-dsfr/Button'
+import {useQuery} from '@tanstack/react-query'
+import {useState} from 'react'
 import {Controller, useForm} from 'react-hook-form'
-import {SocialNetworks, socialNetworks} from '../../../anomalies/Anomaly'
+import {SocialNetwork, socialNetworks} from '../../../anomalies/Anomaly'
 import {Animate} from '../../../components_simple/Animate'
 import {SocialNetworkRow} from '../../../components_simple/SocialNetworkRow'
 import {ScRadioButtons} from '../../../components_simple/formInputs/ScRadioButtons'
 import {useI18n} from '../../../i18n/I18n'
-import {DetailsSpecifyInput} from '@/components_feature/reportFlow/Details/DetailsSpecifyInput'
-import {AutofocusedDiv} from '@/components_simple/AutofocusedDiv'
-import {Button} from '@codegouvfr/react-dsfr/Button'
-import {useQuery} from '@tanstack/react-query'
-import {useApiClients} from '@/context/ApiClientsContext'
-import {useToastOnQueryError} from '@/clients/apiHooks'
-import {useEffect, useState} from 'react'
-import {Alert} from '@codegouvfr/react-dsfr/Alert'
-import {ScAutocompletePostcode} from '@/components_simple/formInputs/ScAutocompletePostcode'
-import {ScAlert} from '@/components_simple/ScAlert'
 
 interface Props {
-  onSubmit: (socialNetwork: SocialNetworks, influencer: string, otherSocialNetwork?: string, postalCode?: string) => void
+  onSubmit: (socialNetwork: SocialNetwork, influencer: string, otherSocialNetwork?: string, postalCode?: string) => void
 }
 
 interface Form {
-  socialNetwork: SocialNetworks
+  socialNetwork: SocialNetwork
   otherSocialNetwork: string
   influencer: string
   postalCode: string

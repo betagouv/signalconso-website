@@ -41,7 +41,7 @@ type CompanyKindQuestion = {
 
 type CompanyKindQuestionOption = {
   label: string
-  companyKind: CompanyKinds
+  companyKind: CompanyKind
 }
 
 type SubcategoryBase = CategoryNodeBase & {
@@ -55,7 +55,7 @@ type SubcategoryBase = CategoryNodeBase & {
   desc?: string
   reponseconsoCode?: string
   ccrfCode?: string[]
-  companyKind?: CompanyKinds
+  companyKind?: CompanyKind
   companyKindQuestion?: CompanyKindQuestion
   categoryOverride?: string
 }
@@ -127,9 +127,9 @@ export const companyKinds = [
   'TRAIN',
   'STATION',
 ] as const
-export type CompanyKinds = (typeof companyKinds)[number]
-export type SpecificWebsiteCompanyKinds = Extract<CompanyKinds, 'MERCHANT_WEBSITE' | 'TRANSPORTER_WEBSITE'>
-export type SpecificProductCompanyKinds = Extract<CompanyKinds, 'PRODUCT' | 'PRODUCT_POINT_OF_SALE'>
+export type CompanyKind = (typeof companyKinds)[number]
+export type SpecificWebsiteCompanyKind = Extract<CompanyKind, 'MERCHANT_WEBSITE' | 'TRANSPORTER_WEBSITE'>
+export type SpecificProductCompanyKind = Extract<CompanyKind, 'PRODUCT' | 'PRODUCT_POINT_OF_SALE'>
 
 export const socialNetworks = [
   'SNAPCHAT',
@@ -142,7 +142,7 @@ export const socialNetworks = [
   'LINKEDIN',
   'OTHER',
 ] as const
-export type SocialNetworks = (typeof socialNetworks)[number]
+export type SocialNetwork = (typeof socialNetworks)[number]
 
 export const trains = [
   'INOUI_INTERCITES',
@@ -157,7 +157,7 @@ export const trains = [
   'ICE',
   'TRAIN_DE_NUIT',
 ] as const
-export type Trains = (typeof trains)[number]
+export type Train = (typeof trains)[number]
 
 export const ters = [
   'AUVERGNE_RHONE_ALPES',
@@ -172,10 +172,10 @@ export const ters = [
   'PAYS_DE_LA_LOIRE',
   'SUD_PACA',
 ] as const
-export type Ters = (typeof ters)[number]
+export type Ter = (typeof ters)[number]
 
 export const nightTrains = ['INTERCITE_DE_NUIT', 'NIGHTJET'] as const
-export type NightTrains = (typeof nightTrains)[number]
+export type NightTrain = (typeof nightTrains)[number]
 
 export interface InfoWall {
   title?: string

@@ -1,4 +1,4 @@
-import {SocialNetworks, Subcategory} from '@/anomalies/Anomaly'
+import {SocialNetwork, Subcategory} from '@/anomalies/Anomaly'
 import {appConfig} from '@/core/appConfig'
 import {getSubcategories, toApi} from '@/feature/reportDraftUtils'
 import {ConsumerEmailResult} from '@/model/ConsumerEmailValidation'
@@ -50,7 +50,7 @@ export class SignalConsoApiClient {
     return this.client.get<WebsiteCompanySearchResult>(`/companies/hosts`, {qs: {url}})
   }
 
-  searchCertifiedInfluencer = (influencer: string, socialNetwork: SocialNetworks) => {
+  searchCertifiedInfluencer = (influencer: string, socialNetwork: SocialNetwork) => {
     return this.client.get<boolean>(`/certified-influencer`, {qs: {name: influencer, socialNetwork}})
   }
 

@@ -6,7 +6,7 @@ import {ScAutocompletePostcode} from '@/components_simple/formInputs/ScAutocompl
 import {ScTextInput} from '@/components_simple/formInputs/ScTextInput'
 import {useI18n} from '@/i18n/I18n'
 import {Controller, useForm} from 'react-hook-form'
-import {CompanyKinds} from '../../../anomalies/Anomaly'
+import {CompanyKind} from '../../../anomalies/Anomaly'
 import {ScAlert} from '../../../components_simple/ScAlert'
 import {Country} from '../../../model/Country'
 import {fnSwitch} from '../../../utils/FnSwitch'
@@ -19,7 +19,7 @@ interface Form {
 
 interface Props {
   onSubmit: (form: Form) => void
-  companyKind: CompanyKinds
+  companyKind: CompanyKind
 }
 
 export const countryToFlag = (isoCode: string) => {
@@ -74,7 +74,7 @@ export const CompanyAskForeignDetails = ({onSubmit, companyKind}: Props) => {
               <p
                 className="mb-0"
                 dangerouslySetInnerHTML={{
-                  __html: fnSwitch<CompanyKinds, string>(companyKind, {
+                  __html: fnSwitch<CompanyKind, string>(companyKind, {
                     SIRET: m.cantIdentifyCompany,
                     WEBSITE: m.cantIdentifyWebsiteCompany,
                     TRANSPORTER_WEBSITE: m.cantIdentifyTransporterWebsiteCompany,

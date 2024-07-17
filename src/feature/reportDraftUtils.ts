@@ -1,5 +1,5 @@
 import {findAnomaly} from '@/anomalies/Anomalies'
-import {Anomaly, ReportTag, SocialNetworks, Subcategory} from '@/anomalies/Anomaly'
+import {Anomaly, ReportTag, SocialNetwork, Subcategory} from '@/anomalies/Anomaly'
 import {Influencer, ReportDraft, TransmissionStatus} from '@/model/ReportDraft'
 import {ReportDraft2} from '@/model/ReportDraft2'
 import {ApiInfluencer, ApiReportDraft} from '@/model/reportsFromApi'
@@ -75,7 +75,7 @@ export const getTransmissionStatus = (
 }
 
 export const toApiInfluencer = (influencer: Influencer): ApiInfluencer => {
-  const toApiSocialNetwork = (socialNetwork: SocialNetworks): string | undefined => {
+  const toApiSocialNetwork = (socialNetwork: SocialNetwork): string | undefined => {
     switch (socialNetwork) {
       case 'YOUTUBE':
         return 'YouTube'

@@ -4,7 +4,7 @@ import {BtnNextSubmit} from '@/components_simple/buttons/Buttons'
 import {ScAutocompletePostcode} from '@/components_simple/formInputs/ScAutocompletePostcode'
 import {useI18n} from '@/i18n/I18n'
 import {Controller, useForm} from 'react-hook-form'
-import {CompanyKinds} from '../../../anomalies/Anomaly'
+import {CompanyKind} from '../../../anomalies/Anomaly'
 import {ScAlert} from '../../../components_simple/ScAlert'
 import {fnSwitch} from '../../../utils/FnSwitch'
 
@@ -15,7 +15,7 @@ interface Form {
 interface Props {
   value?: string
   onChange: (_: string) => void
-  companyKind: CompanyKinds
+  companyKind: CompanyKind
 }
 
 export const CompanyAskConsumerPostalCode = ({value, onChange, companyKind}: Props) => {
@@ -34,7 +34,7 @@ export const CompanyAskConsumerPostalCode = ({value, onChange, companyKind}: Pro
           <p
             className="mb-0"
             dangerouslySetInnerHTML={{
-              __html: fnSwitch<CompanyKinds, string>(companyKind, {
+              __html: fnSwitch<CompanyKind, string>(companyKind, {
                 SIRET: m.cantIdentifyCompany,
                 WEBSITE: m.cantIdentifyWebsiteCompany,
                 TRANSPORTER_WEBSITE: m.cantIdentifyTransporterWebsiteCompany,

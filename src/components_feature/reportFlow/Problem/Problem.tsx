@@ -15,7 +15,7 @@ import {ConsumerWish} from '@/model/ReportDraft'
 import {ReportDraft2} from '@/model/ReportDraft2'
 import {useEffect, useMemo} from 'react'
 import {instanceOfSubcategoryWithInfoWall} from '../../../anomalies/Anomalies'
-import {Anomaly, CompanyKinds, ReportTag, Subcategory} from '../../../anomalies/Anomaly'
+import {Anomaly, CompanyKind, ReportTag, Subcategory} from '../../../anomalies/Anomaly'
 import {AppLang} from '../../../i18n/localization/AppLangs'
 import {useReportFlowContext} from '../ReportFlowContext'
 import {ProblemConsumerWishInformation} from './ProblemConsumerWishInformation'
@@ -35,7 +35,7 @@ function buildTagsFromSubcategories(anomaly: Anomaly, subcategories: Subcategory
   return computeSelectedSubcategoriesData(anomaly, subcategories).tagsFromSelected
 }
 
-function adjustTagsBeforeSubmit(draft: Partial<ReportDraft2>, companyKindFromSelected: CompanyKinds | undefined): ReportTag[] {
+function adjustTagsBeforeSubmit(draft: Partial<ReportDraft2>, companyKindFromSelected: CompanyKind | undefined): ReportTag[] {
   let res = draft.tags ?? []
   if (
     companyKindFromSelected === 'WEBSITE' ||
@@ -253,7 +253,7 @@ export const Problem = ({anomaly, isWebView, stepNavigation}: Props) => {
                 </ProblemStepperStep>
                 <ProblemStepperStep isDone={reportDraft.companyKind !== undefined} hidden={!!companyKindFromSelected}>
                   {companyKindQuestionFromSelected ? (
-                    <ProblemSelect<CompanyKinds>
+                    <ProblemSelect<CompanyKind>
                       id="select-companyKind"
                       title={companyKindQuestionFromSelected.label}
                       value={reportDraft.companyKind}
@@ -266,7 +266,7 @@ export const Problem = ({anomaly, isWebView, stepNavigation}: Props) => {
                       })}
                     />
                   ) : (
-                    <ProblemSelect<CompanyKinds>
+                    <ProblemSelect<CompanyKind>
                       id="select-companyKind"
                       title={m.problemIsInternetCompany}
                       value={reportDraft.companyKind}

@@ -2,7 +2,7 @@ import {Animate} from '@/components_simple/Animate'
 import {ScAlert} from '@/components_simple/ScAlert'
 import {useI18n} from '@/i18n/I18n'
 import {ReactNode, useState} from 'react'
-import {CompanyKinds} from '../../../anomalies/Anomaly'
+import {CompanyKind} from '../../../anomalies/Anomaly'
 import {ScRadioButtons} from '../../../components_simple/formInputs/ScRadioButtons'
 
 export enum IdentifyBy {
@@ -13,11 +13,11 @@ export enum IdentifyBy {
 }
 
 interface Props {
-  companyKind: CompanyKinds
+  companyKind: CompanyKind
   children: (identifyBy: IdentifyBy) => ReactNode
 }
 
-function isRemote(companyKind: CompanyKinds) {
+function isRemote(companyKind: CompanyKind) {
   return (
     companyKind === 'WEBSITE' ||
     companyKind === 'MERCHANT_WEBSITE' ||

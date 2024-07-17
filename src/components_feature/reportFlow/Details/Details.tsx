@@ -56,7 +56,7 @@ export const Details = ({stepNavigation}: {stepNavigation: StepNavigation}) => {
       employeeConsumer={draft.employeeConsumer}
       tags={draft.tags ?? []}
       onSubmit={(detailInputValues, uploadedFiles) => {
-        _reportFlow.setReportDraft(_ => ({..._, step3: {uploadedFiles, details: detailInputValues}  }))
+        _reportFlow.setReportDraft(_ => ({..._, step3: {uploadedFiles, details: detailInputValues}}))
         _reportFlow.sendReportEvent(stepNavigation.currentStep)
         stepNavigation.next()
       }}

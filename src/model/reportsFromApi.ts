@@ -1,8 +1,8 @@
 import {ReportTag} from '@/anomalies/Anomaly'
+import {AppLang} from '../i18n/localization/AppLangs'
 import {Address, ApiAddress} from './Address'
 import {DetailInputValue} from './CreatedReport'
-import {Gender, Train} from './ReportDraft'
-import {AppLang} from '../i18n/localization/AppLangs'
+import {Gender, TrainDraft} from './ReportDraft'
 
 export interface ApiInfluencer {
   socialNetwork?: string
@@ -47,7 +47,7 @@ export interface ApiReportDraft {
   influencer: ApiInfluencer | undefined
   lang: AppLang
   barcodeProductId: string | undefined
-  train: Train | undefined
+  train: TrainDraft | undefined
   station: string | undefined
   rappelConsoId: number | undefined
   metadata:

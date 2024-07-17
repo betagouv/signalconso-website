@@ -1,8 +1,8 @@
 import Image from 'next/image'
-import {SocialNetworks} from '../anomalies/Anomaly'
+import {SocialNetwork} from '../anomalies/Anomaly'
 import {useI18n} from '../i18n/I18n'
 
-const socialNetworkIcon = (socialNetwork: SocialNetworks) => {
+const socialNetworkIcon = (socialNetwork: SocialNetwork) => {
   switch (socialNetwork) {
     case 'YOUTUBE':
       return 'youtube'
@@ -26,7 +26,7 @@ const socialNetworkIcon = (socialNetwork: SocialNetworks) => {
 }
 
 interface Props {
-  socialNetwork: SocialNetworks
+  socialNetwork: SocialNetwork
   gray?: boolean
   className?: string
 }

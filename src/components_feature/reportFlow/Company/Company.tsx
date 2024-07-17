@@ -1,7 +1,15 @@
+'use client'
+import {CompanyByStation} from '@/components_feature/reportFlow/Company/CompanyByStation'
 import {CompanyByTrain} from '@/components_feature/reportFlow/Company/CompanyByTrain'
+import {CompanySearchByName} from '@/components_feature/reportFlow/Company/CompanySearchByName'
+import {NoSearchResult} from '@/components_feature/reportFlow/Company/lib/NoSearchResult'
+import {ScRadioButtons} from '@/components_simple/formInputs/ScRadioButtons'
+import {Loader} from '@/feature/Loader'
+import {useBarcodeSearch} from '@/hooks/barcode'
 import {BarcodeProduct} from '@/model/BarcodeProduct'
 import {ReportDraft2} from '@/model/ReportDraft2'
-import {SpecificProductCompanyKinds, SpecificWebsiteCompanyKinds} from '../../../anomalies/Anomaly'
+import {useState} from 'react'
+import {SpecificProductCompanyKind, SpecificWebsiteCompanyKind} from '../../../anomalies/Anomaly'
 import {CompanyDraft, CompanySearchResult} from '../../../model/Company'
 import {fnSwitch} from '../../../utils/FnSwitch'
 import {DeepPartial} from '../../../utils/utils'
@@ -23,15 +31,6 @@ import {CompanyWebsiteCountry} from './CompanyWebsiteCountry'
 import {InfluencerBySocialNetwork} from './InfluencerBySocialNetwork'
 import {InfluencerFilled} from './InfluencerFilled'
 import {BarcodeSearchResult} from './lib/BarcodeSearchResult'
-import {CompanyByStation} from '@/components_feature/reportFlow/Company/CompanyByStation'
-import {CompanySearchByName} from '@/components_feature/reportFlow/Company/CompanySearchByName'
-import {useBarcodeSearch} from '@/hooks/barcode'
-import {BlueBanner} from '@/feature/BlueBanner'
-import {useState} from 'react'
-import {ScSelect} from '@/components_simple/formInputs/ScSelect'
-import {ScRadioButtons} from '@/components_simple/formInputs/ScRadioButtons'
-import {NoSearchResult} from '@/components_feature/reportFlow/Company/lib/NoSearchResult'
-import {Loader} from '@/feature/Loader'
 
 export function Company({stepNavigation}: {stepNavigation: StepNavigation}) {
   const {reportDraft, setReportDraft, sendReportEvent} = useReportFlowContext()
@@ -147,7 +146,7 @@ function WebsiteTree({
   specificWebsiteCompanyKind,
   draft,
   updateReport,
-}: {specificWebsiteCompanyKind?: SpecificWebsiteCompanyKinds} & CommonProps) {
+}: {specificWebsiteCompanyKind?: SpecificWebsiteCompanyKind} & CommonProps) {
   return (
     <CompanyByWebsite specificWebsiteCompanyKind={specificWebsiteCompanyKind}>
       {(website, companies, countries) =>
@@ -343,7 +342,7 @@ function BarcodeTree({
   specificProductCompanyKinds,
   draft,
   updateReport,
-}: {specificProductCompanyKinds: SpecificProductCompanyKinds} & CommonProps) {
+}: {specificProductCompanyKinds: SpecificProductCompanyKind} & CommonProps) {
   return (
     <CompanySearchByBarcode searchProductOnly={specificProductCompanyKinds === 'PRODUCT_POINT_OF_SALE'}>
       {results => {
