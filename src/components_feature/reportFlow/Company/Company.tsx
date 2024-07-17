@@ -41,16 +41,14 @@ export function Company({stepNavigation}: {stepNavigation: StepNavigation}) {
     return <CompanyFilled {...{stepNavigation, draft}} onClear={() => setReportDraft(_ => ({..._, companyDraft: undefined}))} />
   }
   return (
-    <div>
-      <CompanyIdentificationDispatch
-        draft={draft}
-        updateReport={changesToDraft => {
-          setReportDraft(_ => ReportDraft2.merge(_, changesToDraft))
-          sendReportEvent(stepNavigation.currentStep)
-          stepNavigation.next()
-        }}
-      />
-    </div>
+    <CompanyIdentificationDispatch
+      draft={draft}
+      updateReport={changesToDraft => {
+        setReportDraft(_ => ReportDraft2.merge(_, changesToDraft))
+        sendReportEvent(stepNavigation.currentStep)
+        stepNavigation.next()
+      }}
+    />
   )
 }
 
