@@ -199,82 +199,88 @@ function CommonTree({
     />
   ) : (
     <CompanyChooseIdentificationMethod companyKind={draft.companyKind!}>
-      {method =>
-        fnSwitch(method, {
-          ['byNameAndPostalCode']: () => (
-            <CompanySearchByNameAndPostalCode>
-              {companies => (
-                <CompanySearchResultComponent
-                  companies={companies ?? []}
-                  reportDraft={draft}
-                  onSubmit={company => {
+      {method => {
+        switch (method) {
+          case 'byNameAndPostalCode':
+            return (
+              <CompanySearchByNameAndPostalCode>
+                {companies => (
+                  <CompanySearchResultComponent
+                    companies={companies ?? []}
+                    reportDraft={draft}
+                    onSubmit={company => {
+                      updateReport({
+                        companyDraft: {
+                          ...company,
+                          ...phoneOrWebsite,
+                        },
+                        barcodeProduct,
+                      })
+                    }}
+                  />
+                )}
+              </CompanySearchByNameAndPostalCode>
+            )
+          case 'byName':
+            return (
+              <CompanySearchByName>
+                {companies => (
+                  <CompanySearchResultComponent
+                    companies={companies ?? []}
+                    reportDraft={draft}
+                    onSubmit={company => {
+                      updateReport({
+                        companyDraft: {
+                          ...company,
+                          ...phoneOrWebsite,
+                        },
+                        barcodeProduct,
+                      })
+                    }}
+                  />
+                )}
+              </CompanySearchByName>
+            )
+          case 'byIdentifier':
+            return (
+              <CompanySearchByIdentity>
+                {companies => (
+                  <CompanySearchResultComponent
+                    companies={companies ?? []}
+                    reportDraft={draft}
+                    onSubmit={company => {
+                      updateReport({
+                        companyDraft: {
+                          ...company,
+                          ...phoneOrWebsite,
+                        },
+                        barcodeProduct,
+                      })
+                    }}
+                  />
+                )}
+              </CompanySearchByIdentity>
+            )
+          case 'iCannot':
+            if (draft.companyKind === 'LOCATION') {
+              return (
+                <CompanyAskConsumerStreet
+                  onChange={form => {
                     updateReport({
                       companyDraft: {
-                        ...company,
                         ...phoneOrWebsite,
+                        address: {
+                          postalCode: form.postalCode,
+                          street: form.street,
+                        },
                       },
                       barcodeProduct,
                     })
                   }}
                 />
-              )}
-            </CompanySearchByNameAndPostalCode>
-          ),
-          ['byName']: () => (
-            <CompanySearchByName>
-              {companies => (
-                <CompanySearchResultComponent
-                  companies={companies ?? []}
-                  reportDraft={draft}
-                  onSubmit={company => {
-                    updateReport({
-                      companyDraft: {
-                        ...company,
-                        ...phoneOrWebsite,
-                      },
-                      barcodeProduct,
-                    })
-                  }}
-                />
-              )}
-            </CompanySearchByName>
-          ),
-          ['byIdentifier']: () => (
-            <CompanySearchByIdentity>
-              {companies => (
-                <CompanySearchResultComponent
-                  companies={companies ?? []}
-                  reportDraft={draft}
-                  onSubmit={company => {
-                    updateReport({
-                      companyDraft: {
-                        ...company,
-                        ...phoneOrWebsite,
-                      },
-                      barcodeProduct,
-                    })
-                  }}
-                />
-              )}
-            </CompanySearchByIdentity>
-          ),
-          ['iCannot']: () =>
-            draft.companyKind === 'LOCATION' ? (
-              <CompanyAskConsumerStreet
-                onChange={form => {
-                  updateReport({
-                    companyDraft: {
-                      ...phoneOrWebsite,
-                      address: {
-                        postalCode: form.postalCode,
-                        street: form.street,
-                      },
-                    },
-                    barcodeProduct,
-                  })
-                }}
-              />
-            ) : (
+              )
+            }
+            return (
               <CompanyAskIsFrenchOrForeign>
                 {isFrench =>
                   fnSwitch(isFrench, {
@@ -331,9 +337,9 @@ function CommonTree({
                   })
                 }
               </CompanyAskIsFrenchOrForeign>
-            ),
-        })
-      }
+            )
+        }
+      }}
     </CompanyChooseIdentificationMethod>
   )
 }
