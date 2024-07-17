@@ -11,7 +11,6 @@ import {ReportDraft2} from '@/model/ReportDraft2'
 import {useState} from 'react'
 import {SpecificProductCompanyKind, SpecificWebsiteCompanyKind} from '../../../anomalies/Anomaly'
 import {CompanyDraft, CompanySearchResult} from '../../../model/Company'
-import {fnSwitch} from '../../../utils/FnSwitch'
 import {DeepPartial} from '../../../utils/utils'
 import {useReportFlowContext} from '../ReportFlowContext'
 import {StepNavigation} from '../reportFlowStepper/ReportFlowStepper'
@@ -282,60 +281,63 @@ function CommonTree({
             }
             return (
               <CompanyAskIsFrenchOrForeign>
-                {isFrench =>
-                  fnSwitch(isFrench, {
-                    [IsAFrenchCompany.Yes]: () => (
-                      <CompanyAskConsumerPostalCode
-                        companyKind={draft.companyKind!}
-                        onChange={postalCode => {
-                          updateReport({
-                            companyDraft: {
-                              ...phoneOrWebsite,
-                              address: {
-                                postalCode: postalCode,
+                {isFrench => {
+                  switch (isFrench) {
+                    case IsAFrenchCompany.Yes:
+                      return (
+                        <CompanyAskConsumerPostalCode
+                          companyKind={draft.companyKind!}
+                          onChange={postalCode => {
+                            updateReport({
+                              companyDraft: {
+                                ...phoneOrWebsite,
+                                address: {
+                                  postalCode: postalCode,
+                                },
                               },
-                            },
-                            barcodeProduct,
-                          })
-                        }}
-                      />
-                    ),
-                    [IsAFrenchCompany.No]: () => (
-                      <CompanyAskForeignDetails
-                        companyKind={draft.companyKind!}
-                        onSubmit={form => {
-                          updateReport({
-                            companyDraft: {
-                              name: form.name,
-                              ...phoneOrWebsite,
-                              address: {
-                                postalCode: form.postalCode,
-                                country: form.country.code,
+                              barcodeProduct,
+                            })
+                          }}
+                        />
+                      )
+                    case IsAFrenchCompany.No:
+                      return (
+                        <CompanyAskForeignDetails
+                          companyKind={draft.companyKind!}
+                          onSubmit={form => {
+                            updateReport({
+                              companyDraft: {
+                                name: form.name,
+                                ...phoneOrWebsite,
+                                address: {
+                                  postalCode: form.postalCode,
+                                  country: form.country.code,
+                                },
                               },
-                            },
-                            barcodeProduct,
-                          })
-                        }}
-                      />
-                    ),
-                    [IsAFrenchCompany.Unknown]: () => (
-                      <CompanyAskConsumerPostalCode
-                        companyKind={draft.companyKind!}
-                        onChange={postalCode => {
-                          updateReport({
-                            companyDraft: {
-                              ...phoneOrWebsite,
-                              address: {
-                                postalCode,
+                              barcodeProduct,
+                            })
+                          }}
+                        />
+                      )
+                    case IsAFrenchCompany.Unknown:
+                      return (
+                        <CompanyAskConsumerPostalCode
+                          companyKind={draft.companyKind!}
+                          onChange={postalCode => {
+                            updateReport({
+                              companyDraft: {
+                                ...phoneOrWebsite,
+                                address: {
+                                  postalCode,
+                                },
                               },
-                            },
-                            barcodeProduct,
-                          })
-                        }}
-                      />
-                    ),
-                  })
-                }
+                              barcodeProduct,
+                            })
+                          }}
+                        />
+                      )
+                  }
+                }}
               </CompanyAskIsFrenchOrForeign>
             )
         }
