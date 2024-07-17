@@ -97,7 +97,6 @@ export function CompanyIdentificationDispatch({draft, updateReport}: CommonProps
       return <OpenFfTree {...{draft, updateReport}} />
     case 'PRODUCT_RAPPEL_CONSO':
       return <RappelConsoTree {...{draft, updateReport}} />
-
     case 'SOCIAL':
       return (
         <InfluencerBySocialNetwork
@@ -266,13 +265,13 @@ function CommonTree({
             if (draft.companyKind === 'LOCATION') {
               return (
                 <CompanyAskConsumerStreet
-                  onChange={form => {
+                  onChange={({postalCode, street}) => {
                     updateReport({
                       companyDraft: {
                         ...phoneOrWebsite,
                         address: {
-                          postalCode: form.postalCode,
-                          street: form.street,
+                          postalCode: postalCode,
+                          street: street,
                         },
                       },
                       barcodeProduct,
@@ -306,14 +305,14 @@ function CommonTree({
                       return (
                         <CompanyAskForeignDetails
                           {...{companyKind}}
-                          onSubmit={form => {
+                          onSubmit={({name, postalCode, country: {code}}) => {
                             updateReport({
                               companyDraft: {
-                                name: form.name,
+                                name: name,
                                 ...phoneOrWebsite,
                                 address: {
-                                  postalCode: form.postalCode,
-                                  country: form.country.code,
+                                  postalCode: postalCode,
+                                  country: code,
                                 },
                               },
                               barcodeProduct,
