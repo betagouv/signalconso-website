@@ -48,15 +48,15 @@ export const Details = ({stepNavigation}: {stepNavigation: StepNavigation}) => {
   const lastSubcategory = last(subcategories) as StandardSubcategory
   return (
     <DetailsInner
-      initialValues={draft.details}
-      initialFiles={draft.uploadedFiles}
+      initialValues={draft.step3?.details}
+      initialFiles={draft.step3?.uploadedFiles}
       transmissionStatus={getTransmissionStatus(draft)}
       inputs={inputs}
       fileLabel={lastSubcategory.fileLabel}
       employeeConsumer={draft.employeeConsumer}
       tags={draft.tags ?? []}
       onSubmit={(detailInputValues, uploadedFiles) => {
-        _reportFlow.setReportDraft(_ => ({..._, uploadedFiles, details: detailInputValues}))
+        _reportFlow.setReportDraft(_ => ({..._, step3: {uploadedFiles, details: detailInputValues}  }))
         _reportFlow.sendReportEvent(stepNavigation.currentStep)
         stepNavigation.next()
       }}

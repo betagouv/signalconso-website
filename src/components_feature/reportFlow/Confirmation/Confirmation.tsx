@@ -125,7 +125,7 @@ function RenderEachStep({
       return (
         <ConfirmationStep title={m.step_description} {...{goToStep, index}}>
           <dl>
-            {draft.details.map(({label, value}) => (
+            {draft.step3.details.map(({label, value}) => (
               <div key={label} className="mb-2">
                 <dt className="font-medium" dangerouslySetInnerHTML={{__html: label}} />
                 <dd className="text-schint">{value}</dd>
@@ -134,7 +134,7 @@ function RenderEachStep({
             <div className="mb-2">
               <dt className="font-medium mb-1">{m.attachments}</dt>
               <dd>
-                <ReportFilesConfirmation fileOrigin={FileOrigin.Consumer} files={draft.uploadedFiles} />
+                <ReportFilesConfirmation fileOrigin={FileOrigin.Consumer} files={draft.step3.uploadedFiles} />
               </dd>
             </div>
           </dl>

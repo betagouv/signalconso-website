@@ -11,8 +11,10 @@ import {ReportDraft} from './ReportDraft'
 
 export type DetailInputValues2 = {[key: string]: string | string[]}
 
-export interface ReportDraft2 extends Omit<ReportDraft, 'details'> {
-  details: DetailInputValues2
+export interface ReportDraft2 extends Omit<ReportDraft, 'step3'> {
+  step3: Omit<ReportDraft['step3'], 'details'> & {
+    details: DetailInputValues2
+  }
 }
 
 export class ReportDraft2 {
@@ -20,7 +22,10 @@ export class ReportDraft2 {
     const inputs = getDraftReportInputs(d, lang)
     return {
       ...d,
-      details: ReportDraft2.parseDetails(d.details, inputs),
+      step3: {
+        ...d.step3,
+        details: ReportDraft2.parseDetails(d.step3.details, inputs),
+      },
     }
   }
 

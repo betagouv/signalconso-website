@@ -15,6 +15,10 @@ export interface ReportDraft {
     category: string
     lang: AppLang
   }
+  step3: {
+    details: DetailInputValue[]
+    uploadedFiles?: UploadedFile[]
+  }
   step4: {
     consumer: {
       firstName: string
@@ -29,8 +33,7 @@ export interface ReportDraft {
   subcategoriesIndexes: number[]
   categoryOverride?: string
   companyDraft?: CompanyDraft
-  details: DetailInputValue[]
-  uploadedFiles?: UploadedFile[]
+
   // pretty sure some of these fields aren't actually optional in the draft
   employeeConsumer?: boolean
   vendor: string
