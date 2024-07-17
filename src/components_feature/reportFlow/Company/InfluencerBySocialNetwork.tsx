@@ -18,9 +18,20 @@ import {SocialNetworkRow} from '../../../components_simple/SocialNetworkRow'
 import {ScRadioButtons} from '../../../components_simple/formInputs/ScRadioButtons'
 import {useI18n} from '../../../i18n/I18n'
 
-interface Props {
-  onSubmit: (form: Form) => void
-}
+type Result = {
+  influencer: string
+} & (
+  | {
+      kind: 'knownSocialNetwork'
+      socialNetwork: Exclude<SocialNetwork, 'OTHER'>
+    }
+  | {
+      kind: 'otherSocialNetwork'
+      socialNetwork: 'OTHER'
+      otherSocialNetwork: string
+      postalCode: string
+    }
+)
 
 interface Form {
   socialNetwork: SocialNetwork
@@ -29,7 +40,7 @@ interface Form {
   postalCode?: string
 }
 
-export function InfluencerBySocialNetwork({onSubmit}: Props) {
+export function InfluencerBySocialNetwork({onSubmit}: {onSubmit: (result: Result) => void}) {
   const {m} = useI18n()
   const {signalConsoApiClient} = useApiClients()
   const {
@@ -66,10 +77,7 @@ export function InfluencerBySocialNetwork({onSubmit}: Props) {
       <RequiredFieldsLegend />
       <form
         onSubmit={handleSubmit(form => {
-          onSubmit({
-            ...form,
-            influencer: sanitizeInfluencer(form.influencer),
-          })
+          onSubmit(transformBeforeSubmit(form))
         })}
       >
         <Animate autoScrollTo={false}>
@@ -194,4 +202,24 @@ export function InfluencerBySocialNetwork({onSubmit}: Props) {
 
 function sanitizeInfluencer(name: string) {
   return name.toLowerCase().replaceAll(' ', '').replaceAll('@', '')
+}
+
+function transformBeforeSubmit(form: Form): Result {
+  const {socialNetwork, otherSocialNetwork, postalCode} = form
+  const influencer = sanitizeInfluencer(form.influencer)
+  if (socialNetwork === 'OTHER') {
+    if (!otherSocialNetwork || !postalCode) {
+      throw new Error(
+        `The fields for OTHER social network should have been filled at this point : ${otherSocialNetwork} and ${postalCode}`,
+      )
+    }
+    return {
+      kind: 'otherSocialNetwork',
+      socialNetwork,
+      influencer,
+      otherSocialNetwork,
+      postalCode,
+    }
+  }
+  return {kind: 'knownSocialNetwork', socialNetwork, influencer}
 }

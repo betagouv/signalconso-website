@@ -88,22 +88,30 @@ export function CompanyIdentificationDispatch({draft, updateReport}: CommonProps
     case 'SOCIAL':
       return (
         <InfluencerBySocialNetwork
-          onSubmit={({socialNetwork, influencer, otherSocialNetwork, postalCode}) => {
-            const companyDraft = postalCode
-              ? {
+          onSubmit={result => {
+            if (result.kind === 'otherSocialNetwork') {
+              const {socialNetwork, influencer, otherSocialNetwork, postalCode} = result
+              updateReport({
+                companyDraft: {
                   address: {
                     postalCode: postalCode,
                   },
-                }
-              : undefined
-            updateReport({
-              companyDraft,
-              influencer: {
-                socialNetwork,
-                otherSocialNetwork,
-                name: influencer,
-              },
-            })
+                },
+                influencer: {
+                  socialNetwork,
+                  otherSocialNetwork,
+                  name: influencer,
+                },
+              })
+            } else {
+              const {socialNetwork, influencer} = result
+              updateReport({
+                influencer: {
+                  socialNetwork,
+                  name: influencer,
+                },
+              })
+            }
           }}
         />
       )
