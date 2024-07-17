@@ -4,7 +4,6 @@ import {BtnNextSubmit} from '@/components_simple/buttons/Buttons'
 import {ScAutocompletePostcode} from '@/components_simple/formInputs/ScAutocompletePostcode'
 import {ScTextInput} from '@/components_simple/formInputs/ScTextInput'
 import {useI18n} from '@/i18n/I18n'
-import {Address} from '@/model/Address'
 import {Controller, useForm} from 'react-hook-form'
 import {ScAlert} from '../../../components_simple/ScAlert'
 
@@ -14,7 +13,7 @@ interface Form {
 }
 
 interface Props {
-  onChange: (_: Pick<Address, 'street' | 'postalCode'>) => void
+  onChange: (_: Form) => void
 }
 
 export const CompanyAskConsumerStreet = ({onChange}: Props) => {

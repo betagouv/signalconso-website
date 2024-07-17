@@ -270,8 +270,8 @@ function CommonTree({
                       companyDraft: {
                         ...phoneOrWebsite,
                         address: {
-                          postalCode: postalCode,
-                          street: street,
+                          postalCode,
+                          street,
                         },
                       },
                       barcodeProduct,
