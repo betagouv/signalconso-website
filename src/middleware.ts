@@ -8,7 +8,6 @@ import {match} from '@formatjs/intl-localematcher'
 let supportedLang = [AppLangs.fr, AppLangs.en]
 
 export function middleware(request: any) {
-  console.debug("called url", JSON.stringify(request.nextUrl));
   // Check if there is any supported locale in the pathname
   const pathname = request.nextUrl.pathname
   const pathIsMissingSupportedLang = supportedLang.every(lang => !pathname.startsWith(`/${lang}/`) && pathname !== `/${lang}`)
