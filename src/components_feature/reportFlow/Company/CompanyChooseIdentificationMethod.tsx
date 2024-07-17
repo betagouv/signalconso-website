@@ -5,16 +5,11 @@ import {ReactNode, useState} from 'react'
 import {CompanyKind} from '../../../anomalies/Anomaly'
 import {ScRadioButtons} from '../../../components_simple/formInputs/ScRadioButtons'
 
-export enum IdentifyBy {
+export enum IdentificationMethod {
   NAME_AND_POSTAL_CODE = 'NAME_AND_POSTAL_CODE',
   NAME = 'NAME',
   IDENTITY = 'IDENTITY',
   NONE = 'NONE',
-}
-
-interface Props {
-  companyKind: CompanyKind
-  children: (identifyBy: IdentifyBy) => ReactNode
 }
 
 function isRemote(companyKind: CompanyKind) {
@@ -25,29 +20,35 @@ function isRemote(companyKind: CompanyKind) {
     companyKind === 'PHONE'
   )
 }
-export const CompanyIdentifyBy = ({companyKind, children}: Props) => {
+export function CompanyChooseIdentificationMethod({
+  companyKind,
+  children,
+}: {
+  companyKind: CompanyKind
+  children: (method: IdentificationMethod) => ReactNode
+}) {
   const {m} = useI18n()
-  const [identifyBy, setIdentifyBy] = useState<IdentifyBy | undefined>()
+  const [method, setMethod] = useState<IdentificationMethod | undefined>()
 
   const optionName = {
     label: m.identifyBy_name,
     description: m.identifyBy_nameDesc,
-    value: IdentifyBy.NAME,
+    value: IdentificationMethod.NAME,
   }
   const optionNameAndCp = {
     label: m.identifyBy_name_postal_code,
     description: m.identifyBy_nameDesc,
-    value: IdentifyBy.NAME_AND_POSTAL_CODE,
+    value: IdentificationMethod.NAME_AND_POSTAL_CODE,
   }
   const optionIdentity = {
     label: m.identifyBy_identity,
     description: m.identifyBy_identityDesc,
-    value: IdentifyBy.IDENTITY,
+    value: IdentificationMethod.IDENTITY,
   }
   const optionNone = {
     label: m.identifyBy_none,
     description: m.identifyBy_noneDesc,
-    value: IdentifyBy.NONE,
+    value: IdentificationMethod.NONE,
   }
   const options = [
     ...(isRemote(companyKind) ? [optionName] : [optionNameAndCp]),
@@ -69,8 +70,8 @@ export const CompanyIdentifyBy = ({companyKind, children}: Props) => {
           </ScAlert>
           <ScRadioButtons
             required
-            value={identifyBy}
-            onChange={setIdentifyBy}
+            value={method}
+            onChange={setMethod}
             options={options}
             title={m.canYouIdentifyCompany}
             titleNoAutoAsterisk
@@ -78,7 +79,7 @@ export const CompanyIdentifyBy = ({companyKind, children}: Props) => {
           />
         </div>
       </Animate>
-      {identifyBy && children(identifyBy)}
+      {method && children(method)}
     </>
   )
 }

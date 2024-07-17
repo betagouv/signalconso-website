@@ -21,8 +21,8 @@ import {CompanyAskForeignDetails} from './CompanyAskForeignDetails'
 import {CompanyAskIsFrenchOrForeign, IsAFrenchCompany} from './CompanyAskIsFrenchOrForeign'
 import {CompanyByPhone} from './CompanyByPhone'
 import {CompanyByWebsite} from './CompanyByWebsite'
+import {CompanyChooseIdentificationMethod, IdentificationMethod} from './CompanyChooseIdentificationMethod'
 import {CompanyFilled} from './CompanyFilled'
-import {CompanyIdentifyBy, IdentifyBy} from './CompanyIdentifyBy'
 import {CompanySearchByBarcode} from './CompanySearchByBarcode'
 import {CompanySearchByIdentity} from './CompanySearchByIdentity'
 import {CompanySearchByNameAndPostalCode} from './CompanySearchByNameAndPostalCode'
@@ -198,10 +198,10 @@ function CommonTree({
       }}
     />
   ) : (
-    <CompanyIdentifyBy companyKind={draft.companyKind!}>
-      {identifyBy =>
-        fnSwitch(identifyBy, {
-          [IdentifyBy.NAME_AND_POSTAL_CODE]: () => (
+    <CompanyChooseIdentificationMethod companyKind={draft.companyKind!}>
+      {method =>
+        fnSwitch(method, {
+          [IdentificationMethod.NAME_AND_POSTAL_CODE]: () => (
             <CompanySearchByNameAndPostalCode>
               {companies => (
                 <CompanySearchResultComponent
@@ -220,7 +220,7 @@ function CommonTree({
               )}
             </CompanySearchByNameAndPostalCode>
           ),
-          [IdentifyBy.NAME]: () => (
+          [IdentificationMethod.NAME]: () => (
             <CompanySearchByName>
               {companies => (
                 <CompanySearchResultComponent
@@ -239,7 +239,7 @@ function CommonTree({
               )}
             </CompanySearchByName>
           ),
-          [IdentifyBy.IDENTITY]: () => (
+          [IdentificationMethod.IDENTITY]: () => (
             <CompanySearchByIdentity>
               {companies => (
                 <CompanySearchResultComponent
@@ -258,7 +258,7 @@ function CommonTree({
               )}
             </CompanySearchByIdentity>
           ),
-          [IdentifyBy.NONE]: () =>
+          [IdentificationMethod.NONE]: () =>
             draft.companyKind === 'LOCATION' ? (
               <CompanyAskConsumerStreet
                 onChange={form => {
@@ -334,7 +334,7 @@ function CommonTree({
             ),
         })
       }
-    </CompanyIdentifyBy>
+    </CompanyChooseIdentificationMethod>
   )
 }
 

@@ -1,13 +1,13 @@
 /**
  * @jest-environment jsdom
  */
-import {waitFor} from '@testing-library/dom'
 import {ReportDraft2} from '@/model/ReportDraft2'
+import {waitFor} from '@testing-library/dom'
 import {Fixture} from '../../../test/fixture'
 import {fireEvent, render, ScRenderResult} from '../../../test/test-utils'
 import {fnSwitch} from '../../../utils/FnSwitch'
 import {CompanyIdentificationDispatch} from './Company'
-import {IdentifyBy} from './CompanyIdentifyBy'
+import {IdentificationMethod} from './CompanyChooseIdentificationMethod'
 
 describe('Details: single date not in future', () => {
   let app: ScRenderResult
@@ -17,12 +17,12 @@ describe('Details: single date not in future', () => {
     await waitFor(() => expect(app.container.querySelectorAll(querySelector).length).toEqual(1))
   }
 
-  const selectIdentifyBy = (ib: IdentifyBy) => {
+  const selectIdentifyBy = (ib: IdentificationMethod) => {
     const btnText = fnSwitch(ib, {
-      [IdentifyBy.NAME_AND_POSTAL_CODE]: app.m.identifyBy_name_postal_code,
-      [IdentifyBy.NAME]: app.m.identifyBy_name,
-      [IdentifyBy.IDENTITY]: app.m.identifyBy_identity,
-      [IdentifyBy.NONE]: app.m.identifyBy_none,
+      [IdentificationMethod.NAME_AND_POSTAL_CODE]: app.m.identifyBy_name_postal_code,
+      [IdentificationMethod.NAME]: app.m.identifyBy_name,
+      [IdentificationMethod.IDENTITY]: app.m.identifyBy_identity,
+      [IdentificationMethod.NONE]: app.m.identifyBy_none,
     })
     fireEvent.click(app.getByText(btnText))
   }
@@ -103,7 +103,7 @@ describe('Details: single date not in future', () => {
 
     it('should display radios for identification choice', async () => {
       await elementShouldExists('#CompanyIdentifyBy')
-      selectIdentifyBy(IdentifyBy.NAME_AND_POSTAL_CODE)
+      selectIdentifyBy(IdentificationMethod.NAME_AND_POSTAL_CODE)
       await elementShouldExists('#CompanyByNameAndPostalCode')
     })
   })
