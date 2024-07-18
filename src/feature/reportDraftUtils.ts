@@ -1,5 +1,5 @@
 import {findAnomaly} from '@/anomalies/Anomalies'
-import {ReportTag, SocialNetworks, Subcategory} from '@/anomalies/Anomaly'
+import {Anomaly, ReportTag, SocialNetworks, Subcategory} from '@/anomalies/Anomaly'
 import {Influencer, ReportDraft, TransmissionStatus} from '@/model/ReportDraft'
 import {ReportDraft2} from '@/model/ReportDraft2'
 import {ApiInfluencer, ApiReportDraft} from '@/model/reportsFromApi'
@@ -105,6 +105,17 @@ export const toApiInfluencer = (influencer: Influencer): ApiInfluencer => {
   }
 }
 
+const specialCategoryTag = (anomaly: Anomaly): ReportTag[] => {
+  switch (anomaly.specialCategory) {
+    case 'OpenFoodFacts':
+      return ['OpenFoodFacts']
+    case 'RappelConso':
+      return ['RappelConso']
+    default:
+      return []
+  }
+}
+
 export const toApi = (draft: ReportDraft, metadata: ApiReportDraft['metadata']): ApiReportDraft => {
   const {
     consumerWish,
@@ -115,12 +126,11 @@ export const toApi = (draft: ReportDraft, metadata: ApiReportDraft['metadata']):
   } = draft
   const anomaly = getAnomaly(draft)
   const subcategories = getSubcategories(draft)
-  const isOpenFf = anomaly.isSpecialOpenFoodFactsCategory
 
   const additionalTags: ReportTag[] = [
     ...(consumerWish === 'fixContractualDispute' ? (['LitigeContractuel'] as const) : []),
     ...(consumerWish === 'getAnswer' ? (['ReponseConso'] as const) : []),
-    ...(isOpenFf ? (['OpenFoodFacts'] as const) : []),
+    ...specialCategoryTag(anomaly),
   ]
 
   const tags = uniq([...(draft.tags ?? []), ...additionalTags])
@@ -161,6 +171,7 @@ export const toApi = (draft: ReportDraft, metadata: ApiReportDraft['metadata']):
     barcodeProductId: draft.barcodeProduct?.id,
     train: draft.train,
     station: draft.station,
+    rappelConsoId: draft.rappelConso?.id,
     metadata,
   }
 }

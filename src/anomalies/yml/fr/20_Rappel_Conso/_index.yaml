@@ -1,0 +1,11 @@
+id: '190'
+category: RappelConso
+title: Rappel conso
+seoTitle: Signalez un produit rappelé à la répression des fraudes, à partir de son code-barres
+path: rappel-conso
+description: Signalez un problème rappelé avec un produit identifié par un code-barres.
+seoDescription: Signalez un problème rencontré avec un aliment (yaourt, conserve, biscuits, eau en bouteille, etc.) identifié par un code-barres.
+img: category-restaurant
+specialCategory: RappelConso
+subcategoriesTitle: >-
+  Où avez-vous acheté ce produit ?

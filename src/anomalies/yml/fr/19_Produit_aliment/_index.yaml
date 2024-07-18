@@ -6,6 +6,6 @@ path: alimentaire-codebarres
 description: Signalez un problème rencontré avec un aliment identifié par un code-barres.
 seoDescription: Signalez un problème rencontré avec un aliment (yaourt, conserve, biscuits, eau en bouteille, etc.) identifié par un code-barres.
 img: category-restaurant
-isSpecialOpenFoodFactsCategory: true
+specialCategory: OpenFoodFacts
 subcategoriesTitle: >-
   Où avez-vous acheté ce produit ?

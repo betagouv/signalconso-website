@@ -7,6 +7,7 @@ import {CompanyRecap} from '@/components_simple/CompanyRecap/CompanyRecap'
 import {ProductRecap} from '@/components_simple/CompanyRecap/ProductRecap'
 import {SpecificProductCompanyKinds} from '@/anomalies/Anomaly'
 import {ReportDraft2} from '@/model/ReportDraft2'
+import {ReactNode} from 'react'
 
 interface BarcodeSearchResultPros {
   product?: BarcodeProduct
@@ -14,6 +15,7 @@ interface BarcodeSearchResultPros {
   reportDraft: Partial<ReportDraft2>
   onSubmit: (selected: CompanySearchResult, product: BarcodeProduct) => void
   specificProductCompanyKinds: SpecificProductCompanyKinds
+  noResultsPanel?: ReactNode
 }
 
 export const BarcodeSearchResult = ({
@@ -22,6 +24,7 @@ export const BarcodeSearchResult = ({
   reportDraft,
   onSubmit,
   specificProductCompanyKinds,
+  noResultsPanel,
 }: BarcodeSearchResultPros) => {
   const {m} = useI18n()
   return (
@@ -53,7 +56,7 @@ export const BarcodeSearchResult = ({
           <div className="w-full flex flex-row-reverse">{company && <BtnNext onClick={() => onSubmit(company, product)} />}</div>
         </>
       ) : (
-        <NoSearchResult text={m.barcodeNoProductFound} />
+        noResultsPanel ?? <NoSearchResult text={m.barcodeNoProductFound} />
       )}
     </div>
   )

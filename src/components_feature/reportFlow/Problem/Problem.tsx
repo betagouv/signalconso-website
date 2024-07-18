@@ -23,6 +23,7 @@ import {ProblemInformation} from './ProblemInformation'
 import {ProblemSelect} from './ProblemSelect'
 import {ProblemStepper, ProblemStepperStep} from './ProblemStepper'
 import {computeSelectedSubcategoriesData} from './useSelectedSubcategoriesData'
+import {RappelConsoWelcome, useRappelConsoSetup} from '@/feature/rappelConso'
 
 interface Props {
   anomaly: Anomaly
@@ -99,6 +100,7 @@ export const Problem = ({anomaly, isWebView, stepNavigation}: Props) => {
   const subcategories = hasStep0(reportDraft) && hasSubcategoryIndexes(reportDraft) ? getSubcategories(reportDraft) : []
   const hasReponseConsoSubcategories = buildTagsFromSubcategories(anomaly, subcategories).includes('ReponseConso')
   const openFfSetup = useOpenFfSetup(anomaly)
+  const rappelConsoSetup = useRappelConsoSetup(anomaly)
 
   // reset the draft when switching the root category
   useEffect(() => {
@@ -118,7 +120,15 @@ export const Problem = ({anomaly, isWebView, stepNavigation}: Props) => {
         openFf: openFfSetup.result,
       }))
     }
-  }, [openFfSetup, setReportDraft])
+
+    if (rappelConsoSetup.status === 'loaded') {
+      // Store the data into the reportFlow
+      setReportDraft(_ => ({
+        ..._,
+        rappelConso: rappelConsoSetup.result,
+      }))
+    }
+  }, [openFfSetup, rappelConsoSetup, setReportDraft])
 
   const isTransmittable = isTransmittableToProBeforePickingConsumerWish(reportDraft)
   const askConsumerWish = isTransmittable && reportDraft.companyKind !== 'SOCIAL'
@@ -174,16 +184,17 @@ export const Problem = ({anomaly, isWebView, stepNavigation}: Props) => {
 
   const handleSubcategoriesChange = (subcategoryIndex: number, subcategoryDepthIndex: number) => {
     setReportDraft(report => {
-      const newReport = adjustReportDraftAfterSubcategoriesChange(anomaly, report, subcategoryIndex, subcategoryDepthIndex)
-      return newReport
+      return adjustReportDraftAfterSubcategoriesChange(anomaly, report, subcategoryIndex, subcategoryDepthIndex)
     })
   }
 
+  const specialCategoryNotLoading = openFfSetup.status !== 'loading' && rappelConsoSetup.status !== 'loading'
   const tags = reportDraft.tags ?? []
   return (
     <>
       <OpenFfWelcomeText setup={openFfSetup} />
-      {openFfSetup.status !== 'loading' && (
+      <RappelConsoWelcome setup={rappelConsoSetup} />
+      {specialCategoryNotLoading && (
         <>
           {[anomaly, ...subcategories].map(
             (category, subcategoryDepthIdx) =>

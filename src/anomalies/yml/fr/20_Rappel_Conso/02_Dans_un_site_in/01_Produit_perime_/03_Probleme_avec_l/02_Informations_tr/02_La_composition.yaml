@@ -1,0 +1,19 @@
+title: La composition
+detailInputs:
+  - label: Date du constat (ou d'achat suivant le cas)
+    type: DATE_NOT_IN_FUTURE
+    defaultValue: SYSDATE
+  - label: De quel produit s'agit-il&#160;?
+    type: RADIO
+    options:
+      - Alcool (vin, spiritueux...)
+      - Fruits et légumes
+      - Viande
+      - Autre (à préciser)
+  - label: Nom  et marque du produit
+    type: TEXT
+    optional: true
+  - label: Pourquoi trouvez-vous la composition trompeur&#160;?
+    type: TEXTAREA
+    optional: true
+fileLabel: Photos du produit (si possible de tous les côtés de l'emballage)

@@ -17,9 +17,12 @@ export function computeSelectedSubcategoriesData(anomaly: Anomaly, selectedSubCa
 
   const showEmployeeConsumer = !instanceOfSubcategoryWithInfoWall(lastSubcategories)
 
-  const companyKindFromSelected = anomaly.isSpecialOpenFoodFactsCategory
-    ? 'PRODUCT_OPENFF'
-    : [...selectedSubCategories].reverse().find(_ => !!_.companyKind)?.companyKind
+  const companyKindFromSelected =
+    anomaly.specialCategory === 'OpenFoodFacts'
+      ? 'PRODUCT_OPENFF'
+      : anomaly.specialCategory === 'RappelConso'
+        ? 'PRODUCT_RAPPEL_CONSO'
+        : [...selectedSubCategories].reverse().find(_ => !!_.companyKind)?.companyKind
 
   const companyKindQuestionFromSelected = [...selectedSubCategories]
     .reverse()

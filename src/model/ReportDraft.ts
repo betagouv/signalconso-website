@@ -1,6 +1,7 @@
 import {CompanyKinds, NightTrains, ReportTag, SocialNetworks, Ters, Trains} from '@/anomalies/Anomaly'
 import {OpenFfResult} from '@/feature/openFoodFacts'
-import {AppLang} from '../i18n/localization/AppLangs'
+import {RappelConsoResult} from '@/feature/rappelConso'
+import {AppLang} from '@/i18n/localization/AppLangs'
 import {BarcodeProduct} from './BarcodeProduct'
 import {CompanyDraft} from './Company'
 import {DetailInputValue} from './CreatedReport'
@@ -44,7 +45,8 @@ export interface ReportDraft {
   barcodeProduct?: BarcodeProduct
   train: Train
   station: string
-  openFf: OpenFfResult | undefined
+  openFf?: OpenFfResult
+  rappelConso?: RappelConsoResult
 }
 
 export interface Train {

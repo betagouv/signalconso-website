@@ -25,6 +25,7 @@ export const appConfig = {
   apiCompanyUrl: noTrailingSlash(process.env.NEXT_PUBLIC_COMPANY_API_BASE_URL ?? 'http://localhost:9001'),
   apiAdresseUrl: 'https://api-adresse.data.gouv.fr',
   stationApiUrl: 'https://ressources.data.sncf.com/api/explore/v2.1/catalog/datasets/gares-de-voyageurs',
+  rappelConsoUrl: 'https://data.economie.gouv.fr/api/explore/v2.1/catalog/datasets/rappelconso0',
   isDev: process.env.NEXT_PUBLIC_NODE_ENV === 'development',
   envMarker: process.env.NEXT_PUBLIC_ENV_MARKER,
   showOutilsInternes: readBool(process.env.NEXT_PUBLIC_SHOW_PLAYGROUND),
