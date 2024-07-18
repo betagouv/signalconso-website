@@ -1,6 +1,6 @@
-import {ArborescenceExternalLinks as ArborescenceLinksExtract} from '@/components_feature/ArborescenceExternalLinks'
+import {ArborescenceLinks} from '@/components_feature/ArborescenceLinks'
 import {buildGenerateMetadata} from '@/core/metadatas'
 
 export const generateMetadata = buildGenerateMetadata('arboLinksExtract')
 
-export default ArborescenceLinksExtract
+export default ArborescenceLinks
