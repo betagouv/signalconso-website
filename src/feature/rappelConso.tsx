@@ -8,7 +8,7 @@ import {useMemo} from 'react'
 import {Loader} from '@/feature/Loader'
 import {BlueBanner} from '@/feature/BlueBanner'
 
-const RAPPEL_CONSO_ID_PARAM = 'id_rappel_conso'
+const RAPPEL_CONSO_ID_PARAM = 'id_rappel'
 
 function useIdRappelParam(anomaly: Anomaly) {
   const searchParams = useSearchParams()
