@@ -46,9 +46,9 @@ const Node = ({
     if (instanceOfAnomaly(anomaly) && anomaly.specialCategory) {
       switch (anomaly.specialCategory) {
         case 'OpenFoodFacts':
-          return <BorderedItem text={'Catégorie spéciale pour partenariat'} icon="ri-focus-3-line" />
+          return <BorderedItem text={'Catégorie spéciale pour OpenFoodFacts'} icon="ri-focus-3-line" />
         case 'RappelConso':
-          return <BorderedItem text={'Catégorie spéciale RappelConso'} icon="ri-focus-3-line" />
+          return <BorderedItem text={'Catégorie spéciale pour RappelConso'} icon="ri-focus-3-line" />
       }
     } else {
       return null
