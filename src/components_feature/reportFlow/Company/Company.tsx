@@ -1,4 +1,3 @@
-'use client'
 import {CompanyByTrain} from '@/components_feature/reportFlow/Company/CompanyByTrain'
 import {BarcodeProduct} from '@/model/BarcodeProduct'
 import {ReportDraft2} from '@/model/ReportDraft2'
@@ -26,6 +25,13 @@ import {InfluencerFilled} from './InfluencerFilled'
 import {BarcodeSearchResult} from './lib/BarcodeSearchResult'
 import {CompanyByStation} from '@/components_feature/reportFlow/Company/CompanyByStation'
 import {CompanySearchByName} from '@/components_feature/reportFlow/Company/CompanySearchByName'
+import {useBarcodeSearch} from '@/hooks/barcode'
+import {BlueBanner} from '@/feature/BlueBanner'
+import {useState} from 'react'
+import {ScSelect} from '@/components_simple/formInputs/ScSelect'
+import {ScRadioButtons} from '@/components_simple/formInputs/ScRadioButtons'
+import {NoSearchResult} from '@/components_feature/reportFlow/Company/lib/NoSearchResult'
+import {Loader} from '@/feature/Loader'
 
 export function Company({stepNavigation}: {stepNavigation: StepNavigation}) {
   const {reportDraft, setReportDraft, sendReportEvent} = useReportFlowContext()
@@ -93,6 +99,8 @@ export function CompanyIdentificationDispatch({draft, updateReport}: CommonProps
       return <BarcodeTree {...{draft, updateReport}} specificProductCompanyKinds={'PRODUCT_POINT_OF_SALE'} />
     case 'PRODUCT_OPENFF':
       return <OpenFfTree {...{draft, updateReport}} />
+    case 'PRODUCT_RAPPEL_CONSO':
+      return <RappelConsoTree {...{draft, updateReport}} />
 
     case 'SOCIAL':
       return (
@@ -396,20 +404,111 @@ function OpenFfTree({draft, updateReport}: CommonProps) {
         }}
       />
       {!company && (
-        <CommonTree
-          {...{draft}}
-          updateReport={changesToDraft => {
-            updateReport({
-              ...changesToDraft,
-              // we also want to keep the product
-              barcodeProduct: product,
-            })
-          }}
-          phoneOrWebsite={undefined}
-          barcodeProduct={undefined}
-          result={undefined}
-        />
+        <CommonTree {...{draft, updateReport}} phoneOrWebsite={undefined} barcodeProduct={product} result={undefined} />
       )}
     </>
+  )
+}
+
+function RappelConsoTree({draft, updateReport}: CommonProps) {
+  const {data} = draft.rappelConso ?? {}
+  if (!data || data.gtins.length === 0) {
+    return <BarcodeTree {...{draft, updateReport}} specificProductCompanyKinds={'PRODUCT'} />
+  } else if (data.gtins.length === 1) {
+    return <RCOneBarcodeTree {...{draft, updateReport}} gtin={data.gtins[0]} />
+  } else {
+    return <RCMutlipleBarcodesTree {...{draft, updateReport}} gtins={data.gtins} />
+  }
+}
+
+function RCOneBarcodeTree({draft, updateReport, gtin}: {gtin: string} & CommonProps) {
+  const _search = useBarcodeSearch(gtin)
+  const {product, company} = _search.data ?? {}
+
+  if (_search.isFetching) {
+    return <Loader />
+  } else {
+    return (
+      <>
+        <p>
+          Numéro (GTIN) du code-barres du produit fourni par RappelConso : <span className="font-bold">{gtin}</span>
+        </p>
+        <BarcodeSearchResult
+          specificProductCompanyKinds={'PRODUCT'}
+          product={product}
+          company={company}
+          reportDraft={draft}
+          onSubmit={(company, barcodeProduct) => {
+            updateReport({
+              companyDraft: company,
+              barcodeProduct,
+            })
+          }}
+          noResultsPanel={<RappelConsoBarcodeNotFoundInGS1 />}
+        />
+        {!company && (
+          <CommonTree {...{draft, updateReport}} phoneOrWebsite={undefined} barcodeProduct={product} result={undefined} />
+        )}
+      </>
+    )
+  }
+}
+
+function RCMutlipleBarcodesTree({draft, updateReport, gtins}: {gtins: string[]} & CommonProps) {
+  const [selectedGtin, selectGtin] = useState<string | null>()
+  const _search = useBarcodeSearch(selectedGtin ?? undefined)
+
+  const optionsWithoutUnknown = gtins.map(gtin => {
+    return {
+      value: gtin,
+      label: gtin,
+    }
+  })
+  const options = [...optionsWithoutUnknown, {value: null, label: 'Je ne connais pas le code-barres'}]
+
+  if (_search.isFetching) {
+    return <Loader />
+  } else {
+    return (
+      <>
+        <p>Le produit rappelé concerne plusieurs codes-barres. Sélectionnez celui qui concerne votre lot</p>
+        <ScRadioButtons
+          title="Quel code-barres concerne votre produit ?"
+          onChange={value => selectGtin(value)}
+          value={selectedGtin}
+          required={true}
+          options={options}
+        />
+        {selectedGtin && (
+          <BarcodeSearchResult
+            specificProductCompanyKinds={'PRODUCT'}
+            product={_search.data?.product}
+            company={_search.data?.company}
+            reportDraft={draft}
+            onSubmit={(company, barcodeProduct) => {
+              updateReport({
+                companyDraft: company,
+                barcodeProduct,
+              })
+            }}
+            noResultsPanel={<RappelConsoBarcodeNotFoundInGS1 />}
+          />
+        )}
+        {selectedGtin !== undefined && !_search.data?.company && (
+          <CommonTree
+            {...{draft, updateReport}}
+            phoneOrWebsite={undefined}
+            barcodeProduct={_search.data?.product}
+            result={undefined}
+          />
+        )}
+      </>
+    )
+  }
+}
+
+function RappelConsoBarcodeNotFoundInGS1() {
+  return (
+    <NoSearchResult text="Malheureusement, nous n'avons pas pu identifier automatiquement l'entreprise associée à ce code-barres." />
   )
 }

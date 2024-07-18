@@ -3,9 +3,9 @@ import {NextResponse} from 'next/server'
 import Negotiator from 'negotiator'
 import {AppLangs, getSupportedLang} from './i18n/localization/AppLangs'
 import {match} from '@formatjs/intl-localematcher'
-import {appConfig} from './core/appConfig'
 
-let supportedLang = [AppLangs.en, AppLangs.fr]
+// Order is important for lang selection below, first is preferred lang
+let supportedLang = [AppLangs.fr, AppLangs.en]
 
 export function middleware(request: any) {
   // Check if there is any supported locale in the pathname
@@ -74,7 +74,7 @@ function computeLang(currentCookieLang: string | undefined, headers: any) {
     headers.forEach((value: string, key: string) => (negotiatorHeaders[key] = value))
 
     // Use negotiator and intl-localematcher to get best locale
-    let languages = new Negotiator({headers: negotiatorHeaders}).languages()
+    let languages = new Negotiator({headers: negotiatorHeaders}).languages(supportedLang)
 
     // Handle SEO / CURL request that are not handled well
     // See https://stackoverflow.com/questions/76447732/nextjs-13-i18n-incorrect-locale-information-provided

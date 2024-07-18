@@ -26,10 +26,13 @@ export type Anomaly = CategoryNodeBase & {
   img: string
   hidden?: boolean
   isHiddenDemoCategory?: boolean
-  isSpecialOpenFoodFactsCategory?: boolean
+  specialCategory?: SpecialCategory
   // text or question introducing the choice between the subcategories
   isExternal?: boolean // Define if the is category is an external link
 }
+
+export const specialCategories = ['OpenFoodFacts', 'RappelConso']
+export type SpecialCategory = (typeof specialCategories)[number]
 
 type CompanyKindQuestion = {
   label: string
@@ -106,7 +109,7 @@ export const reportTagsAllowedInYaml = [
 ] as const
 export type ReportTagAllowedInYaml = (typeof reportTagsAllowedInYaml)[number]
 
-export const reportTags = ['LitigeContractuel', 'Internet', 'OpenFoodFacts', ...reportTagsAllowedInYaml] as const
+export const reportTags = ['LitigeContractuel', 'Internet', 'OpenFoodFacts', 'RappelConso', ...reportTagsAllowedInYaml] as const
 export type ReportTag = (typeof reportTags)[number]
 
 export const companyKinds = [
@@ -120,6 +123,7 @@ export const companyKinds = [
   'PRODUCT',
   'PRODUCT_POINT_OF_SALE',
   'PRODUCT_OPENFF',
+  'PRODUCT_RAPPEL_CONSO',
   'TRAIN',
   'STATION',
 ] as const

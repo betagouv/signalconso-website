@@ -4,8 +4,11 @@ import {BarcodeProduct} from '@/model/BarcodeProduct'
 import {CompanySearchResult} from '@/model/Company'
 import {ReportDraft2} from '@/model/ReportDraft2'
 import {useSearchParams} from 'next/navigation'
-import {ReactNode, useMemo} from 'react'
-import {useBarcodeSearch} from './barcode'
+import {useMemo} from 'react'
+import {useBarcodeSearch} from '@/hooks/barcode'
+import {SpecialCategorySetup} from '@/feature/SpecialCategorySetup'
+import {Loader} from '@/feature/Loader'
+import {BlueBanner} from '@/feature/BlueBanner'
 
 const OPENFOODFACTS_BARCODE_PARAM = 'gtin'
 
@@ -15,19 +18,7 @@ export type OpenFfResult = {
   company?: CompanySearchResult
 }
 
-type OpenFfSetup =
-  | {
-      status: 'skipped'
-    }
-  | {
-      status: 'loading'
-    }
-  | {
-      status: 'loaded'
-      result: OpenFfResult
-    }
-
-export function useOpenFfSetup(anomaly: Anomaly): OpenFfSetup {
+export function useOpenFfSetup(anomaly: Anomaly): SpecialCategorySetup<OpenFfResult> {
   const barcode = useBarcodeParam(anomaly)
   const _query = useBarcodeSearch(barcode)
 
@@ -58,7 +49,7 @@ export function useOpenFfSetup(anomaly: Anomaly): OpenFfSetup {
 
 function useBarcodeParam(anomaly: Anomaly) {
   const searchParams = useSearchParams()
-  return (anomaly.isSpecialOpenFoodFactsCategory && searchParams.get(OPENFOODFACTS_BARCODE_PARAM)?.trim()) || undefined
+  return (anomaly.specialCategory === 'OpenFoodFacts' && searchParams.get(OPENFOODFACTS_BARCODE_PARAM)?.trim()) || undefined
 }
 
 export function recreateOpenFfBarcodeParam(reportDraft: Partial<ReportDraft2>) {
@@ -70,7 +61,7 @@ export function recreateOpenFfBarcodeParam(reportDraft: Partial<ReportDraft2>) {
   return params
 }
 
-export function OpenFfWelcomeText({setup}: {setup: OpenFfSetup}) {
+export function OpenFfWelcomeText({setup}: {setup: SpecialCategorySetup<OpenFfResult>}) {
   if (setup.status === 'skipped') {
     return null
   }
@@ -85,14 +76,6 @@ export function OpenFfWelcomeText({setup}: {setup: OpenFfSetup}) {
     return <WelcomeProductWithoutCompany product={product} />
   }
   return <WelcomeInvalidBarcode barcode={barcode} />
-}
-
-function Loader() {
-  return (
-    <div className="min-h-[200px] flex items-center justify-center">
-      <div className="sc-loader-big w-20 h-20"></div>
-    </div>
-  )
 }
 
 // Pas d'intertionalisation, la feature n'existe pas en version anglaise
@@ -160,12 +143,4 @@ function WelcomeProductFull({product, company}: {product: BarcodeProduct; compan
 
 function LetUsGuideYou() {
   return <p className="text-center font-bold mb-2">Répondez simplement aux questions et laissez-vous guider !</p>
-}
-
-function BlueBanner({children}: {children: ReactNode}) {
-  return (
-    <div className="py-4 px-8 mb-8 bg-sclightblueinfo text-scblueinfo border-y-[1px] border-0 border-solid border-scblueinfo">
-      {children}
-    </div>
-  )
 }

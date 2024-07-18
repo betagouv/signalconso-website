@@ -38,10 +38,22 @@ const Node = ({
   const isBlocking = instanceOfSubcategoryWithInfoWall(anomaly)
   const [isOpen, setIsOpen] = useState(false)
   const isHiddenDemoCategory = instanceOfAnomaly(anomaly) && anomaly.isHiddenDemoCategory
-  const isSpecialOpenFoodFactsCategory = instanceOfAnomaly(anomaly) && anomaly.isSpecialOpenFoodFactsCategory
   useEffect(() => {
     setIsOpen(!!openAll)
   }, [openAll])
+
+  function specialCategoryLabel(anomaly: CategoryNode) {
+    if (instanceOfAnomaly(anomaly) && anomaly.specialCategory) {
+      switch (anomaly.specialCategory) {
+        case 'OpenFoodFacts':
+          return <BorderedItem text={'Catégorie spéciale pour partenariat'} icon="ri-focus-3-line" />
+        case 'RappelConso':
+          return <BorderedItem text={'Catégorie spéciale RappelConso'} icon="ri-focus-3-line" />
+      }
+    } else {
+      return null
+    }
+  }
 
   return (
     <div className="flex items-stretch mb-2 ">
@@ -80,9 +92,7 @@ const Node = ({
           </div>
           <div>
             {isHiddenDemoCategory && <BorderedItem text={'Catégorie spéciale de démo'} icon="ri-flask-line" />}
-            {isSpecialOpenFoodFactsCategory && (
-              <BorderedItem text={'Catégorie spéciale pour partenariat'} icon="ri-focus-3-line" />
-            )}
+            {specialCategoryLabel(anomaly)}
             {displayExtra &&
               tags &&
               tags.length &&
