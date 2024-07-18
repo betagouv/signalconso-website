@@ -10,7 +10,7 @@ import {BarcodeProduct} from '@/model/BarcodeProduct'
 import {ReportDraft2} from '@/model/ReportDraft2'
 import {useState} from 'react'
 import {SpecificProductCompanyKind, SpecificWebsiteCompanyKind} from '../../../anomalies/Anomaly'
-import {CompanyDraft, CompanySearchResult} from '../../../model/Company'
+import {CompanySearchResult} from '../../../model/Company'
 import {DeepPartial} from '../../../utils/utils'
 import {useReportFlowContext} from '../ReportFlowContext'
 import {StepNavigation} from '../reportFlowStepper/ReportFlowStepper'
@@ -72,9 +72,7 @@ export function CompanyIdentificationDispatch({draft, updateReport}: CommonProps
     case 'STATION':
       return (
         <CompanyByStation onSubmit={station => updateReport({station})}>
-          {() => (
-            <CommonTree {...{draft, updateReport}} phoneOrWebsite={undefined} barcodeProduct={undefined} result={undefined} />
-          )}
+          {() => <CommonTree {...{draft, updateReport}} result={undefined} />}
         </CompanyByStation>
       )
     case 'PRODUCT':
@@ -118,9 +116,7 @@ export function CompanyIdentificationDispatch({draft, updateReport}: CommonProps
     case 'PHONE':
       return (
         <CompanyByPhone>
-          {phone => (
-            <CommonTree {...{draft, updateReport}} phoneOrWebsite={{phone}} barcodeProduct={undefined} result={undefined} />
-          )}
+          {phone => <CommonTree {...{draft, updateReport}} alreadyProvidedFields={{phone}} result={undefined} />}
         </CompanyByPhone>
       )
     case 'TRANSPORTER_WEBSITE':
@@ -130,7 +126,7 @@ export function CompanyIdentificationDispatch({draft, updateReport}: CommonProps
     case 'WEBSITE':
       return <WebsiteTree {...{draft, updateReport}} specificWebsiteCompanyKind={undefined} />
     default:
-      return <CommonTree {...{draft, updateReport}} phoneOrWebsite={undefined} barcodeProduct={undefined} result={undefined} />
+      return <CommonTree {...{draft, updateReport}} result={undefined} />
   }
 }
 
@@ -157,7 +153,7 @@ function WebsiteTree({
             }}
           />
         ) : (
-          <CommonTree {...{draft, updateReport}} phoneOrWebsite={{website}} barcodeProduct={undefined} result={companies} />
+          <CommonTree {...{draft, updateReport}} alreadyProvidedFields={{website}} result={companies} />
         )
       }
     </CompanyByWebsite>
@@ -165,30 +161,42 @@ function WebsiteTree({
 }
 
 function CommonTree({
-  phoneOrWebsite = {},
-  barcodeProduct = undefined,
+  alreadyProvidedFields = {},
   result = undefined,
   draft,
   updateReport,
 }: {
-  phoneOrWebsite: Pick<CompanyDraft, 'phone' | 'website'> | undefined
-  barcodeProduct: BarcodeProduct | undefined
+  alreadyProvidedFields?: {
+    phone?: string
+    website?: string
+    barcodeProduct?: BarcodeProduct
+  }
   result: CompanySearchResult[] | undefined
 } & CommonProps) {
   const companyKind = draft.companyKind
   if (!companyKind) {
     throw new Error('The draft should have a companyKind already')
   }
+  function updateReportWithAllFields(changes: DeepPartial<ReportDraft2>) {
+    const {phone, website, barcodeProduct} = alreadyProvidedFields
+    updateReport({
+      ...changes,
+      ...(barcodeProduct ? {barcodeProduct} : {}),
+      companyDraft: {
+        ...(phone ? {phone} : {}),
+        ...(website ? {website} : {}),
+        ...changes.companyDraft,
+      },
+    })
+  }
+
   return result && result.length > 0 ? (
     <CompanySearchResultComponent
       companies={result}
       reportDraft={draft}
       onSubmit={(company, vendor) => {
-        updateReport({
-          companyDraft: {
-            ...company,
-            ...phoneOrWebsite,
-          },
+        updateReportWithAllFields({
+          companyDraft: company,
           vendor,
         })
       }}
@@ -205,12 +213,8 @@ function CommonTree({
                     companies={companies ?? []}
                     reportDraft={draft}
                     onSubmit={company => {
-                      updateReport({
-                        companyDraft: {
-                          ...company,
-                          ...phoneOrWebsite,
-                        },
-                        barcodeProduct,
+                      updateReportWithAllFields({
+                        companyDraft: company,
                       })
                     }}
                   />
@@ -225,12 +229,8 @@ function CommonTree({
                     companies={companies ?? []}
                     reportDraft={draft}
                     onSubmit={company => {
-                      updateReport({
-                        companyDraft: {
-                          ...company,
-                          ...phoneOrWebsite,
-                        },
-                        barcodeProduct,
+                      updateReportWithAllFields({
+                        companyDraft: company,
                       })
                     }}
                   />
@@ -245,12 +245,8 @@ function CommonTree({
                     companies={companies ?? []}
                     reportDraft={draft}
                     onSubmit={company => {
-                      updateReport({
-                        companyDraft: {
-                          ...company,
-                          ...phoneOrWebsite,
-                        },
-                        barcodeProduct,
+                      updateReportWithAllFields({
+                        companyDraft: company,
                       })
                     }}
                   />
@@ -262,15 +258,13 @@ function CommonTree({
               return (
                 <CompanyAskConsumerStreet
                   onChange={({postalCode, street}) => {
-                    updateReport({
+                    updateReportWithAllFields({
                       companyDraft: {
-                        ...phoneOrWebsite,
                         address: {
                           postalCode,
                           street,
                         },
                       },
-                      barcodeProduct,
                     })
                   }}
                 />
@@ -285,14 +279,12 @@ function CommonTree({
                         <CompanyAskConsumerPostalCode
                           {...{companyKind}}
                           onChange={postalCode => {
-                            updateReport({
+                            updateReportWithAllFields({
                               companyDraft: {
-                                ...phoneOrWebsite,
                                 address: {
                                   postalCode: postalCode,
                                 },
                               },
-                              barcodeProduct,
                             })
                           }}
                         />
@@ -302,16 +294,14 @@ function CommonTree({
                         <CompanyAskForeignDetails
                           {...{companyKind}}
                           onSubmit={({name, postalCode, country: {code}}) => {
-                            updateReport({
+                            updateReportWithAllFields({
                               companyDraft: {
                                 name: name,
-                                ...phoneOrWebsite,
                                 address: {
                                   postalCode: postalCode,
                                   country: code,
                                 },
                               },
-                              barcodeProduct,
                             })
                           }}
                         />
@@ -321,14 +311,12 @@ function CommonTree({
                         <CompanyAskConsumerPostalCode
                           {...{companyKind}}
                           onChange={postalCode => {
-                            updateReport({
+                            updateReportWithAllFields({
                               companyDraft: {
-                                ...phoneOrWebsite,
                                 address: {
                                   postalCode,
                                 },
                               },
-                              barcodeProduct,
                             })
                           }}
                         />
@@ -352,9 +340,7 @@ function BarcodeTree({
     <CompanySearchByBarcode searchProductOnly={specificProductCompanyKinds === 'PRODUCT_POINT_OF_SALE'}>
       {results => {
         if (results.kind === 'dont_know_barcode') {
-          return (
-            <CommonTree {...{draft, updateReport}} phoneOrWebsite={undefined} barcodeProduct={undefined} result={undefined} />
-          )
+          return <CommonTree {...{draft, updateReport}} result={undefined} />
         }
         const {product, company} = results
         return (
@@ -377,7 +363,7 @@ function BarcodeTree({
               <div className="text-xl mb-4 pt-8">Nous avons maintenant besoin de connaitre le point de vente du produit.</div>
             )}
             {!company && (
-              <CommonTree {...{draft, updateReport}} phoneOrWebsite={undefined} barcodeProduct={product} result={undefined} />
+              <CommonTree {...{draft, updateReport}} alreadyProvidedFields={{barcodeProduct: product}} result={undefined} />
             )}
           </>
         )
@@ -391,7 +377,7 @@ function OpenFfTree({draft, updateReport}: CommonProps) {
   if (!product) {
     // We were not able to find the product with the barcode from OpenFF
     // Let's forget about it entirely and fallback on the regular search
-    return <CommonTree {...{draft, updateReport}} phoneOrWebsite={undefined} barcodeProduct={undefined} result={undefined} />
+    return <CommonTree {...{draft, updateReport}} result={undefined} />
   }
   return (
     <>
@@ -407,9 +393,7 @@ function OpenFfTree({draft, updateReport}: CommonProps) {
           })
         }}
       />
-      {!company && (
-        <CommonTree {...{draft, updateReport}} phoneOrWebsite={undefined} barcodeProduct={product} result={undefined} />
-      )}
+      {!company && <CommonTree {...{draft, updateReport}} alreadyProvidedFields={{barcodeProduct: product}} result={undefined} />}
     </>
   )
 }
@@ -451,7 +435,7 @@ function RCOneBarcodeTree({draft, updateReport, gtin}: {gtin: string} & CommonPr
           noResultsPanel={<RappelConsoBarcodeNotFoundInGS1 />}
         />
         {!company && (
-          <CommonTree {...{draft, updateReport}} phoneOrWebsite={undefined} barcodeProduct={product} result={undefined} />
+          <CommonTree {...{draft, updateReport}} alreadyProvidedFields={{barcodeProduct: product}} result={undefined} />
         )}
       </>
     )
@@ -502,8 +486,7 @@ function RCMutlipleBarcodesTree({draft, updateReport, gtins}: {gtins: string[]} 
           {selectedGtin !== undefined && !_search.data?.company && (
             <CommonTree
               {...{draft, updateReport}}
-              phoneOrWebsite={undefined}
-              barcodeProduct={_search.data?.product}
+              alreadyProvidedFields={{barcodeProduct: _search.data?.product}}
               result={undefined}
             />
           )}
