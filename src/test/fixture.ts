@@ -6,7 +6,7 @@ import {InfoWall, reportTags, socialNetworks, Subcategory} from '../anomalies/An
 import {Address, ApiAddress} from '../model/Address'
 import {CompanyDraft, CompanySearchResult, WebsiteCompanySearchResult} from '../model/Company'
 import {CreatedReport} from '../model/CreatedReport'
-import {Influencer, ReportDraft, ReportDraftConsumer} from '../model/ReportDraft'
+import {Influencer, ReportDraft} from '../model/ReportDraft'
 import {FileOrigin} from '../model/UploadedFile'
 
 export class SeedableRandom {
@@ -170,7 +170,7 @@ export class Fixture {
       }, {})
   }
 
-  static readonly genConsumer = (random: SeedableRandom = defaultRandom): ReportDraftConsumer => {
+  static readonly genConsumer = (random: SeedableRandom = defaultRandom): ReportDraft['step4']['consumer'] => {
     return {
       firstName: random.oneOf(Fixture.firstNames),
       lastName: random.oneOf(Fixture.lastNames),

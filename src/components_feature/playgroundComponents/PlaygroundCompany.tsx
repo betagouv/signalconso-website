@@ -1,10 +1,10 @@
 import {ReportDraft2} from '@/model/ReportDraft2'
-import {useState, useEffect} from 'react'
-import {CompanyKinds, companyKinds} from '../../anomalies/Anomaly'
+import {useState} from 'react'
+import {CompanyKind} from '../../anomalies/Anomaly'
 import {CompanyIdentificationDispatch} from '../reportFlow/Company/Company'
 
 interface PlaygroundCompanyProps {
-  companyKind?: CompanyKinds
+  companyKind?: CompanyKind
   partialReportDraft?: Partial<ReportDraft2>
 }
 

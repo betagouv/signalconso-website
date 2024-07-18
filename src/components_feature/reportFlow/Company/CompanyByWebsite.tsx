@@ -14,7 +14,7 @@ import {useQuery} from '@tanstack/react-query'
 import Link from 'next/link'
 import {ReactNode, useEffect, useRef, useState} from 'react'
 import {useForm} from 'react-hook-form'
-import {SpecificWebsiteCompanyKinds} from '../../../anomalies/Anomaly'
+import {SpecificWebsiteCompanyKind} from '../../../anomalies/Anomaly'
 import {SiretExtractorClient} from '../../../clients/SiretExtractorClient'
 import {CompanySearchResult} from '../../../model/Company'
 import {Country} from '../../../model/Country'
@@ -25,7 +25,7 @@ interface Form {
 }
 
 interface Props {
-  specificWebsiteCompanyKind: SpecificWebsiteCompanyKinds | undefined
+  specificWebsiteCompanyKind: SpecificWebsiteCompanyKind | undefined
   children: (websiteUrl?: string, result?: CompanySearchResult[], countries?: Country[]) => ReactNode
 }
 
@@ -141,7 +141,7 @@ export const CompanyByWebsite = ({children, specificWebsiteCompanyKind}: Props) 
     setWebsite(website.trim())
   }
 
-  const websiteToReportAlert = (websiteCompanyKind: SpecificWebsiteCompanyKinds) => {
+  const websiteToReportAlert = (websiteCompanyKind: SpecificWebsiteCompanyKind) => {
     if (websiteCompanyKind == 'TRANSPORTER_WEBSITE') {
       return (
         <Alert

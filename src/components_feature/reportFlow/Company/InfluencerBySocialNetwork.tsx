@@ -1,36 +1,48 @@
+import {useToastOnQueryError} from '@/clients/apiHooks'
+import {DetailsSpecifyInput} from '@/components_feature/reportFlow/Details/DetailsSpecifyInput'
+import {AutofocusedDiv} from '@/components_simple/AutofocusedDiv'
 import {RequiredFieldsLegend} from '@/components_simple/RequiredFieldsLegend'
+import {ScAlert} from '@/components_simple/ScAlert'
 import {BtnNextSubmit, ButtonWithLoader} from '@/components_simple/buttons/Buttons'
+import {ScAutocompletePostcode} from '@/components_simple/formInputs/ScAutocompletePostcode'
 import {ScTextInput} from '@/components_simple/formInputs/ScTextInput'
+import {useApiClients} from '@/context/ApiClientsContext'
+import {Alert} from '@codegouvfr/react-dsfr/Alert'
+import {Button} from '@codegouvfr/react-dsfr/Button'
+import {useQuery} from '@tanstack/react-query'
+import {useState} from 'react'
 import {Controller, useForm} from 'react-hook-form'
-import {SocialNetworks, socialNetworks} from '../../../anomalies/Anomaly'
+import {SocialNetwork, socialNetworks} from '../../../anomalies/Anomaly'
 import {Animate} from '../../../components_simple/Animate'
 import {SocialNetworkRow} from '../../../components_simple/SocialNetworkRow'
 import {ScRadioButtons} from '../../../components_simple/formInputs/ScRadioButtons'
 import {useI18n} from '../../../i18n/I18n'
-import {DetailsSpecifyInput} from '@/components_feature/reportFlow/Details/DetailsSpecifyInput'
-import {AutofocusedDiv} from '@/components_simple/AutofocusedDiv'
-import {Button} from '@codegouvfr/react-dsfr/Button'
-import {useQuery} from '@tanstack/react-query'
-import {useApiClients} from '@/context/ApiClientsContext'
-import {useToastOnQueryError} from '@/clients/apiHooks'
-import {useEffect, useState} from 'react'
-import {Alert} from '@codegouvfr/react-dsfr/Alert'
-import {ScAutocompletePostcode} from '@/components_simple/formInputs/ScAutocompletePostcode'
-import {ScAlert} from '@/components_simple/ScAlert'
 
-interface Props {
-  onSubmit: (socialNetwork: SocialNetworks, influencer: string, otherSocialNetwork?: string, postalCode?: string) => void
-}
+type Result = {
+  influencer: string
+} & (
+  | {
+      kind: 'knownSocialNetwork'
+      socialNetwork: Exclude<SocialNetwork, 'OTHER'>
+    }
+  | {
+      kind: 'otherSocialNetwork'
+      socialNetwork: 'OTHER'
+      otherSocialNetwork: string
+      postalCode: string
+    }
+)
 
 interface Form {
-  socialNetwork: SocialNetworks
-  otherSocialNetwork: string
+  socialNetwork: SocialNetwork
+  otherSocialNetwork?: string
   influencer: string
-  postalCode: string
+  postalCode?: string
 }
 
-export const InfluencerBySocialNetwork = ({onSubmit}: Props) => {
+export function InfluencerBySocialNetwork({onSubmit}: {onSubmit: (result: Result) => void}) {
   const {m} = useI18n()
+  const {signalConsoApiClient} = useApiClients()
   const {
     handleSubmit,
     watch,
@@ -39,17 +51,10 @@ export const InfluencerBySocialNetwork = ({onSubmit}: Props) => {
     setValue,
     formState: {errors},
   } = useForm<Form>()
-
-  const sanitizeInfluencer = (name: string) => {
-    return name.toLowerCase().replaceAll(' ', '').replaceAll('@', '')
-  }
-
-  const {signalConsoApiClient} = useApiClients()
   const socialNetwork = watch('socialNetwork')
-
   const influencer = watch('influencer')
   const [isEditingInfluencer, setIsEditingInfluencer] = useState(true)
-  const [certifiedInfluencer, setCertifiedInfluencer] = useState<string>()
+  const [certifiedInfluencer, setCertifiedInfluencer] = useState<string | undefined>()
 
   const searchQuery = useQuery({
     queryKey: ['searchCertifiedInfluencer', certifiedInfluencer, socialNetwork],
@@ -61,7 +66,7 @@ export const InfluencerBySocialNetwork = ({onSubmit}: Props) => {
 
   const socialNetworkOptions = socialNetworks.map(socialNetwork => {
     return {
-      label: <SocialNetworkRow socialNetwork={socialNetwork} />,
+      label: <SocialNetworkRow {...{socialNetwork}} />,
       value: socialNetwork,
       specify: socialNetwork === 'OTHER' ? <DetailsSpecifyInput control={control} name="otherSocialNetwork" /> : undefined,
     }
@@ -72,7 +77,7 @@ export const InfluencerBySocialNetwork = ({onSubmit}: Props) => {
       <RequiredFieldsLegend />
       <form
         onSubmit={handleSubmit(form => {
-          onSubmit(form.socialNetwork, sanitizeInfluencer(form.influencer), form.otherSocialNetwork, form.postalCode)
+          onSubmit(transformBeforeSubmit(form))
         })}
       >
         <Animate autoScrollTo={false}>
@@ -193,4 +198,28 @@ export const InfluencerBySocialNetwork = ({onSubmit}: Props) => {
       </form>
     </>
   )
+}
+
+function sanitizeInfluencer(name: string) {
+  return name.toLowerCase().replaceAll(' ', '').replaceAll('@', '')
+}
+
+function transformBeforeSubmit(form: Form): Result {
+  const {socialNetwork, otherSocialNetwork, postalCode} = form
+  const influencer = sanitizeInfluencer(form.influencer)
+  if (socialNetwork === 'OTHER') {
+    if (!otherSocialNetwork || !postalCode) {
+      throw new Error(
+        `The fields for OTHER social network should have been filled at this point : ${otherSocialNetwork} and ${postalCode}`,
+      )
+    }
+    return {
+      kind: 'otherSocialNetwork',
+      socialNetwork,
+      influencer,
+      otherSocialNetwork,
+      postalCode,
+    }
+  }
+  return {kind: 'knownSocialNetwork', socialNetwork, influencer}
 }

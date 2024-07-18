@@ -1,5 +1,5 @@
 import {findAnomaly} from '@/anomalies/Anomalies'
-import {Anomaly, ReportTag, SocialNetworks, Subcategory} from '@/anomalies/Anomaly'
+import {Anomaly, ReportTag, SocialNetwork, Subcategory} from '@/anomalies/Anomaly'
 import {Influencer, ReportDraft, TransmissionStatus} from '@/model/ReportDraft'
 import {ReportDraft2} from '@/model/ReportDraft2'
 import {ApiInfluencer, ApiReportDraft} from '@/model/reportsFromApi'
@@ -75,7 +75,7 @@ export const getTransmissionStatus = (
 }
 
 export const toApiInfluencer = (influencer: Influencer): ApiInfluencer => {
-  const toApiSocialNetwork = (socialNetwork: SocialNetworks): string | undefined => {
+  const toApiSocialNetwork = (socialNetwork: SocialNetwork): string | undefined => {
     switch (socialNetwork) {
       case 'YOUTUBE':
         return 'YouTube'
@@ -140,7 +140,7 @@ export const toApi = (draft: ReportDraft, metadata: ApiReportDraft['metadata']):
     gender: consumer.gender,
     category: draft.categoryOverride ?? draft.step0.category,
     subcategories: subcategories.map(_ => _.title),
-    details: draft.details,
+    details: draft.step3.details,
     companyName: draft.companyDraft?.name,
     companyBrand: draft.companyDraft?.brand,
     companyCommercialName: draft.companyDraft?.commercialName,
@@ -161,7 +161,7 @@ export const toApi = (draft: ReportDraft, metadata: ApiReportDraft['metadata']):
     contactAgreement,
     employeeConsumer: draft.employeeConsumer ?? false,
     forwardToReponseConso: consumerWish === 'getAnswer',
-    fileIds: draft.uploadedFiles?.map(file => file.id) ?? [],
+    fileIds: draft.step3.uploadedFiles?.map(file => file.id) ?? [],
     vendor,
     tags,
     reponseconsoCode: reponseconsoCode ? [reponseconsoCode] : undefined,

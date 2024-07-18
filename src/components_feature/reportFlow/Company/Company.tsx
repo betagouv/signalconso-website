@@ -1,9 +1,16 @@
+'use client'
+import {CompanyByStation} from '@/components_feature/reportFlow/Company/CompanyByStation'
 import {CompanyByTrain} from '@/components_feature/reportFlow/Company/CompanyByTrain'
+import {CompanySearchByName} from '@/components_feature/reportFlow/Company/CompanySearchByName'
+import {NoSearchResult} from '@/components_feature/reportFlow/Company/lib/NoSearchResult'
+import {ScRadioButtons} from '@/components_simple/formInputs/ScRadioButtons'
+import {Loader} from '@/feature/Loader'
+import {useBarcodeSearch} from '@/hooks/barcode'
 import {BarcodeProduct} from '@/model/BarcodeProduct'
 import {ReportDraft2} from '@/model/ReportDraft2'
-import {SpecificProductCompanyKinds, SpecificWebsiteCompanyKinds} from '../../../anomalies/Anomaly'
+import {useState} from 'react'
+import {SpecificProductCompanyKind, SpecificWebsiteCompanyKind} from '../../../anomalies/Anomaly'
 import {CompanyDraft, CompanySearchResult} from '../../../model/Company'
-import {fnSwitch} from '../../../utils/FnSwitch'
 import {DeepPartial} from '../../../utils/utils'
 import {useReportFlowContext} from '../ReportFlowContext'
 import {StepNavigation} from '../reportFlowStepper/ReportFlowStepper'
@@ -13,25 +20,16 @@ import {CompanyAskForeignDetails} from './CompanyAskForeignDetails'
 import {CompanyAskIsFrenchOrForeign, IsAFrenchCompany} from './CompanyAskIsFrenchOrForeign'
 import {CompanyByPhone} from './CompanyByPhone'
 import {CompanyByWebsite} from './CompanyByWebsite'
+import {CompanyChooseIdentificationMethod} from './CompanyChooseIdentificationMethod'
 import {CompanyFilled} from './CompanyFilled'
-import {CompanyIdentifyBy, IdentifyBy} from './CompanyIdentifyBy'
 import {CompanySearchByBarcode} from './CompanySearchByBarcode'
-import {CompanySearchByIdentity} from './CompanySearchByIdentity'
+import {CompanySearchByIdentifier} from './CompanySearchByIdentifier'
 import {CompanySearchByNameAndPostalCode} from './CompanySearchByNameAndPostalCode'
 import {CompanySearchResultComponent} from './CompanySearchResult'
 import {CompanyWebsiteCountry} from './CompanyWebsiteCountry'
 import {InfluencerBySocialNetwork} from './InfluencerBySocialNetwork'
 import {InfluencerFilled} from './InfluencerFilled'
 import {BarcodeSearchResult} from './lib/BarcodeSearchResult'
-import {CompanyByStation} from '@/components_feature/reportFlow/Company/CompanyByStation'
-import {CompanySearchByName} from '@/components_feature/reportFlow/Company/CompanySearchByName'
-import {useBarcodeSearch} from '@/hooks/barcode'
-import {BlueBanner} from '@/feature/BlueBanner'
-import {useState} from 'react'
-import {ScSelect} from '@/components_simple/formInputs/ScSelect'
-import {ScRadioButtons} from '@/components_simple/formInputs/ScRadioButtons'
-import {NoSearchResult} from '@/components_feature/reportFlow/Company/lib/NoSearchResult'
-import {Loader} from '@/feature/Loader'
 
 export function Company({stepNavigation}: {stepNavigation: StepNavigation}) {
   const {reportDraft, setReportDraft, sendReportEvent} = useReportFlowContext()
@@ -43,16 +41,14 @@ export function Company({stepNavigation}: {stepNavigation: StepNavigation}) {
     return <CompanyFilled {...{stepNavigation, draft}} onClear={() => setReportDraft(_ => ({..._, companyDraft: undefined}))} />
   }
   return (
-    <div>
-      <CompanyIdentificationDispatch
-        draft={draft}
-        updateReport={changesToDraft => {
-          setReportDraft(_ => ReportDraft2.merge(_, changesToDraft))
-          sendReportEvent(stepNavigation.currentStep)
-          stepNavigation.next()
-        }}
-      />
-    </div>
+    <CompanyIdentificationDispatch
+      draft={draft}
+      updateReport={changesToDraft => {
+        setReportDraft(_ => ReportDraft2.merge(_, changesToDraft))
+        sendReportEvent(stepNavigation.currentStep)
+        stepNavigation.next()
+      }}
+    />
   )
 }
 
@@ -68,26 +64,14 @@ export function CompanyIdentificationDispatch({draft, updateReport}: CommonProps
     case 'TRAIN':
       return (
         <CompanyByTrain
-          onSubmit={(train, ter, nightTrain) => {
-            updateReport({
-              train: {
-                train,
-                ter,
-                nightTrain,
-              },
-            })
+          onSubmit={form => {
+            updateReport({train: form})
           }}
         />
       )
     case 'STATION':
       return (
-        <CompanyByStation
-          onSubmit={station =>
-            updateReport({
-              station,
-            })
-          }
-        >
+        <CompanyByStation onSubmit={station => updateReport({station})}>
           {() => (
             <CommonTree {...{draft, updateReport}} phoneOrWebsite={undefined} barcodeProduct={undefined} result={undefined} />
           )}
@@ -101,26 +85,33 @@ export function CompanyIdentificationDispatch({draft, updateReport}: CommonProps
       return <OpenFfTree {...{draft, updateReport}} />
     case 'PRODUCT_RAPPEL_CONSO':
       return <RappelConsoTree {...{draft, updateReport}} />
-
     case 'SOCIAL':
       return (
         <InfluencerBySocialNetwork
-          onSubmit={(socialNetwork, influencer, otherSocialNetwork, postalCode) => {
-            const companyDraft = postalCode
-              ? {
+          onSubmit={result => {
+            if (result.kind === 'otherSocialNetwork') {
+              const {socialNetwork, influencer, otherSocialNetwork, postalCode} = result
+              updateReport({
+                companyDraft: {
                   address: {
-                    postalCode,
+                    postalCode: postalCode,
                   },
-                }
-              : undefined
-            updateReport({
-              companyDraft,
-              influencer: {
-                socialNetwork,
-                otherSocialNetwork,
-                name: influencer,
-              },
-            })
+                },
+                influencer: {
+                  socialNetwork,
+                  otherSocialNetwork,
+                  name: influencer,
+                },
+              })
+            } else {
+              const {socialNetwork, influencer} = result
+              updateReport({
+                influencer: {
+                  socialNetwork,
+                  name: influencer,
+                },
+              })
+            }
           }}
         />
       )
@@ -147,7 +138,7 @@ function WebsiteTree({
   specificWebsiteCompanyKind,
   draft,
   updateReport,
-}: {specificWebsiteCompanyKind?: SpecificWebsiteCompanyKinds} & CommonProps) {
+}: {specificWebsiteCompanyKind?: SpecificWebsiteCompanyKind} & CommonProps) {
   return (
     <CompanyByWebsite specificWebsiteCompanyKind={specificWebsiteCompanyKind}>
       {(website, companies, countries) =>
@@ -184,6 +175,10 @@ function CommonTree({
   barcodeProduct: BarcodeProduct | undefined
   result: CompanySearchResult[] | undefined
 } & CommonProps) {
+  const companyKind = draft.companyKind
+  if (!companyKind) {
+    throw new Error('The draft should have a companyKind already')
+  }
   return result && result.length > 0 ? (
     <CompanySearchResultComponent
       companies={result}
@@ -199,143 +194,152 @@ function CommonTree({
       }}
     />
   ) : (
-    <CompanyIdentifyBy companyKind={draft.companyKind!}>
-      {identifyBy =>
-        fnSwitch(identifyBy, {
-          [IdentifyBy.NAME_AND_POSTAL_CODE]: () => (
-            <CompanySearchByNameAndPostalCode>
-              {companies => (
-                <CompanySearchResultComponent
-                  companies={companies ?? []}
-                  reportDraft={draft}
-                  onSubmit={company => {
+    <CompanyChooseIdentificationMethod {...{companyKind}}>
+      {method => {
+        switch (method) {
+          case 'byNameAndPostalCode':
+            return (
+              <CompanySearchByNameAndPostalCode>
+                {companies => (
+                  <CompanySearchResultComponent
+                    companies={companies ?? []}
+                    reportDraft={draft}
+                    onSubmit={company => {
+                      updateReport({
+                        companyDraft: {
+                          ...company,
+                          ...phoneOrWebsite,
+                        },
+                        barcodeProduct,
+                      })
+                    }}
+                  />
+                )}
+              </CompanySearchByNameAndPostalCode>
+            )
+          case 'byName':
+            return (
+              <CompanySearchByName>
+                {companies => (
+                  <CompanySearchResultComponent
+                    companies={companies ?? []}
+                    reportDraft={draft}
+                    onSubmit={company => {
+                      updateReport({
+                        companyDraft: {
+                          ...company,
+                          ...phoneOrWebsite,
+                        },
+                        barcodeProduct,
+                      })
+                    }}
+                  />
+                )}
+              </CompanySearchByName>
+            )
+          case 'byIdentifier':
+            return (
+              <CompanySearchByIdentifier>
+                {companies => (
+                  <CompanySearchResultComponent
+                    companies={companies ?? []}
+                    reportDraft={draft}
+                    onSubmit={company => {
+                      updateReport({
+                        companyDraft: {
+                          ...company,
+                          ...phoneOrWebsite,
+                        },
+                        barcodeProduct,
+                      })
+                    }}
+                  />
+                )}
+              </CompanySearchByIdentifier>
+            )
+          case 'iCannot':
+            if (draft.companyKind === 'LOCATION') {
+              return (
+                <CompanyAskConsumerStreet
+                  onChange={({postalCode, street}) => {
                     updateReport({
                       companyDraft: {
-                        ...company,
                         ...phoneOrWebsite,
+                        address: {
+                          postalCode,
+                          street,
+                        },
                       },
                       barcodeProduct,
                     })
                   }}
                 />
-              )}
-            </CompanySearchByNameAndPostalCode>
-          ),
-          [IdentifyBy.NAME]: () => (
-            <CompanySearchByName>
-              {companies => (
-                <CompanySearchResultComponent
-                  companies={companies ?? []}
-                  reportDraft={draft}
-                  onSubmit={company => {
-                    updateReport({
-                      companyDraft: {
-                        ...company,
-                        ...phoneOrWebsite,
-                      },
-                      barcodeProduct,
-                    })
-                  }}
-                />
-              )}
-            </CompanySearchByName>
-          ),
-          [IdentifyBy.IDENTITY]: () => (
-            <CompanySearchByIdentity>
-              {companies => (
-                <CompanySearchResultComponent
-                  companies={companies ?? []}
-                  reportDraft={draft}
-                  onSubmit={company => {
-                    updateReport({
-                      companyDraft: {
-                        ...company,
-                        ...phoneOrWebsite,
-                      },
-                      barcodeProduct,
-                    })
-                  }}
-                />
-              )}
-            </CompanySearchByIdentity>
-          ),
-          [IdentifyBy.NONE]: () =>
-            draft.companyKind === 'LOCATION' ? (
-              <CompanyAskConsumerStreet
-                onChange={form => {
-                  updateReport({
-                    companyDraft: {
-                      ...phoneOrWebsite,
-                      address: {
-                        postalCode: form.postalCode,
-                        street: form.street,
-                      },
-                    },
-                    barcodeProduct,
-                  })
-                }}
-              />
-            ) : (
+              )
+            }
+            return (
               <CompanyAskIsFrenchOrForeign>
-                {isFrench =>
-                  fnSwitch(isFrench, {
-                    [IsAFrenchCompany.Yes]: () => (
-                      <CompanyAskConsumerPostalCode
-                        companyKind={draft.companyKind!}
-                        onChange={postalCode => {
-                          updateReport({
-                            companyDraft: {
-                              ...phoneOrWebsite,
-                              address: {
-                                postalCode: postalCode,
+                {isFrench => {
+                  switch (isFrench) {
+                    case IsAFrenchCompany.Yes:
+                      return (
+                        <CompanyAskConsumerPostalCode
+                          {...{companyKind}}
+                          onChange={postalCode => {
+                            updateReport({
+                              companyDraft: {
+                                ...phoneOrWebsite,
+                                address: {
+                                  postalCode: postalCode,
+                                },
                               },
-                            },
-                            barcodeProduct,
-                          })
-                        }}
-                      />
-                    ),
-                    [IsAFrenchCompany.No]: () => (
-                      <CompanyAskForeignDetails
-                        companyKind={draft.companyKind!}
-                        onSubmit={form => {
-                          updateReport({
-                            companyDraft: {
-                              name: form.name,
-                              ...phoneOrWebsite,
-                              address: {
-                                postalCode: form.postalCode,
-                                country: form.country.code,
+                              barcodeProduct,
+                            })
+                          }}
+                        />
+                      )
+                    case IsAFrenchCompany.No:
+                      return (
+                        <CompanyAskForeignDetails
+                          {...{companyKind}}
+                          onSubmit={({name, postalCode, country: {code}}) => {
+                            updateReport({
+                              companyDraft: {
+                                name: name,
+                                ...phoneOrWebsite,
+                                address: {
+                                  postalCode: postalCode,
+                                  country: code,
+                                },
                               },
-                            },
-                            barcodeProduct,
-                          })
-                        }}
-                      />
-                    ),
-                    [IsAFrenchCompany.Unknown]: () => (
-                      <CompanyAskConsumerPostalCode
-                        companyKind={draft.companyKind!}
-                        onChange={postalCode => {
-                          updateReport({
-                            companyDraft: {
-                              ...phoneOrWebsite,
-                              address: {
-                                postalCode,
+                              barcodeProduct,
+                            })
+                          }}
+                        />
+                      )
+                    case IsAFrenchCompany.Unknown:
+                      return (
+                        <CompanyAskConsumerPostalCode
+                          {...{companyKind}}
+                          onChange={postalCode => {
+                            updateReport({
+                              companyDraft: {
+                                ...phoneOrWebsite,
+                                address: {
+                                  postalCode,
+                                },
                               },
-                            },
-                            barcodeProduct,
-                          })
-                        }}
-                      />
-                    ),
-                  })
-                }
+                              barcodeProduct,
+                            })
+                          }}
+                        />
+                      )
+                  }
+                }}
               </CompanyAskIsFrenchOrForeign>
-            ),
-        })
-      }
-    </CompanyIdentifyBy>
+            )
+        }
+      }}
+    </CompanyChooseIdentificationMethod>
   )
 }
 
@@ -343,7 +347,7 @@ function BarcodeTree({
   specificProductCompanyKinds,
   draft,
   updateReport,
-}: {specificProductCompanyKinds: SpecificProductCompanyKinds} & CommonProps) {
+}: {specificProductCompanyKinds: SpecificProductCompanyKind} & CommonProps) {
   return (
     <CompanySearchByBarcode searchProductOnly={specificProductCompanyKinds === 'PRODUCT_POINT_OF_SALE'}>
       {results => {

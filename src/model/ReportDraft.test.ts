@@ -1,10 +1,10 @@
 import {toApiInfluencer} from '@/feature/reportDraftUtils'
-import {SocialNetworks} from '../anomalies/Anomaly'
+import {SocialNetwork} from '../anomalies/Anomaly'
 import {Fixture} from '../test/fixture'
 
 describe('ReportDraft.toApi', () => {
   it('should correctly convert the social network', () => {
-    const toString = (socialNetwork: SocialNetworks) => {
+    const toString = (socialNetwork: SocialNetwork) => {
       switch (socialNetwork) {
         case 'YOUTUBE':
           return 'YouTube'

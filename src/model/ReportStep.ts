@@ -67,7 +67,7 @@ function isBuildingStepDone(r: Partial<ReportDraft2>, step: ReportStep) {
         !!r.station
       )
     case 'BuildingDetails':
-      return !!r.details
+      return !!r.step3
     case 'BuildingConsumer':
       return !!r.step4
     case 'Confirmation':

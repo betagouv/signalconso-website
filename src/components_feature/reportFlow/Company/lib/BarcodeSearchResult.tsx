@@ -1,21 +1,21 @@
+import {SpecificProductCompanyKind} from '@/anomalies/Anomaly'
+import {CompanyRecap} from '@/components_simple/CompanyRecap/CompanyRecap'
+import {ProductRecap} from '@/components_simple/CompanyRecap/ProductRecap'
+import {ReportDraft2} from '@/model/ReportDraft2'
+import {ReactNode} from 'react'
 import {BtnNext} from '../../../../components_simple/buttons/Buttons'
 import {useI18n} from '../../../../i18n/I18n'
 import {BarcodeProduct} from '../../../../model/BarcodeProduct'
 import {CompanySearchResult} from '../../../../model/Company'
 import {NoSearchResult} from './NoSearchResult'
-import {CompanyRecap} from '@/components_simple/CompanyRecap/CompanyRecap'
-import {ProductRecap} from '@/components_simple/CompanyRecap/ProductRecap'
-import {SpecificProductCompanyKinds} from '@/anomalies/Anomaly'
-import {ReportDraft2} from '@/model/ReportDraft2'
-import {ReactNode} from 'react'
 
 interface BarcodeSearchResultPros {
   product?: BarcodeProduct
   company?: CompanySearchResult
   reportDraft: Partial<ReportDraft2>
   onSubmit: (selected: CompanySearchResult, product: BarcodeProduct) => void
-  specificProductCompanyKinds: SpecificProductCompanyKinds
   noResultsPanel?: ReactNode
+  specificProductCompanyKinds: SpecificProductCompanyKind
 }
 
 export const BarcodeSearchResult = ({
