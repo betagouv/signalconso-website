@@ -38,7 +38,7 @@ function listLinks(anomalies: Anomaly[]): string[] {
   return Array.from(new Set(links)).sort()
 }
 
-export function ArborescenceExternalLinks(): JSX.Element {
+export function ArborescenceLinks(): JSX.Element {
   const {currentLang} = useI18n()
   const anomalies = allVisibleAnomalies(currentLang)
 
@@ -56,13 +56,16 @@ export function ArborescenceExternalLinks(): JSX.Element {
         en temps pour vérifier.
       </p>
       <ul>
-        {links.map((link, i) => (
-          <li key={i}>
-            <a href={link} target="_blank">
-              {link}
-            </a>
-          </li>
-        ))}
+        {links.map((url, i) => {
+          const finalUrl = url.startsWith('www.') ? `https://${url}` : url
+          return (
+            <li key={i}>
+              <a href={finalUrl} target="_blank">
+                {url}
+              </a>
+            </li>
+          )
+        })}
       </ul>
     </ContentPageContainer>
   )
