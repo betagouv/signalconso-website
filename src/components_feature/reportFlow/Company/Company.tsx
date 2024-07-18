@@ -421,31 +421,30 @@ function RCOneBarcodeTree({draft, updateReport, gtin}: {gtin: string} & CommonPr
 
   if (_search.isFetching) {
     return <Loader />
-  } else {
-    return (
-      <>
-        <p>
-          Numéro (GTIN) du code-barres du produit fourni par RappelConso : <span className="font-bold">{gtin}</span>
-        </p>
-        <BarcodeSearchResult
-          specificProductCompanyKinds={'PRODUCT'}
-          product={product}
-          company={company}
-          reportDraft={draft}
-          onSubmit={(company, barcodeProduct) => {
-            updateReport({
-              companyDraft: company,
-              barcodeProduct,
-            })
-          }}
-          noResultsPanel={<RappelConsoBarcodeNotFoundInGS1 />}
-        />
-        {!company && (
-          <CommonTree {...{draft, updateReport}} alreadyProvidedFields={{barcodeProduct: product}} searchResults={undefined} />
-        )}
-      </>
-    )
   }
+  return (
+    <>
+      <p>
+        Numéro (GTIN) du code-barres du produit fourni par RappelConso : <span className="font-bold">{gtin}</span>
+      </p>
+      <BarcodeSearchResult
+        specificProductCompanyKinds={'PRODUCT'}
+        product={product}
+        company={company}
+        reportDraft={draft}
+        onSubmit={(company, barcodeProduct) => {
+          updateReport({
+            companyDraft: company,
+            barcodeProduct,
+          })
+        }}
+        noResultsPanel={<RappelConsoBarcodeNotFoundInGS1 />}
+      />
+      {!company && (
+        <CommonTree {...{draft, updateReport}} alreadyProvidedFields={{barcodeProduct: product}} searchResults={undefined} />
+      )}
+    </>
+  )
 }
 
 function RCMutlipleBarcodesTree({draft, updateReport, gtins}: {gtins: string[]} & CommonProps) {
