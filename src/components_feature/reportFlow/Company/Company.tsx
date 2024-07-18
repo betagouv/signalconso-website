@@ -466,45 +466,47 @@ function RCMutlipleBarcodesTree({draft, updateReport, gtins}: {gtins: string[]} 
   })
   const options = [...optionsWithoutUnknown, {value: null, label: 'Je ne connais pas le code-barres'}]
 
-  if (_search.isFetching) {
-    return <Loader />
-  } else {
-    return (
-      <>
-        <p>Le produit rappelé concerne plusieurs codes-barres. Sélectionnez celui qui concerne votre lot</p>
-        <ScRadioButtons
-          title="Quel code-barres concerne votre produit ?"
-          onChange={value => selectGtin(value)}
-          value={selectedGtin}
-          required={true}
-          options={options}
-        />
-        {selectedGtin && (
-          <BarcodeSearchResult
-            specificProductCompanyKinds={'PRODUCT'}
-            product={_search.data?.product}
-            company={_search.data?.company}
-            reportDraft={draft}
-            onSubmit={(company, barcodeProduct) => {
-              updateReport({
-                companyDraft: company,
-                barcodeProduct,
-              })
-            }}
-            noResultsPanel={<RappelConsoBarcodeNotFoundInGS1 />}
-          />
-        )}
-        {selectedGtin !== undefined && !_search.data?.company && (
-          <CommonTree
-            {...{draft, updateReport}}
-            phoneOrWebsite={undefined}
-            barcodeProduct={_search.data?.product}
-            result={undefined}
-          />
-        )}
-      </>
-    )
-  }
+  return (
+    <>
+      <p>Le produit rappelé concerne plusieurs codes-barres. Sélectionnez celui qui concerne votre lot</p>
+      <ScRadioButtons
+        title="Quel code-barres concerne votre produit ?"
+        onChange={value => selectGtin(value)}
+        value={selectedGtin}
+        required={true}
+        options={options}
+      />
+      {_search.isFetching ? (
+        <Loader />
+      ) : (
+        <>
+          {selectedGtin && (
+            <BarcodeSearchResult
+              specificProductCompanyKinds={'PRODUCT'}
+              product={_search.data?.product}
+              company={_search.data?.company}
+              reportDraft={draft}
+              onSubmit={(company, barcodeProduct) => {
+                updateReport({
+                  companyDraft: company,
+                  barcodeProduct,
+                })
+              }}
+              noResultsPanel={<RappelConsoBarcodeNotFoundInGS1 />}
+            />
+          )}
+          {selectedGtin !== undefined && !_search.data?.company && (
+            <CommonTree
+              {...{draft, updateReport}}
+              phoneOrWebsite={undefined}
+              barcodeProduct={_search.data?.product}
+              result={undefined}
+            />
+          )}
+        </>
+      )}
+    </>
+  )
 }
 
 function RappelConsoBarcodeNotFoundInGS1() {
