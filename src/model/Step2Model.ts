@@ -4,10 +4,30 @@ import {CompanySearchResult} from './Company'
 import {TrainDraft} from './ReportDraft'
 
 export type Step2Model =
-  | {kind: 'basic'; companyIdentification: Step2CompanyIdentification}
-  | {kind: 'product'; companyIdentification: Step2CompanyIdentification; barcodeProduct: BarcodeProduct}
-  | {kind: 'website'; companyIdentification: Step2CompanyIdentification; website: string}
-  | {kind: 'phone'; companyIdentification: Step2CompanyIdentification; phone: string}
+  | {
+      kind: 'basic'
+      companyIdentification: CommonCompanyIdentification
+    }
+  | {
+      kind: 'product'
+      barcodeProduct: BarcodeProduct
+      companyIdentification: CommonCompanyIdentification
+    }
+  | {
+      kind: 'website'
+      website: string
+      companyIdentification:
+        | CommonCompanyIdentification
+        | {
+            kind: 'foreignWebsiteWithJustCountry'
+            countryCode: string
+          }
+    }
+  | {
+      kind: 'phone'
+      companyIdentification: CommonCompanyIdentification
+      phone: string
+    }
   | {
       kind: 'train'
       train: TrainDraft
@@ -29,7 +49,7 @@ export type Step2Model =
       consumerPostalCode: string
     }
 
-type Step2CompanyIdentification =
+type CommonCompanyIdentification =
   | {
       kind: 'companyFound'
       company: CompanySearchResult
