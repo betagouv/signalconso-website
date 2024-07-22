@@ -5,6 +5,7 @@ import {AppLang} from '@/i18n/localization/AppLangs'
 import {BarcodeProduct} from './BarcodeProduct'
 import {CompanyDraft} from './Company'
 import {DetailInputValue} from './CreatedReport'
+import {Step2Model} from './Step2Model'
 import {UploadedFile} from './UploadedFile'
 
 export const genders = ['Male', 'Female'] as const
@@ -15,6 +16,7 @@ export interface ReportDraft {
     category: string
     lang: AppLang
   }
+  step2: Step2Model
   step3: {
     details: DetailInputValue[]
     uploadedFiles?: UploadedFile[]

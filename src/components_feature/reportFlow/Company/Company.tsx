@@ -8,6 +8,7 @@ import {Loader} from '@/feature/Loader'
 import {useBarcodeSearch} from '@/hooks/barcode'
 import {BarcodeProduct} from '@/model/BarcodeProduct'
 import {ReportDraft2} from '@/model/ReportDraft2'
+import {Step2Model} from '@/model/Step2Model'
 import {useState} from 'react'
 import {SpecificProductCompanyKind, SpecificWebsiteCompanyKind} from '../../../anomalies/Anomaly'
 import {CompanySearchResult} from '../../../model/Company'
@@ -35,16 +36,19 @@ export function Company({stepNavigation}: {stepNavigation: StepNavigation}) {
   const {reportDraft, setReportDraft, sendReportEvent} = useReportFlowContext()
   const draft = reportDraft
   if (draft.influencer) {
-    return <InfluencerFilled {...{stepNavigation, draft}} onClear={() => setReportDraft(_ => ({..._, influencer: undefined}))} />
+    return <InfluencerFilled {...{stepNavigation, draft}} onClear={() => setReportDraft(_ => ({..._, step2: undefined}))} />
   }
   if (draft.companyDraft) {
-    return <CompanyFilled {...{stepNavigation, draft}} onClear={() => setReportDraft(_ => ({..._, companyDraft: undefined}))} />
+    return <CompanyFilled {...{stepNavigation, draft}} onClear={() => setReportDraft(_ => ({..._, step2: undefined}))} />
   }
   return (
     <CompanyIdentificationDispatch
       draft={draft}
-      updateReport={changesToDraft => {
-        setReportDraft(_ => ReportDraft2.merge(_, changesToDraft))
+      updateReport={step2 => {
+        setReportDraft(_ => ({
+          ..._,
+          step2,
+        }))
         sendReportEvent(stepNavigation.currentStep)
         stepNavigation.next()
       }}
@@ -54,9 +58,7 @@ export function Company({stepNavigation}: {stepNavigation: StepNavigation}) {
 
 type CommonProps = {
   draft: Partial<ReportDraft2>
-  // Takes a deep partial, so you can fill just some fields
-  // Those fields will be merged with the current report draft
-  updateReport: (changesToDraft: DeepPartial<ReportDraft2>) => void
+  updateReport: (step2: Step2Model) => void
 }
 
 export function CompanyIdentificationDispatch({draft, updateReport}: CommonProps) {
@@ -65,13 +67,13 @@ export function CompanyIdentificationDispatch({draft, updateReport}: CommonProps
       return (
         <CompanyByTrain
           onSubmit={form => {
-            updateReport({train: form})
+            updateReport({kind: 'train', train: form})
           }}
         />
       )
     case 'STATION':
       return (
-        <CompanyByStation onSubmit={station => updateReport({station})}>
+        <CompanyByStation onSubmit={station => updateReport({kind: 'station', station})}>
           {() => <CommonTree {...{draft, updateReport}} searchResults={undefined} />}
         </CompanyByStation>
       )
@@ -90,24 +92,18 @@ export function CompanyIdentificationDispatch({draft, updateReport}: CommonProps
             if (result.kind === 'otherSocialNetwork') {
               const {socialNetwork, influencer, otherSocialNetwork, postalCode} = result
               updateReport({
-                companyDraft: {
-                  address: {
-                    postalCode: postalCode,
-                  },
-                },
-                influencer: {
-                  socialNetwork,
-                  otherSocialNetwork,
-                  name: influencer,
-                },
+                kind: 'influencerOtherSocialNetwork',
+                influencerName: influencer,
+                socialNetwork,
+                otherSocialNetwork,
+                consumerPostalCode: postalCode,
               })
             } else {
               const {socialNetwork, influencer} = result
               updateReport({
-                influencer: {
-                  socialNetwork,
-                  name: influencer,
-                },
+                kind: 'influencer',
+                socialNetwork,
+                influencerName: influencer,
               })
             }
           }}

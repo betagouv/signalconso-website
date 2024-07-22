@@ -3,9 +3,11 @@ import {BarcodeProduct} from './BarcodeProduct'
 import {CompanySearchResult} from './Company'
 import {TrainDraft} from './ReportDraft'
 
-type Step2Model =
-  | {kind: 'general'; companyIdentification: Step2CompanyIdentification}
+export type Step2Model =
+  | {kind: 'basic'; companyIdentification: Step2CompanyIdentification}
   | {kind: 'product'; companyIdentification: Step2CompanyIdentification; barcodeProduct: BarcodeProduct}
+  | {kind: 'website'; companyIdentification: Step2CompanyIdentification; website: string}
+  | {kind: 'phone'; companyIdentification: Step2CompanyIdentification; phone: string}
   | {
       kind: 'train'
       train: TrainDraft
@@ -33,6 +35,12 @@ type Step2CompanyIdentification =
       company: CompanySearchResult
     }
   | {
+      kind: 'foreignCompany'
+      companyName: string
+      companyCountryCode: string
+      consumerPostalCode: string
+    }
+  | {
       kind: 'consumerLocation'
       consumerPostalCode: string
     }
@@ -40,10 +48,4 @@ type Step2CompanyIdentification =
       kind: 'consumerPreciseLocation'
       consumerPostalCode: string
       consumerStreet: string
-    }
-  | {
-      kind: 'foreignCompany'
-      companyName: string
-      companyCountryCode: string
-      consumerPostalCode: string
     }
