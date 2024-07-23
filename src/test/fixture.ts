@@ -104,7 +104,7 @@ export class Fixture {
   ]
 
   static readonly genReport = (random: SeedableRandom = defaultRandom): CreatedReport => {
-    const company = Fixture.genCompanyDraft()
+    const company = Fixture.genCompanySearchResult(random)
     const subcategories = [Fixture.genSubcategory({}, random), Fixture.genSubcategory({}, random)]
     return {
       companyAddress: Fixture.genApiAddress(random),
@@ -157,26 +157,32 @@ export class Fixture {
           step0: {category, lang: currentLang},
           consumerWish: random.oneOf(['fixContractualDispute', 'companyImprovement', 'getAnswer']),
           subcategoriesIndexes: [0, 0],
+          employeeConsumer: random.boolean(),
         }
       },
       BuildingCompany: _ => ({
         ..._,
-        employeeConsumer: random.boolean(),
-        uploadedFiles: [
-          {
-            filename: 'Captura de pantalla 2022-03-14 a las 18.40.21.png',
-            id: '8710d67d-d955-444d-b340-ee17c7b781e9',
-            loading: false,
-            origin: FileOrigin.Consumer,
+        step2: {
+          kind: 'product',
+          barcodeProduct: Fixture.genBarcodeProduct(random),
+          companyIdentification: {
+            kind: 'companyFound',
+            company: Fixture.genCompanySearchResult(random),
           },
-        ],
-        barcodeProduct: Fixture.genBarcodeProduct(random),
-        companyDraft: Fixture.genCompanyDraft(random),
+        },
       }),
       BuildingDetails: _ => ({
         ..._,
         step3: {
           details: Fixture.genDetails(random),
+          uploadedFiles: [
+            {
+              filename: 'Captura de pantalla 2022-03-14 a las 18.40.21.png',
+              id: '8710d67d-d955-444d-b340-ee17c7b781e9',
+              loading: false,
+              origin: FileOrigin.Consumer,
+            },
+          ],
         },
       }),
       BuildingConsumer: _ => ({
