@@ -49,10 +49,15 @@ export type Step2Model =
       consumerPostalCode: string
     }
 
-type CommonCompanyIdentification =
+export type CommonCompanyIdentification =
   | {
       kind: 'companyFound'
       company: CompanySearchResult
+    }
+  | {
+      kind: 'marketplaceCompanyFound'
+      company: CompanySearchResult
+      vendor: string
     }
   | {
       kind: 'foreignCompany'
