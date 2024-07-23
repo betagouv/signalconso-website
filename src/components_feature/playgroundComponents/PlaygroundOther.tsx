@@ -1,4 +1,4 @@
-import {CompanyRecap} from '@/components_simple/CompanyRecap/CompanyRecap'
+import {CompanyRecapFromSearchResult} from '@/components_simple/CompanyRecap/CompanyRecap'
 import {ScAlert} from '@/components_simple/ScAlert'
 import {ButtonWithLoader} from '@/components_simple/buttons/Buttons'
 import {Fixture} from '@/test/fixture'
@@ -203,11 +203,11 @@ export const PlaygroundOther = () => {
       </div>
       <div className="border border-gray-500 border-solid p-2 mb-2">
         <h6>Le composant "CompanyRecap"</h6>
-        <CompanyRecap company={Fixture.genCompanySearchResult()} reportDraft={{tags: []}} />
+        <CompanyRecapFromSearchResult company={Fixture.genCompanySearchResult()} reportDraft={{tags: []}} />
         <h6>Le composant "CompanyRecap" avec un CompanyDraft</h6>
-        <CompanyRecap company={Fixture.genCompanyDraft()} reportDraft={{tags: []}} />
+        <CompanyRecapFromSearchResult company={Fixture.genCompanyDraft()} reportDraft={{tags: []}} />
         <h6>Le composant "CompanyRecap" sur la shrinkflation</h6>
-        <CompanyRecap company={Fixture.genCompanySearchResult()} reportDraft={{tags: ['Shrinkflation']}} />
+        <CompanyRecapFromSearchResult company={Fixture.genCompanySearchResult()} reportDraft={{tags: ['Shrinkflation']}} />
       </div>
     </>
   )

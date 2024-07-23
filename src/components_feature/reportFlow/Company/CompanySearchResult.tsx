@@ -1,7 +1,9 @@
 import {useAnalyticContext} from '@/analytic/AnalyticContext'
 import {Animate} from '@/components_simple/Animate'
 import {BtnNextSubmit} from '@/components_simple/buttons/Buttons'
+import {CompanyRecapFromSearchResult} from '@/components_simple/CompanyRecap/CompanyRecap'
 import {useI18n} from '@/i18n/I18n'
+import {ReportDraft2} from '@/model/ReportDraft2'
 import {Alert} from '@codegouvfr/react-dsfr/Alert'
 import {ReactNode, useEffect, useState} from 'react'
 import {Controller, useForm} from 'react-hook-form'
@@ -10,8 +12,6 @@ import {useToastError} from '../../../hooks/useToastError'
 import {CompanySearchResult, isGovernmentCompany} from '../../../model/Company'
 import {CompanyWebsiteVendor} from './CompanyWebsiteVendor'
 import {NoSearchResult} from './lib/NoSearchResult'
-import {CompanyRecap} from '@/components_simple/CompanyRecap/CompanyRecap'
-import {ReportDraft2} from '@/model/ReportDraft2'
 
 interface Props {
   companies: CompanySearchResult[]
@@ -92,7 +92,7 @@ export const CompanySearchResultComponent = ({companies, reportDraft, onSubmit}:
                           options={companies.map(company => {
                             const closed = !company.isOpen
                             return {
-                              label: <CompanyRecap company={company} reportDraft={reportDraft} />,
+                              label: <CompanyRecapFromSearchResult company={company} reportDraft={reportDraft} />,
                               value: company.siret!,
                               disabled: closed,
                             }

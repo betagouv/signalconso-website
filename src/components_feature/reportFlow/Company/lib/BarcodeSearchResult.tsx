@@ -1,5 +1,5 @@
 import {SpecificProductCompanyKind} from '@/anomalies/Anomaly'
-import {CompanyRecap} from '@/components_simple/CompanyRecap/CompanyRecap'
+import {CompanyRecapFromSearchResult} from '@/components_simple/CompanyRecap/CompanyRecap'
 import {ProductRecap} from '@/components_simple/CompanyRecap/ProductRecap'
 import {ReportDraft2} from '@/model/ReportDraft2'
 import {ReactNode} from 'react'
@@ -46,7 +46,7 @@ export const BarcodeSearchResult = ({
               </div>
               <div className="ml-4">
                 {company ? (
-                  <CompanyRecap company={company} reportDraft={reportDraft} />
+                  <CompanyRecapFromSearchResult company={company} reportDraft={reportDraft} />
                 ) : (
                   <p className="text-gray-600">{m.barcodeNoCompanyFound}</p>
                 )}

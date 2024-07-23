@@ -5,46 +5,39 @@ import {BarcodeProduct} from '@/model/BarcodeProduct'
 import {ChildrenProps} from '@/utils/utils'
 import {AddressComponent} from '../Address'
 import {ProductRecap} from './ProductRecap'
+import {buildCompanyName} from './companyNameUtils'
 
-// Use name + commercialName if present
-// Does not use brand
-export function buildCompanyName(_: {name?: string; commercialName?: string}) {
-  const name = _.name
-  const commercialName = _.commercialName
-  return commercialName ? `${commercialName} (${name})` : name
-}
-
-export type CompanyRecapProps = {
+export type CompanyRecapRawProps = {
+  siret: string | undefined
   name: string | undefined
   commercialName: string | undefined
+  brand: string | undefined
   closed: boolean | undefined
-  siret: string | undefined
   address: Address | undefined
   isHeadOffice: boolean | undefined
   isGovernment: boolean | undefined
   website: string | undefined
   phone: string | undefined
   activityLabel: string | undefined
-  brand: string | undefined
   specialLegislation: 'SHRINKFLATION' | undefined | undefined
   barcodeProduct: BarcodeProduct | undefined
 }
 
 export function CompanyRecapRaw({
+  siret,
   name,
   commercialName,
+  brand,
   closed = false,
-  siret,
   address,
   isHeadOffice = false,
   isGovernment = false,
   website,
   phone,
   activityLabel,
-  brand,
   specialLegislation,
   barcodeProduct,
-}: CompanyRecapProps) {
+}: CompanyRecapRawProps) {
   return (
     <>
       <div className="flex justify-between w-full">
@@ -77,7 +70,6 @@ function RowName({name, commercialName}: {name: string | undefined; commercialNa
   return finalName ? <span className="font-bold block">{finalName}</span> : null
 }
 function RowBrand({brand}: {brand: string | undefined}) {
-  const {m} = useI18n()
   return brand ? <span className="block">{brand}</span> : null
 }
 function RowIsHeadOffice({isHeadOffice}: {isHeadOffice: boolean}) {
