@@ -92,7 +92,7 @@ export const CompanySearchResultComponent = ({companies, reportDraft, onSubmit}:
                           options={companies.map(company => {
                             const closed = !company.isOpen
                             return {
-                              label: <CompanyRecapFromSearchResult company={company} reportDraft={reportDraft} />,
+                              label: <CompanyRecapFromSearchResult company={company} draft={reportDraft} />,
                               value: company.siret!,
                               disabled: closed,
                             }

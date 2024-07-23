@@ -46,7 +46,7 @@ export const BarcodeSearchResult = ({
               </div>
               <div className="ml-4">
                 {company ? (
-                  <CompanyRecapFromSearchResult company={company} reportDraft={reportDraft} />
+                  <CompanyRecapFromSearchResult company={company} draft={reportDraft} />
                 ) : (
                   <p className="text-gray-600">{m.barcodeNoCompanyFound}</p>
                 )}

@@ -1,24 +1,24 @@
-import { useAnalyticContext } from '@/analytic/AnalyticContext'
-import { EventCategories, ReportEventActions } from '@/analytic/analytic'
-import { StepNavigation } from '@/components_feature/reportFlow/reportFlowStepper/ReportFlowStepper'
-import { ReportFlowStepperActions } from '@/components_feature/reportFlow/reportFlowStepper/ReportFlowStepperActions'
-import { Animate } from '@/components_simple/Animate'
-import { CompanyRecapWithProduct } from '@/components_simple/CompanyRecap/CompanyRecap'
-import { FriendlyHelpText } from '@/components_simple/FriendlyHelpText'
-import { ReportFilesConfirmation } from '@/components_simple/reportFile/ReportFilesConfirmation'
-import { getAnomaly, getSubcategories, getTransmissionStatus } from '@/feature/reportDraftUtils'
-import { getApiErrorId, useToastError } from '@/hooks/useToastError'
-import { useI18n } from '@/i18n/I18n'
-import { ReportDraft2 } from '@/model/ReportDraft2'
-import { BuildingStep, buildingReportSteps } from '@/model/ReportStep'
-import { ApiReportDraft } from '@/model/reportsFromApi'
+import {useAnalyticContext} from '@/analytic/AnalyticContext'
+import {EventCategories, ReportEventActions} from '@/analytic/analytic'
+import {StepNavigation} from '@/components_feature/reportFlow/reportFlowStepper/ReportFlowStepper'
+import {ReportFlowStepperActions} from '@/components_feature/reportFlow/reportFlowStepper/ReportFlowStepperActions'
+import {Animate} from '@/components_simple/Animate'
+import {CompanyRecapFromStep2} from '@/components_simple/CompanyRecap/CompanyRecap'
+import {FriendlyHelpText} from '@/components_simple/FriendlyHelpText'
+import {ReportFilesConfirmation} from '@/components_simple/reportFile/ReportFilesConfirmation'
+import {getAnomaly, getSubcategories, getTransmissionStatus} from '@/feature/reportDraftUtils'
+import {getApiErrorId, useToastError} from '@/hooks/useToastError'
+import {useI18n} from '@/i18n/I18n'
+import {ReportDraft2} from '@/model/ReportDraft2'
+import {BuildingStep, buildingReportSteps} from '@/model/ReportStep'
+import {ApiReportDraft} from '@/model/reportsFromApi'
 import Image from 'next/image'
-import { SocialNetworkRow } from '../../../components_simple/SocialNetworkRow'
-import { ReportDraft } from '../../../model/ReportDraft'
-import { FileOrigin } from '../../../model/UploadedFile'
-import { useReportCreateContext } from '../ReportCreateContext'
-import { useReportFlowContext } from '../ReportFlowContext'
-import { ConfirmationStep, ConfirmationStepper } from './ConfirmationStepper'
+import {SocialNetworkRow} from '../../../components_simple/SocialNetworkRow'
+import {ReportDraft} from '../../../model/ReportDraft'
+import {FileOrigin} from '../../../model/UploadedFile'
+import {useReportCreateContext} from '../ReportCreateContext'
+import {useReportFlowContext} from '../ReportFlowContext'
+import {ConfirmationStep, ConfirmationStepper} from './ConfirmationStepper'
 
 export const Confirmation = ({stepNavigation, isWebView}: {stepNavigation: StepNavigation; isWebView: boolean}) => {
   const _reportFlow = useReportFlowContext()
@@ -142,35 +142,27 @@ function RenderEachStep({
       )
     case 'BuildingCompany':
       const {step2} = draft
-
-      switch(step2.kind) {
-        case 'basic':
+      switch (step2.kind) {
+        case 'influencer':
+        case 'influencerOtherSocialNetwork':
           return (
-            <ConfirmationStep title={m.step_company} {...{goToStep, index}}>
-              <CompanyRecapWithProduct company={step2.companyIdentification.} reportDraft={draft} />
-            </ConfirmationStep>
-          )
-      }
-      return (
-        <>
-          {draft.companyDraft && (
-            <ConfirmationStep title={m.step_company} {...{goToStep, index}}>
-              <CompanyRecapWithProduct company={draft.companyDraft} barcodeProduct={draft.barcodeProduct} reportDraft={draft} />
-            </ConfirmationStep>
-          )}
-          {draft.influencer && (
             <ConfirmationStep title={m.step_influencer} {...{goToStep, index}}>
               <p className="mb-1 font-bold">Réseau social</p>
-              <SocialNetworkRow socialNetwork={draft.influencer.socialNetwork} gray className="mb-2" />
+              <SocialNetworkRow socialNetwork={step2.socialNetwork} gray className="mb-2" />
               <p className="mb-1 font-bold">Nom de l'influenceur ou influenceuse</p>
               <div className="flex gap-2">
                 <i className="ri-account-box-line text-gray-400" />
-                <span className="text-gray-500">{draft.influencer.name}</span>
+                <span className="text-gray-500">{step2.influencerName}</span>
               </div>
             </ConfirmationStep>
-          )}
-        </>
-      )
+          )
+        default:
+          return (
+            <ConfirmationStep title={m.step_company} {...{goToStep, index}}>
+              <CompanyRecapFromStep2 draft={{step2, tags: draft.tags}} />
+            </ConfirmationStep>
+          )
+      }
     case 'BuildingConsumer':
       const {consumer} = draft.step4
       return (
