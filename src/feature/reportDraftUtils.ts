@@ -48,31 +48,40 @@ export const isTransmittableToPro = (r: Pick<ReportDraft, 'employeeConsumer' | '
 export const isTransmittableToProBeforePickingConsumerWish = (r: Pick<ReportDraft, 'employeeConsumer'>): boolean => {
   return !r.employeeConsumer
 }
-// Quand l'entreprise n'a pas pu être identifiée par le conso
-export const mayBeTransmittedLater = (r: Pick<ReportDraft, 'influencer' | 'companyDraft'>) => {
-  return !r.influencer && !r.companyDraft?.siret && r.companyDraft?.address.postalCode
-}
-
-export const cannotBeTransmitted = (r: Pick<ReportDraft, 'influencer' | 'companyDraft'>) => {
-  return !r.influencer && !r.companyDraft?.siret && !r.companyDraft?.address.postalCode && r.companyDraft?.address.country
-}
-
-// SIRET existant mais adresse postale à l'étranger
-export const foreignCompany = (r: Pick<ReportDraft, 'step2'>) => {
-  return !r.influencer && r.companyDraft?.siret && r.companyDraft?.address.country && r.companyDraft?.address.country !== 'FR'
-}
 
 export const getTransmissionStatus = (
-  r: Pick<ReportDraft, 'employeeConsumer' | 'consumerWish' | 'step2' | 'companyDraft'>,
+  r: Pick<ReportDraft, 'employeeConsumer' | 'consumerWish' | 'step2'>,
 ): TransmissionStatus => {
   if (!isTransmittableToPro(r)) {
     return 'NOT_TRANSMITTABLE'
-  } else if (mayBeTransmittedLater(r)) {
-    return 'MAY_BE_TRANSMITTED'
-  } else if (cannotBeTransmitted(r) || foreignCompany(r)) {
-    return 'CANNOT_BE_TRANSMITTED'
-  } else {
-    return 'WILL_BE_TRANSMITTED'
+  }
+  switch (r.step2.kind) {
+    case 'influencer':
+    case 'influencerOtherSocialNetwork':
+    case 'train':
+    case 'station':
+      return 'WILL_BE_TRANSMITTED'
+    case 'basic':
+    case 'phone':
+    case 'product':
+    case 'website':
+      switch (r.step2.companyIdentification.kind) {
+        case 'companyFound':
+        case 'marketplaceCompanyFound': {
+          const company = r.step2.companyIdentification.company
+          if (company.address.country === 'FR') {
+            return 'WILL_BE_TRANSMITTED'
+          }
+          // SIRET existant mais adresse postale à l'étranger
+          return 'CANNOT_BE_TRANSMITTED'
+        }
+        case 'consumerLocation':
+        case 'consumerPreciseLocation':
+          return 'MAY_BE_TRANSMITTED'
+        case 'foreignCompany':
+        case 'foreignWebsiteWithJustCountry':
+          return 'CANNOT_BE_TRANSMITTED'
+      }
   }
 }
 
