@@ -1,24 +1,24 @@
-import {useAnalyticContext} from '@/analytic/AnalyticContext'
-import {EventCategories, ReportEventActions} from '@/analytic/analytic'
-import {StepNavigation} from '@/components_feature/reportFlow/reportFlowStepper/ReportFlowStepper'
-import {ReportFlowStepperActions} from '@/components_feature/reportFlow/reportFlowStepper/ReportFlowStepperActions'
-import {Animate} from '@/components_simple/Animate'
-import {CompanyRecapWithProduct} from '@/components_simple/CompanyRecap/CompanyRecap'
-import {FriendlyHelpText} from '@/components_simple/FriendlyHelpText'
-import {ReportFilesConfirmation} from '@/components_simple/reportFile/ReportFilesConfirmation'
-import {getAnomaly, getSubcategories, getTransmissionStatus} from '@/feature/reportDraftUtils'
-import {getApiErrorId, useToastError} from '@/hooks/useToastError'
-import {useI18n} from '@/i18n/I18n'
-import {ReportDraft2} from '@/model/ReportDraft2'
-import {BuildingStep, buildingReportSteps} from '@/model/ReportStep'
-import {ApiReportDraft} from '@/model/reportsFromApi'
+import { useAnalyticContext } from '@/analytic/AnalyticContext'
+import { EventCategories, ReportEventActions } from '@/analytic/analytic'
+import { StepNavigation } from '@/components_feature/reportFlow/reportFlowStepper/ReportFlowStepper'
+import { ReportFlowStepperActions } from '@/components_feature/reportFlow/reportFlowStepper/ReportFlowStepperActions'
+import { Animate } from '@/components_simple/Animate'
+import { CompanyRecapWithProduct } from '@/components_simple/CompanyRecap/CompanyRecap'
+import { FriendlyHelpText } from '@/components_simple/FriendlyHelpText'
+import { ReportFilesConfirmation } from '@/components_simple/reportFile/ReportFilesConfirmation'
+import { getAnomaly, getSubcategories, getTransmissionStatus } from '@/feature/reportDraftUtils'
+import { getApiErrorId, useToastError } from '@/hooks/useToastError'
+import { useI18n } from '@/i18n/I18n'
+import { ReportDraft2 } from '@/model/ReportDraft2'
+import { BuildingStep, buildingReportSteps } from '@/model/ReportStep'
+import { ApiReportDraft } from '@/model/reportsFromApi'
 import Image from 'next/image'
-import {SocialNetworkRow} from '../../../components_simple/SocialNetworkRow'
-import {ReportDraft} from '../../../model/ReportDraft'
-import {FileOrigin} from '../../../model/UploadedFile'
-import {useReportCreateContext} from '../ReportCreateContext'
-import {useReportFlowContext} from '../ReportFlowContext'
-import {ConfirmationStep, ConfirmationStepper} from './ConfirmationStepper'
+import { SocialNetworkRow } from '../../../components_simple/SocialNetworkRow'
+import { ReportDraft } from '../../../model/ReportDraft'
+import { FileOrigin } from '../../../model/UploadedFile'
+import { useReportCreateContext } from '../ReportCreateContext'
+import { useReportFlowContext } from '../ReportFlowContext'
+import { ConfirmationStep, ConfirmationStepper } from './ConfirmationStepper'
 
 export const Confirmation = ({stepNavigation, isWebView}: {stepNavigation: StepNavigation; isWebView: boolean}) => {
   const _reportFlow = useReportFlowContext()
@@ -141,6 +141,16 @@ function RenderEachStep({
         </ConfirmationStep>
       )
     case 'BuildingCompany':
+      const {step2} = draft
+
+      switch(step2.kind) {
+        case 'basic':
+          return (
+            <ConfirmationStep title={m.step_company} {...{goToStep, index}}>
+              <CompanyRecapWithProduct company={step2.companyIdentification.} reportDraft={draft} />
+            </ConfirmationStep>
+          )
+      }
       return (
         <>
           {draft.companyDraft && (
