@@ -1,8 +1,10 @@
 import {findAnomaly} from '@/anomalies/Anomalies'
 import {Anomaly, ReportTag, SocialNetwork, Subcategory} from '@/anomalies/Anomaly'
+import {CompanySearchResult} from '@/model/Company'
 import {Influencer, ReportDraft, TransmissionStatus} from '@/model/ReportDraft'
 import {ReportDraft2} from '@/model/ReportDraft2'
 import {ApiInfluencer, ApiReportDraft} from '@/model/reportsFromApi'
+import {CommonCompanyIdentification, ForeignWebsiteCompanyIdentification, Step2Model} from '@/model/Step2Model'
 import uniq from 'lodash/uniq'
 
 export function hasStep0(r: Partial<ReportDraft2>): r is Pick<ReportDraft, 'step0'> & Partial<ReportDraft2> {
@@ -56,12 +58,12 @@ export const cannotBeTransmitted = (r: Pick<ReportDraft, 'influencer' | 'company
 }
 
 // SIRET existant mais adresse postale à l'étranger
-export const foreignCompany = (r: Pick<ReportDraft, 'influencer' | 'companyDraft'>) => {
+export const foreignCompany = (r: Pick<ReportDraft, 'step2'>) => {
   return !r.influencer && r.companyDraft?.siret && r.companyDraft?.address.country && r.companyDraft?.address.country !== 'FR'
 }
 
 export const getTransmissionStatus = (
-  r: Pick<ReportDraft, 'employeeConsumer' | 'consumerWish' | 'influencer' | 'companyDraft'>,
+  r: Pick<ReportDraft, 'employeeConsumer' | 'consumerWish' | 'step2' | 'companyDraft'>,
 ): TransmissionStatus => {
   if (!isTransmittableToPro(r)) {
     return 'NOT_TRANSMITTABLE'
@@ -74,30 +76,30 @@ export const getTransmissionStatus = (
   }
 }
 
-export const toApiInfluencer = (influencer: Influencer): ApiInfluencer => {
-  const toApiSocialNetwork = (socialNetwork: SocialNetwork): string | undefined => {
-    switch (socialNetwork) {
-      case 'YOUTUBE':
-        return 'YouTube'
-      case 'FACEBOOK':
-        return 'Facebook'
-      case 'INSTAGRAM':
-        return 'Instagram'
-      case 'TIKTOK':
-        return 'TikTok'
-      case 'TWITTER':
-        return 'Twitter'
-      case 'LINKEDIN':
-        return 'LinkedIn'
-      case 'SNAPCHAT':
-        return 'Snapchat'
-      case 'TWITCH':
-        return 'Twitch'
-      case 'OTHER':
-        return undefined
-    }
+const toApiSocialNetwork = (socialNetwork: SocialNetwork): string | undefined => {
+  switch (socialNetwork) {
+    case 'YOUTUBE':
+      return 'YouTube'
+    case 'FACEBOOK':
+      return 'Facebook'
+    case 'INSTAGRAM':
+      return 'Instagram'
+    case 'TIKTOK':
+      return 'TikTok'
+    case 'TWITTER':
+      return 'Twitter'
+    case 'LINKEDIN':
+      return 'LinkedIn'
+    case 'SNAPCHAT':
+      return 'Snapchat'
+    case 'TWITCH':
+      return 'Twitch'
+    case 'OTHER':
+      return undefined
   }
+}
 
+export const toApiInfluencer = (influencer: Influencer): ApiInfluencer => {
   return {
     name: influencer.name,
     socialNetwork: toApiSocialNetwork(influencer.socialNetwork),
@@ -121,7 +123,6 @@ export const toApi = (draft: ReportDraft, metadata: ApiReportDraft['metadata']):
     consumerWish,
     reponseconsoCode,
     step4: {contactAgreement, consumer},
-    vendor,
     ccrfCode,
   } = draft
   const anomaly = getAnomaly(draft)
@@ -141,18 +142,6 @@ export const toApi = (draft: ReportDraft, metadata: ApiReportDraft['metadata']):
     category: draft.categoryOverride ?? draft.step0.category,
     subcategories: subcategories.map(_ => _.title),
     details: draft.step3.details,
-    companyName: draft.companyDraft?.name,
-    companyBrand: draft.companyDraft?.brand,
-    companyCommercialName: draft.companyDraft?.commercialName,
-    companyEstablishmentCommercialName: draft.companyDraft?.establishmentCommercialName,
-    companyAddress: draft.companyDraft?.address,
-    companySiret: draft.companyDraft?.siret,
-    companyActivityCode: draft.companyDraft?.activityCode,
-    companyIsHeadOffice: draft.companyDraft?.isHeadOffice,
-    companyIsOpen: draft.companyDraft?.isOpen,
-    companyIsPublic: draft.companyDraft?.isPublic,
-    websiteURL: draft.companyDraft?.website,
-    phone: draft.companyDraft?.phone,
     firstName: consumer.firstName,
     lastName: consumer.lastName,
     email: consumer.email,
@@ -162,16 +151,199 @@ export const toApi = (draft: ReportDraft, metadata: ApiReportDraft['metadata']):
     employeeConsumer: draft.employeeConsumer ?? false,
     forwardToReponseConso: consumerWish === 'getAnswer',
     fileIds: draft.step3.uploadedFiles?.map(file => file.id) ?? [],
-    vendor,
     tags,
     reponseconsoCode: reponseconsoCode ? [reponseconsoCode] : undefined,
     ccrfCode,
-    influencer: draft.influencer ? toApiInfluencer(draft.influencer) : undefined,
     lang: draft.step0.lang,
-    barcodeProductId: draft.barcodeProduct?.id,
-    train: draft.train,
-    station: draft.station,
     rappelConsoId: draft.rappelConso?.id,
     metadata,
+    ...step2ToApi(draft.step2),
+  }
+}
+
+function step2ToApi(
+  step2: Step2Model,
+): Pick<
+  ApiReportDraft,
+  | 'companyName'
+  | 'companyBrand'
+  | 'companyCommercialName'
+  | 'companyEstablishmentCommercialName'
+  | 'companyAddress'
+  | 'companySiret'
+  | 'companyActivityCode'
+  | 'companyIsHeadOffice'
+  | 'companyIsOpen'
+  | 'companyIsPublic'
+  | 'vendor'
+  | 'barcodeProductId'
+  | 'websiteURL'
+  | 'phone'
+  | 'train'
+  | 'station'
+  | 'influencer'
+> {
+  const otherFieldsUndefined = {
+    barcodeProductId: undefined,
+    websiteURL: undefined,
+    phone: undefined,
+    train: undefined,
+    station: undefined,
+    influencer: undefined,
+  }
+  switch (step2.kind) {
+    case 'basic':
+      return {
+        ...otherFieldsUndefined,
+        ...companyIdentificationToApi(step2.companyIdentification),
+      }
+    case 'product':
+      return {
+        ...otherFieldsUndefined,
+        barcodeProductId: step2.barcodeProduct.id,
+        ...companyIdentificationToApi(step2.companyIdentification),
+      }
+    case 'website':
+      return {
+        ...otherFieldsUndefined,
+        websiteURL: step2.website,
+        ...companyIdentificationToApi(step2.companyIdentification),
+      }
+    case 'phone':
+      return {
+        ...otherFieldsUndefined,
+        phone: step2.phone,
+        ...companyIdentificationToApi(step2.companyIdentification),
+      }
+    case 'train': {
+      return {
+        ...otherFieldsUndefined,
+        train: step2.train,
+        ...companyIdentificationFieldsUndefined,
+      }
+    }
+    case 'station': {
+      return {
+        ...otherFieldsUndefined,
+        station: step2.station,
+        ...companyIdentificationFieldsUndefined,
+      }
+    }
+    case 'influencer':
+      return {
+        ...otherFieldsUndefined,
+        ...companyIdentificationFieldsUndefined,
+        influencer: {
+          name: step2.influencerName,
+          socialNetwork: toApiSocialNetwork(step2.socialNetwork),
+          otherSocialNetwork: undefined,
+        },
+      }
+    case 'influencerOtherSocialNetwork':
+      return {
+        ...otherFieldsUndefined,
+        ...companyIdentificationFieldsUndefined,
+        companyAddress: {postalCode: step2.consumerPostalCode},
+        influencer: {
+          name: step2.influencerName,
+          socialNetwork: toApiSocialNetwork(step2.socialNetwork),
+          otherSocialNetwork: step2.otherSocialNetwork,
+        },
+      }
+  }
+}
+
+const companyIdentificationFieldsUndefined = {
+  companyName: undefined,
+  companyBrand: undefined,
+  companyCommercialName: undefined,
+  companyEstablishmentCommercialName: undefined,
+  companyAddress: undefined,
+  companySiret: undefined,
+  companyActivityCode: undefined,
+  companyIsHeadOffice: undefined,
+  companyIsOpen: undefined,
+  companyIsPublic: undefined,
+  vendor: undefined,
+}
+
+function companyIdentificationToApi(
+  companyIdentification: CommonCompanyIdentification | ForeignWebsiteCompanyIdentification,
+): Pick<
+  ApiReportDraft,
+  | 'companyName'
+  | 'companyBrand'
+  | 'companyCommercialName'
+  | 'companyEstablishmentCommercialName'
+  | 'companyAddress'
+  | 'companySiret'
+  | 'companyActivityCode'
+  | 'companyIsHeadOffice'
+  | 'companyIsOpen'
+  | 'companyIsPublic'
+  | 'vendor'
+> {
+  const allUndefined = companyIdentificationFieldsUndefined
+  switch (companyIdentification.kind) {
+    case 'companyFound':
+      return {
+        ...companySearchResultToApi(companyIdentification.company),
+        vendor: undefined,
+      }
+    case 'marketplaceCompanyFound':
+      return {
+        ...companySearchResultToApi(companyIdentification.company),
+        vendor: companyIdentification.vendor,
+      }
+    case 'consumerLocation': {
+      return {
+        ...allUndefined,
+        companyAddress: {postalCode: companyIdentification.consumerPostalCode},
+      }
+    }
+    case 'consumerPreciseLocation': {
+      return {
+        ...allUndefined,
+        companyAddress: {
+          postalCode: companyIdentification.consumerPostalCode,
+          street: companyIdentification.consumerStreet,
+        },
+      }
+    }
+    case 'foreignCompany': {
+      const {companyName, companyCountryCode, consumerPostalCode} = companyIdentification
+      return {
+        ...allUndefined,
+        companyName,
+        companyAddress: {
+          country: companyCountryCode,
+          postalCode: consumerPostalCode,
+        },
+      }
+    }
+    case 'foreignWebsiteWithJustCountry': {
+      const {countryCode} = companyIdentification
+      return {
+        ...allUndefined,
+        companyAddress: {
+          country: countryCode,
+        },
+      }
+    }
+  }
+}
+
+function companySearchResultToApi(company: CompanySearchResult) {
+  return {
+    companyName: company.name,
+    companyBrand: company.brand,
+    companyCommercialName: company.commercialName,
+    companyEstablishmentCommercialName: company.establishmentCommercialName,
+    companyAddress: company.address,
+    companySiret: company.siret,
+    companyActivityCode: company.activityCode,
+    companyIsHeadOffice: company.isHeadOffice,
+    companyIsOpen: company.isOpen,
+    companyIsPublic: company.isPublic,
   }
 }

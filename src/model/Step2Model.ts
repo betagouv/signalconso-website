@@ -16,12 +16,7 @@ export type Step2Model =
   | {
       kind: 'website'
       website: string
-      companyIdentification:
-        | CommonCompanyIdentification
-        | {
-            kind: 'foreignWebsiteWithJustCountry'
-            countryCode: string
-          }
+      companyIdentification: CommonCompanyIdentification | ForeignWebsiteCompanyIdentification
     }
   | {
       kind: 'phone'
@@ -74,3 +69,8 @@ export type CommonCompanyIdentification =
       consumerPostalCode: string
       consumerStreet: string
     }
+
+export type ForeignWebsiteCompanyIdentification = {
+  kind: 'foreignWebsiteWithJustCountry'
+  countryCode: string
+}
