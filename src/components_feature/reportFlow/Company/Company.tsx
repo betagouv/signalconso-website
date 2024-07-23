@@ -73,7 +73,7 @@ export function CompanyIdentificationDispatch({draft, updateReport}: CommonProps
       return (
         <CompanyByStation onSubmit={station => updateReport({kind: 'station', station})}>
           {() => (
-            <CommonTree
+            <CompanyIdentificationTree
               {...{draft}}
               onIdentification={companyIdentification => {
                 updateReport({
@@ -122,7 +122,7 @@ export function CompanyIdentificationDispatch({draft, updateReport}: CommonProps
       return (
         <CompanyByPhone>
           {phone => (
-            <CommonTree
+            <CompanyIdentificationTree
               {...{draft, updateReport}}
               searchResults={undefined}
               onIdentification={companyIdentification =>
@@ -148,7 +148,7 @@ export function CompanyIdentificationDispatch({draft, updateReport}: CommonProps
       return <WebsiteTree {...{draft, updateReport}} specificWebsiteCompanyKind={undefined} />
     default:
       return (
-        <CommonTree
+        <CompanyIdentificationTree
           {...{draft}}
           searchResults={undefined}
           onIdentification={companyIdentification =>
@@ -185,7 +185,7 @@ function WebsiteTree({
             }}
           />
         ) : (
-          <CommonTree
+          <CompanyIdentificationTree
             {...{draft, updateReport}}
             searchResults={companies}
             onIdentification={companyIdentification =>
@@ -206,7 +206,7 @@ function WebsiteTree({
   )
 }
 
-function CommonTree({
+function CompanyIdentificationTree({
   searchResults = undefined,
   draft,
   onIdentification,
@@ -373,7 +373,7 @@ function BarcodeTree({
       {results => {
         if (results.kind === 'dont_know_barcode') {
           return (
-            <CommonTree
+            <CompanyIdentificationTree
               {...{draft}}
               searchResults={undefined}
               onIdentification={companyIdentification =>
@@ -408,7 +408,7 @@ function BarcodeTree({
               <div className="text-xl mb-4 pt-8">Nous avons maintenant besoin de connaitre le point de vente du produit.</div>
             )}
             {!company && (
-              <CommonTree
+              <CompanyIdentificationTree
                 {...{draft}}
                 onIdentification={companyIdentification => {
                   updateReport(
@@ -439,7 +439,13 @@ function OpenFfTree({draft, updateReport}: CommonProps) {
   if (!product) {
     // We were not able to find the product with the barcode from OpenFF
     // Let's forget about it entirely and fallback on the regular search
-    return <CommonTree {...{draft, updateReport}} searchResults={undefined} />
+    return (
+      <CompanyIdentificationTree
+        {...{draft}}
+        searchResults={undefined}
+        onIdentification={companyIdentification => updateReport({kind: 'basic', companyIdentification})}
+      />
+    )
   }
   return (
     <>
@@ -460,7 +466,17 @@ function OpenFfTree({draft, updateReport}: CommonProps) {
         }}
       />
       {!company && (
-        <CommonTree {...{draft, updateReport}} alreadyProvidedFields={{barcodeProduct: product}} searchResults={undefined} />
+        <CompanyIdentificationTree
+          {...{draft}}
+          onIdentification={companyIdentification =>
+            updateReport({
+              kind: 'product',
+              barcodeProduct: product,
+              companyIdentification,
+            })
+          }
+          searchResults={undefined}
+        />
       )}
     </>
   )
@@ -507,7 +523,24 @@ function RCOneBarcodeTree({draft, updateReport, gtin}: {gtin: string} & CommonPr
         noResultsPanel={<RappelConsoBarcodeNotFoundInGS1 />}
       />
       {!company && (
-        <CommonTree {...{draft, updateReport}} alreadyProvidedFields={{barcodeProduct: product}} searchResults={undefined} />
+        <CompanyIdentificationTree
+          {...{draft}}
+          onIdentification={companyIdentification => {
+            updateReport(
+              product
+                ? {
+                    kind: 'product',
+                    barcodeProduct: product,
+                    companyIdentification,
+                  }
+                : {
+                    kind: 'basic',
+                    companyIdentification,
+                  },
+            )
+          }}
+          searchResults={undefined}
+        />
       )}
     </>
   )
@@ -559,9 +592,23 @@ function RCMutlipleBarcodesTree({draft, updateReport, gtins}: {gtins: string[]} 
             />
           )}
           {selectedGtin !== undefined && !_search.data?.company && (
-            <CommonTree
-              {...{draft, updateReport}}
-              alreadyProvidedFields={{barcodeProduct: _search.data?.product}}
+            <CompanyIdentificationTree
+              {...{draft}}
+              onIdentification={companyIdentification => {
+                const product = _search.data?.product
+                updateReport(
+                  product
+                    ? {
+                        kind: 'product',
+                        barcodeProduct: product,
+                        companyIdentification,
+                      }
+                    : {
+                        kind: 'basic',
+                        companyIdentification,
+                      },
+                )
+              }}
               searchResults={undefined}
             />
           )}
