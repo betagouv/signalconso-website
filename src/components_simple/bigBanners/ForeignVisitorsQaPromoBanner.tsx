@@ -4,11 +4,11 @@ export function ForeignVisitorsQaPromoBanner() {
       If you have a question about tickets, flights, hotels, restaurants, transport, payments, etc. regarding your stay in France
       for the Paris 2024 Olympic Games, your answer might be here :{' '}
       <a
-        href="https://www.economie.gouv.fr/dgccrf/2023-rugby-world-cup-and-paris-2024-olympic-and-paralympic-games-consumer-questions"
+        href="https://www.economie.gouv.fr/dgccrf/paris-2024-olympic-and-paralympic-games-consumer-questions"
         rel="noreferrer"
         target="_blank"
       >
-        2023 Rugby World Cup and Paris 2024 Olympic and Paralympic Games : consumer questions
+        Paris 2024 Olympic and Paralympic Games : consumer questions
       </a>
       .
     </div>

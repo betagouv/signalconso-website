@@ -133,15 +133,11 @@ export class Fixture {
           ..._,
           step0: {category, lang: currentLang},
           consumerWish: random.oneOf(['fixContractualDispute', 'companyImprovement', 'getAnswer']),
+          subcategoriesIndexes: [0, 0],
         }
       },
-      BuildingDetails: _ => ({
-        ..._,
-        subcategoriesIndexes: [0, 0],
-      }),
       BuildingCompany: _ => ({
         ..._,
-        details: Fixture.genDetails(random),
         employeeConsumer: random.boolean(),
         uploadedFiles: [
           {
@@ -152,10 +148,20 @@ export class Fixture {
           },
         ],
         barcodeProduct: Fixture.genBarcodeProduct(random),
+        companyDraft: Fixture.genCompanyDraft(random),
+      }),
+      BuildingDetails: _ => ({
+        ..._,
+        step3: {
+          details: Fixture.genDetails(random),
+        },
       }),
       BuildingConsumer: _ => ({
         ..._,
-        companyDraft: Fixture.genCompanyDraft(random),
+        step4: {
+          consumer: Fixture.genConsumer(random),
+          contactAgreement: random.boolean(),
+        },
       }),
       Confirmation: _ => ({
         ..._,
