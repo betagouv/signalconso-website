@@ -1,40 +1,13 @@
 import {ScAlert} from '@/components_simple/ScAlert'
 import {useI18n} from '@/i18n/I18n'
 import {Address} from '@/model/Address'
-import {BarcodeProduct} from '@/model/BarcodeProduct'
 import {CompanySearchResult, isGovernmentCompany} from '@/model/Company'
 import {ReportDraft} from '@/model/ReportDraft'
 import {appliedSpecialLegislation} from '@/model/SpecialLegislation'
 import {Step2Model} from '@/model/Step2Model'
 import {ChildrenProps} from '@/utils/utils'
 import {AddressComponent} from '../Address'
-import {ProductRecap} from './ProductRecap'
-
-export function CompanyRecapWithProduct(props: {
-  company: CompanySearchResult
-  reportDraft: Pick<ReportDraft, 'tags'>
-  barcodeProduct?: BarcodeProduct
-}) {
-  return (
-    <>
-      <CompanyRecap company={props.company} draft={props.reportDraft} />
-      {props.barcodeProduct && (
-        <>
-          <p className="mt-4 !mb-2">À propos du produit :</p>
-          <ProductRecap product={props.barcodeProduct} />
-        </>
-      )}
-    </>
-  )
-}
-
-// Use name + commercialName if present
-// Does not use brand
-export function buildCompanyName(_: {name?: string; commercialName?: string}) {
-  const name = _.name
-  const commercialName = _.commercialName
-  return commercialName ? `${commercialName} (${name})` : name
-}
+import {CompanyRecapProps, CompanyRecapRaw} from './companyRecapComponents'
 
 export function buildBrandName(_: CompanySearchResult) {
   const brand = _.brand
@@ -53,7 +26,7 @@ export function buildBrandName(_: CompanySearchResult) {
 function buildGeneralCompanyFieldsFromSearchResult(
   company: CompanySearchResult,
   draft: Pick<ReportDraft, 'tags'>,
-): Omit<CompanyRecapFields, 'phone' | 'website'> {
+): Omit<CompanyRecapProps, 'phone' | 'website'> {
   return {
     siret: company.siret,
     name: company.name,
@@ -172,7 +145,7 @@ export function CompanyRecapFromStep2(draft: Pick<ReportDraft, 'tags' | 'step2'>
   } = buildGeneralCompanyFields(step2, draft)
   const {phone, website} = buildOtherCompanyFields(step2)
   return (
-    <CompanyRecapFromFields
+    <CompanyRecapRaw
       {...{
         siret,
         name,
@@ -191,61 +164,13 @@ export function CompanyRecapFromStep2(draft: Pick<ReportDraft, 'tags' | 'step2'>
   )
 }
 
-type CompanyRecapFields = {
-  name: string | undefined
-  commercialName: string | undefined
-  closed: boolean | undefined
-  siret: string | undefined
-  address: Address | undefined
-  isHeadOffice: boolean | undefined
-  isGovernment: boolean | undefined
-  website: string | undefined
-  phone: string | undefined
-  activityLabel: string | undefined
-  brand: string | undefined
-  specialLegislation: 'SHRINKFLATION' | undefined | undefined
-}
-
-function CompanyRecapFromFields({
-  name,
-  commercialName,
-  closed = false,
-  siret,
-  address,
-  isHeadOffice = false,
-  isGovernment = false,
-  website,
-  phone,
-  activityLabel,
-  brand,
-  specialLegislation,
-}: CompanyRecapFields) {
-  return (
-    <div className="flex justify-between w-full">
-      <div>
-        <RowName {...{name, commercialName}} />
-        <RowBrand {...{brand}} />
-        <RowIsHeadOffice {...{isHeadOffice}} />
-        <RowActivityLabel {...{activityLabel}} />
-        <RowIsGovernment {...{isGovernment: isGovernment}} />
-        <RowSiret {...{siret}} />
-        <RowAddress {...{address}} />
-        <RowWebsite {...{website}} />
-        <RowPhone {...{phone}} />
-        <RowSpecialLegislation {...{specialLegislation}} />
-      </div>
-      <RowClosed {...{closed}} />
-    </div>
-  )
-}
-
 export function CompanyRecap({company, draft}: {company: CompanySearchResult; draft: Pick<ReportDraft, 'tags'>}) {
   const {siret, name, commercialName, brand, address, activityLabel, isHeadOffice, isGovernment, specialLegislation, closed} =
     buildGeneralCompanyFieldsFromSearchResult(company, draft)
   const website = undefined
   const phone = undefined
   return (
-    <CompanyRecapFromFields
+    <CompanyRecapRaw
       {...{
         siret,
         name,
