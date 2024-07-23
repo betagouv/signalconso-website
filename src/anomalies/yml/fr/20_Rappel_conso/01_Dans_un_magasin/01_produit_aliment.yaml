@@ -1,0 +1,6 @@
+title: Produit alimentaire rappelé mais toujours en vente sur le site
+tags:
+  - ProduitDangereux
+  - ProduitAlimentaire
+subcategories:
+  customimport: _imports/subcategories/produit-alimentaire
