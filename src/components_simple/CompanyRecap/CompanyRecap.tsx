@@ -5,7 +5,7 @@ import {Step2Model} from '@/model/Step2Model'
 import {CompanyRecapRaw, CompanyRecapRawProps} from './CompanyRecapRaw'
 import {buildBrandName} from './companyNameUtils'
 
-export function CompanyRecapFromStep2(draft: Pick<ReportDraft, 'tags' | 'step2'>) {
+export function CompanyRecapFromStep2({draft}: {draft: Pick<ReportDraft, 'tags' | 'step2'>}) {
   const {step2} = draft
   const {
     siret,

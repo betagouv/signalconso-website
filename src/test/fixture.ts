@@ -4,7 +4,7 @@ import {BarcodeProduct} from '@/model/BarcodeProduct'
 import {getIndexForStep, ReportStep, reportSteps} from '@/model/ReportStep'
 import {InfoWall, reportTags, socialNetworks, Subcategory} from '../anomalies/Anomaly'
 import {Address, ApiAddress} from '../model/Address'
-import {CompanyDraft, CompanySearchResult, WebsiteCompanySearchResult} from '../model/Company'
+import {CompanySearchResult, WebsiteCompanySearchResult} from '../model/Company'
 import {CreatedReport} from '../model/CreatedReport'
 import {Influencer, ReportDraft} from '../model/ReportDraft'
 import {FileOrigin} from '../model/UploadedFile'
@@ -120,6 +120,29 @@ export class Fixture {
     }
   }
 
+  static readonly genDraftReportStep2 = ({random = defaultRandom}: {random?: SeedableRandom}) => {
+    const lang = 'fr'
+    const anomaly = random.oneOf(allAnomalies(lang))
+    const category = anomaly.category
+    const step0: ReportDraft['step0'] = {
+      category,
+      lang,
+    }
+    const problemFields = {
+      consumerWish: 'fixContractualDispute',
+      subcategoriesIndexes: [0, 0],
+    }
+    const step2: ReportDraft['step2'] = {
+      kind: 'basic',
+      companyIdentification: {kind: 'companyFound', company: Fixture.genCompanySearchResult(random)},
+    }
+    return {
+      step0,
+      ...problemFields,
+      step2,
+    }
+  }
+
   static readonly genDraftReport = (
     currentLang: AppLang,
     lastStep: ReportStep,
@@ -209,23 +232,6 @@ export class Fixture {
         },
       ],
       similarHosts: [],
-    }
-  }
-
-  static readonly genCompanyDraft = (random: SeedableRandom = defaultRandom) => {
-    return <CompanyDraft>{
-      id: random.string(),
-      name: random.string({capitalization: 'lowercase', charset: 'alphabetic', length: 8}),
-      brand: random.string({capitalization: 'lowercase', charset: 'alphabetic', length: 6}),
-      siret: random.siret(),
-      address: Fixture.genAddress(random),
-      isHeadOffice: random.boolean(),
-      isPublic: random.boolean(),
-      isOpen: random.boolean(),
-      website: 'https://www.website.com',
-      phone: random.phone(),
-      activityCode: '46.36B',
-      isMarketPlace: random.boolean(),
     }
   }
 

@@ -1,7 +1,7 @@
-import {CompanyRecapFromSearchResult} from '@/components_simple/CompanyRecap/CompanyRecap'
+import {CompanyRecapFromSearchResult, CompanyRecapFromStep2} from '@/components_simple/CompanyRecap/CompanyRecap'
 import {ScAlert} from '@/components_simple/ScAlert'
 import {ButtonWithLoader} from '@/components_simple/buttons/Buttons'
-import {Fixture} from '@/test/fixture'
+import {Fixture, SeedableRandom} from '@/test/fixture'
 import {PortalToBody} from '@/utils/PortalToBody'
 import Button from '@codegouvfr/react-dsfr/Button'
 import {createModal} from '@codegouvfr/react-dsfr/Modal'
@@ -27,7 +27,7 @@ export const PlaygroundOther = () => {
   const {watch: watchCheck, control: controlCheck} = useForm<{specifiyCheck: string}>()
   const specifiyValue = watch('specifiyValue')
   const specifiyCheck = watchCheck('specifiyCheck')
-
+  const random = new SeedableRandom(33)
   return (
     <>
       <div className="mb-4">
@@ -202,12 +202,12 @@ export const PlaygroundOther = () => {
         </ScAlert>
       </div>
       <div className="border border-gray-500 border-solid p-2 mb-2">
-        <h6>Le composant "CompanyRecap"</h6>
-        <CompanyRecapFromSearchResult company={Fixture.genCompanySearchResult()} reportDraft={{tags: []}} />
-        <h6>Le composant "CompanyRecap" avec un CompanyDraft</h6>
-        <CompanyRecapFromSearchResult company={Fixture.genCompanyDraft()} reportDraft={{tags: []}} />
-        <h6>Le composant "CompanyRecap" sur la shrinkflation</h6>
-        <CompanyRecapFromSearchResult company={Fixture.genCompanySearchResult()} reportDraft={{tags: ['Shrinkflation']}} />
+        <h6>Le composant "CompanyRecapFromSearchResult"</h6>
+        <CompanyRecapFromSearchResult company={Fixture.genCompanySearchResult()} draft={{tags: []}} />
+        <h6>Le composant "CompanyRecapFromSearchResult" sur la shrinkflation</h6>
+        <CompanyRecapFromSearchResult company={Fixture.genCompanySearchResult()} draft={{tags: ['Shrinkflation']}} />
+        <h6>Le composant "CompanyRecapFromStep2" avec un draft en step2</h6>
+        <CompanyRecapFromStep2 draft={Fixture.genDraftReportStep2({random})} />
       </div>
     </>
   )
