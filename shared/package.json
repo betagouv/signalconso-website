@@ -1,0 +1,22 @@
+{
+  "name": "shared",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "shared:generate-json": "ts-node -O '{\"module\":\"commonjs\", \"jsx\":\"react-jsx\"}' scripts/gen-anomalies-json.ts",
+    "shared:generate-minimized-anomalies": "ts-node -O '{\"module\":\"commonjs\", \"jsx\":\"react-jsx\"}' scripts/gen-minimized-anomalies.ts",
+    "shared:sanitize-anomalies-filenames": "ts-node -O '{\"module\":\"commonjs\", \"jsx\":\"react-jsx\"}' scripts/sanitize-anomalies-filenames.ts"
+  },
+  "dependencies": {
+    "js-yaml": "4.1.0",
+    "lodash": "4.17.21"
+  },
+  "devDependencies": {
+    "@types/js-yaml": "^4.0.9",
+    "@types/lodash": "4.17.4",
+    "@types/node": "20.12.12",
+    "slugify": "^1.6.6",
+    "ts-node": "10.9.2",
+    "typescript": "5.4.5"
+  }
+}
