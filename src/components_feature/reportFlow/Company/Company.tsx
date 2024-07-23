@@ -33,11 +33,16 @@ import {BarcodeSearchResult} from './lib/BarcodeSearchResult'
 export function Company({stepNavigation}: {stepNavigation: StepNavigation}) {
   const {reportDraft, setReportDraft, sendReportEvent} = useReportFlowContext()
   const draft = reportDraft
-  if (draft.influencer) {
-    return <InfluencerFilled {...{stepNavigation, draft}} onClear={() => setReportDraft(_ => ({..._, step2: undefined}))} />
-  }
-  if (draft.companyDraft) {
-    return <CompanyFilled {...{stepNavigation, draft}} onClear={() => setReportDraft(_ => ({..._, step2: undefined}))} />
+  const {step2} = draft
+  if (step2) {
+    const onClear = () => setReportDraft(_ => ({..._, step2: undefined}))
+    switch (step2.kind) {
+      case 'influencer':
+      case 'influencerOtherSocialNetwork':
+        return <InfluencerFilled {...{stepNavigation, step2, onClear}} />
+      default:
+        return <CompanyFilled {...{stepNavigation, onClear}} draft={{step2, tags: draft.tags}} />
+    }
   }
   return (
     <CompanyIdentificationDispatch
