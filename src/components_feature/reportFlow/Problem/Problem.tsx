@@ -4,6 +4,7 @@ import {StepNavigation} from '@/components_feature/reportFlow/reportFlowStepper/
 import {ReportFlowStepperActions} from '@/components_feature/reportFlow/reportFlowStepper/ReportFlowStepperActions'
 import {FriendlyHelpText} from '@/components_simple/FriendlyHelpText'
 import {OpenFfWelcomeText, useOpenFfSetup} from '@/feature/openFoodFacts'
+import {RappelConsoWelcome, useRappelConsoSetup} from '@/feature/rappelConso'
 import {
   getSubcategories,
   hasStep0,
@@ -23,7 +24,6 @@ import {ProblemInformation} from './ProblemInformation'
 import {ProblemSelect} from './ProblemSelect'
 import {ProblemStepper, ProblemStepperStep} from './ProblemStepper'
 import {computeSelectedSubcategoriesData} from './useSelectedSubcategoriesData'
-import {RappelConsoWelcome, useRappelConsoSetup} from '@/feature/rappelConso'
 
 interface Props {
   anomaly: Anomaly
@@ -84,7 +84,7 @@ export function adjustReportDraftAfterSubcategoriesChange(
     subcategoriesIndexes: newSubcategoriesIndexes,
     tags,
     companyKind: lastCategoryCompanyKind,
-    companyDraft: undefined,
+    step2: undefined,
     // Category has changed, user need to reconfirm consumerWish & employeeConsumer because :
     // - Some categories have "getAnswer" (that is not available for all categories so we have to clean up those properties)
     // - Some categories set default values for these properties (CompanyKind SOCIAL)
