@@ -68,11 +68,12 @@ export const getTransmissionStatus = (
         case 'companyFound':
         case 'marketplaceCompanyFound': {
           const company = r.step2.companyIdentification.company
-          if (company.address.country === 'FR') {
-            return 'WILL_BE_TRANSMITTED'
+          const country = company.address.country
+          if (country && country !== 'FR') {
+            // SIRET existant mais adresse postale à l'étranger
+            return 'CANNOT_BE_TRANSMITTED'
           }
-          // SIRET existant mais adresse postale à l'étranger
-          return 'CANNOT_BE_TRANSMITTED'
+          return 'WILL_BE_TRANSMITTED'
         }
         case 'consumerLocation':
         case 'consumerPreciseLocation':
