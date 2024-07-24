@@ -14,6 +14,7 @@ import {
 import {useI18n} from '@/i18n/I18n'
 import {ConsumerWish} from '@/model/ReportDraft'
 import {ReportDraft2} from '@/model/ReportDraft2'
+import {Step2Model} from '@/model/Step2Model'
 import {useEffect, useMemo} from 'react'
 import {instanceOfSubcategoryWithInfoWall} from '../../../anomalies/Anomalies'
 import {Anomaly, CompanyKind, ReportTag, Subcategory} from '../../../anomalies/Anomaly'
@@ -155,13 +156,15 @@ export const Problem = ({anomaly, isWebView, stepNavigation}: Props) => {
       // In the openFf scenario
       // Only if we got all the data, then we build the company/product from it.
       // If we only have partial data, then we will build it in step 2.
-      const productAndCompanyOverride =
-        draft.openFf?.product && draft.openFf.company
+      // TODO revoir si c'est la bonne approche
+      const step2: Step2Model | undefined =
+        draft.openFf && draft.openFf.product && draft.openFf.company
           ? {
+              kind: 'product',
               barcodeProduct: draft.openFf.product,
-              companyDraft: draft.openFf.company,
+              companyIdentification: {kind: 'companyFound', company: draft.openFf.company},
             }
-          : null
+          : draft.step2
 
       const updatedDraft: Partial<ReportDraft2> = {
         ...draft,
@@ -172,8 +175,7 @@ export const Problem = ({anomaly, isWebView, stepNavigation}: Props) => {
         consumerWish,
         employeeConsumer,
         categoryOverride: categoryOverrideFromSelected,
-        barcodeProduct: productAndCompanyOverride?.barcodeProduct ?? draft.barcodeProduct,
-        companyDraft: productAndCompanyOverride?.companyDraft ?? draft.companyDraft,
+        step2,
       }
       return updatedDraft
     })

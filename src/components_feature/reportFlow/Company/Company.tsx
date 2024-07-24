@@ -441,6 +441,7 @@ function BarcodeTree({
 
 function OpenFfTree({draft, updateReport}: CommonProps) {
   const {company, product} = draft.openFf ?? {}
+  // TODO bien tester le cas OPEN FF et comprendre ce qu'il s'y passe
   if (!product) {
     // We were not able to find the product with the barcode from OpenFF
     // Let's forget about it entirely and fallback on the regular search

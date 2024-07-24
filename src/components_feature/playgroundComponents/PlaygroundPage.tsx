@@ -198,7 +198,7 @@ const Playground = () => {
                   kind: 'companyFound',
                   company: companySearchResult,
                 },
-                barcodeProduct
+                barcodeProduct,
               },
               tags: [],
             }}
