@@ -1,6 +1,7 @@
 import {SocialNetwork, Subcategory} from '@/anomalies/Anomaly'
 import {appConfig} from '@/core/appConfig'
-import {getSubcategories, toApi} from '@/feature/reportDraftUtils'
+import {toApi} from '@/feature/fromReportDraftToApi'
+import {getSubcategories} from '@/feature/reportDraftUtils'
 import {ConsumerEmailResult} from '@/model/ConsumerEmailValidation'
 import {ApiCreatedReport, ApiReportDraft} from '@/model/reportsFromApi'
 import {ResponseConsumerReview, ResponseConsumerReviewExists} from '../core/Events'
