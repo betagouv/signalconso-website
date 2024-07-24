@@ -1,4 +1,5 @@
 import {CompanyRecapFromSearchResult, CompanyRecapFromStep2} from '@/components_simple/CompanyRecap/CompanyRecap'
+import {Step2Recap} from '@/components_simple/CompanyRecap/Step2Recap'
 import {ScAlert} from '@/components_simple/ScAlert'
 import {ButtonWithLoader} from '@/components_simple/buttons/Buttons'
 import {Fixture, SeedableRandom} from '@/test/fixture'
@@ -208,6 +209,14 @@ export const PlaygroundOther = () => {
         <CompanyRecapFromSearchResult company={Fixture.genCompanySearchResult()} draft={{tags: ['Shrinkflation']}} />
         <h6>Le composant "CompanyRecapFromStep2" avec un draft en step2</h6>
         <CompanyRecapFromStep2 draft={Fixture.genDraftReportStep2({random})} />
+        <h6>Le composant "Step2Recap" avec le cas "station"</h6>
+        <Step2Recap step2={Fixture.genStep2Station()} tags={[]} />
+        <h6>Le composant "Step2Recap" avec le cas "train" de base</h6>
+        <Step2Recap step2={Fixture.genStep2Train()} tags={[]} />
+        <h6>Le composant "Step2Recap" avec le cas "train" avec un train de nuit</h6>
+        <Step2Recap step2={Fixture.genStep2TrainDeNuit()} tags={[]} />
+        <h6>Le composant "Step2Recap" avec le cas "train" avec un ter</h6>
+        <Step2Recap step2={Fixture.genStep2TrainTer()} tags={[]} />
       </div>
     </>
   )

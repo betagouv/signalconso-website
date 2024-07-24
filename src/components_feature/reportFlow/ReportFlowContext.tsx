@@ -18,6 +18,7 @@ export const ReportFlowProvider = ({children}: {children: ReactNode}) => {
   const [reportDraft, setReportDraft] = useState<Partial<ReportDraft2>>({})
   const currentStep = useRef<ReportStepOrDone | undefined>(undefined)
 
+  console.log('@@@ reportDraft', reportDraft)
   /**
    * Will send event at each step of the report workflow. The event must be unique, ie if a user decides to edit a previous step no step event will be triggered again
    * @param newStep

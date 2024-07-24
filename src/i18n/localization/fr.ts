@@ -813,6 +813,7 @@ export const fr = {
     trainTaken: 'Quel train avez-vous pris ou souhaitiez-vous prendre ?',
     terRegion: 'Région concernée par votre TER',
     whichStation: 'Quelle gare est concernée par votre signalement ?',
+    trainStation: 'Gare',
     foreignRailwayCompany: {
       DE: `Malheureusement, cette compagnie ferroviaire est une compagnie allemande. Merci de contacter <a href='https://www.eba.bund.de/DE/Themen/Fahrgastrechte/Bahn/Beschwerdeformular/beschwerdeformular_node.html' target='_blank' rel='noopener noreferrer'>les autorités allemandes compétentes.</a>`,
       ES: `Malheureusement, cette compagnie ferroviaire est une compagnie espagnole. Merci de contacter <a href='https://www.transportes.gob.es/' target='_blank' rel='noopener noreferrer'>les autorités espagnoles compétentes.</a>`,

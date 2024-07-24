@@ -3,7 +3,7 @@ import {EventCategories, ReportEventActions} from '@/analytic/analytic'
 import {StepNavigation} from '@/components_feature/reportFlow/reportFlowStepper/ReportFlowStepper'
 import {ReportFlowStepperActions} from '@/components_feature/reportFlow/reportFlowStepper/ReportFlowStepperActions'
 import {Animate} from '@/components_simple/Animate'
-import {CompanyRecapFromStep2} from '@/components_simple/CompanyRecap/CompanyRecap'
+import {Step2Recap} from '@/components_simple/CompanyRecap/Step2Recap'
 import {FriendlyHelpText} from '@/components_simple/FriendlyHelpText'
 import {ReportFilesConfirmation} from '@/components_simple/reportFile/ReportFilesConfirmation'
 import {getAnomaly, getSubcategories, getTransmissionStatus} from '@/feature/reportDraftUtils'
@@ -159,7 +159,7 @@ function RenderEachStep({
         default:
           return (
             <ConfirmationStep title={m.step_company} {...{goToStep, index}}>
-              <CompanyRecapFromStep2 draft={{step2, tags: draft.tags}} />
+              <Step2Recap {...{step2, tags: draft.tags ?? []}} />
             </ConfirmationStep>
           )
       }

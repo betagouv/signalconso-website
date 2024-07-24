@@ -2,6 +2,7 @@ import {allAnomalies} from '@/anomalies/Anomalies'
 import {AppLang} from '@/i18n/localization/AppLangs'
 import {BarcodeProduct} from '@/model/BarcodeProduct'
 import {getIndexForStep, ReportStep, reportSteps} from '@/model/ReportStep'
+import {Step2Model} from '@/model/Step2Model'
 import {InfoWall, reportTags, socialNetworks, Subcategory} from '../anomalies/Anomaly'
 import {Address, ApiAddress} from '../model/Address'
 import {CompanySearchResult, WebsiteCompanySearchResult} from '../model/Company'
@@ -116,6 +117,42 @@ export class Fixture {
       postReportHelper: {
         title: `Titre d'aide... vous voulez en savoir plus sur [le sujet du signalement] ?`,
         content: `Contenu d'aide... rendez-vous sur <a href=\"#" target=\"_blank\">les fiches pratiques de la DGCCRF</a>`,
+      },
+    }
+  }
+
+  static readonly genStep2Station = (): Step2Model => {
+    return {
+      kind: 'station',
+      station: 'Gare de Lyon',
+    }
+  }
+
+  static readonly genStep2Train = (): Step2Model => {
+    return {
+      kind: 'train',
+      train: {
+        train: 'OUIGO',
+      },
+    }
+  }
+
+  static readonly genStep2TrainDeNuit = (): Step2Model => {
+    return {
+      kind: 'train',
+      train: {
+        train: 'TRAIN_DE_NUIT',
+        nightTrain: 'INTERCITE_DE_NUIT',
+      },
+    }
+  }
+
+  static readonly genStep2TrainTer = (): Step2Model => {
+    return {
+      kind: 'train',
+      train: {
+        train: 'TER',
+        ter: 'AUVERGNE_RHONE_ALPES',
       },
     }
   }
