@@ -34,8 +34,8 @@ describe('Details: single date not in future', () => {
           draft={{
             companyKind: 'WEBSITE',
           }}
-          updateReport={x => {
-            draft = ReportDraft2.merge(draft, x)
+          updateReport={step2 => {
+            draft = {...draft, step2}
           }}
         />,
         {
@@ -82,7 +82,9 @@ describe('Details: single date not in future', () => {
           draft={{
             companyKind: 'LOCATION',
           }}
-          updateReport={x => ReportDraft2.merge(draft, x)}
+          updateReport={step2 => {
+            draft = {...draft, step2}
+          }}
         />,
         {
           signalConsoApiClient: {

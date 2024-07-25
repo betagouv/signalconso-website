@@ -1,9 +1,7 @@
 import {findAnomaly} from '@/anomalies/Anomalies'
-import {Anomaly, ReportTag, SocialNetwork, Subcategory} from '@/anomalies/Anomaly'
-import {Influencer, ReportDraft, TransmissionStatus} from '@/model/ReportDraft'
+import {Subcategory} from '@/anomalies/Anomaly'
+import {ReportDraft, TransmissionStatus} from '@/model/ReportDraft'
 import {ReportDraft2} from '@/model/ReportDraft2'
-import {ApiInfluencer, ApiReportDraft} from '@/model/reportsFromApi'
-import uniq from 'lodash/uniq'
 
 export function hasStep0(r: Partial<ReportDraft2>): r is Pick<ReportDraft, 'step0'> & Partial<ReportDraft2> {
   return !!r.step0
@@ -12,6 +10,9 @@ export function hasSubcategoryIndexes(
   r: Partial<ReportDraft2>,
 ): r is Pick<ReportDraft, 'subcategoriesIndexes'> & Partial<ReportDraft2> {
   return !!r.subcategoriesIndexes
+}
+export function hasStep2(r: Partial<ReportDraft2>): r is Pick<ReportDraft, 'step2'> & Partial<ReportDraft2> {
+  return !!r.step2
 }
 
 export const getAnomaly = (r: Pick<ReportDraft, 'step0'>) => {
@@ -46,132 +47,40 @@ export const isTransmittableToPro = (r: Pick<ReportDraft, 'employeeConsumer' | '
 export const isTransmittableToProBeforePickingConsumerWish = (r: Pick<ReportDraft, 'employeeConsumer'>): boolean => {
   return !r.employeeConsumer
 }
-// Quand l'entreprise n'a pas pu être identifiée par le conso
-export const mayBeTransmittedLater = (r: Pick<ReportDraft, 'influencer' | 'companyDraft'>) => {
-  return !r.influencer && !r.companyDraft?.siret && r.companyDraft?.address.postalCode
-}
-
-export const cannotBeTransmitted = (r: Pick<ReportDraft, 'influencer' | 'companyDraft'>) => {
-  return !r.influencer && !r.companyDraft?.siret && !r.companyDraft?.address.postalCode && r.companyDraft?.address.country
-}
-
-// SIRET existant mais adresse postale à l'étranger
-export const foreignCompany = (r: Pick<ReportDraft, 'influencer' | 'companyDraft'>) => {
-  return !r.influencer && r.companyDraft?.siret && r.companyDraft?.address.country && r.companyDraft?.address.country !== 'FR'
-}
 
 export const getTransmissionStatus = (
-  r: Pick<ReportDraft, 'employeeConsumer' | 'consumerWish' | 'influencer' | 'companyDraft'>,
+  r: Pick<ReportDraft, 'employeeConsumer' | 'consumerWish' | 'step2'>,
 ): TransmissionStatus => {
   if (!isTransmittableToPro(r)) {
     return 'NOT_TRANSMITTABLE'
-  } else if (mayBeTransmittedLater(r)) {
-    return 'MAY_BE_TRANSMITTED'
-  } else if (cannotBeTransmitted(r) || foreignCompany(r)) {
-    return 'CANNOT_BE_TRANSMITTED'
-  } else {
-    return 'WILL_BE_TRANSMITTED'
   }
-}
-
-export const toApiInfluencer = (influencer: Influencer): ApiInfluencer => {
-  const toApiSocialNetwork = (socialNetwork: SocialNetwork): string | undefined => {
-    switch (socialNetwork) {
-      case 'YOUTUBE':
-        return 'YouTube'
-      case 'FACEBOOK':
-        return 'Facebook'
-      case 'INSTAGRAM':
-        return 'Instagram'
-      case 'TIKTOK':
-        return 'TikTok'
-      case 'TWITTER':
-        return 'Twitter'
-      case 'LINKEDIN':
-        return 'LinkedIn'
-      case 'SNAPCHAT':
-        return 'Snapchat'
-      case 'TWITCH':
-        return 'Twitch'
-      case 'OTHER':
-        return undefined
-    }
-  }
-
-  return {
-    name: influencer.name,
-    socialNetwork: toApiSocialNetwork(influencer.socialNetwork),
-    otherSocialNetwork: influencer.otherSocialNetwork,
-  }
-}
-
-const specialCategoryTag = (anomaly: Anomaly): ReportTag[] => {
-  switch (anomaly.specialCategory) {
-    case 'OpenFoodFacts':
-      return ['OpenFoodFacts']
-    case 'RappelConso':
-      return ['RappelConso']
-    default:
-      return []
-  }
-}
-
-export const toApi = (draft: ReportDraft, metadata: ApiReportDraft['metadata']): ApiReportDraft => {
-  const {
-    consumerWish,
-    reponseconsoCode,
-    step4: {contactAgreement, consumer},
-    vendor,
-    ccrfCode,
-  } = draft
-  const anomaly = getAnomaly(draft)
-  const subcategories = getSubcategories(draft)
-
-  const additionalTags: ReportTag[] = [
-    ...(consumerWish === 'fixContractualDispute' ? (['LitigeContractuel'] as const) : []),
-    ...(consumerWish === 'getAnswer' ? (['ReponseConso'] as const) : []),
-    ...specialCategoryTag(anomaly),
-  ]
-
-  const tags = uniq([...(draft.tags ?? []), ...additionalTags])
-  return {
-    // We don't use the rest syntax here ("..."),
-    // we prefer to be sure to fill each field explicitely
-    gender: consumer.gender,
-    category: draft.categoryOverride ?? draft.step0.category,
-    subcategories: subcategories.map(_ => _.title),
-    details: draft.step3.details,
-    companyName: draft.companyDraft?.name,
-    companyBrand: draft.companyDraft?.brand,
-    companyCommercialName: draft.companyDraft?.commercialName,
-    companyEstablishmentCommercialName: draft.companyDraft?.establishmentCommercialName,
-    companyAddress: draft.companyDraft?.address,
-    companySiret: draft.companyDraft?.siret,
-    companyActivityCode: draft.companyDraft?.activityCode,
-    companyIsHeadOffice: draft.companyDraft?.isHeadOffice,
-    companyIsOpen: draft.companyDraft?.isOpen,
-    companyIsPublic: draft.companyDraft?.isPublic,
-    websiteURL: draft.companyDraft?.website,
-    phone: draft.companyDraft?.phone,
-    firstName: consumer.firstName,
-    lastName: consumer.lastName,
-    email: consumer.email,
-    consumerPhone: consumer.phone,
-    consumerReferenceNumber: consumer.referenceNumber,
-    contactAgreement,
-    employeeConsumer: draft.employeeConsumer ?? false,
-    forwardToReponseConso: consumerWish === 'getAnswer',
-    fileIds: draft.step3.uploadedFiles?.map(file => file.id) ?? [],
-    vendor,
-    tags,
-    reponseconsoCode: reponseconsoCode ? [reponseconsoCode] : undefined,
-    ccrfCode,
-    influencer: draft.influencer ? toApiInfluencer(draft.influencer) : undefined,
-    lang: draft.step0.lang,
-    barcodeProductId: draft.barcodeProduct?.id,
-    train: draft.train,
-    station: draft.station,
-    rappelConsoId: draft.rappelConso?.id,
-    metadata,
+  switch (r.step2.kind) {
+    case 'influencer':
+    case 'influencerOtherSocialNetwork':
+    case 'train':
+    case 'station':
+      return 'WILL_BE_TRANSMITTED'
+    case 'basic':
+    case 'phone':
+    case 'product':
+    case 'website':
+      switch (r.step2.companyIdentification.kind) {
+        case 'companyFound':
+        case 'marketplaceCompanyFound': {
+          const company = r.step2.companyIdentification.company
+          const country = company.address.country
+          if (country && country !== 'FR') {
+            // SIRET existant mais adresse postale à l'étranger
+            return 'CANNOT_BE_TRANSMITTED'
+          }
+          return 'WILL_BE_TRANSMITTED'
+        }
+        case 'consumerLocation':
+        case 'consumerPreciseLocation':
+          return 'MAY_BE_TRANSMITTED'
+        case 'foreignCompany':
+        case 'foreignWebsiteWithJustCountry':
+          return 'CANNOT_BE_TRANSMITTED'
+      }
   }
 }

@@ -2,9 +2,8 @@ import {CompanyKind, NightTrain, ReportTag, SocialNetwork, Ter, Train} from '@/a
 import {OpenFfResult} from '@/feature/openFoodFacts'
 import {RappelConsoResult} from '@/feature/rappelConso'
 import {AppLang} from '@/i18n/localization/AppLangs'
-import {BarcodeProduct} from './BarcodeProduct'
-import {CompanyDraft} from './Company'
 import {DetailInputValue} from './CreatedReport'
+import {Step2Model} from './Step2Model'
 import {UploadedFile} from './UploadedFile'
 
 export const genders = ['Male', 'Female'] as const
@@ -15,6 +14,7 @@ export interface ReportDraft {
     category: string
     lang: AppLang
   }
+  step2: Step2Model
   step3: {
     details: DetailInputValue[]
     uploadedFiles?: UploadedFile[]
@@ -32,20 +32,13 @@ export interface ReportDraft {
   }
   subcategoriesIndexes: number[]
   categoryOverride?: string
-  companyDraft?: CompanyDraft
-
   // pretty sure some of these fields aren't actually optional in the draft
   employeeConsumer?: boolean
-  vendor: string
   ccrfCode?: string[]
   reponseconsoCode?: string
   tags?: ReportTag[]
   consumerWish?: ConsumerWish
   companyKind?: CompanyKind
-  influencer?: Influencer
-  barcodeProduct?: BarcodeProduct
-  train: TrainDraft
-  station: string
   openFf?: OpenFfResult
   rappelConso?: RappelConsoResult
 }

@@ -3,7 +3,7 @@ import {EventCategories, ReportEventActions} from '@/analytic/analytic'
 import {StepNavigation} from '@/components_feature/reportFlow/reportFlowStepper/ReportFlowStepper'
 import {ReportFlowStepperActions} from '@/components_feature/reportFlow/reportFlowStepper/ReportFlowStepperActions'
 import {Animate} from '@/components_simple/Animate'
-import {CompanyRecapWithProduct} from '@/components_simple/CompanyRecap/CompanyRecap'
+import {Step2Recap} from '@/components_simple/CompanyRecap/Step2Recap'
 import {FriendlyHelpText} from '@/components_simple/FriendlyHelpText'
 import {ReportFilesConfirmation} from '@/components_simple/reportFile/ReportFilesConfirmation'
 import {getAnomaly, getSubcategories, getTransmissionStatus} from '@/feature/reportDraftUtils'
@@ -141,26 +141,28 @@ function RenderEachStep({
         </ConfirmationStep>
       )
     case 'BuildingCompany':
-      return (
-        <>
-          {draft.companyDraft && (
-            <ConfirmationStep title={m.step_company} {...{goToStep, index}}>
-              <CompanyRecapWithProduct company={draft.companyDraft} barcodeProduct={draft.barcodeProduct} reportDraft={draft} />
-            </ConfirmationStep>
-          )}
-          {draft.influencer && (
+      const {step2} = draft
+      switch (step2.kind) {
+        case 'influencer':
+        case 'influencerOtherSocialNetwork':
+          return (
             <ConfirmationStep title={m.step_influencer} {...{goToStep, index}}>
               <p className="mb-1 font-bold">Réseau social</p>
-              <SocialNetworkRow socialNetwork={draft.influencer.socialNetwork} gray className="mb-2" />
+              <SocialNetworkRow socialNetwork={step2.socialNetwork} gray className="mb-2" />
               <p className="mb-1 font-bold">Nom de l'influenceur ou influenceuse</p>
               <div className="flex gap-2">
                 <i className="ri-account-box-line text-gray-400" />
-                <span className="text-gray-500">{draft.influencer.name}</span>
+                <span className="text-gray-500">{step2.influencerName}</span>
               </div>
             </ConfirmationStep>
-          )}
-        </>
-      )
+          )
+        default:
+          return (
+            <ConfirmationStep title={m.step_company} {...{goToStep, index}}>
+              <Step2Recap {...{step2, tags: draft.tags ?? []}} />
+            </ConfirmationStep>
+          )
+      }
     case 'BuildingConsumer':
       const {consumer} = draft.step4
       return (

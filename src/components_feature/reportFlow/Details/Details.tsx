@@ -6,7 +6,7 @@ import {FriendlyHelpText} from '@/components_simple/FriendlyHelpText'
 import {RequiredFieldsLegend} from '@/components_simple/RequiredFieldsLegend'
 import {ReportFiles} from '@/components_simple/reportFile/ReportFiles'
 import {appConfig} from '@/core/appConfig'
-import {getSubcategories, getTransmissionStatus, hasStep0, hasSubcategoryIndexes} from '@/feature/reportDraftUtils'
+import {getSubcategories, getTransmissionStatus, hasStep0, hasStep2, hasSubcategoryIndexes} from '@/feature/reportDraftUtils'
 import {useI18n} from '@/i18n/I18n'
 import {DetailInputValues2} from '@/model/ReportDraft2'
 import {fnSwitch} from '@/utils/FnSwitch'
@@ -41,7 +41,7 @@ export const Details = ({stepNavigation}: {stepNavigation: StepNavigation}) => {
     return getDraftReportInputs(draft, currentLang)
   }, [draft.subcategoriesIndexes, draft.tags, draft.consumerWish])
 
-  if (!inputs || draft.employeeConsumer === undefined || !hasStep0(draft) || !hasSubcategoryIndexes(draft)) {
+  if (!inputs || draft.employeeConsumer === undefined || !hasStep0(draft) || !hasSubcategoryIndexes(draft) || !hasStep2(draft)) {
     throw new Error(`Details step should not be accessible ${draft.employeeConsumer} - ${JSON.stringify(inputs)}`)
   }
   const subcategories = getSubcategories(draft)

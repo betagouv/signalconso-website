@@ -1,37 +1,35 @@
+import {SocialNetworkRow} from '@/components_simple/SocialNetworkRow'
 import {useI18n} from '@/i18n/I18n'
-import {ReportDraft2} from '@/model/ReportDraft2'
+import {Step2Model} from '@/model/Step2Model'
 import {StepNavigation} from '../reportFlowStepper/ReportFlowStepper'
 import {CompanyActionButtons} from './CompanyActionButtons'
-import {SocialNetworkRow} from '@/components_simple/SocialNetworkRow'
 
 export const InfluencerFilled = ({
-  draft,
+  step2,
   onClear,
   stepNavigation,
 }: {
-  draft: Partial<ReportDraft2>
+  step2: Step2Model & {
+    kind: 'influencer' | 'influencerOtherSocialNetwork'
+  }
   onClear: () => void
   stepNavigation: StepNavigation
 }) => {
   const {m} = useI18n()
-  if (!draft.influencer) {
-    throw new Error(`influencer should be defined ${JSON.stringify(draft)}`)
-  }
-
   return (
     <div>
       <h2 className="fr-h6">{m.influencerIdentifiedTitle}</h2>
-      {draft.influencer.otherSocialNetwork ? (
+      {step2.kind === 'influencerOtherSocialNetwork' ? (
         <div className="flex">
-          <SocialNetworkRow socialNetwork={draft.influencer.socialNetwork} gray className="mb-2" />
-          <span className="text-gray-500 font-bold"> : {draft.influencer.otherSocialNetwork}</span>
+          <SocialNetworkRow socialNetwork={step2.socialNetwork} gray className="mb-2" />
+          <span className="text-gray-500 font-bold"> : {step2.otherSocialNetwork}</span>
         </div>
       ) : (
-        <SocialNetworkRow socialNetwork={draft.influencer.socialNetwork} gray className="mb-2" />
+        <SocialNetworkRow socialNetwork={step2.socialNetwork} gray className="mb-2" />
       )}
       <div className="flex gap-2 pl-1">
         <i className="ri-account-box-line" />
-        <span className="text-schint">{draft.influencer.name}</span>
+        <span className="text-schint">{step2.influencerName}</span>
       </div>
       <CompanyActionButtons {...{onClear, stepNavigation}} />
     </div>
