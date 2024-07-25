@@ -4,6 +4,7 @@ import {StepNavigation} from '@/components_feature/reportFlow/reportFlowStepper/
 import {ReportFlowStepperActions} from '@/components_feature/reportFlow/reportFlowStepper/ReportFlowStepperActions'
 import {FriendlyHelpText} from '@/components_simple/FriendlyHelpText'
 import {OpenFfWelcomeText, useOpenFfSetup} from '@/feature/openFoodFacts'
+import {RappelConsoWelcome, useRappelConsoSetup} from '@/feature/rappelConso'
 import {
   getSubcategories,
   hasStep0,
@@ -13,6 +14,7 @@ import {
 import {useI18n} from '@/i18n/I18n'
 import {ConsumerWish} from '@/model/ReportDraft'
 import {ReportDraft2} from '@/model/ReportDraft2'
+import {Step2Model} from '@/model/Step2Model'
 import {useEffect, useMemo} from 'react'
 import {instanceOfSubcategoryWithInfoWall} from '../../../anomalies/Anomalies'
 import {Anomaly, CompanyKind, ReportTag, Subcategory} from '../../../anomalies/Anomaly'
@@ -23,7 +25,6 @@ import {ProblemInformation} from './ProblemInformation'
 import {ProblemSelect} from './ProblemSelect'
 import {ProblemStepper, ProblemStepperStep} from './ProblemStepper'
 import {computeSelectedSubcategoriesData} from './useSelectedSubcategoriesData'
-import {RappelConsoWelcome, useRappelConsoSetup} from '@/feature/rappelConso'
 
 interface Props {
   anomaly: Anomaly
@@ -84,7 +85,7 @@ export function adjustReportDraftAfterSubcategoriesChange(
     subcategoriesIndexes: newSubcategoriesIndexes,
     tags,
     companyKind: lastCategoryCompanyKind,
-    companyDraft: undefined,
+    step2: undefined,
     // Category has changed, user need to reconfirm consumerWish & employeeConsumer because :
     // - Some categories have "getAnswer" (that is not available for all categories so we have to clean up those properties)
     // - Some categories set default values for these properties (CompanyKind SOCIAL)
@@ -155,13 +156,14 @@ export const Problem = ({anomaly, isWebView, stepNavigation}: Props) => {
       // In the openFf scenario
       // Only if we got all the data, then we build the company/product from it.
       // If we only have partial data, then we will build it in step 2.
-      const productAndCompanyOverride =
-        draft.openFf?.product && draft.openFf.company
+      const step2: Step2Model | undefined =
+        draft.openFf && draft.openFf.product && draft.openFf.company
           ? {
+              kind: 'product',
               barcodeProduct: draft.openFf.product,
-              companyDraft: draft.openFf.company,
+              companyIdentification: {kind: 'companyFound', company: draft.openFf.company},
             }
-          : null
+          : draft.step2
 
       const updatedDraft: Partial<ReportDraft2> = {
         ...draft,
@@ -172,8 +174,7 @@ export const Problem = ({anomaly, isWebView, stepNavigation}: Props) => {
         consumerWish,
         employeeConsumer,
         categoryOverride: categoryOverrideFromSelected,
-        barcodeProduct: productAndCompanyOverride?.barcodeProduct ?? draft.barcodeProduct,
-        companyDraft: productAndCompanyOverride?.companyDraft ?? draft.companyDraft,
+        step2,
       }
       return updatedDraft
     })

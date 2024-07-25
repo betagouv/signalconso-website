@@ -1,110 +1,180 @@
-import {useI18n} from '@/i18n/I18n'
-import {BarcodeProduct} from '@/model/BarcodeProduct'
-import {CompanySearchResult, isCompanyDraft, isGovernmentCompany} from '@/model/Company'
-import {ChildrenProps} from '@/utils/utils'
-import {AddressComponent} from '../Address'
-import {ProductRecap} from './ProductRecap'
-import {appliedSpecialLegislation} from '@/model/SpecialLegislation'
+import {CompanySearchResult, isGovernmentCompany} from '@/model/Company'
 import {ReportDraft} from '@/model/ReportDraft'
-import {ScAlert} from '@/components_simple/ScAlert'
+import {appliedSpecialLegislation} from '@/model/SpecialLegislation'
+import {Step2Model} from '@/model/Step2Model'
+import {CompanyRecapRaw, CompanyRecapRawProps} from './CompanyRecapRaw'
+import {buildBrandName} from './companyNameUtils'
 
-export function CompanyRecapWithProduct(
-  props: CompanyRecapProps & {
-    barcodeProduct?: BarcodeProduct
-  },
-) {
+export function CompanyRecapFromStep2({draft}: {draft: Pick<ReportDraft, 'tags' | 'step2'>}) {
+  // this doesn't display all the step2 variations
+  // only whatever concerns the company + phone/website/product
+  const {step2} = draft
+  const {
+    siret,
+    name,
+    commercialName,
+    brand,
+    address,
+    activityLabel,
+    isHeadOffice = false,
+    isGovernment = false,
+    specialLegislation,
+    closed = false,
+  } = buildMainFields(step2, draft)
+  const {phone, website, barcodeProduct} = buildOtherFields(step2)
   return (
-    <>
-      <CompanyRecap company={props.company} reportDraft={props.reportDraft} />
-      {props.barcodeProduct && (
-        <>
-          <p className="mt-4 !mb-2">À propos du produit :</p>
-          <ProductRecap product={props.barcodeProduct} />
-        </>
-      )}
-    </>
+    <CompanyRecapRaw
+      {...{
+        siret,
+        name,
+        commercialName,
+        brand,
+        address,
+        activityLabel,
+        isHeadOffice,
+        isGovernment,
+        specialLegislation,
+        closed,
+        phone,
+        website,
+        barcodeProduct,
+      }}
+    />
   )
 }
 
-type CompanyRecapProps = {company: CompanySearchResult; reportDraft: Pick<ReportDraft, 'tags'>}
-
-// Use name + commercialName if present
-// Does not use brand
-export function buildCompanyName(_: CompanySearchResult) {
-  const name = _.name
-  const commercialName = _.commercialName
-  return commercialName ? `${commercialName} (${name})` : name
+export function CompanyRecapFromSearchResult({company, draft}: {company: CompanySearchResult; draft: Pick<ReportDraft, 'tags'>}) {
+  const {siret, name, commercialName, brand, address, activityLabel, isHeadOffice, isGovernment, specialLegislation, closed} =
+    buildMainFieldsFromSearchResult(company, draft)
+  const website = undefined
+  const phone = undefined
+  const barcodeProduct = undefined
+  return (
+    <CompanyRecapRaw
+      {...{
+        siret,
+        name,
+        commercialName,
+        brand,
+        address,
+        activityLabel,
+        isHeadOffice,
+        isGovernment,
+        specialLegislation,
+        closed,
+        website,
+        phone,
+        barcodeProduct,
+      }}
+    />
+  )
 }
 
-export function buildBrandName(_: CompanySearchResult) {
-  const brand = _.brand
-  const establishmentCommercialName = _.establishmentCommercialName
-  if (establishmentCommercialName && brand) {
-    return `${establishmentCommercialName} / ${brand}`
-  } else if (establishmentCommercialName && !brand) {
-    return `${establishmentCommercialName}`
-  } else if (!establishmentCommercialName && brand) {
-    return `${brand}`
-  } else {
-    return undefined
+function buildMainFields(
+  step2: Step2Model,
+  draft: Pick<ReportDraft, 'tags'>,
+): Omit<CompanyRecapRawProps, 'phone' | 'website' | 'barcodeProduct'> {
+  const allUndefined = {
+    name: undefined,
+    commercialName: undefined,
+    closed: undefined,
+    siret: undefined,
+    address: undefined,
+    isHeadOffice: undefined,
+    isGovernment: undefined,
+    website: undefined,
+    phone: undefined,
+    activityLabel: undefined,
+    brand: undefined,
+    specialLegislation: undefined,
+  }
+  switch (step2.kind) {
+    case 'basic':
+    case 'phone':
+    case 'product':
+    case 'website':
+      const companyIdentification = step2.companyIdentification
+      switch (companyIdentification.kind) {
+        case 'companyFound':
+        case 'marketplaceCompanyFound':
+          const {company} = companyIdentification
+          return buildMainFieldsFromSearchResult(company, draft)
+        case 'consumerLocation':
+          return {
+            ...allUndefined,
+            address: {
+              postalCode: companyIdentification.consumerPostalCode,
+            },
+          }
+        case 'consumerPreciseLocation':
+          return {
+            ...allUndefined,
+            address: {
+              postalCode: companyIdentification.consumerPostalCode,
+              street: companyIdentification.consumerStreet,
+            },
+          }
+        case 'foreignCompany':
+          return {
+            ...allUndefined,
+            address: {
+              country: companyIdentification.companyCountryCode,
+              postalCode: companyIdentification.consumerPostalCode,
+            },
+          }
+        case 'foreignWebsiteWithJustCountry':
+          return {
+            ...allUndefined,
+            address: {
+              country: companyIdentification.countryCode,
+            },
+          }
+      }
+    case 'influencer':
+    case 'influencerOtherSocialNetwork':
+    case 'station':
+    case 'train':
+      return allUndefined
   }
 }
 
-export function CompanyRecap(props: CompanyRecapProps) {
-  const closed = !props.company.isOpen
-  const siret = props.company.siret
-  const address = props.company.address
-  const isHeadOffice = props.company.isHeadOffice
-  const website = isCompanyDraft(props.company) ? props.company.website : undefined
-  const phone = isCompanyDraft(props.company) ? props.company.phone : undefined
-  const isGovernment = isGovernmentCompany(props.company)
-  const activityLabel = props.company.activityLabel
-  const brand = buildBrandName(props.company)
-  const specialLegislation = appliedSpecialLegislation(props.company, props.reportDraft)
-  const {m} = useI18n()
-  return (
-    <div className="flex justify-between w-full">
-      <div>
-        <span className="font-bold block">{buildCompanyName(props.company)}</span>
-        {brand && <span className="block">{brand}</span>}
-        {isHeadOffice && (
-          <Row icon="ri-building-fill" variant="blue">
-            {m.isHeadOffice}
-          </Row>
-        )}
-        {activityLabel && <Row icon="ri-price-tag-3-fill">{activityLabel}</Row>}
-        {isGovernment && (
-          <Row icon="ri-error-warning-fill" variant="error">
-            {m.governmentCompany}
-          </Row>
-        )}
-        {siret && (
-          <Row icon="ri-profile-fill">
-            {m.siretNumber} <span className="">{siret}</span>
-          </Row>
-        )}
-        {address && (
-          <Row icon="ri-map-pin-2-fill">
-            <AddressComponent address={address} />
-          </Row>
-        )}
-        {website && <Row icon="ri-global-line">{website}</Row>}
-        {phone && <Row icon="ri-phone-line">{phone}</Row>}
-        {props.company.isOpen && specialLegislation && (
-          <ScAlert type="warning" dangerouslySetInnerHTML={{__html: m.specialLegislation[specialLegislation]}} />
-        )}
-      </div>
-      {closed && <span className="text-red-600">{m.closedCompany}</span>}
-    </div>
-  )
+function buildMainFieldsFromSearchResult(
+  company: CompanySearchResult,
+  draft: Pick<ReportDraft, 'tags'>,
+): Omit<CompanyRecapRawProps, 'phone' | 'website' | 'barcodeProduct'> {
+  return {
+    siret: company.siret,
+    name: company.name,
+    commercialName: company.commercialName,
+    brand: buildBrandName(company),
+    address: company.address,
+    activityLabel: company.activityLabel,
+    isHeadOffice: company.isHeadOffice,
+    isGovernment: isGovernmentCompany(company),
+    specialLegislation: appliedSpecialLegislation(company, draft),
+    closed: !company.isOpen,
+  }
 }
 
-function Row({icon, children, variant}: {icon: string; variant?: 'blue' | 'error'} & ChildrenProps) {
-  const color = variant === 'blue' ? 'text-scbluefrance' : variant === 'error' ? 'text-red-500' : 'text-gray-500'
-  return (
-    <div className={`flex items-start mb-1 text-sm ${color} `}>
-      <i className={`${icon} mr-2 fr-icon--sm`} />
-      <div>{children}</div>
-    </div>
-  )
+function buildOtherFields(step2: Step2Model) {
+  switch (step2.kind) {
+    case 'phone':
+      return {
+        phone: step2.phone,
+      }
+    case 'website':
+      return {
+        website: step2.website,
+      }
+    case 'product':
+      return {
+        barcodeProduct: step2.barcodeProduct,
+      }
+    case 'basic':
+    case 'influencer':
+    case 'influencerOtherSocialNetwork':
+    case 'station':
+    case 'train':
+      return {}
+  }
 }

@@ -47,11 +47,6 @@ export const en = {
         title: 'Cookie Policy',
         description: 'About our Cookies Policy',
       },
-      appMobile: {
-        // TODO
-        title: '',
-        description: '',
-      },
       commentCaMarche: {
         title: 'How does it work? - SignalConso',
         description:
@@ -806,6 +801,7 @@ export const en = {
     trainTaken: 'Which train did you take, or did you want to take?',
     terRegion: 'Region concerned by your TER train',
     whichStation: 'Which station is concerned by your report?',
+    trainStation: 'Train station',
     foreignRailwayCompany: {
       DE: `Unfortunately, this is a German railway company. Please contact the relevant German authorities.`,
       ES: `Unfortunately, this is a Spanish railway company. Please contact <a href='https://www.transportes.gob.es/' target='_blank' rel='noopener noreferrer'>the relevant Spanish authorities.</a>`,

@@ -3,9 +3,7 @@ import {isSpecifyInputName, SpecifyFormUtils} from '@/components_feature/reportF
 import {getDraftReportInputs} from '@/components_feature/reportFlow/Details/draftReportInputs'
 import {DetailInput, DetailInputType} from '../anomalies/Anomaly'
 import {AppLang} from '../i18n/localization/AppLangs'
-import {DeepPartial, isoToFrenchFormat, notNull} from '../utils/utils'
-import {Address} from './Address'
-import {CompanyDraft} from './Company'
+import {isoToFrenchFormat, notNull} from '../utils/utils'
 import {DetailInputValue} from './CreatedReport'
 import {ReportDraft} from './ReportDraft'
 
@@ -92,28 +90,5 @@ export class ReportDraft2 {
         return {label, value: prepareValue(rawValue)}
       })
       .filter(notNull)
-  }
-
-  static readonly mergeCompanies = (base?: CompanyDraft, newValue?: DeepPartial<CompanyDraft>): CompanyDraft | undefined => {
-    if (newValue) {
-      return {
-        ...base,
-        ...(newValue as CompanyDraft),
-        address: {
-          ...base?.address,
-          ...(newValue.address as Address),
-        },
-      }
-    } else {
-      return base
-    }
-  }
-
-  static readonly merge = (base: Partial<ReportDraft2>, newValue: DeepPartial<ReportDraft2>): Partial<ReportDraft2> => {
-    return {
-      ...base,
-      ...(newValue as ReportDraft2),
-      companyDraft: ReportDraft2.mergeCompanies(base.companyDraft, newValue.companyDraft),
-    }
   }
 }

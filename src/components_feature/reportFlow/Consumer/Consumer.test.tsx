@@ -4,6 +4,7 @@
 import {dummyStepNavigation} from '@/components_feature/playgroundComponents/PlaygroundConfirmation'
 import {ReportDraft} from '@/model/ReportDraft'
 import {ReportDraft2} from '@/model/ReportDraft2'
+import {Step2Model} from '@/model/Step2Model'
 import {fireEvent, render, ScRenderResult, waitFor} from '../../../test/test-utils'
 import {ConsumerInner} from './Consumer'
 
@@ -16,6 +17,14 @@ class Fixture {
     referenceNumber: 'X8910H4LLIUK',
     gender: undefined,
   }
+}
+
+const step2: Step2Model = {
+  kind: 'basic',
+  companyIdentification: {
+    kind: 'consumerLocation',
+    consumerPostalCode: '75001',
+  },
 }
 
 describe('Consumer', () => {
@@ -45,6 +54,7 @@ describe('Consumer', () => {
         category: 'DemoCategory',
       },
       subcategoriesIndexes: [0],
+      step2,
       step4: {
         contactAgreement: true,
         consumer: Fixture.consumer,
@@ -101,6 +111,7 @@ describe('Consumer', () => {
       },
       employeeConsumer: true,
       subcategoriesIndexes: [0],
+      step2,
     }
 
     let submitted: ReportDraft['step4'] | undefined = undefined

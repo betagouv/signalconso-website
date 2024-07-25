@@ -9,7 +9,7 @@ import {PlaygroundOther} from '@/components_feature/playgroundComponents/Playgro
 import {ContentPageContainer} from '@/components_simple/PageContainers'
 
 import {BarcodeProduct} from '@/model/BarcodeProduct'
-import {CompanyDraft, CompanySearchResult} from '@/model/Company'
+import {CompanySearchResult} from '@/model/Company'
 import Button from '@codegouvfr/react-dsfr/Button'
 import Link from 'next/link'
 import {usePathname, useSearchParams} from 'next/navigation'
@@ -34,11 +34,8 @@ const companySearchResult: CompanySearchResult = {
   isMarketPlace: false,
 }
 
-const companyDraft: CompanyDraft = {
-  ...companySearchResult,
-  website: 'http://blabla.fr',
-  phone: '0987654321',
-}
+const website = 'http://blabla.fr'
+const phone = '0987654321'
 
 const barcodeProduct: BarcodeProduct = {
   id: '2edf6be3-b072-46b5-955e-a893bf23bf3b',
@@ -175,9 +172,40 @@ const Playground = () => {
       case 'company_station':
         return <PlaygroundCompany companyKind="STATION" />
       case 'companyFilled':
-        return <CompanyFilled draft={{companyDraft}} onClear={console.log} stepNavigation={dummyStepNavigation} />
+        return (
+          <CompanyFilled
+            draft={{
+              step2: {
+                kind: 'basic',
+                companyIdentification: {
+                  kind: 'companyFound',
+                  company: companySearchResult,
+                },
+              },
+              tags: [],
+            }}
+            onClear={console.log}
+            stepNavigation={dummyStepNavigation}
+          />
+        )
       case 'companyFilledWithProduct':
-        return <CompanyFilled draft={{companyDraft, barcodeProduct}} onClear={console.log} stepNavigation={dummyStepNavigation} />
+        return (
+          <CompanyFilled
+            draft={{
+              step2: {
+                kind: 'product',
+                companyIdentification: {
+                  kind: 'companyFound',
+                  company: companySearchResult,
+                },
+                barcodeProduct,
+              },
+              tags: [],
+            }}
+            onClear={console.log}
+            stepNavigation={dummyStepNavigation}
+          />
+        )
       case 'consumer':
         return <PlaygroundConsumer />
       case 'confirmation':

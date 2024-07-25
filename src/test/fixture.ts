@@ -2,9 +2,10 @@ import {allAnomalies} from '@/anomalies/Anomalies'
 import {AppLang} from '@/i18n/localization/AppLangs'
 import {BarcodeProduct} from '@/model/BarcodeProduct'
 import {getIndexForStep, ReportStep, reportSteps} from '@/model/ReportStep'
+import {Step2Model} from '@/model/Step2Model'
 import {InfoWall, reportTags, socialNetworks, Subcategory} from '../anomalies/Anomaly'
 import {Address, ApiAddress} from '../model/Address'
-import {CompanyDraft, CompanySearchResult, WebsiteCompanySearchResult} from '../model/Company'
+import {CompanySearchResult, WebsiteCompanySearchResult} from '../model/Company'
 import {CreatedReport} from '../model/CreatedReport'
 import {Influencer, ReportDraft} from '../model/ReportDraft'
 import {FileOrigin} from '../model/UploadedFile'
@@ -104,7 +105,7 @@ export class Fixture {
   ]
 
   static readonly genReport = (random: SeedableRandom = defaultRandom): CreatedReport => {
-    const company = Fixture.genCompanyDraft()
+    const company = Fixture.genCompanySearchResult(random)
     const subcategories = [Fixture.genSubcategory({}, random), Fixture.genSubcategory({}, random)]
     return {
       companyAddress: Fixture.genApiAddress(random),
@@ -117,6 +118,65 @@ export class Fixture {
         title: `Titre d'aide... vous voulez en savoir plus sur [le sujet du signalement] ?`,
         content: `Contenu d'aide... rendez-vous sur <a href=\"#" target=\"_blank\">les fiches pratiques de la DGCCRF</a>`,
       },
+    }
+  }
+
+  static readonly genStep2Station = (): Step2Model => {
+    return {
+      kind: 'station',
+      station: 'Gare de Lyon',
+    }
+  }
+
+  static readonly genStep2Train = (): Step2Model => {
+    return {
+      kind: 'train',
+      train: {
+        train: 'OUIGO',
+      },
+    }
+  }
+
+  static readonly genStep2TrainDeNuit = (): Step2Model => {
+    return {
+      kind: 'train',
+      train: {
+        train: 'TRAIN_DE_NUIT',
+        nightTrain: 'INTERCITE_DE_NUIT',
+      },
+    }
+  }
+
+  static readonly genStep2TrainTer = (): Step2Model => {
+    return {
+      kind: 'train',
+      train: {
+        train: 'TER',
+        ter: 'AUVERGNE_RHONE_ALPES',
+      },
+    }
+  }
+
+  static readonly genDraftReportStep2 = ({random = defaultRandom}: {random?: SeedableRandom}) => {
+    const lang = 'fr'
+    const anomaly = random.oneOf(allAnomalies(lang))
+    const category = anomaly.category
+    const step0: ReportDraft['step0'] = {
+      category,
+      lang,
+    }
+    const problemFields = {
+      consumerWish: 'fixContractualDispute',
+      subcategoriesIndexes: [0, 0],
+    }
+    const step2: ReportDraft['step2'] = {
+      kind: 'basic',
+      companyIdentification: {kind: 'companyFound', company: Fixture.genCompanySearchResult(random)},
+    }
+    return {
+      step0,
+      ...problemFields,
+      step2,
     }
   }
 
@@ -134,26 +194,32 @@ export class Fixture {
           step0: {category, lang: currentLang},
           consumerWish: random.oneOf(['fixContractualDispute', 'companyImprovement', 'getAnswer']),
           subcategoriesIndexes: [0, 0],
+          employeeConsumer: random.boolean(),
         }
       },
       BuildingCompany: _ => ({
         ..._,
-        employeeConsumer: random.boolean(),
-        uploadedFiles: [
-          {
-            filename: 'Captura de pantalla 2022-03-14 a las 18.40.21.png',
-            id: '8710d67d-d955-444d-b340-ee17c7b781e9',
-            loading: false,
-            origin: FileOrigin.Consumer,
+        step2: {
+          kind: 'product',
+          barcodeProduct: Fixture.genBarcodeProduct(random),
+          companyIdentification: {
+            kind: 'companyFound',
+            company: Fixture.genCompanySearchResult(random),
           },
-        ],
-        barcodeProduct: Fixture.genBarcodeProduct(random),
-        companyDraft: Fixture.genCompanyDraft(random),
+        },
       }),
       BuildingDetails: _ => ({
         ..._,
         step3: {
           details: Fixture.genDetails(random),
+          uploadedFiles: [
+            {
+              filename: 'Captura de pantalla 2022-03-14 a las 18.40.21.png',
+              id: '8710d67d-d955-444d-b340-ee17c7b781e9',
+              loading: false,
+              origin: FileOrigin.Consumer,
+            },
+          ],
         },
       }),
       BuildingConsumer: _ => ({
@@ -209,23 +275,6 @@ export class Fixture {
         },
       ],
       similarHosts: [],
-    }
-  }
-
-  static readonly genCompanyDraft = (random: SeedableRandom = defaultRandom) => {
-    return <CompanyDraft>{
-      id: random.string(),
-      name: random.string({capitalization: 'lowercase', charset: 'alphabetic', length: 8}),
-      brand: random.string({capitalization: 'lowercase', charset: 'alphabetic', length: 6}),
-      siret: random.siret(),
-      address: Fixture.genAddress(random),
-      isHeadOffice: random.boolean(),
-      isPublic: random.boolean(),
-      isOpen: random.boolean(),
-      website: 'https://www.website.com',
-      phone: random.phone(),
-      activityCode: '46.36B',
-      isMarketPlace: random.boolean(),
     }
   }
 

@@ -1,4 +1,4 @@
-import {toApiInfluencer} from '@/feature/reportDraftUtils'
+import {toApiInfluencer} from '@/feature/fromReportDraftToApi'
 import {SocialNetwork} from '../anomalies/Anomaly'
 import {Fixture} from '../test/fixture'
 
