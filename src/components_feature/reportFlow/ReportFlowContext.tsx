@@ -13,9 +13,15 @@ interface ReportFlowContextProps {
 
 const ReportFlowContext = React.createContext<ReportFlowContextProps>({} as ReportFlowContextProps)
 
-export const ReportFlowProvider = ({children}: {children: ReactNode}) => {
+export const ReportFlowProvider = ({
+  children,
+  initialReportForTests,
+}: {
+  children: ReactNode
+  initialReportForTests?: Partial<ReportDraft2>
+}) => {
   const _analytic = useAnalyticContext()
-  const [reportDraft, setReportDraft] = useState<Partial<ReportDraft2>>({})
+  const [reportDraft, setReportDraft] = useState<Partial<ReportDraft2>>(initialReportForTests ?? {})
   const currentStep = useRef<ReportStepOrDone | undefined>(undefined)
 
   /**

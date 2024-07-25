@@ -3,8 +3,7 @@ import {CompanySearchResult} from '@/model/Company'
 import {Influencer, ReportDraft} from '@/model/ReportDraft'
 import {ApiInfluencer, ApiReportDraft} from '@/model/reportsFromApi'
 import {CommonCompanyIdentification, ForeignWebsiteCompanyIdentification, Step2Model} from '@/model/Step2Model'
-import uniq from 'lodash/uniq'
-import {getAnomaly, getSubcategories} from './reportDraftUtils'
+import {getAnomaly, getSubcategories, getTags} from './reportDraftUtils'
 
 export const toApi = (draft: ReportDraft, metadata: ApiReportDraft['metadata']): ApiReportDraft => {
   const {
@@ -13,16 +12,8 @@ export const toApi = (draft: ReportDraft, metadata: ApiReportDraft['metadata']):
     step4: {contactAgreement, consumer},
     ccrfCode,
   } = draft
-  const anomaly = getAnomaly(draft)
   const subcategories = getSubcategories(draft)
-
-  const additionalTags: ReportTag[] = [
-    ...(consumerWish === 'fixContractualDispute' ? (['LitigeContractuel'] as const) : []),
-    ...(consumerWish === 'getAnswer' ? (['ReponseConso'] as const) : []),
-    ...specialCategoryTag(anomaly),
-  ]
-
-  const tags = uniq([...(draft.tags ?? []), ...additionalTags])
+  const tags = computeFinalTags(draft)
   return {
     // We don't use the rest syntax here ("..."),
     // we prefer to be sure to fill each field explicitely
@@ -47,6 +38,29 @@ export const toApi = (draft: ReportDraft, metadata: ApiReportDraft['metadata']):
     metadata,
     ...step2ToApi(draft.step2),
   }
+}
+
+function computeFinalTags(draft: ReportDraft): ReportTag[] {
+  const {companyKind, consumerWish} = draft
+  const tagsSet = new Set(getTags(draft))
+  if (companyKind === 'WEBSITE' || companyKind === 'MERCHANT_WEBSITE' || companyKind === 'TRANSPORTER_WEBSITE') {
+    tagsSet.add('Internet')
+  }
+  if (consumerWish === 'fixContractualDispute') {
+    tagsSet.add('LitigeContractuel')
+  }
+  if (consumerWish === 'getAnswer') {
+    tagsSet.add('ReponseConso')
+  } else {
+    // ReponseConso was set in the arbo to offer the choice
+    // but the user didn't pick it
+    tagsSet.delete('ReponseConso')
+  }
+  const special = specialCategoryTag(getAnomaly(draft))
+  if (special) {
+    tagsSet.add(special)
+  }
+  return Array.from(tagsSet)
 }
 
 const toApiSocialNetwork = (socialNetwork: SocialNetwork): string | undefined => {
@@ -80,14 +94,14 @@ export const toApiInfluencer = (influencer: Influencer): ApiInfluencer => {
   }
 }
 
-const specialCategoryTag = (anomaly: Anomaly): ReportTag[] => {
+const specialCategoryTag = (anomaly: Anomaly): ReportTag | undefined => {
   switch (anomaly.specialCategory) {
     case 'OpenFoodFacts':
-      return ['OpenFoodFacts']
+      return 'OpenFoodFacts'
     case 'RappelConso':
-      return ['RappelConso']
+      return 'RappelConso'
     default:
-      return []
+      return undefined
   }
 }
 

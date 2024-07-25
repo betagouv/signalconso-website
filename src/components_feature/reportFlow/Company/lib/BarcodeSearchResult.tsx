@@ -1,6 +1,7 @@
 import {SpecificProductCompanyKind} from '@/anomalies/Anomaly'
 import {CompanyRecapFromSearchResult} from '@/components_simple/CompanyRecap/CompanyRecap'
 import {ProductRecap} from '@/components_simple/CompanyRecap/ProductRecap'
+import {getTags} from '@/feature/reportDraftUtils'
 import {ReportDraft2} from '@/model/ReportDraft2'
 import {ReactNode} from 'react'
 import {BtnNext} from '../../../../components_simple/buttons/Buttons'
@@ -12,7 +13,7 @@ import {NoSearchResult} from './NoSearchResult'
 interface BarcodeSearchResultPros {
   product?: BarcodeProduct
   company?: CompanySearchResult
-  reportDraft: Partial<ReportDraft2>
+  reportDraft: Pick<ReportDraft2, 'subcategoriesIndexes' | 'step0'>
   onSubmit: (selected: CompanySearchResult, product: BarcodeProduct) => void
   noResultsPanel?: ReactNode
   specificProductCompanyKinds: SpecificProductCompanyKind
@@ -46,7 +47,7 @@ export const BarcodeSearchResult = ({
               </div>
               <div className="ml-4">
                 {company ? (
-                  <CompanyRecapFromSearchResult company={company} draft={reportDraft} />
+                  <CompanyRecapFromSearchResult company={company} tags={getTags(reportDraft)} />
                 ) : (
                   <p className="text-gray-600">{m.barcodeNoCompanyFound}</p>
                 )}

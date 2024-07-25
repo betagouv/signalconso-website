@@ -175,6 +175,10 @@ const Playground = () => {
         return (
           <CompanyFilled
             draft={{
+              step0: {
+                category: 'DemoCategory',
+                lang: 'fr',
+              },
               step2: {
                 kind: 'basic',
                 companyIdentification: {
@@ -182,7 +186,7 @@ const Playground = () => {
                   company: companySearchResult,
                 },
               },
-              tags: [],
+              subcategoriesIndexes: [0, 0],
             }}
             onClear={console.log}
             stepNavigation={dummyStepNavigation}
@@ -192,6 +196,10 @@ const Playground = () => {
         return (
           <CompanyFilled
             draft={{
+              step0: {
+                category: 'DemoCategory',
+                lang: 'fr',
+              },
               step2: {
                 kind: 'product',
                 companyIdentification: {
@@ -200,7 +208,7 @@ const Playground = () => {
                 },
                 barcodeProduct,
               },
-              tags: [],
+              subcategoriesIndexes: [0, 0],
             }}
             onClear={console.log}
             stepNavigation={dummyStepNavigation}

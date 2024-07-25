@@ -5,7 +5,7 @@ import {CompanyIdentificationDispatch} from '../reportFlow/Company/Company'
 
 interface PlaygroundCompanyProps {
   companyKind?: CompanyKind
-  partialReportDraft?: Partial<ReportDraft2>
+  partialReportDraft?: Pick<ReportDraft2, 'openFf'>
 }
 
 export const PlaygroundCompany = ({companyKind = 'SIRET', partialReportDraft = {}}: PlaygroundCompanyProps) => {
@@ -15,6 +15,11 @@ export const PlaygroundCompany = ({companyKind = 'SIRET', partialReportDraft = {
     <>
       <CompanyIdentificationDispatch
         draft={{
+          step0: {
+            category: 'DemoCategory',
+            lang: 'fr',
+          },
+          subcategoriesIndexes: [0, 0],
           ...partialReportDraft,
           companyKind,
         }}

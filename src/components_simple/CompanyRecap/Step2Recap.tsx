@@ -10,7 +10,7 @@ export function Step2Recap({step2, tags}: {step2: Step2Model; tags: ReportTag[]}
     case 'phone':
     case 'website':
     case 'product':
-      return <CompanyRecapFromStep2 draft={{step2, tags}} />
+      return <CompanyRecapFromStep2 {...{step2, tags}} />
     case 'train': {
       const {train, nightTrain, ter} = step2.train
       return (

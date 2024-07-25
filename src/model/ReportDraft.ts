@@ -1,4 +1,4 @@
-import {CompanyKind, NightTrain, ReportTag, SocialNetwork, Ter, Train} from '@/anomalies/Anomaly'
+import {CompanyKind, NightTrain, SocialNetwork, Ter, Train} from '@/anomalies/Anomaly'
 import {OpenFfResult} from '@/feature/openFoodFacts'
 import {RappelConsoResult} from '@/feature/rappelConso'
 import {AppLang} from '@/i18n/localization/AppLangs'
@@ -36,7 +36,6 @@ export interface ReportDraft {
   employeeConsumer?: boolean
   ccrfCode?: string[]
   reponseconsoCode?: string
-  tags?: ReportTag[]
   consumerWish?: ConsumerWish
   companyKind?: CompanyKind
   openFf?: OpenFfResult

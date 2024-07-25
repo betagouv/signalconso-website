@@ -46,7 +46,7 @@ const AllTheProviders =
           _ => <ApiClientsProvider children={_} overrideForTests={apiClientsOverrides} />,
           _ => <I18nProvider lang={AppLangs.fr} children={_} />,
           _ => <ReportCreateProvider children={_} />,
-          _ => <ReportFlowProvider children={_} />,
+          _ => <ReportFlowProvider children={_} initialReportForTests={options?.initialReport} />,
           _ => <AutoscrollProvider children={_} />,
         ]}
       >
@@ -72,6 +72,7 @@ export const AccessReportFlow = ({
 interface Options {
   signalConsoApiClient?: DeepPartial<SignalConsoApiClient>
   companyApiClient?: DeepPartial<CompanyPublicClient>
+  initialReport?: Partial<ReportDraft2>
 }
 
 export interface ScRenderResult extends RenderResult {

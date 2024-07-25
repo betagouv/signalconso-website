@@ -6,7 +6,14 @@ import {FriendlyHelpText} from '@/components_simple/FriendlyHelpText'
 import {RequiredFieldsLegend} from '@/components_simple/RequiredFieldsLegend'
 import {ReportFiles} from '@/components_simple/reportFile/ReportFiles'
 import {appConfig} from '@/core/appConfig'
-import {getSubcategories, getTransmissionStatus, hasStep0, hasStep2, hasSubcategoryIndexes} from '@/feature/reportDraftUtils'
+import {
+  getSubcategories,
+  getTags,
+  getTransmissionStatus,
+  hasStep0,
+  hasStep2,
+  hasSubcategoryIndexes,
+} from '@/feature/reportDraftUtils'
 import {useI18n} from '@/i18n/I18n'
 import {DetailInputValues2} from '@/model/ReportDraft2'
 import {fnSwitch} from '@/utils/FnSwitch'
@@ -37,9 +44,12 @@ export const Details = ({stepNavigation}: {stepNavigation: StepNavigation}) => {
   const _analytic = useAnalyticContext()
   const {currentLang} = useI18n()
   const draft = _reportFlow.reportDraft
+  if (!hasStep0(draft) || !hasSubcategoryIndexes(draft)) {
+    throw new Error(`The draft is not ready to display Details step`)
+  }
   const inputs = useMemo(() => {
     return getDraftReportInputs(draft, currentLang)
-  }, [draft.subcategoriesIndexes, draft.tags, draft.consumerWish])
+  }, [draft.subcategoriesIndexes, getTags(draft), draft.consumerWish])
 
   if (!inputs || draft.employeeConsumer === undefined || !hasStep0(draft) || !hasSubcategoryIndexes(draft) || !hasStep2(draft)) {
     throw new Error(`Details step should not be accessible ${draft.employeeConsumer} - ${JSON.stringify(inputs)}`)
@@ -54,7 +64,7 @@ export const Details = ({stepNavigation}: {stepNavigation: StepNavigation}) => {
       inputs={inputs}
       fileLabel={lastSubcategory.fileLabel}
       employeeConsumer={draft.employeeConsumer}
-      tags={draft.tags ?? []}
+      tags={getTags(draft)}
       onSubmit={(detailInputValues, uploadedFiles) => {
         _reportFlow.setReportDraft(_ => ({..._, step3: {uploadedFiles, details: detailInputValues}}))
         _reportFlow.sendReportEvent(stepNavigation.currentStep)

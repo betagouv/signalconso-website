@@ -7,6 +7,7 @@ import {OpenFfWelcomeText, useOpenFfSetup} from '@/feature/openFoodFacts'
 import {RappelConsoWelcome, useRappelConsoSetup} from '@/feature/rappelConso'
 import {
   getSubcategories,
+  getTags,
   hasStep0,
   hasSubcategoryIndexes,
   isTransmittableToProBeforePickingConsumerWish,
@@ -17,7 +18,7 @@ import {ReportDraft2} from '@/model/ReportDraft2'
 import {Step2Model} from '@/model/Step2Model'
 import {useEffect, useMemo} from 'react'
 import {instanceOfSubcategoryWithInfoWall} from '../../../anomalies/Anomalies'
-import {Anomaly, CompanyKind, ReportTag, Subcategory} from '../../../anomalies/Anomaly'
+import {Anomaly, CompanyKind} from '../../../anomalies/Anomaly'
 import {AppLang} from '../../../i18n/localization/AppLangs'
 import {useReportFlowContext} from '../ReportFlowContext'
 import {ProblemConsumerWishInformation} from './ProblemConsumerWishInformation'
@@ -32,26 +33,6 @@ interface Props {
   stepNavigation: StepNavigation
 }
 
-function buildTagsFromSubcategories(anomaly: Anomaly, subcategories: Subcategory[]) {
-  return computeSelectedSubcategoriesData(anomaly, subcategories).tagsFromSelected
-}
-
-function adjustTagsBeforeSubmit(draft: Partial<ReportDraft2>, companyKindFromSelected: CompanyKind | undefined): ReportTag[] {
-  let res = draft.tags ?? []
-  if (
-    companyKindFromSelected === 'WEBSITE' ||
-    draft.companyKind === 'WEBSITE' ||
-    draft.companyKind === 'MERCHANT_WEBSITE' ||
-    draft.companyKind === 'TRANSPORTER_WEBSITE'
-  ) {
-    res = [...res, 'Internet']
-  }
-  // This tag is used in the arborescence only to offer the choice of 'getAnswer'
-  // If selected, the tag will be added back just before submitting to the API
-  res = res.filter(_ => _ !== 'ReponseConso')
-  return res
-}
-
 export function initiateReportDraftForAnomaly(anomaly: Anomaly, lang: AppLang): Partial<ReportDraft2> {
   return {
     step0: {category: anomaly.category, lang},
@@ -60,7 +41,6 @@ export function initiateReportDraftForAnomaly(anomaly: Anomaly, lang: AppLang): 
 }
 
 export function adjustReportDraftAfterSubcategoriesChange(
-  anomaly: Anomaly,
   report: Partial<ReportDraft2>,
   subcategoryIndex: number,
   subcategoryDepthIndex: number,
@@ -73,7 +53,6 @@ export function adjustReportDraftAfterSubcategoriesChange(
     ...report,
     subcategoriesIndexes: newSubcategoriesIndexes,
   })
-  const tags = buildTagsFromSubcategories(anomaly, newSubcategories)
   //Recompute company kind based on current report selected subcategories
   const lastCategoryCompanyKind = newSubcategories
     .map(_ => _.companyKind)
@@ -83,7 +62,6 @@ export function adjustReportDraftAfterSubcategoriesChange(
   return {
     ...report,
     subcategoriesIndexes: newSubcategoriesIndexes,
-    tags,
     companyKind: lastCategoryCompanyKind,
     step2: undefined,
     // Category has changed, user need to reconfirm consumerWish & employeeConsumer because :
@@ -94,23 +72,38 @@ export function adjustReportDraftAfterSubcategoriesChange(
   }
 }
 
-export const Problem = ({anomaly, isWebView, stepNavigation}: Props) => {
-  const _analytic = useAnalyticContext()
+export function Problem({anomaly, isWebView, stepNavigation}: Props) {
+  const {reportDraft, setReportDraft, resetFlow} = useReportFlowContext()
   const {m, currentLang} = useI18n()
-  const {reportDraft, setReportDraft, resetFlow, sendReportEvent} = useReportFlowContext()
-  const subcategories = hasStep0(reportDraft) && hasSubcategoryIndexes(reportDraft) ? getSubcategories(reportDraft) : []
-  const hasReponseConsoSubcategories = buildTagsFromSubcategories(anomaly, subcategories).includes('ReponseConso')
-  const openFfSetup = useOpenFfSetup(anomaly)
-  const rappelConsoSetup = useRappelConsoSetup(anomaly)
-
-  // reset the draft when switching the root category
+  const _analytic = useAnalyticContext()
+  const isReportInitializedForAnomaly = hasStep0(reportDraft) && anomaly.category === reportDraft.step0.category
   useEffect(() => {
-    if (anomaly.category !== reportDraft.step0?.category) {
+    if (!isReportInitializedForAnomaly) {
       _analytic.trackEvent(EventCategories.report, ReportEventActions.validateCategory, anomaly.category)
       resetFlow()
       setReportDraft(_ => initiateReportDraftForAnomaly(anomaly, currentLang))
     }
-  }, [anomaly.category])
+  }, [isReportInitializedForAnomaly, setReportDraft, anomaly, currentLang, _analytic, resetFlow])
+
+  if (!isReportInitializedForAnomaly) {
+    return null
+  }
+  return <ProblemInitialized {...{anomaly, isWebView, stepNavigation}} />
+}
+
+const ProblemInitialized = ({anomaly, isWebView, stepNavigation}: Props) => {
+  const _analytic = useAnalyticContext()
+  const {m} = useI18n()
+  const {reportDraft, setReportDraft, sendReportEvent} = useReportFlowContext()
+  if (!hasStep0(reportDraft)) {
+    throw new Error('ReportDraft should have a lang and a category already (in Problem)')
+  }
+  const subcategories = hasSubcategoryIndexes(reportDraft) ? getSubcategories(reportDraft) : []
+  const tags = hasSubcategoryIndexes(reportDraft) ? getTags(reportDraft) : []
+  const hasTagProduitDangereux = tags.includes('ProduitDangereux')
+  const hasReponseConsoSubcategories = tags.includes('ReponseConso')
+  const openFfSetup = useOpenFfSetup(anomaly)
+  const rappelConsoSetup = useRappelConsoSetup(anomaly)
 
   useEffect(() => {
     // when we come from openFf and we get the async data
@@ -169,7 +162,6 @@ export const Problem = ({anomaly, isWebView, stepNavigation}: Props) => {
         ...draft,
         ccrfCode: ccrfCodeFromSelected,
         reponseconsoCode: responseconsoCodeFromSelected,
-        tags: adjustTagsBeforeSubmit(draft, companyKindFromSelected),
         companyKind,
         consumerWish,
         employeeConsumer,
@@ -185,12 +177,11 @@ export const Problem = ({anomaly, isWebView, stepNavigation}: Props) => {
 
   const handleSubcategoriesChange = (subcategoryIndex: number, subcategoryDepthIndex: number) => {
     setReportDraft(report => {
-      return adjustReportDraftAfterSubcategoriesChange(anomaly, report, subcategoryIndex, subcategoryDepthIndex)
+      return adjustReportDraftAfterSubcategoriesChange(report, subcategoryIndex, subcategoryDepthIndex)
     })
   }
 
   const specialCategoryNotLoading = openFfSetup.status !== 'loading' && rappelConsoSetup.status !== 'loading'
-  const tags = reportDraft.tags ?? []
   return (
     <>
       <OpenFfWelcomeText setup={openFfSetup} />
@@ -279,7 +270,7 @@ export const Problem = ({anomaly, isWebView, stepNavigation}: Props) => {
                         },
                         {
                           title: m.problemIsInternetCompanyNo,
-                          value: tags.indexOf('ProduitDangereux') === -1 ? 'SIRET' : 'LOCATION',
+                          value: hasTagProduitDangereux ? 'LOCATION' : 'SIRET',
                         },
                       ]}
                     />

@@ -6,7 +6,7 @@ import {Animate} from '@/components_simple/Animate'
 import {Step2Recap} from '@/components_simple/CompanyRecap/Step2Recap'
 import {FriendlyHelpText} from '@/components_simple/FriendlyHelpText'
 import {ReportFilesConfirmation} from '@/components_simple/reportFile/ReportFilesConfirmation'
-import {getAnomaly, getSubcategories, getTransmissionStatus} from '@/feature/reportDraftUtils'
+import {getAnomaly, getSubcategories, getTags, getTransmissionStatus} from '@/feature/reportDraftUtils'
 import {getApiErrorId, useToastError} from '@/hooks/useToastError'
 import {useI18n} from '@/i18n/I18n'
 import {ReportDraft2} from '@/model/ReportDraft2'
@@ -159,7 +159,7 @@ function RenderEachStep({
         default:
           return (
             <ConfirmationStep title={m.step_company} {...{goToStep, index}}>
-              <Step2Recap {...{step2, tags: draft.tags ?? []}} />
+              <Step2Recap {...{step2, tags: getTags(draft)}} />
             </ConfirmationStep>
           )
       }
