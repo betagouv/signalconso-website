@@ -47,11 +47,6 @@ export const fr = {
         title: 'Politique de cookies',
         description: 'Description de la politique de cookies',
       },
-      appMobile: {
-        // TODO
-        title: '',
-        description: '',
-      },
       commentCaMarche: {
         title: 'Comment ça marche ? - SignalConso',
         description:

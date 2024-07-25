@@ -47,11 +47,6 @@ export const en = {
         title: 'Cookie Policy',
         description: 'About our Cookies Policy',
       },
-      appMobile: {
-        // TODO
-        title: '',
-        description: '',
-      },
       commentCaMarche: {
         title: 'How does it work? - SignalConso',
         description:

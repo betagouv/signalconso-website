@@ -156,7 +156,6 @@ export const Problem = ({anomaly, isWebView, stepNavigation}: Props) => {
       // In the openFf scenario
       // Only if we got all the data, then we build the company/product from it.
       // If we only have partial data, then we will build it in step 2.
-      // TODO revoir si c'est la bonne approche
       const step2: Step2Model | undefined =
         draft.openFf && draft.openFf.product && draft.openFf.company
           ? {
