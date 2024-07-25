@@ -1,0 +1,17 @@
+title: Remise non sollicitée d"échantillons
+tags:
+  - TransitionEcologique
+  - ReponseConso
+companyKind: WEBSITE
+detailInputs:
+  - label: Date d'achat
+    type: DATE
+  - label: Date du constat
+    type: DATE
+    defaultValue: SYSDATE
+  - label: Type de produit d"échantillons
+    type: TEXT
+  - label: Nom / marque / référence
+    type: TEXT
+  - label: Description
+    type: TEXTAREA

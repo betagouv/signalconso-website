@@ -1,0 +1,7 @@
+title: Objet rappelé mais encore en vente sur le site
+desc: 'Exemple : jouet, électroménager, vêtement, savon, vaisselle, meuble'
+tags:
+  - ProduitDangereux
+  - ProduitIndustriel
+subcategories:
+  customimport: _imports/subcategories/objet
