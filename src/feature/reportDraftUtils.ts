@@ -1,5 +1,5 @@
 import {findAnomaly} from '@/anomalies/Anomalies'
-import {ReportTag, Subcategory} from '@/anomalies/Anomaly'
+import {CompanyKind, ReportTag, Subcategory} from '@/anomalies/Anomaly'
 import {computeSelectedSubcategoriesData} from '@/components_feature/reportFlow/Problem/useSelectedSubcategoriesData'
 import {ReportDraft, TransmissionStatus} from '@/model/ReportDraft'
 import {ReportDraft2} from '@/model/ReportDraft2'
@@ -47,6 +47,29 @@ export const getTags = (r: Pick<ReportDraft, 'subcategoriesIndexes' | 'step0'>):
   const anomaly = getAnomaly(r)
   const {tagsFromSelected} = computeSelectedSubcategoriesData(anomaly, subcategories)
   return tagsFromSelected
+}
+
+export const getCompanyKind = (r: Pick<ReportDraft, 'step0' | 'subcategoriesIndexes' | 'companyKindOverride'>): CompanyKind => {
+  const {companyKindOverride} = r
+  return companyKindOverride ? companyKindOverride : getWipCompanyKindFromSelected(r) ?? 'SIRET'
+}
+
+// Returns the company kind for a WIP draft during step1
+// - the subcategories may not all be picked
+// - we do not apply the companyKindOverride
+// - we may return undefined if the selected subcategories have no CompanyKind
+//   (we do not apply a default CompanyKind value yet)
+export const getWipCompanyKindFromSelected = (
+  r: Pick<ReportDraft, 'step0'> & Partial<Pick<ReportDraft, 'subcategoriesIndexes' | 'companyKindOverride'>>,
+): CompanyKind | undefined => {
+  const {specialCategory} = getAnomaly(r)
+  return specialCategory === 'OpenFoodFacts'
+    ? 'PRODUCT_OPENFF'
+    : specialCategory === 'RappelConso'
+      ? 'PRODUCT_RAPPEL_CONSO'
+      : hasSubcategoryIndexes(r)
+        ? [...getSubcategories(r)].reverse().find(_ => !!_.companyKind)?.companyKind
+        : undefined
 }
 
 export const isTransmittableToPro = (r: Pick<ReportDraft, 'employeeConsumer' | 'consumerWish'>): boolean => {

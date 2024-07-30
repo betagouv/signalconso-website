@@ -1,4 +1,5 @@
 import {Anomaly} from '@/anomalies/Anomaly'
+import {SetReportDraft} from '@/components_feature/reportFlow/ReportFlowContext'
 import {buildCompanyName} from '@/components_simple/CompanyRecap/companyNameUtils'
 import {BlueBanner} from '@/feature/BlueBanner'
 import {Loader} from '@/feature/Loader'
@@ -8,7 +9,7 @@ import {BarcodeProduct} from '@/model/BarcodeProduct'
 import {CompanySearchResult} from '@/model/Company'
 import {ReportDraft2} from '@/model/ReportDraft2'
 import {useSearchParams} from 'next/navigation'
-import {useMemo} from 'react'
+import {useEffect, useMemo} from 'react'
 
 const OPENFOODFACTS_BARCODE_PARAM = 'gtin'
 
@@ -45,6 +46,17 @@ export function useOpenFfSetup(anomaly: Anomaly): SpecialCategorySetup<OpenFfRes
     // or we are, but ended up in an error case somehow. Let's forget about it.
     return {status: 'skipped'}
   }, [barcode, _query.data, _query.status])
+}
+
+export function useOpenFfSetupLoaded(setup: SpecialCategorySetup<OpenFfResult>, setReportDraft: SetReportDraft) {
+  useEffect(() => {
+    if (setup.status === 'loaded') {
+      setReportDraft(_ => ({
+        ..._,
+        openFf: setup.result,
+      }))
+    }
+  }, [setup, setReportDraft])
 }
 
 function useBarcodeParam(anomaly: Anomaly) {

@@ -91,8 +91,7 @@ describe('Details: single date not in future', () => {
               category: 'DemoCategory',
               lang: 'fr',
             },
-            subcategoriesIndexes: [0, 0],
-            companyKind: 'LOCATION',
+            subcategoriesIndexes: [5, 5], // this has LOCATION
           }}
           updateReport={step2 => {
             draft = {...draft, step2}

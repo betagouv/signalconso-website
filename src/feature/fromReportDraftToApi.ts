@@ -3,7 +3,7 @@ import {CompanySearchResult} from '@/model/Company'
 import {Influencer, ReportDraft} from '@/model/ReportDraft'
 import {ApiInfluencer, ApiReportDraft} from '@/model/reportsFromApi'
 import {CommonCompanyIdentification, ForeignWebsiteCompanyIdentification, Step2Model} from '@/model/Step2Model'
-import {getAnomaly, getSubcategories, getTags} from './reportDraftUtils'
+import {getAnomaly, getCompanyKind, getSubcategories, getTags} from './reportDraftUtils'
 
 export const toApi = (draft: ReportDraft, metadata: ApiReportDraft['metadata']): ApiReportDraft => {
   const {
@@ -41,7 +41,8 @@ export const toApi = (draft: ReportDraft, metadata: ApiReportDraft['metadata']):
 }
 
 function computeFinalTags(draft: ReportDraft): ReportTag[] {
-  const {companyKind, consumerWish} = draft
+  const {consumerWish} = draft
+  const companyKind = getCompanyKind(draft)
   const tagsSet = new Set(getTags(draft))
   if (companyKind === 'WEBSITE' || companyKind === 'MERCHANT_WEBSITE' || companyKind === 'TRANSPORTER_WEBSITE') {
     tagsSet.add('Internet')
