@@ -78,7 +78,7 @@ function ProblemInner({anomaly, isWebView, stepNavigation}: Props) {
 
   function onFinalSubmit(next: () => void): void {
     setReportDraft(draft => {
-      const {ccrfCode, categoryOverride} = computeSelectedSubcategoriesData(anomaly, subcategories)
+      const {categoryOverride} = computeSelectedSubcategoriesData(anomaly, subcategories)
       // In the openFf scenario
       // Only if we got all the data, then we build the company/product from it.
       // If we only have partial data, then we will build it in step 2.
@@ -92,7 +92,6 @@ function ProblemInner({anomaly, isWebView, stepNavigation}: Props) {
           : draft.step2
       return {
         ...draft,
-        ccrfCode,
         categoryOverride,
         consumerWish: askConsumerWish ? draft.consumerWish : 'companyImprovement',
         employeeConsumer: predeterminedEmployeeConsumer ?? draft.employeeConsumer,
