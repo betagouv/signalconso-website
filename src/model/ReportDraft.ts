@@ -36,7 +36,6 @@ export interface ReportDraft {
   // pretty sure some of these fields aren't actually optional in the draft
   employeeConsumer?: boolean
   ccrfCode?: string[]
-  reponseconsoCode?: string
   consumerWish?: ConsumerWish
   openFf?: OpenFfResult
   rappelConso?: RappelConsoResult

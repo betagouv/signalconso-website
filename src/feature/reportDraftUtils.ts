@@ -54,6 +54,10 @@ export const getCompanyKind = (r: Pick<ReportDraft, 'step0' | 'subcategoriesInde
   return companyKindOverride ? companyKindOverride : getWipCompanyKindFromSelected(r) ?? 'SIRET'
 }
 
+export const getReponseConsoCode = (r: Pick<ReportDraft, 'step0' | 'subcategoriesIndexes'>) => {
+  return computeSelectedSubcategoriesData(getAnomaly(r), getSubcategories(r)).reponseconsoCode
+}
+
 // Returns the company kind for a WIP draft during step1
 // - the subcategories may not all be picked
 // - we do not apply the companyKindOverride

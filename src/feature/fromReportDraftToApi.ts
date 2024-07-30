@@ -3,15 +3,16 @@ import {CompanySearchResult} from '@/model/Company'
 import {Influencer, ReportDraft} from '@/model/ReportDraft'
 import {ApiInfluencer, ApiReportDraft} from '@/model/reportsFromApi'
 import {CommonCompanyIdentification, ForeignWebsiteCompanyIdentification, Step2Model} from '@/model/Step2Model'
-import {getAnomaly, getCompanyKind, getSubcategories, getTags} from './reportDraftUtils'
+import {getAnomaly, getCompanyKind, getReponseConsoCode, getSubcategories, getTags} from './reportDraftUtils'
 
 export const toApi = (draft: ReportDraft, metadata: ApiReportDraft['metadata']): ApiReportDraft => {
   const {
     consumerWish,
-    reponseconsoCode,
+
     step4: {contactAgreement, consumer},
     ccrfCode,
   } = draft
+  const reponseconsoCode = getReponseConsoCode(draft)
   const subcategories = getSubcategories(draft)
   const tags = computeFinalTags(draft)
   return {
