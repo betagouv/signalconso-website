@@ -1,8 +1,8 @@
 import {findAnomaly} from '@/anomalies/Anomalies'
 import {CompanyKind, ReportTag, Subcategory} from '@/anomalies/Anomaly'
-import {computeSelectedSubcategoriesData} from '@/components_feature/reportFlow/Problem/useSelectedSubcategoriesData'
 import {ReportDraft, TransmissionStatus} from '@/model/ReportDraft'
 import {ReportDraft2} from '@/model/ReportDraft2'
+import {lastFromArray, notUndefined} from '@/utils/utils'
 
 export function hasStep0(r: Partial<ReportDraft2>): r is Pick<ReportDraft, 'step0'> & Partial<ReportDraft2> {
   return !!r.step0
@@ -43,15 +43,31 @@ export const getSubcategories = (r: Pick<ReportDraft, 'subcategoriesIndexes' | '
 }
 
 export const getTags = (r: Pick<ReportDraft, 'subcategoriesIndexes' | 'step0'>): ReportTag[] => {
-  const subcategories = getSubcategories(r)
-  const anomaly = getAnomaly(r)
-  const {tagsFromSelected} = computeSelectedSubcategoriesData(anomaly, subcategories)
-  return tagsFromSelected
+  return getSubcategories(r).flatMap(_ => _.tags ?? [])
 }
 
 export const getCompanyKind = (r: Pick<ReportDraft, 'step0' | 'subcategoriesIndexes' | 'companyKindOverride'>): CompanyKind => {
   const {companyKindOverride} = r
   return companyKindOverride ? companyKindOverride : getWipCompanyKindFromSelected(r) ?? 'SIRET'
+}
+
+export const getReponseConsoCode = (r: Pick<ReportDraft, 'step0' | 'subcategoriesIndexes'>) => {
+  // 2023-12 ReponseConso says we should not send them multiple reponseConso codes, it breaks something for them
+  // We should send only one code maximum, and it doesn't really matter which one
+  return lastFromArray(
+    getSubcategories(r)
+      .map(_ => _.reponseconsoCode)
+      .filter(notUndefined),
+  )
+}
+
+export const getCcrfCode = (r: Pick<ReportDraft, 'step0' | 'subcategoriesIndexes'>) => {
+  const codes = getSubcategories(r).flatMap(_ => _.ccrfCode ?? [])
+  return Array.from(new Set(codes))
+}
+
+export const getCategoryOverride = (r: Pick<ReportDraft, 'step0' | 'subcategoriesIndexes'>) => {
+  return [...getSubcategories(r)].reverse().find(_ => !!_.categoryOverride)?.categoryOverride
 }
 
 // Returns the company kind for a WIP draft during step1
