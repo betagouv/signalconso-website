@@ -14,17 +14,15 @@ import {
   isTransmittableToProBeforePickingConsumerWish,
 } from '@/feature/reportDraftUtils'
 import {useI18n} from '@/i18n/I18n'
-import {initiateReportDraft, ReportDraft2} from '@/model/ReportDraft2'
+import {initiateReportDraft} from '@/model/ReportDraft2'
 import {Step2Model} from '@/model/Step2Model'
 import {useEffect} from 'react'
-import {instanceOfSubcategoryWithInfoWall} from '../../../anomalies/Anomalies'
 import {Anomaly} from '../../../anomalies/Anomaly'
 import {useReportFlowContext} from '../ReportFlowContext'
 import {ProblemCompanyKindOverride} from './ProblemCompanyKindOverride'
 import {ProblemConsumerWish} from './ProblemConsumerWish'
 import {ProblemEmployeeConsumer} from './ProblemEmployeeConsumer'
-import {ProblemInformation} from './ProblemInformation'
-import {ProblemSelect} from './ProblemSelect'
+import {ProblemSubcategories} from './ProblemSubcategories'
 import {computeSelectedSubcategoriesData} from './useSelectedSubcategoriesData'
 
 interface Props {
@@ -52,8 +50,6 @@ export function Problem({anomaly, isWebView, stepNavigation}: Props) {
 }
 
 function ProblemInner({anomaly, isWebView, stepNavigation}: Props) {
-  const _analytic = useAnalyticContext()
-  const {m} = useI18n()
   const {reportDraft, setReportDraft, sendReportEvent} = useReportFlowContext()
   const openFfSetup = useOpenFfSetup(anomaly)
   const rappelConsoSetup = useRappelConsoSetup(anomaly)
@@ -98,12 +94,6 @@ function ProblemInner({anomaly, isWebView, stepNavigation}: Props) {
     next()
   }
 
-  const handleSubcategoriesChange = (subcategoryIndex: number, subcategoryDepthIndex: number) => {
-    setReportDraft(report => {
-      return applySubcategoriesChange(report, subcategoryIndex, subcategoryDepthIndex)
-    })
-  }
-
   const specialCategoryNotLoading = openFfSetup.status !== 'loading' && rappelConsoSetup.status !== 'loading'
   return (
     <>
@@ -111,34 +101,8 @@ function ProblemInner({anomaly, isWebView, stepNavigation}: Props) {
       <RappelConsoWelcome setup={rappelConsoSetup} />
       {specialCategoryNotLoading && (
         <>
-          {[anomaly, ...subcategories].map(
-            (category, subcategoryDepthIdx) =>
-              category.subcategories && (
-                <ProblemSelect
-                  autoScrollTo={subcategoryDepthIdx !== 0}
-                  key={category.id}
-                  title={category.subcategoriesTitle}
-                  value={subcategories[subcategoryDepthIdx]?.id}
-                  onChange={id =>
-                    handleSubcategoriesChange(category.subcategories?.findIndex(_ => _.id === id)!, subcategoryDepthIdx)
-                  }
-                  options={(category.subcategories ?? []).map((_, i) => ({
-                    title: _.title,
-                    description: _.desc,
-                    value: _.id,
-                  }))}
-                />
-              ),
-          )}
-          {isLastSubcategory &&
-            (instanceOfSubcategoryWithInfoWall(lastSubcategories) ? (
-              <ProblemInformation
-                anomaly={anomaly}
-                subcategories={subcategories}
-                information={lastSubcategories.blockingInfo}
-                {...{isWebView}}
-              />
-            ) : (
+          <ProblemSubcategories {...{anomaly, isLastSubcategory, isWebView, lastSubcategories, subcategories}}>
+            {() => (
               <ProblemEmployeeConsumer {...{predeterminedEmployeeConsumer}}>
                 {() => (
                   <ProblemCompanyKindOverride {...{companyKindBeforeOverride, companyKindQuestion, hasTagProduitDangereux}}>
@@ -150,31 +114,10 @@ function ProblemInner({anomaly, isWebView, stepNavigation}: Props) {
                   </ProblemCompanyKindOverride>
                 )}
               </ProblemEmployeeConsumer>
-            ))}
+            )}
+          </ProblemSubcategories>
         </>
       )}
     </>
   )
-}
-
-function applySubcategoriesChange(
-  report: Partial<ReportDraft2>,
-  subcategoryIndex: number,
-  subcategoryDepthIndex: number,
-): Partial<ReportDraft2> {
-  if (!hasStep0(report)) {
-    throw new Error('ReportDraft should have a lang and a category already')
-  }
-  const newSubcategoriesIndexes = [...(report.subcategoriesIndexes ?? []).slice(0, subcategoryDepthIndex), subcategoryIndex]
-  return {
-    ...report,
-    subcategoriesIndexes: newSubcategoriesIndexes,
-    step2: undefined,
-    // Subcategory has changed, we clear consumerWish & employeeConsumer because :
-    // - Some subcats have "getAnswer" (that is not available for all subcats so we have to clean up those properties)
-    // - Some subcats set default values for these properties (CompanyKind SOCIAL)
-    consumerWish: undefined,
-    employeeConsumer: undefined,
-    companyKindOverride: undefined,
-  }
 }
