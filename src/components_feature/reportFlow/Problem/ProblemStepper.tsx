@@ -1,11 +1,11 @@
-import React, {ReactElement, ReactNode, useMemo} from 'react'
+import {ReactElement, ReactNode, useMemo} from 'react'
 
 interface ProblemStepperProps {
   renderDone?: ReactNode
   children: Array<ReactElement<ProblemStepProps>>
 }
 
-export const ProblemStepper = ({children, renderDone}: ProblemStepperProps) => {
+export function ProblemStepper({children, renderDone}: ProblemStepperProps) {
   const isDone = useMemo(() => {
     return children.every(_ => _.props.hidden || _.props.isDone)
   }, [children])
