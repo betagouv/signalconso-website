@@ -4,9 +4,10 @@ import {useAnalyticContext} from '../../analytic/AnalyticContext'
 import {EventCategories, ReportEventActions} from '../../analytic/analytic'
 import {ReportStepOrDone, getIndexForStepOrDone} from '../../model/ReportStep'
 
+export type SetReportDraft = (fn: (_: Partial<ReportDraft2>) => Partial<ReportDraft2>) => void
 interface ReportFlowContextProps {
   reportDraft: Partial<ReportDraft2>
-  setReportDraft: (fn: (_: Partial<ReportDraft2>) => Partial<ReportDraft2>) => void
+  setReportDraft: SetReportDraft
   resetFlow: () => void
   sendReportEvent: (_: ReportStepOrDone) => void
 }

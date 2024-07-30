@@ -3,23 +3,24 @@ import {EventCategories, ReportEventActions} from '@/analytic/analytic'
 import {StepNavigation} from '@/components_feature/reportFlow/reportFlowStepper/ReportFlowStepper'
 import {ReportFlowStepperActions} from '@/components_feature/reportFlow/reportFlowStepper/ReportFlowStepperActions'
 import {FriendlyHelpText} from '@/components_simple/FriendlyHelpText'
-import {OpenFfWelcomeText, useOpenFfSetup} from '@/feature/openFoodFacts'
-import {RappelConsoWelcome, useRappelConsoSetup} from '@/feature/rappelConso'
+import {OpenFfWelcomeText, useOpenFfSetupLoaded as useHandleOpenFfSetupLoaded, useOpenFfSetup} from '@/feature/openFoodFacts'
+import {RappelConsoWelcome, useHandleRcSetupLoaded, useRappelConsoSetup} from '@/feature/rappelConso'
 import {
+  getCompanyKind,
   getSubcategories,
   getTags,
+  getWipCompanyKindFromSelected,
   hasStep0,
   hasSubcategoryIndexes,
   isTransmittableToProBeforePickingConsumerWish,
 } from '@/feature/reportDraftUtils'
 import {useI18n} from '@/i18n/I18n'
 import {ConsumerWish} from '@/model/ReportDraft'
-import {ReportDraft2} from '@/model/ReportDraft2'
+import {initiateReportDraft, ReportDraft2} from '@/model/ReportDraft2'
 import {Step2Model} from '@/model/Step2Model'
-import {useEffect, useMemo} from 'react'
+import {useEffect} from 'react'
 import {instanceOfSubcategoryWithInfoWall} from '../../../anomalies/Anomalies'
 import {Anomaly, CompanyKind} from '../../../anomalies/Anomaly'
-import {AppLang} from '../../../i18n/localization/AppLangs'
 import {useReportFlowContext} from '../ReportFlowContext'
 import {ProblemConsumerWishInformation} from './ProblemConsumerWishInformation'
 import {ProblemInformation} from './ProblemInformation'
@@ -33,68 +34,32 @@ interface Props {
   stepNavigation: StepNavigation
 }
 
-export function initiateReportDraftForAnomaly(anomaly: Anomaly, lang: AppLang): Partial<ReportDraft2> {
-  return {
-    step0: {category: anomaly.category, lang},
-    subcategoriesIndexes: [],
-  }
-}
-
-export function adjustReportDraftAfterSubcategoriesChange(
-  report: Partial<ReportDraft2>,
-  subcategoryIndex: number,
-  subcategoryDepthIndex: number,
-): Partial<ReportDraft2> {
-  if (!hasStep0(report)) {
-    throw new Error('ReportDraft should have a lang and a category already')
-  }
-  const newSubcategoriesIndexes = [...(report.subcategoriesIndexes ?? []).slice(0, subcategoryDepthIndex), subcategoryIndex]
-  const newSubcategories = getSubcategories({
-    ...report,
-    subcategoriesIndexes: newSubcategoriesIndexes,
-  })
-  //Recompute company kind based on current report selected subcategories
-  const lastCategoryCompanyKind = newSubcategories
-    .map(_ => _.companyKind)
-    .filter(_ => _ !== undefined)
-    .pop()
-
-  return {
-    ...report,
-    subcategoriesIndexes: newSubcategoriesIndexes,
-    companyKind: lastCategoryCompanyKind,
-    step2: undefined,
-    // Category has changed, user need to reconfirm consumerWish & employeeConsumer because :
-    // - Some categories have "getAnswer" (that is not available for all categories so we have to clean up those properties)
-    // - Some categories set default values for these properties (CompanyKind SOCIAL)
-    consumerWish: undefined,
-    employeeConsumer: undefined,
-  }
-}
-
 export function Problem({anomaly, isWebView, stepNavigation}: Props) {
   const {reportDraft, setReportDraft, resetFlow} = useReportFlowContext()
-  const {m, currentLang} = useI18n()
+  const {currentLang} = useI18n()
   const _analytic = useAnalyticContext()
-  const isReportInitializedForAnomaly = hasStep0(reportDraft) && anomaly.category === reportDraft.step0.category
+  const isDraftInitialized = hasStep0(reportDraft) && anomaly.category === reportDraft.step0.category
   useEffect(() => {
-    if (!isReportInitializedForAnomaly) {
+    if (!isDraftInitialized) {
       _analytic.trackEvent(EventCategories.report, ReportEventActions.validateCategory, anomaly.category)
       resetFlow()
-      setReportDraft(_ => initiateReportDraftForAnomaly(anomaly, currentLang))
+      setReportDraft(_ => initiateReportDraft(anomaly, currentLang))
     }
-  }, [isReportInitializedForAnomaly, setReportDraft, anomaly, currentLang, _analytic, resetFlow])
-
-  if (!isReportInitializedForAnomaly) {
+  }, [isDraftInitialized, setReportDraft, anomaly, currentLang, _analytic, resetFlow])
+  if (!isDraftInitialized) {
     return null
   }
-  return <ProblemInitialized {...{anomaly, isWebView, stepNavigation}} />
+  return <ProblemInner {...{anomaly, isWebView, stepNavigation}} />
 }
 
-const ProblemInitialized = ({anomaly, isWebView, stepNavigation}: Props) => {
+function ProblemInner({anomaly, isWebView, stepNavigation}: Props) {
   const _analytic = useAnalyticContext()
   const {m} = useI18n()
   const {reportDraft, setReportDraft, sendReportEvent} = useReportFlowContext()
+  const openFfSetup = useOpenFfSetup(anomaly)
+  const rappelConsoSetup = useRappelConsoSetup(anomaly)
+  useHandleOpenFfSetupLoaded(openFfSetup, setReportDraft)
+  useHandleRcSetupLoaded(rappelConsoSetup, setReportDraft)
   if (!hasStep0(reportDraft)) {
     throw new Error('ReportDraft should have a lang and a category already (in Problem)')
   }
@@ -102,50 +67,18 @@ const ProblemInitialized = ({anomaly, isWebView, stepNavigation}: Props) => {
   const tags = hasSubcategoryIndexes(reportDraft) ? getTags(reportDraft) : []
   const hasTagProduitDangereux = tags.includes('ProduitDangereux')
   const hasReponseConsoSubcategories = tags.includes('ReponseConso')
-  const openFfSetup = useOpenFfSetup(anomaly)
-  const rappelConsoSetup = useRappelConsoSetup(anomaly)
-
-  useEffect(() => {
-    // when we come from openFf and we get the async data
-    if (openFfSetup.status === 'loaded') {
-      // Store the data into the reportFlow
-      setReportDraft(_ => ({
-        ..._,
-        openFf: openFfSetup.result,
-      }))
-    }
-
-    if (rappelConsoSetup.status === 'loaded') {
-      // Store the data into the reportFlow
-      setReportDraft(_ => ({
-        ..._,
-        rappelConso: rappelConsoSetup.result,
-      }))
-    }
-  }, [openFfSetup, rappelConsoSetup, setReportDraft])
-
+  const companyKindOverride = reportDraft.companyKindOverride
+  const companyKindBeforeOverride = getWipCompanyKindFromSelected(reportDraft)
+  const companyKindAfterOverride = getCompanyKind({...reportDraft, subcategoriesIndexes: reportDraft.subcategoriesIndexes ?? []})
+  const predeterminedEmployeeConsumer = companyKindAfterOverride === 'SOCIAL' ? false : undefined
   const isTransmittable = isTransmittableToProBeforePickingConsumerWish(reportDraft)
-  const askConsumerWish = isTransmittable && reportDraft.companyKind !== 'SOCIAL'
+  const askConsumerWish = isTransmittable && companyKindAfterOverride !== 'SOCIAL'
 
-  const {
-    lastSubcategories,
-    isLastSubcategory,
-    companyKindFromSelected,
-    companyKindQuestionFromSelected,
-    responseconsoCodeFromSelected,
-    ccrfCodeFromSelected,
-    categoryOverrideFromSelected,
-  } = useMemo(() => {
-    return computeSelectedSubcategoriesData(anomaly, subcategories)
-  }, [subcategories])
+  const {lastSubcategories, isLastSubcategory, companyKindQuestion} = computeSelectedSubcategoriesData(anomaly, subcategories)
 
-  function onSubmit(next: () => void): void {
+  function onFinalSubmit(next: () => void): void {
     setReportDraft(draft => {
-      const consumerWish = askConsumerWish ? draft.consumerWish : 'companyImprovement'
-      // Company kind 'SOCIAL' cannot be employee consumer report
-      const employeeConsumer = draft.companyKind === 'SOCIAL' ? false : draft.employeeConsumer
-      const companyKind = companyKindFromSelected ?? draft.companyKind ?? 'SIRET'
-
+      const {reponseconsoCode, ccrfCode, categoryOverride} = computeSelectedSubcategoriesData(anomaly, subcategories)
       // In the openFf scenario
       // Only if we got all the data, then we build the company/product from it.
       // If we only have partial data, then we will build it in step 2.
@@ -157,27 +90,23 @@ const ProblemInitialized = ({anomaly, isWebView, stepNavigation}: Props) => {
               companyIdentification: {kind: 'companyFound', company: draft.openFf.company},
             }
           : draft.step2
-
-      const updatedDraft: Partial<ReportDraft2> = {
+      return {
         ...draft,
-        ccrfCode: ccrfCodeFromSelected,
-        reponseconsoCode: responseconsoCodeFromSelected,
-        companyKind,
-        consumerWish,
-        employeeConsumer,
-        categoryOverride: categoryOverrideFromSelected,
+        ccrfCode,
+        reponseconsoCode,
+        categoryOverride,
+        consumerWish: askConsumerWish ? draft.consumerWish : 'companyImprovement',
+        employeeConsumer: predeterminedEmployeeConsumer ?? draft.employeeConsumer,
         step2,
       }
-      return updatedDraft
     })
-
     sendReportEvent(stepNavigation.currentStep)
     next()
   }
 
   const handleSubcategoriesChange = (subcategoryIndex: number, subcategoryDepthIndex: number) => {
     setReportDraft(report => {
-      return adjustReportDraftAfterSubcategoriesChange(report, subcategoryIndex, subcategoryDepthIndex)
+      return applySubcategoriesChange(report, subcategoryIndex, subcategoryDepthIndex)
     })
   }
 
@@ -216,10 +145,10 @@ const ProblemInitialized = ({anomaly, isWebView, stepNavigation}: Props) => {
                 {...{isWebView}}
               />
             ) : (
-              <ProblemStepper renderDone={<ReportFlowStepperActions onNext={onSubmit} {...{stepNavigation}} />}>
+              <ProblemStepper renderDone={<ReportFlowStepperActions onNext={onFinalSubmit} {...{stepNavigation}} />}>
                 <ProblemStepperStep
                   isDone={reportDraft.employeeConsumer !== undefined}
-                  hidden={reportDraft.companyKind === 'SOCIAL'}
+                  hidden={predeterminedEmployeeConsumer !== undefined}
                 >
                   <ProblemSelect
                     id="select-employeeconsumer"
@@ -243,14 +172,14 @@ const ProblemInitialized = ({anomaly, isWebView, stepNavigation}: Props) => {
                     <p className="mb-0" dangerouslySetInnerHTML={{__html: m.employeeConsumerInformation}} />
                   </FriendlyHelpText>
                 </ProblemStepperStep>
-                <ProblemStepperStep isDone={reportDraft.companyKind !== undefined} hidden={!!companyKindFromSelected}>
-                  {companyKindQuestionFromSelected ? (
+                <ProblemStepperStep isDone={!!companyKindOverride} hidden={!!companyKindBeforeOverride}>
+                  {companyKindQuestion ? (
                     <ProblemSelect<CompanyKind>
                       id="select-companyKind"
-                      title={companyKindQuestionFromSelected.label}
-                      value={reportDraft.companyKind}
-                      onChange={companyKind => setReportDraft(_ => ({..._, companyKind}))}
-                      options={companyKindQuestionFromSelected.options.map(option => {
+                      title={companyKindQuestion.label}
+                      value={companyKindOverride}
+                      onChange={value => setReportDraft(_ => ({..._, companyKindOverride: value}))}
+                      options={companyKindQuestion.options.map(option => {
                         return {
                           title: option.label,
                           value: option.companyKind,
@@ -261,8 +190,10 @@ const ProblemInitialized = ({anomaly, isWebView, stepNavigation}: Props) => {
                     <ProblemSelect<CompanyKind>
                       id="select-companyKind"
                       title={m.problemIsInternetCompany}
-                      value={reportDraft.companyKind}
-                      onChange={companyKind => setReportDraft(_ => ({..._, companyKind}))}
+                      value={companyKindOverride}
+                      onChange={value => {
+                        setReportDraft(_ => ({..._, companyKindOverride: value}))
+                      }}
                       options={[
                         {
                           title: m.yes,
@@ -321,4 +252,26 @@ const ProblemInitialized = ({anomaly, isWebView, stepNavigation}: Props) => {
       )}
     </>
   )
+}
+
+function applySubcategoriesChange(
+  report: Partial<ReportDraft2>,
+  subcategoryIndex: number,
+  subcategoryDepthIndex: number,
+): Partial<ReportDraft2> {
+  if (!hasStep0(report)) {
+    throw new Error('ReportDraft should have a lang and a category already')
+  }
+  const newSubcategoriesIndexes = [...(report.subcategoriesIndexes ?? []).slice(0, subcategoryDepthIndex), subcategoryIndex]
+  return {
+    ...report,
+    subcategoriesIndexes: newSubcategoriesIndexes,
+    step2: undefined,
+    // Subcategory has changed, we clear consumerWish & employeeConsumer because :
+    // - Some subcats have "getAnswer" (that is not available for all subcats so we have to clean up those properties)
+    // - Some subcats set default values for these properties (CompanyKind SOCIAL)
+    consumerWish: undefined,
+    employeeConsumer: undefined,
+    companyKindOverride: undefined,
+  }
 }

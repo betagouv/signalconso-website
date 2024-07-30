@@ -5,7 +5,7 @@ import {CompanySearchByName} from '@/components_feature/reportFlow/Company/Compa
 import {NoSearchResult} from '@/components_feature/reportFlow/Company/lib/NoSearchResult'
 import {ScRadioButtons} from '@/components_simple/formInputs/ScRadioButtons'
 import {Loader} from '@/feature/Loader'
-import {hasStep0, hasStep2, hasSubcategoryIndexes} from '@/feature/reportDraftUtils'
+import {getCompanyKind, hasStep0, hasStep2, hasSubcategoryIndexes} from '@/feature/reportDraftUtils'
 import {useBarcodeSearch} from '@/hooks/barcode'
 import {ReportDraft2} from '@/model/ReportDraft2'
 import {CommonCompanyIdentification, Step2Model} from '@/model/Step2Model'
@@ -72,7 +72,7 @@ type CommonProps = {
 }
 
 export function CompanyIdentificationDispatch({draft, updateReport}: CommonProps) {
-  switch (draft.companyKind) {
+  switch (getCompanyKind(draft)) {
     case 'TRAIN':
       return (
         <CompanyByTrain
@@ -227,7 +227,7 @@ function CompanyIdentificationTree({
   searchResults: CompanySearchResult[] | undefined
   onIdentification: (_: CommonCompanyIdentification) => void
 }) {
-  const companyKind = draft.companyKind
+  const companyKind = getCompanyKind(draft)
   if (!companyKind) {
     throw new Error('The draft should have a companyKind already')
   }
@@ -306,7 +306,7 @@ function CompanyIdentificationTree({
               </CompanySearchByIdentifier>
             )
           case 'iCannot':
-            if (draft.companyKind === 'LOCATION') {
+            if (companyKind === 'LOCATION') {
               return (
                 <CompanyAskConsumerStreet
                   onChange={({postalCode, street}) => {

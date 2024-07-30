@@ -1,7 +1,7 @@
 import {isDateInput} from '@/components_feature/reportFlow/Details/DetailInputsUtils'
 import {isSpecifyInputName, SpecifyFormUtils} from '@/components_feature/reportFlow/Details/Details'
 import {getDraftReportInputs} from '@/components_feature/reportFlow/Details/draftReportInputs'
-import {DetailInput, DetailInputType} from '../anomalies/Anomaly'
+import {Anomaly, DetailInput, DetailInputType} from '../anomalies/Anomaly'
 import {AppLang} from '../i18n/localization/AppLangs'
 import {isoToFrenchFormat, notNull} from '../utils/utils'
 import {DetailInputValue} from './CreatedReport'
@@ -90,5 +90,12 @@ export class ReportDraft2 {
         return {label, value: prepareValue(rawValue)}
       })
       .filter(notNull)
+  }
+}
+
+export function initiateReportDraft(anomaly: Anomaly, lang: AppLang): Partial<ReportDraft2> {
+  return {
+    step0: {category: anomaly.category, lang},
+    subcategoriesIndexes: [],
   }
 }
