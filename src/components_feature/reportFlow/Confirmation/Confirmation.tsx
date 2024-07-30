@@ -1,7 +1,7 @@
 import {useAnalyticContext} from '@/analytic/AnalyticContext'
 import {EventCategories, ReportEventActions} from '@/analytic/analytic'
+import {NextStepButton} from '@/components_feature/reportFlow/reportFlowStepper/NextStepButton'
 import {StepNavigation} from '@/components_feature/reportFlow/reportFlowStepper/ReportFlowStepper'
-import {ReportFlowStepperActions} from '@/components_feature/reportFlow/reportFlowStepper/ReportFlowStepperActions'
 import {Animate} from '@/components_simple/Animate'
 import {Step2Recap} from '@/components_simple/CompanyRecap/Step2Recap'
 import {FriendlyHelpText} from '@/components_simple/FriendlyHelpText'
@@ -59,7 +59,7 @@ export const ConfirmationInner = ({
             return <RenderEachStep key={step} {...{draft, stepNavigation, index}} step={step} />
           })}
         </ConfirmationStepper>
-        <ReportFlowStepperActions
+        <NextStepButton
           nextIconSend
           loadingNext={_reportCreate.createReportMutation.isPending}
           nextButtonLabel={draft.consumerWish === 'getAnswer' ? m.confirmationBtnReponseConso : m.confirmationBtn}

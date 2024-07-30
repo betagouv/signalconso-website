@@ -9,7 +9,7 @@ export function computeSelectedSubcategoriesData(selectedSubCategories: Subcateg
 
   return {
     companyKindQuestion,
-    lastSubcategories,
+    lastSubcategory: lastSubcategories,
     isLastSubcategory,
   }
 }
