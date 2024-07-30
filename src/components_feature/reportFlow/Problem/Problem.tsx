@@ -19,8 +19,9 @@ import {initiateReportDraft, ReportDraft2} from '@/model/ReportDraft2'
 import {Step2Model} from '@/model/Step2Model'
 import {useEffect} from 'react'
 import {instanceOfSubcategoryWithInfoWall} from '../../../anomalies/Anomalies'
-import {Anomaly, CompanyKind} from '../../../anomalies/Anomaly'
+import {Anomaly} from '../../../anomalies/Anomaly'
 import {useReportFlowContext} from '../ReportFlowContext'
+import {ProblemCompanyKindOverride} from './ProblemCompanyKindOverride'
 import {ProblemConsumerWishInformation} from './ProblemConsumerWishInformation'
 import {ProblemEmployeeConsumer} from './ProblemEmployeeConsumer'
 import {ProblemInformation} from './ProblemInformation'
@@ -143,81 +144,54 @@ function ProblemInner({anomaly, isWebView, stepNavigation}: Props) {
             ) : (
               <ProblemEmployeeConsumer {...{predeterminedEmployeeConsumer}}>
                 {() => (
-                  <ProblemStepper renderDone={<ReportFlowStepperActions onNext={onFinalSubmit} {...{stepNavigation}} />}>
-                    <ProblemStepperStep isDone={!!companyKindOverride} hidden={!!companyKindBeforeOverride}>
-                      {companyKindQuestion ? (
-                        <ProblemSelect<CompanyKind>
-                          id="select-companyKind"
-                          title={companyKindQuestion.label}
-                          value={companyKindOverride}
-                          onChange={value => setReportDraft(_ => ({..._, companyKindOverride: value}))}
-                          options={companyKindQuestion.options.map(option => {
-                            return {
-                              title: option.label,
-                              value: option.companyKind,
-                            }
-                          })}
-                        />
-                      ) : (
-                        <ProblemSelect<CompanyKind>
-                          id="select-companyKind"
-                          title={m.problemIsInternetCompany}
-                          value={companyKindOverride}
-                          onChange={value => {
-                            setReportDraft(_ => ({..._, companyKindOverride: value}))
-                          }}
-                          options={[
-                            {
-                              title: m.yes,
-                              value: 'WEBSITE',
-                            },
-                            {
-                              title: m.problemIsInternetCompanyNo,
-                              value: hasTagProduitDangereux ? 'LOCATION' : 'SIRET',
-                            },
-                          ]}
-                        />
-                      )}
-                    </ProblemStepperStep>
-                    <ProblemStepperStep isDone={reportDraft.consumerWish !== undefined} hidden={!askConsumerWish}>
-                      <ProblemSelect
-                        id="select-contractualDispute"
-                        title={m.whatsYourIntent}
-                        value={reportDraft.consumerWish}
-                        options={[
-                          {
-                            title: m.problemContractualDisputeFormYes,
-                            description: m.problemContractualDisputeFormDesc,
-                            value: 'fixContractualDispute',
-                          },
-                          {
-                            title: m.problemContractualDisputeFormNo,
-                            description: m.problemContractualDisputeFormNoDesc,
-                            value: 'companyImprovement',
-                          },
-                          ...(hasReponseConsoSubcategories
-                            ? [
-                                {
-                                  title: m.problemContractualDisputeFormReponseConso,
-                                  description: m.problemContractualDisputeFormReponseConsoExample,
-                                  value: 'getAnswer' as const,
-                                },
-                              ]
-                            : []),
-                        ]}
-                        onChange={(consumerWish: ConsumerWish) => {
-                          setReportDraft(report => {
-                            const updated = {...report, consumerWish}
-                            _analytic.trackEvent(EventCategories.report, ReportEventActions.consumerWish, updated.consumerWish)
-                            return updated
-                          })
-                        }}
-                      />
-                    </ProblemStepperStep>
-                    <ProblemStepperStep isDone={true} hidden={!(askConsumerWish && reportDraft.consumerWish)}>
-                      {reportDraft.consumerWish && <ProblemConsumerWishInformation consumerWish={reportDraft.consumerWish} />}
-                    </ProblemStepperStep>
-                  </ProblemStepper>
+                  <ProblemCompanyKindOverride {...{companyKindBeforeOverride, companyKindQuestion, hasTagProduitDangereux}}>
+                    {() => (
+                      <ProblemStepper renderDone={<ReportFlowStepperActions onNext={onFinalSubmit} {...{stepNavigation}} />}>
+                        <ProblemStepperStep isDone={reportDraft.consumerWish !== undefined} hidden={!askConsumerWish}>
+                          <ProblemSelect
+                            id="select-contractualDispute"
+                            title={m.whatsYourIntent}
+                            value={reportDraft.consumerWish}
+                            options={[
+                              {
+                                title: m.problemContractualDisputeFormYes,
+                                description: m.problemContractualDisputeFormDesc,
+                                value: 'fixContractualDispute',
+                              },
+                              {
+                                title: m.problemContractualDisputeFormNo,
+                                description: m.problemContractualDisputeFormNoDesc,
+                                value: 'companyImprovement',
+                              },
+                              ...(hasReponseConsoSubcategories
+                                ? [
+                                    {
+                                      title: m.problemContractualDisputeFormReponseConso,
+                                      description: m.problemContractualDisputeFormReponseConsoExample,
+                                      value: 'getAnswer' as const,
+                                    },
+                                  ]
+                                : []),
+                            ]}
+                            onChange={(consumerWish: ConsumerWish) => {
+                              setReportDraft(report => {
+                                const updated = {...report, consumerWish}
+                                _analytic.trackEvent(
+                                  EventCategories.report,
+                                  ReportEventActions.consumerWish,
+                                  updated.consumerWish,
+                                )
+                                return updated
+                              })
+                            }}
+                          />
+                        </ProblemStepperStep>
+                        <ProblemStepperStep isDone={true} hidden={!(askConsumerWish && reportDraft.consumerWish)}>
+                          {reportDraft.consumerWish && <ProblemConsumerWishInformation consumerWish={reportDraft.consumerWish} />}
+                        </ProblemStepperStep>
+                      </ProblemStepper>
+                    )}
+                  </ProblemCompanyKindOverride>
                 )}
               </ProblemEmployeeConsumer>
             ))}
