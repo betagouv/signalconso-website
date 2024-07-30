@@ -29,16 +29,23 @@ describe('Details: single date not in future', () => {
 
   describe('WEBSITE', () => {
     beforeEach(() => {
+      const initialReport = {
+        step0: {
+          category: 'DemoCategory',
+          lang: 'fr' as const,
+        },
+        subcategoriesIndexes: [5, 1],
+        companyKind: 'WEBSITE' as const,
+      }
       app = render(
         <CompanyIdentificationDispatch
-          draft={{
-            companyKind: 'WEBSITE',
-          }}
+          draft={initialReport}
           updateReport={step2 => {
             draft = {...draft, step2}
           }}
         />,
         {
+          // initialReport,
           signalConsoApiClient: {
             searchForeignCompaniesByUrl: (url: string) => Promise.resolve([]),
             searchCompaniesByUrl: (url: string) =>
@@ -80,6 +87,11 @@ describe('Details: single date not in future', () => {
       app = render(
         <CompanyIdentificationDispatch
           draft={{
+            step0: {
+              category: 'DemoCategory',
+              lang: 'fr',
+            },
+            subcategoriesIndexes: [0, 0],
             companyKind: 'LOCATION',
           }}
           updateReport={step2 => {

@@ -1,3 +1,4 @@
+import {ReportTag} from '@/anomalies/Anomaly'
 import {CompanySearchResult, isGovernmentCompany} from '@/model/Company'
 import {ReportDraft} from '@/model/ReportDraft'
 import {appliedSpecialLegislation} from '@/model/SpecialLegislation'
@@ -5,10 +6,9 @@ import {Step2Model} from '@/model/Step2Model'
 import {CompanyRecapRaw, CompanyRecapRawProps} from './CompanyRecapRaw'
 import {buildBrandName} from './companyNameUtils'
 
-export function CompanyRecapFromStep2({draft}: {draft: Pick<ReportDraft, 'tags' | 'step2'>}) {
+export function CompanyRecapFromStep2({step2, tags}: {step2: ReportDraft['step2']; tags: ReportTag[]}) {
   // this doesn't display all the step2 variations
   // only whatever concerns the company + phone/website/product
-  const {step2} = draft
   const {
     siret,
     name,
@@ -20,7 +20,7 @@ export function CompanyRecapFromStep2({draft}: {draft: Pick<ReportDraft, 'tags' 
     isGovernment = false,
     specialLegislation,
     closed = false,
-  } = buildMainFields(step2, draft)
+  } = buildMainFields(step2, tags)
   const {phone, website, barcodeProduct} = buildOtherFields(step2)
   return (
     <CompanyRecapRaw
@@ -43,9 +43,9 @@ export function CompanyRecapFromStep2({draft}: {draft: Pick<ReportDraft, 'tags' 
   )
 }
 
-export function CompanyRecapFromSearchResult({company, draft}: {company: CompanySearchResult; draft: Pick<ReportDraft, 'tags'>}) {
+export function CompanyRecapFromSearchResult({company, tags}: {company: CompanySearchResult; tags: ReportTag[]}) {
   const {siret, name, commercialName, brand, address, activityLabel, isHeadOffice, isGovernment, specialLegislation, closed} =
-    buildMainFieldsFromSearchResult(company, draft)
+    buildMainFieldsFromSearchResult(company, tags)
   const website = undefined
   const phone = undefined
   const barcodeProduct = undefined
@@ -72,7 +72,7 @@ export function CompanyRecapFromSearchResult({company, draft}: {company: Company
 
 function buildMainFields(
   step2: Step2Model,
-  draft: Pick<ReportDraft, 'tags'>,
+  tags: ReportTag[],
 ): Omit<CompanyRecapRawProps, 'phone' | 'website' | 'barcodeProduct'> {
   const allUndefined = {
     name: undefined,
@@ -98,7 +98,7 @@ function buildMainFields(
         case 'companyFound':
         case 'marketplaceCompanyFound':
           const {company} = companyIdentification
-          return buildMainFieldsFromSearchResult(company, draft)
+          return buildMainFieldsFromSearchResult(company, tags)
         case 'consumerLocation':
           return {
             ...allUndefined,
@@ -140,7 +140,7 @@ function buildMainFields(
 
 function buildMainFieldsFromSearchResult(
   company: CompanySearchResult,
-  draft: Pick<ReportDraft, 'tags'>,
+  tags: ReportTag[],
 ): Omit<CompanyRecapRawProps, 'phone' | 'website' | 'barcodeProduct'> {
   return {
     siret: company.siret,
@@ -151,7 +151,7 @@ function buildMainFieldsFromSearchResult(
     activityLabel: company.activityLabel,
     isHeadOffice: company.isHeadOffice,
     isGovernment: isGovernmentCompany(company),
-    specialLegislation: appliedSpecialLegislation(company, draft),
+    specialLegislation: appliedSpecialLegislation(company, tags),
     closed: !company.isOpen,
   }
 }

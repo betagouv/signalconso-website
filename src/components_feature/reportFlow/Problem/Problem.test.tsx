@@ -14,11 +14,18 @@ class ProblemFixture {
   static readonly anomaly: Anomaly = allAnomalies('fr').find(a => a.category === 'DemoCategory')!
 }
 
+const initialReport: Partial<ReportDraft2> = {
+  step0: {
+    category: 'DemoCategory',
+    lang: 'fr',
+  },
+}
+const renderOptions = {initialReport}
 const props = {isWebView: false, stepNavigation: dummyStepNavigation}
 
 describe('Problem', () => {
   it('should display subcategories', () => {
-    const app = render(<Problem {...props} anomaly={ProblemFixture.anomaly} />)
+    const app = render(<Problem {...props} anomaly={ProblemFixture.anomaly} />, renderOptions)
     ProblemFixture.anomaly.subcategories?.forEach(s => {
       expect(app.container.textContent).toContain(s.title)
     })
@@ -26,6 +33,7 @@ describe('Problem', () => {
 
   it('should route to information page when receive subcategories ending with information', async () => {
     const app = render(<Problem {...props} anomaly={ProblemFixture.anomaly} />, {
+      ...renderOptions,
       signalConsoApiClient: {
         rateSubcategory: (...args: any[]) => Promise.resolve(),
         searchForeignCompaniesByUrl: (url: string) => Promise.resolve([]),
@@ -42,7 +50,7 @@ describe('Problem', () => {
   })
 
   it('should request the user if he is an employee of the company or not when receive subcategories', () => {
-    const app = render(<Problem {...props} anomaly={ProblemFixture.anomaly} />)
+    const app = render(<Problem {...props} anomaly={ProblemFixture.anomaly} />, renderOptions)
     fireEvent.click(app.getByText(`(title) Première sous category du fichier demo.yaml, absolument minimale`))
     expect(app.container.textContent).toContain(app.m.problemDoYouWorkInCompany)
     expect(app.container.textContent).toContain(app.m.problemDoYouWorkInCompanyNo)
@@ -118,6 +126,7 @@ describe('Problem', () => {
       >
         <Problem {...props} anomaly={ProblemFixture.anomaly} />
       </AccessReportFlow>,
+      renderOptions,
     )
     fireEvent.click(app.getByText(`(title) Première sous category du fichier demo.yaml, absolument minimale`))
     clickEmployeeConsumer(app, 'yes')
@@ -134,6 +143,7 @@ describe('Problem', () => {
       >
         <Problem {...props} anomaly={ProblemFixture.anomaly} />
       </AccessReportFlow>,
+      renderOptions,
     )
     fireEvent.click(app.getByText(`(title) Première sous category du fichier demo.yaml, absolument minimale`))
     clickEmployeeConsumer(app, 'no')
@@ -150,6 +160,7 @@ describe('Problem', () => {
       >
         <Problem {...props} anomaly={ProblemFixture.anomaly} />
       </AccessReportFlow>,
+      renderOptions,
     )
     fireEvent.click(app.getByText(`(title) Première sous category du fichier demo.yaml, absolument minimale`))
     clickEmployeeConsumer(app, 'no')
@@ -167,6 +178,7 @@ describe('Problem', () => {
       >
         <Problem {...props} anomaly={ProblemFixture.anomaly} />
       </AccessReportFlow>,
+      renderOptions,
     )
     fireEvent.click(app.getByText(`Sous category pour tester les companyKind`))
     fireEvent.click(app.getByText(`Sous cat avec companyKind WEBSITE`))
@@ -184,6 +196,7 @@ describe('Problem', () => {
       >
         <Problem {...props} anomaly={ProblemFixture.anomaly} />
       </AccessReportFlow>,
+      renderOptions,
     )
     fireEvent.click(app.getByText(`Sous category pour tester les companyKind`))
     fireEvent.click(app.getByText(`Sous cat avec companyKind WEBSITE`))
@@ -202,6 +215,7 @@ describe('Problem', () => {
       >
         <Problem {...props} anomaly={ProblemFixture.anomaly} />
       </AccessReportFlow>,
+      renderOptions,
     )
     fireEvent.click(app.getByText(`Sous category pour tester les companyKind`))
     fireEvent.click(app.getByText(`Sous cat avec companyKind WEBSITE`))
@@ -221,6 +235,7 @@ describe('Problem', () => {
       >
         <Problem {...props} anomaly={ProblemFixture.anomaly} />
       </AccessReportFlow>,
+      renderOptions,
     )
     fireEvent.click(app.getByText(`(title) Première sous category du fichier demo.yaml, absolument minimale`))
     clickEmployeeConsumer(app, 'no')
@@ -237,6 +252,7 @@ describe('Problem', () => {
       >
         <Problem {...props} anomaly={ProblemFixture.anomaly} />
       </AccessReportFlow>,
+      renderOptions,
     )
     fireEvent.click(app.getByText(`Sous category pour tester divers tags`))
     fireEvent.click(app.getByText(`Sous cat avec tag ReponseConso`))
@@ -257,6 +273,7 @@ describe('Problem', () => {
       >
         <Problem {...props} anomaly={ProblemFixture.anomaly} />
       </AccessReportFlow>,
+      renderOptions,
     )
     fireEvent.click(app.getByText(`Sous category pour tester divers tags`))
     fireEvent.click(app.getByText(`Sous cat avec tag ReponseConso`))
@@ -267,29 +284,5 @@ describe('Problem', () => {
     clickBtnSubmit(app)
     expect(report?.employeeConsumer).toEqual(false)
     expect(report?.consumerWish).toEqual('getAnswer')
-    expect(report?.tags?.includes('ReponseConso')).toEqual(false)
-  })
-
-  it('should ask add ReponseConso tag when related option is not selected', () => {
-    let report: undefined | Partial<ReportDraft2>
-    const app = render(
-      <AccessReportFlow
-        onReportChange={r => {
-          report = r
-        }}
-      >
-        <Problem {...props} anomaly={ProblemFixture.anomaly} />
-      </AccessReportFlow>,
-    )
-    fireEvent.click(app.getByText(`Sous category pour tester divers tags`))
-    fireEvent.click(app.getByText(`Sous cat avec tag ReponseConso`))
-    clickEmployeeConsumer(app, 'no')
-    clickCompanyKind(app, 'internet')
-    clickContractualDispute(app, 'notContractualDispute')
-    expectContractualDisputeVisible(app, false)
-    clickBtnSubmit(app)
-    expect(report?.employeeConsumer).toEqual(false)
-    expect(report?.consumerWish).not.toEqual('getAnswer')
-    expect((report?.tags ?? []).includes('ReponseConso')).toEqual(false)
   })
 })

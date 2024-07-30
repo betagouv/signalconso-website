@@ -29,6 +29,7 @@ export const PlaygroundOther = () => {
   const specifiyValue = watch('specifiyValue')
   const specifiyCheck = watchCheck('specifiyCheck')
   const random = new SeedableRandom(33)
+  const draftStep2 = Fixture.genDraftReportStep2({random})
   return (
     <>
       <div className="mb-4">
@@ -204,11 +205,11 @@ export const PlaygroundOther = () => {
       </div>
       <div className="border border-gray-500 border-solid p-2 mb-2">
         <h6>Le composant "CompanyRecapFromSearchResult"</h6>
-        <CompanyRecapFromSearchResult company={Fixture.genCompanySearchResult()} draft={{tags: []}} />
+        <CompanyRecapFromSearchResult company={Fixture.genCompanySearchResult()} tags={[]} />
         <h6>Le composant "CompanyRecapFromSearchResult" sur la shrinkflation</h6>
-        <CompanyRecapFromSearchResult company={Fixture.genCompanySearchResult()} draft={{tags: ['Shrinkflation']}} />
+        <CompanyRecapFromSearchResult company={Fixture.genCompanySearchResult()} tags={['Shrinkflation']} />
         <h6>Le composant "CompanyRecapFromStep2" avec un draft en step2</h6>
-        <CompanyRecapFromStep2 draft={Fixture.genDraftReportStep2({random})} />
+        <CompanyRecapFromStep2 step2={draftStep2.step2} tags={[]} />
         <h6>Le composant "Step2Recap" avec le cas "station"</h6>
         <Step2Recap step2={Fixture.genStep2Station()} tags={[]} />
         <h6>Le composant "Step2Recap" avec le cas "train" de base</h6>

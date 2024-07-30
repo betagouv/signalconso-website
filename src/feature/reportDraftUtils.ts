@@ -1,5 +1,6 @@
 import {findAnomaly} from '@/anomalies/Anomalies'
-import {Subcategory} from '@/anomalies/Anomaly'
+import {ReportTag, Subcategory} from '@/anomalies/Anomaly'
+import {computeSelectedSubcategoriesData} from '@/components_feature/reportFlow/Problem/useSelectedSubcategoriesData'
 import {ReportDraft, TransmissionStatus} from '@/model/ReportDraft'
 import {ReportDraft2} from '@/model/ReportDraft2'
 
@@ -39,6 +40,13 @@ export const getSubcategories = (r: Pick<ReportDraft, 'subcategoriesIndexes' | '
   }
   recurse(r.subcategoriesIndexes, anomaly.subcategories)
   return collectedSubcategories
+}
+
+export const getTags = (r: Pick<ReportDraft, 'subcategoriesIndexes' | 'step0'>): ReportTag[] => {
+  const subcategories = getSubcategories(r)
+  const anomaly = getAnomaly(r)
+  const {tagsFromSelected} = computeSelectedSubcategoriesData(anomaly, subcategories)
+  return tagsFromSelected
 }
 
 export const isTransmittableToPro = (r: Pick<ReportDraft, 'employeeConsumer' | 'consumerWish'>): boolean => {

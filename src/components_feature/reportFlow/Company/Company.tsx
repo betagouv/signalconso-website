@@ -5,6 +5,7 @@ import {CompanySearchByName} from '@/components_feature/reportFlow/Company/Compa
 import {NoSearchResult} from '@/components_feature/reportFlow/Company/lib/NoSearchResult'
 import {ScRadioButtons} from '@/components_simple/formInputs/ScRadioButtons'
 import {Loader} from '@/feature/Loader'
+import {hasStep0, hasStep2, hasSubcategoryIndexes} from '@/feature/reportDraftUtils'
 import {useBarcodeSearch} from '@/hooks/barcode'
 import {ReportDraft2} from '@/model/ReportDraft2'
 import {CommonCompanyIdentification, Step2Model} from '@/model/Step2Model'
@@ -33,15 +34,21 @@ import {BarcodeSearchResult} from './lib/BarcodeSearchResult'
 export function Company({stepNavigation}: {stepNavigation: StepNavigation}) {
   const {reportDraft, setReportDraft, sendReportEvent} = useReportFlowContext()
   const draft = reportDraft
-  const {step2} = draft
-  if (step2) {
+  if (!hasStep0(draft)) {
+    throw new Error(`The draft should have step0 already, to display Company`)
+  }
+  if (!hasSubcategoryIndexes(draft)) {
+    throw new Error(`The draft should have subcategoriesIndexes already, to display Company`)
+  }
+  if (hasStep2(draft)) {
+    const {step2} = draft
     const onClear = () => setReportDraft(_ => ({..._, step2: undefined}))
     switch (step2.kind) {
       case 'influencer':
       case 'influencerOtherSocialNetwork':
         return <InfluencerFilled {...{stepNavigation, step2, onClear}} />
       default:
-        return <CompanyFilled {...{stepNavigation, onClear}} draft={{step2, tags: draft.tags}} />
+        return <CompanyFilled {...{stepNavigation, onClear}} draft={draft} />
     }
   }
   return (
@@ -60,7 +67,7 @@ export function Company({stepNavigation}: {stepNavigation: StepNavigation}) {
 }
 
 type CommonProps = {
-  draft: Partial<ReportDraft2>
+  draft: Partial<ReportDraft2> & Pick<ReportDraft2, 'subcategoriesIndexes' | 'step0'>
   updateReport: (step2: Step2Model) => void
 }
 
@@ -216,7 +223,7 @@ function CompanyIdentificationTree({
   draft,
   onIdentification,
 }: {
-  draft: Partial<ReportDraft2>
+  draft: Partial<ReportDraft2> & Pick<ReportDraft2, 'step0' | 'subcategoriesIndexes'>
   searchResults: CompanySearchResult[] | undefined
   onIdentification: (_: CommonCompanyIdentification) => void
 }) {
@@ -370,7 +377,7 @@ function BarcodeTree({
   updateReport,
 }: {
   specificProductCompanyKinds: SpecificProductCompanyKind
-  draft: Partial<ReportDraft2>
+  draft: Partial<ReportDraft2> & Pick<ReportDraft2, 'subcategoriesIndexes' | 'step0'>
   updateReport: (step2: Step2Model) => void
 }) {
   return (

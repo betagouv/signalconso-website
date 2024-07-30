@@ -2,10 +2,11 @@ import {useAnalyticContext} from '@/analytic/AnalyticContext'
 import {Animate} from '@/components_simple/Animate'
 import {BtnNextSubmit} from '@/components_simple/buttons/Buttons'
 import {CompanyRecapFromSearchResult} from '@/components_simple/CompanyRecap/CompanyRecap'
+import {getTags} from '@/feature/reportDraftUtils'
 import {useI18n} from '@/i18n/I18n'
 import {ReportDraft2} from '@/model/ReportDraft2'
 import {Alert} from '@codegouvfr/react-dsfr/Alert'
-import {ReactNode, useEffect, useState} from 'react'
+import {useEffect, useState} from 'react'
 import {Controller, useForm} from 'react-hook-form'
 import {ScRadioButtons} from '../../../components_simple/formInputs/ScRadioButtons'
 import {useToastError} from '../../../hooks/useToastError'
@@ -15,18 +16,8 @@ import {NoSearchResult} from './lib/NoSearchResult'
 
 interface Props {
   companies: CompanySearchResult[]
-  reportDraft: Partial<ReportDraft2>
+  reportDraft: Partial<ReportDraft2> & Pick<ReportDraft2, 'step0' | 'subcategoriesIndexes'>
   onSubmit: (selected: CompanySearchResult, vendor?: string) => void
-}
-
-function Row({icon, children, variant}: {icon: string; variant?: 'blue' | 'error'; children: ReactNode}) {
-  const color = variant === 'blue' ? 'text-scbluefrance' : variant === 'error' ? 'text-red-500' : 'text-gray-500'
-  return (
-    <div className={`flex items-start mb-1 text-sm ${color} `}>
-      <i className={`${icon} mr-2 fr-icon--sm`} />
-      <div>{children}</div>
-    </div>
-  )
 }
 
 interface Form {
@@ -92,7 +83,7 @@ export const CompanySearchResultComponent = ({companies, reportDraft, onSubmit}:
                           options={companies.map(company => {
                             const closed = !company.isOpen
                             return {
-                              label: <CompanyRecapFromSearchResult company={company} draft={reportDraft} />,
+                              label: <CompanyRecapFromSearchResult company={company} tags={getTags(reportDraft)} />,
                               value: company.siret!,
                               disabled: closed,
                             }
