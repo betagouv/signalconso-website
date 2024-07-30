@@ -12,14 +12,14 @@ export function ProblemSubcategories({
   anomaly,
   subcategories,
   isLastSubcategory,
-  lastSubcategories,
+  lastSubcategory,
   isWebView,
 }: {
   children: () => ReactNode
   anomaly: Anomaly
   subcategories: Subcategory[]
   isLastSubcategory: boolean
-  lastSubcategories: Subcategory
+  lastSubcategory: Subcategory
   isWebView: boolean
 }) {
   const {setReportDraft} = useReportFlowContext()
@@ -50,11 +50,11 @@ export function ProblemSubcategories({
           ),
       )}
       {isLastSubcategory &&
-        (instanceOfSubcategoryWithInfoWall(lastSubcategories) ? (
+        (instanceOfSubcategoryWithInfoWall(lastSubcategory) ? (
           <ProblemInformation
             anomaly={anomaly}
             subcategories={subcategories}
-            information={lastSubcategories.blockingInfo}
+            information={lastSubcategory.blockingInfo}
             {...{isWebView}}
           />
         ) : (

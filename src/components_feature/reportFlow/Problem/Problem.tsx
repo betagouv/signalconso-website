@@ -63,12 +63,15 @@ function ProblemInner({anomaly, isWebView, stepNavigation}: Props) {
   const hasTagProduitDangereux = tags.includes('ProduitDangereux')
   const hasReponseConsoTag = tags.includes('ReponseConso')
   const companyKindBeforeOverride = getWipCompanyKindFromSelected(reportDraft)
-  const companyKindAfterOverride = getCompanyKind({...reportDraft, subcategoriesIndexes: reportDraft.subcategoriesIndexes ?? []})
+  const companyKindAfterOverride = getCompanyKind({
+    ...reportDraft,
+    subcategoriesIndexes: reportDraft.subcategoriesIndexes ?? [],
+  })
   const predeterminedEmployeeConsumer = companyKindAfterOverride === 'SOCIAL' ? false : undefined
   const isTransmittable = isTransmittableToProBeforePickingConsumerWish(reportDraft)
   const askConsumerWish = isTransmittable && companyKindAfterOverride !== 'SOCIAL'
 
-  const {lastSubcategories, isLastSubcategory, companyKindQuestion} = computeSelectedSubcategoriesData(subcategories)
+  const {lastSubcategory, isLastSubcategory, companyKindQuestion} = computeSelectedSubcategoriesData(subcategories)
 
   function onFinalSubmit(next: () => void): void {
     setReportDraft(draft => {
@@ -80,7 +83,10 @@ function ProblemInner({anomaly, isWebView, stepNavigation}: Props) {
           ? {
               kind: 'product',
               barcodeProduct: draft.openFf.product,
-              companyIdentification: {kind: 'companyFound', company: draft.openFf.company},
+              companyIdentification: {
+                kind: 'companyFound',
+                company: draft.openFf.company,
+              },
             }
           : draft.step2
       return {
@@ -94,18 +100,32 @@ function ProblemInner({anomaly, isWebView, stepNavigation}: Props) {
     next()
   }
 
-  const specialCategoryNotLoading = openFfSetup.status !== 'loading' && rappelConsoSetup.status !== 'loading'
+  const specialCategoriesNotLoading = openFfSetup.status !== 'loading' && rappelConsoSetup.status !== 'loading'
   return (
     <>
       <OpenFfWelcomeText setup={openFfSetup} />
       <RappelConsoWelcome setup={rappelConsoSetup} />
-      {specialCategoryNotLoading && (
+      {specialCategoriesNotLoading && (
         <>
-          <ProblemSubcategories {...{anomaly, isLastSubcategory, isWebView, lastSubcategories, subcategories}}>
+          <ProblemSubcategories
+            {...{
+              anomaly,
+              isLastSubcategory,
+              isWebView,
+              lastSubcategory,
+              subcategories,
+            }}
+          >
             {() => (
               <ProblemEmployeeConsumer {...{predeterminedEmployeeConsumer}}>
                 {() => (
-                  <ProblemCompanyKindOverride {...{companyKindBeforeOverride, companyKindQuestion, hasTagProduitDangereux}}>
+                  <ProblemCompanyKindOverride
+                    {...{
+                      companyKindBeforeOverride,
+                      companyKindQuestion,
+                      hasTagProduitDangereux,
+                    }}
+                  >
                     {() => (
                       <ProblemConsumerWish {...{askConsumerWish, hasReponseConsoTag}}>
                         {() => <ReportFlowStepperActions onNext={onFinalSubmit} {...{stepNavigation}} />}
