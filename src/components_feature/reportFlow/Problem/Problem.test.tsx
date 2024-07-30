@@ -3,6 +3,7 @@
  */
 import {allAnomalies} from '@/anomalies/Anomalies'
 import {dummyStepNavigation} from '@/components_feature/playgroundComponents/PlaygroundConfirmation'
+import {getCompanyKind} from '@/feature/reportDraftUtils'
 import {ReportDraft2} from '@/model/ReportDraft2'
 import {AccessReportFlow, fireEvent, render, ScRenderResult} from '@/test/test-utils'
 import '@testing-library/jest-dom'
@@ -165,7 +166,7 @@ describe('Problem', () => {
     fireEvent.click(app.getByText(`(title) Première sous category du fichier demo.yaml, absolument minimale`))
     clickEmployeeConsumer(app, 'no')
     clickCompanyKind(app, 'internet')
-    expect(report?.companyKind).toEqual('WEBSITE')
+    expect(getCompanyKind(report as any)).toEqual('WEBSITE')
   })
 
   it(`shouldn't ask companyKind when defined`, () => {
