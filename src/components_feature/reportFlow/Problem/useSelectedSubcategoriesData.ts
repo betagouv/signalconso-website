@@ -2,7 +2,7 @@ import {instanceOfSubcategoryWithInfoWall} from '@/anomalies/Anomalies'
 import {lastFromArray, notUndefined} from '@/utils/utils'
 import {Anomaly, Subcategory} from '../../../anomalies/Anomaly'
 
-export function computeSelectedSubcategoriesData(anomaly: Anomaly, selectedSubCategories: Subcategory[]) {
+export function computeSelectedSubcategoriesData(selectedSubCategories: Subcategory[]) {
   const tagsFromSelected = selectedSubCategories.flatMap(_ => _.tags ?? [])
 
   // 2023-12 ReponseConso says we should not send them multiple reponseConso codes, it breaks something for them

@@ -44,8 +44,7 @@ export const getSubcategories = (r: Pick<ReportDraft, 'subcategoriesIndexes' | '
 
 export const getTags = (r: Pick<ReportDraft, 'subcategoriesIndexes' | 'step0'>): ReportTag[] => {
   const subcategories = getSubcategories(r)
-  const anomaly = getAnomaly(r)
-  const {tagsFromSelected} = computeSelectedSubcategoriesData(anomaly, subcategories)
+  const {tagsFromSelected} = computeSelectedSubcategoriesData(subcategories)
   return tagsFromSelected
 }
 
@@ -55,15 +54,15 @@ export const getCompanyKind = (r: Pick<ReportDraft, 'step0' | 'subcategoriesInde
 }
 
 export const getReponseConsoCode = (r: Pick<ReportDraft, 'step0' | 'subcategoriesIndexes'>) => {
-  return computeSelectedSubcategoriesData(getAnomaly(r), getSubcategories(r)).reponseconsoCode
+  return computeSelectedSubcategoriesData(getSubcategories(r)).reponseconsoCode
 }
 
 export const getCcrfCode = (r: Pick<ReportDraft, 'step0' | 'subcategoriesIndexes'>) => {
-  return computeSelectedSubcategoriesData(getAnomaly(r), getSubcategories(r)).ccrfCode
+  return computeSelectedSubcategoriesData(getSubcategories(r)).ccrfCode
 }
 
 export const getCategoryOverride = (r: Pick<ReportDraft, 'step0' | 'subcategoriesIndexes'>) => {
-  return computeSelectedSubcategoriesData(getAnomaly(r), getSubcategories(r)).categoryOverride
+  return computeSelectedSubcategoriesData(getSubcategories(r)).categoryOverride
 }
 
 // Returns the company kind for a WIP draft during step1

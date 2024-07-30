@@ -74,7 +74,7 @@ function ProblemInner({anomaly, isWebView, stepNavigation}: Props) {
   const isTransmittable = isTransmittableToProBeforePickingConsumerWish(reportDraft)
   const askConsumerWish = isTransmittable && companyKindAfterOverride !== 'SOCIAL'
 
-  const {lastSubcategories, isLastSubcategory, companyKindQuestion} = computeSelectedSubcategoriesData(anomaly, subcategories)
+  const {lastSubcategories, isLastSubcategory, companyKindQuestion} = computeSelectedSubcategoriesData(subcategories)
 
   function onFinalSubmit(next: () => void): void {
     setReportDraft(draft => {
