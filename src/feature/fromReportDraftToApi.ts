@@ -3,7 +3,15 @@ import {CompanySearchResult} from '@/model/Company'
 import {Influencer, ReportDraft} from '@/model/ReportDraft'
 import {ApiInfluencer, ApiReportDraft} from '@/model/reportsFromApi'
 import {CommonCompanyIdentification, ForeignWebsiteCompanyIdentification, Step2Model} from '@/model/Step2Model'
-import {getAnomaly, getCcrfCode, getCompanyKind, getReponseConsoCode, getSubcategories, getTags} from './reportDraftUtils'
+import {
+  getAnomaly,
+  getCategoryOverride,
+  getCcrfCode,
+  getCompanyKind,
+  getReponseConsoCode,
+  getSubcategories,
+  getTags,
+} from './reportDraftUtils'
 
 export const toApi = (draft: ReportDraft, metadata: ApiReportDraft['metadata']): ApiReportDraft => {
   const {
@@ -18,7 +26,7 @@ export const toApi = (draft: ReportDraft, metadata: ApiReportDraft['metadata']):
     // We don't use the rest syntax here ("..."),
     // we prefer to be sure to fill each field explicitely
     gender: consumer.gender,
-    category: draft.categoryOverride ?? draft.step0.category,
+    category: getCategoryOverride(draft) ?? draft.step0.category,
     subcategories: subcategories.map(_ => _.title),
     details: draft.step3.details,
     firstName: consumer.firstName,
