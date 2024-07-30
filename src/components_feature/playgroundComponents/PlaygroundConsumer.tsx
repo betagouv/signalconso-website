@@ -11,7 +11,13 @@ export const PlaygroundConsumer = () => {
             lang: 'fr',
           },
           subcategoriesIndexes: [0],
-          companyKind: 'LOCATION',
+          step2: {
+            kind: 'basic',
+            companyIdentification: {
+              kind: 'consumerLocation',
+              consumerPostalCode: '13002',
+            },
+          },
         }}
         onSubmit={x => alert(JSON.stringify(x))}
         stepNavigation={dummyStepNavigation}
