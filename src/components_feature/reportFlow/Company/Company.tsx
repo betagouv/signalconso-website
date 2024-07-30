@@ -5,12 +5,12 @@ import {CompanySearchByName} from '@/components_feature/reportFlow/Company/Compa
 import {NoSearchResult} from '@/components_feature/reportFlow/Company/lib/NoSearchResult'
 import {ScRadioButtons} from '@/components_simple/formInputs/ScRadioButtons'
 import {Loader} from '@/feature/Loader'
-import {hasStep0, hasStep2, hasSubcategoryIndexes} from '@/feature/reportDraftUtils'
+import {getCompanyKind, hasStep0, hasStep2, hasSubcategoryIndexes} from '@/feature/reportDraftUtils'
 import {useBarcodeSearch} from '@/hooks/barcode'
 import {ReportDraft2} from '@/model/ReportDraft2'
 import {CommonCompanyIdentification, Step2Model} from '@/model/Step2Model'
 import {useState} from 'react'
-import {SpecificProductCompanyKind, SpecificWebsiteCompanyKind} from '../../../anomalies/Anomaly'
+import {CompanyKind, SpecificProductCompanyKind, SpecificWebsiteCompanyKind} from '../../../anomalies/Anomaly'
 import {CompanySearchResult} from '../../../model/Company'
 import {useReportFlowContext} from '../ReportFlowContext'
 import {StepNavigation} from '../reportFlowStepper/ReportFlowStepper'
@@ -71,8 +71,14 @@ type CommonProps = {
   updateReport: (step2: Step2Model) => void
 }
 
-export function CompanyIdentificationDispatch({draft, updateReport}: CommonProps) {
-  switch (draft.companyKind) {
+export function CompanyIdentificationDispatch({
+  draft,
+  updateReport,
+  companyKindForPlayground,
+}: CommonProps & {
+  companyKindForPlayground?: CompanyKind
+}) {
+  switch (companyKindForPlayground ?? getCompanyKind(draft)) {
     case 'TRAIN':
       return (
         <CompanyByTrain
@@ -227,7 +233,7 @@ function CompanyIdentificationTree({
   searchResults: CompanySearchResult[] | undefined
   onIdentification: (_: CommonCompanyIdentification) => void
 }) {
-  const companyKind = draft.companyKind
+  const companyKind = getCompanyKind(draft)
   if (!companyKind) {
     throw new Error('The draft should have a companyKind already')
   }
@@ -306,7 +312,7 @@ function CompanyIdentificationTree({
               </CompanySearchByIdentifier>
             )
           case 'iCannot':
-            if (draft.companyKind === 'LOCATION') {
+            if (companyKind === 'LOCATION') {
               return (
                 <CompanyAskConsumerStreet
                   onChange={({postalCode, street}) => {

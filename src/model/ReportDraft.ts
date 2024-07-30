@@ -32,12 +32,12 @@ export interface ReportDraft {
   }
   subcategoriesIndexes: number[]
   categoryOverride?: string
+  companyKindOverride?: CompanyKind
   // pretty sure some of these fields aren't actually optional in the draft
   employeeConsumer?: boolean
   ccrfCode?: string[]
   reponseconsoCode?: string
   consumerWish?: ConsumerWish
-  companyKind?: CompanyKind
   openFf?: OpenFfResult
   rappelConso?: RappelConsoResult
 }

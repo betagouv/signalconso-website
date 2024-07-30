@@ -19,10 +19,10 @@ export const PlaygroundCompany = ({companyKind = 'SIRET', partialReportDraft = {
             category: 'DemoCategory',
             lang: 'fr',
           },
-          subcategoriesIndexes: [0, 0],
+          subcategoriesIndexes: [0],
           ...partialReportDraft,
-          companyKind,
         }}
+        companyKindForPlayground={companyKind}
         updateReport={x => setReport(x as Partial<ReportDraft2>)}
       />
       <pre className="text-gray-500 text-sm">{JSON.stringify(report, undefined, 2)}</pre>

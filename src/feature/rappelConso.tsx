@@ -1,12 +1,13 @@
 import {Anomaly} from '@/anomalies/Anomaly'
-import {useSearchParams} from 'next/navigation'
-import {useQuery} from '@tanstack/react-query'
-import {useApiClients} from '@/context/ApiClientsContext'
 import {RappelConsoApiResult} from '@/clients/RappelConsoClient'
-import {SpecialCategorySetup} from '@/feature/SpecialCategorySetup'
-import {useMemo} from 'react'
-import {Loader} from '@/feature/Loader'
+import {SetReportDraft} from '@/components_feature/reportFlow/ReportFlowContext'
+import {useApiClients} from '@/context/ApiClientsContext'
 import {BlueBanner} from '@/feature/BlueBanner'
+import {Loader} from '@/feature/Loader'
+import {SpecialCategorySetup} from '@/feature/SpecialCategorySetup'
+import {useQuery} from '@tanstack/react-query'
+import {useSearchParams} from 'next/navigation'
+import {useEffect, useMemo} from 'react'
 
 const RAPPEL_CONSO_ID_PARAM = 'id_rappel'
 
@@ -82,6 +83,16 @@ export function useRappelConsoSetup(anomaly: Anomaly): SpecialCategorySetup<Rapp
   }, [rappelConsoId, _query.data, _query.status])
 }
 
+export function useHandleRcSetupLoaded(setup: SpecialCategorySetup<RappelConsoResult>, setReportDraft: SetReportDraft) {
+  useEffect(() => {
+    if (setup.status === 'loaded') {
+      setReportDraft(_ => ({
+        ..._,
+        rappelConso: setup.result,
+      }))
+    }
+  }, [setup, setReportDraft])
+}
 export function RappelConsoWelcome({setup}: {setup: SpecialCategorySetup<RappelConsoResult>}) {
   if (setup.status === 'skipped') {
     return null
