@@ -1,7 +1,7 @@
 import {StandardSubcategory} from '@/anomalies/Anomaly'
 import {ClientReferenceHelpButton} from '@/components_feature/reportFlow/Consumer/ClientReferenceHelpButton'
+import {NextStepButton} from '@/components_feature/reportFlow/reportFlowStepper/NextStepButton'
 import {StepNavigation} from '@/components_feature/reportFlow/reportFlowStepper/ReportFlowStepper'
-import {ReportFlowStepperActions} from '@/components_feature/reportFlow/reportFlowStepper/ReportFlowStepperActions'
 import {RequiredFieldsLegend} from '@/components_simple/RequiredFieldsLegend'
 import {ScTextInput} from '@/components_simple/formInputs/ScTextInput'
 import {useApiClients} from '@/context/ApiClientsContext'
@@ -271,7 +271,7 @@ export const ConsumerInner = ({
         </div>
       </div>
       <ConsumerValidationDialog2 consumerEmail={_form.getValues().email} onValidated={saveAndNext} />
-      <ReportFlowStepperActions
+      <NextStepButton
         loadingNext={_checkEmail.isPending}
         onNext={() => {
           _form.handleSubmit(async form => {

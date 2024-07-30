@@ -1,6 +1,6 @@
 import {useAnalyticContext} from '@/analytic/AnalyticContext'
+import {NextStepButton} from '@/components_feature/reportFlow/reportFlowStepper/NextStepButton'
 import {StepNavigation} from '@/components_feature/reportFlow/reportFlowStepper/ReportFlowStepper'
-import {ReportFlowStepperActions} from '@/components_feature/reportFlow/reportFlowStepper/ReportFlowStepperActions'
 import {Animate} from '@/components_simple/Animate'
 import {FriendlyHelpText} from '@/components_simple/FriendlyHelpText'
 import {RequiredFieldsLegend} from '@/components_simple/RequiredFieldsLegend'
@@ -202,7 +202,7 @@ export const DetailsInner = ({
           />
         </div>
       </Animate>
-      <ReportFlowStepperActions
+      <NextStepButton
         onNext={next => {
           if (tooManyFiles) {
             setHasTriedToSubmit(true)

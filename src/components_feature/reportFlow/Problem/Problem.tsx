@@ -1,7 +1,7 @@
 import {useAnalyticContext} from '@/analytic/AnalyticContext'
 import {EventCategories, ReportEventActions} from '@/analytic/analytic'
+import {NextStepButton} from '@/components_feature/reportFlow/reportFlowStepper/NextStepButton'
 import {StepNavigation} from '@/components_feature/reportFlow/reportFlowStepper/ReportFlowStepper'
-import {ReportFlowStepperActions} from '@/components_feature/reportFlow/reportFlowStepper/ReportFlowStepperActions'
 import {OpenFfWelcomeText, useOpenFfSetupLoaded as useHandleOpenFfSetupLoaded, useOpenFfSetup} from '@/feature/openFoodFacts'
 import {RappelConsoWelcome, useHandleRcSetupLoaded, useRappelConsoSetup} from '@/feature/rappelConso'
 import {
@@ -128,7 +128,7 @@ function ProblemInner({anomaly, isWebView, stepNavigation}: Props) {
                   >
                     {() => (
                       <ProblemConsumerWish {...{askConsumerWish, hasReponseConsoTag}}>
-                        {() => <ReportFlowStepperActions onNext={onFinalSubmit} {...{stepNavigation}} />}
+                        {() => <NextStepButton onNext={onFinalSubmit} {...{stepNavigation}} />}
                       </ProblemConsumerWish>
                     )}
                   </ProblemCompanyKindOverride>
