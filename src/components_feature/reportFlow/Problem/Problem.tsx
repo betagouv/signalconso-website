@@ -14,7 +14,6 @@ import {
   isTransmittableToProBeforePickingConsumerWish,
 } from '@/feature/reportDraftUtils'
 import {useI18n} from '@/i18n/I18n'
-import {ConsumerWish} from '@/model/ReportDraft'
 import {initiateReportDraft, ReportDraft2} from '@/model/ReportDraft2'
 import {Step2Model} from '@/model/Step2Model'
 import {useEffect} from 'react'
@@ -22,11 +21,10 @@ import {instanceOfSubcategoryWithInfoWall} from '../../../anomalies/Anomalies'
 import {Anomaly} from '../../../anomalies/Anomaly'
 import {useReportFlowContext} from '../ReportFlowContext'
 import {ProblemCompanyKindOverride} from './ProblemCompanyKindOverride'
-import {ProblemConsumerWishInformation} from './ProblemConsumerWishInformation'
+import {ProblemConsumerWish} from './ProblemConsumerWish'
 import {ProblemEmployeeConsumer} from './ProblemEmployeeConsumer'
 import {ProblemInformation} from './ProblemInformation'
 import {ProblemSelect} from './ProblemSelect'
-import {ProblemStepper, ProblemStepperStep} from './ProblemStepper'
 import {computeSelectedSubcategoriesData} from './useSelectedSubcategoriesData'
 
 interface Props {
@@ -67,8 +65,7 @@ function ProblemInner({anomaly, isWebView, stepNavigation}: Props) {
   const subcategories = hasSubcategoryIndexes(reportDraft) ? getSubcategories(reportDraft) : []
   const tags = hasSubcategoryIndexes(reportDraft) ? getTags(reportDraft) : []
   const hasTagProduitDangereux = tags.includes('ProduitDangereux')
-  const hasReponseConsoSubcategories = tags.includes('ReponseConso')
-  const companyKindOverride = reportDraft.companyKindOverride
+  const hasReponseConsoTag = tags.includes('ReponseConso')
   const companyKindBeforeOverride = getWipCompanyKindFromSelected(reportDraft)
   const companyKindAfterOverride = getCompanyKind({...reportDraft, subcategoriesIndexes: reportDraft.subcategoriesIndexes ?? []})
   const predeterminedEmployeeConsumer = companyKindAfterOverride === 'SOCIAL' ? false : undefined
@@ -146,50 +143,9 @@ function ProblemInner({anomaly, isWebView, stepNavigation}: Props) {
                 {() => (
                   <ProblemCompanyKindOverride {...{companyKindBeforeOverride, companyKindQuestion, hasTagProduitDangereux}}>
                     {() => (
-                      <ProblemStepper renderDone={<ReportFlowStepperActions onNext={onFinalSubmit} {...{stepNavigation}} />}>
-                        <ProblemStepperStep isDone={reportDraft.consumerWish !== undefined} hidden={!askConsumerWish}>
-                          <ProblemSelect
-                            id="select-contractualDispute"
-                            title={m.whatsYourIntent}
-                            value={reportDraft.consumerWish}
-                            options={[
-                              {
-                                title: m.problemContractualDisputeFormYes,
-                                description: m.problemContractualDisputeFormDesc,
-                                value: 'fixContractualDispute',
-                              },
-                              {
-                                title: m.problemContractualDisputeFormNo,
-                                description: m.problemContractualDisputeFormNoDesc,
-                                value: 'companyImprovement',
-                              },
-                              ...(hasReponseConsoSubcategories
-                                ? [
-                                    {
-                                      title: m.problemContractualDisputeFormReponseConso,
-                                      description: m.problemContractualDisputeFormReponseConsoExample,
-                                      value: 'getAnswer' as const,
-                                    },
-                                  ]
-                                : []),
-                            ]}
-                            onChange={(consumerWish: ConsumerWish) => {
-                              setReportDraft(report => {
-                                const updated = {...report, consumerWish}
-                                _analytic.trackEvent(
-                                  EventCategories.report,
-                                  ReportEventActions.consumerWish,
-                                  updated.consumerWish,
-                                )
-                                return updated
-                              })
-                            }}
-                          />
-                        </ProblemStepperStep>
-                        <ProblemStepperStep isDone={true} hidden={!(askConsumerWish && reportDraft.consumerWish)}>
-                          {reportDraft.consumerWish && <ProblemConsumerWishInformation consumerWish={reportDraft.consumerWish} />}
-                        </ProblemStepperStep>
-                      </ProblemStepper>
+                      <ProblemConsumerWish {...{askConsumerWish, hasReponseConsoTag}}>
+                        {() => <ReportFlowStepperActions onNext={onFinalSubmit} {...{stepNavigation}} />}
+                      </ProblemConsumerWish>
                     )}
                   </ProblemCompanyKindOverride>
                 )}
