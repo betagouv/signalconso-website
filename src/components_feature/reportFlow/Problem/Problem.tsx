@@ -4,7 +4,7 @@ import {NextStepButton} from '@/components_feature/reportFlow/reportFlowStepper/
 import {StepNavigation} from '@/components_feature/reportFlow/reportFlowStepper/ReportFlowStepper'
 import {OpenFfWelcomeText, useOpenFfSetupLoaded as useHandleOpenFfSetupLoaded, useOpenFfSetup} from '@/feature/openFoodFacts'
 import {RappelConsoWelcome, useHandleRcSetupLoaded, useRappelConsoSetup} from '@/feature/rappelConso'
-import {hasStep0} from '@/feature/reportUtils'
+import {hasStep0, hasStep1Full} from '@/feature/reportUtils'
 import {initiateReport} from '@/feature/reportUtils2'
 import {useI18n} from '@/i18n/I18n'
 import {Step2Model} from '@/model/Step2Model'
@@ -23,17 +23,17 @@ interface Props {
 }
 
 export function Problem({anomaly, isWebView, stepNavigation}: Props) {
-  const {report: report, setReport: setReport, resetFlow} = useReportFlowContext()
+  const {report, setReport, resetReport} = useReportFlowContext()
   const {currentLang} = useI18n()
   const _analytic = useAnalyticContext()
   const isDraftInitialized = hasStep0(report) && anomaly.category === report.step0.category
   useEffect(() => {
     if (!isDraftInitialized) {
       _analytic.trackEvent(EventCategories.report, ReportEventActions.validateCategory, anomaly.category)
-      resetFlow()
+      resetReport()
       setReport(_ => initiateReport(anomaly, currentLang))
     }
-  }, [isDraftInitialized, setReport, anomaly, currentLang, _analytic, resetFlow])
+  }, [isDraftInitialized, setReport, anomaly, currentLang, _analytic, resetReport])
   if (!isDraftInitialized) {
     return null
   }
@@ -41,7 +41,7 @@ export function Problem({anomaly, isWebView, stepNavigation}: Props) {
 }
 
 function ProblemInner({anomaly, isWebView, stepNavigation}: Props) {
-  const {report: report, setReport: setReport, sendReportEvent} = useReportFlowContext()
+  const {report, setReport, sendReportEvent} = useReportFlowContext()
   if (!hasStep0(report)) {
     throw new Error('Report should have a lang and a category already (in Problem)')
   }
@@ -50,24 +50,20 @@ function ProblemInner({anomaly, isWebView, stepNavigation}: Props) {
   useHandleOpenFfSetupLoaded(openFfSetup, setReport)
   useHandleRcSetupLoaded(rappelConsoSetup, setReport)
   const specialCategoriesNotLoading = openFfSetup.status !== 'loading' && rappelConsoSetup.status !== 'loading'
-  const onNext = buildOnNext({sendReportEvent, setReport: setReport, stepNavigation})
+  const onNext = buildOnNext({sendReportEvent, setReport, stepNavigation})
   return (
     <>
       <OpenFfWelcomeText setup={openFfSetup} />
       <RappelConsoWelcome setup={rappelConsoSetup} />
       {specialCategoriesNotLoading && (
         <ProblemSubcategories {...{isWebView}}>
-          {() => (
-            <ProblemEmployeeConsumer>
-              {() => (
-                <ProblemCompanyKindOverride>
-                  {() => {
-                    return <ProblemConsumerWish>{() => <NextStepButton {...{onNext, stepNavigation}} />}</ProblemConsumerWish>
-                  }}
-                </ProblemCompanyKindOverride>
-              )}
-            </ProblemEmployeeConsumer>
-          )}
+          <ProblemEmployeeConsumer>
+            <ProblemCompanyKindOverride>
+              <ProblemConsumerWish>
+                <NextStepButton {...{onNext, stepNavigation}} />
+              </ProblemConsumerWish>
+            </ProblemCompanyKindOverride>
+          </ProblemEmployeeConsumer>
         </ProblemSubcategories>
       )}
     </>
@@ -85,17 +81,21 @@ function buildOnNext({
 }) {
   return function onNext(next: () => void): void {
     setReport(draft => {
+      if (!hasStep1Full(draft)) {
+        throw new Error(`Report is not ready to go to next step, step1 is not full`)
+      }
       // In the openFf scenario
       // Only if we got all the data, then we build the company/product from it.
       // If we only have partial data, then we will build it in step 2.
+      const {openFf} = draft.step1
       const step2: Step2Model | undefined =
-        draft.openFf && draft.openFf.product && draft.openFf.company
+        openFf && openFf.product && openFf.company
           ? {
               kind: 'product',
-              barcodeProduct: draft.openFf.product,
+              barcodeProduct: openFf.product,
               companyIdentification: {
                 kind: 'companyFound',
-                company: draft.openFf.company,
+                company: openFf.company,
               },
             }
           : draft.step2

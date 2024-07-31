@@ -13,7 +13,7 @@ import {NoSearchResult} from './NoSearchResult'
 interface BarcodeSearchResultPros {
   product?: BarcodeProduct
   company?: CompanySearchResult
-  report: Pick<Report, 'subcategoriesIndexes' | 'step0'>
+  report: Pick<Report, 'step1' | 'step0'>
   onSubmit: (selected: CompanySearchResult, product: BarcodeProduct) => void
   noResultsPanel?: ReactNode
   specificProductCompanyKinds: SpecificProductCompanyKind

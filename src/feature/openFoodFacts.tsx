@@ -1,5 +1,5 @@
 import {Anomaly} from '@/anomalies/Anomaly'
-import {SetReport} from '@/components_feature/reportFlow/ReportFlowContext'
+import {PartialReport, SetReport} from '@/components_feature/reportFlow/ReportFlowContext'
 import {buildCompanyName} from '@/components_simple/CompanyRecap/companyNameUtils'
 import {BlueBanner} from '@/feature/BlueBanner'
 import {Loader} from '@/feature/Loader'
@@ -7,7 +7,6 @@ import {SpecialCategorySetup} from '@/feature/SpecialCategorySetup'
 import {useBarcodeSearch} from '@/hooks/barcode'
 import {BarcodeProduct} from '@/model/BarcodeProduct'
 import {CompanySearchResult} from '@/model/Company'
-import {Report} from '@/model/Report'
 import {useSearchParams} from 'next/navigation'
 import {useEffect, useMemo} from 'react'
 
@@ -64,8 +63,8 @@ function useBarcodeParam(anomaly: Anomaly) {
   return (anomaly.specialCategory === 'OpenFoodFacts' && searchParams.get(OPENFOODFACTS_BARCODE_PARAM)?.trim()) || undefined
 }
 
-export function recreateOpenFfBarcodeParam(report: Partial<Report>) {
-  const barcode = report.openFf?.barcode
+export function recreateOpenFfBarcodeParam(report: PartialReport) {
+  const barcode = report.step1?.openFf?.barcode
   const params = new URLSearchParams()
   if (barcode) {
     params.set(OPENFOODFACTS_BARCODE_PARAM, barcode)

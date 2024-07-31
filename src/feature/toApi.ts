@@ -17,7 +17,7 @@ import {parseReportDetails} from './reportUtils2'
 
 export const toApi = (draft: Report, metadata: ApiReport['metadata']): ApiReport => {
   const {
-    consumerWish,
+    step1: {consumerWish},
     step4: {contactAgreement, consumer},
   } = draft
   const reponseconsoCode = getReponseConsoCode(draft)
@@ -39,21 +39,21 @@ export const toApi = (draft: Report, metadata: ApiReport['metadata']): ApiReport
     consumerPhone: consumer.phone,
     consumerReferenceNumber: consumer.referenceNumber,
     contactAgreement,
-    employeeConsumer: draft.employeeConsumer ?? false,
+    employeeConsumer: draft.step1.employeeConsumer ?? false,
     forwardToReponseConso: consumerWish === 'getAnswer',
     fileIds: draft.step3.uploadedFiles?.map(file => file.id) ?? [],
     tags,
     reponseconsoCode: reponseconsoCode ? [reponseconsoCode] : undefined,
     ccrfCode,
     lang: draft.step0.lang,
-    rappelConsoId: draft.rappelConso?.id,
+    rappelConsoId: draft.step1.rappelConso?.id,
     metadata,
     ...step2ToApi(draft.step2),
   }
 }
 
 function computeFinalTags(draft: Report): ReportTag[] {
-  const {consumerWish} = draft
+  const {consumerWish} = draft.step1
   const companyKind = getCompanyKind(draft)
   const tagsSet = new Set(getTags(draft))
   if (companyKind === 'WEBSITE' || companyKind === 'MERCHANT_WEBSITE' || companyKind === 'TRANSPORTER_WEBSITE') {

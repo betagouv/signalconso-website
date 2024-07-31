@@ -1,12 +1,11 @@
 import {AnalyticProvider} from '@/analytic/AnalyticContext'
 import {ReportCreateProvider} from '@/components_feature/reportFlow/ReportCreateContext'
-import {ReportFlowProvider, useReportFlowContext} from '@/components_feature/reportFlow/ReportFlowContext'
+import {PartialReport, ReportFlowProvider, useReportFlowContext} from '@/components_feature/reportFlow/ReportFlowContext'
 import {ProvidersChain} from '@/components_simple/ProvidersChain'
 import {ApiClientsProvider} from '@/context/ApiClientsContext'
 import {AutoscrollProvider} from '@/context/AutoscrollContext'
 import {I18nProvider} from '@/i18n/I18n'
 import {fr} from '@/i18n/localization/fr'
-import {Report} from '@/model/Report'
 import {QueryClient, QueryClientProvider} from '@tanstack/react-query'
 import {RenderResult, render} from '@testing-library/react'
 import React, {ReactNode, useEffect} from 'react'
@@ -60,7 +59,7 @@ export const AccessReportFlow = ({
   onReportChange,
 }: {
   children: ReactNode
-  onReportChange: (_: Partial<Report>) => void
+  onReportChange: (_: PartialReport) => void
 }) => {
   const _ = useReportFlowContext()
   useEffect(() => {
@@ -72,7 +71,7 @@ export const AccessReportFlow = ({
 interface Options {
   signalConsoApiClient?: DeepPartial<SignalConsoApiClient>
   companyApiClient?: DeepPartial<CompanyPublicClient>
-  initialReport?: Partial<Report>
+  initialReport?: PartialReport
 }
 
 export interface ScRenderResult extends RenderResult {

@@ -5,14 +5,14 @@ import {CompanySearchByName} from '@/components_feature/reportFlow/Company/Compa
 import {NoSearchResult} from '@/components_feature/reportFlow/Company/lib/NoSearchResult'
 import {ScRadioButtons} from '@/components_simple/formInputs/ScRadioButtons'
 import {Loader} from '@/feature/Loader'
-import {getCompanyKind, hasStep0, hasStep2, hasSubcategoryIndexes} from '@/feature/reportUtils'
+import {getCompanyKind, hasStep0, hasStep1Full, hasStep2} from '@/feature/reportUtils'
 import {useBarcodeSearch} from '@/hooks/barcode'
 import {Report} from '@/model/Report'
 import {CommonCompanyIdentification, Step2Model} from '@/model/Step2Model'
 import {useState} from 'react'
 import {CompanyKind, SpecificProductCompanyKind, SpecificWebsiteCompanyKind} from '../../../anomalies/Anomaly'
 import {CompanySearchResult} from '../../../model/Company'
-import {useReportFlowContext} from '../ReportFlowContext'
+import {PartialReport, useReportFlowContext} from '../ReportFlowContext'
 import {StepNavigation} from '../reportFlowStepper/ReportFlowStepper'
 import {CompanyAskConsumerPostalCode} from './CompanyAskConsumerPostalCode'
 import {CompanyAskConsumerStreet} from './CompanyAskConsumerStreet'
@@ -34,11 +34,8 @@ import {BarcodeSearchResult} from './lib/BarcodeSearchResult'
 export function Company({stepNavigation}: {stepNavigation: StepNavigation}) {
   const {report: report, setReport: setReport, sendReportEvent} = useReportFlowContext()
   const draft = report
-  if (!hasStep0(draft)) {
-    throw new Error(`The draft should have step0 already, to display Company`)
-  }
-  if (!hasSubcategoryIndexes(draft)) {
-    throw new Error(`The draft should have subcategoriesIndexes already, to display Company`)
+  if (!hasStep0(draft) || !hasStep1Full(draft)) {
+    throw new Error(`The draft is not ready to display Company step`)
   }
   if (hasStep2(draft)) {
     const {step2} = draft
@@ -67,7 +64,7 @@ export function Company({stepNavigation}: {stepNavigation: StepNavigation}) {
 }
 
 type CommonProps = {
-  draft: Partial<Report> & Pick<Report, 'subcategoriesIndexes' | 'step0'>
+  draft: Pick<Report, 'step0' | 'step1'>
   updateReport: (step2: Step2Model) => void
 }
 
@@ -229,7 +226,7 @@ function CompanyIdentificationTree({
   draft,
   onIdentification,
 }: {
-  draft: Partial<Report> & Pick<Report, 'step0' | 'subcategoriesIndexes'>
+  draft: PartialReport & Pick<Report, 'step0' | 'step1'>
   searchResults: CompanySearchResult[] | undefined
   onIdentification: (_: CommonCompanyIdentification) => void
 }) {
@@ -383,7 +380,7 @@ function BarcodeTree({
   updateReport,
 }: {
   specificProductCompanyKinds: SpecificProductCompanyKind
-  draft: Partial<Report> & Pick<Report, 'subcategoriesIndexes' | 'step0'>
+  draft: PartialReport & Pick<Report, 'step1' | 'step0'>
   updateReport: (step2: Step2Model) => void
 }) {
   return (
@@ -453,7 +450,7 @@ function BarcodeTree({
 }
 
 function OpenFfTree({draft, updateReport}: CommonProps) {
-  const {company, product} = draft.openFf ?? {}
+  const {company, product} = draft.step1.openFf ?? {}
   if (!product) {
     // We were not able to find the product with the barcode from OpenFF
     // Let's forget about it entirely and fallback on the regular search
@@ -501,7 +498,7 @@ function OpenFfTree({draft, updateReport}: CommonProps) {
 }
 
 function RappelConsoTree({draft, updateReport}: CommonProps) {
-  const {data} = draft.rappelConso ?? {}
+  const {data} = draft.step1.rappelConso ?? {}
   if (!data || data.gtins.length === 0) {
     return <BarcodeTree {...{draft, updateReport}} specificProductCompanyKinds={'PRODUCT'} />
   } else if (data.gtins.length === 1) {

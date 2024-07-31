@@ -11,12 +11,13 @@ import {Controller, useForm} from 'react-hook-form'
 import {ScRadioButtons} from '../../../components_simple/formInputs/ScRadioButtons'
 import {useToastError} from '../../../hooks/useToastError'
 import {CompanySearchResult, isGovernmentCompany} from '../../../model/Company'
+import {PartialReport} from '../ReportFlowContext'
 import {CompanyWebsiteVendor} from './CompanyWebsiteVendor'
 import {NoSearchResult} from './lib/NoSearchResult'
 
 interface Props {
   companies: CompanySearchResult[]
-  report: Partial<Report> & Pick<Report, 'step0' | 'subcategoriesIndexes'>
+  report: PartialReport & Pick<Report, 'step0' | 'step1'>
   onSubmit: (selected: CompanySearchResult, vendor?: string) => void
 }
 

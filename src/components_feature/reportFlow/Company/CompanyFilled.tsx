@@ -10,7 +10,7 @@ export const CompanyFilled = ({
   onClear,
   stepNavigation,
 }: {
-  draft: Pick<Report, 'step2' | 'step0' | 'subcategoriesIndexes'>
+  draft: Pick<Report, 'step2' | 'step0' | 'step1'>
   onClear: () => void
   stepNavigation: StepNavigation
 }) => {

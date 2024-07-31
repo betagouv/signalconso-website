@@ -10,7 +10,7 @@ describe('getDraftReportInputs', () => {
           lang: 'fr',
           category: 'DemoCategory',
         },
-        subcategoriesIndexes: [0],
+        step1: {subcategoriesIndexes: [0]},
       },
       AppLangs.fr,
     )
@@ -24,8 +24,7 @@ describe('getDraftReportInputs', () => {
           lang: 'fr',
           category: 'DemoCategory',
         },
-        subcategoriesIndexes: [0],
-        consumerWish: 'getAnswer',
+        step1: {subcategoriesIndexes: [0], consumerWish: 'getAnswer'},
       },
       AppLangs.fr,
     )
@@ -43,7 +42,7 @@ describe('getDraftReportInputs', () => {
           lang: 'fr',
           category: 'DemoCategory',
         },
-        subcategoriesIndexes: [8],
+        step1: {subcategoriesIndexes: [8]},
       },
       AppLangs.fr,
     )
@@ -90,8 +89,7 @@ describe('getDraftReportInputs', () => {
           lang: 'fr',
           category: 'DemoCategory',
         },
-        subcategoriesIndexes: [4, 0],
-        consumerWish: 'getAnswer',
+        step1: {subcategoriesIndexes: [4, 0], consumerWish: 'getAnswer'},
       },
       AppLangs.fr,
     )
