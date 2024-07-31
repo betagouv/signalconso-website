@@ -1,6 +1,6 @@
 import {Anomaly} from '@/anomalies/Anomaly'
 import {RappelConsoApiResult} from '@/clients/RappelConsoClient'
-import {SetReportDraft} from '@/components_feature/reportFlow/ReportFlowContext'
+import {SetReport} from '@/components_feature/reportFlow/ReportFlowContext'
 import {useApiClients} from '@/context/ApiClientsContext'
 import {BlueBanner} from '@/feature/BlueBanner'
 import {Loader} from '@/feature/Loader'
@@ -83,15 +83,15 @@ export function useRappelConsoSetup(anomaly: Anomaly): SpecialCategorySetup<Rapp
   }, [rappelConsoId, _query.data, _query.status])
 }
 
-export function useHandleRcSetupLoaded(setup: SpecialCategorySetup<RappelConsoResult>, setReportDraft: SetReportDraft) {
+export function useHandleRcSetupLoaded(setup: SpecialCategorySetup<RappelConsoResult>, setReport: SetReport) {
   useEffect(() => {
     if (setup.status === 'loaded') {
-      setReportDraft(_ => ({
+      setReport(_ => ({
         ..._,
         rappelConso: setup.result,
       }))
     }
-  }, [setup, setReportDraft])
+  }, [setup, setReport])
 }
 export function RappelConsoWelcome({setup}: {setup: SpecialCategorySetup<RappelConsoResult>}) {
   if (setup.status === 'skipped') {

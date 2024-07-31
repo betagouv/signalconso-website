@@ -1,7 +1,7 @@
 /**
  * @jest-environment jsdom
  */
-import {ReportDraft} from '@/model/ReportDraft'
+import {Report} from '@/model/Report'
 import {waitFor} from '@testing-library/dom'
 import {Fixture} from '../../../test/fixture'
 import {fireEvent, render, ScRenderResult} from '../../../test/test-utils'
@@ -11,7 +11,7 @@ import {IdentificationMethod} from './CompanyChooseIdentificationMethod'
 
 describe('Details: single date not in future', () => {
   let app: ScRenderResult
-  let draft: Partial<ReportDraft> = {}
+  let draft: Partial<Report> = {}
 
   const elementShouldExists = async (querySelector: string) => {
     await waitFor(() => expect(app.container.querySelectorAll(querySelector).length).toEqual(1))

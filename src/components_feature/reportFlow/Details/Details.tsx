@@ -14,21 +14,21 @@ import {
   hasStep0,
   hasStep2,
   hasSubcategoryIndexes,
-} from '@/feature/reportDraftUtils'
+} from '@/feature/reportUtils'
 import {useI18n} from '@/i18n/I18n'
-import {DetailInputValues2} from '@/model/ReportDraft'
+import {DetailInputValues2} from '@/model/Report'
 import {fnSwitch} from '@/utils/FnSwitch'
 import {last} from '@/utils/lodashNamedExport'
 import {useEffect, useMemo, useState} from 'react'
 import {useForm} from 'react-hook-form'
 import {DetailInput, ReportTag, StandardSubcategory} from '../../../anomalies/Anomaly'
-import {ConsumerWish, TransmissionStatus} from '../../../model/ReportDraft'
+import {ConsumerWish, TransmissionStatus} from '../../../model/Report'
 import {FileOrigin, UploadedFile} from '../../../model/UploadedFile'
 import {useReportFlowContext} from '../ReportFlowContext'
 import {buildDefaultValues} from './DetailInputsUtils'
 import {DetailsAlertProduitDangereux} from './DetailsAlertProduitDangereux'
 import {DetailsInputRenderByType} from './DetailsInputRenderByType'
-import {getDraftReportInputs} from './draftReportInputs'
+import {getReportInputs} from './draftReportInputs'
 
 export class SpecifyFormUtils {
   static readonly specifyKeywordFr = '(à préciser)'
@@ -43,12 +43,12 @@ export const isSpecifyInputName = (name: string) => name.includes('_specify')
 export const Details = ({stepNavigation}: {stepNavigation: StepNavigation}) => {
   const _reportFlow = useReportFlowContext()
   const {currentLang} = useI18n()
-  const draft = _reportFlow.reportDraft
+  const draft = _reportFlow.report
   if (!hasStep0(draft) || !hasSubcategoryIndexes(draft)) {
     throw new Error(`The draft is not ready to display Details step`)
   }
   const inputs = useMemo(() => {
-    return getDraftReportInputs(draft, currentLang)
+    return getReportInputs(draft, currentLang)
   }, [draft.subcategoriesIndexes, getTags(draft), draft.consumerWish])
 
   if (
@@ -74,7 +74,7 @@ export const Details = ({stepNavigation}: {stepNavigation: StepNavigation}) => {
       employeeConsumer={draft.employeeConsumer}
       tags={getTags(draft)}
       onSubmit={(detailInputValues, uploadedFiles) => {
-        _reportFlow.setReportDraft(_ => ({..._, step3: {uploadedFiles, details: detailInputValues}}))
+        _reportFlow.setReport(_ => ({..._, step3: {uploadedFiles, details: detailInputValues}}))
         _reportFlow.sendReportEvent(stepNavigation.currentStep)
         stepNavigation.next()
       }}

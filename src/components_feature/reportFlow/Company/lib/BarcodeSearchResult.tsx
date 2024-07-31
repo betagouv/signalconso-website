@@ -1,8 +1,8 @@
 import {SpecificProductCompanyKind} from '@/anomalies/Anomaly'
 import {CompanyRecapFromSearchResult} from '@/components_simple/CompanyRecap/CompanyRecap'
 import {ProductRecap} from '@/components_simple/CompanyRecap/ProductRecap'
-import {getTags} from '@/feature/reportDraftUtils'
-import {ReportDraft} from '@/model/ReportDraft'
+import {getTags} from '@/feature/reportUtils'
+import {Report} from '@/model/Report'
 import {ReactNode} from 'react'
 import {BtnNext} from '../../../../components_simple/buttons/Buttons'
 import {useI18n} from '../../../../i18n/I18n'
@@ -13,7 +13,7 @@ import {NoSearchResult} from './NoSearchResult'
 interface BarcodeSearchResultPros {
   product?: BarcodeProduct
   company?: CompanySearchResult
-  reportDraft: Pick<ReportDraft, 'subcategoriesIndexes' | 'step0'>
+  report: Pick<Report, 'subcategoriesIndexes' | 'step0'>
   onSubmit: (selected: CompanySearchResult, product: BarcodeProduct) => void
   noResultsPanel?: ReactNode
   specificProductCompanyKinds: SpecificProductCompanyKind
@@ -22,7 +22,7 @@ interface BarcodeSearchResultPros {
 export const BarcodeSearchResult = ({
   product,
   company,
-  reportDraft,
+  report: report,
   onSubmit,
   specificProductCompanyKinds,
   noResultsPanel,
@@ -47,7 +47,7 @@ export const BarcodeSearchResult = ({
               </div>
               <div className="ml-4">
                 {company ? (
-                  <CompanyRecapFromSearchResult company={company} tags={getTags(reportDraft)} />
+                  <CompanyRecapFromSearchResult company={company} tags={getTags(report)} />
                 ) : (
                   <p className="text-gray-600">{m.barcodeNoCompanyFound}</p>
                 )}

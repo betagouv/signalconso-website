@@ -1,7 +1,7 @@
 import {SocialNetwork} from '@/anomalies/Anomaly'
 import {BarcodeProduct} from './BarcodeProduct'
 import {CompanySearchResult} from './Company'
-import {TrainDraft} from './ReportDraft'
+import {TrainDraft} from './Report'
 
 export type Step2Model =
   | {

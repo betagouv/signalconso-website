@@ -1,7 +1,7 @@
 import {Step2Recap} from '@/components_simple/CompanyRecap/Step2Recap'
-import {getTags} from '@/feature/reportDraftUtils'
+import {getTags} from '@/feature/reportUtils'
 import {useI18n} from '@/i18n/I18n'
-import {ReportDraft} from '@/model/ReportDraft'
+import {Report} from '@/model/Report'
 import {StepNavigation} from '../reportFlowStepper/ReportFlowStepper'
 import {CompanyActionButtons} from './CompanyActionButtons'
 
@@ -10,7 +10,7 @@ export const CompanyFilled = ({
   onClear,
   stepNavigation,
 }: {
-  draft: Pick<ReportDraft, 'step2' | 'step0' | 'subcategoriesIndexes'>
+  draft: Pick<Report, 'step2' | 'step0' | 'subcategoriesIndexes'>
   onClear: () => void
   stepNavigation: StepNavigation
 }) => {

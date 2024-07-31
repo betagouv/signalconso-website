@@ -4,13 +4,13 @@ import {NextStepButton} from '@/components_feature/reportFlow/reportFlowStepper/
 import {StepNavigation} from '@/components_feature/reportFlow/reportFlowStepper/ReportFlowStepper'
 import {OpenFfWelcomeText, useOpenFfSetupLoaded as useHandleOpenFfSetupLoaded, useOpenFfSetup} from '@/feature/openFoodFacts'
 import {RappelConsoWelcome, useHandleRcSetupLoaded, useRappelConsoSetup} from '@/feature/rappelConso'
-import {hasStep0} from '@/feature/reportDraftUtils'
-import {initiateReportDraft} from '@/feature/reportDraftUtils2'
+import {hasStep0} from '@/feature/reportUtils'
+import {initiateReport} from '@/feature/reportUtils2'
 import {useI18n} from '@/i18n/I18n'
 import {Step2Model} from '@/model/Step2Model'
 import {useEffect} from 'react'
 import {Anomaly} from '../../../anomalies/Anomaly'
-import {SendReportEvent, SetReportDraft, useReportFlowContext} from '../ReportFlowContext'
+import {SendReportEvent, SetReport, useReportFlowContext} from '../ReportFlowContext'
 import {ProblemCompanyKindOverride} from './ProblemCompanyKindOverride'
 import {ProblemConsumerWish} from './ProblemConsumerWish'
 import {ProblemEmployeeConsumer} from './ProblemEmployeeConsumer'
@@ -23,17 +23,17 @@ interface Props {
 }
 
 export function Problem({anomaly, isWebView, stepNavigation}: Props) {
-  const {reportDraft, setReportDraft, resetFlow} = useReportFlowContext()
+  const {report: report, setReport: setReport, resetFlow} = useReportFlowContext()
   const {currentLang} = useI18n()
   const _analytic = useAnalyticContext()
-  const isDraftInitialized = hasStep0(reportDraft) && anomaly.category === reportDraft.step0.category
+  const isDraftInitialized = hasStep0(report) && anomaly.category === report.step0.category
   useEffect(() => {
     if (!isDraftInitialized) {
       _analytic.trackEvent(EventCategories.report, ReportEventActions.validateCategory, anomaly.category)
       resetFlow()
-      setReportDraft(_ => initiateReportDraft(anomaly, currentLang))
+      setReport(_ => initiateReport(anomaly, currentLang))
     }
-  }, [isDraftInitialized, setReportDraft, anomaly, currentLang, _analytic, resetFlow])
+  }, [isDraftInitialized, setReport, anomaly, currentLang, _analytic, resetFlow])
   if (!isDraftInitialized) {
     return null
   }
@@ -41,16 +41,16 @@ export function Problem({anomaly, isWebView, stepNavigation}: Props) {
 }
 
 function ProblemInner({anomaly, isWebView, stepNavigation}: Props) {
-  const {reportDraft, setReportDraft, sendReportEvent} = useReportFlowContext()
-  if (!hasStep0(reportDraft)) {
-    throw new Error('ReportDraft should have a lang and a category already (in Problem)')
+  const {report: report, setReport: setReport, sendReportEvent} = useReportFlowContext()
+  if (!hasStep0(report)) {
+    throw new Error('Report should have a lang and a category already (in Problem)')
   }
   const openFfSetup = useOpenFfSetup(anomaly)
   const rappelConsoSetup = useRappelConsoSetup(anomaly)
-  useHandleOpenFfSetupLoaded(openFfSetup, setReportDraft)
-  useHandleRcSetupLoaded(rappelConsoSetup, setReportDraft)
+  useHandleOpenFfSetupLoaded(openFfSetup, setReport)
+  useHandleRcSetupLoaded(rappelConsoSetup, setReport)
   const specialCategoriesNotLoading = openFfSetup.status !== 'loading' && rappelConsoSetup.status !== 'loading'
-  const onNext = buildOnNext({sendReportEvent, setReportDraft, stepNavigation})
+  const onNext = buildOnNext({sendReportEvent, setReport: setReport, stepNavigation})
   return (
     <>
       <OpenFfWelcomeText setup={openFfSetup} />
@@ -75,16 +75,16 @@ function ProblemInner({anomaly, isWebView, stepNavigation}: Props) {
 }
 
 function buildOnNext({
-  setReportDraft,
+  setReport: setReport,
   stepNavigation,
   sendReportEvent,
 }: {
-  setReportDraft: SetReportDraft
+  setReport: SetReport
   stepNavigation: StepNavigation
   sendReportEvent: SendReportEvent
 }) {
   return function onNext(next: () => void): void {
-    setReportDraft(draft => {
+    setReport(draft => {
       // In the openFf scenario
       // Only if we got all the data, then we build the company/product from it.
       // If we only have partial data, then we will build it in step 2.

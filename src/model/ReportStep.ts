@@ -1,5 +1,5 @@
 import {I18nMessages} from '@/i18n/I18nDictionnary'
-import {ReportDraft} from './ReportDraft'
+import {Report} from './Report'
 
 export const STEP_PARAM_NAME = 'step'
 
@@ -52,7 +52,7 @@ export function isStepBeforeOrEqual(a: ReportStepOrDone, b: ReportStepOrDone) {
   return getIndexForStepOrDone(a) <= getIndexForStepOrDone(b)
 }
 
-function isBuildingStepDone(r: Partial<ReportDraft>, step: ReportStep) {
+function isBuildingStepDone(r: Partial<Report>, step: ReportStep) {
   switch (step) {
     case 'BuildingProblem':
       return !!r.step0 && !!r.subcategoriesIndexes && !!r.consumerWish && r.consumerWish !== undefined
@@ -83,7 +83,7 @@ export function getStepLabel(m: I18nMessages, step: ReportStep) {
   }
 }
 
-export function findCurrentStepForReport(report: Partial<ReportDraft>): ReportStep {
+export function findCurrentStepForReport(report: Partial<Report>): ReportStep {
   return reportSteps.find(step => !isBuildingStepDone(report, step))!
 }
 

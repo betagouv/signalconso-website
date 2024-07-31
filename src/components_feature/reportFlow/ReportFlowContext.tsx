@@ -1,14 +1,14 @@
-import {ReportDraft} from '@/model/ReportDraft'
+import {Report} from '@/model/Report'
 import React, {ReactNode, useContext, useRef, useState} from 'react'
 import {useAnalyticContext} from '../../analytic/AnalyticContext'
 import {EventCategories, ReportEventActions} from '../../analytic/analytic'
 import {ReportStepOrDone, getIndexForStepOrDone} from '../../model/ReportStep'
 
-export type SetReportDraft = (fn: (_: Partial<ReportDraft>) => Partial<ReportDraft>) => void
+export type SetReport = (fn: (_: Partial<Report>) => Partial<Report>) => void
 export type SendReportEvent = (_: ReportStepOrDone) => void
 interface ReportFlowContextProps {
-  reportDraft: Partial<ReportDraft>
-  setReportDraft: SetReportDraft
+  report: Partial<Report>
+  setReport: SetReport
   resetFlow: () => void
   sendReportEvent: SendReportEvent
 }
@@ -20,14 +20,14 @@ export const ReportFlowProvider = ({
   initialReportForTests,
 }: {
   children: ReactNode
-  initialReportForTests?: Partial<ReportDraft>
+  initialReportForTests?: Partial<Report>
 }) => {
   const _analytic = useAnalyticContext()
-  const [reportDraft, setReportDraft] = useState<Partial<ReportDraft>>(initialReportForTests ?? {})
+  const [report, setReport] = useState<Partial<Report>>(initialReportForTests ?? {})
   const currentStep = useRef<ReportStepOrDone | undefined>(undefined)
   // useEffect(() => {
-  //   console.log('@@@', reportDraft)
-  // }, [reportDraft])
+  //   console.log('@@@', report)
+  // }, [report])
   /**
    * Will send event at each step of the report workflow. The event must be unique, ie if a user decides to edit a previous step no step event will be triggered again
    * @param newStep
@@ -63,10 +63,10 @@ export const ReportFlowProvider = ({
   return (
     <ReportFlowContext.Provider
       value={{
-        reportDraft,
-        setReportDraft,
+        report,
+        setReport,
         resetFlow: () => {
-          setReportDraft({})
+          setReport({})
           currentStep.current = undefined
         },
         sendReportEvent,

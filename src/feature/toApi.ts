@@ -1,8 +1,8 @@
 import {Anomaly, ReportTag, SocialNetwork} from '@/anomalies/Anomaly'
-import {getDraftReportInputs} from '@/components_feature/reportFlow/Details/draftReportInputs'
+import {getReportInputs} from '@/components_feature/reportFlow/Details/draftReportInputs'
 import {CompanySearchResult} from '@/model/Company'
-import {Influencer, ReportDraft} from '@/model/ReportDraft'
-import {ApiInfluencer, ApiReportDraft} from '@/model/reportsFromApi'
+import {Influencer, Report} from '@/model/Report'
+import {ApiInfluencer, ApiReport} from '@/model/reportsFromApi'
 import {CommonCompanyIdentification, ForeignWebsiteCompanyIdentification, Step2Model} from '@/model/Step2Model'
 import {
   getAnomaly,
@@ -12,10 +12,10 @@ import {
   getReponseConsoCode,
   getSubcategories,
   getTags,
-} from './reportDraftUtils'
-import {parseReportDetails} from './reportDraftUtils2'
+} from './reportUtils'
+import {parseReportDetails} from './reportUtils2'
 
-export const toApi = (draft: ReportDraft, metadata: ApiReportDraft['metadata']): ApiReportDraft => {
+export const toApi = (draft: Report, metadata: ApiReport['metadata']): ApiReport => {
   const {
     consumerWish,
     step4: {contactAgreement, consumer},
@@ -24,7 +24,7 @@ export const toApi = (draft: ReportDraft, metadata: ApiReportDraft['metadata']):
   const ccrfCode = getCcrfCode(draft)
   const subcategories = getSubcategories(draft)
   const tags = computeFinalTags(draft)
-  const inputs = getDraftReportInputs(draft, draft.step0.lang)
+  const inputs = getReportInputs(draft, draft.step0.lang)
   const detailsParsed = parseReportDetails(draft.step3.details, inputs)
   return {
     // We don't use the rest syntax here ("..."),
@@ -52,7 +52,7 @@ export const toApi = (draft: ReportDraft, metadata: ApiReportDraft['metadata']):
   }
 }
 
-function computeFinalTags(draft: ReportDraft): ReportTag[] {
+function computeFinalTags(draft: Report): ReportTag[] {
   const {consumerWish} = draft
   const companyKind = getCompanyKind(draft)
   const tagsSet = new Set(getTags(draft))
@@ -121,7 +121,7 @@ const specialCategoryTag = (anomaly: Anomaly): ReportTag | undefined => {
 function step2ToApi(
   step2: Step2Model,
 ): Pick<
-  ApiReportDraft,
+  ApiReport,
   | 'companyName'
   | 'companyBrand'
   | 'companyCommercialName'
@@ -227,7 +227,7 @@ const companyIdentificationFieldsUndefined = {
 function companyIdentificationToApi(
   companyIdentification: CommonCompanyIdentification | ForeignWebsiteCompanyIdentification,
 ): Pick<
-  ApiReportDraft,
+  ApiReport,
   | 'companyName'
   | 'companyBrand'
   | 'companyCommercialName'

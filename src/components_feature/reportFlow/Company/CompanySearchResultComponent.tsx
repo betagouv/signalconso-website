@@ -2,9 +2,9 @@ import {useAnalyticContext} from '@/analytic/AnalyticContext'
 import {Animate} from '@/components_simple/Animate'
 import {BtnNextSubmit} from '@/components_simple/buttons/Buttons'
 import {CompanyRecapFromSearchResult} from '@/components_simple/CompanyRecap/CompanyRecap'
-import {getTags} from '@/feature/reportDraftUtils'
+import {getTags} from '@/feature/reportUtils'
 import {useI18n} from '@/i18n/I18n'
-import {ReportDraft} from '@/model/ReportDraft'
+import {Report} from '@/model/Report'
 import {Alert} from '@codegouvfr/react-dsfr/Alert'
 import {useEffect, useState} from 'react'
 import {Controller, useForm} from 'react-hook-form'
@@ -16,7 +16,7 @@ import {NoSearchResult} from './lib/NoSearchResult'
 
 interface Props {
   companies: CompanySearchResult[]
-  reportDraft: Partial<ReportDraft> & Pick<ReportDraft, 'step0' | 'subcategoriesIndexes'>
+  report: Partial<Report> & Pick<Report, 'step0' | 'subcategoriesIndexes'>
   onSubmit: (selected: CompanySearchResult, vendor?: string) => void
 }
 
@@ -24,7 +24,7 @@ interface Form {
   result: string
 }
 
-export const CompanySearchResultComponent = ({companies, reportDraft, onSubmit}: Props) => {
+export const CompanySearchResultComponent = ({companies, report: report, onSubmit}: Props) => {
   const {m} = useI18n()
   const _analytic = useAnalyticContext()
   const [selected, setSelected] = useState<CompanySearchResult | undefined>()
@@ -83,7 +83,7 @@ export const CompanySearchResultComponent = ({companies, reportDraft, onSubmit}:
                           options={companies.map(company => {
                             const closed = !company.isOpen
                             return {
-                              label: <CompanyRecapFromSearchResult company={company} tags={getTags(reportDraft)} />,
+                              label: <CompanyRecapFromSearchResult company={company} tags={getTags(report)} />,
                               value: company.siret!,
                               disabled: closed,
                             }

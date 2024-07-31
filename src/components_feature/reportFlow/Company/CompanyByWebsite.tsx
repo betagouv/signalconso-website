@@ -122,7 +122,7 @@ export const CompanyByWebsite = ({children, specificWebsiteCompanyKind}: Props) 
       _analytic.trackEvent(
         EventCategories.companySearch,
         CompanySearchEventActions.searchedWebsiteDown,
-        _reportFlow.reportDraft.step0?.category + '' + website,
+        _reportFlow.report.step0?.category + '' + website,
       )
     }
   }, [searchQuery.data])

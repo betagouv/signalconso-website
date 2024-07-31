@@ -1,8 +1,8 @@
-import {toApiInfluencer} from '@/feature/fromReportDraftToApi'
+import {toApiInfluencer} from '@/feature/toApi'
 import {SocialNetwork} from '../anomalies/Anomaly'
 import {Fixture} from '../test/fixture'
 
-describe('ReportDraft.toApi', () => {
+describe('Report.toApi', () => {
   it('should correctly convert the social network', () => {
     const toString = (socialNetwork: SocialNetwork) => {
       switch (socialNetwork) {

@@ -13,11 +13,11 @@ import {
   hasStep0,
   hasStep2,
   hasSubcategoryIndexes,
-} from '@/feature/reportDraftUtils'
+} from '@/feature/reportUtils'
 import {useBreakpoints} from '@/hooks/useBreakpoints'
 import {useI18n} from '@/i18n/I18n'
 import {AppLangs} from '@/i18n/localization/AppLangs'
-import {ReportDraft} from '@/model/ReportDraft'
+import {Report} from '@/model/Report'
 import {last} from '@/utils/lodashNamedExport'
 import {regexp} from '@/utils/regexp'
 import {useMutation} from '@tanstack/react-query'
@@ -26,7 +26,7 @@ import {Controller, useForm} from 'react-hook-form'
 import {ScAlert} from '../../../components_simple/ScAlert'
 import {ScRadioButtons} from '../../../components_simple/formInputs/ScRadioButtons'
 import {getApiErrorId, useToastError} from '../../../hooks/useToastError'
-import {Gender, genders} from '../../../model/ReportDraft'
+import {Gender, genders} from '../../../model/Report'
 import {useReportFlowContext} from '../ReportFlowContext'
 import {ConsumerAnonymousInformation} from './ConsumerAnonymousInformation'
 import {ConsumerValidationDialog2, consumerValidationModal} from './ConsumerValidationDialog'
@@ -43,12 +43,12 @@ interface ConsumerForm {
 
 export const Consumer = ({stepNavigation}: {stepNavigation: StepNavigation}) => {
   const _reportFlow = useReportFlowContext()
-  const draft = _reportFlow.reportDraft
+  const draft = _reportFlow.report
   return (
     <ConsumerInner
       draft={draft}
       onSubmit={changes => {
-        _reportFlow.setReportDraft(_ => ({
+        _reportFlow.setReport(_ => ({
           ..._,
           step4: changes,
         }))
@@ -65,8 +65,8 @@ export const ConsumerInner = ({
   onSubmit,
   stepNavigation,
 }: {
-  draft: Partial<ReportDraft>
-  onSubmit: (_: ReportDraft['step4']) => void
+  draft: Partial<Report>
+  onSubmit: (_: Report['step4']) => void
   stepNavigation: StepNavigation
 }) => {
   if (

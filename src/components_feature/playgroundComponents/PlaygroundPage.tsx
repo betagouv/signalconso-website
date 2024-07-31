@@ -125,7 +125,7 @@ const Playground = () => {
         return (
           <PlaygroundCompany
             companyKind="PRODUCT_OPENFF"
-            partialReportDraft={{
+            partialReport={{
               openFf: {
                 barcode: '3017620422003',
                 product: {
@@ -143,7 +143,7 @@ const Playground = () => {
         return (
           <PlaygroundCompany
             companyKind="PRODUCT_OPENFF"
-            partialReportDraft={{
+            partialReport={{
               openFf: {
                 barcode: '5449000214911',
                 product: {
@@ -160,7 +160,7 @@ const Playground = () => {
         return (
           <PlaygroundCompany
             companyKind="PRODUCT_OPENFF"
-            partialReportDraft={{
+            partialReport={{
               openFf: {
                 barcode: '123456',
               },

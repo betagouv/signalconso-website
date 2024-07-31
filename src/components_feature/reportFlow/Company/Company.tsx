@@ -5,9 +5,9 @@ import {CompanySearchByName} from '@/components_feature/reportFlow/Company/Compa
 import {NoSearchResult} from '@/components_feature/reportFlow/Company/lib/NoSearchResult'
 import {ScRadioButtons} from '@/components_simple/formInputs/ScRadioButtons'
 import {Loader} from '@/feature/Loader'
-import {getCompanyKind, hasStep0, hasStep2, hasSubcategoryIndexes} from '@/feature/reportDraftUtils'
+import {getCompanyKind, hasStep0, hasStep2, hasSubcategoryIndexes} from '@/feature/reportUtils'
 import {useBarcodeSearch} from '@/hooks/barcode'
-import {ReportDraft} from '@/model/ReportDraft'
+import {Report} from '@/model/Report'
 import {CommonCompanyIdentification, Step2Model} from '@/model/Step2Model'
 import {useState} from 'react'
 import {CompanyKind, SpecificProductCompanyKind, SpecificWebsiteCompanyKind} from '../../../anomalies/Anomaly'
@@ -32,8 +32,8 @@ import {InfluencerFilled} from './InfluencerFilled'
 import {BarcodeSearchResult} from './lib/BarcodeSearchResult'
 
 export function Company({stepNavigation}: {stepNavigation: StepNavigation}) {
-  const {reportDraft, setReportDraft, sendReportEvent} = useReportFlowContext()
-  const draft = reportDraft
+  const {report: report, setReport: setReport, sendReportEvent} = useReportFlowContext()
+  const draft = report
   if (!hasStep0(draft)) {
     throw new Error(`The draft should have step0 already, to display Company`)
   }
@@ -42,7 +42,7 @@ export function Company({stepNavigation}: {stepNavigation: StepNavigation}) {
   }
   if (hasStep2(draft)) {
     const {step2} = draft
-    const onClear = () => setReportDraft(_ => ({..._, step2: undefined}))
+    const onClear = () => setReport(_ => ({..._, step2: undefined}))
     switch (step2.kind) {
       case 'influencer':
       case 'influencerOtherSocialNetwork':
@@ -55,7 +55,7 @@ export function Company({stepNavigation}: {stepNavigation: StepNavigation}) {
     <CompanyIdentificationDispatch
       draft={draft}
       updateReport={step2 => {
-        setReportDraft(_ => ({
+        setReport(_ => ({
           ..._,
           step2,
         }))
@@ -67,7 +67,7 @@ export function Company({stepNavigation}: {stepNavigation: StepNavigation}) {
 }
 
 type CommonProps = {
-  draft: Partial<ReportDraft> & Pick<ReportDraft, 'subcategoriesIndexes' | 'step0'>
+  draft: Partial<Report> & Pick<Report, 'subcategoriesIndexes' | 'step0'>
   updateReport: (step2: Step2Model) => void
 }
 
@@ -229,7 +229,7 @@ function CompanyIdentificationTree({
   draft,
   onIdentification,
 }: {
-  draft: Partial<ReportDraft> & Pick<ReportDraft, 'step0' | 'subcategoriesIndexes'>
+  draft: Partial<Report> & Pick<Report, 'step0' | 'subcategoriesIndexes'>
   searchResults: CompanySearchResult[] | undefined
   onIdentification: (_: CommonCompanyIdentification) => void
 }) {
@@ -240,7 +240,7 @@ function CompanyIdentificationTree({
   return searchResults && searchResults.length > 0 ? (
     <CompanySearchResultComponent
       companies={searchResults}
-      reportDraft={draft}
+      report={draft}
       onSubmit={(company, vendor) => {
         onIdentification(
           vendor
@@ -266,7 +266,7 @@ function CompanyIdentificationTree({
                 {companies => (
                   <CompanySearchResultComponent
                     companies={companies ?? []}
-                    reportDraft={draft}
+                    report={draft}
                     onSubmit={company => {
                       onIdentification({
                         kind: 'companyFound',
@@ -283,7 +283,7 @@ function CompanyIdentificationTree({
                 {companies => (
                   <CompanySearchResultComponent
                     companies={companies ?? []}
-                    reportDraft={draft}
+                    report={draft}
                     onSubmit={company => {
                       onIdentification({
                         kind: 'companyFound',
@@ -300,7 +300,7 @@ function CompanyIdentificationTree({
                 {companies => (
                   <CompanySearchResultComponent
                     companies={companies ?? []}
-                    reportDraft={draft}
+                    report={draft}
                     onSubmit={company => {
                       onIdentification({
                         kind: 'companyFound',
@@ -383,7 +383,7 @@ function BarcodeTree({
   updateReport,
 }: {
   specificProductCompanyKinds: SpecificProductCompanyKind
-  draft: Partial<ReportDraft> & Pick<ReportDraft, 'subcategoriesIndexes' | 'step0'>
+  draft: Partial<Report> & Pick<Report, 'subcategoriesIndexes' | 'step0'>
   updateReport: (step2: Step2Model) => void
 }) {
   return (
@@ -410,7 +410,7 @@ function BarcodeTree({
               specificProductCompanyKinds={specificProductCompanyKinds}
               product={product}
               company={company}
-              reportDraft={draft}
+              report={draft}
               onSubmit={(company, barcodeProduct) => {
                 updateReport({
                   kind: 'product',
@@ -471,7 +471,7 @@ function OpenFfTree({draft, updateReport}: CommonProps) {
         specificProductCompanyKinds={'PRODUCT'}
         product={product}
         company={company}
-        reportDraft={draft}
+        report={draft}
         onSubmit={(company, barcodeProduct) => {
           updateReport({
             kind: 'product',
@@ -527,7 +527,7 @@ function RCOneBarcodeTree({draft, updateReport, gtin}: {gtin: string} & CommonPr
         specificProductCompanyKinds={'PRODUCT'}
         product={product}
         company={company}
-        reportDraft={draft}
+        report={draft}
         onSubmit={(company, barcodeProduct) => {
           updateReport({
             kind: 'product',
@@ -595,7 +595,7 @@ function RCMutlipleBarcodesTree({draft, updateReport, gtins}: {gtins: string[]} 
               specificProductCompanyKinds={'PRODUCT'}
               product={_search.data?.product}
               company={_search.data?.company}
-              reportDraft={draft}
+              report={draft}
               onSubmit={(company, barcodeProduct) => {
                 updateReport({
                   kind: 'product',

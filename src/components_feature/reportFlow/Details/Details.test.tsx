@@ -4,7 +4,7 @@
 import {dummyStepNavigation} from '@/components_feature/playgroundComponents/PlaygroundConfirmation'
 import {DetailsFixtureInput} from '@/components_feature/playgroundComponents/PlaygroundDetails'
 import {appConfig} from '@/core/appConfig'
-import {DetailInputValues2} from '@/model/ReportDraft'
+import {DetailInputValues2} from '@/model/Report'
 import {fireEvent, render, ScRenderResult} from '@/test/test-utils'
 import {waitFor} from '@testing-library/dom'
 import '@testing-library/jest-dom'
@@ -68,7 +68,7 @@ describe('Details: single date not in future', () => {
     expect(app.container.querySelector('input[type="file"]')).not.toBeNull()
   })
 
-  it('should update stored reportDraft on submit', async () => {
+  it('should update stored report on submit', async () => {
     fireEvent.change(app.container.querySelector('input[type=date]')!, {
       target: {value: '2018-02-15'},
     })

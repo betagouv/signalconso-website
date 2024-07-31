@@ -1,19 +1,19 @@
 import {FriendlyHelpText} from '@/components_simple/FriendlyHelpText'
-import {getWipCompanyKindFromSelected, hasStep0} from '@/feature/reportDraftUtils'
+import {getWipCompanyKindFromSelected, hasStep0} from '@/feature/reportUtils'
 import {useI18n} from '@/i18n/I18n'
 import {ReactNode, useEffect} from 'react'
-import {SetReportDraft, useReportFlowContext} from '../ReportFlowContext'
+import {SetReport, useReportFlowContext} from '../ReportFlowContext'
 import {ProblemSelect} from './ProblemSelect'
 
 export function ProblemEmployeeConsumer({children}: {children: () => ReactNode}) {
   const {m} = useI18n()
-  const {reportDraft: r, setReportDraft} = useReportFlowContext()
+  const {report: r, setReport} = useReportFlowContext()
   if (!hasStep0(r)) {
     throw new Error('Draft is not ready to ask for employeeConsumer')
   }
   const companyKind = getWipCompanyKindFromSelected(r)
   const predeterminedEmployeeConsumer = companyKind === 'SOCIAL' ? false : undefined
-  const skipQuestion = useApplyPredeterminedValue({predeterminedEmployeeConsumer, setReportDraft})
+  const skipQuestion = useApplyPredeterminedValue({predeterminedEmployeeConsumer, setReport})
   const isDone = r.employeeConsumer !== undefined
   return (
     <>
@@ -23,7 +23,7 @@ export function ProblemEmployeeConsumer({children}: {children: () => ReactNode})
             id="select-employeeconsumer"
             title={m.problemDoYouWorkInCompany}
             value={r.employeeConsumer}
-            onChange={employeeConsumer => setReportDraft(_ => ({..._, employeeConsumer}))}
+            onChange={employeeConsumer => setReport(_ => ({..._, employeeConsumer}))}
             options={[
               {
                 title: m.problemDoYouWorkInCompanyNo,
@@ -49,19 +49,19 @@ export function ProblemEmployeeConsumer({children}: {children: () => ReactNode})
 
 function useApplyPredeterminedValue({
   predeterminedEmployeeConsumer,
-  setReportDraft,
+  setReport: setReport,
 }: {
   predeterminedEmployeeConsumer: boolean | undefined
-  setReportDraft: SetReportDraft
+  setReport: SetReport
 }) {
   useEffect(() => {
     if (predeterminedEmployeeConsumer !== undefined) {
-      setReportDraft(_ => ({
+      setReport(_ => ({
         ..._,
         employeeConsumer: predeterminedEmployeeConsumer,
       }))
     }
-  }, [setReportDraft, predeterminedEmployeeConsumer])
+  }, [setReport, predeterminedEmployeeConsumer])
   const shouldSkipQuestion = predeterminedEmployeeConsumer !== undefined
   return shouldSkipQuestion
 }

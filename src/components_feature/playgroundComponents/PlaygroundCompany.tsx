@@ -1,15 +1,15 @@
-import {ReportDraft} from '@/model/ReportDraft'
+import {Report} from '@/model/Report'
 import {useState} from 'react'
 import {CompanyKind} from '../../anomalies/Anomaly'
 import {CompanyIdentificationDispatch} from '../reportFlow/Company/Company'
 
 interface PlaygroundCompanyProps {
   companyKind?: CompanyKind
-  partialReportDraft?: Pick<ReportDraft, 'openFf'>
+  partialReport?: Pick<Report, 'openFf'>
 }
 
-export const PlaygroundCompany = ({companyKind = 'SIRET', partialReportDraft = {}}: PlaygroundCompanyProps) => {
-  const [report, setReport] = useState<Partial<ReportDraft>>(partialReportDraft)
+export const PlaygroundCompany = ({companyKind = 'SIRET', partialReport: partialReport = {}}: PlaygroundCompanyProps) => {
+  const [report, setReport] = useState<Partial<Report>>(partialReport)
 
   return (
     <>
@@ -20,10 +20,10 @@ export const PlaygroundCompany = ({companyKind = 'SIRET', partialReportDraft = {
             lang: 'fr',
           },
           subcategoriesIndexes: [0],
-          ...partialReportDraft,
+          ...partialReport,
         }}
         companyKindForPlayground={companyKind}
-        updateReport={x => setReport(x as Partial<ReportDraft>)}
+        updateReport={x => setReport(x as Partial<Report>)}
       />
       <pre className="text-gray-500 text-sm">{JSON.stringify(report, undefined, 2)}</pre>
     </>

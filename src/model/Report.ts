@@ -5,7 +5,7 @@ import {AppLang} from '@/i18n/localization/AppLangs'
 import {Step2Model} from './Step2Model'
 import {UploadedFile} from './UploadedFile'
 
-export interface ReportDraft {
+export interface Report {
   step0: {
     category: string
     lang: AppLang

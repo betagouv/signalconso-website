@@ -1,5 +1,5 @@
 import {DetailsInner, SpecifyFormUtils} from '@/components_feature/reportFlow/Details/Details'
-import {parseReportDetails} from '@/feature/reportDraftUtils2'
+import {parseReportDetails} from '@/feature/reportUtils2'
 import {getEntries, getKeys} from '@/utils/utils'
 import {Checkbox} from '@codegouvfr/react-dsfr/Checkbox'
 import {ChangeEvent, useState} from 'react'

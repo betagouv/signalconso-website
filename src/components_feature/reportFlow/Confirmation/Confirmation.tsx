@@ -6,24 +6,24 @@ import {Animate} from '@/components_simple/Animate'
 import {Step2Recap} from '@/components_simple/CompanyRecap/Step2Recap'
 import {FriendlyHelpText} from '@/components_simple/FriendlyHelpText'
 import {ReportFilesConfirmation} from '@/components_simple/reportFile/ReportFilesConfirmation'
-import {getAnomaly, getSubcategories, getTags, getTransmissionStatus} from '@/feature/reportDraftUtils'
-import {parseReportDetails} from '@/feature/reportDraftUtils2'
+import {getAnomaly, getSubcategories, getTags, getTransmissionStatus} from '@/feature/reportUtils'
+import {parseReportDetails} from '@/feature/reportUtils2'
 import {getApiErrorId, useToastError} from '@/hooks/useToastError'
 import {useI18n} from '@/i18n/I18n'
-import {ReportDraft} from '@/model/ReportDraft'
+import {Report} from '@/model/Report'
 import {BuildingStep, buildingReportSteps} from '@/model/ReportStep'
-import {ApiReportDraft} from '@/model/reportsFromApi'
+import {ApiReport} from '@/model/reportsFromApi'
 import Image from 'next/image'
 import {SocialNetworkRow} from '../../../components_simple/SocialNetworkRow'
 import {FileOrigin} from '../../../model/UploadedFile'
-import {getDraftReportInputs} from '../Details/draftReportInputs'
+import {getReportInputs} from '../Details/draftReportInputs'
 import {useReportCreateContext} from '../ReportCreateContext'
 import {useReportFlowContext} from '../ReportFlowContext'
 import {ConfirmationStep, ConfirmationStepper} from './ConfirmationStepper'
 
 export const Confirmation = ({stepNavigation, isWebView}: {stepNavigation: StepNavigation; isWebView: boolean}) => {
   const _reportFlow = useReportFlowContext()
-  const draft = _reportFlow.reportDraft as ReportDraft
+  const draft = _reportFlow.report as Report
   return <ConfirmationInner draft={draft} {...{isWebView, stepNavigation}} />
 }
 
@@ -32,7 +32,7 @@ export const ConfirmationInner = ({
   stepNavigation,
   isWebView,
 }: {
-  draft: ReportDraft
+  draft: Report
   stepNavigation: StepNavigation
   isWebView: boolean
 }) => {
@@ -90,7 +90,7 @@ function RenderEachStep({
   index,
 }: {
   step: BuildingStep
-  draft: ReportDraft
+  draft: Report
   stepNavigation: StepNavigation
   index: number
 }) {
@@ -100,7 +100,7 @@ function RenderEachStep({
   const transmissionStatus = getTransmissionStatus(draft)
   const isTransmittable = transmissionStatus === 'WILL_BE_TRANSMITTED' || transmissionStatus === 'MAY_BE_TRANSMITTED'
   const subcategories = getSubcategories(draft)
-  const inputs = getDraftReportInputs(draft, currentLang)
+  const inputs = getReportInputs(draft, currentLang)
   const detailsParsed = parseReportDetails(draft.step3.details, inputs)
   switch (step) {
     case 'BuildingProblem':
@@ -217,7 +217,7 @@ function RenderEachStep({
   }
 }
 
-function buildReportMetadata({isWebView}: {isWebView: boolean}): ApiReportDraft['metadata'] {
+function buildReportMetadata({isWebView}: {isWebView: boolean}): ApiReport['metadata'] {
   if (isWebView) {
     return {
       isMobileApp: true,
