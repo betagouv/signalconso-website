@@ -4,13 +4,21 @@ import {useAnalyticContext} from '../../analytic/AnalyticContext'
 import {EventCategories, ReportEventActions} from '../../analytic/analytic'
 import {ReportStepOrDone, getIndexForStepOrDone} from '../../model/ReportStep'
 
-export type SetReport = (fn: (_: Partial<Report>) => Partial<Report>) => void
+export type SetReport = (fn: (_: ReportWip) => ReportWip) => void
 export type SendReportEvent = (_: ReportStepOrDone) => void
 interface ReportFlowContextProps {
-  report: Partial<Report>
+  report: ReportWip
   setReport: SetReport
   resetFlow: () => void
   sendReportEvent: SendReportEvent
+}
+
+// While the report is being built
+// Some (or all) the fields may be missing, depending on the current step
+// We type it like if everything could be missing all the time
+export type ReportWip = Partial<Report> & {
+  // Step1 gets saved partially at each sub-step
+  step1?: Partial<Report['step1']>
 }
 
 const ReportFlowContext = React.createContext<ReportFlowContextProps>({} as ReportFlowContextProps)
@@ -20,10 +28,10 @@ export const ReportFlowProvider = ({
   initialReportForTests,
 }: {
   children: ReactNode
-  initialReportForTests?: Partial<Report>
+  initialReportForTests?: ReportWip
 }) => {
   const _analytic = useAnalyticContext()
-  const [report, setReport] = useState<Partial<Report>>(initialReportForTests ?? {})
+  const [report, setReport] = useState<ReportWip>(initialReportForTests ?? {})
   const currentStep = useRef<ReportStepOrDone | undefined>(undefined)
   // useEffect(() => {
   //   console.log('@@@', report)

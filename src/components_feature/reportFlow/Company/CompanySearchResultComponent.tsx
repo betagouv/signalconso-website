@@ -16,7 +16,7 @@ import {NoSearchResult} from './lib/NoSearchResult'
 
 interface Props {
   companies: CompanySearchResult[]
-  report: Partial<Report> & Pick<Report, 'step0' | 'subcategoriesIndexes'>
+  report: ReportWip & Pick<Report, 'step0' | 'subcategoriesIndexes'>
   onSubmit: (selected: CompanySearchResult, vendor?: string) => void
 }
 

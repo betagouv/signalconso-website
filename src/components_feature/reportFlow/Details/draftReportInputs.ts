@@ -1,5 +1,4 @@
 import {getSubcategories, hasStep0, hasSubcategoryIndexes} from '@/feature/reportUtils'
-import {Report} from '@/model/Report'
 import {last} from '@/utils/lodashNamedExport'
 import {instanceOfSubcategoryWithInputs} from '../../../anomalies/Anomalies'
 import {DetailInput, DetailInputType} from '../../../anomalies/Anomaly'
@@ -26,7 +25,7 @@ export class ReportDefaultInputs {
   static readonly defaults = (lang: AppLang): DetailInput[] => [ReportDefaultInputs.date(lang), ReportDefaultInputs.description()]
 }
 
-export const getReportInputs = (draft: Partial<Report>, lang: AppLang): DetailInput[] => {
+export const getReportInputs = (draft: ReportWip, lang: AppLang): DetailInput[] => {
   if (!hasStep0(draft) || !hasSubcategoryIndexes(draft)) {
     throw new Error('Draft should already be initialized for calculating inputs')
   }

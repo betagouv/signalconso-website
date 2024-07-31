@@ -169,8 +169,8 @@ export class Fixture {
     currentLang: AppLang,
     lastStep: ReportStep,
     random: SeedableRandom = defaultRandom,
-  ): Partial<Report> => {
-    const stepOrder: {[key in ReportStep]: (_: Partial<Report>) => Partial<Report>} = {
+  ): ReportWip => {
+    const stepOrder: {[key in ReportStep]: (_: ReportWip) => ReportWip} = {
       BuildingProblem: _ => {
         const anomaly = random.oneOf(allAnomalies(currentLang))
         const category = anomaly.category
@@ -226,7 +226,7 @@ export class Fixture {
     }
     return reportSteps
       .filter((_, i) => i <= getIndexForStep(lastStep))
-      .reduce((draft: Partial<Report>, step: ReportStep) => {
+      .reduce((draft: ReportWip, step: ReportStep) => {
         return stepOrder[step](draft)
       }, {})
   }

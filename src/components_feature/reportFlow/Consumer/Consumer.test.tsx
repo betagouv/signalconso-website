@@ -47,7 +47,7 @@ describe('Consumer', () => {
   }
 
   describe('when values are pre defined', function () {
-    let initial: Partial<Report> = {
+    let initial: ReportWip = {
       step0: {
         lang: 'fr',
         category: 'DemoCategory',
@@ -105,7 +105,7 @@ describe('Consumer', () => {
   })
 
   describe('when employee consumer is true', function () {
-    let initial: Partial<Report> = {
+    let initial: ReportWip = {
       step0: {
         lang: 'fr',
         category: 'DemoCategory',

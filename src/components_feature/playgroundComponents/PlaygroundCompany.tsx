@@ -2,6 +2,7 @@ import {Report} from '@/model/Report'
 import {useState} from 'react'
 import {CompanyKind} from '../../anomalies/Anomaly'
 import {CompanyIdentificationDispatch} from '../reportFlow/Company/Company'
+import {ReportWip} from '../reportFlow/ReportFlowContext'
 
 interface PlaygroundCompanyProps {
   companyKind?: CompanyKind
@@ -9,7 +10,7 @@ interface PlaygroundCompanyProps {
 }
 
 export const PlaygroundCompany = ({companyKind = 'SIRET', partialReport: partialReport = {}}: PlaygroundCompanyProps) => {
-  const [report, setReport] = useState<Partial<Report>>(partialReport)
+  const [report, setReport] = useState<ReportWip>(partialReport)
 
   return (
     <>
@@ -23,7 +24,7 @@ export const PlaygroundCompany = ({companyKind = 'SIRET', partialReport: partial
           ...partialReport,
         }}
         companyKindForPlayground={companyKind}
-        updateReport={x => setReport(x as Partial<Report>)}
+        updateReport={x => setReport(x as ReportWip)}
       />
       <pre className="text-gray-500 text-sm">{JSON.stringify(report, undefined, 2)}</pre>
     </>

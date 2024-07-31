@@ -65,7 +65,7 @@ export const ConsumerInner = ({
   onSubmit,
   stepNavigation,
 }: {
-  draft: Partial<Report>
+  draft: ReportWip
   onSubmit: (_: Report['step4']) => void
   stepNavigation: StepNavigation
 }) => {
