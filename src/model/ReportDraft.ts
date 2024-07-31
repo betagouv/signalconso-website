@@ -14,6 +14,14 @@ export interface ReportDraft {
     category: string
     lang: AppLang
   }
+  // --- step1 fields --
+  openFf?: OpenFfResult
+  rappelConso?: RappelConsoResult
+  subcategoriesIndexes: number[]
+  employeeConsumer: boolean
+  companyKindOverride?: CompanyKind
+  consumerWish: ConsumerWish
+  // -------------------
   step2: Step2Model
   step3: {
     details: DetailInputValue[]
@@ -30,13 +38,6 @@ export interface ReportDraft {
     }
     contactAgreement: boolean
   }
-  subcategoriesIndexes: number[]
-  companyKindOverride?: CompanyKind
-  // pretty sure some of these fields aren't actually optional in the draft
-  employeeConsumer?: boolean
-  consumerWish?: ConsumerWish
-  openFf?: OpenFfResult
-  rappelConso?: RappelConsoResult
 }
 
 export interface TrainDraft {

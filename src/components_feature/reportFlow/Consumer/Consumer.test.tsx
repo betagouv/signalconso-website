@@ -54,6 +54,8 @@ describe('Consumer', () => {
         category: 'DemoCategory',
       },
       subcategoriesIndexes: [0],
+      employeeConsumer: false,
+      consumerWish: 'companyImprovement',
       step2,
       step4: {
         contactAgreement: true,
@@ -110,6 +112,7 @@ describe('Consumer', () => {
         category: 'DemoCategory',
       },
       employeeConsumer: true,
+      consumerWish: 'companyImprovement',
       subcategoriesIndexes: [0],
       step2,
     }

@@ -5,7 +5,15 @@ import {StepNavigation} from '@/components_feature/reportFlow/reportFlowStepper/
 import {RequiredFieldsLegend} from '@/components_simple/RequiredFieldsLegend'
 import {ScTextInput} from '@/components_simple/formInputs/ScTextInput'
 import {useApiClients} from '@/context/ApiClientsContext'
-import {getSubcategories, getTransmissionStatus, hasStep0, hasStep2, hasSubcategoryIndexes} from '@/feature/reportDraftUtils'
+import {
+  getSubcategories,
+  getTransmissionStatus,
+  hasConsumerWish,
+  hasEmployeeConsumer,
+  hasStep0,
+  hasStep2,
+  hasSubcategoryIndexes,
+} from '@/feature/reportDraftUtils'
 import {useBreakpoints} from '@/hooks/useBreakpoints'
 import {useI18n} from '@/i18n/I18n'
 import {AppLangs} from '@/i18n/localization/AppLangs'
@@ -61,7 +69,13 @@ export const ConsumerInner = ({
   onSubmit: (_: ReportDraft['step4']) => void
   stepNavigation: StepNavigation
 }) => {
-  if (!hasStep0(draft) || !hasSubcategoryIndexes(draft) || !hasStep2(draft)) {
+  if (
+    !hasStep0(draft) ||
+    !hasSubcategoryIndexes(draft) ||
+    !hasStep2(draft) ||
+    !hasEmployeeConsumer(draft) ||
+    !hasConsumerWish(draft)
+  ) {
     throw new Error('This draft is not ready for the Consumer step')
   }
   const {m, currentLang} = useI18n()

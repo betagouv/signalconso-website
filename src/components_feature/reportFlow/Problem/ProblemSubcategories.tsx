@@ -1,28 +1,20 @@
 import {instanceOfSubcategoryWithInfoWall} from '@/anomalies/Anomalies'
-import {Anomaly, Subcategory} from '@/anomalies/Anomaly'
-import {hasStep0} from '@/feature/reportDraftUtils'
+import {getAnomaly, getSubcategories, hasStep0, hasSubcategoryIndexes} from '@/feature/reportDraftUtils'
 import {ReportDraft2} from '@/model/ReportDraft2'
 import {ReactNode} from 'react'
 import {useReportFlowContext} from '../ReportFlowContext'
 import {ProblemInformation} from './ProblemInformation'
 import {ProblemSelect} from './ProblemSelect'
+import {computeSelectedSubcategoriesData} from './useSelectedSubcategoriesData'
 
-export function ProblemSubcategories({
-  children,
-  anomaly,
-  subcategories,
-  isLastSubcategory,
-  lastSubcategory,
-  isWebView,
-}: {
-  children: () => ReactNode
-  anomaly: Anomaly
-  subcategories: Subcategory[]
-  isLastSubcategory: boolean
-  lastSubcategory: Subcategory
-  isWebView: boolean
-}) {
-  const {setReportDraft} = useReportFlowContext()
+export function ProblemSubcategories({children, isWebView}: {children: () => ReactNode; isWebView: boolean}) {
+  const {reportDraft: r, setReportDraft} = useReportFlowContext()
+  if (!hasStep0(r)) {
+    throw new Error('Draft is not ready to ask for subcategories')
+  }
+  const anomaly = getAnomaly(r)
+  const subcategories = hasSubcategoryIndexes(r) ? getSubcategories(r) : []
+  const {lastSubcategory, isLastSubcategory} = computeSelectedSubcategoriesData(subcategories)
   const handleSubcategoriesChange = (subcategoryIndex: number, subcategoryDepthIndex: number) => {
     setReportDraft(report => {
       return applySubcategoriesChange(report, subcategoryIndex, subcategoryDepthIndex)
