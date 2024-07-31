@@ -1,5 +1,6 @@
-import {Report} from '@/model/Report'
-import React, {ReactNode, useContext, useRef, useState} from 'react'
+import {CompanyKind} from '@/anomalies/Anomaly'
+import {ConsumerWish, Report} from '@/model/Report'
+import React, {ReactNode, useCallback, useContext, useRef, useState} from 'react'
 import {useAnalyticContext} from '../../analytic/AnalyticContext'
 import {EventCategories, ReportEventActions} from '../../analytic/analytic'
 import {ReportStepOrDone, getIndexForStepOrDone} from '../../model/ReportStep'
@@ -9,6 +10,9 @@ export type SendReportEvent = (_: ReportStepOrDone) => void
 interface ReportFlowContextProps {
   report: PartialReport
   setReport: SetReport
+  setEmployeeConsumer: (_: boolean) => void
+  setCompanyKindOverride: (_: CompanyKind) => void
+  setConsumerWish: (_: ConsumerWish) => void
   resetFlow: () => void
   sendReportEvent: SendReportEvent
 }
@@ -67,12 +71,50 @@ export const ReportFlowProvider = ({
       currentStep.current = newStep
     }
   }
-
+  const setEmployeeConsumer = useCallback(
+    (value: boolean) => {
+      setReport(_ => ({
+        ..._,
+        step1: {
+          ..._.step1,
+          employeeConsumer: value,
+        },
+      }))
+    },
+    [setReport],
+  )
+  const setCompanyKindOverride = useCallback(
+    (value: CompanyKind) => {
+      setReport(_ => ({
+        ..._,
+        step1: {
+          ..._.step1,
+          companyKindOverride: value,
+        },
+      }))
+    },
+    [setReport],
+  )
+  const setConsumerWish = useCallback(
+    (value: ConsumerWish) => {
+      setReport(_ => ({
+        ..._,
+        step1: {
+          ..._.step1,
+          consumerWish: value,
+        },
+      }))
+    },
+    [setReport],
+  )
   return (
     <ReportFlowContext.Provider
       value={{
         report,
         setReport,
+        setEmployeeConsumer,
+        setCompanyKindOverride,
+        setConsumerWish,
         resetFlow: () => {
           setReport({})
           currentStep.current = undefined

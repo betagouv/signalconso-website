@@ -11,14 +11,14 @@ import {
 import {useI18n} from '@/i18n/I18n'
 import {ConsumerWish} from '@/model/Report'
 import {ReactNode, useEffect} from 'react'
-import {SetReport, useReportFlowContext} from '../ReportFlowContext'
+import {useReportFlowContext} from '../ReportFlowContext'
 import {ProblemConsumerWishInformation} from './ProblemConsumerWishInformation'
 import {ProblemSelect} from './ProblemSelect'
 
 export function ProblemConsumerWish({children}: {children: () => ReactNode}) {
   const {m} = useI18n()
   const _analytic = useAnalyticContext()
-  const {report: r, setReport} = useReportFlowContext()
+  const {report: r, setConsumerWish} = useReportFlowContext()
   if (!hasStep0(r) || !hasSubcategoryIndexes(r) || !hasEmployeeConsumer(r)) {
     throw new Error(`Report is not ready for asking consumer wish`)
   }
@@ -26,7 +26,7 @@ export function ProblemConsumerWish({children}: {children: () => ReactNode}) {
   const isTransmittable = isTransmittableToProBeforePickingConsumerWish(r)
   const companyKind = getCompanyKind(r)
   const predeterminedValue = !isTransmittable || companyKind === 'SOCIAL' ? 'companyImprovement' : undefined
-  const skipQuestion = useApplyPredeterminedValue({predeterminedValue, setReport: setReport})
+  const skipQuestion = useApplyPredeterminedValue({predeterminedValue, setConsumerWish})
   const isDone = !!r.step1.consumerWish
   return (
     <>
@@ -58,11 +58,8 @@ export function ProblemConsumerWish({children}: {children: () => ReactNode}) {
                 : []),
             ]}
             onChange={(consumerWish: ConsumerWish) => {
-              setReport(report => {
-                const updated = {...report, consumerWish}
-                _analytic.trackEvent(EventCategories.report, ReportEventActions.consumerWish, updated.consumerWish)
-                return updated
-              })
+              _analytic.trackEvent(EventCategories.report, ReportEventActions.consumerWish, consumerWish)
+              setConsumerWish(consumerWish)
             }}
           />
           {r.step1.consumerWish && <ProblemConsumerWishInformation consumerWish={r.step1.consumerWish} />}
@@ -75,19 +72,16 @@ export function ProblemConsumerWish({children}: {children: () => ReactNode}) {
 
 function useApplyPredeterminedValue({
   predeterminedValue,
-  setReport: setReport,
+  setConsumerWish,
 }: {
   predeterminedValue: ConsumerWish | undefined
-  setReport: SetReport
+  setConsumerWish: (_: ConsumerWish) => void
 }) {
   useEffect(() => {
     if (predeterminedValue !== undefined) {
-      setReport(_ => ({
-        ..._,
-        consumerWish: predeterminedValue,
-      }))
+      setConsumerWish(predeterminedValue)
     }
-  }, [setReport, predeterminedValue])
+  }, [setConsumerWish, predeterminedValue])
   const shouldSkipQuestion = predeterminedValue !== undefined
   return shouldSkipQuestion
 }

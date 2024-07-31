@@ -8,7 +8,7 @@ import {computeSelectedSubcategoriesData} from './useSelectedSubcategoriesData'
 
 export function ProblemCompanyKindOverride({children}: {children: () => ReactNode}) {
   const {m} = useI18n()
-  const {report: r, setReport: setReport} = useReportFlowContext()
+  const {report: r, setCompanyKindOverride} = useReportFlowContext()
   if (!hasStep0(r) || !hasSubcategoryIndexes(r)) {
     throw new Error('Draft is not ready to ask for company kind override')
   }
@@ -27,7 +27,7 @@ export function ProblemCompanyKindOverride({children}: {children: () => ReactNod
               id="select-companyKind"
               title={companyKindQuestion.label}
               value={r.step1.companyKindOverride}
-              onChange={value => setReport(_ => ({..._, companyKindOverride: value}))}
+              onChange={setCompanyKindOverride}
               options={companyKindQuestion.options.map(option => {
                 return {
                   title: option.label,
@@ -40,9 +40,7 @@ export function ProblemCompanyKindOverride({children}: {children: () => ReactNod
               id="select-companyKind"
               title={m.problemIsInternetCompany}
               value={r.step1.companyKindOverride}
-              onChange={value => {
-                setReport(_ => ({..._, companyKindOverride: value}))
-              }}
+              onChange={setCompanyKindOverride}
               options={[
                 {
                   title: m.yes,

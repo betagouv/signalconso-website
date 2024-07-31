@@ -23,7 +23,7 @@ interface Props {
 }
 
 export function Problem({anomaly, isWebView, stepNavigation}: Props) {
-  const {report: report, setReport: setReport, resetFlow} = useReportFlowContext()
+  const {report, setReport, resetFlow} = useReportFlowContext()
   const {currentLang} = useI18n()
   const _analytic = useAnalyticContext()
   const isDraftInitialized = hasStep0(report) && anomaly.category === report.step0.category
@@ -41,7 +41,7 @@ export function Problem({anomaly, isWebView, stepNavigation}: Props) {
 }
 
 function ProblemInner({anomaly, isWebView, stepNavigation}: Props) {
-  const {report: report, setReport: setReport, sendReportEvent} = useReportFlowContext()
+  const {report, setReport, sendReportEvent} = useReportFlowContext()
   if (!hasStep0(report)) {
     throw new Error('Report should have a lang and a category already (in Problem)')
   }
@@ -50,7 +50,7 @@ function ProblemInner({anomaly, isWebView, stepNavigation}: Props) {
   useHandleOpenFfSetupLoaded(openFfSetup, setReport)
   useHandleRcSetupLoaded(rappelConsoSetup, setReport)
   const specialCategoriesNotLoading = openFfSetup.status !== 'loading' && rappelConsoSetup.status !== 'loading'
-  const onNext = buildOnNext({sendReportEvent, setReport: setReport, stepNavigation})
+  const onNext = buildOnNext({sendReportEvent, setReport, stepNavigation})
   return (
     <>
       <OpenFfWelcomeText setup={openFfSetup} />
