@@ -1,24 +1,29 @@
-import {CompanyKind, CompanyKindQuestion} from '@/anomalies/Anomaly'
+import {CompanyKind} from '@/anomalies/Anomaly'
+import {
+  getSubcategories,
+  getTags,
+  getWipCompanyKindFromSelected,
+  hasStep0,
+  hasSubcategoryIndexes,
+} from '@/feature/reportDraftUtils'
 import {useI18n} from '@/i18n/I18n'
 import {ReactNode} from 'react'
 import {useReportFlowContext} from '../ReportFlowContext'
 import {ProblemSelect} from './ProblemSelect'
+import {computeSelectedSubcategoriesData} from './useSelectedSubcategoriesData'
 
-export function ProblemCompanyKindOverride({
-  children,
-  companyKindQuestion,
-  companyKindBeforeOverride,
-  hasTagProduitDangereux,
-}: {
-  children: () => ReactNode
-  companyKindQuestion: CompanyKindQuestion | undefined
-  companyKindBeforeOverride: CompanyKind | undefined
-  hasTagProduitDangereux: boolean
-}) {
+export function ProblemCompanyKindOverride({children}: {children: () => ReactNode}) {
   const {m} = useI18n()
-  const {reportDraft, setReportDraft} = useReportFlowContext()
+  const {reportDraft: r, setReportDraft} = useReportFlowContext()
+  if (!hasStep0(r) || !hasSubcategoryIndexes(r)) {
+    throw new Error('Draft is not ready to ask for company kind override')
+  }
+  const subcategories = getSubcategories(r)
+  const hasTagProduitDangereux = getTags(r).includes('ProduitDangereux')
+  const companyKindBeforeOverride = getWipCompanyKindFromSelected(r)
+  const {companyKindQuestion} = computeSelectedSubcategoriesData(subcategories)
   const hidden = !!companyKindBeforeOverride
-  const isDone = hidden || !!reportDraft.companyKindOverride
+  const isDone = hidden || !!r.companyKindOverride
   return (
     <>
       {!hidden && (
@@ -27,7 +32,7 @@ export function ProblemCompanyKindOverride({
             <ProblemSelect<CompanyKind>
               id="select-companyKind"
               title={companyKindQuestion.label}
-              value={reportDraft.companyKindOverride}
+              value={r.companyKindOverride}
               onChange={value => setReportDraft(_ => ({..._, companyKindOverride: value}))}
               options={companyKindQuestion.options.map(option => {
                 return {
@@ -40,7 +45,7 @@ export function ProblemCompanyKindOverride({
             <ProblemSelect<CompanyKind>
               id="select-companyKind"
               title={m.problemIsInternetCompany}
-              value={reportDraft.companyKindOverride}
+              value={r.companyKindOverride}
               onChange={value => {
                 setReportDraft(_ => ({..._, companyKindOverride: value}))
               }}

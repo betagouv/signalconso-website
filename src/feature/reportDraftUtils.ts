@@ -15,6 +15,14 @@ export function hasSubcategoryIndexes(
 export function hasStep2(r: Partial<ReportDraft2>): r is Pick<ReportDraft, 'step2'> & Partial<ReportDraft2> {
   return !!r.step2
 }
+export function hasEmployeeConsumer(
+  r: Partial<ReportDraft2>,
+): r is Pick<ReportDraft2, 'employeeConsumer'> & Partial<ReportDraft2> {
+  return r.employeeConsumer !== undefined
+}
+export function hasConsumerWish(r: Partial<ReportDraft2>): r is Pick<ReportDraft2, 'consumerWish'> & Partial<ReportDraft2> {
+  return r.consumerWish !== undefined
+}
 
 export const getAnomaly = (r: Pick<ReportDraft, 'step0'>) => {
   return findAnomaly(r.step0.category, r.step0.lang)

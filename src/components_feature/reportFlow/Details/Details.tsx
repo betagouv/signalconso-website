@@ -1,4 +1,3 @@
-import {useAnalyticContext} from '@/analytic/AnalyticContext'
 import {NextStepButton} from '@/components_feature/reportFlow/reportFlowStepper/NextStepButton'
 import {StepNavigation} from '@/components_feature/reportFlow/reportFlowStepper/ReportFlowStepper'
 import {Animate} from '@/components_simple/Animate'
@@ -10,6 +9,8 @@ import {
   getSubcategories,
   getTags,
   getTransmissionStatus,
+  hasConsumerWish,
+  hasEmployeeConsumer,
   hasStep0,
   hasStep2,
   hasSubcategoryIndexes,
@@ -41,7 +42,6 @@ export const isSpecifyInputName = (name: string) => name.includes('_specify')
 
 export const Details = ({stepNavigation}: {stepNavigation: StepNavigation}) => {
   const _reportFlow = useReportFlowContext()
-  const _analytic = useAnalyticContext()
   const {currentLang} = useI18n()
   const draft = _reportFlow.reportDraft
   if (!hasStep0(draft) || !hasSubcategoryIndexes(draft)) {
@@ -51,7 +51,15 @@ export const Details = ({stepNavigation}: {stepNavigation: StepNavigation}) => {
     return getDraftReportInputs(draft, currentLang)
   }, [draft.subcategoriesIndexes, getTags(draft), draft.consumerWish])
 
-  if (!inputs || draft.employeeConsumer === undefined || !hasStep0(draft) || !hasSubcategoryIndexes(draft) || !hasStep2(draft)) {
+  if (
+    !inputs ||
+    draft.employeeConsumer === undefined ||
+    !hasStep0(draft) ||
+    !hasSubcategoryIndexes(draft) ||
+    !hasStep2(draft) ||
+    !hasEmployeeConsumer(draft) ||
+    !hasConsumerWish(draft)
+  ) {
     throw new Error(`Details step should not be accessible ${draft.employeeConsumer} - ${JSON.stringify(inputs)}`)
   }
   const subcategories = getSubcategories(draft)
