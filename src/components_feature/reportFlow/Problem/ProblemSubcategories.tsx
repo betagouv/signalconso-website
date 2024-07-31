@@ -1,6 +1,6 @@
 import {instanceOfSubcategoryWithInfoWall} from '@/anomalies/Anomalies'
 import {getAnomaly, getSubcategories, hasStep0, hasSubcategoryIndexes} from '@/feature/reportDraftUtils'
-import {ReportDraft2} from '@/model/ReportDraft2'
+import {ReportDraft} from '@/model/ReportDraft'
 import {ReactNode} from 'react'
 import {useReportFlowContext} from '../ReportFlowContext'
 import {ProblemInformation} from './ProblemInformation'
@@ -57,10 +57,10 @@ export function ProblemSubcategories({children, isWebView}: {children: () => Rea
 }
 
 function applySubcategoriesChange(
-  report: Partial<ReportDraft2>,
+  report: Partial<ReportDraft>,
   subcategoryIndex: number,
   subcategoryDepthIndex: number,
-): Partial<ReportDraft2> {
+): Partial<ReportDraft> {
   if (!hasStep0(report)) {
     throw new Error('ReportDraft should have a lang and a category already')
   }

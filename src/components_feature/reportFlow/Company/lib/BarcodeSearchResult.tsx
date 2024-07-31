@@ -2,7 +2,7 @@ import {SpecificProductCompanyKind} from '@/anomalies/Anomaly'
 import {CompanyRecapFromSearchResult} from '@/components_simple/CompanyRecap/CompanyRecap'
 import {ProductRecap} from '@/components_simple/CompanyRecap/ProductRecap'
 import {getTags} from '@/feature/reportDraftUtils'
-import {ReportDraft2} from '@/model/ReportDraft2'
+import {ReportDraft} from '@/model/ReportDraft'
 import {ReactNode} from 'react'
 import {BtnNext} from '../../../../components_simple/buttons/Buttons'
 import {useI18n} from '../../../../i18n/I18n'
@@ -13,7 +13,7 @@ import {NoSearchResult} from './NoSearchResult'
 interface BarcodeSearchResultPros {
   product?: BarcodeProduct
   company?: CompanySearchResult
-  reportDraft: Pick<ReportDraft2, 'subcategoriesIndexes' | 'step0'>
+  reportDraft: Pick<ReportDraft, 'subcategoriesIndexes' | 'step0'>
   onSubmit: (selected: CompanySearchResult, product: BarcodeProduct) => void
   noResultsPanel?: ReactNode
   specificProductCompanyKinds: SpecificProductCompanyKind

@@ -1,5 +1,5 @@
 import {DetailsInner, SpecifyFormUtils} from '@/components_feature/reportFlow/Details/Details'
-import {ReportDraft2} from '@/model/ReportDraft2'
+import {parseReportDetails} from '@/feature/reportDraftUtils2'
 import {getEntries, getKeys} from '@/utils/utils'
 import {Checkbox} from '@codegouvfr/react-dsfr/Checkbox'
 import {ChangeEvent, useState} from 'react'
@@ -126,7 +126,7 @@ export const PlaygroundDetails = () => {
         inputs={[...chosenInputs]}
         transmissionStatus={'NOT_TRANSMITTABLE'}
         onSubmit={(res, files) => {
-          setResultInputs(ReportDraft2.parseDetails(res, chosenInputs))
+          setResultInputs(parseReportDetails(res, chosenInputs))
           setResultFiles(files)
         }}
         stepNavigation={dummyStepNavigation}

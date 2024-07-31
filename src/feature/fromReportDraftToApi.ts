@@ -1,4 +1,5 @@
 import {Anomaly, ReportTag, SocialNetwork} from '@/anomalies/Anomaly'
+import {getDraftReportInputs} from '@/components_feature/reportFlow/Details/draftReportInputs'
 import {CompanySearchResult} from '@/model/Company'
 import {Influencer, ReportDraft} from '@/model/ReportDraft'
 import {ApiInfluencer, ApiReportDraft} from '@/model/reportsFromApi'
@@ -12,6 +13,7 @@ import {
   getSubcategories,
   getTags,
 } from './reportDraftUtils'
+import {parseReportDetails} from './reportDraftUtils2'
 
 export const toApi = (draft: ReportDraft, metadata: ApiReportDraft['metadata']): ApiReportDraft => {
   const {
@@ -22,13 +24,15 @@ export const toApi = (draft: ReportDraft, metadata: ApiReportDraft['metadata']):
   const ccrfCode = getCcrfCode(draft)
   const subcategories = getSubcategories(draft)
   const tags = computeFinalTags(draft)
+  const inputs = getDraftReportInputs(draft, draft.step0.lang)
+  const detailsParsed = parseReportDetails(draft.step3.details, inputs)
   return {
     // We don't use the rest syntax here ("..."),
     // we prefer to be sure to fill each field explicitely
     gender: consumer.gender,
     category: getCategoryOverride(draft) ?? draft.step0.category,
     subcategories: subcategories.map(_ => _.title),
-    details: draft.step3.details,
+    details: detailsParsed,
     firstName: consumer.firstName,
     lastName: consumer.lastName,
     email: consumer.email,

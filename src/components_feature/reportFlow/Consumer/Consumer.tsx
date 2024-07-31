@@ -17,7 +17,7 @@ import {
 import {useBreakpoints} from '@/hooks/useBreakpoints'
 import {useI18n} from '@/i18n/I18n'
 import {AppLangs} from '@/i18n/localization/AppLangs'
-import {ReportDraft2} from '@/model/ReportDraft2'
+import {ReportDraft} from '@/model/ReportDraft'
 import {last} from '@/utils/lodashNamedExport'
 import {regexp} from '@/utils/regexp'
 import {useMutation} from '@tanstack/react-query'
@@ -26,7 +26,7 @@ import {Controller, useForm} from 'react-hook-form'
 import {ScAlert} from '../../../components_simple/ScAlert'
 import {ScRadioButtons} from '../../../components_simple/formInputs/ScRadioButtons'
 import {getApiErrorId, useToastError} from '../../../hooks/useToastError'
-import {Gender, genders, ReportDraft} from '../../../model/ReportDraft'
+import {Gender, genders} from '../../../model/ReportDraft'
 import {useReportFlowContext} from '../ReportFlowContext'
 import {ConsumerAnonymousInformation} from './ConsumerAnonymousInformation'
 import {ConsumerValidationDialog2, consumerValidationModal} from './ConsumerValidationDialog'
@@ -65,7 +65,7 @@ export const ConsumerInner = ({
   onSubmit,
   stepNavigation,
 }: {
-  draft: Partial<ReportDraft2>
+  draft: Partial<ReportDraft>
   onSubmit: (_: ReportDraft['step4']) => void
   stepNavigation: StepNavigation
 }) => {

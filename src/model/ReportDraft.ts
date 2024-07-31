@@ -2,12 +2,8 @@ import {CompanyKind, NightTrain, SocialNetwork, Ter, Train} from '@/anomalies/An
 import {OpenFfResult} from '@/feature/openFoodFacts'
 import {RappelConsoResult} from '@/feature/rappelConso'
 import {AppLang} from '@/i18n/localization/AppLangs'
-import {DetailInputValue} from './CreatedReport'
 import {Step2Model} from './Step2Model'
 import {UploadedFile} from './UploadedFile'
-
-export const genders = ['Male', 'Female'] as const
-export type Gender = (typeof genders)[number]
 
 export interface ReportDraft {
   step0: {
@@ -24,7 +20,7 @@ export interface ReportDraft {
   // -------------------
   step2: Step2Model
   step3: {
-    details: DetailInputValue[]
+    details: DetailInputValues2
     uploadedFiles?: UploadedFile[]
   }
   step4: {
@@ -64,5 +60,13 @@ export type ConsumerWish =
   // - on met le flag forwardToReponseConso
   // - on ne transmet pas à l'entreprise
   | 'getAnswer'
+
+export const genders = ['Male', 'Female'] as const
+export type Gender = (typeof genders)[number]
+
+export type DetailInputValues2 = {
+  // the keys here are actually stringified numbers : "0", "1", etc.
+  [key: string]: string | string[]
+}
 
 export type TransmissionStatus = 'NOT_TRANSMITTABLE' | 'WILL_BE_TRANSMITTED' | 'MAY_BE_TRANSMITTED' | 'CANNOT_BE_TRANSMITTED'

@@ -1,13 +1,14 @@
 import {allAnomalies} from '@/anomalies/Anomalies'
 import {AppLang} from '@/i18n/localization/AppLangs'
 import {BarcodeProduct} from '@/model/BarcodeProduct'
+import {ReportDraft} from '@/model/ReportDraft'
 import {getIndexForStep, ReportStep, reportSteps} from '@/model/ReportStep'
 import {Step2Model} from '@/model/Step2Model'
 import {InfoWall, reportTags, socialNetworks, Subcategory} from '../anomalies/Anomaly'
 import {Address, ApiAddress} from '../model/Address'
 import {CompanySearchResult, WebsiteCompanySearchResult} from '../model/Company'
 import {CreatedReport} from '../model/CreatedReport'
-import {Influencer, ReportDraft} from '../model/ReportDraft'
+import {Influencer} from '../model/ReportDraft'
 import {FileOrigin} from '../model/UploadedFile'
 
 export class SeedableRandom {
@@ -88,22 +89,6 @@ export class Fixture {
 
   private static readonly firstNames = ['Alice', 'Bob', 'Charles', 'Danièle', 'Émilien', 'Fanny', 'Gérard']
 
-  private static readonly genDetails = (random: SeedableRandom) => [
-    {label: "Date de constat (ou date d'achat) :", value: '09/03/2022'},
-    {label: 'Quel est le nom du produit :', value: 'oo'},
-    {
-      label: 'Pourquoi trouvez-vous la publicité trompeuse :',
-      value:
-        'le produit ne remplit pas sa promesse, la photo du produit est trompeuse, les labels (bio, naturel...) sont trompeurs',
-    },
-    {label: 'Où avez-vous vu ces informations :', value: 'site internet, publicité (affiche, dans un magazine)'},
-    {
-      label: 'Description :',
-      value:
-        'Suite à l’achat de pass à l’occasion du Passage Musique Festival pour plus de 400€ qui devait avoir lieu en 2018 je n’ai toujours pas reçu de remboursements malgré plusieurs relances.',
-    },
-  ]
-
   static readonly genReport = (random: SeedableRandom = defaultRandom): CreatedReport => {
     const company = Fixture.genCompanySearchResult(random)
     const subcategories = [Fixture.genSubcategory({}, random), Fixture.genSubcategory({}, random)]
@@ -180,7 +165,7 @@ export class Fixture {
     }
   }
 
-  static readonly genDraftReport = (
+  static readonly genDraftReport2 = (
     currentLang: AppLang,
     lastStep: ReportStep,
     random: SeedableRandom = defaultRandom,
@@ -211,7 +196,11 @@ export class Fixture {
       BuildingDetails: _ => ({
         ..._,
         step3: {
-          details: Fixture.genDetails(random),
+          details: {
+            ['0']: '09/03/2022',
+            ['1']: 'Voilà ma description du problème.',
+            ['2']: 'Voilà ma question',
+          },
           uploadedFiles: [
             {
               filename: 'Captura de pantalla 2022-03-14 a las 18.40.21.png',

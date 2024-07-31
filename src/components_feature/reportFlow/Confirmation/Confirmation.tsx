@@ -7,25 +7,24 @@ import {Step2Recap} from '@/components_simple/CompanyRecap/Step2Recap'
 import {FriendlyHelpText} from '@/components_simple/FriendlyHelpText'
 import {ReportFilesConfirmation} from '@/components_simple/reportFile/ReportFilesConfirmation'
 import {getAnomaly, getSubcategories, getTags, getTransmissionStatus} from '@/feature/reportDraftUtils'
+import {parseReportDetails} from '@/feature/reportDraftUtils2'
 import {getApiErrorId, useToastError} from '@/hooks/useToastError'
 import {useI18n} from '@/i18n/I18n'
-import {ReportDraft2} from '@/model/ReportDraft2'
+import {ReportDraft} from '@/model/ReportDraft'
 import {BuildingStep, buildingReportSteps} from '@/model/ReportStep'
 import {ApiReportDraft} from '@/model/reportsFromApi'
 import Image from 'next/image'
 import {SocialNetworkRow} from '../../../components_simple/SocialNetworkRow'
-import {ReportDraft} from '../../../model/ReportDraft'
 import {FileOrigin} from '../../../model/UploadedFile'
+import {getDraftReportInputs} from '../Details/draftReportInputs'
 import {useReportCreateContext} from '../ReportCreateContext'
 import {useReportFlowContext} from '../ReportFlowContext'
 import {ConfirmationStep, ConfirmationStepper} from './ConfirmationStepper'
 
 export const Confirmation = ({stepNavigation, isWebView}: {stepNavigation: StepNavigation; isWebView: boolean}) => {
   const _reportFlow = useReportFlowContext()
-  const {currentLang} = useI18n()
-  const draft = _reportFlow.reportDraft as ReportDraft2
-  const parsedDraft = ReportDraft2.toReportDraft(draft, currentLang)
-  return <ConfirmationInner draft={parsedDraft} {...{isWebView, stepNavigation}} />
+  const draft = _reportFlow.reportDraft as ReportDraft
+  return <ConfirmationInner draft={draft} {...{isWebView, stepNavigation}} />
 }
 
 export const ConfirmationInner = ({
@@ -96,11 +95,13 @@ function RenderEachStep({
   index: number
 }) {
   const goToStep = stepNavigation.goTo
-  const {m} = useI18n()
+  const {m, currentLang} = useI18n()
   const anomaly = getAnomaly(draft)
   const transmissionStatus = getTransmissionStatus(draft)
   const isTransmittable = transmissionStatus === 'WILL_BE_TRANSMITTED' || transmissionStatus === 'MAY_BE_TRANSMITTED'
   const subcategories = getSubcategories(draft)
+  const inputs = getDraftReportInputs(draft, currentLang)
+  const detailsParsed = parseReportDetails(draft.step3.details, inputs)
   switch (step) {
     case 'BuildingProblem':
       return (
@@ -125,7 +126,7 @@ function RenderEachStep({
       return (
         <ConfirmationStep title={m.step_description} {...{goToStep, index}}>
           <dl>
-            {draft.step3.details.map(({label, value}) => (
+            {detailsParsed.map(({label, value}) => (
               <div key={label} className="mb-2">
                 <dt className="font-medium" dangerouslySetInnerHTML={{__html: label}} />
                 <dd className="text-schint">{value}</dd>
