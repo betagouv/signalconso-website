@@ -27,7 +27,7 @@ export function ProblemConsumerWish({children}: {children: () => ReactNode}) {
   const companyKind = getCompanyKind(r)
   const predeterminedValue = !isTransmittable || companyKind === 'SOCIAL' ? 'companyImprovement' : undefined
   const skipQuestion = useApplyPredeterminedValue({predeterminedValue, setReport: setReport})
-  const isDone = !!r.consumerWish
+  const isDone = !!r.step1.consumerWish
   return (
     <>
       {!skipQuestion && (
@@ -35,7 +35,7 @@ export function ProblemConsumerWish({children}: {children: () => ReactNode}) {
           <ProblemSelect
             id="select-contractualDispute"
             title={m.whatsYourIntent}
-            value={r.consumerWish}
+            value={r.step1.consumerWish}
             options={[
               {
                 title: m.problemContractualDisputeFormYes,
@@ -65,7 +65,7 @@ export function ProblemConsumerWish({children}: {children: () => ReactNode}) {
               })
             }}
           />
-          {r.consumerWish && <ProblemConsumerWishInformation consumerWish={r.consumerWish} />}
+          {r.step1.consumerWish && <ProblemConsumerWishInformation consumerWish={r.step1.consumerWish} />}
         </>
       )}
       {isDone && children()}

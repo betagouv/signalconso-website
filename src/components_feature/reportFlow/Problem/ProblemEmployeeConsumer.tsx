@@ -1,5 +1,5 @@
 import {FriendlyHelpText} from '@/components_simple/FriendlyHelpText'
-import {getWipCompanyKindFromSelected, hasStep0} from '@/feature/reportUtils'
+import {getWipCompanyKindFromSelected, hasStep0, hasSubcategoryIndexes} from '@/feature/reportUtils'
 import {useI18n} from '@/i18n/I18n'
 import {ReactNode, useEffect} from 'react'
 import {SetReport, useReportFlowContext} from '../ReportFlowContext'
@@ -8,13 +8,13 @@ import {ProblemSelect} from './ProblemSelect'
 export function ProblemEmployeeConsumer({children}: {children: () => ReactNode}) {
   const {m} = useI18n()
   const {report: r, setReport} = useReportFlowContext()
-  if (!hasStep0(r)) {
+  if (!hasStep0(r) || !hasSubcategoryIndexes(r)) {
     throw new Error('Draft is not ready to ask for employeeConsumer')
   }
   const companyKind = getWipCompanyKindFromSelected(r)
   const predeterminedEmployeeConsumer = companyKind === 'SOCIAL' ? false : undefined
   const skipQuestion = useApplyPredeterminedValue({predeterminedEmployeeConsumer, setReport})
-  const isDone = r.employeeConsumer !== undefined
+  const isDone = r.step1?.employeeConsumer !== undefined
   return (
     <>
       {!skipQuestion && (
@@ -22,7 +22,7 @@ export function ProblemEmployeeConsumer({children}: {children: () => ReactNode})
           <ProblemSelect
             id="select-employeeconsumer"
             title={m.problemDoYouWorkInCompany}
-            value={r.employeeConsumer}
+            value={r.step1?.employeeConsumer}
             onChange={employeeConsumer => setReport(_ => ({..._, employeeConsumer}))}
             options={[
               {
@@ -35,7 +35,7 @@ export function ProblemEmployeeConsumer({children}: {children: () => ReactNode})
               },
             ]}
           />
-          {r.employeeConsumer && (
+          {r.step1?.employeeConsumer && (
             <FriendlyHelpText>
               <p className="mb-0" dangerouslySetInnerHTML={{__html: m.employeeConsumerInformation}} />
             </FriendlyHelpText>

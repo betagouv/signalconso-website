@@ -17,7 +17,7 @@ export function ProblemCompanyKindOverride({children}: {children: () => ReactNod
   const companyKindBeforeOverride = getWipCompanyKindFromSelected(r)
   const {companyKindQuestion} = computeSelectedSubcategoriesData(subcategories)
   const hidden = !!companyKindBeforeOverride
-  const isDone = hidden || !!r.companyKindOverride
+  const isDone = hidden || !!r.step1.companyKindOverride
   return (
     <>
       {!hidden && (
@@ -26,7 +26,7 @@ export function ProblemCompanyKindOverride({children}: {children: () => ReactNod
             <ProblemSelect<CompanyKind>
               id="select-companyKind"
               title={companyKindQuestion.label}
-              value={r.companyKindOverride}
+              value={r.step1.companyKindOverride}
               onChange={value => setReport(_ => ({..._, companyKindOverride: value}))}
               options={companyKindQuestion.options.map(option => {
                 return {
@@ -39,7 +39,7 @@ export function ProblemCompanyKindOverride({children}: {children: () => ReactNod
             <ProblemSelect<CompanyKind>
               id="select-companyKind"
               title={m.problemIsInternetCompany}
-              value={r.companyKindOverride}
+              value={r.step1.companyKindOverride}
               onChange={value => {
                 setReport(_ => ({..._, companyKindOverride: value}))
               }}

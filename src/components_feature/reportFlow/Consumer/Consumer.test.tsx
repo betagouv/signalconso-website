@@ -5,6 +5,7 @@ import {dummyStepNavigation} from '@/components_feature/playgroundComponents/Pla
 import {Report} from '@/model/Report'
 import {Step2Model} from '@/model/Step2Model'
 import {fireEvent, render, ScRenderResult, waitFor} from '../../../test/test-utils'
+import {PartialReport} from '../ReportFlowContext'
 import {ConsumerInner} from './Consumer'
 
 class Fixture {
@@ -47,14 +48,16 @@ describe('Consumer', () => {
   }
 
   describe('when values are pre defined', function () {
-    let initial: ReportWip = {
+    let initial: PartialReport = {
       step0: {
         lang: 'fr',
         category: 'DemoCategory',
       },
-      subcategoriesIndexes: [0],
-      employeeConsumer: false,
-      consumerWish: 'companyImprovement',
+      step1: {
+        subcategoriesIndexes: [0],
+        employeeConsumer: false,
+        consumerWish: 'companyImprovement',
+      },
       step2,
       step4: {
         contactAgreement: true,
@@ -105,14 +108,16 @@ describe('Consumer', () => {
   })
 
   describe('when employee consumer is true', function () {
-    let initial: ReportWip = {
+    let initial: PartialReport = {
       step0: {
         lang: 'fr',
         category: 'DemoCategory',
       },
-      employeeConsumer: true,
-      consumerWish: 'companyImprovement',
-      subcategoriesIndexes: [0],
+      step1: {
+        subcategoriesIndexes: [0],
+        employeeConsumer: true,
+        consumerWish: 'companyImprovement',
+      },
       step2,
     }
 

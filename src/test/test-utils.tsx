@@ -1,6 +1,6 @@
 import {AnalyticProvider} from '@/analytic/AnalyticContext'
 import {ReportCreateProvider} from '@/components_feature/reportFlow/ReportCreateContext'
-import {ReportFlowProvider, useReportFlowContext} from '@/components_feature/reportFlow/ReportFlowContext'
+import {PartialReport, ReportFlowProvider, useReportFlowContext} from '@/components_feature/reportFlow/ReportFlowContext'
 import {ProvidersChain} from '@/components_simple/ProvidersChain'
 import {ApiClientsProvider} from '@/context/ApiClientsContext'
 import {AutoscrollProvider} from '@/context/AutoscrollContext'
@@ -54,7 +54,13 @@ const AllTheProviders =
     )
   }
 
-export const AccessReportFlow = ({children, onReportChange}: {children: ReactNode; onReportChange: (_: ReportWip) => void}) => {
+export const AccessReportFlow = ({
+  children,
+  onReportChange,
+}: {
+  children: ReactNode
+  onReportChange: (_: PartialReport) => void
+}) => {
   const _ = useReportFlowContext()
   useEffect(() => {
     onReportChange(_.report)
@@ -65,7 +71,7 @@ export const AccessReportFlow = ({children, onReportChange}: {children: ReactNod
 interface Options {
   signalConsoApiClient?: DeepPartial<SignalConsoApiClient>
   companyApiClient?: DeepPartial<CompanyPublicClient>
-  initialReport?: ReportWip
+  initialReport?: PartialReport
 }
 
 export interface ScRenderResult extends RenderResult {

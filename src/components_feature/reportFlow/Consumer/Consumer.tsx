@@ -5,15 +5,7 @@ import {StepNavigation} from '@/components_feature/reportFlow/reportFlowStepper/
 import {RequiredFieldsLegend} from '@/components_simple/RequiredFieldsLegend'
 import {ScTextInput} from '@/components_simple/formInputs/ScTextInput'
 import {useApiClients} from '@/context/ApiClientsContext'
-import {
-  getSubcategories,
-  getTransmissionStatus,
-  hasConsumerWish,
-  hasEmployeeConsumer,
-  hasStep0,
-  hasStep2,
-  hasSubcategoryIndexes,
-} from '@/feature/reportUtils'
+import {getSubcategories, getTransmissionStatus, hasStep0, hasStep1Full, hasStep2} from '@/feature/reportUtils'
 import {useBreakpoints} from '@/hooks/useBreakpoints'
 import {useI18n} from '@/i18n/I18n'
 import {AppLangs} from '@/i18n/localization/AppLangs'
@@ -27,7 +19,7 @@ import {ScAlert} from '../../../components_simple/ScAlert'
 import {ScRadioButtons} from '../../../components_simple/formInputs/ScRadioButtons'
 import {getApiErrorId, useToastError} from '../../../hooks/useToastError'
 import {Gender, genders} from '../../../model/Report'
-import {useReportFlowContext} from '../ReportFlowContext'
+import {PartialReport, useReportFlowContext} from '../ReportFlowContext'
 import {ConsumerAnonymousInformation} from './ConsumerAnonymousInformation'
 import {ConsumerValidationDialog2, consumerValidationModal} from './ConsumerValidationDialog'
 
@@ -65,17 +57,11 @@ export const ConsumerInner = ({
   onSubmit,
   stepNavigation,
 }: {
-  draft: ReportWip
+  draft: PartialReport
   onSubmit: (_: Report['step4']) => void
   stepNavigation: StepNavigation
 }) => {
-  if (
-    !hasStep0(draft) ||
-    !hasSubcategoryIndexes(draft) ||
-    !hasStep2(draft) ||
-    !hasEmployeeConsumer(draft) ||
-    !hasConsumerWish(draft)
-  ) {
+  if (!hasStep0(draft) || !hasStep1Full(draft) || !hasStep2(draft)) {
     throw new Error('This draft is not ready for the Consumer step')
   }
   const {m, currentLang} = useI18n()
@@ -110,7 +96,7 @@ export const ConsumerInner = ({
 
   const transmissionStatus = getTransmissionStatus(draft)
   const isTransmittable = transmissionStatus === 'WILL_BE_TRANSMITTED' || transmissionStatus === 'MAY_BE_TRANSMITTED'
-  const showContactAgreement = isTransmittable && draft.consumerWish !== 'fixContractualDispute'
+  const showContactAgreement = isTransmittable && draft.step1.consumerWish !== 'fixContractualDispute'
 
   const getErrors = (name: keyof ConsumerForm): {error: boolean; helperText?: string} => ({
     error: !!_form.formState.errors[name],
@@ -125,7 +111,7 @@ export const ConsumerInner = ({
       consumer: consumer,
       contactAgreement: (() => {
         if (!isTransmittable) return false
-        if (draft.consumerWish === 'fixContractualDispute') return true
+        if (draft.step1.consumerWish === 'fixContractualDispute') return true
         if (contactAgreement === undefined) {
           throw new Error('contactAgreement should be defined at this stage')
         }
@@ -148,7 +134,9 @@ export const ConsumerInner = ({
       <div>
         <h2 className="fr-h6">{m.consumerTitle}</h2>
         <div>
-          {draft.employeeConsumer && <ScAlert type="info" dangerouslySetInnerHTML={{__html: `<p>${m.consumerIsEmployee}</p>`}} />}
+          {draft.step1.employeeConsumer && (
+            <ScAlert type="info" dangerouslySetInnerHTML={{__html: `<p>${m.consumerIsEmployee}</p>`}} />
+          )}
           <RequiredFieldsLegend />
           <Controller
             defaultValue={consumer?.gender}

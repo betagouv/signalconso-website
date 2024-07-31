@@ -1,4 +1,5 @@
 import {allAnomalies} from '@/anomalies/Anomalies'
+import {PartialReport} from '@/components_feature/reportFlow/ReportFlowContext'
 import {AppLang} from '@/i18n/localization/AppLangs'
 import {BarcodeProduct} from '@/model/BarcodeProduct'
 import {Report} from '@/model/Report'
@@ -169,8 +170,8 @@ export class Fixture {
     currentLang: AppLang,
     lastStep: ReportStep,
     random: SeedableRandom = defaultRandom,
-  ): ReportWip => {
-    const stepOrder: {[key in ReportStep]: (_: ReportWip) => ReportWip} = {
+  ): PartialReport => {
+    const stepOrder: {[key in ReportStep]: (_: PartialReport) => PartialReport} = {
       BuildingProblem: _ => {
         const anomaly = random.oneOf(allAnomalies(currentLang))
         const category = anomaly.category
@@ -226,7 +227,7 @@ export class Fixture {
     }
     return reportSteps
       .filter((_, i) => i <= getIndexForStep(lastStep))
-      .reduce((draft: ReportWip, step: ReportStep) => {
+      .reduce((draft: PartialReport, step: ReportStep) => {
         return stepOrder[step](draft)
       }, {})
   }

@@ -10,7 +10,7 @@ export const PlaygroundConsumer = () => {
             category: 'DemoCategory',
             lang: 'fr',
           },
-          subcategoriesIndexes: [0],
+          step1: {subcategoriesIndexes: [0]},
           step2: {
             kind: 'basic',
             companyIdentification: {
