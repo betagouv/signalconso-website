@@ -1,6 +1,7 @@
 import {CompanyKind} from '@/anomalies/Anomaly'
+import {appConfig} from '@/core/appConfig'
 import {ConsumerWish, Report} from '@/model/Report'
-import React, {ReactNode, useCallback, useContext, useRef, useState} from 'react'
+import React, {ReactNode, useCallback, useContext, useEffect, useRef, useState} from 'react'
 import {useAnalyticContext} from '../../analytic/AnalyticContext'
 import {EventCategories, ReportEventActions} from '../../analytic/analytic'
 import {ReportStepOrDone, getIndexForStepOrDone} from '../../model/ReportStep'
@@ -37,9 +38,11 @@ export const ReportFlowProvider = ({
   const _analytic = useAnalyticContext()
   const [report, setReport] = useState<PartialReport>(initialReportForTests ?? {})
   const currentStep = useRef<ReportStepOrDone | undefined>(undefined)
-  // useEffect(() => {
-  //   console.log('@@@', report)
-  // }, [report])
+  useEffect(() => {
+    if (appConfig.isDev) {
+      console.debug('Report changed', report)
+    }
+  }, [report])
   /**
    * Will send event at each step of the report workflow. The event must be unique, ie if a user decides to edit a previous step no step event will be triggered again
    * @param newStep
