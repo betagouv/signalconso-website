@@ -11,7 +11,7 @@ interface Props {
   stepNavigation: StepNavigation
 }
 
-export const ReportFlowStepperActions = ({nextButtonLabel, nextIconSend, loadingNext, onNext, stepNavigation}: Props) => {
+export const NextStepButton = ({nextButtonLabel, nextIconSend, loadingNext, onNext, stepNavigation}: Props) => {
   const {m} = useI18n()
   return (
     <div className="flex justify-end mt-6">

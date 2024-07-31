@@ -34,7 +34,7 @@ export type Anomaly = CategoryNodeBase & {
 export const specialCategories = ['OpenFoodFacts', 'RappelConso']
 export type SpecialCategory = (typeof specialCategories)[number]
 
-type CompanyKindQuestion = {
+export type CompanyKindQuestion = {
   label: string
   options: CompanyKindQuestionOption[]
 }
