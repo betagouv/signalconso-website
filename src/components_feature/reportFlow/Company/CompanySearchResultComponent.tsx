@@ -4,7 +4,7 @@ import {BtnNextSubmit} from '@/components_simple/buttons/Buttons'
 import {CompanyRecapFromSearchResult} from '@/components_simple/CompanyRecap/CompanyRecap'
 import {getTags} from '@/feature/reportDraftUtils'
 import {useI18n} from '@/i18n/I18n'
-import {ReportDraft2} from '@/model/ReportDraft2'
+import {ReportDraft} from '@/model/ReportDraft'
 import {Alert} from '@codegouvfr/react-dsfr/Alert'
 import {useEffect, useState} from 'react'
 import {Controller, useForm} from 'react-hook-form'
@@ -16,7 +16,7 @@ import {NoSearchResult} from './lib/NoSearchResult'
 
 interface Props {
   companies: CompanySearchResult[]
-  reportDraft: Partial<ReportDraft2> & Pick<ReportDraft2, 'step0' | 'subcategoriesIndexes'>
+  reportDraft: Partial<ReportDraft> & Pick<ReportDraft, 'step0' | 'subcategoriesIndexes'>
   onSubmit: (selected: CompanySearchResult, vendor?: string) => void
 }
 

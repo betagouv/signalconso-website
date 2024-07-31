@@ -1,26 +1,23 @@
 import {findAnomaly} from '@/anomalies/Anomalies'
 import {CompanyKind, ReportTag, Subcategory} from '@/anomalies/Anomaly'
 import {ReportDraft, TransmissionStatus} from '@/model/ReportDraft'
-import {ReportDraft2} from '@/model/ReportDraft2'
 import {lastFromArray, notUndefined} from '@/utils/utils'
 
-export function hasStep0(r: Partial<ReportDraft2>): r is Pick<ReportDraft, 'step0'> & Partial<ReportDraft2> {
+export function hasStep0(r: Partial<ReportDraft>): r is Pick<ReportDraft, 'step0'> & Partial<ReportDraft> {
   return !!r.step0
 }
 export function hasSubcategoryIndexes(
-  r: Partial<ReportDraft2>,
-): r is Pick<ReportDraft, 'subcategoriesIndexes'> & Partial<ReportDraft2> {
+  r: Partial<ReportDraft>,
+): r is Pick<ReportDraft, 'subcategoriesIndexes'> & Partial<ReportDraft> {
   return !!r.subcategoriesIndexes
 }
-export function hasStep2(r: Partial<ReportDraft2>): r is Pick<ReportDraft, 'step2'> & Partial<ReportDraft2> {
+export function hasStep2(r: Partial<ReportDraft>): r is Pick<ReportDraft, 'step2'> & Partial<ReportDraft> {
   return !!r.step2
 }
-export function hasEmployeeConsumer(
-  r: Partial<ReportDraft2>,
-): r is Pick<ReportDraft2, 'employeeConsumer'> & Partial<ReportDraft2> {
+export function hasEmployeeConsumer(r: Partial<ReportDraft>): r is Pick<ReportDraft, 'employeeConsumer'> & Partial<ReportDraft> {
   return r.employeeConsumer !== undefined
 }
-export function hasConsumerWish(r: Partial<ReportDraft2>): r is Pick<ReportDraft2, 'consumerWish'> & Partial<ReportDraft2> {
+export function hasConsumerWish(r: Partial<ReportDraft>): r is Pick<ReportDraft, 'consumerWish'> & Partial<ReportDraft> {
   return r.consumerWish !== undefined
 }
 

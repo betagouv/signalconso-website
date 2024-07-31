@@ -1,13 +1,13 @@
 /**
  * @jest-environment jsdom
  */
-import {waitFor} from '@testing-library/dom'
-import '@testing-library/jest-dom'
 import {dummyStepNavigation} from '@/components_feature/playgroundComponents/PlaygroundConfirmation'
 import {DetailsFixtureInput} from '@/components_feature/playgroundComponents/PlaygroundDetails'
 import {appConfig} from '@/core/appConfig'
-import {DetailInputValues2} from '@/model/ReportDraft2'
+import {DetailInputValues2} from '@/model/ReportDraft'
 import {fireEvent, render, ScRenderResult} from '@/test/test-utils'
+import {waitFor} from '@testing-library/dom'
+import '@testing-library/jest-dom'
 import {AppLangs} from '../../../i18n/localization/AppLangs'
 import {mapNTimes} from '../../../utils/utils'
 import {DetailsInner, SpecifyFormUtils} from './Details'

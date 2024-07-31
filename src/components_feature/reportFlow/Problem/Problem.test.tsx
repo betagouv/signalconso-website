@@ -4,7 +4,7 @@
 import {allAnomalies} from '@/anomalies/Anomalies'
 import {dummyStepNavigation} from '@/components_feature/playgroundComponents/PlaygroundConfirmation'
 import {getCompanyKind} from '@/feature/reportDraftUtils'
-import {ReportDraft2} from '@/model/ReportDraft2'
+import {ReportDraft} from '@/model/ReportDraft'
 import {AccessReportFlow, fireEvent, render, ScRenderResult} from '@/test/test-utils'
 import '@testing-library/jest-dom'
 import {Anomaly} from '../../../anomalies/Anomaly'
@@ -15,7 +15,7 @@ class ProblemFixture {
   static readonly anomaly: Anomaly = allAnomalies('fr').find(a => a.category === 'DemoCategory')!
 }
 
-const initialReport: Partial<ReportDraft2> = {
+const initialReport: Partial<ReportDraft> = {
   step0: {
     category: 'DemoCategory',
     lang: 'fr',
@@ -118,7 +118,7 @@ describe('Problem', () => {
   }
 
   it('should update employeeConsumer = true', () => {
-    let report: undefined | Partial<ReportDraft2>
+    let report: undefined | Partial<ReportDraft>
     const app = render(
       <AccessReportFlow
         onReportChange={r => {
@@ -135,7 +135,7 @@ describe('Problem', () => {
   })
 
   it('should update employeeConsumer = false', () => {
-    let report: undefined | Partial<ReportDraft2>
+    let report: undefined | Partial<ReportDraft>
     const app = render(
       <AccessReportFlow
         onReportChange={r => {
@@ -152,7 +152,7 @@ describe('Problem', () => {
   })
 
   it('should ask companyKind', () => {
-    let report: undefined | Partial<ReportDraft2>
+    let report: undefined | Partial<ReportDraft>
     const app = render(
       <AccessReportFlow
         onReportChange={r => {
@@ -170,7 +170,7 @@ describe('Problem', () => {
   })
 
   it(`shouldn't ask companyKind when defined`, () => {
-    let report: undefined | Partial<ReportDraft2>
+    let report: undefined | Partial<ReportDraft>
     const app = render(
       <AccessReportFlow
         onReportChange={r => {
@@ -188,7 +188,7 @@ describe('Problem', () => {
   })
 
   it('should display contractual dispute warning and go to the next step', () => {
-    let report: undefined | Partial<ReportDraft2>
+    let report: undefined | Partial<ReportDraft>
     const app = render(
       <AccessReportFlow
         onReportChange={r => {
@@ -207,7 +207,7 @@ describe('Problem', () => {
   })
 
   it('should not display contractual dispute warning', () => {
-    let report: undefined | Partial<ReportDraft2>
+    let report: undefined | Partial<ReportDraft>
     const app = render(
       <AccessReportFlow
         onReportChange={r => {
@@ -227,7 +227,7 @@ describe('Problem', () => {
   })
 
   it('should not ask ReponseConso when no tag', () => {
-    let report: undefined | Partial<ReportDraft2>
+    let report: undefined | Partial<ReportDraft>
     const app = render(
       <AccessReportFlow
         onReportChange={r => {
@@ -244,7 +244,7 @@ describe('Problem', () => {
   })
 
   it('should not ask ReponseConso nor contractual dispute when employeeConsumer = true', () => {
-    let report: undefined | Partial<ReportDraft2>
+    let report: undefined | Partial<ReportDraft>
     const app = render(
       <AccessReportFlow
         onReportChange={r => {
@@ -265,7 +265,7 @@ describe('Problem', () => {
   })
 
   it('should ask ReponseConso when tagged', () => {
-    let report: undefined | Partial<ReportDraft2>
+    let report: undefined | Partial<ReportDraft>
     const app = render(
       <AccessReportFlow
         onReportChange={r => {

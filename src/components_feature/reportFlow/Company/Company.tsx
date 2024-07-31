@@ -7,7 +7,7 @@ import {ScRadioButtons} from '@/components_simple/formInputs/ScRadioButtons'
 import {Loader} from '@/feature/Loader'
 import {getCompanyKind, hasStep0, hasStep2, hasSubcategoryIndexes} from '@/feature/reportDraftUtils'
 import {useBarcodeSearch} from '@/hooks/barcode'
-import {ReportDraft2} from '@/model/ReportDraft2'
+import {ReportDraft} from '@/model/ReportDraft'
 import {CommonCompanyIdentification, Step2Model} from '@/model/Step2Model'
 import {useState} from 'react'
 import {CompanyKind, SpecificProductCompanyKind, SpecificWebsiteCompanyKind} from '../../../anomalies/Anomaly'
@@ -67,7 +67,7 @@ export function Company({stepNavigation}: {stepNavigation: StepNavigation}) {
 }
 
 type CommonProps = {
-  draft: Partial<ReportDraft2> & Pick<ReportDraft2, 'subcategoriesIndexes' | 'step0'>
+  draft: Partial<ReportDraft> & Pick<ReportDraft, 'subcategoriesIndexes' | 'step0'>
   updateReport: (step2: Step2Model) => void
 }
 
@@ -229,7 +229,7 @@ function CompanyIdentificationTree({
   draft,
   onIdentification,
 }: {
-  draft: Partial<ReportDraft2> & Pick<ReportDraft2, 'step0' | 'subcategoriesIndexes'>
+  draft: Partial<ReportDraft> & Pick<ReportDraft, 'step0' | 'subcategoriesIndexes'>
   searchResults: CompanySearchResult[] | undefined
   onIdentification: (_: CommonCompanyIdentification) => void
 }) {
@@ -383,7 +383,7 @@ function BarcodeTree({
   updateReport,
 }: {
   specificProductCompanyKinds: SpecificProductCompanyKind
-  draft: Partial<ReportDraft2> & Pick<ReportDraft2, 'subcategoriesIndexes' | 'step0'>
+  draft: Partial<ReportDraft> & Pick<ReportDraft, 'subcategoriesIndexes' | 'step0'>
   updateReport: (step2: Step2Model) => void
 }) {
   return (

@@ -16,7 +16,7 @@ import {
   hasSubcategoryIndexes,
 } from '@/feature/reportDraftUtils'
 import {useI18n} from '@/i18n/I18n'
-import {DetailInputValues2} from '@/model/ReportDraft2'
+import {DetailInputValues2} from '@/model/ReportDraft'
 import {fnSwitch} from '@/utils/FnSwitch'
 import {last} from '@/utils/lodashNamedExport'
 import {useEffect, useMemo, useState} from 'react'

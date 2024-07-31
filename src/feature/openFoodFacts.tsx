@@ -7,7 +7,7 @@ import {SpecialCategorySetup} from '@/feature/SpecialCategorySetup'
 import {useBarcodeSearch} from '@/hooks/barcode'
 import {BarcodeProduct} from '@/model/BarcodeProduct'
 import {CompanySearchResult} from '@/model/Company'
-import {ReportDraft2} from '@/model/ReportDraft2'
+import {ReportDraft} from '@/model/ReportDraft'
 import {useSearchParams} from 'next/navigation'
 import {useEffect, useMemo} from 'react'
 
@@ -64,7 +64,7 @@ function useBarcodeParam(anomaly: Anomaly) {
   return (anomaly.specialCategory === 'OpenFoodFacts' && searchParams.get(OPENFOODFACTS_BARCODE_PARAM)?.trim()) || undefined
 }
 
-export function recreateOpenFfBarcodeParam(reportDraft: Partial<ReportDraft2>) {
+export function recreateOpenFfBarcodeParam(reportDraft: Partial<ReportDraft>) {
   const barcode = reportDraft.openFf?.barcode
   const params = new URLSearchParams()
   if (barcode) {

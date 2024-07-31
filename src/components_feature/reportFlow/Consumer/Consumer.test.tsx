@@ -3,7 +3,6 @@
  */
 import {dummyStepNavigation} from '@/components_feature/playgroundComponents/PlaygroundConfirmation'
 import {ReportDraft} from '@/model/ReportDraft'
-import {ReportDraft2} from '@/model/ReportDraft2'
 import {Step2Model} from '@/model/Step2Model'
 import {fireEvent, render, ScRenderResult, waitFor} from '../../../test/test-utils'
 import {ConsumerInner} from './Consumer'
@@ -48,7 +47,7 @@ describe('Consumer', () => {
   }
 
   describe('when values are pre defined', function () {
-    let initial: Partial<ReportDraft2> = {
+    let initial: Partial<ReportDraft> = {
       step0: {
         lang: 'fr',
         category: 'DemoCategory',
@@ -106,7 +105,7 @@ describe('Consumer', () => {
   })
 
   describe('when employee consumer is true', function () {
-    let initial: Partial<ReportDraft2> = {
+    let initial: Partial<ReportDraft> = {
       step0: {
         lang: 'fr',
         category: 'DemoCategory',

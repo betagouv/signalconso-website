@@ -1,13 +1,13 @@
-import {ReportDraft2} from '@/model/ReportDraft2'
+import {ReportDraft} from '@/model/ReportDraft'
 import React, {ReactNode, useContext, useRef, useState} from 'react'
 import {useAnalyticContext} from '../../analytic/AnalyticContext'
 import {EventCategories, ReportEventActions} from '../../analytic/analytic'
 import {ReportStepOrDone, getIndexForStepOrDone} from '../../model/ReportStep'
 
-export type SetReportDraft = (fn: (_: Partial<ReportDraft2>) => Partial<ReportDraft2>) => void
+export type SetReportDraft = (fn: (_: Partial<ReportDraft>) => Partial<ReportDraft>) => void
 export type SendReportEvent = (_: ReportStepOrDone) => void
 interface ReportFlowContextProps {
-  reportDraft: Partial<ReportDraft2>
+  reportDraft: Partial<ReportDraft>
   setReportDraft: SetReportDraft
   resetFlow: () => void
   sendReportEvent: SendReportEvent
@@ -20,10 +20,10 @@ export const ReportFlowProvider = ({
   initialReportForTests,
 }: {
   children: ReactNode
-  initialReportForTests?: Partial<ReportDraft2>
+  initialReportForTests?: Partial<ReportDraft>
 }) => {
   const _analytic = useAnalyticContext()
-  const [reportDraft, setReportDraft] = useState<Partial<ReportDraft2>>(initialReportForTests ?? {})
+  const [reportDraft, setReportDraft] = useState<Partial<ReportDraft>>(initialReportForTests ?? {})
   const currentStep = useRef<ReportStepOrDone | undefined>(undefined)
   // useEffect(() => {
   //   console.log('@@@', reportDraft)
