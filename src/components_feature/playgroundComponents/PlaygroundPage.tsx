@@ -177,7 +177,7 @@ const Playground = () => {
                   company: companySearchResult,
                 },
               },
-              step1: {subcategoriesIndexes: [0, 0], consumerWish: 'companyImprovement', employeeConsumer: false},
+              step1: {subcategoriesIndexes: [0], consumerWish: 'companyImprovement', employeeConsumer: false},
             }}
             onClear={console.log}
             stepNavigation={dummyStepNavigation}
@@ -199,7 +199,7 @@ const Playground = () => {
                 },
                 barcodeProduct,
               },
-              step1: {subcategoriesIndexes: [0, 0], consumerWish: 'companyImprovement', employeeConsumer: false},
+              step1: {subcategoriesIndexes: [0], consumerWish: 'companyImprovement', employeeConsumer: false},
             }}
             onClear={console.log}
             stepNavigation={dummyStepNavigation}

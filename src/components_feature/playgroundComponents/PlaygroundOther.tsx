@@ -2,6 +2,7 @@ import {CompanyRecapFromSearchResult, CompanyRecapFromStep2} from '@/components_
 import {Step2Recap} from '@/components_simple/CompanyRecap/Step2Recap'
 import {ScAlert} from '@/components_simple/ScAlert'
 import {ButtonWithLoader} from '@/components_simple/buttons/Buttons'
+import {Step2Model} from '@/model/Step2Model'
 import {Fixture, SeedableRandom} from '@/test/fixture'
 import {PortalToBody} from '@/utils/PortalToBody'
 import Button from '@codegouvfr/react-dsfr/Button'
@@ -29,7 +30,14 @@ export const PlaygroundOther = () => {
   const specifiyValue = watch('specifiyValue')
   const specifiyCheck = watchCheck('specifiyCheck')
   const random = new SeedableRandom(33)
-  const draftStep2 = Fixture.genDraftReportStep2({random})
+  const step2: Step2Model = {
+    kind: 'product',
+    barcodeProduct: Fixture.genBarcodeProduct(random),
+    companyIdentification: {
+      kind: 'companyFound',
+      company: Fixture.genCompanySearchResult(random),
+    },
+  }
   return (
     <>
       <div className="mb-4">
@@ -209,7 +217,7 @@ export const PlaygroundOther = () => {
         <h6>Le composant "CompanyRecapFromSearchResult" sur la shrinkflation</h6>
         <CompanyRecapFromSearchResult company={Fixture.genCompanySearchResult()} tags={['Shrinkflation']} />
         <h6>Le composant "CompanyRecapFromStep2" avec un draft en step2</h6>
-        <CompanyRecapFromStep2 step2={draftStep2.step2} tags={[]} />
+        <CompanyRecapFromStep2 step2={step2} tags={[]} />
         <h6>Le composant "Step2Recap" avec le cas "station"</h6>
         <Step2Recap step2={Fixture.genStep2Station()} tags={[]} />
         <h6>Le composant "Step2Recap" avec le cas "train" de base</h6>
