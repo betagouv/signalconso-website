@@ -1,20 +1,23 @@
 import {FriendlyHelpText} from '@/components_simple/FriendlyHelpText'
-import {getWipCompanyKindFromSelected, hasStep0} from '@/feature/reportDraftUtils'
+import {getWipCompanyKindFromSelected, hasStep0, hasSubcategoryIndexes} from '@/feature/reportUtils'
 import {useI18n} from '@/i18n/I18n'
 import {ReactNode, useEffect} from 'react'
-import {SetReportDraft, useReportFlowContext} from '../ReportFlowContext'
+import {useReportFlowContext} from '../ReportFlowContext'
 import {ProblemSelect} from './ProblemSelect'
 
-export function ProblemEmployeeConsumer({children}: {children: () => ReactNode}) {
+export function ProblemEmployeeConsumer({children}: {children: ReactNode}) {
   const {m} = useI18n()
-  const {reportDraft: r, setReportDraft} = useReportFlowContext()
-  if (!hasStep0(r)) {
+  const {report: r, setEmployeeConsumer} = useReportFlowContext()
+  if (!hasStep0(r) || !hasSubcategoryIndexes(r)) {
     throw new Error('Draft is not ready to ask for employeeConsumer')
   }
   const companyKind = getWipCompanyKindFromSelected(r)
   const predeterminedEmployeeConsumer = companyKind === 'SOCIAL' ? false : undefined
-  const skipQuestion = useApplyPredeterminedValue({predeterminedEmployeeConsumer, setReportDraft})
-  const isDone = r.employeeConsumer !== undefined
+  const skipQuestion = useApplyPredeterminedValue({
+    predeterminedEmployeeConsumer,
+    setEmployeeConsumer,
+  })
+  const isDone = r.step1?.employeeConsumer !== undefined
   return (
     <>
       {!skipQuestion && (
@@ -22,8 +25,8 @@ export function ProblemEmployeeConsumer({children}: {children: () => ReactNode})
           <ProblemSelect
             id="select-employeeconsumer"
             title={m.problemDoYouWorkInCompany}
-            value={r.employeeConsumer}
-            onChange={employeeConsumer => setReportDraft(_ => ({..._, employeeConsumer}))}
+            value={r.step1?.employeeConsumer}
+            onChange={setEmployeeConsumer}
             options={[
               {
                 title: m.problemDoYouWorkInCompanyNo,
@@ -35,33 +38,30 @@ export function ProblemEmployeeConsumer({children}: {children: () => ReactNode})
               },
             ]}
           />
-          {r.employeeConsumer && (
+          {r.step1?.employeeConsumer && (
             <FriendlyHelpText>
               <p className="mb-0" dangerouslySetInnerHTML={{__html: m.employeeConsumerInformation}} />
             </FriendlyHelpText>
           )}
         </>
       )}
-      {isDone && children()}
+      {isDone && children}
     </>
   )
 }
 
 function useApplyPredeterminedValue({
   predeterminedEmployeeConsumer,
-  setReportDraft,
+  setEmployeeConsumer,
 }: {
   predeterminedEmployeeConsumer: boolean | undefined
-  setReportDraft: SetReportDraft
+  setEmployeeConsumer: (_: boolean) => void
 }) {
   useEffect(() => {
     if (predeterminedEmployeeConsumer !== undefined) {
-      setReportDraft(_ => ({
-        ..._,
-        employeeConsumer: predeterminedEmployeeConsumer,
-      }))
+      setEmployeeConsumer(predeterminedEmployeeConsumer)
     }
-  }, [setReportDraft, predeterminedEmployeeConsumer])
+  }, [setEmployeeConsumer, predeterminedEmployeeConsumer])
   const shouldSkipQuestion = predeterminedEmployeeConsumer !== undefined
   return shouldSkipQuestion
 }

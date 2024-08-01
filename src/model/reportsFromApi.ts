@@ -2,7 +2,7 @@ import {ReportTag} from '@/anomalies/Anomaly'
 import {AppLang} from '../i18n/localization/AppLangs'
 import {Address, ApiAddress} from './Address'
 import {DetailInputValue} from './CreatedReport'
-import {Gender, TrainDraft} from './ReportDraft'
+import {Gender, TrainDraft} from './Report'
 
 export interface ApiInfluencer {
   socialNetwork?: string
@@ -14,7 +14,7 @@ export interface ApiInfluencer {
 // Equivalent to ReportDraft in Scala code.
 // We don't use the optional field syntax here ("?:")
 // We want to be sure to send every field to the API
-export interface ApiReportDraft {
+export interface ApiReport {
   gender: Gender | undefined
   category: string
   subcategories: string[]

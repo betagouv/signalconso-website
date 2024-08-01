@@ -5,30 +5,21 @@ import {FriendlyHelpText} from '@/components_simple/FriendlyHelpText'
 import {RequiredFieldsLegend} from '@/components_simple/RequiredFieldsLegend'
 import {ReportFiles} from '@/components_simple/reportFile/ReportFiles'
 import {appConfig} from '@/core/appConfig'
-import {
-  getSubcategories,
-  getTags,
-  getTransmissionStatus,
-  hasConsumerWish,
-  hasEmployeeConsumer,
-  hasStep0,
-  hasStep2,
-  hasSubcategoryIndexes,
-} from '@/feature/reportDraftUtils'
+import {getSubcategories, getTags, getTransmissionStatus, hasStep0, hasStep1Full, hasStep2} from '@/feature/reportUtils'
 import {useI18n} from '@/i18n/I18n'
-import {DetailInputValues2} from '@/model/ReportDraft'
+import {DetailInputValues2} from '@/model/Report'
 import {fnSwitch} from '@/utils/FnSwitch'
 import {last} from '@/utils/lodashNamedExport'
 import {useEffect, useMemo, useState} from 'react'
 import {useForm} from 'react-hook-form'
 import {DetailInput, ReportTag, StandardSubcategory} from '../../../anomalies/Anomaly'
-import {ConsumerWish, TransmissionStatus} from '../../../model/ReportDraft'
+import {ConsumerWish, TransmissionStatus} from '../../../model/Report'
 import {FileOrigin, UploadedFile} from '../../../model/UploadedFile'
 import {useReportFlowContext} from '../ReportFlowContext'
 import {buildDefaultValues} from './DetailInputsUtils'
 import {DetailsAlertProduitDangereux} from './DetailsAlertProduitDangereux'
 import {DetailsInputRenderByType} from './DetailsInputRenderByType'
-import {getDraftReportInputs} from './draftReportInputs'
+import {getReportInputs} from './draftReportInputs'
 
 export class SpecifyFormUtils {
   static readonly specifyKeywordFr = '(à préciser)'
@@ -43,43 +34,32 @@ export const isSpecifyInputName = (name: string) => name.includes('_specify')
 export const Details = ({stepNavigation}: {stepNavigation: StepNavigation}) => {
   const _reportFlow = useReportFlowContext()
   const {currentLang} = useI18n()
-  const draft = _reportFlow.reportDraft
-  if (!hasStep0(draft) || !hasSubcategoryIndexes(draft)) {
+  const report = _reportFlow.report
+  if (!hasStep0(report) || !hasStep1Full(report) || !hasStep2(report)) {
     throw new Error(`The draft is not ready to display Details step`)
   }
   const inputs = useMemo(() => {
-    return getDraftReportInputs(draft, currentLang)
-  }, [draft.subcategoriesIndexes, getTags(draft), draft.consumerWish])
+    return getReportInputs(report, currentLang)
+  }, [report.step1.subcategoriesIndexes, getTags(report), report.step1.consumerWish])
 
-  if (
-    !inputs ||
-    draft.employeeConsumer === undefined ||
-    !hasStep0(draft) ||
-    !hasSubcategoryIndexes(draft) ||
-    !hasStep2(draft) ||
-    !hasEmployeeConsumer(draft) ||
-    !hasConsumerWish(draft)
-  ) {
-    throw new Error(`Details step should not be accessible ${draft.employeeConsumer} - ${JSON.stringify(inputs)}`)
-  }
-  const subcategories = getSubcategories(draft)
+  const subcategories = getSubcategories(report)
   const lastSubcategory = last(subcategories) as StandardSubcategory
   return (
     <DetailsInner
-      initialValues={draft.step3?.details}
-      initialFiles={draft.step3?.uploadedFiles}
-      transmissionStatus={getTransmissionStatus(draft)}
+      initialValues={report.step3?.details}
+      initialFiles={report.step3?.uploadedFiles}
+      transmissionStatus={getTransmissionStatus(report)}
       inputs={inputs}
       fileLabel={lastSubcategory.fileLabel}
-      employeeConsumer={draft.employeeConsumer}
-      tags={getTags(draft)}
+      employeeConsumer={report.step1.employeeConsumer}
+      tags={getTags(report)}
       onSubmit={(detailInputValues, uploadedFiles) => {
-        _reportFlow.setReportDraft(_ => ({..._, step3: {uploadedFiles, details: detailInputValues}}))
+        _reportFlow.setReport(_ => ({..._, step3: {uploadedFiles, details: detailInputValues}}))
         _reportFlow.sendReportEvent(stepNavigation.currentStep)
         stepNavigation.next()
       }}
       {...{stepNavigation}}
-      consumerWish={draft.consumerWish}
+      consumerWish={report.step1.consumerWish}
     />
   )
 }

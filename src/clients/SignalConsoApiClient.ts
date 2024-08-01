@@ -1,10 +1,10 @@
 import {SocialNetwork, Subcategory} from '@/anomalies/Anomaly'
 import {appConfig} from '@/core/appConfig'
-import {toApi} from '@/feature/fromReportDraftToApi'
-import {getSubcategories} from '@/feature/reportDraftUtils'
+import {getSubcategories} from '@/feature/reportUtils'
+import {toApi} from '@/feature/toApi'
 import {ConsumerEmailResult} from '@/model/ConsumerEmailValidation'
-import {ReportDraft} from '@/model/ReportDraft'
-import {ApiCreatedReport, ApiReportDraft} from '@/model/reportsFromApi'
+import {Report} from '@/model/Report'
+import {ApiCreatedReport, ApiReport} from '@/model/reportsFromApi'
 import {ResponseConsumerReview, ResponseConsumerReviewExists} from '../core/Events'
 import {AppLang} from '../i18n/localization/AppLangs'
 import {BarcodeProduct} from '../model/BarcodeProduct'
@@ -59,9 +59,9 @@ export class SignalConsoApiClient {
     return this.client.get<Country[]>(`/websites/search-url`, {qs: {url}})
   }
 
-  createReport = async (draft: ReportDraft, metadata: ApiReportDraft['metadata']): Promise<CreatedReport> => {
-    const apiReportDraft: ApiReportDraft = toApi(draft, metadata)
-    const reportFromApi = await this.client.post<ApiCreatedReport>(`/reports`, {body: apiReportDraft})
+  createReport = async (draft: Report, metadata: ApiReport['metadata']): Promise<CreatedReport> => {
+    const apiReport: ApiReport = toApi(draft, metadata)
+    const reportFromApi = await this.client.post<ApiCreatedReport>(`/reports`, {body: apiReport})
 
     const subcategories = getSubcategories(draft)
     const postReportHelper = subcategories.findLast(_ => _.postReportHelper)?.postReportHelper

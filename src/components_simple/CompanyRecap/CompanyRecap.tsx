@@ -1,12 +1,12 @@
 import {ReportTag} from '@/anomalies/Anomaly'
 import {CompanySearchResult, isGovernmentCompany} from '@/model/Company'
-import {ReportDraft} from '@/model/ReportDraft'
+import {Report} from '@/model/Report'
 import {appliedSpecialLegislation} from '@/model/SpecialLegislation'
 import {Step2Model} from '@/model/Step2Model'
 import {CompanyRecapRaw, CompanyRecapRawProps} from './CompanyRecapRaw'
 import {buildBrandName} from './companyNameUtils'
 
-export function CompanyRecapFromStep2({step2, tags}: {step2: ReportDraft['step2']; tags: ReportTag[]}) {
+export function CompanyRecapFromStep2({step2, tags}: {step2: Report['step2']; tags: ReportTag[]}) {
   // this doesn't display all the step2 variations
   // only whatever concerns the company + phone/website/product
   const {

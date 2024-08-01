@@ -2,9 +2,10 @@
  * @jest-environment jsdom
  */
 import {dummyStepNavigation} from '@/components_feature/playgroundComponents/PlaygroundConfirmation'
-import {ReportDraft} from '@/model/ReportDraft'
+import {Report} from '@/model/Report'
 import {Step2Model} from '@/model/Step2Model'
 import {fireEvent, render, ScRenderResult, waitFor} from '../../../test/test-utils'
+import {PartialReport} from '../ReportFlowContext'
 import {ConsumerInner} from './Consumer'
 
 class Fixture {
@@ -47,21 +48,23 @@ describe('Consumer', () => {
   }
 
   describe('when values are pre defined', function () {
-    let initial: Partial<ReportDraft> = {
+    let initial: PartialReport = {
       step0: {
         lang: 'fr',
         category: 'DemoCategory',
       },
-      subcategoriesIndexes: [0],
-      employeeConsumer: false,
-      consumerWish: 'companyImprovement',
+      step1: {
+        subcategoriesIndexes: [0],
+        employeeConsumer: false,
+        consumerWish: 'companyImprovement',
+      },
       step2,
       step4: {
         contactAgreement: true,
         consumer: Fixture.consumer,
       },
     }
-    let submitted: ReportDraft['step4'] | undefined = undefined
+    let submitted: Report['step4'] | undefined = undefined
 
     beforeEach(() => {
       app = render(
@@ -83,7 +86,7 @@ describe('Consumer', () => {
     it('initialise if there is a draft report', async () => {
       submit()
       await waitFor(() => {
-        const expected: ReportDraft['step4'] = {
+        const expected: Report['step4'] = {
           consumer: Fixture.consumer,
           contactAgreement: true,
         }
@@ -95,7 +98,7 @@ describe('Consumer', () => {
       fireEvent.click(app.getByText(app.m.contactAgreementFalseTitle))
       submit()
       await waitFor(() => {
-        const expected: ReportDraft['step4'] = {
+        const expected: Report['step4'] = {
           consumer: Fixture.consumer,
           contactAgreement: false,
         }
@@ -105,18 +108,20 @@ describe('Consumer', () => {
   })
 
   describe('when employee consumer is true', function () {
-    let initial: Partial<ReportDraft> = {
+    let initial: PartialReport = {
       step0: {
         lang: 'fr',
         category: 'DemoCategory',
       },
-      employeeConsumer: true,
-      consumerWish: 'companyImprovement',
-      subcategoriesIndexes: [0],
+      step1: {
+        subcategoriesIndexes: [0],
+        employeeConsumer: true,
+        consumerWish: 'companyImprovement',
+      },
       step2,
     }
 
-    let submitted: ReportDraft['step4'] | undefined = undefined
+    let submitted: Report['step4'] | undefined = undefined
     beforeEach(() => {
       app = render(
         <ConsumerInner
@@ -148,7 +153,7 @@ describe('Consumer', () => {
 
       submit()
       await waitFor(() => {
-        const expected: ReportDraft['step4'] = {
+        const expected: Report['step4'] = {
           consumer: Fixture.consumer,
           contactAgreement: false,
         }

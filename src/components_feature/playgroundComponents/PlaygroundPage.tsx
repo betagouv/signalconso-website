@@ -34,9 +34,6 @@ const companySearchResult: CompanySearchResult = {
   isMarketPlace: false,
 }
 
-const website = 'http://blabla.fr'
-const phone = '0987654321'
-
 const barcodeProduct: BarcodeProduct = {
   id: '2edf6be3-b072-46b5-955e-a893bf23bf3b',
   gtin: '3017620422003',
@@ -45,9 +42,9 @@ const barcodeProduct: BarcodeProduct = {
 }
 
 const generalTestCases = [
-  'details',
   'companyFilled',
   'companyFilledWithProduct',
+  'details',
   'consumer',
   'confirmation',
   'response_review',
@@ -125,17 +122,15 @@ const Playground = () => {
         return (
           <PlaygroundCompany
             companyKind="PRODUCT_OPENFF"
-            partialReportDraft={{
-              openFf: {
-                barcode: '3017620422003',
-                product: {
-                  id: 'b02541f4-1529-4706-9572-29fd62f91d01',
-                  gtin: '3017620422003',
-                  productName: 'Nutella',
-                  siren: '803769827',
-                },
-                company: companySearchResult,
+            reportOpenFf={{
+              barcode: '3017620422003',
+              product: {
+                id: 'b02541f4-1529-4706-9572-29fd62f91d01',
+                gtin: '3017620422003',
+                productName: 'Nutella',
+                siren: '803769827',
               },
+              company: companySearchResult,
             }}
           />
         )
@@ -143,15 +138,13 @@ const Playground = () => {
         return (
           <PlaygroundCompany
             companyKind="PRODUCT_OPENFF"
-            partialReportDraft={{
-              openFf: {
-                barcode: '5449000214911',
-                product: {
-                  id: '701df67c-a5a9-41ee-bc74-a5a918fe1595',
-                  gtin: '5449000214911',
-                  productName: 'Coca-cola',
-                  siren: undefined,
-                },
+            reportOpenFf={{
+              barcode: '5449000214911',
+              product: {
+                id: '701df67c-a5a9-41ee-bc74-a5a918fe1595',
+                gtin: '5449000214911',
+                productName: 'Coca-cola',
+                siren: undefined,
               },
             }}
           />
@@ -160,10 +153,8 @@ const Playground = () => {
         return (
           <PlaygroundCompany
             companyKind="PRODUCT_OPENFF"
-            partialReportDraft={{
-              openFf: {
-                barcode: '123456',
-              },
+            reportOpenFf={{
+              barcode: '123456',
             }}
           />
         )
@@ -186,7 +177,7 @@ const Playground = () => {
                   company: companySearchResult,
                 },
               },
-              subcategoriesIndexes: [0, 0],
+              step1: {subcategoriesIndexes: [0], consumerWish: 'companyImprovement', employeeConsumer: false},
             }}
             onClear={console.log}
             stepNavigation={dummyStepNavigation}
@@ -208,7 +199,7 @@ const Playground = () => {
                 },
                 barcodeProduct,
               },
-              subcategoriesIndexes: [0, 0],
+              step1: {subcategoriesIndexes: [0], consumerWish: 'companyImprovement', employeeConsumer: false},
             }}
             onClear={console.log}
             stepNavigation={dummyStepNavigation}

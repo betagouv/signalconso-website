@@ -1,10 +1,11 @@
 import {isDateInput} from '@/components_feature/reportFlow/Details/DetailInputsUtils'
 import {isSpecifyInputName, SpecifyFormUtils} from '@/components_feature/reportFlow/Details/Details'
+import {PartialReport} from '@/components_feature/reportFlow/ReportFlowContext'
 import {Anomaly, DetailInput, DetailInputType} from '../anomalies/Anomaly'
 import {AppLang} from '../i18n/localization/AppLangs'
-import {isoToFrenchFormat, notNull} from '../utils/utils'
 import {DetailInputValue} from '../model/CreatedReport'
-import {DetailInputValues2, ReportDraft} from '../model/ReportDraft'
+import {DetailInputValues2} from '../model/Report'
+import {isoToFrenchFormat, notNull} from '../utils/utils'
 
 export const parseReportDetails = (details: DetailInputValues2, inputs: DetailInput[]): DetailInputValue[] => {
   function injectSpecifiedValue(input: DetailInput, value: string, index: number): string {
@@ -70,9 +71,9 @@ export const parseReportDetails = (details: DetailInputValues2, inputs: DetailIn
     })
     .filter(notNull)
 }
-export function initiateReportDraft(anomaly: Anomaly, lang: AppLang): Partial<ReportDraft> {
+export function initiateReport(anomaly: Anomaly, lang: AppLang): PartialReport {
   return {
     step0: {category: anomaly.category, lang},
-    subcategoriesIndexes: [],
+    step1: {subcategoriesIndexes: []},
   }
 }

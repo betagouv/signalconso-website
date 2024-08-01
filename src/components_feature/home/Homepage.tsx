@@ -8,7 +8,7 @@ import {InfoBanner} from '@/components_simple/bigBanners/InfoBanner'
 import {MobileAppPromoBanner} from '@/components_simple/bigBanners/MobileAppPromoBanner'
 import {bigReportButtonProps} from '@/components_simple/buttons/buttonsUtils'
 import {HP_START_REPORT_ANCHOR} from '@/core/pagesDefinitions'
-import {hasStep0} from '@/feature/reportDraftUtils'
+import {hasStep0} from '@/feature/reportUtils'
 import {useI18n} from '@/i18n/I18n'
 import {AppLangs} from '@/i18n/localization/AppLangs'
 import imgCompany from '@/img/illustrations/company.png'
@@ -33,8 +33,8 @@ export const Homepage = () => {
   }, [])
 
   const anomalies = allAnomaliesForHomepage(currentLang)
-  const {reportDraft} = useReportFlowContext()
-  const hasStoredReport = hasStep0(reportDraft)
+  const {report: report} = useReportFlowContext()
+  const hasStoredReport = hasStep0(report)
   const dsfrTheme = useColors()
   return (
     <>

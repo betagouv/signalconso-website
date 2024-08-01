@@ -1,14 +1,13 @@
 import {instanceOfSubcategoryWithInfoWall} from '@/anomalies/Anomalies'
-import {getAnomaly, getSubcategories, hasStep0, hasSubcategoryIndexes} from '@/feature/reportDraftUtils'
-import {ReportDraft} from '@/model/ReportDraft'
+import {getAnomaly, getSubcategories, hasStep0, hasSubcategoryIndexes} from '@/feature/reportUtils'
 import {ReactNode} from 'react'
-import {useReportFlowContext} from '../ReportFlowContext'
+import {PartialReport, useReportFlowContext} from '../ReportFlowContext'
 import {ProblemInformation} from './ProblemInformation'
 import {ProblemSelect} from './ProblemSelect'
 import {computeSelectedSubcategoriesData} from './useSelectedSubcategoriesData'
 
-export function ProblemSubcategories({children, isWebView}: {children: () => ReactNode; isWebView: boolean}) {
-  const {reportDraft: r, setReportDraft} = useReportFlowContext()
+export function ProblemSubcategories({children, isWebView}: {children: ReactNode; isWebView: boolean}) {
+  const {report: r, setReport} = useReportFlowContext()
   if (!hasStep0(r)) {
     throw new Error('Draft is not ready to ask for subcategories')
   }
@@ -16,7 +15,7 @@ export function ProblemSubcategories({children, isWebView}: {children: () => Rea
   const subcategories = hasSubcategoryIndexes(r) ? getSubcategories(r) : []
   const {lastSubcategory, isLastSubcategory} = computeSelectedSubcategoriesData(subcategories)
   const handleSubcategoriesChange = (subcategoryIndex: number, subcategoryDepthIndex: number) => {
-    setReportDraft(report => {
+    setReport(report => {
       return applySubcategoriesChange(report, subcategoryIndex, subcategoryDepthIndex)
     })
   }
@@ -50,30 +49,33 @@ export function ProblemSubcategories({children, isWebView}: {children: () => Rea
             {...{isWebView}}
           />
         ) : (
-          children()
+          children
         ))}
     </>
   )
 }
 
-function applySubcategoriesChange(
-  report: Partial<ReportDraft>,
-  subcategoryIndex: number,
-  subcategoryDepthIndex: number,
-): Partial<ReportDraft> {
+function applySubcategoriesChange(report: PartialReport, subcategoryIndex: number, subcategoryDepthIndex: number): PartialReport {
   if (!hasStep0(report)) {
-    throw new Error('ReportDraft should have a lang and a category already')
+    throw new Error('Report should have a lang and a category already')
   }
-  const newSubcategoriesIndexes = [...(report.subcategoriesIndexes ?? []).slice(0, subcategoryDepthIndex), subcategoryIndex]
+  const newSubcategoriesIndexes = [
+    ...(report.step1?.subcategoriesIndexes ?? []).slice(0, subcategoryDepthIndex),
+    subcategoryIndex,
+  ]
+
   return {
     ...report,
-    subcategoriesIndexes: newSubcategoriesIndexes,
+    step1: {
+      ...report.step1,
+      subcategoriesIndexes: newSubcategoriesIndexes,
+      // Subcategory has changed, we clear consumerWish & employeeConsumer because :
+      // - Some subcats have "getAnswer" (that is not available for all subcats so we have to clean up those properties)
+      // - Some subcats set default values for these properties (CompanyKind SOCIAL)
+      consumerWish: undefined,
+      employeeConsumer: undefined,
+      companyKindOverride: undefined,
+    },
     step2: undefined,
-    // Subcategory has changed, we clear consumerWish & employeeConsumer because :
-    // - Some subcats have "getAnswer" (that is not available for all subcats so we have to clean up those properties)
-    // - Some subcats set default values for these properties (CompanyKind SOCIAL)
-    consumerWish: undefined,
-    employeeConsumer: undefined,
-    companyKindOverride: undefined,
   }
 }

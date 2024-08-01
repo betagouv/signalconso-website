@@ -92,7 +92,7 @@ function useStepFromRouter(anomaly: Anomaly, isWebView: boolean) {
 function useIsStepInvalid(anomaly: Anomaly, step: ReportStepOrDone): boolean {
   const _reportFlow = useReportFlowContext()
   const _reportCreate = useReportCreateContext()
-  const {reportDraft} = _reportFlow
+  const {report: report} = _reportFlow
   if (step !== firstReportStep) {
     if (step === 'Done') {
       if (!_reportCreate.createReportMutation.data) {
@@ -100,11 +100,11 @@ function useIsStepInvalid(anomaly: Anomaly, step: ReportStepOrDone): boolean {
         // the user probably jumped directly to ?step=6
         return true
       }
-    } else if (!isStepBeforeOrEqual(step, findCurrentStepForReport(reportDraft))) {
+    } else if (!isStepBeforeOrEqual(step, findCurrentStepForReport(report))) {
       // the draft is not ready for this step
       // the user probably jumped directly to an URL like ?step=5
       return true
-    } else if (reportDraft.step0?.category !== anomaly.category) {
+    } else if (report.step0?.category !== anomaly.category) {
       // the draft is not for this category
       // not sure this could happen. Can't hurt to check
       return true

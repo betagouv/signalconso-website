@@ -28,7 +28,7 @@ export const Acknowledgement = ({isWebView}: {isWebView: boolean}) => {
 
   useEffect(() => {
     // When this component is displayed, the draft should be cleared so we can't go back
-    _reportFlow.resetFlow()
+    _reportFlow.resetReport()
   }, [])
 
   if (!report) {

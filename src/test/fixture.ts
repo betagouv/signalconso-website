@@ -1,14 +1,15 @@
 import {allAnomalies} from '@/anomalies/Anomalies'
+import {PartialReport} from '@/components_feature/reportFlow/ReportFlowContext'
 import {AppLang} from '@/i18n/localization/AppLangs'
 import {BarcodeProduct} from '@/model/BarcodeProduct'
-import {ReportDraft} from '@/model/ReportDraft'
+import {Report} from '@/model/Report'
 import {getIndexForStep, ReportStep, reportSteps} from '@/model/ReportStep'
 import {Step2Model} from '@/model/Step2Model'
 import {InfoWall, reportTags, socialNetworks, Subcategory} from '../anomalies/Anomaly'
 import {Address, ApiAddress} from '../model/Address'
 import {CompanySearchResult, WebsiteCompanySearchResult} from '../model/Company'
 import {CreatedReport} from '../model/CreatedReport'
-import {Influencer} from '../model/ReportDraft'
+import {Influencer} from '../model/Report'
 import {FileOrigin} from '../model/UploadedFile'
 
 export class SeedableRandom {
@@ -146,7 +147,7 @@ export class Fixture {
     const lang = 'fr'
     const anomaly = random.oneOf(allAnomalies(lang))
     const category = anomaly.category
-    const step0: ReportDraft['step0'] = {
+    const step0: Report['step0'] = {
       category,
       lang,
     }
@@ -154,7 +155,7 @@ export class Fixture {
       consumerWish: 'fixContractualDispute',
       subcategoriesIndexes: [0, 0],
     }
-    const step2: ReportDraft['step2'] = {
+    const step2: Report['step2'] = {
       kind: 'basic',
       companyIdentification: {kind: 'companyFound', company: Fixture.genCompanySearchResult(random)},
     }
@@ -165,12 +166,12 @@ export class Fixture {
     }
   }
 
-  static readonly genDraftReport2 = (
+  static readonly genReport2 = (
     currentLang: AppLang,
     lastStep: ReportStep,
     random: SeedableRandom = defaultRandom,
-  ): Partial<ReportDraft> => {
-    const stepOrder: {[key in ReportStep]: (_: Partial<ReportDraft>) => Partial<ReportDraft>} = {
+  ): PartialReport => {
+    const stepOrder: {[key in ReportStep]: (_: PartialReport) => PartialReport} = {
       BuildingProblem: _ => {
         const anomaly = random.oneOf(allAnomalies(currentLang))
         const category = anomaly.category
@@ -226,12 +227,12 @@ export class Fixture {
     }
     return reportSteps
       .filter((_, i) => i <= getIndexForStep(lastStep))
-      .reduce((draft: Partial<ReportDraft>, step: ReportStep) => {
+      .reduce((draft: PartialReport, step: ReportStep) => {
         return stepOrder[step](draft)
       }, {})
   }
 
-  static readonly genConsumer = (random: SeedableRandom = defaultRandom): ReportDraft['step4']['consumer'] => {
+  static readonly genConsumer = (random: SeedableRandom = defaultRandom): Report['step4']['consumer'] => {
     return {
       firstName: random.oneOf(Fixture.firstNames),
       lastName: random.oneOf(Fixture.lastNames),

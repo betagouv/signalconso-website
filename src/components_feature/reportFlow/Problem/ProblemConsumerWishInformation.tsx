@@ -1,7 +1,7 @@
 import {Animate} from '@/components_simple/Animate'
 import {FriendlyHelpText} from '@/components_simple/FriendlyHelpText'
 import {I18nContextProps, useI18n} from '@/i18n/I18n'
-import {ConsumerWish} from '@/model/ReportDraft'
+import {ConsumerWish} from '@/model/Report'
 
 export function ProblemConsumerWishInformation({consumerWish}: {consumerWish: ConsumerWish}) {
   const {m} = useI18n()

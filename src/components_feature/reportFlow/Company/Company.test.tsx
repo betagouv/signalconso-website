@@ -1,17 +1,18 @@
 /**
  * @jest-environment jsdom
  */
-import {ReportDraft} from '@/model/ReportDraft'
+import {Report} from '@/model/Report'
 import {waitFor} from '@testing-library/dom'
 import {Fixture} from '../../../test/fixture'
 import {fireEvent, render, ScRenderResult} from '../../../test/test-utils'
 import {fnSwitch} from '../../../utils/FnSwitch'
+import {PartialReport} from '../ReportFlowContext'
 import {CompanyIdentificationDispatch} from './Company'
 import {IdentificationMethod} from './CompanyChooseIdentificationMethod'
 
 describe('Details: single date not in future', () => {
   let app: ScRenderResult
-  let draft: Partial<ReportDraft> = {}
+  let draft: PartialReport = {}
 
   const elementShouldExists = async (querySelector: string) => {
     await waitFor(() => expect(app.container.querySelectorAll(querySelector).length).toEqual(1))
@@ -29,13 +30,16 @@ describe('Details: single date not in future', () => {
 
   describe('WEBSITE', () => {
     beforeEach(() => {
-      const initialReport = {
+      const initialReport: Pick<Report, 'step0' | 'step1'> = {
         step0: {
           category: 'DemoCategory',
           lang: 'fr' as const,
         },
-        subcategoriesIndexes: [5, 1],
-        companyKind: 'WEBSITE' as const,
+        step1: {
+          subcategoriesIndexes: [5, 1],
+          employeeConsumer: false,
+          consumerWish: 'companyImprovement',
+        },
       }
       app = render(
         <CompanyIdentificationDispatch
@@ -91,7 +95,11 @@ describe('Details: single date not in future', () => {
               category: 'DemoCategory',
               lang: 'fr',
             },
-            subcategoriesIndexes: [5, 5], // this has LOCATION
+            step1: {
+              subcategoriesIndexes: [5, 5], // this has LOCATION
+              employeeConsumer: false,
+              consumerWish: 'companyImprovement',
+            },
           }}
           updateReport={step2 => {
             draft = {...draft, step2}

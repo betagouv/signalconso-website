@@ -1,7 +1,7 @@
 import {useApiClients} from '@/context/ApiClientsContext'
 import {CreatedReport} from '@/model/CreatedReport'
-import {ReportDraft} from '@/model/ReportDraft'
-import {ApiReportDraft} from '@/model/reportsFromApi'
+import {Report} from '@/model/Report'
+import {ApiReport} from '@/model/reportsFromApi'
 import {UseMutationResult, useMutation} from '@tanstack/react-query'
 import React, {ReactNode, useContext} from 'react'
 
@@ -11,7 +11,7 @@ interface ReportCreateContextProps {
 
 const context = React.createContext<ReportCreateContextProps>({} as ReportCreateContextProps)
 
-type ReportCreationArgs = {draft: ReportDraft; metadata: ApiReportDraft['metadata']}
+type ReportCreationArgs = {draft: Report; metadata: ApiReport['metadata']}
 
 export const ReportCreateProvider = ({children}: {children: ReactNode}) => {
   const {signalConsoApiClient} = useApiClients()

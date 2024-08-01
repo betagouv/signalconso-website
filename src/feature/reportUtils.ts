@@ -1,33 +1,35 @@
 import {findAnomaly} from '@/anomalies/Anomalies'
 import {CompanyKind, ReportTag, Subcategory} from '@/anomalies/Anomaly'
-import {ReportDraft, TransmissionStatus} from '@/model/ReportDraft'
+import {PartialReport} from '@/components_feature/reportFlow/ReportFlowContext'
+import {Report, ReportWithPickInStep1 as ReportPickInStep1, TransmissionStatus} from '@/model/Report'
 import {lastFromArray, notUndefined} from '@/utils/utils'
 
-export function hasStep0(r: Partial<ReportDraft>): r is Pick<ReportDraft, 'step0'> & Partial<ReportDraft> {
+export function hasStep0(r: PartialReport): r is Pick<Report, 'step0'> & PartialReport {
   return !!r.step0
 }
-export function hasSubcategoryIndexes(
-  r: Partial<ReportDraft>,
-): r is Pick<ReportDraft, 'subcategoriesIndexes'> & Partial<ReportDraft> {
-  return !!r.subcategoriesIndexes
+export function hasStep1Full(r: PartialReport): r is Pick<Report, 'step1'> & PartialReport {
+  return !!r.step1 && hasSubcategoryIndexes(r) && hasConsumerWish(r) && hasEmployeeConsumer(r)
 }
-export function hasStep2(r: Partial<ReportDraft>): r is Pick<ReportDraft, 'step2'> & Partial<ReportDraft> {
+export function hasSubcategoryIndexes(r: PartialReport): r is ReportPickInStep1<'subcategoriesIndexes'> & PartialReport {
+  return hasStep0(r) && !!r.step1?.subcategoriesIndexes
+}
+export function hasEmployeeConsumer(r: PartialReport): r is ReportPickInStep1<'employeeConsumer'> & PartialReport {
+  return hasStep0(r) && r.step1?.employeeConsumer !== undefined
+}
+export function hasConsumerWish(r: PartialReport): r is ReportPickInStep1<'consumerWish'> & PartialReport {
+  return hasStep0(r) && r.step1?.consumerWish !== undefined
+}
+export function hasStep2(r: PartialReport): r is Pick<Report, 'step2'> & PartialReport {
   return !!r.step2
 }
-export function hasEmployeeConsumer(r: Partial<ReportDraft>): r is Pick<ReportDraft, 'employeeConsumer'> & Partial<ReportDraft> {
-  return r.employeeConsumer !== undefined
-}
-export function hasConsumerWish(r: Partial<ReportDraft>): r is Pick<ReportDraft, 'consumerWish'> & Partial<ReportDraft> {
-  return r.consumerWish !== undefined
-}
 
-export const getAnomaly = (r: Pick<ReportDraft, 'step0'>) => {
+export const getAnomaly = (r: Pick<Report, 'step0'>) => {
   return findAnomaly(r.step0.category, r.step0.lang)
 }
 
-export const getSubcategories = (r: Pick<ReportDraft, 'subcategoriesIndexes' | 'step0'>): Subcategory[] => {
+export const getSubcategories = (r: ReportPickInStep1<'subcategoriesIndexes'>): Subcategory[] => {
   const anomaly = findAnomaly(r.step0.category, r.step0.lang)
-  const startingIndexes = r.subcategoriesIndexes
+  const startingIndexes = r.step1.subcategoriesIndexes
   const collectedSubcategories: Subcategory[] = []
   function recurse(indexes: number[], subcategories: Subcategory[] = []) {
     if (indexes.length === 0) {
@@ -43,20 +45,20 @@ export const getSubcategories = (r: Pick<ReportDraft, 'subcategoriesIndexes' | '
     collectedSubcategories.push(subcategory)
     recurse(indexesLeft, subcategory.subcategories)
   }
-  recurse(r.subcategoriesIndexes, anomaly.subcategories)
+  recurse(r.step1.subcategoriesIndexes, anomaly.subcategories)
   return collectedSubcategories
 }
 
-export const getTags = (r: Pick<ReportDraft, 'subcategoriesIndexes' | 'step0'>): ReportTag[] => {
+export const getTags = (r: ReportPickInStep1<'subcategoriesIndexes'>): ReportTag[] => {
   return getSubcategories(r).flatMap(_ => _.tags ?? [])
 }
 
-export const getCompanyKind = (r: Pick<ReportDraft, 'step0' | 'subcategoriesIndexes' | 'companyKindOverride'>): CompanyKind => {
-  const {companyKindOverride} = r
+export const getCompanyKind = (r: ReportPickInStep1<'subcategoriesIndexes' | 'companyKindOverride'>): CompanyKind => {
+  const {companyKindOverride} = r.step1
   return companyKindOverride ? companyKindOverride : getWipCompanyKindFromSelected(r) ?? 'SIRET'
 }
 
-export const getReponseConsoCode = (r: Pick<ReportDraft, 'step0' | 'subcategoriesIndexes'>) => {
+export const getReponseConsoCode = (r: ReportPickInStep1<'subcategoriesIndexes'>) => {
   // 2023-12 ReponseConso says we should not send them multiple reponseConso codes, it breaks something for them
   // We should send only one code maximum, and it doesn't really matter which one
   return lastFromArray(
@@ -66,12 +68,12 @@ export const getReponseConsoCode = (r: Pick<ReportDraft, 'step0' | 'subcategorie
   )
 }
 
-export const getCcrfCode = (r: Pick<ReportDraft, 'step0' | 'subcategoriesIndexes'>) => {
+export const getCcrfCode = (r: ReportPickInStep1<'subcategoriesIndexes'>) => {
   const codes = getSubcategories(r).flatMap(_ => _.ccrfCode ?? [])
   return Array.from(new Set(codes))
 }
 
-export const getCategoryOverride = (r: Pick<ReportDraft, 'step0' | 'subcategoriesIndexes'>) => {
+export const getCategoryOverride = (r: ReportPickInStep1<'subcategoriesIndexes'>) => {
   return [...getSubcategories(r)].reverse().find(_ => !!_.categoryOverride)?.categoryOverride
 }
 
@@ -80,29 +82,23 @@ export const getCategoryOverride = (r: Pick<ReportDraft, 'step0' | 'subcategorie
 // - we do not apply the companyKindOverride
 // - we may return undefined if the selected subcategories have no CompanyKind
 //   (we do not apply a default CompanyKind value yet)
-export const getWipCompanyKindFromSelected = (
-  r: Pick<ReportDraft, 'step0'> & Partial<Pick<ReportDraft, 'subcategoriesIndexes' | 'companyKindOverride'>>,
-): CompanyKind | undefined => {
+export const getWipCompanyKindFromSelected = (r: ReportPickInStep1<'subcategoriesIndexes'>): CompanyKind | undefined => {
   const {specialCategory} = getAnomaly(r)
   return specialCategory === 'OpenFoodFacts'
     ? 'PRODUCT_OPENFF'
     : specialCategory === 'RappelConso'
       ? 'PRODUCT_RAPPEL_CONSO'
-      : hasSubcategoryIndexes(r)
-        ? [...getSubcategories(r)].reverse().find(_ => !!_.companyKind)?.companyKind
-        : undefined
+      : [...getSubcategories(r)].reverse().find(_ => !!_.companyKind)?.companyKind
 }
 
-export const isTransmittableToPro = (r: Pick<ReportDraft, 'employeeConsumer' | 'consumerWish'>): boolean => {
-  return isTransmittableToProBeforePickingConsumerWish(r) && r.consumerWish !== 'getAnswer'
+export const isTransmittableToPro = (r: ReportPickInStep1<'employeeConsumer' | 'consumerWish'>): boolean => {
+  return isTransmittableToProBeforePickingConsumerWish(r) && r.step1.consumerWish !== 'getAnswer'
 }
-export const isTransmittableToProBeforePickingConsumerWish = (r: Pick<ReportDraft, 'employeeConsumer'>): boolean => {
-  return !r.employeeConsumer
+export const isTransmittableToProBeforePickingConsumerWish = (r: ReportPickInStep1<'employeeConsumer'>): boolean => {
+  return !r.step1.employeeConsumer
 }
 
-export const getTransmissionStatus = (
-  r: Pick<ReportDraft, 'employeeConsumer' | 'consumerWish' | 'step2'>,
-): TransmissionStatus => {
+export const getTransmissionStatus = (r: Pick<Report, 'step0' | 'step1' | 'step2'>): TransmissionStatus => {
   if (!isTransmittableToPro(r)) {
     return 'NOT_TRANSMITTABLE'
   }

@@ -3,19 +3,19 @@
  */
 import {allAnomalies} from '@/anomalies/Anomalies'
 import {dummyStepNavigation} from '@/components_feature/playgroundComponents/PlaygroundConfirmation'
-import {getCompanyKind} from '@/feature/reportDraftUtils'
-import {ReportDraft} from '@/model/ReportDraft'
+import {getCompanyKind} from '@/feature/reportUtils'
 import {AccessReportFlow, fireEvent, render, ScRenderResult} from '@/test/test-utils'
 import '@testing-library/jest-dom'
 import {Anomaly} from '../../../anomalies/Anomaly'
 import {fnSwitch} from '../../../utils/FnSwitch'
+import {PartialReport} from '../ReportFlowContext'
 import {Problem} from './Problem'
 
 class ProblemFixture {
   static readonly anomaly: Anomaly = allAnomalies('fr').find(a => a.category === 'DemoCategory')!
 }
 
-const initialReport: Partial<ReportDraft> = {
+const initialReport: PartialReport = {
   step0: {
     category: 'DemoCategory',
     lang: 'fr',
@@ -118,7 +118,7 @@ describe('Problem', () => {
   }
 
   it('should update employeeConsumer = true', () => {
-    let report: undefined | Partial<ReportDraft>
+    let report: undefined | PartialReport
     const app = render(
       <AccessReportFlow
         onReportChange={r => {
@@ -131,11 +131,11 @@ describe('Problem', () => {
     )
     fireEvent.click(app.getByText(`(title) Première sous category du fichier demo.yaml, absolument minimale`))
     clickEmployeeConsumer(app, 'yes')
-    expect(report?.employeeConsumer).toEqual(true)
+    expect(report?.step1?.employeeConsumer).toEqual(true)
   })
 
   it('should update employeeConsumer = false', () => {
-    let report: undefined | Partial<ReportDraft>
+    let report: undefined | PartialReport
     const app = render(
       <AccessReportFlow
         onReportChange={r => {
@@ -148,11 +148,11 @@ describe('Problem', () => {
     )
     fireEvent.click(app.getByText(`(title) Première sous category du fichier demo.yaml, absolument minimale`))
     clickEmployeeConsumer(app, 'no')
-    expect(report?.employeeConsumer).toEqual(false)
+    expect(report?.step1?.employeeConsumer).toEqual(false)
   })
 
   it('should ask companyKind', () => {
-    let report: undefined | Partial<ReportDraft>
+    let report: undefined | PartialReport
     const app = render(
       <AccessReportFlow
         onReportChange={r => {
@@ -170,7 +170,7 @@ describe('Problem', () => {
   })
 
   it(`shouldn't ask companyKind when defined`, () => {
-    let report: undefined | Partial<ReportDraft>
+    let report: undefined | PartialReport
     const app = render(
       <AccessReportFlow
         onReportChange={r => {
@@ -188,7 +188,7 @@ describe('Problem', () => {
   })
 
   it('should display contractual dispute warning and go to the next step', () => {
-    let report: undefined | Partial<ReportDraft>
+    let report: undefined | PartialReport
     const app = render(
       <AccessReportFlow
         onReportChange={r => {
@@ -207,7 +207,7 @@ describe('Problem', () => {
   })
 
   it('should not display contractual dispute warning', () => {
-    let report: undefined | Partial<ReportDraft>
+    let report: undefined | PartialReport
     const app = render(
       <AccessReportFlow
         onReportChange={r => {
@@ -227,7 +227,7 @@ describe('Problem', () => {
   })
 
   it('should not ask ReponseConso when no tag', () => {
-    let report: undefined | Partial<ReportDraft>
+    let report: undefined | PartialReport
     const app = render(
       <AccessReportFlow
         onReportChange={r => {
@@ -244,7 +244,7 @@ describe('Problem', () => {
   })
 
   it('should not ask ReponseConso nor contractual dispute when employeeConsumer = true', () => {
-    let report: undefined | Partial<ReportDraft>
+    let report: undefined | PartialReport
     const app = render(
       <AccessReportFlow
         onReportChange={r => {
@@ -265,7 +265,7 @@ describe('Problem', () => {
   })
 
   it('should ask ReponseConso when tagged', () => {
-    let report: undefined | Partial<ReportDraft>
+    let report: undefined | PartialReport
     const app = render(
       <AccessReportFlow
         onReportChange={r => {
@@ -283,7 +283,7 @@ describe('Problem', () => {
     clickContractualDispute(app, 'reponseConso')
     expectContractualDisputeVisible(app, false)
     clickBtnSubmit(app)
-    expect(report?.employeeConsumer).toEqual(false)
-    expect(report?.consumerWish).toEqual('getAnswer')
+    expect(report?.step1?.employeeConsumer).toEqual(false)
+    expect(report?.step1?.consumerWish).toEqual('getAnswer')
   })
 })
