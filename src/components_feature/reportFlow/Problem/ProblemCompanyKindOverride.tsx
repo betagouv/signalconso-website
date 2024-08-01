@@ -6,7 +6,7 @@ import {useReportFlowContext} from '../ReportFlowContext'
 import {ProblemSelect} from './ProblemSelect'
 import {computeSelectedSubcategoriesData} from './useSelectedSubcategoriesData'
 
-export function ProblemCompanyKindOverride({children}: {children: () => ReactNode}) {
+export function ProblemCompanyKindOverride({children}: {children: ReactNode}) {
   const {m} = useI18n()
   const {report: r, setCompanyKindOverride} = useReportFlowContext()
   if (!hasStep0(r) || !hasSubcategoryIndexes(r)) {
@@ -56,7 +56,7 @@ export function ProblemCompanyKindOverride({children}: {children: () => ReactNod
         </>
       )}
 
-      {isDone && children()}
+      {isDone && children}
     </>
   )
 }

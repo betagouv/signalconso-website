@@ -57,17 +57,13 @@ function ProblemInner({anomaly, isWebView, stepNavigation}: Props) {
       <RappelConsoWelcome setup={rappelConsoSetup} />
       {specialCategoriesNotLoading && (
         <ProblemSubcategories {...{isWebView}}>
-          {() => (
-            <ProblemEmployeeConsumer>
-              {() => (
-                <ProblemCompanyKindOverride>
-                  {() => {
-                    return <ProblemConsumerWish>{() => <NextStepButton {...{onNext, stepNavigation}} />}</ProblemConsumerWish>
-                  }}
-                </ProblemCompanyKindOverride>
-              )}
-            </ProblemEmployeeConsumer>
-          )}
+          <ProblemEmployeeConsumer>
+            <ProblemCompanyKindOverride>
+              <ProblemConsumerWish>
+                <NextStepButton {...{onNext, stepNavigation}} />
+              </ProblemConsumerWish>
+            </ProblemCompanyKindOverride>
+          </ProblemEmployeeConsumer>
         </ProblemSubcategories>
       )}
     </>

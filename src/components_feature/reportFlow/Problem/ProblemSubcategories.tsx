@@ -6,8 +6,8 @@ import {ProblemInformation} from './ProblemInformation'
 import {ProblemSelect} from './ProblemSelect'
 import {computeSelectedSubcategoriesData} from './useSelectedSubcategoriesData'
 
-export function ProblemSubcategories({children, isWebView}: {children: () => ReactNode; isWebView: boolean}) {
-  const {report: r, setReport: setReport} = useReportFlowContext()
+export function ProblemSubcategories({children, isWebView}: {children: ReactNode; isWebView: boolean}) {
+  const {report: r, setReport} = useReportFlowContext()
   if (!hasStep0(r)) {
     throw new Error('Draft is not ready to ask for subcategories')
   }
@@ -49,7 +49,7 @@ export function ProblemSubcategories({children, isWebView}: {children: () => Rea
             {...{isWebView}}
           />
         ) : (
-          children()
+          children
         ))}
     </>
   )

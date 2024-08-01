@@ -5,7 +5,7 @@ import {ReactNode, useEffect} from 'react'
 import {useReportFlowContext} from '../ReportFlowContext'
 import {ProblemSelect} from './ProblemSelect'
 
-export function ProblemEmployeeConsumer({children}: {children: () => ReactNode}) {
+export function ProblemEmployeeConsumer({children}: {children: ReactNode}) {
   const {m} = useI18n()
   const {report: r, setEmployeeConsumer} = useReportFlowContext()
   if (!hasStep0(r) || !hasSubcategoryIndexes(r)) {
@@ -45,7 +45,7 @@ export function ProblemEmployeeConsumer({children}: {children: () => ReactNode})
           )}
         </>
       )}
-      {isDone && children()}
+      {isDone && children}
     </>
   )
 }

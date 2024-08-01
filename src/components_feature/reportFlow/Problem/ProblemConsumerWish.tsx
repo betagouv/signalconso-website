@@ -15,7 +15,7 @@ import {useReportFlowContext} from '../ReportFlowContext'
 import {ProblemConsumerWishInformation} from './ProblemConsumerWishInformation'
 import {ProblemSelect} from './ProblemSelect'
 
-export function ProblemConsumerWish({children}: {children: () => ReactNode}) {
+export function ProblemConsumerWish({children}: {children: ReactNode}) {
   const {m} = useI18n()
   const _analytic = useAnalyticContext()
   const {report: r, setConsumerWish} = useReportFlowContext()
@@ -65,7 +65,7 @@ export function ProblemConsumerWish({children}: {children: () => ReactNode}) {
           {r.step1.consumerWish && <ProblemConsumerWishInformation consumerWish={r.step1.consumerWish} />}
         </>
       )}
-      {isDone && children()}
+      {isDone && children}
     </>
   )
 }
