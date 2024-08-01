@@ -28,7 +28,7 @@ export default function ReportStartedAlert() {
             anomalyTitle={anomaly.title}
           />
           <div className="flex justify-end gap-4">
-            <Button size="small" priority="tertiary" onClick={_reportFlow.resetFlow}>
+            <Button size="small" priority="tertiary" onClick={_reportFlow.resetReport}>
               {m.delete}
             </Button>
             <Link

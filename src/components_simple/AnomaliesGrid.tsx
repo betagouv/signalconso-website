@@ -24,7 +24,7 @@ const AnomalyTile = ({anomaly}: {anomaly: Anomaly}) => {
       href={anomaly.isExternal ? anomaly.path : buildLinkStartReport(anomaly, currentLang)}
       onClick={() => {
         // on veut repartir de zéro
-        _reportFlow.resetFlow()
+        _reportFlow.resetReport()
       }}
       target={anomaly.isExternal ? '_blank' : '_self'}
       tabIndex={0}

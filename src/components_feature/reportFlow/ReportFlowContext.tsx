@@ -6,18 +6,17 @@ import {useAnalyticContext} from '../../analytic/AnalyticContext'
 import {EventCategories, ReportEventActions} from '../../analytic/analytic'
 import {ReportStepOrDone, getIndexForStepOrDone} from '../../model/ReportStep'
 
-export type SetReport = (fn: (_: PartialReport) => PartialReport) => void
-export type SendReportEvent = (_: ReportStepOrDone) => void
-interface ReportFlowContextProps {
+interface ReportFlowContextShape {
   report: PartialReport
   setReport: SetReport
   setEmployeeConsumer: (_: boolean) => void
   setCompanyKindOverride: (_: CompanyKind) => void
   setConsumerWish: (_: ConsumerWish) => void
-  resetFlow: () => void
+  resetReport: () => void
   sendReportEvent: SendReportEvent
 }
-
+export type SetReport = (fn: (_: PartialReport) => PartialReport) => void
+export type SendReportEvent = (_: ReportStepOrDone) => void
 // While the report is being built,
 // some (or all) the fields may be missing, depending on the current step.
 // We type it like if everything could be missing all the time
@@ -26,7 +25,7 @@ export type PartialReport = Partial<Omit<Report, 'step1'>> & {
   step1?: Partial<Report['step1']>
 }
 
-const ReportFlowContext = React.createContext<ReportFlowContextProps>({} as ReportFlowContextProps)
+const reportFlowContext = React.createContext<ReportFlowContextShape>(null as any)
 
 export const ReportFlowProvider = ({
   children,
@@ -35,45 +34,71 @@ export const ReportFlowProvider = ({
   children: ReactNode
   initialReportForTests?: PartialReport
 }) => {
-  const _analytic = useAnalyticContext()
   const [report, setReport] = useState<PartialReport>(initialReportForTests ?? {})
+  const {resetReportEvents, sendReportEvent} = useReportEvents()
+  const convenientSetters = useConvenientSetters(setReport, resetReportEvents)
+  useLogOfReportChanges(report)
+  return (
+    <reportFlowContext.Provider
+      value={{
+        report,
+        setReport,
+        ...convenientSetters,
+        sendReportEvent,
+      }}
+    >
+      {children}
+    </reportFlowContext.Provider>
+  )
+}
+
+export function useReportFlowContext() {
+  return useContext(reportFlowContext)
+}
+
+function useReportEvents() {
+  const _analytic = useAnalyticContext()
   const currentStep = useRef<ReportStepOrDone | undefined>(undefined)
-  useEffect(() => {
-    if (appConfig.isDev) {
-      console.debug('Report changed', report)
-    }
-  }, [report])
   /**
    * Will send event at each step of the report workflow. The event must be unique, ie if a user decides to edit a previous step no step event will be triggered again
-   * @param newStep
    */
-  const sendReportEvent = (newStep: ReportStepOrDone) => {
-    if (currentStep.current == undefined || getIndexForStepOrDone(newStep) > getIndexForStepOrDone(currentStep.current)) {
-      switch (newStep) {
-        case 'BuildingProblem':
-          _analytic.trackEvent(EventCategories.report, ReportEventActions.validateProblem)
-          break
-        case 'BuildingCompany':
-          _analytic.trackEvent(EventCategories.report, ReportEventActions.validateCompany)
-          break
-        case 'BuildingDetails':
-          _analytic.trackEvent(EventCategories.report, ReportEventActions.validateDetails)
-          break
-        case 'BuildingConsumer':
-          _analytic.trackEvent(EventCategories.report, ReportEventActions.validateConsumer)
-          break
-        case 'Confirmation':
-          _analytic.trackEvent(EventCategories.report, ReportEventActions.validateConfirmation)
-          break
-        case 'Done':
-          _analytic.trackEvent(EventCategories.report, ReportEventActions.reportSendSuccess)
-          break
-        default:
-          break
+  const sendReportEvent = useCallback(
+    (newStep: ReportStepOrDone) => {
+      if (currentStep.current == undefined || getIndexForStepOrDone(newStep) > getIndexForStepOrDone(currentStep.current)) {
+        switch (newStep) {
+          case 'BuildingProblem':
+            _analytic.trackEvent(EventCategories.report, ReportEventActions.validateProblem)
+            break
+          case 'BuildingCompany':
+            _analytic.trackEvent(EventCategories.report, ReportEventActions.validateCompany)
+            break
+          case 'BuildingDetails':
+            _analytic.trackEvent(EventCategories.report, ReportEventActions.validateDetails)
+            break
+          case 'BuildingConsumer':
+            _analytic.trackEvent(EventCategories.report, ReportEventActions.validateConsumer)
+            break
+          case 'Confirmation':
+            _analytic.trackEvent(EventCategories.report, ReportEventActions.validateConfirmation)
+            break
+          case 'Done':
+            _analytic.trackEvent(EventCategories.report, ReportEventActions.reportSendSuccess)
+            break
+          default:
+            break
+        }
+        currentStep.current = newStep
       }
-      currentStep.current = newStep
-    }
-  }
+    },
+    [_analytic],
+  )
+  const resetReportEvents = useCallback(() => {
+    currentStep.current = undefined
+  }, [])
+  return {sendReportEvent, resetReportEvents}
+}
+
+function useConvenientSetters(setReport: SetReport, resetReportEvents: () => void) {
   const setEmployeeConsumer = useCallback(
     (value: boolean) => {
       setReport(_ => ({
@@ -110,26 +135,18 @@ export const ReportFlowProvider = ({
     },
     [setReport],
   )
-  return (
-    <ReportFlowContext.Provider
-      value={{
-        report,
-        setReport,
-        setEmployeeConsumer,
-        setCompanyKindOverride,
-        setConsumerWish,
-        resetFlow: () => {
-          setReport({})
-          currentStep.current = undefined
-        },
-        sendReportEvent,
-      }}
-    >
-      {children}
-    </ReportFlowContext.Provider>
-  )
+  const resetReport = useCallback(() => {
+    setReport(_ => ({}))
+    resetReportEvents()
+  }, [setReport, resetReportEvents])
+
+  return {resetReport, setCompanyKindOverride, setConsumerWish, setEmployeeConsumer}
 }
 
-export const useReportFlowContext = (): ReportFlowContextProps => {
-  return useContext<ReportFlowContextProps>(ReportFlowContext)
+function useLogOfReportChanges(report: PartialReport) {
+  useEffect(() => {
+    if (appConfig.isDev) {
+      console.debug('Report changed', report)
+    }
+  }, [report])
 }

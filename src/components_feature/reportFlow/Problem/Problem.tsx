@@ -23,17 +23,17 @@ interface Props {
 }
 
 export function Problem({anomaly, isWebView, stepNavigation}: Props) {
-  const {report, setReport, resetFlow} = useReportFlowContext()
+  const {report, setReport, resetReport} = useReportFlowContext()
   const {currentLang} = useI18n()
   const _analytic = useAnalyticContext()
   const isDraftInitialized = hasStep0(report) && anomaly.category === report.step0.category
   useEffect(() => {
     if (!isDraftInitialized) {
       _analytic.trackEvent(EventCategories.report, ReportEventActions.validateCategory, anomaly.category)
-      resetFlow()
+      resetReport()
       setReport(_ => initiateReport(anomaly, currentLang))
     }
-  }, [isDraftInitialized, setReport, anomaly, currentLang, _analytic, resetFlow])
+  }, [isDraftInitialized, setReport, anomaly, currentLang, _analytic, resetReport])
   if (!isDraftInitialized) {
     return null
   }
