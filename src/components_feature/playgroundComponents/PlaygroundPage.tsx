@@ -34,9 +34,6 @@ const companySearchResult: CompanySearchResult = {
   isMarketPlace: false,
 }
 
-const website = 'http://blabla.fr'
-const phone = '0987654321'
-
 const barcodeProduct: BarcodeProduct = {
   id: '2edf6be3-b072-46b5-955e-a893bf23bf3b',
   gtin: '3017620422003',
@@ -45,9 +42,9 @@ const barcodeProduct: BarcodeProduct = {
 }
 
 const generalTestCases = [
-  'details',
   'companyFilled',
   'companyFilledWithProduct',
+  'details',
   'consumer',
   'confirmation',
   'response_review',
