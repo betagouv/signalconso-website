@@ -1051,6 +1051,7 @@ export const en = {
     logoAltSignalconso: `SignalConso Logo / Return to homepage`,
     logoAltGouv: `Government Logo`,
     emptyFile: `This file appears to be empty`,
+    invalidCount: (maxSize: number, allowedCount : number) => `Unable to upload the requested files, the number of files upload is limited to a maximum of ${maxSize}. You have ${allowedCount} files left to upload.`,
     invalidSize: (maxSize: number) => `The file size exceeds ${maxSize} Mb`,
     invalidFileNameSize: (maxSize: number) => `The file name must not exceed ${maxSize} characters`,
     invalidFileExt: (fileExt: string) => `Impossible de charger un fichier avec l'extension ${fileExt}`,
