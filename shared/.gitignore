@@ -1,0 +1,5 @@
+# will be generated each time the application is ran
+anomalies/json/anomalies_en.json
+anomalies/json/anomalies_fr.json
+anomalies/json/minimized-anomalies_en.json
+anomalies/json/minimized-anomalies_fr.json
