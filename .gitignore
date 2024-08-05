@@ -1,58 +1,11 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
-# dependencies
-/node_modules
-/.pnp
-.pnp.js
-
-# testing
-/coverage
-
-# next.js
-/.next/
-/out/
-
-# production
-/build
-
-# misc
-.DS_Store
-*.pem
-
-# debug
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-
-# local env files
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
-
-# vercel
-.vercel
-
-# typescript
-*.tsbuildinfo
-
-# will be generated each time the application is ran
-src/anomalies/yml/anomalies.json
-src/anomalies/json/anomalies.json
-src/anomalies/json/anomalies_en.json
-src/anomalies/json/anomalies_fr.json
-public/sitemap.xml
-
-src/anomalies/json/minimized-anomalies.json
-
-landings.csv
-
-# Sentry
-.sentryclirc
-
 # Editors
 .vscode
 .idea
+
+# dependencies
+node_modules
+.pnp
+.pnp.js
 
 # Yarn
 # https://yarnpkg.com/getting-started/qa#which-files-should-be-gitignored
@@ -62,13 +15,13 @@ landings.csv
 !.yarn/plugins
 !.yarn/releases
 !.yarn/sdks
-!.yarn/versions 
-/android/
+!.yarn/versions
 
-i18n.csv
+# typescript
+*.tsbuildinfo
 
-signalconso-website.code-workspace
-/test-results/
-/playwright-report/
-/blob-report/
-/playwright/.cache/
+# misc
+.DS_Store
+*.pem
+
+.swc

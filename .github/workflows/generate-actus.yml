@@ -1,0 +1,38 @@
+name: Generate feed as Json
+
+on:
+  workflow_dispatch: # can be triggered manually on github
+  schedule:
+    - cron: '0 8 * * *'
+
+env:
+  DGCCRF_RSS_URL: ${{ vars.DGCCRF_RSS_URL }}
+
+defaults:
+  run:
+    working-directory: ./mobile-tools
+
+jobs:
+  main-job:
+    runs-on: ubuntu-latest
+    permissions:
+      # Give the default GITHUB_TOKEN write permission to commit and push the
+      # added or changed files to the repository.
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+          token: ${{ secrets.CHARLES_GITHUB_TOKEN }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'yarn'
+          cache-dependency-path: yarn.lock
+      - run: node --version
+      - run: yarn --version
+      - run: yarn install --immutable
+      - run: yarn generate-feed
+      - uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: Auto commit with fresh dgccrf feed
