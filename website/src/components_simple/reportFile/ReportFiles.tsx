@@ -65,8 +65,6 @@ export const ReportFiles = ({fileOrigin, files, onRemoveFile, onNewFile, tooMany
         }
       }
     }
-
-
   }
 
   const uploadFile = async (file: File) => {
@@ -123,7 +121,7 @@ export const ReportFiles = ({fileOrigin, files, onRemoveFile, onNewFile, tooMany
         .filter(_ => _.origin === fileOrigin)
         .map(_ => (
           <li key={_.id}>
-            <ReportFile file={_} onRemove={removeFile}/>
+            <ReportFile file={_} onRemove={removeFile} />
           </li>
         ))}
     </ul>
@@ -169,9 +167,9 @@ export const ReportFiles = ({fileOrigin, files, onRemoveFile, onNewFile, tooMany
       <div className="flex flex-col">
         {!maxReached && !maxExceeded && (
           <>
-            {nothingYet && <UploadInvitation/>}
+            {nothingYet && <UploadInvitation />}
             <div className={`text-center ${nothingYet ? 'mb-6' : 'mb-2'}`}>
-              <ReportFileAdd fileOrigin={fileOrigin} isUploading={uploading} uploadFile={handleChange}/>
+              <ReportFileAdd fileOrigin={fileOrigin} isUploading={uploading} uploadFile={handleChange} />
             </div>
             <p
               className="mt-2 text-sm mb-1 text-center "
@@ -201,7 +199,7 @@ function UploadInvitation() {
   return (
     <div className="mb-6">
       <div className="flex items-center justify-center mb-2">
-        <i className="text-gray-300 ri-download-2-line sc-icon-xxl"/>
+        <i className="text-gray-300 ri-download-2-line sc-icon-xxl" />
       </div>
       <div className="text-center text-lg">{m.dropZone}</div>
     </div>

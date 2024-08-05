@@ -1058,7 +1058,8 @@ export const fr = {
     logoAltSignalconso: `Logo SignalConso / Retour à la page d'accueil`,
     logoAltGouv: `Logo gouvernement`,
     emptyFile: `Ce fichier semble vide`,
-    invalidCount: (maxSize: number, allowedCount : number) => `Impossible d'ajouter le fichiers demandés, le nombre de fichier est limité à ${maxSize} fichiers au maximum. Il vous reste ${allowedCount} fichiers à téléverser`,
+    invalidCount: (maxSize: number, allowedCount: number) =>
+      `Impossible d'ajouter le fichiers demandés, le nombre de fichier est limité à ${maxSize} fichiers au maximum. Il vous reste ${allowedCount} fichiers à téléverser`,
     invalidSize: (maxSize: number) => `La taille du fichier dépasse les ${maxSize} Mb`,
     invalidFileNameSize: (maxSize: number) => `Le nom du fichier ne doit pas dépasser ${maxSize} caractères`,
     invalidFileExt: (fileExt: string) => `Impossible de charger un fichier avec l'extension '.${fileExt}'`,
