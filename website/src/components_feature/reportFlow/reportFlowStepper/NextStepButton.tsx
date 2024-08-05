@@ -2,7 +2,7 @@ import {useI18n} from '@/i18n/I18n'
 import {iconArrowRight} from '@/utils/utils'
 import {Button} from '@codegouvfr/react-dsfr/Button'
 import {StepNavigation} from './ReportFlowStepper'
-import {ButtonWithLoader} from "@/components_simple/buttons/Buttons";
+import {ButtonWithLoader} from '@/components_simple/buttons/Buttons'
 
 interface Props {
   loadingNext?: boolean
