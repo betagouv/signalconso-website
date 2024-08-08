@@ -173,8 +173,9 @@ const Playground = () => {
               step2: {
                 kind: 'basic',
                 companyIdentification: {
-                  kind: 'companyFound',
+                  kind: 'marketplaceCompanyFound',
                   company: companySearchResult,
+                  vendor: 'Boutique Banania',
                 },
               },
               step1: {subcategoriesIndexes: [0], consumerWish: 'companyImprovement', employeeConsumer: false},

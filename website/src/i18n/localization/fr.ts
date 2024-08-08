@@ -1267,6 +1267,7 @@ export const fr = {
     companyWebsiteVendorTitle: `Pouvez-vous identifier le vendeur ?`,
     companyWebsiteVendorLabel: `Nom du vendeur tiers`,
     companyWebsiteVendorDesc: (companyName: string) => `Uniquement si le vendeur n'est pas ${companyName}`,
+    companyWebsiteVendor: `Vendeur :`,
     companyIdentityHelperDesc: `
     SIRET, SIREN et RCS sont des identifiants de l'entreprise.<br/>
     Le SIRET est composé de 14 chiffres, le SIREN est composé de 9 chiffres.<br/>

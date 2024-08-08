@@ -1,8 +1,8 @@
-import {ReportTag} from 'shared/anomalies/Anomaly'
 import {CompanySearchResult, isGovernmentCompany} from '@/model/Company'
 import {Report} from '@/model/Report'
 import {appliedSpecialLegislation} from '@/model/SpecialLegislation'
 import {Step2Model} from '@/model/Step2Model'
+import {ReportTag} from 'shared/anomalies/Anomaly'
 import {CompanyRecapRaw, CompanyRecapRawProps} from './CompanyRecapRaw'
 import {buildBrandName} from './companyNameUtils'
 
@@ -20,6 +20,7 @@ export function CompanyRecapFromStep2({step2, tags}: {step2: Report['step2']; ta
     isGovernment = false,
     specialLegislation,
     closed = false,
+    vendor,
   } = buildMainFields(step2, tags)
   const {phone, website, barcodeProduct} = buildOtherFields(step2)
   return (
@@ -38,6 +39,7 @@ export function CompanyRecapFromStep2({step2, tags}: {step2: Report['step2']; ta
         phone,
         website,
         barcodeProduct,
+        vendor,
       }}
     />
   )
@@ -49,6 +51,7 @@ export function CompanyRecapFromSearchResult({company, tags}: {company: CompanyS
   const website = undefined
   const phone = undefined
   const barcodeProduct = undefined
+  const vendor = undefined
   return (
     <CompanyRecapRaw
       {...{
@@ -65,6 +68,7 @@ export function CompanyRecapFromSearchResult({company, tags}: {company: CompanyS
         website,
         phone,
         barcodeProduct,
+        vendor,
       }}
     />
   )
@@ -87,6 +91,7 @@ function buildMainFields(
     activityLabel: undefined,
     brand: undefined,
     specialLegislation: undefined,
+    vendor: undefined,
   }
   switch (step2.kind) {
     case 'basic':
@@ -95,10 +100,14 @@ function buildMainFields(
     case 'website':
       const companyIdentification = step2.companyIdentification
       switch (companyIdentification.kind) {
-        case 'companyFound':
-        case 'marketplaceCompanyFound':
+        case 'companyFound': {
           const {company} = companyIdentification
-          return buildMainFieldsFromSearchResult(company, tags)
+          return {...buildMainFieldsFromSearchResult(company, tags), vendor: undefined}
+        }
+        case 'marketplaceCompanyFound': {
+          const {company, vendor} = companyIdentification
+          return {...buildMainFieldsFromSearchResult(company, tags), vendor}
+        }
         case 'consumerLocation':
           return {
             ...allUndefined,
@@ -141,7 +150,7 @@ function buildMainFields(
 function buildMainFieldsFromSearchResult(
   company: CompanySearchResult,
   tags: ReportTag[],
-): Omit<CompanyRecapRawProps, 'phone' | 'website' | 'barcodeProduct'> {
+): Omit<CompanyRecapRawProps, 'phone' | 'website' | 'barcodeProduct' | 'vendor'> {
   return {
     siret: company.siret,
     name: company.name,
