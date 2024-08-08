@@ -21,6 +21,7 @@ export type CompanyRecapRawProps = {
   activityLabel: string | undefined
   specialLegislation: 'SHRINKFLATION' | undefined | undefined
   barcodeProduct: BarcodeProduct | undefined
+  vendor: string | undefined
 }
 
 export function CompanyRecapRaw({
@@ -37,6 +38,7 @@ export function CompanyRecapRaw({
   activityLabel,
   specialLegislation,
   barcodeProduct,
+  vendor,
 }: CompanyRecapRawProps) {
   return (
     <>
@@ -52,6 +54,7 @@ export function CompanyRecapRaw({
           <RowWebsite {...{website}} />
           <RowPhone {...{phone}} />
           <RowSpecialLegislation {...{specialLegislation}} />
+          <RowVendor {...{vendor}} />
         </div>
         <RowClosed {...{closed}} />
       </div>
@@ -116,6 +119,14 @@ function RowSpecialLegislation({specialLegislation}: {specialLegislation: 'SHRIN
   const {m} = useI18n()
   return specialLegislation ? (
     <ScAlert type="warning" dangerouslySetInnerHTML={{__html: m.specialLegislation[specialLegislation]}} />
+  ) : null
+}
+function RowVendor({vendor}: {vendor: string | undefined}) {
+  const {m} = useI18n()
+  return vendor ? (
+    <Row icon="ri-user-fill">
+      {m.companyWebsiteVendor} {vendor}
+    </Row>
   ) : null
 }
 function RowClosed({closed}: {closed: boolean}) {

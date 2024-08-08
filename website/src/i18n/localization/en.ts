@@ -1243,6 +1243,7 @@ export const en = {
     companyWebsiteVendorTitle: `Can you identify the seller?`,
     companyWebsiteVendorLabel: `Name of the third-party seller`,
     companyWebsiteVendorDesc: (companyName: string) => `Only if the seller is not ${companyName}`,
+    companyWebsiteVendor: `Seller:`,
     companyIdentityHelperDesc: `
     SIRET, SIREN and RCS numbers are all identifiers for French companies.<br/>
     SIRET is a 14-digit code; SIREN is a 9-digit code.<br/>
