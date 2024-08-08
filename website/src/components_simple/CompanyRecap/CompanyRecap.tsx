@@ -102,7 +102,7 @@ function buildMainFields(
       switch (companyIdentification.kind) {
         case 'companyFound': {
           const {company} = companyIdentification
-          return buildMainFieldsFromSearchResult(company, tags)
+          return {...buildMainFieldsFromSearchResult(company, tags), vendor: undefined}
         }
         case 'marketplaceCompanyFound': {
           const {company, vendor} = companyIdentification
@@ -150,7 +150,7 @@ function buildMainFields(
 function buildMainFieldsFromSearchResult(
   company: CompanySearchResult,
   tags: ReportTag[],
-): Omit<CompanyRecapRawProps, 'phone' | 'website' | 'barcodeProduct'> {
+): Omit<CompanyRecapRawProps, 'phone' | 'website' | 'barcodeProduct' | 'vendor'> {
   return {
     siret: company.siret,
     name: company.name,
