@@ -1,4 +1,6 @@
 title: Oui
 subcategoriesTitle: Avez-vous mangé ?
+postReportHelper:
+  customimport: _imports/postreporthelper/hygiene_intoxication.yaml
 tags:
   - ProduitAlimentaire

@@ -1,5 +1,7 @@
 title: J'ai été malade après avoir mangé
 desc: "Exemple\_: vomissement, maux de ventre"
+postReportHelper:
+  customimport: _imports/postreporthelper/hygiene_intoxication.yaml
 subcategories:
   customimport: _imports/subcategories/intoxication-alimentaire
 subcategoriesTitle: Avez-vous mangé ?
