@@ -2,6 +2,8 @@ title: >-
   Les produits ne sont pas frais ou certains aliments sont périmés, c'est-à-dire
   que les dates indiquées sont dépassées.
 reponseconsoCode: '323'
+postReportHelper:
+  customimport: _imports/postreporthelper/hygiene_intoxication.yaml
 detailInputs:
   - label: Date de constat
     type: DATE
