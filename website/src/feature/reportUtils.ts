@@ -1,5 +1,5 @@
 import {findAnomaly} from '@/anomalies/Anomalies'
-import {CompanyKind, ReportTag, Subcategory} from 'shared/anomalies/Anomaly'
+import {CompanyKind, ReportTag, Subcategory, reportTagsNotTransmittableToPro} from 'shared/anomalies/Anomaly'
 import {PartialReport} from '@/components_feature/reportFlow/ReportFlowContext'
 import {Report, ReportWithPickInStep1 as ReportPickInStep1, TransmissionStatus} from '@/model/Report'
 import {lastFromArray, notUndefined} from '@/utils/utils'
@@ -91,11 +91,16 @@ export const getWipCompanyKindFromSelected = (r: ReportPickInStep1<'subcategorie
       : [...getSubcategories(r)].reverse().find(_ => !!_.companyKind)?.companyKind
 }
 
-export const isTransmittableToPro = (r: ReportPickInStep1<'employeeConsumer' | 'consumerWish'>): boolean => {
+export const isTransmittableToPro = (
+  r: ReportPickInStep1<'subcategoriesIndexes' | 'employeeConsumer' | 'consumerWish'>,
+): boolean => {
   return isTransmittableToProBeforePickingConsumerWish(r) && r.step1.consumerWish !== 'getAnswer'
 }
-export const isTransmittableToProBeforePickingConsumerWish = (r: ReportPickInStep1<'employeeConsumer'>): boolean => {
-  return !r.step1.employeeConsumer
+export const isTransmittableToProBeforePickingConsumerWish = (
+  r: ReportPickInStep1<'subcategoriesIndexes' | 'employeeConsumer'>,
+): boolean => {
+  const tags = getTags(r)
+  return !r.step1.employeeConsumer && !tags.some(tag => reportTagsNotTransmittableToPro.includes(tag))
 }
 
 export const getTransmissionStatus = (r: Pick<Report, 'step0' | 'step1' | 'step2'>): TransmissionStatus => {

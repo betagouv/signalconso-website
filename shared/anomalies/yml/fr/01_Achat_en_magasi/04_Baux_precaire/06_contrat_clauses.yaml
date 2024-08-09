@@ -1,0 +1,7 @@
+title: Le contrat que j’ai signé contient des clauses qui me semblent problématiques
+desc: 'Exemple : délai de livraison « donné à titre indicatif », exonération de responsabilité du professionnel droit de réviser le prix de vente…'
+detailInputs:
+  customimport: _imports/detailInputs/baux-precaire.yaml
+attachmentDesc : >-
+  Ajouter une pièce jointe (par exemple : l’invitation personnel, le contrat, le bon de commande…) pour aider les services administratifs.
+  Vous ne devez pas communiquer de données sensibles (données bancaires ou médicales).

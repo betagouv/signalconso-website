@@ -1050,6 +1050,7 @@ export const fr = {
     consumerWishInvestigationIsPossible2:
       'Si les signalements sont trop nombreux ou fréquents pour un établissement, les enquêteurs de la répression des fraudes interviendront auprès des professionnels.',
     employeeConsumerInformation: `Afin de garantir la sécurité de votre emploi, votre signalement ne sera pas transmis à l'entreprise. Il sera lu <b>uniquement par la répression des fraudes</b>.`,
+    notTransmittableToProConsumerInformation: `Votre signalement ne sera pas transmis à l'entreprise. Il sera lu <b>uniquement par la répression des fraudes</b>.`,
     informationRatingSaved: `Votre avis a bien été enregistré, nous vous en remercions.`,
     informationTitle: `Emmh, nous ne pouvons pas traiter votre signalement.`,
     informationReportOutOfScope: `Nous ne doutons pas que vous ayez réellement rencontré un problème mais... il ne s’agit pas d’une fraude.`,
@@ -1079,6 +1080,7 @@ export const fr = {
     attachmentsDescAnonymous: `Si vous ne souhaitez pas que l'entreprise connaisse votre identité, <b style="color: black">cachez votre nom</b> sur vos pièces jointes.`,
     attachmentsDescAllowedFormat: (formats: string[]) => `Sont acceptés les formats suivants : ${formats.join(', ')}`,
     attachmentsDesc2: `Ajouter une pièce jointe (par exemple : un contrat, une facture, des échanges avec le SAV…) augmente <strong>FORTEMENT</strong> vos chances d’entraîner une mesure corrective&nbsp;!<br/> Vous ne devez pas communiquer de données sensibles (données bancaires ou médicales).`,
+    notTransmittableAttachmentsDesc2: `Ajouter une pièce jointe (par exemple : un contrat, une facture, des échanges avec le SAV…) pour aider nos services administratifs&nbsp;!<br/> Vous ne devez pas communiquer de données sensibles (données bancaires ou médicales).`,
     maxAttachmentsZero: (max: number) => `Vous pouvez téléverser jusqu'à ${max} pièces jointes`,
     maxAttachmentsReached: (max: number) => `Limite de ${max} pièces jointes atteinte`,
     maxAttachementExceeded: (max: number, toRemove: number) =>

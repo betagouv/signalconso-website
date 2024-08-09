@@ -14,6 +14,7 @@ import {ReactNode, useEffect} from 'react'
 import {useReportFlowContext} from '../ReportFlowContext'
 import {ProblemConsumerWishInformation} from './ProblemConsumerWishInformation'
 import {ProblemSelect} from './ProblemSelect'
+import {FriendlyHelpText} from '@/components_simple/FriendlyHelpText'
 
 export function ProblemConsumerWish({children}: {children: ReactNode}) {
   const {m} = useI18n()
@@ -30,6 +31,11 @@ export function ProblemConsumerWish({children}: {children: ReactNode}) {
   const isDone = !!r.step1.consumerWish
   return (
     <>
+      {skipQuestion && !r.step1?.employeeConsumer && (
+        <FriendlyHelpText>
+          <p className="mb-0" dangerouslySetInnerHTML={{__html: m.notTransmittableToProConsumerInformation}} />
+        </FriendlyHelpText>
+      )}
       {!skipQuestion && (
         <>
           <ProblemSelect

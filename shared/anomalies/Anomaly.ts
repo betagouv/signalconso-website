@@ -63,6 +63,7 @@ type SubcategoryBase = CategoryNodeBase & {
 // A typical subcategory
 export type StandardSubcategory = SubcategoryBase & {
   fileLabel?: string
+  attachmentDesc?: string
   //Customize consumer client reference input
   customizedClientReferenceInput?: ClientReferenceInput
   detailInputs?: DetailInput[]
@@ -81,6 +82,8 @@ export type SubcategoryWithInfoWall = SubcategoryBase & {
 }
 
 export type Subcategory = StandardSubcategory | SubcategoryWithInfoWall
+
+export const reportTagsNotTransmittableToPro = ['BauxPrecaire']
 
 export const reportTagsAllowedInYaml = [
   'Hygiene',
@@ -106,6 +109,7 @@ export const reportTagsAllowedInYaml = [
   'AlimentationMaterielAnimaux',
   'Telecom',
   'Shrinkflation',
+  ...reportTagsNotTransmittableToPro
 ] as const
 export type ReportTagAllowedInYaml = (typeof reportTagsAllowedInYaml)[number]
 
