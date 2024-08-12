@@ -16,7 +16,7 @@ interface Props<V> {
 }
 type RefType = Ref<HTMLFieldSetElement>
 
-const ScCheckboxWithRef = <V,>(props: Props<V>, ref: RefType) => {
+const ScCheckboxesWithRef = <V,>(props: Props<V>, ref: RefType) => {
   const {title, description, onChange, options, value: selectedValue, error, errorMessage, required} = props
   const _id = useId()
   const id = `fr-fieldset-checkbox-${_id}`
@@ -84,4 +84,4 @@ const ScCheckboxWithRef = <V,>(props: Props<V>, ref: RefType) => {
 
 // forwardRef doesn't play well with generics
 // https://stackoverflow.com/questions/58469229/react-with-typescript-generics-while-using-react-forwardref
-export const ScCheckbox = forwardRef(ScCheckboxWithRef) as <V>(p: Props<V> & {ref?: RefType}) => ReactElement
+export const ScCheckboxes = forwardRef(ScCheckboxesWithRef) as <V>(p: Props<V> & {ref?: RefType}) => ReactElement
