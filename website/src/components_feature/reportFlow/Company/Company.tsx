@@ -225,9 +225,6 @@ function CompanyIdentificationTree({
   onIdentification: (_: CommonCompanyIdentification) => void
 }) {
   const companyKind = getCompanyKind(draft)
-  if (!companyKind) {
-    throw new Error('The draft should have a companyKind already')
-  }
   return searchResults && searchResults.length > 0 ? (
     <CompanySearchResultComponent
       companies={searchResults}
