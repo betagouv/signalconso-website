@@ -1,4 +1,5 @@
-import {ScCheckboxes} from '@/components_simple/formInputs/ScCheckboxes'
+import {ButtonWithLoader} from '@/components_simple/buttons/Buttons'
+import {ScCheckbox} from '@/components_simple/formInputs/ScCheckbox'
 import {ScTextInput} from '@/components_simple/formInputs/ScTextInput'
 import {Report} from '@/model/Report'
 import {CommonCompanyIdentification} from '@/model/Step2Model'
@@ -20,25 +21,29 @@ export function NewCompanyIdentification({
         required
         autocomplete="autocompletion"
         desc="Entreprises françaises uniquement"
-        helperText="Entreprises françaises uniquement"
+        // helperText="Entreprises françaises uniquement"
         label="Rechercher une entreprise"
         placeholder="Nom, ou numéro SIRET/SIREN, ou numéro RCS, ..."
         onBlur={() => {}}
         onChange={() => {}}
       />
-      <ScCheckboxes
-        title="Title checkbox"
-        description="une description"
+      <ScCheckbox
+        label="Restreindre la recherche à un département ou code postal"
         onChange={() => {}}
-        value={['a']}
-        required={false}
-        options={[
-          {
-            label: 'Option 1',
-            value: 'a',
-          },
-        ]}
+        value={false}
+        required={true}
       />
+      <div className="flex justify-end">
+        <ButtonWithLoader
+          iconId={'fr-icon-search-line'}
+          onClick={() => {}}
+          className="stepper-next-button"
+          disabled={false}
+          loading={false}
+        >
+          Rechercher
+        </ButtonWithLoader>
+      </div>
     </div>
   )
 }
