@@ -1,5 +1,7 @@
 title: Problème de quantité
 desc: "Exemple\_: poids indiqué non conforme, balance non tarée"
+postReportHelper:
+  customimport: _imports/postreporthelper/controle-quantite-vendues.yaml
 reponseconsoCode: '210'
 tags:
   - ReponseConso
