@@ -57,7 +57,7 @@ export function NewCompanyIdentification({
         <Button onClick={() => {}} priority="tertiary" iconId="fr-icon-question-line">
           Je ne trouve pas l'entreprise
         </Button>
-        <Button onClick={() => {}} priority="tertiary" iconId="ri-global-line">
+        <Button onClick={() => {}} priority="tertiary" iconId="ri-earth-line">
           Elle est à l'étranger
         </Button>
         <ButtonWithLoader iconId={'fr-icon-search-line'} onClick={() => {}} className="" disabled={false} loading={false}>
