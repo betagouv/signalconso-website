@@ -28,7 +28,13 @@ export const ScCheckbox = forwardRef((props: Props, ref: RefType) => {
     >
       <div className="fr-fieldset__content fr-fieldset__element">
         <div className={`fr-checkbox-group`}>
-          <input type="checkbox" id={inputId} name={checkboxName} onChange={() => onChange(value)} checked={checked}></input>
+          <input
+            type="checkbox"
+            id={inputId}
+            name={checkboxName}
+            onChange={e => onChange(e.target.checked)}
+            checked={checked}
+          ></input>
           <label className="fr-label" htmlFor={inputId}>
             <div className="flex flex-col gap-2 items-start justify-start ">{label}</div>
           </label>
