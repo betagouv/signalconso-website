@@ -5,6 +5,7 @@ import {ScCheckbox} from '@/components_simple/formInputs/ScCheckbox'
 import {ScTextInput} from '@/components_simple/formInputs/ScTextInput'
 import {FriendlyHelpText} from '@/components_simple/FriendlyHelpText'
 import {getCompanyKind} from '@/feature/reportUtils'
+import {CompanySearchResult} from '@/model/Company'
 import {Report} from '@/model/Report'
 import {CommonCompanyIdentification} from '@/model/Step2Model'
 import Button from '@codegouvfr/react-dsfr/Button'
@@ -14,6 +15,42 @@ import {PartialReport} from '../../ReportFlowContext'
 import {CompanyAskConsumerPostalCode} from '../CompanyAskConsumerPostalCode'
 import {CompanyAskConsumerStreet} from '../CompanyAskConsumerStreet'
 import {CompanyAskForeignDetails} from '../CompanyAskForeignDetails'
+import {CompanySearchResultComponent} from '../CompanySearchResultComponent'
+const searchResults: CompanySearchResult[] = [
+  {
+    siret: '49915454000037',
+    name: 'ETABLISSEMENT LEROY',
+    isHeadOffice: false,
+    address: {number: '34', street: 'RUE DE PONTHIEU', postalCode: '75008', city: 'PARIS'},
+    activityCode: '43.22A',
+    activityLabel: "Travaux d'installation d'eau et de gaz en tous locaux",
+    isMarketPlace: false,
+    isOpen: true,
+    isPublic: true,
+  },
+  {
+    siret: '84130782000024',
+    name: 'SERGE \nLEROY',
+    isHeadOffice: true,
+    address: {postalCode: '75008', city: 'PARIS'},
+    activityCode: '82.99Z',
+    activityLabel: 'Autres activités de soutien aux entreprises n.c.a.',
+    isMarketPlace: false,
+    isOpen: true,
+    isPublic: false,
+  },
+  {
+    siret: '37833985700013',
+    name: 'SCI POLLET SAUSSIER LEROY',
+    isHeadOffice: true,
+    address: {number: '3', street: 'HOCHE', postalCode: '75008', city: 'PARIS'},
+    activityCode: '68.32A',
+    activityLabel: "Administration d'immeubles et autres biens immobiliers",
+    isMarketPlace: false,
+    isOpen: true,
+    isPublic: true,
+  },
+]
 
 export function NewCompanyIdentification({
   draft,
@@ -24,6 +61,8 @@ export function NewCompanyIdentification({
 }) {
   const [geographicalRestriction, setGeographicalRestriction] = useState(false)
   const [mode, setMode] = useState<'search' | 'cannotFind' | 'cannotFindConfirmed' | 'foreign'>('search')
+  const showSearchResults = mode === 'search'
+
   const companyKind = getCompanyKind(draft)
   return (
     <div>
@@ -79,6 +118,7 @@ export function NewCompanyIdentification({
           </div>
         </>
       }
+      {showSearchResults && <CompanySearchResultComponent companies={searchResults} onSubmit={() => {}} report={draft} />}
       {(mode === 'cannotFind' || mode === 'cannotFindConfirmed') && (
         <Animate autoScrollTo>
           <div>
