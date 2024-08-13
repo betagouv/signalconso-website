@@ -1,8 +1,9 @@
-title: A emporter
+title: Après avoir mangé un plat à emporter
 companyKind: LOCATION
 reponseconsoCode: '321'
 tags:
   - ProduitDangereux
+  - ProduitAlimentaire
 detailInputs:
   customimport: _imports/detailInputs/intoxication-alimentaire.yaml
 fileLabel: Photos du produit / de l'emballage / du ticket / de la facture

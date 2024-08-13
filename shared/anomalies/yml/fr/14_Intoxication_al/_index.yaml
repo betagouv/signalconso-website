@@ -2,7 +2,7 @@ id: '140'
 category: IntoxicationAlimentaire
 title: Intoxication alimentaire
 seoTitle: >-
-  Vous êtes malade, diarrhée, nausée, fièvre suite à un repas, signalez-le à la
+  Vous êtes malade, diarrhée, nausée, fièvre à la suite d'un repas, signalez-le à la
   DGCCRF
 path: intoxication-alimentaire
 description: >-
@@ -10,7 +10,7 @@ description: >-
   suspect
 seoDescription: >-
   Vous êtes souffrant, avez des problèmes de digestion après avoir mangé un
-  aliment suspect, goût, odeur de la nourriture ? Mal au ventre, estomac,
+  aliment au goût ou à l'odeur suspecte ? Mal au ventre, à l'estomac,
   vomissement ?
 img: category-disease
-subcategoriesTitle: Avez-vous été malade ?
+subcategoriesTitle: Dans quel contexte avez-vous été malade ?
