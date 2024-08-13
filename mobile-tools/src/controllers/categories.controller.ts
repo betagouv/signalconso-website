@@ -20,7 +20,7 @@ CategoriesController.get('/minimized', async (req: Request<{}, {}, {}>, res, nex
   try {
     return res.status(200).send({
       fr: minimizedAnomaliesFr,
-      en: minimizedAnomaliesEn
+      en: minimizedAnomaliesEn,
     })
   } catch (err) {
     next(err)
