@@ -6,7 +6,7 @@ import {PlaygroundConfirmation, dummyStepNavigation} from '@/components_feature/
 import {PlaygroundConsumer} from '@/components_feature/playgroundComponents/PlaygroundConsumer'
 import {PlaygroundDetails} from '@/components_feature/playgroundComponents/PlaygroundDetails'
 import {PlaygroundOther} from '@/components_feature/playgroundComponents/PlaygroundOther'
-import {ContentPageContainer} from '@/components_simple/PageContainers'
+import {LimitedWidthPageContainer} from '@/components_simple/PageContainers'
 
 import {BarcodeProduct} from '@/model/BarcodeProduct'
 import {CompanySearchResult} from '@/model/Company'
@@ -242,9 +242,8 @@ const Playground = () => {
   }
 
   return (
-    <ContentPageContainer>
+    <LimitedWidthPageContainer>
       <h1 className="fr-h2">Playground</h1>
-
       {!testCase ? (
         <div>
           <p>
@@ -274,7 +273,7 @@ const Playground = () => {
           {renderComponent()}
         </>
       )}
-    </ContentPageContainer>
+    </LimitedWidthPageContainer>
   )
 }
 
