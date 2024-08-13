@@ -62,7 +62,7 @@ export function NewCompanyIdentification({
   const [geographicalRestriction, setGeographicalRestriction] = useState(false)
   const [mode, setMode] = useState<'search' | 'cannotFind' | 'cannotFindConfirmed' | 'foreign'>('search')
   const showSearchResults = mode === 'search'
-
+  const emptyResults = true
   const companyKind = getCompanyKind(draft)
   return (
     <div>
@@ -118,7 +118,14 @@ export function NewCompanyIdentification({
           </div>
         </>
       }
-      {showSearchResults && <CompanySearchResultComponent companies={searchResults} onSubmit={() => {}} report={draft} />}
+      {showSearchResults && (
+        <CompanySearchResultComponent
+          dividerAbove={false}
+          companies={emptyResults ? [] : searchResults}
+          onSubmit={() => {}}
+          report={draft}
+        />
+      )}
       {(mode === 'cannotFind' || mode === 'cannotFindConfirmed') && (
         <Animate autoScrollTo>
           <div>

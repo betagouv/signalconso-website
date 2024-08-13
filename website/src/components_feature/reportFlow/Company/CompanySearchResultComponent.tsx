@@ -16,6 +16,7 @@ import {CompanyWebsiteVendor} from './CompanyWebsiteVendor'
 import {NoSearchResult} from './lib/NoSearchResult'
 
 interface Props {
+  dividerAbove?: boolean
   companies: CompanySearchResult[]
   report: PartialReport & Pick<Report, 'step0' | 'step1'>
   onSubmit: (selected: CompanySearchResult, vendor?: string) => void
@@ -25,7 +26,7 @@ interface Form {
   result: string
 }
 
-export const CompanySearchResultComponent = ({companies, report: report, onSubmit}: Props) => {
+export const CompanySearchResultComponent = ({companies, report: report, onSubmit, dividerAbove = true}: Props) => {
   const {m} = useI18n()
   const _analytic = useAnalyticContext()
   const [selected, setSelected] = useState<CompanySearchResult | undefined>()
@@ -49,7 +50,7 @@ export const CompanySearchResultComponent = ({companies, report: report, onSubmi
   return (
     <>
       <Animate>
-        <div className="mt-6 pt-10 border-t-[1px] border-0 border-solid border-gray-200">
+        <div className={`mt-6 ${dividerAbove ? 'pt-10 border-t-[1px] border-0 border-solid border-gray-200' : ''}`}>
           {companies.length === 0 ? (
             <div id="CompanySearchResult">
               <NoSearchResult text={m.noMatchingCompany} />
