@@ -11,6 +11,8 @@ import Button from '@codegouvfr/react-dsfr/Button'
 import Link from 'next/link'
 import {useState} from 'react'
 import {PartialReport} from '../../ReportFlowContext'
+import {CompanyAskConsumerPostalCode} from '../CompanyAskConsumerPostalCode'
+import {CompanyAskConsumerStreet} from '../CompanyAskConsumerStreet'
 import {CompanyAskForeignDetails} from '../CompanyAskForeignDetails'
 
 export function NewCompanyIdentification({
@@ -21,7 +23,7 @@ export function NewCompanyIdentification({
   onIdentification: (_: CommonCompanyIdentification) => void
 }) {
   const [geographicalRestriction, setGeographicalRestriction] = useState(false)
-  const [mode, setMode] = useState<'search' | 'cannotFind' | 'foreign'>('search')
+  const [mode, setMode] = useState<'search' | 'cannotFind' | 'cannotFindConfirmed' | 'foreign'>('search')
   const companyKind = getCompanyKind(draft)
   return (
     <div>
@@ -77,7 +79,7 @@ export function NewCompanyIdentification({
           </div>
         </>
       }
-      {mode === 'cannotFind' && (
+      {(mode === 'cannotFind' || mode === 'cannotFindConfirmed') && (
         <Animate autoScrollTo>
           <div>
             <FriendlyHelpText>
@@ -104,11 +106,43 @@ export function NewCompanyIdentification({
                 <Button priority="secondary" iconId="ri-arrow-left-line" onClick={() => setMode('search')}>
                   Je vais chercher un peu plus
                 </Button>
-                <Button priority="secondary" iconId="ri-arrow-right-line" iconPosition="right">
+                <Button
+                  priority="secondary"
+                  iconId="ri-arrow-right-line"
+                  iconPosition="right"
+                  onClick={() => setMode('cannotFindConfirmed')}
+                >
                   Je ne peux vraiment pas identifier l'entreprise
                 </Button>
               </div>
             </FriendlyHelpText>
+          </div>
+        </Animate>
+      )}
+      {mode === 'cannotFindConfirmed' && (
+        <Animate autoScrollTo>
+          <div>
+            {companyKind === 'LOCATION' ? (
+              <CompanyAskConsumerStreet
+                onChange={({postalCode, street}) => {
+                  onIdentification({
+                    kind: 'consumerPreciseLocation',
+                    consumerPostalCode: postalCode,
+                    consumerStreet: street,
+                  })
+                }}
+              />
+            ) : (
+              <CompanyAskConsumerPostalCode
+                {...{companyKind}}
+                onChange={postalCode => {
+                  onIdentification({
+                    kind: 'consumerLocation',
+                    consumerPostalCode: postalCode,
+                  })
+                }}
+              />
+            )}
           </div>
         </Animate>
       )}
