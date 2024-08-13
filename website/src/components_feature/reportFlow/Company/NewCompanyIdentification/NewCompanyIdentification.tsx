@@ -54,15 +54,28 @@ export function NewCompanyIdentification({
         )}
       </div>
       <div className="flex justify-end gap-4">
-        <Button onClick={() => {}} priority="tertiary" iconId="fr-icon-question-line">
+        {/* <Button onClick={() => {}} priority="tertiary no outline" iconId="fr-icon-question-line">
           Je ne trouve pas l'entreprise
         </Button>
-        <Button onClick={() => {}} priority="tertiary" iconId="ri-earth-line">
+        <Button onClick={() => {}} priority="tertiary no outline" iconId="ri-earth-line">
           Elle est à l'étranger
-        </Button>
-        <ButtonWithLoader iconId={'fr-icon-search-line'} onClick={() => {}} className="" disabled={false} loading={false}>
+        </Button> */}
+        {/* <ButtonWithLoader iconId={'fr-icon-search-line'} onClick={() => {}} className="" disabled={false} loading={false}>
+          Je lance la recherche
+        </ButtonWithLoader> */}
+      </div>
+      <div className="flex flex-col items-center gap-2">
+        <ButtonWithLoader iconId={'fr-icon-search-line'} onClick={() => {}} loading={false}>
           Je lance la recherche
         </ButtonWithLoader>
+        <div className="flex flex-col">
+          <Button onClick={() => {}} priority="tertiary no outline" iconId="ri-arrow-right-line">
+            Je ne trouve pas / ne connais pas l'entreprise...
+          </Button>
+          <Button onClick={() => {}} priority="tertiary no outline" iconId="ri-arrow-right-line">
+            L'entreprise est à l'étranger
+          </Button>
+        </div>
       </div>
     </div>
   )

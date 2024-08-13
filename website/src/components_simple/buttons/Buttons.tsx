@@ -1,8 +1,8 @@
+import {useI18n} from '@/i18n/I18n'
+import {iconArrowRight} from '@/utils/utils'
 import {FrIconClassName, RiIconClassName} from '@codegouvfr/react-dsfr'
 import Button, {ButtonProps} from '@codegouvfr/react-dsfr/Button'
-import {useI18n} from '@/i18n/I18n'
 import {ReactNode} from 'react'
-import {iconArrowRight} from '@/utils/utils'
 
 export function BtnNext({onClick}: {onClick: () => void}) {
   const {m} = useI18n()
