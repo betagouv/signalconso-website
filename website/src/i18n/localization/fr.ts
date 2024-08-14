@@ -1109,12 +1109,8 @@ export const fr = {
       Il ne sera pas transmis à l'entreprise, sauf si cette dernière est française et identifiable par l'équipe de SignalConso.
       Dans tous les cas les enquêteurs de la répression des fraudes en seront informés.`,
     couldYouPrecise: `Pouvez-vous préciser ?`,
-    cantIdentifyCompany: `Comme vous ne pouvez pas identifier l'entreprise, merci de préciser votre localisation afin que nous puissions rediriger votre signalement vers le bon service`,
-    cantIdentifyWebsiteCompany: `Merci de préciser votre code postal. Il sera utilisé uniquement pour rediriger votre signalement vers le bon service.`,
-    cantIdentifyTransporterWebsiteCompany: `Comme vous ne pouvez pas identifier le transporteur, merci de préciser votre localisation afin que nous puissions rediriger votre signalement vers le bon service`,
-    cantIdentifyMerchantWebsiteCompany: `Comme vous ne pouvez pas identifier le vendeur, merci de préciser votre localisation afin que nous puissions rediriger votre signalement vers le bon service`,
-    cantIdentifyLocationCompany: `Comme vous ne pouvez pas identifier l'entreprise qui est venue à votre domicile, merci de préciser votre localisation afin que nos services puissent tenter de rapprocher ces informations avec celles qu'auraient éventuellement déposées vos voisins, ayant été en contact avec la même entreprise que vous`,
-    cantIdentifyPhoneCompany: `Comme vous ne pouvez pas identifier l'entreprise que vous avez eu par téléphone, merci de préciser votre localisation afin que nos services puissent tenter de rapprocher ces informations avec celles qu'auraient éventuellement déposées vos voisins, ayant été en contact avec la même entreprise que vous`,
+    cantIdentifyCompany: `Votre code postal nous servira à rediriger votre signalement vers le bon service.`,
+    cantIdentifyLocationCompany: `Ces informations nous serviront à rediriger votre signalement vers le bon service, et à le rapprocher avec ceux qu'auraient éventuellement déposés vos voisins.`,
     companyIdentityLabel: `Numéro SIRET ou SIREN ou RCS de l'entreprise`,
     reportAbroadWarning:
       "Vous tentez de signaler une entreprise située à l'étranger. <strong>Votre signalement ne pourra pas lui être transmis.</strong> Cependant, nous vous conseillons vivement de soumettre votre signalement pour orienter les enquêtes des agents de la DGCCRF.",

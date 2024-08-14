@@ -4,6 +4,7 @@ import {ScAutocompletePostcode} from '@/components_simple/formInputs/ScAutocompl
 import {ScCheckbox} from '@/components_simple/formInputs/ScCheckbox'
 import {ScTextInput} from '@/components_simple/formInputs/ScTextInput'
 import {FriendlyHelpText} from '@/components_simple/FriendlyHelpText'
+import {RequiredFieldsLegend} from '@/components_simple/RequiredFieldsLegend'
 import {getCompanyKind} from '@/feature/reportUtils'
 import {CompanySearchResult} from '@/model/Company'
 import {Report} from '@/model/Report'
@@ -68,7 +69,8 @@ export function NewCompanyIdentification({
     <div>
       {
         <>
-          <h2 className="fr-h6">Rechercher une entreprise</h2>
+          <h2 className="fr-h6 !mb-4">Pouvez-vous identifier l'entreprise ?</h2>
+          <RequiredFieldsLegend />
           <ScTextInput
             error={false}
             name="name"
@@ -133,7 +135,7 @@ export function NewCompanyIdentification({
                 . Cela nous permet de la contacter immédiatement.
               </p>
               <p>
-                Si vous avez besoin d'un moteur de recherche plus poussé, vous pouvez essayer{' '}
+                Si vous avez besoin d'un moteur de recherche un peu plus poussé, vous pouvez essayer{' '}
                 <Link href={'https://annuaire-entreprises.data.gouv.fr/'} target="_blank">
                   L'Annuaire des Entreprises
                 </Link>

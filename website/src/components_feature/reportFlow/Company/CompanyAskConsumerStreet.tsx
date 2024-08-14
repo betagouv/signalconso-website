@@ -5,7 +5,6 @@ import {ScAutocompletePostcode} from '@/components_simple/formInputs/ScAutocompl
 import {ScTextInput} from '@/components_simple/formInputs/ScTextInput'
 import {useI18n} from '@/i18n/I18n'
 import {Controller, useForm} from 'react-hook-form'
-import {ScAlert} from '../../../components_simple/ScAlert'
 
 interface Form {
   street: string
@@ -28,9 +27,6 @@ export const CompanyAskConsumerStreet = ({onChange}: Props) => {
   return (
     <Animate>
       <div id="CompanyAskConsumerStreet">
-        <ScAlert type="info">
-          <p className="mb-0 text-sm" dangerouslySetInnerHTML={{__html: m.cantIdentifyLocationCompany}} />
-        </ScAlert>
         <RequiredFieldsLegend />
         <form
           onSubmit={handleSubmit(form =>
@@ -68,7 +64,7 @@ export const CompanyAskConsumerStreet = ({onChange}: Props) => {
               )}
             />
           </div>
-
+          <p className="mb-2" dangerouslySetInnerHTML={{__html: m.cantIdentifyLocationCompany}} />
           <div className="flex justify-end">
             <BtnNextSubmit />
           </div>

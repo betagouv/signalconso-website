@@ -5,8 +5,6 @@ import {ScAutocompletePostcode} from '@/components_simple/formInputs/ScAutocompl
 import {useI18n} from '@/i18n/I18n'
 import {Controller, useForm} from 'react-hook-form'
 import {CompanyKind} from 'shared/anomalies/Anomaly'
-import {ScAlert} from '../../../components_simple/ScAlert'
-import {fnSwitch} from '../../../utils/FnSwitch'
 
 interface Form {
   postalCode: string
@@ -29,29 +27,6 @@ export const CompanyAskConsumerPostalCode = ({value, onChange, companyKind}: Pro
   return (
     <Animate>
       <div id="CompanyAskConsumerPostalCode">
-        <hr />
-        <ScAlert type="info">
-          <p
-            className="mb-0"
-            dangerouslySetInnerHTML={{
-              __html: fnSwitch<CompanyKind, string>(companyKind, {
-                SIRET: m.cantIdentifyCompany,
-                WEBSITE: m.cantIdentifyWebsiteCompany,
-                TRANSPORTER_WEBSITE: m.cantIdentifyTransporterWebsiteCompany,
-                MERCHANT_WEBSITE: m.cantIdentifyMerchantWebsiteCompany,
-                PHONE: m.cantIdentifyPhoneCompany,
-                LOCATION: m.cantIdentifyLocationCompany,
-                SOCIAL: m.cantIdentifyCompany,
-                PRODUCT: m.cantIdentifyCompany,
-                PRODUCT_POINT_OF_SALE: m.cantIdentifyCompany,
-                PRODUCT_OPENFF: m.cantIdentifyCompany,
-                PRODUCT_RAPPEL_CONSO: m.cantIdentifyCompany,
-                TRAIN: m.cantIdentifyCompany,
-                STATION: m.cantIdentifyCompany,
-              }),
-            }}
-          />
-        </ScAlert>
         <RequiredFieldsLegend />
         <form onSubmit={handleSubmit(_ => onChange(_.postalCode))}>
           <Controller
@@ -69,6 +44,7 @@ export const CompanyAskConsumerPostalCode = ({value, onChange, companyKind}: Pro
               />
             )}
           />
+          <p className="mb-2">{m.cantIdentifyCompany}</p>
 
           <div className="flex justify-end">
             <BtnNextSubmit />
