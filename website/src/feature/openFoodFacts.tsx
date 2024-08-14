@@ -50,10 +50,16 @@ export function useOpenFfSetup(anomaly: Anomaly): SpecialCategorySetup<OpenFfRes
 export function useOpenFfSetupLoaded(setup: SpecialCategorySetup<OpenFfResult>, setReport: SetReport) {
   useEffect(() => {
     if (setup.status === 'loaded') {
-      setReport(_ => ({
-        ..._,
-        openFf: setup.result,
-      }))
+      setReport(draft => {
+        const updatedDraft: PartialReport = {
+          ...draft,
+          step1: {
+            ...draft.step1,
+            openFf: setup.result,
+          },
+        }
+        return updatedDraft
+      })
     }
   }, [setup, setReport])
 }
@@ -132,6 +138,7 @@ function WelcomeProductWithoutCompany({product}: {product: BarcodeProduct}) {
     </BlueBanner>
   )
 }
+
 function WelcomeProductFull({product, company}: {product: BarcodeProduct; company: CompanySearchResult}) {
   return (
     <BlueBanner>
