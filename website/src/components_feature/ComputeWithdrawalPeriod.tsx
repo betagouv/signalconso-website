@@ -17,7 +17,7 @@ const closingDays = [
 ]
 
 function calculRetractationDeadline(contractDate: Date) {
-  let deadline = new Date()
+  const deadline = new Date(contractDate.getTime())
   deadline.setDate(contractDate.getDate() + 14)
   while (isClosingDate(deadline)) {
     deadline.setDate(deadline.getDate() + 1)
