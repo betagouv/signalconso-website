@@ -24,7 +24,7 @@ export class Matomo {
     head.parentNode?.insertBefore(script, head)
   }
 
-  readonly push = (args: (number[] | string[] | number | string)[]): void => {
+  readonly push = (args: (number[] | string[] | number | string | undefined)[]): void => {
     if (appConfig.enableMatomo) {
       if (!window._paq) {
         window._paq = []

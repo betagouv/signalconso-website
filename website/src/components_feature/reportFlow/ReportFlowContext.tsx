@@ -1,7 +1,8 @@
-import {CompanyKind} from 'shared/anomalies/Anomaly'
 import {appConfig} from '@/core/appConfig'
 import {ConsumerWish, Report} from '@/model/Report'
+import {Step2Model} from '@/model/Step2Model'
 import React, {ReactNode, useCallback, useContext, useEffect, useRef, useState} from 'react'
+import {CompanyKind} from 'shared/anomalies/Anomaly'
 import {useAnalyticContext} from '../../analytic/AnalyticContext'
 import {EventCategories, ReportEventActions} from '../../analytic/analytic'
 import {ReportStepOrDone, getIndexForStepOrDone} from '../../model/ReportStep'
@@ -14,6 +15,8 @@ interface ReportFlowContextShape {
   setConsumerWish: (_: ConsumerWish) => void
   resetReport: () => void
   sendReportEvent: SendReportEvent
+  // This one is just a wrapper for sendReportEvent
+  sendStep2ValidationEvent: (_: Step2Model) => void
 }
 export type SetReport = (fn: (_: PartialReport) => PartialReport) => void
 export type SendReportEvent = (_: ReportStepOrDone) => void
@@ -35,7 +38,7 @@ export const ReportFlowProvider = ({
   initialReportForTests?: PartialReport
 }) => {
   const [report, setReport] = useState<PartialReport>(initialReportForTests ?? {})
-  const {resetReportEvents, sendReportEvent} = useReportEvents()
+  const {resetReportEvents, sendReportEvent, sendStep2ValidationEvent} = useReportEvents()
   const convenientSetters = useConvenientSetters(setReport, resetReportEvents)
   useLogOfReportChanges(report)
   return (
@@ -45,6 +48,7 @@ export const ReportFlowProvider = ({
         setReport,
         ...convenientSetters,
         sendReportEvent,
+        sendStep2ValidationEvent,
       }}
     >
       {children}
@@ -63,15 +67,19 @@ function useReportEvents() {
    * Will send event at each step of the report workflow. The event must be unique, ie if a user decides to edit a previous step no step event will be triggered again
    */
   const sendReportEvent = useCallback(
-    (newStep: ReportStepOrDone) => {
+    (newStep: ReportStepOrDone, step2?: Step2Model) => {
       if (currentStep.current == undefined || getIndexForStepOrDone(newStep) > getIndexForStepOrDone(currentStep.current)) {
         switch (newStep) {
           case 'BuildingProblem':
             _analytic.trackEvent(EventCategories.report, ReportEventActions.validateProblem)
             break
-          case 'BuildingCompany':
-            _analytic.trackEvent(EventCategories.report, ReportEventActions.validateCompany)
+          case 'BuildingCompany': {
+            if (!step2) {
+              throw new Error('Cannot track BuildingCompany without step2')
+            }
+            _analytic.trackEvent(EventCategories.report, ReportEventActions.validateCompany, qualifyStep2ForTracking(step2))
             break
+          }
           case 'BuildingDetails':
             _analytic.trackEvent(EventCategories.report, ReportEventActions.validateDetails)
             break
@@ -92,10 +100,16 @@ function useReportEvents() {
     },
     [_analytic],
   )
+  const sendStep2ValidationEvent = useCallback(
+    (step2: Step2Model) => {
+      sendReportEvent('BuildingCompany', step2)
+    },
+    [sendReportEvent],
+  )
   const resetReportEvents = useCallback(() => {
     currentStep.current = undefined
   }, [])
-  return {sendReportEvent, resetReportEvents}
+  return {sendReportEvent, resetReportEvents, sendStep2ValidationEvent}
 }
 
 function useConvenientSetters(setReport: SetReport, resetReportEvents: () => void) {
@@ -149,4 +163,33 @@ function useLogOfReportChanges(report: PartialReport) {
       console.debug('Report changed', report)
     }
   }, [report])
+}
+
+function qualifyStep2ForTracking(
+  step2: Step2Model,
+): 'Etablissement identifié' | 'Etablissement non identifié' | 'Etablissement étranger' {
+  switch (step2.kind) {
+    case 'basic':
+    case 'phone':
+    case 'product':
+    case 'website': {
+      switch (step2.companyIdentification.kind) {
+        case 'companyFound':
+        case 'marketplaceCompanyFound':
+          return 'Etablissement identifié'
+        case 'consumerLocation':
+        case 'consumerPreciseLocation':
+          return 'Etablissement non identifié'
+        case 'foreignCompany':
+        case 'foreignWebsiteWithJustCountry':
+          return 'Etablissement étranger'
+      }
+    }
+    case 'influencerOtherSocialNetwork':
+      return 'Etablissement non identifié'
+    case 'influencer':
+    case 'station':
+    case 'train':
+      return 'Etablissement identifié'
+  }
 }
