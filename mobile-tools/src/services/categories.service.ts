@@ -9,6 +9,9 @@ export interface Category {
 const anomaliesFr = JSON.parse(fs.readFileSync('../shared/anomalies/json/anomalies_fr.json', 'utf-8'))
 const anomaliesEn = JSON.parse(fs.readFileSync('../shared/anomalies/json/anomalies_en.json', 'utf-8'))
 
+export const minimizedAnomaliesFr = JSON.parse(fs.readFileSync('../shared/anomalies/json/minimized-anomalies_fr.json', 'utf-8'))
+export const minimizedAnomaliesEn = JSON.parse(fs.readFileSync('../shared/anomalies/json/minimized-anomalies_en.json', 'utf-8'))
+
 const categoriesFr: Category[] = anomaliesFr.map((anomaly: any) => {
   return {
     category: anomaly.category,

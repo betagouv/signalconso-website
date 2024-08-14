@@ -10,7 +10,7 @@ import {useBarcodeSearch} from '@/hooks/barcode'
 import {Report} from '@/model/Report'
 import {CommonCompanyIdentification, Step2Model} from '@/model/Step2Model'
 import {useState} from 'react'
-import {CompanyKind, SpecificProductCompanyKind, SpecificWebsiteCompanyKind} from 'shared/anomalies/Anomaly'
+import {SpecificProductCompanyKind, SpecificWebsiteCompanyKind} from 'shared/anomalies/Anomaly'
 import {CompanySearchResult} from '../../../model/Company'
 import {PartialReport, useReportFlowContext} from '../ReportFlowContext'
 import {StepNavigation} from '../reportFlowStepper/ReportFlowStepper'
@@ -68,14 +68,8 @@ type CommonProps = {
   updateReport: (step2: Step2Model) => void
 }
 
-export function CompanyIdentificationDispatch({
-  draft,
-  updateReport,
-  companyKindForPlayground,
-}: CommonProps & {
-  companyKindForPlayground?: CompanyKind
-}) {
-  switch (companyKindForPlayground ?? getCompanyKind(draft)) {
+export function CompanyIdentificationDispatch({draft, updateReport}: CommonProps) {
+  switch (getCompanyKind(draft)) {
     case 'TRAIN':
       return (
         <CompanyByTrain
