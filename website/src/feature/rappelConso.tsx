@@ -1,6 +1,6 @@
 import {Anomaly} from 'shared/anomalies/Anomaly'
 import {RappelConsoApiResult} from '@/clients/RappelConsoClient'
-import {SetReport} from '@/components_feature/reportFlow/ReportFlowContext'
+import {PartialReport, SetReport} from '@/components_feature/reportFlow/ReportFlowContext'
 import {useApiClients} from '@/context/ApiClientsContext'
 import {BlueBanner} from '@/feature/BlueBanner'
 import {Loader} from '@/feature/Loader'
@@ -86,10 +86,16 @@ export function useRappelConsoSetup(anomaly: Anomaly): SpecialCategorySetup<Rapp
 export function useHandleRcSetupLoaded(setup: SpecialCategorySetup<RappelConsoResult>, setReport: SetReport) {
   useEffect(() => {
     if (setup.status === 'loaded') {
-      setReport(_ => ({
-        ..._,
-        rappelConso: setup.result,
-      }))
+      setReport(draft => {
+        const updatedDraft: PartialReport = {
+          ...draft,
+          step1: {
+            ...draft.step1,
+            rappelConso: setup.result,
+          },
+        }
+        return updatedDraft
+      })
     }
   }, [setup, setReport])
 }
