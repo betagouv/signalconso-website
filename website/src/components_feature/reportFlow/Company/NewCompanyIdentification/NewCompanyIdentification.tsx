@@ -61,14 +61,14 @@ export function NewCompanyIdentification({
   onIdentification: (_: CommonCompanyIdentification) => void
 }) {
   const [geographicalRestriction, setGeographicalRestriction] = useState(false)
-  const [mode, setMode] = useState<'search' | 'cannotFind' | 'cannotFindConfirmed' | 'foreign'>('search')
+  const [mode, setMode] = useState<'search' | 'cannotFind' | 'cannotFindConfirmed' | 'foreign'>('foreign')
   const showSearchResults = mode === 'search'
   const emptyResults = true
   const companyKind = getCompanyKind(draft)
   return (
     <div>
       {
-        <>
+        <div className="mb-4">
           <h2 className="fr-h6 !mb-4">Pouvez-vous identifier l'entreprise ?</h2>
           <RequiredFieldsLegend />
           <ScTextInput
@@ -118,7 +118,7 @@ export function NewCompanyIdentification({
               </Button>
             </div>
           </div>
-        </>
+        </div>
       }
       {showSearchResults && (
         <CompanySearchResultComponent companies={emptyResults ? [] : searchResults} onSubmit={() => {}} report={draft} />

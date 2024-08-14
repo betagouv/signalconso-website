@@ -47,7 +47,7 @@ export const CompanySearchResultComponent = ({companies, report: report, onSubmi
   return (
     <>
       <Animate>
-        <div className={`mt-6`}>
+        <div>
           {companies.length === 0 ? (
             <div id="CompanySearchResult">
               <NoSearchResult />

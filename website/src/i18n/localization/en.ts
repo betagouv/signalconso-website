@@ -1104,6 +1104,12 @@ export const en = {
     cantIdentifyCompany: `Your postal code will help us direct your report to the appropriate service.`,
     cantIdentifyLocationCompany: `These informations will help us direct your report to the appropriate service and match it with any reports your neighbors may have submitted.`,
     companyIdentityLabel: `SIRET or SIREN or RCS number of the company`,
+    reportAbroad1:
+      'You wish to report a company located outside of France. We will not be able to contact them. <strong>SignalConso is rarely effective in this situation.</strong>',
+    reportAbroad2: `You can still submit your report; it might help guide investigations by DGCCRF agents.`,
+    reportAbroad3: `To help international authorities fight against fraud, you can also:`,
+    reportAbroad4: `If the company is located in the EU, submit your report on <a href='https://www.europe-consommateurs.eu/fr/accueil/' target='_blank' rel='noopener noreferrer'>europe-consommateurs.eu</a>`,
+    reportAbroad5: `If the company is located outside the EU, submit your report on <a href='https://www.econsumer.gov/fr' target='_blank' rel='noopener noreferrer'>econsumer.gov</a>`,
     companyIdentityPlaceholder: `Ex: 83350861700010`,
     barcodeProduct: 'Product',
     barcodeCompany: 'Company',

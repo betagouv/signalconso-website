@@ -9,7 +9,6 @@ import {Controller, useForm} from 'react-hook-form'
 import {CompanyKind} from 'shared/anomalies/Anomaly'
 import {ScAlert} from '../../../components_simple/ScAlert'
 import {Country} from '../../../model/Country'
-import {fnSwitch} from '../../../utils/FnSwitch'
 
 interface Form {
   name: string
@@ -40,12 +39,17 @@ export const CompanyAskForeignDetails = ({onSubmit, companyKind}: Props) => {
   return (
     <Animate>
       <div id="CompanyAskForeignDetails">
-        <ScAlert type="warning">
-          <p dangerouslySetInnerHTML={{__html: m.reportAbroadWarning}} />
-          <p className="mb-0" dangerouslySetInnerHTML={{__html: m.reportAbroadAdvice}} />
-        </ScAlert>
-        <h2 className="!text-lg">{m.couldYouPrecise}</h2>
-
+        <div className="mb-8">
+          <ScAlert type="info">
+            <p className="mb-4" dangerouslySetInnerHTML={{__html: m.reportAbroad1}} />
+            <p className="mb-4" dangerouslySetInnerHTML={{__html: m.reportAbroad2}} />
+            <p className="mb-0" dangerouslySetInnerHTML={{__html: m.reportAbroad3}} />
+            <ul>
+              <li dangerouslySetInnerHTML={{__html: m.reportAbroad4}}></li>
+              <li dangerouslySetInnerHTML={{__html: m.reportAbroad5}}></li>
+            </ul>
+          </ScAlert>
+        </div>
         <RequiredFieldsLegend />
         <form onSubmit={handleSubmit(onSubmit)}>
           <div>
@@ -69,29 +73,7 @@ export const CompanyAskForeignDetails = ({onSubmit, companyKind}: Props) => {
                 return <ScAutocompleteCountry {...{onChange, onBlur, name, value}} error={!!error} helperText={error?.message} />
               }}
             />
-            <br />
-            <ScAlert type="info">
-              <p
-                className="mb-0"
-                dangerouslySetInnerHTML={{
-                  __html: fnSwitch<CompanyKind, string>(companyKind, {
-                    SIRET: m.cantIdentifyCompany,
-                    WEBSITE: m.cantIdentifyWebsiteCompany,
-                    TRANSPORTER_WEBSITE: m.cantIdentifyTransporterWebsiteCompany,
-                    MERCHANT_WEBSITE: m.cantIdentifyMerchantWebsiteCompany,
-                    PHONE: m.cantIdentifyPhoneCompany,
-                    LOCATION: m.cantIdentifyLocationCompany,
-                    SOCIAL: m.cantIdentifyCompany,
-                    PRODUCT: m.cantIdentifyCompany,
-                    PRODUCT_POINT_OF_SALE: m.cantIdentifyCompany,
-                    PRODUCT_OPENFF: m.cantIdentifyCompany,
-                    PRODUCT_RAPPEL_CONSO: m.cantIdentifyCompany,
-                    TRAIN: m.cantIdentifyCompany,
-                    STATION: m.cantIdentifyCompany,
-                  }),
-                }}
-              />
-            </ScAlert>
+            <p className="mb-2 text-sm">{m.cantIdentifyCompany}</p>
             <Controller
               control={control}
               name="postalCode"
