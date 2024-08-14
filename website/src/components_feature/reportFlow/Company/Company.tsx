@@ -32,7 +32,7 @@ import {InfluencerFilled} from './InfluencerFilled'
 import {BarcodeSearchResult} from './lib/BarcodeSearchResult'
 
 export function Company({stepNavigation}: {stepNavigation: StepNavigation}) {
-  const {report: report, setReport: setReport, sendReportEvent} = useReportFlowContext()
+  const {report, setReport, sendStep2ValidationEvent} = useReportFlowContext()
   const draft = report
   if (!hasStep0(draft) || !hasStep1Full(draft)) {
     throw new Error(`The draft is not ready to display Company step`)
@@ -56,7 +56,7 @@ export function Company({stepNavigation}: {stepNavigation: StepNavigation}) {
           ..._,
           step2,
         }))
-        sendReportEvent(stepNavigation.currentStep)
+        sendStep2ValidationEvent(step2)
         stepNavigation.next()
       }}
     />

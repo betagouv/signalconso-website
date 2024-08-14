@@ -19,7 +19,10 @@ export const AnalyticProvider = ({analytic, children}: Props) => {
   return (
     <AnalyticContext.Provider
       value={{
-        trackEvent: analytic?.trackEvent ?? ((...args: any[]) => {}),
+        trackEvent:
+          analytic?.trackEvent ??
+          // analytics are not available server-side
+          ((...args: any[]) => {}),
       }}
     >
       {children}

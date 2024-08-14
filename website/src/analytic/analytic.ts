@@ -26,7 +26,7 @@ export class Analytic {
     this.eularian?.send(path)
   }
 
-  readonly trackEvent = (category: EventCategories, action: AnalyticAction, name?: any, value?: any) => {
+  readonly trackEvent = (category: EventCategories, action: AnalyticAction, name?: string, value?: string) => {
     this.log('[trackEvent]', category, action, name, value)
     try {
       this.matomo?.push(['trackEvent', category, action, name, value])
