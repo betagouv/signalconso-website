@@ -1063,7 +1063,8 @@ export const en = {
     continueWithWebsite: (website: string) => `Continue with ${website}`,
     continueWithInfluencer: (influencer: string) => `Continue with "${influencer}"`,
     invalidUrlPattern: `This does not look like a website`,
-    noResult: 'No result',
+    noResult: 'No results',
+    noResultEmphasis: 'No results !',
     noAttachment: 'No attachment.',
     addAttachmentFile: 'Add an attachment',
     attachments: `Attachments: `,
@@ -1144,7 +1145,7 @@ export const en = {
     `,
     phoneNumberHavingCalled: `Phone number used to call you`,
     phoneNumberHavingCalledPlaceholder: `Ex: 06 00 00 00 00`,
-    noMatchingCompany: `Your search did not return any results.`,
+    tryAdjustSearch: `Try adjusting your search.`,
     youCanOnlyReportFrenchCompanies: `You can only report private businesses based in France.`,
     yourStreet: `Your street`,
     yourStreetDesc: `House number not required`,
@@ -1255,7 +1256,6 @@ export const en = {
         <li>the SIREN number</li>
       </ul>
     `,
-    noMatchingCompanyDesc: `Please amend your search or include the company identifiers in your search.`,
     howToFindCompanyCountry: ``,
     howToFindCompanyCountryDesc: `
       On the company's website, go to one of the following links:

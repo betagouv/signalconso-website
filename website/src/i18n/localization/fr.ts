@@ -1071,6 +1071,7 @@ export const fr = {
     continueWithInfluencer: (influencer: string) => `Continuer avec "${influencer}"`,
     invalidUrlPattern: `Veuillez saisir une adresse de site internet (exemple : https://www.site.fr)`,
     noResult: 'Aucun résultat',
+    noResultEmphasis: 'Aucun résultat !',
     noAttachment: 'Aucune pièce jointe.',
     addAttachmentFile: 'Ajouter une pièce jointe',
     attachments: `Pièces jointes :`,
@@ -1156,7 +1157,7 @@ export const fr = {
     `,
     phoneNumberHavingCalled: `Numéro de téléphone vous ayant contacté`,
     phoneNumberHavingCalledPlaceholder: `Ex: 06 00 00 00 00`,
-    noMatchingCompany: `Aucun établissement ne correspond à la recherche.`,
+    tryAdjustSearch: `Essayez d'ajuster votre recherche.`,
     youCanOnlyReportFrenchCompanies: `Vous pouvez identifier des entreprises privées établies en France uniquement.`,
     yourStreet: `Votre rue`,
     yourStreetDesc: `Le n° de rue n'est pas nécessaire`,
@@ -1279,7 +1280,6 @@ export const fr = {
         <li>le numéro SIREN</li>
       </ul>
     `,
-    noMatchingCompanyDesc: `Veuillez modifier votre recherche ou rechercher avec les identifiants de l'entreprise.`,
     howToFindCompanyCountry: ``,
     howToFindCompanyCountryDesc: `
       Rendez-vous sur le site internet de l'entreprise, dans l'une des rubriques suivantes :

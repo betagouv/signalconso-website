@@ -119,12 +119,7 @@ export function NewCompanyIdentification({
         </>
       }
       {showSearchResults && (
-        <CompanySearchResultComponent
-          dividerAbove={false}
-          companies={emptyResults ? [] : searchResults}
-          onSubmit={() => {}}
-          report={draft}
-        />
+        <CompanySearchResultComponent companies={emptyResults ? [] : searchResults} onSubmit={() => {}} report={draft} />
       )}
       {(mode === 'cannotFind' || mode === 'cannotFindConfirmed') && (
         <Animate autoScrollTo>
