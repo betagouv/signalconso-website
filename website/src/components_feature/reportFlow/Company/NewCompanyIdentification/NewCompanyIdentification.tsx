@@ -62,8 +62,8 @@ export function NewCompanyIdentification({
 }) {
   const [geographicalRestriction, setGeographicalRestriction] = useState(false)
   const [mode, setMode] = useState<'search' | 'cannotFind' | 'cannotFindConfirmed' | 'foreign'>('search')
-  const showSearchResults = false
-  const emptyResults = true
+  const showSearchResults = true
+  const emptyResults = false
   const companyKind = getCompanyKind(draft)
   return (
     <div>
@@ -83,7 +83,7 @@ export function NewCompanyIdentification({
             onBlur={() => {}}
             onChange={() => {}}
           />
-          <div className={` ${geographicalRestriction ? 'p-4 pb-1 mb-4 border border-solid border-gray-300' : ''}`}>
+          <div className={` ${geographicalRestriction ? 'p-4 pb-1 mb-4 bg-sclightpurple rounded-lg' : ''}`}>
             <ScCheckbox
               label="Restreindre la recherche à un département ou code postal"
               onChange={v => {
@@ -110,7 +110,12 @@ export function NewCompanyIdentification({
               Je lance la recherche
             </ButtonWithLoader>
           </div>
-          <hr className="" />
+          {(!showSearchResults || emptyResults) && <hr className="" />}
+          {showSearchResults && (
+            <div className="">
+              <CompanySearchResultComponent companies={emptyResults ? [] : searchResults} onSubmit={() => {}} report={draft} />
+            </div>
+          )}
           <div className="flex flex-col items-end gap-2">
             <div className="flex flex-col">
               <Button onClick={() => setMode('cannotFind')} priority="tertiary no outline" iconId="ri-arrow-right-line">
@@ -123,9 +128,7 @@ export function NewCompanyIdentification({
           </div>
         </div>
       }
-      {showSearchResults && (
-        <CompanySearchResultComponent companies={emptyResults ? [] : searchResults} onSubmit={() => {}} report={draft} />
-      )}
+
       {(mode === 'cannotFind' || mode === 'cannotFindConfirmed') && (
         <Animate autoScrollTo>
           <div>

@@ -53,7 +53,7 @@ export const CompanySearchResultComponent = ({companies, report: report, onSubmi
               <NoSearchResult />
             </div>
           ) : (
-            <div id="CompanySearchResult">
+            <div id="CompanySearchResult" className="mb-4">
               <form
                 onSubmit={handleSubmit(form => {
                   const selectedCompany = companies.find(_ => _.siret === form.result)!
