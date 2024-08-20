@@ -1,24 +1,18 @@
 import {Animate} from '@/components_simple/Animate'
-import {ButtonWithLoader} from '@/components_simple/buttons/Buttons'
-import {GeoArea, ScAutocompleteGeoArea} from '@/components_simple/formInputs/ScAutocompleteGeoArea'
-import {ScCheckbox} from '@/components_simple/formInputs/ScCheckbox'
-import {ScTextInput} from '@/components_simple/formInputs/ScTextInput'
 import {FriendlyHelpText} from '@/components_simple/FriendlyHelpText'
-import {RequiredFieldsLegend} from '@/components_simple/RequiredFieldsLegend'
 import {getCompanyKind} from '@/feature/reportUtils'
-import {useI18n} from '@/i18n/I18n'
 import {CompanySearchResult} from '@/model/Company'
 import {Report} from '@/model/Report'
 import {CommonCompanyIdentification} from '@/model/Step2Model'
 import Button from '@codegouvfr/react-dsfr/Button'
 import Link from 'next/link'
 import {useState} from 'react'
-import {Controller, useForm} from 'react-hook-form'
 import {PartialReport} from '../../ReportFlowContext'
 import {CompanyAskConsumerPostalCode} from '../CompanyAskConsumerPostalCode'
 import {CompanyAskConsumerStreet} from '../CompanyAskConsumerStreet'
 import {CompanyAskForeignDetails} from '../CompanyAskForeignDetails'
 import {CompanySearchResultComponent} from '../CompanySearchResultComponent'
+import {NewCompanySearchForm} from './NewCompanySearchForm'
 const searchResults: CompanySearchResult[] = [
   {
     siret: '49915454000037',
@@ -55,12 +49,6 @@ const searchResults: CompanySearchResult[] = [
   },
 ]
 
-type Form = {
-  input: string
-  restrictToGeoArea: boolean
-  geoArea?: GeoArea
-}
-
 export function NewCompanyIdentification({
   draft,
   onIdentification,
@@ -68,15 +56,6 @@ export function NewCompanyIdentification({
   draft: PartialReport & Pick<Report, 'step0' | 'step1'>
   onIdentification: (_: CommonCompanyIdentification) => void
 }) {
-  const {
-    register,
-    handleSubmit,
-    control,
-    watch,
-    formState: {errors},
-  } = useForm<Form>({})
-  const {m} = useI18n()
-  const restrictToGeoArea = watch('restrictToGeoArea')
   const [mode, setMode] = useState<'search' | 'cannotFind' | 'cannotFindConfirmed' | 'foreign'>('search')
   const showSearchResults = false
   const emptyResults = true
@@ -86,52 +65,11 @@ export function NewCompanyIdentification({
       {
         <div className="mb-4">
           <h2 className="fr-h6 !mb-4">Pouvez-vous identifier l'entreprise ?</h2>
-          <form
-            onSubmit={handleSubmit(form => {
-              console.log('@@ submitted form', form)
-            })}
-          >
-            <RequiredFieldsLegend />
-            <ScTextInput
-              {...register('input', {
-                required: {value: true, message: m.required},
-              })}
-              error={!!errors.input}
-              helperText={errors.input?.message}
-              required
-              desc="Entreprises françaises uniquement"
-              label="Nom ou identifiant de l'entreprise"
-              placeholder="Nom, n° SIRET/SIREN, n° RCS..."
-            />
-            <div className={`${restrictToGeoArea ? 'p-4 pb-1 mb-4 bg-sclightpurple rounded-lg' : ''}`}>
-              <ScCheckbox
-                {...register('restrictToGeoArea')}
-                label="Restreindre la recherche à un département ou code postal"
-                required
-              />
-              {restrictToGeoArea && (
-                <div className="max-w-lg">
-                  <Controller
-                    control={control}
-                    name="geoArea"
-                    render={({field: {onChange, onBlur, name, value}, fieldState: {error}}) => (
-                      <ScAutocompleteGeoArea
-                        label="Département ou code postal"
-                        {...{onChange, onBlur, name, value}}
-                        error={!!error}
-                        helperText={error?.message}
-                      />
-                    )}
-                  />
-                </div>
-              )}
-            </div>
-            <div className="flex justify-end mb-8">
-              <ButtonWithLoader size="large" iconId={'fr-icon-search-line'} onClick={() => {}} loading={false}>
-                Je lance la recherche
-              </ButtonWithLoader>
-            </div>
-          </form>
+          <NewCompanySearchForm
+            onSubmit={searchForm => {
+              console.log('@@@ output', searchForm)
+            }}
+          />
           {(!showSearchResults || emptyResults) && <hr className="" />}
           {showSearchResults && (
             <div className="">
