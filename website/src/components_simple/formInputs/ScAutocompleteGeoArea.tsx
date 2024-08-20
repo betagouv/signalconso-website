@@ -1,4 +1,4 @@
-import {City} from '@/clients/AdresseApiClient'
+import {AdresseApiClient, City} from '@/clients/AdresseApiClient'
 import {useApiClients} from '@/context/ApiClientsContext'
 import {Departement, findDepartements} from '@/data/departments'
 import {useStateWithThrottledCopy} from '@/hooks/useStateWithThrottledCopy'
@@ -8,7 +8,7 @@ import {useQuery} from '@tanstack/react-query'
 import {ReactNode} from 'react'
 import {ScAutoComplete} from './ScAutocomplete'
 
-type Option =
+type GeoArea =
   | {
       kind: 'postcode'
       postalCode: string
@@ -19,13 +19,59 @@ type Option =
       dpt: Departement
     }
 
-function cityToOption(_: City): Option {
+// Autocomplete for either :
+// - a departement (typed by number or name)
+// - a postcode (typed by number or name of city)
+export function ScAutocompleteGeoArea(props: {
+  label: string
+  onChange: (a: GeoArea) => void
+  onBlur: () => void
+  name: string
+  error: boolean
+  helperText?: string
+}) {
+  const {m} = useI18n()
+  const [query, setQuery, throttledQuery] = useStateWithThrottledCopy('')
+  const adresseApiClient = useApiClients().adresseApiClient
+
+  const _fetchOptions = useQuery<GeoArea[]>({
+    queryKey: ['searchGeoArea', throttledQuery],
+    queryFn: () => fetchOptions(adresseApiClient, throttledQuery),
+  })
+
+  const {onChange, ...otherProps} = props
+  return (
+    <ScAutoComplete<GeoArea>
+      onChange={_ => onChange(_)}
+      {...otherProps}
+      {...{query, setQuery, optionsAreSame, optionKey, inputDisplayValue, optionRender}}
+      desc={m.youCanSearchByCity}
+      placeholder={m.yourPostalCodePlaceholder}
+      options={_fetchOptions.data ?? []}
+      hideNoResult={isPartialPostalcode(query)}
+    />
+  )
+}
+
+async function fetchOptions(adresseApiClient: AdresseApiClient, q: string): Promise<GeoArea[]> {
+  const cities = await adresseApiClient.fetchCity(q)
+  if (cities.find(_ => _.postcode === q.trim())) {
+    return cities.map(cityToOption)
+  }
+  if (isValidPostalcode(q)) {
+    return [{kind: 'postcode', postalCode: q}]
+  }
+  const departements = findDepartements(q)
+  const res: GeoArea[] = [...departements.map(departementToOption), ...cities.map(cityToOption)]
+  return res
+}
+function cityToOption(_: City): GeoArea {
   return {kind: 'postcode', postalCode: _.postcode, city: _.city}
 }
-function departementToOption(_: Departement): Option {
+function departementToOption(_: Departement): GeoArea {
   return {kind: 'department', dpt: _}
 }
-function optionsAreSame(a?: Option, b?: Option): boolean {
+function optionsAreSame(a?: GeoArea, b?: GeoArea): boolean {
   if (a?.kind === 'department' && b?.kind === 'department') {
     return a.dpt.code === b.dpt.code
   }
@@ -34,7 +80,7 @@ function optionsAreSame(a?: Option, b?: Option): boolean {
   }
   return false
 }
-function optionKey(_: Option): string {
+function optionKey(_: GeoArea): string {
   switch (_.kind) {
     case 'department':
       return _.dpt.code
@@ -42,7 +88,7 @@ function optionKey(_: Option): string {
       return `${_.postalCode}_${_.city ?? ''}`
   }
 }
-function inputDisplayValue(_: Option): string {
+function inputDisplayValue(_: GeoArea): string {
   switch (_.kind) {
     case 'department':
       return `${_.dpt.name} (${_.dpt.code})`
@@ -53,65 +99,14 @@ function inputDisplayValue(_: Option): string {
       return _.postalCode
   }
 }
-function optionRender(_: Option): ReactNode {
-  switch (_.kind) {
-    case 'department':
-      return (
-        <>
-          {_.dpt.name} ({_.dpt.code ?? ''})
-        </>
-      )
-    case 'postcode':
-      return (
-        <>
-          <span className="text-gray-600">{_.postalCode}</span> {_.city ?? ''}
-        </>
-      )
-  }
-}
+function optionRender(_: GeoArea): ReactNode {
+  const number = _.kind === 'department' ? _.dpt.code : _.postalCode
+  const name = _.kind === 'department' ? _.dpt.name : _.city
 
-// Autocomplete for either :
-// - a departement (typed by number or name)
-// - a postcode (typed by number or name of city)
-export function ScAutocompleteGeoArea(props: {
-  label: string
-  onChange: (a: Option) => void
-  onBlur: () => void
-  name: string
-  error: boolean
-  helperText?: string
-}) {
-  const {m} = useI18n()
-  const [query, setQuery, throttledQuery] = useStateWithThrottledCopy('')
-  const adresseApiClient = useApiClients().adresseApiClient
-
-  const _fetchOptions = useQuery<Option[]>({
-    queryKey: ['searchGeoArea', throttledQuery],
-    queryFn: async () => {
-      const q = throttledQuery
-      const cities = await adresseApiClient.fetchCity(q)
-      if (cities.find(_ => _.postcode === q.trim())) {
-        return cities.map(cityToOption)
-      }
-      if (isValidPostalcode(q)) {
-        return [{kind: 'postcode', postalCode: q}]
-      }
-      const departements = findDepartements(q)
-      const res: Option[] = [...cities.map(cityToOption), ...departements.map(departementToOption)]
-      return res
-    },
-  })
-
-  const {onChange, ...otherProps} = props
   return (
-    <ScAutoComplete<Option>
-      onChange={_ => onChange(_)}
-      {...otherProps}
-      {...{query, setQuery, optionsAreSame, optionKey, inputDisplayValue, optionRender}}
-      desc={m.youCanSearchByCity}
-      placeholder={m.yourPostalCodePlaceholder}
-      options={_fetchOptions.data ?? []}
-      hideNoResult={isPartialPostalcode(query)}
-    />
+    <>
+      <span className="text-black">{number}</span>
+      {name && <> {name}</>}
+    </>
   )
 }
