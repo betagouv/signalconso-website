@@ -13,7 +13,7 @@ import {CommonCompanyIdentification} from '@/model/Step2Model'
 import Button from '@codegouvfr/react-dsfr/Button'
 import Link from 'next/link'
 import {useState} from 'react'
-import {useForm} from 'react-hook-form'
+import {Controller, useForm} from 'react-hook-form'
 import {PartialReport} from '../../ReportFlowContext'
 import {CompanyAskConsumerPostalCode} from '../CompanyAskConsumerPostalCode'
 import {CompanyAskConsumerStreet} from '../CompanyAskConsumerStreet'
@@ -71,13 +71,12 @@ export function NewCompanyIdentification({
   const {
     register,
     handleSubmit,
+    control,
     watch,
     formState: {errors},
   } = useForm<Form>({})
   const {m} = useI18n()
   const restrictToGeoArea = watch('restrictToGeoArea')
-
-  const [geographicalRestriction, setGeographicalRestriction] = useState(true)
   const [mode, setMode] = useState<'search' | 'cannotFind' | 'cannotFindConfirmed' | 'foreign'>('search')
   const showSearchResults = false
   const emptyResults = true
@@ -87,42 +86,52 @@ export function NewCompanyIdentification({
       {
         <div className="mb-4">
           <h2 className="fr-h6 !mb-4">Pouvez-vous identifier l'entreprise ?</h2>
-          <RequiredFieldsLegend />
-          <ScTextInput
-            {...register('input', {
-              required: {value: true, message: m.required},
+          <form
+            onSubmit={handleSubmit(form => {
+              console.log('@@ submitted form', form)
             })}
-            error={!!errors.input}
-            helperText={errors.input?.message}
-            required
-            desc="Entreprises françaises uniquement"
-            label="Nom ou identifiant de l'entreprise"
-            placeholder="Nom, n° SIRET/SIREN, n° RCS..."
-          />
-          <div className={` ${restrictToGeoArea ? 'p-4 pb-1 mb-4 bg-sclightpurple rounded-lg' : ''}`}>
-            <ScCheckbox
-              {...register('restrictToGeoArea')}
-              label="Restreindre la recherche à un département ou code postal"
+          >
+            <RequiredFieldsLegend />
+            <ScTextInput
+              {...register('input', {
+                required: {value: true, message: m.required},
+              })}
+              error={!!errors.input}
+              helperText={errors.input?.message}
               required
+              desc="Entreprises françaises uniquement"
+              label="Nom ou identifiant de l'entreprise"
+              placeholder="Nom, n° SIRET/SIREN, n° RCS..."
             />
-            {restrictToGeoArea && (
-              <div className="max-w-lg">
-                <ScAutocompleteGeoArea
-                  error={false}
-                  label="Département ou code postal"
-                  name="foobar"
-                  onBlur={() => {}}
-                  onChange={() => {}}
-                  // helperText="helper text"
-                />
-              </div>
-            )}
-          </div>
-          <div className="flex justify-end mb-8">
-            <ButtonWithLoader size="large" iconId={'fr-icon-search-line'} onClick={() => {}} loading={false}>
-              Je lance la recherche
-            </ButtonWithLoader>
-          </div>
+            <div className={`${restrictToGeoArea ? 'p-4 pb-1 mb-4 bg-sclightpurple rounded-lg' : ''}`}>
+              <ScCheckbox
+                {...register('restrictToGeoArea')}
+                label="Restreindre la recherche à un département ou code postal"
+                required
+              />
+              {restrictToGeoArea && (
+                <div className="max-w-lg">
+                  <Controller
+                    control={control}
+                    name="geoArea"
+                    render={({field: {onChange, onBlur, name, value}, fieldState: {error}}) => (
+                      <ScAutocompleteGeoArea
+                        label="Département ou code postal"
+                        {...{onChange, onBlur, name, value}}
+                        error={!!error}
+                        helperText={error?.message}
+                      />
+                    )}
+                  />
+                </div>
+              )}
+            </div>
+            <div className="flex justify-end mb-8">
+              <ButtonWithLoader size="large" iconId={'fr-icon-search-line'} onClick={() => {}} loading={false}>
+                Je lance la recherche
+              </ButtonWithLoader>
+            </div>
+          </form>
           {(!showSearchResults || emptyResults) && <hr className="" />}
           {showSearchResults && (
             <div className="">
