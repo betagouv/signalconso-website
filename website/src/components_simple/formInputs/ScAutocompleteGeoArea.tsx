@@ -8,6 +8,16 @@ import {useQuery} from '@tanstack/react-query'
 import {ReactNode} from 'react'
 import {ScAutoComplete} from './ScAutocomplete'
 
+export type ScAutocompleteGeoAreaProps = {
+  label: string
+  onChange: (a: GeoArea) => void
+  noDepartements?: boolean
+  onBlur: () => void
+  name: string
+  error: boolean
+  helperText?: string
+}
+
 type GeoArea =
   | {
       kind: 'postcode'
@@ -22,15 +32,7 @@ type GeoArea =
 // Autocomplete for either :
 // - a departement (typed by number or name)
 // - a postcode (typed by number or name of city)
-export function ScAutocompleteGeoArea(props: {
-  label: string
-  onChange: (a: GeoArea) => void
-  noDepartements?: boolean
-  onBlur: () => void
-  name: string
-  error: boolean
-  helperText?: string
-}) {
+export function ScAutocompleteGeoArea(props: ScAutocompleteGeoAreaProps) {
   const {m} = useI18n()
   const {onChange, noDepartements = false, ...otherProps} = props
 
