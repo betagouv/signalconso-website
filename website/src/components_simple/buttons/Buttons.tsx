@@ -30,6 +30,7 @@ export function ButtonWithLoader({
   className = '',
   onClick,
   priority,
+  size,
   disabled = false,
 }: {
   loading: boolean
@@ -37,6 +38,7 @@ export function ButtonWithLoader({
   children: ReactNode
   className?: string
   onClick?: () => void
+  size?: ButtonProps['size']
   priority?: ButtonProps['priority']
   disabled?: boolean
 }) {
@@ -52,6 +54,7 @@ export function ButtonWithLoader({
         : {iconId})}
       disabled={disabled || loading}
       className={className}
+      size={size}
       {...(priority ? {priority} : null)}
     >
       {loading && <div className="sc-loader w-4 h-4 mr-2"></div>}

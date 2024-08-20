@@ -62,7 +62,7 @@ export function NewCompanyIdentification({
 }) {
   const [geographicalRestriction, setGeographicalRestriction] = useState(false)
   const [mode, setMode] = useState<'search' | 'cannotFind' | 'cannotFindConfirmed' | 'foreign'>('search')
-  const showSearchResults = true
+  const showSearchResults = false
   const emptyResults = true
   const companyKind = getCompanyKind(draft)
   return (
@@ -105,10 +105,13 @@ export function NewCompanyIdentification({
               </div>
             )}
           </div>
-          <div className="flex flex-col items-center gap-2">
-            <ButtonWithLoader iconId={'fr-icon-search-line'} onClick={() => {}} loading={false}>
+          <div className="flex justify-end mb-8">
+            <ButtonWithLoader size="large" iconId={'fr-icon-search-line'} onClick={() => {}} loading={false}>
               Je lance la recherche
             </ButtonWithLoader>
+          </div>
+          <hr className="" />
+          <div className="flex flex-col items-end gap-2">
             <div className="flex flex-col">
               <Button onClick={() => setMode('cannotFind')} priority="tertiary no outline" iconId="ri-arrow-right-line">
                 Je ne trouve pas / ne connais pas l'entreprise...
