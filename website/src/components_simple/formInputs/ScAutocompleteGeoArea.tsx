@@ -25,35 +25,40 @@ type GeoArea =
 export function ScAutocompleteGeoArea(props: {
   label: string
   onChange: (a: GeoArea) => void
+  noDepartements?: boolean
   onBlur: () => void
   name: string
   error: boolean
   helperText?: string
 }) {
   const {m} = useI18n()
+  const {onChange, noDepartements = false, ...otherProps} = props
+
   const [query, setQuery, throttledQuery] = useStateWithThrottledCopy('')
   const adresseApiClient = useApiClients().adresseApiClient
 
   const _fetchOptions = useQuery<GeoArea[]>({
     queryKey: ['searchGeoArea', throttledQuery],
-    queryFn: () => fetchOptions(adresseApiClient, throttledQuery),
+    queryFn: () => fetchOptions(throttledQuery, adresseApiClient, {noDepartements}),
   })
-
-  const {onChange, ...otherProps} = props
   return (
     <ScAutoComplete<GeoArea>
       onChange={_ => onChange(_)}
       {...otherProps}
       {...{query, setQuery, optionsAreSame, optionKey, inputDisplayValue, optionRender}}
-      desc={m.youCanSearchByCity}
-      placeholder={m.yourPostalCodePlaceholder}
+      desc={noDepartements ? m.youCanSearchByCity : m.youCanSearchByGeoArea}
+      placeholder={noDepartements ? m.yourPostalCodePlaceholder : m.geoAreaPlaceholder}
       options={_fetchOptions.data ?? []}
       hideNoResult={isPartialPostalcode(query)}
     />
   )
 }
 
-async function fetchOptions(adresseApiClient: AdresseApiClient, q: string): Promise<GeoArea[]> {
+async function fetchOptions(
+  q: string,
+  adresseApiClient: AdresseApiClient,
+  {noDepartements}: {noDepartements: boolean},
+): Promise<GeoArea[]> {
   const cities = await adresseApiClient.fetchCity(q)
   if (cities.find(_ => _.postcode === q.trim())) {
     return cities.map(cityToOption)
@@ -61,7 +66,7 @@ async function fetchOptions(adresseApiClient: AdresseApiClient, q: string): Prom
   if (isValidPostalcode(q)) {
     return [{kind: 'postcode', postalCode: q}]
   }
-  const departements = findDepartements(q)
+  const departements = noDepartements ? [] : findDepartements(q)
   const res: GeoArea[] = [...departements.map(departementToOption), ...cities.map(cityToOption)]
   return res
 }
