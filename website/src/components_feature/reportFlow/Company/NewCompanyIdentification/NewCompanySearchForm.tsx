@@ -6,37 +6,31 @@ import {RequiredFieldsLegend} from '@/components_simple/RequiredFieldsLegend'
 import {useI18n} from '@/i18n/I18n'
 import {Controller, useForm} from 'react-hook-form'
 
-type Form = {
+type RawForm = {
   input: string
   restrictToGeoArea: boolean
   geoArea?: GeoArea
 }
-type Output = {input: string; geoArea?: GeoArea}
+export type CompanySearchInputs = {input: string; geoArea?: GeoArea}
 
-export function NewCompanySearchForm({onSubmit}: {onSubmit: (_: Output) => void}) {
+export function NewCompanySearchForm({
+  onSubmit,
+  buttonIsLoading,
+}: {
+  onSubmit: (_: CompanySearchInputs) => void
+  buttonIsLoading: boolean
+}) {
   const {
     register,
     handleSubmit,
     control,
     watch,
     formState: {errors},
-  } = useForm<Form>({})
+  } = useForm<RawForm>({})
   const {m} = useI18n()
   const restrictToGeoArea = watch('restrictToGeoArea')
   return (
-    <form
-      onSubmit={handleSubmit(form => {
-        const {input, geoArea, restrictToGeoArea} = form
-        onSubmit(
-          restrictToGeoArea
-            ? {
-                input,
-                geoArea,
-              }
-            : {input},
-        )
-      })}
-    >
+    <form onSubmit={handleSubmit(form => onSubmit(transformRawForm(form)))}>
       <RequiredFieldsLegend />
       <ScTextInput
         {...register('input', {
@@ -73,10 +67,20 @@ export function NewCompanySearchForm({onSubmit}: {onSubmit: (_: Output) => void}
         )}
       </div>
       <div className="flex justify-end mb-8">
-        <ButtonWithLoader size="large" iconId={'fr-icon-search-line'} onClick={() => {}} loading={false}>
+        <ButtonWithLoader size="large" iconId={'fr-icon-search-line'} loading={buttonIsLoading}>
           Je lance la recherche
         </ButtonWithLoader>
       </div>
     </form>
   )
+}
+
+function transformRawForm(form: RawForm): CompanySearchInputs {
+  const {input, geoArea, restrictToGeoArea} = form
+  return restrictToGeoArea
+    ? {
+        input,
+        geoArea,
+      }
+    : {input}
 }

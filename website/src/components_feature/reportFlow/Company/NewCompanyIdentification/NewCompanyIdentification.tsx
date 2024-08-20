@@ -1,10 +1,14 @@
+import {useToastOnQueryError} from '@/clients/apiHooks'
 import {Animate} from '@/components_simple/Animate'
 import {FriendlyHelpText} from '@/components_simple/FriendlyHelpText'
+import {useApiClients} from '@/context/ApiClientsContext'
 import {getCompanyKind} from '@/feature/reportUtils'
+import {useI18n} from '@/i18n/I18n'
 import {CompanySearchResult} from '@/model/Company'
 import {Report} from '@/model/Report'
 import {CommonCompanyIdentification} from '@/model/Step2Model'
 import Button from '@codegouvfr/react-dsfr/Button'
+import {useQuery} from '@tanstack/react-query'
 import Link from 'next/link'
 import {useState} from 'react'
 import {PartialReport} from '../../ReportFlowContext'
@@ -12,7 +16,7 @@ import {CompanyAskConsumerPostalCode} from '../CompanyAskConsumerPostalCode'
 import {CompanyAskConsumerStreet} from '../CompanyAskConsumerStreet'
 import {CompanyAskForeignDetails} from '../CompanyAskForeignDetails'
 import {CompanySearchResultComponent} from '../CompanySearchResultComponent'
-import {NewCompanySearchForm} from './NewCompanySearchForm'
+import {CompanySearchInputs, NewCompanySearchForm} from './NewCompanySearchForm'
 const searchResults: CompanySearchResult[] = [
   {
     siret: '49915454000037',
@@ -56,25 +60,42 @@ export function NewCompanyIdentification({
   draft: PartialReport & Pick<Report, 'step0' | 'step1'>
   onIdentification: (_: CommonCompanyIdentification) => void
 }) {
+  const [searchInputs, setSearchInputs] = useState<CompanySearchInputs | undefined>(undefined)
+  const {companyApiClient} = useApiClients()
+  const {m, currentLang} = useI18n()
   const [mode, setMode] = useState<'search' | 'cannotFind' | 'cannotFindConfirmed' | 'foreign'>('search')
-  const showSearchResults = false
-  const emptyResults = true
+  const _search = useQuery({
+    queryKey: ['searchCompany', searchInputs],
+    queryFn: () => {
+      if (searchInputs) {
+        const {input, geoArea} = searchInputs
+        // TODO gerer les differents types de recherche
+        const code = geoArea && geoArea.kind === 'postcode' ? geoArea.postalCode : null
+        if (code) {
+          return companyApiClient.searchCompaniesByNameAndPostalCode(input, code, currentLang)
+        }
+        // why head offices only ?
+        return companyApiClient.searchHeadOfficesByName(input, currentLang)
+      }
+      return null
+    },
+  })
+  useToastOnQueryError(_search)
+
+  const showSearchResults = _search.isSuccess && _search.data !== null
+  const isLoading = _search.isPending
+  const emptyResults = _search.data?.length === 0
   const companyKind = getCompanyKind(draft)
+  // TODO i18n
   return (
     <div>
       {
         <div className="mb-4">
           <h2 className="fr-h6 !mb-4">Pouvez-vous identifier l'entreprise ?</h2>
-          <NewCompanySearchForm
-            onSubmit={searchForm => {
-              console.log('@@@ output', searchForm)
-            }}
-          />
+          <NewCompanySearchForm onSubmit={searchForm => setSearchInputs(searchForm)} buttonIsLoading={isLoading} />
           {(!showSearchResults || emptyResults) && <hr className="" />}
           {showSearchResults && (
-            <div className="">
-              <CompanySearchResultComponent companies={emptyResults ? [] : searchResults} onSubmit={() => {}} report={draft} />
-            </div>
+            <CompanySearchResultComponent companies={_search.data ?? []} onSubmit={() => {}} report={draft} />
           )}
           <div className="flex flex-col items-end gap-2">
             <div className="flex flex-col">
