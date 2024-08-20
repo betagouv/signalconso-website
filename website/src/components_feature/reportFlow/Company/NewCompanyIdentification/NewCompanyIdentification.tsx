@@ -62,8 +62,8 @@ export function NewCompanyIdentification({
 }) {
   const [geographicalRestriction, setGeographicalRestriction] = useState(false)
   const [mode, setMode] = useState<'search' | 'cannotFind' | 'cannotFindConfirmed' | 'foreign'>('search')
-  const showSearchResults = false
-  const emptyResults = false
+  const showSearchResults = true
+  const emptyResults = true
   const companyKind = getCompanyKind(draft)
   return (
     <div>
