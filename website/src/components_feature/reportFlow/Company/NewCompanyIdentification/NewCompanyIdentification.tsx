@@ -1,17 +1,19 @@
 import {Animate} from '@/components_simple/Animate'
 import {ButtonWithLoader} from '@/components_simple/buttons/Buttons'
-import {ScAutocompleteGeoArea} from '@/components_simple/formInputs/ScAutocompleteGeoArea'
+import {GeoArea, ScAutocompleteGeoArea} from '@/components_simple/formInputs/ScAutocompleteGeoArea'
 import {ScCheckbox} from '@/components_simple/formInputs/ScCheckbox'
 import {ScTextInput} from '@/components_simple/formInputs/ScTextInput'
 import {FriendlyHelpText} from '@/components_simple/FriendlyHelpText'
 import {RequiredFieldsLegend} from '@/components_simple/RequiredFieldsLegend'
 import {getCompanyKind} from '@/feature/reportUtils'
+import {useI18n} from '@/i18n/I18n'
 import {CompanySearchResult} from '@/model/Company'
 import {Report} from '@/model/Report'
 import {CommonCompanyIdentification} from '@/model/Step2Model'
 import Button from '@codegouvfr/react-dsfr/Button'
 import Link from 'next/link'
 import {useState} from 'react'
+import {useForm} from 'react-hook-form'
 import {PartialReport} from '../../ReportFlowContext'
 import {CompanyAskConsumerPostalCode} from '../CompanyAskConsumerPostalCode'
 import {CompanyAskConsumerStreet} from '../CompanyAskConsumerStreet'
@@ -53,6 +55,12 @@ const searchResults: CompanySearchResult[] = [
   },
 ]
 
+type Form = {
+  input: string
+  restrictToGeoArea: boolean
+  geoArea?: GeoArea
+}
+
 export function NewCompanyIdentification({
   draft,
   onIdentification,
@@ -60,6 +68,15 @@ export function NewCompanyIdentification({
   draft: PartialReport & Pick<Report, 'step0' | 'step1'>
   onIdentification: (_: CommonCompanyIdentification) => void
 }) {
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: {errors},
+  } = useForm<Form>({})
+  const {m} = useI18n()
+  const restrictToGeoArea = watch('restrictToGeoArea')
+
   const [geographicalRestriction, setGeographicalRestriction] = useState(true)
   const [mode, setMode] = useState<'search' | 'cannotFind' | 'cannotFindConfirmed' | 'foreign'>('search')
   const showSearchResults = false
@@ -72,27 +89,23 @@ export function NewCompanyIdentification({
           <h2 className="fr-h6 !mb-4">Pouvez-vous identifier l'entreprise ?</h2>
           <RequiredFieldsLegend />
           <ScTextInput
-            error={false}
-            name="name"
+            {...register('input', {
+              required: {value: true, message: m.required},
+            })}
+            error={!!errors.input}
+            helperText={errors.input?.message}
             required
-            autocomplete="autocompletion"
             desc="Entreprises françaises uniquement"
-            // helperText="Entreprises françaises uniquement"
             label="Nom ou identifiant de l'entreprise"
             placeholder="Nom, n° SIRET/SIREN, n° RCS..."
-            onBlur={() => {}}
-            onChange={() => {}}
           />
-          <div className={` ${geographicalRestriction ? 'p-4 pb-1 mb-4 bg-sclightpurple rounded-lg' : ''}`}>
+          <div className={` ${restrictToGeoArea ? 'p-4 pb-1 mb-4 bg-sclightpurple rounded-lg' : ''}`}>
             <ScCheckbox
+              {...register('restrictToGeoArea')}
               label="Restreindre la recherche à un département ou code postal"
-              onChange={v => {
-                setGeographicalRestriction(v)
-              }}
-              value={geographicalRestriction}
-              required={true}
+              required
             />
-            {geographicalRestriction && (
+            {restrictToGeoArea && (
               <div className="max-w-lg">
                 <ScAutocompleteGeoArea
                   error={false}

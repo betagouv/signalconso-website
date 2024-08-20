@@ -18,7 +18,7 @@ export type ScAutocompleteGeoAreaProps = {
   helperText?: string
 }
 
-type GeoArea =
+export type GeoArea =
   | {
       kind: 'postcode'
       postalCode: string

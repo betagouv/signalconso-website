@@ -45,7 +45,7 @@ export const CompanyAskConsumerStreet = ({onChange}: Props) => {
               })}
               required
               error={!!errors.street}
-              helperText={(errors.street as any)?.message ?? ''}
+              helperText={errors.street?.message ?? ''}
               placeholder={m.yourStreetPlaceholder}
             />
             <Controller

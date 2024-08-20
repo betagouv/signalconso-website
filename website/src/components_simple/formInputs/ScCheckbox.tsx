@@ -1,9 +1,10 @@
-import {ReactNode, Ref, forwardRef, useId} from 'react'
+import {ChangeEventHandler, FocusEventHandler, ReactNode, Ref, forwardRef, useId} from 'react'
 
 interface Props {
-  onChange: (value: boolean) => void
+  onChange: ChangeEventHandler<HTMLInputElement>
+  onBlur: FocusEventHandler<HTMLInputElement>
+  name: string
   label: ReactNode
-  value: boolean
   error?: boolean
   errorMessage?: string
   required: boolean
@@ -11,13 +12,11 @@ interface Props {
 type RefType = Ref<HTMLFieldSetElement>
 
 export const ScCheckbox = forwardRef((props: Props, ref: RefType) => {
-  const {onChange, value, label, error, errorMessage, required} = props
+  const {label, error, errorMessage, required, name, onBlur, onChange} = props
   const _id = useId()
   const id = `fr-fieldset-checkbox-${_id}`
-  const checkboxName = `checkbox-name-${id}`
   const messagesWrapperId = `${id}-messages`
   const inputId = `checkbox-rich-${id}`
-  const checked = value
   return (
     <fieldset
       id={id}
@@ -28,13 +27,7 @@ export const ScCheckbox = forwardRef((props: Props, ref: RefType) => {
     >
       <div className="fr-fieldset__content fr-fieldset__element">
         <div className={`fr-checkbox-group`}>
-          <input
-            type="checkbox"
-            id={inputId}
-            name={checkboxName}
-            onChange={e => onChange(e.target.checked)}
-            checked={checked}
-          ></input>
+          <input type="checkbox" id={inputId} {...{name, onBlur, onChange}} />
           <label className="fr-label" htmlFor={inputId}>
             <div className="flex flex-col gap-2 items-start justify-start ">{label}</div>
           </label>
