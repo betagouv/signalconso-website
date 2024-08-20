@@ -1,6 +1,6 @@
 import {Animate} from '@/components_simple/Animate'
 import {ButtonWithLoader} from '@/components_simple/buttons/Buttons'
-import {ScAutocompletePostcode} from '@/components_simple/formInputs/ScAutocompletePostcode'
+import {ScAutocompleteGeoArea} from '@/components_simple/formInputs/ScAutocompleteGeoArea'
 import {ScCheckbox} from '@/components_simple/formInputs/ScCheckbox'
 import {ScTextInput} from '@/components_simple/formInputs/ScTextInput'
 import {FriendlyHelpText} from '@/components_simple/FriendlyHelpText'
@@ -60,10 +60,10 @@ export function NewCompanyIdentification({
   draft: PartialReport & Pick<Report, 'step0' | 'step1'>
   onIdentification: (_: CommonCompanyIdentification) => void
 }) {
-  const [geographicalRestriction, setGeographicalRestriction] = useState(false)
+  const [geographicalRestriction, setGeographicalRestriction] = useState(true)
   const [mode, setMode] = useState<'search' | 'cannotFind' | 'cannotFindConfirmed' | 'foreign'>('search')
-  const showSearchResults = true
-  const emptyResults = false
+  const showSearchResults = false
+  const emptyResults = true
   const companyKind = getCompanyKind(draft)
   return (
     <div>
@@ -94,7 +94,7 @@ export function NewCompanyIdentification({
             />
             {geographicalRestriction && (
               <div className="max-w-lg">
-                <ScAutocompletePostcode
+                <ScAutocompleteGeoArea
                   error={false}
                   label="Département ou code postal"
                   name="foobar"

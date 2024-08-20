@@ -135,3 +135,10 @@ export type ChildrenProps = {
 export type MaybeChildrenProps = {
   children?: ReactNode
 }
+
+export function isValidPostalcode(i: string) {
+  return /^[0-9]{5}$/g.test(i)
+}
+export function isPartialPostalcode(i: string) {
+  return /^[0-9]{1,4}$/g.test(i)
+}

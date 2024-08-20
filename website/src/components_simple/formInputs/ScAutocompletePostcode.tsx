@@ -1,6 +1,7 @@
 import {useApiClients} from '@/context/ApiClientsContext'
 import {useStateWithThrottledCopy} from '@/hooks/useStateWithThrottledCopy'
 import {useI18n} from '@/i18n/I18n'
+import {isPartialPostalcode, isValidPostalcode} from '@/utils/utils'
 import {useQuery} from '@tanstack/react-query'
 import {ScAutoComplete} from './ScAutocomplete'
 
@@ -9,12 +10,6 @@ type PostcodeOption = {
   city?: string
 }
 
-function isValidPostalcode(i: string) {
-  return /^[0-9]{5}$/g.test(i)
-}
-function isPartialPostalcode(i: string) {
-  return /^[0-9]{1,4}$/g.test(i)
-}
 function buildDefaultOption(input: string) {
   return isValidPostalcode(input)
     ? [
