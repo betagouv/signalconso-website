@@ -33,10 +33,6 @@ export function NewCompanyIdentification({
     queryFn: async () => {
       if (searchInputs) {
         const {input, geoArea} = searchInputs
-        // TODO ajouter la popin d'explication pour trouver le siret
-        // TODO verif la recherche par siret/siren/rcs (avec postcode ou departement)
-        // TODO il faut gerer les RCS ?
-        // TODO verif les openonly. L'endpoint doit gérer le cas des openOnly : ne les afficher que dans le cas d'une recherche directe sur un siret
         const postalCode = geoArea && geoArea.kind === 'postcode' ? geoArea.postalCode : undefined
         const departmentCode = geoArea && geoArea.kind === 'department' ? geoArea.dpt.code : undefined
         return companyApiClient.searchSmart(input, postalCode, departmentCode, currentLang)

@@ -5,6 +5,7 @@ import {ScTextInput} from '@/components_simple/formInputs/ScTextInput'
 import {RequiredFieldsLegend} from '@/components_simple/RequiredFieldsLegend'
 import {useI18n} from '@/i18n/I18n'
 import {Controller, useForm} from 'react-hook-form'
+import {SiretHelpButton} from '../lib/SiretHelpButton'
 
 type RawForm = {
   input: string
@@ -40,8 +41,12 @@ export function NewCompanySearchForm({
         helperText={errors.input?.message}
         required
         desc="Entreprises françaises uniquement"
-        label="Nom ou identifiant de l'entreprise"
-        placeholder="Nom, n° SIRET/SIREN, n° RCS..."
+        label={
+          <span>
+            Nom ou identifiant SIRET/SIREN de l'entreprise <SiretHelpButton />
+          </span>
+        }
+        placeholder="Ex : 83350861700010, boulangerie dupont, ..."
       />
       <div className={`${restrictToGeoArea ? 'p-4 pb-1 mb-4 bg-sclightpurple rounded-lg' : ''}`}>
         <ScCheckbox
