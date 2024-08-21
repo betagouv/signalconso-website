@@ -14,6 +14,9 @@ type RawForm = {
 }
 export type CompanySearchInputs = {input: string; geoArea?: GeoArea}
 
+// it's not functional yet on the backend
+const enableSearchByDepartment = false
+
 export function NewCompanySearchForm({
   onSubmit,
   buttonIsLoading,
@@ -51,7 +54,11 @@ export function NewCompanySearchForm({
       <div className={`${restrictToGeoArea ? 'p-4 pb-1 mb-4 bg-sclightpurple rounded-lg' : ''}`}>
         <ScCheckbox
           {...register('restrictToGeoArea')}
-          label="Restreindre la recherche à un département ou code postal"
+          label={
+            enableSearchByDepartment
+              ? 'Restreindre la recherche à un département ou code postal'
+              : 'Restreindre la recherche à un code postal'
+          }
           required
         />
         {restrictToGeoArea && (
@@ -61,7 +68,8 @@ export function NewCompanySearchForm({
               name="geoArea"
               render={({field: {onChange, onBlur, name, value}, fieldState: {error}}) => (
                 <ScAutocompleteGeoArea
-                  label="Département ou code postal"
+                  label={enableSearchByDepartment ? 'Département ou code postal' : 'Code postal'}
+                  noDepartements={!enableSearchByDepartment}
                   {...{onChange, onBlur, name, value}}
                   error={!!error}
                   helperText={error?.message}
