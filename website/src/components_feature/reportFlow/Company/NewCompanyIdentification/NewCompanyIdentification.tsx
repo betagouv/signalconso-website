@@ -82,21 +82,21 @@ export function NewCompanyIdentification({
               {/* TODO ajuster pour cas où on ne contacte pas */}
               <p>
                 <strong>
-                  SignalConso ne fonctionne bien que quand vous identifiez l'entreprise avec laquelle vous avez un différent
+                  SignalConso est plus efficace lorsque vous identifiez l'entreprise avec laquelle vous avez un différend
                 </strong>
-                . Cela nous permet de la contacter immédiatement.
+                . Cela nous permet de la contacter directement pour qu'elle puisse vous répondre rapidement.
               </p>
               <p>
-                Si vous avez besoin d'un moteur de recherche un peu plus poussé, vous pouvez essayer{' '}
+                Si vous avez besoin d'un outil de recherche plus avancé, vous pouvez utiliser{' '}
                 <Link href={'https://annuaire-entreprises.data.gouv.fr/'} target="_blank">
                   L'Annuaire des Entreprises
                 </Link>
                 .
               </p>
               <p>
-                Si vraiment vous ne pouvez pas identifier l'entreprise, vous pouvez continuer quand même votre signalement. Il
-                sera communiqué aux agents de la répression des fraudes, qui feront de leur mieux pour traiter votre signalement.
-                Mais les chances de succès diminuent grandement.
+                Si malgré vos efforts, vous ne parvenez pas à identifier l'entreprise, vous pouvez tout de même poursuivre votre
+                signalement. Il sera transmis aux agents de la répression des fraudes, qui feront de leur mieux pour le traiter.
+                Toutefois, les chances de succès seront significativement réduites sans l'identification précise de l'entreprise.
               </p>
               <div className="flex gap-4 justify-between">
                 <Button priority="secondary" iconId="ri-arrow-left-line" onClick={() => setMode('search')}>
