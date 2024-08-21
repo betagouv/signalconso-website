@@ -30,11 +30,9 @@ export function NewCompanyIdentification({
   const [mode, setMode] = useState<'search' | 'cannotFind' | 'cannotFindConfirmed' | 'foreign'>('search')
   const _search = useQuery({
     queryKey: ['searchCompany', searchInputs],
-    queryFn: () => {
+    queryFn: async () => {
       if (searchInputs) {
         const {input, geoArea} = searchInputs
-        // TODO pourquoi je ne trouve plus "LIBERATION" dans le 75013 (je le trouvais sur demo)
-        // TODO pourquoi quand l'api est down, j'ai "aucun résultat" au lieu d'une erreur
         // TODO ajouter la popin d'explication pour trouver le siret
         // TODO gerer la recherche par departement et voir combien de résultats ça nous donne
         // TODO ajuster le seuil de similarité
@@ -44,7 +42,7 @@ export function NewCompanyIdentification({
         const postalCode = geoArea && geoArea.kind === 'postcode' ? geoArea.postalCode : undefined
         const departmentCode = geoArea && geoArea.kind === 'department' ? geoArea.dpt.code : undefined
         return companyApiClient.searchSmart(input, postalCode, departmentCode, currentLang)
-      }
+              }
       return null
     },
   })
