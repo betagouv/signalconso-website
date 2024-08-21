@@ -4,7 +4,6 @@ import {FriendlyHelpText} from '@/components_simple/FriendlyHelpText'
 import {useApiClients} from '@/context/ApiClientsContext'
 import {getCompanyKind} from '@/feature/reportUtils'
 import {useI18n} from '@/i18n/I18n'
-import {CompanySearchResult} from '@/model/Company'
 import {Report} from '@/model/Report'
 import {CommonCompanyIdentification} from '@/model/Step2Model'
 import Button from '@codegouvfr/react-dsfr/Button'
@@ -17,41 +16,6 @@ import {CompanyAskConsumerStreet} from '../CompanyAskConsumerStreet'
 import {CompanyAskForeignDetails} from '../CompanyAskForeignDetails'
 import {CompanySearchResultComponent} from '../CompanySearchResultComponent'
 import {CompanySearchInputs, NewCompanySearchForm} from './NewCompanySearchForm'
-const searchResults: CompanySearchResult[] = [
-  {
-    siret: '49915454000037',
-    name: 'ETABLISSEMENT LEROY',
-    isHeadOffice: false,
-    address: {number: '34', street: 'RUE DE PONTHIEU', postalCode: '75008', city: 'PARIS'},
-    activityCode: '43.22A',
-    activityLabel: "Travaux d'installation d'eau et de gaz en tous locaux",
-    isMarketPlace: false,
-    isOpen: true,
-    isPublic: true,
-  },
-  {
-    siret: '84130782000024',
-    name: 'SERGE \nLEROY',
-    isHeadOffice: true,
-    address: {postalCode: '75008', city: 'PARIS'},
-    activityCode: '82.99Z',
-    activityLabel: 'Autres activités de soutien aux entreprises n.c.a.',
-    isMarketPlace: false,
-    isOpen: true,
-    isPublic: false,
-  },
-  {
-    siret: '37833985700013',
-    name: 'SCI POLLET SAUSSIER LEROY',
-    isHeadOffice: true,
-    address: {number: '3', street: 'HOCHE', postalCode: '75008', city: 'PARIS'},
-    activityCode: '68.32A',
-    activityLabel: "Administration d'immeubles et autres biens immobiliers",
-    isMarketPlace: false,
-    isOpen: true,
-    isPublic: true,
-  },
-]
 
 export function NewCompanyIdentification({
   draft,
@@ -69,7 +33,11 @@ export function NewCompanyIdentification({
     queryFn: () => {
       if (searchInputs) {
         const {input, geoArea} = searchInputs
-        // TODO gerer les differents types de recherche
+        // TODO ajouter la popin d'explication pour trouver le siret
+        // TODO gerer la question de la restriction sur les head offices ou pas (faire une checkbox)
+        // TODO gerer la recherche par departement
+        // TODO gerer la recherche par siret/siren/rcs (avec postcode ou departement)
+        // TODO coder l'endpoint en scala. L'endpoint doit gérer le cas des openOnly : ne les afficher que dans le cas d'une recherche directe sur un siret
         const code = geoArea && geoArea.kind === 'postcode' ? geoArea.postalCode : null
         if (code) {
           return companyApiClient.searchCompaniesByNameAndPostalCode(input, code, currentLang)
