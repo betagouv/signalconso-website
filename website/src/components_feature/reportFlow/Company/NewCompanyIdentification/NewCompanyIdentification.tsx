@@ -33,22 +33,27 @@ export function NewCompanyIdentification({
     queryFn: () => {
       if (searchInputs) {
         const {input, geoArea} = searchInputs
+        // TODO pourquoi je ne trouve plus "LIBERATION" dans le 75013 (je le trouvais sur demo)
+        // TODO pourquoi quand l'api est down, j'ai "aucun résultat" au lieu d'une erreur
         // TODO ajouter la popin d'explication pour trouver le siret
-        // TODO gerer la question de la restriction sur les head offices ou pas (faire une checkbox)
-        // TODO gerer la recherche par departement
-        // TODO gerer la recherche par siret/siren/rcs (avec postcode ou departement)
-        // TODO coder l'endpoint en scala. L'endpoint doit gérer le cas des openOnly : ne les afficher que dans le cas d'une recherche directe sur un siret
-        const code = geoArea && geoArea.kind === 'postcode' ? geoArea.postalCode : null
-        if (code) {
-          return companyApiClient.searchCompaniesByNameAndPostalCode(input, code, currentLang)
-        }
-        // why head offices only ?
-        return companyApiClient.searchHeadOfficesByName(input, currentLang)
+        // TODO gerer la recherche par departement et voir combien de résultats ça nous donne
+        // TODO ajuster le seuil de similarité
+        // TODO verif la recherche par siret/siren/rcs (avec postcode ou departement)
+        // TODO il faut gerer les RCS ?
+        // TODO verif les openonly. L'endpoint doit gérer le cas des openOnly : ne les afficher que dans le cas d'une recherche directe sur un siret
+        const postalCode = geoArea && geoArea.kind === 'postcode' ? geoArea.postalCode : undefined
+        const departmentCode = geoArea && geoArea.kind === 'department' ? geoArea.dpt.code : undefined
+        return companyApiClient.searchSmart(input, postalCode, departmentCode, currentLang)
       }
       return null
     },
   })
   useToastOnQueryError(_search)
+
+  function onSearchFormSubmit(searchForm: CompanySearchInputs) {
+    setMode('search')
+    setSearchInputs(searchForm)
+  }
 
   const showSearchResults = _search.isSuccess && _search.data !== null
   const isLoading = _search.isPending
@@ -60,7 +65,7 @@ export function NewCompanyIdentification({
       {
         <div className="mb-4">
           <h2 className="fr-h6 !mb-4">Pouvez-vous identifier l'entreprise ?</h2>
-          <NewCompanySearchForm onSubmit={searchForm => setSearchInputs(searchForm)} buttonIsLoading={isLoading} />
+          <NewCompanySearchForm onSubmit={onSearchFormSubmit} buttonIsLoading={isLoading} />
           {(!showSearchResults || emptyResults) && <hr className="" />}
           {showSearchResults && (
             <CompanySearchResultComponent companies={_search.data ?? []} onSubmit={() => {}} report={draft} />
