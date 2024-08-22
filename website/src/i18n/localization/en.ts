@@ -1106,6 +1106,7 @@ export const en = {
     companyIdentityLabel: `SIRET or SIREN or RCS number of the company`,
     reportAbroad1:
       'You want to report a company located outside of France. Please note that we will not be able to contact them directly, and that <strong>SignalConso is generally less effective in this situation.</strong>',
+    reportAbroad1NonTransmittable: `You wish to report a company located abroad. It is outside the scope of action of France's Fraud Control. <strong>SignalConso is generally less effective in this situation.</strong>`,
     reportAbroad2: `You can still submit your report; it might help guide investigations by DGCCRF agents.`,
     reportAbroad3: `To help international authorities fight against fraud, you can also:`,
     reportAbroad4: `If the company is located in the EU, submit your report on <a href='https://www.europe-consommateurs.eu/fr/accueil/' target='_blank' rel='noopener noreferrer'>europe-consommateurs.eu</a>`,

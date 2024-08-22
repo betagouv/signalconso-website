@@ -1114,6 +1114,8 @@ export const fr = {
     companyIdentityLabel: `Numéro SIRET ou SIREN ou RCS de l'entreprise`,
     reportAbroad1:
       "Vous souhaitez signaler une entreprise située à l'étranger. Veuillez noter que nous ne serons pas en mesure de la contacter directement, et que <strong>SignalConso est généralement moins efficace dans ce cas de figure.</strong>",
+    reportAbroad1NonTransmittable:
+      "Vous souhaitez signaler une entreprise située à l'étranger. Elle est hors du périmètre d'action de la répression des fraudes. <strong>SignalConso est généralement moins efficace dans ce cas de figure.</strong>",
     reportAbroad2: `Vous pouvez quand même soumettre votre signalement, cela pourra orienter les enquêtes des agents de la DGCCRF.`,
     reportAbroad3: `Afin d'aider les autorités internationales à lutter contre la fraude, vous pouvez aussi :`,
     reportAbroad4: `Si l'entreprise est située dans l'UE, déposer votre signalement sur <a href='https://www.europe-consommateurs.eu/fr/accueil/' target='_blank' rel='noopener noreferrer'>europe-consommateurs.eu</a>`,

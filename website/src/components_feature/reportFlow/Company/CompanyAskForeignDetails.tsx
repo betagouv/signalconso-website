@@ -6,7 +6,6 @@ import {ScAutocompletePostcode} from '@/components_simple/formInputs/ScAutocompl
 import {ScTextInput} from '@/components_simple/formInputs/ScTextInput'
 import {useI18n} from '@/i18n/I18n'
 import {Controller, useForm} from 'react-hook-form'
-import {CompanyKind} from 'shared/anomalies/Anomaly'
 import {ScAlert} from '../../../components_simple/ScAlert'
 import {Country} from '../../../model/Country'
 
@@ -18,7 +17,7 @@ interface Form {
 
 interface Props {
   onSubmit: (form: Form) => void
-  companyKind: CompanyKind
+  reportTransmittableToPro: boolean
 }
 
 export const countryToFlag = (isoCode: string) => {
@@ -27,7 +26,7 @@ export const countryToFlag = (isoCode: string) => {
     : isoCode
 }
 
-export const CompanyAskForeignDetails = ({onSubmit, companyKind}: Props) => {
+export const CompanyAskForeignDetails = ({onSubmit, reportTransmittableToPro}: Props) => {
   const {m} = useI18n()
   const {
     control,
@@ -41,7 +40,10 @@ export const CompanyAskForeignDetails = ({onSubmit, companyKind}: Props) => {
       <div id="CompanyAskForeignDetails">
         <div className="mb-8">
           <ScAlert type="info">
-            <p className="mb-4" dangerouslySetInnerHTML={{__html: m.reportAbroad1}} />
+            <p
+              className="mb-4"
+              dangerouslySetInnerHTML={{__html: reportTransmittableToPro ? m.reportAbroad1 : m.reportAbroad1NonTransmittable}}
+            />
             <p className="mb-4" dangerouslySetInnerHTML={{__html: m.reportAbroad2}} />
             <p className="mb-0" dangerouslySetInnerHTML={{__html: m.reportAbroad3}} />
             <ul>

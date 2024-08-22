@@ -3,16 +3,26 @@ import {FriendlyHelpText} from '@/components_simple/FriendlyHelpText'
 import Button from '@codegouvfr/react-dsfr/Button'
 import Link from 'next/link'
 
-export function CannotFindCompanyWarning({onCancel, onContinue}: {onCancel: () => void; onContinue: () => void}) {
+export function CannotFindCompanyWarning({
+  onCancel,
+  onContinue,
+  reportTransmittableToPro,
+}: {
+  onCancel: () => void
+  onContinue: () => void
+  reportTransmittableToPro: boolean
+}) {
   return (
     <Animate autoScrollTo>
       <div>
         <FriendlyHelpText>
           <p>
             <strong>
-              SignalConso est plus efficace lorsque vous identifiez l'entreprise avec laquelle vous avez un différend
+              SignalConso est plus efficace lorsque vous identifiez l'entreprise avec laquelle vous avez un différend.
             </strong>
-            . Cela nous permet de la contacter directement pour qu'elle puisse vous répondre rapidement.
+            {reportTransmittableToPro && (
+              <> Cela nous permet de la contacter directement pour qu'elle puisse vous répondre rapidement.</>
+            )}
           </p>
           <p>
             Si vous avez besoin d'un outil de recherche plus avancé, vous pouvez utiliser{' '}

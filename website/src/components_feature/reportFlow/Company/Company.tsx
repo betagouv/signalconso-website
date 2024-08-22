@@ -6,7 +6,7 @@ import {NoSearchResult} from '@/components_feature/reportFlow/Company/lib/NoSear
 import {ScRadioButtons} from '@/components_simple/formInputs/ScRadioButtons'
 import {appConfig} from '@/core/appConfig'
 import {Loader} from '@/feature/Loader'
-import {getCompanyKind, hasStep0, hasStep1Full, hasStep2} from '@/feature/reportUtils'
+import {getCompanyKind, hasStep0, hasStep1Full, hasStep2, isTransmittableToPro} from '@/feature/reportUtils'
 import {useBarcodeSearch} from '@/hooks/barcode'
 import {Report} from '@/model/Report'
 import {CommonCompanyIdentification, Step2Model} from '@/model/Step2Model'
@@ -227,6 +227,7 @@ function CompanyIdentificationTree({
   onIdentification: (_: CommonCompanyIdentification) => void
 }) {
   const companyKind = getCompanyKind(draft)
+  const reportTransmittableToPro = isTransmittableToPro(draft)
   return searchResults && searchResults.length > 0 ? (
     <CompanySearchResultComponent
       companies={searchResults}
@@ -336,7 +337,7 @@ function CompanyIdentificationTree({
                     case IsAFrenchCompany.No:
                       return (
                         <CompanyAskForeignDetails
-                          {...{companyKind}}
+                          {...{companyKind, reportTransmittableToPro}}
                           onSubmit={({name, postalCode, country: {code}}) => {
                             onIdentification({
                               kind: 'foreignCompany',

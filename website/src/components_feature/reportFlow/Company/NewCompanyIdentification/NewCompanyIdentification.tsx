@@ -1,7 +1,7 @@
 import {useToastOnQueryError} from '@/clients/apiHooks'
 import {Animate} from '@/components_simple/Animate'
 import {useApiClients} from '@/context/ApiClientsContext'
-import {getCompanyKind} from '@/feature/reportUtils'
+import {getCompanyKind, isTransmittableToPro} from '@/feature/reportUtils'
 import {useI18n} from '@/i18n/I18n'
 import {Report} from '@/model/Report'
 import {CommonCompanyIdentification} from '@/model/Step2Model'
@@ -33,6 +33,7 @@ export function NewCompanyIdentification({
   const isLoading = _search.isPending
   const emptyResults = _search.data?.length === 0
   const companyKind = getCompanyKind(draft)
+  const reportTransmittableToPro = isTransmittableToPro(draft)
   return (
     <div>
       {
@@ -91,6 +92,7 @@ export function NewCompanyIdentification({
             }, 0)
           }}
           onContinue={() => setMode('cannotFindConfirmed')}
+          {...{reportTransmittableToPro}}
         />
       )}
       {mode === 'cannotFindConfirmed' && (
@@ -124,7 +126,7 @@ export function NewCompanyIdentification({
         <Animate autoScrollTo>
           <div>
             <CompanyAskForeignDetails
-              {...{companyKind}}
+              {...{reportTransmittableToPro}}
               onSubmit={({name, postalCode, country: {code}}) => {
                 onIdentification({
                   kind: 'foreignCompany',
