@@ -6,6 +6,7 @@ import {getCompanyKind} from '@/feature/reportUtils'
 import {useI18n} from '@/i18n/I18n'
 import {Report} from '@/model/Report'
 import {CommonCompanyIdentification} from '@/model/Step2Model'
+import {scrollToElement} from '@/utils/utils'
 import Button from '@codegouvfr/react-dsfr/Button'
 import {useQuery} from '@tanstack/react-query'
 import Link from 'next/link'
@@ -29,11 +30,6 @@ export function NewCompanyIdentification({
   const [mode, setMode] = useState<'search' | 'cannotFind' | 'cannotFindConfirmed' | 'foreign'>('search')
   const _search = useCompanySearchSmartQuery(searchInputs)
 
-  function onSearchFormSubmit(searchForm: CompanySearchInputs) {
-    setMode('search')
-    setSearchInputs(searchForm)
-  }
-
   const showSearchResults = _search.isSuccess && _search.data !== null
   const isLoading = _search.isPending
   const emptyResults = _search.data?.length === 0
@@ -43,7 +39,14 @@ export function NewCompanyIdentification({
       {
         <div className="mb-4">
           <h2 className="fr-h6 !mb-4">Pouvez-vous identifier l'entreprise ?</h2>
-          <NewCompanySearchForm onSubmit={onSearchFormSubmit} buttonIsLoading={isLoading} ref={formRef} />
+          <NewCompanySearchForm
+            buttonIsLoading={isLoading}
+            ref={formRef}
+            onSubmit={searchForm => {
+              setMode('search')
+              setSearchInputs(searchForm)
+            }}
+          />
           {(!showSearchResults || emptyResults) && <hr className="" />}
           {showSearchResults && (
             <CompanySearchResultComponent companies={_search.data ?? []} onSubmit={() => {}} report={draft} />
@@ -85,7 +88,19 @@ export function NewCompanyIdentification({
                 Toutefois, les chances de succès seront significativement réduites sans l'identification précise de l'entreprise.
               </p>
               <div className="flex gap-4 justify-between">
-                <Button priority="secondary" iconId="ri-arrow-left-line" onClick={() => setMode('search')}>
+                <Button
+                  priority="secondary"
+                  iconId="ri-arrow-left-line"
+                  onClick={() => {
+                    setMode('search')
+                    setTimeout(() => {
+                      const el = formRef.current
+                      if (el) {
+                        scrollToElement(el)
+                      }
+                    }, 0)
+                  }}
+                >
                   Je vais chercher un peu plus
                 </Button>
                 <Button
