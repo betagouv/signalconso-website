@@ -25,23 +25,9 @@ export function NewCompanyIdentification({
   onIdentification: (_: CommonCompanyIdentification) => void
 }) {
   const [searchInputs, setSearchInputs] = useState<CompanySearchInputs | undefined>(undefined)
-  const {companyApiClient} = useApiClients()
-  const {m, currentLang} = useI18n()
   const formRef = useRef<HTMLFormElement>(null)
   const [mode, setMode] = useState<'search' | 'cannotFind' | 'cannotFindConfirmed' | 'foreign'>('search')
-  const _search = useQuery({
-    queryKey: ['searchCompany', searchInputs],
-    queryFn: async () => {
-      if (searchInputs) {
-        const {input, geoArea} = searchInputs
-        const postalCode = geoArea && geoArea.kind === 'postcode' ? geoArea.postalCode : undefined
-        const departmentCode = geoArea && geoArea.kind === 'department' ? geoArea.dpt.code : undefined
-        return companyApiClient.searchSmart(input, postalCode, departmentCode, currentLang)
-      }
-      return null
-    },
-  })
-  useToastOnQueryError(_search)
+  const _search = useCompanySearchSmartQuery(searchInputs)
 
   function onSearchFormSubmit(searchForm: CompanySearchInputs) {
     setMode('search')
@@ -52,7 +38,6 @@ export function NewCompanyIdentification({
   const isLoading = _search.isPending
   const emptyResults = _search.data?.length === 0
   const companyKind = getCompanyKind(draft)
-  // TODO i18n
   return (
     <div>
       {
@@ -162,4 +147,23 @@ export function NewCompanyIdentification({
       )}
     </div>
   )
+}
+
+function useCompanySearchSmartQuery(searchInputs: CompanySearchInputs | undefined) {
+  const {companyApiClient} = useApiClients()
+  const {currentLang} = useI18n()
+  const _search = useQuery({
+    queryKey: ['searchCompany', searchInputs],
+    queryFn: async () => {
+      if (searchInputs) {
+        const {input, geoArea} = searchInputs
+        const postalCode = geoArea && geoArea.kind === 'postcode' ? geoArea.postalCode : undefined
+        const departmentCode = geoArea && geoArea.kind === 'department' ? geoArea.dpt.code : undefined
+        return companyApiClient.searchSmart(input, postalCode, departmentCode, currentLang)
+      }
+      return null
+    },
+  })
+  useToastOnQueryError(_search)
+  return _search
 }
