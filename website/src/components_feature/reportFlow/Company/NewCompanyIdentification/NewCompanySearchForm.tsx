@@ -4,6 +4,7 @@ import {ScCheckbox} from '@/components_simple/formInputs/ScCheckbox'
 import {ScTextInput} from '@/components_simple/formInputs/ScTextInput'
 import {RequiredFieldsLegend} from '@/components_simple/RequiredFieldsLegend'
 import {useI18n} from '@/i18n/I18n'
+import {forwardRef, Ref} from 'react'
 import {Controller, useForm} from 'react-hook-form'
 import {SiretHelpButton} from '../lib/SiretHelpButton'
 
@@ -17,13 +18,13 @@ export type CompanySearchInputs = {input: string; geoArea?: GeoArea}
 // it's not functional yet on the backend
 const enableSearchByDepartment = false
 
-export function NewCompanySearchForm({
-  onSubmit,
-  buttonIsLoading,
-}: {
+type Props = {
   onSubmit: (_: CompanySearchInputs) => void
   buttonIsLoading: boolean
-}) {
+}
+
+export const NewCompanySearchForm = forwardRef((props: Props, ref: Ref<HTMLFormElement>) => {
+  const {onSubmit, buttonIsLoading} = props
   const {
     register,
     handleSubmit,
@@ -34,7 +35,7 @@ export function NewCompanySearchForm({
   const {m} = useI18n()
   const restrictToGeoArea = watch('restrictToGeoArea')
   return (
-    <form onSubmit={handleSubmit(form => onSubmit(transformRawForm(form)))}>
+    <form onSubmit={handleSubmit(form => onSubmit(transformRawForm(form)))} {...{ref}}>
       <RequiredFieldsLegend />
       <ScTextInput
         {...register('input', {
@@ -86,7 +87,7 @@ export function NewCompanySearchForm({
       </div>
     </form>
   )
-}
+})
 
 function transformRawForm(form: RawForm): CompanySearchInputs {
   const {input, geoArea, restrictToGeoArea} = form

@@ -9,7 +9,7 @@ import {CommonCompanyIdentification} from '@/model/Step2Model'
 import Button from '@codegouvfr/react-dsfr/Button'
 import {useQuery} from '@tanstack/react-query'
 import Link from 'next/link'
-import {useState} from 'react'
+import {useRef, useState} from 'react'
 import {PartialReport} from '../../ReportFlowContext'
 import {CompanyAskConsumerPostalCode} from '../CompanyAskConsumerPostalCode'
 import {CompanyAskConsumerStreet} from '../CompanyAskConsumerStreet'
@@ -27,6 +27,7 @@ export function NewCompanyIdentification({
   const [searchInputs, setSearchInputs] = useState<CompanySearchInputs | undefined>(undefined)
   const {companyApiClient} = useApiClients()
   const {m, currentLang} = useI18n()
+  const formRef = useRef<HTMLFormElement>(null)
   const [mode, setMode] = useState<'search' | 'cannotFind' | 'cannotFindConfirmed' | 'foreign'>('search')
   const _search = useQuery({
     queryKey: ['searchCompany', searchInputs],
@@ -57,7 +58,7 @@ export function NewCompanyIdentification({
       {
         <div className="mb-4">
           <h2 className="fr-h6 !mb-4">Pouvez-vous identifier l'entreprise ?</h2>
-          <NewCompanySearchForm onSubmit={onSearchFormSubmit} buttonIsLoading={isLoading} />
+          <NewCompanySearchForm onSubmit={onSearchFormSubmit} buttonIsLoading={isLoading} ref={formRef} />
           {(!showSearchResults || emptyResults) && <hr className="" />}
           {showSearchResults && (
             <CompanySearchResultComponent companies={_search.data ?? []} onSubmit={() => {}} report={draft} />
