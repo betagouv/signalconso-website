@@ -1,5 +1,5 @@
 title: Je trouve les locaux sales ou dégradés
-desc: "Exemple\_: cuisine sale, WC sale"
+desc: "Exemple\_: cuisine sale, WC sales"
 detailInputs:
   - label: Date du constat
     type: DATE

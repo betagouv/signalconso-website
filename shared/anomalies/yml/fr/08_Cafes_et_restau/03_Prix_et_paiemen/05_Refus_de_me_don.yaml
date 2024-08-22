@@ -1,4 +1,4 @@
-title: Refus de me donner une note (ticket, facture)
+title: Le professionel refuse de me donner une note (ticket, facture)
 reponseconsoCode: '2131'
 tags:
   - ReponseConso
@@ -9,5 +9,5 @@ detailInputs:
     type: RADIO
     options:
       - Refus de me faire une note
-      - La note ne comporte pas les taux de TVA
+      - Note ne comportant pas les taux de TVA
       - Autre (à préciser)

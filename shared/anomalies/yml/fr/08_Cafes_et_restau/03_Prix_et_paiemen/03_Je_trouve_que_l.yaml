@@ -1,6 +1,6 @@
-title: Je trouve que les prix sont très chers
-desc: "Exemple\_: le prix du menu est très cher pour la qualité"
+title: Je trouve que les prix sont très élevés
+desc: "Exemple\_: prix du menu très cher pour la qualité"
 blockingInfo:
   title: Les prix sont choisis librement par les commerçants.
-  content: "Par contre, les prix doivent être clairement indiqués pour que vous soyez au courant avant d'acheter ou de commander. <br/> Par exemple, il est autorisé de vendre un verre de limonade à 100 euros dans un bar si le prix est bien marqué sur la carte. <br/> Le saviez-vous\_? Un café a également le droit de faire payer l'eau du robinet si le prix est marqué. Par contre, au cours d'un repas, l'eau du robinet doit vous être fournie gratuitement."
+  content: "En revanche, les prix doivent être clairement indiqués pour que vous soyez au courant avant d'acheter ou de commander. <br/> Par exemple, il est autorisé de vendre un verre de limonade à 100 euros dans un bar si le prix est bien marqué sur la carte. <br/> Le saviez-vous\_? Un café a également le droit de faire payer l'eau du robinet si le prix est indiqué. En revanche, au cours d'un repas, l'eau du robinet doit vous être fournie gratuitement."
   notAFraudMessage: true
