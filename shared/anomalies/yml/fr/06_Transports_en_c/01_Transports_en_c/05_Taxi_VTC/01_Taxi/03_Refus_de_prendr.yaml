@@ -1,9 +1,0 @@
-title: Refus de prendre votre carte bancaire
-desc: >-
-  Tous les taxis ont obligation de prendre la carte bancaire quel que soit le
-  montant.
-ccrfCode:
-  - 21a
-reponseconsoCode: '454'
-tags:
-  - ReponseConso

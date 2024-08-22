@@ -1,5 +1,5 @@
 title: Malfaçons sur la pose de la fosse septique
-desc: Fissure, usure
+desc: "Exemple\_: Fissure, usure"
 detailInputs:
   - label: Date du constat
     type: DATE

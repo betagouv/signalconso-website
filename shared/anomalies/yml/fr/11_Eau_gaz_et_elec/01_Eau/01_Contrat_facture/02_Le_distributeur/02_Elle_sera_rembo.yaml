@@ -1,0 +1,12 @@
+title: Elle sera remboursée à la résiliation de l'abonnement ou au changement de locataire
+tags:
+  - ReponseConso
+detailInputs:
+  - label: Date du contrat
+    type: DATE
+    defaultValue: SYSDATE
+  - label: Décrivez nous plus en détails ce qui s'est passé
+    type: TEXTAREA
+fileLabel: >-
+  Joindre une copie du contrat ou tout document commercial relatif à cette
+  avance.

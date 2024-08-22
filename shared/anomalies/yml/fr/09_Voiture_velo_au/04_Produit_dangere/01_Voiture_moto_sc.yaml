@@ -1,8 +1,0 @@
-title: Voiture, moto, scooter
-subcategoriesTitle: Quel est le risque&#160;?
-customizedClientReferenceInput:
-  label: Numéro VIN
-  description: Afin de faciliter le traitement de votre signalement, précisez le numéro VIN de votre véhicule. Vous le trouverez sur la carte grise sous la lettre E. Ce numéro est une suite de 17 caractères composé de chiffres et de lettres.
-  placeholder: "ex : 1HGBH41JXMN109186"
-subcategories:
-  customimport: _imports/subcategories/produit-dangereux
