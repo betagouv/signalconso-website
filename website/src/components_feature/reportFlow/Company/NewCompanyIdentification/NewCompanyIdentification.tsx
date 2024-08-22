@@ -49,7 +49,24 @@ export function NewCompanyIdentification({
           />
           {(!showSearchResults || emptyResults) && <hr className="" />}
           {showSearchResults && (
-            <CompanySearchResultComponent companies={_search.data ?? []} onSubmit={() => {}} report={draft} />
+            <CompanySearchResultComponent
+              companies={_search.data ?? []}
+              onSubmit={(company, vendor) => {
+                onIdentification(
+                  vendor
+                    ? {
+                        kind: 'marketplaceCompanyFound',
+                        company,
+                        vendor,
+                      }
+                    : {
+                        kind: 'companyFound',
+                        company,
+                      },
+                )
+              }}
+              report={draft}
+            />
           )}
           <div className="flex flex-col items-end gap-2">
             <div className="flex flex-col">
@@ -68,7 +85,6 @@ export function NewCompanyIdentification({
         <Animate autoScrollTo>
           <div>
             <FriendlyHelpText>
-              {/* TODO ajuster pour cas où on ne contacte pas */}
               <p>
                 <strong>
                   SignalConso est plus efficace lorsque vous identifiez l'entreprise avec laquelle vous avez un différend
