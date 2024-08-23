@@ -11,4 +11,5 @@ export const Config = {
   oneSignalEnablePush: process.env.ONE_SIGNAL_ENABLE_PUSH === 'true' ?? false,
   oneSignalAppId: process.env.ONE_SIGNAL_APP_ID ?? '',
   oneSignaleApiKey: process.env.ONE_SIGNAL_API_KEY ?? '',
+  websiteUrl: process.env.WEBSITE_URL ?? '',
 }
