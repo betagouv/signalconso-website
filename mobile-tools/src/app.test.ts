@@ -1,6 +1,7 @@
 import request from 'supertest'
 import {app} from './app'
 import {Category} from './services/categories.service'
+import {Config} from './config/config'
 
 describe('Test the actus path', () => {
   test('It should response the GET method', async () => {
@@ -22,6 +23,8 @@ describe('Test the categories path', () => {
       category: 'AchatMagasin',
       description: 'Prix, promotion, qualité, poids, garantie, …',
       id: '10',
+      path: 'achat-magasin',
+      img: `${Config.websiteUrl}/image/pictos/category-store.png`,
     })
   })
   test('It should return french categories', async () => {
@@ -31,6 +34,8 @@ describe('Test the categories path', () => {
       category: 'AchatMagasin',
       description: 'Prix, promotion, qualité, poids, garantie, …',
       id: '10',
+      path: 'achat-magasin',
+      img: `${Config.websiteUrl}/image/pictos/category-store.png`,
     })
   })
   test('It should return english categories', async () => {
@@ -40,6 +45,8 @@ describe('Test the categories path', () => {
       category: 'AchatMagasin',
       description: 'Price, promotion, quality, weight, warranty, etc.',
       id: '10',
+      path: 'achat-magasin',
+      img: `${Config.websiteUrl}/image/pictos/category-store.png`,
     })
   })
 })

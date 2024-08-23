@@ -30,6 +30,8 @@ const categoriesEn: Category[] = anomaliesEn.map((anomaly: any) => {
     category: anomaly.category,
     description: anomaly.description,
     id: anomaly.id,
+    path: anomaly.path,
+    img: `${Config.websiteUrl}/image/pictos/${anomaly.img}.png`,
   }
 })
 
