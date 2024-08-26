@@ -1106,12 +1106,24 @@ export const fr = {
     identifyBy_identityDesc: `Nous vous dirons où les trouver`,
     identifyBy_none: `Je ne peux pas identifier l'entreprise ou l'entreprise est à l'étranger`,
     identifyBy_noneDesc: `Si vous ne parvenez pas à identifier l'entreprise, vous pouvez continuer votre signalement.
-      Il ne sera pas transmis à l'entreprise, sauf si cette dernière est française et identifiable par l'équipe de SignalConso.
-      Dans tous les cas les enquêteurs de la répression des fraudes en seront informés.`,
+    Il ne sera pas transmis à l'entreprise, sauf si cette dernière est française et identifiable par l'équipe de SignalConso.
+    Dans tous les cas les enquêteurs de la répression des fraudes en seront informés.`,
+    identifyBy_nameOrIdentity: `Nom ou identifiant SIRET/SIREN de l'entreprise`,
+    identifyBy_nameOrIdentity_ex: `Ex : 83350861700010, boulangerie dupont, ...`,
+    frenchCompaniesOnly: 'Entreprises françaises uniquement',
     couldYouPrecise: `Pouvez-vous préciser ?`,
     cantIdentifyCompany: `Votre code postal nous servira à rediriger votre signalement vers le bon service.`,
     cantIdentifyLocationCompany: `Ces informations nous serviront à rediriger votre signalement vers le bon service, et à le rapprocher avec ceux qu'auraient éventuellement déposés vos voisins.`,
     companyIdentityLabel: `Numéro SIRET ou SIREN ou RCS de l'entreprise`,
+    cannotFindWarning: {
+      moreEfficient: `SignalConso est plus efficace lorsque vous identifiez l'entreprise avec laquelle vous avez un différend.`,
+      contactCompany: `Cela nous permet de la contacter directement pour qu'elle puisse vous répondre rapidement.`,
+      youCanUse: `Si vous avez besoin d'un outil de recherche plus avancé, vous pouvez utiliser`,
+      annuaireDesEntreprises: `L'Annuaire des Entreprises`,
+      youCanContinue: `Si malgré vos efforts, vous ne parvenez pas à identifier l'entreprise, vous pouvez tout de même poursuivre votre signalement. Il sera transmis aux agents de la répression des fraudes, qui feront de leur mieux pour le traiter. Toutefois, les chances de succès seront significativement réduites sans l'identification précise de l'entreprise.`,
+      iTryHarder: `Je vais chercher un peu plus`,
+      iReallyCant: `Je ne peux vraiment pas identifier l'entreprise`,
+    },
     reportAbroad1:
       "Vous souhaitez signaler une entreprise située à l'étranger. Veuillez noter que nous ne serons pas en mesure de la contacter directement, et que <strong>SignalConso est généralement moins efficace dans ce cas de figure.</strong>",
     reportAbroad1NonTransmittable:
@@ -1132,10 +1144,16 @@ export const fr = {
     barcodeHelp2: 'Vous trouverez ce numéro sous le code-barres présent sur le produit ou son emballage.',
     howToFindIt: `Où le trouver ?`,
     howToFindThem: `Où les trouver ?`,
+    restrictToPostalCode: `Restreindre la recherche à un code postal`,
+    restrictToPostalCodeOrDpt: `Restreindre la recherche à un département ou code postal`,
     postalCode: `Code postal`,
+    postalCodeOrDpt: `Département ou code postal`,
     selectPostalCode: `Sélectionner le code postal`,
     youCanSearchByCity: `Vous pouvez chercher par ville ou saisir le code postal`,
     youCanSearchByGeoArea: `Vous pouvez chercher par ville, ou saisir un code postal ou nom de département`,
+    startSearch: 'Je lance la recherche',
+    cantFindCompany: `Je ne trouve pas / ne connais pas l'entreprise...`,
+    companyIsForeign: `L'entreprise est à l'étranger`,
     aboutCompany: `Informations sur l'entreprise`,
     selectCompany: `Sélectionnez l'entreprise`,
     select: `Sélectionnez`,

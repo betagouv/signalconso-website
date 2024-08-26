@@ -44,22 +44,18 @@ export const NewCompanySearchForm = forwardRef((props: Props, ref: Ref<HTMLFormE
         error={!!errors.input}
         helperText={errors.input?.message}
         required
-        desc="Entreprises françaises uniquement"
+        desc={m.frenchCompaniesOnly}
         label={
           <span>
-            Nom ou identifiant SIRET/SIREN de l'entreprise <SiretHelpButton />
+            {m.identifyBy_nameOrIdentity} <SiretHelpButton />
           </span>
         }
-        placeholder="Ex : 83350861700010, boulangerie dupont, ..."
+        placeholder={m.identifyBy_nameOrIdentity_ex}
       />
       <div className={`${restrictToGeoArea ? 'p-4 pb-1 mb-4 bg-sclightpurple rounded-lg' : ''}`}>
         <ScCheckbox
           {...register('restrictToGeoArea')}
-          label={
-            enableSearchByDepartment
-              ? 'Restreindre la recherche à un département ou code postal'
-              : 'Restreindre la recherche à un code postal'
-          }
+          label={enableSearchByDepartment ? m.restrictToPostalCodeOrDpt : m.restrictToPostalCode}
           required
         />
         {restrictToGeoArea && (
@@ -69,7 +65,7 @@ export const NewCompanySearchForm = forwardRef((props: Props, ref: Ref<HTMLFormE
               name="geoArea"
               render={({field: {onChange, onBlur, name, value}, fieldState: {error}}) => (
                 <ScAutocompleteGeoArea
-                  label={enableSearchByDepartment ? 'Département ou code postal' : 'Code postal'}
+                  label={enableSearchByDepartment ? 'Département ou code postal' : m.postalCode}
                   noDepartements={!enableSearchByDepartment}
                   {...{onChange, onBlur, name, value}}
                   error={!!error}
@@ -82,7 +78,7 @@ export const NewCompanySearchForm = forwardRef((props: Props, ref: Ref<HTMLFormE
       </div>
       <div className="flex justify-end mb-8">
         <ButtonWithLoader size="large" iconId={'fr-icon-search-line'} loading={buttonIsLoading}>
-          Je lance la recherche
+          {m.startSearch}
         </ButtonWithLoader>
       </div>
     </form>

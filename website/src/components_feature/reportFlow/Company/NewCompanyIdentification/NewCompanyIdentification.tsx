@@ -24,6 +24,7 @@ export function NewCompanyIdentification({
   draft: PartialReport & Pick<Report, 'step0' | 'step1'>
   onIdentification: (_: CommonCompanyIdentification) => void
 }) {
+  const {m} = useI18n()
   const [searchInputs, setSearchInputs] = useState<CompanySearchInputs | undefined>(undefined)
   const formRef = useRef<HTMLFormElement>(null)
   const [mode, setMode] = useState<'search' | 'cannotFind' | 'cannotFindConfirmed' | 'foreign'>('search')
@@ -38,7 +39,7 @@ export function NewCompanyIdentification({
     <div>
       {
         <div className="mb-4">
-          <h2 className="fr-h6 !mb-4">Pouvez-vous identifier l'entreprise ?</h2>
+          <h2 className="fr-h6 !mb-4">{m.canYouIdentifyCompany}</h2>
           <NewCompanySearchForm
             buttonIsLoading={isLoading}
             ref={formRef}
@@ -71,10 +72,10 @@ export function NewCompanyIdentification({
           <div className="flex flex-col items-end gap-2">
             <div className="flex flex-col">
               <Button onClick={() => setMode('cannotFind')} priority="tertiary no outline" iconId="ri-arrow-right-line">
-                Je ne trouve pas / ne connais pas l'entreprise...
+                {m.cantFindCompany}
               </Button>
               <Button onClick={() => setMode('foreign')} priority="tertiary no outline" iconId="ri-arrow-right-line">
-                L'entreprise est à l'étranger
+                {m.companyIsForeign}
               </Button>
             </div>
           </div>
