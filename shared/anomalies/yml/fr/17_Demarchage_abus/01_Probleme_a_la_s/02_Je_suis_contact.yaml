@@ -1,21 +1,27 @@
 title: >-
   Je suis contacté directement à mon domicile pour des propositions de travaux ou de rénovation énergétique
-companyKind: PHONE
+companyKind: LOCATION
 ccrfCode:
   - '227'
   - 23E
 reponseconsoCode: '221'
 tags:
-  - DemarchageTelephonique
+  - DemarchageADomicile
 detailInputs:
-  - label: Date de l'appel
-    type: DATE
-    defaultValue: SYSDATE
-  - label: Est-ce que le vendeur s'est fait passer pour une autre entreprise&#160;?
+  - label: "Que s'est-il passé\_?"
     type: RADIO
     options:
+      - Le vendeur s'est fait passer pour une autre entreprise (à préciser)
+      - >-
+        Le vendeur m'a fait signer des papiers sans me dire que c'était un
+        contrat ou un bon de commande.
+      - Autre (à préciser)
+  - label: Avez-vous payé au moment du démarchage&#160;?
+    type: RADIO
+    options:
+      - Oui
       - Non
-      - Oui (à préciser)
-  - label: Décrivez nous plus en détails ce qui s'est passé
-    type: TEXTAREA
+  - label: Date du démarchage
+    type: DATE
+    defaultValue: SYSDATE
 
