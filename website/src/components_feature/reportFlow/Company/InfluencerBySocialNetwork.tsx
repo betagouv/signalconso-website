@@ -2,7 +2,6 @@ import {useToastOnQueryError} from '@/clients/apiHooks'
 import {DetailsSpecifyInput} from '@/components_feature/reportFlow/Details/DetailsSpecifyInput'
 import {AutofocusedDiv} from '@/components_simple/AutofocusedDiv'
 import {RequiredFieldsLegend} from '@/components_simple/RequiredFieldsLegend'
-import {ScAlert} from '@/components_simple/ScAlert'
 import {BtnNextSubmit, ButtonWithLoader} from '@/components_simple/buttons/Buttons'
 import {ScAutocompletePostcode} from '@/components_simple/formInputs/ScAutocompletePostcode'
 import {ScTextInput} from '@/components_simple/formInputs/ScTextInput'
@@ -131,9 +130,7 @@ export function InfluencerBySocialNetwork({onSubmit}: {onSubmit: (result: Result
 
               {socialNetwork === 'OTHER' ? (
                 <>
-                  <ScAlert type="info">
-                    <p className="mb-0">{m.cantIdentifyWebsiteCompany}</p>
-                  </ScAlert>
+                  <p className="mb-2 text-sm">{m.cantIdentifyCompany}</p>
                   <Controller
                     control={control}
                     name="postalCode"

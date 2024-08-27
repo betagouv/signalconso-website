@@ -11,7 +11,7 @@ import {useState} from 'react'
 import {useForm} from 'react-hook-form'
 import {AccordionInline} from '../../components_simple/AccordionInline'
 import {SocialNetworkRow} from '../../components_simple/SocialNetworkRow'
-import {ScCheckbox} from '../../components_simple/formInputs/ScCheckbox'
+import {ScCheckboxes} from '../../components_simple/formInputs/ScCheckboxes'
 import {ScRadioButtons} from '../../components_simple/formInputs/ScRadioButtons'
 import {useI18n} from '../../i18n/I18n'
 import {DetailsSpecifyInput} from '../reportFlow/Details/DetailsSpecifyInput'
@@ -137,7 +137,7 @@ export const PlaygroundOther = () => {
       <p>Radio value: {radioValue}</p>
       <p>Specifiy value: {specifiyValue}</p>
 
-      <ScCheckbox
+      <ScCheckboxes
         title="Test Check"
         description="une check"
         onChange={setCheckValue}

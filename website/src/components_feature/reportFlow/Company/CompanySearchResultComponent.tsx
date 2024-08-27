@@ -1,4 +1,3 @@
-import {useAnalyticContext} from '@/analytic/AnalyticContext'
 import {Animate} from '@/components_simple/Animate'
 import {BtnNextSubmit} from '@/components_simple/buttons/Buttons'
 import {CompanyRecapFromSearchResult} from '@/components_simple/CompanyRecap/CompanyRecap'
@@ -27,7 +26,6 @@ interface Form {
 
 export const CompanySearchResultComponent = ({companies, report: report, onSubmit}: Props) => {
   const {m} = useI18n()
-  const _analytic = useAnalyticContext()
   const [selected, setSelected] = useState<CompanySearchResult | undefined>()
   useEffect(() => {
     setSelected(undefined)
@@ -49,13 +47,13 @@ export const CompanySearchResultComponent = ({companies, report: report, onSubmi
   return (
     <>
       <Animate>
-        <div className="mt-6 pt-10 border-t-[1px] border-0 border-solid border-gray-200">
+        <div>
           {companies.length === 0 ? (
             <div id="CompanySearchResult">
-              <NoSearchResult text={m.noMatchingCompany} />
+              <NoSearchResult />
             </div>
           ) : (
-            <div id="CompanySearchResult">
+            <div id="CompanySearchResult" className="mb-4">
               <form
                 onSubmit={handleSubmit(form => {
                   const selectedCompany = companies.find(_ => _.siret === form.result)!
