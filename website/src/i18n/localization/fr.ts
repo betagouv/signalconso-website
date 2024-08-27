@@ -1113,7 +1113,7 @@ export const fr = {
     frenchCompaniesOnly: 'Entreprises françaises uniquement',
     couldYouPrecise: `Pouvez-vous préciser ?`,
     cantIdentifyCompany: `Votre code postal nous servira à rediriger votre signalement vers le bon service.`,
-    cantIdentifyLocationCompany: `Ces informations nous serviront à rediriger votre signalement vers le bon service, et à le rapprocher avec ceux qu'auraient éventuellement déposés vos voisins.`,
+    cantIdentifyLocationCompany: `Ces informations nous serviront à rediriger votre signalement vers le bon service, et à le rapprocher de ceux que vos voisins pourraient également avoir déposés.`,
     companyIdentityLabel: `Numéro SIRET ou SIREN ou RCS de l'entreprise`,
     cannotFindWarning: {
       moreEfficient: `SignalConso est plus efficace lorsque vous identifiez l'entreprise avec laquelle vous avez un différend.`,
@@ -1128,7 +1128,7 @@ export const fr = {
       "Vous souhaitez signaler une entreprise située à l'étranger. Veuillez noter que nous ne serons pas en mesure de la contacter directement, et que <strong>SignalConso est généralement moins efficace dans ce cas de figure.</strong>",
     reportAbroad1NonTransmittable:
       "Vous souhaitez signaler une entreprise située à l'étranger. Elle est hors du périmètre d'action de la répression des fraudes. <strong>SignalConso est généralement moins efficace dans ce cas de figure.</strong>",
-    reportAbroad2: `Vous pouvez quand même soumettre votre signalement, cela pourra orienter les enquêtes des agents de la DGCCRF.`,
+    reportAbroad2: `Vous pouvez tout de même soumettre votre signalement, cela pourra orienter les enquêtes des agents de la DGCCRF.`,
     reportAbroad3: `Afin d'aider les autorités internationales à lutter contre la fraude, vous pouvez aussi :`,
     reportAbroad4: `Si l'entreprise est située dans l'UE, déposer votre signalement sur <a href='https://www.europe-consommateurs.eu/fr/accueil/' target='_blank' rel='noopener noreferrer'>europe-consommateurs.eu</a>`,
     reportAbroad5: `Si l'entreprise est située hors UE, déposer votre signalement sur <a href='https://www.econsumer.gov/fr' target='_blank' rel='noopener noreferrer'>econsumer.gov</a>`,
