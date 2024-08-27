@@ -23,7 +23,7 @@ type Props = {
   buttonIsLoading: boolean
 }
 
-export const NewCompanySearchForm = forwardRef((props: Props, ref: Ref<HTMLFormElement>) => {
+export const CompanySmartSearchForm = forwardRef((props: Props, ref: Ref<HTMLFormElement>) => {
   const {onSubmit, buttonIsLoading} = props
   const {
     register,

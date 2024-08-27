@@ -15,9 +15,9 @@ import {CompanyAskConsumerStreet} from '../CompanyAskConsumerStreet'
 import {CompanyAskForeignDetails} from '../CompanyAskForeignDetails'
 import {CompanySearchResultComponent} from '../CompanySearchResultComponent'
 import {CannotFindCompanyWarning} from './CannotFindCompanyWarning'
-import {CompanySearchInputs, NewCompanySearchForm} from './NewCompanySearchForm'
+import {CompanySearchInputs, CompanySmartSearchForm} from './CompanySmartSearchForm'
 
-export function NewCompanyIdentification({
+export function CompanySmartIdentification({
   draft,
   onIdentification,
 }: {
@@ -40,7 +40,7 @@ export function NewCompanyIdentification({
       {
         <div className="mb-4">
           <h2 className="fr-h6 !mb-4">{m.canYouIdentifyCompany}</h2>
-          <NewCompanySearchForm
+          <CompanySmartSearchForm
             buttonIsLoading={isLoading}
             ref={formRef}
             onSubmit={searchForm => {

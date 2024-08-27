@@ -27,11 +27,11 @@ import {CompanySearchByBarcode} from './CompanySearchByBarcode'
 import {CompanySearchByIdentifier} from './CompanySearchByIdentifier'
 import {CompanySearchByNameAndPostalCode} from './CompanySearchByNameAndPostalCode'
 import {CompanySearchResultComponent} from './CompanySearchResultComponent'
+import {CompanySmartIdentification} from './CompanySmartIdentification/CompanySmartIdentification'
 import {CompanyWebsiteCountry} from './CompanyWebsiteCountry'
 import {InfluencerBySocialNetwork} from './InfluencerBySocialNetwork'
 import {InfluencerFilled} from './InfluencerFilled'
 import {BarcodeSearchResult} from './lib/BarcodeSearchResult'
-import {NewCompanyIdentification} from './NewCompanyIdentification/NewCompanyIdentification'
 
 export function Company({stepNavigation}: {stepNavigation: StepNavigation}) {
   const {report, setReport, sendStep2ValidationEvent} = useReportFlowContext()
@@ -248,7 +248,7 @@ function CompanyIdentificationTree({
       }}
     />
   ) : appConfig.useNewCompanySearch ? (
-    <NewCompanyIdentification {...{draft, onIdentification}} />
+    <CompanySmartIdentification {...{draft, onIdentification}} />
   ) : (
     <CompanyChooseIdentificationMethod {...{companyKind}}>
       {method => {
