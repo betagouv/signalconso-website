@@ -1,6 +1,6 @@
 import {appConfig} from '@/core/appConfig'
-import {BaseApiClient} from './BaseApiClient'
 import {CompanySearchResult} from '../model/Company'
+import {BaseApiClient} from './BaseApiClient'
 
 export class CompanyPublicClient {
   private client = new BaseApiClient({
@@ -10,6 +10,17 @@ export class CompanyPublicClient {
       Accept: 'application/json',
     },
   })
+
+  readonly searchSmart = (q: string, postalCode: string | undefined, departmentCode: string | undefined, lang: string) => {
+    return this.client.get<CompanySearchResult[]>(`/companies/search/smart`, {
+      qs: {
+        q,
+        ...(postalCode ? {postalCode} : null),
+        ...(departmentCode ? {departmentCode} : null),
+        lang,
+      },
+    })
+  }
 
   readonly searchCompaniesByNameAndPostalCode = (search: string, searchPostalCode: string, lang: string) => {
     return this.client.get<CompanySearchResult[]>(`/companies/search`, {

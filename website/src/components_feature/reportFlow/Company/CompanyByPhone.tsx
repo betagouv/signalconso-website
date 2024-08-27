@@ -43,7 +43,7 @@ export const CompanyByPhone = ({children}: Props) => {
     <>
       <Animate>
         <div id="CompanyByPhone">
-          <h2 className="fr-h6">{m.aboutCompany}</h2>
+          <h2 className="fr-h6 !mb-2">{m.aboutCompany}</h2>
           <div>
             <RequiredFieldsLegend />
             <form onSubmit={handleSubmit(submit)}>

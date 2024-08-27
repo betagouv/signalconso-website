@@ -27,7 +27,7 @@
   },
   "heroku-run-build-script": true,
   "dependencies": {
-    "@codegouvfr/react-dsfr": "^1.9.14",
+    "@codegouvfr/react-dsfr": "^1.11.2",
     "@emotion/cache": "11.11.0",
     "@emotion/react": "11.11.4",
     "@emotion/server": "11.11.0",

@@ -1,7 +1,7 @@
-import {Combobox} from '@headlessui/react'
 import {useI18n} from '@/i18n/I18n'
-import {ChangeEvent, ReactNode, useId} from 'react'
 import Button from '@codegouvfr/react-dsfr/Button'
+import {Combobox} from '@headlessui/react'
+import {ChangeEvent, ReactNode, useId} from 'react'
 
 // Based on headless-ui, with rendering similar to a DSFR input
 // Note : we don't pass ref and value, not sure why but it seems to work

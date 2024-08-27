@@ -4,8 +4,9 @@ import {CompanyByTrain} from '@/components_feature/reportFlow/Company/CompanyByT
 import {CompanySearchByName} from '@/components_feature/reportFlow/Company/CompanySearchByName'
 import {NoSearchResult} from '@/components_feature/reportFlow/Company/lib/NoSearchResult'
 import {ScRadioButtons} from '@/components_simple/formInputs/ScRadioButtons'
+import {appConfig} from '@/core/appConfig'
 import {Loader} from '@/feature/Loader'
-import {getCompanyKind, hasStep0, hasStep1Full, hasStep2} from '@/feature/reportUtils'
+import {getCompanyKind, hasStep0, hasStep1Full, hasStep2, isTransmittableToPro} from '@/feature/reportUtils'
 import {useBarcodeSearch} from '@/hooks/barcode'
 import {Report} from '@/model/Report'
 import {CommonCompanyIdentification, Step2Model} from '@/model/Step2Model'
@@ -26,6 +27,7 @@ import {CompanySearchByBarcode} from './CompanySearchByBarcode'
 import {CompanySearchByIdentifier} from './CompanySearchByIdentifier'
 import {CompanySearchByNameAndPostalCode} from './CompanySearchByNameAndPostalCode'
 import {CompanySearchResultComponent} from './CompanySearchResultComponent'
+import {CompanySmartIdentification} from './CompanySmartIdentification/CompanySmartIdentification'
 import {CompanyWebsiteCountry} from './CompanyWebsiteCountry'
 import {InfluencerBySocialNetwork} from './InfluencerBySocialNetwork'
 import {InfluencerFilled} from './InfluencerFilled'
@@ -225,9 +227,7 @@ function CompanyIdentificationTree({
   onIdentification: (_: CommonCompanyIdentification) => void
 }) {
   const companyKind = getCompanyKind(draft)
-  if (!companyKind) {
-    throw new Error('The draft should have a companyKind already')
-  }
+  const reportTransmittableToPro = isTransmittableToPro(draft)
   return searchResults && searchResults.length > 0 ? (
     <CompanySearchResultComponent
       companies={searchResults}
@@ -247,6 +247,8 @@ function CompanyIdentificationTree({
         )
       }}
     />
+  ) : appConfig.useNewCompanySearch ? (
+    <CompanySmartIdentification {...{draft, onIdentification}} />
   ) : (
     <CompanyChooseIdentificationMethod {...{companyKind}}>
       {method => {
@@ -335,7 +337,7 @@ function CompanyIdentificationTree({
                     case IsAFrenchCompany.No:
                       return (
                         <CompanyAskForeignDetails
-                          {...{companyKind}}
+                          {...{companyKind, reportTransmittableToPro}}
                           onSubmit={({name, postalCode, country: {code}}) => {
                             onIdentification({
                               kind: 'foreignCompany',

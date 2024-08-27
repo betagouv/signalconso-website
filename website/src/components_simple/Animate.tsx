@@ -1,7 +1,7 @@
+import {useAutoscrollContext} from '@/context/AutoscrollContext'
 import * as React from 'react'
 import {useId, useRef, useState} from 'react'
 import {useTimeout} from '../hooks/useTimeout'
-import {useAutoscrollContext} from '@/context/AutoscrollContext'
 
 export interface AnimateProps {
   children: React.ReactElement

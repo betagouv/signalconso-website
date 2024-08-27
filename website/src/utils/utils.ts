@@ -53,6 +53,11 @@ export const frenchDateFormat = 'dd/MM/yyyy'
 export function scrollTop() {
   window.scrollTo(0, 0)
 }
+export function scrollToElement(el: HTMLElement) {
+  const offsetY = 90 // offset so we don't put the element at the very top of the window
+  const y = el.getBoundingClientRect().top + window.scrollY - offsetY
+  window.scrollTo({top: y, behavior: 'smooth'})
+}
 
 export const undefinedIfNull = <A>(a: A | null): A | undefined => {
   return a === null ? undefined : a
@@ -134,4 +139,11 @@ export type ChildrenProps = {
 }
 export type MaybeChildrenProps = {
   children?: ReactNode
+}
+
+export function isValidPostalcode(i: string) {
+  return /^[0-9]{5}$/g.test(i)
+}
+export function isPartialPostalcode(i: string) {
+  return /^[0-9]{1,4}$/g.test(i)
 }

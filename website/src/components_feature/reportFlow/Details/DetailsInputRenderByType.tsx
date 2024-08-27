@@ -9,7 +9,7 @@ import {DetailInputValues2} from '@/model/Report'
 import {dateToIsoFormatWithoutTime, isDateInRange} from '@/utils/utils'
 import {Control, Controller, FieldErrors, UseFormRegister, UseFormWatch} from 'react-hook-form'
 import {DetailInput, DetailInputType} from 'shared/anomalies/Anomaly'
-import {ScCheckbox} from '../../../components_simple/formInputs/ScCheckbox'
+import {ScCheckboxes} from '../../../components_simple/formInputs/ScCheckboxes'
 import {ScRadioButtons} from '../../../components_simple/formInputs/ScRadioButtons'
 import {getOptionsFromInput, getPlaceholderFromInput} from './DetailInputsUtils'
 import {SpecifyFormUtils} from './Details'
@@ -141,7 +141,7 @@ export function DetailsInputRenderByType({
           {...{name}}
           rules={baseRules}
           render={({field}) => (
-            <ScCheckbox
+            <ScCheckboxes
               {...field}
               title={label}
               required={required}
