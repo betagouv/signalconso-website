@@ -50,7 +50,7 @@
     "@types/uuid": "^9.0.8",
     "airtable": "^0.12.2",
     "autoprefixer": "^10.4.19",
-    "axios": "1.7.2",
+    "axios": "1.7.4",
     "browser-image-compression": "2.0.2",
     "cookies-next": "^4.2.1",
     "csv-parse": "^5.5.6",
