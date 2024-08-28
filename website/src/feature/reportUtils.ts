@@ -124,7 +124,6 @@ export const getTransmissionStatus = (r: Pick<Report, 'step0' | 'step1' | 'step2
           return 'WILL_BE_TRANSMITTED'
         }
         case 'consumerLocation':
-        case 'consumerPreciseLocation':
           return 'MAY_BE_TRANSMITTED'
         case 'foreignCompany':
         case 'foreignWebsiteWithJustCountry':

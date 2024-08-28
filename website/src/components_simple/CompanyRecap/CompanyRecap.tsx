@@ -115,14 +115,6 @@ function buildMainFields(
               postalCode: companyIdentification.consumerPostalCode,
             },
           }
-        case 'consumerPreciseLocation':
-          return {
-            ...allUndefined,
-            address: {
-              postalCode: companyIdentification.consumerPostalCode,
-              street: companyIdentification.consumerStreet,
-            },
-          }
         case 'foreignCompany':
           return {
             ...allUndefined,

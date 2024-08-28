@@ -11,7 +11,6 @@ import {useQuery} from '@tanstack/react-query'
 import {useRef, useState} from 'react'
 import {PartialReport} from '../../ReportFlowContext'
 import {CompanyAskConsumerPostalCode} from '../CompanyAskConsumerPostalCode'
-import {CompanyAskConsumerStreet} from '../CompanyAskConsumerStreet'
 import {CompanyAskForeignDetails} from '../CompanyAskForeignDetails'
 import {CompanySearchResultComponent} from '../CompanySearchResultComponent'
 import {CannotFindCompanyWarning} from './CannotFindCompanyWarning'
@@ -99,27 +98,15 @@ export function CompanySmartIdentification({
       {mode === 'cannotFindConfirmed' && (
         <Animate autoScrollTo>
           <div>
-            {companyKind === 'LOCATION' ? (
-              <CompanyAskConsumerStreet
-                onChange={({postalCode, street}) => {
-                  onIdentification({
-                    kind: 'consumerPreciseLocation',
-                    consumerPostalCode: postalCode,
-                    consumerStreet: street,
-                  })
-                }}
-              />
-            ) : (
-              <CompanyAskConsumerPostalCode
-                {...{companyKind}}
-                onChange={postalCode => {
-                  onIdentification({
-                    kind: 'consumerLocation',
-                    consumerPostalCode: postalCode,
-                  })
-                }}
-              />
-            )}
+            <CompanyAskConsumerPostalCode
+              {...{companyKind}}
+              onChange={postalCode => {
+                onIdentification({
+                  kind: 'consumerLocation',
+                  consumerPostalCode: postalCode,
+                })
+              }}
+            />
           </div>
         </Animate>
       )}
