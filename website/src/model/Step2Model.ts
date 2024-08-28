@@ -64,11 +64,6 @@ export type CommonCompanyIdentification =
       kind: 'consumerLocation'
       consumerPostalCode: string
     }
-  | {
-      kind: 'consumerPreciseLocation'
-      consumerPostalCode: string
-      consumerStreet: string
-    }
 
 export type ForeignWebsiteCompanyIdentification = {
   kind: 'foreignWebsiteWithJustCountry'

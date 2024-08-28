@@ -178,7 +178,6 @@ function qualifyStep2ForTracking(
         case 'marketplaceCompanyFound':
           return 'Etablissement identifié'
         case 'consumerLocation':
-        case 'consumerPreciseLocation':
           return 'Etablissement non identifié'
         case 'foreignCompany':
         case 'foreignWebsiteWithJustCountry':

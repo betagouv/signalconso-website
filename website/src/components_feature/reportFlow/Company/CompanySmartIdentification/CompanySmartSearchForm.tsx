@@ -3,6 +3,7 @@ import {GeoArea, ScAutocompleteGeoArea} from '@/components_simple/formInputs/ScA
 import {ScCheckbox} from '@/components_simple/formInputs/ScCheckbox'
 import {ScTextInput} from '@/components_simple/formInputs/ScTextInput'
 import {RequiredFieldsLegend} from '@/components_simple/RequiredFieldsLegend'
+import {appConfig} from '@/core/appConfig'
 import {useI18n} from '@/i18n/I18n'
 import {forwardRef, Ref} from 'react'
 import {Controller, useForm} from 'react-hook-form'
@@ -16,7 +17,7 @@ type RawForm = {
 export type CompanySearchInputs = {input: string; geoArea?: GeoArea}
 
 // it's not functional yet on the backend
-const enableSearchByDepartment = false
+const enableSearchByDepartment = appConfig.useDepartementSearch
 
 type Props = {
   onSubmit: (_: CompanySearchInputs) => void
