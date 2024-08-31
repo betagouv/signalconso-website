@@ -936,7 +936,7 @@ export const fr = {
     countryPlaceholder: 'Ex: Italie',
     identification: 'Identification du pays',
     address: 'Adresse',
-    contactAgreement: 'Accord pour contact',
+    contactAgreement: 'Transmission de ces coordonnées à l’entreprise',
     activateMyAccount: 'Activer mon compte',
     createMyAccount: 'Créer mon compte',
     invalidEmail: 'Veuillez utiliser une adresse email valide et sans accents',
