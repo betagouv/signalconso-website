@@ -50,7 +50,7 @@ export const fr = {
       commentCaMarche: {
         title: 'Comment ça marche ? - SignalConso',
         description:
-          "Vous signalez votre problème en remplissant le formulaire en ligne. Notre équipe contacte l'entreprise afin de l'informer de votre signalement. L'entreprise peut procéder spontanément aux corrections utiles, sans sanction. Votre signalement est enregistré à la répression des fraudes (DGCCRF).",
+          "Découvrez comment signaler facilement des problèmes de consommation avec SignalConso. Suivez notre guide étape par étape.",
       },
       accessibilite: {
         title: 'Accessibilité - SignalConso',
@@ -71,7 +71,7 @@ export const fr = {
       quiSommesNous: {
         title: 'Qui sommes-nous ? - SignalConso',
         description:
-          "SignalConso est un service proposé par la DGCCRF (Direction Générale de la Concurrence, de la Consommation et de la Répression des Fraudes) au travers d'une Startup d’État. Il permet à la fois de comprendre ses droits en tant que consommateurs et d’être aidé pour les faire respecter.",
+          "Découvrez SignalConso, notre mission et notre engagement envers la protection des consommateurs. Apprenez-en plus sur notre équipe et notre fonctionnement.",
       },
       aide: {
         title: 'Aide - SignalConso',
@@ -100,7 +100,7 @@ export const fr = {
       index: {
         title: 'SignalConso, un service public pour les consommateurs',
         description:
-          "Signalez un problème au commerçant (magasins, commerces de proximité, cafés et restaurants...) et à la répression des fraudes : pratique d'hygiène, nourriture / boissons, matériel / objet, prix / paiement, publicité, services associés à l'achat.",
+          "Signalez des problèmes de consommation et aidez à améliorer la protection des consommateurs en informant la répression des fraudes.",
       },
       outils: {
         title: 'Outils à usage interne - SignalConso',
@@ -116,7 +116,7 @@ export const fr = {
       },
       actualites: {
         title: 'Actualités - SignalConso',
-        description: 'Actualités et nouveautés du site SignalConso et de la répression des fraudes',
+        description: 'Restez informé des dernières actualités grâce à SignalConso. Suivez les initiatives de protection des consommateurs et les nouvelles réglementations.',
       },
       avis: {
         title: 'Donnez votre avis - SignalConso',
