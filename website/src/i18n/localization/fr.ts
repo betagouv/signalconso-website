@@ -50,7 +50,7 @@ export const fr = {
       commentCaMarche: {
         title: 'Comment ça marche ? - SignalConso',
         description:
-          "Découvrez comment signaler facilement des problèmes de consommation avec SignalConso. Suivez notre guide étape par étape.",
+          'Découvrez comment signaler facilement des problèmes de consommation avec SignalConso. Suivez notre guide étape par étape.',
       },
       accessibilite: {
         title: 'Accessibilité - SignalConso',
@@ -71,7 +71,7 @@ export const fr = {
       quiSommesNous: {
         title: 'Qui sommes-nous ? - SignalConso',
         description:
-          "Découvrez SignalConso, notre mission et notre engagement envers la protection des consommateurs. Apprenez-en plus sur notre équipe et notre fonctionnement.",
+          'Découvrez SignalConso, notre mission et notre engagement envers la protection des consommateurs. Apprenez-en plus sur notre équipe et notre fonctionnement.',
       },
       aide: {
         title: 'Aide - SignalConso',
@@ -100,7 +100,7 @@ export const fr = {
       index: {
         title: 'SignalConso, un service public pour les consommateurs',
         description:
-          "Signalez des problèmes de consommation et aidez à améliorer la protection des consommateurs en informant la répression des fraudes.",
+          'Signalez des problèmes de consommation et aidez à améliorer la protection des consommateurs en informant la répression des fraudes.',
       },
       outils: {
         title: 'Outils à usage interne - SignalConso',
@@ -116,7 +116,8 @@ export const fr = {
       },
       actualites: {
         title: 'Actualités - SignalConso',
-        description: 'Restez informé des dernières actualités grâce à SignalConso. Suivez les initiatives de protection des consommateurs et les nouvelles réglementations.',
+        description:
+          'Restez informé des dernières actualités grâce à SignalConso. Suivez les initiatives de protection des consommateurs et les nouvelles réglementations.',
       },
       avis: {
         title: 'Donnez votre avis - SignalConso',
