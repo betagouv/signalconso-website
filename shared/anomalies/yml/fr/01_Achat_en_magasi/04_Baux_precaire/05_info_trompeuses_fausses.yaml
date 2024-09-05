@@ -1,7 +1,0 @@
-title: Le vendeur mettait en avant des informations trompeuses ou fausses
-desc: 'Exemple : réductions fictives, allégation environnementale ou origine géographique mensongère …'
-detailInputs:
-  customimport: _imports/detailInputs/baux-precaire.yaml
-attachmentDesc : >-
-  Ajouter une pièce jointe (par exemple : l’invitation personnel, le contrat, le bon de commande…) pour aider les services administratifs.
-  Vous ne devez pas communiquer de données sensibles (données bancaires ou médicales).

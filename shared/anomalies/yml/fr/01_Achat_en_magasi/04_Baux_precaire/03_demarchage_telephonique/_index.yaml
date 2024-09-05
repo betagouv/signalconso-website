@@ -1,9 +1,0 @@
-title: Démarchage téléphonique
-desc: 'Exemple : achat de draps, produits d’entretien'
-companyKind: PHONE
-ccrfCode:
-  - '227'
-  - 23E
-reponseconsoCode: '221'
-tags:
-  - DemarchageTelephonique

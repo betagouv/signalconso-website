@@ -1,7 +1,0 @@
-title: Le vendeur ne m’a pas fourni tous les documents et informations obligatoires au moment de la vente
-desc: 'Exemple : défaut d’affichage des prix, pas de contrat, pas de facture, aucune information sur le délai de livraison ou la disponibilité du produit …'
-detailInputs:
-  customimport: _imports/detailInputs/baux-precaire.yaml
-attachmentDesc : >-
-  Ajouter une pièce jointe (par exemple : l’invitation personnel, le contrat, le bon de commande…) pour aider les services administratifs.
-  Vous ne devez pas communiquer de données sensibles (données bancaires ou médicales).
