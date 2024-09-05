@@ -1,0 +1,9 @@
+title: J'ai un problème avec le bien que je loue ou la copropriété dans laquelle il se trouve
+desc: >-
+  Exemple : Ascenseur en panne, présence de nuisibles ou de parasites...
+blockingInfo:
+  title: Oups nous ne pouvons pas traiter votre signalement.
+  content: >-    
+    <br> S'il s'agit d'un signalement concernant un logement non décent (santé ou sécurité mise en danger, équipement essentiel manquant, présence de parasites...), nous vous invitons à utiliser le site dédié:  
+    <a href="https://histologe.beta.gouv.fr/signalement" target="_blank">histologe</a>
+  notAFraudMessage: true
