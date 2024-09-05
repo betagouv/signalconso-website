@@ -1,6 +1,0 @@
-title: Objet
-desc: 'Exemple : jouet, électroménager, vêtement, savon, vaisselle, meuble'
-tags:
-  - ProduitIndustriel
-subcategories:
-  customimport: _imports/subcategories/objet

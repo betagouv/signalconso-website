@@ -1,5 +1,7 @@
 title: >-
   Un produit emballé par le fabricant comme une boîte, un paquet, une bouteille
+tags:
+  - ReponseConso
 desc: La quantité est directement imprimée sur l'emballage par le fabricant
 detailInputs:
   - label: >-
