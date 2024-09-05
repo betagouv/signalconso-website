@@ -1,0 +1,12 @@
+title: 'J’ai bénéficié de remises conséquentes sur le prix des produits'
+desc: 'Les vendeurs m’ont accordé plusieurs remises successives d’un montant important et un bon d’achat valables uniquement le jour même.'
+detailInputs:
+  - label: Date de l'achat ou de la visite dans le magasin
+    type: DATE
+    defaultValue: SYSDATE
+  - label: Adresse précise du magasin (numéro, nom de rue, code postal et nom de la ville)
+    type: TEXT
+    placeholder: Nom ou type de produit
+  - label: Description
+    type: TEXTAREA
+fileLabel: Invitation personnelle / le bon de commande / fiche technique du produit / un devis manuscrit / facture / crédit associé
