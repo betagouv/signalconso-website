@@ -114,7 +114,7 @@ export const SuiviEtViePrivee = ({params}: any) => {
 
       <iframe
         className="optout"
-        src={`https://stats.data.gouv.fr/index.php?module=CoreAdminHome&action=optOut&language=${params.lang}&backgroundColor=&fontColor=#212529&fontSize=16px&fontFamily=Source%20Sans%20Pro`}
+        src={`https://stats.beta.gouv.fr/index.php?module=CoreAdminHome&action=optOut&language=${params.lang}&backgroundColor=&fontColor=#212529&fontSize=16px&fontFamily=Source%20Sans%20Pro`}
       />
       <p>
         {m.suiviEtViePrivee.plusInfosGestionCookies}{' '}
