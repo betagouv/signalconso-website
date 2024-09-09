@@ -8,7 +8,7 @@ import {notFound} from 'next/navigation'
 
 const bloctel = 'https://www.bloctel.gouv.fr/'
 
-export function DemarchageTelephoniquePage(props: PageComponentProps) {
+export function DemarchageAbusifPage(props: PageComponentProps) {
   const lang = props.params.lang
   if (lang !== 'fr') {
     return notFound()

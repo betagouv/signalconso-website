@@ -144,7 +144,7 @@ export const fr = {
         title: "Signaler un cas d'obsolescence programmée",
         description: 'Votre appareil a une durée de vie qui vous semble trop courte, indice de réparabilité manquant, ...',
       },
-      demarchageTelephonique: {
+      demarchageAbusif: {
         title: 'Démarchage téléphonique abusif',
         description: 'Signaler une entreprise qui vous appelle sans respecter Bloctel, ou hors des horaires autorisés',
       },
@@ -577,7 +577,7 @@ export const fr = {
       telecomResolutionTips: "Conseils pour résolution d'un problème individuel lié au télécom (litige)",
       obligationFibre: 'Faire un signalement pour une migration forcée vers la fibre optique',
       obsolescencePage: 'Faire un signalement pour un appareil dont la durée de vie vous semble trop courte',
-      demarchageTelephonique: 'Faire un signalement pour un démarchage téléphonique abusif (malgré Bloctel, trop fréquent, etc.)',
+      demarchageAbusif: 'Faire un signalement pour un démarchage téléphonique abusif (malgré Bloctel, trop fréquent, etc.)',
       intoxAlimentaire: 'Faire un signalement pour une intoxication alimentaire',
       signalInfluenceur: 'Faire un signalement sur un influenceur',
       reportIncidentSection: "Dépôt d'un signalement",
