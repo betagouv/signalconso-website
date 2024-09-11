@@ -1,5 +1,4 @@
 import {Animate} from '@/components_simple/Animate'
-import {RequiredFieldsLegend} from '@/components_simple/RequiredFieldsLegend'
 import {BtnNextSubmit} from '@/components_simple/buttons/Buttons'
 import {ScAutocompleteCountry} from '@/components_simple/formInputs/ScAutocompleteCountry'
 import {ScAutocompletePostcode} from '@/components_simple/formInputs/ScAutocompletePostcode'
@@ -52,7 +51,6 @@ export const CompanyAskForeignDetails = ({onSubmit, reportTransmittableToPro}: P
             </ul>
           </ScAlert>
         </div>
-        <RequiredFieldsLegend />
         <form onSubmit={handleSubmit(onSubmit)}>
           <div>
             <ScTextInput
@@ -64,6 +62,7 @@ export const CompanyAskForeignDetails = ({onSubmit, reportTransmittableToPro}: P
               error={!!errors.name}
               helperText={errors.name?.message ?? ''}
               placeholder={m.reportedCompanyNamePlaceholder}
+              showRequiredAsterisk={false}
             />
             <Controller
               name="country"
@@ -88,6 +87,7 @@ export const CompanyAskForeignDetails = ({onSubmit, reportTransmittableToPro}: P
                   {...{onChange, onBlur, name, value}}
                   error={!!error}
                   helperText={error?.message}
+                  showRequiredAsterisk={false}
                 />
               )}
             />

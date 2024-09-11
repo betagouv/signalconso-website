@@ -2,7 +2,6 @@ import {ButtonWithLoader} from '@/components_simple/buttons/Buttons'
 import {GeoArea, ScAutocompleteGeoArea} from '@/components_simple/formInputs/ScAutocompleteGeoArea'
 import {ScCheckbox} from '@/components_simple/formInputs/ScCheckbox'
 import {ScTextInput} from '@/components_simple/formInputs/ScTextInput'
-import {RequiredFieldsLegend} from '@/components_simple/RequiredFieldsLegend'
 import {appConfig} from '@/core/appConfig'
 import {useI18n} from '@/i18n/I18n'
 import {forwardRef, Ref} from 'react'
@@ -37,7 +36,7 @@ export const CompanySmartSearchForm = forwardRef((props: Props, ref: Ref<HTMLFor
   const restrictToGeoArea = watch('restrictToGeoArea')
   return (
     <form onSubmit={handleSubmit(form => onSubmit(transformRawForm(form)))} {...{ref}}>
-      <RequiredFieldsLegend />
+      {/* <RequiredFieldsLegend /> */}
       <ScTextInput
         {...register('input', {
           required: {value: true, message: m.required},
@@ -45,6 +44,7 @@ export const CompanySmartSearchForm = forwardRef((props: Props, ref: Ref<HTMLFor
         error={!!errors.input}
         helperText={errors.input?.message}
         required
+        showRequiredAsterisk={false}
         desc={m.frenchCompaniesOnly}
         label={
           <span>

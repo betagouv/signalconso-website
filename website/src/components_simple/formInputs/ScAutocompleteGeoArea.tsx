@@ -16,6 +16,7 @@ export type ScAutocompleteGeoAreaProps = {
   name: string
   error: boolean
   helperText?: string
+  showRequiredAsterisk?: boolean
 }
 
 export type GeoArea =
