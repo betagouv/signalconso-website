@@ -1,5 +1,4 @@
 import {Animate} from '@/components_simple/Animate'
-import {RequiredFieldsLegend} from '@/components_simple/RequiredFieldsLegend'
 import {BtnNextSubmit} from '@/components_simple/buttons/Buttons'
 import {ScAutocompletePostcode} from '@/components_simple/formInputs/ScAutocompletePostcode'
 import {useI18n} from '@/i18n/I18n'
@@ -27,7 +26,6 @@ export const CompanyAskConsumerPostalCode = ({value, onChange, companyKind}: Pro
   return (
     <Animate>
       <div id="CompanyAskConsumerPostalCode">
-        <RequiredFieldsLegend />
         <form onSubmit={handleSubmit(_ => onChange(_.postalCode))}>
           <Controller
             control={control}
@@ -41,6 +39,7 @@ export const CompanyAskConsumerPostalCode = ({value, onChange, companyKind}: Pro
                 {...{onChange, onBlur, name, value}}
                 error={!!error}
                 helperText={error?.message}
+                showRequiredAsterisk={false}
               />
             )}
           />
