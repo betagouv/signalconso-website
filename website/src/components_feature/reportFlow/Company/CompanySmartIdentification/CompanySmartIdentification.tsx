@@ -70,7 +70,12 @@ export function CompanySmartIdentification({
           )}
           <div className="flex flex-col items-end gap-2">
             <div className="flex flex-col">
-              <Button onClick={() => setMode('cannotFind')} priority="tertiary no outline" iconId="ri-arrow-right-line">
+              <Button
+                onClick={() => setMode('cannotFind')}
+                priority="tertiary no outline"
+                iconId="ri-arrow-right-line"
+                className="text-left"
+              >
                 {m.cantFindCompany}
               </Button>
               <Button onClick={() => setMode('foreign')} priority="tertiary no outline" iconId="ri-arrow-right-line">

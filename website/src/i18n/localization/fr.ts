@@ -1109,8 +1109,8 @@ export const fr = {
     identifyBy_noneDesc: `Si vous ne parvenez pas à identifier l'entreprise, vous pouvez continuer votre signalement.
     Il ne sera pas transmis à l'entreprise, sauf si cette dernière est française et identifiable par l'équipe de SignalConso.
     Dans tous les cas les enquêteurs de la répression des fraudes en seront informés.`,
-    identifyBy_nameOrIdentity: `Nom ou identifiant SIRET/SIREN de l'entreprise`,
-    identifyBy_nameOrIdentity_ex: `Ex : 83350861700010, boulangerie dupont, ...`,
+    identifyBy_nameOrIdentity: `Nom ou n° SIRET/SIREN`,
+    identifyBy_nameOrIdentity_ex: `Ex : boulangerie dupont, 83350861700010, ...`,
     frenchCompaniesOnly: 'Entreprises françaises uniquement',
     couldYouPrecise: `Pouvez-vous préciser ?`,
     cantIdentifyCompany: `Votre code postal nous servira à rediriger votre signalement vers le bon service.`,
@@ -1166,7 +1166,7 @@ export const fr = {
     governmentCompany: 'Administration publique',
     siretNumber: 'Numéro SIRET',
     cannotReportGovernmentCompany: 'Impossible de signaler une administration publique.',
-    selectCompanyDesc: `Si l'entreprise n'est pas celle recherchée, vous pouvez modifier votre recherche.`,
+    selectCompanyDesc: `S'il n'y a pas celle attendue, vous pouvez modifier votre recherche.`,
     isAFrenchCompany: `Est-ce que l'entreprise est en France ?`,
     noItsForeign: `Non, elle est à l'étranger`,
     companyHowToFindCountry: `Comment retrouver le pays d'une entreprise ?`,
