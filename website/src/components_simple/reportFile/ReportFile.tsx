@@ -1,5 +1,4 @@
 import {useApiClients} from '@/context/ApiClientsContext'
-import {useI18n} from '@/i18n/I18n'
 import {UploadedFile} from '../../model/UploadedFile'
 import {ReportFileDeleteButton} from './ReportFileDeleteButton'
 import {FileType, extensionToType} from './reportFileConfig'
@@ -13,7 +12,6 @@ export interface ReportFileProps {
 export const ReportFile = ({file, onRemove}: ReportFileProps) => {
   const fileType = extensionToType(file.filename)
   const {signalConsoApiClient} = useApiClients()
-  const {m} = useI18n()
 
   const fileUrl = signalConsoApiClient.getDocumentLink(file)
 

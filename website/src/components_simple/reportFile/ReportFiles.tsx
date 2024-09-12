@@ -8,7 +8,9 @@ import {compressFile} from '../../utils/compressFile'
 import {ReportFile} from './ReportFile'
 import {ADD_FILE_HELP_ID, ReportFileAdd} from './ReportFileAdd'
 import {extractFileExt} from './reportFileConfig'
-import {ApiError} from '@/clients/BaseApiClient'
+import {UploadingFIle} from '@/model/UploadingFile'
+import {v4 as uuidv4} from 'uuid'
+import {UploadingReportFile} from '@/components_simple/reportFile/UploadingReportFile'
 
 export interface ReportFilesProps {
   files: UploadedFile[]
@@ -25,10 +27,12 @@ const preventDefaultHandler = (e: React.DragEvent<HTMLElement>) => {
 
 export const ReportFiles = ({fileOrigin, files, onRemoveFile, onNewFile, tooManyFilesError}: ReportFilesProps) => {
   const [innerFiles, setInnerFiles] = useState<UploadedFile[]>([])
+  const [uploadingFiles, setUploadingFiles] = useState<UploadingFIle[]>([])
   const {m} = useI18n()
   const [isDraggingOver, setIsDraggingOver] = useState(false)
   useEffect(() => {
     setInnerFiles(files)
+    setUploadingFiles(prev => prev.filter(uploadingFile => files.every(file => file.id !== uploadingFile.id)))
   }, [files])
 
   const {signalConsoApiClient} = useApiClients()
@@ -59,15 +63,29 @@ export const ReportFiles = ({fileOrigin, files, onRemoveFile, onNewFile, tooMany
       toastError(m.invalidCount(max, max - innerFiles.length))
       return
     } else {
+      const next: UploadingFIle[] = []
       for (let fileIndex = 0; fileIndex <= fileCount; fileIndex++) {
         if (files && files[fileIndex]) {
-          await uploadFile(files[fileIndex])
+          const uuid = uuidv4()
+          const controller = new AbortController()
+          next.push({
+            id: uuid,
+            filename: files[fileIndex].name,
+            progress: 0,
+            controller: controller,
+          })
+        }
+      }
+      setUploadingFiles(prev => [...prev, ...next])
+      for (let fileIndex = 0; fileIndex <= fileCount; fileIndex++) {
+        if (files && files[fileIndex]) {
+          await uploadFile(files[fileIndex], next[fileIndex])
         }
       }
     }
   }
 
-  const uploadFile = async (file: File) => {
+  const uploadFile = async (file: File, uploadingFile: UploadingFIle) => {
     if (file.size === 0) {
       toastError(m.emptyFile)
       return
@@ -95,7 +113,23 @@ export const ReportFiles = ({fileOrigin, files, onRemoveFile, onNewFile, tooMany
     try {
       const f = await fileToUpload
       const compressedFile = await compressFile(f)
-      const uploadedFile = await signalConsoApiClient.uploadDocument(compressedFile, fileOrigin)
+      const uploadedFile = await signalConsoApiClient.uploadDocument(
+        compressedFile,
+        fileOrigin,
+        uploadingFile.id,
+        percent => {
+          setUploadingFiles(prev => {
+            let filesCopy = [...prev]
+            let fileIndex = filesCopy.findIndex(el => el.id === uploadingFile.id)
+            if (fileIndex !== -1) {
+              filesCopy[fileIndex].progress = percent
+            }
+
+            return filesCopy
+          })
+        },
+        uploadingFile.controller.signal,
+      )
       newFile(uploadedFile)
     } catch (e: any) {
       console.warn('failed to upload file', e)
@@ -108,6 +142,7 @@ export const ReportFiles = ({fileOrigin, files, onRemoveFile, onNewFile, tooMany
   const newFile = (f: UploadedFile) => {
     onNewFile(f)
     setInnerFiles(prev => [f, ...prev])
+    setUploadingFiles(prev => prev.filter(pf => pf.id !== f.id))
   }
 
   const removeFile = (f: UploadedFile) => {
@@ -115,8 +150,13 @@ export const ReportFiles = ({fileOrigin, files, onRemoveFile, onNewFile, tooMany
     setInnerFiles(prev => prev.filter(_ => _.id !== f.id))
   }
 
+  const cancelFile = (f: UploadingFIle) => {
+    f.controller.abort()
+    setUploadingFiles(prev => prev.filter(pf => pf.id !== f.id))
+  }
+
   const thumbnails = (
-    <ul className="flex flex-wrap items-center justify-center mt-4 list-none gap-4">
+    <ul className="flex flex-wrap justify-center mt-4 list-none gap-4">
       {innerFiles
         .filter(_ => _.origin === fileOrigin)
         .map(_ => (
@@ -124,6 +164,11 @@ export const ReportFiles = ({fileOrigin, files, onRemoveFile, onNewFile, tooMany
             <ReportFile file={_} onRemove={removeFile} />
           </li>
         ))}
+      {uploadingFiles.map(f => (
+        <li key={f.id}>
+          <UploadingReportFile fileName={f.filename} percent={f.progress} onRemove={() => cancelFile(f)} />
+        </li>
+      ))}
     </ul>
   )
 
@@ -143,7 +188,7 @@ export const ReportFiles = ({fileOrigin, files, onRemoveFile, onNewFile, tooMany
   }
 
   const max = appConfig.maxNumberOfAttachments
-  const nothingYet = innerFiles.length <= 0
+  const nothingYet = innerFiles.length <= 0 && uploadingFiles.length <= 0
   const maxReached = innerFiles.length === max
   // can happen with multiple uploads at once
   const maxExceeded = innerFiles.length > max

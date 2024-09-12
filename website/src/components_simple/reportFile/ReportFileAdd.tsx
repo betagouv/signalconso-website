@@ -18,7 +18,6 @@ interface Props {
 export const ADD_FILE_HELP_ID = 'aide-piece-jointe'
 
 export const ReportFileAdd = ({isUploading, fileOrigin, uploadFile}: Props) => {
-  const [uploading, setUploading] = useState(isUploading)
   const fileInputEl = useRef<HTMLInputElement>(null)
   const {m} = useI18n()
   const openFileSelection = () => {
@@ -28,7 +27,7 @@ export const ReportFileAdd = ({isUploading, fileOrigin, uploadFile}: Props) => {
   return (
     <>
       <Button
-        {...(uploading
+        {...(isUploading
           ? {
               style: {
                 paddingLeft: '14px',
@@ -36,12 +35,12 @@ export const ReportFileAdd = ({isUploading, fileOrigin, uploadFile}: Props) => {
             }
           : {iconId: 'ri-download-2-line'})}
         priority="secondary"
-        disabled={uploading}
+        disabled={isUploading}
         onClick={openFileSelection}
         className=""
         nativeButtonProps={{'aria-describedby': ADD_FILE_HELP_ID}}
       >
-        {uploading && <div className="sc-loader w-4 h-4 mr-2"></div>}
+        {isUploading && <div className="sc-loader w-4 h-4 mr-2"></div>}
         {m.addAttachmentFile}
       </Button>
       <input
