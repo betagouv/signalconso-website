@@ -7,4 +7,4 @@ blockingInfo:
     plus de 1 000 euros. Vous devez trouver un autre moyen de paiement. <br/> Un
     commerçant peut également refuser un paiement en espèces si celui-ci est
     composé de plus de 50 pièces.
-  notAFraudMessage: true
+  reportOutOfScopeMessage: true

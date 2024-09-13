@@ -8,4 +8,4 @@ blockingInfo:
     <br> Les prix doivent être affichés en salle d'attente de manière lisible.
     <br> Vous n'avez pas eu connaissance des prix avant ?
     <br> Faites un signalement à la rubrique "Les prix ne sont pas affichés y compris sur le site internet"
-  notAFraudMessage: true
+  reportOutOfScopeMessage: true

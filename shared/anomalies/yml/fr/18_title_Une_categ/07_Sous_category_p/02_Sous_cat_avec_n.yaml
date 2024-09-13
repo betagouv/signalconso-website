@@ -1,5 +1,5 @@
-title: Sous cat avec "notAFraudMessage" à true
+title: Sous cat avec "reportOutOfScopeMessage" à true
 blockingInfo:
   title: Title du bloc d'information
   content: Content du bloc d'information
-  notAFraudMessage: true
+  reportOutOfScopeMessage: true

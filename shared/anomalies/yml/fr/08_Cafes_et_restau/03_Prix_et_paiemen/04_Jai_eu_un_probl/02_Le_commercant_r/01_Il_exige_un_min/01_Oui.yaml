@@ -7,4 +7,4 @@ blockingInfo:
   content: >-
     Il doit l’indiquer très visiblement au consommateur (affichage à l'entrée du
     magasin ou à la caisse, sur une carte du restaurant...)
-  notAFraudMessage: true
+  reportOutOfScopeMessage: true

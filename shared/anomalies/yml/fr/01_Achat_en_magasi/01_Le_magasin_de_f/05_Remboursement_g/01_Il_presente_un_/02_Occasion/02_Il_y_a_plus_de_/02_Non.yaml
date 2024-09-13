@@ -5,7 +5,7 @@ blockingInfo:
     Votre produit n'est plus couvert par la garantie de base, appelée "garantie
     légale de conformité". La garantie légale de conformité est de 2 ans pour
     tous les produits neufs et de 6 mois pour tous les produits d'occasion.
-  notAFraudMessage: true
+  reportOutOfScopeMessage: true
   questions:
     - question: Vous souhaitez attaquer l'entreprise pour "vices cachés"&#160;?
       desc: >-

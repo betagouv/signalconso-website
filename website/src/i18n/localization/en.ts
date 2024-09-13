@@ -1,5 +1,5 @@
-import {formatDistance, formatDuration as formatDurationFns} from 'date-fns'
 import {AppLang, AppLangs} from './AppLangs'
+import {formatDistance, formatDuration as formatDurationFns} from 'date-fns'
 
 const invalidDate = '-'
 
@@ -828,7 +828,6 @@ export const en = {
     },
     arbo: {
       title: 'Sequence for reporting an issue',
-      notAFraudMessage: 'Although we do believe the issue you experienced was genuine, it was not a case of fraud.',
     },
     yes: 'Yes',
     no: 'No',
@@ -1046,7 +1045,7 @@ export const en = {
     notTransmittableToProConsumerInformation: `Your reports will not be transmitted to the company. It will be read <b>only by Fraud Control</b>.`,
     informationRatingSaved: `Your comments have been recorded, thank you.`,
     informationTitle: `Unfortunately, we are unable to take your report any further.`,
-    informationReportOutOfScope: `Although we do believe the issue you experienced was genuine, it was not a case of fraud.`,
+    informationReportOutOfScope: `Although we do believe the issue you experienced was genuine, your report does not fall within the scope of the DGCCRF's competence.`,
     informationWasUsefull: `Was this information useful to you?`,
     buttonReportProblem: `Report an issue`,
     logoAltSignalconso: `SignalConso Logo / Return to homepage`,

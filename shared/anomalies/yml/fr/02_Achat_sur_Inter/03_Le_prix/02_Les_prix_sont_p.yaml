@@ -1,7 +1,7 @@
 title: Les prix sont plus élevés qu'ailleurs
 blockingInfo:
   title: Les commerçants ont le droit de choisir leurs prix.
-  notAFraudMessage: true
+  reportOutOfScopeMessage: true
   content: >-
     Par contre, les prix doivent être clairement indiqués pour que vous soyez au
     courant avant d'acheter. <br/> Par exemple, il est autorisé de vendre une

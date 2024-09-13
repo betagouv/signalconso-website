@@ -57,7 +57,7 @@ const subcategoryWithInfoWallSpec: ObjectSpec = {
       title: _ => _.ifDefined()?.assertIsString(),
       content: _ => _.ifDefined()?.assertIsString(),
       subTitle: _ => _.ifDefined()?.assertIsString(),
-      notAFraudMessage: _ => _.ifDefined()?.assertIsBoolean(),
+      reportOutOfScopeMessage: _ => _.ifDefined()?.assertIsBoolean(),
       questions: _ =>
         _.ifDefined()?.assertIsArrayWith(action => {
           action.assertIsObjectWith({

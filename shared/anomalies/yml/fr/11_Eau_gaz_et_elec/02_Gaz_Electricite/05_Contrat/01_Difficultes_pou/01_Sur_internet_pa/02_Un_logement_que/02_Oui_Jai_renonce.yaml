@@ -4,4 +4,4 @@ blockingInfo:
   content: >-
     Une fois le délai de rétractation terminé, l'entreprise n'est plus obligée
     d'annuler votre contrat.
-  notAFraudMessage: true
+  reportOutOfScopeMessage: true

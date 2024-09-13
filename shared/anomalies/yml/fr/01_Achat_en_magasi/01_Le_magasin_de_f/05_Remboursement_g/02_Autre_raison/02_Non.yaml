@@ -8,4 +8,4 @@ blockingInfo:
     En effet, dans votre cas, rien n'oblige un commerçant à le faire. <br />Si
     vous annulez un contrat ou un abonnement, vous aurez peut-être des frais
     d'annulation.
-  notAFraudMessage: true
+  reportOutOfScopeMessage: true

@@ -1,4 +1,4 @@
-notAFraudMessage: true
+reportOutOfScopeMessage: true
 content: "Ce problème ne peut pas être signalé sur SignalConso. Mais, la loi oblige votre opérateur à vous informer via un « support durable » (mail ou courrier).
   <br> <br> Mais, la loi oblige votre opérateur à vous informer via un « support durable » (mail ou courrier). Un SMS n’en est pas un « support durable »."
 
