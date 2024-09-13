@@ -1,4 +1,4 @@
-export interface UploadingFIle {
+export interface UploadingFile {
   id: string
   filename: string
   progress: number

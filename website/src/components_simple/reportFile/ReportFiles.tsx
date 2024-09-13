@@ -8,7 +8,7 @@ import {compressFile} from '../../utils/compressFile'
 import {ReportFile} from './ReportFile'
 import {ADD_FILE_HELP_ID, ReportFileAdd} from './ReportFileAdd'
 import {extractFileExt} from './reportFileConfig'
-import {UploadingFIle} from '@/model/UploadingFile'
+import {UploadingFile} from '@/model/UploadingFile'
 import {v4 as uuidv4} from 'uuid'
 import {UploadingReportFile} from '@/components_simple/reportFile/UploadingReportFile'
 
@@ -27,7 +27,7 @@ const preventDefaultHandler = (e: React.DragEvent<HTMLElement>) => {
 
 export const ReportFiles = ({fileOrigin, files, onRemoveFile, onNewFile, tooManyFilesError}: ReportFilesProps) => {
   const [innerFiles, setInnerFiles] = useState<UploadedFile[]>([])
-  const [uploadingFiles, setUploadingFiles] = useState<UploadingFIle[]>([])
+  const [uploadingFiles, setUploadingFiles] = useState<UploadingFile[]>([])
   const {m} = useI18n()
   const [isDraggingOver, setIsDraggingOver] = useState(false)
   useEffect(() => {
@@ -37,7 +37,6 @@ export const ReportFiles = ({fileOrigin, files, onRemoveFile, onNewFile, tooMany
 
   const {signalConsoApiClient} = useApiClients()
   const toastError = useToastError()
-  const [uploading, setUploading] = useState(false)
 
   const heicToJpg = async (file: File): Promise<File> => {
     // heic2any needs to access the 'window' object, which is not available when importing the lib at the top of the file
@@ -63,12 +62,12 @@ export const ReportFiles = ({fileOrigin, files, onRemoveFile, onNewFile, tooMany
       toastError(m.invalidCount(max, max - innerFiles.length))
       return
     } else {
-      const next: UploadingFIle[] = []
+      const filesToUpload: UploadingFile[] = []
       for (let fileIndex = 0; fileIndex <= fileCount; fileIndex++) {
         if (files && files[fileIndex]) {
           const uuid = uuidv4()
           const controller = new AbortController()
-          next.push({
+          filesToUpload.push({
             id: uuid,
             filename: files[fileIndex].name,
             progress: 0,
@@ -76,16 +75,16 @@ export const ReportFiles = ({fileOrigin, files, onRemoveFile, onNewFile, tooMany
           })
         }
       }
-      setUploadingFiles(prev => [...prev, ...next])
+      setUploadingFiles(prev => [...prev, ...filesToUpload])
       for (let fileIndex = 0; fileIndex <= fileCount; fileIndex++) {
         if (files && files[fileIndex]) {
-          await uploadFile(files[fileIndex], next[fileIndex])
+          await uploadFile(files[fileIndex], filesToUpload[fileIndex])
         }
       }
     }
   }
 
-  const uploadFile = async (file: File, uploadingFile: UploadingFIle) => {
+  const uploadFile = async (file: File, uploadingFile: UploadingFile) => {
     if (file.size === 0) {
       toastError(m.emptyFile)
       return
@@ -105,8 +104,6 @@ export const ReportFiles = ({fileOrigin, files, onRemoveFile, onNewFile, tooMany
       toastError(m.invalidFileExt(fileExt))
       return
     }
-
-    setUploading(true)
 
     const fileToUpload = fileExt === 'heic' ? heicToJpg(file) : Promise.resolve(file)
 
@@ -135,7 +132,6 @@ export const ReportFiles = ({fileOrigin, files, onRemoveFile, onNewFile, tooMany
       console.warn('failed to upload file', e)
       toastError(e)
     } finally {
-      setUploading(false)
     }
   }
 
@@ -150,7 +146,7 @@ export const ReportFiles = ({fileOrigin, files, onRemoveFile, onNewFile, tooMany
     setInnerFiles(prev => prev.filter(_ => _.id !== f.id))
   }
 
-  const cancelFile = (f: UploadingFIle) => {
+  const cancelFile = (f: UploadingFile) => {
     f.controller.abort()
     setUploadingFiles(prev => prev.filter(pf => pf.id !== f.id))
   }
@@ -214,7 +210,7 @@ export const ReportFiles = ({fileOrigin, files, onRemoveFile, onNewFile, tooMany
           <>
             {nothingYet && <UploadInvitation />}
             <div className={`text-center ${nothingYet ? 'mb-6' : 'mb-2'}`}>
-              <ReportFileAdd fileOrigin={fileOrigin} isUploading={uploading} uploadFile={handleChange} />
+              <ReportFileAdd fileOrigin={fileOrigin} uploadFile={handleChange} />
             </div>
             <p
               className="mt-2 text-sm mb-1 text-center "
