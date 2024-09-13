@@ -1,5 +1,5 @@
-import {formatDistance, formatDuration as formatDurationFns} from 'date-fns'
 import {AppLang, AppLangs} from './AppLangs'
+import {formatDistance, formatDuration as formatDurationFns} from 'date-fns'
 
 const invalidDate = '-'
 
@@ -835,7 +835,7 @@ export const fr = {
     arbo: {
       title: "Arborescence du dépot d'un signalement",
       notAFraudMessage:
-        'Nous ne doutons pas que vous ayez réellement rencontré un problème mais... il ne s’agit pas d’une fraude.',
+        'Nous ne doutons pas que vous ayez réellement rencontré un problème mais votre signalement ne semble pas concerner un sujet relevant de la compétence de la DGCCRF.',
     },
     yes: 'Oui',
     no: 'Non',
@@ -1054,7 +1054,7 @@ export const fr = {
     notTransmittableToProConsumerInformation: `Votre signalement ne sera pas transmis à l'entreprise. Il sera lu <b>uniquement par la répression des fraudes</b>.`,
     informationRatingSaved: `Votre avis a bien été enregistré, nous vous en remercions.`,
     informationTitle: `Emmh, nous ne pouvons pas traiter votre signalement.`,
-    informationReportOutOfScope: `Nous ne doutons pas que vous ayez réellement rencontré un problème mais... il ne s’agit pas d’une fraude.`,
+    informationReportOutOfScope: `Nous ne doutons pas que vous ayez réellement rencontré un problème mais votre signalement ne semble pas concerner un sujet relevant des compétences de la DGCCRF.`,
     informationWasUsefull: `Est-ce que cette information vous a été utile ?`,
     buttonReportProblem: `Signalez un problème`,
     logoAltSignalconso: `Logo SignalConso / Retour à la page d'accueil`,
