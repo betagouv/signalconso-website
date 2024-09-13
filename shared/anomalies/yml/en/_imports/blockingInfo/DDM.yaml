@@ -1,4 +1,4 @@
-notAFraudMessage: true
+reportOutOfScopeMessage: true
 blockingInfo:
   content:
     Products sold at room temperature such as compotes, chocolate, biscuits or preserves have a date called the minimum durability date (formerly called BBD).

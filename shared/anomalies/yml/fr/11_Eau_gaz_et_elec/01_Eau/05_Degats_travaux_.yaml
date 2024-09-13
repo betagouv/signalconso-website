@@ -24,4 +24,4 @@ blockingInfo:
         pas de solution, vous pouvez saisir le médiateur de l'eau<br><a
         href="https://www.mediation-eau.fr/" target="_blank"
         />https://www.mediation-eau.fr/</a>
-  notAFraudMessage: true
+  reportOutOfScopeMessage: true

@@ -4,4 +4,4 @@ blockingInfo:
   content: >-
     Professionals have the right to choose their prices. 
     <br /> However, the prices must be clearly indicated so that you are aware before to buy or order.
-  notAFraudMessage: true
+  reportOutOfScopeMessage: true

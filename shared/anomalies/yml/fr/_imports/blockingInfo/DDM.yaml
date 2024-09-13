@@ -1,4 +1,4 @@
-notAFraudMessage: true
+reportOutOfScopeMessage: true
 blockingInfo:
   content:
     Les produits vendus à température ambiante comme des compotes, du chocolat, des biscuits ou des conserves ont une date qu'on appelle date de durabilité minimale (anciennement appelée DLUO).

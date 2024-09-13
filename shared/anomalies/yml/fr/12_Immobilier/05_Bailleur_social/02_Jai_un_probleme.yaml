@@ -6,4 +6,4 @@ blockingInfo:
   content: >-    
     <br> S'il s'agit d'un signalement concernant un logement non décent (santé ou sécurité mise en danger, équipement essentiel manquant, présence de parasites...), nous vous invitons à utiliser le site dédié:  
     <a href="https://histologe.beta.gouv.fr/signalement" target="_blank">histologe</a>
-  notAFraudMessage: true
+  reportOutOfScopeMessage: true

@@ -5,4 +5,4 @@ blockingInfo:
   content: >-
     Vous avez signé le contrat chez l'entreprise. Il n'y a pas de délai de
     rétractation dans ce cas.
-  notAFraudMessage: true
+  reportOutOfScopeMessage: true
