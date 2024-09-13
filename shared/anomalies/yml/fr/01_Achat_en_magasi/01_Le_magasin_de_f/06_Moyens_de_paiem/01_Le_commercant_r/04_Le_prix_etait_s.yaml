@@ -4,4 +4,4 @@ blockingInfo:
     Il est interdit pour un commerçant d'accepter des paiements en espèces de
     plus de 1 000 euros. <br/> Un commerçant peut refuser un paiement en espèces
     si celui-ci est composé de plus de 50 pièces.
-  notAFraudMessage: true
+  reportOutOfScopeMessage: true

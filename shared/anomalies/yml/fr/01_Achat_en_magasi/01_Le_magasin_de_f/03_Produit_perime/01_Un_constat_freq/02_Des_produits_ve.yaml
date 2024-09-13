@@ -10,7 +10,7 @@ blockingInfo:
     seulement une indication. Au-delà de celle-ci, l'aliment peut perdre
     certaines de ses qualités gustatives ou nutritionnelles mais peut être
     consommé sans danger pour la santé. Il n'est pas nécessaire de le jeter.
-  notAFraudMessage: true
+  reportOutOfScopeMessage: true
   questions:
     - question: Vous souhaitez néanmoins faire part de votre mécontentement&#160;?
       answer: >-

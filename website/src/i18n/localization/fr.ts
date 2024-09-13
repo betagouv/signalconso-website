@@ -834,8 +834,6 @@ export const fr = {
     },
     arbo: {
       title: "Arborescence du dépot d'un signalement",
-      notAFraudMessage:
-        'Nous ne doutons pas que vous ayez réellement rencontré un problème mais votre signalement ne semble pas concerner un sujet relevant de la compétence de la DGCCRF.',
     },
     yes: 'Oui',
     no: 'Non',

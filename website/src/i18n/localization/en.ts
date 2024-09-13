@@ -828,7 +828,6 @@ export const en = {
     },
     arbo: {
       title: 'Sequence for reporting an issue',
-      notAFraudMessage: "Although we do believe the issue you experienced was genuine, your report does not fall within the scope of the DGCCRF's competence."
     },
     yes: 'Yes',
     no: 'No',

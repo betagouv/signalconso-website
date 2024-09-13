@@ -11,4 +11,4 @@ blockingInfo:
     également être suffisant pour éviter les contaminations. <br> Vous pouvez
     directement discuter avec le gérant pour lui faire part de votre
     questionnement.
-  notAFraudMessage: true
+  reportOutOfScopeMessage: true
