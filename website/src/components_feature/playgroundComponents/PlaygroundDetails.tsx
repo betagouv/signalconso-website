@@ -125,8 +125,11 @@ export const PlaygroundDetails = () => {
       <DetailsInner
         inputs={[...chosenInputs]}
         transmissionStatus={'NOT_TRANSMITTABLE'}
-        onSubmit={(res, files) => {
+        saveChange={(res, files) => {
           setResultInputs(parseReportDetails(res, chosenInputs))
+          setResultFiles(files)
+        }}
+        saveFiles={( files) => {
           setResultFiles(files)
         }}
         stepNavigation={dummyStepNavigation}

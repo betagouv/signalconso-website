@@ -10,7 +10,7 @@ import {useI18n} from '@/i18n/I18n'
 import {DetailInputValues2} from '@/model/Report'
 import {fnSwitch} from '@/utils/FnSwitch'
 import {last} from '@/utils/lodashNamedExport'
-import {useEffect, useMemo, useState} from 'react'
+import {useCallback, useEffect, useMemo, useState} from 'react'
 import {useForm} from 'react-hook-form'
 import {DetailInput, ReportTag, StandardSubcategory} from 'shared/anomalies/Anomaly'
 import {ConsumerWish, TransmissionStatus} from '../../../model/Report'
@@ -31,7 +31,7 @@ export class SpecifyFormUtils {
 
 export const isSpecifyInputName = (name: string) => name.includes('_specify')
 
-export const Details = ({stepNavigation}: {stepNavigation: StepNavigation}) => {
+export const Details = ({stepNavigation}: { stepNavigation: StepNavigation }) => {
   const _reportFlow = useReportFlowContext()
   const {currentLang} = useI18n()
   const report = _reportFlow.report
@@ -54,10 +54,28 @@ export const Details = ({stepNavigation}: {stepNavigation: StepNavigation}) => {
       attachmentDesc={lastSubcategory.attachmentDesc}
       employeeConsumer={report.step1.employeeConsumer}
       tags={getTags(report)}
-      onSubmit={(detailInputValues, uploadedFiles) => {
+      saveChange={(detailInputValues, uploadedFiles, goToNextStep) => {
+        console.log("to be saved")
+        console.log(detailInputValues)
+        console.log("to be saved")
         _reportFlow.setReport(_ => ({..._, step3: {uploadedFiles, details: detailInputValues}}))
-        _reportFlow.sendReportEvent(stepNavigation.currentStep)
-        stepNavigation.next()
+        if (goToNextStep) {
+          _reportFlow.sendReportEvent(stepNavigation.currentStep)
+          stepNavigation.next()
+        }
+      }}
+      saveFiles={(uploadedFiles?: UploadedFile[]) => {
+        console.log("files to be saved")
+        console.log(uploadedFiles)
+        console.log("files to be saved")
+        _reportFlow.setReport(_ => ({
+          ..._,
+          step3: {
+            details: _.step3?.details || {}, // If step3 or details is undefined, use an empty object
+            uploadedFiles // Set uploadedFiles
+          }
+        }));
+
       }}
       {...{stepNavigation}}
       consumerWish={report.step1.consumerWish}
@@ -66,20 +84,22 @@ export const Details = ({stepNavigation}: {stepNavigation: StepNavigation}) => {
 }
 
 export const DetailsInner = ({
-  initialValues,
-  initialFiles,
-  inputs,
-  fileLabel,
-  attachmentDesc,
-  tags,
-  transmissionStatus,
-  employeeConsumer,
-  onSubmit,
-  stepNavigation,
-  consumerWish,
-}: {
+                               initialValues,
+                               initialFiles,
+                               inputs,
+                               fileLabel,
+                               attachmentDesc,
+                               tags,
+                               transmissionStatus,
+                               employeeConsumer,
+                               saveChange,
+                               saveFiles,
+                               stepNavigation,
+                               consumerWish,
+                             }: {
   inputs: DetailInput[]
-  onSubmit: (values: DetailInputValues2, files?: UploadedFile[]) => void
+  saveChange: (values: DetailInputValues2, files?: UploadedFile[], goToNextStep?: boolean) => void,
+  saveFiles: (uploadedFiles?: UploadedFile[]) => void,
   transmissionStatus: TransmissionStatus
   initialValues?: DetailInputValues2
   initialFiles?: UploadedFile[]
@@ -106,9 +126,11 @@ export const DetailsInner = ({
     control,
     handleSubmit,
     register,
-    formState: {errors},
+    formState: {errors, isValid, dirtyFields},
     watch,
+    trigger,
   } = useForm<DetailInputValues2>({
+    mode: "onChange",
     defaultValues,
   })
 
@@ -117,47 +139,74 @@ export const DetailsInner = ({
   }, [initialFiles])
 
   const displayAlertProduitDangereux = (tags ?? []).includes('ProduitDangereux')
+  const watchFields = watch();
+
+
+
+  const validateFields = useCallback(async () => {
+    const modifiedData: DetailInputValues2 = {};
+
+    // Loop through dirty fields
+    for (const field of Object.keys(dirtyFields)) {
+      // Validate only the dirty field
+      const isValid = await trigger(field); // Await validation of the field
+      if (isValid) {
+        modifiedData[field] = watchFields[field];
+        console.log({ ...initialValues, ...modifiedData });
+        saveChange({ ...initialValues, ...modifiedData }, uploadedFiles, false);
+      }
+      }
+    }, [dirtyFields, watchFields, trigger, initialValues, uploadedFiles]);
+
+  useEffect(() => {
+
+    const interval = setInterval(() => {
+      validateFields(); // Call the memoized function
+    }, 5000); // Runs the validation every 5 seconds
+
+    return () => clearInterval(interval); // Clean up the interval
+  }, [validateFields]);
 
   return (
     <>
       <Animate autoScrollTo={false}>
         <div>
-          {displayAlertProduitDangereux && <DetailsAlertProduitDangereux />}
+          {displayAlertProduitDangereux && <DetailsAlertProduitDangereux/>}
 
           <FriendlyHelpText>
             {fnSwitch(transmissionStatus, {
               ['WILL_BE_TRANSMITTED']: (
                 <>
-                  <p className="mb-0" dangerouslySetInnerHTML={{__html: m.detailsTextAreaWillBeTransmitted}} />
+                  <p className="mb-0" dangerouslySetInnerHTML={{__html: m.detailsTextAreaWillBeTransmitted}}/>
                   {consumerWish !== 'fixContractualDispute' && (
-                    <p className="mb-0" dangerouslySetInnerHTML={{__html: m.detailsTextAreaTransmittableAnonymous}} />
+                    <p className="mb-0" dangerouslySetInnerHTML={{__html: m.detailsTextAreaTransmittableAnonymous}}/>
                   )}
                 </>
               ),
               ['MAY_BE_TRANSMITTED']: (
                 <>
-                  <p className="mb-0" dangerouslySetInnerHTML={{__html: m.detailsTextAreaMayBeTransmitted}} />
+                  <p className="mb-0" dangerouslySetInnerHTML={{__html: m.detailsTextAreaMayBeTransmitted}}/>
                   {consumerWish !== 'fixContractualDispute' && (
-                    <p className="mb-0" dangerouslySetInnerHTML={{__html: m.detailsTextAreaTransmittableAnonymous}} />
+                    <p className="mb-0" dangerouslySetInnerHTML={{__html: m.detailsTextAreaTransmittableAnonymous}}/>
                   )}
                 </>
               ),
               ['CANNOT_BE_TRANSMITTED']: (
                 <>
-                  <p className="mb-0" dangerouslySetInnerHTML={{__html: m.detailsTextAreaCannotBeTransmitted}} />
+                  <p className="mb-0" dangerouslySetInnerHTML={{__html: m.detailsTextAreaCannotBeTransmitted}}/>
                 </>
               ),
               ['NOT_TRANSMITTABLE']: (
                 <>
-                  <p className="mb-0" dangerouslySetInnerHTML={{__html: m.detailsTextAreaNotTransmittable}} />
+                  <p className="mb-0" dangerouslySetInnerHTML={{__html: m.detailsTextAreaNotTransmittable}}/>
                   {employeeConsumer && (
-                    <p className="mb-0" dangerouslySetInnerHTML={{__html: m.detailsTextAreaEmployeeConsumer}} />
+                    <p className="mb-0" dangerouslySetInnerHTML={{__html: m.detailsTextAreaEmployeeConsumer}}/>
                   )}
                 </>
               ),
             })}
           </FriendlyHelpText>
-          <RequiredFieldsLegend />
+          <RequiredFieldsLegend/>
           {inputs.map((input, inputIndex) => (
             <DetailsInputRenderByType
               key={inputIndex}
@@ -179,9 +228,10 @@ export const DetailsInner = ({
           {transmissionStatus !== 'NOT_TRANSMITTABLE' ? (
             <>
               <FriendlyHelpText>
-                <p className="mb-0" dangerouslySetInnerHTML={{__html: attachmentDesc ?? m.attachmentsDesc2}} />
+                <p className="mb-0" dangerouslySetInnerHTML={{__html: attachmentDesc ?? m.attachmentsDesc2}}/>
               </FriendlyHelpText>
-              {consumerWish !== 'fixContractualDispute' && <p dangerouslySetInnerHTML={{__html: m.attachmentsDescAnonymous}} />}
+              {consumerWish !== 'fixContractualDispute' &&
+                <p dangerouslySetInnerHTML={{__html: m.attachmentsDescAnonymous}}/>}
             </>
           ) : (
             <FriendlyHelpText>
@@ -197,19 +247,25 @@ export const DetailsInner = ({
           <ReportFiles
             files={uploadedFiles ?? []}
             fileOrigin={FileOrigin.Consumer}
-            onRemoveFile={f => setUploadedFiles(files => files?.filter(_ => _.id !== f.id))}
-            onNewFile={f => setUploadedFiles(_ => [...(_ ?? []), f])}
+            onRemoveFile={f => {
+              setUploadedFiles(files => files?.filter(_ => _.id !== f.id));
+              saveFiles((uploadedFiles ?? []).filter(_ => _.id !== f.id))
+            }}
+            onNewFile={f => {
+              setUploadedFiles(_ => [...(_ ?? []), f]);
+              saveFiles([...(uploadedFiles ?? []), f])
+            }}
             tooManyFilesError={showTooManyFilesError}
           />
         </div>
       </Animate>
       <NextStepButton
-        onNext={next => {
+        onNext={_ => {
           if (tooManyFiles) {
             setHasTriedToSubmit(true)
           } else {
             handleSubmit(detailInputValues => {
-              onSubmit(detailInputValues, uploadedFiles)
+              saveChange(detailInputValues, uploadedFiles, true)
             })()
           }
         }}
