@@ -4,23 +4,39 @@ import {PartialReport} from '@/components_feature/reportFlow/ReportFlowContext'
 import {Report, ReportWithPickInStep1 as ReportPickInStep1, TransmissionStatus} from '@/model/Report'
 import {lastFromArray, notUndefined} from '@/utils/utils'
 
+function isValidString(str: string | undefined) {
+  return typeof str === 'string' && str.trim() !== '';
+}
+
 export function hasStep0(r: PartialReport): r is Pick<Report, 'step0'> & PartialReport {
   return !!r.step0
 }
+
 export function hasStep1Full(r: PartialReport): r is Pick<Report, 'step1'> & PartialReport {
   return !!r.step1 && hasSubcategoryIndexes(r) && hasConsumerWish(r) && hasEmployeeConsumer(r)
 }
+
 export function hasSubcategoryIndexes(r: PartialReport): r is ReportPickInStep1<'subcategoriesIndexes'> & PartialReport {
   return hasStep0(r) && !!r.step1?.subcategoriesIndexes
 }
+
 export function hasEmployeeConsumer(r: PartialReport): r is ReportPickInStep1<'employeeConsumer'> & PartialReport {
   return hasStep0(r) && r.step1?.employeeConsumer !== undefined
 }
+
 export function hasConsumerWish(r: PartialReport): r is ReportPickInStep1<'consumerWish'> & PartialReport {
   return hasStep0(r) && r.step1?.consumerWish !== undefined
 }
+
 export function hasStep2(r: PartialReport): r is Pick<Report, 'step2'> & PartialReport {
   return !!r.step2
+}
+
+export function hasStep4(r: PartialReport): r is Pick<Report, 'step4'> & PartialReport {
+  return !!r.step4 && r.step4?.contactAgreement !== undefined
+    && isValidString(r.step4?.consumer?.firstName)
+    && isValidString(r.step4?.consumer?.lastName)
+    && isValidString(r.step4?.consumer?.email)
 }
 
 export const getAnomaly = (r: Pick<Report, 'step0'>) => {
@@ -31,6 +47,7 @@ export const getSubcategories = (r: ReportPickInStep1<'subcategoriesIndexes'>): 
   const anomaly = findAnomaly(r.step0.category, r.step0.lang)
   const startingIndexes = r.step1.subcategoriesIndexes
   const collectedSubcategories: Subcategory[] = []
+
   function recurse(indexes: number[], subcategories: Subcategory[] = []) {
     if (indexes.length === 0) {
       return
@@ -45,6 +62,7 @@ export const getSubcategories = (r: ReportPickInStep1<'subcategoriesIndexes'>): 
     collectedSubcategories.push(subcategory)
     recurse(indexesLeft, subcategory.subcategories)
   }
+
   recurse(r.step1.subcategoriesIndexes, anomaly.subcategories)
   return collectedSubcategories
 }

@@ -6,7 +6,14 @@ import {Animate} from '@/components_simple/Animate'
 import {Step2Recap} from '@/components_simple/CompanyRecap/Step2Recap'
 import {FriendlyHelpText} from '@/components_simple/FriendlyHelpText'
 import {ReportFilesConfirmation} from '@/components_simple/reportFile/ReportFilesConfirmation'
-import {getAnomaly, getSubcategories, getTags, getTransmissionStatus} from '@/feature/reportUtils'
+import {
+  getAnomaly,
+  getSubcategories,
+  getTags,
+  getTransmissionStatus,
+  hasStep0,
+  hasStep1Full, hasStep2, hasStep4
+} from '@/feature/reportUtils'
 import {parseReportDetails} from '@/feature/reportUtils2'
 import {getApiErrorId, useToastError} from '@/hooks/useToastError'
 import {useI18n} from '@/i18n/I18n'
@@ -36,6 +43,10 @@ export const ConfirmationInner = ({
   stepNavigation: StepNavigation
   isWebView: boolean
 }) => {
+
+  if (!hasStep0(draft) || !hasStep1Full(draft) || !hasStep2(draft) || !hasStep4(draft)) {
+    throw new Error('This draft is not ready for the Confirmation step')
+  }
   const {m} = useI18n()
   const toastError = useToastError()
   const _reportFlow = useReportFlowContext()
