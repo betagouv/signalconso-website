@@ -33,7 +33,7 @@ interface ConsumerForm {
   gender?: Gender
 }
 
-export const Consumer = ({stepNavigation}: { stepNavigation: StepNavigation }) => {
+export const Consumer = ({stepNavigation}: {stepNavigation: StepNavigation}) => {
   const _reportFlow = useReportFlowContext()
   const draft = _reportFlow.report
   return (
@@ -55,10 +55,10 @@ export const Consumer = ({stepNavigation}: { stepNavigation: StepNavigation }) =
 }
 
 export const ConsumerInner = ({
-                                draft,
-                                saveChange,
-                                stepNavigation,
-                              }: {
+  draft,
+  saveChange,
+  stepNavigation,
+}: {
   draft: PartialReport
   saveChange: (_: Partial<Report['step4']>, goToNextStep?: boolean) => void
   stepNavigation: StepNavigation
@@ -85,56 +85,50 @@ export const ConsumerInner = ({
     referenceNumber: consumer?.referenceNumber,
   }
 
-
   const _form: UseFormReturn<ConsumerForm> = useForm<ConsumerForm>({
-    mode: "onChange",
+    mode: 'onChange',
     defaultValues: defaultConsumer,
   })
 
   const {
-    watch, trigger,
-    formState: {
-      dirtyFields
-    }
-  }= _form
+    watch,
+    trigger,
+    formState: {dirtyFields},
+  } = _form
 
-  const watchFields = watch();
-
+  const watchFields = watch()
 
   const autoSave = useCallback(async () => {
     const modifiedData: ConsumerForm = defaultConsumer
 
     try {
       //Email need a specific validation (email has to be validated with confirm email), so it is not saved partially
-      for (const field of Object.keys(dirtyFields).filter(_ => _ !== "email")) {
+      for (const field of Object.keys(dirtyFields).filter(_ => _ !== 'email')) {
         const f = field as keyof ConsumerForm
         // Validate only the dirty field
-        const isValid = await trigger(f);
+        const isValid = await trigger(f)
         if (isValid) {
           // @ts-ignore
-          modifiedData[f] = watchFields[f];
+          modifiedData[f] = watchFields[f]
           const res = {
             consumer: {...consumer, ...modifiedData},
-            contactAgreement: modifiedData.contactAgreement ?? draft.step4?.contactAgreement
+            contactAgreement: modifiedData.contactAgreement ?? draft.step4?.contactAgreement,
           }
-          saveChange(res, false);
-
+          saveChange(res, false)
         }
       }
-
     } catch (error) {
-      console.error("Validation or saving error:", error);
+      console.error('Validation or saving error:', error)
     }
-  }, [dirtyFields, watchFields, trigger]);
+  }, [dirtyFields, watchFields, trigger])
 
   useEffect(() => {
     const interval = setInterval(() => {
-      autoSave();
-    }, 5000);
+      autoSave()
+    }, 2500)
 
-    return () => clearInterval(interval);
-  }, [autoSave]);
-
+    return () => clearInterval(interval)
+  }, [autoSave])
 
   const toastError = useToastError()
   const watchContactAgreement = _form.watch('contactAgreement')
@@ -151,11 +145,10 @@ export const ConsumerInner = ({
   const isTransmittable = transmissionStatus === 'WILL_BE_TRANSMITTED' || transmissionStatus === 'MAY_BE_TRANSMITTED'
   const showContactAgreement = isTransmittable && draft.step1.consumerWish !== 'fixContractualDispute'
 
-  const getErrors = (name: keyof ConsumerForm): { error: boolean; helperText?: string } => ({
+  const getErrors = (name: keyof ConsumerForm): {error: boolean; helperText?: string} => ({
     error: !!_form.formState.errors[name],
     helperText: _form.formState.errors[name]?.message,
   })
-
 
   const getReportStep4 = () => {
     const {contactAgreement, ...consumer} = _form.getValues()
@@ -194,9 +187,9 @@ export const ConsumerInner = ({
         <h2 className="fr-h6">{m.consumerTitle}</h2>
         <div>
           {draft.step1.employeeConsumer && (
-            <ScAlert type="info" dangerouslySetInnerHTML={{__html: `<p>${m.consumerIsEmployee}</p>`}}/>
+            <ScAlert type="info" dangerouslySetInnerHTML={{__html: `<p>${m.consumerIsEmployee}</p>`}} />
           )}
-          <RequiredFieldsLegend/>
+          <RequiredFieldsLegend />
           <Controller
             defaultValue={consumer?.gender}
             control={_form.control}
@@ -273,7 +266,7 @@ export const ConsumerInner = ({
                 <WithIcon icon="ri-bill-line">
                   {clientReferenceInput && clientReferenceInput.label ? clientReferenceInput.label : m.referenceNumberOptional}
                 </WithIcon>{' '}
-                {!clientReferenceInput && <ClientReferenceHelpButton/>}
+                {!clientReferenceInput && <ClientReferenceHelpButton />}
               </span>
             }
             placeholder={
@@ -314,26 +307,24 @@ export const ConsumerInner = ({
                     options={[
                       {
                         label: m.contactAgreementTrueTitle,
-                        description: <span className="text-sm"
-                                           dangerouslySetInnerHTML={{__html: m.contactAgreementTrueDesc}}/>,
+                        description: <span className="text-sm" dangerouslySetInnerHTML={{__html: m.contactAgreementTrueDesc}} />,
                         value: true,
                       },
                       {
                         label: m.contactAgreementFalseTitle,
-                        description: <span className="text-sm"
-                                           dangerouslySetInnerHTML={{__html: m.contactAgreementFalseDesc}}/>,
+                        description: <span className="text-sm" dangerouslySetInnerHTML={{__html: m.contactAgreementFalseDesc}} />,
                         value: false,
                       },
                     ]}
                   />
                 )}
               />
-              {watchContactAgreement === false && <ConsumerAnonymousInformation/>}
+              {watchContactAgreement === false && <ConsumerAnonymousInformation />}
             </>
           )}
         </div>
       </div>
-      <ConsumerValidationDialog2 consumerEmail={_form.getValues().email} onValidated={saveAndNext}/>
+      <ConsumerValidationDialog2 consumerEmail={_form.getValues().email} onValidated={saveAndNext} />
       <NextStepButton
         loadingNext={_checkEmail.isPending}
         onNext={() => {
@@ -364,10 +355,10 @@ export const ConsumerInner = ({
   )
 }
 
-function WithIcon({children, icon}: { children: ReactNode; icon: string }) {
+function WithIcon({children, icon}: {children: ReactNode; icon: string}) {
   return (
     <>
-      <span className={`${icon} mr-1`} aria-hidden="true"/> {children}
+      <span className={`${icon} mr-1`} aria-hidden="true" /> {children}
     </>
   )
 }

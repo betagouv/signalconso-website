@@ -23,7 +23,7 @@ export type SendReportEvent = (_: ReportStepOrDone) => void
 // While the report is being built,
 // some (or all) the fields may be missing, depending on the current step.
 // We type it like if everything could be missing all the time
-export type PartialReport = Partial<Omit<Report, 'step1'| 'step4'>> & {
+export type PartialReport = Partial<Omit<Report, 'step1' | 'step4'>> & {
   // Step 1 and 4 are different, they get saved partially at each sub-step
   step1?: Partial<Report['step1']>
   step4?: Partial<Report['step4']>
@@ -32,9 +32,9 @@ export type PartialReport = Partial<Omit<Report, 'step1'| 'step4'>> & {
 const reportFlowContext = React.createContext<ReportFlowContextShape>(null as any)
 
 export const ReportFlowProvider = ({
-                                     children,
-                                     initialReportForTests,
-                                   }: {
+  children,
+  initialReportForTests,
+}: {
   children: ReactNode
   initialReportForTests?: PartialReport
 }) => {
@@ -114,7 +114,6 @@ function useReportEvents() {
 }
 
 function useConvenientSetters(setReport: SetReport, resetReportEvents: () => void) {
-
   const setEmployeeConsumer = useCallback(
     (value: boolean) => {
       setReport(_ => ({

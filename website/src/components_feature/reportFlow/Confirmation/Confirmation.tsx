@@ -12,7 +12,9 @@ import {
   getTags,
   getTransmissionStatus,
   hasStep0,
-  hasStep1Full, hasStep2, hasStep4
+  hasStep1Full,
+  hasStep2,
+  hasStep4,
 } from '@/feature/reportUtils'
 import {parseReportDetails} from '@/feature/reportUtils2'
 import {getApiErrorId, useToastError} from '@/hooks/useToastError'
@@ -43,7 +45,6 @@ export const ConfirmationInner = ({
   stepNavigation: StepNavigation
   isWebView: boolean
 }) => {
-
   if (!hasStep0(draft) || !hasStep1Full(draft) || !hasStep2(draft) || !hasStep4(draft)) {
     throw new Error('This draft is not ready for the Confirmation step')
   }

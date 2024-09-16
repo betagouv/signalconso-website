@@ -129,7 +129,7 @@ export const PlaygroundDetails = () => {
           setResultInputs(parseReportDetails(res, chosenInputs))
           setResultFiles(files)
         }}
-        saveFiles={( files) => {
+        saveFiles={files => {
           setResultFiles(files)
         }}
         stepNavigation={dummyStepNavigation}

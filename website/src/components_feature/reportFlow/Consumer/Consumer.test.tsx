@@ -70,7 +70,7 @@ describe('Consumer', () => {
       app = render(
         <ConsumerInner
           draft={initial}
-          saveChange={(x,_) => {
+          saveChange={(x, _) => {
             submitted = x
           }}
           stepNavigation={dummyStepNavigation}
@@ -126,7 +126,7 @@ describe('Consumer', () => {
       app = render(
         <ConsumerInner
           draft={initial}
-          saveChange={(x,_) => {
+          saveChange={(x, _) => {
             submitted = x
           }}
           stepNavigation={dummyStepNavigation}

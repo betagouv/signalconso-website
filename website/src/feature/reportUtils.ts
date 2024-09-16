@@ -5,7 +5,7 @@ import {Report, ReportWithPickInStep1 as ReportPickInStep1, TransmissionStatus} 
 import {lastFromArray, notUndefined} from '@/utils/utils'
 
 function isValidString(str: string | undefined) {
-  return typeof str === 'string' && str.trim() !== '';
+  return typeof str === 'string' && str.trim() !== ''
 }
 
 export function hasStep0(r: PartialReport): r is Pick<Report, 'step0'> & PartialReport {
@@ -33,10 +33,13 @@ export function hasStep2(r: PartialReport): r is Pick<Report, 'step2'> & Partial
 }
 
 export function hasStep4(r: PartialReport): r is Pick<Report, 'step4'> & PartialReport {
-  return !!r.step4 && r.step4?.contactAgreement !== undefined
-    && isValidString(r.step4?.consumer?.firstName)
-    && isValidString(r.step4?.consumer?.lastName)
-    && isValidString(r.step4?.consumer?.email)
+  return (
+    !!r.step4 &&
+    r.step4?.contactAgreement !== undefined &&
+    isValidString(r.step4?.consumer?.firstName) &&
+    isValidString(r.step4?.consumer?.lastName) &&
+    isValidString(r.step4?.consumer?.email)
+  )
 }
 
 export const getAnomaly = (r: Pick<Report, 'step0'>) => {

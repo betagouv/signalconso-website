@@ -56,8 +56,7 @@ describe('Details: single date not in future', () => {
         saveChange={x => {
           inputValues = x
         }}
-        saveFiles={_ => {
-        }}
+        saveFiles={_ => {}}
         stepNavigation={dummyStepNavigation}
         consumerWish={undefined}
       />,
@@ -96,8 +95,7 @@ describe('Details: checkbox', () => {
         saveChange={x => {
           inputValues = x
         }}
-        saveFiles={_ => {
-        }}
+        saveFiles={_ => {}}
         stepNavigation={dummyStepNavigation}
         consumerWish={undefined}
       />,
@@ -159,8 +157,7 @@ describe('Details: textarea', () => {
         saveChange={x => {
           inputValues = x
         }}
-        saveFiles={_ => {
-        }}
+        saveFiles={_ => {}}
         stepNavigation={dummyStepNavigation}
         consumerWish={undefined}
       />,
