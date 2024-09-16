@@ -19,7 +19,7 @@ export const PlaygroundConsumer = () => {
             },
           },
         }}
-        onSubmit={x => alert(JSON.stringify(x))}
+        saveChange={(_, goToNextStep) => alert(JSON.stringify(_))}
         stepNavigation={dummyStepNavigation}
       />
     </>
