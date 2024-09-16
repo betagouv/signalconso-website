@@ -9,12 +9,12 @@ import {getSubcategories, getTransmissionStatus, hasStep0, hasStep1Full, hasStep
 import {useBreakpoints} from '@/hooks/useBreakpoints'
 import {useI18n} from '@/i18n/I18n'
 import {AppLangs} from '@/i18n/localization/AppLangs'
-import {Report} from '@/model/Report'
+import {DetailInputValues2, Report} from '@/model/Report'
 import {last} from '@/utils/lodashNamedExport'
 import {regexp} from '@/utils/regexp'
 import {useMutation} from '@tanstack/react-query'
-import {ReactNode} from 'react'
-import {Controller, useForm} from 'react-hook-form'
+import {ChangeEvent, FocusEvent, JSX, MouseEventHandler, ReactNode, RefAttributes, useCallback, useEffect} from 'react'
+import {Control, Controller, FieldValues, useForm, UseFormReturn} from 'react-hook-form'
 import {ScAlert} from '../../../components_simple/ScAlert'
 import {ScRadioButtons} from '../../../components_simple/formInputs/ScRadioButtons'
 import {getApiErrorId, useToastError} from '../../../hooks/useToastError'
@@ -39,13 +39,15 @@ export const Consumer = ({stepNavigation}: {stepNavigation: StepNavigation}) => 
   return (
     <ConsumerInner
       draft={draft}
-      onSubmit={changes => {
+      saveChange={(changes, goToNextStep) => {
         _reportFlow.setReport(_ => ({
           ..._,
           step4: changes,
         }))
-        _reportFlow.sendReportEvent(stepNavigation.currentStep)
-        stepNavigation.next()
+        if (goToNextStep) {
+          _reportFlow.sendReportEvent(stepNavigation.currentStep)
+          stepNavigation.next()
+        }
       }}
       {...{stepNavigation}}
     />
@@ -54,11 +56,11 @@ export const Consumer = ({stepNavigation}: {stepNavigation: StepNavigation}) => 
 
 export const ConsumerInner = ({
   draft,
-  onSubmit,
+  saveChange,
   stepNavigation,
 }: {
   draft: PartialReport
-  onSubmit: (_: Report['step4']) => void
+  saveChange: (_: Partial<Report['step4']>, goToNextStep?: boolean) => void
   stepNavigation: StepNavigation
 }) => {
   if (!hasStep0(draft) || !hasStep1Full(draft) || !hasStep2(draft)) {
@@ -74,15 +76,60 @@ export const ConsumerInner = ({
     },
   })
   const consumer = draft.step4?.consumer
-  const _form = useForm<ConsumerForm>({
-    defaultValues: {
-      firstName: consumer?.firstName,
-      lastName: consumer?.lastName,
-      email: consumer?.email,
-      phone: consumer?.phone,
-      referenceNumber: consumer?.referenceNumber,
-    },
+
+  const defaultConsumer = {
+    firstName: consumer?.firstName ?? '',
+    lastName: consumer?.lastName ?? '',
+    email: consumer?.email ?? '',
+    phone: consumer?.phone,
+    referenceNumber: consumer?.referenceNumber,
+  }
+
+  const _form: UseFormReturn<ConsumerForm> = useForm<ConsumerForm>({
+    mode: 'onChange',
+    defaultValues: defaultConsumer,
   })
+
+  const {
+    watch,
+    trigger,
+    formState: {dirtyFields},
+  } = _form
+
+  const watchFields = watch()
+
+  const autoSave = useCallback(async () => {
+    const modifiedData: ConsumerForm = defaultConsumer
+
+    try {
+      //Email need a specific validation (email has to be validated with confirm email), so it is not saved partially
+      for (const field of Object.keys(dirtyFields).filter(_ => _ !== 'email')) {
+        const f = field as keyof ConsumerForm
+        // Validate only the dirty field
+        const isValid = await trigger(f)
+        if (isValid) {
+          // @ts-ignore
+          modifiedData[f] = watchFields[f]
+          const res = {
+            consumer: {...consumer, ...modifiedData},
+            contactAgreement: modifiedData.contactAgreement ?? draft.step4?.contactAgreement,
+          }
+          saveChange(res, false)
+        }
+      }
+    } catch (error) {
+      console.error('Validation or saving error:', error)
+    }
+  }, [dirtyFields, watchFields, trigger])
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      autoSave()
+    }, 2500)
+
+    return () => clearInterval(interval)
+  }, [autoSave])
+
   const toastError = useToastError()
   const watchContactAgreement = _form.watch('contactAgreement')
 
@@ -103,11 +150,9 @@ export const ConsumerInner = ({
     helperText: _form.formState.errors[name]?.message,
   })
 
-  const saveAndNext = () => {
+  const getReportStep4 = () => {
     const {contactAgreement, ...consumer} = _form.getValues()
-    // _analytic.trackEvent(EventCategories.report, ReportEventActions.validateConsumer)
-    _reportFlow.sendReportEvent(stepNavigation.currentStep)
-    onSubmit({
+    return {
       consumer: consumer,
       contactAgreement: (() => {
         if (!isTransmittable) return false
@@ -117,7 +162,14 @@ export const ConsumerInner = ({
         }
         return contactAgreement
       })(),
-    })
+    }
+  }
+
+  const saveAndNext = () => {
+    const step4 = getReportStep4()
+    // _analytic.trackEvent(EventCategories.report, ReportEventActions.validateConsumer)
+    _reportFlow.sendReportEvent(stepNavigation.currentStep)
+    saveChange(step4, true)
   }
 
   const gendersOptions = genders
