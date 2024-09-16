@@ -65,9 +65,6 @@ export const Details = ({stepNavigation}: {stepNavigation: StepNavigation}) => {
         }
       }}
       saveFiles={(uploadedFiles?: UploadedFile[]) => {
-        console.log('files to be saved')
-        console.log(uploadedFiles)
-        console.log('files to be saved')
         _reportFlow.setReport(_ => ({
           ..._,
           step3: {
