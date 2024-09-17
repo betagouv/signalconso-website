@@ -11,7 +11,7 @@ test('test reports', async ({page}) => {
   await page.getByPlaceholder('Exemple: https://www.site.fr').click()
   await page.getByPlaceholder('Exemple: https://www.site.fr').fill('fnac.com')
   await page.getByPlaceholder('Exemple: https://www.site.fr').press('Enter')
-  await page.getByLabel("Sélectionnez l'entrepriseS il").locator('label').click()
+  await page.getByLabel("Sélectionnez l'entreprise").locator('label').click()
   await page.getByRole('button', {name: 'Suivant'}).click()
   await page.getByLabel('Description *').click()
   await page.getByLabel('Description *').fill('description')
