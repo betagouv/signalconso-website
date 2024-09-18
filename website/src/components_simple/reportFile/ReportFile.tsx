@@ -62,7 +62,7 @@ export const ReportFile = ({file, onRemove}: ReportFileProps) => {
           <ReportFileDeleteButton
             filename={file.filename}
             onConfirm={() => {
-              remove()
+              return remove()
             }}
           />
         </div>

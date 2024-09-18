@@ -11,6 +11,7 @@ import {extractFileExt} from './reportFileConfig'
 import {UploadingFile} from '@/model/UploadingFile'
 import {v4 as uuidv4} from 'uuid'
 import {UploadingReportFile} from '@/components_simple/reportFile/UploadingReportFile'
+import axios from 'axios'
 
 export interface ReportFilesProps {
   files: UploadedFile[]
@@ -38,6 +39,8 @@ export const ReportFiles = ({fileOrigin, files, onRemoveFile, onNewFile, tooMany
   const {signalConsoApiClient} = useApiClients()
   const toastError = useToastError()
 
+  const numberOfFilesUploadingOrUploaded = innerFiles.length + uploadingFiles.length
+
   const heicToJpg = async (file: File): Promise<File> => {
     // heic2any needs to access the 'window' object, which is not available when importing the lib at the top of the file
     // because we are doing static rendering using next.js.
@@ -57,9 +60,9 @@ export const ReportFiles = ({fileOrigin, files, onRemoveFile, onNewFile, tooMany
 
   const handleChange = async (files: FileList | null) => {
     const fileCount = files?.length ?? 0
-    const fileCountUploadAttempt = fileCount + innerFiles.length
+    const fileCountUploadAttempt = fileCount + numberOfFilesUploadingOrUploaded
     if (fileCountUploadAttempt > max) {
-      toastError(m.invalidCount(max, max - innerFiles.length))
+      toastError(m.invalidCount(max, max - numberOfFilesUploadingOrUploaded))
       return
     } else {
       const filesToUpload: UploadingFile[] = []
@@ -117,7 +120,7 @@ export const ReportFiles = ({fileOrigin, files, onRemoveFile, onNewFile, tooMany
         percent => {
           setUploadingFiles(prev => {
             let filesCopy = [...prev]
-            let fileIndex = filesCopy.findIndex(el => el.id === uploadingFile.id)
+            let fileIndex = filesCopy.findIndex(_ => _.id === uploadingFile.id)
             if (fileIndex !== -1) {
               filesCopy[fileIndex].progress = percent
             }
@@ -129,16 +132,17 @@ export const ReportFiles = ({fileOrigin, files, onRemoveFile, onNewFile, tooMany
       )
       newFile(uploadedFile)
     } catch (e: any) {
-      console.warn('failed to upload file', e)
-      toastError(e)
-    } finally {
+      if (e.details.error && !axios.isCancel(e.details.error)) {
+        console.warn('failed to upload file', e)
+        toastError(e)
+      }
     }
   }
 
   const newFile = (f: UploadedFile) => {
     onNewFile(f)
     setInnerFiles(prev => [f, ...prev])
-    setUploadingFiles(prev => prev.filter(pf => pf.id !== f.id))
+    setUploadingFiles(prev => prev.filter(_ => _.id !== f.id))
   }
 
   const removeFile = (f: UploadedFile) => {
@@ -148,7 +152,7 @@ export const ReportFiles = ({fileOrigin, files, onRemoveFile, onNewFile, tooMany
 
   const cancelFile = (f: UploadingFile) => {
     f.controller.abort()
-    setUploadingFiles(prev => prev.filter(pf => pf.id !== f.id))
+    setUploadingFiles(prev => prev.filter(_ => _.id !== f.id))
   }
 
   const thumbnails = (
@@ -184,10 +188,10 @@ export const ReportFiles = ({fileOrigin, files, onRemoveFile, onNewFile, tooMany
   }
 
   const max = appConfig.maxNumberOfAttachments
-  const nothingYet = innerFiles.length <= 0 && uploadingFiles.length <= 0
-  const maxReached = innerFiles.length === max
+  const nothingYet = numberOfFilesUploadingOrUploaded <= 0
+  const maxReached = numberOfFilesUploadingOrUploaded === max
   // can happen with multiple uploads at once
-  const maxExceeded = innerFiles.length > max
+  const maxExceeded = numberOfFilesUploadingOrUploaded > max
 
   const redErrorClasses = `before:block before:absolute before:top-0 before:bottom-0 before:left-[-15px] before:pointer-events-none before:right-0 before:border-l-2 before:border-0 before:border-l-scerrorred before:border-solid before:content-['']`
 
@@ -221,12 +225,12 @@ export const ReportFiles = ({fileOrigin, files, onRemoveFile, onNewFile, tooMany
         )}
         <p className={`text-sm mb-2 text-center ${tooManyFilesError ? 'text-scerrorred font-bold' : ''}`} role="status">
           {maxExceeded
-            ? m.maxAttachementExceeded(max, innerFiles.length - max)
+            ? m.maxAttachementExceeded(max, numberOfFilesUploadingOrUploaded - max)
             : maxReached
               ? m.maxAttachmentsReached(max)
               : nothingYet
                 ? m.maxAttachmentsZero(max)
-                : m.maxAttachmentsCurrent(max - innerFiles.length)}
+                : m.maxAttachmentsCurrent(max - numberOfFilesUploadingOrUploaded)}
         </p>
         {!nothingYet && thumbnails}
       </div>
