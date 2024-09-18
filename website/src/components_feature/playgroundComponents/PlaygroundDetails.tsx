@@ -19,7 +19,7 @@ import {dummyStepNavigation} from './PlaygroundConfirmation'
 
 export class DetailsFixtureInput {
   static readonly text: DetailInputText = {
-    label: 'Texte label',
+    label: 'Texte label (it can contain a raw URL like https://www.example.com)',
     type: DetailInputType.TEXT,
   }
 
