@@ -1,4 +1,4 @@
-import axios, {AxiosInstance, AxiosResponse, ResponseType, isAxiosError} from 'axios'
+import axios, {AxiosInstance, AxiosResponse, ResponseType, isAxiosError, AxiosProgressEvent, GenericAbortSignal} from 'axios'
 import * as qs from 'qs'
 
 interface RequestOptions {
@@ -8,6 +8,8 @@ interface RequestOptions {
   readonly body?: any
   readonly timeout?: number
   readonly responseType?: ResponseType
+  readonly onUploadProgress?: (progressEvent: AxiosProgressEvent) => void
+  readonly signal?: GenericAbortSignal
 }
 
 interface ApiErrorDetails {
@@ -72,6 +74,8 @@ export class BaseApiClient {
         params: options?.qs,
         data: options?.body,
         paramsSerializer: params => qs.stringify(params, {arrayFormat: 'repeat'}),
+        onUploadProgress: builtOptions.onUploadProgress,
+        signal: builtOptions.signal,
       })
       .then((_: AxiosResponse) => _.data)
       .catch((_: any) => {
