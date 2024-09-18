@@ -1,18 +1,18 @@
 title: Présence d'animal (nuisible)
 desc: "Exemple\_: cafard, rat"
-reponseconsoCode: '312'
+reponseconsoCode: "312"
 detailInputs:
   - label: Date du constat
     type: DATE
     defaultValue: SYSDATE
-  - label: Quel animal avez-vous vu&#160;?
+  - label: Quel animal avez-vous vu ?
     type: RADIO
     options:
       - Insectes (cafard...)
       - Rongeurs (rat, souris...)
       - Oiseau (pigeon...)
       - Autre (à préciser)
-  - label: Où l'avez-vous vu&#160;?
+  - label: Où l'avez-vous vu ?
     type: CHECKBOX
     options:
       - Cuisine ou zone de production

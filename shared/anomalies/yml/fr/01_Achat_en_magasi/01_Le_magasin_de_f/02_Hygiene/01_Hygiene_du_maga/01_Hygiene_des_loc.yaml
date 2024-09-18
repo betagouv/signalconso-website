@@ -1,21 +1,21 @@
 title: Hygiène des locaux et du matériel
 ccrfCode:
-  - '312'
-reponseconsoCode: '312'
+  - "312"
+reponseconsoCode: "312"
 detailInputs:
-  - label: Quel endroit est concerné&#160;?
+  - label: Quel endroit est concerné ?
     type: CHECKBOX
     options:
       - Intérieur du magasin
       - Atelier de fabrication
       - WC
       - Autre (à préciser)
-  - label: Quel est le problème&#160;?
+  - label: Quel est le problème ?
     type: CHECKBOX
     options:
       - C'est sale
       - C'est dégradé, en mauvais état
-  - label: À quel niveau&#160;?
+  - label: À quel niveau ?
     type: CHECKBOX
     options:
       - Sol

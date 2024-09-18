@@ -7,7 +7,7 @@ blockingInfo:
     tous les produits neufs et de 6 mois pour tous les produits d'occasion.
   reportOutOfScopeMessage: true
   questions:
-    - question: Vous souhaitez attaquer l'entreprise pour "vices cachés"&#160;?
+    - question: Vous souhaitez attaquer l'entreprise pour "vices cachés" ?
       desc: >-
         Un vice caché d'un produit est un défaut : <ul> <li>qui rend le produit
         inutilisable, </li> <li>présent dès le départ et</li> <li>que vous ne

@@ -1,9 +1,9 @@
 title: Problème de température
-desc: 'Exemple : rupture de la chaîne du froid'
+desc: "Exemple : rupture de la chaîne du froid"
 ccrfCode:
-  - '322'
+  - "322"
 detailInputs:
-  - label: Quel est le problème&#160;?
+  - label: Quel est le problème ?
     type: RADIO
     options:
       - Vitrine ou réfrigérateur trop chaud, cassé ou en panne

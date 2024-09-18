@@ -1,7 +1,7 @@
 title: J'ai eu un problème de démarchage téléphonique
 ccrfCode:
-  - '227'
-reponseconsoCode: '221'
+  - "227"
+reponseconsoCode: "221"
 companyKind: PHONE
 tags:
   - DemarchageTelephonique
@@ -9,7 +9,7 @@ detailInputs:
   - label: Date de l'appel
     type: DATE
     defaultValue: SYSDATE
-  - label: Est-ce que le vendeur s'est fait passer pour une autre entreprise&#160;?
+  - label: Est-ce que le vendeur s'est fait passer pour une autre entreprise ?
     type: RADIO
     options:
       - Non

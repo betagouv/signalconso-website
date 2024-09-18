@@ -1,16 +1,16 @@
 title: Démarchage téléphonique
-desc: 'J’ai été contacté par téléphone et par SMS à plusieurs reprises et ai reçu une invitation personnelle à mon domicile m’incitant de façon insistante à me rendre rapidement en magasin pour retirer des cadeaux'
+desc: "J’ai été contacté par téléphone et par SMS à plusieurs reprises et ai reçu une invitation personnelle à mon domicile m’incitant de façon insistante à me rendre rapidement en magasin pour retirer des cadeaux"
 tags:
   - DemarchageTelephonique
 companyKind: PHONE
 detailInputs:
-  - label: Date du premier appel ou du SMS reçu 
+  - label: Date du premier appel ou du SMS reçu
     type: DATE
     defaultValue: SYSDATE
   - label: Date de l'achat ou de la visite dans le magasin
     type: DATE
     defaultValue: SYSDATE
-  - label: Etes-vous inscrit sur Bloctel&#160;?
+  - label: Etes-vous inscrit sur Bloctel ?
     type: RADIO
     options:
       - Non

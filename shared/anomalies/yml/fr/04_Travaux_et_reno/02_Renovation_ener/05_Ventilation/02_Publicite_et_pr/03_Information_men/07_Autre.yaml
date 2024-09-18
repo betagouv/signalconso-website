@@ -1,6 +1,6 @@
 title: Autre
 detailInputs:
-  - label: Qu'est-ce qui est trompeur ou mensonger&#160;?
+  - label: Qu'est-ce qui est trompeur ou mensonger ?
     type: RADIO
     options:
       - Le discours du professionnel
@@ -9,7 +9,7 @@ detailInputs:
         Les documents mis à votre disposition par le professionnel (flyer,
         plaquette de présentation...)
       - Autre (à préciser)
-  - label: À propos de quoi est-ce trompeur&#160;?
+  - label: À propos de quoi est-ce trompeur ?
     type: RADIO
     options:
       - Le prix

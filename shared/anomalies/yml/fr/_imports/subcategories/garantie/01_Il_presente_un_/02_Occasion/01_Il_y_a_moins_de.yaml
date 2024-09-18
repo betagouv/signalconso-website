@@ -15,6 +15,6 @@ detailInputs:
       - Service client (téléphone, mail, courrier)
   - label: >-
       Pour quelle raison le commerçant ne veut pas vous reprendre  le
-      produit&#160;?
+      produit ?
     type: TEXTAREA
 fileLabel: Preuve d'achat / publicité / offre de vente

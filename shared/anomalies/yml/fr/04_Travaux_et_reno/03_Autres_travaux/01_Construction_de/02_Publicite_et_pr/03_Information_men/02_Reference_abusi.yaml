@@ -2,11 +2,11 @@ title: >-
   Référence abusive à des partenariats avec l'État ou de grandes entreprises
   d'énergie
 ccrfCode:
-  - '271'
+  - "271"
 tags:
   - ReponseConso
 detailInputs:
-  - label: Qu'est-ce qui est trompeur ou mensonger&#160;?
+  - label: Qu'est-ce qui est trompeur ou mensonger ?
     type: RADIO
     options:
       - Le discours du professionnel

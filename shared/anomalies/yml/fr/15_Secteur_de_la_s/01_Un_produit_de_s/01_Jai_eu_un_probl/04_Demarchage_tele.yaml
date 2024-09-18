@@ -1,15 +1,15 @@
 title: Démarchage téléphonique
 companyKind: PHONE
 ccrfCode:
-  - '221'
-reponseconsoCode: '2210'
+  - "221"
+reponseconsoCode: "2210"
 tags:
   - DemarchageTelephonique
 detailInputs:
   - label: Date de l'appel
     type: DATE
     defaultValue: SYSDATE
-  - label: Est-ce que le vendeur s'est fait passer pour une autre entreprise&#160;?
+  - label: Est-ce que le vendeur s'est fait passer pour une autre entreprise ?
     type: RADIO
     options:
       - Non

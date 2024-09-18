@@ -8,5 +8,5 @@
   type: TEXT
 - label: Numéro de lot / référence
   type: TEXT
-- label: Qu'avez-vous constaté&#160;?
+- label: Qu'avez-vous constaté ?
   type: TEXTAREA
