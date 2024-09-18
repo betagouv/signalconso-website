@@ -22,7 +22,6 @@ function readSeverity(severity?: string): Severity | null {
 
 export const appConfig = {
   useNewCompanySearch: readBool(process.env.NEXT_PUBLIC_NEW_COMPANY_SEARCH) ?? false,
-  useDepartementSearch: readBool(process.env.NEXT_PUBLIC_ENABLE_DEPARTMENT_SEARCH) ?? false,
   siretExtractorUrl: noTrailingSlash(process.env.NEXT_PUBLIC_SIRET_EXTRACTOR_BASE_URL ?? 'http://localhost:8089'),
   apiCompanyUrl: noTrailingSlash(process.env.NEXT_PUBLIC_COMPANY_API_BASE_URL ?? 'http://localhost:9001'),
   apiAdresseUrl: 'https://api-adresse.data.gouv.fr',
