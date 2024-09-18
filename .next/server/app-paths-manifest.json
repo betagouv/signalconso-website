@@ -1,4 +1,0 @@
-{
-  "/[lang]/page": "app/[lang]/page.js",
-  "/[lang]/[dynamicPath]/faire-un-signalement/page": "app/[lang]/[dynamicPath]/faire-un-signalement/page.js"
-}
