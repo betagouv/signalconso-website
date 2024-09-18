@@ -16,7 +16,11 @@ node_modules
 !.yarn/releases
 !.yarn/sdks
 !.yarn/versions
-
+# local env files
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
 # typescript
 *.tsbuildinfo
 
