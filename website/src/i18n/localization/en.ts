@@ -135,6 +135,10 @@ export const en = {
         title: '',
         description: '',
       },
+      erreurDePrixEnCaisse: {
+        title: '',
+        description: '',
+      },
       signalInfluenceur: {
         title: '',
         description: '',

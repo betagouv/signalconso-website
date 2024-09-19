@@ -8,6 +8,7 @@
     "devdemo": "yarn beforebuild && cross-env NEXT_PUBLIC_API_BASE_URL=https://demo-signalement-api.cleverapps.io next dev -p 3001",
     "devyaml": "yarn concurrently -n website,yaml_watcher \"yarn devdemo\" \"yarn generate-json-watch\"",
     "w:devyaml": "yarn devyaml",
+    "w:dev": "yarn dev",
     "build": "yarn beforebuild && tsc --declaration  && next build",
     "runplaywright": "npx playwright test",
     "start": "next start",

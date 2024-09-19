@@ -135,6 +135,11 @@ export const fr = {
         title: `Fibre optique : installation forcée par votre opérateur Internet ?`,
         description: `Signalez un passage à la fibre forcé par votre fournisseur d'accès Internet`,
       },
+      erreurDePrixEnCaisse: {
+        title: 'Mauvais affichage des prix : Signalez-le sur SignalConso !',
+        description:
+          'Vous constatez un écart entre le prix affiché en magasin et celui en caisse ? Signalez-le sur SignalConso ! Protégez vos droits en cas de mauvais affichage des prix ou de promotions non appliquées. Agissez avec la DGCCRF pour corriger ces pratiques commerciales trompeuses.',
+      },
       signalInfluenceur: {
         title: "Signalez une publication frauduleuse d'un influenceur",
         description:
