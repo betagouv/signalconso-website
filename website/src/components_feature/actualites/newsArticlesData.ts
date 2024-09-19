@@ -13,6 +13,14 @@ export type NewsArticle = {
 // This is the display order. Keep the most recents at the start of the array
 export const initialNewsArticlesData: NewsArticle[] = [
   {
+    date: '2024-09-19',
+    lang: AppLangs.fr,
+    slug: 'erreur-de-prix-en-caisse',
+    veryShortTitle: 'Erreur de prix en caisse',
+    title: 'Erreur de prix en caisse : Comment réagir et s’en prémunir ?',
+    excerpt: `Lors de vos courses, vous avez peut-être déjà constaté une différence entre le prix affiché en rayon et celui enregistré en caisse. Cette situation est plus courante qu’on ne pourrait le penser et peut causer une frustration légitime.`,
+  },
+  {
     date: '2024-07-11',
     lang: AppLangs.fr,
     slug: 'faux-sites-de-vente-thesee',
