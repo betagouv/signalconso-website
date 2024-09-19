@@ -39,9 +39,11 @@ export const CompanySearchByIdentifier = ({children}: Props) => {
   const [submittedIdentity, setSubmittedIdentity] = useState<string | undefined>(undefined)
   const _searchByIdentity = useQuery({
     queryKey: ['searchCompaniesByIdentity', submittedIdentity],
-    queryFn: () => {
+    queryFn: async () => {
       if (submittedIdentity) {
-        return companyApiClient.searchCompaniesByIdentity(submittedIdentity, false, currentLang)
+        const res = await companyApiClient.searchCompaniesByIdentity(submittedIdentity, false, currentLang)
+        _analytic.trackSearch({q: submittedIdentity}, 'companysearch_siret', res.length)
+        return res
       }
       return null
     },

@@ -4,6 +4,7 @@ import {Analytic} from './analytic'
 
 export interface AnalyticContextProps {
   trackEvent: Analytic['trackEvent']
+  trackSearch: Analytic['trackSearch']
 }
 
 interface Props {
@@ -19,10 +20,9 @@ export const AnalyticProvider = ({analytic, children}: Props) => {
   return (
     <AnalyticContext.Provider
       value={{
-        trackEvent:
-          analytic?.trackEvent ??
-          // analytics are not available server-side
-          ((...args: any[]) => {}),
+        // analytics are not available server-side
+        trackEvent: analytic?.trackEvent ?? (() => {}),
+        trackSearch: analytic?.trackSearch ?? (() => {}),
       }}
     >
       {children}
