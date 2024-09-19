@@ -160,6 +160,15 @@ export const DetailsInner = ({
     return () => clearInterval(interval) // Clean up the interval
   }, [validateFields])
 
+  const [shouldSave, setShouldSave] = useState(false)
+
+  useEffect(() => {
+    if (shouldSave && saveFiles) {
+      saveFiles(uploadedFiles)
+      setShouldSave(false)
+    }
+  }, [shouldSave, saveFiles, uploadedFiles])
+
   return (
     <>
       <Animate autoScrollTo={false}>
@@ -241,11 +250,11 @@ export const DetailsInner = ({
             fileOrigin={FileOrigin.Consumer}
             onRemoveFile={f => {
               setUploadedFiles(files => files?.filter(_ => _.id !== f.id))
-              saveFiles((uploadedFiles ?? []).filter(_ => _.id !== f.id))
+              setShouldSave(true)
             }}
             onNewFile={f => {
               setUploadedFiles(_ => [...(_ ?? []), f])
-              saveFiles([...(uploadedFiles ?? []), f])
+              setShouldSave(true)
             }}
             tooManyFilesError={showTooManyFilesError}
           />
