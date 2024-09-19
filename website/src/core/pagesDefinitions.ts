@@ -61,6 +61,7 @@ export const internalPageDefs = {
   litige: page(`/litige`),
   litigeTelecom: page(`/litige/telecom`),
   obligationFibre: page('/obligation-adsl-fibre', {hasEnglishVersion: false}),
+  erreurDePrixEnCaisse: page('/erreur-de-prix-en-caisse', {hasEnglishVersion: false}),
   signalInfluenceur: page('/signaler-un-influenceur', {hasEnglishVersion: false}),
   obsolescencePage: page('/duree-de-vie-produit-obsolescence-programmee', {hasEnglishVersion: false}),
   demarchageAbusif: page('/demarchage-abusif', {hasEnglishVersion: false}),
