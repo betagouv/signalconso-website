@@ -1,17 +1,17 @@
-import {useAnalyticContext} from '@/analytic/AnalyticContext'
-import {CompanySearchEventActions, EventCategories} from '@/analytic/analytic'
+import {CompanySearchResult} from '@/model/Company'
+import {ReactNode, useState} from 'react'
+import {useI18n} from '@/i18n/I18n'
+import {useApiClients} from '@/context/ApiClientsContext'
+import {useQuery} from '@tanstack/react-query'
 import {useToastOnQueryError} from '@/clients/apiHooks'
+import {useAnalyticContext} from '@/analytic/AnalyticContext'
+import {useForm} from 'react-hook-form'
+import {CompanySearchEventActions, EventCategories} from '@/analytic/analytic'
 import {Animate} from '@/components_simple/Animate'
 import {RequiredFieldsLegend} from '@/components_simple/RequiredFieldsLegend'
-import {ButtonWithLoader} from '@/components_simple/buttons/Buttons'
 import {ScTextInput} from '@/components_simple/formInputs/ScTextInput'
-import {useApiClients} from '@/context/ApiClientsContext'
-import {useI18n} from '@/i18n/I18n'
-import {CompanySearchResult} from '@/model/Company'
+import {ButtonWithLoader} from '@/components_simple/buttons/Buttons'
 import {ifDefined} from '@/utils/utils'
-import {useQuery} from '@tanstack/react-query'
-import {ReactNode, useState} from 'react'
-import {useForm} from 'react-hook-form'
 
 interface Form {
   name: string
@@ -27,12 +27,9 @@ export const CompanySearchByName = ({children}: Props) => {
   const [submittedForm, setSubmittedForm] = useState<Form | undefined>()
   const _search = useQuery({
     queryKey: ['searchHeadOfficesByName', submittedForm?.name],
-    queryFn: async () => {
+    queryFn: () => {
       if (submittedForm) {
-        const {name} = submittedForm
-        const res = await companyApiClient.searchHeadOfficesByName(name, currentLang)
-        _analytic.trackSearch({q: name}, 'companysearch_name', res.length)
-        return res
+        return companyApiClient.searchHeadOfficesByName(submittedForm.name, currentLang)
       }
       return null
     },
