@@ -29,12 +29,9 @@ export const CompanySearchByNameAndPostalCode = ({children}: Props) => {
   const [submittedForm, setSubmittedForm] = useState<Form | undefined>()
   const _search = useQuery({
     queryKey: ['searchCompaniesByNameAndPostalCode', submittedForm?.name, submittedForm?.postalCode],
-    queryFn: async () => {
+    queryFn: () => {
       if (submittedForm) {
-        const {name, postalCode} = submittedForm
-        const res = await companyApiClient.searchCompaniesByNameAndPostalCode(name, postalCode, currentLang)
-        _analytic.trackSearch({q: name, postalCode}, 'companysearch_nameandpostalcode', res.length)
-        return res
+        return companyApiClient.searchCompaniesByNameAndPostalCode(submittedForm.name, submittedForm.postalCode, currentLang)
       }
       return null
     },

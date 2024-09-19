@@ -1,4 +1,3 @@
-import {useAnalyticContext} from '@/analytic/AnalyticContext'
 import {useToastOnQueryError} from '@/clients/apiHooks'
 import {Animate} from '@/components_simple/Animate'
 import {useApiClients} from '@/context/ApiClientsContext'
@@ -140,7 +139,6 @@ export function CompanySmartIdentification({
 function useCompanySearchSmartQuery(searchInputs: CompanySearchInputs | undefined) {
   const {companyApiClient} = useApiClients()
   const {currentLang} = useI18n()
-  const _analytic = useAnalyticContext()
   const _search = useQuery({
     queryKey: ['searchCompany', searchInputs],
     queryFn: async () => {
@@ -148,9 +146,7 @@ function useCompanySearchSmartQuery(searchInputs: CompanySearchInputs | undefine
         const {input, geoArea} = searchInputs
         const postalCode = geoArea && geoArea.kind === 'postcode' ? geoArea.postalCode : undefined
         const departmentCode = geoArea && geoArea.kind === 'department' ? geoArea.dpt.code : undefined
-        const res = await companyApiClient.searchSmart(input, postalCode, departmentCode, currentLang)
-        _analytic.trackSearch({q: input, postalCode, departmentCode}, 'companysearch_smart', res.length)
-        return res
+        return companyApiClient.searchSmart(input, postalCode, departmentCode, currentLang)
       }
       return null
     },

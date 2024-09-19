@@ -1,7 +1,6 @@
 import {appConfig} from '@/core/appConfig'
 import {usePathname, useSearchParams} from 'next/navigation'
 import {useEffect} from 'react'
-import {CompanyKind} from 'shared/anomalies/Anomaly'
 import {Eularian} from '../plugins/eularian'
 import {Matomo} from '../plugins/matomo'
 
@@ -12,7 +11,7 @@ export class Analytic {
     return new Analytic(matomo, eularian)
   }
 
-  private log = (...args: unknown[]) => {
+  private log = (...args: (string | undefined)[]) => {
     console.debug('[Analytic]', ...args)
   }
 
@@ -31,43 +30,6 @@ export class Analytic {
     this.log('[trackEvent]', category, action, name, value)
     try {
       this.matomo?.push(['trackEvent', category, action, name, value])
-    } catch (e: any) {
-      console.error('[Analytic]', e)
-      if (!(e instanceof ReferenceError)) {
-        throw e
-      }
-    }
-  }
-
-  readonly trackSearch = (
-    inputs: {q: string; postalCode?: string; departmentCode?: string},
-    searchCategory: 'companysearch_smart' | 'companysearch_nameandpostalcode' | 'companysearch_name' | 'companysearch_siret',
-    nbResults: number,
-  ) => {
-    const {q, postalCode, departmentCode} = inputs
-    const trackedSearch = `${postalCode ? `[${postalCode}] ` : ''}${departmentCode ? `[${departmentCode}] ` : ''}${q}`
-    const args = ['[trackSiteSearch]', trackedSearch, searchCategory, nbResults]
-    this.log(...args)
-    try {
-      // https://developer.matomo.org/guides/tracking-javascript-guide#internal-search-tracking
-      this.matomo?.push(args)
-    } catch (e: any) {
-      console.error('[Analytic]', e)
-      if (!(e instanceof ReferenceError)) {
-        throw e
-      }
-    }
-  }
-
-  readonly setTrackedCompanyKind = (companyKind: CompanyKind) => {
-    const customDimensionId = 1
-    const args = ['setCustomDimension', customDimensionId, companyKind]
-    this.log(...args)
-    try {
-      // https://developer.matomo.org/guides/tracking-javascript-guide#custom-dimensions
-      // This doesn't send anything
-      // but should set the custom dimension "companykind" for the events after it
-      this.matomo?.push(args)
     } catch (e: any) {
       console.error('[Analytic]', e)
       if (!(e instanceof ReferenceError)) {
