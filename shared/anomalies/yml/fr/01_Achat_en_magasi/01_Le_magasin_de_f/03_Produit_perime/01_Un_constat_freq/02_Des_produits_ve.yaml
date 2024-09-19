@@ -1,5 +1,5 @@
 title: Des produits vendus à température ambiante
-desc: 'Exemple : chocolat, conserve, compote, petits pots'
+desc: "Exemple : chocolat, conserve, compote, petits pots"
 blockingInfo:
   title: Ce problème n'est pas un motif de signalement.
   content: >-
@@ -12,7 +12,7 @@ blockingInfo:
     consommé sans danger pour la santé. Il n'est pas nécessaire de le jeter.
   reportOutOfScopeMessage: true
   questions:
-    - question: Vous souhaitez néanmoins faire part de votre mécontentement&#160;?
+    - question: Vous souhaitez néanmoins faire part de votre mécontentement ?
       answer: >-
         Contacter directement le service client de votre magasin pour lui
         expliquer.

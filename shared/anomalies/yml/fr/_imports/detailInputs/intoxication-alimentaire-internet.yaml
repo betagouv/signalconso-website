@@ -4,13 +4,13 @@
 - label: Site internet d'achat
   placeholder: Adresse du site internet complet ou URL
   type: TEXT
-- label: Avez-vous été la seule personne malade&#160;?
+- label: Avez-vous été la seule personne malade ?
   optional: true
   type: RADIO
   options:
     - Non (à préciser)
     - Oui
-- label: Avez-vous consulté un médecin&#160;?
+- label: Avez-vous consulté un médecin ?
   optional: true
   type: RADIO
   options:
@@ -18,7 +18,7 @@
     - Oui (à préciser)
 - label: Décrivez nous plus en détails ce qui s'est passé
   type: TEXTAREA
-- label: Avez-vous déjà contacté le restaurateur ou le fabricant pour ce problème&#160;?
+- label: Avez-vous déjà contacté le restaurateur ou le fabricant pour ce problème ?
   type: RADIO
   options:
     - Oui

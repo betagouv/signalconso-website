@@ -1,14 +1,14 @@
 title: Informations manquantes
-reponseconsoCode: '333'
+reponseconsoCode: "333"
 detailInputs:
-  - label: Quel est-le problème&#160;?
+  - label: Quel est-le problème ?
     type: RADIO
     options:
       - Composition
       - Données énergétiques
       - Disponibilité des pièces de rechange
       - Autre (à préciser)
-  - label: Quel est le type de produit&#160;?
+  - label: Quel est le type de produit ?
     type: RADIO
     options:
       - Textiles
@@ -22,6 +22,6 @@ detailInputs:
     defaultValue: SYSDATE
   - label: Nom / marque
     type: TEXT
-  - label: Qu'avez-vous constaté&#160;?
+  - label: Qu'avez-vous constaté ?
     type: TEXTAREA
 fileLabel: Photos du code barre / n° de lot / référence

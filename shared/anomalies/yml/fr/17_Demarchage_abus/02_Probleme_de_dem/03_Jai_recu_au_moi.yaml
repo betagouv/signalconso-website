@@ -1,7 +1,7 @@
 title: >-
   J'ai reçu au moins 5 appels de la même entreprise sur les 30 derniers jours
 ccrfCode:
-  - '227'
+  - "227"
   - 23E
 companyKind: PHONE
 tags:
@@ -22,7 +22,7 @@ detailInputs:
   - label: Date du cinquième appel
     type: DATE
     defaultValue: SYSDATE
-  - label: Est-ce que le vendeur s'est fait passer pour une autre entreprise&#160;?
+  - label: Est-ce que le vendeur s'est fait passer pour une autre entreprise ?
     type: RADIO
     options:
       - Non

@@ -6,13 +6,13 @@ tags:
   - ReponseConso
 ccrfCode:
   - 23B
-  - '192'
-reponseconsoCode: '210'
+  - "192"
+reponseconsoCode: "210"
 detailInputs:
   - label: Date du constat
     type: DATE
     defaultValue: SYSDATE
-  - label: À propos de quoi est-ce trompeur&#160;?
+  - label: À propos de quoi est-ce trompeur ?
     type: RADIO
     options:
       - L'origine du produit
@@ -24,10 +24,9 @@ detailInputs:
   - label: Pourquoi trouvez-vous ça trompeur ?
     type: TEXTAREA
     optional: true
-  - label: Avez-vous déjà contacté le commerçant pour ce problème&#160;?
+  - label: Avez-vous déjà contacté le commerçant pour ce problème ?
     type: RADIO
     options:
       - Oui
       - Non
 fileLabel: Photo(s) si possible
-

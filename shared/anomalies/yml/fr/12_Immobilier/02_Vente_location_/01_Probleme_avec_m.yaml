@@ -1,5 +1,5 @@
 title: Problème avec mon locataire / propriétaire
-reponseconsoCode: '634'
+reponseconsoCode: "634"
 blockingInfo:
   title: Votre problème ne rentre pas dans le cadre de SignalConso.
   content: >-
@@ -7,14 +7,14 @@ blockingInfo:
     deux particuliers. <br> Vous pouvez passer par un médiateur ou un
     conciliateur de justice.
   questions:
-    - question: Le médiateur civil&#160;
+    - question: Le médiateur civil
       answer: >-
         Le médiateur civil est une personne indépendante chargée de trouver une
         solution amiable. <br> Le recours à un médiateur est payant. <br> Pour
         en savoir plus, consultez le site <a
         href="https://www.service-public.fr/particuliers/vosdroits/F1822"
         target="_blank"/>service-public.fr</a>
-    - question: Le conciliateur de justice&#160;
+    - question: Le conciliateur de justice
       answer: >-
         Le conciliateur de justice intervient pour les conflits entre
         propriétaires et locataires, ou locataires entre eux. <br> Le recours à

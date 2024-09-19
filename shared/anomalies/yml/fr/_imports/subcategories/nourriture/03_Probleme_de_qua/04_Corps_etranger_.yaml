@@ -1,10 +1,10 @@
 title: Corps étranger "dur"
 desc: "Exemple\_: bout de verre, morceau de métal, dent"
 companyKind: PRODUCT
-reponseconsoCode: '323'
+reponseconsoCode: "323"
 tags:
   - ProduitDangereux
-subcategoriesTitle: Quel est le risque&#160;?
+subcategoriesTitle: Quel est le risque ?
 blockingInfo:
   title: Vous souhaitez signaler la présence d'un corps étranger "dur"
   questions:

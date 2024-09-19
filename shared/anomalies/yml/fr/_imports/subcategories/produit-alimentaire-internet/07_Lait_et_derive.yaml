@@ -1,7 +1,7 @@
 title: Lait et dérivé
 tags:
   - ProduitAlimentaire
-desc: 'Exemple : lait, fromage, glace...'
-subcategoriesTitle: Quel est le risque&#160;?
+desc: "Exemple : lait, fromage, glace..."
+subcategoriesTitle: Quel est le risque ?
 subcategories:
   customimport: _imports/subcategories/produit-alimentaire-risque-internet

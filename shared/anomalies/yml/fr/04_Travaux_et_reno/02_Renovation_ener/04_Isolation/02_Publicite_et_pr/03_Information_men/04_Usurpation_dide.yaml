@@ -1,10 +1,10 @@
 title: Usurpation d'identité de la part du professionnel
 ccrfCode:
-  - '271'
+  - "271"
 tags:
   - ReponseConso
 detailInputs:
-  - label: Qu'est-ce qui est trompeur ou mensonger&#160;?
+  - label: Qu'est-ce qui est trompeur ou mensonger ?
     type: RADIO
     options:
       - Le discours du professionnel

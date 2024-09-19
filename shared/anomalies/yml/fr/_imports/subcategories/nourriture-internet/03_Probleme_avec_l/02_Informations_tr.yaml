@@ -1,5 +1,5 @@
 title: Informations trompeuses ou fausses
-reponseconsoCode: '210'
+reponseconsoCode: "210"
 detailInputs:
   - label: Date du constat (ou d'achat suivant le cas)
     type: DATE_NOT_IN_FUTURE
@@ -7,7 +7,7 @@ detailInputs:
   - label: Site internet d'achat
     placeholder: Adresse du site internet complet ou URL
     type: TEXT
-  - label: De quel produit s'agit-il&#160;?
+  - label: De quel produit s'agit-il ?
     type: RADIO
     options:
       - Alcool (vin, spiritueux...)
@@ -16,7 +16,7 @@ detailInputs:
   - label: Nom  et marque du produit
     type: TEXT
     optional: true
-  - label: À propos de quoi est-ce trompeur&#160;?
+  - label: À propos de quoi est-ce trompeur ?
     type: RADIO
     options:
       - L'origine
@@ -25,7 +25,7 @@ detailInputs:
       - Une promesse de résultat
       - Une marque
       - Autres (à préciser)
-  - label: Pourquoi trouvez-vous ça trompeur&#160;?
+  - label: Pourquoi trouvez-vous ça trompeur ?
     type: TEXTAREA
     optional: true
 fileLabel: Photos du produit (si possible de tous les côtés de l'emballage)
