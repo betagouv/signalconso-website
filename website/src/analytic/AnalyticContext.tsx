@@ -5,7 +5,6 @@ import {Analytic} from './analytic'
 export interface AnalyticContextProps {
   trackEvent: Analytic['trackEvent']
   trackSearch: Analytic['trackSearch']
-  setTrackedCompanyKind: Analytic['setTrackedCompanyKind']
 }
 
 interface Props {
@@ -24,7 +23,6 @@ export const AnalyticProvider = ({analytic, children}: Props) => {
         // analytics are not available server-side
         trackEvent: analytic?.trackEvent ?? (() => {}),
         trackSearch: analytic?.trackSearch ?? (() => {}),
-        setTrackedCompanyKind: analytic?.setTrackedCompanyKind ?? (() => {}),
       }}
     >
       {children}
