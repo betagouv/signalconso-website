@@ -1,10 +1,10 @@
-import {useAnalyticContext} from '@/analytic/AnalyticContext'
+import {AnalyticContextProps, useAnalyticContext} from '@/analytic/AnalyticContext'
 import {EventCategories, ReportEventActions} from '@/analytic/analytic'
 import {NextStepButton} from '@/components_feature/reportFlow/reportFlowStepper/NextStepButton'
 import {StepNavigation} from '@/components_feature/reportFlow/reportFlowStepper/ReportFlowStepper'
 import {OpenFfWelcomeText, useOpenFfSetupLoaded as useHandleOpenFfSetupLoaded, useOpenFfSetup} from '@/feature/openFoodFacts'
 import {RappelConsoWelcome, useHandleRcSetupLoaded, useRappelConsoSetup} from '@/feature/rappelConso'
-import {hasStep0, hasStep1Full} from '@/feature/reportUtils'
+import {getCompanyKind, hasStep0, hasStep1Full} from '@/feature/reportUtils'
 import {initiateReport} from '@/feature/reportUtils2'
 import {useI18n} from '@/i18n/I18n'
 import {Step2Model} from '@/model/Step2Model'
@@ -41,6 +41,7 @@ export function Problem({anomaly, isWebView, stepNavigation}: Props) {
 }
 
 function ProblemInner({anomaly, isWebView, stepNavigation}: Props) {
+  const _analytic = useAnalyticContext()
   const {report, setReport, sendReportEvent} = useReportFlowContext()
   if (!hasStep0(report)) {
     throw new Error('Report should have a lang and a category already (in Problem)')
@@ -50,7 +51,7 @@ function ProblemInner({anomaly, isWebView, stepNavigation}: Props) {
   useHandleOpenFfSetupLoaded(openFfSetup, setReport)
   useHandleRcSetupLoaded(rappelConsoSetup, setReport)
   const specialCategoriesNotLoading = openFfSetup.status !== 'loading' && rappelConsoSetup.status !== 'loading'
-  const onNext = buildOnNext({sendReportEvent, setReport, stepNavigation})
+  const onNext = buildOnNext({sendReportEvent, setReport, stepNavigation, _analytic})
   return (
     <>
       <OpenFfWelcomeText setup={openFfSetup} />
@@ -74,16 +75,19 @@ function buildOnNext({
   setReport: setReport,
   stepNavigation,
   sendReportEvent,
+  _analytic,
 }: {
   setReport: SetReport
   stepNavigation: StepNavigation
   sendReportEvent: SendReportEvent
+  _analytic: AnalyticContextProps
 }) {
-  return function onNext(next: () => void): void {
+  return function (next: () => void): void {
     setReport(draft => {
-      if (!hasStep1Full(draft)) {
-        throw new Error(`Report is not ready to go to next step, step1 is not full`)
+      if (!hasStep0(draft) || !hasStep1Full(draft)) {
+        throw new Error(`Report is not ready to go to step2`)
       }
+      _analytic.setTrackedCompanyKind(getCompanyKind(draft))
       // In the openFf scenario
       // Only if we got all the data, then we build the company/product from it.
       // If we only have partial data, then we will build it in step 2.
