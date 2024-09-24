@@ -3,7 +3,7 @@ tags:
   - ReponseConso
 detailInputs:
   - label: Date du constat
-    type: DATE
+    type: DATE_NOT_IN_FUTURE
     defaultValue: SYSDATE
   - label: Décrivez nous plus en détails ce qui s'est passé
     type: TEXTAREA

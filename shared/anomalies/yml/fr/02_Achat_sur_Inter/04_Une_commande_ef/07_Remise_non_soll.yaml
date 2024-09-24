@@ -7,7 +7,7 @@ detailInputs:
   - label: Date d'achat
     type: DATE
   - label: Date du constat
-    type: DATE
+    type: DATE_NOT_IN_FUTURE
     defaultValue: SYSDATE
   - label: Type de produit d"échantillons
     type: TEXT

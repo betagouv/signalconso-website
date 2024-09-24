@@ -10,7 +10,7 @@ ccrfCode:
 reponseconsoCode: "210"
 detailInputs:
   - label: Date du constat
-    type: DATE
+    type: DATE_NOT_IN_FUTURE
     defaultValue: SYSDATE
   - label: À propos de quoi est-ce trompeur ?
     type: RADIO

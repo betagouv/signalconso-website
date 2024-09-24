@@ -1,12 +1,12 @@
 title: Contrainte de l'entreprise
-reponseconsoCode: '210'
+reponseconsoCode: "210"
 tags:
   - ReponseConso
 detailInputs:
   - label: Précisez les informations sur le contexte
     type: TEXTAREA
   - label: Date du constat
-    type: DATE
+    type: DATE_NOT_IN_FUTURE
     defaultValue: SYSDATE
   - label: Heure du constat (facultatif)
     type: TIMESLOT

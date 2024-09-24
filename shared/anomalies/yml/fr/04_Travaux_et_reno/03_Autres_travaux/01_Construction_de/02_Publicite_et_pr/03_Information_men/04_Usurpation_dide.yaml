@@ -16,7 +16,7 @@ detailInputs:
   - label: Description
     type: TEXTAREA
   - label: Date du constat
-    type: DATE
+    type: DATE_NOT_IN_FUTURE
     defaultValue: SYSDATE
   - label: Heure du constat (facultatif)
     type: TIMESLOT

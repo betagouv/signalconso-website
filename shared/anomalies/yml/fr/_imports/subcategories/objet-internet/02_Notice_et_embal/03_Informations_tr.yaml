@@ -16,7 +16,7 @@ detailInputs:
       - Électroniques
       - Autre (à préciser)
   - label: Date du constat
-    type: DATE
+    type: DATE_NOT_IN_FUTURE
     defaultValue: SYSDATE
   - label: Nom / marque / référence
     type: TEXT
