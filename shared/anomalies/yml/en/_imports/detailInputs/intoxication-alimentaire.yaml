@@ -1,5 +1,5 @@
 - label: Date of accident
-  type: DATE
+  type: DATE_NOT_IN_FUTURE
   defaultValue: SYSDATE
 - label: Were you the only sick person ?
   optional: true
