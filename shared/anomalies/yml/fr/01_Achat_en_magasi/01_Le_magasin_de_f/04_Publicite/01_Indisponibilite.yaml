@@ -4,7 +4,7 @@ ccrfCode:
 reponseconsoCode: "210"
 detailInputs:
   - label: Date du constat
-    type: DATE
+    type: DATE_NOT_IN_FUTURE
     defaultValue: SYSDATE
   - label: De quelle publicité s'agit-il ?
     type: RADIO

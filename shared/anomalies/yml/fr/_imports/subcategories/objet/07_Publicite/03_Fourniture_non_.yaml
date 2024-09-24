@@ -5,12 +5,12 @@ tags:
   - TransitionEcologique
   - ReponseConso
 ccrfCode:
-  - '192'
+  - "192"
   - 23E
-reponseconsoCode: '210'
+reponseconsoCode: "210"
 detailInputs:
   - label: Date du constat
-    type: DATE
+    type: DATE_NOT_IN_FUTURE
     defaultValue: SYSDATE
   - label: Nom  et marque du produit
     type: TEXT

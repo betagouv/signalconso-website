@@ -3,7 +3,7 @@ desc: Le produit vendu fait l'objet d'une mesure de retrait / rappel des autorit
 reponseconsoCode: "311"
 detailInputs:
   - label: Date du constat
-    type: DATE
+    type: DATE_NOT_IN_FUTURE
     defaultValue: SYSDATE
   - label: Heure du constat
     type: TIMESLOT

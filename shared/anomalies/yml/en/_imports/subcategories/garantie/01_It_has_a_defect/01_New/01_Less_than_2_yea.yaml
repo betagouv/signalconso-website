@@ -5,7 +5,7 @@ detailInputs:
   - label: Product name
     type: TEXT
   - label: Date of discovery of the incident
-    type: DATE
+    type: DATE_NOT_IN_FUTURE
     defaultValue: SYSDATE
   - label: Contact person
     type: RADIO

@@ -7,7 +7,7 @@ desc: >-
 reponseconsoCode: "212"
 detailInputs:
   - label: Date du constat
-    type: DATE
+    type: DATE_NOT_IN_FUTURE
     defaultValue: SYSDATE
   - label: Heure du constat
     type: TIMESLOT

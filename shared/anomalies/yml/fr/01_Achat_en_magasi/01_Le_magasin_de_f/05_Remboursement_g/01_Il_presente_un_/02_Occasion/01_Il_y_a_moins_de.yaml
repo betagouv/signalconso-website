@@ -5,7 +5,7 @@ detailInputs:
   - label: Nom du produit
     type: TEXT
   - label: Date du constat
-    type: DATE
+    type: DATE_NOT_IN_FUTURE
     defaultValue: SYSDATE
   - label: Interlocuteur
     type: RADIO

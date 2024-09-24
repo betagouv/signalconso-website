@@ -1,7 +1,7 @@
 title: Prices are missing / prices are unreadable
 ccrfCode:
-  - '163'
-reponseconsoCode: '212'
+  - "163"
+reponseconsoCode: "212"
 detailInputs:
   - label: Please specify
     type: RADIO
@@ -10,7 +10,7 @@ detailInputs:
       - Price illegible
       - Other (to be specified)
   - label: Date of discovery of the incident
-    type: DATE
+    type: DATE_NOT_IN_FUTURE
     defaultValue: SYSDATE
   - label: Description
     type: TEXTAREA

@@ -2,7 +2,7 @@ title: Je trouve les locaux sales ou dégradés
 desc: "Exemple\_: cuisine sale, WC sales"
 detailInputs:
   - label: Date du constat
-    type: DATE
+    type: DATE_NOT_IN_FUTURE
     defaultValue: SYSDATE
   - label: Heure du constat (facultatif)
     type: TIMESLOT

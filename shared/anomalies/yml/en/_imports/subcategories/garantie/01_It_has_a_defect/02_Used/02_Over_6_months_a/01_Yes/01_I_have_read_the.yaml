@@ -7,7 +7,7 @@ detailInputs:
   - label: Additional warranty end date
     type: DATE
   - label: Date of discovery of the incident
-    type: DATE
+    type: DATE_NOT_IN_FUTURE
     defaultValue: SYSDATE
   - label: Reason for refusal
     type: TEXT
