@@ -139,6 +139,30 @@ export const en = {
         title: '',
         description: '',
       },
+      repasSurPlaceCouvertsJetables: {
+        title: '',
+        description: '',
+      },
+      fournitureSystematiqueEchantillonsInternet: {
+        title: '',
+        description: '',
+      },
+      distributionGratuiteBouteillesPlastique: {
+        title: '',
+        description: '',
+      },
+      informationsEnvironnementalesVehiculesNeufs: {
+        title: '',
+        description: '',
+      },
+      allegationNeutraliteCompensationCarbone: {
+        title: '',
+        description: '',
+      },
+      impressionSystematiqueTicketDeCaisse: {
+        title: '',
+        description: '',
+      },
       signalInfluenceur: {
         title: '',
         description: '',

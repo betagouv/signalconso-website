@@ -1,5 +1,7 @@
 import {AppLang, AppLangs} from './AppLangs'
 import {formatDistance, formatDuration as formatDurationFns} from 'date-fns'
+import {repasSurPlaceCouvertsJetables} from '@/reusablePages/manual_landings/repasSurPlaceCouvertsJetables'
+import {fournitureSystematiqueEchantillonsInternet} from '@/reusablePages/manual_landings/fournitureSystematiqueEchantillonsInternet'
 
 const invalidDate = '-'
 
@@ -139,6 +141,30 @@ export const fr = {
         title: 'Mauvais affichage des prix : Signalez-le sur SignalConso !',
         description:
           'Vous constatez un écart entre le prix affiché en magasin et celui en caisse ? Signalez-le sur SignalConso ! Protégez vos droits en cas de mauvais affichage des prix ou de promotions non appliquées. Agissez avec la DGCCRF pour corriger ces pratiques commerciales trompeuses.',
+      },
+      repasSurPlaceCouvertsJetables: {
+        title: '',
+        description: '',
+      },
+      fournitureSystematiqueEchantillonsInternet: {
+        title: '',
+        description: '',
+      },
+      distributionGratuiteBouteillesPlastique: {
+        title: '',
+        description: '',
+      },
+      informationsEnvironnementalesVehiculesNeufs: {
+        title: '',
+        description: '',
+      },
+      allegationNeutraliteCompensationCarbone: {
+        title: '',
+        description: '',
+      },
+      impressionSystematiqueTicketDeCaisse: {
+        title: '',
+        description: '',
       },
       signalInfluenceur: {
         title: "Signalez une publication frauduleuse d'un influenceur",
