@@ -44,6 +44,8 @@ const changedPaths = [
   ['/d%C3%A9marchage-t%C3%A9l%C3%A9phonique', '/demarchage-abusif'],
   ['/pompe-%C3%A0-chaleur-pac', '/pompe-a-chaleur-pac'],
   ['/fr/bloctel', '/fr/demarchage-abusif'],
+  ['/webview/bloctel', '/webview/demarchage-abusif'],
+  ['/fr/webview/bloctel', '/fr/webview/demarchage-abusif'],
   ['/fr/demarchage-telephonique', '/fr/demarchage-abusif'],
   ['/fr/bloctel/faire-un-signalement', '/fr/demarchage-abusif/faire-un-signalement'],
   ['/fr/duree-de-vie-produit-obsolescence-programmee-internet', '/fr/duree-de-vie-produit-obsolescence-programmee'],
