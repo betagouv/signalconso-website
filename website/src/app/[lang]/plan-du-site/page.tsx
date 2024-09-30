@@ -6,6 +6,13 @@ import {AppLang, AppLangs} from '@/i18n/localization/AppLangs'
 import {allVisibleLandings} from '@/landings/landingDataUtils'
 import Link from 'next/link'
 import {getI18n} from '../../../i18n/I18nDictionnary'
+import {erreurDePrixEnCaisse} from '@/reusablePages/manual_landings/erreurDePrixEnCaisse'
+import {repasSurPlaceCouvertsJetables} from '@/reusablePages/manual_landings/repasSurPlaceCouvertsJetables'
+import {fournitureSystematiqueEchantillonsInternet} from '@/reusablePages/manual_landings/fournitureSystematiqueEchantillonsInternet'
+import {distributionGratuiteBouteillesPlastique} from '@/reusablePages/manual_landings/distributionGratuiteBouteillesPlastique'
+import {informationsEnvironnementalesVehiculesNeufs} from '@/reusablePages/manual_landings/informationsEnvironnementalesVehiculesNeufs'
+import {allegationNeutraliteCompensationCarbone} from '@/reusablePages/manual_landings/allegationNeutraliteCompensationCarbone'
+import {impressionSystematiqueTicketDeCaisse} from '@/reusablePages/manual_landings/impressionSystematiqueTicketDeCaisse'
 
 export const generateMetadata = buildGenerateMetadata('planDuSite')
 
@@ -49,6 +56,33 @@ const PlanDuSite = (props: PageComponentProps) => {
           <BasicPageLink page="obsolescencePage" label={m.planDuSite.obsolescencePage} {...{lang}} />
           <BasicPageLink page="demarchageAbusif" label={m.planDuSite.demarchageAbusif} {...{lang}} />
           <BasicPageLink page="intoxAlimentaire" label={m.planDuSite.intoxAlimentaire} {...{lang}} />
+          <BasicPageLink page="erreurDePrixEnCaisse" label={m.planDuSite.erreurDePrixEnCaisse} {...{lang}} />
+          <BasicPageLink page="repasSurPlaceCouvertsJetables" label={m.planDuSite.repasSurPlaceCouvertsJetables} {...{lang}} />
+          <BasicPageLink
+            page="fournitureSystematiqueEchantillonsInternet"
+            label={m.planDuSite.fournitureSystematiqueEchantillonsInternet}
+            {...{lang}}
+          />
+          <BasicPageLink
+            page="distributionGratuiteBouteillesPlastique"
+            label={m.planDuSite.distributionGratuiteBouteillesPlastique}
+            {...{lang}}
+          />
+          <BasicPageLink
+            page="informationsEnvironnementalesVehiculesNeufs"
+            label={m.planDuSite.informationsEnvironnementalesVehiculesNeufs}
+            {...{lang}}
+          />
+          <BasicPageLink
+            page="allegationNeutraliteCompensationCarbone"
+            label={m.planDuSite.allegationNeutraliteCompensationCarbone}
+            {...{lang}}
+          />
+          <BasicPageLink
+            page="impressionSystematiqueTicketDeCaisse"
+            label={m.planDuSite.impressionSystematiqueTicketDeCaisse}
+            {...{lang}}
+          />
           <hr className="mt-4" />
         </ul>
         <h2 className="fr-h4">{m.planDuSite.proSpaceSection}</h2>

@@ -100,16 +100,16 @@ export function distributionGratuiteBouteillesPlastique(props: PageComponentProp
           <p className="text-lg">En signalant la distribution abusive de bouteilles en plastique, vous participez à :</p>
           <ul className="ml-4">
             <li className="text-lg">
-              Faire respecter les lois environnementales : Les entreprises et organisateurs ont l’obligation de réduire leur
-              impact écologique, et chaque signalement aide à les responsabiliser.
+              <strong>Faire respecter les lois environnementales :</strong> Les entreprises et organisateurs ont l’obligation de
+              réduire leur impact écologique, et chaque signalement aide à les responsabiliser.
             </li>
             <li className="text-lg">
-              Favoriser les pratiques écoresponsables : Vos signalements encouragent l’adoption de solutions plus durables dans
-              les événements publics et les points de vente.
+              <strong>Favoriser les pratiques écoresponsables :</strong> Vos signalements encouragent l’adoption de solutions plus
+              durables dans les événements publics et les points de vente.
             </li>
             <li className="text-lg">
-              Contribuer à la réduction des déchets plastiques : Moins de bouteilles en plastique distribuées, c’est moins de
-              déchets dans nos décharges et nos océans.
+              <strong>Contribuer à la réduction des déchets plastiques :</strong> Moins de bouteilles en plastique distribuées,
+              c’est moins de déchets dans nos décharges et nos océans.
             </li>
           </ul>
         </div>

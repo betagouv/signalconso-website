@@ -42,26 +42,26 @@ export function fournitureSystematiqueEchantillonsInternet(props: PageComponentP
           </p>
           <ul className="ml-4">
             <li className="text-lg">
-              Surproduction et gaspillage : L’envoi d’échantillons non sollicités contribue à la surproduction de biens,
-              entraînant un gaspillage de ressources naturelles. Ces produits, souvent petits et fabriqués en masse, demandent
-              malgré tout des matières premières (plastique, papier, énergie). La majorité finit jetée sans avoir été utilisée,
-              augmentant ainsi la production de déchets.
+              <strong>Surproduction et gaspillage :</strong> L’envoi d’échantillons non sollicités contribue à la surproduction de
+              biens, entraînant un gaspillage de ressources naturelles. Ces produits, souvent petits et fabriqués en masse,
+              demandent malgré tout des matières premières (plastique, papier, énergie). La majorité finit jetée sans avoir été
+              utilisée, augmentant ainsi la production de déchets.
             </li>
             <li className="text-lg">
-              Emballages excessifs : Ces échantillons sont souvent accompagnés de multiples couches d’emballages plastiques ou
-              cartonnés, qui sont rarement recyclés correctement. Cela contribue à la pollution plastique, un enjeu
+              <strong>Emballages excessifs :</strong> Ces échantillons sont souvent accompagnés de multiples couches d’emballages
+              plastiques ou cartonnés, qui sont rarement recyclés correctement. Cela contribue à la pollution plastique, un enjeu
               environnemental majeur, et ne fait qu'alourdir l'empreinte écologique de ces pratiques.
             </li>
             <li className="text-lg">
-              Transport et émissions de CO2 : L’acheminement des échantillons gratuits génère des émissions de CO2 liées à la
-              logistique et aux livraisons. Quand ces envois ne sont pas désirés par les consommateurs, ils participent
-              directement au gaspillage de ressources tout en augmentant l’impact carbone.
+              <strong>Transport et émissions de CO2 :</strong> L’acheminement des échantillons gratuits génère des émissions de
+              CO2 liées à la logistique et aux livraisons. Quand ces envois ne sont pas désirés par les consommateurs, ils
+              participent directement au gaspillage de ressources tout en augmentant l’impact carbone.
             </li>
             <li className="text-lg">
-              Pratiques commerciales non responsables : En plus des enjeux environnementaux, la fourniture non sollicitée
-              d’échantillons peut induire le consommateur en erreur, en lui faisant croire à un cadeau ou en l’incitant à acheter
-              des produits dont il n’a pas réellement besoin. Ce type de marketing encourage la surconsommation, à l’opposé des
-              principes de consommation raisonnée et durable.
+              <strong>Pratiques commerciales non responsables :</strong> En plus des enjeux environnementaux, la fourniture non
+              sollicitée d’échantillons peut induire le consommateur en erreur, en lui faisant croire à un cadeau ou en l’incitant
+              à acheter des produits dont il n’a pas réellement besoin. Ce type de marketing encourage la surconsommation, à
+              l’opposé des principes de consommation raisonnée et durable.
             </li>
           </ul>
         </div>
@@ -72,13 +72,13 @@ export function fournitureSystematiqueEchantillonsInternet(props: PageComponentP
           <p className="text-lg">En signalant ces pratiques, vous participez activement à une économie plus responsable :</p>
           <ul className="ml-4">
             <li className="text-lg">
-              Encourager les pratiques éthiques : En dénonçant les envois non sollicités d’échantillons, vous poussez les
-              entreprises à revoir leurs stratégies commerciales pour s’adapter à des attentes plus respectueuses de
+              <strong>Encourager les pratiques éthiques :</strong> En dénonçant les envois non sollicités d’échantillons, vous
+              poussez les entreprises à revoir leurs stratégies commerciales pour s’adapter à des attentes plus respectueuses de
               l'environnement.
             </li>
             <li className="text-lg">
-              Réduire l'impact environnemental : Les signalements permettent aux autorités de mieux contrôler et limiter ces
-              pratiques, qui entraînent un gaspillage important de ressources.
+              <strong>Réduire l'impact environnemental :</strong> Les signalements permettent aux autorités de mieux contrôler et
+              limiter ces pratiques, qui entraînent un gaspillage important de ressources.
             </li>
           </ul>
           <p className="text-lg">
