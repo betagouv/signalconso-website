@@ -58,14 +58,14 @@ export function informationsEnvironnementalesVehiculesNeufs(props: PageComponent
             Choisir un véhicule, c'est faire un investissement à long terme, mais c'est aussi avoir un impact sur l’environnement.
             En disposant des informations environnementales, vous pouvez :
           </p>
-          <ul className="ml-4">
-            <li className="text-lg">
+          <ul className="md:pl-0 md:flex md:flex-row md:justify-around">
+            <li className="text-lg basis-1/4">
               Comparer les véhicules entre eux en fonction de leur <strong>efficacité énergétique.</strong>
             </li>
-            <li className="text-lg">
+            <li className="text-lg basis-1/4">
               Faire un <strong>choix éclairé</strong> qui prend en compte à la fois le coût d’usage et les émissions de CO2.
             </li>
-            <li className="text-lg">
+            <li className="text-lg basis-1/4">
               Contribuer à <strong>réduire votre empreinte carbone</strong> en optant pour des véhicules plus écologiques.
             </li>
           </ul>
@@ -87,10 +87,10 @@ export function informationsEnvironnementalesVehiculesNeufs(props: PageComponent
           <p className="text-lg">
             En signalant l’absence d’informations environnementales sur les véhicules neufs, vous contribuez à :
           </p>
-          <ul className="ml-4">
-            <li className="text-lg">Garantir la transparence pour tous les consommateurs.</li>
-            <li className="text-lg">Encourager les vendeurs à respecter leurs obligations légales.</li>
-            <li className="text-lg">
+          <ul className="md:pl-0 md:flex md:flex-row md:justify-around">
+            <li className="text-lg basis-1/4">Garantir la transparence pour tous les consommateurs.</li>
+            <li className="text-lg basis-1/4">Encourager les vendeurs à respecter leurs obligations légales.</li>
+            <li className="text-lg basis-1/4">
               Réduire l’impact environnemental en sensibilisant les acheteurs à l’efficacité énergétique.
             </li>
           </ul>

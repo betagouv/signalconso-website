@@ -47,10 +47,12 @@ export function allegationNeutraliteCompensationCarbone(props: PageComponentProp
             peuvent <strong>induire les consommateurs en erreur.</strong>
           </p>
           <p className="text-lg">Une allégation douteuse peut concerner :</p>
-          <ul className="ml-4">
-            <li className="text-lg">Un produit affiché comme "neutre en carbone" sans preuve concrète.</li>
-            <li className="text-lg">Des compensations carbone qui ne respectent pas les standards internationaux.</li>
-            <li className="text-lg">Des informations floues ou trompeuses sur les efforts réels de réduction d'émissions.</li>
+          <ul className="md:pl-0 md:flex md:flex-row md:justify-around">
+            <li className="text-lg basis-1/4">Un produit affiché comme "neutre en carbone" sans preuve concrète.</li>
+            <li className="text-lg basis-1/4">Des compensations carbone qui ne respectent pas les standards internationaux.</li>
+            <li className="text-lg basis-1/4">
+              Des informations floues ou trompeuses sur les efforts réels de réduction d'émissions.
+            </li>
           </ul>
         </div>
       </div>
@@ -62,10 +64,10 @@ export function allegationNeutraliteCompensationCarbone(props: PageComponentProp
             réchauffement climatique, en toute bonne foi. Mais si cette <strong>allégation est fausse ou exagérée</strong>, vous
             risquez de :
           </p>
-          <ul className="ml-4">
-            <li className="text-lg">Soutenir un greenwashing</li>
-            <li className="text-lg">Ne pas obtenir les avantages écologiques promis.</li>
-            <li className="text-lg">
+          <ul className="md:pl-0 md:flex md:flex-row md:justify-around">
+            <li className="text-lg basis-1/4">Soutenir un greenwashing</li>
+            <li className="text-lg basis-1/4">Ne pas obtenir les avantages écologiques promis.</li>
+            <li className="text-lg basis-1/4">
               Financer des projets de compensation qui ne réduisent pas réellement les émissions de CO₂.
             </li>
           </ul>

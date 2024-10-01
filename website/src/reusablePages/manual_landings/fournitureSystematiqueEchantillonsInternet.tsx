@@ -70,13 +70,13 @@ export function fournitureSystematiqueEchantillonsInternet(props: PageComponentP
         <div className="fr-container py-4">
           <h2 className="fr-h4 !text-white">Pourquoi faire un signalement sur SignalConso ?</h2>
           <p className="text-lg">En signalant ces pratiques, vous participez activement à une économie plus responsable :</p>
-          <ul className="ml-4">
-            <li className="text-lg">
+          <ul className="md:pl-0 md:flex md:flex-row md:justify-around">
+            <li className="text-lg basis-1/3">
               <strong>Encourager les pratiques éthiques :</strong> En dénonçant les envois non sollicités d’échantillons, vous
               poussez les entreprises à revoir leurs stratégies commerciales pour s’adapter à des attentes plus respectueuses de
               l'environnement.
             </li>
-            <li className="text-lg">
+            <li className="text-lg basis-1/3">
               <strong>Réduire l'impact environnemental :</strong> Les signalements permettent aux autorités de mieux contrôler et
               limiter ces pratiques, qui entraînent un gaspillage important de ressources.
             </li>

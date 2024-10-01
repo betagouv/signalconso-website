@@ -57,10 +57,10 @@ export function impressionSystematiqueTicketDeCaisse(props: PageComponentProps) 
             Certaines situations échappent cependant à cette règle, et les tickets peuvent être automatiquement imprimés dans les
             cas suivants :
           </p>
-          <ul className="ml-4">
-            <li className="text-lg">Achats de produits sous garantie (électroménager, électronique, etc.).</li>
-            <li className="text-lg">Transactions liées à des titres-restaurant.</li>
-            <li className="text-lg">Tickets délivrés par des automates de parking ou d’autoroute.</li>
+          <ul className="md:pl-0 md:flex md:flex-row md:justify-around">
+            <li className="text-lg basis-1/4">Achats de produits sous garantie (électroménager, électronique, etc.).</li>
+            <li className="text-lg basis-1/4">Transactions liées à des titres-restaurant.</li>
+            <li className="text-lg basis-1/4">Tickets délivrés par des automates de parking ou d’autoroute.</li>
           </ul>
           <p className="text-lg">
             Dans tous les autres cas, les commerçants doivent{' '}
@@ -81,12 +81,16 @@ export function impressionSystematiqueTicketDeCaisse(props: PageComponentProps) 
             En signalant les commerçants qui ne respectent pas cette nouvelle réglementation sur les tickets de caisse, vous
             contribuez à :
           </p>
-          <ul className="ml-4">
-            <li className="text-lg">
+          <ul className="md:pl-0 md:flex md:flex-row md:justify-around">
+            <li className="text-lg basis-1/4">
               Encourager une pratique plus respectueuse de l’environnement en réduisant le gaspillage de papier.
             </li>
-            <li className="text-lg">Protéger les consommateurs contre des pratiques commerciales non conformes à la loi.</li>
-            <li className="text-lg">Promouvoir l’adoption de nouvelles habitudes favorisant des alternatives numériques.</li>
+            <li className="text-lg basis-1/4">
+              Protéger les consommateurs contre des pratiques commerciales non conformes à la loi.
+            </li>
+            <li className="text-lg basis-1/4">
+              Promouvoir l’adoption de nouvelles habitudes favorisant des alternatives numériques.
+            </li>
           </ul>
         </div>
       </div>

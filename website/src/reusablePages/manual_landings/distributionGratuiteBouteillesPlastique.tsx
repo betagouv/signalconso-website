@@ -44,12 +44,12 @@ export function distributionGratuiteBouteillesPlastique(props: PageComponentProp
             alternatives durables comme les bouteilles réutilisables ou les points d’eau potable.
           </p>
           <p className="text-lg">Les organisateurs d’événements et les commerces sont encouragés à :</p>
-          <ul className="ml-4">
-            <li className="text-lg">Limiter l’usage de plastique à usage unique.</li>
-            <li className="text-lg">
+          <ul className="md:pl-0 md:flex md:flex-row md:justify-around">
+            <li className="text-lg basis-1/4">Limiter l’usage de plastique à usage unique.</li>
+            <li className="text-lg basis-1/4">
               Proposer des bouteilles réutilisables ou des alternatives écologiques (bouteilles en verre, gourdes, etc.).
             </li>
-            <li className="text-lg">
+            <li className="text-lg basis-1/4">
               Installer des fontaines à eau pour permettre aux consommateurs de se servir sans générer de déchets plastiques.
             </li>
           </ul>
@@ -82,14 +82,14 @@ export function distributionGratuiteBouteillesPlastique(props: PageComponentProp
           <p className="text-lg">
             En tant que consommateur, vous pouvez contribuer à réduire la distribution inutile de bouteilles en plastique :
           </p>
-          <ul className="ml-4">
-            <li className="text-lg">
+          <ul className="md:pl-0 md:flex md:flex-row md:justify-around">
+            <li className="text-lg basis-1/4">
               Refusez les bouteilles gratuites lorsque cela est possible et optez pour une gourde réutilisable.
             </li>
-            <li className="text-lg">
+            <li className="text-lg basis-1/4">
               Sensibilisez votre entourage : Faites prendre conscience des impacts environnementaux de ces gestes anodins.
             </li>
-            <li className="text-lg">Faites un signalement sur SignalConso</li>
+            <li className="text-lg basis-1/4">Faites un signalement sur SignalConso</li>
           </ul>
         </div>
       </div>

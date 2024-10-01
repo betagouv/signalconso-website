@@ -92,12 +92,12 @@ export function repasSurPlaceCouvertsJetables(props: PageComponentProps) {
             pouvoir d’agir en effectuant un signalement via SignalConso.
           </p>
           <p className="text-lg">Ce signalement permettra :</p>
-          <ul className="ml-4">
-            <li className="text-lg">
+          <ul className="md:pl-0 md:flex md:flex-row md:justify-around">
+            <li className="text-lg basis-1/3">
               D’encourager des pratiques conformes à la législation en vigueur en matière d’usage unique et de lutte contre la
               pollution plastique.
             </li>
-            <li className="text-lg">
+            <li className="text-lg basis-1/3">
               De protéger l’environnement en réduisant les déchets et en favorisant une prise de conscience des restaurateurs sur
               l’impact de leurs choix.
             </li>
