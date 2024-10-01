@@ -1,5 +1,6 @@
 import {AppLang, AppLangs} from './AppLangs'
 import {formatDistance, formatDuration as formatDurationFns} from 'date-fns'
+import {erreurDePrixEnCaisse} from '@/reusablePages/manual_landings/erreurDePrixEnCaisse'
 
 const invalidDate = '-'
 
@@ -136,6 +137,30 @@ export const en = {
         description: '',
       },
       erreurDePrixEnCaisse: {
+        title: '',
+        description: '',
+      },
+      repasSurPlaceCouvertsJetables: {
+        title: '',
+        description: '',
+      },
+      fournitureSystematiqueEchantillonsInternet: {
+        title: '',
+        description: '',
+      },
+      distributionGratuiteBouteillesPlastique: {
+        title: '',
+        description: '',
+      },
+      informationsEnvironnementalesVehiculesNeufs: {
+        title: '',
+        description: '',
+      },
+      allegationNeutraliteCompensationCarbone: {
+        title: '',
+        description: '',
+      },
+      impressionSystematiqueTicketDeCaisse: {
         title: '',
         description: '',
       },
@@ -573,6 +598,13 @@ export const en = {
       obsolescencePage: 'Report a device with a lifespan that seems too short',
       demarchageAbusif: 'Report an abusive telemarketing call',
       intoxAlimentaire: 'Report food poisoning',
+      erreurDePrixEnCaisse: 'Faire un signalement sur une erreur de prix en caisse',
+      repasSurPlaceCouvertsJetables: 'Faire un signalement sur un repas sur place avec couverts jetables',
+      fournitureSystematiqueEchantillonsInternet: "Faire un signalement pour fournitures systematiques d'échantillons",
+      distributionGratuiteBouteillesPlastique: 'Faire un signalement pour distribution gratuite de bouteilles en plastique',
+      informationsEnvironnementalesVehiculesNeufs: 'Faire un signalement sur informations environnementales de vehicules neufs',
+      allegationNeutraliteCompensationCarbone: 'Faire un signalement sur des allegations de neutralite compensation carbone',
+      impressionSystematiqueTicketDeCaisse: 'Faire un signalement sur des impressions systematiques de tickets de caisse',
       signalInfluenceur: '',
       reportIncidentSection: 'Submitting a report',
       reportIncidentFor: 'Report a company for',
