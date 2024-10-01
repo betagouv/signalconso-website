@@ -1,6 +1,5 @@
-import {AppLang, AppLangs} from './AppLangs'
 import {formatDistance, formatDuration as formatDurationFns} from 'date-fns'
-import {erreurDePrixEnCaisse} from '@/reusablePages/manual_landings/erreurDePrixEnCaisse'
+import {AppLang, AppLangs} from './AppLangs'
 
 const invalidDate = '-'
 
@@ -180,6 +179,14 @@ export const en = {
         title: '',
         description: '',
       },
+      blackFridayAboFraisCaches: {title: '', description: ''},
+      blackFridayColis: {title: '', description: ''},
+      blackFridayDarkPatterns: {title: '', description: ''},
+      blackFridayFausseReduction: {title: '', description: ''},
+      blackFridayFauxSiteGouvernemental: {title: '', description: ''},
+      blackFridayFauxStocks: {title: '', description: ''},
+      blackFridaySav: {title: '', description: ''},
+      blackFridaySitesFrauduleux: {title: '', description: ''},
     },
     faireUnSignalement: {
       etape: 'Step',
@@ -605,6 +612,14 @@ export const en = {
       informationsEnvironnementalesVehiculesNeufs: 'Faire un signalement sur informations environnementales de vehicules neufs',
       allegationNeutraliteCompensationCarbone: 'Faire un signalement sur des allegations de neutralite compensation carbone',
       impressionSystematiqueTicketDeCaisse: 'Faire un signalement sur des impressions systematiques de tickets de caisse',
+      blackFridayAboFraisCaches: '',
+      blackFridayColis: '',
+      blackFridayDarkPatterns: '',
+      blackFridayFausseReduction: '',
+      blackFridayFauxSiteGouvernemental: '',
+      blackFridayFauxStocks: '',
+      blackFridaySav: '',
+      blackFridaySitesFrauduleux: '',
       signalInfluenceur: '',
       reportIncidentSection: 'Submitting a report',
       reportIncidentFor: 'Report a company for',
