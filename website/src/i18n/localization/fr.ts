@@ -1,5 +1,8 @@
 import {AppLang, AppLangs} from './AppLangs'
 import {formatDistance, formatDuration as formatDurationFns} from 'date-fns'
+import {repasSurPlaceCouvertsJetables} from '@/reusablePages/manual_landings/repasSurPlaceCouvertsJetables'
+import {fournitureSystematiqueEchantillonsInternet} from '@/reusablePages/manual_landings/fournitureSystematiqueEchantillonsInternet'
+import {erreurDePrixEnCaisse} from '@/reusablePages/manual_landings/erreurDePrixEnCaisse'
 
 const invalidDate = '-'
 
@@ -139,6 +142,36 @@ export const fr = {
         title: 'Mauvais affichage des prix : Signalez-le sur SignalConso !',
         description:
           'Vous constatez un écart entre le prix affiché en magasin et celui en caisse ? Signalez-le sur SignalConso ! Protégez vos droits en cas de mauvais affichage des prix ou de promotions non appliquées. Agissez avec la DGCCRF pour corriger ces pratiques commerciales trompeuses.',
+      },
+      repasSurPlaceCouvertsJetables: {
+        title: 'Couverts jetables au restaurant : signalez-le sur SignalConso',
+        description:
+          "Découvrez l'impact environnemental des couverts jetables et la législation en vigueur. Agissez pour une restauration durable en signalant les infractions sur SignalConso.",
+      },
+      fournitureSystematiqueEchantillonsInternet: {
+        title: 'Échantillons gratuits non sollicités : signalez-les sur SignalConso',
+        description:
+          "Découvrez l'impact écologique des échantillons non sollicités. Agissez pour une consommation durable en signalant ces pratiques sur SignalConso.",
+      },
+      distributionGratuiteBouteillesPlastique: {
+        title: 'Distribution gratuite de bouteilles plastiques : Signalez sur SignalConso',
+        description:
+          "Découvrez l'impact écologique des bouteilles plastiques gratuites. Agissez pour l'environnement en signalant ces distributions sur SignalConso.",
+      },
+      informationsEnvironnementalesVehiculesNeufs: {
+        title: 'Infos environnementales véhicules neufs : Signalez sur SignalConso',
+        description:
+          "Découvrez vos droits sur les informations environnementales des véhicules neufs. Signalez l'absence d'étiquette énergie sur SignalConso pour protéger l'environnement.",
+      },
+      allegationNeutraliteCompensationCarbone: {
+        title: 'Neutralité Carbone : Comment repérer les allégations douteuses et signaler sur SignalConso',
+        description:
+          'Découvrez comment repérer les fausses allégations de neutralité carbone et protégez vos droits en tant que consommateur. Signalez les pratiques trompeuses sur SignalConso et luttez contre le greenwashing.',
+      },
+      impressionSystematiqueTicketDeCaisse: {
+        title: 'Ticket de caisse imprimé sans demande : comment signaler avec SignalConso',
+        description:
+          'Depuis août 2023, les tickets de caisse ne doivent plus être imprimés automatiquement. Découvrez vos droits et comment signaler les infractions via SignalConso pour réduire le gaspillage.',
       },
       signalInfluenceur: {
         title: "Signalez une publication frauduleuse d'un influenceur",
@@ -584,6 +617,13 @@ export const fr = {
       obsolescencePage: 'Faire un signalement pour un appareil dont la durée de vie vous semble trop courte',
       demarchageAbusif: 'Faire un signalement pour un démarchage téléphonique abusif (malgré Bloctel, trop fréquent, etc.)',
       intoxAlimentaire: 'Faire un signalement pour une intoxication alimentaire',
+      erreurDePrixEnCaisse: 'Faire un signalement sur une erreur de prix en caisse',
+      repasSurPlaceCouvertsJetables: 'Faire un signalement sur un repas sur place avec couverts jetables',
+      fournitureSystematiqueEchantillonsInternet: "Faire un signalement pour fournitures systematiques d'échantillons",
+      distributionGratuiteBouteillesPlastique: 'Faire un signalement pour distribution gratuite de bouteilles en plastique',
+      informationsEnvironnementalesVehiculesNeufs: 'Faire un signalement sur informations environnementales de vehicules neufs',
+      allegationNeutraliteCompensationCarbone: 'Faire un signalement sur des allegations de neutralite compensation carbone',
+      impressionSystematiqueTicketDeCaisse: 'Faire un signalement sur des impressions systematiques de tickets de caisse',
       signalInfluenceur: 'Faire un signalement sur un influenceur',
       reportIncidentSection: "Dépôt d'un signalement",
       reportIncidentFor: 'Faire un signalement pour',
