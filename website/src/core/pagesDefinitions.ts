@@ -1,5 +1,5 @@
-import {Anomaly} from 'shared/anomalies/Anomaly'
 import {NewsArticle} from '@/components_feature/actualites/newsArticlesData'
+import {Anomaly} from 'shared/anomalies/Anomaly'
 import {AppLang, AppLangs} from '../i18n/localization/AppLangs'
 import {LandingData, allVisibleLandings} from '../landings/landingDataUtils'
 import {appConfig} from './appConfig'
@@ -40,6 +40,10 @@ function pageExternal(url: string): PageDefExternal {
   }
 }
 
+function pageLp(url: string): PageDefInternal {
+  return page(url, {hasEnglishVersion: false})
+}
+
 export const internalPageDefs = {
   index: page('/'),
   outils: page(`/outils`, {noIndex: true}),
@@ -60,20 +64,27 @@ export const internalPageDefs = {
   suiviEtViePrivee: page(`/suivi-et-vie-privee`),
   litige: page(`/litige`),
   litigeTelecom: page(`/litige/telecom`),
-  obligationFibre: page('/obligation-adsl-fibre', {hasEnglishVersion: false}),
-  erreurDePrixEnCaisse: page('/erreur-de-prix-en-caisse', {hasEnglishVersion: false}),
-  repasSurPlaceCouvertsJetables: page('/repas-sur-place-couverts-jetables', {hasEnglishVersion: false}),
-  fournitureSystematiqueEchantillonsInternet: page('/fourniture-systematique-echantillons-internet', {hasEnglishVersion: false}),
-  distributionGratuiteBouteillesPlastique: page('/distribution-gratuite-bouteilles-plastique', {hasEnglishVersion: false}),
-  informationsEnvironnementalesVehiculesNeufs: page('/informations-environnementales-vehicules-neufs', {
-    hasEnglishVersion: false,
-  }),
-  allegationNeutraliteCompensationCarbone: page('/allegation-neutralite-compensation-carbone', {hasEnglishVersion: false}),
-  impressionSystematiqueTicketDeCaisse: page('/impression-systematique-ticket-de-caisse', {hasEnglishVersion: false}),
-  signalInfluenceur: page('/signaler-un-influenceur', {hasEnglishVersion: false}),
-  obsolescencePage: page('/duree-de-vie-produit-obsolescence-programmee', {hasEnglishVersion: false}),
-  demarchageAbusif: page('/demarchage-abusif', {hasEnglishVersion: false}),
-  intoxAlimentaire: page('/intoxication-alimentaire', {hasEnglishVersion: false}),
+  // manual LPs
+  obligationFibre: pageLp('/obligation-adsl-fibre'),
+  erreurDePrixEnCaisse: pageLp('/erreur-de-prix-en-caisse'),
+  repasSurPlaceCouvertsJetables: pageLp('/repas-sur-place-couverts-jetables'),
+  fournitureSystematiqueEchantillonsInternet: pageLp('/fourniture-systematique-echantillons-internet'),
+  distributionGratuiteBouteillesPlastique: pageLp('/distribution-gratuite-bouteilles-plastique'),
+  informationsEnvironnementalesVehiculesNeufs: pageLp('/informations-environnementales-vehicules-neufs'),
+  allegationNeutraliteCompensationCarbone: pageLp('/allegation-neutralite-compensation-carbone'),
+  impressionSystematiqueTicketDeCaisse: pageLp('/impression-systematique-ticket-de-caisse'),
+  signalInfluenceur: pageLp('/signaler-un-influenceur'),
+  obsolescencePage: pageLp('/duree-de-vie-produit-obsolescence-programmee'),
+  demarchageAbusif: pageLp('/demarchage-abusif'),
+  intoxAlimentaire: pageLp('/intoxication-alimentaire'),
+  blackFridayAboFraisCaches: pageLp('/black-friday-abonnement-frais-caches'),
+  blackFridayColis: pageLp('/black-friday-retard-perte-colis'),
+  blackFridayDarkPatterns: pageLp('/black-friday-dark-patterns'),
+  blackFridayFausseReduction: pageLp('/black-friday-fausse-reduction'),
+  blackFridayFauxSiteGouvernemental: pageLp('/black-friday-faux-site-gouvernemental'),
+  blackFridayFauxStocks: pageLp('/black-friday-faux-stocks'),
+  blackFridaySav: pageLp('/black-friday-sav'),
+  blackFridaySitesFrauduleux: pageLp('/black-friday-sites-frauduleux'),
 }
 
 const externalPageDefs = {

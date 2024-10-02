@@ -6,13 +6,6 @@ import {AppLang, AppLangs} from '@/i18n/localization/AppLangs'
 import {allVisibleLandings} from '@/landings/landingDataUtils'
 import Link from 'next/link'
 import {getI18n} from '../../../i18n/I18nDictionnary'
-import {erreurDePrixEnCaisse} from '@/reusablePages/manual_landings/erreurDePrixEnCaisse'
-import {repasSurPlaceCouvertsJetables} from '@/reusablePages/manual_landings/repasSurPlaceCouvertsJetables'
-import {fournitureSystematiqueEchantillonsInternet} from '@/reusablePages/manual_landings/fournitureSystematiqueEchantillonsInternet'
-import {distributionGratuiteBouteillesPlastique} from '@/reusablePages/manual_landings/distributionGratuiteBouteillesPlastique'
-import {informationsEnvironnementalesVehiculesNeufs} from '@/reusablePages/manual_landings/informationsEnvironnementalesVehiculesNeufs'
-import {allegationNeutraliteCompensationCarbone} from '@/reusablePages/manual_landings/allegationNeutraliteCompensationCarbone'
-import {impressionSystematiqueTicketDeCaisse} from '@/reusablePages/manual_landings/impressionSystematiqueTicketDeCaisse'
 
 export const generateMetadata = buildGenerateMetadata('planDuSite')
 
@@ -83,6 +76,18 @@ const PlanDuSite = (props: PageComponentProps) => {
             label={m.planDuSite.impressionSystematiqueTicketDeCaisse}
             {...{lang}}
           />
+          <BasicPageLink page="blackFridayAboFraisCaches" label={m.planDuSite.blackFridayAboFraisCaches} {...{lang}} />
+          <BasicPageLink page="blackFridayColis" label={m.planDuSite.blackFridayColis} {...{lang}} />
+          <BasicPageLink page="blackFridayDarkPatterns" label={m.planDuSite.blackFridayDarkPatterns} {...{lang}} />
+          <BasicPageLink page="blackFridayFausseReduction" label={m.planDuSite.blackFridayFausseReduction} {...{lang}} />
+          <BasicPageLink
+            page="blackFridayFauxSiteGouvernemental"
+            label={m.planDuSite.blackFridayFauxSiteGouvernemental}
+            {...{lang}}
+          />
+          <BasicPageLink page="blackFridayFauxStocks" label={m.planDuSite.blackFridayFauxStocks} {...{lang}} />
+          <BasicPageLink page="blackFridaySav" label={m.planDuSite.blackFridaySav} {...{lang}} />
+          <BasicPageLink page="blackFridaySitesFrauduleux" label={m.planDuSite.blackFridaySitesFrauduleux} {...{lang}} />
           <hr className="mt-4" />
         </ul>
         <h2 className="fr-h4">{m.planDuSite.proSpaceSection}</h2>

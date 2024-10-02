@@ -1,8 +1,5 @@
-import {AppLang, AppLangs} from './AppLangs'
 import {formatDistance, formatDuration as formatDurationFns} from 'date-fns'
-import {repasSurPlaceCouvertsJetables} from '@/reusablePages/manual_landings/repasSurPlaceCouvertsJetables'
-import {fournitureSystematiqueEchantillonsInternet} from '@/reusablePages/manual_landings/fournitureSystematiqueEchantillonsInternet'
-import {erreurDePrixEnCaisse} from '@/reusablePages/manual_landings/erreurDePrixEnCaisse'
+import {AppLang, AppLangs} from './AppLangs'
 
 const invalidDate = '-'
 
@@ -189,6 +186,43 @@ export const fr = {
       intoxAlimentaire: {
         title: 'Intoxication alimentaire : vous avez mangé dans un restaurant et vous êtes malade ?',
         description: 'Signaler un établissement qui vous a rendu malade',
+      },
+
+      blackFridayAboFraisCaches: {
+        title: 'Abonnements ou frais cachés : signalez-le sur SignalConso',
+        description:
+          'Vous avez été piégé par un abonnement caché, ou des frais non annoncés, et découvrez des prélèvements inexpliqués... signalez une pratique commerciale trompeuse.',
+      },
+      blackFridayColis: {
+        title: 'Retard de livraison, colis endommagé ou perdu : signalez-le sur SignalConso',
+        description: "Votre livraison est retardée ou votre colis s'est perdu ? Renseignez-vous sur vos droits",
+      },
+      blackFridayDarkPatterns: {
+        title: 'Dark patterns sur un site web : signalez-le sur SignalConso',
+        description:
+          'Vous avez repéré un site avec une interface trompeuse, utilisant des "dark patterns" manipulant le consommateur pour le pousser à l\'achat ou à l\'abonnement',
+      },
+      blackFridayFausseReduction: {
+        title: 'Fausses réductions de prix pendant le Black Friday : signalez-le sur SignalConso',
+        description:
+          'Promotions mensongères, augmentation artificielle des prix juste avant la période pour afficher ensuite une fasse réduction...',
+      },
+      blackFridayFauxSiteGouvernemental: {
+        title: 'Faux site gouvernemental : signalez-le sur SignalConso',
+        description: "Sites frauduleux imitant des services publics ou des sites de l'État, comment les repérer et s'en protéger",
+      },
+      blackFridayFauxStocks: {
+        title: 'État des stocks pendant le Black Friday : signalez-le des pratiques trompeuses sur SignalConso',
+        description: 'Sites affichant "stock limité" ou "dernière chance", alors que les produits sont largements en stocks',
+      },
+      blackFridaySav: {
+        title: 'SAV inexistant ou injoignable : signalez-le sur SignalConso',
+        description: "Le service après-vente (SAV) ne répond pas, n'existe pas, ou ses coordonnées sont introuvables ?",
+      },
+      blackFridaySitesFrauduleux: {
+        title: 'Sites frauduleux pendant le Black Friday : signalez-le sur SignalConso',
+        description:
+          'Imitation de sites officiels ou de boutiques de confiance, pour arnaquer les internautes ou leur voler des informations personnelles, ventes de contrefaçons, ...',
       },
     },
     faireUnSignalement: {
@@ -624,6 +658,14 @@ export const fr = {
       informationsEnvironnementalesVehiculesNeufs: 'Faire un signalement sur informations environnementales de vehicules neufs',
       allegationNeutraliteCompensationCarbone: 'Faire un signalement sur des allegations de neutralite compensation carbone',
       impressionSystematiqueTicketDeCaisse: 'Faire un signalement sur des impressions systematiques de tickets de caisse',
+      blackFridayAboFraisCaches: 'Faire un signalement pour des abonnements ou frais cachés pendant le Black Friday',
+      blackFridayColis: 'Faire un signalement pour un colis endommagé ou non livré pendant le Black Friday',
+      blackFridayDarkPatterns: 'Faire un signalement pour une interface trompeuse (dark pattern) pendant le Black Friday',
+      blackFridayFausseReduction: 'Faire un signalement pour une fausse réduction de prix pendant le Black Friday',
+      blackFridayFauxSiteGouvernemental: 'Faire un signalement pour un faux site gouvernemental',
+      blackFridayFauxStocks: "Faire un signalement pour des fausses infos sur les stocks d'un produit pendant le Black Friday",
+      blackFridaySav: 'Faire un signalement pour un SAV non joignable pendant le Black Friday',
+      blackFridaySitesFrauduleux: 'Faire un signalement pour un site frauduleux pendant le Black Friday',
       signalInfluenceur: 'Faire un signalement sur un influenceur',
       reportIncidentSection: "Dépôt d'un signalement",
       reportIncidentFor: 'Faire un signalement pour',
