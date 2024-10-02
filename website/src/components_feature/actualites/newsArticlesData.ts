@@ -13,6 +13,14 @@ export type NewsArticle = {
 // This is the display order. Keep the most recents at the start of the array
 export const initialNewsArticlesData: NewsArticle[] = [
   {
+    date: '2024-10-02',
+    lang: AppLangs.fr,
+    slug: 'consommation-durable',
+    veryShortTitle: 'Consommation durable',
+    title: 'Consommation durable : Agissez pour un avenir meilleur !',
+    excerpt: `Vous connaissez déjà SignalConso pour signaler des problèmes comme des produits défectueux ou des prix mal affichés. Mais saviez-vous que vous pouvez aussi l’utiliser pour encourager une consommation plus durable ?`,
+  },
+  {
     date: '2024-09-19',
     lang: AppLangs.fr,
     slug: 'erreur-de-prix-en-caisse',
