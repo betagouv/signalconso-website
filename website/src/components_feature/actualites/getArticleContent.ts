@@ -1,6 +1,9 @@
 import {ArticleAMF} from '@/components_feature/actualites/ArticleAMF'
 import {ArticleAppMobileV2} from '@/components_feature/actualites/ArticleAppMobileV2'
+import {ArticleConsommationDurable} from '@/components_feature/actualites/ArticleConsommationDurable'
+import {ArticleErreurDePrixEnCaisse} from '@/components_feature/actualites/ArticleErreurDePrixEnCaisse'
 import {ArticleEvolutionsQuantitePrix} from '@/components_feature/actualites/ArticleEvolutionsQuantitePrix'
+import {ArticleFauxSitesDeVenteThesee} from '@/components_feature/actualites/ArticleFauxSitesDeVenteThesee'
 import {ArticleMagasinsEphemeres} from '@/components_feature/actualites/ArticleMagasinsEphemeres'
 import {ArticleOccasionReconditionnes} from '@/components_feature/actualites/ArticleOccasionReconditionnes'
 import {ArticleRappelAirbagTakata} from '@/components_feature/actualites/ArticleRappelAirbagTakata'
@@ -10,20 +13,20 @@ import {ArticleAmeliorationAccessibilite} from './ArticleAmeliorationAccessibili
 import {ArticleAppMobile} from './ArticleAppMobile'
 import {ArticleCodeBarres} from './ArticleCodeBarres'
 import {ArticleConseilsVacancesHiver} from './ArticleConseilsVacancesHiver'
+import {ArticleDeuxSitesFrauduleuxBloques} from './ArticleDeuxSitesFrauduleuxBloques'
 import {ArticleFauxSitesAdministratifs} from './ArticleFauxSitesAdministratifs'
 import {ArticleQuestionnaireSiteDgccrf} from './ArticleQuestionnaireSiteDgccrf'
 import {ArticleResilierContratsEnLigne} from './ArticleResilierContratsEnLigne'
 import {ArticleSignalConsoTraduit} from './ArticleSignalConsoTraduit'
 import {ArticleSignalConsoTranslated} from './ArticleSignalConsoTranslated'
 import {NewsArticle} from './newsArticlesData'
-import {ArticleFauxSitesDeVenteThesee} from '@/components_feature/actualites/ArticleFauxSitesDeVenteThesee'
-import {ArticleErreurDePrixEnCaisse} from '@/components_feature/actualites/ArticleErreurDePrixEnCaisse'
-import {ArticleConsommationDurable} from '@/components_feature/actualites/ArticleConsommationDurable'
 
 // We can't put import these JSX directly into the "newsArticlesData"
 // it causes too much import problems in the sitemap generation script
 export function getArticleContent(slug: NewsArticle['slug']): () => JSX.Element {
   switch (slug) {
+    case 'deux-sites-frauduleux-bloques':
+      return ArticleDeuxSitesFrauduleuxBloques
     case 'consommation-durable':
       return ArticleConsommationDurable
     case 'erreur-de-prix-en-caisse':

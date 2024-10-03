@@ -13,6 +13,14 @@ export type NewsArticle = {
 // This is the display order. Keep the most recents at the start of the array
 export const initialNewsArticlesData: NewsArticle[] = [
   {
+    date: '2024-10-03',
+    lang: AppLangs.fr,
+    slug: 'deux-sites-frauduleux-bloques',
+    veryShortTitle: 'Sites frauduleux bloqués',
+    title: 'Deux sites de vente en ligne frauduleux bloqués grâce à vos signalements !',
+    excerpt: `La vigilance des consommateurs a une nouvelle fois prouvé son efficacité. Grâce aux signalements effectués par des usagers sur SignalConso, deux sites de vente en ligne frauduleux ont été identifiés et bloqués.`,
+  },
+  {
     date: '2024-10-02',
     lang: AppLangs.fr,
     slug: 'consommation-durable',
