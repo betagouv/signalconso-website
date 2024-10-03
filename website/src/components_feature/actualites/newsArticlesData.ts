@@ -13,6 +13,15 @@ export type NewsArticle = {
 // This is the display order. Keep the most recents at the start of the array
 export const initialNewsArticlesData: NewsArticle[] = [
   {
+    date: '2024-10-04',
+    lang: AppLangs.fr,
+    slug: 'journee-aveugles-malvoyants',
+    veryShortTitle: 'Journée des aveugles et malvoyants',
+    title:
+      "Journée nationale des aveugles et malvoyants : Faciliter l'accès des chiens guides et d'assistance dans les lieux publics",
+    excerpt: `Le 4 octobre, à l'occasion de la Journée nationale des aveugles et malvoyants, il est important de rappeler les droits des personnes en situation de handicap accompagnées de chiens guides ou d'assistance.`,
+  },
+  {
     date: '2024-10-03',
     lang: AppLangs.fr,
     slug: 'deux-sites-frauduleux-bloques',

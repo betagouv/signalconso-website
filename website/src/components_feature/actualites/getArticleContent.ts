@@ -15,6 +15,7 @@ import {ArticleCodeBarres} from './ArticleCodeBarres'
 import {ArticleConseilsVacancesHiver} from './ArticleConseilsVacancesHiver'
 import {ArticleDeuxSitesFrauduleuxBloques} from './ArticleDeuxSitesFrauduleuxBloques'
 import {ArticleFauxSitesAdministratifs} from './ArticleFauxSitesAdministratifs'
+import {ArticleJourneeAveuglesMalvoyants} from './ArticleJourneeAveuglesMalvoyants'
 import {ArticleQuestionnaireSiteDgccrf} from './ArticleQuestionnaireSiteDgccrf'
 import {ArticleResilierContratsEnLigne} from './ArticleResilierContratsEnLigne'
 import {ArticleSignalConsoTraduit} from './ArticleSignalConsoTraduit'
@@ -25,6 +26,8 @@ import {NewsArticle} from './newsArticlesData'
 // it causes too much import problems in the sitemap generation script
 export function getArticleContent(slug: NewsArticle['slug']): () => JSX.Element {
   switch (slug) {
+    case 'journee-aveugles-malvoyants':
+      return ArticleJourneeAveuglesMalvoyants
     case 'deux-sites-frauduleux-bloques':
       return ArticleDeuxSitesFrauduleuxBloques
     case 'consommation-durable':
