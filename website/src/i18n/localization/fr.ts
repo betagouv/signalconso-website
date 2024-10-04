@@ -1361,8 +1361,8 @@ export const fr = {
       Pendant l'enquête, si les enquêteurs ont besoin de révéler votre identité à la justice ou à votre employeur, ils vous demanderont l'autorisation avant.
       <b>Vous pourrez refuser.</b>
     `,
-    consumerAnonymousInformation: `Vous restez anonyme, mais l'entreprise ne sera pas en mesure de résoudre votre problème en particulier. Pas de
-    remboursement, de réponse personnalisée, ...`,
+    consumerAnonymousInformation: `Vous restez anonyme. Pour mémoire, vous avez choisi de signaler le problème afin que l’entreprise s’améliore : votre problème particulier ne pourra pas être résolu. Pas de remboursement, de réponse personnalisée…`,
+    consumerShareInformation: `Vous partagez vos coordonnées avec l’entreprise. Pour mémoire, vous avez choisi de signaler le problème afin que l’entreprise s’améliore : votre problème particulier ne pourra pas être résolu. Pas de remboursement, de réponse personnalisée…`,
     confirmationTitle: `Récapitulatif de votre problème`,
     confirmationAlertTransmittable: `Vérifiez votre signalement avant de l’envoyer à l'entreprise et à la répression des fraudes.`,
     confirmationAlert: `Vérifiez votre signalement avant de l’envoyer à la répression des fraudes.`,
