@@ -15,6 +15,14 @@ export const initialNewsArticlesData: NewsArticle[] = [
   {
     date: '2024-10-04',
     lang: AppLangs.fr,
+    slug: 'baux-precaires',
+    veryShortTitle: 'Magasins éphémères et arnaques',
+    title: 'Ventes dans les magasins éphémères : attention aux arnaques !',
+    excerpt: `Les magasins éphémères se multiplient dans des lieux temporaires comme des hôtels ou centres commerciaux. Ils promettent de superbes affaires, mais attention aux pièges ! Voici les principales arnaques à surveiller et comment les éviter.`,
+  },
+  {
+    date: '2024-10-04',
+    lang: AppLangs.fr,
     slug: 'journee-aveugles-malvoyants',
     veryShortTitle: 'Journée des aveugles et malvoyants',
     title:
