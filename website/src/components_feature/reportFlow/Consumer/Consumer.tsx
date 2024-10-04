@@ -22,6 +22,7 @@ import {Gender, genders} from '../../../model/Report'
 import {PartialReport, useReportFlowContext} from '../ReportFlowContext'
 import {ConsumerAnonymousInformation} from './ConsumerAnonymousInformation'
 import {ConsumerValidationDialog2, consumerValidationModal} from './ConsumerValidationDialog'
+import {ConsumerShareInformation} from '@/components_feature/reportFlow/Consumer/ConsumerShareInformation'
 
 interface ConsumerForm {
   firstName: string
@@ -320,6 +321,7 @@ export const ConsumerInner = ({
                 )}
               />
               {watchContactAgreement === false && <ConsumerAnonymousInformation />}
+              {watchContactAgreement === true && <ConsumerShareInformation />}
             </>
           )}
         </div>

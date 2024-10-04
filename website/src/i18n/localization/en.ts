@@ -1306,7 +1306,8 @@ export const en = {
       If our team are required to disclose your identity to a court authority or your employer as part of our investigation, they will ask for your permission first. 
       <b>You can decline this request.</b>
     `,
-    consumerAnonymousInformation: `You will remain anonymous, but the company will not be able to resolve your specific issue. This means that resolutions such as refunds or personalised responses will not be possible.`,
+    consumerAnonymousInformation: `You remain anonymous. As a reminder, you chose to report the issue so the company can improve: your specific problem will not be resolved. No refund, no personalized response...`,
+    consumerShareInformation: `You share your contact details with the company. As a reminder, you have chosen to report the problem so that the company can improve: your specific problem cannot be solved. No refund, no personalized response...`,
     confirmationTitle: `Summary of your issue`,
     confirmationAlertTransmittable: `Check every detail of your report before sending it to the company and to Fraud Control.`,
     confirmationAlert: `Check every detail of your report before sending it to Fraud Control.`,
