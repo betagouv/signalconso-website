@@ -37,7 +37,7 @@ export const getReportInputs = (draft: PartialReport, lang: AppLang): DetailInpu
   if (instanceOfSubcategoryWithInputs(lastSubcategories)) {
     res.push(...(lastSubcategories.detailInputs ?? []))
     if (!lastSubcategories.detailInputs?.some(_ => _.type === DetailInputType.TEXTAREA)) {
-      res.push(ReportDefaultInputs.description(true))
+      res.push(ReportDefaultInputs.description(false))
     }
   } else {
     res.push(...ReportDefaultInputs.defaults(lang))
