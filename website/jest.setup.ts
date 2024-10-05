@@ -1,2 +1,2 @@
 import '@testing-library/jest-dom'
-window.scrollTo = jest.fn();
+window.scrollTo = jest.fn()
