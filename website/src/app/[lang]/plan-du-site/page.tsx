@@ -47,8 +47,47 @@ const PlanDuSite = (props: PageComponentProps) => {
           <BasicPageLink page="obligationFibre" label={m.planDuSite.obligationFibre} {...{lang}} />
           <BasicPageLink page="signalInfluenceur" label={m.planDuSite.signalInfluenceur} {...{lang}} />
           <BasicPageLink page="obsolescencePage" label={m.planDuSite.obsolescencePage} {...{lang}} />
-          <BasicPageLink page="demarchageTelephonique" label={m.planDuSite.demarchageTelephonique} {...{lang}} />
+          <BasicPageLink page="demarchageAbusif" label={m.planDuSite.demarchageAbusif} {...{lang}} />
           <BasicPageLink page="intoxAlimentaire" label={m.planDuSite.intoxAlimentaire} {...{lang}} />
+          <BasicPageLink page="erreurDePrixEnCaisse" label={m.planDuSite.erreurDePrixEnCaisse} {...{lang}} />
+          <BasicPageLink page="repasSurPlaceCouvertsJetables" label={m.planDuSite.repasSurPlaceCouvertsJetables} {...{lang}} />
+          <BasicPageLink
+            page="fournitureSystematiqueEchantillonsInternet"
+            label={m.planDuSite.fournitureSystematiqueEchantillonsInternet}
+            {...{lang}}
+          />
+          <BasicPageLink
+            page="distributionGratuiteBouteillesPlastique"
+            label={m.planDuSite.distributionGratuiteBouteillesPlastique}
+            {...{lang}}
+          />
+          <BasicPageLink
+            page="informationsEnvironnementalesVehiculesNeufs"
+            label={m.planDuSite.informationsEnvironnementalesVehiculesNeufs}
+            {...{lang}}
+          />
+          <BasicPageLink
+            page="allegationNeutraliteCompensationCarbone"
+            label={m.planDuSite.allegationNeutraliteCompensationCarbone}
+            {...{lang}}
+          />
+          <BasicPageLink
+            page="impressionSystematiqueTicketDeCaisse"
+            label={m.planDuSite.impressionSystematiqueTicketDeCaisse}
+            {...{lang}}
+          />
+          <BasicPageLink page="blackFridayAboFraisCaches" label={m.planDuSite.blackFridayAboFraisCaches} {...{lang}} />
+          <BasicPageLink page="blackFridayColis" label={m.planDuSite.blackFridayColis} {...{lang}} />
+          <BasicPageLink page="blackFridayDarkPatterns" label={m.planDuSite.blackFridayDarkPatterns} {...{lang}} />
+          <BasicPageLink page="blackFridayFausseReduction" label={m.planDuSite.blackFridayFausseReduction} {...{lang}} />
+          <BasicPageLink
+            page="blackFridayFauxSiteGouvernemental"
+            label={m.planDuSite.blackFridayFauxSiteGouvernemental}
+            {...{lang}}
+          />
+          <BasicPageLink page="blackFridayFauxStocks" label={m.planDuSite.blackFridayFauxStocks} {...{lang}} />
+          <BasicPageLink page="blackFridaySav" label={m.planDuSite.blackFridaySav} {...{lang}} />
+          <BasicPageLink page="blackFridaySitesFrauduleux" label={m.planDuSite.blackFridaySitesFrauduleux} {...{lang}} />
           <hr className="mt-4" />
         </ul>
         <h2 className="fr-h4">{m.planDuSite.proSpaceSection}</h2>

@@ -4,6 +4,7 @@ import {buildLinkStartReport} from '@/core/pagesDefinitions'
 import {getI18n} from '@/i18n/I18nDictionnary'
 import {AppLang, AppLangs} from '@/i18n/localization/AppLangs'
 import {ChildrenProps} from '@/utils/utils'
+import {ReactNode} from 'react'
 
 export function getManualLpButtonProps(lang: AppLang, category: String) {
   const anomaly = allVisibleAnomalies(lang).find(_ => _.category === category)
@@ -38,6 +39,35 @@ export function BlueBandWhySignalConso({lang, title}: {lang: AppLangs; title: st
         </div>
       </div>
     </LpColoredBand>
+  )
+}
+
+export function HighlightBlue({children}: ChildrenProps) {
+  return <span className="bg-scblueinfo text-white px-1">{children}</span>
+}
+export function HighlightPurple({children}: ChildrenProps) {
+  return <span className="bg-scpurplepop text-white px-1">{children}</span>
+}
+
+export function NarrowAndCentered({children, narrower = false}: ChildrenProps & {narrower?: boolean}) {
+  return (
+    <div className="flex justify-center">
+      <div className={`flex flex-col ${narrower ? 'max-w-2xl' : 'max-w-4xl'}`}>{children}</div>
+    </div>
+  )
+}
+
+export function AlternatingPurpleBands({children}: {children: ReactNode[]}) {
+  // Define the colors to alternate between
+  const bgColors = ['bg-sclightpurple', 'bg-sclightpurpledarker']
+  return (
+    <>
+      {children.map((child, index) => (
+        <LpColoredBand key={index} className={`${bgColors[index % bgColors.length]} py-8`}>
+          {child}
+        </LpColoredBand>
+      ))}
+    </>
   )
 }
 

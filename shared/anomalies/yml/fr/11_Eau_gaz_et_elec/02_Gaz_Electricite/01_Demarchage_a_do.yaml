@@ -2,7 +2,7 @@ title: Démarchage à domicile
 desc: "Exemple\_: vendeur prétend être envoyé par EDF, démarcheur agressif"
 companyKind: LOCATION
 ccrfCode:
-  - '221'
+  - "221"
 tags:
   - DemarchageADomicile
   - ReponseConso
@@ -10,7 +10,7 @@ detailInputs:
   - label: Date du passage du vendeur
     type: DATE
     defaultValue: SYSDATE
-  - label: Que s'est-il passé&#160;?
+  - label: Que s'est-il passé ?
     type: CHECKBOX
     options:
       - le vendeur s'est fait passer pour une autre entreprise (à préciser)
@@ -22,14 +22,14 @@ detailInputs:
         contrat actuel allait être arrêté
       - le vendeur a demandé à voir mes factures, mon compteur
       - autre (à préciser)
-  - label: Avez-vous signé, volontairement ou non, un contrat&#160;?
+  - label: Avez-vous signé, volontairement ou non, un contrat ?
     type: RADIO
     options:
       - oui
       - non
   - label: >-
       Date de début du contrat s'il démarre un autre jour que celui du
-      démarchage&#160;?
+      démarchage ?
     type: DATE
     defaultValue: SYSDATE
     optional: true

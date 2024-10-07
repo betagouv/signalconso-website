@@ -1,8 +1,8 @@
 title: En France (Outre-mer compris)
-reponseconsoCode: '211'
+reponseconsoCode: "211"
 detailInputs:
   - label: Date du constat
-    type: DATE
+    type: DATE_NOT_IN_FUTURE
     defaultValue: SYSDATE
   - label: Nom / marque / type de produit
     type: TEXT

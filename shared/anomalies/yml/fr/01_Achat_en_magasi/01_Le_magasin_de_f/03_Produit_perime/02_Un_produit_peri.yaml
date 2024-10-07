@@ -1,6 +1,6 @@
 title: Un produit périmé en particulier
 ccrfCode:
-  - '323'
-subcategoriesTitle: Quelle phrase est écrite devant la date&#160;?
+  - "323"
+subcategoriesTitle: Quelle phrase est écrite devant la date ?
 subcategories:
   customimport: _imports/subcategories/date

@@ -186,7 +186,7 @@ export interface InfoWall {
   content?: string
   questions?: QuestionAndAnswer[]
   subTitle?: string
-  notAFraudMessage?: boolean
+  reportOutOfScopeMessage?: boolean
 }
 
 export interface QuestionAndAnswer {

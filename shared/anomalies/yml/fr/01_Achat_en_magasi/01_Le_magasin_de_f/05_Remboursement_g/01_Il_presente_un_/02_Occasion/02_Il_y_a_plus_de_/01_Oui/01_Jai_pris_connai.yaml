@@ -7,7 +7,7 @@ detailInputs:
   - label: Date de fin de garantie supplémentaire
     type: DATE
   - label: Date du constat
-    type: DATE
+    type: DATE_NOT_IN_FUTURE
     defaultValue: SYSDATE
   - label: Motif de refus
     type: TEXT

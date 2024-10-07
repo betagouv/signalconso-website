@@ -1,14 +1,14 @@
 title: Problème de température
 desc: "Exemple\_: rupture de la chaîne du froid"
-reponseconsoCode: '322'
+reponseconsoCode: "322"
 detailInputs:
   - label: Date du constat
-    type: DATE
+    type: DATE_NOT_IN_FUTURE
     defaultValue: SYSDATE
   - label: Heure du constat (facultatif)
     type: TIMESLOT
     optional: true
-  - label: Quel est le problème&#160;?
+  - label: Quel est le problème ?
     type: RADIO
     options:
       - Vitrine / réfrigérateur trop chaud ou en panne

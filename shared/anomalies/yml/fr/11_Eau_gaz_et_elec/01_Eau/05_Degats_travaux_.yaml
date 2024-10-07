@@ -18,10 +18,10 @@ blockingInfo:
     href="https://www.economie.gouv.fr/files/files/directions_services/dgccrf/documentation/publications/depliants/guide-eau.pdf"
     target="_blank" />ici</a>
   questions:
-    - question: Que faire en cas de désaccord&#160;?
+    - question: Que faire en cas de désaccord ?
       answer: >-
         Contactez le service client de votre distributeur. Si vous ne trouvez
         pas de solution, vous pouvez saisir le médiateur de l'eau<br><a
         href="https://www.mediation-eau.fr/" target="_blank"
         />https://www.mediation-eau.fr/</a>
-  notAFraudMessage: true
+  reportOutOfScopeMessage: true

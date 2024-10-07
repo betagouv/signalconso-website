@@ -1,13 +1,13 @@
 title: Prix final différent du prix annoncé
 ccrfCode:
   - 23b
-reponseconsoCode: '210'
-desc: 'Exemple : fausse réduction, supplément imprévu'
+reponseconsoCode: "210"
+desc: "Exemple : fausse réduction, supplément imprévu"
 tags:
   - ReponseConso
 detailInputs:
   - label: Date du constat
-    type: DATE
+    type: DATE_NOT_IN_FUTURE
     defaultValue: SYSDATE
   - label: Numéro de réservation (pour faciliter le traitement par l'entreprise)
     type: TEXT

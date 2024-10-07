@@ -1,11 +1,11 @@
 title: Mise en avant d'un label ou d'un signe de qualité non ou plus détenu
 ccrfCode:
-  - '271'
-  - '275'
+  - "271"
+  - "275"
 tags:
   - ReponseConso
 detailInputs:
-  - label: Qu'est-ce qui est trompeur ou mensonger&#160;?
+  - label: Qu'est-ce qui est trompeur ou mensonger ?
     type: RADIO
     options:
       - Le discours du professionnel
@@ -17,7 +17,7 @@ detailInputs:
   - label: Description
     type: TEXTAREA
   - label: Date du constat
-    type: DATE
+    type: DATE_NOT_IN_FUTURE
     defaultValue: SYSDATE
   - label: Heure du constat (facultatif)
     type: TIMESLOT

@@ -13,6 +13,47 @@ export type NewsArticle = {
 // This is the display order. Keep the most recents at the start of the array
 export const initialNewsArticlesData: NewsArticle[] = [
   {
+    date: '2024-10-04',
+    lang: AppLangs.fr,
+    slug: 'baux-precaires',
+    veryShortTitle: 'Magasins éphémères et arnaques',
+    title: 'Ventes dans les magasins éphémères : attention aux arnaques !',
+    excerpt: `Les magasins éphémères se multiplient dans des lieux temporaires comme des hôtels ou centres commerciaux. Ils promettent de superbes affaires, mais attention aux pièges ! Voici les principales arnaques à surveiller et comment les éviter.`,
+  },
+  {
+    date: '2024-10-04',
+    lang: AppLangs.fr,
+    slug: 'journee-aveugles-malvoyants',
+    veryShortTitle: 'Journée des aveugles et malvoyants',
+    title:
+      "Journée nationale des aveugles et malvoyants : Faciliter l'accès des chiens guides et d'assistance dans les lieux publics",
+    excerpt: `Le 4 octobre, à l'occasion de la Journée nationale des aveugles et malvoyants, il est important de rappeler les droits des personnes en situation de handicap accompagnées de chiens guides ou d'assistance.`,
+  },
+  {
+    date: '2024-10-03',
+    lang: AppLangs.fr,
+    slug: 'deux-sites-frauduleux-bloques',
+    veryShortTitle: 'Sites frauduleux bloqués',
+    title: 'Deux sites de vente en ligne frauduleux bloqués grâce à vos signalements !',
+    excerpt: `La vigilance des consommateurs a une nouvelle fois prouvé son efficacité. Grâce aux signalements effectués par des usagers sur SignalConso, deux sites de vente en ligne frauduleux ont été identifiés et bloqués.`,
+  },
+  {
+    date: '2024-10-02',
+    lang: AppLangs.fr,
+    slug: 'consommation-durable',
+    veryShortTitle: 'Consommation durable',
+    title: 'Consommation durable : Agissez pour un avenir meilleur !',
+    excerpt: `Vous connaissez déjà SignalConso pour signaler des problèmes comme des produits défectueux ou des prix mal affichés. Mais saviez-vous que vous pouvez aussi l’utiliser pour encourager une consommation plus durable ?`,
+  },
+  {
+    date: '2024-09-19',
+    lang: AppLangs.fr,
+    slug: 'erreur-de-prix-en-caisse',
+    veryShortTitle: 'Erreur de prix en caisse',
+    title: 'Erreur de prix en caisse : Comment réagir et s’en prémunir ?',
+    excerpt: `Lors de vos courses, vous avez peut-être déjà constaté une différence entre le prix affiché en rayon et celui enregistré en caisse. Cette situation est plus courante qu’on ne pourrait le penser et peut causer une frustration légitime.`,
+  },
+  {
     date: '2024-07-11',
     lang: AppLangs.fr,
     slug: 'faux-sites-de-vente-thesee',

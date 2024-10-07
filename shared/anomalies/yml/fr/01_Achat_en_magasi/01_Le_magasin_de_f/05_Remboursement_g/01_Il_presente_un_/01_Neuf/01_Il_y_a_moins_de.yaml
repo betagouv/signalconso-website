@@ -5,7 +5,7 @@ detailInputs:
   - label: Nom du produit
     type: TEXT
   - label: Date du constat
-    type: DATE
+    type: DATE_NOT_IN_FUTURE
     defaultValue: SYSDATE
   - label: Interlocuteur
     type: RADIO
@@ -15,6 +15,6 @@ detailInputs:
       - Service client (téléphone, mail, courrier)
   - label: >-
       Pour quelle raison le commerçant ne veut-il pas vous reprendre le
-      produit&#160;?
+      produit ?
     type: TEXTAREA
 fileLabel: Preuve d'achat / publicité / offre de vente

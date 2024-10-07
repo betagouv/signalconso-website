@@ -1,5 +1,5 @@
 - label: Date de l'appel
-  type: DATE
+  type: DATE_NOT_IN_FUTURE
   defaultValue: SYSDATE
 - label: Heure de l'appel
   type: TIMESLOT

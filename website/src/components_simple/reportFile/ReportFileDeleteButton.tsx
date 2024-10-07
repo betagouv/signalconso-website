@@ -3,13 +3,12 @@ import {PortalToBody} from '@/utils/PortalToBody'
 import Button from '@codegouvfr/react-dsfr/Button'
 import {createModal} from '@codegouvfr/react-dsfr/Modal'
 
-const modal = createModal({
-  id: 'file-delete-modal',
-  isOpenedByDefault: false,
-})
-
 export function ReportFileDeleteButton({filename, onConfirm}: {filename: string; onConfirm: () => void}) {
   const {m} = useI18n()
+  const modal = createModal({
+    id: `file-delete-modal-${filename}`,
+    isOpenedByDefault: false,
+  })
   return (
     <>
       <Button

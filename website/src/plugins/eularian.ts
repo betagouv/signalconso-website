@@ -9,8 +9,8 @@ export class Eularian {
   readonly send = (path: string): void => {
     try {
       window.EA_push(['path', path])
-    } catch (e: any) {
-      console.error('[Eularian Analytic]', e)
+    } catch (e) {
+      console.error('Eularian error', e)
     }
   }
 }

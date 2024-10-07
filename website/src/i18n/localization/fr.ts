@@ -135,6 +135,41 @@ export const fr = {
         title: `Fibre optique : installation forcée par votre opérateur Internet ?`,
         description: `Signalez un passage à la fibre forcé par votre fournisseur d'accès Internet`,
       },
+      erreurDePrixEnCaisse: {
+        title: 'Mauvais affichage des prix : Signalez-le sur SignalConso !',
+        description:
+          'Vous constatez un écart entre le prix affiché en magasin et celui en caisse ? Signalez-le sur SignalConso ! Protégez vos droits en cas de mauvais affichage des prix ou de promotions non appliquées. Agissez avec la DGCCRF pour corriger ces pratiques commerciales trompeuses.',
+      },
+      repasSurPlaceCouvertsJetables: {
+        title: 'Couverts jetables au restaurant : signalez-le sur SignalConso',
+        description:
+          "Découvrez l'impact environnemental des couverts jetables et la législation en vigueur. Agissez pour une restauration durable en signalant les infractions sur SignalConso.",
+      },
+      fournitureSystematiqueEchantillonsInternet: {
+        title: 'Échantillons gratuits non sollicités : signalez-les sur SignalConso',
+        description:
+          "Découvrez l'impact écologique des échantillons non sollicités. Agissez pour une consommation durable en signalant ces pratiques sur SignalConso.",
+      },
+      distributionGratuiteBouteillesPlastique: {
+        title: 'Distribution gratuite de bouteilles plastiques : Signalez sur SignalConso',
+        description:
+          "Découvrez l'impact écologique des bouteilles plastiques gratuites. Agissez pour l'environnement en signalant ces distributions sur SignalConso.",
+      },
+      informationsEnvironnementalesVehiculesNeufs: {
+        title: 'Infos environnementales véhicules neufs : Signalez sur SignalConso',
+        description:
+          "Découvrez vos droits sur les informations environnementales des véhicules neufs. Signalez l'absence d'étiquette énergie sur SignalConso pour protéger l'environnement.",
+      },
+      allegationNeutraliteCompensationCarbone: {
+        title: 'Neutralité Carbone : Comment repérer les allégations douteuses et signaler sur SignalConso',
+        description:
+          'Découvrez comment repérer les fausses allégations de neutralité carbone et protégez vos droits en tant que consommateur. Signalez les pratiques trompeuses sur SignalConso et luttez contre le greenwashing.',
+      },
+      impressionSystematiqueTicketDeCaisse: {
+        title: 'Ticket de caisse imprimé sans demande : comment signaler avec SignalConso',
+        description:
+          'Depuis août 2023, les tickets de caisse ne doivent plus être imprimés automatiquement. Découvrez vos droits et comment signaler les infractions via SignalConso pour réduire le gaspillage.',
+      },
       signalInfluenceur: {
         title: "Signalez une publication frauduleuse d'un influenceur",
         description:
@@ -144,13 +179,50 @@ export const fr = {
         title: "Signaler un cas d'obsolescence programmée",
         description: 'Votre appareil a une durée de vie qui vous semble trop courte, indice de réparabilité manquant, ...',
       },
-      demarchageTelephonique: {
+      demarchageAbusif: {
         title: 'Démarchage téléphonique abusif',
         description: 'Signaler une entreprise qui vous appelle sans respecter Bloctel, ou hors des horaires autorisés',
       },
       intoxAlimentaire: {
         title: 'Intoxication alimentaire : vous avez mangé dans un restaurant et vous êtes malade ?',
         description: 'Signaler un établissement qui vous a rendu malade',
+      },
+
+      blackFridayAboFraisCaches: {
+        title: 'Abonnements ou frais cachés : signalez-le sur SignalConso',
+        description:
+          'Vous avez été piégé par un abonnement caché, ou des frais non annoncés, et découvrez des prélèvements inexpliqués... signalez une pratique commerciale trompeuse.',
+      },
+      blackFridayColis: {
+        title: 'Retard de livraison, colis endommagé ou perdu : signalez-le sur SignalConso',
+        description: "Votre livraison est retardée ou votre colis s'est perdu ? Renseignez-vous sur vos droits",
+      },
+      blackFridayDarkPatterns: {
+        title: 'Dark patterns sur un site web : signalez-le sur SignalConso',
+        description:
+          'Vous avez repéré un site avec une interface trompeuse, utilisant des "dark patterns" manipulant le consommateur pour le pousser à l\'achat ou à l\'abonnement',
+      },
+      blackFridayFausseReduction: {
+        title: 'Fausses réductions de prix pendant le Black Friday : signalez-le sur SignalConso',
+        description:
+          'Promotions mensongères, augmentation artificielle des prix juste avant la période pour afficher ensuite une fasse réduction...',
+      },
+      blackFridayFauxSiteGouvernemental: {
+        title: 'Faux site gouvernemental : signalez-le sur SignalConso',
+        description: "Sites frauduleux imitant des services publics ou des sites de l'État, comment les repérer et s'en protéger",
+      },
+      blackFridayFauxStocks: {
+        title: 'État des stocks pendant le Black Friday : signalez-le des pratiques trompeuses sur SignalConso',
+        description: 'Sites affichant "stock limité" ou "dernière chance", alors que les produits sont largements en stocks',
+      },
+      blackFridaySav: {
+        title: 'SAV inexistant ou injoignable : signalez-le sur SignalConso',
+        description: "Le service après-vente (SAV) ne répond pas, n'existe pas, ou ses coordonnées sont introuvables ?",
+      },
+      blackFridaySitesFrauduleux: {
+        title: 'Sites frauduleux pendant le Black Friday : signalez-le sur SignalConso',
+        description:
+          'Imitation de sites officiels ou de boutiques de confiance, pour arnaquer les internautes ou leur voler des informations personnelles, ventes de contrefaçons, ...',
       },
     },
     faireUnSignalement: {
@@ -577,8 +649,23 @@ export const fr = {
       telecomResolutionTips: "Conseils pour résolution d'un problème individuel lié au télécom (litige)",
       obligationFibre: 'Faire un signalement pour une migration forcée vers la fibre optique',
       obsolescencePage: 'Faire un signalement pour un appareil dont la durée de vie vous semble trop courte',
-      demarchageTelephonique: 'Faire un signalement pour un démarchage téléphonique abusif (malgré Bloctel, trop fréquent, etc.)',
+      demarchageAbusif: 'Faire un signalement pour un démarchage téléphonique abusif (malgré Bloctel, trop fréquent, etc.)',
       intoxAlimentaire: 'Faire un signalement pour une intoxication alimentaire',
+      erreurDePrixEnCaisse: 'Faire un signalement sur une erreur de prix en caisse',
+      repasSurPlaceCouvertsJetables: 'Faire un signalement sur un repas sur place avec couverts jetables',
+      fournitureSystematiqueEchantillonsInternet: "Faire un signalement pour fournitures systematiques d'échantillons",
+      distributionGratuiteBouteillesPlastique: 'Faire un signalement pour distribution gratuite de bouteilles en plastique',
+      informationsEnvironnementalesVehiculesNeufs: 'Faire un signalement sur informations environnementales de vehicules neufs',
+      allegationNeutraliteCompensationCarbone: 'Faire un signalement sur des allegations de neutralite compensation carbone',
+      impressionSystematiqueTicketDeCaisse: 'Faire un signalement sur des impressions systematiques de tickets de caisse',
+      blackFridayAboFraisCaches: 'Faire un signalement pour des abonnements ou frais cachés pendant le Black Friday',
+      blackFridayColis: 'Faire un signalement pour un colis endommagé ou non livré pendant le Black Friday',
+      blackFridayDarkPatterns: 'Faire un signalement pour une interface trompeuse (dark pattern) pendant le Black Friday',
+      blackFridayFausseReduction: 'Faire un signalement pour une fausse réduction de prix pendant le Black Friday',
+      blackFridayFauxSiteGouvernemental: 'Faire un signalement pour un faux site gouvernemental',
+      blackFridayFauxStocks: "Faire un signalement pour des fausses infos sur les stocks d'un produit pendant le Black Friday",
+      blackFridaySav: 'Faire un signalement pour un SAV non joignable pendant le Black Friday',
+      blackFridaySitesFrauduleux: 'Faire un signalement pour un site frauduleux pendant le Black Friday',
       signalInfluenceur: 'Faire un signalement sur un influenceur',
       reportIncidentSection: "Dépôt d'un signalement",
       reportIncidentFor: 'Faire un signalement pour',
@@ -834,8 +921,6 @@ export const fr = {
     },
     arbo: {
       title: "Arborescence du dépot d'un signalement",
-      notAFraudMessage:
-        'Nous ne doutons pas que vous ayez réellement rencontré un problème mais... il ne s’agit pas d’une fraude.',
     },
     yes: 'Oui',
     no: 'Non',
@@ -1054,7 +1139,7 @@ export const fr = {
     notTransmittableToProConsumerInformation: `Votre signalement ne sera pas transmis à l'entreprise. Il sera lu <b>uniquement par la répression des fraudes</b>.`,
     informationRatingSaved: `Votre avis a bien été enregistré, nous vous en remercions.`,
     informationTitle: `Emmh, nous ne pouvons pas traiter votre signalement.`,
-    informationReportOutOfScope: `Nous ne doutons pas que vous ayez réellement rencontré un problème mais... il ne s’agit pas d’une fraude.`,
+    informationReportOutOfScope: `Nous ne doutons pas que vous ayez réellement rencontré un problème mais votre signalement ne semble pas concerner un sujet relevant des compétences de la DGCCRF.`,
     informationWasUsefull: `Est-ce que cette information vous a été utile ?`,
     buttonReportProblem: `Signalez un problème`,
     logoAltSignalconso: `Logo SignalConso / Retour à la page d'accueil`,
@@ -1111,8 +1196,8 @@ export const fr = {
     identifyBy_noneDesc: `Si vous ne parvenez pas à identifier l'entreprise, vous pouvez continuer votre signalement.
     Il ne sera pas transmis à l'entreprise, sauf si cette dernière est française et identifiable par l'équipe de SignalConso.
     Dans tous les cas les enquêteurs de la répression des fraudes en seront informés.`,
-    identifyBy_nameOrIdentity: `Nom ou identifiant SIRET/SIREN de l'entreprise`,
-    identifyBy_nameOrIdentity_ex: `Ex : 83350861700010, boulangerie dupont, ...`,
+    identifyBy_nameOrIdentity: `Nom ou n° SIRET/SIREN`,
+    identifyBy_nameOrIdentity_ex: `Ex : boulangerie dupont, 83350861700010, ...`,
     frenchCompaniesOnly: 'Entreprises françaises uniquement',
     couldYouPrecise: `Pouvez-vous préciser ?`,
     cantIdentifyCompany: `Votre code postal nous servira à rediriger votre signalement vers le bon service.`,
@@ -1168,7 +1253,7 @@ export const fr = {
     governmentCompany: 'Administration publique',
     siretNumber: 'Numéro SIRET',
     cannotReportGovernmentCompany: 'Impossible de signaler une administration publique.',
-    selectCompanyDesc: `Si l'entreprise n'est pas celle recherchée, vous pouvez modifier votre recherche.`,
+    selectCompanyDesc: `S'il n'y a pas celle attendue, vous pouvez modifier votre recherche.`,
     isAFrenchCompany: `Est-ce que l'entreprise est en France ?`,
     noItsForeign: `Non, elle est à l'étranger`,
     companyHowToFindCountry: `Comment retrouver le pays d'une entreprise ?`,
@@ -1276,8 +1361,8 @@ export const fr = {
       Pendant l'enquête, si les enquêteurs ont besoin de révéler votre identité à la justice ou à votre employeur, ils vous demanderont l'autorisation avant.
       <b>Vous pourrez refuser.</b>
     `,
-    consumerAnonymousInformation: `Vous restez anonyme, mais l'entreprise ne sera pas en mesure de résoudre votre problème en particulier. Pas de
-    remboursement, de réponse personnalisée, ...`,
+    consumerAnonymousInformation: `Vous restez anonyme. Pour mémoire, vous avez choisi de signaler le problème afin que l’entreprise s’améliore : votre problème particulier ne pourra pas être résolu. Pas de remboursement, de réponse personnalisée…`,
+    consumerShareInformation: `Vous partagez vos coordonnées avec l’entreprise. Pour mémoire, vous avez choisi de signaler le problème afin que l’entreprise s’améliore : votre problème particulier ne pourra pas être résolu. Pas de remboursement, de réponse personnalisée…`,
     confirmationTitle: `Récapitulatif de votre problème`,
     confirmationAlertTransmittable: `Vérifiez votre signalement avant de l’envoyer à l'entreprise et à la répression des fraudes.`,
     confirmationAlert: `Vérifiez votre signalement avant de l’envoyer à la répression des fraudes.`,

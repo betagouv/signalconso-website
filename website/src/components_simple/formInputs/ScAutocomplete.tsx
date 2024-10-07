@@ -25,6 +25,7 @@ export function ScAutoComplete<Item>({
   helperText,
   disabled,
   editable,
+  showRequiredAsterisk = true,
 }: {
   label: string
   desc?: string
@@ -47,6 +48,7 @@ export function ScAutoComplete<Item>({
     onEdit: () => void
     label: string
   }
+  showRequiredAsterisk?: boolean
 }) {
   const inputId = useId()
   const helperTextId = useId()
@@ -56,7 +58,9 @@ export function ScAutoComplete<Item>({
     <Combobox<Item> name={name} onChange={onChange} by={optionsAreSame}>
       <div className={`fr-input-group ${error ? 'fr-input-group--error' : ''}`}>
         <Combobox.Label htmlFor={inputId} className="fr-label">
-          {label} *{desc && <span className="fr-hint-text">{desc}</span>}
+          {label}
+          {showRequiredAsterisk && ' *'}
+          {desc && <span className="fr-hint-text">{desc}</span>}
         </Combobox.Label>
         <div className="flex w-full">
           <div className="relative w-full">

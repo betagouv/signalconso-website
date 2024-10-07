@@ -1,10 +1,10 @@
 - label: Date de l'accident
-  type: DATE
+  type: DATE_NOT_IN_FUTURE
   defaultValue: SYSDATE
 - label: Site internet d'achat
   placeholder: Adresse du site internet complet ou URL
   type: TEXT
-- label: La personne qui a consommé l'aliment est-elle tombée malade et/ou s'est-elle blessée&#160;?
+- label: La personne qui a consommé l'aliment est-elle tombée malade et/ou s'est-elle blessée ?
   optional: true
   type: RADIO
   options:
@@ -12,7 +12,7 @@
     - Oui (à préciser)
 - label: Décrivez nous plus en détails ce qui s'est passé
   type: TEXTAREA
-- label: Avez-vous déjà contacté le commerçant ou le fabricant pour ce problème&#160;?
+- label: Avez-vous déjà contacté le commerçant ou le fabricant pour ce problème ?
   type: RADIO
   options:
     - Oui

@@ -3,16 +3,16 @@ subcategoriesTitle: Autre
 tags:
   - Influenceur
 detailInputs:
-- label: Date du constat
-  type: DATE
-  defaultValue: SYSDATE
-  optional: true
-- label: Nom du produit ou du service (facultatif)
-  type: TEXT
-  optional: true
-- label: Site internet
-  placeholder: Adresse du site internet complet ou URL
-  type: TEXT
-- label: Description
-  placeholder: Préciser la nature et la gravité
-  type: TEXTAREA
+  - label: Date du constat
+    type: DATE_NOT_IN_FUTURE
+    defaultValue: SYSDATE
+    optional: true
+  - label: Nom du produit ou du service (facultatif)
+    type: TEXT
+    optional: true
+  - label: Site internet
+    placeholder: Adresse du site internet complet ou URL
+    type: TEXT
+  - label: Description
+    placeholder: Préciser la nature et la gravité
+    type: TEXTAREA

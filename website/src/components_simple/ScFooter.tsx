@@ -104,7 +104,7 @@ function buildLinksList(
         link(pagesDefs.signalInfluenceur.url, 'Un influenceur'),
         link(pagesDefs.obligationFibre.url, 'Un passage forcé à la fibre'),
         link(pagesDefs.obsolescencePage.url, 'Une obsolescence programmée'),
-        link(pagesDefs.demarchageTelephonique.url, 'Un démarchage téléphonique'),
+        link(pagesDefs.demarchageAbusif.url, 'Un démarchage téléphonique abusif'),
         link(pagesDefs.intoxAlimentaire.url, 'Une intoxication alimentaire'),
       ],
     },
@@ -124,6 +124,8 @@ function buildLinksList(
         link('/tel-internet-media', 'Un opérateur mobile ou FAI'),
         link('/fichage-bancaire-injustifie', 'Un fichage bancaire injustifié'),
         link('/retard-train', 'Un retard de train'),
+        link(pagesDefs.blackFridayFauxSiteGouvernemental.url, 'Un faux site gouvernemental'),
+        link(pagesDefs.blackFridayFausseReduction.url, 'Des fausses réductions de prix'),
       ],
     },
     {

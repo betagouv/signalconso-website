@@ -19,7 +19,7 @@ import {dummyStepNavigation} from './PlaygroundConfirmation'
 
 export class DetailsFixtureInput {
   static readonly text: DetailInputText = {
-    label: 'Texte label',
+    label: 'Texte label (it can contain a raw URL like https://www.example.com)',
     type: DetailInputType.TEXT,
   }
 
@@ -125,8 +125,11 @@ export const PlaygroundDetails = () => {
       <DetailsInner
         inputs={[...chosenInputs]}
         transmissionStatus={'NOT_TRANSMITTABLE'}
-        onSubmit={(res, files) => {
+        saveChange={(res, files) => {
           setResultInputs(parseReportDetails(res, chosenInputs))
+          setResultFiles(files)
+        }}
+        saveFiles={files => {
           setResultFiles(files)
         }}
         stepNavigation={dummyStepNavigation}

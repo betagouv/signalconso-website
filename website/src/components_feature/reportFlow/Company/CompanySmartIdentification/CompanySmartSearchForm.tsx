@@ -2,8 +2,6 @@ import {ButtonWithLoader} from '@/components_simple/buttons/Buttons'
 import {GeoArea, ScAutocompleteGeoArea} from '@/components_simple/formInputs/ScAutocompleteGeoArea'
 import {ScCheckbox} from '@/components_simple/formInputs/ScCheckbox'
 import {ScTextInput} from '@/components_simple/formInputs/ScTextInput'
-import {RequiredFieldsLegend} from '@/components_simple/RequiredFieldsLegend'
-import {appConfig} from '@/core/appConfig'
 import {useI18n} from '@/i18n/I18n'
 import {forwardRef, Ref} from 'react'
 import {Controller, useForm} from 'react-hook-form'
@@ -16,8 +14,7 @@ type RawForm = {
 }
 export type CompanySearchInputs = {input: string; geoArea?: GeoArea}
 
-// it's not functional yet on the backend
-const enableSearchByDepartment = appConfig.useDepartementSearch
+const enableSearchByDepartment = true
 
 type Props = {
   onSubmit: (_: CompanySearchInputs) => void
@@ -37,7 +34,7 @@ export const CompanySmartSearchForm = forwardRef((props: Props, ref: Ref<HTMLFor
   const restrictToGeoArea = watch('restrictToGeoArea')
   return (
     <form onSubmit={handleSubmit(form => onSubmit(transformRawForm(form)))} {...{ref}}>
-      <RequiredFieldsLegend />
+      {/* <RequiredFieldsLegend /> */}
       <ScTextInput
         {...register('input', {
           required: {value: true, message: m.required},
@@ -45,6 +42,7 @@ export const CompanySmartSearchForm = forwardRef((props: Props, ref: Ref<HTMLFor
         error={!!errors.input}
         helperText={errors.input?.message}
         required
+        showRequiredAsterisk={false}
         desc={m.frenchCompaniesOnly}
         label={
           <span>
@@ -54,11 +52,7 @@ export const CompanySmartSearchForm = forwardRef((props: Props, ref: Ref<HTMLFor
         placeholder={m.identifyBy_nameOrIdentity_ex}
       />
       <div className={`${restrictToGeoArea ? 'p-4 pb-1 mb-4 bg-sclightpurple rounded-lg' : ''}`}>
-        <ScCheckbox
-          {...register('restrictToGeoArea')}
-          label={enableSearchByDepartment ? m.restrictToPostalCodeOrDpt : m.restrictToPostalCode}
-          required
-        />
+        <ScCheckbox {...register('restrictToGeoArea')} label={m.restrictToPostalCodeOrDpt} required />
         {restrictToGeoArea && (
           <div className="max-w-lg">
             <Controller
@@ -66,11 +60,11 @@ export const CompanySmartSearchForm = forwardRef((props: Props, ref: Ref<HTMLFor
               name="geoArea"
               render={({field: {onChange, onBlur, name, value}, fieldState: {error}}) => (
                 <ScAutocompleteGeoArea
-                  label={enableSearchByDepartment ? 'Département ou code postal' : m.postalCode}
-                  noDepartements={!enableSearchByDepartment}
+                  label={m.postalCodeOrDpt}
                   {...{onChange, onBlur, name, value}}
                   error={!!error}
                   helperText={error?.message}
+                  showRequiredAsterisk={false}
                 />
               )}
             />

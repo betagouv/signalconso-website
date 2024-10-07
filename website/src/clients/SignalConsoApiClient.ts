@@ -13,6 +13,7 @@ import {Country} from '../model/Country'
 import {CreatedReport} from '../model/CreatedReport'
 import {FileOrigin, UploadedFile} from '../model/UploadedFile'
 import {ApiError, BaseApiClient} from './BaseApiClient'
+import {GenericAbortSignal} from 'axios'
 
 type PublicStat =
   | 'PromesseAction'
@@ -103,13 +104,29 @@ export class SignalConsoApiClient {
 
   getDocumentLink = (file: UploadedFile) => `${this.client.baseUrl}/reports/files/${file.id}/${encodeURI(file.filename)}`
 
-  uploadDocument = (file: File, origin: FileOrigin) => {
+  uploadDocument = (
+    file: File,
+    origin: FileOrigin,
+    id: string,
+    uploadProgress?: (percent: number) => void,
+    signal?: GenericAbortSignal,
+  ) => {
     const fileFormData: FormData = new FormData()
     fileFormData.append('reportFile', file, file.name)
     fileFormData.append('reportFileOrigin', origin)
     // We need to put manually the header since axios 1.x https://github.com/axios/axios/issues/5556
     // There are other ways but this is the quickest
-    return this.client.post<UploadedFile>(`reports/files`, {body: fileFormData, headers: {'Content-Type': 'multipart/form-data'}})
+    return this.client.post<UploadedFile>(`reports/files?reportFileId=${id}`, {
+      body: fileFormData,
+      headers: {'Content-Type': 'multipart/form-data'},
+      onUploadProgress: uploadProgress
+        ? progressEvent => {
+            const percentCompleted = progressEvent.total ? Math.round((progressEvent.loaded * 100) / progressEvent.total) : 0.0
+            uploadProgress(percentCompleted)
+          }
+        : undefined,
+      signal: signal,
+    })
   }
 
   rateSubcategory = (category: string, subcategories: Subcategory[], positive: boolean): Promise<void> => {

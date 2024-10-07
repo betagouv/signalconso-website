@@ -5,4 +5,4 @@ blockingInfo:
   content: >-
     Lorsque vous signez un contrat dans une boutique, vous ne bénéficiez pas
     d'un délai de rétractation.
-  notAFraudMessage: true
+  reportOutOfScopeMessage: true

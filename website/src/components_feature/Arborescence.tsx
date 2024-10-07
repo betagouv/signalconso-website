@@ -200,7 +200,9 @@ const NodeInfo = ({anomaly}: {anomaly: SubcategoryWithInfoWall}) => {
             </ul>
           </div>
         )}
-        {anomaly.blockingInfo.notAFraudMessage && <span className="text-sm text-gray-500">{m.arbo.notAFraudMessage}</span>}
+        {anomaly.blockingInfo.reportOutOfScopeMessage && (
+          <span className="text-sm text-gray-500">{m.informationReportOutOfScope}</span>
+        )}
       </div>
     </details>
   )

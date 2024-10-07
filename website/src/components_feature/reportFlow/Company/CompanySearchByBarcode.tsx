@@ -74,7 +74,7 @@ export const CompanySearchByBarcode = ({searchProductOnly, children}: Props) => 
   return (
     <>
       <Animate>
-        <div>
+        <div className={formStatus.kind === 'skipped' ? 'mb-4' : ''}>
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="mb-4">
               <ScTextInput
@@ -109,8 +109,8 @@ export const CompanySearchByBarcode = ({searchProductOnly, children}: Props) => 
                 helperText={errors.gtin?.message}
               />
             </div>
-            <div className="flex justify-end gap-2">
-              <Button priority="tertiary no outline" type="button" onClick={onSkip}>
+            <div className="flex justify-end gap-2 items-center">
+              <Button priority="tertiary no outline" type="button" onClick={onSkip} className="text-right">
                 Je ne connais pas le code-barres
               </Button>
               <ButtonWithLoader iconId="ri-search-line" loading={_search.isFetching}>

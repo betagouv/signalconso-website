@@ -1,3 +1,4 @@
+import {useAnalyticContext} from '@/analytic/AnalyticContext'
 import {useToastOnQueryError} from '@/clients/apiHooks'
 import {Animate} from '@/components_simple/Animate'
 import {useApiClients} from '@/context/ApiClientsContext'
@@ -70,7 +71,12 @@ export function CompanySmartIdentification({
           )}
           <div className="flex flex-col items-end gap-2">
             <div className="flex flex-col">
-              <Button onClick={() => setMode('cannotFind')} priority="tertiary no outline" iconId="ri-arrow-right-line">
+              <Button
+                onClick={() => setMode('cannotFind')}
+                priority="tertiary no outline"
+                iconId="ri-arrow-right-line"
+                className="text-left"
+              >
                 {m.cantFindCompany}
               </Button>
               <Button onClick={() => setMode('foreign')} priority="tertiary no outline" iconId="ri-arrow-right-line">
@@ -134,6 +140,7 @@ export function CompanySmartIdentification({
 function useCompanySearchSmartQuery(searchInputs: CompanySearchInputs | undefined) {
   const {companyApiClient} = useApiClients()
   const {currentLang} = useI18n()
+  const _analytic = useAnalyticContext()
   const _search = useQuery({
     queryKey: ['searchCompany', searchInputs],
     queryFn: async () => {
@@ -141,7 +148,9 @@ function useCompanySearchSmartQuery(searchInputs: CompanySearchInputs | undefine
         const {input, geoArea} = searchInputs
         const postalCode = geoArea && geoArea.kind === 'postcode' ? geoArea.postalCode : undefined
         const departmentCode = geoArea && geoArea.kind === 'department' ? geoArea.dpt.code : undefined
-        return companyApiClient.searchSmart(input, postalCode, departmentCode, currentLang)
+        const res = await companyApiClient.searchSmart(input, postalCode, departmentCode, currentLang)
+        _analytic.trackSearch({q: input, postalCode, departmentCode}, 'companysearch_smart', res.length)
+        return res
       }
       return null
     },

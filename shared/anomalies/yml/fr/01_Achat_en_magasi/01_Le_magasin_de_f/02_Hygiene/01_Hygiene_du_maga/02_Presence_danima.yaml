@@ -1,17 +1,17 @@
 title: Présence d'animaux
-desc: 'Exemple : rats, cafards'
+desc: "Exemple : rats, cafards"
 ccrfCode:
-  - '312'
-reponseconsoCode: '312'
+  - "312"
+reponseconsoCode: "312"
 detailInputs:
-  - label: Quel animal avez-vous vu&#160;?
+  - label: Quel animal avez-vous vu ?
     type: RADIO
     options:
       - Insectes (cafard...)
       - Rongeurs (rat, souris...)
       - Oiseau (pigeon...)
       - Autre (à préciser)
-  - label: Où l'avez-vous vu&#160;?
+  - label: Où l'avez-vous vu ?
     type: CHECKBOX
     options:
       - Zone de production
@@ -21,7 +21,7 @@ detailInputs:
     type: TEXTAREA
     optional: true
   - label: Date du constat
-    type: DATE
+    type: DATE_NOT_IN_FUTURE
     defaultValue: SYSDATE
   - label: Heure du constat (facultatif)
     type: TIMESLOT

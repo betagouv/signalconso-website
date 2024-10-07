@@ -11,7 +11,7 @@ detailInputs:
     type: TEXT
   - label: >-
       La lettre "e" est-elle écrite à côté de l'indication du
-      poids/volume&#160;?
+      poids/volume ?
     type: RADIO
     options:
       - Oui
@@ -20,5 +20,5 @@ detailInputs:
     type: TEXT
   - label: Nom /marque
     type: TEXT
-  - label: Quelle erreur a été constatée&#160;?
+  - label: Quelle erreur a été constatée ?
     type: TEXTAREA

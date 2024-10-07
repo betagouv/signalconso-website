@@ -84,19 +84,9 @@ export function getTeam(lang: AppLang): Team {
         avatar: imgAline,
       },
       {
-        name: 'Ingrid Godefroy',
-        role: [t.function.bussinesDev],
-        avatar: imgIngridgodefroy,
-      },
-      {
         name: 'Guillaume de Gérando',
         role: [t.function.bussinesDev, t.dgccrfJob.civilServant],
         avatar: imgGuillaumedegerando,
-      },
-      {
-        name: 'Nathaniel Richand',
-        role: [t.function.bussinesCoach],
-        avatar: imgNathanielrichand,
       },
       {
         name: 'Saïd Sedoud',
@@ -120,6 +110,16 @@ export function getTeam(lang: AppLang): Team {
       },
     ],
     former: [
+      {
+        name: 'Ingrid Godefroy',
+        role: [t.function.bussinesDev],
+        avatar: imgIngridgodefroy,
+      },
+      {
+        name: 'Nathaniel Richand',
+        role: [t.function.bussinesCoach],
+        avatar: imgNathanielrichand,
+      },
       {
         name: 'Hakim Sedoud',
         role: [t.function.devIntern],

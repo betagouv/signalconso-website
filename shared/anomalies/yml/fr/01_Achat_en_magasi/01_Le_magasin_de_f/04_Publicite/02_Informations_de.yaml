@@ -4,12 +4,12 @@ desc: >-
   bio" or ce n'est pas le cas
 ccrfCode:
   - 23B
-reponseconsoCode: '210'
+reponseconsoCode: "210"
 detailInputs:
   - label: Date du constat
-    type: DATE
+    type: DATE_NOT_IN_FUTURE
     defaultValue: SYSDATE
-  - label: Qu'est-ce qui est trompeur&#160;?
+  - label: Qu'est-ce qui est trompeur ?
     type: RADIO
     options:
       - L'emballage d'un produit
@@ -21,7 +21,7 @@ detailInputs:
       - Le discours d'un vendeur
       - La façon de mettre en vente
       - Autre (à préciser)
-  - label: À propos de quoi est-ce trompeur&#160;?
+  - label: À propos de quoi est-ce trompeur ?
     type: RADIO
     options:
       - L'origine du produit
@@ -33,7 +33,7 @@ detailInputs:
   - label: Pourquoi trouvez-vous ça trompeur ?
     type: TEXTAREA
     optional: true
-  - label: Avez-vous déjà contacté le commerçant pour ce problème&#160;?
+  - label: Avez-vous déjà contacté le commerçant pour ce problème ?
     type: RADIO
     options:
       - Oui

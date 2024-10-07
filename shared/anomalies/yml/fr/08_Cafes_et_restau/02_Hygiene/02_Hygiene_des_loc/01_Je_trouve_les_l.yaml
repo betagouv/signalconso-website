@@ -2,12 +2,12 @@ title: Je trouve les locaux sales ou dégradés
 desc: "Exemple\_: cuisine sale, WC sales"
 detailInputs:
   - label: Date du constat
-    type: DATE
+    type: DATE_NOT_IN_FUTURE
     defaultValue: SYSDATE
   - label: Heure du constat (facultatif)
     type: TIMESLOT
     optional: true
-  - label: Quel endroit est concerné&#160;?
+  - label: Quel endroit est concerné ?
     type: CHECKBOX
     options:
       - La cuisine et zone de production / stockage
@@ -15,12 +15,12 @@ detailInputs:
       - Le lieu de vente (vitrine réfrigérée)
       - Les WC
       - Autre (à préciser)
-  - label: Quel est le problème&#160;?
+  - label: Quel est le problème ?
     type: CHECKBOX
     options:
       - C'est sale
       - C'est dégradé, en mauvais état
-  - label: À quel niveau&#160;?
+  - label: À quel niveau ?
     type: CHECKBOX
     options:
       - Sol / mur

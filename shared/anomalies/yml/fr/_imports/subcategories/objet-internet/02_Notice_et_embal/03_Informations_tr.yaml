@@ -1,12 +1,12 @@
 title: Informations trompeuses ou fausses
 desc: "Exemple\_: \"en or\" alors qu'il s'agit de \"plaqué or\", \"fabriqué en France\" alors que ce n'est pas le cas "
-reponseconsoCode: '210'
+reponseconsoCode: "210"
 tags:
   - ReponseConso
 detailInputs:
   - label: Site internet d'achat
     placeholder: Adresse du site internet complet ou URL
-  - label: Quel est le type de produit&#160;?
+  - label: Quel est le type de produit ?
     type: RADIO
     options:
       - Textiles
@@ -16,7 +16,7 @@ detailInputs:
       - Électroniques
       - Autre (à préciser)
   - label: Date du constat
-    type: DATE
+    type: DATE_NOT_IN_FUTURE
     defaultValue: SYSDATE
   - label: Nom / marque / référence
     type: TEXT
