@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import imgTrial from '@/img/actualites/trial.png'
+import Link from 'next/link'
 
 export function ArticleProcesSFAM() {
   return (
@@ -52,9 +53,19 @@ export function ArticleProcesSFAM() {
       </p>
       <p>
         Si vous avez été victime de prélèvements abusifs ou d'autres pratiques trompeuses, il est important de{' '}
-        <strong>signaler votre expérience</strong> sur SignalConso. Cette démarche permet de faire entendre votre voix, d'aider
-        d'autres consommateurs et de pousser les entreprises à respecter les règles.
+        <Link href="https://signal.conso.gouv.fr/fr">signaler votre expérience</Link> sur SignalConso. Cette démarche permet de
+        faire entendre votre voix, d'aider d'autres consommateurs et de pousser les entreprises à respecter les règles.
       </p>
+
+      <h2 className="text-2xl">Liens utiles 👉</h2>
+      <ul>
+        <li>
+          <Link href="https://signal.conso.gouv.fr/fr/comment-ca-marche">Comment ça marche ?</Link>
+        </li>
+        <li>
+          <Link href="https://aide.signal.conso.gouv.fr/fr/">Aide SignalConso</Link>
+        </li>
+      </ul>
     </div>
   )
 }
