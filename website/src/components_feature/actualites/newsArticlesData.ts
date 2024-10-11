@@ -13,6 +13,14 @@ export type NewsArticle = {
 // This is the display order. Keep the most recents at the start of the array
 export const initialNewsArticlesData: NewsArticle[] = [
   {
+    date: '2024-10-14',
+    lang: AppLangs.fr,
+    slug: 'proces-sfam',
+    veryShortTitle: 'La SFAM face à la Justice',
+    title: 'Des téléconseillers formés à tromper : La SFAM face à la Justice',
+    excerpt: `L'affaire SFAM a provoqué un véritable séisme dans le secteur des assurances. De nombreux consommateurs ont dénoncé des pratiques commerciales trompeuses, pointant du doigt des prélèvements non autorisés et des refus de remboursement.`,
+  },
+  {
     date: '2024-10-04',
     lang: AppLangs.fr,
     slug: 'baux-precaires',
