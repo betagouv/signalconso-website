@@ -30,7 +30,7 @@ describe('getDraftReportInputs', () => {
     )
     expect(inputs).toEqual([
       ReportDefaultInputs.date(AppLangs.fr),
-      ReportDefaultInputs.description(),
+      ReportDefaultInputs.description(false),
       ReportDefaultInputs.reponseConso(AppLangs.fr),
     ])
   })
@@ -78,7 +78,7 @@ describe('getDraftReportInputs', () => {
         ],
         type: 'CHECKBOX',
       },
-      ReportDefaultInputs.description(true),
+      ReportDefaultInputs.description(false),
     ])
   })
 
