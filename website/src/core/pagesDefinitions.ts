@@ -67,6 +67,8 @@ export const internalPageDefs = {
   // manual LPs
   obligationFibre: pageLp('/obligation-adsl-fibre'),
   erreurDePrixEnCaisse: pageLp('/erreur-de-prix-en-caisse'),
+  travauxRenovation: pageLp('/travaux-renovation'),
+  pompeAChaleurPac: pageLp('/pompe-a-chaleur-pac'),
   repasSurPlaceCouvertsJetables: pageLp('/repas-sur-place-couverts-jetables'),
   fournitureSystematiqueEchantillonsInternet: pageLp('/fourniture-systematique-echantillons-internet'),
   distributionGratuiteBouteillesPlastique: pageLp('/distribution-gratuite-bouteilles-plastique'),
