@@ -139,6 +139,14 @@ export const en = {
         title: '',
         description: '',
       },
+      travauxRenovation: {
+        title: '',
+        description: '',
+      },
+      pompeAChaleurPac: {
+        title: '',
+        description: '',
+      },
       repasSurPlaceCouvertsJetables: {
         title: '',
         description: '',

@@ -140,6 +140,16 @@ export const fr = {
         description:
           'Vous constatez un écart entre le prix affiché en magasin et celui en caisse ? Signalez-le sur SignalConso ! Protégez vos droits en cas de mauvais affichage des prix ou de promotions non appliquées. Agissez avec la DGCCRF pour corriger ces pratiques commerciales trompeuses.',
       },
+      travauxRenovation: {
+        title: 'Travaux de rénovation : protégez vos droits et signalez les abus avec SignalConso',
+        description:
+          'Des problèmes avec vos travaux de rénovation ? Découvrez vos droits en tant que consommateur et faites un signalement sur SignalConso pour lutter contre les pratiques abusives : retards, malfaçons, non-respect des devis.',
+      },
+      pompeAChaleurPac: {
+        title: 'Pompe à chaleur : signalez les abus et défendez vos droits avec SignalConso',
+        description:
+          "Des problèmes d'installation ou d'entretien de votre pompe à chaleur ? Découvrez vos droits et signalez les pratiques abusives via SignalConso : installation défectueuse, devis trompeurs, performances non respectées.",
+      },
       repasSurPlaceCouvertsJetables: {
         title: 'Couverts jetables au restaurant : signalez-le sur SignalConso',
         description:
