@@ -13,6 +13,14 @@ export type NewsArticle = {
 // This is the display order. Keep the most recents at the start of the array
 export const initialNewsArticlesData: NewsArticle[] = [
   {
+    date: '2024-10-21',
+    lang: AppLangs.fr,
+    slug: 'lanceur-d-alerte',
+    veryShortTitle: "Lanceur d'alerte : un rôle essentiel",
+    title: "Lanceur d'alerte : un rôle essentiel pour protéger les consommateurs et l'intérêt général !",
+    excerpt: `Savez-vous que vous pouvez contribuer directement à la protection des consommateurs en devenant lanceur d'alerte ? Ce statut permet à toute personne, salariée ou non, de signaler des infractions graves ou des risques qui menacent l’intérêt général, notamment dans le domaine de la consommation.`,
+  },
+  {
     date: '2024-10-14',
     lang: AppLangs.fr,
     slug: 'proces-sfam',
