@@ -7,6 +7,7 @@ import {
   HighlightPurple,
   LpColoredBand,
   NarrowAndCentered,
+  WithSuperheroIllustration,
 } from '@/landings/manualLandingsUtils'
 import Button from '@codegouvfr/react-dsfr/Button'
 import {notFound} from 'next/navigation'
@@ -24,19 +25,27 @@ export function blackFridayColis(props: PageComponentProps) {
   return (
     <FullWidthPageContainer>
       <AlternatingPurpleBands>
-        <NarrowAndCentered>
-          <h1 className="mb-6">
-            <HighlightBlue>Retard, perte ou colis endommagé</HighlightBlue> pendant le{' '}
-            <HighlightPurple>Black Friday</HighlightPurple> ?
-          </h1>
-          <p className="fr-h3 !mb-4 !text-scbluefrance">Protégez vos droits avec SignalConso !</p>
-          <p className="text-lg">
-            Le Black Friday est une période de forte activité pour les services de livraison. Il vous est peut-être déjà arrivé
-            que vos commandes soient retardées, que des colis se perdent ou arrivent endommagés. Découvrez vos droits en tant que
-            consommateur face à ces situations et en cas de litige, faites un signalement sur SignalConso.
-          </p>
-          {button}
-        </NarrowAndCentered>
+        <WithSuperheroIllustration>
+          {illustrationMobile => {
+            return (
+              <>
+                <h1 className="mb-6">
+                  <HighlightBlue>Retard, perte ou colis endommagé</HighlightBlue> pendant le{' '}
+                  <HighlightPurple>Black Friday</HighlightPurple> ?
+                </h1>
+                <p className="fr-h3 !mb-4 !text-scbluefrance">Protégez vos droits avec SignalConso !</p>
+                <p className="text-lg">
+                  Le Black Friday est une période de forte activité pour les services de livraison. Il vous est peut-être déjà
+                  arrivé que vos commandes soient retardées, que des colis se perdent ou arrivent endommagés. Découvrez vos droits
+                  en tant que consommateur face à ces situations et en cas de litige, faites un signalement sur SignalConso.
+                </p>
+                {illustrationMobile}
+                {button}
+              </>
+            )
+          }}
+        </WithSuperheroIllustration>
+
         <div>
           <h2 className="fr-h4 ">
             Votre livraison est retardée ou votre colis s'est perdu pendant le Black Friday : Quels sont vos droits en tant que

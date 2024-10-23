@@ -7,6 +7,7 @@ import {
   HighlightPurple,
   LpColoredBand,
   NarrowAndCentered,
+  WithSuperheroIllustration,
 } from '@/landings/manualLandingsUtils'
 import Button from '@codegouvfr/react-dsfr/Button'
 import {notFound} from 'next/navigation'
@@ -24,26 +25,33 @@ export function blackFridayDarkPatterns(props: PageComponentProps) {
   return (
     <FullWidthPageContainer>
       <AlternatingPurpleBands>
-        <NarrowAndCentered>
-          <h1 className="mb-6">
-            <HighlightBlue>Interfaces trompeuses</HighlightBlue> et «<HighlightBlue>Dark Patterns</HighlightBlue>» pendant le{' '}
-            <HighlightPurple>Black Friday</HighlightPurple>?
-          </h1>
-          <p className="fr-h3 !mb-4 !text-scbluefrance">Protégez vos droits avec SignalConso !</p>
-          <p className="text-lg">
-            Le Black Friday est l'occasion de faire de bonnes affaires, mais certaines interfaces en ligne utilisent des
-            interfaces trompeuses pour influencer vos décisions sans que vous vous en rendiez compte. Ces pratiques, appelées{' '}
-            <strong>dark patterns</strong>, sont des techniques de manipulation intégrées aux sites web ou aux applications pour
-            vous pousser à faire des choix contraires à vos intérêts. Il vous est peut-être déjà arrivé de vouloir refuser un
-            abonnement, mais de découvrir que le bouton "Non merci" était caché ou rendu volontairement moins visible que le
-            bouton "Accepter".
-          </p>
-          <p className="text-lg">
-            Découvrez vos droits en tant que consommateur face à ces frais ou abonnement cachés et en cas de litige, faites un
-            signalement sur SignalConso.
-          </p>
-          {button}
-        </NarrowAndCentered>
+        <WithSuperheroIllustration>
+          {illustrationMobile => {
+            return (
+              <>
+                <h1 className="mb-6">
+                  <HighlightBlue>Interfaces trompeuses</HighlightBlue> et «<HighlightBlue>Dark Patterns</HighlightBlue>» pendant
+                  le <HighlightPurple>Black Friday</HighlightPurple>?
+                </h1>
+                <p className="fr-h3 !mb-4 !text-scbluefrance">Protégez vos droits avec SignalConso !</p>
+                <p className="text-lg">
+                  Le Black Friday est l'occasion de faire de bonnes affaires, mais certaines interfaces en ligne utilisent des
+                  interfaces trompeuses pour influencer vos décisions sans que vous vous en rendiez compte. Ces pratiques,
+                  appelées <strong>dark patterns</strong>, sont des techniques de manipulation intégrées aux sites web ou aux
+                  applications pour vous pousser à faire des choix contraires à vos intérêts. Il vous est peut-être déjà arrivé de
+                  vouloir refuser un abonnement, mais de découvrir que le bouton "Non merci" était caché ou rendu volontairement
+                  moins visible que le bouton "Accepter".
+                </p>
+                {illustrationMobile}
+                <p className="text-lg">
+                  Découvrez vos droits en tant que consommateur face à ces frais ou abonnement cachés et en cas de litige, faites
+                  un signalement sur SignalConso.
+                </p>
+                {button}
+              </>
+            )
+          }}
+        </WithSuperheroIllustration>
         <div>
           <h2 className="fr-h4 ">Qu'est-ce qu'un dark pattern ?</h2>
           <p>

@@ -3,7 +3,9 @@ import {bigReportButtonProps} from '@/components_simple/buttons/buttonsUtils'
 import {buildLinkStartReport} from '@/core/pagesDefinitions'
 import {getI18n} from '@/i18n/I18nDictionnary'
 import {AppLang, AppLangs} from '@/i18n/localization/AppLangs'
+import imgSuperhero from '@/img/landings/superhero_elf.svg'
 import {ChildrenProps} from '@/utils/utils'
+import Image from 'next/image'
 import {ReactNode} from 'react'
 
 export function getManualLpButtonProps(lang: AppLang, category: String) {
@@ -53,6 +55,25 @@ export function NarrowAndCentered({children, narrower = false}: ChildrenProps & 
   return (
     <div className="flex justify-center">
       <div className={`flex flex-col ${narrower ? 'max-w-2xl' : 'max-w-4xl'}`}>{children}</div>
+    </div>
+  )
+}
+
+// This component :
+// - adds the illustration on the left on desktop
+// - provides the illustration for mobile through a render prop, to be inserted somewhere in the children
+export function WithSuperheroIllustration({children}: {children: (mobileIllustration: ReactNode) => ReactNode}) {
+  const alt = 'Superhéroïne brandissant un smartphone'
+  return (
+    <div className="flex gap items-center gap-4 flex-row">
+      <Image src={imgSuperhero} alt={alt} width={150} className={'hidden md:block'} />
+      <div>
+        {children(
+          <div className="flex justify-center mb-2">
+            <Image src={imgSuperhero} alt={alt} width={100} className={'md:hidden'} />
+          </div>,
+        )}
+      </div>
     </div>
   )
 }

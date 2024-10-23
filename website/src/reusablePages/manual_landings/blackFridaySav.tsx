@@ -7,6 +7,7 @@ import {
   HighlightPurple,
   LpColoredBand,
   NarrowAndCentered,
+  WithSuperheroIllustration,
 } from '@/landings/manualLandingsUtils'
 import Button from '@codegouvfr/react-dsfr/Button'
 import {notFound} from 'next/navigation'
@@ -24,23 +25,32 @@ export function blackFridaySav(props: PageComponentProps) {
   return (
     <FullWidthPageContainer>
       <AlternatingPurpleBands>
-        <NarrowAndCentered>
-          <h1 className="mb-6">
-            Problème avec le <HighlightBlue>service après-vente</HighlightBlue> pendant le{' '}
-            <HighlightPurple>Black Friday</HighlightPurple> ?
-          </h1>
-          <p className="fr-h3 !mb-4 !text-scbluefrance">Protégez vos droits avec SignalConso !</p>
-          <p className="text-lg">
-            Le Black Friday est l'une des périodes les plus attendues pour réaliser de bonnes affaires. Mais il peut aussi être
-            source de frustration. Il vous est peut-être déjà arrivé qu'un service après-vente (SAV) ne réponde pas ou que ses
-            coordonnées soient introuvables.
-          </p>
-          <p className="text-lg">
-            Découvrez vos droits en tant que consommateur face à ces problèmes de SAV et en cas de litige, faites un signalement
-            sur SignalConso.
-          </p>
+        <>
+          <WithSuperheroIllustration>
+            {illustrationMobile => {
+              return (
+                <>
+                  <h1 className="mb-6">
+                    Problème avec le <HighlightBlue>service après-vente</HighlightBlue> pendant le{' '}
+                    <HighlightPurple>Black Friday</HighlightPurple> ?
+                  </h1>
+                  <p className="fr-h3 !mb-4 !text-scbluefrance">Protégez vos droits avec SignalConso !</p>
+                  <p className="text-lg">
+                    Le Black Friday est l'une des périodes les plus attendues pour réaliser de bonnes affaires. Mais il peut aussi
+                    être source de frustration. Il vous est peut-être déjà arrivé qu'un service après-vente (SAV) ne réponde pas
+                    ou que ses coordonnées soient introuvables.
+                  </p>
+                  {illustrationMobile}
+                  <p className="text-lg">
+                    Découvrez vos droits en tant que consommateur face à ces problèmes de SAV et en cas de litige, faites un
+                    signalement sur SignalConso.
+                  </p>
+                </>
+              )
+            }}
+          </WithSuperheroIllustration>
           {button}
-        </NarrowAndCentered>
+        </>
         <div>
           <h2 className="fr-h4 ">Vos droits en tant que consommateur pendant le Black Friday : Que dit la loi sur le SAV ?</h2>
           <p>
