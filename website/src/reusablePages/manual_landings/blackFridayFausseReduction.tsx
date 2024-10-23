@@ -7,6 +7,7 @@ import {
   HighlightPurple,
   LpColoredBand,
   NarrowAndCentered,
+  WithSuperheroIllustration,
 } from '@/landings/manualLandingsUtils'
 import Button from '@codegouvfr/react-dsfr/Button'
 import {notFound} from 'next/navigation'
@@ -24,23 +25,31 @@ export function blackFridayFausseReduction(props: PageComponentProps) {
   return (
     <FullWidthPageContainer>
       <AlternatingPurpleBands>
-        <NarrowAndCentered>
-          <h1 className="mb-6">
-            <HighlightBlue>Fausses réductions de prix</HighlightBlue> pendant le <HighlightPurple>Black Friday</HighlightPurple>?
-          </h1>
-          <p className="fr-h3 !mb-4 !text-scbluefrance">Protégez vos droits avec SignalConso !</p>
-          <p className="text-lg">
-            Le Black Friday est synonyme de bonnes affaires, mais attention aux fausses réductions de prix ou au promotion
-            mensongère. Certains commerçants peu scrupuleux gonflent artificiellement leurs prix juste avant cette période, pour
-            ensuite afficher de fausses réductions. Vous avez peut-être déjà vu des produits en promotion, alors qu'ils sont
-            vendus au même prix, voire plus cher que d'habitude.
-          </p>
-          <p className="text-lg">
-            Découvrez vos droits en tant que consommateur face à ces fausses réductions de prix et en cas de litige, faites un
-            signalement sur SignalConso.
-          </p>
-          {button}
-        </NarrowAndCentered>
+        <WithSuperheroIllustration>
+          {illustrationMobile => {
+            return (
+              <>
+                <h1 className="mb-6">
+                  <HighlightBlue>Fausses réductions de prix</HighlightBlue> pendant le{' '}
+                  <HighlightPurple>Black Friday</HighlightPurple>?
+                </h1>
+                <p className="fr-h3 !mb-4 !text-scbluefrance">Protégez vos droits avec SignalConso !</p>
+                <p className="text-lg">
+                  Le Black Friday est synonyme de bonnes affaires, mais attention aux fausses réductions de prix ou au promotion
+                  mensongère. Certains commerçants peu scrupuleux gonflent artificiellement leurs prix juste avant cette période,
+                  pour ensuite afficher de fausses réductions. Vous avez peut-être déjà vu des produits en promotion, alors qu'ils
+                  sont vendus au même prix, voire plus cher que d'habitude.
+                </p>
+                {illustrationMobile}
+                <p className="text-lg">
+                  Découvrez vos droits en tant que consommateur face à ces fausses réductions de prix et en cas de litige, faites
+                  un signalement sur SignalConso.
+                </p>
+                {button}
+              </>
+            )
+          }}
+        </WithSuperheroIllustration>
         <div>
           <h2 className="fr-h4 ">Fausses réductions de prix : Quels sont vos droits en tant que consommateur ?</h2>
           <p>Selon le Code de la consommation, les commerçants doivent respecter certaines règles concernant les promotions :</p>

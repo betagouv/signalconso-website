@@ -7,6 +7,7 @@ import {
   HighlightPurple,
   LpColoredBand,
   NarrowAndCentered,
+  WithSuperheroIllustration,
 } from '@/landings/manualLandingsUtils'
 import Button from '@codegouvfr/react-dsfr/Button'
 import {notFound} from 'next/navigation'
@@ -24,23 +25,31 @@ export function blackFridayAboFraisCaches(props: PageComponentProps) {
   return (
     <FullWidthPageContainer>
       <AlternatingPurpleBands>
-        <NarrowAndCentered>
-          <h1 className="mb-6">
-            <HighlightBlue>Abonnements ou frais cachés</HighlightBlue> pendant le <HighlightPurple>Black Friday</HighlightPurple>?
-          </h1>
-          <p className="fr-h3 !mb-4 !text-scbluefrance">Protégez vos droits avec SignalConso !</p>
-          <p className="text-lg">
-            Le Black Friday est souvent synonyme de promotions attractives, mais certains consommateurs peuvent se retrouver
-            piégés par des abonnements ou des frais cachés non annoncés au moment de l'achat. Ces pratiques trompeuses sont
-            pourtant illégales.
-          </p>
-          <p className="text-lg">
-            Il vous est peut-être déjà arrivé d'acheter un produit et de vous retrouver avec des prélèvements inexpliqués sur
-            votre compte en banque. Découvrez vos droits en tant que consommateur face à ces frais ou abonnement cachés et en cas
-            de litige, faites un signalement sur SignalConso.
-          </p>
-          {button}
-        </NarrowAndCentered>
+        <WithSuperheroIllustration>
+          {illustrationMobile => {
+            return (
+              <>
+                <h1 className="mb-6">
+                  <HighlightBlue>Abonnements ou frais cachés</HighlightBlue> pendant le{' '}
+                  <HighlightPurple>Black Friday</HighlightPurple>?
+                </h1>
+                <p className="fr-h3 !mb-4 !text-scbluefrance">Protégez vos droits avec SignalConso !</p>
+                <p className="text-lg">
+                  Le Black Friday est souvent synonyme de promotions attractives, mais certains consommateurs peuvent se retrouver
+                  piégés par des abonnements ou des frais cachés non annoncés au moment de l'achat. Ces pratiques trompeuses sont
+                  pourtant illégales.
+                </p>
+                {illustrationMobile}
+                <p className="text-lg">
+                  Il vous est peut-être déjà arrivé d'acheter un produit et de vous retrouver avec des prélèvements inexpliqués
+                  sur votre compte en banque. Découvrez vos droits en tant que consommateur face à ces frais ou abonnement cachés
+                  et en cas de litige, faites un signalement sur SignalConso.
+                </p>
+                {button}
+              </>
+            )
+          }}
+        </WithSuperheroIllustration>
         <div>
           <h2 className="fr-h4 ">Les frais cachés et abonnements forcés : Quels sont vos droits en tant que consommateur ?</h2>
           <p>

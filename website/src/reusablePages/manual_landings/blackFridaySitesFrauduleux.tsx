@@ -7,6 +7,7 @@ import {
   HighlightPurple,
   LpColoredBand,
   NarrowAndCentered,
+  WithSuperheroIllustration,
 } from '@/landings/manualLandingsUtils'
 import Button from '@codegouvfr/react-dsfr/Button'
 import {notFound} from 'next/navigation'
@@ -24,23 +25,31 @@ export function blackFridaySitesFrauduleux(props: PageComponentProps) {
   return (
     <FullWidthPageContainer>
       <AlternatingPurpleBands>
-        <NarrowAndCentered>
-          <h1 className="mb-6">
-            <HighlightBlue>Sites frauduleux</HighlightBlue> : protégez vos droits aussi pendant le{' '}
-            <HighlightPurple>Black Friday</HighlightPurple> avec SignalConso
-          </h1>
-          <p className="text-lg">
-            Le Black Friday attire des millions de consommateurs en ligne, mais il est aussi une période propice à l'apparition de
-            sites frauduleux. Ces plateformes imitent des sites officiels ou des boutiques de confiance pour tromper les
-            internautes et voler leurs informations personnelles ou financières. Il est essentiel de savoir reconnaître ces
-            escroqueries et de protéger vos droits en tant que consommateur.
-          </p>
-          <p className="text-lg">
-            Découvrez vos droits en tant que consommateur face à ces sites frauduleux et en cas de litige, faites un signalement
-            sur SignalConso.
-          </p>
-          {button}
-        </NarrowAndCentered>
+        <WithSuperheroIllustration>
+          {illustrationMobile => {
+            return (
+              <>
+                <h1 className="mb-6">
+                  <HighlightBlue>Sites frauduleux</HighlightBlue> : protégez vos droits aussi pendant le{' '}
+                  <HighlightPurple>Black Friday</HighlightPurple> avec SignalConso
+                </h1>
+                <p className="text-lg">
+                  Le Black Friday attire des millions de consommateurs en ligne, mais il est aussi une période propice à
+                  l'apparition de sites frauduleux. Ces plateformes imitent des sites officiels ou des boutiques de confiance pour
+                  tromper les internautes et voler leurs informations personnelles ou financières. Il est essentiel de savoir
+                  reconnaître ces escroqueries et de protéger vos droits en tant que consommateur.
+                </p>
+                {illustrationMobile}
+                <p className="text-lg">
+                  Découvrez vos droits en tant que consommateur face à ces sites frauduleux et en cas de litige, faites un
+                  signalement sur SignalConso.
+                </p>
+                {button}
+              </>
+            )
+          }}
+        </WithSuperheroIllustration>
+
         <div>
           <h2 className="fr-h4 ">Quels sont les dangers des sites frauduleux pendant le black Friday ?</h2>
           <p>Les sites frauduleux peuvent se manifester de différentes manières :</p>
