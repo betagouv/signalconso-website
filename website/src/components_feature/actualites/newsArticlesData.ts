@@ -13,6 +13,14 @@ export type NewsArticle = {
 // This is the display order. Keep the most recents at the start of the array
 export const initialNewsArticlesData: NewsArticle[] = [
   {
+    date: '2024-10-28',
+    lang: AppLangs.fr,
+    slug: 'halloween-confiseries',
+    veryShortTitle: 'Halloween : Attention aux dangers des confiseries !',
+    title: 'Halloween : Attention aux dangers des confiseries !',
+    excerpt: `Halloween, c'est le moment préféré des enfants pour remplir leurs paniers de friandises. Mais même si l'ambiance est festive, il est important de prêter attention à la sécurité des confiseries.`,
+  },
+  {
     date: '2024-10-21',
     lang: AppLangs.fr,
     slug: 'lanceur-d-alerte',
