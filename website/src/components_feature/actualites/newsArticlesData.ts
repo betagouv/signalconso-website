@@ -13,6 +13,14 @@ export type NewsArticle = {
 // This is the display order. Keep the most recents at the start of the array
 export const initialNewsArticlesData: NewsArticle[] = [
   {
+    date: '2024-11-04',
+    lang: AppLangs.fr,
+    slug: 'faux-avis',
+    veryShortTitle: 'Faux avis clients en ligne',
+    title: 'Faux avis clients en ligne : que faire avec SignalConso ?',
+    excerpt: `Les avis clients en ligne sont devenus un facteur déterminant dans nos choix d’achat, qu’il s’agisse d’un produit, d’un restaurant ou d’un service. Cependant, de plus en plus de faux avis polluent les plateformes.`,
+  },
+  {
     date: '2024-10-28',
     lang: AppLangs.fr,
     slug: 'halloween-confiseries',
