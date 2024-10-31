@@ -1,6 +1,6 @@
 import {allVisibleAnomalies} from '@/anomalies/Anomalies'
 import {bigReportButtonProps} from '@/components_simple/buttons/buttonsUtils'
-import {buildLinkStartReport} from '@/core/pagesDefinitions'
+import {buildLinkHomePickCategory, buildLinkStartReport} from '@/core/pagesDefinitions'
 import {getI18n} from '@/i18n/I18nDictionnary'
 import {AppLang, AppLangs} from '@/i18n/localization/AppLangs'
 import imgSuperhero from '@/img/landings/superhero_elf.svg'
@@ -8,15 +8,20 @@ import {ChildrenProps} from '@/utils/utils'
 import Image from 'next/image'
 import {ReactNode} from 'react'
 
-export function getManualLpButtonProps(lang: AppLang, category: String) {
+export function getManualLpButtonProps(lang: AppLang, category: string | 'home') {
+  const href = category === 'home' ? buildLinkHomePickCategory() : buildLinkForCategory(lang, category)
+  return {
+    ...bigReportButtonProps,
+    linkProps: {href},
+  }
+}
+
+function buildLinkForCategory(lang: AppLang, category: string) {
   const anomaly = allVisibleAnomalies(lang).find(_ => _.category === category)
   if (!anomaly) {
     throw new Error(`Can't find anomaly with category = ${category}`)
   }
-  return {
-    ...bigReportButtonProps,
-    linkProps: {href: buildLinkStartReport(anomaly, lang, {isWebView: false})},
-  }
+  return buildLinkStartReport(anomaly, lang, {isWebView: false})
 }
 
 export function LpColoredBand({children, className = ''}: ChildrenProps & {className?: string}) {

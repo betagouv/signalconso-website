@@ -195,22 +195,12 @@ export const en = {
       blackFridayFauxStocks: {title: '', description: ''},
       blackFridaySav: {title: '', description: ''},
       blackFridaySitesFrauduleux: {title: '', description: ''},
-      hygieneDouteusePersonnelRestauration: {
-        title: '',
-        description: '',
-      },
-      demarchesAdministratives: {
-        title: '',
-        description: '',
-      },
-      achatSite: {
-        title: '',
-        description: '',
-      },
-      dysfonctionnementsCommandesNourriture: {
-        title: '',
-        description: '',
-      },
+      blackFridayGaranties: {title: '', description: ''},
+      blackFridayRetractation: {title: '', description: ''},
+      hygieneDouteusePersonnelRestauration: {title: '', description: ''},
+      demarchesAdministratives: {title: '', description: ''},
+      achatSite: {title: '', description: ''},
+      dysfonctionnementsCommandesNourriture: {title: '', description: ''},
     },
     faireUnSignalement: {
       etape: 'Step',
@@ -644,6 +634,8 @@ export const en = {
       blackFridayFauxStocks: '',
       blackFridaySav: '',
       blackFridaySitesFrauduleux: '',
+      blackFridayGaranties: '',
+      blackFridayRetractation: '',
       signalInfluenceur: '',
       reportIncidentSection: 'Submitting a report',
       reportIncidentFor: 'Report a company for',
