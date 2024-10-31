@@ -195,6 +195,10 @@ export const en = {
       blackFridayFauxStocks: {title: '', description: ''},
       blackFridaySav: {title: '', description: ''},
       blackFridaySitesFrauduleux: {title: '', description: ''},
+      hygieneDouteusePersonnelRestauration: {
+        title: '',
+        description: '',
+      },
     },
     faireUnSignalement: {
       etape: 'Step',

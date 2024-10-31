@@ -1,5 +1,6 @@
 import {formatDistance, formatDuration as formatDurationFns} from 'date-fns'
 import {AppLang, AppLangs} from './AppLangs'
+import {hygieneDouteusePersonnelRestauration} from '@/reusablePages/manual_landings/hygieneDouteusePersonnelRestauration'
 
 const invalidDate = '-'
 
@@ -233,6 +234,11 @@ export const fr = {
         title: 'Sites frauduleux pendant le Black Friday : signalez-le sur SignalConso',
         description:
           'Imitation de sites officiels ou de boutiques de confiance, pour arnaquer les internautes ou leur voler des informations personnelles, ventes de contrefaçons, ...',
+      },
+      hygieneDouteusePersonnelRestauration: {
+        title: "Signalez les Problèmes d'Hygiène dans les Restaurants avec SignalConso",
+        description:
+          'Constaté un problème d’hygiène dans un restaurant, café ou bar ? Protégez vos droits et ceux des autres consommateurs : signalez les mauvaises pratiques sur SignalConso et contribuez à un environnement plus sûr.',
       },
     },
     faireUnSignalement: {
