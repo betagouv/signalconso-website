@@ -1,5 +1,7 @@
 import {formatDistance, formatDuration as formatDurationFns} from 'date-fns'
 import {AppLang, AppLangs} from './AppLangs'
+import {hygieneDouteusePersonnelRestauration} from '@/reusablePages/manual_landings/hygieneDouteusePersonnelRestauration'
+import {achatSite} from '@/reusablePages/manual_landings/achatSite'
 
 const invalidDate = '-'
 
@@ -233,6 +235,26 @@ export const fr = {
         title: 'Sites frauduleux pendant le Black Friday : signalez-le sur SignalConso',
         description:
           'Imitation de sites officiels ou de boutiques de confiance, pour arnaquer les internautes ou leur voler des informations personnelles, ventes de contrefaçons, ...',
+      },
+      hygieneDouteusePersonnelRestauration: {
+        title: "Signalez les problèmes d'hygiène dans les restaurants avec SignalConso",
+        description:
+          'Constaté un problème d’hygiène dans un restaurant, café ou bar ? Protégez vos droits et ceux des autres consommateurs : signalez les mauvaises pratiques sur SignalConso et contribuez à un environnement plus sûr.',
+      },
+      demarchesAdministratives: {
+        title: 'Attention aux arnaques administratives : protégez-vous avec SignalConso',
+        description:
+          'Ne vous laissez pas tromper par les faux sites se faisant passer pour des administrations ! Découvrez vos droits, les risques des pratiques frauduleuses, et comment signaler ces arnaques sur SignalConso pour protéger vos données et votre argent',
+      },
+      achatSite: {
+        title: 'Achat en ligne : protégez vos droits et signalez les abus avec SignalConso',
+        description:
+          'Un problème lors de votre achat en ligne ? Produit non conforme, retard de livraison ou arnaque ? Découvrez vos droits et signalez les pratiques abusives sur SignalConso pour protéger les consommateurs et obtenir justice.',
+      },
+      dysfonctionnementsCommandesNourriture: {
+        title: 'Problème de commande en ligne de nourriture - Vos droits et solutions',
+        description:
+          'Découvrez vos droits en cas de problèmes avec vos commandes de nourriture en ligne. Livraison en retard, commande incomplète ou mauvaise qualité ? Signalez un dysfonctionnement avec Signal Conso.',
       },
     },
     faireUnSignalement: {

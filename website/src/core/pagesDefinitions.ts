@@ -3,6 +3,8 @@ import {Anomaly} from 'shared/anomalies/Anomaly'
 import {AppLang, AppLangs} from '../i18n/localization/AppLangs'
 import {LandingData, allVisibleLandings} from '../landings/landingDataUtils'
 import {appConfig} from './appConfig'
+import {hygieneDouteusePersonnelRestauration} from '@/reusablePages/manual_landings/hygieneDouteusePersonnelRestauration'
+import {achatSite} from '@/reusablePages/manual_landings/achatSite'
 
 type PageDefExternal = {
   isExternal: true
@@ -87,6 +89,10 @@ export const internalPageDefs = {
   blackFridayFauxStocks: pageLp('/black-friday-faux-stocks'),
   blackFridaySav: pageLp('/black-friday-sav'),
   blackFridaySitesFrauduleux: pageLp('/black-friday-sites-frauduleux'),
+  hygieneDouteusePersonnelRestauration: pageLp('/hygiene-douteuse-personnel-restauration'),
+  demarchesAdministratives: pageLp('/demarches-administratives'),
+  achatSite: pageLp('/achat-site'),
+  dysfonctionnementsCommandesNourriture: pageLp('/dysfonctionnements-commandes-nourriture'),
 }
 
 const externalPageDefs = {
