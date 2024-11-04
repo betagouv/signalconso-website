@@ -199,6 +199,18 @@ export const en = {
         title: '',
         description: '',
       },
+      demarchesAdministratives: {
+        title: '',
+        description: '',
+      },
+      achatSite: {
+        title: '',
+        description: '',
+      },
+      dysfonctionnementsCommandesNourriture: {
+        title: '',
+        description: '',
+      },
     },
     faireUnSignalement: {
       etape: 'Step',

@@ -7,7 +7,6 @@ import {
   HighlightPurple,
   LpColoredBand,
   NarrowAndCentered,
-  WithSuperheroIllustration,
 } from '@/landings/manualLandingsUtils'
 import Button from '@codegouvfr/react-dsfr/Button'
 import {notFound} from 'next/navigation'
@@ -27,8 +26,8 @@ export function hygieneDouteusePersonnelRestauration(props: PageComponentProps) 
       <AlternatingPurpleBands>
         <div>
           <h1>
-            Vous avez remarqué un <HighlightPurple>problème</HighlightPurple> d'<HighlightBlue>hygiène</HighlightBlue> dans un
-            restaurant, un café ou un bar ?
+            Vous avez remarqué un problème d'<HighlightBlue>hygiène</HighlightBlue> dans un
+            <HighlightPurple>restaurant, un café ou un bar</HighlightPurple> ?
           </h1>
           <p className="fr-h3 !mb-4 !text-scbluefrance">Protégez vos droits avec SignalConso !</p>
 
@@ -48,7 +47,7 @@ export function hygieneDouteusePersonnelRestauration(props: PageComponentProps) 
           <h2 className="fr-h4">
             Quels problèmes d'hygiène pouvez-vous rencontrer dans un restaurant ou tout autre commerce alimentaire ?
           </h2>
-          <p className="text-lg">
+          <p>
             L'hygiène dans les restaurants, cafés, snacks ou tout autre commerce alimentaire est soumise à des réglementations
             strictes. Voici les principaux <strong>problèmes d'hygiène</strong> que vous pouvez signaler sur SignalConso.
           </p>
