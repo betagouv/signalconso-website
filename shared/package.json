@@ -6,7 +6,7 @@
     "shared:generate-json": "ts-node -O '{\"module\":\"commonjs\", \"jsx\":\"react-jsx\"}' scripts/gen-anomalies-json.ts",
     "shared:generate-minimized-anomalies": "ts-node -O '{\"module\":\"commonjs\", \"jsx\":\"react-jsx\"}' scripts/gen-minimized-anomalies.ts",
     "shared:sanitize-anomalies-filenames": "ts-node -O '{\"module\":\"commonjs\", \"jsx\":\"react-jsx\"}' scripts/sanitize-anomalies-filenames.ts",
-    "shared:gen-subcategory-slug": "ts-node -O '{\"module\":\"commonjs\", \"jsx\":\"react-jsx\"}' scripts/gen-subcategory-slug.ts"
+    "shared:gen-subcategory-slugs": "ts-node -O '{\"module\":\"commonjs\", \"jsx\":\"react-jsx\"}' scripts/gen-subcategory-slugs.ts"
   },
   "dependencies": {
     "js-yaml": "4.1.0",
