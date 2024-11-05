@@ -26,7 +26,7 @@ export function blackFridayFausseReduction(props: PageComponentProps) {
   return (
     <FullWidthPageContainer>
       <AlternatingPurpleBands>
-        <WithSuperheroIllustration>
+        <WithSuperheroIllustration illu="hero_m_blue">
           {illustrationMobile => {
             return (
               <>

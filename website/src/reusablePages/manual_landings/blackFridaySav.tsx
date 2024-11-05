@@ -27,7 +27,7 @@ export function blackFridaySav(props: PageComponentProps) {
     <FullWidthPageContainer>
       <AlternatingPurpleBands>
         <>
-          <WithSuperheroIllustration>
+          <WithSuperheroIllustration illu="hero_m_orange">
             {illustrationMobile => {
               return (
                 <>

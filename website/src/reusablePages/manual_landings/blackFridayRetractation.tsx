@@ -27,7 +27,7 @@ export function blackFridayRetractation(props: PageComponentProps) {
     <FullWidthPageContainer>
       <AlternatingPurpleBands>
         <>
-          <WithSuperheroIllustration>
+          <WithSuperheroIllustration illu="elf_f_purple">
             {illustrationMobile => {
               return (
                 <>
