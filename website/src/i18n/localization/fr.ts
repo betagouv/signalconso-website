@@ -217,7 +217,7 @@ export const fr = {
         description:
           'Promotions mensongères, augmentation artificielle des prix juste avant la période pour afficher ensuite une fasse réduction...',
       },
-      blackFridayFauxSiteGouvernemental: {
+      fauxSiteGouvernemental: {
         title: 'Faux site gouvernemental : signalez-le sur SignalConso',
         description: "Sites frauduleux imitant des services publics ou des sites de l'État, comment les repérer et s'en protéger",
       },
@@ -702,12 +702,17 @@ export const fr = {
       blackFridayColis: 'Faire un signalement pour un colis endommagé ou non livré pendant le Black Friday',
       blackFridayDarkPatterns: 'Faire un signalement pour une interface trompeuse (dark pattern) pendant le Black Friday',
       blackFridayFausseReduction: 'Faire un signalement pour une fausse réduction de prix pendant le Black Friday',
-      blackFridayFauxSiteGouvernemental: 'Faire un signalement pour un faux site gouvernemental',
+      fauxSiteGouvernemental: 'Faire un signalement pour un faux site gouvernemental',
       blackFridayFauxStocks: "Faire un signalement pour des fausses infos sur les stocks d'un produit pendant le Black Friday",
       blackFridaySav: 'Faire un signalement pour un SAV non joignable pendant le Black Friday',
       blackFridaySitesFrauduleux: 'Faire un signalement pour un site frauduleux pendant le Black Friday',
       blackFridayGaranties: 'Faire un signalement pour mauvaise application des garanties pendant le Black Friday',
       blackFridayRetractation: 'Faire un signalement pour non respect du droit de rétractation pendant le Black Friday',
+      achatSite: 'Faire un signalement pour un achat sur internet',
+      demarchesAdministratives: "Faire un signalement concernant un site se faisant passer pour l'administration",
+      dysfonctionnementsCommandesNourriture: 'Faire un signalement concernant une commande de nourriture en ligne',
+      hygieneDouteusePersonnelRestauration:
+        "Faire un signalement concernant un problème d'hygiène dans un restaurant, un café ou un bar",
       signalInfluenceur: 'Faire un signalement sur un influenceur',
       reportIncidentSection: "Dépôt d'un signalement",
       reportIncidentFor: 'Faire un signalement pour',

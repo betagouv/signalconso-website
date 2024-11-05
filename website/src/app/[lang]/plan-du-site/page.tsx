@@ -80,16 +80,24 @@ const PlanDuSite = (props: PageComponentProps) => {
           <BasicPageLink page="blackFridayColis" label={m.planDuSite.blackFridayColis} {...{lang}} />
           <BasicPageLink page="blackFridayDarkPatterns" label={m.planDuSite.blackFridayDarkPatterns} {...{lang}} />
           <BasicPageLink page="blackFridayFausseReduction" label={m.planDuSite.blackFridayFausseReduction} {...{lang}} />
-          <BasicPageLink
-            page="blackFridayFauxSiteGouvernemental"
-            label={m.planDuSite.blackFridayFauxSiteGouvernemental}
-            {...{lang}}
-          />
+          <BasicPageLink page="fauxSiteGouvernemental" label={m.planDuSite.fauxSiteGouvernemental} {...{lang}} />
           <BasicPageLink page="blackFridayFauxStocks" label={m.planDuSite.blackFridayFauxStocks} {...{lang}} />
           <BasicPageLink page="blackFridaySav" label={m.planDuSite.blackFridaySav} {...{lang}} />
           <BasicPageLink page="blackFridaySitesFrauduleux" label={m.planDuSite.blackFridaySitesFrauduleux} {...{lang}} />
           <BasicPageLink page="blackFridayGaranties" label={m.planDuSite.blackFridayGaranties} {...{lang}} />
           <BasicPageLink page="blackFridayRetractation" label={m.planDuSite.blackFridayRetractation} {...{lang}} />
+          <BasicPageLink page="achatSite" label={m.planDuSite.achatSite} {...{lang}} />
+          <BasicPageLink page="demarchesAdministratives" label={m.planDuSite.demarchesAdministratives} {...{lang}} />
+          <BasicPageLink
+            page="dysfonctionnementsCommandesNourriture"
+            label={m.planDuSite.dysfonctionnementsCommandesNourriture}
+            {...{lang}}
+          />
+          <BasicPageLink
+            page="hygieneDouteusePersonnelRestauration"
+            label={m.planDuSite.hygieneDouteusePersonnelRestauration}
+            {...{lang}}
+          />
           <hr className="mt-4" />
         </ul>
         <h2 className="fr-h4">{m.planDuSite.proSpaceSection}</h2>

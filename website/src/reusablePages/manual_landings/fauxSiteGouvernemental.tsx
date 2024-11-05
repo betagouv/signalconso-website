@@ -4,14 +4,14 @@ import {
   AlternatingPurpleBands,
   getManualLpButtonProps,
   HighlightBlue,
+  LinkToFichePratique,
   LpColoredBand,
   NarrowAndCentered,
-  WithSuperheroIllustration,
 } from '@/landings/manualLandingsUtils'
 import Button from '@codegouvfr/react-dsfr/Button'
 import {notFound} from 'next/navigation'
 
-export function blackFridayFauxSiteGouvernemental(props: PageComponentProps) {
+export function fauxSiteGouvernemental(props: PageComponentProps) {
   const lang = props.params.lang
   if (lang !== 'fr') {
     return notFound()
@@ -24,30 +24,22 @@ export function blackFridayFauxSiteGouvernemental(props: PageComponentProps) {
   return (
     <FullWidthPageContainer>
       <AlternatingPurpleBands>
-        <WithSuperheroIllustration>
-          {illustrationMobile => {
-            return (
-              <>
-                <h1 className="mb-6">
-                  <HighlightBlue>Faux sites gouvernementaux</HighlightBlue> : ne tombez pas dans le piège
-                </h1>
-                <p className="fr-h3 !mb-4 !text-scbluefrance">Et protégez vos droits avec SignalConso !</p>
-                <p className="text-lg">
-                  Pendant des périodes de forte activité, comme le Black Friday, des sites frauduleux imitant des services publics
-                  ou des sites gouvernementaux se multiplient. Ces faux sites cherchent à vous tromper en utilisant des logos et
-                  des noms officiels pour voler vos informations personnelles ou vous faire payer des services qui sont
-                  normalement gratuits.
-                </p>
-                {illustrationMobile}
-                <p className="text-lg">
-                  Découvrez vos droits en tant que consommateur face à ces sites frauduleux et en cas de litige, faites un
-                  signalement sur SignalConso.
-                </p>
-                {button}
-              </>
-            )
-          }}
-        </WithSuperheroIllustration>
+        <NarrowAndCentered>
+          <h1 className="mb-6">
+            <HighlightBlue>Faux sites gouvernementaux</HighlightBlue> : ne tombez pas dans le piège
+          </h1>
+          <p className="fr-h3 !mb-4 !text-scbluefrance">Et protégez vos droits avec SignalConso !</p>
+          <p className="text-lg">
+            Des sites frauduleux imitant des services publics ou des sites gouvernementaux se multiplient. Ces faux sites
+            cherchent à vous tromper en utilisant des logos et des noms officiels pour voler vos informations personnelles ou vous
+            faire payer des services qui sont normalement gratuits.
+          </p>
+          <p className="text-lg">
+            Découvrez vos droits en tant que consommateur face à ces sites frauduleux et en cas de litige, faites un signalement
+            sur SignalConso.
+          </p>
+          {button}
+        </NarrowAndCentered>
         <div>
           <h2 className="fr-h4 ">Qu'est-ce qu'un faux site gouvernemental ?</h2>
           <p>
@@ -98,6 +90,7 @@ export function blackFridayFauxSiteGouvernemental(props: PageComponentProps) {
           </p>
           {button}
         </NarrowAndCentered>
+        <LinkToFichePratique url="https://www.economie.gouv.fr/dgccrf/Publications/Vie-pratique/Fiches-pratiques/faux-sites-administratifs-attention-aux-arnaques" />
       </LpColoredBand>
     </FullWidthPageContainer>
   )

@@ -6,6 +6,7 @@ import {AppLang, AppLangs} from '@/i18n/localization/AppLangs'
 import imgSuperhero from '@/img/landings/superhero_elf.svg'
 import {ChildrenProps} from '@/utils/utils'
 import Image from 'next/image'
+import Link from 'next/link'
 import {ReactNode} from 'react'
 
 export function getManualLpButtonProps(lang: AppLang, category: string | 'home') {
@@ -64,10 +65,35 @@ export function NarrowAndCentered({children, narrower = false}: ChildrenProps & 
   )
 }
 
+export function LinkToFichePratique({url, url2}: {url: string; url2?: string}) {
+  return (
+    <p className="mt-8 mb-0">
+      Pour en savoir plus sur vos droits, rendez-vous sur{' '}
+      <Link target="_blank" href={url}>
+        {url}
+      </Link>
+      {url2 ? (
+        <>
+          {' '}
+          et{' '}
+          <Link target="_blank" href={url2}>
+            {url2}
+          </Link>
+        </>
+      ) : null}
+    </p>
+  )
+}
+
 // This component :
 // - adds the illustration on the left on desktop
 // - provides the illustration for mobile through a render prop, to be inserted somewhere in the children
 export function WithSuperheroIllustration({children}: {children: (mobileIllustration: ReactNode) => ReactNode}) {
+  // we disable for now, until we have setup the proper illustration for each LP
+  const noIllustrationsForNow = true
+  if (noIllustrationsForNow) {
+    return <NarrowAndCentered>{children(null)}</NarrowAndCentered>
+  }
   const alt = 'Superhéroïne brandissant un smartphone'
   return (
     <div className="flex gap items-center gap-4 flex-row">

@@ -5,6 +5,7 @@ import {
   getManualLpButtonProps,
   HighlightBlue,
   HighlightPurple,
+  LinkToFichePratique,
   LpColoredBand,
   NarrowAndCentered,
   WithSuperheroIllustration,
@@ -106,11 +107,12 @@ export function blackFridaySav(props: PageComponentProps) {
       <LpColoredBand className="bg-scblueinfo text-white py-8">
         <NarrowAndCentered narrower>
           <p className="text-lg">
-            Vous avez rencontrez un problème avec un SAV qui ne répond pas ou dont les coordonnées sont introuvables ? Signalez-le
+            Vous avez rencontré un problème avec un SAV qui ne répond pas ou dont les coordonnées sont introuvables ? Signalez-le
             sur SignalConso pour protéger vos droits et aider d'autres consommateurs !
           </p>
           {button}
         </NarrowAndCentered>
+        <LinkToFichePratique url="https://www.economie.gouv.fr/dgccrf/Publications/Vie-pratique/Fiches-pratiques/le-service-apres-vente" />
       </LpColoredBand>
     </FullWidthPageContainer>
   )

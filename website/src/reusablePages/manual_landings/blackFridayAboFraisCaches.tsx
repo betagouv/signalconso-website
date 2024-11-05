@@ -5,6 +5,7 @@ import {
   getManualLpButtonProps,
   HighlightBlue,
   HighlightPurple,
+  LinkToFichePratique,
   LpColoredBand,
   NarrowAndCentered,
   WithSuperheroIllustration,
@@ -105,6 +106,10 @@ export function blackFridayAboFraisCaches(props: PageComponentProps) {
           </p>
           {button}
         </NarrowAndCentered>
+        <LinkToFichePratique
+          url="https://www.economie.gouv.fr/dgccrf/Publications/Vie-pratique/Fiches-pratiques/pieges-sur-les-sites-de-commerce-en-ligne-attention-aux-dark-patterns"
+          url2="https://www.economie.gouv.fr/dgccrf/Publications/Vie-pratique/Fiches-pratiques/abonnements-caches"
+        />
       </LpColoredBand>
     </FullWidthPageContainer>
   )

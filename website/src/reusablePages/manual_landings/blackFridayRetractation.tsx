@@ -5,12 +5,12 @@ import {
   getManualLpButtonProps,
   HighlightBlue,
   HighlightPurple,
+  LinkToFichePratique,
   LpColoredBand,
   NarrowAndCentered,
   WithSuperheroIllustration,
 } from '@/landings/manualLandingsUtils'
 import Button from '@codegouvfr/react-dsfr/Button'
-import Link from 'next/link'
 import {notFound} from 'next/navigation'
 
 export function blackFridayRetractation(props: PageComponentProps) {
@@ -113,15 +113,7 @@ export function blackFridayRetractation(props: PageComponentProps) {
           </p>
           {button}
         </NarrowAndCentered>
-        <p className="mt-8 mb-0">
-          Pour en savoir plus sur vos droits, rendez-vous sur{' '}
-          <Link
-            target="_blank"
-            href="https://www.economie.gouv.fr/dgccrf/Publications/Vie-pratique/Fiches-pratiques/Delais-de-reflexion-ou-de-retractation"
-          >
-            https://www.economie.gouv.fr/dgccrf/Publications/Vie-pratique/Fiches-pratiques/Delais-de-reflexion-ou-de-retractation
-          </Link>
-        </p>
+        <LinkToFichePratique url="https://www.economie.gouv.fr/dgccrf/Publications/Vie-pratique/Fiches-pratiques/Delais-de-reflexion-ou-de-retractation" />
       </LpColoredBand>
     </FullWidthPageContainer>
   )
