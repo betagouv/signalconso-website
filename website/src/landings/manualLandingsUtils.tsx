@@ -89,6 +89,11 @@ export function LinkToFichePratique({url, url2}: {url: string; url2?: string}) {
 // - adds the illustration on the left on desktop
 // - provides the illustration for mobile through a render prop, to be inserted somewhere in the children
 export function WithSuperheroIllustration({children}: {children: (mobileIllustration: ReactNode) => ReactNode}) {
+  // we disable for now, until we have setup the proper illustration for each LP
+  const noIllustrationsForNow = true
+  if (noIllustrationsForNow) {
+    return <NarrowAndCentered>{children(null)}</NarrowAndCentered>
+  }
   const alt = 'Superhéroïne brandissant un smartphone'
   return (
     <div className="flex gap items-center gap-4 flex-row">
