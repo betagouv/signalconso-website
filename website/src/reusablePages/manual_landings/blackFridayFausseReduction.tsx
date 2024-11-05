@@ -5,6 +5,7 @@ import {
   getManualLpButtonProps,
   HighlightBlue,
   HighlightPurple,
+  LinkToFichePratique,
   LpColoredBand,
   NarrowAndCentered,
   WithSuperheroIllustration,
@@ -99,6 +100,7 @@ export function blackFridayFausseReduction(props: PageComponentProps) {
           </p>
           {button}
         </NarrowAndCentered>
+        <LinkToFichePratique url="https://www.economie.gouv.fr/dgccrf/Publications/Vie-pratique/Fiches-pratiques/Annonce-de-reduction-de-prix" />
       </LpColoredBand>
     </FullWidthPageContainer>
   )

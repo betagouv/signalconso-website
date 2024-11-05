@@ -4,6 +4,7 @@ import {
   AlternatingPurpleBands,
   getManualLpButtonProps,
   HighlightBlue,
+  LinkToFichePratique,
   LpColoredBand,
   NarrowAndCentered,
   WithSuperheroIllustration,
@@ -98,6 +99,7 @@ export function blackFridayFauxSiteGouvernemental(props: PageComponentProps) {
           </p>
           {button}
         </NarrowAndCentered>
+        <LinkToFichePratique url="https://www.economie.gouv.fr/dgccrf/Publications/Vie-pratique/Fiches-pratiques/faux-sites-administratifs-attention-aux-arnaques" />
       </LpColoredBand>
     </FullWidthPageContainer>
   )

@@ -6,6 +6,7 @@ import {AppLang, AppLangs} from '@/i18n/localization/AppLangs'
 import imgSuperhero from '@/img/landings/superhero_elf.svg'
 import {ChildrenProps} from '@/utils/utils'
 import Image from 'next/image'
+import Link from 'next/link'
 import {ReactNode} from 'react'
 
 export function getManualLpButtonProps(lang: AppLang, category: string | 'home') {
@@ -61,6 +62,26 @@ export function NarrowAndCentered({children, narrower = false}: ChildrenProps & 
     <div className="flex justify-center">
       <div className={`flex flex-col ${narrower ? 'max-w-2xl' : 'max-w-4xl'}`}>{children}</div>
     </div>
+  )
+}
+
+export function LinkToFichePratique({url, url2}: {url: string; url2?: string}) {
+  return (
+    <p className="mt-8 mb-0">
+      Pour en savoir plus sur vos droits, rendez-vous sur{' '}
+      <Link target="_blank" href={url}>
+        {url}
+      </Link>
+      {url2 ? (
+        <>
+          {' '}
+          et{' '}
+          <Link target="_blank" href={url2}>
+            {url2}
+          </Link>
+        </>
+      ) : null}
+    </p>
   )
 }
 
