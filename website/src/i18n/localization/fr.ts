@@ -708,6 +708,11 @@ export const fr = {
       blackFridaySitesFrauduleux: 'Faire un signalement pour un site frauduleux pendant le Black Friday',
       blackFridayGaranties: 'Faire un signalement pour mauvaise application des garanties pendant le Black Friday',
       blackFridayRetractation: 'Faire un signalement pour non respect du droit de rétractation pendant le Black Friday',
+      achatSite: 'Faire un signalement pour un achat sur internet',
+      demarchesAdministratives: "Faire un signalement concernant un site se faisant passer pour l'administration",
+      dysfonctionnementsCommandesNourriture: 'Faire un signalement concernant une commande de nourriture en ligne',
+      hygieneDouteusePersonnelRestauration:
+        "Faire un signalement concernant un problème d'hygiène dans un restaurant, un café ou un bar",
       signalInfluenceur: 'Faire un signalement sur un influenceur',
       reportIncidentSection: "Dépôt d'un signalement",
       reportIncidentFor: 'Faire un signalement pour',
