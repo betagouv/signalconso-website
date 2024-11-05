@@ -26,7 +26,7 @@ export function blackFridayDarkPatterns(props: PageComponentProps) {
   return (
     <FullWidthPageContainer>
       <AlternatingPurpleBands>
-        <WithSuperheroIllustration>
+        <WithSuperheroIllustration illu="elf_m_greenblack">
           {illustrationMobile => {
             return (
               <>

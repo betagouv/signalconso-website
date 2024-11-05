@@ -5,7 +5,7 @@ import {
   getManualLpButtonProps,
   HighlightBlue,
   HighlightPurple,
-  WithSuperheroIllustration,
+  NarrowAndCentered,
 } from '@/landings/manualLandingsUtils'
 import Button from '@codegouvfr/react-dsfr/Button'
 import {notFound} from 'next/navigation'
@@ -24,29 +24,22 @@ export function blackFridayGaranties(props: PageComponentProps) {
     <FullWidthPageContainer>
       <AlternatingPurpleBands>
         <>
-          <WithSuperheroIllustration>
-            {illustrationMobile => {
-              return (
-                <>
-                  <h1 className="mb-6">
-                    Tout savoir sur <HighlightBlue>les garanties</HighlightBlue> pendant le{' '}
-                    <HighlightPurple>Black Friday</HighlightPurple>
-                  </h1>
-                  <p className="fr-h3 !mb-4 !text-scbluefrance">Protégez vos droits avec SignalConso !</p>
-                  <p className="text-lg">
-                    Acheter à prix réduit, c'est bien. Mais que faire si le produit tombe en panne ou s'il présente un défaut ?
-                    Avec le Black Friday, les achats en ligne se multiplient, mais pas d'inquiétude : vous bénéficiez de garanties
-                    légales pour protéger vos achats.
-                  </p>
-                  {illustrationMobile}
-                  <p className="text-lg">
-                    Découvrez vos droits en tant que consommateur en matière de garantie et en cas de litige, faites un
-                    signalement sur SignalConso.
-                  </p>
-                </>
-              )
-            }}
-          </WithSuperheroIllustration>
+          <NarrowAndCentered>
+            <h1 className="mb-6">
+              Tout savoir sur <HighlightBlue>les garanties</HighlightBlue> pendant le{' '}
+              <HighlightPurple>Black Friday</HighlightPurple>
+            </h1>
+            <p className="fr-h3 !mb-4 !text-scbluefrance">Protégez vos droits avec SignalConso !</p>
+            <p className="text-lg">
+              Acheter à prix réduit, c'est bien. Mais que faire si le produit tombe en panne ou s'il présente un défaut ? Avec le
+              Black Friday, les achats en ligne se multiplient, mais pas d'inquiétude : vous bénéficiez de garanties légales pour
+              protéger vos achats.
+            </p>
+            <p className="text-lg">
+              Découvrez vos droits en tant que consommateur en matière de garantie et en cas de litige, faites un signalement sur
+              SignalConso.
+            </p>
+          </NarrowAndCentered>
           {button}
         </>
         <div>

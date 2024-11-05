@@ -3,7 +3,12 @@ import {bigReportButtonProps} from '@/components_simple/buttons/buttonsUtils'
 import {buildLinkHomePickCategory, buildLinkStartReport} from '@/core/pagesDefinitions'
 import {getI18n} from '@/i18n/I18nDictionnary'
 import {AppLang, AppLangs} from '@/i18n/localization/AppLangs'
-import imgSuperhero from '@/img/landings/superhero_elf.svg'
+import elf_f_purple from '@/img/landings/blackfriday/elf_f_purple.svg'
+import elf_m_greenblack from '@/img/landings/blackfriday/elf_m_greenblack.svg'
+import hero_f_green from '@/img/landings/blackfriday/hero_f_green.svg'
+import hero_f_orange from '@/img/landings/blackfriday/hero_f_orange.svg'
+import hero_m_blue from '@/img/landings/blackfriday/hero_m_blue.svg'
+import hero_m_orange from '@/img/landings/blackfriday/hero_m_orange.svg'
 import {ChildrenProps} from '@/utils/utils'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -88,20 +93,37 @@ export function LinkToFichePratique({url, url2}: {url: string; url2?: string}) {
 // This component :
 // - adds the illustration on the left on desktop
 // - provides the illustration for mobile through a render prop, to be inserted somewhere in the children
-export function WithSuperheroIllustration({children}: {children: (mobileIllustration: ReactNode) => ReactNode}) {
-  // we disable for now, until we have setup the proper illustration for each LP
-  const noIllustrationsForNow = true
-  if (noIllustrationsForNow) {
-    return <NarrowAndCentered>{children(null)}</NarrowAndCentered>
-  }
-  const alt = 'Superhéroïne brandissant un smartphone'
+export function WithSuperheroIllustration({
+  illu,
+  children,
+}: {
+  illu: 'elf_m_greenblack' | 'elf_f_purple' | 'hero_f_orange' | 'hero_m_blue' | 'hero_m_orange' | 'hero_f_green'
+  children: (mobileIllustration: ReactNode) => ReactNode
+}) {
+  const alt = ''
+  const img = (() => {
+    switch (illu) {
+      case 'elf_m_greenblack':
+        return elf_m_greenblack
+      case 'elf_f_purple':
+        return elf_f_purple
+      case 'hero_f_orange':
+        return hero_f_orange
+      case 'hero_m_blue':
+        return hero_m_blue
+      case 'hero_m_orange':
+        return hero_m_orange
+      case 'hero_f_green':
+        return hero_f_green
+    }
+  })()
   return (
     <div className="flex gap items-center gap-4 flex-row">
-      <Image src={imgSuperhero} alt={alt} width={150} className={'hidden md:block'} />
+      <Image src={img} alt={alt} width={150} className={'hidden md:block'} />
       <div>
         {children(
           <div className="flex justify-center mb-2">
-            <Image src={imgSuperhero} alt={alt} width={100} className={'md:hidden'} />
+            <Image src={img} alt={alt} width={100} className={'md:hidden'} />
           </div>,
         )}
       </div>

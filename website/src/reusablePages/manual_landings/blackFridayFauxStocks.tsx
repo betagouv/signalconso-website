@@ -8,7 +8,6 @@ import {
   LinkToFichePratique,
   LpColoredBand,
   NarrowAndCentered,
-  WithSuperheroIllustration,
 } from '@/landings/manualLandingsUtils'
 import Button from '@codegouvfr/react-dsfr/Button'
 import {notFound} from 'next/navigation'
@@ -26,31 +25,24 @@ export function blackFridayFauxStocks(props: PageComponentProps) {
   return (
     <FullWidthPageContainer>
       <AlternatingPurpleBands>
-        <WithSuperheroIllustration>
-          {illustrationMobile => {
-            return (
-              <>
-                <h1 className="mb-6">
-                  Fausse information sur <HighlightBlue>l’état des stocks</HighlightBlue> pendant le{' '}
-                  <HighlightPurple>Black Friday</HighlightPurple> ?
-                </h1>
-                <p className="fr-h3 !mb-4 !text-scbluefrance">Protégez vos droits avec SignalConso !</p>
-                <p className="text-lg">
-                  Le Black Friday est une période idéale pour profiter de réductions importantes, mais elle peut également être
-                  synonyme de pratiques commerciales trompeuses. L'une des plus courantes concerne la fausse information sur
-                  l'état des stocks. Vous avez peut-être déjà vu des offres alléchantes annoncées comme "stock limité" ou
-                  "dernière chance", pour ensuite découvrir que les produits sont en réalité toujours disponibles.
-                </p>
-                {illustrationMobile}
-                <p className="text-lg">
-                  Découvrez vos droits en tant que consommateur face à ces fausses informations sur l’état des stocks et en cas de
-                  litige, faites un signalement sur SignalConso.
-                </p>
-                {button}
-              </>
-            )
-          }}
-        </WithSuperheroIllustration>
+        <NarrowAndCentered>
+          <h1 className="mb-6">
+            Fausse information sur <HighlightBlue>l’état des stocks</HighlightBlue> pendant le{' '}
+            <HighlightPurple>Black Friday</HighlightPurple> ?
+          </h1>
+          <p className="fr-h3 !mb-4 !text-scbluefrance">Protégez vos droits avec SignalConso !</p>
+          <p className="text-lg">
+            Le Black Friday est une période idéale pour profiter de réductions importantes, mais elle peut également être synonyme
+            de pratiques commerciales trompeuses. L'une des plus courantes concerne la fausse information sur l'état des stocks.
+            Vous avez peut-être déjà vu des offres alléchantes annoncées comme "stock limité" ou "dernière chance", pour ensuite
+            découvrir que les produits sont en réalité toujours disponibles.
+          </p>
+          <p className="text-lg">
+            Découvrez vos droits en tant que consommateur face à ces fausses informations sur l’état des stocks et en cas de
+            litige, faites un signalement sur SignalConso.
+          </p>
+          {button}
+        </NarrowAndCentered>
         <div>
           <h2 className="fr-h4 ">Fausse information sur l’état des stocks : Quels sont vos droits en tant que consommateur ?</h2>
           <p>

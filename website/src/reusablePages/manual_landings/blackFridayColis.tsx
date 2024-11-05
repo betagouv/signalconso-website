@@ -26,7 +26,7 @@ export function blackFridayColis(props: PageComponentProps) {
   return (
     <FullWidthPageContainer>
       <AlternatingPurpleBands>
-        <WithSuperheroIllustration>
+        <WithSuperheroIllustration illu="hero_f_green">
           {illustrationMobile => {
             return (
               <>

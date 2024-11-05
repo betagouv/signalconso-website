@@ -26,7 +26,7 @@ export function blackFridayAboFraisCaches(props: PageComponentProps) {
   return (
     <FullWidthPageContainer>
       <AlternatingPurpleBands>
-        <WithSuperheroIllustration>
+        <WithSuperheroIllustration illu="hero_f_orange">
           {illustrationMobile => {
             return (
               <>
