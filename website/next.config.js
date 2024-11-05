@@ -54,6 +54,7 @@ const changedPaths = [
   ['/en/remboursement-telecom', '/en/litige/telecom'],
   ['/fr/rappel-voitures-airbags-takata', '/fr/actualites/rappel-airbag-takata'],
   ['/fr/internet', '/fr/signaler-un-influenceur'],
+  ['/fr/black-friday-faux-site-gouvernemental', '/fr/faux-site-gouvernemental'],
 ]
 
 const redirectsForChangedPaths = changedPaths.map(([source, destination]) => ({

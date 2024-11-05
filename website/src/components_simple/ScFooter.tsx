@@ -124,7 +124,7 @@ function buildLinksList(
         link('/tel-internet-media', 'Un opérateur mobile ou FAI'),
         link('/fichage-bancaire-injustifie', 'Un fichage bancaire injustifié'),
         link('/retard-train', 'Un retard de train'),
-        link(pagesDefs.blackFridayFauxSiteGouvernemental.url, 'Un faux site gouvernemental'),
+        link(pagesDefs.fauxSiteGouvernemental.url, 'Un faux site gouvernemental'),
         link(pagesDefs.blackFridayFausseReduction.url, 'Des fausses réductions de prix'),
       ],
     },
