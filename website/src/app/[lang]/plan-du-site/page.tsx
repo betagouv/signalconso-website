@@ -88,6 +88,8 @@ const PlanDuSite = (props: PageComponentProps) => {
           <BasicPageLink page="blackFridayFauxStocks" label={m.planDuSite.blackFridayFauxStocks} {...{lang}} />
           <BasicPageLink page="blackFridaySav" label={m.planDuSite.blackFridaySav} {...{lang}} />
           <BasicPageLink page="blackFridaySitesFrauduleux" label={m.planDuSite.blackFridaySitesFrauduleux} {...{lang}} />
+          <BasicPageLink page="blackFridayGaranties" label={m.planDuSite.blackFridayGaranties} {...{lang}} />
+          <BasicPageLink page="blackFridayRetractation" label={m.planDuSite.blackFridayRetractation} {...{lang}} />
           <hr className="mt-4" />
         </ul>
         <h2 className="fr-h4">{m.planDuSite.proSpaceSection}</h2>

@@ -1,7 +1,5 @@
 import {formatDistance, formatDuration as formatDurationFns} from 'date-fns'
 import {AppLang, AppLangs} from './AppLangs'
-import {hygieneDouteusePersonnelRestauration} from '@/reusablePages/manual_landings/hygieneDouteusePersonnelRestauration'
-import {achatSite} from '@/reusablePages/manual_landings/achatSite'
 
 const invalidDate = '-'
 
@@ -235,6 +233,16 @@ export const fr = {
         title: 'Sites frauduleux pendant le Black Friday : signalez-le sur SignalConso',
         description:
           'Imitation de sites officiels ou de boutiques de confiance, pour arnaquer les internautes ou leur voler des informations personnelles, ventes de contrefaçons, ...',
+      },
+      blackFridayGaranties: {
+        title: 'Garanties légales pendant le Black Friday : renseignez-vous sur SignalConso',
+        description:
+          'Garantie légale de conformité, garantie contre les vices cachés : que faire si le produit tombe en panne ou présente un défaut ?',
+      },
+      blackFridayRetractation: {
+        title: 'Droit de rétractation pendant le Black Friday : renseignez-vous sur SignalConso',
+        description:
+          'Le droit de rétractation est une protection légale qui vous permet de renvoyer un produit acheté à distance, pendant un certain délai',
       },
       hygieneDouteusePersonnelRestauration: {
         title: "Signalez les problèmes d'hygiène dans les restaurants avec SignalConso",
@@ -698,6 +706,8 @@ export const fr = {
       blackFridayFauxStocks: "Faire un signalement pour des fausses infos sur les stocks d'un produit pendant le Black Friday",
       blackFridaySav: 'Faire un signalement pour un SAV non joignable pendant le Black Friday',
       blackFridaySitesFrauduleux: 'Faire un signalement pour un site frauduleux pendant le Black Friday',
+      blackFridayGaranties: 'Faire un signalement pour mauvaise application des garanties pendant le Black Friday',
+      blackFridayRetractation: 'Faire un signalement pour non respect du droit de rétractation pendant le Black Friday',
       signalInfluenceur: 'Faire un signalement sur un influenceur',
       reportIncidentSection: "Dépôt d'un signalement",
       reportIncidentFor: 'Faire un signalement pour',
