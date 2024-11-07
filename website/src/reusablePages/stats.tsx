@@ -28,10 +28,9 @@ export function Stats(props: PageComponentProps) {
           </Link>
         </p>
 
-        <h2>Les signalements</h2>
+        <h2 className="mb-0">Les signalements</h2>
         <div className="flex flex-col md:flex-row">
           <MetabaseIframe dashboardId="10790030-f28c-4726-afe7-d26d7e032094" />
-
           {tauxSatisfaction && (
             <div className=" w-full md:w-1/3 flex flex-col items-center justify-center ">
               <p className="font-bold text-[56px] text-[#4B5874] ">{tauxSatisfaction} %</p>
@@ -61,7 +60,7 @@ export function Stats(props: PageComponentProps) {
           </p>
         </FriendlyHelpText>
         <MetabaseIframe dashboardId="a42aa668-f374-48e1-9120-8610f2a2b76b" />
-        <h2>Les entreprises signalées</h2>
+        <h2 className="mb-0">Les entreprises signalées</h2>
         <MetabaseIframe dashboardId="70ca31ae-8f81-487d-a6c5-798e6f7834dc" />
       </ContentPageContainer>
     </>

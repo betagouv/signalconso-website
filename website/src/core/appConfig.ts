@@ -49,7 +49,7 @@ export const appConfig = {
   // thus no need to configure anywhere but in dev
   airtableApiToken: process.env.NEXT_PUBLIC_AIRTABLE_API_TOKEN ?? null,
   maxNumberOfAttachments: readInt(process.env.NEXT_PUBLIC_MAX_NUMBER_OF_ATTACHMENTS, 12),
-  anonMetabaseUrl: `https://metabase-anon-signalconso.cleverapps.io`,
+  anonMetabaseUrl: `https://metabase-publicstats-signalconso.cleverapps.io`,
 }
 
 export type AppConfig = typeof appConfig
