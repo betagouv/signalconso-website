@@ -1,16 +1,17 @@
-import {FullWidthPageContainer} from '@/components_simple/PageContainers'
-import {PageComponentProps} from '@/core/metadatas'
 import {
   AlternatingPurpleBands,
-  getManualLpButtonProps,
   HighlightBlue,
   HighlightPurple,
   LinkToFichePratique,
   LpColoredBand,
   NarrowAndCentered,
   WithSuperheroIllustration,
+  getManualLpButtonProps,
 } from '@/landings/manualLandingsUtils'
+
 import Button from '@codegouvfr/react-dsfr/Button'
+import {FullWidthPageContainer} from '@/components_simple/PageContainers'
+import {PageComponentProps} from '@/core/metadatas'
 import {notFound} from 'next/navigation'
 
 export function blackFridayFausseReduction(props: PageComponentProps) {
@@ -100,7 +101,9 @@ export function blackFridayFausseReduction(props: PageComponentProps) {
           </p>
           {button}
         </NarrowAndCentered>
-        <LinkToFichePratique url="https://www.economie.gouv.fr/dgccrf/Publications/Vie-pratique/Fiches-pratiques/Annonce-de-reduction-de-prix" />
+        <LinkToFichePratique url="https://www.economie.gouv.fr/dgccrf/Publications/Vie-pratique/Fiches-pratiques/Annonce-de-reduction-de-prix"
+        text="la fiche pratique Fausses réductions de prix"
+        />
       </LpColoredBand>
     </FullWidthPageContainer>
   )

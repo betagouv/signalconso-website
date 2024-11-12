@@ -1,16 +1,17 @@
-import {FullWidthPageContainer} from '@/components_simple/PageContainers'
-import {PageComponentProps} from '@/core/metadatas'
 import {
   AlternatingPurpleBands,
-  getManualLpButtonProps,
   HighlightBlue,
   HighlightPurple,
   LinkToFichePratique,
   LpColoredBand,
   NarrowAndCentered,
   WithSuperheroIllustration,
+  getManualLpButtonProps,
 } from '@/landings/manualLandingsUtils'
+
 import Button from '@codegouvfr/react-dsfr/Button'
+import {FullWidthPageContainer} from '@/components_simple/PageContainers'
+import {PageComponentProps} from '@/core/metadatas'
 import {notFound} from 'next/navigation'
 
 export function blackFridaySav(props: PageComponentProps) {
@@ -112,7 +113,8 @@ export function blackFridaySav(props: PageComponentProps) {
           </p>
           {button}
         </NarrowAndCentered>
-        <LinkToFichePratique url="https://www.economie.gouv.fr/dgccrf/Publications/Vie-pratique/Fiches-pratiques/le-service-apres-vente" />
+        <LinkToFichePratique url="https://www.economie.gouv.fr/dgccrf/Publications/Vie-pratique/Fiches-pratiques/le-service-apres-vente" 
+        text="la fiche pratique Service Après Vente"/>
       </LpColoredBand>
     </FullWidthPageContainer>
   )

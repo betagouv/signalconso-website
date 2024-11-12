@@ -1,15 +1,16 @@
-import {FullWidthPageContainer} from '@/components_simple/PageContainers'
-import {PageComponentProps} from '@/core/metadatas'
 import {
   AlternatingPurpleBands,
-  getManualLpButtonProps,
   HighlightBlue,
   HighlightPurple,
   LinkToFichePratique,
   LpColoredBand,
   NarrowAndCentered,
+  getManualLpButtonProps,
 } from '@/landings/manualLandingsUtils'
+
 import Button from '@codegouvfr/react-dsfr/Button'
+import {FullWidthPageContainer} from '@/components_simple/PageContainers'
+import {PageComponentProps} from '@/core/metadatas'
 import {notFound} from 'next/navigation'
 
 export function blackFridayFauxStocks(props: PageComponentProps) {
@@ -94,7 +95,9 @@ export function blackFridayFauxStocks(props: PageComponentProps) {
           </p>
           {button}
         </NarrowAndCentered>
-        <LinkToFichePratique url="https://www.economie.gouv.fr/dgccrf/Publications/Vie-pratique/Fiches-pratiques/pieges-sur-les-sites-de-commerce-en-ligne-attention-aux-dark-patterns" />
+        <LinkToFichePratique url="https://www.economie.gouv.fr/dgccrf/Publications/Vie-pratique/Fiches-pratiques/pieges-sur-les-sites-de-commerce-en-ligne-attention-aux-dark-patterns"
+        text="la fiche pratique Dark pattern"
+         />
       </LpColoredBand>
     </FullWidthPageContainer>
   )
