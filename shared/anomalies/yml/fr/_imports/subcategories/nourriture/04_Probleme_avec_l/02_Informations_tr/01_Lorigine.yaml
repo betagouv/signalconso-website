@@ -16,4 +16,8 @@ detailInputs:
   - label: Pourquoi trouvez-vous l'origine trompeur ?
     type: TEXTAREA
     optional: true
-fileLabel: Photos du produit (si possible de tous les côtés de l'emballage) ou l'affichage du prix de la caisse de légume et l'étiquette de la caisse des légumes
+fileLabel: >-
+  Photos du produit (si possible de tous les côtés de l'emballage) ou
+  l'affichage du prix de la caisse de légume et l'étiquette de la caisse des
+  légumes
+subcategory: Lorigine

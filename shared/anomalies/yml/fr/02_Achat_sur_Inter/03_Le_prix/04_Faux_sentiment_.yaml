@@ -1,7 +1,9 @@
 title: Faux sentiment d"urgence
 desc: >-
-  Exemple : faux compte à rebours qui recommence à chaque fois qu'il arrive à 0 ou message durée limitée mais sans date de fin.
+  Exemple : faux compte à rebours qui recommence à chaque fois qu'il arrive à 0
+  ou message durée limitée mais sans date de fin.
 ccrfCode:
-  - '23B'
+  - 23B
   - 29B
   - 29C
+subcategory: Faux_sentiment_durgence

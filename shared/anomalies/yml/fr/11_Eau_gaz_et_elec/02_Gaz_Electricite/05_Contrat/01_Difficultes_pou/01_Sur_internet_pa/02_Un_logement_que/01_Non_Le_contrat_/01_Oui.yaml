@@ -8,3 +8,4 @@ detailInputs:
     defaultValue: SYSDATE
   - label: Précisez comment et à qui vous avez fait la demande
     type: TEXTAREA
+subcategory: Oui

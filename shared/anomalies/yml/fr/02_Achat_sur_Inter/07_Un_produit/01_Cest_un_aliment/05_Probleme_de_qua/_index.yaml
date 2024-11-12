@@ -1,5 +1,7 @@
 title: Problème de quantité
-desc: 'Exemple : J''ai commandé 500 gr de chocolat, je reçois 300 gr, un emballage beaucoup trop grand'
+desc: >-
+  Exemple : J'ai commandé 500 gr de chocolat, je reçois 300 gr, un emballage
+  beaucoup trop grand
 reponseconsoCode: '210'
 tags:
   - ReponseConso
@@ -7,3 +9,4 @@ detailInputs:
   - label: Site internet d'achat
     placeholder: Adresse du site internet complet ou URL
     type: TEXT
+subcategory: Probleme_de_quantite

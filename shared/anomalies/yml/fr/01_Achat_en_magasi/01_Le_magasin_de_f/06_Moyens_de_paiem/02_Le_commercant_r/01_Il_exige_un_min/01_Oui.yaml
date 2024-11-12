@@ -9,3 +9,4 @@ blockingInfo:
     Le minimum d'achat doit être indiqué très visiblement. Par exemple :
     affichage à l'entrée du magasin ou à la caisse...
   reportOutOfScopeMessage: true
+subcategory: Oui

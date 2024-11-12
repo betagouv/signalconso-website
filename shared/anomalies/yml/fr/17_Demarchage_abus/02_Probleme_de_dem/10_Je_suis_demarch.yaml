@@ -1,5 +1,4 @@
-title: >-
-  Je suis démarché par un opérateur se faisant passer pour l'administration
+title: Je suis démarché par un opérateur se faisant passer pour l'administration
 companyKind: PHONE
 tags:
   - DemarchageTelephonique
@@ -7,3 +6,4 @@ detailInputs:
   - label: Date de l'appel
     type: DATE
     defaultValue: SYSDATE
+subcategory: Je_suis_demarche_par_un_operateur_se_faisant_passer_pour_ladministration

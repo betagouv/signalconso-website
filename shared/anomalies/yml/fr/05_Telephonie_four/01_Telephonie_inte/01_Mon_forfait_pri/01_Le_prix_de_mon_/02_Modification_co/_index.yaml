@@ -5,3 +5,4 @@ desc: "Exemple\_: augmentation du nombre d'heures, augmentation du nombre de sms
 subcategoriesTitle: "Avez-vous reçu un email ou un courrier pour vous prévenir (un mois avant)\_?"
 ccrfCode:
   - 21A
+subcategory: Modification_concernant_les_sms_mms_ou_appels

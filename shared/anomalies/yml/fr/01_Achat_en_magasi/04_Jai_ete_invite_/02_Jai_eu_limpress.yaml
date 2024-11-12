@@ -1,12 +1,22 @@
-title: 'J’ai eu l’impression de ne pas pouvoir sortir du magasin avant d’avoir fait un achat'
-desc: 'La négociation commerciale a duré plusieurs heures et les vendeurs ont été très insistants'
+title: >-
+  J’ai eu l’impression de ne pas pouvoir sortir du magasin avant d’avoir fait un
+  achat
+desc: >-
+  La négociation commerciale a duré plusieurs heures et les vendeurs ont été
+  très insistants
 detailInputs:
   - label: Date de l'achat ou de la visite dans le magasin
     type: DATE
     defaultValue: SYSDATE
-  - label: Adresse précise du magasin (numéro, nom de rue, code postal et nom de la ville)
+  - label: >-
+      Adresse précise du magasin (numéro, nom de rue, code postal et nom de la
+      ville)
     type: TEXT
     placeholder: Nom ou type de produit
   - label: Description
     type: TEXTAREA
-fileLabel: Invitation personnelle / le bon de commande / fiche technique du produit / un devis manuscrit / facture / crédit associé
+fileLabel: >-
+  Invitation personnelle / le bon de commande / fiche technique du produit / un
+  devis manuscrit / facture / crédit associé
+subcategory: >-
+  Jai_eu_limpression_de_ne_pas_pouvoir_sortir_du_magasin_avant_davoir_fait_un_achat

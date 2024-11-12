@@ -1,4 +1,4 @@
-title: 'Les prix ne sont pas affichés dans la voiture'
+title: Les prix ne sont pas affichés dans la voiture
 desc: >-
   Une affiche avec les prix et les suppléments doit être visible dans la
   voiture.
@@ -7,3 +7,4 @@ ccrfCode:
 reponseconsoCode: '212'
 tags:
   - ReponseConso
+subcategory: Les_prix_ne_sont_pas_affiches_dans_la_voiture

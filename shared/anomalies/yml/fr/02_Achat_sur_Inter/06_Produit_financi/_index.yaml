@@ -3,3 +3,4 @@ desc: 'Exemple : Produits financiers risqués, Crypto-actifs, NFT'
 postReportHelper:
   customimport: _imports/postreporthelper/placements-financiers.yaml
 companyKind: WEBSITE
+subcategory: Produit_financier

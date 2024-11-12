@@ -19,3 +19,4 @@ detailInputs:
   - label: Heure de l'appel (facultatif)
     type: TIMESLOT
     optional: true
+subcategory: Reference_abusive_a_des_partenariats_avec_lEtat_ou_de_grandes_entreprises

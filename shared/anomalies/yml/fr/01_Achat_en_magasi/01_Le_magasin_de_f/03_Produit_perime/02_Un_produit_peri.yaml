@@ -1,6 +1,7 @@
 title: Un produit périmé en particulier
 ccrfCode:
-  - "323"
+  - '323'
 subcategoriesTitle: Quelle phrase est écrite devant la date ?
 subcategories:
   customimport: _imports/subcategories/date
+subcategory: Un_produit_perime_en_particulier

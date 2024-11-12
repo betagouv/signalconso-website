@@ -1,7 +1,6 @@
-title: >-
-  J'ai reçu au moins 5 appels de la même entreprise sur les 30 derniers jours
+title: J'ai reçu au moins 5 appels de la même entreprise sur les 30 derniers jours
 ccrfCode:
-  - "227"
+  - '227'
   - 23E
 companyKind: PHONE
 tags:
@@ -29,3 +28,4 @@ detailInputs:
       - Oui (à préciser)
   - label: Décrivez nous plus en détails ce qui s'est passé
     type: TEXTAREA
+subcategory: Jai_recu_au_moins_5_appels_de_la_meme_entreprise_sur_les_30_derniers_jours

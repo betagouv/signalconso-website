@@ -1,6 +1,7 @@
 title: Autres problèmes d'étiquette ou emballage
 reponseconsoCode: '273'
 detailInputs:
-- label: Site internet d'achat
-  placeholder: Adresse du site internet complet ou URL
-  type: TEXT
+  - label: Site internet d'achat
+    placeholder: Adresse du site internet complet ou URL
+    type: TEXT
+subcategory: Autres_problemes_detiquette_ou_emballage

@@ -1,5 +1,5 @@
 title: Information mensongère ou trompeuse
-reponseconsoCode: "271"
+reponseconsoCode: '271'
 detailInputs:
   - label: Date du constat
     type: DATE_NOT_IN_FUTURE
@@ -29,3 +29,4 @@ detailInputs:
 fileLabel: >-
   Merci de joindre une photo de la publicité, du menu, de la vitrine afin
   d'apporter des preuves pour appuyer votre signalement.
+subcategory: Information_mensongere_ou_trompeuse

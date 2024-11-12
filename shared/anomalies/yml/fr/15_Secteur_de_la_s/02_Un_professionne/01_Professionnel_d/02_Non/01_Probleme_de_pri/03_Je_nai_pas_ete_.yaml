@@ -11,3 +11,5 @@ reponseconsoCode: '212'
 detailInputs:
   - label: Date de constat
     type: DATE
+subcategory: >-
+  Je_nai_pas_ete_prealablement_informe_du_montant_des_depassements_dhonoraires_de_plus_70_euros

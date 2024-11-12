@@ -6,3 +6,4 @@ tags:
   - ProduitAlimentaire
 subcategories:
   customimport: _imports/subcategories/produit-alimentaire
+subcategory: Produit_alimentaire

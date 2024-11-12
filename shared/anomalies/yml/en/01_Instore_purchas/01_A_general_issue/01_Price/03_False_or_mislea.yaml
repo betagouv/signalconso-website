@@ -11,3 +11,4 @@ detailInputs:
     defaultValue: SYSDATE
   - label: Description
     type: TEXTAREA
+subcategory: Fausse_reduction_de_prix

@@ -7,3 +7,4 @@ reponseconsoCode: '212'
 detailInputs:
   - label: Date de constat
     type: DATE
+subcategory: Les_prix_ne_sont_pas_affiches_y_compris_sur_le_site_internet

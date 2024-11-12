@@ -1,7 +1,7 @@
 title: Problème de température
-desc: "Exemple : rupture de la chaîne du froid"
+desc: 'Exemple : rupture de la chaîne du froid'
 ccrfCode:
-  - "322"
+  - '322'
 detailInputs:
   - label: Quel est le problème ?
     type: RADIO
@@ -19,3 +19,4 @@ detailInputs:
   - label: Heure du constat (facultatif)
     type: TIMESLOT
     optional: true
+subcategory: Probleme_de_temperature

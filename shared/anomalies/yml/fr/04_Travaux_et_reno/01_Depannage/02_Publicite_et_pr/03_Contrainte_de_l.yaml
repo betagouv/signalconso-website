@@ -1,5 +1,5 @@
 title: Contrainte de l'entreprise
-reponseconsoCode: "210"
+reponseconsoCode: '210'
 tags:
   - ReponseConso
 detailInputs:
@@ -11,3 +11,4 @@ detailInputs:
   - label: Heure du constat (facultatif)
     type: TIMESLOT
     optional: true
+subcategory: Contrainte_de_lentreprise

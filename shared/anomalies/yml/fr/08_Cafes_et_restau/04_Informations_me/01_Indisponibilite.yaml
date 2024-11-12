@@ -1,5 +1,5 @@
 title: Indisponibilité des produits proposés
-reponseconsoCode: "2243"
+reponseconsoCode: '2243'
 detailInputs:
   - label: Date du constat
     type: DATE_NOT_IN_FUTURE
@@ -14,3 +14,4 @@ detailInputs:
       - Il n'y en avait plus
       - La carte n'est pas à jour
       - Autre raison (à préciser)
+subcategory: Indisponibilite_des_produits_proposes

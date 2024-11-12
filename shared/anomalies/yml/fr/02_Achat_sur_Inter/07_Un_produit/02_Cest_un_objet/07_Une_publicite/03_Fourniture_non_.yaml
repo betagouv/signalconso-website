@@ -1,13 +1,14 @@
 title: Fourniture non sollictée d'échantillon
 desc: >-
-  Exemple : Fourniture à un client, sans demande de sa part, d’un échantillon de produit dans le cadre d'une démarche commerciale
+  Exemple : Fourniture à un client, sans demande de sa part, d’un échantillon de
+  produit dans le cadre d'une démarche commerciale
 tags:
   - TransitionEcologique
   - ReponseConso
 ccrfCode:
-  - "192"
+  - '192'
   - 23E
-reponseconsoCode: "210"
+reponseconsoCode: '210'
 detailInputs:
   - label: Date du constat
     type: DATE_NOT_IN_FUTURE
@@ -16,3 +17,4 @@ detailInputs:
     type: TEXT
     optional: true
 fileLabel: Photo(s) si possible
+subcategory: Fourniture_non_sollictee_dechantillon

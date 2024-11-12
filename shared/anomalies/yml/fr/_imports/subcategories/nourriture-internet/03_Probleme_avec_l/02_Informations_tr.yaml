@@ -1,5 +1,5 @@
 title: Informations trompeuses ou fausses
-reponseconsoCode: "210"
+reponseconsoCode: '210'
 detailInputs:
   - label: Date du constat (ou d'achat suivant le cas)
     type: DATE_NOT_IN_FUTURE
@@ -29,3 +29,4 @@ detailInputs:
     type: TEXTAREA
     optional: true
 fileLabel: Photos du produit (si possible de tous les côtés de l'emballage)
+subcategory: Informations_trompeuses_ou_fausses

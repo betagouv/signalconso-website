@@ -1,5 +1,7 @@
 title: Achat impossible
 desc: >-
-  Le guichet était fermé, la borne ne fonctionnait pas, les billets ne sont pas disponibles, les billets ne sont pas mis en vente, ...)
+  Le guichet était fermé, la borne ne fonctionnait pas, les billets ne sont pas
+  disponibles, les billets ne sont pas mis en vente, ...)
 ccrfCode:
   - 23F
+subcategory: Achat_impossible

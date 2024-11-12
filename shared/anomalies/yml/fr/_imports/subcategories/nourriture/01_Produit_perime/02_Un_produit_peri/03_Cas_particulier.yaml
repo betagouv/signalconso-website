@@ -12,3 +12,4 @@ detailInputs:
     type: DATE_NOT_IN_FUTURE
     defaultValue: SYSDATE
 fileLabel: Photo
+subcategory: Cas_particulier_des_oeufs

@@ -2,7 +2,7 @@ title: Contrainte du professionnel
 ccrfCode:
   - 23C
   - 23D
-reponseconsoCode: "210"
+reponseconsoCode: '210'
 tags:
   - ReponseConso
 detailInputs:
@@ -14,3 +14,4 @@ detailInputs:
   - label: Heure du constat (facultatif)
     type: TIMESLOT
     optional: true
+subcategory: Contrainte_du_professionnel

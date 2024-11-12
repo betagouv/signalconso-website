@@ -1,5 +1,5 @@
 title: Informations manquantes
-reponseconsoCode: "273"
+reponseconsoCode: '273'
 detailInputs:
   - label: Quelle information manque-t-il ?
     type: RADIO
@@ -19,3 +19,4 @@ detailInputs:
   - label: Qu'avez-vous constaté ?
     type: TEXTAREA
 fileLabel: Photos du produit
+subcategory: Informations_manquantes

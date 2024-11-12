@@ -6,3 +6,4 @@ detailInputs:
   - label: Site internet d'achat
     placeholder: Adresse du site internet complet ou URL
     type: TEXT
+subcategory: La_quantite_annoncee_est_non_conforme

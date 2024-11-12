@@ -1,8 +1,10 @@
-title: Delivery
+title: A specific product
 companyKind: LOCATION
 reponseconsoCode: '321'
 tags:
   - ProduitDangereux
+  - ProduitAlimentaire
 detailInputs:
   customimport: _imports/detailInputs/intoxication-alimentaire.yaml
 fileLabel: Photos of product / packaging / receipt / invoice
+subcategory: Apres_avoir_consomme_un_produit_precis

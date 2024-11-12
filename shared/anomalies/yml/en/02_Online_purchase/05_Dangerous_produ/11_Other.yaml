@@ -1,6 +1,5 @@
-title: Furniture
+title: Other
 subcategoriesTitle: What is the risk ?
-tags:
-  - ProduitIndustriel
 subcategories:
   customimport: _imports/subcategories/produit-dangereux
+subcategory: Autre

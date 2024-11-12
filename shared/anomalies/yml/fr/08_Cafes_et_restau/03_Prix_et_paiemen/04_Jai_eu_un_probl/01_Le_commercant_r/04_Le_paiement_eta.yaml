@@ -5,3 +5,4 @@ blockingInfo:
     plus de 1 000 euros. <br/> Un commerçant peut refuser un paiement en espèces
     si celui-ci est composé de plus de 50 pièces.
   reportOutOfScopeMessage: true
+subcategory: Le_paiement_etait_superieur_a_1_000_euros_ou_a_50_pieces
