@@ -27,11 +27,14 @@ import {ArticleSavBlackFriday} from './ArticleSavBlackFriday'
 import {ArticleSignalConsoTraduit} from './ArticleSignalConsoTraduit'
 import {ArticleSignalConsoTranslated} from './ArticleSignalConsoTranslated'
 import {NewsArticle} from './newsArticlesData'
+import { ArticleLivraisonBlackFriday } from './ArticleLivraisonBlackFriday'
 
 // We can't put import these JSX directly into the "newsArticlesData"
 // it causes too much import problems in the sitemap generation script
 export function getArticleContent(slug: NewsArticle['slug']): () => JSX.Element {
   switch (slug) {
+    case 'livraison-black-friday':
+      return ArticleLivraisonBlackFriday
     case 'sav-black-friday':
       return ArticleSavBlackFriday
     case 'faux-avis':
