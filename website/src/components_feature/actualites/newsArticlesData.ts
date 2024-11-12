@@ -13,6 +13,22 @@ export type NewsArticle = {
 // This is the display order. Keep the most recents at the start of the array
 export const initialNewsArticlesData: NewsArticle[] = [
   {
+    date: '2024-11-15',
+    lang: AppLangs.fr,
+    slug: 'livraison-black-friday',
+    veryShortTitle: 'Problème de livraison (Black Friday)',
+    title: 'Problèmes de livraison : comment les éviter et faire valoir vos droits pendant le Black Friday ?',
+    excerpt: `Le Black Friday c'est l'occasion de faire de bonnes affaires, mais c'est aussi la période de l'année où les commandes et les retards de livraison explosent. Entre attentes prolongées, colis abîmés ou non reçus, il est important de savoir comment anticiper les problèmes de livraison et quels sont vos droits en cas de souci.`,
+  },
+  {
+    date: '2024-11-12',
+    lang: AppLangs.fr,
+    slug: 'sav-black-friday',
+    veryShortTitle: 'Problème de SAV (Black Friday)',
+    title: 'Problèmes avec un SAV : comment faire valoir vos droits pendant le Black Friday',
+    excerpt: `Après les achats du Black Friday, il est fréquent que des produits présentent des défauts ou que des accessoires manquent. En cas de problème, le service après-vente (SAV) est votre interlocuteur principal. Voici les bons réflexes pour éviter les difficultés de SAV et faire valoir vos droits.`,
+  },
+  {
     date: '2024-11-04',
     lang: AppLangs.fr,
     slug: 'faux-avis',
