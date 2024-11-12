@@ -1,11 +1,16 @@
 import {ArticleAMF} from '@/components_feature/actualites/ArticleAMF'
 import {ArticleAppMobileV2} from '@/components_feature/actualites/ArticleAppMobileV2'
+import {ArticleBauxPrecaires} from '@/components_feature/actualites/ArticleBauxPrecaires'
 import {ArticleConsommationDurable} from '@/components_feature/actualites/ArticleConsommationDurable'
 import {ArticleErreurDePrixEnCaisse} from '@/components_feature/actualites/ArticleErreurDePrixEnCaisse'
 import {ArticleEvolutionsQuantitePrix} from '@/components_feature/actualites/ArticleEvolutionsQuantitePrix'
+import {ArticleFauxAvis} from '@/components_feature/actualites/ArticleFauxAvis'
 import {ArticleFauxSitesDeVenteThesee} from '@/components_feature/actualites/ArticleFauxSitesDeVenteThesee'
+import {ArticleHalloweenConfiseries} from '@/components_feature/actualites/ArticleHalloweenConfiseries'
+import {ArticleLanceurAlerte} from '@/components_feature/actualites/ArticleLanceurAlerte'
 import {ArticleMagasinsEphemeres} from '@/components_feature/actualites/ArticleMagasinsEphemeres'
 import {ArticleOccasionReconditionnes} from '@/components_feature/actualites/ArticleOccasionReconditionnes'
+import {ArticleProcesSFAM} from '@/components_feature/actualites/ArticleProcesSFAM'
 import {ArticleRappelAirbagTakata} from '@/components_feature/actualites/ArticleRappelAirbagTakata'
 import {ArticleAccessibilite} from './ArticleAccessibilite'
 import {ArticleAchatInternet} from './ArticleAchatInternet'
@@ -18,19 +23,17 @@ import {ArticleFauxSitesAdministratifs} from './ArticleFauxSitesAdministratifs'
 import {ArticleJourneeAveuglesMalvoyants} from './ArticleJourneeAveuglesMalvoyants'
 import {ArticleQuestionnaireSiteDgccrf} from './ArticleQuestionnaireSiteDgccrf'
 import {ArticleResilierContratsEnLigne} from './ArticleResilierContratsEnLigne'
+import {ArticleSavBlackFriday} from './ArticleSavBlackFriday'
 import {ArticleSignalConsoTraduit} from './ArticleSignalConsoTraduit'
 import {ArticleSignalConsoTranslated} from './ArticleSignalConsoTranslated'
 import {NewsArticle} from './newsArticlesData'
-import {ArticleBauxPrecaires} from '@/components_feature/actualites/ArticleBauxPrecaires'
-import {ArticleProcesSFAM} from '@/components_feature/actualites/ArticleProcesSFAM'
-import {ArticleLanceurAlerte} from '@/components_feature/actualites/ArticleLanceurAlerte'
-import {ArticleHalloweenConfiseries} from '@/components_feature/actualites/ArticleHalloweenConfiseries'
-import {ArticleFauxAvis} from '@/components_feature/actualites/ArticleFauxAvis'
 
 // We can't put import these JSX directly into the "newsArticlesData"
 // it causes too much import problems in the sitemap generation script
 export function getArticleContent(slug: NewsArticle['slug']): () => JSX.Element {
   switch (slug) {
+    case 'sav-black-friday':
+      return ArticleSavBlackFriday
     case 'faux-avis':
       return ArticleFauxAvis
     case 'halloween-confiseries':

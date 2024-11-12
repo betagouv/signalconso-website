@@ -1,8 +1,6 @@
-import Image from 'next/image'
 import imgFauxAvis from '@/img/actualites/fauxavis.png'
+import Image from 'next/image'
 import Link from 'next/link'
-import playStore from '@/img/actualites/download-play-store.png'
-import appStore from '@/img/actualites/download-app-store.svg'
 
 export function ArticleFauxAvis() {
   return (

@@ -48,3 +48,13 @@ https://www.systeme-de-design.gouv.fr/elements-d-interface/fondamentaux-techniqu
 .sc-icon-xxl::before {
   --icon-size: 6rem !important;
 }
+
+/*
+For the news articles, it would be nice if we can just
+write raw HTML, without having to put tailwind classes
+on every title, etc.
+*/
+.sc-article h2 {
+  font-size: 1.5rem;
+  line-height: 2rem;
+}

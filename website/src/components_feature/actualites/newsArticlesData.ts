@@ -13,6 +13,14 @@ export type NewsArticle = {
 // This is the display order. Keep the most recents at the start of the array
 export const initialNewsArticlesData: NewsArticle[] = [
   {
+    date: '2024-11-12',
+    lang: AppLangs.fr,
+    slug: 'sav-black-friday',
+    veryShortTitle: 'Faux avis clients en ligne',
+    title: 'Problèmes avec un SAV : comment faire valoir vos droits pendant le Black Friday',
+    excerpt: `Après les achats du Black Friday, il est fréquent que des produits présentent des défauts ou que des accessoires manquent. En cas de problème, le service après-vente (SAV) est votre interlocuteur principal. Voici les bons réflexes pour éviter les difficultés de SAV et faire valoir vos droits.`,
+  },
+  {
     date: '2024-11-04',
     lang: AppLangs.fr,
     slug: 'faux-avis',
