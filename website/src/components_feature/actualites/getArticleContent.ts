@@ -27,7 +27,7 @@ import {ArticleSavBlackFriday} from './ArticleSavBlackFriday'
 import {ArticleSignalConsoTraduit} from './ArticleSignalConsoTraduit'
 import {ArticleSignalConsoTranslated} from './ArticleSignalConsoTranslated'
 import {NewsArticle} from './newsArticlesData'
-import { ArticleLivraisonBlackFriday } from './ArticleLivraisonBlackFriday'
+import {ArticleLivraisonBlackFriday} from './ArticleLivraisonBlackFriday'
 
 // We can't put import these JSX directly into the "newsArticlesData"
 // it causes too much import problems in the sitemap generation script
