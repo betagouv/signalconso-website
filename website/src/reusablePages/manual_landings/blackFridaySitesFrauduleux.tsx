@@ -1,15 +1,16 @@
-import {FullWidthPageContainer} from '@/components_simple/PageContainers'
-import {PageComponentProps} from '@/core/metadatas'
 import {
   AlternatingPurpleBands,
-  getManualLpButtonProps,
   HighlightBlue,
   HighlightPurple,
   LinkToFichePratique,
   LpColoredBand,
   NarrowAndCentered,
+  getManualLpButtonProps,
 } from '@/landings/manualLandingsUtils'
+
 import Button from '@codegouvfr/react-dsfr/Button'
+import {FullWidthPageContainer} from '@/components_simple/PageContainers'
+import {PageComponentProps} from '@/core/metadatas'
 import {notFound} from 'next/navigation'
 
 export function blackFridaySitesFrauduleux(props: PageComponentProps) {
@@ -108,7 +109,10 @@ export function blackFridaySitesFrauduleux(props: PageComponentProps) {
           </p>
           {button}
         </NarrowAndCentered>
-        <LinkToFichePratique url="https://www.economie.gouv.fr/dgccrf/Publications/Vie-pratique/Fiches-pratiques/acheter-sur-internet" />
+        <LinkToFichePratique
+          url="https://www.economie.gouv.fr/dgccrf/Publications/Vie-pratique/Fiches-pratiques/acheter-sur-internet"
+          text="la fiche pratique Acheter sur internet"
+        />
       </LpColoredBand>
     </FullWidthPageContainer>
   )
