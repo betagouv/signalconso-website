@@ -7,3 +7,4 @@ detailInputs:
   - label: Use By Date
     type: DATE
 fileLabel: Use by date / Product / Brand Photo
+subcategory: Oui
