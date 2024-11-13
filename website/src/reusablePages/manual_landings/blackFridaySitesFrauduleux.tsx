@@ -109,8 +109,10 @@ export function blackFridaySitesFrauduleux(props: PageComponentProps) {
           </p>
           {button}
         </NarrowAndCentered>
-        <LinkToFichePratique url="https://www.economie.gouv.fr/dgccrf/Publications/Vie-pratique/Fiches-pratiques/acheter-sur-internet" 
-        text="la fiche pratique Acheter sur internet"/>
+        <LinkToFichePratique
+          url="https://www.economie.gouv.fr/dgccrf/Publications/Vie-pratique/Fiches-pratiques/acheter-sur-internet"
+          text="la fiche pratique Acheter sur internet"
+        />
       </LpColoredBand>
     </FullWidthPageContainer>
   )

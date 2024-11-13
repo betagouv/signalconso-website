@@ -113,8 +113,10 @@ export function blackFridayColis(props: PageComponentProps) {
           </p>
           {button}
         </NarrowAndCentered>
-        <LinkToFichePratique url="https://www.economie.gouv.fr/dgccrf/les-fiches-pratiques/livraison-quelles-sont-les-obligations-du-professionnel-et-les-recours"
-        text="la fiche pratique Droits et obligations du professionnel en matière de livraison" />
+        <LinkToFichePratique
+          url="https://www.economie.gouv.fr/dgccrf/les-fiches-pratiques/livraison-quelles-sont-les-obligations-du-professionnel-et-les-recours"
+          text="la fiche pratique Droits et obligations du professionnel en matière de livraison"
+        />
       </LpColoredBand>
     </FullWidthPageContainer>
   )

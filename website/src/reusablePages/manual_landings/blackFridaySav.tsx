@@ -113,8 +113,10 @@ export function blackFridaySav(props: PageComponentProps) {
           </p>
           {button}
         </NarrowAndCentered>
-        <LinkToFichePratique url="https://www.economie.gouv.fr/dgccrf/Publications/Vie-pratique/Fiches-pratiques/le-service-apres-vente" 
-        text="la fiche pratique Service Après Vente"/>
+        <LinkToFichePratique
+          url="https://www.economie.gouv.fr/dgccrf/Publications/Vie-pratique/Fiches-pratiques/le-service-apres-vente"
+          text="la fiche pratique Service Après Vente"
+        />
       </LpColoredBand>
     </FullWidthPageContainer>
   )

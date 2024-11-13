@@ -118,8 +118,10 @@ export function blackFridayDarkPatterns(props: PageComponentProps) {
           </p>
           {button}
         </NarrowAndCentered>
-        <LinkToFichePratique url="https://www.economie.gouv.fr/dgccrf/Publications/Vie-pratique/Fiches-pratiques/pieges-sur-les-sites-de-commerce-en-ligne-attention-aux-dark-patterns"
-        text="la fiche pratique Dark pattern" />
+        <LinkToFichePratique
+          url="https://www.economie.gouv.fr/dgccrf/Publications/Vie-pratique/Fiches-pratiques/pieges-sur-les-sites-de-commerce-en-ligne-attention-aux-dark-patterns"
+          text="la fiche pratique Dark pattern"
+        />
       </LpColoredBand>
     </FullWidthPageContainer>
   )

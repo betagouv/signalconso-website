@@ -114,9 +114,10 @@ export function blackFridayRetractation(props: PageComponentProps) {
           </p>
           {button}
         </NarrowAndCentered>
-        <LinkToFichePratique url="https://www.economie.gouv.fr/dgccrf/Publications/Vie-pratique/Fiches-pratiques/Delais-de-reflexion-ou-de-retractation"
-        text="la fiche pratique Délai de réflexion ou de rétractation"
-         />
+        <LinkToFichePratique
+          url="https://www.economie.gouv.fr/dgccrf/Publications/Vie-pratique/Fiches-pratiques/Delais-de-reflexion-ou-de-retractation"
+          text="la fiche pratique Délai de réflexion ou de rétractation"
+        />
       </LpColoredBand>
     </FullWidthPageContainer>
   )

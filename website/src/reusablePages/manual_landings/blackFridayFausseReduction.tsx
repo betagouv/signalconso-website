@@ -101,8 +101,9 @@ export function blackFridayFausseReduction(props: PageComponentProps) {
           </p>
           {button}
         </NarrowAndCentered>
-        <LinkToFichePratique url="https://www.economie.gouv.fr/dgccrf/Publications/Vie-pratique/Fiches-pratiques/Annonce-de-reduction-de-prix"
-        text="la fiche pratique Fausses réductions de prix"
+        <LinkToFichePratique
+          url="https://www.economie.gouv.fr/dgccrf/Publications/Vie-pratique/Fiches-pratiques/Annonce-de-reduction-de-prix"
+          text="la fiche pratique Fausses réductions de prix"
         />
       </LpColoredBand>
     </FullWidthPageContainer>
