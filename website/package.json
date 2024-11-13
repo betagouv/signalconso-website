@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "beforebuild": "echo 'beforebuild starting' && yarn shared:generate-json && yarn generate-sitemap  && only-include-used-icons && echo 'beforebuild done' ",
+    "beforebuild": "echo 'beforebuild starting' && yarn shared:gen-subcategory-slugs && yarn shared:generate-json && yarn generate-sitemap  && only-include-used-icons && echo 'beforebuild done' ",
     "dev": "yarn beforebuild && next dev -p 3001",
     "devdemo": "yarn beforebuild && cross-env NEXT_PUBLIC_API_BASE_URL=https://demo-signalement-api.cleverapps.io next dev -p 3001",
     "devyaml": "yarn concurrently -n website,yaml_watcher \"yarn devdemo\" \"yarn generate-json-watch\"",

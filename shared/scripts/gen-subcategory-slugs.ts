@@ -9,7 +9,6 @@ const rootDir = path.resolve('./anomalies/yml')
 // Rename all files/folders automatically (adjust names and numbers)
 function sanitizeAnomaliesFilenames(lang: 'fr' | 'en') {
   const root = rootDir + '/' + lang
-  console.log('Renaming file/folder names if needed in ', root)
   sanitizeDirContents(root, {excludedFileName: '_imports'})
   dirContentSorted(path.join(root, '_imports', 'subcategories')).forEach(subcategoriesSubDir => {
     sanitizeDirContents(subcategoriesSubDir)
@@ -40,3 +39,4 @@ function sanitizeDirContents(_path: string, options: {excludedFileName?: string}
 }
 
 sanitizeAnomaliesFilenames('fr')
+sanitizeAnomaliesFilenames('en')
