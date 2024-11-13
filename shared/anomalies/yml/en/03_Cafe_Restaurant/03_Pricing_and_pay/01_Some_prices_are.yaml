@@ -8,3 +8,4 @@ detailInputs:
     type: DATE
     defaultValue: SYSDATE
 fileLabel: If possible, please attach a photo or document to support your report.
+subcategory: Il_manque_certains_prix

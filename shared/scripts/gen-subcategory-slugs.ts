@@ -26,8 +26,7 @@ function sanitizeDirContents(_path: string, options: {excludedFileName?: string}
       const content = readFileYaml(subpath)
 
       if (!content.category && !content.subcategory) {
-        // there's a total max length of 256 for the whole path on windows...
-        content.subcategory = slugify(content.title, {strict: true, replacement: '_'}).slice(0, 100)
+        content.subcategory = slugify(content.title, {strict: true, replacement: '_'})
         writeFileYaml(subpath, content)
       }
     }
