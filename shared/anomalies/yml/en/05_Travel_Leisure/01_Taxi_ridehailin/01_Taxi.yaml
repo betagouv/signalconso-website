@@ -1,7 +1,9 @@
 title: Taxi
 companyKind: SIRET
 desc: >-
-  Taxis can be spotted by the illuminated sign on the roof of the vehicle. Vehicles that do not have this sign are not "real" taxis.
+  Taxis can be spotted by the illuminated sign on the roof of the vehicle.
+  Vehicles that do not have this sign are not "real" taxis.
 ccrfCode:
-  - '23f'
+  - 23f
   - '164'
+subcategory: Taxi
