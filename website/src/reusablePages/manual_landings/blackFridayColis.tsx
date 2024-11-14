@@ -1,16 +1,17 @@
-import {FullWidthPageContainer} from '@/components_simple/PageContainers'
-import {PageComponentProps} from '@/core/metadatas'
 import {
   AlternatingPurpleBands,
-  getManualLpButtonProps,
   HighlightBlue,
   HighlightPurple,
   LinkToFichePratique,
   LpColoredBand,
   NarrowAndCentered,
   WithSuperheroIllustration,
+  getManualLpButtonProps,
 } from '@/landings/manualLandingsUtils'
+
 import Button from '@codegouvfr/react-dsfr/Button'
+import {FullWidthPageContainer} from '@/components_simple/PageContainers'
+import {PageComponentProps} from '@/core/metadatas'
 import {notFound} from 'next/navigation'
 
 export function blackFridayColis(props: PageComponentProps) {
@@ -112,7 +113,10 @@ export function blackFridayColis(props: PageComponentProps) {
           </p>
           {button}
         </NarrowAndCentered>
-        <LinkToFichePratique url="https://www.economie.gouv.fr/dgccrf/les-fiches-pratiques/livraison-quelles-sont-les-obligations-du-professionnel-et-les-recours" />
+        <LinkToFichePratique
+          url="https://www.economie.gouv.fr/dgccrf/les-fiches-pratiques/livraison-quelles-sont-les-obligations-du-professionnel-et-les-recours"
+          text="la fiche pratique Droits et obligations du professionnel en matière de livraison"
+        />
       </LpColoredBand>
     </FullWidthPageContainer>
   )

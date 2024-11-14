@@ -70,19 +70,19 @@ export function NarrowAndCentered({children, narrower = false}: ChildrenProps & 
   )
 }
 
-export function LinkToFichePratique({url, url2}: {url: string; url2?: string}) {
+export function LinkToFichePratique({url, url2, text, text2}: {url: string; url2?: string; text?: string; text2?: string}) {
   return (
     <p className="mt-8 mb-0">
       Pour en savoir plus sur vos droits, rendez-vous sur{' '}
       <Link target="_blank" href={url}>
-        {url}
+        {text ?? url}
       </Link>
       {url2 ? (
         <>
           {' '}
           et{' '}
           <Link target="_blank" href={url2}>
-            {url2}
+            {text2 ?? url2}
           </Link>
         </>
       ) : null}
