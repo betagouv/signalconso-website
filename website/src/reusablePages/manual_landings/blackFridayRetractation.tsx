@@ -57,7 +57,7 @@ export function blackFridayRetractation(props: PageComponentProps) {
           <h2 className="fr-h4 ">Qu'est-ce que le droit de rétractation ?</h2>
           <p>
             Le <b>droit de rétractation</b> est une protection légale qui vous permet de renvoyer un produit acheté à distance
-            (internet, téléphone, catalogue) ou hors établissement (foire, porte-à-porte), et de demander le remboursement sans
+            (internet, téléphone, catalogue) ou hors établissement (porte-à-porte), et de demander le remboursement sans
             avoir à fournir de justification.
           </p>
           <p className="mb-0">
