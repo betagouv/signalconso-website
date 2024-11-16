@@ -1,20 +1,15 @@
 import {FullWidthPageContainer} from '@/components_simple/PageContainers'
-import {PageComponentProps} from '@/core/metadatas'
 import {
   AlternatingPurpleBands,
   getManualLpButtonProps,
   HighlightBlue,
   HighlightPurple,
   LpColoredBand,
-} from '@/landings/manualLandingsUtils'
+} from '@/landings/manualLandings/manualLandingsComponents'
 import Button from '@codegouvfr/react-dsfr/Button'
-import {notFound} from 'next/navigation'
 
-export function dysfonctionnementsCommandesNourriture(props: PageComponentProps) {
-  const lang = props.params.lang
-  if (lang !== 'fr') {
-    return notFound()
-  }
+export function dysfonctionnementsCommandesNourriture() {
+  const lang = 'fr'
   const button = (
     <div className="flex justify-center">
       <Button {...getManualLpButtonProps(lang, 'CafeRestaurant')}>Je fais un signalement</Button>

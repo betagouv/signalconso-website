@@ -1,5 +1,6 @@
-import {pagesDefs} from '@/core/pagesDefinitions'
+import {buildLinkManualLandingPage} from '@/core/buildLinks'
 import imgSav from '@/img/actualites/sav.png'
+import {manualLandingBlackFridaySav} from '@/landings/manualLandings/manualLandingsUtils'
 import Image from 'next/image'
 
 export function ArticleSavBlackFriday() {
@@ -78,7 +79,7 @@ export function ArticleSavBlackFriday() {
       </ul>
       <p>
         Pour en savoir plus rendez vous sur{' '}
-        <a href={`/fr${pagesDefs.blackFridaySav.url}`} target="_blank" rel="noopener">
+        <a href={buildLinkManualLandingPage(manualLandingBlackFridaySav)} target="_blank" rel="noopener">
           SignalConso
         </a>
       </p>

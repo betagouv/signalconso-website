@@ -1,11 +1,21 @@
 'use client'
 import {getNewsArticleData} from '@/components_feature/actualites/newsArticlesData'
 import {appConfig} from '@/core/appConfig'
+import {buildLinkNewsArticle} from '@/core/buildLinks'
+import {
+  manualLandingBfFausseReduc,
+  manualLandingDemarchage,
+  manualLandingFauxSiteGvt,
+  manualLandingInfluenceur,
+  manualLandingIntox,
+  manualLandingObligationFibre,
+  manualLandingObsolescence,
+} from '@/landings/manualLandings/manualLandingsUtils'
 import {Footer, FooterProps} from '@codegouvfr/react-dsfr/Footer'
 import Link from 'next/link'
 import {usePathname} from 'next/navigation'
 import {HTMLAttributeAnchorTarget} from 'react'
-import {buildLinkNewsArticle, pagesDefs} from '../core/pagesDefinitions'
+import {pagesDefs} from '../core/pagesDefinitions'
 import {I18nContextProps, useI18n} from '../i18n/I18n'
 import buildMenuLink from '../utils/menuLinks'
 
@@ -101,11 +111,11 @@ function buildLinksList(
     {
       categoryName: 'Je signale',
       links: [
-        link(pagesDefs.signalInfluenceur.url, 'Un influenceur'),
-        link(pagesDefs.obligationFibre.url, 'Un passage forcé à la fibre'),
-        link(pagesDefs.obsolescencePage.url, 'Une obsolescence programmée'),
-        link(pagesDefs.demarchageAbusif.url, 'Un démarchage téléphonique abusif'),
-        link(pagesDefs.intoxAlimentaire.url, 'Une intoxication alimentaire'),
+        link('/' + manualLandingInfluenceur.url, 'Un influenceur'),
+        link('/' + manualLandingObligationFibre.url, 'Un passage forcé à la fibre'),
+        link('/' + manualLandingObsolescence.url, 'Une obsolescence programmée'),
+        link('/' + manualLandingDemarchage.url, 'Un démarchage téléphonique abusif'),
+        link('/' + manualLandingIntox.url, 'Une intoxication alimentaire'),
       ],
     },
     {
@@ -124,8 +134,8 @@ function buildLinksList(
         link('/tel-internet-media', 'Un opérateur mobile ou FAI'),
         link('/fichage-bancaire-injustifie', 'Un fichage bancaire injustifié'),
         link('/retard-train', 'Un retard de train'),
-        link(pagesDefs.fauxSiteGouvernemental.url, 'Un faux site gouvernemental'),
-        link(pagesDefs.blackFridayFausseReduction.url, 'Des fausses réductions de prix'),
+        link(manualLandingFauxSiteGvt.url, 'Un faux site gouvernemental'),
+        link(manualLandingBfFausseReduc.url, 'Des fausses réductions de prix'),
       ],
     },
     {

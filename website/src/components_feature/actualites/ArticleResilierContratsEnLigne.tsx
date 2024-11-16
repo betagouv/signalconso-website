@@ -1,15 +1,15 @@
 'use client'
 
-import {buildHardcodedLinkLandingPageFr} from '../../core/pagesDefinitions'
+import {buildHardcodedLinkAirtableLandingFr} from '@/core/buildLinks'
+import imgInfographieResiliation from '@/img/actualites/infographie-resiliation-contrats.jpg'
 import Image from 'next/image'
 import Link from 'next/link'
 import {ReactNode} from 'react'
 import {useI18n} from '../../i18n/I18n'
 import {AppLangs} from '../../i18n/localization/AppLangs'
-import imgInfographieResiliation from '@/img/actualites/infographie-resiliation-contrats.jpg'
 
 function LandingLink({path, children}: {path: string; children: ReactNode}) {
-  const fullUrl = buildHardcodedLinkLandingPageFr(path)
+  const fullUrl = buildHardcodedLinkAirtableLandingFr(path)
   if (!fullUrl) {
     // it's not worth throwing an error
     console.warn(`Didn't find landing ${path}`)

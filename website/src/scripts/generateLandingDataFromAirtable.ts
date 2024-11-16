@@ -9,7 +9,7 @@ import path from 'path'
 import {allAnomaliesForHomepage, findAnomaly} from '../anomalies/Anomalies'
 import {appConfig} from '../core/appConfig'
 import {AppLang, AppLangs} from '../i18n/localization/AppLangs'
-import {LandingData} from '../landings/landingDataUtils'
+import {AirtableLandingData} from '../landings/airtableLandings/airtableLandingsUtils'
 
 // This script reads data from our Airtable account
 // Then it outputs all the texts for our landing pages.
@@ -18,7 +18,7 @@ import {LandingData} from '../landings/landingDataUtils'
 // This script is meant to be rerun only occasionally when needed.
 
 function getOutputFileName(lang: AppLang) {
-  return path.join(__dirname, '..', 'landings', `landingsData_${lang}.ts`)
+  return path.join(__dirname, '..', 'landings', 'airtableLandings', `airtableLandingsData_${lang}.ts`)
 }
 
 const BASE_ID = 'appdO2KcJrc2RI28f'
@@ -49,7 +49,7 @@ type RawRow = {
   sampleReports?: string[]
 }
 
-type RowTranformed = LandingData
+type RowTranformed = AirtableLandingData
 
 function setupAirtable() {
   const apiKey = appConfig.airtableApiToken
@@ -78,7 +78,7 @@ async function start(lang: AppLang) {
     `// ----------------------------------------------
   // ---- Generated file, do not edit manually ---
   // ----------------------------------------------
-  export const ${lang}LandingsData = ` +
+  export const ${lang}AirtableLandingsData = ` +
       JSON.stringify(rowsSorted, null, 2) +
       ';',
   )

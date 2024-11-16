@@ -1,18 +1,13 @@
 import {UserQuote} from '@/components_feature/LandingPage'
 import {FullWidthPageContainer} from '@/components_simple/PageContainers'
-import {PageComponentProps} from '@/core/metadatas'
-import {BlueBandWhySignalConso, getManualLpButtonProps} from '@/landings/manualLandingsUtils'
+import {BlueBandWhySignalConso, getManualLpButtonProps} from '@/landings/manualLandings/manualLandingsComponents'
 import Button from '@codegouvfr/react-dsfr/Button'
 import Link from 'next/link'
-import {notFound} from 'next/navigation'
 
 const bloctel = 'https://www.bloctel.gouv.fr/'
 
-export function DemarchageAbusifPage(props: PageComponentProps) {
-  const lang = props.params.lang
-  if (lang !== 'fr') {
-    return notFound()
-  }
+export function DemarchageAbusifPage() {
+  const lang = 'fr'
   return (
     <FullWidthPageContainer>
       <div className="bg-scblueinfo text-white border-t-[1px] border-0 border-solid border-black ">

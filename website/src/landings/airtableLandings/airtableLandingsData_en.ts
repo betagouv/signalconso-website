@@ -1,7 +1,7 @@
 // ----------------------------------------------
 // ---- Generated file, do not edit manually ---
 // ----------------------------------------------
-export const enLandingsData = [
+export const enAirtableLandingsData = [
   {
     url: 'catering-food-poisoning-symptoms',
     lang: 'en',

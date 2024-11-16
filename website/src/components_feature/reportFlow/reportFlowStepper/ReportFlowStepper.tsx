@@ -1,6 +1,5 @@
 'use client'
 
-import {Anomaly} from 'shared/anomalies/Anomaly'
 import {Acknowledgement} from '@/components_feature/reportFlow/Acknowledgement/Acknowledgement'
 import {Company} from '@/components_feature/reportFlow/Company/Company'
 import {Confirmation} from '@/components_feature/reportFlow/Confirmation/Confirmation'
@@ -9,7 +8,7 @@ import {Details} from '@/components_feature/reportFlow/Details/Details'
 import {Problem} from '@/components_feature/reportFlow/Problem/Problem'
 import {useReportCreateContext} from '@/components_feature/reportFlow/ReportCreateContext'
 import {useReportFlowContext} from '@/components_feature/reportFlow/ReportFlowContext'
-import {buildLinkStartReport} from '@/core/pagesDefinitions'
+import {buildLinkStartReport} from '@/core/buildLinks'
 import {
   findCurrentStepForReport,
   firstReportStep,
@@ -24,6 +23,7 @@ import {
 import {scrollTop} from '@/utils/utils'
 import {ReadonlyURLSearchParams, useRouter, useSearchParams} from 'next/navigation'
 import {useEffect} from 'react'
+import {Anomaly} from 'shared/anomalies/Anomaly'
 import {useI18n} from '../../../i18n/I18n'
 import {AppLang} from '../../../i18n/localization/AppLangs'
 import {ReportFlowStepperHeader} from './ReportFlowStepperHeader'

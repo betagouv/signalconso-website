@@ -1,16 +1,9 @@
 import {FullWidthPageContainer} from '@/components_simple/PageContainers'
-import {PageComponentProps} from '@/core/metadatas'
-import {BlueBandWhySignalConso, LpColoredBand, getManualLpButtonProps} from '@/landings/manualLandingsUtils'
+import {BlueBandWhySignalConso, LpColoredBand, getManualLpButtonProps} from '@/landings/manualLandings/manualLandingsComponents'
 import Button from '@codegouvfr/react-dsfr/Button'
-import {notFound} from 'next/navigation'
 
-const bloctel = 'https://www.bloctel.gouv.fr/'
-
-export function IntoxAlimentairePage(props: PageComponentProps) {
-  const lang = props.params.lang
-  if (lang !== 'fr') {
-    return notFound()
-  }
+export function IntoxAlimentairePage() {
+  const lang = 'fr'
   return (
     <FullWidthPageContainer>
       <LpColoredBand className="bg-scblueinfo">

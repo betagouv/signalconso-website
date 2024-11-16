@@ -1,22 +1,14 @@
 import {FullWidthPageContainer} from '@/components_simple/PageContainers'
-import {PageComponentProps} from '@/core/metadatas'
 import {
   AlternatingPurpleBands,
   getManualLpButtonProps,
   HighlightBlue,
-  HighlightPurple,
   LpColoredBand,
-  NarrowAndCentered,
-} from '@/landings/manualLandingsUtils'
+} from '@/landings/manualLandings/manualLandingsComponents'
 import Button from '@codegouvfr/react-dsfr/Button'
-import {notFound} from 'next/navigation'
-import Link from 'next/link'
 
-export function achatSite(props: PageComponentProps) {
-  const lang = props.params.lang
-  if (lang !== 'fr') {
-    return notFound()
-  }
+export function achatSite() {
+  const lang = 'fr'
   const button = (
     <div className="flex justify-center">
       <Button {...getManualLpButtonProps(lang, 'AchatInternet')}>Je fais un signalement</Button>

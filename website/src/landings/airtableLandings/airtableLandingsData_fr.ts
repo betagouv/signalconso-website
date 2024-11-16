@@ -1,7 +1,7 @@
 // ----------------------------------------------
 // ---- Generated file, do not edit manually ---
 // ----------------------------------------------
-export const frLandingsData = [
+export const frAirtableLandingsData = [
   {
     url: 'achat-magasin',
     lang: 'fr',

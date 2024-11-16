@@ -1,16 +1,11 @@
 import {FullWidthPageContainer} from '@/components_simple/PageContainers'
-import {PageComponentProps} from '@/core/metadatas'
 import imgReparabilite8_5 from '@/img/landings/indice_reparabilite_8_5.jpg'
-import {getManualLpButtonProps} from '@/landings/manualLandingsUtils'
+import {getManualLpButtonProps} from '@/landings/manualLandings/manualLandingsComponents'
 import Button from '@codegouvfr/react-dsfr/Button'
 import Image from 'next/image'
-import {notFound} from 'next/navigation'
 
-export function obsolescencePage(props: PageComponentProps) {
-  const lang = props.params.lang
-  if (lang !== 'fr') {
-    return notFound()
-  }
+export function obsolescencePage() {
+  const lang = 'fr'
   return (
     <FullWidthPageContainer>
       <div className="bg-scblueinfo text-white">

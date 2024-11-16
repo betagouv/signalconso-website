@@ -1,9 +1,11 @@
 import {getNewsArticleData} from '@/components_feature/actualites/newsArticlesData'
 import {ContentPageContainer} from '@/components_simple/PageContainers'
+import {buildLinkAirtableLandingPage, buildLinkManualLandingPage, buildLinkNewsArticle} from '@/core/buildLinks'
 import {PageComponentProps, buildGenerateMetadata} from '@/core/metadatas'
-import {buildLinkLandingPage, buildLinkNewsArticle, internalPageDefs, pagesDefs} from '@/core/pagesDefinitions'
+import {internalPageDefs, pagesDefs} from '@/core/pagesDefinitions'
 import {AppLang, AppLangs} from '@/i18n/localization/AppLangs'
-import {allVisibleLandings} from '@/landings/landingDataUtils'
+import {allVisibleAirtableLandings} from '@/landings/airtableLandings/airtableLandingsUtils'
+import {getManualLandings} from '@/landings/manualLandings/manualLandingsUtils'
 import Link from 'next/link'
 import {getI18n} from '../../../i18n/I18nDictionnary'
 
@@ -34,71 +36,26 @@ const PlanDuSite = (props: PageComponentProps) => {
           <BasicPageLink page="litigeTelecom" label={m.planDuSite.telecomResolutionTips} {...{lang}} />
         </ul>
         <h2 className="fr-h4">{m.planDuSite.reportIncidentSection}</h2>
-        <ul className="">
-          {allVisibleLandings(lang).map(landingData => {
+        <ul className="mb-6">
+          {allVisibleAirtableLandings(lang).map(landingData => {
             return (
               <li key={landingData.url}>
-                <Link href={buildLinkLandingPage(landingData)}>
+                <Link href={buildLinkAirtableLandingPage(landingData)}>
                   {m.planDuSite.reportIncidentFor} {landingData.title}
                 </Link>
               </li>
             )
           })}
-          <BasicPageLink page="obligationFibre" label={m.planDuSite.obligationFibre} {...{lang}} />
-          <BasicPageLink page="signalInfluenceur" label={m.planDuSite.signalInfluenceur} {...{lang}} />
-          <BasicPageLink page="obsolescencePage" label={m.planDuSite.obsolescencePage} {...{lang}} />
-          <BasicPageLink page="demarchageAbusif" label={m.planDuSite.demarchageAbusif} {...{lang}} />
-          <BasicPageLink page="intoxAlimentaire" label={m.planDuSite.intoxAlimentaire} {...{lang}} />
-          <BasicPageLink page="erreurDePrixEnCaisse" label={m.planDuSite.erreurDePrixEnCaisse} {...{lang}} />
-          <BasicPageLink page="repasSurPlaceCouvertsJetables" label={m.planDuSite.repasSurPlaceCouvertsJetables} {...{lang}} />
-          <BasicPageLink
-            page="fournitureSystematiqueEchantillonsInternet"
-            label={m.planDuSite.fournitureSystematiqueEchantillonsInternet}
-            {...{lang}}
-          />
-          <BasicPageLink
-            page="distributionGratuiteBouteillesPlastique"
-            label={m.planDuSite.distributionGratuiteBouteillesPlastique}
-            {...{lang}}
-          />
-          <BasicPageLink
-            page="informationsEnvironnementalesVehiculesNeufs"
-            label={m.planDuSite.informationsEnvironnementalesVehiculesNeufs}
-            {...{lang}}
-          />
-          <BasicPageLink
-            page="allegationNeutraliteCompensationCarbone"
-            label={m.planDuSite.allegationNeutraliteCompensationCarbone}
-            {...{lang}}
-          />
-          <BasicPageLink
-            page="impressionSystematiqueTicketDeCaisse"
-            label={m.planDuSite.impressionSystematiqueTicketDeCaisse}
-            {...{lang}}
-          />
-          <BasicPageLink page="blackFridayAboFraisCaches" label={m.planDuSite.blackFridayAboFraisCaches} {...{lang}} />
-          <BasicPageLink page="blackFridayColis" label={m.planDuSite.blackFridayColis} {...{lang}} />
-          <BasicPageLink page="blackFridayDarkPatterns" label={m.planDuSite.blackFridayDarkPatterns} {...{lang}} />
-          <BasicPageLink page="blackFridayFausseReduction" label={m.planDuSite.blackFridayFausseReduction} {...{lang}} />
-          <BasicPageLink page="fauxSiteGouvernemental" label={m.planDuSite.fauxSiteGouvernemental} {...{lang}} />
-          <BasicPageLink page="blackFridayFauxStocks" label={m.planDuSite.blackFridayFauxStocks} {...{lang}} />
-          <BasicPageLink page="blackFridaySav" label={m.planDuSite.blackFridaySav} {...{lang}} />
-          <BasicPageLink page="blackFridaySitesFrauduleux" label={m.planDuSite.blackFridaySitesFrauduleux} {...{lang}} />
-          <BasicPageLink page="blackFridayGaranties" label={m.planDuSite.blackFridayGaranties} {...{lang}} />
-          <BasicPageLink page="blackFridayRetractation" label={m.planDuSite.blackFridayRetractation} {...{lang}} />
-          <BasicPageLink page="achatSite" label={m.planDuSite.achatSite} {...{lang}} />
-          <BasicPageLink page="demarchesAdministratives" label={m.planDuSite.demarchesAdministratives} {...{lang}} />
-          <BasicPageLink
-            page="dysfonctionnementsCommandesNourriture"
-            label={m.planDuSite.dysfonctionnementsCommandesNourriture}
-            {...{lang}}
-          />
-          <BasicPageLink
-            page="hygieneDouteusePersonnelRestauration"
-            label={m.planDuSite.hygieneDouteusePersonnelRestauration}
-            {...{lang}}
-          />
-          <hr className="mt-4" />
+        </ul>
+        <hr />
+        <ul>
+          {getManualLandings(lang).map(landingData => {
+            return (
+              <li key={landingData.url}>
+                <Link href={buildLinkManualLandingPage(landingData)}>{landingData.labelPlanDuSite}</Link>
+              </li>
+            )
+          })}
         </ul>
         <h2 className="fr-h4">{m.planDuSite.proSpaceSection}</h2>
         <ul>

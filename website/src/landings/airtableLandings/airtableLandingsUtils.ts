@@ -1,9 +1,9 @@
-import {allVisibleAnomalies, findAnomaly} from '../anomalies/Anomalies'
-import {enLandingsData} from './landingsData_en'
-import {frLandingsData} from './landingsData_fr'
-import {AppLangs} from '../i18n/localization/AppLangs'
+import {allVisibleAnomalies} from '../../anomalies/Anomalies'
+import {AppLangs} from '../../i18n/localization/AppLangs'
+import {enAirtableLandingsData} from './airtableLandingsData_en'
+import {frAirtableLandingsData} from './airtableLandingsData_fr'
 
-export type LandingData = {
+export type AirtableLandingData = {
   isSemiAutomatic: boolean
   lang: string
   // can target multiple categories, or one, or zero (then we target the homepage)
@@ -28,9 +28,9 @@ export type LandingData = {
   sampleReports: {text: string; author: string}[]
 }
 
-export function allVisibleLandings(lang: AppLangs): LandingData[] {
+export function allVisibleAirtableLandings(lang: AppLangs): AirtableLandingData[] {
   const visibleAnomalies = allVisibleAnomalies(lang)
-  const landingsData = lang === AppLangs.fr ? frLandingsData : enLandingsData
+  const landingsData = lang === AppLangs.fr ? frAirtableLandingsData : enAirtableLandingsData
   // Filter out the demo landing, if the demo category is not visible
   return landingsData.filter(landingData => {
     if (landingData.isSemiAutomatic) {

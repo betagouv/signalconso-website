@@ -6,18 +6,13 @@ import {
   LpColoredBand,
   NarrowAndCentered,
   getManualLpButtonProps,
-} from '@/landings/manualLandingsUtils'
+} from '@/landings/manualLandings/manualLandingsComponents'
 
-import Button from '@codegouvfr/react-dsfr/Button'
 import {FullWidthPageContainer} from '@/components_simple/PageContainers'
-import {PageComponentProps} from '@/core/metadatas'
-import {notFound} from 'next/navigation'
+import Button from '@codegouvfr/react-dsfr/Button'
 
-export function blackFridayFauxStocks(props: PageComponentProps) {
-  const lang = props.params.lang
-  if (lang !== 'fr') {
-    return notFound()
-  }
+export function blackFridayFauxStocks() {
+  const lang = 'fr'
   const button = (
     <div className="flex justify-center">
       <Button {...getManualLpButtonProps(lang, 'AchatInternet')}>Je fais un signalement</Button>

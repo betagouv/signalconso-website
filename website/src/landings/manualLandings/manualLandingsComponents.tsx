@@ -1,6 +1,6 @@
 import {allVisibleAnomalies} from '@/anomalies/Anomalies'
 import {bigReportButtonProps} from '@/components_simple/buttons/buttonsUtils'
-import {buildLinkHomePickCategory, buildLinkStartReport} from '@/core/pagesDefinitions'
+import {buildLinkHomePickCategory, buildLinkStartReport} from '@/core/buildLinks'
 import {getI18n} from '@/i18n/I18nDictionnary'
 import {AppLang, AppLangs} from '@/i18n/localization/AppLangs'
 import elf_f_purple from '@/img/landings/blackfriday/elf_f_purple.svg'
@@ -38,7 +38,7 @@ export function LpColoredBand({children, className = ''}: ChildrenProps & {class
   )
 }
 
-export function BlueBandWhySignalConso({lang, title}: {lang: AppLangs; title: string}) {
+export function BlueBandWhySignalConso({lang, title}: {lang: AppLang | AppLangs; title: string}) {
   const {m} = getI18n(lang)
 
   return (

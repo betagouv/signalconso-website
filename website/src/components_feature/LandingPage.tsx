@@ -1,17 +1,18 @@
 'use client'
 
 import {findAnomaly} from '@/anomalies/Anomalies'
-import {Anomaly} from 'shared/anomalies/Anomaly'
-import {LandingData} from '@/landings/landingDataUtils'
+import {AirtableLandingData} from '@/landings/airtableLandings/airtableLandingsUtils'
 import {Button} from '@codegouvfr/react-dsfr/Button'
 import {CallOut} from '@codegouvfr/react-dsfr/CallOut'
+import {Anomaly} from 'shared/anomalies/Anomaly'
 
 import Image from 'next/image'
 import Link from 'next/link'
 import {ReactNode, useId} from 'react'
 
 import {bigReportButtonProps, getBigReportButtonText} from '@/components_simple/buttons/buttonsUtils'
-import {buildLinkHomePickCategory, buildLinkStartReport, pagesDefs} from '../core/pagesDefinitions'
+import {buildLinkHomePickCategory, buildLinkStartReport} from '@/core/buildLinks'
+import {pagesDefs} from '../core/pagesDefinitions'
 
 import {AnomaliesGrid} from '@/components_simple/AnomaliesGrid'
 import {FullWidthPageContainer} from '@/components_simple/PageContainers'
@@ -22,7 +23,7 @@ import imgPictoCrayons from '@/img/landings/picto_crayons.png'
 import imgPictoMasks from '@/img/landings/picto_masks.png'
 
 type Props = {
-  landingData: LandingData
+  landingData: AirtableLandingData
   lang: AppLangs
 }
 
@@ -166,7 +167,7 @@ function HeroCard({title, subtext, picto}: {title: string; subtext: string; pict
   )
 }
 
-export function UserQuote({report}: {report: LandingData['sampleReports'][number]}) {
+export function UserQuote({report}: {report: AirtableLandingData['sampleReports'][number]}) {
   // https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/citation
   // mais on override un peu le style du texte
   return (
