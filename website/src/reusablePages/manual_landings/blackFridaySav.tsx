@@ -56,10 +56,10 @@ export function blackFridaySav(props: PageComponentProps) {
         <div>
           <h2 className="fr-h4 ">Vos droits en tant que consommateur pendant le Black Friday : Que dit la loi sur le SAV ?</h2>
           <p>
-            En France, les vendeurs ont l'obligation de fournir un service après-vente (SAV) accessible, que ce soit pour des
-            questions relatives à la garantie légale de conformité, des réparations ou des demandes d'informations sur le produit
-            acheté. Cette règle s'applique également pendant le Black Friday, quelle que soit l'importance des promotions
-            proposées !
+            En France, les vendeurs ont l'obligation de fournir les coordonnées de leur service après-vente (SAV). Il doit être
+            accessible, que ce soit pour des questions relatives à la garantie légale de conformité, des réparations ou des
+            demandes d'informations sur le produit acheté. Cette règle s'applique également pendant le Black Friday, quelle que
+            soit l'importance des promotions proposées !
           </p>
           <p className="mb-0">
             Le Code de la consommation impose au vendeur de vous <strong>informer clairement</strong> sur les conditions de
