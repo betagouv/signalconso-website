@@ -1,6 +1,6 @@
 title: Il manque des prix / les prix sont illisibles
 ccrfCode:
-  - "163"
+  - '163'
   - 21b
 detailInputs:
   - label: Veuillez préciser
@@ -14,3 +14,4 @@ detailInputs:
     defaultValue: SYSDATE
   - label: Description
     type: TEXTAREA
+subcategory: Il_manque_des_prix_les_prix_sont_illisibles

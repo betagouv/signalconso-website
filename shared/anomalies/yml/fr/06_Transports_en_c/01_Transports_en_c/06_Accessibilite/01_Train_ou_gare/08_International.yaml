@@ -1,13 +1,17 @@
 title: International
-desc: 'Je voyage dans un pays de l’UE ou en Suisse'
+desc: Je voyage dans un pays de l’UE ou en Suisse
 blockingInfo:
   title: >-
-    Des problèmes pendant votre voyage dans l'UE ou en Suisse doivent être signalés aux administrations du pays.
+    Des problèmes pendant votre voyage dans l'UE ou en Suisse doivent être
+    signalés aux administrations du pays.
   content: >-
-    <br> Pour un voyage au sein de l'UE, merci de remplir le formulaire et de contacter les administrations du pays dans lequel vous avez voyagé compétentes pour ce type de problème. Rendez vous sur le site
-    <a href="https://transport.ec.europa.eu/document/download/e416e1e2-af3e-40c9-b54c-931e0b8fa76c_en?filename=2021_782_national_enforcement_bodies.pdf"
-    target="_blank">Voyage dans l'Union Européen</a>
-    <br>
-    <br> Pour un voyage en Suisse, merci de remplir le formulaire et de contacter le service compétent pour ce type de problème sur le site
-    <a href="https://www.bav.admin.ch/bav/fr/home/themes-generaux/tarifs/droits-des-passagers/organisme-charge-du-controle-de-l-application%20.html"
+    <br> Pour un voyage au sein de l'UE, merci de remplir le formulaire et de
+    contacter les administrations du pays dans lequel vous avez voyagé
+    compétentes pour ce type de problème. Rendez vous sur le site <a
+    href="https://transport.ec.europa.eu/document/download/e416e1e2-af3e-40c9-b54c-931e0b8fa76c_en?filename=2021_782_national_enforcement_bodies.pdf"
+    target="_blank">Voyage dans l'Union Européen</a> <br> <br> Pour un voyage en
+    Suisse, merci de remplir le formulaire et de contacter le service compétent
+    pour ce type de problème sur le site <a
+    href="https://www.bav.admin.ch/bav/fr/home/themes-generaux/tarifs/droits-des-passagers/organisme-charge-du-controle-de-l-application%20.html"
     target="_blank">Administraiton Suisse des transports</a>
+subcategory: International

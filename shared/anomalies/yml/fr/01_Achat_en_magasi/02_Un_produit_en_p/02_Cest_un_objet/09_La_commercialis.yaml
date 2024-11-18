@@ -1,7 +1,7 @@
 title: La commercialisation de produit en plastique à usage unique
 desc: "Exemple\_: sacs plastiques, vaisselle en plastique, pailles, confettis, cotons tige en plastique, sachets de thé…"
 ccrfCode:
-  - "192"
+  - '192'
   - 23E
 tags:
   - TransitionEcologique
@@ -17,3 +17,4 @@ detailInputs:
     type: TEXT
   - label: Description
     type: TEXTAREA
+subcategory: La_commercialisation_de_produit_en_plastique_a_usage_unique

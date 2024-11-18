@@ -22,3 +22,4 @@ detailInputs:
     type: DATE_NOT_IN_FUTURE
     defaultValue: SYSDATE
 fileLabel: Product picture
+subcategory: Un_produit_vendu_dans_un_emballage

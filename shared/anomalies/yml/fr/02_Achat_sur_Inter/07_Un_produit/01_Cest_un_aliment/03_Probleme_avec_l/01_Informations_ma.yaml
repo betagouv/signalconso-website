@@ -1,5 +1,5 @@
 title: Informations manquantes
-reponseconsoCode: "273"
+reponseconsoCode: '273'
 detailInputs:
   - label: Site internet d'achat
     placeholder: Adresse du site internet complet ou URL
@@ -22,3 +22,4 @@ detailInputs:
   - label: Qu'avez-vous constaté ?
     type: TEXTAREA
 fileLabel: Photos du produit
+subcategory: Informations_manquantes

@@ -2,3 +2,4 @@ title: Moyens de paiement
 desc: 'Exemple : carte bancaire refusée'
 subcategories:
   customimport: _imports/subcategories/paiement
+subcategory: Moyens_de_paiement

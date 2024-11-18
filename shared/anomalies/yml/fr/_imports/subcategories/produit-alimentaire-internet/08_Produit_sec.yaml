@@ -1,7 +1,8 @@
 title: Produit sec
 tags:
   - ProduitAlimentaire
-desc: "Exemple : épice, farine, pâtes..."
+desc: 'Exemple : épice, farine, pâtes...'
 subcategoriesTitle: Quel est le risque ?
 subcategories:
   customimport: _imports/subcategories/produit-alimentaire-risque-internet
+subcategory: Produit_sec

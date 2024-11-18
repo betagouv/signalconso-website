@@ -19,3 +19,4 @@ detailInputs:
   - label: Heure de l'appel (facultatif)
     type: TIMESLOT
     optional: true
+subcategory: Usurpation_didentite_de_la_part_du_professionnel

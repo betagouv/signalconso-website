@@ -1,6 +1,6 @@
 title: Promesse d'économies d'énergie surestimées
 ccrfCode:
-  - "271"
+  - '271'
 tags:
   - ReponseConso
 detailInputs:
@@ -21,3 +21,4 @@ detailInputs:
   - label: Heure du constat (facultatif)
     type: TIMESLOT
     optional: true
+subcategory: Promesse_deconomies_denergie_surestimees

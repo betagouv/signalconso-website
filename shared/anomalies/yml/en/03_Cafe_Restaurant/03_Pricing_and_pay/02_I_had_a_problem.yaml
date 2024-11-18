@@ -4,3 +4,4 @@ detailInputs:
   - label: Date of the finding
     type: DATE
 fileLabel: If possible, please attach a photo or document to support your report.
+subcategory: Jai_eu_un_probleme_pour_payer

@@ -2,7 +2,7 @@ title: >-
   Référence abusive à des partenariats avec l'État ou de grandes entreprises
   d'énergie
 ccrfCode:
-  - "271"
+  - '271'
 tags:
   - ReponseConso
 detailInputs:
@@ -23,3 +23,5 @@ detailInputs:
   - label: Heure du constat (facultatif)
     type: TIMESLOT
     optional: true
+subcategory: >-
+  Reference_abusive_a_des_partenariats_avec_lEtat_ou_de_grandes_entreprises_denergie

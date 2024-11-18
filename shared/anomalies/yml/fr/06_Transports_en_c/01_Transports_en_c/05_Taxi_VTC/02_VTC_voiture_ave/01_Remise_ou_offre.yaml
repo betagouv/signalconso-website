@@ -1,15 +1,14 @@
-title: >-
-  Remise ou offre promotionnelle pas appliquée ou mensongère
+title: Remise ou offre promotionnelle pas appliquée ou mensongère
 ccrfCode:
   - 23b
-  - "164"
-reponseconsoCode: "451"
+  - '164'
+reponseconsoCode: '451'
 detailInputs:
   - label: Date du constat
     type: DATE_NOT_IN_FUTURE
   - label: Quelle était l'offre ou la promotion annoncée ?
     type: TEXT
-    placeholder: "Exemple : -20% offert à la première course"
+    placeholder: 'Exemple : -20% offert à la première course'
   - label: Où avez-vous vu cette offre  ?
     type: RADIO
     options:
@@ -22,3 +21,4 @@ detailInputs:
 fileLabel: >-
   Merci de joindre tout document pouvant appuyer votre signalement (photographie
   de la publicité, reçu de votre course...)
+subcategory: Remise_ou_offre_promotionnelle_pas_appliquee_ou_mensongere

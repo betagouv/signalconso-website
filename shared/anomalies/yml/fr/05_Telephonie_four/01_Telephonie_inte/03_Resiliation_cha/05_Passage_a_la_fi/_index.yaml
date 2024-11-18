@@ -1,5 +1,8 @@
 title: Passage à la fibre optique
-desc: 'Exemple : problème travaux de travaux, passage obligatoire à la fibre optique, retard de travaux'
+desc: >-
+  Exemple : problème travaux de travaux, passage obligatoire à la fibre optique,
+  retard de travaux
 ccrfCode:
-  - '23B'
+  - 23B
   - '226'
+subcategory: Passage_a_la_fibre_optique

@@ -1,6 +1,7 @@
 title: Produit périmé
 ccrfCode:
-  - "323"
-subcategoriesTitle: "Vous voulez signaler :"
+  - '323'
+subcategoriesTitle: 'Vous voulez signaler :'
 tags:
   - ProduitAlimentaire
+subcategory: Produit_perime

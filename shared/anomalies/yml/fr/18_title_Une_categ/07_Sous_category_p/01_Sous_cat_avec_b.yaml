@@ -10,3 +10,4 @@ blockingInfo:
     - question: Seconde "action", champ "question"
       answer: Seconde "action", champ "answer"
       desc: Seconde "action", champ "desc"
+subcategory: Sous_cat_avec_blockingInfo_complet

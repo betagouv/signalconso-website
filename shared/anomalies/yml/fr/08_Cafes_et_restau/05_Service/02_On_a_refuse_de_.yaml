@@ -8,3 +8,4 @@ detailInputs:
   - label: "Pour quelle raison a-t-on refusé de vous servir ou de vous donner une table\_?"
     type: TEXTAREA
 fileLabel: Vous pouvez joindre des éléments pour appuyer votre signalement.
+subcategory: On_a_refuse_de_me_donner_une_table_ou_de_me_servir

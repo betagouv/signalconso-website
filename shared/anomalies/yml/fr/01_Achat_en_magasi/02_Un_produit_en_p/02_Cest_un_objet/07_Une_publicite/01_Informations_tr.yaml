@@ -1,7 +1,8 @@
 title: Informations trompeuses ou fausses
 desc: >-
-  Exemple : effet sur la santé, \"fabriqué en France\" alors que ce n'est pas le cas ", logo trompeur
-reponseconsoCode: "210"
+  Exemple : effet sur la santé, \"fabriqué en France\" alors que ce n'est pas le
+  cas ", logo trompeur
+reponseconsoCode: '210'
 ccrfCode:
   - 23B
 detailInputs:
@@ -24,3 +25,4 @@ detailInputs:
     type: TEXTAREA
     optional: true
 fileLabel: Photos du produit (si possible de tous les côtés de l'emballage)
+subcategory: Informations_trompeuses_ou_fausses

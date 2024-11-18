@@ -1,6 +1,6 @@
 title: Problème de température
 desc: "Exemple\_: rupture de la chaîne du froid"
-reponseconsoCode: "322"
+reponseconsoCode: '322'
 detailInputs:
   - label: Date du constat
     type: DATE_NOT_IN_FUTURE
@@ -21,3 +21,4 @@ detailInputs:
 fileLabel: >-
   Si possible, merci de joindre une photo ou un document pour appuyer votre
   signalement.
+subcategory: Probleme_de_temperature

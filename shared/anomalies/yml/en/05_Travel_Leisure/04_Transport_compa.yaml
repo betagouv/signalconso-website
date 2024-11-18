@@ -3,8 +3,11 @@ desc: 'Examples: flights, trains, ferry sailings'
 blockingInfo:
   title: Unfortunately, we are unable to take your report any further.
   content: >-
-    You booked your flight ticket directly with an airline. 
-    <br /> You encountered an issue with downgrading, denied boarding, or your flight was delayed or cancelled. SignalConso does not handle this type of report. We recommend you visit the French Civil Aviation Authority website: <br /><a
+    You booked your flight ticket directly with an airline.  <br /> You
+    encountered an issue with downgrading, denied boarding, or your flight was
+    delayed or cancelled. SignalConso does not handle this type of report. We
+    recommend you visit the French Civil Aviation Authority website: <br /><a
     href="https://droits-passagers-aeriens.aviation-civile.gouv.fr">https://droits-passagers-aeriens.aviation-civile.gouv.fr</a>
-    <br /> <br /> Did you book your flight through a travel agency ? 
-    <br /> Go back and select "Travel agency" :)
+    <br /> <br /> Did you book your flight through a travel agency ?  <br /> Go
+    back and select "Travel agency" :)
+subcategory: Transport_company

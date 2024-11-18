@@ -12,3 +12,4 @@ detailInputs:
     placeholder: Elements d'identification
   - label: Description
     type: TEXTAREA
+subcategory: Un_produit_emballe_et_etiquete_par_le_magasin_comme_une_barquette_de_viande

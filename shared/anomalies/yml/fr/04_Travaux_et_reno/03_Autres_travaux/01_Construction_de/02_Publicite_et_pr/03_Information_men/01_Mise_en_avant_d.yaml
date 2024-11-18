@@ -1,7 +1,7 @@
 title: Mise en avant d'un label ou d'un signe de qualité non ou plus détenu
 ccrfCode:
-  - "271"
-  - "275"
+  - '271'
+  - '275'
 tags:
   - ReponseConso
 detailInputs:
@@ -22,3 +22,4 @@ detailInputs:
   - label: Heure du constat (facultatif)
     type: TIMESLOT
     optional: true
+subcategory: Mise_en_avant_dun_label_ou_dun_signe_de_qualite_non_ou_plus_detenu

@@ -1,10 +1,10 @@
 title: Prix à la caisse différent du prix affiché en rayon
 ccrfCode:
-  - "163"
+  - '163'
 desc: >-
   Exemple : le prix à la caisse est de 5 euros alors que le prix affiché en
   rayon est de 3 euros
-reponseconsoCode: "212"
+reponseconsoCode: '212'
 detailInputs:
   - label: Date du constat
     type: DATE_NOT_IN_FUTURE
@@ -24,9 +24,7 @@ detailInputs:
     options:
       - Oui. Pouvez-vous préciser à qui ? (à préciser)
       - Non
-  - label: >-
-      Si oui, le commerçant a-t-il bien voulu vous faire payer le prix
-      affiché ?
+  - label: Si oui, le commerçant a-t-il bien voulu vous faire payer le prix affiché ?
     type: RADIO
     options:
       - Oui
@@ -34,3 +32,4 @@ detailInputs:
     optional: true
   - label: Description
     type: TEXTAREA
+subcategory: Prix_a_la_caisse_different_du_prix_affiche_en_rayon

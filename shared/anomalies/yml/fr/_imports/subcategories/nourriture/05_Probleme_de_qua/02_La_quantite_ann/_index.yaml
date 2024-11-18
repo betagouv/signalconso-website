@@ -4,3 +4,4 @@ postReportHelper:
   customimport: _imports/postreporthelper/controle-quantite-vendues.yaml
 tags:
   - QuantiteNonConforme
+subcategory: La_quantite_annoncee_est_non_conforme

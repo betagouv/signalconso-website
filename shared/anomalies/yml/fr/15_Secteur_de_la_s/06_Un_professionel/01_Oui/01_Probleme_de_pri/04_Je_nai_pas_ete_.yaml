@@ -13,3 +13,5 @@ reponseconsoCode: '411'
 detailInputs:
   - label: Date de constat
     type: DATE
+subcategory: >-
+  Je_nai_pas_ete_autorise_a_payer_en_espece_par_cheque_ou_carte_bancaire_sans_en_avoir_ete_prealableme

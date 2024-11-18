@@ -19,3 +19,4 @@ detailInputs:
   - label: Heure de l'appel (facultatif)
     type: TIMESLOT
     optional: true
+subcategory: Utilisation_de_termes_laissant_croire_quil_sagit_dune_structure_publique

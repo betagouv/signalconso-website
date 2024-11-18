@@ -6,3 +6,4 @@ blockingInfo:
     Il doit l'indiquer très visiblement au consommateur. Par exemple : affichage
     à l'entrée du magasin ou à la caisse...
   reportOutOfScopeMessage: true
+subcategory: Oui

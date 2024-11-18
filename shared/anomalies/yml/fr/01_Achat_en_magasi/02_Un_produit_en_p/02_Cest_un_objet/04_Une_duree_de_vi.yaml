@@ -1,5 +1,7 @@
 title: Une durée de vie trop courte
-desc: Je trouve que la durée de vie de votre appareil est trop courte ou Je soupçonne un cas d'obsolescence programmée
+desc: >-
+  Je trouve que la durée de vie de votre appareil est trop courte ou Je
+  soupçonne un cas d'obsolescence programmée
 tags:
   - TransitionEcologique
   - ReponseConso
@@ -16,3 +18,4 @@ detailInputs:
     type: TEXT
   - label: Description
     type: TEXTAREA
+subcategory: Une_duree_de_vie_trop_courte

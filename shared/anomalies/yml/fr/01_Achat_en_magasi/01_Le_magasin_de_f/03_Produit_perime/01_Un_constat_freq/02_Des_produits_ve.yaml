@@ -1,5 +1,5 @@
 title: Des produits vendus à température ambiante
-desc: "Exemple : chocolat, conserve, compote, petits pots"
+desc: 'Exemple : chocolat, conserve, compote, petits pots'
 blockingInfo:
   title: Ce problème n'est pas un motif de signalement.
   content: >-
@@ -16,3 +16,4 @@ blockingInfo:
       answer: >-
         Contacter directement le service client de votre magasin pour lui
         expliquer.
+subcategory: Des_produits_vendus_a_temperature_ambiante

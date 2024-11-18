@@ -4,7 +4,7 @@ tags:
   - ReponseConso
 ccrfCode:
   - 23B
-reponseconsoCode: "210"
+reponseconsoCode: '210'
 detailInputs:
   - label: Date du constat
     type: DATE_NOT_IN_FUTURE
@@ -39,3 +39,4 @@ detailInputs:
       - Oui
       - Non
 fileLabel: Photo(s) si possible
+subcategory: Une_allegation_douteuse_de_neutralite_ou_de_compensation_carbone

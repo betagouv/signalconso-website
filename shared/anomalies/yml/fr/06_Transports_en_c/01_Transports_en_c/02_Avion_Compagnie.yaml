@@ -1,5 +1,7 @@
 title: Avion / Compagnie aérienne / Aérodrome
-desc: 'Exemple : Vol annulé ou retardé, déclassement, refus d''embarquement, accessibilité'
+desc: >-
+  Exemple : Vol annulé ou retardé, déclassement, refus d'embarquement,
+  accessibilité
 blockingInfo:
   title: Oups, nous ne pouvons pas traiter votre signalement.
   content: >-
@@ -11,3 +13,4 @@ blockingInfo:
     href="https://droits-passagers-aeriens.aviation-civile.gouv.fr/public/signalement?new-signalement=true">https://droits-passagers-aeriens.aviation-civile.gouv.fr</a>
     <br /> <br />Vous avez acheté vos billets d'avions dans une agence de
     voyages ? <br />Revenez en arrière et allez sur "Agence de voyage" :)
+subcategory: Avion_Compagnie_aerienne_Aerodrome

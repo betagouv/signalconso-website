@@ -2,7 +2,7 @@ title: Un produit vendu dans un emballage
 desc: "Exemple\_: bouteille d'eau, conserve de légumes, paquet de chips..."
 companyKind: PRODUCT
 detailInputs:
-  - label: "C'est un produit vendu :"
+  - label: 'C''est un produit vendu :'
     type: RADIO
     options:
       - au rayon frais
@@ -25,3 +25,4 @@ detailInputs:
   - label: "Quel est le problème\_?"
     type: TEXT
 fileLabel: Photo du produit
+subcategory: Un_produit_vendu_dans_un_emballage

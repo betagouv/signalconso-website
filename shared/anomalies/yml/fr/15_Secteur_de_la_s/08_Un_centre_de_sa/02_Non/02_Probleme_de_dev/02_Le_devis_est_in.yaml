@@ -3,3 +3,4 @@ desc: "Exemple\_: devis non signé par le professionnel, professionnel non ident
 ccrfCode:
   - '226'
 reponseconsoCode: '411'
+subcategory: Le_devis_est_incomplet

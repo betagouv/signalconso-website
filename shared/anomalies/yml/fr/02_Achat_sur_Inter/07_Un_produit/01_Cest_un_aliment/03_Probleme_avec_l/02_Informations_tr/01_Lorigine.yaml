@@ -16,4 +16,7 @@ detailInputs:
   - label: Pourquoi trouvez-vous l'origine trompeur ?
     type: TEXTAREA
     optional: true
-fileLabel: Photos du produit (si possible de tous les côtés de l'emballage) ou l'affichage sur le site du produit et l'étiquette du produit
+fileLabel: >-
+  Photos du produit (si possible de tous les côtés de l'emballage) ou
+  l'affichage sur le site du produit et l'étiquette du produit
+subcategory: Lorigine

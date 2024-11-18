@@ -1,6 +1,6 @@
 title: Les plats ne correspondent pas à la description
 desc: "Exemple\_: Produit industriel vendu sous la mention \"fait maison\""
-reponseconsoCode: "271"
+reponseconsoCode: '271'
 detailInputs:
   - label: Date du constat
     type: DATE_NOT_IN_FUTURE
@@ -9,8 +9,8 @@ detailInputs:
     type: RADIO
     options:
       - "L'origine (exemple\_: origine des vins)"
-      - "Un label ou une mention (exemple: fait maison)"
-      - "Une marque (exemple: la marque de rhum proposée est mensongère"
+      - 'Un label ou une mention (exemple: fait maison)'
+      - 'Une marque (exemple: la marque de rhum proposée est mensongère'
       - Autre (à préciser)
   - label: Précisez en quelques mots pourquoi vous trouvez cela trompeur
     type: TEXT
@@ -23,3 +23,4 @@ detailInputs:
 fileLabel: >-
   Merci de joindre si possible une photo ou votre facture afin d'appuyer votre
   signalement.
+subcategory: Les_plats_ne_correspondent_pas_a_la_description

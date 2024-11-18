@@ -16,3 +16,4 @@ detailInputs:
     type: TEXT
   - label: What did you find ?
     type: TEXTAREA
+subcategory: Produit_en_retrait_rappel

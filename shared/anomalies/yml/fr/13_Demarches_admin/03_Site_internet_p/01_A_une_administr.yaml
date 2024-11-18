@@ -5,3 +5,4 @@ desc: >-
   mentions légales du site.
 blockingInfo:
   customimport: _imports/blockingInfo/administration.yaml
+subcategory: A_une_administration

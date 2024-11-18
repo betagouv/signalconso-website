@@ -6,3 +6,4 @@ reponseconsoCode: '212'
 detailInputs:
   - label: Date de constat
     type: DATE
+subcategory: Je_nai_pas_eu_de_devis

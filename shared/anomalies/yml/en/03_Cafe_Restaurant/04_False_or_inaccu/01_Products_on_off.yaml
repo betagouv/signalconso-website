@@ -4,3 +4,4 @@ detailInputs:
   - label: Date of the finding
     type: DATE
     defaultValue: SYSDATE
+subcategory: Indisponibilite_des_produits_proposes

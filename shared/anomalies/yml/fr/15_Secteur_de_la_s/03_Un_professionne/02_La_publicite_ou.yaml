@@ -8,3 +8,4 @@ reponseconsoCode: '212'
 detailInputs:
   - label: Date de constat
     type: DATE
+subcategory: La_publicite_ou_la_description_est_trompeuse

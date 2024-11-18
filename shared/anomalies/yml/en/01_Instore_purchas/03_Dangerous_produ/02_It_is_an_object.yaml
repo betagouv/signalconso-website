@@ -1,6 +1,7 @@
-title: It is an object, a cosmetic product, furniture, fireworks, etc.
+title: Toys, childcare, school supplies
 subcategoriesTitle: What is the risk ?
 tags:
   - ProduitIndustriel
 subcategories:
   customimport: _imports/subcategories/produit-dangereux
+subcategory: Jouet_puericulture_materiel_scolaire

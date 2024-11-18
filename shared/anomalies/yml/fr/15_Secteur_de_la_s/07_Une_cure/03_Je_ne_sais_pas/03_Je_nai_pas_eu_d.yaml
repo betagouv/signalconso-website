@@ -13,3 +13,5 @@ reponseconsoCode: '213'
 detailInputs:
   - label: Date de constat
     type: DATE
+subcategory: >-
+  Je_nai_pas_eu_de_facture_note_recu_de_note_facture_recu_recapitulatif_de_paiement

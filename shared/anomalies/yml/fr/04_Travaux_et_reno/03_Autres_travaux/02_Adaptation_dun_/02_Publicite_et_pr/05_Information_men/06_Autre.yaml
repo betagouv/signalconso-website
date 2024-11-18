@@ -23,3 +23,4 @@ detailInputs:
   - label: Heure du constat (facultatif)
     type: TIMESLOT
     optional: true
+subcategory: Autre

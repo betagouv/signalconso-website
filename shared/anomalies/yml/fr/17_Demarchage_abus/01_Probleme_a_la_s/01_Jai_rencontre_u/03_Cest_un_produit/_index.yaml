@@ -3,3 +3,4 @@ desc: 'Exemple : jouet, cosmétique'
 companyKind: LOCATION
 tags:
   - ProduitDangereux
+subcategory: Cest_un_produit_dangereux

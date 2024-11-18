@@ -1,5 +1,7 @@
 title: Une publicité pour un produit financiers risqués, un crypto-actif ou un NFT
-desc: 'Exemple: Forex, CDF, options binaires, crypto-monnaies (Bitcoin, Ethereum, etc…), NFT'
+desc: >-
+  Exemple: Forex, CDF, options binaires, crypto-monnaies (Bitcoin, Ethereum,
+  etc…), NFT
 subcategoriesTitle: L'influenceur n'indique pas le caractère commercial de sa publication
 postReportHelper:
   customimport: _imports/postreporthelper/risques-trading-en-ligne.yaml
@@ -7,3 +9,4 @@ tags:
   - Influenceur
 detailInputs:
   customimport: _imports/detailInputs/influenceur.yaml
+subcategory: Une_publicite_pour_un_produit_financiers_risques_un_cryptoactif_ou_un_NFT

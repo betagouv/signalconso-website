@@ -17,3 +17,4 @@ detailInputs:
     type: TEXTAREA
     optional: true
 fileLabel: Photos du produit (si possible de tous les côtés de l'emballage)
+subcategory: La_composition

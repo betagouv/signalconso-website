@@ -24,3 +24,4 @@ detailInputs:
   - label: "What is the problem\_?"
     type: TEXT
 fileLabel: Product picture
+subcategory: Un_produit_vendu_dans_un_emballage

@@ -3,3 +3,4 @@ detailInputs:
   customimport: _imports/detailInputs/produit-alimentaire-internet.yaml
 fileLabel: Photos du produit / de l'emballage / du ticket / de la facture / de l'accident
 reponseconsoCode: '323'
+subcategory: Cela_ma_rendu_malade

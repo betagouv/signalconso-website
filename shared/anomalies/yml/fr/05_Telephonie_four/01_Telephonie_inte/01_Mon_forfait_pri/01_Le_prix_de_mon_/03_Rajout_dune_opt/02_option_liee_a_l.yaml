@@ -21,3 +21,4 @@ detailInputs:
   - label: Si vous avez reçu un courrier / email / sms, quelle est sa date ?
     type: DATE
     optional: true
+subcategory: option_liee_a_la_musique_des_livres_une_chaine_tele_un_antivirus

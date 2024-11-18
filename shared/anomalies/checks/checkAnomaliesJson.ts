@@ -39,6 +39,7 @@ const baseSubcategorySpec: ObjectSpec = {
   ccrfCode: _ => _.ifDefined()?.assertIsArrayOfString(),
   companyKind: _ => _.ifDefined()?.assertIsAllowedString(companyKinds),
   title: _ => _.assertIsString(),
+  subcategory: _ => _.assertIsString(),
   subcategoriesTitle: _ => _.ifDefined()?.assertIsString(),
   // triggers the recursion
   subcategories: _ => _.ifDefined()?.assertIsArrayWith(assertIsSubcategory),

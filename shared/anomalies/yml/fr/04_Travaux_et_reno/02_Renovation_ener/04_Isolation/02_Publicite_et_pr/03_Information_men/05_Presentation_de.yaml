@@ -1,6 +1,6 @@
 title: Présentation des travaux comme étant obligatoires
 ccrfCode:
-  - "271"
+  - '271'
 tags:
   - ReponseConso
 detailInputs:
@@ -21,3 +21,4 @@ detailInputs:
   - label: Heure du constat (facultatif)
     type: TIMESLOT
     optional: true
+subcategory: Presentation_des_travaux_comme_etant_obligatoires

@@ -1,4 +1,7 @@
 title: Indisponibilité des produits (véhicules neufs ou occasions)
 ccrfCode:
-  - '23B'
-desc: 'Exemple : véhicule présenté sur un site internet mais indisponible sur le lieu de vente'
+  - 23B
+desc: >-
+  Exemple : véhicule présenté sur un site internet mais indisponible sur le lieu
+  de vente
+subcategory: Indisponibilite_des_produits_vehicules_neufs_ou_occasions

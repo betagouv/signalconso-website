@@ -1,6 +1,6 @@
 title: Informations trompeuses ou fausses
 desc: "Exemple\_: \"en or\" alors qu'il s'agit de \"plaqué or\", \"fabriqué en France\" alors que ce n'est pas le cas "
-reponseconsoCode: "210"
+reponseconsoCode: '210'
 tags:
   - ReponseConso
 detailInputs:
@@ -20,3 +20,4 @@ detailInputs:
     type: TEXT
   - label: Description
     type: TEXTAREA
+subcategory: Informations_trompeuses_ou_fausses

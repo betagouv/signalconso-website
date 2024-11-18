@@ -1,5 +1,5 @@
 title: J'ai payé plus cher que le prix affiché
-reponseconsoCode: "212"
+reponseconsoCode: '212'
 detailInputs:
   - label: Date du constat
     type: DATE_NOT_IN_FUTURE
@@ -23,3 +23,4 @@ detailInputs:
 fileLabel: >-
   Merci de joindre une photo du menu, du site, de votre ticket afin d'appuyer
   votre signalement.
+subcategory: Jai_paye_plus_cher_que_le_prix_affiche

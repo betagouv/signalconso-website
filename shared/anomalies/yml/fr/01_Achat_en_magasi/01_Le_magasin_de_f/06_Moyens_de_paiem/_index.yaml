@@ -2,3 +2,4 @@ title: Moyens de paiement
 desc: 'Exemple : refus de la carte bancaire'
 postReportHelper:
   customimport: _imports/postreporthelper/moyens-de-paiement.yaml
+subcategory: Moyens_de_paiement

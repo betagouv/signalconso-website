@@ -3,3 +3,4 @@ tags:
   - ProduitAlimentaire
 subcategories:
   customimport: _imports/subcategories/produit-alimentaire-internet
+subcategory: Produit_alimentaire

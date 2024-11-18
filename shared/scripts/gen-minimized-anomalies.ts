@@ -15,9 +15,9 @@ const files = [
 const extractWantedPropsFromSubcategories = (obj: any) => {
   if (obj.subcategories && obj.subcategories.length !== 0) {
     const res = obj.subcategories.map(extractWantedPropsFromSubcategories)
-    return {category: obj.category, id: obj.id, title: obj.title, tags: obj.tags, subcategories: res}
+    return {category: obj.category, id: obj.id, title: obj.title, tags: obj.tags, subcategories: res, subcategory: obj.subcategory}
   } else {
-    return {category: obj.category, id: obj.id, title: obj.title, tags: obj.tags}
+    return {category: obj.category, id: obj.id, title: obj.title, tags: obj.tags, subcategory: obj.subcategory}
   }
 }
 

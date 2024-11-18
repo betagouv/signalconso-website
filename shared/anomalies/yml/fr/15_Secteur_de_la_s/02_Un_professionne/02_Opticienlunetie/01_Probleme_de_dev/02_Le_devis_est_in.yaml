@@ -7,3 +7,4 @@ reponseconsoCode: '226'
 detailInputs:
   - label: Date de constat
     type: DATE
+subcategory: Le_devis_est_incomplet

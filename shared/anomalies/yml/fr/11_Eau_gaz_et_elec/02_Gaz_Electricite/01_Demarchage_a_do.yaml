@@ -2,7 +2,7 @@ title: Démarchage à domicile
 desc: "Exemple\_: vendeur prétend être envoyé par EDF, démarcheur agressif"
 companyKind: LOCATION
 ccrfCode:
-  - "221"
+  - '221'
 tags:
   - DemarchageADomicile
   - ReponseConso
@@ -36,3 +36,4 @@ detailInputs:
   - label: Décrivez nous plus en détails ce qui s'est passé
     type: TEXTAREA
 fileLabel: Si possible, joindre une copie du contrat ou tout document commercial
+subcategory: Demarchage_a_domicile

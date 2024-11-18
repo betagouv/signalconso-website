@@ -10,7 +10,13 @@ import Link from 'next/link'
 import {useSearchParams} from 'next/navigation'
 import {ReactNode, useEffect, useState} from 'react'
 import {useForm} from 'react-hook-form'
-import {allVisibleAnomalies, instanceOfAnomaly, instanceOfSubcategoryWithInfoWall} from '../anomalies/Anomalies'
+import {
+  allVisibleAnomalies,
+  instanceOfAnomaly,
+  instanceOfAnomalyLeaf,
+  instanceOfSubcategoryLeaf,
+  instanceOfSubcategoryWithInfoWall,
+} from '../anomalies/Anomalies'
 import {CategoryNode, DetailInput, DetailInputType, StandardSubcategory, SubcategoryWithInfoWall} from 'shared/anomalies/Anomaly'
 import {useI18n} from '../i18n/I18n'
 import {fnSwitch} from '../utils/FnSwitch'
@@ -34,7 +40,9 @@ const Node = ({
   const companyKind = instanceOfAnomaly(anomaly) ? undefined : anomaly.companyKind
   const companyKindQuestion = instanceOfAnomaly(anomaly) ? undefined : anomaly.companyKindQuestion
   const subcategoriesTitle = anomaly.subcategoriesTitle
-  const isLeaf = !anomaly.subcategories || anomaly.subcategories.length === 0
+  const isSubcategoryLeaf = instanceOfSubcategoryLeaf(anomaly)
+  const isAnomalyLeaf = instanceOfAnomalyLeaf(anomaly)
+  const isLeaf = isSubcategoryLeaf || isAnomalyLeaf
   const isBlocking = instanceOfSubcategoryWithInfoWall(anomaly)
   const [isOpen, setIsOpen] = useState(false)
   const isHiddenDemoCategory = instanceOfAnomaly(anomaly) && anomaly.isHiddenDemoCategory
@@ -121,7 +129,8 @@ const Node = ({
               })}
           </div>
 
-          {isLeaf && (isBlocking ? <NodeInfo anomaly={anomaly} /> : <NodeInputs anomaly={anomaly} {...{displayExtra}} />)}
+          {isSubcategoryLeaf &&
+            (isBlocking ? <NodeInfo anomaly={anomaly} /> : <NodeInputs anomaly={anomaly} {...{displayExtra}} />)}
         </div>
         {isOpen && anomaly.subcategories && (
           <>

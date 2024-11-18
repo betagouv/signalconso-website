@@ -1,5 +1,5 @@
 title: En France (Outre-mer compris)
-reponseconsoCode: "211"
+reponseconsoCode: '211'
 detailInputs:
   - label: Date du constat
     type: DATE_NOT_IN_FUTURE
@@ -10,3 +10,4 @@ detailInputs:
     type: TEXT
   - label: Description
     type: TEXTAREA
+subcategory: En_France_Outremer_compris

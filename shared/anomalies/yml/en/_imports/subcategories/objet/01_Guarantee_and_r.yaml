@@ -3,3 +3,4 @@ desc: "Example\_: return, warranty, exchange"
 subcategoriesTitle: "Why do you want to return or exchange your item\_?"
 subcategories:
   customimport: _imports/subcategories/garantie
+subcategory: Garantie_et_remboursement

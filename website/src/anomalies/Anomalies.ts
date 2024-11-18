@@ -39,8 +39,16 @@ export const instanceOfSubcategoryWithInfoWall = (_?: CategoryNode): _ is Subcat
   return !!(_ as SubcategoryWithInfoWall)?.blockingInfo
 }
 
+export const instanceOfSubcategoryLeaf = (_?: CategoryNode): _ is Subcategory => {
+  return !!(_ as Subcategory).subcategory && (!(_ as Subcategory).subcategories || (_ as Subcategory).subcategories?.length === 0)
+}
+
 export const instanceOfAnomaly = (_?: CategoryNode): _ is Anomaly => {
   return !!(_ as Anomaly)?.category
+}
+
+export const instanceOfAnomalyLeaf = (_?: CategoryNode): _ is Anomaly => {
+  return instanceOfAnomaly(_) && (!(_ as Anomaly).subcategories || (_ as Anomaly).subcategories?.length === 0)
 }
 
 export function findAnomaly(category: string, lang: AppLang): Anomaly {

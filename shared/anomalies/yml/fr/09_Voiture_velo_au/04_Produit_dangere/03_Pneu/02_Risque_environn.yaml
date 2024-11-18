@@ -2,3 +2,4 @@ title: Risque environnemental
 detailInputs:
   customimport: _imports/detailInputs/produit-dangereux.yaml
 fileLabel: Photos du produit / de la notice / du ticket / de la facture / de l'accident
+subcategory: Risque_environnemental

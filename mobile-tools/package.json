@@ -31,7 +31,7 @@
     "shared": "workspace:^"
   },
   "scripts": {
-    "beforebuild": "yarn shared:generate-json && yarn shared:generate-minimized-anomalies",
+    "beforebuild": "yarn shared:gen-subcategory-slugs && yarn shared:generate-json && yarn shared:generate-minimized-anomalies",
     "test": "jest --config jest.config.mjs",
     "build": "yarn beforebuild && tsc",
     "start": "node build/index.js",

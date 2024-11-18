@@ -1,44 +1,8 @@
 title: Sous category avec juste quelques "detailInputs"
-desc: >-
-  Pour faire des tests rapides
+desc: Pour faire des tests rapides
 detailInputs:
   - label: simple input texte (le type TEXT)
     type: TEXT
-  # - label: input texte optionnel
-  #   type: TEXT
-  #   optional: true
-  # - label: input texte avec placeholder
-  #   type: TEXT
-  #   placeholder: ceci est le placeholder de l'input texte
-  # - label: simple input de zone de texte (TEXTAREA)
-  #   type: TEXTAREA
-  # - label: zone de texte optionnelle
-  #   type: TEXTAREA
-  #   optional: true
-  # - label: zone de texte avec placeholder
-  #   type: TEXTAREA
-  #   placeholder: ceci le placeholder de la zone de texte
-  # - label: simple input date (DATE)
-  #   type: DATE
-  # - label: input date optionnel
-  #   type: DATE
-  #   optional: true
-  # - label: input date avec la date courante comme valeur par défaut
-  #   type: DATE
-  #   defaultValue: SYSDATE
-  # - label: >-
-  #     input date avec la date courante comme valeur par défaut, et qui est
-  #     optionnel
-  #   type: DATE
-  #   optional: true
-  #   defaultValue: SYSDATE
-  # - label: input de type date mais qui bloque les dates futures (DATE_NOT_IN_FUTURE)
-  #   type: DATE_NOT_IN_FUTURE
-  # - label: >-
-  #     input de type date non future, avec la date courante comme valeur par
-  #     défaut
-  #   type: DATE_NOT_IN_FUTURE
-  #   defaultValue: SYSDATE
   - label: input radio
     type: RADIO
     options:
@@ -61,14 +25,4 @@ detailInputs:
       - troisième option qu'il faut préciser (à préciser)
       - quatrième option
       - cinquième option qu'il faut aussi préciser (à préciser)
-  # - label: input checkbox optionnel
-  #   type: CHECKBOX
-  #   options:
-  #     - première option
-  #     - seconde option
-  #   optional: true
-  # - label: input timeslot
-  #   type: TIMESLOT
-  # - label: input timeslot optionnel
-  #   type: TIMESLOT
-  #   optional: true
+subcategory: Sous_category_avec_juste_quelques_detailInputs

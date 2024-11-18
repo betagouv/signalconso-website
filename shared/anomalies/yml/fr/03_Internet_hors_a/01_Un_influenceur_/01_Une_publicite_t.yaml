@@ -1,9 +1,10 @@
 title: Une publicité trompeuse
 desc: >-
-  Fausses allégation sur l’origine, mensonges sur les caractéristiques ou résultats
-  attendus de l’utilisation d’un produit
+  Fausses allégation sur l’origine, mensonges sur les caractéristiques ou
+  résultats attendus de l’utilisation d’un produit
 subcategoriesTitle: Publicité trompeuse
 tags:
   - Influenceur
 detailInputs:
   customimport: _imports/detailInputs/influenceur.yaml
+subcategory: Une_publicite_trompeuse

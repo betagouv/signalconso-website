@@ -14,3 +14,5 @@ detailInputs:
     type: TEXT
   - label: What error was found ?
     type: TEXTAREA
+subcategory: >-
+  Un_produit_emballe_par_le_fabricant_comme_une_boite_de_conserve_un_paquet_une_bouteille
