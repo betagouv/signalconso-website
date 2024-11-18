@@ -16,7 +16,7 @@
     "test": "jest",
     "test-no-html-output": "DEBUG_PRINT_LIMIT=1 jest",
     "test-dev": "jest --config=jest.config.ts --watch",
-    "generate-json-watch": "nodemon --watch ../shared/anomalies/yml --ext yml,yaml --exec \"yarn shared:generate-json\"",
+    "generate-json-watch": "nodemon --watch ../shared/anomalies/yml --ext yml,yaml --exec \"yarn shared:gen-subcategory-slugs && yarn shared:generate-json\"",
     "gen-satisfaction-data": "ts-node -O '{\"module\":\"commonjs\", \"jsx\":\"react-jsx\"}' src/scripts/gen-satisfaction-data.tsx",
     "generate-landings": "ts-node -O '{\"module\":\"commonjs\", \"jsx\":\"react-jsx\"}' src/scripts/generateLandingDataFromAirtable.ts && prettier --write src/landings",
     "generate-sitemap": "ts-node -O '{\"module\":\"commonjs\", \"jsx\":\"react-jsx\"}' src/scripts/gen-sitemap.ts",
