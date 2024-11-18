@@ -1,5 +1,5 @@
 title: Problème avec mon locataire / propriétaire
-reponseconsoCode: "634"
+reponseconsoCode: '634'
 blockingInfo:
   title: Votre problème ne rentre pas dans le cadre de SignalConso.
   content: >-
@@ -22,3 +22,4 @@ blockingInfo:
         consultez le site <a
         href="https://www.service-public.fr/particuliers/vosdroits/F1736"
         target="_blank"/>service-public.fr</a>
+subcategory: Probleme_avec_mon_locataire_proprietaire

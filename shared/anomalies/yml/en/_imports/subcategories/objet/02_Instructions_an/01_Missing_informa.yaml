@@ -25,3 +25,4 @@ detailInputs:
   - label: What did you find?
     type: TEXTAREA
 fileLabel: Photos of the barcode / batch number / reference
+subcategory: Informations_manquantes

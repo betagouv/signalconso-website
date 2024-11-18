@@ -1,5 +1,6 @@
 title: Non, j'ai reçu seulement un sms
 ccrfCode:
   - '226'
-  - '21B'
+  - 21B
 reponseconsoCode: '421'
+subcategory: Non_jai_recu_seulement_un_sms

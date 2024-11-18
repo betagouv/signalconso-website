@@ -18,3 +18,4 @@ detailInputs:
     type: TEXT
   - label: Description
     type: TEXTAREA
+subcategory: Informations_trompeuses_ou_fausses

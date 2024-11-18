@@ -1,6 +1,6 @@
 title: Démarchage à domicile
 ccrfCode:
-  - "221"
+  - '221'
 companyKind: LOCATION
 tags:
   - DemarchageADomicile
@@ -21,3 +21,4 @@ detailInputs:
   - label: Date du démarchage
     type: DATE
     defaultValue: SYSDATE
+subcategory: Demarchage_a_domicile

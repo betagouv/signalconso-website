@@ -1,9 +1,12 @@
 title: Oui
 desc: "Exemple\_: avec mon ordinateur ou une cabine de téléconsultation"
 companyKindQuestion:
-  label: 'La consultation a-t-elle été effectuée dans une cabine de téléconsultation ou sur Internet ?'
+  label: >-
+    La consultation a-t-elle été effectuée dans une cabine de téléconsultation
+    ou sur Internet ?
   options:
-  - label: Dans une cabine de téléconsultation
-    companyKind: SIRET
-  - label: Sur internet
-    companyKind: WEBSITE
+    - label: Dans une cabine de téléconsultation
+      companyKind: SIRET
+    - label: Sur internet
+      companyKind: WEBSITE
+subcategory: Oui

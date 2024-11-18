@@ -13,3 +13,5 @@ reponseconsoCode: '212'
 detailInputs:
   - label: Date de constat
     type: DATE
+subcategory: >-
+  Le_professionnel_nindique_pas_sil_est_conventionne_ou_sil_est_secteur_1_ou_secteur_2

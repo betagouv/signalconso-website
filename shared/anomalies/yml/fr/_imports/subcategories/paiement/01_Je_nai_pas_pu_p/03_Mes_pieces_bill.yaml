@@ -5,3 +5,4 @@ blockingInfo:
     "Vous pouvez échanger vos billets abîmés auprès d'agences bancaires comme la
     Banque de France."
   reportOutOfScopeMessage: true
+subcategory: Mes_pieces_billets_etaient_en_mauvais_etat

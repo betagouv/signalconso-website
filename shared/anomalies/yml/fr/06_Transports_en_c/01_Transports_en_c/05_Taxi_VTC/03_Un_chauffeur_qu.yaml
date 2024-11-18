@@ -3,12 +3,15 @@ blockingInfo:
   title: Il s'agit d'un chauffeur non déclaré ("faux" taxi ou taxi clandestin)
   content: >-
     Lorsqu'un véhicule n'est pas identifié comme un taxi "officiel"
-    (c'est-à-dire qu'il n'a pas d'enseigne lumineuse sur le toit ou de numéro d'identification sur la voiture) ou que vous ne l'avez pas réservé via une application, il s'agit d'un taxi clandestin ou "faux" taxi. <br> Ils sont interdits.
-    <br> On les trouve souvent dans les aéroports ou près des lieux de sorties le soir. <br><br> Comme ces
-    chauffeurs ne sont pas déclarés, il n'est pas possible de faire un
-    signalement sur notre plate-forme.
+    (c'est-à-dire qu'il n'a pas d'enseigne lumineuse sur le toit ou de numéro
+    d'identification sur la voiture) ou que vous ne l'avez pas réservé via une
+    application, il s'agit d'un taxi clandestin ou "faux" taxi. <br> Ils sont
+    interdits. <br> On les trouve souvent dans les aéroports ou près des lieux
+    de sorties le soir. <br><br> Comme ces chauffeurs ne sont pas déclarés, il
+    n'est pas possible de faire un signalement sur notre plate-forme.
   questions:
     - question: Que faire en cas de problème avec un "faux" taxi ?
       answer: >-
         Vous devez contacter le plus rapidement possible la police ou la
         gendarmerie.
+subcategory: Un_chauffeur_qui_sest_propose_dans_la_rue_ou_a_laeroport

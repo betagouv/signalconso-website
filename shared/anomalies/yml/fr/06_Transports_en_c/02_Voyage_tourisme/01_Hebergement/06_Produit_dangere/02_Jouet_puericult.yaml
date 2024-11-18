@@ -1,10 +1,11 @@
 title: Jouet, puériculture, matériel scolaire
 subcategoriesTitle: Quel est le risque ?
 ccrfCode:
-  - "309"
+  - '309'
   - 34k
   - 34j
 tags:
   - ProduitIndustriel
 subcategories:
   customimport: _imports/subcategories/produit-dangereux
+subcategory: Jouet_puericulture_materiel_scolaire

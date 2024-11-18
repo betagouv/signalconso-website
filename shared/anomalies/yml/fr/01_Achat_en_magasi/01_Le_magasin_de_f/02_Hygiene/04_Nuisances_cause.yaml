@@ -4,3 +4,4 @@ desc: >-
   se garent devant chez moi
 blockingInfo:
   customimport: _imports/blockingInfo/voisinage.yaml
+subcategory: Nuisances_causees_par_la_presence_du_magasin

@@ -3,3 +3,4 @@ desc: "Exemple\_: une agence a mis mon bien en vente sans mandat signé "
 reponseconsoCode: '425'
 tags:
   - ReponseConso
+subcategory: Mise_en_vente_sans_mandat

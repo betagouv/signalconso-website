@@ -10,3 +10,4 @@ detailInputs:
     type: TEXT
   - label: Description
     type: TEXTAREA
+subcategory: En_France_Outremer_compris

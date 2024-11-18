@@ -3,3 +3,4 @@ desc: >-
   Example: I ordered two phones, but I only received one and the company refuses to l the delivery.
 ccrfCode:
   - '23B'
+subcategory: Commande_incomplete

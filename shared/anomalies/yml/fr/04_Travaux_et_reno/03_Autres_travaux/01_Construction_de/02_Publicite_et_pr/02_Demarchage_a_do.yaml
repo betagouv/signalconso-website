@@ -1,9 +1,9 @@
 title: Démarchage à domicile
 companyKind: LOCATION
 ccrfCode:
-  - "220"
-  - "221"
-reponseconsoCode: "221"
+  - '220'
+  - '221'
+reponseconsoCode: '221'
 tags:
   - ReponseConso
   - DemarchageADomicile
@@ -24,3 +24,4 @@ detailInputs:
   - label: Date du démarchage
     type: DATE
     defaultValue: SYSDATE
+subcategory: Demarchage_a_domicile

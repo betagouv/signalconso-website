@@ -1,6 +1,6 @@
 title: Démarchage à domicile
 companyKind: LOCATION
-reponseconsoCode: "221"
+reponseconsoCode: '221'
 tags:
   - DemarchageADomicile
 detailInputs:
@@ -20,3 +20,4 @@ detailInputs:
   - label: Date du démarchage
     type: DATE
     defaultValue: SYSDATE
+subcategory: Demarchage_a_domicile

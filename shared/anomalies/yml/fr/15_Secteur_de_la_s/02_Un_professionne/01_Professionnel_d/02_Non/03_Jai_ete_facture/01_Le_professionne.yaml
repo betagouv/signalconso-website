@@ -10,3 +10,5 @@ reponseconsoCode: '212'
 detailInputs:
   - label: Date de constat
     type: DATE
+subcategory: >-
+  Le_professionnel_conventionne_ma_impose_une_prestation_autre_que_les_soins_sans_possibilite_de_refus

@@ -5,7 +5,7 @@ detailInputs:
   - label: Site internet d'achat
     placeholder: Adresse du site internet complet ou URL
     type: TEXT
-  - label: "C'est un produit vendu :"
+  - label: 'C''est un produit vendu :'
     type: RADIO
     options:
       - au rayon frais
@@ -28,3 +28,4 @@ detailInputs:
   - label: "Quel est le problème\_?"
     type: TEXT
 fileLabel: Photo du produit
+subcategory: Un_produit_vendu_dans_un_emballage

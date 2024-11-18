@@ -10,3 +10,4 @@ detailInputs:
   - label: Qu'avez-vous constaté ?
     type: TEXTAREA
 fileLabel: Photos de l'emballage
+subcategory: Legumes

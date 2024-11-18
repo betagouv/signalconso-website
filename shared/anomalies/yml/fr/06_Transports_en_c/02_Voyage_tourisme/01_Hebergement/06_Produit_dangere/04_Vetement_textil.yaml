@@ -1,9 +1,10 @@
 title: Vêtement, textile, sac à main, bijou
 subcategoriesTitle: Quel est le risque ?
 ccrfCode:
-  - "332"
-  - "333"
+  - '332'
+  - '333'
 tags:
   - ProduitIndustriel
 subcategories:
   customimport: _imports/subcategories/produit-dangereux
+subcategory: Vetement_textile_sac_a_main_bijou

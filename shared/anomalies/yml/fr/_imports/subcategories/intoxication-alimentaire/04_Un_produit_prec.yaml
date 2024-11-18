@@ -7,3 +7,4 @@ tags:
 detailInputs:
   customimport: _imports/detailInputs/intoxication-alimentaire.yaml
 fileLabel: Photos du produit / de l'emballage / du ticket / de la facture
+subcategory: Un_produit_precis

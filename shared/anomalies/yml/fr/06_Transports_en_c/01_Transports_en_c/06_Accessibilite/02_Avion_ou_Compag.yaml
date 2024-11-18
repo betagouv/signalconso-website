@@ -1,14 +1,8 @@
 title: Avion ou Compagnie aérienne
-desc: 'Exemples : absence d’assistance gratuite à l’aéroport, problème d’accessibilité pour PHMR, refus de transport'
+desc: >-
+  Exemples : absence d’assistance gratuite à l’aéroport, problème
+  d’accessibilité pour PHMR, refus de transport
 blockingInfo:
   title: Oups, nous ne pouvons pas traiter votre signalement.
-  content: >-
-    Vous êtes une personne en situation de handicap ou à mobilité réduite et vous avez eu un
-    problème lors de la réservation de votre billet, lors de votre enregistrement, lors de votre
-    embarquement ou tout autre problème dans la prestation d’assistance qui vous a été délivrée à
-    l’aéroport ou dans l’avion : <br /> <br />Ce type de
-    problème ne doit pas être signalé sur SignalConso. Nous vous invitons à
-    utiliser le site dédié : <br /><a
-    href="https://www.ecologie.gouv.fr/aviation-droits-des-personnes-handicapees-et-des-personnes-mobilite-reduite">www.ecologie.gouv.fr</a>
-    <br /> <br />Vous avez acheté vos billets d'avions dans une agence de
-    voyages ? <br />Revenez en arrière et allez sur "Agence de voyage" :)
+  content: "Vous êtes une personne en situation de handicap ou à mobilité réduite et vous avez eu un problème lors de la réservation de votre billet, lors de votre enregistrement, lors de votre embarquement ou tout autre problème dans la prestation d’assistance qui vous a été délivrée à l’aéroport ou dans l’avion\_: <br /> <br />Ce type de problème ne doit pas être signalé sur SignalConso. Nous vous invitons à utiliser le site dédié : <br /><a href=\"https://www.ecologie.gouv.fr/aviation-droits-des-personnes-handicapees-et-des-personnes-mobilite-reduite\">www.ecologie.gouv.fr</a> <br /> <br />Vous avez acheté vos billets d'avions dans une agence de voyages ? <br />Revenez en arrière et allez sur \"Agence de voyage\" :)"
+subcategory: Avion_ou_Compagnie_aerienne

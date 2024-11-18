@@ -6,3 +6,4 @@ detailInputs:
   - label: Date of the finding
     type: DATE
 fileLabel: If possible, please attach a photo or document to support your report.
+subcategory: Les_produits_ne_sont_pas_frais_ou_certains_aliments_sont_perimes

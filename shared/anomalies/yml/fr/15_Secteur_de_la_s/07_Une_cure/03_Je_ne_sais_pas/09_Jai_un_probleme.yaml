@@ -8,3 +8,4 @@ reponseconsoCode: '212'
 detailInputs:
   - label: Date de constat
     type: DATE
+subcategory: Jai_un_probleme_avec_un_avis_internet

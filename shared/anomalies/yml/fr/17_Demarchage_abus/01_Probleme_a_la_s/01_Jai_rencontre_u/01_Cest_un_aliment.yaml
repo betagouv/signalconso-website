@@ -1,5 +1,5 @@
 title: C'est un aliment ou une boisson
-desc: "Exemple : bonbon, viande, pain, conserve, vin, eau en bouteille"
+desc: 'Exemple : bonbon, viande, pain, conserve, vin, eau en bouteille'
 tags:
   - ProduitAlimentaire
   - ReponseConso
@@ -20,3 +20,4 @@ detailInputs:
   - label: Date du démarchage
     type: DATE
     defaultValue: SYSDATE
+subcategory: Cest_un_aliment_ou_une_boisson

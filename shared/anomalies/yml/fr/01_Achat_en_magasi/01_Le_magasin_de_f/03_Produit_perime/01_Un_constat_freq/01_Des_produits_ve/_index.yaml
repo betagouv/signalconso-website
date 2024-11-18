@@ -1,4 +1,5 @@
 title: Des produits vendus au rayon frais
-desc: "Exemple : viande, poisson, quiche, jambon"
-reponseconsoCode: "323"
+desc: 'Exemple : viande, poisson, quiche, jambon'
+reponseconsoCode: '323'
 subcategoriesTitle: La date est-elle <b>dépassée</b> au moment de la vente ou de l'achat ?
+subcategory: Des_produits_vendus_au_rayon_frais

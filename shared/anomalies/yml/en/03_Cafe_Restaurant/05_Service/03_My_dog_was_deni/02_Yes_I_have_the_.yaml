@@ -6,3 +6,4 @@ detailInputs:
   - label: "Can you describe to us what happened\_?"
     type: TEXTAREA
 fileLabel: You can attach elements (photo, assistance card...) to support your report.
+subcategory: Oui_je_possede_la_carte_dassistance

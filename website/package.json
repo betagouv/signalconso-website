@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "beforebuild": "echo 'beforebuild starting' && yarn shared:generate-json && yarn generate-sitemap  && only-include-used-icons && echo 'beforebuild done' ",
+    "beforebuild": "echo 'beforebuild starting' && yarn shared:gen-subcategory-slugs && yarn shared:generate-json && yarn generate-sitemap  && only-include-used-icons && echo 'beforebuild done' ",
     "dev": "yarn beforebuild && next dev -p 3001",
     "devdemo": "yarn beforebuild && cross-env NEXT_PUBLIC_API_BASE_URL=https://demo-signalement-api.cleverapps.io next dev -p 3001",
     "devyaml": "yarn concurrently -n website,yaml_watcher \"yarn devdemo\" \"yarn generate-json-watch\"",
@@ -16,7 +16,7 @@
     "test": "jest",
     "test-no-html-output": "DEBUG_PRINT_LIMIT=1 jest",
     "test-dev": "jest --config=jest.config.ts --watch",
-    "generate-json-watch": "nodemon --watch ../shared/anomalies/yml --ext yml,yaml --exec \"yarn shared:generate-json\"",
+    "generate-json-watch": "nodemon --watch ../shared/anomalies/yml --ext yml,yaml --exec \"yarn shared:gen-subcategory-slugs && yarn shared:generate-json\"",
     "gen-satisfaction-data": "ts-node -O '{\"module\":\"commonjs\", \"jsx\":\"react-jsx\"}' src/scripts/gen-satisfaction-data.tsx",
     "generate-landings": "ts-node -O '{\"module\":\"commonjs\", \"jsx\":\"react-jsx\"}' src/scripts/generateLandingDataFromAirtable.ts && prettier --write src/landings",
     "generate-sitemap": "ts-node -O '{\"module\":\"commonjs\", \"jsx\":\"react-jsx\"}' src/scripts/gen-sitemap.ts",

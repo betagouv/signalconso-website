@@ -1,6 +1,6 @@
 title: Démarchage téléphonique
 companyKind: PHONE
-reponseconsoCode: "221"
+reponseconsoCode: '221'
 tags:
   - DemarchageTelephonique
 detailInputs:
@@ -14,3 +14,4 @@ detailInputs:
       - Oui (à préciser)
   - label: Décrivez nous plus en détails ce qui s'est passé
     type: TEXTAREA
+subcategory: Demarchage_telephonique

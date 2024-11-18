@@ -6,3 +6,4 @@ detailInputs:
     type: DATE
     defaultValue: SYSDATE
     optional: true
+subcategory: Presence_danimal_nuisible

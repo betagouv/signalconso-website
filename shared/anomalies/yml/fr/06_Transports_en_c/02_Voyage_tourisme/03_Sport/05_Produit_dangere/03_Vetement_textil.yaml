@@ -1,6 +1,7 @@
 title: Vêtement, textile
 ccrfCode:
-  - "332"
+  - '332'
 subcategoriesTitle: Quel est le risque ?
 subcategories:
   customimport: _imports/subcategories/produit-dangereux
+subcategory: Vetement_textile

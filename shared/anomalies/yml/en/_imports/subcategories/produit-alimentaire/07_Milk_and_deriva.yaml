@@ -5,3 +5,4 @@ desc: 'Example: milk, cheese, ice cream...'
 subcategoriesTitle: What is the risk ?
 subcategories:
   customimport: _imports/subcategories/produit-alimentaire-risque
+subcategory: Lait_et_derive

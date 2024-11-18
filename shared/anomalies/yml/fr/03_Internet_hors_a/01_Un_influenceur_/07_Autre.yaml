@@ -16,3 +16,4 @@ detailInputs:
   - label: Description
     placeholder: Préciser la nature et la gravité
     type: TEXTAREA
+subcategory: Autre

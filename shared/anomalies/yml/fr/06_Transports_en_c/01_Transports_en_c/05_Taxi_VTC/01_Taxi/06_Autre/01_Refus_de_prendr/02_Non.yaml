@@ -10,3 +10,4 @@ detailInputs:
     type: TEXTAREA
     placeholder: Immatriculation du véhicule, numéro ADS...
 fileLabel: Joindre tout document utile pour appuyer votre signalement.
+subcategory: Non

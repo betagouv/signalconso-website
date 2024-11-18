@@ -45,6 +45,7 @@ type CompanyKindQuestionOption = {
 }
 
 type SubcategoryBase = CategoryNodeBase & {
+  subcategory: string
   // ex: "3.2.1.3.1.1.1"
   // Not in the yaml, they are generated recursively
   // Seem to be used in the JS as a unique identifier for the inputs values in the forms

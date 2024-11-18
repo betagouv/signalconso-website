@@ -28,3 +28,4 @@ detailInputs:
   - label: "Expliquez en quelques mots pourquoi vous trouvez cela trompeur\_:"
     type: TEXT
 fileLabel: Merci de joindre tout document (photo, pdf) pouvant appuyer votre signalement.
+subcategory: Publicite_mensongere

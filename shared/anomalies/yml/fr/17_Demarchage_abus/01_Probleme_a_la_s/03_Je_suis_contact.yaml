@@ -1,8 +1,9 @@
 title: >-
-  Je suis contacté directement à mon domicile pour acheter des produits de parapharmacie
+  Je suis contacté directement à mon domicile pour acheter des produits de
+  parapharmacie
 ccrfCode:
-  - "221"
-reponseconsoCode: "2210"
+  - '221'
+reponseconsoCode: '2210'
 companyKind: LOCATION
 tags:
   - DemarchageADomicile
@@ -23,3 +24,5 @@ detailInputs:
   - label: Date du démarchage
     type: DATE
     defaultValue: SYSDATE
+subcategory: >-
+  Je_suis_contacte_directement_a_mon_domicile_pour_acheter_des_produits_de_parapharmacie

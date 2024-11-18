@@ -1,5 +1,5 @@
 title: Information mensongère ou trompeuse
-reponseconsoCode: "210"
+reponseconsoCode: '210'
 tags:
   - ReponseConso
 detailInputs:
@@ -26,3 +26,4 @@ detailInputs:
   - label: Heure du constat (facultatif)
     type: TIMESLOT
     optional: true
+subcategory: Information_mensongere_ou_trompeuse

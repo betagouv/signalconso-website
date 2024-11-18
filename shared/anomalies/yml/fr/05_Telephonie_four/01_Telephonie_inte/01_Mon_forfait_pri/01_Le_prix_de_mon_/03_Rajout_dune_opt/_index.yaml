@@ -4,5 +4,6 @@ desc: >-
   audio, option musique
 ccrfCode:
   - '226'
-  - '21B'
+  - 21B
 subcategoriesTitle: Quel est le type d'option ?
+subcategory: Rajout_dune_option_payante

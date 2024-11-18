@@ -1,4 +1,7 @@
 title: Perturbations / retard / annulation
-desc: mon train est arrivé en retard, j’ai manqué ma correspondance, mon train a été supprimé, je n’ai pas été remboursé …
+desc: >-
+  mon train est arrivé en retard, j’ai manqué ma correspondance, mon train a été
+  supprimé, je n’ai pas été remboursé …
 ccrfCode:
   - 23F
+subcategory: Perturbations_retard_annulation

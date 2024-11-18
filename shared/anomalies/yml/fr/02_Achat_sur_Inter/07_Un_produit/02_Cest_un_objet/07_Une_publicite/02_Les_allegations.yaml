@@ -1,13 +1,14 @@
 title: Les allégations et les labels sont trompeur ou faux sur l'environnement
 desc: >-
-  Exemple : mentions généralisante sur l'environnement, 'biodégradable', 'respecteux de l'environnement'
+  Exemple : mentions généralisante sur l'environnement, 'biodégradable',
+  'respecteux de l'environnement'
 tags:
   - TransitionEcologique
   - ReponseConso
 ccrfCode:
   - 23B
-  - "192"
-reponseconsoCode: "210"
+  - '192'
+reponseconsoCode: '210'
 detailInputs:
   - label: Date du constat
     type: DATE_NOT_IN_FUTURE
@@ -30,3 +31,4 @@ detailInputs:
       - Oui
       - Non
 fileLabel: Photo(s) si possible
+subcategory: Les_allegations_et_les_labels_sont_trompeur_ou_faux_sur_lenvironnement

@@ -1,6 +1,6 @@
 title: Présence d'animal (nuisible)
 desc: "Exemple\_: cafard, rat"
-reponseconsoCode: "312"
+reponseconsoCode: '312'
 detailInputs:
   - label: Date du constat
     type: DATE_NOT_IN_FUTURE
@@ -22,3 +22,4 @@ detailInputs:
   - label: Vous pouvez préciser le problème en quelques mots
     type: TEXT
     optional: true
+subcategory: Presence_danimal_nuisible

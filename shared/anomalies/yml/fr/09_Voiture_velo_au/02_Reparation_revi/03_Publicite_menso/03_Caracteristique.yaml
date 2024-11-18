@@ -1,4 +1,8 @@
 title: Caractéristiques du véhicule erronées (véhicules neufs et occasions)
 ccrfCode:
-  - '23B'
-desc: 'Exemple : kilométrage annocé du véhicule ne correspondant pas au kilométrage réel, date de mise en circulation du véhicule, antécédants du véhicule, véhicule d''occasion présenté comme neuf, etc.'
+  - 23B
+desc: >-
+  Exemple : kilométrage annocé du véhicule ne correspondant pas au kilométrage
+  réel, date de mise en circulation du véhicule, antécédants du véhicule,
+  véhicule d'occasion présenté comme neuf, etc.
+subcategory: Caracteristiques_du_vehicule_erronees_vehicules_neufs_et_occasions

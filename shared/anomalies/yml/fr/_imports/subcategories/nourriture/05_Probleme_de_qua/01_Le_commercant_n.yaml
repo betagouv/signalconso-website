@@ -7,3 +7,4 @@ detailInputs:
     type: TEXT
     placeholder: lieu
     optional: true
+subcategory: Le_commercant_neffectue_pas_la_tare_lors_de_la_pesee

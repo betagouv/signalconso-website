@@ -10,3 +10,5 @@ reponseconsoCode: '212'
 detailInputs:
   - label: Date de constat
     type: DATE
+subcategory: >-
+  Le_professionnel_ma_facture_des_frais_supplementaires_qui_font_partie_de_la_prestation_de_soin

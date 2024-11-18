@@ -1,7 +1,7 @@
 title: Corps étranger "dur"
 desc: "Exemple\_: bout de verre, morceau de métal, dent"
 companyKind: PRODUCT
-reponseconsoCode: "323"
+reponseconsoCode: '323'
 tags:
   - ProduitDangereux
 subcategoriesTitle: Quel est le risque ?
@@ -17,3 +17,4 @@ blockingInfo:
         target="_blank">https://www.economie.gouv.fr/contact/contacter-la-dgccrf?dest=particulier</a>
 subcategories:
   customimport: _imports/subcategories/produit-alimentaire
+subcategory: Corps_etranger_dur

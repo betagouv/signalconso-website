@@ -1,5 +1,5 @@
 title: C'est un objet
-desc: "Exemple : jouet, électroménager, vêtement, savon, vaisselle, meuble"
+desc: 'Exemple : jouet, électroménager, vêtement, savon, vaisselle, meuble'
 tags:
   - ProduitIndustriel
   - ReponseConso
@@ -20,3 +20,4 @@ detailInputs:
   - label: Date du démarchage
     type: DATE
     defaultValue: SYSDATE
+subcategory: Cest_un_objet

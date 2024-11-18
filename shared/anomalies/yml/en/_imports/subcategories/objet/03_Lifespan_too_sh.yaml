@@ -12,3 +12,4 @@ detailInputs:
     type: TEXT
   - label: Description
     type: TEXTAREA
+subcategory: Duree_de_vie_trop_courte

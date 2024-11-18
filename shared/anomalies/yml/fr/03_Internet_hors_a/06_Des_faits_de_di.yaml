@@ -1,10 +1,13 @@
 title: Des faits de discrimination, de diffamation, des injures...
 blockingInfo:
   title: Ce type de problème ne doit pas être signalé sur SignalConso
-  subTitle: Pour signaler un cas de discrimination, rendez-vous sur le site numérique d'accompagnement des victimes de discriminations.
+  subTitle: >-
+    Pour signaler un cas de discrimination, rendez-vous sur le site numérique
+    d'accompagnement des victimes de discriminations.
   content: >-
     <br /> Nous vous invitons à utiliser le site dédié : <br><a
     href="https://www.masecurite.interieur.gouv.fr/fr/demarches-en-ligne/plateforme-signalement-discriminations"
-    target="_blank">www.masecurite.interieur.gouv.fr</a>
-    <br /> 
-    <br />Ce site permet aux victimes d’échanger avec des policiers ou des gendarmes formés pour gérer des faits de discriminations.
+    target="_blank">www.masecurite.interieur.gouv.fr</a> <br />  <br />Ce site
+    permet aux victimes d’échanger avec des policiers ou des gendarmes formés
+    pour gérer des faits de discriminations.
+subcategory: Des_faits_de_discrimination_de_diffamation_des_injures

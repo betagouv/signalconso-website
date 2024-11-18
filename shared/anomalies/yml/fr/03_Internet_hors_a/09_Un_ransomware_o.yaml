@@ -1,13 +1,13 @@
 title: Un ransomware ou rançongiciel
 desc: >-
-  Exemple : Ordinateur ou téléphone bloqué avec affichage d'un  message exigeant de l'argent, piratage de boite mail ou de comptes sur les résaux sociaux
+  Exemple : Ordinateur ou téléphone bloqué avec affichage d'un  message exigeant
+  de l'argent, piratage de boite mail ou de comptes sur les résaux sociaux
 blockingInfo:
-  title: >-
-    <br /> Ce type de problème ne doit pas être signalé sur SignalConso 
-    <br /> 
+  title: '<br /> Ce type de problème ne doit pas être signalé sur SignalConso  <br /> '
   content: >-
     Nous vous invitons à utiliser le site dédié <br><a
     href="https://www.masecurite.interieur.gouv.fr/fr/demarches-en-ligne/plainte-en-ligne-arnaques-internet-thesee"
-    target="_blank">www.masecurite.interieur.gouv.fr</a>
-    <br />Ce site permet aux victimes de signaler un incident ou de déposer une plainte contre le Ransomware.
-
+    target="_blank">www.masecurite.interieur.gouv.fr</a> <br />Ce site permet
+    aux victimes de signaler un incident ou de déposer une plainte contre le
+    Ransomware.
+subcategory: Un_ransomware_ou_rancongiciel

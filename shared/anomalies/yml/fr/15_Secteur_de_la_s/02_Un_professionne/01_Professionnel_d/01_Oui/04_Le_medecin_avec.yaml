@@ -9,3 +9,5 @@ reponseconsoCode: '212'
 detailInputs:
   - label: Date de constat
     type: DATE
+subcategory: >-
+  Le_medecin_avec_lequel_javais_demande_une_teleconsultation_a_ete_remplace_par_un_autre

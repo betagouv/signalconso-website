@@ -72,3 +72,4 @@ detailInputs:
   - label: input timeslot optionnel
     type: TIMESLOT
     optional: true
+subcategory: Sous_category_pour_tester_les_detailInputs

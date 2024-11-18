@@ -1,8 +1,8 @@
 title: Prix final différent du prix annoncé
 ccrfCode:
   - 23b
-reponseconsoCode: "210"
-desc: "Exemple : fausse réduction, supplément imprévu"
+reponseconsoCode: '210'
+desc: 'Exemple : fausse réduction, supplément imprévu'
 tags:
   - ReponseConso
 detailInputs:
@@ -16,3 +16,4 @@ detailInputs:
     type: TEXTAREA
     placeholder: Quel était le prix initial ? Quel est le prix final ?
 fileLabel: Vous pouvez joindre des éléments pour appuyer votre signalement.
+subcategory: Prix_final_different_du_prix_annonce

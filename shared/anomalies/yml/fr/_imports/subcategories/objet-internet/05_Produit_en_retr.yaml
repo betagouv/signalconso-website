@@ -1,6 +1,6 @@
 title: Produit en retrait / rappel
 desc: Le produit vendu fait l'objet d'une mesure de retrait / rappel des autorités
-reponseconsoCode: "311"
+reponseconsoCode: '311'
 detailInputs:
   - label: Date du constat
     type: DATE_NOT_IN_FUTURE
@@ -14,3 +14,4 @@ detailInputs:
     type: TEXT
   - label: Qu'avez-vous constaté ?
     type: TEXTAREA
+subcategory: Produit_en_retrait_rappel

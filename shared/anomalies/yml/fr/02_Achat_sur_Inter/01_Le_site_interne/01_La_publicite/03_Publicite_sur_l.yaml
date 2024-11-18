@@ -1,9 +1,11 @@
 title: Publicité sur l'impact environnemental
 desc: >-
-  Exemple : Ecolabel, neutralite en carbone, un produit acheté = arbre planté  etc.
+  Exemple : Ecolabel, neutralite en carbone, un produit acheté = arbre planté 
+  etc.
 ccrfCode:
   - 23B
   - '192'
 tags:
   - TransitionEcologique
   - ReponseConso
+subcategory: Publicite_sur_limpact_environnemental

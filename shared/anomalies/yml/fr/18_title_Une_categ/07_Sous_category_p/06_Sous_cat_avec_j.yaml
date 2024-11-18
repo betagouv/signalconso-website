@@ -3,3 +3,4 @@ blockingInfo:
   questions:
     - question: Première "action", champ "question"
       answer: Première "action", champ "answer"
+subcategory: Sous_cat_avec_juste_une_action
