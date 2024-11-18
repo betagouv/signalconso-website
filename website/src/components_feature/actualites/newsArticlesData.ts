@@ -13,6 +13,22 @@ export type NewsArticle = {
 // This is the display order. Keep the most recents at the start of the array
 export const initialNewsArticlesData: NewsArticle[] = [
   {
+    date: '2024-11-22',
+    lang: AppLangs.fr,
+    slug: 'abonnements-caches-black-friday',
+    veryShortTitle: 'Abonnements cachés (Black Friday)',
+    title: 'Attention aux abonnements cachés pendant le Black Friday !',
+    excerpt: `Pendant le Black Friday, certains sites peuvent proposer des "offres d'essai gratuit" et autres promotions alléchantes pour vous abonner à un service sans que vous en ayez conscience. Ces abonnements cachés sont souvent dissimulés derrière une offre gratuite ou une petite case à cocher, avec l’espoir que vous ne remarquerez pas les frais mensuels? Voici comment les repérer, éviter les pièges et faire valoir vos droits.`,
+  },
+  {
+    date: '2024-11-19',
+    lang: AppLangs.fr,
+    slug: 'fausse-promo-black-friday',
+    veryShortTitle: 'Fausses promotions (Black Friday)',
+    title: 'Fausses promotions : vos droits en tant que consommateur (Black Friday)',
+    excerpt: `Le Black Friday, c’est bientôt ! Ce grand rendez-vous commercial promet de belles promotions, mais attention, certaines offres ne sont pas aussi alléchantes qu’elles ne le paraissent. Chaque année, certaines enseignes gonflent les prix juste avant le Black Friday pour afficher ensuite des "réductions" trompeuses. Face à ces pratiques, soyez vigilant et n’hésitez pas à signaler les abus pour que ces pratiques trompeuses ne gâchent pas la fête !`,
+  },
+  {
     date: '2024-11-15',
     lang: AppLangs.fr,
     slug: 'livraison-black-friday',
