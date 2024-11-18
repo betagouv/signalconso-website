@@ -3,6 +3,7 @@ import {Config} from '../config/config.js'
 
 export interface Category {
   category: string
+  name: string
   description: string
   id: string
   path: string
@@ -17,7 +18,7 @@ export const minimizedAnomaliesEn = JSON.parse(fs.readFileSync('../shared/anomal
 
 const categoriesFr: Category[] = anomaliesFr.map((anomaly: any) => {
   return {
-    category: anomaly.category,
+    category: anomaly.title,
     description: anomaly.description,
     id: anomaly.id,
     path: anomaly.path,
@@ -27,7 +28,7 @@ const categoriesFr: Category[] = anomaliesFr.map((anomaly: any) => {
 
 const categoriesEn: Category[] = anomaliesEn.map((anomaly: any) => {
   return {
-    category: anomaly.category,
+    category: anomaly.title,
     description: anomaly.description,
     id: anomaly.id,
     path: anomaly.path,

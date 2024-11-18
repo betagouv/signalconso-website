@@ -57,8 +57,8 @@ export function blackFridayFausseReduction(props: PageComponentProps) {
           <p>Selon le Code de la consommation, les commerçants doivent respecter certaines règles concernant les promotions :</p>
           <ul className="grid md:grid-cols-2 gap-8">
             <li>
-              <strong>Prix de référence réel</strong> : Le prix "avant réduction" doit être celui effectivement pratiqué avant la
-              période de promotion. Gonfler artificiellement ce prix constitue une pratique commerciale trompeuse, punie par la
+              <strong>Prix de référence réel</strong> : Le prix "avant réduction" est celui pratiqué dans les 30 jours précédents
+              la période de promotion. Gonfler artificiellement ce prix constitue une pratique commerciale trompeuse, punie par la
               loi.
             </li>
             <li>
