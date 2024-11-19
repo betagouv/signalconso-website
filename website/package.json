@@ -21,6 +21,7 @@
     "generate-landings": "ts-node -O '{\"module\":\"commonjs\", \"jsx\":\"react-jsx\"}' src/scripts/generateLandingDataFromAirtable.ts && prettier --write src/landings",
     "generate-sitemap": "ts-node -O '{\"module\":\"commonjs\", \"jsx\":\"react-jsx\"}' src/scripts/gen-sitemap.ts",
     "format": "prettier --write .",
+    "w:format": "yarn format",
     "checkformat": "prettier --check .",
     "checktypes": "tsc --noEmit",
     "checkall": "yarn checktypes && yarn checkformat && yarn lint && yarn test",
