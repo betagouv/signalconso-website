@@ -1,18 +1,13 @@
 import {FullWidthPageContainer} from '@/components_simple/PageContainers'
-import {PageComponentProps} from '@/core/metadatas'
-import {BlueBandWhySignalConso, getManualLpButtonProps} from '@/landings/manualLandingsUtils'
+import {BlueBandWhySignalConso, getManualLpButtonProps} from '@/landings/manualLandings/manualLandingsComponents'
 import Button from '@codegouvfr/react-dsfr/Button'
 import Link from 'next/link'
-import {notFound} from 'next/navigation'
 
 const arcepInfoPage = 'https://www.arcep.fr/demarches-et-services/utilisateurs/que-va-changer-la-fermeture-du-reseau-cuivre.html'
 const pageVerifPostalCode = 'https://www.economie.gouv.fr/treshautdebit/la-fermeture-du-reseau-cuivre-dans-votre-commune'
 
-export function ObligationFibre(props: PageComponentProps) {
-  const lang = props.params.lang
-  if (lang !== 'fr') {
-    return notFound()
-  }
+export function ObligationFibre() {
+  const lang = 'fr'
   return (
     <FullWidthPageContainer>
       <div className="bg-scblueinfo text-white border-t-[1px] border-0 border-solid border-black ">

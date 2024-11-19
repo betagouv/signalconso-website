@@ -1,5 +1,6 @@
-import {pagesDefs} from '@/core/pagesDefinitions'
+import {buildLinkManualLandingPage} from '@/core/buildLinks'
 import imgLivraison from '@/img/actualites/livraison.png'
+import {manualLandingBlackFridayColis} from '@/landings/manualLandings/manualLandingsUtils'
 import Image from 'next/image'
 
 export function ArticleLivraisonBlackFriday() {
@@ -76,7 +77,7 @@ export function ArticleLivraisonBlackFriday() {
       </p>
       <p>
         Pour en savoir plus rendez vous sur{' '}
-        <a href={`/fr${pagesDefs.blackFridayColis.url}`} target="_blank" rel="noopener">
+        <a href={buildLinkManualLandingPage(manualLandingBlackFridayColis)} target="_blank" rel="noopener">
           SignalConso
         </a>
       </p>

@@ -1,20 +1,15 @@
 import {FullWidthPageContainer} from '@/components_simple/PageContainers'
-import {PageComponentProps} from '@/core/metadatas'
 import {
   AlternatingPurpleBands,
   getManualLpButtonProps,
   HighlightBlue,
   HighlightPurple,
   NarrowAndCentered,
-} from '@/landings/manualLandingsUtils'
+} from '@/landings/manualLandings/manualLandingsComponents'
 import Button from '@codegouvfr/react-dsfr/Button'
-import {notFound} from 'next/navigation'
 
-export function blackFridayGaranties(props: PageComponentProps) {
-  const lang = props.params.lang
-  if (lang !== 'fr') {
-    return notFound()
-  }
+export function blackFridayGaranties() {
+  const lang = 'fr'
   const button = (
     <div className="flex justify-center">
       <Button {...getManualLpButtonProps(lang, 'home')}>Je fais un signalement</Button>

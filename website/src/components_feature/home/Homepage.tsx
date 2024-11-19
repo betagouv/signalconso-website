@@ -7,7 +7,7 @@ import {ForeignVisitorsQaPromoBanner} from '@/components_simple/bigBanners/Forei
 import {InfoBanner} from '@/components_simple/bigBanners/InfoBanner'
 import {MobileAppPromoBanner} from '@/components_simple/bigBanners/MobileAppPromoBanner'
 import {bigReportButtonProps} from '@/components_simple/buttons/buttonsUtils'
-import {HP_START_REPORT_ANCHOR} from '@/core/pagesDefinitions'
+import {HP_START_REPORT_ANCHOR} from '@/core/buildLinks'
 import {hasStep0} from '@/feature/reportUtils'
 import {useI18n} from '@/i18n/I18n'
 import {AppLangs} from '@/i18n/localization/AppLangs'

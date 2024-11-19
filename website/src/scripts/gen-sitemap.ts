@@ -1,10 +1,12 @@
 import fs from 'fs'
-import {allVisibleLandings} from '../landings/landingDataUtils'
 import path from 'path'
-import {appConfig} from '../core/appConfig'
 import {getNewsArticleData} from '../components_feature/actualites/newsArticlesData'
-import {buildLinkNewsArticle, internalPageDefs} from '../core/pagesDefinitions'
+import {appConfig} from '../core/appConfig'
+import {buildLinkNewsArticle} from '../core/buildLinks'
+import {internalPageDefs} from '../core/pagesDefinitions'
 import {AppLangs} from '../i18n/localization/AppLangs'
+import {allVisibleAirtableLandings} from '../landings/airtableLandings/airtableLandingsUtils'
+import {getManualLandings} from '../landings/manualLandings/manualLandingsUtils'
 
 interface SitemapItem {
   url: string
@@ -19,8 +21,8 @@ const sitemapItems: SitemapItem[] = [
   ...Object.values(internalPageDefs)
     .filter(_ => !_.noIndex)
     .map(_ => ({url: _.url, hasEnglishVersion: _.hasEnglishVersion, mainLang: AppLangs.fr, priority: 1})),
-  ...landing(AppLangs.fr),
-  ...landing(AppLangs.en),
+  ...landings(AppLangs.fr),
+  ...landings(AppLangs.en),
   ...getNewsArticleData()
     .map(_ => {
       return {
@@ -31,8 +33,8 @@ const sitemapItems: SitemapItem[] = [
     .map(_ => ({..._, priority: 1})),
 ]
 
-function landing(lang: AppLangs) {
-  return allVisibleLandings(lang)
+function landings(lang: AppLangs) {
+  return [...allVisibleAirtableLandings(lang), ...getManualLandings(lang)]
     .map(_ => `/${_.url}`)
     .map(url => ({url, lang, mainLang: lang, priority: 1}))
 }

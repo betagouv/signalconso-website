@@ -1,13 +1,13 @@
+import {buildLinkLandingPageFromAnomaly, buildLinkStartReport} from '@/core/buildLinks'
+import {GenerateMetadataArg, PageComponentProps, PathParams, SearchParams} from '@/core/metadatas'
 import {getI18n} from '@/i18n/I18nDictionnary'
 import {getSupportedLang} from '@/i18n/localization/AppLangs'
 import {STEP_PARAM_NAME, getIndexForStepOrDone, reportSteps} from '@/model/ReportStep'
+import {undefinedIfNull} from '@/utils/utils'
 import {Metadata} from 'next'
 import {notFound} from 'next/navigation'
-import {undefinedIfNull} from '@/utils/utils'
 import {allAnomalies} from '../../../../anomalies/Anomalies'
-import {buildLinkLandingPageFromAnomaly, buildLinkStartReport} from '../../../../core/pagesDefinitions'
 import * as categoryPathPage from '../../../../reusablePages/faireUnSignalementPage'
-import {GenerateMetadataArg, PageComponentProps, PathParams, SearchParams} from '@/core/metadatas'
 
 type LocalPathParams = PathParams<{
   dynamicPath: string

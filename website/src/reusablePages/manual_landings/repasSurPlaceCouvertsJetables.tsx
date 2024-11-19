@@ -1,14 +1,9 @@
-import {PageComponentProps} from '@/core/metadatas'
-import {notFound} from 'next/navigation'
 import {FullWidthPageContainer} from '@/components_simple/PageContainers'
+import {getManualLpButtonProps} from '@/landings/manualLandings/manualLandingsComponents'
 import Button from '@codegouvfr/react-dsfr/Button'
-import {getManualLpButtonProps} from '@/landings/manualLandingsUtils'
 
-export function repasSurPlaceCouvertsJetables(props: PageComponentProps) {
-  const lang = props.params.lang
-  if (lang !== 'fr') {
-    return notFound()
-  }
+export function repasSurPlaceCouvertsJetables() {
+  const lang = 'fr'
   return (
     <FullWidthPageContainer>
       <div className="bg-scblueinfo text-white border-t-[1px] border-0 border-solid border-black">
