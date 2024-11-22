@@ -1,16 +1,19 @@
 import imgBlackFriday from '@/img/actualites/aboCaches.png'
 import Image from 'next/image'
+import Link from 'next/link'
 
 export function ArticleAbonnementsCachesBlackFriday() {
   return (
     <div className="sc-article">
-      <h2>
-        <strong>Attention aux abonnements cachés pendant le Black Friday !</strong>
-      </h2>
-
-      <div className="flex flex-col md:flex-row gap-5 mb-5">
-        <Image src={imgBlackFriday} width="800" alt="Attention aux abonnements cachés" />
-      </div>
+      <Image
+        src={imgBlackFriday}
+        sizes="100vw"
+        style={{
+          width: '100%',
+          height: 'auto',
+        }}
+        alt=""
+      />
 
       <p>
         Pendant le Black Friday, certains sites peuvent proposer des “offres d’essai gratuit” et autres promotions alléchantes
@@ -94,13 +97,16 @@ export function ArticleAbonnementsCachesBlackFriday() {
       </p>
 
       <p>
-        Pour en savoir plus rendez-vous sur{' '}
-        <a href="https://signal.conso.gouv.fr/fr/black-friday-abonnement-frais-caches" target="_blank" rel="noopener noreferrer">
-          https://signal.conso.gouv.fr/fr/black-friday-abonnement-frais-caches
-        </a>
+        En cas de problème, pensez à{' '}
+        <Link
+          href="https://signal.conso.gouv.fr/fr/black-friday-abonnement-frais-caches"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Signal Conso
+        </Link>{' '}
+        pour signaler les abus et défendre vos droits de consommateur !
       </p>
-
-      <p>En cas de problème, pensez à Signal Conso pour signaler les abus et défendre vos droits de consommateur !</p>
     </div>
   )
 }

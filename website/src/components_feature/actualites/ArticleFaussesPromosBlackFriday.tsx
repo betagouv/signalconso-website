@@ -1,16 +1,19 @@
 import Image from 'next/image'
 import imgBlackFriday from '@/img/actualites/blackfriday.png'
+import Link from 'next/link'
 
 export function ArticleFaussesPromosBlackFriday() {
   return (
     <div className="sc-article">
-      <h2>
-        <strong>Attention aux fausses promotions et aux réductions trompeuses pendant le Black Friday !</strong>
-      </h2>
-
-      <div className="flex flex-col md:flex-row gap-5 mb-5">
-        <Image src={imgBlackFriday} width="800" alt="Attention aux fausses promotions" />
-      </div>
+      <Image
+        src={imgBlackFriday}
+        sizes="100vw"
+        style={{
+          width: '100%',
+          height: 'auto',
+        }}
+        alt=""
+      />
 
       <h2>
         <strong>Comment repérer les arnaques et signaler les abus ?</strong>
@@ -76,13 +79,14 @@ export function ArticleFaussesPromosBlackFriday() {
         </li>
       </ul>
       <p>Avec un peu de vigilance, le Black Friday peut vraiment être l’occasion de faire de bonnes affaires !</p>
+
       <p>
-        Pour en savoir plus rendez-vous sur{' '}
-        <a href="https://signal.conso.gouv.fr/fr/black-friday-fausse-reduction" target="_blank" rel="noopener noreferrer">
-          https://signal.conso.gouv.fr/fr/black-friday-fausse-reduction
-        </a>
+        En cas de problème, pensez à{' '}
+        <Link href="https://signal.conso.gouv.fr/fr/black-friday-fausse-reduction" target="_blank" rel="noopener noreferrer">
+          Signal Conso
+        </Link>{' '}
+        pour signaler les abus et défendre vos droits de consommateur !
       </p>
-      <p>En cas de problème, pensez à Signal Conso pour signaler les abus et défendre vos droits de consommateur !</p>
     </div>
   )
 }

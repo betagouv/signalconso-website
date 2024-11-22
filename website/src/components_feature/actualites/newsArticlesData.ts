@@ -13,6 +13,22 @@ export type NewsArticle = {
 // This is the display order. Keep the most recents at the start of the array
 export const initialNewsArticlesData: NewsArticle[] = [
   {
+    date: '2024-11-26',
+    lang: AppLangs.fr,
+    slug: 'dark-patterns',
+    veryShortTitle: 'Dark Patterns : Comment éviter les pièges',
+    title: 'Dark Patterns : Comment éviter les pièges du E-commerce pendant le Black Friday ?',
+    excerpt: `Chaque année, le Black Friday attire des millions de consommateurs à la recherche de bonnes affaires. Mais attention, derrière les offres alléchantes, certaines pratiques trompeuses, appelées Dark Patterns, peuvent fausser votre expérience d’achat.`,
+  },
+  {
+    date: '2024-11-25',
+    lang: AppLangs.fr,
+    slug: 'ateliers-utilisateurs',
+    veryShortTitle: 'Rejoignez nos ateliers utilisateurs',
+    title: 'Nous avons besoin de vous : rejoignez nos ateliers utilisateurs SignalConso !',
+    excerpt: `Vous avez entre 18 et 30 ans et vous avez déjà utilisé SignalConso plusieurs fois ? Rejoignez nos ateliers utilisateurs pour nous aider à améliorer notre application !`,
+  },
+  {
     date: '2024-11-22',
     lang: AppLangs.fr,
     slug: 'abonnements-caches-black-friday',
