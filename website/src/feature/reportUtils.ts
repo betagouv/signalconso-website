@@ -76,7 +76,7 @@ export const getTags = (r: ReportPickInStep1<'subcategoriesIndexes'>): ReportTag
 
 export const getCompanyKind = (r: ReportPickInStep1<'subcategoriesIndexes' | 'companyKindOverride'>): CompanyKind => {
   const {companyKindOverride} = r.step1
-  return companyKindOverride ? companyKindOverride : getWipCompanyKindFromSelected(r) ?? 'SIRET'
+  return companyKindOverride ? companyKindOverride : (getWipCompanyKindFromSelected(r) ?? 'SIRET')
 }
 
 export const getReponseConsoCode = (r: ReportPickInStep1<'subcategoriesIndexes'>) => {
