@@ -13,6 +13,14 @@ export type NewsArticle = {
 // This is the display order. Keep the most recents at the start of the array
 export const initialNewsArticlesData: NewsArticle[] = [
   {
+    date: '2024-11-29',
+    lang: AppLangs.fr,
+    slug: 'droit-de-retractation',
+    veryShortTitle: 'Droit de rétractation pendant le Black Friday',
+    title: 'Droit de rétractation : ce que vous devez savoir en tant que consommateurs pendant le Black Friday',
+    excerpt: `Le Black Friday c’est la période des bonnes affaires. Cependant, en tant que consommateur, il est essentiel de connaître vos droits notamment en ce qui concerne le droit de rétractation`,
+  },
+  {
     date: '2024-11-26',
     lang: AppLangs.fr,
     slug: 'dark-patterns',
