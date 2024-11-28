@@ -1,8 +1,9 @@
 title: Les prix sont exagérés ou plus élevés qu'ailleurs
 blockingInfo:
   title: Les commerçants ont le droit de choisir leurs prix.
-  notAFraudMessage: true
+  reportOutOfScopeMessage: true
   content: >-
     Les professionnels ont le droit de choisir leurs prix. <br />Par contre, les
     prix doivent être clairement indiqués pour que vous soyez au courant avant
     d'acheter, de commander ou avant la prestation.
+subcategory: Les_prix_sont_exageres_ou_plus_eleves_quailleurs

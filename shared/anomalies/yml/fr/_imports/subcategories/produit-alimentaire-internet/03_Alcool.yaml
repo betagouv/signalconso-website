@@ -2,6 +2,7 @@ title: Alcool
 tags:
   - ProduitAlimentaire
 desc: 'Exemple : vin, cidre, bière...'
-subcategoriesTitle: Quel est le risque&#160;?
+subcategoriesTitle: Quel est le risque ?
 subcategories:
   customimport: _imports/subcategories/produit-alimentaire-risque-internet
+subcategory: Alcool

@@ -1,6 +1,8 @@
 title: Sous category avec un "postReportHelper"
-desc: >-
-  Sera affiché à la toute fin du parcours
+desc: Sera affiché à la toute fin du parcours
 postReportHelper:
   title: (title) Titre du postReportHelper
-  content: (content) Contenu du postReportHelper, avec un lien par exemple <a href="https://www.google.com" target="_blank">Lien vers Google</a>.
+  content: >-
+    (content) Contenu du postReportHelper, avec un lien par exemple <a
+    href="https://www.google.com" target="_blank">Lien vers Google</a>.
+subcategory: Sous_category_avec_un_postReportHelper

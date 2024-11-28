@@ -16,7 +16,6 @@ import {CompanySearchResult} from '../../../model/Company'
 import {PartialReport, useReportFlowContext} from '../ReportFlowContext'
 import {StepNavigation} from '../reportFlowStepper/ReportFlowStepper'
 import {CompanyAskConsumerPostalCode} from './CompanyAskConsumerPostalCode'
-import {CompanyAskConsumerStreet} from './CompanyAskConsumerStreet'
 import {CompanyAskForeignDetails} from './CompanyAskForeignDetails'
 import {CompanyAskIsFrenchOrForeign, IsAFrenchCompany} from './CompanyAskIsFrenchOrForeign'
 import {CompanyByPhone} from './CompanyByPhone'
@@ -307,12 +306,12 @@ function CompanyIdentificationTree({
           case 'iCannot':
             if (companyKind === 'LOCATION') {
               return (
-                <CompanyAskConsumerStreet
-                  onChange={({postalCode, street}) => {
+                <CompanyAskConsumerPostalCode
+                  {...{companyKind}}
+                  onChange={postalCode => {
                     onIdentification({
-                      kind: 'consumerPreciseLocation',
+                      kind: 'consumerLocation',
                       consumerPostalCode: postalCode,
-                      consumerStreet: street,
                     })
                   }}
                 />

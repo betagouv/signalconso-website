@@ -1,4 +1,6 @@
-title: Refus du commerçant de pratiquer une vente en détaxe alors que je vis à l'étranger
+title: >-
+  Refus du commerçant de pratiquer une vente en détaxe alors que je vis à
+  l'étranger
 blockingInfo:
   title: Le commerçant a le droit de refuser de faire une détaxe sur vos achats.
   content: >-
@@ -9,4 +11,6 @@ blockingInfo:
     plus d'information sur le site <a
     href="https://www.service-public.fr/professionnels-entreprises/vosdroits/F20558"
     target="_blank">service-public.fr</a>
-  notAFraudMessage: true
+  reportOutOfScopeMessage: true
+subcategory: >-
+  Refus_du_commercant_de_pratiquer_une_vente_en_detaxe_alors_que_je_vis_a_letranger

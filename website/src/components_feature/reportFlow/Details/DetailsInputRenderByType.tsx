@@ -13,6 +13,7 @@ import {ScCheckboxes} from '../../../components_simple/formInputs/ScCheckboxes'
 import {ScRadioButtons} from '../../../components_simple/formInputs/ScRadioButtons'
 import {getOptionsFromInput, getPlaceholderFromInput} from './DetailInputsUtils'
 import {SpecifyFormUtils} from './Details'
+import {UrlInterpreter} from './UrlInterpreter'
 
 export function DetailsInputRenderByType({
   register,
@@ -33,7 +34,7 @@ export function DetailsInputRenderByType({
 }) {
   const {m} = useI18n()
   const name = inputIndex.toString()
-  const label = <span dangerouslySetInnerHTML={{__html: input.label}} />
+  const label = <UrlInterpreter>{input.label}</UrlInterpreter>
   const required = !input.optional
   const baseRules = {required: {value: required, message: m.required + ' *'}}
   const specifyInputRules = {required: {value: true, message: m.required + ' *'}}
@@ -116,7 +117,7 @@ export function DetailsInputRenderByType({
                 getOptionsFromInput(input)?.map((option, optionIndex) => {
                   const specifyName = SpecifyFormUtils.getInputName(inputIndex, optionIndex)
                   return {
-                    label: <span dangerouslySetInnerHTML={{__html: option}} />,
+                    label: <span>{option}</span>,
                     value: option,
                     specify:
                       field.value === option && SpecifyFormUtils.hasSpecifyKeyword(option) ? (
@@ -151,7 +152,7 @@ export function DetailsInputRenderByType({
                 getOptionsFromInput(input)?.map((option, optionIndex) => {
                   const specifyName = SpecifyFormUtils.getInputName(inputIndex, optionIndex)
                   return {
-                    label: <span dangerouslySetInnerHTML={{__html: option}} />,
+                    label: <span>{option}</span>,
                     value: option,
                     specify:
                       (field.value as string[] | undefined)?.includes(option) && SpecifyFormUtils.hasSpecifyKeyword(option) ? (

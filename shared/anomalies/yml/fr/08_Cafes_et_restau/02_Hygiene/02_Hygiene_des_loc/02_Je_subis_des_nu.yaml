@@ -2,3 +2,4 @@ title: Je subis des nuisances à cause des odeurs, du bruit
 desc: "Exemple\_: les odeurs des poubelles ou de la cuisine arrivent dans mon appartement"
 blockingInfo:
   customimport: _imports/blockingInfo/voisinage.yaml
+subcategory: Je_subis_des_nuisances_a_cause_des_odeurs_du_bruit

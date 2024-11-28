@@ -1,26 +1,45 @@
 import {findAnomaly} from '@/anomalies/Anomalies'
-import {CompanyKind, ReportTag, Subcategory} from 'shared/anomalies/Anomaly'
+import {CompanyKind, ReportTag, Subcategory, reportTagsNotTransmittableToPro} from 'shared/anomalies/Anomaly'
 import {PartialReport} from '@/components_feature/reportFlow/ReportFlowContext'
 import {Report, ReportWithPickInStep1 as ReportPickInStep1, TransmissionStatus} from '@/model/Report'
 import {lastFromArray, notUndefined} from '@/utils/utils'
 
+function isValidString(str: string | undefined) {
+  return typeof str === 'string' && str.trim() !== ''
+}
+
 export function hasStep0(r: PartialReport): r is Pick<Report, 'step0'> & PartialReport {
   return !!r.step0
 }
+
 export function hasStep1Full(r: PartialReport): r is Pick<Report, 'step1'> & PartialReport {
   return !!r.step1 && hasSubcategoryIndexes(r) && hasConsumerWish(r) && hasEmployeeConsumer(r)
 }
+
 export function hasSubcategoryIndexes(r: PartialReport): r is ReportPickInStep1<'subcategoriesIndexes'> & PartialReport {
   return hasStep0(r) && !!r.step1?.subcategoriesIndexes
 }
+
 export function hasEmployeeConsumer(r: PartialReport): r is ReportPickInStep1<'employeeConsumer'> & PartialReport {
   return hasStep0(r) && r.step1?.employeeConsumer !== undefined
 }
+
 export function hasConsumerWish(r: PartialReport): r is ReportPickInStep1<'consumerWish'> & PartialReport {
   return hasStep0(r) && r.step1?.consumerWish !== undefined
 }
+
 export function hasStep2(r: PartialReport): r is Pick<Report, 'step2'> & PartialReport {
   return !!r.step2
+}
+
+export function hasStep4(r: PartialReport): r is Pick<Report, 'step4'> & PartialReport {
+  return (
+    !!r.step4 &&
+    r.step4?.contactAgreement !== undefined &&
+    isValidString(r.step4?.consumer?.firstName) &&
+    isValidString(r.step4?.consumer?.lastName) &&
+    isValidString(r.step4?.consumer?.email)
+  )
 }
 
 export const getAnomaly = (r: Pick<Report, 'step0'>) => {
@@ -31,6 +50,7 @@ export const getSubcategories = (r: ReportPickInStep1<'subcategoriesIndexes'>): 
   const anomaly = findAnomaly(r.step0.category, r.step0.lang)
   const startingIndexes = r.step1.subcategoriesIndexes
   const collectedSubcategories: Subcategory[] = []
+
   function recurse(indexes: number[], subcategories: Subcategory[] = []) {
     if (indexes.length === 0) {
       return
@@ -45,6 +65,7 @@ export const getSubcategories = (r: ReportPickInStep1<'subcategoriesIndexes'>): 
     collectedSubcategories.push(subcategory)
     recurse(indexesLeft, subcategory.subcategories)
   }
+
   recurse(r.step1.subcategoriesIndexes, anomaly.subcategories)
   return collectedSubcategories
 }
@@ -55,7 +76,7 @@ export const getTags = (r: ReportPickInStep1<'subcategoriesIndexes'>): ReportTag
 
 export const getCompanyKind = (r: ReportPickInStep1<'subcategoriesIndexes' | 'companyKindOverride'>): CompanyKind => {
   const {companyKindOverride} = r.step1
-  return companyKindOverride ? companyKindOverride : getWipCompanyKindFromSelected(r) ?? 'SIRET'
+  return companyKindOverride ? companyKindOverride : (getWipCompanyKindFromSelected(r) ?? 'SIRET')
 }
 
 export const getReponseConsoCode = (r: ReportPickInStep1<'subcategoriesIndexes'>) => {
@@ -91,11 +112,16 @@ export const getWipCompanyKindFromSelected = (r: ReportPickInStep1<'subcategorie
       : [...getSubcategories(r)].reverse().find(_ => !!_.companyKind)?.companyKind
 }
 
-export const isTransmittableToPro = (r: ReportPickInStep1<'employeeConsumer' | 'consumerWish'>): boolean => {
+export const isTransmittableToPro = (
+  r: ReportPickInStep1<'subcategoriesIndexes' | 'employeeConsumer' | 'consumerWish'>,
+): boolean => {
   return isTransmittableToProBeforePickingConsumerWish(r) && r.step1.consumerWish !== 'getAnswer'
 }
-export const isTransmittableToProBeforePickingConsumerWish = (r: ReportPickInStep1<'employeeConsumer'>): boolean => {
-  return !r.step1.employeeConsumer
+export const isTransmittableToProBeforePickingConsumerWish = (
+  r: ReportPickInStep1<'subcategoriesIndexes' | 'employeeConsumer'>,
+): boolean => {
+  const tags = getTags(r)
+  return !r.step1.employeeConsumer && !tags.some(tag => reportTagsNotTransmittableToPro.includes(tag))
 }
 
 export const getTransmissionStatus = (r: Pick<Report, 'step0' | 'step1' | 'step2'>): TransmissionStatus => {
@@ -124,7 +150,6 @@ export const getTransmissionStatus = (r: Pick<Report, 'step0' | 'step1' | 'step2
           return 'WILL_BE_TRANSMITTED'
         }
         case 'consumerLocation':
-        case 'consumerPreciseLocation':
           return 'MAY_BE_TRANSMITTED'
         case 'foreignCompany':
         case 'foreignWebsiteWithJustCountry':

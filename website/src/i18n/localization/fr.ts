@@ -50,7 +50,7 @@ export const fr = {
       commentCaMarche: {
         title: 'Comment ça marche ? - SignalConso',
         description:
-          "Vous signalez votre problème en remplissant le formulaire en ligne. Notre équipe contacte l'entreprise afin de l'informer de votre signalement. L'entreprise peut procéder spontanément aux corrections utiles, sans sanction. Votre signalement est enregistré à la répression des fraudes (DGCCRF).",
+          'Découvrez comment signaler facilement des problèmes de consommation avec SignalConso. Suivez notre guide étape par étape.',
       },
       accessibilite: {
         title: 'Accessibilité - SignalConso',
@@ -71,7 +71,7 @@ export const fr = {
       quiSommesNous: {
         title: 'Qui sommes-nous ? - SignalConso',
         description:
-          "SignalConso est un service proposé par la DGCCRF (Direction Générale de la Concurrence, de la Consommation et de la Répression des Fraudes) au travers d'une Startup d’État. Il permet à la fois de comprendre ses droits en tant que consommateurs et d’être aidé pour les faire respecter.",
+          'Découvrez SignalConso, notre mission et notre engagement envers la protection des consommateurs. Apprenez-en plus sur notre équipe et notre fonctionnement.',
       },
       aide: {
         title: 'Aide - SignalConso',
@@ -100,7 +100,7 @@ export const fr = {
       index: {
         title: 'SignalConso, un service public pour les consommateurs',
         description:
-          "Signalez un problème au commerçant (magasins, commerces de proximité, cafés et restaurants...) et à la répression des fraudes : pratique d'hygiène, nourriture / boissons, matériel / objet, prix / paiement, publicité, services associés à l'achat.",
+          'Signalez des problèmes de consommation et aidez à améliorer la protection des consommateurs en informant la répression des fraudes.',
       },
       outils: {
         title: 'Outils à usage interne - SignalConso',
@@ -116,7 +116,8 @@ export const fr = {
       },
       actualites: {
         title: 'Actualités - SignalConso',
-        description: 'Actualités et nouveautés du site SignalConso et de la répression des fraudes',
+        description:
+          'Restez informé des dernières actualités grâce à SignalConso. Suivez les initiatives de protection des consommateurs et les nouvelles réglementations.',
       },
       avis: {
         title: 'Donnez votre avis - SignalConso',
@@ -129,27 +130,6 @@ export const fr = {
       playground: {
         title: 'Playground',
         description: '',
-      },
-      obligationFibre: {
-        title: `Fibre optique : installation forcée par votre opérateur Internet ?`,
-        description: `Signalez un passage à la fibre forcé par votre fournisseur d'accès Internet`,
-      },
-      signalInfluenceur: {
-        title: "Signalez une publication frauduleuse d'un influenceur",
-        description:
-          "Vous avez repéré une publication trompeuse ou non conforme d'un influenceur sur Instagram, Snapchat, TikTok, etc. ? Signalez-la sur SignalConso.",
-      },
-      obsolescencePage: {
-        title: "Signaler un cas d'obsolescence programmée",
-        description: 'Votre appareil a une durée de vie qui vous semble trop courte, indice de réparabilité manquant, ...',
-      },
-      demarchageTelephonique: {
-        title: 'Démarchage téléphonique abusif',
-        description: 'Signaler une entreprise qui vous appelle sans respecter Bloctel, ou hors des horaires autorisés',
-      },
-      intoxAlimentaire: {
-        title: 'Intoxication alimentaire : vous avez mangé dans un restaurant et vous êtes malade ?',
-        description: 'Signaler un établissement qui vous a rendu malade',
       },
     },
     faireUnSignalement: {
@@ -574,11 +554,6 @@ export const fr = {
       calcRetractionDelay: 'Calculez votre délai de rétractation',
       resolutionTips: "Conseils pour résolution d'un problème individuel (litige)",
       telecomResolutionTips: "Conseils pour résolution d'un problème individuel lié au télécom (litige)",
-      obligationFibre: 'Faire un signalement pour une migration forcée vers la fibre optique',
-      obsolescencePage: 'Faire un signalement pour un appareil dont la durée de vie vous semble trop courte',
-      demarchageTelephonique: 'Faire un signalement pour un démarchage téléphonique abusif (malgré Bloctel, trop fréquent, etc.)',
-      intoxAlimentaire: 'Faire un signalement pour une intoxication alimentaire',
-      signalInfluenceur: 'Faire un signalement sur un influenceur',
       reportIncidentSection: "Dépôt d'un signalement",
       reportIncidentFor: 'Faire un signalement pour',
       step1: 'Étape 1 - Le problème',
@@ -833,8 +808,6 @@ export const fr = {
     },
     arbo: {
       title: "Arborescence du dépot d'un signalement",
-      notAFraudMessage:
-        'Nous ne doutons pas que vous ayez réellement rencontré un problème mais... il ne s’agit pas d’une fraude.',
     },
     yes: 'Oui',
     no: 'Non',
@@ -936,7 +909,7 @@ export const fr = {
     countryPlaceholder: 'Ex: Italie',
     identification: 'Identification du pays',
     address: 'Adresse',
-    contactAgreement: 'Accord pour contact',
+    contactAgreement: 'Transmission de ces coordonnées à l’entreprise',
     activateMyAccount: 'Activer mon compte',
     createMyAccount: 'Créer mon compte',
     invalidEmail: 'Veuillez utiliser une adresse email valide et sans accents',
@@ -1050,9 +1023,10 @@ export const fr = {
     consumerWishInvestigationIsPossible2:
       'Si les signalements sont trop nombreux ou fréquents pour un établissement, les enquêteurs de la répression des fraudes interviendront auprès des professionnels.',
     employeeConsumerInformation: `Afin de garantir la sécurité de votre emploi, votre signalement ne sera pas transmis à l'entreprise. Il sera lu <b>uniquement par la répression des fraudes</b>.`,
+    notTransmittableToProConsumerInformation: `Votre signalement ne sera pas transmis à l'entreprise. Il sera lu <b>uniquement par la répression des fraudes</b>.`,
     informationRatingSaved: `Votre avis a bien été enregistré, nous vous en remercions.`,
     informationTitle: `Emmh, nous ne pouvons pas traiter votre signalement.`,
-    informationReportOutOfScope: `Nous ne doutons pas que vous ayez réellement rencontré un problème mais... il ne s’agit pas d’une fraude.`,
+    informationReportOutOfScope: `Nous ne doutons pas que vous ayez réellement rencontré un problème mais votre signalement ne semble pas concerner un sujet relevant des compétences de la DGCCRF.`,
     informationWasUsefull: `Est-ce que cette information vous a été utile ?`,
     buttonReportProblem: `Signalez un problème`,
     logoAltSignalconso: `Logo SignalConso / Retour à la page d'accueil`,
@@ -1080,6 +1054,7 @@ export const fr = {
     attachmentsDescAnonymous: `Si vous ne souhaitez pas que l'entreprise connaisse votre identité, <b style="color: black">cachez votre nom</b> sur vos pièces jointes.`,
     attachmentsDescAllowedFormat: (formats: string[]) => `Sont acceptés les formats suivants : ${formats.join(', ')}`,
     attachmentsDesc2: `Ajouter une pièce jointe (par exemple : un contrat, une facture, des échanges avec le SAV…) augmente <strong>FORTEMENT</strong> vos chances d’entraîner une mesure corrective&nbsp;!<br/> Vous ne devez pas communiquer de données sensibles (données bancaires ou médicales).`,
+    notTransmittableAttachmentsDesc2: `Ajouter une pièce jointe (par exemple : un contrat, une facture, des échanges avec le SAV…) pour aider nos services administratifs&nbsp;!<br/> Vous ne devez pas communiquer de données sensibles (données bancaires ou médicales).`,
     maxAttachmentsZero: (max: number) => `Vous pouvez téléverser jusqu'à ${max} pièces jointes`,
     maxAttachmentsReached: (max: number) => `Limite de ${max} pièces jointes atteinte`,
     maxAttachementExceeded: (max: number, toRemove: number) =>
@@ -1108,8 +1083,8 @@ export const fr = {
     identifyBy_noneDesc: `Si vous ne parvenez pas à identifier l'entreprise, vous pouvez continuer votre signalement.
     Il ne sera pas transmis à l'entreprise, sauf si cette dernière est française et identifiable par l'équipe de SignalConso.
     Dans tous les cas les enquêteurs de la répression des fraudes en seront informés.`,
-    identifyBy_nameOrIdentity: `Nom ou identifiant SIRET/SIREN de l'entreprise`,
-    identifyBy_nameOrIdentity_ex: `Ex : 83350861700010, boulangerie dupont, ...`,
+    identifyBy_nameOrIdentity: `Nom ou n° SIRET/SIREN`,
+    identifyBy_nameOrIdentity_ex: `Ex : boulangerie dupont, 83350861700010, ...`,
     frenchCompaniesOnly: 'Entreprises françaises uniquement',
     couldYouPrecise: `Pouvez-vous préciser ?`,
     cantIdentifyCompany: `Votre code postal nous servira à rediriger votre signalement vers le bon service.`,
@@ -1165,7 +1140,7 @@ export const fr = {
     governmentCompany: 'Administration publique',
     siretNumber: 'Numéro SIRET',
     cannotReportGovernmentCompany: 'Impossible de signaler une administration publique.',
-    selectCompanyDesc: `Si l'entreprise n'est pas celle recherchée, vous pouvez modifier votre recherche.`,
+    selectCompanyDesc: `S'il n'y a pas celle attendue, vous pouvez modifier votre recherche.`,
     isAFrenchCompany: `Est-ce que l'entreprise est en France ?`,
     noItsForeign: `Non, elle est à l'étranger`,
     companyHowToFindCountry: `Comment retrouver le pays d'une entreprise ?`,
@@ -1273,8 +1248,8 @@ export const fr = {
       Pendant l'enquête, si les enquêteurs ont besoin de révéler votre identité à la justice ou à votre employeur, ils vous demanderont l'autorisation avant.
       <b>Vous pourrez refuser.</b>
     `,
-    consumerAnonymousInformation: `Vous restez anonyme, mais l'entreprise ne sera pas en mesure de résoudre votre problème en particulier. Pas de
-    remboursement, de réponse personnalisée, ...`,
+    consumerAnonymousInformation: `Vous restez anonyme. Pour mémoire, vous avez choisi de signaler le problème afin que l’entreprise s’améliore : votre problème particulier ne pourra pas être résolu. Pas de remboursement, de réponse personnalisée…`,
+    consumerShareInformation: `Vous partagez vos coordonnées avec l’entreprise. Pour mémoire, vous avez choisi de signaler le problème afin que l’entreprise s’améliore : votre problème particulier ne pourra pas être résolu. Pas de remboursement, de réponse personnalisée…`,
     confirmationTitle: `Récapitulatif de votre problème`,
     confirmationAlertTransmittable: `Vérifiez votre signalement avant de l’envoyer à l'entreprise et à la répression des fraudes.`,
     confirmationAlert: `Vérifiez votre signalement avant de l’envoyer à la répression des fraudes.`,
@@ -1423,7 +1398,7 @@ export const fr = {
       companyHasThreeMonths: `L’entreprise a trois mois pour prendre connaissance du signalement.`,
       fraudsCanInvestigate: `La répression des fraudes pourra ouvrir une enquête auprès de l'établissement si de nombreux consommateurs sont concernés ou si la pratique est particulièrement grave.`,
       emailWithNextSteps: `Vous allez recevoir un mail avec les démarches que SignalConso vous invite à commencer en parallèle.`,
-      companyReceivesReport: `<p>L'entreprise recevra votre signalement. Elle aura la possibilité de corriger directement le problème grâce à vos informations. Votre nom et vos coordonnées lui seront communiqués s’il souhaite vous répondre.</p><p>Votre signalement est aussi transmis à la répression des fraudes (<abbr title="Direction Générale de la Concurrence, Consommation et Répression des Fraudes">DGCCRF</abbr>). Si votre problème concerne d’autres consommateurs, la répression des fraudes fera un contrôle de l’établissement.</p>`,
+      companyReceivesReport: `<p>L'entreprise recevra votre signalement. Elle aura la possibilité de corriger directement le problème grâce à vos informations. Votre nom et vos coordonnées lui seront communiqués si elle souhaite vous répondre.</p><p>Votre signalement est aussi transmis à la répression des fraudes (<abbr title="Direction Générale de la Concurrence, Consommation et Répression des Fraudes">DGCCRF</abbr>). Si votre problème concerne d’autres consommateurs, la répression des fraudes fera un contrôle de l’établissement.</p>`,
       companyReceivesReportWithoutIdentity: `<p>L'entreprise recevra votre signalement sans connaître votre identité. Elle aura la possibilité de corriger directement le problème grâce à vos informations.</p><p>Votre signalement est aussi transmis à la répression des fraudes (<abbr title="Direction Générale de la Concurrence, Consommation et Répression des Fraudes">DGCCRF</abbr>). Si votre problème concerne d’autres consommateurs, la répression des fraudes fera un contrôle de l’établissement.</p>`,
       paidWithCreditCard: `Vous avez payé avec votre carte bancaire ?`,
       chargeBack: `Grâce à la procédure de charge-back vous pouvez être remboursé gratuitement suite à un achat effectué en ligne :`,

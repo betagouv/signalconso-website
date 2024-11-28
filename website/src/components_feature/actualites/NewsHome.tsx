@@ -1,11 +1,11 @@
 'use client'
 
-import {useI18n} from '../../i18n/I18n'
-import {ContentPageContainer} from '../../components_simple/PageContainers'
-import {getNewsArticleData} from './newsArticlesData'
+import {buildLinkNewsArticle} from '@/core/buildLinks'
 import {Card} from '@codegouvfr/react-dsfr/Card'
-import {buildLinkNewsArticle} from '../../core/pagesDefinitions'
+import {ContentPageContainer} from '../../components_simple/PageContainers'
+import {useI18n} from '../../i18n/I18n'
 import {isoToFrenchFormat} from '../../utils/utils'
+import {getNewsArticleData} from './newsArticlesData'
 
 const NewsHome = () => {
   const {m, currentLang} = useI18n()

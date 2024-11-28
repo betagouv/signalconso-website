@@ -1,6 +1,7 @@
 title: Produit périmé
-subcategoriesTitle: 'Vous voulez signaler&#160;:'
+subcategoriesTitle: 'Vous voulez signaler :'
 postReportHelper:
   customimport: _imports/postreporthelper/fiche-pratique-dlc.yaml
 tags:
   - ReponseConso
+subcategory: Produit_perime

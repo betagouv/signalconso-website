@@ -9,3 +9,4 @@ detailInputs:
   - label: Date de la coupure
     type: DATE
 fileLabel: Joindre une copie du contrat / règlement.
+subcategory: Coupure_de_leau_pour_impaye

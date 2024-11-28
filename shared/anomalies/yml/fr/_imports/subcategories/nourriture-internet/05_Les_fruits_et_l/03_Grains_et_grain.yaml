@@ -1,6 +1,8 @@
-title : Grains et graines germées
+title: Grains et graines germées
 blockingInfo:
   title: <b>Il est possible de vendre des grains sous emballage plastique.</b>
-  notAFraudMessage: true
+  reportOutOfScopeMessage: true
   content: >-
-    Il y a une autorisation pour vendre des grains et grains germées de moins de 1,5 kg sous emballage plastique.
+    Il y a une autorisation pour vendre des grains et grains germées de moins de
+    1,5 kg sous emballage plastique.
+subcategory: Grains_et_graines_germees

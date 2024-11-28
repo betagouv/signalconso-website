@@ -1,8 +1,16 @@
 import {ArticleAMF} from '@/components_feature/actualites/ArticleAMF'
 import {ArticleAppMobileV2} from '@/components_feature/actualites/ArticleAppMobileV2'
+import {ArticleBauxPrecaires} from '@/components_feature/actualites/ArticleBauxPrecaires'
+import {ArticleConsommationDurable} from '@/components_feature/actualites/ArticleConsommationDurable'
+import {ArticleErreurDePrixEnCaisse} from '@/components_feature/actualites/ArticleErreurDePrixEnCaisse'
 import {ArticleEvolutionsQuantitePrix} from '@/components_feature/actualites/ArticleEvolutionsQuantitePrix'
+import {ArticleFauxAvis} from '@/components_feature/actualites/ArticleFauxAvis'
+import {ArticleFauxSitesDeVenteThesee} from '@/components_feature/actualites/ArticleFauxSitesDeVenteThesee'
+import {ArticleHalloweenConfiseries} from '@/components_feature/actualites/ArticleHalloweenConfiseries'
+import {ArticleLanceurAlerte} from '@/components_feature/actualites/ArticleLanceurAlerte'
 import {ArticleMagasinsEphemeres} from '@/components_feature/actualites/ArticleMagasinsEphemeres'
 import {ArticleOccasionReconditionnes} from '@/components_feature/actualites/ArticleOccasionReconditionnes'
+import {ArticleProcesSFAM} from '@/components_feature/actualites/ArticleProcesSFAM'
 import {ArticleRappelAirbagTakata} from '@/components_feature/actualites/ArticleRappelAirbagTakata'
 import {ArticleAccessibilite} from './ArticleAccessibilite'
 import {ArticleAchatInternet} from './ArticleAchatInternet'
@@ -10,18 +18,55 @@ import {ArticleAmeliorationAccessibilite} from './ArticleAmeliorationAccessibili
 import {ArticleAppMobile} from './ArticleAppMobile'
 import {ArticleCodeBarres} from './ArticleCodeBarres'
 import {ArticleConseilsVacancesHiver} from './ArticleConseilsVacancesHiver'
+import {ArticleDeuxSitesFrauduleuxBloques} from './ArticleDeuxSitesFrauduleuxBloques'
 import {ArticleFauxSitesAdministratifs} from './ArticleFauxSitesAdministratifs'
+import {ArticleJourneeAveuglesMalvoyants} from './ArticleJourneeAveuglesMalvoyants'
 import {ArticleQuestionnaireSiteDgccrf} from './ArticleQuestionnaireSiteDgccrf'
 import {ArticleResilierContratsEnLigne} from './ArticleResilierContratsEnLigne'
+import {ArticleSavBlackFriday} from './ArticleSavBlackFriday'
 import {ArticleSignalConsoTraduit} from './ArticleSignalConsoTraduit'
 import {ArticleSignalConsoTranslated} from './ArticleSignalConsoTranslated'
 import {NewsArticle} from './newsArticlesData'
-import {ArticleFauxSitesDeVenteThesee} from '@/components_feature/actualites/ArticleFauxSitesDeVenteThesee'
+import {ArticleLivraisonBlackFriday} from './ArticleLivraisonBlackFriday'
+import {ArticleFaussesPromosBlackFriday} from '@/components_feature/actualites/ArticleFaussesPromosBlackFriday'
+import {ArticleAbonnementsCachesBlackFriday} from '@/components_feature/actualites/ArticleAbonnementsCachesBlackFriday'
+import {ArticleAteliersUtilisateurs} from '@/components_feature/actualites/ArticleAteliersUtilisateurs'
+import {ArticleDarkPatterns} from '@/components_feature/actualites/ArticleDarkPatterns'
 
 // We can't put import these JSX directly into the "newsArticlesData"
 // it causes too much import problems in the sitemap generation script
 export function getArticleContent(slug: NewsArticle['slug']): () => JSX.Element {
   switch (slug) {
+    case 'dark-patterns':
+      return ArticleDarkPatterns
+    case 'ateliers-utilisateurs':
+      return ArticleAteliersUtilisateurs
+    case 'abonnements-caches-black-friday':
+      return ArticleAbonnementsCachesBlackFriday
+    case 'fausse-promo-black-friday':
+      return ArticleFaussesPromosBlackFriday
+    case 'livraison-black-friday':
+      return ArticleLivraisonBlackFriday
+    case 'sav-black-friday':
+      return ArticleSavBlackFriday
+    case 'faux-avis':
+      return ArticleFauxAvis
+    case 'halloween-confiseries':
+      return ArticleHalloweenConfiseries
+    case 'lanceur-d-alerte':
+      return ArticleLanceurAlerte
+    case 'proces-sfam':
+      return ArticleProcesSFAM
+    case 'baux-precaires':
+      return ArticleBauxPrecaires
+    case 'journee-aveugles-malvoyants':
+      return ArticleJourneeAveuglesMalvoyants
+    case 'deux-sites-frauduleux-bloques':
+      return ArticleDeuxSitesFrauduleuxBloques
+    case 'consommation-durable':
+      return ArticleConsommationDurable
+    case 'erreur-de-prix-en-caisse':
+      return ArticleErreurDePrixEnCaisse
     case 'faux-sites-de-vente-thesee':
       return ArticleFauxSitesDeVenteThesee
     case 'rappel-airbag-takata':

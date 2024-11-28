@@ -1,7 +1,7 @@
 title: Prices are higher than elsewhere
 blockingInfo:
   title: Companies have the right to choose their prices.
-  notAFraudMessage: true
+  reportOutOfScopeMessage: true
   content: >-
     However, the prices must be clearly indicated so that you know them before buying.
     <br/> For example, it is permitted to sell a
@@ -11,3 +11,4 @@ blockingInfo:
     <br/> For example, the price of books is regulated.
     <br/><br/> A merchant does not have the right to sell at too low a price: he cannot sell a product cheaper than what it cost him. There are a few situations where he has the right to sell below the purchase price, such as the
     sales period.
+subcategory: Les_prix_sont_plus_eleves_quailleurs

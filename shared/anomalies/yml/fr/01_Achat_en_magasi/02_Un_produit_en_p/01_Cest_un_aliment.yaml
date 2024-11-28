@@ -1,0 +1,7 @@
+title: C'est un aliment
+desc: 'Exemple : bonbon, viande, pain, conserve, vin, eau en bouteille'
+tags:
+  - ProduitAlimentaire
+subcategories:
+  customimport: _imports/subcategories/nourriture
+subcategory: Cest_un_aliment

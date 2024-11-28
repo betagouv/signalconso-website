@@ -8,3 +8,4 @@ reponseconsoCode: '212'
 detailInputs:
   - label: Date de constat
     type: DATE
+subcategory: Je_nai_pas_recu_de_note_facture_recapitulatif_de_paiement

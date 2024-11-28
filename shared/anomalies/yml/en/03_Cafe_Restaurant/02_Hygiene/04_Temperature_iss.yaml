@@ -6,3 +6,4 @@ detailInputs:
     type: DATE
     defaultValue: SYSDATE
 fileLabel: If possible, please attach a photo or document to support your report.
+subcategory: Probleme_de_temperature

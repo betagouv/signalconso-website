@@ -1,10 +1,4 @@
 title: Problème d'accessibilité
 blockingInfo:
-  content: >-
-    Oups nous ne pouvons pas traiter votre signalement.
-    Ce type de problème ne doit pas être signalé sur SignalConso. <br><a
-    Deux solutions pour le signaler :  <br><a
-    •	Porter plainte directement au commissariat ; <br><a
-    •	Écrire à la Direction Départementale des Territoires du département pour leur signaler. Les adresses sont sur le site 
-    href="https://lannuaire.service-public.fr/"
-    target="_blank">lannuaire.service-public.fr</a>
+  content: "Oups nous ne pouvons pas traiter votre signalement. Ce type de problème ne doit pas être signalé sur SignalConso. <br><a Deux solutions pour le signaler :  <br><a •\tPorter plainte directement au commissariat ; <br><a •\tÉcrire à la Direction Départementale des Territoires du département pour leur signaler. Les adresses sont sur le site  href=\"https://lannuaire.service-public.fr/\" target=\"_blank\">lannuaire.service-public.fr</a>"
+subcategory: Probleme_daccessibilite

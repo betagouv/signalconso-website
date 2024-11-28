@@ -1,13 +1,11 @@
 title: Un avis de consommateur
-desc: >-
-  Exemple : Demande de diffusion de faux avis, faux avis en ligne
+desc: 'Exemple : Demande de diffusion de faux avis, faux avis en ligne'
 subcategoriesTitle: Pouvez-vous préciser ?
 ccrfCode:
-  - "23B"
-  - "216"
+  - 23B
+  - '216'
 detailInputs:
   - label: Nom du produit ou du service (facultatif)
     type: TEXT
     optional: true
-
-
+subcategory: Un_avis_de_consommateur

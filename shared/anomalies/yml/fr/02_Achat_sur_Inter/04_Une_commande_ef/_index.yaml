@@ -3,6 +3,6 @@ desc: >-
   Exemple : commande jamais livrée, retard de livraison, commande incomplète ou
   endommagée, remise non sollicitée d"échantillions
 companyKind: WEBSITE
-
 tags:
- - CommandeEffectuee
+  - CommandeEffectuee
+subcategory: Une_commande_effectuee

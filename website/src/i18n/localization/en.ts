@@ -131,26 +131,6 @@ export const en = {
         title: 'Playground',
         description: '',
       },
-      obligationFibre: {
-        title: '',
-        description: '',
-      },
-      signalInfluenceur: {
-        title: '',
-        description: '',
-      },
-      obsolescencePage: {
-        title: '',
-        description: '',
-      },
-      demarchageTelephonique: {
-        title: '',
-        description: '',
-      },
-      intoxAlimentaire: {
-        title: '',
-        description: '',
-      },
     },
     faireUnSignalement: {
       etape: 'Step',
@@ -565,11 +545,6 @@ export const en = {
       calcRetractionDelay: 'Figure out your cooling-off period',
       resolutionTips: 'Tips for resolving individual issues (disputes)',
       telecomResolutionTips: 'Tips for resolving telecom individual issues (disputes)',
-      obligationFibre: 'Report a forced migration to fiber optic Internet',
-      obsolescencePage: 'Report a device with a lifespan that seems too short',
-      demarchageTelephonique: 'Report an abusive telemarketing call',
-      intoxAlimentaire: 'Report food poisoning',
-      signalInfluenceur: '',
       reportIncidentSection: 'Submitting a report',
       reportIncidentFor: 'Report a company for',
       step1: 'Step 1 - The problem',
@@ -828,7 +803,6 @@ export const en = {
     },
     arbo: {
       title: 'Sequence for reporting an issue',
-      notAFraudMessage: 'Although we do believe the issue you experienced was genuine, it was not a case of fraud.',
     },
     yes: 'Yes',
     no: 'No',
@@ -1043,9 +1017,10 @@ export const en = {
     consumerWishInvestigationIsPossible2:
       'If a business receives an excessively high volume or frequent number of reports, Fraud Control will investigate the companies in question.',
     employeeConsumerInformation: `To ensure your job security, your details will not be transmitted to the company. It will be read <b>only by Fraud Control</b>.`,
+    notTransmittableToProConsumerInformation: `Your reports will not be transmitted to the company. It will be read <b>only by Fraud Control</b>.`,
     informationRatingSaved: `Your comments have been recorded, thank you.`,
     informationTitle: `Unfortunately, we are unable to take your report any further.`,
-    informationReportOutOfScope: `Although we do believe the issue you experienced was genuine, it was not a case of fraud.`,
+    informationReportOutOfScope: `Although we do believe the issue you experienced was genuine, your report does not fall within the scope of the DGCCRF's competence.`,
     informationWasUsefull: `Was this information useful to you?`,
     buttonReportProblem: `Report an issue`,
     logoAltSignalconso: `SignalConso Logo / Return to homepage`,
@@ -1073,6 +1048,7 @@ export const en = {
     attachmentsDescAnonymous: `If you do not want the company to know your identity, <b style="color: black">remove your name</b> where it appears on your attachments.`,
     attachmentsDescAllowedFormat: (formats: string[]) => `The following formats are accepted : ${formats.join(', ')}`,
     attachmentsDesc2: `Including an attachment (for example: a contract, an invoice, exchanges with customer service...) <strong>GREATLY</strong> increases your chances that corrective action will be taken.<br/> You must not share private or sensitive information (e.g. bank account details or medical records).`,
+    notTransmittableAttachmentsDesc2: `Including an attachment (e.g., a contract, an invoice, correspondence with customer service…) greatly helps our administrative services. <br/> You must not share private or sensitive information (e.g. bank account details or medical records).`,
     maxAttachmentsZero: (max: number) => `You can upload up to ${max} attachments`,
     maxAttachmentsReached: (max: number) => `${max} attachments limit reached`,
     maxAttachementExceeded: (max: number, toRemove: number) =>
@@ -1254,7 +1230,8 @@ export const en = {
       If our team are required to disclose your identity to a court authority or your employer as part of our investigation, they will ask for your permission first. 
       <b>You can decline this request.</b>
     `,
-    consumerAnonymousInformation: `You will remain anonymous, but the company will not be able to resolve your specific issue. This means that resolutions such as refunds or personalised responses will not be possible.`,
+    consumerAnonymousInformation: `You remain anonymous. As a reminder, you chose to report the issue so the company can improve: your specific problem will not be resolved. No refund, no personalized response...`,
+    consumerShareInformation: `You share your contact details with the company. As a reminder, you have chosen to report the problem so that the company can improve: your specific problem cannot be solved. No refund, no personalized response...`,
     confirmationTitle: `Summary of your issue`,
     confirmationAlertTransmittable: `Check every detail of your report before sending it to the company and to Fraud Control.`,
     confirmationAlert: `Check every detail of your report before sending it to Fraud Control.`,

@@ -7,7 +7,7 @@ tags:
   - ReponseConso
 detailInputs:
   - label: Date du constat
-    type: DATE
+    type: DATE_NOT_IN_FUTURE
     defaultValue: SYSDATE
   - label: Numéro de réservation (pour faciliter le traitement par l'entreprise)
     type: TEXT
@@ -16,3 +16,4 @@ detailInputs:
     type: TEXTAREA
     placeholder: Quel était le prix initial ? Quel est le prix final ?
 fileLabel: Vous pouvez joindre des éléments pour appuyer votre signalement.
+subcategory: Prix_final_different_du_prix_annonce

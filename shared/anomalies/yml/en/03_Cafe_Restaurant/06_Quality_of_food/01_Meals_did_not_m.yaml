@@ -5,3 +5,4 @@ detailInputs:
   - label: Date of the finding
     type: DATE
     defaultValue: SYSDATE
+subcategory: Les_plats_ne_correspondent_pas_a_la_description

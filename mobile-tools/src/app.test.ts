@@ -20,7 +20,7 @@ describe('Test the categories path', () => {
     const response = await request(app).get('/v1/categories')
     const categories = response.body as Category[]
     expect(categories).toContainEqual({
-      category: 'AchatMagasin',
+      category: 'Achat en magasin',
       description: 'Prix, promotion, qualité, poids, garantie, …',
       id: '10',
       path: 'achat-magasin',
@@ -31,7 +31,7 @@ describe('Test the categories path', () => {
     const response = await request(app).get('/v1/categories').query({lang: 'fr'})
     const categories = response.body as Category[]
     expect(categories).toContainEqual({
-      category: 'AchatMagasin',
+      category: 'Achat en magasin',
       description: 'Prix, promotion, qualité, poids, garantie, …',
       id: '10',
       path: 'achat-magasin',
@@ -42,7 +42,7 @@ describe('Test the categories path', () => {
     const response = await request(app).get('/v1/categories').query({lang: 'en'})
     const categories = response.body as Category[]
     expect(categories).toContainEqual({
-      category: 'AchatMagasin',
+      category: 'In-store purchases',
       description: 'Price, promotion, quality, weight, warranty, etc.',
       id: '10',
       path: 'achat-magasin',

@@ -2,7 +2,8 @@ title: Malfaçons sur la pose de la fosse septique
 desc: "Exemple\_: Fissure, usure"
 detailInputs:
   - label: Date du constat
-    type: DATE
+    type: DATE_NOT_IN_FUTURE
     defaultValue: SYSDATE
   - label: Décrivez nous plus en détails ce qui s'est passé
     type: TEXTAREA
+subcategory: Malfacons_sur_la_pose_de_la_fosse_septique

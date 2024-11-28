@@ -3,3 +3,4 @@ desc: 'Exemple : fausse réduction, suppléments non prévus'
 reponseconsoCode: '210'
 tags:
   - ReponseConso
+subcategory: Prix_final_different_du_prix_annonce

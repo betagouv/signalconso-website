@@ -3,4 +3,5 @@ blockingInfo:
   content: >-
     C'est à vous de faire l'appoint. Un commerçant a le droit refuser le
     paiement en espèces s'il ne dispose pas de suffisamment de monnaie.
-  notAFraudMessage: true
+  reportOutOfScopeMessage: true
+subcategory: Je_navais_pas_la_monnaie

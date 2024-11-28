@@ -29,7 +29,11 @@ export class Matomo {
       if (!window._paq) {
         window._paq = []
       }
-      window._paq.push(args)
+      try {
+        window._paq.push(args)
+      } catch (e) {
+        console.error('Matomo error', e)
+      }
     }
   }
 

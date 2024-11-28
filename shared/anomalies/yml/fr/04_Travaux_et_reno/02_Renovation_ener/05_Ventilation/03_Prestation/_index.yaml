@@ -3,3 +3,4 @@ desc: 'Exemple : malfaçons sur le chantier, travaux commencés mais jamais term
 ccrfCode:
   - '161'
   - '334'
+subcategory: Prestation

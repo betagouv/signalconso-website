@@ -4,3 +4,4 @@ detailInputs:
   - label: Date of the finding
     type: DATE
     defaultValue: SYSDATE
+subcategory: Information_mensongere_ou_trompeuse

@@ -9,4 +9,5 @@ blockingInfo:
     href="https://www.pour-les-personnes-agees.gouv.fr/exercer-ses-droits/en-cas-de-maltraitance"
     target="_blank">www.pour-les-personnes-agees.gouv.fr</a> vous propose toutes
     les solutions possibles pour signaler un cas de maltraitance.
-  notAFraudMessage: true
+  reportOutOfScopeMessage: true
+subcategory: Maltraitance

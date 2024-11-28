@@ -5,4 +5,4 @@ content:
 questions:
   - question: Were you the victim of harassment or insults ?
     answer: You can file a preliminary complaint online at the following website <br><a href="https://www.pre-plainte-en-ligne.gouv.fr" target="_blank">pre-plainte-en-ligne.gouv.fr</a>
-notAFraudMessage: true
+reportOutOfScopeMessage: true

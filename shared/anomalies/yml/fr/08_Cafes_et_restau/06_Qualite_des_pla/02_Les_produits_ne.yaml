@@ -9,4 +9,5 @@ blockingInfo:
     conçu pour recevoir ce type de plainte. <br><br> Vous ne pouvez pas faire un
     signalement sur SignalConso car la répression des fraudes ne pourra pas
     traiter votre signalement.
-  notAFraudMessage: true
+  reportOutOfScopeMessage: true
+subcategory: Les_produits_ne_sont_pas_bons

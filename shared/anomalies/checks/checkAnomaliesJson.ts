@@ -24,7 +24,7 @@ const anomalySpec: ObjectSpec = {
   specialCategory: _ => _.ifDefined()?.assertIsAllowedString(specialCategories),
   subcategoriesTitle: _ => _.ifDefined()?.assertIsString(),
   // triggers the recursion
-  subcategories: _ => _.assertIsArrayWith(assertIsSubcategory),
+  subcategories: _ => _.ifDefined()?.assertIsArrayWith(assertIsSubcategory),
   postReportHelper: _ =>
     _.ifDefined()?.assertIsObjectWith({
       title: _ => _.ifDefined()?.assertIsString(),
@@ -39,6 +39,7 @@ const baseSubcategorySpec: ObjectSpec = {
   ccrfCode: _ => _.ifDefined()?.assertIsArrayOfString(),
   companyKind: _ => _.ifDefined()?.assertIsAllowedString(companyKinds),
   title: _ => _.assertIsString(),
+  subcategory: _ => _.assertIsString(),
   subcategoriesTitle: _ => _.ifDefined()?.assertIsString(),
   // triggers the recursion
   subcategories: _ => _.ifDefined()?.assertIsArrayWith(assertIsSubcategory),
@@ -57,7 +58,7 @@ const subcategoryWithInfoWallSpec: ObjectSpec = {
       title: _ => _.ifDefined()?.assertIsString(),
       content: _ => _.ifDefined()?.assertIsString(),
       subTitle: _ => _.ifDefined()?.assertIsString(),
-      notAFraudMessage: _ => _.ifDefined()?.assertIsBoolean(),
+      reportOutOfScopeMessage: _ => _.ifDefined()?.assertIsBoolean(),
       questions: _ =>
         _.ifDefined()?.assertIsArrayWith(action => {
           action.assertIsObjectWith({
@@ -72,6 +73,7 @@ const subcategoryWithInfoWallSpec: ObjectSpec = {
 
 const standardSubcategorySpec: ObjectSpec = {
   fileLabel: _ => _.ifDefined()?.assertIsString(),
+  attachmentDesc: _ => _.ifDefined()?.assertIsString(),
   customizedClientReferenceInput: _ =>
     _.ifDefined()?.assertIsObjectWith({
       label: _ => _.ifDefined()?.assertIsString(),
@@ -97,7 +99,7 @@ const companyKindQuestionOptionSpec: ObjectSpec = {
 
 function assertIsSubcategory(subcategory: AnomalyTreeWalker) {
   // There are two possibles shapes, let's check manually which one it is
-  if (Object.keys(subcategory.value).includes('blockingInfo')) {
+  if (subcategory.value && Object.keys(subcategory.value).includes('blockingInfo')) {
     subcategory.assertIsObjectWith(subcategoryWithInfoWallSpec)
   } else {
     subcategory.assertIsObjectWith(standardSubcategorySpec)

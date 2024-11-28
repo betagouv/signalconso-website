@@ -1,7 +1,7 @@
 title: Informations manquantes
 reponseconsoCode: '273'
 detailInputs:
-  - label: Quelle information manque-t-il&#160;?
+  - label: Quelle information manque-t-il ?
     type: RADIO
     options:
       - Date limite
@@ -16,6 +16,7 @@ detailInputs:
     type: TEXT
   - label: Nom /marque
     type: TEXT
-  - label: Qu'avez-vous constaté&#160;?
+  - label: Qu'avez-vous constaté ?
     type: TEXTAREA
 fileLabel: Photos du produit
+subcategory: Informations_manquantes

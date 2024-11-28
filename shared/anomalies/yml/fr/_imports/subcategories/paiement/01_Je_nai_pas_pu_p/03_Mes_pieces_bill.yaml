@@ -4,4 +4,5 @@ blockingInfo:
     Le paiement en pièces ou billets en mauvais état peut être refusé. <br />
     "Vous pouvez échanger vos billets abîmés auprès d'agences bancaires comme la
     Banque de France."
-  notAFraudMessage: true
+  reportOutOfScopeMessage: true
+subcategory: Mes_pieces_billets_etaient_en_mauvais_etat

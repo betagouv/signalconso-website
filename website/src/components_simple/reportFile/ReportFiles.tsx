@@ -8,7 +8,10 @@ import {compressFile} from '../../utils/compressFile'
 import {ReportFile} from './ReportFile'
 import {ADD_FILE_HELP_ID, ReportFileAdd} from './ReportFileAdd'
 import {extractFileExt} from './reportFileConfig'
-import {ApiError} from '@/clients/BaseApiClient'
+import {UploadingFile} from '@/model/UploadingFile'
+import {v4 as uuidv4} from 'uuid'
+import {UploadingReportFile} from '@/components_simple/reportFile/UploadingReportFile'
+import axios from 'axios'
 
 export interface ReportFilesProps {
   files: UploadedFile[]
@@ -25,15 +28,18 @@ const preventDefaultHandler = (e: React.DragEvent<HTMLElement>) => {
 
 export const ReportFiles = ({fileOrigin, files, onRemoveFile, onNewFile, tooManyFilesError}: ReportFilesProps) => {
   const [innerFiles, setInnerFiles] = useState<UploadedFile[]>([])
+  const [uploadingFiles, setUploadingFiles] = useState<UploadingFile[]>([])
   const {m} = useI18n()
   const [isDraggingOver, setIsDraggingOver] = useState(false)
   useEffect(() => {
     setInnerFiles(files)
+    setUploadingFiles(prev => prev.filter(uploadingFile => files.every(file => file.id !== uploadingFile.id)))
   }, [files])
 
   const {signalConsoApiClient} = useApiClients()
   const toastError = useToastError()
-  const [uploading, setUploading] = useState(false)
+
+  const numberOfFilesUploadingOrUploaded = innerFiles.length + uploadingFiles.length
 
   const heicToJpg = async (file: File): Promise<File> => {
     // heic2any needs to access the 'window' object, which is not available when importing the lib at the top of the file
@@ -54,20 +60,34 @@ export const ReportFiles = ({fileOrigin, files, onRemoveFile, onNewFile, tooMany
 
   const handleChange = async (files: FileList | null) => {
     const fileCount = files?.length ?? 0
-    const fileCountUploadAttempt = fileCount + innerFiles.length
+    const fileCountUploadAttempt = fileCount + numberOfFilesUploadingOrUploaded
     if (fileCountUploadAttempt > max) {
-      toastError(m.invalidCount(max, max - innerFiles.length))
+      toastError(m.invalidCount(max, max - numberOfFilesUploadingOrUploaded))
       return
     } else {
+      const filesToUpload: UploadingFile[] = []
       for (let fileIndex = 0; fileIndex <= fileCount; fileIndex++) {
         if (files && files[fileIndex]) {
-          await uploadFile(files[fileIndex])
+          const uuid = uuidv4()
+          const controller = new AbortController()
+          filesToUpload.push({
+            id: uuid,
+            filename: files[fileIndex].name,
+            progress: 0,
+            controller: controller,
+          })
+        }
+      }
+      setUploadingFiles(prev => [...prev, ...filesToUpload])
+      for (let fileIndex = 0; fileIndex <= fileCount; fileIndex++) {
+        if (files && files[fileIndex]) {
+          await uploadFile(files[fileIndex], filesToUpload[fileIndex])
         }
       }
     }
   }
 
-  const uploadFile = async (file: File) => {
+  const uploadFile = async (file: File, uploadingFile: UploadingFile) => {
     if (file.size === 0) {
       toastError(m.emptyFile)
       return
@@ -88,26 +108,41 @@ export const ReportFiles = ({fileOrigin, files, onRemoveFile, onNewFile, tooMany
       return
     }
 
-    setUploading(true)
-
     const fileToUpload = fileExt === 'heic' ? heicToJpg(file) : Promise.resolve(file)
 
     try {
       const f = await fileToUpload
       const compressedFile = await compressFile(f)
-      const uploadedFile = await signalConsoApiClient.uploadDocument(compressedFile, fileOrigin)
+      const uploadedFile = await signalConsoApiClient.uploadDocument(
+        compressedFile,
+        fileOrigin,
+        uploadingFile.id,
+        percent => {
+          setUploadingFiles(prev => {
+            let filesCopy = [...prev]
+            let fileIndex = filesCopy.findIndex(_ => _.id === uploadingFile.id)
+            if (fileIndex !== -1) {
+              filesCopy[fileIndex].progress = percent
+            }
+
+            return filesCopy
+          })
+        },
+        uploadingFile.controller.signal,
+      )
       newFile(uploadedFile)
     } catch (e: any) {
-      console.warn('failed to upload file', e)
-      toastError(e)
-    } finally {
-      setUploading(false)
+      if (e.details.error && !axios.isCancel(e.details.error)) {
+        console.warn('failed to upload file', e)
+        toastError(e)
+      }
     }
   }
 
   const newFile = (f: UploadedFile) => {
     onNewFile(f)
     setInnerFiles(prev => [f, ...prev])
+    setUploadingFiles(prev => prev.filter(_ => _.id !== f.id))
   }
 
   const removeFile = (f: UploadedFile) => {
@@ -115,8 +150,13 @@ export const ReportFiles = ({fileOrigin, files, onRemoveFile, onNewFile, tooMany
     setInnerFiles(prev => prev.filter(_ => _.id !== f.id))
   }
 
+  const cancelFile = (f: UploadingFile) => {
+    f.controller.abort()
+    setUploadingFiles(prev => prev.filter(_ => _.id !== f.id))
+  }
+
   const thumbnails = (
-    <ul className="flex flex-wrap items-center justify-center mt-4 list-none gap-4">
+    <ul className="flex flex-wrap justify-center mt-4 list-none gap-4">
       {innerFiles
         .filter(_ => _.origin === fileOrigin)
         .map(_ => (
@@ -124,6 +164,11 @@ export const ReportFiles = ({fileOrigin, files, onRemoveFile, onNewFile, tooMany
             <ReportFile file={_} onRemove={removeFile} />
           </li>
         ))}
+      {uploadingFiles.map(f => (
+        <li key={f.id}>
+          <UploadingReportFile fileName={f.filename} percent={f.progress} onRemove={() => cancelFile(f)} />
+        </li>
+      ))}
     </ul>
   )
 
@@ -143,10 +188,10 @@ export const ReportFiles = ({fileOrigin, files, onRemoveFile, onNewFile, tooMany
   }
 
   const max = appConfig.maxNumberOfAttachments
-  const nothingYet = innerFiles.length <= 0
-  const maxReached = innerFiles.length === max
+  const nothingYet = numberOfFilesUploadingOrUploaded <= 0
+  const maxReached = numberOfFilesUploadingOrUploaded === max
   // can happen with multiple uploads at once
-  const maxExceeded = innerFiles.length > max
+  const maxExceeded = numberOfFilesUploadingOrUploaded > max
 
   const redErrorClasses = `before:block before:absolute before:top-0 before:bottom-0 before:left-[-15px] before:pointer-events-none before:right-0 before:border-l-2 before:border-0 before:border-l-scerrorred before:border-solid before:content-['']`
 
@@ -169,7 +214,7 @@ export const ReportFiles = ({fileOrigin, files, onRemoveFile, onNewFile, tooMany
           <>
             {nothingYet && <UploadInvitation />}
             <div className={`text-center ${nothingYet ? 'mb-6' : 'mb-2'}`}>
-              <ReportFileAdd fileOrigin={fileOrigin} isUploading={uploading} uploadFile={handleChange} />
+              <ReportFileAdd fileOrigin={fileOrigin} uploadFile={handleChange} />
             </div>
             <p
               className="mt-2 text-sm mb-1 text-center "
@@ -180,12 +225,12 @@ export const ReportFiles = ({fileOrigin, files, onRemoveFile, onNewFile, tooMany
         )}
         <p className={`text-sm mb-2 text-center ${tooManyFilesError ? 'text-scerrorred font-bold' : ''}`} role="status">
           {maxExceeded
-            ? m.maxAttachementExceeded(max, innerFiles.length - max)
+            ? m.maxAttachementExceeded(max, numberOfFilesUploadingOrUploaded - max)
             : maxReached
               ? m.maxAttachmentsReached(max)
               : nothingYet
                 ? m.maxAttachmentsZero(max)
-                : m.maxAttachmentsCurrent(max - innerFiles.length)}
+                : m.maxAttachmentsCurrent(max - numberOfFilesUploadingOrUploaded)}
         </p>
         {!nothingYet && thumbnails}
       </div>

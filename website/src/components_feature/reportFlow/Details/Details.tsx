@@ -10,7 +10,7 @@ import {useI18n} from '@/i18n/I18n'
 import {DetailInputValues2} from '@/model/Report'
 import {fnSwitch} from '@/utils/FnSwitch'
 import {last} from '@/utils/lodashNamedExport'
-import {useEffect, useMemo, useState} from 'react'
+import {useCallback, useEffect, useMemo, useState} from 'react'
 import {useForm} from 'react-hook-form'
 import {DetailInput, ReportTag, StandardSubcategory} from 'shared/anomalies/Anomaly'
 import {ConsumerWish, TransmissionStatus} from '../../../model/Report'
@@ -51,12 +51,27 @@ export const Details = ({stepNavigation}: {stepNavigation: StepNavigation}) => {
       transmissionStatus={getTransmissionStatus(report)}
       inputs={inputs}
       fileLabel={lastSubcategory.fileLabel}
+      attachmentDesc={lastSubcategory.attachmentDesc}
       employeeConsumer={report.step1.employeeConsumer}
       tags={getTags(report)}
-      onSubmit={(detailInputValues, uploadedFiles) => {
+      saveChange={(detailInputValues, uploadedFiles, goToNextStep) => {
+        console.log('to be saved')
+        console.log(detailInputValues)
+        console.log('to be saved')
         _reportFlow.setReport(_ => ({..._, step3: {uploadedFiles, details: detailInputValues}}))
-        _reportFlow.sendReportEvent(stepNavigation.currentStep)
-        stepNavigation.next()
+        if (goToNextStep) {
+          _reportFlow.sendReportEvent(stepNavigation.currentStep)
+          stepNavigation.next()
+        }
+      }}
+      saveFiles={(uploadedFiles?: UploadedFile[]) => {
+        _reportFlow.setReport(_ => ({
+          ..._,
+          step3: {
+            details: _.step3?.details || {}, // If step3 or details is undefined, use an empty object
+            uploadedFiles, // Set uploadedFiles
+          },
+        }))
       }}
       {...{stepNavigation}}
       consumerWish={report.step1.consumerWish}
@@ -69,19 +84,23 @@ export const DetailsInner = ({
   initialFiles,
   inputs,
   fileLabel,
+  attachmentDesc,
   tags,
   transmissionStatus,
   employeeConsumer,
-  onSubmit,
+  saveChange,
+  saveFiles,
   stepNavigation,
   consumerWish,
 }: {
   inputs: DetailInput[]
-  onSubmit: (values: DetailInputValues2, files?: UploadedFile[]) => void
+  saveChange: (values: DetailInputValues2, files?: UploadedFile[], goToNextStep?: boolean) => void
+  saveFiles: (uploadedFiles?: UploadedFile[]) => void
   transmissionStatus: TransmissionStatus
   initialValues?: DetailInputValues2
   initialFiles?: UploadedFile[]
   fileLabel?: string
+  attachmentDesc?: string
   employeeConsumer?: boolean
   tags?: ReportTag[]
   stepNavigation: StepNavigation
@@ -103,9 +122,11 @@ export const DetailsInner = ({
     control,
     handleSubmit,
     register,
-    formState: {errors},
+    formState: {errors, isValid, dirtyFields},
     watch,
+    trigger,
   } = useForm<DetailInputValues2>({
+    mode: 'onChange',
     defaultValues,
   })
 
@@ -114,6 +135,39 @@ export const DetailsInner = ({
   }, [initialFiles])
 
   const displayAlertProduitDangereux = (tags ?? []).includes('ProduitDangereux')
+  const watchFields = watch()
+
+  const validateFields = useCallback(async () => {
+    const modifiedData: DetailInputValues2 = {}
+
+    // Loop through dirty fields
+    for (const field of Object.keys(dirtyFields)) {
+      // Validate only the dirty field
+      const isValid = await trigger(field) // Await validation of the field
+      if (isValid) {
+        modifiedData[field] = watchFields[field]
+        console.log({...initialValues, ...modifiedData})
+        saveChange({...initialValues, ...modifiedData}, uploadedFiles, false)
+      }
+    }
+  }, [dirtyFields, watchFields, trigger, initialValues, uploadedFiles])
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      validateFields() // Call the memoized function
+    }, 2500) // Runs the validation every 5 seconds
+
+    return () => clearInterval(interval) // Clean up the interval
+  }, [validateFields])
+
+  const [shouldSave, setShouldSave] = useState(false)
+
+  useEffect(() => {
+    if (shouldSave && saveFiles) {
+      saveFiles(uploadedFiles)
+      setShouldSave(false)
+    }
+  }, [shouldSave, saveFiles, uploadedFiles])
 
   return (
     <>
@@ -173,30 +227,46 @@ export const DetailsInner = ({
       <Animate autoScrollTo={false}>
         <div>
           <h4 className="mt-4">{fileLabel ?? m.attachments}</h4>
-          {transmissionStatus !== 'NOT_TRANSMITTABLE' && (
+          {transmissionStatus !== 'NOT_TRANSMITTABLE' ? (
             <>
               <FriendlyHelpText>
-                <p className="mb-0" dangerouslySetInnerHTML={{__html: m.attachmentsDesc2}} />
+                <p className="mb-0" dangerouslySetInnerHTML={{__html: attachmentDesc ?? m.attachmentsDesc2}} />
               </FriendlyHelpText>
               {consumerWish !== 'fixContractualDispute' && <p dangerouslySetInnerHTML={{__html: m.attachmentsDescAnonymous}} />}
             </>
+          ) : (
+            <FriendlyHelpText>
+              {/*Do not display any custom attachmentDesc for employee consumer reports*/}
+              <p
+                className="mb-0"
+                dangerouslySetInnerHTML={{
+                  __html: !employeeConsumer && attachmentDesc ? attachmentDesc : m.notTransmittableAttachmentsDesc2,
+                }}
+              />
+            </FriendlyHelpText>
           )}
           <ReportFiles
             files={uploadedFiles ?? []}
             fileOrigin={FileOrigin.Consumer}
-            onRemoveFile={f => setUploadedFiles(files => files?.filter(_ => _.id !== f.id))}
-            onNewFile={f => setUploadedFiles(_ => [...(_ ?? []), f])}
+            onRemoveFile={f => {
+              setUploadedFiles(files => files?.filter(_ => _.id !== f.id))
+              setShouldSave(true)
+            }}
+            onNewFile={f => {
+              setUploadedFiles(_ => [...(_ ?? []), f])
+              setShouldSave(true)
+            }}
             tooManyFilesError={showTooManyFilesError}
           />
         </div>
       </Animate>
       <NextStepButton
-        onNext={next => {
+        onNext={_ => {
           if (tooManyFiles) {
             setHasTriedToSubmit(true)
           } else {
             handleSubmit(detailInputValues => {
-              onSubmit(detailInputValues, uploadedFiles)
+              saveChange(detailInputValues, uploadedFiles, true)
             })()
           }
         }}

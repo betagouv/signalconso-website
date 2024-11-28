@@ -12,3 +12,4 @@ detailInputs:
     placeholder: Identification elements
   - label: Description
     type: TEXTAREA
+subcategory: Un_produit_emballe_et_etiquete_par_le_vendeur

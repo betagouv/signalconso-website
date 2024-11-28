@@ -12,7 +12,8 @@ detailInputs:
       - Prix illisible
       - Autre (à préciser)
   - label: Date du constat
-    type: DATE
+    type: DATE_NOT_IN_FUTURE
     defaultValue: SYSDATE
   - label: Description
     type: TEXTAREA
+subcategory: Il_manque_des_prix_les_prix_sont_illisibles

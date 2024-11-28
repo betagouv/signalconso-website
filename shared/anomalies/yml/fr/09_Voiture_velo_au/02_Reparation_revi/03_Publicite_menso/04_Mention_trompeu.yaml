@@ -1,4 +1,7 @@
 title: Mention trompeuse sur les frais annexes
 ccrfCode:
-  - '23B'
-desc: 'Exemple : Frais annexes présentés comme obligatoires, assimilés à des frais de préparation du véhicule'
+  - 23B
+desc: >-
+  Exemple : Frais annexes présentés comme obligatoires, assimilés à des frais de
+  préparation du véhicule
+subcategory: Mention_trompeuse_sur_les_frais_annexes

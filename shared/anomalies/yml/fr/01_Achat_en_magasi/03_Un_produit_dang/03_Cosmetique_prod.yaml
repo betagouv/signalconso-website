@@ -3,6 +3,7 @@ ccrfCode:
   - 34A
 tags:
   - ProduitIndustriel
-subcategoriesTitle: Quel est le risque&#160;?
+subcategoriesTitle: Quel est le risque ?
 subcategories:
   customimport: _imports/subcategories/produit-dangereux
+subcategory: Cosmetique_produit_dhygiene_produit_de_tatouage

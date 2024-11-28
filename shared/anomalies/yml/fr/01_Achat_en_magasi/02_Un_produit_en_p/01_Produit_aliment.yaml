@@ -1,6 +1,0 @@
-title: Produit alimentaire
-desc: 'Exemple : bonbon, viande, pain, conserve, vin, eau en bouteille'
-tags:
-  - ProduitAlimentaire
-subcategories:
-  customimport: _imports/subcategories/nourriture

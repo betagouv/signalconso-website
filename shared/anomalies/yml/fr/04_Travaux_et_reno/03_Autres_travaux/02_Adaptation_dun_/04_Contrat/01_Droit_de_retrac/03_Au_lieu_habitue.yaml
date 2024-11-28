@@ -2,4 +2,5 @@ title: Au lieu habituel d'activité du professionnel
 blockingInfo:
   title: Vous ne pouvez plus vous rétracter
   content: Il n'y a pas de délai de rétractation pour votre cas.
-  notAFraudMessage: true
+  reportOutOfScopeMessage: true
+subcategory: Au_lieu_habituel_dactivite_du_professionnel

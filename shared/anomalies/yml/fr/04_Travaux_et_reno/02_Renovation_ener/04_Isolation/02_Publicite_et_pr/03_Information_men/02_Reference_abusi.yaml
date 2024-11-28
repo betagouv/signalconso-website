@@ -6,7 +6,7 @@ ccrfCode:
 tags:
   - ReponseConso
 detailInputs:
-  - label: Qu'est-ce qui est trompeur ou mensonger&#160;?
+  - label: Qu'est-ce qui est trompeur ou mensonger ?
     type: RADIO
     options:
       - Le discours du professionnel
@@ -18,8 +18,10 @@ detailInputs:
   - label: Description
     type: TEXTAREA
   - label: Date du constat
-    type: DATE
+    type: DATE_NOT_IN_FUTURE
     defaultValue: SYSDATE
   - label: Heure du constat (facultatif)
     type: TIMESLOT
     optional: true
+subcategory: >-
+  Reference_abusive_a_des_partenariats_avec_lEtat_ou_de_grandes_entreprises_denergie

@@ -3,19 +3,19 @@ ccrfCode:
   - '312'
 reponseconsoCode: '312'
 detailInputs:
-  - label: Quel endroit est concerné&#160;?
+  - label: Quel endroit est concerné ?
     type: CHECKBOX
     options:
       - Intérieur du magasin
       - Atelier de fabrication
       - WC
       - Autre (à préciser)
-  - label: Quel est le problème&#160;?
+  - label: Quel est le problème ?
     type: CHECKBOX
     options:
       - C'est sale
       - C'est dégradé, en mauvais état
-  - label: À quel niveau&#160;?
+  - label: À quel niveau ?
     type: CHECKBOX
     options:
       - Sol
@@ -30,8 +30,9 @@ detailInputs:
     placeholder: Rayon du magasin, type de saleté, ...
     optional: true
   - label: Date du constat
-    type: DATE
+    type: DATE_NOT_IN_FUTURE
     defaultValue: SYSDATE
   - label: Heure du constat (facultatif)
     type: TIMESLOT
     optional: true
+subcategory: Hygiene_des_locaux_et_du_materiel

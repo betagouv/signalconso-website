@@ -7,3 +7,4 @@ detailInputs:
   - label: Quel est le nom de cette option ?
     type: TEXT
     placeholder: Indiquez l'intitulé figurant la facture
+subcategory: Non_je_nai_rien_recu

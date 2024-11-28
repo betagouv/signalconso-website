@@ -23,9 +23,10 @@ export type SendReportEvent = (_: ReportStepOrDone) => void
 // While the report is being built,
 // some (or all) the fields may be missing, depending on the current step.
 // We type it like if everything could be missing all the time
-export type PartialReport = Partial<Omit<Report, 'step1'>> & {
-  // Step1 is different, it gets saved partially at each sub-step
+export type PartialReport = Partial<Omit<Report, 'step1' | 'step4'>> & {
+  // Step 1 and 4 are different, they get saved partially at each sub-step
   step1?: Partial<Report['step1']>
+  step4?: Partial<Report['step4']>
 }
 
 const reportFlowContext = React.createContext<ReportFlowContextShape>(null as any)
@@ -178,7 +179,6 @@ function qualifyStep2ForTracking(
         case 'marketplaceCompanyFound':
           return 'Etablissement identifié'
         case 'consumerLocation':
-        case 'consumerPreciseLocation':
           return 'Etablissement non identifié'
         case 'foreignCompany':
         case 'foreignWebsiteWithJustCountry':

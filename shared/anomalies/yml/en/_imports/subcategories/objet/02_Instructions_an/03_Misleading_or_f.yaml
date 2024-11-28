@@ -1,6 +1,6 @@
 title: Misleading or false information
 desc: "Example\_: \"in gold\" while it is \"gold plated\", \"made in France\" while it is not"
-reponseconsoCode: '210'
+reponseconsoCode: "210"
 detailInputs:
   - label: What is the product type?
     type: RADIO
@@ -12,9 +12,10 @@ detailInputs:
       - Electronics
       - Other (to be specified)
   - label: Date of discovery of the incident
-    type: DATE
+    type: DATE_NOT_IN_FUTURE
     defaultValue: SYSDATE
   - label: Name / brand / reference
     type: TEXT
   - label: Description
     type: TEXTAREA
+subcategory: Informations_trompeuses_ou_fausses

@@ -7,26 +7,24 @@ desc: >-
 reponseconsoCode: '212'
 detailInputs:
   - label: Date du constat
-    type: DATE
+    type: DATE_NOT_IN_FUTURE
     defaultValue: SYSDATE
   - label: Heure du constat
     type: TIMESLOT
     optional: true
-  - label: Quel produit&#160;?
+  - label: Quel produit ?
     type: TEXT
     placeholder: Nom ou type de produit
-  - label: Quel était le prix indiqué si vous vous en rappelez&#160;?
+  - label: Quel était le prix indiqué si vous vous en rappelez ?
     type: TEXT
     placeholder: Prix indiqué
     optional: true
-  - label: L'avez-vous signalé au moment de payer&#160;?
+  - label: L'avez-vous signalé au moment de payer ?
     type: RADIO
     options:
-      - Oui. Pouvez-vous préciser à qui&#160;? (à préciser)
+      - Oui. Pouvez-vous préciser à qui ? (à préciser)
       - Non
-  - label: >-
-      Si oui, le commerçant a-t-il bien voulu vous faire payer le prix
-      affiché&#160;?
+  - label: Si oui, le commerçant a-t-il bien voulu vous faire payer le prix affiché ?
     type: RADIO
     options:
       - Oui
@@ -34,3 +32,4 @@ detailInputs:
     optional: true
   - label: Description
     type: TEXTAREA
+subcategory: Prix_a_la_caisse_different_du_prix_affiche_en_rayon

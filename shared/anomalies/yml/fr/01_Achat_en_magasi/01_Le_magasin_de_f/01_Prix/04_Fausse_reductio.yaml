@@ -14,7 +14,8 @@ detailInputs:
       - Une liquidation
       - Autre (à préciser)
   - label: Date du constat
-    type: DATE
+    type: DATE_NOT_IN_FUTURE
     defaultValue: SYSDATE
   - label: Description
     type: TEXTAREA
+subcategory: Fausse_reduction_de_prix

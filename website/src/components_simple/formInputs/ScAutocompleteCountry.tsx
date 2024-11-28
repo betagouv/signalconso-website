@@ -32,6 +32,7 @@ export function ScAutocompleteCountry(props: {
     return (
       <ScAutoComplete<Country>
         label={m.country}
+        showRequiredAsterisk={false}
         {...props}
         {...{query, setQuery}}
         optionsAreSame={(a, b) => a?.code === b?.code}

@@ -5,3 +5,4 @@ desc: >-
   Exemple : J'ai refusé tous les transporteurs de l'entreprise, j'ai obligé
   l'entreprise à prendre mon transporteur.
 companyKind: TRANSPORTER_WEBSITE
+subcategory: Jai_choisi_le_transporteur_en_dehors_de_la_selection_proposee_par_lentreprise

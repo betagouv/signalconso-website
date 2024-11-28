@@ -9,5 +9,6 @@ detailInputs:
     type: TEXT
   - label: Nom /marque
     type: TEXT
-  - label: Qu'avez-vous constaté&#160;?
+  - label: Qu'avez-vous constaté ?
     type: TEXTAREA
+subcategory: Informations_sur_lemballage_uniquement_en_langue_etrangere

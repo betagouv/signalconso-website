@@ -3,3 +3,4 @@ tags:
   - ProduitAlimentaire
 subcategories:
   customimport: _imports/subcategories/produit-alimentaire
+subcategory: It_is_a_food_or_drink

@@ -3,3 +3,4 @@ ccrfCode:
   - '226'
 blockingInfo:
   customimport: _imports/blockingInfo/tel.yaml
+subcategory: Oui_jai_ete_prevenu_par_email_ou_courrier

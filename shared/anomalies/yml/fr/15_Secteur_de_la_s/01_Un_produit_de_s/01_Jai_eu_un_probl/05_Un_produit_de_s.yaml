@@ -20,3 +20,4 @@ detailInputs:
     type: TEXT
   - label: "Expliquez le problème en quelques mots\_:"
     type: TEXT
+subcategory: Un_produit_de_sante_est_de_mauvaise_qualite

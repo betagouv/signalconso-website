@@ -8,8 +8,9 @@ blockingInfo:
     seront facturés. Si la vérification révèle une anomalie, ces frais vous
     seront remboursés.
   questions:
-    - question: Vous souhaitez obtenir la vérification de votre compteur d’eau&#160;?
+    - question: Vous souhaitez obtenir la vérification de votre compteur d’eau ?
       answer: >-
         Vous trouverez un modèle de lettre à envoyer sur le site <br><a
         href="https://www.inc-conso.fr/content/vous-souhaitez-obtenir-la-verification-de-votre-compteur-deau-en-raison-dune-consommation"
         target="_blank" />inc-conso.fr</a>
+subcategory: Je_ne_suis_pas_daccord_avec_la_consommation_indiquee_sur_ma_facture

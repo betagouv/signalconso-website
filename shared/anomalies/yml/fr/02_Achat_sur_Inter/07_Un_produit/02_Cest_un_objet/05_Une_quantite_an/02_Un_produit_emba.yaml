@@ -1,0 +1,15 @@
+title: Un produit emballé et étiqueté par le vendeur
+desc: La quantité est marquée sur une étiquette collée par le commerçant
+detailInputs:
+  - label: Date du constat ou d'achat
+    type: DATE
+    defaultValue: SYSDATE
+  - label: Nom du produit
+    type: TEXT
+  - label: Elements d'identification (date limite, n° de lot)
+    type: TEXT
+    optional: true
+    placeholder: Elements d'identification
+  - label: Description
+    type: TEXTAREA
+subcategory: Un_produit_emballe_et_etiquete_par_le_vendeur

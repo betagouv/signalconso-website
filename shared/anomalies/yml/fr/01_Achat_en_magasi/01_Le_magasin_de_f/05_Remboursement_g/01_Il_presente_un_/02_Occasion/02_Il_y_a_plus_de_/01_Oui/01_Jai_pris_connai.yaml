@@ -7,10 +7,11 @@ detailInputs:
   - label: Date de fin de garantie supplémentaire
     type: DATE
   - label: Date du constat
-    type: DATE
+    type: DATE_NOT_IN_FUTURE
     defaultValue: SYSDATE
   - label: Motif de refus
     type: TEXT
 fileLabel: >-
   Contrat de garantie / publicité de l'offre de vente / document se référant à
   la garantie
+subcategory: Jai_pris_connaissance_des_conditions_ecrites_dans_mon_contrat_de_garantie

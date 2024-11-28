@@ -1,0 +1,20 @@
+title: Commercialisation interdite de produit en plastique à usage unique
+desc: "Exemple\_: sacs plastiques, vaisselle en plastique, pailles, confettis, cotons tige en plastique, sachets de thé…"
+ccrfCode:
+  - '192'
+  - 23E
+tags:
+  - TransitionEcologique
+  - ReponseConso
+companyKind: PRODUCT
+detailInputs:
+  - label: Date du constat
+    type: DATE_NOT_IN_FUTURE
+    defaultValue: SYSDATE
+  - label: Type de produit
+    type: TEXT
+  - label: Nom / marque / référence
+    type: TEXT
+  - label: Description
+    type: TEXTAREA
+subcategory: Commercialisation_interdite_de_produit_en_plastique_a_usage_unique

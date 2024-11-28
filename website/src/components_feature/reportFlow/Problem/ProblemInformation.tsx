@@ -48,7 +48,7 @@ export const ProblemInformation = ({anomaly, subcategories, information, isWebVi
         <div id="blocking-info-wall" className="p-4 border border-gray-300 border-solid mb-4">
           <h2 className="fr-h6" dangerouslySetInnerHTML={{__html: information.title ?? m.informationTitle}} />
           <div>
-            {information.notAFraudMessage && <p>{m.informationReportOutOfScope}</p>}
+            {information.reportOutOfScopeMessage && <p>{m.informationReportOutOfScope}</p>}
             {information.subTitle && <p className="font-bold mb-1" dangerouslySetInnerHTML={{__html: information.subTitle}} />}
             {information.content && <p className="mb-1" dangerouslySetInnerHTML={{__html: information.content}} />}
             {information.questions?.map(action => (

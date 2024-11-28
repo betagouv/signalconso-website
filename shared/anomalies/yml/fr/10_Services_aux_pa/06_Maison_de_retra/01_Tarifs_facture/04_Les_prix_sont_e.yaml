@@ -4,4 +4,5 @@ blockingInfo:
   content: >-
     Par contre, les prix doivent être clairement indiqués pour que vous soyez au
     courant avant de signer un contrat ou avant de prendre des options.
-  notAFraudMessage: true
+  reportOutOfScopeMessage: true
+subcategory: Les_prix_sont_eleves_pour_la_prestation

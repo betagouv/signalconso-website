@@ -10,3 +10,5 @@ detailInputs:
   - label: "Quelle partie du contrat / règlement trouvez-vous abusive\_?"
     type: TEXTAREA
 fileLabel: Joindre une copie du contrat / règlement.
+subcategory: >-
+  Une_clause_du_contrat_reglement_de_service_est_abusive_cestadire_quelle_desavantage_fortement_le_con

@@ -1,0 +1,11 @@
+title: Un produit sans emballage
+desc: "Exemple\_: verre de vin dans un café, plat au restaurant"
+detailInputs:
+  - label: Date du constat ou d'achat
+    type: DATE
+    defaultValue: SYSDATE
+  - label: Nom du produit
+    type: TEXT
+  - label: Description
+    type: TEXTAREA
+subcategory: Un_produit_sans_emballage

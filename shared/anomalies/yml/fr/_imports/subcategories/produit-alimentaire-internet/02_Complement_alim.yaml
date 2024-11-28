@@ -1,6 +1,7 @@
 title: Complément alimentaire
 tags:
   - ProduitAlimentaire
-subcategoriesTitle: Quel est le risque&#160;?
+subcategoriesTitle: Quel est le risque ?
 subcategories:
   customimport: _imports/subcategories/produit-alimentaire-risque-internet
+subcategory: Complement_alimentaire

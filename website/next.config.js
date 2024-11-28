@@ -41,9 +41,12 @@ const changedPaths = [
   ],
   ['/fr/app-mobile', '/fr/actualites/signalconso-desormais-disponible-en-application-mobile'],
   ['/en/app-mobile', '/en/actualites/signalconso-mobile-app-available'],
-  ['/d%C3%A9marchage-t%C3%A9l%C3%A9phonique', '/demarchage-telephonique'],
+  ['/d%C3%A9marchage-t%C3%A9l%C3%A9phonique', '/demarchage-abusif'],
   ['/pompe-%C3%A0-chaleur-pac', '/pompe-a-chaleur-pac'],
-  ['/fr/bloctel', '/fr/demarchage-telephonique'],
+  ['/fr/bloctel', '/fr/demarchage-abusif'],
+  ['/webview/bloctel', '/webview/demarchage-abusif'],
+  ['/fr/webview/bloctel', '/fr/webview/demarchage-abusif'],
+  ['/fr/demarchage-telephonique', '/fr/demarchage-abusif'],
   ['/fr/bloctel/faire-un-signalement', '/fr/demarchage-abusif/faire-un-signalement'],
   ['/fr/duree-de-vie-produit-obsolescence-programmee-internet', '/fr/duree-de-vie-produit-obsolescence-programmee'],
   ['/fr/incidents-intoxication-alimentaire', '/fr/intoxication-alimentaire'],
@@ -51,6 +54,7 @@ const changedPaths = [
   ['/en/remboursement-telecom', '/en/litige/telecom'],
   ['/fr/rappel-voitures-airbags-takata', '/fr/actualites/rappel-airbag-takata'],
   ['/fr/internet', '/fr/signaler-un-influenceur'],
+  ['/fr/black-friday-faux-site-gouvernemental', '/fr/faux-site-gouvernemental'],
 ]
 
 const redirectsForChangedPaths = changedPaths.map(([source, destination]) => ({
@@ -76,7 +80,7 @@ const ContentSecurityPolicy = [
   `connect-src 'self' *.sentry.io *.data.gouv.fr *.beta.gouv.fr data.economie.gouv.fr ressources.data.sncf.com ${process.env.NEXT_PUBLIC_API_BASE_URL} ${process.env.NEXT_PUBLIC_COMPANY_API_BASE_URL} ${process.env.NEXT_PUBLIC_SIRET_EXTRACTOR_BASE_URL};`,
   `worker-src \'self\' ${process.env.NEXT_PUBLIC_API_BASE_URL} ${process.env.NEXT_PUBLIC_COMPANY_API_BASE_URL} ${process.env.NEXT_PUBLIC_SIRET_EXTRACTOR_BASE_URL} blob:;`,
   `img-src 'self' data: ${process.env.NEXT_PUBLIC_APP_BASE_URL} ${process.env.NEXT_PUBLIC_API_BASE_URL} *.cellar-c2.services.clever-cloud.com *.twitter.com *.xiti.com *.beta.gouv.fr;`,
-  `frame-src *.data.gouv.fr/ *.beta.gouv.fr *.twitter.com https://www.youtube-nocookie.com https://metabase-anon-signalconso.cleverapps.io/;`,
+  `frame-src *.data.gouv.fr/ *.beta.gouv.fr *.twitter.com https://www.youtube-nocookie.com https://metabase-publicstats-signalconso.cleverapps.io/;`,
   `frame-ancestors 'self';`,
   `child-src 'self';`,
   `style-src 'self' 'unsafe-inline' https://fonts.googleapis.com blob:;`,

@@ -1,14 +1,9 @@
 import {FullWidthPageContainer} from '@/components_simple/PageContainers'
-import {PageComponentProps} from '@/core/metadatas'
-import {BlueBandWhySignalConso, getManualLpButtonProps} from '@/landings/manualLandingsUtils'
+import {BlueBandWhySignalConso, getManualLpButtonProps} from '@/landings/manualLandings/manualLandingsComponents'
 import Button from '@codegouvfr/react-dsfr/Button'
-import {notFound} from 'next/navigation'
 
-export function signalInfluenceur(props: PageComponentProps) {
-  const lang = props.params.lang
-  if (lang !== 'fr') {
-    return notFound()
-  }
+export function signalInfluenceur() {
+  const lang = 'fr'
   const arrow = <span className="ri-arrow-right-line mr-2 fr-icon--lg" />
   return (
     <FullWidthPageContainer>

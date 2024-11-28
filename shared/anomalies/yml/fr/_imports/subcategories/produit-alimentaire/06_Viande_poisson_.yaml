@@ -1,6 +1,7 @@
 title: Viande, poisson, produit de la mer, œuf
 tags:
   - ProduitAlimentaire
-subcategoriesTitle: Quel est le risque&#160;?
+subcategoriesTitle: Quel est le risque ?
 subcategories:
   customimport: _imports/subcategories/produit-alimentaire-risque
+subcategory: Viande_poisson_produit_de_la_mer_oeuf

@@ -4,4 +4,5 @@ blockingInfo:
   content: >-
     À la différence de la carte bancaire, un taxi a le droit de refuser les
     chèques.<br> Il doit l'afficher sur la voiture.
-  notAFraudMessage: true
+  reportOutOfScopeMessage: true
+subcategory: Oui

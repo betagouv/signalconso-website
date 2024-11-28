@@ -4,9 +4,9 @@ ccrfCode:
 reponseconsoCode: '210'
 detailInputs:
   - label: Date du constat
-    type: DATE
+    type: DATE_NOT_IN_FUTURE
     defaultValue: SYSDATE
-  - label: De quelle publicité s'agit-il&#160;?
+  - label: De quelle publicité s'agit-il ?
     type: RADIO
     options:
       - Catalogue papier
@@ -14,12 +14,12 @@ detailInputs:
       - Spot radio (à préciser)
       - Spot télé (à préciser)
       - Autre (à préciser)
-  - label: Quel est le produit que vous vouliez&#160;?
+  - label: Quel est le produit que vous vouliez ?
     type: TEXT
     placeholder: Type, nom et marque du produit
   - label: >-
       Le commerçant vous-a-t-il proposé de commander le produit ou d'en avoir un
-      autre équivalent&#160;?
+      autre équivalent ?
     type: RADIO
     options:
       - Oui
@@ -28,8 +28,8 @@ detailInputs:
     optional: true
   - label: >-
       Précisez si possible la publicité concernée. Vous pouvez par exemple
-      récupérer le lien de la publicité sur le site <a
-      href="https://www.bonial.fr/" target="_blank">bonial.fr</a>&#160;?
+      récupérer le lien de la publicité sur le site https://www.bonial.fr ?
     type: TEXT
     placeholder: Lien vers la publicité
 fileLabel: Photo(s) de la publicité si possible
+subcategory: Indisponibilite_des_produits_dont_il_est_fait_la_publicite

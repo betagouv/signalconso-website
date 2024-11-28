@@ -1,0 +1,32 @@
+title: >-
+  Un défaut d'affichage de la réduction de quantité et de l'augmentation du prix
+  ou un emballage identique mais contenant un produit de qualité inférieure
+desc: >-
+  Un paquet de lessive qui passe de 40 lavages à 35 lavages (Réduflation ou
+  shrinkflation).
+companyKind: PRODUCT_POINT_OF_SALE
+tags:
+  - QuantiteNonConforme
+  - Shrinkflation
+detailInputs:
+  - label: Date du constat
+    type: DATE_NOT_IN_FUTURE
+    defaultValue: SYSDATE
+  - label: Quelle était l'ancienne quantité ?
+    type: TEXTAREA
+    placeholder: Quantité d'origine sur l'ancien paquet
+    optional: true
+  - label: Quelle est la nouvelle quantité ?
+    type: TEXTAREA
+    placeholder: Quantité indiquée sur le nouveau paquet
+    optional: true
+  - label: Quel était l'ancien prix ?
+    type: TEXTAREA
+    optional: true
+  - label: Quel était le nouveau prix ?
+    type: TEXTAREA
+    optional: true
+  - label: Description
+    type: TEXTAREA
+subcategory: >-
+  Un_defaut_daffichage_de_la_reduction_de_quantite_et_de_laugmentation_du_prix_ou_un_emballage_identiq

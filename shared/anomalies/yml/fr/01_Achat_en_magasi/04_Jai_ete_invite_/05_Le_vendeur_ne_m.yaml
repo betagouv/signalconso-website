@@ -1,0 +1,22 @@
+title: >-
+  Le vendeur ne m’a pas fourni tous les documents et informations obligatoires
+  au moment de la vente
+desc: >-
+  J’ai souscrit un crédit pour financer mon achat mais aucun document ne m’a été
+  remis par les vendeurs, ni aucune explication sur ses caractéristiques.
+detailInputs:
+  - label: Date de l'achat ou de la visite dans le magasin
+    type: DATE
+    defaultValue: SYSDATE
+  - label: >-
+      Adresse précise du magasin (numéro, nom de rue, code postal et nom de la
+      ville)
+    type: TEXT
+    placeholder: Nom ou type de produit
+  - label: Description
+    type: TEXTAREA
+fileLabel: >-
+  Invitation personnelle / le bon de commande / fiche technique du produit / un
+  devis manuscrit / facture / crédit associé
+subcategory: >-
+  Le_vendeur_ne_ma_pas_fourni_tous_les_documents_et_informations_obligatoires_au_moment_de_la_vente

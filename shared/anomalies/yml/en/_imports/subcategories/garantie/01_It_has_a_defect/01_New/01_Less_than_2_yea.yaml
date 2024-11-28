@@ -5,7 +5,7 @@ detailInputs:
   - label: Product name
     type: TEXT
   - label: Date of discovery of the incident
-    type: DATE
+    type: DATE_NOT_IN_FUTURE
     defaultValue: SYSDATE
   - label: Contact person
     type: RADIO
@@ -17,3 +17,4 @@ detailInputs:
       Why does the merchant not want to take the product back from you?
     type: TEXTAREA
 fileLabel: Proof of purchase / advertisement / offer of sale
+subcategory: Il_y_a_moins_de_2_ans

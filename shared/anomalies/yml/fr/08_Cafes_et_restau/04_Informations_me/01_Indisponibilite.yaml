@@ -2,9 +2,9 @@ title: Indisponibilité des produits proposés
 reponseconsoCode: '2243'
 detailInputs:
   - label: Date du constat
-    type: DATE
+    type: DATE_NOT_IN_FUTURE
     defaultValue: SYSDATE
-  - label: Quel type de produit était indisponible&#160;?
+  - label: Quel type de produit était indisponible ?
     type: TEXT
     placeholder: "Exemple\_: Vin blanc, menu en promotion "
   - label: "Le commerçant vous a-t-il donné une raison\_?"
@@ -14,3 +14,4 @@ detailInputs:
       - Il n'y en avait plus
       - La carte n'est pas à jour
       - Autre raison (à préciser)
+subcategory: Indisponibilite_des_produits_proposes

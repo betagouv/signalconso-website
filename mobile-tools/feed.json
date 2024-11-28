@@ -4,6 +4,60 @@
   "description": "",
   "items": [
     {
+      "title": "Les neuf règles d’or de la sécurité des batteries au lithium",
+      "link": "https://www.economie.gouv.fr/dgccrf/actualites/les-neuf-regles-dor-de-la-securite-des-batteries-au-lithium",
+      "description": "Dans nos tablettes, nos ordinateurs, nos cigarettes électroniques ou pour nos vélos et trottinettes électriques… Les batteries au lithium équipent de nombreux objets de notre quotidien. Leur utilisation suppose toutefois de respecter certaines règles et voici les conseils à connaître et à suivre pour les utiliser en toute sécurité.\n",
+      "guid": "3231800"
+    },
+    {
+      "title": "Black Friday : attention aux pièges sur les sites de e-commerce !",
+      "link": "https://www.economie.gouv.fr/dgccrf/actualites/black-friday-attention-aux-pieges-sur-les-sites-de-e-commerce",
+      "description": "Le Black Friday, est devenu un rendez-vous commercial important. C’est l’occasion de faire de bonnes affaires à condition de ne pas oublier ses bons réflexes de consommateur averti. Voici donc les pièges les plus fréquemment rencontrés sur internet pendant le Black Friday, certains concernent d’ailleurs aussi les magasins et boutiques. Suivez les conseils de la DGCCRF pour vous assurer de faire votre shopping en toute sécurité !&nbsp;\n",
+      "guid": "3231478"
+    },
+    {
+      "title": "Alerte sur les risques liés aux produits de lissage pour cheveux contenant de l’acide glyoxylique",
+      "link": "https://www.economie.gouv.fr/dgccrf/alerte-sur-les-risques-lies-aux-produits-de-lissage-pour-cheveux-contenant-de-lacide-0",
+      "description": "Dans le cadre de ses missions de cosmétovigilance, l’Anses a reçu depuis le début de l’année quatre signalements d’insuffisance rénale aiguë suite à l’application de produits dits « lissages brésiliens » contenant de l’acide glyoxylique.\n",
+      "guid": "3231217",
+      "date": "2024-10-16T10:54:46+02:00"
+    },
+    {
+      "title": "La DGCCRF accompagne la transition écologique",
+      "link": "https://www.economie.gouv.fr/dgccrf/la-dgccrf-accompagne-la-transition-ecologique",
+      "description": "La consommation est l'un des domaines clés de la transition écologique, c'est pourquoi la DGCCRF l'a défini comme un axe stratégique majeur. Contribuer à l’élaboration des lois, veiller au respect de la réglementation, accompagner l’évolution des modes de consommation : ainsi, au travers de ses actions quotidiennes, la DGCCRF accompagne la transition écologique.\n",
+      "guid": "3231055",
+      "date": "2024-10-04T11:36:53+02:00"
+    },
+    {
+      "title": "Recrudescence des saisies de SNIPER : la Douane et la DGCCRF alertent les consommateurs contre cet insecticide interdit car dangereux",
+      "link": "https://www.economie.gouv.fr/dgccrf/recrudescence-des-saisies-de-sniper-la-douane-et-la-dgccrf-alertent-les-consommateurs-0",
+      "description": "La Douane française et la DGCCRF signalent la multiplication de saisies portant sur le « SNIPER 1000 EC DDVP », un insecticide à base de dichlorvos interdit en France depuis 2013.\n",
+      "guid": "3231010",
+      "date": "2024-10-02T10:59:35+02:00"
+    },
+    {
+      "title": "De nombreuses clauses abusives dans les contrats de clubs de sport",
+      "link": "https://www.economie.gouv.fr/dgccrf/de-nombreuses-clauses-abusives-dans-les-contrats-de-clubs-de-sport",
+      "description": "La Commission des clauses abusives a constaté l'existence de clauses abusives dans les contrats de clubs de sport à caractère lucratif. Sur l’ensemble des contrats examinés, 67 clauses abusives ont été relevées au sein des contrats habituellement proposés par les professionnels aux consommateurs. La CCA recommande que ces clauses considérées comme abusives soient éliminées de ces contrats.\n",
+      "guid": "3230731",
+      "date": "2024-09-24T09:50:17+02:00"
+    },
+    {
+      "title": "La DGCCRF s'engage pour favoriser la consommation durable",
+      "link": "https://www.economie.gouv.fr/dgccrf/la-dgccrf-sengage-pour-favoriser-la-consommation-durable",
+      "description": "Faire évoluer nos modes de consommation est nécessaire pour réussir la transition écologique. La DGCCRF participe à l’élaboration de nouvelles réglementations, contrôle l’application des textes destinés à promouvoir une économie plus verte et accompagne les professionnels et les consommateurs vers une consommation plus durable. Le point sur le sujet à l’occasion de la semaine européenne du développement durable 2024.\n",
+      "guid": "3230353",
+      "date": "2024-09-06T09:11:16+02:00"
+    },
+    {
+      "title": "Le site vous informant sur le prix des contrôles techniques évolue !",
+      "link": "https://www.economie.gouv.fr/dgccrf/le-site-vous-informant-sur-le-prix-des-controles-techniques-evolue",
+      "description": "Le site vous informant sur le prix des contrôles techniques évolue ! La nouvelle adresse https://prix.conso.gouv.fr/controle-technique propose notamment pour les usagers des cartes interactives afin qu’ils trouvent plus rapidement un centre agréé près de chez eux et pour les professionnels une téléprocédure d’enregistrement plus efficace.\n",
+      "guid": "3230350",
+      "date": "2024-09-04T08:46:07+02:00"
+    },
+    {
       "title": "Equipements de protection individuelle (EPI) : un secteur présentant des lacunes à l’étiquetage, mais une sécurité des utilisateurs assurée",
       "link": "https://www.economie.gouv.fr/dgccrf/equipements-de-protection-individuelle-epi-un-secteur-presentant-des-lacunes-letiquetage",
       "description": "Dans le cadre de sa mission de protection des consommateurs, la Direction générale de la concurrence, de la consommation et de la répression des fraudes (DGCCRF) contrôle chaque année la sécurité des équipements de protection individuelle (EPI).\n",

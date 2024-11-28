@@ -45,6 +45,7 @@ type CompanyKindQuestionOption = {
 }
 
 type SubcategoryBase = CategoryNodeBase & {
+  subcategory: string
   // ex: "3.2.1.3.1.1.1"
   // Not in the yaml, they are generated recursively
   // Seem to be used in the JS as a unique identifier for the inputs values in the forms
@@ -63,6 +64,7 @@ type SubcategoryBase = CategoryNodeBase & {
 // A typical subcategory
 export type StandardSubcategory = SubcategoryBase & {
   fileLabel?: string
+  attachmentDesc?: string
   //Customize consumer client reference input
   customizedClientReferenceInput?: ClientReferenceInput
   detailInputs?: DetailInput[]
@@ -81,6 +83,8 @@ export type SubcategoryWithInfoWall = SubcategoryBase & {
 }
 
 export type Subcategory = StandardSubcategory | SubcategoryWithInfoWall
+
+export const reportTagsNotTransmittableToPro = ['BauxPrecaire']
 
 export const reportTagsAllowedInYaml = [
   'Hygiene',
@@ -106,6 +110,7 @@ export const reportTagsAllowedInYaml = [
   'AlimentationMaterielAnimaux',
   'Telecom',
   'Shrinkflation',
+  ...reportTagsNotTransmittableToPro
 ] as const
 export type ReportTagAllowedInYaml = (typeof reportTagsAllowedInYaml)[number]
 
@@ -182,7 +187,7 @@ export interface InfoWall {
   content?: string
   questions?: QuestionAndAnswer[]
   subTitle?: string
-  notAFraudMessage?: boolean
+  reportOutOfScopeMessage?: boolean
 }
 
 export interface QuestionAndAnswer {

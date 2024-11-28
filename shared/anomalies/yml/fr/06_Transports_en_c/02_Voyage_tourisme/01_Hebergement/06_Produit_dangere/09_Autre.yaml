@@ -1,8 +1,9 @@
 title: Autre
-subcategoriesTitle: Quel est le risque&#160;?
+subcategoriesTitle: Quel est le risque ?
 ccrfCode:
   - '332'
 tags:
   - ProduitIndustriel
 subcategories:
   customimport: _imports/subcategories/produit-dangereux
+subcategory: Autre

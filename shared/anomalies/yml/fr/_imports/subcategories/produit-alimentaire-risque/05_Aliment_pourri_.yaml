@@ -3,3 +3,4 @@ detailInputs:
   customimport: _imports/detailInputs/produit-alimentaire.yaml
 fileLabel: Photos du produit / de l'emballage / du ticket / de la facture / de l'accident
 reponseconsoCode: '321'
+subcategory: Aliment_pourri_ou_moisi

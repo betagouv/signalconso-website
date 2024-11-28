@@ -3,3 +3,4 @@ desc: >-
   Exemple : J'ai choisi entre livraison à domicile ou en point de retrait sur
   une liste précise.
 companyKind: MERCHANT_WEBSITE
+subcategory: Lentreprise_ma_impose_le_transporteur_sur_une_liste_lors_de_la_commande

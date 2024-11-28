@@ -4,6 +4,7 @@ blockingInfo:
   title: Ceci ne constitue pas un motif de signalement.
   content: >-
     Les professionnels ont le droit de choisir leurs prix. <br />Néanmoins, les
-    prix doivent être clairement indiqués pour que vous en ayez connaissance avant
-    d'acheter ou de commander.
-  notAFraudMessage: true
+    prix doivent être clairement indiqués pour que vous en ayez connaissance
+    avant d'acheter ou de commander.
+  reportOutOfScopeMessage: true
+subcategory: Prix_excessif

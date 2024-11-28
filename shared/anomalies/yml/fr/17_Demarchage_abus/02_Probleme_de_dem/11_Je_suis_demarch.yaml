@@ -1,5 +1,4 @@
-title: >-
-  Je suis démarché par un opérateur utilisant un numéro commençant par 06 ou 07
+title: Je suis démarché par un opérateur utilisant un numéro commençant par 06 ou 07
 companyKind: PHONE
 tags:
   - DemarchageTelephonique
@@ -7,3 +6,4 @@ detailInputs:
   - label: Date de l'appel
     type: DATE
     defaultValue: SYSDATE
+subcategory: Je_suis_demarche_par_un_operateur_utilisant_un_numero_commencant_par_06_ou_07

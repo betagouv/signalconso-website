@@ -7,6 +7,7 @@ detailInputs:
     type: TEXT
   - label: Nom /marque sur l'emballage
     type: TEXT
-  - label: Qu'avez-vous constaté&#160;?
+  - label: Qu'avez-vous constaté ?
     type: TEXTAREA
 fileLabel: Photos de l'emballage
+subcategory: Fruits

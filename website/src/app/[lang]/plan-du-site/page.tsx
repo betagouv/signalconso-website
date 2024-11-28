@@ -1,9 +1,11 @@
 import {getNewsArticleData} from '@/components_feature/actualites/newsArticlesData'
 import {ContentPageContainer} from '@/components_simple/PageContainers'
+import {buildLinkAirtableLandingPage, buildLinkManualLandingPage, buildLinkNewsArticle} from '@/core/buildLinks'
 import {PageComponentProps, buildGenerateMetadata} from '@/core/metadatas'
-import {buildLinkLandingPage, buildLinkNewsArticle, internalPageDefs, pagesDefs} from '@/core/pagesDefinitions'
+import {internalPageDefs, pagesDefs} from '@/core/pagesDefinitions'
 import {AppLang, AppLangs} from '@/i18n/localization/AppLangs'
-import {allVisibleLandings} from '@/landings/landingDataUtils'
+import {allVisibleAirtableLandings} from '@/landings/airtableLandings/airtableLandingsUtils'
+import {getManualLandings} from '@/landings/manualLandings/manualLandingsUtils'
 import Link from 'next/link'
 import {getI18n} from '../../../i18n/I18nDictionnary'
 
@@ -34,22 +36,26 @@ const PlanDuSite = (props: PageComponentProps) => {
           <BasicPageLink page="litigeTelecom" label={m.planDuSite.telecomResolutionTips} {...{lang}} />
         </ul>
         <h2 className="fr-h4">{m.planDuSite.reportIncidentSection}</h2>
-        <ul className="">
-          {allVisibleLandings(lang).map(landingData => {
+        <ul className="mb-6">
+          {allVisibleAirtableLandings(lang).map(landingData => {
             return (
               <li key={landingData.url}>
-                <Link href={buildLinkLandingPage(landingData)}>
+                <Link href={buildLinkAirtableLandingPage(landingData)}>
                   {m.planDuSite.reportIncidentFor} {landingData.title}
                 </Link>
               </li>
             )
           })}
-          <BasicPageLink page="obligationFibre" label={m.planDuSite.obligationFibre} {...{lang}} />
-          <BasicPageLink page="signalInfluenceur" label={m.planDuSite.signalInfluenceur} {...{lang}} />
-          <BasicPageLink page="obsolescencePage" label={m.planDuSite.obsolescencePage} {...{lang}} />
-          <BasicPageLink page="demarchageTelephonique" label={m.planDuSite.demarchageTelephonique} {...{lang}} />
-          <BasicPageLink page="intoxAlimentaire" label={m.planDuSite.intoxAlimentaire} {...{lang}} />
-          <hr className="mt-4" />
+        </ul>
+        <hr />
+        <ul>
+          {getManualLandings(lang).map(landingData => {
+            return (
+              <li key={landingData.url}>
+                <Link href={buildLinkManualLandingPage(landingData)}>{landingData.labelPlanDuSite}</Link>
+              </li>
+            )
+          })}
         </ul>
         <h2 className="fr-h4">{m.planDuSite.proSpaceSection}</h2>
         <ul>

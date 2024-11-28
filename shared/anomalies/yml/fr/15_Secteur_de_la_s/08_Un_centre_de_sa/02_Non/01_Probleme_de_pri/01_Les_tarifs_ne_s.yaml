@@ -10,3 +10,5 @@ reponseconsoCode: '212'
 detailInputs:
   - label: Date de constat
     type: DATE
+subcategory: >-
+  Les_tarifs_ne_sont_pas_affiches_sur_le_site_de_prise_de_rendezvous_en_salle_dattente_et_au_lieu_de_p

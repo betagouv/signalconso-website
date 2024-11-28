@@ -1,5 +1,5 @@
 'use client'
-import {buildLinkStartReport} from '@/core/pagesDefinitions'
+import {buildLinkStartReport} from '@/core/buildLinks'
 import Image from 'next/image'
 import Link from 'next/link'
 import {Anomaly} from 'shared/anomalies/Anomaly'

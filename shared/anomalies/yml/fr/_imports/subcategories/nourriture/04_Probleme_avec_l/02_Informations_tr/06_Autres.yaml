@@ -3,7 +3,7 @@ detailInputs:
   - label: Date du constat (ou d'achat suivant le cas)
     type: DATE_NOT_IN_FUTURE
     defaultValue: SYSDATE
-  - label: De quel produit s'agit-il&#160;?
+  - label: De quel produit s'agit-il ?
     type: RADIO
     options:
       - Alcool (vin, spiritueux...)
@@ -13,7 +13,8 @@ detailInputs:
   - label: Nom  et marque du produit
     type: TEXT
     optional: true
-  - label: Pourquoi trouvez-vous ça trompeur&#160;?
+  - label: Pourquoi trouvez-vous ça trompeur ?
     type: TEXTAREA
     optional: true
 fileLabel: Photos du produit (si possible de tous les côtés de l'emballage)
+subcategory: Autres

@@ -3,7 +3,7 @@ desc: 'Exemple : rupture de la chaîne du froid'
 ccrfCode:
   - '322'
 detailInputs:
-  - label: Quel est le problème&#160;?
+  - label: Quel est le problème ?
     type: RADIO
     options:
       - Vitrine ou réfrigérateur trop chaud, cassé ou en panne
@@ -14,8 +14,9 @@ detailInputs:
     type: TEXTAREA
     optional: true
   - label: Date du constat
-    type: DATE
+    type: DATE_NOT_IN_FUTURE
     defaultValue: SYSDATE
   - label: Heure du constat (facultatif)
     type: TIMESLOT
     optional: true
+subcategory: Probleme_de_temperature

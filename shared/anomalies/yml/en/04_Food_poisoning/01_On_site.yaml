@@ -1,0 +1,11 @@
+title: On site
+desc: At a dine-in restaurant or similar
+companyKind: SIRET
+reponseconsoCode: '321'
+tags:
+  - ProduitDangereux
+  - ProduitAlimentaire
+detailInputs:
+  customimport: _imports/detailInputs/intoxication-alimentaire.yaml
+fileLabel: Photos of product / packaging / receipt / invoice
+subcategory: Apres_avoir_mange_sur_place

@@ -1,2 +1,6 @@
 title: Echec du raccordement
-desc: 'Exemple : après plusieurs rendez-vous, je ne suis toujours pas raccordé (les techniciens ne se présentent pas au rendez-vous / les techniciens se présentent mais ne peuvent pas réaliser le raccordement'
+desc: >-
+  Exemple : après plusieurs rendez-vous, je ne suis toujours pas raccordé (les
+  techniciens ne se présentent pas au rendez-vous / les techniciens se
+  présentent mais ne peuvent pas réaliser le raccordement
+subcategory: Echec_du_raccordement

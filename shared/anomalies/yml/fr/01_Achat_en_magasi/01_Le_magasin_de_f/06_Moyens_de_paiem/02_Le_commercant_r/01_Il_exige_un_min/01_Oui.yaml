@@ -8,4 +8,5 @@ blockingInfo:
   content: >-
     Le minimum d'achat doit être indiqué très visiblement. Par exemple :
     affichage à l'entrée du magasin ou à la caisse...
-  notAFraudMessage: true
+  reportOutOfScopeMessage: true
+subcategory: Oui

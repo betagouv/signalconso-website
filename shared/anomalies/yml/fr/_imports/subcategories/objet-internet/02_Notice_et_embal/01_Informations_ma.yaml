@@ -4,14 +4,14 @@ detailInputs:
   - label: Site internet d'achat
     placeholder: Adresse du site internet complet ou URL
     type: TEXT
-  - label: Quel est-le problème&#160;?
+  - label: Quel est-le problème ?
     type: RADIO
     options:
       - Composition
       - Données énergétiques
       - Disponibilité des pièces de rechange
       - Autre (à préciser)
-  - label: Quel est le type de produit&#160;?
+  - label: Quel est le type de produit ?
     type: RADIO
     options:
       - Textiles
@@ -25,6 +25,7 @@ detailInputs:
     defaultValue: SYSDATE
   - label: Nom / marque
     type: TEXT
-  - label: Qu'avez-vous constaté&#160;?
+  - label: Qu'avez-vous constaté ?
     type: TEXTAREA
 fileLabel: Photos du code barre / n° de lot / référence
+subcategory: Informations_manquantes

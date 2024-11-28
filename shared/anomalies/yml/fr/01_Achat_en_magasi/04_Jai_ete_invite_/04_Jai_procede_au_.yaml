@@ -1,0 +1,17 @@
+title: J’ai procédé au paiement le jour de la vente
+desc: J’ai remis un ou plusieurs chèques aux vendeurs le jour de la vente.
+detailInputs:
+  - label: Date de l'achat ou de la visite dans le magasin
+    type: DATE
+    defaultValue: SYSDATE
+  - label: >-
+      Adresse précise du magasin (numéro, nom de rue, code postal et nom de la
+      ville)
+    type: TEXT
+    placeholder: Nom ou type de produit
+  - label: Description
+    type: TEXTAREA
+fileLabel: >-
+  Invitation personnelle / le bon de commande / fiche technique du produit / un
+  devis manuscrit / facture / crédit associé
+subcategory: Jai_procede_au_paiement_le_jour_de_la_vente

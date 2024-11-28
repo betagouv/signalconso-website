@@ -1,5 +1,4 @@
-title: >-
-  Les produits ne sont pas frais ou certains aliments sont périmés
+title: Les produits ne sont pas frais ou certains aliments sont périmés
 reponseconsoCode: '323'
 postReportHelper:
   customimport: _imports/postreporthelper/hygiene_intoxication.yaml
@@ -18,3 +17,4 @@ detailInputs:
 fileLabel: >-
   Merci de joindre si possible une photo ou votre facture afin d'appuyer votre
   signalement.
+subcategory: Les_produits_ne_sont_pas_frais_ou_certains_aliments_sont_perimes

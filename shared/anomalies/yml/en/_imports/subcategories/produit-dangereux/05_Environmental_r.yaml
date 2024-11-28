@@ -2,3 +2,4 @@ title: Environmental risk
 detailInputs:
   customimport: _imports/detailInputs/produit-dangereux.yaml
 fileLabel: Product / Package / Receipt / Invoice / Crash Photos
+subcategory: Risque_environnemental

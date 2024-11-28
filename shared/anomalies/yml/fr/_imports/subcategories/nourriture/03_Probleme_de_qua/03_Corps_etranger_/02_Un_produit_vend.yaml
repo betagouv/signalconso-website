@@ -2,7 +2,7 @@ title: Un produit vendu dans un emballage
 desc: "Exemple\_: bouteille d'eau, conserve de légumes, paquet de chips"
 companyKind: PRODUCT
 detailInputs:
-  - label: 'C''est un produit vendu&#160;:'
+  - label: 'C''est un produit vendu :'
     type: RADIO
     options:
       - au rayon frais
@@ -23,3 +23,4 @@ detailInputs:
     type: DATE_NOT_IN_FUTURE
     defaultValue: SYSDATE
 fileLabel: Photo du produit
+subcategory: Un_produit_vendu_dans_un_emballage

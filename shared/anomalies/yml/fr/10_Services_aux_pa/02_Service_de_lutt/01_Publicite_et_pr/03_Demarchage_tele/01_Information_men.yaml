@@ -5,7 +5,7 @@ ccrfCode:
   - '275'
   - '267'
 detailInputs:
-  - label: Qu'est-ce qui est trompeur ou mensonger&#160;?
+  - label: Qu'est-ce qui est trompeur ou mensonger ?
     type: RADIO
     options:
       - Le discours du professionnel
@@ -22,3 +22,4 @@ detailInputs:
   - label: Heure de l'appel (facultatif)
     type: TIMESLOT
     optional: true
+subcategory: Information_mensongere_ou_trompeuse

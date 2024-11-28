@@ -2,7 +2,7 @@ title: Utilisation de termes laissant croire qu'il s'agit d'une structure publiq
 ccrfCode:
   - 23b
 detailInputs:
-  - label: Qu'est-ce qui est trompeur ou mensonger&#160;?
+  - label: Qu'est-ce qui est trompeur ou mensonger ?
     type: RADIO
     options:
       - Le discours du professionnel
@@ -19,3 +19,4 @@ detailInputs:
   - label: Heure de l'appel (facultatif)
     type: TIMESLOT
     optional: true
+subcategory: Utilisation_de_termes_laissant_croire_quil_sagit_dune_structure_publique

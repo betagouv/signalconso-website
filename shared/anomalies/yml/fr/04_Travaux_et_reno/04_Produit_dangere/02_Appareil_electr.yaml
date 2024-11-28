@@ -1,7 +1,8 @@
 title: Appareil électrique
-subcategoriesTitle: Quel est le risque&#160;?
+subcategoriesTitle: Quel est le risque ?
 tags:
   - ProduitIndustriel
 subcategories:
   customimport: _imports/subcategories/produit-dangereux
 companyKind: PRODUCT
+subcategory: Appareil_electrique

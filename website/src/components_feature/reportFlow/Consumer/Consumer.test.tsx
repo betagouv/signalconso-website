@@ -64,13 +64,13 @@ describe('Consumer', () => {
         consumer: Fixture.consumer,
       },
     }
-    let submitted: Report['step4'] | undefined = undefined
+    let submitted: Partial<Report['step4']> | undefined = undefined
 
     beforeEach(() => {
       app = render(
         <ConsumerInner
           draft={initial}
-          onSubmit={x => {
+          saveChange={(x, _) => {
             submitted = x
           }}
           stepNavigation={dummyStepNavigation}
@@ -121,12 +121,12 @@ describe('Consumer', () => {
       step2,
     }
 
-    let submitted: Report['step4'] | undefined = undefined
+    let submitted: Partial<Report['step4']> | undefined = undefined
     beforeEach(() => {
       app = render(
         <ConsumerInner
           draft={initial}
-          onSubmit={x => {
+          saveChange={(x, _) => {
             submitted = x
           }}
           stepNavigation={dummyStepNavigation}

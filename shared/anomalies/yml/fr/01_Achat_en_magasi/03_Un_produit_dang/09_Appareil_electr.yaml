@@ -1,8 +1,9 @@
 title: Appareil électrique
-subcategoriesTitle: Quel est le risque&#160;?
+subcategoriesTitle: Quel est le risque ?
 ccrfCode:
   - 34F
 tags:
   - ProduitIndustriel
 subcategories:
   customimport: _imports/subcategories/produit-dangereux
+subcategory: Appareil_electrique

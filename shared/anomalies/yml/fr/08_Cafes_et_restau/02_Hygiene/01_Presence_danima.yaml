@@ -3,16 +3,16 @@ desc: "Exemple\_: cafard, rat"
 reponseconsoCode: '312'
 detailInputs:
   - label: Date du constat
-    type: DATE
+    type: DATE_NOT_IN_FUTURE
     defaultValue: SYSDATE
-  - label: Quel animal avez-vous vu&#160;?
+  - label: Quel animal avez-vous vu ?
     type: RADIO
     options:
       - Insectes (cafard...)
       - Rongeurs (rat, souris...)
       - Oiseau (pigeon...)
       - Autre (à préciser)
-  - label: Où l'avez-vous vu&#160;?
+  - label: Où l'avez-vous vu ?
     type: CHECKBOX
     options:
       - Cuisine ou zone de production
@@ -22,3 +22,4 @@ detailInputs:
   - label: Vous pouvez préciser le problème en quelques mots
     type: TEXT
     optional: true
+subcategory: Presence_danimal_nuisible

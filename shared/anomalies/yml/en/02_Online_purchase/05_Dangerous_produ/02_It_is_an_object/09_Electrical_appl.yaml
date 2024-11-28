@@ -1,8 +1,0 @@
-title: Electrical appliance
-subcategoriesTitle: What is the risk ?
-ccrfCode:
-  - 34F
-tags:
-  - ProduitIndustriel
-subcategories:
-  customimport: _imports/subcategories/produit-dangereux

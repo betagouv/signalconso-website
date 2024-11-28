@@ -5,7 +5,7 @@ tags:
 desc: "Exemple\_: absence de prix sur la carte des vins"
 detailInputs:
   - label: Date du constat
-    type: DATE
+    type: DATE_NOT_IN_FUTURE
     defaultValue: SYSDATE
   - label: Description
     type: TEXTAREA
@@ -13,3 +13,4 @@ detailInputs:
 fileLabel: >-
   Merci de joindre si possible des éléments pour appuyer votre signalement
   (photo du menu, photo de la vitrine...)
+subcategory: Il_manque_certains_prix

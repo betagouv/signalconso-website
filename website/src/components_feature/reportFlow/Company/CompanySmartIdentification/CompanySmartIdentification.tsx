@@ -1,3 +1,4 @@
+import {useAnalyticContext} from '@/analytic/AnalyticContext'
 import {useToastOnQueryError} from '@/clients/apiHooks'
 import {Animate} from '@/components_simple/Animate'
 import {useApiClients} from '@/context/ApiClientsContext'
@@ -11,7 +12,6 @@ import {useQuery} from '@tanstack/react-query'
 import {useRef, useState} from 'react'
 import {PartialReport} from '../../ReportFlowContext'
 import {CompanyAskConsumerPostalCode} from '../CompanyAskConsumerPostalCode'
-import {CompanyAskConsumerStreet} from '../CompanyAskConsumerStreet'
 import {CompanyAskForeignDetails} from '../CompanyAskForeignDetails'
 import {CompanySearchResultComponent} from '../CompanySearchResultComponent'
 import {CannotFindCompanyWarning} from './CannotFindCompanyWarning'
@@ -71,7 +71,12 @@ export function CompanySmartIdentification({
           )}
           <div className="flex flex-col items-end gap-2">
             <div className="flex flex-col">
-              <Button onClick={() => setMode('cannotFind')} priority="tertiary no outline" iconId="ri-arrow-right-line">
+              <Button
+                onClick={() => setMode('cannotFind')}
+                priority="tertiary no outline"
+                iconId="ri-arrow-right-line"
+                className="text-left"
+              >
                 {m.cantFindCompany}
               </Button>
               <Button onClick={() => setMode('foreign')} priority="tertiary no outline" iconId="ri-arrow-right-line">
@@ -99,27 +104,15 @@ export function CompanySmartIdentification({
       {mode === 'cannotFindConfirmed' && (
         <Animate autoScrollTo>
           <div>
-            {companyKind === 'LOCATION' ? (
-              <CompanyAskConsumerStreet
-                onChange={({postalCode, street}) => {
-                  onIdentification({
-                    kind: 'consumerPreciseLocation',
-                    consumerPostalCode: postalCode,
-                    consumerStreet: street,
-                  })
-                }}
-              />
-            ) : (
-              <CompanyAskConsumerPostalCode
-                {...{companyKind}}
-                onChange={postalCode => {
-                  onIdentification({
-                    kind: 'consumerLocation',
-                    consumerPostalCode: postalCode,
-                  })
-                }}
-              />
-            )}
+            <CompanyAskConsumerPostalCode
+              {...{companyKind}}
+              onChange={postalCode => {
+                onIdentification({
+                  kind: 'consumerLocation',
+                  consumerPostalCode: postalCode,
+                })
+              }}
+            />
           </div>
         </Animate>
       )}
@@ -147,6 +140,7 @@ export function CompanySmartIdentification({
 function useCompanySearchSmartQuery(searchInputs: CompanySearchInputs | undefined) {
   const {companyApiClient} = useApiClients()
   const {currentLang} = useI18n()
+  const _analytic = useAnalyticContext()
   const _search = useQuery({
     queryKey: ['searchCompany', searchInputs],
     queryFn: async () => {
@@ -154,7 +148,9 @@ function useCompanySearchSmartQuery(searchInputs: CompanySearchInputs | undefine
         const {input, geoArea} = searchInputs
         const postalCode = geoArea && geoArea.kind === 'postcode' ? geoArea.postalCode : undefined
         const departmentCode = geoArea && geoArea.kind === 'department' ? geoArea.dpt.code : undefined
-        return companyApiClient.searchSmart(input, postalCode, departmentCode, currentLang)
+        const res = await companyApiClient.searchSmart(input, postalCode, departmentCode, currentLang)
+        _analytic.trackSearch({q: input, postalCode, departmentCode}, 'companysearch_smart', res.length)
+        return res
       }
       return null
     },

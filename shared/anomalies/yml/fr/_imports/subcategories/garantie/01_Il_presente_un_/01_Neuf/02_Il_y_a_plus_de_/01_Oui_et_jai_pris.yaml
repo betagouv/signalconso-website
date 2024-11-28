@@ -1,4 +1,6 @@
-title: Oui et j'ai pris connaissance des conditions écrites dans mon contrat de garantie
+title: >-
+  Oui et j'ai pris connaissance des conditions écrites dans mon contrat de
+  garantie
 desc: >-
   Exemple : garantie contractuelle, garantie constructeur, extension de
   garantie, échange à neuf
@@ -14,9 +16,12 @@ detailInputs:
   - label: Date de fin de garantie supplémentaire
     type: DATE
   - label: Date du constat
-    type: DATE
+    type: DATE_NOT_IN_FUTURE
     defaultValue: SYSDATE
   - label: Motif de refus
     type: TEXT
 fileLabel: >-
-  Contrat de garantie / publicité de l'offre de vente / document se référant à la garantie
+  Contrat de garantie / publicité de l'offre de vente / document se référant à
+  la garantie
+subcategory: >-
+  Oui_et_jai_pris_connaissance_des_conditions_ecrites_dans_mon_contrat_de_garantie

@@ -2,16 +2,16 @@ title: Information mensongère ou trompeuse
 reponseconsoCode: '271'
 detailInputs:
   - label: Date du constat
-    type: DATE
+    type: DATE_NOT_IN_FUTURE
     defaultValue: SYSDATE
-  - label: Qu'est-ce qui est trompeur&#160;?
+  - label: Qu'est-ce qui est trompeur ?
     type: RADIO
     options:
       - La carte, le menu, une pancarte
       - Le site internet (à préciser)
       - Le discours d'un serveur ou du gérant
       - Autre (à préciser)
-  - label: À propos de quoi est-ce trompeur&#160;?
+  - label: À propos de quoi est-ce trompeur ?
     type: RADIO
     options:
       - "L'origine (exemple\_: origine des vins )"
@@ -21,7 +21,7 @@ detailInputs:
   - label: Précisez en quelques mots pourquoi vous trouvez cela trompeur
     type: TEXT
     placeholder: "Soyez factuel et courtois, merci\_!"
-  - label: Avez-vous déjà expliqué le problème au commerçant &#160;?
+  - label: Avez-vous déjà expliqué le problème au commerçant  ?
     type: RADIO
     options:
       - Oui
@@ -29,3 +29,4 @@ detailInputs:
 fileLabel: >-
   Merci de joindre une photo de la publicité, du menu, de la vitrine afin
   d'apporter des preuves pour appuyer votre signalement.
+subcategory: Information_mensongere_ou_trompeuse

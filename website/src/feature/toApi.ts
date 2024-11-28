@@ -1,9 +1,9 @@
-import {Anomaly, ReportTag, SocialNetwork} from 'shared/anomalies/Anomaly'
 import {getReportInputs} from '@/components_feature/reportFlow/Details/draftReportInputs'
 import {CompanySearchResult} from '@/model/Company'
 import {Influencer, Report} from '@/model/Report'
 import {ApiInfluencer, ApiReport} from '@/model/reportsFromApi'
 import {CommonCompanyIdentification, ForeignWebsiteCompanyIdentification, Step2Model} from '@/model/Step2Model'
+import {Anomaly, ReportTag, SocialNetwork} from 'shared/anomalies/Anomaly'
 import {
   getAnomaly,
   getCategoryOverride,
@@ -28,10 +28,10 @@ export const toApi = (draft: Report, metadata: ApiReport['metadata']): ApiReport
   const detailsParsed = parseReportDetails(draft.step3.details, inputs)
   return {
     // We don't use the rest syntax here ("..."),
-    // we prefer to be sure to fill each field explicitely
+    // we prefer to be sure to fill each field explicitly
     gender: consumer.gender,
     category: getCategoryOverride(draft) ?? draft.step0.category,
-    subcategories: subcategories.map(_ => _.title),
+    subcategories: subcategories.map(_ => _.subcategory),
     details: detailsParsed,
     firstName: consumer.firstName,
     lastName: consumer.lastName,
@@ -256,15 +256,6 @@ function companyIdentificationToApi(
       return {
         ...allUndefined,
         companyAddress: {postalCode: companyIdentification.consumerPostalCode},
-      }
-    }
-    case 'consumerPreciseLocation': {
-      return {
-        ...allUndefined,
-        companyAddress: {
-          postalCode: companyIdentification.consumerPostalCode,
-          street: companyIdentification.consumerStreet,
-        },
       }
     }
     case 'foreignCompany': {

@@ -9,6 +9,7 @@ type Props = {
   error: boolean
   helperText?: ReactNode
   required: boolean
+  showRequiredAsterisk?: boolean
   label?: ReactNode
   desc?: ReactNode
   autocomplete?: string
@@ -39,6 +40,7 @@ export const ScTextInput = forwardRef((props: Props, ref: ForwardedRef<HTMLInput
     error,
     helperText,
     required,
+    showRequiredAsterisk = true,
     type = 'text',
     inputMode,
     disabled = false,
@@ -52,7 +54,7 @@ export const ScTextInput = forwardRef((props: Props, ref: ForwardedRef<HTMLInput
   const labelWithAsterisk = (
     <>
       {label}
-      {required ? ' *' : null}
+      {required && showRequiredAsterisk ? ' *' : null}
     </>
   )
   return (

@@ -1,8 +1,0 @@
-title: Takeaway
-companyKind: LOCATION
-reponseconsoCode: '321'
-tags:
-  - ProduitDangereux
-detailInputs:
-  customimport: _imports/detailInputs/intoxication-alimentaire.yaml
-fileLabel: Photos of product / packaging / receipt / invoice

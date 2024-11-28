@@ -1,5 +1,4 @@
-title: >-
-  J'ai reçu au moins 5 appels de la même entreprise sur les 30 derniers jours
+title: J'ai reçu au moins 5 appels de la même entreprise sur les 30 derniers jours
 ccrfCode:
   - '227'
   - 23E
@@ -22,10 +21,11 @@ detailInputs:
   - label: Date du cinquième appel
     type: DATE
     defaultValue: SYSDATE
-  - label: Est-ce que le vendeur s'est fait passer pour une autre entreprise&#160;?
+  - label: Est-ce que le vendeur s'est fait passer pour une autre entreprise ?
     type: RADIO
     options:
       - Non
       - Oui (à préciser)
   - label: Décrivez nous plus en détails ce qui s'est passé
     type: TEXTAREA
+subcategory: Jai_recu_au_moins_5_appels_de_la_meme_entreprise_sur_les_30_derniers_jours

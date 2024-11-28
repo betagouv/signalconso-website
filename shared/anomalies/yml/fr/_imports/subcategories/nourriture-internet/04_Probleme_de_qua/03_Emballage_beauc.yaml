@@ -1,5 +1,4 @@
-title: >-
-  Emballage beaucoup trop grand par rapport à la quantité du produit
+title: Emballage beaucoup trop grand par rapport à la quantité du produit
 desc: Apparence trompeuse sur la quantitéou suremballage inutile
 tags:
   - TransitionEcologique
@@ -12,3 +11,4 @@ detailInputs:
 ccrfCode:
   - '192'
   - 23B
+subcategory: Emballage_beaucoup_trop_grand_par_rapport_a_la_quantite_du_produit

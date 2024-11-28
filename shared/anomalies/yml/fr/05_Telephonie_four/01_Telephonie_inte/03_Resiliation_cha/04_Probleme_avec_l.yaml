@@ -2,5 +2,6 @@ title: Problème avec le RIO (Relevé d'Identité Opérateur)
 desc: 'Exemple : on ne me donne pas mon numéro RIO, ma portabilité est en retard'
 ccrfCode:
   - '226'
-  - '21E'
+  - 21E
 reponseconsoCode: '477'
+subcategory: Probleme_avec_le_RIO_Releve_dIdentite_Operateur

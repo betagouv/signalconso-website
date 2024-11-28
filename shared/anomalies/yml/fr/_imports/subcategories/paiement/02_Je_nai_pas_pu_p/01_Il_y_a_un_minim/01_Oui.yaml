@@ -8,4 +8,5 @@ blockingInfo:
     exemple. <br/> Si le prix n''atteint pas le minimum d''achat, vous devez
     trouver un autre moyen de paiement. <br/> Vous pouvez également directement
     expliquer au commerçant pourquoi ce minimum d''achat ne vous arrange pas.
-  notAFraudMessage: true
+  reportOutOfScopeMessage: true
+subcategory: Oui
