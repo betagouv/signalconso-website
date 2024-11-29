@@ -59,6 +59,30 @@ export const manualLandingBlackFridaySav = {
   seoDesc: "Le service après-vente (SAV) ne répond pas, n'existe pas, ou ses coordonnées sont introuvables ?",
   labelPlanDuSite: 'Faire un signalement pour un SAV non joignable pendant le Black Friday',
 } as const
+export const manualLandingVenteProduitsPlastiqueUsageUniqueInternet = {
+  url: 'vente-de-produit-plastique-a-usage-unique-internet',
+  seoTitle: '',
+  seoDesc: '',
+  labelPlanDuSite: 'Faire un signalement pour vente de produits en plastique à usage unique sur internet',
+} as const
+export const manualLandingVenteProduitsPlastiqueUsageUniqueMagasin = {
+  url: 'vente-de-produit-plastique-a-usage-unique-magasin',
+  seoTitle: '',
+  seoDesc: '',
+  labelPlanDuSite: 'Faire un signalement pour vente de produits en plastique à usage unique en magasin',
+} as const
+export const manualLandingVenteEnLigneProduitsFaussesPromessesEcologiques = {
+  url: 'tromperie-allegation-label-environnement-internet',
+  seoTitle: '',
+  seoDesc: '',
+  labelPlanDuSite: 'Faire un signalement pour vente en ligne de produits avec de fausses promesses écologiques',
+} as const
+export const manualLandingFaussesPromessesEcologiquesProduitsVendusEnMagasin = {
+  url: 'tromperie-allegation-label-environnement-magasin',
+  seoTitle: '',
+  seoDesc: '',
+  labelPlanDuSite: 'Faire un signalement pour fausses promesses écologiques sur des produits vendus en magasin physique',
+} as const
 
 export function getManualLandings(lang: AppLang): readonly ManualLandingData[] {
   return lang === 'fr' ? manualLandingsFr : []
@@ -205,4 +229,8 @@ const manualLandingsFr = [
       'Découvrez vos droits en cas de problèmes avec vos commandes de nourriture en ligne. Livraison en retard, commande incomplète ou mauvaise qualité ? Signalez un dysfonctionnement avec Signal Conso.',
     labelPlanDuSite: 'Faire un signalement concernant une commande de nourriture en ligne',
   },
+  manualLandingVenteProduitsPlastiqueUsageUniqueInternet,
+  manualLandingVenteProduitsPlastiqueUsageUniqueMagasin,
+  manualLandingVenteEnLigneProduitsFaussesPromessesEcologiques,
+  manualLandingFaussesPromessesEcologiquesProduitsVendusEnMagasin,
 ] as const
