@@ -94,6 +94,8 @@ function getComponent(url: ManualLandingData['url']): () => JSX.Element {
       return demarchesAdministratives
     case 'achat-site':
       return achatSite
+    case 'dysfonctionnements-commandes-nourriture':
+      return dysfonctionnementsCommandesNourriture
     case 'vente-de-produit-plastique-a-usage-unique-internet':
       return venteProduitsPlastiqueUsageUniqueInternet
     case 'vente-de-produit-plastique-a-usage-unique-magasin':
@@ -102,8 +104,6 @@ function getComponent(url: ManualLandingData['url']): () => JSX.Element {
       return venteEnLigneProduitsFaussesPromessesEcologiques
     case 'tromperie-allegation-label-environnement-magasin':
       return faussesPromessesEcologiquesProduitsVendusEnMagasin
-    case 'dysfonctionnements-commandes-nourriture':
-      return dysfonctionnementsCommandesNourriture
     default:
       // https://stackoverflow.com/questions/39419170/how-do-i-check-that-a-switch-block-is-exhaustive-in-typescript
       return url satisfies never

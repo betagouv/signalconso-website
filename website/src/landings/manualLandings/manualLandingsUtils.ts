@@ -1,5 +1,4 @@
 import {AppLang} from '@/i18n/localization/AppLangs'
-import {venteProduitsPlastiqueUsageUniqueInternet} from '@/reusablePages/manual_landings/venteProduitsPlastiqueUsageUniqueInternet'
 
 export type ManualLandingData = (typeof manualLandingsFr)[number]
 
@@ -72,18 +71,18 @@ export const manualLandingVenteProduitsPlastiqueUsageUniqueMagasin = {
   seoDesc: '',
   labelPlanDuSite: 'Faire un signalement pour vente de produits en plastique à usage unique en magasin',
 } as const
-export const venteEnLigneProduitsFaussesPromessesEcologiques = {
+export const manualLandingVenteEnLigneProduitsFaussesPromessesEcologiques = {
   url: 'tromperie-allegation-label-environnement-internet',
   seoTitle: '',
   seoDesc: '',
   labelPlanDuSite: 'Faire un signalement pour vente en ligne de produits avec de fausses promesses écologiques',
-}
-export const faussesPromessesEcologiquesProduitsVendusEnMagasin = {
+} as const
+export const manualLandingFaussesPromessesEcologiquesProduitsVendusEnMagasin = {
   url: 'tromperie-allegation-label-environnement-magasin',
   seoTitle: '',
   seoDesc: '',
   labelPlanDuSite: 'Faire un signalement pour fausses promesses écologiques sur des produits vendus en magasin physique',
-}
+} as const
 
 export function getManualLandings(lang: AppLang): readonly ManualLandingData[] {
   return lang === 'fr' ? manualLandingsFr : []
@@ -232,6 +231,6 @@ const manualLandingsFr = [
   },
   manualLandingVenteProduitsPlastiqueUsageUniqueInternet,
   manualLandingVenteProduitsPlastiqueUsageUniqueMagasin,
-  venteEnLigneProduitsFaussesPromessesEcologiques,
-  faussesPromessesEcologiquesProduitsVendusEnMagasin,
+  manualLandingVenteEnLigneProduitsFaussesPromessesEcologiques,
+  manualLandingFaussesPromessesEcologiquesProduitsVendusEnMagasin,
 ] as const
