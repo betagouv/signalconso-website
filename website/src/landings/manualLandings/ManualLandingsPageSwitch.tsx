@@ -27,6 +27,10 @@ import {pompeAChaleurPac} from '@/reusablePages/manual_landings/pompeAChaleurPac
 import {repasSurPlaceCouvertsJetables} from '@/reusablePages/manual_landings/repasSurPlaceCouvertsJetables'
 import {travauxRenovation} from '@/reusablePages/manual_landings/travauxRenovation'
 import {ManualLandingData} from './manualLandingsUtils'
+import {venteProduitsPlastiqueUsageUniqueInternet} from '@/reusablePages/manual_landings/venteProduitsPlastiqueUsageUniqueInternet'
+import {venteProduitsPlastiqueUsageUniqueMagasin} from '@/reusablePages/manual_landings/venteProduitsPlastiqueUsageUniqueMagasin'
+import {venteEnLigneProduitsFaussesPromessesEcologiques} from '@/reusablePages/manual_landings/venteEnLigneProduitsFaussesPromessesEcologiques'
+import {faussesPromessesEcologiquesProduitsVendusEnMagasin} from '@/reusablePages/manual_landings/faussesPromessesEcologiquesProduitsVendusEnMagasin'
 
 export function ManualLandingsPageSwitch({landingData}: {landingData: ManualLandingData}) {
   const url = landingData.url
@@ -92,6 +96,14 @@ function getComponent(url: ManualLandingData['url']): () => JSX.Element {
       return achatSite
     case 'dysfonctionnements-commandes-nourriture':
       return dysfonctionnementsCommandesNourriture
+    case 'vente-de-produit-plastique-a-usage-unique-internet':
+      return venteProduitsPlastiqueUsageUniqueInternet
+    case 'vente-de-produit-plastique-a-usage-unique-magasin':
+      return venteProduitsPlastiqueUsageUniqueMagasin
+    case 'tromperie-allegation-label-environnement-internet':
+      return venteEnLigneProduitsFaussesPromessesEcologiques
+    case 'tromperie-allegation-label-environnement-magasin':
+      return faussesPromessesEcologiquesProduitsVendusEnMagasin
     default:
       // https://stackoverflow.com/questions/39419170/how-do-i-check-that-a-switch-block-is-exhaustive-in-typescript
       return url satisfies never
