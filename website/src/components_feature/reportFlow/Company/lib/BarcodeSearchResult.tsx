@@ -57,7 +57,7 @@ export const BarcodeSearchResult = ({
           <div className="w-full flex flex-row-reverse">{company && <BtnNext onClick={() => onSubmit(company, product)} />}</div>
         </>
       ) : (
-        noResultsPanel ?? <NoSearchResult text={m.barcodeNoProductFound} />
+        (noResultsPanel ?? <NoSearchResult text={m.barcodeNoProductFound} />)
       )}
     </div>
   )

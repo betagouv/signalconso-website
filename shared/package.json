@@ -14,10 +14,10 @@
   },
   "devDependencies": {
     "@types/js-yaml": "^4.0.9",
-    "@types/lodash": "4.17.4",
-    "@types/node": "20.12.12",
+    "@types/lodash": "4.17.13",
+    "@types/node": "20.17.7",
     "slugify": "^1.6.6",
     "ts-node": "10.9.2",
-    "typescript": "5.4.5"
+    "typescript": "5.7.2"
   }
 }
