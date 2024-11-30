@@ -1252,6 +1252,7 @@ export const fr = {
     consumerShareInformation: `Vous partagez vos coordonnées avec l’entreprise. Pour mémoire, vous avez choisi de signaler le problème afin que l’entreprise s’améliore : votre problème particulier ne pourra pas être résolu. Pas de remboursement, de réponse personnalisée…`,
     confirmationTitle: `Récapitulatif de votre problème`,
     confirmationAlertTransmittable: `Vérifiez votre signalement avant de l’envoyer à l'entreprise et à la répression des fraudes.`,
+    confirmationAlertEmployeeConsumer: `Vous avez déclaré travailler dans l’entreprise que vous signalez. <b>Votre anonymat sera par conséquent garanti</b>. S’il s’agit d’une erreur, revenez à l'étape 1 pour modifier votre choix.`,
     confirmationAlert: `Vérifiez votre signalement avant de l’envoyer à la répression des fraudes.`,
     contactAgreementLabel: `Souhaitez-vous partager vos coordonnées avec l'entreprise ?`,
     contactAgreementTrueTitle: `Je partage`,

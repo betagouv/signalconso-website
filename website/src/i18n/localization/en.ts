@@ -1234,6 +1234,7 @@ export const en = {
     consumerShareInformation: `You share your contact details with the company. As a reminder, you have chosen to report the problem so that the company can improve: your specific problem cannot be solved. No refund, no personalized response...`,
     confirmationTitle: `Summary of your issue`,
     confirmationAlertTransmittable: `Check every detail of your report before sending it to the company and to Fraud Control.`,
+    confirmationAlertEmployeeConsumer: `You have stated that you work in the company you are reporting. <b>Your anonymity will therefore be guaranteed</b>. If this is a mistake, go back to step 1 to revise your choice.`,
     confirmationAlert: `Check every detail of your report before sending it to Fraud Control.`,
     contactAgreementLabel: `Do you want to share your contact details with the company ?`,
     contactAgreementTrueTitle: `I am sharing`,

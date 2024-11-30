@@ -29,6 +29,10 @@ import {getReportInputs} from '../Details/draftReportInputs'
 import {useReportCreateContext} from '../ReportCreateContext'
 import {useReportFlowContext} from '../ReportFlowContext'
 import {ConfirmationStep, ConfirmationStepper} from './ConfirmationStepper'
+import {Alert} from '@codegouvfr/react-dsfr/Alert'
+import Link from 'next/link'
+import {ScAlert} from '@/components_simple/ScAlert'
+import {appConfig} from '@/core/appConfig'
 
 export const Confirmation = ({stepNavigation, isWebView}: {stepNavigation: StepNavigation; isWebView: boolean}) => {
   const _reportFlow = useReportFlowContext()
@@ -61,9 +65,16 @@ export const ConfirmationInner = ({
     <Animate autoScrollTo={true}>
       <div>
         <h2 className="fr-h4">{m.confirmationTitle}</h2>
-        <FriendlyHelpText>
-          <p className="mb-0">{isTransmittable ? m.confirmationAlertTransmittable : m.confirmationAlert}</p>
-        </FriendlyHelpText>
+
+        {!_reportFlow.report.step1?.employeeConsumer ? (
+          <ScAlert type="warning">
+            <p className="mb-0" dangerouslySetInnerHTML={{__html: m.confirmationAlertEmployeeConsumer}}></p>
+          </ScAlert>
+        ) : (
+          <FriendlyHelpText>
+            <p className="mb-0">{isTransmittable ? m.confirmationAlertTransmittable : m.confirmationAlert}</p>
+          </FriendlyHelpText>
+        )}
 
         <ConfirmationStepper>
           {buildingReportSteps.map((step, index) => {
