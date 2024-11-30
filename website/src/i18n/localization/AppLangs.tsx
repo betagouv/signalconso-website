@@ -1,4 +1,3 @@
-import {appConfig} from '../../core/appConfig'
 
 export enum AppLangs {
   fr = 'fr',

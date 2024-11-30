@@ -1,4 +1,6 @@
+
 import {AppLang, AppLangs} from '../../i18n/localization/AppLangs'
+import {appConfig} from '../../core/appConfig'
 
 export type NewsArticle = {
   date: string
@@ -12,6 +14,14 @@ export type NewsArticle = {
 
 // This is the display order. Keep the most recents at the start of the array
 export const initialNewsArticlesData: NewsArticle[] = [
+  {
+    date: '2024-12-05',
+    lang: AppLangs.fr,
+    slug: 'marche-noel',
+    veryShortTitle: 'Les marchés de Noël',
+    title: 'Les fêtes approchent : profitez des marchés de Noël en toute sérénité !',
+    excerpt: `Voici quelques conseils pratiques pour acheter en toute confiance sur les marchés de Noël et profiter pleinement de cette tradition.`,
+  },
   {
     date: '2024-11-29',
     lang: AppLangs.fr,
@@ -300,7 +310,9 @@ export const initialNewsArticlesData: NewsArticle[] = [
   },
 ] as const
 
+const conf = appConfig.showOutilsInternes
+
 export const getNewsArticleData = () => {
   const currentDate = new Date()
-  return initialNewsArticlesData.filter(article => new Date(article.date) <= currentDate)
+  return initialNewsArticlesData.filter(article => (new Date(article.date) <= currentDate || conf))
 }
