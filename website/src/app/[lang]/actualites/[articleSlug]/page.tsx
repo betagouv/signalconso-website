@@ -1,5 +1,5 @@
 import {getArticleContent} from '@/components_feature/actualites/getArticleContent'
-import {NewsArticle, getNewsArticleData} from '@/components_feature/actualites/newsArticlesData'
+import {NewsArticle, getNewsArticleData, isPreview} from '@/components_feature/actualites/newsArticlesData'
 import {FullWidthPageContainer} from '@/components_simple/PageContainers'
 import {GenerateMetadataArg, PageComponentProps, PathParams} from '@/core/metadatas'
 import {pagesDefs} from '@/core/pagesDefinitions'
@@ -9,6 +9,7 @@ import Link from 'next/link'
 import {notFound} from 'next/navigation'
 import {getI18n} from '../../../../i18n/I18nDictionnary'
 import {AppLang} from '../../../../i18n/localization/AppLangs'
+import ArticleInfo from '@/components_feature/actualites/ArticleInfo'
 
 type LocalPathParams = PathParams<{
   articleSlug: string
@@ -48,7 +49,7 @@ function NewsArticleComponent(props: {article: NewsArticle; lang: AppLang}) {
                 <Link href={pagesDefs.actualites.url}>{messages.planDuSite.newsSection}</Link>
               </p>
               <p>
-                <span className=" text-sm"> {isoToHumanReadableText(props.article.date, props.lang)}</span>
+                <ArticleInfo article={props.article} />
               </p>
             </div>
             <h1 className={`fr-h2 ${title2 ? '!mb-2' : ''}`}>{props.article.title}</h1>

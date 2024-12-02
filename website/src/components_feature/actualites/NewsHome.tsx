@@ -5,7 +5,8 @@ import {Card} from '@codegouvfr/react-dsfr/Card'
 import {ContentPageContainer} from '../../components_simple/PageContainers'
 import {useI18n} from '../../i18n/I18n'
 import {isoToFrenchFormat} from '../../utils/utils'
-import {getNewsArticleData} from './newsArticlesData'
+import {getNewsArticleData, isPreview} from './newsArticlesData'
+import ArticleInfo from '@/components_feature/actualites/ArticleInfo'
 
 const NewsHome = () => {
   const {m, currentLang} = useI18n()
@@ -26,7 +27,7 @@ const NewsHome = () => {
                     href: buildLinkNewsArticle(article, {withLangPrefix: true}),
                   }}
                   enlargeLink
-                  detail={isoToFrenchFormat(article.date)}
+                  detail={<ArticleInfo article={article} />}
                 />
               </div>
             )
