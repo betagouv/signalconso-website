@@ -1,4 +1,3 @@
-
 export enum AppLangs {
   fr = 'fr',
   en = 'en',

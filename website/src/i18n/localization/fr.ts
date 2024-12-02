@@ -824,7 +824,7 @@ export const fr = {
     date: 'Date',
     add: 'Ajouter',
     previous: 'Précédent',
-    back: 'Retour',
+    preview: 'À venir',
     count: 'Nombre',
     delete: 'Supprimer',
     deleted: 'Supprimé',

@@ -819,6 +819,7 @@ export const en = {
     date: 'Date',
     add: 'Add',
     previous: 'Previous',
+    preview: 'Preview',
     back: 'Back',
     count: 'Count',
     delete: 'Delete',
