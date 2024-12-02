@@ -1,4 +1,3 @@
-
 import {AppLang, AppLangs} from '../../i18n/localization/AppLangs'
 import {appConfig} from '../../core/appConfig'
 
@@ -310,9 +309,13 @@ export const initialNewsArticlesData: NewsArticle[] = [
   },
 ] as const
 
-const conf = appConfig.showOutilsInternes
+const isDemo = appConfig.showOutilsInternes
 
 export const getNewsArticleData = () => {
   const currentDate = new Date()
-  return initialNewsArticlesData.filter(article => (new Date(article.date) <= currentDate || conf))
+  return initialNewsArticlesData.filter(article => new Date(article.date) <= currentDate || isDemo)
+}
+
+export const isPreview = (article: NewsArticle) => {
+  return new Date(article.date) > new Date()
 }
