@@ -5,6 +5,7 @@ import {StepNavigation} from '@/components_feature/reportFlow/reportFlowStepper/
 import {Animate} from '@/components_simple/Animate'
 import {Step2Recap} from '@/components_simple/CompanyRecap/Step2Recap'
 import {FriendlyHelpText} from '@/components_simple/FriendlyHelpText'
+import {ScAlert} from '@/components_simple/ScAlert'
 import {ReportFilesConfirmation} from '@/components_simple/reportFile/ReportFilesConfirmation'
 import {
   getAnomaly,
@@ -29,10 +30,6 @@ import {getReportInputs} from '../Details/draftReportInputs'
 import {useReportCreateContext} from '../ReportCreateContext'
 import {useReportFlowContext} from '../ReportFlowContext'
 import {ConfirmationStep, ConfirmationStepper} from './ConfirmationStepper'
-import {Alert} from '@codegouvfr/react-dsfr/Alert'
-import Link from 'next/link'
-import {ScAlert} from '@/components_simple/ScAlert'
-import {appConfig} from '@/core/appConfig'
 
 export const Confirmation = ({stepNavigation, isWebView}: {stepNavigation: StepNavigation; isWebView: boolean}) => {
   const _reportFlow = useReportFlowContext()
@@ -58,6 +55,7 @@ export const ConfirmationInner = ({
   const _reportCreate = useReportCreateContext()
   const _analytic = useAnalyticContext()
 
+  const employeeConsumer = draft.step1.employeeConsumer
   const transmissionStatus = getTransmissionStatus(draft)
   const isTransmittable = transmissionStatus === 'WILL_BE_TRANSMITTED' || transmissionStatus === 'MAY_BE_TRANSMITTED'
 
@@ -66,7 +64,7 @@ export const ConfirmationInner = ({
       <div>
         <h2 className="fr-h4">{m.confirmationTitle}</h2>
 
-        {!_reportFlow.report.step1?.employeeConsumer ? (
+        {employeeConsumer ? (
           <ScAlert type="warning">
             <p className="mb-0" dangerouslySetInnerHTML={{__html: m.confirmationAlertEmployeeConsumer}}></p>
           </ScAlert>
