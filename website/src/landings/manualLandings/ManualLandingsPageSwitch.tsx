@@ -31,6 +31,7 @@ import {venteProduitsPlastiqueUsageUniqueInternet} from '@/reusablePages/manual_
 import {venteProduitsPlastiqueUsageUniqueMagasin} from '@/reusablePages/manual_landings/venteProduitsPlastiqueUsageUniqueMagasin'
 import {venteEnLigneProduitsFaussesPromessesEcologiques} from '@/reusablePages/manual_landings/venteEnLigneProduitsFaussesPromessesEcologiques'
 import {faussesPromessesEcologiquesProduitsVendusEnMagasin} from '@/reusablePages/manual_landings/faussesPromessesEcologiquesProduitsVendusEnMagasin'
+import {marchesDeNoel} from '@/reusablePages/manual_landings/marchesDeNoel'
 
 export function ManualLandingsPageSwitch({landingData}: {landingData: ManualLandingData}) {
   const url = landingData.url
@@ -104,6 +105,8 @@ function getComponent(url: ManualLandingData['url']): () => JSX.Element {
       return venteEnLigneProduitsFaussesPromessesEcologiques
     case 'tromperie-allegation-label-environnement-magasin':
       return faussesPromessesEcologiquesProduitsVendusEnMagasin
+    case 'marches-de-noel':
+      return marchesDeNoel
     default:
       // https://stackoverflow.com/questions/39419170/how-do-i-check-that-a-switch-block-is-exhaustive-in-typescript
       return url satisfies never
