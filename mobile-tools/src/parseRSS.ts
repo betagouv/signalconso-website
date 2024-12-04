@@ -15,14 +15,14 @@ nodes.forEach(node => {
   const link = node.querySelector('link')?.textContent ?? undefined
   const description = node.querySelector('description')?.textContent ?? undefined
   const guid = node.querySelector('guid')?.textContent ?? undefined
-  const date = node.querySelector('pubDate')?.querySelector('time')?.getAttribute('datetime') ?? undefined
+  const date = node.querySelector('pubDate')?.textContent
 
   res.push({
     title,
     link,
     description,
     guid,
-    date,
+    date: date ? new Date(date).toISOString() : undefined,
   })
 })
 
