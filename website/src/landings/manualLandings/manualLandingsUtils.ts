@@ -61,27 +61,38 @@ export const manualLandingBlackFridaySav = {
 } as const
 export const manualLandingVenteProduitsPlastiqueUsageUniqueInternet = {
   url: 'vente-de-produit-plastique-a-usage-unique-internet',
-  seoTitle: '',
-  seoDesc: '',
+  seoTitle: 'Interdiction des plastiques à usage unique : Signalez les ventes illégales en ligne avec SignalConso',
+  seoDesc:
+    "Découvrez la réglementation sur les plastiques à usage unique interdits en France. Protégez vos droits et l'environnement en signalant les ventes illégales en ligne via SignalConso. Chaque action compte pour une consommation responsable !",
   labelPlanDuSite: 'Faire un signalement pour vente de produits en plastique à usage unique sur internet',
 } as const
 export const manualLandingVenteProduitsPlastiqueUsageUniqueMagasin = {
   url: 'vente-de-produit-plastique-a-usage-unique-magasin',
-  seoTitle: '',
-  seoDesc: '',
+  seoTitle: 'Produits en plastique à usage unique : Signalez les ventes illégales en magasin avec SignalConso',
+  seoDesc:
+    "Découvrez la réglementation sur les plastiques à usage unique interdits en magasin. Agissez pour l'environnement en signalant les ventes illégales avec SignalConso. Ensemble, construisons un commerce responsable !",
   labelPlanDuSite: 'Faire un signalement pour vente de produits en plastique à usage unique en magasin',
 } as const
 export const manualLandingVenteEnLigneProduitsFaussesPromessesEcologiques = {
   url: 'tromperie-allegation-label-environnement-internet',
-  seoTitle: '',
-  seoDesc: '',
+  seoTitle: 'Greenwashing en ligne : Signalez les fausses promesses écologiques avec SignalConso',
+  seoDesc:
+    'Découvrez comment repérer les fausses allégations environnementales sur les produits vendus en ligne. Luttez contre le greenwashing en signalant ces pratiques abusives via SignalConso pour un e-commerce plus responsable !',
   labelPlanDuSite: 'Faire un signalement pour vente en ligne de produits avec de fausses promesses écologiques',
 } as const
 export const manualLandingFaussesPromessesEcologiquesProduitsVendusEnMagasin = {
   url: 'tromperie-allegation-label-environnement-magasin',
-  seoTitle: '',
-  seoDesc: '',
+  seoTitle: 'Lutte contre le greenwashing : Signalez les fausses promesses écologiques avec SignalConso',
+  seoDesc:
+    'Apprenez à repérer les fausses allégations environnementales en magasin et luttez contre le greenwashing. Signalez les pratiques trompeuses via SignalConso pour un commerce plus transparent et durable !',
   labelPlanDuSite: 'Faire un signalement pour fausses promesses écologiques sur des produits vendus en magasin physique',
+} as const
+export const manualLandingMarchesDeNoel = {
+  url: 'marches-de-noel',
+  seoTitle: 'Marchés de Noël : Achetez en toute confiance et signalez les abus avec SignalConso',
+  seoDesc:
+    "Profitez des marchés de Noël en toute sérénité ! Vérifiez l'origine des produits, les labels, et les prix pour des achats en confiance. En cas de problème, signalez-le sur SignalConso pour protéger vos droits.",
+  labelPlanDuSite: 'Faire un signalement pour un abus sur un marché de Noël',
 } as const
 
 export function getManualLandings(lang: AppLang): readonly ManualLandingData[] {
@@ -233,4 +244,5 @@ const manualLandingsFr = [
   manualLandingVenteProduitsPlastiqueUsageUniqueMagasin,
   manualLandingVenteEnLigneProduitsFaussesPromessesEcologiques,
   manualLandingFaussesPromessesEcologiquesProduitsVendusEnMagasin,
+  manualLandingMarchesDeNoel,
 ] as const
