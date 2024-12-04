@@ -14,6 +14,14 @@ export type NewsArticle = {
 // This is the display order. Keep the most recents at the start of the array
 export const initialNewsArticlesData: NewsArticle[] = [
   {
+    date: '2024-12-09',
+    lang: AppLangs.fr,
+    slug: 'coffrets-cadeaux',
+    veryShortTitle: 'Coffrets-cadeaux à Noël',
+    title: 'Coffrets-cadeaux : évitez les déconvenues pour Noël !',
+    excerpt: `Les coffrets-cadeaux sont souvent présentés comme une solution clé en main pour offrir des expériences variées. Cependant, vous n’êtes pas à l’abri de certaines déconvenues.`,
+  },
+  {
     date: '2024-12-05',
     lang: AppLangs.fr,
     slug: 'marche-noel',
