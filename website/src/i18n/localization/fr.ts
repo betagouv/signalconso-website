@@ -1077,7 +1077,7 @@ export const fr = {
     identifyBy_name_postal_code: `Par son nom et son code postal`,
     identifyBy_name: `Par son nom`,
     identifyBy_nameDesc: `Entreprise française uniquement`,
-    identifyBy_identity: `Par son numéro d'identification SIRET ou SIREN ou RCS`,
+    identifyBy_identity: `Par son numéro d'identification SIRET, SIREN, RCS ou TVA intracommunautaire`,
     identifyBy_identityDesc: `Nous vous dirons où les trouver`,
     identifyBy_none: `Je ne peux pas identifier l'entreprise ou l'entreprise est à l'étranger`,
     identifyBy_noneDesc: `Si vous ne parvenez pas à identifier l'entreprise, vous pouvez continuer votre signalement.
@@ -1089,7 +1089,7 @@ export const fr = {
     couldYouPrecise: `Pouvez-vous préciser ?`,
     cantIdentifyCompany: `Votre code postal nous servira à rediriger votre signalement vers le bon service.`,
     cantIdentifyLocationCompany: `Ces informations nous serviront à rediriger votre signalement vers le bon service, et à le rapprocher de ceux que vos voisins pourraient également avoir déposés.`,
-    companyIdentityLabel: `Numéro SIRET ou SIREN ou RCS de l'entreprise`,
+    companyIdentityLabel: `Numéro SIRET, SIREN, RCS ou TVA intracommunautaire de l'entreprise`,
     cannotFindWarning: {
       moreEfficient: `SignalConso est plus efficace lorsque vous identifiez l'entreprise avec laquelle vous avez un différend.`,
       contactCompany: `Cela nous permet de la contacter directement pour qu'elle puisse vous répondre rapidement.`,
@@ -1266,7 +1266,7 @@ export const fr = {
     companyWebsiteVendorDesc: (companyName: string) => `Uniquement si le vendeur n'est pas ${companyName}`,
     companyWebsiteVendor: `Vendeur :`,
     companyIdentityHelperDesc: `
-    SIRET, SIREN et RCS sont des identifiants de l'entreprise.<br/>
+    SIRET, SIREN, TVA intracommunautaire et RCS sont des identifiants de l'entreprise.<br/>
     Le SIRET est composé de 14 chiffres, le SIREN est composé de 9 chiffres.<br/>
     Le RCS est composé de:<br/>
       <ul>
@@ -1275,6 +1275,8 @@ export const fr = {
         <li>une lettre (A ou B)</li>
         <li>le numéro SIREN</li>
       </ul>
+      <br />
+      Le numéro de TVA intracommunautaire commence par <strong>FR</strong> suivi de 11 chiffres. Les neufs derniers étant le SIREN.
     `,
     howToFindCompanyCountry: ``,
     howToFindCompanyCountryDesc: `
