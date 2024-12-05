@@ -23,8 +23,8 @@ interface Props {
   children: (companies?: CompanySearchResult[]) => ReactNode
 }
 
-function isSiretOrSiren(identity: string) {
-  return /^(?:\d{9}|\d{14})$/.test(identity)
+function isSiretOrSirenOrTVA(identity: string) {
+  return /^(?:\d{9}|\d{14}|FR\d{11})$/.test(identity)
 }
 
 export const CompanySearchByIdentifier = ({children}: Props) => {
@@ -61,7 +61,7 @@ export const CompanySearchByIdentifier = ({children}: Props) => {
     required: {value: true, message: m.required},
     validate: s => {
       const s2 = purgeWhitespaces(s)
-      if (isSiretOrSiren(s2)) {
+      if (isSiretOrSirenOrTVA(s2)) {
         return true
       }
       return "Ce n'est pas un numéro SIRET ou SIREN (14 ou 9 chiffres)"
