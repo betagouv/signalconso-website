@@ -14,6 +14,14 @@ export type NewsArticle = {
 // This is the display order. Keep the most recents at the start of the array
 export const initialNewsArticlesData: NewsArticle[] = [
   {
+    date: '2024-12-16',
+    lang: AppLangs.fr,
+    slug: 'securite-des-jouets',
+    veryShortTitle: 'Sécurité des jouets',
+    title: 'Sécurité des jouets : Choisissez les cadeaux de vos enfants en toute sérénité',
+    excerpt: `Les fêtes approchent, et l’achat de jouets pour les enfants est au cœur des préparatifs de fin d’année. Pour garantir la sécurité des plus jeunes, voici la réglementation à connaître et quelques recommandations essentielles.`,
+  },
+  {
     date: '2024-12-09',
     lang: AppLangs.fr,
     slug: 'coffrets-cadeaux',
