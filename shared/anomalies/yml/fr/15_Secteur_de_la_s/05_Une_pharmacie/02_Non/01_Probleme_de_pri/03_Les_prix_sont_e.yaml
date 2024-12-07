@@ -7,15 +7,12 @@ blockingInfo:
     Le pharmacien a le droit de pratiquer les prix qu'il souhaite (sauf pour les
     médicaments remboursables et certains dispositifs médicaux).
   content: >-
-    Le pharmacien peut choisir les prix des médicament non rembousables, et des
-    produits divers de la pharmacie (biberon, brosse à dents, crème, ..). Les
-    prix doivent être clairement indiquer sans devoir les demandes. <br><a <br>
     Le pharmacien peut choisir les prix des médicaments non remboursables, et
     des produits divers de la pharmacie (biberon, brosse à dent, crème...). 
     <br> Les prix doivent être clairement indiqués sans devoir les demander.
-    <br><a <br>    En revanche, les prix des médicaments remboursables sont
+    <br><br>    En revanche, les prix des médicaments remboursables sont
     fixés par les pouvoirs publics. Ces prix sont en ligne sur le site : <br>
-    href="https://base-donnees-publique.medicaments.gouv.fr/"
+    <a href="https://base-donnees-publique.medicaments.gouv.fr/"
     target="_blank">https://base-donnees-publique.medicaments.gouv.fr/</a> <br>
     Pour les dispositifs médicaux (bas de contention, bonnet capillaire, chambre
     d’inhalation, chaussures thérapeutiques à usage temporaire, sparadrap, …)
