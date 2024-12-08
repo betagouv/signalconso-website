@@ -1,8 +1,6 @@
-import Image from 'next/image';
-import Link from 'next/link';
-import jouets from "@/img/actualites/jouets.jpg";
-
-
+import Image from 'next/image'
+import Link from 'next/link'
+import jouets from '@/img/actualites/jouets.jpg'
 
 export function ArticleSecuriteDesJouets() {
   return (
@@ -19,8 +17,8 @@ export function ArticleSecuriteDesJouets() {
       />
 
       <p>
-        Les fêtes approchent, et l’achat de jouets pour les enfants est au cœur des préparatifs de fin d’année. Pour garantir
-        la sécurité des plus jeunes, voici la réglementation à connaître et quelques recommandations essentielles.
+        Les fêtes approchent, et l’achat de jouets pour les enfants est au cœur des préparatifs de fin d’année. Pour garantir la
+        sécurité des plus jeunes, voici la réglementation à connaître et quelques recommandations essentielles.
       </p>
 
       <h2 id="Que-dit-la-loi-en-matière-de-jouets-">
@@ -28,8 +26,12 @@ export function ArticleSecuriteDesJouets() {
       </h2>
 
       <p>
-        On entend par jouets « <em>les produits qui sont conçus pour être utilisés, exclusivement ou non, à des fins de jeu par
-        des enfants de moins de quatorze ans ou destinés à cet effet</em> ».
+        On entend par jouets «{' '}
+        <em>
+          les produits qui sont conçus pour être utilisés, exclusivement ou non, à des fins de jeu par des enfants de moins de
+          quatorze ans ou destinés à cet effet
+        </em>{' '}
+        ».
       </p>
 
       <p>
@@ -80,18 +82,15 @@ export function ArticleSecuriteDesJouets() {
 
       <p>
         <strong>Choisissez un</strong>{' '}
-        <Link
-          href="https://www.economie.gouv.fr/particuliers/acheter-en-ligne-en-toute-securite"
-          target="_blank"
-          rel="noopener"
-        >
+        <Link href="https://www.economie.gouv.fr/particuliers/acheter-en-ligne-en-toute-securite" target="_blank" rel="noopener">
           <strong>site de confiance</strong>
         </Link>{' '}
         : <strong>si vous effectuez vos achats de jouets en ligne</strong>, privilégiez un site connu.
       </p>
 
       <p>
-        Si vous identifiez un jouet dangereux ou non conforme, faites un signalement sur la plateforme <strong>Signal Conso</strong>.
+        Si vous identifiez un jouet dangereux ou non conforme, faites un signalement sur la plateforme{' '}
+        <strong>Signal Conso</strong>.
       </p>
 
       <p>
@@ -106,5 +105,5 @@ export function ArticleSecuriteDesJouets() {
         .
       </p>
     </div>
-  );
+  )
 }

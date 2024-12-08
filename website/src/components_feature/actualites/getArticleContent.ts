@@ -35,7 +35,7 @@ import {ArticleDarkPatterns} from '@/components_feature/actualites/ArticleDarkPa
 import {ArticleDroitDeRetractation} from '@/components_feature/actualites/ArticleDroitDeRetractation'
 import {ArticleMarchesDeNoel} from '@/components_feature/actualites/ArticleMarchesDeNoel'
 import {ArticleCoffretsCadeaux} from '@/components_feature/actualites/ArticleCoffretsCadeaux'
-import {ArticleSecuriteDesJouets} from "@/components_feature/actualites/ArticleSecuriteDesJouets";
+import {ArticleSecuriteDesJouets} from '@/components_feature/actualites/ArticleSecuriteDesJouets'
 
 // We can't put import these JSX directly into the "newsArticlesData"
 // it causes too much import problems in the sitemap generation script
