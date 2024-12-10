@@ -16,6 +16,4 @@ detailInputs:
     type: TEXT
   - label: Nom / marque / référence
     type: TEXT
-  - label: Description
-    type: TEXTAREA
 subcategory: Une_duree_de_vie_trop_courte

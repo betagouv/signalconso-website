@@ -13,6 +13,4 @@ detailInputs:
     type: TEXT
   - label: Nom / marque / référence
     type: TEXT
-  - label: Description
-    type: TEXTAREA
 subcategory: Remise_non_sollicitee_dechantillons

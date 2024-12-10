@@ -1,9 +1,7 @@
-title: >-
-  A product packaged by the manufacturer such as a tin, packet, a bottle
+title: A product packaged by the manufacturer such as a tin, packet, a bottle
 desc: The quantity is directly printed on the packaging by the manufacturer
 detailInputs:
-  - label: >-
-      Is the letter "e" written next to the weight/volume indication?
+  - label: Is the letter "e" written next to the weight/volume indication?
     type: RADIO
     options:
       - 'Yes'
@@ -12,7 +10,5 @@ detailInputs:
     type: TEXT
   - label: Name / brand
     type: TEXT
-  - label: What error was found ?
-    type: TEXTAREA
 subcategory: >-
   Un_produit_emballe_par_le_fabricant_comme_une_boite_de_conserve_un_paquet_une_bouteille

@@ -21,8 +21,5 @@ detailInputs:
       - Une promesse de résultat
       - Une marque
       - Autres (à préciser)
-  - label: Pourquoi trouvez-vous ça trompeur ?
-    type: TEXTAREA
-    optional: true
 fileLabel: Photos du produit (si possible de tous les côtés de l'emballage)
 subcategory: Informations_trompeuses_ou_fausses

@@ -16,7 +16,5 @@ detailInputs:
     type: TEXT
   - label: Name / brand
     type: TEXT
-  - label: What did you find ?
-    type: TEXTAREA
 fileLabel: Product Pictures
 subcategory: Informations_manquantes

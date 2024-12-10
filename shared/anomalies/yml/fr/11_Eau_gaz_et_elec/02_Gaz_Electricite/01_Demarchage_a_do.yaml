@@ -33,7 +33,5 @@ detailInputs:
     type: DATE
     defaultValue: SYSDATE
     optional: true
-  - label: Décrivez nous plus en détails ce qui s'est passé
-    type: TEXTAREA
 fileLabel: Si possible, joindre une copie du contrat ou tout document commercial
 subcategory: Demarchage_a_domicile

@@ -3,8 +3,6 @@ reponseconsoCode: '521'
 detailInputs:
   - label: Date du refus
     type: DATE
-  - label: "Pouvez-vous nous décrire ce qu'il s'est passé\_?"
-    type: TEXTAREA
 fileLabel: >-
   Vous pouvez joindre des éléments (photo, carte d'assistance...) pour appuyer
   votre signalement.

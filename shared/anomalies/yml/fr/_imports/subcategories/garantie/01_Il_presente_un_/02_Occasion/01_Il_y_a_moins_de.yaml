@@ -13,7 +13,5 @@ detailInputs:
       - Vendeur
       - Accueil magasin
       - Service client (téléphone, mail, courrier)
-  - label: Pour quelle raison le commerçant ne veut pas vous reprendre  le produit ?
-    type: TEXTAREA
 fileLabel: Preuve d'achat / publicité / offre de vente
 subcategory: Il_y_a_moins_de_2_an

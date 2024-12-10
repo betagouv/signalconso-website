@@ -1,5 +1,5 @@
 title: In France (including Overseas)
-reponseconsoCode: "211"
+reponseconsoCode: '211'
 detailInputs:
   - label: Date of discovery of the incident
     type: DATE_NOT_IN_FUTURE
@@ -8,6 +8,4 @@ detailInputs:
     type: TEXT
   - label: Reference
     type: TEXT
-  - label: Description
-    type: TEXTAREA
 subcategory: En_France_Outremer_compris

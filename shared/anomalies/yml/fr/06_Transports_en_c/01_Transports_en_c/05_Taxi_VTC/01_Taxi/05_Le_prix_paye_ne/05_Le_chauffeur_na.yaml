@@ -16,9 +16,6 @@ detailInputs:
     type: TEXT
   - label: Combien avez-vous payé ?
     type: TEXT
-  - label: Notez les éléments qui permettent d'identifier le taxi.
-    type: TEXTAREA
-    placeholder: Numéro ADS, plaque d'immatriculation, entreprise de réservation...
 fileLabel: >-
   Joindre la note (facture) de votre course ou tout document utile pour appuyer
   votre signalement.

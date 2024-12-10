@@ -22,8 +22,5 @@ detailInputs:
       - A promise of results
       - A brand
       - Other (to be specified)
-  - label: Why do you find this misleading ?
-    type: TEXTAREA
-    optional: true
 fileLabel: Photos of the product (if possible from all sides of the packaging)
 subcategory: Misleading_or_false_information

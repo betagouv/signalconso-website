@@ -6,6 +6,4 @@ detailInputs:
   - label: Date de la demande d'annulation
     type: DATE
     defaultValue: SYSDATE
-  - label: Précisez comment et à qui vous avez fait la demande
-    type: TEXTAREA
 subcategory: Oui

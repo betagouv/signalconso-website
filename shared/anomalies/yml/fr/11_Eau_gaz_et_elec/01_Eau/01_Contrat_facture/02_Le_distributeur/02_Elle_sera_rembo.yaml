@@ -7,8 +7,6 @@ detailInputs:
   - label: Date du contrat
     type: DATE
     defaultValue: SYSDATE
-  - label: Décrivez nous plus en détails ce qui s'est passé
-    type: TEXTAREA
 fileLabel: >-
   Joindre une copie du contrat ou tout document commercial relatif à cette
   avance.

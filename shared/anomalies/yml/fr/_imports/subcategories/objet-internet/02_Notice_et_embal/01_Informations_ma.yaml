@@ -25,7 +25,5 @@ detailInputs:
     defaultValue: SYSDATE
   - label: Nom / marque
     type: TEXT
-  - label: Qu'avez-vous constaté ?
-    type: TEXTAREA
 fileLabel: Photos du code barre / n° de lot / référence
 subcategory: Informations_manquantes

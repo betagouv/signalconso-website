@@ -15,8 +15,6 @@ detailInputs:
       - Le prix
       - La nature des travaux
       - Les qualités et aptitudes du professionnel (artisans, normes...)
-  - label: Description
-    type: TEXTAREA
   - label: Date du constat
     type: DATE_NOT_IN_FUTURE
     defaultValue: SYSDATE

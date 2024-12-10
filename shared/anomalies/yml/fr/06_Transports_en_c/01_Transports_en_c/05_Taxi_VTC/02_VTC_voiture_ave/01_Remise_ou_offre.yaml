@@ -16,8 +16,6 @@ detailInputs:
       - publicité par email
       - publicité sur un affichage (dans le métro, sur une pancarte...)
       - autre (à préciser)
-  - label: Quel est le problème ?
-    type: TEXTAREA
 fileLabel: >-
   Merci de joindre tout document pouvant appuyer votre signalement (photographie
   de la publicité, reçu de votre course...)
