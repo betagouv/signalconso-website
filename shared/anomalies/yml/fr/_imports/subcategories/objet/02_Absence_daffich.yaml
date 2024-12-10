@@ -13,20 +13,18 @@ detailInputs:
     type: DATE_NOT_IN_FUTURE
     defaultValue: SYSDATE
   - label: Quelle était l'ancienne quantité ?
-    type: TEXTAREA
+    type: TEXT
     placeholder: Quantité d'origine sur l'ancien paquet
     optional: true
   - label: Quelle est la nouvelle quantité ?
-    type: TEXTAREA
+    type: TEXT
     placeholder: Quantité indiquée sur le nouveau paquet
     optional: true
   - label: Quel était l'ancien prix ?
-    type: TEXTAREA
+    type: TEXT
     optional: true
   - label: Quel était le nouveau prix ?
-    type: TEXTAREA
+    type: TEXT
     optional: true
-  - label: Description
-    type: TEXTAREA
 subcategory: >-
   Absence_daffichage_sur_la_reduction_de_quantite_et_de_laugmentation_du_prix_ou_emballage_identique_e
