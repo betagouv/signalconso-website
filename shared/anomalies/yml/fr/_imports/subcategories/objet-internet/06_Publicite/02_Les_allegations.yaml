@@ -21,9 +21,6 @@ detailInputs:
       - Une promesse de résultat
       - Une marque
       - Autre (à préciser)
-  - label: Pourquoi trouvez-vous ça trompeur ?
-    type: TEXTAREA
-    optional: true
   - label: Avez-vous déjà contacté le commerçant pour ce problème ?
     type: RADIO
     options:

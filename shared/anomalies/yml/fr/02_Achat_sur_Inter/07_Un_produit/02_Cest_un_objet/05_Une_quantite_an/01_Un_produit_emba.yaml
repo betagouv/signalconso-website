@@ -12,6 +12,4 @@ detailInputs:
     type: TEXT
   - label: Nom /marque
     type: TEXT
-  - label: Quelle erreur a été constatée ?
-    type: TEXTAREA
 subcategory: Un_produit_emballe_par_le_fabricant_comme_une_boite_un_paquet_une_bouteille

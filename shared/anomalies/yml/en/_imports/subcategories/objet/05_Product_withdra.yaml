@@ -2,7 +2,7 @@ title: Product withdrawn / recalled
 desc: >-
   The product sold is subject to a withdrawal / recall measure from the
   authorities
-reponseconsoCode: "311"
+reponseconsoCode: '311'
 detailInputs:
   - label: Date of discovery of the incident
     type: DATE_NOT_IN_FUTURE
@@ -14,6 +14,4 @@ detailInputs:
     type: TEXT
   - label: Batch / reference number
     type: TEXT
-  - label: What did you find ?
-    type: TEXTAREA
 subcategory: Produit_en_retrait_rappel

@@ -12,6 +12,4 @@ detailInputs:
   - label: Date du constat
     type: DATE_NOT_IN_FUTURE
     defaultValue: SYSDATE
-  - label: Description
-    type: TEXTAREA
 subcategory: Prix_manquants_ou_illisibles

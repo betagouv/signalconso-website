@@ -10,9 +10,6 @@ detailInputs:
       - Stockage à température ambiante de produits frais ou congelés
       - Transport à température ambiante de produits frais ou congelés
       - Autre problème de température
-  - label: Pour corriger ce problème, dites-nous en plus
-    type: TEXTAREA
-    optional: true
   - label: Date du constat
     type: DATE_NOT_IN_FUTURE
     defaultValue: SYSDATE

@@ -15,6 +15,4 @@ detailInputs:
     options:
       - Non
       - Oui (à préciser)
-  - label: Décrivez nous plus en détails ce qui s'est passé
-    type: TEXTAREA
 subcategory: Demarchage_telephonique

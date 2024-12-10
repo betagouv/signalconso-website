@@ -6,7 +6,5 @@ detailInputs:
   - label: Date du problème
     type: DATE
     defaultValue: SYSDATE
-  - label: Pour quelle raison a-t-on refusé de vous donner une chambre ?
-    type: TEXTAREA
 fileLabel: Vous pouvez joindre des éléments pour appuyer votre signalement.
 subcategory: On_a_refuse_de_me_donner_une_chambre

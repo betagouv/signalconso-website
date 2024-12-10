@@ -6,6 +6,4 @@ detailInputs:
     defaultValue: SYSDATE
   - label: Product name
     type: TEXT
-  - label: Description
-    type: TEXTAREA
 subcategory: Un_produit_sans_emballage

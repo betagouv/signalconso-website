@@ -8,6 +8,4 @@ detailInputs:
     type: TEXT
   - label: Référence
     type: TEXT
-  - label: Description
-    type: TEXTAREA
 subcategory: En_France_Outremer_compris

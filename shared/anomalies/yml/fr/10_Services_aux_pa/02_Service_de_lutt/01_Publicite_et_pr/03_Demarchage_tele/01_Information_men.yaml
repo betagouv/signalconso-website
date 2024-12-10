@@ -14,8 +14,6 @@ detailInputs:
         Les documents mis à votre disposition par le professionnel (courrier,
         flyer, plaquette de présentation...)
       - Autre (à préciser)
-  - label: Description
-    type: TEXTAREA
   - label: Date de l'appel
     type: DATE
     defaultValue: SYSDATE

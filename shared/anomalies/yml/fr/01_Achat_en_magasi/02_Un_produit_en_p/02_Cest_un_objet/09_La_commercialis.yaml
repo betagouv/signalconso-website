@@ -15,6 +15,4 @@ detailInputs:
     type: TEXT
   - label: Nom / marque / référence
     type: TEXT
-  - label: Description
-    type: TEXTAREA
 subcategory: La_commercialisation_de_produit_en_plastique_a_usage_unique

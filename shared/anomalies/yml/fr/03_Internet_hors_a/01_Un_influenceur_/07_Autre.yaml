@@ -13,7 +13,4 @@ detailInputs:
   - label: Site internet
     placeholder: Adresse du site internet complet ou URL
     type: TEXT
-  - label: Description
-    placeholder: Préciser la nature et la gravité
-    type: TEXTAREA
 subcategory: Autre
