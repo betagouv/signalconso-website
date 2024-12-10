@@ -5,9 +5,9 @@ detailInputs:
   - label: Comment avez-vous réglé votre course ?
     type: TEXT
   - label: Notez le lieu de départ et le lieu d'arrivée
-    type: TEXTAREA
+    type: TEXT
   - label: Merci de noter les informations pour identifier le véhicule
-    type: TEXTAREA
+    type: TEXT
     placeholder: Immatriculation du véhicule, numéro ADS...
 fileLabel: Joindre tout document utile pour appuyer votre signalement.
 subcategory: Non
