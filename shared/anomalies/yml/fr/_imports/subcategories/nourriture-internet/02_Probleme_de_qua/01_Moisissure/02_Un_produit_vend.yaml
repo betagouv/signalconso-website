@@ -5,7 +5,7 @@ detailInputs:
   - label: Site internet d'achat
     placeholder: Adresse du site internet complet ou URL
     type: TEXT
-  - label: 'C''est un produit vendu :'
+  - label: "C'est un produit vendu :"
     type: RADIO
     options:
       - au rayon frais

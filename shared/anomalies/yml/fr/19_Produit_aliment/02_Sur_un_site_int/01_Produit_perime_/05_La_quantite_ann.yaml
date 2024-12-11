@@ -1,5 +1,5 @@
 title: La quantité annoncée est non conforme
-desc: 'Exemple : J''ai commandé 500 gr de chocolat, je reçois 300 gr'
+desc: "Exemple : J'ai commandé 500 gr de chocolat, je reçois 300 gr"
 companyKind: PRODUCT
 reponseconsoCode: '210'
 detailInputs:

@@ -10,7 +10,7 @@ detailInputs:
     optional: true
   - label: input texte avec placeholder
     type: TEXT
-    placeholder: ceci est le placeholder de l'input texte  
+    placeholder: ceci est le placeholder de l'input texte
   - label: simple input date (DATE)
     type: DATE
   - label: input date optionnel

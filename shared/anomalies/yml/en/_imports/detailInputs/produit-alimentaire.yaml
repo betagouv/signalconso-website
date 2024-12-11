@@ -13,10 +13,10 @@
   optional: true
   type: RADIO
   options:
-    - "No"
+    - 'No'
     - Yes (to be specified)
 - label: Have you already contacted the merchant or the manufacturer for this problem ?
   type: RADIO
   options:
-    - "Yes"
-    - "No"
+    - 'Yes'
+    - 'No'
