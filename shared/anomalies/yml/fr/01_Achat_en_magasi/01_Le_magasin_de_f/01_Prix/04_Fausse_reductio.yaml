@@ -6,7 +6,7 @@ ccrfCode:
   - '146'
 reponseconsoCode: '224'
 detailInputs:
-  - label: 'Il s''agit d''un problème sur :'
+  - label: "Il s'agit d'un problème sur :"
     type: RADIO
     options:
       - Les soldes

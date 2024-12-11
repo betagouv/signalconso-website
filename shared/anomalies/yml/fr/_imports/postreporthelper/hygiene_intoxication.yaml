@@ -1,4 +1,5 @@
 title: Transmission du signalement à la direction générale de l'alimentation (DGAL)
-content: "<p>L'établissement pourra également faire l'objet d'un contrôle de la part des services de la DGAL.</p>
-<p>En cas d'infraction aux règles d'hygiène constatée lors du contrôle, les sanctions pourront aller du simple avertissement à la fermeture de l'établissement.</p>
-<p>Les services de la DGAL peuvent vous recontacter pour avoir davantage d'éléments mais ce n'est pas systématique. Vous ne serez pas informé des suites du contrôle.</p>"
+content: ->
+  <p>L'établissement pourra également faire l'objet d'un contrôle de la part des services de la DGAL.</p>
+  <p>En cas d'infraction aux règles d'hygiène constatée lors du contrôle, les sanctions pourront aller du simple avertissement à la fermeture de l'établissement.</p>
+  <p>Les services de la DGAL peuvent vous recontacter pour avoir davantage d'éléments mais ce n'est pas systématique. Vous ne serez pas informé des suites du contrôle.</p>
