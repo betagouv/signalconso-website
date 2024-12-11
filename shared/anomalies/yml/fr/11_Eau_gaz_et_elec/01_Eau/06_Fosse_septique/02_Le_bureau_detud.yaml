@@ -5,6 +5,4 @@ detailInputs:
   - label: Date du constat
     type: DATE_NOT_IN_FUTURE
     defaultValue: SYSDATE
-  - label: Décrivez nous plus en détails ce qui s'est passé
-    type: TEXTAREA
 subcategory: Le_bureau_detude_impose_une_marque_ou_modele_en_particulier

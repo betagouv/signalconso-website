@@ -1,5 +1,5 @@
 title: Information mensongère ou trompeuse
-desc: 'Exemple : Mise en avant d''un label ou d''un signe de qualité non ou plus détenu'
+desc: "Exemple : Mise en avant d'un label ou d'un signe de qualité non ou plus détenu"
 ccrfCode:
   - 23b
   - '275'
@@ -15,8 +15,6 @@ detailInputs:
         Les documents mis à votre disposition par le professionnel (courrier,
         flyer, plaquette de présentation...)
       - Autre (à préciser)
-  - label: Description
-    type: TEXTAREA
   - label: Date de l'appel
     type: DATE
     defaultValue: SYSDATE

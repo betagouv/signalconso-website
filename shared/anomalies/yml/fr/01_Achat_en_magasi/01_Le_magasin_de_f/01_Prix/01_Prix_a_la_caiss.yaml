@@ -30,6 +30,4 @@ detailInputs:
       - Oui
       - Non
     optional: true
-  - label: Description
-    type: TEXTAREA
 subcategory: Prix_a_la_caisse_different_du_prix_affiche_en_rayon

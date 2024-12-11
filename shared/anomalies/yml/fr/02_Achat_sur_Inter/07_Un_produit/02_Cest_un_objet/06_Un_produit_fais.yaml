@@ -12,6 +12,4 @@ detailInputs:
     type: TEXT
   - label: N° de lot / référence
     type: TEXT
-  - label: Qu'avez-vous constaté ?
-    type: TEXTAREA
 subcategory: Un_produit_faisant_lobjet_dun_retrait_rappel

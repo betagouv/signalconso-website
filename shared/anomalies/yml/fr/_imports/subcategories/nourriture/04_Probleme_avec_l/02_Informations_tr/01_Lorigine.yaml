@@ -13,9 +13,6 @@ detailInputs:
   - label: Nom  et marque du produit
     type: TEXT
     optional: true
-  - label: Pourquoi trouvez-vous l'origine trompeur ?
-    type: TEXTAREA
-    optional: true
 fileLabel: >-
   Photos du produit (si possible de tous les côtés de l'emballage) ou
   l'affichage du prix de la caisse de légume et l'étiquette de la caisse des

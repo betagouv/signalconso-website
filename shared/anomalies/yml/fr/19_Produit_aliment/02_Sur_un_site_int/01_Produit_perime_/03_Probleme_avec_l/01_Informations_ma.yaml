@@ -19,7 +19,5 @@ detailInputs:
     type: TEXT
   - label: Nom /marque
     type: TEXT
-  - label: Qu'avez-vous constaté ?
-    type: TEXTAREA
 fileLabel: Photos du produit
 subcategory: Informations_manquantes

@@ -11,14 +11,6 @@ detailInputs:
   - label: input texte avec placeholder
     type: TEXT
     placeholder: ceci est le placeholder de l'input texte
-  - label: simple input de zone de texte (TEXTAREA)
-    type: TEXTAREA
-  - label: zone de texte optionnelle
-    type: TEXTAREA
-    optional: true
-  - label: zone de texte avec placeholder
-    type: TEXTAREA
-    placeholder: ceci le placeholder de la zone de texte
   - label: simple input date (DATE)
     type: DATE
   - label: input date optionnel

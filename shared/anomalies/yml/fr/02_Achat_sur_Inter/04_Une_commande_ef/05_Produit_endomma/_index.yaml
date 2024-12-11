@@ -1,5 +1,5 @@
 title: Produit endommagé lors du transport
-desc: 'Exemple : J''ai reçu une chaise cassée dans un colis éventré'
+desc: "Exemple : J'ai reçu une chaise cassée dans un colis éventré"
 ccrfCode:
   - 23B
 subcategory: Produit_endommage_lors_du_transport

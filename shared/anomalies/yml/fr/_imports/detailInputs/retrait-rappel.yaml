@@ -8,5 +8,3 @@
   type: TEXT
 - label: Numéro de lot / référence
   type: TEXT
-- label: Qu'avez-vous constaté ?
-  type: TEXTAREA

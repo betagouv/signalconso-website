@@ -18,8 +18,6 @@ detailInputs:
       - Le prix
       - L'hébergement et ses prestations
       - Autre (à préciser)
-  - label: Description
-    type: TEXTAREA
   - label: Date du constat
     type: DATE_NOT_IN_FUTURE
     defaultValue: SYSDATE

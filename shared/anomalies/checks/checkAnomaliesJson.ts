@@ -1,4 +1,4 @@
-import {companyKinds, DetailInputType, PostReportHelper, reportTagsAllowedInYaml, specialCategories} from '../Anomaly'
+import {allowedInputTypesInYaml, companyKinds, DetailInputType, reportTagsAllowedInYaml, specialCategories} from '../Anomaly'
 import {AnomalyTreeWalker, ObjectSpec} from './AnomalyTreeWalker'
 
 // /!\ This effectively duplicates the structure
@@ -109,14 +109,13 @@ function assertIsSubcategory(subcategory: AnomalyTreeWalker) {
 function assertIsDetailInput(detailInput: AnomalyTreeWalker) {
   const baseSpec: ObjectSpec = {
     label: _ => _.assertIsString(),
-    type: _ => _.assertIsAllowedString(Object.values(DetailInputType)),
+    type: _ => _.assertIsAllowedString(allowedInputTypesInYaml),
     optional: _ => _.ifDefined()?.assertIsBoolean(),
   }
 
   function getRestOfSpec(): ObjectSpec {
     switch (detailInput.into('type').value) {
       case DetailInputType.TEXT:
-      case DetailInputType.TEXTAREA:
         return {
           placeholder: _ => _.ifDefined()?.assertIsString(),
         }

@@ -25,10 +25,6 @@ detailInputs:
       - Matériel de fabrication
       - Distributeur automatique
       - Autre (à préciser)
-  - label: Pour corriger ce problème, dites-nous en plus
-    type: TEXTAREA
-    placeholder: Rayon du magasin, type de saleté, ...
-    optional: true
   - label: Date du constat
     type: DATE_NOT_IN_FUTURE
     defaultValue: SYSDATE

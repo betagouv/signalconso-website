@@ -2,8 +2,6 @@ title: Oui (je possède la carte d'assistance)
 detailInputs:
   - label: Date du refus
     type: DATE
-  - label: Pouvez-vous nous décrire ce qu'il s'est passé ?
-    type: TEXTAREA
 fileLabel: >-
   Vous pouvez joindre des éléments (photo, carte d'assistance...) pour appuyer
   votre signalement.

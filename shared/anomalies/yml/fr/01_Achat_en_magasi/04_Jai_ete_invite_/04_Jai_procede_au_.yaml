@@ -9,8 +9,6 @@ detailInputs:
       ville)
     type: TEXT
     placeholder: Nom ou type de produit
-  - label: Description
-    type: TEXTAREA
 fileLabel: >-
   Invitation personnelle / le bon de commande / fiche technique du produit / un
   devis manuscrit / facture / crédit associé

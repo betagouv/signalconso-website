@@ -12,8 +12,5 @@ detailInputs:
   - label: Numéro de réservation (pour faciliter le traitement par l'entreprise)
     type: TEXT
     optional: true
-  - label: Quel est le problème ?
-    type: TEXTAREA
-    placeholder: Quel était le prix initial ? Quel est le prix final ?
 fileLabel: Vous pouvez joindre des éléments pour appuyer votre signalement.
 subcategory: Prix_final_different_du_prix_annonce

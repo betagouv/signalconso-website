@@ -1,7 +1,6 @@
 import path from 'path'
 import slugify from 'slugify'
-import {dirContentSorted, isFile, readFileYaml, throwIfNotDir, throwIfNotExists, writeFileYaml} from "./scriptUtils";
-
+import {dirContentSorted, isFile, readFileYaml, throwIfNotDir, throwIfNotExists, writeFileYaml} from './scriptUtils'
 
 const rootDir = path.resolve('./anomalies/yml')
 
@@ -20,7 +19,7 @@ function sanitizeDirContents(_path: string, options: {excludedFileName?: string}
   throwIfNotDir(_path)
   const excludedFileNames = [...(options.excludedFileName ? [options.excludedFileName] : [])]
   // Rename everything with its proper name
-  dirContentSorted(_path, {excludedFileNames}).map((subpath) => {
+  dirContentSorted(_path, {excludedFileNames}).map(subpath => {
     if (isFile(subpath)) {
       const content = readFileYaml(subpath)
 

@@ -110,7 +110,7 @@ export const reportTagsAllowedInYaml = [
   'AlimentationMaterielAnimaux',
   'Telecom',
   'Shrinkflation',
-  ...reportTagsNotTransmittableToPro
+  ...reportTagsNotTransmittableToPro,
 ] as const
 export type ReportTagAllowedInYaml = (typeof reportTagsAllowedInYaml)[number]
 
@@ -205,6 +205,7 @@ export enum DetailInputType {
   CHECKBOX = 'CHECKBOX',
   TEXTAREA = 'TEXTAREA',
 }
+export const allowedInputTypesInYaml = Object.values(DetailInputType).filter(_ => _ !== DetailInputType.TEXTAREA)
 
 interface DetailInputBase {
   label: string
