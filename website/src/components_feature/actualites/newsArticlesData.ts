@@ -14,6 +14,24 @@ export type NewsArticle = {
 // This is the display order. Keep the most recents at the start of the array
 export const initialNewsArticlesData: NewsArticle[] = [
   {
+    date: '2025-01-06',
+    lang: AppLangs.fr,
+    slug: 'plastique-usage-unique',
+    veryShortTitle: 'Plastiques à usage unique',
+    title: 'Interdiction des plastiques à usage unique – Ce que vous devez savoir',
+    excerpt: `Depuis l’entrée en vigueur de la loi Anti-Gaspillage pour une Économie Circulaire (AGEC), la vente de nombreux produits en plastique à usage unique est strictement interdite. Cette réglementation, en application depuis janvier 2021, vise à réduire les déchets plastiques et à encourager des alternatives durables.
+
+`,
+  },
+  {
+    date: '2024-12-23',
+    lang: AppLangs.fr,
+    slug: 'decoration-noel',
+    veryShortTitle: 'Décorations de Noël',
+    title: 'Décorations de Noël : quelques conseils pour éviter les étincelles pendant les fêtes',
+    excerpt: `Les fêtes de fin d’année approchent. Les vitrines illuminées émerveillent petits et grands, et la magie se prolonge à la maison avec les sapins décorés de guirlandes scintillantes. Mais attention, guirlandes électriques, bougies décoratives ou autres ornements festifs peuvent représenter des risques s’ils sont mal conçus ou mal utilisés.`,
+  },
+  {
     date: '2024-12-16',
     lang: AppLangs.fr,
     slug: 'securite-des-jouets',
