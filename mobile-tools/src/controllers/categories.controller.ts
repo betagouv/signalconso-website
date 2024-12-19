@@ -10,7 +10,7 @@ const CategoriesController = Router()
 CategoriesController.get('/', async (req: Request<{}, {}, {}, QueryParams>, res, next) => {
   try {
     const lang = req.query.lang ?? 'fr'
-    return res.status(200).send(categories[lang])
+    return res.status(200).send(categories[lang].sort((a, b) => Number(a.id) - Number(b.id)))
   } catch (err) {
     next(err)
   }
