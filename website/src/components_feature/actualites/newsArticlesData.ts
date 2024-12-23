@@ -19,9 +19,15 @@ export const initialNewsArticlesData: NewsArticle[] = [
     slug: 'plastique-usage-unique',
     veryShortTitle: 'Plastiques à usage unique',
     title: 'Interdiction des plastiques à usage unique – Ce que vous devez savoir',
-    excerpt: `Depuis l’entrée en vigueur de la loi Anti-Gaspillage pour une Économie Circulaire (AGEC), la vente de nombreux produits en plastique à usage unique est strictement interdite. Cette réglementation, en application depuis janvier 2021, vise à réduire les déchets plastiques et à encourager des alternatives durables.
-
-`,
+    excerpt: `Depuis l’entrée en vigueur de la loi Anti-Gaspillage pour une Économie Circulaire (AGEC), la vente de nombreux produits en plastique à usage unique est strictement interdite. Cette réglementation, en application depuis janvier 2021, vise à réduire les déchets plastiques et à encourager des alternatives durables.`,
+  },
+  {
+    date: '2024-12-30',
+    lang: AppLangs.fr,
+    slug: 'condamnation-indexia',
+    veryShortTitle: 'Condamnation d’INDEXIA',
+    title: 'Condamnation d’INDEXIA : des pratiques commerciales trompeuses enfin sanctionnées',
+    excerpt: `Après un procès hors norme qui a duré sept jours, avec pas moins de 63 tomes de plaintes et plus de 2 500 victimes recensées, le tribunal judiciaire de Paris a condamné six sociétés du groupe INDEXIA pour pratiques commerciales trompeuses et obstacle à la justice.`,
   },
   {
     date: '2024-12-23',
