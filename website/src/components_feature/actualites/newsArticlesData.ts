@@ -22,6 +22,14 @@ export const initialNewsArticlesData: NewsArticle[] = [
     excerpt: `Depuis l’entrée en vigueur de la loi Anti-Gaspillage pour une Économie Circulaire (AGEC), la vente de nombreux produits en plastique à usage unique est strictement interdite. Cette réglementation, en application depuis janvier 2021, vise à réduire les déchets plastiques et à encourager des alternatives durables.`,
   },
   {
+    date: '2025-01-03',
+    lang: AppLangs.fr,
+    slug: 'tarification-dynamique',
+    veryShortTitle: 'Tarification dynamique',
+    title: 'Tarification dynamique : Ce que vous devez savoir pour protéger votre portefeuille',
+    excerpt: `Acheter un billet de concert ou réserver un taxi en ligne peut parfois réserver de mauvaises surprises. Les prix changent constamment et très souvent à notre désavantage.`,
+  },
+  {
     date: '2024-12-30',
     lang: AppLangs.fr,
     slug: 'condamnation-indexia',
