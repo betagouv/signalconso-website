@@ -14,6 +14,14 @@ export type NewsArticle = {
 // This is the display order. Keep the most recents at the start of the array
 export const initialNewsArticlesData: NewsArticle[] = [
   {
+    date: '2025-01-20',
+    lang: AppLangs.fr,
+    slug: 'livraison-colis',
+    veryShortTitle: 'Relations commerciales dans le secteur de la livraison',
+    title: 'Relations commerciales dans le secteur de la livraison : petits colis, mais gros déséquilibres contractuels',
+    excerpt: `En 2023, Signal Conso a reçu plus de 24 000 signalements concernant la livraison de petits colis à la suite d’un achat sur internet ou en magasin. Partant de ce constat, la DGCCRF a mené l’enquête.`,
+  },
+  {
     date: '2025-01-13',
     lang: AppLangs.fr,
     slug: 'produits-de-la-peche',
