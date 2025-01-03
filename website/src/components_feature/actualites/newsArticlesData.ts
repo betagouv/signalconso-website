@@ -14,6 +14,14 @@ export type NewsArticle = {
 // This is the display order. Keep the most recents at the start of the array
 export const initialNewsArticlesData: NewsArticle[] = [
   {
+    date: '2025-01-27',
+    lang: AppLangs.fr,
+    slug: 'placements-financiers',
+    veryShortTitle: 'Arnaques placements financiers',
+    title: 'Placements financiers : Attention aux arnaques !',
+    excerpt: `Les promesses de gains rapides et attractifs peuvent cacher des pièges financiers dangereux, des arnaques ou des placements risqués. On vous éclaire sur les pratiques frauduleuses et les précautions à prendre pour protéger vos finances.`,
+  },
+  {
     date: '2025-01-20',
     lang: AppLangs.fr,
     slug: 'livraison-colis',
