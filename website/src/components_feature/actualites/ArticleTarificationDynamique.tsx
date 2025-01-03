@@ -1,6 +1,5 @@
 import imgLaptop from '@/img/actualites/laptop.png'
 import Image from 'next/image'
-import Link from 'next/link'
 
 export function ArticleTarificationDynamique() {
   return (

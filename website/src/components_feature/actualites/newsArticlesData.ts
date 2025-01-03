@@ -14,6 +14,30 @@ export type NewsArticle = {
 // This is the display order. Keep the most recents at the start of the array
 export const initialNewsArticlesData: NewsArticle[] = [
   {
+    date: '2025-01-27',
+    lang: AppLangs.fr,
+    slug: 'placements-financiers',
+    veryShortTitle: 'Arnaques placements financiers',
+    title: 'Placements financiers : Attention aux arnaques !',
+    excerpt: `Les promesses de gains rapides et attractifs peuvent cacher des pièges financiers dangereux, des arnaques ou des placements risqués. On vous éclaire sur les pratiques frauduleuses et les précautions à prendre pour protéger vos finances.`,
+  },
+  {
+    date: '2025-01-20',
+    lang: AppLangs.fr,
+    slug: 'livraison-colis',
+    veryShortTitle: 'Relations commerciales dans le secteur de la livraison',
+    title: 'Relations commerciales dans le secteur de la livraison : petits colis, mais gros déséquilibres contractuels',
+    excerpt: `En 2023, Signal Conso a reçu plus de 24 000 signalements concernant la livraison de petits colis à la suite d’un achat sur internet ou en magasin. Partant de ce constat, la DGCCRF a mené l’enquête.`,
+  },
+  {
+    date: '2025-01-13',
+    lang: AppLangs.fr,
+    slug: 'produits-de-la-peche',
+    veryShortTitle: 'Produits de la pêche et de l’aquaculture',
+    title: 'Produits de la pêche et de l’aquaculture : Ce que les étiquettes ne vous disent pas',
+    excerpt: `Les enquêtes ont révélé des manquements importants dans l’étiquetage et l’information des produits de la pêche et de l’aquaculture. Ces pratiques peuvent induire les consommateurs en erreur, particulièrement sur l’origine et la qualité des produits.`,
+  },
+  {
     date: '2025-01-06',
     lang: AppLangs.fr,
     slug: 'plastique-usage-unique',
