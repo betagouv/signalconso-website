@@ -14,6 +14,14 @@ export type NewsArticle = {
 // This is the display order. Keep the most recents at the start of the array
 export const initialNewsArticlesData: NewsArticle[] = [
   {
+    date: '2025-01-13',
+    lang: AppLangs.fr,
+    slug: 'produits-de-la-peche',
+    veryShortTitle: 'Produits de la pêche et de l’aquaculture',
+    title: 'Produits de la pêche et de l’aquaculture : Ce que les étiquettes ne vous disent pas',
+    excerpt: `Les enquêtes ont révélé des manquements importants dans l’étiquetage et l’information des produits de la pêche et de l’aquaculture. Ces pratiques peuvent induire les consommateurs en erreur, particulièrement sur l’origine et la qualité des produits.`,
+  },
+  {
     date: '2025-01-06',
     lang: AppLangs.fr,
     slug: 'plastique-usage-unique',
