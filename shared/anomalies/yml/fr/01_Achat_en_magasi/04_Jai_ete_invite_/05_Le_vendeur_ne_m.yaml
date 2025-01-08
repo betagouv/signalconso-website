@@ -14,7 +14,6 @@ detailInputs:
     type: TEXT
     placeholder: Nom ou type de produit
 fileLabel: >-
-  Invitation personnelle / le bon de commande / fiche technique du produit / un
-  devis manuscrit / facture / crédit associé
+  Pensez à ajouter TOUS les documents relatifs à la vente : invitation personnelle, bon de commande, fiche technique de produit, devis, facture, crédit associé...
 subcategory: >-
   Le_vendeur_ne_ma_pas_fourni_tous_les_documents_et_informations_obligatoires_au_moment_de_la_vente

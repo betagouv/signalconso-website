@@ -1,6 +1,6 @@
 title: Démarchage téléphonique
 desc: >-
-  J’ai été contacté par téléphone et par SMS à plusieurs reprises et ai reçu une
+  J’ai été contacté par téléphone et par SMS à plusieurs reprises et/ou j'ai reçu une
   invitation personnelle à mon domicile m’incitant de façon insistante à me
   rendre rapidement en magasin pour retirer des cadeaux
 tags:
@@ -24,6 +24,5 @@ detailInputs:
     type: TEXT
     placeholder: Nom ou type de produit
 fileLabel: >-
-  Invitation personnelle / le bon de commande / fiche technique du produit / un
-  devis manuscrit / facture / crédit associé
+  Pensez à ajouter TOUS les documents relatifs à la vente : invitation personnelle, bon de commande, fiche technique de produit, devis, facture, crédit associé...
 subcategory: Demarchage_telephonique
