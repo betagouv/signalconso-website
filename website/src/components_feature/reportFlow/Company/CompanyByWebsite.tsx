@@ -29,7 +29,8 @@ interface Props {
   children: (websiteUrl?: string, result?: CompanySearchResult[], countries?: Country[]) => ReactNode
 }
 
-const websiteRegex = /^((http|https):\/\/)?(www\.)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,}(:[0-9]{1,5})?(\/.*)?$/i
+const websiteRegex = /^((http|https):\/\/)?(www\.)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,}(:[0-9]{1,5})?(\/.*)?(\?.*)?$/i
+const nonGouvRegexp = /^(?!.*\.gouv\.fr(?:[\/?#]|$)).*$/i
 
 type WebsiteSearchResult =
   | {
@@ -169,7 +170,7 @@ export const CompanyByWebsite = ({children, specificWebsiteCompanyKind}: Props) 
       if (!websiteRegex.test(value.trim())) {
         return m.invalidUrlPattern
       }
-      return value.includes('signal.conso.gouv.fr') ? m.consumerCannotReportSignalConso : undefined
+      return !nonGouvRegexp.test(value.trim()) ? m.consumerCannotReportSignalConso : undefined
     },
   })
   const {ref, ...restOfRegisterWebsiteResult} = registerWebsiteResult
