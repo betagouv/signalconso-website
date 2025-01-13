@@ -1232,7 +1232,7 @@ export const fr = {
     consumerResentEmail: `Renvoyer`,
     consumerDummyEmailNotAccepted: `Les adresses éphémères ne sont pas acceptées.`,
     consumerAliasEmailNotAccepted: `Vous avez déjà utilisé un alias de cet email aujourd'hui.`,
-    consumerCannotReportSignalConso: `Veuillez saisir l'URL du site que vous souhaitez signaler. 'Signal conso' n'est pas une valeur correcte.`,
+    consumerCannotReportSignalConso: `Vous ne pouvez pas signaler un site gouvernemental. SignalConso permet uniquement de signaler des problèmes liés à des entreprises privées..`,
     consumerValidationCodeExpired: `Code incorrect, veuillez réessayer.`,
     consumerValidationCodeInvalid: `Code incorrect, veuillez réessayer.`,
     consumerIsEmployee: `

@@ -1215,7 +1215,7 @@ export const en = {
     consumerResentEmail: `Resend`,
     consumerDummyEmailNotAccepted: `Disposable email addresses are not accepted.`,
     consumerAliasEmailNotAccepted: `You already have used an alias of this email today.`,
-    consumerCannotReportSignalConso: `Please enter the URL of the site you want to report. 'Signal conso' is not a correct value.`,
+    consumerCannotReportSignalConso: `You can’t report a government website. SignalConso service allows you to report consumption problems related to private companies only`,
     consumerValidationCodeExpired: `Incorrect code, please try again.`,
     consumerValidationCodeInvalid: `Incorrect code, please try again.`,
     consumerIsEmployee: `
