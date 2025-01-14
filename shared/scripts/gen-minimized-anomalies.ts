@@ -22,9 +22,17 @@ const extractWantedPropsFromSubcategories = (obj: any) => {
       tags: obj.tags,
       subcategories: res,
       subcategory: obj.subcategory,
+      categoryOverride: obj.categoryOverride,
     }
   } else {
-    return {category: obj.category, id: obj.id, title: obj.title, tags: obj.tags, subcategory: obj.subcategory}
+    return {
+      category: obj.category,
+      id: obj.id,
+      title: obj.title,
+      tags: obj.tags,
+      subcategory: obj.subcategory,
+      categoryOverride: obj.categoryOverride,
+    }
   }
 }
 
