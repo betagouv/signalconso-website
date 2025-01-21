@@ -4,6 +4,13 @@
   "description": "",
   "items": [
     {
+      "title": "Piles bouton : prévenir l’ingestion et adopter les bons réflexes en cas d’accident ",
+      "link": "https://www.economie.gouv.fr/dgccrf/actualites/piles-bouton-prevenir-lingestion-et-adopter-les-bons-reflexes-en-cas-daccident",
+      "description": "Face aux nombreux cas d’ingestion de piles bouton par de très jeunes enfants (avant 6 ans, le plus souvent), responsables de graves conséquences, parfois mortelles, les autorités sanitaires alertent à nouveau sur ce risque sanitaire méconnu et sensibilisent les parents, les personnes ayant la garde d’enfants et les professionnels de santé sur les premiers réflexes à adopter en cas d’accident.\n",
+      "guid": "44862",
+      "date": "2025-01-20T13:02:38.000Z"
+    },
+    {
       "title": "Consommation : ce qui va changer en 2025",
       "link": "https://www.economie.gouv.fr/dgccrf/actualites/consommation-ce-qui-va-changer-en-2025",
       "description": "Sécurité et indice de durabilité des produits, prix des virements instantanés, heures creuses pour l’électricité… Voici ce qui va changer pour les consommateurs et les professionnels en 2025.\n",
@@ -135,13 +142,6 @@
       "description": "Les grandes surfaces devront désormais avertir leurs clients quand la quantité vendue d’un produit aura diminué sans que son prix ne soit réduit d’autant.\n",
       "guid": "3228711",
       "date": "2024-07-01T15:21:09+02:00"
-    },
-    {
-      "title": "Droits des passagers par voie ferroviaire : peu d’anomalies relevées concernant l’information pré-contractuelle, les obligations d’assistance et le remboursement des billets en cas d’annulation",
-      "link": "https://www.economie.gouv.fr/dgccrf/droits-des-passagers-par-voie-ferroviaire-peu-danomalies-relevees-concernant-linformation",
-      "description": "Dans le cadre de l’ouverture à la concurrence du transport ferroviaire, plusieurs opérateurs circulent désormais sur le réseau français. La DGCCRF a contrôlé en 2022 les trois principales entreprises du secteur afin de s’assurer du respect par ces opérateurs du règlement européen n° 1371/2007 sur les droits et obligations des voyageurs ferroviaires.\n",
-      "guid": "3229740",
-      "date": "2024-06-27T15:16:04+02:00"
     }
   ]
 }
