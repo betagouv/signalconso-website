@@ -28,12 +28,10 @@ export function CompanyChooseIdentificationMethod({
 
   const optionName = {
     label: m.identifyBy_name,
-    description: m.identifyBy_nameDesc,
     value: 'byName',
   }
   const optionNameAndCp = {
     label: m.identifyBy_name_postal_code,
-    description: m.identifyBy_nameDesc,
     value: 'byNameAndPostalCode',
   }
   const optionIdentity = {

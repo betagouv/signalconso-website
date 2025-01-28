@@ -1076,7 +1076,6 @@ export const fr = {
     identifyBy_barcodeDesc: `Nous vous dirons où le trouver`,
     identifyBy_name_postal_code: `Par son nom et son code postal`,
     identifyBy_name: `Par son nom`,
-    identifyBy_nameDesc: `Entreprise française uniquement`,
     identifyBy_identity: `Par son numéro d'identification SIRET, SIREN, ou TVA intracommunautaire`,
     identifyBy_identityDesc: `Nous vous dirons où les trouver`,
     identifyBy_none: `Je ne peux pas identifier l'entreprise ou l'entreprise est à l'étranger`,
