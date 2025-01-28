@@ -4,6 +4,7 @@ import {Animate} from '@/components_simple/Animate'
 import {useApiClients} from '@/context/ApiClientsContext'
 import {getCompanyKind, isTransmittableToPro} from '@/feature/reportUtils'
 import {useI18n} from '@/i18n/I18n'
+import {extractFromGeoArea} from '@/model/GeoArea'
 import {Report} from '@/model/Report'
 import {CommonCompanyIdentification} from '@/model/Step2Model'
 import {scrollToElement} from '@/utils/utils'
@@ -146,10 +147,9 @@ function useCompanySearchSmartQuery(searchInputs: CompanySearchInputs | undefine
     queryFn: async () => {
       if (searchInputs) {
         const {input, geoArea} = searchInputs
-        const postalCode = geoArea && geoArea.kind === 'postcode' ? geoArea.postalCode : undefined
-        const departmentCode = geoArea && geoArea.kind === 'department' ? geoArea.dpt.code : undefined
+        const {postalCode, departmentCode} = extractFromGeoArea(geoArea)
         const res = await companyApiClient.searchSmart(input, postalCode, departmentCode, currentLang)
-        _analytic.trackSearch({q: input, postalCode, departmentCode}, 'companysearch_smart', res.length)
+        _analytic.trackSearch({q: input, geoArea}, 'companysearch_smart', res.length)
         return res
       }
       return null

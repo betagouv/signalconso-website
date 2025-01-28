@@ -20,7 +20,7 @@ describe('Details: single date not in future', () => {
 
   const selectIdentifyBy = (method: IdentificationMethod) => {
     const btnText = fnSwitch(method, {
-      ['byNameAndPostalCode']: app.m.identifyBy_name_postal_code,
+      ['byNameAndGeoArea']: app.m.identifyBy_name_geoarea,
       ['byName']: app.m.identifyBy_name,
       ['byIdentifier']: app.m.identifyBy_identity,
       ['iCannot']: app.m.identifyBy_none,
@@ -124,8 +124,8 @@ describe('Details: single date not in future', () => {
 
     it('should display radios for identification choice', async () => {
       await elementShouldExists('#CompanyIdentifyBy')
-      selectIdentifyBy('byNameAndPostalCode')
-      await elementShouldExists('#CompanyByNameAndPostalCode')
+      selectIdentifyBy('byNameAndGeoArea')
+      await elementShouldExists('#CompanyByNameAndGeoArea')
     })
   })
 })

@@ -1,10 +1,11 @@
-import {SocialNetwork, Subcategory} from 'shared/anomalies/Anomaly'
 import {appConfig} from '@/core/appConfig'
 import {getSubcategories} from '@/feature/reportUtils'
 import {toApi} from '@/feature/toApi'
 import {ConsumerEmailResult} from '@/model/ConsumerEmailValidation'
 import {Report} from '@/model/Report'
 import {ApiCreatedReport, ApiReport} from '@/model/reportsFromApi'
+import {GenericAbortSignal} from 'axios'
+import {SocialNetwork, Subcategory} from 'shared/anomalies/Anomaly'
 import {ResponseConsumerReview, ResponseConsumerReviewExists} from '../core/Events'
 import {AppLang} from '../i18n/localization/AppLangs'
 import {BarcodeProduct} from '../model/BarcodeProduct'
@@ -13,20 +14,6 @@ import {Country} from '../model/Country'
 import {CreatedReport} from '../model/CreatedReport'
 import {FileOrigin, UploadedFile} from '../model/UploadedFile'
 import {ApiError, BaseApiClient} from './BaseApiClient'
-import {GenericAbortSignal} from 'axios'
-
-type PublicStat =
-  | 'PromesseAction'
-  | 'Reports'
-  | 'TransmittedPercentage'
-  | 'ReadPercentage'
-  | 'ResponsePercentage'
-  | 'WebsitePercentage'
-
-export type CountByDate = {
-  date: Date
-  count: number
-}
 
 export class SignalConsoApiClient {
   private readonly client: BaseApiClient = new BaseApiClient({
@@ -81,23 +68,6 @@ export class SignalConsoApiClient {
       },
     }
     return res
-  }
-
-  getPublicStatCount = (publicStat: PublicStat) => {
-    return this.client.get<number>(`stats/reports/public/count`, {qs: {publicStat}})
-  }
-
-  getPublicStatCurve = async (publicStat: PublicStat): Promise<CountByDate[]> => {
-    const res = await this.client.get<
-      {
-        count: number
-        date: string
-      }[]
-    >(`stats/reports/public/curve`, {qs: {publicStat}})
-    return res.map(({date, ...rest}) => ({
-      date: new Date(date),
-      ...rest,
-    }))
   }
 
   getCountries = () => this.client.get<Country[]>(`/constants/countries`)

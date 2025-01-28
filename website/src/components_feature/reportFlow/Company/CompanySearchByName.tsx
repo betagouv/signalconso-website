@@ -53,7 +53,7 @@ export const CompanySearchByName = ({children}: Props) => {
   return (
     <>
       <Animate>
-        <div id="CompanyByNameAndPostalCode">
+        <div id="CompanyByName">
           <h2 className="text-lg">{m.couldYouPrecise}</h2>
           <p className="text-sm mb-0">{m.youCanOnlyReportFrenchCompanies}</p>
           <RequiredFieldsLegend />

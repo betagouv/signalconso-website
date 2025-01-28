@@ -1072,7 +1072,7 @@ export const en = {
     identifyBy_name_postal_code: `By its name and postal code`,
     identifyBy_name: `By its name`,
     identifyBy_nameDesc: `French companies only`,
-    identifyBy_identity: `By its SIRET or SIREN or RCS number`,
+    identifyBy_identity: `By its SIRET or SIREN`,
     identifyBy_identityDesc: `These numbers identify every French company. We'll tell you how to find them`,
     identifyBy_none: `I am unable to identify the company, or the company is outside France`,
     identifyBy_noneDesc: `If you are unable to identify the company, you can continue with your report.
@@ -1084,7 +1084,7 @@ export const en = {
     couldYouPrecise: `Can you give us more details?`,
     cantIdentifyCompany: `Your postal code will help us direct your report to the appropriate service.`,
     cantIdentifyLocationCompany: `These informations will help us direct your report to the appropriate service and match it with any reports your neighbors may have submitted.`,
-    companyIdentityLabel: `SIRET or SIREN or RCS number of the company`,
+    companyIdentityLabel: `SIRET or SIREN of the company`,
     cannotFindWarning: {
       moreEfficient: `SignalConso works best when you identify the company you're having a dispute with.`,
       contactCompany: `This allows us to contact them directly so they can respond to you quickly.`,
@@ -1249,16 +1249,8 @@ export const en = {
     companyWebsiteVendorDesc: (companyName: string) => `Only if the seller is not ${companyName}`,
     companyWebsiteVendor: `Seller:`,
     companyIdentityHelperDesc: `
-    SIRET, SIREN and RCS numbers are all identifiers for French companies.<br/>
-    SIRET is a 14-digit code; SIREN is a 9-digit code.<br/>
-    The RCS number is made up of:<br/>
-      <ul>
-        <li>the reference ""RCS""</li>
-        <li>the name of the town/city of registration</li>
-        <li>one letter (A or B)</li>
-        <li>the SIREN number</li>
-      </ul>
-    `,
+    SIRET and SIREN numbers are all identifiers for French companies.<br/>
+    SIRET is a 14-digit code; SIREN is a 9-digit code.<br/>`,
     howToFindCompanyCountry: ``,
     howToFindCompanyCountryDesc: `
       On the company's website, go to one of the following links:

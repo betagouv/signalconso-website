@@ -1,4 +1,5 @@
 import {appConfig} from '@/core/appConfig'
+import {extractFromGeoArea, GeoArea} from '@/model/GeoArea'
 import {usePathname, useSearchParams} from 'next/navigation'
 import {useEffect} from 'react'
 import {CompanyKind} from 'shared/anomalies/Anomaly'
@@ -37,11 +38,12 @@ export class Analytic {
   }
 
   readonly trackSearch = (
-    inputs: {q: string; postalCode?: string; departmentCode?: string},
-    searchCategory: 'companysearch_smart' | 'companysearch_nameandpostalcode' | 'companysearch_name' | 'companysearch_siret',
+    inputs: {q: string; geoArea?: GeoArea},
+    searchCategory: 'companysearch_smart' | 'companysearch_nameandgeoarea' | 'companysearch_name' | 'companysearch_siret',
     nbResults: number,
   ) => {
-    const {q, postalCode, departmentCode} = inputs
+    const {q, geoArea} = inputs
+    const {postalCode, departmentCode} = extractFromGeoArea(geoArea)
     const trackedSearch = `${postalCode ? `[${postalCode}] ` : ''}${departmentCode ? `[${departmentCode}] ` : ''}${q}`
     // https://developer.matomo.org/guides/tracking-javascript-guide#internal-search-tracking
     this.matomoPush(['trackSiteSearch', trackedSearch, searchCategory, nbResults])

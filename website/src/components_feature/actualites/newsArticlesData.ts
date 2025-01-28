@@ -14,6 +14,14 @@ export type NewsArticle = {
 // This is the display order. Keep the most recents at the start of the array
 export const initialNewsArticlesData: NewsArticle[] = [
   {
+    date: '2025-02-03',
+    lang: AppLangs.fr,
+    slug: 'un-million-de-signalements',
+    veryShortTitle: '1 MILLION DE SIGNALEMENTS',
+    title: '🎉 1 MILLION DE SIGNALEMENTS : MERCI À TOUS !',
+    excerpt: `C’est officiel : Signal Conso a franchi le cap du million de signalements ! Depuis son lancement, notre plateforme s’est imposée comme un outil incontournable pour améliorer la transparence et renforcer la confiance entre consommateurs et entreprises.`,
+  },
+  {
     date: '2025-01-27',
     lang: AppLangs.fr,
     slug: 'placements-financiers',
