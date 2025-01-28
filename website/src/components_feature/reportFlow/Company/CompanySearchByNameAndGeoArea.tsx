@@ -4,10 +4,11 @@ import {useToastOnQueryError} from '@/clients/apiHooks'
 import {Animate} from '@/components_simple/Animate'
 import {RequiredFieldsLegend} from '@/components_simple/RequiredFieldsLegend'
 import {ButtonWithLoader} from '@/components_simple/buttons/Buttons'
-import {ScAutocompletePostcode} from '@/components_simple/formInputs/ScAutocompletePostcode'
+import {ScAutocompleteGeoArea} from '@/components_simple/formInputs/ScAutocompleteGeoArea'
 import {ScTextInput} from '@/components_simple/formInputs/ScTextInput'
 import {useApiClients} from '@/context/ApiClientsContext'
 import {useI18n} from '@/i18n/I18n'
+import {GeoArea, geoAreaToString} from '@/model/GeoArea'
 import {useQuery} from '@tanstack/react-query'
 import {ReactNode, useState} from 'react'
 import {Controller, useForm} from 'react-hook-form'
@@ -16,24 +17,24 @@ import {ifDefined} from '../../../utils/utils'
 
 interface Form {
   name: string
-  postalCode: string
+  geoArea: GeoArea
 }
 
 interface Props {
   children: (companies?: CompanySearchResult[]) => ReactNode
 }
 
-export const CompanySearchByNameAndPostalCode = ({children}: Props) => {
+export const CompanySearchByNameAndGeoArea = ({children}: Props) => {
   const {m, currentLang} = useI18n()
   const {companyApiClient} = useApiClients()
   const [submittedForm, setSubmittedForm] = useState<Form | undefined>()
   const _search = useQuery({
-    queryKey: ['searchCompaniesByNameAndPostalCode', submittedForm?.name, submittedForm?.postalCode],
+    queryKey: ['searchCompaniesByNameAndGeoArea', submittedForm?.name, geoAreaToString(submittedForm?.geoArea)],
     queryFn: async () => {
       if (submittedForm) {
-        const {name, postalCode} = submittedForm
-        const res = await companyApiClient.searchCompaniesByNameAndPostalCode(name, postalCode, currentLang)
-        _analytic.trackSearch({q: name, postalCode}, 'companysearch_nameandpostalcode', res.length)
+        const {name, geoArea} = submittedForm
+        const res = await companyApiClient.searchCompaniesByNameAndGeoArea(name, geoArea, currentLang)
+        _analytic.trackSearch({q: name, geoArea}, 'companysearch_nameandgeoarea', res.length)
         return res
       }
       return null
@@ -49,13 +50,17 @@ export const CompanySearchByNameAndPostalCode = ({children}: Props) => {
   } = useForm<Form>()
 
   const search = (form: Form) => {
-    _analytic.trackEvent(EventCategories.companySearch, CompanySearchEventActions.search, form.name + ' ' + form.postalCode)
+    _analytic.trackEvent(
+      EventCategories.companySearch,
+      CompanySearchEventActions.search,
+      form.name + ' ' + geoAreaToString(form.geoArea),
+    )
     setSubmittedForm(form)
   }
   return (
     <>
       <Animate>
-        <div id="CompanyByNameAndPostalCode">
+        <div id="CompanyByNameAndGeoArea">
           <h2 className="text-lg">{m.couldYouPrecise}</h2>
           <p className="text-sm mb-0">{m.youCanOnlyReportFrenchCompanies}</p>
           <RequiredFieldsLegend />
@@ -72,13 +77,13 @@ export const CompanySearchByNameAndPostalCode = ({children}: Props) => {
               />
               <Controller
                 control={control}
-                name="postalCode"
+                name="geoArea"
                 rules={{
                   required: {value: true, message: m.required},
                 }}
                 render={({field: {onChange, onBlur, name, value}, fieldState: {error}}) => (
-                  <ScAutocompletePostcode
-                    label={m.postalCode}
+                  <ScAutocompleteGeoArea
+                    label={m.postalCodeOrDpt}
                     {...{onChange, onBlur, name, value}}
                     error={!!error}
                     helperText={error?.message}

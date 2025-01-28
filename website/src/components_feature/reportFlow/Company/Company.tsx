@@ -24,7 +24,7 @@ import {CompanyChooseIdentificationMethod} from './CompanyChooseIdentificationMe
 import {CompanyFilled} from './CompanyFilled'
 import {CompanySearchByBarcode} from './CompanySearchByBarcode'
 import {CompanySearchByIdentifier} from './CompanySearchByIdentifier'
-import {CompanySearchByNameAndPostalCode} from './CompanySearchByNameAndPostalCode'
+import {CompanySearchByNameAndGeoArea} from './CompanySearchByNameAndGeoArea'
 import {CompanySearchResultComponent} from './CompanySearchResultComponent'
 import {CompanySmartIdentification} from './CompanySmartIdentification/CompanySmartIdentification'
 import {CompanyWebsiteCountry} from './CompanyWebsiteCountry'
@@ -252,9 +252,9 @@ function CompanyIdentificationTree({
     <CompanyChooseIdentificationMethod {...{companyKind}}>
       {method => {
         switch (method) {
-          case 'byNameAndPostalCode':
+          case 'byNameAndGeoArea':
             return (
-              <CompanySearchByNameAndPostalCode>
+              <CompanySearchByNameAndGeoArea>
                 {companies => (
                   <CompanySearchResultComponent
                     companies={companies ?? []}
@@ -267,7 +267,7 @@ function CompanyIdentificationTree({
                     }}
                   />
                 )}
-              </CompanySearchByNameAndPostalCode>
+              </CompanySearchByNameAndGeoArea>
             )
           case 'byName':
             return (

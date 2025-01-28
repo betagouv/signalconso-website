@@ -1074,7 +1074,7 @@ export const fr = {
     websitePlaceholder: 'Exemple: https://www.site.fr',
     identifyBy_barcode: `Par le numéro du code-barres sur le produit`,
     identifyBy_barcodeDesc: `Nous vous dirons où le trouver`,
-    identifyBy_name_postal_code: `Par son nom et son code postal`,
+    identifyBy_name_geoarea: `Par son nom et adresse`,
     identifyBy_name: `Par son nom`,
     identifyBy_identity: `Par son numéro d'identification SIRET, SIREN, ou TVA intracommunautaire`,
     identifyBy_identityDesc: `Nous vous dirons où les trouver`,

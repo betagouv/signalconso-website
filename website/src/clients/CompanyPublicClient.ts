@@ -1,4 +1,5 @@
 import {appConfig} from '@/core/appConfig'
+import {extractFromGeoArea, GeoArea} from '@/model/GeoArea'
 import {CompanySearchResult} from '../model/Company'
 import {BaseApiClient} from './BaseApiClient'
 
@@ -30,6 +31,11 @@ export class CompanyPublicClient {
         lang: lang,
       },
     })
+  }
+
+  readonly searchCompaniesByNameAndGeoArea = (search: string, geoArea: GeoArea, lang: string) => {
+    const {postalCode, departmentCode} = extractFromGeoArea(geoArea)
+    return this.searchSmart(search, postalCode, departmentCode, lang)
   }
 
   readonly searchHeadOfficesByName = (search: string, lang: string) => {
