@@ -5,7 +5,7 @@ import {ReactNode, useState} from 'react'
 import {CompanyKind} from 'shared/anomalies/Anomaly'
 import {ScRadioButtons} from '../../../components_simple/formInputs/ScRadioButtons'
 
-const identificationMethods = ['byNameAndPostalCode', 'byName', 'byIdentifier', 'iCannot']
+const identificationMethods = ['byNameAndPostalCode', 'byName', 'byIdentifier', 'iCannot'] as const
 export type IdentificationMethod = (typeof identificationMethods)[number]
 
 function isRemote(companyKind: CompanyKind) {
@@ -28,21 +28,21 @@ export function CompanyChooseIdentificationMethod({
 
   const optionName = {
     label: m.identifyBy_name,
-    value: 'byName',
+    value: 'byName' as const,
   }
   const optionNameAndCp = {
     label: m.identifyBy_name_postal_code,
-    value: 'byNameAndPostalCode',
+    value: 'byNameAndPostalCode' as const,
   }
   const optionIdentity = {
     label: m.identifyBy_identity,
     description: m.identifyBy_identityDesc,
-    value: 'byIdentifier',
+    value: 'byIdentifier' as const,
   }
   const optionNone = {
     label: m.identifyBy_none,
     description: m.identifyBy_noneDesc,
-    value: 'iCannot',
+    value: 'iCannot' as const,
   }
   const options = [
     ...(isRemote(companyKind) ? [optionName] : [optionNameAndCp]),
