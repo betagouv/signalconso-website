@@ -14,6 +14,14 @@ export type NewsArticle = {
 // This is the display order. Keep the most recents at the start of the array
 export const initialNewsArticlesData: NewsArticle[] = [
   {
+    date: '2025-02-10',
+    lang: AppLangs.fr,
+    slug: 'consultation-publique-produits-non-preemballes',
+    veryShortTitle: 'Produits non préemballés : consultation publique',
+    title: 'Vente de produits non préemballés : participez à la consultation publique dès maintenant !',
+    excerpt: `Du 27 janvier au 17 février 2025, une consultation publique en ligne est ouverte pour recueillir vos avis sur le projet de décret relatif au développement de la vente de produits non préemballés, notamment en vrac, dans les commerces de détail de plus de 400 m².`,
+  },
+  {
     date: '2025-02-03',
     lang: AppLangs.fr,
     slug: 'un-million-de-signalements',
