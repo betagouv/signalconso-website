@@ -1,5 +1,7 @@
-title: J’ai procédé au paiement le jour de la vente
-desc: J’ai remis un ou plusieurs chèques aux vendeurs le jour de la vente.
+title: >-
+  Sur place, j’ai subi des pressions de la part des vendeurs pour acheter des meubles ou des articles de literie 
+desc: >- 
+  Les vendeurs m’ont accordé plusieurs remises successives importantes et un bon d’achat à valoir le jour même.
 detailInputs:
   - label: Date de l'achat ou de la visite dans le magasin
     type: DATE
@@ -11,4 +13,5 @@ detailInputs:
     placeholder: Nom ou type de produit
 fileLabel: >-
  Pensez à ajouter TOUS les documents relatifs à la vente : invitation personnelle, bon de commande, fiche technique de produit, devis, facture, crédit associé...
-subcategory: Jai_procede_au_paiement_le_jour_de_la_vente
+subcategory: >-
+  Jai_eu_limpression_de_ne_pas_pouvoir_sortir_du_magasin_avant_davoir_fait_un_achat
