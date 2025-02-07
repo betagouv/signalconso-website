@@ -1,7 +1,6 @@
-title: J’ai bénéficié de remises conséquentes sur le prix des produits
+title: Le vendeur refuse d’annuler la vente
 desc: >-
-  Les vendeurs m’ont accordé plusieurs remises successives d’un montant
-  important et un bon d’achat valables uniquement le jour même.
+  Je n’arrive pas à exercer mon droit de rétractation alors que le délai légal de 14 jours n’est pas expiré. Le vendeur refuse de me rembourser malgré l’annulation de mon achat,  il a repris mon ancien mobilier pour y mettre le nouveau et refuse de procéder à l’échange, il m’impose des pénalités, le magasin n’existe plus…
 detailInputs:
   - label: Date de l'achat ou de la visite dans le magasin
     type: DATE
@@ -13,4 +12,4 @@ detailInputs:
     placeholder: Nom ou type de produit
 fileLabel: >-
   Pensez à ajouter TOUS les documents relatifs à la vente : invitation personnelle, bon de commande, fiche technique de produit, devis, facture, crédit associé...
-subcategory: Jai_beneficie_de_remises_consequentes_sur_le_prix_des_produits
+subcategory: Les_vendeurs_refusent_dannuler_la_vente
