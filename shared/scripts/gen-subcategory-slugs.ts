@@ -23,6 +23,9 @@ function sanitizeDirContents(_path: string, options: {excludedFileName?: string}
     if (isFile(subpath)) {
       const content = readFileYaml(subpath)
 
+      if (!content.title) {
+        throw new Error(`'title' field is missing in ${subpath}`)
+      }
       if (!content.category && !content.subcategory) {
         content.subcategory = slugify(content.title, {strict: true, replacement: '_'})
         writeFileYaml(subpath, content)
