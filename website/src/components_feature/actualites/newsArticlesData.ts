@@ -14,6 +14,14 @@ export type NewsArticle = {
 // This is the display order. Keep the most recents at the start of the array
 export const initialNewsArticlesData: NewsArticle[] = [
   {
+    date: '2025-02-17',
+    lang: AppLangs.fr,
+    slug: 'usurpation-d-identite',
+    veryShortTitle: 'Usurpation d’identité',
+    title: 'Usurpation d’identité : ayez les bons réflexes pour vous en prémunir avec SignalConso !',
+    excerpt: `Les tentatives d’escroquerie par usurpation d’identité d’agents de l’administration, d’institutions publiques ou d’établissements bancaires sont de plus en plus fréquentes.`,
+  },
+  {
     date: '2025-02-10',
     lang: AppLangs.fr,
     slug: 'consultation-publique-produits-non-preemballes',
