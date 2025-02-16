@@ -1,15 +1,11 @@
 import {GoogleAuth} from "google-auth-library";
 import {QueryAnalyticsRequest, SearchAnalyticsRequest, SearchAnalyticsResponse} from '../models/model.js'
-import {Config} from "../config/config.js";
 
-
-const SERVICE_ACCOUNT_FILE = Config.googleServiceAccountPrivateKey
-
+const SERVICE_ACCOUNT_FILE = './stat-fetcher.json';
 
 // OAuth 2.0 scope for Search Console API
 const SCOPES = ['https://www.googleapis.com/auth/webmasters.readonly'];
 const GOOGLE_API_URL = 'https://www.googleapis.com/webmasters/v3/sites/https%3A%2F%2Fsignal.conso.gouv.fr%2F/searchAnalytics/query';
-
 
 
 const executeQuery = async (accessToken: string, requestBody: any) => {
