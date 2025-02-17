@@ -61,7 +61,6 @@ export const fetchSearchAnalyticsData = async (request: SearchAnalyticsRequest):
     startDate: request.startDate,  // Use a wider range
     endDate: request.endDate,
     dimensions: ["page"],
-    rowLimit: 1,
     dimensionFilterGroups: [{
       filters:
         [...containsFilters, ...notContainsFilters]
