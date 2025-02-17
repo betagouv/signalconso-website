@@ -35,7 +35,7 @@
   },
   "scripts": {
     "build": "tsc",
-    "start": "node build/index.js",
+    "start": "tsc && node build/index.js",
     "dev": "concurrently \"tsc --watch\" \"nodemon -q build/index.js\"",
     "format": "prettier --write .",
     "checkformat": "prettier --check ."
