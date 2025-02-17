@@ -1,0 +1,38 @@
+name: Gets analytics from google search console and push the stats to airtable
+
+on:
+  workflow_dispatch: # can be triggered manually on github
+  schedule:
+    - cron: '0 8 * * *'
+
+env:
+  AIRTABLE_TOKEN: ${{ vars.AIRTABLE_TOKEN}}
+  AIRTABLE_BASE_ID: ${{ vars.AIRTABLE_BASE_ID}}
+  AIRTABLE_TABLE_ID: ${{ vars.AIRTABLE_TABLE_ID}}
+
+
+defaults:
+  run:
+    working-directory: ./analytics
+
+jobs:
+  main-job:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Decrypt google service account file
+        run: ./decrypt_secret.sh
+        env:
+          GOOGLE_SERVICE_ACCOUNT_SECRET_PASSPHRASE: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_SECRET_PASSPHRASE }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'yarn'
+          cache-dependency-path: yarn.lock
+      - run: node --version
+      - run: yarn --version
+      - run: yarn install --immutable
+      - run: yarn start
+
