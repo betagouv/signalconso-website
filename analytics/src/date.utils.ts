@@ -1,9 +1,9 @@
-export function getLast6CompleteMonthRanges() {
+export function getLastNCompleteMonthRanges(numberOfMonth : number) {
   const dateRanges = [];
   const currentDate = new Date();
 
   // Start from the previous month
-  for (let i = 1; i <= 6; i++) {
+  for (let i = 1; i <= numberOfMonth; i++) {
     const startDate = new Date(currentDate.getFullYear(), currentDate.getMonth() - i, 2);
     const endDate = new Date(currentDate.getFullYear(), currentDate.getMonth() - i + 1, 1);
 

@@ -2,8 +2,13 @@ name: Gets analytics from google search console and push the stats to airtable
 
 on:
   workflow_dispatch: # can be triggered manually on github
+  # Too many rate limitations on the google api, we want to rerun the job periodically to avoid restrictions
   schedule:
-    - cron: '0 8 * * *'
+    - cron: '0 0 * * 1'  # Runs at 12:00 AM UTC on Monday
+    - cron: '0 1 * * 1'  # Runs at 1:00 AM UTC on Monday
+    - cron: '0 2 * * 1'  # Runs at 2:00 AM UTC on Monday
+    - cron: '0 3 * * 1'  # Runs at 3:00 AM UTC on Monday
+    - cron: '0 4 * * 1'  # Runs at 4:00 AM UTC on Monday
 
 env:
   AIRTABLE_TOKEN: ${{ secrets.AIRTABLE_TOKEN}}

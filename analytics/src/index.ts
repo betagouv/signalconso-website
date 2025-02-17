@@ -1,10 +1,17 @@
 import {fetchQueryAnalyticsData, fetchSearchAnalyticsData} from "./client/google.client.js";
 import {clearTable, read, start} from "./client/airtable.client.js";
 import {AirtableAnalyticsData, SearchAnalyticsRequest} from "./models/model.js";
-import {getLast6CompleteMonthRanges} from "./date.utils.js";
+import {getLastNCompleteMonthRanges} from "./date.utils.js";
 
 
-const dateRanges = getLast6CompleteMonthRanges();
+const dateRanges = getLastNCompleteMonthRanges(6);
+
+const oldestDate = dateRanges.sort((a, b) => {
+  const dateA = new Date(a.startDate).getTime();
+  const dateB = new Date(b.startDate).getTime();
+  return dateA - dateB;
+})[0].startDate;
+
 const requests = dateRanges.map(d =>
   ({
     startDate: d.startDate,
@@ -89,8 +96,8 @@ async function fetchAllSearchAnalyticsData(requests: SearchAnalyticsRequest[], e
         const validRows = transformedRows.filter((row): row is AirtableAnalyticsData => row !== null);
         results.push(...validRows);
       } catch (error) {
-        console.error('Error fetching search analytics data for request:', error);
         // Do not add anything to results if there's an error with the request
+        console.error('Error fetching search analytics data for request:', error);
       }
     })
   );
@@ -98,8 +105,8 @@ async function fetchAllSearchAnalyticsData(requests: SearchAnalyticsRequest[], e
   return results;
 }
 
-// await clearTable()
-
+//Make sure that we keep the same history of 6 month, removing all lines older than that
+await clearTable(oldestDate)
 
 read()
   .then(existingLines => fetchAllSearchAnalyticsData(requests, existingLines))

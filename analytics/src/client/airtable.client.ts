@@ -13,8 +13,9 @@ const TABLE_ID = Config.airtableTableId
 // go to https://airtable.com/developers/web/api/introduction
 // then select the workspace immediately in this first page
 // That's where I got these fields IDs
+const DATE_ID = 'fldijdao0zmTO4pz3'
 const FIELD_MAPPING = {
-  date: 'fldijdao0zmTO4pz3',
+  date: DATE_ID,
   page: 'fldFMJ4xJJxmekYdx',
   clicks: 'flddkFd5Zs3I9ZVWV',
   impressions: 'fldHJGJVaFmHBSOP2',
@@ -36,17 +37,27 @@ function setupAirtable() {
 }
 
 
-export async function clearTable() {
+export async function clearTable(threshold: string) {
   try {
     console.log('Clearing previous airtable records');
     const base = setupAirtable();
     const records: any[] = [];
 
     // Retrieve all records in the table
-    await base(TABLE_ID).select().eachPage(async (pageRecords, fetchNextPage) => {
-      records.push(...pageRecords);
+    await base(TABLE_ID).select({
+      fields: Object.values({
+        date: DATE_ID
+      }),
+      returnFieldsByFieldId: true,
+    }).eachPage(async (pageRecords, fetchNextPage) => {
+      records.push(...pageRecords.filter((e: any) => {
+        const rowDate = e.fields[DATE_ID]
+        return new Date(rowDate) < new Date(threshold)
+      }));
       fetchNextPage(); // Ensure fetchNextPage is awaited to handle pagination correctly
     });
+
+    console.log(`Removing old record, ${records.length} elements will be removed`)
 
     await batchAirtableAction(records
       , batchedRecord => base(TABLE_ID).destroy(batchedRecord.map((e: any) => e.id)))
@@ -62,9 +73,9 @@ export async function start(lines: AirtableAnalyticsData[]) {
   await pushRecordsToTable(base, TABLE_ID, lines, FIELD_MAPPING)
 }
 
-export  function read() {
+export function read() {
   const base = setupAirtable()
-  return  readLandingPagesTable(base)
+  return readLandingPagesTable(base)
 }
 
 async function readLandingPagesTable(base: Airtable.Base) {
