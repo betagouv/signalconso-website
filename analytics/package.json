@@ -30,7 +30,8 @@
     "google-auth-library": "^9.15.1",
     "googleapis": "^144.0.0",
     "lodash": "^4.17.21",
-    "node-cron": "^3.0.3"
+    "node-cron": "^3.0.3",
+    "shared": "workspace:^"
   },
   "scripts": {
     "build": "tsc",
