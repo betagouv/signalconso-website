@@ -1,6 +1,6 @@
 import {fetchQueryAnalyticsData, fetchSearchAnalyticsData} from "./client/google.client.js";
-import {start, clearTable} from "./client/airtable.client.js";
-import {SearchAnalyticsResponse, AirtableAnalyticsData, SearchAnalyticsRequest} from "./models/model.js";
+import {clearTable, read, start} from "./client/airtable.client.js";
+import {AirtableAnalyticsData, SearchAnalyticsRequest} from "./models/model.js";
 import {getLast6CompleteMonthRanges} from "./date.utils.js";
 
 
@@ -28,47 +28,80 @@ const requests = dateRanges.map(d =>
   })
 )
 
+function delay(ms: number) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
 
-async function fetchAllSearchAnalyticsData(requests: SearchAnalyticsRequest[]) {
-  try {
-    const results: Awaited<AirtableAnalyticsData>[] = [];
+async function fetchAllSearchAnalyticsData(requests: SearchAnalyticsRequest[], existingLines: AirtableAnalyticsData[]) {
+  const results: Awaited<AirtableAnalyticsData>[] = [];
 
-    await Promise.all(
-      requests.map(async req => {
+  await Promise.all(
+    requests.map(async req => {
+      try {
         const res = await fetchSearchAnalyticsData(req);
 
-        const transformedRows: Awaited<AirtableAnalyticsData>[] = await Promise.all(
-          res.rows.map(async row => {
-            const queryData = await fetchQueryAnalyticsData({ ...req, page: row.keys[0] });
-            return {
-              date: req.startDate,
-              page: row.keys[0],
-              clicks: row.clicks,
-              impressions: row.impressions,
-              ctr: row.ctr,
-              position: row.position,
-              landingType: 'string',
-              topRequest: queryData.rows[0].keys[1],
-              topRequestClicks: queryData.rows[0].clicks,
-              topRequestImpressions: queryData.rows[0].impressions
-            };
+        const transformedRows: Awaited<AirtableAnalyticsData | null>[] = await Promise.all(
+          res.rows.flatMap(async row => {
+            try {
+
+              if (existingLines.find((v) => {
+                return v.page === row.keys[0] && v.date === req.startDate;
+              })) {
+                return null;
+              } else {
+
+                const queryData = await delay(1000).then(_ => fetchQueryAnalyticsData({...req, page: row.keys[0]}));
+
+                if (queryData.error) {
+                  return null; //Can happen when reaching quota, will try again next time
+                }
+                console.log(`processing req ${req.startDate} to ${req.endDate} for page ${row.keys[0]}`)
+
+                //Here we are handling the fact that some pages have no query stats
+                const topRequest = queryData.rows?.[0]?.keys[1] ?? 'NO DATA'
+                const topRequestClicks = queryData.rows?.[0]?.clicks ?? 0
+                const topRequestImpressions = queryData.rows?.[0].impressions ?? 0
+
+                if (topRequest === 'NO DATA') {
+                  console.log(`Page ${row.keys[0]} has no query stats available`)
+                }
+
+                return {
+                  date: req.startDate,
+                  page: row.keys[0],
+                  clicks: row.clicks,
+                  impressions: row.impressions,
+                  ctr: row.ctr,
+                  position: row.position,
+                  topRequest,
+                  topRequestClicks,
+                  topRequestImpressions
+                }
+              }
+            } catch (error) {
+              console.error('Error processing row:', error);
+              return null;
+            }
           })
         );
 
-        results.push(...transformedRows);
-      })
-    );
+        // Filter out null values
+        const validRows = transformedRows.filter((row): row is AirtableAnalyticsData => row !== null);
+        results.push(...validRows);
+      } catch (error) {
+        console.error('Error fetching search analytics data for request:', error);
+        // Do not add anything to results if there's an error with the request
+      }
+    })
+  );
 
-    return results;
-  } catch (error) {
-    console.error('Error fetching search analytics data:', error);
-    throw error;
-  }
+  return results;
 }
 
+// await clearTable()
 
 
-const lines: AirtableAnalyticsData[] = await fetchAllSearchAnalyticsData(requests)
+read()
+  .then(existingLines => fetchAllSearchAnalyticsData(requests, existingLines))
+  .then((lines) => start(lines))
 
-lines && clearTable()
-  .then(_ => start(lines))

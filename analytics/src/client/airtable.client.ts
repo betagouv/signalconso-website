@@ -20,7 +20,6 @@ const FIELD_MAPPING = {
   impressions: 'fldHJGJVaFmHBSOP2',
   ctr: 'fldu7hDmcndusF3V6',
   position: 'fldxubWYjn5E3IRKB',
-  landingType: 'fldCHPowLng3GKd3A',
   topRequest: 'fldkUpAjoyjLrQQ7w',
   topRequestClicks: 'fld2kulJihLdhIPka',
   topRequestImpressions: 'fldM08I8eEyvrRsg7'
@@ -60,9 +59,12 @@ export async function clearTable() {
 
 export async function start(lines: AirtableAnalyticsData[]) {
   const base = setupAirtable()
-  const rows = await readLandingPagesTable(base)
   await pushRecordsToTable(base, TABLE_ID, lines, FIELD_MAPPING)
-  console.log(rows)
+}
+
+export  function read() {
+  const base = setupAirtable()
+  return  readLandingPagesTable(base)
 }
 
 async function readLandingPagesTable(base: Airtable.Base) {
@@ -75,7 +77,7 @@ async function readWholeTable(
   fieldsMapping: {
     [k: string]: string
   },
-): Promise<any[]> {
+): Promise<AirtableAnalyticsData[]> {
   const res: any[] = []
   try {
     console.log(`Reading table ${tableId} from Airtable API`)

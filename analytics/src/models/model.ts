@@ -21,6 +21,7 @@ export interface AnalyticsRow {
 
 export interface SearchAnalyticsResponse {
   month: string
+  error?: any
   rows: AnalyticsRow[]
 }
 
@@ -31,7 +32,6 @@ export type AirtableAnalyticsData = {
   impressions: number,
   ctr: number,
   position: number,
-  landingType: string,
   topRequest: string,
   topRequestClicks: number,
   topRequestImpressions: number
