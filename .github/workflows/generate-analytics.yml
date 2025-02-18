@@ -1,0 +1,47 @@
+name: Gets analytics from google search console and push the stats to airtable
+
+on:
+  workflow_dispatch: # can be triggered manually on github
+  # Too many rate limitations on the google api, we want to rerun the job periodically to avoid restrictions
+  schedule:
+    - cron: '0 0 * * 1'  # Runs at 12:00 AM UTC on Monday
+    - cron: '0 1 * * 1'  # Runs at 1:00 AM UTC on Monday
+    - cron: '0 2 * * 1'  # Runs at 2:00 AM UTC on Monday
+    - cron: '0 3 * * 1'  # Runs at 3:00 AM UTC on Monday
+    - cron: '0 4 * * 1'  # Runs at 4:00 AM UTC on Monday
+
+env:
+  AIRTABLE_TOKEN: ${{ secrets.AIRTABLE_TOKEN}}
+  AIRTABLE_BASE_ID: ${{ secrets.AIRTABLE_BASE_ID}}
+  AIRTABLE_TABLE_ID: ${{ secrets.AIRTABLE_TABLE_ID}}
+
+
+defaults:
+  run:
+    working-directory: ./analytics
+
+jobs:
+  main-job:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Decrypt google service account file
+        run: ./decrypt_secret.sh
+        env:
+          GOOGLE_SERVICE_ACCOUNT_SECRET_PASSPHRASE: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_SECRET_PASSPHRASE }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'yarn'
+          cache-dependency-path: yarn.lock
+      - run: node --version
+      - run: yarn --version
+      - run: yarn install --immutable
+      - name: GET current directory
+        run: pwd
+      - name: List current directory
+        run: ls -la
+      - run: yarn start
+
