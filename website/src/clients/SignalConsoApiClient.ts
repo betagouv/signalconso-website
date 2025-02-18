@@ -72,9 +72,10 @@ export class SignalConsoApiClient {
 
   getCountries = () => this.client.get<Country[]>(`/constants/countries`)
 
-  getDocumentLink = (file: UploadedFile) => `${this.client.baseUrl}/reports/files/${file.id}/${encodeURI(file.filename)}`
+  getUploadedFileUrl = (file: UploadedFile) =>
+    `${this.client.baseUrl}/reports/files/temporary/${file.id}/${encodeURI(file.filename)}`
 
-  uploadDocument = (
+  uploadFile = (
     file: File,
     origin: FileOrigin,
     id: string,
@@ -97,6 +98,10 @@ export class SignalConsoApiClient {
         : undefined,
       signal: signal,
     })
+  }
+
+  removeUploadedFile = (file: UploadedFile) => {
+    return this.client.delete<void>(`reports/files/temporary/${file.id}?filename=${encodeURI(file.filename)}`)
   }
 
   rateSubcategory = (category: string, subcategories: Subcategory[], positive: boolean): Promise<void> => {

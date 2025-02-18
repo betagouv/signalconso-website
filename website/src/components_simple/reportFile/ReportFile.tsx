@@ -13,7 +13,7 @@ export const ReportFile = ({file, onRemove}: ReportFileProps) => {
   const fileType = extensionToType(file.filename)
   const {signalConsoApiClient} = useApiClients()
 
-  const fileUrl = signalConsoApiClient.getDocumentLink(file)
+  const fileUrl = signalConsoApiClient.getUploadedFileUrl(file)
 
   const remove = async () => {
     onRemove?.(file)
