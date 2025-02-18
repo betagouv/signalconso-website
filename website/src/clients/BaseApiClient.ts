@@ -1,4 +1,4 @@
-import axios, {AxiosInstance, AxiosResponse, ResponseType, isAxiosError, AxiosProgressEvent, GenericAbortSignal} from 'axios'
+import axios, {AxiosInstance, AxiosProgressEvent, AxiosResponse, GenericAbortSignal, ResponseType, isAxiosError} from 'axios'
 import * as qs from 'qs'
 
 interface RequestOptions {
@@ -59,6 +59,10 @@ export class BaseApiClient {
 
   readonly post = <T = any>(uri: string, options?: RequestOptions): Promise<T> => {
     return this.doRequest('POST', uri, options)
+  }
+
+  readonly delete = <T = any>(uri: string, options?: RequestOptions): Promise<T> => {
+    return this.doRequest('DELETE', uri, options)
   }
 
   private async doRequest(method: Method, url: string, options?: RequestOptions) {

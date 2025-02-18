@@ -1,5 +1,10 @@
+import {UploadingReportFile} from '@/components_simple/reportFile/UploadingReportFile'
 import {useI18n} from '@/i18n/I18n'
+import {UploadingFile} from '@/model/UploadingFile'
+import {useMutation} from '@tanstack/react-query'
+import axios from 'axios'
 import React, {useEffect, useState} from 'react'
+import {v4 as uuidv4} from 'uuid'
 import {useApiClients} from '../../context/ApiClientsContext'
 import {appConfig} from '../../core/appConfig'
 import {useToastError} from '../../hooks/useToastError'
@@ -8,10 +13,6 @@ import {compressFile} from '../../utils/compressFile'
 import {ReportFile} from './ReportFile'
 import {ADD_FILE_HELP_ID, ReportFileAdd} from './ReportFileAdd'
 import {extractFileExt} from './reportFileConfig'
-import {UploadingFile} from '@/model/UploadingFile'
-import {v4 as uuidv4} from 'uuid'
-import {UploadingReportFile} from '@/components_simple/reportFile/UploadingReportFile'
-import axios from 'axios'
 
 export interface ReportFilesProps {
   files: UploadedFile[]
@@ -38,6 +39,9 @@ export const ReportFiles = ({fileOrigin, files, onRemoveFile, onNewFile, tooMany
 
   const {signalConsoApiClient} = useApiClients()
   const toastError = useToastError()
+  const _removeFileMutation = useMutation({
+    mutationFn: (file: UploadedFile) => signalConsoApiClient.removeUploadedFile(file),
+  })
 
   const numberOfFilesUploadingOrUploaded = innerFiles.length + uploadingFiles.length
 
@@ -113,7 +117,7 @@ export const ReportFiles = ({fileOrigin, files, onRemoveFile, onNewFile, tooMany
     try {
       const f = await fileToUpload
       const compressedFile = await compressFile(f)
-      const uploadedFile = await signalConsoApiClient.uploadDocument(
+      const uploadedFile = await signalConsoApiClient.uploadFile(
         compressedFile,
         fileOrigin,
         uploadingFile.id,
@@ -145,9 +149,15 @@ export const ReportFiles = ({fileOrigin, files, onRemoveFile, onNewFile, tooMany
     setUploadingFiles(prev => prev.filter(_ => _.id !== f.id))
   }
 
-  const removeFile = (f: UploadedFile) => {
-    onRemoveFile(f)
-    setInnerFiles(prev => prev.filter(_ => _.id !== f.id))
+  const removeFile = async (f: UploadedFile) => {
+    try {
+      await _removeFileMutation.mutateAsync(f)
+      onRemoveFile(f)
+      setInnerFiles(prev => prev.filter(_ => _.id !== f.id))
+    } catch (e) {
+      console.warn('failed to delete file', e)
+      toastError('Échec de la suppression du fichier')
+    }
   }
 
   const cancelFile = (f: UploadingFile) => {
