@@ -4,7 +4,6 @@ import {CompanyByTrain} from '@/components_feature/reportFlow/Company/CompanyByT
 import {CompanySearchByName} from '@/components_feature/reportFlow/Company/CompanySearchByName'
 import {NoSearchResult} from '@/components_feature/reportFlow/Company/lib/NoSearchResult'
 import {ScRadioButtons} from '@/components_simple/formInputs/ScRadioButtons'
-import {appConfig} from '@/core/appConfig'
 import {Loader} from '@/feature/Loader'
 import {getCompanyKind, hasStep0, hasStep1Full, hasStep2, isTransmittableToPro} from '@/feature/reportUtils'
 import {useBarcodeSearch} from '@/hooks/barcode'
@@ -25,7 +24,6 @@ import {CompanySearchByBarcode} from './CompanySearchByBarcode'
 import {CompanySearchByIdentifier} from './CompanySearchByIdentifier'
 import {CompanySearchByNameAndGeoArea} from './CompanySearchByNameAndGeoArea'
 import {CompanySearchResultComponent} from './CompanySearchResultComponent'
-import {CompanySmartIdentification} from './CompanySmartIdentification/CompanySmartIdentification'
 import {CompanyWebsiteCountry} from './CompanyWebsiteCountry'
 import {InfluencerBySocialNetwork} from './InfluencerBySocialNetwork'
 import {InfluencerFilled} from './InfluencerFilled'
@@ -245,8 +243,6 @@ function CompanyIdentificationTree({
         )
       }}
     />
-  ) : appConfig.useNewCompanySearch ? (
-    <CompanySmartIdentification {...{draft, onIdentification}} />
   ) : (
     <CompanyChooseIdentificationMethod {...{companyKind}}>
       {method => {
