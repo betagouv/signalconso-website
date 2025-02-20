@@ -1,6 +1,7 @@
 import {Animate} from '@/components_simple/Animate'
 import {BtnNextSubmit} from '@/components_simple/buttons/Buttons'
 import {ScAutocompletePostcode} from '@/components_simple/formInputs/ScAutocompletePostcode'
+import {ScAlert} from '@/components_simple/ScAlert'
 import {useI18n} from '@/i18n/I18n'
 import {Controller, useForm} from 'react-hook-form'
 import {CompanyKind} from 'shared/anomalies/Anomaly'
@@ -26,6 +27,12 @@ export const CompanyAskConsumerPostalCode = ({value, onChange, companyKind}: Pro
   return (
     <Animate>
       <div id="CompanyAskConsumerPostalCode">
+        <div className="mb-2">
+          <ScAlert type="info">
+            <p dangerouslySetInnerHTML={{__html: m.cantIdentifyWarn1}} />
+            <p dangerouslySetInnerHTML={{__html: m.cantIdentifyWarn2}} />
+          </ScAlert>
+        </div>
         <form onSubmit={handleSubmit(_ => onChange(_.postalCode))}>
           <Controller
             control={control}

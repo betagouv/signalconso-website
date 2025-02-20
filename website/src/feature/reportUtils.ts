@@ -1,8 +1,8 @@
 import {findAnomaly} from '@/anomalies/Anomalies'
-import {CompanyKind, ReportTag, Subcategory, reportTagsNotTransmittableToPro} from 'shared/anomalies/Anomaly'
 import {PartialReport} from '@/components_feature/reportFlow/ReportFlowContext'
 import {Report, ReportWithPickInStep1 as ReportPickInStep1, TransmissionStatus} from '@/model/Report'
 import {lastFromArray, notUndefined} from '@/utils/utils'
+import {CompanyKind, ReportTag, Subcategory, reportTagsNotTransmittableToPro} from 'shared/anomalies/Anomaly'
 
 function isValidString(str: string | undefined) {
   return typeof str === 'string' && str.trim() !== ''

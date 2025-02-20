@@ -36,10 +36,6 @@ function pageExternal(url: string): PageDefExternal {
   }
 }
 
-function pageLp(url: string): PageDefInternal {
-  return page(url, {hasEnglishVersion: false})
-}
-
 export const internalPageDefs = {
   index: page('/'),
   outils: page(`/outils`, {noIndex: true}),
@@ -60,6 +56,7 @@ export const internalPageDefs = {
   suiviEtViePrivee: page(`/suivi-et-vie-privee`),
   litige: page(`/litige`),
   litigeTelecom: page(`/litige/telecom`),
+  autresSitesInternationaux: page(`/autres-sites-internationaux`),
 }
 
 const externalPageDefs = {

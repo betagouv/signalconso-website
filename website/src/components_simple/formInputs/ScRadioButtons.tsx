@@ -1,9 +1,9 @@
 import {useAutoscrollContext} from '@/context/AutoscrollContext'
 import {KeyboardEvent, ReactElement, ReactNode, Ref, forwardRef, useEffect, useId} from 'react'
 
-interface Props<V> {
+export interface ScRadioButtonsProps<V> {
   title?: ReactNode
-  description?: string
+  description?: ReactNode
   // do not respect DSFR style, less bold, less margins, etc.
   titleSoberStyle?: boolean
   titleNoAutoAsterisk?: boolean
@@ -28,7 +28,7 @@ interface Props<V> {
 }
 type RefType = Ref<HTMLFieldSetElement>
 
-function ScRadioButtonsWithRef<V>(props: Props<V>, ref: RefType) {
+function ScRadioButtonsWithRef<V>(props: ScRadioButtonsProps<V>, ref: RefType) {
   const {
     title,
     description,
@@ -135,4 +135,6 @@ function ScRadioButtonsWithRef<V>(props: Props<V>, ref: RefType) {
 
 // forwardRef doesn't play well with generics
 // https://stackoverflow.com/questions/58469229/react-with-typescript-generics-while-using-react-forwardref
-export const ScRadioButtons = forwardRef(ScRadioButtonsWithRef) as <V>(p: Props<V> & {ref?: RefType}) => ReactElement
+export const ScRadioButtons = forwardRef(ScRadioButtonsWithRef) as <V>(
+  p: ScRadioButtonsProps<V> & {ref?: RefType},
+) => ReactElement

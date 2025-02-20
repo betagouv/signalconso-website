@@ -20,10 +20,22 @@ module.exports = {
         sclightpurpledarker: '#cacafb', // slight variant from the previous one
         scpurplepop: '#6a6af4', // purple quite strong, pops out a bit
         scorange: '#EA9001', // orange from the logo
-        sclightblueinfo: '#e8edff', // used for the blue helper texts
-        scblueinfo: '#0063cb', // used for the blue helper texts
+
         schint: '#656565',
-        scerrorred: '#ce0500', // from the DSFR, when inputs are in error
+        scredinputerror: '#ce0500', // from the DSFR, when inputs are in error
+
+        // these colors come directly from the DSFR badges
+        // https://storybook.systeme-de-design.gouv.fr/?path=/docs/badge--docs&globals=viewport:lg
+        // used for the alerts and helper texts
+        sclightblueinfo: '#e8edff',
+        scblueinfo: '#0063cb',
+        sclightgreensuccess: '#b8fec9',
+        scgreensuccess: '#16753c',
+        sclightrederror: '#ffe9e9',
+        screderror: '#ce0601',
+        // for the warning we don't follow the DSFR, we prefer something more orange
+        sclightorangewarn: '#ffe1d1',
+        scorangewarn: '#ea580c',
       },
     },
   },

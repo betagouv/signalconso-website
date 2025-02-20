@@ -69,6 +69,10 @@ export const en = {
         description:
           'Our advice for resolving a dispute with a mobile operator or internet provider: letter, mediation, and legal action',
       },
+      autresSitesInternationaux: {
+        title: 'File a report internationally - SignalConso',
+        description: 'Alternatives to SignalConso for reporting a non-French company',
+      },
       quiSommesNous: {
         title: 'Who are we? - SignalConso',
         description:
@@ -1074,14 +1078,15 @@ export const en = {
     identifyBy_nameDesc: `French companies only`,
     identifyBy_identity: `By its SIRET or SIREN`,
     identifyBy_identityDesc: `These numbers identify every French company. We'll tell you how to find them`,
-    identifyBy_none: `I am unable to identify the company, or the company is outside France`,
-    identifyBy_noneDesc: `If you are unable to identify the company, you can continue with your report.
-      It will not be forwarded to the company, unless it is based in France and SignalConso can establish its identity.
-      Fraud Control will still be notified.`,
+    identifyBy_none: `I am unable to identify the company`,
+    identifyBy_itIsForeign: `It's not a French company`,
     identifyBy_nameOrIdentity: `Name or SIRET/SIREN identifier of the company`,
     identifyBy_nameOrIdentity_ex: `Ex: 83350861700010, boulangerie dupont, ...`,
     frenchCompaniesOnly: 'French companies only',
     couldYouPrecise: `Can you give us more details?`,
+    cantIdentifyWarn1:
+      '<strong>SignalConso is more effective when you identify the company.</strong> This allows us to contact it directly.',
+    cantIdentifyWarn2: `Your report will be forwarded to France's Fraud Control, who will do their best to handle it. However, the chances of success will be <strong>significantly reduced</strong>.`,
     cantIdentifyCompany: `Your postal code will help us direct your report to the appropriate service.`,
     cantIdentifyLocationCompany: `These informations will help us direct your report to the appropriate service and match it with any reports your neighbors may have submitted.`,
     companyIdentityLabel: `SIRET or SIREN of the company`,
@@ -1094,13 +1099,9 @@ export const en = {
       iTryHarder: `I'll search a bit more`,
       iReallyCant: `I really can't identify the company`,
     },
-    reportAbroad1:
-      'You want to report a company located outside of France. Please note that we will not be able to contact them directly, and that <strong>SignalConso is generally less effective in this situation.</strong>',
-    reportAbroad1NonTransmittable: `You wish to report a company located abroad. It is outside the scope of action of France's Fraud Control. <strong>SignalConso is generally less effective in this situation.</strong>`,
-    reportAbroad2: `You can still submit your report; it might help guide investigations by DGCCRF agents.`,
-    reportAbroad3: `To help international authorities fight against fraud, you can also:`,
-    reportAbroad4: `If the company is located in the EU, submit your report on <a href='https://www.europe-consommateurs.eu/fr/accueil/' target='_blank' rel='noopener noreferrer'>europe-consommateurs.eu</a>`,
-    reportAbroad5: `If the company is located outside the EU, submit your report on <a href='https://www.econsumer.gov/fr' target='_blank' rel='noopener noreferrer'>econsumer.gov</a>`,
+    reportAbroad1: `France's Fraud Control cannot contact a company that is abroad. <strong>Your report will therefore have very little effect.</strong>`,
+    reportAbroad1NonTransmittable: `France's Fraud Control cannot investigate a company that is abroad. <strong>Your report will therefore have very little effect.</strong>`,
+    reportAbroad2: 'Explore other international options to report this company',
     companyIdentityPlaceholder: `Ex: 83350861700010`,
     barcodeProduct: 'Product',
     barcodeCompany: 'Company',
@@ -1373,5 +1374,27 @@ export const en = {
     specialLegislation: {
       SHRINKFLATION: `Only stores with a sales area of <strong>over 400m²</strong> are subject to shrinkflation regulations. This store is probably <strong>not subject</strong> to these regulations.`,
     },
+    autresSitesInternationaux: `<h1>Is your report about a non-French company?</h1>
+<p>
+  France's Fraud Control cannot contact or investigate a company that is located abroad. Therefore, your report on SignalConso will have very little effect.
+</p>
+<p>
+  To help international authorities combat fraud, <strong>you can also</strong>:
+</p>
+<ul>
+  <li>
+    If the company is located <strong>within the EU</strong>, submit your report on 
+    <a href="https://www.europe-consommateurs.eu/en/home/" target="_blank" rel="noopener noreferrer">
+      europe-consommateurs.eu
+    </a>
+  </li>
+  <li>
+    If the company is located <strong>outside the EU</strong>, submit your report on 
+    <a href="https://www.econsumer.gov/en" target="_blank" rel="noopener noreferrer">
+      econsumer.gov
+    </a>
+  </li>
+</ul>
+`,
   },
 }

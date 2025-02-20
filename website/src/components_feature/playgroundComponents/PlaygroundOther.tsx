@@ -190,7 +190,7 @@ export const PlaygroundOther = () => {
         </AccordionInline>
       </div>
 
-      <div className="border border-gray-500 border-solid p-2 mb-2">
+      <div className="border border-gray-500 border-solid p-2 mb-2 space-y-4">
         <h6>Le composant "ScAlert"</h6>
         <ScAlert type="info" action="action">
           <p>contenu</p>

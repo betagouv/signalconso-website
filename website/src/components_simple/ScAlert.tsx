@@ -8,10 +8,6 @@ type Props = {
   dangerouslySetInnerHTML?: HTMLAttributes<HTMLDivElement>['dangerouslySetInnerHTML']
 } & MaybeChildrenProps
 
-// same blue colors as FriendlyHelperText
-const alertInfoBackgroundColor = '#e8edff'
-const alertInfoTextColor = '#0063cb'
-
 export const alertWarningBackgroundColor = 'rgba(255, 128, 0, .08)'
 export const alertWarningTextColor = 'rgb(153, 76, 0)'
 
@@ -25,36 +21,24 @@ export const ScAlert = ({type, action, children, dangerouslySetInnerHTML, id}: P
       case 'info':
         return 'ri-information-line'
       case 'error':
-        return 'ri-error-warning-fill'
       case 'warning':
-        return 'ri-error-warning-line'
+        return 'ri-error-warning-fill'
       case 'success':
         return 'ri-checkbox-circle-line'
     }
   }
 
-  function pickColors() {
+  function pickColorsClasses() {
     switch (type) {
       case 'info':
-        return {
-          background: alertInfoBackgroundColor,
-          color: alertInfoTextColor,
-        }
+        return `bg-sclightblueinfo text-scblueinfo`
       case 'error':
-        return {
-          background: 'rgba(255, 0, 0, .08)', //'#ffdede',
-          color: 'rgb(163, 11, 0)',
-        }
+        return `bg-sclightrederror text-screderror`
       case 'warning':
-        return {
-          background: alertWarningBackgroundColor,
-          color: alertWarningTextColor,
-        }
+        return `bg-sclightorangewarn text-orange-600`
+      // return `bg-sclightorangewarn text-scorangewarn`
       case 'success':
-        return {
-          background: 'rgba(50, 255, 150, .08)', //'#e1ffe1',
-          color: 'rgb(11, 105, 49)',
-        }
+        return `bg-sclightgreensuccess text-scgreensuccess`
     }
   }
 
@@ -72,14 +56,13 @@ export const ScAlert = ({type, action, children, dangerouslySetInnerHTML, id}: P
     <div
       {...(id ? {id} : null)}
       {...roleProp()}
-      style={{
-        ...pickColors(),
-      }}
-      className="flex px-2 justify-between items-center mb-2 py-4 gap-2"
+      className={`flex px-2 justify-between items-center mb-2 py-4 gap-2 ${pickColorsClasses()}`}
     >
       <div className="flex gap-2">
         <i className={`${pickIcon()}`} />
-        <div {...{dangerouslySetInnerHTML}}>{children}</div>
+        <div {...{dangerouslySetInnerHTML}} className="space-y-2">
+          {children}
+        </div>
       </div>
       {action && <div>{action}</div>}
     </div>
