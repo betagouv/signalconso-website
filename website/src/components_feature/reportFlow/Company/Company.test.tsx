@@ -24,6 +24,7 @@ describe('Details: single date not in future', () => {
       ['byName']: app.m.identifyBy_name,
       ['byIdentifier']: app.m.identifyBy_identity,
       ['iCannot']: app.m.identifyBy_none,
+      ['itIsForeign']: app.m.identifyBy_itIsForeign,
     })
     fireEvent.click(app.getByText(btnText))
   }

@@ -68,6 +68,10 @@ export const fr = {
         title: `Vos démarches à conduire en parallèle (télécoms) - SignalConso`,
         description: `Nos conseils pour our résoudre un litige avec un opérateur mobile ou fournisseur internet : courrier, médiation, et attaque en justice`,
       },
+      autresSitesInternationaux: {
+        title: `Faire un signalement à l'international - SignalConso`,
+        description: `Alternatives à SignalConso, pour signaler une entreprise étrangère`,
+      },
       quiSommesNous: {
         title: 'Qui sommes-nous ? - SignalConso',
         description:
@@ -1070,7 +1074,9 @@ export const fr = {
     clearSiret: 'Effacer le numéro',
     clearPhone: 'Effacer le numéro de téléphone',
     canYouIdentifyCompany: `Pouvez-vous identifier l'entreprise  ?`,
-    canYouIdentifyCompanyDesc: `SignalConso en a besoin pour la contacter et informer la répression des fraudes.`,
+    canYouIdentifyCompanyDesc: `Pour vous aider, essayez
+            <a href="https://annuaire-entreprises.data.gouv.fr/" target="_blank" rel="noopener noreferrer">l'Annuaire des Entreprises</a>
+            `,
     websitePlaceholder: 'Exemple: https://www.site.fr',
     identifyBy_barcode: `Par le numéro du code-barres sur le produit`,
     identifyBy_barcodeDesc: `Nous vous dirons où le trouver`,
@@ -1078,14 +1084,15 @@ export const fr = {
     identifyBy_name: `Par son nom`,
     identifyBy_identity: `Par son numéro d'identification SIRET, SIREN, ou TVA intracommunautaire`,
     identifyBy_identityDesc: `Nous vous dirons où les trouver`,
-    identifyBy_none: `Je ne peux pas identifier l'entreprise ou l'entreprise est à l'étranger`,
-    identifyBy_noneDesc: `Si vous ne parvenez pas à identifier l'entreprise, vous pouvez continuer votre signalement.
-    Il ne sera pas transmis à l'entreprise, sauf si cette dernière est française et identifiable par l'équipe de SignalConso.
-    Dans tous les cas les enquêteurs de la répression des fraudes en seront informés.`,
+    identifyBy_none: `Je ne peux pas identifier l'entreprise`,
+    identifyBy_itIsForeign: `C'est une entreprise étrangère`,
     identifyBy_nameOrIdentity: `Nom ou n° SIRET/SIREN`,
     identifyBy_nameOrIdentity_ex: `Ex : boulangerie dupont, 83350861700010, ...`,
     frenchCompaniesOnly: 'Entreprises françaises uniquement',
     couldYouPrecise: `Pouvez-vous préciser ?`,
+    cantIdentifyWarn1: `<strong>SignalConso est plus efficace lorsque vous identifiez l'entreprise.</strong> Cela nous permet de la
+contacter directement.`,
+    cantIdentifyWarn2: `Votre signalement sera transmis aux agents de la répression des fraudes, qui feront de leur mieux pour le traiter. Toutefois, les chances de succès seront <strong>significativement réduites</strong>.`,
     cantIdentifyCompany: `Votre code postal nous servira à rediriger votre signalement vers le bon service.`,
     cantIdentifyLocationCompany: `Ces informations nous serviront à rediriger votre signalement vers le bon service, et à le rapprocher de ceux que vos voisins pourraient également avoir déposés.`,
     companyIdentityLabel: `Numéro SIRET, SIREN, ou TVA intracommunautaire de l'entreprise`,
@@ -1099,13 +1106,10 @@ export const fr = {
       iReallyCant: `Je ne peux vraiment pas identifier l'entreprise`,
     },
     reportAbroad1:
-      "Vous souhaitez signaler une entreprise située à l'étranger. Veuillez noter que nous ne serons pas en mesure de la contacter directement, et que <strong>SignalConso est généralement moins efficace dans ce cas de figure.</strong>",
+      "La répression des fraudes ne peut pas contacter une entreprise qui est à l'étranger. <strong>Votre signalement aura donc très peu d'effet.</strong>",
     reportAbroad1NonTransmittable:
-      "Vous souhaitez signaler une entreprise située à l'étranger. Elle est hors du périmètre d'action de la répression des fraudes. <strong>SignalConso est généralement moins efficace dans ce cas de figure.</strong>",
-    reportAbroad2: `Vous pouvez tout de même soumettre votre signalement, cela pourra orienter les enquêtes des agents de la DGCCRF.`,
-    reportAbroad3: `Afin d'aider les autorités internationales à lutter contre la fraude, vous pouvez aussi :`,
-    reportAbroad4: `Si l'entreprise est située dans l'UE, déposer votre signalement sur <a href='https://www.europe-consommateurs.eu/fr/accueil/' target='_blank' rel='noopener noreferrer'>europe-consommateurs.eu</a>`,
-    reportAbroad5: `Si l'entreprise est située hors UE, déposer votre signalement sur <a href='https://www.econsumer.gov/fr' target='_blank' rel='noopener noreferrer'>econsumer.gov</a>`,
+      "La répression des fraudes ne peut pas enquêter sur une entreprise qui est à l'étranger. <strong>Votre signalement aura donc très peu d'effet.</strong>",
+    reportAbroad2: `Explorer d'autres pistes à l'international pour signaler cette entreprise`,
     companyIdentityPlaceholder: `Ex: 83350861700010`,
     barcodeProduct: 'Produit',
     barcodeCompany: 'Entreprise',
@@ -1249,7 +1253,7 @@ export const fr = {
     `,
     consumerAnonymousInformation: `Vous restez anonyme. Pour mémoire, vous avez choisi de signaler le problème afin que l’entreprise s’améliore : votre problème particulier ne pourra pas être résolu. Pas de remboursement, de réponse personnalisée…`,
     consumerShareInformation: `Vous partagez vos coordonnées avec l’entreprise. Pour mémoire, vous avez choisi de signaler le problème afin que l’entreprise s’améliore : votre problème particulier ne pourra pas être résolu. Pas de remboursement, de réponse personnalisée…`,
-    confirmationTitle: `Récapitulatif de votre problème`,
+    confirmationTitle: `Récapitulatif de votre signalement`,
     confirmationAlertTransmittable: `Vérifiez votre signalement avant de l’envoyer à l'entreprise et à la répression des fraudes.`,
     confirmationAlertEmployeeConsumer: `Vous avez déclaré travailler dans l’entreprise que vous signalez. <b>Votre anonymat sera par conséquent garanti</b>. S’il s’agit d’une erreur, revenez à l'étape 1 pour modifier votre choix.`,
     confirmationAlert: `Vérifiez votre signalement avant de l’envoyer à la répression des fraudes.`,
@@ -1402,5 +1406,26 @@ export const fr = {
     specialLegislation: {
       SHRINKFLATION: `Seuls les magasins dont la surface de vente est <strong>supérieure à 400 m²</strong> sont concernés par la règlementation relative à la réduflation (ou shrinkflation). Il est probable que cet établissement n’y soit <strong>pas soumis.</strong>`,
     },
+    autresSitesInternationaux: `<h1>Votre signalement concerne une entreprise étrangère ?</h1>
+          <p>
+            La répression des fraudes ne peut pas contacter ou enquêter sur une entreprise qui est à l'étranger. Votre signalement
+            sur SignalConso aura donc très peu d'effet.
+          </p>
+          <p>
+            Afin d'aider les autorités internationales à lutter contre la fraude, <strong>vous pouvez aussi</strong> :
+          </p>
+          <ul>
+            <li>
+              Si l'entreprise est située <strong>dans l'UE</strong>, déposer votre signalement sur
+              <a href="https://www.europe-consommateurs.eu/fr/accueil/" target="_blank" rel="noopener noreferrer">
+                europe-consommateurs.eu
+              </a>
+            </li>
+            <li>
+              Si l'entreprise est située <strong>hors UE</strong>, déposer votre signalement sur
+              <a href="https://www.econsumer.gov/fr" target="_blank" rel="noopener noreferrer">
+                econsumer.gov
+              </a>
+            </li>`,
   },
 }

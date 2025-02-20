@@ -203,7 +203,7 @@ export const ReportFiles = ({fileOrigin, files, onRemoveFile, onNewFile, tooMany
   // can happen with multiple uploads at once
   const maxExceeded = numberOfFilesUploadingOrUploaded > max
 
-  const redErrorClasses = `before:block before:absolute before:top-0 before:bottom-0 before:left-[-15px] before:pointer-events-none before:right-0 before:border-l-2 before:border-0 before:border-l-scerrorred before:border-solid before:content-['']`
+  const redErrorClasses = `before:block before:absolute before:top-0 before:bottom-0 before:left-[-15px] before:pointer-events-none before:right-0 before:border-l-2 before:border-0 before:border-l-scredinputerror before:border-solid before:content-['']`
 
   return (
     <div
@@ -233,7 +233,7 @@ export const ReportFiles = ({fileOrigin, files, onRemoveFile, onNewFile, tooMany
             />
           </>
         )}
-        <p className={`text-sm mb-2 text-center ${tooManyFilesError ? 'text-scerrorred font-bold' : ''}`} role="status">
+        <p className={`text-sm mb-2 text-center ${tooManyFilesError ? 'text-scredinputerror font-bold' : ''}`} role="status">
           {maxExceeded
             ? m.maxAttachementExceeded(max, numberOfFilesUploadingOrUploaded - max)
             : maxReached

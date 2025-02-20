@@ -3,7 +3,9 @@ import {BtnNextSubmit} from '@/components_simple/buttons/Buttons'
 import {ScAutocompleteCountry} from '@/components_simple/formInputs/ScAutocompleteCountry'
 import {ScAutocompletePostcode} from '@/components_simple/formInputs/ScAutocompletePostcode'
 import {ScTextInput} from '@/components_simple/formInputs/ScTextInput'
+import {pagesDefs} from '@/core/pagesDefinitions'
 import {useI18n} from '@/i18n/I18n'
+import Link from 'next/link'
 import {Controller, useForm} from 'react-hook-form'
 import {ScAlert} from '../../../components_simple/ScAlert'
 import {Country} from '../../../model/Country'
@@ -38,17 +40,16 @@ export const CompanyAskForeignDetails = ({onSubmit, reportTransmittableToPro}: P
     <Animate>
       <div id="CompanyAskForeignDetails">
         <div className="mb-8">
-          <ScAlert type="info">
+          <ScAlert type="warning">
             <p
-              className="mb-4"
+              className="mb-0"
               dangerouslySetInnerHTML={{__html: reportTransmittableToPro ? m.reportAbroad1 : m.reportAbroad1NonTransmittable}}
             />
-            <p className="mb-4" dangerouslySetInnerHTML={{__html: m.reportAbroad2}} />
-            <p className="mb-0" dangerouslySetInnerHTML={{__html: m.reportAbroad3}} />
-            <ul>
-              <li dangerouslySetInnerHTML={{__html: m.reportAbroad4}}></li>
-              <li dangerouslySetInnerHTML={{__html: m.reportAbroad5}}></li>
-            </ul>
+            <p className="">
+              <Link target="_blank" href={pagesDefs.autresSitesInternationaux.url}>
+                {m.reportAbroad2}
+              </Link>
+            </p>
           </ScAlert>
         </div>
         <form onSubmit={handleSubmit(onSubmit)}>

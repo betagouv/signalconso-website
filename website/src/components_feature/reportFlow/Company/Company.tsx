@@ -17,7 +17,6 @@ import {PartialReport, useReportFlowContext} from '../ReportFlowContext'
 import {StepNavigation} from '../reportFlowStepper/ReportFlowStepper'
 import {CompanyAskConsumerPostalCode} from './CompanyAskConsumerPostalCode'
 import {CompanyAskForeignDetails} from './CompanyAskForeignDetails'
-import {CompanyAskIsFrenchOrForeign, IsAFrenchCompany} from './CompanyAskIsFrenchOrForeign'
 import {CompanyByPhone} from './CompanyByPhone'
 import {CompanyByWebsite} from './CompanyByWebsite'
 import {CompanyChooseIdentificationMethod} from './CompanyChooseIdentificationMethod'
@@ -304,64 +303,30 @@ function CompanyIdentificationTree({
               </CompanySearchByIdentifier>
             )
           case 'iCannot':
-            if (companyKind === 'LOCATION') {
-              return (
-                <CompanyAskConsumerPostalCode
-                  {...{companyKind}}
-                  onChange={postalCode => {
-                    onIdentification({
-                      kind: 'consumerLocation',
-                      consumerPostalCode: postalCode,
-                    })
-                  }}
-                />
-              )
-            }
             return (
-              <CompanyAskIsFrenchOrForeign>
-                {isFrench => {
-                  switch (isFrench) {
-                    case IsAFrenchCompany.Yes:
-                      return (
-                        <CompanyAskConsumerPostalCode
-                          {...{companyKind}}
-                          onChange={postalCode => {
-                            onIdentification({
-                              kind: 'consumerLocation',
-                              consumerPostalCode: postalCode,
-                            })
-                          }}
-                        />
-                      )
-                    case IsAFrenchCompany.No:
-                      return (
-                        <CompanyAskForeignDetails
-                          {...{companyKind, reportTransmittableToPro}}
-                          onSubmit={({name, postalCode, country: {code}}) => {
-                            onIdentification({
-                              kind: 'foreignCompany',
-                              companyName: name,
-                              companyCountryCode: code,
-                              consumerPostalCode: postalCode,
-                            })
-                          }}
-                        />
-                      )
-                    case IsAFrenchCompany.Unknown:
-                      return (
-                        <CompanyAskConsumerPostalCode
-                          {...{companyKind}}
-                          onChange={postalCode => {
-                            onIdentification({
-                              kind: 'consumerLocation',
-                              consumerPostalCode: postalCode,
-                            })
-                          }}
-                        />
-                      )
-                  }
+              <CompanyAskConsumerPostalCode
+                {...{companyKind}}
+                onChange={postalCode => {
+                  onIdentification({
+                    kind: 'consumerLocation',
+                    consumerPostalCode: postalCode,
+                  })
                 }}
-              </CompanyAskIsFrenchOrForeign>
+              />
+            )
+          case 'itIsForeign':
+            return (
+              <CompanyAskForeignDetails
+                {...{companyKind, reportTransmittableToPro}}
+                onSubmit={({name, postalCode, country: {code}}) => {
+                  onIdentification({
+                    kind: 'foreignCompany',
+                    companyName: name,
+                    companyCountryCode: code,
+                    consumerPostalCode: postalCode,
+                  })
+                }}
+              />
             )
         }
       }}
