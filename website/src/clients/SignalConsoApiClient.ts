@@ -101,7 +101,7 @@ export class SignalConsoApiClient {
   }
 
   removeUploadedFile = (file: UploadedFile) => {
-    return this.client.delete<void>(`reports/files/temporary/${file.id}?filename=${encodeURI(file.filename)}`)
+    return this.client.delete<void>(`/reports/files/temporary/${file.id}/${encodeURIComponent(file.filename)}`)
   }
 
   rateSubcategory = (category: string, subcategories: Subcategory[], positive: boolean): Promise<void> => {
