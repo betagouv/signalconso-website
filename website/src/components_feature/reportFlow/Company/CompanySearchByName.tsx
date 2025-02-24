@@ -54,13 +54,12 @@ export const CompanySearchByName = ({children}: Props) => {
     <>
       <Animate>
         <div id="CompanyByName">
-          <h2 className="text-lg">{m.couldYouPrecise}</h2>
-          <p className="text-sm mb-0">{m.youCanOnlyReportFrenchCompanies}</p>
           <RequiredFieldsLegend />
           <form onSubmit={handleSubmit(search)}>
             <div className="mb-4">
               <ScTextInput
                 label={m.reportedCompanyName}
+                desc={m.youCanOnlyReportFrenchCompanies}
                 error={!!errors.name}
                 helperText={errors.name?.message}
                 {...register('name', {

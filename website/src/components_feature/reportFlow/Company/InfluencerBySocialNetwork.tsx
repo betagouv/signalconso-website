@@ -174,10 +174,10 @@ export function InfluencerBySocialNetwork({onSubmit}: {onSubmit: (result: Result
                   ) : (
                     <div className="flex-col">
                       <Alert
-                        title={m.influencerUnknownTitle}
+                        title={''}
                         description={m.influencerUnknownDesc(socialNetwork)}
                         severity="warning"
-                        className="text-base font-normal mb-3"
+                        className="text-base font-normal mb-8"
                       />
                       <div className="flex flex-row justify-end">
                         <Button priority={'secondary'} className={'mr-2'} onClick={_ => setIsEditingInfluencer(true)}>

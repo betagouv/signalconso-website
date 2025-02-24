@@ -83,6 +83,32 @@ async function searchWebsite(
   }
 }
 
+function SpecificAlert({websiteCompanyKind}: {websiteCompanyKind: SpecificWebsiteCompanyKind}) {
+  const {m} = useI18n()
+  function getTexts() {
+    switch (websiteCompanyKind) {
+      case 'TRANSPORTER_WEBSITE':
+        return {
+          title: m.whichWebsiteTransporterTitle,
+          description: m.whichWebsiteTransporterText,
+        }
+      case 'MERCHANT_WEBSITE':
+        return {
+          title: m.whichWebsiteMerchantTitle,
+          description: m.whichWebsiteMerchantText,
+        }
+      default:
+        return websiteCompanyKind satisfies never
+    }
+  }
+  const {title, description} = getTexts()
+  return (
+    <div className="mb-4">
+      <Alert severity="info" title={title} description={description} />
+    </div>
+  )
+}
+
 export const CompanyByWebsite = ({children, specificWebsiteCompanyKind}: Props) => {
   const {m} = useI18n()
   const inputRef = useRef<HTMLInputElement | null>(null)
@@ -142,27 +168,9 @@ export const CompanyByWebsite = ({children, specificWebsiteCompanyKind}: Props) 
     setWebsite(website.trim())
   }
 
-  const websiteToReportAlert = (websiteCompanyKind: SpecificWebsiteCompanyKind) => {
-    if (websiteCompanyKind == 'TRANSPORTER_WEBSITE') {
-      return (
-        <Alert
-          className="fr-mt-4w"
-          severity="info"
-          description={m.whichWebsiteTransporterText}
-          title={m.whichWebsiteTransporterTitle}
-        />
-      )
-    } else if (websiteCompanyKind == 'MERCHANT_WEBSITE') {
-      return (
-        <Alert
-          className="fr-mt-4w"
-          severity="info"
-          description={m.whichWebsiteMerchantText}
-          title={m.whichWebsiteMerchantTitle}
-        />
-      )
-    }
-  }
+  const websiteToReportAlert = (websiteCompanyKind: SpecificWebsiteCompanyKind) => (
+    <SpecificAlert websiteCompanyKind={websiteCompanyKind} />
+  )
 
   const registerWebsiteResult = register('website', {
     required: {value: true, message: m.required},
@@ -179,7 +187,6 @@ export const CompanyByWebsite = ({children, specificWebsiteCompanyKind}: Props) 
     <>
       <Animate>
         <div id="CompanyByWebsite">
-          <h2 className="fr-h6">{m.aboutCompany}</h2>
           {specificWebsiteCompanyKind && websiteToReportAlert(specificWebsiteCompanyKind)}
           <div>
             <RequiredFieldsLegend />
@@ -217,7 +224,7 @@ export const CompanyByWebsite = ({children, specificWebsiteCompanyKind}: Props) 
               />
               {!displayedResults && (
                 <div className="flex items-center justify-end">
-                  <Button className="mt-2" type="submit" disabled={searchQuery.isFetching}>
+                  <Button type="submit" disabled={searchQuery.isFetching}>
                     {m.continue}
                   </Button>
                 </div>
@@ -238,7 +245,6 @@ export const CompanyByWebsite = ({children, specificWebsiteCompanyKind}: Props) 
 
 const InformationPanel = ({website, displayedResults}: {website: string; displayedResults: WebsiteSearchResult | undefined}) => {
   const hostname = website.replace(/^((http|https):\/\/)?(www\.)?/, '')
-
   if (displayedResults && (hostname === 'relaxsoria.com' || hostname === 'stockwan.com')) {
     return <TheseeInformation />
   } else if (displayedResults?.kind === 'nothing' && displayedResults?.status === 'down') {
@@ -262,7 +268,7 @@ const TheseeInformation = () => {
       }
       severity="warning"
       title={m.theseeInformationTitle}
-      className="fr-mt-4w fr-mb-4w"
+      className="mb-4"
     />
   )
 }
@@ -283,7 +289,7 @@ const WebsiteDown = () => {
       }
       severity="warning"
       title={<></>}
-      className="fr-mt-4w fr-mb-4w"
+      className="mb-4"
     />
   )
 }
@@ -305,8 +311,8 @@ function SimilarHosts({
     return (
       <AutofocusedDiv>
         <br />
-        <h3 className="text-base font-normal mb-0">{m.suggestion}</h3>
-        <ul className="list-none flex p-0 m-0 mt-2 gap-2">
+        <h3 className="text-base font-normal mb-2">{m.suggestion}</h3>
+        <ul className="list-none flex p-0 gap-2">
           {hosts.map((host, key) => {
             return (
               <li className="p-0 m-0" key={key}>

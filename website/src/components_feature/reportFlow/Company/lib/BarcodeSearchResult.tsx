@@ -1,9 +1,9 @@
-import {SpecificProductCompanyKind} from 'shared/anomalies/Anomaly'
 import {CompanyRecapFromSearchResult} from '@/components_simple/CompanyRecap/CompanyRecap'
 import {ProductRecap} from '@/components_simple/CompanyRecap/ProductRecap'
 import {getTags} from '@/feature/reportUtils'
 import {Report} from '@/model/Report'
 import {ReactNode} from 'react'
+import {SpecificProductCompanyKind} from 'shared/anomalies/Anomaly'
 import {BtnNext} from '../../../../components_simple/buttons/Buttons'
 import {useI18n} from '../../../../i18n/I18n'
 import {BarcodeProduct} from '../../../../model/BarcodeProduct'
@@ -29,7 +29,7 @@ export const BarcodeSearchResult = ({
 }: BarcodeSearchResultPros) => {
   const {m} = useI18n()
   return (
-    <div className="mt-6 pt-10 border-t-[1px] border-0 border-solid border-gray-200">
+    <div className="pt-10 border-t-[1px] border-0 border-solid border-gray-200">
       {product ? (
         <>
           <div className="flex items-start align-middle mb-2">
