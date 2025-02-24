@@ -13,7 +13,6 @@ import {useQuery} from '@tanstack/react-query'
 import {ReactNode, useState} from 'react'
 import {Controller, useForm} from 'react-hook-form'
 import {CompanySearchResult} from '../../../model/Company'
-import {ifDefined} from '../../../utils/utils'
 
 interface Form {
   name: string
@@ -58,16 +57,15 @@ export const CompanySearchByNameAndGeoArea = ({children}: Props) => {
     setSubmittedForm(form)
   }
   return (
-    <>
+    <div className="space-y-6">
       <Animate>
         <div id="CompanyByNameAndGeoArea">
-          <h2 className="text-lg">{m.couldYouPrecise}</h2>
-          <p className="text-sm mb-0">{m.youCanOnlyReportFrenchCompanies}</p>
           <RequiredFieldsLegend />
           <form onSubmit={handleSubmit(search)}>
             <div className="mb-4">
               <ScTextInput
                 label={m.reportedCompanyName}
+                desc={m.youCanOnlyReportFrenchCompanies}
                 error={!!errors.name}
                 helperText={errors.name?.message}
                 {...register('name', {
@@ -100,7 +98,7 @@ export const CompanySearchByNameAndGeoArea = ({children}: Props) => {
           </form>
         </div>
       </Animate>
-      {_search.data && ifDefined(_search.data, children)}
-    </>
+      {_search.data && children(_search.data)}
+    </div>
   )
 }

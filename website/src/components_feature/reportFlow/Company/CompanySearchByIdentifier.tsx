@@ -69,10 +69,9 @@ export const CompanySearchByIdentifier = ({children}: Props) => {
   })
 
   return (
-    <>
+    <div className="space-y-6">
       <Animate>
         <div id="CompanySearchByIdentity">
-          <h2 className="!text-lg">{m.couldYouPrecise}</h2>
           <form onSubmit={handleSubmit(search)}>
             <RequiredFieldsLegend />
             <div className="mb-4">
@@ -107,6 +106,6 @@ export const CompanySearchByIdentifier = ({children}: Props) => {
         </div>
       </Animate>
       {_searchByIdentity.data && <AutofocusedDiv>{children(_searchByIdentity.data)}</AutofocusedDiv>}
-    </>
+    </div>
   )
 }
