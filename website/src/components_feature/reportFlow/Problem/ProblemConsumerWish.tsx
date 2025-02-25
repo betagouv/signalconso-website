@@ -1,5 +1,6 @@
 import {useAnalyticContext} from '@/analytic/AnalyticContext'
 import {EventCategories, ReportEventActions} from '@/analytic/analytic'
+import {FriendlyHelpText} from '@/components_simple/FriendlyHelpText'
 import {
   getCompanyKind,
   getTags,
@@ -14,7 +15,6 @@ import {ReactNode, useEffect} from 'react'
 import {useReportFlowContext} from '../ReportFlowContext'
 import {ProblemConsumerWishInformation} from './ProblemConsumerWishInformation'
 import {ProblemSelect} from './ProblemSelect'
-import {FriendlyHelpText} from '@/components_simple/FriendlyHelpText'
 
 export function ProblemConsumerWish({children}: {children: ReactNode}) {
   const {m} = useI18n()
@@ -44,13 +44,8 @@ export function ProblemConsumerWish({children}: {children: ReactNode}) {
             value={r.step1.consumerWish}
             options={[
               {
-                title: m.problemContractualDisputeFormYes,
-                description: m.problemContractualDisputeFormDesc,
-                value: 'fixContractualDispute',
-              },
-              {
                 title: m.problemContractualDisputeFormNo,
-                description: m.problemContractualDisputeFormNoDesc,
+                description: m.problemContractualDisputeFormNoExample,
                 value: 'companyImprovement',
               },
               ...(hasReponseConsoTag
