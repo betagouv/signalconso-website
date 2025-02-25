@@ -93,7 +93,6 @@ export const CompanySearchResultComponent = ({companies, report, onSubmit}: Prop
                         <ScRadioButtons
                           {...field}
                           required
-                          titleNoAutoAsterisk
                           error={!!errors.siret}
                           errorMessage={errors.siret?.message}
                           options={companies.map(company => {

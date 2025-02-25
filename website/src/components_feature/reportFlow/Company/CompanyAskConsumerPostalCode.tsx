@@ -46,7 +46,6 @@ export const CompanyAskConsumerPostalCode = ({value, onChange, companyKind}: Pro
                 {...{onChange, onBlur, name, value}}
                 error={!!error}
                 helperText={error?.message}
-                showRequiredAsterisk={false}
               />
             )}
           />

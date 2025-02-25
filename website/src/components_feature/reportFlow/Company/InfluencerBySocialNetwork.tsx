@@ -1,7 +1,6 @@
 import {useToastOnQueryError} from '@/clients/apiHooks'
 import {DetailsSpecifyInput} from '@/components_feature/reportFlow/Details/DetailsSpecifyInput'
 import {AutofocusedDiv} from '@/components_simple/AutofocusedDiv'
-import {RequiredFieldsLegend} from '@/components_simple/RequiredFieldsLegend'
 import {BtnNextSubmit, ButtonWithLoader} from '@/components_simple/buttons/Buttons'
 import {ScAutocompletePostcode} from '@/components_simple/formInputs/ScAutocompletePostcode'
 import {ScTextInput} from '@/components_simple/formInputs/ScTextInput'
@@ -73,7 +72,6 @@ export function InfluencerBySocialNetwork({onSubmit}: {onSubmit: (result: Result
 
   return (
     <>
-      <RequiredFieldsLegend />
       <form
         onSubmit={handleSubmit(form => {
           onSubmit(transformBeforeSubmit(form))

@@ -3,7 +3,6 @@ import {CompanySearchEventActions, EventCategories} from '@/analytic/analytic'
 import {useToastOnQueryError} from '@/clients/apiHooks'
 import {Animate} from '@/components_simple/Animate'
 import {AutofocusedDiv} from '@/components_simple/AutofocusedDiv'
-import {RequiredFieldsLegend} from '@/components_simple/RequiredFieldsLegend'
 import {ButtonWithLoader} from '@/components_simple/buttons/Buttons'
 import {ScTextInput} from '@/components_simple/formInputs/ScTextInput'
 import {useApiClients} from '@/context/ApiClientsContext'
@@ -73,7 +72,6 @@ export const CompanySearchByIdentifier = ({children}: Props) => {
       <Animate>
         <div id="CompanySearchByIdentity">
           <form onSubmit={handleSubmit(search)}>
-            <RequiredFieldsLegend />
             <div className="mb-4">
               <ScTextInput
                 required

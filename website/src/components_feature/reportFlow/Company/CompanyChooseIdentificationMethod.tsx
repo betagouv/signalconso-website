@@ -68,7 +68,6 @@ export function CompanyChooseIdentificationMethod({
             onChange={setMethod}
             options={options}
             title={m.canYouIdentifyCompany}
-            titleNoAutoAsterisk
             description={<span dangerouslySetInnerHTML={{__html: m.canYouIdentifyCompanyDesc}} />}
           />
         </div>

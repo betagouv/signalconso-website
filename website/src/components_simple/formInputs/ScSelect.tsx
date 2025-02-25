@@ -1,5 +1,6 @@
 import {useI18n} from '@/i18n/I18n'
 import {ForwardedRef, ReactNode, forwardRef, useId} from 'react'
+import {OptionalLabel} from './OptionalLabel'
 
 type Props = {
   onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void
@@ -16,13 +17,14 @@ export const ScSelect = forwardRef((props: Props, ref: ForwardedRef<HTMLSelectEl
   const {onChange, onBlur, name, label, desc, error, helperText, required, options} = props
   const inputId = useId()
   const helperTextId = useId()
+  const {m} = useI18n()
+
   const labelWithAsterisk = (
     <>
       {label}
-      {required ? ' *' : null}
+      <OptionalLabel {...{required}} />
     </>
   )
-  const {m} = useI18n()
   return (
     <div className={`fr-select-group ${error ? 'fr-select-group--error' : null}`}>
       {label && (

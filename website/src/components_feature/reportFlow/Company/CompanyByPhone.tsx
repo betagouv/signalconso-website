@@ -1,5 +1,4 @@
 import {Animate} from '@/components_simple/Animate'
-import {RequiredFieldsLegend} from '@/components_simple/RequiredFieldsLegend'
 import {ScTextInput} from '@/components_simple/formInputs/ScTextInput'
 import {useI18n} from '@/i18n/I18n'
 import {Button} from '@codegouvfr/react-dsfr/Button'
@@ -44,7 +43,6 @@ export const CompanyByPhone = ({children}: Props) => {
       <Animate>
         <div id="CompanyByPhone">
           <div>
-            <RequiredFieldsLegend />
             <form onSubmit={handleSubmit(submit)}>
               <ScTextInput
                 type="tel"

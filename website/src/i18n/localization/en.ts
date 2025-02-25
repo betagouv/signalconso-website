@@ -874,10 +874,9 @@ export const en = {
     speed: 'Speed:',
     key: 'Key:',
     phone: 'Phone:',
-    phoneOptional: 'Phone (optional): ',
     optional: 'Optional',
     phonePlaceholder: 'ex : 0612345678 ',
-    referenceNumberOptional: 'Reference number (optional): ',
+    referenceNumber: 'Reference number',
     referenceNumberDesc:
       'To make it easier to process your report, please provide a reference number. This could be a ticket number, booking code, invoice number, agreement number, customer number, or other reference.',
     referenceNumberPlaceholder: 'ex : ZYX987654321',

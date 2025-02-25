@@ -4,7 +4,6 @@ import {SignalConsoApiClient} from '@/clients/SignalConsoApiClient'
 import {useToastOnQueryError} from '@/clients/apiHooks'
 import {Animate} from '@/components_simple/Animate'
 import {AutofocusedDiv} from '@/components_simple/AutofocusedDiv'
-import {RequiredFieldsLegend} from '@/components_simple/RequiredFieldsLegend'
 import {ScTextInput} from '@/components_simple/formInputs/ScTextInput'
 import {useApiClients} from '@/context/ApiClientsContext'
 import {useI18n} from '@/i18n/I18n'
@@ -189,7 +188,6 @@ export const CompanyByWebsite = ({children, specificWebsiteCompanyKind}: Props) 
         <div id="CompanyByWebsite">
           {specificWebsiteCompanyKind && websiteToReportAlert(specificWebsiteCompanyKind)}
           <div>
-            <RequiredFieldsLegend />
             <form onSubmit={handleSubmit(onSubmit)}>
               <ScTextInput
                 label={m.website}

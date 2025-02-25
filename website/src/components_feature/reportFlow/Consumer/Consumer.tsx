@@ -1,20 +1,20 @@
-import {StandardSubcategory} from 'shared/anomalies/Anomaly'
 import {ClientReferenceHelpButton} from '@/components_feature/reportFlow/Consumer/ClientReferenceHelpButton'
+import {ConsumerShareInformation} from '@/components_feature/reportFlow/Consumer/ConsumerShareInformation'
 import {NextStepButton} from '@/components_feature/reportFlow/reportFlowStepper/NextStepButton'
 import {StepNavigation} from '@/components_feature/reportFlow/reportFlowStepper/ReportFlowStepper'
-import {RequiredFieldsLegend} from '@/components_simple/RequiredFieldsLegend'
 import {ScTextInput} from '@/components_simple/formInputs/ScTextInput'
 import {useApiClients} from '@/context/ApiClientsContext'
 import {getSubcategories, getTransmissionStatus, hasStep0, hasStep1Full, hasStep2} from '@/feature/reportUtils'
 import {useBreakpoints} from '@/hooks/useBreakpoints'
 import {useI18n} from '@/i18n/I18n'
 import {AppLangs} from '@/i18n/localization/AppLangs'
-import {DetailInputValues2, Report} from '@/model/Report'
+import {Report} from '@/model/Report'
 import {last} from '@/utils/lodashNamedExport'
 import {regexp} from '@/utils/regexp'
 import {useMutation} from '@tanstack/react-query'
-import {ChangeEvent, FocusEvent, JSX, MouseEventHandler, ReactNode, RefAttributes, useCallback, useEffect} from 'react'
-import {Control, Controller, FieldValues, useForm, UseFormReturn} from 'react-hook-form'
+import {ReactNode, useCallback, useEffect} from 'react'
+import {Controller, useForm, UseFormReturn} from 'react-hook-form'
+import {StandardSubcategory} from 'shared/anomalies/Anomaly'
 import {ScAlert} from '../../../components_simple/ScAlert'
 import {ScRadioButtons} from '../../../components_simple/formInputs/ScRadioButtons'
 import {getApiErrorId, useToastError} from '../../../hooks/useToastError'
@@ -22,7 +22,6 @@ import {Gender, genders} from '../../../model/Report'
 import {PartialReport, useReportFlowContext} from '../ReportFlowContext'
 import {ConsumerAnonymousInformation} from './ConsumerAnonymousInformation'
 import {ConsumerValidationDialog2, consumerValidationModal} from './ConsumerValidationDialog'
-import {ConsumerShareInformation} from '@/components_feature/reportFlow/Consumer/ConsumerShareInformation'
 
 interface ConsumerForm {
   firstName: string
@@ -190,7 +189,6 @@ export const ConsumerInner = ({
           {draft.step1.employeeConsumer && (
             <ScAlert type="info" dangerouslySetInnerHTML={{__html: `<p>${m.consumerIsEmployee}</p>`}} />
           )}
-          <RequiredFieldsLegend />
           <Controller
             defaultValue={consumer?.gender}
             control={_form.control}
@@ -245,7 +243,7 @@ export const ConsumerInner = ({
             {...getErrors('email')}
           />
           <ScTextInput
-            label={<WithIcon icon="fr-icon-phone-line">{m.phoneOptional}</WithIcon>}
+            label={<WithIcon icon="fr-icon-phone-line">{m.phone}</WithIcon>}
             autocomplete="tel"
             type="tel"
             {..._form.register('phone', {
@@ -265,7 +263,7 @@ export const ConsumerInner = ({
             label={
               <span>
                 <WithIcon icon="ri-bill-line">
-                  {clientReferenceInput && clientReferenceInput.label ? clientReferenceInput.label : m.referenceNumberOptional}
+                  {clientReferenceInput && clientReferenceInput.label ? clientReferenceInput.label : m.referenceNumber}
                 </WithIcon>{' '}
                 {!clientReferenceInput && <ClientReferenceHelpButton />}
               </span>

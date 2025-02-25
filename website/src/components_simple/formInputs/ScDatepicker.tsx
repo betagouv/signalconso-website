@@ -1,5 +1,7 @@
-import React, {ForwardedRef, ReactNode, forwardRef, useId} from 'react'
+import {useI18n} from '@/i18n/I18n'
 import {frenchToIsoFormat} from '@/utils/utils'
+import React, {ForwardedRef, ReactNode, forwardRef, useId} from 'react'
+import {OptionalLabel} from './OptionalLabel'
 
 export interface ScDatepickerProps {
   label?: ReactNode
@@ -19,12 +21,13 @@ export interface ScDatepickerProps {
 
 export const ScDatepicker = forwardRef((props: ScDatepickerProps, ref: ForwardedRef<HTMLInputElement>) => {
   const {onChange, onBlur, name, placeholder, label, desc, error, helperText, required, min, max} = props
+  const {m} = useI18n()
   const inputId = useId()
   const helperTextId = useId()
   const labelWithAsterisk = (
     <>
       {label}
-      {required ? ' *' : null}
+      <OptionalLabel {...{required}} />
     </>
   )
   return (

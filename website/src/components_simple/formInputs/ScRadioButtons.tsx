@@ -1,12 +1,13 @@
 import {useAutoscrollContext} from '@/context/AutoscrollContext'
+import {useI18n} from '@/i18n/I18n'
 import {KeyboardEvent, ReactElement, ReactNode, Ref, forwardRef, useEffect, useId} from 'react'
+import {OptionalLabel} from './OptionalLabel'
 
 export interface ScRadioButtonsProps<V> {
   title?: ReactNode
   description?: ReactNode
   // do not respect DSFR style, less bold, less margins, etc.
   titleSoberStyle?: boolean
-  titleNoAutoAsterisk?: boolean
   onChange: (value: V) => void
   options: {
     label: ReactNode
@@ -33,7 +34,6 @@ function ScRadioButtonsWithRef<V>(props: ScRadioButtonsProps<V>, ref: RefType) {
     title,
     description,
     titleSoberStyle = false,
-    titleNoAutoAsterisk = false,
     onChange,
     options,
     value: selectedValue,
@@ -45,6 +45,7 @@ function ScRadioButtonsWithRef<V>(props: ScRadioButtonsProps<V>, ref: RefType) {
     autoFocusOnError,
   } = props
   const _id = useId()
+  const {m} = useI18n()
   const {disableAutoscrollTemporarily} = useAutoscrollContext()
   const id = `fr-fieldset-radio-${_id}`
   const legendId = `${id}-legend`
@@ -89,7 +90,7 @@ function ScRadioButtonsWithRef<V>(props: ScRadioButtonsProps<V>, ref: RefType) {
       {title && (
         <legend id={legendId} className={`fr-fieldset__legend ${titleSoberStyle ? '!font-normal' : ''}`}>
           {title}
-          {required && !titleNoAutoAsterisk && <span> *</span>}
+          <OptionalLabel {...{required}} />
           {description && <span className="fr-hint-text">{description}</span>}
         </legend>
       )}
