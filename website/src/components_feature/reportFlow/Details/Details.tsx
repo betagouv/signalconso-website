@@ -234,7 +234,6 @@ export const DetailsInner = ({
             </>
           ) : (
             <FriendlyHelpText>
-              {/*Do not display any custom attachmentDesc for employee consumer reports*/}
               <p
                 className="mb-0"
                 dangerouslySetInnerHTML={{

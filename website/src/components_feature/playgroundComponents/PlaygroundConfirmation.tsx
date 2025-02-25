@@ -49,7 +49,7 @@ export const PlaygroundConfirmation = () => {
     },
     step4: {
       consumer: Fixture.genConsumer(random),
-      contactAgreement: random.boolean(),
+      contactAgreement: false,
     },
   }
 
