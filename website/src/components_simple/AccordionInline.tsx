@@ -9,6 +9,7 @@ interface Props {
 export const AccordionInline = ({label, children, className = ''}: Props) => {
   const [open, setOpen] = useState<boolean>(false)
 
+  const arrowButton = <i className={`${open ? 'ri-arrow-up-s-line' : 'ri-arrow-down-s-line'} fr-icon--sm`} />
   return (
     <div {...{className}}>
       <button
@@ -20,8 +21,16 @@ export const AccordionInline = ({label, children, className = ''}: Props) => {
         }}
         aria-expanded={open}
       >
-        {label}
-        <i className={`${open ? 'ri-arrow-up-s-line' : 'ri-arrow-down-s-line'} fr-icon--sm`} />
+        {typeof label === 'string' ? (
+          <p className="text-left mb-0">
+            {label} {arrowButton}
+          </p>
+        ) : (
+          <>
+            {label}
+            {arrowButton}
+          </>
+        )}
       </button>
       {open && <div>{children}</div>}
     </div>

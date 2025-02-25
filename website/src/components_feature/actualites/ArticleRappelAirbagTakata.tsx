@@ -1,8 +1,7 @@
 import {ScAlert} from '@/components_simple/ScAlert'
-import {androidAppUrl, iosAppUrl} from '@/components_simple/bigBanners/MobileAppPromoBanner'
+import {appConfig} from '@/core/appConfig'
 import {Accordion} from '@codegouvfr/react-dsfr/Accordion'
 import Link from 'next/link'
-
 const urlSsvm = 'https://www.ecologie.gouv.fr/service-surveillance-du-marche-des-vehicules-et-des-moteurs-ssmvm'
 
 export function ArticleRappelAirbagTakata() {
@@ -81,11 +80,11 @@ export function ArticleRappelAirbagTakata() {
       <ScAlert type="info">
         Pour être informé de tous les rappels de produits sur votre téléphone, téléchargez dès maintenant la nouvelle version de
         l'application SignalConso sur{' '}
-        <Link href={iosAppUrl} target="_blank">
+        <Link href={appConfig.iosAppUrl} target="_blank">
           iOS
         </Link>{' '}
         et{' '}
-        <Link href={androidAppUrl} target="_blank">
+        <Link href={appConfig.androidAppUrl} target="_blank">
           Google Play
         </Link>
         .

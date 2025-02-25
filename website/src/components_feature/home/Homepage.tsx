@@ -5,7 +5,6 @@ import {FullWidthPageContainer} from '@/components_simple/PageContainers'
 import {IllustrationStepper} from '@/components_simple/StepIllustrations/StepIllustrations'
 import {ForeignVisitorsQaPromoBanner} from '@/components_simple/bigBanners/ForeignVisitorsQaPromoBanner'
 import {InfoBanner} from '@/components_simple/bigBanners/InfoBanner'
-import {MobileAppPromoBanner} from '@/components_simple/bigBanners/MobileAppPromoBanner'
 import {bigReportButtonProps} from '@/components_simple/buttons/buttonsUtils'
 import {HP_START_REPORT_ANCHOR} from '@/core/buildLinks'
 import {hasStep0} from '@/feature/reportUtils'
@@ -40,7 +39,6 @@ export const Homepage = () => {
     <>
       <FullWidthPageContainer>
         <div>
-          <MobileAppPromoBanner />
           <div className="fr-container">
             <InfoBanner />
             <BrowserCompatAlert />

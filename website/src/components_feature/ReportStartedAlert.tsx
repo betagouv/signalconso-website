@@ -28,14 +28,14 @@ export default function ReportStartedAlert() {
             anomalyTitle={anomaly.title}
           />
           <div className="flex justify-end gap-4">
-            <Button size="small" priority="tertiary" onClick={_reportFlow.resetReport}>
+            <Button size="medium" priority="tertiary" onClick={_reportFlow.resetReport}>
               {m.delete}
             </Button>
             <Link
               href={buildPathForStep(anomaly, currentLang, currentStep, false, recreateOpenFfBarcodeParam(report))}
               legacyBehavior
             >
-              <Button size="small">{m.continue}</Button>
+              <Button size="medium">{m.continue}</Button>
             </Link>
           </div>
         </div>

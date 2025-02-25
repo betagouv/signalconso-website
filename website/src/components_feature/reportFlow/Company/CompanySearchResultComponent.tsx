@@ -108,14 +108,7 @@ export const CompanySearchResultComponent = ({companies, report, onSubmit}: Prop
                           description={m.selectCompanyDesc}
                           autoFocusOnError
                         />
-                        {onlyClosed && (
-                          <Alert
-                            description={m.closedCompanyText}
-                            severity="warning"
-                            title={m.closedCompany}
-                            className="fr-mt-4w"
-                          />
-                        )}
+                        {onlyClosed && <Alert description={m.closedCompanyText} severity="warning" title={m.closedCompany} />}
                       </>
                     )}
                   />

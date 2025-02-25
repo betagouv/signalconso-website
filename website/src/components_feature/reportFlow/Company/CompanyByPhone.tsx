@@ -43,7 +43,6 @@ export const CompanyByPhone = ({children}: Props) => {
     <>
       <Animate>
         <div id="CompanyByPhone">
-          <h2 className="fr-h6 !mb-2">{m.aboutCompany}</h2>
           <div>
             <RequiredFieldsLegend />
             <form onSubmit={handleSubmit(submit)}>
@@ -69,7 +68,7 @@ export const CompanyByPhone = ({children}: Props) => {
                 }
               />
               <div className="flex items-center justify-end">
-                <Button type="submit" disabled={!!phone} className="mt-2">
+                <Button type="submit" disabled={!!phone}>
                   {m.continue}
                 </Button>
               </div>
