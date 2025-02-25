@@ -49,6 +49,8 @@ export const appConfig = {
   airtableApiToken: process.env.NEXT_PUBLIC_AIRTABLE_API_TOKEN ?? null,
   maxNumberOfAttachments: readInt(process.env.NEXT_PUBLIC_MAX_NUMBER_OF_ATTACHMENTS, 12),
   anonMetabaseUrl: `https://metabase-publicstats-signalconso.cleverapps.io`,
+  iosAppUrl: 'https://apps.apple.com/fr/app/signalconso/id6447964093',
+  androidAppUrl: 'https://play.google.com/store/apps/details?id=com.signalconso.signalconso',
 }
 
 export type AppConfig = typeof appConfig
