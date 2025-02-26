@@ -39,7 +39,7 @@ describe('Details: single date not in future', () => {
         step1: {
           subcategoriesIndexes: [5, 1],
           employeeConsumer: false,
-          consumerWish: 'companyImprovement',
+          consumerWish: 'reportSomething',
         },
       }
       app = render(
@@ -99,7 +99,7 @@ describe('Details: single date not in future', () => {
             step1: {
               subcategoriesIndexes: [5, 5], // this has LOCATION
               employeeConsumer: false,
-              consumerWish: 'companyImprovement',
+              consumerWish: 'reportSomething',
             },
           }}
           updateReport={step2 => {

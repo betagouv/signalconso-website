@@ -59,9 +59,6 @@ function computeFinalTags(draft: Report): ReportTag[] {
   if (companyKind === 'WEBSITE' || companyKind === 'MERCHANT_WEBSITE' || companyKind === 'TRANSPORTER_WEBSITE') {
     tagsSet.add('Internet')
   }
-  if (consumerWish === 'fixContractualDispute') {
-    tagsSet.add('LitigeContractuel')
-  }
   if (consumerWish === 'getAnswer') {
     tagsSet.add('ReponseConso')
   } else {

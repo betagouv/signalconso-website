@@ -48,13 +48,8 @@ export interface Influencer {
 }
 
 export type ConsumerWish =
-  // - on empêche l'utilisateur d'être anonyme
-  // - on met le tag LitigeContractuel
-  // C'est tout.
-  // En vrai cela ne change donc pas grand chose pour l'utilisateur
-  | 'fixContractualDispute'
-  // Cas standard
-  | 'companyImprovement'
+  // Cas standard, process signalconso standard
+  | 'reportSomething'
   // - on met le tag ReponseConso
   // - on met le flag forwardToReponseConso
   // - on ne transmet pas à l'entreprise

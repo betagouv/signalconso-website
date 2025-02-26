@@ -152,7 +152,7 @@ export class Fixture {
       lang,
     }
     const problemFields = {
-      consumerWish: 'fixContractualDispute',
+      consumerWish: 'reportSomething',
       subcategoriesIndexes: [0, 0],
     }
     const step2: Report['step2'] = {
@@ -178,7 +178,7 @@ export class Fixture {
         return {
           ..._,
           step0: {category, lang: currentLang},
-          consumerWish: random.oneOf(['fixContractualDispute', 'companyImprovement', 'getAnswer']),
+          consumerWish: random.oneOf(['reportSomething', 'getAnswer']),
           subcategoriesIndexes: [0, 0],
           employeeConsumer: random.boolean(),
         }

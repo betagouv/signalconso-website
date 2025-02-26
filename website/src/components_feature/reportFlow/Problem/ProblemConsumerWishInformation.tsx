@@ -16,34 +16,26 @@ export function ProblemConsumerWishInformation({consumerWish}: {consumerWish: Co
 }
 
 function pickText(m: I18nContextProps['m'], consumerWish: ConsumerWish) {
-  const reminderMessage = <p className="mb-4">{m.reminderBeforeReporting}</p>
+  // TODO add this service client warning ONLY if tag Telecom present (they wanted it)
+  const reminderMessage = 1 + 1 === 3 ? <p className="mb-4">{m.reminderBeforeReporting}</p> : null
   switch (consumerWish) {
-    case 'fixContractualDispute':
+    case 'reportSomething':
       return (
         <>
           {reminderMessage}
           <p className="mb-4" dangerouslySetInnerHTML={{__html: m.consumerWishFixContractualDispute}} />
         </>
       )
-    case 'companyImprovement':
-      return (
-        <>
-          {reminderMessage}
-          <p className="mb-4">{m.consumerWishCompanyImprovement}</p>
-        </>
-      )
     case 'getAnswer':
-      return <p className="mb-4">{m.consumerWishGetAnswer}</p>
+      return <p className="mb-4" dangerouslySetInnerHTML={{__html: m.consumerWishGetAnswer}} />
   }
 }
 
 function pickSecondText(m: I18nContextProps['m'], consumerWish: ConsumerWish) {
-  m.consumerWishFixContractualDispute
   switch (consumerWish) {
-    case 'fixContractualDispute':
-    case 'companyImprovement':
+    case 'reportSomething':
       return <p className="mb-0">{m.consumerWishInvestigationIsPossible}</p>
     case 'getAnswer':
-      return <p className="mb-0">{m.consumerWishInvestigationIsPossible2}</p>
+      return null
   }
 }

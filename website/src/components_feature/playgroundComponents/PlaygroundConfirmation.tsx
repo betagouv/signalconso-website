@@ -22,7 +22,7 @@ export const PlaygroundConfirmation = () => {
     step1: {
       subcategoriesIndexes: [1, 0],
       employeeConsumer: false,
-      consumerWish: 'fixContractualDispute',
+      consumerWish: 'reportSomething',
     },
     step2: {
       kind: 'product',
@@ -49,7 +49,7 @@ export const PlaygroundConfirmation = () => {
     },
     step4: {
       consumer: Fixture.genConsumer(random),
-      contactAgreement: random.boolean(),
+      contactAgreement: false,
     },
   }
 

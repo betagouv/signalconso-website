@@ -10,7 +10,7 @@ export const PlaygroundConsumer = () => {
             category: 'DemoCategory',
             lang: 'fr',
           },
-          step1: {subcategoriesIndexes: [0], employeeConsumer: false, consumerWish: 'companyImprovement'},
+          step1: {subcategoriesIndexes: [0], employeeConsumer: false, consumerWish: 'reportSomething'},
           step2: {
             kind: 'basic',
             companyIdentification: {

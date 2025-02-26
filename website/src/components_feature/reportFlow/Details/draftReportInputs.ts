@@ -1,7 +1,7 @@
 import {getSubcategories, hasStep0, hasSubcategoryIndexes} from '@/feature/reportUtils'
 import {last} from '@/utils/lodashNamedExport'
-import {instanceOfSubcategoryWithInputs} from '../../../anomalies/Anomalies'
 import {DetailInput, DetailInputType} from 'shared/anomalies/Anomaly'
+import {instanceOfSubcategoryWithInputs} from '../../../anomalies/Anomalies'
 import {AppLang, AppLangs} from '../../../i18n/localization/AppLangs'
 import {PartialReport} from '../ReportFlowContext'
 

@@ -55,7 +55,7 @@ describe('Consumer', () => {
       step1: {
         subcategoriesIndexes: [0],
         employeeConsumer: false,
-        consumerWish: 'companyImprovement',
+        consumerWish: 'reportSomething',
       },
       step2,
       step4: {
@@ -115,7 +115,7 @@ describe('Consumer', () => {
       step1: {
         subcategoriesIndexes: [0],
         employeeConsumer: true,
-        consumerWish: 'companyImprovement',
+        consumerWish: 'reportSomething',
       },
       step2,
     }

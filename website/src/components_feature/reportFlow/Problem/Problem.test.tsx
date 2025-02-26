@@ -4,6 +4,7 @@
 import {allAnomalies} from '@/anomalies/Anomalies'
 import {dummyStepNavigation} from '@/components_feature/playgroundComponents/PlaygroundConfirmation'
 import {getCompanyKind} from '@/feature/reportUtils'
+import {ConsumerWish} from '@/model/Report'
 import {AccessReportFlow, fireEvent, render, ScRenderResult} from '@/test/test-utils'
 import '@testing-library/jest-dom'
 import {Anomaly} from 'shared/anomalies/Anomaly'
@@ -81,18 +82,14 @@ describe('Problem', () => {
     fireEvent.click(radios.find(_ => _.textContent?.includes(btnText))!)
   }
 
-  const clickContractualDispute = (
-    app: ScRenderResult,
-    value: 'contractualDispute' | 'notContractualDispute' | 'reponseConso',
-  ) => {
+  const clickContractualDispute = (app: ScRenderResult, value: ConsumerWish) => {
     const radios = Array.from(app.container.querySelectorAll('#select-contractualDispute fieldset label')!)
     if (radios.length === 0) {
       throw new Error('Contractual dispute form did not appear')
     }
     const btnText = fnSwitch(value, {
-      contractualDispute: app.m.problemContractualDisputeFormYes,
-      notContractualDispute: app.m.problemContractualDisputeFormNo,
-      reponseConso: app.m.problemContractualDisputeFormReponseConso,
+      reportSomething: app.m.problemContractualDisputeFormNo,
+      getAnswer: app.m.problemContractualDisputeFormReponseConso,
     })
     fireEvent.click(radios.find(_ => _.textContent?.includes(btnText))!)
   }
@@ -202,27 +199,7 @@ describe('Problem', () => {
     fireEvent.click(app.getByText(`Sous category pour tester les companyKind`))
     fireEvent.click(app.getByText(`Sous cat avec companyKind WEBSITE`))
     clickEmployeeConsumer(app, 'no')
-    clickContractualDispute(app, 'contractualDispute')
-    clickBtnSubmit(app)
-  })
-
-  it('should not display contractual dispute warning', () => {
-    let report: undefined | PartialReport
-    const app = render(
-      <AccessReportFlow
-        onReportChange={r => {
-          report = r
-        }}
-      >
-        <Problem {...props} anomaly={ProblemFixture.anomaly} />
-      </AccessReportFlow>,
-      renderOptions,
-    )
-    fireEvent.click(app.getByText(`Sous category pour tester les companyKind`))
-    fireEvent.click(app.getByText(`Sous cat avec companyKind WEBSITE`))
-    clickEmployeeConsumer(app, 'no')
-    clickContractualDispute(app, 'notContractualDispute')
-    expectContractualDisputeVisible(app, false)
+    clickContractualDispute(app, 'reportSomething')
     clickBtnSubmit(app)
   })
 
@@ -240,7 +217,7 @@ describe('Problem', () => {
     )
     fireEvent.click(app.getByText(`(title) Première sous category du fichier demo.yaml, absolument minimale`))
     clickEmployeeConsumer(app, 'no')
-    expect(() => clickContractualDispute(app, 'reponseConso')).toThrow()
+    expect(() => clickContractualDispute(app, 'getAnswer')).toThrow()
   })
 
   it('should not ask ReponseConso nor contractual dispute when employeeConsumer = true', () => {
@@ -259,7 +236,7 @@ describe('Problem', () => {
     fireEvent.click(app.getByText(`Sous cat avec tag ReponseConso`))
     clickEmployeeConsumer(app, 'yes')
     clickCompanyKind(app, 'internet')
-    expect(() => clickContractualDispute(app, 'reponseConso')).toThrow()
+    expect(() => clickContractualDispute(app, 'getAnswer')).toThrow()
     expectContractualDisputeVisible(app, false)
     clickBtnSubmit(app)
   })
@@ -280,7 +257,7 @@ describe('Problem', () => {
     fireEvent.click(app.getByText(`Sous cat avec tag ReponseConso`))
     clickEmployeeConsumer(app, 'no')
     clickCompanyKind(app, 'internet')
-    clickContractualDispute(app, 'reponseConso')
+    clickContractualDispute(app, 'getAnswer')
     expectContractualDisputeVisible(app, false)
     clickBtnSubmit(app)
     expect(report?.step1?.employeeConsumer).toEqual(false)

@@ -53,7 +53,7 @@ export const PlaygroundCompany = ({companyKind = 'SIRET', reportOpenFf: openFf}:
             ...(openFf ? {openFf} : undefined),
             subcategoriesIndexes: pickSubcategoriesIndexes(),
             employeeConsumer: false,
-            consumerWish: 'companyImprovement',
+            consumerWish: 'reportSomething',
           },
         }}
         updateReport={x => setReport(x as PartialReport)}
