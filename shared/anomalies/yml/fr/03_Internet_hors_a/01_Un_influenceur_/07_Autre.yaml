@@ -7,7 +7,7 @@ detailInputs:
     type: DATE_NOT_IN_FUTURE
     defaultValue: SYSDATE
     optional: true
-  - label: Nom du produit ou du service (facultatif)
+  - label: Nom du produit ou du service
     type: TEXT
     optional: true
   - label: Site internet

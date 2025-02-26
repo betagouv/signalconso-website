@@ -6,7 +6,7 @@ detailInputs:
   - label: Nom ou pseudonyme qui vous a contacté
     type: TEXT
     placeholder: Nom ou pseudonyme
-  - label: Nom de la formation (facultatif)
+  - label: Nom de la formation
     type: TEXT
   - label: Pouvez-vous préciser la plateforme utilisée ?
     type: RADIO
