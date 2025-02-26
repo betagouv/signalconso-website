@@ -1,5 +1,7 @@
+import {useI18n} from '@/i18n/I18n'
 import Button from '@codegouvfr/react-dsfr/Button'
 import {ForwardedRef, MouseEventHandler, ReactNode, forwardRef, useId} from 'react'
+import {OptionalLabel} from './OptionalLabel'
 
 type Props = {
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
@@ -9,7 +11,6 @@ type Props = {
   error: boolean
   helperText?: ReactNode
   required: boolean
-  showRequiredAsterisk?: boolean
   label?: ReactNode
   desc?: ReactNode
   autocomplete?: string
@@ -40,7 +41,6 @@ export const ScTextInput = forwardRef((props: Props, ref: ForwardedRef<HTMLInput
     error,
     helperText,
     required,
-    showRequiredAsterisk = true,
     type = 'text',
     inputMode,
     disabled = false,
@@ -49,12 +49,13 @@ export const ScTextInput = forwardRef((props: Props, ref: ForwardedRef<HTMLInput
     onClick = () => {},
     disableLeftBorderOnError = false,
   } = props
+  const {m} = useI18n()
   const inputId = useId()
   const helperTextId = useId()
   const labelWithAsterisk = (
     <>
       {label}
-      {required && showRequiredAsterisk ? ' *' : null}
+      <OptionalLabel {...{required}} />
     </>
   )
   return (

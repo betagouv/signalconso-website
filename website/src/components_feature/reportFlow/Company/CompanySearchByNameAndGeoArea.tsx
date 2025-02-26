@@ -2,7 +2,6 @@ import {useAnalyticContext} from '@/analytic/AnalyticContext'
 import {CompanySearchEventActions, EventCategories} from '@/analytic/analytic'
 import {useToastOnQueryError} from '@/clients/apiHooks'
 import {Animate} from '@/components_simple/Animate'
-import {RequiredFieldsLegend} from '@/components_simple/RequiredFieldsLegend'
 import {ButtonWithLoader} from '@/components_simple/buttons/Buttons'
 import {ScAutocompleteGeoArea} from '@/components_simple/formInputs/ScAutocompleteGeoArea'
 import {ScTextInput} from '@/components_simple/formInputs/ScTextInput'
@@ -60,7 +59,6 @@ export const CompanySearchByNameAndGeoArea = ({children}: Props) => {
     <div className="space-y-6">
       <Animate>
         <div id="CompanyByNameAndGeoArea">
-          <RequiredFieldsLegend />
           <form onSubmit={handleSubmit(search)}>
             <div className="mb-4">
               <ScTextInput

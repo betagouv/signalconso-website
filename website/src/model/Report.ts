@@ -1,7 +1,7 @@
-import {CompanyKind, NightTrain, SocialNetwork, Ter, Train} from 'shared/anomalies/Anomaly'
 import {OpenFfResult} from '@/feature/openFoodFacts'
 import {RappelConsoResult} from '@/feature/rappelConso'
 import {AppLang} from '@/i18n/localization/AppLangs'
+import {CompanyKind, NightTrain, SocialNetwork, Ter, Train} from 'shared/anomalies/Anomaly'
 import {Step2Model} from './Step2Model'
 import {UploadedFile} from './UploadedFile'
 
@@ -30,7 +30,6 @@ export interface Report {
       email: string
       phone?: string
       referenceNumber?: string
-      gender?: Gender
     }
     contactAgreement: boolean
   }
@@ -60,9 +59,6 @@ export type ConsumerWish =
   // - on met le flag forwardToReponseConso
   // - on ne transmet pas à l'entreprise
   | 'getAnswer'
-
-export const genders = ['Male', 'Female'] as const
-export type Gender = (typeof genders)[number]
 
 export type DetailInputValues2 = {
   // the keys here are actually stringified numbers : "0", "1", etc.

@@ -5,7 +5,7 @@ import {ChangeEvent, ReactNode, useId} from 'react'
 
 // Based on headless-ui, with rendering similar to a DSFR input
 // Note : we don't pass ref and value, not sure why but it seems to work
-// It's hardcoded as a required field ("*" and aria-required), but this could also be parametrized if needed
+// It's hardcoded as a required field (no "(facultatif)" and aria-required), but this could also be parametrized if needed
 export function ScAutoComplete<Item>({
   label,
   desc,
@@ -25,7 +25,6 @@ export function ScAutoComplete<Item>({
   helperText,
   disabled,
   editable,
-  showRequiredAsterisk = true,
 }: {
   label: string
   desc?: string
@@ -48,7 +47,6 @@ export function ScAutoComplete<Item>({
     onEdit: () => void
     label: string
   }
-  showRequiredAsterisk?: boolean
 }) {
   const inputId = useId()
   const helperTextId = useId()
@@ -59,7 +57,6 @@ export function ScAutoComplete<Item>({
       <div className={`fr-input-group ${error ? 'fr-input-group--error' : ''}`}>
         <Combobox.Label htmlFor={inputId} className="fr-label">
           {label}
-          {showRequiredAsterisk && ' *'}
           {desc && <span className="fr-hint-text">{desc}</span>}
         </Combobox.Label>
         <div className="flex w-full">

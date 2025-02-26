@@ -3,11 +3,11 @@ import {useApiClients} from '@/context/ApiClientsContext'
 import {Departement, findDepartements} from '@/data/departments'
 import {useStateWithThrottledCopy} from '@/hooks/useStateWithThrottledCopy'
 import {useI18n} from '@/i18n/I18n'
-import {isPartialPostalcode, isValidPostalcode, notUndefined} from '@/utils/utils'
+import {GeoArea} from '@/model/GeoArea'
+import {isPartialPostalcode, isValidPostalcode} from '@/utils/utils'
 import {useQuery} from '@tanstack/react-query'
 import {ReactNode} from 'react'
 import {ScAutoComplete} from './ScAutocomplete'
-import {GeoArea} from '@/model/GeoArea'
 
 export type ScAutocompleteGeoAreaProps = {
   label: string
@@ -17,7 +17,6 @@ export type ScAutocompleteGeoAreaProps = {
   name: string
   error: boolean
   helperText?: string
-  showRequiredAsterisk?: boolean
 }
 
 // Autocomplete for either :

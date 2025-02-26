@@ -1,4 +1,6 @@
+import {useI18n} from '@/i18n/I18n'
 import {ReactElement, ReactNode, Ref, forwardRef, useId} from 'react'
+import {OptionalLabel} from './OptionalLabel'
 
 interface Props<V> {
   title: ReactNode
@@ -19,6 +21,7 @@ type RefType = Ref<HTMLFieldSetElement>
 const ScCheckboxesWithRef = <V,>(props: Props<V>, ref: RefType) => {
   const {title, description, onChange, options, value: selectedValue, error, errorMessage, required} = props
   const _id = useId()
+  const {m} = useI18n()
   const id = `fr-fieldset-checkbox-${_id}`
   const legendId = `${id}-legend`
   const checkboxName = `checkbox-name-${id}`
@@ -43,7 +46,7 @@ const ScCheckboxesWithRef = <V,>(props: Props<V>, ref: RefType) => {
       {title && (
         <legend id={legendId} className="fr-fieldset__legend fr-fieldset__legend--regular">
           {title}
-          {required && <span> *</span>}
+          <OptionalLabel {...{required}} />
           {description && <span className="fr-hint-text">{description}</span>}
         </legend>
       )}

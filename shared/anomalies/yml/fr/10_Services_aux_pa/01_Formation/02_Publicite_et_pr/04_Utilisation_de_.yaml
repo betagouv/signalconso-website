@@ -14,7 +14,7 @@ detailInputs:
   - label: Date de l'appel
     type: DATE
     defaultValue: SYSDATE
-  - label: Heure de l'appel (facultatif)
+  - label: Heure de l'appel
     type: TIMESLOT
     optional: true
 subcategory: Utilisation_de_termes_laissant_croire_quil_sagit_dune_structure_publique

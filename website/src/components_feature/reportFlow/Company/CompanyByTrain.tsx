@@ -1,12 +1,11 @@
-import {NightTrain, nightTrains, Ter, ters, Train, trains} from 'shared/anomalies/Anomaly'
 import {Animate} from '@/components_simple/Animate'
 import {BtnNextSubmit} from '@/components_simple/buttons/Buttons'
 import {ScRadioButtons} from '@/components_simple/formInputs/ScRadioButtons'
 import {FriendlyHelpText} from '@/components_simple/FriendlyHelpText'
-import {RequiredFieldsLegend} from '@/components_simple/RequiredFieldsLegend'
 import {useI18n} from '@/i18n/I18n'
 import {useEffect} from 'react'
 import {Controller, useForm} from 'react-hook-form'
+import {NightTrain, nightTrains, Ter, ters, Train, trains} from 'shared/anomalies/Anomaly'
 
 interface Props {
   onSubmit: (form: Form) => void
@@ -69,7 +68,6 @@ export const CompanyByTrain = ({onSubmit}: Props) => {
 
   return (
     <>
-      <RequiredFieldsLegend />
       <form
         onSubmit={handleSubmit(form => {
           onSubmit(form)

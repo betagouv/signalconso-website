@@ -5,7 +5,7 @@ ccrfCode:
   - 23B
   - '216'
 detailInputs:
-  - label: Nom du produit ou du service (facultatif)
+  - label: Nom du produit ou du service
     type: TEXT
     optional: true
 subcategory: Un_avis_de_consommateur

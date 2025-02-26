@@ -2,7 +2,6 @@ import {NextStepButton} from '@/components_feature/reportFlow/reportFlowStepper/
 import {StepNavigation} from '@/components_feature/reportFlow/reportFlowStepper/ReportFlowStepper'
 import {Animate} from '@/components_simple/Animate'
 import {FriendlyHelpText} from '@/components_simple/FriendlyHelpText'
-import {RequiredFieldsLegend} from '@/components_simple/RequiredFieldsLegend'
 import {ReportFiles} from '@/components_simple/reportFile/ReportFiles'
 import {appConfig} from '@/core/appConfig'
 import {getSubcategories, getTags, getTransmissionStatus, hasStep0, hasStep1Full, hasStep2} from '@/feature/reportUtils'
@@ -208,7 +207,6 @@ export const DetailsInner = ({
               ),
             })}
           </FriendlyHelpText>
-          <RequiredFieldsLegend />
           {inputs.map((input, inputIndex) => (
             <DetailsInputRenderByType
               key={inputIndex}

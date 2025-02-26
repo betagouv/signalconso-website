@@ -13,7 +13,7 @@ detailInputs:
   - label: Date du constat
     type: DATE_NOT_IN_FUTURE
     defaultValue: SYSDATE
-  - label: Heure du constat (facultatif)
+  - label: Heure du constat
     type: TIMESLOT
     optional: true
 subcategory: Probleme_de_temperature

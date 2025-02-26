@@ -1,4 +1,6 @@
+import {useI18n} from '@/i18n/I18n'
 import {ForwardedRef, ReactNode, forwardRef, useId} from 'react'
+import {OptionalLabel} from './OptionalLabel'
 
 type Props = {
   onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void
@@ -14,12 +16,13 @@ type Props = {
 
 export const ScTextarea = forwardRef((props: Props, ref: ForwardedRef<HTMLTextAreaElement>) => {
   const {onChange, onBlur, name, placeholder, label, desc, error, helperText, required} = props
+  const {m} = useI18n()
   const inputId = useId()
   const helperTextId = useId()
   const labelWithAsterisk = (
     <>
       {label}
-      {required ? ' *' : null}
+      <OptionalLabel {...{required}} />
     </>
   )
   return (

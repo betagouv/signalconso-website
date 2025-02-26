@@ -63,7 +63,6 @@ export const CompanyAskForeignDetails = ({onSubmit, reportTransmittableToPro}: P
               error={!!errors.name}
               helperText={errors.name?.message ?? ''}
               placeholder={m.reportedCompanyNamePlaceholder}
-              showRequiredAsterisk={false}
             />
             <Controller
               name="country"
@@ -88,7 +87,6 @@ export const CompanyAskForeignDetails = ({onSubmit, reportTransmittableToPro}: P
                   {...{onChange, onBlur, name, value}}
                   error={!!error}
                   helperText={error?.message}
-                  showRequiredAsterisk={false}
                 />
               )}
             />

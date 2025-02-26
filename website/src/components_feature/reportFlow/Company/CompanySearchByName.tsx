@@ -2,7 +2,6 @@ import {useAnalyticContext} from '@/analytic/AnalyticContext'
 import {CompanySearchEventActions, EventCategories} from '@/analytic/analytic'
 import {useToastOnQueryError} from '@/clients/apiHooks'
 import {Animate} from '@/components_simple/Animate'
-import {RequiredFieldsLegend} from '@/components_simple/RequiredFieldsLegend'
 import {ButtonWithLoader} from '@/components_simple/buttons/Buttons'
 import {ScTextInput} from '@/components_simple/formInputs/ScTextInput'
 import {useApiClients} from '@/context/ApiClientsContext'
@@ -54,7 +53,6 @@ export const CompanySearchByName = ({children}: Props) => {
     <>
       <Animate>
         <div id="CompanyByName">
-          <RequiredFieldsLegend />
           <form onSubmit={handleSubmit(search)}>
             <div className="mb-4">
               <ScTextInput
