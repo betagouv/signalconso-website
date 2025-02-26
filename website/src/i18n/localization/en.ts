@@ -880,7 +880,6 @@ export const en = {
     referenceNumberDesc:
       'To make it easier to process your report, please provide a reference number. This could be a ticket number, booking code, invoice number, agreement number, customer number, or other reference.',
     referenceNumberPlaceholder: 'ex : ZYX987654321',
-    genderField: 'Gender',
     value: 'Value',
     invite: 'Invite',
     activate_all: 'Activate all',
@@ -990,10 +989,6 @@ export const en = {
       12: 'Déc',
     },
     inMonth: 'in',
-    gender: {
-      Male: 'Mr.',
-      Female: 'Ms.',
-    },
     detailGraphDataAvailable: 'detailed graph data available below',
     seeRawGraphData: 'See raw graph data',
     fold: 'hide',

@@ -884,7 +884,6 @@ export const fr = {
     referenceNumberDesc:
       'Afin de faciliter le traitement de votre signalement, précisez la référence de votre dossier. Ex : numéro de billet, ou de réservation, de facture, de contrat, de client, ...',
     referenceNumberPlaceholder: 'ex : ZYX987654321',
-    genderField: 'Civilité',
     value: 'Value',
     invite: 'Inviter',
     activate_all: 'Tout Activer',
@@ -994,10 +993,6 @@ export const fr = {
       12: 'Déc',
     },
     inMonth: 'en',
-    gender: {
-      Male: 'M.',
-      Female: 'Mme',
-    },
     detailGraphDataAvailable: 'données détaillées du graphique disponibles ci-après',
     seeRawGraphData: 'Voir les données brutes du graphique',
     fold: 'replier',

@@ -15,7 +15,6 @@ class Fixture {
     email: 'mat.fraser@signalconso.fr',
     phone: '0987654321',
     referenceNumber: 'X8910H4LLIUK',
-    gender: undefined,
   }
 }
 

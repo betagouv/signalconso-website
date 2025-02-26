@@ -18,7 +18,6 @@ import {StandardSubcategory} from 'shared/anomalies/Anomaly'
 import {ScAlert} from '../../../components_simple/ScAlert'
 import {ScRadioButtons} from '../../../components_simple/formInputs/ScRadioButtons'
 import {getApiErrorId, useToastError} from '../../../hooks/useToastError'
-import {Gender, genders} from '../../../model/Report'
 import {PartialReport, useReportFlowContext} from '../ReportFlowContext'
 import {ConsumerAnonymousInformation} from './ConsumerAnonymousInformation'
 import {ConsumerValidationDialog2, consumerValidationModal} from './ConsumerValidationDialog'
@@ -30,7 +29,6 @@ interface ConsumerForm {
   contactAgreement?: boolean
   phone?: string
   referenceNumber?: string
-  gender?: Gender
 }
 
 export const Consumer = ({stepNavigation}: {stepNavigation: StepNavigation}) => {
@@ -172,15 +170,6 @@ export const ConsumerInner = ({
     saveChange(step4, true)
   }
 
-  const gendersOptions = genders
-    .map(gender => {
-      return {
-        label: m.gender[gender],
-        value: gender as 'Male' | 'Female' | undefined,
-      }
-    })
-    .concat({label: m.unknownGender, value: undefined})
-
   return (
     <>
       <div>
@@ -189,21 +178,6 @@ export const ConsumerInner = ({
           {draft.step1.employeeConsumer && (
             <ScAlert type="info" dangerouslySetInnerHTML={{__html: `<p>${m.consumerIsEmployee}</p>`}} />
           )}
-          <Controller
-            defaultValue={consumer?.gender}
-            control={_form.control}
-            render={({field}) => (
-              <ScRadioButtons
-                {...field}
-                required
-                orientation={isSmOrMore ? 'horizontal' : 'vertical'}
-                options={gendersOptions}
-                title={<WithIcon icon="ri-user-smile-line">{m.genderField}</WithIcon>}
-                titleSoberStyle
-              />
-            )}
-            name={'gender'}
-          />
           <div className="flex gap-4 mb-4">
             <div className="w-1/2">
               <ScTextInput

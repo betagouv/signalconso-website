@@ -29,7 +29,7 @@ export const toApi = (draft: Report, metadata: ApiReport['metadata']): ApiReport
   return {
     // We don't use the rest syntax here ("..."),
     // we prefer to be sure to fill each field explicitly
-    gender: consumer.gender,
+    gender: undefined,
     category: getCategoryOverride(draft) ?? draft.step0.category,
     subcategories: subcategories.map(_ => _.subcategory),
     details: detailsParsed,

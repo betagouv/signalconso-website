@@ -193,7 +193,6 @@ function RenderEachStep({
             <li className="p-0 flex gap-2">
               <div className="flex gap-2">
                 <i className="ri-account-box-line text-gray-400" />
-                {consumer.gender ? m.gender[consumer.gender] + ' ' : ''}
                 {consumer.firstName} {consumer.lastName}
               </div>
             </li>

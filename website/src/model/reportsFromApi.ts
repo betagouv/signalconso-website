@@ -2,7 +2,7 @@ import {ReportTag} from 'shared/anomalies/Anomaly'
 import {AppLang} from '../i18n/localization/AppLangs'
 import {Address, ApiAddress} from './Address'
 import {DetailInputValue} from './CreatedReport'
-import {Gender, TrainDraft} from './Report'
+import {TrainDraft} from './Report'
 
 export interface ApiInfluencer {
   socialNetwork?: string
@@ -15,7 +15,7 @@ export interface ApiInfluencer {
 // We don't use the optional field syntax here ("?:")
 // We want to be sure to send every field to the API
 export interface ApiReport {
-  gender: Gender | undefined
+  gender: undefined // we do not send gender anymore
   category: string
   subcategories: string[]
   details: DetailInputValue[]
@@ -87,5 +87,5 @@ export interface ApiCreatedReport {
   consumerPhone: string | null
   employeeConsumer: boolean
   reponseconsoCode: string[]
-  gender: Gender | null
+  gender: 'Male' | 'Female' | null
 }
