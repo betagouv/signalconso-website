@@ -16,7 +16,6 @@ test('test reports', async ({page}) => {
   await page.getByLabel('Description').click()
   await page.getByLabel('Description').fill('description')
   await page.getByRole('button', {name: 'Suivant'}).click()
-  await page.locator('label').filter({hasText: 'M.'}).click()
   await page.getByLabel('Prénom').click()
   await page.getByLabel('Prénom').fill('test')
   await page.getByLabel('Prénom').press('Tab')
