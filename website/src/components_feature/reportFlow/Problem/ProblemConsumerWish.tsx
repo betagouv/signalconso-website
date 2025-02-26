@@ -26,7 +26,7 @@ export function ProblemConsumerWish({children}: {children: ReactNode}) {
   const hasReponseConsoTag = getTags(r).includes('ReponseConso')
   const isTransmittable = isTransmittableToProBeforePickingConsumerWish(r)
   const companyKind = getCompanyKind(r)
-  const predeterminedValue = !isTransmittable || companyKind === 'SOCIAL' ? 'companyImprovement' : undefined
+  const predeterminedValue = !isTransmittable || companyKind === 'SOCIAL' ? 'reportSomething' : undefined
   const skipQuestion = useApplyPredeterminedValue({predeterminedValue, setConsumerWish})
   const isDone = !!r.step1.consumerWish
   return (
@@ -46,7 +46,7 @@ export function ProblemConsumerWish({children}: {children: ReactNode}) {
               {
                 title: m.problemContractualDisputeFormNo,
                 description: m.problemContractualDisputeFormNoExample,
-                value: 'companyImprovement',
+                value: 'reportSomething',
               },
               ...(hasReponseConsoTag
                 ? [

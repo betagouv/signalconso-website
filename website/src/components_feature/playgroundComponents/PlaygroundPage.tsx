@@ -178,7 +178,7 @@ const Playground = () => {
                   vendor: 'Boutique Banania',
                 },
               },
-              step1: {subcategoriesIndexes: [0], consumerWish: 'companyImprovement', employeeConsumer: false},
+              step1: {subcategoriesIndexes: [0], consumerWish: 'reportSomething', employeeConsumer: false},
             }}
             onClear={console.log}
             stepNavigation={dummyStepNavigation}
@@ -200,7 +200,7 @@ const Playground = () => {
                 },
                 barcodeProduct,
               },
-              step1: {subcategoriesIndexes: [0], consumerWish: 'companyImprovement', employeeConsumer: false},
+              step1: {subcategoriesIndexes: [0], consumerWish: 'reportSomething', employeeConsumer: false},
             }}
             onClear={console.log}
             stepNavigation={dummyStepNavigation}

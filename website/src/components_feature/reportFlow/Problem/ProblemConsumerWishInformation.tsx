@@ -19,14 +19,7 @@ function pickText(m: I18nContextProps['m'], consumerWish: ConsumerWish) {
   // TODO add this service client warning ONLY if tag Telecom present (they wanted it)
   const reminderMessage = 1 + 1 === 3 ? <p className="mb-4">{m.reminderBeforeReporting}</p> : null
   switch (consumerWish) {
-    case 'fixContractualDispute':
-      return (
-        <>
-          {reminderMessage}
-          <p className="mb-4" dangerouslySetInnerHTML={{__html: m.consumerWishFixContractualDispute}} />
-        </>
-      )
-    case 'companyImprovement':
+    case 'reportSomething':
       return (
         <>
           {reminderMessage}
@@ -40,8 +33,7 @@ function pickText(m: I18nContextProps['m'], consumerWish: ConsumerWish) {
 
 function pickSecondText(m: I18nContextProps['m'], consumerWish: ConsumerWish) {
   switch (consumerWish) {
-    case 'fixContractualDispute':
-    case 'companyImprovement':
+    case 'reportSomething':
       return <p className="mb-0">{m.consumerWishInvestigationIsPossible}</p>
     case 'getAnswer':
       return null

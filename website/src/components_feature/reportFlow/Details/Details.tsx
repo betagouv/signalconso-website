@@ -179,17 +179,13 @@ export const DetailsInner = ({
               ['WILL_BE_TRANSMITTED']: (
                 <>
                   <p className="mb-0" dangerouslySetInnerHTML={{__html: m.detailsTextAreaWillBeTransmitted}} />
-                  {consumerWish !== 'fixContractualDispute' && (
-                    <p className="mb-0" dangerouslySetInnerHTML={{__html: m.detailsTextAreaTransmittableAnonymous}} />
-                  )}
+                  <p className="mb-0" dangerouslySetInnerHTML={{__html: m.detailsTextAreaTransmittableAnonymous}} />
                 </>
               ),
               ['MAY_BE_TRANSMITTED']: (
                 <>
                   <p className="mb-0" dangerouslySetInnerHTML={{__html: m.detailsTextAreaMayBeTransmitted}} />
-                  {consumerWish !== 'fixContractualDispute' && (
-                    <p className="mb-0" dangerouslySetInnerHTML={{__html: m.detailsTextAreaTransmittableAnonymous}} />
-                  )}
+                  <p className="mb-0" dangerouslySetInnerHTML={{__html: m.detailsTextAreaTransmittableAnonymous}} />
                 </>
               ),
               ['CANNOT_BE_TRANSMITTED']: (
@@ -230,7 +226,7 @@ export const DetailsInner = ({
               <FriendlyHelpText>
                 <p className="mb-0" dangerouslySetInnerHTML={{__html: attachmentDesc ?? m.attachmentsDesc2}} />
               </FriendlyHelpText>
-              {consumerWish !== 'fixContractualDispute' && <p dangerouslySetInnerHTML={{__html: m.attachmentsDescAnonymous}} />}
+              <p dangerouslySetInnerHTML={{__html: m.attachmentsDescAnonymous}} />
             </>
           ) : (
             <FriendlyHelpText>
