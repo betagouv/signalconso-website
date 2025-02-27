@@ -221,7 +221,7 @@ export const DetailsInner = ({
       <Animate autoScrollTo={false}>
         <div>
           <h4 className="mt-4">{fileLabel ?? m.attachments}</h4>
-          {transmissionStatus !== 'NOT_TRANSMITTABLE' ? (
+          {transmissionStatus !== 'NOT_TRANSMITTABLE' && transmissionStatus !== 'CANNOT_BE_TRANSMITTED' ? (
             <>
               <FriendlyHelpText>
                 <p className="mb-0" dangerouslySetInnerHTML={{__html: attachmentDesc ?? m.attachmentsDesc2}} />

@@ -949,7 +949,7 @@ export const fr = {
     step_confirm: `Confirmation`,
     timeFromTo: (from: number, to: number) => `De ${from}h à ${to}h`,
     detailsTextAreaWillBeTransmitted: `Les informations ci-dessous seront <b>lues par l'entreprise</b>.`,
-    detailsTextAreaMayBeTransmitted: `Si l'entreprise est identifiée par SignalConso, <strong>les informations ci-dessous lui seront aussi transmises</strong>.`,
+    detailsTextAreaMayBeTransmitted: `Si l'entreprise est identifiée par SignalConso, <strong>les informations ci-dessous lui seront transmises</strong>.`,
     detailsTextAreaCannotBeTransmitted: `L'entreprise étant située à l'étranger, les informations ci-dessous ne lui seront pas transmises et seront lues <b>uniquement par la répression des fraudes.</b>`,
     detailsTextAreaTransmittableAnonymous: ` Si vous ne souhaitez pas que l'entreprise connaisse votre identité, <b>ne citez rien de personnel</b>.`,
     detailsTextAreaNotTransmittable: `Les informations ci-dessous seront lues <b>uniquement par la répression des fraudes.</b>`,
