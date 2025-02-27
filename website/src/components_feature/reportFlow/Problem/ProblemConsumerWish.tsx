@@ -44,15 +44,15 @@ export function ProblemConsumerWish({children}: {children: ReactNode}) {
             value={r.step1.consumerWish}
             options={[
               {
-                title: m.problemContractualDisputeFormNo,
-                description: m.problemContractualDisputeFormNoExample,
+                title: m.reportAProblem,
+                description: m.reportAProblemExample,
                 value: 'reportSomething',
               },
               ...(hasReponseConsoTag
                 ? [
                     {
-                      title: m.problemContractualDisputeFormReponseConso,
-                      description: m.problemContractualDisputeFormReponseConsoExample,
+                      title: m.askQuestionToReponseConso,
+                      description: m.askQuestionToReponseConsoExample,
                       value: 'getAnswer' as const,
                     },
                   ]

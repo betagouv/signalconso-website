@@ -88,8 +88,8 @@ describe('Problem', () => {
       throw new Error('Contractual dispute form did not appear')
     }
     const btnText = fnSwitch(value, {
-      reportSomething: app.m.problemContractualDisputeFormNo,
-      getAnswer: app.m.problemContractualDisputeFormReponseConso,
+      reportSomething: app.m.reportAProblem,
+      getAnswer: app.m.askQuestionToReponseConso,
     })
     fireEvent.click(radios.find(_ => _.textContent?.includes(btnText))!)
   }

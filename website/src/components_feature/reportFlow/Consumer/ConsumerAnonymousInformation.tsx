@@ -6,13 +6,11 @@ export function ConsumerAnonymousInformation() {
   const {m} = useI18n()
   return (
     <Animate>
-      <div>
-        <Alert
-          severity="warning"
-          title={m.youStayAnonymous}
-          description={<p className="mb-0" title="" dangerouslySetInnerHTML={{__html: m.consumerAnonymousInformation}} />}
-        />
-      </div>
+      <Alert
+        severity="warning"
+        title={m.youStayAnonymous}
+        description={<p className="mb-0" title="" dangerouslySetInnerHTML={{__html: m.consumerAnonymousInformation}} />}
+      />
     </Animate>
   )
 }
