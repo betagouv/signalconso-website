@@ -1238,7 +1238,8 @@ contacter directement.`,
       Pendant l'enquête, si les enquêteurs ont besoin de révéler votre identité à la justice ou à votre employeur, ils vous demanderont l'autorisation avant.
       <b>Vous pourrez refuser.</b>
     `,
-    consumerAnonymousInformation: `Vous restez anonyme. </br> Attention, votre problème particulier ne pourra pas être résolu ! Pas de remboursement, de renvoi d'un colis, d'annulation d'un achat ou service…`,
+    youStayAnonymous: `Vous restez anonyme`,
+    consumerAnonymousInformation: `Attention, votre problème particulier ne pourra pas être résolu ! Pas de remboursement, de renvoi d'un colis, d'annulation d'un achat ou service…`,
     consumerShareInformation: `Vous partagez vos coordonnées avec l’entreprise. Pour mémoire, vous avez choisi de signaler le problème afin que l’entreprise s’améliore : votre problème particulier ne pourra pas être résolu. Pas de remboursement, de réponse personnalisée…`,
     confirmationTitle: `Récapitulatif de votre signalement`,
     confirmationAlertTransmittable: `Vérifiez votre signalement avant de l’envoyer à l'entreprise et à la répression des fraudes.`,
