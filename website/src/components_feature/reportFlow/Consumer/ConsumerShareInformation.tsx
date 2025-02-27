@@ -1,16 +1,16 @@
-import {useI18n} from '@/i18n/I18n'
 import {Animate} from '@/components_simple/Animate'
-import {alertWarningBackgroundColor, alertWarningTextColor} from '@/components_simple/ScAlert'
+import {useI18n} from '@/i18n/I18n'
 
+import Alert from '@codegouvfr/react-dsfr/Alert'
 export function ConsumerShareInformation() {
   const {m} = useI18n()
   return (
     <Animate>
-      <div>
-        <div className="py-4 px-8" style={{background: alertWarningBackgroundColor, color: alertWarningTextColor}}>
-          <p className="mb-0">{m.consumerShareInformation}</p>
-        </div>
-      </div>
+      <Alert
+        severity="info"
+        title={m.companyWillKnowYourIdentity}
+        description={<p className="mb-0" dangerouslySetInnerHTML={{__html: m.consumerShareInformation}} />}
+      />
     </Animate>
   )
 }

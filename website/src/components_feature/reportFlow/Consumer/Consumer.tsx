@@ -291,8 +291,8 @@ export const ConsumerInner = ({
                   />
                 )}
               />
-              {watchContactAgreement === false && <ConsumerAnonymousInformation />}
               {watchContactAgreement === true && <ConsumerShareInformation />}
+              {watchContactAgreement === false && <ConsumerAnonymousInformation />}
             </>
           )}
         </div>
