@@ -945,7 +945,7 @@ export const en = {
     step_confirm: `Confirmation`,
     timeFromTo: (from: number, to: number) => `From ${from}h to ${to}h`,
     detailsTextAreaWillBeTransmitted: `The informations you write below will be <b>read by the company</b>. It may also be viewed by Fraud Control.`,
-    detailsTextAreaMayBeTransmitted: `As you have not been able to identify the reported company, your report can only be forwarded to them if it is identifiable by Signal Conso and located in France. Fraud Control will be able to consult the information below.`,
+    detailsTextAreaMayBeTransmitted: `If the company is identified by SignalConso, <strong>the information below will be transmitted to them</strong>.`,
     detailsTextAreaCannotBeTransmitted: `As the company is located abroad, the information below will not be transmitted to it and will be read <b>only by Fraud Control.</b>.`,
     detailsTextAreaTransmittableAnonymous: ` If you do not want the company to know your identity, <b>do not mention anything personal</b>.`,
     detailsTextAreaNotTransmittable: `The informations you write below will be read <b>by Fraud Control only.</b>`,
