@@ -23,7 +23,9 @@ export function ProblemConsumerWish({children}: {children: ReactNode}) {
   if (!hasStep0(r) || !hasSubcategoryIndexes(r) || !hasEmployeeConsumer(r)) {
     throw new Error(`Report is not ready for asking consumer wish`)
   }
-  const hasReponseConsoTag = getTags(r).includes('ReponseConso')
+  const tags = getTags(r)
+  const hasTelecomTag = tags.includes('Telecom')
+  const hasReponseConsoTag = tags.includes('ReponseConso')
   const isTransmittable = isTransmittableToProBeforePickingConsumerWish(r)
   const companyKind = getCompanyKind(r)
   const predeterminedValue = !isTransmittable || companyKind === 'SOCIAL' || !hasReponseConsoTag ? 'reportSomething' : undefined
@@ -31,16 +33,6 @@ export function ProblemConsumerWish({children}: {children: ReactNode}) {
   const isDone = !!r.step1.consumerWish
   return (
     <>
-      {!isTransmittable && (
-        <FriendlyHelpText>
-          <p
-            className="mb-0"
-            dangerouslySetInnerHTML={{
-              __html: r.step1.employeeConsumer ? m.employeeConsumerInformation : m.notTransmittableToProConsumerInformation,
-            }}
-          />
-        </FriendlyHelpText>
-      )}
       {!skipQuestion && (
         <>
           <ProblemSelect
@@ -64,10 +56,21 @@ export function ProblemConsumerWish({children}: {children: ReactNode}) {
               setConsumerWish(consumerWish)
             }}
           />
-          {r.step1.consumerWish && <ProblemConsumerWishInformation consumerWish={r.step1.consumerWish} />}
+          {r.step1.consumerWish && <ProblemConsumerWishInformation consumerWish={r.step1.consumerWish} {...{hasTelecomTag}} />}
         </>
       )}
-      {predeterminedValue && <ProblemConsumerWishInformation consumerWish={predeterminedValue} />}
+      {!isTransmittable ? (
+        <FriendlyHelpText>
+          <p
+            className="mb-0"
+            dangerouslySetInnerHTML={{
+              __html: r.step1.employeeConsumer ? m.employeeConsumerInformation : m.notTransmittableToProConsumerInformation,
+            }}
+          />
+        </FriendlyHelpText>
+      ) : predeterminedValue ? (
+        <ProblemConsumerWishInformation consumerWish={predeterminedValue} {...{hasTelecomTag}} />
+      ) : null}
       {isDone && children}
     </>
   )

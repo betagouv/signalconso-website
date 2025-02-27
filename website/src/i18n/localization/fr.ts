@@ -1010,7 +1010,7 @@ export const fr = {
     askQuestionToReponseConso: `Poser une question à la répression des fraudes`,
     askQuestionToReponseConsoExample: `Exemple : Quelle est la durée de validité du devis qu'on m'a donné ? Un magasin peut-il vendre des produits périmés ? ...`,
     consumerWishFixContractualDispute: `Votre signalement <b>sera transmis à l'entreprise</b>. Vous aurez la possibilité de rester anonyme.`,
-    reminderBeforeReporting: 'Avant de faire un signalement, pensez à vous rapprocher du service client de l’entreprise.',
+    reminderToContactSav: 'Avant de faire un signalement, pensez à vous rapprocher du service client de l’entreprise !',
     consumerWishGetAnswer: `Un agent vous répondra dans les plus brefs délais. Votre signalement ne sera <strong>pas transmis à l'entreprise.</strong>`,
     consumerWishInvestigationIsPossible:
       "La répression des fraudes pourra décider de mener une enquête sur l'entreprise grâce à vos informations.",
@@ -1084,15 +1084,6 @@ contacter directement.`,
     cantIdentifyCompany: `Votre code postal nous servira à rediriger votre signalement vers le bon service.`,
     cantIdentifyLocationCompany: `Ces informations nous serviront à rediriger votre signalement vers le bon service, et à le rapprocher de ceux que vos voisins pourraient également avoir déposés.`,
     companyIdentityLabel: `Numéro SIRET, SIREN, ou TVA intracommunautaire de l'entreprise`,
-    cannotFindWarning: {
-      moreEfficient: `SignalConso est plus efficace lorsque vous identifiez l'entreprise avec laquelle vous avez un différend.`,
-      contactCompany: `Cela nous permet de la contacter directement pour qu'elle puisse vous répondre rapidement.`,
-      youCanUse: `Si vous avez besoin d'un outil de recherche plus avancé, vous pouvez utiliser`,
-      annuaireDesEntreprises: `L'Annuaire des Entreprises`,
-      youCanContinue: `Si malgré vos efforts, vous ne parvenez pas à identifier l'entreprise, vous pouvez tout de même poursuivre votre signalement. Il sera transmis aux agents de la répression des fraudes, qui feront de leur mieux pour le traiter. Toutefois, les chances de succès seront significativement réduites sans l'identification précise de l'entreprise.`,
-      iTryHarder: `Je vais chercher un peu plus`,
-      iReallyCant: `Je ne peux vraiment pas identifier l'entreprise`,
-    },
     reportAbroad1:
       "La répression des fraudes ne peut pas contacter une entreprise qui est à l'étranger. <strong>Votre signalement aura donc très peu d'effet.</strong>",
     reportAbroad1NonTransmittable:
