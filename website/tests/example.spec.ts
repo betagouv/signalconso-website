@@ -6,7 +6,6 @@ test('test reports', async ({page}) => {
   await page.getByText('Sous category pour tester les companyKindPour tester chaque type de CompanyKind').click()
   await page.getByText('Sous cat avec companyKind WEBSITE').click()
   await page.locator('label').filter({hasText: "Non, je n'y travaille pas"}).click()
-  await page.getByText('Résoudre mon problème').click()
   await page.getByRole('button', {name: 'Suivant'}).click()
   await page.getByPlaceholder('Exemple: https://www.site.fr').click()
   await page.getByPlaceholder('Exemple: https://www.site.fr').fill('fnac.com')
