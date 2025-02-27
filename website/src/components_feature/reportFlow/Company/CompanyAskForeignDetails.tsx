@@ -39,7 +39,7 @@ export const CompanyAskForeignDetails = ({onSubmit, reportTransmittableToPro}: P
   return (
     <Animate>
       <div id="CompanyAskForeignDetails">
-        <div className="mb-8">
+        <div className="mb-4">
           <ScAlert type="warning">
             <p
               className="mb-0"
