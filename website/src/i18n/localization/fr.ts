@@ -1009,9 +1009,8 @@ export const fr = {
     reportAProblemExample: `Afin de résoudre votre problème, ou que l'entreprise s'améliore`,
     askQuestionToReponseConso: `Poser une question à la répression des fraudes`,
     askQuestionToReponseConsoExample: `Exemple : Quelle est la durée de validité du devis qu'on m'a donné ? Un magasin peut-il vendre des produits périmés ? ...`,
-    consumerWishFixContractualDispute: `Votre signalement sera transmis à l'entreprise. Vous aurez la possibilité de rester anonyme.`,
+    consumerWishFixContractualDispute: `Votre signalement <b>sera transmis à l'entreprise</b>. Vous aurez la possibilité de rester anonyme.`,
     reminderBeforeReporting: 'Avant de faire un signalement, pensez à vous rapprocher du service client de l’entreprise.',
-    consumerWishCompanyImprovement: `Votre signalement sera transmis à l'entreprise. Vous aurez la possibilité de rester anonyme.`,
     consumerWishGetAnswer: `Un agent vous répondra dans les plus brefs délais. Votre signalement ne sera <strong>pas transmis à l'entreprise.</strong>`,
     consumerWishInvestigationIsPossible:
       "La répression des fraudes pourra décider de mener une enquête sur l'entreprise grâce à vos informations.",

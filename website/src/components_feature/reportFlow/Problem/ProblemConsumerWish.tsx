@@ -26,14 +26,19 @@ export function ProblemConsumerWish({children}: {children: ReactNode}) {
   const hasReponseConsoTag = getTags(r).includes('ReponseConso')
   const isTransmittable = isTransmittableToProBeforePickingConsumerWish(r)
   const companyKind = getCompanyKind(r)
-  const predeterminedValue = !isTransmittable || companyKind === 'SOCIAL' ? 'reportSomething' : undefined
+  const predeterminedValue = !isTransmittable || companyKind === 'SOCIAL' || !hasReponseConsoTag ? 'reportSomething' : undefined
   const skipQuestion = useApplyPredeterminedValue({predeterminedValue, setConsumerWish})
   const isDone = !!r.step1.consumerWish
   return (
     <>
-      {skipQuestion && !r.step1?.employeeConsumer && (
+      {!isTransmittable && (
         <FriendlyHelpText>
-          <p className="mb-0" dangerouslySetInnerHTML={{__html: m.notTransmittableToProConsumerInformation}} />
+          <p
+            className="mb-0"
+            dangerouslySetInnerHTML={{
+              __html: r.step1.employeeConsumer ? m.employeeConsumerInformation : m.notTransmittableToProConsumerInformation,
+            }}
+          />
         </FriendlyHelpText>
       )}
       {!skipQuestion && (
@@ -48,15 +53,11 @@ export function ProblemConsumerWish({children}: {children: ReactNode}) {
                 description: m.reportAProblemExample,
                 value: 'reportSomething',
               },
-              ...(hasReponseConsoTag
-                ? [
-                    {
-                      title: m.askQuestionToReponseConso,
-                      description: m.askQuestionToReponseConsoExample,
-                      value: 'getAnswer' as const,
-                    },
-                  ]
-                : []),
+              {
+                title: m.askQuestionToReponseConso,
+                description: m.askQuestionToReponseConsoExample,
+                value: 'getAnswer' as const,
+              },
             ]}
             onChange={(consumerWish: ConsumerWish) => {
               _analytic.trackEvent(EventCategories.report, ReportEventActions.consumerWish, consumerWish)
@@ -66,6 +67,7 @@ export function ProblemConsumerWish({children}: {children: ReactNode}) {
           {r.step1.consumerWish && <ProblemConsumerWishInformation consumerWish={r.step1.consumerWish} />}
         </>
       )}
+      {predeterminedValue && <ProblemConsumerWishInformation consumerWish={predeterminedValue} />}
       {isDone && children}
     </>
   )
