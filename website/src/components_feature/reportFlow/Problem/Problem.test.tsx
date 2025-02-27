@@ -184,7 +184,7 @@ describe('Problem', () => {
     expect(() => clickCompanyKind(app, 'internet')).toThrow()
   })
 
-  it('should display contractual dispute warning and go to the next step', () => {
+  it('should not ask reponseconso choice and should go to the next step', () => {
     let report: undefined | PartialReport
     const app = render(
       <AccessReportFlow
@@ -199,7 +199,6 @@ describe('Problem', () => {
     fireEvent.click(app.getByText(`Sous category pour tester les companyKind`))
     fireEvent.click(app.getByText(`Sous cat avec companyKind WEBSITE`))
     clickEmployeeConsumer(app, 'no')
-    clickContractualDispute(app, 'reportSomething')
     clickBtnSubmit(app)
   })
 
