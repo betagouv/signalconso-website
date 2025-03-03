@@ -5,11 +5,11 @@ import {ConsumerEmailResult} from '@/model/ConsumerEmailValidation'
 import {Report} from '@/model/Report'
 import {ApiCreatedReport, ApiReport} from '@/model/reportsFromApi'
 import {GenericAbortSignal} from 'axios'
-import {SocialNetwork, Subcategory} from 'shared/anomalies/Anomaly'
+import {ReportTag, SocialNetwork, Subcategory} from 'shared/anomalies/Anomaly'
 import {ResponseConsumerReview, ResponseConsumerReviewExists} from '../core/Events'
 import {AppLang} from '../i18n/localization/AppLangs'
 import {BarcodeProduct} from '../model/BarcodeProduct'
-import {WebsiteCompanySearchResult} from '../model/Company'
+import {CompanySearchResult, WebsiteCompanySearchResult} from '../model/Company'
 import {Country} from '../model/Country'
 import {CreatedReport} from '../model/CreatedReport'
 import {FileOrigin, UploadedFile} from '../model/UploadedFile'
@@ -144,4 +144,19 @@ export class SignalConsoApiClient {
   engagementReviewExists = (reportId: string) => {
     return this.client.get<ResponseConsumerReviewExists>(`/reports/${reportId}/engagement/review/exists`)
   }
+
+  isReportReassignable = (reportId: string) => {
+    return this.client.get<ReassignableReport>(`/reports/${reportId}/reassign`)
+  }
+
+  reassignReport = (reportId: string, company: CompanySearchResult, metadata: ApiReport['metadata']) => {
+    return this.client.post<CreatedReport>(`/reports/${reportId}/reassign`, {body: {company, metadata}})
+  }
+}
+
+export interface ReassignableReport {
+  tags: ReportTag[]
+  creationDate: string
+  companyName?: string
+  daysToAnswer: number
 }
