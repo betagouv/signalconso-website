@@ -21,6 +21,7 @@ test('test reports', async ({page}) => {
   await page.getByLabel('Nom', {exact: true}).fill('test')
   await page.getByLabel('Nom', {exact: true}).press('Tab')
   await page.getByLabel('Email').fill('s.sedoud.betagouv@gmail.com')
+  await page.getByLabel('Je ne partage pas').click()
   await page.getByRole('button', {name: 'Suivant'}).click()
   await page.getByRole('button', {name: 'Envoyer le signalement'}).click()
 })
