@@ -4,7 +4,8 @@ import {NextStepButton} from '@/components_feature/reportFlow/reportFlowStepper/
 import {StepNavigation} from '@/components_feature/reportFlow/reportFlowStepper/ReportFlowStepper'
 import {ScTextInput} from '@/components_simple/formInputs/ScTextInput'
 import {useApiClients} from '@/context/ApiClientsContext'
-import {getSubcategories, getTransmissionStatus, hasStep0, hasStep1Full, hasStep2} from '@/feature/reportUtils'
+import {getSubcategories, hasStep0, hasStep1Full, hasStep2} from '@/feature/reportUtils'
+import {isTransmittable} from '@/feature/transmissionStatus'
 import {useBreakpoints} from '@/hooks/useBreakpoints'
 import {useI18n} from '@/i18n/I18n'
 import {AppLangs} from '@/i18n/localization/AppLangs'
@@ -139,9 +140,8 @@ export const ConsumerInner = ({
     ),
   )?.customizedClientReferenceInput
 
-  const transmissionStatus = getTransmissionStatus(draft)
-  const isTransmittable = transmissionStatus === 'WILL_BE_TRANSMITTED' || transmissionStatus === 'MAY_BE_TRANSMITTED'
-  const showContactAgreement = isTransmittable
+  const transmittable = isTransmittable(draft)
+  const showContactAgreement = transmittable
 
   const getErrors = (name: keyof ConsumerForm): {error: boolean; helperText?: string} => ({
     error: !!_form.formState.errors[name],
@@ -153,7 +153,7 @@ export const ConsumerInner = ({
     return {
       consumer: consumer,
       contactAgreement: (() => {
-        if (!isTransmittable) return false
+        if (!transmittable) return false
         if (contactAgreement === undefined) {
           throw new Error('contactAgreement should be defined at this stage')
         }

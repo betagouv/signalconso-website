@@ -60,8 +60,6 @@ export type DetailInputValues2 = {
   [key: string]: string | string[]
 }
 
-export type TransmissionStatus = 'NOT_TRANSMITTABLE' | 'WILL_BE_TRANSMITTED' | 'MAY_BE_TRANSMITTED' | 'CANNOT_BE_TRANSMITTED'
-
 // ex:
 // ReportWithPickInStep1<"subcategoriesIndexes" | "employeeConsumer">
 // = a report which already has these subfields from step1

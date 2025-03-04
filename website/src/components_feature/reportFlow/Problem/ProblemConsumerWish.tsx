@@ -1,14 +1,8 @@
 import {useAnalyticContext} from '@/analytic/AnalyticContext'
 import {EventCategories, ReportEventActions} from '@/analytic/analytic'
 import {FriendlyHelpText} from '@/components_simple/FriendlyHelpText'
-import {
-  getCompanyKind,
-  getTags,
-  hasEmployeeConsumer,
-  hasStep0,
-  hasSubcategoryIndexes,
-  isTransmittableToProBeforePickingConsumerWish,
-} from '@/feature/reportUtils'
+import {getCompanyKind, getTags, hasEmployeeConsumer, hasStep0, hasSubcategoryIndexes} from '@/feature/reportUtils'
+import {getEarlyTransmissionStatus} from '@/feature/transmissionStatus'
 import {useI18n} from '@/i18n/I18n'
 import {ConsumerWish} from '@/model/Report'
 import {ReactNode, useEffect} from 'react'
@@ -26,7 +20,8 @@ export function ProblemConsumerWish({children}: {children: ReactNode}) {
   const tags = getTags(r)
   const hasTelecomTag = tags.includes('Telecom')
   const hasReponseConsoTag = tags.includes('ReponseConso')
-  const isTransmittable = isTransmittableToProBeforePickingConsumerWish(r)
+  const transmissionStatus = getEarlyTransmissionStatus(r)
+  const isTransmittable = transmissionStatus.kind !== 'NOT_TRANSMITTABLE'
   const companyKind = getCompanyKind(r)
   const predeterminedValue = !isTransmittable || companyKind === 'SOCIAL' || !hasReponseConsoTag ? 'reportSomething' : undefined
   const skipQuestion = useApplyPredeterminedValue({predeterminedValue, setConsumerWish})
@@ -59,18 +54,33 @@ export function ProblemConsumerWish({children}: {children: ReactNode}) {
           {r.step1.consumerWish && <ProblemConsumerWishInformation consumerWish={r.step1.consumerWish} {...{hasTelecomTag}} />}
         </>
       )}
-      {!isTransmittable ? (
-        <FriendlyHelpText>
-          <p
-            className="mb-0"
-            dangerouslySetInnerHTML={{
-              __html: r.step1.employeeConsumer ? m.employeeConsumerInformation : m.notTransmittableToProConsumerInformation,
-            }}
-          />
-        </FriendlyHelpText>
-      ) : predeterminedValue ? (
-        <ProblemConsumerWishInformation consumerWish={predeterminedValue} {...{hasTelecomTag}} />
-      ) : null}
+      {(() => {
+        const {kind} = transmissionStatus
+        switch (kind) {
+          case 'NOT_TRANSMITTABLE':
+            const {reason} = transmissionStatus
+            switch (reason) {
+              case 'employeeConsumer':
+                return (
+                  <FriendlyHelpText>
+                    <p className="mb-0" dangerouslySetInnerHTML={{__html: m.employeeConsumerInformation}} />
+                  </FriendlyHelpText>
+                )
+              default:
+                return (
+                  <FriendlyHelpText>
+                    <p className="mb-0" dangerouslySetInnerHTML={{__html: m.notTransmittableToProConsumerInformation}} />
+                  </FriendlyHelpText>
+                )
+            }
+          case 'SO_FAR_SO_GOOD':
+            return predeterminedValue ? (
+              <ProblemConsumerWishInformation consumerWish={predeterminedValue} {...{hasTelecomTag}} />
+            ) : null
+          default:
+            return kind satisfies never
+        }
+      })()}
       {isDone && children}
     </>
   )
