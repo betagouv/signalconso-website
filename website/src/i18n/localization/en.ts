@@ -127,6 +127,10 @@ export const en = {
         title: 'Share your review - SignalConso',
         description: '',
       },
+      reattribuer: {
+        title: 'Reattribute your report - SignalConso',
+        description: '',
+      },
       avisEngagement: {
         title: 'Share your review on commitment - SignalConso',
         description: '',
@@ -1351,6 +1355,15 @@ export const en = {
       paidWithCreditCard: `Did you pay with your credit card?`,
       chargeBack: `Through the charge-back procedure, you may be eligible for a refund following an online purchase:`,
       emailForErrorInReport: `In case of an error in your report, send an email to `,
+    },
+    reattribute: {
+      title: 'Reassign your report',
+      identify: 'Identify the new company',
+      notReattributable: 'This report does not exist or is not reassignable',
+      youHave: 'You have',
+      toReattribute: 'to reassign your report.',
+      companyIndicated: 'has indicated that your report from',
+      badAttribution: 'was incorrectly assigned.',
     },
     externalLink: 'External link',
     specialLegislation: {

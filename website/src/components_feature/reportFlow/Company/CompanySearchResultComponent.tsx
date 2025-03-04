@@ -13,10 +13,17 @@ import {useToastError} from '../../../hooks/useToastError'
 import {CompanySearchResult, isGovernmentCompany} from '../../../model/Company'
 import {PartialReport} from '../ReportFlowContext'
 import {NoSearchResult} from './lib/NoSearchResult'
+import {ReportTag} from 'shared/anomalies/Anomaly'
 
 interface Props {
   companies: CompanySearchResult[]
   report: PartialReport & Pick<Report, 'step0' | 'step1'>
+  onSubmit: (selected: CompanySearchResult, vendor?: string) => void
+}
+
+interface CompanySearchResultComponentWithTagsProps {
+  companies: CompanySearchResult[]
+  tags: ReportTag[]
   onSubmit: (selected: CompanySearchResult, vendor?: string) => void
 }
 
@@ -25,7 +32,7 @@ interface Form {
   vendor?: string
 }
 
-export const CompanySearchResultComponent = ({companies, report, onSubmit}: Props) => {
+export const CompanySearchResultComponentWithTags = ({companies, tags, onSubmit}: CompanySearchResultComponentWithTagsProps) => {
   const {m} = useI18n()
   const {
     control,
@@ -98,7 +105,7 @@ export const CompanySearchResultComponent = ({companies, report, onSubmit}: Prop
                           options={companies.map(company => {
                             const closed = !company.isOpen
                             return {
-                              label: <CompanyRecapFromSearchResult company={company} tags={getTags(report)} />,
+                              label: <CompanyRecapFromSearchResult company={company} tags={tags} />,
                               value: company.siret!,
                               disabled: closed,
                             }
@@ -149,6 +156,10 @@ export const CompanySearchResultComponent = ({companies, report, onSubmit}: Prop
       </Animate>
     </>
   )
+}
+
+export const CompanySearchResultComponent = ({companies, report, onSubmit}: Props) => {
+  return <CompanySearchResultComponentWithTags companies={companies} onSubmit={onSubmit} tags={getTags(report)} />
 }
 
 function NextBtn() {
