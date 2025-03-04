@@ -1,5 +1,5 @@
 import {ReactNode} from 'react'
 
 export function FriendlyHelpText({children, margins = true}: {children: ReactNode; margins?: boolean}) {
-  return <div className={`py-4 px-8 ${margins ? `my-4` : ''} bg-sclightblueinfo text-scblueinfo`}>{children}</div>
+  return <div className={`py-4 px-8 ${margins ? `my-4` : ''} bg-sclightblueinfo text-scblueinfo space-y-2`}>{children}</div>
 }

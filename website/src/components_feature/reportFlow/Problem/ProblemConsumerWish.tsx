@@ -1,5 +1,6 @@
 import {useAnalyticContext} from '@/analytic/AnalyticContext'
 import {EventCategories, ReportEventActions} from '@/analytic/analytic'
+import {FriendlyHelpText} from '@/components_simple/FriendlyHelpText'
 import {
   getCompanyKind,
   getTags,
@@ -14,7 +15,6 @@ import {ReactNode, useEffect} from 'react'
 import {useReportFlowContext} from '../ReportFlowContext'
 import {ProblemConsumerWishInformation} from './ProblemConsumerWishInformation'
 import {ProblemSelect} from './ProblemSelect'
-import {FriendlyHelpText} from '@/components_simple/FriendlyHelpText'
 
 export function ProblemConsumerWish({children}: {children: ReactNode}) {
   const {m} = useI18n()
@@ -23,19 +23,16 @@ export function ProblemConsumerWish({children}: {children: ReactNode}) {
   if (!hasStep0(r) || !hasSubcategoryIndexes(r) || !hasEmployeeConsumer(r)) {
     throw new Error(`Report is not ready for asking consumer wish`)
   }
-  const hasReponseConsoTag = getTags(r).includes('ReponseConso')
+  const tags = getTags(r)
+  const hasTelecomTag = tags.includes('Telecom')
+  const hasReponseConsoTag = tags.includes('ReponseConso')
   const isTransmittable = isTransmittableToProBeforePickingConsumerWish(r)
   const companyKind = getCompanyKind(r)
-  const predeterminedValue = !isTransmittable || companyKind === 'SOCIAL' ? 'companyImprovement' : undefined
+  const predeterminedValue = !isTransmittable || companyKind === 'SOCIAL' || !hasReponseConsoTag ? 'reportSomething' : undefined
   const skipQuestion = useApplyPredeterminedValue({predeterminedValue, setConsumerWish})
   const isDone = !!r.step1.consumerWish
   return (
     <>
-      {skipQuestion && !r.step1?.employeeConsumer && (
-        <FriendlyHelpText>
-          <p className="mb-0" dangerouslySetInnerHTML={{__html: m.notTransmittableToProConsumerInformation}} />
-        </FriendlyHelpText>
-      )}
       {!skipQuestion && (
         <>
           <ProblemSelect
@@ -44,33 +41,36 @@ export function ProblemConsumerWish({children}: {children: ReactNode}) {
             value={r.step1.consumerWish}
             options={[
               {
-                title: m.problemContractualDisputeFormYes,
-                description: m.problemContractualDisputeFormDesc,
-                value: 'fixContractualDispute',
+                title: m.reportAProblem,
+                description: m.reportAProblemExample,
+                value: 'reportSomething',
               },
               {
-                title: m.problemContractualDisputeFormNo,
-                description: m.problemContractualDisputeFormNoDesc,
-                value: 'companyImprovement',
+                title: m.askQuestionToReponseConso,
+                description: m.askQuestionToReponseConsoExample,
+                value: 'getAnswer' as const,
               },
-              ...(hasReponseConsoTag
-                ? [
-                    {
-                      title: m.problemContractualDisputeFormReponseConso,
-                      description: m.problemContractualDisputeFormReponseConsoExample,
-                      value: 'getAnswer' as const,
-                    },
-                  ]
-                : []),
             ]}
             onChange={(consumerWish: ConsumerWish) => {
               _analytic.trackEvent(EventCategories.report, ReportEventActions.consumerWish, consumerWish)
               setConsumerWish(consumerWish)
             }}
           />
-          {r.step1.consumerWish && <ProblemConsumerWishInformation consumerWish={r.step1.consumerWish} />}
+          {r.step1.consumerWish && <ProblemConsumerWishInformation consumerWish={r.step1.consumerWish} {...{hasTelecomTag}} />}
         </>
       )}
+      {!isTransmittable ? (
+        <FriendlyHelpText>
+          <p
+            className="mb-0"
+            dangerouslySetInnerHTML={{
+              __html: r.step1.employeeConsumer ? m.employeeConsumerInformation : m.notTransmittableToProConsumerInformation,
+            }}
+          />
+        </FriendlyHelpText>
+      ) : predeterminedValue ? (
+        <ProblemConsumerWishInformation consumerWish={predeterminedValue} {...{hasTelecomTag}} />
+      ) : null}
       {isDone && children}
     </>
   )

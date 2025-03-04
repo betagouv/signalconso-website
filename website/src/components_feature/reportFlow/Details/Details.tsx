@@ -179,17 +179,13 @@ export const DetailsInner = ({
               ['WILL_BE_TRANSMITTED']: (
                 <>
                   <p className="mb-0" dangerouslySetInnerHTML={{__html: m.detailsTextAreaWillBeTransmitted}} />
-                  {consumerWish !== 'fixContractualDispute' && (
-                    <p className="mb-0" dangerouslySetInnerHTML={{__html: m.detailsTextAreaTransmittableAnonymous}} />
-                  )}
+                  <p className="mb-0" dangerouslySetInnerHTML={{__html: m.detailsTextAreaTransmittableAnonymous}} />
                 </>
               ),
               ['MAY_BE_TRANSMITTED']: (
                 <>
                   <p className="mb-0" dangerouslySetInnerHTML={{__html: m.detailsTextAreaMayBeTransmitted}} />
-                  {consumerWish !== 'fixContractualDispute' && (
-                    <p className="mb-0" dangerouslySetInnerHTML={{__html: m.detailsTextAreaTransmittableAnonymous}} />
-                  )}
+                  <p className="mb-0" dangerouslySetInnerHTML={{__html: m.detailsTextAreaTransmittableAnonymous}} />
                 </>
               ),
               ['CANNOT_BE_TRANSMITTED']: (
@@ -225,16 +221,15 @@ export const DetailsInner = ({
       <Animate autoScrollTo={false}>
         <div>
           <h4 className="mt-4">{fileLabel ?? m.attachments}</h4>
-          {transmissionStatus !== 'NOT_TRANSMITTABLE' ? (
+          {transmissionStatus !== 'NOT_TRANSMITTABLE' && transmissionStatus !== 'CANNOT_BE_TRANSMITTED' ? (
             <>
               <FriendlyHelpText>
                 <p className="mb-0" dangerouslySetInnerHTML={{__html: attachmentDesc ?? m.attachmentsDesc2}} />
               </FriendlyHelpText>
-              {consumerWish !== 'fixContractualDispute' && <p dangerouslySetInnerHTML={{__html: m.attachmentsDescAnonymous}} />}
+              <p dangerouslySetInnerHTML={{__html: m.attachmentsDescAnonymous}} />
             </>
           ) : (
             <FriendlyHelpText>
-              {/*Do not display any custom attachmentDesc for employee consumer reports*/}
               <p
                 className="mb-0"
                 dangerouslySetInnerHTML={{

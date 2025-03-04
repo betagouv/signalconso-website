@@ -1,4 +1,3 @@
-import {FriendlyHelpText} from '@/components_simple/FriendlyHelpText'
 import {getWipCompanyKindFromSelected, hasStep0, hasSubcategoryIndexes} from '@/feature/reportUtils'
 import {useI18n} from '@/i18n/I18n'
 import {ReactNode, useEffect} from 'react'
@@ -38,11 +37,6 @@ export function ProblemEmployeeConsumer({children}: {children: ReactNode}) {
               },
             ]}
           />
-          {r.step1?.employeeConsumer && (
-            <FriendlyHelpText>
-              <p className="mb-0" dangerouslySetInnerHTML={{__html: m.employeeConsumerInformation}} />
-            </FriendlyHelpText>
-          )}
         </>
       )}
       {isDone && children}

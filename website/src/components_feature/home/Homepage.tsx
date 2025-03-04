@@ -3,13 +3,11 @@
 import {allAnomaliesForHomepage} from '@/anomalies/Anomalies'
 import {FullWidthPageContainer} from '@/components_simple/PageContainers'
 import {IllustrationStepper} from '@/components_simple/StepIllustrations/StepIllustrations'
-import {ForeignVisitorsQaPromoBanner} from '@/components_simple/bigBanners/ForeignVisitorsQaPromoBanner'
 import {InfoBanner} from '@/components_simple/bigBanners/InfoBanner'
 import {bigReportButtonProps} from '@/components_simple/buttons/buttonsUtils'
 import {HP_START_REPORT_ANCHOR} from '@/core/buildLinks'
 import {hasStep0} from '@/feature/reportUtils'
 import {useI18n} from '@/i18n/I18n'
-import {AppLangs} from '@/i18n/localization/AppLangs'
 import imgCompany from '@/img/illustrations/company.png'
 import imgConsumer from '@/img/illustrations/consumer.png'
 import imgDgccrf from '@/img/illustrations/dgccrf.png'
@@ -68,7 +66,6 @@ export const Homepage = () => {
                 {m.buttonReportProblem}
               </Button>
             </div>
-            {currentLang === AppLangs.en && <ForeignVisitorsQaPromoBanner />}
           </div>
         </div>
         <div id={HP_START_REPORT_ANCHOR} style={{background: dsfrTheme.decisions.background.actionLow.blueFrance.default}}>
