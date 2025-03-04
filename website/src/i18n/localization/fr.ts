@@ -127,8 +127,8 @@ export const fr = {
         title: 'Donnez votre avis - SignalConso',
         description: '',
       },
-      reassigner: {
-        title: 'Ré-assigner votre signalement - SignalConso',
+      reattribuer: {
+        title: 'Réattribuer votre signalement - SignalConso',
         description: '',
       },
       avisEngagement: {

@@ -17,31 +17,31 @@ import {CreatedReport} from '@/model/CreatedReport'
 import {AcknowledgementInner} from '@/components_feature/reportFlow/Acknowledgement/Acknowledgement'
 import {useToastError} from '@/hooks/useToastError'
 
-interface ReassignCompanyProps {
+interface ReattributeCompanyProps {
   reportId: string
   isWebView: boolean
 }
 
-export const ReassignCompany = ({reportId, isWebView}: ReassignCompanyProps) => {
+export const ReattributeCompany = ({reportId, isWebView}: ReattributeCompanyProps) => {
   const {m, currentLang} = useI18n()
   const [method, setMethod] = useState<'byNameAndGeoArea' | 'byIdentifier' | undefined>()
   const {signalConsoApiClient} = useApiClients()
   const toastError = useToastError()
 
-  const _isReportReassignable = useQuery({
-    queryKey: ['isReportReassignable', reportId],
-    queryFn: () => signalConsoApiClient.isReportReassignable(reportId),
+  const _isReportReattributable = useQuery({
+    queryKey: ['isReportReattributable', reportId],
+    queryFn: () => signalConsoApiClient.isReportReattributable(reportId),
     retry: false,
   })
 
   const [isDone, setDone] = useState<CreatedReport | undefined>()
 
-  const _reassignReport = useMutation({
+  const _reattributeReport = useMutation({
     mutationFn: (company: CompanySearchResult) =>
-      signalConsoApiClient.reassignReport(reportId, company, buildReportMetadata({isWebView})),
+      signalConsoApiClient.reattributeReport(reportId, company, buildReportMetadata({isWebView})),
     onSuccess: report => setDone(report),
     onError: error => {
-      toastError(`---- ${error}`)
+      toastError(error.message)
     },
   })
 
@@ -57,23 +57,23 @@ export const ReassignCompany = ({reportId, isWebView}: ReassignCompanyProps) => 
 
   const options = [optionByNameAndGeoArea, optionByIdentifier]
 
-  if (_isReportReassignable.isLoading) {
+  if (_isReportReattributable.isLoading) {
     return <Loader />
-  } else if (_isReportReassignable.data) {
-    const {companyName, daysToAnswer, tags, creationDate} = _isReportReassignable.data
+  } else if (_isReportReattributable.data) {
+    const {companyName, daysToAnswer, tags, creationDate} = _isReportReattributable.data
 
     return isDone ? (
       <AcknowledgementInner createdReport={isDone} country={isDone.companyAddress.country} isWebView={isWebView} />
     ) : (
       <>
         <div>
-          <h3>Ré-assigner votre signalement</h3>
+          <h3>Réattribuer votre signalement</h3>
           <p>
             L'entreprise <strong>{companyName}</strong> a indiqué que votre signalement du{' '}
             {isoToHumanReadableText(creationDate, currentLang)} était mal attribué.
           </p>
           <p>
-            Vous avez <strong>{daysToAnswer} jours</strong> pour réassigner votre signalement.
+            Vous avez <strong>{daysToAnswer} jours</strong> pour réattribuer votre signalement.
           </p>
         </div>
         <Animate>
@@ -84,18 +84,17 @@ export const ReassignCompany = ({reportId, isWebView}: ReassignCompanyProps) => 
               onChange={setMethod}
               options={options}
               title="Identifier la nouvelle entreprise"
-              titleNoAutoAsterisk
               description={<span dangerouslySetInnerHTML={{__html: m.canYouIdentifyCompanyDesc}} />}
             />
           </div>
         </Animate>
-        {method && dispatch(method, tags, _reassignReport.mutate)}
+        {method && dispatch(method, tags, _reattributeReport.mutate)}
       </>
     )
   } else {
     return (
       <>
-        <h1>Ce signalement n'existe pas ou n'est pas ré-assignable</h1>
+        <h1>Ce signalement n'existe pas ou n'est pas réattribuable</h1>
         <div className="text-center">
           <i className="ri-emotion-normal-line fr-icon--lg" />
         </div>

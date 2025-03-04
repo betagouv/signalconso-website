@@ -145,16 +145,16 @@ export class SignalConsoApiClient {
     return this.client.get<ResponseConsumerReviewExists>(`/reports/${reportId}/engagement/review/exists`)
   }
 
-  isReportReassignable = (reportId: string) => {
-    return this.client.get<ReassignableReport>(`/reports/${reportId}/reassign`)
+  isReportReattributable = (reportId: string) => {
+    return this.client.get<ReattributableReport>(`/reports/${reportId}/reattribute`)
   }
 
-  reassignReport = (reportId: string, company: CompanySearchResult, metadata: ApiReport['metadata']) => {
-    return this.client.post<CreatedReport>(`/reports/${reportId}/reassign`, {body: {company, metadata}})
+  reattributeReport = (reportId: string, company: CompanySearchResult, metadata: ApiReport['metadata']) => {
+    return this.client.post<CreatedReport>(`/reports/${reportId}/reattribute`, {body: {company, metadata}})
   }
 }
 
-export interface ReassignableReport {
+export interface ReattributableReport {
   tags: ReportTag[]
   creationDate: string
   companyName?: string

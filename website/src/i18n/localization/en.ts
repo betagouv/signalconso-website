@@ -127,8 +127,8 @@ export const en = {
         title: 'Share your review - SignalConso',
         description: '',
       },
-      reassigner: {
-        title: 'Reassign your report - SignalConso',
+      reattribuer: {
+        title: 'Reattribute your report - SignalConso',
         description: '',
       },
       avisEngagement: {
