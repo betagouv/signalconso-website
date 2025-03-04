@@ -21,36 +21,35 @@ function notEmpty<TValue>(value: TValue | null | undefined): value is TValue {
 }
 export const ConfirmationStepper = ({children}: ConfirmationStepperProps) => {
   return (
-    <>
+    <div className="space-y-8">
       {children.filter(notEmpty).map((child, index) => {
         return React.cloneElement(child, {...child.props, key: index, index})
       })}
-    </>
+    </div>
   )
 }
 
 export const ConfirmationStep = ({title, children, index, goToStep}: ConfirmationStepProps) => {
   const {m} = useI18n()
   return (
-    <div className={` mb-4 ${index > 0 ? 'border-t-[1px] border-solid border-gray-300 border-0 pt-6' : 'pt-2'}`}>
-      <h2 className="fr-h6">
-        <div className="flex items-center">
-          <span className="text-schint mr-2">{index! + 1}.</span>
-          <span>{title}</span>
-          <Button
-            className="ml-4"
-            size="small"
-            priority="secondary"
-            iconId={'fr-icon-pencil-line'}
-            onClick={() => {
-              goToStep(indexToStep(index! + 1))
-            }}
-          >
-            {m.edit}
-          </Button>
-        </div>
+    <div className="">
+      <h2 className="fr-h4 !mb-2 md:w-fit bg-sclightpurple flex gap-4 items-end md:justify-start justify-between p-1 md:flex-row-reverse md:pr-3">
+        <span>
+          <span className="text-scpurplepop">{title}</span>
+        </span>
+        <Button
+          className="!bg-white"
+          size="small"
+          priority="secondary"
+          iconId={'fr-icon-pencil-line'}
+          onClick={() => {
+            goToStep(indexToStep(index! + 1))
+          }}
+        >
+          {m.edit}
+        </Button>
       </h2>
-      {children}
+      <div className="md:pl-4">{children}</div>
     </div>
   )
 }
