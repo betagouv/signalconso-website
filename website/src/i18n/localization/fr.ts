@@ -127,6 +127,10 @@ export const fr = {
         title: 'Donnez votre avis - SignalConso',
         description: '',
       },
+      reattribuer: {
+        title: 'Réattribuer votre signalement - SignalConso',
+        description: '',
+      },
       avisEngagement: {
         title: "Donnez votre avis sur l'engagement - SignalConso",
         description: '',
@@ -1380,6 +1384,15 @@ contacter directement.`,
       paidWithCreditCard: `Vous avez payé avec votre carte bancaire ?`,
       chargeBack: `Grâce à la procédure de charge-back vous pouvez être remboursé gratuitement suite à un achat effectué en ligne :`,
       emailForErrorInReport: `En cas d’erreur sur votre signalement, envoyez un email à `,
+    },
+    reattribute: {
+      title: 'Réattribuer votre signalement',
+      identify: 'Identifier la nouvelle entreprise',
+      notReattributable: "Ce signalement n'existe pas ou n'est pas réattribuable",
+      youHave: 'Vous avez',
+      toReattribute: 'pour réattribuer votre signalement.',
+      companyIndicated: 'a indiqué que votre signalement du',
+      badAttribution: 'était mal attribué.',
     },
     externalLink: 'Lien externe',
     specialLegislation: {

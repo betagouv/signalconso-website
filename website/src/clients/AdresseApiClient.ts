@@ -63,7 +63,7 @@ export class AdresseApiClient {
         type,
         //Some PostalCode does not appear when we have more than one city linkend to same postal code
 
-        limit: 100,
+        limit: 20,
         // autocomplete: 1
       },
     })
