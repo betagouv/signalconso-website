@@ -84,7 +84,7 @@ export type SubcategoryWithInfoWall = SubcategoryBase & {
 
 export type Subcategory = StandardSubcategory | SubcategoryWithInfoWall
 
-export const reportTagsNotTransmittableToPro = ['BauxPrecaire']
+export const reportTagsNotTransmittableToPro = ['BauxPrecaire'] as const
 
 export const reportTagsAllowedInYaml = [
   'Hygiene',

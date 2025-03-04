@@ -121,7 +121,7 @@ export const isTransmittableToProBeforePickingConsumerWish = (
   r: ReportPickInStep1<'subcategoriesIndexes' | 'employeeConsumer'>,
 ): boolean => {
   const tags = getTags(r)
-  return !r.step1.employeeConsumer && !tags.some(tag => reportTagsNotTransmittableToPro.includes(tag))
+  return !r.step1.employeeConsumer && !tags.some(tag => (reportTagsNotTransmittableToPro as readonly ReportTag[]).includes(tag))
 }
 
 export const getTransmissionStatus = (r: Pick<Report, 'step0' | 'step1' | 'step2'>): TransmissionStatus => {

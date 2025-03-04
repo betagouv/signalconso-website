@@ -35,8 +35,7 @@ export const ScAlert = ({type, action, children, dangerouslySetInnerHTML, id}: P
       case 'error':
         return `bg-sclightrederror text-screderror`
       case 'warning':
-        return `bg-sclightorangewarn text-orange-600`
-      // return `bg-sclightorangewarn text-scorangewarn`
+        return `bg-sclightorangewarn text-scorangewarn`
       case 'success':
         return `bg-sclightgreensuccess text-scgreensuccess`
     }

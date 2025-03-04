@@ -141,7 +141,7 @@ export const ConsumerInner = ({
 
   const transmissionStatus = getTransmissionStatus(draft)
   const isTransmittable = transmissionStatus === 'WILL_BE_TRANSMITTED' || transmissionStatus === 'MAY_BE_TRANSMITTED'
-  const showContactAgreement = isTransmittable && draft.step1.consumerWish !== 'fixContractualDispute'
+  const showContactAgreement = isTransmittable
 
   const getErrors = (name: keyof ConsumerForm): {error: boolean; helperText?: string} => ({
     error: !!_form.formState.errors[name],
@@ -154,7 +154,6 @@ export const ConsumerInner = ({
       consumer: consumer,
       contactAgreement: (() => {
         if (!isTransmittable) return false
-        if (draft.step1.consumerWish === 'fixContractualDispute') return true
         if (contactAgreement === undefined) {
           throw new Error('contactAgreement should be defined at this stage')
         }
@@ -292,8 +291,8 @@ export const ConsumerInner = ({
                   />
                 )}
               />
-              {watchContactAgreement === false && <ConsumerAnonymousInformation />}
               {watchContactAgreement === true && <ConsumerShareInformation />}
+              {watchContactAgreement === false && <ConsumerAnonymousInformation />}
             </>
           )}
         </div>

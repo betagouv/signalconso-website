@@ -29,8 +29,8 @@ export const CompanyAskConsumerPostalCode = ({value, onChange, companyKind}: Pro
       <div id="CompanyAskConsumerPostalCode">
         <div className="mb-2">
           <ScAlert type="info">
-            <p dangerouslySetInnerHTML={{__html: m.cantIdentifyWarn1}} />
-            <p dangerouslySetInnerHTML={{__html: m.cantIdentifyWarn2}} />
+            <p className="mb-0" dangerouslySetInnerHTML={{__html: m.cantIdentifyWarn1}} />
+            <p className="mb-0" dangerouslySetInnerHTML={{__html: m.cantIdentifyWarn2}} />
           </ScAlert>
         </div>
         <form onSubmit={handleSubmit(_ => onChange(_.postalCode))}>
