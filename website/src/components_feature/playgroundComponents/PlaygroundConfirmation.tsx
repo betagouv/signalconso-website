@@ -35,13 +35,19 @@ export const PlaygroundConfirmation = () => {
     step3: {
       details: {
         ['0']: '09/03/2022',
-        ['1']: 'Voilà ma description du problème.',
-        ['2']: 'Voilà ma question',
+        ['1']:
+          'Voilà ma description du problème. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.\nNemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.\n\n\n Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? \nQuis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur? Lorem.',
       },
       uploadedFiles: [
         {
           filename: 'Captura de pantalla 2022-03-14 a las 18.40.21.png',
           id: '8710d67d-d955-444d-b340-ee17c7b781e9',
+          loading: false,
+          origin: FileOrigin.Consumer,
+        },
+        {
+          filename: 'something else.pdf',
+          id: '8710d67d-d955-444d-b340-333333333333',
           loading: false,
           origin: FileOrigin.Consumer,
         },

@@ -4,7 +4,6 @@ import {NextStepButton} from '@/components_feature/reportFlow/reportFlowStepper/
 import {StepNavigation} from '@/components_feature/reportFlow/reportFlowStepper/ReportFlowStepper'
 import {Animate} from '@/components_simple/Animate'
 import {Step2Recap} from '@/components_simple/CompanyRecap/Step2Recap'
-import {FriendlyHelpText} from '@/components_simple/FriendlyHelpText'
 import {ScAlert} from '@/components_simple/ScAlert'
 import {ReportFilesConfirmation} from '@/components_simple/reportFile/ReportFilesConfirmation'
 import {
@@ -23,7 +22,6 @@ import {useI18n} from '@/i18n/I18n'
 import {Report} from '@/model/Report'
 import {BuildingStep, buildingReportSteps} from '@/model/ReportStep'
 import {ApiReport} from '@/model/reportsFromApi'
-import Image from 'next/image'
 import {SocialNetworkRow} from '../../../components_simple/SocialNetworkRow'
 import {FileOrigin} from '../../../model/UploadedFile'
 import {getReportInputs} from '../Details/draftReportInputs'
@@ -63,17 +61,16 @@ export const ConfirmationInner = ({
   return (
     <Animate autoScrollTo={true}>
       <div>
-        <h2 className="fr-h4">{m.confirmationTitle}</h2>
-
-        {employeeConsumer ? (
-          <ScAlert type="warning">
-            <p className="mb-0" dangerouslySetInnerHTML={{__html: m.confirmationAlertEmployeeConsumer}}></p>
-          </ScAlert>
-        ) : (
-          <FriendlyHelpText>
-            <p className="mb-0">{isTransmittable ? m.confirmationAlertTransmittable : m.confirmationAlert}</p>
-          </FriendlyHelpText>
-        )}
+        <div className="mb-4 space-y-2">
+          <p dangerouslySetInnerHTML={{__html: isTransmittable ? m.confirmationAlertTransmittable : m.confirmationAlert}} />
+          {employeeConsumer ? (
+            <div>
+              <ScAlert type="warning">
+                <p className="mb-0" dangerouslySetInnerHTML={{__html: m.confirmationAlertEmployeeConsumer}}></p>
+              </ScAlert>
+            </div>
+          ) : null}
+        </div>
 
         <ConfirmationStepper>
           {buildingReportSteps.map((step, index) => {
@@ -126,43 +123,20 @@ function RenderEachStep({
   const detailsParsed = parseReportDetails(draft.step3.details, inputs)
   switch (step) {
     case 'BuildingProblem':
+      const choices = [anomaly.title, ...subcategories.map(_ => _.title)]
       return (
         <ConfirmationStep title={m.step_problem} {...{goToStep, index}}>
-          <div className="flex">
-            <Image className="mr-4" width={72} height={72} src={`/image/pictos/${anomaly.img}.png`} alt="" />
-            <div>
-              <h3 className="fr-h6 !mb-2 !text-gray-500">{anomaly.title}</h3>
-              <ul className="pl-0 list-none">
-                {subcategories.map(_ => (
-                  <li key={_.title} className="text-gray-500">
-                    <i className="ri-corner-down-right-line mr-2 " />
-                    {_.title}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </ConfirmationStep>
-      )
-    case 'BuildingDetails':
-      return (
-        <ConfirmationStep title={m.step_description} {...{goToStep, index}}>
-          <dl>
-            {detailsParsed.map(({label, value}) => (
-              <div key={label} className="mb-2">
-                <dt className="font-medium" dangerouslySetInnerHTML={{__html: label}} />
-                <dd className="text-schint">{value}</dd>
-              </div>
+          <ul className="pl-0 list-none">
+            {choices.map(_ => (
+              <li key={_} className="flex gap-2">
+                <i className="ri-corner-down-right-line" />
+                {_}
+              </li>
             ))}
-            <div className="mb-2">
-              <dt className="font-medium mb-1">{m.attachments}</dt>
-              <dd>
-                <ReportFilesConfirmation fileOrigin={FileOrigin.Consumer} files={draft.step3.uploadedFiles} />
-              </dd>
-            </div>
-          </dl>
+          </ul>
         </ConfirmationStep>
       )
+
     case 'BuildingCompany':
       const {step2} = draft
       switch (step2.kind) {
@@ -186,11 +160,30 @@ function RenderEachStep({
             </ConfirmationStep>
           )
       }
+    case 'BuildingDetails':
+      return (
+        <ConfirmationStep title={m.step_description} {...{goToStep, index}}>
+          <div className="space-y-4">
+            <div>
+              {detailsParsed.map(({label, value}) => (
+                <div className="mb-2" key={label}>
+                  <p className="mb-0 font-bold text-sm" dangerouslySetInnerHTML={{__html: label}} />{' '}
+                  <p className="mb-0 whitespace-pre-line ">{value}</p>
+                </div>
+              ))}
+            </div>
+            <div>
+              <p className="mb-0 font-bold text-sm">{m.attachments}</p>
+              <ReportFilesConfirmation fileOrigin={FileOrigin.Consumer} files={draft.step3.uploadedFiles} />
+            </div>
+          </div>
+        </ConfirmationStep>
+      )
     case 'BuildingConsumer':
       const {consumer} = draft.step4
       return (
         <ConfirmationStep title={m.step_consumer} {...{goToStep, index}}>
-          <ul className="list-none">
+          <ul className="list-none p-0">
             <li className="p-0 flex gap-2">
               <div className="flex gap-2">
                 <i className="ri-account-box-line text-gray-400" />
@@ -215,20 +208,8 @@ function RenderEachStep({
             )}
             {isTransmittable && (
               <li className="p-0 flex gap-2">
-                <i className="ri-lock-line text-gray-400" />
-                <span>{m.contactAgreement} : </span>
-                <span className="font-bold">
-                  {draft.step4.contactAgreement ? (
-                    <span className=" text-green-700">
-                      {m.yes.toLowerCase()}
-                      <i className="ri-checkbox-circle-fill ml-1" />
-                    </span>
-                  ) : (
-                    <span className=" text-red-700">
-                      {m.no.toLowerCase()}
-                      <i className="ri-close-circle-fill ml-1" />
-                    </span>
-                  )}
+                <span className={`font-bold ${draft.step4.contactAgreement ? 'text-scgreensuccess' : 'text-scorangewarn'}`}>
+                  {draft.step4.contactAgreement ? m.companyWillHaveYourIdentity : m.companyWillNotHaveYourIdentity}
                 </span>
               </li>
             )}

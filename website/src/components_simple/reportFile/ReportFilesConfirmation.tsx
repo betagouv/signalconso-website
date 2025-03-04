@@ -10,7 +10,7 @@ export interface ReportFilesConfirmationProps {
 export const ReportFilesConfirmation = ({fileOrigin, files}: ReportFilesConfirmationProps) => {
   const {m} = useI18n()
   return files && files.length > 0 ? (
-    <ul className="flex flex-wrap items-center mt-4 list-none gap-4 p-0">
+    <ul className="flex flex-wrap items-center m-0 list-none gap-4 p-0">
       {files
         .filter(_ => _.origin === fileOrigin)
         .map(_ => (
