@@ -67,13 +67,17 @@ export const ReattributeCompany = ({reportId, isWebView}: ReattributeCompanyProp
     ) : (
       <>
         <div>
-          <h3>Réattribuer votre signalement</h3>
+          <h3>{m.reattribute.title}</h3>
           <p>
-            L'entreprise <strong>{companyName}</strong> a indiqué que votre signalement du{' '}
-            {isoToHumanReadableText(creationDate, currentLang)} était mal attribué.
+            {m.step_company} <strong>{companyName}</strong> {m.reattribute.companyIndicated}{' '}
+            {isoToHumanReadableText(creationDate, currentLang)} {m.reattribute.badAttribution}
           </p>
           <p>
-            Vous avez <strong>{daysToAnswer} jours</strong> pour réattribuer votre signalement.
+            {m.reattribute.youHave}{' '}
+            <strong>
+              {daysToAnswer} {m.days}
+            </strong>{' '}
+            {m.reattribute.toReattribute}
           </p>
         </div>
         <Animate>
@@ -83,7 +87,7 @@ export const ReattributeCompany = ({reportId, isWebView}: ReattributeCompanyProp
               value={method}
               onChange={setMethod}
               options={options}
-              title="Identifier la nouvelle entreprise"
+              title={m.reattribute.identify}
               description={<span dangerouslySetInnerHTML={{__html: m.canYouIdentifyCompanyDesc}} />}
             />
           </div>
@@ -94,7 +98,7 @@ export const ReattributeCompany = ({reportId, isWebView}: ReattributeCompanyProp
   } else {
     return (
       <>
-        <h1>Ce signalement n'existe pas ou n'est pas réattribuable</h1>
+        <h1>{m.reattribute.notReattributable}</h1>
         <div className="text-center">
           <i className="ri-emotion-normal-line fr-icon--lg" />
         </div>

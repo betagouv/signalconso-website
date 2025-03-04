@@ -1356,6 +1356,15 @@ export const en = {
       chargeBack: `Through the charge-back procedure, you may be eligible for a refund following an online purchase:`,
       emailForErrorInReport: `In case of an error in your report, send an email to `,
     },
+    reattribute: {
+      title: 'Reassign your report',
+      identify: 'Identify the new company',
+      notReattributable: 'This report does not exist or is not reassignable',
+      youHave: 'You have',
+      toReattribute: 'to reassign your report.',
+      companyIndicated: 'has indicated that your report from',
+      badAttribution: 'was incorrectly assigned.',
+    },
     externalLink: 'External link',
     specialLegislation: {
       SHRINKFLATION: `Only stores with a sales area of <strong>over 400m²</strong> are subject to shrinkflation regulations. This store is probably <strong>not subject</strong> to these regulations.`,
