@@ -252,7 +252,7 @@ function UploadInvitation() {
   const {m} = useI18n()
 
   return (
-    <div className="mb-6">
+    <div className="mb-6 hidden sm:block">
       <div className="flex items-center justify-center mb-2">
         <i className="text-gray-300 ri-download-2-line sc-icon-xxl" />
       </div>
