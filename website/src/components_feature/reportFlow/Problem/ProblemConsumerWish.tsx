@@ -2,7 +2,7 @@ import {useAnalyticContext} from '@/analytic/AnalyticContext'
 import {EventCategories, ReportEventActions} from '@/analytic/analytic'
 import {FriendlyHelpText} from '@/components_simple/FriendlyHelpText'
 import {getCompanyKind, getTags, hasEmployeeConsumer, hasStep0, hasSubcategoryIndexes} from '@/feature/reportUtils'
-import {getEarlyTransmissionStatus} from '@/feature/transmissionStatus'
+import {getTransmissionStatusBeforeConsumerWish} from '@/feature/transmissionStatus'
 import {useI18n} from '@/i18n/I18n'
 import {ConsumerWish} from '@/model/Report'
 import {ReactNode, useEffect} from 'react'
@@ -20,7 +20,7 @@ export function ProblemConsumerWish({children}: {children: ReactNode}) {
   const tags = getTags(r)
   const hasTelecomTag = tags.includes('Telecom')
   const hasReponseConsoTag = tags.includes('ReponseConso')
-  const transmissionStatus = getEarlyTransmissionStatus(r)
+  const transmissionStatus = getTransmissionStatusBeforeConsumerWish(r)
   const isTransmittable = transmissionStatus.kind !== 'NOT_TRANSMITTABLE'
   const companyKind = getCompanyKind(r)
   const predeterminedValue = !isTransmittable || companyKind === 'SOCIAL' || !hasReponseConsoTag ? 'reportSomething' : undefined

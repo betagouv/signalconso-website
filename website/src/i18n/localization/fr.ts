@@ -1419,5 +1419,16 @@ contacter directement.`,
                 econsumer.gov
               </a>
             </li>`,
+    whenYouSendYourReport: `Lorsque vous envoyez votre signalement...`,
+    companyWillHaveIdentity: `L'entreprise <b>aura votre identité et coordonnées</b>.`,
+    companyWontKnowIdentity: `L'entreprise ne saura pas qui vous êtes.`,
+    willHaveLittleEffect: `<b>Votre signalement aura très peu d'effet</b>, car l'entreprise n'est pas en France.`,
+    agentWillRespond: `Un agent vous répondra.`,
+    reportNotTransmittedToCompany: `Le signalement ne sera pas transmis à l'entreprise.`,
+    itWillBeSentToFraudControl: `Il sera envoyé à la répression des fraudes.`,
+    reportSentToFraudControl: `Le signalement sera envoyé à la répression des fraudes.`,
+    mayBeIdentifiedLater: `Il est possible que l'entreprise soit identifiée ultérieurement. Le signalement lui sera alors transmis.`,
+    reportWillBeTransmittedToCompany: `Le signalement va être transmis à l'entreprise.`,
+    alsoSentToFraudControl: `Il sera aussi envoyé à la répression des fraudes.`,
   },
 }

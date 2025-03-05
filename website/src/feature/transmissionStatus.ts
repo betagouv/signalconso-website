@@ -4,7 +4,7 @@ import {getTags} from './reportUtils'
 
 // the one we deduce before picking the consumerWish
 // it's not definite!
-export type EarlyTransmissionStatus =
+export type TransmissionStatusBeforeConsumerWish =
   | {
       kind: 'NOT_TRANSMITTABLE'
       reason: 'employeeConsumer' | 'tags'
@@ -15,7 +15,7 @@ export type EarlyTransmissionStatus =
 
 // the one we deduce after step1 is finished
 // but we still don't have the company
-export type Early2TransmissionStatus =
+export type TransmissionStatusAfterConsumerWish =
   | {
       kind: 'NOT_TRANSMITTABLE'
       reason: 'employeeConsumer' | 'tags' | 'getAnswer'
@@ -37,9 +37,9 @@ export type FinalTransmissionStatus =
       kind: 'WILL_BE_TRANSMITTED'
     }
 
-export const getEarlyTransmissionStatus = (
+export const getTransmissionStatusBeforeConsumerWish = (
   r: ReportPickInStep1<'subcategoriesIndexes' | 'employeeConsumer'>,
-): EarlyTransmissionStatus => {
+): TransmissionStatusBeforeConsumerWish => {
   if (r.step1.employeeConsumer) {
     return {kind: 'NOT_TRANSMITTABLE', reason: 'employeeConsumer'}
   }
@@ -50,28 +50,28 @@ export const getEarlyTransmissionStatus = (
   return {kind: 'SO_FAR_SO_GOOD'}
 }
 
-export const getEarly2TransmissionStatus = (
+export const getTransmissionStatusAfterConsumerWish = (
   r: ReportPickInStep1<'subcategoriesIndexes' | 'employeeConsumer' | 'consumerWish'>,
-): Early2TransmissionStatus => {
-  const earlyStatus = getEarlyTransmissionStatus(r)
-  switch (earlyStatus.kind) {
+): TransmissionStatusAfterConsumerWish => {
+  const statusBeforeConsumerWish = getTransmissionStatusBeforeConsumerWish(r)
+  switch (statusBeforeConsumerWish.kind) {
     case 'NOT_TRANSMITTABLE':
-      return earlyStatus
+      return statusBeforeConsumerWish
     case 'SO_FAR_SO_GOOD':
       if (r.step1.consumerWish === 'getAnswer') {
         return {kind: 'NOT_TRANSMITTABLE', reason: 'getAnswer'}
       }
       return {kind: 'SO_FAR_SO_GOOD'}
     default:
-      return earlyStatus satisfies never
+      return statusBeforeConsumerWish satisfies never
   }
 }
 
 export const getFinalTransmissionStatus = (r: Pick<Report, 'step0' | 'step1' | 'step2'>): FinalTransmissionStatus => {
-  const early2Status = getEarly2TransmissionStatus(r)
-  switch (early2Status.kind) {
+  const statusAfterConsumerWish = getTransmissionStatusAfterConsumerWish(r)
+  switch (statusAfterConsumerWish.kind) {
     case 'NOT_TRANSMITTABLE':
-      return early2Status
+      return statusAfterConsumerWish
     case 'SO_FAR_SO_GOOD':
       const step2kind = r.step2.kind
       switch (step2kind) {
@@ -105,7 +105,7 @@ export const getFinalTransmissionStatus = (r: Pick<Report, 'step0' | 'step1' | '
           return step2kind satisfies never
       }
     default:
-      return early2Status satisfies never
+      return statusAfterConsumerWish satisfies never
   }
 }
 

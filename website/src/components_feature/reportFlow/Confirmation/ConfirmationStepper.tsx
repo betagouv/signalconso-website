@@ -21,7 +21,7 @@ function notEmpty<TValue>(value: TValue | null | undefined): value is TValue {
 }
 export const ConfirmationStepper = ({children}: ConfirmationStepperProps) => {
   return (
-    <div className="space-y-8">
+    <div className="space-y-8 mb-6">
       {children.filter(notEmpty).map((child, index) => {
         return React.cloneElement(child, {...child.props, key: index, index})
       })}

@@ -6,7 +6,7 @@ import {NoSearchResult} from '@/components_feature/reportFlow/Company/lib/NoSear
 import {ScRadioButtons} from '@/components_simple/formInputs/ScRadioButtons'
 import {Loader} from '@/feature/Loader'
 import {getCompanyKind, hasStep0, hasStep1Full, hasStep2} from '@/feature/reportUtils'
-import {getEarly2TransmissionStatus} from '@/feature/transmissionStatus'
+import {getTransmissionStatusAfterConsumerWish} from '@/feature/transmissionStatus'
 import {useBarcodeSearch} from '@/hooks/barcode'
 import {Report} from '@/model/Report'
 import {CommonCompanyIdentification, Step2Model} from '@/model/Step2Model'
@@ -224,7 +224,7 @@ function CompanyIdentificationTree({
   onIdentification: (_: CommonCompanyIdentification) => void
 }) {
   const companyKind = getCompanyKind(draft)
-  const transmittable = getEarly2TransmissionStatus(draft).kind !== 'NOT_TRANSMITTABLE'
+  const transmittable = getTransmissionStatusAfterConsumerWish(draft).kind !== 'NOT_TRANSMITTABLE'
   return searchResults && searchResults.length > 0 ? (
     <CompanySearchResultComponent
       companies={searchResults}
