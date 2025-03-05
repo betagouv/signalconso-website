@@ -6,29 +6,20 @@ import {Animate} from '@/components_simple/Animate'
 import {Step2Recap} from '@/components_simple/CompanyRecap/Step2Recap'
 import {ScAlert} from '@/components_simple/ScAlert'
 import {ReportFilesConfirmation} from '@/components_simple/reportFile/ReportFilesConfirmation'
-import {
-  getAnomaly,
-  getSubcategories,
-  getTags,
-  getTransmissionStatus,
-  hasStep0,
-  hasStep1Full,
-  hasStep2,
-  hasStep4,
-} from '@/feature/reportUtils'
+import {getAnomaly, getSubcategories, getTags, hasStep0, hasStep1Full, hasStep2, hasStep4} from '@/feature/reportUtils'
 import {parseReportDetails} from '@/feature/reportUtils2'
+import {FinalTransmissionStatus, getFinalTransmissionStatus, isTransmittable} from '@/feature/transmissionStatus'
 import {getApiErrorId, useToastError} from '@/hooks/useToastError'
 import {useI18n} from '@/i18n/I18n'
 import {Report} from '@/model/Report'
 import {BuildingStep, buildingReportSteps} from '@/model/ReportStep'
-import {ApiReport} from '@/model/reportsFromApi'
+import {buildReportMetadata} from '@/utils/buildReportMetadata'
 import {SocialNetworkRow} from '../../../components_simple/SocialNetworkRow'
 import {FileOrigin} from '../../../model/UploadedFile'
 import {getReportInputs} from '../Details/draftReportInputs'
 import {useReportCreateContext} from '../ReportCreateContext'
 import {useReportFlowContext} from '../ReportFlowContext'
 import {ConfirmationStep, ConfirmationStepper} from './ConfirmationStepper'
-import {buildReportMetadata} from '@/utils/buildReportMetadata'
 
 export const Confirmation = ({stepNavigation, isWebView}: {stepNavigation: StepNavigation; isWebView: boolean}) => {
   const _reportFlow = useReportFlowContext()
@@ -53,25 +44,12 @@ export const ConfirmationInner = ({
   const _reportFlow = useReportFlowContext()
   const _reportCreate = useReportCreateContext()
   const _analytic = useAnalyticContext()
-
-  const employeeConsumer = draft.step1.employeeConsumer
-  const transmissionStatus = getTransmissionStatus(draft)
-  const isTransmittable = transmissionStatus === 'WILL_BE_TRANSMITTED' || transmissionStatus === 'MAY_BE_TRANSMITTED'
+  const transmissionStatus = getFinalTransmissionStatus(draft)
 
   return (
     <Animate autoScrollTo={true}>
       <div>
-        <div className="mb-4 space-y-2">
-          <p dangerouslySetInnerHTML={{__html: isTransmittable ? m.confirmationAlertTransmittable : m.confirmationAlert}} />
-          {employeeConsumer ? (
-            <div>
-              <ScAlert type="warning">
-                <p className="mb-0" dangerouslySetInnerHTML={{__html: m.confirmationAlertEmployeeConsumer}}></p>
-              </ScAlert>
-            </div>
-          ) : null}
-        </div>
-
+        <TopInfosBlock {...{transmissionStatus}} />
         <ConfirmationStepper>
           {buildingReportSteps.map((step, index) => {
             return <RenderEachStep key={step} {...{draft, stepNavigation, index}} step={step} />
@@ -116,8 +94,7 @@ function RenderEachStep({
   const goToStep = stepNavigation.goTo
   const {m, currentLang} = useI18n()
   const anomaly = getAnomaly(draft)
-  const transmissionStatus = getTransmissionStatus(draft)
-  const isTransmittable = transmissionStatus === 'WILL_BE_TRANSMITTED' || transmissionStatus === 'MAY_BE_TRANSMITTED'
+  const transmittable = isTransmittable(draft)
   const subcategories = getSubcategories(draft)
   const inputs = getReportInputs(draft, currentLang)
   const detailsParsed = parseReportDetails(draft.step3.details, inputs)
@@ -206,7 +183,7 @@ function RenderEachStep({
                 <span>{consumer.referenceNumber}</span>
               </li>
             )}
-            {isTransmittable && (
+            {transmittable && (
               <li className="p-0 flex gap-2">
                 <span className={`font-bold ${draft.step4.contactAgreement ? 'text-scgreensuccess' : 'text-scorangewarn'}`}>
                   {draft.step4.contactAgreement ? m.companyWillHaveYourIdentity : m.companyWillNotHaveYourIdentity}
@@ -217,4 +194,38 @@ function RenderEachStep({
         </ConfirmationStep>
       )
   }
+}
+
+function TopInfosBlock({transmissionStatus}: {transmissionStatus: FinalTransmissionStatus}) {
+  const {m} = useI18n()
+  const elements = (() => {
+    const {kind} = transmissionStatus
+    switch (kind) {
+      case 'NOT_TRANSMITTABLE':
+        const {reason} = transmissionStatus
+        switch (reason) {
+          case 'employeeConsumer':
+            return (
+              <>
+                <p className="mb-0" dangerouslySetInnerHTML={{__html: m.confirmationAlert}} />
+                <ScAlert type="warning">
+                  <p className="mb-0" dangerouslySetInnerHTML={{__html: m.confirmationAlertEmployeeConsumer}}></p>
+                </ScAlert>
+              </>
+            )
+          case 'tags':
+          case 'getAnswer':
+          case 'foreign':
+            return <p className="mb-0" dangerouslySetInnerHTML={{__html: m.confirmationAlert}} />
+          default:
+            return reason satisfies never
+        }
+      case 'MAY_BE_TRANSMITTED':
+      case 'WILL_BE_TRANSMITTED':
+        return <p className="mb-0" dangerouslySetInnerHTML={{__html: m.confirmationAlertTransmittable}} />
+      default:
+        return kind satisfies never
+    }
+  })()
+  return <div className="mb-4 space-y-2">{elements}</div>
 }

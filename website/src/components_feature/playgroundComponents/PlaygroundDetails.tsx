@@ -124,7 +124,7 @@ export const PlaygroundDetails = () => {
       </div>
       <DetailsInner
         inputs={[...chosenInputs]}
-        transmissionStatus={'NOT_TRANSMITTABLE'}
+        transmissionStatus={{kind: 'NOT_TRANSMITTABLE', reason: 'tags'}}
         saveChange={(res, files) => {
           setResultInputs(parseReportDetails(res, chosenInputs))
           setResultFiles(files)
@@ -133,7 +133,6 @@ export const PlaygroundDetails = () => {
           setResultFiles(files)
         }}
         stepNavigation={dummyStepNavigation}
-        consumerWish={undefined}
       />
       <pre className="text-sm text-gray-500">{JSON.stringify(resultInputs, undefined, 2)}</pre>
       <pre className="text-sm text-gray-500">{JSON.stringify(resultFiles, undefined, 2)}</pre>

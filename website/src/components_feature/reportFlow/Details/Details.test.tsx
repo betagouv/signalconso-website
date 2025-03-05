@@ -52,13 +52,12 @@ describe('Details: single date not in future', () => {
     app = render(
       <DetailsInner
         inputs={[DetailsFixtureInput.date]}
-        transmissionStatus={'NOT_TRANSMITTABLE'}
+        transmissionStatus={{kind: 'NOT_TRANSMITTABLE', reason: 'tags'}}
         saveChange={x => {
           inputValues = x
         }}
         saveFiles={_ => {}}
         stepNavigation={dummyStepNavigation}
-        consumerWish={undefined}
       />,
     )
   })
@@ -91,13 +90,12 @@ describe('Details: checkbox', () => {
     app = render(
       <DetailsInner
         inputs={[DetailsFixtureInput.radio(AppLangs.fr)]}
-        transmissionStatus={'NOT_TRANSMITTABLE'}
+        transmissionStatus={{kind: 'NOT_TRANSMITTABLE', reason: 'tags'}}
         saveChange={x => {
           inputValues = x
         }}
         saveFiles={_ => {}}
         stepNavigation={dummyStepNavigation}
-        consumerWish={undefined}
       />,
     )
   })
@@ -153,13 +151,12 @@ describe('Details: textarea', () => {
     app = render(
       <DetailsInner
         inputs={[DetailsFixtureInput.textarea]}
-        transmissionStatus={'NOT_TRANSMITTABLE'}
+        transmissionStatus={{kind: 'NOT_TRANSMITTABLE', reason: 'tags'}}
         saveChange={x => {
           inputValues = x
         }}
         saveFiles={_ => {}}
         stepNavigation={dummyStepNavigation}
-        consumerWish={undefined}
       />,
     )
   })

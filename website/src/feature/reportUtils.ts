@@ -1,8 +1,8 @@
 import {findAnomaly} from '@/anomalies/Anomalies'
 import {PartialReport} from '@/components_feature/reportFlow/ReportFlowContext'
-import {Report, ReportWithPickInStep1 as ReportPickInStep1, TransmissionStatus} from '@/model/Report'
+import {Report, ReportWithPickInStep1 as ReportPickInStep1} from '@/model/Report'
 import {lastFromArray, notUndefined} from '@/utils/utils'
-import {CompanyKind, ReportTag, Subcategory, reportTagsNotTransmittableToPro} from 'shared/anomalies/Anomaly'
+import {CompanyKind, ReportTag, Subcategory} from 'shared/anomalies/Anomaly'
 
 function isValidString(str: string | undefined) {
   return typeof str === 'string' && str.trim() !== ''
@@ -110,50 +110,4 @@ export const getWipCompanyKindFromSelected = (r: ReportPickInStep1<'subcategorie
     : specialCategory === 'RappelConso'
       ? 'PRODUCT_RAPPEL_CONSO'
       : [...getSubcategories(r)].reverse().find(_ => !!_.companyKind)?.companyKind
-}
-
-export const isTransmittableToPro = (
-  r: ReportPickInStep1<'subcategoriesIndexes' | 'employeeConsumer' | 'consumerWish'>,
-): boolean => {
-  return isTransmittableToProBeforePickingConsumerWish(r) && r.step1.consumerWish !== 'getAnswer'
-}
-export const isTransmittableToProBeforePickingConsumerWish = (
-  r: ReportPickInStep1<'subcategoriesIndexes' | 'employeeConsumer'>,
-): boolean => {
-  const tags = getTags(r)
-  return !r.step1.employeeConsumer && !tags.some(tag => (reportTagsNotTransmittableToPro as readonly ReportTag[]).includes(tag))
-}
-
-export const getTransmissionStatus = (r: Pick<Report, 'step0' | 'step1' | 'step2'>): TransmissionStatus => {
-  if (!isTransmittableToPro(r)) {
-    return 'NOT_TRANSMITTABLE'
-  }
-  switch (r.step2.kind) {
-    case 'influencer':
-    case 'influencerOtherSocialNetwork':
-    case 'train':
-    case 'station':
-      return 'WILL_BE_TRANSMITTED'
-    case 'basic':
-    case 'phone':
-    case 'product':
-    case 'website':
-      switch (r.step2.companyIdentification.kind) {
-        case 'companyFound':
-        case 'marketplaceCompanyFound': {
-          const company = r.step2.companyIdentification.company
-          const country = company.address.country
-          if (country && country !== 'FR') {
-            // SIRET existant mais adresse postale à l'étranger
-            return 'CANNOT_BE_TRANSMITTED'
-          }
-          return 'WILL_BE_TRANSMITTED'
-        }
-        case 'consumerLocation':
-          return 'MAY_BE_TRANSMITTED'
-        case 'foreignCompany':
-        case 'foreignWebsiteWithJustCountry':
-          return 'CANNOT_BE_TRANSMITTED'
-      }
-  }
 }

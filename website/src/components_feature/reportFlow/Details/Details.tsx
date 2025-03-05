@@ -4,15 +4,14 @@ import {Animate} from '@/components_simple/Animate'
 import {FriendlyHelpText} from '@/components_simple/FriendlyHelpText'
 import {ReportFiles} from '@/components_simple/reportFile/ReportFiles'
 import {appConfig} from '@/core/appConfig'
-import {getSubcategories, getTags, getTransmissionStatus, hasStep0, hasStep1Full, hasStep2} from '@/feature/reportUtils'
+import {getSubcategories, getTags, hasStep0, hasStep1Full, hasStep2} from '@/feature/reportUtils'
+import {FinalTransmissionStatus, getFinalTransmissionStatus} from '@/feature/transmissionStatus'
 import {useI18n} from '@/i18n/I18n'
 import {DetailInputValues2} from '@/model/Report'
-import {fnSwitch} from '@/utils/FnSwitch'
 import {last} from '@/utils/lodashNamedExport'
 import {useCallback, useEffect, useMemo, useState} from 'react'
 import {useForm} from 'react-hook-form'
 import {DetailInput, ReportTag, StandardSubcategory} from 'shared/anomalies/Anomaly'
-import {ConsumerWish, TransmissionStatus} from '../../../model/Report'
 import {FileOrigin, UploadedFile} from '../../../model/UploadedFile'
 import {useReportFlowContext} from '../ReportFlowContext'
 import {buildDefaultValues} from './DetailInputsUtils'
@@ -47,7 +46,7 @@ export const Details = ({stepNavigation}: {stepNavigation: StepNavigation}) => {
     <DetailsInner
       initialValues={report.step3?.details}
       initialFiles={report.step3?.uploadedFiles}
-      transmissionStatus={getTransmissionStatus(report)}
+      transmissionStatus={getFinalTransmissionStatus(report)}
       inputs={inputs}
       fileLabel={lastSubcategory.fileLabel}
       attachmentDesc={lastSubcategory.attachmentDesc}
@@ -73,7 +72,6 @@ export const Details = ({stepNavigation}: {stepNavigation: StepNavigation}) => {
         }))
       }}
       {...{stepNavigation}}
-      consumerWish={report.step1.consumerWish}
     />
   )
 }
@@ -90,12 +88,11 @@ export const DetailsInner = ({
   saveChange,
   saveFiles,
   stepNavigation,
-  consumerWish,
 }: {
   inputs: DetailInput[]
   saveChange: (values: DetailInputValues2, files?: UploadedFile[], goToNextStep?: boolean) => void
   saveFiles: (uploadedFiles?: UploadedFile[]) => void
-  transmissionStatus: TransmissionStatus
+  transmissionStatus: FinalTransmissionStatus
   initialValues?: DetailInputValues2
   initialFiles?: UploadedFile[]
   fileLabel?: string
@@ -103,7 +100,6 @@ export const DetailsInner = ({
   employeeConsumer?: boolean
   tags?: ReportTag[]
   stepNavigation: StepNavigation
-  consumerWish?: ConsumerWish
 }) => {
   const [uploadedFiles, setUploadedFiles] = useState<undefined | UploadedFile[]>()
   const [hasTriedToSubmit, setHasTriedToSubmit] = useState(false)
@@ -173,36 +169,7 @@ export const DetailsInner = ({
       <Animate autoScrollTo={false}>
         <div>
           {displayAlertProduitDangereux && <DetailsAlertProduitDangereux />}
-
-          <FriendlyHelpText>
-            {fnSwitch(transmissionStatus, {
-              ['WILL_BE_TRANSMITTED']: (
-                <>
-                  <p className="mb-0" dangerouslySetInnerHTML={{__html: m.detailsTextAreaWillBeTransmitted}} />
-                  <p className="mb-0" dangerouslySetInnerHTML={{__html: m.detailsTextAreaTransmittableAnonymous}} />
-                </>
-              ),
-              ['MAY_BE_TRANSMITTED']: (
-                <>
-                  <p className="mb-0" dangerouslySetInnerHTML={{__html: m.detailsTextAreaMayBeTransmitted}} />
-                  <p className="mb-0" dangerouslySetInnerHTML={{__html: m.detailsTextAreaTransmittableAnonymous}} />
-                </>
-              ),
-              ['CANNOT_BE_TRANSMITTED']: (
-                <>
-                  <p className="mb-0" dangerouslySetInnerHTML={{__html: m.detailsTextAreaCannotBeTransmitted}} />
-                </>
-              ),
-              ['NOT_TRANSMITTABLE']: (
-                <>
-                  <p className="mb-0" dangerouslySetInnerHTML={{__html: m.detailsTextAreaNotTransmittable}} />
-                  {employeeConsumer && (
-                    <p className="mb-0" dangerouslySetInnerHTML={{__html: m.detailsTextAreaEmployeeConsumer}} />
-                  )}
-                </>
-              ),
-            })}
-          </FriendlyHelpText>
+          <TopInfosBlock {...{transmissionStatus}} />
           {inputs.map((input, inputIndex) => (
             <DetailsInputRenderByType
               key={inputIndex}
@@ -221,23 +188,7 @@ export const DetailsInner = ({
       <Animate autoScrollTo={false}>
         <div>
           <h4 className="mt-4">{fileLabel ?? m.attachments}</h4>
-          {transmissionStatus !== 'NOT_TRANSMITTABLE' && transmissionStatus !== 'CANNOT_BE_TRANSMITTED' ? (
-            <>
-              <FriendlyHelpText>
-                <p className="mb-0" dangerouslySetInnerHTML={{__html: attachmentDesc ?? m.attachmentsDesc2}} />
-              </FriendlyHelpText>
-              <p dangerouslySetInnerHTML={{__html: m.attachmentsDescAnonymous}} />
-            </>
-          ) : (
-            <FriendlyHelpText>
-              <p
-                className="mb-0"
-                dangerouslySetInnerHTML={{
-                  __html: !employeeConsumer && attachmentDesc ? attachmentDesc : m.notTransmittableAttachmentsDesc2,
-                }}
-              />
-            </FriendlyHelpText>
-          )}
+          <AttachmentInfosBlock {...{transmissionStatus, attachmentDesc, employeeConsumer}} />
           <ReportFiles
             files={uploadedFiles ?? []}
             fileOrigin={FileOrigin.Consumer}
@@ -267,4 +218,81 @@ export const DetailsInner = ({
       />
     </>
   )
+}
+
+function TopInfosBlock({transmissionStatus}: {transmissionStatus: FinalTransmissionStatus}) {
+  const {m} = useI18n()
+  const texts = (() => {
+    const {kind} = transmissionStatus
+    switch (kind) {
+      case 'WILL_BE_TRANSMITTED':
+        return [m.detailsTextAreaWillBeTransmitted, m.detailsTextAreaTransmittableAnonymous]
+      case 'MAY_BE_TRANSMITTED':
+        return [m.detailsTextAreaMayBeTransmitted, m.detailsTextAreaTransmittableAnonymous]
+      case 'NOT_TRANSMITTABLE':
+        const {reason} = transmissionStatus
+        switch (reason) {
+          case 'employeeConsumer':
+            return [m.detailsTextAreaNotTransmittable, m.detailsTextAreaEmployeeConsumer]
+          case 'tags':
+          case 'getAnswer':
+          case 'foreign':
+            return [m.detailsTextAreaNotTransmittable]
+          default:
+            return reason satisfies never
+        }
+      default:
+        return kind satisfies never
+    }
+  })()
+  return (
+    <FriendlyHelpText>
+      {texts.map((_, idx) => (
+        <p className="mb-0" key={idx} dangerouslySetInnerHTML={{__html: _}} />
+      ))}
+    </FriendlyHelpText>
+  )
+}
+
+function AttachmentInfosBlock({
+  transmissionStatus,
+  attachmentDesc,
+}: {
+  transmissionStatus: FinalTransmissionStatus
+  attachmentDesc?: string
+}) {
+  const {m} = useI18n()
+  function buildFriendlyHelpText(text: string) {
+    return (
+      <FriendlyHelpText>
+        <p className="mb-0" dangerouslySetInnerHTML={{__html: text}} />
+      </FriendlyHelpText>
+    )
+  }
+
+  const {kind} = transmissionStatus
+  switch (kind) {
+    case 'WILL_BE_TRANSMITTED':
+    case 'MAY_BE_TRANSMITTED':
+      return (
+        <>
+          {buildFriendlyHelpText(attachmentDesc ?? m.attachmentsDesc2)}
+          <p dangerouslySetInnerHTML={{__html: m.attachmentsDescAnonymous}} />
+        </>
+      )
+    case 'NOT_TRANSMITTABLE':
+      const {reason} = transmissionStatus
+      switch (reason) {
+        case 'employeeConsumer':
+          return buildFriendlyHelpText(m.notTransmittableAttachmentsDesc2)
+        case 'tags':
+        case 'getAnswer':
+        case 'foreign':
+          return buildFriendlyHelpText(attachmentDesc ? attachmentDesc : m.notTransmittableAttachmentsDesc2)
+        default:
+          return reason satisfies never
+      }
+    default:
+      return kind satisfies never
+  }
 }
