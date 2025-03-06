@@ -14,6 +14,15 @@ export type NewsArticle = {
 // This is the display order. Keep the most recents at the start of the array
 export const initialNewsArticlesData: NewsArticle[] = [
   {
+    date: '2025-03-10',
+    lang: AppLangs.fr,
+    slug: 'igp',
+    veryShortTitle: 'Produits industriels et artisanaux',
+    title: 'Produits industriels et artisanaux : des indications géographiques bien protégées par la DGCCRF',
+    excerpt: `Dans le cadre de leur mission de protection des consommateurs, les agents de la DGCCRF ont mené en 2022 une enquête sur l’utilisation des indications géographiques des produits industriels et artisanaux (IGPIA). Ces labels garantissent l’authenticité et la qualité des produits selon des critères précis. Les contrôles ont révélé un respect satisfaisant des règles, bien que quelques irrégularités aient été relevées.
+`,
+  },
+  {
     date: '2025-02-17',
     lang: AppLangs.fr,
     slug: 'usurpation-d-identite',
