@@ -35,8 +35,8 @@ export function ArticleIndicationsGeographiques() {
 
       <h2>Des contrôles pour prévenir les fraudes</h2>
       <p>
-        L’enquête de la DGCCRF visait à détecter d’éventuelles allégations frauduleuses et à évaluer l’efficacité des ODG. Sur
-        les 37 établissements contrôlés (10 ODG et 27 entreprises), 6 présentaient des anomalies, principalement liées à une
+        L’enquête de la DGCCRF visait à détecter d’éventuelles allégations frauduleuses et à évaluer l’efficacité des ODG. Sur les
+        37 établissements contrôlés (10 ODG et 27 entreprises), 6 présentaient des anomalies, principalement liées à une
         utilisation irrégulière d’une indication géographique.
       </p>
 
@@ -64,9 +64,7 @@ export function ArticleIndicationsGeographiques() {
         d’un nouveau règlement visant à renforcer la protection des IG pour les produits artisanaux et industriels.
       </p>
 
-      <p>
-        Pour en savoir plus, rendez-vous sur les fiches pratiques :
-      </p>
+      <p>Pour en savoir plus, rendez-vous sur les fiches pratiques :</p>
       <ul>
         <li>
           <Link
