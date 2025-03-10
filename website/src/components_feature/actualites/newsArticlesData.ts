@@ -14,6 +14,15 @@ export type NewsArticle = {
 // This is the display order. Keep the most recents at the start of the array
 export const initialNewsArticlesData: NewsArticle[] = [
   {
+    date: '2025-03-17',
+    lang: AppLangs.fr,
+    slug: 'cheapflation',
+    veryShortTitle: 'Cheapflation : enquêtes de la DGCCRF sur la charcuterie et les plats cuisinés',
+    title:
+      'Enquêtes de la DGCCRF sur la charcuterie et les plats cuisinés : peu de cas de cheapflation, mais quelques irrégularités constatées',
+    excerpt: `Afin de détecter des pratiques de cheapflation dans le secteur de la charcuterie et des plats cuisinés, la DGCCRF a mené une enquête en 2023.`,
+  },
+  {
     date: '2025-03-10',
     lang: AppLangs.fr,
     slug: 'igp',
