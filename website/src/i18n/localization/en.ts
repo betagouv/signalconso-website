@@ -1391,5 +1391,16 @@ export const en = {
   </li>
 </ul>
 `,
+    whenYouSendYourReport: `When you send your report...`,
+    companyWillHaveIdentity: `The company <b>will have your identity and contact details</b>.`,
+    companyWontKnowIdentity: `The company will not know who you are.`,
+    willHaveLittleEffect: `<b>Your report will have very little effect</b>, because the company is not in France.`,
+    agentWillRespond: `An agent will respond.`,
+    reportNotTransmittedToCompany: `Your report will not be transmitted to the company.`,
+    itWillBeSentToFraudControl: `It will be sent to Fraud Control.`,
+    reportSentToFraudControl: `Your report will be sent to Fraud Control.`,
+    mayBeIdentifiedLater: `It is possible that the company will be identified later. It will then receive the report.`,
+    reportWillBeTransmittedToCompany: `Your report will be transmitted to the company.`,
+    alsoSentToFraudControl: `It will also be sent to Fraud Control.`,
   },
 }

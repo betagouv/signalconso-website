@@ -14,6 +14,7 @@ import {useI18n} from '@/i18n/I18n'
 import {Report} from '@/model/Report'
 import {BuildingStep, buildingReportSteps} from '@/model/ReportStep'
 import {buildReportMetadata} from '@/utils/buildReportMetadata'
+import Alert from '@codegouvfr/react-dsfr/Alert'
 import {SocialNetworkRow} from '../../../components_simple/SocialNetworkRow'
 import {FileOrigin} from '../../../model/UploadedFile'
 import {getReportInputs} from '../Details/draftReportInputs'
@@ -55,6 +56,7 @@ export const ConfirmationInner = ({
             return <RenderEachStep key={step} {...{draft, stepNavigation, index}} step={step} />
           })}
         </ConfirmationStepper>
+        <BottomInfosBlock {...{transmissionStatus}} contactAgreement={draft.step4.contactAgreement} />
         <NextStepButton
           nextIconSend
           loadingNext={_reportCreate.createReportMutation.isPending}
@@ -228,4 +230,60 @@ function TopInfosBlock({transmissionStatus}: {transmissionStatus: FinalTransmiss
     }
   })()
   return <div className="mb-4 space-y-2">{elements}</div>
+}
+
+function BottomInfosBlock({
+  transmissionStatus,
+  contactAgreement,
+}: {
+  transmissionStatus: FinalTransmissionStatus
+  contactAgreement: boolean
+}) {
+  const {m} = useI18n()
+  const elements = (() => {
+    const {kind} = transmissionStatus
+    const contactAgreementText = contactAgreement ? m.companyWillHaveIdentity : m.companyWontKnowIdentity
+    switch (kind) {
+      case 'NOT_TRANSMITTABLE':
+        const ending = (() => {
+          const {reason} = transmissionStatus
+          switch (reason) {
+            case 'foreign':
+              return [m.willHaveLittleEffect]
+            case 'getAnswer':
+              return [m.agentWillRespond]
+            case 'employeeConsumer':
+            case 'tags':
+              return []
+            default:
+              return reason satisfies never
+          }
+        })()
+        return [m.reportNotTransmittedToCompany, m.itWillBeSentToFraudControl, ...ending]
+      case 'MAY_BE_TRANSMITTED':
+        return [m.reportSentToFraudControl, m.mayBeIdentifiedLater, contactAgreementText]
+      case 'WILL_BE_TRANSMITTED':
+        return [m.reportWillBeTransmittedToCompany, m.alsoSentToFraudControl, contactAgreementText]
+      default:
+        return kind satisfies never
+    }
+  })()
+  return (
+    <div className="">
+      <Alert
+        severity="info"
+        title={m.whenYouSendYourReport}
+        description={
+          <div>
+            {elements.map((_, idx) => (
+              <div key={idx} className="flex gap-2">
+                <i className="ri-arrow-right-line" />
+                <p className="mb-0" dangerouslySetInnerHTML={{__html: _}} />
+              </div>
+            ))}
+          </div>
+        }
+      />
+    </div>
+  )
 }
