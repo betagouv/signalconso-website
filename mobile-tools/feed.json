@@ -4,6 +4,27 @@
   "description": "",
   "items": [
     {
+      "title": "Un nouveau plan stratégique pour la DGCCRF ",
+      "link": "https://www.economie.gouv.fr/dgccrf/actualites/un-nouveau-plan-strategique-pour-la-dgccrf",
+      "description": "La DGCCRF a élaboré un nouveau plan stratégique 2025-2028, fruit d’une démarche participative impliquant tous les niveaux de l’organisation, des échelons nationaux aux territoires. Ce plan vise à renforcer notre rôle de régulateur économique et à protéger les consommateurs tout en répondant aux transformations majeures de l’économie et de la société.\n",
+      "guid": "3233510",
+      "date": "2025-03-05T15:43:00.000Z"
+    },
+    {
+      "title": "Produits cosmétiques : la délivrance des certificats exports transférée à la DGCCRF",
+      "link": "https://www.economie.gouv.fr/dgccrf/actualites/produits-cosmetiques-la-delivrance-des-certificats-exports-transferee-la-dgccrf",
+      "description": "Depuis le 1er mars, la DGCCRF prend en charge les demandes de certificats de conformité aux bonnes pratiques de fabrication pour l’export de cosmétiques.\n",
+      "guid": "3233504",
+      "date": "2025-02-28T14:05:15.000Z"
+    },
+    {
+      "title": "Prestations funéraires : le modèle de devis des opérateurs funéraires change au 1er juillet 2025",
+      "link": "https://www.economie.gouv.fr/dgccrf/actualites/prestations-funeraires-le-modele-de-devis-des-operateurs-funeraires-change-au-1er",
+      "description": "Un nouveau modèle de devis permettant d’améliorer la transparence de l’information délivrée au consommateur par les opérateurs funéraires entre en vigueur le 1er juillet 2025.\n",
+      "guid": "3233429",
+      "date": "2025-02-25T09:37:24.000Z"
+    },
+    {
       "title": "Piles bouton : prévenir l’ingestion et adopter les bons réflexes en cas d’accident ",
       "link": "https://www.economie.gouv.fr/dgccrf/actualites/piles-bouton-prevenir-lingestion-et-adopter-les-bons-reflexes-en-cas-daccident",
       "description": "Face aux nombreux cas d’ingestion de piles bouton par de très jeunes enfants (avant 6 ans, le plus souvent), responsables de graves conséquences, parfois mortelles, les autorités sanitaires alertent à nouveau sur ce risque sanitaire méconnu et sensibilisent les parents, les personnes ayant la garde d’enfants et les professionnels de santé sur les premiers réflexes à adopter en cas d’accident.\n",
@@ -121,27 +142,6 @@
       "description": "Dans le cadre de sa mission de protection des consommateurs, la Direction générale de la concurrence, de la consommation et de la répression des fraudes (DGCCRF) contrôle chaque année la sécurité des équipements de protection individuelle (EPI).\n",
       "guid": "3230161",
       "date": "2024-08-05T13:43:27+02:00"
-    },
-    {
-      "title": "Tous nos conseils pour profiter des JO",
-      "link": "https://www.economie.gouv.fr/dgccrf/tous-nos-conseils-pour-profiter-des-jo",
-      "description": "Les Jeux olympiques et paralympiques de Paris 2024 arrivent à grands pas. Déplacements, restauration, hôtel, souvenirs… ce sera aussi un moment de consommation fort. La DGCCRF vous informe sur vos droits et vous guide afin d’éviter les pièges qui pourraient gâcher le plaisir de la fête.\n",
-      "guid": "3229831",
-      "date": "2024-07-22T08:48:13+02:00"
-    },
-    {
-      "title": "JO Paris 2024 : des consommateurs bien protégés",
-      "link": "https://www.economie.gouv.fr/dgccrf/jo-paris-2024-des-consommateurs-bien-proteges",
-      "description": "La Direction générale de la Concurrence, de la Consommation et de la Répression des fraudes (DGCCRF) poursuit les acteurs peu scrupuleux qui chercheraient à profiter des Jeux olympiques pour tromper les visiteurs et consommateurs. Elle exerce ses contrôles en magasin comme sur internet. Plusieurs services ont par ailleurs été mis en place pour mieux aider les consommateurs et visiteurs qui rencontreraient des problèmes en matière de consommation.\n",
-      "guid": "3229821",
-      "date": "2024-07-17T16:15:16+02:00"
-    },
-    {
-      "title": "Shrinkflation : les consommateurs seront mieux avertis des baisses de quantités masquant une hausse de prix",
-      "link": "https://www.economie.gouv.fr/dgccrf/shrinkflation-les-consommateurs-seront-mieux-avertis-des-baisses-de-quantites-masquant-une",
-      "description": "Les grandes surfaces devront désormais avertir leurs clients quand la quantité vendue d’un produit aura diminué sans que son prix ne soit réduit d’autant.\n",
-      "guid": "3228711",
-      "date": "2024-07-01T15:21:09+02:00"
     }
   ]
 }
