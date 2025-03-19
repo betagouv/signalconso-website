@@ -14,6 +14,14 @@ export type NewsArticle = {
 // This is the display order. Keep the most recents at the start of the array
 export const initialNewsArticlesData: NewsArticle[] = [
   {
+    date: '2025-03-31',
+    lang: AppLangs.fr,
+    slug: 'bilan-2024',
+    veryShortTitle: 'Bilan 2024 de la DGCCRF',
+    title: 'Bilan 2024 de la DGCCRF : un engagement renforcé pour protéger les consommateurs',
+    excerpt: `En 2024, les efforts de la DGCCRF ont permis d’identifier et de sanctionner des pratiques frauduleuses, d’améliorer la sécurité des produits et d’assurer une concurrence loyale entre les entreprises.`,
+  },
+  {
     date: '2025-03-24',
     lang: AppLangs.fr,
     slug: 'plan-strategique',
