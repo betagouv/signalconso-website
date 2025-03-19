@@ -13,26 +13,24 @@ const files = [
 ]
 
 const extractWantedPropsFromSubcategories = (obj: any) => {
+  const isBlocking = !!obj.blockingInfo
+  const sharedFields = {
+    category: obj.category,
+    id: obj.id,
+    title: obj.title,
+    tags: obj.tags,
+    subcategory: obj.subcategory,
+    categoryOverride: obj.categoryOverride,
+    ...(isBlocking ? {isBlocking} : null),
+  }
   if (obj.subcategories && obj.subcategories.length !== 0) {
     const res = obj.subcategories.map(extractWantedPropsFromSubcategories)
     return {
-      category: obj.category,
-      id: obj.id,
-      title: obj.title,
-      tags: obj.tags,
+      ...sharedFields,
       subcategories: res,
-      subcategory: obj.subcategory,
-      categoryOverride: obj.categoryOverride,
     }
   } else {
-    return {
-      category: obj.category,
-      id: obj.id,
-      title: obj.title,
-      tags: obj.tags,
-      subcategory: obj.subcategory,
-      categoryOverride: obj.categoryOverride,
-    }
+    return sharedFields
   }
 }
 
