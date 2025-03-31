@@ -4,6 +4,13 @@
   "description": "",
   "items": [
     {
+      "title": "Appareils prétendant mesurer la glycémie sans piqûre : alerte sur des risques pour la santé",
+      "link": "https://www.economie.gouv.fr/dgccrf/actualites/appareils-pretendant-mesurer-la-glycemie-sans-piqure-alerte-sur-des-risques-pour",
+      "description": "La DGCCRF et l’Agence nationale de sécurité du médicament et des produits de santé (ANSM) alertent les consommateurs sur la vente d’appareils prétendant mesurer la glycémie par simple contact avec la peau, sans piqûre. Ces appareils sont trompeurs car ils ne peuvent pas donner de valeurs de glycémie fiables, mettant ainsi en danger la santé des personnes diabétiques.\n",
+      "guid": "3233882",
+      "date": "2025-03-31T09:20:24.000Z"
+    },
+    {
       "title": "Un nouveau plan stratégique pour la DGCCRF ",
       "link": "https://www.economie.gouv.fr/dgccrf/actualites/un-nouveau-plan-strategique-pour-la-dgccrf",
       "description": "La DGCCRF a élaboré un nouveau plan stratégique 2025-2028, fruit d’une démarche participative impliquant tous les niveaux de l’organisation, des échelons nationaux aux territoires. Ce plan vise à renforcer notre rôle de régulateur économique et à protéger les consommateurs tout en répondant aux transformations majeures de l’économie et de la société.\n",
@@ -135,13 +142,6 @@
       "description": "Le site vous informant sur le prix des contrôles techniques évolue ! La nouvelle adresse https://prix.conso.gouv.fr/controle-technique propose notamment pour les usagers des cartes interactives afin qu’ils trouvent plus rapidement un centre agréé près de chez eux et pour les professionnels une téléprocédure d’enregistrement plus efficace.\n",
       "guid": "3230350",
       "date": "2024-09-04T08:46:07+02:00"
-    },
-    {
-      "title": "Equipements de protection individuelle (EPI) : un secteur présentant des lacunes à l’étiquetage, mais une sécurité des utilisateurs assurée",
-      "link": "https://www.economie.gouv.fr/dgccrf/equipements-de-protection-individuelle-epi-un-secteur-presentant-des-lacunes-letiquetage",
-      "description": "Dans le cadre de sa mission de protection des consommateurs, la Direction générale de la concurrence, de la consommation et de la répression des fraudes (DGCCRF) contrôle chaque année la sécurité des équipements de protection individuelle (EPI).\n",
-      "guid": "3230161",
-      "date": "2024-08-05T13:43:27+02:00"
     }
   ]
 }
