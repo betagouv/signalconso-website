@@ -14,6 +14,14 @@ export type NewsArticle = {
 // This is the display order. Keep the most recents at the start of the array
 export const initialNewsArticlesData: NewsArticle[] = [
   {
+    date: '2025-04-07',
+    lang: AppLangs.fr,
+    slug: 'made-in-france',
+    veryShortTitle: 'Contrôle des mentions sur l’origine par la DGCCRF',
+    title: 'Contrôle des mentions sur l’origine des produits non alimentaires : la DGCCRF veille au respect des règles',
+    excerpt: `Avec l’engouement des consommateurs pour le “Made in France”, de nombreux professionnels valorisent l’origine nationale, régionale ou locale de leurs produits. Cependant, une enquête menée en 2023 par la DGCCRF révèle que certaines mentions d’origine sont trompeuses ou injustifiées.`,
+  },
+  {
     date: '2025-03-31',
     lang: AppLangs.fr,
     slug: 'bilan-2024',
