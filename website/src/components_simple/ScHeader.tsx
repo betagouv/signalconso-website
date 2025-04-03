@@ -104,8 +104,7 @@ export function ScHeader() {
 
 function EnvMarker() {
   const DEV = 'dév'
-  let marker = appConfig.envMarker ?? (appConfig.isDev ? DEV : null)
-  marker = 'environnement de démo'
+  const marker = appConfig.envMarker ?? (appConfig.isDev ? DEV : null)
   const isDev = marker === DEV
   if (marker) {
     return (
