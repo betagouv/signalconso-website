@@ -1,15 +1,15 @@
 'use client'
 
-import Header from '@codegouvfr/react-dsfr/Header'
 import {appConfig} from '@/core/appConfig'
+import {AppLangs} from '@/i18n/localization/AppLangs'
+import Header from '@codegouvfr/react-dsfr/Header'
 import {usePathname} from 'next/navigation'
+import {useEffect} from 'react'
 import {pagesDefs} from '../core/pagesDefinitions'
 import {useI18n} from '../i18n/I18n'
 import buildMenuLink from '../utils/menuLinks'
 import {urlServicePublicPlus} from './ScFooter'
 import {SwitchLang} from './SwitchLang'
-import {useEffect} from 'react'
-import {AppLangs} from '@/i18n/localization/AppLangs'
 
 function buildSubmenu(text: string, menuLinks: ReturnType<typeof buildMenuLink>[]) {
   return {
@@ -105,19 +105,20 @@ export function ScHeader() {
 function EnvMarker() {
   const DEV = 'dév'
   const marker = appConfig.envMarker ?? (appConfig.isDev ? DEV : null)
+  const isDev = marker === DEV
   if (marker) {
     return (
-      <div className="absolute z-[999] pointer-events-none top-0 w-full flex justify-center">
-        <div className="fr-container ">
-          <div
-            className={`${
-              marker === DEV ? ` bg-green-700 text-white font-bold uppercase text-2xl` : 'text-sm text-green-900'
-            }     border-green-900 border border-solid w-fit p-1 ml-32 mt-3 `}
-          >
-            {marker}
+      <>
+        <div className={`fixed top-0 z-[999] bg-green-700/50 pointer-events-none w-full flex justify-center py-2`}>
+          <div className="fr-container ">
+            <div
+              className={`w-fit p-1 ${isDev ? `bg-white text-green-700 font-bold uppercase serif text-2xl` : 'text-white text-base bg-green-700'}`}
+            >
+              {marker}
+            </div>
           </div>
         </div>
-      </div>
+      </>
     )
   }
   return null
