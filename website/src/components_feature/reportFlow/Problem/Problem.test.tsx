@@ -59,7 +59,7 @@ describe('Problem', () => {
   })
 
   it('should preselect subcategories passed in props', () => {
-    const app = act(() => render(<Problem {...props} anomaly={ProblemFixture.anomaly} path={[0]} />, renderOptions))
+    const app = render(<Problem {...props} anomaly={ProblemFixture.anomaly} path={[0]} />, renderOptions)
     expect(app.container.textContent).toContain(app.m.problemDoYouWorkInCompany)
     expect(app.container.textContent).toContain(app.m.problemDoYouWorkInCompanyNo)
   })
