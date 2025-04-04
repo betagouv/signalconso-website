@@ -8,14 +8,28 @@ import {last} from '@/utils/lodashNamedExport'
 import Button from '@codegouvfr/react-dsfr/Button'
 import {useMutation} from '@tanstack/react-query'
 import {useEffect, useState} from 'react'
-import {Anomaly, InfoWall, Subcategory} from 'shared/anomalies/Anomaly'
+import {Anomaly, InfoWall, RedirectToCategory, Subcategory} from 'shared/anomalies/Anomaly'
 import {LinkBackToHome} from '../../../components_simple/LinkBackToHome'
+import {buildLinkStartReport} from '@/core/buildLinks'
+import {AppLang} from '@/i18n/localization/AppLangs'
+import Link from 'next/link'
 
 interface Props {
   anomaly: Anomaly
   subcategories: Subcategory[]
   information: InfoWall
   isWebView: boolean
+}
+
+function buildRedirectHref(lang: AppLang, isWebView: boolean, redirect: RedirectToCategory) {
+  const url = buildLinkStartReport({path: redirect.categoryPath}, lang, {isWebView})
+
+  if (redirect.subcategorySlugs) {
+    const subcatsPath = redirect.subcategorySlugs.map(subcat => `subcategories=${subcat}`).join('&')
+    return `${url}?${subcatsPath}`
+  } else {
+    return url
+  }
 }
 
 export const ProblemInformation = ({anomaly, subcategories, information, isWebView}: Props) => {
@@ -65,6 +79,9 @@ export const ProblemInformation = ({anomaly, subcategories, information, isWebVi
                 <p className="text-gray-700" dangerouslySetInnerHTML={{__html: action.answer}} />
               </AccordionInline>
             ))}
+            {information.redirect && (
+              <Link href={buildRedirectHref(currentLang, isWebView, information.redirect)}>{information.redirect.title}</Link>
+            )}
           </div>
         </div>
       </Animate>

@@ -58,6 +58,12 @@ describe('Problem', () => {
     expect(app.container.textContent).toContain(app.m.problemDoYouWorkInCompanyNo)
   })
 
+  it('should preselect subcategories passed in props', () => {
+    const app = render(<Problem {...props} anomaly={ProblemFixture.anomaly} path={[0]} />, renderOptions)
+    expect(app.container.textContent).toContain(app.m.problemDoYouWorkInCompany)
+    expect(app.container.textContent).toContain(app.m.problemDoYouWorkInCompanyNo)
+  })
+
   const clickEmployeeConsumer = (app: ScRenderResult, isEmployee: 'yes' | 'no'): void => {
     const radios = Array.from(app.container.querySelectorAll('#select-employeeconsumer fieldset label')!)
     if (radios.length === 0) {

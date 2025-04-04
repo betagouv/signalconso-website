@@ -23,7 +23,7 @@ import {
 import {scrollTop} from '@/utils/utils'
 import {ReadonlyURLSearchParams, useRouter, useSearchParams} from 'next/navigation'
 import {useEffect} from 'react'
-import {Anomaly} from 'shared/anomalies/Anomaly'
+import {Anomaly, Subcategory} from 'shared/anomalies/Anomaly'
 import {useI18n} from '../../../i18n/I18n'
 import {AppLang} from '../../../i18n/localization/AppLangs'
 import {ReportFlowStepperHeader} from './ReportFlowStepperHeader'
@@ -113,9 +113,42 @@ function useIsStepInvalid(anomaly: Anomaly, step: ReportStepOrDone): boolean {
   return false
 }
 
+function transformSubcategoriesPathToIndexes(
+  result: number[],
+  path: string[],
+  subcategories?: Subcategory[],
+): number[] | undefined {
+  if (path.length === 0) {
+    return result
+  }
+
+  const [current, ...rest] = path
+  const subcategoryIndex = subcategories?.findIndex(subcategory => subcategory.subcategory === current) ?? -1
+
+  if (subcategoryIndex >= 0 && subcategories && subcategories[subcategoryIndex]) {
+    return transformSubcategoriesPathToIndexes([...result, subcategoryIndex], rest, subcategories[subcategoryIndex].subcategories)
+  } else {
+    return undefined
+  }
+}
+
+function useSubcategoriesPath(step: ReportStepOrDone, anomaly: Anomaly): number[] | undefined {
+  const searchParams = useSearchParams()
+  if (step === firstReportStep) {
+    const subcategoriesFromSearch = searchParams && searchParams.getAll('subcategories')
+
+    if (subcategoriesFromSearch.length === 0) {
+      return undefined
+    }
+
+    return transformSubcategoriesPathToIndexes([], subcategoriesFromSearch, anomaly.subcategories)
+  }
+}
+
 export const ReportFlowStepper = ({anomaly, isWebView}: StepperProps) => {
   const [step, setStep] = useStepFromRouter(anomaly, isWebView)
   const isStepInvalid = useIsStepInvalid(anomaly, step)
+  const path = useSubcategoriesPath(step, anomaly)
   useStepChangePushMobileEvent(step, isWebView)
   useEffect(() => {
     if (isStepInvalid) {
@@ -149,7 +182,7 @@ export const ReportFlowStepper = ({anomaly, isWebView}: StepperProps) => {
   return (
     <>
       <ReportFlowStepperHeader {...{step, stepNavigation, isWebView}} anomalyTitle={anomaly.title} variant="main" />
-      {step === 'BuildingProblem' && <Problem {...{isWebView, anomaly, stepNavigation}} />}
+      {step === 'BuildingProblem' && <Problem {...{isWebView, anomaly, stepNavigation, path}} />}
       {step === 'BuildingCompany' && <Company {...{stepNavigation}} />}
       {step === 'BuildingDetails' && <Details {...{stepNavigation}} />}
       {step === 'BuildingConsumer' && <Consumer {...{stepNavigation}} />}
