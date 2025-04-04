@@ -20,9 +20,10 @@ interface Props {
   anomaly: Anomaly
   isWebView: boolean
   stepNavigation: StepNavigation
+  path: number[] | undefined
 }
 
-export function Problem({anomaly, isWebView, stepNavigation}: Props) {
+export function Problem({anomaly, isWebView, stepNavigation, path}: Props) {
   const {report, setReport, resetReport} = useReportFlowContext()
   const {currentLang} = useI18n()
   const _analytic = useAnalyticContext()
@@ -37,10 +38,10 @@ export function Problem({anomaly, isWebView, stepNavigation}: Props) {
   if (!isDraftInitialized) {
     return null
   }
-  return <ProblemInner {...{anomaly, isWebView, stepNavigation}} />
+  return <ProblemInner {...{anomaly, isWebView, stepNavigation, path}} />
 }
 
-function ProblemInner({anomaly, isWebView, stepNavigation}: Props) {
+function ProblemInner({anomaly, isWebView, stepNavigation, path}: Props) {
   const _analytic = useAnalyticContext()
   const {report, setReport, sendReportEvent} = useReportFlowContext()
   if (!hasStep0(report)) {
@@ -57,7 +58,7 @@ function ProblemInner({anomaly, isWebView, stepNavigation}: Props) {
       <OpenFfWelcomeText setup={openFfSetup} />
       <RappelConsoWelcome setup={rappelConsoSetup} />
       {specialCategoriesNotLoading && (
-        <ProblemSubcategories {...{isWebView}}>
+        <ProblemSubcategories {...{isWebView, path}}>
           <ProblemEmployeeConsumer>
             <ProblemCompanyKindOverride>
               <ProblemConsumerWish>

@@ -9,4 +9,9 @@ blockingInfo:
     href="https://signal.conso.gouv.fr/fr/banque-assurance-mutuelle/faire-un-signalement"
     target="_blank" />"Banque / Assurance / Mutuelle"</a> puis "Assurance /
     Mutuelle".
+  redirect:
+    title: Assurance / Mutuelle
+    categoryPath: banque-assurance-mutuelle
+    subcategorySlugs:
+      - Une_assurance_mutuelle
 subcategory: Des_difficultes_de_remboursement_de_frais_medicaux

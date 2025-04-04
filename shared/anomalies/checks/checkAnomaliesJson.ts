@@ -67,6 +67,7 @@ const subcategoryWithInfoWallSpec: ObjectSpec = {
             answer: _ => _.assertIsString(),
           })
         }),
+      redirect: _ => _.ifDefined()?.assertRedirectToCategoryExists()
     }),
   ...baseSubcategorySpec,
 }

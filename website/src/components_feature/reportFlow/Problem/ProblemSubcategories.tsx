@@ -1,16 +1,35 @@
 import {instanceOfSubcategoryWithInfoWall} from '@/anomalies/Anomalies'
 import {getAnomaly, getSubcategories, hasStep0, hasSubcategoryIndexes} from '@/feature/reportUtils'
-import {ReactNode} from 'react'
+import {ReactNode, useEffect} from 'react'
 import {PartialReport, useReportFlowContext} from '../ReportFlowContext'
 import {ProblemInformation} from './ProblemInformation'
 import {ProblemSelect} from './ProblemSelect'
 import {computeSelectedSubcategoriesData} from './useSelectedSubcategoriesData'
 
-export function ProblemSubcategories({children, isWebView}: {children: ReactNode; isWebView: boolean}) {
+export function ProblemSubcategories({
+  children,
+  isWebView,
+  path,
+}: {
+  children: ReactNode
+  isWebView: boolean
+  path: number[] | undefined
+}) {
   const {report: r, setReport} = useReportFlowContext()
   if (!hasStep0(r)) {
     throw new Error('Draft is not ready to ask for subcategories')
   }
+
+  useEffect(() => {
+    if (path && path.length > 0) {
+      setReport(report => {
+        return path.reduce<PartialReport>((acc, subI, subIIndex) => {
+          return applySubcategoriesChange(acc, subI, subIIndex)
+        }, report)
+      })
+    }
+  })
+
   const anomaly = getAnomaly(r)
   const subcategories = hasSubcategoryIndexes(r) ? getSubcategories(r) : []
   const {lastSubcategory, isLastSubcategory} = computeSelectedSubcategoriesData(subcategories)
