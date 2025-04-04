@@ -20,7 +20,7 @@ interface Props {
   anomaly: Anomaly
   isWebView: boolean
   stepNavigation: StepNavigation
-  path: number[] | undefined
+  path?: number[]
 }
 
 export function Problem({anomaly, isWebView, stepNavigation, path}: Props) {
