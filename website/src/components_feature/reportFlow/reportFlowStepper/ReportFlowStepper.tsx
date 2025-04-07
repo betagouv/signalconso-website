@@ -22,7 +22,7 @@ import {
 } from '@/model/ReportStep'
 import {scrollTop} from '@/utils/utils'
 import {ReadonlyURLSearchParams, useRouter, useSearchParams} from 'next/navigation'
-import {useEffect} from 'react'
+import {useEffect, useMemo} from 'react'
 import {Anomaly, Subcategory} from 'shared/anomalies/Anomaly'
 import {useI18n} from '../../../i18n/I18n'
 import {AppLang} from '../../../i18n/localization/AppLangs'
@@ -134,15 +134,18 @@ function transformSubcategoriesPathToIndexes(
 
 function useSubcategoriesPath(step: ReportStepOrDone, anomaly: Anomaly): number[] | undefined {
   const searchParams = useSearchParams()
-  if (step === firstReportStep) {
-    const subcategoriesFromSearch = searchParams && searchParams.getAll('subcategories')
+  // Path is an array so we need to memoize it to avoid infinite rerender
+  return useMemo(() => {
+    if (step === firstReportStep) {
+      const subcategoriesFromSearch = searchParams && searchParams.getAll('subcategories')
 
-    if (subcategoriesFromSearch.length === 0) {
-      return undefined
+      if (subcategoriesFromSearch.length === 0) {
+        return undefined
+      }
+
+      return transformSubcategoriesPathToIndexes([], subcategoriesFromSearch, anomaly.subcategories)
     }
-
-    return transformSubcategoriesPathToIndexes([], subcategoriesFromSearch, anomaly.subcategories)
-  }
+  }, [step, anomaly, searchParams])
 }
 
 export const ReportFlowStepper = ({anomaly, isWebView}: StepperProps) => {

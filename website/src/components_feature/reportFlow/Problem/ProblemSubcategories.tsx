@@ -1,39 +1,33 @@
 import {instanceOfSubcategoryWithInfoWall} from '@/anomalies/Anomalies'
 import {getAnomaly, getSubcategories, hasStep0, hasSubcategoryIndexes} from '@/feature/reportUtils'
-import {ReactNode, useEffect} from 'react'
+import {ReactNode} from 'react'
 import {PartialReport, useReportFlowContext} from '../ReportFlowContext'
 import {ProblemInformation} from './ProblemInformation'
 import {ProblemSelect} from './ProblemSelect'
 import {computeSelectedSubcategoriesData} from './useSelectedSubcategoriesData'
+import {usePathname, useSearchParams} from 'next/navigation'
 
-export function ProblemSubcategories({
-  children,
-  isWebView,
-  path,
-}: {
-  children: ReactNode
-  isWebView: boolean
-  path: number[] | undefined
-}) {
+export function ProblemSubcategories({children, isWebView}: {children: ReactNode; isWebView: boolean}) {
   const {report: r, setReport} = useReportFlowContext()
   if (!hasStep0(r)) {
     throw new Error('Draft is not ready to ask for subcategories')
   }
 
-  useEffect(() => {
-    if (path && path.length > 0) {
-      setReport(report => {
-        return path.reduce<PartialReport>((acc, subI, subIIndex) => {
-          return applySubcategoriesChange(acc, subI, subIIndex)
-        }, report)
-      })
-    }
-  })
+  const searchParams = useSearchParams()
+  const pathname = usePathname()
 
   const anomaly = getAnomaly(r)
   const subcategories = hasSubcategoryIndexes(r) ? getSubcategories(r) : []
   const {lastSubcategory, isLastSubcategory} = computeSelectedSubcategoriesData(subcategories)
   const handleSubcategoriesChange = (subcategoryIndex: number, subcategoryDepthIndex: number) => {
+    // To clean the URL from subcategories once the use chose his path.
+    const params = new URLSearchParams(searchParams)
+    if (params.get('subcategories')) {
+      params.delete('subcategories')
+      const newUrl = `${pathname}?${params.toString()}`
+      window.history.replaceState({}, '', newUrl)
+    }
+
     setReport(report => {
       return applySubcategoriesChange(report, subcategoryIndex, subcategoryDepthIndex)
     })
@@ -74,7 +68,11 @@ export function ProblemSubcategories({
   )
 }
 
-function applySubcategoriesChange(report: PartialReport, subcategoryIndex: number, subcategoryDepthIndex: number): PartialReport {
+export function applySubcategoriesChange(
+  report: PartialReport,
+  subcategoryIndex: number,
+  subcategoryDepthIndex: number,
+): PartialReport {
   if (!hasStep0(report)) {
     throw new Error('Report should have a lang and a category already')
   }

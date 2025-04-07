@@ -2,11 +2,11 @@ title: Oui
 desc: "Exemple\_: J'ai acheté sur un site internet ou sur une application"
 blockingInfo:
   title: >-
-    Revenez en arrière et utilisez plutôt la catégorie spécifique à votre
-    problème 🙂
+    Utilisez plutôt la catégorie spécifique à votre problème 🙂
   content: >-
     Un problème de prix, sur la qualité de la chambre, annulation/remboursement
-    ?  <br> Utilisez la catégorie <a
-    href="https://signal.conso.gouv.fr/fr/achat-site/faire-un-signalement"
-    target="_blank" />"Achat sur internet"</a>.
+    ?  <br> Utilisez la catégorie suivante :
+  redirect:
+    title: Achat sur internet
+    categoryPath: achat-site
 subcategory: Oui

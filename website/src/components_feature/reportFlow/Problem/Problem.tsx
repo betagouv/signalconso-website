@@ -2,7 +2,7 @@ import {AnalyticContextProps, useAnalyticContext} from '@/analytic/AnalyticConte
 import {EventCategories, ReportEventActions} from '@/analytic/analytic'
 import {NextStepButton} from '@/components_feature/reportFlow/reportFlowStepper/NextStepButton'
 import {StepNavigation} from '@/components_feature/reportFlow/reportFlowStepper/ReportFlowStepper'
-import {OpenFfWelcomeText, useOpenFfSetupLoaded as useHandleOpenFfSetupLoaded, useOpenFfSetup} from '@/feature/openFoodFacts'
+import {OpenFfWelcomeText, useOpenFfSetup, useOpenFfSetupLoaded as useHandleOpenFfSetupLoaded} from '@/feature/openFoodFacts'
 import {RappelConsoWelcome, useHandleRcSetupLoaded, useRappelConsoSetup} from '@/feature/rappelConso'
 import {getCompanyKind, hasStep0, hasStep1Full} from '@/feature/reportUtils'
 import {initiateReport} from '@/feature/reportUtils2'
@@ -14,7 +14,7 @@ import {SendReportEvent, SetReport, useReportFlowContext} from '../ReportFlowCon
 import {ProblemCompanyKindOverride} from './ProblemCompanyKindOverride'
 import {ProblemConsumerWish} from './ProblemConsumerWish'
 import {ProblemEmployeeConsumer} from './ProblemEmployeeConsumer'
-import {ProblemSubcategories} from './ProblemSubcategories'
+import {applySubcategoriesChange, ProblemSubcategories} from './ProblemSubcategories'
 
 interface Props {
   anomaly: Anomaly
@@ -51,6 +51,17 @@ function ProblemInner({anomaly, isWebView, stepNavigation, path}: Props) {
   const rappelConsoSetup = useRappelConsoSetup(anomaly)
   useHandleOpenFfSetupLoaded(openFfSetup, setReport)
   useHandleRcSetupLoaded(rappelConsoSetup, setReport)
+  useEffect(() => {
+    if (setReport && path && path.length > 0) {
+      setReport(report =>
+        path.reduce(
+          (newReport, subcategoryIndex, subcategoryDepthIndex) =>
+            applySubcategoriesChange(newReport, subcategoryIndex, subcategoryDepthIndex),
+          report,
+        ),
+      )
+    }
+  }, [path, setReport])
   const specialCategoriesNotLoading = openFfSetup.status !== 'loading' && rappelConsoSetup.status !== 'loading'
   const onNext = buildOnNext({sendReportEvent, setReport, stepNavigation, _analytic})
   return (
@@ -58,7 +69,7 @@ function ProblemInner({anomaly, isWebView, stepNavigation, path}: Props) {
       <OpenFfWelcomeText setup={openFfSetup} />
       <RappelConsoWelcome setup={rappelConsoSetup} />
       {specialCategoriesNotLoading && (
-        <ProblemSubcategories {...{isWebView, path}}>
+        <ProblemSubcategories {...{isWebView}}>
           <ProblemEmployeeConsumer>
             <ProblemCompanyKindOverride>
               <ProblemConsumerWish>

@@ -1,14 +1,10 @@
 title: Des difficultés de remboursement de frais médicaux
 blockingInfo:
   title: >-
-    Revenez en arrière et utilisez plutôt la catégorie spécifique à votre
-    problème 🙂
+    Utilisez plutôt la catégorie spécifique à votre problème 🙂
   content: >-
-    Un problèmes ou des difficultés pour avoir votre remboursement optique,
-    dentaire ou de frais de soin ? Utilisez la catégorie <a
-    href="https://signal.conso.gouv.fr/fr/banque-assurance-mutuelle/faire-un-signalement"
-    target="_blank" />"Banque / Assurance / Mutuelle"</a> puis "Assurance /
-    Mutuelle".
+    Un problème ou des difficultés pour avoir votre remboursement optique,
+    dentaire ou de frais de soin ? Utilisez la catégorie suivante :
   redirect:
     title: Assurance / Mutuelle
     categoryPath: banque-assurance-mutuelle

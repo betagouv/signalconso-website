@@ -1,11 +1,11 @@
 title: Un influenceur fait de la publicité trompeuse
 blockingInfo:
   title: >-
-    Revenez en arrière et utilisez plutôt la catégorie spécifique à votre
-    problème 🙂
+    Utilisez plutôt la catégorie spécifique à votre problème 🙂
   content: >-
     J'ai vu vidéo ou une story d'un influenceur faire de la publicité mensongère
-    ou fait de la publicité pour des produits interdits. Utilisez la catégorie
-    <a href="https://signal.conso.gouv.fr/fr/internet/faire-un-signalement"
-    target="_blank" />"Internet (hors achats)"</a>.
+    ou fait de la publicité pour des produits interdits. Utilisez la catégorie suivante :
+  redirect:
+    title: Internet (hors achats)
+    categoryPath: internet
 subcategory: Un_influenceur_fait_de_la_publicite_trompeuse

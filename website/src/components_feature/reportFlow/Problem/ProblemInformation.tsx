@@ -80,7 +80,9 @@ export const ProblemInformation = ({anomaly, subcategories, information, isWebVi
               </AccordionInline>
             ))}
             {information.redirect && (
-              <Link href={buildRedirectHref(currentLang, isWebView, information.redirect)}>{information.redirect.title}</Link>
+              <div className="flex items-center justify-center text-xl">
+                <Link href={buildRedirectHref(currentLang, isWebView, information.redirect)}>{information.redirect.title}</Link>
+              </div>
             )}
           </div>
         </div>

@@ -209,6 +209,12 @@ const NodeInfo = ({anomaly}: {anomaly: SubcategoryWithInfoWall}) => {
             </ul>
           </div>
         )}
+        {anomaly.blockingInfo.redirect && (
+          <div className="text-sm text-gray-500">
+            {anomaly.blockingInfo.redirect.title} (Lien vers : {anomaly.blockingInfo.redirect.categoryPath} puis{' '}
+            {anomaly.blockingInfo.redirect.subcategorySlugs?.join(' -> ')})
+          </div>
+        )}
         {anomaly.blockingInfo.reportOutOfScopeMessage && (
           <span className="text-sm text-gray-500">{m.informationReportOutOfScope}</span>
         )}

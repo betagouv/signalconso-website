@@ -8,6 +8,11 @@ blockingInfo:
     delayed or cancelled. SignalConso does not handle this type of report. We
     recommend you visit the French Civil Aviation Authority website: <br /><a
     href="https://droits-passagers-aeriens.aviation-civile.gouv.fr">https://droits-passagers-aeriens.aviation-civile.gouv.fr</a>
-    <br /> <br /> Did you book your flight through a travel agency ?  <br /> Go
-    back and select "Travel agency" :)
+    <br /> <br /> Did you book your flight through a travel agency ?  <br />
+    Select the following category:
+  redirect:
+    title: Travel agency
+    categoryPath: voyage-loisirs
+    subcategorySlugs:
+      - Travel_agency
 subcategory: Transport_company

@@ -33,25 +33,27 @@ export class AnomalyTreeWalker {
   assertRedirectToCategoryExists() {
     this.into('title').assertIsString()
     this.into('categoryPath').assertIsString()
-    this.into('subcategorySlugs').assertIsArrayOfString()
+    this.into('subcategorySlugs').ifDefined()?.assertIsArrayOfString()
 
     const categoryPath = this.value.categoryPath as string
-    const subcategorySlugs = this.value.subcategorySlugs as string[]
+    const subcategorySlugs = this.value.subcategorySlugs as string[] | undefined
 
     const index = this.root.findIndex((v: any) => v.path === categoryPath) ?? -1
     if (index === -1) {
       throw this.err(`Category ${this.value} does not exist`)
     }
 
-    let currentValue = this.root[index]
-    subcategorySlugs.forEach((slug) => {
-      const index = currentValue.subcategories.findIndex((v: any) => v.subcategory === slug) ?? -1
-      if (index === -1) {
-        throw this.err(`Path ${subcategorySlugs.join(" -> ")} is invalid, nothing found at '${slug}'`)
-      }
-      currentValue = currentValue.subcategories[index]
+    if (subcategorySlugs) {
+      let currentValue = this.root[index]
+      subcategorySlugs.forEach((slug) => {
+        const index = currentValue.subcategories.findIndex((v: any) => v.subcategory === slug) ?? -1
+        if (index === -1) {
+          throw this.err(`Path ${subcategorySlugs.join(" -> ")} is invalid, nothing found at '${slug}'`)
+        }
+        currentValue = currentValue.subcategories[index]
 
-    })
+      })
+    }
   }
 
   // Returns a new TreeWalker, focused on something one more level down the tree

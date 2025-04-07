@@ -2,12 +2,13 @@ title: L'assurance santé d'un animal
 desc: 'Exemple : problème de remboursement de frais vétérinaires avec mon assurance'
 blockingInfo:
   title: >-
-    Revenez en arrière et utilisez plutôt la catégorie spécifique à votre
-    problème 🙂
+    Utilisez plutôt la catégorie spécifique à votre problème 🙂
   content: >-
     Un appel, un SMS, problème de contrat, problème de remboursement de frais ?
-    Utilisez la catégorie <a
-    href="https://signal.conso.gouv.fr/fr/banque-assurance-mutuelle/faire-un-signalement"
-    target="_blank" />"Banque / Assurance / Mutuelle "</a> puis "Assurance /
-    Mutuelle".
+    Utilisez la catégorie suivante :
+  redirect:
+    title: Assurance / Mutuelle
+    categoryPath: banque-assurance-mutuelle
+    subcategorySlugs:
+      - Une_assurance_mutuelle
 subcategory: Lassurance_sante_dun_animal
