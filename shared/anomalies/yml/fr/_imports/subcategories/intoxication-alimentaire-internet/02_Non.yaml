@@ -1,10 +1,14 @@
 title: Non
 blockingInfo:
   title: >-
-    Revenez en arrière et utilisez plutôt la catégorie spécifique à votre
-    problème 🙂
-  content: >-
-    Pour un repas au restaurant ? Utilisez la catégorie "Café /
-    Restaurant".<br/> Un produit acheté en magasin ? Utilisez la catégorie
-    "Achat (Magasin ou Internet)".<br/>
+    Utilisez plutôt la catégorie spécifique à votre problème 🙂
+  redirect:
+    - title: Café / Restaurant
+      description: >-
+        Pour un repas au restaurant ? Utilisez la catégorie :
+      categoryPath: cafe-restaurant
+    - title: Achat en Magasin
+      description: >-
+        Un produit acheté en magasin ? Utilisez la catégorie :
+      categoryPath: achat-magasin
 subcategory: Non

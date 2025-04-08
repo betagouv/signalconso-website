@@ -57,7 +57,7 @@ export const frAirtableLandingsData = [
         author: 'Fatima M.',
       },
       {
-        text: "Bonjour, J'ai récemment acheté des nouvelles lunettes de vue dans une boutique de centre-ville, et le vendeur m'a informé que j'aurais deux verres simples au prix de 160€ chacun, qui correspond au plafond de remboursement de ma mutuelle. Cependant, après avoir consulté la prise en charge sur le site de ma mutuelle, j'ai remarqué que le vendeur m'a facturé un verre simple à 160€ et un verre complexe à 215€, alors que les deux verres sont unifocaux (simples).",
+        text: "Bonjour, J'ai récemment acheté des nouvelles lunettes de vue dans une boutique de centre-ville, et le vendeur m'a informé que j'aurai deux verres simples au prix de 160€ chacun, qui correspond au plafond de remboursement de ma mutuelle. Cependant, après avoir consulté la prise en charge sur le site de ma mutuelle, j'ai remarqué que le vendeur m'a facturé un verre simple à 160€ et un verre complexe à 215€, alors que les deux verres sont unifocaux (simples).",
         author: 'Chloé L.',
       },
       {
@@ -400,7 +400,7 @@ export const frAirtableLandingsData = [
         author: 'Dylan A.',
       },
       {
-        text: "Bonjour, j'ai effectué une réservation d'une semaine en pension complète pour 5 personnes entre juillet et aout, j'ai payé pour cela mais le mail de confirmation que j'ai reçu indique qu'il s'agit d'une demi-pension. J'ai pourtant bien sélectionné pension complète lors de ma recherche puis j'ai vérifié que c'était encore bien écrit lors lors de la sélection des dates. J'ai donc enregistré une vidéo pour montrer toutes les étapes de la réservation, nous n'y voyons jamais apparaitre la demi-pension. Après quelques recherches il s'avère qu'il faut cliquer sur un lien qui ouvre un popup pour voir que la pension complète est subitement passé en demi-pension. A cause de ce changement camouflé je n'ai pas vu que la pension avait changée, j'aurais pourtant du être avertie clairement. J'ai donc contacté le service client pour leur demander de bien vouloir me passer en pension complète, mais il a refusé. ",
+        text: "Bonjour, j'ai effectué une réservation d'une semaine en pension complète pour 5 personnes entre juillet et aout, j'ai payé pour cela mais le mail de confirmation que j'ai reçu indique qu'il s'agit d'une demi-pension. J'ai pourtant bien sélectionné pension complète lors de ma recherche puis j'ai vérifié que c'était encore bien écrit lors lors de la sélection des dates. J'ai donc enregistré une vidéo pour montrer toutes les étapes de la réservation, nous n'y voyons jamais apparaitre la demi-pension. Après quelques recherches il s'avère qu'il faut cliquer sur un lien qui ouvre un popup pour voir que la pension complète est subitement passé en demi-pension. A cause de ce changement camouflé je n'ai pas vu que la pension avait changée, j'aurai pourtant du être avertie clairement. J'ai donc contacté le service client pour leur demander de bien vouloir me passer en pension complète, mais il a refusé. ",
         author: 'Simone B.',
       },
       {
