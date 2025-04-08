@@ -12,5 +12,13 @@ blockingInfo:
     utiliser le site dédié : <br /><a
     href="https://droits-passagers-aeriens.aviation-civile.gouv.fr/public/signalement?new-signalement=true">https://droits-passagers-aeriens.aviation-civile.gouv.fr</a>
     <br /> <br />Vous avez acheté vos billets d'avions dans une agence de
-    voyages ? <br />Revenez en arrière et allez sur "Agence de voyage" :)
+    voyages ?
+  redirect:
+    - title: Agence de voyage
+      description: >-
+        Utilisez plutôt la catégorie suivante :
+      categoryPath: voyage-loisirs
+      subcategorySlugs:
+        - Voyage_tourisme_loisirs
+        - Agence_de_voyage
 subcategory: Avion_Compagnie_aerienne_Aerodrome

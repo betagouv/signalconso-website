@@ -17,7 +17,14 @@ import {
   instanceOfSubcategoryLeaf,
   instanceOfSubcategoryWithInfoWall,
 } from '../anomalies/Anomalies'
-import {CategoryNode, DetailInput, DetailInputType, StandardSubcategory, SubcategoryWithInfoWall} from 'shared/anomalies/Anomaly'
+import {
+  CategoryNode,
+  DetailInput,
+  DetailInputType,
+  RedirectToCategory,
+  StandardSubcategory,
+  SubcategoryWithInfoWall,
+} from 'shared/anomalies/Anomaly'
 import {useI18n} from '../i18n/I18n'
 import {fnSwitch} from '../utils/FnSwitch'
 
@@ -209,6 +216,16 @@ const NodeInfo = ({anomaly}: {anomaly: SubcategoryWithInfoWall}) => {
             </ul>
           </div>
         )}
+        {anomaly.blockingInfo.redirect?.map((redirect: RedirectToCategory) => (
+          <>
+            <div className="text-sm text-gray-500">
+              {redirect.description && (
+                <p className="text-sm mb-1 mt-2" dangerouslySetInnerHTML={{__html: redirect.description}} />
+              )}
+              {redirect.title} (Lien vers : {redirect.categoryPath} puis {redirect.subcategorySlugs?.join(' -> ')})
+            </div>
+          </>
+        ))}
         {anomaly.blockingInfo.reportOutOfScopeMessage && (
           <span className="text-sm text-gray-500">{m.informationReportOutOfScope}</span>
         )}
