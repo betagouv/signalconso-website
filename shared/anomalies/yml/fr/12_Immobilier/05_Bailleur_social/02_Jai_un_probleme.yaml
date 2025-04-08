@@ -8,8 +8,8 @@ blockingInfo:
     <br> S'il s'agit d'un signalement concernant un logement non décent (santé
     ou sécurité mise en danger, équipement essentiel manquant, présence de
     parasites...), nous vous invitons à utiliser le site dédié:   <a
-    href="https://histologe.beta.gouv.fr/signalement"
-    target="_blank">histologe</a>
+    href="https://bo.signal-logement.beta.gouv.fr/signalement"
+    target="_blank">Signal logement</a>
   reportOutOfScopeMessage: true
 subcategory: >-
   Jai_un_probleme_avec_le_bien_que_je_loue_ou_la_copropriete_dans_laquelle_il_se_trouve
