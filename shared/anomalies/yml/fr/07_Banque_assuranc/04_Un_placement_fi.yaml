@@ -8,8 +8,10 @@ blockingInfo:
     financiers risqués, Crypto-actifs ou Crypto-actifs ? <br> Utilisez la
     catégorie "Achat sur internet". <br>  <br> Vous avez vu une vidéo ou une
     story d'un influenceur faisant de la publicité mensongère ou pour des
-    produits interdits ? <br> Utilisez la catégorie suivante :
+    produits interdits ?
   redirect:
-    title: Internet (hors achats)
-    categoryPath: internet
+    - title: Internet (hors achats)
+      description: >-
+        Utilisez la catégorie suivante :
+      categoryPath: internet
 subcategory: Un_placement_financier_conclu_hors_dune_banque_classique

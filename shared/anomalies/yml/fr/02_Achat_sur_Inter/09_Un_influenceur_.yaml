@@ -4,8 +4,10 @@ blockingInfo:
     Utilisez plutôt la catégorie spécifique à votre problème 🙂
   content: >-
     J'ai vu vidéo ou une story d'un influenceur faire de la publicité mensongère
-    ou fait de la publicité pour des produits interdits. Utilisez la catégorie suivante :
+    ou fait de la publicité pour des produits interdits.
   redirect:
-    title: Internet (hors achats)
-    categoryPath: internet
+    - title: Internet (hors achats)
+      description: >-
+        Utilisez la catégorie suivante :
+      categoryPath: internet
 subcategory: Un_influenceur_fait_de_la_publicite_trompeuse

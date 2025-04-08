@@ -30,10 +30,15 @@ export class AnomalyTreeWalker {
     })
   }
 
+  assertRedirectExists() {
+    this.assertIsArrayWith((_) => _.assertRedirectToCategoryExists())
+  }
+
   assertRedirectToCategoryExists() {
     this.into('title').assertIsString()
     this.into('categoryPath').assertIsString()
     this.into('subcategorySlugs').ifDefined()?.assertIsArrayOfString()
+    this.into('description').ifDefined()?.assertIsString()
 
     const categoryPath = this.value.categoryPath as string
     const subcategorySlugs = this.value.subcategorySlugs as string[] | undefined

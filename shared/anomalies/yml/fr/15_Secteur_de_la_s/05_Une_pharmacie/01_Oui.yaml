@@ -5,8 +5,10 @@ blockingInfo:
     Utilisez plutôt la catégorie spécifique à votre problème 🙂
   content: >-
     Un problème de prix, sur la qualité de la chambre, annulation/remboursement
-    ?  <br> Utilisez la catégorie suivante :
+    ?
   redirect:
-    title: Achat sur internet
-    categoryPath: achat-site
+    - title: Achat sur internet
+      description: >-
+        Utilisez la catégorie suivante :
+      categoryPath: achat-site
 subcategory: Oui

@@ -1,14 +1,14 @@
 title: Oui
 blockingInfo:
   title: >-
-    Revenez en arrière et utilisez plutôt la catégorie spécifique à votre
-    problème 🙂
-  content: >-
-    Un problème de prix, sur la qualité de la chambre, annulation/remboursement
-    ?  <br> Utilisez la catégorie <a
-    href="https://signal.conso.gouv.fr/fr/voyage-loisirs/faire-un-signalement"
-    target="_blank" />"Voyage / Loisirs"</a>. <br> Un problème qui s'est produit
-    lors du suivi médicale ? <br> Utilisez la catégorie <a
-    href="https://signal.conso.gouv.fr/fr/sante/faire-un-signalement"
-    target="_blank" />"Professionnel de la santé"</a>.
+    Utilisez plutôt la catégorie spécifique à votre problème 🙂
+  redirect:
+    - title: Voyage / Loisirs
+      description: >-
+        Un problème de prix, sur la qualité de la chambre, annulation/remboursement ? Utilisez la catégorie :
+      categoryPath: voyage-loisirs
+    - title: Professionnel de la santé
+      description: >-
+        Un problème qui s'est produit lors du suivi médicale ? Utilisez la catégorie :
+      categoryPath: sante
 subcategory: Oui

@@ -4,10 +4,12 @@ blockingInfo:
     Utilisez plutôt la catégorie spécifique à votre problème 🙂
   content: >-
     Un problème ou des difficultés pour avoir votre remboursement optique,
-    dentaire ou de frais de soin ? Utilisez la catégorie suivante :
+    dentaire ou de frais de soin ?
   redirect:
-    title: Assurance / Mutuelle
-    categoryPath: banque-assurance-mutuelle
-    subcategorySlugs:
-      - Une_assurance_mutuelle
+    - title: Assurance / Mutuelle
+      description: >-
+        Utilisez la catégorie suivante :
+      categoryPath: banque-assurance-mutuelle
+      subcategorySlugs:
+        - Une_assurance_mutuelle
 subcategory: Des_difficultes_de_remboursement_de_frais_medicaux

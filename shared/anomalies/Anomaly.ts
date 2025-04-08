@@ -188,12 +188,13 @@ export interface InfoWall {
   questions?: QuestionAndAnswer[]
   subTitle?: string
   reportOutOfScopeMessage?: boolean
-  redirect?: RedirectToCategory
+  redirect?: RedirectToCategory[]
 }
 
 export interface RedirectToCategory {
   title: string
   categoryPath: string
+  description?: string
   subcategorySlugs?: string[]
 }
 

@@ -79,11 +79,14 @@ export const ProblemInformation = ({anomaly, subcategories, information, isWebVi
                 <p className="text-gray-700" dangerouslySetInnerHTML={{__html: action.answer}} />
               </AccordionInline>
             ))}
-            {information.redirect && (
-              <div className="flex items-center justify-center text-xl">
-                <Link href={buildRedirectHref(currentLang, isWebView, information.redirect)}>{information.redirect.title}</Link>
+            {information.redirect?.map((redirect: RedirectToCategory) => (
+              <div key={redirect.title}>
+                {redirect.description && <p className="mb-1 mt-4" dangerouslySetInnerHTML={{__html: redirect.description}} />}
+                <div className="flex items-center justify-center text-xl">
+                  <Link href={buildRedirectHref(currentLang, isWebView, redirect)}>{redirect.title}</Link>
+                </div>
               </div>
-            )}
+            ))}
           </div>
         </div>
       </Animate>

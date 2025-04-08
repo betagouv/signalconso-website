@@ -4,8 +4,10 @@ blockingInfo:
     Utilisez plutôt la catégorie spécifique à votre problème 🙂
   content: >-
     Vous avez rencontré un problème dans le cadre d’une livraison de repas à
-    domicile. Utilisez la catégorie suivante :
+    domicile.
   redirect:
-    title: Cafés et restaurants
-    categoryPath: cafe-restaurant
+    - title: Cafés et restaurants
+      description: >-
+        Utilisez la catégorie suivante :
+      categoryPath: cafe-restaurant
 subcategory: Livraison_de_repas_a_domicile

@@ -1,11 +1,7 @@
 title: Non
 blockingInfo:
   title: >-
-    Utilisez plutôt la catégorie spécifique à votre problème 🙂
+    Utilisez plutôt la sous catégorie spécifique à votre problème 🙂
   content: >-
     Cette rubrique concerne uniquement des achats de meubles (hors cuisine et électroménager) et de literie, réalisés dans un magasin éphémère, après démarchage téléphonique accompagnant ou débouchant sur une invitation personnelle. Ne sont pas concernées les autres ventes telles que les ventes dans des enseignes classiques sans démarchage préalable, ventes sur internet ou ventes sur des marchés de plein air.
-    Si votre problème concerne un achat en magasin, utilisez la catégorie suivante :
-  redirect:
-    title: Achat en magasin
-    categoryPath: achat-magasin
 subcategory: Non
