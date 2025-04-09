@@ -14,6 +14,14 @@ export type NewsArticle = {
 // This is the display order. Keep the most recents at the start of the array
 export const initialNewsArticlesData: NewsArticle[] = [
   {
+    date: '2025-04-21',
+    lang: AppLangs.fr,
+    slug: 'sante-100-pourcent',
+    veryShortTitle: 'Attention aux dérives 100 % santé',
+    title: 'Lunettes, soins dentaires, aides auditives : attention aux dérives sur le dispositif « 100 % santé »',
+    excerpt: `Destiné à garantir un accès aux soins sans reste à charge, le dispositif « 100 % santé » permet à tous les assurés bénéficiant d’une complémentaire santé responsable ou solidaire d’obtenir des lunettes, des prothèses auditives ou des soins dentaires entièrement pris en charge.`,
+  },
+  {
     date: '2025-04-14',
     lang: AppLangs.fr,
     slug: 'restaurants-droits-conso',
