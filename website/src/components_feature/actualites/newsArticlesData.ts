@@ -14,6 +14,14 @@ export type NewsArticle = {
 // This is the display order. Keep the most recents at the start of the array
 export const initialNewsArticlesData: NewsArticle[] = [
   {
+    date: '2025-04-14',
+    lang: AppLangs.fr,
+    slug: 'restaurants-droits-conso',
+    veryShortTitle: 'Restaurants et droits consommateur ?',
+    title: 'Restaurants : connaissez-vous vos droits en tant que consommateur ?',
+    excerpt: `Vous aimez partager un repas au restaurant avec vos amis, vos collègues ou votre famille ? Mais êtes-vous au fait de vos droits en tant que client et des obligations qui incombent aux restaurateurs ? Voici un tour d’horizon pour vous permettre de profiter pleinement de vos sorties gastronomiques.`,
+  },
+  {
     date: '2025-04-07',
     lang: AppLangs.fr,
     slug: 'made-in-france',
