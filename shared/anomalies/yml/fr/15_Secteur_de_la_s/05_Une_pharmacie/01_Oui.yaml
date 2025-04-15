@@ -1,11 +1,9 @@
 title: Oui
-desc: "Exemple\_: J'ai acheté sur un site internet ou sur une application"
 blockingInfo:
   title: >-
     Utilisez plutôt la catégorie spécifique à votre problème 🙂
   content: >-
-    Un problème de prix, sur la qualité de la chambre, annulation/remboursement
-    ?
+    Un problème avec un achat en ligne, sur une application ou un site internet ?
   redirect:
     - title: Achat sur internet
       description: >-

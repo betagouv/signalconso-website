@@ -1,11 +1,9 @@
 title: >-
-  Problème avec un supplément (type « prestation de confort » ou « prestation
-  pour exigence particulière du patient ») (hors problème de prix)
+  J'ai rencontré un problème avec un supplément pour une « prestation de confort » ou « prestation
+  pour exigence particulière du patient »
 desc: >-
-  Exemple : forfait ambulatoire, forfait bien-être, chambre particulière, « box
-  » dans le cadre d’une hospitalisation en ambulatoire, télévision, wifi,
-  téléphone, repas amélioré, nécessaire de toilette, accessoire pour le
-  nourrisson, ticket de parking, ...
+  Exemple : forfait ambulatoire, forfait bien-être, chambre particulière, télévision, wifi,
+  téléphone, repas amélioré
 ccrfCode:
   - '226'
 tags:

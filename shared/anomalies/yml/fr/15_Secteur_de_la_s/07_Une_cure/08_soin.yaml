@@ -1,0 +1,9 @@
+title: J'ai rencontré un problème avec un professionnel de santé
+blockingInfo:
+  title: Utilisez plutôt la catégorie spécifique à votre problème 🙂
+  redirect:
+    - title: Santé
+      description: >-
+        Un problème qui s'est produit lors de votre suivi médicale ? Utilisez la catégorie:
+      categoryPath: sante
+subcategory: Jai_rencontre_un_probleme_avec_un_professionnel_de_sante

@@ -1,14 +1,11 @@
-title: Les prix sont exagérés
-desc: "Exemple\_: ce naturopathe est plus cher que ceux de la région."
+title: Je trouve que les prix sont excessifs
 blockingInfo:
-  title: Un professionnel peut choisir ses tarifs librement ses tarifs.
+  title: Un professionnel peut choisir librement ses tarifs.
   content: >-
     <br> Il peut proposer des prix élevés et choisir d'être plus cher que ses
-    concurrents. <br> Cependant il a une obligation : indiquer tous ces prix de
+    concurrents. <br> Cependant il a une obligation : indiquer tous ses prix de
     façon claire. Vous devez connaître le prix avant la réalisation de la
     prestation. <br> Les prix doivent être affichés en salle d'attente de
-    manière lisible. <br> Vous n'avez pas eu connaissance des prix avant ? <br>
-    Faites un signalement à la rubrique "Les prix ne sont pas affichés y compris
-    sur le site internet"
+    manière lisible. 
   reportOutOfScopeMessage: true
 subcategory: Les_prix_sont_exageres
