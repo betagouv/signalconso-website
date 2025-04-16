@@ -1,0 +1,25 @@
+title: Un produit de santé de mauvaise qualité
+desc: "Exemple\_: béquille qui se tord, audioprothèse qui se fissure rapidement, préservatif qui se perce"
+ccrfCode:
+  - 23B
+reponseconsoCode: '332'
+tags:
+  - ProduitDangereux
+detailInputs:
+  - label: Date de constat (ou date d'achat)
+    type: DATE
+  - label: "Quel est le type de produit\_?"
+    type: RADIO
+    options:
+      - lunette / lentilles de contact
+      - prothèse
+      - béquille, fauteuil roulant
+      - contraception (préservatif)
+      - bas de contention
+      - appareil de mesure (thermomètre, tensiomètre...)
+      - autre (à préciser)
+  - label: "Quelle est sa marque et sa référence / numéro de modèle\_? Vous pouvez trouver ces informations sur votre facture d'achat."
+    type: TEXT
+  - label: "Expliquez le problème en quelques mots\_:"
+    type: TEXT
+subcategory: Un_produit_de_sante_est_de_mauvaise_qualite

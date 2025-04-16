@@ -1,0 +1,11 @@
+title: Je trouve que les prix sont excessifs
+blockingInfo:
+  title: Un professionnel peut choisir librement ses tarifs.
+  content: >-
+    <br> Il peut proposer des prix élevés et choisir d'être plus cher que ses
+    concurrents. <br> Cependant il a une obligation : indiquer tous ses prix de
+    façon claire. Vous devez connaître le prix avant la réalisation de la
+    prestation. <br> Les prix doivent être affichés en salle d'attente de
+    manière lisible. 
+  reportOutOfScopeMessage: true
+subcategory: Les_prix_sont_exageres

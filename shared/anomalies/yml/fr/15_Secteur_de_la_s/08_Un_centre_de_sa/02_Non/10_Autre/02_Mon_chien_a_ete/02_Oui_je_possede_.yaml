@@ -1,9 +1,0 @@
-title: Oui (je possède la carte d'assistance)
-reponseconsoCode: '422'
-detailInputs:
-  - label: Date du refus
-    type: DATE
-fileLabel: >-
-  Vous pouvez joindre des éléments (photo, carte d'assistance...) pour appuyer
-  votre signalement.
-subcategory: Oui_je_possede_la_carte_dassistance

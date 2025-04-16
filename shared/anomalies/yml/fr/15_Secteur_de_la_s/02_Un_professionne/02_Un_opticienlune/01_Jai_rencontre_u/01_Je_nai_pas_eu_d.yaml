@@ -1,0 +1,10 @@
+title: Je n'ai pas eu de devis
+desc: "L’opticien-lunetier et l’audioprothésiste ont l’obligation de compléter et de remettre un devis normalisé personnalisé au patient sur support durable. Ce devis doit informer le patient du montant qu’il lui reste à payer."
+companyKind: SIRET
+ccrfCode:
+  - 21G
+reponseconsoCode: '212'
+detailInputs:
+  - label: Date de constat
+    type: DATE
+subcategory: Je_nai_pas_eu_de_devis

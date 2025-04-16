@@ -1,0 +1,12 @@
+title: >-
+  Je n'ai pas eu de note
+  desc: "facture, reçu ou récapitulatif de paiement
+  »)
+companyKind: SIRET
+ccrfCode:
+  - '213'
+reponseconsoCode: '213'
+detailInputs:
+  - label: Date de constat
+    type: DATE
+subcategory: Je_nai_pas_recu_de_note_facture_recu_recapitulatif_de_paiement

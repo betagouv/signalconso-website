@@ -1,12 +1,4 @@
-title: J’ai constaté un problème de qualité des soins médicaux et /ou paramédicaux
+title: J’ai constaté un défaut d’hygiène des locaux
 blockingInfo:
-  title: Oups nous ne pouvons pas traiter votre signalement.
-  content: >-
-    Ce type de problème ne doit pas être signalé sur SignalConso. Nous vous
-    invitons à utiliser le site dédié:  <br><a
-    href="https://demat.social.gouv.fr/commencer/formulaire-de-reclamation-ars"
-    target="_blank">https://demat.social.gouv.fr/</a> <br> Les agences
-    régionales de santé (ARS) sont garantes du respect, de la qualité et de la
-    sécurité des soins et des droits des usagers au sein des offreurs de soins
-    de la région.
-subcategory: Jai_constate_un_probleme_de_qualite_des_soins_medicaux_et_ou_paramedicaux
+  customimport: _imports/blockingInfo/hygiène_des_locaux_medicaux.yaml
+subcategory: Jai_constate_un_defaut_dhygiene_des_locaux

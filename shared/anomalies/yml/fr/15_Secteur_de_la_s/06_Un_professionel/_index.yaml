@@ -1,8 +1,5 @@
 title: Un professionel du transport sanitaire
 desc: "Exemple\_: ambulance, taxi conventionné"
-subcategoriesTitle: >-
-  Est-ce que votre problème concerne un transport effectué en situation
-  d’urgence ou disposiez-vous d’une ordonnance ?
 tags:
   - ReponseConso
 reponseconsoCode: '212'

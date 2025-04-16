@@ -1,9 +1,0 @@
-title: Je n'ai pas eu de devis
-companyKind: SIRET
-ccrfCode:
-  - 21G
-reponseconsoCode: '212'
-detailInputs:
-  - label: Date de constat
-    type: DATE
-subcategory: Je_nai_pas_eu_de_devis

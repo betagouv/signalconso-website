@@ -1,0 +1,9 @@
+title: Les prix ne sont pas affichés
+desc: "Exemple\_: les prix des prestations ne sont pas affichés, les prix affichés sont illisibles"
+ccrfCode:
+  - 21B
+reponseconsoCode: '212'
+detailInputs:
+  - label: Date de constat
+    type: DATE
+subcategory: Les_prix_ne_sont_pas_affiches_y_compris_sur_le_site_internet

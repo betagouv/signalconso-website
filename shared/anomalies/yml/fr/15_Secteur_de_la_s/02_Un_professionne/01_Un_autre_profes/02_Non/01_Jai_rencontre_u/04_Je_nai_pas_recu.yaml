@@ -1,0 +1,11 @@
+title: Je n'ai pas reçu de note
+desc: >-
+  À partir de 25 euros, le professionnel doit vous remettre une note (facture ou récapitulatif de paiement) qui décrit
+  ce que vous avez payé. 
+ccrfCode:
+  - '213'
+reponseconsoCode: '212'
+detailInputs:
+  - label: Date de constat
+    type: DATE
+subcategory: Je_nai_pas_recu_de_note_facture_recapitulatif_de_paiement

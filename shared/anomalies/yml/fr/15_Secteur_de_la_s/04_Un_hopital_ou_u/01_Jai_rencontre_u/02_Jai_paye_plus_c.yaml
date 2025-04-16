@@ -1,0 +1,9 @@
+title: J'ai payé plus cher que les prix affichés
+companyKind: SIRET
+ccrfCode:
+  - 23B
+reponseconsoCode: '212'
+detailInputs:
+  - label: Date de constat
+    type: DATE
+subcategory: Jai_paye_plus_cher_que_les_prix_affiches

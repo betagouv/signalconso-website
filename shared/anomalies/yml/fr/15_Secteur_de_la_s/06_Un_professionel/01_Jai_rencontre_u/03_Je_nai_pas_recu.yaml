@@ -1,0 +1,11 @@
+title: >-
+  Je n'ai pas reçu de note (facture, reçu ou récapitulatif de paiement)
+blockingInfo:
+  title: Oups nous ne pouvons pas traiter votre signalement.
+  content: >-
+    Ce type de problème ne doit pas être signalé sur SignalConso. Vous pouvez
+    saisir la CPAM (Caisse primaire d'asurance maladie) de votre domicile : 
+    <br><a
+    href="https://www.ameli.fr/assure/adresses-et-contacts/un-autre-sujet"
+    target="_blank">https://www.ameli.fr/</a>
+subcategory: Je_nai_pas_recu_de_note_facture_recu_recapitulatif_de_paiement

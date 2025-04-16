@@ -1,0 +1,14 @@
+title: >-
+  Le professionnel conventionné m'a imposé une prestation supplémentaire payante
+  sans possibilité de refuser ou sans me proposer d'alternative gratuite.
+desc: "Exemple\_: frais d’archivage numériques non pris en charge par l’assurance maladie, frais de courrier possibilité de retirer le courrier sur place"
+tags:
+  - ReponseConso
+ccrfCode:
+  - '216'
+reponseconsoCode: '212'
+detailInputs:
+  - label: Date de constat
+    type: DATE
+subcategory: >-
+  Le_professionnel_conventionne_ma_impose_une_prestation_autre_que_les_soins_sans_possibilite_de_refus
