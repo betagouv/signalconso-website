@@ -1,0 +1,10 @@
+title: J'ai rencontré un problème avec l'hébergement pendant mon séjour en cure
+blockingInfo:
+  title: Utilisez plutôt la catégorie spécifique à votre problème 🙂
+  redirect:
+    - title: Voyage / Loisirs
+      description: >-
+        Un problème de prix, sur la qualité de la chambre, une annulation ou un
+        remboursement ? Utilisez la catégorie :
+      categoryPath: voyage-loisirs
+subcategory: Un_probleme_en_lien_avec_mon_sejour

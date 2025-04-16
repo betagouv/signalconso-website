@@ -1,0 +1,8 @@
+title: J'ai rencontré un problème avec le contrat
+desc: "Exemple\_: aucun document contractuel ne m’a été remis, le contrat n'est pas clair, mon contrat n'a pas été respecté"
+ccrfCode:
+  - 23B
+reponseconsoCode: '2211'
+tags:
+  - ReponseConso
+subcategory: Contrat
