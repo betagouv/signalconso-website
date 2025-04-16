@@ -14,6 +14,14 @@ export type NewsArticle = {
 // This is the display order. Keep the most recents at the start of the array
 export const initialNewsArticlesData: NewsArticle[] = [
   {
+    date: '2025-04-28',
+    lang: AppLangs.fr,
+    slug: 'location-option-achat',
+    veryShortTitle: 'Location avec option d’achat',
+    title: 'Location avec option d’achat : attention aux clauses abusives',
+    excerpt: `Très prisée des ménages pour acquérir une voiture, un téléphone ou de l’électroménager, la location avec option d’achat (LOA), aussi appelée leasing, fait l’objet d’une vigilance accrue. Une récente enquête de la DGCCRF met en lumière des pratiques préoccupantes concernant l’information des consommateurs et la conformité des contrats.`,
+  },
+  {
     date: '2025-04-21',
     lang: AppLangs.fr,
     slug: 'sante-100-pourcent',

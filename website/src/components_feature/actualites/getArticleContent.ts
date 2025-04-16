@@ -53,11 +53,14 @@ import {ArticleBilan2024} from '@/components_feature/actualites/ArticleBilan2024
 import {ArticleMadeInFrance} from '@/components_feature/actualites/ArticleMadeInFrance'
 import {ArticleRestaurantsDroitsConso} from '@/components_feature/actualites/ArticleRestaurantsDroitsConso'
 import {ArticleSante} from '@/components_feature/actualites/ArticleSante'
+import {ArticleLocationOptionAchat} from '@/components_feature/actualites/ArticleLocationOptionAchat'
 
 // We can't put import these JSX directly into the "newsArticlesData"
 // it causes too much import problems in the sitemap generation script
 export function getArticleContent(slug: NewsArticle['slug']): () => JSX.Element {
   switch (slug) {
+    case 'location-option-achat':
+      return ArticleLocationOptionAchat
     case 'sante-100-pourcent':
       return ArticleSante
     case 'restaurants-droits-conso':
