@@ -154,6 +154,22 @@ describe('Problem', () => {
     expect(report?.step1?.employeeConsumer).toEqual(false)
   })
 
+  it(`shouldn't ask employeeConsumer when not asked`, () => {
+    let report: undefined | PartialReport
+    const app = render(
+      <AccessReportFlow
+        onReportChange={r => {
+          report = r
+        }}
+      >
+        <Problem {...props} anomaly={ProblemFixture.anomaly} />
+      </AccessReportFlow>,
+      renderOptions,
+    )
+    fireEvent.click(app.getByText(`Sous category avec un fileLabel`))
+    expect(() => clickEmployeeConsumer(app, 'no')).toThrow()
+  })
+
   it('should ask companyKind', () => {
     let report: undefined | PartialReport
     const app = render(
@@ -221,7 +237,6 @@ describe('Problem', () => {
       renderOptions,
     )
     fireEvent.click(app.getByText(`(title) Première sous category du fichier demo.yaml, absolument minimale`))
-    clickEmployeeConsumer(app, 'no')
     expect(() => clickContractualDispute(app, 'getAnswer')).toThrow()
   })
 

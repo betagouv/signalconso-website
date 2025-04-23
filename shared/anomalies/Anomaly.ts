@@ -6,6 +6,7 @@ interface CategoryNodeBase {
   id: string
   subcategoriesTitle?: string
   postReportHelper?: PostReportHelper
+  askIfEmployeeConsumer?: boolean // Default (if not set) is false. Can be overridden at each level (like companyKind)
 }
 
 export interface PostReportHelper {

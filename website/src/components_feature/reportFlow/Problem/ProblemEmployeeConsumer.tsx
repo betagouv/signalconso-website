@@ -1,4 +1,4 @@
-import {getWipCompanyKindFromSelected, hasStep0, hasSubcategoryIndexes} from '@/feature/reportUtils'
+import {hasStep0, hasSubcategoryIndexes, shouldAskIfEmployeeConsumer} from '@/feature/reportUtils'
 import {useI18n} from '@/i18n/I18n'
 import {ReactNode, useEffect} from 'react'
 import {useReportFlowContext} from '../ReportFlowContext'
@@ -10,16 +10,16 @@ export function ProblemEmployeeConsumer({children}: {children: ReactNode}) {
   if (!hasStep0(r) || !hasSubcategoryIndexes(r)) {
     throw new Error('Draft is not ready to ask for employeeConsumer')
   }
-  const companyKind = getWipCompanyKindFromSelected(r)
-  const predeterminedEmployeeConsumer = companyKind === 'SOCIAL' ? false : undefined
-  const skipQuestion = useApplyPredeterminedValue({
-    predeterminedEmployeeConsumer,
-    setEmployeeConsumer,
-  })
+  const shouldAsk = shouldAskIfEmployeeConsumer(r)
+  useEffect(() => {
+    if (!shouldAsk) {
+      setEmployeeConsumer(false)
+    }
+  }, [shouldAsk, setEmployeeConsumer])
   const isDone = r.step1?.employeeConsumer !== undefined
   return (
     <>
-      {!skipQuestion && (
+      {shouldAsk && (
         <>
           <ProblemSelect
             id="select-employeeconsumer"
@@ -42,20 +42,4 @@ export function ProblemEmployeeConsumer({children}: {children: ReactNode}) {
       {isDone && children}
     </>
   )
-}
-
-function useApplyPredeterminedValue({
-  predeterminedEmployeeConsumer,
-  setEmployeeConsumer,
-}: {
-  predeterminedEmployeeConsumer: boolean | undefined
-  setEmployeeConsumer: (_: boolean) => void
-}) {
-  useEffect(() => {
-    if (predeterminedEmployeeConsumer !== undefined) {
-      setEmployeeConsumer(predeterminedEmployeeConsumer)
-    }
-  }, [setEmployeeConsumer, predeterminedEmployeeConsumer])
-  const shouldSkipQuestion = predeterminedEmployeeConsumer !== undefined
-  return shouldSkipQuestion
 }
