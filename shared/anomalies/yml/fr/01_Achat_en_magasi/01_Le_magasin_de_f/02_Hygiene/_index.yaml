@@ -4,3 +4,4 @@ tags:
   - ProduitAlimentaire
 desc: 'Exemple : magasin sale, produit pas au frais, mauvaises odeurs'
 subcategory: Hygiene
+askIfEmployeeConsumer: true

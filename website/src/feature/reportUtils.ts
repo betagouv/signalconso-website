@@ -111,3 +111,11 @@ export const getWipCompanyKindFromSelected = (r: ReportPickInStep1<'subcategorie
       ? 'PRODUCT_RAPPEL_CONSO'
       : [...getSubcategories(r)].reverse().find(_ => !!_.companyKind)?.companyKind
 }
+
+export const shouldAskIfEmployeeConsumer = (r: ReportPickInStep1<'subcategoriesIndexes'>) => {
+  const {askIfEmployeeConsumer: employeeConsumerQuestion} = getAnomaly(r)
+  const subcategoriesEmployeeConsumerQuestions = getSubcategories(r).map(_ => _.askIfEmployeeConsumer)
+  const res = [employeeConsumerQuestion, ...subcategoriesEmployeeConsumerQuestions].reverse().find(_ => _ !== undefined)
+
+  return !!res
+}
