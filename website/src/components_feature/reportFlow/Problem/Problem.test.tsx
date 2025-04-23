@@ -202,6 +202,7 @@ describe('Problem', () => {
     )
     fireEvent.click(app.getByText(`Sous category pour tester les companyKind`))
     fireEvent.click(app.getByText(`Sous cat avec companyKind WEBSITE`))
+    clickEmployeeConsumer(app, 'no')
     expect(() => clickCompanyKind(app, 'internet')).toThrow()
   })
 
@@ -219,6 +220,7 @@ describe('Problem', () => {
     )
     fireEvent.click(app.getByText(`Sous category pour tester les companyKind`))
     fireEvent.click(app.getByText(`Sous cat avec companyKind WEBSITE`))
+    clickEmployeeConsumer(app, 'no')
     clickBtnSubmit(app)
   })
 
