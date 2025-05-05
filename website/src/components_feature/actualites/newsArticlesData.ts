@@ -14,6 +14,14 @@ export type NewsArticle = {
 // This is the display order. Keep the most recents at the start of the array
 export const initialNewsArticlesData: NewsArticle[] = [
   {
+    date: '2025-05-05',
+    lang: AppLangs.fr,
+    slug: 'arnaque-reno-energetique',
+    veryShortTitle: 'Arnaques à la rénovation énergétique',
+    title: 'Arnaques à la rénovation énergétique : comment les éviter et faire valoir vos droits',
+    excerpt: `Si vous avez été victime d’une arnaque liée à une aide à la rénovation ou si vous suspectez un abus de confiance, voici tout ce que vous devez savoir pour vous protéger.`,
+  },
+  {
     date: '2025-04-28',
     lang: AppLangs.fr,
     slug: 'location-option-achat',
