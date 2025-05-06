@@ -57,7 +57,7 @@ export const frAirtableLandingsData = [
         author: 'Fatima M.',
       },
       {
-        text: "Bonjour, J'ai récemment acheté des nouvelles lunettes de vue dans une boutique de centre-ville, et le vendeur m'a informé que j'aurai deux verres simples au prix de 160€ chacun, qui correspond au plafond de remboursement de ma mutuelle. Cependant, après avoir consulté la prise en charge sur le site de ma mutuelle, j'ai remarqué que le vendeur m'a facturé un verre simple à 160€ et un verre complexe à 215€, alors que les deux verres sont unifocaux (simples).",
+        text: "Bonjour, J'ai récemment acheté des nouvelles lunettes de vue dans une boutique de centre-ville, et le vendeur m'a informé que j'aurais deux verres simples au prix de 160€ chacun, qui correspond au plafond de remboursement de ma mutuelle. Cependant, après avoir consulté la prise en charge sur le site de ma mutuelle, j'ai remarqué que le vendeur m'a facturé un verre simple à 160€ et un verre complexe à 215€, alors que les deux verres sont unifocaux (simples).",
         author: 'Chloé L.',
       },
       {
@@ -400,7 +400,7 @@ export const frAirtableLandingsData = [
         author: 'Dylan A.',
       },
       {
-        text: "Bonjour, j'ai effectué une réservation d'une semaine en pension complète pour 5 personnes entre juillet et aout, j'ai payé pour cela mais le mail de confirmation que j'ai reçu indique qu'il s'agit d'une demi-pension. J'ai pourtant bien sélectionné pension complète lors de ma recherche puis j'ai vérifié que c'était encore bien écrit lors lors de la sélection des dates. J'ai donc enregistré une vidéo pour montrer toutes les étapes de la réservation, nous n'y voyons jamais apparaitre la demi-pension. Après quelques recherches il s'avère qu'il faut cliquer sur un lien qui ouvre un popup pour voir que la pension complète est subitement passé en demi-pension. A cause de ce changement camouflé je n'ai pas vu que la pension avait changée, j'aurai pourtant du être avertie clairement. J'ai donc contacté le service client pour leur demander de bien vouloir me passer en pension complète, mais il a refusé. ",
+        text: "Bonjour, j'ai effectué une réservation d'une semaine en pension complète pour 5 personnes entre juillet et aout, j'ai payé pour cela mais le mail de confirmation que j'ai reçu indique qu'il s'agit d'une demi-pension. J'ai pourtant bien sélectionné pension complète lors de ma recherche puis j'ai vérifié que c'était encore bien écrit lors lors de la sélection des dates. J'ai donc enregistré une vidéo pour montrer toutes les étapes de la réservation, nous n'y voyons jamais apparaitre la demi-pension. Après quelques recherches il s'avère qu'il faut cliquer sur un lien qui ouvre un popup pour voir que la pension complète est subitement passé en demi-pension. A cause de ce changement camouflé je n'ai pas vu que la pension avait changée, j'aurais pourtant du être avertie clairement. J'ai donc contacté le service client pour leur demander de bien vouloir me passer en pension complète, mais il a refusé. ",
         author: 'Simone B.',
       },
       {
@@ -589,56 +589,6 @@ export const frAirtableLandingsData = [
       {
         text: "J'ai engagé ***** pour installer des panneaux photovoltaïques sur mon toit. Depuis l'installation, je rencontre de nombreux problèmes avec le système et ils ne répondent pas à mes demandes de réparation. De plus, l'installation a causé des dommages à mon toit. Je suis extrêmement déçu et me sens complètement trompé.",
         author: 'Stella E.',
-      },
-    ],
-  },
-  {
-    url: 'arnaques-primes-energie-renovation',
-    lang: 'fr',
-    isSemiAutomatic: false,
-    seoTitle: "Arnaques\n  et problèmes liés aux primes d'énergie et aux aides à la rénovation",
-    seoDescription:
-      "Signalez\n  un problème d'arnaque, de non-attribution ou de détournement lié aux primes\n  d'énergie ou aux aides à la rénovation.",
-    title: "Arnaques\n  et problèmes liés aux primes d'énergie et aux aides à la rénovation",
-    targetedCategory: ['TravauxRenovations'],
-    catchPhrase:
-      "Signalez\n  un problème d'arnaque, de non-attribution ou de détournement lié aux primes\n  d'énergie ou aux aides à la rénovation, renseignez-vous sur vos droits avec\n  la répression des fraudes !",
-    secondaryTitle1:
-      "Pourquoi\n  signaler des arnaques, problèmes de non-attribution ou détournements liés aux\n  primes d'énergie et aux aides à la rénovation ?",
-    secondaryTitle2:
-      "Que\n  devient votre signalement relatif aux arnaques, problèmes de non-attribution\n  ou détournements liés aux primes d'énergie et aux aides à la rénovation ?",
-    sampleReports: [
-      {
-        text: "J'ai fait une demande de prime d'énergie auprès de *****. Cependant, malgré plusieurs relances, je n'ai toujours pas reçu le montant promis. Je me sens trompé et délaissé.",
-        author: 'Zoé N.',
-      },
-      {
-        text: "J'ai contacté ***** pour bénéficier d'une aide à la rénovation. Malheureusement, malgré de multiples promesses, je n'ai toujours pas reçu de prime. Je me sens ignoré et arnaqué.",
-        author: 'Hugo M.',
-      },
-      {
-        text: "J'ai demandé une prime d'énergie auprès de *****. Malgré plusieurs engagements de leur part, je n'ai toujours pas reçu le montant promis. C'est un véritable scandale.",
-        author: 'Stella D.',
-      },
-      {
-        text: "J'ai sollicité ***** pour une subvention d'aide à la rénovation de ma maison. Malheureusement, malgré plusieurs promesses, aucune aide n'a été accordée. Je me sens complètement lésé.",
-        author: 'Mohamed S.',
-      },
-      {
-        text: "J'ai demandé une prime d'énergie auprès de *****. Malheureusement, malgré de multiples engagements, je n'ai toujours pas reçu le montant promis. Je me sens délaissé et trompé.",
-        author: 'Léa L.',
-      },
-      {
-        text: "J'ai contacté ***** pour bénéficier d'une aide à la rénovation. Cependant, malgré plusieurs promesses, je n'ai reçu aucune aide. Je me sens totalement ignoré.",
-        author: 'Adam M.',
-      },
-      {
-        text: "J'ai fait une demande de prime d'énergie auprès de *****. Cependant, malgré plusieurs engagements de leur part, je n'ai toujours pas reçu le montant promis. C'est extrêmement frustrant.",
-        author: 'Timothée A.',
-      },
-      {
-        text: "J'ai sollicité ***** pour une aide à la rénovation de ma maison. Malheureusement, malgré plusieurs promesses, aucune aide n'a été accordée. Je me sens complètement lésé.",
-        author: 'Dylan A.',
       },
     ],
   },

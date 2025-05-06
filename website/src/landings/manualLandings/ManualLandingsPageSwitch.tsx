@@ -32,6 +32,7 @@ import {venteProduitsPlastiqueUsageUniqueMagasin} from '@/reusablePages/manual_l
 import {venteEnLigneProduitsFaussesPromessesEcologiques} from '@/reusablePages/manual_landings/venteEnLigneProduitsFaussesPromessesEcologiques'
 import {faussesPromessesEcologiquesProduitsVendusEnMagasin} from '@/reusablePages/manual_landings/faussesPromessesEcologiquesProduitsVendusEnMagasin'
 import {marchesDeNoel} from '@/reusablePages/manual_landings/marchesDeNoel'
+import {ArnaquePrimeEnergieRenovation} from '@/reusablePages/manual_landings/ArnaquePrimeEnergieRenovation'
 
 export function ManualLandingsPageSwitch({landingData}: {landingData: ManualLandingData}) {
   const url = landingData.url
@@ -41,6 +42,8 @@ export function ManualLandingsPageSwitch({landingData}: {landingData: ManualLand
 
 function getComponent(url: ManualLandingData['url']): () => JSX.Element {
   switch (url) {
+    case 'arnaques-primes-energie-renovation':
+      return ArnaquePrimeEnergieRenovation
     case 'obligation-adsl-fibre':
       return ObligationFibre
     case 'signaler-un-influenceur':
