@@ -245,4 +245,11 @@ const manualLandingsFr = [
   manualLandingVenteEnLigneProduitsFaussesPromessesEcologiques,
   manualLandingFaussesPromessesEcologiquesProduitsVendusEnMagasin,
   manualLandingMarchesDeNoel,
+  {
+    url: 'arnaques-primes-energie-renovation',
+    seoTitle: "Arnaques et problèmes liés aux primes d'énergie et aux aides à la rénovation",
+    seoDesc:
+      "Signalez un problème d'arnaque, de non-attribution ou de détournement lié aux primes, d'énergie ou aux aides à la rénovation.",
+    labelPlanDuSite: "Faire un signalement concernant un problème liés aux primes d'énergie et aux aides à la rénovation",
+  },
 ] as const
