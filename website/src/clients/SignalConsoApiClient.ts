@@ -24,6 +24,14 @@ export class SignalConsoApiClient {
     },
   })
 
+  removeConsent = (email: string): Promise<void> => {
+    return this.client.delete(`/remove-consent`, {
+      body: {
+        email,
+      },
+    })
+  }
+
   searchByBarcode = async (barcode: string): Promise<BarcodeProduct | undefined> => {
     try {
       return await this.client.get<BarcodeProduct>(`/barcode/gtin/${barcode}`)
@@ -125,7 +133,7 @@ export class SignalConsoApiClient {
       body: {
         email,
         confirmationCode,
-        consentToUseData
+        consentToUseData,
       },
     })
   }
