@@ -34,6 +34,11 @@ const PlanDuSite = (props: PageComponentProps) => {
           <BasicPageLink page="delaiRetractation" label={m.planDuSite.calcRetractionDelay} {...{lang}} />
           <BasicPageLink page="litige" label={m.planDuSite.resolutionTips} {...{lang}} />
           <BasicPageLink page="litigeTelecom" label={m.planDuSite.telecomResolutionTips} {...{lang}} />
+          <BasicPageLink
+            page="consentementEnqueteSatisfaction"
+            label={m.planDuSite.consentementEnqueteSatisfaction}
+            {...{lang}}
+          />
         </ul>
         <h2 className="fr-h4">{m.planDuSite.reportIncidentSection}</h2>
         <ul className="mb-6">

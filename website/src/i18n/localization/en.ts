@@ -127,6 +127,10 @@ export const en = {
         title: 'Share your review - SignalConso',
         description: '',
       },
+      consentementEnqueteSatisfaction: {
+        title: 'Survey - SignalConso',
+        description: '',
+      },
       reattribuer: {
         title: 'Reattribute your report - SignalConso',
         description: '',
@@ -535,6 +539,12 @@ export const en = {
       commissionNationaleInformatiqueLibertes1: "Commission Nationale de l'Informatique et des Libertés",
       commissionNationaleInformatiqueLibertes2: '3 Place de Fontenoy',
       commissionNationaleInformatiqueLibertes3: '75007 PARIS.',
+      enqueteSatisfaction: 'Consent Clause for Personal Data Processing – Satisfaction Survey',
+      enqueteSatisfaction1:
+        'As part of the continuous improvement of its services, SignalConso may send you satisfaction surveys. You must expressly consent to the processing of your data for this purpose. This processing is based on your consent, which you can withdraw at any time via the form available on',
+      enqueteSatisfaction3:
+        'This will result in the cessation of future satisfaction surveys. Withdrawing your consent does not affect any actions taken before this withdrawal.',
+      enqueteSatisfaction2bis: 'this page',
     },
     planDuSite: {
       pageTitle: 'Site map',
@@ -553,6 +563,7 @@ export const en = {
       calcRetractionDelay: 'Figure out your cooling-off period',
       resolutionTips: 'Tips for resolving individual issues (disputes)',
       telecomResolutionTips: 'Tips for resolving telecom individual issues (disputes)',
+      consentementEnqueteSatisfaction: 'Remove consent for survey',
       reportIncidentSection: 'Submitting a report',
       reportIncidentFor: 'Report a company for',
       step1: 'Step 1 - The problem',
@@ -1402,5 +1413,14 @@ export const en = {
     mayBeIdentifiedLater: `It is possible that the company will be identified later. It will then receive the report.`,
     reportWillBeTransmittedToCompany: `Your report will be transmitted to the company.`,
     alsoSentToFraudControl: `It will also be sent to Fraud Control.`,
+    consentToUseData:
+      'I consent to being contacted again for future surveys. My data will only be used for analysis purposes and will remain strictly confidential.',
+    removeConsent: {
+      removeConsentdTitle: 'Successfully Unsubscribed',
+      removeConsentdSuccessMessage: 'You have been successfully removeConsentd',
+      removeConsent: 'Unsubscribe',
+      removeConsentFromSurvey: 'I no longer wish to be contacted for future surveys.',
+      emailDesc: `Email address used in your report.`,
+    },
   },
 }

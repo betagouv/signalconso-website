@@ -5,6 +5,7 @@ interface Props {
   onBlur: FocusEventHandler<HTMLInputElement>
   name: string
   label: ReactNode
+  checked: boolean
   error?: boolean
   errorMessage?: string
   required: boolean
@@ -12,7 +13,7 @@ interface Props {
 type RefType = Ref<HTMLFieldSetElement>
 
 export const ScCheckbox = forwardRef((props: Props, ref: RefType) => {
-  const {label, error, errorMessage, required, name, onBlur, onChange} = props
+  const {label, error, errorMessage, required, name, onBlur, onChange, checked} = props
   const _id = useId()
   const id = `fr-fieldset-checkbox-${_id}`
   const messagesWrapperId = `${id}-messages`
@@ -27,7 +28,7 @@ export const ScCheckbox = forwardRef((props: Props, ref: RefType) => {
     >
       <div className="fr-fieldset__content fr-fieldset__element">
         <div className={`fr-checkbox-group`}>
-          <input type="checkbox" id={inputId} {...{name, onBlur, onChange}} />
+          <input type="checkbox" id={inputId} {...{name, onBlur, onChange, checked}} />
           <label className="fr-label" htmlFor={inputId}>
             <div className="flex flex-col gap-2 items-start justify-start ">{label}</div>
           </label>

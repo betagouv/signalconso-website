@@ -127,6 +127,10 @@ export const fr = {
         title: 'Donnez votre avis - SignalConso',
         description: '',
       },
+      consentementEnqueteSatisfaction: {
+        title: 'Consentement enquête satisfaction - SignalConso',
+        description: '',
+      },
       reattribuer: {
         title: 'Réattribuer votre signalement - SignalConso',
         description: '',
@@ -544,6 +548,12 @@ export const fr = {
       commissionNationaleInformatiqueLibertes1: "Commission Nationale de l'Informatique et des Libertés",
       commissionNationaleInformatiqueLibertes2: '3 Place de Fontenoy',
       commissionNationaleInformatiqueLibertes3: '75007 PARIS.',
+      enqueteSatisfaction: 'Clause de consentement au traitement des données personnelles – Enquête de satisfaction',
+      enqueteSatisfaction1:
+        'Dans le cadre de l’amélioration continue de ses services, SignalConso peut être amené à vous envoyer des enquêtes de satisfaction. Vous devez consentir expressément à ce que vos données soient traitées à cette fin. Ce traitement repose sur votre consentement, que vous pouvez retirer à tout moment via le formulaire disponible sur',
+      enqueteSatisfaction3:
+        'Cela  entraînera l’arrêt de l’envoi de futures enquêtes de satisfaction. Le retrait de votre consentement n’affecte en rien les actions précédemment menées avant ce retrait.',
+      enqueteSatisfaction2bis: 'cette page',
     },
     planDuSite: {
       pageTitle: 'Plan du site',
@@ -562,6 +572,7 @@ export const fr = {
       calcRetractionDelay: 'Calculez votre délai de rétractation',
       resolutionTips: "Conseils pour résolution d'un problème individuel (litige)",
       telecomResolutionTips: "Conseils pour résolution d'un problème individuel lié au télécom (litige)",
+      consentementEnqueteSatisfaction: 'Retrait du consentement pour enquête de satisfaction',
       reportIncidentSection: "Dépôt d'un signalement",
       reportIncidentFor: 'Faire un signalement pour',
       step1: 'Étape 1 - Le problème',
@@ -1430,5 +1441,15 @@ contacter directement.`,
     mayBeIdentifiedLater: `Il est possible que l'entreprise soit identifiée ultérieurement. Le signalement lui sera alors transmis.`,
     reportWillBeTransmittedToCompany: `Le signalement va être transmis à l'entreprise.`,
     alsoSentToFraudControl: `Il sera aussi envoyé à la répression des fraudes.`,
+    consentToUseData:
+      'Je donne mon accord pour être recontacté(e) dans le cadre d’enquêtes ultérieures. Mes données ne seront utilisées qu’à des fins d’analyse et resteront strictement confidentielles.',
+    removeConsent: {
+      removeConsentdTitle: 'Désinscription réussie',
+      removeConsentdSuccessMessage:
+        'Vous avez été désinscrit avec succès. Vous ne serez plus contacté(e) pour nos futures enquêtes. Merci d’avoir pris le temps de nous aider jusqu’à maintenant.',
+      removeConsent: 'Se désinscrire',
+      removeConsentFromSurvey: 'Je ne souhaite plus être recontacté(e) pour des enquêtes futures.',
+      emailDesc: `Adresse email utilisée pour faire votre signalement.`,
+    },
   },
 }

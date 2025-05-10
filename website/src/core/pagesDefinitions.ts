@@ -57,6 +57,7 @@ export const internalPageDefs = {
   litige: page(`/litige`),
   litigeTelecom: page(`/litige/telecom`),
   autresSitesInternationaux: page(`/autres-sites-internationaux`),
+  consentementEnqueteSatisfaction: page(`/consentement-enquete-satisfaction`),
 }
 
 const externalPageDefs = {

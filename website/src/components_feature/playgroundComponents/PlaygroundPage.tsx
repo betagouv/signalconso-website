@@ -16,6 +16,7 @@ import {usePathname, useSearchParams} from 'next/navigation'
 import {EngagementReviewPage, ResponseReviewPage} from '../ConsumerReview'
 import {AcknowledgmentCases} from '../reportFlow/Acknowledgement/Acknowledgement'
 import {CompanyFilled} from '../reportFlow/Company/CompanyFilled'
+import {SurveyRemoveConsentPage} from '@/components_feature/consentementEnquete/SurveyRemoveConsentPage'
 
 const companySearchResult: CompanySearchResult = {
   name: 'NomSociété',
@@ -49,6 +50,7 @@ const generalTestCases = [
   'confirmation',
   'response_review',
   'engagement_review',
+  'removeConsent',
   'other',
 ] as const
 
@@ -234,6 +236,8 @@ const Playground = () => {
         return <ResponseReviewPage reportId="dummy" />
       case 'engagement_review':
         return <EngagementReviewPage reportId="dummy" />
+      case 'removeConsent':
+        return <SurveyRemoveConsentPage />
       case 'other':
         return <PlaygroundOther />
       default:
