@@ -120,11 +120,12 @@ export class SignalConsoApiClient {
     return this.client.post<{valid: boolean}>('/email-validation/check', {body: {email, lang}})
   }
 
-  checkEmailAndValidate = (email: string, confirmationCode: string) => {
+  checkEmailAndValidate = (email: string, confirmationCode: string, consentToUseData: boolean) => {
     return this.client.post<ConsumerEmailResult>('/email-validation/check-and-validate', {
       body: {
         email,
         confirmationCode,
+        consentToUseData
       },
     })
   }
