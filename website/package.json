@@ -83,7 +83,7 @@
     "tss-react": "^4.9.13",
     "uuid": "^9.0.1",
     "yaml-import": "2.0.0",
-    "zod": "^3.23.8"
+    "zod": "^3.24.4"
   },
   "devDependencies": {
     "@playwright/test": "^1.49.0",
@@ -94,7 +94,7 @@
     "@types/date-fns": "2.6.3",
     "@types/jest": "29.5.14",
     "@types/js-yaml": "^4.0.9",
-    "@types/lodash": "4.17.13",
+    "@types/lodash": "^4.17.16",
     "@types/lodash.uniqby": "^4.7.9",
     "@types/negotiator": "^0.6.3",
     "@types/node": "20.17.7",
@@ -111,9 +111,9 @@
     "jest-environment-jsdom": "^29.7.0",
     "jest-html-reporters": "3.1.7",
     "nodemon": "^3.1.7",
-    "prettier": "3.3.3",
+    "prettier": "^3.5.3",
     "sass": "^1.81.0",
     "ts-node": "10.9.2",
-    "typescript": "5.4.5"
+    "typescript": "5.8.3"
   }
 }

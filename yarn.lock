@@ -2366,10 +2366,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/lodash@npm:4.17.13":
-  version: 4.17.13
-  resolution: "@types/lodash@npm:4.17.13"
-  checksum: d0bf8fbd950be71946e0076b30fd40d492293baea75f05931b6b5b906fd62583708c6229abdb95b30205ad24ce1ed2f48bc9d419364f682320edd03405cc0c7e
+"@types/lodash@npm:4.17.16, @types/lodash@npm:^4.17.16":
+  version: 4.17.16
+  resolution: "@types/lodash@npm:4.17.16"
+  checksum: 915618c5735b10007e0ed7d06fdce6b344f88fc721d492b189a69064bfd046d2382e1ba61d683eeb61cad60ca0286cd110e6fe0fa4ab2e99066a40478376831d
   languageName: node
   linkType: hard
 
@@ -2897,7 +2897,7 @@ __metadata:
     "@types/express": ^4.17.21
     "@types/jest": 29.5.14
     "@types/jsdom": ^21.1.7
-    "@types/lodash": 4.17.13
+    "@types/lodash": ^4.17.16
     "@types/lodash.uniqby": ^4.7.9
     "@types/morgan": ^1.9.9
     "@types/node": ^20.17.7
@@ -2913,11 +2913,11 @@ __metadata:
     lodash: ^4.17.21
     node-cron: ^3.0.3
     nodemon: ^2.0.22
-    prettier: ^3.3.3
+    prettier: ^3.5.3
     shared: "workspace:^"
     supertest: ^7.0.0
     ts-jest: ^29.2.5
-    typescript: 5.7.2
+    typescript: 5.8.3
   languageName: unknown
   linkType: soft
 
@@ -8468,11 +8468,11 @@ __metadata:
     morgan: ^1.10.0
     node-cron: ^3.0.3
     nodemon: ^2.0.22
-    prettier: ^3.3.3
+    prettier: ^3.5.3
     shared: "workspace:^"
     supertest: ^7.0.0
     ts-jest: ^29.2.5
-    typescript: 5.7.2
+    typescript: 5.8.3
   languageName: unknown
   linkType: soft
 
@@ -9389,21 +9389,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prettier@npm:3.3.3, prettier@npm:^3.3.3":
-  version: 3.3.3
-  resolution: "prettier@npm:3.3.3"
+"prettier@npm:^3.5.3":
+  version: 3.5.3
+  resolution: "prettier@npm:3.5.3"
   bin:
     prettier: bin/prettier.cjs
-  checksum: bc8604354805acfdde6106852d14b045bb20827ad76a5ffc2455b71a8257f94de93f17f14e463fe844808d2ccc87248364a5691488a3304f1031326e62d9276e
-  languageName: node
-  linkType: hard
-
-"prettier@npm:^3.4.2":
-  version: 3.4.2
-  resolution: "prettier@npm:3.4.2"
-  bin:
-    prettier: bin/prettier.cjs
-  checksum: 061c84513db62d3944c8dc8df36584dad82883ce4e49efcdbedd8703dce5b173c33fd9d2a4e1725d642a3b713c932b55418342eaa347479bc4a9cca114a04cd0
+  checksum: 61e97bb8e71a95d8f9c71f1fd5229c9aaa9d1e184dedb12399f76aa802fb6fdc8954ecac9df25a7f82ee7311cf8ddbd06baf5507388fc98e5b44036cc6a88a1b
   languageName: node
   linkType: hard
 
@@ -10359,14 +10350,14 @@ __metadata:
   resolution: "shared@workspace:shared"
   dependencies:
     "@types/js-yaml": ^4.0.9
-    "@types/lodash": 4.17.13
+    "@types/lodash": 4.17.16
     "@types/node": 20.17.7
     js-yaml: 4.1.0
     lodash: 4.17.21
-    prettier: ^3.4.2
+    prettier: ^3.5.3
     slugify: ^1.6.6
     ts-node: 10.9.2
-    typescript: 5.7.2
+    typescript: 5.8.3
   languageName: unknown
   linkType: soft
 
@@ -11574,43 +11565,23 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@npm:5.4.5":
-  version: 5.4.5
-  resolution: "typescript@npm:5.4.5"
+"typescript@npm:5.8.3":
+  version: 5.8.3
+  resolution: "typescript@npm:5.8.3"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: 53c879c6fa1e3bcb194b274d4501ba1985894b2c2692fa079db03c5a5a7140587a1e04e1ba03184605d35f439b40192d9e138eb3279ca8eee313c081c8bcd9b0
+  checksum: cb1d081c889a288b962d3c8ae18d337ad6ee88a8e81ae0103fa1fecbe923737f3ba1dbdb3e6d8b776c72bc73bfa6d8d850c0306eed1a51377d2fccdfd75d92c4
   languageName: node
   linkType: hard
 
-"typescript@npm:5.7.2":
-  version: 5.7.2
-  resolution: "typescript@npm:5.7.2"
+"typescript@patch:typescript@5.8.3#~builtin<compat/typescript>":
+  version: 5.8.3
+  resolution: "typescript@patch:typescript@npm%3A5.8.3#~builtin<compat/typescript>::version=5.8.3&hash=7ad353"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: b55300c4cefee8ee380d14fa9359ccb41ff8b54c719f6bc49b424899d662a5ce62ece390ce769568c7f4d14af844085255e63788740084444eb12ef423b13433
-  languageName: node
-  linkType: hard
-
-"typescript@patch:typescript@5.4.5#~builtin<compat/typescript>":
-  version: 5.4.5
-  resolution: "typescript@patch:typescript@npm%3A5.4.5#~builtin<compat/typescript>::version=5.4.5&hash=7ad353"
-  bin:
-    tsc: bin/tsc
-    tsserver: bin/tsserver
-  checksum: 2373c693f3b328f3b2387c3efafe6d257b057a142f9a79291854b14ff4d5367d3d730810aee981726b677ae0fd8329b23309da3b6aaab8263dbdccf1da07a3ba
-  languageName: node
-  linkType: hard
-
-"typescript@patch:typescript@5.7.2#~builtin<compat/typescript>":
-  version: 5.7.2
-  resolution: "typescript@patch:typescript@npm%3A5.7.2#~builtin<compat/typescript>::version=5.7.2&hash=7ad353"
-  bin:
-    tsc: bin/tsc
-    tsserver: bin/tsserver
-  checksum: 803430c6da2ba73c25a21880d8d4f08a56d9d2444e6db2ea949ac4abceeece8e4a442b7b9b585db7d8a0b47ebda2060e45fe8ee8b8aca23e27ec1d4844987ee6
+  checksum: 1b503525a88ff0ff5952e95870971c4fb2118c17364d60302c21935dedcd6c37e6a0a692f350892bafcef6f4a16d09073fe461158547978d2f16fbe4cb18581c
   languageName: node
   linkType: hard
 
@@ -11949,7 +11920,7 @@ __metadata:
     "@types/iframe-resizer": ^3.5.13
     "@types/jest": 29.5.14
     "@types/js-yaml": ^4.0.9
-    "@types/lodash": 4.17.13
+    "@types/lodash": ^4.17.16
     "@types/lodash.throttle": ^4.1.9
     "@types/lodash.uniqby": ^4.7.9
     "@types/negotiator": ^0.6.3
@@ -11985,7 +11956,7 @@ __metadata:
     next: ^14.2.18
     nodemon: ^3.1.7
     postcss: ^8.4.49
-    prettier: 3.3.3
+    prettier: ^3.5.3
     qs: 6.13.1
     react: ^18.3.1
     react-dom: ^18.3.1
@@ -12001,10 +11972,10 @@ __metadata:
     tailwindcss: ^3.4.15
     ts-node: 10.9.2
     tss-react: ^4.9.13
-    typescript: 5.4.5
+    typescript: 5.8.3
     uuid: ^9.0.1
     yaml-import: 2.0.0
-    zod: ^3.23.8
+    zod: ^3.24.4
   languageName: unknown
   linkType: soft
 
@@ -12318,9 +12289,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"zod@npm:^3.23.8":
-  version: 3.23.8
-  resolution: "zod@npm:3.23.8"
-  checksum: 15949ff82118f59c893dacd9d3c766d02b6fa2e71cf474d5aa888570c469dbf5446ac5ad562bb035bf7ac9650da94f290655c194f4a6de3e766f43febd432c5c
+"zod@npm:^3.24.4":
+  version: 3.24.4
+  resolution: "zod@npm:3.24.4"
+  checksum: 62829789765a9187bd72bed3972a7c1a39fdfe6c59bc752eedabec5f99af701658471b8577d22e0fee2081e6e35d4efc93c02c90e13350755a36feadbf72bbbc
   languageName: node
   linkType: hard

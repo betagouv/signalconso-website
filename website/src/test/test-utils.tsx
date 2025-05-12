@@ -78,9 +78,13 @@ export interface ScRenderResult extends RenderResult {
   m: typeof fr.messages
 }
 
-const customRender = (ui: React.ReactElement, options?: Options) => {
+const customRender = (ui: React.ReactElement, options?: Options): ScRenderResult => {
+
+  // Do not inline to help typescript
+  const result = render(ui, {wrapper: AllTheProviders(options), ...options})
+
   return {
-    ...render(ui, {wrapper: AllTheProviders(options), ...options}),
+    ...result,
     m: fr.messages,
   }
 }
