@@ -4,6 +4,8 @@ import {Anomaly} from 'shared/anomalies/Anomaly'
 import {ContentPageContainer} from '@/components_simple/PageContainers'
 import {useI18n} from '@/i18n/I18n'
 
+import type {JSX} from 'react'
+
 function extractAllStrings(input: any): string[] {
   const result: string[] = []
   function recurse(value: any): void {

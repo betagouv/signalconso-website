@@ -15,7 +15,11 @@ export function generateMetadata(): Metadata {
   return layoutMetadatas
 }
 
-const RootLayout = ({children, params}: {children: React.ReactNode; params: any}) => {
+const RootLayout = async (props: {children: React.ReactNode; params: Promise<any>}) => {
+  const params = await props.params
+
+  const {children} = props
+
   const lang = params.lang
   return (
     <html {...getHtmlAttributes({defaultColorScheme: DSFR_COLOR_SCHEME, lang})} {...{lang}}>

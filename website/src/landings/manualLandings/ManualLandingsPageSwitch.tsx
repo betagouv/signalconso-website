@@ -34,6 +34,8 @@ import {faussesPromessesEcologiquesProduitsVendusEnMagasin} from '@/reusablePage
 import {marchesDeNoel} from '@/reusablePages/manual_landings/marchesDeNoel'
 import {ArnaquePrimeEnergieRenovation} from '@/reusablePages/manual_landings/ArnaquePrimeEnergieRenovation'
 
+import type {JSX} from 'react'
+
 export function ManualLandingsPageSwitch({landingData}: {landingData: ManualLandingData}) {
   const url = landingData.url
   const component = getComponent(url)()

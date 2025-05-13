@@ -33,7 +33,6 @@ export default function ReportStartedAlert() {
             </Button>
             <Link
               href={buildPathForStep(anomaly, currentLang, currentStep, false, recreateOpenFfBarcodeParam(report))}
-              legacyBehavior
             >
               <Button size="medium">{m.continue}</Button>
             </Link>

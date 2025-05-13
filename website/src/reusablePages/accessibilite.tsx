@@ -5,8 +5,9 @@ import Link from 'next/link'
 import {getI18n} from '../i18n/I18nDictionnary'
 import {pagesDefs} from '@/core/pagesDefinitions'
 
-export const Accessibilite = (props: PageComponentProps) => {
-  const {messages: m} = getI18n(props.params.lang)
+export const Accessibilite = async (props: PageComponentProps) => {
+  const params = await props.params
+  const {messages: m} = getI18n(params.lang)
 
   return (
     <>

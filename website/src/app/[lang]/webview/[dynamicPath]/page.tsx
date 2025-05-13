@@ -14,8 +14,8 @@ function getAnomalyData(params: LocalPathParams) {
 
 export const generateMetadata = buildGenerateMetadataForWebviews()
 
-const Page = (props: PageComponentProps<LocalPathParams>) => {
-  const anomaly = getAnomalyData(props.params)
+const Page = async (props: PageComponentProps<LocalPathParams>) => {
+  const anomaly = getAnomalyData(await props.params)
 
   return anomaly ? <categoryPathPage.FaireUnSignalementPage anomaly={anomaly} isWebView={true} /> : notFound()
 }

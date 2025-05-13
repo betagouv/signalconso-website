@@ -80,8 +80,9 @@ function getDashboardUrl(dashboardId: string) {
   return `${appConfig.anonMetabaseUrl}/public/dashboard/${dashboardId}?#bordered=false&titled=false`
 }
 
-function throwNotFoundIfNotFr(props: PageComponentProps) {
-  if (props.params.lang !== AppLangs.fr) {
+async function throwNotFoundIfNotFr(props: PageComponentProps) {
+  const params = await props.params
+  if (params.lang !== AppLangs.fr) {
     notFound()
   }
 }
