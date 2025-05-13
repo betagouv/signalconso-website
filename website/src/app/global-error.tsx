@@ -1,13 +1,12 @@
 'use client'
 
 import {ErrorPageContent} from '@/components_simple/ErrorPageContent'
-import {DSFR_COLOR_SCHEME} from '@/core/theme'
-import {DsfrProvider} from '@codegouvfr/react-dsfr/next-appdir/DsfrProvider'
-import {getHtmlAttributes} from '@codegouvfr/react-dsfr/next-appdir/getHtmlAttributes'
 import * as Sentry from '@sentry/nextjs'
 import {usePathname} from 'next/navigation'
 import '../globals.css'
 import {AppLangs, getSupportedLang} from '../i18n/localization/AppLangs'
+import {getHtmlAttributes} from '@/core/dsfr-bootstrap/server-only-index'
+import {DsfrProvider} from '@/core/dsfr-bootstrap'
 
 export default function GlobalError({error, reset}: {error: any; reset: any}) {
   Sentry.captureException(error)
@@ -34,7 +33,7 @@ function ErrorContent() {
   const currentPathLang = pathname ? pathname.toLowerCase().split('/')[1] : AppLangs.fr
   const lang = getSupportedLang(currentPathLang) ?? AppLangs.fr
   return (
-    <html {...getHtmlAttributes({defaultColorScheme: DSFR_COLOR_SCHEME, lang: lang})} lang={lang}>
+    <html {...getHtmlAttributes({lang: lang})} lang={lang}>
       <body>
         <DsfrProvider lang={lang}>
           <ErrorPageContent lang={lang} />
