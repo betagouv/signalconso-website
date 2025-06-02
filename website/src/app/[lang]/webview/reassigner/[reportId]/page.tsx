@@ -8,11 +8,11 @@ type LocalPathParams = PathParams<{
 
 export const generateMetadata = buildGenerateMetadataForWebviews()
 
-export default function Page(props: PageComponentProps<LocalPathParams>) {
+export default async function Page(props: PageComponentProps<LocalPathParams>) {
   return (
     <div className="max-w-[624px] px-4 mx-auto pb-4">
       <WebviewEnvMarker />
-      <ReattributeCompany reportId={props.params.reportId} isWebView={true} />
+      <ReattributeCompany reportId={(await props.params).reportId} isWebView={true} />
     </div>
   )
 }

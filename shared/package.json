@@ -16,11 +16,11 @@
   },
   "devDependencies": {
     "@types/js-yaml": "^4.0.9",
-    "@types/lodash": "4.17.13",
-    "@types/node": "20.17.7",
-    "prettier": "^3.4.2",
+    "@types/lodash": "4.17.16",
+    "@types/node": "^20.17.47",
+    "prettier": "^3.5.3",
     "slugify": "^1.6.6",
     "ts-node": "10.9.2",
-    "typescript": "5.7.2"
+    "typescript": "5.8.3"
   }
 }

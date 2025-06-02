@@ -4,7 +4,7 @@ import {useId, useRef, useState} from 'react'
 import {useTimeout} from '../hooks/useTimeout'
 
 export interface AnimateProps {
-  children: React.ReactElement
+  children: React.ReactElement<any>
   autoScrollTo?: boolean
   fromBottom?: boolean
 }

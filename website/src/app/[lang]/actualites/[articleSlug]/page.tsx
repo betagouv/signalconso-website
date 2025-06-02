@@ -19,8 +19,8 @@ function getArticleData(params: LocalPathParams) {
   return getNewsArticleData().find(_ => _.slug === params.articleSlug && params.lang === _.lang)
 }
 
-export function generateMetadata(props: GenerateMetadataArg<LocalPathParams>): Metadata {
-  const article = getArticleData(props.params)
+export async function generateMetadata(props: GenerateMetadataArg<LocalPathParams>): Promise<Metadata> {
+  const article = getArticleData(await props.params)
   return article
     ? {
         title: article.title,
@@ -29,9 +29,9 @@ export function generateMetadata(props: GenerateMetadataArg<LocalPathParams>): M
     : {}
 }
 
-export default function Page(props: PageComponentProps<LocalPathParams>) {
-  const article: NewsArticle | undefined = getArticleData(props.params)
-  return article ? <NewsArticleComponent article={article} lang={props.params.lang} /> : notFound()
+export default async function Page(props: PageComponentProps<LocalPathParams>) {
+  const article: NewsArticle | undefined = getArticleData(await props.params)
+  return article ? <NewsArticleComponent article={article} lang={(await props.params).lang} /> : notFound()
 }
 
 function NewsArticleComponent(props: {article: NewsArticle; lang: AppLang}) {

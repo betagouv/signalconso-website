@@ -30,8 +30,9 @@ function getManualLandingData(props: {params: LocalPathParams}) {
   return undefined
 }
 
-export function generateMetadata(params: GenerateMetadataArg<LocalPathParams>): Metadata {
-  const manualLandingData = getManualLandingData(params)
+export async function generateMetadata(props: GenerateMetadataArg<LocalPathParams>): Promise<Metadata> {
+  const params = await props.params
+  const manualLandingData = getManualLandingData({params})
   if (manualLandingData) {
     return {
       title: manualLandingData.seoTitle,
@@ -41,7 +42,7 @@ export function generateMetadata(params: GenerateMetadataArg<LocalPathParams>): 
       },
     }
   }
-  const airtableLandingData = getAirtableLandingData(params)
+  const airtableLandingData = getAirtableLandingData({params})
   if (airtableLandingData) {
     return {
       title: airtableLandingData.seoTitle,
@@ -56,13 +57,14 @@ export function generateMetadata(params: GenerateMetadataArg<LocalPathParams>): 
   return {}
 }
 
-export default function Page(props: PageComponentProps<LocalPathParams>) {
-  const lang = props.params.lang
-  const manualLandingData = getManualLandingData(props)
+export default async function Page(props: PageComponentProps<LocalPathParams>) {
+  const params = await props.params
+  const lang = params.lang
+  const manualLandingData = getManualLandingData({params})
   if (manualLandingData) {
     return <ManualLandingsPageSwitch landingData={manualLandingData} />
   }
-  const airtableLandingdata = getAirtableLandingData(props)
+  const airtableLandingdata = getAirtableLandingData({params})
   if (airtableLandingdata) {
     return <LandingPage {...{landingData: airtableLandingdata, lang}} />
   }

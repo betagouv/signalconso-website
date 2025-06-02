@@ -87,4 +87,4 @@ const ScCheckboxesWithRef = <V,>(props: Props<V>, ref: RefType) => {
 
 // forwardRef doesn't play well with generics
 // https://stackoverflow.com/questions/58469229/react-with-typescript-generics-while-using-react-forwardref
-export const ScCheckboxes = forwardRef(ScCheckboxesWithRef) as <V>(p: Props<V> & {ref?: RefType}) => ReactElement
+export const ScCheckboxes = forwardRef(ScCheckboxesWithRef) as <V>(p: Props<V> & {ref?: RefType}) => ReactElement<any>

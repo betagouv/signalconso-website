@@ -11,13 +11,13 @@ export type PathParams<OtherPathParams = {}> = {
 export type SearchParams = {[key: string]: string | string[] | undefined}
 
 export type PageComponentProps<LocalPathParams = PathParams> = {
-  params: LocalPathParams
-  searchParams: SearchParams
+  params: Promise<LocalPathParams>
+  searchParams: Promise<SearchParams>
 }
 
 export type GenerateMetadataArg<OtherPathParams = {}> = {
-  params: PathParams<OtherPathParams>
-  searchParams: SearchParams
+  params: Promise<PathParams<OtherPathParams>>
+  searchParams: Promise<SearchParams>
 }
 
 type InternalPageDefs = keyof typeof internalPageDefs
@@ -31,8 +31,8 @@ export function buildGenerateMetadata(
   // and in i18n messages
   pageName: InternalPageDefsWithoutPlayground & keyof I18nMessages['titleAndDescriptions'],
 ) {
-  return function (arg: GenerateMetadataArg) {
-    const lang = arg.params.lang
+  return async function (arg: GenerateMetadataArg) {
+    const lang = (await arg.params).lang
     const pageDef = internalPageDefs[pageName]
     return {
       ...generateTitleAndDescription(lang, pageName),
@@ -47,8 +47,8 @@ export function buildGenerateMetadata(
 // that don't need to be indexed
 // that need to be viewed by the user (we need a title)
 export function buildGenerateMetadataForNoIndexPage(pageName: keyof I18nMessages['titleAndDescriptions']) {
-  return function (arg: GenerateMetadataArg) {
-    const lang = arg.params.lang
+  return async function (arg: GenerateMetadataArg) {
+    const lang = (await arg.params).lang
     return {
       ...generateTitleAndDescription(lang, pageName),
       ...generateRobotsMetadata({noIndex: true}),

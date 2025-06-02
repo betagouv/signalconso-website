@@ -24,9 +24,9 @@ export function LitigeTelecom(props: PageComponentProps) {
 
 const urlMediateurTelecom = 'https://www.mediation-telecom.org/saisir-le-mediateur'
 
-function LitigeCommon(props: PageComponentProps & {variant: 'telecom' | 'regular'}) {
+async function LitigeCommon(props: PageComponentProps & {variant: 'telecom' | 'regular'}) {
   const {variant} = props
-  const {lang} = props.params
+  const {lang} = await props.params
   const {messages: m} = getI18n(lang)
   const isTelecom = variant === 'telecom'
   return (

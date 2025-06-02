@@ -8,10 +8,10 @@ type LocalPathParams = PathParams<{
 
 export const generateMetadata = buildGenerateMetadataForNoIndexPage('reattribuer')
 
-export default function Page(props: PageComponentProps<LocalPathParams>) {
+export default async function Page(props: PageComponentProps<LocalPathParams>) {
   return (
     <LimitedWidthPageContainer>
-      <ReattributeCompany reportId={props.params.reportId} isWebView={false} />
+      <ReattributeCompany reportId={(await props.params).reportId} isWebView={false} />
     </LimitedWidthPageContainer>
   )
 }

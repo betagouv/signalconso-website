@@ -3,6 +3,6 @@ import {Contact} from '@/reusablePages/contact'
 
 export const generateMetadata = buildGenerateMetadata('contact')
 
-export default (props: PageComponentProps) => {
-  return <Contact lang={props.params.lang} isWebView={false} />
+export default async (props: PageComponentProps) => {
+  return <Contact lang={(await props.params).lang} isWebView={false} />
 }

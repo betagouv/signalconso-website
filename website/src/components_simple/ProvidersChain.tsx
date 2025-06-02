@@ -7,7 +7,7 @@ export const ProvidersChain = ({
   providers,
 }: {
   children: React.ReactNode
-  providers: ((children: ReactNode) => ReactElement)[]
+  providers: ((children: ReactNode) => ReactElement<any>)[]
 }) => {
   return <>{providers.reduceRight((componentTree, component) => component(componentTree), children)}</>
 }
