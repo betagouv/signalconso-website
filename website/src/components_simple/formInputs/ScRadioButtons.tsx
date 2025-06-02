@@ -138,4 +138,4 @@ function ScRadioButtonsWithRef<V>(props: ScRadioButtonsProps<V>, ref: RefType) {
 // https://stackoverflow.com/questions/58469229/react-with-typescript-generics-while-using-react-forwardref
 export const ScRadioButtons = forwardRef(ScRadioButtonsWithRef) as <V>(
   p: ScRadioButtonsProps<V> & {ref?: RefType},
-) => ReactElement
+) => ReactElement<any>

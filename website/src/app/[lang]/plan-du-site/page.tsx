@@ -11,8 +11,8 @@ import {getI18n} from '../../../i18n/I18nDictionnary'
 
 export const generateMetadata = buildGenerateMetadata('planDuSite')
 
-const PlanDuSite = (props: PageComponentProps) => {
-  const lang = props.params.lang
+const PlanDuSite = async (props: PageComponentProps) => {
+  const lang = (await props.params).lang
   const {messages: m} = getI18n(lang)
 
   return (

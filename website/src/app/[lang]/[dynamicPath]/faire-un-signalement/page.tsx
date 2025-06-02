@@ -32,13 +32,13 @@ function readStepParam(searchParams: SearchParams) {
   return 1
 }
 
-export function generateMetadata(arg: GenerateMetadataArg<LocalPathParams>): Metadata {
-  const lang = getSupportedLang(arg.params.lang)
+export async function generateMetadata(arg: GenerateMetadataArg<LocalPathParams>): Promise<Metadata> {
+  const lang = getSupportedLang((await arg.params).lang)
   if (lang) {
-    const anomaly = getAnomalyData(arg.params)
+    const anomaly = getAnomalyData(await arg.params)
     if (anomaly) {
       const {messages: m} = getI18n(lang)
-      const stepParam = readStepParam(arg.searchParams)
+      const stepParam = readStepParam(await arg.searchParams)
       // Accessibility audit asked for something like this in the title
       const stepSpecificTitle =
         stepParam === getIndexForStepOrDone('Done')
@@ -62,8 +62,8 @@ export function generateMetadata(arg: GenerateMetadataArg<LocalPathParams>): Met
   return {}
 }
 
-const Page = (props: PageComponentProps<LocalPathParams>) => {
-  const anomaly = getAnomalyData(props.params)
+const Page = async (props: PageComponentProps<LocalPathParams>) => {
+  const anomaly = getAnomalyData(await props.params)
   return anomaly ? <categoryPathPage.FaireUnSignalementPage anomaly={anomaly} isWebView={false} /> : notFound()
 }
 

@@ -31,10 +31,7 @@ export default function ReportStartedAlert() {
             <Button size="medium" priority="tertiary" onClick={_reportFlow.resetReport}>
               {m.delete}
             </Button>
-            <Link
-              href={buildPathForStep(anomaly, currentLang, currentStep, false, recreateOpenFfBarcodeParam(report))}
-              legacyBehavior
-            >
+            <Link href={buildPathForStep(anomaly, currentLang, currentStep, false, recreateOpenFfBarcodeParam(report))}>
               <Button size="medium">{m.continue}</Button>
             </Link>
           </div>

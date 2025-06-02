@@ -7,6 +7,6 @@ type LocalPathParams = PathParams<{
 
 export const generateMetadata = buildGenerateMetadataForNoIndexPage('avis')
 
-export default function Page(props: PageComponentProps<LocalPathParams>) {
-  return <ResponseReviewPage reportId={props.params.reportId} />
+export default async function Page(props: PageComponentProps<LocalPathParams>) {
+  return <ResponseReviewPage reportId={(await props.params).reportId} />
 }
