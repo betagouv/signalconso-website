@@ -24,6 +24,14 @@ export class SignalConsoApiClient {
     },
   })
 
+  removeConsent = (email: string): Promise<void> => {
+    return this.client.delete(`/remove-consent`, {
+      body: {
+        email,
+      },
+    })
+  }
+
   searchByBarcode = async (barcode: string): Promise<BarcodeProduct | undefined> => {
     try {
       return await this.client.get<BarcodeProduct>(`/barcode/gtin/${barcode}`)
@@ -120,11 +128,12 @@ export class SignalConsoApiClient {
     return this.client.post<{valid: boolean}>('/email-validation/check', {body: {email, lang}})
   }
 
-  checkEmailAndValidate = (email: string, confirmationCode: string) => {
+  checkEmailAndValidate = (email: string, confirmationCode: string, consentToUseData: boolean) => {
     return this.client.post<ConsumerEmailResult>('/email-validation/check-and-validate', {
       body: {
         email,
         confirmationCode,
+        consentToUseData,
       },
     })
   }

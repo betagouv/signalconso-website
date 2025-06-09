@@ -11,6 +11,8 @@ import {useState} from 'react'
 import {Controller, useForm} from 'react-hook-form'
 import {duration} from '../../../utils/Duration'
 import {iconArrowRight, timeoutPromise} from '../../../utils/utils'
+import {ScCheckbox} from '@/components_simple/formInputs/ScCheckbox'
+import {Checkbox} from '@codegouvfr/react-dsfr/Checkbox'
 
 export const consumerValidationModal = createModal({
   id: 'consumer-validation-modal',
@@ -22,7 +24,8 @@ export function ConsumerValidationDialog2({consumerEmail, onValidated}: {consume
   const {signalConsoApiClient} = useApiClients()
   const {m, currentLang} = useI18n()
   const _validateEmail = useMutation({
-    mutationFn: (code: string) => signalConsoApiClient.checkEmailAndValidate(consumerEmail, code),
+    mutationFn: (form: ValidationForm) =>
+      signalConsoApiClient.checkEmailAndValidate(consumerEmail, form.code, form.consentToDataUse),
   })
   const _checkEmail = useMutation({
     mutationFn: () => signalConsoApiClient.checkEmail(consumerEmail, currentLang),
@@ -34,7 +37,7 @@ export function ConsumerValidationDialog2({consumerEmail, onValidated}: {consume
 
   const onSubmitButtonClick = _form.handleSubmit(async form => {
     if (!isEmailValid) {
-      const res = await _validateEmail.mutateAsync(form.code)
+      const res = await _validateEmail.mutateAsync(form)
       if (res.valid) {
         await timeoutPromise(500)
         onValidated()
@@ -111,6 +114,14 @@ export function ConsumerValidationDialog2({consumerEmail, onValidated}: {consume
               </>
             )}
           />
+
+          <div className="mt-4">
+            <Controller
+              name="consentToDataUse"
+              control={_form.control}
+              render={({field}) => <ScCheckbox checked={field.value} label={m.consentToUseData} required {...field} />}
+            />
+          </div>
         </consumerValidationModal.Component>
       </PortalToBody>
     </>
@@ -119,4 +130,5 @@ export function ConsumerValidationDialog2({consumerEmail, onValidated}: {consume
 
 interface ValidationForm {
   code: string
+  consentToDataUse: boolean
 }
