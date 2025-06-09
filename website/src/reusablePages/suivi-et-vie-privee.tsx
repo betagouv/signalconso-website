@@ -1,5 +1,5 @@
 import {ContentPageContainer} from '@/components_simple/PageContainers'
-import {pagesDefs} from '@/core/pagesDefinitions'
+import {internalPageDefs, pagesDefs} from '@/core/pagesDefinitions'
 import Head from 'next/head'
 import Link from 'next/link'
 import {useI18n} from '../i18n/I18n'
@@ -66,6 +66,17 @@ export const SuiviEtViePrivee = ({params}: any) => {
         {m.suiviEtViePrivee.consultezInterfaceCnil2}
       </p>
 
+      <h2 className="fr-h4">{m.suiviEtViePrivee.enqueteSatisfaction}</h2>
+      <p>
+        {m.suiviEtViePrivee.enqueteSatisfaction1}{' '}
+        <a href={`/${params.lang}${internalPageDefs.consentementEnqueteSatisfaction.url}`} rel="noreferrer">
+          {m.suiviEtViePrivee.enqueteSatisfaction2bis}
+        </a>
+        <br />
+        <br />
+        {m.suiviEtViePrivee.enqueteSatisfaction3}
+        <br />
+      </p>
       <h2 className="fr-h4">{m.suiviEtViePrivee.droitAccesDonnees}</h2>
       <p>{m.suiviEtViePrivee.conformementRGPD}</p>
       <p>
