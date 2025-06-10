@@ -21,7 +21,7 @@ describe('Test the categories path', () => {
     const categories = response.body as Category[]
     expect(categories).toContainEqual({
       category: 'Achat en magasin',
-      description: 'Prix, promotion, qualité, poids, garantie, …',
+      description: 'Prix, promotion, qualité, poids, paiement, garantie, …',
       id: '10',
       path: 'achat-magasin',
       img: `${Config.websiteUrl}/image/pictos/category-store.png`,
@@ -32,7 +32,7 @@ describe('Test the categories path', () => {
     const categories = response.body as Category[]
     expect(categories).toContainEqual({
       category: 'Achat en magasin',
-      description: 'Prix, promotion, qualité, poids, garantie, …',
+      description: 'Prix, promotion, qualité, poids, paiement, garantie, …',
       id: '10',
       path: 'achat-magasin',
       img: `${Config.websiteUrl}/image/pictos/category-store.png`,
