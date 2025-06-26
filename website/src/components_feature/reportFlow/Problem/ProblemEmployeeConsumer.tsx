@@ -15,7 +15,8 @@ export function ProblemEmployeeConsumer({children}: {children: ReactNode}) {
     if (!shouldAsk) {
       setEmployeeConsumer(false)
     }
-  }, [shouldAsk, setEmployeeConsumer])
+    // We need to trigger this effect if any subcategory changes
+  }, [shouldAsk, setEmployeeConsumer, r.step1.subcategoriesIndexes])
   const isDone = r.step1?.employeeConsumer !== undefined
   return (
     <>
