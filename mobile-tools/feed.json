@@ -4,6 +4,13 @@
   "description": "",
   "items": [
     {
+      "title": "Produits alimentaires : que nous apprennent les étiquettes ?",
+      "link": "https://www.economie.gouv.fr/dgccrf/produits-alimentaires-que-nous-apprennent-les-etiquettes",
+      "description": "Pour choisir entre plusieurs aliments, les consommateurs consultent les étiquettes des produits. L’origine, les ingrédients et leur proportion, la qualité indiquée font partie des éléments utiles à la décision d’achat. Comment s’y retrouver entre allégations, labels et signes géographiques ? La composition est-elle bien celle annoncée ? Quels contrôles et sanctions permettent de lutter contre les pratiques déloyales ou trompeuses ?\n",
+      "guid": "3235551",
+      "date": "2025-06-30T10:09:10.000Z"
+    },
+    {
       "title": "Affichage des prix, devis… : la DGCCRF agit aussi dans le secteur médical et médico-social",
       "link": "https://www.economie.gouv.fr/dgccrf/actualites/affichage-des-prix-devis-la-dgccrf-agit-aussi-dans-le-secteur-medical-et-medico",
       "description": "Affichage des prix, devis, clarté des contrats…&nbsp;: à l’occasion de la journée mondiale de la santé, le 7 avril 2025, la DGCCRF rappelle qu’elle intervient aussi dans les secteurs de la santé et du médico-social pour protéger les patients et consommateurs.\n",
@@ -135,13 +142,6 @@
       "description": "La Commission des clauses abusives a constaté l'existence de clauses abusives dans les contrats de clubs de sport à caractère lucratif. Sur l’ensemble des contrats examinés, 67 clauses abusives ont été relevées au sein des contrats habituellement proposés par les professionnels aux consommateurs. La CCA recommande que ces clauses considérées comme abusives soient éliminées de ces contrats.\n",
       "guid": "3230731",
       "date": "2024-09-24T09:50:17+02:00"
-    },
-    {
-      "title": "La DGCCRF s'engage pour favoriser la consommation durable",
-      "link": "https://www.economie.gouv.fr/dgccrf/la-dgccrf-sengage-pour-favoriser-la-consommation-durable",
-      "description": "Faire évoluer nos modes de consommation est nécessaire pour réussir la transition écologique. La DGCCRF participe à l’élaboration de nouvelles réglementations, contrôle l’application des textes destinés à promouvoir une économie plus verte et accompagne les professionnels et les consommateurs vers une consommation plus durable. Le point sur le sujet à l’occasion de la semaine européenne du développement durable 2024.\n",
-      "guid": "3230353",
-      "date": "2024-09-06T09:11:16+02:00"
     }
   ]
 }
