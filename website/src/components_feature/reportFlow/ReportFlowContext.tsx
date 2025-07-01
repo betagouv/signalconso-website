@@ -134,6 +134,7 @@ function useConvenientSetters(setReport: SetReport, resetReportEvents: () => voi
           ..._.step1,
           companyKindOverride: value,
         },
+        step2: _.step1?.companyKindOverride === value ? _.step2 : undefined,
       }))
     },
     [setReport],
