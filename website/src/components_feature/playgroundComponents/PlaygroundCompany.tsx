@@ -46,12 +46,12 @@ export const PlaygroundCompany = ({companyKind = 'SIRET', reportOpenFf: openFf}:
       <CompanyIdentificationDispatch
         draft={{
           step0: {
-            category: 'DemoCategory',
+            ...(openFf ? {category: 'ProduitAlimentaireCodeBarres'} : {category: 'DemoCategory'}),
             lang: 'fr',
           },
           step1: {
             ...(openFf ? {openFf} : undefined),
-            subcategoriesIndexes: pickSubcategoriesIndexes(),
+            ...(openFf ? {subcategoriesIndexes: []} : {subcategoriesIndexes: pickSubcategoriesIndexes()}),
             employeeConsumer: false,
             consumerWish: 'reportSomething',
           },
