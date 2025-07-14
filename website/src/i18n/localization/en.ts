@@ -1261,9 +1261,10 @@ export const en = {
       Note that it is possible for two different companies to be mentioned on these pages. One of these is the website host. The host's address is not relevant to your search.
     `,
     confirmationBtnReponseConso: `Send query`,
-    confirmationModalTitle: "Important",
-    confirmationModalText: "You have chosen not to share your contact details. The report (excluding contact details) will be sent to the professional. Please ensure that neither the problem description nor the attachments contain any information that could identify you.",
-    confirmationModalConfirmBtn: "I confirm the absence of personal data",
+    confirmationModalTitle: 'Important',
+    confirmationModalText:
+      'You have chosen not to share your contact details. The report (excluding contact details) will be sent to the professional. Please ensure that neither the problem description nor the attachments contain any information that could identify you.',
+    confirmationModalConfirmBtn: 'I confirm the absence of personal data',
     confirmationBtn: `Send report`,
 
     acceptedReportStat: `companies have promised to take action since SignalConso began`,

@@ -25,17 +25,17 @@ import {createModal} from '@codegouvfr/react-dsfr/Modal'
 import {PortalToBody} from '@/utils/PortalToBody'
 import React from 'react'
 
-export const Confirmation = ({stepNavigation, isWebView}: { stepNavigation: StepNavigation; isWebView: boolean }) => {
+export const Confirmation = ({stepNavigation, isWebView}: {stepNavigation: StepNavigation; isWebView: boolean}) => {
   const _reportFlow = useReportFlowContext()
   const draft = _reportFlow.report as Report
   return <ConfirmationInner draft={draft} {...{isWebView, stepNavigation}} />
 }
 
 export const ConfirmationInner = ({
-                                    draft,
-                                    stepNavigation,
-                                    isWebView,
-                                  }: {
+  draft,
+  stepNavigation,
+  isWebView,
+}: {
   draft: Report
   stepNavigation: StepNavigation
   isWebView: boolean
@@ -50,11 +50,9 @@ export const ConfirmationInner = ({
   const _analytic = useAnalyticContext()
   const transmissionStatus = getFinalTransmissionStatus(draft)
 
-
   const modal = createModal({id: 'confirmation-modal', isOpenedByDefault: false})
   const shouldShowConfirmModal = !draft.step4.contactAgreement && transmissionStatus.kind != 'NOT_TRANSMITTABLE'
   const nextRef = React.useRef<(() => void) | null>(null)
-
 
   const handleNext = (next: () => void) => {
     if (shouldShowConfirmModal) {
@@ -64,7 +62,6 @@ export const ConfirmationInner = ({
       submit(next)
     }
   }
-
 
   const submit = (next: () => void) => {
     _reportFlow.sendReportEvent('Confirmation')
@@ -87,10 +84,10 @@ export const ConfirmationInner = ({
         <TopInfosBlock {...{transmissionStatus}} />
         <ConfirmationStepper>
           {buildingReportSteps.map((step, index) => {
-            return <RenderEachStep key={step} {...{draft, stepNavigation, index}} step={step}/>
+            return <RenderEachStep key={step} {...{draft, stepNavigation, index}} step={step} />
           })}
         </ConfirmationStepper>
-        <BottomInfosBlock {...{transmissionStatus}} contactAgreement={draft.step4.contactAgreement}/>
+        <BottomInfosBlock {...{transmissionStatus}} contactAgreement={draft.step4.contactAgreement} />
         <NextStepButton
           nextIconSend
           loadingNext={_reportCreate.createReportMutation.isPending}
@@ -115,7 +112,7 @@ export const ConfirmationInner = ({
                 },
               ]}
             >
-              <p className="mb-0" dangerouslySetInnerHTML={{__html: m.confirmationModalText}}/>
+              <p className="mb-0" dangerouslySetInnerHTML={{__html: m.confirmationModalText}} />
             </modal.Component>
           </PortalToBody>
         )}
@@ -125,11 +122,11 @@ export const ConfirmationInner = ({
 }
 
 function RenderEachStep({
-                          step,
-                          draft,
-                          stepNavigation,
-                          index,
-                        }: {
+  step,
+  draft,
+  stepNavigation,
+  index,
+}: {
   step: BuildingStep
   draft: Report
   stepNavigation: StepNavigation
@@ -150,7 +147,7 @@ function RenderEachStep({
           <ul className="pl-0 list-none">
             {choices.map(_ => (
               <li key={_} className="flex gap-2">
-                <i className="ri-corner-down-right-line"/>
+                <i className="ri-corner-down-right-line" />
                 {_}
               </li>
             ))}
@@ -166,10 +163,10 @@ function RenderEachStep({
           return (
             <ConfirmationStep title={m.step_influencer} {...{goToStep, index}}>
               <p className="mb-1 font-bold">Réseau social</p>
-              <SocialNetworkRow socialNetwork={step2.socialNetwork} gray className="mb-2"/>
+              <SocialNetworkRow socialNetwork={step2.socialNetwork} gray className="mb-2" />
               <p className="mb-1 font-bold">Nom de l'influenceur ou influenceuse</p>
               <div className="flex gap-2">
-                <i className="ri-account-box-line text-gray-400"/>
+                <i className="ri-account-box-line text-gray-400" />
                 <span className="text-gray-500">{step2.influencerName}</span>
               </div>
             </ConfirmationStep>
@@ -188,14 +185,14 @@ function RenderEachStep({
             <div>
               {detailsParsed.map(({label, value}) => (
                 <div className="mb-2" key={label}>
-                  <p className="mb-0 font-bold text-sm" dangerouslySetInnerHTML={{__html: label}}/>{' '}
+                  <p className="mb-0 font-bold text-sm" dangerouslySetInnerHTML={{__html: label}} />{' '}
                   <p className="mb-0 whitespace-pre-line ">{value}</p>
                 </div>
               ))}
             </div>
             <div>
               <p className="mb-0 font-bold text-sm">{m.attachments}</p>
-              <ReportFilesConfirmation fileOrigin={FileOrigin.Consumer} files={draft.step3.uploadedFiles}/>
+              <ReportFilesConfirmation fileOrigin={FileOrigin.Consumer} files={draft.step3.uploadedFiles} />
             </div>
           </div>
         </ConfirmationStep>
@@ -207,30 +204,29 @@ function RenderEachStep({
           <ul className="list-none p-0">
             <li className="p-0 flex gap-2">
               <div className="flex gap-2">
-                <i className="ri-account-box-line text-gray-400"/>
+                <i className="ri-account-box-line text-gray-400" />
                 {consumer.firstName} {consumer.lastName}
               </div>
             </li>
             <li className="p-0 flex gap-2">
-              <i className="ri-mail-line text-gray-400"/>
+              <i className="ri-mail-line text-gray-400" />
               <span>{consumer.email}</span>
             </li>
             {consumer.phone && (
               <li className="p-0 flex gap-2">
-                <i className="ri-phone-line text-gray-400"/>
+                <i className="ri-phone-line text-gray-400" />
                 <span>{consumer.phone}</span>
               </li>
             )}
             {consumer.referenceNumber && (
               <li className="p-0 flex gap-2">
-                <i className="ri-bill-line text-gray-400"/>
+                <i className="ri-bill-line text-gray-400" />
                 <span>{consumer.referenceNumber}</span>
               </li>
             )}
             {transmittable && (
               <li className="p-0 flex gap-2">
-                <span
-                  className={`font-bold ${draft.step4.contactAgreement ? 'text-scgreensuccess' : 'text-scorangewarn'}`}>
+                <span className={`font-bold ${draft.step4.contactAgreement ? 'text-scgreensuccess' : 'text-scorangewarn'}`}>
                   {draft.step4.contactAgreement ? m.companyWillHaveYourIdentity : m.companyWillNotHaveYourIdentity}
                 </span>
               </li>
@@ -241,7 +237,7 @@ function RenderEachStep({
   }
 }
 
-function TopInfosBlock({transmissionStatus}: { transmissionStatus: FinalTransmissionStatus }) {
+function TopInfosBlock({transmissionStatus}: {transmissionStatus: FinalTransmissionStatus}) {
   const {m} = useI18n()
   const elements = (() => {
     const {kind} = transmissionStatus
@@ -252,7 +248,7 @@ function TopInfosBlock({transmissionStatus}: { transmissionStatus: FinalTransmis
           case 'employeeConsumer':
             return (
               <>
-                <p className="mb-0" dangerouslySetInnerHTML={{__html: m.confirmationAlert}}/>
+                <p className="mb-0" dangerouslySetInnerHTML={{__html: m.confirmationAlert}} />
                 <ScAlert type="warning">
                   <p className="mb-0" dangerouslySetInnerHTML={{__html: m.confirmationAlertEmployeeConsumer}}></p>
                 </ScAlert>
@@ -261,13 +257,13 @@ function TopInfosBlock({transmissionStatus}: { transmissionStatus: FinalTransmis
           case 'tags':
           case 'getAnswer':
           case 'foreign':
-            return <p className="mb-0" dangerouslySetInnerHTML={{__html: m.confirmationAlert}}/>
+            return <p className="mb-0" dangerouslySetInnerHTML={{__html: m.confirmationAlert}} />
           default:
             return reason satisfies never
         }
       case 'MAY_BE_TRANSMITTED':
       case 'WILL_BE_TRANSMITTED':
-        return <p className="mb-0" dangerouslySetInnerHTML={{__html: m.confirmationAlertTransmittable}}/>
+        return <p className="mb-0" dangerouslySetInnerHTML={{__html: m.confirmationAlertTransmittable}} />
       default:
         return kind satisfies never
     }
@@ -276,9 +272,9 @@ function TopInfosBlock({transmissionStatus}: { transmissionStatus: FinalTransmis
 }
 
 function BottomInfosBlock({
-                            transmissionStatus,
-                            contactAgreement,
-                          }: {
+  transmissionStatus,
+  contactAgreement,
+}: {
   transmissionStatus: FinalTransmissionStatus
   contactAgreement: boolean
 }) {
@@ -320,8 +316,8 @@ function BottomInfosBlock({
           <div>
             {elements.map((_, idx) => (
               <div key={idx} className="flex gap-2">
-                <i className="ri-arrow-right-line"/>
-                <p className="mb-0" dangerouslySetInnerHTML={{__html: _}}/>
+                <i className="ri-arrow-right-line" />
+                <p className="mb-0" dangerouslySetInnerHTML={{__html: _}} />
               </div>
             ))}
           </div>
