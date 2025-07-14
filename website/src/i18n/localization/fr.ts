@@ -1279,6 +1279,10 @@ contacter directement.`,
       Attention, il est possible que deux sociétés différentes soient mentionnées sur ces pages. L'une d'elle correspond à l'hébergeur du site. Ce n'est pas l'adresse de cet hébergeur que l'on cherche.
     `,
     confirmationBtnReponseConso: `Envoyer ma question`,
+    confirmationModalTitle: 'Important',
+    confirmationModalText:
+      'Vous avez choisi de rester anonyme. Le signalement (hors coordonnées) sera envoyé au professionnel. Veillez à ce qu’aucun élément ne permette de vous identifier dans la description ou les pièces jointes.',
+    confirmationModalConfirmBtn: 'Mon signalement ne contient pas de données personnelles.',
     confirmationBtn: `Envoyer le signalement`,
 
     acceptedReportStat: `promesses d'action ont été faites par des entreprises depuis le début de SignalConso`,
