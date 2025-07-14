@@ -21,6 +21,9 @@ import {getReportInputs} from '../Details/draftReportInputs'
 import {useReportCreateContext} from '../ReportCreateContext'
 import {useReportFlowContext} from '../ReportFlowContext'
 import {ConfirmationStep, ConfirmationStepper} from './ConfirmationStepper'
+import {createModal} from '@codegouvfr/react-dsfr/Modal'
+import {PortalToBody} from '@/utils/PortalToBody'
+import React from 'react'
 
 export const Confirmation = ({stepNavigation, isWebView}: {stepNavigation: StepNavigation; isWebView: boolean}) => {
   const _reportFlow = useReportFlowContext()
@@ -47,6 +50,34 @@ export const ConfirmationInner = ({
   const _analytic = useAnalyticContext()
   const transmissionStatus = getFinalTransmissionStatus(draft)
 
+  const modal = createModal({id: 'confirmation-modal', isOpenedByDefault: false})
+  const shouldShowConfirmModal = !draft.step4.contactAgreement && transmissionStatus.kind != 'NOT_TRANSMITTABLE'
+  const nextRef = React.useRef<(() => void) | null>(null)
+
+  const handleNext = (next: () => void) => {
+    if (shouldShowConfirmModal) {
+      nextRef.current = next
+      modal.open()
+    } else {
+      submit(next)
+    }
+  }
+
+  const submit = (next: () => void) => {
+    _reportFlow.sendReportEvent('Confirmation')
+    const metadata = buildReportMetadata({isWebView})
+    _reportCreate.createReportMutation
+      .mutateAsync({draft, metadata})
+      .then(() => {
+        next()
+        _reportFlow.sendReportEvent('Done')
+      })
+      .catch(e => {
+        _analytic.trackEvent(EventCategories.report, ReportEventActions.reportSendFail)
+        toastError(getApiErrorId(e) === 'SC-0025' ? m.thereAreSimilarReports : undefined)
+      })
+  }
+
   return (
     <Animate autoScrollTo={true}>
       <div>
@@ -61,22 +92,30 @@ export const ConfirmationInner = ({
           nextIconSend
           loadingNext={_reportCreate.createReportMutation.isPending}
           nextButtonLabel={draft.step1.consumerWish === 'getAnswer' ? m.confirmationBtnReponseConso : m.confirmationBtn}
-          onNext={next => {
-            _reportFlow.sendReportEvent('Confirmation')
-            const metadata = buildReportMetadata({isWebView})
-            _reportCreate.createReportMutation
-              .mutateAsync({draft, metadata})
-              .then(() => {
-                next()
-                _reportFlow.sendReportEvent('Done')
-              })
-              .catch(e => {
-                _analytic.trackEvent(EventCategories.report, ReportEventActions.reportSendFail)
-                toastError(getApiErrorId(e) === 'SC-0025' ? m.thereAreSimilarReports : undefined)
-              })
-          }}
+          onNext={handleNext}
           {...{stepNavigation}}
         />
+        {shouldShowConfirmModal && (
+          <PortalToBody>
+            <modal.Component
+              title={m.confirmationModalTitle}
+              size="small"
+              buttons={[
+                {
+                  children: m.confirmationModalConfirmBtn,
+                  doClosesModal: true,
+                  onClick: () => {
+                    if (nextRef.current) {
+                      submit(nextRef.current)
+                    }
+                  },
+                },
+              ]}
+            >
+              <p className="mb-0" dangerouslySetInnerHTML={{__html: m.confirmationModalText}} />
+            </modal.Component>
+          </PortalToBody>
+        )}
       </div>
     </Animate>
   )

@@ -94,22 +94,22 @@ export function getTeam(lang: AppLang): Team {
         avatar: imgSaidsedoud,
       },
       {
-        name: 'Emmanuel Letailleur',
-        role: [t.function.dev],
-        avatar: imgEmmanuel,
-      },
-      {
         name: 'Charles Dufour',
         role: [t.function.dev],
         avatar: imgCharles,
+      },
+    ],
+    former: [
+      {
+        name: 'Emmanuel Letailleur',
+        role: [t.function.dev],
+        avatar: imgEmmanuel,
       },
       {
         name: 'Nicolas Serra',
         role: [t.function.dev],
         avatar: imgNicolas,
       },
-    ],
-    former: [
       {
         name: 'Ingrid Godefroy',
         role: [t.function.bussinesDev],
