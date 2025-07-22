@@ -11,7 +11,7 @@ import {ScAutoComplete} from './ScAutocomplete'
 
 export type ScAutocompleteGeoAreaProps = {
   label: string
-  onChange: (a: GeoArea) => void
+  onChange: (a: GeoArea | null) => void
   noDepartements?: boolean
   onBlur: () => void
   name: string

@@ -5,7 +5,7 @@ import {useStateWithThrottledCopy} from '@/hooks/useStateWithThrottledCopy'
 
 interface Props {
   label: string
-  onChange: (a: string) => void
+  onChange: (a: string | null) => void
   onBlur: () => void
   name: string
   error: boolean
