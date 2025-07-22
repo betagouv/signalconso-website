@@ -8,7 +8,7 @@ import {ScAutoComplete} from './ScAutocomplete'
 
 export function ScAutocompleteCountry(props: {
   value: Country
-  onChange: (country: Country) => void
+  onChange: (country: Country | null) => void
   onBlur: () => void
   name: string
   error: boolean

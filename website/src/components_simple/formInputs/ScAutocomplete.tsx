@@ -37,7 +37,7 @@ export function ScAutoComplete<Item>({
   optionRender: (item: Item) => ReactNode
   hideNoResult?: boolean
   inputDisplayValue: (item: Item) => string
-  onChange: (chosenItem: Item) => void
+  onChange: (chosenItem: Item | null) => void
   onBlur: () => void
   name: string
   error: boolean
@@ -53,7 +53,7 @@ export function ScAutoComplete<Item>({
   const {m} = useI18n()
   const showNoResult = options.length === 0 && query.length > 0 && !hideNoResult
   return (
-    <Combobox<Item> name={name} onChange={onChange} by={optionsAreSame}>
+    <Combobox<Item> name={name} onChange={_ => onChange(_)} by={optionsAreSame}>
       <div className={`fr-input-group ${error ? 'fr-input-group--error' : ''}`}>
         <Combobox.Label htmlFor={inputId} className="fr-label">
           {label}
