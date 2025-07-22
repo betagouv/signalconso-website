@@ -85,15 +85,19 @@ function optionKey(_: GeoArea): string {
       return `${_.postalCode}_${_.city ?? ''}`
   }
 }
-function inputDisplayValue(_: GeoArea): string {
-  switch (_.kind) {
-    case 'department':
-      return `${_.dpt.name} (${_.dpt.code})`
-    case 'postcode':
-      if (_.city) {
-        return `${_.postalCode} ${_.city}`
-      }
-      return _.postalCode
+function inputDisplayValue(_?: GeoArea): string {
+  if (_) {
+    switch (_.kind) {
+      case 'department':
+        return `${_.dpt.name} (${_.dpt.code})`
+      case 'postcode':
+        if (_.city) {
+          return `${_.postalCode} ${_.city}`
+        }
+        return _.postalCode
+    }
+  } else {
+    return ''
   }
 }
 function optionRender(_: GeoArea): ReactNode {
