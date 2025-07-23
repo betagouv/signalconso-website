@@ -10,10 +10,12 @@ export function ScAutocompletePostcode(props: Props) {
     <ScAutocompleteGeoArea
       noDepartements={true}
       onChange={geoArea => {
-        if (geoArea.kind === 'department') {
-          throw new Error(`This autocomplete should not be able return a department (${geoArea.dpt.name})`)
+        if (geoArea) {
+          if (geoArea.kind === 'department') {
+            throw new Error(`This autocomplete should not be able return a department (${geoArea.dpt.name})`)
+          }
+          onChange(geoArea.postalCode)
         }
-        onChange(geoArea.postalCode)
       }}
       {...restOfProps}
     />
