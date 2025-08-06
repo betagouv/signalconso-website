@@ -210,6 +210,7 @@ export enum DetailInputType {
   DATE_NOT_IN_FUTURE = 'DATE_NOT_IN_FUTURE',
   DATE = 'DATE',
   TIMESLOT = 'TIMESLOT',
+  TAKATA = 'TAKATA',
   RADIO = 'RADIO',
   CHECKBOX = 'CHECKBOX',
   TEXTAREA = 'TEXTAREA',
@@ -250,6 +251,10 @@ export type DetailInputTimeslot = DetailInputBase & {
   type: DetailInputType.TIMESLOT
 }
 
+export type DetailInputTakata = DetailInputBase & {
+  type: DetailInputType.TAKATA
+}
+
 export type DetailInput =
   | DetailInputText
   | DetailInputTextarea
@@ -258,3 +263,4 @@ export type DetailInput =
   | DetailInputRadio
   | DetailInputCheckbox
   | DetailInputTimeslot
+  | DetailInputTakata

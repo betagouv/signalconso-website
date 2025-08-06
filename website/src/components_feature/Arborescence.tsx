@@ -280,6 +280,11 @@ function InputRender({input}: {input: DetailInput}) {
             <i className="ri-time-line" />
           </div>
         ),
+        [DetailInputType.TAKATA]: () => (
+          <div className="px-2 w-[200px] flex items-center justify-end text-slate-500 mx-2 bg-slate-100 text-sm border-slate-500 border-solid border mt-1">
+            <i className="ri-car-line" />
+          </div>
+        ),
         [DetailInputType.RADIO]: () => (
           <>
             {getOptionsFromInput(input)!.map(option => (
