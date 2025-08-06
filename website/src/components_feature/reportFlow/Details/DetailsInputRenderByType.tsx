@@ -99,6 +99,57 @@ export function DetailsInputRenderByType({
           })}
         />
       )
+    case DetailInputType.TAKATA:
+      return (
+        <ScSelect
+          label={label}
+          {...unsafeRegisterForStringsOnly(name, baseRules)}
+          required={required}
+          helperText={errorMessage}
+          error={hasErrors}
+          options={[
+            'Audi',
+            'BMW',
+            'Chrysler',
+            'Cadillac',
+            'Chevrolet',
+            'Citroën',
+            'Daihatsu',
+            'Dodge',
+            'DS',
+            'Ferrari',
+            'Fiat',
+            'Ford',
+            'Honda',
+            'Hyundai',
+            'Infiniti',
+            'Jaguar',
+            'Jeep',
+            'Kia',
+            'Lancia',
+            'Land Rover',
+            'Lexus',
+            'Mazda',
+            'Mercedes-Benz',
+            'Mitsubishi',
+            'Nissan',
+            'Opel',
+            'Peugeot',
+            'Renault',
+            'Saab',
+            'SEAT',
+            'Škoda',
+            'Subaru',
+            'Suzuki',
+            'Tesla',
+            'Toyota',
+            'Volkswagen (VW)',
+            'Volvo',
+          ].map(_ => {
+            return {key: _, label: _}
+          })}
+        />
+      )
     case DetailInputType.RADIO:
       return (
         <Controller

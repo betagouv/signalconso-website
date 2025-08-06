@@ -6,6 +6,7 @@ import {ChangeEvent, useState} from 'react'
 import {
   DetailInputDate,
   DetailInputDateNotInFuture,
+  DetailInputTakata,
   DetailInputText,
   DetailInputTextarea,
   DetailInputTimeslot,
@@ -26,6 +27,11 @@ export class DetailsFixtureInput {
   static readonly timeslot: DetailInputTimeslot = {
     label: 'Time',
     type: DetailInputType.TIMESLOT,
+  }
+
+  static readonly takata: DetailInputTakata = {
+    label: 'Airbats Takata',
+    type: DetailInputType.TAKATA,
   }
 
   static readonly date: DetailInputDate = {
@@ -84,6 +90,7 @@ const inputsConfig = (lang: AppLang) => {
     checkbox: DetailsFixtureInput.checkbox(lang),
     textarea: DetailsFixtureInput.textarea,
     timeslot: DetailsFixtureInput.timeslot,
+    takata: DetailsFixtureInput.takata,
   }
 }
 
@@ -99,6 +106,7 @@ export const PlaygroundDetails = () => {
     checkbox: true,
     textarea: true,
     timeslot: true,
+    takata: true,
   })
   const chosenInputs = getEntries(inputChoices)
     .filter(([, v]) => !!v)

@@ -45,9 +45,7 @@ export const ScSelect = forwardRef((props: Props, ref: ForwardedRef<HTMLSelectEl
         {...(error ? {'aria-invalid': true} : null)}
         {...(required ? {'aria-required': true} : null)}
       >
-        <option value="" disabled hidden>
-          {m.select}
-        </option>
+        <option value="">{m.select}</option>
         {options.map(option => {
           return (
             <option key={option.key} value={option.key}>
