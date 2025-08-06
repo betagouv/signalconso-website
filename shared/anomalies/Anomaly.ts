@@ -210,7 +210,7 @@ export enum DetailInputType {
   DATE_NOT_IN_FUTURE = 'DATE_NOT_IN_FUTURE',
   DATE = 'DATE',
   TIMESLOT = 'TIMESLOT',
-  TAKATA = 'TAKATA',
+  TAKATA = 'TAKATA', // TEMPORARY, to be removed when the Takata issue is gone
   RADIO = 'RADIO',
   CHECKBOX = 'CHECKBOX',
   TEXTAREA = 'TEXTAREA',
