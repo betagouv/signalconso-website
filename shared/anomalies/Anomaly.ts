@@ -68,6 +68,7 @@ export type StandardSubcategory = SubcategoryBase & {
   attachmentDesc?: string
   //Customize consumer client reference input
   customizedClientReferenceInput?: ClientReferenceInput
+  customizedCompanyIdentificationTitle?: string
   detailInputs?: DetailInput[]
 }
 

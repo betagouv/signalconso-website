@@ -5,13 +5,13 @@ import {CompanySearchByName} from '@/components_feature/reportFlow/Company/Compa
 import {NoSearchResult} from '@/components_feature/reportFlow/Company/lib/NoSearchResult'
 import {ScRadioButtons} from '@/components_simple/formInputs/ScRadioButtons'
 import {Loader} from '@/feature/Loader'
-import {getCompanyKind, hasStep0, hasStep1Full, hasStep2} from '@/feature/reportUtils'
+import {getCompanyKind, getSubcategories, hasStep0, hasStep1Full, hasStep2} from '@/feature/reportUtils'
 import {getTransmissionStatusAfterConsumerWish} from '@/feature/transmissionStatus'
 import {useBarcodeSearch} from '@/hooks/barcode'
 import {Report} from '@/model/Report'
 import {CommonCompanyIdentification, Step2Model} from '@/model/Step2Model'
 import {useState} from 'react'
-import {SpecificProductCompanyKind, SpecificWebsiteCompanyKind} from 'shared/anomalies/Anomaly'
+import {SpecificProductCompanyKind, SpecificWebsiteCompanyKind, StandardSubcategory} from 'shared/anomalies/Anomaly'
 import {CompanySearchResult} from '../../../model/Company'
 import {PartialReport, useReportFlowContext} from '../ReportFlowContext'
 import {StepNavigation} from '../reportFlowStepper/ReportFlowStepper'
@@ -29,6 +29,7 @@ import {CompanyWebsiteCountry} from './CompanyWebsiteCountry'
 import {InfluencerBySocialNetwork} from './InfluencerBySocialNetwork'
 import {InfluencerFilled} from './InfluencerFilled'
 import {BarcodeSearchResult} from './lib/BarcodeSearchResult'
+import {last} from '@/utils/lodashNamedExport'
 
 export function Company({stepNavigation}: {stepNavigation: StepNavigation}) {
   const {report, setReport, sendStep2ValidationEvent} = useReportFlowContext()
@@ -225,6 +226,13 @@ function CompanyIdentificationTree({
 }) {
   const companyKind = getCompanyKind(draft)
   const transmittable = getTransmissionStatusAfterConsumerWish(draft).kind !== 'NOT_TRANSMITTABLE'
+  const subcategories = getSubcategories(draft)
+  const customizedCompanyIdentificationTitle = last(
+    subcategories.filter(
+      (subcategory): subcategory is StandardSubcategory =>
+        'customizedCompanyIdentificationTitle' in subcategory && subcategory.customizedCompanyIdentificationTitle !== undefined,
+    ),
+  )?.customizedCompanyIdentificationTitle
   return searchResults && searchResults.length > 0 ? (
     <CompanySearchResultComponent
       companies={searchResults}
@@ -245,7 +253,10 @@ function CompanyIdentificationTree({
       }}
     />
   ) : (
-    <CompanyChooseIdentificationMethod {...{companyKind}}>
+    <CompanyChooseIdentificationMethod
+      {...{companyKind}}
+      customizedCompanyIdentificationTitle={customizedCompanyIdentificationTitle}
+    >
       {method => {
         switch (method) {
           case 'byNameAndGeoArea':

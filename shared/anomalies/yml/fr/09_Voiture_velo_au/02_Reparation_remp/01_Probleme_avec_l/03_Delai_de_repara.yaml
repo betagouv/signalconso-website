@@ -1,0 +1,9 @@
+title: Délai de réparation
+detailInputs:
+  - label: Date du constat
+    type: DATE_NOT_IN_FUTURE
+    defaultValue: SYSDATE
+  - label: Quelle est la marque du véhicule concerné ?
+    type: TAKATA
+    optional: false
+subcategory: Delai_de_reparation

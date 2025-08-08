@@ -18,9 +18,11 @@ function isRemote(companyKind: CompanyKind) {
 }
 export function CompanyChooseIdentificationMethod({
   companyKind,
+  customizedCompanyIdentificationTitle,
   children,
 }: {
   companyKind: CompanyKind
+  customizedCompanyIdentificationTitle?: string
   children: (method: IdentificationMethod) => ReactNode
 }) {
   const {m} = useI18n()
@@ -67,7 +69,7 @@ export function CompanyChooseIdentificationMethod({
             value={method}
             onChange={setMethod}
             options={options}
-            title={m.canYouIdentifyCompany}
+            title={customizedCompanyIdentificationTitle ?? m.canYouIdentifyCompany}
             description={<span dangerouslySetInnerHTML={{__html: m.canYouIdentifyCompanyDesc}} />}
           />
         </div>
