@@ -1,0 +1,11 @@
+title: Problème avec les airbags Takata
+desc: 'Exemple : Refus de prise en charge, refus de véhicule de remplacement, délais'
+companyKind: SIRET
+subcategory: Probleme_avec_les_airbags_Takata
+customizedClientReferenceInput:
+  label: VIN (numéro de série du véhicule)
+  placeholder: 'ex : VF7SBHMZ0EW554823'
+  description: >-
+    Afin de faciliter le traitement de votre signalement, précisez le VIN (Vehicle Identification Number) est un code unique de 17 caractères attribué à chaque voiture. 
+    Le numéro est eur la carte grise (certificat d'immatriculation) sous la rubrique E intitulée "Numéro d'identification du véhicule".
+customizedCompanyIdentificationTitle: 'Pouvez-vous vous identifiez le garage ou le réparateur ?'

@@ -83,6 +83,7 @@ const standardSubcategorySpec: ObjectSpec = {
       placeholder: _ => _.ifDefined()?.assertIsString(),
       description: _ => _.ifDefined()?.assertIsString(),
     }),
+  customizedCompanyIdentificationTitle: _ => _.ifDefined()?.assertIsString(),
   detailInputs: _ =>
     _.ifDefined()?.assertIsArrayWith(detailInput => {
       assertIsDetailInput(detailInput)
