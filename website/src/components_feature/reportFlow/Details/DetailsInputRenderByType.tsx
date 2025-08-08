@@ -104,7 +104,7 @@ export function DetailsInputRenderByType({
         <ScSelect
           desc={
             <span className="text-base">
-              Pensez à vérifier si votr e la marque et le modèle de votre voiture sont concernés par le rappel :
+              Pensez à vérifier si la marque et le modèle de votre véhicule sont concernés par le rappel :
               <br />
               <a href="https://www.ecologie.gouv.fr/rappel-airbag-takata" target="_blank">
                 https://www.ecologie.gouv.fr/rappel-airbag-takata
