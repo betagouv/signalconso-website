@@ -1,0 +1,9 @@
+title: Refus de véhicule de remplacement
+detailInputs:
+  - label: Date du constat
+    type: DATE_NOT_IN_FUTURE
+    defaultValue: SYSDATE
+  - label: Quelle est la marque du véhicule concerné ?
+    type: TAKATA
+    optional: false
+subcategory: Refus_de_vehicule_de_remplacement
