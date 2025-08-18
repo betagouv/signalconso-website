@@ -1424,7 +1424,7 @@ contacter directement.`,
           <ul>
             <li>
               Si l'entreprise est située <strong>dans l'UE</strong>, déposer votre signalement sur
-              <a href="https://www.europe-consommateurs.eu/fr/accueil/" target="_blank" rel="noopener noreferrer">
+              <a href="https://www.europe-consommateurs.eu/" target="_blank" rel="noopener noreferrer">
                 europe-consommateurs.eu
               </a>
             </li>
