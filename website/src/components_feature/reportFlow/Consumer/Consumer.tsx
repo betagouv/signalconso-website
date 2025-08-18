@@ -248,8 +248,9 @@ export const ConsumerInner = ({
             }
             {..._form.register('referenceNumber', {
               maxLength: {value: 100, message: m.atMost100Chars},
+              required: clientReferenceInput?.required ? {value: true, message: m.required} : undefined,
             })}
-            required={false}
+            required={clientReferenceInput?.required ?? false}
             {...getErrors('referenceNumber')}
           />
           {showContactAgreement && (

@@ -1394,7 +1394,7 @@ export const en = {
 <ul>
   <li>
     If the company is located <strong>within the EU</strong>, submit your report on 
-    <a href="https://www.europe-consommateurs.eu/en/home/" target="_blank" rel="noopener noreferrer">
+    <a href="https://www.europe-consommateurs.eu/" target="_blank" rel="noopener noreferrer">
       europe-consommateurs.eu
     </a>
   </li>

@@ -76,6 +76,7 @@ interface ClientReferenceInput {
   label?: string
   placeholder?: string
   description?: string
+  required?: boolean
 }
 
 // a subcategory that blocks the user

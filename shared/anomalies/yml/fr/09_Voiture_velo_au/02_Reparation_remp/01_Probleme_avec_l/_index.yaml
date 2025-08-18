@@ -3,6 +3,7 @@ desc: 'Exemple : Refus de prise en charge, refus de véhicule de remplacement, d
 companyKind: SIRET
 subcategory: Probleme_avec_les_airbags_Takata
 customizedClientReferenceInput:
+  required: true
   label: VIN (numéro de série du véhicule)
   placeholder: 'ex : VF7SBHMZ0EW554823'
   description: >-
