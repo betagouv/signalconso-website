@@ -6,7 +6,7 @@ seoTitle: (seoTitle) Le titre SEO de la category
 path: pathdelacategory
 description: (description) Description de la category
 seoDescription: (seoDescription) Description SEO de la category
-img: category-restaurant
+img: category-restaurant.svg
 subcategoriesTitle: >-
   (subcategoriesTitle de la category racine) Titre ou question introduisant le
   choix des sous catégories

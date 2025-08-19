@@ -5,7 +5,7 @@ seoTitle: Signalez un produit alimentaire à la répression des fraudes, à part
 path: alimentaire-codebarres
 description: Signalez un problème rencontré avec un aliment identifié par un code-barres.
 seoDescription: Signalez un problème rencontré avec un aliment (yaourt, conserve, biscuits, eau en bouteille, etc.) identifié par un code-barres.
-img: category-restaurant
+img: category-restaurant.svg
 specialCategory: OpenFoodFacts
 subcategoriesTitle: >-
   Où avez-vous acheté ce produit ?
