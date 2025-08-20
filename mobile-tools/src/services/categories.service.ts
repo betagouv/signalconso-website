@@ -27,7 +27,7 @@ const categoriesFr: Category[] = anomaliesFr
       description: anomaly.description,
       id: anomaly.id,
       path: anomaly.path,
-      img: `${Config.websiteUrl}/image/pictos/${anomaly.img}.png`,
+      img: `${Config.websiteUrl}/image/pictos/${anomaly.img}`,
     }
   })
 
@@ -40,7 +40,7 @@ const categoriesEn: Category[] = anomaliesEn
       description: anomaly.description,
       id: anomaly.id,
       path: anomaly.path,
-      img: `${Config.websiteUrl}/image/pictos/${anomaly.img}.png`,
+      img: `${Config.websiteUrl}/image/pictos/${anomaly.img}`,
     }
   })
 

@@ -32,7 +32,7 @@ const AnomalyTile = ({anomaly}: {anomaly: Anomaly}) => {
     >
       <div className="flex gap-4">
         <div className="flex items-center justify-center">
-          <Image width={60} height={60} src={`/image/pictos/${anomaly.img}.png`} alt="" />
+          <Image width={60} height={60} src={`/image/pictos/${anomaly.img}`} alt="" />
         </div>
         <div className="flex flex-col justify-center">
           <h3 className="font-bold text-base mb-0 text-scbluefrance">{anomaly.title}</h3>
