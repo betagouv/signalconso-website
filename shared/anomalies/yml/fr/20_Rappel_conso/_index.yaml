@@ -5,7 +5,7 @@ seoTitle: Signalez un produit rappelé toujours en vente à la répression des f
 path: rappel-conso
 description: Signalez un produit rappelé et encore en vente, identifié par un code-barres
 seoDescription: Signalez un problème rencontré avec un aliment (yaourt, conserve, biscuits, eau en bouteille, etc.) identifié par un code-barres.
-img: category-restaurant
+img: category-restaurant.svg
 specialCategory: RappelConso
 subcategoriesTitle: >-
   Où avez-vous acheté ce produit ?
