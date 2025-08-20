@@ -18,6 +18,8 @@ export const minimizedAnomaliesEn = JSON.parse(fs.readFileSync('../shared/anomal
 
 const specialCategories = ['OpenFoodFacts', 'RappelConso']
 
+const svgToPng = (svg: string) => svg.replace(/svg$/g, 'png')
+
 const categoriesFr: Category[] = anomaliesFr
   .filter((anomaly: any) => !anomaly.hidden && !anomaly.isHiddenDemoCategory)
   .filter((anomaly: any) => !anomaly.specialCategory)
@@ -27,7 +29,7 @@ const categoriesFr: Category[] = anomaliesFr
       description: anomaly.description,
       id: anomaly.id,
       path: anomaly.path,
-      img: `${Config.websiteUrl}/image/pictos/${anomaly.img}`,
+      img: svgToPng(`${Config.websiteUrl}/image/pictos/${anomaly.img}`),
     }
   })
 
@@ -40,7 +42,7 @@ const categoriesEn: Category[] = anomaliesEn
       description: anomaly.description,
       id: anomaly.id,
       path: anomaly.path,
-      img: `${Config.websiteUrl}/image/pictos/${anomaly.img}`,
+      img: svgToPng(`${Config.websiteUrl}/image/pictos/${anomaly.img}`),
     }
   })
 
