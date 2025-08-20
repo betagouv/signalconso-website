@@ -24,7 +24,7 @@ describe('Test the categories path', () => {
       description: 'Prix, promotion, qualité, poids, paiement, garantie, …',
       id: '10',
       path: 'achat-magasin',
-      img: `${Config.websiteUrl}/image/pictos/category-store.svg`,
+      img: `${Config.websiteUrl}/image/pictos/category-store.png`,
     })
   })
   test('It should return french categories', async () => {
@@ -35,7 +35,7 @@ describe('Test the categories path', () => {
       description: 'Prix, promotion, qualité, poids, paiement, garantie, …',
       id: '10',
       path: 'achat-magasin',
-      img: `${Config.websiteUrl}/image/pictos/category-store.svg`,
+      img: `${Config.websiteUrl}/image/pictos/category-store.png`,
     })
   })
   test('It should return english categories', async () => {
@@ -46,7 +46,7 @@ describe('Test the categories path', () => {
       description: 'Price, promotion, quality, weight, warranty, etc.',
       id: '10',
       path: 'achat-magasin',
-      img: `${Config.websiteUrl}/image/pictos/category-store.svg`,
+      img: `${Config.websiteUrl}/image/pictos/category-store.png`,
     })
   })
 })
