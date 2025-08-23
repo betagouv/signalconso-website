@@ -1147,6 +1147,7 @@ contacter directement.`,
           <b>Nous vous conseillons vivement de tout de même soumettre votre signalement</b> pour aider les agents de la DGCCRF à enquêter.
     `,
     phoneNumberHavingCalled: `Numéro de téléphone vous ayant contacté`,
+    phoneNumberDesc: 'Seuls les numéros de téléphone français (commençant par 0 ou +33) peuvent faire l’objet d’un signalement.',
     phoneNumberHavingCalledPlaceholder: `Ex: 06 00 00 00 00`,
     tryAdjustSearch: `Essayez d'ajuster votre recherche.`,
     youCanOnlyReportFrenchCompanies: `L'entreprise doit être établie en France.`,

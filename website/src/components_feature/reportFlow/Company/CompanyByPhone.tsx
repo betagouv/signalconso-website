@@ -45,6 +45,7 @@ export const CompanyByPhone = ({children}: Props) => {
           <div>
             <form onSubmit={handleSubmit(submit)}>
               <ScTextInput
+                desc={m.phoneNumberDesc}
                 type="tel"
                 label={m.phoneNumberHavingCalled}
                 disabled={isSubmitted}
