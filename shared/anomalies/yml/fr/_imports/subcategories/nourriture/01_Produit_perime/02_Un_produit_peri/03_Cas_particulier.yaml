@@ -13,3 +13,5 @@ detailInputs:
     defaultValue: SYSDATE
 fileLabel: Photo
 subcategory: Cas_particulier_des_oeufs
+tags:
+  - ReponseConso

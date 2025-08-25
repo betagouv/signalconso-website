@@ -2,3 +2,5 @@ title: Frais bancaires
 desc: 'Exemple : prix non affiché, augmentation des frais bancaires sans prévenir'
 reponseconsoCode: '164'
 subcategory: Frais_bancaires
+tags:
+  - ReponseConso
