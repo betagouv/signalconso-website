@@ -32,7 +32,7 @@ interface ConsumerForm {
   referenceNumber?: string
 }
 
-export const Consumer = ({stepNavigation}: { stepNavigation: StepNavigation }) => {
+export const Consumer = ({stepNavigation}: {stepNavigation: StepNavigation}) => {
   const _reportFlow = useReportFlowContext()
   const draft = _reportFlow.report
   return (
@@ -54,10 +54,10 @@ export const Consumer = ({stepNavigation}: { stepNavigation: StepNavigation }) =
 }
 
 export const ConsumerInner = ({
-                                draft,
-                                saveChange,
-                                stepNavigation,
-                              }: {
+  draft,
+  saveChange,
+  stepNavigation,
+}: {
   draft: PartialReport
   saveChange: (_: Partial<Report['step4']>, goToNextStep?: boolean) => void
   stepNavigation: StepNavigation
@@ -143,7 +143,7 @@ export const ConsumerInner = ({
   const transmittable = isTransmittable(draft)
   const showContactAgreement = transmittable
 
-  const getErrors = (name: keyof ConsumerForm): { error: boolean; helperText?: string } => ({
+  const getErrors = (name: keyof ConsumerForm): {error: boolean; helperText?: string} => ({
     error: !!_form.formState.errors[name],
     helperText: _form.formState.errors[name]?.message,
   })
@@ -175,7 +175,7 @@ export const ConsumerInner = ({
         <h2 className="fr-h6">{m.consumerTitle}</h2>
         <div>
           {draft.step1.employeeConsumer && (
-            <ScAlert type="info" dangerouslySetInnerHTML={{__html: `<p>${m.consumerIsEmployee}</p>`}}/>
+            <ScAlert type="info" dangerouslySetInnerHTML={{__html: `<p>${m.consumerIsEmployee}</p>`}} />
           )}
           <div className="flex gap-4 mb-4">
             <div className="w-1/2">
@@ -238,7 +238,7 @@ export const ConsumerInner = ({
                 <WithIcon icon="ri-bill-line">
                   {clientReferenceInput && clientReferenceInput.label ? clientReferenceInput.label : m.referenceNumber}
                 </WithIcon>{' '}
-                {!clientReferenceInput && <ClientReferenceHelpButton/>}
+                {!clientReferenceInput && <ClientReferenceHelpButton />}
               </span>
             }
             placeholder={
@@ -280,27 +280,25 @@ export const ConsumerInner = ({
                     options={[
                       {
                         label: m.contactAgreementTrueTitle,
-                        description: <span className="text-sm"
-                                           dangerouslySetInnerHTML={{__html: m.contactAgreementTrueDesc}}/>,
+                        description: <span className="text-sm" dangerouslySetInnerHTML={{__html: m.contactAgreementTrueDesc}} />,
                         value: true,
                       },
                       {
                         label: m.contactAgreementFalseTitle,
-                        description: <span className="text-sm"
-                                           dangerouslySetInnerHTML={{__html: m.contactAgreementFalseDesc}}/>,
+                        description: <span className="text-sm" dangerouslySetInnerHTML={{__html: m.contactAgreementFalseDesc}} />,
                         value: false,
                       },
                     ]}
                   />
                 )}
               />
-              {watchContactAgreement === true && <ConsumerShareInformation/>}
-              {watchContactAgreement === false && <ConsumerAnonymousInformation/>}
+              {watchContactAgreement === true && <ConsumerShareInformation />}
+              {watchContactAgreement === false && <ConsumerAnonymousInformation />}
             </>
           )}
         </div>
       </div>
-      <ConsumerValidationDialog2 consumerEmail={_form.getValues().email} onValidated={saveAndNext}/>
+      <ConsumerValidationDialog2 consumerEmail={_form.getValues().email} onValidated={saveAndNext} />
       <NextStepButton
         loadingNext={_checkEmail.isPending}
         onNext={() => {
@@ -331,10 +329,10 @@ export const ConsumerInner = ({
   )
 }
 
-function WithIcon({children, icon}: { children: ReactNode; icon: string }) {
+function WithIcon({children, icon}: {children: ReactNode; icon: string}) {
   return (
     <>
-      <span className={`${icon} mr-1`} aria-hidden="true"/> {children}
+      <span className={`${icon} mr-1`} aria-hidden="true" /> {children}
     </>
   )
 }
