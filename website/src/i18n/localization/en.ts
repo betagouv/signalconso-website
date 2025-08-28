@@ -1142,6 +1142,7 @@ export const en = {
           <b>We strongly advise you to submit your report anyway</b> to help DGCCRF agents in their investigations.
     `,
     phoneNumberHavingCalled: `Phone number used to call you`,
+    phoneNumberDesc: 'Only French phone numbers (starting with 0 or +33) can be reported.',
     phoneNumberHavingCalledPlaceholder: `Ex: 06 00 00 00 00`,
     tryAdjustSearch: `Try adjusting your search.`,
     youCanOnlyReportFrenchCompanies: `The company must be based in France.`,
