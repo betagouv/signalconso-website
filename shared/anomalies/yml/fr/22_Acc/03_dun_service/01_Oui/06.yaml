@@ -1,0 +1,7 @@
+title: Un autre service
+desc: "Ex\_: démarche administrative en ligne, site internet de votre mairie, site des impôts etc"
+blockingInfo:
+  reportOutOfScopeMessage: true
+  content: >-
+    Retrouvez plus d'informations <a href='https://www.economie.gouv.fr/dgccrf/les-fiches-pratiques-et-les-faq/la-nouvelle-directive-europeenne-accessibilite-pour-des' target='_blank'>ici</a>
+subcategory: Un_autre_service
