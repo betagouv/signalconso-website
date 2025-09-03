@@ -1,0 +1,12 @@
+title: >-
+  Fonctionnement de l’application pour permettre une conversation téléphonique
+  accessible aux personnes sourdes, malentendantes ou aphasiques
+desc: 'Exemple : RogerVoice'
+blockingInfo:
+  title: Cela relève de la compétence l'ARCEP
+  reportOutOfScopeMessage: true
+  content: >-
+    Retrouvez plus d'informations sur <a href='https://jalerte.arcep.fr'
+    target='_blank'>https://jalerte.arcep.fr</a>
+subcategory: >-
+  Fonctionnement_de_lapplication_pour_permettre_une_conversation_telephonique_accessible_aux_personnes_sourdes_malentendantes_ou_aphasiques
