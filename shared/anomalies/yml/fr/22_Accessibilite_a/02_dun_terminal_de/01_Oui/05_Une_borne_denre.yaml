@@ -1,2 +1,7 @@
 title: Une borne d’enregistrement automatique
 subcategory: Une_borne_denregistrement_automatique
+detailInputs:
+  - label: Propriétaire du terminal
+    type: TEXT
+  - label: Lieu d’utilisation du terminal
+    type: TEXT
