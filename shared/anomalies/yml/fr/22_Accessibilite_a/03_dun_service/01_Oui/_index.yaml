@@ -1,8 +1,3 @@
 title: Oui
 subcategoriesTitle: Votre problème concerne
-detailInputs:
-  - label: Propriétaire du terminal
-    type: TEXT
-  - label: Lieux d’utilisation du terminal
-    type: TEXT
 subcategory: Oui
