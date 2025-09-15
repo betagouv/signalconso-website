@@ -1102,10 +1102,10 @@ contacter directement.`,
     companyIdentityLabel: `Numéro SIRET, SIREN, ou TVA intracommunautaire de l'entreprise`,
     reportAbroad1:
       "<p>Ce signalement concerne une entreprise située à l'étranger. SignalConso ne peut donc pas intervenir directement pour résoudre votre problème.<br/>" +
-      "Cependant, les enquêteurs de la Répression des fraudes ont accès à votre signalement. Ils peuvent s’en servir pour cibler et mener des investigations.</p>",
+      'Cependant, les enquêteurs de la Répression des fraudes ont accès à votre signalement. Ils peuvent s’en servir pour cibler et mener des investigations.</p>',
     reportAbroad1NonTransmittable:
       "<p>Ce signalement concerne une entreprise située à l'étranger. SignalConso ne peut donc pas intervenir directement pour résoudre votre problème.<br/>" +
-      "Cependant, les enquêteurs de la Répression des fraudes ont accès à votre signalement. Ils peuvent s’en servir pour cibler et mener des investigations.</p>",
+      'Cependant, les enquêteurs de la Répression des fraudes ont accès à votre signalement. Ils peuvent s’en servir pour cibler et mener des investigations.</p>',
     reportAbroad2: `Explorer d'autres pistes à l'international pour signaler cette entreprise`,
     companyIdentityPlaceholder: `Ex: 83350861700010`,
     barcodeProduct: 'Produit',
