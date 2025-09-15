@@ -1,5 +1,5 @@
 title: d’un bâtiment ou de la voirie
-desc: "Ex\_: absence de rampe devant un établissement recevant du public (gare, bâtiment public, gallerie marchande etc.), refus de laisser entrer un chien-guide dans un établissement, ascenseurs non fonctionnels dans un bâtiment public"
+desc: "Exemple\_: absence de rampe devant un établissement recevant du public (gare, bâtiment public, gallerie marchande etc.), refus de laisser entrer un chien-guide dans un établissement, ascenseurs non fonctionnels dans un bâtiment public"
 blockingInfo:
   reportOutOfScopeMessage: true
   content: >-
