@@ -1,5 +1,5 @@
 title: Un autre service
-desc: "Ex\_: démarche administrative en ligne, site internet de votre mairie, site des impôts etc"
+desc: "Exemple\_: démarche administrative en ligne, site internet de votre mairie, site des impôts etc"
 blockingInfo:
   reportOutOfScopeMessage: true
   content: >-
