@@ -1,9 +1,11 @@
-title: Le document fourni par votre banque est trop complexe
-desc: Vous n’en comprenez pas les termes
+title: "Le document fourni concernant un produit bancaire est trop complexe\_; vous n’en comprenez pas les termes"
 blockingInfo:
   title: >-
     Cela relève de la compétence de l'Autorité de contrôle prudentiel et de
-    résolution et de l'Autorité des marchés financiers
+    résolution
   reportOutOfScopeMessage: true
-  content: Retrouvez plus d'informations sur https://acpr.banque-france.fr/fr
-subcategory: Le_document_fourni_par_votre_banque_est_trop_complexe
+  content: >-
+    Retrouvez plus d'informations sur <a href='https://acpr.banque-france.fr/fr'
+    target='blank'>https://acpr.banque-france.fr/fr</a>
+subcategory: >-
+  Le_document_fourni_concernant_un_produit_bancaire_est_trop_complexe_vous_nen_comprenez_pas_les_termes
