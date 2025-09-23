@@ -1097,8 +1097,10 @@ export const en = {
     cantIdentifyCompany: `Your postal code will help us direct your report to the appropriate service.`,
     cantIdentifyLocationCompany: `These informations will help us direct your report to the appropriate service and match it with any reports your neighbors may have submitted.`,
     companyIdentityLabel: `SIRET or SIREN of the company`,
-    reportAbroad1: `France's Fraud Control cannot contact a company that is abroad. <strong>Your report will therefore have very little effect.</strong>`,
-    reportAbroad1NonTransmittable: `France's Fraud Control cannot investigate a company that is abroad. <strong>Your report will therefore have very little effect.</strong>`,
+    reportAbroad1: `<p>This report concerns a company located abroad. Therefore, SignalConso cannot directly intervene to resolve your problem.<br/>
+    However, fraud control investigators have access to your report. They can use it to target and carry out investigations.</p>`,
+    reportAbroad1NonTransmittable: `<p>This report concerns a company located abroad. Therefore, SignalConso cannot directly intervene to resolve your problem.<br/>
+    However, fraud control investigators have access to your report. They can use it to target and carry out investigations.</p>`,
     reportAbroad2: 'Explore other international options to report this company',
     companyIdentityPlaceholder: `Ex: 83350861700010`,
     barcodeProduct: 'Product',
