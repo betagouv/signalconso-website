@@ -1,0 +1,16 @@
+title: Accessibilité
+desc: >-
+  Exemple : distributeur de billets inaccessible, Assist’enGare non disponible,
+  absence de signalétique visuelle ou sonore
+subcategory: Accessibilite
+blockingInfo:
+  title: Utilisez plutôt la catégorie spécifique à votre problème 🙂
+  redirect:
+    - title: Accessibilité
+      description: >-
+        Cliquez sur ce lien pour être redirigé vers la bonne catégorie :
+      categoryPath: accessibilite
+      subcategorySlugs:
+        - dun_service
+        - Oui
+        - Un_transport
