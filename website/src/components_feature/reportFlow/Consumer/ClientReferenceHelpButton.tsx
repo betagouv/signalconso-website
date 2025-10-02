@@ -18,7 +18,7 @@ export function ClientReferenceHelpButton() {
         id: `client-reference-help-modal-${id}`,
         isOpenedByDefault: false,
       }),
-    [id]
+    [id],
   )
   const imagePropsFullWidth = {
     sizes: '1200px', // Increased from 1060px
