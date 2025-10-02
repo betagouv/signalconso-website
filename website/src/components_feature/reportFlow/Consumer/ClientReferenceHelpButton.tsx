@@ -7,15 +7,19 @@ import {PortalToBody} from '@/utils/PortalToBody'
 import Accordion from '@codegouvfr/react-dsfr/Accordion'
 import {createModal} from '@codegouvfr/react-dsfr/Modal'
 import Image from 'next/image'
-import {useId} from 'react'
+import {useId, useMemo} from 'react'
 
 export function ClientReferenceHelpButton() {
   const {m} = useI18n()
   const id = useId()
-  const modal = createModal({
-    id: `client-reference-help-modal-${id}`,
-    isOpenedByDefault: false,
-  })
+  const modal = useMemo(
+    () =>
+      createModal({
+        id: `client-reference-help-modal-${id}`,
+        isOpenedByDefault: false,
+      }),
+    [id]
+  )
   const imagePropsFullWidth = {
     sizes: '1200px', // Increased from 1060px
     className: 'w-full h-auto my-2 shadow-lg shadow-gray-300',
