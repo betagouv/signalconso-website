@@ -1,0 +1,7 @@
+title: Un service public en ligne
+desc: "Exemple\_: démarche administrative en ligne, site internet de votre mairie, site des impôts etc"
+blockingInfo:
+  title: Cela relève de la compétence l'ARCOM
+  reportOutOfScopeMessage: true
+  content: Retrouvez plus d'informations sur le <a href='https://www.arcom.fr/signaler-ou-alerter/probleme-accessibilite' target='_blank'>formulaire accessibilité numérique</a>
+subcategory: Un_service_public_en_ligne

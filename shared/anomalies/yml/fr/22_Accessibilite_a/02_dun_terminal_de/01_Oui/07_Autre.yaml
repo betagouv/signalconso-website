@@ -1,0 +1,9 @@
+title: Autre
+desc: >-
+  Précisez lors de l'étape 3
+detailInputs:
+  - label: Propriétaire du terminal
+    type: TEXT
+  - label: Lieu d’utilisation du terminal
+    type: TEXT
+subcategory: Autre
