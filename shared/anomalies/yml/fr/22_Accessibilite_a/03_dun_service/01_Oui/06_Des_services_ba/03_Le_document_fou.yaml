@@ -5,7 +5,7 @@ blockingInfo:
     résolution
   reportOutOfScopeMessage: true
   content: >-
-    Retrouvez plus d'informations sur <a href='https://acpr.banque-france.fr/fr'
-    target='blank'>https://acpr.banque-france.fr/fr</a>
+    <a href='https://acpr.banque-france.fr/fr'
+    target='blank'>Formuler une réclamation | Autorité de contrôle prudentiel et de résolution</a>
 subcategory: >-
   Le_document_fourni_concernant_un_produit_bancaire_est_trop_complexe_vous_nen_comprenez_pas_les_termes

@@ -3,8 +3,4 @@ desc: >-
   Exemple : accès au compte en ligne, service de paiement en ligne non
   accessible ou inutilisable, authentification ou service de sécurité bancaire
   non accessible
-blockingInfo:
-  title: Cela relève de la compétence la banque de France
-  reportOutOfScopeMessage: true
-  content: Retrouvez plus d'informations sur https://www.banque-france.fr/fr
 subcategory: Un_service_en_ligne_nest_pas_accessible

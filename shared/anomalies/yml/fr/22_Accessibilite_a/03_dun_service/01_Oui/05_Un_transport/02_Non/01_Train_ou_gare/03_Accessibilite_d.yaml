@@ -1,11 +1,16 @@
 title: Accessibilité de la gare
-companyKind: STATION
 desc: >-
   Exemples : un ascenseur était en panne, l’information n’était pas accessible
   (écrans), les toilettes n'étaient pas accessibles ou étaient fermées, les
   balises sonores ne s’activaient pas, la bande de guidage était détériorée,
   j'ai rencontré des difficultés de connexion avec les autres modes de transport
   (bus, cars…)
-ccrfCode:
-  - 23F
+blockingInfo:
+  reportOutOfScopeMessage: true
+  content: >-
+    Commencez par contacter le gestionnaire de la gare.<br />
+    L'entreprise est votre premier point de contact et peut souvent résoudre directement votre problème.<br /> 
+    Si vous n'obtenez pas de réponse ou si la réponse ne vous satisfait pas, vous pouvez ensuite vous adresser à la Direction Départementale des Territoires et de la Mer ou Direction Départementale des Territoires (DDTM ou DDT) du département.<br />
+    <a href='https://umap.openstreetmap.fr/fr/map/les-correspondants-accessibilite-par-departement_112126#6/46.695/5.251' target='_blank'>Liste des DDTM ou DDT</a>
+
 subcategory: Accessibilite_de_la_gare

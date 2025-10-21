@@ -1,9 +1,5 @@
 title: >-
   Le service d’authentification de ma banque lors du paiement n’est pas
   accessible/utilisable
-blockingInfo:
-  title: Cela relève de la compétence la banque de France
-  reportOutOfScopeMessage: true
-  content: Retrouvez plus d'informations sur <a href='https://www.banque-france.fr/fr' target='_blank'>le site de la banque de France</a>
 subcategory: >-
   Le_service_dauthentification_de_ma_banque_lors_du_paiement_nest_pas_accessibleutilisable
