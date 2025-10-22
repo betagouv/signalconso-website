@@ -29,10 +29,6 @@ export type TeamMember = {
   role: string[]
   avatar: StaticImageData
 }
-type Team = {
-  current: TeamMember[]
-  former: TeamMember[]
-}
 
 const trad = (lang: AppLang) => {
   const t = {
@@ -69,127 +65,123 @@ const trad = (lang: AppLang) => {
   return lang ? t[lang] : t[AppLangs.fr]
 }
 
-export function getTeam(lang: AppLang): Team {
+export function getTeamMembers(lang: AppLang): TeamMember[] {
   const t = trad(lang)
-  return {
-    current: [
-      {
-        name: 'Guillaume Rossmann',
-        role: [t.function.headOfProduct, t.dgccrfJob.inspector],
-        avatar: imgGuillaumerossmann,
-      },
-      {
-        name: 'Aline Gauthier',
-        role: [t.function.headOfProduct],
-        avatar: imgAline,
-      },
-      {
-        name: 'Guillaume de Gérando',
-        role: [t.function.bussinesDev, t.dgccrfJob.civilServant],
-        avatar: imgGuillaumedegerando,
-      },
-      {
-        name: 'Saïd Sedoud',
-        role: [t.function.dev],
-        avatar: imgSaidsedoud,
-      },
-      {
-        name: 'Charles Dufour',
-        role: [t.function.dev],
-        avatar: imgCharles,
-      },
-    ],
-    former: [
-      {
-        name: 'Emmanuel Letailleur',
-        role: [t.function.dev],
-        avatar: imgEmmanuel,
-      },
-      {
-        name: 'Nicolas Serra',
-        role: [t.function.dev],
-        avatar: imgNicolas,
-      },
-      {
-        name: 'Ingrid Godefroy',
-        role: [t.function.bussinesDev],
-        avatar: imgIngridgodefroy,
-      },
-      {
-        name: 'Nathaniel Richand',
-        role: [t.function.bussinesCoach],
-        avatar: imgNathanielrichand,
-      },
-      {
-        name: 'Hakim Sedoud',
-        role: [t.function.devIntern],
-        avatar: imgHakimsedoud,
-      },
-      {
-        name: 'Alexandre Annic',
-        role: [t.function.dev],
-        avatar: imgAlexandreannic,
-      },
-      {
-        name: 'Quentin Kurtz',
-        role: [t.function.bussinesDev],
-        avatar: imgQuentinkurtz,
-      },
-      {
-        name: 'Jérôme Rivals',
-        role: [t.function.dev],
-        avatar: imgJerome,
-      },
-      {
-        name: 'Julien Rayneau',
-        role: [t.function.bussinesCoach],
-        avatar: imgJulien,
-      },
-      {
-        name: 'Magali Marcel',
-        role: [t.function.headOfProduct, t.dgccrfJob.inspector],
-        avatar: imgMagali,
-      },
-      {
-        name: 'Valentine Michaud',
-        role: [t.function.bussinesDev],
-        avatar: imgValentine,
-      },
-      {
-        name: 'Jules Garavelli',
-        role: [t.function.bussinesDev],
-        avatar: imgJules,
-      },
-      {
-        name: 'Grégoire Aubert',
-        role: [t.function.bussinesDev],
-        avatar: imgGregoire,
-      },
-      {
-        name: 'Agnès Mayanobe',
-        role: [t.function.bussinesDev, t.dgccrfJob.inspector],
-        avatar: imgAgnes,
-      },
-      {
-        name: 'Thomas Chaumeny',
-        role: [t.function.dev],
-        avatar: imgThomas,
-      },
-      {
-        name: 'Pierre-Olivier Mauguet',
-        role: [t.function.dev],
-        avatar: imgPierre,
-      },
-      {
-        name: 'Franck Coufourier',
-        role: [t.function.dev],
-        avatar: imgFranck,
-      },
-      {
-        name: 'Alexandre Michel',
-        role: [t.function.bussinesDev],
-        avatar: imgAlexandre,
-      },
-    ],
-  }
+  return [
+    {
+      name: 'Guillaume Rossmann',
+      role: [t.function.headOfProduct, t.dgccrfJob.inspector],
+      avatar: imgGuillaumerossmann,
+    },
+    {
+      name: 'Aline Gauthier',
+      role: [t.function.headOfProduct],
+      avatar: imgAline,
+    },
+    {
+      name: 'Guillaume de Gérando',
+      role: [t.function.bussinesDev, t.dgccrfJob.civilServant],
+      avatar: imgGuillaumedegerando,
+    },
+    {
+      name: 'Saïd Sedoud',
+      role: [t.function.dev],
+      avatar: imgSaidsedoud,
+    },
+    {
+      name: 'Charles Dufour',
+      role: [t.function.dev],
+      avatar: imgCharles,
+    },
+    {
+      name: 'Emmanuel Letailleur',
+      role: [t.function.dev],
+      avatar: imgEmmanuel,
+    },
+    {
+      name: 'Nicolas Serra',
+      role: [t.function.dev],
+      avatar: imgNicolas,
+    },
+    {
+      name: 'Ingrid Godefroy',
+      role: [t.function.bussinesDev],
+      avatar: imgIngridgodefroy,
+    },
+    {
+      name: 'Nathaniel Richand',
+      role: [t.function.bussinesCoach],
+      avatar: imgNathanielrichand,
+    },
+    {
+      name: 'Hakim Sedoud',
+      role: [t.function.devIntern],
+      avatar: imgHakimsedoud,
+    },
+    {
+      name: 'Alexandre Annic',
+      role: [t.function.dev],
+      avatar: imgAlexandreannic,
+    },
+    {
+      name: 'Quentin Kurtz',
+      role: [t.function.bussinesDev],
+      avatar: imgQuentinkurtz,
+    },
+    {
+      name: 'Jérôme Rivals',
+      role: [t.function.dev],
+      avatar: imgJerome,
+    },
+    {
+      name: 'Julien Rayneau',
+      role: [t.function.bussinesCoach],
+      avatar: imgJulien,
+    },
+    {
+      name: 'Magali Marcel',
+      role: [t.function.headOfProduct, t.dgccrfJob.inspector],
+      avatar: imgMagali,
+    },
+    {
+      name: 'Valentine Michaud',
+      role: [t.function.bussinesDev],
+      avatar: imgValentine,
+    },
+    {
+      name: 'Jules Garavelli',
+      role: [t.function.bussinesDev],
+      avatar: imgJules,
+    },
+    {
+      name: 'Grégoire Aubert',
+      role: [t.function.bussinesDev],
+      avatar: imgGregoire,
+    },
+    {
+      name: 'Agnès Mayanobe',
+      role: [t.function.bussinesDev, t.dgccrfJob.inspector],
+      avatar: imgAgnes,
+    },
+    {
+      name: 'Thomas Chaumeny',
+      role: [t.function.dev],
+      avatar: imgThomas,
+    },
+    {
+      name: 'Pierre-Olivier Mauguet',
+      role: [t.function.dev],
+      avatar: imgPierre,
+    },
+    {
+      name: 'Franck Coufourier',
+      role: [t.function.dev],
+      avatar: imgFranck,
+    },
+    {
+      name: 'Alexandre Michel',
+      role: [t.function.bussinesDev],
+      avatar: imgAlexandre,
+    },
+  ]
 }

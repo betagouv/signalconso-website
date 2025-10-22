@@ -477,8 +477,7 @@ export const en = {
         'Our platform is not static – we are always making improvements. We regularly meet with consumers to get feedback on the responses we give, as well as how easy our website is to read and navigate.',
       workingMethodQuote: '"I have not failed. I have just found 10,000 ways that do not work."',
       workingMethodQuoteAuthor: '- Thomas Edison',
-      teamTitle: 'Our team',
-      formerMembersTitle: 'Former members',
+      teamTitle: 'Have contributed',
     },
     centreaide: {
       title: 'SignalConso help center',

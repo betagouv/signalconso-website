@@ -485,8 +485,7 @@ export const fr = {
         'C’est pourquoi notre produit n’est pas figé mais en perpétuelle évolution. Nous rencontrons régulièrement des consommateurs pour tester l’ergonomie, le vocabulaire utilisé ou les réponses apportées.',
       workingMethodQuote: '« Je n’ai pas échoué, j’ai juste trouvé 10.000 moyens qui ne fonctionnent pas. »',
       workingMethodQuoteAuthor: '— Thomas Edison',
-      teamTitle: 'Notre équipe',
-      formerMembersTitle: 'Anciens membres',
+      teamTitle: 'Ont contribué',
     },
     centreaide: {
       title: "Aide à l'utilisation de SignalConso",
