@@ -1,6 +1,6 @@
 import {MemberCard} from '@/components_simple/MemberCard'
 import {ContentPageContainer} from '@/components_simple/PageContainers'
-import {getTeam} from '@/core/team'
+import {getTeamMembers} from '@/core/team'
 import {Metadata} from 'next'
 import Link from 'next/link'
 import {getI18n} from '../i18n/I18nDictionnary'
@@ -17,7 +17,8 @@ export function getMetadata(lang: AppLang): Metadata {
   }
 }
 
-export const QuiSommesNous = ({params}: any) => {
+export const QuiSommesNous = async (props: any) => {
+  const params = await props.params
   const {messages: m} = getI18n(params.lang)
 
   return (
@@ -57,17 +58,9 @@ export const QuiSommesNous = ({params}: any) => {
           </div>
           <h2>{m.quiSommesNous.teamTitle}</h2>
           <ul className="p-0 list-none grid gap-4 grid-cols-1 md:grid-cols-2 xl:grid-cols-3 fr-pb-4w">
-            {getTeam(params.lang).current.map(_ => (
+            {getTeamMembers(params.lang).map(_ => (
               <li key={_.name}>
                 <MemberCard key={_.name} member={_} />
-              </li>
-            ))}
-          </ul>
-          <h2>{m.quiSommesNous.formerMembersTitle}</h2>
-          <ul className="p-0 list-none grid gap-4 grid-cols-1 md:grid-cols-2 xl:grid-cols-3 fr-pb-4w">
-            {getTeam(params.lang).former.map(_ => (
-              <li key={_.name}>
-                <MemberCard key={_.name} member={_} disabled />
               </li>
             ))}
           </ul>

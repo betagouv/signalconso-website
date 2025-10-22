@@ -485,8 +485,7 @@ export const fr = {
         'C’est pourquoi notre produit n’est pas figé mais en perpétuelle évolution. Nous rencontrons régulièrement des consommateurs pour tester l’ergonomie, le vocabulaire utilisé ou les réponses apportées.',
       workingMethodQuote: '« Je n’ai pas échoué, j’ai juste trouvé 10.000 moyens qui ne fonctionnent pas. »',
       workingMethodQuoteAuthor: '— Thomas Edison',
-      teamTitle: 'Notre équipe',
-      formerMembersTitle: 'Anciens membres',
+      teamTitle: 'Ont contribué',
     },
     centreaide: {
       title: "Aide à l'utilisation de SignalConso",
@@ -1101,9 +1100,11 @@ contacter directement.`,
     cantIdentifyLocationCompany: `Ces informations nous serviront à rediriger votre signalement vers le bon service, et à le rapprocher de ceux que vos voisins pourraient également avoir déposés.`,
     companyIdentityLabel: `Numéro SIRET, SIREN, ou TVA intracommunautaire de l'entreprise`,
     reportAbroad1:
-      "La répression des fraudes ne peut pas contacter une entreprise qui est à l'étranger. <strong>Votre signalement aura donc très peu d'effet.</strong>",
+      "<p>Ce signalement concerne une entreprise située à l'étranger. SignalConso ne peut donc pas intervenir directement pour résoudre votre problème.<br/>" +
+      'Cependant, les enquêteurs de la Répression des fraudes ont accès à votre signalement. Ils peuvent s’en servir pour cibler et mener des investigations.</p>',
     reportAbroad1NonTransmittable:
-      "La répression des fraudes ne peut pas enquêter sur une entreprise qui est à l'étranger. <strong>Votre signalement aura donc très peu d'effet.</strong>",
+      "<p>Ce signalement concerne une entreprise située à l'étranger. SignalConso ne peut donc pas intervenir directement pour résoudre votre problème.<br/>" +
+      'Cependant, les enquêteurs de la Répression des fraudes ont accès à votre signalement. Ils peuvent s’en servir pour cibler et mener des investigations.</p>',
     reportAbroad2: `Explorer d'autres pistes à l'international pour signaler cette entreprise`,
     companyIdentityPlaceholder: `Ex: 83350861700010`,
     barcodeProduct: 'Produit',
