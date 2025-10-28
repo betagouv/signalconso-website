@@ -1,0 +1,7 @@
+title: Un autre service
+desc: "Exemple\_: Une consultation médicale ou une formation en ligne"
+blockingInfo:
+  reportOutOfScopeMessage: true
+  content: >-
+    Retrouvez plus d'informations <a href='https://www.economie.gouv.fr/dgccrf/les-fiches-pratiques-et-les-faq/la-nouvelle-directive-europeenne-accessibilite-pour-des' target='_blank'>ici</a>
+subcategory: Un_autre_service

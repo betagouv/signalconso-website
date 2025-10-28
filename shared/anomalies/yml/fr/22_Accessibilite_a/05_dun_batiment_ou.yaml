@@ -1,0 +1,7 @@
+title: d’un bâtiment ou de la voirie
+desc: "Exemples\_: absence de rampe devant un établissement recevant du public (gare, bâtiment public, galerie marchande etc.), refus de laisser entrer un chien-guide ou d'assistance dans un établissement, ascenseurs non fonctionnels dans un bâtiment public"
+blockingInfo:
+  reportOutOfScopeMessage: true
+  content: >-
+    Retrouvez plus d'informations sur <a href='https://www.ecologie.gouv.fr/politiques-publiques/accessibilite' target='_blank'>https://www.ecologie.gouv.fr/politiques-publiques/accessibilite</a>
+subcategory: dun_batiment_ou_de_la_voirie
