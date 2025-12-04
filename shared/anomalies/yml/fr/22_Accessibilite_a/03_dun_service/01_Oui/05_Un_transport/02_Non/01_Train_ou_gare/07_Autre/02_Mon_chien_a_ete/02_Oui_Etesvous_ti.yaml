@@ -1,0 +1,9 @@
+title: Oui (Êtes-vous titulaire de la Carte Mobilité Inclusion ?)
+reponseconsoCode: '521'
+detailInputs:
+  - label: Date du refus
+    type: DATE
+fileLabel: >-
+  Vous pouvez joindre des éléments (photo, carte d'assistance...) pour appuyer
+  votre signalement.
+subcategory: Oui_Etesvous_titulaire_de_la_Carte_Mobilite_Inclusion

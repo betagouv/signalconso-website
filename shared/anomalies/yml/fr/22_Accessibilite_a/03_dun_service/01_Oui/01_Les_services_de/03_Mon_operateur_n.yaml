@@ -1,0 +1,11 @@
+title: >-
+  Mon opérateur ne me propose pas d’afficher du texte en temps réel pendant mon
+  appel vocal
+blockingInfo:
+  title: Cela relève de la compétence l'ARCEP
+  reportOutOfScopeMessage: true
+  content: >-
+    Retrouvez plus d'informations sur <a href='https://jalerte.arcep.fr'
+    target='_blank'>https://jalerte.arcep.fr</a>
+subcategory: >-
+  Mon_operateur_ne_me_propose_pas_dafficher_du_texte_en_temps_reel_pendant_mon_appel_vocal

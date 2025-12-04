@@ -1,0 +1,7 @@
+title: Une borne d’achat de billets de transport
+subcategory: Une_borne_dachat_de_billets_de_transport
+detailInputs:
+  - label: Propriétaire du terminal
+    type: TEXT
+  - label: Lieu d’utilisation du terminal
+    type: TEXT
