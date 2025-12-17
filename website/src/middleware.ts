@@ -68,30 +68,7 @@ function computeLang(currentCookieLang: string | undefined, headers: any) {
   if (currentCookieLang) {
     return currentCookieLang
   } else {
-    const defaultLang = AppLangs.fr
-    // Negotiator expects plain object so we need to transform headers
-    const negotiatorHeaders: Record<string, string> = {}
-    headers.forEach((value: string, key: string) => (negotiatorHeaders[key] = value))
-
-    // Use negotiator and intl-localematcher to get best locale
-    let languages = new Negotiator({headers: negotiatorHeaders}).languages(supportedLang)
-
-    // Handle SEO / CURL request that are not handled well
-    // See https://stackoverflow.com/questions/76447732/nextjs-13-i18n-incorrect-locale-information-provided
-    let computedLang: string
-    try {
-      /**
-       * First matching supportedLang will be selected, for example for supported lang ['fr', 'en'] and default lang 'fr' :
-       * given [ 'fr', 'en-GB', 'en-US', 'en' ] -> 'fr' will be selected
-       * given [ 'en-GB', 'en-US', 'en', 'fr' ] -> 'en' will be selected
-       * given [ 'es' ] -> 'fr' will be selected
-       */
-      computedLang = match(languages, supportedLang, defaultLang)
-    } catch (error) {
-      console.warn(error, `Unable to parse language ${languages}`)
-      computedLang = defaultLang
-    }
-    return computedLang
+    return AppLangs.fr
   }
 }
 

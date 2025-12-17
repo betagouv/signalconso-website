@@ -12,14 +12,12 @@
     "node": "20.9.0"
   },
   "devDependencies": {
+    "node-addon-api": "^8.5.0",
+    "node-gyp": "^11.5.0",
     "ts-node": "10.9.2"
   },
   "scripts": {
     "installplaywright": "npx browserslist@latest --update-db --yes && npx playwright install --with-deps"
   },
-  "packageManager": "yarn@3.2.1",
-  "dependencies": {
-    "node-addon-api": "^8.5.0",
-    "node-gyp": "^11.5.0"
-  }
+  "packageManager": "yarn@3.2.1"
 }
