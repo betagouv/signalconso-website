@@ -112,6 +112,9 @@ const securityHeaders = [
 ]
 
 module.exports = {
+  images: {
+    unoptimized: true,
+  },
   productionBrowserSourceMaps: true,
   reactStrictMode: true,
   async redirects() {
