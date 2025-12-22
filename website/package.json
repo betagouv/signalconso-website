@@ -110,7 +110,6 @@
     "jest": "29.7.0",
     "jest-environment-jsdom": "^29.7.0",
     "jest-html-reporters": "3.1.7",
-    "node-gyp": "^11.5.0",
     "nodemon": "^3.1.7",
     "prettier": "^3.5.3",
     "sass": "^1.81.0",
