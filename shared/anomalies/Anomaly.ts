@@ -70,6 +70,8 @@ export type StandardSubcategory = SubcategoryBase & {
   customizedClientReferenceInput?: ClientReferenceInput
   customizedCompanyIdentificationTitle?: string
   detailInputs?: DetailInput[]
+  customizedPostalCodeLabel?: string
+  canBeUnidentified?: boolean
 }
 
 interface ClientReferenceInput {

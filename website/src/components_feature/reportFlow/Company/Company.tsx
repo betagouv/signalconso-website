@@ -233,6 +233,12 @@ function CompanyIdentificationTree({
         'customizedCompanyIdentificationTitle' in subcategory && subcategory.customizedCompanyIdentificationTitle !== undefined,
     ),
   )?.customizedCompanyIdentificationTitle
+  const customizedPostalCodeLabel = last(
+    subcategories.filter(
+      (subcategory): subcategory is StandardSubcategory =>
+        'customizedPostalCodeLabel' in subcategory && subcategory.customizedPostalCodeLabel !== undefined,
+    ),
+  )?.customizedPostalCodeLabel
   return searchResults && searchResults.length > 0 ? (
     <CompanySearchResultComponent
       companies={searchResults}
@@ -325,7 +331,8 @@ function CompanyIdentificationTree({
           case 'itIsForeign':
             return (
               <CompanyAskForeignDetails
-                {...{companyKind, reportTransmittableToPro: transmittable}}
+                reportTransmittableToPro={transmittable}
+                postalCodeLabel={customizedPostalCodeLabel}
                 onSubmit={({name, postalCode, country: {code}}) => {
                   onIdentification({
                     kind: 'foreignCompany',

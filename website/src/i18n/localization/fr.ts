@@ -1096,7 +1096,7 @@ export const fr = {
     cantIdentifyWarn1: `<strong>SignalConso est plus efficace lorsque vous identifiez l'entreprise.</strong> Cela nous permet de la
 contacter directement.`,
     cantIdentifyWarn2: `Votre signalement sera transmis aux agents de la répression des fraudes, qui feront de leur mieux pour le traiter. Toutefois, les chances de succès seront <strong>significativement réduites</strong>.`,
-    cantIdentifyCompany: `Votre code postal nous servira à rediriger votre signalement vers le bon service.`,
+    cantIdentifyCompany: `Le code postal nous servira à rediriger votre signalement vers le bon service.`,
     cantIdentifyLocationCompany: `Ces informations nous serviront à rediriger votre signalement vers le bon service, et à le rapprocher de ceux que vos voisins pourraient également avoir déposés.`,
     companyIdentityLabel: `Numéro SIRET, SIREN, ou TVA intracommunautaire de l'entreprise`,
     reportAbroad1:

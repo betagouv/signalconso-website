@@ -1,10 +1,11 @@
-import {CompanyKind} from 'shared/anomalies/Anomaly'
+import {CompanyKind, StandardSubcategory} from 'shared/anomalies/Anomaly'
 import {getSubcategories, getTags, getWipCompanyKindFromSelected, hasStep0, hasSubcategoryIndexes} from '@/feature/reportUtils'
 import {useI18n} from '@/i18n/I18n'
 import {ReactNode} from 'react'
 import {useReportFlowContext} from '../ReportFlowContext'
 import {ProblemSelect} from './ProblemSelect'
 import {computeSelectedSubcategoriesData} from './useSelectedSubcategoriesData'
+import {last} from '@/utils/lodashNamedExport'
 
 export function ProblemCompanyKindOverride({children}: {children: ReactNode}) {
   const {m} = useI18n()
@@ -14,6 +15,13 @@ export function ProblemCompanyKindOverride({children}: {children: ReactNode}) {
   }
   const subcategories = getSubcategories(r)
   const hasTagProduitDangereux = getTags(r).includes('ProduitDangereux')
+  const canBeUnidentified =
+    last(
+      subcategories.filter(
+        (subcategory): subcategory is StandardSubcategory =>
+          'canBeUnidentified' in subcategory && subcategory.canBeUnidentified !== undefined,
+      ),
+    )?.canBeUnidentified ?? false
   const companyKindBeforeOverride = getWipCompanyKindFromSelected(r)
   const {companyKindQuestion} = computeSelectedSubcategoriesData(subcategories)
   const hidden = !!companyKindBeforeOverride
@@ -48,7 +56,7 @@ export function ProblemCompanyKindOverride({children}: {children: ReactNode}) {
                 },
                 {
                   title: m.problemIsInternetCompanyNo,
-                  value: hasTagProduitDangereux ? 'LOCATION' : 'SIRET',
+                  value: hasTagProduitDangereux || canBeUnidentified ? 'LOCATION' : 'SIRET',
                 },
               ]}
             />

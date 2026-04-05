@@ -89,6 +89,8 @@ const standardSubcategorySpec: ObjectSpec = {
     _.ifDefined()?.assertIsArrayWith(detailInput => {
       assertIsDetailInput(detailInput)
     }),
+  customizedPostalCodeLabel: _ => _.ifDefined()?.assertIsString(),
+  canBeUnidentified: _ => _.ifDefined()?.assertIsBoolean(),
   ...baseSubcategorySpec,
 }
 

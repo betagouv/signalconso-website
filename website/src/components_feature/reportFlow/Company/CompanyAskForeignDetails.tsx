@@ -19,6 +19,7 @@ interface Form {
 interface Props {
   onSubmit: (form: Form) => void
   reportTransmittableToPro: boolean
+  postalCodeLabel?: string
 }
 
 export const countryToFlag = (isoCode: string) => {
@@ -27,7 +28,7 @@ export const countryToFlag = (isoCode: string) => {
     : isoCode
 }
 
-export const CompanyAskForeignDetails = ({onSubmit, reportTransmittableToPro}: Props) => {
+export const CompanyAskForeignDetails = ({onSubmit, reportTransmittableToPro, postalCodeLabel}: Props) => {
   const {m} = useI18n()
   const {
     control,
@@ -74,7 +75,7 @@ export const CompanyAskForeignDetails = ({onSubmit, reportTransmittableToPro}: P
                 return <ScAutocompleteCountry {...{onChange, onBlur, name, value}} error={!!error} helperText={error?.message} />
               }}
             />
-            <p className="mb-2 text-sm">{m.cantIdentifyCompany}</p>
+            <p className="mb-2 text-sm font-bold">{m.cantIdentifyCompany}</p>
             <Controller
               control={control}
               name="postalCode"
@@ -83,7 +84,7 @@ export const CompanyAskForeignDetails = ({onSubmit, reportTransmittableToPro}: P
               }}
               render={({field: {onChange, onBlur, name, value}, fieldState: {error}}) => (
                 <ScAutocompletePostcode
-                  label={m.yourPostalCode}
+                  label={postalCodeLabel ?? m.yourPostalCode}
                   {...{onChange, onBlur, name, value}}
                   error={!!error}
                   helperText={error?.message}
