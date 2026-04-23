@@ -3,3 +3,5 @@ ccrfCode:
   - 21c
 reponseconsoCode: '481'
 subcategory: Delay_cancellation_refund
+canBeUnidentified: true
+customizedPostalCodeLabel: Postcode of the place of departure (or of arrival if your trip started outside France)
