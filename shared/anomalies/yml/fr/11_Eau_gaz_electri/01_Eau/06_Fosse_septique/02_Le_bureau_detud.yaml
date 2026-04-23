@@ -1,0 +1,8 @@
+title: Le bureau d'étude impose une marque ou modèle en particulier
+tags:
+  - ReponseConso
+detailInputs:
+  - label: Date du constat
+    type: DATE_NOT_IN_FUTURE
+    defaultValue: SYSDATE
+subcategory: Le_bureau_detude_impose_une_marque_ou_modele_en_particulier

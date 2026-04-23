@@ -1093,7 +1093,7 @@ export const en = {
     cantIdentifyWarn1:
       '<strong>SignalConso is more effective when you identify the company.</strong> This allows us to contact it directly.',
     cantIdentifyWarn2: `Your report will be forwarded to France's Fraud Control, who will do their best to handle it. However, the chances of success will be <strong>significantly reduced</strong>.`,
-    cantIdentifyCompany: `Your postal code will help us direct your report to the appropriate service.`,
+    cantIdentifyCompany: `The postal code will help us direct your report to the appropriate service.`,
     cantIdentifyLocationCompany: `These informations will help us direct your report to the appropriate service and match it with any reports your neighbors may have submitted.`,
     companyIdentityLabel: `SIRET or SIREN of the company`,
     reportAbroad1: `<p>This report concerns a company located abroad. Therefore, SignalConso cannot directly intervene to resolve your problem.<br/>

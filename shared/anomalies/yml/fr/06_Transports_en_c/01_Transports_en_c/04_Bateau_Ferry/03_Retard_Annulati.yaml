@@ -3,3 +3,5 @@ ccrfCode:
   - 21c
 reponseconsoCode: '481'
 subcategory: Retard_Annulation_Remboursement
+canBeUnidentified: true
+customizedPostalCodeLabel: Code postal du lieu de départ (ou d’arrivée si vous êtes parti de l’étranger)
