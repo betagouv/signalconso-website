@@ -26,6 +26,9 @@ app.use(cors())
 app.use('/v1/actus', DGCCRFRSSController)
 app.use('/v1/categories', CategoriesController)
 
+app.use('/actus', DGCCRFRSSController)
+app.use('/categories', CategoriesController)
+
 /**
  * Pour toutes les autres routes non définies, on retourne une erreur
  */

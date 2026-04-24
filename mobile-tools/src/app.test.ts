@@ -5,19 +5,19 @@ import {Config} from './config/config'
 
 describe('Test the actus path', () => {
   test('It should response the GET method', async () => {
-    const response = await request(app).get('/v1/actus')
+    const response = await request(app).get('/actus')
     expect(response.statusCode).toBe(200)
   })
 })
 
 describe('Test the categories path', () => {
   test('It should response the GET method', async () => {
-    const response = await request(app).get('/v1/categories')
+    const response = await request(app).get('/categories')
     expect(response.statusCode).toBe(200)
   })
 
   test('It should return french categories by default', async () => {
-    const response = await request(app).get('/v1/categories')
+    const response = await request(app).get('/categories')
     const categories = response.body as Category[]
     expect(categories).toContainEqual({
       category: 'Achat en magasin',
@@ -28,7 +28,7 @@ describe('Test the categories path', () => {
     })
   })
   test('It should return french categories', async () => {
-    const response = await request(app).get('/v1/categories').query({lang: 'fr'})
+    const response = await request(app).get('/categories').query({lang: 'fr'})
     const categories = response.body as Category[]
     expect(categories).toContainEqual({
       category: 'Achat en magasin',
@@ -39,7 +39,7 @@ describe('Test the categories path', () => {
     })
   })
   test('It should return english categories', async () => {
-    const response = await request(app).get('/v1/categories').query({lang: 'en'})
+    const response = await request(app).get('/categories').query({lang: 'en'})
     const categories = response.body as Category[]
     expect(categories).toContainEqual({
       category: 'In-store purchases',
