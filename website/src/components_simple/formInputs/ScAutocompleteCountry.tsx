@@ -19,6 +19,7 @@ export function ScAutocompleteCountry(props: {
   const {currentLang, m} = useI18n()
 
   function pickName(country: Country) {
+    if (!country) return ''
     return currentLang === AppLangs.en ? country.englishName : country.name
   }
   if (_countries.data) {
