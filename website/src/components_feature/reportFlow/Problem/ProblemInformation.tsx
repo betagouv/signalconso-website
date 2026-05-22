@@ -7,7 +7,7 @@ import {useI18n} from '@/i18n/I18n'
 import {last} from '@/utils/lodashNamedExport'
 import Button from '@codegouvfr/react-dsfr/Button'
 import {useMutation} from '@tanstack/react-query'
-import {useEffect, useState} from 'react'
+import {useEffect, useId, useState} from 'react'
 import {Anomaly, InfoWall, RedirectToCategory, Subcategory} from 'shared/anomalies/Anomaly'
 import {LinkBackToHome} from '../../../components_simple/LinkBackToHome'
 import {buildLinkStartReport} from '@/core/buildLinks'
@@ -33,6 +33,10 @@ function buildRedirectHref(lang: AppLang, isWebView: boolean, redirect: Redirect
 }
 
 export const ProblemInformation = ({anomaly, subcategories, information, isWebView}: Props) => {
+  const blockingInfoTitleId = useId()
+  const blockingInfoBodyId = useId()
+  const usefulFeedbackTitleId = useId()
+  const usefulFeedbackThanksId = useId()
   const _analytic = useAnalyticContext()
   const {m, currentLang} = useI18n()
   const {signalConsoApiClient} = useApiClients()
@@ -56,12 +60,39 @@ export const ProblemInformation = ({anomaly, subcategories, information, isWebVi
     _vote.mutate(positive)
   }
 
+  const hasBlockingBody =
+    Boolean(information.reportOutOfScopeMessage) ||
+    Boolean(information.subTitle) ||
+    Boolean(information.content) ||
+    (information.questions?.length ?? 0) > 0 ||
+    (information.redirect?.length ?? 0) > 0
+
+  // Multiple ids: accessible name is title + body text so SR reads the full message on focus (not only the heading).
+  const blockingInfoRegionLabelledBy = hasBlockingBody
+    ? `${blockingInfoTitleId} ${blockingInfoBodyId}`
+    : blockingInfoTitleId
+
+  const usefulFeedbackRegionLabelledBy = _vote.data
+    ? `${usefulFeedbackTitleId} ${usefulFeedbackThanksId}`
+    : usefulFeedbackTitleId
+
   return (
     <>
       <Animate>
-        <div id="blocking-info-wall" className="p-4 border border-gray-300 border-solid mb-4">
-          <h2 className="fr-h6" dangerouslySetInnerHTML={{__html: information.title ?? m.informationTitle}} />
-          <div>
+        <div
+          id="blocking-info-wall"
+          role="region"
+          aria-labelledby={blockingInfoRegionLabelledBy}
+          // Static text is skipped by Tab; include this block in tab order so keyboard / SR users hear the message before accordions / links.
+          tabIndex={0}
+          className="p-4 border border-gray-300 border-solid mb-4 rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-scbluefrance"
+        >
+          <h2
+            id={blockingInfoTitleId}
+            className="fr-h6"
+            dangerouslySetInnerHTML={{__html: information.title ?? m.informationTitle}}
+          />
+          <div id={hasBlockingBody ? blockingInfoBodyId : undefined}>
             {information.reportOutOfScopeMessage && <p>{m.informationReportOutOfScope}</p>}
             {information.subTitle && <p className="font-bold mb-1" dangerouslySetInnerHTML={{__html: information.subTitle}} />}
             {information.content && <p className="mb-1" dangerouslySetInnerHTML={{__html: information.content}} />}
@@ -91,14 +122,21 @@ export const ProblemInformation = ({anomaly, subcategories, information, isWebVi
         </div>
       </Animate>
       <Animate>
-        <div className="p-4 border border-gray-300 border-solid mb-4">
-          <h2 className="fr-h6">{m.informationWasUsefull}</h2>
+        <div
+          role="region"
+          aria-labelledby={usefulFeedbackRegionLabelledBy}
+          tabIndex={0}
+          className="p-4 border border-gray-300 border-solid mb-4 rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-scbluefrance"
+        >
+          <h2 id={usefulFeedbackTitleId} className="fr-h6">
+            {m.informationWasUsefull}
+          </h2>
           {_vote.data ? (
             <div className="text-center mb-8">
               <div className="h-[110px] mt-2 leading-4 ">
-                <i className="ri-checkbox-circle-fill sc-icon-xxl text-green-700" />
+                <i className="ri-checkbox-circle-fill sc-icon-xxl text-green-700" aria-hidden />
               </div>
-              <div className="mt-2">
+              <div className="mt-2" id={usefulFeedbackThanksId}>
                 <span className="text-xl text-gray-600"> {m.informationRatingSaved}</span>
               </div>
             </div>

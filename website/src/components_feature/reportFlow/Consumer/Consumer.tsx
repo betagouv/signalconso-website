@@ -13,7 +13,7 @@ import {Report} from '@/model/Report'
 import {last} from '@/utils/lodashNamedExport'
 import {regexp} from '@/utils/regexp'
 import {useMutation} from '@tanstack/react-query'
-import {ReactNode, useCallback, useEffect} from 'react'
+import {ReactNode, useCallback, useEffect, useId} from 'react'
 import {Controller, useForm, UseFormReturn} from 'react-hook-form'
 import {StandardSubcategory} from 'shared/anomalies/Anomaly'
 import {ScAlert} from '../../../components_simple/ScAlert'
@@ -66,6 +66,7 @@ export const ConsumerInner = ({
     throw new Error('This draft is not ready for the Consumer step')
   }
   const {m, currentLang} = useI18n()
+  const consumerStepTitleId = useId()
   const {isSmOrMore} = useBreakpoints()
   const {signalConsoApiClient} = useApiClients()
   const _reportFlow = useReportFlowContext()
@@ -171,8 +172,15 @@ export const ConsumerInner = ({
 
   return (
     <>
-      <div>
-        <h2 className="fr-h6">{m.consumerTitle}</h2>
+      <div
+        role="region"
+        aria-labelledby={consumerStepTitleId}
+        tabIndex={0}
+        className="rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-scbluefrance"
+      >
+        <h2 id={consumerStepTitleId} className="fr-h6">
+          {m.consumerTitle}
+        </h2>
         <div>
           {draft.step1.employeeConsumer && (
             <ScAlert type="info" dangerouslySetInnerHTML={{__html: `<p>${m.consumerIsEmployee}</p>`}} />
@@ -234,13 +242,11 @@ export const ConsumerInner = ({
               clientReferenceInput && clientReferenceInput.description ? clientReferenceInput.description : m.referenceNumberDesc
             }
             label={
-              <span>
-                <WithIcon icon="ri-bill-line">
-                  {clientReferenceInput && clientReferenceInput.label ? clientReferenceInput.label : m.referenceNumber}
-                </WithIcon>{' '}
-                {!clientReferenceInput && <ClientReferenceHelpButton />}
-              </span>
+              <WithIcon icon="ri-bill-line">
+                {clientReferenceInput && clientReferenceInput.label ? clientReferenceInput.label : m.referenceNumber}
+              </WithIcon>
             }
+            labelAccessory={!clientReferenceInput ? <ClientReferenceHelpButton /> : undefined}
             placeholder={
               clientReferenceInput && clientReferenceInput.placeholder
                 ? clientReferenceInput.placeholder
@@ -331,8 +337,9 @@ export const ConsumerInner = ({
 
 function WithIcon({children, icon}: {children: ReactNode; icon: string}) {
   return (
-    <>
-      <span className={`${icon} mr-1`} aria-hidden="true" /> {children}
-    </>
+    <span className="inline-flex items-center gap-1">
+      <span className={icon} aria-hidden="true" />
+      <span>{children}</span>
+    </span>
   )
 }
