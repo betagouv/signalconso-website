@@ -39,9 +39,9 @@ export const CompanyAskForeignDetails = ({onSubmit, reportTransmittableToPro, po
 
   return (
     <Animate>
-      <div id="CompanyAskForeignDetails">
-        <div className="mb-4">
-          <ScAlert type="warning">
+  <div id="CompanyAskForeignDetails">
+    <div className="mb-4">
+      <ScAlert type="warning">
             <p
               className="mb-0"
               dangerouslySetInnerHTML={{__html: reportTransmittableToPro ? m.reportAbroad1 : m.reportAbroad1NonTransmittable}}

@@ -1077,9 +1077,8 @@ export const fr = {
     clearSiret: 'Effacer le numéro',
     clearPhone: 'Effacer le numéro de téléphone',
     canYouIdentifyCompany: `Pouvez-vous identifier l'entreprise  ?`,
-    canYouIdentifyCompanyDesc: `Pour vous aider, essayez
-            <a href="https://annuaire-entreprises.data.gouv.fr/" target="_blank" rel="noopener noreferrer">l'Annuaire des Entreprises</a>
-            `,
+    canYouIdentifyCompanyDesc: `Pour vous aider, essayez`,
+    annuaireEntreprisesLabel: `l'Annuaire des Entreprises`,
     websitePlaceholder: 'Exemple: https://www.site.fr',
     identifyBy_barcode: `Par le numéro du code-barres sur le produit`,
     identifyBy_barcodeDesc: `Nous vous dirons où le trouver`,

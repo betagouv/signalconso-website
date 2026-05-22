@@ -88,7 +88,23 @@ export const ReattributeCompany = ({reportId, isWebView}: ReattributeCompanyProp
               onChange={setMethod}
               options={options}
               title={m.reattribute.identify}
-              description={<span dangerouslySetInnerHTML={{__html: m.canYouIdentifyCompanyDesc}} />}
+              description={
+                m.annuaireEntreprisesLabel ? (
+                  <span>
+                    {m.canYouIdentifyCompanyDesc}{' '}
+                    <a
+                      href="https://annuaire-entreprises.data.gouv.fr/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`${m.canYouIdentifyCompanyDesc} ${m.annuaireEntreprisesLabel}`}
+                    >
+                      {m.annuaireEntreprisesLabel}
+                    </a>
+                  </span>
+                ) : (
+                  <span>{m.canYouIdentifyCompanyDesc}</span>
+                )
+              }
             />
           </div>
         </Animate>
