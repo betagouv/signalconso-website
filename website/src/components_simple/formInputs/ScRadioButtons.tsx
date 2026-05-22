@@ -126,6 +126,11 @@ function ScRadioButtonsWithRef<V>(props: ScRadioButtonsProps<V>, ref: RefType) {
                 id={inputId}
                 name={radioName}
                 onChange={() => onChange(value)}
+                onFocus={() => {
+                  if (selectedValue === undefined) {
+                    onChange(value)
+                  }
+                }}
                 checked={checked}
                 {...{onKeyDown}}
                 {...(disabled ? {disabled} : null)}
