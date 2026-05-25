@@ -267,7 +267,14 @@ function TopInfosBlock({transmissionStatus}: {transmissionStatus: FinalTransmiss
         return kind satisfies never
     }
   })()
-  return <div className="mb-4 space-y-2">{elements}</div>
+  return (
+    <div
+      tabIndex={0}
+      className="mb-4 space-y-2 rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-scbluefrance"
+    >
+      {elements}
+    </div>
+  )
 }
 
 function BottomInfosBlock({
