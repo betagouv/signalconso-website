@@ -14,7 +14,6 @@ import {useI18n} from '@/i18n/I18n'
 import {Report} from '@/model/Report'
 import {BuildingStep, buildingReportSteps} from '@/model/ReportStep'
 import {buildReportMetadata} from '@/utils/buildReportMetadata'
-import Alert from '@codegouvfr/react-dsfr/Alert'
 import {SocialNetworkRow} from '../../../components_simple/SocialNetworkRow'
 import {FileOrigin} from '../../../model/UploadedFile'
 import {getReportInputs} from '../Details/draftReportInputs'
@@ -23,7 +22,7 @@ import {useReportFlowContext} from '../ReportFlowContext'
 import {ConfirmationStep, ConfirmationStepper} from './ConfirmationStepper'
 import {createModal} from '@codegouvfr/react-dsfr/Modal'
 import {PortalToBody} from '@/utils/PortalToBody'
-import React from 'react'
+import React, {useId} from 'react'
 
 export const Confirmation = ({stepNavigation, isWebView}: {stepNavigation: StepNavigation; isWebView: boolean}) => {
   const _reportFlow = useReportFlowContext()
@@ -147,7 +146,7 @@ function RenderEachStep({
           <ul className="pl-0 list-none">
             {choices.map(_ => (
               <li key={_} className="flex gap-2">
-                <i className="ri-corner-down-right-line" />
+                <i className="ri-corner-down-right-line" aria-hidden="true" />
                 {_}
               </li>
             ))}
@@ -166,7 +165,7 @@ function RenderEachStep({
               <SocialNetworkRow socialNetwork={step2.socialNetwork} gray className="mb-2" />
               <p className="mb-1 font-bold">Nom de l'influenceur ou influenceuse</p>
               <div className="flex gap-2">
-                <i className="ri-account-box-line text-gray-400" />
+                <i className="ri-account-box-line text-gray-400" aria-hidden="true" />
                 <span className="text-gray-500">{step2.influencerName}</span>
               </div>
             </ConfirmationStep>
@@ -204,23 +203,23 @@ function RenderEachStep({
           <ul className="list-none p-0">
             <li className="p-0 flex gap-2">
               <div className="flex gap-2">
-                <i className="ri-account-box-line text-gray-400" />
+                <i className="ri-account-box-line text-gray-400" aria-hidden="true" />
                 {consumer.firstName} {consumer.lastName}
               </div>
             </li>
             <li className="p-0 flex gap-2">
-              <i className="ri-mail-line text-gray-400" />
+              <i className="ri-mail-line text-gray-400" aria-hidden="true" />
               <span>{consumer.email}</span>
             </li>
             {consumer.phone && (
               <li className="p-0 flex gap-2">
-                <i className="ri-phone-line text-gray-400" />
+                <i className="ri-phone-line text-gray-400" aria-hidden="true" />
                 <span>{consumer.phone}</span>
               </li>
             )}
             {consumer.referenceNumber && (
               <li className="p-0 flex gap-2">
-                <i className="ri-bill-line text-gray-400" />
+                <i className="ri-bill-line text-gray-400" aria-hidden="true" />
                 <span>{consumer.referenceNumber}</span>
               </li>
             )}
@@ -279,6 +278,8 @@ function BottomInfosBlock({
   contactAgreement: boolean
 }) {
   const {m} = useI18n()
+  const titleId = useId()
+  const contentId = useId()
   const elements = (() => {
     const {kind} = transmissionStatus
     const contactAgreementText = contactAgreement ? m.companyWillHaveIdentity : m.companyWontKnowIdentity
@@ -308,21 +309,24 @@ function BottomInfosBlock({
     }
   })()
   return (
-    <div className="">
-      <Alert
-        severity="info"
-        title={m.whenYouSendYourReport}
-        description={
-          <div>
-            {elements.map((_, idx) => (
-              <div key={idx} className="flex gap-2">
-                <i className="ri-arrow-right-line" />
-                <p className="mb-0" dangerouslySetInnerHTML={{__html: _}} />
-              </div>
-            ))}
+    <div
+      role="region"
+      aria-labelledby={titleId}
+      aria-describedby={contentId}
+      tabIndex={0}
+      className="fr-alert fr-alert--info rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-scbluefrance"
+    >
+      <h3 id={titleId} className="fr-alert__title">
+        {m.whenYouSendYourReport}
+      </h3>
+      <div id={contentId}>
+        {elements.map((_, idx) => (
+          <div key={idx} className="flex gap-2">
+            <i className="ri-arrow-right-line" aria-hidden="true" />
+            <p className="mb-0" dangerouslySetInnerHTML={{__html: _}} />
           </div>
-        }
-      />
+        ))}
+      </div>
     </div>
   )
 }
