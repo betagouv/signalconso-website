@@ -21,7 +21,7 @@ import {ScRadioButtons} from '../../../components_simple/formInputs/ScRadioButto
 import {getApiErrorId, useToastError} from '../../../hooks/useToastError'
 import {PartialReport, useReportFlowContext} from '../ReportFlowContext'
 import {ConsumerAnonymousInformation} from './ConsumerAnonymousInformation'
-import {ConsumerValidationDialog2, consumerValidationModal} from './ConsumerValidationDialog'
+import {ConsumerValidationDialog2, openConsumerValidationModal} from './ConsumerValidationDialog'
 
 interface ConsumerForm {
   firstName: string
@@ -312,7 +312,7 @@ export const ConsumerInner = ({
             try {
               const res = await _checkEmail.mutateAsync(form.email)
               if (res.valid) saveAndNext()
-              else consumerValidationModal.open()
+              else openConsumerValidationModal()
             } catch (e) {
               const errorId = getApiErrorId(e)
               let msg: string | undefined = undefined
