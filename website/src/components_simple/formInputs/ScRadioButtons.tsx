@@ -80,10 +80,7 @@ function ScRadioButtonsWithRef<V>(props: ScRadioButtonsProps<V>, ref: RefType) {
 
   const horizontal = orientation === 'horizontal'
   // Only reference element ids that exist in the DOM (messages block is conditional).
-  const ariaLabelledBy = [
-    ...(title ? [legendId] : []),
-    ...(error && errorMessage ? [messagesWrapperId] : []),
-  ].join(' ')
+  const ariaLabelledBy = [...(title ? [legendId] : []), ...(error && errorMessage ? [messagesWrapperId] : [])].join(' ')
 
   return (
     <fieldset

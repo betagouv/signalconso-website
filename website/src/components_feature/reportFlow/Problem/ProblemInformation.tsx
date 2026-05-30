@@ -68,13 +68,9 @@ export const ProblemInformation = ({anomaly, subcategories, information, isWebVi
     (information.redirect?.length ?? 0) > 0
 
   // Multiple ids: accessible name is title + body text so SR reads the full message on focus (not only the heading).
-  const blockingInfoRegionLabelledBy = hasBlockingBody
-    ? `${blockingInfoTitleId} ${blockingInfoBodyId}`
-    : blockingInfoTitleId
+  const blockingInfoRegionLabelledBy = hasBlockingBody ? `${blockingInfoTitleId} ${blockingInfoBodyId}` : blockingInfoTitleId
 
-  const usefulFeedbackRegionLabelledBy = _vote.data
-    ? `${usefulFeedbackTitleId} ${usefulFeedbackThanksId}`
-    : usefulFeedbackTitleId
+  const usefulFeedbackRegionLabelledBy = _vote.data ? `${usefulFeedbackTitleId} ${usefulFeedbackThanksId}` : usefulFeedbackTitleId
 
   return (
     <>

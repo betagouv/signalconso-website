@@ -1,6 +1,14 @@
 import {ReactNode} from 'react'
 
-export function FriendlyHelpText({children, margins = true, tabIndex}: {children: ReactNode; margins?: boolean; tabIndex?: number}) {
+export function FriendlyHelpText({
+  children,
+  margins = true,
+  tabIndex,
+}: {
+  children: ReactNode
+  margins?: boolean
+  tabIndex?: number
+}) {
   return (
     <div
       tabIndex={tabIndex}

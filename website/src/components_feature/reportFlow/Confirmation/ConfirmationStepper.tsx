@@ -36,7 +36,9 @@ export const ConfirmationStep = ({title, children, index, goToStep}: Confirmatio
     <div role="region" aria-labelledby={titleId}>
       <h2 className="fr-h4 !mb-2 md:w-fit bg-sclightpurple flex gap-4 items-end md:justify-start justify-between p-1 md:flex-row-reverse md:pr-3">
         <span>
-          <span id={titleId} className="text-scpurplepop">{title}</span>
+          <span id={titleId} className="text-scpurplepop">
+            {title}
+          </span>
         </span>
         <Button
           className="!bg-white"
