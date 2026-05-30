@@ -12,6 +12,8 @@ type Props = {
   helperText?: ReactNode
   required: boolean
   label?: ReactNode
+  /** Rendered after the input (same row when space allows). Keeps interactive content out of `<label>` and puts it after the field in tab order. */
+  labelAccessory?: ReactNode
   desc?: ReactNode
   autocomplete?: string
   type?: 'text' | 'email' | 'tel' | 'number'
@@ -37,6 +39,7 @@ export const ScTextInput = forwardRef((props: Props, ref: ForwardedRef<HTMLInput
     name,
     placeholder,
     label,
+    labelAccessory,
     desc,
     error,
     helperText,
@@ -72,7 +75,7 @@ export const ScTextInput = forwardRef((props: Props, ref: ForwardedRef<HTMLInput
         </label>
       )}
 
-      <div className="flex">
+      <div className="flex flex-wrap items-center gap-2">
         <input
           autoComplete={autocomplete}
           id={inputId}
@@ -84,14 +87,15 @@ export const ScTextInput = forwardRef((props: Props, ref: ForwardedRef<HTMLInput
           {...(inputMode ? {inputMode} : null)}
           readOnly={disabled}
           placeholder={placeholder}
-          className={`fr-input ${error ? 'fr-input--error' : ''} ${disabled ? '!text-gray-600 !shadow-none' : ''}`}
-          aria-describedby={helperTextId}
+          className={`fr-input min-w-0 flex-1 ${error ? 'fr-input--error' : ''} ${disabled ? '!text-gray-600 !shadow-none' : ''}`}
+          {...(helperText ? {'aria-describedby': helperTextId} : null)}
           {...(error ? {'aria-invalid': true} : null)}
           {...(required ? {'aria-required': true} : null)}
           // If the edit button is displayed
           // no need for the input itself to be accessible through keyboard
           {...(editable && disabled ? {tabIndex: -1} : null)}
         />
+        {labelAccessory && <div className="shrink-0">{labelAccessory}</div>}
         {editable && (
           <Button
             iconId="fr-icon-edit-line"

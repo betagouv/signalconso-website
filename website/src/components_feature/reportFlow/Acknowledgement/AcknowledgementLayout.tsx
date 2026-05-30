@@ -5,7 +5,7 @@ import {useI18n} from '@/i18n/I18n'
 import imgCompany from '@/img/illustrations/company.png'
 import {CreatedReport} from '@/model/CreatedReport'
 import Image from 'next/image'
-import React, {ReactNode} from 'react'
+import React, {ReactNode, useEffect, useRef} from 'react'
 import {LinkBackToHome} from '../../../components_simple/LinkBackToHome'
 
 interface AcknowledgementLayoutProps {
@@ -24,16 +24,21 @@ const AcknowledgementLayout: React.FC<AcknowledgementLayoutProps> = ({
   createdReport,
 }) => {
   const {m, currentLang} = useI18n()
+  const headingRef = useRef<HTMLHeadingElement>(null)
+
+  useEffect(() => {
+    headingRef.current?.focus()
+  }, [])
 
   return (
     <>
       <Image src={imgCompany} alt="" className="block mx-auto" />
 
       <div className="max-w-3xl mx-auto">
-        <h2>
+        <h2 ref={headingRef} tabIndex={-1} className="outline-none">
           <div className="flex items-center">
-            <i className="ri-checkbox-circle-fill mr-2" />
-            <span dangerouslySetInnerHTML={{__html: m.acknoledgment.sentReport}} />
+            <i className="ri-checkbox-circle-fill mr-2" aria-hidden="true" />
+            {m.acknoledgment.sentReport}
           </div>
         </h2>
         {title && <h3 className="fr-h5 !text-scbluefrance">{title}</h3>}

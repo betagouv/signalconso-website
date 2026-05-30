@@ -1,7 +1,7 @@
 import {useI18n} from '@/i18n/I18n'
 import {ReportStep, indexToStep} from '@/model/ReportStep'
 import {Button} from '@codegouvfr/react-dsfr/Button'
-import React, {ReactElement, ReactNode} from 'react'
+import React, {ReactElement, ReactNode, useId} from 'react'
 
 interface ConfirmationStepperProps {
   children: Array<ReactElement<ConfirmationStepProps> | undefined>
@@ -31,11 +31,14 @@ export const ConfirmationStepper = ({children}: ConfirmationStepperProps) => {
 
 export const ConfirmationStep = ({title, children, index, goToStep}: ConfirmationStepProps) => {
   const {m} = useI18n()
+  const titleId = useId()
   return (
-    <div className="">
+    <div role="region" aria-labelledby={titleId}>
       <h2 className="fr-h4 !mb-2 md:w-fit bg-sclightpurple flex gap-4 items-end md:justify-start justify-between p-1 md:flex-row-reverse md:pr-3">
         <span>
-          <span className="text-scpurplepop">{title}</span>
+          <span id={titleId} className="text-scpurplepop">
+            {title}
+          </span>
         </span>
         <Button
           className="!bg-white"
@@ -49,7 +52,12 @@ export const ConfirmationStep = ({title, children, index, goToStep}: Confirmatio
           {m.edit}
         </Button>
       </h2>
-      <div className="md:pl-4">{children}</div>
+      <div
+        tabIndex={0}
+        className="md:pl-4 rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-scbluefrance"
+      >
+        {children}
+      </div>
     </div>
   )
 }

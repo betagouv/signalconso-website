@@ -12,12 +12,21 @@ import {Controller, useForm} from 'react-hook-form'
 import {duration} from '../../../utils/Duration'
 import {iconArrowRight, timeoutPromise} from '../../../utils/utils'
 import {ScCheckbox} from '@/components_simple/formInputs/ScCheckbox'
-import {Checkbox} from '@codegouvfr/react-dsfr/Checkbox'
 
 export const consumerValidationModal = createModal({
   id: 'consumer-validation-modal',
   isOpenedByDefault: false,
 })
+
+// DSFR focuses the close button (first focusable element) on open.
+// This wrapper redirects focus to the title so VoiceOver reads it first.
+const MODAL_TITLE_ID = 'fr-modal-title-consumer-validation-modal'
+export function openConsumerValidationModal() {
+  consumerValidationModal.open()
+  setTimeout(() => {
+    document.getElementById(MODAL_TITLE_ID)?.focus()
+  }, 50)
+}
 
 export function ConsumerValidationDialog2({consumerEmail, onValidated}: {consumerEmail: string; onValidated: () => void}) {
   const _form = useForm<ValidationForm>()
@@ -50,6 +59,7 @@ export function ConsumerValidationDialog2({consumerEmail, onValidated}: {consume
       <PortalToBody>
         <consumerValidationModal.Component
           title={m.consumerAskCodeTitle}
+          titleProps={{tabIndex: -1}}
           buttons={
             isEmailValid
               ? {
@@ -62,39 +72,11 @@ export function ConsumerValidationDialog2({consumerEmail, onValidated}: {consume
               : {children: m.verify, iconId: iconArrowRight, onClick: onSubmitButtonClick, doClosesModal: false}
           }
         >
-          <div>
-            <ScAlert
-              type="info"
-              action={
-                <>
-                  <ButtonWithLoader
-                    disabled={disableResendButton}
-                    loading={_checkEmail.isPending}
-                    iconId="ri-refresh-line"
-                    priority="tertiary no outline"
-                    onClick={() => {
-                      setDisableResendButton(true)
-                      setTimeout(() => setDisableResendButton(false), duration(15, 'second'))
-                      _checkEmail.mutate()
-                    }}
-                  >
-                    {m.consumerResentEmail}
-                  </ButtonWithLoader>
-                </>
-              }
-            >
-              <p className="mb-0">{m.consumerEmailMayTakesTime}</p>
-            </ScAlert>
-            {isEmailValid === false && (
-              <ScAlert type="error">
-                <p className="mb-0">
-                  {invalidEmailReason === 'TOO_MANY_ATTEMPTS' ? m.consumerValidationCodeExpired : m.consumerValidationCodeInvalid}
-                </p>
-              </ScAlert>
-            )}
-          </div>
-
-          <p className="mb-2" dangerouslySetInnerHTML={{__html: m.consumerAskCodeDesc(consumerEmail)}} />
+          <p
+            tabIndex={0}
+            className="mb-2 rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-scbluefrance"
+            dangerouslySetInnerHTML={{__html: m.consumerAskCodeDesc(consumerEmail)}}
+          />
           <Controller
             name="code"
             rules={{
@@ -102,18 +84,24 @@ export function ConsumerValidationDialog2({consumerEmail, onValidated}: {consume
             }}
             control={_form.control}
             render={({field}) => (
-              <>
-                <div className="flex justify-center mt-4">
-                  <ScValidationCodeInput
-                    {...field}
-                    error={!!_form.formState.errors.code || isEmailValid === false}
-                    helperText={_form.formState.errors['code']?.message}
-                    required
-                  />
-                </div>
-              </>
+              <div className="flex justify-center mt-4">
+                <ScValidationCodeInput
+                  {...field}
+                  error={!!_form.formState.errors.code || isEmailValid === false}
+                  helperText={_form.formState.errors['code']?.message}
+                  required
+                />
+              </div>
             )}
           />
+
+          {isEmailValid === false && (
+            <ScAlert type="error">
+              <p className="mb-0">
+                {invalidEmailReason === 'TOO_MANY_ATTEMPTS' ? m.consumerValidationCodeExpired : m.consumerValidationCodeInvalid}
+              </p>
+            </ScAlert>
+          )}
 
           <div className="mt-4">
             <Controller
@@ -121,6 +109,26 @@ export function ConsumerValidationDialog2({consumerEmail, onValidated}: {consume
               control={_form.control}
               render={({field}) => <ScCheckbox checked={field.value} label={m.consentToUseData} required {...field} />}
             />
+          </div>
+
+          <div
+            tabIndex={0}
+            className="fr-alert fr-alert--info rounded-sm mt-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-scbluefrance"
+          >
+            <p className="mb-2">{m.consumerEmailMayTakesTime}</p>
+            <ButtonWithLoader
+              disabled={disableResendButton}
+              loading={_checkEmail.isPending}
+              iconId="ri-refresh-line"
+              priority="tertiary no outline"
+              onClick={() => {
+                setDisableResendButton(true)
+                setTimeout(() => setDisableResendButton(false), duration(15, 'second'))
+                _checkEmail.mutate()
+              }}
+            >
+              {m.consumerResentEmail}
+            </ButtonWithLoader>
           </div>
         </consumerValidationModal.Component>
       </PortalToBody>
