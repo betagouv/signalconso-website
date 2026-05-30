@@ -24,7 +24,7 @@ export function ProblemConsumerWishInformation({
   })
   return (
     <Animate>
-      <FriendlyHelpText>
+      <FriendlyHelpText tabIndex={0}>
         {texts.map((text, index) => (
           <p key={index} className="mb-0" dangerouslySetInnerHTML={{__html: text}} />
         ))}

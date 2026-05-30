@@ -1076,6 +1076,7 @@ export const en = {
     clearPhone: 'Clear the phone number',
     canYouIdentifyCompany: `Can you identify the company?`,
     canYouIdentifyCompanyDesc: `SignalConso needs to know this in order to be able to contact them and notify Fraud Control.`,
+    annuaireEntreprisesLabel: `l'Annuaire des Entreprises`,
     websitePlaceholder: 'Example: https://www.site.com',
     identifyBy_barcode: `By the barcode number on the product`,
     identifyBy_barcodeDesc: `We'll tell you how to find it`,

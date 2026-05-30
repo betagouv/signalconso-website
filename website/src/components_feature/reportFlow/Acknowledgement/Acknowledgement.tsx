@@ -178,7 +178,7 @@ function ListItem({icon, children}: {icon?: string; children: ReactNode}) {
   return (
     <li className="mb-2">
       <div className="flex items-center justify-start gap-4">
-        <span className={`${icon ?? 'ri-arrow-right-line'}`} />
+        <span className={`${icon ?? 'ri-arrow-right-line'}`} aria-hidden="true" />
         {children}
       </div>
     </li>

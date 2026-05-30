@@ -79,16 +79,25 @@ function ScRadioButtonsWithRef<V>(props: ScRadioButtonsProps<V>, ref: RefType) {
   }
 
   const horizontal = orientation === 'horizontal'
+  // Only reference element ids that exist in the DOM (messages block is conditional).
+  const ariaLabelledBy = [...(title ? [legendId] : []), ...(error && errorMessage ? [messagesWrapperId] : [])].join(' ')
+
   return (
     <fieldset
       id={id}
       className={`fr-fieldset ${horizontal && 'fr-fieldset--inline'} ${error ? 'fr-fieldset--error' : ''} ${className}`}
-      aria-labelledby={`${title && legendId} ${messagesWrapperId}`}
+      {...(ariaLabelledBy ? {'aria-labelledby': ariaLabelledBy} : {})}
       {...(required ? {'aria-required': true} : null)}
       ref={ref}
     >
       {title && (
-        <legend id={legendId} className={`fr-fieldset__legend ${titleSoberStyle ? '!font-normal' : ''}`}>
+        <legend
+          id={legendId}
+          // Keyboard users tab from the stepper (e.g. “Accueil”) to controls; legend is not focusable by default,
+          // so the question was skipped before the first radio. Include it in tab order like a static “prompt”.
+          tabIndex={0}
+          className={`fr-fieldset__legend ${titleSoberStyle ? '!font-normal' : ''} rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-scbluefrance`}
+        >
           {title}
           <OptionalLabel {...{required}} />
           {description && <span className="fr-hint-text">{description}</span>}
@@ -101,15 +110,24 @@ function ScRadioButtonsWithRef<V>(props: ScRadioButtonsProps<V>, ref: RefType) {
           return (
             <div
               key={i}
-              className={`fr-radio-group !max-w-full border border-gray-300 border-solid mb-1 hover:bg-gray-100 hover:border-scbluefrance ${
+              className={`fr-radio-group !max-w-full border border-solid mb-1 hover:bg-gray-100 hover:border-scbluefrance ${
                 disabled ? 'pointer-events-none opacity-60' : ''
-              } ${checked ? 'border-scbluefrance border-2' : ''} ${horizontal && '!mr-1'}`}
+              } ${
+                checked
+                  ? 'border-scbluefrance border-2'
+                  : 'border-gray-300 has-[input:focus-visible]:border-2 has-[input:focus-visible]:border-dashed has-[input:focus-visible]:border-scbluefrance'
+              } ${horizontal && '!mr-1'}`}
             >
               <input
                 type="radio"
                 id={inputId}
                 name={radioName}
                 onChange={() => onChange(value)}
+                onFocus={() => {
+                  if (selectedValue === undefined) {
+                    onChange(value)
+                  }
+                }}
                 checked={checked}
                 {...{onKeyDown}}
                 {...(disabled ? {disabled} : null)}
