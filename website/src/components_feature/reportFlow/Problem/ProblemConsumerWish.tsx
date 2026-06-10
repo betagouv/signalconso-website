@@ -1,7 +1,7 @@
 import {useAnalyticContext} from '@/analytic/AnalyticContext'
 import {EventCategories, ReportEventActions} from '@/analytic/analytic'
 import {FriendlyHelpText} from '@/components_simple/FriendlyHelpText'
-import {getCompanyKind, getTags, hasEmployeeConsumer, hasStep0, hasSubcategoryIndexes} from '@/feature/reportUtils'
+import {getCompanyKind, getTags, hasStep0, hasSubcategoryIndexes} from '@/feature/reportUtils'
 import {getTransmissionStatusBeforeConsumerWish} from '@/feature/transmissionStatus'
 import {useI18n} from '@/i18n/I18n'
 import {ConsumerWish} from '@/model/Report'
@@ -14,7 +14,7 @@ export function ProblemConsumerWish({children}: {children: ReactNode}) {
   const {m} = useI18n()
   const _analytic = useAnalyticContext()
   const {report: r, setConsumerWish} = useReportFlowContext()
-  if (!hasStep0(r) || !hasSubcategoryIndexes(r) || !hasEmployeeConsumer(r)) {
+  if (!hasStep0(r) || !hasSubcategoryIndexes(r)) {
     throw new Error(`Report is not ready for asking consumer wish`)
   }
   const tags = getTags(r)
@@ -60,12 +60,6 @@ export function ProblemConsumerWish({children}: {children: ReactNode}) {
           case 'NOT_TRANSMITTABLE':
             const {reason} = transmissionStatus
             switch (reason) {
-              case 'employeeConsumer':
-                return (
-                  <FriendlyHelpText>
-                    <p className="mb-0" dangerouslySetInnerHTML={{__html: m.employeeConsumerInformation}} />
-                  </FriendlyHelpText>
-                )
               default:
                 return (
                   <FriendlyHelpText>

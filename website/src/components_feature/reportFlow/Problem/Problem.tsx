@@ -13,7 +13,6 @@ import {Anomaly} from 'shared/anomalies/Anomaly'
 import {SendReportEvent, SetReport, useReportFlowContext} from '../ReportFlowContext'
 import {ProblemCompanyKindOverride} from './ProblemCompanyKindOverride'
 import {ProblemConsumerWish} from './ProblemConsumerWish'
-import {ProblemEmployeeConsumer} from './ProblemEmployeeConsumer'
 import {applySubcategoriesChange, ProblemSubcategories} from './ProblemSubcategories'
 
 interface Props {
@@ -70,13 +69,11 @@ function ProblemInner({anomaly, isWebView, stepNavigation, path}: Props) {
       <RappelConsoWelcome setup={rappelConsoSetup} />
       {specialCategoriesNotLoading && (
         <ProblemSubcategories {...{isWebView}}>
-          <ProblemEmployeeConsumer>
-            <ProblemCompanyKindOverride>
-              <ProblemConsumerWish>
-                <NextStepButton {...{onNext, stepNavigation}} />
-              </ProblemConsumerWish>
-            </ProblemCompanyKindOverride>
-          </ProblemEmployeeConsumer>
+          <ProblemCompanyKindOverride>
+            <ProblemConsumerWish>
+              <NextStepButton {...{onNext, stepNavigation}} />
+            </ProblemConsumerWish>
+          </ProblemCompanyKindOverride>
         </ProblemSubcategories>
       )}
     </>

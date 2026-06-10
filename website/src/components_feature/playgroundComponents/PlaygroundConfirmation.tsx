@@ -21,7 +21,6 @@ export const PlaygroundConfirmation = () => {
     },
     step1: {
       subcategoriesIndexes: [1, 0],
-      employeeConsumer: false,
       consumerWish: 'reportSomething',
     },
     step2: {

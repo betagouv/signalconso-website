@@ -6,7 +6,6 @@ export interface CreatedReport {
   companyAddress: ApiAddress
   companySiret?: string
   websiteURL?: string
-  employeeConsumer: boolean
   contactAgreement: boolean
   postReportHelper?: PostReportHelper
 }

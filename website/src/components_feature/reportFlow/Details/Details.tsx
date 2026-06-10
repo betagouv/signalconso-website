@@ -50,7 +50,6 @@ export const Details = ({stepNavigation}: {stepNavigation: StepNavigation}) => {
       inputs={inputs}
       fileLabel={lastSubcategory.fileLabel}
       attachmentDesc={lastSubcategory.attachmentDesc}
-      employeeConsumer={report.step1.employeeConsumer}
       tags={getTags(report)}
       saveChange={(detailInputValues, uploadedFiles, goToNextStep) => {
         console.log('to be saved')
@@ -84,7 +83,6 @@ export const DetailsInner = ({
   attachmentDesc,
   tags,
   transmissionStatus,
-  employeeConsumer,
   saveChange,
   saveFiles,
   stepNavigation,
@@ -97,7 +95,6 @@ export const DetailsInner = ({
   initialFiles?: UploadedFile[]
   fileLabel?: string
   attachmentDesc?: string
-  employeeConsumer?: boolean
   tags?: ReportTag[]
   stepNavigation: StepNavigation
 }) => {
@@ -188,7 +185,7 @@ export const DetailsInner = ({
       <Animate autoScrollTo={false}>
         <div>
           <h4 className="mt-4">{fileLabel ?? m.attachments}</h4>
-          <AttachmentInfosBlock {...{transmissionStatus, attachmentDesc, employeeConsumer}} />
+          <AttachmentInfosBlock {...{transmissionStatus, attachmentDesc}} />
           <ReportFiles
             files={uploadedFiles ?? []}
             fileOrigin={FileOrigin.Consumer}
@@ -232,8 +229,6 @@ function TopInfosBlock({transmissionStatus}: {transmissionStatus: FinalTransmiss
       case 'NOT_TRANSMITTABLE':
         const {reason} = transmissionStatus
         switch (reason) {
-          case 'employeeConsumer':
-            return [m.detailsTextAreaNotTransmittable, m.detailsTextAreaEmployeeConsumer]
           case 'tags':
           case 'getAnswer':
           case 'foreign':
@@ -283,8 +278,6 @@ function AttachmentInfosBlock({
     case 'NOT_TRANSMITTABLE':
       const {reason} = transmissionStatus
       switch (reason) {
-        case 'employeeConsumer':
-          return buildFriendlyHelpText(m.notTransmittableAttachmentsDesc2)
         case 'tags':
         case 'getAnswer':
         case 'foreign':

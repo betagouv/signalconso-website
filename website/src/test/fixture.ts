@@ -98,7 +98,6 @@ export class Fixture {
       companySiret: company.siret,
       websiteURL: random.string(),
       tags: subcategories.filter(_ => !!_.tags).flatMap(_ => _.tags!),
-      employeeConsumer: random.boolean(),
       contactAgreement: random.boolean(),
       postReportHelper: {
         title: `Titre d'aide... vous voulez en savoir plus sur [le sujet du signalement] ?`,
@@ -180,7 +179,6 @@ export class Fixture {
           step0: {category, lang: currentLang},
           consumerWish: random.oneOf(['reportSomething', 'getAnswer']),
           subcategoriesIndexes: [0, 0],
-          employeeConsumer: random.boolean(),
         }
       },
       BuildingCompany: _ => ({

@@ -7,7 +7,7 @@ import {getTags} from './reportUtils'
 export type TransmissionStatusBeforeConsumerWish =
   | {
       kind: 'NOT_TRANSMITTABLE'
-      reason: 'employeeConsumer' | 'tags'
+      reason: 'tags'
     }
   | {
       kind: 'SO_FAR_SO_GOOD'
@@ -18,7 +18,7 @@ export type TransmissionStatusBeforeConsumerWish =
 export type TransmissionStatusAfterConsumerWish =
   | {
       kind: 'NOT_TRANSMITTABLE'
-      reason: 'employeeConsumer' | 'tags' | 'getAnswer'
+      reason: 'tags' | 'getAnswer'
     }
   | {
       kind: 'SO_FAR_SO_GOOD'
@@ -27,7 +27,7 @@ export type TransmissionStatusAfterConsumerWish =
 export type FinalTransmissionStatus =
   | {
       kind: 'NOT_TRANSMITTABLE'
-      reason: 'employeeConsumer' | 'tags' | 'getAnswer' | 'foreign'
+      reason: 'tags' | 'getAnswer' | 'foreign'
     }
   | {
       // i.e. we don't the company but it could be identified manually later
@@ -38,11 +38,8 @@ export type FinalTransmissionStatus =
     }
 
 export const getTransmissionStatusBeforeConsumerWish = (
-  r: ReportPickInStep1<'subcategoriesIndexes' | 'employeeConsumer'>,
+  r: ReportPickInStep1<'subcategoriesIndexes'>,
 ): TransmissionStatusBeforeConsumerWish => {
-  if (r.step1.employeeConsumer) {
-    return {kind: 'NOT_TRANSMITTABLE', reason: 'employeeConsumer'}
-  }
   const tags = getTags(r)
   if (tags.some(tag => (reportTagsNotTransmittableToPro as readonly ReportTag[]).includes(tag))) {
     return {kind: 'NOT_TRANSMITTABLE', reason: 'tags'}
@@ -51,7 +48,7 @@ export const getTransmissionStatusBeforeConsumerWish = (
 }
 
 export const getTransmissionStatusAfterConsumerWish = (
-  r: ReportPickInStep1<'subcategoriesIndexes' | 'employeeConsumer' | 'consumerWish'>,
+  r: ReportPickInStep1<'subcategoriesIndexes' | 'consumerWish'>,
 ): TransmissionStatusAfterConsumerWish => {
   const statusBeforeConsumerWish = getTransmissionStatusBeforeConsumerWish(r)
   switch (statusBeforeConsumerWish.kind) {

@@ -182,9 +182,6 @@ export const ConsumerInner = ({
           {m.consumerTitle}
         </h2>
         <div>
-          {draft.step1.employeeConsumer && (
-            <ScAlert type="info" dangerouslySetInnerHTML={{__html: `<p>${m.consumerIsEmployee}</p>`}} />
-          )}
           <div className="flex gap-4 mb-4">
             <div className="w-1/2">
               <ScTextInput
