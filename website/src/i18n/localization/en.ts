@@ -199,7 +199,7 @@ export const en = {
       donneesCollecteesContenu:
         'The data we collect only provides anonymised visitor statistics (e.g. number of pages viewed, number of visits, frequency of visits, etc.).',
       outilEulerian:
-        'We use Eulieran to measure visitor numbers. The French Data Protection Authority (CNIL) granted an exemption for the Eulieran Web Analytics cookie, so user consent is not required',
+        'We use Eulerian to measure visitor numbers. The French Data Protection Authority (CNIL) granted an exemption for the Eulerian Web Analytics cookie, so user consent is not required',
       outilEulerianLink: 'learn more',
       anonymisation:
         'SignalConso does not make use of any personal data that it collects. For example, your IP address is made anonymous before being recorded. This means that your identity cannot be linked with any visits you make to SignalConso.',
@@ -987,7 +987,7 @@ export const en = {
       9: 'September',
       10: 'October',
       11: 'November',
-      12: 'Décember',
+      12: 'December',
     },
     monthShort_: {
       1: 'Jan',
@@ -1001,7 +1001,7 @@ export const en = {
       9: 'Sept',
       10: 'Oct',
       11: 'Nov',
-      12: 'Déc',
+      12: 'Dec',
     },
     inMonth: 'in',
     detailGraphDataAvailable: 'detailed graph data available below',

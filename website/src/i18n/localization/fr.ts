@@ -66,7 +66,7 @@ export const fr = {
       },
       litigeTelecom: {
         title: `Vos démarches à conduire en parallèle (télécoms) - SignalConso`,
-        description: `Nos conseils pour our résoudre un litige avec un opérateur mobile ou fournisseur internet : courrier, médiation, et attaque en justice`,
+        description: `Nos conseils pour résoudre un litige avec un opérateur mobile ou fournisseur internet : courrier, médiation, et attaque en justice`,
       },
       autresSitesInternationaux: {
         title: `Faire un signalement à l'international - SignalConso`,
@@ -825,7 +825,7 @@ export const fr = {
       displayAllAnomalies: `Afficher toutes les catégories`,
     },
     arbo: {
-      title: "Arborescence du dépot d'un signalement",
+      title: "Arborescence du dépôt d'un signalement",
     },
     yes: 'Oui',
     no: 'Non',
@@ -1076,7 +1076,7 @@ export const fr = {
     clearWebsite: 'Effacer le site internet',
     clearSiret: 'Effacer le numéro',
     clearPhone: 'Effacer le numéro de téléphone',
-    canYouIdentifyCompany: `Pouvez-vous identifier l'entreprise  ?`,
+    canYouIdentifyCompany: `Pouvez-vous identifier l'entreprise ?`,
     canYouIdentifyCompanyDesc: `Pour vous aider, essayez`,
     annuaireEntreprisesLabel: `l'Annuaire des Entreprises`,
     websitePlaceholder: 'Exemple: https://www.site.fr',
@@ -1174,7 +1174,7 @@ contacter directement.`,
     companyIdentityHelperInvoice: `Sur une facture`,
     companyIdentityHelperReceipt: `Sur un ticket de caisse`,
     companyIdentityHelperCreditCardReceipt: `Sur un ticket de carte bleue`,
-    companyIdentityHelper: `A quoi correspondent ces identifiants ?`,
+    companyIdentityHelper: `À quoi correspondent ces identifiants ?`,
     companyIdentityHelperWhereDesc: `
       Vous pouvez retrouver ce numéro sur un devis, une facture ou un ticket de caisse émis par l’entreprise et également dans les mentions légales de son site internet.
     `,
@@ -1193,7 +1193,7 @@ contacter directement.`,
     },
 
     clientReferenceHelperTitle: 'Aide référence client',
-    clientReferenceHelper: `A quoi correspond ma référence client ?`,
+    clientReferenceHelper: `À quoi correspond ma référence client ?`,
     clientReferenceHelperWhere: `Où trouver ma référence client ?`,
     clientReferenceHelperWhereDesc: `
       Vous pouvez la retrouver sur une facture, un devis émis par l’entreprise mais également sur votre espace client. 
@@ -1302,7 +1302,7 @@ contacter directement.`,
 
     respondedRateStat: ` ont eu une réponse de l'entreprise, sur l'ensemble des signalements lus`,
     respondedRateDescription: `Lorsqu'une entreprise reçoit un signalement, elle peut décider de répondre ou non au consommateur.`,
-    respondedRateStatName: `% de signalements qui font l'objet d'une réponse d'un entreprise`,
+    respondedRateStatName: `% de signalements qui font l'objet d'une réponse d'une entreprise`,
 
     websiteReportsRateStat: ` des signalements déposés depuis le début de SignalConso concernent une entreprise sur internet`,
     websiteReportsRateName: `% des signalements qui concernent une entreprise sur internet`,
@@ -1328,7 +1328,7 @@ contacter directement.`,
         'Si c’est nécessaire, vous pouvez décider de rester anonyme. Dans le cas contraire, nous transmettrons vos coordonnées à l’entreprise pour qu’elle puisse vous répondre directement.',
       signalConsoWillHandle3:
         'Votre signalement sera également enregistré dans la base de données de la DGCCRF. Cet outil leur permet de mieux cibler leurs contrôles et préparer les enquêtes.',
-      moreThanOneCat: 'Pour signalez votre problème, choisissez la catégorie correspondante',
+      moreThanOneCat: 'Pour signaler votre problème, choisissez la catégorie correspondante',
       discoverButton: 'Découvrir',
       whatIsText1:
         'Plus de 60 millions de consommateurs fréquentent quotidiennement près de 10 millions d’établissements et font des achats sur internet. Et pour contrôler le droit des consommateurs ? Moins de 3 000 agents de la DGCCRF : c’est pourquoi le site ',
@@ -1373,7 +1373,7 @@ contacter directement.`,
     websiteDoesNotExist2: 'Vous avez peut-être fait une faute de frappe ?',
     websiteDoesNotExist3: 'Il a peut-être été supprimé par son propriétaire ou hébergeur',
     websiteDoesNotExist4:
-      "Si vous êtes certains de l'orthographe, vous pouvez tout de même le signaler, nos services pourrons le recouper avec d'autres signalements.",
+      "Si vous êtes certains de l'orthographe, vous pouvez tout de même le signaler, nos services pourront le recouper avec d'autres signalements.",
     acknoledgment: {
       sentReport: `Votre signalement a été envoyé.`,
       notSentReport: `Votre signalement ne sera pas transmis à cette entreprise.`,
