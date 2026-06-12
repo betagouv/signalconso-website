@@ -1,4 +1,4 @@
-title: Un produit emballé et étiqueté par le vendeur comme une barquette de viande
+title: Un produit emballé et étiqueté par le vendeur
 desc: La quantité est marquée sur une étiquette collée par le commerçant
 detailInputs:
   - label: Date du constat ou d'achat
@@ -10,4 +10,4 @@ detailInputs:
     type: TEXT
     optional: true
     placeholder: Elements d'identification
-subcategory: Un_produit_emballe_et_etiquete_par_le_vendeur_comme_une_barquette_de_viande
+subcategory: Un_produit_emballe_et_etiquete_par_le_vendeur

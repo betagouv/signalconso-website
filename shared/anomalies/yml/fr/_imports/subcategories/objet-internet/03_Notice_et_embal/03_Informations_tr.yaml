@@ -4,8 +4,6 @@ reponseconsoCode: '210'
 tags:
   - ReponseConso
 detailInputs:
-  - label: Site internet d'achat
-    placeholder: Adresse du site internet complet ou URL
   - label: Quel est le type de produit ?
     type: RADIO
     options:
