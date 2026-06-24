@@ -179,6 +179,17 @@ describe('Problem', () => {
     clickBtnSubmit(app)
   })
 
+  it('should keep the next button when switching between terminal subcategories with a predetermined consumer wish', () => {
+    const app = render(<Problem {...props} anomaly={ProblemFixture.anomaly} />, renderOptions)
+
+    fireEvent.click(app.getByText(`Sous category pour tester les companyKind`))
+    fireEvent.click(app.getByText(`Sous cat avec companyKind WEBSITE`))
+    expect(app.container.querySelector('.stepper-next-button')).not.toBeNull()
+
+    fireEvent.click(app.getByText(`Sous cat avec companyKind SIRET`))
+    expect(app.container.querySelector('.stepper-next-button')).not.toBeNull()
+  })
+
   it('should not ask ReponseConso when no tag', () => {
     let report: undefined | PartialReport
     const app = render(

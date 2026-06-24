@@ -1346,6 +1346,7 @@ contacter directement.`,
     whichWebsiteMerchantText: 'Indiquez ici le site du marchand sur lequel vous avez effectué votre achat',
 
     thereAreSimilarReports: 'Il existe un ou plusieurs signalements similaires',
+    employeeConsumerNotAvailable: "La soumission d'un signalement en tant qu'informateur interne n'est plus disponible.",
 
     theseeInformationTitle: 'Porter plainte',
     theseeInformation: 'Si vous avez été victime de ce site, nous vous invitons à ',

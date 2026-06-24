@@ -24,8 +24,12 @@ export function ProblemConsumerWish({children}: {children: ReactNode}) {
   const isTransmittable = transmissionStatus.kind !== 'NOT_TRANSMITTABLE'
   const companyKind = getCompanyKind(r)
   const predeterminedValue = !isTransmittable || companyKind === 'SOCIAL' || !hasReponseConsoTag ? 'reportSomething' : undefined
-  const skipQuestion = useApplyPredeterminedValue({predeterminedValue, setConsumerWish})
-  const isDone = !!r.step1.consumerWish
+  const skipQuestion = useApplyPredeterminedValue({
+    predeterminedValue,
+    consumerWish: r.step1.consumerWish,
+    setConsumerWish,
+  })
+  const isDone = skipQuestion || !!r.step1.consumerWish
   return (
     <>
       {!skipQuestion && (
@@ -82,16 +86,18 @@ export function ProblemConsumerWish({children}: {children: ReactNode}) {
 
 function useApplyPredeterminedValue({
   predeterminedValue,
+  consumerWish,
   setConsumerWish,
 }: {
   predeterminedValue: ConsumerWish | undefined
+  consumerWish: ConsumerWish | undefined
   setConsumerWish: (_: ConsumerWish) => void
 }) {
   useEffect(() => {
-    if (predeterminedValue !== undefined) {
+    if (predeterminedValue !== undefined && consumerWish !== predeterminedValue) {
       setConsumerWish(predeterminedValue)
     }
-  }, [setConsumerWish, predeterminedValue])
+  }, [setConsumerWish, predeterminedValue, consumerWish])
   const shouldSkipQuestion = predeterminedValue !== undefined
   return shouldSkipQuestion
 }

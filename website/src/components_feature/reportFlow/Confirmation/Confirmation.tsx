@@ -61,6 +61,16 @@ export const ConfirmationInner = ({
     }
   }
 
+  const errorMessage = (e: any) => {
+    if (getApiErrorId(e) === 'SC-0025') {
+      return m.thereAreSimilarReports
+    } else if (getApiErrorId(e) === 'SC-0021-01') {
+      return m.employeeConsumerNotAvailable
+    } else {
+      return undefined
+    }
+  }
+
   const submit = (next: () => void) => {
     _reportFlow.sendReportEvent('Confirmation')
     const metadata = buildReportMetadata({isWebView})
@@ -72,7 +82,7 @@ export const ConfirmationInner = ({
       })
       .catch(e => {
         _analytic.trackEvent(EventCategories.report, ReportEventActions.reportSendFail)
-        toastError(getApiErrorId(e) === 'SC-0025' ? m.thereAreSimilarReports : undefined)
+        toastError(errorMessage(e))
       })
   }
 

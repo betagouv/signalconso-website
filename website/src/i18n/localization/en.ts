@@ -1322,6 +1322,7 @@ export const en = {
     whichWebsiteMerchantText: 'Give the name of the merchant',
 
     thereAreSimilarReports: 'One or more similar reports have already been made',
+    employeeConsumerNotAvailable: 'Submitting a report as an employee consumer is no longer available.',
 
     theseeInformationTitle: 'File a complaint',
     theseeInformation: 'If you have been victim of this website, we invite you to ',
