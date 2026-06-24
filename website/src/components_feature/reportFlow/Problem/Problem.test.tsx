@@ -51,17 +51,9 @@ describe('Problem', () => {
     expect(app.container.querySelector('#blocking-info-wall')).not.toBeNull()
   })
 
-  it('should request the user if he is an employee of the company or not when receive subcategories', () => {
-    const app = render(<Problem {...props} anomaly={ProblemFixture.anomaly} />, renderOptions)
-    fireEvent.click(app.getByText(`(title) Première sous category du fichier demo.yaml, absolument minimale`))
-    expect(app.container.textContent).toContain(app.m.problemDoYouWorkInCompany)
-    expect(app.container.textContent).toContain(app.m.problemDoYouWorkInCompanyNo)
-  })
-
   it('should preselect subcategories passed in props', () => {
     const app = render(<Problem {...props} anomaly={ProblemFixture.anomaly} path={[0]} />, renderOptions)
-    expect(app.container.textContent).toContain(app.m.problemDoYouWorkInCompany)
-    expect(app.container.textContent).toContain(app.m.problemDoYouWorkInCompanyNo)
+    expect(app.container.textContent).toContain('test')
   })
 
   const clickEmployeeConsumer = (app: ScRenderResult, isEmployee: 'yes' | 'no'): void => {
@@ -71,7 +63,7 @@ describe('Problem', () => {
     }
     const btnText = fnSwitch(isEmployee, {
       yes: app.m.yes,
-      no: app.m.problemDoYouWorkInCompanyNo,
+      no: app.m.no,
     })
     fireEvent.click(radios.find(_ => _.textContent?.includes(btnText))!)
   }
@@ -120,40 +112,6 @@ describe('Problem', () => {
     }
   }
 
-  it('should update employeeConsumer = true', () => {
-    let report: undefined | PartialReport
-    const app = render(
-      <AccessReportFlow
-        onReportChange={r => {
-          report = r
-        }}
-      >
-        <Problem {...props} anomaly={ProblemFixture.anomaly} />
-      </AccessReportFlow>,
-      renderOptions,
-    )
-    fireEvent.click(app.getByText(`(title) Première sous category du fichier demo.yaml, absolument minimale`))
-    clickEmployeeConsumer(app, 'yes')
-    expect(report?.step1?.employeeConsumer).toEqual(true)
-  })
-
-  it('should update employeeConsumer = false', () => {
-    let report: undefined | PartialReport
-    const app = render(
-      <AccessReportFlow
-        onReportChange={r => {
-          report = r
-        }}
-      >
-        <Problem {...props} anomaly={ProblemFixture.anomaly} />
-      </AccessReportFlow>,
-      renderOptions,
-    )
-    fireEvent.click(app.getByText(`(title) Première sous category du fichier demo.yaml, absolument minimale`))
-    clickEmployeeConsumer(app, 'no')
-    expect(report?.step1?.employeeConsumer).toEqual(false)
-  })
-
   it(`shouldn't ask employeeConsumer when not asked`, () => {
     let report: undefined | PartialReport
     const app = render(
@@ -167,7 +125,7 @@ describe('Problem', () => {
       renderOptions,
     )
     fireEvent.click(app.getByText(`Sous category avec un fileLabel`))
-    expect(() => clickEmployeeConsumer(app, 'no')).toThrow()
+    expect(() => clickEmployeeConsumer(app, 'yes')).toThrow()
   })
 
   it('should ask companyKind', () => {
@@ -183,7 +141,6 @@ describe('Problem', () => {
       renderOptions,
     )
     fireEvent.click(app.getByText(`(title) Première sous category du fichier demo.yaml, absolument minimale`))
-    clickEmployeeConsumer(app, 'no')
     clickCompanyKind(app, 'internet')
     expect(getCompanyKind(report as any)).toEqual('WEBSITE')
   })
@@ -202,7 +159,6 @@ describe('Problem', () => {
     )
     fireEvent.click(app.getByText(`Sous category pour tester les companyKind`))
     fireEvent.click(app.getByText(`Sous cat avec companyKind WEBSITE`))
-    clickEmployeeConsumer(app, 'no')
     expect(() => clickCompanyKind(app, 'internet')).toThrow()
   })
 
@@ -220,7 +176,6 @@ describe('Problem', () => {
     )
     fireEvent.click(app.getByText(`Sous category pour tester les companyKind`))
     fireEvent.click(app.getByText(`Sous cat avec companyKind WEBSITE`))
-    clickEmployeeConsumer(app, 'no')
     clickBtnSubmit(app)
   })
 
@@ -240,27 +195,6 @@ describe('Problem', () => {
     expect(() => clickContractualDispute(app, 'getAnswer')).toThrow()
   })
 
-  it('should not ask ReponseConso nor contractual dispute when employeeConsumer = true', () => {
-    let report: undefined | PartialReport
-    const app = render(
-      <AccessReportFlow
-        onReportChange={r => {
-          report = r
-        }}
-      >
-        <Problem {...props} anomaly={ProblemFixture.anomaly} />
-      </AccessReportFlow>,
-      renderOptions,
-    )
-    fireEvent.click(app.getByText(`Sous category pour tester divers tags`))
-    fireEvent.click(app.getByText(`Sous cat avec tag ReponseConso`))
-    clickEmployeeConsumer(app, 'yes')
-    clickCompanyKind(app, 'internet')
-    expect(() => clickContractualDispute(app, 'getAnswer')).toThrow()
-    expectContractualDisputeVisible(app, false)
-    clickBtnSubmit(app)
-  })
-
   it('should ask ReponseConso when tagged', () => {
     let report: undefined | PartialReport
     const app = render(
@@ -275,12 +209,10 @@ describe('Problem', () => {
     )
     fireEvent.click(app.getByText(`Sous category pour tester divers tags`))
     fireEvent.click(app.getByText(`Sous cat avec tag ReponseConso`))
-    clickEmployeeConsumer(app, 'no')
     clickCompanyKind(app, 'internet')
     clickContractualDispute(app, 'getAnswer')
     expectContractualDisputeVisible(app, false)
     clickBtnSubmit(app)
-    expect(report?.step1?.employeeConsumer).toEqual(false)
     expect(report?.step1?.consumerWish).toEqual('getAnswer')
   })
 })

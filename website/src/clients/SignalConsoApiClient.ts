@@ -62,10 +62,9 @@ export class SignalConsoApiClient {
     const subcategories = getSubcategories(draft)
     const postReportHelper = subcategories.findLast(_ => _.postReportHelper)?.postReportHelper
 
-    const {tags, companyAddress, companySiret, websiteURL, employeeConsumer, contactAgreement} = reportFromApi
+    const {tags, companyAddress, companySiret, websiteURL, contactAgreement} = reportFromApi
     const res: CreatedReport = {
       tags,
-      employeeConsumer,
       postReportHelper,
       contactAgreement,
       ...(companySiret !== null ? {companySiret} : null),

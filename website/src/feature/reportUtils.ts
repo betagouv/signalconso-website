@@ -13,15 +13,11 @@ export function hasStep0(r: PartialReport): r is Pick<Report, 'step0'> & Partial
 }
 
 export function hasStep1Full(r: PartialReport): r is Pick<Report, 'step1'> & PartialReport {
-  return !!r.step1 && hasSubcategoryIndexes(r) && hasConsumerWish(r) && hasEmployeeConsumer(r)
+  return !!r.step1 && hasSubcategoryIndexes(r) && hasConsumerWish(r)
 }
 
 export function hasSubcategoryIndexes(r: PartialReport): r is ReportPickInStep1<'subcategoriesIndexes'> & PartialReport {
   return hasStep0(r) && !!r.step1?.subcategoriesIndexes
-}
-
-export function hasEmployeeConsumer(r: PartialReport): r is ReportPickInStep1<'employeeConsumer'> & PartialReport {
-  return hasStep0(r) && r.step1?.employeeConsumer !== undefined
 }
 
 export function hasConsumerWish(r: PartialReport): r is ReportPickInStep1<'consumerWish'> & PartialReport {
@@ -110,12 +106,4 @@ export const getWipCompanyKindFromSelected = (r: ReportPickInStep1<'subcategorie
     : specialCategory === 'RappelConso'
       ? 'PRODUCT_RAPPEL_CONSO'
       : [...getSubcategories(r)].reverse().find(_ => !!_.companyKind)?.companyKind
-}
-
-export const shouldAskIfEmployeeConsumer = (r: ReportPickInStep1<'subcategoriesIndexes'>) => {
-  const {askIfEmployeeConsumer: employeeConsumerQuestion} = getAnomaly(r)
-  const subcategoriesEmployeeConsumerQuestions = getSubcategories(r).map(_ => _.askIfEmployeeConsumer)
-  const res = [employeeConsumerQuestion, ...subcategoriesEmployeeConsumerQuestions].reverse().find(_ => _ !== undefined)
-
-  return !!res
 }

@@ -14,7 +14,6 @@ export interface Report {
     openFf?: OpenFfResult
     rappelConso?: RappelConsoResult
     subcategoriesIndexes: number[]
-    employeeConsumer: boolean
     companyKindOverride?: CompanyKind
     consumerWish: ConsumerWish
   }
@@ -61,7 +60,7 @@ export type DetailInputValues2 = {
 }
 
 // ex:
-// ReportWithPickInStep1<"subcategoriesIndexes" | "employeeConsumer">
+// ReportWithPickInStep1<"subcategoriesIndexes">
 // = a report which already has these subfields from step1
 // (and also has step0)
 export type ReportWithPickInStep1<A extends keyof Report['step1']> = Pick<Report, 'step0'> & {

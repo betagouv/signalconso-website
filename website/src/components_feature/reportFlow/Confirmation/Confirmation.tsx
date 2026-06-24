@@ -4,7 +4,6 @@ import {NextStepButton} from '@/components_feature/reportFlow/reportFlowStepper/
 import {StepNavigation} from '@/components_feature/reportFlow/reportFlowStepper/ReportFlowStepper'
 import {Animate} from '@/components_simple/Animate'
 import {Step2Recap} from '@/components_simple/CompanyRecap/Step2Recap'
-import {ScAlert} from '@/components_simple/ScAlert'
 import {ReportFilesConfirmation} from '@/components_simple/reportFile/ReportFilesConfirmation'
 import {getAnomaly, getSubcategories, getTags, hasStep0, hasStep1Full, hasStep2, hasStep4} from '@/feature/reportUtils'
 import {parseReportDetails} from '@/feature/reportUtils2'
@@ -244,15 +243,6 @@ function TopInfosBlock({transmissionStatus}: {transmissionStatus: FinalTransmiss
       case 'NOT_TRANSMITTABLE':
         const {reason} = transmissionStatus
         switch (reason) {
-          case 'employeeConsumer':
-            return (
-              <>
-                <p className="mb-0" dangerouslySetInnerHTML={{__html: m.confirmationAlert}} />
-                <ScAlert type="warning">
-                  <p className="mb-0" dangerouslySetInnerHTML={{__html: m.confirmationAlertEmployeeConsumer}}></p>
-                </ScAlert>
-              </>
-            )
           case 'tags':
           case 'getAnswer':
           case 'foreign':
@@ -299,7 +289,6 @@ function BottomInfosBlock({
               return [m.willHaveLittleEffect]
             case 'getAnswer':
               return [m.agentWillRespond]
-            case 'employeeConsumer':
             case 'tags':
               return []
             default:

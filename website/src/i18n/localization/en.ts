@@ -965,7 +965,6 @@ export const en = {
     detailsTextAreaTransmittableAnonymous: ` If you do not want the company to know your identity, <b>do not mention anything personal</b>.`,
     detailsTextAreaNotTransmittable: `The informations you write below will be read <b>by Fraud Control only.</b>`,
     detailsTextAreaDescription: `To facilitate processing, <b>provide detailed information</b> about your request and <b>include all the information</b> you have in your possession.`,
-    detailsTextAreaEmployeeConsumer: `No information will be shared with your employer.`,
     detailsAlertProduitDangereux: {
       title: `Emergency numbers`,
       text: `In the event of an emergency, you can call the relevant `,
@@ -1027,7 +1026,6 @@ export const en = {
     consumerWishGetAnswer: `An agent will respond to you as soon as possible. Your report will <strong>not be forwarded to the company.</strong>`,
     consumerWishInvestigationIsPossible:
       'Fraud Control may decide to open an investigation based on the informations you provide.',
-    employeeConsumerInformation: `To ensure your job security, your details will not be transmitted to the company. It will be read <b>only by Fraud Control</b>.`,
     notTransmittableToProConsumerInformation: `Your reports will not be transmitted to the company. It will be read <b>only by Fraud Control</b>.`,
     informationRatingSaved: `Your comments have been recorded, thank you.`,
     informationTitle: `Unfortunately, we are unable to take your report any further.`,
@@ -1218,25 +1216,11 @@ export const en = {
     consumerCannotReportSignalConso: `You can’t report a government website. SignalConso service allows you to report consumption problems related to private companies only`,
     consumerValidationCodeExpired: `Incorrect code, please try again.`,
     consumerValidationCodeInvalid: `Incorrect code, please try again.`,
-    consumerIsEmployee: `
-      <strong>You state that you work at the company you would like to report.</strong>
-      <p>
-        Your report will be read by <b>Fraud Control staff only</b>.
-        <br/>
-        Your contact details will be used by our investigations team only.
-        Our investigations team may get in touch with you to confirm your identity and your report.
-      </p>
-      Your employer will not be made aware of your report.
-      <br/>
-      If our team are required to disclose your identity to a court authority or your employer as part of our investigation, they will ask for your permission first. 
-      <b>You can decline this request.</b>
-    `,
     youStayAnonymous: `You remain anonymous`,
     consumerAnonymousInformation: `Careful: your specific issue will not be resolved! No refund, return of package, cancellation of purchase or service...`,
     companyWillKnowYourIdentity: `The company will know your identity`,
     consumerShareInformation: `You share your contact details with the company.`,
     confirmationAlertTransmittable: `Check every detail of your report before sending it to the company and to Fraud Control.`,
-    confirmationAlertEmployeeConsumer: `You have stated that you work in the company you are reporting. <b>Your anonymity will therefore be guaranteed</b>. If this is a mistake, go back to step 1 to revise your choice.`,
     confirmationAlert: `Check every detail of your report before sending it to Fraud Control.`,
     contactAgreementLabel: `Do you want to share your contact details with the company ?`,
     contactAgreementTrueTitle: `I am sharing`,
@@ -1355,7 +1339,6 @@ export const en = {
       questionTransmittedToDGCCRF: `Your question is forwarded to the Directorate General for Competition, Consumer Affairs, and Fraud Control (<abbr title="Direction Générale de la Concurrence, Consommation et Répression des Fraudes">DGCCRF</abbr>) - also known as "Fraud Control".`,
       yourDetailsForInvestigators: `Your details are <b>for Fraud Control's investigators use only</b>.`,
       fraudsResponseTime: `Fraud Control will respond to you as soon as possible.`,
-      youIndicatedEmployment: `You indicated that you are an employee of the reported company.`,
       jobSecurityGuarantee: `To ensure the security of your job, your report will not be sent to the company. However, it has been recorded in Fraud Control's database (<abbr title="Direction Générale de la Concurrence, Consommation et Répression des Fraudes">DGCCRF</abbr>).`,
       foreignCompanyReport: (countryName: string) => `You indicated that the company is a foreign business (${countryName}).`,
       reportToEuropeanConsumers: `We invite you to report directly to the European Consumer Centre for assistance in resolving your issue.`,

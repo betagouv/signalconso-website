@@ -72,7 +72,6 @@ const companyTestCases = [
 
 const acknowledgmentTestCases = [
   'acknowledgment_ReponseConso',
-  'acknowledgment_EmployeeReport',
   'acknowledgment_ForeignCompany_Espagne',
   'acknowledgment_ForeignCompany_Suisse',
   'acknowledgment_ForeignCompany_Andorre',
@@ -180,7 +179,7 @@ const Playground = () => {
                   vendor: 'Boutique Banania',
                 },
               },
-              step1: {subcategoriesIndexes: [0], consumerWish: 'reportSomething', employeeConsumer: false},
+              step1: {subcategoriesIndexes: [0], consumerWish: 'reportSomething'},
             }}
             onClear={console.log}
             stepNavigation={dummyStepNavigation}
@@ -202,7 +201,7 @@ const Playground = () => {
                 },
                 barcodeProduct,
               },
-              step1: {subcategoriesIndexes: [0], consumerWish: 'reportSomething', employeeConsumer: false},
+              step1: {subcategoriesIndexes: [0], consumerWish: 'reportSomething'},
             }}
             onClear={console.log}
             stepNavigation={dummyStepNavigation}
@@ -214,8 +213,6 @@ const Playground = () => {
         return <PlaygroundConfirmation />
       case 'acknowledgment_ReponseConso':
         return <PlaygroundAcknowledgment acknowledgmentCase={AcknowledgmentCases.ReponseConso} countryId="" />
-      case 'acknowledgment_EmployeeReport':
-        return <PlaygroundAcknowledgment acknowledgmentCase={AcknowledgmentCases.EmployeeReport} countryId="" />
       case 'acknowledgment_ForeignCompany_Espagne':
         return <PlaygroundAcknowledgment acknowledgmentCase={AcknowledgmentCases.ForeignCompany} countryId="ES" />
       case 'acknowledgment_ForeignCompany_Suisse':

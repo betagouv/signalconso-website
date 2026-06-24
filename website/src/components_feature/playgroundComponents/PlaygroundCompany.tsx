@@ -52,7 +52,6 @@ export const PlaygroundCompany = ({companyKind = 'SIRET', reportOpenFf: openFf}:
           step1: {
             ...(openFf ? {openFf} : undefined),
             ...(openFf ? {subcategoriesIndexes: []} : {subcategoriesIndexes: pickSubcategoriesIndexes()}),
-            employeeConsumer: false,
             consumerWish: 'reportSomething',
           },
         }}

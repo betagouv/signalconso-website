@@ -54,7 +54,6 @@ describe('Consumer', () => {
       },
       step1: {
         subcategoriesIndexes: [0],
-        employeeConsumer: false,
         consumerWish: 'reportSomething',
       },
       step2,
@@ -106,7 +105,7 @@ describe('Consumer', () => {
     })
   })
 
-  describe('when employee consumer is true', function () {
+  describe('when trying to submit', function () {
     let initial: PartialReport = {
       step0: {
         lang: 'fr',
@@ -114,7 +113,6 @@ describe('Consumer', () => {
       },
       step1: {
         subcategoriesIndexes: [0],
-        employeeConsumer: true,
         consumerWish: 'reportSomething',
       },
       step2,
@@ -149,12 +147,13 @@ describe('Consumer', () => {
         target: {value: Fixture.consumer.referenceNumber},
       })
       fireEvent.change(app.container.querySelector('[name=email]')!, {target: {value: Fixture.consumer.email}})
+      fireEvent.click(app.container.querySelector('input[type=radio]')!)
 
       submit()
       await waitFor(() => {
         const expected: Report['step4'] = {
           consumer: Fixture.consumer,
-          contactAgreement: false,
+          contactAgreement: true,
         }
         expect(submitted).toEqual(expected)
       })

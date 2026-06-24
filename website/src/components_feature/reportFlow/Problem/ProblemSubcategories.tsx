@@ -86,11 +86,10 @@ export function applySubcategoriesChange(
     step1: {
       ...report.step1,
       subcategoriesIndexes: newSubcategoriesIndexes,
-      // Subcategory has changed, we clear consumerWish & employeeConsumer because :
+      // Subcategory has changed, we clear consumerWish because :
       // - Some subcats have "getAnswer" (that is not available for all subcats so we have to clean up those properties)
       // - Some subcats set default values for these properties (CompanyKind SOCIAL)
       consumerWish: undefined,
-      employeeConsumer: undefined,
       companyKindOverride: undefined,
     },
     step2: undefined,
