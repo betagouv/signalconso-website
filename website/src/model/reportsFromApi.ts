@@ -37,7 +37,7 @@ export interface ApiReport {
   consumerPhone: string | undefined
   consumerReferenceNumber: string | undefined
   contactAgreement: boolean
-  employeeConsumer: boolean
+  employeeConsumer: boolean // TODO Remove once backend is deployed
   forwardToReponseConso: boolean | undefined
   fileIds: string[]
   vendor: string | undefined
@@ -85,7 +85,6 @@ export interface ApiCreatedReport {
   phone: string | null
   ccrfCode: string[]
   consumerPhone: string | null
-  employeeConsumer: boolean
   reponseconsoCode: string[]
   gender: 'Male' | 'Female' | null
 }

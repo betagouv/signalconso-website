@@ -10,7 +10,6 @@ import {ReportStepOrDone, getIndexForStepOrDone} from '../../model/ReportStep'
 interface ReportFlowContextShape {
   report: PartialReport
   setReport: SetReport
-  setEmployeeConsumer: (_: boolean) => void
   setCompanyKindOverride: (_: CompanyKind) => void
   setConsumerWish: (_: ConsumerWish) => void
   resetReport: () => void
@@ -114,18 +113,6 @@ function useReportEvents() {
 }
 
 function useConvenientSetters(setReport: SetReport, resetReportEvents: () => void) {
-  const setEmployeeConsumer = useCallback(
-    (value: boolean) => {
-      setReport(_ => ({
-        ..._,
-        step1: {
-          ..._.step1,
-          employeeConsumer: value,
-        },
-      }))
-    },
-    [setReport],
-  )
   const setCompanyKindOverride = useCallback(
     (value: CompanyKind) => {
       setReport(_ => ({
@@ -156,7 +143,7 @@ function useConvenientSetters(setReport: SetReport, resetReportEvents: () => voi
     resetReportEvents()
   }, [setReport, resetReportEvents])
 
-  return {resetReport, setCompanyKindOverride, setConsumerWish, setEmployeeConsumer}
+  return {resetReport, setCompanyKindOverride, setConsumerWish}
 }
 
 function useLogOfReportChanges(report: PartialReport) {

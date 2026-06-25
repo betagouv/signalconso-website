@@ -50,16 +50,13 @@ export const PlaygroundAcknowledgment = ({
   const report = useMemo(() => {
     const reportsSwitch: {[key in AcknowledgmentCases]: () => CreatedReport} = {
       [AcknowledgmentCases.ReponseConso]: () => ({...baseReport, tags: ['ReponseConso']}),
-      [AcknowledgmentCases.EmployeeReport]: () => ({...baseReport, employeeConsumer: true}),
       [AcknowledgmentCases.ForeignCompany]: () => ({
         ...baseReport,
-        employeeConsumer: false,
         companyAddress: {...baseReport.companyAddress, country: foundCountry},
       }),
-      [AcknowledgmentCases.FrenchCompanyWithoutSIRET]: () => ({...baseReport, employeeConsumer: false, companySiret: undefined}),
+      [AcknowledgmentCases.FrenchCompanyWithoutSIRET]: () => ({...baseReport, companySiret: undefined}),
       [AcknowledgmentCases.ContractualDisputeWithSIRET]: () => ({
         ...baseReport,
-        employeeConsumer: false,
         tags: ['LitigeContractuel'],
       }),
       [AcknowledgmentCases.PostReportHelper]: () => ({
@@ -70,7 +67,7 @@ export const PlaygroundAcknowledgment = ({
             'Contenu du postReportHelper avec du <strong>HTML</strong>. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. ',
         },
       }),
-      [AcknowledgmentCases.Default]: () => ({...baseReport, employeeConsumer: false, tags: []}),
+      [AcknowledgmentCases.Default]: () => ({...baseReport, tags: []}),
     }
     return reportsSwitch[acknowledgmentCase]()
   }, [acknowledgmentCase, foundCountry])

@@ -3,8 +3,9 @@ blockingInfo:
   title: <b>Votre produit n'est plus couvert par la garantie.</b>
   content: >-
     Votre produit n'est plus couvert par la garantie de base, appelée "garantie
-    légale de conformité". La garantie légale de conformité est de 2 ans pour
-    tous les produits neufs et de 6 mois pour tous les produits d'occasion.
+    légale de conformité". La garantie légale de conformité est de 2 ans à
+    compter de la délivrance du bien, qu'il soit neuf, d'occasion,
+    reconditionné, ou qu'il s'agisse d'un service numérique.
   reportOutOfScopeMessage: true
   questions:
     - question: Vous souhaitez attaquer l'entreprise pour "vices cachés" ?

@@ -39,7 +39,7 @@ export const toApi = (draft: Report, metadata: ApiReport['metadata']): ApiReport
     consumerPhone: consumer.phone,
     consumerReferenceNumber: consumer.referenceNumber,
     contactAgreement,
-    employeeConsumer: draft.step1.employeeConsumer ?? false,
+    employeeConsumer: false, // TODO Remove once backend is deployed
     forwardToReponseConso: consumerWish === 'getAnswer',
     fileIds: draft.step3.uploadedFiles?.map(file => file.id) ?? [],
     tags,

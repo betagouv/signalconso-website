@@ -969,7 +969,6 @@ export const fr = {
     detailsTextAreaTransmittableAnonymous: ` Si vous ne souhaitez pas que l'entreprise connaisse votre identité, <b>ne citez rien de personnel</b>.`,
     detailsTextAreaNotTransmittable: `Les informations ci-dessous seront lues <b>uniquement par la répression des fraudes.</b>`,
     detailsTextAreaDescription: `Pour faciliter le traitement, <b>détaillez bien</b> votre demande et <b>mettez toutes les informations</b> que vous avez en votre possession.`,
-    detailsTextAreaEmployeeConsumer: `Rien ne sera communiqué à votre employeur.`,
     detailsAlertProduitDangereux: {
       title: `Numéros d'urgence`,
       text: `En cas d'une urgence vitale ou importante, vous pouvez appeler l'un des`,
@@ -1015,8 +1014,6 @@ export const fr = {
     bannerCookie: `Le site SignalConso n'utilise que des cookies techniques exemptés de consentement.`,
     bannerCookieRemark: `À propos des cookies sur signalconso.gouv.fr.`,
     bannerCookieSeeMore: `En savoir plus`,
-    problemDoYouWorkInCompany: `Travaillez-vous dans l'entreprise que vous souhaitez signaler ?`,
-    problemDoYouWorkInCompanyNo: `Non, je n'y travaille pas`,
     problemIsInternetCompany: `Est-ce que votre problème concerne une entreprise sur internet ?`,
     problemIsInternetCompanyNo: `Non, pas sur internet`,
     whatsYourIntent: `Que souhaitez-vous faire ?`,
@@ -1029,7 +1026,6 @@ export const fr = {
     consumerWishGetAnswer: `Un agent vous répondra dans les plus brefs délais. Votre signalement ne sera <strong>pas transmis à l'entreprise.</strong>`,
     consumerWishInvestigationIsPossible:
       "La répression des fraudes pourra décider de mener une enquête sur l'entreprise grâce à vos informations.",
-    employeeConsumerInformation: `Afin de garantir la sécurité de votre emploi, votre signalement ne sera pas transmis à l'entreprise. Il sera lu <b>uniquement par la répression des fraudes</b>.`,
     notTransmittableToProConsumerInformation: `Votre signalement ne sera pas transmis à l'entreprise. Il sera lu <b>uniquement par la répression des fraudes</b>.`,
     informationRatingSaved: `Votre avis a bien été enregistré, nous vous en remercions.`,
     informationTitle: `Emmh, nous ne pouvons pas traiter votre signalement.`,
@@ -1232,25 +1228,11 @@ contacter directement.`,
     consumerCannotReportSignalConso: `Vous ne pouvez pas signaler un site gouvernemental. SignalConso permet uniquement de signaler des problèmes liés à des entreprises privées..`,
     consumerValidationCodeExpired: `Code incorrect, veuillez réessayer.`,
     consumerValidationCodeInvalid: `Code incorrect, veuillez réessayer.`,
-    consumerIsEmployee: `
-      <strong>Vous déclarez travailler dans l'entreprise que vous allez signaler.</strong>
-      <p>
-        Votre signalement sera lu <b>uniquement par la répression des fraudes</b>.
-        <br/>
-        Vos coordonnées sont à destination des enquêteurs uniquement.
-        Ils peuvent être amenés à vous contacter afin de vérifier votre identité et votre signalement.
-      </p>
-      Votre employeur ne sera pas mis au courant de votre signalement.
-      <br/>
-      Pendant l'enquête, si les enquêteurs ont besoin de révéler votre identité à la justice ou à votre employeur, ils vous demanderont l'autorisation avant.
-      <b>Vous pourrez refuser.</b>
-    `,
     youStayAnonymous: `Vous restez anonyme`,
     consumerAnonymousInformation: `Attention, votre problème particulier ne pourra pas être résolu ! Pas de remboursement, de renvoi d'un colis, d'annulation d'un achat ou service…`,
     companyWillKnowYourIdentity: `L'entreprise connaitra votre identité`,
     consumerShareInformation: `Si vous espérez qu'elle résolve votre problème, c'est le meilleur choix.`,
     confirmationAlertTransmittable: `<b>Vérifiez votre signalement</b> avant de l’envoyer à l'entreprise et à la répression des fraudes.`,
-    confirmationAlertEmployeeConsumer: `Vous avez déclaré travailler dans l’entreprise que vous signalez. <b>Votre anonymat sera par conséquent garanti</b>. S’il s’agit d’une erreur, revenez à l'étape 1 pour modifier votre choix.`,
     confirmationAlert: `Vérifiez votre signalement avant de l’envoyer à la répression des fraudes.`,
     contactAgreementLabel: `Souhaitez-vous partager vos coordonnées avec l'entreprise ?`,
     contactAgreementTrueTitle: `Je partage`,
@@ -1364,6 +1346,7 @@ contacter directement.`,
     whichWebsiteMerchantText: 'Indiquez ici le site du marchand sur lequel vous avez effectué votre achat',
 
     thereAreSimilarReports: 'Il existe un ou plusieurs signalements similaires',
+    employeeConsumerNotAvailable: "La soumission d'un signalement en tant qu'informateur interne n'est plus disponible.",
 
     theseeInformationTitle: 'Porter plainte',
     theseeInformation: 'Si vous avez été victime de ce site, nous vous invitons à ',
@@ -1381,8 +1364,6 @@ contacter directement.`,
       questionTransmittedToDGCCRF: `Votre question est transmise à la répression des fraudes (<abbr title="Direction Générale de la Concurrence, Consommation et Répression des Fraudes">DGCCRF</abbr>).`,
       yourDetailsForInvestigators: `Vos coordonnées sont à destination des enquêteurs <b>uniquement</b>.`,
       fraudsResponseTime: `La répression des fraudes vous répondra dans les plus brefs délais.`,
-      youIndicatedEmployment: `Vous avez indiqué être employé de l'entreprise que vous avez signalé.`,
-      jobSecurityGuarantee: `Afin de garantir la sécurité de votre emploi, votre signalement ne sera pas transmis à l'entreprise. Par contre, il a bien été enregistré dans la base de données de la répression des fraudes (<abbr title="Direction Générale de la Concurrence, Consommation et Répression des Fraudes">DGCCRF</abbr>).`,
       foreignCompanyReport: (countryName: string) =>
         `Vous avez indiqué que l’entreprise est une entreprise étrangère (${countryName}).`,
       reportToEuropeanConsumers: `Nous vous invitons à faire votre signalement directement auprès du Centre Européen des Consommateurs. Il vous apportera une assistance pour régler votre problème.`,

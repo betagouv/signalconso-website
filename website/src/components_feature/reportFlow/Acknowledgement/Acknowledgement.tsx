@@ -11,7 +11,6 @@ import AcknowledgementLayout from './AcknowledgementLayout'
 
 export enum AcknowledgmentCases {
   ReponseConso = 'ReponseConso',
-  EmployeeReport = 'EmployeeReport',
   ForeignCompany = 'ForeignCompany',
   FrenchCompanyWithoutSIRET = 'FrenchCompanyWithoutSIRET',
   ContractualDisputeWithSIRET = 'ContractualDisputeWithSIRET',
@@ -66,8 +65,6 @@ export const AcknowledgementInner = ({
     const _ = createdReport
     if (_.tags.includes('ReponseConso')) {
       return AcknowledgmentCases.ReponseConso
-    } else if (_.employeeConsumer) {
-      return AcknowledgmentCases.EmployeeReport
     } else if (_.companyAddress.country ?? 'France' !== 'France') {
       return AcknowledgmentCases.ForeignCompany
     } else if (!_.companySiret) {
@@ -92,12 +89,6 @@ export const AcknowledgementInner = ({
           </ListItem>
           <ListItem>{m.acknoledgment.fraudsResponseTime}</ListItem>
         </List>
-      </AcknowledgementLayout>
-    ),
-    [AcknowledgmentCases.EmployeeReport]: () => (
-      <AcknowledgementLayout title={m.acknoledgment.whatWillHappenToCompany} {...subProps}>
-        <p>{m.acknoledgment.youIndicatedEmployment}</p>
-        <p dangerouslySetInnerHTML={{__html: m.acknoledgment.jobSecurityGuarantee}} />
       </AcknowledgementLayout>
     ),
     [AcknowledgmentCases.ForeignCompany]: () => (

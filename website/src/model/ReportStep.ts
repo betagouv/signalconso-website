@@ -55,13 +55,7 @@ export function isStepBeforeOrEqual(a: ReportStepOrDone, b: ReportStepOrDone) {
 function isBuildingStepDone(r: PartialReport, step: ReportStep) {
   switch (step) {
     case 'BuildingProblem':
-      return (
-        !!r.step0 &&
-        !!r.step1 &&
-        !!r.step1.subcategoriesIndexes &&
-        !!r.step1.consumerWish &&
-        r.step1.employeeConsumer !== undefined
-      )
+      return !!r.step0 && !!r.step1 && !!r.step1.subcategoriesIndexes && !!r.step1.consumerWish
     case 'BuildingCompany':
       return !!r.step2
     case 'BuildingDetails':
