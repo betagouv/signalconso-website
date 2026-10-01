@@ -1,6 +1,6 @@
 {
   "name": "website",
-  "version": "1.0.1",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "beforebuild": "echo 'beforebuild starting' && yarn shared:gen-subcategory-slugs && yarn shared:generate-json && yarn generate-sitemap  && only-include-used-icons && echo 'beforebuild done' ",

@@ -1,6 +1,5 @@
 import {Metadata} from 'next'
 import {appConfig} from './appConfig'
-import {version} from '@/../package.json'
 
 export const layoutMetadatas: Metadata = {
   title: 'SignalConso',
@@ -60,7 +59,4 @@ export const layoutMetadatas: Metadata = {
       url: '/icons/icon144.png',
     },
   ],
-  other: {
-    'app-version': version,
-  },
 }
