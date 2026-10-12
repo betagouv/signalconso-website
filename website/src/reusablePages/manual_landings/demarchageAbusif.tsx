@@ -1,10 +1,6 @@
-import {UserQuote} from '@/components_feature/LandingPage'
 import {FullWidthPageContainer} from '@/components_simple/PageContainers'
 import {BlueBandWhySignalConso, getManualLpButtonProps} from '@/landings/manualLandings/manualLandingsComponents'
 import Button from '@codegouvfr/react-dsfr/Button'
-import Link from 'next/link'
-
-const bloctel = 'https://www.bloctel.gouv.fr/'
 
 export function DemarchageAbusifPage() {
   const lang = 'fr'
@@ -17,9 +13,15 @@ export function DemarchageAbusifPage() {
             <p className="text-xl text-center mb-0">Vous avez reçu des appels commerciaux abusifs :</p>
             <ul className="text-xl ml-4  mb-6">
               <li className="font-bold">hors des heures et jours autorisés ?</li>
-              <li>ou <strong>trop fréquents</strong> ?</li>
-              <li>ou <strong>alors que vous n’aviez pas donné votre consentement</strong> ?</li>
-              <li>ou <strong>alors que vous aviez retiré votre consentement</strong> ?</li>
+              <li>
+                ou <strong>trop fréquents</strong> ?
+              </li>
+              <li>
+                ou <strong>alors que vous n’aviez pas donné votre consentement</strong> ?
+              </li>
+              <li>
+                ou <strong>alors que vous aviez retiré votre consentement</strong> ?
+              </li>
             </ul>
             <p className="text-lg ">
               Faites un signalement sur la plateforme SignalConso. Votre signalement sera envoyé aux agents de la répression des
