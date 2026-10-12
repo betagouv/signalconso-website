@@ -1,6 +1,6 @@
 title: >-
   J'ai reçu un appel commercial pendant la semaine en dehors des heures
-  autorisées
+  autorisées, ou le week-end ou un jour férié
 desc: 'Exemple : Avant 10h, entre 13h et 14h ou après 20h'
 ccrfCode:
   - '227'
@@ -9,4 +9,4 @@ companyKind: PHONE
 tags:
   - DemarchageTelephonique
 subcategory: >-
-  Jai_recu_un_appel_commercial_pendant_la_semaine_en_dehors_des_heures_autorisees
+  Jai_recu_un_appel_commercial_pendant_la_semaine_en_dehors_des_heures_autorisees_ou_le_week-end_ou_jour_ferie
