@@ -56,11 +56,13 @@ export function DemarchageAbusifPage() {
               </p>
               <p className="text-lg mb-0">
                 <span className="ri-arrow-right-line mr-2 fr-icon--lg" />
-                Il est interdit de vous démarcher après que vous ayez retiré votre consentement
+                Il est interdit de vous démarcher après que vous ayez retiré votre consentement.
               </p>
               <p className="text-lg mb-0">
                 <span className="ri-arrow-right-line mr-2 fr-icon--lg" />
-                Il est interdit s'il concerne le <strong>Compte personnel de formation (CPF)</strong>.
+                Il est interdit s'il concerne{' '}
+                <strong> la rénovation énergétique, l’adaptation d’un logement vieillissement ou au handicap</strong> ou le{' '}
+                <strong>Compte personnel de formation (CPF)</strong>.
               </p>
             </div>
             <p className="text-lg mb-6">Dans chacun de ces cas, vous pouvez faire un signalement.</p>
