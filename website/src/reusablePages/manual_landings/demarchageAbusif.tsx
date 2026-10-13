@@ -61,7 +61,7 @@ export function DemarchageAbusifPage() {
               <p className="text-lg mb-0">
                 <span className="ri-arrow-right-line mr-2 fr-icon--lg" />
                 Il est interdit s'il concerne{' '}
-                <strong> la rénovation énergétique, l’adaptation d’un logement vieillissement ou au handicap</strong> ou le{' '}
+                <strong> la rénovation énergétique, l’adaptation d’un logement au vieillissement ou au handicap</strong> ou le{' '}
                 <strong>Compte personnel de formation (CPF)</strong>.
               </p>
             </div>
