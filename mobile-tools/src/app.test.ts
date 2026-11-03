@@ -50,3 +50,16 @@ describe('Test the categories path', () => {
     })
   })
 })
+
+describe('Test the health check path', () => {
+  test('It should return the service name and build info', async () => {
+    const response = await request(app).get('/')
+    expect(response.statusCode).toBe(200)
+    expect(response.body).toEqual({
+      name: 'signalconso-mobile-tools',
+      version: expect.any(String),
+      gitCommit: expect.any(String),
+      buildTime: expect.any(String),
+    })
+  })
+})

@@ -1,7 +1,7 @@
 {
   "name": "mobile-tools",
   "type": "module",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "index.js",
   "license": "MIT",
   "devDependencies": {
@@ -33,9 +33,9 @@
   "scripts": {
     "beforebuild": "yarn shared:gen-subcategory-slugs && yarn shared:generate-json && yarn shared:generate-minimized-anomalies",
     "test": "jest --config jest.config.mjs",
-    "build": "yarn beforebuild && tsc",
+    "build": "yarn beforebuild && tsc && node scripts/buildinfo.mjs",
     "start": "node build/index.js",
-    "dev": "concurrently \"tsc --watch\" \"nodemon -q build/index.js\"",
+    "dev": "node scripts/buildinfo.mjs && concurrently \"tsc --watch\" \"nodemon -q build/index.js\"",
     "format": "prettier --write .",
     "checkformat": "prettier --check .",
     "generate-feed": "tsc && node build/parseRSS.js"
