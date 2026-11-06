@@ -5,6 +5,7 @@ import {ExceptionsHandler} from './middlewares/exceptions.handler.js'
 import {DGCCRFRSSController} from './controllers/dgccrfrss.controller.js'
 import morgan from 'morgan'
 import {CategoriesController} from './controllers/categories.controller.js'
+import {HealthController} from './controllers/health.controller.js'
 
 const app = express()
 
@@ -22,6 +23,11 @@ app.use(express.json())
  * à faire des requêtes sur notre API.
  */
 app.use(cors())
+
+/**
+ * Health check, renvoie la version déployée
+ */
+app.use('/', HealthController)
 
 app.use('/v1/actus', DGCCRFRSSController)
 app.use('/v1/categories', CategoriesController)
