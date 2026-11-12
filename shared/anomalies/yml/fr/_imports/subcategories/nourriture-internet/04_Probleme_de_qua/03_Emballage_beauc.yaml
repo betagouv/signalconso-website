@@ -2,7 +2,6 @@ title: Emballage beaucoup trop grand par rapport à la quantité du produit
 desc: Apparence trompeuse sur la quantitéou suremballage inutile
 tags:
   - TransitionEcologique
-  - ReponseConso
 detailInputs:
   - label: Type de produit
     type: TEXT

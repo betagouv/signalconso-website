@@ -6,7 +6,6 @@ desc: >-
   exposés à la vue du public.
 ccrfCode:
   - 21B
-reponseconsoCode: '212'
 detailInputs:
   - label: Date de constat
     type: DATE

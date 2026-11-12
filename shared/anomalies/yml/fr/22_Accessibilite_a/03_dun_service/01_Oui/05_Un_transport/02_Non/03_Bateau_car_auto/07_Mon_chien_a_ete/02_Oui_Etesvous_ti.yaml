@@ -1,5 +1,4 @@
 title: Oui (Êtes-vous titulaire de la Carte Mobilité Inclusion ?)
-reponseconsoCode: '521'
 detailInputs:
   - label: Date du refus
     type: DATE

@@ -4,11 +4,9 @@ desc: >-
   'respecteux de l'environnement'
 tags:
   - TransitionEcologique
-  - ReponseConso
 ccrfCode:
   - 23B
   - '192'
-reponseconsoCode: '210'
 detailInputs:
   - label: Date du constat
     type: DATE_NOT_IN_FUTURE

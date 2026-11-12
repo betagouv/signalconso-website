@@ -55,6 +55,7 @@ export const getTransmissionStatusAfterConsumerWish = (
     case 'NOT_TRANSMITTABLE':
       return statusBeforeConsumerWish
     case 'SO_FAR_SO_GOOD':
+      // @deprecated SC-30: ReponseConso is no longer used: 'getAnswer' can no longer be chosen
       if (r.step1.consumerWish === 'getAnswer') {
         return {kind: 'NOT_TRANSMITTABLE', reason: 'getAnswer'}
       }

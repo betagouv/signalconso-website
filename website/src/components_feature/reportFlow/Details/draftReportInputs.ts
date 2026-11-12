@@ -6,6 +6,7 @@ import {AppLang, AppLangs} from '../../../i18n/localization/AppLangs'
 import {PartialReport} from '../ReportFlowContext'
 
 export class ReportDefaultInputs {
+  /** @deprecated SC-30: ReponseConso is no longer used. Only used with consumerWish 'getAnswer', which can no longer be chosen. */
   static readonly reponseConso = (lang: AppLang): DetailInput => ({
     label: lang === AppLangs.en ? 'Your question' : 'Votre question',
     type: DetailInputType.TEXTAREA,

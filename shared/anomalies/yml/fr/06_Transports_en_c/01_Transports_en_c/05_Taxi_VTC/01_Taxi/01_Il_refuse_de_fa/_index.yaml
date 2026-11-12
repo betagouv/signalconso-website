@@ -2,6 +2,5 @@ title: Il refuse de faire la course
 desc: "Exemple : le taxi refuse de vous prendre car ce n'est pas assez loin"
 ccrfCode:
   - 23e
-reponseconsoCode: '232'
 subcategoriesTitle: Pour quelle raison le chauffeur a-t-il refusé de vous prendre ?
 subcategory: Il_refuse_de_faire_la_course

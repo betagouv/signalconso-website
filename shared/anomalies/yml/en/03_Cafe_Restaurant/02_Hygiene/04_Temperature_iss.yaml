@@ -1,6 +1,5 @@
 title: Temperature issue
 desc: "Exemple\_: food not kept cold at all times"
-reponseconsoCode: '322'
 detailInputs:
   - label: Date of the finding
     type: DATE

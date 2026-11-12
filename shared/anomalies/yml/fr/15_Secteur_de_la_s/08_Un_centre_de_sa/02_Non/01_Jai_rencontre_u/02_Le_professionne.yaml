@@ -9,7 +9,6 @@ desc: >-
 companyKind: SIRET
 ccrfCode:
   - '226'
-reponseconsoCode: '212'
 detailInputs:
   - label: Date de constat
     type: DATE

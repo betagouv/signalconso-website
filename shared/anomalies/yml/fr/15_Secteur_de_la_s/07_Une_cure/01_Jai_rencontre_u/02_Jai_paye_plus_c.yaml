@@ -3,7 +3,6 @@ desc: "Exemple\_: J'ai payé un supplément non prévu sans en être informé au
 companyKind: SIRET
 ccrfCode:
   - 23B
-reponseconsoCode: '212'
 detailInputs:
   - label: Date de constat
     type: DATE

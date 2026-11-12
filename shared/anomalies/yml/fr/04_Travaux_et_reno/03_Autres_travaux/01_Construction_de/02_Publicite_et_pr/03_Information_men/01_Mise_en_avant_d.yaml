@@ -2,8 +2,6 @@ title: Mise en avant d'un label ou d'un signe de qualité non ou plus détenu
 ccrfCode:
   - '271'
   - '275'
-tags:
-  - ReponseConso
 detailInputs:
   - label: Qu'est-ce qui est trompeur ou mensonger ?
     type: RADIO

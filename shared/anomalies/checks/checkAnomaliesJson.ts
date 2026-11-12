@@ -35,6 +35,7 @@ const anomalySpec: ObjectSpec = {
 const baseSubcategorySpec: ObjectSpec = {
   tags: _ => _.ifDefined()?.assertIsArrayOfAllowedStrings(reportTagsAllowedInYaml),
   desc: _ => _.ifDefined()?.assertIsString(),
+  // @deprecated SC-30: ReponseConso is no longer used
   reponseconsoCode: _ => _.ifDefined()?.assertIsString(),
   ccrfCode: _ => _.ifDefined()?.assertIsArrayOfString(),
   companyKind: _ => _.ifDefined()?.assertIsAllowedString(companyKinds),

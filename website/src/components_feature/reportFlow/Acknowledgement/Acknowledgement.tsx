@@ -10,6 +10,7 @@ import {useReportFlowContext} from '../ReportFlowContext'
 import AcknowledgementLayout from './AcknowledgementLayout'
 
 export enum AcknowledgmentCases {
+  /** @deprecated SC-30: ReponseConso is no longer used. Reports can no longer have the ReponseConso tag, this case is unreachable. */
   ReponseConso = 'ReponseConso',
   ForeignCompany = 'ForeignCompany',
   FrenchCompanyWithoutSIRET = 'FrenchCompanyWithoutSIRET',

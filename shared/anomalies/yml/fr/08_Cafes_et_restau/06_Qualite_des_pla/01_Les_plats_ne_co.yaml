@@ -1,6 +1,5 @@
 title: Les plats ne correspondent pas à la description
 desc: "Exemple\_: Produit industriel vendu sous la mention \"fait maison\""
-reponseconsoCode: '271'
 detailInputs:
   - label: Date du constat
     type: DATE_NOT_IN_FUTURE
@@ -24,5 +23,3 @@ fileLabel: >-
   Merci de joindre si possible une photo ou votre facture afin d'appuyer votre
   signalement.
 subcategory: Les_plats_ne_correspondent_pas_a_la_description
-tags:
-  - ReponseConso

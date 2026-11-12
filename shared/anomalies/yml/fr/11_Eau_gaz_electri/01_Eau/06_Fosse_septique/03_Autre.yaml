@@ -1,6 +1,4 @@
 title: Autre
-tags:
-  - ReponseConso
 detailInputs:
   - label: Date du constat
     type: DATE_NOT_IN_FUTURE

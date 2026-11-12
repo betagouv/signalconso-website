@@ -2,7 +2,6 @@ title: Les prix ne sont pas affichés
 desc: "Exemple\_: les prix des prestations ne sont pas affichés, les prix affichés sont illisibles"
 ccrfCode:
   - 21B
-reponseconsoCode: '212'
 detailInputs:
   - label: Date de constat
     type: DATE

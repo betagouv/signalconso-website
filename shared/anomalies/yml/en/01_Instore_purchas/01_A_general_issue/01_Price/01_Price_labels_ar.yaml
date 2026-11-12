@@ -1,7 +1,6 @@
 title: Price labels are missing/prices are unreadable
 ccrfCode:
   - '163'
-reponseconsoCode: '212'
 detailInputs:
   - label: Please specify
     type: RADIO

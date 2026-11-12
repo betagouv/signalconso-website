@@ -1,9 +1,6 @@
 title: Il manque des prix / les prix sont illisibles
 ccrfCode:
   - '163'
-tags:
-  - ReponseConso
-reponseconsoCode: '212'
 detailInputs:
   - label: Veuillez préciser
     type: RADIO

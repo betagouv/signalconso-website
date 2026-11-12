@@ -1,6 +1,5 @@
 title: Je n’ai jamais reçu la confirmation de résiliation
 desc: "Exemple\_: Je ne reçois aucun mail ou courrier de confirmation de résiliation …"
-reponseconsoCode: '475'
 ccrfCode:
   - 21A
   - '226'

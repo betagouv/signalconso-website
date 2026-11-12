@@ -1,5 +1,4 @@
 title: Cas particulier des œufs
-reponseconsoCode: '323'
 detailInputs:
   - label: "Quel est le problème\_?"
     type: RADIO
@@ -13,5 +12,3 @@ detailInputs:
     defaultValue: SYSDATE
 fileLabel: Photo
 subcategory: Cas_particulier_des_oeufs
-tags:
-  - ReponseConso

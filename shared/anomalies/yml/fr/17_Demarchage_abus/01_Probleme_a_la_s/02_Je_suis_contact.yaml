@@ -5,7 +5,6 @@ companyKind: LOCATION
 ccrfCode:
   - '227'
   - 23E
-reponseconsoCode: '221'
 tags:
   - DemarchageADomicile
 detailInputs:

@@ -1,8 +1,6 @@
 title: Présentation des travaux comme étant obligatoires
 ccrfCode:
   - '271'
-tags:
-  - ReponseConso
 detailInputs:
   - label: Qu'est-ce qui est trompeur ou mensonger ?
     type: RADIO

@@ -2,7 +2,6 @@ title: Un produit de santé de mauvaise qualité
 desc: "Exemple\_: béquille qui se tord, audioprothèse qui se fissure rapidement, préservatif qui se perce"
 ccrfCode:
   - 23B
-reponseconsoCode: '332'
 tags:
   - ProduitDangereux
 detailInputs:

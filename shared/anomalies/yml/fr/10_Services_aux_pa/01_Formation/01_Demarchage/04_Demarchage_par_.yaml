@@ -2,7 +2,6 @@ title: Démarchage par SMS
 companyKind: PHONE
 ccrfCode:
   - '227'
-reponseconsoCode: '221'
 tags:
   - DemarchageTelephonique
 subcategory: Demarchage_par_SMS

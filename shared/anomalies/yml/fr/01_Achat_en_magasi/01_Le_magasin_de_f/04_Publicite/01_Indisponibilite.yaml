@@ -1,7 +1,6 @@
 title: Indisponibilité des produits dont il est fait la publicité
 ccrfCode:
   - 23B
-reponseconsoCode: '210'
 detailInputs:
   - label: Date du constat
     type: DATE_NOT_IN_FUTURE

@@ -4,7 +4,6 @@ desc: >-
   bio" or ce n'est pas le cas
 ccrfCode:
   - 23B
-reponseconsoCode: '210'
 detailInputs:
   - label: Date du constat
     type: DATE_NOT_IN_FUTURE

@@ -2,9 +2,6 @@ title: Prix payé différent de celui annoncé au départ
 ccrfCode:
   - 23b
   - '164'
-reponseconsoCode: '451'
-tags:
-  - ReponseConso
 detailInputs:
   - label: Date de la course
     type: DATE

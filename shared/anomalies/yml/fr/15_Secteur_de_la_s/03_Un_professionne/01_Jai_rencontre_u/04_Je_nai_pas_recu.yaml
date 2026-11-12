@@ -4,7 +4,6 @@ desc: >-
   ce que vous avez payé. Un affichage vous en informe.
 ccrfCode:
   - '213'
-reponseconsoCode: '212'
 detailInputs:
   - label: Date de constat
     type: DATE

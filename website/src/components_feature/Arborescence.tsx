@@ -41,6 +41,7 @@ const Node = ({
 }) => {
   const title = instanceOfAnomaly(anomaly) ? anomaly.title : anomaly.title
   const desc = instanceOfAnomaly(anomaly) ? anomaly.description : anomaly.desc
+  // @deprecated SC-30: ReponseConso is no longer used: no YAML defines it anymore
   const reponseconsoCode = instanceOfAnomaly(anomaly) ? undefined : anomaly.reponseconsoCode
   const ccrfCodes = (instanceOfAnomaly(anomaly) ? undefined : anomaly.ccrfCode) ?? []
   const tags = instanceOfAnomaly(anomaly) ? undefined : anomaly.tags

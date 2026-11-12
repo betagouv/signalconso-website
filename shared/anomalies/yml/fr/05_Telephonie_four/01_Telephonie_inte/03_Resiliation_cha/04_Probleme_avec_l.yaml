@@ -3,5 +3,4 @@ desc: 'Exemple : on ne me donne pas mon numéro RIO, ma portabilité est en reta
 ccrfCode:
   - '226'
   - 21E
-reponseconsoCode: '477'
 subcategory: Probleme_avec_le_RIO_Releve_dIdentite_Operateur

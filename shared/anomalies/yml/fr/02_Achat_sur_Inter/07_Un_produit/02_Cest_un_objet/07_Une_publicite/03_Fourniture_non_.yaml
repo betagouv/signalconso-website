@@ -4,11 +4,9 @@ desc: >-
   produit dans le cadre d'une démarche commerciale
 tags:
   - TransitionEcologique
-  - ReponseConso
 ccrfCode:
   - '192'
   - 23E
-reponseconsoCode: '210'
 detailInputs:
   - label: Date du constat
     type: DATE_NOT_IN_FUTURE

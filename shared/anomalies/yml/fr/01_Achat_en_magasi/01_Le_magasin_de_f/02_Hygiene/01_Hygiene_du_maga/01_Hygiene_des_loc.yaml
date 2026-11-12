@@ -1,7 +1,6 @@
 title: Hygiène des locaux et du matériel
 ccrfCode:
   - '312'
-reponseconsoCode: '312'
 detailInputs:
   - label: Quel endroit est concerné ?
     type: CHECKBOX

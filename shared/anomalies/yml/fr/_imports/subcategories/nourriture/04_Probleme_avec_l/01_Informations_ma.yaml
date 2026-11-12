@@ -1,5 +1,4 @@
 title: Informations manquantes
-reponseconsoCode: '273'
 detailInputs:
   - label: Quelle information manque-t-il ?
     type: RADIO

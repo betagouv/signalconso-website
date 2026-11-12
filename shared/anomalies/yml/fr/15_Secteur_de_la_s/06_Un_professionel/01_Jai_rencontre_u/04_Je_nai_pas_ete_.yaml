@@ -5,11 +5,8 @@ desc: >-
   Le professionnel peut refuser le règlement par chèque ou par carte bancaire à
   condition d’avoir informé les clients en amont sur un support lisible.
 companyKind: SIRET
-tags:
-  - ReponseConso
 ccrfCode:
   - 21B
-reponseconsoCode: '411'
 detailInputs:
   - label: Date de constat
     type: DATE

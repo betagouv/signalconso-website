@@ -1,5 +1,4 @@
 title: Yes (I have the assistance card)
-reponseconsoCode: '521'
 detailInputs:
   - label: Date of refusal
     type: DATE

@@ -3,7 +3,4 @@ desc: Un démarcheur est venu chez vous
 ccrfCode:
   - '221'
   - '226'
-tags:
-  - ReponseConso
-reponseconsoCode: '2213'
 subcategory: A_votre_domicile
