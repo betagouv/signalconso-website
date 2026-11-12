@@ -5,7 +5,6 @@ desc: >-
   de paiement ainsi que sur le site de prise de rendez-vous
 ccrfCode:
   - 21B
-reponseconsoCode: '212'
 detailInputs:
   - label: Date de constat
     type: DATE

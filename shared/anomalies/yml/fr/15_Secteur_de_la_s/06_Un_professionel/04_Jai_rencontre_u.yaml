@@ -3,9 +3,6 @@ desc: "Exemple\_: j’ai un doute sur la véracité d’un avis, mon avis a ét�
 companyKind: SIRET
 ccrfCode:
   - '216'
-reponseconsoCode: '212'
-tags:
-  - ReponseConso
 detailInputs:
   - label: Date de constat
     type: DATE

@@ -3,7 +3,6 @@ desc: Aucune information traduite en français
 ccrfCode:
   - 23B
   - '192'
-reponseconsoCode: '273'
 detailInputs:
   - label: Date du constat (ou d'achat suivant le cas)
     type: DATE_NOT_IN_FUTURE

@@ -1,7 +1,6 @@
 title: J'ai rencontré un problème avec le produit acheté
 desc: 'Exemple : jouet, cosmétique, matelas, vins'
 companyKind: LOCATION
-reponseconsoCode: '221'
 tags:
   - DemarchageADomicile
 subcategory: Jai_rencontre_un_probleme_avec_le_produit_achete

@@ -5,7 +5,6 @@ title: >-
 companyKind: SIRET
 ccrfCode:
   - '213'
-reponseconsoCode: '213'
 detailInputs:
   - label: Date de constat
     type: DATE

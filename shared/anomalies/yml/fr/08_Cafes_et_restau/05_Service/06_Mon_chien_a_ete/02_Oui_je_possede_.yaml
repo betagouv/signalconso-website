@@ -1,5 +1,4 @@
 title: Oui (je possède la carte d'assistance)
-reponseconsoCode: '521'
 detailInputs:
   - label: Date du refus
     type: DATE

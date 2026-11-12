@@ -1,5 +1,4 @@
 title: I had a problem with payment
-reponseconsoCode: '212'
 detailInputs:
   - label: Date of the finding
     type: DATE

@@ -1,6 +1,4 @@
 title: Le prix au compteur était élevé dès la prise en charge
-tags:
-  - ReponseConso
 detailInputs:
   - label: Date de la course
     type: DATE

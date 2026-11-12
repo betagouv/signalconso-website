@@ -6,7 +6,6 @@ desc: >-
   qu’à la condition d’avoir informé les clients en amont sur un support lisible.
 ccrfCode:
   - 21B
-reponseconsoCode: '212'
 detailInputs:
   - label: Date de constat
     type: DATE

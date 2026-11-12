@@ -2,7 +2,6 @@ title: C'est un aliment ou une boisson
 desc: 'Exemple : bonbon, viande, pain, conserve, vin, eau en bouteille'
 tags:
   - ProduitAlimentaire
-  - ReponseConso
 detailInputs:
   - label: Que s'est-il passé ?
     type: RADIO

@@ -1,7 +1,6 @@
 title: Prix manquants ou illisibles
 ccrfCode:
   - '163'
-reponseconsoCode: '212'
 detailInputs:
   - label: Veuillez préciser
     type: RADIO

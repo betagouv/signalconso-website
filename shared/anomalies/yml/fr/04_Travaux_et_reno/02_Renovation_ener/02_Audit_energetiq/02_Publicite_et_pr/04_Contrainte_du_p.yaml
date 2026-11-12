@@ -2,9 +2,6 @@ title: Contrainte du professionnel
 ccrfCode:
   - 23C
   - 23D
-reponseconsoCode: '210'
-tags:
-  - ReponseConso
 detailInputs:
   - label: Date du constat
     type: DATE_NOT_IN_FUTURE

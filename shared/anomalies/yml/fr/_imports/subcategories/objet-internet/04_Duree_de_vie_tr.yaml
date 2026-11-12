@@ -4,7 +4,6 @@ desc: >-
   soupçonne un cas d'obsolescence programmée
 tags:
   - TransitionEcologique
-  - ReponseConso
 companyKind: PRODUCT
 detailInputs:
   - label: Date d'achat

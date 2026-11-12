@@ -2,7 +2,4 @@ title: Prix final différent du prix annoncé
 desc: 'Exemple : fausse réduction, suppléments non prévus'
 ccrfCode:
   - 23b
-reponseconsoCode: '212'
-tags:
-  - ReponseConso
 subcategory: Prix_final_different_du_prix_annonce

@@ -1,8 +1,6 @@
 title: Usurpation d'identité de la part du professionnel
 ccrfCode:
   - 23C
-tags:
-  - ReponseConso
 detailInputs:
   - label: Qu'est-ce qui est trompeur ou mensonger ?
     type: RADIO

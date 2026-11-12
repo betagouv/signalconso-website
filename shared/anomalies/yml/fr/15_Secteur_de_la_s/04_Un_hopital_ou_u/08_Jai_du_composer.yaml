@@ -2,9 +2,6 @@ title: J’ai dû composer un numéro surtaxé pour joindre l’établissement
 
 ccrfCode:
   - '226'
-tags:
-  - ReponseConso
-reponseconsoCode: '456'
 detailInputs:
   - label: Date de sortie (ou date de la facture)
     type: DATE

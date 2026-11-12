@@ -1,8 +1,6 @@
 title: Utilisation de termes laissant croire qu'il s'agit d'une structure publique
 ccrfCode:
   - '271'
-tags:
-  - ReponseConso
 detailInputs:
   - label: Qu'est-ce qui est trompeur ou mensonger ?
     type: RADIO

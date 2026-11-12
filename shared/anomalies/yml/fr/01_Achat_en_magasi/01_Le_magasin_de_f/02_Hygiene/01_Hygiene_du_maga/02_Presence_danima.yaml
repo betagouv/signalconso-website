@@ -2,7 +2,6 @@ title: Présence d'animaux
 desc: 'Exemple : rats, cafards'
 ccrfCode:
   - '312'
-reponseconsoCode: '312'
 detailInputs:
   - label: Quel animal avez-vous vu ?
     type: RADIO

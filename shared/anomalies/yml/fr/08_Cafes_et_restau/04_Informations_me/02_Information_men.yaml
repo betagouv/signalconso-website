@@ -1,5 +1,4 @@
 title: Information mensongère ou trompeuse
-reponseconsoCode: '271'
 detailInputs:
   - label: Date du constat
     type: DATE_NOT_IN_FUTURE

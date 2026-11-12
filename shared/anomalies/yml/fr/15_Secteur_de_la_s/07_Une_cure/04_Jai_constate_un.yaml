@@ -1,10 +1,7 @@
 title: J'ai constaté une publicité mensongère
 desc: "Exemple\_: spa simple déclaré en thalassothérapie, soins qui ne correspondent pas à la description sur la publicité, utilisation frauduleuse du label Qualicert"
-tags:
-  - ReponseConso
 ccrfCode:
   - 23B
-reponseconsoCode: '210'
 detailInputs:
   - label: Date de constat
     type: DATE

@@ -3,7 +3,6 @@ desc: "Exemple\_: les prix des soins ne sont pas affichés, les prix affichés s
 companyKind: SIRET
 ccrfCode:
   - 21B
-reponseconsoCode: '212'
 detailInputs:
   - label: Date de constat
     type: DATE

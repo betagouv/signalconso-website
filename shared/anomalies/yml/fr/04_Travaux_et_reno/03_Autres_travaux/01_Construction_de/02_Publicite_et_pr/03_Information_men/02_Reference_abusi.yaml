@@ -3,8 +3,6 @@ title: >-
   d'énergie
 ccrfCode:
   - '271'
-tags:
-  - ReponseConso
 detailInputs:
   - label: Qu'est-ce qui est trompeur ou mensonger ?
     type: RADIO

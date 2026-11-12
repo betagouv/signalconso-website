@@ -34,6 +34,7 @@ export const appConfig = {
   websiteBaseUrl: noTrailingSlash(process.env.NEXT_PUBLIC_APP_BASE_URL ?? 'http://localhost:3001'),
   dashboardBaseUrl: noTrailingSlash(process.env.NEXT_PUBLIC_DASHBOARD_BASE_URL ?? 'http://localhost:3000'),
   upload_allowedExtensions: ['.jpg', '.jpeg', '.pdf', '.png', '.gif', '.docx', '.heic'],
+  // @deprecated SC-30: ReponseConso is no longer used
   reponseConsoDisplayRate: readInt(process.env.NEXT_PUBLIC_REPONSECONSO_DISPLAY_PERCENTAGE, 100),
   upload_maxSizeMb: readInt(process.env.NEXT_PUBLIC_UPLOAD_MAX_SIZE_MB, 5),
   contactEmail: 'support@signal.conso.gouv.fr',

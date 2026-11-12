@@ -2,7 +2,6 @@ title: Remise ou offre promotionnelle pas appliquée ou mensongère
 ccrfCode:
   - 23b
   - '164'
-reponseconsoCode: '451'
 detailInputs:
   - label: Date du constat
     type: DATE_NOT_IN_FUTURE

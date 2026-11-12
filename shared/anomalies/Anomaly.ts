@@ -54,6 +54,7 @@ type SubcategoryBase = CategoryNodeBase & {
   // only makes sense if there are subcategories
   tags?: ReportTagAllowedInYaml[]
   desc?: string
+  /** @deprecated SC-30: ReponseConso is no longer used. No YAML defines it anymore, kept only for backward compatibility. */
   reponseconsoCode?: string
   ccrfCode?: string[]
   companyKind?: CompanyKind
@@ -99,6 +100,8 @@ export const reportTagsAllowedInYaml = [
   'DemarchageInternet',
   'AbsenceDeMediateur',
   'Influenceur',
+  // @deprecated SC-30: ReponseConso is no longer used. Do not put this tag back in the YAML: it would re-enable the "ask a question" option
+  // (consumerWish 'getAnswer') and forward reports to ReponseConso.
   'ReponseConso',
   'ProduitIndustriel',
   'ProduitAlimentaire',

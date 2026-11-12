@@ -52,6 +52,8 @@ export type ConsumerWish =
   // - on met le tag ReponseConso
   // - on met le flag forwardToReponseConso
   // - on ne transmet pas à l'entreprise
+  // @deprecated SC-30: ReponseConso is no longer used. Only offered when a subcategory has the ReponseConso tag,
+  // and no YAML has it anymore: this value can no longer be chosen. Code kept on purpose.
   | 'getAnswer'
 
 export type DetailInputValues2 = {

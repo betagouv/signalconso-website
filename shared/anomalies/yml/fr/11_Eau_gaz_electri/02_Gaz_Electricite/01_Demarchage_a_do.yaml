@@ -5,7 +5,6 @@ ccrfCode:
   - '221'
 tags:
   - DemarchageADomicile
-  - ReponseConso
 detailInputs:
   - label: Date du passage du vendeur
     type: DATE

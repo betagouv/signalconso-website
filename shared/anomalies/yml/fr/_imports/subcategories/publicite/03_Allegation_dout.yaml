@@ -1,10 +1,8 @@
 title: Allégation douteuse de neutralité ou de compensation carbone
 tags:
   - TransitionEcologique
-  - ReponseConso
 ccrfCode:
   - 23B
-reponseconsoCode: '210'
 detailInputs:
   - label: Date du constat
     type: DATE_NOT_IN_FUTURE

@@ -75,6 +75,7 @@ export const getCompanyKind = (r: ReportPickInStep1<'subcategoriesIndexes' | 'co
   return companyKindOverride ? companyKindOverride : (getWipCompanyKindFromSelected(r) ?? 'SIRET')
 }
 
+/** @deprecated SC-30: ReponseConso is no longer used. No YAML defines a reponseconsoCode anymore, this always returns undefined. */
 export const getReponseConsoCode = (r: ReportPickInStep1<'subcategoriesIndexes'>) => {
   // 2023-12 ReponseConso says we should not send them multiple reponseConso codes, it breaks something for them
   // We should send only one code maximum, and it doesn't really matter which one

@@ -20,6 +20,7 @@ export const toApi = (draft: Report, metadata: ApiReport['metadata']): ApiReport
     step1: {consumerWish},
     step4: {contactAgreement, consumer},
   } = draft
+  // @deprecated SC-30: ReponseConso is no longer used: no YAML defines a reponseconsoCode anymore, so this is always undefined
   const reponseconsoCode = getReponseConsoCode(draft)
   const ccrfCode = getCcrfCode(draft)
   const subcategories = getSubcategories(draft)
@@ -40,6 +41,7 @@ export const toApi = (draft: Report, metadata: ApiReport['metadata']): ApiReport
     consumerReferenceNumber: consumer.referenceNumber,
     contactAgreement,
     employeeConsumer: false, // TODO Remove once backend is deployed
+    // @deprecated SC-30: ReponseConso is no longer used: 'getAnswer' can no longer be chosen, so this is always false
     forwardToReponseConso: consumerWish === 'getAnswer',
     fileIds: draft.step3.uploadedFiles?.map(file => file.id) ?? [],
     tags,
@@ -59,6 +61,7 @@ function computeFinalTags(draft: Report): ReportTag[] {
   if (companyKind === 'WEBSITE' || companyKind === 'MERCHANT_WEBSITE' || companyKind === 'TRANSPORTER_WEBSITE') {
     tagsSet.add('Internet')
   }
+  // @deprecated SC-30: ReponseConso is no longer used: 'getAnswer' can no longer be chosen, so the ReponseConso tag is never sent
   if (consumerWish === 'getAnswer') {
     tagsSet.add('ReponseConso')
   } else {

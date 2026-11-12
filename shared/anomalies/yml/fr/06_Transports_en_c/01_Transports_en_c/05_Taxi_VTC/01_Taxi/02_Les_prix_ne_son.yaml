@@ -4,7 +4,4 @@ desc: >-
   voiture.
 ccrfCode:
   - 21b
-reponseconsoCode: '212'
-tags:
-  - ReponseConso
 subcategory: Les_prix_ne_sont_pas_affiches_dans_la_voiture

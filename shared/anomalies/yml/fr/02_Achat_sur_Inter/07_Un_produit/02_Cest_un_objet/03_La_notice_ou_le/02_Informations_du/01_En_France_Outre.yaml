@@ -1,5 +1,4 @@
 title: En France (Outre-mer compris)
-reponseconsoCode: '211'
 detailInputs:
   - label: Date du constat
     type: DATE_NOT_IN_FUTURE

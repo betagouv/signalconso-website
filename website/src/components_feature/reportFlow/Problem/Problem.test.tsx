@@ -103,15 +103,6 @@ describe('Problem', () => {
     fireEvent.click(btnSubmit)
   }
 
-  const expectContractualDisputeVisible = (app: ScRenderResult, visible: boolean) => {
-    const div = app.container.querySelector('#panel-contractual-dispute') as HTMLDivElement
-    if (visible) {
-      expect(div).not.toEqual(null)
-    } else {
-      expect(div).toEqual(null)
-    }
-  }
-
   it(`shouldn't ask employeeConsumer when not asked`, () => {
     let report: undefined | PartialReport
     const app = render(
@@ -206,24 +197,6 @@ describe('Problem', () => {
     expect(() => clickContractualDispute(app, 'getAnswer')).toThrow()
   })
 
-  it('should ask ReponseConso when tagged', () => {
-    let report: undefined | PartialReport
-    const app = render(
-      <AccessReportFlow
-        onReportChange={r => {
-          report = r
-        }}
-      >
-        <Problem {...props} anomaly={ProblemFixture.anomaly} />
-      </AccessReportFlow>,
-      renderOptions,
-    )
-    fireEvent.click(app.getByText(`Sous category pour tester divers tags`))
-    fireEvent.click(app.getByText(`Sous cat avec tag ReponseConso`))
-    clickCompanyKind(app, 'internet')
-    clickContractualDispute(app, 'getAnswer')
-    expectContractualDisputeVisible(app, false)
-    clickBtnSubmit(app)
-    expect(report?.step1?.consumerWish).toEqual('getAnswer')
-  })
+  // @deprecated SC-30: the test 'should ask ReponseConso when tagged' was removed,
+  // ReponseConso is no longer used and no subcategory has the ReponseConso tag anymore.
 })

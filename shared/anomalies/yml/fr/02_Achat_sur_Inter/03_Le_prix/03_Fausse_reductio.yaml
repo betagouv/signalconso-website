@@ -1,12 +1,9 @@
 title: Fausse réduction de prix
 desc: 'Exemple : fausse promotion, faux temps limite, fausse liquidation totale'
-tags:
-  - ReponseConso
 ccrfCode:
   - '145'
   - 23F
   - '146'
-reponseconsoCode: '224'
 detailInputs:
   - label: "Il s'agit d'un problème sur :"
     type: RADIO

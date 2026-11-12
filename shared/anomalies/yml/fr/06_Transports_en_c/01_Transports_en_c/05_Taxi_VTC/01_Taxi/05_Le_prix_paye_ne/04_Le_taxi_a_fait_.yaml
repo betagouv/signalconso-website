@@ -1,6 +1,4 @@
 title: Le taxi a fait un tarif de nuit / week-end alors que ce n'était pas le cas
-tags:
-  - ReponseConso
 detailInputs:
   - label: Date de la course
     type: DATE

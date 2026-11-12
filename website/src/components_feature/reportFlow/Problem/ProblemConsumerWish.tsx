@@ -19,6 +19,9 @@ export function ProblemConsumerWish({children}: {children: ReactNode}) {
   }
   const tags = getTags(r)
   const hasTelecomTag = tags.includes('Telecom')
+  // @deprecated SC-30: ReponseConso is no longer used. No YAML has the ReponseConso tag anymore, so this is always false:
+  // the question is always skipped and consumerWish is forced to 'reportSomething'.
+  // The 'getAnswer' option below is kept on purpose but is unreachable.
   const hasReponseConsoTag = tags.includes('ReponseConso')
   const transmissionStatus = getTransmissionStatusBeforeConsumerWish(r)
   const isTransmittable = transmissionStatus.kind !== 'NOT_TRANSMITTABLE'

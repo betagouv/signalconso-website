@@ -38,10 +38,12 @@ export interface ApiReport {
   consumerReferenceNumber: string | undefined
   contactAgreement: boolean
   employeeConsumer: boolean // TODO Remove once backend is deployed
+  // @deprecated SC-30: ReponseConso is no longer used: always false now
   forwardToReponseConso: boolean | undefined
   fileIds: string[]
   vendor: string | undefined
   tags: ReportTag[]
+  // @deprecated SC-30: ReponseConso is no longer used: always undefined now
   reponseconsoCode: string[] | undefined
   ccrfCode: string[] | undefined
   influencer: ApiInfluencer | undefined
@@ -85,6 +87,7 @@ export interface ApiCreatedReport {
   phone: string | null
   ccrfCode: string[]
   consumerPhone: string | null
+  // @deprecated SC-30: ReponseConso is no longer used
   reponseconsoCode: string[]
   gender: 'Male' | 'Female' | null
 }

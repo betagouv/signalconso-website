@@ -2,7 +2,6 @@ title: C'est un objet
 desc: 'Exemple : jouet, électroménager, vêtement, savon, vaisselle, meuble'
 tags:
   - ProduitIndustriel
-  - ReponseConso
 detailInputs:
   - label: Que s'est-il passé ?
     type: RADIO
