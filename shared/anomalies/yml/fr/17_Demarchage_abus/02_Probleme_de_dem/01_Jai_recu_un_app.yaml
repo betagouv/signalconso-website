@@ -1,12 +1,10 @@
 title: >-
-  J'ai reçu un appel commercial pendant la semaine en dehors des heures
-  autorisées, ou le week-end ou un jour férié
-desc: 'Exemple : Avant 10h, entre 13h et 14h ou après 20h'
-ccrfCode:
-  - '227'
-  - 23E
+  J’ai reçu un appel commercial sans avoir donné mon accord préalable
 companyKind: PHONE
 tags:
   - DemarchageTelephonique
-subcategory: >-
-  Jai_recu_un_appel_commercial_pendant_la_semaine_en_dehors_des_heures_autorisees_ou_le_week-end_ou_jour_ferie
+detailInputs:
+  - label: Date de l'appel
+    type: DATE
+    defaultValue: SYSDATE
+subcategory: Jai_recu_un_appel_commercial_sans_avoir_donne_mon_accord_prealable
